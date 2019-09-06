@@ -12,46 +12,56 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SignalR.Models;
-using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Commands.SignalR.Properties;
 using Microsoft.Azure.Management.SignalR;
 using Microsoft.Azure.Management.SignalR.Models;
-using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalR", SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalR", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(PSSignalRResource))]
-    public sealed class NewAzureRmSignalR : SignalRCmdletBase
+    public class UpdateAzureRmSignalR : SignalRCmdletBase, IWithInputObject, IWithResourceId
     {
         private const string DefaultSku = "Standard_S1";
         private const int DefaultUnitCount = 1;
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = ResourceGroupParameterSet,
             HelpMessage = "The resource group name. The default one will be used if not specified.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty()]
         public override string ResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = true,
             Position = 0,
+            ParameterSetName = ResourceGroupParameterSet,
             HelpMessage = "The SignalR service name.")]
         [ValidateNotNullOrEmpty()]
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The SignalR service location. The resource group location will be used if not specified.")]
-        [LocationCompleter("Microsoft.SignalR/SignalR")]
-        [ValidateNotNullOrEmpty()]
-        public string Location { get; set; }
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The SignalR service resource ID.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "The SignalR resource object.")]
+        [ValidateNotNull]
+        public PSSignalRResource InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -63,7 +73,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
             Mandatory = false,
             HelpMessage = "The SignalR service unit count, value only from {1, 2, 5, 10, 20, 50, 100}. Default to 1.")]
         [PSArgumentCompleter("1", "2", "5", "10", "20", "50", "100")]
-        public int UnitCount { get; set; } = DefaultUnitCount;
+        public int? UnitCount { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -92,26 +102,27 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
             RunCmdlet(() =>
             {
-                ResolveResourceGroupName(required: false);
-                ResourceGroupName = ResourceGroupName ?? Name;
+                switch (ParameterSetName)
+                {
+                    case ResourceGroupParameterSet:
+                        ResolveResourceGroupName();
+                        break;
+                    case ResourceIdParameterSet:
+                        this.LoadFromResourceId();
+                        break;
+                    case InputObjectParameterSet:
+                        this.LoadFromInputObject();
+                        break;
+                    default:
+                        throw new ArgumentException(Resources.ParameterSetError);
+                }
 
-                if (ShouldProcess($"SignalR service {ResourceGroupName}/{Name}", "new"))
+                if (ShouldProcess($"SignalR service {ResourceGroupName}/{Name}", "update"))
                 {
                     PromptParameter(nameof(ResourceGroupName), ResourceGroupName);
                     PromptParameter(nameof(Name), Name);
-
-                    if (Location == null)
-                    {
-                        Location = GetLocationFromResourceGroup();
-                        PromptParameter(nameof(Location), null, true, Location, "(from resource group location)");
-                    }
-                    else
-                    {
-                        PromptParameter(nameof(Location), Location);
-                    }
-
                     PromptParameter(nameof(Sku), Sku, true, DefaultSku);
-                    PromptParameter(nameof(UnitCount), UnitCount);
+                    PromptParameter(nameof(UnitCount), UnitCount, true, DefaultUnitCount);
                     PromptParameter(nameof(Tag), Tag == null ? null : JsonConvert.SerializeObject(Tag));
                     PromptParameter(nameof(ServiceMode), ServiceMode);
 
@@ -119,19 +130,19 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                     PromptParameter(nameof(AllowedOrigin), origins == null ? null : JsonConvert.SerializeObject(origins));
 
                     Sku = Sku ?? DefaultSku;
+                    UnitCount = UnitCount ?? DefaultUnitCount;
 
                     IList<SignalRFeature> features = ServiceMode == null ? null : new List<SignalRFeature> { new SignalRFeature(value: ServiceMode) };
                     SignalRCorsSettings cors = AllowedOrigin == null ? null : new SignalRCorsSettings(allowedOrigins: origins);
 
-                    var parameters = new SignalRCreateParameters(
-                        location: Location,
+                    var parameters = new SignalRUpdateParameters(
                         tags: Tag,
                         sku: new ResourceSku(name: Sku, capacity: UnitCount),
                         properties: new SignalRCreateOrUpdateProperties(features: features, cors: cors));
 
-                    Client.SignalR.CreateOrUpdate(ResourceGroupName, Name, parameters);
+                    Client.SignalR.Update(ResourceGroupName, Name, parameters);
 
-                    var signalr = Client.SignalR.Get(ResourceGroupName, Name);
+                    var signalr = (Client.SignalR.Get(ResourceGroupName, Name));
                     WriteObject(new PSSignalRResource(signalr));
                 }
             });

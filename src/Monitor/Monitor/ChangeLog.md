@@ -23,6 +23,7 @@
  - Illustrated 'Enabled' parameter in help files properly
  - Added examples for 'ActionGroup' optional parameter
  - Overall improved help files
+* Fix bug in determining scope type for `Set-AzActionRule`
 
 ## Version 1.2.2
 * Fixed miscellaneous typos across module
