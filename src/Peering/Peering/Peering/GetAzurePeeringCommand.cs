@@ -72,6 +72,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Position = 0,
             Mandatory = true,
             HelpMessage = Constants.ResourceIdHelp,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.ParameterSetNameByResourceId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }

@@ -25,14 +25,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
 
     /// <summary>
-    /// New Azure InputObject Command-let
+    /// The delete azure peering service prefix command.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzPeeringServicePrefix", DefaultParameterSetName = Constants.ParameterSetNameByName, SupportsShouldProcess = true)]
+    [Cmdlet(
+        VerbsCommon.Remove,
+        "AzPeeringServicePrefix",
+        DefaultParameterSetName = Constants.ParameterSetNameByName,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class DeleteAzurePeeringServicePrefixCommand : PeeringBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the legacy InputObject.
+        /// Initializes a new instance of the <see cref="DeleteAzurePeeringServicePrefixCommand"/> class.
+        /// </summary>
+        /// <param name="asJob">
+        /// The as job.
+        /// </param>
+        public DeleteAzurePeeringServicePrefixCommand(SwitchParameter asJob)
+        {
+            this.AsJob = asJob;
+        }
+
+        /// <summary>
+        /// Gets or sets the input object.
         /// </summary>
         [Parameter(
             Mandatory = true,
@@ -43,7 +58,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public PSPeeringServicePrefix InputObject { get; set; }
 
         /// <summary>
-        /// Gets or sets The Resource Group Name
+        /// Gets or sets the resource group name.
         /// </summary>
         [Parameter(
             Position = 0,
@@ -55,7 +70,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets The InputObject NameMD5AuthenticationKeyHelp
+        /// Gets or sets the name.
         /// </summary>
         [Parameter(
             Position = 1,
@@ -66,7 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets The InputObject NameMD5AuthenticationKeyHelp
+        /// Gets or sets the peering service name.
         /// </summary>
         [Parameter(
             Position = 2,
@@ -77,27 +92,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public string PeeringServiceName { get; set; }
 
         /// <summary>
-        /// The resource  id
+        /// Gets or sets the resource id.
         /// </summary>
         [Parameter(
             Position = 0,
             Mandatory = true,
             HelpMessage = Constants.ResourceIdHelp,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.ParameterSetNameByResourceId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = Constants.ForceHelp)]
+        /// <summary>
+        /// Gets or sets the force.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = Constants.ForceHelp)]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
-        ///     The AsJob parameter to run in the background.
+        /// Gets or sets the as job.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelp)]
         public SwitchParameter AsJob { get; set; }
 
+        /// <summary>
+        /// Gets or sets the pass thru.
+        /// </summary>
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -114,42 +134,48 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     Resources.ContinueMessage,
                     this.Name,
                     () =>
-                    {
-                        if (this.ResourceId != null)
                         {
-                            var resourceId = new ResourceIdentifier(this.ResourceId);
-                            this.ResourceGroupName = resourceId.ResourceGroupName;
-                            this.Name = resourceId.ResourceName;
-                            this.PeeringServiceName = resourceId.ParentResource.Split('/')?[1];
-                        }
-                        if (this.InputObject != null)
-                        {
-                            var resourceId = new ResourceIdentifier(this.InputObject.Id);
-                            this.ResourceGroupName = resourceId.ResourceGroupName;
-                            this.Name = resourceId.ResourceName;
-                            this.PeeringServiceName = resourceId.ParentResource.Split('/')?[1];
-                        }
-                        try
-                        {
-                            if (this.ShouldProcess(string.Format(Resources.ShouldProcessMessage, "null. Unless the -PassThru is present which it will return a boolean, true for success of false for failure.")))
+                            if (this.ResourceId != null)
                             {
-                                this.PeeringServicePrefixesClient.Delete(this.ResourceGroupName, this.PeeringServiceName, this.Name);
-                                if (this.PassThru.IsPresent)
+                                this.WriteVerbose($"ResourceId:{this.ResourceId}");
+                                var resourceId = new ResourceIdentifier(this.ResourceId);
+                                this.ResourceGroupName = resourceId.ResourceGroupName;
+                                this.Name = resourceId.ResourceName;
+                                this.PeeringServiceName = resourceId.ParentResource.Split('/')?[1];
+                            }
+
+                            if (this.InputObject != null)
+                            {
+                                var resourceId = new ResourceIdentifier(this.InputObject.Id);
+                                this.ResourceGroupName = resourceId.ResourceGroupName;
+                                this.Name = resourceId.ResourceName;
+                                this.PeeringServiceName = resourceId.ParentResource.Split('/')?[1];
+                            }
+
+                            try
+                            {
+                                if (this.ShouldProcess(
+                                    string.Format(
+                                        Resources.ShouldProcessMessage,
+                                        "null. Unless the -PassThru is present which it will return a boolean, true for success of false for failure.")))
                                 {
-                                    WriteObject(true);
+                                    this.PeeringServicePrefixesClient.Delete(
+                                        this.ResourceGroupName,
+                                        this.PeeringServiceName,
+                                        this.Name);
+                                    if (this.PassThru.IsPresent)
+                                    {
+                                        this.WriteObject(true);
+                                    }
                                 }
                             }
-                        }
-                        catch (Exception ex)
-                        {
-                            this.WriteVerbose(ex.Message);
-                            if (this.PassThru.IsPresent)
+                            catch (Exception ex)
                             {
-                                WriteObject(false);
+                                this.WriteVerbose(ex.Message);
+                                this.WriteObject(false);
+                                throw ex;
                             }
-                        }
-                    }
-                    );
+                        });
             }
             catch (InvalidOperationException mapException)
             {

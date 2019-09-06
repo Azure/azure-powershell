@@ -27,14 +27,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
 
     /// <summary>
-    /// New Azure InputObject Command-let
+    /// The new azure peering service command.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzPeeringService", DefaultParameterSetName = Constants.ParameterSetNameDefault, SupportsShouldProcess = true)]
-    [OutputType(typeof(PSPeering))]
+    [OutputType(typeof(PSPeeringService))]
     public class NewAzurePeeringServiceCommand : PeeringBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets The Resource Group Name
+        /// Gets or sets the resource group name.
         /// </summary>
         [Parameter(
             Position = 0,
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets The InputObject NameMD5AuthenticationKeyHelp
+        /// Gets or sets the name.
         /// </summary>
         [Parameter(
             Position = 1,
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets The InputObject Location.
+        /// Gets or sets the peering location.
         /// </summary>
         [Parameter(
             Position = 2,
@@ -65,10 +65,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             HelpMessage = Constants.PeeringServiceLocationHelp,
             ParameterSetName = Constants.ParameterSetNameDefault)]
         [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
+        public string PeeringLocation { get; set; }
 
         /// <summary>
-        /// Gets or sets The PeerAsn.
+        /// Gets or sets the peering service provider.
         /// </summary>
         [Parameter(
             Position = 3,
@@ -85,14 +85,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public Hashtable Tag { get; set; }
 
         /// <summary>
-        ///     The AsJob parameter to run in the background.
+        /// Gets or sets the as job.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelp)]
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
-        /// The inherited Execute function.
+        /// The execute cmdlet.
         /// </summary>
+        /// <exception cref="InvalidOperationException">
+        /// </exception>
         public override void ExecuteCmdlet()
         {
             try
@@ -108,21 +110,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             }
         }
 
+        /// <summary>
+        /// The new peering service from resource group and name.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="PSPeeringService"/>.
+        /// </returns>
+        /// <exception cref="ItemNotFoundException">
+        /// </exception>
+        /// <exception cref="ErrorResponseException">
+        /// </exception>
         private PSPeeringService NewPeeringServiceFromResourceGroupAndName()
         {
             try
             {
                 var location = this.PeeringServiceLocationsClient.List();
-                var CheckProvider = this.PeeringManagementClient.CheckServiceProviderAvailability(new CheckServiceProviderAvailabilityInput(this.Location, this.PeeringServiceProvider));
+                var CheckProvider = this.PeeringManagementClient.CheckServiceProviderAvailability(
+                    new CheckServiceProviderAvailabilityInput(this.PeeringLocation, this.PeeringServiceProvider));
                 if (!CheckProvider.Equals(Constants.Available, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    throw new ItemNotFoundException(string.Format(Resources.Error_ProviderNotFound, this.PeeringServiceProvider, this.Location, CheckProvider));
+                    throw new ItemNotFoundException(string.Format(Resources.Error_ProviderNotFound, this.PeeringServiceProvider, this.PeeringLocation, CheckProvider));
                 }
 
                 var peeringService = new PeeringService
                 {
-                    Location = location.Select(ToPeeringServiceLocationPS).ToList().Find(x => x.State.Equals(this.Location.Trim(), StringComparison.InvariantCultureIgnoreCase)).AzureRegion,
-                    PeeringServiceLocation = this.Location.Trim(),
+                    Location = location.Select(ToPeeringServiceLocationPS).ToList().Find(x => x.State.Equals(this.PeeringLocation.Trim(), StringComparison.InvariantCultureIgnoreCase)).AzureRegion,
+                    PeeringServiceLocation = this.PeeringLocation.Trim(),
                     PeeringServiceProvider = this.PeeringServiceProvider.Trim(),
                     Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, true)
                 };

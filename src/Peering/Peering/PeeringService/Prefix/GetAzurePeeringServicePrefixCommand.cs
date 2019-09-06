@@ -26,16 +26,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
 
-    /// <inheritdoc />
     /// <summary>
-    ///     The Get Az InputObject Legacy peering.
+    /// The get azure peering service prefix command.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzPeeringServicePrefix", SupportsShouldProcess = true, DefaultParameterSetName = Constants.ParameterSetNameByResourceAndName)]
+    [Cmdlet(VerbsCommon.Get, "AzPeeringServicePrefix", DefaultParameterSetName = Constants.ParameterSetNameByResourceAndName)]
     [OutputType(typeof(PSPeeringServicePrefix))]
     public class GetAzurePeeringServicePrefixCommand : PeeringBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the peering service input object
+        /// Gets or sets the peering service object.
         /// </summary>
         [Parameter(
             Position = 0,
@@ -44,10 +43,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             ValueFromPipeline = true,
             ParameterSetName = Constants.ParameterSetNameDefault)]
         [ValidateNotNullOrEmpty]
-        public PSPeeringService InputObject { get; set; }
+        public PSPeeringService PeeringServiceObject { get; set; }
 
         /// <summary>
-        ///     Gets or sets the ResourceGroupName
+        /// Gets or sets the resource group name.
         /// </summary>
         [Parameter(
             Position = 0,
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        ///     Gets or sets the InputObject name.
+        /// Gets or sets the peering service name.
         /// </summary>
         [Parameter(
             Position = 1,
@@ -69,7 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public string PeeringServiceName { get; set; }
 
         /// <summary>
-        ///     Gets or sets the InputObject name.
+        /// Gets or sets the name.
         /// </summary>
         [Parameter(
             Mandatory = false,
@@ -82,12 +81,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public string Name { get; set; }
 
         /// <summary>
-        /// The resource  id
+        /// Gets or sets the resource id.
         /// </summary>
         [Parameter(
             Position = 0,
             Mandatory = true,
             HelpMessage = Constants.ResourceIdHelp,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.ParameterSetNameByResourceId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                   Constants.ParameterSetNameDefault,
                   StringComparison.OrdinalIgnoreCase))
                 {
-                    var resourceId = new ResourceIdentifier(this.InputObject.Id);
+                    var resourceId = new ResourceIdentifier(this.PeeringServiceObject.Id);
                     this.ResourceGroupName = resourceId.ResourceGroupName;
                     this.PeeringServiceName = resourceId.ResourceName;
                     if (this.Name != null)
@@ -164,11 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>List of peering service resources</returns>
         public List<PSPeeringServicePrefix> ListPeeringService()
         {
-            if (this.ShouldProcess(string.Format(Resources.ShouldProcessMessage, $"a list of peering service prefixes for the resource group name:{this.ResourceGroupName} peering service name:{this.PeeringServiceName}.")))
-            {
-                return this.PrefixesClient.ListByPeeringService(this.ResourceGroupName, this.PeeringServiceName).Select(ToPeeringServicePrefixPS).ToList();
-            }
-            return null;
+            return this.PrefixesClient.ListByPeeringService(this.ResourceGroupName, this.PeeringServiceName).Select(ToPeeringServicePrefixPS).ToList();
         }
 
         /// <summary>
@@ -177,13 +173,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>InputObject Resource</returns>
         public object GetPeeringServicePrefixByResourceAndName()
         {
-            if (this.ShouldProcess(string.Format(Resources.ShouldProcessMessage, $"a peering service prefix for the resource group name:{this.ResourceGroupName} peering service name:{this.PeeringServiceName} and resource name:{this.Name}.")))
+            var prefix = this.ToPeeringServicePrefixPS(this.PeeringServicePrefixesClient.Get(this.ResourceGroupName, this.PeeringServiceName, this.Name));
+            if (prefix != null)
             {
-                var prefix = this.ToPeeringServicePrefixPS(this.PeeringServicePrefixesClient.Get(this.ResourceGroupName, this.PeeringServiceName, this.Name));
-                if (prefix != null)
-                {
-                    return prefix;
-                }
+                return prefix;
             }
             return null;
         }
