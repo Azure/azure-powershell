@@ -97,6 +97,15 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to At least one of the supplied access policy object IDs is invalid. Object ID must be a valid GUID..
+        /// </summary>
+        internal static string invalidAccessPolicyObjectIdMessage {
+            get {
+                return ResourceManager.GetString("invalidAccessPolicyObjectIdMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing service.
         /// </summary>
         internal static string RemoveService_ProcessMessage {

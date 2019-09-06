@@ -138,4 +138,7 @@
   <data name="updatedService_InvalidSmartOnProxyInput" xml:space="preserve">
     <value>EnableSmartProxy and DisableSmartProxy are mutually exclusive parameters. Please specify only one</value>
   </data>
+  <data name="invalidAccessPolicyObjectIdMessage" xml:space="preserve">
+    <value>At least one of the supplied access policy object IDs is invalid. Object ID must be a valid GUID.</value>
+  </data>
 </root>
