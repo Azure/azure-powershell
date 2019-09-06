@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixing the Publish-AzureWebapp to work across Linux and windows
+* Update example in `Get-AzWebAppPublishingProfile` reference documentation
 
 ## Version 1.4.1
 * Fixed miscellaneous typos across module
