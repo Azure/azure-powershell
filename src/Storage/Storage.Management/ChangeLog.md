@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated example in reference documentation for `Get-AzStorageAccountKey`
 
 ## Version 1.6.0
 * Fixed miscellaneous typos across module
