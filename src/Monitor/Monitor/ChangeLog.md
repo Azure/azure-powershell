@@ -19,9 +19,9 @@
 -->
 ## Upcoming Release
 * Improvements in Scheduled Query Rule cmdlets (SQR)
- - Cmdlets will accept 'Location' paramater in both formats - either the location (e.g. eastus) or the location display name (e.g. East US)
- - Illustrated 'Enabled' parameter in help files properly
- - Added examples for 'ActionGroup' optional parameter
+ - Cmdlets will accept `Location` paramater in both formats, either the location (e.g. eastus) or the location display name (e.g. East US)
+ - Illustrated `Enabled` parameter in help files properly
+ - Added examples for `ActionGroup` optional parameter
  - Overall improved help files
 * Fix bug in determining scope type for `Set-AzActionRule`
 
