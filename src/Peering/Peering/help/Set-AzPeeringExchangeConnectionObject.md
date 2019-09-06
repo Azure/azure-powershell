@@ -55,7 +55,7 @@ Updates the Peering Address for the first connection in the Peering object in me
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 The exchange connection object
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection
+Type: PSExchangeConnection
 Parameter Sets: (All)
 Aliases:
 
@@ -81,11 +81,26 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -MD5AuthenticationKey
+The MD5 authentication key for session.
+
+```yaml
+Type: String
+Parameter Sets: Md5Authentication
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MaxPrefixesAdvertisedIPv4
 The maximum advertised IPv4
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: IPv4Address
 Aliases:
 
@@ -100,7 +115,7 @@ Accept wildcard characters: False
 The maximum advertised IPv6
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: IPv6Address
 Aliases:
 
@@ -111,26 +126,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MD5AuthenticationKey
-The MD5 authentication key for session.
-
-```yaml
-Type: System.String
-Parameter Sets: Md5Authentication
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PeerSessionIPv4Address
 The peer session IPv4 address
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: IPv4Address
 Aliases:
 
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 The peer session IPv6 address
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: IPv6Address
 Aliases:
 

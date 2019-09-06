@@ -36,17 +36,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     public class DeleteAzurePeeringServicePrefixCommand : PeeringBaseCmdlet
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DeleteAzurePeeringServicePrefixCommand"/> class.
-        /// </summary>
-        /// <param name="asJob">
-        /// The as job.
-        /// </param>
-        public DeleteAzurePeeringServicePrefixCommand(SwitchParameter asJob)
-        {
-            this.AsJob = asJob;
-        }
-
-        /// <summary>
         /// Gets or sets the input object.
         /// </summary>
         [Parameter(

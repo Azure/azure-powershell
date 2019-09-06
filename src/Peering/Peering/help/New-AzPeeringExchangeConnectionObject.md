@@ -56,9 +56,24 @@ Local connection object
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MD5AuthenticationKey
+The MD5 authentication key for session.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -71,7 +86,7 @@ Accept wildcard characters: False
 The maximum advertised IPv4
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: IPv4Address, IPv4AddressIPv6Address
 Aliases:
 
@@ -86,7 +101,7 @@ Accept wildcard characters: False
 The maximum advertised IPv6
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: IPv6Address, IPv4AddressIPv6Address
 Aliases:
 
@@ -97,41 +112,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MD5AuthenticationKey
-The MD5 authentication key for session.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PeeringDBFacilityId
-The peering facility Id found on https://peeringdb.com
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PeerSessionIPv4Address
 The peer session IPv4 address
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: IPv4Address, IPv4AddressIPv6Address
 Aliases:
 
@@ -146,12 +131,27 @@ Accept wildcard characters: False
 The peer session IPv6 address
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: IPv6Address, IPv4AddressIPv6Address
 Aliases:
 
 Required: True
 Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeeringDBFacilityId
+The peering facility Id found on https://peeringdb.com
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

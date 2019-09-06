@@ -127,7 +127,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </summary>
         /// <param name="peeringLocation"></param>
         /// <returns></returns>
-        private IEnumerable<PSPeeringLocationObject> FilterPeeringLocations(List<PSPeeringLocationObject> peeringLocation)
+        private List<PSPeeringLocationObject> FilterPeeringLocations(List<PSPeeringLocationObject> peeringLocation)
         {
             IEnumerable<PSPeeringLocationObject> peeringLocationFiltered = null;
             if (this.PeeringLocation != null)
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 return peeringLocation;
             }
 
-            return peeringLocationFiltered;
+            return peeringLocationFiltered.ToList();
         }
 
         private List<PSPeeringLocationObject> ConvertToPsObject(List<PSPeeringLocation> peeringLocation)
