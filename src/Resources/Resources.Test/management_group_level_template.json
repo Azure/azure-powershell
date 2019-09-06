@@ -2,12 +2,21 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "targetMG": {
+      "type": "string"
+    },
+    "nestedsubId": {
+      "type": "string"
+    },
+    "nestedRG": {
+      "type": "string"
+    },
     "storageAccountName": {
-        "type": "string"
+      "type": "string"
     }
   },
   "variables": {
-
+    "mgScope": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('targetMG'))]"
   },
   "resources": [
     {
@@ -36,8 +45,8 @@
       "apiVersion": "2016-12-01",
       "dependsOn": [ "policy2" ],
       "properties": {
-        "scope": "/providers/Microsoft.Management/managementGroups/tiano-mgtest01",
-        "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/tiano-mgtest01/', 'providers/', 'Microsoft.Authorization/policyDefinitions/', 'policy2')]"
+        "scope": "[variables('mgScope')]",
+        "policyDefinitionId": "[concat(variables('mgScope'), '/providers/', 'Microsoft.Authorization/policyDefinitions/', 'policy2')]"
       }
     },
     {
@@ -45,7 +54,7 @@
       "name": "sdktest-subnested",
       "apiVersion": "2018-05-01",
       "location": "West US",
-      "subscriptionId": "fb3a3d6b-44c8-44f5-88c9-b20917c9b96b",
+      "subscriptionId": "[parameters('nestedSubId')]",
       "properties": {
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -59,9 +68,9 @@
           "resources": [
             {
               "type": "Microsoft.Resources/resourceGroups",
-              "name": "rg-001",
+              "name": "[parameters('nestedRG')]",
               "apiVersion": "2018-05-01",
-              "location": "East US 2 EUAP",
+              "location": "East US 2",
               "properties": {
 
               }
@@ -70,8 +79,8 @@
               "type": "Microsoft.Resources/deployments",
               "name": "rg-nested",
               "apiVersion": "2017-05-10",
-              "resourceGroup": "rg-001",
-              "dependsOn": [ "rg-001" ],
+              "resourceGroup": "[parameters('nestedRG')]",
+              "dependsOn": [ "[parameters('nestedRG')]" ],
               "properties": {
                 "template": {
                   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",

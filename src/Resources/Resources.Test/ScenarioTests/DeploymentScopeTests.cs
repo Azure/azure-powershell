@@ -36,13 +36,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentEndToEnd-SubscriptionScope");
         }
 
-        [Fact(Skip = "Job tests are flaky.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SubscriptionLevelDeploymentAsJob()
-        {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentAsJob-SubscriptionScope");
-        }
-
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ResourceGroupDeploymentEndToEnd()
@@ -50,25 +43,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentEndToEnd-ResourceGroup");
         }
 
-        [Fact(Skip = "Job tests are flaky.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ResourceGroupDeploymentAsJob()
-        {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentAsJob-ResourceGroup");
-        }
-
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ManagementGroupLevelDeploymentEndToEnd()
         {
             ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentEndToEnd-ManagementGroup");
-        }
-
-        [Fact(Skip = "Job tests are flaky.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ManagementGroupLevelDeploymentAsJob()
-        {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentAsJob-ManagementGroup");
         }
 
         [Fact()]
