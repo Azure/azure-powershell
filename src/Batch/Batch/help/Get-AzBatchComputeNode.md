@@ -50,7 +50,7 @@ LastBootTime          : 7/25/2015 9:36:53 PM
 AllocationTime        : 7/25/2015 9:32:20 PM
 IPAddress             : 10.14.121.1
 AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
-VirtualMachineSize    : small
+VirtualMachineSize    : standard_d1_v2
 TotalTasksRun         : 1
 StartTaskInformation  : 
 RecentTasks           : {}
@@ -73,7 +73,7 @@ LastBootTime          : 7/25/2015 9:36:53 PM
 AllocationTime        : 7/25/2015 9:32:20 PM
 IPAddress             : 10.14.121.1
 AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
-VirtualMachineSize    : small
+VirtualMachineSize    : standard_d1_v2
 TotalTasksRun         : 1
 StartTaskInformation  : 
 RecentTasks           : {}
@@ -89,7 +89,7 @@ LastBootTime          : 7/26/2015 5:33:58 PM
 AllocationTime        : 7/26/2015 5:29:20 PM
 IPAddress             : 10.14.121.38
 AffinityId            : TVM:tvm-2316545714_2-20150726t172920z
-VirtualMachineSize    : small
+VirtualMachineSize    : standard_d1_v2
 TotalTasksRun         : 0
 StartTaskInformation  : 
 RecentTasks           : 
@@ -112,7 +112,7 @@ LastBootTime          : 7/25/2015 9:36:53 PM
 AllocationTime        : 7/25/2015 9:32:20 PM
 IPAddress             : 10.14.121.1
 AffinityId            : TVM:tvm-2316545714_1-20150725t213220z
-VirtualMachineSize    : small
+VirtualMachineSize    : standard_d1_v2
 TotalTasksRun         : 1
 StartTaskInformation  : 
 RecentTasks           : {}
@@ -130,7 +130,7 @@ AllocationTime        : 7/26/2015 5:29:20 PM
 
 IPAddress             : 10.14.121.38
 AffinityId            : TVM:tvm-2316545714_2-20150726t172920z
-VirtualMachineSize    : small
+VirtualMachineSize    : standard_d1_v2
 TotalTasksRun         : 0
 StartTaskInformation  : 
 RecentTasks           : 
@@ -274,7 +274,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

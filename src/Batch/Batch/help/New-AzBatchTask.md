@@ -15,7 +15,7 @@ Creates a Batch task under a job.
 
 ### JobId_Single (Default)
 ```
-New-AzBatchTask -JobId <String> -Id <String> -CommandLine <String> [-DisplayName <String>]
+New-AzBatchTask -JobId <String> -Id <String> [-DisplayName <String>] -CommandLine <String>
  [-ResourceFiles <PSResourceFile[]>] [-EnvironmentSettings <IDictionary>]
  [-AuthenticationTokenSettings <PSAuthenticationTokenSettings>] [-UserIdentity <PSUserIdentity>]
  [-AffinityInformation <PSAffinityInformation>] [-Constraints <PSTaskConstraints>]
@@ -39,7 +39,7 @@ New-AzBatchTask [-Job <PSCloudJob>] [-Tasks <PSCloudTask[]>] -BatchContext <Batc
 
 ### JobObject_Single
 ```
-New-AzBatchTask [-Job <PSCloudJob>] -Id <String> -CommandLine <String> [-DisplayName <String>]
+New-AzBatchTask [-Job <PSCloudJob>] -Id <String> [-DisplayName <String>] -CommandLine <String>
  [-ResourceFiles <PSResourceFile[]>] [-EnvironmentSettings <IDictionary>]
  [-AuthenticationTokenSettings <PSAuthenticationTokenSettings>] [-UserIdentity <PSUserIdentity>]
  [-AffinityInformation <PSAffinityInformation>] [-Constraints <PSTaskConstraints>]
@@ -446,7 +446,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

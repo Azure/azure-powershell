@@ -71,9 +71,6 @@ Gets job summary statistics for a Batch account.
 ### [Get-AzBatchLocationQuota](Get-AzBatchLocationQuota.md)
 Gets the Batch service quotas for your subscription at the given location.
 
-### [Get-AzBatchNodeAgentSku](Get-AzBatchNodeAgentSku.md)
-Gets Batch node agent SKUs available in a Batch account.
-
 ### [Get-AzBatchNodeFile](Get-AzBatchNodeFile.md)
 Gets the properties of Batch node files.
 

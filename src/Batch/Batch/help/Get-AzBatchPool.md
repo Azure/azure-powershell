@@ -61,7 +61,7 @@ Statistics                           :
 TargetDedicated                      : 1
 TargetOSVersion                      : *
 Url                                  : https://cmdletexample.westus.batch.azure.com/pools/MyPool
-VirtualMachineSize                   : small
+VirtualMachineSize                   : standard_d1_v2
 ```
 
 This command gets the pool with ID MyPool.
@@ -96,7 +96,7 @@ Statistics                           :
 TargetDedicated                      : 1
 TargetOSVersion                      : *
 Url                                  : https://cmdletexample.westus.batch.azure.com/pools/MyPool
-VirtualMachineSize                   : small
+VirtualMachineSize                   : standard_d1_v2
 ```
 
 This command gets the pools whose IDs start with My by using the *Filter* parameter.
@@ -216,7 +216,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
