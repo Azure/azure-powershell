@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update `-Format` parameter description in `Set-AzApiManagementPolicy` reference documentation
 
 ## Version 1.3.0
 * Fixed miscellaneous typos across module
