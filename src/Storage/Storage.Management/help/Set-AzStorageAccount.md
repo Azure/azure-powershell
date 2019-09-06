@@ -33,6 +33,18 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ActiveDirectoryDomainServicesForFile
+```
+Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
+ [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
+ [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
+ [-UpgradeToStorageV2] [-EnableLargeFileShare] -EnableActiveDirectoryDomainServicesForFile <Boolean>
+ [-ActiveDirectoryDomainName <String>] [-ActiveDirectoryNetBiosDomainName <String>]
+ [-ActiveDirectoryForestName <String>] [-ActiveDirectoryDomainGuid <String>]
+ [-ActiveDirectoryDomainSid <String>] [-ActiveDirectoryAzureStorageSid <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Set-AzStorageAccount** cmdlet modifies an Azure Storage account.
 You can use this cmdlet to modify the account type, update a customer domain, or set tags on a Storage account.
@@ -110,17 +122,45 @@ This first command gets NetworkRuleSet property from a Storage account, and the 
 
 ### Example 9: Upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account
 ```
-PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -UpgradeToStorageV2 
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -UpgradeToStorageV2
 ```
 
 The command upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account.
 
 ### Example 10: Update a Storage account by enable Azure Files AAD DS Authentication.
 ```
-PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -EnableAzureActiveDirectoryDomainServicesForFile $true 
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -EnableAzureActiveDirectoryDomainServicesForFile $true PS
+
+PS C:\> $account.AzureFilesIdentityBasedAuth.DirectoryServiceOptions
+AADDS
 ```
 
 The command update a Storage account by enable Azure Files AAD DS Authentication.
+
+### Example 11: Update a Storage account by enable Files Active Directory Domain Service Authentication, and then show the File Identity Based authentication setting
+```
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -EnableActiveDirectoryDomainServicesForFile $true `
+        -ActiveDirectoryDomainName "mydomain.com" `
+        -ActiveDirectoryNetBiosDomainName "mydomain.com" `
+        -ActiveDirectoryForestName "mydomain.com" `
+        -ActiveDirectoryDomainGuid "12345678-1234-1234-1234-123456789012" `
+        -ActiveDirectoryDomainSid "S-1-5-21-1234567890-1234567890-1234567890" `
+        -ActiveDirectoryAzureStorageSid "S-1-5-21-1234567890-1234567890-1234567890-1234"
+		
+PS C:\> $account.AzureFilesIdentityBasedAuth.DirectoryServiceOptions
+AD
+
+PS C:\> $account.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties
+
+DomainName        : mydomain.com
+NetBiosDomainName : mydomain.com
+ForestName        : mydomain.com
+DomainGuid        : 12345678-1234-1234-1234-123456789012
+DomainSid         : S-1-5-21-1234567890-1234567890-1234567890
+AzureStorageSid   : S-1-5-21-1234567890-1234567890-1234567890-1234
+```
+
+The command updates a Storage account by enable Azure Files Active Directory Domain Service Authentication, and then shows the File Identity Based authentication setting
 
 ## PARAMETERS
 
@@ -137,6 +177,96 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Hot, Cool
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ActiveDirectoryAzureStorageSid
+Specifies the security identifier (SID) for Azure Storage. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.
+
+```yaml
+Type: System.String
+Parameter Sets: ActiveDirectoryDomainServicesForFile
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ActiveDirectoryDomainGuid
+Specifies the domain GUID. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.
+
+```yaml
+Type: System.String
+Parameter Sets: ActiveDirectoryDomainServicesForFile
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ActiveDirectoryDomainName
+Specifies the primary domain that the AD DNS server is authoritative for. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.
+
+```yaml
+Type: System.String
+Parameter Sets: ActiveDirectoryDomainServicesForFile
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ActiveDirectoryDomainSid
+Specifies the security identifier (SID). This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.
+
+```yaml
+Type: System.String
+Parameter Sets: ActiveDirectoryDomainServicesForFile
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ActiveDirectoryForestName
+Specifies the Active Directory forest to get. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.
+
+```yaml
+Type: System.String
+Parameter Sets: ActiveDirectoryDomainServicesForFile
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ActiveDirectoryNetBiosDomainName
+Specifies the NetBIOS domain name. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.
+
+```yaml
+Type: System.String
+Parameter Sets: ActiveDirectoryDomainServicesForFile
+Aliases:
 
 Required: False
 Position: Named
@@ -205,12 +335,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableAzureActiveDirectoryDomainServicesForFile
-Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.
+### -EnableActiveDirectoryDomainServicesForFile
+Enable Azure Files Active Directory Domain Service Authentication for the storage account.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: (All)
+Parameter Sets: ActiveDirectoryDomainServicesForFile
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAzureActiveDirectoryDomainServicesForFile
+Enable Azure Files Active Directory Domain Service Authentication for the storage account.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: StorageEncryption, KeyvaultEncryption
 Aliases:
 
 Required: False
