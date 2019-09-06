@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                     },
                     AccessPolicies = accessPolicies
                 },
-                Kind = InputObject.Kind,
+                Kind = ParseKind(InputObject.Kind),
                 Tags = InputObject.Tags
             };
         }
