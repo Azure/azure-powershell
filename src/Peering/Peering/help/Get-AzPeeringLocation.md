@@ -12,7 +12,7 @@ Gets the Peering locations offered by Microsoft
 
 ## SYNTAX
 
-### PeeringByKind (Default)
+### Default (Default)
 ```
 Get-AzPeeringLocation [-Kind] <String> [-PeeringLocation <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -20,8 +20,14 @@ Get-AzPeeringLocation [-Kind] <String> [-PeeringLocation <String>] [-DefaultProf
 
 ### LocationByFacilityId
 ```
-Get-AzPeeringLocation [-Kind] <String> [-PeeringDbFacilityId] <Int32>
+Get-AzPeeringLocation [-Kind] <String> [-PeeringDbFacilityId <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### LocationByDirectType
+```
+Get-AzPeeringLocation [-Kind] <String> [-PeeringLocation <String>] [-DirectPeeringType] <String>
+ [-PeeringDbFacilityId <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,7 +98,7 @@ Gets the exchange peering location for peering facility id 71.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -103,11 +109,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DirectPeeringType
+Select 'Edge', 'CDN', and 'Transit'.
+
+```yaml
+Type: String
+Parameter Sets: LocationByDirectType
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Kind
 Shows all Peering resource by Kind.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -122,12 +143,12 @@ Accept wildcard characters: False
 The PeeringDB.com Facility ID
 
 ```yaml
-Type: System.Int32
-Parameter Sets: LocationByFacilityId
+Type: Int32
+Parameter Sets: LocationByFacilityId, LocationByDirectType
 Aliases:
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -137,8 +158,8 @@ Accept wildcard characters: False
 The location of the resource.
 
 ```yaml
-Type: System.String
-Parameter Sets: PeeringByKind
+Type: String
+Parameter Sets: Default, LocationByDirectType
 Aliases:
 
 Required: False

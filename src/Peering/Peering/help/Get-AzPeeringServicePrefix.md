@@ -15,19 +15,19 @@ Gets a list of peering service prefixes for a subscription.
 ### ByResourceGroupAndName (Default)
 ```
 Get-AzPeeringServicePrefix [-ResourceGroupName] <String> [-PeeringServiceName] <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Default
 ```
-Get-AzPeeringServicePrefix [-InputObject] <PSPeeringService> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzPeeringServicePrefix [-PeeringServiceObject] <PSPeeringService> [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzPeeringServicePrefix [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Get-AzPeeringServicePrefix [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,7 +72,6 @@ Name                  : myPrefix9055
 Id                    : /subscriptions/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService707/pref
                         ixes/myPrefix9055
 Type                  : Microsoft.Peering/peeringServices/prefixes
-
 ```
 
 Gets a specific prefix for a peering service by resource id.
@@ -99,7 +98,7 @@ Gets a specific prefix for a peering service by resource id.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -110,26 +109,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Use a Get-AzPeeringService
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringService
-Parameter Sets: Default
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 The unique name of the PSPeering.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceGroupAndName, Default
 Aliases:
 
@@ -144,7 +128,7 @@ Accept wildcard characters: False
 The peering service name. Use New-AzPeeringService cmdlet for a new peering service or Get-AzPeeringService for a list.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceGroupAndName
 Aliases:
 
@@ -155,11 +139,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PeeringServiceObject
+Use a Get-AzPeeringService
+
+```yaml
+Type: PSPeeringService
+Parameter Sets: Default
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The create or use an existing resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceGroupAndName
 Aliases:
 
@@ -174,44 +173,14 @@ Accept wildcard characters: False
 The resource id string name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceId
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -221,6 +190,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringService
+
+### System.String
 
 ## OUTPUTS
 
