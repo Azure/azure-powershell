@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.Common.Strategies;
+
     using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -26,37 +26,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
 
-    /// <inheritdoc />
     /// <summary>
-    ///     The Get Az InputObject Legacy peering.
+    /// The get azure peering service command.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzPeeringService", DefaultParameterSetName = Constants.ParameterSetNameDefault, SupportsShouldProcess = true)]
-    [OutputType(typeof(PSPeering))]
+    [Cmdlet(VerbsCommon.Get, "AzPeeringService", DefaultParameterSetName = Constants.ParameterSetNameByResourceAndName)]
+    [OutputType(typeof(PSPeeringService))]
     public class GetAzurePeeringServiceCommand : PeeringBaseCmdlet
     {
         /// <summary>
-        ///     Gets or sets the ResourceGroupName
+        /// Gets or sets the resource group name.
         /// </summary>
         [Parameter(
             Position = 0,
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
             ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
+        [Parameter(
+            Position = 0,
+            Mandatory = false,
+            HelpMessage = Constants.ResourceGroupNameHelp,
+            ParameterSetName = Constants.ParameterSetNameByResourceGroupName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        ///     Gets or sets the InputObject name.
+        /// Gets or sets the name.
         /// </summary>
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
         public string Name { get; set; }
 
         /// <summary>
-        /// The resource  id
+        /// Gets or sets the resource id.
         /// </summary>
         [Parameter(
             Position = 0,
@@ -80,21 +84,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     Constants.ParameterSetNameByResourceAndName,
                     StringComparison.OrdinalIgnoreCase))
                 {
-                    if (this.Name != null)
-                    {
-                        var item = this.GetPeeringByResourceAndName();
-                        this.WriteObject(item);
-                    }
-                    else
+                    var item = this.GetPeeringByResourceAndName();
+                    this.WriteObject(item);
+                }
+                else if (string.Equals(
+                    this.ParameterSetName,
+                    Constants.ParameterSetNameByResourceGroupName,
+                    StringComparison.OrdinalIgnoreCase))
+                {
+                    if (this.ResourceGroupName != null)
                     {
                         var list = this.GetPeeringByResource();
                         this.WriteObject(list, true);
                     }
+                    else
+                    {
+                        this.WriteObject(ListPeeringService(), true);
+                    }
                 }
                 else if (string.Equals(
-                  this.ParameterSetName,
-                  Constants.ParameterSetNameByResourceId,
-                  StringComparison.OrdinalIgnoreCase))
+                    this.ParameterSetName,
+                    Constants.ParameterSetNameByResourceId,
+                    StringComparison.OrdinalIgnoreCase))
                 {
                     var resourceId = new ResourceIdentifier(this.ResourceId);
                     this.ResourceGroupName = resourceId.ResourceGroupName;
@@ -124,10 +135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>List of peering service resources</returns>
         public List<PSPeeringService> ListPeeringService()
         {
-            if(this.ShouldProcess(string.Format(Resources.ShouldProcessMessage, "a list of peering services for the subscription."))){
-                return this.PeeringServicesClient.ListBySubscription().Select(ToPeeringServicePS).ToList();
-            }
-            return null;
+            return this.PeeringServicesClient.ListBySubscription().Select(ToPeeringServicePS).ToList();
         }
 
         /// <summary>
@@ -136,11 +144,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>List of InputObject Resources</returns>
         public List<PSPeeringService> GetPeeringByResource()
         {
-            if (this.ShouldProcess(string.Format(Resources.ShouldProcessMessage, $"a list of peering services for the resource group:{this.ResourceGroupName}.")))
-            {
-                return this.PeeringServicesClient.ListByResourceGroup(this.ResourceGroupName).Select(this.ToPeeringServicePS).ToList();
-            }
-            return null;
+            return this.PeeringServicesClient.ListByResourceGroup(this.ResourceGroupName)
+                .Select(this.ToPeeringServicePS).ToList();
         }
 
         /// <summary>
@@ -149,15 +154,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>InputObject Resource</returns>
         public object GetPeeringByResourceAndName()
         {
-            if (this.ShouldProcess(string.Format(Resources.ShouldProcessMessage, $"a peering services for the resource group:{this.ResourceGroupName} and name:{this.Name}.")))
+            var ic = this.PeeringServicesClient.Get(this.ResourceGroupName, this.Name);
+            var peer = this.ToPeeringServicePS(ic);
+            if (peer != null)
             {
-                var ic = this.PeeringServicesClient.Get(this.ResourceGroupName, this.Name);
-                var peer = this.ToPeeringServicePS(ic);
-                if (peer != null)
-                {
-                    return peer;
-                }
+                return peer;
             }
+
             return null;
         }
     }

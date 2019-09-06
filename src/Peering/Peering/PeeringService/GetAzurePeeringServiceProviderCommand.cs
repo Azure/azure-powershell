@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
 
@@ -22,17 +23,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
 
-    /// <inheritdoc />
     /// <summary>
-    ///     The Get Az InputObject Legacy peering.
+    /// The get azure peering service provider command.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzPeeringServiceProvider", SupportsShouldProcess = true)]
-    [OutputType(typeof(PSPeering))]
+    [Cmdlet(VerbsCommon.Get, "AzPeeringServiceProvider")]
+    [OutputType(typeof(PSPeeringServiceProvider))]
     public class GetAzurePeeringServiceProviderCommand : PeeringBaseCmdlet
     {
-        /// <inheritdoc />
         /// <summary>
-        ///     The base execute method.
+        /// The execute.
         /// </summary>
         public override void Execute()
         {
@@ -42,22 +41,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         }
 
         /// <summary>
-        /// The peering by legacy peering.
+        /// The get peering service provider.
         /// </summary>
         /// <returns>
-        /// The <see cref="object"/>.
+        /// The <see cref="List"/>.
         /// </returns>
-        /// <exception cref="ErrorResponseException">Http Response
+        /// <exception cref="ErrorResponseException">
         /// </exception>
-        private object GetPeeringServiceProvider()
+        private List<PSPeeringServiceProvider> GetPeeringServiceProvider()
         {
             try
             {
-                if (this.ShouldProcess(string.Format(Resources.ShouldProcessMessage, $"a list of peering service providers.")))
-                {
-                    var icList = this.PeeringServiceProvidersClient.List();
-                    return icList.Select(this.ToPeeringServiceProviderPS).ToList();
-                }return null;
+                var icList = this.PeeringServiceProvidersClient.List();
+                return icList.Select(this.ToPeeringServiceProviderPS).ToList();
             }
             catch (ErrorResponseException ex)
             {

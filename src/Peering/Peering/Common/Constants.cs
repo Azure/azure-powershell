@@ -32,6 +32,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public const string CDN = "CDN";
 
         /// <summary>
+        /// The CDN Parameter set name.
+        /// </summary>
+        public const string Transit = "Transit";
+
+        /// <summary>
+        /// The CDN Parameter set name.
+        /// </summary>
+        public const string Edge = "Edge";
+
+        /// <summary>
         /// The Direct InputObject Parameter set name.
         /// </summary>
         public const string Direct = "Direct";
@@ -82,7 +92,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// The parameter set name location by city.
         /// </summary>
-        public const string ParameterSetNameLocationByCity = "ByPeeringLocation";
+        public const string ParameterSetNameLocationByDirectType = "LocationByDirectType";
 
         /// <summary>
         /// ParameterSetName for GetPeering
@@ -202,6 +212,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// The location help.
         /// </summary>
         public const string LocationHelp = "The location of the resource.";
+
+        /// <summary>
+        /// The Direct peering Type Hep
+        /// </summary>
+        public const string DirectPeeringTypeHelp = @"Select 'Edge', 'CDN', and 'Transit'.";
 
         /// <summary>
         /// PeeringLocationHelp

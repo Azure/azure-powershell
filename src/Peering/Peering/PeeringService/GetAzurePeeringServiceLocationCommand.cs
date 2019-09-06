@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
 
@@ -22,23 +23,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
 
-    /// <inheritdoc />
     /// <summary>
-    ///     The Get Az InputObject Legacy peering.
+    /// The get azure peering service location command.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzPeeringServiceLocation", SupportsShouldProcess = true)]
-    [OutputType(typeof(PSPeering))]
+    [Cmdlet(VerbsCommon.Get, "AzPeeringServiceLocation")]
+    [OutputType(typeof(PSPeeringServiceLocation))]
     public class GetAzurePeeringServiceLocationCommand : PeeringBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the PeeringLocation.
+        /// Gets or sets the country.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = Constants.PeeringCountryHelp)]
         public string Country { get; set; }
 
-        /// <inheritdoc />
         /// <summary>
-        ///     The base execute method.
+        /// The execute.
         /// </summary>
         public override void Execute()
         {
@@ -48,27 +47,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         }
 
         /// <summary>
-        /// The peering by legacy peering.
+        /// The get peering service location.
         /// </summary>
         /// <returns>
-        /// The <see cref="object"/>.
+        /// The <see cref="List"/>.
         /// </returns>
-        /// <exception cref="ErrorResponseException">Http Response
+        /// <exception cref="ErrorResponseException">
         /// </exception>
-        private object GetPeeringServiceLocation()
+        private List<PSPeeringServiceLocation> GetPeeringServiceLocation()
         {
             try
             {
-                if (this.ShouldProcess(string.Format(Resources.ShouldProcessMessage, $"a list of peering service locations for the country:{this.Country??null}.")))
+                var icList = this.PeeringServiceLocationsClient.List();
+                if (this.Country != null)
                 {
-                    var icList = this.PeeringServiceLocationsClient.List();
-                    if (this.Country != null)
-                    {
-                        var t = icList.Select(this.ToPeeringServiceLocationPS).ToList().FindAll(x => x.Country == this.Country);
-                        return t;
-                    }
-                    return icList.Select(this.ToPeeringServiceLocationPS).ToList();
-                }return null;
+                    var t = icList.Select(this.ToPeeringServiceLocationPS).ToList().FindAll(x => x.Country == this.Country);
+                    return t;
+                }
+                return icList.Select(this.ToPeeringServiceLocationPS).ToList();
             }
             catch (ErrorResponseException ex)
             {

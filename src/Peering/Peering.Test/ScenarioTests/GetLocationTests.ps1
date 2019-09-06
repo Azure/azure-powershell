@@ -67,12 +67,45 @@ function Test-GetLocationKindDirectSeattle {
     try {
         $asn = 65000
         $asnPeerName = makePeerAsn $asn
-        $location = Get-AzPeeringLocation -Kind Direct -PeeringLocation seattle
+        $location = Get-AzPeeringLocation -Kind Direct -DirectPeeringType Edge -PeeringLocation sea
         Assert-NotNull $location
-        Assert-AreEqual 2 $location.Count
+		Assert-True { $location.Count -ge 2 }
     }
     finally {
         Remove-AzPeerAsn -Name $asnPeerName -Force
     }
 }
 
+<#
+.SYNOPSIS
+GetLocationKindDirectSeattle
+#>
+function Test-GetLocationKindDirectSeattle99999WithLocation {
+    try {
+        $asn = 65000
+        $asnPeerName = makePeerAsn $asn
+        $location = Get-AzPeeringLocation -Kind Direct -DirectPeeringType Edge -PeeringLocation sea -PeeringFacilityId 99999
+        Assert-NotNull $location
+		Assert-True { $location.Count -ge 2 }
+    }
+    finally {
+        Remove-AzPeerAsn -Name $asnPeerName -Force
+    }
+}
+
+<#
+.SYNOPSIS
+GetLocationKindDirectSeattle
+#>
+function Test-GetLocationKindDirectSeattle99999 {
+    try {
+        $asn = 65000
+        $asnPeerName = makePeerAsn $asn
+        $location = Get-AzPeeringLocation -Kind Direct -DirectPeeringType Edge -PeeringFacilityId 99999
+        Assert-NotNull $location
+		c
+    }
+    finally {
+        Remove-AzPeerAsn -Name $asnPeerName -Force
+    }
+}
