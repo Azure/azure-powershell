@@ -102,7 +102,7 @@ function Get-DefaultCredentialForTest()
 
 function Get-LocationForTest()
 {
-	return 'westus'
+	return 'eastus'
 }
 
 function Get-ResourceGroupNameForTest()
@@ -118,7 +118,12 @@ function Get-SqlVirtualMachineGroupName()
 
 function Get-DefaultUser()
 {
-	return 'testUser'
+	return 'myvmadmin'
+}
+
+function Get-DefaultSqlService()
+{
+	return 'sqlservice'
 }
 
 function Get-DefaultPassword()
@@ -128,7 +133,7 @@ function Get-DefaultPassword()
 
 function Get-DomainForTest()
 {
-	return 'domain'
+	return 'Domain'
 }
 
 function Get-StorageaccountNameForTest()
@@ -178,6 +183,7 @@ function Get-WsfcDomainProfileForTest(
 	[string] $resourceGroupName, 
 	[string] $location,
 	[string] $user,
+	[string] $sqllogin,
 	[string] $domainName,
 	[string] $blobAccount,
 	[string] $storageAccountKey
@@ -186,7 +192,9 @@ function Get-WsfcDomainProfileForTest(
 	$props = @{
 		DomainFqdn = $domainName + '.com'
 		ClusterOperatorAccount = $user + '@' + $domainName + '.com'
-		SqlServiceAccount = $user + '@' + $domainName + '.com'
+		ClusterBootstrapAccount = $user + '@' + $domainName + '.com'
+		
+		SqlServiceAccount = $sqllogin + '@' + $domainName + '.com'
 		StorageAccountUrl = $blobAccount
 		StorageAccountPrimaryKey = $storageAccountKey
 	}
@@ -204,7 +212,7 @@ function Create-SqlVM (
 )
 {
 	Create-VM $resourceGroupName $vmName $location	
-	$sqlvm = New-AzSqlVM -ResourceGroupName $resourceGroupName -Name $vmName -LicenseType 'PAYG' -Sku Developer
+	$sqlvm = New-AzSqlVM -ResourceGroupName $resourceGroupName -Name $vmName -LicenseType 'PAYG' -Sku Enterprise
 	return $sqlvm
 }
 
@@ -226,13 +234,15 @@ function Create-SqlVMGroup(
 	
 	$user = Get-DefaultUser
 	$domain = Get-DomainForTest
-	$profile = Get-WsfcDomainProfileForTest $resourceGroupName $location $user $domain $blobAccount $storageAccountKey
+	$sqllogin = Get-DefaultSqlService
+	$profile = Get-WsfcDomainProfileForTest $resourceGroupName $location $user $sqllogin $domain $blobAccount $storageAccountKey
 	
 	$secureKey = ConvertTo-SecureString $profile.StorageAccountPrimaryKey -AsPlainText -Force
 	
 	$group = New-AzSqlVMGroup $resourceGroupName $groupName $location -ClusterOperatorAccount $profile.ClusterOperatorAccount `
+		-ClusterBootstrapAccount $profile.ClusterBootstrapAccount `
 		-SqlServiceAccount $profile.SqlServiceAccount -StorageAccountUrl $profile.StorageAccountUrl `
 		-StorageAccountPrimaryKey $secureKey -DomainFqdn $profile.DomainFqdn `
-		-Offer 'SQL2017-WS2016' -Sku 'Developer'
+		-Offer 'SQL2017-WS2016' -Sku 'Enterprise'
 	return $group
 }

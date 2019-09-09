@@ -12,17 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+
+namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common.ArgumentCompleters
 {
     /// <summary>
-    /// Enum used for the diffent Sku values that can be used in the cmdlets.
+    /// Class used to automatically complete the offer provided in the cmdlet
     /// </summary>
-    public enum Sku
+    public class LicenseTypeCompleter : PSArgumentCompleterAttribute
     {
-        Enterprise,
-        Developer,
-        Express,
-        Standard,
-        Web
+        public LicenseTypeCompleter() : base(
+                "PAYG",
+                "AHUB"
+            )
+        {}
     }
 }

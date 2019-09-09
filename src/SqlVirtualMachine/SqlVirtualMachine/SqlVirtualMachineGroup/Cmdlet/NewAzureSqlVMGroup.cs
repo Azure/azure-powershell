@@ -19,6 +19,7 @@ using System.Management.Automation;
 using System.Security;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
+using Microsoft.Azure.Commands.SqlVirtualMachine.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
 using Microsoft.Azure.Management.SqlVirtualMachine.Models;
 using Microsoft.Rest.Azure;
@@ -54,8 +55,8 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = HelpMessages.SkuSqlVMGroup)]
-        [PSDefaultValue(Value = Sku.Enterprise)]
-        public Sku Sku { get; set; }
+        [PSDefaultValue(Value = "Enterprise")]
+        public string Sku { get; set; }
 
         /// <summary>
         /// Name used for operating cluster
@@ -108,7 +109,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         {
             try
             {
-                ModelAdapter.GetSqlVirtualMachineGroup(this.ResourceGroupName, this.SqlVMGroupName);
+                ModelAdapter.GetSqlVirtualMachineGroup(this.ResourceGroupName, this.Name);
             }
             catch (CloudException)
             {
@@ -131,9 +132,9 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             newEntity.Add(new AzureSqlVMGroupModel(ResourceGroupName)
             {
                 Location = this.Location,
-                Name = this.SqlVMGroupName,
+                Name = this.Name,
                 Offer = this.Offer,
-                Sku = this.Sku.ToString(),
+                Sku = this.Sku,
                 WsfcDomainProfile = new WsfcDomainProfile()
                 {
                     ClusterBootstrapAccount = this.ClusterBootstrapAccount,
@@ -145,7 +146,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
                     FileShareWitnessPath = this.FileShareWitnessPath,
                     OuPath = this.OuPath
                 },
-                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true)
+                Tag = TagsConversionHelper.CreateTagDictionary(Tag, validate: true)
             });
             return newEntity;
         }

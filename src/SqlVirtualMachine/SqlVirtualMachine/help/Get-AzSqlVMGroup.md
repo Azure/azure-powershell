@@ -12,16 +12,21 @@ Gets one or more sql virtual machine groups.
 
 ## SYNTAX
 
-### Name (Default)
+### ResourceGroupOnly (Default)
 ```
-Get-AzSqlVMGroup [[-ResourceGroupName] <String>] [[-SqlVMGroupName] <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzSqlVMGroup [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### Name
+```
+Get-AzSqlVMGroup [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Get-AzSqlVMGroup [-SqlVMGroupId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzSqlVMGroup [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,28 +83,40 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+SQL virtual machine group name.
+
+```yaml
+Type: System.String
+Parameter Sets: Name
+Aliases: SqlVMGroupName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name
+Parameter Sets: ResourceGroupOnly
 Aliases:
 
 Required: False
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SqlVMGroupId
-SQL virtual machine group resource id.
-
 ```yaml
 Type: System.String
-Parameter Sets: ResourceId
-Aliases: ResourceId
+Parameter Sets: Name
+Aliases:
 
 Required: True
 Position: 0
@@ -108,49 +125,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SqlVMGroupName
-SQL virtual machine group name.
+### -ResourceId
+SQL virtual machine group resource id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name
-Aliases: Name
+Parameter Sets: ResourceId
+Aliases: SqlVMGroupId
 
-Required: False
-Position: 1
+Required: True
+Position: 0
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

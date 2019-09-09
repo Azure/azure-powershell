@@ -24,54 +24,58 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
     /// <summary>
     /// Defines the Get-AzSqlVMGroup cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMGroup", DefaultParameterSetName = Name, ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMGroup", DefaultParameterSetName = ParameterSet.ResourceGroupOnly)]
     [OutputType(typeof(AzureSqlVMGroupModel))]
     public class GetAzureSqlVMGroup : AzureSqlVMGroupCmdletBase
     {
         /// <summary>
         /// Resource group name of the sql virtual machine group, overrided from the base class in order to not be mandatory
         /// </summary>
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = Name,
+        [Parameter(Mandatory = true,
+            ParameterSetName = ParameterSet.Name,
             Position = 0,
             HelpMessage = HelpMessages.ResourceGroupSqlVMGroup)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ParameterSet.ResourceGroupOnly,
+            Position = 0,
+            HelpMessage = HelpMessages.ResourceGroupSqlVM)]
         [ResourceGroupCompleter]
         public new virtual string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Name of the sql virtual machine group, overrided from the base class in order to not be mandatory
         /// </summary>
-        [Parameter(Mandatory = false,
-            ParameterSetName = Name,
+        [Parameter(Mandatory = true,
+            ParameterSetName = ParameterSet.Name,
             Position = 1,
             HelpMessage = HelpMessages.NameSqlVMGroup)]
-        [Alias("Name")]
-        public new string SqlVMGroupName { get; set; }
+        [Alias("SqlVMGroupName")]
+        public new string Name { get; set; }
 
         /// <summary>
         /// Resource id of the sql virtual machine group
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = ResourceId,
+            ParameterSetName = ParameterSet.ResourceId,
+            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = HelpMessages.SqlVMGroupResourceId)]
-        [Alias("ResourceId")]
-        public string SqlVMGroupId { get; set; }
+        [Alias("SqlVMGroupId")]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Parse the parameters provided as input in order to obtain the name of the resource group and the sql virtual machine group
         /// </summary>
         protected override void ParseInput()
         {
-            if (ParameterSetName == ResourceId)
+            if (ParameterSetName == ParameterSet.ResourceId)
             {
-                if (!ValidateSqlVirtualMachineGroupId(SqlVMGroupId))
+                if (!ValidateSqlVirtualMachineGroupId(ResourceId))
                     throw new PSArgumentException(
                 string.Format("The sql virtual machine group resource id is not well formatted"),
                 "SqlVirtualMachineGroup");
-                ResourceGroupName = GetResourceGroupNameFromId(SqlVMGroupId);
-                SqlVMGroupName = GetResourceNameFromId(SqlVMGroupId);
+                ResourceGroupName = GetResourceGroupNameFromId(ResourceId);
+                Name = GetResourceNameFromId(ResourceId);
             }
         }
 
@@ -82,12 +86,12 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         protected override IEnumerable<AzureSqlVMGroupModel> GetEntity()
         {
             ICollection<AzureSqlVMGroupModel> results = null;
-            if(ShouldGetByName(ResourceGroupName, SqlVMGroupName))
+            if(ShouldGetByName(ResourceGroupName, Name))
             {
                 results = new List<AzureSqlVMGroupModel>();
-                results.Add(ModelAdapter.GetSqlVirtualMachineGroup(ResourceGroupName, SqlVMGroupName));
+                results.Add(ModelAdapter.GetSqlVirtualMachineGroup(ResourceGroupName, Name));
             }
-            else if (ShouldListByResourceGroup(ResourceGroupName, SqlVMGroupName))
+            else if (ShouldListByResourceGroup(ResourceGroupName, Name))
             {
                 results = ModelAdapter.ListSqlVirtualMachineGroupByResourceGroup(ResourceGroupName);
             }

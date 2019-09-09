@@ -17,21 +17,21 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
 using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
-using static Microsoft.Azure.Commands.SqlVirtualMachine.Common.ParameterSet;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
     /// <summary>
     /// Defines Remove-AzSqlVM cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVM", DefaultParameterSetName = Name, SupportsShouldProcess = true), OutputType(typeof(AzureSqlVMModel))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVM", DefaultParameterSetName = ParameterSet.Name, ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true)]
+    [OutputType(typeof(AzureSqlVMModel))]
     public class RemoveAzureSqlVM : AzureSqlVMCmdletBase
     {
         /// <summary>
         /// Resource group name of the sql virtual machine
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = Name,
+            ParameterSetName = ParameterSet.Name,
             Position = 0,
             HelpMessage = HelpMessages.ResourceGroupSqlVM)]
         [ResourceGroupCompleter]
@@ -41,36 +41,36 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// Name of the sql virtual machine
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = Name,
+            ParameterSetName = ParameterSet.Name,
             Position = 1,
             HelpMessage = HelpMessages.NameSqlVM)]
-        [Alias("Name")]
+        [Alias("SqlVMName")]
         [ResourceNameCompleter("Microsoft.SqlVirtualMachine/SqlVirtualMachines", "ResourceGroupName")]
-        public virtual string SqlVMName { get; set; }
+        public virtual string Name { get; set; }
         
         /// <summary>
         /// Sql virtual machine resource to be removed
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = InputObject,
-            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ParameterSet.InputObject,
             ValueFromPipeline = true,
             Position = 0,
             HelpMessage = HelpMessages.InputObjectSqlVM)]
-        [Alias("InputObject")]
+        [Alias("SqlVM")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlVMModel SqlVM { get; set; }
+        public AzureSqlVMModel InputObject { get; set; }
 
         /// <summary>
         /// Resource id of the sql virtual machine that will be removed
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = ResourceId,
+            ParameterSetName = ParameterSet.ResourceId,
+            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = HelpMessages.SqlVMResourceId)]
-        [Alias("ResourceId")]
+        [Alias("SqlVMId")]
         [ValidateNotNullOrEmpty]
-        public string SqlVMId { get; set; }
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -91,15 +91,15 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// </summary>
         protected override void ParseInput()
         {
-            if(ParameterSetName == InputObject)
+            if(ParameterSetName == ParameterSet.InputObject)
             {
-                SqlVMName = SqlVM.Name;
-                ResourceGroupName = SqlVM.ResourceGroupName;
+                Name = InputObject.Name;
+                ResourceGroupName = InputObject.ResourceGroupName;
             }
-            else if (ParameterSetName == ResourceId)
+            else if (ParameterSetName == ParameterSet.ResourceId)
             {
-                SqlVMName = GetResourceNameFromId(SqlVMId);
-                ResourceGroupName = GetResourceGroupNameFromId(SqlVMId);
+                Name = GetResourceNameFromId(ResourceId);
+                ResourceGroupName = GetResourceGroupNameFromId(ResourceId);
             }
         }
 
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         protected override IEnumerable<AzureSqlVMModel> GetEntity()
         {
             return new List<AzureSqlVMModel>() {
-                ModelAdapter.GetSqlVirtualMachine(ResourceGroupName, SqlVMName)
+                ModelAdapter.GetSqlVirtualMachine(ResourceGroupName, Name)
             };
         }
 
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <returns>The sql virtual machine that was deleted</returns>
         protected override IEnumerable<AzureSqlVMModel> PersistChanges(IEnumerable<AzureSqlVMModel> entity)
         {
-            ModelAdapter.RemoveSqlVirtualMachine(ResourceGroupName, SqlVMName);
+            ModelAdapter.RemoveSqlVirtualMachine(ResourceGroupName, Name);
             return entity;
         }
     }

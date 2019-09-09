@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
-namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
+namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common.ArgumentCompleters
 {
     /// <summary>
     /// Class used to automatically complete the offer provided in the cmdlet

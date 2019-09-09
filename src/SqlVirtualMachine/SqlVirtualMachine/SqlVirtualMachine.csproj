@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <PsModuleName>SqlVirtualMachine</PsModuleName>
-    <Configurations>Debug;Release;NewSqlVM</Configurations>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
@@ -12,7 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="27.1.0" />
     <PackageReference Include="Microsoft.Azure.Management.SqlVirtualMachine" Version="1.0.0" />
   </ItemGroup>
 

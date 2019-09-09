@@ -34,23 +34,23 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ParameterSet.InputObject,
-            ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true,
             Position = 0,
             HelpMessage = HelpMessages.InputObjectSqlVMGroup)]
-        [Alias("InputObject")]
-        public AzureSqlVMGroupModel SqlVMGroup { get; set; }
+        [Alias("SqlVMGroup")]
+        public AzureSqlVMGroupModel InputObject { get; set; }
 
         /// <summary>
         /// Resource id of the sql virtual machine group that will be updated
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ParameterSet.ResourceId,
+            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = HelpMessages.SqlVMGroupResourceId)]
-        [Alias("ResourceId")]
+        [Alias("SqlVMGroupId")]
         [ValidateNotNullOrEmpty]
-        public string SqlVMGroupId { get; set; }
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -67,13 +67,13 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         {
             if (ParameterSetName == ParameterSet.ResourceId)
             {
-                SqlVMGroupName = GetResourceNameFromId(SqlVMGroupId);
-                ResourceGroupName = GetResourceGroupNameFromId(SqlVMGroupId);
+                Name = GetResourceNameFromId(ResourceId);
+                ResourceGroupName = GetResourceGroupNameFromId(ResourceId);
             }
             if (ParameterSetName == ParameterSet.InputObject)
             {
-                SqlVMGroupName = SqlVMGroup.Name;
-                ResourceGroupName = SqlVMGroup.ResourceGroupName;
+                Name = InputObject.Name;
+                ResourceGroupName = InputObject.ResourceGroupName;
             }
         }
 
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <returns>The sql virtual machine group that will be updated</returns>
         protected override IEnumerable<AzureSqlVMGroupModel> GetEntity()
         {
-            return new List<AzureSqlVMGroupModel>() { ModelAdapter.GetSqlVirtualMachineGroup(ResourceGroupName, SqlVMGroupName) };
+            return new List<AzureSqlVMGroupModel>() { ModelAdapter.GetSqlVirtualMachineGroup(ResourceGroupName, Name) };
         }
 
         /// <summary>
@@ -98,9 +98,9 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 
             group.WsfcDomainProfile = updateWsfcDomainProfile(group.WsfcDomainProfile);
 
-            if(Tags != null)
+            if(Tag != null)
             {
-                group.Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true);
+                group.Tag = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
             }
             
             updateData.Add(group);

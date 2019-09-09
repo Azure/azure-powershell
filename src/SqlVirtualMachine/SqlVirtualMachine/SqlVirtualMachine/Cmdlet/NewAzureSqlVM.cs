@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -22,13 +21,15 @@ using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
 using Microsoft.Rest.Azure;
 using static Microsoft.Azure.Commands.SqlVirtualMachine.Common.ParameterSet;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.SqlVirtualMachine.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
     /// <summary>
     /// Defines New-AzSqlVM cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVM", DefaultParameterSetName = NameInputObject, ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true), OutputType(typeof(AzureSqlVMModel))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVM", DefaultParameterSetName = NameParameterList, ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [OutputType(typeof(AzureSqlVMModel))]
     public class NewAzureSqlVM : AzureSqlVMUpsertCmdletBase
     {
         /// <summary>
@@ -56,16 +57,15 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             ParameterSetName = NameInputObject,
             Position = 1,
             HelpMessage = HelpMessages.NameSqlVM)]
-        [Alias("Name")]
+        [Alias("SqlVMName")]
         [ResourceNameCompleter("Microsoft.SqlVirtualMachine/SqlVirtualMachines", "ResourceGroupName")]
-        public string SqlVMName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Sql virtual machine to be updated
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = NameInputObject,
-            ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true,
             Position = 2,
             HelpMessage = HelpMessages.InputObjectSqlVM)]
@@ -79,6 +79,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             Position = 2,
             HelpMessage = HelpMessages.LicenseTypeSqlVM)]
         [ValidateNotNullOrEmpty]
+        [LicenseTypeCompleter]
         public string LicenseType { get; set; }
 
         /// <summary>
@@ -87,6 +88,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         [Parameter(Mandatory = false,
            HelpMessage = HelpMessages.LocationSqlVM)]
         [ValidateNotNullOrEmpty]
+        [LocationCompleter]
         public string Location { get; set; }
         
         /// <summary>
@@ -106,12 +108,12 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         {
             try
             {
-                ModelAdapter.GetSqlVirtualMachine(this.ResourceGroupName, this.SqlVMName);
+                ModelAdapter.GetSqlVirtualMachine(this.ResourceGroupName, this.Name);
             }
             catch (CloudException)
             {
                 // This is what we want: there is not another sql virtual machine with the same name
-                var vm = RetrieveVirtualMachine(ResourceGroupName, SqlVMName);
+                var vm = RetrieveVirtualMachine(ResourceGroupName, Name);
                 virtualMachineId = vm.Id;
                 Location = vm.Location;
                 return null;
@@ -133,13 +135,13 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             newEntity.Add(new AzureSqlVMModel(ResourceGroupName)
             {
                 Location = this.Location,
-                Name = this.SqlVMName,
+                Name = this.Name,
                 LicenseType = this.LicenseType,
                 Offer = this.Offer,
-                Sku = (this.Sku == null) ? null : this.Sku.ToString(),
+                Sku = this.Sku,
                 SqlManagementType = this.SqlManagementType,
                 VirtualMachineId = virtualMachineId,
-                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+                Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 
             });
             return newEntity;

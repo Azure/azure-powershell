@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using System;
 using System.Collections.Generic;
@@ -33,8 +34,16 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests.UnitTest
         }
 
         internal abstract void CheckResourceParameters(Type type, bool required = true);
-        internal abstract void CheckResourceId(Type type);
-        internal abstract void CheckInputObject(Type type);
+        internal virtual void CheckResourceId(Type type)
+        {
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "ResourceId", true, true);
+        }
+
+        internal virtual void CheckInputObject(Type type)
+        {
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "InputObject", true, false);
+        }
+
         internal virtual void CheckUpsertParameters(Type type, bool isMandatory)
         {
             foreach (String param in UpsertParam)
@@ -70,10 +79,14 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests.UnitTest
 
         internal void CheckGetParameters(Type type)
         {
-            UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: true);
-            UnitTestHelper.CheckConfirmImpact(type, ConfirmImpact.None);
+            UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
+            UnitTestHelper.CheckConfirmImpact(type, ConfirmImpact.Medium);
 
-            CheckResourceParameters(type, false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "Name", true, false, ParameterSet.Name);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "ResourceGroupName", null, false, new HashSet<String>() {
+                ParameterSet.Name,
+                ParameterSet.ResourceGroupOnly
+            });
             CheckResourceId(type);
         }
 

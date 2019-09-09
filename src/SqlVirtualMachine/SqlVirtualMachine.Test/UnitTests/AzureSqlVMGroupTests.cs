@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
 using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests.UnitTest
                 "FileShareWitnessPath",
                 "ClusterBootstrapAccount",
                 "OuPath",
-                "Tags"
+                "Tag"
             };
             UpsertParam = new List<string>()
             {
@@ -45,18 +44,8 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests.UnitTest
 
         internal override void CheckResourceParameters(Type type, bool required = true)
         {
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "ResourceGroupName", required, true, ParameterSet.Name);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "SqlVMGroupName", required, false, ParameterSet.Name);
-        }
-
-        internal override void CheckResourceId(Type type)
-        {
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "SqlVMGroupId", true, false, ParameterSet.ResourceId);
-        }
-
-        internal override void CheckInputObject(Type type)
-        {
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "SqlVMGroup", true, true, ParameterSet.InputObject);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "ResourceGroupName", required, false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "Name", required, false);
         }
 
         [Fact]

@@ -20,19 +20,19 @@ Remove-AzSqlVMGroup [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContaine
 
 ### InputObject
 ```
-Remove-AzSqlVMGroup [-SqlVMGroup] <AzureSqlVMGroupModel> [-AsJob] [-PassThru]
+Remove-AzSqlVMGroup [-InputObject] <AzureSqlVMGroupModel> [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Remove-AzSqlVMGroup [-SqlVMGroupId] <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzSqlVMGroup [-ResourceId] <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Name
 ```
-Remove-AzSqlVMGroup [-AsJob] [-PassThru] [-ResourceGroupName] <String> [-SqlVMGroupName] <String>
+Remove-AzSqlVMGroup [-AsJob] [-PassThru] [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -80,6 +80,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+SQL virtual machine object.
+
+```yaml
+Type: Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel
+Parameter Sets: InputObject
+Aliases: SqlVMGroup
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+SQL virtual machine group name.
+
+```yaml
+Type: System.String
+Parameter Sets: Name
+Aliases: SqlVMGroupName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Specifies whether to output the deleted resource at end of cmdlet execution.
 
@@ -106,52 +136,22 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SqlVMGroup
-SQL virtual machine object.
-
-```yaml
-Type: Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMGroupModel
-Parameter Sets: InputObject
-Aliases: InputObject
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -SqlVMGroupId
+### -ResourceId
 SQL virtual machine group resource id.
 
 ```yaml
 Type: System.String
 Parameter Sets: ResourceId
-Aliases: ResourceId
+Aliases: SqlVMGroupId
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SqlVMGroupName
-SQL virtual machine group name.
-
-```yaml
-Type: System.String
-Parameter Sets: Name
-Aliases: Name
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

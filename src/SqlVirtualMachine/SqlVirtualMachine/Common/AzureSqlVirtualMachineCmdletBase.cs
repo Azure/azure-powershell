@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
 {
@@ -32,13 +32,21 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
         /// <returns></returns>
         protected virtual string GetResourceId(M model)
         {
-            return null;
-            /*string resourceName = model.GetType().GetProperty("ResourceId").GetValue(model).ToString();
-            if(!string.IsNullOrEmpty(resourceName))
+            if (model != null && model is IEnumerable<object>)
             {
-                return resourceName;
+                object resource = ((IEnumerable<object>) model).FirstOrDefault();
+                if (resource != null)
+                {
+                    var resourceIdProperty = resource.GetType().GetProperty("ResourceId");
+                    var resourceIdValue = resourceIdProperty != null ? resourceIdProperty.GetValue(resource) : null;
+                    string resourceId = resourceIdValue != null ? resourceIdValue.ToString() : "";
+                    if (!string.IsNullOrEmpty(resourceId))
+                    {
+                        return resourceId;
+                    }
+                }
             }
-            return string.Empty;*/
+            return string.Empty;
         }
 
         /// <summary>
@@ -93,7 +101,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
         /// <returns>The name of the cmdlet that is being executed</returns>
         protected virtual string GetConfirmActionProcessMessage()
         {
-            return null; // MyInvocation.MyCommand.Name;
+            return MyInvocation.MyCommand.Name.Split('-')[0].ToLower();
         }
 
         /// <summary>

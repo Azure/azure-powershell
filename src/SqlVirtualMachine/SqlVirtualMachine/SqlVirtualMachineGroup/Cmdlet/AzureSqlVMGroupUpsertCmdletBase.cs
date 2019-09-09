@@ -81,8 +81,8 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// Tags will be associated to the sql virtual machine group
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = HelpMessages.TagsSqlVMGroup)]
-        public virtual Hashtable Tags { get; set; }
+            HelpMessage = HelpMessages.TagSqlVMGroup)]
+        public virtual Hashtable Tag { get; set; }
 
     }
 }

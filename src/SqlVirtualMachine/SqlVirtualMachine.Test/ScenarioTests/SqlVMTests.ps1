@@ -129,4 +129,3 @@ function Test-RemoveSqlVirtualMachine
 		Remove-ResourceGroupForTest $rg
 	}
 }
-

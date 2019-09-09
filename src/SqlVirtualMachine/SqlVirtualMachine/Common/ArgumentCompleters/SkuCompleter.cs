@@ -12,24 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+
+namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common.ArgumentCompleters
 {
     /// <summary>
-    /// Different sets of parameters allowed as input of a cmdlet.
+    /// Class used to automatically complete the offer provided in the cmdlet
     /// </summary>
-    public static class ParameterSet
+    public class SkuCompleter : PSArgumentCompleterAttribute
     {
-        public const string ResourceId = "ResourceId";
-        public const string InputObject = "InputObject";
-        public const string Name = "Name";
-        public const string ParameterList = "ParamaterList";
-
-        public const string ResourceGroupOnly = "ResourceGroupOnly";
-
-        public const string NameParameterList = Name + ParameterList;
-        public const string ResourceIdParameterList = ResourceId + ParameterList;
-
-        public const string NameInputObject = Name + InputObject;
-        public const string ResourceIdInputObject = ResourceId + InputObject;
+        public SkuCompleter() : base(
+                "Enterprise",
+                "Developer",
+                "Express",
+                "Standard",
+                "Web"
+            )
+        {}
     }
 }

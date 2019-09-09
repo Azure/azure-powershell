@@ -12,29 +12,29 @@ Updates a sql virtual machine.
 
 ## SYNTAX
 
-### NameInputObject (Default)
+### NameParamaterList (Default)
 ```
-Update-AzSqlVM [-ResourceGroupName] <String> [-SqlVMName] <String> [-SqlVM] <AzureSqlVMModel> [-AsJob]
+Update-AzSqlVM [-ResourceGroupName] <String> [-Name] <String> [-LicenseType <String>] [-Offer <String>]
+ [-Sku <String>] [-SqlManagementType <String>] [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### NameParamaterList
+### NameInputObject
 ```
-Update-AzSqlVM [-ResourceGroupName] <String> [-SqlVMName] <String> [-LicenseType <String>] [-Offer <String>]
- [-Sku <Sku>] [-SqlManagementType <String>] [-Tags <Hashtable>] [-AsJob]
+Update-AzSqlVM [-ResourceGroupName] <String> [-Name] <String> [-InputObject] <AzureSqlVMModel> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParamaterList
 ```
-Update-AzSqlVM [-LicenseType <String>] [-Offer <String>] [-Sku <Sku>] [-SqlManagementType <String>]
- [-Tags <Hashtable>] [-SqlVMId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Update-AzSqlVM [-LicenseType <String>] [-Offer <String>] [-Sku <String>] [-SqlManagementType <String>]
+ [-Tag <Hashtable>] [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdInputObject
 ```
-Update-AzSqlVM [-SqlVM] <AzureSqlVMModel> [-SqlVMId] <String> [-AsJob]
+Update-AzSqlVM [-InputObject] <AzureSqlVMModel> [-ResourceId] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -87,6 +87,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+SQL virtual machine object.
+
+```yaml
+Type: Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel
+Parameter Sets: NameInputObject, ResourceIdInputObject
+Aliases: SqlVM
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -LicenseType
 SQL virtual machine license type.
 
@@ -97,6 +112,21 @@ Aliases:
 
 Required: False
 Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+SQL virtual machine name.
+
+```yaml
+Type: System.String
+Parameter Sets: NameParamaterList, NameInputObject
+Aliases: SqlVMName
+
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -122,7 +152,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameInputObject, NameParamaterList
+Parameter Sets: NameParamaterList, NameInputObject
 Aliases:
 
 Required: True
@@ -132,14 +162,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+SQL virtual machine resource id.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParamaterList, ResourceIdInputObject
+Aliases: SqlVMId
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Sku
 SQL virtual machine edition type.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.SqlVirtualMachine.Common.Sku]
+Type: System.String
 Parameter Sets: NameParamaterList, ResourceIdParamaterList
 Aliases:
-Accepted values: Enterprise, Developer, Express, Standard, Web
 
 Required: False
 Position: Named
@@ -163,52 +207,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SqlVM
-SQL virtual machine object.
-
-```yaml
-Type: Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel
-Parameter Sets: NameInputObject, ResourceIdInputObject
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -SqlVMId
-SQL virtual machine resource id.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceIdParamaterList, ResourceIdInputObject
-Aliases: ResourceId
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SqlVMName
-SQL virtual machine name.
-
-```yaml
-Type: System.String
-Parameter Sets: NameInputObject, NameParamaterList
-Aliases: Name
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tags
+### -Tag
 The tags to associate with the SQL virtual machine
 
 ```yaml

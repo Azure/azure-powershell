@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests.UnitTest
                 "Offer",
                 "Sku",
                 "SqlManagementType",
-                "Tags"
+                "Tag"
             };
             UpsertParam = new List<string>()
             {
@@ -45,17 +45,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests.UnitTest
         internal override void CheckResourceParameters(Type type, bool required = true)
         {
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ResourceGroupName", required, false);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "SqlVMName", required, false);
-        }
-
-        internal override void CheckResourceId(Type type)
-        {
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "SqlVMId", true, false);
-        }
-
-        internal override void CheckInputObject(Type type)
-        {
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "SqlVM", true, true);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "Name", required, false);
         }
 
         [Fact]
@@ -106,8 +96,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests.UnitTest
         public void NewAzureSqlVMConfig()
         {
             Type type = typeof(NewAzureSqlVMConfig);
-            UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: true);
-            UnitTestHelper.CheckConfirmImpact(type, ConfirmImpact.None);
+            UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
             CheckUpsertParameters(type, true);
         }
 
@@ -116,10 +105,8 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests.UnitTest
         public void SetAzureSqlVMConfigGroup()
         {
             Type type = typeof(SetAzureSqlVMConfigGroup);
-            UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: true);
-            UnitTestHelper.CheckConfirmImpact(type, ConfirmImpact.None);
-
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "SqlVM", true, true);
+            UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
+            
             UnitTestHelper.CheckCmdletParameterAttributes(type, "SqlVMGroup", true, false);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ClusterOperatorAccountPassword", true, false);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "SqlServiceAccountPassword", true, false);

@@ -14,8 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Network;
 using CommonStorage = Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.SqlVirtualMachine;
@@ -28,6 +26,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using Xunit.Abstractions;
+using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Compute;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests
 {
@@ -89,13 +89,8 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests
                     Helper.GetRMModulePath(@"AzureRM.SqlVirtualMachine.psd1"),
                     Helper.GetRMModulePath("AzureRM.Compute.psd1"),
                     Helper.GetRMModulePath("AzureRM.Network.psd1"),
-                    //Helper.RMNetworkModule,
                     "AzureRM.Storage.ps1",
-                    "AzureRM.Resources.ps1",
-                    Helper.RMOperationalInsightsModule,
-                    Helper.RMEventHubModule,
-                    Helper.RMMonitorModule,
-                    Helper.RMKeyVaultModule
+                    "AzureRM.Resources.ps1"
                 };
                 Helper.SetupModules(AzureModule.AzureResourceManager, modules.ToArray());
                 Helper.RunPowerShellTest(scripts);

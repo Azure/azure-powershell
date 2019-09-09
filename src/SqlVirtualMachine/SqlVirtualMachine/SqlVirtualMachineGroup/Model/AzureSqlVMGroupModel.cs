@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model
         /// <summary>
         /// Gets or sets the tags associated with the sql virtual machine.
         /// </summary>
-        public Dictionary<string, string> Tags { get; set; }
+        public Dictionary<string, string> Tag { get; set; }
 
         /// <summary>
         /// Gets or sets the resource id of the sql virtual machine

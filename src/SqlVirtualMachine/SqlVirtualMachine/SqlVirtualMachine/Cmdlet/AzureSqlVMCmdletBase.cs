@@ -18,12 +18,11 @@ using System.Collections.Generic;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Rest.Azure;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {

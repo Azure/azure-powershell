@@ -24,11 +24,11 @@ using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet.Config
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMConfigGroup", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true), OutputType(typeof(AzureSqlVMModel))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMConfigGroup")]
+    [OutputType(typeof(AzureSqlVMModel))]
     public class SetAzureSqlVMConfigGroup : AzureSqlVirtualMachineCmdletBase<IEnumerable<AzureSqlVMModel>, AzureSqlVMAdapter>
     {
         [Parameter(Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
            ValueFromPipeline = true,
            Position = 0,
            HelpMessage = HelpMessages.SqlVMConfig)]
@@ -40,17 +40,14 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet.Co
         public AzureSqlVMGroupModel SqlVMGroup { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 2,
             HelpMessage = HelpMessages.ClusterOperatorAccountPasswordSqlVM)]
         public SecureString ClusterOperatorAccountPassword { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 3,
             HelpMessage = HelpMessages.SqlServiceAccountPasswordSqlVM)]
         public SecureString SqlServiceAccountPassword { get; set; }
 
         [Parameter(Mandatory = false,
-            Position = 4,
             HelpMessage = HelpMessages.ClusterBootstrapAccountPasswordSqlVM)]
         public SecureString ClusterBootstrapAccountPassword { get; set; }
 
