@@ -24,11 +24,16 @@ using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet.Config
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMConfigGroup", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true), OutputType(typeof(AzureSqlVMModel))]
+    /// <summary>
+    /// This class implements the Set-AzVMConfigGroup cmdlet. It takes an instance of AzureSqlVMModel and adds the information relative to the
+    /// Sql Virtual Machine group to the local copy of the powershell object. It returns an instance of AzureSqlVMModel that can be used as configuration
+    /// for an Azure Sql Virtual Machine.
+    /// </summary>
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMConfigGroup", SupportsShouldProcess = true)]
+    [OutputType(typeof(AzureSqlVMModel))]
     public class SetAzureSqlVMConfigGroup : AzureSqlVirtualMachineCmdletBase<IEnumerable<AzureSqlVMModel>, AzureSqlVMAdapter>
     {
         [Parameter(Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
            ValueFromPipeline = true,
            Position = 0,
            HelpMessage = HelpMessages.SqlVMConfig)]
@@ -40,17 +45,14 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet.Co
         public AzureSqlVMGroupModel SqlVMGroup { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 2,
             HelpMessage = HelpMessages.ClusterOperatorAccountPasswordSqlVM)]
         public SecureString ClusterOperatorAccountPassword { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 3,
             HelpMessage = HelpMessages.SqlServiceAccountPasswordSqlVM)]
         public SecureString SqlServiceAccountPassword { get; set; }
 
         [Parameter(Mandatory = false,
-            Position = 4,
             HelpMessage = HelpMessages.ClusterBootstrapAccountPasswordSqlVM)]
         public SecureString ClusterBootstrapAccountPassword { get; set; }
 

@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -51,10 +51,10 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.2'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = @()
+RequiredAssemblies = '.\Microsoft.Azure.Management.SqlVirtualMachine.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 ScriptsToProcess = @()
@@ -87,16 +87,7 @@ CmdletsToExport = 'New-AzSqlVM',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'New-AzSqlVM',
-					'Get-AzSqlVM',
-					'Update-AzSqlVM',
-					'Remove-AzSqlVM',
-					'New-AzSqlVMConfig',
-					'Set-AzSqlVMConfigGroup',
-					'New-AzSqlVMGroup',
-					'Get-AzSqlVMGroup',
-					'Update-AzSqlVMGroup',
-					'Remove-AzSqlVMGroup'
+AliasesToExport = @()
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

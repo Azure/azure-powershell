@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -37,12 +38,12 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests
             Assert.Single(cmdletAttributes);
         }
 
-        public static void CheckCmdletParameterAttributes(Type cmdlet, string parameterName, bool isMandatory, bool valueFromPipelineByName, string parameterSet)
+        public static void CheckCmdletParameterAttributes(Type cmdlet, string parameterName, bool? isMandatory, bool valueFromPipelineByName, string parameterSet)
         {
             CheckCmdletParameterAttributes(cmdlet, parameterName, isMandatory, valueFromPipelineByName, new HashSet<String>() { parameterSet });
         }
 
-        public static void CheckCmdletParameterAttributes(Type cmdlet, string parameterName, bool isMandatory, bool valueFromPipelineByName, HashSet<String> parameterSet = null)
+        public static void CheckCmdletParameterAttributes(Type cmdlet, string parameterName, bool? isMandatory, bool valueFromPipelineByName, HashSet<String> parameterSet = null)
         {
             PropertyInfo property = cmdlet.GetProperty(parameterName);
             Assert.NotNull(property);
@@ -50,7 +51,10 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests
             foreach (ParameterAttribute paramAttr in property.GetCustomAttributes(typeof(ParameterAttribute), true))
             {
                 Assert.NotNull(paramAttr);
-                Assert.Equal(isMandatory, paramAttr.Mandatory);
+                if (isMandatory != null)
+                {
+                    Assert.Equal(isMandatory, paramAttr.Mandatory);
+                }
                 Assert.Equal(valueFromPipelineByName, paramAttr.ValueFromPipelineByPropertyName);
                 Assert.NotNull(paramAttr.HelpMessage);
                 if (parameterSet != null)
@@ -73,5 +77,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests
             }
             Assert.Equal(parameterSet.Count, set.Count);
         }
+
+        
     }
 }

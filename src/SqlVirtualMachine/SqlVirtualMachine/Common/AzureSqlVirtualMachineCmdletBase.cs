@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
 {
@@ -26,25 +26,33 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
     public abstract class AzureSqlVirtualMachineCmdletBase<M, A> : AzureRMCmdlet
     {
         /// <summary>
+        /// Adapter used to call the REST APIs to perform actions on the specified model
+        /// </summary>
+        public A ModelAdapter { get; internal set; }
+        
+        /// <summary>
         /// Get the ResourceId property value of the model provided.
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
         protected virtual string GetResourceId(M model)
         {
-            return null;
-            /*string resourceName = model.GetType().GetProperty("ResourceId").GetValue(model).ToString();
-            if(!string.IsNullOrEmpty(resourceName))
+            var resource = model as IEnumerable<object>;
+            if (resource != null)
             {
-                return resourceName;
+                if (resource != null)
+                {
+                    var resourceIdProperty = resource.GetType().GetProperty("ResourceId");
+                    var resourceIdValue = resourceIdProperty != null ? resourceIdProperty.GetValue(resource) : null;
+                    string resourceId = resourceIdValue != null ? resourceIdValue.ToString() : "";
+                    if (!string.IsNullOrEmpty(resourceId))
+                    {
+                        return resourceId;
+                    }
+                }
             }
-            return string.Empty;*/
+            return string.Empty;
         }
-
-        /// <summary>
-        /// Adapter used to call the REST APIs to perform actions on the specified model
-        /// </summary>
-        public A ModelAdapter { get; internal set; }
 
         /// <summary>
         /// Gets an entity from the service
@@ -93,7 +101,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
         /// <returns>The name of the cmdlet that is being executed</returns>
         protected virtual string GetConfirmActionProcessMessage()
         {
-            return null; // MyInvocation.MyCommand.Name;
+            return MyInvocation.MyCommand.Name.Split('-')[0].ToLower();
         }
 
         /// <summary>
@@ -102,20 +110,27 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
         protected virtual void ParseInput() { }
 
         /// <summary>
-        /// Executes the cmdlet
+        /// General method thaat outline which operations should be executed during the execution of a sqlvirtualmachine cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            // Initialize the adapter class that is responsible for the convertion between the powershell resource and the .NET one
             ModelAdapter = InitModelAdapter();
+            // Parse the parameter set given as input
             ParseInput();
+            // Retrieve the Azure entity the cmdlet is refearing to
             M model = GetEntity();
+            // Apply the cmdlet to the recovered object
             M updatedModel = ApplyUserInputToModel(model);
             M responseModel = default(M);
+            // If the confirmation level requires it, prompt the user for confirmation
             ConfirmAction(GetConfirmActionProcessMessage(), GetResourceId(updatedModel), () =>
             {
+                // Apply the changes to the response model
                 responseModel = PersistChanges(updatedModel);
             });
-
+            // Convert the response model in a powershell object
+            // See Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.generated.format.ps1xml file for more information on the response format
             if (responseModel != null)
             {
                 if (WriteResult())

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
 Module Name: Az.SqlVirtualMachine
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sqlvirtualmachine/new-azsqlvm
 schema: 2.0.0
 ---
 
@@ -12,17 +12,17 @@ Creates a new sql virtual machine.
 
 ## SYNTAX
 
-### NameInputObject (Default)
+### NameParamaterList (Default)
 ```
-New-AzSqlVM [-ResourceGroupName] <String> [-SqlVMName] <String> [-SqlVM] <AzureSqlVMModel> [-Location <String>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzSqlVM [-ResourceGroupName] <String> [-Name] <String> [-LicenseType] <String> [-Location <String>]
+ [-AsJob] [-Offer <String>] [-Sku <String>] [-SqlManagementType <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### NameParamaterList
+### NameInputObject
 ```
-New-AzSqlVM [-ResourceGroupName] <String> [-SqlVMName] <String> [-LicenseType] <String> [-Location <String>]
- [-AsJob] [-Offer <String>] [-Sku <Sku>] [-SqlManagementType <String>] [-Tags <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzSqlVM [-ResourceGroupName] <String> [-Name] <String> [-SqlVM] <AzureSqlVMModel> [-Location <String>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,6 +102,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+SQL virtual machine name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: SqlVMName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Offer
 SQL virtual machine offer.
 
@@ -136,10 +151,9 @@ Accept wildcard characters: False
 SQL virtual machine edition type.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.SqlVirtualMachine.Common.Sku]
+Type: System.String
 Parameter Sets: NameParamaterList
 Aliases:
-Accepted values: Enterprise, Developer, Express, Standard, Web
 
 Required: False
 Position: Named
@@ -174,26 +188,11 @@ Aliases:
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -SqlVMName
-SQL virtual machine name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: Name
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tags
+### -Tag
 The tags to associate with the SQL virtual machine
 
 ```yaml

@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet.Config
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
-using System.Management.Automation;
 using Xunit;
 using Xunit.Abstractions;
 using static Microsoft.Azure.Commands.SqlVirtualMachine.Common.ParameterSet;
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests.UnitTest
                 "Offer",
                 "Sku",
                 "SqlManagementType",
-                "Tags"
+                "Tag"
             };
             UpsertParam = new List<string>()
             {
@@ -45,17 +44,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests.UnitTest
         internal override void CheckResourceParameters(Type type, bool required = true)
         {
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ResourceGroupName", required, false);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "SqlVMName", required, false);
-        }
-
-        internal override void CheckResourceId(Type type)
-        {
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "SqlVMId", true, false);
-        }
-
-        internal override void CheckInputObject(Type type)
-        {
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "SqlVM", true, true);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "Name", required, false);
         }
 
         [Fact]
@@ -63,7 +52,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests.UnitTest
         public void NewAzureSqlVM()
         {
             Type type = typeof(NewAzureSqlVM);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "Location", false, false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "Location", true, false);
             UpsertParamSet = new HashSet<String>()
             {
                 Name + ParameterList,
@@ -107,7 +96,6 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests.UnitTest
         {
             Type type = typeof(NewAzureSqlVMConfig);
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: true);
-            UnitTestHelper.CheckConfirmImpact(type, ConfirmImpact.None);
             CheckUpsertParameters(type, true);
         }
 
@@ -117,9 +105,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests.UnitTest
         {
             Type type = typeof(SetAzureSqlVMConfigGroup);
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: true);
-            UnitTestHelper.CheckConfirmImpact(type, ConfirmImpact.None);
-
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "SqlVM", true, true);
+            
             UnitTestHelper.CheckCmdletParameterAttributes(type, "SqlVMGroup", true, false);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ClusterOperatorAccountPassword", true, false);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "SqlServiceAccountPassword", true, false);

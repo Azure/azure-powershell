@@ -90,12 +90,12 @@ function Test-UpdateSqlVirtualMachineGroup
 		$key = 'key'
 		$value = 'value'
 		$tags = @{$key=$value}
-		$group1 = Update-AzSqlVMGroup -InputObject $group -Tags $tags
+		$group1 = Update-AzSqlVMGroup -InputObject $group -Tag $tags
 		
 		Validate-SqlVirtualMachineGroup $group $group1
-		Assert-NotNull $group1.Tags
-		Assert-AreEqual $group1.Tags.count 1
-		Assert-AreEqual $group1.Tags[$key] $value
+		Assert-NotNull $group1.Tag
+		Assert-AreEqual $group1.Tag.count 1
+		Assert-AreEqual $group1.Tag[$key] $value
 	}
 	finally
 	{

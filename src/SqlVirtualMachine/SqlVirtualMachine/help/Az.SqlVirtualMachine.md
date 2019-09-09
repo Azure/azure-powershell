@@ -33,7 +33,7 @@ Deletes a sql virtual machine.
 Deletes a sql virtual machine group.
 
 ### [Set-AzSqlVMConfigGroup](Set-AzSqlVMConfigGroup.md)
-Set the informations relative to a sql virtual machine group in a sql virtual machine configuration.
+Set the information relative to a sql virtual machine group in a sql virtual machine configuration.
 
 ### [Update-AzSqlVM](Update-AzSqlVM.md)
 Updates a sql virtual machine.

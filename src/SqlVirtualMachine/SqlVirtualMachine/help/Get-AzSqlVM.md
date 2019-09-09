@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
 Module Name: Az.SqlVirtualMachine
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sqlvirtualmachine/get-azsqlvm
 schema: 2.0.0
 ---
 
@@ -12,16 +12,20 @@ Gets one or more sql virtual machines.
 
 ## SYNTAX
 
-### Name (Default)
+### ResourceGroupOnly (Default)
 ```
-Get-AzSqlVM [[-ResourceGroupName] <String>] [[-SqlVMName] <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzSqlVM [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### Name
+```
+Get-AzSqlVM [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Get-AzSqlVM [-SqlVMId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzSqlVM [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,7 +65,6 @@ vm   ResourceGroup01	PAYG        Developer SQL2017-WS2016 Full
 
 This command gets information about the SQL virtual machine "vm" assigned to the resource group ResourceGroup01.
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -79,12 +82,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+SQL virtual machine name.
+
+```yaml
+Type: System.String
+Parameter Sets: Name
+Aliases: SqlVMName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name
+Parameter Sets: ResourceGroupOnly
 Aliases:
 
 Required: False
@@ -94,13 +112,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SqlVMId
-SQL virtual machine resource id.
-
 ```yaml
 Type: System.String
-Parameter Sets: ResourceId
-Aliases: ResourceId
+Parameter Sets: Name
+Aliases:
 
 Required: True
 Position: 0
@@ -109,49 +124,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SqlVMName
-SQL virtual machine name.
+### -ResourceId
+SQL virtual machine resource id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name
-Aliases: Name
+Parameter Sets: ResourceId
+Aliases: SqlVMId
 
-Required: False
-Position: 1
+Required: True
+Position: 0
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

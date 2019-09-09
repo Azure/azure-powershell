@@ -19,7 +19,8 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model
 {
     /// <summary>
-    /// Represents the core properties of an Azure Sql virtual machine
+    /// Represents the core properties of an Azure Sql Virtual Machine Group. It mirrors the .NET client object 
+    /// Microsoft.Azure.Management.SqlVirtualMachine.Models.SqlVirtualMachineGroup
     /// </summary>
     public class AzureSqlVMGroupModel
     {
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model
         /// <summary>
         /// Gets or sets the tags associated with the sql virtual machine.
         /// </summary>
-        public Dictionary<string, string> Tags { get; set; }
+        public Dictionary<string, string> Tag { get; set; }
 
         /// <summary>
         /// Gets or sets the resource id of the sql virtual machine

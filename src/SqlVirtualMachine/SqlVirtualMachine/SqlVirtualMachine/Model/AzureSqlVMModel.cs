@@ -19,7 +19,8 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model
 {
     /// <summary>
-    /// Represents the core properties of an Azure Sql virtual machine
+    /// Represents the core properties of an Azure Sql Virtual Machine. It mirrors the .NET client object 
+    /// Microsoft.Azure.Management.SqlVirtualMachine.Models.SqlVirtualMachine
     /// </summary>
     public class AzureSqlVMModel
     {
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model
 
         public AzureSqlVMModel(string resourceGroupName)
         {
-            this.ResourceGroupName = resourceGroupName;
+            ResourceGroupName = resourceGroupName;
         }
 
         /// <summary>
@@ -79,7 +80,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model
         public string SqlManagementType { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
         /// </summary>
         public WsfcDomainCredentials WsfcDomainCredentials { get; set; }
 
@@ -94,7 +95,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model
         public string ResourceId { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the group the sql virtual machine is part of
         /// </summary>
         public AzureSqlVMGroupModel SqlVirtualMachineGroup { get; set; }
     }

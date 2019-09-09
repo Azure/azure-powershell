@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
 Module Name: Az.SqlVirtualMachine
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sqlvirtualmachine/remove-azsqlvm
 schema: 2.0.0
 ---
 
@@ -14,19 +14,19 @@ Deletes a sql virtual machine.
 
 ### Name (Default)
 ```
-Remove-AzSqlVM [-ResourceGroupName] <String> [-SqlVMName] <String> [-AsJob] [-PassThru]
+Remove-AzSqlVM [-ResourceGroupName] <String> [-Name] <String> [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Remove-AzSqlVM [-SqlVM] <AzureSqlVMModel> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzSqlVM [-InputObject] <AzureSqlVMModel> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Remove-AzSqlVM [-SqlVMId] <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Remove-AzSqlVM [-ResourceId] <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -74,6 +74,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+SQL virtual machine object.
+
+```yaml
+Type: Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel
+Parameter Sets: InputObject
+Aliases: SqlVM
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+SQL virtual machine name.
+
+```yaml
+Type: System.String
+Parameter Sets: Name
+Aliases: SqlVMName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Specifies whether to output the deleted resource at end of cmdlet execution.
 
@@ -104,48 +134,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SqlVM
-SQL virtual machine object.
-
-```yaml
-Type: Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel
-Parameter Sets: InputObject
-Aliases: InputObject
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -SqlVMId
+### -ResourceId
 SQL virtual machine resource id.
 
 ```yaml
 Type: System.String
 Parameter Sets: ResourceId
-Aliases: ResourceId
+Aliases: SqlVMId
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SqlVMName
-SQL virtual machine name.
-
-```yaml
-Type: System.String
-Parameter Sets: Name
-Aliases: Name
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

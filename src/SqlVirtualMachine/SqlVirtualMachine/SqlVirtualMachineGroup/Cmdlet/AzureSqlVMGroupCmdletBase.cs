@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// Resource group name of the sql virtual machine group
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ParameterSet.Name,
             Position = 0,
             HelpMessage = "The name of the resource group.")]
@@ -45,8 +44,8 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             ParameterSetName = ParameterSet.Name,
             Position = 1,
             HelpMessage = HelpMessages.NameSqlVMGroup)]
-        [Alias("Name")]
-        public string SqlVMGroupName { get; set; }
+        [Alias("SqlVMGroupName")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Intializes the model adapter
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <returns>True if the resource id is valid, false otherwise</returns>
         public bool ValidateSqlVirtualMachineGroupId(string sqlVirtualMachineGroupId)
         {
-            var regex = new Regex(@"/subscriptions/([^/]+)/resourceGroups/([^/]+)/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/([^/]+)");
+            var regex = new Regex(@"/subscriptions/([^/]+)/resourcegroups/([^/]+)/providers/microsoft.sqlvirtualmachine/sqlvirtualmachinegroups/([^/]+)", RegexOptions.IgnoreCase);
             return regex.IsMatch(sqlVirtualMachineGroupId);
         }
 
