@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
 Module Name: Az.SqlVirtualMachine
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sqlvirtualmachine/new-azsqlvmgroup
 schema: 2.0.0
 ---
 
@@ -13,17 +13,15 @@ Creates a new sql virtual machine group.
 ## SYNTAX
 
 ```
-New-AzSqlVMGroup [-Location] <String> -Offer <String> -Sku <Sku> -ClusterOperatorAccount <String>
+New-AzSqlVMGroup [-Location] <String> -Offer <String> -Sku <String> -ClusterOperatorAccount <String>
  -SqlServiceAccount <String> -StorageAccountUrl <String> -StorageAccountPrimaryKey <SecureString>
  -DomainFqdn <String> [-AsJob] [-OuPath <String>] [-FileShareWitnessPath <String>]
- [-ClusterBootstrapAccount <String>] [-Tags <Hashtable>] [-ResourceGroupName] <String>
- [-SqlVMGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ClusterBootstrapAccount <String>] [-Tag <Hashtable>] [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The New-AzSqlVMGroup cmdlet creates an Azure SQL virtual machine group.
-
 
 ## EXAMPLES
 
@@ -149,6 +147,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+SQL virtual machine group name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: SqlVMGroupName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Offer
 SQL virtual machine group offer.
 
@@ -190,7 +203,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -198,10 +211,9 @@ Accept wildcard characters: False
 SQL virtual machine group edition type.
 
 ```yaml
-Type: Microsoft.Azure.Commands.SqlVirtualMachine.Common.Sku
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Enterprise, Developer, Express, Standard, Web
 
 Required: True
 Position: Named
@@ -220,21 +232,6 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SqlVMGroupName
-SQL virtual machine group name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: Name
-
-Required: True
-Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -270,8 +267,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
-The tags to associate with the SQL virtual machine group
+### -Tag
+The tags to associate with the SQL virtual machine group.
 
 ```yaml
 Type: System.Collections.Hashtable

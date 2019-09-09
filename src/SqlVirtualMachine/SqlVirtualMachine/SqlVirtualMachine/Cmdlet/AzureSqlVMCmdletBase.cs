@@ -16,14 +16,7 @@ using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
 using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
-using System.Management.Automation;
 using System.Text.RegularExpressions;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Rest.Azure;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
@@ -48,7 +41,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <returns>True if the resource id is valid, false otherwise</returns>
         public bool ValidateSqlVirtualMachineId(string sqlVirtualMachineResourceId)
         {
-            var regex = new Regex(@"/subscriptions/([^/]+)/resourceGroups/([^/]+)/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/([^/]+)");
+            var regex = new Regex(@"/subscriptions/([^/]+)/resourcegroups/([^/]+)/providers/microsoft.sqlvirtualmachine/sqlvirtualmachines/([^/]+)", RegexOptions.IgnoreCase);
             return regex.IsMatch(sqlVirtualMachineResourceId);
         }
 
@@ -58,22 +51,10 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <param name="resourceGroup">Name of the resource group in which the virtual machine should be</param>
         /// <param name="virtualMachineName">Name of the virtual machine</param>
         /// <returns></returns>
-        public VirtualMachine RetrieveVirtualMachine(string resourceGroup, string virtualMachineName)
+        public string RetrieveVirtualMachineId(string resourceGroup, string virtualMachineName)
         {
-            var client = AzureSession.Instance.ClientFactory.CreateArmClient<ComputeManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
-            try
-            {
-                return client.VirtualMachines.Get(resourceGroup, virtualMachineName);
-            }
-            catch(CloudException)
-            {
-                throw new PSArgumentException(
-               string.Format("The parameters provided do not correspond to a virtual machine."),
-               "SqlVirtualMachine");
-            }
-            throw new PSArgumentException(
-               string.Format("Unexpected error while trying to retrieve the virtual machine"),
-               "SqlVirtualMachine");
+            return "/subscriptions/" + DefaultContext.Subscription.Id + "/resourceGroups/" + resourceGroup 
+                + "/providers/Microsoft.Compute/virtualMachines/" + virtualMachineName;
         }
 
         /// <summary>

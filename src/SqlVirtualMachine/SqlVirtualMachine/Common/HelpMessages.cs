@@ -31,16 +31,16 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
         public const string OfferSqlVM = "SQL virtual machine offer.";
         public const string SkuSqlVM = "SQL virtual machine edition type.";
         public const string SqlManagementTypeSqlVM = "SQL virtual machine management type.";
-        public const string TagsSqlVM = "The tags to associate with the SQL virtual machine";
+        public const string TagSqlVM = "The tags to associate with the SQL virtual machine.";
         public const string VirtualMachineIdSqlVM = "Underlying virtual machine id.";
         public const string SqlVMResourceId = "SQL virtual machine resource id.";
         public const string InputObjectSqlVM = "SQL virtual machine object.";
         // Help messages relative to config
-        public const string SqlVMConfig = "The SQL virtual machine configuration which group membership will be added to";
-        public const string GroupSqlVM = "The group the SQL virtual machine will be part of";
-        public const string ClusterOperatorAccountPasswordSqlVM = "Password for the cluster operator account";
-        public const string SqlServiceAccountPasswordSqlVM = "Password for the SQL service account";
-        public const string ClusterBootstrapAccountPasswordSqlVM = "Password for the cluster bootstrap account";
+        public const string SqlVMConfig = "The SQL virtual machine configuration which group membership will be added to.";
+        public const string GroupSqlVM = "The group the SQL virtual machine will be part of.";
+        public const string ClusterOperatorAccountPasswordSqlVM = "Password for the cluster operator account.";
+        public const string SqlServiceAccountPasswordSqlVM = "Password for the SQL service account.";
+        public const string ClusterBootstrapAccountPasswordSqlVM = "Password for the cluster bootstrap account.";
 
         
         // Help messages relative to sql virtual machine group cmdlets
@@ -52,15 +52,15 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
         public const string SqlVMGroupResourceId = "SQL virtual machine group resource id.";
         public const string InputObjectSqlVMGroup = "SQL virtual machine object.";
         // Upsert
-        public const string ClusterOperatorAccountSqlVMGroup = "Name used for operating cluster";
-        public const string SqlServiceAccountSqlVMGroup = "Name under which SQL service will run on all participating SQL virtual machines in the cluster";
-        public const string StorageAccountUrlSqlVMGroup = "Fully qualified ARM resource id of the witness storage account";
-        public const string StorageAccountPrimaryKeySqlVMGroup = "Primary key of the witness storage account";
-        public const string DomainFqdnSqlVMGroup = "Fully qualified name of the domain";
-        public const string OuPathSqlVMGroup = "Organizational Unit path in which the nodes and cluster will be present";
-        public const string FileShareWitnessPathSqlVMGroup = "Optional path for fileshare witness";
-        public const string ClusterBootstrapAccountSqlVMGroup = "Name used for creating cluster";
-        public const string TagsSqlVMGroup = "The tags to associate with the SQL virtual machine group";
+        public const string ClusterOperatorAccountSqlVMGroup = "Name used for operating cluster.";
+        public const string SqlServiceAccountSqlVMGroup = "Name under which SQL service will run on all participating SQL virtual machines in the cluster.";
+        public const string StorageAccountUrlSqlVMGroup = "Fully qualified ARM resource id of the witness storage account.";
+        public const string StorageAccountPrimaryKeySqlVMGroup = "Primary key of the witness storage account.";
+        public const string DomainFqdnSqlVMGroup = "Fully qualified name of the domain.";
+        public const string OuPathSqlVMGroup = "Organizational Unit path in which the nodes and cluster will be present.";
+        public const string FileShareWitnessPathSqlVMGroup = "Optional path for fileshare witness.";
+        public const string ClusterBootstrapAccountSqlVMGroup = "Name used for creating cluster.";
+        public const string TagSqlVMGroup = "The tags to associate with the SQL virtual machine group.";
         
     }
 }

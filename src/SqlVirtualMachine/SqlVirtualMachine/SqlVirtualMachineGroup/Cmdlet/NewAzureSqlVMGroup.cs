@@ -17,8 +17,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
+using Microsoft.Azure.Commands.SqlVirtualMachine.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
 using Microsoft.Azure.Management.SqlVirtualMachine.Models;
 using Microsoft.Rest.Azure;
@@ -27,9 +29,11 @@ using Microsoft.WindowsAzure.Commands.Common;
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
     /// <summary>
-    /// Defines New-AzSqlVMGroup cmdlet
+    /// This class implements the New-AzSqlVMGroup cmdlet. It creates a new instance of an Azure Sql Virtual machine group and returns its information 
+    /// to the powershell user as a AzureSqlVMGroupModel object.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMGroup", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true), OutputType(typeof(AzureSqlVMGroupModel))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMGroup", SupportsShouldProcess = true)]
+    [OutputType(typeof(AzureSqlVMGroupModel))]
     public class NewAzureSqlVMGroup : AzureSqlVMGroupUpsertCmdletBase
     {
         /// <summary>
@@ -39,6 +43,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             Position = 2,
             HelpMessage = HelpMessages.LocationSqlVMGroup)]
         [ValidateNotNullOrEmpty]
+        [LocationCompleter]
         public string Location { get; set; }
 
         /// <summary>
@@ -54,8 +59,8 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = HelpMessages.SkuSqlVMGroup)]
-        [PSDefaultValue(Value = Sku.Enterprise)]
-        public Sku Sku { get; set; }
+        [SkuCompleter]
+        public string Sku { get; set; }
 
         /// <summary>
         /// Name used for operating cluster
@@ -108,7 +113,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         {
             try
             {
-                ModelAdapter.GetSqlVirtualMachineGroup(this.ResourceGroupName, this.SqlVMGroupName);
+                ModelAdapter.GetSqlVirtualMachineGroup(this.ResourceGroupName, this.Name);
             }
             catch (CloudException)
             {
@@ -116,7 +121,8 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             }
 
             throw new PSArgumentException(
-                string.Format("A sql virtual machine group with the same name already exists"),
+                string.Format("A sql virtual machine group with name {0} in resource group {1} already exists. If you want to modify an existing SqlVMGroup you can use" +
+                " Update-AzSqlVMGroup command.", Name, ResourceGroupName),
                 "SqlVirtualMachineGroup");
         }
 
@@ -131,9 +137,9 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             newEntity.Add(new AzureSqlVMGroupModel(ResourceGroupName)
             {
                 Location = this.Location,
-                Name = this.SqlVMGroupName,
+                Name = this.Name,
                 Offer = this.Offer,
-                Sku = this.Sku.ToString(),
+                Sku = this.Sku,
                 WsfcDomainProfile = new WsfcDomainProfile()
                 {
                     ClusterBootstrapAccount = this.ClusterBootstrapAccount,
@@ -145,7 +151,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
                     FileShareWitnessPath = this.FileShareWitnessPath,
                     OuPath = this.OuPath
                 },
-                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true)
+                Tag = TagsConversionHelper.CreateTagDictionary(Tag, validate: true)
             });
             return newEntity;
         }

@@ -17,22 +17,25 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
 using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
-using static Microsoft.Azure.Commands.SqlVirtualMachine.Common.ParameterSet;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzSqlVM cmdlet
+    /// This class implements the Get-AzSqlVM cmdlet. It will retrieve the information relative to one or more Sql Virtual Machine on Azure.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVM", DefaultParameterSetName = Name, ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVM", DefaultParameterSetName = ParameterSet.ResourceGroupOnly)]
     [OutputType(typeof(AzureSqlVMModel))]
     public class GetAzureSqlVM : AzureSqlVMCmdletBase
     {
         /// <summary>
         /// Resource group name of the sql virtual machine, overrided from the base class in order to not be mandatory
         /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = ParameterSet.Name,
+            Position = 0,
+            HelpMessage = HelpMessages.ResourceGroupSqlVM)]
         [Parameter(Mandatory = false,
-            ParameterSetName = Name,
+            ParameterSetName = ParameterSet.ResourceGroupOnly,
             Position = 0,
             HelpMessage = HelpMessages.ResourceGroupSqlVM)]
         [ResourceGroupCompleter]
@@ -41,39 +44,40 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <summary>
         /// Name of the sql virtual machine, overrided from the base class in order to not be mandatory
         /// </summary>
-        [Parameter(Mandatory = false,
-            ParameterSetName = Name,
+        [Parameter(Mandatory = true,
+            ParameterSetName = ParameterSet.Name,
             Position = 1,
             HelpMessage = HelpMessages.NameSqlVM)]
-        [Alias("Name")]
+        [Alias("SqlVMName")]
         [ResourceNameCompleter("Microsoft.SqlVirtualMachine/SqlVirtualMachines", "ResourceGroupName")]
-        public string SqlVMName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Resource id of the sql virtual machine
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = ResourceId,
+            ParameterSetName = ParameterSet.ResourceId,
+            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = HelpMessages.SqlVMResourceId)]
-        [Alias("ResourceId")]
-        public string SqlVMId { get; set; }
+        [Alias("SqlVMId")]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Parse the parameters provided as input in order to obtain the name of the resource group and the sql virtual machine
         /// </summary>
         protected override void ParseInput()
         {
-            if (ParameterSetName == ResourceId)
+            if (ParameterSetName == ParameterSet.ResourceId)
             {
-                if (!ValidateSqlVirtualMachineId(SqlVMId))
+                if (!ValidateSqlVirtualMachineId(ResourceId))
                 {
                     throw new PSArgumentException(
                         string.Format("The sql virtual machine resource id is not well formatted"),
                         "SqlVirtualMachine");
                 }
-                ResourceGroupName = GetResourceGroupNameFromId(SqlVMId);
-                SqlVMName = GetResourceNameFromId(SqlVMId);
+                ResourceGroupName = GetResourceGroupNameFromId(ResourceId);
+                Name = GetResourceNameFromId(ResourceId);
             }
         }
 
@@ -84,12 +88,12 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         protected override IEnumerable<AzureSqlVMModel> GetEntity()
         {
             ICollection<AzureSqlVMModel> results = null;
-            if (ShouldGetByName(ResourceGroupName, SqlVMName))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 results = new List<AzureSqlVMModel>();
-                results.Add(ModelAdapter.GetSqlVirtualMachine(ResourceGroupName, SqlVMName));
+                results.Add(ModelAdapter.GetSqlVirtualMachine(ResourceGroupName, Name));
             }
-            else if (ShouldListByResourceGroup(ResourceGroupName, SqlVMName))
+            else if (ShouldListByResourceGroup(ResourceGroupName, Name))
             {
                 results = ModelAdapter.ListSqlVirtualMachineByResourceGroup(ResourceGroupName);
             }

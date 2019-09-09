@@ -14,16 +14,20 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Services;
 using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
+using Microsoft.Azure.Management.SqlVirtualMachine;
 using Microsoft.Azure.Management.SqlVirtualMachine.Models;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
 {
     /// <summary>
-    /// Adapter for sql virtual machine operations
+    /// Adapter for Sql Virtual Machine operations. This class is common for all the cmdlets regarding a Sql Virtual Machine and it is used to convert
+    /// between the powershell object (AzureSqlVMModel) and the object used by the .NET client (SqlVirtualMachineModel). 
+    /// After converting the object format it calls the communicator class that handles the communication betweeen the .NET client and Azure.
     /// </summary>
     public class AzureSqlVMAdapter
     {
@@ -35,7 +39,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public IAzureContext Context { get; set; }
+        public IAzureContext DefaultContext { get; private set; }
 
         /// <summary>
         /// Constructs a sql virtual machine adapter
@@ -43,8 +47,8 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
         /// <param name="context">The current azure profile</param>
         public AzureSqlVMAdapter(IAzureContext context)
         {
-            Context = context;
-            Communicator = new AzureSqlVMCommunicator(Context);
+            DefaultContext = context;
+            Communicator = new AzureSqlVMCommunicator(DefaultContext);
         }
 
         /// <summary>
@@ -62,6 +66,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
                 VirtualMachineResourceId = model.VirtualMachineId,
                 SqlServerLicenseType = model.LicenseType,
                 SqlManagement = model.SqlManagementType,
+                SqlVirtualMachineGroupResourceId = model.SqlVirtualMachineGroup != null ? model.SqlVirtualMachineGroup.ResourceId : null,
                 WsfcDomainCredentials = model.WsfcDomainCredentials,
                 Tags = model.Tags
             });
@@ -124,7 +129,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
         /// <param name="resourceGroupName">The resource group the sql virtual machine is in</param>
         /// <param name="resp">The management client sql virtual machine response to convert</param>
         /// <returns>The converted sql virtual machine model</returns>
-        private static AzureSqlVMModel CreateSqlVirtualMachineModelFromResponse(SqlVirtualMachineModel resp)
+        private AzureSqlVMModel CreateSqlVirtualMachineModelFromResponse(SqlVirtualMachineModel resp)
         {
             // Extract the resource group name from the ID.
             // ID is in the form:
@@ -141,9 +146,28 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
                 SqlManagementType = resp.SqlManagement,
                 LicenseType = resp.SqlServerLicenseType,
                 Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(resp.Tags), false),
-                ResourceId = resp.Id,
-                WsfcDomainCredentials = resp.WsfcDomainCredentials
+                ResourceId = resp.Id
             };
+            
+            // Retrieve group
+            if (!string.IsNullOrEmpty(resp.SqlVirtualMachineGroupResourceId))
+            {
+                var client = AzureSession.Instance.ClientFactory.CreateArmClient<SqlVirtualMachineManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+                string[] groupId = resp.SqlVirtualMachineGroupResourceId.Split('/');
+
+                SqlVirtualMachineGroup group = client.SqlVirtualMachineGroups.Get(groupId[4], groupId[8]);
+                model.SqlVirtualMachineGroup = new AzureSqlVMGroupModel(groupId[4])
+                {
+                    Name = group.Name,
+                    Location = group.Location,
+                    Sku = group.SqlImageSku,
+                    Offer = group.SqlImageOffer,
+                    ResourceId = group.Id,
+                    Tag = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(group.Tags), false),
+                    WsfcDomainProfile = group.WsfcDomainProfile
+                };
+            }
+            
             return model;            
         }
     }

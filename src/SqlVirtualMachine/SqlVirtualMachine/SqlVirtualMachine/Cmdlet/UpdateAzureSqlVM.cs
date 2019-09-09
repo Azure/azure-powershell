@@ -19,15 +19,18 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
+using Microsoft.Azure.Commands.SqlVirtualMachine.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
 using static Microsoft.Azure.Commands.SqlVirtualMachine.Common.ParameterSet;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
     /// <summary>
-    /// Defines Update-AzSqlVM cmdlet
+    /// This class implements the Update-AzSqlVM cmdlet. It allows to update the information relative to an Azure Sql Virtual Machine
+    /// and return to the user an AzureSqlVMModel object corresponding to the instance updated.
     /// </summary>
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVM", DefaultParameterSetName = NameInputObject, ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true), OutputType(typeof(AzureSqlVMModel))]
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVM", DefaultParameterSetName = NameParameterList, SupportsShouldProcess = true)]
+    [OutputType(typeof(AzureSqlVMModel))]
     public class UpdateAzureSqlVM : AzureSqlVMUpsertCmdletBase
     {
         /// <summary>
@@ -55,9 +58,9 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             ParameterSetName = NameInputObject,
             Position = 1,
             HelpMessage = HelpMessages.NameSqlVM)]
-        [Alias("Name")]
+        [Alias("SqlVMName")]
         [ResourceNameCompleter("Microsoft.SqlVirtualMachine/SqlVirtualMachines", "ResourceGroupName")]
-        public string SqlVMName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// License type of the new sql virtual machine
@@ -69,6 +72,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             ParameterSetName = ResourceIdParameterList,
             HelpMessage = HelpMessages.LicenseTypeSqlVM)]
         [ValidateNotNullOrEmpty]
+        [LicenseTypeCompleter]
         public string LicenseType { get; set; }
 
         /// <summary>
@@ -92,7 +96,8 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         [Parameter(Mandatory = false,
             ParameterSetName = ResourceIdParameterList,
             HelpMessage = HelpMessages.SkuSqlVM)]
-        public new Sku? Sku { get; set; }
+        [SkuCompleter]
+        public new string Sku { get; set; }
 
         /// <summary>
         /// SqlManagementType of the new sql virtual machine
@@ -103,49 +108,51 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         [Parameter(Mandatory = false,
             ParameterSetName = ResourceIdParameterList,
             HelpMessage = HelpMessages.SqlManagementTypeSqlVM)]
-        public new string SqlManagementType { get; set; } = "LightWeight";
+        [SqlManagementTypeCompleter]
+        public new string SqlManagementType { get; set; }
 
         /// <summary>
         /// Tags will be associated to the new sql virtual machine
         /// </summary>
         [Parameter(Mandatory = false,
             ParameterSetName = NameParameterList,
-            HelpMessage = HelpMessages.TagsSqlVM)]
+            HelpMessage = HelpMessages.TagSqlVM)]
         [Parameter(Mandatory = false,
             ParameterSetName = ResourceIdParameterList,
-            HelpMessage = HelpMessages.TagsSqlVM)]
-        public new Hashtable Tags { get; set; }
+            HelpMessage = HelpMessages.TagSqlVM)]
+        public new Hashtable Tag { get; set; }
 
         /// <summary>
         /// Sql virtual machine to be updated
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = NameInputObject,
-            ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true,
             Position = 2,
             HelpMessage = HelpMessages.InputObjectSqlVM)]
         [Parameter(Mandatory = true,
             ParameterSetName = ResourceIdInputObject,
-            ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true,
             Position = 1,
             HelpMessage = HelpMessages.InputObjectSqlVM)]
-        public AzureSqlVMModel SqlVM { get; set; }
+        [Alias("SqlVM")]
+        public AzureSqlVMModel InputObject { get; set; }
 
         /// <summary>
         /// Resource id of the sql virtual machine that will be updated
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ResourceIdParameterList,
+            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = HelpMessages.SqlVMResourceId)]
         [Parameter(Mandatory = true,
             ParameterSetName = ResourceIdInputObject,
+            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = HelpMessages.SqlVMResourceId)]
-        [Alias("ResourceId")]
-        public string SqlVMId { get; set; }
+        [Alias("SqlVMId")]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -160,10 +167,10 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         protected override void ParseInput()
         {
             // Recover the resource group name and the sql virtual machine name if the resource id was provided
-            if (ParameterSetName.StartsWith(ResourceId))
+            if (ParameterSetName.StartsWith(ParameterSet.ResourceId))
             {
-                SqlVMName = GetResourceNameFromId(SqlVMId);
-                ResourceGroupName = GetResourceGroupNameFromId(SqlVMId);
+                Name = GetResourceNameFromId(ResourceId);
+                ResourceGroupName = GetResourceGroupNameFromId(ResourceId);
             }
         }
 
@@ -173,7 +180,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <returns>The sql virtual machine that will be updated</returns>
         protected override IEnumerable<AzureSqlVMModel> GetEntity()
         {
-            return new List<AzureSqlVMModel>() { ModelAdapter.GetSqlVirtualMachine(ResourceGroupName, SqlVMName) };
+            return new List<AzureSqlVMModel>() { ModelAdapter.GetSqlVirtualMachine(ResourceGroupName, Name) };
         }
 
         /// <summary>
@@ -185,25 +192,38 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         {
             List<AzureSqlVMModel> updateData = new List<AzureSqlVMModel>();
             AzureSqlVMModel sqlVM = model.FirstOrDefault();
-            if(LicenseType != null)
+            if (ParameterSetName.EndsWith(ParameterSet.InputObject))
             {
-                sqlVM.LicenseType = LicenseType;
+                sqlVM.Offer                     = InputObject.Offer                   ?? sqlVM.Offer;     
+                sqlVM.Sku                       = InputObject.Sku                     ?? sqlVM.Sku;
+                sqlVM.LicenseType               = InputObject.LicenseType             ?? sqlVM.LicenseType;
+                sqlVM.SqlManagementType         = InputObject.SqlManagementType       ?? sqlVM.SqlManagementType;
+                sqlVM.SqlVirtualMachineGroup    = InputObject.SqlVirtualMachineGroup  ?? sqlVM.SqlVirtualMachineGroup;
+                sqlVM.WsfcDomainCredentials     = InputObject.WsfcDomainCredentials   ?? sqlVM.WsfcDomainCredentials;
+                sqlVM.Tags                      = InputObject.Tags                    ?? sqlVM.Tags;
             }
-            if (Offer != null)
+            else
             {
-                sqlVM.Offer = Offer;
-            }
-            if (Sku != null)
-            {
-                sqlVM.Sku = Sku.ToString();
-            }
-            if (SqlManagementType != null)
-            {
-                sqlVM.SqlManagementType = SqlManagementType;
-            }
-            if (Tags != null)
-            {
-                sqlVM.Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true);
+                if (LicenseType != null)
+                {
+                    sqlVM.LicenseType = LicenseType;
+                }
+                if (Offer != null)
+                {
+                    sqlVM.Offer = Offer;
+                }
+                if (Sku != null)
+                {
+                    sqlVM.Sku = Sku;
+                }
+                if (SqlManagementType != null)
+                {
+                    sqlVM.SqlManagementType = SqlManagementType;
+                }
+                if (Tag != null)
+                {
+                    sqlVM.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+                }
             }
             updateData.Add(sqlVM);
             return updateData;

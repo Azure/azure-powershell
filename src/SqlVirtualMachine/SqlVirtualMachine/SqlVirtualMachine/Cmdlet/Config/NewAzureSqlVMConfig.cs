@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
+using Microsoft.Azure.Commands.SqlVirtualMachine.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,12 @@ using static Microsoft.Azure.Commands.SqlVirtualMachine.Common.ParameterSet;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet.Config
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMConfig", DefaultParameterSetName = NameParameterList, ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true), OutputType(typeof(AzureSqlVMModel))]
+    /// <summary>
+    /// This class implements the New-AzVMConfig cmdlet. It will create a local AzureSqlVMModel powershell object that can be used as configuration settings 
+    /// for the creation of a sql virtual machine on Azure.
+    /// </summary>
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMConfig", DefaultParameterSetName = NameParameterList, SupportsShouldProcess = true)]
+    [OutputType(typeof(AzureSqlVMModel))]
     public class NewAzureSqlVMConfig : AzureSqlVMUpsertCmdletBase
     {
         /// <summary>
@@ -33,6 +39,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet.Co
             Position = 0,
             HelpMessage = HelpMessages.LicenseTypeSqlVM)]
         [ValidateNotNullOrEmpty]
+        [LicenseTypeCompleter]
         public string LicenseType { get; set; }
 
         protected override IEnumerable<AzureSqlVMModel> GetEntity()
@@ -47,19 +54,16 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet.Co
             {
                 LicenseType = this.LicenseType,
                 Offer = this.Offer,
-                Sku = (this.Sku == null) ? null : this.Sku.ToString(),
+                Sku = this.Sku,
                 SqlManagementType = this.SqlManagementType,
-                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+                Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
             });
             return newEntity;
         }
 
         protected override IEnumerable<AzureSqlVMModel> PersistChanges(IEnumerable<AzureSqlVMModel> entity)
         {
-            return new List<AzureSqlVMModel>()
-            {
-                entity.FirstOrDefault()
-            };
+            return entity;
         }
     }
 }

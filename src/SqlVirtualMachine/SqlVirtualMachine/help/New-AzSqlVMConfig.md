@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.dll-Help.xml
 Module Name: Az.SqlVirtualMachine
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sqlvirtualmachine/new-azsqlvmconfig
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Creates a new configuration for a sql virtual machine.
 ## SYNTAX
 
 ```
-New-AzSqlVMConfig [-LicenseType] <String> [-Offer <String>] [-Sku <Sku>] [-SqlManagementType <String>]
- [-Tags <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzSqlVMConfig [-LicenseType] <String> [-Offer <String>] [-Sku <String>] [-SqlManagementType <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +28,7 @@ PS C:\> $config = New-AzSqlVMConfig -LicenseType "PAYG"
 PS C:\> New-AzSqlVM -ResourceGroupName "ResourceGroup01" -Name "vm" -SqlVM $config
 Name ResourceGroupName  LicenseType Sku       Offer          SqlManagementType
 ---- -----------------  ----------- ---       -----          -----------------
-vm   ResourceGroup01	PAYG        Developer SQL2017-WS2016 Full	
+vm   ResourceGroup01	PAYG        Developer SQL2017-WS2016 Full
 ```
 
 Creates a local configurable object of sql virtual machine that can be used in order to create an Azure sql virtual machine.
@@ -84,10 +84,9 @@ Accept wildcard characters: False
 SQL virtual machine edition type.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.SqlVirtualMachine.Common.Sku]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Enterprise, Developer, Express, Standard, Web
 
 Required: False
 Position: Named
@@ -111,44 +110,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 The tags to associate with the SQL virtual machine
 
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
 
 Required: False
 Position: Named
