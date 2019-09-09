@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.7.6
 * Ignoring subscription from azure context
 
 ## Version 0.7.5
