@@ -63,6 +63,13 @@ namespace Microsoft.Azure.Commands.PrivateDns.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateLinkWithRemoteVirtualId()
+        {
+            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-CreateLinkWithRemoteVirtualId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateLinkRegistrationStatusWithPiping()
         {
             PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-UpdateLinkRegistrationStatusWithPiping");

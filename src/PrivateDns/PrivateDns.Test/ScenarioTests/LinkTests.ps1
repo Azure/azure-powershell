@@ -197,6 +197,36 @@ function Test-CreateLinkWithVirtualNetworkObject
 
 <#
 .SYNOPSIS
+Test link creation with remote virtual network ID.
+#>
+function Test-CreateLinkWithRemoteVirtualId
+{
+	$zoneName = Get-RandomZoneName
+	$linkName = Get-RandomLinkName
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$vnet2 = "/subscriptions/9e900494-c413-45af-bd52-0afe6ac97b06/resourceGroups/PowerShellTestsRG/providers/Microsoft.Network/virtualNetworks/PowerShellCrossTenantTestsVNet"
+
+	$createdZone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1"}
+	$createdVirtualNetwork = TestSetup-CreateVirtualNetwork $resourceGroup
+	$createdLink = New-AzPrivateDnsVirtualNetworkLink -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Name $linkName -Tag @{tag1="value1"} -RemoteVirtualNetworkId $vnet2 -EnableRegistration
+
+	Assert-NotNull $createdLink
+	Assert-NotNull $createdLink.Etag
+	Assert-NotNull $createdLink.Name
+	Assert-NotNull $createdLink.ZoneName
+	Assert-NotNull $createdLink.ResourceGroupName
+	Assert-AreEqual 1 $createdLink.Tags.Count
+	Assert-AreEqual $true $createdLink.RegistrationEnabled
+	Assert-AreEqual $createdLink.VirtualNetworkId $vnet2
+	Assert-AreEqual $createdLink.ProvisioningState "Succeeded"
+	Assert-Null $createdLink.Type
+
+	Remove-AzResourceGroup -Name $createdLink.ResourceGroupName -Force
+
+}
+
+<#
+.SYNOPSIS
 Test link update
 #>
 function Test-UpdateLinkRegistrationStatusWithPiping
