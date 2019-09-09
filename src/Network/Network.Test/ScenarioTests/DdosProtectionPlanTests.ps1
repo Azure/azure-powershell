@@ -48,6 +48,22 @@ function Test-DdosProtectionPlanCRUD
         Assert-NotNull $ddosProtectionPlanGet.Etag
         Assert-Null $ddosProtectionPlanGet.VirtualMachines
 
+        $ddosProtectionPlanList = Get-AzDdosProtectionPlan -ResourceGroupName $rgName
+        Assert-NotNull $ddosProtectionPlanList
+        Assert-True {$ddosProtectionPlanList.Count -ge 0}
+
+        $ddosProtectionPlanList = Get-AzDdosProtectionPlan -ResourceGroupName "*"
+        Assert-NotNull $ddosProtectionPlanList
+        Assert-True {$ddosProtectionPlanList.Count -ge 0}
+
+        $ddosProtectionPlanList = Get-AzDdosProtectionPlan -Name "*"
+        Assert-NotNull $ddosProtectionPlanList
+        Assert-True {$ddosProtectionPlanList.Count -ge 0}
+
+        $ddosProtectionPlanList = Get-AzDdosProtectionPlan -ResourceGroupName "*" -Name "*"
+        Assert-NotNull $ddosProtectionPlanList
+        Assert-True {$ddosProtectionPlanList.Count -ge 0}
+
         # Remove the DDoS protection plan
         $ddosProtectionPlanDelete = Remove-AzDdosProtectionPlan -Name $ddosProtectionPlanName -ResourceGroupName $rgName -PassThru
         Assert-AreEqual $true $ddosProtectionPlanDelete
@@ -87,7 +103,7 @@ function Test-DdosProtectionPlanCRUDWithVirtualNetwork
         # Create a Virtual Network with the DDoS protection plan
 
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EnableDdoSProtection -DdosProtectionPlanId $ddosProtectionPlan.Id
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EnableDdoSProtection -DdosProtectionPlanId $ddosProtectionPlan.Id
 
         Assert-AreEqual true $vnet.EnableDdoSProtection
         Assert-AreEqual $ddosProtectionPlan.Id $vnet.DdosProtectionPlan.Id
@@ -100,7 +116,7 @@ function Test-DdosProtectionPlanCRUDWithVirtualNetwork
 
         # Delete the virtual network
 
-        $deleteVnet = Remove-AzvirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
+        $deleteVnet = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
         Assert-AreEqual true $deleteVnet
 
         # Delete the DDoS protection plan

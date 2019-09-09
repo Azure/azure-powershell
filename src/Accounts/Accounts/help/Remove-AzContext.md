@@ -54,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Remove context even if it is the defualt
+Remove context even if it is the default
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

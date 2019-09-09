@@ -17,14 +17,20 @@ using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Job;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.HDInsight;
 using Microsoft.Azure.Management.HDInsight.Job.Models;
+using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightJobOutput"),OutputType(typeof(string))]
+    [GenericBreakingChange("Users with reader role need to specify `DefaultStorageAccountKey` parameter explicitly, otherwise error occurs.", "2.0.0", "05/06/2019")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightJobOutput"), OutputType(typeof(string))]
     public class GetAzureHDInsightJobOutputCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -131,20 +137,53 @@ namespace Microsoft.Azure.Commands.HDInsight
             return text;
         }
 
+        private string GetStorageAccountKey(string resourceGroupName, string clusterName)
+        {
+            string storageAccountKey = null;
+            string errorMessage = "Fails to retrieve storage account key. Please specify DefaultStorageAccountKey explicitly.";
+            const string AuthorizationFailedCode = "AuthorizationFailed";
+
+            try
+            {
+                ClusterConfiguration coreSiteClusterConfiguration;
+                HDInsightManagementClient.ListConfigurations(resourceGroupName, clusterName).Configurations.TryGetValue(ConfigurationKey.CoreSite, out coreSiteClusterConfiguration);
+                coreSiteClusterConfiguration?.Configuration.TryGetValue(Constants.ClusterConfiguration.StorageAccountKeyPrefix + DefaultStorageAccountName, out storageAccountKey);
+            }
+            catch (CloudException cloudEx)
+            {
+                if (cloudEx.Error.Code == AuthorizationFailedCode)
+                {
+                    errorMessage = "Insufficient permissions to retrieve storage account key. Please specify DefaultStorageAccountKey explicitly.";
+                }
+            }
+            catch (Exception ex)
+            {
+                errorMessage = errorMessage + " Reason: " + ex.Message;
+            }
+
+            if (storageAccountKey == null)
+            {
+                throw new CloudException(errorMessage);
+            }
+
+            return storageAccountKey;
+        }
+
         internal IStorageAccess GetDefaultStorageAccess(string resourceGroupName, string clusterName)
         {
             var StorageAccountSuffix = "";
-    
+
             if (DefaultContainer == null && DefaultStorageAccountName == null && DefaultStorageAccountKey == null)
             {
                 var DefaultStorageAccount = GetDefaultStorageAccount(resourceGroupName, clusterName);
 
                 var wasbAccount = DefaultStorageAccount as AzureHDInsightWASBDefaultStorageAccount;
+
                 if (wasbAccount != null)
                 {
                     DefaultContainer = wasbAccount.StorageContainerName;
                     DefaultStorageAccountName = wasbAccount.StorageAccountName;
-                    DefaultStorageAccountKey = wasbAccount.StorageAccountKey;
+                    DefaultStorageAccountKey = GetStorageAccountKey(resourceGroupName, clusterName);
                     StorageAccountSuffix = DefaultContext.Environment.StorageEndpointSuffix;
                 }
                 else
@@ -154,7 +193,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             }
 
-            return new AzureStorageAccess(DefaultStorageAccountName, DefaultStorageAccountKey, DefaultContainer,StorageAccountSuffix);
+            return new AzureStorageAccess(DefaultStorageAccountName, DefaultStorageAccountKey, DefaultContainer, StorageAccountSuffix);
         }
     }
 }

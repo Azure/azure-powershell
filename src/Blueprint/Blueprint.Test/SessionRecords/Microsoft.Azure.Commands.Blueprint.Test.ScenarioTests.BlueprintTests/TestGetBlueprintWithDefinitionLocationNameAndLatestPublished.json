@@ -1,0 +1,71 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "//providers/Microsoft.Management/managementGroups/AzBlueprint/providers/Microsoft.Blueprint/blueprints/Filiz_Powershell_Test/versions?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "Ly9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZW1lbnQvbWFuYWdlbWVudEdyb3Vwcy9BekJsdWVwcmludC9wcm92aWRlcnMvTWljcm9zb2Z0LkJsdWVwcmludC9ibHVlcHJpbnRzL0ZpbGl6X1Bvd2Vyc2hlbGxfVGVzdC92ZXJzaW9ucz9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e4cca8dd-fca0-489d-9c95-ae26a6fb2dd1"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Blueprint.BlueprintManagementClient/0.10.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "947eed89-248d-4b58-9051-14e25a85f56c"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "aa4c6530-cf6f-4dcd-b7dc-b9ff649e0681"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190228T202733Z:aa4c6530-cf6f-4dcd-b7dc-b9ff649e0681"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 28 Feb 2019 20:27:32 GMT"
+        ],
+        "Content-Length": [
+          "5964"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"blueprintName\": \"Filiz_Powershell_Test\",\r\n        \"parameters\": {},\r\n        \"resourceGroups\": {},\r\n        \"targetScope\": \"subscription\",\r\n        \"status\": {\r\n          \"timeCreated\": \"2018-12-12T06:54:08-08:00\",\r\n          \"lastModified\": \"2018-12-12T06:54:08-08:00\"\r\n        },\r\n        \"description\": \"test\"\r\n      },\r\n      \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprint/providers/Microsoft.Blueprint/blueprints/Filiz_Powershell_Test/versions/1.0\",\r\n      \"type\": \"Microsoft.Blueprint/blueprints/versions\",\r\n      \"name\": \"1.0\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"blueprintName\": \"Filiz_Powershell_Test\",\r\n        \"parameters\": {\r\n          \"audituseofclassicvirtualmachines_effect\": {\r\n            \"type\": \"string\",\r\n            \"metadata\": {\r\n              \"displayName\": \"Effect (Policy: Audit use of classic virtual machines)\"\r\n            },\r\n            \"defaultValue\": \"Audit\",\r\n            \"allowedValues\": [\r\n              \"Audit\",\r\n              \"Disabled\"\r\n            ]\r\n          }\r\n        },\r\n        \"resourceGroups\": {\r\n          \"FilizPowerShellRG\": {\r\n            \"name\": \"FilizPowerShellRG\",\r\n            \"location\": \"eastus\",\r\n            \"dependsOn\": []\r\n          }\r\n        },\r\n        \"targetScope\": \"subscription\",\r\n        \"status\": {\r\n          \"timeCreated\": \"2018-12-12T08:32:19-08:00\",\r\n          \"lastModified\": \"2018-12-12T08:32:19-08:00\"\r\n        },\r\n        \"description\": \"test\"\r\n      },\r\n      \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprint/providers/Microsoft.Blueprint/blueprints/Filiz_Powershell_Test/versions/2.0\",\r\n      \"type\": \"Microsoft.Blueprint/blueprints/versions\",\r\n      \"name\": \"2.0\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"blueprintName\": \"Filiz_Powershell_Test\",\r\n        \"changeNotes\": \"No lock\",\r\n        \"parameters\": {},\r\n        \"resourceGroups\": {\r\n          \"FilizPowerShellRG\": {\r\n            \"name\": \"FilizPowerShellRGNoLock\",\r\n            \"location\": \"eastus\",\r\n            \"dependsOn\": []\r\n          }\r\n        },\r\n        \"targetScope\": \"subscription\",\r\n        \"status\": {\r\n          \"timeCreated\": \"2018-12-28T14:53:00-08:00\",\r\n          \"lastModified\": \"2018-12-28T14:53:00-08:00\"\r\n        },\r\n        \"description\": \"test\"\r\n      },\r\n      \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprint/providers/Microsoft.Blueprint/blueprints/Filiz_Powershell_Test/versions/3.0\",\r\n      \"type\": \"Microsoft.Blueprint/blueprints/versions\",\r\n      \"name\": \"3.0\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"blueprintName\": \"Filiz_Powershell_Test\",\r\n        \"parameters\": {},\r\n        \"resourceGroups\": {\r\n          \"FilizPowerShellRG\": {\r\n            \"name\": \"FilizPowerShellRGNoLock\",\r\n            \"location\": \"eastus\",\r\n            \"metadata\": {},\r\n            \"dependsOn\": []\r\n          },\r\n          \"NewRGForSubTest123\": {\r\n            \"name\": \"NewRGForSubTest123\",\r\n            \"location\": \"eastus\",\r\n            \"metadata\": {\r\n              \"displayName\": \"NewRGForSubTest123\"\r\n            },\r\n            \"dependsOn\": []\r\n          }\r\n        },\r\n        \"targetScope\": \"subscription\",\r\n        \"status\": {\r\n          \"timeCreated\": \"2019-01-29T10:05:33-08:00\",\r\n          \"lastModified\": \"2019-01-29T10:05:33-08:00\"\r\n        },\r\n        \"description\": \"test\"\r\n      },\r\n      \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprint/providers/Microsoft.Blueprint/blueprints/Filiz_Powershell_Test/versions/4.0\",\r\n      \"type\": \"Microsoft.Blueprint/blueprints/versions\",\r\n      \"name\": \"4.0\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"blueprintName\": \"Filiz_Powershell_Test\",\r\n        \"parameters\": {},\r\n        \"resourceGroups\": {\r\n          \"FilizPowerShellRG\": {\r\n            \"name\": \"FilizPowerShellRGNoLock\",\r\n            \"location\": \"eastus\",\r\n            \"metadata\": {},\r\n            \"dependsOn\": []\r\n          },\r\n          \"NewRGForSubTest123\": {\r\n            \"name\": \"NewRGForSubTest123\",\r\n            \"location\": \"eastus\",\r\n            \"metadata\": {\r\n              \"displayName\": \"NewRGForSubTest123\"\r\n            },\r\n            \"dependsOn\": []\r\n          },\r\n          \"ResourceGroup\": {\r\n            \"metadata\": {\r\n              \"displayName\": \"storageRG\"\r\n            },\r\n            \"dependsOn\": []\r\n          }\r\n        },\r\n        \"targetScope\": \"subscription\",\r\n        \"status\": {\r\n          \"timeCreated\": \"2019-01-29T14:28:10-08:00\",\r\n          \"lastModified\": \"2019-01-29T14:28:10-08:00\"\r\n        },\r\n        \"description\": \"test\"\r\n      },\r\n      \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprint/providers/Microsoft.Blueprint/blueprints/Filiz_Powershell_Test/versions/5.0\",\r\n      \"type\": \"Microsoft.Blueprint/blueprints/versions\",\r\n      \"name\": \"5.0\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"blueprintName\": \"Filiz_Powershell_Test\",\r\n        \"parameters\": {},\r\n        \"resourceGroups\": {\r\n          \"FilizPowerShellRG\": {\r\n            \"name\": \"FilizPowerShellRGNoLock\",\r\n            \"location\": \"eastus\",\r\n            \"metadata\": {},\r\n            \"dependsOn\": []\r\n          },\r\n          \"NewRGForSubTest123\": {\r\n            \"metadata\": {\r\n              \"displayName\": \"NewRGForSubTest123\"\r\n            },\r\n            \"dependsOn\": []\r\n          },\r\n          \"ResourceGroup\": {\r\n            \"metadata\": {\r\n              \"displayName\": \"storageRG\"\r\n            },\r\n            \"dependsOn\": []\r\n          }\r\n        },\r\n        \"targetScope\": \"subscription\",\r\n        \"status\": {\r\n          \"timeCreated\": \"2019-02-07T08:41:00-08:00\",\r\n          \"lastModified\": \"2019-02-07T08:41:00-08:00\"\r\n        },\r\n        \"description\": \"test\"\r\n      },\r\n      \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprint/providers/Microsoft.Blueprint/blueprints/Filiz_Powershell_Test/versions/6.0\",\r\n      \"type\": \"Microsoft.Blueprint/blueprints/versions\",\r\n      \"name\": \"6.0\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "28cbf98f-381d-4425-9ac4-cf342dab9753"
+  }
+}

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AnalysisServices.dll-Help.xml
 Module Name: Az.AnalysisServices
 online version: https://docs.microsoft.com/en-us/powershell/module/az.analysisservices/set-azanalysisservicesserver
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### -GatewayResourceId
-Gateway resource Id for assocaite to an Analysis server
+Gateway resource Id to associate to an Analysis server
 
 ```yaml
 Type: System.String

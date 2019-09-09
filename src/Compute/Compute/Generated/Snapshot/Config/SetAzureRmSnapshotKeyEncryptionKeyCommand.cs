@@ -19,13 +19,14 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -62,39 +63,46 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            if (this.MyInvocation.BoundParameters.ContainsKey("KeyUrl"))
+            // EncryptionSettingsCollection
+            if (this.Snapshot.EncryptionSettingsCollection == null)
             {
-                // EncryptionSettings
-                if (this.Snapshot.EncryptionSettings == null)
-                {
-                    this.Snapshot.EncryptionSettings = new EncryptionSettings();
-                }
-                // KeyEncryptionKey
-                if (this.Snapshot.EncryptionSettings.KeyEncryptionKey == null)
-                {
-                    this.Snapshot.EncryptionSettings.KeyEncryptionKey = new KeyVaultAndKeyReference();
-                }
-                this.Snapshot.EncryptionSettings.KeyEncryptionKey.KeyUrl = this.KeyUrl;
+                this.Snapshot.EncryptionSettingsCollection = new EncryptionSettingsCollection();
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("SourceVaultId"))
+            // EncryptionSettings
+            if (this.Snapshot.EncryptionSettingsCollection.EncryptionSettings == null)
             {
-                // EncryptionSettings
-                if (this.Snapshot.EncryptionSettings == null)
-                {
-                    this.Snapshot.EncryptionSettings = new EncryptionSettings();
-                }
+                this.Snapshot.EncryptionSettingsCollection.EncryptionSettings = new List<EncryptionSettingsElement>();
+            }
+
+            if (this.Snapshot.EncryptionSettingsCollection.EncryptionSettings.Count == 0)
+            {
+                this.Snapshot.EncryptionSettingsCollection.EncryptionSettings.Add(new EncryptionSettingsElement());
+            }
+
+            if (this.IsParameterBound(c => c.KeyUrl))
+            {
                 // KeyEncryptionKey
-                if (this.Snapshot.EncryptionSettings.KeyEncryptionKey == null)
+                if (this.Snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey == null)
                 {
-                    this.Snapshot.EncryptionSettings.KeyEncryptionKey = new KeyVaultAndKeyReference();
+                    this.Snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey = new KeyVaultAndKeyReference();
+                }
+                this.Snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl = this.KeyUrl;
+            }
+
+            if (this.IsParameterBound(c => c.SourceVaultId))
+            {
+                // KeyEncryptionKey
+                if (this.Snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey == null)
+                {
+                    this.Snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey = new KeyVaultAndKeyReference();
                 }
                 // SourceVault
-                if (this.Snapshot.EncryptionSettings.KeyEncryptionKey.SourceVault == null)
+                if (this.Snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault == null)
                 {
-                    this.Snapshot.EncryptionSettings.KeyEncryptionKey.SourceVault = new SourceVault();
+                    this.Snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault = new SourceVault();
                 }
-                this.Snapshot.EncryptionSettings.KeyEncryptionKey.SourceVault.Id = this.SourceVaultId;
+                this.Snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault.Id = this.SourceVaultId;
             }
 
             WriteObject(this.Snapshot);

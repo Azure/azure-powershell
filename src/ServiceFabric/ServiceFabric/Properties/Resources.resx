@@ -151,7 +151,7 @@
     <value>Cannot find key vault '{0}' from secret id '{1}'.</value>
   </data>
   <data name="CannotFindVMSS" xml:space="preserve">
-    <value>Cannot find Virtual Machine Scale Sate with name {0}.</value>
+    <value>Cannot find Virtual Machine Scale Set with name {0}.</value>
   </data>
   <data name="CannotParseReliabilityLevel" xml:space="preserve">
     <value>Cannot parse reliability level {0}.</value>
@@ -307,7 +307,7 @@
     <value>Access policy is not set. No user or application have access permission to use this vault. Please use Set-AzKeyVaultAccessPolicy to set access policies.</value>
   </data>
   <data name="VmExtensionNotFound" xml:space="preserve">
-    <value>The resource group should have a valid VM extension for Service Fabric.</value>
+    <value>No valid Service Fabric extension found in resource group '{0}' that corresponds to cluster id '{1}'. The resource group should have a valid VM extension for Service Fabric.</value>
   </data>
   <data name="VmssVerbose" xml:space="preserve">
     <value>Virtual machine scale set {0} state is {1}.</value>

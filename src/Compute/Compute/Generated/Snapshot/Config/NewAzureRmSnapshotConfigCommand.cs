@@ -19,14 +19,15 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -60,6 +61,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         [LocationCompleter("Microsoft.Compute/snapshots")]
         public string Location { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("V1", "V2")]
+        public string HyperVGeneration { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -122,10 +129,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // CreationData
             CreationData vCreationData = null;
 
-            // EncryptionSettings
-            EncryptionSettings vEncryptionSettings = null;
+            // EncryptionSettingsCollection
+            EncryptionSettingsCollection vEncryptionSettingsCollection = null;
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("SkuName"))
+            if (this.IsParameterBound(c => c.SkuName))
             {
                 if (vSku == null)
                 {
@@ -134,7 +141,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vSku.Name = this.SkuName;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("CreateOption"))
+            if (this.IsParameterBound(c => c.CreateOption))
             {
                 if (vCreationData == null)
                 {
@@ -143,7 +150,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vCreationData.CreateOption = this.CreateOption;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("StorageAccountId"))
+            if (this.IsParameterBound(c => c.StorageAccountId))
             {
                 if (vCreationData == null)
                 {
@@ -152,7 +159,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vCreationData.StorageAccountId = this.StorageAccountId;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("ImageReference"))
+            if (this.IsParameterBound(c => c.ImageReference))
             {
                 if (vCreationData == null)
                 {
@@ -161,7 +168,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vCreationData.ImageReference = this.ImageReference;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("SourceUri"))
+            if (this.IsParameterBound(c => c.SourceUri))
             {
                 if (vCreationData == null)
                 {
@@ -170,7 +177,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vCreationData.SourceUri = this.SourceUri;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("SourceResourceId"))
+            if (this.IsParameterBound(c => c.SourceResourceId))
             {
                 if (vCreationData == null)
                 {
@@ -179,42 +186,65 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vCreationData.SourceResourceId = this.SourceResourceId;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("EncryptionSettingsEnabled"))
+            if (this.IsParameterBound(c => c.EncryptionSettingsEnabled))
             {
-                if (vEncryptionSettings == null)
+                if (vEncryptionSettingsCollection == null)
                 {
-                    vEncryptionSettings = new EncryptionSettings();
+                    vEncryptionSettingsCollection = new EncryptionSettingsCollection();
                 }
-                vEncryptionSettings.Enabled = this.EncryptionSettingsEnabled;
+                vEncryptionSettingsCollection.Enabled = (bool) this.EncryptionSettingsEnabled;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("DiskEncryptionKey"))
+            if (this.IsParameterBound(c => c.DiskEncryptionKey))
             {
-                if (vEncryptionSettings == null)
+                if (vEncryptionSettingsCollection == null)
                 {
-                    vEncryptionSettings = new EncryptionSettings();
+                    vEncryptionSettingsCollection = new EncryptionSettingsCollection();
                 }
-                vEncryptionSettings.DiskEncryptionKey = this.DiskEncryptionKey;
+
+                if (vEncryptionSettingsCollection.EncryptionSettings == null)
+                {
+                    vEncryptionSettingsCollection.EncryptionSettings = new List<EncryptionSettingsElement>();
+                }
+
+                if (vEncryptionSettingsCollection.EncryptionSettings.Count == 0)
+                {
+                    vEncryptionSettingsCollection.EncryptionSettings.Add(new EncryptionSettingsElement());
+                }
+
+                vEncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey = this.DiskEncryptionKey;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("KeyEncryptionKey"))
+            if (this.IsParameterBound(c => c.KeyEncryptionKey))
             {
-                if (vEncryptionSettings == null)
+                if (vEncryptionSettingsCollection == null)
                 {
-                    vEncryptionSettings = new EncryptionSettings();
+                    vEncryptionSettingsCollection = new EncryptionSettingsCollection();
                 }
-                vEncryptionSettings.KeyEncryptionKey = this.KeyEncryptionKey;
+
+                if (vEncryptionSettingsCollection.EncryptionSettings == null)
+                {
+                    vEncryptionSettingsCollection.EncryptionSettings = new List<EncryptionSettingsElement>();
+                }
+
+                if (vEncryptionSettingsCollection.EncryptionSettings.Count == 0)
+                {
+                    vEncryptionSettingsCollection.EncryptionSettings.Add(new EncryptionSettingsElement());
+                }
+
+                vEncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey = this.KeyEncryptionKey;
             }
 
             var vSnapshot = new PSSnapshot
             {
-                OsType = this.MyInvocation.BoundParameters.ContainsKey("OsType") ? this.OsType : (OperatingSystemTypes?)null,
-                DiskSizeGB = this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB") ? this.DiskSizeGB : (int?)null,
-                Location = this.MyInvocation.BoundParameters.ContainsKey("Location") ? this.Location : null,
-                Tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
+                OsType = this.IsParameterBound(c => c.OsType) ? this.OsType : (OperatingSystemTypes?)null,
+                HyperVGeneration = this.IsParameterBound(c => c.HyperVGeneration) ? this.HyperVGeneration : null,
+                DiskSizeGB = this.IsParameterBound(c => c.DiskSizeGB) ? this.DiskSizeGB : (int?)null,
+                Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
+                Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 Sku = vSku,
                 CreationData = vCreationData,
-                EncryptionSettings = vEncryptionSettings,
+                EncryptionSettingsCollection = vEncryptionSettingsCollection,
             };
 
             WriteObject(vSnapshot);

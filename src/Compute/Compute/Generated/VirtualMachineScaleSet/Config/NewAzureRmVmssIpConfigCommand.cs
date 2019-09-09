@@ -19,13 +19,14 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -118,13 +119,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             var vIpConfigurations = new VirtualMachineScaleSetIPConfiguration();
 
-            vIpConfigurations.Name = this.MyInvocation.BoundParameters.ContainsKey("Name") ? this.Name : null;
+            vIpConfigurations.Name = this.IsParameterBound(c => c.Name) ? this.Name : null;
             vIpConfigurations.Primary = this.Primary.IsPresent;
-            vIpConfigurations.PrivateIPAddressVersion = this.MyInvocation.BoundParameters.ContainsKey("PrivateIPAddressVersion") ? this.PrivateIPAddressVersion : null;
-            vIpConfigurations.Id = this.MyInvocation.BoundParameters.ContainsKey("Id") ? this.Id : null;
+            vIpConfigurations.PrivateIPAddressVersion = this.IsParameterBound(c => c.PrivateIPAddressVersion) ? this.PrivateIPAddressVersion : null;
+            vIpConfigurations.Id = this.IsParameterBound(c => c.Id) ? this.Id : null;
 
             // SubnetId
-            if (this.MyInvocation.BoundParameters.ContainsKey("SubnetId"))
+            if (this.IsParameterBound(c => c.SubnetId))
             {
                 if (vIpConfigurations.Subnet == null)
                 {
@@ -135,7 +136,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
             // PublicIPAddressConfigurationName
-            if (this.MyInvocation.BoundParameters.ContainsKey("PublicIPAddressConfigurationName"))
+            if (this.IsParameterBound(c => c.PublicIPAddressConfigurationName))
             {
                 if (vIpConfigurations.PublicIPAddressConfiguration == null)
                 {
@@ -146,7 +147,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
             // PublicIPAddressConfigurationIdleTimeoutInMinutes
-            if (this.MyInvocation.BoundParameters.ContainsKey("PublicIPAddressConfigurationIdleTimeoutInMinutes"))
+            if (this.IsParameterBound(c => c.PublicIPAddressConfigurationIdleTimeoutInMinutes))
             {
                 if (vIpConfigurations.PublicIPAddressConfiguration == null)
                 {
@@ -157,7 +158,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
             // DnsSetting
-            if (this.MyInvocation.BoundParameters.ContainsKey("DnsSetting"))
+            if (this.IsParameterBound(c => c.DnsSetting))
             {
                 if (vIpConfigurations.PublicIPAddressConfiguration == null)
                 {
@@ -189,7 +190,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
             // PublicIPPrefix
-            if (this.MyInvocation.BoundParameters.ContainsKey("PublicIPPrefix"))
+            if (this.IsParameterBound(c => c.PublicIPPrefix))
             {
                 if (vIpConfigurations.PublicIPAddressConfiguration == null)
                 {

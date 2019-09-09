@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private ResourceManagerSdkClient resourceManagerSdkClient;
 
         /// <summary>
-        /// Field that holds the subscripotions client instance
+        /// Field that holds the subscriptions client instance
         /// </summary>
         private SubscriptionSdkClient subscriptionSdkClient;
 
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 httpClientHelper: HttpClientHelperFactory.Instance
                 .CreateHttpClientHelper(
                         credentials: AzureSession.Instance.AuthenticationFactory
-                                                 .GetSubscriptionCloudCredentials(
+                                                 .GetServiceClientCredentials(
                                                     DefaultContext,
                                                     AzureEnvironment.Endpoint.ResourceManager),
                         headerValues: AzureSession.Instance.ClientFactory.UserAgents,

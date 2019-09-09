@@ -37,5 +37,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-Snapshot");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiskEncrypt()
+        {
+            TestRunner.RunTestScript("Test-DiskEncrypt");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSnapshotEncrypt()
+        {
+            TestRunner.RunTestScript("Test-SnapshotEncrypt");
+        }
     }
 }

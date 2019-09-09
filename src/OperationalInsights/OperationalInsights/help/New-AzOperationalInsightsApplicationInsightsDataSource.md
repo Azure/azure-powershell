@@ -65,7 +65,7 @@ Properties        : {"linkedResourceId":"subscriptions/e791a474-ee54-46a2-bb06-5
 
 ```
 
-This command creates an application-insights data source of a given application in a given log analytics workpsace. This enables the collection of logs from given application to the log analytics workpsace.
+This command creates an application-insights data source of a given application in a given log analytics workspace. This enables the collection of logs from given application to the log analytics workspace.
 
 ### Example 2: Get workspace object and create application-insights data source by the application resource id
 ```

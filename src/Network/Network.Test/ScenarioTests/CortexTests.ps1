@@ -51,6 +51,16 @@ function Test-CortexCRUD
 
         $virtualWansAll = Get-AzureRmVirtualWan
         Assert-NotNull $virtualWansAll
+        Assert-NotNull $virtualWansAll[0].ResourceGroupName
+
+		$virtualWansAll = Get-AzVirtualWan -ResourceGroupName "*"
+        Assert-NotNull $virtualWansAll
+
+		$virtualWansAll = Get-AzVirtualWan -Name "*"
+        Assert-NotNull $virtualWansAll
+
+		$virtualWansAll = Get-AzVirtualWan -ResourceGroupName "*" -Name "*"
+        Assert-NotNull $virtualWansAll
 
 		# Create the Virtual Hub
 		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan
@@ -63,6 +73,16 @@ function Test-CortexCRUD
         Assert-NotNull $virtualHubs
 
         $virtualHubsAll = Get-AzureRmVirtualHub
+        Assert-NotNull $virtualHubsAll
+         Assert-NotNull $virtualHubsAll[0].ResourceGroupName
+
+		$virtualHubsAll = Get-AzureRmVirtualHub -ResourceGroupName "*"
+        Assert-NotNull $virtualHubsAll
+
+		$virtualHubsAll = Get-AzureRmVirtualHub -Name "*"
+        Assert-NotNull $virtualHubsAll
+
+		$virtualHubsAll = Get-AzureRmVirtualHub -ResourceGroupName "*" -Name "*"
         Assert-NotNull $virtualHubsAll
 
 		# Update the Virtual Hub
@@ -89,7 +109,17 @@ function Test-CortexCRUD
         $vpnSites = Get-AzureRmVpnSite -ResourceGroupName $rgName
         Assert-NotNull $vpnSites
 
-        $vpnSitesAll = Get-AzureRmVpnSite
+        $vpnSitesAll = Get-AzVpnSite
+        Assert-NotNull $vpnSitesAll
+        Assert-NotNull $vpnSitesAll[0].ResourceGroupName
+
+		$vpnSitesAll = Get-AzVpnSite -ResourceGroupName "*"
+        Assert-NotNull $vpnSitesAll
+
+		$vpnSitesAll = Get-AzVpnSite -Name "*"
+        Assert-NotNull $vpnSitesAll
+
+		$vpnSitesAll = Get-AzVpnSite -ResourceGroupName "*" -Name "*"
         Assert-NotNull $vpnSitesAll
 
 		# Create the VpnGateway
@@ -100,20 +130,39 @@ function Test-CortexCRUD
 		Assert-AreEqual $vpnGatewayName $vpnGateway.Name
 		Assert-AreEqual 4 $vpnGateway.VpnGatewayScaleUnit
 
+        $vpnGateways = Get-AzVpnGateway
+        Assert-NotNull $vpnGateways
+        Assert-NotNull $vpnGateways[0].ResourceGroupName
+
         $vpnGateways = Get-AzureRmVpnGateway -ResourceGroupName $rgName
         Assert-NotNull $vpnGateways
 
-        $vpnGatewaysAll = Get-AzureRmVpnGateway
+        $vpnGatewaysAll = Get-AzureRmVpnGateway -ResourceGroupName "*"
+        Assert-NotNull $vpnGatewaysAll
+
+		$vpnGatewaysAll = Get-AzureRmVpnGateway -Name "*"
+        Assert-NotNull $vpnGatewaysAll
+
+		$vpnGatewaysAll = Get-AzureRmVpnGateway -ResourceGroupName "*" -Name "*"
+        Assert-NotNull $vpnGatewaysAll
+
+		$vpnGatewaysAll = Get-AzureRmVpnGateway
         Assert-NotNull $vpnGatewaysAll
 
 		# Create the VpnConnection
-		$createdVpnConnection = New-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -VpnSite $vpnSite -ConnectionBandwidth 20
-		$createdVpnConnection = Update-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -ConnectionBandwidth 30
+		$createdVpnConnection = New-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -VpnSite $vpnSite -ConnectionBandwidth 20 -UseLocalAzureIpAddress 
+		Assert-AreEqual $true $createdVpnConnection.UseLocalAzureIpAddress
+		
+		$createdVpnConnection = Update-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -ConnectionBandwidth 30 -UseLocalAzureIpAddress $false
 		$vpnConnection = Get-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName
 		Assert-AreEqual $vpnConnectionName $vpnConnection.Name
 		Assert-AreEqual 30 $vpnConnection.ConnectionBandwidth
+		Assert-AreEqual $false $vpnConnection.UseLocalAzureIpAddress 
 
         $vpnConnections = Get-AzureRmVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName
+        Assert-NotNull $vpnConnections
+
+		$vpnConnections = Get-AzureRmVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "*"
         Assert-NotNull $vpnConnections
 
 		# Create a HubVirtualNetworkConnection
@@ -123,27 +172,30 @@ function Test-CortexCRUD
 		Assert-AreEqual $hubVnetConnectionName $hubVnetConnection.Name
         $hubVnetConnections = Get-AzureRmVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName
         Assert-NotNull $hubVnetConnections
+        $hubVnetConnections = Get-AzureRmVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name "*"
+        Assert-NotNull $hubVnetConnections
+
+        # Clean up
+        $delete = Remove-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName -Force -PassThru
+        Assert-AreEqual $True $delete
+
+        $delete = Remove-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -Force -PassThru
+        Assert-AreEqual $True $delete
+
+        $delete = Remove-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -Force -PassThru
+        Assert-AreEqual $True $delete
+
+        $delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName -Force -PassThru
+        Assert-AreEqual $True $delete
+
+        $delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
+        Assert-AreEqual $True $delete
+
+        $delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
+        Assert-AreEqual $True $delete
 	}
 	finally
 	{
-		$delete = Remove-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName -Force -PassThru
-		Assert-AreEqual $True $delete
-
-		$delete = Remove-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -Force -PassThru
-		Assert-AreEqual $True $delete
-
-		$delete = Remove-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -Force -PassThru
-		Assert-AreEqual $True $delete
-
-		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName -Force -PassThru
-		Assert-AreEqual $True $delete
-
-		$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
-		Assert-AreEqual $True $delete
-
-		$delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
-		Assert-AreEqual $True $delete
-
 		Clean-ResourceGroup $rgname
 	}
 }
@@ -246,7 +298,8 @@ function Test-CortexDownloadConfig
 function Test-CortexExpressRouteCRUD
 {
     # Setup
-    $rgName = Get-ResourceName
+    $rgName = Get-ResourceGroupName
+    $hubRgName = Get-ResourceGroupName
     # ExpressRoute gateways have been enabled only in westcentralus region
     $rglocation = Get-ProviderLocation "ResourceManagement" "westcentralus"
 
@@ -260,14 +313,15 @@ function Test-CortexExpressRouteCRUD
     {
         # Create the resource group
         $resourceGroup = New-AzureRmResourceGroup -Name $rgName -Location $rglocation
+        $resourceGroup = New-AzureRmResourceGroup -Name $hubRgName -Location $rglocation
 
         # Create the Virtual Wan
         $createdVirtualWan = New-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
         $virtualWan = Get-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
         Write-Debug "Created Virtual WAN $virtualWan.Name successfully"
 
-        $createdVirtualHub = New-AzureRmVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "10.8.0.0/24" -VirtualWan $virtualWan
-        $virtualHub = Get-AzureRmVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+        $createdVirtualHub = New-AzureRmVirtualHub -ResourceGroupName $hubRgName -Name $virtualHubName -Location $rglocation -AddressPrefix "10.8.0.0/24" -VirtualWan $virtualWan
+        $virtualHub = Get-AzureRmVirtualHub -ResourceGroupName $hubRgName -Name $virtualHubName
         Write-Debug "Created Virtual Hub virtualHub.Name successfully"
 
         # Create the ExpressRouteGateway
@@ -282,13 +336,25 @@ function Test-CortexExpressRouteCRUD
         Assert-NotNull $expressRouteGateways
         Assert-True { $expressRouteGateways.Count -gt 0 }
 
-        $expressRouteGateways = Get-AzureRmExpressRouteGateway -ResourceGroupName $rgName
+		$expressRouteGateways = Get-AzureRmExpressRouteGateway -ResourceGroupName "*"
+        Assert-NotNull $expressRouteGateways
+        Assert-True { $expressRouteGateways.Count -gt 0 }
+
+		$expressRouteGateways = Get-AzureRmExpressRouteGateway -Name "*"
+        Assert-NotNull $expressRouteGateways
+        Assert-True { $expressRouteGateways.Count -gt 0 }
+
+		$expressRouteGateways = Get-AzureRmExpressRouteGateway -ResourceGroupName "*" -Name "*"
+        Assert-NotNull $expressRouteGateways
+        Assert-True { $expressRouteGateways.Count -gt 0 }
+
+		$expressRouteGateways = Get-AzureRmExpressRouteGateway -ResourceGroupName $rgName
         Assert-NotNull $expressRouteGateways
         Assert-True { $expressRouteGateways.Count -gt 0 }
 
         # Create the ExpressRouteCircuit with peering to which the connection needs to be established to
         $peering = New-AzureRmExpressRouteCircuitPeeringConfig -Name AzurePrivatePeering -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.2.3.4/30" -SecondaryPeerAddressPrefix "11.2.3.4/30" -VlanId 22
-        $circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $rglocation -ResourceGroupName $rgname -SkuTier Standard -SkuFamily MeteredData  -ServiceProviderName "Zayo" -PeeringLocation "Denver" -BandwidthInMbps 200 -Peering $peering
+        $circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $rglocation -ResourceGroupName $rgname -SkuTier Premium -SkuFamily MeteredData  -ServiceProviderName "Zayo" -PeeringLocation "Denver" -BandwidthInMbps 200 -Peering $peering
         Write-Debug "Created ExpressRoute Circuit with Private Peering $circuitName successfully"
 
         # Get Express Route Circuit Resource
@@ -307,6 +373,14 @@ function Test-CortexExpressRouteCRUD
         Assert-AreEqual $expressRouteConnectionName $expressRouteConnection.Name
         Assert-AreEqual 30 $expressRouteConnection.RoutingWeight
 
+		$expressRouteConnection = Get-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ExpressRouteGatewayName $expressRouteGatewayName
+        Assert-NotNull $expressRouteConnection
+		Assert-True { $expressRouteConnection.Count -ge 0}
+
+		$expressRouteConnection = Get-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ExpressRouteGatewayName $expressRouteGatewayName -Name "*"
+        Assert-NotNull $expressRouteConnection
+		Assert-True { $expressRouteConnection.Count -ge 0}
+
         # Clean up
         Remove-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ExpressRouteGatewayName $expressRouteGatewayName -Name $expressRouteConnectionName -Force
         Assert-ThrowsLike { Get-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ExpressRouteGatewayName $expressRouteGatewayName -Name $expressRouteConnectionName } "*Not*Found*"
@@ -314,7 +388,7 @@ function Test-CortexExpressRouteCRUD
         Remove-AzureRmExpressRouteGateway -ResourceGroupName $rgName -Name $expressRouteGatewayName -Force
         Assert-ThrowsLike { Get-AzureRmExpressRouteGateway -ResourceGroupName $rgName -Name $expressRouteGatewayName } "*Not*Found*"
 
-        Remove-AzureRmVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force
+        Remove-AzureRmVirtualHub -ResourceGroupName $hubRgName -Name $virtualHubName -Force
 
         Remove-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force
         Assert-ThrowsLike { Get-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName } "*Not*Found*"

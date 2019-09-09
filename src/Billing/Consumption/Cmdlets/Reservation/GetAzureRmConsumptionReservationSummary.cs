@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Reservation
     [OutputType(typeof(PSReservationSummary))]
     public class GetAzureRmConsumptionReservationSummary : AzureConsumptionCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "The time grain of the reservation summaryy, can be daily or monthly.")]
+        [Parameter(Mandatory = true, HelpMessage = "The time grain of the reservation summary, can be daily or monthly.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet("daily", "monthly")]
         public string Grain { get; set; }

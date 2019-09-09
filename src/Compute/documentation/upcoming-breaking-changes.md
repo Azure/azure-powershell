@@ -4,70 +4,128 @@
 
 The following cmdlets were affected this release:
 
-**New-AzureRmAvailabilitySet**
+**Update-AzAvailabilitySet**
 - Switch parameter, Managed, will be replaced with Sku parameter.
 In order to set a managed availability set, a user should give Sku parameter with 'Aligned' value.
 
 ```powershell
 # Old
-New-AzureRmAvailabilitySet -Managed
+Update-AzAvailabilitySet -Managed
 
 # New
-New-AzureRmAvailabilitySet -Sku 'Aligned'
+Update-AzAvailabilitySet -Sku 'Aligned'
 ```
 
-**Miscellaneous**
-- The sku name property nested in types `PSDisk` and `PSSnapshot` will be changed from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively
+**Update-AzImage**
+- Image parameter will be removed for the parameter set when ResourceGroupName and ImageName are given.
 
-```powershell
-# This will now return Standard_LRS or Premium_LRS
-$disk = Get-AzureRmDisk -ResourceGroupName "MyResourceGroup" -DiskName "MyDiskName"
-$disk.Sku.Name
+**Save-AzImage**
+- Name will be removed from the Id parameter set.
 
-$snapshot = Get-AzureRmSnapshot -ResourceGroupName "MyResourceGroup" -SnapshotName "MySnapshotName"
-$snapshot.Sku.Name
-```
+**Restart-AzVM**
+- Name will be removed from the Id parameter set.
 
-- The storage account type property nested in types `PSVirtualMachine`, `PSVirtualMachineScaleSet` and `PSImage` will be changed from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively
+**Set-AzVM**
+- Name will be removed from the Id parameter set.
 
-```powershell
-# This will now return Standard_LRS or Premium_LRS
-$vm = Get-AzureRmVM -ResourceGroupName "MyResourceGroup" -Name "MyVM"
-$vm.StorageProfile.DataDisks[0].ManagedDisk.StorageAccountType
-```
+**Start-AzVM**
+- Name will be removed from the Id parameter set.
 
-**Add-AzureRmImageDataDisk**
-- The accepted values for parameter StorageAccountType will change from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively
+**Remove-AzVM**
+- Name will be removed from the Id parameter set.
 
-**Add-AzureRmVMDataDisk**
-- The accepted values for parameter StorageAccountType will change from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively
+**Stop-AzVM**
+- Name will be removed from the Id parameter set.
 
-**Add-AzureRmVmssDataDisk**
-- The accepted values for parameter StorageAccountType will change from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively
+**New-AzDiskConfig**
+- EncryptionSettings property in the cmdlet output will be deprecated.  It will be replaced with EncryptionSettingsCollection.
+- EncryptionSettings.Enabled will be replaced with EncryptionSettingsCollection.Enabled.
+- EncryptionSettings.DiskEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.
+- EncryptionSettings.KeyEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.
+- EncryptionSettingsCollection supports a list of EncryptionSettings.
+- HyperVGeneration property will be added.
+- DiskState property will be added.
 
-**New-AzureRmDiskConfig**
-- The accepted values for parameter SkuName will change from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively
+**Set-AzDiskDiskEncryptionKey**
+- EncryptionSettings property in the cmdlet output will be deprecated.  It will be replaced with EncryptionSettingsCollection.
+- EncryptionSettings.Enabled will be replaced with EncryptionSettingsCollection.Enabled.
+- EncryptionSettings.DiskEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.
+- EncryptionSettings.KeyEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.
+- EncryptionSettingsCollection supports a list of EncryptionSettings.
+- HyperVGeneration property will be added.
+- DiskState property will be added.
 
-**New-AzureRmDiskUpdateConfig**
-- The accepted values for parameter SkuName will change from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively
+**Set-AzDiskKeyEncryptionKey**
+- EncryptionSettings property in the cmdlet output will be deprecated.  It will be replaced with EncryptionSettingsCollection.
+- EncryptionSettings.Enabled will be replaced with EncryptionSettingsCollection.Enabled.
+- EncryptionSettings.DiskEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.
+- EncryptionSettings.KeyEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.
+- EncryptionSettingsCollection supports a list of EncryptionSettings.
+- HyperVGeneration property will be added.
+- DiskState property will be added.
 
-**New-AzureRmSnapshotConfig**
-- The accepted values for parameter SkuName will change from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively
+**New-AzDiskUpdateConfig**
+- EncryptionSettings property in the cmdlet output will be deprecated.  It will be replaced with EncryptionSettingsCollection.
+- EncryptionSettings.Enabled will be replaced with EncryptionSettingsCollection.Enabled.
+- EncryptionSettings.DiskEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.
+- EncryptionSettings.KeyEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.
+- EncryptionSettingsCollection supports a list of EncryptionSettings.
 
-**New-AzureRmSnapshotUpdateConfig**
-- The accepted values for parameter SkuName will change from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively
+**Set-AzDiskUpdateDiskEncryptionKey**
+- EncryptionSettings property in the cmdlet output will be deprecated.  It will be replaced with EncryptionSettingsCollection.
+- EncryptionSettings.Enabled will be replaced with EncryptionSettingsCollection.Enabled.
+- EncryptionSettings.DiskEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.
+- EncryptionSettings.KeyEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.
+- EncryptionSettingsCollection supports a list of EncryptionSettings.
 
-**Set-AzureRmImageOsDisk**
-- The accepted values for parameter StorageAccountType will change from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively
+**Set-AzDiskUpdateKeyEncryptionKey**
+- EncryptionSettings property in the cmdlet output will be deprecated.  It will be replaced with EncryptionSettingsCollection.
+- EncryptionSettings.Enabled will be replaced with EncryptionSettingsCollection.Enabled.
+- EncryptionSettings.DiskEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.
+- EncryptionSettings.KeyEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.
+- EncryptionSettingsCollection supports a list of EncryptionSettings.
 
-**Set-AzureRmVMDataDisk**
-- The accepted values for parameter StorageAccountType will change from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively
+**New-AzSnapshotConfig**
+- EncryptionSettings property in the cmdlet output will be deprecated.  It will be replaced with EncryptionSettingsCollection.
+- EncryptionSettings.Enabled will be replaced with EncryptionSettingsCollection.Enabled.
+- EncryptionSettings.DiskEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.
+- EncryptionSettings.KeyEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.
+- EncryptionSettingsCollection supports a list of EncryptionSettings.
+- HyperVGeneration property will be added.
 
-**Set-AzureRmVMOSDisk**
-- The accepted values for parameter StorageAccountType will change from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively
+**Set-AzSnapshotDiskEncryptionKey**
+- EncryptionSettings property in the cmdlet output will be deprecated.  It will be replaced with EncryptionSettingsCollection.
+- EncryptionSettings.Enabled will be replaced with EncryptionSettingsCollection.Enabled.
+- EncryptionSettings.DiskEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.
+- EncryptionSettings.KeyEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.
+- EncryptionSettingsCollection supports a list of EncryptionSettings.
+- HyperVGeneration property will be added.
 
-**Set-AzureRmVmssStorageProfile**
-- The accepted values for parameter ManagedDisk will change from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively
+**Set-AzSnapshotKeyEncryptionKey**
+- EncryptionSettings property in the cmdlet output will be deprecated.  It will be replaced with EncryptionSettingsCollection.
+- EncryptionSettings.Enabled will be replaced with EncryptionSettingsCollection.Enabled.
+- EncryptionSettings.DiskEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.
+- EncryptionSettings.KeyEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.
+- EncryptionSettingsCollection supports a list of EncryptionSettings.
+- HyperVGeneration property will be added.
 
-**Update-AzureRmVmss**
-- The accepted values for parameter ManagedDiskStorageAccountType will change from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively
+**New-AzSnapshotUpdateConfig**
+- EncryptionSettings property in the cmdlet output will be deprecated.  It will be replaced with EncryptionSettingsCollection.
+- EncryptionSettings.Enabled will be replaced with EncryptionSettingsCollection.Enabled.
+- EncryptionSettings.DiskEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.
+- EncryptionSettings.KeyEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.
+- EncryptionSettingsCollection supports a list of EncryptionSettings.
+
+**Set-AzSnapshotUpdateDiskEncryptionKey**
+- EncryptionSettings property in the cmdlet output will be deprecated.  It will be replaced with EncryptionSettingsCollection.
+- EncryptionSettings.Enabled will be replaced with EncryptionSettingsCollection.Enabled.
+- EncryptionSettings.DiskEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.
+- EncryptionSettings.KeyEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.
+- EncryptionSettingsCollection supports a list of EncryptionSettings.
+
+**Set-AzSnapshotUpdateKeyEncryptionKey**
+- EncryptionSettings property in the cmdlet output will be deprecated.  It will be replaced with EncryptionSettingsCollection.
+- EncryptionSettings.Enabled will be replaced with EncryptionSettingsCollection.Enabled.
+- EncryptionSettings.DiskEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.
+- EncryptionSettings.KeyEncryptionKey will be replaced with EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.
+- EncryptionSettingsCollection supports a list of EncryptionSettings.

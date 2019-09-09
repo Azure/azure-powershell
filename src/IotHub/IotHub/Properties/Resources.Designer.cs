@@ -10,8 +10,6 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
     using System;
-    
-    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -129,6 +127,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string NewAzureRmIotHubImportDevices {
             get {
                 return ResourceManager.GetString("NewAzureRmIotHubImportDevices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate IoT Hub Key.
+        /// </summary>
+        internal static string NewIotHubKey {
+            get {
+                return ResourceManager.GetString("NewIotHubKey", resourceCulture);
             }
         }
         

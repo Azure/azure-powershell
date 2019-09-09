@@ -13,19 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
-using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests;
+using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
@@ -34,18 +32,13 @@ using Xunit.Abstractions;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 {
     public class DataPlaneCommandTests : AsTestsBase
     {
-        private const string testAsAzureEnvironment = "westcentralus.asazure.windows.net";
-
-        private const string testServer = "testserver";
-
-        private const string testUser = "testuser@contoso.com";
-
-        private const string testPassword = "testpassword";
+        private const string testInstance = "asazure://westcentralus.asazure.windows.net/testserver";
 
         private const string testToken = "eyJ0eXAiOi"
                                         + "JKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjFpOWlmMDllc0YzaU9sS0I2SW9meVVGSUxnQSIsImtpZC"
@@ -71,502 +64,233 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
         public DataPlaneCommandTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-
             SynchronizeAzureAzureAnalysisServer.DefaultRetryIntervalForPolling = TimeSpan.FromSeconds(0);
         }
 
+        #region TestAuthentication
+
+        private class TestAuthenticationCmdlet : AsAzureDataplaneCmdletBase { }
+
+        // TODO: this needs a valid mocked context in order to test authentication.
+        //[Fact]
+        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        //public void Authentication_Succeeds()
+        //{
+        //    var context = new PSAzureContext();
+        //    TestAuthentication(context);
+        //}
+
+        /// <summary>
+        /// Assert that cmdlets will fail authentication when provided null context.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAddAzureASAccountCommand()
+        public void Authentication_FailsFromNullContext()
         {
-            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
-            var addAmdlet = new AddAzureASAccountCommand()
-            {
-                CommandRuntime = commandRuntimeMock.Object
-            };
-            var expectedProfile = new AsAzureProfile
-            {
-                Context = new AsAzureContext(
-                    new AsAzureAccount()
-                    {
-                        Id = testUser,
-                        Tenant = null
-                    },
-                    new AsAzureEnvironment(testAsAzureEnvironment))
-            };
-            expectedProfile.Context.Environment.Endpoints.Add(AsAzureEnvironment.AsRolloutEndpoints.AdAuthorityBaseUrl, AsAzureClientSession.GetAuthorityUrlForEnvironment(expectedProfile.Context.Environment));
-            expectedProfile.Context.Environment.Endpoints.Add(AsAzureEnvironment.AsRolloutEndpoints.RestartEndpointFormat, AsAzureClientSession.RestartEndpointPathFormat);
-            expectedProfile.Environments.Add(testAsAzureEnvironment, expectedProfile.Context.Environment);
-            expectedProfile.Context.TokenCache = Encoding.ASCII.GetBytes(testToken);
-
-            // Setup
-            // Clear the the current profile
-            AsAzureClientSession.Instance.Profile.Environments.Clear();
-
-            var mockAuthenticationProvider = new Mock<IAsAzureAuthenticationProvider>();
-            mockAuthenticationProvider.Setup(
-                authProvider => authProvider.GetAadAuthenticatedToken(
-                    It.IsAny<AsAzureContext>(),
-                    It.IsAny<SecureString>(),
-#if NETSTANDARD
-                    It.IsAny<Action<string>>(),
-#else
-                    It.IsAny<PromptBehavior>(),
-#endif
-                    It.IsAny<string>(),
-                    It.IsAny<string>(),
-                    It.IsAny<Uri>())).Returns(testToken);
-            AsAzureClientSession.Instance.SetAsAzureAuthenticationProvider(mockAuthenticationProvider.Object);
-
-            addAmdlet.RolloutEnvironment = testAsAzureEnvironment;
-            var password = new SecureString();
-            var testpwd = testPassword;
-            testpwd.All(c => {
-                password.AppendChar(c);
-                return true;
-            });
-            addAmdlet.Credential = new PSCredential(testUser, password);
-            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
-            commandRuntimeMock.Setup(f => f.WriteObject(expectedProfile));
-
-            // Act
-            addAmdlet.InvokeBeginProcessing();
-            Assert.Empty(AsAzureClientSession.Instance.Profile.Environments);
-            addAmdlet.ExecuteCmdlet();
-            Assert.True(AsAzureClientSession.Instance.Profile.Environments.Count == 1);
-            Assert.NotNull(AsAzureClientSession.Instance.Profile.Environments[testAsAzureEnvironment]);
-
-            // Call InvokeBeginProcessing again to get coverage. It should use the existing environment in memory not create a new one.
-            addAmdlet.InvokeBeginProcessing();
-            Assert.True(AsAzureClientSession.Instance.Profile.Environments.Count == 1);
-            Assert.NotNull(AsAzureClientSession.Instance.Profile.Environments[testAsAzureEnvironment]);
-
-            addAmdlet.InvokeEndProcessing();
-
-            var environment = (AsAzureEnvironment)AsAzureClientSession.Instance.Profile.Environments[testAsAzureEnvironment];
-            Assert.Equal(environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.AdAuthorityBaseUrl], AsAzureClientSession.GetAuthorityUrlForEnvironment(environment));
-            Assert.NotNull(environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.RestartEndpointFormat]);
-
-            commandRuntimeMock.Verify(f => f.WriteObject(AsAzureClientSession.Instance.Profile));
-            mockAuthenticationProvider.Verify(authProvider => authProvider.GetAadAuthenticatedToken(It.IsAny<AsAzureContext>(),
-                    It.IsAny<SecureString>(),
-#if NETSTANDARD
-                    It.IsAny<Action<string>>(),
-#else
-                    It.IsAny<PromptBehavior>(),
-#endif
-                    It.IsAny<string>(),
-                    It.IsAny<string>(),
-                    It.IsAny<Uri>()), Times.Once);
+            Assert.Throws<TargetInvocationException>(() => TestAuthentication(null));
         }
 
+        /// <summary>
+        /// Assert that cmdlets will fail authentication when provided bad context.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Authentication_FailsFromBadContext()
+        {
+            Assert.Throws<TargetInvocationException>(() => TestAuthentication(new PSAzureContext()));
+        }
+
+        /// <summary>
+        /// Common code used for testing authentication.
+        /// </summary>
+        /// <param name="context"></param>
+        private void TestAuthentication(IAzureContext context)
+        {
+            var cmdlet = new TestAuthenticationCmdlet()
+            {
+                CurrentContext = context
+            };
+            cmdlet.InvokeBeginProcessing();
+            cmdlet.InvokeEndProcessing();
+        }
+
+        #endregion
+        #region TestRestart
+
+        /// <summary>
+        /// Assert that the restart cmdlet will fail if given a null instance.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RestartAzureASInstance_NullInstanceThrows()
+        {
+            var restartCmdlet = CreateTestRestartCmdlet(null);
+            Assert.Throws<TargetInvocationException>(() => restartCmdlet.InvokeBeginProcessing());
+        }
+
+        /// <summary>
+        /// Assert that the restart cmdlet will fail if given a bad instance url.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RestartAzureASInstance_InvalidInstanceThrows()
+        {
+            var restartCmdlet = CreateTestRestartCmdlet("https://bad.uri.com");
+            Assert.Throws<TargetInvocationException>(() => restartCmdlet.InvokeBeginProcessing());
+        }
+
+        /// <summary>
+        /// Assert that the restart cmdlet executes successfully.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RestartAzureASInstance_Succeeds()
         {
-            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
-            // Setup
-            // Clear the the current profile
-            AsAzureClientSession.Instance.Profile.Environments.Clear();
-            var mockAuthenticationProvider = new Mock<IAsAzureAuthenticationProvider>();
-            mockAuthenticationProvider.Setup(
-                authProvider => authProvider.GetAadAuthenticatedToken(
-                    It.IsAny<AsAzureContext>(),
-                    It.IsAny<SecureString>(),
-#if NETSTANDARD
-                    It.IsAny<Action<string>>(),
-#else
-                    It.IsAny<PromptBehavior>(),
-#endif
-                    It.IsAny<string>(),
-                    It.IsAny<string>(),
-                    It.IsAny<Uri>())).Returns(testToken);
-            AsAzureClientSession.Instance.SetAsAzureAuthenticationProvider(mockAuthenticationProvider.Object);
-            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
-
-            // Set up AsAzureHttpClient mock
-            var mockAsAzureHttpClient = new Mock<IAsAzureHttpClient>();
-            mockAsAzureHttpClient
-                .Setup(obj => obj.CallPostAsync(It.IsAny<Uri>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<HttpContent>()))
+            var restartCmdlet = CreateTestRestartCmdlet(testInstance);
+            // Set up mock http client
+            var mockHttpClient = new Mock<IAsAzureHttpClient>();
+            mockHttpClient
+                .Setup(m => m.CallPostAsync(It.IsAny<string>(), It.IsAny<HttpContent>()))
                 .Returns(Task<HttpResponseMessage>.FromResult(new HttpResponseMessage(HttpStatusCode.OK)));
+            restartCmdlet.AsAzureDataplaneClient = mockHttpClient.Object;
 
-            var mockTokenCacheItemProvider = new Mock<ITokenCacheItemProvider>();
-            mockTokenCacheItemProvider
-                .Setup(obj => obj.GetTokenFromTokenCache(It.IsAny<TokenCache>(), It.IsAny<string>()))
-                .Returns(testToken);
-            var restartCmdlet = new RestartAzureAnalysisServer(mockAsAzureHttpClient.Object, mockTokenCacheItemProvider.Object)
-            {
-                CommandRuntime = commandRuntimeMock.Object
-            };
-
-            var addAmdlet = new AddAzureASAccountCommand()
-            {
-                CommandRuntime = commandRuntimeMock.Object
-            };
-
-            DoLogin(addAmdlet);
-            restartCmdlet.Instance = testServer;
-
-            // Act
             restartCmdlet.InvokeBeginProcessing();
             restartCmdlet.ExecuteCmdlet();
             restartCmdlet.InvokeEndProcessing();
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RestartAzureASInstance_NullInstanceThrows()
+        /// <summary>
+        /// Create a properly mocked restart cmdlet.
+        /// </summary>
+        /// <param name="instance">The test server instance name.</param>
+        /// <returns>A properly mocked restart cmdlet.</returns>
+        private static RestartAzureAnalysisServer CreateTestRestartCmdlet(string instance)
         {
-            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
-
-            var mockAsAzureHttpClient = new Mock<IAsAzureHttpClient>();
-            var mockTokenCacheItemProvider = new Mock<ITokenCacheItemProvider>();
-            var restartCmdlet = new RestartAzureAnalysisServer(mockAsAzureHttpClient.Object, mockTokenCacheItemProvider.Object)
-            {
-                CommandRuntime = commandRuntimeMock.Object
-            };
-
-            // Setup
-            // Clear the the current profile
-            AsAzureClientSession.Instance.Profile.Environments.Clear();
-            var mockAuthenticationProvider = new Mock<IAsAzureAuthenticationProvider>();
-            mockAuthenticationProvider.Setup(
-                authProvider => authProvider.GetAadAuthenticatedToken(
-                    It.IsAny<AsAzureContext>(),
-                    It.IsAny<SecureString>(),
-#if NETSTANDARD
-                    It.IsAny<Action<string>>(),
-#else
-                    It.IsAny<PromptBehavior>(),
-#endif
-                    It.IsAny<string>(),
-                    It.IsAny<string>(),
-                    It.IsAny<Uri>())).Returns(testToken);
-            AsAzureClientSession.Instance.SetAsAzureAuthenticationProvider(mockAuthenticationProvider.Object);
+            var commandRuntimeMock = new Mock<ICommandRuntime>();
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
-            restartCmdlet.Instance = null;
-            // Act
-            Assert.Throws<TargetInvocationException>(() => restartCmdlet.InvokeBeginProcessing());
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RestartAzureASInstance_NotLoggedInThrows()
-        {
-            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
-
-            var mockAsAzureHttpClient = new Mock<IAsAzureHttpClient>();
-            var mockTokenCacheItemProvider = new Mock<ITokenCacheItemProvider>();
-            var restartCmdlet = new RestartAzureAnalysisServer(mockAsAzureHttpClient.Object, mockTokenCacheItemProvider.Object)
+            var cmdlet = new RestartAzureAnalysisServer()
             {
-                CommandRuntime = commandRuntimeMock.Object
+                CommandRuntime = commandRuntimeMock.Object,
+                Instance = instance
             };
 
-            // Setup
-            // Clear the the current profile
-            AsAzureClientSession.Instance.Profile.Environments.Clear();
-            var mockAuthenticationProvider = new Mock<IAsAzureAuthenticationProvider>();
-            mockAuthenticationProvider.Setup(
-                authProvider => authProvider.GetAadAuthenticatedToken(
-                    It.IsAny<AsAzureContext>(),
-                    It.IsAny<SecureString>(),
-#if NETSTANDARD
-                    It.IsAny<Action<string>>(),
-#else
-                    It.IsAny<PromptBehavior>(),
-#endif
-                    It.IsAny<string>(),
-                    It.IsAny<string>(),
-                    It.IsAny<Uri>())).Returns(testToken);
-            AsAzureClientSession.Instance.SetAsAzureAuthenticationProvider(mockAuthenticationProvider.Object);
-            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
-            restartCmdlet.Instance = testServer;
-
-            // Act
-            try
-            {
-                restartCmdlet.InvokeBeginProcessing();
-            }
-            catch(Exception ex)
-            {
-                Assert.IsType<TargetInvocationException>(ex);
-            }
+            return cmdlet;
         }
 
+        #endregion
+        #region TestExportLog
+
+        /// <summary>
+        /// Assert that the export cmdlet works.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ExportAzureASInstanceLogTest()
         {
-            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
-            // Setup
-            // Clear the the current profile
-            AsAzureClientSession.Instance.Profile.Environments.Clear();
-            var mockAuthenticationProvider = new Mock<IAsAzureAuthenticationProvider>();
-            mockAuthenticationProvider.Setup(
-                authProvider => authProvider.GetAadAuthenticatedToken(
-                    It.IsAny<AsAzureContext>(),
-                    It.IsAny<SecureString>(),
-#if NETSTANDARD
-                    It.IsAny<Action<string>>(),
-#else
-                    It.IsAny<PromptBehavior>(),
-#endif
-                    It.IsAny<string>(),
-                    It.IsAny<string>(),
-                    It.IsAny<Uri>())).Returns(testToken);
-            AsAzureClientSession.Instance.SetAsAzureAuthenticationProvider(mockAuthenticationProvider.Object);
+            var commandRuntimeMock = new Mock<ICommandRuntime>();
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
-            // Set up AsAzureHttpClient mock
-            var mockAsAzureHttpClient = new Mock<IAsAzureHttpClient>();
-            mockAsAzureHttpClient
-                .Setup(obj => obj.CallPostAsync(
-                    It.IsAny<Uri>(),
-                    It.Is<string>(s => s.Contains("clusterResolve")),
-                    It.IsAny<string>(),
-                    It.IsAny<HttpContent>()))
+            var mockHttpClient = new Mock<IAsAzureHttpClient>();
+            mockHttpClient
+                .Setup(m => m.CallGetAsync(It.IsAny<string>()))
                 .Returns(Task<HttpResponseMessage>.FromResult(
-                    new HttpResponseMessage(HttpStatusCode.OK)
-                    {
-                        Content = new StringContent("{\"clusterFQDN\": \"resolved.westcentralus.asazure.windows.net\"}")
-                    }));
-            mockAsAzureHttpClient.Setup(obj => obj.CallGetAsync(It.IsAny<Uri>(), It.IsAny<string>(), It.IsAny<string>())).Returns(
-                Task<HttpResponseMessage>.FromResult(
                     new HttpResponseMessage(HttpStatusCode.OK)
                     {
                         Content = new StringContent("MOCKED STREAM CONTENT")
                     }));
 
-            var mockTokenCacheItemProvider = new Mock<ITokenCacheItemProvider>();
-            mockTokenCacheItemProvider
-                .Setup(obj => obj.GetTokenFromTokenCache(It.IsAny<TokenCache>(), It.IsAny<string>()))
-                .Returns(testToken);
-
-            var exportLogCmdlet = new ExportAzureAnalysisServerLog(mockAsAzureHttpClient.Object, mockTokenCacheItemProvider.Object)
+            var exportCmdlet = new ExportAzureAnalysisServerLog()
             {
-                CommandRuntime = commandRuntimeMock.Object
+                CommandRuntime = commandRuntimeMock.Object,
+                Instance = testInstance,
+                OutputPath = System.IO.Path.GetTempFileName(),
+                AsAzureDataplaneClient = mockHttpClient.Object
             };
 
-            var addAmdlet = new AddAzureASAccountCommand()
-            {
-                CommandRuntime = commandRuntimeMock.Object
-            };
-
-            DoLogin(addAmdlet);
-            exportLogCmdlet.Instance = testServer;
             try
             {
-                exportLogCmdlet.OutputPath = System.IO.Path.GetTempFileName();
-                exportLogCmdlet.InvokeBeginProcessing();
-                exportLogCmdlet.ExecuteCmdlet();
-                exportLogCmdlet.InvokeEndProcessing();
+                exportCmdlet.InvokeBeginProcessing();
+                exportCmdlet.ExecuteCmdlet();
+                exportCmdlet.InvokeEndProcessing();
             }
             finally
             {
-                if (System.IO.File.Exists(exportLogCmdlet.OutputPath))
+                if (System.IO.File.Exists(exportCmdlet.OutputPath))
                 {
-                    System.IO.File.Delete(exportLogCmdlet.OutputPath);
+                    System.IO.File.Delete(exportCmdlet.OutputPath);
                 }
             }
         }
 
+        #endregion
+        #region TestSync
+
+        /// <summary>
+        /// Assert that the sync cmdlet succeeds syncing a single db instance.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SynchronizeAzureASInstance_SingleDB_Succeeds()
         {
-            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
-            
-            // Setup
-            // Clear the the current profile
-            AsAzureClientSession.Instance.Profile.Environments.Clear();
-            var mockAuthenticationProvider = new Mock<IAsAzureAuthenticationProvider>();
-            mockAuthenticationProvider.Setup(
-                authProvider => authProvider.GetAadAuthenticatedToken(
-                    It.IsAny<AsAzureContext>(),
-                    It.IsAny<SecureString>(),
-#if NETSTANDARD
-                    It.IsAny<Action<string>>(),
-#else
-                    It.IsAny<PromptBehavior>(),
-#endif
-                    It.IsAny<string>(),
-                    It.IsAny<string>(),
-                    It.IsAny<Uri>())).Returns(testToken);
-            AsAzureClientSession.Instance.SetAsAzureAuthenticationProvider(mockAuthenticationProvider.Object);
-            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
-
-            // Set up AsAzureHttpClient mock
-            var mockAsAzureHttpClient = new Mock<IAsAzureHttpClient>();
-
-            // set up cluster resolve respnose
-            ClusterResolutionResult resolveResult = new ClusterResolutionResult()
-            {
-                ClusterFQDN = "resolved.westcentralus.asazure.windows.net",
-                CoreServerName = testServer + ":rw",
-                TenantId = Guid.NewGuid().ToString()
-            };
-            mockAsAzureHttpClient
-                .Setup(obj => obj.CallPostAsync(
-                    It.IsAny<Uri>(),
-                    It.Is<string>(s => s.Contains("clusterResolve")),
-                    It.IsAny<string>(),
-                    It.IsAny<HttpContent>()))
-                .Returns(Task<HttpResponseMessage>.FromResult(
-                    new HttpResponseMessage(HttpStatusCode.OK)
-                    {
-                        Content = new StringContent(JsonConvert.SerializeObject(resolveResult))
-                    }));
-
-            // set up sync respnose
-            var postResponse = new HttpResponseMessage(HttpStatusCode.Accepted);
-            postResponse.Headers.Location = new Uri("https://done");
-            postResponse.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromMilliseconds(500));
-            postResponse.Headers.Add("x-ms-root-activity-id", Guid.NewGuid().ToString());
-            postResponse.Headers.Add("x-ms-current-utc-date", Guid.NewGuid().ToString());
-            mockAsAzureHttpClient
-                .Setup(obj => obj.CallPostAsync(
-                    It.IsAny<Uri>(),
-                    It.Is<string>(s => s.Contains("sync")),
-                    It.IsAny<string>(),
-                    It.IsAny<Guid>(),
-                    null))
-                .Returns(Task<Mock<HttpResponseMessage>>.FromResult(postResponse));
-
-
-            var getResponse1 = new HttpResponseMessage(HttpStatusCode.SeeOther);
-            getResponse1.Headers.Location = new Uri("https://done");
-            getResponse1.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromMilliseconds(500));
-            mockAsAzureHttpClient
-                .Setup(obj => obj.CallGetAsync(
-                    It.Is<Uri>(u => u.OriginalString.Contains("1")),
-                    string.Empty,
-                    It.IsAny<string>(),
-                    It.IsAny<Guid>()))
-                .Returns(Task<HttpResponseMessage>.FromResult(getResponse1));
-
-            var getResponseSucceed = new HttpResponseMessage
-            {
-                StatusCode = HttpStatusCode.OK,
-                Content = new StringContent(
-                        "{\n\"database\":\"db0\",\n\"syncstate\":\"Completed\"\n}", Encoding.UTF8, "application/json")
-            };
-
-            var getResponseError = new HttpResponseMessage(HttpStatusCode.InternalServerError);
-
-            var finalResponses = new Queue<HttpResponseMessage>(new [] { getResponseError, getResponseSucceed });
-            mockAsAzureHttpClient
-                .Setup(obj => obj.CallGetAsync(
-                    It.Is<Uri>(u => u.OriginalString.Contains("done")),
-                    string.Empty,
-                    It.IsAny<string>(),
-                    It.IsAny<Guid>()))
-                .Returns(() => Task.FromResult(finalResponses.Dequeue()));
-
-            var mockTokenCacheItemProvider = new Mock<ITokenCacheItemProvider>();
-            mockTokenCacheItemProvider
-                .Setup(obj => obj.GetTokenFromTokenCache(It.IsAny<TokenCache>(), It.IsAny<string>()))
-                .Returns(testToken);
-            var syncCmdlet = new SynchronizeAzureAzureAnalysisServer(mockAsAzureHttpClient.Object, mockTokenCacheItemProvider.Object)
-            {
-                CommandRuntime = commandRuntimeMock.Object
-            };
-
-            var addAmdlet = new AddAzureASAccountCommand()
-            {
-                CommandRuntime = commandRuntimeMock.Object
-            };
-
-            DoLogin(addAmdlet);
-            syncCmdlet.Instance = testServer + ":rw";
-            syncCmdlet.Database = "db0";
-
-            // Act
+            var syncCmdlet = CreateTestSyncCmdlet();
             syncCmdlet.InvokeBeginProcessing();
             syncCmdlet.ExecuteCmdlet();
             syncCmdlet.InvokeEndProcessing();
         }
 
+        /// <summary>
+        /// Assert that the sync cmdlet will fail after too many retries.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SynchronizeAzureASInstance_FailsAfterTooManyRetries()
         {
-            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+            var syncCmdlet = CreateTestSyncCmdlet(tooManyRetries: true);
+            syncCmdlet.InvokeBeginProcessing();
+            Assert.Throws<SynchronizationFailedException>(() => syncCmdlet.ExecuteCmdlet());
+            syncCmdlet.InvokeEndProcessing();
+        }
 
-            // Setup
-            // Clear the the current profile
-            AsAzureClientSession.Instance.Profile.Environments.Clear();
-            var mockAuthenticationProvider = new Mock<IAsAzureAuthenticationProvider>();
-            mockAuthenticationProvider.Setup(
-                authProvider => authProvider.GetAadAuthenticatedToken(
-                    It.IsAny<AsAzureContext>(),
-                    It.IsAny<SecureString>(),
-#if NETSTANDARD
-                    It.IsAny<Action<string>>(),
-#else
-                    It.IsAny<PromptBehavior>(),
-#endif
-                    It.IsAny<string>(),
-                    It.IsAny<string>(),
-                    It.IsAny<Uri>())).Returns(testToken);
-            AsAzureClientSession.Instance.SetAsAzureAuthenticationProvider(mockAuthenticationProvider.Object);
-            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+        /// <summary>
+        /// Create a properly mocked Sync cmdlet for testing.
+        /// </summary>
+        /// <param name="tooManyRetries">Flag to set the planned failures to be greater than the retry count.</param>
+        /// <returns>A properly mocked sync cmdlet for testing.</returns>
+        private SynchronizeAzureAzureAnalysisServer CreateTestSyncCmdlet(bool tooManyRetries = false)
+        {
+            // Set up mock http client
+            var mockHttpClient = new Mock<IAsAzureHttpClient>();
 
-            // Set up AsAzureHttpClient mock
-            var mockAsAzureHttpClient = new Mock<IAsAzureHttpClient>();
-
-            // set up cluster resolve respnose
-            ClusterResolutionResult resolveResult = new ClusterResolutionResult()
-            {
-                ClusterFQDN = "resolved.westcentralus.asazure.windows.net",
-                CoreServerName = testServer + ":rw",
-                TenantId = Guid.NewGuid().ToString()
-            };
-            mockAsAzureHttpClient
-                .Setup(obj => obj.CallPostAsync(
-                    It.IsAny<Uri>(),
-                    It.Is<string>(s => s.Contains("clusterResolve")),
-                    It.IsAny<string>(),
-                    It.IsAny<HttpContent>()))
-                .Returns(Task<HttpResponseMessage>.FromResult(
-                    new HttpResponseMessage(HttpStatusCode.OK)
-                    {
-                        Content = new StringContent(JsonConvert.SerializeObject(resolveResult))
-                    }));
-
-            // set up sync respnose
             var postResponse = new HttpResponseMessage(HttpStatusCode.Accepted);
-            postResponse.Headers.Location = new Uri("https://1");
+            postResponse.Headers.Location = new Uri("https://done");
             postResponse.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromMilliseconds(500));
             postResponse.Headers.Add("x-ms-root-activity-id", Guid.NewGuid().ToString());
             postResponse.Headers.Add("x-ms-current-utc-date", Guid.NewGuid().ToString());
-            mockAsAzureHttpClient
-                .Setup(obj => obj.CallPostAsync(
+            mockHttpClient
+                .Setup(m => m.CallPostAsync(
                     It.IsAny<Uri>(),
                     It.Is<string>(s => s.Contains("sync")),
-                    It.IsAny<string>(),
                     It.IsAny<Guid>(),
                     null))
                 .Returns(Task<Mock<HttpResponseMessage>>.FromResult(postResponse));
 
-            var getResponse1 = new HttpResponseMessage(HttpStatusCode.SeeOther);
-            getResponse1.Headers.Location = new Uri("https://done");
-            getResponse1.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromMilliseconds(500));
-            getResponse1.Headers.Add("x-ms-root-activity-id", Guid.NewGuid().ToString());
-            getResponse1.Headers.Add("x-ms-current-utc-date", Guid.NewGuid().ToString());
-            mockAsAzureHttpClient
-                .Setup(obj => obj.CallGetAsync(
+            var getResponse = new HttpResponseMessage(HttpStatusCode.SeeOther);
+            getResponse.Headers.Location = new Uri("https://done");
+            getResponse.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromMilliseconds(500));
+            getResponse.Headers.Add("x-ms-root-activity-id", Guid.NewGuid().ToString());
+            getResponse.Headers.Add("x-ms-current-utc-date", Guid.NewGuid().ToString());
+            mockHttpClient
+                .Setup(m => m.CallGetAsync(
                     It.Is<Uri>(u => u.OriginalString.Contains("1")),
-                    It.IsAny<string>(),
-                    It.IsAny<string>(),
+                    string.Empty,
                     It.IsAny<Guid>()))
-                .Returns(Task<HttpResponseMessage>.FromResult(getResponse1));
+                .Returns(Task<HttpResponseMessage>.FromResult(getResponse));
 
             var getResponseSucceed = new HttpResponseMessage
             {
                 StatusCode = HttpStatusCode.OK,
-                Content = new StringContent(
-                        "{\n\"database\":\"db0\",\n\"syncstate\":\"Completed\"\n}", Encoding.UTF8, "application/json")
+                Content = new StringContent("{\n\"database\":\"db0\",\n\"syncstate\":\"Completed\"\n}", Encoding.UTF8, "application/json")
             };
             getResponseSucceed.Headers.Add("x-ms-root-activity-id", Guid.NewGuid().ToString());
             getResponseSucceed.Headers.Add("x-ms-current-utc-date", Guid.NewGuid().ToString());
@@ -575,58 +299,31 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             getResponseError.Headers.Add("x-ms-root-activity-id", Guid.NewGuid().ToString());
             getResponseError.Headers.Add("x-ms-current-utc-date", Guid.NewGuid().ToString());
 
-            var finalResponses = new Queue<HttpResponseMessage>(new[] { getResponseError, getResponseError, getResponseError, getResponseSucceed });
-            mockAsAzureHttpClient
-                .Setup(obj => obj.CallGetAsync(
+            var finalResponses = tooManyRetries ?
+                new Queue<HttpResponseMessage>(new[] { getResponseError, getResponseError, getResponseError, getResponseSucceed }) :
+                new Queue<HttpResponseMessage>(new[] { getResponseError, getResponseSucceed });
+
+            mockHttpClient
+                .Setup(m => m.CallGetAsync(
                     It.Is<Uri>(u => u.OriginalString.Contains("done")),
-                    It.IsAny<string>(),
-                    It.IsAny<string>(),
+                    string.Empty,
                     It.IsAny<Guid>()))
                 .Returns(() => Task.FromResult(finalResponses.Dequeue()));
 
-            var mockTokenCacheItemProvider = new Mock<ITokenCacheItemProvider>();
-            mockTokenCacheItemProvider
-                .Setup(obj => obj.GetTokenFromTokenCache(It.IsAny<TokenCache>(), It.IsAny<string>()))
-                .Returns(testToken);
-            var syncCmdlet = new SynchronizeAzureAzureAnalysisServer(mockAsAzureHttpClient.Object, mockTokenCacheItemProvider.Object)
-            {
-                CommandRuntime = commandRuntimeMock.Object
-            };
-
-            var addAmdlet = new AddAzureASAccountCommand()
-            {
-                CommandRuntime = commandRuntimeMock.Object
-            };
-
-            DoLogin(addAmdlet);
-            syncCmdlet.Instance = testServer + ":rw";
-            syncCmdlet.Database = "db0";
-
-            // Act
-            syncCmdlet.InvokeBeginProcessing();
-            Assert.Throws<SynchronizationFailedException>(() => syncCmdlet.ExecuteCmdlet());
-            syncCmdlet.InvokeEndProcessing();
-        }
-        
-        private void DoLogin(AddAzureASAccountCommand addCmdlet)
-        {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
-
-            addCmdlet.RolloutEnvironment = testAsAzureEnvironment;
-            var password = new SecureString();
-            var testpwd = testPassword;
-            testpwd.All(c => {
-                password.AppendChar(c);
-                return true;
-            });
-            addCmdlet.Credential = new PSCredential(testUser, password);
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
-            // Act
-            addCmdlet.InvokeBeginProcessing();
-            addCmdlet.ExecuteCmdlet();
-            AsAzureClientSession.TokenCache.Deserialize(Encoding.ASCII.GetBytes(testToken));
-            addCmdlet.InvokeEndProcessing();
+            var cmdlet = new SynchronizeAzureAzureAnalysisServer()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                Instance = testInstance + ":rw",
+                Database = "db0",
+                AsAzureDataplaneClient = mockHttpClient.Object
+            };
+
+            return cmdlet;
         }
+
+        #endregion
     }
 }

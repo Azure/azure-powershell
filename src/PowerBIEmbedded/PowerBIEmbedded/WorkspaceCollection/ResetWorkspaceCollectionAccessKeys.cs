@@ -21,10 +21,13 @@ using Microsoft.Azure.Commands.Management.PowerBIEmbedded.Properties;
 using Microsoft.Azure.Management.PowerBIEmbedded;
 using Microsoft.Azure.Management.PowerBIEmbedded.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection
 {
-    [Cmdlet("Reset", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PowerBIWorkspaceCollectionAccessKeys", SupportsShouldProcess = true), OutputType(typeof(PSWorkspaceCollectionAccessKey))]
+    [GenericBreakingChange("Reset-AzPowerBIWorkspaceCollectionAccessKeys alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Reset", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PowerBIWorkspaceCollectionAccessKey", SupportsShouldProcess = true), OutputType(typeof(PSWorkspaceCollectionAccessKey))]
+    [Alias("Reset-AzPowerBIWorkspaceCollectionAccessKeys")]
     public class ResetWorkspaceCollectionAccessKeys : WorkspaceCollectionBaseCmdlet
     {
         [Parameter(

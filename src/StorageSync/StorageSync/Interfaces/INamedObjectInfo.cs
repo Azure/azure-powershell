@@ -14,10 +14,21 @@
 
 namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces
 {
+    /// <summary>
+    /// Interface INamedObjectInfo
+    /// </summary>
     public interface INamedObjectInfo
     {
+        /// <summary>
+        /// Gets the name.
+        /// </summary>
+        /// <value>The name.</value>
         string Name { get; }
 
+        /// <summary>
+        /// Gets the full name.
+        /// </summary>
+        /// <value>The full name.</value>
         string FullName { get; }
     }
 }

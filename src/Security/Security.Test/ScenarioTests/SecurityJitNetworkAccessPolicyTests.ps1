@@ -71,7 +71,7 @@ Set a JIT network access policy
 #>
 function Set-AzureRmJitNetworkAccessPolicy-ResourceGroupLevelResource
 {
-	Set-AzSecurityPricing -Name "default" -PricingTier "Standard" | Out-Null
+	Set-AzSecurityPricing -Name "VirtualMachines" -PricingTier "Standard" | Out-Null
 
 	$rgName = Get-TestResourceGroupName
 

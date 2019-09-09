@@ -48,7 +48,8 @@ function Test-CreateWindowsOneTimeSoftwareUpdateConfigurationWithDefaults {
                                                              -Schedule $s `
                                                              -Windows `
                                                              -AzureVMResourceId $azureVMIdsW `
-                                                             -Duration (New-TimeSpan -Hours 2)
+                                                             -Duration (New-TimeSpan -Hours 2)`
+                                                             -IncludedUpdateClassification Critical
 
     Assert-NotNull $suc "New-AzAutomationSoftwareUpdateConfiguration returned null"
     Assert-AreEqual $suc.Name $name "Name of created software update configuration didn't match given name"
@@ -75,7 +76,8 @@ function Test-CreateLinuxOneTimeSoftwareUpdateConfigurationWithDefaults {
                                                              -Schedule $s `
                                                              -Linux `
                                                              -AzureVMResourceId $azureVMIdsL `
-                                                             -Duration (New-TimeSpan -Hours 2)
+                                                             -Duration (New-TimeSpan -Hours 2)`
+                                                             -IncludedPackageClassification Security,Critical
 
     Assert-NotNull $suc "New-AzAutomationSoftwareUpdateConfiguration returned null"
     Assert-AreEqual $suc.Name $name "Name of created software update configuration didn't match given name"
@@ -209,7 +211,7 @@ Test-GetAllSoftwareUpdateConfigurations
 function Test-GetAllSoftwareUpdateConfigurations {
     $sucs = Get-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName $rg `
                                                               -AutomationAccountName $aa
-    Assert-AreEqual $sucs.Count 7 "Get all software update configuration didn't retrieve the expected number of items"
+    Assert-AreEqual $sucs.Count 17 "Get all software update configuration didn't retrieve the expected number of items. actual SCU count is $($sucs.Count)"
 }
 
 
@@ -220,7 +222,7 @@ function Test-GetSoftwareUpdateConfigurationsForVM {
     $sucs = Get-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName $rg `
                                                               -AutomationAccountName $aa `
                                                               -AzureVMResourceId $azureVMIdsW[0]
-    Assert-AreEqual $sucs.Count 2 "Get software update configurations for VM didn't return expected number of items"
+    Assert-AreEqual $sucs.Count 7 "Get software update configurations for VM didn't return expected number of items. Actual SUC count per VM is $($sucs.Count)"
 }
 
 
@@ -302,7 +304,7 @@ function Test-GetAllSoftwareUpdateMachineRuns {
     $runs = Get-AzAutomationSoftwareUpdateMachineRun  -ResourceGroupName $rg `
                                                            -AutomationAccountName $aa
     
-    Assert-AreEqual $runs.Count 18 "Get software update configurations machine runs didn't return expected number of items"
+    Assert-AreEqual $runs.Count 83 "Get software update configurations machine runs didn't return expected number of items $($runs.Count)" 
 }
 
 <#
@@ -422,3 +424,101 @@ function Test-CreateWindowsMonthlySoftwareUpdateConfiguration() {
 
     WaitForProvisioningState $name "Succeeded"
 }
+
+<#
+Test-CreateWindowsIncludeKbNumbersSoftwareUpdateConfiguration
+#>
+function Test-CreateWindowsIncludeKbNumbersSoftwareUpdateConfiguration() {
+
+    $aa = "Automate-d2b38167-d3ca-4d1f-a020-948eee21b6bc-EJP"
+	$rg = "DefaultResourceGroup-EJP"
+    $azureVMIdsW = @(
+	   "/subscriptions/d2b38167-d3ca-4d1f-a020-948eee21b6bc/resourceGroups/ikwjp12r201-RG/providers/Microsoft.Compute/virtualMachines/ikwjp12r201"
+	)
+
+    $name = "mo-monthly-01"
+    $startTime = ([DateTime]::Now).AddMinutes(10)
+    $duration = New-TimeSpan -Hours 2
+	$s = New-AzAutomationSchedule -ResourceGroupName $rg `
+                                       -AutomationAccountName $aa `
+                                       -Name $name `
+                                       -Description test-OneTime `
+                                       -MonthInterval 1 `
+                                       -DaysOfMonth Two,Five `
+                                       -StartTime $startTime `
+                                       -ForUpdate
+
+    $suc = New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg `
+                                                             -AutomationAccountName $aa `
+                                                             -Schedule $s `
+                                                             -Windows `
+                                                             -AzureVMResourceId $azureVMIdsW `
+                                                             -Duration $duration `
+                                                             -IncludedKbNumber @("2952664", "2990214")
+
+    Assert-NotNull $suc "New-AzAutomationSoftwareUpdateConfiguration returned null"
+    Assert-AreEqual $suc.Name $name "Name of created software update configuration didn't match given name"
+    Assert-NotNull $suc.UpdateConfiguration "UpdateConfiguration of the software update configuration object is null"
+    Assert-NotNull $suc.ScheduleConfiguration "ScheduleConfiguration of the software update configuration object is null"
+    Assert-AreEqual $suc.ProvisioningState "Provisioning" "software update configuration provisioning state was not expected"
+    Assert-AreEqual $suc.UpdateConfiguration.OperatingSystem "Windows" "UpdateConfiguration Operating system is not expected"
+    Assert-AreEqual $suc.UpdateConfiguration.Duration $duration "UpdateConfiguration Duration is not expected"
+    Assert-AreEqual $suc.UpdateConfiguration.AzureVirtualMachines.Count 1 "UpdateConfiguration created doesn't have the correct number of azure virtual machines"
+    Assert-AreEqual $suc.UpdateConfiguration.NonAzureComputers.Count 0 "UpdateConfiguration doesn't have correct value of NonAzureComputers"
+    Assert-NotNull $suc.UpdateConfiguration.Windows "Linux property of UpdateConfiguration is null"
+    Assert-AreEqual $suc.UpdateConfiguration.Windows.IncludedKbNumbers.Count 2
+    Assert-AreEqual $suc.UpdateConfiguration.Windows.IncludedKbNumbers[0] "2952664"
+    Assert-AreEqual $suc.UpdateConfiguration.Windows.IncludedKbNumbers[1] "2990214"
+
+    WaitForProvisioningState $name "Succeeded"
+}
+
+
+<#
+Test-CreateLinuxIncludedPackageNameMasksSoftwareUpdateConfiguration
+#>
+function Test-CreateLinuxIncludedPackageNameMasksSoftwareUpdateConfiguration() {
+
+    $aa = "Automate-d2b38167-d3ca-4d1f-a020-948eee21b6bc-EJP"
+	$rg = "DefaultResourceGroup-EJP"
+    $azureVMIdsL = @(
+	   "/subscriptions/d2b38167-d3ca-4d1f-a020-948eee21b6bc/resourceGroups/ikanni-rhel74-omi-001-RG/providers/Microsoft.Compute/virtualMachines/ikanni-rhel74-omi-001"
+	)
+
+    $name = "mo-monthly-02"
+    $startTime = ([DateTime]::Now).AddMinutes(10)
+    $duration = New-TimeSpan -Hours 2
+	$s = New-AzAutomationSchedule -ResourceGroupName $rg `
+                                       -AutomationAccountName $aa `
+                                       -Name $name `
+                                       -Description test-OneTime `
+                                       -MonthInterval 1 `
+                                       -DaysOfMonth Two,Five `
+                                       -StartTime $startTime `
+                                       -ForUpdate
+
+    $suc = New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg `
+                                                             -AutomationAccountName $aa `
+                                                             -Schedule $s `
+                                                             -Linux `
+                                                             -AzureVMResourceId $azureVMIdsL `
+                                                             -Duration $duration `
+                                                             -IncludedPackageNameMask  @("*kernel*", "pyhton*.x64")
+
+    Assert-NotNull $suc "New-AzAutomationSoftwareUpdateConfiguration returned null"
+    Assert-AreEqual $suc.Name $name "Name of created software update configuration didn't match given name"
+    Assert-NotNull $suc.UpdateConfiguration "UpdateConfiguration of the software update configuration object is null"
+    Assert-NotNull $suc.ScheduleConfiguration "ScheduleConfiguration of the software update configuration object is null"
+    Assert-AreEqual $suc.ProvisioningState "Provisioning" "software update configuration provisioning state was not expected"
+    Assert-AreEqual $suc.UpdateConfiguration.OperatingSystem "Linux" "UpdateConfiguration Operating system is not expected"
+    Assert-AreEqual $suc.UpdateConfiguration.Duration $duration "UpdateConfiguration Duration is not expected"
+    Assert-AreEqual $suc.UpdateConfiguration.AzureVirtualMachines.Count 1 "UpdateConfiguration created doesn't have the correct number of azure virtual machines"
+    Assert-AreEqual $suc.UpdateConfiguration.NonAzureComputers.Count 0 "UpdateConfiguration doesn't have correct value of NonAzureComputers"
+    Assert-NotNull $suc.UpdateConfiguration.Linux "Windows property of UpdateConfiguration is null"
+    Assert-AreEqual $suc.UpdateConfiguration.Linux.IncludedPackageNameMasks.Count 2
+    Assert-AreEqual $suc.UpdateConfiguration.Linux.IncludedPackageNameMasks[0] "*kernel*"
+    Assert-AreEqual $suc.UpdateConfiguration.Linux.IncludedPackageNameMasks[1] "pyhton*.x64"
+
+    WaitForProvisioningState $name "Succeeded"
+}
+

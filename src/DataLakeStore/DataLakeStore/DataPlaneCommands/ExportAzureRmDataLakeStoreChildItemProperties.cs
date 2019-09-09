@@ -1,10 +1,12 @@
 ﻿using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreChildItemProperties", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    [Alias("Export-AdlStoreChildItemProperties")]
+    [GenericBreakingChange("Export-AzDataLakeStoreChildItemProperties alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreChildItemProperty", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Alias("Export-AdlStoreChildItemProperties", "Export-AzDataLakeStoreChildItemProperties")]
     public class ExportAzureRmDataLakeStoreChildItemProperties : DataLakeStoreFileSystemCmdletBase
     {
         internal const string BaseParameterSetName = "GetDiskUsage";
@@ -27,14 +29,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
             HelpMessage = "Path to output file. Can be a Local path or Adl Path. By default"+
-                          " it is local. If SaveToAdl is pecified then it is an ADL path in the same account")]
+                          " it is local. If SaveToAdl is specified then it is an ADL path in the same account")]
         [ValidateNotNullOrEmpty]
         public string OutputPath { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage =
                 "Save output to ADL Store, in the same account. The OutputPath parameter should be the full ADL path to output to." + 
-                "Default is to save to a local file. In that case, OutputPath specifies the pathto local file.")]
+                "Default is to save to a local file. In that case, OutputPath specifies the path to local file.")]
         public SwitchParameter SaveToAdl { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,

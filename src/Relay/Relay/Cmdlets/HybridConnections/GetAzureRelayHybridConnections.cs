@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
     /// <para> If HybridConnections name provided, a single HybridConnections detials will be returned</para>
     /// <para> If WcfRelayHybridConnections name not provided, list of WcfRelayHybridConnections will be returned</para>
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RelayHybridConnection"), OutputType(typeof(PSHybridConnectionAttibutes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RelayHybridConnection"), OutputType(typeof(PSHybridConnectionAttributes))]
     public class GetAzureRmRelayHybridConnection : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -54,13 +54,13 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
             if (!string.IsNullOrEmpty(Name))
             {
                 // Get a HybridConnections
-                PSHybridConnectionAttibutes hybridConnections = Client.GetHybridConnections(ResourceGroupName, Namespace, Name);
+                PSHybridConnectionAttributes hybridConnections = Client.GetHybridConnections(ResourceGroupName, Namespace, Name);
                 WriteObject(hybridConnections);
             }
             else
             {
                 // Get all HybridConnections
-                IEnumerable<PSHybridConnectionAttibutes> hybridConnectionsList = Client.ListAllHybridConnections(ResourceGroupName, Namespace);
+                IEnumerable<PSHybridConnectionAttributes> hybridConnectionsList = Client.ListAllHybridConnections(ResourceGroupName, Namespace);
                 WriteObject(hybridConnectionsList.ToList(), true);
             }
         }

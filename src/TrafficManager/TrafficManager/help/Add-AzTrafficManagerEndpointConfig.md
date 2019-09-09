@@ -191,7 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubnetMapping
-The list of address ranges or subnets mapped to this endpoint when using the â€˜Subnetâ€™ traffic routing method.
+The list of address ranges or subnets mapped to this endpoint when using the 'Subnet' traffic routing method.
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]

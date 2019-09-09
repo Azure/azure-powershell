@@ -117,6 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ApiDiagnosticRemoveDescription" xml:space="preserve">
+    <value>Removing Diagnostic "{0}" from Api "{1}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="ApiDiagnosticRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Diagnostic "{0}" from Api "{1}" ?</value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="ApiExportDescription" xml:space="preserve">
     <value>Exporting API "{0}" to file "{1}".</value>
     <comment>Process workflow</comment>
@@ -149,6 +157,14 @@
     <value>Are you sure you want to remove Api Revision '{0}';rev={1}</value>
     <comment>Process workflow</comment>
   </data>
+  <data name="ApiSchemaRemoveDescription" xml:space="preserve">
+    <value>Removing Schema "{0}" from API "{1}.</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="ApiSchemaRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Schema "{0}" from Api "{1}" ?</value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="ApiVersionSetRemoveDescription" xml:space="preserve">
     <value>Removing API Version Set "{0}"</value>
     <comment>Process workflow</comment>
@@ -173,6 +189,14 @@
     <value>Are you sure you want to remove Backend "{0}" ?</value>
     <comment>Process workflow</comment>
   </data>
+  <data name="CacheRemoveDescription" xml:space="preserve">
+    <value>Removing Cache "{0}"</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="CacheRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Cache "{0}" ? </value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="CertificateRemoveDescription" xml:space="preserve">
     <value>Removing Certificate "{0}".</value>
     <comment>Process workflow</comment>
@@ -189,12 +213,32 @@
     <value>Create a API Revision</value>
     <comment>Process workflow</comment>
   </data>
+  <data name="CreateApiSchema" xml:space="preserve">
+    <value>Creating Api Schema</value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="CreateApiVersionSet" xml:space="preserve">
     <value>Create an API Version Set</value>
     <comment>Process workflow</comment>
   </data>
   <data name="CreateBackend" xml:space="preserve">
     <value>Create a Backend Entity</value>
+  </data>
+  <data name="CreateCache" xml:space="preserve">
+    <value>Creating Cache</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="CreateDiagnostics" xml:space="preserve">
+    <value>Creating Diagnostic</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="DiagnosticRemoveDescription" xml:space="preserve">
+    <value>Removing Diagnostic "{0}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="DiagnosticRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Diagnostic "{0}"?</value>
+    <comment>Process workflow</comment>
   </data>
   <data name="GroupRemoveDescription" xml:space="preserve">
     <value>Removing Group "{0}".</value>
@@ -288,12 +332,55 @@
     <value>Update the Api Revision</value>
     <comment>Process workflow</comment>
   </data>
+  <data name="SetApiSchema" xml:space="preserve">
+    <value>Set API Schema</value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="SetApiVersionSet" xml:space="preserve">
     <value>Update Api Version Set</value>
     <comment>Process workflow</comment>
   </data>
   <data name="SetBackend" xml:space="preserve">
     <value>Set Backend</value>
+  </data>
+  <data name="SetCache" xml:space="preserve">
+    <value>Set Cache</value>
+  </data>
+  <data name="SetDiagnostics" xml:space="preserve">
+    <value>Set Diagnostics</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SetGroup" xml:space="preserve">
+    <value>Set Group</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SetLogger" xml:space="preserve">
+    <value>Set Logger</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SetOpenIdConnectProvider" xml:space="preserve">
+    <value>Set OpenIdConnectProvider</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SetOperation" xml:space="preserve">
+    <value>Set Operation</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SetProduct" xml:space="preserve">
+    <value>Set Product</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SetProperty" xml:space="preserve">
+    <value>Set Property</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SetSubscription" xml:space="preserve">
+    <value>Set Subscription</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SetUser" xml:space="preserve">
+    <value>Set User</value>
+    <comment>Process workflow</comment>
   </data>
   <data name="ShouldProcessCaption" xml:space="preserve">
     <value>Confirm</value>

@@ -72,6 +72,18 @@ function Test-RouteFilterCRUDMinimalParameters
         $listRouteFilter = Get-AzRouteFilter;
         Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
+        # Get all RouteFilters in subscription wildcard for resource group
+        $listRouteFilter = Get-AzRouteFilter -ResourceGroupName "*";
+        Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all RouteFilters in subscription wildcard for name
+        $listRouteFilter = Get-AzRouteFilter -Name "*";
+        Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all RouteFilters in subscription wildcard for both resource group and name
+        $listRouteFilter = Get-AzRouteFilter -ResourceGroupName "*" -Name "*";
+        Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
         # Remove RouteFilter
         $removeRouteFilter = Remove-AzRouteFilter -ResourceGroupName $rgname -Name $rname -PassThru -Force;
         Assert-AreEqual $true $removeRouteFilter;
@@ -128,6 +140,18 @@ function Test-RouteFilterCRUDAllParameters
         $listRouteFilter = Get-AzRouteFilter;
         Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
+        # Get all RouteFilters in subscription wildcard for resource group
+        $listRouteFilter = Get-AzRouteFilter -ResourceGroupName "*";
+        Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all RouteFilters in subscription wildcard for name
+        $listRouteFilter = Get-AzRouteFilter -Name "*";
+        Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all RouteFilters in subscription wildcard for both resource group and name
+        $listRouteFilter = Get-AzRouteFilter -ResourceGroupName "*" -Name "*";
+        Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
         # Set RouteFilter
         $vRouteFilter.Tag = $TagSet;
         $vRouteFilter = Set-AzRouteFilter -RouteFilter $vRouteFilter -Force;
@@ -149,6 +173,18 @@ function Test-RouteFilterCRUDAllParameters
 
         # Get all RouteFilters in subscription
         $listRouteFilter = Get-AzRouteFilter;
+        Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all RouteFilters in subscription wildcard for resource group
+        $listRouteFilter = Get-AzRouteFilter -ResourceGroupName "*";
+        Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all RouteFilters in subscription wildcard for name
+        $listRouteFilter = Get-AzRouteFilter -Name "*";
+        Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all RouteFilters in subscription wildcard for both resource group and name
+        $listRouteFilter = Get-AzRouteFilter -ResourceGroupName "*" -Name "*";
         Assert-NotNull ($listRouteFilter | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove RouteFilter

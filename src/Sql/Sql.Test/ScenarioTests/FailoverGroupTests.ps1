@@ -139,7 +139,7 @@ function Test-FailoverGroup()
 		Validate-FailoverGroupWithGet $fg3
 
 		#Get Failover Group
-		$fgs = $serverObject | Get-AzSqlDatabaseFailoverGroup –ResourceGroupName $server.ResourceGroupName
+		$fgs = $serverObject | Get-AzSqlDatabaseFailoverGroup –ResourceGroupName $server.ResourceGroupName -FailoverGroupName *
 		Assert-AreEqual 1 ($fgs | where { $_.FailoverGroupName.Equals($fg.FailoverGroupName) }).Count
 
 		#Remove Failover Group

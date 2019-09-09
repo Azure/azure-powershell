@@ -14,17 +14,22 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
-    using System.Collections.Generic;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApiVersionSet")]
-    [OutputType(typeof(PsApiManagementApiVersionSet))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApiVersionSet", DefaultParameterSetName = ContextParameterSet)]
+    [OutputType(typeof(PsApiManagementApiVersionSet), ParameterSetName = new[] { ContextParameterSet, ResourceIdParameterSet })]
     public class GetAzureApiManagementApiVersionSet : AzureApiManagementCmdletBase
-    {        
+    {
+        #region ParameterSetNames
+        private const string ContextParameterSet = "ContextParameterSet";
+        private const string ResourceIdParameterSet = "ResourceIdParameterSet";
+        #endregion
+
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -36,15 +41,41 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             HelpMessage = "API identifier to look for. If specified will try to get the API by the Id.")]
         public String ApiVersionSetId { get; set; }
 
+        [Parameter(
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "Arm Resource Identifier of the ApiVersionSet." +
+            " If specified will try to find apiVersionSet by the identifier. This parameter is required.")]
+        public String ResourceId { get; set; }
+
         public override void ExecuteApiManagementCmdlet()
         {
-            if (string.IsNullOrEmpty(ApiVersionSetId))
+            string resourceGroupName;
+            string serviceName;
+            string apiVersionSetId;            
+
+            if (ParameterSetName.Equals(ContextParameterSet))
             {
-                WriteObject(Client.GetApiVersionSets(Context), true);
+                resourceGroupName = Context.ResourceGroupName;
+                serviceName = Context.ServiceName;
+                apiVersionSetId = ApiVersionSetId;
             }
             else
             {
-                WriteObject(Client.GetApiVersionSet(Context, ApiVersionSetId));
+                var apiVersionSet = new PsApiManagementApiVersionSet(ResourceId);
+                resourceGroupName = apiVersionSet.ResourceGroupName;
+                serviceName = apiVersionSet.ServiceName;
+                apiVersionSetId = apiVersionSet.ApiVersionSetId;
+            }
+
+            if (string.IsNullOrEmpty(ApiVersionSetId))
+            {
+                WriteObject(Client.GetApiVersionSets(resourceGroupName, serviceName), true);
+            }
+            else
+            {
+                WriteObject(Client.GetApiVersionSet(resourceGroupName, serviceName, ApiVersionSetId));
             }
         }
     }

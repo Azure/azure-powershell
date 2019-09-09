@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public List<PSVpnSite> ListVpnSites(string resourceGroupName)
         {
-            var vpnSites = string.IsNullOrWhiteSpace(resourceGroupName) ?
+            var vpnSites = ShouldListBySubscription(resourceGroupName, null) ?
                 this.VpnSiteClient.List() :                                       //// List by SubId
                 this.VpnSiteClient.ListByResourceGroup(resourceGroupName);        //// List by RG Name
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (MNM.VpnSite vpnSite in vpnSites)
                 {
                     PSVpnSite siteToReturn = ToPsVpnSite(vpnSite);
-                    siteToReturn.ResourceGroupName = resourceGroupName;
+                    siteToReturn.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(vpnSite.Id);
                     sitesToReturn.Add(siteToReturn);
                 }
             }

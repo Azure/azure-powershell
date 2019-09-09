@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: B6487D26-2B6A-4938-B1CD-48EADD8D0C3C
@@ -284,8 +284,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Export-AzAutomationRunbook](./Export-AzAutomationRunbook.md)
 
 [Get-AzAutomationRunbook](./Get-AzAutomationRunbook.md)
-
-[New-AzAutomationRunbook](./New-AzAutomationRunbook.md)
 
 [New-AzAutomationRunbook](./New-AzAutomationRunbook.md)
 

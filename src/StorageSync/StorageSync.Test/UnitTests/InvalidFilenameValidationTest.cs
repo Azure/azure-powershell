@@ -21,8 +21,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
+    /// <summary>
+    /// Class InvalidFilenameValidationTest.
+    /// </summary>
     public class InvalidFilenameValidationTest
     {
+        /// <summary>
+        /// Defines the test method WhenFileFilenameIsInvalidValidationResultIsError.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenFileFilenameIsInvalidValidationResultIsError()
@@ -44,6 +50,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             Assert.StrictEqual<Result>(Result.Fail, validationResult.Result);
         }
 
+        /// <summary>
+        /// Defines the test method WhenFileFilenameIsValidValidationResultIsSuccess.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenFileFilenameIsValidValidationResultIsSuccess()
@@ -65,6 +74,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             Assert.StrictEqual<Result>(Result.Success, validationResult.Result);
         }
 
+        /// <summary>
+        /// Defines the test method WhenDirectoryNameIsInvalidValidationResultIsError.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenDirectoryNameIsInvalidValidationResultIsError()
@@ -86,6 +98,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             Assert.StrictEqual<Result>(Result.Fail, validationResult.Result);
         }
 
+        /// <summary>
+        /// Defines the test method WhenDirectoryNameIsValidValidationResultIsSuccess.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenDirectoryNameIsValidValidationResultIsSuccess()

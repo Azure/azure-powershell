@@ -176,4 +176,7 @@
   <data name="EnterContainerPSSessionConfirmation" xml:space="preserve">
     <value>Creating a new remote PowerShell session. Confirm?</value>
   </data>
+  <data name="EnterContainerPSSessionPSCoreVersionNotSupported" xml:space="preserve">
+    <value>Remote Powershell sessions into Windows Containers on App Service from this version of PowerShell is not supported.</value>
+  </data>
 </root>

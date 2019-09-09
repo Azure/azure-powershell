@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subscriptions
 {
     public class GetBatchLocationQuotasCommandTests : RMTestBase
     {
-        private GetBatchLocationQuotasCommand cmdlet;
+        private GetBatchLocationQuotaCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subscriptions
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new GetBatchLocationQuotasCommand()
+            cmdlet = new GetBatchLocationQuotaCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object

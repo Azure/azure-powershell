@@ -24,6 +24,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
 {
@@ -76,6 +77,16 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
         }
 
         /// <summary>
+        /// Gets a list of all managed instances in an instance pool
+        /// </summary>
+        /// <returns>A list of all managed instances in an instance pool</returns>
+        public List<AzureSqlManagedInstanceModel> ListManagedInstancesByInstancePool(string resourceGroupName, string instancePoolName)
+        {
+            var resp = Communicator.ListByInstancePool(resourceGroupName, instancePoolName);
+            return resp.Select((s) => CreateManagedInstanceModelFromResponse(s)).ToList();
+        }
+
+        /// <summary>
         /// Gets a list of all the managed instances in a resource group
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
@@ -108,7 +119,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 SubnetId = model.SubnetId,
                 VCores = model.VCores,
                 Identity = model.Identity,
-                Collation = model.Collation
+                Collation = model.Collation,
+                PublicDataEndpointEnabled = model.PublicDataEndpointEnabled,
+                ProxyOverride = model.ProxyOverride,
+                TimezoneId = model.TimezoneId,
+                DnsZonePartner = model.DnsZonePartner,
+                InstancePoolId = model.InstancePoolName != null ?
+                    string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/instancePools/{2}",
+                        Context.Subscription.Id, model.ResourceGroupName, model.InstancePoolName): null
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -130,7 +148,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 LicenseType = model.LicenseType,
                 StorageSizeInGB = model.StorageSizeInGB,
                 SubnetId = model.SubnetId,
-                VCores = model.VCores
+                VCores = model.VCores,
+                PublicDataEndpointEnabled = model.PublicDataEndpointEnabled,
+                ProxyOverride = model.ProxyOverride
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -175,6 +195,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.VCores = resp.VCores;
             managedInstance.StorageSizeInGB = resp.StorageSizeInGB;
             managedInstance.Collation = resp.Collation;
+            managedInstance.PublicDataEndpointEnabled = resp.PublicDataEndpointEnabled;
+            managedInstance.ProxyOverride = resp.ProxyOverride;
+            managedInstance.TimezoneId = resp.TimezoneId;
+            managedInstance.DnsZone = resp.DnsZone;
+            managedInstance.InstancePoolName = resp.InstancePoolId != null ?
+                new ResourceIdentifier(resp.InstancePoolId).ResourceName : null;
 
             Management.Internal.Resources.Models.Sku sku = new Management.Internal.Resources.Models.Sku();
             sku.Name = resp.Sku.Name;

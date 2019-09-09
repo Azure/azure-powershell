@@ -8,7 +8,7 @@ schema: 2.0.0
 # Initialize-AzRecoveryServicesBackupProtectableItem
 
 ## SYNOPSIS
-Enquires for new DBs in the workload.
+This command triggers the discovery of any unprotected items of the given workload type in the given container. If the DB application is not auto-protected use this command to discover new DBs whenever they are added and proceed to protect them.
 
 ## SYNTAX
 
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkloadType
-Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles).
+Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles, MSSQL).
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType

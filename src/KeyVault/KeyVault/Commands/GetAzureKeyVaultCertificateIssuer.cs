@@ -78,6 +78,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Issuer name. Cmdlet constructs the FQDN of a certificate issuer from vault name, currently selected environment and issuer name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.IssuerName)]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         #endregion
@@ -94,9 +95,9 @@ namespace Microsoft.Azure.Commands.KeyVault
                 VaultName = parsedResourceId.ResourceName;
             }
 
-            if (string.IsNullOrEmpty(Name))
+            if (string.IsNullOrEmpty(Name) || WildcardPattern.ContainsWildcardCharacters(Name))
             {
-                GetAndWriteCertificateIssuers(VaultName);
+                GetAndWriteCertificateIssuers(VaultName, Name);
             }
             else
             {
@@ -109,7 +110,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
         }
 
-        private void GetAndWriteCertificateIssuers(string vaultName)
+        private void GetAndWriteCertificateIssuers(string vaultName, string name)
         {
             KeyVaultObjectFilterOptions options = new KeyVaultObjectFilterOptions
             {
@@ -126,7 +127,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     page.VaultName = VaultName;
                     psPageResults.Add(page);
                 }
-                WriteObject(psPageResults, true);
+                WriteObject(KVSubResourceWildcardFilter(name, psPageResults), true);
             } while (!string.IsNullOrEmpty(options.NextLink));
         }
     }

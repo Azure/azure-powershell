@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                           "selected environment, storage account name and sas definition name." )]
         [ValidateNotNullOrEmpty]
         [Alias( Constants.SasDefinitionName )]
+
         public string Name { get; set; }
 
         [Parameter(Mandatory = false,
@@ -88,9 +89,9 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (InRemovedState)
             {
-                if (String.IsNullOrWhiteSpace(Name))
+                if (String.IsNullOrWhiteSpace(Name) || WildcardPattern.ContainsWildcardCharacters(Name))
                 {
-                    GetAndWriteDeletedStorageSasDefinitions(VaultName, AccountName);
+                    GetAndWriteDeletedStorageSasDefinitions(VaultName, AccountName, Name);
                 }
                 else
                 {
@@ -100,9 +101,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             else
             {
-                if (String.IsNullOrWhiteSpace(Name))
+                if (String.IsNullOrWhiteSpace(Name) || WildcardPattern.ContainsWildcardCharacters(Name))
                 {
-                    GetAndWriteStorageSasDefinitions(VaultName, AccountName);
+                    GetAndWriteStorageSasDefinitions(VaultName, AccountName, Name);
                 }
                 else
                 {
@@ -112,7 +113,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
         }
 
-        private void GetAndWriteStorageSasDefinitions( string vaultName, string accountName )
+        private void GetAndWriteStorageSasDefinitions( string vaultName, string accountName, string name )
         {
             var options = new KeyVaultStorageSasDefinitiontFilterOptions
             {
@@ -122,11 +123,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             };
             do
             {
-                WriteObject( DataServiceClient.GetManagedStorageSasDefinitions( options ), true );
+                WriteObject(KVSubResourceWildcardFilter(name, DataServiceClient.GetManagedStorageSasDefinitions( options )), true );
             } while ( !string.IsNullOrEmpty( options.NextLink ) );
         }
 
-        private void GetAndWriteDeletedStorageSasDefinitions(string vaultName, string accountName)
+        private void GetAndWriteDeletedStorageSasDefinitions(string vaultName, string accountName, string name)
         {
             var options = new KeyVaultStorageSasDefinitiontFilterOptions
             {
@@ -137,7 +138,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             do
             {
-                WriteObject(DataServiceClient.GetDeletedManagedStorageSasDefinitions(options), true);
+                WriteObject(KVSubResourceWildcardFilter(name, DataServiceClient.GetDeletedManagedStorageSasDefinitions(options)), true);
             } while (!string.IsNullOrEmpty(options.NextLink));
         }
     }

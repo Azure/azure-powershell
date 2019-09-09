@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: BA40BD11-8167-48D7-AC71-72B2FD9924F2
@@ -59,7 +59,18 @@ Specify a policy and scope.
 
 ## EXAMPLES
 
-### Example 1: Policy assignment at resource group level
+### Example 1: Policy assignment at subscription level
+```
+PS C:\> $Subscription = Get-AzSubscription -SubscriptionName 'Subscription01'
+PS C:\> $Policy = Get-AzPolicyDefinition -Name 'VirtualMachinePolicy'
+PS C:\> New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyDefinition $Policy -Scope "/subscriptions/$($Subscription.Id)"
+```
+
+The first command gets a subscription named Subscription01 by using the Get-AzSubscription cmdlet and stores it in the $Subscription variable.
+The second command gets the policy definition named VirtualMachinePolicy by using the Get-AzPolicyDefinition cmdlet and stores it in the $Policy variable.
+The final command assigns the policy in $Policy at the level of the subscription identified by the subscription scope string.
+
+### Example 2: Policy assignment at resource group level
 ```
 PS C:\> $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 PS C:\> $Policy = Get-AzPolicyDefinition -Name 'VirtualMachinePolicy'
@@ -70,7 +81,7 @@ The first command gets a resource group named ResourceGroup11 by using the Get-A
 The second command gets the policy definition named VirtualMachinePolicy by using the Get-AzPolicyDefinition cmdlet and stores it in the $Policy variable.
 The final command assigns the policy in $Policy at the level of the resource group identified by the **ResourceId** property of $ResourceGroup.
 
-### Example 2: Policy assignment at resource group level with policy parameter object
+### Example 3: Policy assignment at resource group level with policy parameter object
 ```
 PS C:\> $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 PS C:\> $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
@@ -88,7 +99,7 @@ The commands store that object in the $AllowedLocations variable.
 The final command assigns the policy in $Policy at the level of a resource group using the policy parameter object in $AllowedLocations.
 The **ResourceId** property of $ResourceGroup identifies the resource group.
 
-### Example 3: Policy assignment at resource group level with policy parameter file
+### Example 4: Policy assignment at resource group level with policy parameter file
 Create a file called _AllowedLocations.json_ in the local working directory with the following content.
 
 ```
@@ -113,7 +124,7 @@ The first command gets a resource group named ResourceGroup11 by using the Get-A
 The second command gets the built-in policy definition for allowed locations by using the Get-AzPolicyDefinition cmdlet and stores it in the $Policy variable.
 The final command assigns the policy in $Policy at the resource group identified by the **ResourceId** property of $ResourceGroup using the policy parameter file AllowedLocations.json from the local working directory.
 
-### Example 4: Policy assignment with a managed identity
+### Example 5: Policy assignment with a managed identity
 ```
 PS C:\> $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 PS C:\> $Policy = Get-AzPolicyDefinition -Name 'VirtualMachinePolicy'
@@ -403,7 +414,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

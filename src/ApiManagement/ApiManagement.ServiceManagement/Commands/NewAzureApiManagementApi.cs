@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -89,6 +90,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
+            HelpMessage = "OpenId authorization server identifier. This parameter is optional. Default value is $null." +
+            " Must be specified if BearerTokenSendingMethod is specified.")]
+        public String OpenIdProviderId { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "OpenId authorization server mechanism by which access token is passed to the API. " +
+            "Refer to http://tools.ietf.org/html/rfc6749#section-4. This parameter is optional. Default value is $null.")]
+        public string[] BearerTokenSendingMethod { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "Subscription key header name. This parameter is optional. Default value is $null.")]
         public String SubscriptionKeyHeaderName { get; set; }
 
@@ -104,6 +119,42 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             HelpMessage = "Array of products IDs to add the new API to. This parameter is optional.")]
         public String[] ProductIds { get; set; }
 
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Flag to enforce SubscriptionRequired for requests to the Api. This parameter is optional.")]
+        public SwitchParameter SubscriptionRequired { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Api Version Description. This parameter is optional.")]
+        public String ApiVersionDescription { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "A resource identifier for the related Api Version Set. This parameter is optional.")]
+        public String ApiVersionSetId { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Api Version of the Api to create. This parameter is optional.")]        
+        public String ApiVersion { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Api identifier of the source API. This parameter is optional.")]
+        public String SourceApiId { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Api Revision of the source API. This parameter is optional.")]
+        public String SourceApiRevision { get; set; }
+
         public override void ExecuteApiManagementCmdlet()
         {
             string id = ApiId ?? Guid.NewGuid().ToString("N");
@@ -115,11 +166,19 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 Description,
                 ServiceUrl,
                 Path,
+                SourceApiId,
+                SourceApiRevision,
+                SubscriptionRequired.IsPresent,
+                ApiVersionDescription,
+                ApiVersionSetId,
+                ApiVersion,
                 Protocols.Distinct().ToArray(),
                 AuthorizationServerId,
                 AuthorizationScope,
                 SubscriptionKeyHeaderName,
-                SubscriptionKeyQueryParamName);
+                SubscriptionKeyQueryParamName,
+                OpenIdProviderId,
+                BearerTokenSendingMethod);
 
             if (ProductIds != null && ProductIds.Any())
             {

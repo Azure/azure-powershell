@@ -8,7 +8,7 @@ param(
 # Get all psd1 files
 $psd1Files = Get-Childitem $PSScriptRoot\..\artifacts\$BuildConfig -Recurse | where {$_.Name -like "*.psd1" }
 
-$profilePsd1 = $psd1Files | Where-Object {$_.Name -like "*Az.Profile.psd1"}
+$profilePsd1 = $psd1Files | Where-Object {$_.Name -like "*Az.Accounts.psd1"}
 Import-LocalizedData -BindingVariable "psd1File" -BaseDirectory $profilePsd1.DirectoryName -FileName $profilePsd1.Name
 foreach ($nestedModule in $psd1File.RequiredAssemblies)
 {

@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Network
            ParameterSetName = "Expand")]
         [ResourceNameCompleter("Microsoft.Network/routeFilters", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         [Parameter(
@@ -53,6 +54,7 @@ namespace Microsoft.Azure.Commands.Network
            ParameterSetName = "Expand")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -66,7 +68,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var routeFilter = this.GetRouteFilter(this.ResourceGroupName, this.Name, this.ExpandResource);
 
@@ -75,7 +77,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<RouteFilter> routeFilterPage;
-                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                if (ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     routeFilterPage = this.RouteFilterClient.ListByResourceGroup(this.ResourceGroupName);
                 }
@@ -96,7 +98,7 @@ namespace Microsoft.Azure.Commands.Network
                     psRouteFilters.Add(psRouteFilter);
                 }
 
-                WriteObject(psRouteFilters, true);                
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psRouteFilters), true);                
             }
         }
     }

@@ -34,5 +34,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         internal const string ByLinkedIntegrationRuntimeName = "ByLinkedIntegrationRuntimeName";
         internal const string ByLinkedIntegrationRuntimeResourceId = "ByLinkedIntegrationRuntimeResourceId";
         internal const string ByLinkedIntegrationRuntimeObject = "ByLinkedIntegrationRuntimeObject";
+        internal const string ByResourceIdFactoryRepoVstsConfig = "ByResourceIdFactoryRepoVstsConfig";
+        internal const string ByResourceIdFactoryRepoGitConfig = "ByResourceIdFactoryRepoGitConfig";
+        internal const string ByFactoryNameFactoryRepoVstsConfig = "ByFactoryNameFactoryRepoVstsConfig";
+        internal const string ByFactoryNameFactoryRepoGitConfig = "ByFactoryNameFactoryRepoGitConfig";
+        internal const string ByInputObjectFactoryRepoVstsConfig = "ByInputObjectFactoryRepoVstsConfig";
+        internal const string ByInputObjectFactoryRepoGitConfig = "ByInputObjectFactoryRepoGitConfig";
     }
 }

@@ -9,7 +9,7 @@ schema: 2.0.0
 # Add-AzHDInsightSecurityProfile
 
 ## SYNOPSIS
-Adds a security profileto a cluster configuration object.
+Adds a security profile to a cluster configuration object.
 
 ## SYNTAX
 

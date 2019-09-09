@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.Resources
 Module Guid: ab3ca893-26fe-44b0-bd3c-8933df144d7b
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.resources
@@ -37,6 +37,11 @@ Retrieves a list of credentials associated with a service principal.
 
 ### [Get-AzADUser](Get-AzADUser.md)
 Filters active directory users.
+
+### [Get-AzDenyAssignment](Get-AzDenyAssignment.md)
+Lists Azure RBAC deny assignments at the specified scope.
+By default it lists all deny assignments in the selected Azure subscription.
+Use respective parameters to list deny assignments to a specific user, or to list deny assignments on a specific resource group or resource.
 
 ### [Get-AzDeployment](Get-AzDeployment.md)
 Get deployment
@@ -130,7 +135,7 @@ Adds a credential to an existing service principal.
 Creates a new active directory user.
 
 ### [New-AzDeployment](New-AzDeployment.md)
-Creat a deployment
+Create a deployment
 
 ### [New-AzManagedApplication](New-AzManagedApplication.md)
 Creates an Azure managed application.
@@ -290,7 +295,7 @@ Then, modify the properties that you wish to change.
 Finally, save the role definition using this command.
 
 ### [Stop-AzDeployment](Stop-AzDeployment.md)
-Cancal a running deployment
+Cancel a running deployment
 
 ### [Stop-AzResourceGroupDeployment](Stop-AzResourceGroupDeployment.md)
 Cancels a resource group deployment.

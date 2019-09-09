@@ -67,6 +67,7 @@ namespace Microsoft.Azure.Commands.Network
            HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/virtualHubs/hubVirtualNetworkConnections", "ResourceGroupName", "ParentResourceName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         public override void Execute()
@@ -85,13 +86,13 @@ namespace Microsoft.Azure.Commands.Network
                 ResourceGroupName = parsedResourceId.ResourceGroupName;
             }
 
-            if (!string.IsNullOrWhiteSpace(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 WriteObject(this.GetHubVirtualNetworkConnection(this.ResourceGroupName, this.ParentResourceName, this.Name));
             }
             else
             {
-                WriteObject(this.ListHubVnetConnections(this.ResourceGroupName, this.ParentResourceName), true);
+                WriteObject(SubResourceWildcardFilter(Name, this.ListHubVnetConnections(this.ResourceGroupName, this.ParentResourceName)), true);
             }
         }
     }

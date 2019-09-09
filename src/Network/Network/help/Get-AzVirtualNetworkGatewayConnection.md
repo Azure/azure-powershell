@@ -32,6 +32,13 @@ Get-AzVirtualNetworkGatewayConnection -Name myTunnel -ResourceGroupName myRG
 
 Returns the object of the Virtual Network Gateway Connection with the name "myTunnel" within the resource group "myRG"
 
+### 2: Get all Virtual Network Gateway Connections using filtering
+```
+Get-AzVirtualNetworkGatewayConnection -Name myTunnel* -ResourceGroupName myRG
+```
+
+Returns all Virtual Network Gateway Connections that start with "myTunnel" within the resource group "myRG"
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -59,7 +66,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
@@ -72,11 +79,11 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Job = Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Job;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -200,6 +201,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
+        [CmdletParameterBreakingChange(
+            "IncludeDiskId", 
+            ChangeDescription = "Parameter IncludeDiskId will be changed in future release to support directly write to managed disk support Azure Site Recovery.")]
         [ValidateNotNullOrEmpty]
         public string[] IncludeDiskId { get; set; }
 
@@ -607,14 +611,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 RecoveryBootDiagStorageAccountId = this.RecoveryBootDiagStorageAccountId
             };
 
+            if (!string.IsNullOrEmpty(this.RecoveryCloudServiceId))
+            {
+                providerSettings.RecoveryResourceGroupId = null;
+            }
+
             if (this.AzureToAzureDiskReplicationConfiguration == null)
             {
                 if (this.AzureVmId.ToLower().Contains(ARMResourceTypeConstants.Compute.ToLower()))
                 {
                     var vmName = Utilities.GetValueFromArmId(this.AzureVmId, ARMResourceTypeConstants.VirtualMachine);
                     var vmRg = Utilities.GetValueFromArmId(this.AzureVmId, ARMResourceTypeConstants.ResourceGroups);
+                    var subscriptionId = Utilities.GetValueFromArmId(this.AzureVmId, ARMResourceTypeConstants.Subscriptions);
+                    var tempSubscriptionId = this.ComputeManagementClient.GetComputeManagementClient.SubscriptionId;
+                    this.ComputeManagementClient.GetComputeManagementClient.SubscriptionId = subscriptionId;
                     var virtualMachine = this.ComputeManagementClient.GetComputeManagementClient.
                         VirtualMachines.GetWithHttpMessagesAsync(vmRg, vmName).GetAwaiter().GetResult().Body;
+                    this.ComputeManagementClient.GetComputeManagementClient.SubscriptionId = tempSubscriptionId;
+
                     if (virtualMachine == null)
                     {
                         throw new Exception("Azure Vm not found");

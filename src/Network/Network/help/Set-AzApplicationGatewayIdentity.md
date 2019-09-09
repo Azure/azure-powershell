@@ -30,7 +30,7 @@ PS C:\>$appgwIdentity = Set-AzApplicationGatewayIdentity -UserAssignedIdentity $
 PS C:\>$updatedAppGw = Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
-In this example, we assign a user assigned identity to an existing applicaiton gateway.
+In this example, we assign a user assigned identity to an existing application gateway.
 Note: This identity should have access to the keyvault from which the certificates/secrets will be referenced.
 
 ## PARAMETERS

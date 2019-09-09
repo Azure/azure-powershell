@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using ResourceManager.Common;
     using System;
     using System.Management.Automation;
-    using System.Net;
 
     public class AzureApiManagementCmdletBase : AzureRMCmdlet
     {

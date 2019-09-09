@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzLoadBalancer
 
 ## SYNOPSIS
-Sets the goal state for a load balancer.
+Updates a load balancer.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Set-AzLoadBalancer -LoadBalancer <PSLoadBalancer> [-AsJob] [-DefaultProfile <IAz
 ```
 
 ## DESCRIPTION
-The **Set-AzLoadBalancer** cmdlet sets the goal state for an Azure load balancer.
+The **Set-AzLoadBalancer** cmdlet updates a load balancer.
 
 ## EXAMPLES
 
@@ -67,8 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -LoadBalancer
-Specifies a load balancer.
-This cmdlet sets the goal state for the load balancer that this parameter specifies.
+Specifies a load balancer object representing the state to which the load balancer should be set.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer

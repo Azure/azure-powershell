@@ -44,9 +44,23 @@ namespace CognitiveServices.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAccountWithInvalidName()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmCognitiveServicesAccountInvalidName");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAccountWithCustomDomain()
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmCognitiveServicesAccountWithCustomDomain");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAccountWithVnet()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmCognitiveServicesAccountWithVnet");
         }
 
         [Fact]
@@ -75,6 +89,27 @@ namespace CognitiveServices.Test.ScenarioTests
         public void TestSetAccount()
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-SetAzureRmCognitiveServicesAccount");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAccountWithCustomDomain()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-SetAzureRmCognitiveServicesAccountWithCustomDomain");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAccountWithVnet()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-SetAzureRmCognitiveServicesAccountWithVnet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkRuleSet()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NetworkRuleSet");
         }
 
         [Fact]

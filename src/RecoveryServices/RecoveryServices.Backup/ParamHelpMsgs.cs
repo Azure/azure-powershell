@@ -30,16 +30,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string RegisteredContainer = "The recovery services backup container.";
             public const string FriendlyName = "The name of the resource being managed by the" +
                 " Azure Backup service (for example: resource name of the VM).";
-            public const string ResourceId = "Azure VM Id";
+            public const string ResourceId = "ID of the Azure Resource containing items to be protected by Azure Backup service. Currently, only Azure VM resource IDs are supported.";
             public const string ContainerObj = "Container object that needs to be re registered.";
+            public const string ForceOption = "Force registers container (prevents confirmation dialog). This parameter is optional.";
         }
 
         internal static class Common
         {
             public const string Vault = "The Azure Backup vault object which is the parent resource.";
             public const string VaultId = "Resource ID of the Recovery Services Vault.";
-            public const string WorkloadType = "Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles).";
-            public const string BackupManagementType = "Backup Management type of the resource (for example: MAB, DPM).";
+            public const string WorkloadType = "Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles, MSSQL).";
+            public const string BackupManagementType = "Backup Management type of the resource (for example: MAB, DPM, AzureWorkload).";
             public const string ConfirmationMessage = "Don't ask for confirmation.";
         }
 
@@ -72,7 +73,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string AzureVMServiceName = "Cloud Service Name for Azure Classic Compute VM.";
             public const string AzureVMResourceGroupName = "Resource Group Name for Azure Compute VM .";
             public const string ProtectedItem = "Filter value for status of job.";
-            public const string ProtectableItem = "Protectabe item";
+            public const string ProtectableItem = "Specifies the protectable item to be protected using Azure Backup.";
             public const string ProtectionStatus = "Protection status of Item";
             public const string Status = "Status of the data source";
             public const string Container = "Container where the item resides";
@@ -86,16 +87,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string AzureFileShareName = "Azure FileShare Name.";
             public const string AzureFileStorageAccountName = "Azure file share storage account name";
             public const string AzureFileStorageAccountResourceGroupName = "Azure file share storage account resource group name";
-            public const string BackupType = "Type of backup to be performed";
-            public const string EnableCompression = "If enabling compression is required";
-            public const string ParentID = "Parent ID";
+            public const string BackupType = "Specifies the type of backup to be taken for an on-demand backup. Allowed values are “CopyOnlyFull”, “Full”, “Differential”, “Log”.";
+            public const string EnableCompression = "A switch which will specify that the requested on-demand SQL backup should be compressed.";
+            public const string ParentID = "Specified the ARM ID of an Instance or AG.";
         }
 
         internal static class ProtectableItem
         {
-            public const string ItemType = "Protectable Item type.";
-            public const string ItemId = "Input Id";
-            public const string ItemObject = "Input Item";
+            public const string ItemType = "Specifies the type of protectable item. Applicable values: (SQLDataBase, SQLInstance, SQLAvailabilityGroup).";
+            public const string ItemId = "Specifies the parent entity under which the protectable items (DBs) are to be retrieved. IDs of protectable item types SQLInstance, SQLAvailabilityGroup are applicable.";
+            public const string ItemObject = "Specifies the protectable item object that can be passed as an input.";
+            public const string Name = "Specifies the name of the Database, Instance or AvailabilityGroup.";
+            public const string ServerName = "Specifies the name of the server to which the item belongs.";
         }
 
         internal static class RecoveryPoint
@@ -154,10 +157,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         internal static class RecoveryPointConfig
         {
-            public const string Item = "Item";
-            public const string TargetItem = "TargetItem";
-            public const string OriginalWorkloadRestore = "OriginalWorkloadRestore";
-            public const string AlternateWorkloadRestore = "AlternateWorkloadRestore";
+            public const string Item = "Specifies the backup item on which the restore operation is being performed.";
+            public const string TargetItem = "Specifies the target on which the DB needs to be restored. For SQL restores, it needs to be of protectable item type SQLInstance only.";
+            public const string OriginalWorkloadRestore = "Specifies that the backed up DB is to be overwritten with the DB information present in the recovery point.";
+            public const string AlternateWorkloadRestore = "Specifies that the backed up DB should be restored as a new DB in another instance or as a new DB in the same instance";
         }
     }
 }

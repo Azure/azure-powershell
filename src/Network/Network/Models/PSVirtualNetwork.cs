@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     using Newtonsoft.Json;
     using WindowsAzure.Commands.Common.Attributes;
 
-    public class PSVirtualNetwork : PSTopLevelResource, IResourceReference
+    public class PSVirtualNetwork : PSTopLevelResource, IResourceReference, IVirtualNetwork
     {
         public PSAddressSpace AddressSpace { get; set; }
 

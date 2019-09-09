@@ -22,8 +22,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
     using System;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
+    /// <summary>
+    /// Class NamespaceEnumeratorTests.
+    /// </summary>
     public class NamespaceEnumeratorTests
     {
+        /// <summary>
+        /// Defines the test method EnumerationTotals.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnumerationTotals()

@@ -19,6 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.2
+* Fix hanging of Get-DataLakeStoreDeletedItem for any errors or remote exceptions.
+* Fixed miscellaneous typos across module
+
+## Version 1.2.1
+* Update the ADLS sdk to use httpclient, integrate dataplane testing with azure framework
+
+## Version 1.2.0
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
 ## Version 1.1.0
 * Add cmdlets for ADL deleted item enumerate and restore
 

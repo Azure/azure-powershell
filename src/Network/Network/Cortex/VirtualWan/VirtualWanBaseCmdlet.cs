@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public List<PSVirtualWan> ListVirtualWans(string resourceGroupName)
         {
-            var virtualWans = string.IsNullOrWhiteSpace(resourceGroupName) ?
+            var virtualWans = ShouldListBySubscription(resourceGroupName, null) ?
                 this.VirtualWanClient.List() :                                      //// List by sub id
                 this.VirtualWanClient.ListByResourceGroup(resourceGroupName);       //// List by RG name
 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (MNM.VirtualWAN virtualWan in virtualWans)
                 {
                     PSVirtualWan wanToReturn = ToPsVirtualWan(virtualWan);
-                    wanToReturn.ResourceGroupName = resourceGroupName;
+                    wanToReturn.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(virtualWan.Id);
                     wansToReturn.Add(wanToReturn);
                 }
             }

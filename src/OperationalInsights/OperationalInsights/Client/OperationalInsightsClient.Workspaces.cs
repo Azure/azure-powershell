@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             if (enabled)
             {
                 OperationalInsightsManagementClient.Workspaces.EnableIntelligencePack(resourceGroupName, workspaceName, intelligencePackName);
-                return new PSIntelligencePack(intelligencePackName, enabled); ;
+                return new PSIntelligencePack(intelligencePackName, enabled); 
             }
             else
             {

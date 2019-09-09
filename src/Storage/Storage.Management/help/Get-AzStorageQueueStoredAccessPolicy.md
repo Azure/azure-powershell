@@ -111,7 +111,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Storage.Queue.SharedAccessQueuePolicy
+### Microsoft.Azure.Storage.Queue.SharedAccessQueuePolicy
 
 ## NOTES
 

@@ -67,9 +67,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 ltrPolicy.YearlySchedule = GetPSLTRYearlySchedule(serviceClientRetPolicy.YearlySchedule, timeZone);
             }
 
-            // safe side validate
-            ltrPolicy.Validate();
-
             return ltrPolicy;
         }
 

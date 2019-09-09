@@ -143,6 +143,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.CertificateName)]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         /// <summary>
@@ -233,9 +234,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             else if (InRemovedState)
             {
-                if (Name == null)
+                if (string.IsNullOrEmpty(Name) || WildcardPattern.ContainsWildcardCharacters(Name))
                 {
-                    GetAndWriteDeletedCertificates(VaultName);
+                    GetAndWriteDeletedCertificates(VaultName, Name);
                 }
                 else
                 {
@@ -243,18 +244,18 @@ namespace Microsoft.Azure.Commands.KeyVault
                     WriteObject(deletedCert);
                 }
             }
-            else if (!string.IsNullOrEmpty(Name))
+            else if (!string.IsNullOrEmpty(Name) && !WildcardPattern.ContainsWildcardCharacters(Name))
             {
                 certBundle = this.DataServiceClient.GetCertificate(VaultName, Name, string.Empty);
                 this.WriteObject(certBundle);
             }
             else
             {
-                GetAndWriteCertificates(VaultName);
+                GetAndWriteCertificates(VaultName, Name);
             }
         }
 
-        private void GetAndWriteCertificates(string vaultName)
+        private void GetAndWriteCertificates(string vaultName, string name)
         {
             var options = new KeyVaultCertificateFilterOptions
             {
@@ -266,7 +267,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             do
             {
                 var pageResults = DataServiceClient.GetCertificates(options);
-                WriteObject(pageResults, true);
+                WriteObject(KVSubResourceWildcardFilter(name, pageResults), true);
             } while (!string.IsNullOrEmpty(options.NextLink));
         }
 
@@ -286,7 +287,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             } while (!string.IsNullOrEmpty(options.NextLink));
         }
 
-        private void GetAndWriteDeletedCertificates( string vaultName )
+        private void GetAndWriteDeletedCertificates( string vaultName, string name )
         {
             var options = new KeyVaultCertificateFilterOptions
             {
@@ -298,7 +299,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             do
             {
                 var pageResults = DataServiceClient.GetDeletedCertificates(options);
-                WriteObject( pageResults, true );
+                WriteObject(KVSubResourceWildcardFilter(name, pageResults), true );
             } while ( !string.IsNullOrEmpty( options.NextLink ) );
         }
     }

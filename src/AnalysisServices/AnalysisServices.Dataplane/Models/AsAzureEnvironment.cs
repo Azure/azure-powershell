@@ -18,25 +18,15 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
+    /// <summary>
+    /// This class exists to maintain the interface of deprecating cmdlet Add-AzAnalysisServicesAccount.
+    /// Should be removed when Add-AzAnalysisServicesAccount is removed.
+    /// </summary>
     [Serializable]
     public class AsAzureEnvironment
     {
-        public AsAzureEnvironment(string Name)
-        {
-            this.Name = Name;
-            this.Endpoints = new Hashtable();
-        }
-
         public string Name { get; set; }
 
         public Hashtable Endpoints { get; set; }
-
-        public enum AsRolloutEndpoints
-        {
-            AdAuthorityBaseUrl,
-            RestartEndpointFormat,
-            LogfileEndpointFormat,
-            SyncEndpoint
-        }
     }
 }

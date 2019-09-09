@@ -378,6 +378,9 @@
   <data name="SetAzureSqlServerTransparentDataEncryptionProtectorWarning" xml:space="preserve">
     <value>Warning: This command sets the key '{0}' as the protector, removing access to this key in the future may result in data loss on this server. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?</value>
   </data>
+  <data name="SetAzureSqlInstanceTransparentDataEncryptionProtectorWarning" xml:space="preserve">
+    <value>Warning: This command sets the key '{0}' as the protector, removing access to this key in the future may result in data loss on this instance. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?</value>
+  </data>
   <data name="ElasticPoolDatabaseActivityCancelNotSupported" xml:space="preserve">
     <value>Azure Sql Database Elastic Pool name cannot be specified for this operation</value>
   </data>
@@ -409,7 +412,7 @@
     <value>Server Advanced Threat Protection is not defined. Please run Enable-AzSqlServerAdvancedThreatProtection first.</value>
   </data>
   <data name="RunSetVulnerabilityAssemenSettings" xml:space="preserve">
-    <value>Vulnerability assessment settings are not defined. Please run Update-AzSqlDatabaseVulnerabilityAssessmentSettings first.</value>
+    <value>Vulnerability assessment settings are not defined. Please run Update-AzSqlServerVulnerabilityAssessmentSettings first.</value>
   </data>
   <data name="InvalidBlobStorageSasUri" xml:space="preserve">
     <value>Invalid BlobStorageSasUri parameter value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment?st=XXXXXX."</value>
@@ -429,6 +432,12 @@
   <data name="VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase" xml:space="preserve">
     <value>Vulnerability Assessment operation is not available on master database. Skipping...</value>
   </data>
+  <data name="KeyIdNotFoundForAzureKeyVaultEncryptionProtectorError" xml:space="preserve">
+    <value>KeyId parameter is required for encryption protector type AzureKeyVault</value>
+  </data>
+  <data name="InvalidKeyId" xml:space="preserve">
+    <value>Invalid parameter format for keyId: '{0}'. It should be a well formed Azure Key Vault KeyId like: https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901</value>
+  </data>
   <data name="SetAzureSqlInstanceDescription" xml:space="preserve">
     <value>Setting Azure Sql Database Managed Instance '{0}'.</value>
   </data>
@@ -439,12 +448,127 @@
     <value>Wrong parameter type</value>
   </data>
   <data name="RunSetManagedDatabaseVulnerabilityAssemenSettings" xml:space="preserve">
-    <value>Vulnerability assessment settings are not defined. Please run Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings first.</value>
+    <value>Vulnerability assessment settings are not defined. Please run Update-AzSqlInstanceVulnerabilityAssessmentSettings first.</value>
   </data>
-  <data name="ManagedInstanceAdvancedThreatProtectionIsNotDefined" xml:space="preserve">
-    <value>Managed Instance Advanced Threat Protection is not defined. Please run Enable-AzSqlInstanceAdvancedDataSecurityPolicy first.</value>
+  <data name="ManagedInstanceAdvancedDataSecurityIsNotDefined" xml:space="preserve">
+    <value>Managed Instance Advanced Data Security is not defined. Please run Enable-AzSqlInstanceAdvancedDataSecurityPolicy first.</value>
   </data>
   <data name="ScanIdManagedDatabaseParameterIsRequired" xml:space="preserve">
     <value>ScanId is a required parameter for this cmdlet. Please explicitly provide it or pass the Get-AzSqlInstanceDatabaseVulnerabilityAssessmentScanRecord output via pipe.</value>
+  </data>
+  <data name="DataClassificationFailedToRetrieveInformationProtectionPolicy" xml:space="preserve">
+    <value>Failed to retrieve information protection policy of tenant {0}.</value>
+  </data>
+  <data name="InvalidFormatResourceId" xml:space="preserve">
+    <value>Invalid format of the resource identifier.</value>
+  </data>
+  <data name="VulnerabilityAssessmentTypeNotSupported" xml:space="preserve">
+    <value>Requested type is not supported by Vulnerability Assessment.</value>
+  </data>
+  <data name="RemoveAzureSqlDatabaseInstanceFailoverGroupDescription" xml:space="preserve">
+    <value>Permanently removing Azure Sql Database Instance Failover Group '{0}' on region '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlDatabaseInstanceFailoverGroupWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Database Instance Failover Group '{0}' on region '{1}'?</value>
+  </data>
+  <data name="AzureSqlInstancePoolExists" xml:space="preserve">
+    <value>Instance pool with name '{0}' already exists.</value>
+    <comment>Instance pools</comment>
+  </data>
+  <data name="AzureSqlInstancePoolNotExists" xml:space="preserve">
+    <value>Instance pool with name '{0}' does not exist.</value>
+    <comment>Instance pools</comment>
+  </data>
+  <data name="RemoveInstancePoolWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure SQL Instance pool '{0}'?</value>
+    <comment>Instance pools</comment>
+  </data>
+  <data name="FailoverAzureSqlDatabaseDescription" xml:space="preserve">
+    <value>Failing over Azure Sql Database '{0}' on server '{1}'.</value>
+  </data>
+  <data name="FailoverAzureSqlDatabaseWarning" xml:space="preserve">
+    <value>Are you sure you want to failover the Azure Sql Database '{0}' on server '{1}'?</value>
+  </data>
+  <data name="FailoverAzureSqlElasticPoolDescription" xml:space="preserve">
+    <value>Failing over Azure Sql Elastic Pool '{0}' on server '{1}'.</value>
+  </data>
+  <data name="FailoverAzureSqlElasticPoolWarning" xml:space="preserve">
+    <value>Are you sure you want to failover the Azure Sql Elastic Pool '{0}' on server '{1}'?</value>
+  </data>
+  <data name="AzureElasticJobAgentExists" xml:space="preserve">
+    <value>Elastic Job Agent with name '{0}' already exists in server '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="RemoveElasticJobAgentWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the agent '{0}' from server '{1}'?</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobAgentNotExists" xml:space="preserve">
+    <value>Elastic Job agent '{0}' does not exist in server '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobCredentialExists" xml:space="preserve">
+    <value>Job credential with name '{0}' already exists in agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobCredentialNotExists" xml:space="preserve">
+    <value>Job credential with name '{0}' does not exist in agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobTargetGroupExists" xml:space="preserve">
+    <value>Target group '{0}' already exists in agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobTargetGroupNotExists" xml:space="preserve">
+    <value>Target group '{0}' does not exist in agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="RemoveElasticJobTargetGroupWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the target group '{0}' from agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobTargetDatabaseExists" xml:space="preserve">
+    <value>Target with database name '{0}' and server name '{1}' already exists in target group '{2}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobTargetElasticPoolExists" xml:space="preserve">
+    <value>Target with elastic pool name '{0}' and server name '{1}' already exists in Target Group '{2}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobTargetServerExists" xml:space="preserve">
+    <value>Target with server name '{0}' already exists in Target Group '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobTargetShardMapExists" xml:space="preserve">
+    <value>Target with shard map name '{0}' and server name '{1}' already exists in Target Group '{2}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobExists" xml:space="preserve">
+    <value>Job with name '{0}' already exists in agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobNotExists" xml:space="preserve">
+    <value>Job with name '{0}' does not exist in agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="RemoveElasticJobWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the job '{0}' from agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobStepExists" xml:space="preserve">
+    <value>Job step with name '{0}' already exists in job '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobStepNotExists" xml:space="preserve">
+    <value>Job step with name '{0}' does not exist in job '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobIntervalNotSupported" xml:space="preserve">
+    <value>The requested job time interval is not supported '{0}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobExecutionNotExists" xml:space="preserve">
+    <value>Job execution '{0}' does not exist in job '{1}'</value>
+    <comment>Elastic Jobs</comment>
   </data>
 </root>

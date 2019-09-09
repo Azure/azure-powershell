@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure SQL Elastic Pool Advisor name.")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string AdvisorName { get; set; }
 
         /// <summary>
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
         {
             ICollection<AzureSqlElasticPoolAdvisorModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("AdvisorName"))
+            if (MyInvocation.BoundParameters.ContainsKey("AdvisorName") && !WildcardPattern.ContainsWildcardCharacters(AdvisorName))
             {
                 results = new List<AzureSqlElasticPoolAdvisorModel>();
                 results.Add(ModelAdapter.GetElasticPoolAdvisor(this.ResourceGroupName, this.ServerName, this.ElasticPoolName, this.AdvisorName, this.ExpandRecommendedActions));
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
                 results = ModelAdapter.ListElasticPoolAdvisors(this.ResourceGroupName, this.ServerName, this.ElasticPoolName, this.ExpandRecommendedActions);
             }
 
-            return results;
+            return SubResourceWildcardFilter(AdvisorName, results);
         }
 
         /// <summary>

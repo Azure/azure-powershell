@@ -93,83 +93,6 @@ function Test-GetWebAppSlot
 
 <#
 .SYNOPSIS
-Tests retrieving website metrics
-#>
-function Test-GetWebAppSlotMetrics
-{
-	# Setup
-	$rgname = Get-ResourceGroupName
-	$appname = Get-WebsiteName
-	$slotname = "staging"
-	$location = Get-Location
-	$planName = Get-WebHostPlanName
-	$tier = "Standard"
-	$apiversion = "2015-08-01"
-	$resourceType = "Microsoft.Web/sites"
-
-	try
-	{
-		#Setup
-		New-AzResourceGroup -Name $rgname -Location $location
-		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $planName -Location  $location -Tier $tier
-		
-		# Create new web app
-		$webapp = New-AzWebApp -ResourceGroupName $rgname -Name $appname -Location $location -AppServicePlan $planName 
-		
-		# Assert
-		Assert-AreEqual $appname $webapp.Name
-		Assert-AreEqual $serverFarm.Id $webapp.ServerFarmId
-		
-		# Create new deployment slot
-		$slot = New-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName 
-		$appWithSlotName = "$appname/$slotname"
-
-		# Assert
-		Assert-AreEqual $appWithSlotName $slot.Name
-		Assert-AreEqual $serverFarm.Id $slot.ServerFarmId
-
-		for($i = 0; $i -lt 10; $i++)
-		{
-			PingWebApp $slot
-		}
-
-		$endTime = Get-Date
-		$startTime = $endTime.AddHours(-3)
-
-		$metricnames = @('CPU', 'Requests')
-		
-		# Get web app metrics
-		$metrics = Get-AzWebAppSlotMetrics -ResourceGroupName $rgname -Name $appname -Slot $slotname -Metrics $metricnames -StartTime $startTime -EndTime $endTime -Granularity PT1M
-
-		$actualMetricNames = $metrics | Select -Expand Name | Select -Expand Value 
-
-		foreach ($i in $metricnames)
-		{
-			Assert-True { $actualMetricNames -contains $i}
-		}
-
-		# Get web app metrics via pipeline obj
-		$metrics = $slot | Get-AzWebAppSlotMetrics -Metrics $metricnames -StartTime $startTime -EndTime $endTime -Granularity PT1M
-
-		$actualMetricNames = $metrics | Select -Expand Name | Select -Expand Value 
-
-		foreach ($i in $metricnames)
-		{
-			Assert-True { $actualMetricNames -contains $i}
-		}
-	}
-	finally
-	{
-		# Cleanup
-		Remove-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -Force
-		Remove-AzWebApp -ResourceGroupName $rgname -Name $appname -Force
-		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
-		Remove-AzResourceGroup -Name $rgname -Force
-	}
-}
-
-<#
-.SYNOPSIS
 Start stop restart web app
 #>
 function Test-StartStopRestartWebAppSlot
@@ -208,37 +131,31 @@ function Test-StartStopRestartWebAppSlot
 		$slot = $slot | Stop-AzWebAppSlot
 
 		Assert-AreEqual "Stopped" $slot.State
-		$ping = PingWebApp $slot
 
 		# Start web app
 		$slot = $slot | Start-AzWebAppSlot
 
 		Assert-AreEqual "Running" $slot.State
-		$ping = PingWebApp $slot
 
 		# Stop web app
 		$slot = Stop-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname
 
 		Assert-AreEqual "Stopped" $slot.State
-		$ping = PingWebApp $slot
 
 		# Start web app
 		$slot = Start-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname
 
 		Assert-AreEqual "Running" $slot.State
-		$ping = PingWebApp $slot
 
 		# Retart web app
 		$slot = Restart-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname
 
 		Assert-AreEqual "Running" $slot.State
-		$ping = PingWebApp $slot
 
 		# Restart web app
 		$slot = $slot | Restart-AzWebAppSlot
 
 		Assert-AreEqual "Running" $slot.State
-		$ping = PingWebApp $slot
 	}
 	finally
 	{
@@ -925,10 +842,10 @@ function Test-SetAzureStorageWebAppHyperVSlot
 	$tier = "PremiumContainer"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
-    $containerImageName = "testcontainer.io/test/iis"
-    $containerRegistryUrl = "https://testcontainer.azurecr.io"
-    $ontainerRegistryUser = "testregistry"
-    $pass = "7Dxo9p79Ins2K3ZU"
+	$containerImageName = "pstestacr.azurecr.io/tests/iis:latest"
+    $containerRegistryUrl = "https://pstestacr.azurecr.io"
+    $containerRegistryUser = "pstestacr"
+    $pass = "cYK4qnENExflnnOkBN7P+gkmBG0sqgIv"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|" 
 	$azureStorageAccountCustomId1 = "mystorageaccount"
@@ -955,7 +872,7 @@ function Test-SetAzureStorageWebAppHyperVSlot
 		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Small -HyperV
 		
 		# Create new web app
-		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $ontainerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
+		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $containerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
 		$job | Wait-Job
 		$actual = $job | Receive-Job
 		

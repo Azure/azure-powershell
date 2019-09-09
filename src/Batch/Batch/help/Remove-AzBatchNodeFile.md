@@ -38,7 +38,7 @@ The **Remove-AzBatchNodeFile** cmdlet deletes an Azure Batch node file for a tas
 
 ## EXAMPLES
 
-### Example 1: Delete a file assocated with a task
+### Example 1: Delete a file associated with a task
 ```
 PS C:\>Remove-AzBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Path "wd\testFile.txt" -BatchContext $Context
 ```

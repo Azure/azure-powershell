@@ -141,6 +141,9 @@
   <data name="NewAzureRmIotHubImportDevices" xml:space="preserve">
     <value>Import All Devices</value>
   </data>
+  <data name="NewIotHubKey" xml:space="preserve">
+    <value>Generate IoT Hub Key</value>
+  </data>
   <data name="RemoveEventHubConsumerGroup" xml:space="preserve">
     <value>Remove Event Hub Consumer Group</value>
   </data>

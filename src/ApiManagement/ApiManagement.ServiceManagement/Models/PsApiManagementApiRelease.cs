@@ -22,6 +22,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
         // resource group regex
         static readonly Regex ApiNameRegex = new Regex(@"(.*?)/apis/(?<apiName>\S+)/releases/(.*?)", RegexOptions.IgnoreCase);
 
+        static readonly Regex ApiReleaseIdRegex = new Regex(@"(.*?)/providers/microsoft.apimanagement/service/(?<serviceName>[^/]+)/apis/(?<apiId>[^/]+)/releases/(?<releaseId>[^/]+)", RegexOptions.IgnoreCase);
+
         public string ReleaseId { get; set; }
 
         private string apiId;
@@ -56,5 +58,33 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
         public DateTime? UpdatedDateTime { get; private set; }
 
         public string Notes { get; set; }
+
+        public PsApiManagementApiRelease() { }
+
+        public PsApiManagementApiRelease(string armResourceId)
+        {
+            this.Id = armResourceId;
+
+            var match = ApiReleaseIdRegex.Match(Id);
+            if (match.Success)
+            {
+                var apiIdRegex = match.Groups["apiId"];
+                if (apiIdRegex != null && apiIdRegex.Success)
+                {
+                    this.ApiId = apiIdRegex.Value;
+                }
+
+                var releaseIdRegex = match.Groups["releaseId"];
+                if (releaseIdRegex != null && releaseIdRegex.Success)
+                {
+                    this.ReleaseId = releaseIdRegex.Value;
+
+                    return;
+                }
+            }
+
+            throw new ArgumentException($"ResourceId {armResourceId} is not a valid ApiReleaseId");
+
+        }
     }
 }

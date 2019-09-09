@@ -27,6 +27,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
+        public bool DisableBgpRoutePropagation { get; set; }
+
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string State { get; set; }
 
         [JsonProperty(Order = 1)]

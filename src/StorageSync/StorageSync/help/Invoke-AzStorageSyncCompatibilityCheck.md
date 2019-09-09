@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storagesync/invoke-azstoragesynccompatibilitycheck
@@ -146,9 +146,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSStorageSyncValidation
+### Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSValidationResult
 
 ## NOTES
-* Keywords: azure, azurerm, arm, resource, management, storagesync, filesync
+* Keywords: azure, Az, arm, resource, management, storagesync, filesync
 
 ## RELATED LINKS

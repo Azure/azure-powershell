@@ -38,6 +38,28 @@ Cleans the created resource groups
 function Clean-ResourceGroup($rgname)
 {
     if ((Get-StorageTestMode) -ne 'Playback') {
+        try 
+        {
+            Write-Verbose "Attempting to remove StorageSync resources from resource group $rgname"
+            $syncServices = Get-AzStorageSyncService -ResourceGroup $rgname
+            foreach ($syncService in $syncServices)
+            {                
+                Get-AzStorageSyncServer -ParentObject $syncService | Unregister-AzStorageSyncServer -Force
+                
+                $syncGroups = Get-AzStorageSyncGroup -ParentObject $syncService
+                foreach ($syncGroup in $syncGroups)
+                {
+                    Get-AzStorageSyncCloudEndpoint -ParentObject $syncGroup | Remove-AzStorageSyncCloudEndpoint -Force
+                }
+                $syncGroups | Remove-AzStorageSyncGroup -Force
+            }
+            $syncServices | Remove-AzStorageSyncService -Force
+        }
+        catch
+        {
+            Write-Verbose "Exception $($_.Exception.ToString())"
+        }
+        Write-Verbose "Attempting to remove resource group $rgname"
         Remove-AzResourceGroup -Name $rgname -Force
     }
 }
@@ -119,6 +141,24 @@ function Get-RandomItemName
 
 <#
 .SYNOPSIS
+Gets valid resource group name
+#>
+function Get-ResourceGroupName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid resource name
+#>
+function Get-ResourceName($prefix)
+{
+    return $prefix + (getAssetName)
+}
+
+<#
+.SYNOPSIS
 Gets valid resource name for compute test
 #>
 function Get-StorageManagementTestResourceName
@@ -156,26 +196,183 @@ function Get-StorageManagementTestResourceName
 .SYNOPSIS
 Gets the default location for a provider
 #>
-function Get-ProviderLocation($provider)
+function Get-StorageSyncLocation($provider)
 {
-	Get-Location "Microsoft.Storage" "storageAccounts" "West US"
+    $defaultLocation = "Central US EUAP"
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+        $namespace = $provider.Split("/")[0]
+        if($provider.Contains("/"))
+        {
+            $type = $provider.Substring($namespace.Length + 1)
+            $location = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+
+            if ($location -eq $null)
+            {
+                return $defaultLocation
+            } else
+            {
+                return $location.Locations[0].ToLower() -replace '\s',''
+            }
+        }
+
+        return $defaultLocation
+    }
+
+    return $defaultLocation
 }
 
 <#
 .SYNOPSIS
-Gets the Canary location for a provider
+Gets the default location for a resource group
 #>
-function Get-ProviderLocation_Canary($provider)
+function Get-ResourceGroupLocation()
 {
-    "eastus2euap"
+    return Get-Location -providerNamespace "Microsoft.Resources"  -resourceType "resourceGroups" -preferredLocation "West US"
 }
-
 
 <#
 .SYNOPSIS
-Gets the Stage location for a provider
+Normalize Location
 #>
-function Get-ProviderLocation_Stage($provider)
+function Normalize-Location($location)
 {
-    "eastus2(stage)"
+    if(-not [string]::IsNullOrEmpty($location))
+    {
+        return $location.ToLower().Replace(" ", "") 
+    }
+
+    return $location
+}
+
+<#
+.SYNOPSIS
+is running live in target environment
+#>
+function IsLive
+{
+    return [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback
+}
+
+<#
+.SYNOPSIS
+Create Azure file share if recording else return given azure file share name.
+#>
+function Create-StorageShare
+{
+    param (
+        [Parameter(Position = 0)]
+        $Name, 
+        [Parameter(Position = 1)]
+        $Context)
+    
+    if ([string]::IsNullOrEmpty($Name))
+    {
+        throw "Invalid argument: Name"
+    }
+
+    if(IsLive)
+    {
+        if ($null -eq $Context)
+        {
+            throw "Invalid argument: Context"
+        }
+
+        $azureFileShare = $null
+        if (gcm New-AzStorageShare -ErrorAction SilentlyContinue)
+        {
+            Write-Verbose "Using New-AzStorageShare cmdlet to create share: $($Name) in storage account: $($Context.StorageAccountName)"
+            $azureFileShare = New-AzStorageShare -Name $Name -Context $Context
+        }
+        elseif (gcm New-AzureStorageShare -ErrorAction SilentlyContinue)
+        {
+            Write-Verbose "Using New-AzureStorageShare cmdlet to create share: $($Name) in storage account: $($Context.StorageAccountName)"
+            $azureFileShare = New-AzureStorageShare -Name $Name -Context $Context            
+        }
+        else 
+        {
+            throw "Neither New-AzStorageShare nor New-AzureStorageShare cmdlet is available"
+        }
+        return $azureFileShare.Name
+    }
+    else 
+    {
+        return $azureFileShareName
+    }
+}
+
+function Remove-StorageShare
+{
+    param (
+        [Parameter(Position = 0)]
+        $Name, 
+        [Parameter(Position = 1)]
+        $Context)
+    
+    if ([string]::IsNullOrEmpty($Name))
+    {
+        throw "Invalid argument: Name"
+    }
+    
+    if(IsLive)
+    {
+        if ($null -eq $Context)
+        {
+            throw "Invalid argument: Context"
+        }
+
+        $result = $null
+        if (gcm Remove-AzStorageShare -ErrorAction SilentlyContinue)
+        {
+            Write-Verbose "Using Remove-AzStorageShare cmdlet"
+            $result = Remove-AzStorageShare -Name $Name -Context $Context -Force
+        }
+        elseif (gcm Remove-AzureStorageShare -ErrorAction SilentlyContinue)
+        {
+            Write-Verbose "Using Remove-AzureStorageShare cmdlet"
+            $result = Remove-AzureStorageShare -Name $Name -Context $Context -Force
+        }
+        else 
+        {
+            throw "Neither Remove-AzStorageShare nor Remove-AzureStorageShare cmdlet is available"
+        }
+        return $result
+    }
+}
+
+function Create-StorageContext
+{
+    param ($StorageAccountName, $StorageAccountKey)
+
+    if ([string]::IsNullOrEmpty($StorageAccountName))
+    {
+        throw "Invalid argument: StorageAccountName"
+    }
+
+    if ([string]::IsNullOrEmpty($StorageAccountKey))
+    {
+        throw "Invalid argument: StorageAccountKey"
+    }
+
+    $result = $null
+
+    if(IsLive)
+    {
+        if (gcm New-AzStorageContext -ErrorAction SilentlyContinue)
+        {
+            Write-Verbose "Using New-AzStorageContext cmdlet"
+            $result = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Protocol https -Endpoint core.windows.net
+        }
+        elseif (gcm New-AzureStorageContext -ErrorAction SilentlyContinue)
+        {
+            Write-Verbose "Using New-AzureStorageContext cmdlet"
+            $result = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Protocol https -Endpoint core.windows.net
+        }
+        else 
+        {
+            throw "Neither New-AzStorageContext nor New-AzureStorageContext cmdlet is available"
+        }
+    }
+    
+    return $result
 }

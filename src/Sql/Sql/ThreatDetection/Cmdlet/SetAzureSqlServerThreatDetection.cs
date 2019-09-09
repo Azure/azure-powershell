@@ -12,15 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
 {
     /// <summary>
-    /// Sets the auditing policy properties for a specific database.
+    /// Updates the advanced threat protection properties for a specific server.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerThreatDetectionPolicy", SupportsShouldProcess = true), OutputType(typeof(ServerThreatDetectionPolicyModel))]
+    [GenericBreakingChange("Set-SqlServerThreatDetectionPolicy alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAdvancedThreatProtectionSettings", SupportsShouldProcess = true), OutputType(typeof(ServerThreatDetectionPolicyModel))]
+    [Alias("Set-AzSqlServerThreatDetectionPolicy")]
     public class SetAzureSqlServerThreatDetection : SqlServerThreatDetectionCmdletBase
     {
         /// <summary>
@@ -46,14 +50,20 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// Gets or sets the names of the detection types to filter.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Detection types to exclude")]
-        public DetectionType[] ExcludedDetectionType { get; set; }
+        [PSArgumentCompleter(DetectionType.None,
+            DetectionType.Sql_Injection,
+            DetectionType.Sql_Injection_Vulnerability,
+            DetectionType.Unsafe_Action,
+            DetectionType.Data_Exfiltration,
+            DetectionType.Access_Anomaly)]
+        public string[] ExcludedDetectionType { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the storage account to use.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the storage account")]
         [ValidateNotNullOrEmpty]
-		public string StorageAccountName { get; set; }
+        public string StorageAccountName { get; set; }
 
         /// <summary>
         /// Gets or sets the number of retention days for the audit logs table.

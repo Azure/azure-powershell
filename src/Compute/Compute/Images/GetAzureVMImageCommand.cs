@@ -78,6 +78,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = true,
             ValueFromPipelineByPropertyName = true),
         ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Version { get; set; }
 
         public override void ExecuteCmdlet()
@@ -86,7 +87,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (this.ParameterSetName.Equals(ListVMImageParamSetName))
+                if (this.ParameterSetName.Equals(ListVMImageParamSetName) || WildcardPattern.ContainsWildcardCharacters(Version))
                 {
                     var filter = new ODataQuery<VirtualMachineImageResource>(this.FilterExpression);
 
@@ -111,7 +112,7 @@ namespace Microsoft.Azure.Commands.Compute
                                      FilterExpression = this.FilterExpression
                                  };
 
-                    WriteObject(images, true);
+                    WriteObject(SubResourceWildcardFilter(Version, images), true);
                 }
                 else
                 {
@@ -137,6 +138,7 @@ namespace Microsoft.Azure.Commands.Compute
                         DataDiskImages = response.Body.DataDiskImages,
                         PurchasePlan = response.Body.Plan,
                         AutomaticOSUpgradeProperties = response.Body.AutomaticOSUpgradeProperties,
+                        HyperVGeneration = response.Body.HyperVGeneration
                     };
 
                     WriteObject(image);

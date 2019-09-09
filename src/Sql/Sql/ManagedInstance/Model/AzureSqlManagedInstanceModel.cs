@@ -97,5 +97,37 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Gets or sets the Managed Instance collation
         /// </summary>
         public string Collation { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not the public data endpoint is enabled.
+        /// </summary>
+        public bool? PublicDataEndpointEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets connection type used for connecting to the instance.
+        /// Possible values include: 'Proxy', 'Redirect', 'Default'
+        /// </summary>
+        public string ProxyOverride { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Managed Instance time zone
+        /// </summary>
+        public string TimezoneId { get; set; }
+
+
+         /// <summary>
+        /// Gets or sets the resource id of the dns zone partner of the managed instance
+        /// </summary>
+        public string DnsZonePartner { get; set; }
+
+         /// <summary>
+        /// Gets or sets the dns zone of the managed instance
+        /// </summary>
+        public string DnsZone { get; set; }
+
+        /// <summary>
+        /// Gets or sets the instance pool name
+        /// </summary>
+        public string InstancePoolName { get; set; }
     }
 }

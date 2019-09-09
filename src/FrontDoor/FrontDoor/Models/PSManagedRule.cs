@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Text.RegularExpressions;
-
 namespace Microsoft.Azure.Commands.FrontDoor.Models
-{    
+{
     public class PSManagedRule
     {
-        public int? Priority { get; set; }
+        public string RuleSetType { get; set; }
 
-        public string Version { get; set; }
+        public string RuleSetVersion { get; set; }
     }
 }

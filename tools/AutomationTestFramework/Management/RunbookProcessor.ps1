@@ -25,7 +25,7 @@ function Create-TestContent([string] $path, [string] $tag = 'SmokeTest') {
     $sessionFunctions = Get-ChildItem function:
     foreach ($testFile in $testFiles) {
         # Get the function list from the script file
-        . "$path\$testFile"
+        . "$testFile"
         # https://sqljana.wordpress.com/2015/09/23/perform-set-operations-union-intersection-minus-complement-using-powershell/
         $scriptFunctions = Get-ChildItem function: | Where-Object { $sessionFunctions -inotcontains $_ }
         $testFunctions = $scriptFunctions | Where-Object { 
@@ -95,13 +95,13 @@ function Start-Runbooks ([hashtable] $automation, [string] $runbooksPath) {
     foreach ($runbook in Get-ChildItem $runbooksPath) {
         $bookName = $runbook.BaseName
         Write-Verbose "Uploading '$bookName' runbook..."
-        $null = Import-AzureRmAutomationRunbook -Path $runbook.FullName -Name $bookName -type PowerShell -AutomationAccountName $automation.AccountName -ResourceGroupName $automation.ResourceGroupName -LogVerbose $true -Force -ErrorAction Stop
+        $null = Import-AzAutomationRunbook -Path $runbook.FullName -Name $bookName -type PowerShell -AutomationAccountName $automation.AccountName -ResourceGroupName $automation.ResourceGroupName -LogVerbose $true -Force -ErrorAction Stop
         Write-Verbose "Publishing '$bookName' runbook..."
-        $null = Publish-AzureRmAutomationRunbook -Name $bookName -AutomationAccountName $automation.AccountName -ResourceGroupName $automation.ResourceGroupName -ErrorAction Stop
+        $null = Publish-AzAutomationRunbook -Name $bookName -AutomationAccountName $automation.AccountName -ResourceGroupName $automation.ResourceGroupName -ErrorAction Stop
         
-        Start-Job -Name $bookName -ArgumentList (Get-AzureRmContext),$bookName,$automation -ScriptBlock { 
+        Start-Job -Name $bookName -ArgumentList (Get-AzContext),$bookName,$automation -ScriptBlock { 
             param ($context,$bookName,$automation) 
-            Start-AzureRmAutomationRunbook -DefaultProfile $context -Name $bookName -AutomationAccountName $automation.AccountName -ResourceGroupName $automation.ResourceGroupName -ErrorAction Stop -Wait -MaxWaitSeconds 3600
+            Start-AzAutomationRunbook -DefaultProfile $context -Name $bookName -AutomationAccountName $automation.AccountName -ResourceGroupName $automation.ResourceGroupName -ErrorAction Stop -Wait -MaxWaitSeconds 3600
         }
         Write-Verbose "$bookName started."
     }
@@ -142,13 +142,13 @@ function Wait-RunbookResults ([hashtable] $automation, $jobs) {
             continue
         }
         Write-Verbose "Gathering $($failedJob.Name) suite logs..."
-        $streams = Get-AzureRmAutomationJobOutput `
+        $streams = Get-AzAutomationJobOutput `
             -id $failedJob.JobId `
             -ResourceGroupName $automation.ResourceGroupName `
             -AutomationAccountName $automation.AccountName `
             -Stream Any `
         | Where-Object {$_.Summary.Length -gt 0} `
-        | Get-AzureRmAutomationJobOutputRecord
+        | Get-AzAutomationJobOutputRecord
         
         $suitePath = Join-Path $resultsPath $failedJob.Name
         if (-not (Test-Path $suitePath)) {

@@ -13,9 +13,16 @@ Gets a subnet in a virtual network.
 
 ## SYNTAX
 
+### GetByVirtualNetwork (Default)
 ```
 Get-AzVirtualNetworkSubnetConfig [-Name <String>] -VirtualNetwork <PSVirtualNetwork>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### GetByResourceId
+```
+Get-AzVirtualNetworkSubnetConfig -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +64,7 @@ Specifies the name of the subnet configuration that this cmdlet gets.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetByVirtualNetwork
 Aliases:
 
 Required: False
@@ -67,12 +74,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+Specifies the resource id of the subnet that this cmdlet gets.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VirtualNetwork
 Specifies the **VirtualNetwork** object that contains the subnet configuration that this cmdlet gets.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
-Parameter Sets: (All)
+Parameter Sets: GetByVirtualNetwork
 Aliases:
 
 Required: True
@@ -89,6 +111,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
 
+### System.String
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSSubnet
@@ -104,5 +128,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzVirtualNetworkSubnetConfig](./Remove-AzVirtualNetworkSubnetConfig.md)
 
 [Set-AzVirtualNetworkSubnetConfig](./Set-AzVirtualNetworkSubnetConfig.md)
-
-

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application
     public class ApplicationDefinition
     {
         /// <summary>
-        /// The application defintion name.
+        /// The application definition name.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
         public string Name { get; set; }

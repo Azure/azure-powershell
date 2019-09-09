@@ -72,7 +72,7 @@ function Test-GetServerCommunicationLink
 		Assert-AreEqual $linkName $gep1.Name
 		Assert-AreEqual $server2.ServerName $gep1.PartnerServer
 
-		$all = $server1 | Get-AzSqlServerCommunicationLink
+		$all = $server1 | Get-AzSqlServerCommunicationLink -LinkName *
 		Assert-AreEqual $all.Count 1
 	}
 	finally

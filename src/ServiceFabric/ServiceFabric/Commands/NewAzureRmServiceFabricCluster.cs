@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         };
 
         private string resourceLocation;
-        public override string KeyVaultResouceGroupLocation
+        public override string KeyVaultResourceGroupLocation
         {
             get
             {
@@ -160,7 +160,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByDefaultArmTemplate,
               HelpMessage = "Azure key vault resource group name, if not given it will be defaulted to resource group name")]
         [ValidateNotNullOrEmpty]
-        public override string KeyVaultResouceGroupName { get; set; }
+        [Alias("KeyVaultResouceGroupName")]
+        public override string KeyVaultResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
                 HelpMessage = "Azure key vault name, if not given it will be defaulted to the resource group name")]

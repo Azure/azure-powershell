@@ -19,13 +19,14 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            if (this.MyInvocation.BoundParameters.ContainsKey("Id"))
+            if (this.IsParameterBound(c => c.Id))
             {
                 // CreationData
                 if (this.Snapshot.CreationData == null)
@@ -77,7 +78,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.Snapshot.CreationData.ImageReference.Id = this.Id;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("Lun"))
+            if (this.IsParameterBound(c => c.Lun))
             {
                 // CreationData
                 if (this.Snapshot.CreationData == null)

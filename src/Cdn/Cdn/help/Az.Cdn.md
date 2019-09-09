@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.Cdn
 Module Guid: 91832aaa-dc11-4583-8239-bce5fd531604
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.cdn
@@ -15,15 +15,21 @@ The topics in this section document the Azure PowerShell cmdlets for Azure Conte
 Validates a probe URL.
 
 ### [Disable-AzCdnCustomDomain](Disable-AzCdnCustomDomain.md)
-Disables custom HTTPS.
+Disables Custom Domain HTTPS (Deprecated).
+
+### [Disable-AzCdnCustomDomainHttps](Disable-AzCdnCustomDomainHttps.md)
+Disables Custom Domain HTTPS.
 
 ### [Enable-AzCdnCustomDomain](Enable-AzCdnCustomDomain.md)
+Enables Custom Domain HTTPS (Deprecated).
+
+### [Enable-AzCdnCustomDomainHttps](Enable-AzCdnCustomDomainHttps.md)
 Enables custom HTTPS.
 
 ### [Get-AzCdnCustomDomain](Get-AzCdnCustomDomain.md)
 Gets a CDN custom domain.
 
-### [Get-AzCdnEdgeNodes](Get-AzCdnEdgeNodes.md)
+### [Get-AzCdnEdgeNode](Get-AzCdnEdgeNode.md)
 Gets Azure CDN edgenodes.
 
 ### [Get-AzCdnEndpoint](Get-AzCdnEndpoint.md)
@@ -51,10 +57,22 @@ Gets the single sign-on URL of a CDN profile.
 Gets the supported optimization types for a CDN profile.
 
 ### [Get-AzCdnSubscriptionResourceUsage](Get-AzCdnSubscriptionResourceUsage.md)
-Gets the resource usage for a susbscription.
+Gets the resource usage for a subscription.
 
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a custom domain for a CDN endpoint.
+
+### [New-AzCdnDeliveryPolicy](New-AzCdnDeliveryPolicy.md)
+Creates a deliveryPolicy for a CDN endpoint.
+
+### [New-AzCdnDeliveryRule](New-AzCdnDeliveryRule.md)
+Creates a deliveryRule for deliveryPolicy creation.
+
+### [New-AzCdnDeliveryRuleAction](New-AzCdnDeliveryRuleAction.md)
+Creates a deliveryRuleAction for deliveryRule creation.
+
+### [New-AzCdnDeliveryRuleCondition](New-AzCdnDeliveryRuleCondition.md)
+Creates a deliveryRuleCondition for deliveryRule creation.
 
 ### [New-AzCdnEndpoint](New-AzCdnEndpoint.md)
 Creates a CDN endpoint.

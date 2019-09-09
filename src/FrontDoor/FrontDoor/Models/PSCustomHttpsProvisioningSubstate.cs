@@ -16,8 +16,10 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 {
     public enum PSCustomHttpsProvisioningSubstate
     {
+        None,
+        Unknown,
         SubmittingDomainControlValidationRequest,
-        PendingDomainControlValidationREquestApproval,
+        PendingDomainControlValidationRequestApproval,
         DomainControlValidationRequestApproved,
         DomainControlValidationRequestRejected,
         DomainControlValidationRequestTimedOut,
@@ -25,6 +27,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
         DeployingCertificate,
         CertificateDeployed,
         DeletingCertificate,
-        CertificateDeleted
+        CertificateDeleted,
+        ImportingUserProvidedCertificate
     }
 }

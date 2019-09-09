@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/get-azapimanagementapirelease
@@ -12,9 +12,16 @@ Get the API Release.
 
 ## SYNTAX
 
+### ContextParameterSet (Default)
 ```
 Get-AzApiManagementApiRelease -Context <PsApiManagementContext> -ApiId <String> [-ReleaseId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Get-AzApiManagementApiRelease -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +40,7 @@ UpdatedDateTime   : 5/17/2018 12:21:12 AM
 Notes             : creating a new release
 Id                : /subscriptions/subid/resourceGroups/Api-Default-WestUS/providers/Microsoft.ApiManagement/service/contoso/apis/5adf6fbf0faadf3ad8558065/releases/5afccaf6b89fd067426d402e
 ResourceGroupName : Api-Default-WestUS
-ServiceName       : contos
+ServiceName       : contoso
 ```
 
 This command gets all of the releases of the `echo-api` API for the specified context.
@@ -48,10 +55,10 @@ CreatedDateTime   : 5/17/2018 12:21:12 AM
 UpdatedDateTime   : 5/17/2018 12:21:12 AM
 Notes             : creating a new release
 Id                : /subscriptions/subid/resourceGroups/Api-Default-WestUS/providers/Mi
-                    crosoft.ApiManagement/service/contos/apis/5adf6fbf0faadf3ad8558065/releases/5afccaf6b89fd067426d402
+                    crosoft.ApiManagement/service/contoso/apis/5adf6fbf0faadf3ad8558065/releases/5afccaf6b89fd067426d402
                     e
 ResourceGroupName : Api-Default-WestUS
-ServiceName       : contos
+ServiceName       : contoso
 ```
 
 This command gets the releases information of a particular API with the specified releaseId.
@@ -64,7 +71,7 @@ If specified will try to get the API by the Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ContextParameterSet
 Aliases:
 
 Required: True
@@ -80,13 +87,13 @@ This parameter is required.
 
 ```yaml
 Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
-Parameter Sets: (All)
+Parameter Sets: ContextParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -110,7 +117,7 @@ The identifier of the Release.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ContextParameterSet
 Aliases:
 
 Required: False
@@ -120,8 +127,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+Arm Resource Identifier of a Api Release. If specified will try to find api release by the identifier. This parameter is required.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

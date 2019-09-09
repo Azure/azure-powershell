@@ -21,7 +21,7 @@ function Test-SubscriptionGetResourceUsage
     $subscriptionResourceUsage = Get-AzCdnSubscriptionResourceUsage
 
     Assert-True {$subscriptionResourceUsage.Count -eq 1}
-	Assert-True {$subscriptionResourceUsage[0].CurrentValue -eq 0}
+	Assert-True {$subscriptionResourceUsage[0].CurrentValue -eq 16}
 }
 
 <#

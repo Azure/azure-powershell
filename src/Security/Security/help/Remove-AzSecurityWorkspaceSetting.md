@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
 online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Remove-AzSecurityWorkspaceSetting
@@ -32,7 +32,7 @@ Remove-AzSecurityWorkspaceSetting -InputObject <PSSecurityWorkspaceSetting> [-Pa
 
 ## DESCRIPTION
 Deletes the security workspace setting for this subscription.
-This action will make the newly installed security agents to report to the default workspace of this susbscription.
+This action will make the newly installed security agents to report to the default workspace of this subscription.
 
 ## EXAMPLES
 

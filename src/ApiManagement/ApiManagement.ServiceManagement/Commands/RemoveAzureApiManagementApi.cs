@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]

@@ -141,9 +141,6 @@
   <data name="Error_CreateExistingProfile" xml:space="preserve">
     <value>There is already an existing profile with name '{0}' in the resource group '{1}'.</value>
   </data>
-  <data name="Error_DeleteNonExistingCustomDomain" xml:space="preserve">
-    <value>Custom domain with name '{0}' in the endpoint '{1}',profile '{2}', resource group '{3}' does not exist.</value>
-  </data>
   <data name="Error_DeleteNonExistingEndpoint" xml:space="preserve">
     <value>Endpoint with name '{0}' in the profile '{1}' and resource group '{2}' does not exist.</value>
   </data>
@@ -152,6 +149,9 @@
   </data>
   <data name="Error_DeleteNonExistingProfile" xml:space="preserve">
     <value>Profile with name '{0}' in the resource group '{1}' does not exist.</value>
+  </data>
+  <data name="Error_NonExistingCustomDomain" xml:space="preserve">
+    <value>Custom domain with name '{0}' in the endpoint '{1}',profile '{2}', resource group '{3}' does not exist.</value>
   </data>
   <data name="Error_ProfileNotFound" xml:space="preserve">
     <value>Profile with name '{0}' in the resource group '{1}' does not exist.</value>

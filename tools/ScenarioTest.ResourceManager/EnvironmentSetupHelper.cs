@@ -108,6 +108,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             module = GetModuleManifest(StackStorageDirectory, "Azure.Storage");
             LogIfNotNull($"Stack Storage Data Plane Module path: {module}");
             StackRMStorageDataPlaneModule = module;
+            module = GetModuleManifest(RmDirectory, "Az.KeyVault");
+            LogIfNotNull($"KeyVault Module path: {module}");
+            RMKeyVaultModule = module;
 
             TestExecutionHelpers.SetUpSessionAndProfile();
             IDataStore datastore = new MemoryDataStore();
@@ -144,7 +147,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public string RMResourceModule { get; private set; }
 
-        public string RMInsightsModule { get; private set; } 
+        public string RMInsightsModule { get; private set; }
 
         public string RMStorageModule { get; private set; }
 
@@ -167,6 +170,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public string StackRMStorageModule { get; private set; }
 
         public string StackRMStorageDataPlaneModule { get; private set; }
+
+        public string RMKeyVaultModule { get; private set; }
 
         private void LogIfNotNull(string message)
         {
@@ -198,7 +203,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 if (Directory.Exists(baseDirectory))
                 {
                     result = Directory.EnumerateDirectories(baseDirectory).FirstOrDefault(
-                        (dir) => ! string.IsNullOrWhiteSpace(dir) 
+                        (dir) => ! string.IsNullOrWhiteSpace(dir)
                         && (dir.EndsWith("Debug", StringComparison.OrdinalIgnoreCase)
                         || dir.EndsWith("Release", StringComparison.OrdinalIgnoreCase)));
                     if (result != null)
@@ -222,7 +227,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             string configDirectory = GetConfigDirectory(targetDirectory);
             return (string.IsNullOrEmpty(configDirectory)) ? null : Path.Combine(configDirectory, "Storage");
         }
-        
+
         private static string GetModuleManifest(string baseDirectory, string desktopModuleName)
         {
             if (string.IsNullOrWhiteSpace(baseDirectory) || string.IsNullOrWhiteSpace(desktopModuleName))
@@ -544,7 +549,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     {"Microsoft.Features", null},
                     {"Microsoft.Authorization", null},
                     {"Microsoft.Compute", null},
-                    {"Microsoft.KeyVault", null}
                 };
                 var providersToIgnore = new Dictionary<string, string>
                 {

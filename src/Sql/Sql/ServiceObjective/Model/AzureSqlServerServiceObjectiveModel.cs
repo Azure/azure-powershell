@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Commands.Sql.Database.Cmdlet;
+
 namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Model
 {
     /// <summary>
@@ -33,6 +35,9 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Model
         /// <summary>
         /// Gets or sets the name of the service objective
         /// </summary>
+        /// <remarks>
+        /// Can be used as input to <see cref="NewAzureSqlDatabase.RequestedServiceObjectiveName"/>
+        /// </remarks>
         public string ServiceObjectiveName { get; set; }
 
         /// <summary>
@@ -54,5 +59,45 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Model
         /// Gets or sets Whether or no the Service Objective is a system value
         /// </summary>
         public bool IsSystem { get; set; }
+
+        /// <summary>
+        /// Gets or sets the edition
+        /// </summary>
+        /// <remarks>
+        /// Can be used as input to <see cref="NewAzureSqlDatabase.Edition"/>
+        /// </remarks>
+        public string Edition { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sku name
+        /// </summary>
+        /// <remarks>
+        /// Not used as input to another cmdlet, but useful to help document the available sku names.
+        /// </remarks>
+        public string SkuName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the family
+        /// </summary>
+        /// <remarks>
+        /// Can be used as input to <see cref="NewAzureSqlDatabase.ComputeGeneration"/> (which has "Family" alias)
+        /// </remarks>
+        public string Family { get; set; }
+
+        /// <summary>
+        /// Gets or sets the capacity (e.g. in DTU or vcores).
+        /// </summary>
+        /// <remarks>
+        /// Can be used as input to <see cref="NewAzureSqlDatabase.VCore"/> (which has "Capacity" alias).
+        /// </remarks>
+        public int? Capacity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the capacity unit (e.g. DTU or vcores).
+        /// </summary>
+        /// <remarks>
+        /// Not used as input to another cmdlet, but useful to help document the capacity.
+        /// </remarks>
+        public string CapacityUnit { get; set; }
     }
 }

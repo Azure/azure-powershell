@@ -106,13 +106,13 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// <summary>
         /// Gets or sets the Database Resource ID to get backups for.
         /// </summary>
-        [Parameter(ParameterSetName = GetBackupByResourceIdSet,
-            Mandatory = true,
+        [Parameter(Mandatory = true,
+            ParameterSetName = GetBackupByResourceIdSet,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The database Resource ID to get backups for.")]
-        [Parameter(ParameterSetName = GetBackupsByResourceIdSet,
-            Mandatory = true,
+        [Parameter(Mandatory = true,
+            ParameterSetName = GetBackupsByResourceIdSet,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The database Resource ID to get backups for.")]
@@ -166,7 +166,23 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             Position = 1,
             HelpMessage = "The name of the backup.")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string BackupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ParameterSetName = LocationSet,
+            HelpMessage = "The name of the resource group.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ServerNameSet,
+            HelpMessage = "The name of the resource group.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = BackupNameSet,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        public override string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to only get the latest backup per database.
@@ -221,22 +237,24 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                 Location = InputObject.Location;
                 ServerName = InputObject.ServerName;
                 DatabaseName = InputObject.DatabaseName;
+                ResourceGroupName = InputObject.ResourceGroupName;
             }
             else if (!string.IsNullOrWhiteSpace(ResourceId))
             {
                 ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
                 DatabaseName = identifier.ResourceName;
-                identifier = new ResourceIdentifier(identifier.ParentResource);
-                ServerName = identifier.ResourceName;
+                ResourceGroupName = identifier.ResourceGroupName;
+                ServerName = identifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries)[1];
             }
 
-            return ModelAdapter.GetDatabaseLongTermRetentionBackups(
+            return SubResourceWildcardFilter(BackupName, ModelAdapter.GetDatabaseLongTermRetentionBackups(
                     Location,
                     ServerName,
                     DatabaseName,
                     BackupName,
+                    ResourceGroupName,
                     OnlyLatestPerDatabase.IsPresent,
-                    DatabaseState);
+                    DatabaseState));
         }
 
         /// <summary>

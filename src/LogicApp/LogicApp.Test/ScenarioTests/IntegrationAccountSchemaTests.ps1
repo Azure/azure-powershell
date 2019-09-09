@@ -18,7 +18,7 @@ Test New-AzIntegrationAccountSchema command
 #>
 function Test-CreateIntegrationAccountSchema
 {
-	$schemaFilePath = Join-Path $TestOutputRoot "Resources" "OrderFile.xsd"
+	$schemaFilePath = Join-Path (Join-Path $TestOutputRoot "Resources") "OrderFile.xsd"
 	$schemaContent = [IO.File]::ReadAllText($schemaFilePath)
 	
 	$resourceGroup = TestSetup-CreateResourceGroup
@@ -48,7 +48,7 @@ Test Get-AzIntegrationAccountSchema command
 #>
 function Test-GetIntegrationAccountSchema
 {
-	$schemaFilePath = Join-Path $TestOutputRoot "Resources" "OrderFile.xsd"
+	$schemaFilePath = Join-Path (Join-Path $TestOutputRoot "Resources") "OrderFile.xsd"
 	$schemaContent = [IO.File]::ReadAllText($schemaFilePath)
 
 	$resourceGroup = TestSetup-CreateResourceGroup
@@ -77,7 +77,7 @@ Test Remove-AzIntegrationAccountSchema command
 #>
 function Test-RemoveIntegrationAccountSchema
 {
-	$schemaFilePath = Join-Path $TestOutputRoot "Resources" "OrderFile.xsd"
+	$schemaFilePath = Join-Path (Join-Path $TestOutputRoot "Resources") "OrderFile.xsd"
 	$schemaContent = [IO.File]::ReadAllText($schemaFilePath)
 	
 	$resourceGroup = TestSetup-CreateResourceGroup
@@ -101,7 +101,7 @@ Test Set-AzIntegrationAccountSchema command
 #>
 function Test-UpdateIntegrationAccountSchema
 {
-	$schemaFilePath = Join-Path $TestOutputRoot "Resources" "OrderFile.xsd"
+	$schemaFilePath = Join-Path (Join-Path $TestOutputRoot "Resources") "OrderFile.xsd"
 	$schemaContent = [IO.File]::ReadAllText($schemaFilePath)
 	
 	$resourceGroup = TestSetup-CreateResourceGroup
@@ -129,7 +129,7 @@ Test Get-AzIntegrationAccountSchema command : Paging test
 #>
 function Test-ListIntegrationAccountSchema
 {
-	$schemaFilePath = Join-Path $TestOutputRoot "Resources" "OrderFile.xsd"
+	$schemaFilePath = Join-Path (Join-Path $TestOutputRoot "Resources") "OrderFile.xsd"
 	$schemaContent = [IO.File]::ReadAllText($schemaFilePath)
 
 	$resourceGroup = TestSetup-CreateResourceGroup

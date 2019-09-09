@@ -18,8 +18,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
     using WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
+    /// <summary>
+    /// Class ListFilesTests.
+    /// </summary>
     public class ListFilesTests
     {
+        /// <summary>
+        /// Defines the test method StripUncPathTests.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void StripUncPathTests()
@@ -29,6 +35,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             Assert.True(ListFiles.EnsureUncPrefixIsNotPresent(@"\\?\unc\localhost\plop") == @"\\localhost\plop", @"\\?\unc\ case");
         }
 
+        /// <summary>
+        /// Defines the test method CompleteUncPathTests.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CompleteUncPathTests()

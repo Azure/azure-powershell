@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class UpdateAzureRmRecoveryServicesAsrProtection : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///    Switch Paramter to update replication direction from Azure to Vmware.
+        ///    Switch Parameter to update replication direction from Azure to Vmware.
         /// </summary>
         [Parameter(
             Position = 0,
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter AzureToVMware { get; set; }
 
         /// <summary>
-        ///    Switch Paramter to update replication direction from VMware to Azure.
+        ///    Switch Parameter to update replication direction from VMware to Azure.
         /// </summary>
         [Parameter(
             Position = 0,
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter VMwareToAzure { get; set; }
 
         /// <summary>
-        ///    Switch Paramter to reprotect a Hyper-V virtual machine after failback..
+        ///    Switch Parameter to reprotect a Hyper-V virtual machine after failback..
         /// </summary>
         [Parameter(
             Position = 0,
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter HyperVToAzure { get; set; }
 
         /// <summary>
-        ///     Switch Paramter to update replication direction 
+        ///     Switch Parameter to update replication direction 
         ///     for a failed over Hyper-V virtual machine that is protected between two VMM managed Hyper-V sites.
         /// </summary>
         [Parameter(
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter VmmToVmm { get; set; }
 
         /// <summary>
-        ///    Switch Paramter to specifying that the replication direction being updated for replicated 
+        ///    Switch Parameter to specifying that the replication direction being updated for replicated 
         ///    Azure virtual machines between two Azure regions.
         /// </summary>
         [Parameter(
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     RecoveryResourceGroupId = this.RecoveryResourceGroupId,
                     RecoveryCloudServiceId = this.RecoveryCloudServiceId,
                     RecoveryAvailabilitySetId = this.RecoveryAvailabilitySetId,
-                    RecoveryBootDiagStorageAccountId = this.RecoveryBootDiagStorageAccountId,
+                    RecoveryBootDiagStorageAccountId = this.RecoveryBootDiagStorageAccountId
                 };
 
                 // Fetch the latest Protected item objects
@@ -554,8 +554,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 {
                     populateUnManagedDiskInputDetails(fabricFriendlyName, a2aSwitchInput, replicationProtectedItemResponse);
                 }
-                else if (this.AzureToAzureDiskReplicationConfiguration == null &&
-                  ((A2AReplicationDetails)replicationProtectedItemResponse.Properties.ProviderSpecificDetails).ProtectedManagedDisks != null)
+                else if (((A2AReplicationDetails)replicationProtectedItemResponse.Properties.ProviderSpecificDetails).ProtectedManagedDisks != null &&
+                  ((A2AReplicationDetails)replicationProtectedItemResponse.Properties.ProviderSpecificDetails).ProtectedManagedDisks.Count > 0)
                 {
                     populateManagedDiskInputDetails(a2aSwitchInput, replicationProtectedItemResponse);
                 }
@@ -593,8 +593,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 var vmRg = Utilities.GetValueFromArmId(
                     a2aReplicationDetails.RecoveryAzureResourceGroupId,
                     ARMResourceTypeConstants.ResourceGroups);
+                var subscriptionId = Utilities.GetValueFromArmId(a2aReplicationDetails.RecoveryAzureResourceGroupId, ARMResourceTypeConstants.Subscriptions);
+                var tempSubscriptionId = this.ComputeManagementClient.GetComputeManagementClient.SubscriptionId;
+                this.ComputeManagementClient.GetComputeManagementClient.SubscriptionId = subscriptionId;
                 var virtualMachine = this.ComputeManagementClient.GetComputeManagementClient.
                     VirtualMachines.GetWithHttpMessagesAsync(vmRg, vmName).GetAwaiter().GetResult().Body;
+                this.ComputeManagementClient.GetComputeManagementClient.SubscriptionId = tempSubscriptionId;
 
                 // Passing all managedDisk data if no details is passed.
                 var osDisk = virtualMachine.StorageProfile.OsDisk;

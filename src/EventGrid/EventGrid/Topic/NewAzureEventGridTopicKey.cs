@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             ParameterSetName = TopicNameParameterSet,
-            HelpMessage = "Resource group name.")]
+            HelpMessage = EventGridConstants.ResourceGroupNameHelp)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
@@ -45,7 +46,8 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             ParameterSetName = TopicNameParameterSet,
-            HelpMessage = "The name of the topic.")]
+            HelpMessage = EventGridConstants.TopicNameHelp)]
+        [ResourceNameCompleter("Microsoft.EventGrid/topics", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string TopicName { get; set; }
 
@@ -54,61 +56,57 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             ParameterSetName = TopicNameParameterSet,
-            HelpMessage = "The name of the key that needs to be regenerated")]
+            HelpMessage = EventGridConstants.KeyNameHelp)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "The name of the key that needs to be regenerated",
+            HelpMessage = EventGridConstants.KeyNameHelp,
             ParameterSetName = TopicInputObjectParameterSet)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "The name of the key that needs to be regenerated",
+            HelpMessage = EventGridConstants.KeyNameHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string KeyName { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipeline = true,
             Position = 0,
-            HelpMessage = "EventGrid Topic object.",
+            HelpMessage = EventGridConstants.TopicInputObjectHelp,
             ParameterSetName = TopicInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSTopic InputObject { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "Resource Identifier representing the Event Grid Topic.",
+            HelpMessage = EventGridConstants.TopicResourceIdHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            if (!string.IsNullOrEmpty(this.ResourceId))
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.TopicName = resourceIdentifier.ResourceName;
+            }
+            else if (this.InputObject != null)
+            {
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.TopicName = this.InputObject.TopicName;
+            }
+
             if (this.ShouldProcess(this.TopicName, $"Regenerate key {this.KeyName} for topic {this.TopicName} in Resource Group {this.ResourceGroupName}"))
             {
-                string resourceGroupName;
-                string topicName;
-
-                if (!string.IsNullOrEmpty(this.ResourceId))
-                {
-                    EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
-                }
-                else if (this.InputObject != null)
-                {
-                    resourceGroupName = this.InputObject.ResourceGroupName;
-                    topicName = this.InputObject.TopicName;
-                }
-                else
-                {
-                    resourceGroupName = this.ResourceGroupName;
-                    topicName = this.TopicName;
-                }
-
-                this.WriteObject(this.Client.RegenerateTopicKey(resourceGroupName, topicName, this.KeyName));
+                this.WriteObject(this.Client.RegenerateTopicKey(this.ResourceGroupName, this.TopicName, this.KeyName));
             }
         }
     }

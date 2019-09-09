@@ -18,8 +18,22 @@ Get guest configuration policy status history by Vm name scope
 #>
 function Get-AzVMGuestPolicyStatusHistory-VmNameScope
 {
-	$rgName = "vivga"
-	$vmName = "Viv1809SDDC"
+	$rgName = "aashishGoodPolicy"
+	$vmName = "aashishvm1"
+
+    $historicalStatuses = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName $rgName -VMName $vmName
+	Assert-NotNull $historicalStatuses
+	Assert-True { $historicalStatuses.Count -gt 0 }
+}
+
+<#
+.SYNOPSIS
+Get guest configuration policy status history by Vm name scope
+#>
+function Get-AzVMGuestPolicyStatusHistory-VmNameScope_Custom
+{
+	$rgName = "aashishCustomrole7ux"
+	$vmName = "aashishCustomrole7ux"
 
     $historicalStatuses = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName $rgName -VMName $vmName
 	Assert-NotNull $historicalStatuses
@@ -32,9 +46,24 @@ Get guest configuration policy status history by Initiative id scope
 #>
 function Get-AzVMGuestPolicyStatusHistory-InitiativeIdScope
 {
-	$rgName = "vivga"
-	$vmName = "Viv1809SDDC"
-	$initiativeId = "/providers/Microsoft.Authorization/policySetDefinitions/25ef9b72-4af2-4501-acd1-fc814e73dde1"
+	$rgName = "aashishGoodPolicy"
+	$vmName = "aashishvm1"
+	$initiativeId = "/providers/Microsoft.Authorization/policySetDefinitions/8bc55e6b-e9d5-4266-8dac-f688d151ec9c"
+
+    $historicalStatuses = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName $rgName -VMName $vmName -InitiativeId $initiativeId
+	Assert-NotNull $historicalStatuses
+	Assert-True { $historicalStatuses.Count -gt 0 }
+}
+
+<#
+.SYNOPSIS
+Get guest configuration policy status history by Initiative id scope
+#>
+function Get-AzVMGuestPolicyStatusHistory-InitiativeIdScope_Custom
+{
+	$rgName = "aashishCustomrole7ux"
+	$vmName = "aashishCustomrole7ux"
+	$initiativeId = "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/providers/Microsoft.Authorization/policySetDefinitions/60062d3c-3282-4a3d-9bc4-3557dded22ca"
 
     $historicalStatuses = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName $rgName -VMName $vmName -InitiativeId $initiativeId
 	Assert-NotNull $historicalStatuses
@@ -47,9 +76,24 @@ Get guest configuration policy status history by Initiative name scope
 #>
 function Get-AzVMGuestPolicyStatusHistory-InitiativeNameScope
 {
-	$rgName = "vivga"
-	$vmName = "Viv1809SDDC"
-	$initiativeName = "25ef9b72-4af2-4501-acd1-fc814e73dde1"
+	$rgName = "aashishGoodPolicy"
+	$vmName = "aashishvm1"
+	$initiativeName = "8bc55e6b-e9d5-4266-8dac-f688d151ec9c"
+
+    $historicalStatuses = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName $rgName -VMName $vmName -InitiativeName $initiativeName
+	Assert-NotNull $historicalStatuses
+	Assert-True { $historicalStatuses.Count -gt 0 }
+}
+
+<#
+.SYNOPSIS
+Get guest configuration policy status history by Initiative name scope
+#>
+function Get-AzVMGuestPolicyStatusHistory-InitiativeNameScope_Custom
+{
+	$rgName = "aashishCustomrole7ux"
+	$vmName = "aashishCustomrole7ux"
+	$initiativeName = "60062d3c-3282-4a3d-9bc4-3557dded22ca"
 
     $historicalStatuses = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName $rgName -VMName $vmName -InitiativeName $initiativeName
 	Assert-NotNull $historicalStatuses
@@ -62,8 +106,22 @@ Get guest configuration policy by vmName scope, using ShowOnlyChange switch
 #>
 function Get-AzVMGuestPolicyStatusHistory-ShowOnlyChangeSwitch-VmNameScope
 {
-	$rgName = "vivga"
-	$vmName = "Viv1809SDDC"
+	$rgName = "aashishGoodPolicy"
+	$vmName = "aashishvm1"
+
+    $historicalStatuses = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName $rgName -VMName $vmName -ShowOnlyChange
+	Assert-NotNull $historicalStatuses
+	Assert-True { $historicalStatuses.Count -gt 0 }
+}
+
+<#
+.SYNOPSIS
+Get guest configuration policy by vmName scope, using ShowOnlyChange switch
+#>
+function Get-AzVMGuestPolicyStatusHistory-ShowOnlyChangeSwitch-VmNameScope_Custom
+{
+	$rgName = "aashishCustomrole7ux"
+	$vmName = "aashishCustomrole7ux"
 
     $historicalStatuses = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName $rgName -VMName $vmName -ShowOnlyChange
 	Assert-NotNull $historicalStatuses

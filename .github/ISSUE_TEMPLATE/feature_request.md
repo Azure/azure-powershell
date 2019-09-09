@@ -2,7 +2,7 @@
 name: Feature request
 about: Suggest a new feature or improvement
 title: ''
-labels: Feature Request
+labels: Azure PS Team, Feature Request
 assignees: ''
 
 ---

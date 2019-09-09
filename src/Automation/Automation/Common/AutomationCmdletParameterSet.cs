@@ -261,5 +261,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// Parameter set for By SoftwareUpdateConfiguration targeting Linux
         /// </summary>
         internal const string Linux = "Linux";
+
+        /// <summary>
+        /// Parameter set for By SoftwareUpdateConfiguration RebootOnly
+        /// </summary>
+        internal const string RebootOnly = "RebootOnly";
     }
 }

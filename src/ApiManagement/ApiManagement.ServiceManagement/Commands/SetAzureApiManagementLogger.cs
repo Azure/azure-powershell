@@ -15,12 +15,13 @@
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Management.ApiManagement.Models;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;    
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementLogger", DefaultParameterSetName = EventHubLoggerSet)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementLogger", DefaultParameterSetName = EventHubLoggerSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementLogger), ParameterSetName = new[] { EventHubLoggerSet, ApplicationInsightsLoggerSet })]
     public class SetAzureApiManagementLogger : AzureApiManagementCmdletBase
     {
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -107,13 +109,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 loggerType = LoggerType.ApplicationInsights;
                 credentials.Add("instrumentationKey", InstrumentationKey);
             }
-            
-            Client.LoggerSet(Context, loggerType, LoggerId, Description, credentials, IsBuffered.IsPresent);
 
-            if (PassThru)
+            if (ShouldProcess(LoggerId, Resources.SetLogger))
             {
-                var @logger = Client.LoggerById(Context, LoggerId);
-                WriteObject(@logger);
+                Client.LoggerSet(Context, loggerType, LoggerId, Description, credentials, IsBuffered.IsPresent);
+
+                if (PassThru)
+                {
+                    var @logger = Client.LoggerById(Context, LoggerId);
+                    WriteObject(@logger);
+                }
             }
         }
     }

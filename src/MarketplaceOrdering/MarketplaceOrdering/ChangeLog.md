@@ -19,5 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.1
+* Fixed documentation typo where "Azure" was all lowercase letters
+* Fixed miscellaneous typos across module
+
 ## Version 1.0.0
 * General availability of `Az.MarketplaceOrdering` module

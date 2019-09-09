@@ -14,8 +14,15 @@
 
 namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces
 {
+    /// <summary>
+    /// Interface IOutputWriter
+    /// </summary>
     public interface IOutputWriter
     {
+        /// <summary>
+        /// Writes the specified validation result.
+        /// </summary>
+        /// <param name="validationResult">The validation result.</param>
         void Write(IValidationResult validationResult);
     }
 }

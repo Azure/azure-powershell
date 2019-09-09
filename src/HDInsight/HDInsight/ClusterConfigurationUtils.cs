@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             string defaultFSUrl;
             const string AdlPrefix = "adl://";
             const string WasbPrefix = "wasb://";
+            const string SecureWasbPrefix = "wasbs://";
 
             if (coreSiteConfiguration.TryGetValue(key, out defaultFSUrl))
             {
@@ -78,15 +79,26 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                         resourceUri: resourceUri
                     );
                 }
-                else if (defaultFSUrl.StartsWith(WasbPrefix))
+                else if (defaultFSUrl.StartsWith(WasbPrefix) || defaultFSUrl.StartsWith(SecureWasbPrefix))
                 {
-                    string[] accountAndContainer = defaultFSUrl.Substring(WasbPrefix.Length).Split('@');
+                    string[] accountAndContainer;
+                    if (defaultFSUrl.StartsWith(WasbPrefix))
+                    {
+                        accountAndContainer = defaultFSUrl.Substring(WasbPrefix.Length).Split('@');
+                    }
+                    else
+                    {
+                        accountAndContainer = defaultFSUrl.Substring(SecureWasbPrefix.Length).Split('@');
+                    }
+
+                    string storageAccountKey;
+                    coreSiteConfiguration.TryGetValue(Constants.ClusterConfiguration.StorageAccountKeyPrefix + accountAndContainer[1], out storageAccountKey);
 
                     return new AzureHDInsightWASBDefaultStorageAccount
                     (
                         storageContainerName: accountAndContainer[0],
                         storageAccountName: accountAndContainer[1],
-                        storageAccountKey: coreSiteConfiguration[Constants.ClusterConfiguration.StorageAccountKeyPrefix + accountAndContainer[1]]
+                        storageAccountKey: storageAccountKey
                     );
                 }
                 else

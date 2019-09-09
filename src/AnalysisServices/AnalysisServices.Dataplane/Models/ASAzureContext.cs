@@ -18,21 +18,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
     /// <summary>
     /// Represents current AS Azure client context.
+    /// This class exists to maintain the interface of deprecating cmdlet Add-AzAnalysisServicesAccount.
+    /// Should be removed when Add-AzAnalysisServicesAccount is removed.
     /// </summary>
     [Serializable]
     public class AsAzureContext
     {
-        /// <summary>
-        /// Creates new instance of AsAzureContext.
-        /// </summary>
-        /// <param name="account">The AS azure account object</param>
-        /// <param name="environment">The AS azure environment object</param>
-        public AsAzureContext(AsAzureAccount account, AsAzureEnvironment environment)
-        {
-            Account = account;
-            Environment = environment;
-        }
-
         /// <summary>
         /// Gets the AS azure account.
         /// </summary>

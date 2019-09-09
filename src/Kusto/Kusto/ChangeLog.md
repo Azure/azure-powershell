@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.2
+* Fixed miscellaneous typos across module
+
 ## Version 0.1.1
 * Capacity is a new and optional parameter for Create and Update Cluster.
 * ETag of Database is depricated.

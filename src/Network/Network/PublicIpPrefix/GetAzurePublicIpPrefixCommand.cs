@@ -30,12 +30,13 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Alias("ResourceName")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
-            ParameterSetName = GetAzurePublicIpPrefixParameterSetNames.GetByName)]
+            ParameterSetName = GetAzurePublicIpPrefixParameterSetNames.List)]
         [ResourceNameCompleter("Microsoft.Network/publicIPPrefixes", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
@@ -43,13 +44,9 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.",
             ParameterSetName = GetAzurePublicIpPrefixParameterSetNames.List)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.",
-            ParameterSetName = GetAzurePublicIpPrefixParameterSetNames.GetByName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -70,7 +67,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name = resourceIdentifier.ResourceName;
             }
 
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 PSPublicIpPrefix publicIpPrefix;
 
@@ -81,7 +78,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<PublicIPPrefix> publicipprefixPage;
-                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                if (ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     publicipprefixPage = this.PublicIpPrefixClient.List(this.ResourceGroupName);
                 }
@@ -105,18 +102,17 @@ namespace Microsoft.Azure.Commands.Network
                     psPublicIpPrefixes.Add(psPublicIpPrefix);
                 }
 
-                WriteObject(psPublicIpPrefixes, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psPublicIpPrefixes), true);
             }
         }
     }
 
     public static class GetAzurePublicIpPrefixParameterSetNames
     {
-        public const string GetByName = "GetByNameParameterSet";
         public const string GetByResourceId = "GetByResourceIdParameterSet";
         public const string List = "ListParameterSet";
 
         // The Default
-        public const string Default = GetByName;
+        public const string Default = List;
     }
 }

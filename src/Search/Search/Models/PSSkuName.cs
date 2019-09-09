@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
         Basic = 1,
         Standard = 2,
         Standard2 = 3,
-        Standard3 = 4
+        Standard3 = 4,
+        Storage_Optimized_L1 = 5,
+        Storage_Optimized_L2 = 6
     }
 }

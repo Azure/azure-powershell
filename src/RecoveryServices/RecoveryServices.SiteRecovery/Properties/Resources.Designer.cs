@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cmdlet &quot;{0}&quot; will be deprecated soon. Please use use cmdlet(s) &quot;{1}&quot; instead..
+        ///   Looks up a localized string similar to Cmdlet &quot;{0}&quot; will be deprecated soon. Please use cmdlet(s) &quot;{1}&quot; instead..
         /// </summary>
         internal static string CmdletWillBeDeprecatedSoon {
             get {
@@ -351,6 +351,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please pass a valid RecoveryResourceGroupId as input for disk URI &quot;{0}&quot;.
+        /// </summary>
+        internal static string InvalidRecoveryDiskResourceGroup {
+            get {
+                return ResourceManager.GetString("InvalidRecoveryDiskResourceGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please pass a valid RecoveryTargetDiskAccountType as input for disk URI &quot;{0}&quot;.
+        /// </summary>
+        internal static string InvalidRecoveryTargetDiskAccountType {
+            get {
+                return ResourceManager.GetString("InvalidRecoveryTargetDiskAccountType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replication Frequency {0} is invalid.
         /// </summary>
         internal static string InvalidReplicationFrequency {
@@ -360,7 +378,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resource is not associted with the selected Resource group.
+        ///   Looks up a localized string similar to Resource is not associated with the selected Resource group.
         /// </summary>
         internal static string InvalidResource {
             get {
@@ -396,7 +414,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unsupported vault object is passed. Please pass Claasic or ARM vault object..
+        ///   Looks up a localized string similar to Unsupported vault object is passed. Please pass Classic or ARM vault object..
         /// </summary>
         internal static string InvalidVaultObject {
             get {
@@ -423,7 +441,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} will be a mandatory paramter from next release..
+        ///   Looks up a localized string similar to {0} will be a mandatory parameter from next release..
         /// </summary>
         internal static string MandatoryParamFromNextRelease {
             get {
@@ -513,7 +531,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parameter(s) &quot;{0}&quot; will be deprecated soon. Please use use parameter(s) &quot;{1}&quot; instead..
+        ///   Looks up a localized string similar to Parameter(s) &quot;{0}&quot; will be deprecated soon. Please use parameter(s) &quot;{1}&quot; instead..
         /// </summary>
         internal static string ParameterWillBeDeprecatedSoon {
             get {
@@ -858,10 +876,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Message: For newly created vault download vault creds file and retry.
-        ///Recommended Action: Install module AzureRm.RecoveryServices if not installed. And execute below cmdlets
-        ///$path = Get-AzRecoveryServicesVaultSettingsFile -Vault $Vault
-        ///Import-AzRecoveryServicesAsrVaultSettingsFile -Path $path.filepath.
+        ///   Looks up a localized string similar to Download vault credential file using cmdlet Get-AzRecoveryServicesVaultSettingsFile and Import-AzRecoveryServicesAsrVaultSettingsFile.
         /// </summary>
         internal static string TryDownloadingVaultFile {
             get {

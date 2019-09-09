@@ -24,18 +24,16 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
     /// <summary>
     /// Gets Vm Guest Policy reports (GuestConfiguration policy reports)
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "VMGuestPolicyStatusHistory", DefaultParameterSetName = ParameterSetNames.VmNameScope)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "VMGuestPolicyStatusHistory", DefaultParameterSetName = ParameterSetNames.InitiativeIdScope)]
     [OutputType(typeof(PolicyStatus))]
     public class GetAzVMGuestPolicyStatusHistory : GuestConfigurationCmdletBase
     {
-        [Parameter(ParameterSetName = ParameterSetNames.VmNameScope, Mandatory = true, Position = 0, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
         [Parameter(ParameterSetName = ParameterSetNames.InitiativeIdScope, Mandatory = true, Position = 0, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
         [Parameter(ParameterSetName = ParameterSetNames.InitiativeNameScope, Mandatory = true, Position = 0, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.VmNameScope, Mandatory = true, Position = 1, HelpMessage = ParameterHelpMessages.VMName)]
         [Parameter(ParameterSetName = ParameterSetNames.InitiativeIdScope, Mandatory = true, Position = 1, HelpMessage = ParameterHelpMessages.VMName)]
         [Parameter(ParameterSetName = ParameterSetNames.InitiativeNameScope, Mandatory = true, Position = 1, HelpMessage = ParameterHelpMessages.VMName)]
         [ValidateNotNullOrEmpty]
@@ -45,13 +43,12 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
         [ValidateNotNullOrEmpty]
         public string InitiativeName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.InitiativeIdScope, Mandatory = true, Position = 2, HelpMessage = ParameterHelpMessages.InitiativeId)]
+        [Parameter(ParameterSetName = ParameterSetNames.InitiativeIdScope, Mandatory = false, Position = 2, HelpMessage = ParameterHelpMessages.InitiativeId)]
         [ValidateNotNullOrEmpty]
         public string InitiativeId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.InitiativeNameScope, Mandatory = false, HelpMessage = ParameterHelpMessages.ShowOnlyChange)]
         [Parameter(ParameterSetName = ParameterSetNames.InitiativeIdScope, Mandatory = false, HelpMessage = ParameterHelpMessages.ShowOnlyChange)]
-        [Parameter(ParameterSetName = ParameterSetNames.VmNameScope, Mandatory = false, HelpMessage = ParameterHelpMessages.ShowOnlyChange)]
+        [Parameter(ParameterSetName = ParameterSetNames.InitiativeNameScope, Mandatory = false, HelpMessage = ParameterHelpMessages.ShowOnlyChange)]
         public SwitchParameter ShowOnlyChange { get; set; }
 
         /// <summary>
@@ -76,16 +73,15 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
                     break;
 
                 case ParameterSetNames.InitiativeIdScope:
-                    policyStatuses = GetPolicyStatusHistoryByInitiativeId(ResourceGroupName, VMName, InitiativeId, gcrpAssignments, ShowOnlyChange.IsPresent);
-
-                    if (policyStatuses == null || policyStatuses.Count() > 0)
+                    if (!string.IsNullOrEmpty(InitiativeId))
                     {
-                        WriteObject(policyStatuses, true);
+                        policyStatuses = GetPolicyStatusHistoryByInitiativeId(ResourceGroupName, VMName, InitiativeId, gcrpAssignments, ShowOnlyChange.IsPresent);
                     }
-                    break;
+                    else
+                    {
+                        policyStatuses = GetPolicyStatusHistory(ResourceGroupName, VMName, gcrpAssignments, null, ShowOnlyChange.IsPresent);
+                    }
 
-                case ParameterSetNames.VmNameScope:
-                    policyStatuses = GetPolicyStatusHistory(ResourceGroupName, VMName, gcrpAssignments, null, ShowOnlyChange.IsPresent);
                     if (policyStatuses == null || policyStatuses.Count() > 0)
                     {
                         WriteObject(policyStatuses, true);

@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -104,6 +105,9 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
+        public SwitchParameter NoWait { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -125,22 +129,26 @@ namespace Microsoft.Azure.Commands.Compute
                         NetworkProfile = this.VM.NetworkProfile,
                         OsProfile = this.VM.OSProfile,
                         Plan = this.VM.Plan,
+                        LicenseType = this.VM.LicenseType,
                         AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.VM.Location,
-                        LicenseType = this.VM.LicenseType,
                         Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
                         Identity = this.AssignIdentity.IsPresent 
                                    ? new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned, null)
                                    : ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
-                        Zones = (this.VM.Zones != null && this.VM.Zones.Count > 0) ? this.VM.Zones : null
+                        Zones = (this.VM.Zones != null && this.VM.Zones.Count > 0) ? this.VM.Zones : null,
+                        ProximityPlacementGroup = this.VM.ProximityPlacementGroup,
+                        Host = this.VM.Host,
+                        VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet,
+                        AdditionalCapabilities = this.VM.AdditionalCapabilities
                     };
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("IdentityType"))
+                    if (this.IsParameterBound(c => c.IdentityType))
                     {
                         parameters.Identity = new VirtualMachineIdentity(null, null, this.IdentityType, null);
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("IdentityId"))
+                    if (this.IsParameterBound(c => c.IdentityId))
                     {
                         if (parameters.Identity == null)
                         {
@@ -156,7 +164,7 @@ namespace Microsoft.Azure.Commands.Compute
                         }
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("OsDiskWriteAccelerator"))
+                    if (this.IsParameterBound(c => c.OsDiskWriteAccelerator))
                     {
                         if (parameters.StorageProfile == null)
                         {
@@ -169,7 +177,7 @@ namespace Microsoft.Azure.Commands.Compute
                         parameters.StorageProfile.OsDisk.WriteAcceleratorEnabled = this.OsDiskWriteAccelerator;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("UltraSSDEnabled"))
+                    if (this.IsParameterBound(c => c.UltraSSDEnabled))
                     {
                         if (parameters.AdditionalCapabilities == null)
                         {
@@ -178,12 +186,24 @@ namespace Microsoft.Azure.Commands.Compute
                         parameters.AdditionalCapabilities.UltraSSDEnabled = this.UltraSSDEnabled;
                     }
 
-                    var op = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
-                        this.ResourceGroupName,
-                        this.VM.Name,
-                        parameters).GetAwaiter().GetResult();
-                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                    WriteObject(result);
+                    if (NoWait.IsPresent)
+                    {
+                        var op = this.VirtualMachineClient.BeginCreateOrUpdateWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.VM.Name,
+                            parameters).GetAwaiter().GetResult();
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                        WriteObject(result);
+                    }
+                    else
+                    {
+                        var op = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.VM.Name,
+                            parameters).GetAwaiter().GetResult();
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                        WriteObject(result);
+                    }
                 });
             }
         }

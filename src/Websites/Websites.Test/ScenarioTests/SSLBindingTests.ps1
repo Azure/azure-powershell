@@ -32,6 +32,7 @@ function Test-CreateNewWebAppSSLBinding
 {
 	try
 	{
+		
 		# Test - Create Ssl binding for web app
 		$createResult = New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Thumbprint $thumbprint
 		Assert-AreEqual $prodHostname $createResult.Name
@@ -185,5 +186,56 @@ function Test-GetWebAppCertificate
     {
 		# Cleanup
 		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostName -Force 
+    }
+}
+
+<#
+.SYNOPSIS
+Tests creating a new Web App SSL binding does not override tags
+#>
+function Test-TagsNotRemovedByCreateNewWebAppSSLBinding
+{
+	try
+	{
+		# check the app has tags by default
+		$getWebAppResult = Get-AzWebApp -ResourceGroupName $rgname -Name $appname
+		Assert-notNull $getWebAppResult.Tags
+		$tagsApp = $getWebAppResult.Tags
+
+		# Create Ssl binding for web app
+		$createBindingResult = New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Thumbprint $thumbprint
+		Assert-AreEqual $prodHostname $createBindingResult.Name
+		
+		# Test - tags are not removed (the app 'lketmtestantps10' has a tag set)
+		$getResult = Get-AzWebApp -ResourceGroupName $rgname -Name $appname
+		Assert-notNull $getResult.Tags
+		foreach($key in $tagsApp.Keys)
+		{
+			Assert-AreEqual $tagsApp[$key] $getResult.Tags[$key]
+		}
+
+		# check the slot has tags by default
+		$getSlotResult = Get-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slot
+		Assert-notNull $getSlotResult.Tags
+		$tagsSlot = $getSlotResult.Tags
+
+		# Create Ssl binding for web app slot
+		$createSlotBindingResult = New-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Thumbprint $thumbprint
+		Assert-AreEqual $slotHostname $createSlotBindingResult.Name
+
+		# Test - tags are not removed from slot (the app 'lketmtestantps10/testslot' has a tag set)
+		$getSlotResult2 = Get-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slot
+		Assert-notNull $getSlotResult2.Tags
+		foreach($key in $tagsSlot.Keys)
+		{
+			Assert-AreEqual $tagsSlot[$key] $getSlotResult2.Tags[$key]
+		}
+
+	}
+    finally
+    {
+		# Cleanup
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname -Force
+		Remove-AzWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Slot $slot -Name $slotHostname -Force 
     }
 }

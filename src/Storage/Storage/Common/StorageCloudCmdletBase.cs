@@ -23,11 +23,11 @@ using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.File;
-using Microsoft.WindowsAzure.Storage.Queue;
-using Microsoft.WindowsAzure.Storage.Table;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Blob;
+using Microsoft.Azure.Storage.File;
+using Microsoft.Azure.Storage.Queue;
+using XTable= Microsoft.Azure.Cosmos.Table;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -51,9 +51,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         public virtual IStorageContext Context { get; set; }
 
         [Parameter(HelpMessage = "The server time out for each request in seconds.")]
+        [Alias("ServerTimeoutPerRequestInSeconds")]
         public virtual int? ServerTimeoutPerRequest { get; set; }
 
         [Parameter(HelpMessage = "The client side maximum execution time for each request in seconds.")]
+        [Alias("ClientTimeoutPerRequestInSeconds")]
         public virtual int? ClientTimeoutPerRequest { get; set; }
 
         /// <summary>
@@ -140,7 +142,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Cancellation Token Source
         /// </summary>
-        private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
+        protected readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         protected CancellationToken CmdletCancellationToken;
 
         /// <summary>
@@ -158,7 +160,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             get { return _enableMultiThread; }
             set { _enableMultiThread = value; }
         }
-        private bool _enableMultiThread = true;
+        protected bool _enableMultiThread = true;
 
         internal TaskOutputStream OutputStream;
 
@@ -180,6 +182,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             get
             {
                 return CmdletOperationContext.GetStorageOperationContext(WriteDebugLog);
+            }
+        }
+
+        /// <summary>
+        /// Cmdlet operation context.
+        /// </summary>
+        protected XTable.OperationContext TableOperationContext
+        {
+            get
+            {
+                return CmdletOperationContext.GetStorageTableOperationContext(WriteDebugLog);
             }
         }
 
@@ -209,15 +222,35 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 case StorageServiceType.Queue:
                     options = new QueueRequestOptions();
                     break;
-                case StorageServiceType.Table:
-                    options = new TableRequestOptions();
-                    break;
                 case StorageServiceType.File:
                     options = new FileRequestOptions();
                     break;
                 default:
                     throw new ArgumentException(Resources.InvalidStorageServiceType, "type");
             }
+
+            if (ServerTimeoutPerRequest.HasValue)
+            {
+                options.ServerTimeout = ConvertToTimeSpan(ServerTimeoutPerRequest.Value);
+            }
+
+            if (ClientTimeoutPerRequest.HasValue)
+            {
+                options.MaximumExecutionTime = ConvertToTimeSpan(ClientTimeoutPerRequest.Value);
+            }
+
+            return options;
+        }
+
+
+        /// <summary>
+        /// Get a request options
+        /// </summary>
+        /// <param name="type">Service type</param>
+        /// <returns>Request options</returns>
+        public XTable.TableRequestOptions GetTableRequestOptions()
+        {
+            XTable.TableRequestOptions options = new XTable.TableRequestOptions();
 
             if (ServerTimeoutPerRequest.HasValue)
             {
@@ -589,10 +622,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 (sender, args) =>
                 {
                     //https://github.com/Azure/azure-storage-net/issues/658
-// TODO: Remove IfDef code
-#if !NETSTANDARD
-                    args.Request.UserAgent = Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.HeaderConstants.UserAgent + " " + ApiConstants.UserAgentHeaderValue;
-#endif
                 };
 
             base.BeginProcessing();

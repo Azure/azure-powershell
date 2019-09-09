@@ -322,6 +322,44 @@ function Test-ListVaults
 			Assert-AreEqual (Normalize-Location $vaultLocation) (Normalize-Location $v.Location)
 		}
 
+		$list = Get-AzKeyVault -ResourceGroupName $rgName -VaultName *
+		Assert-NotNull $list
+		Assert-True { $list.Count -eq 2 }
+		foreach($v in $list)
+		{
+			Assert-NotNull $v.VaultName
+			Assert-AreEqual $rgName $v.ResourceGroupName
+			Assert-AreEqual (Normalize-Location $vaultLocation) (Normalize-Location $v.Location)
+		}
+
+		$list = Get-AzKeyVault -ResourceGroupName * -VaultName *
+		Assert-NotNull $list
+		Assert-True { $list.Count -gt 1 }
+		foreach($v in $list)
+		{
+			Assert-NotNull $v.VaultName
+			Assert-NotNull $v.ResourceGroupName
+		}
+
+		$list = Get-AzKeyVault -ResourceGroupName * -VaultName $vault1Name
+		Assert-NotNull $list
+		Assert-True { $list.Count -eq 1 }
+		foreach($v in $list)
+		{
+			Assert-NotNull $v.VaultName
+			Assert-AreEqual $rgName $v.ResourceGroupName
+			Assert-AreEqual (Normalize-Location $vaultLocation) (Normalize-Location $v.Location)
+		}
+
+		$list = Get-AzKeyVault -VaultName *
+		Assert-NotNull $list
+		Assert-True { $list.Count -gt 1 }
+		foreach($v in $list)
+		{
+			Assert-NotNull $v.VaultName
+			Assert-NotNull $v.ResourceGroupName
+		}
+
 		$list = Get-AzKeyVault -Tag $tag
 		Assert-NotNull $list
 		Assert-True { $list.Count -eq 1 }

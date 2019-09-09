@@ -8,7 +8,8 @@ schema: 2.0.0
 # Get-AzVMGuestPolicyStatus
 
 ## SYNOPSIS
-Gets guest configuration policy statuses (detailed) for an initiative of type "Guest Configuration" that is assigned to a VM. An initiative is a policy of definition type "Initiative".
+Gets guest configuration policy statuses (detailed) for an initiative of type "Guest Configuration" that is assigned to a VM.
+An initiative is a policy of definition type "Initiative".
 
 ## SYNTAX
 
@@ -36,7 +37,9 @@ Get-AzVMGuestPolicyStatus [-ReportId] <String> [-DefaultProfile <IAzureContextCo
 ```
 
 ## DESCRIPTION
-The Get-AzVMGuestPolicyStatus cmdlet gets guest configuration policy statuses for an initiative of type "Guest Configuration" that is assigned to a VM. An initiative is a policy of definition type "Initiative". This cmdlet gets compliance statuses of the VM and reasons why it is non-compliant for the individual policies in the initiative.
+The Get-AzVMGuestPolicyStatus cmdlet gets guest configuration policy statuses for an initiative of type "Guest Configuration" that is assigned to a VM.
+An initiative is a policy of definition type "Initiative".
+This cmdlet gets compliance statuses of the VM and reasons why it is non-compliant for the individual policies in the initiative.
 
 ## EXAMPLES
 
@@ -45,28 +48,35 @@ The Get-AzVMGuestPolicyStatus cmdlet gets guest configuration policy statuses fo
 PS C:\> Get-AzVMGuestPolicyStatus -ResourceGroupName "MyResourceGroupName" -VMName "MyVMName"
 ```
 
-Get all latest guest configuration policy statuses for a VM. The status includes compliance status of the VM for each policy in all initiatives of type "Guest Configuration", compliance reasons, time of the compliance check, resource information which was checked for compliance. The results include latest statuses, does not include previous historical statuses.
+Get all latest guest configuration policy statuses for a VM.
+The status includes compliance status of the VM for each policy in all initiatives of type "Guest Configuration", compliance reasons, time of the compliance check, resource information which was checked for compliance.
+The results include latest statuses, does not include previous historical statuses.
 
 ### Example 2
 ```powershell
 PS C:\> Get-AzVMGuestPolicyStatus -ResourceGroupName "MyResourceGroupName" -VMName "MyVMName" -InitiativeId "/providers/Microsoft.Authorization/policySetDefinitions/3fa7cbf5-c0a4-4a59-85a5-cca4d996d5af"
 ```
 
-Get the latest guest configuration policy statuses by initiative Id. The status includes compliance status of the VM for each policy in the initiative, compliance reasons, time of the compliance check, resource information which was checked for compliance. The results does not include previous statuses generated, it just includes latest status for each policy in the initiative.
+Get the latest guest configuration policy statuses by initiative Id.
+The status includes compliance status of the VM for each policy in the initiative, compliance reasons, time of the compliance check, resource information which was checked for compliance.
+The results does not include previous statuses generated, it just includes latest status for each policy in the initiative.
 
 ### Example 3
 ```powershell
 PS C:\> Get-AzVMGuestPolicyStatus -ResourceGroupName "MyResourceGroupName" -VMName "MyVMName" -InitiativeName "b5a822e0-ba98-4e54-9278-5d9833aa9b17"
 ```
 
-Get the latest guest configuration policy statuses by initiative name. The status includes compliance status of the VM for each policy in the initiative, compliance reasons, time of the compliance check, resource information which was checked for compliance. The results does not include previous statuses generated, it just includes latest status for each policy in the initiative.
+Get the latest guest configuration policy statuses by initiative name.
+The status includes compliance status of the VM for each policy in the initiative, compliance reasons, time of the compliance check, resource information which was checked for compliance.
+The results does not include previous statuses generated, it just includes latest status for each policy in the initiative.
 
 ### Example 4
 ```powershell
 PS C:\> Get-AzVMGuestPolicyStatus -ReportId "/subscriptions/4e6c6ed2-0bf6-41d7-9d21-a452c2cc7920/resourceGroups/MyResourceGroupName/providers/Microsoft.Compute/virtualMachines/MyVMName/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/MaximumPasswordAge/reports/c271f845-2c0a-4456-a441-e48fc332d0ac"
 ```
 
-Get guest configuration policy status by ReportId. The ReportId is the ReportId property that can be found in the results of Get-AzVMGuestPolicyStatus by initiativeId or Initiative name (please refer other examples)
+Get guest configuration policy status by ReportId.
+The ReportId is the ReportId property that can be found in the results of Get-AzVMGuestPolicyStatus by initiativeId or Initiative name (please refer other examples)
 
 ## PARAMETERS
 
@@ -116,7 +126,8 @@ Accept wildcard characters: False
 ```
 
 ### -ReportId
-ReportId of a Guest Configuration policy status. A policy where definition type is Initiative and category is Guest Configuration must be assigned to a scope to get statuses.
+Id of a Guest Configuration policy status.
+A policy where definition type is Initiative and category is Guest Configuration must be assigned to a scope to get statuses.
 
 ```yaml
 Type: System.String
@@ -165,14 +176,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Management.Automation.SwitchParameter
-
+### None
 ## OUTPUTS
 
-### [Microsoft.Azure.Management.GuestConfiguration.Models.PolicyStatusDetailed, Microsoft.Azure.Management.GuestConfiguration, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]
-
+### Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatusDetailed
 ## NOTES
 
 ## RELATED LINKS

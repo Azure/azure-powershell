@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Dns
                     if (deleted)
                     {
                         WriteVerbose(ProjectResources.Success);
-                        WriteVerbose(ProjectResources.Success_RemoveRecordSet);
+                        WriteVerbose(string.Format(ProjectResources.Success_RemoveRecordSet, this.Name, this.ZoneName));
                     }
 
                     if (this.PassThru)

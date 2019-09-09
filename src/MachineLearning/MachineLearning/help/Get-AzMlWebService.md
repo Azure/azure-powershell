@@ -18,8 +18,8 @@ Get-AzMlWebService [-ResourceGroupName <String>] [-Name <String>] [-Region <Stri
 ```
 
 ## DESCRIPTION
-Retrieves web service defintion information.
-Depending on the paramenters passed, the cmdlet returns the defintion for a specific web service, a collection of defintions for the web services for a specified resource group within the current subscription, or a collection of defintions for the web services within the current subscription.
+Retrieves web service definition information.
+Depending on the parameters passed, the cmdlet returns the definition for a specific web service, a collection of definitions for the web services for a specified resource group within the current subscription, or a collection of definitions for the web services within the current subscription.
 
 ## EXAMPLES
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -Region
-The name of regio
+The name of region
 
 ```yaml
 Type: System.String

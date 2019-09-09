@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         }
 
 #if NETSTANDARD
-        [Fact(Skip = "Storage version out-of-date: Awaiting Storage.Management.Common")]
+        [Fact]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
         [Fact]
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         }
 
 #if NETSTANDARD
-        [Fact(Skip = "Storage version out-of-date: Awaiting Storage.Management.Common")]
+        [Fact]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
         [Fact]
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         }
 
 #if NETSTANDARD
-        [Fact(Skip = "Storage version out-of-date: Awaiting Storage.Management.Common")]
+        [Fact]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
         [Fact]
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         }
 
 #if NETSTANDARD
-        [Fact(Skip = "Storage version out-of-date: Awaiting Storage.Management.Common")]
+        [Fact]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
         [Fact]
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         }
 
 #if NETSTANDARD
-        [Fact(Skip = "Storage version out-of-date: Awaiting Storage.Management.Common")]
+        [Fact]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
         [Fact]
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         }
 
 #if NETSTANDARD
-        [Fact(Skip = "Storage version out-of-date: Awaiting Storage.Management.Common")]
+        [Fact]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
         [Fact]
@@ -116,21 +116,21 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-RestoreWebAppSnapshot");
         }
 
-        [Fact(Skip = "Failing test, Investigation needed")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetDeletedWebApp()
         {
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetDeletedWebApp");
         }
 
-        [Fact(Skip = "Needs re-recorded, Restore tests use prior webapp state on the subscription")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreDeletedWebAppToExisting()
         {
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-RestoreDeletedWebAppToExisting");
         }
 
-        [Fact(Skip = "Failing test, Investigation needed")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreDeletedWebAppToNew()
         {

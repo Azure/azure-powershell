@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/applicationGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
@@ -40,12 +41,13 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var applicationGateway = this.GetApplicationGateway(this.ResourceGroupName, this.Name);
 
@@ -54,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<ApplicationGateway> appGatewayPage;
-                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                if (ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     appGatewayPage = this.ApplicationGatewayClient.List(this.ResourceGroupName);
                 }
@@ -75,7 +77,7 @@ namespace Microsoft.Azure.Commands.Network
                     psApplicationGateways.Add(psAppGw);
                 }
 
-                WriteObject(psApplicationGateways, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psApplicationGateways), true);
             }
         }
     }

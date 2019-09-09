@@ -49,7 +49,14 @@ function Test-File
         Assert-AreEqual $Share.Count 1
         Assert-AreEqual $Share[0].Name $shareName
 
-        Set-AzStorageFileContent -source $localSrcFile -ShareName $shareName -Path $objectName1 -Force -Context $storageContext
+        $t = Set-AzStorageFileContent -source $localSrcFile -ShareName $shareName -Path $objectName1 -Force -Context $storageContext -asjob
+		$t | wait-job
+		Assert-AreEqual $t.State "Completed"
+		Assert-AreEqual $t.Error $null
+        $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
+        Assert-AreEqual $file.Count 1
+        Assert-AreEqual $file[0].Name $objectName1
+		Set-AzStorageFileContent -source $localSrcFile -ShareName $shareName -Path $objectName1 -Force -Context $storageContext
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
         Assert-AreEqual $file.Count 1
         Assert-AreEqual $file[0].Name $objectName1
@@ -61,7 +68,12 @@ function Test-File
         Assert-AreEqual $file[0].Name $objectName1
         Assert-AreEqual $file[1].Name $objectName2
 
-        Get-AzStorageFileContent -ShareName $shareName -Path $objectName1 -Destination $localDestFile -Force -Context $storageContext    
+        $t = Get-AzStorageFileContent -ShareName $shareName -Path $objectName1 -Destination $localDestFile -Force -Context $storageContext  -asjob
+		$t | wait-job
+		Assert-AreEqual $t.State "Completed"
+		Assert-AreEqual $t.Error $null   
+        Assert-AreEqual (Get-FileHash -Path $localDestFile -Algorithm MD5).Hash (Get-FileHash -Path $localSrcFile -Algorithm MD5).Hash
+		Get-AzStorageFileContent -ShareName $shareName -Path $objectName1 -Destination $localDestFile -Force -Context $storageContext
         Assert-AreEqual (Get-FileHash -Path $localDestFile -Algorithm MD5).Hash (Get-FileHash -Path $localSrcFile -Algorithm MD5).Hash
 
         Remove-AzStorageFile -ShareName $shareName -Path $objectName1 -Context $storageContext
@@ -118,35 +130,55 @@ function Test-Blob
         $localSrcFile = "localsrcblobtestfile.psd1" #The file need exist before test, and should be 512 bytes aligned
         New-Item $localSrcFile -ItemType File -Force
         $localDestFile = "localdestblobtestfile.txt"
+        $localDestFile2 = "localdestblobtestfile2.txt"
 
         $containerName = "blobtestcontainer"          
         $objectName1 = "blobtest1.txt"
         $objectName2 = "blobtest2.txt"
         $ContentType = "image/jpeg"
         $ContentMD5 = "i727sP7HigloQDsqadNLHw=="
+        $StandardBlobTier = "Cool"
+        $StandardBlobTier2 = "Hot"
 
         # Create Container for blob
         New-AzStorageContainer $containerName -Context $storageContext
 
         # Upload local file to Azure Storage Blob.
-        Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $objectName1 -Force -Properties @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} -Context $storageContext
+        $t = Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $objectName1 -StandardBlobTier $StandardBlobTier -Force -Properties @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} -Context $storageContext -asjob
+        $t | wait-job
+        Assert-AreEqual $t.State "Completed"
+        Assert-AreEqual $t.Error $null
         $blob = Get-AzStorageContainer -Name $containerName -Context $storageContext | Get-AzStorageBlob
         Assert-AreEqual $blob.Count 1
         Assert-AreEqual $blob.Name $objectName1
         Assert-AreEqual $blob.ICloudBlob.Properties.ContentType $ContentType
         Assert-AreEqual $blob.ICloudBlob.Properties.ContentMD5 $ContentMD5
+        Assert-AreEqual $blob.ICloudBlob.Properties.StandardBlobTier $StandardBlobTier
+        $blob.ICloudBlob.SetStandardBlobTier($StandardBlobTier2, "High")
+        $blob.ICloudBlob.FetchAttributes()
+        Assert-AreEqual $blob.ICloudBlob.Properties.StandardBlobTier $StandardBlobTier2
+        Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $objectName2 -Force -Properties @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} -Context $storageContext
+        $blob = Get-AzStorageContainer -Name $containerName -Context $storageContext | Get-AzStorageBlob
+        Assert-AreEqual $blob.Count 2
+        Get-AzStorageBlob -Container $containerName -Blob $objectName2 -Context $storageContext | Remove-AzStorageBlob -Force 
 
         # Copy blob to the same container, but with a different name.
-        Start-AzStorageBlobCopy -srcContainer $containerName -SrcBlob $objectName1 -DestContainer $containerName -DestBlob $objectName2 -Context $storageContext -DestContext $storageContext
+        Start-AzStorageBlobCopy -srcContainer $containerName -SrcBlob $objectName1 -DestContainer $containerName -DestBlob $objectName2 -StandardBlobTier $StandardBlobTier -RehydratePriority High -Context $storageContext -DestContext $storageContext
         Get-AzStorageBlobCopyState -Container $containerName -Blob $objectName2 -Context $storageContext
         $blob = Get-AzStorageBlob -Container $containerName -Context $storageContext
         Assert-AreEqual $blob.Count 2
         Assert-AreEqual $blob[0].Name $objectName1
         Assert-AreEqual $blob[1].Name $objectName2
+        Assert-AreEqual $blob[1].ICloudBlob.Properties.StandardBlobTier $StandardBlobTier
 
         # Download storage blob to compare with the local file.
         Get-AzStorageBlobContent -Container $containerName -Blob $objectName2 -Destination $localDestFile -Force -Context $storageContext
         Assert-AreEqual (Get-FileHash -Path $localDestFile -Algorithm MD5).Hash (Get-FileHash -Path $localSrcFile -Algorithm MD5).Hash
+        $t = Get-AzStorageBlobContent -Container $containerName -Blob $objectName2 -Destination $localDestFile2 -Force -Context $storageContext -asjob
+		$t | wait-job
+		Assert-AreEqual $t.State "Completed"
+		Assert-AreEqual $t.Error $null
+        Assert-AreEqual (Get-FileHash -Path $localDestFile2 -Algorithm MD5).Hash (Get-FileHash -Path $localSrcFile -Algorithm MD5).Hash
 
         Remove-AzStorageBlob -Container $containerName -Blob $objectName2 -Force -Context $storageContext
         $blob = Get-AzStorageBlob -Container $containerName -Context $storageContext
@@ -172,9 +204,17 @@ function Test-Blob
         Assert-AreEqual $blob.Count 2
         Assert-AreEqual $blob[0].ICloudBlob.IsSnapshot $true
         Assert-AreEqual $blob[1].ICloudBlob.IsSnapshot $false
-
+		
+		#Upload Blob with properties to container which enabled Immutability Policy
+		Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName -ImmutabilityPeriod 1		
+        Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob immublob -Force -Properties @{"CacheControl" = "max-age=31536000, private"; "ContentEncoding" = "gzip"; "ContentDisposition" = "123"; "ContentLanguage" = "1234"; "ContentType" = "abc/12345"; } -Metadata @{"tag1" = "value1"; "tag2" = "value22" } -Context $storageContext
+		
+		$immutabilityPolicy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName
+		Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName -Etag $immutabilityPolicy.Etag
+		
         # Clean Storage Account
         Remove-AzStorageContainer -Name $containerName -Force -Context $storageContext
+
     }
     finally
     {
@@ -209,6 +249,9 @@ function Test-Queue
         $queue = Get-AzStorageQueue -Name $queueName -Context $storageContext
         Assert-AreEqual $queue.Count 1
         Assert-AreEqual $queue[0].Name $queueName
+
+		$queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMessage" -ArgumentList "This is message 1"
+        $queue.CloudQueue.AddMessageAsync($QueueMessage)
         
         $queueCount1 = (Get-AzStorageQueue -Context $storageContext).Count
         Remove-AzStorageQueue -Name $queueName -Force -Context $storageContext
@@ -248,13 +291,43 @@ function Test-Table
     {
         $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
-
+		
+        # Create Table
         $tableName = "tabletest"
         New-AzStorageTable -Name $tableName -Context $storageContext
         $table =Get-AzStorageTable -Name $tableName -Context $storageContext
         Assert-AreEqual $table.Count 1
         Assert-AreEqual $table[0].Name $tableName
 
+        #Test run Table query - Insert Entity
+        $partitionKey = "p123"
+        $rowKey = "row123"
+        $entity = New-Object -TypeName Microsoft.Azure.Cosmos.Table.DynamicTableEntity -ArgumentList $partitionKey, $rowKey
+        $entity.Properties.Add("Name", "name1")
+        $entity.Properties.Add("ID", 4567)
+        $result = $table.CloudTable.ExecuteAsync([Microsoft.Azure.Cosmos.Table.TableOperation]::Insert($entity)) 
+        
+        # Create Table Object - which reference to exist Table with SAS
+        $tableSASUri = New-AzureStorageTableSASToken -Name $tablename  -Permission "raud" -ExpiryTime (([DateTime]::UtcNow.AddDays(10))) -FullUri -Context $storageContext
+        $uri = [System.Uri]$tableSASUri
+        $sasTable = New-Object -TypeName Microsoft.Azure.Cosmos.Table.CloudTable $uri 
+
+        #Test run Table query - Query Entity
+        $query = New-Object Microsoft.Azure.Cosmos.Table.TableQuery
+        ## Define columns to select.
+        $list = New-Object System.Collections.Generic.List[string]
+        $list.Add("RowKey")
+        $list.Add("ID")
+        $list.Add("Name")
+        ## Set query details.
+        $query.FilterString = "ID gt 0"
+        $query.SelectColumns = $list
+        $query.TakeCount = 20
+        ## Execute the query.
+        $result = $sasTable.ExecuteQuerySegmentedAsync($query, $null) 
+        Assert-AreEqual $result.Result.Results.Count 1
+
+        # Get/Remove Table
         $tableCount1 = (Get-AzStorageTable -Context $storageContext).Count
         Remove-AzStorageTable -Name $tableName -Force -Context $storageContext
         $table2 = Get-AzStorageTable -Context $storageContext
@@ -370,7 +443,11 @@ function Test-Common
     {
         $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
+
+        # wait at most 120*5s=600s for the set sevice proeprty updated on server.
+        $retryTimes = 120
         
+        # B/F/Q Service properties, in same code path
         $version = "1.0"
         $retentionDays = 2
         $LoggingOperations = "All"
@@ -378,10 +455,10 @@ function Test-Common
         Set-AzStorageServiceLoggingProperty -ServiceType blob -RetentionDays $retentionDays -Version $version -LoggingOperations $LoggingOperations -Context $storageContext
         $i = 0
 		$propertyUpdated = $false
-		while (($i -lt 120) -and ($propertyUpdated -eq $false))
+		while (($i -lt $retryTimes ) -and ($propertyUpdated -eq $false))
 		{
 			$property = Get-AzStorageServiceLoggingProperty -ServiceType blob -Context $storageContext
-			if (($property.RetentionDays -eq $retentionDays+1) -and ($property.Version -eq $version) -and ($property.LoggingOperations -eq $LoggingOperations))
+			if (($property.RetentionDays -eq $retentionDays) -and ($property.Version -eq $version) -and ($property.LoggingOperations -eq $LoggingOperations))
 			{
 				$propertyUpdated = $true
 			}
@@ -400,10 +477,10 @@ function Test-Common
         Set-AzStorageServiceMetricsProperty -ServiceType blob -Version $version -MetricsType Hour -RetentionDays $retentionDays -MetricsLevel $MetricsLevel -Context $storageContext
         $i = 0
 		$propertyUpdated = $false
-		while (($i -lt 120) -and ($propertyUpdated -eq $false))
+		while (($i -lt $retryTimes ) -and ($propertyUpdated -eq $false))
 		{
-			$property = Get-AzStorageServiceLoggingProperty -ServiceType blob -Context $storageContext
-			if (($property.RetentionDays -eq $retentionDays+1) -and ($property.Version -eq $version) -and ($property.MetricsLevel.ToString()  -eq $MetricsLevel))
+			$property = Get-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Hour -Context $storageContext
+			if (($property.RetentionDays -eq $retentionDays) -and ($property.Version -eq $version) -and ($property.MetricsLevel.ToString()  -eq $MetricsLevel))
 			{
 				$propertyUpdated = $true
 			}
@@ -431,7 +508,7 @@ function Test-Common
             AllowedMethods=@("Put")})
 		$i = 0
 		$corsRuleUpdated = $false
-		while (($i -lt 120) -and ($corsRuleUpdated -eq $false))
+		while (($i -lt $retryTimes ) -and ($corsRuleUpdated -eq $false))
 		{
 			$cors = Get-AzStorageCORSRule -ServiceType blob -Context $storageContext
 			if ($cors.Count -eq 2)
@@ -450,7 +527,7 @@ function Test-Common
         Remove-AzStorageCORSRule -ServiceType blob -Context $storageContext
 		$i = 0
 		$corsRuleUpdated = $false
-		while (($i -lt 120) -and ($corsRuleUpdated -eq $false))
+		while (($i -lt $retryTimes ) -and ($corsRuleUpdated -eq $false))
 		{
 			$cors = Get-AzStorageCORSRule -ServiceType blob -Context $storageContext
 			if ($cors.Count -eq 0)
@@ -464,7 +541,97 @@ function Test-Common
 			}
 		}
         $cors = Get-AzStorageCORSRule -ServiceType blob -Context $storageContext
-        Assert-AreEqual 0 $cors.Count     
+        Assert-AreEqual 0 $cors.Count    
+		
+        # Table Service properties
+        $version = "1.0"
+        $retentionDays = 3
+        $LoggingOperations = "Delete"
+
+        Set-AzStorageServiceLoggingProperty -ServiceType table -RetentionDays $retentionDays -Version $version -LoggingOperations $LoggingOperations -Context $storageContext
+        $i = 0
+		$propertyUpdated = $false
+		while (($i -lt $retryTimes ) -and ($propertyUpdated -eq $false))
+		{
+			$property = Get-AzStorageServiceLoggingProperty -ServiceType table -Context $storageContext
+			if (($property.RetentionDays -eq $retentionDays) -and ($property.Version -eq $version) -and ($property.LoggingOperations -eq $LoggingOperations))
+			{
+				$propertyUpdated = $true
+			}
+			else
+			{
+				sleep 5
+				$i = $i + 5
+			}
+		} 
+		$property = Get-AzStorageServiceLoggingProperty -ServiceType table -Context $storageContext
+		Assert-AreEqual $LoggingOperations $property.LoggingOperations.ToString() 
+        Assert-AreEqual $version $property.Version 
+        Assert-AreEqual $retentionDays $property.RetentionDays  
+
+        $MetricsLevel = "ServiceAndApi"
+        Set-AzStorageServiceMetricsProperty -ServiceType table -Version $version -MetricsType Minute -RetentionDays $retentionDays -MetricsLevel $MetricsLevel -Context $storageContext
+        $i = 0
+		$propertyUpdated = $false
+		while (($i -lt $retryTimes ) -and ($propertyUpdated -eq $false))
+		{
+			$property = Get-AzStorageServiceMetricsProperty -ServiceType table -MetricsType Minute -Context $storageContext
+			if (($property.RetentionDays -eq $retentionDays) -and ($property.Version -eq $version) -and ($property.MetricsLevel.ToString()  -eq $MetricsLevel))
+			{
+				$propertyUpdated = $true
+			}
+			else
+			{
+				sleep 5
+				$i = $i + 5
+			}
+		} 				
+		$property = Get-AzStorageServiceMetricsProperty -ServiceType table -MetricsType Minute -Context $storageContext
+        Assert-AreEqual $MetricsLevel $property.MetricsLevel.ToString() 
+        Assert-AreEqual $version $property.Version 
+        Assert-AreEqual $retentionDays $property.RetentionDays 
+
+        Set-AzStorageCORSRule -ServiceType table -Context $storageContext -CorsRules (@{
+            AllowedHeaders=@("x-ms-blob-content-type");
+            AllowedOrigins=@("*");
+            MaxAgeInSeconds=20;
+            AllowedMethods=@("Get","Connect")})
+		$i = 0
+		$corsRuleUpdated = $false
+		while (($i -lt $retryTimes ) -and ($corsRuleUpdated -eq $false))
+		{
+			$cors = Get-AzStorageCORSRule -ServiceType table -Context $storageContext
+			if ($cors.Count -eq 1)
+			{
+				$corsRuleUpdated = $true
+			}
+			else
+			{
+				sleep 5
+				$i = $i + 5
+			}
+		}
+        $cors = Get-AzStorageCORSRule -ServiceType table -Context $storageContext
+        Assert-AreEqual 1 $cors.Count 
+
+        Remove-AzStorageCORSRule -ServiceType table -Context $storageContext
+		$i = 0
+		$corsRuleUpdated = $false
+		while (($i -lt $retryTimes ) -and ($corsRuleUpdated -eq $false))
+		{
+			$cors = Get-AzStorageCORSRule -ServiceType table -Context $storageContext
+			if ($cors.Count -eq 0)
+			{
+				$corsRuleUpdated = $true
+			}
+			else
+			{
+				sleep 5
+				$i = $i + 5
+			}
+		}
+        $cors = Get-AzStorageCORSRule -ServiceType table -Context $storageContext
+        Assert-AreEqual 0 $cors.Count   
     }
     finally
     {

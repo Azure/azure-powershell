@@ -41,9 +41,23 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void VmNameScope_Custom()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatus-VmNameScope_Custom");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InitiativeIdScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatus-InitiativeIdScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void InitiativeIdScope_Custom()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatus-InitiativeIdScope_Custom");
         }
 
         [Fact]
@@ -55,9 +69,23 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void InitiativeNameScope_Custom()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatus-InitiativeNameScope_Custom");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]       
         public void ReportIdScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatus-ReportIdScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ReportIdScope_Custom()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzVMGuestPolicyStatus-ReportIdScope_Custom");
         }
     }
 }

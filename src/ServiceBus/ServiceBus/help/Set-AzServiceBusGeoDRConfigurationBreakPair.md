@@ -38,7 +38,7 @@ The **Set-AzServiceBusGeoDRConfigurationBreakPair** cmdlet disables the Disaster
 
 ### Example 1
 ```
-PS C:\> Set-AzServiceBusGeoDRConfigurationBreakPair -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRCongifName"
+PS C:\> Set-AzServiceBusGeoDRConfigurationBreakPair -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRConfigName"
 ```
 
 This operation disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces

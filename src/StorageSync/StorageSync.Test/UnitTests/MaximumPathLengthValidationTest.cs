@@ -18,9 +18,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
-    
+
+    /// <summary>
+    /// Class MaximumPathLengthValidationTest.
+    /// </summary>
     public class MaximumPathLengthValidationTest
     {
+        /// <summary>
+        /// Defines the test method WhenLocalPathIsTooLongValidationResultIsError.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenLocalPathIsTooLongValidationResultIsError()
@@ -39,6 +45,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             AssertExtension.ValidationResultIsError(validationResult, "File with too long path does not trigger an error.");
         }
 
+        /// <summary>
+        /// Defines the test method WhenLocalDirectoryPathIsTooLongValidationResultIsError.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenLocalDirectoryPathIsTooLongValidationResultIsError()
@@ -57,6 +66,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             AssertExtension.ValidationResultIsError(validationResult, "Directory with too long path does not trigger an error.");
         }
 
+        /// <summary>
+        /// Defines the test method WhenLocalFilePathIsEqualToMaxPathLengthValidationResultIsSuccess.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenLocalFilePathIsEqualToMaxPathLengthValidationResultIsSuccess()
@@ -75,6 +87,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             AssertExtension.ValidationResultIsSuccess(validationResult, "File with path length equal to max path length triggers an error.");
         }
 
+        /// <summary>
+        /// Defines the test method WhenUNCPathIsTooLongValidationResultIsError.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenUNCPathIsTooLongValidationResultIsError()
@@ -93,6 +108,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             AssertExtension.ValidationResultIsError(validationResult, "File with path length longer than max path length does not trigger an error.");
         }
 
+        /// <summary>
+        /// Defines the test method WhenUNCPathRelativePartIsEqualToMaximumPathLengthValidationResultIsSuccess.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenUNCPathRelativePartIsEqualToMaximumPathLengthValidationResultIsSuccess()

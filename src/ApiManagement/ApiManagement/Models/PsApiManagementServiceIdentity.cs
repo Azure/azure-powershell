@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
-    using Helpers;
     using Microsoft.Azure.Management.ApiManagement.Models;
     using System;
 

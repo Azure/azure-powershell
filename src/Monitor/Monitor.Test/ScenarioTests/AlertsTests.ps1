@@ -208,3 +208,115 @@ function Test-GetAzureRmAlertHistory
         # No cleanup needed for now
     }
 }
+
+<#
+.SYNOPSIS
+Tests getting the alert rules associated to a resource group.
+#>
+function Test-GetAzureRmMetricAlertRuleV2
+{
+    # Setup
+	$sub = Get-AzContext
+    $subscription = $sub.subscription.subscriptionId
+	$rgname = Get-ResourceGroupName
+	$location =Get-ProviderLocation ResourceManagement
+	$resourceName = Get-ResourceName
+	$ruleName = Get-ResourceName
+	$actionGroupName = Get-ResourceName
+	$targetResourceId = '/subscriptions/'+$subscription+'/resourceGroups/'+$rgname+'/providers/Microsoft.Storage/storageAccounts/'+$resourceName
+	New-AzResourceGroup -Name $rgname -Location $location -Force
+	New-AzStorageAccount -ResourceGroupName $rgname -Name $resourceName -Location $location -Type Standard_GRS
+	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
+	$NewActionGroup =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $rgname -ShortName ASTG -Receiver $email
+	$actionGroup = New-AzActionGroup -ActionGroupId $NewActionGroup.Id
+	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "UsedCapacity" -Operator GreaterThan -Threshold 8 -TimeAggregation Average
+	Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 01:00:00 -Frequency 00:01:00 -TargetResourceId $targetResourceId -Condition $condition -ActionGroup $actionGroup -Severity 3 
+
+    try
+    {
+        $actual = Get-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleName
+		Assert-NotNull $actual
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleName
+		Remove-AzActionGroup -ResourceGroupName $rgname -Name $actionGroupName
+		Remove-AzureRmStorageAccount -ResourceGroupName $rgName -Name $resourceName 
+		Remove-AzResourceGroup -Name $rgname -Force
+    }
+}
+
+<#
+.SYNOPSIS
+Tests removing a GenV2 metric alert rule.
+#>
+function Test-RemoveAzureRmAlertRuleV2
+{
+    # Setup
+	$sub = Get-AzContext
+    $subscription = $sub.subscription.subscriptionId
+	$rgname = Get-ResourceGroupName
+	$location =Get-ProviderLocation ResourceManagement
+	$resourceName = Get-ResourceName
+	$ruleName = Get-ResourceName
+	$actionGroupName = Get-ResourceName
+	$targetResourceId = '/subscriptions/'+$subscription+'/resourceGroups/'+$rgname+'/providers/Microsoft.Storage/storageAccounts/'+$resourceName
+	New-AzResourceGroup -Name $rgname -Location $location -Force
+	New-AzStorageAccount -ResourceGroupName $rgname -Name $resourceName -Location $location -Type Standard_GRS
+	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
+	$NewActionGroup =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $rgname -ShortName ASTG -Receiver $email
+	$actionGroup = New-AzActionGroup -ActionGroupId $NewActionGroup.Id
+	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "UsedCapacity" -Operator GreaterThan -Threshold 8 -TimeAggregation Average
+	Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 01:00:00 -Frequency 00:01:00 -TargetResourceId $targetResourceId -Condition $condition -ActionGroup $actionGroup -Severity 3 
+    try
+    {
+		$job = Remove-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleName -AsJob
+		$job|Wait-Job
+		$actual = $job | Receive-Job
+    }
+    finally
+    {
+        # Cleanup
+      Remove-AzActionGroup -ResourceGroupName $rgname -Name $actionGroupName
+	  Remove-AzureRmStorageAccount -ResourceGroupName $rgName -Name $resourceName 
+	  Remove-AzResourceGroup -Name $rgname -Force
+    }
+}
+
+<#
+.SYNOPSIS
+Tests adding a GenV2 metric alert rule.
+#>
+function Test-AddAzureRmMetricAlertRuleV2
+{
+	# Setup
+	$sub = Get-AzContext
+    $subscription = $sub.subscription.subscriptionId
+	$rgname = Get-ResourceGroupName
+	$location =Get-ProviderLocation ResourceManagement
+	$resourceName = Get-ResourceName
+	$ruleName = Get-ResourceName
+	$actionGroupName = Get-ResourceName
+	$targetResourceId = '/subscriptions/'+$subscription+'/resourceGroups/'+$rgname+'/providers/Microsoft.Storage/storageAccounts/'+$resourceName
+	New-AzResourceGroup -Name $rgname -Location $location -Force
+	New-AzStorageAccount -ResourceGroupName $rgname -Name $resourceName -Location $location -Type Standard_GRS
+	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
+	$NewActionGroup =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $rgname -ShortName ASTG -Receiver $email
+	$actionGroup = New-AzActionGroup -ActionGroupId $NewActionGroup.Id
+	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "UsedCapacity" -Operator GreaterThan -Threshold 8 -TimeAggregation Average
+    try
+    {
+        # Test
+        $actual = Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 01:00:00 -Frequency 00:01:00 -TargetResourceId $targetResourceId -Condition $condition -ActionGroup $actionGroup -Severity 3 
+		Assert-AreEqual $actual.Name $ruleName
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleName
+		Remove-AzActionGroup -ResourceGroupName $rgname -Name $actionGroupName
+		Remove-AzureRmStorageAccount -ResourceGroupName $rgName -Name $resourceName
+		Remove-AzResourceGroup -Name $rgname -Force
+    }
+}

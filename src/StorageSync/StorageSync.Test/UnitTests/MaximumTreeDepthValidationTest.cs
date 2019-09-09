@@ -21,8 +21,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
     using WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
+    /// <summary>
+    /// Class MaximumTreeDepthValidationTest.
+    /// </summary>
     public class MaximumTreeDepthValidationTest
     {
+        /// <summary>
+        /// Defines the test method WhenLocalFileIsDeeperThanMaxDepthValidationResultIsError.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenLocalFileIsDeeperThanMaxDepthValidationResultIsError()
@@ -45,6 +51,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
         [Fact(Skip = "Fails on Linux, needs investigation")]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
+        /// <summary>
+        /// Defines the test method WhenUNCFileIsDeeperThanMaxDepthValidationResultIsError.
+        /// </summary>
         [Fact]
 #endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]  
@@ -64,6 +73,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             AssertExtension.ValidationResultIsError(validationResult, "Too deep local file does not trigger an error.");
         }
 
+        /// <summary>
+        /// Defines the test method WhenLocalFileDepthIsEqualToMaxDepthValidationResultIsSuccess.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenLocalFileDepthIsEqualToMaxDepthValidationResultIsSuccess()
@@ -86,6 +98,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
         [Fact(Skip = "Fails on Linux, needs investigation")]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
+        /// <summary>
+        /// Defines the test method WhenUNCFileDepthIsEqualToMaxDepthValidationResultIsSuccess.
+        /// </summary>
         [Fact]
 #endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]  
@@ -105,6 +120,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             AssertExtension.ValidationResultIsSuccess(validationResult, "UNC file with depth equal to max depth triggers an error.");
         }
 
+        /// <summary>
+        /// Defines the test method WhenLocalDirectoryTreeDepthIsEqualToMaxDepthValidationResultIsSuccess.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenLocalDirectoryTreeDepthIsEqualToMaxDepthValidationResultIsSuccess()

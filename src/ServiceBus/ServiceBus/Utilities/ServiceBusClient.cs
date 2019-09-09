@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
 
         public bool BeginDeleteNamespace(string resourceGroupName, string namespaceName)
         {
-            Client.Namespaces.Delete(resourceGroupName, namespaceName);
+            Client.Namespaces.DeleteWithHttpMessagesAsync(resourceGroupName, namespaceName, null, new CancellationToken()).ConfigureAwait(false);
             return true;
         }        
 
@@ -150,6 +150,43 @@ namespace Microsoft.Azure.Commands.ServiceBus
                 //longrunningResponse.RetryAfter = longRunningOperationInitialTimeout;
             }
         }
+        #endregion
+
+        #region NetworkRuleSet
+        public PSNetworkRuleSetAttributes GetNetworkRuleSet(string resourceGroupName, string namespaceName)
+        {
+            var response = Client.Namespaces.GetNetworkRuleSet(resourceGroupName, namespaceName);
+            return new PSNetworkRuleSetAttributes(response);
+        }
+
+        public PSNetworkRuleSetAttributes DeleteNetworkRuleSet(string resourceGroupName, string namespaceName)
+        {
+            var response = Client.Namespaces.CreateOrUpdateNetworkRuleSet(resourceGroupName, namespaceName, new NetworkRuleSet() { DefaultAction = "Allow" });
+            return new PSNetworkRuleSetAttributes(response);
+        }
+
+        public PSNetworkRuleSetAttributes CreateOrUpdateNetworkRuleSet(string resourceGroupName, string namespaceName, PSNetworkRuleSetAttributes psNetworkRuleSetAttributes)
+        {
+            NetworkRuleSet networkRuleSet = new NetworkRuleSet();
+            networkRuleSet.IpRules = new List<NWRuleSetIpRules>();
+            networkRuleSet.VirtualNetworkRules = new List<NWRuleSetVirtualNetworkRules>();
+
+            networkRuleSet.DefaultAction = psNetworkRuleSetAttributes.DefaultAction;
+
+            foreach (PSNWRuleSetIpRulesAttributes psiprules in psNetworkRuleSetAttributes.IpRules)
+            {
+                networkRuleSet.IpRules.Add(new NWRuleSetIpRules { Action = psiprules.Action, IpMask = psiprules.IpMask });
+            }
+
+            foreach (PSNWRuleSetVirtualNetworkRulesAttributes psvisrtualnetworkrules in psNetworkRuleSetAttributes.VirtualNetworkRules)
+            {
+                networkRuleSet.VirtualNetworkRules.Add(new NWRuleSetVirtualNetworkRules { Subnet = new Subnet { Id = psvisrtualnetworkrules.Subnet.Id }, IgnoreMissingVnetServiceEndpoint = psvisrtualnetworkrules.IgnoreMissingVnetServiceEndpoint });
+            }
+
+            var response = Client.Namespaces.CreateOrUpdateNetworkRuleSet(resourceGroupName, namespaceName, networkRuleSet);
+            return new PSNetworkRuleSetAttributes(response);
+        }
+
         #endregion
 
         #region NameSpace AuthorizationRules
@@ -849,6 +886,58 @@ namespace Microsoft.Azure.Commands.ServiceBus
             {
                 Exception emptyEx = new Exception("Response object empty");
                 return new ErrorRecord(emptyEx, "Response object was empty", ErrorCategory.OpenError, emptyEx);
+            }
+        }
+
+        public static bool CheckErrorforNotfound(ErrorResponseException ex)
+        {
+            if (ex != null && !string.IsNullOrEmpty(ex.Response.Content))
+            {
+                ErrorResponseContent errorExtract = new ErrorResponseContent();
+                errorExtract = JsonConvert.DeserializeObject<ErrorResponseContent>(ex.Response.Content);
+                if (errorExtract.error.message.ToLower().Contains("not found"))
+                {
+                    return false;
+                }
+                else
+                {
+                    new ErrorRecord(ex, ex.Response.Content, ErrorCategory.OpenError, ex);
+                    return true;
+                }
+            }
+            else
+            {
+                Exception emptyEx = new Exception("Response object empty");
+                new ErrorRecord(emptyEx, "Response object was empty", ErrorCategory.OpenError, emptyEx);
+                return true;
+            }
+        }
+
+        public static ErrorRecord WriteErrorVirtualNetworkExists(string caller = "Add")
+        {
+            if (caller.Equals("Add"))
+            {
+                Exception emptyEx = new Exception("VirtualNetwork already exists");
+                return new ErrorRecord(emptyEx, "VirtualNetwork already exists", ErrorCategory.OpenError, emptyEx);
+            }
+            else
+            {
+                Exception emptyEx = new Exception("VirtualNetwork dosen't exists");
+                return new ErrorRecord(emptyEx, "VirtualNetwork dosen't exists", ErrorCategory.OpenError, emptyEx);
+            }
+        }
+
+        public static ErrorRecord WriteErrorIPRuleExists(string caller = "Add")
+        {
+            if (caller.Equals("Add"))
+            {
+                Exception emptyEx = new Exception("IPRule already exists");
+                return new ErrorRecord(emptyEx, "IPRule already exists", ErrorCategory.OpenError, emptyEx);
+            }
+            else
+            {
+                Exception emptyEx = new Exception("IPRule dosen't exists");
+                return new ErrorRecord(emptyEx, "IPRule dosen't exists", ErrorCategory.OpenError, emptyEx);
             }
         }
     }

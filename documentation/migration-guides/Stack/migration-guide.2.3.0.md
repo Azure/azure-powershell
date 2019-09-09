@@ -74,7 +74,7 @@ $blobEndpoint = (Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName
 
 
 ### PSVirtualMachine
-- Top level properties `DataDiskNames` and `NetworkInterfaceIDs` of nthe `PSVirtualMachine` object have been removed from the output type. These properties have always been available in the `StorageProfile` and `NetworkProfile` properties of the `PSVirtualMachine` object and will be the way they will need to be accessed going forward.
+- Top level properties `DataDiskNames` and `NetworkInterfaceIDs` of the `PSVirtualMachine` object have been removed from the output type. These properties have always been available in the `StorageProfile` and `NetworkProfile` properties of the `PSVirtualMachine` object and will be the way they will need to be accessed going forward.
 - This change affects the following cmdlets:
     - `Add-AzureRmVMDataDisk`
     - `Add-AzureRmVMNetworkInterface`

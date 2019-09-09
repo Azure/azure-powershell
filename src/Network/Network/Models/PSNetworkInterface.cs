@@ -82,5 +82,15 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             return !string.IsNullOrEmpty(this.Name);
         }
+
+        public bool ShouldSerializeTapConfigurations()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeHostedWorkloads()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
     }
 }

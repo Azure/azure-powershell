@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 8C9B33EE-10DE-4803-B76D-FE9FC2AC3372
@@ -218,7 +218,7 @@ This command gets all the secrets that have been previously deleted, but not pur
 
 ### Example 7: Gets the secret ITSecret that has been deleted but not purged for this key vault.
 ```powershell
-PS C:\> Get-AzKeyVaultSecret -VaultName 'Contoso' -KeyName 'secret1' -InRemovedState
+PS C:\> Get-AzKeyVaultSecret -VaultName 'Contoso' -Name 'secret1' -InRemovedState
 
 Vault Name           : contoso
 Name                 : secret1
@@ -237,6 +237,37 @@ Tags                 :
 
 This command gets the secret 'secret1' that has been previously deleted, but not purged, in the key vault named Contoso.
 This command will return metadata such as the deletion date, and the scheduled purging date of this deleted secret.
+
+### Example 8: Get all current versions of all secrets in a key vault using filtering
+```powershell
+PS C:\> Get-AzKeyVaultSecret -VaultName 'Contoso' -Name "secret*"
+
+Vault Name   : contoso
+Name         : secret1
+Version      :
+Id           : https://contoso.vault.azure.net:443/secrets/secret1
+Enabled      : True
+Expires      : 4/6/2018 3:59:43 PM
+Not Before   :
+Created      : 4/5/2018 11:46:28 PM
+Updated      : 4/6/2018 11:30:17 PM
+Content Type :
+Tags         :
+
+Vault Name   : contoso
+Name         : secret2
+Version      :
+Id           : https://contoso.vault.azure.net:443/secrets/secret2
+Enabled      : True
+Expires      :
+Not Before   :
+Created      : 4/11/2018 11:45:06 PM
+Updated      : 4/11/2018 11:45:06 PM
+Content Type :
+Tags         :
+```
+
+This command gets the current versions of all secrets in the key vault named Contoso that start with "secret".
 
 ## PARAMETERS
 
@@ -315,7 +346,7 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -327,7 +358,7 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceId
@@ -378,7 +409,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

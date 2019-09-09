@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Compute.Extension.AEM;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
 using Newtonsoft.Json;
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Mandatory = false,
                 Position = 3,
                 ValueFromPipelineByPropertyName = false,
-                HelpMessage = "Time that should be waited for the Strorage Metrics or Diagnostics data to be available in minutes. Default is 15 minutes")]
+                HelpMessage = "Time that should be waited for the Storage Metrics or Diagnostics data to be available in minutes. Default is 15 minutes")]
         public int WaitTimeInMinutes { get; set; }
 
         [Parameter(
@@ -105,20 +106,20 @@ namespace Microsoft.Azure.Commands.Compute
                 //#################################################
                 //# Check if VM exists
                 //#################################################
-                this._Helper.WriteHost("VM Existance check for {0} ...", false, this.VMName);
+                this._Helper.WriteHost("VM Existence check for {0} ...", false, this.VMName);
                 var selectedVM = this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
                 var selectedVMStatus = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(this.ResourceGroupName, this.VMName).Body.InstanceView;
 
 
                 if (selectedVM == null)
                 {
-                    rootResult.PartialResults.Add(new AEMTestResult("VM Existance check for {0}", false, this.VMName));
+                    rootResult.PartialResults.Add(new AEMTestResult("VM Existence check for {0}", false, this.VMName));
                     this._Helper.WriteHost("NOT OK ", ConsoleColor.Red);
                     return;
                 }
                 else
                 {
-                    rootResult.PartialResults.Add(new AEMTestResult("VM Existance check for {0}", true, this.VMName));
+                    rootResult.PartialResults.Add(new AEMTestResult("VM Existence check for {0}", true, this.VMName));
                     this._Helper.WriteHost("OK ", ConsoleColor.Green);
 
                 }
@@ -360,8 +361,9 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     else
                     {
-                        var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(osdisk.ManagedDisk.Id),
-                            this._Helper.GetResourceNameFromId(osdisk.ManagedDisk.Id));
+                        var resId = new ResourceIdentifier(osdisk.ManagedDisk.Id);
+
+                        var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(resId.ResourceGroupName, resId.ResourceName);
                         if (osDiskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
                         {
                             var sla = this._Helper.GetDiskSLA(osDiskMD.DiskSizeGB, null);
@@ -387,8 +389,9 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         if (disk.ManagedDisk != null)
                         {
-                            var diskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(disk.ManagedDisk.Id),
-                                this._Helper.GetResourceNameFromId(disk.ManagedDisk.Id));
+                            var resId = new ResourceIdentifier(disk.ManagedDisk.Id);
+
+                            var diskMD = ComputeClient.ComputeManagementClient.Disks.Get(resId.ResourceGroupName, resId.ResourceName);
 
                             if (diskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
                             {

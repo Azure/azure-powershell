@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -33,6 +34,16 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayRewriteRuleActionSet ActionSet { get; set; }
 
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "The rule ordering of this rewrite rule in the rewrite rule set")]
+        public int RuleSequence { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Condition for the rewrite rule to execute")]
+        public PSApplicationGatewayRewriteRuleCondition[] Condition { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -43,7 +54,9 @@ namespace Microsoft.Azure.Commands.Network
             var rewriteRule = new PSApplicationGatewayRewriteRule
             {
                 Name = this.Name,
-                ActionSet = this.ActionSet
+                ActionSet = this.ActionSet,
+                RuleSequence = (this.RuleSequence == 0) ? 100 : this.RuleSequence,
+                Conditions = this.Condition?.ToList()
             };
             return rewriteRule;
         }

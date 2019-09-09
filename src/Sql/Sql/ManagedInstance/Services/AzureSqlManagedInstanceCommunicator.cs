@@ -76,6 +76,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Services
         }
 
         /// <summary>
+        /// Lists managed instances in an instance pool
+        /// </summary>
+        public IList<Management.Sql.Models.ManagedInstance> ListByInstancePool(string resourceGroupName, string instancePoolName)
+        {
+            return GetCurrentSqlClient().ManagedInstances.ListByInstancePool(resourceGroupName, instancePoolName).ToList();
+        }
+
+        /// <summary>
         /// Lists Managed instances
         /// </summary>
         public IList<Management.Sql.Models.ManagedInstance> List()

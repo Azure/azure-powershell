@@ -9,6 +9,8 @@ schema: 2.0.0
 # Get-AzSqlDatabaseAuditing
 
 ## SYNOPSIS
+**Important: This cmdlet is deprecated, [Get-AzSqlDatbaseAudit](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaseaudit) is replacing it.**
+
 Gets the auditing settings of an Azure SQL database.
 
 ## SYNTAX
@@ -305,11 +307,15 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
+
+### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

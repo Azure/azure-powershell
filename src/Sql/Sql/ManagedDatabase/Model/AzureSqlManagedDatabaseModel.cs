@@ -21,32 +21,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
     /// <summary>
     /// Represents an Azure Sql Managed Database
     /// </summary>
-    public class AzureSqlManagedDatabaseModel
+    public class AzureSqlManagedDatabaseModel : AzureSqlManagedDatabaseBaseModel
     {
-        /// <summary>
-        /// Gets or sets the name of the resource group
-        /// </summary>
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the managed instance
-        /// </summary>
-        public string ManagedInstanceName { get; set; }
-
         /// <summary>
         /// Gets or sets the location of the managed database
         /// </summary>
         public string Location { get; set; }
-
-        /// <summary>
-        /// Gets or sets the unique ID of the managed database
-        /// </summary>
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the managed database
-        /// </summary>
-        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the tags associated with the managed database.
@@ -62,16 +42,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
         /// Gets or sets the status of the managed databse
         /// </summary>
         public string Status { get; set; }
-
-        /// <summary>
-        /// Gets or sets the creation date of the managed database
-        /// </summary>
-        public DateTime? CreationDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the earliest restore date
-        /// </summary>
-        public DateTime? EarliestRestorePoint { get; set; }
 
         /// <summary>
         /// Gets or sets the restore point in time

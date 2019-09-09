@@ -60,6 +60,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             return dynamicParameters;
         }
 
+        public static RuntimeDefinedParameterDictionary GetTemplateParametersFromFile(Hashtable templateObject, Hashtable templateParameterObject, string templateParameterFilePath, string[] staticParameters)
+        {
+            string templateContent = null;
+            if (templateObject != null)
+            {
+                templateContent = JsonConvert.SerializeObject(templateObject);
+            }
+
+            RuntimeDefinedParameterDictionary dynamicParameters = ParseTemplateAndExtractParameters(templateContent, templateParameterObject, templateParameterFilePath, staticParameters);
+
+            return dynamicParameters;
+        }
+
         public static Dictionary<string, TemplateFileParameterV1> ParseTemplateParameterFileContents(string templateParameterFilePath)
         {
             Dictionary<string, TemplateFileParameterV1> parameters = new Dictionary<string, TemplateFileParameterV1>();

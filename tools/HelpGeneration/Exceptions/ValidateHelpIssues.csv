@@ -9,7 +9,7 @@ Get-AzBatchAccountKeys.md,No examples found
 Remove-AzBatchJobSchedule.md,No examples found
 Set-AzBatchJobSchedule.md,No examples found
 Get-AzCdnCustomDomain.md,No examples found
-Get-AzCdnEdgeNodes.md,No examples found
+Get-AzCdnEdgeNode.md,No examples found
 Get-AzCdnEndpoint.md,No examples found
 Get-AzCdnEndpointNameAvailability.md,No examples found
 Get-AzCdnEndpointResourceUsage.md,No examples found
@@ -125,7 +125,7 @@ Set-AzSqlServerBackupLongTermRetentionVault.md,No examples found
 Set-AzSqlServerDisasterRecoveryConfiguration.md,No examples found
 Edit-AzWebAppBackupConfiguration.md,No synopsis found
 Edit-AzWebAppBackupConfiguration.md,No examples found
-Get-AzAppServicePlanMetrics.md,No synopsis found
+Get-AzAppServicePlanMetric.md,No synopsis found
 Get-AzWebAppBackup.md,No synopsis found
 Get-AzWebAppBackupConfiguration.md,No synopsis found
 Get-AzWebAppBackupList.md,No synopsis found

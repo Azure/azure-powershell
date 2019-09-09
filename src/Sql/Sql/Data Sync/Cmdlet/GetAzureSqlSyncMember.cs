@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The sync member name.")]
         [Alias("SyncMemberName")]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         /// <summary>
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         {
             ICollection<AzureSqlSyncMemberModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("Name"))
+            if (MyInvocation.BoundParameters.ContainsKey("Name") && !WildcardPattern.ContainsWildcardCharacters(Name))
             {
                 results = new List<AzureSqlSyncMemberModel>();
                 results.Add(ModelAdapter.GetSyncMember(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.SyncGroupName, this.Name));
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 results = ModelAdapter.ListSyncMembers(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.SyncGroupName);
             }
 
-            return results;
+            return SubResourceWildcardFilter(Name, results);
         }
 
         /// <summary>

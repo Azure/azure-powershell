@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzRecoveryServicesBackupProtectableItem
 
 ## SYNOPSIS
-Get protectable items from a container.
+This command will retrieve all protectable items within a certain container or across all registered containers. It will consist of all the elements of the hierarchy of the application. Returns DBs and their upper tier entities like Instance, AvailabilityGroup etc.
 
 ## SYNTAX
 
@@ -21,14 +21,15 @@ Get-AzRecoveryServicesBackupProtectableItem [[-Container] <ContainerBase>] [-Wor
 ### FilterParamSet
 ```
 Get-AzRecoveryServicesBackupProtectableItem [[-Container] <ContainerBase>] [-WorkloadType] <WorkloadType>
- [[-ItemType] <ProtectableItemType>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [[-ItemType] <ProtectableItemType>] [-Name <String>] [-ServerName <String>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### IdParamSet
 ```
-Get-AzRecoveryServicesBackupProtectableItem [-ParentID] <String> [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRecoveryServicesBackupProtectableItem [-ParentID] <String> [[-ItemType] <ProtectableItemType>]
+ [-Name <String>] [-ServerName <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,11 +80,11 @@ Accept wildcard characters: False
 ```
 
 ### -ItemType
-Protectable Item type.
+Specifies the type of protectable item. Applicable values: (SQLDataBase, SQLInstance, SQLAvailabilityGroup).
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ProtectableItemType
-Parameter Sets: FilterParamSet
+Parameter Sets: FilterParamSet, IdParamSet
 Aliases:
 Accepted values: SQLDataBase, SQLInstance, SQLAvailabilityGroup
 
@@ -94,8 +95,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+Specifies the name of the Database, Instance or AvailabilityGroup.
+
+```yaml
+Type: System.String
+Parameter Sets: FilterParamSet, IdParamSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ParentID
-Parent ID
+Specified the ARM ID of an Instance or AG.
 
 ```yaml
 Type: System.String
@@ -106,6 +122,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServerName
+Specifies the name of the server to which the item belongs.
+
+```yaml
+Type: System.String
+Parameter Sets: FilterParamSet, IdParamSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -125,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkloadType
-Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles).
+Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles, MSSQL).
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType

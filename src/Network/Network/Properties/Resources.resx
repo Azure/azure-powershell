@@ -381,4 +381,24 @@
   <data name="ApplicationGatewayRewriteRuleSetName" xml:space="preserve">
     <value>rewriteRuleSets</value>
   </data>
+  <data name="VirtualNetworkGatewayNoRevokedCertificate" xml:space="preserve">
+    <value>No revoked certificates found on VirtualNetworkGateway {0}</value>
+    <comment>Message for missing certificates</comment>
+  </data>
+  <data name="VirtualNetworkGatewayNoRootCertificate" xml:space="preserve">
+    <value>No root certificates found on VirtualNetworkGateway {0}</value>
+    <comment>Message for missing certificates</comment>
+  </data>
+  <data name="ApplicationGatewayFirewallPolicy" xml:space="preserve">
+    <value>firewallPolicy</value>
+  </data>
+  <data name="InvalidIPv4IPPrefixLength" xml:space="preserve">
+    <value>Cannot validate argument on parameter PrefixLength: {0}. Supply an argument that is greater than or equal to 21 and less than or equal to 31 and then try the command again</value>
+  </data>
+  <data name="InvalidIPv6IPPrefixLength" xml:space="preserve">
+    <value>Cannot validate argument on parameter PrefixLength: {0}. Supply an argument that is greater than or equal to 117 and less than or equal to 127 and then try the command again</value>
+  </data>
+  <data name="InvalidResourceId" xml:space="preserve">
+    <value>Provided ResourceId isn't in the right format or doesn't refer to the right resource type ({0})</value>
+  </data>
 </root>
