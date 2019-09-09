@@ -19,6 +19,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix the null exception for Get-AzRemoteDesktopFile.
+* Fix VHD Seek method for end-relative position.
+* Fix UltraSSD issue for New-AzVM and Update-AzVM.
+
+## Version 2.5.0
 * Add VmssId to New-AzVMConfig cmdlet
 * Add TerminateScheduledEvents and TerminateScheduledEventNotBeforeTimeoutInMinutes parameters to New-AzVmssConfig and Update-AzVmss
 * Add HyperVGeneration property to VM image object
