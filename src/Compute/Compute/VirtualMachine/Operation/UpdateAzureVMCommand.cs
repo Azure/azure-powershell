@@ -139,7 +139,8 @@ namespace Microsoft.Azure.Commands.Compute
                         Zones = (this.VM.Zones != null && this.VM.Zones.Count > 0) ? this.VM.Zones : null,
                         ProximityPlacementGroup = this.VM.ProximityPlacementGroup,
                         Host = this.VM.Host,
-                        VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet                    
+                        VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet,
+                        AdditionalCapabilities = this.VM.AdditionalCapabilities
                     };
 
                     if (this.IsParameterBound(c => c.IdentityType))

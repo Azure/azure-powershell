@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.2
+
 * Addition of ProtocolTypes and MountTargets to volume properties
 * Addition of ProtocolType parameter for new volume creation
 * Pool size and Volume usageThreshold required on creation

@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix bug in determining scope type for `Set-AzActionRule`
+
+## Version 1.2.2
 * Fixed miscellaneous typos across module
 * Fixed incorrect parameter name in help documentation
 
