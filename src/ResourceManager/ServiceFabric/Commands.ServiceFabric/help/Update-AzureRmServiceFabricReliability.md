@@ -25,7 +25,7 @@ Use **Update-AzureRmServiceFabricReliability** to update reliability of the prim
 
 ### Example 1
 ```
-PS c:> Add-AzureRmServiceFabricReliability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -ReliabilityLevel Silver
+PS c:> Update-AzureRmServiceFabricReliability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -ReliabilityLevel Silver
 ```
 
 This command changes the reliability tier of the primary node type to silver.
