@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed typo in example for `Update-AzServiceFabricReliability` reference documentation
 
 ## Version 1.1.2
 * Fix add node type cmdlet bugs:
