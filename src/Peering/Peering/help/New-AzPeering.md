@@ -115,24 +115,9 @@ Tags              : {}
 Run in the background.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -145,7 +130,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -160,7 +145,7 @@ Accept wildcard characters: False
 Create a new Direct connections using the New-AzExchangePeeringConnection and pipe to this command.
 
 ```yaml
-Type: PSDirectConnection[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]
 Parameter Sets: ConvertLegacyPeering
 Aliases:
 
@@ -172,7 +157,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: PSDirectConnection[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]
 Parameter Sets: Direct
 Aliases:
 
@@ -187,7 +172,7 @@ Accept wildcard characters: False
 Create a new Exchange connections using the New-AzExchangePeeringConnection and pipe to this command.
 
 ```yaml
-Type: PSExchangeConnection[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[]
 Parameter Sets: Exchange
 Aliases:
 
@@ -199,7 +184,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: PSExchangeConnection[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[]
 Parameter Sets: ConvertLegacyPeering
 Aliases:
 
@@ -214,7 +199,7 @@ Accept wildcard characters: False
 Use Get-AzLegacyPeering to retrieve this object.
 
 ```yaml
-Type: PSPeering
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
 Parameter Sets: ConvertLegacyPeering
 Aliases:
 
@@ -229,7 +214,7 @@ Accept wildcard characters: False
 The unique name of the PSPeering.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -244,7 +229,7 @@ Accept wildcard characters: False
 The Peer Asn Resource Id. Use Get-AzPeerAsn to retrieve the Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -260,7 +245,7 @@ The Physical Location Different from Azure Region.
 Use Get-AzPeeringLocation -Kind \<kind\> use City name as key.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Exchange, Direct
 Aliases:
 
@@ -275,7 +260,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -290,7 +275,7 @@ Accept wildcard characters: False
 The tags to associate with the Microsoft Peering Service.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -305,9 +290,24 @@ Accept wildcard characters: False
 Enable for use with Microsoft Peering Service (MPS).
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Direct
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -320,7 +320,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -66,6 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Position = 0,
             Mandatory = true,
             HelpMessage = Constants.ResourceIdHelp,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.ParameterSetNameByResourceId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -152,7 +153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         ///     Gets the InputObject Resource by ResourceGroupName and InputObject Name
         /// </summary>
         /// <returns>InputObject Resource</returns>
-        public object GetPeeringByResourceAndName()
+        public PSPeeringService GetPeeringByResourceAndName()
         {
             var ic = this.PeeringServicesClient.Get(this.ResourceGroupName, this.Name);
             var peer = this.ToPeeringServicePS(ic);

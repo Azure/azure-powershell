@@ -97,7 +97,7 @@ Gets a peering service by resource id
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 The unique name of the PSPeering.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupAndName
 Aliases:
 
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 The create or use an existing resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupName
 Aliases:
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupAndName
 Aliases:
 
@@ -154,14 +154,14 @@ Accept wildcard characters: False
 The resource id string name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -170,7 +170,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
 
 ## OUTPUTS
 
