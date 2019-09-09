@@ -109,7 +109,7 @@ Gets the Exchange peering named `myExchangePeering1` based on the resource id.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 Shows all Peering resource by Kind.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BySubscription
 Aliases:
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 The unique name of the PSPeering.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupAndName
 Aliases:
 
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupAndName
 Aliases:
 
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 The resource id string name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 

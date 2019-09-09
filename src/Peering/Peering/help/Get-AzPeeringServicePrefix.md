@@ -98,7 +98,7 @@ Gets a specific prefix for a peering service by resource id.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 The unique name of the PSPeering.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupAndName, Default
 Aliases:
 
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 The peering service name. Use New-AzPeeringService cmdlet for a new peering service or Get-AzPeeringService for a list.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupAndName
 Aliases:
 
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 Use a Get-AzPeeringService
 
 ```yaml
-Type: PSPeeringService
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringService
 Parameter Sets: Default
 Aliases:
 
@@ -158,7 +158,7 @@ Accept wildcard characters: False
 The create or use an existing resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupAndName
 Aliases:
 
@@ -173,7 +173,7 @@ Accept wildcard characters: False
 The resource id string name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 

@@ -105,11 +105,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             try
             {
                 base.Execute();
-                if (this.ShouldProcess(string.Format(Resources.ShouldProcessMessage, "a list of peering locations.")))
-                {
-                    var peeringLocation = this.GetPeeringLocation();
-                    this.WriteObject(this.FilterPeeringLocations(peeringLocation));
-                }
+                var peeringLocation = this.GetPeeringLocation();
+                this.WriteObject(this.FilterPeeringLocations(peeringLocation));
             }
             catch (InvalidOperationException mapException)
             {
@@ -141,7 +138,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 peeringLocationFiltered = (peeringLocationFiltered ?? peeringLocation).Where(x => x.PeeringDBFacilityId.Equals(this.PeeringDbFacilityId));
             }
 
-            if(this.PeeringLocation == null && this.PeeringDbFacilityId == null)
+            if (this.PeeringLocation == null && this.PeeringDbFacilityId == null)
             {
                 return peeringLocation;
             }
