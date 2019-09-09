@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Peering Service Operations
+* Updated Documentation
 
 ## Version 0.1.3
 * Bug fix in set connection for exchange that caused CDIR notation
