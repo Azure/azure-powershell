@@ -180,6 +180,9 @@
   <data name="Error_NullSession" xml:space="preserve">
     <value>Session cannot be null or empty.</value>
   </data>
+  <data name="Error_ProviderNotFound" xml:space="preserve">
+    <value>The provider {0} was not found at location {1}. Status: {2}</value>
+  </data>
   <data name="Error_UnableToConvertLegacy" xml:space="preserve">
     <value>Unable to convert legacy peering because {0} was null or empty.</value>
   </data>
@@ -197,5 +200,8 @@
   </data>
   <data name="Route_PrefixUnrecognized" xml:space="preserve">
     <value>Unrecognized routePrefix {0}</value>
+  </data>
+  <data name="ShouldProcessMessage" xml:space="preserve">
+    <value>This should return {0}</value>
   </data>
 </root>

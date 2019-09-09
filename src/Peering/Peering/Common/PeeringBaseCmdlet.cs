@@ -18,7 +18,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using System.Net;
     using System.Net.Sockets;
 
     using Microsoft.Azure.Commands.Common.Authentication;
@@ -68,9 +67,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public ILegacyPeeringsOperations PeeringLegacyClient => this.PeeringManagementClient.LegacyPeerings;
 
         /// <summary>
-        ///     The internal operations client to be used by JIT flagged users.
+        /// The peering service providers client
         /// </summary>
-        public IOperations InternalOperationsClient => this.PeeringManagementClient.Operations;
+        public IPeeringServiceProvidersOperations PeeringServiceProvidersClient => this.PeeringManagementClient.PeeringServiceProviders;
+
+        /// <summary>
+        /// The Peering Service locations client.
+        /// </summary>
+        public IPeeringServiceLocationsOperations PeeringServiceLocationsClient => this.PeeringManagementClient.PeeringServiceLocations;
+
+        /// <summary>
+        /// The peering service prefix client
+        /// </summary>
+        public IPeeringServicePrefixesOperations PeeringServicePrefixesClient => this.PeeringManagementClient.PeeringServicePrefixes;
+
+        /// <summary>
+        /// the peering service prefix client extended operations.
+        /// </summary>
+        public IPrefixesOperations PrefixesClient => this.PeeringManagementClient.Prefixes;
+
+        /// <summary>
+        /// The peering services client
+        /// </summary>
+        public IPeeringServicesOperations PeeringServicesClient => this.PeeringManagementClient.PeeringServices;
 
         /// <summary>
         /// The to peering.
@@ -139,11 +158,84 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             }
         }
 
+        /// <summary>
+        /// Converts to powershell model for peering asn
+        /// </summary>
+        /// <param name="peeringAsn"></param>
+        /// <returns>powershell object</returns>
         public object ToPeeringAsnPs(object peeringAsn)
         {
             try
             {
                 return PeeringResourceManagerProfile.Mapper.Map<PSPeerAsn>(peeringAsn);
+            }
+            catch (InvalidOperationException mapException)
+            {
+                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
+            }
+        }
+
+        /// <summary>
+        /// Converts to powershell peering service
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public PSPeeringService ToPeeringServicePS(object obj)
+        {
+            try
+            {
+                return PeeringResourceManagerProfile.Mapper.Map<PSPeeringService>(obj);
+            }
+            catch (InvalidOperationException mapException)
+            {
+                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
+            }
+        }
+
+        /// <summary>
+        /// Converts to powershell peering service prefix
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public PSPeeringServicePrefix ToPeeringServicePrefixPS(object obj)
+        {
+            try
+            {
+                return PeeringResourceManagerProfile.Mapper.Map<PSPeeringServicePrefix>(obj);
+            }
+            catch (InvalidOperationException mapException)
+            {
+                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
+            }
+        }
+
+        /// <summary>
+        /// Converts to powershell peering service provider
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public PSPeeringServiceProvider ToPeeringServiceProviderPS(object obj)
+        {
+            try
+            {
+                return PeeringResourceManagerProfile.Mapper.Map<PSPeeringServiceProvider>(obj);
+            }
+            catch (InvalidOperationException mapException)
+            {
+                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
+            }
+        }
+
+        /// <summary>
+        /// Converts to powershell peering service location
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public PSPeeringServiceLocation ToPeeringServiceLocationPS(object obj)
+        {
+            try
+            {
+                return PeeringResourceManagerProfile.Mapper.Map<PSPeeringServiceLocation>(obj);
             }
             catch (InvalidOperationException mapException)
             {
@@ -280,8 +372,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                                     string.Format(Resources.Error_InvalidPrefixRange, routePrefix, "/30", "/31"));
                             }
                         }
+                        if (peeringType.Equals(Constants.PeeringService, StringComparison.OrdinalIgnoreCase))
+                        {
+                            if (prefix.PrefixMaskWidth <= 23)
+                            {
+                                throw new PSArgumentOutOfRangeException(
+                                    string.Format(Resources.Error_InvalidPrefix, routePrefix, "/24 - or /32"));
+                            }
+                            else
+                            {
+                                var actualPrefixBigInt = prefix.ActualPrefixBigInt;
+                                if (prefix.Length <= 256)
+                                {
+                                    return prefix.StartOfPrefixBigInt == actualPrefixBigInt
+                                               ? routePrefix
+                                               : throw new PSArgumentException(
+                                                     string.Format(
+                                                         Resources.Error_InvalidPrefixRange,
+                                                         routePrefix,
+                                                         (prefix.StartOfPrefixBigInt).ToIpAddress(
+                                                             AddressFamily.InterNetwork)));
+                                }
+                                throw new PSArgumentOutOfRangeException(
+                                    string.Format(Resources.Error_InvalidPrefixRange, routePrefix, "/24", "/31"));
+                            }
+                        }
 
                         return routePrefix;
+
                     case AddressFamily.InterNetworkV6:
                         if (peeringType.Equals(Constants.Direct, StringComparison.OrdinalIgnoreCase))
                         {
@@ -302,6 +420,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                                                          routePrefix,
                                                          (prefix.EndOfPrefixBigInt).ToIpAddress(
                                                              AddressFamily.InterNetworkV6)));
+
                                 default:
                                     return prefix.StartOfPrefixBigInt + 1 <= prefix.ActualPrefixBigInt
                                                ? routePrefix
@@ -338,7 +457,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         {
             base.ExecuteCmdlet();
             this.Execute();
-
         }
 
         /// <summary>
@@ -425,7 +543,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                 throw new PSArgumentException(
                     string.Format(Resources.Error_InvalidFacilityId, connection.PeeringDBFacilityId));
             }
-            if(connection.ConnectionIdentifier == null || connection.ConnectionIdentifier == string.Empty)
+            if (connection.ConnectionIdentifier == null || connection.ConnectionIdentifier == string.Empty)
             {
                 throw new PSArgumentNullException(string.Format(Resources.Error_ConnectionIdentifierNull));
             }
