@@ -204,11 +204,10 @@ function Test-CreateLinkWithRemoteVirtualId
 	$zoneName = Get-RandomZoneName
 	$linkName = Get-RandomLinkName
     $resourceGroup = TestSetup-CreateResourceGroup
-	$vnet2 = "/subscriptions/9e900494-c413-45af-bd52-0afe6ac97b06/resourceGroups/PowerShellTestsRG/providers/Microsoft.Network/virtualNetworks/PowerShellCrossTenantTestsVNet"
-
+	# $vnet2Id = # some Vnet Id in a different tenant
+	
 	$createdZone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1"}
-	$createdVirtualNetwork = TestSetup-CreateVirtualNetwork $resourceGroup
-	$createdLink = New-AzPrivateDnsVirtualNetworkLink -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Name $linkName -Tag @{tag1="value1"} -RemoteVirtualNetworkId $vnet2 -EnableRegistration
+	$createdLink = New-AzPrivateDnsVirtualNetworkLink -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Name $linkName -Tag @{tag1="value2"} -RemoteVirtualNetworkId $vnet2Id -EnableRegistration
 
 	Assert-NotNull $createdLink
 	Assert-NotNull $createdLink.Etag
