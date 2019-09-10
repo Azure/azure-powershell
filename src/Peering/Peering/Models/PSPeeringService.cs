@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
     using System.Linq;
 
     /// <summary>
-    /// PeeringService location
+    /// Peering Service
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class PSPeeringService
@@ -35,9 +35,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// Initializes a new instance of the PSPeeringService class.
         /// </summary>
         /// <param name="location">The location of the resource.</param>
-        /// <param name="peeringServiceLocationName">The PeeringServiceLocation
-        /// of the Customer.</param>
-        /// <param name="peeringServiceProviderName">The MAPS Provider
+        /// <param name="peeringServiceLocation">The PeeringServiceLocation of
+        /// the Customer.</param>
+        /// <param name="peeringServiceProvider">The MAPS Provider
         /// Name.</param>
         /// <param name="provisioningState">The provisioning state of the
         /// resource. Possible values include: 'Succeeded', 'Updating',
@@ -46,10 +46,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// <param name="name">The name of the resource.</param>
         /// <param name="id">The ID of the resource.</param>
         /// <param name="type">The type of the resource.</param>
-        public PSPeeringService(string location, string peeringServiceLocationName = default(string), string peeringServiceProviderName = default(string), string provisioningState = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string name = default(string), string id = default(string), string type = default(string))
+        public PSPeeringService(string location, string peeringServiceLocation = default(string), string peeringServiceProvider = default(string), string provisioningState = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string name = default(string), string id = default(string), string type = default(string))
         {
-            PeeringServiceLocationName = peeringServiceLocationName;
-            PeeringServiceProviderName = peeringServiceProviderName;
+            PeeringServiceLocation = peeringServiceLocation;
+            PeeringServiceProvider = peeringServiceProvider;
             ProvisioningState = provisioningState;
             Location = location;
             Tags = tags;
@@ -67,14 +67,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// <summary>
         /// Gets or sets the PeeringServiceLocation of the Customer.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.peeringServiceLocationName")]
-        public string PeeringServiceLocationName { get; set; }
+        [JsonProperty(PropertyName = "properties.peeringServiceLocation")]
+        public string PeeringServiceLocation { get; set; }
 
         /// <summary>
         /// Gets or sets the MAPS Provider Name.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.peeringServiceProviderName")]
-        public string PeeringServiceProviderName { get; set; }
+        [JsonProperty(PropertyName = "properties.peeringServiceProvider")]
+        public string PeeringServiceProvider { get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the resource. Possible values
