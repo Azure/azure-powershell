@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
                 {
                     Dictionary<string, List<string>> auxAuthHeader = null;
                     // If link is being created in a VNet belonging to a diff tenant than the Private DNS zone
-                    if (this.VirtualNetwork == null && !string.IsNullOrEmpty(this.RemoteVirtualNetworkId))
+                    if (this.VirtualNetwork == null && this.VirtualNetworkId == null && !string.IsNullOrEmpty(this.RemoteVirtualNetworkId))
                     {
                         var auxHeaderDict = GetAuxilaryAuthHeaderFromResourceIds(new List<string>() { this.RemoteVirtualNetworkId });
                         if (auxHeaderDict != null && auxHeaderDict.Count > 0)
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
                         this.Name,
                         this.ResourceGroupName,
                         this.ZoneName,
-                        (this.VirtualNetwork != null) ? this.VirtualNetwork.Id : this.VirtualNetworkId,
+                        (this.VirtualNetwork != null) ? this.VirtualNetwork.Id : (this.VirtualNetworkId != null) ? this.VirtualNetworkId : this.RemoteVirtualNetworkId,
                         this.EnableRegistration.IsPresent,
                         this.Tag,
                         auxAuthHeader);
