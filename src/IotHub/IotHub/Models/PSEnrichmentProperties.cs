@@ -12,39 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.IotHub.Models;
-
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
-{    
-    using Newtonsoft.Json;
+{
     using System.Collections.Generic;
+    using Newtonsoft.Json;
 
-    public class PSRoutingProperties
+    public class PSEnrichmentMetadata
     {
         /// <summary>
-        /// Routing endpoints
+        /// Gets or sets the key or name for the enrichment property.
         /// </summary>
-        [JsonProperty(PropertyName = "endpoints")]
-        public PSRoutingEndpoints Endpoints { get; set; }
+        [JsonProperty(PropertyName = "key")]
+        public string Key { get; set; }
 
         /// <summary>
-        /// The list of routing rules that users can provide.
+        /// Gets or sets the value for the enrichment property.
         /// </summary>
-        [JsonProperty(PropertyName = "routes")]
-        public List<PSRouteMetadata> Routes { get; set; }
+        [JsonProperty(PropertyName = "value")]
+        public string Value { get; set; }
 
         /// <summary>
-        /// The properties of the route that will be used as a fallback route        
+        /// Gets or sets the list of endpoints for which the enrichment is
+        /// applied to the message.
         /// </summary>
-        [JsonProperty(PropertyName = "fallbackRoute")]
-        public PSFallbackRouteMetadata FallbackRoute { get; set; }
+        [JsonProperty(PropertyName = "endpointNames")]
+        public IList<string> EndpointNames { get; set; }
 
-        /// <summary>
-        /// Gets or sets the list of user-provided enrichments that the IoT hub
-        /// applies to messages to be delivered to built-in and custom
-        /// endpoints. See: https://aka.ms/iotmsgenrich
-        /// </summary>
-        [JsonProperty(PropertyName = "enrichments")]
-        public IList<PSEnrichmentMetadata> Enrichments { get; set; }
     }
+
+    public class PSEnrichmentProperties : PSEnrichmentMetadata
+    { }
 }

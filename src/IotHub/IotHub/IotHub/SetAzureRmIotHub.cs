@@ -210,14 +210,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                         }
 
                         break;
-                    case UpdateOperationsMonitoringPropertiesParameterSet:
-
-                        if (this.OperationsMonitoringProperties != null)
-                        {
-                            iotHubDescription.Properties.OperationsMonitoringProperties = IotHubUtils.ToOperationsMonitoringProperties(this.OperationsMonitoringProperties);
-                        }
-
-                        break;
                     case UpdateRoutingPropertiesParameterSet:
 
                         if (this.RoutingProperties != null)
