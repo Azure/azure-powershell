@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Test.ScenarioTests
             PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-CreateLinkWithVirtualNetworkObject");
         }
 
-        [Fact]
+        [Fact(Skip = "Test framework doesn't support using tokens for multiple tenants at the moment.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateLinkWithRemoteVirtualId()
         {
