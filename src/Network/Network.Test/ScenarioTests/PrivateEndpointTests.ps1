@@ -33,7 +33,7 @@ function Test-PrivateEndpointCRUD
     # Setup
     $rgname = Get-ResourceGroupName;
     $rname = Get-ResourceName;
-    $location = Get-ProviderLocation "Microsoft.Network/privateEndpoints" "eastus2euap";
+    $location = Get-ProviderLocation "Microsoft.Network/privateEndpoints" "westcentralus";
     # Dependency parameters
     $vnetName = Get-ResourceName;
     $ilbFrontName = "LB-Frontend";
