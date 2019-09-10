@@ -203,7 +203,7 @@ function Test-CreateLinkWithRemoteVirtualId
 {
 	$zoneName = Get-RandomZoneName
 	$linkName = Get-RandomLinkName
-    $resourceGroup = TestSetup-CreateResourceGroup
+	$resourceGroup = TestSetup-CreateResourceGroup
 	# $vnet2Id = # some Vnet Id in a different tenant
 	
 	$createdZone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1"}
