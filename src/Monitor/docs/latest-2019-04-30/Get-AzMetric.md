@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Get-AzMetric -ResourceUri <String> [-Aggregation <String>] [-Filter <String>] [-Interval <TimeSpan>]
+Get-AzMetric -ResourceId <String> [-Aggregation <String>] [-Filter <String>] [-Interval <TimeSpan>]
  [-Metricname <String>] [-Metricnamespace <String>] [-Orderby <String>] [-ResultType <ResultType>]
  [-Timespan <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -76,7 +76,18 @@ Dynamic: False
 ```
 
 ### -Filter
-The **$filter** is used to reduce the set of metric data returned.<br>Example:<br>Metric contains metadata A, B and C.<br>- Return all time series of C where A = a1 and B = b1 or b2<br>**$filter=A eq ‘a1’ and B eq ‘b1’ or B eq ‘b2’ and C eq ‘*’**<br>- Invalid variant:<br>**$filter=A eq ‘a1’ and B eq ‘b1’ and C eq ‘*’ or B = ‘b2’**<br>This is invalid because the logical or operator cannot separate two different metadata names.<br>- Return all time series where A = a1, B = b1 and C = c1:<br>**$filter=A eq ‘a1’ and B eq ‘b1’ and C eq ‘c1’**<br>- Return all time series where A = a1<br>**$filter=A eq ‘a1’ and B eq ‘*’ and C eq ‘*’**.
+The **$filter** is used to reduce the set of metric data returned.
+Example:
+Metric contains metadata A, B and C.
+- Return all time series of C where A = a1 and B = b1 or b2
+**$filter=A eq ‘a1’ and B eq ‘b1’ or B eq ‘b2’ and C eq ‘*’**
+- Invalid variant:
+**$filter=A eq ‘a1’ and B eq ‘b1’ and C eq ‘*’ or B = ‘b2’**
+This is invalid because the logical or operator cannot separate two different metadata names.
+- Return all time series where A = a1, B = b1 and C = c1:
+**$filter=A eq ‘a1’ and B eq ‘b1’ and C eq ‘c1’**
+- Return all time series where A = a1
+**$filter=A eq ‘a1’ and B eq ‘*’ and C eq ‘*’**.
 
 ```yaml
 Type: System.String
@@ -98,7 +109,7 @@ timegrain) of the query.
 ```yaml
 Type: System.TimeSpan
 Parameter Sets: (All)
-Aliases:
+Aliases: TimeGrain
 
 Required: False
 Position: Named
@@ -158,7 +169,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceUri
+### -ResourceId
 The identifier of the resource.
 
 ```yaml
@@ -221,7 +232,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -237,6 +248,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api201801.IResponse
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

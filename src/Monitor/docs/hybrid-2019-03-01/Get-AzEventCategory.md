@@ -8,7 +8,8 @@ schema: 2.0.0
 # Get-AzEventCategory
 
 ## SYNOPSIS
-Get the list of available event categories supported in the Activity Logs Service.<br>The current list includes the following: Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.
+Get the list of available event categories supported in the Activity Logs Service.
+The current list includes the following: Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.
 
 ## SYNTAX
 
@@ -17,7 +18,8 @@ Get-AzEventCategory [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the list of available event categories supported in the Activity Logs Service.<br>The current list includes the following: Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.
+Get the list of available event categories supported in the Activity Logs Service.
+The current list includes the following: Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.
 
 ## EXAMPLES
 
@@ -67,6 +69,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20150401.ILocalizableString
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

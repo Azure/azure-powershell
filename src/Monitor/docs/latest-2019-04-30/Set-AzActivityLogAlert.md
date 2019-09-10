@@ -12,19 +12,11 @@ Create a new activity log alert or update an existing one.
 
 ## SYNTAX
 
-### Update (Default)
 ```
-Set-AzActivityLogAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ActivityLogAlert <IActivityLogAlertResource>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Set-AzActivityLogAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Condition <IActivityLogAlertLeafCondition[]> -Location <String> -Scope <String[]>
- [-ActionGroup <IActivityLogAlertActionGroup[]>] [-Description <String>] [-Enabled] [-Tag <IResourceTags>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzActivityLogAlert -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-ActionGroup <IActivityLogAlertActionGroup[]>]
+ [-Condition <IActivityLogAlertLeafCondition[]>] [-Description <String>] [-Enabled] [-Scope <String[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,10 +46,11 @@ PS C:\> {{ Add code here }}
 
 ### -ActionGroup
 The list of activity log alerts.
+To construct, see NOTES section for ACTIONGROUP properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170401.IActivityLogAlertActionGroup[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -68,31 +61,16 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ActivityLogAlert
-An activity log alert resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170401.IActivityLogAlertResource
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Condition
 The list of activity log alert conditions.
+To construct, see NOTES section for CONDITION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170401.IActivityLogAlertLeafCondition[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -121,7 +99,7 @@ A description of this activity log alert.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -138,12 +116,12 @@ If an activity log alert is not enabled, then none of its actions will be activa
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -154,7 +132,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -204,10 +182,10 @@ This list must include at least one item.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -223,9 +201,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -235,8 +213,8 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20150401.IResourceTags
-Parameter Sets: UpdateExpanded
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -285,13 +263,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170401.IActivityLogAlertResource
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170401.IActivityLogAlertResource
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### ACTIONGROUP <IActivityLogAlertActionGroup[]>: The list of activity log alerts.
+  - `ActionGroupId <String>`: The resourceId of the action group. This cannot be null or empty.
+  - `[WebhookProperty <IActivityLogAlertActionGroupWebhookProperties>]`: the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+
+#### CONDITION <IActivityLogAlertLeafCondition[]>: The list of activity log alert conditions.
+  - `Equal <String>`: The field value will be compared to this value (case-insensitive) to determine if the condition is met.
+  - `Field <String>`: The name of the field that this condition will examine. The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties.'.
 
 ## RELATED LINKS
 

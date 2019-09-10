@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Monitor service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.4.0 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.6.0 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -57,17 +57,45 @@ module-version: 0.0.1
 title: Monitor
 
 directive:
+  # Set correct variants for PUT and PATCH verbs
+  - where:
+      verb: New
+      variant: ^CreateViaIdentityExpanded\d?$|^CreateViaIdentity\d?$|^Create\d?$
+    remove: true
+  - where:
+      verb: Set
+      variant: ^Update\d?$|^UpdateViaIdentity\d?$
+    remove: true
+  - where:
+      verb: Update
+      variant: ^Update\d?$|^UpdateViaIdentity\d?$
+    remove: true
+  # Renaming fix
   - where:
       enum-name: ComparisonOperationType|^Operator$
       enum-value-name: Equals
     set:
       enum-value-name: Equal
+  - where:
+      model-name: ActivityLogAlertLeafCondition
+      property-name: Equals
+    set:
+      property-name: Equal
+  # Pluralization fix
+  - where:
+      subject: MetricAlertsStatus
+    set:
+      subject: MetricAlertStatus
   # ActivityLogAlert
   - where:
       subject: ActivityLogAlert
       parameter-name: ConditionAllOf
     set:
       parameter-name: Condition
+  - where:
+      verb: Update
+      subject: ActivityLogAlert
+    hide: true
   # Log
   - where:
       verb: Get
@@ -77,47 +105,183 @@ directive:
   # MetricAlert
   - where:
       verb: Get
-      subject: ^MetricAlert$
+      subject: MetricAlert
     set:
       alias: Get-AzMetricAlertRuleV2
   - where:
       verb: New
-      subject: ^MetricAlert$
+      subject: MetricAlert
     set:
       alias: Add-AzMetricAlertRuleV2
   - where:
       verb: Remove
-      subject: ^MetricAlert$
+      subject: MetricAlert
     set:
       alias: Remove-AzMetricAlertRuleV2
-  #- where:
-  #    subject: ^MetricAlertsStatu$|^MetricAlertStatus$
-  #  set:
-  #    subject: MetricAlertStatus
+  - where:
+      verb: Set
+      subject: MetricAlert
+    hide: true
+  - where:
+      subject: MetricAlert
+      parameter-name: RuleName
+    set:
+      parameter-name: Name
+  - where:
+      verb: New|Update
+      subject: MetricAlert
+    hide: true
   # AlertRule
   - where:
       verb: New
       subject: ^AlertRule$
     set:
       alias: Add-AzMetricAlertRule
+  - where:
+      subject: AlertRule
+      parameter-name: Name
+    set:
+      parameter-name: PropertiesName
+  - where:
+      subject: AlertRule
+      parameter-name: RuleName
+    set:
+      parameter-name: Name
+  - where:
+      subject: AlertRuleIncident
+      parameter-name: RuleName
+    set:
+      parameter-name: Name
+  - where:
+      subject: AlertRule
+      parameter-name: IsEnabled
+    set:
+      parameter-name: Enabled
+  - where:
+      verb: New|Update
+      subject: AlertRule
+    hide: true
+  - where:
+      verb: Set
+      subject: AlertRule
+    hide: true
   # LogProfile
   - where:
       verb: Set
       subject: ^LogProfile$
     set:
       alias: Add-AzLogProfile
+  - where:
+      subject: LogProfile
+      parameter-name: RetentionPolicyDay
+    set:
+      parameter-name: RetentionPolicyInDays
+  - where:
+      verb: Set|New
+      subject: LogProfile
+    hide: true
   # Autoscale
   - where:
       verb: Set
       subject: ^AutoscaleSetting$
     set:
       alias: Add-AzAutoscaleSetting
+  - where:
+      subject: AutoscaleSetting
+      parameter-name: Profile
+    set:
+      alias: AutoscaleProfile
+  - where:
+      subject: AutoscaleSetting
+      parameter-name: TargetResourceUri
+    set:
+      parameter-name: TargetResourceId
   # Fix Help Generation Bug
   - where:
       verb: Update
       subject: ^AutoscaleSetting$
       parameter-name: ^Name$
     clear-alias: true
-    
+  # ActivityLog
+  - where:
+      verb: Get
+      subject: ^ActivityLog$
+    hide: true
+  - where:
+      verb: Get
+      subject: TenantActivityLog
+    hide: true
+  # ActionGroup
+  - where:
+      subject: ActionGroup
+      parameter-name: GroupShortName
+    set:
+      parameter-name: ShortName
+  - where:
+      verb: Enable
+      subject: ActionGroupReceiver
+    hide: true
+  # Metric
+  - where:
+      subject: Metric
+      parameter-name: Interval
+    set:
+      alias: TimeGrain
+  - where:
+      subject: Metric.*
+      parameter-name: ResourceUri
+    set:
+      parameter-name: ResourceId
+  - where:
+      verb: New
+      subject: Metric
+    hide: true
+  - where:
+      verb: Get
+      subject: MetricDefinition
+    hide: true
+  # ScheduledQuery
+  - where:
+      subject: ScheduledQueryRule
+      parameter-name: RuleName
+    set:
+      parameter-name: Name
+  - where:
+      verb: New|Set|Update
+      subject: ScheduledQueryRule
+    hide: true
+  # DiagnosticSetting
+  - where:
+      subject: ^DiagnosticSettings(.*)
+    set:
+      subject: DiagnosticSetting$1
+  - where:
+      subject: ^DiagnosticSetting(Category)?$
+      parameter-name: ResourceUri
+    set:
+      parameter-name: ResourceId
+  # Removing
+  - where:
+      verb: Get
+      subject: Baseline
+    remove: true
+```
 
+``` yaml
+declare-directive:
+  no-inline: >-
+    (() => {
+      return {
+       from: "code-model-v3", 
+       where: (Array.isArray($) ? $ : [$]).map( each => `$.schemas[?(/^${each}$/i.exec(@.details.default.name))]`),
+       transform: "$.details.default['skip-inline'] = true;"
+      };
+    })()
+```
+
+``` yaml
+directive:
+  no-inline:  # the name of the model schema in the swagger file
+    - Action
+    - RuleCondition
 ```

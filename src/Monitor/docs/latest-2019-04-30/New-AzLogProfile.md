@@ -12,32 +12,11 @@ Create or update a log profile in Azure Monitoring REST API.
 
 ## SYNTAX
 
-### Create (Default)
 ```
-New-AzLogProfile -Name <String> -SubscriptionId <String> [-Parameter <ILogProfileResource>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzLogProfile -Name <String> -SubscriptionId <String> -Category <String[]> -Location <String>
- -PropertiesLocations <String[]> -RetentionPolicyDay <Int32> -RetentionPolicyEnabled
- [-ServiceBusRuleId <String>] [-StorageAccountId <String>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzLogProfile -InputObject <IMonitorIdentity> -Category <String[]> -Location <String>
- -PropertiesLocations <String[]> -RetentionPolicyDay <Int32> -RetentionPolicyEnabled
- [-ServiceBusRuleId <String>] [-StorageAccountId <String>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzLogProfile -InputObject <IMonitorIdentity> [-Parameter <ILogProfileResource>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzLogProfile -Name <String> -Category <String[]> -Location <String> -PropertiesLocations <String[]>
+ [-SubscriptionId <String>] [-RetentionPolicyInDays <Int32>] [-ServiceBusRuleId <String>]
+ [-StorageAccountId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,7 +51,7 @@ Some values are: 'Write', 'Delete', and/or 'Action.'
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -99,28 +78,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Location
 Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -136,7 +99,7 @@ The name of the log profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases: LogProfileName
 
 Required: True
@@ -147,29 +110,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-The log profile resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.ILogProfileResource
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -PropertiesLocations
 List of regions for which Activity Log events should be stored or streamed.
 It is a comma separated list of valid ARM locations including the 'global' location.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -180,34 +127,18 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RetentionPolicyDay
+### -RetentionPolicyInDays
 the number of days for the retention in days.
 A value of 0 will retain the events indefinitely.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RetentionPolicyEnabled
-a value indicating whether the retention policy is enabled.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -219,7 +150,7 @@ The rule ID is of the format: '{service bus resource ID}/authorizationrules/{key
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -235,7 +166,7 @@ the resource id of the storage account to which you would like to send the Activ
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -251,12 +182,12 @@ The Azure subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -266,8 +197,8 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20150401.IResourceTags
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -316,15 +247,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.ILogProfileResource
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.ILogProfileResource
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 
