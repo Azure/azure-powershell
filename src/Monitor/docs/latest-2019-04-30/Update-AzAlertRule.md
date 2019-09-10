@@ -13,31 +13,20 @@ To update other fields use the CreateOrUpdate method.
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzAlertRule -ResourceGroupName <String> -RuleName <String> -SubscriptionId <String>
- [-AlertRulesResource <IAlertRuleResourcePatch>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Update-AzAlertRule -ResourceGroupName <String> -RuleName <String> -SubscriptionId <String>
- -ConditionOdataType <String> -DataSourceOdataType <String> -IsEnabled -Name <String>
- [-Action <IRuleAction[]>] [-DataSourceResourceUri <String>] [-Description <String>]
- [-Tag <IAlertRuleResourcePatchTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzAlertRule -Name <String> -ResourceGroupName <String> -Enabled -MetricName <String>
+ -Operator <ConditionOperator> -TargetResourceId <String> -Threshold <Double>
+ -TimeAggregationOperator <TimeAggregationOperator> -WindowSize <TimeSpan> [-SubscriptionId <String>]
+ [-Action <IRuleAction[]>] [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzAlertRule -InputObject <IMonitorIdentity> -ConditionOdataType <String> -DataSourceOdataType <String>
- -IsEnabled -Name <String> [-Action <IRuleAction[]>] [-DataSourceResourceUri <String>] [-Description <String>]
- [-Tag <IAlertRuleResourcePatchTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzAlertRule -InputObject <IMonitorIdentity> [-AlertRulesResource <IAlertRuleResourcePatch>]
+Update-AzAlertRule -InputObject <IMonitorIdentity> -Enabled -MetricName <String> -Operator <ConditionOperator>
+ -TargetResourceId <String> -Threshold <Double> -TimeAggregationOperator <TimeAggregationOperator>
+ -WindowSize <TimeSpan> [-Action <IRuleAction[]>] [-Description <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -69,77 +58,11 @@ PS C:\> {{ Add code here }}
 
 ### -Action
 the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
+To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.IRuleAction[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -AlertRulesResource
-The alert rule object for patch operations.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.IAlertRuleResourcePatch
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ConditionOdataType
-specifies the type of condition.
-This can be one of three types: ManagementEventRuleCondition (occurrences of management events), LocationThresholdRuleCondition (based on the number of failures of a web test), and ThresholdRuleCondition (based on the threshold of a metric).
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DataSourceOdataType
-specifies the type of data source.
-There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DataSourceResourceUri
-the resource identifier of the resource the rule monitors.
-**NOTE**: this property cannot be updated for an existing rule.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -171,7 +94,7 @@ the description of the alert rule that will be included in the alert email.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -182,12 +105,29 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Enabled
+the flag that indicates whether the alert rule is enabled.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -198,28 +138,44 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IsEnabled
-the flag that indicates whether the alert rule is enabled.
+### -MetricName
+The metric name for rule.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -Name
-the name of the alert rule.
+The name of the rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Operator
+The rule condition operator.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.ConditionOperator
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -235,23 +191,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RuleName
-The name of the rule.
-
-```yaml
-Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -267,7 +207,39 @@ The Azure subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Tag
+Resource tags
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TargetResourceId
+The target resource id for rule.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -278,15 +250,47 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Tag
-Resource tags
+### -Threshold
+The threshold for rule condition.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.IAlertRuleResourcePatchTags
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: System.Double
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TimeAggregationOperator
+The aggregation operation used to roll up multiple metric values across the window interval.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.TimeAggregationOperator
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -WindowSize
+The window size for rule.
+
+```yaml
+Type: System.TimeSpan
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -334,13 +338,37 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.IAlertRuleResourcePatch
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.IAlertRuleResource
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### ACTION <IRuleAction[]>: the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
+  - `OdataType <String>`: specifies the type of the action. There are two types of actions: RuleEmailAction and RuleWebhookAction.
+
+#### INPUTOBJECT <IMonitorIdentity>: Identity Parameter
+  - `[ActionGroupName <String>]`: The name of the action group.
+  - `[ActivityLogAlertName <String>]`: The name of the activity log alert.
+  - `[AutoscaleSettingName <String>]`: The autoscale setting name.
+  - `[Id <String>]`: Resource identity path
+  - `[IncidentName <String>]`: The name of the incident to retrieve.
+  - `[LogProfileName <String>]`: The name of the log profile.
+  - `[MetricName <String>]`: The name of the metric to retrieve the baseline for.
+  - `[Name <String>]`: The name of the diagnostic setting.
+  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[ResourceName <String>]`: The ARM resource name
+  - `[ResourceProvider <String>]`: The ARM resource provider name
+  - `[ResourceTypeName <String>]`: The ARM resource type name
+  - `[ResourceUri <String>]`: The identifier of the resource.
+  - `[RuleName <String>]`: The name of the rule.
+  - `[StatusName <String>]`: The name of the status.
+  - `[SubscriptionId <String>]`: The Azure subscription Id.
 
 ## RELATED LINKS
 

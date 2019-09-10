@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Monitor
-Module Guid: 8af1772b-37e1-433d-78ad-cafc09b9763e
+Module Guid: 364b2dcf-3b5b-4752-b9e9-a267e94981d7
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.monitor
 Help Version: 1.0.0.0
 Locale: en-US
@@ -11,10 +11,11 @@ Locale: en-US
 Microsoft Azure PowerShell: Monitor cmdlets
 
 ## Az.Monitor Cmdlets
-### [Enable-AzActionGroupReceiver](Enable-AzActionGroupReceiver.md)
-Enable a receiver in an action group.
-This changes the receiver's status from Disabled to Enabled.
-This operation is only supported for Email or SMS receivers.
+### [Disable-AzActivityLogAlert](Disable-AzActivityLogAlert.md)
+Disable an existing ActivityLogAlert
+
+### [Enable-AzActivityLogAlert](Enable-AzActivityLogAlert.md)
+Enable an existing ActivityLogAlert.
 
 ### [Get-AzActionGroup](Get-AzActionGroup.md)
 Get an action group.
@@ -34,17 +35,15 @@ Gets an incident associated to an alert rule
 ### [Get-AzAutoscaleSetting](Get-AzAutoscaleSetting.md)
 Gets an autoscale setting
 
-### [Get-AzBaseline](Get-AzBaseline.md)
-**Lists the metric baseline values for a resource**.
-
 ### [Get-AzDiagnosticSetting](Get-AzDiagnosticSetting.md)
 Gets the active diagnostic settings for the specified resource.
 
-### [Get-AzDiagnosticSettingsCategory](Get-AzDiagnosticSettingsCategory.md)
+### [Get-AzDiagnosticSettingCategory](Get-AzDiagnosticSettingCategory.md)
 Gets the diagnostic settings category for the specified resource.
 
 ### [Get-AzEventCategory](Get-AzEventCategory.md)
-Get the list of available event categories supported in the Activity Logs Service.<br>The current list includes the following: Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.
+Get the list of available event categories supported in the Activity Logs Service.
+The current list includes the following: Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.
 
 ### [Get-AzLogProfile](Get-AzLogProfile.md)
 Gets the log profile.
@@ -54,9 +53,6 @@ Gets the log profile.
 
 ### [Get-AzMetricAlert](Get-AzMetricAlert.md)
 Retrieve an alert rule definition.
-
-### [Get-AzMetricAlertsStatus](Get-AzMetricAlertsStatus.md)
-Retrieve an alert rule status.
 
 ### [Get-AzMetricAlertStatus](Get-AzMetricAlertStatus.md)
 Retrieve an alert rule status.
@@ -74,7 +70,9 @@ Lists the metric namespaces for the resource.
 Gets an Log Search rule
 
 ### [Get-AzTenantActivityLog](Get-AzTenantActivityLog.md)
-Gets the Activity Logs for the Tenant.<br>Everything that is applicable to the API to get the Activity Logs for the subscription is applicable to this API (the parameters, $filter, etc.).<br>One thing to point out here is that this API does *not* retrieve the logs at the individual subscription of the tenant but only surfaces the logs that were generated at the tenant level.
+Gets the Activity Logs for the Tenant.
+Everything that is applicable to the API to get the Activity Logs for the subscription is applicable to this API (the parameters, $filter, etc.).
+One thing to point out here is that this API does *not* retrieve the logs at the individual subscription of the tenant but only surfaces the logs that were generated at the tenant level.
 
 ### [Get-AzVMInsightOnboardingStatus](Get-AzVMInsightOnboardingStatus.md)
 Retrieves the VM Insights onboarding status for the specified resource or resource scope.
@@ -99,9 +97,6 @@ Creates or updates diagnostic settings for the specified resource.
 
 ### [New-AzLogProfile](New-AzLogProfile.md)
 Create or update a log profile in Azure Monitoring REST API.
-
-### [New-AzMetric](New-AzMetric.md)
-**Post the metric values for a resource**.
 
 ### [New-AzMetricAlert](New-AzMetricAlert.md)
 Create or update an metric alert definition.
@@ -139,9 +134,6 @@ Create a new action group or update an existing one.
 ### [Set-AzActivityLogAlert](Set-AzActivityLogAlert.md)
 Create a new activity log alert or update an existing one.
 
-### [Set-AzAlertRule](Set-AzAlertRule.md)
-Creates or updates an alert rule.
-
 ### [Set-AzAutoscaleSetting](Set-AzAutoscaleSetting.md)
 Creates or updates an autoscale setting.
 
@@ -151,18 +143,11 @@ Creates or updates diagnostic settings for the specified resource.
 ### [Set-AzLogProfile](Set-AzLogProfile.md)
 Create or update a log profile in Azure Monitoring REST API.
 
-### [Set-AzMetricAlert](Set-AzMetricAlert.md)
-Create or update an metric alert definition.
-
 ### [Set-AzScheduledQueryRule](Set-AzScheduledQueryRule.md)
 Creates or updates an log search rule.
 
 ### [Update-AzActionGroup](Update-AzActionGroup.md)
 Updates an existing action group's tags.
-To update other fields use the CreateOrUpdate method.
-
-### [Update-AzActivityLogAlert](Update-AzActivityLogAlert.md)
-Updates an existing ActivityLogAlertResource's tags.
 To update other fields use the CreateOrUpdate method.
 
 ### [Update-AzAlertRule](Update-AzAlertRule.md)
