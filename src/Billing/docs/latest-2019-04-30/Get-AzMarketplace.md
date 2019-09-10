@@ -13,10 +13,17 @@ Marketplaces are available via this API only for May 1, 2014 or later.
 
 ## SYNTAX
 
+### ListExpandedFilter (Default)
 ```
 Get-AzMarketplace -Scope <String> [-Top <Int32>] [-EndDate <DateTime>] [-InstanceId <String>]
  [-InstanceName <String>] [-ResourceGroup <String>] [-StartDate <DateTime>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### List
+```
+Get-AzMarketplace -Scope <String> [-Filter <String>] [-Skiptoken <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +73,25 @@ The end date (in UTC) of the marketplace(s) to filter.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: ListExpandedFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Filter
+May be used to filter marketplaces by properties/usageEnd (Utc time), properties/usageStart (Utc time), properties/resourceGroup, properties/instanceName or properties/instanceId.
+The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'.
+It does not currently support 'ne', 'or', or 'not'.
+
+```yaml
+Type: System.String
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -82,7 +107,7 @@ The instance id of the marketplace(s) to filter.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ListExpandedFilter
 Aliases:
 
 Required: False
@@ -98,7 +123,7 @@ The instance name of the marketplace(s) to filter.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ListExpandedFilter
 Aliases:
 
 Required: False
@@ -114,7 +139,7 @@ The resource group of the marketplace(s) to filter.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ListExpandedFilter
 Aliases: ResourceGroupName
 
 Required: False
@@ -127,7 +152,7 @@ Dynamic: False
 
 ### -Scope
 The scope associated with marketplace operations.
-This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, '/providers/Microsoft.Billing/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope and '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope.
+This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, '/providers/Microsoft.Billing/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope and '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope.
 For subscription, billing account, department, enrollment account and ManagementGroup, you can also add billing period to the scope using '/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'.
 For e.g.
 to specify billing period at department scope use '/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'
@@ -145,12 +170,29 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Skiptoken
+Skiptoken is only used if a previous operation returned a partial result.
+If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -StartDate
 The start date (in UTC) of the marketplace(s) to filter.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: ListExpandedFilter
 Aliases:
 
 Required: False

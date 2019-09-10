@@ -12,9 +12,22 @@ Lists the reservations summaries for daily or monthly grain.
 
 ## SYNTAX
 
+### ListExpandedFilter (Default)
 ```
 Get-AzReservationSummary -ReservationOrderId <String> -Grain <Datagrain> [-ReservationId <String>]
  [-EndDate <DateTime>] [-StartDate <DateTime>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzReservationSummary -ReservationOrderId <String> -Grain <Datagrain> [-Filter <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzReservationSummary -ReservationId <String> -ReservationOrderId <String> -Grain <Datagrain>
+ [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +76,25 @@ The end date (YYYY-MM-DD) in UTC of the reservation summary.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: ListExpandedFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Filter
+Required only for daily grain.
+The properties/UsageDate for start date and end date.
+The filter supports 'le' and 'ge'
+
+```yaml
+Type: System.String
+Parameter Sets: List, List1
 Aliases:
 
 Required: False
@@ -95,10 +126,10 @@ Id of the reservation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List1, ListExpandedFilter
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -127,7 +158,7 @@ The start date (YYYY-MM-DD) in UTC of the reservation summary.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: ListExpandedFilter
 Aliases:
 
 Required: False

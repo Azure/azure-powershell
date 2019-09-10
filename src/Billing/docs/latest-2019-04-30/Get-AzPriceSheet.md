@@ -13,10 +13,16 @@ Price sheet is available via this API only for May 1, 2014 or later.
 
 ## SYNTAX
 
-### ListExpandedFilter (Default)
+### Get (Default)
 ```
-Get-AzPriceSheet [-BillingPeriodName <String>] [-SubscriptionId <String[]>] [-ExpandMeterDetail <String>]
- [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPriceSheet [-SubscriptionId <String[]>] [-Expand <String>] [-Skiptoken <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get1
+```
+Get-AzPriceSheet -BillingPeriodName <String> [-SubscriptionId <String[]>] [-Expand <String>]
+ [-Skiptoken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -29,6 +35,12 @@ Get-AzPriceSheet -InputObject <IBillingIdentity> [-Expand <String>] [-Skiptoken 
 ```
 Get-AzPriceSheet -InputObject <IBillingIdentity> [-Expand <String>] [-Skiptoken <String>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListExpandedFilter
+```
+Get-AzPriceSheet [-BillingPeriodName <String>] [-SubscriptionId <String[]>] [-ExpandMeterDetail <String>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,10 +74,10 @@ Billing Period Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListExpandedFilter
+Parameter Sets: Get1, ListExpandedFilter
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -95,7 +107,7 @@ By default, these fields are not included when returning price sheet.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetViaIdentity, GetViaIdentity1
+Parameter Sets: Get, Get1, GetViaIdentity, GetViaIdentity1
 Aliases:
 
 Required: False
@@ -145,7 +157,7 @@ If a previous response contains a nextLink element, the value of the nextLink el
 
 ```yaml
 Type: System.String
-Parameter Sets: GetViaIdentity, GetViaIdentity1
+Parameter Sets: Get, Get1, GetViaIdentity, GetViaIdentity1
 Aliases:
 
 Required: False
@@ -161,7 +173,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ListExpandedFilter
+Parameter Sets: Get, Get1, ListExpandedFilter
 Aliases:
 
 Required: False

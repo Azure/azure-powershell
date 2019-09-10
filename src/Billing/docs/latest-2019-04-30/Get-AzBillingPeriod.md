@@ -31,6 +31,12 @@ Get-AzBillingPeriod -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile
 Get-AzBillingPeriod -InputObject <IBillingIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List
+```
+Get-AzBillingPeriod [-SubscriptionId <String[]>] [-Filter <String>] [-Skiptoken <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets a named billing period.
 This is only supported for Azure Web-Direct subscriptions.
@@ -90,6 +96,24 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Filter
+May be used to filter billing periods by billingPeriodEndDate.
+The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'.
+It does not currently support 'ne', 'or', or 'not'.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -123,12 +147,29 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Skiptoken
+Skiptoken is only used if a previous operation returned a partial result.
+If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SubscriptionId
 Azure Subscription ID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, ListExpandedFilter
+Parameter Sets: Get, List, ListExpandedFilter
 Aliases:
 
 Required: False
@@ -144,7 +185,7 @@ May be used to limit the number of results to the most recent N billing periods.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: ListExpandedFilter
+Parameter Sets: List, ListExpandedFilter
 Aliases: MaxCount
 
 Required: False
