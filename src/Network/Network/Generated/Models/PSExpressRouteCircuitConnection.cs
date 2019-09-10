@@ -48,6 +48,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public PSResourceId PeerExpressRouteCircuitPeering { get; set; }
 
+        [JsonProperty(Order = 1)]
+        public PSExpressRouteConnectionPropertiesIPv6Prefix IPv6AddressPrefixProperties  { get; set; }
+
         [JsonIgnore]
         public string ExpressRouteCircuitPeeringText
         {
