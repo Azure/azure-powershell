@@ -8,13 +8,19 @@ schema: 2.0.0
 # Get-AzEnrollmentAccount
 
 ## SYNOPSIS
-Gets a enrollment account by name.
+Get the enrollment account by id.
 
 ## SYNTAX
 
 ### List1 (Default)
 ```
 Get-AzEnrollmentAccount [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzEnrollmentAccount -BillingAccountName <String> -Name <String> [-Expand <String>] [-Filter <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
@@ -33,6 +39,12 @@ Get-AzEnrollmentAccount -InputObject <IBillingIdentity> [-Expand <String>] [-Fil
 Get-AzEnrollmentAccount -InputObject <IBillingIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List
+```
+Get-AzEnrollmentAccount -BillingAccountName <String> [-Expand <String>] [-Filter <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### ListExpandedFilter
 ```
 Get-AzEnrollmentAccount -BillingAccountName <String> [-Name <String>] [-ExpandDepartment] [-Tag <String>]
@@ -40,7 +52,7 @@ Get-AzEnrollmentAccount -BillingAccountName <String> [-Name <String>] [-ExpandDe
 ```
 
 ## DESCRIPTION
-Gets a enrollment account by name.
+Get the enrollment account by id.
 
 ## EXAMPLES
 
@@ -65,11 +77,11 @@ PS C:\> {{ Add code here }}
 ## PARAMETERS
 
 ### -BillingAccountName
-billing Account Id.
+Billing Account Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListExpandedFilter
+Parameter Sets: Get, List, ListExpandedFilter
 Aliases:
 
 Required: True
@@ -101,7 +113,7 @@ May be used to expand the Department.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetViaIdentity
+Parameter Sets: Get, GetViaIdentity, List
 Aliases:
 
 Required: False
@@ -135,7 +147,7 @@ Tag filter is a key value pair string where key and value is separated by a colo
 
 ```yaml
 Type: System.String
-Parameter Sets: GetViaIdentity
+Parameter Sets: Get, GetViaIdentity, List
 Aliases:
 
 Required: False
@@ -164,12 +176,12 @@ Dynamic: False
 ```
 
 ### -Name
-Enrollment Account name.
+Enrollment Account Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, ListExpandedFilter
-Aliases: ObjectId, EnrollmentAccountName
+Parameter Sets: Get, Get1, ListExpandedFilter
+Aliases: EnrollmentAccountName, ObjectId
 
 Required: True
 Position: Named

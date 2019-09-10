@@ -20,7 +20,7 @@ Other subscription types which were not purchased directly through the Azure web
 Gets the budget for the scope by budget name.
 
 ### [Get-AzEnrollmentAccount](Get-AzEnrollmentAccount.md)
-Gets a enrollment account by name.
+Get the enrollment account by id.
 
 ### [Get-AzInvoice](Get-AzInvoice.md)
 Get the invoice by name.
@@ -38,6 +38,9 @@ Lists the reservations details for provided date range.
 
 ### [Get-AzReservationSummary](Get-AzReservationSummary.md)
 Lists the reservations summaries for daily or monthly grain.
+
+### [Get-AzUsageAggregate](Get-AzUsageAggregate.md)
+Query aggregated Azure subscription consumption data for a date range.
 
 ### [Get-AzUsageDetail](Get-AzUsageDetail.md)
 Lists the usage details for the defined scope.

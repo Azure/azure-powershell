@@ -12,9 +12,22 @@ Lists the reservations details for provided date range.
 
 ## SYNTAX
 
+### ListExpandedFilter (Default)
 ```
 Get-AzReservationDetail -ReservationOrderId <String> -EndDate <DateTime> -StartDate <DateTime>
  [-ReservationId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzReservationDetail -ReservationOrderId <String> -Filter <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzReservationDetail -ReservationId <String> -ReservationOrderId <String> -Filter <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +76,25 @@ The end date (YYYY-MM-DD) in UTC of the reservation detail.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: ListExpandedFilter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Filter
+Filter reservation details by date range.
+The properties/UsageDate for start date and end date.
+The filter supports 'le' and 'ge'
+
+```yaml
+Type: System.String
+Parameter Sets: List, List1
 Aliases:
 
 Required: True
@@ -79,10 +110,10 @@ Id of the reservation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List1, ListExpandedFilter
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -111,7 +142,7 @@ The start date (YYYY-MM-DD) in UTC of the reservation detail.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: ListExpandedFilter
 Aliases:
 
 Required: True

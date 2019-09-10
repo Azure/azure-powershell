@@ -102,6 +102,11 @@ directive:
     set:
       alias: MaxCount
   - where:
+      subject: UsageDetail
+      parameter-name: Top
+    set:
+      alias: MaxCount
+  - where:
       subject: EnrollmentAccount
       parameter-name: Name
     set:
@@ -123,41 +128,11 @@ directive:
       parameter-name: PurchaseNumberOrder
   - where:
       verb: Get
-      subject: BillingPeriod
-      variant: ^List$
-    hide: true
-  - where:
-      verb: Get
-      subject: EnrollmentAccount
-      variant: ^Get$|^List$
-    hide: true
-  - where:
-      verb: Get
-      subject: Marketplace
-      variant: ^List$
-    hide: true
-  - where:
-      verb: Get
-      subject: PriceSheet
-      variant: ^Get$|^Get1$
-    hide: true
-  - where:
-      verb: Get
-      subject: ReservationDetail
-      variant: ^List$|^List1$
-    hide: true
-  - where:
-      verb: Get
-      subject: ReservationSummary
-      variant: ^List$|^List1$
-    hide: true
-  - where:
-      verb: Get
-      subject: UsageDetail
-      variant: ^List$
-    hide: true
+      subject: UsageAggregate
+    set:
+      alias: Get-UsageAggregates
   # The below directive hides any cmdlet not currently shipped with Az.Billing
   - where:
-      subject: ^(?!^BillingPeriod$)(?!^Budget$)(?!^EnrollmentAccount$)(?!^Invoice$)(?!^Marketplace$)(?!^PriceSheet$)(?!^ReservationDetail$)(?!^ReservationSummary$)(?!^UsageDetail$).*$
+      subject: ^(?!^BillingPeriod$)(?!^Budget$)(?!^EnrollmentAccount$)(?!^Invoice$)(?!^Marketplace$)(?!^PriceSheet$)(?!^ReservationDetail$)(?!^ReservationSummary$)(?!^UsageAggregate$)(?!^UsageDetail$).*$
     hide: true
 ```
