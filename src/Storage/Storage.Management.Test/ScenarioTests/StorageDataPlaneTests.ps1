@@ -204,9 +204,17 @@ function Test-Blob
         Assert-AreEqual $blob.Count 2
         Assert-AreEqual $blob[0].ICloudBlob.IsSnapshot $true
         Assert-AreEqual $blob[1].ICloudBlob.IsSnapshot $false
-
+		
+		#Upload Blob with properties to container which enabled Immutability Policy
+		Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName -ImmutabilityPeriod 1		
+        Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob immublob -Force -Properties @{"CacheControl" = "max-age=31536000, private"; "ContentEncoding" = "gzip"; "ContentDisposition" = "123"; "ContentLanguage" = "1234"; "ContentType" = "abc/12345"; } -Metadata @{"tag1" = "value1"; "tag2" = "value22" } -Context $storageContext
+		
+		$immutabilityPolicy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName
+		Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName -Etag $immutabilityPolicy.Etag
+		
         # Clean Storage Account
         Remove-AzStorageContainer -Name $containerName -Force -Context $storageContext
+
     }
     finally
     {

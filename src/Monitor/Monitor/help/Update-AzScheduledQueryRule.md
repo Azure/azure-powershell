@@ -38,56 +38,56 @@ To update other properties, see "Set-AzScheduledQueryRule" command.
 
 ### Example 1 - Update by rule name
 ```powershell
-PS C:\> Update-AzScheduledQueryRule -ResourceGroupName "shrutika-rg" -Name "LogAlertRulePSTest1" -Enabled 0
+PS C:\> Update-AzScheduledQueryRule -ResourceGroupName "MyResourceGroup" -Name "LogAlertRule1" -Enabled $false
 
-Description       : desc
+Description       : description
 Enabled           : false
 LastUpdatedTime   : 19-Apr-19 12:49:15 PM
 ProvisioningState : Succeeded
 Source            : Microsoft.Azure.Management.Monitor.Models.Source
 Schedule          : Microsoft.Azure.Management.Monitor.Models.Schedule
 Action            : Microsoft.Azure.Management.Monitor.Models.AlertingAction
-Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/microsoft.insights/scheduledqueryrules/LogAlertRulePSTest1
-Name              : LogAlertRulePSTest1
+Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/microsoft.insights/scheduledqueryrules/LogAlertRule1
+Name              : LogAlertRule1
 Type              : microsoft.insights/scheduledqueryrules
 Location          : centralindia
-Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/Microsoft.OperationalInsights/workspaces/shrutika-ws, Resource]}
+Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace, Resource]}
 ```
 
 ### Example 2 - Update by input object
 ```powershell
-PS C:\> Update-AzScheduledQueryRule -InputObject $sqr -Enabled 0
+PS C:\> Update-AzScheduledQueryRule -InputObject $sqr -Enabled $false
 
-Description       : desc
+Description       : description
 Enabled           : false
 LastUpdatedTime   : 19-Apr-19 12:50:18 PM
 ProvisioningState : Succeeded
 Source            : Microsoft.Azure.Management.Monitor.Models.Source
 Schedule          : Microsoft.Azure.Management.Monitor.Models.Schedule
 Action            : Microsoft.Azure.Management.Monitor.Models.AlertingAction
-Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/microsoft.insights/scheduledqueryrules/LogAlertRulePSTest1
-Name              : LogAlertRulePSTest1
+Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/microsoft.insights/scheduledqueryrules/LogAlertRule1
+Name              : LogAlertRule1
 Type              : microsoft.insights/scheduledqueryrules
 Location          : centralindia
-Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/Microsoft.OperationalInsights/workspaces/shrutika-ws, Resource]}
+Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace, Resource]}
 ```
 
 ### Example 3 - Update by resource Id
 ```powershell
-PS C:\> Update-AzScheduledQueryRule -ResourceId /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/microsoft.insights/scheduledqueryrules/LogAlertRulePSTest1 -Enabled 1
+PS C:\> Update-AzScheduledQueryRule -ResourceId /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/microsoft.insights/scheduledqueryrules/LogAlertRule1 -Enabled $true
 
-Description       : desc
+Description       : description
 Enabled           : true
 LastUpdatedTime   : 19-Apr-19 12:51:14 PM
 ProvisioningState : Succeeded
 Source            : Microsoft.Azure.Management.Monitor.Models.Source
 Schedule          : Microsoft.Azure.Management.Monitor.Models.Schedule
 Action            : Microsoft.Azure.Management.Monitor.Models.AlertingAction
-Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/microsoft.insights/scheduledqueryrules/LogAlertRulePSTest1
-Name              : LogAlertRulePSTest1
+Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/microsoft.insights/scheduledqueryrules/LogAlertRule1
+Name              : LogAlertRule1
 Type              : microsoft.insights/scheduledqueryrules
 Location          : centralindia
-Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/Microsoft.OperationalInsights/workspaces/shrutika-ws, Resource]}
+Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace, Resource]}
 ```
 
 ## PARAMETERS
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -Enabled
-The azure alert state - valid values - true, false
+The azure alert state - valid values - $true, $false
 
 ```yaml
 Type: System.Boolean
