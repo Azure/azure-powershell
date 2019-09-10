@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
 
                 IList<EmailReceiver> emailReceivers =
                     this.Receiver.OfType<PSEmailReceiver>().
-                        Select(o => new EmailReceiver(name: o.Name, emailAddress: o.EmailAddress, useCommonAlertSchema: false, status: TransitionHelpers.ConvertNamespace(o.Status))).ToList();
+                        Select(o => new EmailReceiver(name: o.Name, emailAddress: o.EmailAddress, status: TransitionHelpers.ConvertNamespace(o.Status), useCommonAlertSchema: false)).ToList();
                 IList<SmsReceiver> smsReceivers =
                     this.Receiver.OfType<PSSmsReceiver>().
                         Select(o => new SmsReceiver(name: o.Name, countryCode: o.CountryCode, phoneNumber: o.PhoneNumber, status: TransitionHelpers.ConvertNamespace(o.Status))).ToList();

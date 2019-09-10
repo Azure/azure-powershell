@@ -97,14 +97,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             ScheduledQueryRuleAznsAction aznsAction = new ScheduledQueryRuleAznsAction(new AzNsActionGroup(new string[]{"AG1", "AG2"}, "Email Subject for Log Search Alert", "custom webhook payload"));
             ScheduledQueryRuleLogMetricTrigger logMetricTrigger = new ScheduledQueryRuleLogMetricTrigger(new LogMetricTrigger("GreaterThan", 15, "Total"));
             ScheduledQueryRuleTriggerCondition triggerCondition = new ScheduledQueryRuleTriggerCondition(new TriggerCondition("GreaterThan", 15, logMetricTrigger));
-            ScheduledQueryRuleAlertingAction alertingAction = new ScheduledQueryRuleAlertingAction(new AlertingAction("2", triggerCondition, aznsAction, 5));
+            ScheduledQueryRuleAlertingAction alertingAction = new ScheduledQueryRuleAlertingAction(new AlertingAction(severity: "2", aznsAction: aznsAction, trigger: triggerCondition, throttlingInMin: 5));
 
             cmdlet.Action = new PSScheduledQueryRuleAlertingAction(alertingAction);
 
             ScheduledQueryRuleSchedule schedule = new ScheduledQueryRuleSchedule(new Schedule(5, 5));
             cmdlet.Schedule = new PSScheduledQueryRuleSchedule(schedule);
 
-            ScheduledQueryRuleSource source= new ScheduledQueryRuleSource(new Source(dataSourceId: "dataSourceId", query: "union *", authorizedResources: new string[] {"authResource1", "authResource2"}, queryType: "ResultCount"));
+            ScheduledQueryRuleSource source= new ScheduledQueryRuleSource(new Source(query: "union *", dataSourceId: "dataSourceId", authorizedResources: new string[]{"authResource1", "authResource2"}, queryType: "ResultCount"));
             cmdlet.Source = new PSScheduledQueryRuleSource(source);
 
             cmdlet.ExecuteCmdlet();
