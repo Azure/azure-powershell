@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Management.DataFactory.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Models
@@ -42,11 +43,27 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 
         public string DataFactoryName { get; private set; }
 
+        public string ActivityRunId
+        {
+            get
+            {
+                return this.activityRun.ActivityRunId;
+            }
+        }
+
         public string ActivityName
         {
             get
             {
                 return this.activityRun.ActivityName;
+            }
+        }
+
+        public string ActivityType
+        {
+            get
+            {
+                return this.activityRun.ActivityType;
             }
         }
 
@@ -127,6 +144,14 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
             get
             {
                 return this.activityRun.Error;
+            }
+        }
+
+        public IDictionary<string, object> AdditionalProperties
+        {
+            get
+            {
+                return this.activityRun.AdditionalProperties;
             }
         }
     }

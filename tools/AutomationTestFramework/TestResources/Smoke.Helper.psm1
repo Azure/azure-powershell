@@ -14,6 +14,7 @@
 
 function Login-AutomationConnection([string] $connectionName, [string] $subscriptionName) {
 	
+	Enable-AzureRMAlias -Scope Process	
 	if ([string]::IsNullOrEmpty($connectionName)) {
 		$connectionName = 'AzureRunAsConnection';
 		Write-Output "Parameter 'connectionName' is not set - will use the default connection name $connectionName"
@@ -23,7 +24,7 @@ function Login-AutomationConnection([string] $connectionName, [string] $subscrip
 		$servicePrincipalConnection = Get-AutomationConnection -Name $connectionName
 
 		"==> Logging in to Azure using connection $connectionName with subscription $subscriptionName..."
-		$null = Add-AzureRmAccount `
+		$null = Add-AzAccount `
 			-ServicePrincipal `
 			-TenantId $servicePrincipalConnection.TenantId `
 			-ApplicationId $servicePrincipalConnection.ApplicationId `

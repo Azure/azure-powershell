@@ -16,6 +16,7 @@
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
@@ -27,12 +28,22 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string Name { get; set; }
 
+        public int? RuleSequence { get; set; }
+
+        public List<PSApplicationGatewayRewriteRuleCondition> Conditions { get; set; }
+
         public PSApplicationGatewayRewriteRuleActionSet ActionSet { get; set; }
 
         [JsonIgnore]
         public string ActionSetText
         {
             get { return JsonConvert.SerializeObject(ActionSet, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ConditionsText
+        {
+            get { return JsonConvert.SerializeObject(Conditions, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

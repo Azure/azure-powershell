@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Container model object to be unregistered from the vault.
         /// </summary>
         [Parameter(Mandatory = true, Position = 1,
-            HelpMessage = ParamHelpMsgs.Container.RegisteredContainer)]
+            HelpMessage = ParamHelpMsgs.Container.RegisteredContainer, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ContainerBase Container { get; set; }
 
@@ -72,8 +72,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     containerName = ContainerConstansts.SqlContainerNamePrefix + containerName;
                 }
 
-                if (Container.ContainerType == ContainerType.AzureVMAppContainer)
+                if (Container.ContainerType == ContainerType.AzureVMAppContainer ||
+                Container.ContainerType == ContainerType.AzureStorage)
                 {
+                    if(Container.ContainerType == ContainerType.AzureStorage)
+                    {
+                        containerName = "StorageContainer;" + containerName;
+                    }
                     var unRegisterResponse = ServiceClientAdapter.UnregisterWorkloadContainers(
                     containerName,
                     vaultName: vaultName,

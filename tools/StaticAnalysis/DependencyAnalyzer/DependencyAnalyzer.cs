@@ -45,6 +45,7 @@ namespace StaticAnalysis.DependencyAnalyzer
             "Microsoft.Build",
             "Microsoft.Build.Framework",
             "Microsoft.Win32.Primitives",
+            "Microsoft.Win32.Registry",
             "mscorlib",
             "netstandard",
             "Microsoft.Win32.Primitives",
@@ -90,6 +91,7 @@ namespace StaticAnalysis.DependencyAnalyzer
             "System.Linq.Expressions",
             "System.Linq.Parallel",
             "System.Linq.Queryable",
+            "System.Management.Automation",
             "System.Net.Http",
             "System.Net.NameResolution",
             "System.Net.NetworkInformation",
@@ -102,7 +104,7 @@ namespace StaticAnalysis.DependencyAnalyzer
             "System.Net.WebSockets",
             "System.Net.WebSockets.Client",
             "System.ObjectModel",
-            "System.Private.DataContractSerialization", 
+            "System.Private.DataContractSerialization",
             "System.Reflection",
             "System.Reflection.Emit",
             "System.Reflection.Emit.ILGeneration",
@@ -162,7 +164,6 @@ namespace StaticAnalysis.DependencyAnalyzer
             "System.DirectoryServices",
             "System.Management",
             "System.Configuration",
-            "System.Configuration.ConfigurationManager",
             "System.Net.WebClient",
             "System.Memory",
             "System.Text.Encoding.CodePages",
@@ -383,8 +384,11 @@ namespace StaticAnalysis.DependencyAnalyzer
             foreach (var file in Directory.GetFiles(directoryPath).Where(file => file.EndsWith(".dll")))
             {
                 var assembly = CreateAssemblyRecord(file);
-                _assemblies[assembly.Name] = assembly;
-                AddSharedAssembly(assembly);
+                if (!IsFrameworkAssembly(assembly.Name))
+                {
+                    _assemblies[assembly.Name] = assembly;
+                    AddSharedAssembly(assembly);
+                }
 
             }
 

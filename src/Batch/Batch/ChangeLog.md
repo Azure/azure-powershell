@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-
-## Version 1.0.1-preview
 * Renamed `CoreQuota` on `BatchAccountContext` to `DedicatedCoreQuota`. There is also a new `LowPriorityCoreQuota`.
   - This impacts **Get-AzBatchAccount**.
 * **New-AzBatchTask** `-ResourceFile` parameter now takes a collection of `PSResourceFile` objects, which can be constructed using the new **New-AzBatchResourceFile** cmdlet.
@@ -40,6 +38,13 @@
 * Removed `TargetOSVersion` from `PSCloudServiceConfiguration`.
 * Renamed `CurrentOSVersion` to `OSVersion` on `PSCloudServiceConfiguration`.
 * Removed `DataEgressGiB` and `DataIngressGiB` from `PSPoolUsageMetrics`.
+
+## Version 1.1.1
+* Fixed typo in help message and documentation to capitalize Windows
+* Fixed miscellaneous typos across module
+
+## Version 1.1.0
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
 
 ## Version 1.0.0
 * General availability of `Az.Batch` module

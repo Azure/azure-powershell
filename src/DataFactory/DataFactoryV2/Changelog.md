@@ -20,6 +20,30 @@
 
 ## Upcoming Release
 
+## Version 1.2.0
+* Fix typo to capitalize "Windows" in 'New-AzDataFactoryEncryptValue" documentation
+* Fixed miscellaneous typos across module
+* Updated ADF .Net SDK version to 4.1.2 
+* Add parameter "DataProxyIntegrationRuntimeName", "DataProxyStagingLinkedServiceName" and "DataProxyStagingPath" for "Set-AzureRmDataFactoryV2IntegrationRuntime" cmd to enable set up Self-Hosted Integration Runtime as a proxy for SSIS Integration Runtime
+* Updated PSTriggerRun to show the triggered pipelines, message and properties, and PSActivityRun to show the activity type
+
+## Version 1.1.3
+* Updated ADF .Net SDK version to 4.1.0
+* Fix typo in documentation for `Get-AzDataFactoryV2PipelineRun`
+
+## Version 1.1.2
+* Updating the output of get activity runs, get pipeline runs, and get trigger runs ADF cmdlets to support Select-Object pipe.
+
+## Version 1.1.1
+* Add SsisProperties if NodeCount not null for managed integration runtime.
+
+## Version 1.1.0
+* Updated ADF .Net SDK version to 3.0.2
+* Updated Set-AzDataFactoryV2 cmdlet with extra parameters for RepoConfiguration related settings.
+
+## Version 1.0.2
+* Updated ADF .Net SDK version to 3.0.1
+
 ## Version 1.0.1
 * Updated ADF .Net SDK version to 3.0.0
 

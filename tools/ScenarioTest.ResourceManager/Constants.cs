@@ -98,11 +98,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         // Run Type
         public const string RunType = "RunType";
+
+        // Run types to select by edition
+        public const string CoreOnly = "CoreOnly";
+        public const string DesktopOnly = "DesktopOnly";
+
         public const string LiveOnly = "LiveOnly";
         //Uncomment when we need to tag on only run under mock
         //public const string MockedOnly = "MockedOnly";
 
-        public const string DesktopOnly = "DesktopOnly";
 
         // Environment
         public const string Environment = "Environment";

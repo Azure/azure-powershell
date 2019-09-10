@@ -14,12 +14,14 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.NotificationHubs.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
-
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NotificationHubsNamespaceListKeys"), OutputType(typeof(ResourceListKeys))]
+    [GenericBreakingChange("Get-AzNotificationHubsNamespaceListKeys alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NotificationHubsNamespaceListKey"), OutputType(typeof(ResourceListKeys))]
+    [Alias("Get-AzNotificationHubsNamespaceListKeys")]
     public class GetAzureNotificationHubsNamespaceListKeys : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,

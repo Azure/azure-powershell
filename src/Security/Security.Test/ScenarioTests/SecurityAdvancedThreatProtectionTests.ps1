@@ -14,9 +14,9 @@
 
 <#
 .SYNOPSIS
-Get a security contact by resource ID
+Enables and disables ATP policy using a full resource id.
 #>
-function Test-AzSecurityThreatProtection-ResourceId
+function Test-AzSecurityAdvancedThreatProtection-ResourceId
 {
 	# Setup
 	$testPrefix = "psstorage"
@@ -25,15 +25,15 @@ function Test-AzSecurityThreatProtection-ResourceId
 	Create-TestEnvironmentWithParams $testParams
 
 	#Enable
-	$policy = Set-AzSecurityThreatProtection -ResourceId $resourceId -Enable
-    $fetchedPolicy = Get-AzSecurityThreatProtection -ResourceId $resourceId
-	Assert-AreEqual $policy.IsEnabled $True
+	$policy = Enable-AzSecurityAdvancedThreatProtection -ResourceId $resourceId 
+    $fetchedPolicy = Get-AzSecurityAdvancedThreatProtection -ResourceId $resourceId
+	Assert-AreEqual $True $policy.IsEnabled 
 	Assert-AreEqual $True $fetchedPolicy.IsEnabled
 
 	#Disable
-	$policy = Set-AzSecurityThreatProtection -ResourceId $resourceId -Disable
-    $fetchedPolicy = Get-AzSecurityThreatProtection -ResourceId $resourceId
-	Assert-AreEqual $policy.IsEnabled $False
+	$policy = Disable-AzSecurityAdvancedThreatProtection -ResourceId $resourceId 
+    $fetchedPolicy = Get-AzSecurityAdvancedThreatProtection -ResourceId $resourceId
+	Assert-AreEqual $False $policy.IsEnabled 
 	Assert-AreEqual $False $fetchedPolicy.IsEnabled
 }
 

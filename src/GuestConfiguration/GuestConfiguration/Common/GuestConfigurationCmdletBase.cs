@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
     using Microsoft.Azure.Commands.GuestConfiguration.Models;
     using Microsoft.Azure.Management.GuestConfiguration;
     using Microsoft.Azure.Management.GuestConfiguration.Models;
+    using Microsoft.Azure.Management.PolicyInsights_2018_04;
+    using Microsoft.Azure.Management.PolicyInsights_2018_04.Models;
     using GuestConfigurationErrorResponseException = Management.GuestConfiguration.Models.ErrorResponseException;
     using StringResources = Microsoft.Azure.Commands.GuestConfiguration.Properties.Resources;
     using ResourceManagerErrorResponseException = Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models.ErrorResponseException;
@@ -48,6 +50,11 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
         /// Azure policy client
         /// </summary>
         private IPolicyClient _policyClient;
+
+        /// <summary>
+        /// Policy insights client
+        /// </summary>
+        private IPolicyInsightsClient _policyInsightsClient;
 
         private string _initiativeId = null;
 
@@ -75,11 +82,26 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
             }
         }
 
+        /// <summary>
+        /// Gets or sets the policy insights client
+        /// </summary>
+        public IPolicyInsightsClient PolicyInsightsClient
+        {
+            get
+            {
+                return _policyInsightsClient ??
+                    (_policyInsightsClient = AzureSession.Instance.ClientFactory.CreateArmClient<PolicyInsightsClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager));
+            }
+            set
+            {
+                _policyInsightsClient = value;
+            }
+        }
+
         // Get all guest configuration policy assignment reports for a VM
         protected IEnumerable<PolicyStatusDetailed> GetPolicyStatusesDetailed(string resourceGroupName, 
             string vmName,
-            IEnumerable<GuestConfigurationAssignment> gcrpAssignments, 
-            bool isStatusHistoryCmdlet)
+            IEnumerable<GuestConfigurationAssignment> gcrpAssignments)
         {
             var gcPolicyAssignmentReportList = new List<PolicyStatusDetailed>();
             var gcPolicySetDefinitions = GetAllGuestConfigPolicySetDefinitions();
@@ -91,8 +113,8 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
 
             foreach (var gcPolicySetDefinition in gcPolicySetDefinitions)
             {
-                var gcAssignmentReports = GetPolicyStatusesDetailedByInitiativeId(resourceGroupName, vmName, gcPolicySetDefinition.Id, isStatusHistoryCmdlet, gcrpAssignments);
-                if (gcAssignmentReports != null || gcAssignmentReports.Count() > 0)
+                var gcAssignmentReports = GetPolicyStatusesDetailedByInitiativeId(resourceGroupName, vmName, gcPolicySetDefinition.Id, gcrpAssignments);
+                if (gcAssignmentReports != null && gcAssignmentReports.Count() > 0)
                 {
                     gcPolicyAssignmentReportList.AddRange(gcAssignmentReports);
                 }
@@ -118,10 +140,17 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
                 }
                 catch (ResourceManagerErrorResponseException exception) when (HttpStatusCode.NotFound.Equals(exception.Response.StatusCode))
                 {
-                    var message = string.IsNullOrEmpty(this._initiativeId) ?
-                    string.Format(StringResources.InitiativeWithThisNameNotFound, initiativeName) :
-                    string.Format(StringResources.InitiativeWithThisIdNotFound, this._initiativeId);
-                    throw new GuestConfigurationErrorResponseException(message);
+                    try
+                    {
+                        policySetDefinitionsArray = new PolicySetDefinition[] { PolicyClient.PolicySetDefinitions.Get(initiativeName) };
+                    }
+                    catch (ResourceManagerErrorResponseException exception_custom) when (HttpStatusCode.NotFound.Equals(exception_custom.Response.StatusCode))
+                    {
+                        var message = string.IsNullOrEmpty(this._initiativeId) ?
+                            string.Format(StringResources.InitiativeWithThisNameNotFound, initiativeName) :
+                            string.Format(StringResources.InitiativeWithThisIdNotFound, this._initiativeId);
+                        throw new GuestConfigurationErrorResponseException(message);
+                    }
                 }
 
                 if (policySetDefinitionsArray != null && policySetDefinitionsArray.Length == 1)
@@ -141,7 +170,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
                 var policySetDefinitions = GetAllGuestConfigPolicySetDefinitions();
                 policySetDefinitionsArray = policySetDefinitions != null ? policySetDefinitions.ToArray() : null;
             }
-            var policyStatuses = GetPolicyStatusesHelper(policySetDefinitionsArray, gcrpAssignments);
+            var policyStatuses = GetPolicyStatusesHelper(policySetDefinitionsArray, gcrpAssignments, resourceGroupName);
             return policyStatuses;
         }
 
@@ -154,23 +183,37 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
             var gcPolicyAssignments = GetPolicyStatuses(resourceGroupName, vmName, gcrpAssignments, initiativeName);
             var gcPolicyAssignmentReportList = new List<PolicyStatusDetailed>();
 
-            var gcPolicyAssignmentsArray = gcPolicyAssignments.ToArray();
-
-            // Sort assignments by policy display name
-            Array.Sort(gcPolicyAssignmentsArray, (first, second) =>
+            if (gcPolicyAssignments.Count() > 0)
             {
-                return string.Compare(first.PolicyDisplayName, second.PolicyDisplayName, true);
-            });
+                var gcPolicyAssignmentsArray = gcPolicyAssignments.ToArray();
 
-            foreach (var gcPolicyAssignment in gcPolicyAssignmentsArray)
-            {
-                var reportGuid = CommonHelpers.GetReportGUIDFromID(gcPolicyAssignment.LatestReportId);
-                GuestConfigurationAssignmentReport gcrpReport = null;
-                if (gcPolicyAssignment.LatestReportId != null)
+                // Sort assignments by policy display name
+                Array.Sort(gcPolicyAssignmentsArray, (first, second) =>
                 {
-                    gcrpReport = GuestConfigurationClient.GuestConfigurationAssignmentReports.Get(resourceGroupName, gcPolicyAssignment.Configuration.Name, reportGuid, vmName);
+                    return string.Compare(first.PolicyDisplayName, second.PolicyDisplayName, true);
+                });
+
+                foreach (var gcPolicyAssignment in gcPolicyAssignmentsArray)
+                {
+                    var reportGuid = CommonHelpers.GetReportGUIDFromID(gcPolicyAssignment.LatestReportId);
+                    GuestConfigurationAssignmentReport gcrpReport = null;
+                    if (gcPolicyAssignment.LatestReportId != null)
+                    {
+                        gcrpReport = GuestConfigurationClient.GuestConfigurationAssignmentReports.Get(resourceGroupName, gcPolicyAssignment.Configuration.Name, reportGuid, vmName);
+                    }
+
+                    PolicyStatusDetailed policyDetailed = new PolicyStatusDetailed(gcrpReport, gcPolicyAssignment);
+                    QueryOptions queryOptions = new QueryOptions();
+                    queryOptions.Filter = string.Format("resourceGroup eq '{0}' and policyDefinitionAction eq 'deployifnotexists' and contains(ResourceId,'{1}')", resourceGroupName, vmName);
+                    queryOptions.OrderBy = "Timestamp desc";
+                    queryOptions.Top = 1;
+                    PolicyStatesQueryResults policyDbResults = PolicyInsightsClient.PolicyStates.ListQueryResultsForPolicySetDefinition("latest", DefaultContext.Subscription.Id, gcPolicyAssignment.PolicySetDefinitionName, queryOptions);
+                    if (policyDbResults.Odatacount > 0 && policyDbResults.Value[0].IsCompliant.HasValue && !policyDbResults.Value[0].IsCompliant.Value)
+                    {
+                        policyDetailed.ComplianceStatus = "NonCompliant";
+                    }
+                    gcPolicyAssignmentReportList.Add(policyDetailed);
                 }
-                gcPolicyAssignmentReportList.Add(new PolicyStatusDetailed(gcrpReport, gcPolicyAssignment));
             }
 
             return gcPolicyAssignmentReportList;
@@ -179,8 +222,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
         // Get guest configuration policy status history by initiative definition name
         protected IEnumerable<PolicyStatusDetailed> GetPolicyStatusesDetailedByInitiativeId(string resourceGroupName,
             string vmName,
-            string initiativeId,
-            bool isStatusHistoryCmdlet,
+            string initiativeId,            
             IEnumerable<GuestConfigurationAssignment> gcrpAssignments)
         {
             var initiativeName = GetInitiativeNameFromId(initiativeId);
@@ -220,7 +262,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
 
             if (urlParameters == null || reportGuid == null)
             {
-                throw new ErrorResponseException(string.Format(StringResources.InvalidReportId, reportId));
+                throw new GuestConfigurationErrorResponseException(string.Format(StringResources.InvalidReportId, reportId));
             }
 
             PolicyStatusDetailed policyReport = null;
@@ -261,7 +303,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
             var indexOfInitiativeName = initiativeId.LastIndexOf("/");
             if (indexOfInitiativeName < 0 || indexOfInitiativeName == initiativeId.Length - 1)
             {
-                throw new ErrorResponseException(string.Format(StringResources.NoInitiativeNameFound, initiativeId));
+                throw new GuestConfigurationErrorResponseException(string.Format(StringResources.NoInitiativeNameFound, initiativeId));
             }
             var initiativeName = initiativeId.Substring(indexOfInitiativeName + 1);
             return initiativeName;
@@ -269,15 +311,22 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
 
         private string GetPolicySetCategory(PolicySetDefinition initiativeDefinition)
         {
-            var categoryMetadata = JObject.Parse(initiativeDefinition.Metadata.ToString());
-            var categoryMetadataDictionary = categoryMetadata.ToObject<Dictionary<string, object>>();
-            var category = categoryMetadataDictionary["category"].ToString();
-            return category;
+            if (initiativeDefinition != null && initiativeDefinition.Metadata != null)
+            {
+                var categoryMetadata = JObject.Parse(initiativeDefinition.Metadata.ToString());
+                var categoryMetadataDictionary = categoryMetadata.ToObject<Dictionary<string, object>>();
+                if (categoryMetadataDictionary.ContainsKey("category"))
+                {
+                    return categoryMetadataDictionary["category"].ToString();
+                }
+            }
+
+            return string.Empty;
         }
 
         private IEnumerable<PolicySetDefinition> GetAllGuestConfigPolicySetDefinitions()
         {
-            var policySetDefinitions = PolicyClient.PolicySetDefinitions.ListBuiltIn();
+            var policySetDefinitions = PolicyClient.PolicySetDefinitions.List();
             if (policySetDefinitions == null || policySetDefinitions.Count() == 0)
             {
                 return null;
@@ -291,7 +340,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
             return gcPolicySetDefinitions;
         }
 
-        private IEnumerable<PolicyData> GetPolicyStatusesHelper(PolicySetDefinition[] policySetDefinitions, IEnumerable<GuestConfigurationAssignment> gcrpAssignments)
+        private IEnumerable<PolicyData> GetPolicyStatusesHelper(PolicySetDefinition[] policySetDefinitions, IEnumerable<GuestConfigurationAssignment> gcrpAssignments, string resourceGroupName)
         {
             var gcPolicyAssignmentsList = new List<PolicyData>();
             foreach (var policySetDefinition in policySetDefinitions)
@@ -310,7 +359,16 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
                 foreach (var policyDefinitionIdInInitiative in policyDefinitionIdsInInitiative)
                 {
                     var _initiativeName = GetInitiativeNameFromId(policyDefinitionIdInInitiative);
-                    var policyDef = PolicyClient.PolicyDefinitions.GetBuiltIn(_initiativeName);
+                    PolicyDefinition policyDef = null;
+                    try
+                    {
+                        policyDef = PolicyClient.PolicyDefinitions.GetBuiltIn(_initiativeName);
+                    }
+                    catch(Microsoft.Rest.Azure.CloudException ex) when (HttpStatusCode.NotFound.Equals(ex.Response.StatusCode))
+                    {
+                        policyDef = PolicyClient.PolicyDefinitions.Get(_initiativeName);
+                    }
+                    
                     if (policyDef != null)
                     {
                         policyDefinitionsForTheInitiative.Add(policyDef);
@@ -326,55 +384,64 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
                 // Get all gcrp assignments for the initiative - for policy definitions  of category "Guest Configuration", effectType "AuditIfNotExists" or "Audit"
                 foreach (var policyDef in policyDefinitionsForTheInitiative)
                 {
-                    var policyRule = JObject.Parse(policyDef.PolicyRule.ToString());
-                    var policyRuleDictionary = policyRule.ToObject<Dictionary<string, object>>();
-
-                    var policyRuleThen = JObject.Parse(policyRuleDictionary["then"].ToString());
-                    var policyRuleThenDictionary = policyRuleThen.ToObject<Dictionary<string, object>>();
-
-                    var effectType = policyRuleThenDictionary["effect"].ToString();
-                    var effectTypeLower = effectType.ToLower();
-
-                    if (Constants.AuditIfNotExists != effectTypeLower && Constants.Audit != effectTypeLower)
+                    try
                     {
-                        continue;
-                    }
+                        var policyRule = JObject.Parse(policyDef.PolicyRule.ToString());
+                        var policyRuleDictionary = policyRule.ToObject<Dictionary<string, object>>();
 
-                    var policyMetadata = JObject.Parse(policyDef.Metadata.ToString());
-                    var policyMetadataDictionary = policyMetadata.ToObject<Dictionary<string, object>>();
-                    var policyCategory = policyMetadataDictionary["category"].ToString().ToLower();
-                    if (Constants.GuestConfigurationCategory != policyCategory)
-                    {
-                        continue;
-                    }
+                        var policyRuleThen = JObject.Parse(policyRuleDictionary["then"].ToString());
+                        var policyRuleThenDictionary = policyRuleThen.ToObject<Dictionary<string, object>>();
 
-                    string guestConfigurationAssignmentNameInPolicy = null;
+                        var effectType = policyRuleThenDictionary["effect"].ToString();
+                        var effectTypeLower = effectType.ToLower();
 
-                    if (Constants.AuditIfNotExists == effectTypeLower)
-                    {
-                        var policyRuleThenDetails = JObject.Parse(policyRuleThenDictionary["details"].ToString());
-                        var policyRuleDetailsDictionary = policyRuleThenDetails.ToObject<Dictionary<string, object>>();
-                        guestConfigurationAssignmentNameInPolicy = policyRuleDetailsDictionary["name"].ToString();
-                    }
-                    else if (Constants.Audit == effectTypeLower)
-                    {
-                        var policyRuleIf = JObject.Parse(policyRuleDictionary["if"].ToString());
-                        var policyRuleIfDictionary = policyRuleIf.ToObject<Dictionary<string, object>>();
-                        var policyRuleIfAllOf = policyRuleIfDictionary["allOf"];
-                        var policyRuleIfAllOfJArray = JArray.FromObject(policyRuleIfAllOf);
-                        var guestConfigurationAssignmentNameInPolicyArray = policyRuleIfAllOfJArray.Single(
-                             x => x.Value<string>("field") == "name"
-                        );
-                        guestConfigurationAssignmentNameInPolicy = guestConfigurationAssignmentNameInPolicyArray.Value<string>("equals");
-                    }
-
-                    if (!string.IsNullOrEmpty(guestConfigurationAssignmentNameInPolicy) && gcrp_AssignmentName_Assignment_Map.ContainsKey(guestConfigurationAssignmentNameInPolicy))
-                    {
-                        var gcrpAsgnment = gcrp_AssignmentName_Assignment_Map[guestConfigurationAssignmentNameInPolicy];
-                        if (gcrpAsgnment != null)
+                        if (Constants.AuditIfNotExists != effectTypeLower && Constants.Audit != effectTypeLower)
                         {
-                            gcPolicyAssignmentsList.Add(new PolicyData(gcrpAsgnment, policyDef.DisplayName));
+                            continue;
                         }
+
+                        var policyMetadata = JObject.Parse(policyDef.Metadata.ToString());
+                        var policyMetadataDictionary = policyMetadata.ToObject<Dictionary<string, object>>();
+                        var policyCategory = policyMetadataDictionary["category"].ToString().ToLower();
+                        if (Constants.GuestConfigurationCategory != policyCategory)
+                        {
+                            continue;
+                        }
+
+                        string guestConfigurationAssignmentNameInPolicy = null;
+
+                        if (Constants.AuditIfNotExists == effectTypeLower)
+                        {
+                            var policyRuleThenDetails = JObject.Parse(policyRuleThenDictionary["details"].ToString());
+                            var policyRuleDetailsDictionary = policyRuleThenDetails.ToObject<Dictionary<string, object>>();
+                            guestConfigurationAssignmentNameInPolicy = policyRuleDetailsDictionary["name"].ToString();
+                        }
+                        else if (Constants.Audit == effectTypeLower)
+                        {
+                            var policyRuleIf = JObject.Parse(policyRuleDictionary["if"].ToString());
+                            var policyRuleIfDictionary = policyRuleIf.ToObject<Dictionary<string, object>>();
+                            var policyRuleIfAllOf = policyRuleIfDictionary["allOf"];
+                            var policyRuleIfAllOfJArray = JArray.FromObject(policyRuleIfAllOf);
+                            var guestConfigurationAssignmentNameInPolicyArray = policyRuleIfAllOfJArray.Single(
+                                 x => x.Value<string>("field") == "name"
+                            );
+                            guestConfigurationAssignmentNameInPolicy = guestConfigurationAssignmentNameInPolicyArray.Value<string>("equals");
+                        }
+
+                        if (!string.IsNullOrEmpty(guestConfigurationAssignmentNameInPolicy) && gcrp_AssignmentName_Assignment_Map.ContainsKey(guestConfigurationAssignmentNameInPolicy))
+                        {
+                            var assignments = PolicyClient.PolicyAssignments.ListForResourceGroup(resourceGroupName, string.Format("policyDefinitionId eq '{0}'", policySetDefinition.Id));                            
+                            var gcrpAsgnment = gcrp_AssignmentName_Assignment_Map[guestConfigurationAssignmentNameInPolicy];
+                            if (gcrpAsgnment != null && assignments.Count() > 0)
+                            {
+                                gcPolicyAssignmentsList.Add(new PolicyData(gcrpAsgnment, policyDef.DisplayName, policySetDefinition.Name));
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        this.WriteWarning(string.Format(StringResources.InvalidPolicyDefinition, policyDef.DisplayName));
+                        continue;
                     }
                 }
             }

@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.Services
         /// Checks if email addresses are in a correct format
         /// </summary>
         /// <param name="emailAddresses">The email addresses</param>
-        /// <param name="seperator">The character that seperates different emails in the emailAddresses string</param>
+        /// <param name="seperator">The character that separates different emails in the emailAddresses string</param>
         /// <returns>Returns whether the email addresses are in a correct format</returns>
         public static bool AreEmailAddressesInCorrectFormat(string emailAddresses, char seperator)
         {

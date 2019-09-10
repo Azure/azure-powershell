@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         {
             var auth = new AuthenticationContext(AuthenticationHelpers.GetAuthority(environment, tenant), environment?.OnPremise ?? true, tokenCache as TokenCache ?? TokenCache.DefaultShared);
             var response = await auth.AcquireTokenAsync(
-                environment.ActiveDirectoryServiceEndpointResourceId, 
+                environment.GetEndpoint(resourceId), 
                 AuthenticationHelpers.PowerShellClientId, 
                 new Uri(AuthenticationHelpers.PowerShellRedirectUri), 
                 new PlatformParameters(AuthenticationHelpers.GetPromptBehavior(promptBehavior), new ConsoleParentWindow()), 

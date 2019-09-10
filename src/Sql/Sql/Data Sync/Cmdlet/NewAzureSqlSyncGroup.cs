@@ -81,10 +81,10 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         public PSCredential DatabaseCredential { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy of resolving confliction between hub and member database in the sync group
+        /// Gets or sets the policy of resolving conflicts between hub and member database in the sync group
         /// </summary>
         [Parameter(Mandatory = false,
-           HelpMessage = "The policy of resolving confliction between hub and member database in the sync group.")]
+           HelpMessage = "The policy of resolving conflicts between hub and member database in the sync group.")]
         [ValidateSet("HubWin", "MemberWin", IgnoreCase = true)]
         public string ConflictResolutionPolicy { get; set; }
 

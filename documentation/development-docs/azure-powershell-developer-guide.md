@@ -8,6 +8,8 @@ The Azure PowerShell Developer Guide was created to help with the development an
 - [Environment Setup](#environment-setup)
     - [GitHub Basics](#github-basics)
     - [Building the Environment](#building-the-environment)
+    - [Generating Help](#generating-help)
+    - [Running Static Analysis](#running-static-analysis)
     - [Running Tests](#running-tests)
 - [Before Adding a New Project](#before-adding-a-new-project)
     - [.NET SDK](#net-sdk)
@@ -34,11 +36,6 @@ The Azure PowerShell Developer Guide was created to help with the development an
 - [After Development](#after-development)
 - [Misc](#misc)
     - [Publish to PowerShell Gallery](#publish-to-powershell-gallery)
-    - [AsJob Parameter](#asjob-parameter)
-    - [Argument Completers](#argument-completers)
-        - [Resource Group Completer](#resource-group-completers)
-        - [Location Completer](#location-completer)
-        - [Generic Argument Completer](#generic-argument-completer)
 
 # Prerequisites
 
@@ -98,17 +95,27 @@ Alternatively, you can open any command prompt (Command Prompt, Windows PowerShe
 PS C:\azure-powershell> dotnet msbuild build.proj
 ```
 
-### Skipping Help Generation During Build
+## Generating Help
 
-By default, we build the `dll-Help.xml` files (used to display the help content for cmdlets in PowerShell) from markdown using the `platyPS` module. Since this help generation step can take 10-15 minutes, we have added the ability to skip it as a part of the command line build process:
+We build the `dll-Help.xml` files (used to display the help content for cmdlets in PowerShell) from markdown using the `platyPS` module. Since this help generation step can take 10-15 minutes, it is a separate part of the command line build process. Run this to generate help:
 
 ```
-msbuild build.proj /p:SkipHelp=true
+msbuild build.proj /t:GenerateHelp
 ```
+
+## Running Static Analysis
+
+To keep consistency across our modules, we've implemented a static analysis system. This verifies various aspects (dependencies, breaking changes, etc.) for your module. Run this command to execute static analysis validation for the built modules:
+
+```
+msbuild build.proj /t:StaticAnalysis
+```
+
+_Note_: this can add 10-15 minutes to your build time due to help generation.
 
 ## Running Tests
 
-Launch `VS Developer Command Prompt` and run the following command (from the root of the repository) to run all of the tests:
+Launch `VS Developer Command Prompt` and run the following command (from the root of the repository) to run all of the tests in playback:
 
 ```
 msbuild build.proj /t:Test
@@ -132,7 +139,7 @@ For more information about on-boarding a new library in the SDK for .NET reposit
 
 Before development, you must meet with the Azure PowerShell team to have a design review for your proposed PowerShell cmdlets. We advise that this review is held no earlier than three weeks out from code complete of the release you want to ship the cmdlets with. For a small number of cmdlet changes and/or additions, an email containing the markdown files for the proposed changes is suggested. For a large number of changes and/or additions, a meeting is required with the Azure PowerShell team.
 
-Before submitting a design review, please be sure that you have read the [Azure PowerShell Design Guidelines](azure-powershell-design-guidelines.md) document.
+Before submitting a design review, please be sure that you have read the documents found in the [Azure PowerShell Design Guidelines](./design-guidelines) folder.
 
 Please submit a design review here: https://github.com/Azure/azure-powershell-cmdlet-review-pr
 
@@ -181,7 +188,7 @@ After the solution file is updated, save and close it. Now, open the solution fi
   </PropertyGroup>
 ```
 **Note**: This is not needed since this is a new project and does not use legacy namespace conventions.
-  
+
 - Update this entry to use your SDK:
 ```xml
   <ItemGroup>
@@ -200,7 +207,7 @@ There are a few existing projects that need to be added before developing any cm
 
 ## PowerShell Cmdlet Design Guidelines
 
-Please check out the [PowerShell Cmdlet Design Guidelines](azure-powershell-design-guidelines.md) page for more information on how to create cmdlets that follow the PowerShell guidelines.
+Please check out the [_Cmdlet Best Practices_](./design-guidelines/cmdlet-best-practices.md) document for more information on how to create cmdlets that follow the PowerShell guidelines.
 
 ## Enable Running PowerShell when Debugging
 
@@ -208,7 +215,7 @@ Please check out the [PowerShell Cmdlet Design Guidelines](azure-powershell-desi
   - Right click on your project in the **Solution Explorer** and select **Set as StartUp project**
 - Right-click on the project and select **Properties**
 - Go to the **Debug** tab
-- Under **Start Action**, pick _Start external program_ and type the PowerShell 6.0 directory 
+- Under **Start Action**, pick _Start external program_ and type the PowerShell 6.0 directory
   - For example, `C:\Program Files\PowerShell\6\pwsh.exe`
 
 ### Importing Modules
@@ -260,6 +267,9 @@ Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-
     - Use `Assert-NotNull object` to verify that an object is not null
     - Use `Assert-Exists path` to verify that a file exists
     - Use `Assert-AreEqualArray a1 a2` to verify that arrays are the same
+    - Use `Assert-StartsWith s1 s2` to verify that the string `s2` starts with the string `s1`
+    - Use `Assert-Match s1 s2` to verify that the string `s2` matches the regular expression `s1`
+    - Use `Assert-NotMatch s1 s2` to verify that the string `s2` does not match the regular expression `s1`
 
 ### Using Active Directory
 
@@ -292,87 +302,10 @@ Once all of your cmdlets have been created and the appropriate tests have been a
 
 ## Change Log
 
-Whenver you make updates to a project, please make sure to update the corresponding service's `ChangeLog.md` file with a snippet of what you changed under the `Upcoming Release` header. This information is later used for the release notes that goes out with each module the next time they are released, and provides users with more information as to what has changed in the module from the previous release. For more information on updating change logs can be found in [`CONTRIBUTING.md`](../../CONTRIBUTING.md#updating-the-change-log)
+Whenever you make updates to a project, please make sure to update the corresponding service's `ChangeLog.md` file with a snippet of what you changed under the `Upcoming Release` header. This information is later used for the release notes that goes out with each module the next time they are released, and provides users with more information as to what has changed in the module from the previous release. For more information on updating change logs can be found in [`CONTRIBUTING.md`](../../CONTRIBUTING.md#updating-the-change-log)
 
 # Misc
 
 ## Publish to PowerShell Gallery
 
 To publish your module to the [official PowerShell gallery](http://www.powershellgallery.com/) or the test gallery site, contact the Azure PowerShell team
-
-## AsJob Parameter
-
-All long running operations must implement the `-AsJob` parameter, which will allow the user to create jobs in the background. For more information about PowerShell jobs and the -AsJob parameter, read [this doc](https://docs.microsoft.com/en-us/powershell/azure/using-psjobs).
-
-To implement the `-AsJob` parameter, simply add the parameter to the end of the parameter list:
-
-````cs
-[Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-public SwitchParameter AsJob { get; set; }
-````
-
-Once you add the parameter, please manually test that the job is created and successfully completes when the parameter is specified. Additionally, please ensure that the help files are updated with this parameter.
-
-To ensure that `-AsJob` is not broken in future changes, please add a test for this parameter. To update tests to include this parameter, use the following pattern:
-
-````powershell
-$job = Get-AzSubscription
-$job | Wait-Job
-$subcriptions = $job | Receive-Job
-````
-
-## Argument Completers
-
-PowerShell uses Argument Completers to provide tab completion for users. At the moment, Azure PowerShell has two specific argument completers that should be applied to relevant parameters, and one generic argument completer that can be used to tab complete with a given list of values. To test the completers, run a complete build after you have added the completers (`msbuild build.proj`) and ensure that the psm1 file (`Az.<Service>.psm1`) has been added to the psd1 file found in `artifacts/Debug/Az.<Service>/Az.<Service>.psd1` under "Root Module".
-
-### Resource Group Completer
-
-For any parameter that takes a resource group name, the `ResourceGroupCompleter` should be applied as an attribute. This will allow the user to tab through all resource groups in the current subscription.
-
-```cs
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-...
-[Parameter(Mandatory = false, HelpMessage = "The resource group name")]
-[ResourceGroupCompleter]
-public string ResourceGroupName { get; set; }
-```
-
-### Resource Name Completer
-
-For any parameter that takes a resource name, the `ResourceNameCompleter` should be applied as an attribute. This will allow the user to tab through all resource names for the ResourceType in the current subscription. This completer will filter based upon the current parent resources provided (for instance, if ResourceGroupName is provided, only the resources in that particular resource group will be returned). For this completer, please provide the ResourceType as the first argument, followed by the parameter name for all parent resources starting at the top level.
-
-```cs
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-...
-[Parameter(Mandatory = false, HelpMessage = "The parent server name")]
-[ResourceNameCompleter("Microsoft.Sql/servers", nameof(ResourceGroupName))]
-public string ServerName { get; set; }
-
-[Parameter(Mandatory = false, HelpMessage = "The database name")]
-[ResourceNameCompleter("Microsoft.Sql/servers/databases", nameof(ResourceGroupName), nameof(ServerName))]
-public string Name { get; set; }
-```
-
-### Location Completer
-
-For any parameter that takes a location, the `LocationCompleter` should be applied as an attribute. In order to use the `LocationCompleter`, you must input as an argument all of the Providers/ResourceTypes used by the cmdlet. The user will then be able to tab through locations that are valid for all of the Providers/ResourceTypes specified.
-
-```cs
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-...
-[Parameter(Mandatory = false, HelpMessage = "The location of the resource")]
-[LocationCompleter("Microsoft.Batch/operations")]
-public string Location { get; set; }
-```
-
-### Generic Argument Completer
-
-For any parameter which you would like the user to tab through a list of suggested values (but you do not want to limit the users to only these values), the generic argument completer should be added.
-
-```cs
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-...
-[Parameter(Mandatory = false, HelpMessage = "The tiers of the plan")]
-[PSArgumentCompleter("Basic", "Premium", "Elite")]
-public string Tier { get; set; }
-```

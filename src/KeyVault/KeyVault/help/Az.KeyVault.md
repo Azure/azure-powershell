@@ -74,10 +74,10 @@ Imports a certificate to a key vault.
 ### [New-AzKeyVault](New-AzKeyVault.md)
 Creates a key vault.
 
-### [New-AzKeyVaultCertificateAdministratorDetails](New-AzKeyVaultCertificateAdministratorDetails.md)
+### [New-AzKeyVaultCertificateAdministratorDetail](New-AzKeyVaultCertificateAdministratorDetail.md)
 Creates an in-memory certificate administrator details object.
 
-### [New-AzKeyVaultCertificateOrganizationDetails](New-AzKeyVaultCertificateOrganizationDetails.md)
+### [New-AzKeyVaultCertificateOrganizationDetail](New-AzKeyVaultCertificateOrganizationDetail.md)
 Creates an in-memory certificate organization details object.
 
 ### [New-AzKeyVaultCertificatePolicy](New-AzKeyVaultCertificatePolicy.md)

@@ -28,7 +28,9 @@ namespace VersionController.Models
 
         public string DebugDirectory => Path.Combine(PackageDirectory, @"Debug");
 
-        public string ExceptionsDirectory => Path.Combine(PackageDirectory, @"Exceptions");
+        public string ArtifactsVersionControllerDirectory => Path.Combine(PackageDirectory, @"VersionController");
+
+        public string ExceptionsDirectory => Path.Combine(ArtifactsVersionControllerDirectory, @"Exceptions");
 
         public List<string> OutputDirectories => _outputDirectories;
 

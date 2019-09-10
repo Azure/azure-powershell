@@ -33,7 +33,7 @@ Multiple root certificates are often deployed by organizations that include user
 
 ### Example 1: Add a client root certificate to a virtual gateway
 ```
-PS C:\>$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertficate.cer"
+PS C:\>$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertificate.cer"
 PS C:\> $CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text[$i]}
 PS C:\> Add-AzVpnClientRootCertificate -PublicCertData $CertificateText -ResourceGroupName "ContosoResourceGroup" -VirtualNetworkGatewayName "ContosoVirtualGateway" -VpnClientRootCertificateName "ContosoClientRootCertificate"
 ```
@@ -69,7 +69,7 @@ When you do that, you will see output similar to the following (note that the ac
 MIIC13FAAXC3671Auij9HHgUNEW8343NMJklo09982CVVFAw8w
 ----- END CERTIFICATE -----
 The PublicCertData is made up of all the lines between the first line (----- BEGIN CERTIFICATE -----) and the last line (----- END CERTIFICATE -----) in the file.
-You can retrieve this data by using Windows PowerShell commands similar to this: `$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertficate.cer"`
+You can retrieve this data by using Windows PowerShell commands similar to this: `$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertificate.cer"`
 `$CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text\[$i\]}`
 
 ```yaml

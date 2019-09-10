@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.Commands.Sql.Common
 {
     /// <summary>
@@ -48,6 +50,19 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 default:
                     return null;
             }
+        }
+
+        /// <summary>
+        /// If the specified value is nonzero, return that value. But if the value is 0, return null.
+        /// </summary>
+        public static int? ValueIfNonZero(int value)
+        {
+            if (value == 0)
+            {
+                return null;
+            }
+
+            return value;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 350E19F6-5B1C-4D3F-B4CD-7225CDC984C4
@@ -80,7 +80,7 @@ This command gets the elastic pool named ElasticPool0127 on the server named Ser
 
 ### Example 3: Get metrics for a Azure SQL Elastic Database Pool
 ```
-PS C:\>Get-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" | Get-Metrics -TimeGrain 0:5:0
+PS C:\>Get-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" | Get-AzMetric -TimeGrain 0:5:0 -MetricName storage_percent
 DimensionName  : 
 DimensionValue : 
 Name           : cpu_percent
@@ -139,6 +139,40 @@ Unit           : Percent
 
 This command returns metrics for an Azure SQL elastic database pool named ElasticPool01.
 
+### Example 4: Get all elastic pools using filtering -ElasticPoolName "ElasticPool*"
+```
+PS C:\>Get-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/resourcegroup01/providers/Microsoft.Sql/servers/server01/elasticPools/elasticpool01
+ResourceGroupName : resourcegroup01
+ServerName        : server01
+ElasticPoolName   : elasticpool01
+Location          : Central US
+CreationDate      : 8/26/2015 10:00:17 PM
+State             : Ready
+Edition           : Standard
+Dtu               : 400
+DatabaseDtuMax    : 100
+DatabaseDtuMin    : 10
+StorageMB         : 409600
+Tags              : 
+
+ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/resourcegroup01/providers/Microsoft.Sql/servers/server01/elasticPools/elasticpool02
+ResourceGroupName : resourcegroup01
+ServerName        : server01
+ElasticPoolName   : elasticpool02
+Location          : Central US
+CreationDate      : 8/26/2015 11:00:17 PM
+State             : Ready
+Edition           : Standard
+Dtu               : 400
+DatabaseDtuMax    : 100
+DatabaseDtuMin    : 10
+StorageMB         : 409600
+Tags              :
+```
+
+This command gets all of the elastic pools on the server named Server01 that start with "ElasticPool".
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -168,7 +202,7 @@ Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
@@ -202,7 +236,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 009899E5-83BF-4A3F-877E-70C16D5CD1AC
@@ -35,7 +35,8 @@ Several parameters (*-Dtu, -DatabaseDtuMin, and -DatabaseDtuMax*) require the va
 
 ## EXAMPLES
 
-### Example 1: Create an elastic pool
+### Example 1: Create a DTU elastic pool
+
 ```
 PS C:\>New-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" -Edition "Standard" -Dtu 400 -DatabaseDtuMin 10 -DatabaseDtuMax 100
 ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/resourcegroup01/providers/Microsoft.Sql/servers/server01/elasticPools/elasticpool01
@@ -56,6 +57,36 @@ Tags              :
 This command creates an elastic pool in the Standard service tier named ElasticPool01. The server
 named server01, assigned to an Azure resource group named ResourceGroup01, hosts the elastic pool
 in. The command specifies DTU property values for the pool and the databases in the pool.
+
+### Example 2: Create a vCore elastic pool
+
+```
+PS C:\> New-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" -Edition "GeneralPurpose" -vCore 2 -ComputeGeneration Gen5
+ResourceId          : /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/servers/server01/elasticPools/ElasticPool01
+ResourceGroupName   : ResourceGroup01
+ServerName          : Server01
+ElasticPoolName     : ElasticPool01
+Location            : Central US
+CreationDate        : 8/29/2019 2:16:40 AM
+State               : Ready
+Edition             : GeneralPurpose
+SkuName             : GP_Gen5
+Dtu                 : 2
+DatabaseDtuMax      : 2
+DatabaseDtuMin      : 0
+Capacity            : 2
+DatabaseCapacityMin : 0
+DatabaseCapacityMax : 2
+Family              : Gen5
+MaxSizeBytes        : 34359738368
+StorageMB           : 32768
+Tags                : 
+```
+
+
+This command creates an elastic pool in the GengeralPurpose service tier named ElasticPool01. The server
+named server01, assigned to an Azure resource group named ResourceGroup01, hosts the elastic pool
+in. The command specifies the vCore property values for the pool and the databases in the pool.
 
 ## PARAMETERS
 
@@ -127,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseVCoreMax
-The maxmium VCore number any SqlAzure Database can consume in the pool.
+The maximum VCore number any SqlAzure Database can consume in the pool.
 
 ```yaml
 Type: System.Double
@@ -387,7 +418,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

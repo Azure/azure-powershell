@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/stop-azdeployment
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Stop-AzDeployment
 
 ## SYNOPSIS
-Cancal a running deployment
+Cancel a running deployment
 
 ## SYNTAX
 

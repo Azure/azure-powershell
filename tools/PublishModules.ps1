@@ -410,7 +410,8 @@ function Update-NugetPackage {
         $content = $content -replace $regex2, ("<requireLicenseAcceptance>true</requireLicenseAcceptance>")
         Out-FileNoBom -File (Join-Path (Get-Location) $modulePath) -Text $content
 
-        &$NugetExe pack $modulePath -OutputDirectory $TempRepoPath
+        # https://stackoverflow.com/a/36369540/294804
+        &$NugetExe pack $modulePath -OutputDirectory $TempRepoPath -NoPackageAnalysis
     }
 }
 

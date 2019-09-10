@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
@@ -86,6 +87,9 @@ namespace Microsoft.Azure.Commands.Compute
                 ValueFromPipelineByPropertyName = false,
                 HelpMessage = "Disables the settings for table content")]
         public SwitchParameter SkipStorage { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
+        public SwitchParameter NoWait { get; set; }
 
         public SetAzureRmVMAEMExtension()
         {
@@ -206,14 +210,15 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(osdisk.ManagedDisk.Id),
-                        this._Helper.GetResourceNameFromId(osdisk.ManagedDisk.Id));
+                    var resId = new ResourceIdentifier(osdisk.ManagedDisk.Id);
+
+                    var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(resId.ResourceGroupName, resId.ResourceName);
                     if (osDiskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
                     {
                         WriteVerbose("OS Disk is a Premium Managed Disk - adding SLAs for OS disk");
                         var sla = this._Helper.GetDiskSLA(osDiskMD.DiskSizeGB, null);
                         var caching = osdisk.Caching;
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.name", Value = this._Helper.GetResourceNameFromId(osdisk.ManagedDisk.Id) });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.name", Value = resId.ResourceName });
                         sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.caching", Value = caching });
                         sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.type", Value = AEMExtensionConstants.DISK_TYPE_PREMIUM_MD });
                         sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.throughput", Value = sla.TP });
@@ -231,8 +236,9 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     if (disk.ManagedDisk != null)
                     {
-                        var diskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(disk.ManagedDisk.Id),
-                            this._Helper.GetResourceNameFromId(disk.ManagedDisk.Id));
+                        var resId = new ResourceIdentifier(disk.ManagedDisk.Id);
+
+                        var diskMD = ComputeClient.ComputeManagementClient.Disks.Get(resId.ResourceGroupName, resId.ResourceName);
 
                         if (diskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
                         {
@@ -240,7 +246,7 @@ namespace Microsoft.Azure.Commands.Compute
                             var sla = this._Helper.GetDiskSLA(diskMD.DiskSizeGB, null);
                             var cachingMD = disk.Caching;
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = this._Helper.GetResourceNameFromId(disk.ManagedDisk.Id) });
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = resId.ResourceName });
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = cachingMD });
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_PREMIUM_MD });
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.throughput." + diskNumber, Value = sla.TP });
@@ -253,7 +259,7 @@ namespace Microsoft.Azure.Commands.Compute
                             var sla = this._Helper.GetDiskSLA(diskMD.DiskSizeGB, null);
                             var cachingMD = disk.Caching;
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = this._Helper.GetResourceNameFromId(disk.ManagedDisk.Id) });
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = resId.ResourceName });
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = cachingMD });
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_ULTRA_MD });
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.throughput." + diskNumber, Value = diskMD.DiskMBpsReadWrite });
@@ -400,25 +406,50 @@ namespace Microsoft.Azure.Commands.Compute
 
                 Version aemVersion = this._Helper.GetExtensionVersion(selectedVM, selectedVMStatus, OSType, AEMExtensionConstants.AEMExtensionType[OSType], AEMExtensionConstants.AEMExtensionPublisher[OSType]);
 
-                var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                    this.ResourceGroupName, this.VMName, AEMExtensionConstants.AEMExtensionDefaultName[OSType],
-                    new VirtualMachineExtension()
-                    {
-                        Publisher = AEMExtensionConstants.AEMExtensionPublisher[OSType],
-                        VirtualMachineExtensionType = AEMExtensionConstants.AEMExtensionType[OSType],
-                        TypeHandlerVersion = aemVersion.ToString(2),
-                        Settings = jsonPublicConfig,
-                        ProtectedSettings = jsonPrivateConfig,
-                        Location = selectedVM.Location,
-                        AutoUpgradeMinorVersion = true,
-                        ForceUpdateTag = DateTime.Now.Ticks.ToString()
-                    }).GetAwaiter().GetResult();
+                if (NoWait.IsPresent)
+                {
+                    var op = this.VirtualMachineExtensionClient.BeginCreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName, this.VMName, AEMExtensionConstants.AEMExtensionDefaultName[OSType],
+                        new VirtualMachineExtension()
+                        {
+                            Publisher = AEMExtensionConstants.AEMExtensionPublisher[OSType],
+                            VirtualMachineExtensionType = AEMExtensionConstants.AEMExtensionType[OSType],
+                            TypeHandlerVersion = aemVersion.ToString(2),
+                            Settings = jsonPublicConfig,
+                            ProtectedSettings = jsonPrivateConfig,
+                            Location = selectedVM.Location,
+                            AutoUpgradeMinorVersion = true,
+                            ForceUpdateTag = DateTime.Now.Ticks.ToString()
+                        }).GetAwaiter().GetResult();
 
-                this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
-                this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension commandlet.");
+                    this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
+                    this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension commandlet.");
 
-                var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                WriteObject(result);
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
+                }
+                else
+                {
+                    var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName, this.VMName, AEMExtensionConstants.AEMExtensionDefaultName[OSType],
+                        new VirtualMachineExtension()
+                        {
+                            Publisher = AEMExtensionConstants.AEMExtensionPublisher[OSType],
+                            VirtualMachineExtensionType = AEMExtensionConstants.AEMExtensionType[OSType],
+                            TypeHandlerVersion = aemVersion.ToString(2),
+                            Settings = jsonPublicConfig,
+                            ProtectedSettings = jsonPrivateConfig,
+                            Location = selectedVM.Location,
+                            AutoUpgradeMinorVersion = true,
+                            ForceUpdateTag = DateTime.Now.Ticks.ToString()
+                        }).GetAwaiter().GetResult();
+
+                    this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
+                    this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension commandlet.");
+
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
+                }
             });
         }
 

@@ -56,7 +56,8 @@ function Test-ListServerAdvisorsExpanded
 	{
 		$response = Get-AzSqlServerAdvisor `
 			-ResourceGroupName $server.ResourceGroupName `
-			-ServerName $server.ServerName -ExpandRecommendedActions
+			-ServerName $server.ServerName -ExpandRecommendedActions `
+			-AdvisorName *
 		Assert-NotNull $response
 		ValidateAdvisorCount $response
 		foreach($advisor in $response)
@@ -141,7 +142,8 @@ function Test-ListDatabaseAdvisors
 		$response = Get-AzSqlDatabaseAdvisor `
 			-ResourceGroupName $db.ResourceGroupName `
 			-ServerName $db.ServerName `
-			-DatabaseName $db.DatabaseName 
+			-DatabaseName $db.DatabaseName `
+			-AdvisorName *
 		Assert-NotNull $response
 		ValidateAdvisorCount $response
 		foreach($advisor in $response)
@@ -260,7 +262,8 @@ function Test-ListElasticPoolAdvisors
 		$response = Get-AzSqlElasticPoolAdvisor `
 			-ResourceGroupName $ep.ResourceGroupName`
 			-ServerName $ep.ServerName`
-			-ElasticPoolName $ep.ElasticPoolName
+			-ElasticPoolName $ep.ElasticPoolName `
+			-AdvisorName *
 		Assert-NotNull $response
 		ValidateAdvisorCount $response
 		foreach($advisor in $response)

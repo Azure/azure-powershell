@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqldatabasebackuplongtermretentionpolicy
@@ -186,7 +186,7 @@ Accept wildcard characters: False
 ### -MonthlyRetention
 The Monthly Retention.
 If just a number is passed instead of an ISO 8601 string, days will be assumed as the units.
-There is a minumum of 7 days and a maximum of 10 years.
+There is a minimum of 7 days and a maximum of 10 years.
 
 ```yaml
 Type: System.String
@@ -260,7 +260,7 @@ Accept wildcard characters: False
 ### -WeeklyRetention
 The Weekly Retention.
 If just a number is passed instead of an ISO 8601 string, days will be assumed as the units.
-There is a minumum of 7 days and a maximum of 10 years.
+There is a minimum of 7 days and a maximum of 10 years.
 
 ```yaml
 Type: System.String
@@ -304,7 +304,7 @@ Accept wildcard characters: False
 ### -YearlyRetention
 The Yearly Retention.
 If just a number is passed instead of an ISO 8601 string, days will be assumed as the units.
-There is a minumum of 7 days and a maximum of 10 years.
+There is a minimum of 7 days and a maximum of 10 years.
 
 ```yaml
 Type: System.String
@@ -350,7 +350,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

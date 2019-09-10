@@ -87,7 +87,7 @@ The command specifies the policy as a string in valid JSON format.
 
 ### Example 4: Create a policy definition inline with metadata
 ```
-PS C:\> New-AzPolicyDefinition -Name 'VMPolicyDefinition' -Metadata '{"Category":"Virtual Machine"}' -Policy '{"if":{"source":"action","equals":"Microsoft.Compute/virtualMachines/write"},"then":{"effect":"deny"}}'
+PS C:\> New-AzPolicyDefinition -Name 'VMPolicyDefinition' -Metadata '{"category":"Virtual Machine"}' -Policy '{"if":{"source":"action","equals":"Microsoft.Compute/virtualMachines/write"},"then":{"effect":"deny"}}'
 
 
 Name               : VMPolicyDefinition
@@ -101,6 +101,22 @@ PolicyDefinitionId : /subscriptions/11111111-1111-1111-1111-111111111111/provide
 
 This command creates a policy definition named VMPolicyDefinition with metadata indicating its category is "Virtual Machine".
 The command specifies the policy as a string in valid JSON format.
+
+### Example 5: Create a policy definition inline with mode
+```
+PS C:\> New-AzPolicyDefinition -Name 'TagsPolicyDefinition' -Policy '{"if":{"value":"[less(length(field(''tags'')), 3)]","equals":true},"then":{"effect":"deny"}}' -Mode Indexed
+
+
+Name               : TagsPolicyDefinition
+ResourceId         : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/policyDefinitions/TagsPolicyDefinition
+ResourceName       : TagsPolicyDefinition
+ResourceType       : Microsoft.Authorization/policyDefinitions
+SubscriptionId     : 11111111-1111-1111-1111-111111111111
+Properties         : @{displayName=TagsPolicyDefinition; policyType=Custom; mode=Indexed; metadata=; parameters=; policyRule=}
+PolicyDefinitionId : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/policyDefinitions/TagsPolicyDefinition
+```
+
+This command creates a policy definition named TagsPolicyDefinition with mode "Indexed" indicating the policy should be evaluated only for resource types that support tags and location.
 
 ## PARAMETERS
 
@@ -202,7 +218,6 @@ The mode of the policy definition
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Indexed, All
 
 Required: False
 Position: Named
@@ -288,7 +303,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -17,11 +17,56 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
     public class PsApiManagementIdentityProvider : PsApiManagementArmResource
     {
         public PsApiManagementIdentityProviderType Type { get; set; }
-        
+
+        /// <summary>
+        /// Gets or sets client Id of the Application in the external Identity
+        /// Provider. It is App ID for Facebook login, Client ID for Google
+        /// login, App ID for Microsoft.
+        /// </summary>
         public string ClientId { get; set; }
 
+        /// <summary>
+        /// Gets or sets client secret of the Application in external Identity
+        /// Provider, used to authenticate login request. For example, it is
+        /// App Secret for Facebook login, API Key for Google login, Public Key
+        /// for Microsoft.
+        /// </summary>
         public string ClientSecret { get; set; }
 
+        /// <summary>
+        /// Gets or sets list of Allowed Tenants when configuring Azure Active
+        /// Directory login.
+        /// </summary>
         public string[] AllowedTenants { get; set; }
+
+        /// <summary>
+        /// Gets or sets openID Connect discovery endpoint hostname for AAD or
+        /// AAD B2C.
+        /// </summary>
+        public string Authority { get; set; }
+
+        /// <summary>
+        /// Gets or sets signup Policy Name. Only applies to AAD B2C Identity
+        /// Provider.
+        /// </summary>
+        public string SignupPolicyName { get; set; }
+
+        /// <summary>
+        /// Gets or sets signin Policy Name. Only applies to AAD B2C Identity
+        /// Provider.
+        /// </summary>
+        public string SigninPolicyName { get; set; }
+
+        /// <summary>
+        /// Gets or sets profile Editing Policy Name. Only applies to AAD B2C
+        /// Identity Provider.
+        /// </summary>
+        public string ProfileEditingPolicyName { get; set; }
+
+        /// <summary>
+        /// Gets or sets password Reset Policy Name. Only applies to AAD B2C
+        /// Identity Provider.
+        /// </summary>
+        public string PasswordResetPolicyName { get; set; }
     }
 }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVirtualHub
 
 ## SYNOPSIS
-Updates a Virtual Hub to an intended goal state.
+Updates a virtual hub.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzVirtualHub -InputObject <PSVirtualHub> [-AddressPrefix <String>]
 ```
 
 ## DESCRIPTION
-Updates a Virtual Hub to an intended goal state.
+The **Update-AzVirtualHub** cmdlet updates a virtual hub.
 
 ## EXAMPLES
 

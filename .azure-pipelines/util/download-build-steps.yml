@@ -1,0 +1,9 @@
+parameters:
+  osName: ''
+
+steps:
+- task: DownloadPipelineArtifact@0
+  displayName: 'Download build-${{ parameters.osName }}'
+  inputs:
+    artifactName: build-${{ parameters.osName }}
+    targetPath: artifacts

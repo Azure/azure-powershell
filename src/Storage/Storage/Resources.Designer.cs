@@ -284,7 +284,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
                 return ResourceManager.GetString("ContainerAlreadyExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Can not find the container &apos;{0}&apos;..
         /// </summary>
@@ -293,7 +293,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
                 return ResourceManager.GetString("ContainerNotFound", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Context cannot be null.  Please log in using Connect-AzAccount.
+        /// </summary>
+        internal static string ContextCannotBeNull {
+            get {
+                return ResourceManager.GetString("ContextCannotBeNull", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Copy Blob..
         /// </summary>
@@ -986,7 +995,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
                 return ResourceManager.GetString("InvalidPageBlobSize", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Queue name &apos;{0}&apos; is invalid. Valid names start and end with a lower case letter or a number and has in between a lower case letter, number or dash with no consecutive dashes and is 3 through 63 characters long..
         /// </summary>

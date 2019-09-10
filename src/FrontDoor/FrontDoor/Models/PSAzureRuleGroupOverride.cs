@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Models
-{    
+{
     public class PSAzureRuleGroupOverride
     {
-        public PSAction Action { get; set; }
+        public string RuleGroupName { get; set; }
 
-        public PSRuleGroupOverride RuleGroupOverride { get; set; }
+        public List<PSAzureManagedRuleOverride> ManagedRuleOverrides { get; set; }
     }
 }

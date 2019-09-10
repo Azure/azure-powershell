@@ -16,55 +16,82 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 {
     using Interfaces;
 
-    public class MaximumTreeDepthValidation : BaseNamespaceValidation
+    /// <summary>
+    /// Class MaximumTreeDepthValidation.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations.NamespaceValidationBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations.NamespaceValidationBase" />
+    public class MaximumTreeDepthValidation : NamespaceValidationBase
     {
         #region Fields and Properties
+        /// <summary>
+        /// The maximum tree depth
+        /// </summary>
         private readonly int _maxTreeDepth;
 
         #endregion
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MaximumTreeDepthValidation" /> class.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
         public MaximumTreeDepthValidation(IConfiguration configuration) : base(configuration, "Files/Directories in too deep folder structures (directory tree depth)", ValidationType.NodeDepth)
         {
-            this._maxTreeDepth = configuration.MaximumTreeDepth();
+            _maxTreeDepth = configuration.MaximumTreeDepth();
         }
 
         #endregion
 
         #region Protected methods
+        /// <summary>
+        /// Does the validate.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IFileInfo node)
         {
-            return this.ValidateInternal(node);
+            return ValidateInternal(node);
         }
 
+        /// <summary>
+        /// Does the validate.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IDirectoryInfo node)
         {
-            return this.ValidateInternal(node);
+            return ValidateInternal(node);
         }
         #endregion
 
         #region Private methods
+        /// <summary>
+        /// Validates the internal.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <returns>IValidationResult.</returns>
         private IValidationResult ValidateInternal(INamedObjectInfo node)
         {
             AfsPath path = new AfsPath(node.FullName);
             int depth = path.Depth;
 
-            bool isTooDeep = depth > this._maxTreeDepth;
+            bool isTooDeep = depth > _maxTreeDepth;
             if (isTooDeep)
             {
                 return new ValidationResult
                 {
                     Result = Result.Fail,
-                    Description = $"Directory tree depth limit exceeded. Maximum tree depth is {this._maxTreeDepth}.",
+                    Description = $"Directory tree depth limit exceeded. Maximum tree depth is {_maxTreeDepth}.",
                     Level = ResultLevel.Error,
                     Path = node.FullName,
-                    Type = this.ValidationType,
-                    Kind = this.ValidationKind
+                    Type = ValidationType,
+                    Kind = ValidationKind
                 };
             }
 
-            return this.SuccessfulResult;
+            return SuccessfulResult;
         }
         #endregion
     }

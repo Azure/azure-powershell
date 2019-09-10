@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVpnGateway
 
 ## SYNOPSIS
-Update-AzVpnGateway updates a scalable VPN Gateway to the appropriate goal state.
+Updates a scalable VPN gateway.
 
 ## SYNTAX
 
@@ -34,9 +34,8 @@ Update-AzVpnGateway -ResourceId <String> [-VpnConnection <PSVpnConnection[]>] [-
 ```
 
 ## DESCRIPTION
-Update-AzVpnGateway updates a scalable VPN Gateway to the appropriate goal state. An AzureRmVpnGateway is a software defined connectivity for site to site connections inside the VirtualHub. 
-This gateway resizes and scales based on the scale unit specified by the user. 
-A connection can be set up from a branch/Site known as VPNSite to the scalable gateway. Each connection comprises of 2 Active-Active tunnels
+The **Update-AzVpnGateway** cmdlet updates a scalable VPN gateway.  
+An Azure VPN gateway is a software defined connectivity for site to site connections inside the VirtualHub. This gateway resizes and scales based on the scale unit specified by the user. A connection can be set up from a branch/site known as VPN site to the scalable gateway. Each connection comprises of 2 Active-Active tunnels
 
 ## EXAMPLES
 

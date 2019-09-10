@@ -291,7 +291,17 @@ function Test-FindResourceGroup
         Assert-AreEqual $expected2.ResourceGroupName $actual2.ResourceGroupName
         Assert-AreEqual $expected2.Tags["testtag"] $actual2.Tags["testtag"]
 
+		$expected2 = Get-AzResourceGroup -Name ($rgname2 + "*")
+        # Assert
+        Assert-AreEqual $expected2.ResourceGroupName $actual2.ResourceGroupName
+        Assert-AreEqual $expected2.Tags["testtag"] $actual2.Tags["testtag"]
+
 		$expected3 = Get-AzResourceGroup
+		$expectedCount = $originalCount + 2
+		# Assert
+		Assert-AreEqual @($expected3).Count $expectedCount
+
+		$expected3 = Get-AzResourceGroup -Name *
 		$expectedCount = $originalCount + 2
 		# Assert
 		Assert-AreEqual @($expected3).Count $expectedCount
@@ -356,6 +366,46 @@ function Test-ExportResourceGroup
 	}
 
 	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests export resource group with resource filtering.
+#>
+function Test-ExportResourceGroupWithFiltering
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname1 = Get-ResourceName
+    $rname2 = Get-ResourceName
+    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+    $apiversion = "2014-04-01"
+    $resourceType = "Providers.Test/statefulResources"
+
+
+    try
+    {
+        # Test
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+        $r1 = New-AzResource -Name $rname1 -Location "centralus" -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        Assert-NotNull $r1.ResourceId
+
+        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+        $r2 = New-AzResource -Name $rname2 -Location "centralus" -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        Assert-NotNull $r2.ResourceId
+
+        $exportOutput = Export-AzResourceGroup -ResourceGroupName $rgname -Force -Resource @($r2.ResourceId) -IncludeParameterDefaultValue -IncludeComments
+        Assert-NotNull $exportOutput
+        Assert-True { $exportOutput.Path.Contains($rgname + ".json") }
+    }
+
+    finally
     {
         # Cleanup
         Clean-ResourceGroup $rgname

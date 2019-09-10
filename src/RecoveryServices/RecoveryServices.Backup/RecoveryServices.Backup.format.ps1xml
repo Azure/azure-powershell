@@ -459,6 +459,10 @@
             <Label>WorkloadsPresent</Label>
             <Width>20</Width>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HealthStatus</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -475,8 +479,11 @@
               <TableColumnItem>
                 <PropertyName>ContainerType</PropertyName>
               </TableColumnItem>
-            <TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>WorkloadsPresent</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HealthStatus</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -510,6 +517,10 @@
             <Label>ProtectionStatus</Label>
             <Width>20</Width>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HealthStatus</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -528,6 +539,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProtectionStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HealthStatus</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -605,7 +619,11 @@
             <Width>40</Width>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>IsProtected</Label>
+            <Label>ServerName</Label>
+            <Width>40</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsAutoProtected</Label>
             <Width>20</Width>
           </TableColumnHeader>
         </TableHeaders>
@@ -622,7 +640,10 @@
                 <PropertyName>ParentName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ProtectionState</PropertyName>
+                <PropertyName>ServerName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsAutoProtected</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -653,7 +674,7 @@
             <Width>20</Width>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>LatestRecoveryPoint</Label>
+            <Label>LastBackupTime</Label>
             <Width>20</Width>
           </TableColumnHeader>
         </TableHeaders>
@@ -667,13 +688,13 @@
                 <PropertyName>WorkloadType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ParentName</PropertyName>
+                <PropertyName>ServerName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProtectionStatus</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>LatestRecoveryPoint</PropertyName>
+                <PropertyName>LastBackupTime</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

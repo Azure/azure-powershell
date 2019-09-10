@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ServiceBus.Models;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.ServiceBus.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands
 {
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         [Alias(AliasAuthorizationRuleName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Rights, e.g.  \"Listen\",\"Send\",\"Manage\"")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Rights, e.g.  \"" + Manage + "\",\"" + Send + "\",\"" + Listen + "\"")]
         [ValidateSet("Listen","Send","Manage", IgnoreCase = true)]
         public string[] Rights { get; set; }
 
@@ -63,6 +64,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             {
                 PSSharedAccessAuthorizationRuleAttributes sasRule = new PSSharedAccessAuthorizationRuleAttributes();
                 sasRule.Rights = new List<AccessRights?>();
+
+                if (Array.Exists(Rights, element => element.Equals(Manage) && (!Array.Exists(Rights, element1 => element1.Equals(Listen)) || !Array.Exists(Rights, element1 => element1.Equals(Send)))))
+                {
+                    Exception exManage = new Exception("Assigning '"+ Manage + "' to rights requires '"+Listen+"' and '"+Send+"' to be included with. e.g. @(\""+Manage+ "\",\"" + Listen + "\",\"" + Send + "\")");
+                    throw exManage;
+                }
 
                 foreach (string test in Rights)
                 {
@@ -99,6 +106,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             catch (ErrorResponseException ex)
             {
                 WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+            }
+            catch (Exception ex)
+            {
+                WriteError(new ErrorRecord(ex, ex.Message, ErrorCategory.OpenError, ex));
             }
 
         }

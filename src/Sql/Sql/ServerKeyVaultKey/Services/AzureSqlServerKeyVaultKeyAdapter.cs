@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
@@ -57,7 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services
         /// <returns>The Server Key Vault Key</returns>
         public AzureSqlServerKeyVaultKeyModel Get(string resourceGroupName, string serverName, string keyId)
         {
-            string keyName = AzureSqlServerKeyVaultKeyModel.CreateServerKeyNameFromKeyId(keyId);
+            string keyName = TdeKeyHelper.CreateServerKeyNameFromKeyId(keyId);
             var resp = Communicator.Get(resourceGroupName, serverName, keyName);
             return CreateServerKeyModelFromResponse(resourceGroupName, serverName, keyName, resp);
         }
@@ -104,7 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services
         /// <param name="keyId">KeyId of the Server Key Vault Key</param>
         public void Delete(string resourceGroupName, string serverName, string keyId)
         {
-            string keyName = AzureSqlServerKeyVaultKeyModel.CreateServerKeyNameFromKeyId(keyId);
+            string keyName = TdeKeyHelper.CreateServerKeyNameFromKeyId(keyId);
             Communicator.Delete(resourceGroupName, serverName, keyName);
         }
 

@@ -1,49 +1,45 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings?api-version=2017-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvcHJpY2luZ3M/YXBpLXZlcnNpb249MjAxNy0wOC0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings?api-version=2018-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvcHJpY2luZ3M/YXBpLXZlcnNpb249MjAxOC0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cee23a5f-0cb1-4eb4-b4c0-d5529537651c"
+          "ba121c01-7663-4a6b-87c4-568971724544"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3132.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.Security.SecurityCenterClient/0.9.0.0"
+          "FxVersion/4.6.27317.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/default\",\r\n      \"name\": \"default\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"pricingTier\": \"Standard\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Security/pricings/myService1\",\r\n      \"name\": \"myService1\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"pricingTier\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
-        "Content-Length": [
-          "445"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
+        "Cache-Control": [
+          "no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-request-id": [
-          "2d005499-e71d-4572-b393-b5779d6be770"
+          "e318150b-cb26-4984-bdbe-61420d5610ee"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "749"
         ],
         "x-ms-correlation-request-id": [
-          "848d1766-3a2f-4410-9dc4-c75b74ebffd1"
+          "55fec7e0-25a2-4353-9e93-8a55aba1f223"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH2:20180820T190940Z:848d1766-3a2f-4410-9dc4-c75b74ebffd1"
+          "UKWEST:20190307T160215Z:55fec7e0-25a2-4353-9e93-8a55aba1f223"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,16 +47,20 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
         "Date": [
-          "Mon, 20 Aug 2018 19:09:39 GMT"
+          "Thu, 07 Mar 2019 16:02:14 GMT"
         ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+        "Content-Length": [
+          "740"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
         ]
       },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/VirtualMachines\",\r\n      \"name\": \"VirtualMachines\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"pricingTier\": \"Standard\",\r\n        \"freeTrialRemainingTime\": \"PT0S\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/SqlServers\",\r\n      \"name\": \"SqlServers\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"pricingTier\": \"Standard\",\r\n        \"freeTrialRemainingTime\": \"PT0S\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/AppServices\",\r\n      \"name\": \"AppServices\",\r\n      \"type\": \"Microsoft.Security/pricings\",\r\n      \"properties\": {\r\n        \"pricingTier\": \"Standard\",\r\n        \"freeTrialRemainingTime\": \"PT0S\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],

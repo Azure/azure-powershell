@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 2E4F5C27-C50F-4133-B193-BC477BCD6778
@@ -17,7 +17,8 @@ Sets properties for a database, or moves an existing database into an elastic po
 ```
 Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <String>]
  [-RequestedServiceObjectiveName <String>] [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>]
- [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-LicenseType <String>] [-ServerName] <String>
+ [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-LicenseType <String>] [-ComputeModel <String>]
+ [-AutoPauseDelayInMinutes <Int32>] [-MinimumCapacity <Double>] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -26,8 +27,10 @@ Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <St
 ```
 Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <String>]
  [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-VCore <Int32>]
- [-ComputeGeneration <String>] [-LicenseType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ComputeGeneration <String>] [-LicenseType <String>] [-ComputeModel <String>]
+ [-AutoPauseDelayInMinutes <Int32>] [-MinimumCapacity <Double>] [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Rename
@@ -134,6 +137,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AutoPauseDelayInMinutes
+The auto pause delay in minutes for database (serverless only), -1 to opt out
+
+```yaml
+Type: System.Int32
+Parameter Sets: Update, VcoreBasedDatabase
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ComputeGeneration
 The compute generation to assign.
 
@@ -141,6 +159,21 @@ The compute generation to assign.
 Type: System.String
 Parameter Sets: VcoreBasedDatabase
 Aliases: Family
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComputeModel
+Computed model of Azure Sql database. Serverless or Provisioned
+
+```yaml
+Type: System.String
+Parameter Sets: Update, VcoreBasedDatabase
+Aliases:
 
 Required: False
 Position: Named
@@ -221,8 +254,8 @@ Accept wildcard characters: False
 
 ### -LicenseType
 The license type for the Azure Sql database. Possible values are:
-- BasePrice – Azure Hybrid Benefit (AHB) discounted pricing for existing SQL Server license owners is applied. Database price will be discounted for existing SQL Server license owners.
-- LicenseIncluded – Azure Hybrid Benefit (AHB) discount pricing for existing SQL Server license owners is not applied. Database price will include a new SQL Server license costs.
+- BasePrice - Azure Hybrid Benefit (AHB) discounted pricing for existing SQL Server license owners is applied. Database price will be discounted for existing SQL Server license owners.
+- LicenseIncluded - Azure Hybrid Benefit (AHB) discount pricing for existing SQL Server license owners is not applied. Database price will include a new SQL Server license costs.
 
 ```yaml
 Type: System.String
@@ -243,6 +276,22 @@ The maximum size of the Azure SQL Database in bytes.
 Type: System.Int64
 Parameter Sets: Update, VcoreBasedDatabase
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinimumCapacity
+The Minimal capacity that database will always have allocated, if not paused.
+For serverless Azure Sql databases only.
+
+```yaml
+Type: System.Double
+Parameter Sets: Update, VcoreBasedDatabase
+Aliases: MinVCore
 
 Required: False
 Position: Named
@@ -351,7 +400,7 @@ The Vcore number for the Azure Sql database
 ```yaml
 Type: System.Int32
 Parameter Sets: VcoreBasedDatabase
-Aliases: Capacity
+Aliases: Capacity, MaxVCore, MaxCapacity
 
 Required: False
 Position: Named
@@ -407,7 +456,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -52,6 +52,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpResourceId = "The Azure resource ID.";
 
+        public const string HelpDataFactoryV2ResourceId = "The Azure resource ID of V2 data factory.";
+
         public const string HelpResourceGroup = "The resource group name.";
 
         public const string HelpFactoryObject = "The data factory object.";
@@ -111,6 +113,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string HelpIntegrationRuntimeSetupScriptContainerSasUri = "The SAS URI of the Azure blob container that contains the custom setup script.";
 
         public const string HelpIntegrationRuntimeEdition = "The edition for SSIS integration runtime which could be Standard or Enterprise, default is Standard if it is not specified.";
+
+        public const string HelpIntegrationRuntimeDataProxyIntegrationRuntimeName = "The Self-Hosted Integration Runtime name which is used as a proxy.";
+
+        public const string HelpIntegrationRuntimeDataProxyStagingLinkedServiceName = "The Azure Blob Storage Linked Service name that references the staging data store to be used when moving data between Self-Hosted and Azure-SSIS Integration Runtime.";
+
+        public const string HelpIntegrationRuntimeDataProxyStagingPath = "The path in staging data store to be used when moving data between Self-Hosted and Azure-SSIS Integration Runtimes, a default container will be used if unspecified.";
 
         public const string HelpIntegrationRuntimeMaxParallelExecutionsPerNode = "Maximum parallel execution count per node for a managed dedicated integration runtime.";
 
@@ -198,5 +206,24 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpFactoryLocation = "The geographic region of the data factory.";
 
+        public const string HelpRepoConfigurationProjectName = "The project name for repo configuration.";
+
+        public const string HelpRepoConfigurationTenantId = "The tenant id for repo configuration.";
+
+        public const string HelpRepoConfigurationAccountName = "The account name for repo configuration.";
+
+        public const string HelpRepoConfigurationRepositoryName = "The repository name for repo configuration.";
+
+        public const string HelpRepoConfigurationHostName = "The host name for repo configuration.";
+
+        public const string HelpRepoConfigurationCollaborationBranch = "The collaboration branch for repo configuration.";
+
+        public const string HelpRepoConfigurationRootFolder = "The root folder for repo configuration.";
+
+        public const string HelpRepoConfigurationLastCommitId = "The last commit id for repo configuration.";
+
+        public const string Id = "Id";
+
+        public const string DataFactoryId = "DataFactoryId";
     }
 }

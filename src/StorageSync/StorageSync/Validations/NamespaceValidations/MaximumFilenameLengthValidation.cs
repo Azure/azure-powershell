@@ -16,51 +16,78 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 {
     using Interfaces;
 
-    public class MaximumFilenameLengthValidation : BaseNamespaceValidation
+    /// <summary>
+    /// Class MaximumFilenameLengthValidation.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations.NamespaceValidationBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations.NamespaceValidationBase" />
+    public class MaximumFilenameLengthValidation : NamespaceValidationBase
     {
         #region Fields and Properties
+        /// <summary>
+        /// The maximum filename length
+        /// </summary>
         private readonly int _maxFilenameLength;
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MaximumFilenameLengthValidation" /> class.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
         public MaximumFilenameLengthValidation(IConfiguration configuration): base(configuration, "Files/Directories over the name length limit", ValidationType.FilenameLength)
         {
-            this._maxFilenameLength = configuration.MaximumFilenameLength();
+            _maxFilenameLength = configuration.MaximumFilenameLength();
         }
         #endregion
 
         #region Protected methods
+        /// <summary>
+        /// Does the validate.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IFileInfo node)
         {
-            return this.ValidateInternal((INamedObjectInfo)node);
+            return ValidateInternal((INamedObjectInfo)node);
         }
 
+        /// <summary>
+        /// Does the validate.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IDirectoryInfo node)
         {
-            return this.ValidateInternal((INamedObjectInfo)node);
+            return ValidateInternal((INamedObjectInfo)node);
         }
         #endregion
 
         #region Private methods
 
+        /// <summary>
+        /// Validates the internal.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <returns>IValidationResult.</returns>
         private IValidationResult ValidateInternal(INamedObjectInfo node)
         {
-            bool filenameIsTooLong = node.Name.Length > this._maxFilenameLength;
+            bool filenameIsTooLong = node.Name.Length > _maxFilenameLength;
 
             if (filenameIsTooLong)
             {
                 return new ValidationResult
                 {
                     Result = Result.Fail,
-                    Description = $"Filename {node.Name} is too long. Max length is {this._maxFilenameLength}",
+                    Description = $"Filename {node.Name} is too long. Max length is {_maxFilenameLength}",
                     Level = ResultLevel.Error,
                     Path = node.FullName,
-                    Type = this.ValidationType,
-                    Kind = this.ValidationKind
+                    Type = ValidationType,
+                    Kind = ValidationKind
                 };
             }
 
-            return this.SuccessfulResult;
+            return SuccessfulResult;
         }
 
         #endregion

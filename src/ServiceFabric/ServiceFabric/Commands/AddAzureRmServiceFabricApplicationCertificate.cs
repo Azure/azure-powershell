@@ -21,9 +21,14 @@ using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
+    [CmdletDeprecation(ReplacementCmdletName = VerbsCommon.Add +
+        "-" +
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix +
+        "VmssSecret")]
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceFabricApplicationCertificate", SupportsShouldProcess = true), OutputType(typeof(PSKeyVault))]
     public class AddAzureRmServiceFabricApplicationCertificate : ServiceFabricClusterCertificateCmdlet
     {

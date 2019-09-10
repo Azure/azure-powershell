@@ -18,8 +18,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
     using Evaluation.Interfaces;
     using System;
 
+    /// <summary>
+    /// Class MockFactory.
+    /// </summary>
     static class MockFactory
     {
+        /// <summary>
+        /// Configurations the with invalid filenames.
+        /// </summary>
+        /// <param name="invalidFilenames">The invalid filenames.</param>
+        /// <returns>IConfiguration.</returns>
         public static IConfiguration ConfigurationWithInvalidFilenames(IEnumerable<string> invalidFilenames)
         {
             var configurationMockFactory = new Moq.Mock<IConfiguration>();
@@ -28,6 +36,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             return configurationMockFactory.Object;
         }
 
+        /// <summary>
+        /// Configurations the length of the with maximum filename.
+        /// </summary>
+        /// <param name="maxFilenameLength">Maximum length of the filename.</param>
+        /// <returns>IConfiguration.</returns>
         public static IConfiguration ConfigurationWithMaximumFilenameLength(int maxFilenameLength)
         {
             var configurationMockFactory = new Moq.Mock<IConfiguration>();
@@ -36,6 +49,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             return configurationMockFactory.Object;
         }
 
+        /// <summary>
+        /// Files the name of the with.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns>IFileInfo.</returns>
         public static IFileInfo FileWithName(string name)
         {
             var fileInfoMockFactory = new Moq.Mock<IFileInfo>();
@@ -44,6 +62,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             return fileInfoMockFactory.Object;
         }
 
+        /// <summary>
+        /// Configurations the with maximum file size of.
+        /// </summary>
+        /// <param name="maxFileSize">Maximum size of the file.</param>
+        /// <returns>IConfiguration.</returns>
         public static IConfiguration ConfigurationWithMaximumFileSizeOf(int maxFileSize)
         {
             var configurationMockFactory = new Moq.Mock<IConfiguration>();
@@ -53,6 +76,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             return configurationMockFactory.Object;
         }
 
+        /// <summary>
+        /// Configurations the with maximum dataset size of.
+        /// </summary>
+        /// <param name="maxDatasetSize">Maximum size of the dataset.</param>
+        /// <returns>IConfiguration.</returns>
         public static IConfiguration ConfigurationWithMaximumDatasetSizeOf(long maxDatasetSize)
         {
             var configurationMockFactory = new Moq.Mock<IConfiguration>();
@@ -62,6 +90,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             return configurationMockFactory.Object;
         }
 
+        /// <summary>
+        /// Directories the with path.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <returns>IDirectoryInfo.</returns>
         internal static IDirectoryInfo DirectoryWithPath(string path)
         {
             var directoryInfoMockFactory = new Moq.Mock<IDirectoryInfo>();
@@ -70,6 +103,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             return directoryInfoMockFactory.Object;
         }
 
+        /// <summary>
+        /// Files the with size of.
+        /// </summary>
+        /// <param name="size">The size.</param>
+        /// <returns>IFileInfo.</returns>
         public static IFileInfo FileWithSizeOf(int size)
         {
             var fileInfoMockFactory = new Moq.Mock<IFileInfo>();
@@ -78,6 +116,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             return fileInfoMockFactory.Object;
         }
 
+        /// <summary>
+        /// Directories the name of the with.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns>IDirectoryInfo.</returns>
         public static IDirectoryInfo DirectoryWithName(string name)
         {
             var directoryInfoMockFactory = new Moq.Mock<IDirectoryInfo>();
@@ -86,6 +129,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             return directoryInfoMockFactory.Object;
         }
 
+        /// <summary>
+        /// Configurations the with maximum path length of.
+        /// </summary>
+        /// <param name="maxPathLength">Maximum length of the path.</param>
+        /// <returns>IConfiguration.</returns>
         public static IConfiguration ConfigurationWithMaximumPathLengthOf(int maxPathLength)
         {
             var configurationMockFactory = new Moq.Mock<IConfiguration>();
@@ -95,6 +143,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             return configurationMockFactory.Object;
         }
 
+        /// <summary>
+        /// Files the with path.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <returns>IFileInfo.</returns>
         public static IFileInfo FileWithPath(string path)
         {
             var fileInfoMockFactory = new Moq.Mock<IFileInfo>();
@@ -103,6 +156,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             return fileInfoMockFactory.Object;
         }
 
+        /// <summary>
+        /// Configurations the with maximum depth of.
+        /// </summary>
+        /// <param name="maxDepth">The maximum depth.</param>
+        /// <returns>IConfiguration.</returns>
         public static IConfiguration ConfigurationWithMaximumDepthOf(int maxDepth)
         {
             var configurationMockFactory = new Moq.Mock<IConfiguration>();
@@ -112,6 +170,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             return configurationMockFactory.Object;
         }
 
+        /// <summary>
+        /// Configurations the with valid os versions.
+        /// </summary>
+        /// <param name="validOsVersions">The valid os versions.</param>
+        /// <returns>IConfiguration.</returns>
         public static IConfiguration ConfigurationWithValidOSVersions(List<string> validOsVersions)
         {
             var configurationMockFactory = new Moq.Mock<IConfiguration>();
@@ -120,6 +183,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             return configurationMockFactory.Object;
         }
 
+        /// <summary>
+        /// Namespaces the size of the with path and.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="size">The size.</param>
+        /// <returns>INamespaceInfo.</returns>
         public static INamespaceInfo NamespaceWithPathAndSize(string path, long size)
         {
             var namespaceInfoMock = new Moq.Mock<INamespaceInfo>();
@@ -129,6 +198,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             return namespaceInfoMock.Object;
         }
 
+        /// <summary>
+        /// Directories the with given parameters.
+        /// </summary>
+        /// <param name="root">The root.</param>
+        /// <param name="depth">The depth.</param>
+        /// <param name="numberOfDirectories">The number of directories.</param>
+        /// <param name="numberOfFilesPerDirectory">The number of files per directory.</param>
+        /// <param name="totalSize">The total size.</param>
+        /// <returns>IDirectoryInfo.</returns>
         public static IDirectoryInfo DirectoryWithGivenParameters(
             string root, 
             int depth,
@@ -164,6 +242,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             return plop.Object;
         }
 
+        /// <summary>
+        /// Directorieses the with given parameters recursive.
+        /// </summary>
+        /// <param name="root">The root.</param>
+        /// <param name="level">The level.</param>
+        /// <param name="numberOfDirectories">The number of directories.</param>
+        /// <param name="numberOfFilesPerDirectory">The number of files per directory.</param>
+        /// <param name="totalSize">The total size.</param>
+        /// <returns>List&lt;IDirectoryInfo&gt;.</returns>
         private static List<IDirectoryInfo> DirectoriesWithGivenParametersRecursive(string root, int level, int numberOfDirectories, int numberOfFilesPerDirectory, long totalSize)
         {
             var remainingSize = totalSize;
@@ -204,6 +291,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             return LevelDirectories;
         }
 
+        /// <summary>
+        /// Creates the file information objects.
+        /// </summary>
+        /// <param name="root">The root.</param>
+        /// <param name="level">The level.</param>
+        /// <param name="count">The count.</param>
+        /// <param name="totalSize">The total size.</param>
+        /// <returns>List&lt;IFileInfo&gt;.</returns>
         private static List<IFileInfo> CreateFileInfoObjects(string root, int level, int count, long totalSize)
         {
             var remainingSize = totalSize;

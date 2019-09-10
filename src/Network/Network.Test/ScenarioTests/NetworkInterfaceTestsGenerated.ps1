@@ -88,6 +88,18 @@ function Test-NetworkInterfaceCRUDMinimalParameters
         $listNetworkInterface = Get-AzNetworkInterface;
         Assert-NotNull ($listNetworkInterface | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
+        # Get all NetworkInterfaces in subscription wildcard for resource group
+        $listNetworkInterface = Get-AzNetworkInterface -ResourceGroupName "*";
+        Assert-NotNull ($listNetworkInterface | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all NetworkInterfaces in subscription wildcard for name
+        $listNetworkInterface = Get-AzNetworkInterface -Name "*";
+        Assert-NotNull ($listNetworkInterface | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all NetworkInterfaces in subscription wildcard for both resource group and name
+        $listNetworkInterface = Get-AzNetworkInterface -ResourceGroupName "*" -Name "*";
+        Assert-NotNull ($listNetworkInterface | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
         # Remove NetworkInterface
         $job = Remove-AzNetworkInterface -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
         $job | Wait-Job;
@@ -180,6 +192,18 @@ function Test-NetworkInterfaceCRUDAllParameters
         $listNetworkInterface = Get-AzNetworkInterface;
         Assert-NotNull ($listNetworkInterface | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
+        # Get all NetworkInterfaces in subscription wildcard for resource group
+        $listNetworkInterface = Get-AzNetworkInterface -ResourceGroupName "*";
+        Assert-NotNull ($listNetworkInterface | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all NetworkInterfaces in subscription wildcard for name
+        $listNetworkInterface = Get-AzNetworkInterface -Name "*";
+        Assert-NotNull ($listNetworkInterface | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all NetworkInterfaces in subscription wildcard for both resource group and name
+        $listNetworkInterface = Get-AzNetworkInterface -ResourceGroupName "*" -Name "*";
+        Assert-NotNull ($listNetworkInterface | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
         # Set NetworkInterface
         $vNetworkInterface.DnsSettings.InternalDnsNameLabel = $InternalDnsNameLabelSet;
         $vNetworkInterface.EnableAcceleratedNetworking = $EnableAcceleratedNetworkingSet;
@@ -207,6 +231,18 @@ function Test-NetworkInterfaceCRUDAllParameters
 
         # Get all NetworkInterfaces in subscription
         $listNetworkInterface = Get-AzNetworkInterface;
+        Assert-NotNull ($listNetworkInterface | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all NetworkInterfaces in subscription wildcard for resource group
+        $listNetworkInterface = Get-AzNetworkInterface -ResourceGroupName "*";
+        Assert-NotNull ($listNetworkInterface | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all NetworkInterfaces in subscription wildcard for name
+        $listNetworkInterface = Get-AzNetworkInterface -Name "*";
+        Assert-NotNull ($listNetworkInterface | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all NetworkInterfaces in subscription wildcard for both resource group and name
+        $listNetworkInterface = Get-AzNetworkInterface -ResourceGroupName "*" -Name "*";
         Assert-NotNull ($listNetworkInterface | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove NetworkInterface

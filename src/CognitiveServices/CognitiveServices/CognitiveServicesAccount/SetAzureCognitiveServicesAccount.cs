@@ -12,10 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Management.CognitiveServices.Models;
 using Microsoft.Azure.Commands.Management.CognitiveServices.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -65,12 +67,39 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [AllowEmptyCollection]
         public Hashtable[] Tag { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Cognitive Services Account Subdomain Name.")]
+        [ValidateNotNull]
+        [AllowEmptyCollection]
+        public string CustomSubdomainName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "NetworkRuleSet is used to define a set of configuration rules for firewalls and virtual networks, as well as to set values for network properties such as how to handle requests that don't match any of the defined rules")]
+        [ValidateNotNull]
+        [AllowEmptyCollection]
+        public PSNetworkRuleSet NetworkRuleSet { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            bool hasPropertiesChange = false;
+            var properties = new JObject();
+            if (!string.IsNullOrWhiteSpace(CustomSubdomainName))
+            {
+                hasPropertiesChange = true;
+                properties["customSubDomainName"] = CustomSubdomainName;
+            }
+            if (NetworkRuleSet != null)
+            {
+                hasPropertiesChange = true;
+                properties["networkAcls"] = JToken.FromObject(NetworkRuleSet);
+            }
 
             Sku sku = null;
             if (!string.IsNullOrWhiteSpace(this.SkuName))
@@ -100,10 +129,17 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             }
             else
             {
-                // Not updating anything (this is allowed) - just return the account, no need for approval.
-                var cognitiveServicesAccount = this.CognitiveServicesClient.Accounts.GetProperties(this.ResourceGroupName, this.Name);
-                WriteCognitiveServicesAccount(cognitiveServicesAccount);
-                return;
+                if (!hasPropertiesChange)
+                {
+                    // Not updating anything (this is allowed) - just return the account, no need for approval.
+                    var cognitiveServicesAccount = this.CognitiveServicesClient.Accounts.GetProperties(this.ResourceGroupName, this.Name);
+                    WriteCognitiveServicesAccount(cognitiveServicesAccount);
+                    return;
+                }
+                else
+                {
+                    processMessage = string.Format(CultureInfo.CurrentCulture, Resources.SetAccount_ProcessMessage, this.Name);
+                }
             }
 
             if (ShouldProcess(
@@ -117,7 +153,8 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         this.ResourceGroupName,
                         this.Name,
                         sku,
-                        tags);
+                        tags,
+                        properties);
 
                     WriteCognitiveServicesAccount(updatedAccount);
                 });

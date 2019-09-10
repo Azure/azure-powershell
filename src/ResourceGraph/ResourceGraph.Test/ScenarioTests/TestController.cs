@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Internal.Subscriptions;
+using Microsoft.Azure.Internal.Subscriptions.Version2018_06_01;
 using Microsoft.Azure.Management.ResourceGraph;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;

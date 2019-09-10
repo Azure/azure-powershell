@@ -66,13 +66,15 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// The source of the SSL certificate
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The source of the SSL certificate")]
-        public PSCertificateSource CertificateSource { get; set; }
+        [PSArgumentCompleter("AzureKeyVault", "FrontDoor")]
+        public string CertificateSource { get; set; }
 
         /// <summary>
         /// Defines the TLS extension protocol that is used for secure delivery
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The TLS extension protocol that is used for secure delivery")]
-        public PSProtocolType ProtocolType { get; set; }
+        [PSArgumentCompleter("ServerNameIndication", "IPBased")]
+        public string ProtocolType { get; set; }
 
         /// <summary>
         /// Defines the TLS extension protocol that is used for secure delivery
@@ -96,7 +98,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// the type of the certificate used for secure connections to a frontendEndpoint
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "the type of the certificate used for secure connections to a frontendEndpoint")]
-        public PSCertificateType CertificateType { get; set; }
+        [PSArgumentCompleter("Shared", "Dedicated")]
+        public string CertificateType { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var FrontendEndpoint = new PSFrontendEndpoint

@@ -181,59 +181,81 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region VMSS 
 
-        protected VirtualMachineScaleSet GetVmss(string name)
+        protected VirtualMachineScaleSet GetVmss(string name, string clusterId)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
                 throw new PSArgumentNullException("Invalid vmss name");
             }
 
-            var result = ComputeClient.VirtualMachineScaleSets.List(ResourceGroupName);
-            if (result == null || !result.Any())
+            var vmssPages = ComputeClient.VirtualMachineScaleSets.List(ResourceGroupName);
+            if (vmssPages == null || !vmssPages.Any())
             {
                 throw new PSArgumentException(string.Format(
                     ServiceFabricProperties.Resources.NoVMSSFoundInRG,
                     this.ResourceGroupName));
             }
 
-            var vmss = result.FirstOrDefault(
-                vm => vm.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
-
-            if (vmss == null)
+            do
             {
-                throw new PSInvalidOperationException(
-                    string.Format(
-                        ServiceFabricProperties.Resources.CannotFindVMSS, 
-                        name));
-            }
+                if (!vmssPages.Any())
+                {
+                    break;
+                }
 
-            return vmss;
+                foreach (var vmss in vmssPages)
+                {
+                    VirtualMachineScaleSetExtension sfExtension;
+                    if (TryGetFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile?.Extensions, out sfExtension))
+                    {
+                        if (string.Equals(GetClusterIdFromExtension(sfExtension), clusterId, StringComparison.OrdinalIgnoreCase))
+                        {
+                            WriteVerboseWithTimestamp(string.Format("GetVmss: Found vmss {0} that corresponds to cluster id {1}", vmss.Id, clusterId));
+                            string nodeTypeRef = GetNodeTypeRefFromExtension(sfExtension);
+                            if (string.Equals(nodeTypeRef, name, StringComparison.OrdinalIgnoreCase))
+                            {
+                                return vmss;
+                            }
+                        }
+                    }
+                }
+            } while (!string.IsNullOrEmpty(vmssPages.NextPageLink) &&
+                     (vmssPages = this.ComputeClient.VirtualMachineScaleSets.ListNext(vmssPages.NextPageLink)) != null);
+
+            throw new PSInvalidOperationException(
+                    string.Format(
+                        ServiceFabricProperties.Resources.CannotFindVMSS,
+                        name));
         }
 
         public bool TryGetFabricVmExt(IList<VirtualMachineScaleSetExtension> extensions, out VirtualMachineScaleSetExtension sfExtension)
         {
-            var extConfigs = extensions.Where(
-                    e =>e.Type.Equals(
-                       Constants.ServiceFabricWindowsNodeExtName, StringComparison.OrdinalIgnoreCase));
-
-            if (!extConfigs.Any())
+            if (extensions == null)
             {
-                extConfigs = extensions.Where(
-                   e => e.Type.Equals(Constants.ServiceFabricLinuxNodeExtName, StringComparison.OrdinalIgnoreCase));
                 sfExtension = null;
                 return false;
             }
 
-            sfExtension = extConfigs.First();
-            return true;
+            sfExtension = extensions.FirstOrDefault(ext => IsSFExtension(ext));
+            return sfExtension != null;
         }
 
         public string GetClusterIdFromExtension(VirtualMachineScaleSetExtension sfExtension)
         {
-            JObject extSettings = (JObject)sfExtension.Settings;
-            string clusterEndpoint = (string)extSettings.SelectToken("clusterEndpoint");
-            string id = clusterEndpoint.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+            string clusterEndpoint = GetSettingFromExtension(sfExtension, "clusterEndpoint");
+            string id = clusterEndpoint?.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
             return id;
+        }
+
+        public string GetNodeTypeRefFromExtension(VirtualMachineScaleSetExtension sfExtension)
+        {
+            return GetSettingFromExtension(sfExtension, "nodeTypeRef");
+        }
+
+        internal string GetSettingFromExtension(VirtualMachineScaleSetExtension sfExtension, string settingName)
+        {
+            JObject extSettings = sfExtension.Settings as JObject;
+            return (string)extSettings.SelectToken(settingName);
         }
 
         #endregion
@@ -665,6 +687,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 Environment.NewLine);
 
             return message;
+        }
+
+        private bool IsSFExtension(VirtualMachineScaleSetExtension vmssExt)
+        {
+            return vmssExt.Type.Equals(Constants.ServiceFabricWindowsNodeExtName, StringComparison.OrdinalIgnoreCase) ||
+                   vmssExt.Type.Equals(Constants.ServiceFabricLinuxNodeExtName, StringComparison.OrdinalIgnoreCase);
         }
         #endregion
     }

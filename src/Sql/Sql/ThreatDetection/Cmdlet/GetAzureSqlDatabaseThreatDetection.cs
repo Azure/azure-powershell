@@ -14,13 +14,16 @@
 
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
 {
     /// <summary>
-    /// Returns the auditing policy of a specific database.
+    /// Returns the advanced threat protection settings of a specific database.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseThreatDetectionPolicy", SupportsShouldProcess = true),OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
+    [GenericBreakingChange("Get-AzSqlDatabaseThreatDetectionPolicy alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseAdvancedThreatProtectionSettings", SupportsShouldProcess = true),OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
+    [Alias("Get-AzSqlDatabaseThreatDetectionPolicy")]
     public class AzureRmSqlDatabaseThreatDetectionPolicy : SqlDatabaseThreatDetectionCmdletBase
     {
         /// <summary>

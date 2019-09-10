@@ -2,9 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.WindowsAzure.Storage.File.CloudFileShare</Name>
+      <Name>Microsoft.Azure.Storage.File.CloudFileShare</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.WindowsAzure.Storage.File.CloudFileShare</TypeName>
+        <TypeName>Microsoft.Azure.Storage.File.CloudFileShare</TypeName>
       </ViewSelectedBy>
       <GroupBy>
         <ScriptBlock>$_.ServiceClient.BaseUri</ScriptBlock>
@@ -51,10 +51,10 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.WindowsAzure.Storage.File.CloudFileItems</Name>
+      <Name>Microsoft.Azure.Storage.File.CloudFileItems</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.WindowsAzure.Storage.File.CloudFile</TypeName>
-        <TypeName>Microsoft.WindowsAzure.Storage.File.CloudFileDirectory</TypeName>
+        <TypeName>Microsoft.Azure.Storage.File.CloudFile</TypeName>
+        <TypeName>Microsoft.Azure.Storage.File.CloudFileDirectory</TypeName>
       </ViewSelectedBy>
       <GroupBy>
         <ScriptBlock>$_.Parent.SnapshotQualifiedUri</ScriptBlock>
@@ -95,9 +95,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer</Name>
+      <Name>Microsoft.Azure.Storage.Blob.CloudBlobContainer</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer</TypeName>
+        <TypeName>Microsoft.Azure.Storage.Blob.CloudBlobContainer</TypeName>
       </ViewSelectedBy>
       <GroupBy>
         <ScriptBlock>$_.ServiceClient.BaseUri</ScriptBlock>
@@ -138,12 +138,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.WindowsAzure.Storage.Blob.ICloudBlob</Name>
+      <Name>Microsoft.Azure.Storage.Blob.ICloudBlob</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.WindowsAzure.Storage.Blob.ICloudBlob</TypeName>
-        <TypeName>Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob</TypeName>
-        <TypeName>Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob</TypeName>
-        <TypeName>Microsoft.WindowsAzure.Storage.Blob.CloudAppendBlob</TypeName>
+        <TypeName>Microsoft.Azure.Storage.Blob.ICloudBlob</TypeName>
+        <TypeName>Microsoft.Azure.Storage.Blob.CloudBlockBlob</TypeName>
+        <TypeName>Microsoft.Azure.Storage.Blob.CloudPageBlob</TypeName>
+        <TypeName>Microsoft.Azure.Storage.Blob.CloudAppendBlob</TypeName>
       </ViewSelectedBy>
       <GroupBy>
         <ScriptBlock>$_.Container.Uri</ScriptBlock>
@@ -269,9 +269,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.WindowsAzure.Storage.Queue.CloudQueue</Name>
+      <Name>Microsoft.Azure.Storage.Queue.CloudQueue</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.WindowsAzure.Storage.Queue.CloudQueue</TypeName>
+        <TypeName>Microsoft.Azure.Storage.Queue.CloudQueue</TypeName>
       </ViewSelectedBy>
       <GroupBy>
         <ScriptBlock>$_.ServiceClient.BaseUri</ScriptBlock>
@@ -360,9 +360,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.WindowsAzure.Storage.Shared.Protocol.ServiceProperties</Name>
+      <Name>Microsoft.Azure.Storage.Shared.Protocol.ServiceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.WindowsAzure.Storage.Shared.Protocol.ServiceProperties</TypeName>
+        <TypeName>Microsoft.Azure.Storage.Shared.Protocol.ServiceProperties</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -438,9 +438,9 @@
       </ListControl>
     </View>  
     <View>
-      <Name>Microsoft.WindowsAzure.Storage.Shared.Protocol.LoggingProperties</Name>
+      <Name>Microsoft.Azure.Storage.Shared.Protocol.LoggingProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.WindowsAzure.Storage.Shared.Protocol.LoggingProperties</TypeName>
+        <TypeName>Microsoft.Azure.Storage.Shared.Protocol.LoggingProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -478,9 +478,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.WindowsAzure.Storage.Shared.Protocol.MetricsProperties</Name>
+      <Name>Microsoft.Azure.Storage.Shared.Protocol.MetricsProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.WindowsAzure.Storage.Shared.Protocol.MetricsProperties</TypeName>
+        <TypeName>Microsoft.Azure.Storage.Shared.Protocol.MetricsProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

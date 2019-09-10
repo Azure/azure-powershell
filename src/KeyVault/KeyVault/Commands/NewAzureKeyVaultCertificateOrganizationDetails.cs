@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -21,8 +22,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
     /// <summary>
     /// New-AzKeyVaultOrganizationDetails creates an in-memory organization details object
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateOrganizationDetails",SupportsShouldProcess = true)]
+    [GenericBreakingChange("New-AzKeyVaultCertificateOrganizationDetails alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateOrganizationDetail",SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVaultCertificateOrganizationDetails))]
+    [Alias("New-AzKeyVaultCertificateOrganizationDetails")]
     public class NewAzureKeyVaultCertificateOrganizationDetails : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions

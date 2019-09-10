@@ -408,7 +408,7 @@
     <value>The runbook type is invalid for the file extension. PowerShell workflow and scripts should be .ps1. Graph runbook extension should be .graphrunbook. Provided file extension: {0}  </value>
   </data>
   <data name="RunbookFileAlreadyExists" xml:space="preserve">
-    <value>Runbook file already exists. Specify the force switch switch overwrite. Runbook file name: {0}</value>
+    <value>Runbook file already exists. Specify the force switch to overwrite. Runbook file name: {0}</value>
     <comment>Automation</comment>
   </data>
   <data name="FileNameRunbookNameMismatch" xml:space="preserve">
@@ -468,7 +468,7 @@
     <value>No JobId passed. Please pass a valid JobId.</value>
   </data>
   <data name="SoftwareUpdateConfigurationHasNoTargetComputers" xml:space="preserve">
-    <value>Software update configuration has no target computers.</value>
+    <value>Software update configuration has no target computers or dynamic group queries specified.</value>
   </data>
   <data name="SourceControlCreateAction" xml:space="preserve">
     <value>Creating Azure Automation Source Control.</value>
@@ -489,5 +489,8 @@
   <data name="SoftwareUpdateConfigurationRemoveOperation" xml:space="preserve">
     <value>Removing Azure Automation Software Update Configuration.</value>
     <comment>Automation</comment>
+  </data>
+  <data name="SoftwareUpdateConfigurationInvalidTagFormat" xml:space="preserve">
+    <value>The Tag format is invalid. Valid Tag format is hashtable with string key and value of String or array of string.</value>
   </data>
 </root>

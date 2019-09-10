@@ -680,7 +680,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
             using (var request = new RequestSettings(this.automationManagementClient))
             {
-                this.automationManagementClient.RunbookDraft.Publish(resourceGroupName, automationAccountName, runbookName);
+                this.automationManagementClient.Runbook.Publish(resourceGroupName, automationAccountName, runbookName);
 
                 return this.GetRunbook(resourceGroupName, automationAccountName, runbookName);
             }
@@ -856,10 +856,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
             string password,
             string description)
         {
-            var exisitngCredential = this.GetCredential(resourceGroupName, automationAccountName, name);
+            var existingCredential = this.GetCredential(resourceGroupName, automationAccountName, name);
             var credentialUpdateParams = new CredentialUpdateParameters();
             credentialUpdateParams.Name = name;
-            credentialUpdateParams.Description = description ?? exisitngCredential.Description;
+            credentialUpdateParams.Description = description ?? existingCredential.Description;
 
             if (!string.IsNullOrWhiteSpace(userName))
             {
@@ -1210,8 +1210,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (connectionModel.FieldDefinitionValues.ContainsKey(connectionFieldName))
             {
-                connectionModel.FieldDefinitionValues[connectionFieldName] =
-                    PowerShellJsonConverter.Serialize(value);
+                if (value is string)
+                {
+                    connectionModel.FieldDefinitionValues[connectionFieldName] = value.ToString();
+                }
+                else
+                {
+                    connectionModel.FieldDefinitionValues[connectionFieldName] =
+                        PowerShellJsonConverter.Serialize(value);
+                }
             }
             else
             {

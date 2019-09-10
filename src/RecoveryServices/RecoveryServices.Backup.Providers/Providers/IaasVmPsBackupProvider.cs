@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         AzureWorkloadProviderHelper AzureWorkloadProviderHelper { get; set; }
 
         /// <summary>
-        /// Initializes the provider with the data recieved from the cmdlet layer
+        /// Initializes the provider with the data received from the cmdlet layer
         /// </summary>
         /// <param name="providerData">Data from the cmdlet layer intended for the provider</param>
         /// <param name="serviceClientAdapter">Service client adapter for communicating with the backend service</param>
@@ -86,6 +86,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string protectedItemUri = "";
             bool isComputeAzureVM = false;
             string sourceResourceId = null;
+
+            AzureVmPolicy azureVmPolicy = (AzureVmPolicy)ProviderData[ItemParams.Policy];
+            ValidateProtectedItemCount(azureVmPolicy);
 
             if (itemBase == null)
             {
@@ -528,6 +531,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                 (CmdletModel.SimpleSchedulePolicy)schedulePolicy);
             Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
 
+            int snapshotRetentionInDays = 2;
+            if (((CmdletModel.SimpleSchedulePolicy)schedulePolicy).ScheduleRunFrequency == CmdletModel.ScheduleRunType.Weekly)
+            {
+                snapshotRetentionInDays = 5;
+            }
             // construct Service Client policy request            
             ProtectionPolicyResource serviceClientRequest = new ProtectionPolicyResource()
             {
@@ -537,7 +545,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                                 (CmdletModel.LongTermRetentionPolicy)retentionPolicy),
                     SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
                                                 (CmdletModel.SimpleSchedulePolicy)schedulePolicy),
-                    TimeZone = DateTimeKind.Utc.ToString().ToUpper()
+                    TimeZone = DateTimeKind.Utc.ToString().ToUpper(),
+                    InstantRpRetentionRangeInDays = snapshotRetentionInDays
                 }
 
             };
@@ -575,12 +584,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ValidateAzureVMProtectionPolicy(policy);
             Logger.Instance.WriteDebug("Validation of Protection Policy is successful");
 
-            // RetentionPolicy and SchedulePolicy both should not be empty
-            if (retentionPolicy == null && schedulePolicy == null)
-            {
-                throw new ArgumentException(Resources.BothRetentionAndSchedulePoliciesEmpty);
-            }
-
             // validate RetentionPolicy and SchedulePolicy
             if (schedulePolicy != null)
             {
@@ -607,6 +610,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (CmdletModel.SimpleSchedulePolicy)((AzureVmPolicy)policy).SchedulePolicy);
             Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
 
+            //Validate instant RP retention days
+            ValidateInstantRPRetentionDays(((AzureVmPolicy)policy));
+
             // construct Service Client policy request            
             ProtectionPolicyResource serviceClientRequest = new ProtectionPolicyResource()
             {
@@ -616,7 +622,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                   (CmdletModel.LongTermRetentionPolicy)((AzureVmPolicy)policy).RetentionPolicy),
                     SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
                                   (CmdletModel.SimpleSchedulePolicy)((AzureVmPolicy)policy).SchedulePolicy),
-                    TimeZone = DateTimeKind.Utc.ToString().ToUpper()
+                    TimeZone = DateTimeKind.Utc.ToString().ToUpper(),
+                    InstantRpRetentionRangeInDays = ((AzureVmPolicy)policy).SnapshotRetentionInDays
                 }
             };
 
@@ -831,6 +838,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         #region private
 
+
+        private void ValidateProtectedItemCount(AzureVmPolicy azureVmPolicy)
+        {
+            if (azureVmPolicy.ProtectedItemsCount > 100)
+            {
+                throw new ArgumentException(Resources.ProtectedItemsCountExceededException);
+            }
+        }
+
         private void ValidateAzureVMWorkloadType(CmdletModel.WorkloadType type)
         {
             if (type != CmdletModel.WorkloadType.AzureVM)
@@ -884,7 +900,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             ValidateAzureVMWorkloadType(policy.WorkloadType);
-
             // call validation
             policy.Validate();
         }
@@ -935,6 +950,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             ValidateAzureVMWorkloadType(itemBase.WorkloadType);
             ValidateAzureVMContainerType(itemBase.ContainerType);
+        }
+
+        private void ValidateInstantRPRetentionDays(AzureVmPolicy policy)
+        {
+            if (((CmdletModel.SimpleSchedulePolicy)policy.SchedulePolicy).ScheduleRunFrequency == CmdletModel.ScheduleRunType.Weekly)
+            {
+                if (policy.SnapshotRetentionInDays != 5)
+                {
+                    throw new ArgumentException(string.Format(Resources.InstantRPRetentionDaysException));
+                }
+            }
+            else if ((((CmdletModel.SimpleSchedulePolicy)policy.SchedulePolicy).ScheduleRunFrequency == CmdletModel.ScheduleRunType.Daily))
+            {
+                if (policy.SnapshotRetentionInDays < 1 || policy.SnapshotRetentionInDays > 5)
+                {
+                    throw new ArgumentException(string.Format(Resources.InstantRPRetentionDaysException));
+                }
+            }
         }
 
         private bool IsComputeAzureVM(string virtualMachineId)

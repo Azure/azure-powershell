@@ -80,5 +80,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
                 return null;
             }
         }
+
+        public PsApiManagementArmResource() { }
+
+        public PsApiManagementArmResource(string armResourceId)
+        {
+            this.Id = armResourceId;
+        }
     }
 }

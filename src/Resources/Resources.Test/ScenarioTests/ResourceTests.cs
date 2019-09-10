@@ -147,6 +147,20 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetChildResourcesById()
+        {
+            TestRunner.RunTestScript("Test-GetChildResourcesById");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetNestedResourceByPiping()
+        {
+            TestRunner.RunTestScript("Test-SetNestedResourceByPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourceByComponentsAndProperties()
         {
             TestRunner.RunTestScript("Test-GetResourceByComponentsAndProperties");

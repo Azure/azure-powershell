@@ -17,6 +17,7 @@ $resourceGroupName = "pstestwlRG1bca8"
 $vaultName = "pstestwlRSV1bca8"
 $resourceId = "/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestwlRG1bca8/providers/Microsoft.Compute/virtualMachines/pstestwlvm1bca8"
 $policyName = "HourlyLogBackup"
+$instanceName = "sqlinstance;mssqlserver"
 
 function Test-AzureVmWorkloadProtectableItem
 {
@@ -58,6 +59,16 @@ function Test-AzureVmWorkloadProtectableItem
 			-ItemType "SQLDataBase";
 		Assert-True { $protectableItems.ProtectableItemType -contains "SQLDataBase" }
 		Assert-False { $protectableItems.ProtectableItemType -contains "SQLInstance" }
+
+		$protectableItems = Get-AzRecoveryServicesBackupProtectableItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType "MSSQL" `
+			-Name $instanceName `
+			-ServerName $containerName;
+
+		Assert-True { $protectableItems.ProtectableItemType -contains "SQLInstance" }
+		Assert-True { $protectableItems.Count -eq 1}
 	}
 	finally
 	{

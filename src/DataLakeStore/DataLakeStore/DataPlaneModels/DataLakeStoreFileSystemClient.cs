@@ -777,49 +777,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="filter">Query to match items in trash</param>
         /// <param name="count">Minimum number of entries to search for</param>
         /// <param name="cmdletCancellationToken">CancellationToken</param>
-        public IEnumerable<TrashEntry> EnumerateDeletedItems(string accountName, string filter, int count, CancellationToken cmdletCancellationToken = default(CancellationToken))
+        public IEnumerable<TrashEntry> EnumerateDeletedItems(string accountName, string filter, int count, Cmdlet cmdlet, CancellationToken cmdletCancellationToken = default(CancellationToken))
         {
-            IEnumerable<TrashEntry> result = null;
-            Task enumerateTask = null;
-            bool completed = false;
-            object syncPrimitive = new object();
-
-            var progressTracker = new Progress<EnumerateDeletedItemsProgress>();
-            progressTracker.ProgressChanged += (s, e) =>
+            var client = AdlsClientFactory.GetAdlsClient(accountName, _context);
+            if (_isDebugEnabled)
             {
-                // TODO: Update job progress here
-                lock (syncPrimitive)
-                {
-                    if (e.NumFound >= count || String.IsNullOrEmpty(e.NextListAfter))
-                    {
-                        completed = true;
-                    }
-
-                    Monitor.Pulse(syncPrimitive);
-                }
-            };
-
-            enumerateTask = Task.Run(() =>
-            {
-                result = AdlsClientFactory.GetAdlsClient(accountName, _context).EnumerateDeletedItems(filter, "", count, progressTracker, cmdletCancellationToken);
-            }, cmdletCancellationToken);
-
-            // Keep printing (?) the updates returned by successive calls by the SDK to the backend, until the whole query completes
-            while(true)
-            {
-                lock (syncPrimitive)
-                {
-                    Monitor.Wait(syncPrimitive);
-                    if(completed)
-                    {
-                        break;
-                    }
-                }
+                IEnumerable<TrashEntry> result = null;
+                // Api call below consists of multiple rest calls so multiple debug statements will be posted
+                // so since we want to the debug lines to be updated while the command runs, we have to flush the debug statements in queue and thats why we want to do it this way
+                var enumerateTask = Task.Run(() => {
+                result = client.EnumerateDeletedItems(filter, "", count, null, cmdletCancellationToken);
+                }, cmdletCancellationToken);
+                TrackTaskProgress(enumerateTask, cmdlet, null, cmdletCancellationToken);
+                return result;
             }
-
-            WaitForTask(enumerateTask, cmdletCancellationToken);
-
-            return result;
+            else
+            {
+                return client.EnumerateDeletedItems(filter, "", count, null, cmdletCancellationToken);
+            }
         }
 
         /// <summary>
@@ -874,7 +849,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     }
                 }
 
-                // If debug is enabled then flush debug messsages 
+                // If debug is enabled then flush debug messages 
                 if (_isDebugEnabled)
                 {
                     if (!token.IsCancellationRequested &&

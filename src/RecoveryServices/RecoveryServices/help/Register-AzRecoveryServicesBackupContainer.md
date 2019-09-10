@@ -8,13 +8,21 @@ schema: 2.0.0
 # Register-AzRecoveryServicesBackupContainer
 
 ## SYNOPSIS
-Registers a protectable container.
+This command allows Azure Backup to convert the ‘Resource’ to a ‘Backup Container’ which is then registered to the given Recovery services vault. The Azure Backup service can then discover workloads of the given workload type within this container to be protected later.
 
 ## SYNTAX
 
+### Register (Default)
 ```
 Register-AzRecoveryServicesBackupContainer [-ResourceId] <String>
- [-BackupManagementType] <BackupManagementType> [-WorkloadType] <WorkloadType> [-VaultId <String>]
+ [-BackupManagementType] <BackupManagementType> [-WorkloadType] <WorkloadType> [-Force] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ReRegister
+```
+Register-AzRecoveryServicesBackupContainer [-Container] <ContainerBase>
+ [-BackupManagementType] <BackupManagementType> [-WorkloadType] <WorkloadType> [-Force] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,7 +33,7 @@ The cmdlet registers an Azure VM for AzureWorkloads with specific workloadType.
 
 ### Example 1
 ```
-PS C:\> Register-AzRecoveryServicesBackupContainer -ResourceId <AzureVMID> -VaultId <vaultID> -WorkloadType â€œMSSQLâ€ -BackupManagementType â€œAzureWorkloadâ€
+PS C:\> Register-AzRecoveryServicesBackupContainer -ResourceId <AzureVMID> -VaultId <vaultID> -WorkloadType “MSSQL” -BackupManagementType “AzureWorkload”
 ```
 
 The cmdlet registers an azure VM for the workload MSSQL.
@@ -42,9 +50,24 @@ Aliases:
 Accepted values: AzureWorkload
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Container
+Container where the item resides
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
+Parameter Sets: ReRegister
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -63,16 +86,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Azure VM Id
+### -Force
+Force registers container (prevents confirmation dialog). This parameter is optional.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+ID of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: Register
+Aliases:
+
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -94,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkloadType
-Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles).
+Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles, MSSQL).
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
@@ -103,7 +141,7 @@ Aliases:
 Accepted values: AzureVM, AzureSQLDatabase, AzureFiles, MSSQL
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

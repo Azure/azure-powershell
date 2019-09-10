@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Alias("ResourceName")]
@@ -58,13 +59,14 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Network/applicationSecurityGroups", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            if(!string.IsNullOrEmpty(this.Name))
+            if(ShouldGetByName(ResourceGroupName, Name))
             {
                 var vApplicationSecurityGroup = this.NetworkClient.NetworkManagementClient.ApplicationSecurityGroups.Get(ResourceGroupName, Name);
                 var vApplicationSecurityGroupModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSApplicationSecurityGroup>(vApplicationSecurityGroup);
@@ -75,7 +77,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<ApplicationSecurityGroup> vApplicationSecurityGroupPage;
-                if(!string.IsNullOrEmpty(this.ResourceGroupName))
+                if(ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     vApplicationSecurityGroupPage = this.NetworkClient.NetworkManagementClient.ApplicationSecurityGroups.List(this.ResourceGroupName);
                 }
@@ -94,7 +96,7 @@ namespace Microsoft.Azure.Commands.Network
                     vApplicationSecurityGroupModel.Tag = TagsConversionHelper.CreateTagHashtable(vApplicationSecurityGroup.Tags);
                     psApplicationSecurityGroupList.Add(vApplicationSecurityGroupModel);
                 }
-                WriteObject(psApplicationSecurityGroupList, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psApplicationSecurityGroupList), true);
             }
         }
     }

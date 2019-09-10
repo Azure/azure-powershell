@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
@@ -184,6 +186,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
             this.WriteObject(new ASRJob(jobResponse));
+        }
+
+        /// <summary>
+        ///     Get fabric by friendly name.
+        /// </summary>
+        private string GetFabricNameByFriendlyName(string fabricFriendlyName)
+        {
+            var fabricListResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryFabric();
+
+            string fabricName = null;
+            foreach (var fabric in fabricListResponse)
+            {
+                if (0 ==
+                    string.Compare(
+                        fabricFriendlyName,
+                        fabric.Properties.FriendlyName,
+                        StringComparison.OrdinalIgnoreCase))
+                {
+                    fabricName = fabric.Name;
+
+                }
+            }
+
+            if (string.IsNullOrEmpty(fabricName))
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.FabricNotFound,
+                        fabricFriendlyName,
+                        PSRecoveryServicesClient.asrVaultCreds.ResourceName));
+            }
+            else
+            {
+                return fabricName;
+            }
         }
     }
 }

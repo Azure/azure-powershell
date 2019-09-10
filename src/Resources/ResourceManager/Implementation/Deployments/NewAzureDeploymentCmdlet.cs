@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 DeploymentName = Name,
                 DeploymentMode = DeploymentMode.Incremental,
                 TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
+                TemplateObject = TemplateObject,
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                 ParameterUri = TemplateParameterUri,
                 DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel)

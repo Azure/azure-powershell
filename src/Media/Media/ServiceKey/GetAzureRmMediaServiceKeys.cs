@@ -20,13 +20,16 @@ using Microsoft.Azure.Commands.Media.Models;
 using Microsoft.Azure.Management.Media;
 using Microsoft.Azure.Management.Media.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Media.ServiceKey
 {
     /// <summary>
     /// List key information for accessing the REST endpoint associated with the media service.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MediaServiceKeys"), OutputType(typeof(PSServiceKeys))]
+    [GenericBreakingChange("Get-AzMediaServiceKeys alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MediaServiceKey"), OutputType(typeof(PSServiceKeys))]
+    [Alias("Get-AzMediaServiceKeys")]
     public class GetAzureRmMediaServiceKeys : AzureMediaServiceCmdletBase
     {
         [Parameter(

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzExpressRouteConnection
 
 ## SYNOPSIS
-Updates a ExpressRouteConnection object to a goal state.
+Updates an express route connection created between an express route gateway and on-premise express route circuit peering.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Set-AzExpressRouteConnection -InputObject <PSExpressRouteConnection> [-Authoriza
 ```
 
 ## DESCRIPTION
-Modifies properties of an ExpressRouteConnection created between an ExpressRoute gateway and an on premise ExpressRoute circuit peering.
+The **Set-AzExpressRouteConnection** cmdlet updates an express route connection created between an express route gateway and on-premise express route circuit peering.
 
 ## EXAMPLES
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The ExpressRouteConenction object to update.
+The ExpressRouteConnection object to update.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteConnection
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the ExpressRouteConenction object to delete.
+The resource id of the ExpressRouteConnection object to delete.
 
 ```yaml
 Type: System.String

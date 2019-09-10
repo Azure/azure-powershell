@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 64AB1BAE-A756-43A8-A40F-10B746EA0946
@@ -13,21 +13,72 @@ Adds a custom script extension to a virtual machine.
 
 ## SYNTAX
 
-### SetCustomScriptExtensionByContainerAndFileNames (Default)
+### ByNameWithContainerAndFileNamesParameterSet (Default)
 ```
-Set-AzVMCustomScriptExtension -ContainerName <String> -FileName <String[]> [-StorageAccountName <String>]
- [-StorageEndpointSuffix <String>] [-StorageAccountKey <String>] [-Run <String>] [-Argument <String>]
- [-SecureExecution] [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
+Set-AzVMCustomScriptExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
+ -ContainerName <String> -FileName <String[]> [-StorageAccountName <String>] [-StorageEndpointSuffix <String>]
+ [-StorageAccountKey <String>] [-Run <String>] [-Argument <String>] [-SecureExecution]
  [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
+ [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByNameWithFileUriParameterSet
+```
+Set-AzVMCustomScriptExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
+ [-FileUri <String[]>] [-Run <String>] [-Argument <String>] [-SecureExecution] [-TypeHandlerVersion <String>]
+ [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>] [-NoWait]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetCustomScriptExtensionByUriLinks
+### ByParentObjectWithContainerAndFileNamesParameterSet
 ```
-Set-AzVMCustomScriptExtension [-FileUri <String[]>] [-Run <String>] [-Argument <String>] [-SecureExecution]
- [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>] [-TypeHandlerVersion <String>]
- [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzVMCustomScriptExtension -Name <String> -VMObject <PSVirtualMachine> -ContainerName <String>
+ -FileName <String[]> [-StorageAccountName <String>] [-StorageEndpointSuffix <String>]
+ [-StorageAccountKey <String>] [-Run <String>] [-Argument <String>] [-SecureExecution]
+ [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
+ [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByParentObjectWithFileUriParameterSet
+```
+Set-AzVMCustomScriptExtension -Name <String> -VMObject <PSVirtualMachine> [-FileUri <String[]>] [-Run <String>]
+ [-Argument <String>] [-SecureExecution] [-TypeHandlerVersion <String>] [-Location <String>]
+ [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceIdWithContainerAndFileNamesParameterSet
+```
+Set-AzVMCustomScriptExtension -ResourceId <String> -ContainerName <String> -FileName <String[]>
+ [-StorageAccountName <String>] [-StorageEndpointSuffix <String>] [-StorageAccountKey <String>] [-Run <String>]
+ [-Argument <String>] [-SecureExecution] [-TypeHandlerVersion <String>] [-Location <String>]
+ [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceIdWithFileUriParameterSet
+```
+Set-AzVMCustomScriptExtension -ResourceId <String> [-FileUri <String[]>] [-Run <String>] [-Argument <String>]
+ [-SecureExecution] [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion]
+ [-ForceRerun <String>] [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByInputObjectWithContainerAndFileNamesParameterSet
+```
+Set-AzVMCustomScriptExtension -InputObject <VirtualMachineCustomScriptExtensionContext> -ContainerName <String>
+ -FileName <String[]> [-StorageAccountName <String>] [-StorageEndpointSuffix <String>]
+ [-StorageAccountKey <String>] [-Run <String>] [-Argument <String>] [-SecureExecution]
+ [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
+ [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByInputObjectWithFileUriParameterSet
+```
+Set-AzVMCustomScriptExtension -InputObject <VirtualMachineCustomScriptExtensionContext> [-FileUri <String[]>]
+ [-Run <String>] [-Argument <String>] [-SecureExecution] [-TypeHandlerVersion <String>] [-Location <String>]
+ [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +117,19 @@ Specifies the name of the Azure storage container where this cmdlet stores the s
 
 ```yaml
 Type: System.String
-Parameter Sets: SetCustomScriptExtensionByContainerAndFileNames
+Parameter Sets: ByNameWithContainerAndFileNamesParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ByParentObjectWithContainerAndFileNamesParameterSet, ByResourceIdWithContainerAndFileNamesParameterSet, ByInputObjectWithContainerAndFileNamesParameterSet
 Aliases:
 
 Required: True
@@ -106,11 +169,23 @@ Accept wildcard characters: False
 
 ### -FileName
 Specifies the name of the script file. If the file is stored in Azure Blob storage, the file name
-value is case-senstive. File names of files stored in Azure File storage are not case-senstive.
+value is case-sensitive. File names of files stored in Azure File storage are not case-sensitive.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: SetCustomScriptExtensionByContainerAndFileNames
+Parameter Sets: ByNameWithContainerAndFileNamesParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String[]
+Parameter Sets: ByParentObjectWithContainerAndFileNamesParameterSet, ByResourceIdWithContainerAndFileNamesParameterSet, ByInputObjectWithContainerAndFileNamesParameterSet
 Aliases:
 
 Required: True
@@ -125,7 +200,19 @@ Specifies the URI of the script file.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: SetCustomScriptExtensionByUriLinks
+Parameter Sets: ByNameWithFileUriParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String[]
+Parameter Sets: ByParentObjectWithFileUriParameterSet, ByResourceIdWithFileUriParameterSet, ByInputObjectWithFileUriParameterSet
 Aliases:
 
 Required: False
@@ -152,6 +239,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -InputObject
+VM extension object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Compute.Models.VirtualMachineCustomScriptExtensionContext
+Parameter Sets: ByInputObjectWithContainerAndFileNamesParameterSet, ByInputObjectWithFileUriParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Location
 Specifies the location of the virtual machine.
 
@@ -172,7 +274,7 @@ Specifies the name of the custom script extension.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByNameWithContainerAndFileNamesParameterSet, ByNameWithFileUriParameterSet
 Aliases: ExtensionName
 
 Required: False
@@ -182,16 +284,58 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+```yaml
+Type: System.String
+Parameter Sets: ByParentObjectWithContainerAndFileNamesParameterSet, ByParentObjectWithFileUriParameterSet
+Aliases: ExtensionName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NoWait
+Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the resource group of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByNameWithContainerAndFileNamesParameterSet, ByNameWithFileUriParameterSet
 Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+VM extension ResourceID.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceIdWithContainerAndFileNamesParameterSet, ByResourceIdWithFileUriParameterSet
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -233,7 +377,19 @@ Specifies the key for the Azure storage container.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetCustomScriptExtensionByContainerAndFileNames
+Parameter Sets: ByNameWithContainerAndFileNamesParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ByParentObjectWithContainerAndFileNamesParameterSet, ByResourceIdWithContainerAndFileNamesParameterSet, ByInputObjectWithContainerAndFileNamesParameterSet
 Aliases:
 
 Required: False
@@ -248,7 +404,19 @@ Specifies the name of the Azure storage account where this cmdlet stores the scr
 
 ```yaml
 Type: System.String
-Parameter Sets: SetCustomScriptExtensionByContainerAndFileNames
+Parameter Sets: ByNameWithContainerAndFileNamesParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ByParentObjectWithContainerAndFileNamesParameterSet, ByResourceIdWithContainerAndFileNamesParameterSet, ByInputObjectWithContainerAndFileNamesParameterSet
 Aliases:
 
 Required: False
@@ -263,7 +431,19 @@ Specifies the storage endpoint suffix.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetCustomScriptExtensionByContainerAndFileNames
+Parameter Sets: ByNameWithContainerAndFileNamesParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ByParentObjectWithContainerAndFileNamesParameterSet, ByResourceIdWithContainerAndFileNamesParameterSet, ByInputObjectWithContainerAndFileNamesParameterSet
 Aliases:
 
 Required: False
@@ -295,13 +475,28 @@ This cmdlet adds the custom script extension for the virtual machine that this p
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByNameWithContainerAndFileNamesParameterSet, ByNameWithFileUriParameterSet
 Aliases: ResourceName
 
 Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VMObject
+VM object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Parameter Sets: ByParentObjectWithContainerAndFileNamesParameterSet, ByParentObjectWithFileUriParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -337,7 +532,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

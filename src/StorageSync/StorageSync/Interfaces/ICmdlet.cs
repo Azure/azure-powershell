@@ -16,9 +16,20 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces
 {
     using System.Management.Automation;
 
+    /// <summary>
+    /// Interface ICmdlet
+    /// </summary>
     public interface ICmdlet
     {
+        /// <summary>
+        /// Writes the object.
+        /// </summary>
+        /// <param name="sendToPipeline">The send to pipeline.</param>
         void WriteObject(object sendToPipeline);
+        /// <summary>
+        /// Writes the progress.
+        /// </summary>
+        /// <param name="progressRecord">The progress record.</param>
         void WriteProgress(ProgressRecord progressRecord);
     }
 }

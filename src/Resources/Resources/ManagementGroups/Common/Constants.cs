@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups.Common
 
         public class HelpMessages
         {
-            public const string SubscriptionId = "Subscription Id of the subscription associated witht the management";
+            public const string SubscriptionId = "Subscription Id of the subscription associated with the management";
             public const string GroupId = "Management Group Id";
             public const string Recurse = "Recursively list the children of the management group";
             public const string ParentId = "Parent Id of the management group";

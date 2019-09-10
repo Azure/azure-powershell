@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Provide SQLInstance or SQLAvailabilityGroup protectable item in TargetItem.
+        ///   Looks up a localized string similar to Provide SQLInstance protectable item in TargetItem.
         /// </summary>
         public static string AzureWorkloadRestoreProtectableItemException
         {
@@ -216,6 +216,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("AzureWorkloadAlreadyRegisteredException", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide the target of the restore operation using the switch -OriginalWorkloadRestore or -AlternateWorkloadRestore.
+        /// </summary>
+        public static string AzureWorkloadRestoreLocationException
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureWorkloadAlreadyRegisteredException", resourceCulture);
+            }
+        }        
 
         /// <summary>
         ///   Looks up a localized string similar to RetentionTime in retention schedule should be same as backup time specified in SchedulePolicy.
@@ -551,7 +562,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("ILRTargetLocationInvalid", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to For SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 5. For weekly backup policies, the only allowed value is 5. Please set the value accordingly.
+        /// </summary>
+        public static string InstantRPRetentionDaysException
+        {
+            get {
+                return ResourceManager.GetString("InstantRPRetentionDaysException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Azure VM name can not be null or empty.
         /// </summary>
@@ -888,7 +909,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("PolicyNotFoundException", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot configure backup for more than 100 VMs per policy
+        /// </summary>
+        public static string ProtectedItemsCountExceededException
+        {
+            get
+            {
+                return ResourceManager.GetString("ProtectedItemsCountExceededException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Successfully deleted policy.
         /// </summary>
@@ -972,7 +1004,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to disable protection for the container &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Are you sure you want to register the container &apos;{0}&apos;.
         /// </summary>
         public static string RegisterContainerWarning
         {
@@ -1061,7 +1093,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("RestoreOperation", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to RetentionDuration in Days should be from 7 - 9999.
+        /// </summary>
+        public static string RetentionDurationCountInDaysInvalidException {
+            get {
+                return ResourceManager.GetString("RetentionDurationCountInDaysInvalidException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to RetentionDuration in Days/Weeks/Months/Years should be from 1 - 9999.
         /// </summary>

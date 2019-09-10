@@ -67,6 +67,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The packet capture name.")]
         [ResourceNameCompleter("Microsoft.Network/networkWatchers/packetCaptures", "ResourceGroupName", "NetworkWatcherName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string PacketCaptureName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -102,7 +103,7 @@ namespace Microsoft.Azure.Commands.Network
                 name = this.NetworkWatcherName;
             }
 
-            if (!string.IsNullOrEmpty(this.PacketCaptureName))
+            if (ShouldGetByName(resourceGroupName, PacketCaptureName))
             {
                 PSPacketCaptureResult psPacketCapture = new PSPacketCaptureResult();
                 psPacketCapture = this.GetPacketCapture(resourceGroupName, name, this.PacketCaptureName);
@@ -181,7 +182,7 @@ namespace Microsoft.Azure.Commands.Network
                     pcResultList.Add(pcResult);
                 }
 
-                WriteObject(pcResultList, true);
+                WriteObject(SubResourceWildcardFilter(PacketCaptureName, pcResultList), true);
             }
         }
     }

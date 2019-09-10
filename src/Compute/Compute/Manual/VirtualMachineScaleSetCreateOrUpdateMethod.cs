@@ -131,6 +131,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage ="Use this to create the Scale set in a single placement group, default is multiple groups")]
         public SwitchParameter SinglePlacementGroup;
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        public string ProximityPlacementGroup { get; set; }
+
         const int FirstPortRangeStart = 50000;
 
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
@@ -243,6 +246,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         _cmdlet.VMScaleSetName,
                         _cmdlet.NatBackendPort.Concat(_cmdlet.BackendPort).ToList());
 
+                var proximityPlacementGroup = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroup);
+
                 return resourceGroup.CreateVirtualMachineScaleSetConfig(
                     name: _cmdlet.VMScaleSetName,
                     subnet: subnet,                    
@@ -261,7 +266,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     zones: _cmdlet.Zone,
                     ultraSSDEnabled : _cmdlet.EnableUltraSSD.IsPresent,
                     identity: _cmdlet.GetVmssIdentityFromArgs(),
-                    singlePlacementGroup : _cmdlet.SinglePlacementGroup.IsPresent);
+                    singlePlacementGroup : _cmdlet.SinglePlacementGroup.IsPresent,
+                    proximityPlacementGroup: proximityPlacementGroup);
             }
         }
 

@@ -95,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-Specifies the Procotol to filter on. Acceptable values "TCP","UDP","Any"
+Specifies the Protocol to filter on. Acceptable values "TCP","UDP","Any"
 
 ```yaml
 Type: System.String

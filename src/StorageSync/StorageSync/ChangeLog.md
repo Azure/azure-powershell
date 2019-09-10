@@ -17,11 +17,26 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-
 ## Upcoming Release
 
+## Version 1.2.0
+* Adding Invoke-AzStorageSyncChangeDetection cmdlet.
+* Fix Issue 9551 for honoring TierFilesOlderThanDays
+
+## Version 1.1.1
+* Fix Assembly Loading bug in PowerShell core
+
+## Version 1.1.0
+* Fix bug for not passing OFflineDataTransferProxy to SDK
+
+## Version 1.0.0
+* Replace Graph method for ensuring Service Principal in CloudEndpoint provisioning.
+
+## Version 0.8.1
+* Support for tracking upload and download sync activity in parallel
+
+## Version 0.8.0
+* Update all cmdlets required to manage StorageSync ARM resources.
+
 ## Version 0.7.1
-* Fixed a typo in the progress message.
-* Introduced the following breaking changes in Invoke-AzureRmStorageSyncCompatibilityCheck cmdlet:
-    - Parameter 'Quiet' had been removed.
-    - Return type has changed from list of PSValidationResult to PSStorageSyncValidation. Validation results are now stored in PSStorageSyncValidation.Results member.
+* General availability of `Az.StorageSync` module

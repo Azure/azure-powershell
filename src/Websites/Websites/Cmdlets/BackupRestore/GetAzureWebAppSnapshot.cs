@@ -21,10 +21,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSnapshot"), OutputType(typeof(AzureWebAppSnapshot))]
     public class GetAzureWebAppSnapshot : WebAppOptionalSlotBaseCmdlet
     {
+
+        [Parameter(Mandatory = false, HelpMessage = "Read the snapshots from a secondary scale unit.")]
+        public SwitchParameter UseDisasterRecovery { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            var list = WebsitesClient.GetSiteSnapshots(ResourceGroupName, Name, Slot).Select(s => {
+            var list = WebsitesClient.GetSiteSnapshots(ResourceGroupName, Name, Slot, UseDisasterRecovery.IsPresent).Select(s => {
                 return new AzureWebAppSnapshot()
                 {
                     ResourceGroupName = this.ResourceGroupName,

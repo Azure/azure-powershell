@@ -23,5 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
         public IList<string> ExcludedKbNumbers { get; set; }
 
         public IList<string> IncludedKbNumbers { get; set; }
+
+        public RebootSetting rebootSetting { get; set; }
     }
 }

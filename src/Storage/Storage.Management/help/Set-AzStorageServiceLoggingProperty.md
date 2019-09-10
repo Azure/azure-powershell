@@ -77,7 +77,7 @@ The acceptable values for this parameter are:
 - All
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Shared.Protocol.LoggingOperations[]
+Type: Microsoft.Azure.Storage.Shared.Protocol.LoggingOperations[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, Read, Write, Delete, All
@@ -168,7 +168,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Storage.Shared.Protocol.LoggingProperties
+### Microsoft.Azure.Storage.Shared.Protocol.LoggingProperties
 
 ## NOTES
 

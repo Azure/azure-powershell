@@ -108,6 +108,17 @@ namespace Microsoft.Azure.Commands.Network
                 subnet.Delegations = null;
             }
 
+            if(!string.IsNullOrEmpty(this.PrivateEndpointNetworkPoliciesFlag))
+            {
+                subnet.PrivateEndpointNetworkPolicies = this.PrivateEndpointNetworkPoliciesFlag;
+            }
+
+            if (!string.IsNullOrEmpty(this.PrivateLinkServiceNetworkPoliciesFlag))
+            {
+                subnet.PrivateLinkServiceNetworkPolicies = this.PrivateLinkServiceNetworkPoliciesFlag;
+            }
+
+
             WriteObject(this.VirtualNetwork);
         }
     }

@@ -73,11 +73,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Sku Name.")]
         [Alias(StorageAccountTypeAlias, AccountTypeAlias, Account_TypeAlias)]
-        [ValidateSet(AccountTypeString.StandardLRS,
-            AccountTypeString.StandardZRS,
-            AccountTypeString.StandardGRS,
-            AccountTypeString.StandardRAGRS,
-            AccountTypeString.PremiumLRS,
+        [ValidateSet(StorageModels.SkuName.StandardLRS,
+            StorageModels.SkuName.StandardZRS,
+            StorageModels.SkuName.StandardGRS,
+            StorageModels.SkuName.StandardRAGRS,
+            StorageModels.SkuName.PremiumLRS,
             IgnoreCase = true)]
         public string SkuName { get; set; }
 
@@ -183,6 +183,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "Upgrade Storage Account Kind to StorageV2.")]
         public SwitchParameter UpgradeToStorageV2 { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableAzureActiveDirectoryDomainServicesForFile
+        {
+            get
+            {
+                return enableAzureActiveDirectoryDomainServicesForFile.Value;
+            }
+            set
+            {
+                enableAzureActiveDirectoryDomainServicesForFile = value;
+            }
+        }
+        private bool? enableAzureActiveDirectoryDomainServicesForFile = null;
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -197,7 +214,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     StorageAccountUpdateParameters updateParameters = new StorageAccountUpdateParameters();
                     if (this.SkuName != null)
                     {
-                        updateParameters.Sku = new Sku(ParseSkuName(this.SkuName));
+                        updateParameters.Sku = new Sku(this.SkuName);
                     }
 
                     if (this.Tag != null)
@@ -211,7 +228,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         updateParameters.CustomDomain = new CustomDomain()
                         {
                             Name = CustomDomainName,
-                            UseSubDomain = UseSubDomain
+                            UseSubDomainName = UseSubDomain
                         };
                     }
                     else if (UseSubDomain != null)
@@ -249,6 +266,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (UpgradeToStorageV2.IsPresent)
                     {
                         updateParameters.Kind = Kind.StorageV2;
+                    }
+                    if (enableAzureActiveDirectoryDomainServicesForFile != null)
+                    {
+                        updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
+                        if (enableAzureActiveDirectoryDomainServicesForFile.Value)
+                        {
+                            updateParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.AADDS;
+                        }
+                        else
+                        {
+                            updateParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
+                        }
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(

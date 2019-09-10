@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
             ResourceGroupName = psExt.ResourceGroupName;
             Name = psExt.Name;
+            VMName = psExt.VMName;
             Location = psExt.Location;
             Etag = psExt.Etag;
             Publisher = psExt.Publisher;

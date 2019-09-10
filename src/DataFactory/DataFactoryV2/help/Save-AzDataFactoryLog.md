@@ -107,7 +107,7 @@ Accept wildcard characters: False
 
 ### -DownloadLogs
 Indicates that this cmdlet downloads log files to your local computer.
-If *Ouptut* folder is not specified, files are saved to Documents folder under a subfolder.
+If *Output* folder is not specified, files are saved to Documents folder under a subfolder.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

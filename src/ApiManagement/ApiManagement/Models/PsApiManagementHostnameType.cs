@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         Proxy = 1,
         Portal = 2,
         Management = 3,
-        Scm = 4
+        Scm = 4,
+        DeveloperPortal = 5
     }
 }

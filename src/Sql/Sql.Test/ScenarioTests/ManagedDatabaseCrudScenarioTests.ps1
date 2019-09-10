@@ -25,7 +25,7 @@ function Test-CreateManagedDatabase
 
 	# Setup VNET 
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
 
@@ -75,7 +75,7 @@ function Test-GetManagedDatabase
 
 	# Setup VNET 
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
 	
@@ -97,7 +97,7 @@ function Test-GetManagedDatabase
 		Assert-AreEqual $db1.Collation $gdb1.Collation
 
 		# Test Get using ResourceGroupName and InstanceName
-		$all = Get-AzSqlInstanceDatabase -ResourceGroupName $managedInstance.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName
+		$all = Get-AzSqlInstanceDatabase -ResourceGroupName $managedInstance.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name *
 		Assert-NotNull $all
 		Assert-AreEqual $all.Count 2
 
@@ -130,7 +130,7 @@ function Test-RemoveManagedDatabase
 
 	# Setup VNET 
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
 	
@@ -200,7 +200,7 @@ function Test-RestoreManagedDatabase
 
 	# Setup VNET 
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
 	$managedInstance2 = Create-ManagedInstanceForTest $rg2 $subnetId
@@ -259,7 +259,7 @@ function Test-GetManagedDatabaseGeoBackup
 	Assert-AreEqual $managedDatabaseName $gdb1.Name
 
 	# Test Get using ResourceGroupName and InstanceName
-	$all = Get-AzSqlInstanceDatabaseGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName 
+	$all = Get-AzSqlInstanceDatabaseGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName -Name *
 
 	Assert-NotNull $all
 	if($all.Count -le 1)

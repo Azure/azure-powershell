@@ -19,6 +19,20 @@
 -->
 ## Upcoming Release
 
+## Version 0.10.6
+* Fixed the inconsistency of compliance status reporting when Policy is non-compliant due to parameter updates scenario.
+* Quering data from PolicyInsights RP to get the updated compliance status.  
+
+## Version 0.10.5
+- Fixed cmdlets failure when a subscription has an incorrect format initiative definition for GuestConfiguration category.
+
+## Version 0.10.4
+* Fix cmdlets failure when an initiative definition in subscription does not have category set.
+
+## Version 0.10.3
+- Support Custom policy reports retrieval through the cmd-lets
+- Add versioning information to the reports
+
 ## Version 0.10.2
 - General bug fixes.
 - Rename cmdlet Get-AzVMGuestPolicyReport to Get-AzVMGuestPolicyStatus to keep it consistent with the Azure portal and to avoid user confusion.

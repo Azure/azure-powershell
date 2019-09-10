@@ -14,8 +14,13 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
+    using System;
+    using System.Text.RegularExpressions;
+
     public class PsApiManagementApiVersionSet : PsApiManagementArmResource
     {
+        static readonly Regex ApiVersionSetIdRegex = new Regex(@"(.*?)/providers/microsoft.apimanagement/service/(?<serviceName>[^/]+)/apiversionsets/(?<apiversionsetId>[^/]+)", RegexOptions.IgnoreCase);
+
         /// <summary>
         /// Api Version Set Id
         /// </summary>
@@ -49,5 +54,24 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
         /// include: 'Segment', 'Query', 'Header'
         /// </summary>
         public PsApiManagementVersioningScheme VersioningScheme { get; set; }
+
+        public PsApiManagementApiVersionSet() { }
+
+        public PsApiManagementApiVersionSet(string armResourceId)
+        {
+            this.Id = armResourceId;
+            var match = ApiVersionSetIdRegex.Match(Id);
+            if (match.Success)
+            {
+                var apiVerionSetIdResult = match.Groups["apiversionsetId"];
+                if (apiVerionSetIdResult != null && apiVerionSetIdResult.Success)
+                {
+                    this.ApiVersionSetId = apiVerionSetIdResult.Value;
+                    return;
+                }
+            }
+
+            throw new ArgumentException($"ResourceId {armResourceId} is not a valid ApiVersionSet");
+        }
     }
 }

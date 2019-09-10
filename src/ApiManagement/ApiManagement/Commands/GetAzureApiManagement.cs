@@ -14,18 +14,20 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.Models;
-    using ResourceManager.Common.ArgumentCompleters;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ApiManagement.Models;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagement", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PsApiManagement))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagement", DefaultParameterSetName = BaseParameterSetName)]
+    [OutputType(typeof(PsApiManagement), ParameterSetName = new[] { BaseParameterSetName, ResourceGroupParameterSetName, ApiManagementParameterSetName, ByResourceIdParameterSetName })]
     public class GetAzureApiManagement : AzureApiManagementCmdletBase
     {
         internal const string BaseParameterSetName = "GetBySubscription";
         internal const string ResourceGroupParameterSetName = "GetByResourceGroup";
         internal const string ApiManagementParameterSetName = "GetByResource";
+        internal const string ByResourceIdParameterSetName = "ByResourceId";
 
         [Parameter(
             ParameterSetName = ResourceGroupParameterSetName,
@@ -47,6 +49,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Name of API Management service.")]
         public string Name { get; set; }
 
+        [Parameter(
+            ParameterSetName = ByResourceIdParameterSetName,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "Arm ResourceId of the API Management service.")]
+        public string ResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
@@ -54,6 +63,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 // Get for single API Management service
                 var attributes = Client.GetApiManagement(ResourceGroupName, Name);
                 WriteObject(attributes);
+            }
+            else if (ParameterSetName.Equals(ByResourceIdParameterSetName))
+            {
+                var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                var apimService = Client.GetApiManagement(resourceIdentifier.ResourceGroupName, resourceIdentifier.ResourceName);
+                WriteObject(apimService);
             }
             else
             {

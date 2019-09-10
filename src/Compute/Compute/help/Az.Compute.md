@@ -15,7 +15,7 @@ This topic displays the help topics for the Azure Compute Cmdlets.
 Adds a container service agent pool profile.
 
 ### [Add-AzImageDataDisk](Add-AzImageDataDisk.md)
-Adds a data disk to an image obejct.
+Adds a data disk to an image object.
 
 ### [Add-AzVhd](Add-AzVhd.md)
 Uploads a virtual hard disk from an on-premises virtual machine to a blob in a cloud storage account in Azure.
@@ -74,7 +74,7 @@ Disables disk encryption on a VM scale set.
 ### [Export-AzLogAnalyticRequestRateByInterval](Export-AzLogAnalyticRequestRateByInterval.md)
 Export logs that show Api requests made by this subscription in the given time window to show throttling activities.
 
-### [Export-AzLogAnalyticThrottledRequests](Export-AzLogAnalyticThrottledRequests.md)
+### [Export-AzLogAnalyticThrottledRequest](Export-AzLogAnalyticThrottledRequest.md)
 Export logs that show total throttled Api requests for this subscription in the given time window.
 
 ### [Get-AzAvailabilitySet](Get-AzAvailabilitySet.md)
@@ -98,8 +98,17 @@ Get or list gallery image definitions.
 ### [Get-AzGalleryImageVersion](Get-AzGalleryImageVersion.md)
 Get or list gallery image versions.
 
+### [Get-AzHost](Get-AzHost.md)
+Get or list hosts.
+
+### [Get-AzHostGroup](Get-AzHostGroup.md)
+Get or list hosts.
+
 ### [Get-AzImage](Get-AzImage.md)
 Gets the properties of an image.
+
+### [Get-AzProximityPlacementGroup](Get-AzProximityPlacementGroup.md)
+Get or list Proximity Placement Group resource(s).
 
 ### [Get-AzRemoteDesktopFile](Get-AzRemoteDesktopFile.md)
 Gets an .rdp file.
@@ -233,11 +242,20 @@ Create a gallery image definition.
 ### [New-AzGalleryImageVersion](New-AzGalleryImageVersion.md)
 Create a gallery image version.
 
+### [New-AzHost](New-AzHost.md)
+Creates a  host.
+
+### [New-AzHostGroup](New-AzHostGroup.md)
+Creates a host group.
+
 ### [New-AzImage](New-AzImage.md)
-Creats an image.
+Creates an image.
 
 ### [New-AzImageConfig](New-AzImageConfig.md)
 Creates a configurable image object.
+
+### [New-AzProximityPlacementGroup](New-AzProximityPlacementGroup.md)
+Create Proximity Placement Group resource.
 
 ### [New-AzSnapshot](New-AzSnapshot.md)
 Creates a snapshot.
@@ -305,11 +323,20 @@ Delete a gallery image definition.
 ### [Remove-AzGalleryImageVersion](Remove-AzGalleryImageVersion.md)
 Delete a gallery image version.
 
+### [Remove-AzHost](Remove-AzHost.md)
+Removes a host.
+
+### [Remove-AzHostGroup](Remove-AzHostGroup.md)
+Removes a host group.
+
 ### [Remove-AzImage](Remove-AzImage.md)
 Removes an image.
 
 ### [Remove-AzImageDataDisk](Remove-AzImageDataDisk.md)
 Removes a data disk from an image object.
+
+### [Remove-AzProximityPlacementGroup](Remove-AzProximityPlacementGroup.md)
+Delete Proximity Placement Group resource.
 
 ### [Remove-AzSnapshot](Remove-AzSnapshot.md)
 Removes a snapshot.
@@ -405,7 +432,7 @@ Sets the image reference properties on a disk object.
 Sets the key encryption key properties on a disk object.
 
 ### [Set-AzDiskUpdateDiskEncryptionKey](Set-AzDiskUpdateDiskEncryptionKey.md)
-Sets the disk encryption key properties on on a disk update object.
+Sets the disk encryption key properties on a disk update object.
 
 ### [Set-AzDiskUpdateKeyEncryptionKey](Set-AzDiskUpdateKeyEncryptionKey.md)
 Sets the key encryption key properties on a disk update object.
@@ -446,7 +473,7 @@ Sets the backup extension properties on a virtual machine.
 ### [Set-AzVMBginfoExtension](Set-AzVMBginfoExtension.md)
 Adds the BGInfo extension to a virtual machine.
 
-### [Set-AzVMBootDiagnostics](Set-AzVMBootDiagnostics.md)
+### [Set-AzVMBootDiagnostic](Set-AzVMBootDiagnostic.md)
 Modifies boot diagnostics properties of a virtual machine.
 
 ### [Set-AzVMChefExtension](Set-AzVMChefExtension.md)

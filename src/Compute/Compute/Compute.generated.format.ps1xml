@@ -80,6 +80,10 @@
                 <Label>VirtualMachinesReferences</Label>
                 <PropertyName>VirtualMachinesReferencesText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ProximityPlacementGroup</Label>
+                <ScriptBlock>$_.ProximityPlacementGroup.Id</ScriptBlock>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

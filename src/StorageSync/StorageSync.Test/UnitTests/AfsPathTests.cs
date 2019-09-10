@@ -21,8 +21,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
     using WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
+    /// <summary>
+    /// Class AfsPathTests.
+    /// </summary>
     public class AfsPathTests
     {
+        /// <summary>
+        /// Defines the test method LocalPathTests.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void LocalPathTests()
@@ -43,6 +49,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
                 $"{nameof(path.ShareName)} should not be set");
         }
 
+        /// <summary>
+        /// Defines the test method LengthTests.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void LengthTests()
@@ -88,6 +97,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             Assert.True(new AfsPath(@"\\?\unc\plop\share\plop1\plop2\plop3\plop4").Length == 24, $"ext+unc+share: invalid length, {nameof(testIndex)} = {++testIndex}");
         }
 
+        /// <summary>
+        /// Defines the test method InvalidArgumentTests.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InvalidArgumentTests()
@@ -140,6 +152,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
         [Fact(Skip = "Fails on Linux, needs investigation")]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
+        /// <summary>
+        /// Defines the test method DepthTests.
+        /// </summary>
         [Fact]
 #endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -188,6 +203,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
         [Fact(Skip = "Fails on Linux, needs investigation")]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
+        /// <summary>
+        /// Defines the test method UncPathWithDriveTests.
+        /// </summary>
         [Fact]
 #endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -214,6 +232,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
                 $"{nameof(path.ComputerName)} should be set to {testComputerName}");
         }
 
+        /// <summary>
+        /// Defines the test method ExtendedUncPathTests.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ExtendedUncPathTests()

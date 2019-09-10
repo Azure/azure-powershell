@@ -16,6 +16,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "Resource Group Name.",
+            HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = TopicNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -41,8 +42,9 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "EventGrid Topic Name.",
+            HelpMessage = EventGridConstants.TopicNameHelp,
             ParameterSetName = TopicNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.EventGrid/topics", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         [Alias("TopicName")]
         public string Name { get; set; }
@@ -58,7 +60,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(Mandatory = true,
             ValueFromPipeline = true,
             Position = 0,
-            HelpMessage = "EventGrid Topic object.",
+            HelpMessage = EventGridConstants.TopicInputObjectHelp,
             ParameterSetName = TopicInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSTopic InputObject { get; set; }
@@ -70,25 +72,19 @@ namespace Microsoft.Azure.Commands.EventGrid
         {
             if (this.ShouldProcess(this.Name, $"Remove topic {this.Name} in resource group {this.ResourceGroupName}"))
             {
-                string resourceGroupName = string.Empty;
-                string topicName = string.Empty;
-
-                if (!string.IsNullOrEmpty(this.Name))
+                if (!string.IsNullOrEmpty(this.ResourceId))
                 {
-                    resourceGroupName = this.ResourceGroupName;
-                    topicName = this.Name;
-                }
-                else if (!string.IsNullOrEmpty(this.ResourceId))
-                {
-                    EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
+                    var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                    this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                    this.Name = resourceIdentifier.ResourceName;
                 }
                 else if (this.InputObject != null)
                 {
-                    resourceGroupName = this.InputObject.ResourceGroupName;
-                    topicName = this.InputObject.TopicName;
+                    this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                    this.Name = this.InputObject.TopicName;
                 }
 
-                this.Client.DeleteTopic(resourceGroupName, topicName);
+                this.Client.DeleteTopic(this.ResourceGroupName, this.Name);
                 if (this.PassThru)
                 {
                     this.WriteObject(true);

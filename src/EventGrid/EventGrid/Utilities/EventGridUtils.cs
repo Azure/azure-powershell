@@ -20,29 +20,39 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
 {
     class EventGridUtils
     {
-        public static void GetResourceGroupNameAndTopicName(
+        public static void GetResourceGroupNameAndDomainNameAndDomainTopicName(
             string resourceId,
             out string resourceGroupName,
-            out string topicName)
+            out string domainName,
+            out string domainTopicName)
         {
+            resourceGroupName = string.Empty;
+            domainName = string.Empty;
+            domainTopicName = string.Empty;
+
             if (string.IsNullOrEmpty(resourceId))
             {
                 throw new ArgumentNullException(nameof(resourceId));
             }
 
             // ResourceID should be in the following format:
-            // /subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.EventGrid/topics/topic1
+            // /subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.EventGrid/domains/domain1/topics/topic1
             string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-            if (tokens.Length != 8)
+            if (tokens.Length != 8 && tokens.Length != 10)
             {
                 throw new Exception($"ResourceId {resourceId} not in the expected format");
             }
 
             resourceGroupName = tokens[3];
-            topicName = tokens[7];
+            domainName = tokens[7];
+
+            if (tokens.Length == 10)
+            {
+                domainTopicName = tokens[9];
+            }
         }
 
-        public static string GetScope(string subscriptionId, string resourceGroupName, string topicName)
+        public static string GetScope(string subscriptionId, string resourceGroupName, string topicName, string domainName, string domainTopicName)
         {
             if (string.IsNullOrEmpty(subscriptionId))
             {
@@ -56,17 +66,29 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
                 // ResourceGroup name was not specified, hence this is subscription level scope
                 scope = $"/{EventGridConstants.Subscriptions}/{subscriptionId}";
             }
-            else if (string.IsNullOrEmpty(topicName))
+            else if (string.IsNullOrEmpty(topicName) && string.IsNullOrEmpty(domainName) && string.IsNullOrEmpty(domainTopicName))
             {
-                // ResourceGroup name was specified, but a custom topic name was not specified
+                // ResourceGroup name was specified, but a custom topic name (or domain/domainTopic) was not specified
                 // Hence, this is a resource group level scope.
                 scope = $"/{EventGridConstants.Subscriptions}/{subscriptionId}/{EventGridConstants.ResourceGroups}/{resourceGroupName}";
             }
             else
             {
-                // Both resource group name and custom topic name was specified
-                // Hence, the scope is for an EventGrid custom topic.
-                scope = $"/{EventGridConstants.Subscriptions}/{subscriptionId}/{EventGridConstants.ResourceGroups}/{resourceGroupName}/{EventGridConstants.TopicsResourceType}/{topicName}";
+                // Both resource group name and custom topic name (or domain and/or domainTopic) was specified
+                // Hence, the scope is for an EventGrid custom topic (or domain and/or domainTopic)
+
+                if (!string.IsNullOrEmpty(topicName))
+                {
+                    scope = $"/{EventGridConstants.Subscriptions}/{subscriptionId}/{EventGridConstants.ResourceGroups}/{resourceGroupName}/{EventGridConstants.TopicsResourceType}/{topicName}";
+                }
+                else if (!string.IsNullOrEmpty(domainName))
+                {
+                    scope = $"/{EventGridConstants.Subscriptions}/{subscriptionId}/{EventGridConstants.ResourceGroups}/{resourceGroupName}/{EventGridConstants.DomainsResourceType}/{domainName}";
+                    if (!string.IsNullOrEmpty(domainTopicName))
+                    {
+                        scope += $"/topics/{domainTopicName}";
+                    }
+                }
             }
 
             return scope;

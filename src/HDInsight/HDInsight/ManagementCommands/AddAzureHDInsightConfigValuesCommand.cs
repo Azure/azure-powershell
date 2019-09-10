@@ -15,13 +15,16 @@
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightConfigValues"),OutputType(typeof(AzureHDInsightConfig))]
+    [GenericBreakingChange("Add-AzHDInsightConfigValues alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightConfigValue"),OutputType(typeof(AzureHDInsightConfig))]
+    [Alias("Add-AzHDInsightConfigValues")]
     public class AddAzureHDInsightConfigValuesCommand : HDInsightCmdletBase
     {
         private Dictionary<string, Hashtable> _configurations;

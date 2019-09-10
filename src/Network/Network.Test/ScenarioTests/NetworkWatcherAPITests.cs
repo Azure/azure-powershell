@@ -114,7 +114,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ConnectionMonitor");
         }
 
-        [Fact]
+        [Fact(Skip = "Server returns empty array")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestNetworkConfigurationDiagnostic()

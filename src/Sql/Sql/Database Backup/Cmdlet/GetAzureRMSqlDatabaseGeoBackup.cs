@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         {
             ICollection<AzureSqlDatabaseGeoBackupModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("DatabaseName"))
+            if (MyInvocation.BoundParameters.ContainsKey("DatabaseName") && !WildcardPattern.ContainsWildcardCharacters(DatabaseName))
             {
                 results = new List<AzureSqlDatabaseGeoBackupModel>();
                 results.Add(ModelAdapter.GetGeoBackup(this.ResourceGroupName, this.ServerName, this.DatabaseName));
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 results = ModelAdapter.ListGeoBackups(this.ResourceGroupName, this.ServerName);
             }
 
-            return results;
+            return SubResourceWildcardFilter(DatabaseName, results);
         }
 
         /// <summary>

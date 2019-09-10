@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The name of the Azure SQL Server Disaster Recovery Configuration to retrieve.")]
+        [SupportsWildcards]
         public string VirtualEndpointName { get; set; }
 
         /// <summary>
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
         {
             ICollection<AzureSqlServerDisasterRecoveryConfigurationModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("VirtualEndpointName"))
+            if (MyInvocation.BoundParameters.ContainsKey("VirtualEndpointName") && !WildcardPattern.ContainsWildcardCharacters(VirtualEndpointName))
             {
                 results = new List<AzureSqlServerDisasterRecoveryConfigurationModel>
                 {
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
                 results = ModelAdapter.ListServerDisasterRecoveryConfigurations(this.ResourceGroupName, this.ServerName);
             }
 
-            return results;
+            return SubResourceWildcardFilter(VirtualEndpointName, results);
         }
 
         /// <summary>

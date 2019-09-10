@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Profile.UninstallAzureRm
                 var version = (this.SessionState.PSVariable.Get("PSVersionTable").Value as Hashtable)["PSVersion"];
                 if (Convert.ToInt64(version.ToString().Substring(0, 1)) >= 6)
                 {
-                    WriteWarning("Running this cmdlet in PowerShell Core will not remove the modules from PowerShell 5.1. " +
+                    WriteWarning("Running this cmdlet in PowerShell Core will only remove the modules from PowerShell Core. " +
                         "Please rerun this cmdlet in a PowerShell 5.1 session to remove the modules from PowerShell 5.1.");
                 }
             }
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Profile.UninstallAzureRm
                 "AzureRM.Websites", "AzureRM.Websites.Experiments"};
 
             IDataStore dataStore = AzureSession.Instance.DataStore;
-            var paths = Environment.GetEnvironmentVariable("PSModulePath").Split(';');
+            var paths = Environment.GetEnvironmentVariable("PSModulePath").Split(Path.PathSeparator);
             foreach (var path in paths)
             {
                 if (dataStore.DirectoryExists(path))

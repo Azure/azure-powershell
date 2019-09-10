@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVpnSite
 
 ## SYNOPSIS
-Updates a VpnSite representing a customer branch to an intended goal state.
+Updates a VPN site.
 
 ## SYNTAX
 
@@ -112,7 +112,7 @@ Update-AzVpnSite -ResourceId <String> [-IpAddress <String>] [-AddressSpace <Stri
 ```
 
 ## DESCRIPTION
-Updates a VpnSite representing a customer branch to an intended goal state.
+The **Update-AzVpnSite** cmdlet updates a VPN site.
 
 ## EXAMPLES
 

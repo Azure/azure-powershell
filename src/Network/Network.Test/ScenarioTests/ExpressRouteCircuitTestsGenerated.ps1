@@ -92,6 +92,18 @@ function Test-ExpressRouteCircuitCRUDMinimalParameters
         $listExpressRouteCircuit = Get-AzExpressRouteCircuit;
         Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
+        # Get all ExpressRouteCircuits in subscription wildcard for resource group
+        $listExpressRouteCircuit = Get-AzExpressRouteCircuit -ResourceGroupName "*";
+        Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all ExpressRouteCircuits in subscription wildcard for name
+        $listExpressRouteCircuit = Get-AzExpressRouteCircuit -Name "*";
+        Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all ExpressRouteCircuits in subscription wildcard for both resource group and name
+        $listExpressRouteCircuit = Get-AzExpressRouteCircuit -ResourceGroupName "*" -Name "*";
+        Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
         # Set ExpressRouteCircuit
         $vExpressRouteCircuit.Sku.Tier = $SkuTierSet;
         $vExpressRouteCircuit.Sku.Family = $SkuFamilySet;
@@ -119,6 +131,18 @@ function Test-ExpressRouteCircuitCRUDMinimalParameters
 
         # Get all ExpressRouteCircuits in subscription
         $listExpressRouteCircuit = Get-AzExpressRouteCircuit;
+        Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all ExpressRouteCircuits in subscription wildcard for resource group
+        $listExpressRouteCircuit = Get-AzExpressRouteCircuit -ResourceGroupName "*";
+        Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all ExpressRouteCircuits in subscription wildcard for name
+        $listExpressRouteCircuit = Get-AzExpressRouteCircuit -Name "*";
+        Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all ExpressRouteCircuits in subscription wildcard for both resource group and name
+        $listExpressRouteCircuit = Get-AzExpressRouteCircuit -ResourceGroupName "*" -Name "*";
         Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove ExpressRouteCircuit
@@ -204,6 +228,18 @@ function Test-ExpressRouteCircuitCRUDAllParameters
         $listExpressRouteCircuit = Get-AzExpressRouteCircuit;
         Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
+        # Get all ExpressRouteCircuits in subscription wildcard for resource group
+        $listExpressRouteCircuit = Get-AzExpressRouteCircuit -ResourceGroupName "*";
+        Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all ExpressRouteCircuits in subscription wildcard for name
+        $listExpressRouteCircuit = Get-AzExpressRouteCircuit -Name "*";
+        Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all ExpressRouteCircuits in subscription wildcard for both resource group and name
+        $listExpressRouteCircuit = Get-AzExpressRouteCircuit -ResourceGroupName "*" -Name "*";
+        Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
         # Set ExpressRouteCircuit
         $vExpressRouteCircuit.Sku.Tier = $SkuTierSet;
         $vExpressRouteCircuit.Sku.Family = $SkuFamilySet;
@@ -237,6 +273,18 @@ function Test-ExpressRouteCircuitCRUDAllParameters
 
         # Get all ExpressRouteCircuits in subscription
         $listExpressRouteCircuit = Get-AzExpressRouteCircuit;
+        Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all ExpressRouteCircuits in subscription wildcard for resource group
+        $listExpressRouteCircuit = Get-AzExpressRouteCircuit -ResourceGroupName "*";
+        Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all ExpressRouteCircuits in subscription wildcard for name
+        $listExpressRouteCircuit = Get-AzExpressRouteCircuit -Name "*";
+        Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+
+        # Get all ExpressRouteCircuits in subscription wildcard for both resource group and name
+        $listExpressRouteCircuit = Get-AzExpressRouteCircuit -ResourceGroupName "*" -Name "*";
         Assert-NotNull ($listExpressRouteCircuit | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove ExpressRouteCircuit
@@ -321,7 +369,7 @@ function Test-ExpressRouteCircuitAuthorizationCRUDMinimalParameters
         # Remove ExpressRouteCircuitAuthorization
         $vExpressRouteCircuit = Remove-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $vExpressRouteCircuit -Name $rnameAdd;
         $vExpressRouteCircuit = Remove-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
-        # Additional call to test handling of already deleted subresource
+        # Additional call to test handling of already deleted child resource
         $vExpressRouteCircuit = Remove-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
         # Update parent resource
         $vExpressRouteCircuit = Set-AzExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
@@ -454,7 +502,7 @@ function Test-ExpressRouteCircuitPeeringCRUDMinimalParameters
         # Remove ExpressRouteCircuitPeering
         $vExpressRouteCircuit = Remove-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rnameAdd;
         $vExpressRouteCircuit = Remove-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
-        # Additional call to test handling of already deleted subresource
+        # Additional call to test handling of already deleted child resource
         $vExpressRouteCircuit = Remove-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
         # Update parent resource
         $vExpressRouteCircuit = Set-AzExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;
@@ -596,7 +644,7 @@ function Test-ExpressRouteCircuitPeeringCRUDAllParameters
         # Remove ExpressRouteCircuitPeering
         $vExpressRouteCircuit = Remove-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rnameAdd;
         $vExpressRouteCircuit = Remove-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
-        # Additional call to test handling of already deleted subresource
+        # Additional call to test handling of already deleted child resource
         $vExpressRouteCircuit = Remove-AzExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $vExpressRouteCircuit -Name $rname;
         # Update parent resource
         $vExpressRouteCircuit = Set-AzExpressRouteCircuit -ExpressRouteCircuit $vExpressRouteCircuit;

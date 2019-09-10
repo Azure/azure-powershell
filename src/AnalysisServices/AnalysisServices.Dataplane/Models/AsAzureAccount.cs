@@ -16,6 +16,10 @@ using System;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
+    /// <summary>
+    /// This class exists to maintain the interface of deprecating cmdlet Add-AzAnalysisServicesAccount.
+    /// Should be removed when Add-AzAnalysisServicesAccount is removed.
+    /// </summary>
     [Serializable]
     public partial class AsAzureAccount
     {
@@ -28,14 +32,5 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         public string Type { get; set; }
 
         public string CertificateThumbprint { get; set; }
-
-        /// <summary>
-        /// string constants for known credential types
-        /// </summary>
-        public static class AccountType
-        {
-            public const string User = "User",
-            ServicePrincipal = "ServicePrincipal";
-        }
     }
 }

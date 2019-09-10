@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzApplicationGatewayRewriteRuleActionSet
 
 ## SYNOPSIS
-Creates a rewrite rule actionset for an application gateway.
+Creates a rewrite rule action set for an application gateway.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzApplicationGatewayRewriteRuleActionSet
 ```
 
 ## DESCRIPTION
-**The New-AzApplicationGatewayRewriteRuleActionSet** cmdlet creates a rewrite rule actionset for an Azure application gateway.
+**The New-AzApplicationGatewayRewriteRuleActionSet** cmdlet creates a rewrite rule action set for an Azure application gateway.
 
 ## EXAMPLES
 
@@ -29,7 +29,7 @@ New-AzApplicationGatewayRewriteRuleActionSet
 PS C:\> $action = New-AzApplicationGatewayRewriteRuleActionSet -ResponseHeaderConfiguration $hc
 ```
 
-This command creates a rewrite rule actionset and stores the result in the variable named $action.
+This command creates a rewrite rule action set and stores the result in the variable named $action.
 
 ## PARAMETERS
 

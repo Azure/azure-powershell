@@ -18,39 +18,57 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces;
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Models;
+    using Microsoft.Azure.Commands.StorageSync.Properties;
 
+    /// <summary>
+    /// Class PSValidationResultOutputWriter.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.IOutputWriter" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.IOutputWriter" />
     class PSValidationResultOutputWriter : IOutputWriter
     {
         #region Fields and Properties
 
+        /// <summary>
+        /// Gets the validation.
+        /// </summary>
+        /// <value>The validation.</value>
         public PSStorageSyncValidation Validation { get; private set; }
 
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PSValidationResultOutputWriter" /> class.
+        /// </summary>
         public PSValidationResultOutputWriter()
         {
-            this.Validation = new PSStorageSyncValidation();
+            Validation = new PSStorageSyncValidation();
         }
         #endregion
 
         #region Public methods
 
+        /// <summary>
+        /// Writes the specified validation result.
+        /// </summary>
+        /// <param name="validationResult">The validation result.</param>
+        /// <exception cref="ArgumentException"></exception>
         public void Write(IValidationResult validationResult)
         {
             switch (validationResult.Kind)
             {
                 case ValidationKind.SystemValidation:
-                    this.Validation.Results.Add(new PSValidationResult(validationResult));
+                    Validation.Results.Add(new PSValidationResult(validationResult));
                     break;
                 case ValidationKind.NamespaceValidation:
                     if (validationResult.Result == Result.Fail)
                     {
-                        this.Validation.Results.Add(new PSValidationResult(validationResult));
+                        Validation.Results.Add(new PSValidationResult(validationResult));
                     }
                     break;
                 default:
-                    throw new ArgumentException($"{validationResult.Kind.GetType().Name} value {validationResult.Kind} is unsupported");
+                    throw new ArgumentException(string.Format(StorageSyncResources.UnsupportedErrorFormat, validationResult.Kind.GetType().Name, validationResult.Kind));
             }
         }
 

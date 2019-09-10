@@ -30,7 +30,7 @@ For more information about the text representation of a certificate see the *Pub
 
 ### Example 1: Remove a client root certificate from a virtual network gateway
 ```
-PS C:\>$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertficate.cer"
+PS C:\>$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertificate.cer"
 PS C:\> $CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text[$i]}
 PS C:\> Remove-AzVpnClientRootCertificate -PublicCertData $CertificateText -ResourceGroupName "ContosoResourceGroup" -VirtualNetworkGatewayName "ContosoVirtualGateway"-VpnClientRootCertificateName "ContosoRootCertificate"
 ```
@@ -67,7 +67,7 @@ MIIC13FAAXC3671Auij9HHgUNEW8343NMJklo09982CVVFAw8w
 ----- END CERTIFICATE -----
 The PublicCertData is made up of all the lines between the first line (----- BEGIN CERTIFICATE -----) and the last line (----- END CERTIFICATE -----) in the file.
 You can retrieve the PublicCertData using Windows PowerShell commands similar to this:
-$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertficate.cer"
+$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertificate.cer"
 $CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text\[$i\]}
 
 ```yaml

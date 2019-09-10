@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Sql.LegacySdk.Models
         private ServiceTierAdvisorProperties _properties;
         
         /// <summary>
-        /// Optional. Gets or sets the properites representing the resource.
+        /// Optional. Gets or sets the properties representing the resource.
         /// </summary>
         public ServiceTierAdvisorProperties Properties
         {

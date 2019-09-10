@@ -21,7 +21,7 @@ Get-AzVpnSite [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 
 ### ListByResourceGroupName
 ```
-Get-AzVpnSite -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzVpnSite [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -59,6 +59,36 @@ Then it creates a VpnSite to represent a customer branch and links it to the Vir
 
 Once the site is created, it gets the site using the Get-AzVpnSite command.
 
+### Example 2
+
+```powershell
+PS C:\> Get-AzVpnSite -Name test*
+
+ResourceGroupName : testRG
+Name              : testVpnSite1
+Id                : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/vpnSites/testVpnSite1
+Location          : eastus2euap
+IpAddress         : 1.2.3.4
+VirtualWan        : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+AddressSpace      : {192.168.2.0/24, 192.168.3.0/24}
+BgpSettings       :
+Type              : Microsoft.Network/vpnSites
+ProvisioningState : Succeeded
+
+ResourceGroupName : testRG
+Name              : testVpnSite2
+Id                : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/vpnSites/testVpnSite2
+Location          : eastus2euap
+IpAddress         : 1.2.3.4
+VirtualWan        : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+AddressSpace      : {192.168.2.0/24, 192.168.3.0/24}
+BgpSettings       :
+Type              : Microsoft.Network/vpnSites
+ProvisioningState : Succeeded
+```
+
+This cmdlet gets all Sites that start with "test".
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -88,7 +118,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
@@ -99,15 +129,15 @@ Type: System.String
 Parameter Sets: ListByResourceGroupName
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

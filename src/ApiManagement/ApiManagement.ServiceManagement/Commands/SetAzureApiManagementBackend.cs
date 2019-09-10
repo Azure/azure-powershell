@@ -12,30 +12,45 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
-
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
 
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementBackend", SupportsShouldProcess = true)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementBackend", SupportsShouldProcess = true, DefaultParameterSetName = ContextParameterSet)]
     [OutputType(typeof(PsApiManagementBackend))]
     public class SetAzureApiManagementBackend : AzureApiManagementCmdletBase
     {
+        #region Parameter Set Names
+        protected const string ContextParameterSet = "ContextParameterSet";
+        protected const string ByInputObjectParameterSet = "ByInputObject";
+        #endregion
+
         [Parameter(
+            ParameterSetName = ContextParameterSet,
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
+            ParameterSetName = ContextParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Identifier of new backend. This parameter is required.")]
         public String BackendId { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByInputObjectParameterSet,
+            ValueFromPipeline = true,
+            Mandatory = true,
+            HelpMessage = "Instance of PsApiManagementBackend. This parameter is required.")]
+        [ValidateNotNullOrEmpty]
+        public PsApiManagementBackend InputObject { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -113,11 +128,29 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            if (ShouldProcess(BackendId, Resources.SetBackend))
+            string resourcegroupName;
+            string serviceName;
+            string backendId;
+
+            if (ParameterSetName.Equals(ByInputObjectParameterSet))
+            {
+                resourcegroupName = InputObject.ResourceGroupName;
+                serviceName = InputObject.ServiceName;
+                backendId = InputObject.BackendId;
+            }
+            else 
+            {
+                resourcegroupName = Context.ResourceGroupName;
+                serviceName = Context.ServiceName;
+                backendId = BackendId;
+            }
+
+            if (ShouldProcess(backendId, Resources.SetBackend))
             {
                 Client.BackendSet(
-                    Context,
-                    BackendId,
+                    resourcegroupName,
+                    serviceName,
+                    backendId,
                     Url,
                     Protocol,
                     Title,
@@ -131,7 +164,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
                 if (PassThru)
                 {
-                    var @backend = Client.BackendById(Context, BackendId);
+                    var @backend = Client.BackendById(resourcegroupName, serviceName, backendId);
                     WriteObject(@backend);
                 }
             }

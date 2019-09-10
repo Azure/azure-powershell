@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
 online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Start-AzJitNetworkAccessPolicy
@@ -33,8 +33,8 @@ Start-AzJitNetworkAccessPolicy -InputObject <PSSecurityJitNetworkAccessPolicyIni
 
 ## DESCRIPTION
 Invokes a temporary network access request.
-The request is validated against the configured JIT network access policy and if permittet, opens up a network connection according to the user's request.
-The request will be loged in the policy for later review and will be terminated when the specified duration will be exceeded.
+The request is validated against the configured JIT network access policy and if permitted, opens up a network connection according to the user's request.
+The request will be logged in the policy for later review and will be terminated when the specified duration will be exceeded.
 
 ## EXAMPLES
 

@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public List<PSVirtualHub> ListVirtualHubs(string resourceGroupName)
         {
-            var virtualHubs = string.IsNullOrWhiteSpace(resourceGroupName) ?
+            var virtualHubs = ShouldListBySubscription(resourceGroupName, null) ?
                 this.VirtualHubClient.List() :                                       //// List by SubId
                 this.VirtualHubClient.ListByResourceGroup(resourceGroupName);        //// List by RG Name
 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (MNM.VirtualHub virtualHub in virtualHubs)
                 {
                     PSVirtualHub virtualHubToReturn = ToPsVirtualHub(virtualHub);
-                    virtualHubToReturn.ResourceGroupName = resourceGroupName;
+                    virtualHubToReturn.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(virtualHub.Id);
                     hubsToReturn.Add(virtualHubToReturn);
                 }
             }

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: 5E854358-CA9D-4336-BA6A-BF7B1FADAB50
@@ -25,7 +25,12 @@ The **New-AzActivityLogAlertCondition** cmdlet creates new activity log alert co
 
 ### Example 1: Create a new activity log alert condition object in memory.
 ```
-PS C:\>$condition = New-AzActivityLogAlertCondition -Field "Requests" -Equal "OtherField"
+PS C:\>$Condition = New-AzActivityLogAlertCondition -Field "Requests" -Equal "OtherField"
+PS C:\>Write-Host "Field property value: $($Condition.Field)"
+PS C:\>Write-Host "Equals property value: $($Condition.Equals)"
+
+Field property value: Requests
+Equals property value: OtherField
 ```
 
 This command creates a new activity log alert condition object in memory.
@@ -79,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

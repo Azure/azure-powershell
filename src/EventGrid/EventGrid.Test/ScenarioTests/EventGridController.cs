@@ -26,6 +26,9 @@ using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.
 using Microsoft.Azure.Management.EventHub;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Management.Relay;
+using Microsoft.Azure.Management.ServiceBus;
+using Microsoft.Azure.Management.Storage;
 
 namespace Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests
 {
@@ -38,6 +41,12 @@ namespace Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests
         public EventGridManagementClient EventGridManagementClient { get; private set; }
 
         public EventHubManagementClient EventHubClient { get; private set; }
+
+        public RelayManagementClient RelayManagementClient { get; private set; }
+
+        public ServiceBusManagementClient ServiceBusManagementClient { get; private set; }
+
+        public StorageManagementClient StorageManagementClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
@@ -95,7 +104,10 @@ namespace Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"AzureRM.EventHub.psd1"),
                     _helper.GetRMModulePath(@"AzureRM.EventGrid.psd1"),
-                    "AzureRM.Resources.ps1");
+                    "AzureRM.Resources.ps1",
+                    _helper.GetRMModulePath(@"Az.Relay.psd1"),
+                    _helper.GetRMModulePath(@"Az.Storage.psd1"),
+                    _helper.GetRMModulePath(@"Az.ServiceBus.psd1"));
 
                 try
                 {
@@ -117,7 +129,10 @@ namespace Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests
             ResourceManagementClient = GetResourceManagementClient(context);
             EventGridManagementClient = GetEventGridManagementClient(context);
             EventHubClient = GetEHClient(context);
-            _helper.SetupManagementClients(EventHubClient, ResourceManagementClient, EventGridManagementClient);
+            RelayManagementClient = GetRelayManagementClient(context);
+            ServiceBusManagementClient = GetServiceBusManagementClient(context);
+            StorageManagementClient = GetStorageManagementClient(context);
+            _helper.SetupManagementClients(StorageManagementClient, ServiceBusManagementClient, RelayManagementClient, EventHubClient, ResourceManagementClient, EventGridManagementClient);
         }
 
         private static ResourceManagementClient GetResourceManagementClient(MockContext context)
@@ -133,6 +148,21 @@ namespace Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests
         private static EventHubManagementClient GetEHClient(MockContext context)
         {
             return context.GetServiceClient<EventHubManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static RelayManagementClient GetRelayManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<RelayManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static ServiceBusManagementClient GetServiceBusManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<ServiceBusManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static StorageManagementClient GetStorageManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

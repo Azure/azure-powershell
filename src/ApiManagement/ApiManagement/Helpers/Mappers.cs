@@ -14,16 +14,16 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Helpers
 {
-    using AutoMapper;
     using Management.ApiManagement.Models;
     using Models;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     public static class Mappers
     {
-        public static HostnameType MapHostnameType(PsApiManagementHostnameType hostnameType)
+        public static string MapHostnameType(PsApiManagementHostnameType hostnameType)
         {
             switch(hostnameType)
             {
@@ -31,11 +31,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                 case PsApiManagementHostnameType.Portal: return HostnameType.Portal;
                 case PsApiManagementHostnameType.Management: return HostnameType.Management;
                 case PsApiManagementHostnameType.Scm: return HostnameType.Scm;
-                default: throw new ArgumentException("Unrecognized Hostname Type.");
+                case PsApiManagementHostnameType.DeveloperPortal: return HostnameType.DeveloperPortal;
+                default: throw new ArgumentException($"Unrecognized Hostname Type {hostnameType.ToString("G")}.");
             }
         }
 
-        public static PsApiManagementHostnameType MapHostnameType(HostnameType hostnameType)
+        public static PsApiManagementHostnameType MapHostnameType(string hostnameType)
         {
             switch (hostnameType)
             {
@@ -43,6 +44,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                 case HostnameType.Portal: return PsApiManagementHostnameType.Portal;
                 case HostnameType.Management: return PsApiManagementHostnameType.Management;
                 case HostnameType.Scm: return PsApiManagementHostnameType.Scm;
+                case HostnameType.DeveloperPortal: return PsApiManagementHostnameType.DeveloperPortal;
                 default: throw new ArgumentException("Unrecognized Hostname Type.");
             }
         }
@@ -55,6 +57,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                 case PsApiManagementSku.Standard: return SkuType.Standard;
                 case PsApiManagementSku.Premium: return SkuType.Premium;
                 case PsApiManagementSku.Basic: return SkuType.Basic;
+                case PsApiManagementSku.Consumption: return SkuType.Consumption;
                 default: throw new ArgumentException("Unrecognized Sku");
             }
         }
@@ -67,7 +70,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                 case SkuType.Standard: return PsApiManagementSku.Standard;
                 case SkuType.Premium: return PsApiManagementSku.Premium;
                 case SkuType.Basic: return PsApiManagementSku.Basic;
-                default: throw new ArgumentException("Unrecognized Sku");
+                case SkuType.Consumption: return PsApiManagementSku.Consumption;
+                default: throw new ArgumentException($"Unrecognized Sku '{sku}'");
             }
         }
 
@@ -78,7 +82,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                 case PsApiManagementVpnType.External: return VirtualNetworkType.External;
                 case PsApiManagementVpnType.Internal: return VirtualNetworkType.Internal;
                 case PsApiManagementVpnType.None: return VirtualNetworkType.None;
-                default: throw new ArgumentException("Unrecognized Virtual Network Type");
+                default: throw new ArgumentException($"Unrecognized Virtual Network Type '{vpnType.ToString("G")}");
             }
         }
 
@@ -106,7 +110,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                     Capacity = apiManagement.Capacity,
                     Name = MapSku(apiManagement.Sku)
                 },
-                Tags = apiManagement.Tags
+                Tags = apiManagement.Tags,
+                EnableClientCertificate = apiManagement.EnableClientCertificate
             };
 
             if (apiManagement.VirtualNetwork != null)
@@ -143,7 +148,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
             if (apiManagement.ProxyCustomHostnameConfiguration != null || 
                 apiManagement.PortalCustomHostnameConfiguration != null ||
                 apiManagement.ManagementCustomHostnameConfiguration != null ||
-                apiManagement.ScmCustomHostnameConfiguration != null)
+                apiManagement.ScmCustomHostnameConfiguration != null ||
+                apiManagement.DeveloperPortalHostnameConfiguration != null)
             {
                 parameters.HostnameConfigurations = new List<HostnameConfiguration>();
 
@@ -157,6 +163,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                 if (apiManagement.PortalCustomHostnameConfiguration != null)
                 {
                     parameters.HostnameConfigurations.Add(apiManagement.PortalCustomHostnameConfiguration.GetHostnameConfiguration());
+                }
+                if (apiManagement.DeveloperPortalHostnameConfiguration != null)
+                {
+                    parameters.HostnameConfigurations.Add(apiManagement.DeveloperPortalHostnameConfiguration.GetHostnameConfiguration());
                 }
                 if (apiManagement.ManagementCustomHostnameConfiguration != null)
                 {
@@ -182,7 +192,97 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                 parameters.Identity = MapPsApiManagementIdentity(apiManagement.Identity);
             }
 
+            parameters.CustomProperties = MapPsApiManagementSslSetting(apiManagement.SslSetting);
+
             return parameters;
+        }
+
+        public static PsApiManagementNetworkStatus MapPsApiManagementNetworkStatus(NetworkStatusContract networkStatusContract, string location)
+        {
+            var psNetworkStatus = new PsApiManagementNetworkStatus();
+            psNetworkStatus.DnsServers = networkStatusContract.DnsServers.ToArray();
+            var aggregateStatus = GetConnectivityStatus(networkStatusContract.ConnectivityStatus);
+            psNetworkStatus.ConnectivityStatus = aggregateStatus.ToArray();
+            psNetworkStatus.Location = location;
+
+            return psNetworkStatus;
+        }
+
+        public static IList<PsApiManagementNetworkStatus> MapPsApiManagementNetworkEnumerable(IList<NetworkStatusContractByLocation> networkStatusList)
+        {
+            var psNetworkStatusEnumerable = new List<PsApiManagementNetworkStatus>();
+            foreach (var statusLocation in networkStatusList)
+            {
+                var psNetworkStatus = MapPsApiManagementNetworkStatus(statusLocation.NetworkStatus, statusLocation.Location);                
+                psNetworkStatusEnumerable.Add(psNetworkStatus);
+            }
+
+            return psNetworkStatusEnumerable;
+        }
+
+        private static List<PsApiManagementConnectivityStatus> GetConnectivityStatus(IList<ConnectivityStatusContract> status)
+        {
+            var aggregateStatus = new List<PsApiManagementConnectivityStatus>();
+            foreach (var connectivityStatus in status)
+            {
+                var connectivity = new PsApiManagementConnectivityStatus();
+                connectivity.Error = connectivityStatus.Error;
+                connectivity.Name = connectivityStatus.Name;
+                connectivity.Status = connectivityStatus.Status;
+                connectivity.LastStatusChange = connectivityStatus.LastStatusChange;
+                connectivity.LastUpdated = connectivityStatus.LastUpdated;
+                aggregateStatus.Add(connectivity);
+            }
+
+            return aggregateStatus;
+        }
+
+        public static Dictionary<string, string> MapPsApiManagementSslSetting(PsApiManagementSslSetting sslSettings)
+        {
+            if (sslSettings == null)
+            {
+                return null;
+            }
+
+            var customProperties = new Dictionary<string, string>();
+            if (sslSettings.FrontendProtocol != null)
+            {
+                foreach(DictionaryEntry frontend in sslSettings.FrontendProtocol)
+                {
+                    customProperties.Add(GetSslKey(Constants.FrontendProtocolSettingPrefix, frontend.Key),  frontend.Value.ToString());
+                }
+            }
+
+            if (sslSettings.BackendProtocol != null)
+            {
+                foreach (DictionaryEntry backend in sslSettings.BackendProtocol)
+                {
+                    customProperties.Add(GetSslKey(Constants.BackendProtocolSettingPrefix, backend.Key), backend.Value.ToString());
+                }
+            }
+
+            if (sslSettings.CipherSuite != null)
+            {
+                foreach (DictionaryEntry cipherSuite in sslSettings.CipherSuite)
+                {
+                    customProperties.Add(GetSslKey(Constants.CipherSettingPrefix, cipherSuite.Key), cipherSuite.Value.ToString());
+                }
+            }
+
+            if (sslSettings.ServerProtocol != null)
+            {
+                foreach (DictionaryEntry serverProtocol in sslSettings.ServerProtocol)
+                {
+                    customProperties.Add(GetSslKey(Constants.ServerSettingPrefix, serverProtocol.Key), serverProtocol.Value.ToString());                    
+                }
+            }
+
+            return customProperties;
+        }
+
+        private static string GetSslKey(string prefix, object inputKey)
+        {
+            return string.Concat(prefix, inputKey.ToString());
         }
     }
 }

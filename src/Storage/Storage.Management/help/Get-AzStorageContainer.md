@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 90C3DF13-0010-49B6-A8CD-C6AC34BC3EFA
@@ -56,7 +56,7 @@ If this cmdlet does not receive a successful response before the interval elapse
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases:
+Aliases: ClientTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 Specifies a continuation token for the blob list.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Blob.BlobContinuationToken
+Type: Microsoft.Azure.Storage.Blob.BlobContinuationToken
 Parameter Sets: (All)
 Aliases:
 
@@ -186,7 +186,7 @@ If the specified interval elapses before the service processes the request, the 
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases:
+Aliases: ServerTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named

@@ -401,7 +401,7 @@ function Test-GetElasticPool
 		Assert-AreEqual 0 $ep2.DatabaseCapacityMin
 		Assert-AreEqual 100 $ep2.DatabaseCapacityMax
 
-		$all = $server | Get-AzSqlElasticPool
+		$all = $server | Get-AzSqlElasticPool -ElasticPoolName *
 		Assert-AreEqual $all.Count 2
 	}
 	finally

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Enable-AzRecoveryServicesBackupAutoProtection
 
 ## SYNOPSIS
-Enables auto backup for a protectable item with a specified Backup protection policy.
+This commands allows users to automatically protect all existing unprotected DBs and any DB which will be added later with the given policy. Azure backup service will then regularly scan auto-protected containers for any new DBs and automatically protect them.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ The second cmdlet sets the Backup protection policy for the AzureWorkload using 
 ## PARAMETERS
 
 ### -BackupManagementType
-Backup Management type of the resource (for example: MAB, DPM).
+Backup Management type of the resource (for example: MAB, DPM, AzureWorkload).
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputItem
-Item Id
+Specifies the protectable item object that can be passed as an input.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ProtectableItemBase
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkloadType
-Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles).
+Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles, MSSQL).
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType

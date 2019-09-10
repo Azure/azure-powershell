@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -56,9 +57,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Web API name. Public name of the API as it would appear on the developer and admin portals. " +
-                          "This parameter is required.")]
+                          "This parameter is optional.")]
         [ValidateNotNullOrEmpty]
         public String Name { get; set; }
 
@@ -70,11 +71,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "A URL of the web service exposing the API. " +
                           "This URL will be used by Azure API Management only, and will not be made public." +
-                          " Must be 1 to 2000 characters long. This parameter is required.")]
-        [ValidateNotNullOrEmpty]
+                          " Must be 1 to 2000 characters long. This parameter is optional.")]
         public String ServiceUrl { get; set; }
 
         [Parameter(
@@ -87,10 +87,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Web API protocols (http, https). Protocols over which API is made available." +
-                          " This parameter is required. Default value is $null.")]
-        [ValidateNotNullOrEmpty]
+                          " This parameter is optional. Default value is $null.")]
         public PsApiManagementSchema[] Protocols { get; set; }
 
         [Parameter(
@@ -109,6 +108,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
+            HelpMessage = "OpenId authorization server identifier. This parameter is optional. Default value is $null." +
+            " Must be specified if BearerTokenSendingMethods is specified.")]
+        public String OpenIdProviderId { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "OpenId authorization server mechanism by which access token is passed to the API. " +
+            "Refer to http://tools.ietf.org/html/rfc6749#section-4. This parameter is optional. Default value is $null.")]
+        public string[] BearerTokenSendingMethod { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "Subscription key header name. This parameter is optional. Default value is $null.")]
         public String SubscriptionKeyHeaderName { get; set; }
 
@@ -117,6 +130,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             Mandatory = false,
             HelpMessage = "Subscription key query string parameter name. This parameter is optional. Default value is $null.")]
         public String SubscriptionKeyQueryParamName { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Flag to enforce SubscriptionRequired for requests to the Api. This parameter is optional.")]
+        public SwitchParameter SubscriptionRequired { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -153,11 +172,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 Description,
                 ServiceUrl,
                 Path,
+                SubscriptionRequired.IsPresent,
                 Protocols.Distinct().ToArray(),
                 AuthorizationServerId,
                 AuthorizationScope,
                 SubscriptionKeyHeaderName,
                 SubscriptionKeyQueryParamName,
+                OpenIdProviderId,
+                BearerTokenSendingMethod,
                 InputObject);
 
             if (PassThru.IsPresent)

@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Text.RegularExpressions;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Models
-{    
+{
     public class PSCustomRule
     {
-        public PSCustomRuleType? RuleType { get; set; }
+        public string RuleType { get; set; }
 
-        public PSAction? Action { get; set; }
+        public string Action { get; set; }
 
         public List<PSMatchCondition> MatchConditions { get; set; }
 
@@ -32,9 +31,5 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
         public int? RateLimitThreshold { get; set; }
 
         public string Name { get; set; }
-
-        public string Etag { get; set; }
-
-        public List<string> Transforms { get; set; }
     }
 }

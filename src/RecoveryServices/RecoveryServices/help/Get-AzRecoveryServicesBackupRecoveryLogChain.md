@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzRecoveryServicesBackupRecoveryLogChain
 
 ## SYNOPSIS
-Get time ranges for a backed up item.
+This command lists the start and end points of the unbroken log chain of the given backup item. Use it to determine whether the point-in-time, to which the user wants the DB to be restored, is valid or not.
 
 ## SYNTAX
 

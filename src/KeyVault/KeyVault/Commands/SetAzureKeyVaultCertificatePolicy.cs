@@ -227,6 +227,15 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string KeyType { get; set; }
 
         /// <summary>
+        /// Key size
+        /// </summary>
+        [Parameter(Mandatory = false,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specifies the key size of the certificate.")]
+        [ValidateSet("2048", "3072", "4096")]
+        public int KeySize { get; set; } = 2048;
+
+        /// <summary>
         /// KeyNotExportable
         /// </summary>
         [Parameter(Mandatory = false,
@@ -290,6 +299,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                             SubjectName = SubjectName,
                             ValidityInMonths = ValidityInMonths,
                             Kty = KeyType,
+                            KeySize = KeySize,
                             Exportable = KeyNotExportable.IsPresent ? !KeyNotExportable.IsPresent : (bool?)null,
                             CertificateTransparency = CertificateTransparency ?? (bool?)null
                         };

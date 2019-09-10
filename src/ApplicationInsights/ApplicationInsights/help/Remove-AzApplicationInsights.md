@@ -41,7 +41,7 @@ PS C:\> Remove-AzApplicationInsights -ResourceGroupName "testgroup" -Name "test"
 True
 ```
 
-Remove an applciation insights resource named "test" in resource group "testgroup"
+Remove an application insights resource named "test" in resource group "testgroup"
 
 ## PARAMETERS
 

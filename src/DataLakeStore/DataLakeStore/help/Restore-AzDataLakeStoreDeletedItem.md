@@ -28,7 +28,7 @@ Restore-AzDataLakeStoreDeletedItem [-Account] <String> [-DeletedItem] <DataLakeS
 ```
 
 ## DESCRIPTION
-The **Restore-AzDataLakeStoreDeletedItem** cmdlet restores a deleted file or folder in Data Lake Store. Requires the path of deleted item in trash retunred by Get-AzDataLakeStoreDeletedItem.
+The **Restore-AzDataLakeStoreDeletedItem** cmdlet restores a deleted file or folder in Data Lake Store. Requires the path of deleted item in trash returned by Get-AzDataLakeStoreDeletedItem.
 
 ## EXAMPLES
 
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-The path of the deleted deleted file or folder in trash.
+The path of the deleted file or folder in trash.
 
 ```yaml
 Type: System.String

@@ -40,7 +40,7 @@ function Test-VirtualNetworkTapCRUDUsingIpConfig
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -59,6 +59,15 @@ function Test-VirtualNetworkTapCRUDUsingIpConfig
         Assert-AreEqual $vVirtualNetworkTap.ResourceGroupName $actualVtap.ResourceGroupName;
         Assert-AreEqual $vVirtualNetworkTap.Name $rname;
         Assert-AreEqual $vVirtualNetworkTap.DestinationNetworkInterfaceIPConfiguration.Id $DestinationEndpoint.Id
+
+        $list = Get-AzVirtualNetworkTap -ResourceGroupName "*"
+        Assert-True { $list.Count -ge 0 }
+
+        $list = Get-AzVirtualNetworkTap -Name "*"
+        Assert-True { $list.Count -ge 0 }
+
+        $list = Get-AzVirtualNetworkTap -ResourceGroupName "*" -Name "*"
+        Assert-True { $list.Count -ge 0 }
 
         $vVirtualNetworkTaps = Get-AzureRmVirtualNetworkTap -ResourceGroupName $rgname;
         Assert-NotNull $vVirtualNetworkTaps;

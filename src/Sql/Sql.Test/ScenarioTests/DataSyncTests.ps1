@@ -65,7 +65,7 @@ function Test-GetAndListSyncAgents
         Assert-AreEqual $saName $sa2.SyncAgentName
 
         # Get all sync agents
-        $all = Get-AzSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+        $all = Get-AzSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -SyncAgentName *
         Assert-NotNull $all
         Assert-AreEqual $all.Count 1
     }
@@ -262,7 +262,7 @@ function Test-GetAndListSyncGroups
 
         # List all sync groups
         $all = Get-AzSqlSyncGroup -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
-        -DatabaseName $databaseName
+        -DatabaseName $databaseName -SyncGroupName *
         Assert-AreEqual $all.Count 1
         Assert-AreEqual $params.intervalInSeconds $all[0].IntervalInSeconds
         Assert-AreEqual $params.conflictResolutionPolicy $all[0].ConflictResolutionPolicy
@@ -444,7 +444,7 @@ function Test-GetAndListSyncMembers
 
         # List all sync members
         $all = Get-AzSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
-        -DatabaseName $databaseName1 -SyncGroupName $sg.SyncGroupName
+        -DatabaseName $databaseName1 -SyncGroupName $sg.SyncGroupName -SyncMemberName *
         Assert-AreEqual 1 $all.Count
         Assert-AreEqual $smParams.syncDirection $all[0].SyncDirection
         Assert-AreEqual $smParams.databaseType $all[0].MemberDatabaseType

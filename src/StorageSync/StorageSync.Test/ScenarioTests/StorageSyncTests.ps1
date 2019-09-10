@@ -20,5 +20,6 @@ SmokeTest
 #>
 function Test-StorageSync
 {
-	Get-Command Invoke-AzStorageSyncCompatibilityCheck
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
+    Get-Command Invoke-AzStorageSyncCompatibilityCheck
 }

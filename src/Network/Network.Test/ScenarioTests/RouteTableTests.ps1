@@ -50,7 +50,16 @@ function Test-EmptyRouteTable
         Assert-AreEqual $list[0].ResourceGroupName $getRT.ResourceGroupName
         Assert-AreEqual $list[0].Name $getRT.Name
         Assert-AreEqual $list[0].Etag $getRT.Etag
-        Assert-AreEqual @($list[0].Routes).Count @($getRT.Routes).Count              
+        Assert-AreEqual @($list[0].Routes).Count @($getRT.Routes).Count     
+		
+        $list = Get-AzRouteTable -ResourceGroupName "*"
+        Assert-True { $list.Count -ge 0 }
+
+        $list = Get-AzRouteTable -Name "*"
+        Assert-True { $list.Count -ge 0 }
+
+        $list = Get-AzRouteTable -ResourceGroupName "*" -Name "*"
+        Assert-True { $list.Count -ge 0 }
 
         # Delete NetworkSecurityGroup
         $job = Remove-AzRouteTable -ResourceGroupName $rgname -name $routeTableName -PassThru -Force -AsJob
@@ -194,7 +203,7 @@ function Test-RouteTableSubnetRef
 		# create vnet and subnet associated to a Routetable
 		# Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -RouteTable $getRT
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet
 		
 		# Verify RouteTable reference in subnet
 		Assert-AreEqual $vnet.Subnets[0].RouteTable.Id $getRT.Id

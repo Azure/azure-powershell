@@ -21,10 +21,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Models;
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces;
 
+    /// <summary>
+    /// Class StorageSyncValidationPowerShellFormatting.
+    /// </summary>
     public static class StorageSyncValidationPowerShellFormatting
     {
         #region Public methods
 
+        /// <summary>
+        /// Formats the specified validation.
+        /// </summary>
+        /// <param name="validation">The validation.</param>
+        /// <param name="depth">The depth.</param>
+        /// <returns>System.String.</returns>
         public static string Format(PSStorageSyncValidation validation, int depth = 0)
         {
             Configuration configuration = new Configuration();

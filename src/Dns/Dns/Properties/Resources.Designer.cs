@@ -232,6 +232,15 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Record set &apos;{0}&apos; was created in zone &apos;{1}&apos;. Use Add-AzDnsRecordConfig to add more {2} records to it and Set-AzDnsRecordSet to save your changes..
+        /// </summary>
+        internal static string Success_NewRecordSetHasRecords {
+            get {
+                return ResourceManager.GetString("Success_NewRecordSetHasRecords", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Zone &apos;{0}&apos; was created in resource group &apos;{1}&apos;. The SOA and authoritative NS records for this zone have been created automatically. Use Get-AzDnsRecordSet to retrieve them.
         /// </summary>
         internal static string Success_NewZone {
@@ -239,7 +248,45 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
                 return ResourceManager.GetString("Success_NewZone", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Zone Delegation for &apos;{0}&apos; was created in parent &apos;{1}&apos;. The NS records for this zone have been added automatically in the parent. Use Get-AzDnsRecordSet to retrieve them.
+        /// </summary>
+        internal static string Success_NSDelegation {
+            get {
+                return ResourceManager.GetString("Success_NSDelegation", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Zone Delegation 
+        /// </summary>
+        internal static string Error_NSDelegationSubscriptionMisMatch {
+            get {
+                return ResourceManager.GetString("Error_NSDelegationSubscriptionMisMatch", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Zone Delegation 
+        /// </summary>
+        internal static string Error_NSDelegation {
+            get {
+                return ResourceManager.GetString("Error_NSDelegation", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Zone Delegation 
+        /// </summary>
+        internal static string Error_ResourceIdIncorrectFormat
+        {
+            get
+            {
+                return ResourceManager.GetString("Error_ResourceIdIncorrectFormat", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to The Zone &apos;{0}&apos; was not present in the resource group &apos;{1}&apos;. Hence, was not deleted.
         /// </summary>

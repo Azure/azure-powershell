@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzVirtualNetwork
 
 ## SYNOPSIS
-Sets the goal state for a virtual network.
+Updates a virtual network.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Set-AzVirtualNetwork -VirtualNetwork <PSVirtualNetwork> [-AsJob] [-DefaultProfil
 ```
 
 ## DESCRIPTION
-The **Set-AzVirtualNetwork** cmdlet sets the goal state for an Azure virtual network.
+The **Set-AzVirtualNetwork** cmdlet updates a virtual network.
 
 ## EXAMPLES
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetwork
-Specifies a **VirtualNetwork** object that represents the goal state.
+Specifies a virtual network object representing the state to which the virtual network should be set.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork

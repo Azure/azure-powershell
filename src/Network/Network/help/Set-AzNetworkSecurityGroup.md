@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzNetworkSecurityGroup
 
 ## SYNOPSIS
-Sets the goal state for a network security group.
+Updates a network security group.
 
 ## SYNTAX
 
@@ -19,11 +19,11 @@ Set-AzNetworkSecurityGroup -NetworkSecurityGroup <PSNetworkSecurityGroup> [-AsJo
 ```
 
 ## DESCRIPTION
-The **Set-AzNetworkSecurityGroup** cmdlet sets the goal state for an Azure network security group.
+The **Set-AzNetworkSecurityGroup** cmdlet updates a network security group.
 
 ## EXAMPLES
 
-### Example 1: Set the goal state for a network security group
+### Example 1: Update an existing network security group
 ```
 PS C:\>Get-AzNetworkSecurityGroup -Name "Nsg1" -ResourceGroupName "Rg1" | Add-AzNetworkSecurityRuleConfig -Name "Rdp-Rule" -Description "Allow RDP" -Access "Allow" -Protocol "Tcp" -Direction "Inbound" -Priority 100 -SourceAddressPrefix "Internet" -SourcePortRange "*" -DestinationAddressPrefix "*" -DestinationPortRange "3389" | Set-AzNetworkSecurityGroup
 ```
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkSecurityGroup
-A network security group object representing the goal state to which the cmdlet sets the network security group.
+Specifies a network security group object representing the state to which the network security group should be set.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup
