@@ -19,10 +19,10 @@ Update-AzVmss -Name <String> -ResourceGroupName <String> [-SubscriptionId <Strin
  [-MaxBatchInstancePercent <Int32>] [-MaxUnhealthyInstancePercent <Int32>]
  [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-Overprovision] [-PauseTimeBetweenBatches <String>]
  [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-SinglePlacementGroup] [-SkuCapacity <Int64>] [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>]
- [-UltraSsdEnabled] [-UpgradePolicyMode <UpgradeMode>]
- [-VirtualMachineProfile <IVirtualMachineScaleSetUpdateVMProfile>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ScaleInPolicyRule <VirtualMachineScaleSetScaleInRules[]>] [-SinglePlacementGroup] [-SkuCapacity <Int64>]
+ [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-UltraSsdEnabled]
+ [-UpgradePolicyMode <UpgradeMode>] [-VirtualMachineProfile <IVirtualMachineScaleSetUpdateVMProfile>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded1
@@ -31,7 +31,8 @@ Update-AzVmss -InputObject <IComputeIdentity> [-AutomaticOSUpgrade] [-DisableAut
  [-IdentityId <Hashtable>] [-IdentityType <ResourceIdentityType>] [-MaxBatchInstancePercent <Int32>]
  [-MaxUnhealthyInstancePercent <Int32>] [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-Overprovision]
  [-PauseTimeBetweenBatches <String>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-SinglePlacementGroup] [-SkuCapacity <Int64>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>]
+ [-ScaleInPolicyRule <VirtualMachineScaleSetScaleInRules[]>] [-SinglePlacementGroup] [-SkuCapacity <Int64>]
  [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-UltraSsdEnabled]
  [-UpgradePolicyMode <UpgradeMode>] [-VirtualMachineProfile <IVirtualMachineScaleSetUpdateVMProfile>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -378,6 +379,39 @@ Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ScaleInPolicyRule
+The rules to be followed when scaling-in a virtual machine scale set.
+
+
+ Possible values are: 
+
+ **Default** When a virtual machine scale set is scaled in, the scale set will first be balanced across zones if it is a zonal scale set.
+Then, it will be balanced across Fault Domains as far as possible.
+Within each Fault Domain, the virtual machines chosen for removal will be the newest ones that are not protected from scale-in.
+
+
+ **OldestVM** When a virtual machine scale set is being scaled-in, the oldest virtual machines that are not protected from scale-in will be chosen for removal.
+For zonal virtual machine scale sets, the scale set will first be balanced across zones.
+Within each zone, the oldest virtual machines that are not protected will be chosen for removal.
+
+
+ **NewestVM** When a virtual machine scale set is being scaled-in, the newest virtual machines that are not protected from scale-in will be chosen for removal.
+For zonal virtual machine scale sets, the scale set will first be balanced across zones.
+Within each zone, the newest virtual machines that are not protected will be chosen for removal.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.VirtualMachineScaleSetScaleInRules[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

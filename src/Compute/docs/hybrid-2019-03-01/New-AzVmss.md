@@ -74,7 +74,7 @@ Dynamic: False
 ```
 
 ### -AsJob
-Run cmdlet in the background
+
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -154,7 +154,7 @@ Dynamic: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -346,7 +346,7 @@ Dynamic: False
 ```
 
 ### -SinglePlacementGroup
-Use this to create the Scale set in a single placement group, default is multiple groups
+
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -410,7 +410,7 @@ Dynamic: False
 ```
 
 ### -SystemAssignedIdentity
-Use this to add system assigned identity (MSI) to the vm
+
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -442,7 +442,7 @@ Dynamic: False
 ```
 
 ### -UserAssignedIdentity
-Use this to add the assign user specified identity (MSI) to the VM
+
 
 ```yaml
 Type: System.String
@@ -522,7 +522,7 @@ Dynamic: False
 ```
 
 ### -Zone
-A list of availability zones denoting the IP allocated for the resource needs to come from.
+
 
 ```yaml
 Type: System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]

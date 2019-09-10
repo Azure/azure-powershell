@@ -166,6 +166,9 @@ The operation to create or update the extension.
 ### [New-AzVmss](New-AzVmss.md)
 
 
+### [New-AzVmss](New-AzVmss.md)
+
+
 ### [New-AzVmssExtension](New-AzVmssExtension.md)
 The operation to create or update an extension.
 
