@@ -14,8 +14,8 @@ Manual platform update domain walk to update virtual machines in a service fabri
 
 ### Force (Default)
 ```
-Repair-AzVmssServiceFabricUpdateDomain -ResourceGroupName <String> -SubscriptionId <String>
- -VMScaleSetName <String> -PlatformUpdateDomain <Int32> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Repair-AzVmssServiceFabricUpdateDomain -ResourceGroupName <String> -VMScaleSetName <String>
+ -PlatformUpdateDomain <Int32> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -124,9 +124,9 @@ Type: System.String
 Parameter Sets: Force
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

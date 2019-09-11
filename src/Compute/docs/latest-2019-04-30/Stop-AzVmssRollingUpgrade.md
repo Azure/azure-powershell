@@ -14,7 +14,7 @@ Cancels the current virtual machine scale set rolling upgrade.
 
 ### Cancel1 (Default)
 ```
-Stop-AzVmssRollingUpgrade -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
+Stop-AzVmssRollingUpgrade -ResourceGroupName <String> -VMScaleSetName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -155,9 +155,9 @@ Type: System.String
 Parameter Sets: Cancel1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

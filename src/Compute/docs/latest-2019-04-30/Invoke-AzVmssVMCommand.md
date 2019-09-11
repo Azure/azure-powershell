@@ -14,9 +14,10 @@ Run command on a virtual machine in a VM scale set.
 
 ### RunExpanded (Default)
 ```
-Invoke-AzVmssVMCommand -InstanceId <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VMScaleSetName <String> -CommandId <String> [-Parameter <IRunCommandInputParameter[]>] [-Script <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzVmssVMCommand -InstanceId <String> -ResourceGroupName <String> -VMScaleSetName <String>
+ -CommandId <String> [-SubscriptionId <String>] [-Parameter <IRunCommandInputParameter[]>]
+ [-Script <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### RunViaIdentityExpanded
@@ -208,9 +209,9 @@ Type: System.String
 Parameter Sets: RunExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,9 +14,9 @@ Captures the VM by copying virtual hard disks of the VM and outputs a template t
 
 ### CaptureExpanded1 (Default)
 ```
-Save-AzVMImage -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -DestinationContainerName <String> -OverwriteVhd -VhdPrefix <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Save-AzVMImage -Name <String> -ResourceGroupName <String> -DestinationContainerName <String> -OverwriteVhd
+ -VhdPrefix <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CaptureViaIdentityExpanded1
@@ -188,9 +188,9 @@ Type: System.String
 Parameter Sets: CaptureExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

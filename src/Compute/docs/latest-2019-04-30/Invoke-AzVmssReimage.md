@@ -14,14 +14,14 @@ Reimages (upgrade the operating system) one or more virtual machines in a VM sca
 
 ### ReimageExpanded2 (Default)
 ```
-Invoke-AzVmssReimage -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Invoke-AzVmssReimage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-InstanceId <String[]>] [-TempDisk] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### ReimageExpanded3
 ```
-Invoke-AzVmssReimage -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Invoke-AzVmssReimage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-InstanceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -202,9 +202,9 @@ Type: System.String
 Parameter Sets: ReimageExpanded2, ReimageExpanded3
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

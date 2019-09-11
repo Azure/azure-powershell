@@ -14,12 +14,13 @@ The operation to update a virtual machine.
 
 ### UpdateExpanded1 (Default)
 ```
-Update-AzVM -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-AvailabilitySetId <String>]
- [-BillingProfileMaxPrice <Double>] [-BootDiagnosticEnabled] [-BootDiagnosticStorageUri <String>]
- [-DataDisk <IDataDisk[]>] [-EvictionPolicy <VirtualMachineEvictionPolicyTypes>] [-HostId <String>]
- [-IdentityId <Hashtable>] [-IdentityType <ResourceIdentityType>] [-ImageReferenceId <String>]
- [-ImageReferenceOffer <String>] [-ImageReferencePublisher <String>] [-ImageReferenceSku <String>]
- [-ImageReferenceVersion <String>] [-LicenseType <String>] [-LinuxConfigurationDisablePasswordAuthentication]
+Update-AzVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AvailabilitySetId <String>] [-BillingProfileMaxPrice <Double>] [-BootDiagnosticEnabled]
+ [-BootDiagnosticStorageUri <String>] [-DataDisk <IDataDisk[]>]
+ [-EvictionPolicy <VirtualMachineEvictionPolicyTypes>] [-HostId <String>] [-IdentityId <Hashtable>]
+ [-IdentityType <ResourceIdentityType>] [-ImageReferenceId <String>] [-ImageReferenceOffer <String>]
+ [-ImageReferencePublisher <String>] [-ImageReferenceSku <String>] [-ImageReferenceVersion <String>]
+ [-LicenseType <String>] [-LinuxConfigurationDisablePasswordAuthentication]
  [-LinuxConfigurationProvisionVMAgent] [-LinuxConfigurationSshPublicKey <ISshPublicKey[]>]
  [-NetworkInterface <INetworkInterfaceReference[]>] [-OSDisk <IOSDisk>] [-OSProfileAdminPassword <String>]
  [-OSProfileAdminUsername <String>] [-OSProfileAllowExtensionOperation] [-OSProfileComputerName <String>]
@@ -848,9 +849,9 @@ Type: System.String
 Parameter Sets: UpdateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

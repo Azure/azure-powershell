@@ -14,7 +14,7 @@ The operation to update the extension.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzVMExtension -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VMName <String>
+Update-AzVMExtension -Name <String> -ResourceGroupName <String> -VMName <String> [-SubscriptionId <String>]
  [-AutoUpgradeMinorVersion] [-ForceRerun <String>]
  [-ProtectedSetting <IVirtualMachineExtensionUpdatePropertiesProtectedSettings>] [-Publisher <String>]
  [-Setting <IVirtualMachineExtensionUpdatePropertiesSettings>] [-Tag <Hashtable>] [-Type <String>]
@@ -243,9 +243,9 @@ Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

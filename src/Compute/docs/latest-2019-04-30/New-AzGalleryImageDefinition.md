@@ -14,7 +14,7 @@ Create or update a gallery Image Definition.
 
 ```
 New-AzGalleryImageDefinition -GalleryName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Location <String> [-Description <String>] [-DisallowedDiskType <String[]>]
+ -Location <String> [-SubscriptionId <String>] [-Description <String>] [-DisallowedDiskType <String[]>]
  [-EndOfLifeDate <DateTime>] [-Eula <String>] [-MaximumMemory <Int32>] [-MaximumVCpu <Int32>]
  [-MinimumMemory <Int32>] [-MinimumVCpu <Int32>] [-Offer <String>] [-OSState <OperatingSystemStateTypes>]
  [-OSType <OperatingSystemTypes>] [-PrivacyStatementUri <String>] [-Publisher <String>]
@@ -469,9 +469,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

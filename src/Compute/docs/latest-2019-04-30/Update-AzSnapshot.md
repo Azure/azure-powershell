@@ -14,7 +14,7 @@ Updates (patches) a snapshot.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-EncryptionEnabled]
+Update-AzSnapshot -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-EncryptionEnabled]
  [-EncryptionSetting <IEncryptionSettingsElement[]>] [-OSType <OperatingSystemTypes>] [-SizeInGb <Int32>]
  [-SkuName <SnapshotStorageAccountTypes>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -247,9 +247,9 @@ Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

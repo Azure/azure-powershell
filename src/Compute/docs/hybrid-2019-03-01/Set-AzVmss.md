@@ -13,7 +13,7 @@ Create or update a VM scale set.
 ## SYNTAX
 
 ```
-Set-AzVmss -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
+Set-AzVmss -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-AutoOSUpgradePolicyDisableAutoRollback] [-FaultDomainCount <Int32>] [-IdentityId <String[]>]
  [-IdentityType <ResourceIdentityType>] [-MaxBatchInstancePercent <Int32>]
  [-MaxUnhealthyInstancePercent <Int32>] [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-Overprovision]
@@ -441,9 +441,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

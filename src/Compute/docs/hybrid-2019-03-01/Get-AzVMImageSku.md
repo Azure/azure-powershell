@@ -13,7 +13,7 @@ Gets a list of virtual machine image SKUs for the specified location, publisher,
 ## SYNTAX
 
 ```
-Get-AzVMImageSku -Location <String> -Offer <String> -PublisherName <String> -SubscriptionId <String[]>
+Get-AzVMImageSku -Location <String> -Offer <String> -PublisherName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -115,9 +115,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

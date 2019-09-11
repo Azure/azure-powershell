@@ -853,4 +853,94 @@ directive:
       parameter-name: Expand
     set:
       parameter-name: ExpandExpression
+# Hide creation cmdlets for VMs and ScaleSets
+  - where:
+      verb: New
+      subject: VM
+    hide: true
+  - where:
+      verb: New
+      subject: VMSS
+    hide: true
+# Update csproj for customizations
+  - from: Az.Compute.csproj
+    where: $
+    transform: >
+        return $.replace('</Project>', '  <Import Project=\"custom\\strategies.props\" />\n</Project>' );
+# Update psm1 for module load
+  - from: Az.Compute.psm1
+    where: $
+    transform: >
+        return $.replace(if($hasAdequateVersion)', 'if(-not $hasAdequateVersion)');
+# Update psm1 for module load
+  - from: Az.Compute.psm1
+    where: $
+    transform: >
+        return $.replace('\$null = Import-Module -Name \(Join-Path $PSScriptRoot \'\./bin/Az\.Compute\.private\.dll\'\)', '');
+#
+  - from: Az.Compute.psm1
+    where: $
+    transform: >
+        return $.replace('\$instance = \[Microsoft\.Azure\.PowerShell\.Cmdlets\.Compute\.Module\]::Instance', '' );
+# add back in
+  - from: Az.Compute.psm1
+    where: $
+    transform: >
+        return $.replace('# Ask for the shared functionality table', 'Import-Module -Name (Join-Path $PSScriptRoot \'./bin/Az.Compute.private.dll\')\n# Ask for the shared functionality table' );
+# add again
+  - from: Az.Compute.psm1
+    where: $
+    transform: >
+        return $.replace('# Ask for the shared functionality table', '$instance = [Microsoft.Azure.PowerShell.Cmdlets.Compute.Module]::Instance\n# Ask for the shared functionality table' );
+
+# add to build-module.ps1
+  - from: generate-help.ps1
+    where: $
+    transform: >
+        return $.replace('# Load DLL to use build-time cmdlets', '$accountsName = \'Az.Accounts\'\n# Load DLL to use build-time cmdlets');
+# next line
+  - from: generate-help.ps1
+    where: $
+    transform: >
+        return $.replace('# Load DLL to use build-time cmdlets', '$accountsModule = Get-Module -Name $accountsName\n# Load DLL to use build-time cmdlets');
+# next line
+  - from: generate-help.ps1
+    where: $
+    transform: >
+        return $.replace('# Load DLL to use build-time cmdlets', 'if(-not $accountsModule) {\n# Load DLL to use build-time cmdlets');
+# next line
+  - from: generate-help.ps1
+    where: $
+    transform: >
+        return $.replace('# Load DLL to use build-time cmdlets', '$localAccountsPath = Join-Path $PSScriptRoot \'generated\modules\'\n# Load DLL to use build-time cmdlets');
+# next line
+  - from: generate-help.ps1
+    where: $
+    transform: >
+        return $.replace('# Load DLL to use build-time cmdlets', 'if(Test-Path -Path $localAccountsPath) {\n# Load DLL to use build-time cmdlets');
+# next line
+  - from: generate-help.ps1
+    where: $
+    transform: >
+        return $.replace('# Load DLL to use build-time cmdlets', '$localAccounts = Get-ChildItem -Path $localAccountsPath -Recurse -Include \'Az.Accounts.psd1\' | Select-Object -Last 1\n# Load DLL to use build-time cmdlets');
+# next line
+  - from: generate-help.ps1
+    where: $
+    transform: >
+        return $.replace('# Load DLL to use build-time cmdlets', 'if($localAccounts) {\n              $accountsModule = Import-Module -Name ($localAccounts.FullName) -Scope Global -PassThru\n            }\n          }\n# Load DLL to use build-time cmdlets');
+# next line
+  - from: generate-help.ps1
+    where: $
+    transform: >
+        return $.replace('# Load DLL to use build-time cmdlets', 'if(-not $accountsModule) {\n# Load DLL to use build-time cmdlets');
+# next line
+  - from: generate-help.ps1
+    where: $
+    transform: >
+        return $.replace('# Load DLL to use build-time cmdlets', '$hasAdequateVersion = (Get-Module -Name $accountsName -ListAvailable | Where-Object { $_.Version -ge [System.Version]\'1.6.0\' } | Measure-Object).Count -gt 0\n# Load DLL to use build-time cmdlets');
+# next line
+  - from: generate-help.ps1
+    where: $
+    transform: >
+        return $.replace('# Load DLL to use build-time cmdlets', 'if(-not $hasAdequateVersion) {\n              $accountsModule = Import-Module -Name $accountsName -MinimumVersion 1.6.0 -Scope Global -PassThru\n            }\n          }\n        }\n# Load DLL to use build-time cmdlets');
 ```

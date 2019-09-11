@@ -14,9 +14,9 @@ The operation to update a virtual machine.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzVM -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-AvailabilitySetId <String>]
- [-BootDiagnosticEnabled] [-BootDiagnosticStorageUri <String>] [-IdentityId <String[]>]
- [-IdentityType <ResourceIdentityType>] [-LicenseType <String>]
+Update-AzVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AvailabilitySetId <String>] [-BootDiagnosticEnabled] [-BootDiagnosticStorageUri <String>]
+ [-IdentityId <String[]>] [-IdentityType <ResourceIdentityType>] [-LicenseType <String>]
  [-LinuxConfigurationDisablePasswordAuthentication] [-NetworkInterface <INetworkInterfaceReference[]>]
  [-OSProfileAdminPassword <String>] [-OSProfileAdminUsername <String>] [-OSProfileComputerName <String>]
  [-OSProfileCustomData <String>] [-OSProfileSecret <IVaultSecretGroup[]>] [-PlanName <String>]
@@ -582,9 +582,9 @@ Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

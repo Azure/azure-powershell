@@ -14,7 +14,7 @@ Restarts one or more virtual machines in a VM scale set.
 
 ### RestartExpanded (Default)
 ```
-Restart-AzVmss -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-InstanceId <String[]>]
+Restart-AzVmss -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-InstanceId <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -172,9 +172,9 @@ Type: System.String
 Parameter Sets: RestartExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

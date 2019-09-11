@@ -14,12 +14,12 @@ Retrieves information about a Shared Image Gallery.
 
 ### List1 (Default)
 ```
-Get-AzGallery -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzGallery [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzGallery -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzGallery -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -30,7 +30,7 @@ Get-AzGallery -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [<Com
 
 ### List
 ```
-Get-AzGallery -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzGallery -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -133,9 +133,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
