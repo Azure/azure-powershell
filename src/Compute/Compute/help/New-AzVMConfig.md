@@ -16,23 +16,24 @@ Creates a configurable virtual machine object.
 ### DefaultParameterSet (Default)
 ```
 New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>] [[-LicenseType] <String>]
- [-Zone <String[]>] [-ProximityPlacementGroupId <String>] [-Tags <Hashtable>] [-EnableUltraSSD]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Zone <String[]>] [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>]
+ [-Tags <Hashtable>] [-EnableUltraSSD] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ExplicitIdentityParameterSet
 ```
 New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>] [[-LicenseType] <String>]
  [-IdentityType] <ResourceIdentityType> [-IdentityId <String[]>] [-Zone <String[]>]
- [-ProximityPlacementGroupId <String>] [-Tags <Hashtable>] [-EnableUltraSSD]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>] [-Tags <Hashtable>]
+ [-EnableUltraSSD] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### AssignIdentityParameterSet
 ```
 New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>] [[-LicenseType] <String>]
- [-AssignIdentity] [-Zone <String[]>] [-ProximityPlacementGroupId <String>] [-Tags <Hashtable>]
- [-EnableUltraSSD] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AssignIdentity] [-Zone <String[]>] [-ProximityPlacementGroupId <String>] [-HostId <String>]
+ [-VmssId <String>] [-Tags <Hashtable>] [-EnableUltraSSD] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,6 +109,21 @@ Managed disks with storage account type UltraSSD_LRS can be added to a virtual m
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -HostId
+The Id of Host
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -220,6 +236,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VmssId
+The Id of virtual machine scale set
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

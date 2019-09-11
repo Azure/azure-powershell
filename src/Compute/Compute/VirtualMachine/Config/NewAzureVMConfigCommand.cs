@@ -87,6 +87,16 @@ namespace Microsoft.Azure.Commands.Compute
         public string ProximityPlacementGroupId { get; set; }
 
         [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Id of Host")]
+        public string HostId { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Id of virtual machine scale set")]
+        public string VmssId { get; set; }
+
+        [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
 		[Alias("Tag")]
@@ -151,6 +161,16 @@ namespace Microsoft.Azure.Commands.Compute
             if (this.IsParameterBound(c => c.ProximityPlacementGroupId))
             {
                 vm.ProximityPlacementGroup = new SubResource(this.ProximityPlacementGroupId);
+            }
+
+            if (this.IsParameterBound(c => c.HostId))
+            {
+                vm.Host = new SubResource(this.HostId);
+            }
+
+            if (this.IsParameterBound(c => c.VmssId))
+            {
+                vm.VirtualMachineScaleSet = new SubResource(this.VmssId);
             }
 
             WriteObject(vm);
