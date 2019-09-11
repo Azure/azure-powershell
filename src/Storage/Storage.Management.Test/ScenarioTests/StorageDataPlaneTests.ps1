@@ -56,10 +56,16 @@ function Test-File
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
         Assert-AreEqual $file.Count 1
         Assert-AreEqual $file[0].Name $objectName1
-		Set-AzStorageFileContent -source $localSrcFile -ShareName $shareName -Path $objectName1 -Force -Context $storageContext
+
+		Set-AzStorageFileContent -source $localSrcFile -ShareName $shareName -Path $objectName1  -PreserveSMBAttribute -Force -Context $storageContext
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
         Assert-AreEqual $file.Count 1
         Assert-AreEqual $file[0].Name $objectName1
+		$file[0].FetchAttributes()
+		$localFileProperties = Get-ItemProperty $localSrcFile
+        Assert-AreEqual $localFileProperties.CreationTime.ToUniversalTime().Ticks $file[0].Properties.CreationTime.ToUniversalTime().Ticks
+        Assert-AreEqual $localFileProperties.LastWriteTime.ToUniversalTime().Ticks $file[0].Properties.LastWriteTime.ToUniversalTime().Ticks
+        Assert-AreEqual $localFileProperties.Attributes.ToString() $file[0].Properties.NtfsAttributes.ToString()
 
         Start-AzStorageFileCopy -SrcShareName $shareName -SrcFilePath $objectName1 -DestShareName $shareName -DestFilePath $objectName2 -Force -Context $storageContext -DestContext $storageContext
         Get-AzStorageFileCopyState -ShareName $shareName -FilePath $objectName2 -Context $storageContext -WaitForComplete
@@ -68,13 +74,19 @@ function Test-File
         Assert-AreEqual $file[0].Name $objectName1
         Assert-AreEqual $file[1].Name $objectName2
 
-        $t = Get-AzStorageFileContent -ShareName $shareName -Path $objectName1 -Destination $localDestFile -Force -Context $storageContext  -asjob
+        $t = Get-AzStorageFileContent -ShareName $shareName -Path $objectName1 -Destination $localDestFile -Force -Context $storageContext -asjob
 		$t | wait-job
 		Assert-AreEqual $t.State "Completed"
 		Assert-AreEqual $t.Error $null   
         Assert-AreEqual (Get-FileHash -Path $localDestFile -Algorithm MD5).Hash (Get-FileHash -Path $localSrcFile -Algorithm MD5).Hash
-		Get-AzStorageFileContent -ShareName $shareName -Path $objectName1 -Destination $localDestFile -Force -Context $storageContext
+
+		Get-AzStorageFileContent -ShareName $shareName -Path $objectName1 -Destination $localDestFile -PreserveSMBAttribute -Force -Context $storageContext
         Assert-AreEqual (Get-FileHash -Path $localDestFile -Algorithm MD5).Hash (Get-FileHash -Path $localSrcFile -Algorithm MD5).Hash
+		$file = Get-AzStorageFile -ShareName $shareName -Path $objectName1 -Context $storageContext
+		$localFileProperties = Get-ItemProperty $localSrcFile
+        Assert-AreEqual $localFileProperties.CreationTime.ToUniversalTime().Ticks $file[0].Properties.CreationTime.ToUniversalTime().Ticks
+        Assert-AreEqual $localFileProperties.LastWriteTime.ToUniversalTime().Ticks $file[0].Properties.LastWriteTime.ToUniversalTime().Ticks
+        Assert-AreEqual $localFileProperties.Attributes.ToString() $file[0].Properties.NtfsAttributes.ToString()
 
         Remove-AzStorageFile -ShareName $shareName -Path $objectName1 -Context $storageContext
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
