@@ -49,7 +49,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         public int? PeeringDBFacilityId { get; set; }
 
         /// <summary>
-        ///     Bandwidth offered at this location.
+        ///     Microsoft provides the bgp session 
         /// </summary>
         [Parameter(
              Mandatory = true,
