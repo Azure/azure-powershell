@@ -871,6 +871,11 @@ directive:
   - from: Az.Compute.psm1
     where: $
     transform: >
+        return $.replace(if($hasAdequateVersion)', 'if(-not $hasAdequateVersion)');
+# Update psm1 for module load
+  - from: Az.Compute.psm1
+    where: $
+    transform: >
         return $.replace('\$null = Import-Module -Name \(Join-Path $PSScriptRoot \'\./bin/Az\.Compute\.private\.dll\'\)', '');
 #
   - from: Az.Compute.psm1
@@ -937,5 +942,5 @@ directive:
   - from: generate-help.ps1
     where: $
     transform: >
-        return $.replace('# Load DLL to use build-time cmdlets', 'if($hasAdequateVersion) {\n              $accountsModule = Import-Module -Name $accountsName -MinimumVersion 1.6.0 -Scope Global -PassThru\n            }\n          }\n        }\n# Load DLL to use build-time cmdlets');
+        return $.replace('# Load DLL to use build-time cmdlets', 'if(-not $hasAdequateVersion) {\n              $accountsModule = Import-Module -Name $accountsName -MinimumVersion 1.6.0 -Scope Global -PassThru\n            }\n          }\n        }\n# Load DLL to use build-time cmdlets');
 ```
