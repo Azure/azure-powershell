@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix bug where New-AzRoleAssignment could not be called without parameter Scope.
 
 ## Version 1.6.2
 * Add support for new api version 2019-05-10 for Microsoft.Resource
