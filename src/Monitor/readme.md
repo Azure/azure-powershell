@@ -167,7 +167,7 @@ directive:
     hide: true
   # LogProfile
   - where:
-      verb: Set
+      verb: New
       subject: ^LogProfile$
     set:
       alias: Add-AzLogProfile
@@ -220,7 +220,11 @@ directive:
   - where:
       verb: Enable
       subject: ActionGroupReceiver
-    hide: true
+    remove: true
+  - where:
+      verb: Update
+      subject: ActionGroup
+    remove: true
   # Metric
   - where:
       subject: Metric
@@ -235,7 +239,7 @@ directive:
   - where:
       verb: New
       subject: Metric
-    hide: true
+    remove: true
   - where:
       verb: Get
       subject: MetricDefinition
