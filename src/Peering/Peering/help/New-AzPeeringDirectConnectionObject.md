@@ -171,7 +171,7 @@ Accept wildcard characters: False
 ```
 
 ### -MicrosoftProvidedIPAddress
-Who will provide the session address(es)?
+Enable flag that tells Microsoft to provide the BGP session addresses.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
