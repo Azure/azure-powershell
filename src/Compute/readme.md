@@ -871,7 +871,7 @@ directive:
   - from: Az.Compute.psm1
     where: $
     transform: >
-        return $.replace(if($hasAdequateVersion)', 'if(-not $hasAdequateVersion)');
+        return $.replace('if($hasAdequateVersion)', 'if(-not $hasAdequateVersion)');
 # Update psm1 for module load
   - from: Az.Compute.psm1
     where: $
