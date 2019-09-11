@@ -14,12 +14,12 @@ Get all deleted apps for a subscription.
 
 ### List (Default)
 ```
-Get-AzDeletedWebApp -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDeletedWebApp [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzDeletedWebApp -Location <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzDeletedWebApp -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -90,9 +90,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

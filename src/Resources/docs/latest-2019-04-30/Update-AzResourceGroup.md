@@ -16,20 +16,20 @@ If a field is unspecified, the current value is retained.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzResourceGroup -ResourceGroupName <String> -SubscriptionId <String> [-Name <String>]
+Update-AzResourceGroup -ResourceGroupName <String> [-Name <String>] [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-ManagedBy <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Update
 ```
-Update-AzResourceGroup -Name <String> -SubscriptionId <String> -Parameter <IResourceGroupPatchable>
+Update-AzResourceGroup -Name <String> -Parameter <IResourceGroupPatchable> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateById
 ```
-Update-AzResourceGroup -Id <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
+Update-AzResourceGroup -Id <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-ManagedBy <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -196,9 +196,9 @@ Type: System.String
 Parameter Sets: Update, UpdateById, UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

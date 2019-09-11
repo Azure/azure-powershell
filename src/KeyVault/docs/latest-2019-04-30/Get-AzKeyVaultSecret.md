@@ -27,14 +27,8 @@ Get-AzKeyVaultSecret -Name <String> -Version <String> [-KeyVaultDnsSuffix <Strin
 
 ### GetDeleted
 ```
-Get-AzKeyVaultSecret -InRemovedState [-VaultBaseUrl <String>] [-MaxResult <Int32>]
+Get-AzKeyVaultSecret -InRemovedState -Name <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetDeleted1
-```
-Get-AzKeyVaultSecret -InRemovedState -Name <String> [-VaultBaseUrl <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -43,10 +37,10 @@ Get-AzKeyVaultSecret -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <Strin
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ListVersions
+### ListDeleted
 ```
-Get-AzKeyVaultSecret -IncludeVersions -Name <String> [-VaultBaseUrl <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzKeyVaultSecret -InRemovedState [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-MaxResult <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,22 +85,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IncludeVersions
-Signals to include versions of the secret in the output.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ListVersions
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -129,7 +107,7 @@ Signals that deleted key vault secrets should be returned.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: GetDeleted, GetDeleted1
+Parameter Sets: GetDeleted, ListDeleted
 Aliases:
 
 Required: True
@@ -145,7 +123,7 @@ MISSING DESCRIPTION 06
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1, GetViaIdentity
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -162,7 +140,7 @@ If not specified, the service will return up to 25 results.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: Get1, GetDeleted
+Parameter Sets: Get1, ListDeleted
 Aliases:
 
 Required: False
@@ -178,26 +156,10 @@ The name of the secret.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetDeleted1, ListVersions
+Parameter Sets: Get, GetDeleted
 Aliases: SecretName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VaultBaseUrl
-MISSING DESCRIPTION 06
-
-```yaml
-Type: System.String
-Parameter Sets: GetDeleted, GetDeleted1, ListVersions
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -210,7 +172,7 @@ MISSING DESCRIPTION 06
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1, GetViaIdentity
+Parameter Sets: (All)
 Aliases:
 
 Required: False

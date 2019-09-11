@@ -15,7 +15,7 @@ Updates the source control configuration of an app.
 ### CreateExpanded (Default)
 ```
 New-AzWebAppSourceControlSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> [-Branch <String>] [-DeploymentRollbackEnabled] [-IsManualIntegration]
+ [-SubscriptionId <String>] [-Branch <String>] [-DeploymentRollbackEnabled] [-IsManualIntegration]
  [-IsMercurial] [-Kind <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ New-AzWebAppSourceControlSlot -Name <String> -ResourceGroupName <String> -Slot <
 ### Create
 ```
 New-AzWebAppSourceControlSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> -SiteSourceControl <ISiteSourceControl> [-DefaultProfile <PSObject>] [-AsJob]
+ -SiteSourceControl <ISiteSourceControl> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -302,9 +302,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,30 +14,31 @@ Gets a resource group.
 
 ### List (Default)
 ```
-Get-AzResourceGroup -SubscriptionId <String[]> [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzResourceGroup [-SubscriptionId <String[]>] [-Filter <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzResourceGroup -Name <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzResourceGroup -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetById
 ```
-Get-AzResourceGroup -Id <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResourceGroup -Id <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetByTag
 ```
-Get-AzResourceGroup -SubscriptionId <String[]> -Tag <Hashtable> [-Top <Int32>] [-DefaultProfile <PSObject>]
+Get-AzResourceGroup -Tag <Hashtable> [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetByTagNameAndValue
 ```
-Get-AzResourceGroup -SubscriptionId <String[]> -TagName <String> [-TagValue <String>] [-Top <Int32>]
+Get-AzResourceGroup -TagName <String> [-SubscriptionId <String[]>] [-TagValue <String>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -164,9 +165,9 @@ Type: System.String[]
 Parameter Sets: Get, GetById, GetByTag, GetByTagNameAndValue, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

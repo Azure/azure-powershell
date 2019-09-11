@@ -15,7 +15,7 @@ Create function for web site, or a deployment slot.
 ### CreateExpanded (Default)
 ```
 New-AzWebAppFunction -FunctionName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Config <IFunctionEnvelopePropertiesConfig>] [-ConfigHref <String>]
+ [-SubscriptionId <String>] [-Config <IFunctionEnvelopePropertiesConfig>] [-ConfigHref <String>]
  [-File <Hashtable>] [-FunctionAppId <String>] [-Href <String>] [-Kind <String>] [-ScriptHref <String>]
  [-ScriptRootPathHref <String>] [-SecretsFileHref <String>] [-TestData <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -24,7 +24,7 @@ New-AzWebAppFunction -FunctionName <String> -Name <String> -ResourceGroupName <S
 ### Create
 ```
 New-AzWebAppFunction -FunctionName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -FunctionEnvelope <IFunctionEnvelope> [-DefaultProfile <PSObject>] [-AsJob]
+ -FunctionEnvelope <IFunctionEnvelope> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -351,9 +351,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

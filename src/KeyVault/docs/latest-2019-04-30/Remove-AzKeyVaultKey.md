@@ -28,8 +28,8 @@ Remove-AzKeyVaultKey -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <Strin
 
 ### Purge
 ```
-Remove-AzKeyVaultKey -InRemovedState -Name <String> [-VaultBaseUrl <String>] [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzKeyVaultKey -InRemovedState -Name <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -113,7 +113,7 @@ MISSING DESCRIPTION 06
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentity
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -156,28 +156,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
-MISSING DESCRIPTION 06
-
-```yaml
-Type: System.String
-Parameter Sets: Purge
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentity
+Parameter Sets: (All)
 Aliases:
 
 Required: False

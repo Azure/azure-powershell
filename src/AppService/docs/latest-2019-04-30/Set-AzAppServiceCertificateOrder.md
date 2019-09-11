@@ -14,8 +14,8 @@ Create or update a certificate purchase order.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzAppServiceCertificateOrder -CertificateOrderName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Location <String> [-AutoRenew] [-Certificate <Hashtable>] [-Csr <String>]
+Set-AzAppServiceCertificateOrder -CertificateOrderName <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-AutoRenew] [-Certificate <Hashtable>] [-Csr <String>]
  [-DistinguishedName <String>] [-KeySize <Int32>] [-Kind <String>] [-ProductType <CertificateProductType>]
  [-Tag <Hashtable>] [-ValidityInYear <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -24,7 +24,7 @@ Set-AzAppServiceCertificateOrder -CertificateOrderName <String> -ResourceGroupNa
 ### Update
 ```
 Set-AzAppServiceCertificateOrder -CertificateOrderName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -CertificateDistinguishedName <IAppServiceCertificateOrder>
+ -CertificateDistinguishedName <IAppServiceCertificateOrder> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -288,9 +288,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

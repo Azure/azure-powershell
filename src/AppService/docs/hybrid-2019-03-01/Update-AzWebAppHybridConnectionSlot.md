@@ -15,7 +15,7 @@ Creates a new Hybrid Connection using a Service Bus relay.
 ### UpdateExpanded (Default)
 ```
 Update-AzWebAppHybridConnectionSlot -Name <String> -NamespaceName <String> -RelayName <String>
- -ResourceGroupName <String> -Slot <String> -SubscriptionId <String> [-Hostname <String>] [-Kind <String>]
+ -ResourceGroupName <String> -Slot <String> [-SubscriptionId <String>] [-Hostname <String>] [-Kind <String>]
  [-Port <Int32>] [-PropertiesRelayName <String>] [-RelayArmUri <String>] [-SendKeyName <String>]
  [-SendKeyValue <String>] [-ServiceBusNamespace <String>] [-ServiceBusSuffix <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -24,7 +24,7 @@ Update-AzWebAppHybridConnectionSlot -Name <String> -NamespaceName <String> -Rela
 ### Update
 ```
 Update-AzWebAppHybridConnectionSlot -Name <String> -NamespaceName <String> -RelayName <String>
- -ResourceGroupName <String> -Slot <String> -SubscriptionId <String> -ConnectionEnvelope <IHybridConnection>
+ -ResourceGroupName <String> -Slot <String> -ConnectionEnvelope <IHybridConnection> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -356,9 +356,9 @@ Type: System.String
 Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

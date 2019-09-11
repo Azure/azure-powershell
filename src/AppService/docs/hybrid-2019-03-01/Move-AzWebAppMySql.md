@@ -14,16 +14,16 @@ Migrates a local (in-app) MySql database to a remote MySql database.
 
 ### MigrateExpanded (Default)
 ```
-Move-AzWebAppMySql -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Move-AzWebAppMySql -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ConnectionString <String>] [-Kind <String>] [-MigrationType <MySqlMigrationType>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Migrate
 ```
-Move-AzWebAppMySql -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -MigrationRequestEnvelope <IMigrateMySqlRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Move-AzWebAppMySql -Name <String> -ResourceGroupName <String> -MigrationRequestEnvelope <IMigrateMySqlRequest>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### MigrateViaIdentity
@@ -236,9 +236,9 @@ Type: System.String
 Parameter Sets: Migrate, MigrateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

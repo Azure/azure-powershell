@@ -14,12 +14,12 @@ Gets the active diagnostic settings for the specified resource.
 
 ### List (Default)
 ```
-Get-AzDiagnosticSetting -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDiagnosticSetting -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDiagnosticSetting -Name <String> -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDiagnosticSetting -Name <String> -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -70,6 +70,7 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
@@ -100,12 +101,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceUri
+### -ResourceId
 The identifier of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -128,6 +129,29 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170501Preview.IDiagnosticSettingsResource
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INPUTOBJECT <IMonitorIdentity>: Identity Parameter
+  - `[ActionGroupName <String>]`: The name of the action group.
+  - `[ActivityLogAlertName <String>]`: The name of the activity log alert.
+  - `[AutoscaleSettingName <String>]`: The autoscale setting name.
+  - `[Id <String>]`: Resource identity path
+  - `[IncidentName <String>]`: The name of the incident to retrieve.
+  - `[LogProfileName <String>]`: The name of the log profile.
+  - `[MetricName <String>]`: The name of the metric to retrieve the baseline for.
+  - `[Name <String>]`: The name of the diagnostic setting.
+  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[ResourceName <String>]`: The ARM resource name
+  - `[ResourceProvider <String>]`: The ARM resource provider name
+  - `[ResourceTypeName <String>]`: The ARM resource type name
+  - `[ResourceUri <String>]`: The identifier of the resource.
+  - `[RuleName <String>]`: The name of the rule.
+  - `[StatusName <String>]`: The name of the status.
+  - `[SubscriptionId <String>]`: The Azure subscription Id.
 
 ## RELATED LINKS
 

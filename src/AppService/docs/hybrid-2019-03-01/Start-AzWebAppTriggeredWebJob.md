@@ -14,8 +14,8 @@ Run a triggered web job for an app, or a deployment slot.
 
 ### Run (Default)
 ```
-Start-AzWebAppTriggeredWebJob -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -WebJobName <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzWebAppTriggeredWebJob -Name <String> -ResourceGroupName <String> -WebJobName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RunViaIdentity
@@ -140,9 +140,9 @@ Type: System.String
 Parameter Sets: Run
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

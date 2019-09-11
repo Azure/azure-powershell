@@ -14,15 +14,14 @@ Gets all legal agreements that user needs to accept before purchasing a domain.
 
 ### ListExpanded (Default)
 ```
-Get-AzAppServiceTopLevelDomainAgreement -Name <String> -SubscriptionId <String[]> [-ForTransfer]
+Get-AzAppServiceTopLevelDomainAgreement -Name <String> [-SubscriptionId <String[]>] [-ForTransfer]
  [-IncludePrivacy] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzAppServiceTopLevelDomainAgreement -Name <String> -SubscriptionId <String[]>
- -AgreementOption <ITopLevelDomainAgreementOption> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzAppServiceTopLevelDomainAgreement -Name <String> -AgreementOption <ITopLevelDomainAgreementOption>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -141,9 +140,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

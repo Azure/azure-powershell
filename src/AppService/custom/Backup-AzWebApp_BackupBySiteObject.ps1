@@ -1,10 +1,11 @@
 function Backup-AzWebApp_BackupBySiteObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IBackupItem')]
-    [CmdletBinding(SupportsShouldProcess)]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.AppService.Profile('latest-2019-04-30')]
     param(
         [Parameter(Mandatory, HelpMessage='Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).')]
         [Microsoft.Azure.PowerShell.Cmdlets.AppService.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppService.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         ${SubscriptionId},
 

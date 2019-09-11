@@ -14,12 +14,12 @@ Get a certificate.
 
 ### List (Default)
 ```
-Get-AzWebAppCertificate -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWebAppCertificate [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzWebAppCertificate -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzWebAppCertificate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -30,7 +30,7 @@ Get-AzWebAppCertificate -InputObject <IAppServiceIdentity> [-DefaultProfile <PSO
 
 ### List1
 ```
-Get-AzWebAppCertificate -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzWebAppCertificate -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -134,9 +134,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

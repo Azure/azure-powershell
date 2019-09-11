@@ -14,7 +14,7 @@ Updates publishing credentials for the subscription owner
 
 ### UpdateExpanded (Default)
 ```
-Set-AzAppServiceGlobalSubscriptionPublishingCredentials -SubscriptionId <String> -Location <String>
+Set-AzAppServiceGlobalSubscriptionPublishingCredentials -Location <String> [-SubscriptionId <String>]
  [-Id <String>] [-Kind <String>] [-Name <String>] [-PropertiesName <String>] [-PublishingPassword <String>]
  [-PublishingUserName <String>] [-ScmUri <String>] [-Tag <Hashtable>] [-Type <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -22,7 +22,7 @@ Set-AzAppServiceGlobalSubscriptionPublishingCredentials -SubscriptionId <String>
 
 ### Update
 ```
-Set-AzAppServiceGlobalSubscriptionPublishingCredentials -SubscriptionId <String> -RequestMessage <IUser>
+Set-AzAppServiceGlobalSubscriptionPublishingCredentials -RequestMessage <IUser> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -222,9 +222,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

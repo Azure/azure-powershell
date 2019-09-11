@@ -25,8 +25,8 @@ Update-AzManagedApplication -Id <String> -Kind <String> -ManagedResourceGroupId 
 
 ### Update
 ```
-Update-AzManagedApplication -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Parameter <IApplication> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzManagedApplication -Name <String> -ResourceGroupName <String> -Parameter <IApplication>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update1
@@ -37,8 +37,8 @@ Update-AzManagedApplication -Id <String> -Parameter <IApplication> [-DefaultProf
 
 ### UpdateExpanded
 ```
-Update-AzManagedApplication -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Kind <String>
- -ManagedResourceGroupId <String> [-ApplicationDefinitionId <String>]
+Update-AzManagedApplication -Name <String> -ResourceGroupName <String> -Kind <String>
+ -ManagedResourceGroupId <String> [-SubscriptionId <String>] [-ApplicationDefinitionId <String>]
  [-ApplicationParameter <IApplicationPropertiesParameters>] [-IdentityType <ResourceIdentityType>]
  [-Location <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
  [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>] [-SkuCapacity <Int32>]
@@ -502,9 +502,9 @@ Type: System.String
 Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

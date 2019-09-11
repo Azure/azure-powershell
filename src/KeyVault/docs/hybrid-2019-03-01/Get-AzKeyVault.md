@@ -14,12 +14,12 @@ Gets the specified Azure key vault.
 
 ### List1 (Default)
 ```
-Get-AzKeyVault -SubscriptionId <String[]> [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKeyVault [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzKeyVault -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -30,7 +30,7 @@ Get-AzKeyVault -InputObject <IKeyVaultIdentity> [-DefaultProfile <PSObject>] [<C
 
 ### List
 ```
-Get-AzKeyVault -ResourceGroupName <String> -SubscriptionId <String[]> [-Top <Int32>]
+Get-AzKeyVault -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -133,9 +133,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,16 +14,15 @@ Validate whether a resource can be moved.
 
 ### ValidateExpanded (Default)
 ```
-Test-AzAppServiceMove -ResourceGroupName <String> -SubscriptionId <String> [-Resource <String[]>]
+Test-AzAppServiceMove -ResourceGroupName <String> [-SubscriptionId <String>] [-Resource <String[]>]
  [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Validate
 ```
-Test-AzAppServiceMove -ResourceGroupName <String> -SubscriptionId <String>
- -MoveResourceEnvelope <ICsmMoveResourceEnvelope> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Test-AzAppServiceMove -ResourceGroupName <String> -MoveResourceEnvelope <ICsmMoveResourceEnvelope>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentity
@@ -172,9 +171,9 @@ Type: System.String
 Parameter Sets: Validate, ValidateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

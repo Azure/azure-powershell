@@ -15,7 +15,7 @@ Terminate a process by its ID for a web site, or a deployment slot, or specific 
 ### Delete (Default)
 ```
 Remove-AzWebAppProcessSlot -Name <String> -ProcessId <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -173,9 +173,9 @@ Type: System.String
 Parameter Sets: Delete
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

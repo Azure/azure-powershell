@@ -14,7 +14,7 @@ Creates or updates an App Service Plan.
 
 ### CreateExpanded (Default)
 ```
-New-AzAppServicePlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
+New-AzAppServicePlan -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-Capacity <Int32>] [-FreeOfferExpirationTime <DateTime>] [-HostingEnvironmentProfileId <String>] [-HyperV]
  [-IsSpot] [-IsXenon] [-Kind <String>] [-MaximumElasticWorkerCount <Int32>] [-PerSiteScaling] [-Reserved]
  [-SkuCapability <ICapability[]>] [-SkuCapacityDefault <Int32>] [-SkuCapacityMaximum <Int32>]
@@ -27,8 +27,8 @@ New-AzAppServicePlan -Name <String> -ResourceGroupName <String> -SubscriptionId 
 
 ### Create
 ```
-New-AzAppServicePlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -AppServicePlan <IAppServicePlan> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzAppServicePlan -Name <String> -ResourceGroupName <String> -AppServicePlan <IAppServicePlan>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -554,9 +554,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

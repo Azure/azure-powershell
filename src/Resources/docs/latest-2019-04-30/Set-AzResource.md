@@ -12,39 +12,14 @@ Creates a resource.
 
 ## SYNTAX
 
-### UpdateExpanded1 (Default)
 ```
-Set-AzResource -ResourceId <String> [-IdentityType <ResourceIdentityType>]
+Set-AzResource -Name <String> -ProviderNamespace <String> -ResourceGroupName <String> -ResourceType <String>
+ -ApiVersion <String> [-SubscriptionId <String>] [-IdentityType <ResourceIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-Location <String>] [-ManagedBy <String>]
  [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
  [-PlanVersion <String>] [-Property <IGenericResourceProperties>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
  [-SkuModel <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Set-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace <String>
- -ResourceGroupName <String> -ResourceType <String> -SubscriptionId <String> -Parameter <IGenericResource>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update1
-```
-Set-AzResource -ResourceId <String> -Parameter <IGenericResource> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Set-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace <String>
- -ResourceGroupName <String> -ResourceType <String> -SubscriptionId <String>
- [-IdentityType <ResourceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>]
- [-Location <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
- [-Property <IGenericResourceProperties>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>]
- [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,6 +46,22 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -ApiVersion
+The API version to use for the operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -109,7 +100,7 @@ The identity type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.ResourceIdentityType
-Parameter Sets: UpdateExpanded, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -126,7 +117,7 @@ The user identity dictionary key references will be ARM resource ids in the form
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -142,7 +133,7 @@ The kind of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -158,7 +149,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -174,7 +165,7 @@ ID of the resource that manages this resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -190,7 +181,7 @@ The name of the resource to create.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases: ResourceName
 
 Required: True
@@ -217,45 +208,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Resource information.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IGenericResource
-Parameter Sets: Update, Update1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ParentResourcePath
-The parent resource identity.
-
-```yaml
-Type: System.String
-Parameter Sets: Update, UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -PlanName
 The plan name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -271,7 +229,7 @@ The product code.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -287,7 +245,7 @@ The promotion code.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -303,7 +261,7 @@ The publisher ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -319,7 +277,7 @@ The plan's version.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -335,7 +293,7 @@ The resource properties.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IGenericResourceProperties
-Parameter Sets: UpdateExpanded, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -351,7 +309,7 @@ The namespace of the resource provider.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases: ResourceProviderNamespace
 
 Required: True
@@ -368,24 +326,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ResourceId
-The fully qualified ID of the resource, including the resource name and resource type.
-Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
-
-```yaml
-Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -401,7 +342,7 @@ The resource type of the resource to create.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -417,7 +358,7 @@ The SKU capacity.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -433,7 +374,7 @@ The SKU family.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -449,7 +390,7 @@ The SKU model.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -465,7 +406,7 @@ The SKU name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -481,7 +422,7 @@ The SKU size.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -497,7 +438,7 @@ The SKU tier.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -513,12 +454,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -529,7 +470,7 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -578,8 +519,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IGenericResource
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IGenericResource
@@ -587,31 +526,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ## NOTES
-
-### COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-#### PARAMETER <IGenericResource>: Resource information.
-  - `PlanName <String>`: The plan name.
-  - `PlanProduct <String>`: The product code.
-  - `PlanPublisher <String>`: The publisher ID.
-  - `PlanVersion <String>`: The plan's version.
-  - `SkuName <String>`: The SKU name.
-  - `[Location <String>]`: Resource location
-  - `[Tag <IResourceTags>]`: Resource tags
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[IdentityType <ResourceIdentityType?>]`: The identity type.
-  - `[IdentityUserAssignedIdentity <IIdentityUserAssignedIdentities>]`: The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-    - `[(Any) <IComponentsSchemasIdentityPropertiesUserassignedidentitiesAdditionalproperties>]`: This indicates any property can be added to this object.
-  - `[Kind <String>]`: The kind of the resource.
-  - `[ManagedBy <String>]`: ID of the resource that manages this resource.
-  - `[PlanPromotionCode <String>]`: The promotion code.
-  - `[Property <IGenericResourceProperties>]`: The resource properties.
-  - `[SkuCapacity <Int32?>]`: The SKU capacity.
-  - `[SkuFamily <String>]`: The SKU family.
-  - `[SkuModel <String>]`: The SKU model.
-  - `[SkuSize <String>]`: The SKU size.
-  - `[SkuTier <String>]`: The SKU tier.
 
 ## RELATED LINKS
 

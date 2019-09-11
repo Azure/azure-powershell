@@ -15,7 +15,7 @@ Create or update a managed hosting environment.
 ### UpdateExpanded (Default)
 ```
 Set-AzAppServiceManagedHostingEnvironmentManagedHostingEnvironment -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Location <String> [-AllowedMultiSize <String>] [-AllowedWorkerSize <String>]
+ -Location <String> [-SubscriptionId <String>] [-AllowedMultiSize <String>] [-AllowedWorkerSize <String>]
  [-ApiManagementAccountId <String>] [-ClusterSetting <INameValuePair[]>] [-DatabaseEdition <String>]
  [-DatabaseServiceObjective <String>] [-DnsSuffix <String>] [-EnvironmentCapacity <IStampCapacity[]>]
  [-EnvironmentIsHealthy] [-EnvironmentStatus <String>] [-Id <String>]
@@ -35,7 +35,7 @@ Set-AzAppServiceManagedHostingEnvironmentManagedHostingEnvironment -Name <String
 ### Update
 ```
 Set-AzAppServiceManagedHostingEnvironmentManagedHostingEnvironment -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -ManagedHostingEnvironmentEnvelope <IHostingEnvironment>
+ -ManagedHostingEnvironmentEnvelope <IHostingEnvironment> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -642,9 +642,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

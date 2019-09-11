@@ -14,7 +14,7 @@ Updates the configuration of an app.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzWebAppConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Update-AzWebAppConfiguration -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ActionMinProcessExecutionTime <String>] [-ActionType <AutoHealActionType>] [-AlwaysOn]
  [-ApiDefinitionUrl <String>] [-AppCommandLine <String>] [-AppSetting <INameValuePair[]>] [-AutoHealEnabled]
  [-AutoSwapSlotName <String>] [-AzureStorageAccount <Hashtable>] [-ConnectionString <IConnStringInfo[]>]
@@ -45,8 +45,8 @@ Update-AzWebAppConfiguration -Name <String> -ResourceGroupName <String> -Subscri
 
 ### Update
 ```
-Update-AzWebAppConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -SiteConfig <ISiteConfigResource> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzWebAppConfiguration -Name <String> -ResourceGroupName <String> -SiteConfig <ISiteConfigResource>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -856,7 +856,7 @@ Dynamic: False
 ```
 
 ### -NetFrameworkVersion
-.NET Framework version.
+
 
 ```yaml
 Type: System.String
@@ -1219,9 +1219,9 @@ Type: System.String
 Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

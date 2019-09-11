@@ -12,17 +12,24 @@ Add an owner to an application.
 
 ## SYNTAX
 
-### AddExpanded (Default)
+### Add (Default)
 ```
-Add-AzADApplicationOwner -ObjectId <String> -TenantId <String> -Url <String>
+Add-AzADApplicationOwner -ObjectId <String> -TenantId <String> -Parameter <IAddOwnerParameters>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### AddByComponents
+```
+Add-AzADApplicationOwner -ObjectId <String> -TenantId <String> -MemberObjectId <String>
  [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### Add
+### AddExpanded
 ```
-Add-AzADApplicationOwner -ObjectId <String> -TenantId <String> -Parameter <IAddOwnerParameters>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzADApplicationOwner -ObjectId <String> -TenantId <String> -Url <String>
+ [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### AddViaIdentity
@@ -67,7 +74,7 @@ Additional Parameters
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: AddExpanded, AddViaIdentityExpanded
+Parameter Sets: AddByComponents, AddExpanded, AddViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -111,13 +118,29 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -MemberObjectId
+The object ID of the owner of the application.
+
+```yaml
+Type: System.String
+Parameter Sets: AddByComponents
+Aliases: OwnerObjectId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ObjectId
 The object ID of the application to which to add the owner.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded
-Aliases:
+Parameter Sets: Add, AddByComponents, AddExpanded
+Aliases: ApplicationObjectId
 
 Required: True
 Position: Named
@@ -165,7 +188,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded
+Parameter Sets: Add, AddByComponents, AddExpanded
 Aliases:
 
 Required: True

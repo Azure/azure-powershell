@@ -14,18 +14,17 @@ Create or update a key vault in the specified subscription.
 
 ### CreateExpanded1 (Default)
 ```
-New-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
- -SkuName <SkuName> -TenantId <String> [-AccessPolicy <IAccessPolicyEntry[]>] [-CreateMode <CreateMode>]
- [-EnabledForDeployment] [-EnabledForDiskEncryption] [-EnabledForTemplateDeployment] [-EnablePurgeProtection]
- [-EnableSoftDelete] [-Tag <Hashtable>] [-VaultUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzKeyVault -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <SkuName>
+ -TenantId <String> [-SubscriptionId <String>] [-AccessPolicy <IAccessPolicyEntry[]>]
+ [-CreateMode <CreateMode>] [-EnabledForDeployment] [-EnabledForDiskEncryption]
+ [-EnabledForTemplateDeployment] [-EnablePurgeProtection] [-EnableSoftDelete] [-Tag <Hashtable>]
+ [-VaultUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create1
 ```
-New-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Parameter <IVaultCreateOrUpdateParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzKeyVault -Name <String> -ResourceGroupName <String> -Parameter <IVaultCreateOrUpdateParameters>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
@@ -312,9 +311,9 @@ Type: System.String
 Parameter Sets: Create1, CreateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

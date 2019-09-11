@@ -15,14 +15,15 @@ Create or update a Virtual Network route in an App Service plan.
 ### UpdateExpanded (Default)
 ```
 Set-AzAppServicePlanVnetRoute -Name <String> -ResourceGroupName <String> -RouteName <String>
- -SubscriptionId <String> -VnetName <String> [-EndAddress <String>] [-Kind <String>] [-RouteType <RouteType>]
- [-StartAddress <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -VnetName <String> [-SubscriptionId <String>] [-EndAddress <String>] [-Kind <String>]
+ [-RouteType <RouteType>] [-StartAddress <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Set-AzAppServicePlanVnetRoute -Name <String> -ResourceGroupName <String> -RouteName <String>
- -SubscriptionId <String> -VnetName <String> -Route <IVnetRoute> [-DefaultProfile <PSObject>] [-PassThru]
+ -VnetName <String> -Route <IVnetRoute> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -224,9 +225,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

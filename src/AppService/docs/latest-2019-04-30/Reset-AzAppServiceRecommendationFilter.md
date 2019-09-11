@@ -14,21 +14,21 @@ Reset all recommendation opt-out settings for a subscription.
 
 ### Reset (Default)
 ```
-Reset-AzAppServiceRecommendationFilter -SubscriptionId <String> [-DefaultProfile <PSObject>] [-PassThru]
+Reset-AzAppServiceRecommendationFilter [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Reset1
 ```
 Reset-AzAppServiceRecommendationFilter -HostingEnvironmentName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -EnvironmentName <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ -EnvironmentName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### Reset2
 ```
-Reset-AzAppServiceRecommendationFilter -ResourceGroupName <String> -SiteName <String> -SubscriptionId <String>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Reset-AzAppServiceRecommendationFilter -ResourceGroupName <String> -SiteName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ResetViaIdentity
@@ -197,9 +197,9 @@ Type: System.String
 Parameter Sets: Reset, Reset1, Reset2
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

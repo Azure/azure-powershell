@@ -15,7 +15,7 @@ Create a deployment
 ### CreateExpanded (Default)
 ```
 New-AzAppServiceSiteInstanceDeploymentSlot -Id <String> -InstanceId <String> -Name <String>
- -ResourceGroupName <String> -Slot <String> -SubscriptionId <String> -Location <String> [-Active]
+ -ResourceGroupName <String> -Slot <String> -Location <String> [-SubscriptionId <String>] [-Active]
  [-Author <String>] [-AuthorEmail <String>] [-Deployer <String>] [-Detail <String>] [-EndTime <DateTime>]
  [-Id1 <String>] [-Kind <String>] [-Message <String>] [-Name1 <String>] [-PropertiesId <String>]
  [-StartTime <DateTime>] [-Status <Int32>] [-Tag <Hashtable>] [-Type <String>] [-DefaultProfile <PSObject>]
@@ -25,7 +25,7 @@ New-AzAppServiceSiteInstanceDeploymentSlot -Id <String> -InstanceId <String> -Na
 ### Create
 ```
 New-AzAppServiceSiteInstanceDeploymentSlot -Id <String> -InstanceId <String> -Name <String>
- -ResourceGroupName <String> -Slot <String> -SubscriptionId <String> -Deployment <IDeployment>
+ -ResourceGroupName <String> -Slot <String> -Deployment <IDeployment> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -434,9 +434,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,7 +14,7 @@ Create or update a certificate.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzWebAppCertificate -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Update-AzWebAppCertificate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-HostingEnvironmentProfileId <String>] [-HostName <String[]>] [-KeyVaultId <String>]
  [-KeyVaultSecretName <String>] [-Kind <String>] [-Password <String>] [-PfxBlobInputFile <String>]
  [-ServerFarmId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -22,9 +22,9 @@ Update-AzWebAppCertificate -Name <String> -ResourceGroupName <String> -Subscript
 
 ### Update
 ```
-Update-AzWebAppCertificate -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -CertificateEnvelope <ICertificatePatchResource> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzWebAppCertificate -Name <String> -ResourceGroupName <String>
+ -CertificateEnvelope <ICertificatePatchResource> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -286,9 +286,9 @@ Type: System.String
 Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

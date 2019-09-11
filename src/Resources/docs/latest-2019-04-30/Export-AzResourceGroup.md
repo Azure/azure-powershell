@@ -14,14 +14,14 @@ Captures the specified resource group as a template.
 
 ### ExportExpanded (Default)
 ```
-Export-AzResourceGroup -ResourceGroupName <String> -SubscriptionId <String> [-Option <String>]
+Export-AzResourceGroup -ResourceGroupName <String> [-SubscriptionId <String>] [-Option <String>]
  [-Resource <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Export
 ```
-Export-AzResourceGroup -ResourceGroupName <String> -SubscriptionId <String>
- -Parameter <IExportTemplateRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Export-AzResourceGroup -ResourceGroupName <String> -Parameter <IExportTemplateRequest>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ExportViaIdentity
@@ -169,9 +169,9 @@ Type: System.String
 Parameter Sets: Export, ExportExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

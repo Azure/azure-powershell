@@ -14,15 +14,17 @@ Lists connection keys.
 
 ### ListExpanded (Default)
 ```
-Get-AzAppServiceConnectionKey -ConnectionName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -Location <String> [-Id <String>] [-Kind <String>] [-Name <String>] [-Tag <Hashtable>] [-Type <String>]
- [-ValidityTimeSpan <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzAppServiceConnectionKey -ConnectionName <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String[]>] [-Id <String>] [-Kind <String>] [-Name <String>] [-Tag <Hashtable>]
+ [-Type <String>] [-ValidityTimeSpan <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzAppServiceConnectionKey -ConnectionName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -Content <IListConnectionKeysInput> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzAppServiceConnectionKey -ConnectionName <String> -ResourceGroupName <String>
+ -Content <IListConnectionKeysInput> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -189,9 +191,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

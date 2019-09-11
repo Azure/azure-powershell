@@ -12,37 +12,13 @@ Create a new action group or update an existing one.
 
 ## SYNTAX
 
-### Create (Default)
 ```
-New-AzActionGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ActionGroup <IActionGroupResource>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzActionGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Enabled
- -GroupShortName <String> -Location <String> [-ArmRoleReceiver <IArmRoleReceiver[]>]
- [-AutomationRunbookReceiver <IAutomationRunbookReceiver[]>] [-AzureAppPushReceiver <IAzureAppPushReceiver[]>]
- [-AzureFunctionReceiver <IAzureFunctionReceiver[]>] [-EmailReceiver <IEmailReceiver[]>]
- [-ItsmReceiver <IItsmReceiver[]>] [-LogicAppReceiver <ILogicAppReceiver[]>] [-SmsReceiver <ISmsReceiver[]>]
- [-Tag <IResourceTags>] [-VoiceReceiver <IVoiceReceiver[]>] [-WebhookReceiver <IWebhookReceiver[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzActionGroup -InputObject <IMonitorIdentity> -Enabled -GroupShortName <String> -Location <String>
+New-AzActionGroup -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-ArmRoleReceiver <IArmRoleReceiver[]>] [-AutomationRunbookReceiver <IAutomationRunbookReceiver[]>]
  [-AzureAppPushReceiver <IAzureAppPushReceiver[]>] [-AzureFunctionReceiver <IAzureFunctionReceiver[]>]
- [-EmailReceiver <IEmailReceiver[]>] [-ItsmReceiver <IItsmReceiver[]>]
- [-LogicAppReceiver <ILogicAppReceiver[]>] [-SmsReceiver <ISmsReceiver[]>] [-Tag <IResourceTags>]
- [-VoiceReceiver <IVoiceReceiver[]>] [-WebhookReceiver <IWebhookReceiver[]>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzActionGroup -InputObject <IMonitorIdentity> [-ActionGroup <IActionGroupResource>]
+ [-EmailReceiver <IEmailReceiver[]>] [-Enabled] [-ItsmReceiver <IItsmReceiver[]>]
+ [-LogicAppReceiver <ILogicAppReceiver[]>] [-ShortName <String>] [-SmsReceiver <ISmsReceiver[]>]
+ [-Tag <Hashtable>] [-VoiceReceiver <IVoiceReceiver[]>] [-WebhookReceiver <IWebhookReceiver[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -71,29 +47,14 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -ActionGroup
-An action group resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20190301.IActionGroupResource
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ArmRoleReceiver
 The list of ARM role receivers that are part of this action group.
 Roles are Azure RBAC roles and only built-in roles are supported.
+To construct, see NOTES section for ARMROLERECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20190301.IArmRoleReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -106,10 +67,11 @@ Dynamic: False
 
 ### -AutomationRunbookReceiver
 The list of AutomationRunbook receivers that are part of this action group.
+To construct, see NOTES section for AUTOMATIONRUNBOOKRECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20190301.IAutomationRunbookReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -122,10 +84,11 @@ Dynamic: False
 
 ### -AzureAppPushReceiver
 The list of AzureAppPush receivers that are part of this action group.
+To construct, see NOTES section for AZUREAPPPUSHRECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20190301.IAzureAppPushReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -138,10 +101,11 @@ Dynamic: False
 
 ### -AzureFunctionReceiver
 The list of azure function receivers that are part of this action group.
+To construct, see NOTES section for AZUREFUNCTIONRECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20190301.IAzureFunctionReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -170,10 +134,11 @@ Dynamic: False
 
 ### -EmailReceiver
 The list of email receivers that are part of this action group.
+To construct, see NOTES section for EMAILRECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20190301.IEmailReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -190,56 +155,24 @@ If an action group is not enabled, then none of its receivers will receive commu
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -GroupShortName
-The short name of the action group.
-This will be used in SMS messages.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -ItsmReceiver
 The list of ITSM receivers that are part of this action group.
+To construct, see NOTES section for ITSMRECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20190301.IItsmReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -255,7 +188,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -268,10 +201,11 @@ Dynamic: False
 
 ### -LogicAppReceiver
 The list of logic app receivers that are part of this action group.
+To construct, see NOTES section for LOGICAPPRECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20190301.ILogicAppReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -287,7 +221,7 @@ The name of the action group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases: ActionGroupName
 
 Required: True
@@ -303,7 +237,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -314,12 +248,30 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ShortName
+The short name of the action group.
+This will be used in SMS messages.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SmsReceiver
 The list of SMS receivers that are part of this action group.
+To construct, see NOTES section for SMSRECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20190301.ISmsReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -335,12 +287,12 @@ The Azure subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -350,8 +302,8 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20150401.IResourceTags
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -364,10 +316,11 @@ Dynamic: False
 
 ### -VoiceReceiver
 The list of voice receivers that are part of this action group.
+To construct, see NOTES section for VOICERECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20190301.IVoiceReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -380,10 +333,11 @@ Dynamic: False
 
 ### -WebhookReceiver
 The list of webhook receivers that are part of this action group.
+To construct, see NOTES section for WEBHOOKRECEIVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20190301.IWebhookReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -432,15 +386,74 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20190301.IActionGroupResource
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20190301.IActionGroupResource
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### ARMROLERECEIVER <IArmRoleReceiver[]>: The list of ARM role receivers that are part of this action group. Roles are Azure RBAC roles and only built-in roles are supported.
+  - `Name <String>`: The name of the arm role receiver. Names must be unique across all receivers within an action group.
+  - `RoleId <String>`: The arm role id.
+  - `UseCommonAlertSchema <Boolean>`: Indicates whether to use common alert schema.
+
+#### AUTOMATIONRUNBOOKRECEIVER <IAutomationRunbookReceiver[]>: The list of AutomationRunbook receivers that are part of this action group.
+  - `AutomationAccountId <String>`: The Azure automation account Id which holds this runbook and authenticate to Azure resource.
+  - `IsGlobalRunbook <Boolean>`: Indicates whether this instance is global runbook.
+  - `RunbookName <String>`: The name for this runbook.
+  - `UseCommonAlertSchema <Boolean>`: Indicates whether to use common alert schema.
+  - `WebhookResourceId <String>`: The resource id for webhook linked to this runbook.
+  - `[Name <String>]`: Indicates name of the webhook.
+  - `[ServiceUri <String>]`: The URI where webhooks should be sent.
+
+#### AZUREAPPPUSHRECEIVER <IAzureAppPushReceiver[]>: The list of AzureAppPush receivers that are part of this action group.
+  - `EmailAddress <String>`: The email address registered for the Azure mobile app.
+  - `Name <String>`: The name of the Azure mobile app push receiver. Names must be unique across all receivers within an action group.
+
+#### AZUREFUNCTIONRECEIVER <IAzureFunctionReceiver[]>: The list of azure function receivers that are part of this action group.
+  - `FunctionAppResourceId <String>`: The azure resource id of the function app.
+  - `FunctionName <String>`: The function name in the function app.
+  - `HttpTriggerUrl <String>`: The http trigger url where http request sent to.
+  - `Name <String>`: The name of the azure function receiver. Names must be unique across all receivers within an action group.
+  - `UseCommonAlertSchema <Boolean>`: Indicates whether to use common alert schema.
+
+#### EMAILRECEIVER <IEmailReceiver[]>: The list of email receivers that are part of this action group.
+  - `EmailAddress <String>`: The email address of this receiver.
+  - `Name <String>`: The name of the email receiver. Names must be unique across all receivers within an action group.
+  - `UseCommonAlertSchema <Boolean>`: Indicates whether to use common alert schema.
+
+#### ITSMRECEIVER <IItsmReceiver[]>: The list of ITSM receivers that are part of this action group.
+  - `ConnectionId <String>`: Unique identification of ITSM connection among multiple defined in above workspace.
+  - `Name <String>`: The name of the Itsm receiver. Names must be unique across all receivers within an action group.
+  - `Region <String>`: Region in which workspace resides. Supported values:'centralindia','japaneast','southeastasia','australiasoutheast','uksouth','westcentralus','canadacentral','eastus','westeurope'
+  - `TicketConfiguration <String>`: JSON blob for the configurations of the ITSM action. CreateMultipleWorkItems option will be part of this blob as well.
+  - `WorkspaceId <String>`: OMS LA instance identifier.
+
+#### LOGICAPPRECEIVER <ILogicAppReceiver[]>: The list of logic app receivers that are part of this action group.
+  - `CallbackUrl <String>`: The callback url where http request sent to.
+  - `Name <String>`: The name of the logic app receiver. Names must be unique across all receivers within an action group.
+  - `ResourceId <String>`: The azure resource id of the logic app receiver.
+  - `UseCommonAlertSchema <Boolean>`: Indicates whether to use common alert schema.
+
+#### SMSRECEIVER <ISmsReceiver[]>: The list of SMS receivers that are part of this action group.
+  - `CountryCode <String>`: The country code of the SMS receiver.
+  - `Name <String>`: The name of the SMS receiver. Names must be unique across all receivers within an action group.
+  - `PhoneNumber <String>`: The phone number of the SMS receiver.
+
+#### VOICERECEIVER <IVoiceReceiver[]>: The list of voice receivers that are part of this action group.
+  - `CountryCode <String>`: The country code of the voice receiver.
+  - `Name <String>`: The name of the voice receiver. Names must be unique across all receivers within an action group.
+  - `PhoneNumber <String>`: The phone number of the voice receiver.
+
+#### WEBHOOKRECEIVER <IWebhookReceiver[]>: The list of webhook receivers that are part of this action group.
+  - `Name <String>`: The name of the webhook receiver. Names must be unique across all receivers within an action group.
+  - `ServiceUri <String>`: The URI where webhooks should be sent.
+  - `UseCommonAlertSchema <Boolean>`: Indicates whether to use common alert schema.
 
 ## RELATED LINKS
 

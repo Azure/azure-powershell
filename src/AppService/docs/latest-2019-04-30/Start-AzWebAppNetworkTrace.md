@@ -14,7 +14,7 @@ Start capturing network packets for the site.
 
 ### Start (Default)
 ```
-Start-AzWebAppNetworkTrace -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Start-AzWebAppNetworkTrace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DurationInSecond <Int32>] [-MaxFrameLength <Int32>] [-SasUrl <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -206,9 +206,9 @@ Type: System.String
 Parameter Sets: Start
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

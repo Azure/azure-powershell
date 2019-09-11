@@ -14,14 +14,14 @@ You must remove all values from a resource tag before you can delete it.
 
 ### Delete (Default)
 ```
-Remove-AzTag -Name <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
+Remove-AzTag -Name <String> [-SubscriptionId <String>] [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteValue
 ```
-Remove-AzTag -Name <String> -SubscriptionId <String> -Value <String> [-PassThru] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzTag -Name <String> -Value <String> [-SubscriptionId <String>] [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -128,9 +128,9 @@ Type: System.String
 Parameter Sets: Delete, DeleteValue
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

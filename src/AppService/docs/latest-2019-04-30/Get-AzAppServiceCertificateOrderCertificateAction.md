@@ -15,7 +15,7 @@ Retrieve the list of certificate actions.
 ### Retrieve (Default)
 ```
 Get-AzAppServiceCertificateOrderCertificateAction -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RetrieveViaIdentity
@@ -124,9 +124,9 @@ Type: System.String[]
 Parameter Sets: Retrieve
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

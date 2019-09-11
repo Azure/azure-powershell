@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Resources
-Module Guid: f9b08cca-d391-4dba-4015-0d621d522b93
+Module Guid: 1bb10716-570a-45be-88c4-84927b145b93
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.resources
 Help Version: 1.0.0.0
 Locale: en-US
@@ -29,8 +29,17 @@ Captures the specified resource group as a template.
 ### [Get-AzADApplication](Get-AzADApplication.md)
 Get an application by object ID.
 
+### [Get-AzADApplicationKeyCredential](Get-AzADApplicationKeyCredential.md)
+Get the keyCredentials associated with an application.
+
 ### [Get-AzADApplicationOwner](Get-AzADApplicationOwner.md)
 The owners are a set of non-admin users who are allowed to modify this object.
+
+### [Get-AzADApplicationPasswordCredential](Get-AzADApplicationPasswordCredential.md)
+Get the passwordCredentials associated with an application.
+
+### [Get-AzADDomain](Get-AzADDomain.md)
+Gets a specific domain in the current tenant.
 
 ### [Get-AzADGroup](Get-AzADGroup.md)
 Gets group information from the directory.
@@ -41,34 +50,24 @@ Gets the members of a group.
 ### [Get-AzADGroupMemberGroup](Get-AzADGroupMemberGroup.md)
 Gets a collection of object IDs of groups of which the specified group is a member.
 
-### [Get-AzADObject](Get-AzADObject.md)
-Gets the directory objects specified in a list of object IDs.
-You can also specify which resource collections (users, groups, etc.) should be searched by specifying the optional types parameter.
-
 ### [Get-AzADServicePrincipal](Get-AzADServicePrincipal.md)
 Gets service principal information from the directory.
 Query by objectId or pass a filter to query by appId
 
+### [Get-AzADServicePrincipalKeyCredential](Get-AzADServicePrincipalKeyCredential.md)
+Get the keyCredentials associated with the specified service principal.
+
 ### [Get-AzADServicePrincipalOwner](Get-AzADServicePrincipalOwner.md)
 The owners are a set of non-admin users who are allowed to modify this object.
+
+### [Get-AzADServicePrincipalPasswordCredential](Get-AzADServicePrincipalPasswordCredential.md)
+Gets the passwordCredentials associated with a service principal.
 
 ### [Get-AzADUser](Get-AzADUser.md)
 Gets user information from the directory.
 
 ### [Get-AzADUserMemberGroup](Get-AzADUserMemberGroup.md)
 Gets a collection that contains the object IDs of the groups of which the user is a member.
-
-### [Get-AzApplicationKeyCredentials](Get-AzApplicationKeyCredentials.md)
-Get the keyCredentials associated with an application.
-
-### [Get-AzApplicationPasswordCredentials](Get-AzApplicationPasswordCredentials.md)
-Get the passwordCredentials associated with an application.
-
-### [Get-AzAuthorizationOperation](Get-AzAuthorizationOperation.md)
-Lists all of the available Microsoft.Authorization REST API operations.
-
-### [Get-AzClassicAdministrator](Get-AzClassicAdministrator.md)
-Gets service administrator, account administrator, and co-administrators for the subscription.
 
 ### [Get-AzDenyAssignment](Get-AzDenyAssignment.md)
 Get the specified deny assignment.
@@ -79,8 +78,8 @@ Gets a deployment.
 ### [Get-AzDeploymentOperation](Get-AzDeploymentOperation.md)
 Gets a deployments operation.
 
-### [Get-AzEntity](Get-AzEntity.md)
-List all entities (Management Groups, Subscriptions, etc.) for the authenticated user.
+### [Get-AzLocation](Get-AzLocation.md)
+This operation provides all the locations that are available for resource providers; however, each resource provider may support a subset of this list.
 
 ### [Get-AzManagedApplication](Get-AzManagedApplication.md)
 Gets the managed application.
@@ -93,15 +92,6 @@ Get the details of the management group.
 
 ### [Get-AzManagementGroupDescendant](Get-AzManagementGroupDescendant.md)
 List all entities that descend from a management group.\n
-
-### [Get-AzManagementLock](Get-AzManagementLock.md)
-Get a management lock by scope.
-
-### [Get-AzOAuth2PermissionGrant](Get-AzOAuth2PermissionGrant.md)
-Queries OAuth2 permissions grants for the relevant SP ObjectId of an app.
-
-### [Get-AzPermission](Get-AzPermission.md)
-Gets all permissions the caller has for a resource group.
 
 ### [Get-AzPolicyAssignment](Get-AzPolicyAssignment.md)
 This operation retrieves a single policy assignment, given its name and the scope it was created at.
@@ -124,8 +114,8 @@ Gets a resource.
 ### [Get-AzResourceGroup](Get-AzResourceGroup.md)
 Gets a resource group.
 
-### [Get-AzResourceLink](Get-AzResourceLink.md)
-Gets a resource link with the specified ID.
+### [Get-AzResourceLock](Get-AzResourceLock.md)
+Get a management lock by scope.
 
 ### [Get-AzResourceProvider](Get-AzResourceProvider.md)
 Gets the specified resource provider.
@@ -139,17 +129,11 @@ Gets a role assignment by ID.
 ### [Get-AzRoleDefinition](Get-AzRoleDefinition.md)
 Gets a role definition by ID.
 
-### [Get-AzSubscriptionLocation](Get-AzSubscriptionLocation.md)
-This operation provides all the locations that are available for resource providers; however, each resource provider may support a subset of this list.
-
 ### [Get-AzTag](Get-AzTag.md)
 Gets the names and values of all resource tags that are defined in a subscription.
 
 ### [Invoke-AzElevateGlobalAdministratorAccess](Invoke-AzElevateGlobalAdministratorAccess.md)
 Elevates access for a Global Administrator.
-
-### [Invoke-AzTenantBackfillStatus](Invoke-AzTenantBackfillStatus.md)
-Gets tenant backfill status
 
 ### [Move-AzResource](Move-AzResource.md)
 The resources to move must be in the same source resource group.
@@ -160,11 +144,23 @@ Write and delete operations are blocked on the groups until the move completes.
 ### [New-AzADApplication](New-AzADApplication.md)
 Create a new application.
 
+### [New-AzADApplicationKeyCredential](New-AzADApplicationKeyCredential.md)
+Adds a new key credential to a application.
+
+### [New-AzADApplicationPasswordCredential](New-AzADApplicationPasswordCredential.md)
+Adds a new password credential to an application.
+
 ### [New-AzADGroup](New-AzADGroup.md)
 Create a group in the directory.
 
 ### [New-AzADServicePrincipal](New-AzADServicePrincipal.md)
 Creates a service principal in the directory.
+
+### [New-AzADServicePrincipalKeyCredential](New-AzADServicePrincipalKeyCredential.md)
+Adds a new key credential to a service principal.
+
+### [New-AzADServicePrincipalPasswordCredential](New-AzADServicePrincipalPasswordCredential.md)
+Adds a new password credential to a service principal.
 
 ### [New-AzADUser](New-AzADUser.md)
 Create a new user.
@@ -185,14 +181,6 @@ If a management group is already created and a subsequent create request is issu
 ### [New-AzManagementGroupSubscription](New-AzManagementGroupSubscription.md)
 Associates existing subscription with the management group.
 
-### [New-AzManagementLock](New-AzManagementLock.md)
-When you apply a lock at a parent scope, all child resources inherit the same lock.
-To create management locks, you must have access to Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions.
-Of the built-in roles, only Owner and User Access Administrator are granted those actions.
-
-### [New-AzOAuth2PermissionGrant](New-AzOAuth2PermissionGrant.md)
-Grants OAuth2 permissions for the relevant resource Ids of an app.
-
 ### [New-AzPolicyAssignment](New-AzPolicyAssignment.md)
 This operation creates or updates a policy assignment with the given scope and name.
 Policy assignments apply to all resources contained within their scope.
@@ -210,8 +198,10 @@ Creates a resource.
 ### [New-AzResourceGroup](New-AzResourceGroup.md)
 Creates or updates a resource group.
 
-### [New-AzResourceLink](New-AzResourceLink.md)
-Creates or updates a resource link between the specified resources.
+### [New-AzResourceLock](New-AzResourceLock.md)
+When you apply a lock at a parent scope, all child resources inherit the same lock.
+To create management locks, you must have access to Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions.
+Of the built-in roles, only Owner and User Access Administrator are granted those actions.
 
 ### [New-AzRoleAssignment](New-AzRoleAssignment.md)
 Creates a role assignment.
@@ -233,8 +223,14 @@ Registers a subscription with a resource provider.
 ### [Remove-AzADApplication](Remove-AzADApplication.md)
 Delete an application.
 
+### [Remove-AzADApplicationKeyCredential](Remove-AzADApplicationKeyCredential.md)
+Removes a key credential associated with an application.
+
 ### [Remove-AzADApplicationOwner](Remove-AzADApplicationOwner.md)
 Remove a member from owners.
+
+### [Remove-AzADApplicationPasswordCredential](Remove-AzADApplicationPasswordCredential.md)
+Removes a password credential associated with an application.
 
 ### [Remove-AzADGroup](Remove-AzADGroup.md)
 Delete a group from the directory.
@@ -247,6 +243,12 @@ Remove a member from owners.
 
 ### [Remove-AzADServicePrincipal](Remove-AzADServicePrincipal.md)
 Deletes a service principal from the directory.
+
+### [Remove-AzADServicePrincipalKeyCredential](Remove-AzADServicePrincipalKeyCredential.md)
+Removes a key credential associated with an service principal.
+
+### [Remove-AzADServicePrincipalPasswordCredential](Remove-AzADServicePrincipalPasswordCredential.md)
+Removes a password credential associated with an service principal.
 
 ### [Remove-AzADUser](Remove-AzADUser.md)
 Delete a user.
@@ -273,12 +275,6 @@ If a management group contains child resources, the request will fail.
 ### [Remove-AzManagementGroupSubscription](Remove-AzManagementGroupSubscription.md)
 De-associates subscription from the management group.
 
-### [Remove-AzManagementLock](Remove-AzManagementLock.md)
-Delete a management lock by scope.
-
-### [Remove-AzOAuth2PermissionGrant](Remove-AzOAuth2PermissionGrant.md)
-Delete a OAuth2 permission grant for the relevant resource Ids of an app.
-
 ### [Remove-AzPolicyAssignment](Remove-AzPolicyAssignment.md)
 This operation deletes a policy assignment, given its name and the scope it was created in.
 The scope of a policy assignment is the part of its ID preceding '/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
@@ -296,8 +292,8 @@ Deletes a resource.
 When you delete a resource group, all of its resources are also deleted.
 Deleting a resource group deletes all of its template deployments and currently stored operations.
 
-### [Remove-AzResourceLink](Remove-AzResourceLink.md)
-Deletes a resource link with the specified ID.
+### [Remove-AzResourceLock](Remove-AzResourceLock.md)
+Delete a management lock by scope.
 
 ### [Remove-AzRoleAssignment](Remove-AzRoleAssignment.md)
 Deletes a role assignment.
@@ -311,9 +307,6 @@ You must remove all values from a resource tag before you can delete it.
 ### [Restore-AzADDeletedApplication](Restore-AzADDeletedApplication.md)
 Restores the deleted application in the directory.
 
-### [Set-AzDeployment](Set-AzDeployment.md)
-You can provide the template and parameters directly in the request or link to JSON files.
-
 ### [Set-AzManagedApplication](Set-AzManagedApplication.md)
 Creates a new managed application.
 
@@ -323,11 +316,6 @@ Creates a new managed application definition.
 ### [Set-AzManagementGroup](Set-AzManagementGroup.md)
 Create or update a management group.
 If a management group is already created and a subsequent create request is issued with different properties, the management group properties will be updated.
-
-### [Set-AzManagementLock](Set-AzManagementLock.md)
-When you apply a lock at a parent scope, all child resources inherit the same lock.
-To create management locks, you must have access to Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions.
-Of the built-in roles, only Owner and User Access Administrator are granted those actions.
 
 ### [Set-AzPolicyDefinition](Set-AzPolicyDefinition.md)
 This operation creates or updates a policy definition in the given subscription with the given name.
@@ -341,14 +329,13 @@ Creates a resource.
 ### [Set-AzResourceGroup](Set-AzResourceGroup.md)
 Creates or updates a resource group.
 
-### [Set-AzResourceLink](Set-AzResourceLink.md)
-Creates or updates a resource link between the specified resources.
+### [Set-AzResourceLock](Set-AzResourceLock.md)
+When you apply a lock at a parent scope, all child resources inherit the same lock.
+To create management locks, you must have access to Microsoft.Authorization/* or Microsoft.Authorization/locks/* actions.
+Of the built-in roles, only Owner and User Access Administrator are granted those actions.
 
 ### [Set-AzRoleDefinition](Set-AzRoleDefinition.md)
 Creates or updates a role definition.
-
-### [Start-AzTenantBackfill](Start-AzTenantBackfill.md)
-Starts backfilling subscriptions for the Tenant.
 
 ### [Stop-AzDeployment](Stop-AzDeployment.md)
 You can cancel a deployment only if the provisioningState is Accepted or Running.
@@ -361,14 +348,8 @@ Checks whether the specified user, group, contact, or service principal is a dir
 ### [Test-AzDeployment](Test-AzDeployment.md)
 Validates whether the specified template is syntactically correct and will be accepted by Azure Resource Manager..
 
-### [Test-AzDeploymentExistence](Test-AzDeploymentExistence.md)
-Checks whether the deployment exists.
-
 ### [Test-AzNameAvailability](Test-AzNameAvailability.md)
 Checks if the specified management group name is valid and unique
-
-### [Test-AzResource](Test-AzResource.md)
-Checks by ID whether a resource exists.
 
 ### [Test-AzResourceGroup](Test-AzResourceGroup.md)
 Checks whether a resource group exists.
@@ -392,12 +373,6 @@ Updates a service principal in the directory.
 
 ### [Update-AzADUser](Update-AzADUser.md)
 Updates a user.
-
-### [Update-AzApplicationKeyCredentials](Update-AzApplicationKeyCredentials.md)
-Update the keyCredentials associated with an application.
-
-### [Update-AzApplicationPasswordCredentials](Update-AzApplicationPasswordCredentials.md)
-Update passwordCredentials associated with an application.
 
 ### [Update-AzManagedApplication](Update-AzManagedApplication.md)
 Updates an existing managed application.

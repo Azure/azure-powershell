@@ -27,14 +27,14 @@ Get-AzKeyVaultStorageSasDefinition -SasDefinitionName <String> -StorageAccountNa
 
 ### GetDeleted
 ```
-Get-AzKeyVaultStorageSasDefinition -InRemovedState -StorageAccountName <String> [-VaultBaseUrl <String>]
- [-MaxResult <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKeyVaultStorageSasDefinition -InRemovedState -StorageAccountName <String> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-MaxResult <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetDeleted1
 ```
 Get-AzKeyVaultStorageSasDefinition -InRemovedState -SasDefinitionName <String> -StorageAccountName <String>
- [-VaultBaseUrl <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -129,7 +129,7 @@ MISSING DESCRIPTION 06
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1, GetViaIdentity, GetViaIdentity1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -189,28 +189,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
-MISSING DESCRIPTION 06
-
-```yaml
-Type: System.String
-Parameter Sets: GetDeleted, GetDeleted1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1, GetViaIdentity, GetViaIdentity1
+Parameter Sets: (All)
 Aliases:
 
 Required: False

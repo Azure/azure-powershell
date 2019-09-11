@@ -15,14 +15,14 @@ Verify domain ownership for this certificate order.
 ### RetrieveExpanded (Default)
 ```
 Get-AzAppServiceCertificateOrderSiteSeal -CertificateOrderName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-LightTheme] [-Locale <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-LightTheme] [-Locale <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Retrieve
 ```
 Get-AzAppServiceCertificateOrderSiteSeal -CertificateOrderName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -SiteSealRequest <ISiteSealRequest> [-DefaultProfile <PSObject>] [-Confirm]
+ -SiteSealRequest <ISiteSealRequest> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -187,9 +187,9 @@ Type: System.String[]
 Parameter Sets: Retrieve, RetrieveExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,15 +14,15 @@ Adds a Virtual Network connection to an app or slot (PUT) or updates the connect
 
 ### UpdateExpanded (Default)
 ```
-Update-AzWebAppVnetConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VnetName <String> [-CertBlob <String>] [-DnsServer <String>] [-IsSwift] [-Kind <String>]
+Update-AzWebAppVnetConnection -Name <String> -ResourceGroupName <String> -VnetName <String>
+ [-SubscriptionId <String>] [-CertBlob <String>] [-DnsServer <String>] [-IsSwift] [-Kind <String>]
  [-VnetResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Update-AzWebAppVnetConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VnetName <String> -ConnectionEnvelope <IVnetInfo> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Update-AzWebAppVnetConnection -Name <String> -ResourceGroupName <String> -VnetName <String>
+ -ConnectionEnvelope <IVnetInfo> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -221,9 +221,9 @@ Type: System.String
 Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

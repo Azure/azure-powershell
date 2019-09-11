@@ -15,7 +15,7 @@ Gets the last lines of docker logs for the given site
 ### Get (Default)
 ```
 Get-AzWebAppWebSiteContainerLogSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String[]> -OutFile <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ -OutFile <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -174,9 +174,9 @@ Type: System.String[]
 Parameter Sets: Get
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

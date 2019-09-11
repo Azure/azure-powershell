@@ -14,15 +14,14 @@ Get domain name recommendations based on keywords.
 
 ### ListExpanded (Default)
 ```
-Get-AzAppServiceDomainRecommendation -SubscriptionId <String[]> [-Keyword <String>]
+Get-AzAppServiceDomainRecommendation [-SubscriptionId <String[]>] [-Keyword <String>]
  [-MaxDomainRecommendation <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzAppServiceDomainRecommendation -SubscriptionId <String[]>
- -Parameter <IDomainRecommendationSearchParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzAppServiceDomainRecommendation -Parameter <IDomainRecommendationSearchParameters>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,9 +124,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,18 +14,18 @@ Gets the specified Azure key vault.
 
 ### List3 (Default)
 ```
-Get-AzKeyVault -SubscriptionId <String[]> [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKeyVault [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
-Get-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzKeyVault -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetDeleted
 ```
-Get-AzKeyVault -InRemovedState -Location <String> -Name <String> -SubscriptionId <String[]>
+Get-AzKeyVault -InRemovedState -Location <String> -Name <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -36,13 +36,13 @@ Get-AzKeyVault -InputObject <IKeyVaultIdentity> [-DefaultProfile <PSObject>] [<C
 
 ### List2
 ```
-Get-AzKeyVault -ResourceGroupName <String> -SubscriptionId <String[]> [-Top <Int32>]
+Get-AzKeyVault -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListDeleted
 ```
-Get-AzKeyVault -InRemovedState -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKeyVault -InRemovedState [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -176,9 +176,9 @@ Type: System.String[]
 Parameter Sets: Get1, GetDeleted, List2, List3, ListDeleted
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

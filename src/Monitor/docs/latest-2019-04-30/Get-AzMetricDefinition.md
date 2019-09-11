@@ -13,8 +13,8 @@ Lists the metric definitions for the resource.
 ## SYNTAX
 
 ```
-Get-AzMetricDefinition -ResourceUri <String> [-Metricnamespace <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzMetricDefinition -ResourceId <String> [-Metricnamespace <String>] [-MetricName <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,6 +58,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -MetricName
+The metric names of the query
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Metricnamespace
 Metric namespace to query metric definitions for.
 
@@ -74,7 +90,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceUri
+### -ResourceId
 The identifier of the resource.
 
 ```yaml
@@ -100,6 +116,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api201801.IMetricDefinition
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

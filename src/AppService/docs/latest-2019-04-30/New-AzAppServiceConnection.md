@@ -14,8 +14,8 @@ Creates or updates a connection.
 
 ### CreateExpanded (Default)
 ```
-New-AzAppServiceConnection -ConnectionName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Location <String> [-Name <String>] [-ApiId <String>] [-ApiKind <String>] [-ApiLocation <String>]
+New-AzAppServiceConnection -ConnectionName <String> -ResourceGroupName <String> -Location <String>
+ [-Name <String>] [-SubscriptionId <String>] [-ApiId <String>] [-ApiKind <String>] [-ApiLocation <String>]
  [-ApiName <String>] [-ApiTag <Hashtable>] [-ApiType <String>] [-ChangedTime <DateTime>]
  [-CreatedTime <DateTime>] [-CustomParameterValue <Hashtable>] [-DisplayName <String>]
  [-Entity <IResponseMessageEnvelopeApiEntity>] [-FirstExpirationTime <DateTime>] [-Id <String>]
@@ -27,8 +27,8 @@ New-AzAppServiceConnection -ConnectionName <String> -ResourceGroupName <String> 
 
 ### Create
 ```
-New-AzAppServiceConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Connection <IConnection> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzAppServiceConnection -Name <String> -ResourceGroupName <String> -Connection <IConnection>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -536,9 +536,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -747,19 +747,19 @@ To create the parameters described below, construct a hash table containing the 
   - `[PropertiesName <String>]`: connection name
   - `[Statuses <IConnectionStatus[]>]`: Status of the connection
     - `Location <String>`: Resource Location
-    - `ErrorLocation <String>`: Resource Location
+    - `PropertiesErrorLocation <String>`: Resource Location
     - `[Id <String>]`: Resource Id
     - `[Kind <String>]`: Kind of resource
     - `[Name <String>]`: Resource Name
     - `[Tag <IResourceTags>]`: Resource tags
     - `[Type <String>]`: Resource type
     - `[Code <String>]`: code of the status
-    - `[ErrorId <String>]`: Resource Id
-    - `[ErrorKind <String>]`: Kind of resource
-    - `[ErrorName <String>]`: Resource Name
-    - `[ErrorTag <IResourceTags>]`: Resource tags
-    - `[ErrorType <String>]`: Resource type
     - `[Message <String>]`: Description of the status
+    - `[PropertiesErrorId <String>]`: Resource Id
+    - `[PropertiesErrorKind <String>]`: Kind of resource
+    - `[PropertiesErrorName <String>]`: Resource Name
+    - `[PropertiesErrorTag <IResourceTags>]`: Resource tags
+    - `[PropertiesErrorType <String>]`: Resource type
     - `[Status <String>]`: Status
     - `[Target <String>]`: Target of the error
   - `[TenantId <String>]`: 
@@ -877,7 +877,7 @@ To create the parameters described below, construct a hash table containing the 
 
 #### STATUSES <IConnectionStatus[]>: Status of the connection
   - `Location <String>`: Resource Location
-  - `ErrorLocation <String>`: Resource Location
+  - `PropertiesErrorLocation <String>`: Resource Location
   - `[Id <String>]`: Resource Id
   - `[Kind <String>]`: Kind of resource
   - `[Name <String>]`: Resource Name
@@ -885,12 +885,12 @@ To create the parameters described below, construct a hash table containing the 
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[Type <String>]`: Resource type
   - `[Code <String>]`: code of the status
-  - `[ErrorId <String>]`: Resource Id
-  - `[ErrorKind <String>]`: Kind of resource
-  - `[ErrorName <String>]`: Resource Name
-  - `[ErrorTag <IResourceTags>]`: Resource tags
-  - `[ErrorType <String>]`: Resource type
   - `[Message <String>]`: Description of the status
+  - `[PropertiesErrorId <String>]`: Resource Id
+  - `[PropertiesErrorKind <String>]`: Kind of resource
+  - `[PropertiesErrorName <String>]`: Resource Name
+  - `[PropertiesErrorTag <IResourceTags>]`: Resource tags
+  - `[PropertiesErrorType <String>]`: Resource type
   - `[Status <String>]`: Status
   - `[Target <String>]`: Target of the error
 

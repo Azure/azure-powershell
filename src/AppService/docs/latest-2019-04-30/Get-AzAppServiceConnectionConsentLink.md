@@ -14,8 +14,8 @@ Lists consent links of a connection.
 
 ### ListExpanded (Default)
 ```
-Get-AzAppServiceConnectionConsentLink -ConnectionName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -Location <String> [-Id <String>] [-Kind <String>] [-Name <String>]
+Get-AzAppServiceConnectionConsentLink -ConnectionName <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String[]>] [-Id <String>] [-Kind <String>] [-Name <String>]
  [-Parameter <IConsentLinkInputParameter[]>] [-Tag <Hashtable>] [-Type <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Get-AzAppServiceConnectionConsentLink -ConnectionName <String> -ResourceGroupNam
 ### List
 ```
 Get-AzAppServiceConnectionConsentLink -ConnectionName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -Content <IConsentLinkInput> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -Content <IConsentLinkInput> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -208,9 +208,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

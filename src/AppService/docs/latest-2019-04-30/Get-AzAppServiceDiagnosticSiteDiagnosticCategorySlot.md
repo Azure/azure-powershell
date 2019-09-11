@@ -15,13 +15,13 @@ Get Diagnostics Category
 ### List (Default)
 ```
 Get-AzAppServiceDiagnosticSiteDiagnosticCategorySlot -ResourceGroupName <String> -SiteName <String>
- -Slot <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -Slot <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzAppServiceDiagnosticSiteDiagnosticCategorySlot -DiagnosticCategory <String> -ResourceGroupName <String>
- -SiteName <String> -Slot <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+ -SiteName <String> -Slot <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -163,9 +163,9 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -15,16 +15,16 @@ This requires that 1) \"swiftSupported\" is true when doing a GET against this r
 
 ### UpdateExpanded (Default)
 ```
-Set-AzWebAppSwiftVirtualNetworkConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Kind <String>] [-SubnetResourceId <String>] [-SwiftSupported] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Set-AzWebAppSwiftVirtualNetworkConnection -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Kind <String>] [-SubnetResourceId <String>] [-SwiftSupported]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzWebAppSwiftVirtualNetworkConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -ConnectionEnvelope <ISwiftVirtualNetwork> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzWebAppSwiftVirtualNetworkConnection -Name <String> -ResourceGroupName <String>
+ -ConnectionEnvelope <ISwiftVirtualNetwork> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -163,9 +163,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

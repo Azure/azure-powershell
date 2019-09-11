@@ -14,14 +14,8 @@ Checks that the vault name is valid and is not already in use.
 
 ### CheckExpanded (Default)
 ```
-Test-AzKeyVault -SubscriptionId <String> -Name <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Test-AzKeyVault -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### Check
-```
-Test-AzKeyVault -SubscriptionId <String> -VaultName <IVaultCheckNameAvailabilityParameters>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CheckViaIdentity
@@ -116,12 +110,12 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: CheckExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -133,7 +127,7 @@ To construct, see NOTES section for VAULTNAME properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20180214.IVaultCheckNameAvailabilityParameters
-Parameter Sets: Check, CheckViaIdentity
+Parameter Sets: CheckViaIdentity
 Aliases:
 
 Required: True

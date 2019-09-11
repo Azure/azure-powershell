@@ -14,15 +14,15 @@ Validate if a resource can be created.
 
 ### ValidateExpanded1 (Default)
 ```
-Test-AzAppService -ResourceGroupName <String> -SubscriptionId <String> -Location <String> -Name <String>
- -Type <ValidateResourceTypes> [-Capacity <Int32>] [-HostingEnvironment <String>] [-IsSpot] [-NeedLinuxWorker]
+Test-AzAppService -ResourceGroupName <String> -Location <String> -Name <String> -Type <ValidateResourceTypes>
+ [-SubscriptionId <String>] [-Capacity <Int32>] [-HostingEnvironment <String>] [-IsSpot] [-NeedLinuxWorker]
  [-ServerFarmId <String>] [-SkuName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Validate1
 ```
-Test-AzAppService -ResourceGroupName <String> -SubscriptionId <String> -ValidateRequest <IValidateRequest>
+Test-AzAppService -ResourceGroupName <String> -ValidateRequest <IValidateRequest> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -252,9 +252,9 @@ Type: System.String
 Parameter Sets: Validate1, ValidateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
