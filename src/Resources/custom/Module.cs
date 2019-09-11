@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Net.Http;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Resources
@@ -12,7 +13,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources
             {
                 string authority = requestUri.Authority;
                 string tenantId = requestUri.PathAndQuery.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries)[0];
-                string query = requestUri.PathAndQuery.Split(new char[] { '&' })[1];
+                string query = string.Empty;
+                string[] queryArray = requestUri.PathAndQuery.Split(new char[] { '&' });
+                if (queryArray.Length == 1)
+                {
+                    query = requestUri.PathAndQuery.Split(new char[] { '?' }).Last();
+                }
+                else
+                {
+                    query = queryArray.Last();
+                }
+
                 if (!string.IsNullOrEmpty(authority) &&
                     !string.IsNullOrEmpty(tenantId) &&
                     !string.IsNullOrEmpty(query))
