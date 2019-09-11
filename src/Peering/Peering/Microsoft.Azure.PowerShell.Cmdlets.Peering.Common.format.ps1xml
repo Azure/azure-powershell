@@ -115,6 +115,14 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
                 <PropertyName>PeeringDBFacilityId</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>UseForPeeringService</Label>
+                <PropertyName>UseForPeeringService</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>SessionAddressProvider</Label>
+                <PropertyName>SessionAddressProvider</PropertyName>
+              </ListItem>
+              <ListItem>
                 <ItemSelectionCondition>
                   <ScriptBlock>$_.BgpSession.SessionPrefixV4 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>

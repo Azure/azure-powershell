@@ -61,6 +61,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </summary>
         public const string Available = "Available";
 
+        /// <summary>
+        /// The session provided address peer
+        /// </summary>
+        public const string Peer = "Peer";
+
+        /// <summary>
+        /// The session provided address microsoft
+        /// </summary>
+        public const string Microsoft = "Microsoft";
+
         #endregion Kind
 
         #region Ranges
@@ -133,6 +143,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// The parameter set name i pv 6 prefix.
         /// </summary>
         public const string ParameterSetNameIPv6Prefix = "IPv6Prefix";
+
+        /// <summary>
+        /// The parameter set name for microsoft provided IP.
+        /// </summary>
+        public const string ParameterSetNameMicrosoftProvidedIPAddress = "ParameterSetNameMicrosoftProvidedIPAddress";
+
+        /// <summary>
+        /// The parameter set name for use for peering service
+        /// </summary>
+        public const string ParameterSetNameUseForPeeringService = "ParameterSetNameUseForPeeringService";
 
         /// <summary>
         /// The parameter set name md 5 authentication.
@@ -251,6 +271,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public const string BandwidthHelp = "The Bandwidth offered at this location in Mbps.";
 
         /// <summary>
+        /// BandwidthHelp
+        /// </summary>
+        public const string SessionAddressProviderHelp = "Who will provide the session address(es)?";
+
+        /// <summary>
         /// AsJobHelp
         /// </summary>
         public const string AsJobHelp = "Run in the background.";
@@ -273,7 +298,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// The use for partner peering.
         /// </summary>
-        public const string UseForPeeringServiceHelp = "Enable for use with Microsoft InputObject Service (MPS).";
+        public const string UseForPeeringServiceHelp = "Enable for use with Microsoft Peering Service (MPS).";
 
         /// <summary>
         /// The prefix help.
