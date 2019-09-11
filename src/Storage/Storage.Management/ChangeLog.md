@@ -18,8 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated example in reference documentation for `Get-AzStorageAccountKey`
+* Fix Upload block blob with properties/metadate fail on container enabled ImmutabilityPolicy.
+    -  Set-AzStorageBlobContent
+
+## Version 1.6.0
 * Fixed miscellaneous typos across module
 * Update help for Get/Close-AzStorageFileHandle, by add more scenarios to cmdlet examples and update parameter descriptions
+* Support StandardBlobTier in upload blob and copy blob
+    -  Set-AzStorageBlobContent
+    -  Start-AzStorageBlobCopy
+* Support Rehydrate Priority in copy blob
+    -  Start-AzStorageBlobCopy
 
 ## Version 1.5.1
 * Update example in reference documentation for `Get-AzStorageAccount` to use correct parameter name

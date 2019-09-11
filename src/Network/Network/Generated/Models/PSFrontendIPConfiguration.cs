@@ -131,5 +131,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             return !string.IsNullOrEmpty(this.Name);
         }
+
+        public bool ShouldSerializeZones()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
     }
 }

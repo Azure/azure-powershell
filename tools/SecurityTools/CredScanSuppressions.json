@@ -318,6 +318,14 @@
       "_justification": "Legitimate test session record"
     },
     {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditTests\\TestRemoveServerAuditingSettingsMultipleDiagnosticSettings.json",
+      "_justification": "Legitimate test session record"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditTests\\TestRemoveDatabaseAuditingSettingsMultipleDiagnosticSettings.json",
+      "_justification": "Legitimate test session record"
+    },
+    {
       "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ThreatDetectionTests\\DisablingThreatDetection.json",
       "_justification": "Legitimate test session record"
     },
@@ -477,14 +485,14 @@
       "file": "src\\IotHub\\IotHub.Test\\ScenarioTests\\IotHubRoutingTests.ps1",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
     },
-	{
-	  "file": "src\\IotHub\\IotHub.Test\\SessionRecords\\Microsoft.Azure.Commands.IotHub.Test.ScenarioTests.IotHubRoutingTests\\TestAzureIotHubRoutingLifeCycle.json",
-	  "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
-	},
-	{
-	  "file": "src\\IotHub\\IotHub.Test\\SessionRecords\\Microsoft.Azure.Commands.IotHub.Test.ScenarioTests.IotHubTests\\TestAzureIotHubLifeCycle.json",
-	  "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
-	},
+	  {
+	    "file": "src\\IotHub\\IotHub.Test\\SessionRecords\\Microsoft.Azure.Commands.IotHub.Test.ScenarioTests.IotHubRoutingTests\\TestAzureIotHubRoutingLifeCycle.json",
+	    "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+	  },
+	  {
+	    "file": "src\\IotHub\\IotHub.Test\\SessionRecords\\Microsoft.Azure.Commands.IotHub.Test.ScenarioTests.IotHubTests\\TestAzureIotHubLifeCycle.json",
+	    "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
+	  },
     {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinux.json",
       "_justification": "Mocked test resource. The resources are being deleted after the test run in Record mode."
@@ -849,7 +857,7 @@
       "file": "src\\EventGrid\\EventGrid.Test\\SessionRecords\\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.EventSubscriptionTests\\EventGrid_EventSubscription_Deadletter.json",
       "_justification": "Keys do not persist after test as resources got deleted"
     },
-	    {
+    {
       "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VulnerabilityAssessmentTests\\VulnerabilityAssessmentServerSettingsTest.json",
       "_justification": "Legitimate test session record - the resources are being deleted after the test run in Record mode."
     },
@@ -857,7 +865,7 @@
       "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VulnerabilityAssessmentMiTests\\VulnerabilityAssessmentManagedInstanceSettingsTest.json",
       "_justification": "Legitimate test session record - the resources are being deleted after the test run in Record mode."
     },
-	    {
+    {
       "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VulnerabilityAssessmentMiTests\\VulnerabilityAssessmentManagedDatabaseSettingsTest.json",
       "_justification": "Legitimate test session record - the resources are being deleted after the test run in Record mode."
     }

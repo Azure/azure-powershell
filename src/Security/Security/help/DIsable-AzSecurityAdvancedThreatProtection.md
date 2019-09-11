@@ -8,7 +8,7 @@ schema: 2.0.0
 # Disable-AzSecurityAdvancedThreatProtection
 
 ## SYNOPSIS
-Disables the advanced threat protection policy for a storage account.
+Disables the advanced threat protection policy for a storage / cosmosDB account.
 
 ## SYNTAX
 
@@ -18,12 +18,12 @@ Disable-AzSecurityAdvancedThreatProtection -ResourceId <String> [-DefaultProfile
 ```
 
 ## DESCRIPTION
-The `Disable-AzSecurityAdvancedThreatProtection` cmdlet disables the threat protection policy for a storage account.
+The `Disable-AzSecurityAdvancedThreatProtection` cmdlet disables the threat protection policy for a storage / cosmosDB account.
 To use this cmdlet, specify the *ResourceId* parameter.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 : Storage Account
 ```powershell
 PS C:\> Disable-AzSecurityAdvancedThreatProtection -ResourceId "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"
 
@@ -33,6 +33,17 @@ IsEnabled Id
 ```
 
 This command disables the advanced threat protection policy for resource id `"/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"`.
+
+### Example 2 : CosmosDB Account
+```powershell
+PS C:\> Disable-AzSecurityAdvancedThreatProtection -ResourceId "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.DocumentDb/databaseAccounts/myCosmosDBAccount/"
+
+IsEnabled Id
+--------- --
+    False  "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.DocumentDb/databaseAccounts/myCosmosDBAccount/"
+```
+This command disables the advanced threat protection policy for resource id ` "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.DocumentDb/databaseAccounts/myCosmosDBAccount/"`.
+
 
 ## PARAMETERS
 

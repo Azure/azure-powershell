@@ -9,6 +9,8 @@ schema: 2.0.0
 # Get-AzSqlDatabaseAuditing
 
 ## SYNOPSIS
+**Important: This cmdlet is deprecated, [Get-AzSqlDatbaseAudit](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaseaudit) is replacing it.**
+
 Gets the auditing settings of an Azure SQL database.
 
 ## SYNTAX
