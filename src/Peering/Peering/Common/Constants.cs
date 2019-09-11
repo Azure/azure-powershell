@@ -271,9 +271,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public const string BandwidthHelp = "The Bandwidth offered at this location in Mbps.";
 
         /// <summary>
-        /// BandwidthHelp
+        /// Session address provider help.
         /// </summary>
-        public const string SessionAddressProviderHelp = "Who will provide the session address(es)?";
+        public const string SessionAddressProviderHelp = "Enable flag that tells Microsoft to provide the BGP session addresses.";
 
         /// <summary>
         /// AsJobHelp
