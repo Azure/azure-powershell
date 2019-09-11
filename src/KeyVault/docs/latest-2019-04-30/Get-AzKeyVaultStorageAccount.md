@@ -27,20 +27,20 @@ Get-AzKeyVaultStorageAccount -Name <String> [-KeyVaultDnsSuffix <String>] [-Vaul
 
 ### GetDeleted
 ```
-Get-AzKeyVaultStorageAccount -InRemovedState [-VaultBaseUrl <String>] [-MaxResult <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetDeleted1
-```
-Get-AzKeyVaultStorageAccount -InRemovedState -Name <String> [-VaultBaseUrl <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKeyVaultStorageAccount -InRemovedState -Name <String> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzKeyVaultStorageAccount -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>]
  [-VaultName <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListDeleted
+```
+Get-AzKeyVaultStorageAccount -InRemovedState [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-MaxResult <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,7 +107,7 @@ Signals that deleted key vault storage accounts should be returned.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: GetDeleted, GetDeleted1
+Parameter Sets: GetDeleted, ListDeleted
 Aliases:
 
 Required: True
@@ -123,7 +123,7 @@ MISSING DESCRIPTION 06
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1, GetViaIdentity
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -140,7 +140,7 @@ If not specified the service will return up to 25 results.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: Get, GetDeleted
+Parameter Sets: Get, ListDeleted
 Aliases:
 
 Required: False
@@ -156,26 +156,10 @@ The name of the storage account.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, GetDeleted1
+Parameter Sets: Get1, GetDeleted
 Aliases: StorageAccountName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VaultBaseUrl
-MISSING DESCRIPTION 06
-
-```yaml
-Type: System.String
-Parameter Sets: GetDeleted, GetDeleted1
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -188,7 +172,7 @@ MISSING DESCRIPTION 06
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1, GetViaIdentity
+Parameter Sets: (All)
 Aliases:
 
 Required: False

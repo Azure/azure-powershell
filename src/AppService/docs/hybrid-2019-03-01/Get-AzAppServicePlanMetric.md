@@ -13,7 +13,7 @@ Get metrics for an App Service plan.
 ## SYNTAX
 
 ```
-Get-AzAppServicePlanMetric -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-Detail]
+Get-AzAppServicePlanMetric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Detail]
  [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -135,9 +135,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

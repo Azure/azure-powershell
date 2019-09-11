@@ -12,17 +12,18 @@ This operation creates or updates a policy definition in the given subscription 
 
 ## SYNTAX
 
-### UpdateById (Default)
+### UpdateExpanded (Default)
 ```
-Set-AzPolicyDefinition -Id <String> [-SubscriptionId <String>] [-Description <String>] [-DisplayName <String>]
- [-Metadata <IPolicyDefinitionPropertiesMetadata>] [-Mode <PolicyMode>]
- [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>] [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzPolicyDefinition -Name <String> [-SubscriptionId <String>]
+ [-DefinitionPropertiesParameter <IPolicyDefinitionPropertiesParameters>] [-Description <String>]
+ [-DisplayName <String>] [-Metadata <IPolicyDefinitionPropertiesMetadata>] [-Mode <PolicyMode>]
+ [-PolicyRule <Hashtable>] [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzPolicyDefinition -Name <String> -SubscriptionId <String> -Parameter <IPolicyDefinition>
+Set-AzPolicyDefinition -Name <String> -Parameter <IPolicyDefinition> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,22 +33,20 @@ Set-AzPolicyDefinition -ManagementGroupName <String> -Name <String> -Parameter <
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateExpanded
+### UpdateById
 ```
-Set-AzPolicyDefinition -Name <String> -SubscriptionId <String>
- [-DefinitionParameter <IPolicyDefinitionPropertiesParameters>] [-Description <String>]
- [-DisplayName <String>] [-Metadata <IPolicyDefinitionPropertiesMetadata>] [-Mode <PolicyMode>]
- [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>] [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzPolicyDefinition -Id <String> [-SubscriptionId <String>] [-Description <String>] [-DisplayName <String>]
+ [-Metadata <IPolicyDefinitionPropertiesMetadata>] [-Mode <PolicyMode>] [-PolicyRule <Hashtable>]
+ [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded1
 ```
 Set-AzPolicyDefinition -ManagementGroupName <String> -Name <String>
- [-DefinitionParameter <IPolicyDefinitionPropertiesParameters>] [-Description <String>]
+ [-DefinitionPropertiesParameter <IPolicyDefinitionPropertiesParameters>] [-Description <String>]
  [-DisplayName <String>] [-Metadata <IPolicyDefinitionPropertiesMetadata>] [-Mode <PolicyMode>]
- [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>] [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PolicyRule <Hashtable>] [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,7 +90,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DefinitionParameter
+### -DefinitionPropertiesParameter
 Required if a parameter is used in policy rule.
 
 ```yaml
@@ -241,7 +240,7 @@ Dynamic: False
 The policy rule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20161201.IPolicyDefinitionPropertiesPolicyRule
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateById, UpdateExpanded, UpdateExpanded1
 Aliases:
 
@@ -278,9 +277,9 @@ Type: System.String
 Parameter Sets: Update, UpdateById, UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -344,6 +343,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Mode <PolicyMode?>]`: The policy definition mode. Possible values are NotSpecified, Indexed, and All.
   - `[Parameter <IPolicyDefinitionPropertiesParameters>]`: Required if a parameter is used in policy rule.
   - `[PolicyRule <IPolicyDefinitionPropertiesPolicyRule>]`: The policy rule.
+    - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[PolicyType <PolicyType?>]`: The type of policy definition. Possible values are NotSpecified, BuiltIn, and Custom.
 
 ## RELATED LINKS

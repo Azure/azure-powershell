@@ -440,6 +440,9 @@ Get the named public certificate for an app (or deployment slot, if specified).
 Gets the Git/FTP publishing credentials of an app.
 
 ### [Get-AzWebAppPublishingProfile](Get-AzWebAppPublishingProfile.md)
+
+
+### [Get-AzWebAppPublishingProfile](Get-AzWebAppPublishingProfile.md)
 Gets the publishing profile for an app (or deployment slot, if specified).
 
 ### [Get-AzWebAppRelayServiceConnection](Get-AzWebAppRelayServiceConnection.md)

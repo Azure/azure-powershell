@@ -14,30 +14,30 @@ Swaps two deployment slots of an app.
 
 ### SwapExpanded1 (Default)
 ```
-Switch-AzWebAppSlot -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -PreserveVnet
- -TargetSlot <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Switch-AzWebAppSlot -Name <String> -ResourceGroupName <String> -PreserveVnet -TargetSlot <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Swap
 ```
-Switch-AzWebAppSlot -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
- -SlotSwapEntity <ICsmSlotEntity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Switch-AzWebAppSlot -Name <String> -ResourceGroupName <String> -Slot <String> -SlotSwapEntity <ICsmSlotEntity>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Swap1
 ```
-Switch-AzWebAppSlot -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -SlotSwapEntity <ICsmSlotEntity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Switch-AzWebAppSlot -Name <String> -ResourceGroupName <String> -SlotSwapEntity <ICsmSlotEntity>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### SwapExpanded
 ```
-Switch-AzWebAppSlot -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
- -PreserveVnet -TargetSlot <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Switch-AzWebAppSlot -Name <String> -ResourceGroupName <String> -Slot <String> -PreserveVnet
+ -TargetSlot <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SwapViaIdentity
@@ -262,9 +262,9 @@ Type: System.String
 Parameter Sets: Swap, Swap1, SwapExpanded, SwapExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

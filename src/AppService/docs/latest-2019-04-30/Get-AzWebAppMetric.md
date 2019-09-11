@@ -14,26 +14,26 @@ Gets performance metrics of an app (or deployment slot, if specified).
 
 ### List (Default)
 ```
-Get-AzWebAppMetric -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-Detail]
+Get-AzWebAppMetric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Detail]
  [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByFilter
 ```
-Get-AzWebAppMetric -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-Slot <String>]
+Get-AzWebAppMetric -Name <String> -ResourceGroupName <String> [-Slot <String>] [-SubscriptionId <String[]>]
  [-Detail] [-EndTime <DateTime>] [-Granularity <String>] [-Metric <String[]>] [-StartTime <DateTime>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListBySiteObject
 ```
-Get-AzWebAppMetric -SubscriptionId <String[]> -SiteObject <ISite> [-Detail] [-Filter <String>]
+Get-AzWebAppMetric -SiteObject <ISite> [-SubscriptionId <String[]>] [-Detail] [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListSlot
 ```
-Get-AzWebAppMetric -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String[]>
+Get-AzWebAppMetric -Name <String> -ResourceGroupName <String> -Slot <String> [-SubscriptionId <String[]>]
  [-Detail] [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -253,9 +253,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

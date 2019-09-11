@@ -15,7 +15,7 @@ Reissue an existing certificate order.
 ### ReissueExpanded (Default)
 ```
 Invoke-AzReissueAppServiceCertificateOrder -CertificateOrderName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Csr <String>] [-DelayExistingRevokeInHour <Int32>] [-IsPrivateKeyExternal]
+ [-SubscriptionId <String>] [-Csr <String>] [-DelayExistingRevokeInHour <Int32>] [-IsPrivateKeyExternal]
  [-KeySize <Int32>] [-Kind <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Invoke-AzReissueAppServiceCertificateOrder -CertificateOrderName <String> -Resou
 ### Reissue
 ```
 Invoke-AzReissueAppServiceCertificateOrder -CertificateOrderName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -ReissueCertificateOrderRequest <IReissueCertificateOrderRequest1>
+ -ReissueCertificateOrderRequest <IReissueCertificateOrderRequest1> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -254,9 +254,9 @@ Type: System.String
 Parameter Sets: Reissue, ReissueExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

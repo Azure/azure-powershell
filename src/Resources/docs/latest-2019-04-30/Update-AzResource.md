@@ -14,7 +14,7 @@ Updates a resource.
 
 ### UpdateExpanded1 (Default)
 ```
-Update-AzResource -ResourceId <String> [-IdentityType <ResourceIdentityType>]
+Update-AzResource -ResourceId <String> -ApiVersion <String> [-IdentityType <ResourceIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-Location <String>] [-ManagedBy <String>]
  [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
  [-PlanVersion <String>] [-Property <IGenericResourceProperties>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
@@ -25,20 +25,21 @@ Update-AzResource -ResourceId <String> [-IdentityType <ResourceIdentityType>]
 ### Update
 ```
 Update-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace <String>
- -ResourceGroupName <String> -ResourceType <String> -SubscriptionId <String> -Parameter <IGenericResource>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -ResourceType <String> -ApiVersion <String> -Parameter <IGenericResource>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Update1
 ```
-Update-AzResource -ResourceId <String> -Parameter <IGenericResource> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResource -ResourceId <String> -ApiVersion <String> -Parameter <IGenericResource>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
 Update-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace <String>
- -ResourceGroupName <String> -ResourceType <String> -SubscriptionId <String>
+ -ResourceGroupName <String> -ResourceType <String> -ApiVersion <String> [-SubscriptionId <String>]
  [-IdentityType <ResourceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>]
  [-Location <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
  [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
@@ -47,36 +48,49 @@ Update-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateTopLevelResource
+```
+Update-AzResource -Name <String> -ProviderNamespace <String> -ResourceGroupName <String>
+ -ResourceType <String> -ApiVersion <String> [-SubscriptionId <String>] [-IdentityType <ResourceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-Location <String>] [-ManagedBy <String>]
+ [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
+ [-PlanVersion <String>] [-Property <IGenericResourceProperties>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuModel <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentity
 ```
-Update-AzResource -InputObject <IResourcesIdentity> -Parameter <IGenericResource> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResource -InputObject <IResourcesIdentity> -ApiVersion <String> -Parameter <IGenericResource>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity1
 ```
-Update-AzResource -InputObject <IResourcesIdentity> -Parameter <IGenericResource> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResource -InputObject <IResourcesIdentity> -ApiVersion <String> -Parameter <IGenericResource>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzResource -InputObject <IResourcesIdentity> [-IdentityType <ResourceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-Location <String>] [-ManagedBy <String>]
- [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-PlanVersion <String>] [-Property <IGenericResourceProperties>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
- [-SkuModel <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResource -InputObject <IResourcesIdentity> -ApiVersion <String>
+ [-IdentityType <ResourceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>]
+ [-Location <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-Property <IGenericResourceProperties>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>]
+ [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded1
 ```
-Update-AzResource -InputObject <IResourcesIdentity> [-IdentityType <ResourceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-Location <String>] [-ManagedBy <String>]
- [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-PlanVersion <String>] [-Property <IGenericResourceProperties>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
- [-SkuModel <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResource -InputObject <IResourcesIdentity> -ApiVersion <String>
+ [-IdentityType <ResourceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>]
+ [-Location <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-Property <IGenericResourceProperties>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>]
+ [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,6 +117,22 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -ApiVersion
+The API version to use for the operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -141,7 +171,7 @@ The identity type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.ResourceIdentityType
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateTopLevelResource, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -158,7 +188,7 @@ The user identity dictionary key references will be ARM resource ids in the form
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateTopLevelResource, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -191,7 +221,7 @@ The kind of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateTopLevelResource, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -207,7 +237,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateTopLevelResource, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -223,7 +253,7 @@ ID of the resource that manages this resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateTopLevelResource, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -239,7 +269,7 @@ The name of the resource to update.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Update, UpdateExpanded, UpdateTopLevelResource
 Aliases: ResourceName
 
 Required: True
@@ -304,7 +334,7 @@ The plan name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateTopLevelResource, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -320,7 +350,7 @@ The product code.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateTopLevelResource, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -336,7 +366,7 @@ The promotion code.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateTopLevelResource, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -352,7 +382,7 @@ The publisher ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateTopLevelResource, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -368,7 +398,7 @@ The plan's version.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateTopLevelResource, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -384,7 +414,7 @@ The resource properties.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IGenericResourceProperties
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateTopLevelResource, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -400,7 +430,7 @@ The namespace of the resource provider.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Update, UpdateExpanded, UpdateTopLevelResource
 Aliases: ResourceProviderNamespace
 
 Required: True
@@ -417,7 +447,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Update, UpdateExpanded, UpdateTopLevelResource
 Aliases:
 
 Required: True
@@ -450,7 +480,7 @@ The resource type of the resource to update.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Update, UpdateExpanded, UpdateTopLevelResource
 Aliases:
 
 Required: True
@@ -466,7 +496,7 @@ The SKU capacity.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateTopLevelResource, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -482,7 +512,7 @@ The SKU family.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateTopLevelResource, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -498,7 +528,7 @@ The SKU model.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateTopLevelResource, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -514,7 +544,7 @@ The SKU name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateTopLevelResource, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -530,7 +560,7 @@ The SKU size.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateTopLevelResource, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -546,7 +576,7 @@ The SKU tier.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateTopLevelResource, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -562,12 +592,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Update, UpdateExpanded, UpdateTopLevelResource
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -578,7 +608,7 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateTopLevelResource, UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False

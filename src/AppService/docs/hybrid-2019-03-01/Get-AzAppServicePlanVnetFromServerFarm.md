@@ -14,8 +14,8 @@ Get a Virtual Network associated with an App Service plan.
 
 ### Get (Default)
 ```
-Get-AzAppServicePlanVnetFromServerFarm -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -VnetName <String> [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+Get-AzAppServicePlanVnetFromServerFarm -Name <String> -ResourceGroupName <String> -VnetName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -140,9 +140,9 @@ Type: System.String[]
 Parameter Sets: Get
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

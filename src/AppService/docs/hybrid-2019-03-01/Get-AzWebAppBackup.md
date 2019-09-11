@@ -14,13 +14,13 @@ Gets existing backups of an app.
 
 ### List (Default)
 ```
-Get-AzWebAppBackup -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzWebAppBackup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListSlot
 ```
-Get-AzWebAppBackup -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String[]>
+Get-AzWebAppBackup -Name <String> -ResourceGroupName <String> -Slot <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -124,9 +124,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

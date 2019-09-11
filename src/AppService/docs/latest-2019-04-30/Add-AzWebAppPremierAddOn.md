@@ -15,7 +15,7 @@ Updates a named add-on of an app.
 ### AddExpanded (Default)
 ```
 Add-AzWebAppPremierAddOn -Name <String> -PremierAddOnName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Location <String> [-Kind <String>] [-MarketplaceOffer <String>]
+ -Location <String> [-SubscriptionId <String>] [-Kind <String>] [-MarketplaceOffer <String>]
  [-MarketplacePublisher <String>] [-Product <String>] [-Sku <String>] [-Tag <Hashtable>] [-Vendor <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Add-AzWebAppPremierAddOn -Name <String> -PremierAddOnName <String> -ResourceGrou
 ### Add
 ```
 Add-AzWebAppPremierAddOn -Name <String> -PremierAddOnName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -PremierAddOn <IPremierAddOn> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -PremierAddOn <IPremierAddOn> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -269,9 +269,9 @@ Type: System.String
 Parameter Sets: Add, AddExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

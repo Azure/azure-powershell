@@ -13,10 +13,10 @@ This operation requires the certificates/get permission.
 
 ## SYNTAX
 
-### GetDeleted (Default)
+### ListDeleted (Default)
 ```
-Get-AzKeyVaultCertificate -InRemovedState [-VaultBaseUrl <String>] [-MaxResult <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKeyVaultCertificate -InRemovedState [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-MaxResult <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -25,21 +25,15 @@ Get-AzKeyVaultCertificate -Name <String> -Version <String> [-KeyVaultDnsSuffix <
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetDeleted1
+### GetDeleted
 ```
-Get-AzKeyVaultCertificate -InRemovedState -Name <String> [-VaultBaseUrl <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzKeyVaultCertificate -InRemovedState -Name <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzKeyVaultCertificate -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListVersions
-```
-Get-AzKeyVaultCertificate -IncludeVersions -Name <String> [-VaultBaseUrl <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -85,22 +79,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IncludeVersions
-Signals to include the versions of the certificate in the output.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ListVersions
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -123,7 +101,7 @@ Signals that deleted key vault certificates should be returned.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: GetDeleted, GetDeleted1
+Parameter Sets: GetDeleted, ListDeleted
 Aliases:
 
 Required: True
@@ -139,7 +117,7 @@ MISSING DESCRIPTION 06
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentity
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -156,7 +134,7 @@ If not specified the service will return up to 25 results.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: GetDeleted
+Parameter Sets: ListDeleted
 Aliases:
 
 Required: False
@@ -172,26 +150,10 @@ The name of the certificate in the given vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetDeleted1, ListVersions
+Parameter Sets: Get, GetDeleted
 Aliases: CertificateName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VaultBaseUrl
-MISSING DESCRIPTION 06
-
-```yaml
-Type: System.String
-Parameter Sets: GetDeleted, GetDeleted1, ListVersions
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -204,7 +166,7 @@ MISSING DESCRIPTION 06
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentity
+Parameter Sets: (All)
 Aliases:
 
 Required: False

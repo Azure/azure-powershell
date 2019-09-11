@@ -13,7 +13,7 @@ Query aggregated Azure subscription consumption data for a date range.
 ## SYNTAX
 
 ```
-Get-AzUsageAggregate -SubscriptionId <String[]> -ReportedEndTime <DateTime> -ReportedStartTime <DateTime>
+Get-AzUsageAggregate -ReportedEndTime <DateTime> -ReportedStartTime <DateTime> [-SubscriptionId <String[]>]
  [-AggregationGranularity <AggregationGranularity>] [-ContinuationToken <String>] [-ShowDetail]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -62,7 +62,6 @@ Dynamic: False
 ### -ContinuationToken
 Used when a continuation token string is provided in the response body of the previous call, enabling paging through a large result set.
 If not present, the data is retrieved from the beginning of the day/hour (based on the granularity) passed in.
-
 
 ```yaml
 Type: System.String
@@ -137,7 +136,7 @@ Aliases: ShowDetails
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -152,9 +151,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -170,6 +169,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Billing.Models.Api20150601Preview.IUsageAggregation
 
 ## ALIASES
+
+### Get-UsageAggregates
+
+## NOTES
 
 ## RELATED LINKS
 

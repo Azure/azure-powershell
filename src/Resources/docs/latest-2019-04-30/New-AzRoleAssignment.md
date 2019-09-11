@@ -12,9 +12,9 @@ Creates a role assignment.
 
 ## SYNTAX
 
-### CreateExpanded3 (Default)
+### CreateByScopeAndObjectId (Default)
 ```
-New-AzRoleAssignment -RoleId <String> -PrincipalId <String> -RoleDefinitionId <String> [-CanDelegate]
+New-AzRoleAssignment -Scope <String> -ObjectId <String> -RoleDefinitionName <String> [-CanDelegate]
  [-PrincipalType <PrincipalType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -30,11 +30,36 @@ New-AzRoleAssignment -RoleId <String> -Parameter <IRoleAssignmentCreateParameter
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateById
+```
+New-AzRoleAssignment -RoleId <String> -RoleDefinitionName <String> [-CanDelegate]
+ [-PrincipalType <PrincipalType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateByScopeAndSignInName
+```
+New-AzRoleAssignment -Scope <String> -RoleDefinitionName <String> -SignInName <String> [-CanDelegate]
+ [-PrincipalType <PrincipalType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateByScopeAndSPN
+```
+New-AzRoleAssignment -Scope <String> -RoleDefinitionName <String> -ServicePrincipalName <String>
+ [-CanDelegate] [-PrincipalType <PrincipalType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### CreateExpanded2
 ```
 New-AzRoleAssignment -Name <String> -Scope <String> -PrincipalId <String> -RoleDefinitionId <String>
  [-CanDelegate] [-PrincipalType <PrincipalType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### CreateExpanded3
+```
+New-AzRoleAssignment -RoleId <String> -PrincipalId <String> -RoleDefinitionId <String> [-CanDelegate]
+ [-PrincipalType <PrincipalType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity2
@@ -93,7 +118,7 @@ The delegation flag used for creating a role assignment
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded3
+Parameter Sets: CreateById, CreateByScopeAndObjectId, CreateByScopeAndSignInName, CreateByScopeAndSPN, CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded3
 Aliases: AllowDelegation
 
 Required: False
@@ -154,6 +179,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ObjectId
+The object id assigned to the role.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateByScopeAndObjectId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Role assignment create parameters.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
@@ -194,7 +235,7 @@ The principal type of the assigned principal ID.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.PrincipalType
-Parameter Sets: CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded3
+Parameter Sets: CreateById, CreateByScopeAndObjectId, CreateByScopeAndSignInName, CreateByScopeAndSPN, CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded3
 Aliases:
 
 Required: False
@@ -221,12 +262,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -RoleDefinitionName
+The name of the role definition used in the role assignment.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateById, CreateByScopeAndObjectId, CreateByScopeAndSignInName, CreateByScopeAndSPN
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -RoleId
 The ID of the role assignment to create.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create3, CreateExpanded3
+Parameter Sets: Create3, CreateById, CreateExpanded3
 Aliases:
 
 Required: True
@@ -244,8 +301,40 @@ For example, use '/subscriptions/{subscription-id}/' for a subscription, '/subsc
 
 ```yaml
 Type: System.String
-Parameter Sets: Create2, CreateExpanded2
+Parameter Sets: Create2, CreateByScopeAndObjectId, CreateByScopeAndSignInName, CreateByScopeAndSPN, CreateExpanded2
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ServicePrincipalName
+The name of the service principal assigned to the role.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateByScopeAndSPN
+Aliases: SPN
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SignInName
+The user principal name assigned to the role.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateByScopeAndSignInName
+Aliases: Email, UserPrincipalName
 
 Required: True
 Position: Named

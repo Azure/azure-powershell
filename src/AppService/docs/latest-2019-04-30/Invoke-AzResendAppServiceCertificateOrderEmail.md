@@ -15,7 +15,7 @@ Resend certificate email.
 ### Resend (Default)
 ```
 Invoke-AzResendAppServiceCertificateOrderEmail -CertificateOrderName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ResendViaIdentity
@@ -140,9 +140,9 @@ Type: System.String
 Parameter Sets: Resend
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -15,13 +15,13 @@ Get site detector response
 ### List (Default)
 ```
 Get-AzAppServiceDiagnosticSiteDetectorResponse -ResourceGroupName <String> -SiteName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzAppServiceDiagnosticSiteDetectorResponse -DetectorName <String> -ResourceGroupName <String>
- -SiteName <String> -SubscriptionId <String[]> [-EndTime <DateTime>] [-StartTime <DateTime>]
+ -SiteName <String> [-SubscriptionId <String[]>] [-EndTime <DateTime>] [-StartTime <DateTime>]
  [-TimeGrain <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -179,9 +179,9 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

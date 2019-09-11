@@ -60,6 +60,10 @@ directive:
     transform: $ = $.filter( each => each === 'application/json');
     reason: this spec adds produces application/xml and text/json erronously.
   - where:
+      parameter-name: OutFile
+    set:
+      alias: OutputFile
+  - where:
       subject: .*AppService.*
     set:
       subject-prefix: ''

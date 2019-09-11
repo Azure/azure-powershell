@@ -14,8 +14,8 @@ Deletes a connection from an app (or deployment slot to a named virtual network.
 
 ### Delete (Default)
 ```
-Remove-AzWebAppVnetConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VnetName <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzWebAppVnetConnection -Name <String> -ResourceGroupName <String> -VnetName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -140,9 +140,9 @@ Type: System.String
 Parameter Sets: Delete
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

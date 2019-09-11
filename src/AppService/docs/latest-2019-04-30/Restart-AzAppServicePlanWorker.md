@@ -14,8 +14,8 @@ Reboot a worker machine in an App Service plan.
 
 ### Reboot (Default)
 ```
-Restart-AzAppServicePlanWorker -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -WorkerName <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restart-AzAppServicePlanWorker -Name <String> -ResourceGroupName <String> -WorkerName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RebootViaIdentity
@@ -140,9 +140,9 @@ Type: System.String
 Parameter Sets: Reboot
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

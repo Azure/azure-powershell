@@ -4,6 +4,7 @@ function Set-AzPolicyDefinition_UpdateById {
     param(
         [Parameter(HelpMessage='The ID of the target subscription.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         ${SubscriptionId},
 
@@ -36,7 +37,7 @@ function Set-AzPolicyDefinition_UpdateById {
 
         [Parameter(HelpMessage='The policy rule.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20161201.IPolicyDefinitionPropertiesPolicyRule]
+        [System.Collections.Hashtable]
         ${PolicyRule},
 
         [Parameter(HelpMessage='The type of policy definition. Possible values are NotSpecified, BuiltIn, and Custom.')]

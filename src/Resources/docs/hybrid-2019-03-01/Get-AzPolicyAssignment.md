@@ -14,7 +14,7 @@ Gets a policy assignment.
 
 ### List6 (Default)
 ```
-Get-AzPolicyAssignment -SubscriptionId <String[]> [-Filter <String>] [-DefaultProfile <PSObject>]
+Get-AzPolicyAssignment [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -30,14 +30,14 @@ Get-AzPolicyAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObj
 
 ### List4
 ```
-Get-AzPolicyAssignment -ResourceGroupName <String> -SubscriptionId <String[]> [-Filter <String>]
+Get-AzPolicyAssignment -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List5
 ```
 Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> [-Filter <String>]
+ -ResourceProviderNamespace <String> -ResourceType <String> [-SubscriptionId <String[]>] [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -241,9 +241,9 @@ Type: System.String[]
 Parameter Sets: List4, List5, List6
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

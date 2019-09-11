@@ -17,20 +17,20 @@ Write and delete operations are blocked on the groups until the move completes.
 
 ### MoveExpanded (Default)
 ```
-Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> [-PassThru] [-Resource <String[]>]
- [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Move-AzResource -SourceResourceGroupName <String> [-SubscriptionId <String>] [-PassThru]
+ [-Resource <String[]>] [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Move
 ```
-Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> -Parameter <IResourcesMoveInfo>
+Move-AzResource -SourceResourceGroupName <String> -Parameter <IResourcesMoveInfo> [-SubscriptionId <String>]
  [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MoveByComponents
 ```
-Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> -TargetResourceGroupName <String>
+Move-AzResource -SourceResourceGroupName <String> -TargetResourceGroupName <String> [-SubscriptionId <String>]
  [-PassThru] [-Resource <String[]>] [-TargetSubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -214,9 +214,9 @@ Type: System.String
 Parameter Sets: Move, MoveByComponents, MoveExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

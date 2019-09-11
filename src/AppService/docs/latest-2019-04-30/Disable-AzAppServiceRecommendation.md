@@ -14,34 +14,34 @@ Disables the specified rule so it will not apply to a subscription in the future
 
 ### Disable (Default)
 ```
-Disable-AzAppServiceRecommendation -Name <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
+Disable-AzAppServiceRecommendation -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Disable1
 ```
 Disable-AzAppServiceRecommendation -HostingEnvironmentName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -EnvironmentName <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ -EnvironmentName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### Disable2
 ```
 Disable-AzAppServiceRecommendation -HostingEnvironmentName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -EnvironmentName <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ -EnvironmentName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### Disable3
 ```
-Disable-AzAppServiceRecommendation -ResourceGroupName <String> -SiteName <String> -SubscriptionId <String>
+Disable-AzAppServiceRecommendation -ResourceGroupName <String> -SiteName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Disable4
 ```
 Disable-AzAppServiceRecommendation -Name <String> -ResourceGroupName <String> -SiteName <String>
- -SubscriptionId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DisableViaIdentity
@@ -238,9 +238,9 @@ Type: System.String
 Parameter Sets: Disable, Disable1, Disable2, Disable3, Disable4
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

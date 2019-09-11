@@ -15,7 +15,7 @@ Updates a named add-on of an app.
 ### AddExpanded (Default)
 ```
 Add-AzWebAppPremierAddOnSlot -Name <String> -PremierAddOnName <String> -ResourceGroupName <String>
- -Slot <String> -SubscriptionId <String> -Location <String> [-Kind <String>] [-MarketplaceOffer <String>]
+ -Slot <String> -Location <String> [-SubscriptionId <String>] [-Kind <String>] [-MarketplaceOffer <String>]
  [-MarketplacePublisher <String>] [-Product <String>] [-Sku <String>] [-Tag <Hashtable>] [-Vendor <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,8 +23,8 @@ Add-AzWebAppPremierAddOnSlot -Name <String> -PremierAddOnName <String> -Resource
 ### Add
 ```
 Add-AzWebAppPremierAddOnSlot -Name <String> -PremierAddOnName <String> -ResourceGroupName <String>
- -Slot <String> -SubscriptionId <String> -PremierAddOn <IPremierAddOn> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -Slot <String> -PremierAddOn <IPremierAddOn> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddViaIdentity
@@ -286,9 +286,9 @@ Type: System.String
 Parameter Sets: Add, AddExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

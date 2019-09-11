@@ -14,12 +14,12 @@ Gets the details of a web, mobile, or API app.
 
 ### List (Default)
 ```
-Get-AzWebApp -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWebApp [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzWebApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
@@ -30,7 +30,7 @@ Get-AzWebApp -InputObject <IAppServiceIdentity> [-DefaultProfile <PSObject>] [-P
 
 ### List1
 ```
-Get-AzWebApp -ResourceGroupName <String> -SubscriptionId <String[]> [-IncludeSlot]
+Get-AzWebApp -ResourceGroupName <String> [-SubscriptionId <String[]>] [-IncludeSlot]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -167,9 +167,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

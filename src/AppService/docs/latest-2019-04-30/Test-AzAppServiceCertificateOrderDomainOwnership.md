@@ -15,7 +15,7 @@ Verify domain ownership for this certificate order.
 ### Verify (Default)
 ```
 Test-AzAppServiceCertificateOrderDomainOwnership -CertificateOrderName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### VerifyViaIdentity
@@ -140,9 +140,9 @@ Type: System.String
 Parameter Sets: Verify
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

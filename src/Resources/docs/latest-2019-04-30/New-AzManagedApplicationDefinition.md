@@ -20,16 +20,16 @@ New-AzManagedApplicationDefinition -Id <String> -Parameter <IApplicationDefiniti
 
 ### Create
 ```
-New-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Parameter <IApplicationDefinition> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String>
+ -Parameter <IApplicationDefinition> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String>
  -Authorization <IApplicationProviderAuthorization[]> -LockLevel <ApplicationLockLevel>
- [-Artifact <IApplicationArtifact[]>]
+ [-SubscriptionId <String>] [-Artifact <IApplicationArtifact[]>]
  [-CreateUiDefinition <IApplicationDefinitionPropertiesCreateUiDefinition>] [-Description <String>]
  [-DisplayName <String>] [-IdentityType <ResourceIdentityType>] [-IsEnabled <String>] [-Location <String>]
  [-MainTemplate <IApplicationDefinitionPropertiesMainTemplate>] [-ManagedBy <String>]
@@ -547,9 +547,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

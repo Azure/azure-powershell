@@ -14,14 +14,14 @@ List all apps that are assigned to a hostname.
 
 ### ListExpanded1 (Default)
 ```
-Get-AzAppServiceSiteIdentifierAssignedToHostName -SubscriptionId <String[]> [-Name <String>]
+Get-AzAppServiceSiteIdentifierAssignedToHostName [-SubscriptionId <String[]>] [-Name <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzAppServiceSiteIdentifierAssignedToHostName -SubscriptionId <String[]> -NameIdentifier <INameIdentifier>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzAppServiceSiteIdentifierAssignedToHostName -NameIdentifier <INameIdentifier>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,9 +108,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

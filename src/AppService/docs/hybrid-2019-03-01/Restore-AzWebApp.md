@@ -14,7 +14,7 @@ Restores a specific backup to another app (or deployment slot, if specified).
 
 ### RestoreExpanded (Default)
 ```
-Restore-AzWebApp -BackupId <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Restore-AzWebApp -BackupId <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AdjustConnectionString] [-AppServicePlan <String>] [-BlobName <String>]
  [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>] [-IgnoreConflictingHostName]
  [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>] [-Overwrite]
@@ -24,15 +24,15 @@ Restore-AzWebApp -BackupId <String> -Name <String> -ResourceGroupName <String> -
 
 ### Restore
 ```
-Restore-AzWebApp -BackupId <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Request <IRestoreRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Restore-AzWebApp -BackupId <String> -Name <String> -ResourceGroupName <String> -Request <IRestoreRequest>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### RestoreExpandedSlot
 ```
 Restore-AzWebApp -BackupId <String> -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> [-AdjustConnectionString] [-AppServicePlan <String>] [-BlobName <String>]
+ [-SubscriptionId <String>] [-AdjustConnectionString] [-AppServicePlan <String>] [-BlobName <String>]
  [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>] [-IgnoreConflictingHostName]
  [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>] [-Overwrite]
  [-SiteName <String>] [-StorageAccountUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
@@ -42,7 +42,7 @@ Restore-AzWebApp -BackupId <String> -Name <String> -ResourceGroupName <String> -
 ### RestoreSlot
 ```
 Restore-AzWebApp -BackupId <String> -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> -Request <IRestoreRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -Request <IRestoreRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -465,9 +465,9 @@ Type: System.String
 Parameter Sets: Restore, RestoreExpanded, RestoreExpandedSlot, RestoreSlot
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

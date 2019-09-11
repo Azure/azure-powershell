@@ -15,7 +15,7 @@ Gets the Authentication/Authorization settings of an app.
 ### Get (Default)
 ```
 Get-AzWebAppAuthSettingSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -141,9 +141,9 @@ Type: System.String[]
 Parameter Sets: Get
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

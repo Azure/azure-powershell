@@ -14,7 +14,7 @@ Delete an App Service plan.
 
 ### Delete (Default)
 ```
-Remove-AzAppServicePlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Remove-AzAppServicePlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -140,9 +140,9 @@ Type: System.String
 Parameter Sets: Delete
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

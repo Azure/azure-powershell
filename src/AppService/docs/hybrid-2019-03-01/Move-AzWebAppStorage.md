@@ -14,16 +14,16 @@ Restores a web app.
 
 ### MigrateExpanded (Default)
 ```
-Move-AzWebAppStorage -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -SubscriptionName <String> [-AzurefilesConnectionString <String>] [-AzurefilesShare <String>]
+Move-AzWebAppStorage -Name <String> -ResourceGroupName <String> -SubscriptionName <String>
+ [-SubscriptionId <String>] [-AzurefilesConnectionString <String>] [-AzurefilesShare <String>]
  [-BlockWriteAccessToSite] [-Kind <String>] [-SwitchSiteAfterMigration] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Migrate
 ```
-Move-AzWebAppStorage -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -SubscriptionName <String> -MigrationOption <IStorageMigrationOptions> [-DefaultProfile <PSObject>] [-AsJob]
+Move-AzWebAppStorage -Name <String> -ResourceGroupName <String> -SubscriptionName <String>
+ -MigrationOption <IStorageMigrationOptions> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -255,9 +255,9 @@ Type: System.String
 Parameter Sets: Migrate, MigrateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

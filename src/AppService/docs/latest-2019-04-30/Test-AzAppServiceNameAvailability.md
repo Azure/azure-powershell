@@ -14,13 +14,13 @@ Check if a resource name is available.
 
 ### CheckExpanded (Default)
 ```
-Test-AzAppServiceNameAvailability -SubscriptionId <String> -Name <String> -Type <CheckNameResourceTypes>
+Test-AzAppServiceNameAvailability -Name <String> -Type <CheckNameResourceTypes> [-SubscriptionId <String>]
  [-IsFqdn] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Check
 ```
-Test-AzAppServiceNameAvailability -SubscriptionId <String> -Request <IResourceNameAvailabilityRequest>
+Test-AzAppServiceNameAvailability -Request <IResourceNameAvailabilityRequest> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -155,9 +155,9 @@ Type: System.String
 Parameter Sets: Check, CheckExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

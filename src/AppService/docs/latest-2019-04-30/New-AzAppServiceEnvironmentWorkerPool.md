@@ -14,8 +14,8 @@ Create or update a worker pool.
 
 ### CreateExpanded (Default)
 ```
-New-AzAppServiceEnvironmentWorkerPool -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -WorkerPoolName <String> [-Capacity <Int32>] [-ComputeMode <ComputeModeOptions>] [-Kind <String>]
+New-AzAppServiceEnvironmentWorkerPool -Name <String> -ResourceGroupName <String> -WorkerPoolName <String>
+ [-SubscriptionId <String>] [-Capacity <Int32>] [-ComputeMode <ComputeModeOptions>] [-Kind <String>]
  [-SkuCapability <ICapability[]>] [-SkuCapacityDefault <Int32>] [-SkuCapacityMaximum <Int32>]
  [-SkuCapacityMinimum <Int32>] [-SkuCapacityScaleType <String>] [-SkuFamily <String>]
  [-SkuLocation <String[]>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-WorkerCount <Int32>]
@@ -25,8 +25,8 @@ New-AzAppServiceEnvironmentWorkerPool -Name <String> -ResourceGroupName <String>
 
 ### Create
 ```
-New-AzAppServiceEnvironmentWorkerPool -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -WorkerPoolName <String> -WorkerPoolEnvelope <IWorkerPoolResource> [-DefaultProfile <PSObject>] [-AsJob]
+New-AzAppServiceEnvironmentWorkerPool -Name <String> -ResourceGroupName <String> -WorkerPoolName <String>
+ -WorkerPoolEnvelope <IWorkerPoolResource> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -404,9 +404,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

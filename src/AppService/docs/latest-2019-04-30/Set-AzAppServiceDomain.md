@@ -14,9 +14,9 @@ Creates or updates a domain.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzAppServiceDomain -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
- [-AuthCode <String>] [-AutoRenew] [-ConsentAgreedAt <DateTime>] [-ConsentAgreedBy <String>]
- [-ConsentAgreementKey <String[]>] [-ContactAdminAddressMailingAddress1 <String>]
+Set-AzAppServiceDomain -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-AuthCode <String>] [-AutoRenew] [-ConsentAgreedAt <DateTime>]
+ [-ConsentAgreedBy <String>] [-ConsentAgreementKey <String[]>] [-ContactAdminAddressMailingAddress1 <String>]
  [-ContactAdminAddressMailingAddress2 <String>] [-ContactAdminAddressMailingCity <String>]
  [-ContactAdminAddressMailingCountry <String>] [-ContactAdminAddressMailingPostalCode <String>]
  [-ContactAdminAddressMailingState <String>] [-ContactAdminEmail <String>] [-ContactAdminFax <String>]
@@ -47,7 +47,7 @@ Set-AzAppServiceDomain -Name <String> -ResourceGroupName <String> -SubscriptionI
 
 ### Update
 ```
-Set-AzAppServiceDomain -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Domain <IDomain>
+Set-AzAppServiceDomain -Name <String> -ResourceGroupName <String> -Domain <IDomain> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -1244,9 +1244,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,13 +14,14 @@ Get a certificate order.
 
 ### List (Default)
 ```
-Get-AzAppServiceCertificateOrder -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAppServiceCertificateOrder [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzAppServiceCertificateOrder -CertificateOrderName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -31,7 +32,7 @@ Get-AzAppServiceCertificateOrder -InputObject <IAppServiceIdentity> [-DefaultPro
 
 ### List1
 ```
-Get-AzAppServiceCertificateOrder -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzAppServiceCertificateOrder -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -135,9 +136,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

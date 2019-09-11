@@ -15,7 +15,7 @@ Invoke the MSDeploy web app extension.
 ### CreateExpanded (Default)
 ```
 New-AzWebAppMSDeployOperationSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> [-AppOffline] [-ConnectionString <String>] [-DbType <String>] [-Kind <String>]
+ [-SubscriptionId <String>] [-AppOffline] [-ConnectionString <String>] [-DbType <String>] [-Kind <String>]
  [-PackageUri <String>] [-SetParameter <Hashtable>] [-SetParametersXmlFileUri <String>] [-SkipAppData]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ New-AzWebAppMSDeployOperationSlot -Name <String> -ResourceGroupName <String> -Sl
 ### Create
 ```
 New-AzWebAppMSDeployOperationSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> -MSDeploy <IMSDeploy> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ -MSDeploy <IMSDeploy> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -353,9 +353,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

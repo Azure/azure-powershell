@@ -13,8 +13,8 @@ Gets all network features used by the app (or deployment slot, if specified).
 ## SYNTAX
 
 ```
-Get-AzWebAppNetworkFeature -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -View <String> [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+Get-AzWebAppNetworkFeature -Name <String> -ResourceGroupName <String> -View <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,9 +116,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,7 +14,7 @@ Returns the status of MySql in app migration, if one is active, and whether or n
 
 ### Get (Default)
 ```
-Get-AzWebAppMigrateMySqlStatus -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzWebAppMigrateMySqlStatus -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -124,9 +124,9 @@ Type: System.String[]
 Parameter Sets: Get
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

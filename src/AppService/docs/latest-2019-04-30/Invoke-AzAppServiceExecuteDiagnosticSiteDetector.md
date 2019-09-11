@@ -15,7 +15,7 @@ Execute Detector
 ### Execute (Default)
 ```
 Invoke-AzAppServiceExecuteDiagnosticSiteDetector -DetectorName <String> -DiagnosticCategory <String>
- -ResourceGroupName <String> -SiteName <String> -SubscriptionId <String> [-EndTime <DateTime>]
+ -ResourceGroupName <String> -SiteName <String> [-SubscriptionId <String>] [-EndTime <DateTime>]
  [-StartTime <DateTime>] [-TimeGrain <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -191,9 +191,9 @@ Type: System.String
 Parameter Sets: Execute
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

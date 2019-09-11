@@ -15,14 +15,14 @@ Renew an existing certificate order.
 ### RenewExpanded (Default)
 ```
 Invoke-AzRenewAppServiceCertificateOrder -CertificateOrderName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Csr <String>] [-IsPrivateKeyExternal] [-KeySize <Int32>] [-Kind <String>]
+ [-SubscriptionId <String>] [-Csr <String>] [-IsPrivateKeyExternal] [-KeySize <Int32>] [-Kind <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Renew
 ```
 Invoke-AzRenewAppServiceCertificateOrder -CertificateOrderName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -RenewCertificateOrderRequest <IRenewCertificateOrderRequest1>
+ -RenewCertificateOrderRequest <IRenewCertificateOrderRequest1> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -237,9 +237,9 @@ Type: System.String
 Parameter Sets: Renew, RenewExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -15,7 +15,7 @@ Creates or updates a certificate and associates with key vault secret.
 ### CreateExpanded (Default)
 ```
 New-AzAppServiceCertificateOrderCertificate -CertificateOrderName <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String> -Location <String> [-KeyVaultId <String>]
+ -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>] [-KeyVaultId <String>]
  [-KeyVaultSecretName <String>] [-Kind <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ New-AzAppServiceCertificateOrderCertificate -CertificateOrderName <String> -Name
 ### Create
 ```
 New-AzAppServiceCertificateOrderCertificate -CertificateOrderName <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String> -KeyVaultCertificate <IAppServiceCertificateResource>
+ -ResourceGroupName <String> -KeyVaultCertificate <IAppServiceCertificateResource> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -270,9 +270,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

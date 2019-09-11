@@ -15,14 +15,14 @@ Deleting a resource group deletes all of its template deployments and currently 
 
 ### Delete (Default)
 ```
-Remove-AzResourceGroup -Name <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzResourceGroup -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteById
 ```
-Remove-AzResourceGroup -Id <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzResourceGroup -Id <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -179,9 +179,9 @@ Type: System.String
 Parameter Sets: Delete, DeleteById
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
