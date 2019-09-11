@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
     /// <summary>
     /// Defines Remove-AzSqlVMGroup cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMGroup", DefaultParameterSetName = ParameterSet.ParameterList, ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMGroup", DefaultParameterSetName = ParameterSet.ParameterList, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlVMGroupModel))]
     public class RemoveAzureSqlVMGroup : AzureSqlVMGroupCmdletBase
     {

@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests.UnitTest
         public void NewAzureSqlVMConfig()
         {
             Type type = typeof(NewAzureSqlVMConfig);
-            UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
+            UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: true);
             CheckUpsertParameters(type, true);
         }
 
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests.UnitTest
         public void SetAzureSqlVMConfigGroup()
         {
             Type type = typeof(SetAzureSqlVMConfigGroup);
-            UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
+            UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: true);
             
             UnitTestHelper.CheckCmdletParameterAttributes(type, "SqlVMGroup", true, false);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ClusterOperatorAccountPassword", true, false);

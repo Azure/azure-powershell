@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
     /// <summary>
     /// Defines Update-AzSqlVMGroup cmdlet
     /// </summary>
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMGroup", DefaultParameterSetName = ParameterSet.Name, ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true), OutputType(typeof(AzureSqlVMGroupModel))]
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMGroup", DefaultParameterSetName = ParameterSet.Name, SupportsShouldProcess = true)]
+    [OutputType(typeof(AzureSqlVMGroupModel))]
     public class UpdateAzureSqlVMGroup : AzureSqlVMGroupUpsertCmdletBase
     {
         /// <summary>

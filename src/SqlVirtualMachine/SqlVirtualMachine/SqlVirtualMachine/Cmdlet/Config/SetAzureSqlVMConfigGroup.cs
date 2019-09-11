@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet.Config
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMConfigGroup")]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMConfigGroup", SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlVMModel))]
     public class SetAzureSqlVMConfigGroup : AzureSqlVirtualMachineCmdletBase<IEnumerable<AzureSqlVMModel>, AzureSqlVMAdapter>
     {

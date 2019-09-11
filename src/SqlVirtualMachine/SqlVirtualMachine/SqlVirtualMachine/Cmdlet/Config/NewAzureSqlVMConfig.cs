@@ -23,7 +23,7 @@ using static Microsoft.Azure.Commands.SqlVirtualMachine.Common.ParameterSet;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet.Config
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMConfig", DefaultParameterSetName = NameParameterList)]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMConfig", DefaultParameterSetName = NameParameterList, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlVMModel))]
     public class NewAzureSqlVMConfig : AzureSqlVMUpsertCmdletBase
     {

@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <returns>True if the resource id is valid, false otherwise</returns>
         public bool ValidateSqlVirtualMachineId(string sqlVirtualMachineResourceId)
         {
-            var regex = new Regex(@"/subscriptions/([^/]+)/resourceGroups/([^/]+)/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/([^/]+)");
-            return regex.IsMatch(sqlVirtualMachineResourceId);
+            var regex = new Regex(@"/subscriptions/([^/]+)/resourcegroups/([^/]+)/providers/microsoft.sqlvirtualmachine/sqlvirtualmachines/([^/]+)");
+            return regex.IsMatch(sqlVirtualMachineResourceId.ToLower());
         }
 
         /// <summary>

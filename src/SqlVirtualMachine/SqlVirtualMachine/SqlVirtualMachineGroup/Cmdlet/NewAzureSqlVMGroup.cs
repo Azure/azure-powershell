@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Common.ArgumentCompleters;
@@ -30,7 +31,8 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
     /// <summary>
     /// Defines New-AzSqlVMGroup cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMGroup", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true), OutputType(typeof(AzureSqlVMGroupModel))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMGroup", SupportsShouldProcess = true)]
+    [OutputType(typeof(AzureSqlVMGroupModel))]
     public class NewAzureSqlVMGroup : AzureSqlVMGroupUpsertCmdletBase
     {
         /// <summary>
@@ -40,6 +42,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             Position = 2,
             HelpMessage = HelpMessages.LocationSqlVMGroup)]
         [ValidateNotNullOrEmpty]
+        [LocationCompleter]
         public string Location { get; set; }
 
         /// <summary>
@@ -55,7 +58,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = HelpMessages.SkuSqlVMGroup)]
-        [PSDefaultValue(Value = "Enterprise")]
+        [SkuCompleter]
         public string Sku { get; set; }
 
         /// <summary>

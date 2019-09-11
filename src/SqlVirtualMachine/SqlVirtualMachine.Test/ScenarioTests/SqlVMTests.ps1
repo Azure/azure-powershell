@@ -57,11 +57,11 @@ function Test-GetSqlVirtualMachine
 		$sqlvm = Create-SqlVM $rg.ResourceGroupName 'vm' $location
 	
 		# Test using parameters
-		$sqlvm1 = Get-AzSqlVM -ResourceGroupName $sqlvm.ResourceGroupName -Name $sqlvm.Name
+		$sqlvm1 = Get-AzSqlVM -ResourceGroupName $rg.ResourceGroupName -Name $sqlvm.Name
 		Validate-SqlVirtualMachine $sqlvm $sqlvm1
 		
 		# Test using resource id
-		$sqlvm1 = Get-AzSqlVM -ResourceId $sqlvm.ResourceId
+		$sqlvm = Get-AzSqlVM -ResourceId $sqlvm.ResourceId
 		Validate-SqlVirtualMachine $sqlvm $sqlvm1
 
 		# Test list by resource group
@@ -92,12 +92,12 @@ function Test-UpdateSqlVirtualMachine
 		$key = 'key'
 		$value = 'value'
 		$tags = @{$key=$value}
-		$sqlvm1 = Update-AzSqlVM -ResourceGroupName $sqlvm.ResourceGroupName -Name $sqlvm.Name -Tags $tags
+		$sqlvm1 = Update-AzSqlVM -ResourceGroupName $sqlvm.ResourceGroupName -Name $sqlvm.Name -Tag $tags
 		
 		Validate-SqlVirtualMachine $sqlvm $sqlvm1
 
-		Assert-AreEqual $sqlvm1.Tags.count 1
-		Assert-AreEqual $sqlvm1.Tags[$key] $value
+		Assert-AreEqual $sqlvm1.Tag.count 1
+		Assert-AreEqual $sqlvm1.Tag[$key] $value
 	}
 	finally
 	{

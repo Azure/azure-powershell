@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests.UnitTest
         internal void CheckNewParameters(Type type)
         {
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: true);
-            UnitTestHelper.CheckConfirmImpact(type, ConfirmImpact.Low);
+            UnitTestHelper.CheckConfirmImpact(type, ConfirmImpact.Medium);
 
             CheckResourceParameters(type);
 

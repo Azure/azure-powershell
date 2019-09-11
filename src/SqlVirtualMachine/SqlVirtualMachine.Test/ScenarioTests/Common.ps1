@@ -82,7 +82,7 @@ function Create-VM(
 	# Create a virtual machine configuration
 	$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_DS13_V2 |
 	   Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate |
-	   Set-AzVMSourceImage -PublisherName 'MicrosoftSQLServer' -Offer 'SQL2017-WS2016' -Skus 'SQLDEV' -Version 'latest' |
+	   Set-AzVMSourceImage -PublisherName 'MicrosoftSQLServer' -Offer 'SQL2017-WS2016' -Skus 'Enterprise' -Version 'latest' |
 	   Add-AzVMNetworkInterface -Id $interface.Id
 	
 	return New-AzVM -ResourceGroupName $resourceGroupName -Location $location -VM $vmConfig
@@ -138,7 +138,8 @@ function Get-DomainForTest()
 
 function Get-StorageaccountNameForTest()
 {
-	return 'sqlvmpowershelltest'
+	$nr = Get-Random -Minimum 1000 -Maximum 5000
+	return 'sqlvmpowershelltest' + $nr
 }
 
 <#
@@ -212,7 +213,7 @@ function Create-SqlVM (
 )
 {
 	Create-VM $resourceGroupName $vmName $location	
-	$sqlvm = New-AzSqlVM -ResourceGroupName $resourceGroupName -Name $vmName -LicenseType 'PAYG' -Sku Enterprise
+	$sqlvm = New-AzSqlVM -ResourceGroupName $resourceGroupName -Name $vmName -LicenseType 'PAYG' -Sku 'Enterprise'
 	return $sqlvm
 }
 
