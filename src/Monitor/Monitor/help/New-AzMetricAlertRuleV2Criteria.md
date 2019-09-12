@@ -23,7 +23,7 @@ New-AzMetricAlertRuleV2Criteria -MetricName <String> [-MetricNamespace <String>]
 ```
 New-AzMetricAlertRuleV2Criteria [-DynamicThreshold] -MetricName <String> [-MetricNamespace <String>]
  [-DimensionSelection <PSMetricDimension[]>] -TimeAggregation <String> -Operator <String>
- [-ThresholdSensitivity <String>] [-NumberOfViolations <Int32>] [-NumberOfExaminedAggregatedPoints <Int32>]
+ [-ThresholdSensitivity <String>] [-ViolationCount <Int32>] [-ExaminedAggregatedPointCount <Int32>]
  [-IgnoreDataBefore <DateTime>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -133,6 +133,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ExaminedAggregatedPointCount
+The Total number of examined points
+
+```yaml
+Type: System.Int32
+Parameter Sets: DynamicThresholdParameterSet
+Aliases: TotalPeriod, NumberOfExaminedAggregatedPoints
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IgnoreDataBefore
 The IgnoreDataBefore parameter
 
@@ -170,36 +185,6 @@ The Namespace of the metric
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NumberOfExaminedAggregatedPoints
-The Total number of examined points
-
-```yaml
-Type: System.Int32
-Parameter Sets: DynamicThresholdParameterSet
-Aliases: TotalPeriod
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NumberOfViolations
-The minimum number of violations required within the selected lookback time window required to raise an alert
-
-```yaml
-Type: System.Int32
-Parameter Sets: DynamicThresholdParameterSet
-Aliases: FailingPeriod
 
 Required: False
 Position: Named
@@ -262,6 +247,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ViolationCount
+The minimum number of violations required within the selected lookback time window required to raise an alert
+
+```yaml
+Type: System.Int32
+Parameter Sets: DynamicThresholdParameterSet
+Aliases: FailingPeriod, NumberOfViolations
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

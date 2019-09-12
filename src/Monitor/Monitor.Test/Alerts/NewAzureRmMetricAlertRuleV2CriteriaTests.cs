@@ -69,8 +69,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             cmdlet.Operator = "GreaterOrLessThan";
             cmdlet.TimeAggregation = "Total";
             cmdlet.ThresholdSensitivity = "High";
-            cmdlet.NumberOfViolations= 2;
-            cmdlet.NumberOfExaminedAggregatedPoints= 4;
+            cmdlet.ViolationCount= 2;
+            cmdlet.ExaminedAggregatedPointCount= 4;
             cmdlet.IgnoreDataBefore = new DateTime(1,1,1);
             cmdlet.DynamicThreshold = new SwitchParameter(true);
             cmdlet.ExecuteCmdlet();
