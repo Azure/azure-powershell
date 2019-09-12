@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Sql.Services
             return !emailAddresses.Any(e => !IsValidEmailAddress(e));
         }
 
-        private static bool IsValidEmailAddress(string emailAddress)
+        private static bool IsValidEmailAddress(string mailAddress)
         {
             try
             {
