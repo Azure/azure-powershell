@@ -94,6 +94,8 @@ Certificate : [Subject]
               [Thumbprint] 
                 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
+KeyId       : https://contoso.vault.azure.net:443/keys/TestCert01/1fe415d5518240c1a6fce89986b8d334
+SecretId    : https://contoso.vault.azure.net:443/secrets/TestCert01/1fe415d5518240c1a6fce89986b8d334
 Thumbprint  : XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 Tags        : 
 Enabled     : True
@@ -101,7 +103,21 @@ Created     : 2/8/2016 11:21:45 PM
 Updated     : 2/8/2016 11:21:45 PM
 ```
 
-This command gets the certificate named TestCert01 from the key vault named ContosoKV01.
+This command gets the certificate named TestCert01 from the key vault named ContosoKV01. To download the certificate as pfx file, run following command. These commands access SecredId and then save the content as a pfx file.
+
+```powershell
+$cert = Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
+$secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $cert.SecretId
+
+$secretByte = [Convert]::FromBase64String($secret.SecretValueText)
+$x509Cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2
+$x509Cert.Import($secretByte, "", "Exportable,PersistKeySet")
+$type = [System.Security.Cryptography.X509Certificates.X509ContentType]::Pfx
+$pfxFileByte = $x509Cert.Export($type, $password)
+
+# Write to a file
+[System.IO.File]::WriteAllBytes("KeyValt.pfx", $pfxFileByte)
+```
 
 ### Example 2: Get all the certificates that have been deleted but not purged for this key vault.
 ```powershell
