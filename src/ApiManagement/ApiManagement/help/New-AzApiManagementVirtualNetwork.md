@@ -24,7 +24,7 @@ This command is used with **Set-AzApiManagement** and **New-AzApiManagement** cm
 
 ## EXAMPLES
 
-### Example 1: Create a virtual network and Update and existing APIM service into the VNET
+### Example 1: Create a virtual network and Update an existing APIM service into the VNET
 ```powershell
 PS C:\> $virtualNetwork = New-AzApiManagementVirtualNetwork -Location "East US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/Api-Default-WestUS/providers/Microsoft.Network/virtualNetworks/dfVirtualNetwork/subnets/backendSubnet"
 PS C:\> $apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
