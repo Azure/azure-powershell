@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Internal.Subscriptions.Models;
+using Microsoft.Azure.Internal.Subscriptions.Version2018_06_01.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 
@@ -30,12 +30,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             subscription.Id = other.SubscriptionId;
             subscription.Name = other.DisplayName;
             subscription.State = other.State.ToString();
-            subscription.SetProperty(AzureSubscription.Property.Tenants,
-                context.Tenant.Id.ToString());
+            subscription.SetProperty(AzureSubscription.Property.Tenants, other.TenantId.ToString());
             return subscription;
         }
 
-        public static List<AzureTenant> MergeTenants( this IAzureAccount account, IEnumerable<TenantIdDescription> tenants, IAccessToken token)
+        public static List<AzureTenant> MergeTenants(this IAzureAccount account, IEnumerable<TenantIdDescription> tenants, IAccessToken token)
         {
             List<AzureTenant> result = null;
             if (tenants != null)
