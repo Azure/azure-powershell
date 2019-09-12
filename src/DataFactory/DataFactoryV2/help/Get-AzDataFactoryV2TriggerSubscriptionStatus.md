@@ -36,10 +36,12 @@ This command gets the status of the subscription for the event trigger to the sp
 
 ### Example 1
 ```
-PS C:\> Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Name BlobEnetTrigger1
+PS C:\> Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Name Trigger1
 
-    TriggerName       : BlobEnetTrigger1
-    Status            : Enabled
+TriggerName Status
+----------- ------
+Trigger1    Enabled
+
 ```
 
 This command will get the status of the subscribtion for BlobEnetTrigger1 trigger to the external service events.
