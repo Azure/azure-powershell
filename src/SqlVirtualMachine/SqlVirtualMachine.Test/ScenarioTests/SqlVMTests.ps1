@@ -28,12 +28,12 @@ function Test-CreateSqlVirtualMachine
 		Create-VM $rg.ResourceGroupName $vmName $location
 		
 		# Create Sql VM with parameters
-		$sqlvm = New-AzSqlVM -ResourceGroupName $rg.ResourceGroupName -Name $vmName -LicenseType "PAYG" -Location $location -Sku Developer
+		$sqlvm = New-AzSqlVM -ResourceGroupName $rg.ResourceGroupName -Name $vmName -LicenseType "PAYG" -Location $location -Sku Enterprise
 		$sqlvm | Remove-AzSqlVM
 
 		# Create Sql VM from config
 		$config = New-AzSqlVMConfig -LicenseType "PAYG"
-		$sqlvm = New-AzSqlVM $rg.ResourceGroupName $vmName -SqlVM $config
+		$sqlvm = New-AzSqlVM $rg.ResourceGroupName $vmName -SqlVM $config -Location $location
 		$sqlvm | Remove-AzSqlVM
 	}
 	finally

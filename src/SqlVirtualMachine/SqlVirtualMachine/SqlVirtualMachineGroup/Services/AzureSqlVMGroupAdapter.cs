@@ -23,7 +23,9 @@ using Microsoft.Azure.Management.SqlVirtualMachine.Models;
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
 {
     /// <summary>
-    /// Adapter for sql virtual machine group operations
+    /// Adapter for Sql Virtual Machine Group operations. This class is common for all the cmdlets regarding a Sql Virtual Machine Group and it is used to 
+    /// convert between the powershell object (AzureSqlVMGroupModel) and the object used by the .NET client (SqlVirtualMachineGroup). 
+    /// After converting the object format it calls the communicator class that handles the communication betweeen the .NET client and Azure.
     /// </summary>
     public class AzureSqlVMGroupAdapter
     {

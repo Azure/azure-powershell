@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzSqlVM cmdlet
+    /// This class implements the Get-AzSqlVM cmdlet. It will retrieve the information relative to one or more Sql Virtual Machine on Azure.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVM", DefaultParameterSetName = ParameterSet.ResourceGroupOnly)]
     [OutputType(typeof(AzureSqlVMModel))]

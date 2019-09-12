@@ -25,7 +25,9 @@ using Microsoft.Azure.Management.SqlVirtualMachine.Models;
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
 {
     /// <summary>
-    /// Adapter for sql virtual machine operations
+    /// Adapter for Sql Virtual Machine operations. This class is common for all the cmdlets regarding a Sql Virtual Machine and it is used to convert
+    /// between the powershell object (AzureSqlVMModel) and the object used by the .NET client (SqlVirtualMachineModel). 
+    /// After converting the object format it calls the communicator class that handles the communication betweeen the .NET client and Azure.
     /// </summary>
     public class AzureSqlVMAdapter
     {
@@ -144,8 +146,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
                 SqlManagementType = resp.SqlManagement,
                 LicenseType = resp.SqlServerLicenseType,
                 Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(resp.Tags), false),
-                ResourceId = resp.Id,
-                WsfcDomainCredentials = resp.WsfcDomainCredentials,
+                ResourceId = resp.Id
             };
             
             // Retrieve group

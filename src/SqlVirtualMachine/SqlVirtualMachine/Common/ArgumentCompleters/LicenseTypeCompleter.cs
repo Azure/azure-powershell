@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common.ArgumentCompleters
     /// <summary>
     /// Class used to automatically complete the offer provided in the cmdlet
     /// </summary>
-    public class LicenseTypeCompleter : PSArgumentCompleterAttribute
+    public class LicenseTypeCompleterAttribute : PSArgumentCompleterAttribute
     {
-        public LicenseTypeCompleter() : base(
+        public LicenseTypeCompleterAttribute() : base(
                 "PAYG",
                 "AHUB"
             )

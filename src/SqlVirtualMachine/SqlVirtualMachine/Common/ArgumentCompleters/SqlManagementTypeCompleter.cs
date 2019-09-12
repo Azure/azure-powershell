@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common.ArgumentCompleters
     /// <summary>
     /// Class used to automatically complete the offer provided in the cmdlet
     /// </summary>
-    public class SqlManagementTypeCompleter : PSArgumentCompleterAttribute
+    public class SqlManagementTypeCompleterAttribute : PSArgumentCompleterAttribute
     {
-        public SqlManagementTypeCompleter() : base(
+        public SqlManagementTypeCompleterAttribute() : base(
                 "Full",
                 "LightWeight"
             )

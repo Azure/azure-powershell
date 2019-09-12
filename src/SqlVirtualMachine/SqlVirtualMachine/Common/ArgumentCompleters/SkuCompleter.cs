@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common.ArgumentCompleters
     /// <summary>
     /// Class used to automatically complete the offer provided in the cmdlet
     /// </summary>
-    public class SkuCompleter : PSArgumentCompleterAttribute
+    public class SkuCompleterAttribute : PSArgumentCompleterAttribute
     {
-        public SkuCompleter() : base(
+        public SkuCompleterAttribute() : base(
                 "Enterprise",
                 "Developer",
                 "Express",

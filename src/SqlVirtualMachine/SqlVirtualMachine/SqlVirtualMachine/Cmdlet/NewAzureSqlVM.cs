@@ -26,7 +26,8 @@ using Microsoft.Azure.Commands.SqlVirtualMachine.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
     /// <summary>
-    /// Defines New-AzSqlVM cmdlet
+    /// This class implements the New-AzSqlVM cmdlet. It creates a new instance of an Azure Sql Virtual machine and returns its information to the powershell
+    /// user as a AzureSqlVMModel object.
     /// </summary>
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVM", DefaultParameterSetName = NameParameterList, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlVMModel))]
@@ -85,7 +86,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <summary>
         /// Location in which the sql virtual machine will be created
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = true,
            HelpMessage = HelpMessages.LocationSqlVM)]
         [ValidateNotNullOrEmpty]
         [LocationCompleter]
@@ -97,8 +98,6 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = HelpMessages.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
-
-        private string virtualMachineId;
 
         /// <summary>
         /// Check to see if a sql virtual machine with the same name already exists in this resource group.
@@ -113,14 +112,10 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             catch (CloudException)
             {
                 // This is what we want: there is not another sql virtual machine with the same name
-                var vm = RetrieveVirtualMachine(ResourceGroupName, Name);
-                virtualMachineId = vm.Id;
-                Location = vm.Location;
                 return null;
             }
-
             throw new PSArgumentException(
-                string.Format("A sql virtual machine with the same name already exists"),
+                string.Format("A sql virtual machine with name {0} in resource group {1} already exists", Name, ResourceGroupName),
                 "SqlVirtualMachine");
         }
 
@@ -132,18 +127,31 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         protected override IEnumerable<AzureSqlVMModel> ApplyUserInputToModel(IEnumerable<AzureSqlVMModel> model)
         {
             List<AzureSqlVMModel> newEntity = new List<AzureSqlVMModel>();
-            newEntity.Add(new AzureSqlVMModel(ResourceGroupName)
+            AzureSqlVMModel sqlVM = new AzureSqlVMModel(ResourceGroupName)
             {
-                Location = this.Location,
                 Name = this.Name,
-                LicenseType = this.LicenseType,
-                Offer = this.Offer,
-                Sku = this.Sku,
-                SqlManagementType = this.SqlManagementType,
-                VirtualMachineId = virtualMachineId,
-                Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
-                
-            });
+                Location = this.Location,
+                VirtualMachineId = RetrieveVirtualMachineId(ResourceGroupName, Name)
+            };
+            if (ParameterSetName.Contains(InputObject))
+            {
+                sqlVM.LicenseType = SqlVM.LicenseType;
+                sqlVM.Offer = SqlVM.Offer;
+                sqlVM.Sku = SqlVM.Sku;
+                sqlVM.SqlManagementType = SqlVM.SqlManagementType;
+                sqlVM.SqlVirtualMachineGroup = SqlVM.SqlVirtualMachineGroup;
+                sqlVM.WsfcDomainCredentials = SqlVM.WsfcDomainCredentials;
+                sqlVM.Tags = SqlVM.Tags;
+            }
+            else
+            {
+                sqlVM.LicenseType = this.LicenseType;
+                sqlVM.Offer = this.Offer;
+                sqlVM.Sku = this.Sku;
+                sqlVM.SqlManagementType = this.SqlManagementType;
+                sqlVM.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+            }
+            newEntity.Add(sqlVM);
             return newEntity;
         }
 

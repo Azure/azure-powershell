@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzSqlVMGroup cmdlet
+    /// This class implements the Get-AzSqlVMGroup cmdlet. It will retrieve the information relative to one or more Sql Virtual Machine Group on Azure.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMGroup", DefaultParameterSetName = ParameterSet.ResourceGroupOnly)]
     [OutputType(typeof(AzureSqlVMGroupModel))]

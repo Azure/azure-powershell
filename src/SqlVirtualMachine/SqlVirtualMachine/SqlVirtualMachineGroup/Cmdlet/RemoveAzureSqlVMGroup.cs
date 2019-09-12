@@ -21,7 +21,8 @@ using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
     /// <summary>
-    /// Defines Remove-AzSqlVMGroup cmdlet
+    /// This class implements the Remove-AzSqlVMGroup cmdlet.  It will delete the Azure Sql virtual machine group instance corresponding to 
+    /// the parameter given as input and it will return an AzureSqlVMGroupModel object containing the information of the deleted group.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMGroup", DefaultParameterSetName = ParameterSet.ParameterList, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlVMGroupModel))]

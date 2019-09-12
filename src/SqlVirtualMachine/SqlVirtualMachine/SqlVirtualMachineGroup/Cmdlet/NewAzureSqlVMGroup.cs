@@ -29,7 +29,8 @@ using Microsoft.WindowsAzure.Commands.Common;
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
     /// <summary>
-    /// Defines New-AzSqlVMGroup cmdlet
+    /// This class implements the New-AzSqlVMGroup cmdlet. It creates a new instance of an Azure Sql Virtual machine group and returns its information 
+    /// to the powershell user as a AzureSqlVMGroupModel object.
     /// </summary>
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMGroup", SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlVMGroupModel))]

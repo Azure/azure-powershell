@@ -24,6 +24,11 @@ using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet.Config
 {
+    /// <summary>
+    /// This class implements the Set-AzVMConfigGroup cmdlet. It takes an instance of AzureSqlVMModel and adds the information relative to the
+    /// Sql Virtual Machine group to the local copy of the powershell object. It returns an instance of AzureSqlVMModel that can be used as configuration
+    /// for an Azure Sql Virtual Machine.
+    /// </summary>
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVMConfigGroup", SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlVMModel))]
     public class SetAzureSqlVMConfigGroup : AzureSqlVirtualMachineCmdletBase<IEnumerable<AzureSqlVMModel>, AzureSqlVMAdapter>

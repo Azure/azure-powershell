@@ -21,7 +21,8 @@ using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
     /// <summary>
-    /// Defines Remove-AzSqlVM cmdlet
+    /// This class implements the Remove-AzSqlVM cmdlet. It will delete the Azure Sql virtual machine instance corresponding to the parameter given as input and
+    /// it will return an AzureSqlVMModel object containing the information of the deleted sqlvm.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVM", DefaultParameterSetName = ParameterSet.Name, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlVMModel))]

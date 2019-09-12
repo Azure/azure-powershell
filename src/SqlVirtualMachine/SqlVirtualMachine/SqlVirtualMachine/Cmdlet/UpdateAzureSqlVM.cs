@@ -26,7 +26,8 @@ using static Microsoft.Azure.Commands.SqlVirtualMachine.Common.ParameterSet;
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
     /// <summary>
-    /// Defines Update-AzSqlVM cmdlet
+    /// This class implements the Update-AzSqlVM cmdlet. It allows to update the information relative to an Azure Sql Virtual Machine
+    /// and return to the user an AzureSqlVMModel object corresponding to the instance updated.
     /// </summary>
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVM", DefaultParameterSetName = NameParameterList, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlVMModel))]

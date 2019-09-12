@@ -19,7 +19,8 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model
 {
     /// <summary>
-    /// Represents the core properties of an Azure Sql virtual machine
+    /// Represents the core properties of an Azure Sql Virtual Machine Group. It mirrors the .NET client object 
+    /// Microsoft.Azure.Management.SqlVirtualMachine.Models.SqlVirtualMachineGroup
     /// </summary>
     public class AzureSqlVMGroupModel
     {

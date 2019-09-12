@@ -19,37 +19,33 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common.ArgumentCompleters
     /// <summary>
     /// Class used to automatically complete the offer provided in the cmdlet
     /// </summary>
-    public class OfferCompleter : PSArgumentCompleterAttribute
+    public class OfferCompleterAttribute : PSArgumentCompleterAttribute
     {
-        public OfferCompleter() : base(
+        public OfferCompleterAttribute() : base(
             "SQL2019-WS2019",
             "SQL2019-WS2016",
-            "SQL2019-WS2012",
-            "SQL2019-WS2008",
+            "SQL2019-WS2012R2",
 
             "SQL2017-WS2019",
             "SQL2017-WS2016",
-            "SQL2017-WS2012",
-            "SQL2017-WS2008",
+            "SQL2017-WS2012R2",
 
             "SQL2016-WS2019",
             "SQL2016-WS2016",
-            "SQL2016-WS2012",
-            "SQL2016-WS2008",
+            "SQL2016-WS2012R2",
 
             "SQL2014-WS2019",
             "SQL2014-WS2016",
-            "SQL2014-WS2012",
-            "SQL2014-WS2008",
+            "SQL2014-WS2012R2",
             
             "SQL2012-WS2019",
             "SQL2012-WS2016",
-            "SQL2012-WS2012",
-            "SQL2012-WS2008",
+            "SQL2012-WS2012R2",
 
-            "SQL2008-WS2019",
-            "SQL2008-WS2016",
-            "SQL2008-WS2012",
+            "SQL2008R2-WS2008R2",
+            "SQL2008R2-WS2008",
+
+            "SQL2008R2-WS2008",
             "SQL2008-WS2008"
             )
         {}

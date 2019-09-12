@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet.Config
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
-using System.Management.Automation;
 using Xunit;
 using Xunit.Abstractions;
 using static Microsoft.Azure.Commands.SqlVirtualMachine.Common.ParameterSet;
@@ -53,7 +52,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests.UnitTest
         public void NewAzureSqlVM()
         {
             Type type = typeof(NewAzureSqlVM);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "Location", false, false);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "Location", true, false);
             UpsertParamSet = new HashSet<String>()
             {
                 Name + ParameterList,
