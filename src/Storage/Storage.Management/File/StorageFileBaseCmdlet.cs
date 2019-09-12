@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
     public abstract class StorageFileBaseCmdlet : AzureRMCmdlet
     {
         private StorageManagementClientWrapper storageClientWrapper;
-
+        
         protected const string AccountNameAlias = "AccountName";
         protected const string NameAlias = "Name";
 

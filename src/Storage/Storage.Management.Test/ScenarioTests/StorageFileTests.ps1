@@ -53,13 +53,23 @@ function Test-StorageFileShare
 		Assert-AreEqual $stoname $share.StorageAccountName
 		Assert-AreEqual $shareName $share.Name
 		Assert-AreEqual $quotaGiB $share.QuotaGiB
-		Assert-AreEqual $metadata.Count $share.Metadata.Count
+		Assert-AreEqual $metadata.Count $share.Metadata.Count		
 		
         $quotaGiB = 200
-		$metadata = @{tag0="value0";tag1="value1";tag2="value2"}
+		$metadata = @{tag0="value0";tag1="value1";tag2="value2"} 
+		$share | Update-AzRmStorageShare -QuotaGiB $quotaGiB -Metadata $metadata
+		$share = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName
+		Assert-AreEqual $rgname $share.ResourceGroupName
+		Assert-AreEqual $stoname $share.StorageAccountName
+		Assert-AreEqual $shareName $share.Name
+		Assert-AreEqual $quotaGiB $share.QuotaGiB
+		Assert-AreEqual $metadata.Count $share.Metadata.Count
+		
+        $quotaGiB = 300
+		$metadata = @{tag0="value0";tag1="value1";tag2="value2";tag3="value3"}
 		$shareName2 = "share2"+ $rgname		
-		New-AzRmStorageShare -StorageAccount $stos -Name $shareName2 -QuotaGiB $quotaGiB -Metadata $metadata
-		$share = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName2
+		$stos | New-AzRmStorageShare -Name $shareName2 -QuotaGiB $quotaGiB -Metadata $metadata
+		$share = $stos | Get-AzRmStorageShare -Name $shareName2
 		Assert-AreEqual $rgname $share.ResourceGroupName
 		Assert-AreEqual $stoname $share.StorageAccountName
 		Assert-AreEqual $shareName2 $share.Name
@@ -76,7 +86,7 @@ function Test-StorageFileShare
 		Assert-AreEqual 1 $shares.Count
 		Assert-AreEqual $shareName2  $shares[0].Name
 
-		Remove-AzRmStorageShare -Force -StorageAccount $stos -Name $shareName2
+		$stos  | Get-AzRmStorageShare -Name $shareName2 | Remove-AzRmStorageShare -Force 
 		$shares = Get-AzRmStorageShare -StorageAccount $stos
 		Assert-AreEqual 0 $shares.Count
 
