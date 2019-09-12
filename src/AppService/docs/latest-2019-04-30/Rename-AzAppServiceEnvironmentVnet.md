@@ -14,16 +14,16 @@ Move an App Service Environment to a different VNET.
 
 ### ChangeExpanded (Default)
 ```
-Rename-AzAppServiceEnvironmentVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Rename-AzAppServiceEnvironmentVnet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Id <String>] [-Subnet <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Change
 ```
-Rename-AzAppServiceEnvironmentVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VnetInfo <IVirtualNetworkProfile> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Rename-AzAppServiceEnvironmentVnet -Name <String> -ResourceGroupName <String>
+ -VnetInfo <IVirtualNetworkProfile> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ChangeViaIdentity
@@ -202,9 +202,9 @@ Type: System.String
 Parameter Sets: Change, ChangeExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

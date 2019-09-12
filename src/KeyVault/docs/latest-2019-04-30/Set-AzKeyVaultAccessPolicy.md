@@ -15,14 +15,14 @@ Update access policies in a key vault in the specified subscription.
 ### Update1 (Default)
 ```
 Set-AzKeyVaultAccessPolicy -OperationKind <AccessPolicyUpdateKind> -ResourceGroupName <String>
- -SubscriptionId <String> -VaultName <String> -Parameter <IVaultAccessPolicyParameters>
+ -VaultName <String> -Parameter <IVaultAccessPolicyParameters> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded1
 ```
 Set-AzKeyVaultAccessPolicy -OperationKind <AccessPolicyUpdateKind> -ResourceGroupName <String>
- -SubscriptionId <String> -VaultName <String> -AccessPolicy <IAccessPolicyEntry[]>
+ -VaultName <String> -AccessPolicy <IAccessPolicyEntry[]> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -143,9 +143,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

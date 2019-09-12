@@ -14,17 +14,17 @@ Create or update a certificate.
 
 ### CreateExpanded (Default)
 ```
-New-AzWebAppCertificate -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
- [-HostingEnvironmentProfileId <String>] [-HostName <String[]>] [-KeyVaultId <String>]
- [-KeyVaultSecretName <String>] [-Kind <String>] [-Password <String>] [-PfxBlobInputFile <String>]
- [-ServerFarmId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzWebAppCertificate -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-HostingEnvironmentProfileId <String>] [-HostName <String[]>]
+ [-KeyVaultId <String>] [-KeyVaultSecretName <String>] [-Kind <String>] [-Password <String>]
+ [-PfxBlobInputFile <String>] [-ServerFarmId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzWebAppCertificate -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -CertificateEnvelope <ICertificate> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzWebAppCertificate -Name <String> -ResourceGroupName <String> -CertificateEnvelope <ICertificate>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -303,9 +303,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -15,12 +15,12 @@ Note that storage keys are not returned; use the ListKeys operation for this.
 
 ### List (Default)
 ```
-Get-AzStorageAccount -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStorageAccount [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzStorageAccount -SubscriptionId <String[]> -ResourceGroupName <String> [-DefaultProfile <PSObject>]
+Get-AzStorageAccount -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -92,9 +92,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -110,6 +110,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IStorageAccount
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

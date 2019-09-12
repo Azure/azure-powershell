@@ -14,16 +14,16 @@ Updates the source control configuration of an app.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzWebAppSourceControl -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Update-AzWebAppSourceControl -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Branch <String>] [-DeploymentRollbackEnabled] [-IsManualIntegration] [-IsMercurial] [-Kind <String>]
  [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Update-AzWebAppSourceControl -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -SiteSourceControl <ISiteSourceControl> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzWebAppSourceControl -Name <String> -ResourceGroupName <String>
+ -SiteSourceControl <ISiteSourceControl> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -252,9 +252,9 @@ Type: System.String
 Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -20,9 +20,6 @@ Create or update a key vault in the specified subscription.
 ### [Remove-AzKeyVault](Remove-AzKeyVault.md)
 Deletes the specified Azure key vault.
 
-### [Set-AzKeyVault](Set-AzKeyVault.md)
-Create or update a key vault in the specified subscription.
-
 ### [Set-AzKeyVaultAccessPolicy](Set-AzKeyVaultAccessPolicy.md)
 Update access policies in a key vault in the specified subscription.
 

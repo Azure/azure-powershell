@@ -14,8 +14,8 @@ Create or update an App Service Environment.
 
 ### CreateExpanded (Default)
 ```
-New-AzAppServiceEnvironment -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Location <String> [-ApiManagementAccountId <String>] [-ClusterSetting <INameValuePair[]>]
+New-AzAppServiceEnvironment -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-ApiManagementAccountId <String>] [-ClusterSetting <INameValuePair[]>]
  [-DnsSuffix <String>] [-DynamicCacheEnabled] [-FrontEndScaleFactor <Int32>] [-HasLinuxWorker]
  [-InternalLoadBalancingMode <InternalLoadBalancingMode>] [-IpsslAddressCount <Int32>] [-Kind <String>]
  [-MultiRoleCount <Int32>] [-MultiSize <String>] [-NetworkAccessControlList <INetworkAccessControlEntry[]>]
@@ -28,9 +28,9 @@ New-AzAppServiceEnvironment -Name <String> -ResourceGroupName <String> -Subscrip
 
 ### Create
 ```
-New-AzAppServiceEnvironment -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -HostingEnvironmentEnvelope <IAppServiceEnvironmentResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzAppServiceEnvironment -Name <String> -ResourceGroupName <String>
+ -HostingEnvironmentEnvelope <IAppServiceEnvironmentResource> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -497,9 +497,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

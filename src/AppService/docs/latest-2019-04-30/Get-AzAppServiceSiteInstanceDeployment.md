@@ -15,13 +15,13 @@ List deployments
 ### Get (Default)
 ```
 Get-AzAppServiceSiteInstanceDeployment -InstanceId <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
 Get-AzAppServiceSiteInstanceDeployment -Id <String> -InstanceId <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -168,9 +168,9 @@ Type: System.String[]
 Parameter Sets: Get, Get1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,7 +14,7 @@ Create or update an App Service Environment.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzAppServiceEnvironment -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Update-AzAppServiceEnvironment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ApiManagementAccountId <String>] [-ClusterSetting <INameValuePair[]>] [-DnsSuffix <String>]
  [-DynamicCacheEnabled] [-FrontEndScaleFactor <Int32>] [-HasLinuxWorker]
  [-InternalLoadBalancingMode <InternalLoadBalancingMode>] [-IpsslAddressCount <Int32>] [-Kind <String>]
@@ -29,9 +29,9 @@ Update-AzAppServiceEnvironment -Name <String> -ResourceGroupName <String> -Subsc
 
 ### Update
 ```
-Update-AzAppServiceEnvironment -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -HostingEnvironmentEnvelope <IAppServiceEnvironmentPatchResource> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzAppServiceEnvironment -Name <String> -ResourceGroupName <String>
+ -HostingEnvironmentEnvelope <IAppServiceEnvironmentPatchResource> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -450,9 +450,9 @@ Type: System.String
 Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

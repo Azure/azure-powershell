@@ -13,7 +13,7 @@ Lists the metric namespaces for the resource.
 ## SYNTAX
 
 ```
-Get-AzMetricNamespace -ResourceUri <String> [-StartTime <String>] [-DefaultProfile <PSObject>]
+Get-AzMetricNamespace -ResourceId <String> [-StartTime <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceUri
+### -ResourceId
 The identifier of the resource.
 
 ```yaml
@@ -100,6 +100,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20171201Preview.IMetricNamespace
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

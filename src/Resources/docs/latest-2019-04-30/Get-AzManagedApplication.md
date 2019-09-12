@@ -12,15 +12,20 @@ Gets the managed application.
 
 ## SYNTAX
 
-### Get1 (Default)
+### List1 (Default)
 ```
-Get-AzManagedApplication -Id <String> [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+Get-AzManagedApplication [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzManagedApplication -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzManagedApplication -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+```
+
+### Get1
+```
+Get-AzManagedApplication -Id <String> [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -37,13 +42,8 @@ Get-AzManagedApplication -InputObject <IResourcesIdentity> [-DefaultProfile <PSO
 
 ### List
 ```
-Get-AzManagedApplication -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzManagedApplication -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzManagedApplication -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -178,9 +178,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,7 +14,7 @@ Get metric definitions for a specific instance of a multi-role pool of an App Se
 
 ```
 Get-AzAppServiceEnvironmentMultiRolePoolInstanceMetricDefinition -Instance <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,9 +116,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -12,21 +12,21 @@ List service SAS credentials of a specific resource.
 
 ## SYNTAX
 
-### List (Default)
+### ListExpanded (Default)
 ```
-Get-AzStorageAccountServiceSas -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-Parameter <IServiceSasParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ListExpanded
-```
-Get-AzStorageAccountServiceSas -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzStorageAccountServiceSas -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-CacheControl <String>] [-CanonicalizedResource <String>] [-ContentDisposition <String>]
- [-ContentEncoding <String>] [-ContentLanguage <String>] [-ContentType <String>] [-IPAddressOrRange <String>]
- [-Identifier <String>] [-KeyToSign <String>] [-PartitionKeyEnd <String>] [-PartitionKeyStart <String>]
+ [-ContentEncoding <String>] [-ContentLanguage <String>] [-ContentType <String>] [-Identifier <String>]
+ [-IPAddressOrRange <String>] [-KeyToSign <String>] [-PartitionKeyEnd <String>] [-PartitionKeyStart <String>]
  [-Permission <Permissions>] [-Protocol <HttpProtocol>] [-Resource <SignedResource>] [-RowKeyEnd <String>]
  [-RowKeyStart <String>] [-SharedAccessExpiryTime <DateTime>] [-SharedAccessStartTime <DateTime>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzStorageAccountServiceSas -Name <String> -ResourceGroupName <String> -Parameter <IServiceSasParameters>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,23 +53,6 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -AccountName
-The name of the storage account within the specified resource group.
-Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
 
 ### -CacheControl
 The response header override for cache control.
@@ -231,15 +214,33 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the storage account within the specified resource group.
+Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 HELP MESSAGE MISSING
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IServiceSasParameters
 Parameter Sets: List
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -418,9 +419,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -471,6 +472,31 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IServiceSasParameters>: HELP MESSAGE MISSING
+  - `[CacheControl <String>]`: The response header override for cache control.
+  - `[CanonicalizedResource <String>]`: The canonical path to the signed resource.
+  - `[ContentDisposition <String>]`: The response header override for content disposition.
+  - `[ContentEncoding <String>]`: The response header override for content encoding.
+  - `[ContentLanguage <String>]`: The response header override for content language.
+  - `[ContentType <String>]`: The response header override for content type.
+  - `[IPAddressOrRange <String>]`: An IP address or a range of IP addresses from which to accept requests.
+  - `[Identifier <String>]`: A unique value up to 64 characters in length that correlates to an access policy specified for the container, queue, or table.
+  - `[KeyToSign <String>]`: The key to sign the account SAS token with.
+  - `[PartitionKeyEnd <String>]`: The end of partition key.
+  - `[PartitionKeyStart <String>]`: The start of partition key.
+  - `[Permission <Permissions?>]`: The signed permissions for the service SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a), Create (c), Update (u) and Process (p).
+  - `[Protocol <HttpProtocol?>]`: The protocol permitted for a request made with the account SAS.
+  - `[Resource <SignedResource?>]`: The signed services accessible with the service SAS. Possible values include: Blob (b), Container (c), File (f), Share (s).
+  - `[RowKeyEnd <String>]`: The end of row key.
+  - `[RowKeyStart <String>]`: The start of row key.
+  - `[SharedAccessExpiryTime <DateTime?>]`: The time at which the shared access signature becomes invalid.
+  - `[SharedAccessStartTime <DateTime?>]`: The time at which the SAS becomes valid.
 
 ## RELATED LINKS
 

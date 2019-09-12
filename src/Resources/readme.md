@@ -59,11 +59,72 @@ module-version: 0.0.1
 title: Resources
 
 directive:
+  - from: swagger-document
+    where: $..parameters[?(@.name=='$filter')]
+    transform: $['x-ms-skip-url-encoding'] = true
+  - from: swagger-document
+    where: $..[?( /Resources_(CreateOrUpdate|Update|Delete|Get|GetById|CheckExistence|CheckExistenceById)/g.exec(@.operationId))]
+    transform: "$.parameters = $.parameters.map( each => { each.name = each.name === 'api-version' ? 'explicit-api-version' : each.name; return each; } );"
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/explicit-api-version/g, 'api-version');
+  - where:
+      parameter-name: ExplicitApiVersion
+    set:
+      parameter-name: ApiVersion
   - from: source-file-csharp
     where: $
     transform: >
       $ = $.replace(/result.OdataNextLink/g,'nextLink' );
       return $.replace( /(^\s*)(if\s*\(\s*nextLink\s*!=\s*null\s*\))/gm, '$1var nextLink = Module.Instance.FixNextLink(responseMessage, result.OdataNextLink);\n$1$2' );
+  - from: swagger-document
+    where:
+      - $..DeploymentProperties.properties.template
+      - $..DeploymentProperties.properties.parameters
+      - $..ResourceGroupExportResult.properties.template
+      - $..PolicyDefinitionProperties.properties.policyRule
+    transform: $.additionalProperties = true;
+  - where:
+      subject: OAuth2PermissionGrant
+    remove: true
+  - where:
+      subject: ClassicAdministrator
+    remove: true
+  - where:
+      subject: Permission
+    remove: true
+  - where:
+      subject: ElevateAccess
+    remove: true
+  - where:
+      subject: TenantBackfill.*
+    remove: true
+  - where:
+      subject: Entity
+    remove: true
+  - where:
+      subject: ResourceLink
+    remove: true
+  - where:
+      verb: Set
+      subject: Resource
+    remove: true
+  - where:
+      verb: Set
+      subject: Deployment
+    remove: true
+  - where:
+      verb: Test
+      subject: ResourceExistence
+    remove: true
+  - where:
+      verb: Test
+      subject: DeploymentExistence
+    remove: true
+  - where:
+      verb: Get
+      subject: AuthorizationOperation
+    remove: true
   - where:
       subject: ApplicationDefinition(.*)
     set:
@@ -126,13 +187,17 @@ directive:
     set:
       subject: ADApplicationOwner
   - where:
-      subject: ApplicationKeyCredential
+      subject: (.*)KeyCredentials
     set:
-      subject: ADApplicationKeyCredential
+      subject: AD$1KeyCredential
   - where:
-      subject: ApplicationPasswordCredential
+      subject: (.*)PasswordCredentials
     set:
-      subject: ADApplicationPasswordCredential
+      subject: AD$1PasswordCredential
+  - where:
+      verb: Update
+      subject: AD(.*)Credential
+    hide: true
   - where:
       subject: ApplicationServicePrincipalId
     hide: true
@@ -150,8 +215,15 @@ directive:
       subject: ADGroup$1
   - where:
       subject: ^Object
-    set:
-      subject: ADObject
+    hide: true
+  - where:
+      verb: Get
+      subject: RoleAssignment
+    hide: true
+  - where:
+      verb: Get
+      subject: RoleDefinition
+    hide: true
   - where:
       subject: ^ServicePrincipal(.*)
     set:
@@ -160,6 +232,14 @@ directive:
       subject: ^User(.*)
     set:
       subject: ADUser$1
+  - where:
+      subject: ^Domain(.*)
+    set:
+      subject: ADDomain$1
+  - where:
+      subject: ManagementLock
+    set:
+      subject: ResourceLock
   - where:
       parameter-name: ApplicationObjectId
     set:
@@ -195,37 +275,11 @@ directive:
     set:
       subject: NameAvailability
   - where:
-      verb: Test
-      subject: ResourceExistence
-    set:
-      subject: Resource
-      alias: Test-AzResourceExistence
-  - where:
       verb: Export
       subject: ResourceGroupTemplate
     set:
       subject: ResourceGroup
       alias: Export-AzResourceGroupTemplate
-  - where:
-      subject: ResourceLink
-      parameter-name: LinkId
-    set:
-      parameter-name: ResourceId
-      alias: LinkId
-  - where:
-      verb: Get
-      subject: ResourceLink
-      variant: List
-      parameter-name: Filter
-    set:
-      parameter-name: FilterById
-  - where:
-      verb: Get
-      subject: ResourceLink
-      variant: List1
-      parameter-name: Filter
-    set:
-      parameter-name: FilterByScope
   - where:
       parameter-name: Filter
     set:
@@ -251,10 +305,33 @@ directive:
     set:
       alias: Get-AzResourceGroupDeploymentOperation
   - where:
-      verb: Test
-      subject: DeploymentExistence
+      verb: New
+      subject: Deployment
+      variant: Create.*Expanded.*
+      parameter-name: Parameter
     set:
-      alias: Test-AzResourceGroupDeploymentExistence
+      parameter-name: DeploymentPropertyParameter
+  - where:
+      verb: Test
+      subject: Deployment
+      variant: Validate.*Expanded.*
+      parameter-name: Parameter
+    set:
+      parameter-name: DeploymentPropertyParameter
+  - where:
+      verb: New
+      subject: Deployment
+      parameter-name: DebugSettingDetailLevel
+    set:
+      parameter-name: DeploymentDebugLogLevel
+  - where:
+      verb: New
+      subject: Deployment
+    hide: true
+  - where:
+      verb: Test
+      subject: Deployment
+    hide: true
   - where:
       subject: ProviderOperationMetadata
     set:
@@ -264,10 +341,18 @@ directive:
     set:
       subject: ResourceProvider
   - where:
-      subject: ProviderFeature|ResourceProvider
+      verb: Get
+      subject: ResourceProvider
+    hide: true
+  - where:
+      subject: ProviderFeature|ResourceProvider|ResourceLock
       parameter-name: ResourceProviderNamespace
     set:
       alias: ProviderNamespace
+  - where:
+      verb: Get
+      subject: ProviderFeature
+    hide: true
   - where:
       subject: TagValue
     hide: true
@@ -282,14 +367,8 @@ directive:
     set:
       alias: GroupObjectId
   - where:
-      subject: AD.*KeyCredential
-    hide: true
-  - where:
-      subject: AD.*PasswordCredential
-    hide: true
-  - where:
       subject: SignedInUser.*
-    hide: true
+    remove: true
   - where:
       subject: ManagementGroup.*
       parameter-name: GroupId
@@ -383,6 +462,38 @@ directive:
     set:
       alias: ManagedApplicationDefinitionId
   - where:
+      verb: New
+      subject: ManagedApplication
+      variant: Create.*Expanded.*
+      parameter-name: Parameter
+    set:
+      parameter-name: ApplicationPropertiesParameter
+  - where:
+      verb: Set
+      subject: ManagedApplication
+      variant: Update.*Expanded.*
+      parameter-name: Parameter
+    set:
+      parameter-name: ApplicationPropertiesParameter
+  - where:
+      verb: New
+      subject: PolicyDefinition
+      variant: Create.*Expanded.*
+      parameter-name: Parameter
+    set:
+      parameter-name: DefinitionPropertiesParameter
+  - where:
+      verb: Set
+      subject: PolicyDefinition
+      variant: Update.*Expanded.*
+      parameter-name: Parameter
+    set:
+      parameter-name: DefinitionPropertiesParameter
+  - where:
+      verb: New
+      subject: PolicyDefinition
+    hide: true
+  - where:
       subject: ADApplication
       parameter-name: AvailableToOtherTenant
     set:
@@ -421,4 +532,189 @@ directive:
       subject: RoleAssignment
       variant: ^Create1$|^CreateExpanded1$|^CreateViaIdentity1$|^CreateViaIdentityExpanded1$
     remove: true
+  - where:
+      verb: Add
+      subject: ADGroupMember
+      parameter-name: Group(.*)
+    set:
+      alias: TargetGroup$1
+  - where:
+      subject: ADUser
+      parameter-name: PasswordProfileForceChangePasswordNextLogin
+    set:
+      alias: PasswordChangePasswordNextLogin
+  - where:
+      verb: Get
+      subject: SubscriptionLocation
+    set:
+      subject: Location
+  # Format output
+  - where:
+      model-name: GenericResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - Type
+          - Location
+        labels:
+          Type: ResourceType
+  - where:
+      model-name: ResourceGroup
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - ProvisioningState
+  - where:
+      model-name: DeploymentExtended
+    set:
+      format-table:
+        properties:
+          - Name
+          - ProvisioningState
+          - Timestamp
+          - Mode
+  - where:
+      model-name: PolicyAssignment
+    set:
+      format-table:
+        properties:
+          - Name
+          - DisplayName
+          - Id
+  - where:
+      model-name: PolicyDefinition
+    set:
+      format-table:
+        properties:
+          - Name
+          - DisplayName
+          - Id
+  - where:
+      model-name: PolicySetDefinition
+    set:
+      format-table:
+        properties:
+          - Name
+          - DisplayName
+          - Id
+  - where:
+      model-name: Provider
+    set:
+      format-table:
+        properties:
+          - Namespace
+          - RegistrationState
+  - where:
+      model-name: ProviderResourceType
+    set:
+      format-table:
+        properties:
+          - ResourceType
+          - Location
+          - ApiVersion
+  - where:
+      model-name: FeatureResult
+    set:
+      format-table:
+        properties:
+          - Name
+          - State
+  - where:
+      model-name: TagDetails
+    set:
+      format-table:
+        properties:
+          - TagName
+          - CountValue
+  - where:
+      model-name: Application
+    set:
+      format-table:
+        properties:
+          - DisplayName
+          - ObjectId
+          - AppId
+          - Homepage
+          - AvailableToOtherTenant
+  - where:
+      model-name: KeyCredential
+    set:
+      format-table:
+        properties:
+          - StartDate
+          - EndDate
+          - KeyId
+          - Type
+  - where:
+      model-name: PasswordCredential
+    set:
+      format-table:
+        properties:
+          - StartDate
+          - EndDate
+          - KeyId
+  - where:
+      model-name: User
+    set:
+      format-table:
+        properties:
+          - PrincipalName
+          - DisplayName
+          - ObjectId
+          - Type
+  - where:
+      model-name: AdGroup
+    set:
+      format-table:
+        properties:
+          - DisplayName
+          - Mail
+          - ObjectId
+          - SecurityEnabled
+  - where:
+      model-name: ServicePrincipal
+    set:
+      format-table:
+        properties:
+          - DisplayName
+          - ObjectId
+          - AppDisplayName
+          - AppId
+  - where:
+      model-name: Location
+    set:
+      format-table:
+        properties:
+          - Name
+          - DisplayName
+  - where:
+      model-name: ManagementLockObject
+    set:
+      format-table:
+        properties:
+          - Name
+          - Level
+          - ResourceId
+  - where:
+      model-name: RoleAssignment
+    set:
+      format-table:
+        properties:
+          - DisplayName
+          - ObjectId
+          - ObjectType
+          - RoleDefinitionName
+          - Scope
+  - where:
+      model-name: RoleDefinition
+    set:
+      format-table:
+        properties:
+          - RoleName
+          - Name
+          - Action
 ```

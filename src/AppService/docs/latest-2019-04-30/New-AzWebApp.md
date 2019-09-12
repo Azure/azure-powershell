@@ -14,7 +14,7 @@ Creates a new web, mobile, or API app in an existing resource group, or updates 
 
 ### CreateExpanded (Default)
 ```
-New-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
+New-AzWebApp -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-ClientAffinityEnabled] [-ClientCertEnabled] [-ClientCertExclusionPath <String>]
  [-CloningInfoAppSettingsOverride <Hashtable>] [-CloningInfoCloneCustomHostName]
  [-CloningInfoCloneSourceControl] [-CloningInfoConfigureLoadBalancing] [-CloningInfoCorrelationId <String>]
@@ -31,14 +31,14 @@ New-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
 
 ### Create
 ```
-New-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -SiteEnvelope <ISite>
+New-AzWebApp -Name <String> -ResourceGroupName <String> -SiteEnvelope <ISite> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpandedSlot
 ```
-New-AzWebApp -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
- -Location <String> [-ClientAffinityEnabled] [-ClientCertEnabled] [-ClientCertExclusionPath <String>]
+New-AzWebApp -Name <String> -ResourceGroupName <String> -Slot <String> -Location <String>
+ [-SubscriptionId <String>] [-ClientAffinityEnabled] [-ClientCertEnabled] [-ClientCertExclusionPath <String>]
  [-CloningInfoAppSettingsOverride <Hashtable>] [-CloningInfoCloneCustomHostName]
  [-CloningInfoCloneSourceControl] [-CloningInfoConfigureLoadBalancing] [-CloningInfoCorrelationId <String>]
  [-CloningInfoHostingEnvironment <String>] [-CloningInfoOverwrite] [-CloningInfoSourceWebAppId <String>]
@@ -54,8 +54,8 @@ New-AzWebApp -Name <String> -ResourceGroupName <String> -Slot <String> -Subscrip
 
 ### CreateSlot
 ```
-New-AzWebApp -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
- -SiteEnvelope <ISite> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzWebApp -Name <String> -ResourceGroupName <String> -Slot <String> -SiteEnvelope <ISite>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -808,9 +808,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded, CreateExpandedSlot, CreateSlot
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

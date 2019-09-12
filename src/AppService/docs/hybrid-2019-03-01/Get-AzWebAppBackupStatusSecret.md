@@ -16,7 +16,7 @@ Also can be used to update the SAS URL for the backup if a new URL is passed in 
 ### ListExpanded (Default)
 ```
 Get-AzWebAppBackupStatusSecret -BackupId <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-BackupName <String>] [-BackupScheduleFrequencyInterval <Int32>]
+ [-SubscriptionId <String[]>] [-BackupName <String>] [-BackupScheduleFrequencyInterval <Int32>]
  [-BackupScheduleFrequencyUnit <FrequencyUnit>] [-BackupScheduleKeepAtLeastOneBackup]
  [-BackupScheduleRetentionPeriodInDay <Int32>] [-BackupScheduleStartTime <DateTime>]
  [-Database <IDatabaseBackupSetting[]>] [-Enabled] [-Kind <String>] [-StorageAccountUrl <String>]
@@ -26,14 +26,14 @@ Get-AzWebAppBackupStatusSecret -BackupId <String> -Name <String> -ResourceGroupN
 ### List
 ```
 Get-AzWebAppBackupStatusSecret -BackupId <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -Request <IBackupRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -Request <IBackupRequest> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### ListExpandedSlot
 ```
 Get-AzWebAppBackupStatusSecret -BackupId <String> -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String[]> [-BackupName <String>] [-BackupScheduleFrequencyInterval <Int32>]
+ [-SubscriptionId <String[]>] [-BackupName <String>] [-BackupScheduleFrequencyInterval <Int32>]
  [-BackupScheduleFrequencyUnit <FrequencyUnit>] [-BackupScheduleKeepAtLeastOneBackup]
  [-BackupScheduleRetentionPeriodInDay <Int32>] [-BackupScheduleStartTime <DateTime>]
  [-Database <IDatabaseBackupSetting[]>] [-Enabled] [-Kind <String>] [-StorageAccountUrl <String>]
@@ -43,7 +43,7 @@ Get-AzWebAppBackupStatusSecret -BackupId <String> -Name <String> -ResourceGroupN
 ### ListSlot
 ```
 Get-AzWebAppBackupStatusSecret -BackupId <String> -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String[]> -Request <IBackupRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -Request <IBackupRequest> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -344,9 +344,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

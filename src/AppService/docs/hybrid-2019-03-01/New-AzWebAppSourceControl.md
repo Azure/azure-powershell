@@ -14,15 +14,15 @@ Updates the source control configuration of an app.
 
 ### CreateExpanded (Default)
 ```
-New-AzWebAppSourceControl -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzWebAppSourceControl -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Branch <String>] [-DeploymentRollbackEnabled] [-IsManualIntegration] [-IsMercurial] [-Kind <String>]
  [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzWebAppSourceControl -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -SiteSourceControl <ISiteSourceControl> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzWebAppSourceControl -Name <String> -ResourceGroupName <String> -SiteSourceControl <ISiteSourceControl>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -284,9 +284,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -15,7 +15,7 @@ Updates the logging configuration of an app.
 ### UpdateExpanded (Default)
 ```
 Set-AzWebAppDiagnosticLogConfigSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> [-ApplicationLogsAzureBlobStorageRetentionInDay <Int32>]
+ [-SubscriptionId <String>] [-ApplicationLogsAzureBlobStorageRetentionInDay <Int32>]
  [-ApplicationLogsAzureBlobStorageSasUrl <String>] [-AzureBlobStorageEnabled]
  [-AzureBlobStorageLevel <LogLevel>] [-AzureTableStorageLevel <LogLevel>] [-AzureTableStorageSasUrl <String>]
  [-DetailedErrorMessageEnabled] [-FailedRequestTracingEnabled] [-FileSystemEnabled]
@@ -27,8 +27,8 @@ Set-AzWebAppDiagnosticLogConfigSlot -Name <String> -ResourceGroupName <String> -
 ### Update
 ```
 Set-AzWebAppDiagnosticLogConfigSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> -SiteLogsConfig <ISiteLogsConfig> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -SiteLogsConfig <ISiteLogsConfig> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -388,9 +388,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

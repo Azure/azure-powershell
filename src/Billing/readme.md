@@ -67,7 +67,7 @@ directive:
     set:
       alias: ${verb}-AzConsumption${subject}
   - where:
-      subject: Policy|Product|RoleAssignment
+      subject: Policy|Product
     set:
       subject-prefix: Billing
   - where:
@@ -93,7 +93,16 @@ directive:
     set:
       alias: MaxCount
   - where:
+      verb: Get
+      subject: InvoiceLatest
+    hide: true
+  - where:
       subject: BillingPeriod
+      parameter-name: Top
+    set:
+      alias: MaxCount
+  - where:
+      subject: UsageDetail
       parameter-name: Top
     set:
       alias: MaxCount
@@ -117,4 +126,13 @@ directive:
       parameter-name: PoNumber
     set:
       parameter-name: PurchaseNumberOrder
+  - where:
+      verb: Get
+      subject: UsageAggregate
+    set:
+      alias: Get-UsageAggregates
+  # The below directive hides any cmdlet not currently shipped with Az.Billing
+  - where:
+      subject: ^(?!^BillingPeriod$)(?!^Budget$)(?!^EnrollmentAccount$)(?!^Invoice$)(?!^Marketplace$)(?!^PriceSheet$)(?!^ReservationDetail$)(?!^ReservationSummary$)(?!^UsageAggregate$)(?!^UsageDetail$).*$
+    hide: true
 ```

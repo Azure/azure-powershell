@@ -14,14 +14,14 @@ Get site extension information by its ID for a web site, or a deployment slot.
 
 ### List (Default)
 ```
-Get-AzWebAppSiteExtension -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzWebAppSiteExtension -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzWebAppSiteExtension -Name <String> -ResourceGroupName <String> -SiteExtensionId <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -162,9 +162,9 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -12,15 +12,9 @@ Deletes a policy definition.
 
 ## SYNTAX
 
-### DeleteById (Default)
+### Delete2 (Default)
 ```
-Remove-AzPolicyDefinition -Id <String> [-SubscriptionId <String>] [-PassThru] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Delete2
-```
-Remove-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>]
+Remove-AzPolicyDefinition -Name <String> [-SubscriptionId <String>] [-PassThru] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -28,6 +22,12 @@ Remove-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-PassThru] [-
 ```
 Remove-AzPolicyDefinition -ManagementGroupName <String> -Name <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteById
+```
+Remove-AzPolicyDefinition -Id <String> [-SubscriptionId <String>] [-PassThru] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity2
@@ -172,9 +172,9 @@ Type: System.String
 Parameter Sets: Delete2, DeleteById
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

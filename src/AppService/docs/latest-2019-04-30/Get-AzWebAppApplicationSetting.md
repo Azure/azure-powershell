@@ -13,7 +13,7 @@ Gets the application settings of an app.
 ## SYNTAX
 
 ```
-Get-AzWebAppApplicationSetting -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzWebAppApplicationSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -100,9 +100,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

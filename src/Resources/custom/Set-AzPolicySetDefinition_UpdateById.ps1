@@ -5,6 +5,7 @@ function Set-AzPolicySetDefinition_UpdateById {
     param(
         [Parameter(HelpMessage='The ID of the target subscription.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         ${SubscriptionId},
 

@@ -15,7 +15,7 @@ Creates a hostname binding for an app.
 ### UpdateExpanded (Default)
 ```
 Set-AzWebAppPublicCertificateSlot -Name <String> -PublicCertificateName <String> -ResourceGroupName <String>
- -Slot <String> -SubscriptionId <String> [-BlobInputFile <String>] [-Kind <String>]
+ -Slot <String> [-SubscriptionId <String>] [-BlobInputFile <String>] [-Kind <String>]
  [-PublicCertificateLocation <PublicCertificateLocation>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -23,8 +23,8 @@ Set-AzWebAppPublicCertificateSlot -Name <String> -PublicCertificateName <String>
 ### Update
 ```
 Set-AzWebAppPublicCertificateSlot -Name <String> -PublicCertificateName <String> -ResourceGroupName <String>
- -Slot <String> -SubscriptionId <String> -PublicCertificate <IPublicCertificate> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Slot <String> -PublicCertificate <IPublicCertificate> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -208,9 +208,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

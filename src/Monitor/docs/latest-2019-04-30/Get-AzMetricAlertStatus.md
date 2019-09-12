@@ -12,9 +12,16 @@ Retrieve an alert rule status.
 
 ## SYNTAX
 
+### List (Default)
+```
+Get-AzMetricAlertStatus -ResourceGroupName <String> -RuleName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
 ```
 Get-AzMetricAlertStatus -ResourceGroupName <String> -RuleName <String> -StatusName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,7 +102,7 @@ The name of the status.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List1
 Aliases:
 
 Required: True
@@ -114,9 +121,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -132,6 +139,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.IMetricAlertStatus
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

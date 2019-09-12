@@ -14,7 +14,7 @@ This operation creates or updates a policy set definition in the given subscript
 
 ### CreateExpanded (Default)
 ```
-New-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-Description <String>]
+New-AzPolicySetDefinition -Name <String> [-SubscriptionId <String>] [-Description <String>]
  [-DisplayName <String>] [-Metadata <IPolicySetDefinitionPropertiesMetadata>]
  [-PolicyDefinition <IPolicyDefinitionReference[]>] [-PolicyType <PolicyType>]
  [-SetDefinitionParameter <IPolicySetDefinitionPropertiesParameters>] [-DefaultProfile <PSObject>] [-Confirm]
@@ -23,7 +23,7 @@ New-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-Description 
 
 ### Create
 ```
-New-AzPolicySetDefinition -Name <String> -SubscriptionId <String> -Parameter <IPolicySetDefinition>
+New-AzPolicySetDefinition -Name <String> -Parameter <IPolicySetDefinition> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -283,9 +283,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

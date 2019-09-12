@@ -12,25 +12,32 @@ Gets the preview feature with the specified name.
 
 ## SYNTAX
 
-### List (Default)
+### ListRegistered (Default)
 ```
-Get-AzProviderFeature -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzProviderFeature [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Get
+### GetByFeature
 ```
-Get-AzProviderFeature -Name <String> -ResourceProviderNamespace <String> -SubscriptionId <String[]>
+Get-AzProviderFeature -Name <String> -ResourceProviderNamespace <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzProviderFeature -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzProviderFeature -InputObject <IResourcesIdentity> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
+### ListAvailable
 ```
-Get-AzProviderFeature -ResourceProviderNamespace <String> -SubscriptionId <String[]>
+Get-AzProviderFeature -ListAvailable [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### ListByNamespace
+```
+Get-AzProviderFeature -ResourceProviderNamespace <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -92,12 +99,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ListAvailable
+If set, signals that all available features should be returned.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ListAvailable
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Name
 The name of the feature to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetByFeature
 Aliases: FeatureName
 
 Required: True
@@ -113,7 +136,7 @@ The resource provider namespace for the feature.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: GetByFeature, ListByNamespace
 Aliases: ProviderNamespace
 
 Required: True
@@ -129,12 +152,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

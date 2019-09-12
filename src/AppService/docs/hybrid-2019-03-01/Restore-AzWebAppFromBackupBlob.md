@@ -14,7 +14,7 @@ Restores an app from a backup blob in Azure Storage.
 
 ### RestoreExpanded (Default)
 ```
-Restore-AzWebAppFromBackupBlob -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Restore-AzWebAppFromBackupBlob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AdjustConnectionString] [-AppServicePlan <String>] [-BlobName <String>]
  [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>] [-IgnoreConflictingHostName]
  [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>] [-Overwrite]
@@ -24,8 +24,8 @@ Restore-AzWebAppFromBackupBlob -Name <String> -ResourceGroupName <String> -Subsc
 
 ### Restore
 ```
-Restore-AzWebAppFromBackupBlob -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Request <IRestoreRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Restore-AzWebAppFromBackupBlob -Name <String> -ResourceGroupName <String> -Request <IRestoreRequest>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -406,9 +406,9 @@ Type: System.String
 Parameter Sets: Restore, RestoreExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

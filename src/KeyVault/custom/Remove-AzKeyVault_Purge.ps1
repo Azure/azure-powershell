@@ -11,6 +11,7 @@ function Remove-AzKeyVault_Purge {
 
         [Parameter(Mandatory, HelpMessage='Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.')]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
         ${SubscriptionId},

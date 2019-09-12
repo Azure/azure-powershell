@@ -14,29 +14,29 @@ ClearLegalHold clears out only the specified tags in the request.
 
 ## SYNTAX
 
-### Clear (Default)
+### ClearExpanded (Default)
 ```
 Clear-AzRmStorageContainerLegalHold -AccountName <String> -ContainerName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-LegalHold <ILegalHold>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -Tag <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### ClearExpanded
+### Clear
 ```
 Clear-AzRmStorageContainerLegalHold -AccountName <String> -ContainerName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Tag <String[]> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -LegalHold <ILegalHold> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### ClearViaIdentity
+```
+Clear-AzRmStorageContainerLegalHold -InputObject <IStorageIdentity> -LegalHold <ILegalHold>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ClearViaIdentityExpanded
 ```
 Clear-AzRmStorageContainerLegalHold -InputObject <IStorageIdentity> -Tag <String[]>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ClearViaIdentity
-```
-Clear-AzRmStorageContainerLegalHold -InputObject <IStorageIdentity> [-LegalHold <ILegalHold>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -120,10 +120,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
-Parameter Sets: ClearViaIdentityExpanded, ClearViaIdentity
+Parameter Sets: ClearViaIdentity, ClearViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -136,13 +137,14 @@ Dynamic: False
 
 ### -LegalHold
 The LegalHold property of a blob container.
+To construct, see NOTES section for LEGALHOLD properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.ILegalHold
 Parameter Sets: Clear, ClearViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -175,9 +177,9 @@ Type: System.String
 Parameter Sets: Clear, ClearExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -237,9 +239,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.ILegalHold
+
+### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
 
 ## OUTPUTS
 
@@ -248,6 +250,27 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Remove-AzRmStorageContainerLegalHold
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INPUTOBJECT <IStorageIdentity>: Identity Parameter
+  - `[AccountName <String>]`: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  - `[BlobServicesName <String>]`: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  - `[ContainerName <String>]`: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  - `[FileServicesName <String>]`: The name of the file Service within the specified storage account. File Service Name must be "default"
+  - `[Id <String>]`: Resource identity path
+  - `[ImmutabilityPolicyName <String>]`: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  - `[Location <String>]`: The location of the Azure Storage resource.
+  - `[ManagementPolicyName <ManagementPolicyName?>]`: The name of the Storage Account Management Policy. It should always be 'default'
+  - `[ResourceGroupName <String>]`: The name of the resource group within the user's subscription. The name is case insensitive.
+  - `[ShareName <String>]`: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
+
+#### LEGALHOLD <ILegalHold>: The LegalHold property of a blob container.
+  - `Tag <String[]>`: Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP.
 
 ## RELATED LINKS
 

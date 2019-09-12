@@ -14,16 +14,16 @@ Updates the names of application settings and connection string that remain with
 
 ### UpdateExpanded (Default)
 ```
-Set-AzWebAppSlotConfigurationName -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzWebAppSlotConfigurationName -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AppSettingName <String[]>] [-AzureStorageConfigName <String[]>] [-ConnectionStringName <String[]>]
  [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzWebAppSlotConfigurationName -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -SlotConfigName <ISlotConfigNamesResource> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzWebAppSlotConfigurationName -Name <String> -ResourceGroupName <String>
+ -SlotConfigName <ISlotConfigNamesResource> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -190,9 +190,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

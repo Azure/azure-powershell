@@ -14,17 +14,17 @@ SetLegalHold follows an append pattern and does not clear out the existing tags 
 
 ## SYNTAX
 
-### Set (Default)
+### SetExpanded (Default)
 ```
 Set-AzRmStorageContainerLegalHold -AccountName <String> -ContainerName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-LegalHold <ILegalHold>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -Tag <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### SetExpanded
+### Set
 ```
 Set-AzRmStorageContainerLegalHold -AccountName <String> -ContainerName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Tag <String[]> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -LegalHold <ILegalHold> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -108,13 +108,14 @@ Dynamic: False
 
 ### -LegalHold
 The LegalHold property of a blob container.
+To construct, see NOTES section for LEGALHOLD properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.ILegalHold
 Parameter Sets: Set
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -147,9 +148,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -218,6 +219,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Add-AzRmStorageContainerLegalHold
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### LEGALHOLD <ILegalHold>: The LegalHold property of a blob container.
+  - `Tag <String[]>`: Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP.
 
 ## RELATED LINKS
 

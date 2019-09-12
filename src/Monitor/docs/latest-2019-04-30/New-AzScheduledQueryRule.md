@@ -12,34 +12,12 @@ Creates or updates an log search rule.
 
 ## SYNTAX
 
-### Create (Default)
 ```
-New-AzScheduledQueryRule -ResourceGroupName <String> -RuleName <String> -SubscriptionId <String>
- [-Parameter <ILogSearchRuleResource>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzScheduledQueryRule -ResourceGroupName <String> -RuleName <String> -SubscriptionId <String>
- -ActionOdataType <String> -Location <String> -ScheduleFrequencyInMinute <Int32>
- -ScheduleTimeWindowInMinute <Int32> -SourceDataSourceId <String> [-Description <String>] [-Enabled <Enabled>]
+New-AzScheduledQueryRule -Name <String> -ResourceGroupName <String> -AlertingAction <AlertingAction>
+ -Location <String> -SourceDataSourceId <String> -Enabled [-SubscriptionId <String>] [-Description <String>]
+ [-ScheduleFrequencyInMinute <Int32>] [-ScheduleTimeWindowInMinute <Int32>]
  [-SourceAuthorizedResource <String[]>] [-SourceQuery <String>] [-SourceQueryType <QueryType>]
- [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzScheduledQueryRule -InputObject <IMonitorIdentity> -ActionOdataType <String> -Location <String>
- -ScheduleFrequencyInMinute <Int32> -ScheduleTimeWindowInMinute <Int32> -SourceDataSourceId <String>
- [-Description <String>] [-Enabled <Enabled>] [-SourceAuthorizedResource <String[]>] [-SourceQuery <String>]
- [-SourceQueryType <QueryType>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzScheduledQueryRule -InputObject <IMonitorIdentity> [-Parameter <ILogSearchRuleResource>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,13 +45,13 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -ActionOdataType
-Specifies the action.
-Supported values - AlertingAction, LogToMetricAction
+### -AlertingAction
+The scheduled query rule Alerting Action.
+To construct, see NOTES section for ALERTINGACTION properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180416.AlertingAction
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -105,7 +83,7 @@ The description of the Log Search rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -117,34 +95,17 @@ Dynamic: False
 ```
 
 ### -Enabled
-The flag which indicates whether the Log Search rule is enabled.
-Value should be true or false
+The flag which indicates whether the Log Search rule is enabled or not.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.Enabled
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -154,7 +115,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -165,18 +126,18 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-The Log Search Rule resource.
+### -Name
+The name of the rule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180416.ILogSearchRuleResource
-Parameter Sets: Create, CreateViaIdentity
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -186,23 +147,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RuleName
-The name of the rule.
-
-```yaml
-Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -218,12 +163,12 @@ frequency (in minutes) at which rule condition should be evaluated.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -234,12 +179,12 @@ Time window for which data needs to be fetched for query (should be greater than
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -250,7 +195,7 @@ List of Resource referred into query
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -266,7 +211,7 @@ The resource uri over which log search query is to be run.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -283,7 +228,7 @@ Required for action type - AlertingAction
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -299,7 +244,7 @@ Set value to 'ResultCount' .
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.QueryType
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -315,12 +260,12 @@ The Azure subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -330,8 +275,8 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20150401.IResourceTags
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -380,15 +325,30 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180416.ILogSearchRuleResource
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180416.ILogSearchRuleResource
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### ALERTINGACTION <AlertingAction>: The scheduled query rule Alerting Action.
+  - `Severity <AlertSeverity>`: Severity of the alert
+  - `TriggerThreshold <Double>`: Result or count threshold based on which rule should be triggered.
+  - `TriggerThresholdOperator <ConditionalOperator>`: Evaluation operation for rule - 'GreaterThan' or 'LessThan.
+  - `OdataType <String>`: Specifies the action. Supported values - AlertingAction, LogToMetricAction
+  - `[AznActionCustomWebhookPayload <String>]`: Custom payload to be sent for all webhook URI in Azure action group
+  - `[AznActionEmailSubject <String>]`: Custom subject override for all email ids in Azure action group
+  - `[AznActionGroup <String[]>]`: Azure Action Group reference.
+  - `[MetricTriggerMetricColumn <String>]`: Evaluation of metric on a particular column
+  - `[MetricTriggerThreshold <Double?>]`: The threshold of the metric trigger.
+  - `[MetricTriggerThresholdOperator <ConditionalOperator?>]`: Evaluation operation for Metric -'GreaterThan' or 'LessThan' or 'Equal'.
+  - `[MetricTriggerType <MetricTriggerType?>]`: Metric Trigger Type - 'Consecutive' or 'Total'
+  - `[ThrottlingInMin <Int32?>]`: time (in minutes) for which Alerts should be throttled or suppressed.
 
 ## RELATED LINKS
 

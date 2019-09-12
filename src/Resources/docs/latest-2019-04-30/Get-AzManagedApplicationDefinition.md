@@ -19,7 +19,7 @@ Get-AzManagedApplicationDefinition -Id <String> [-DefaultProfile <PSObject>] [-P
 
 ### Get
 ```
-Get-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Get-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> [-DefaultPr
 
 ### List
 ```
-Get-AzManagedApplicationDefinition -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzManagedApplicationDefinition -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -173,9 +173,9 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

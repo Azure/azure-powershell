@@ -14,19 +14,19 @@ Creates or updates a resource group.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzResourceGroup -Name <String> -SubscriptionId <String> -Location <String> [-DefaultProfile <PSObject>]
+Set-AzResourceGroup -Name <String> -Location <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-ManagedBy <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzResourceGroup -Name <String> -SubscriptionId <String> -Parameter <IResourceGroup>
+Set-AzResourceGroup -Name <String> -Parameter <IResourceGroup> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateById
 ```
-Set-AzResourceGroup -Id <String> -SubscriptionId <String> -Location <String> [-DefaultProfile <PSObject>]
+Set-AzResourceGroup -Id <String> -Location <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-ManagedBy <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -163,9 +163,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

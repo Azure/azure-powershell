@@ -14,12 +14,13 @@ Get an App Service plan.
 
 ### List (Default)
 ```
-Get-AzAppServicePlan -SubscriptionId <String[]> [-Detailed] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAppServicePlan [-SubscriptionId <String[]>] [-Detailed] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzAppServicePlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzAppServicePlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
@@ -31,7 +32,7 @@ Get-AzAppServicePlan -InputObject <IAppServiceIdentity> [-DefaultProfile <PSObje
 
 ### List1
 ```
-Get-AzAppServicePlan -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzAppServicePlan -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -169,9 +170,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

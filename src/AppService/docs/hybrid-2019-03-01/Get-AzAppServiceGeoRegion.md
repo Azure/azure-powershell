@@ -13,7 +13,7 @@ Get a list of available geographical regions.
 ## SYNTAX
 
 ```
-Get-AzAppServiceGeoRegion -SubscriptionId <String[]> [-LinuxWorkersEnabled] [-Sku <SkuName>]
+Get-AzAppServiceGeoRegion [-SubscriptionId <String[]>] [-LinuxWorkersEnabled] [-Sku <SkuName>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -100,9 +100,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

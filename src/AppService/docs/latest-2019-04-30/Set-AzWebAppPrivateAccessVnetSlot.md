@@ -15,14 +15,14 @@ Sets data around private site access enablement and authorized Virtual Networks 
 ### PutExpanded (Default)
 ```
 Set-AzWebAppPrivateAccessVnetSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> [-Enabled] [-Kind <String>] [-VirtualNetwork <IPrivateAccessVirtualNetwork[]>]
+ [-SubscriptionId <String>] [-Enabled] [-Kind <String>] [-VirtualNetwork <IPrivateAccessVirtualNetwork[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Put
 ```
 Set-AzWebAppPrivateAccessVnetSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> -Access <IPrivateAccess> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -Access <IPrivateAccess> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -174,9 +174,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

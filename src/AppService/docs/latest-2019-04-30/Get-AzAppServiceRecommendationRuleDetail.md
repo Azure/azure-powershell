@@ -15,14 +15,14 @@ Get a recommendation rule for an app.
 ### Get (Default)
 ```
 Get-AzAppServiceRecommendationRuleDetail -HostingEnvironmentName <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String[]> [-RecommendationId <String>] [-UpdateSeen]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-RecommendationId <String>] [-UpdateSeen]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
 Get-AzAppServiceRecommendationRuleDetail -Name <String> -ResourceGroupName <String> -SiteName <String>
- -SubscriptionId <String[]> [-RecommendationId <String>] [-UpdateSeen] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-RecommendationId <String>] [-UpdateSeen] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -187,9 +187,9 @@ Type: System.String[]
 Parameter Sets: Get, Get1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

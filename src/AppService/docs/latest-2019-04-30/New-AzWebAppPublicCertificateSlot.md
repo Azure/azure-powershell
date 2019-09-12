@@ -15,7 +15,7 @@ Creates a hostname binding for an app.
 ### CreateExpanded (Default)
 ```
 New-AzWebAppPublicCertificateSlot -Name <String> -PublicCertificateName <String> -ResourceGroupName <String>
- -Slot <String> -SubscriptionId <String> [-BlobInputFile <String>] [-Kind <String>]
+ -Slot <String> [-SubscriptionId <String>] [-BlobInputFile <String>] [-Kind <String>]
  [-PublicCertificateLocation <PublicCertificateLocation>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -23,8 +23,8 @@ New-AzWebAppPublicCertificateSlot -Name <String> -PublicCertificateName <String>
 ### Create
 ```
 New-AzWebAppPublicCertificateSlot -Name <String> -PublicCertificateName <String> -ResourceGroupName <String>
- -Slot <String> -SubscriptionId <String> -PublicCertificate <IPublicCertificate> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Slot <String> -PublicCertificate <IPublicCertificate> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -238,9 +238,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

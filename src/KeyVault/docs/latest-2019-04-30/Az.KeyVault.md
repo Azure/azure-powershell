@@ -11,6 +11,10 @@ Locale: en-US
 Microsoft Azure PowerShell: KeyVault cmdlets
 
 ## Az.KeyVault Cmdlets
+### [Add-AzKeyVaultCertificateContact](Add-AzKeyVaultCertificateContact.md)
+Sets the certificate contacts for the specified key vault.
+This operation requires the certificates/managecontacts permission.
+
 ### [Backup-AzKeyVaultCertificate](Backup-AzKeyVaultCertificate.md)
 Requests that a backup of the specified certificate be downloaded to the client.
 All versions of the certificate will be downloaded.
@@ -98,22 +102,6 @@ This operation requires the certificates/import permission.
 The import key operation may be used to import any key type into an Azure Key Vault.
 If the named key already exists, Azure Key Vault creates a new version of the key.
 This operation requires the keys/import permission.
-
-### [Invoke-AzKeyVaultSignKey](Invoke-AzKeyVaultSignKey.md)
-The SIGN operation is applicable to asymmetric and symmetric keys stored in Azure Key Vault since this operation uses the private portion of the key.
-This operation requires the keys/sign permission.
-
-### [Invoke-AzKeyVaultUnwrapKey](Invoke-AzKeyVaultUnwrapKey.md)
-The UNWRAP operation supports decryption of a symmetric key using the target key encryption key.
-This operation is the reverse of the WRAP operation.
-The UNWRAP operation applies to asymmetric and symmetric keys stored in Azure Key Vault since it uses the private portion of the key.
-This operation requires the keys/unwrapKey permission.
-
-### [Invoke-AzKeyVaultWrapKey](Invoke-AzKeyVaultWrapKey.md)
-The WRAP operation supports encryption of a symmetric key using a key encryption key that has previously been stored in an Azure Key Vault.
-The WRAP operation is only strictly necessary for symmetric keys stored in Azure Key Vault since protection with an asymmetric key can be performed using the public portion of the key.
-This operation is supported for asymmetric keys as a convenience for callers that have a key-reference but do not have access to the public key material.
-This operation requires the keys/wrapKey permission.
 
 ### [Merge-AzKeyVaultCertificate](Merge-AzKeyVaultCertificate.md)
 The MergeCertificate operation performs the merging of a certificate or certificate chain with a key pair currently available in the service.
@@ -204,15 +192,8 @@ This operation requires the secrets/restore permission.
 Restores a backed up storage account to a vault.
 This operation requires the storage/restore permission.
 
-### [Set-AzKeyVault](Set-AzKeyVault.md)
-Create or update a key vault in the specified subscription.
-
 ### [Set-AzKeyVaultAccessPolicy](Set-AzKeyVaultAccessPolicy.md)
 Update access policies in a key vault in the specified subscription.
-
-### [Set-AzKeyVaultCertificateContact](Set-AzKeyVaultCertificateContact.md)
-Sets the certificate contacts for the specified key vault.
-This operation requires the certificates/managecontacts permission.
 
 ### [Set-AzKeyVaultCertificateIssuer](Set-AzKeyVaultCertificateIssuer.md)
 The SetCertificateIssuer operation adds or updates the specified certificate issuer.
@@ -250,6 +231,9 @@ It recovers the deleted key back to its latest version under /keys.
 An attempt to recover an non-deleted key will return an error.
 Consider this the inverse of the delete operation on soft-delete enabled vaults.
 This operation requires the keys/recover permission.
+
+### [Undo-AzKeyVaultRemoval](Undo-AzKeyVaultRemoval.md)
+Create or update a key vault in the specified subscription.
 
 ### [Undo-AzKeyVaultSecretRemoval](Undo-AzKeyVaultSecretRemoval.md)
 Recovers the deleted secret in the specified vault.

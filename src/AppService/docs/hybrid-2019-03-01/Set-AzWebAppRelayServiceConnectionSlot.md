@@ -15,7 +15,7 @@ Creates a new hybrid connection configuration (PUT), or updates an existing one 
 ### UpdateExpanded (Default)
 ```
 Set-AzWebAppRelayServiceConnectionSlot -EntityName <String> -Name <String> -ResourceGroupName <String>
- -Slot <String> -SubscriptionId <String> [-BiztalkUri <String>] [-EntityConnectionString <String>]
+ -Slot <String> [-SubscriptionId <String>] [-BiztalkUri <String>] [-EntityConnectionString <String>]
  [-Hostname <String>] [-Kind <String>] [-Port <Int32>] [-PropertiesEntityName <String>]
  [-ResourceConnectionString <String>] [-ResourceType <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -24,7 +24,7 @@ Set-AzWebAppRelayServiceConnectionSlot -EntityName <String> -Name <String> -Reso
 ### Update
 ```
 Set-AzWebAppRelayServiceConnectionSlot -EntityName <String> -Name <String> -ResourceGroupName <String>
- -Slot <String> -SubscriptionId <String> -ConnectionEnvelope <IRelayServiceConnectionEntity>
+ -Slot <String> -ConnectionEnvelope <IRelayServiceConnectionEntity> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -289,9 +289,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

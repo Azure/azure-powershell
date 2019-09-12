@@ -14,7 +14,7 @@ Fetch a short lived token that can be exchanged for a master key.
 
 ### Get (Default)
 ```
-Get-AzWebAppFunctionAdminToken -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzWebAppFunctionAdminToken -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -124,9 +124,9 @@ Type: System.String[]
 Parameter Sets: Get
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

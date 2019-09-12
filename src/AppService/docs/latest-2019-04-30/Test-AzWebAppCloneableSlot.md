@@ -14,8 +14,8 @@ Shows whether an app can be cloned to another resource group or subscription.
 
 ### Is (Default)
 ```
-Test-AzWebAppCloneableSlot -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzWebAppCloneableSlot -Name <String> -ResourceGroupName <String> -Slot <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### IsViaIdentity
@@ -141,9 +141,9 @@ Type: System.String
 Parameter Sets: Is
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,13 +14,13 @@ Exports the template used for specified deployment.
 
 ### Export (Default)
 ```
-Export-AzDeploymentTemplate -DeploymentName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
+Export-AzDeploymentTemplate -DeploymentName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Export1
 ```
-Export-AzDeploymentTemplate -DeploymentName <String> -ResourceGroupName <String> -SubscriptionId <String>
+Export-AzDeploymentTemplate -DeploymentName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -135,9 +135,9 @@ Type: System.String
 Parameter Sets: Export, Export1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
