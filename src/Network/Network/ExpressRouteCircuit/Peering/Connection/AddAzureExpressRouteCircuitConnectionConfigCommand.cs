@@ -83,9 +83,9 @@ namespace Microsoft.Azure.Commands.Network
             if (this.PeerAddressType == IPv6)
             {
                 // Create new PSExpressRouteIPv6AddressPrefix()
-                var expressRouteIPv6AddressPrefix = new PSExpressRouteConnectionPropertiesIPv6Prefix();
+                var expressRouteIPv6AddressPrefix = new PSExpressRouteCircuitConnectionIPv6ConnectionConfig();
                 expressRouteIPv6AddressPrefix.AddressPrefix = AddressPrefix;
-                circuitconnection.IPv6AddressPrefixProperties = expressRouteIPv6AddressPrefix;
+                circuitconnection.IPv6CircuitConnectionConfig = expressRouteIPv6AddressPrefix;
             }
             else
             {
