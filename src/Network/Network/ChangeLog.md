@@ -29,6 +29,7 @@
     - Added property 'PrivateEndpoint' as type of PSResourceId to PSNetworkInterface
     - Added property 'PrivateLinkConnectionProperties' as type of PSIpConfigurationConnectivityInformation to PSNetworkInterfaceIPConfiguration
     - Added new model class PSIpConfigurationConnectivityInformation
+* Added new ApplicationRuleProtocolType "mssql" for Azure Firewall resource
 * MultiLink support in Virtual WAN
     - New cmdlets
         - New-AzVpnSiteLink
