@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Sql.Common;
 using System;
 using System.Globalization;
 using System.Linq;
-using System.Net.Mail;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Sql.Services
@@ -103,20 +102,12 @@ namespace Microsoft.Azure.Commands.Sql.Services
             {
                 return true;
             }
-            return !emailAddresses.Any(e => !IsValidEmailAddress(e));
-        }
 
-        private static bool IsValidEmailAddress(string mailAddress)
-        {
-            try
-            {
-                new MailAddress(mailAddress);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            var emailRegex =
+                new Regex(string.Format("{0}{1}",
+                    @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))",
+                    @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$"));
+            return !emailAddresses.Any(e => !emailRegex.IsMatch(e.ToLower()));
         }
     }
 }
