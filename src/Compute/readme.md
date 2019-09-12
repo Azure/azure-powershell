@@ -871,11 +871,6 @@ directive:
   - from: Az.Compute.psm1
     where: $
     transform: >
-        return $.replace('if($hasAdequateVersion)', 'if(-not $hasAdequateVersion)');
-# Update psm1 for module load
-  - from: Az.Compute.psm1
-    where: $
-    transform: >
         return $.replace('\$null = Import-Module -Name \(Join-Path $PSScriptRoot \'\./bin/Az\.Compute\.private\.dll\'\)', '');
 #
   - from: Az.Compute.psm1
@@ -912,35 +907,35 @@ directive:
   - from: generate-help.ps1
     where: $
     transform: >
-        return $.replace('# Load DLL to use build-time cmdlets', '$localAccountsPath = Join-Path $PSScriptRoot \'generated\modules\'\n# Load DLL to use build-time cmdlets');
+        return $.replace('# Load DLL to use build-time cmdlets', '  $localAccountsPath = Join-Path $PSScriptRoot \'generated\\modules\'\n# Load DLL to use build-time cmdlets');
 # next line
   - from: generate-help.ps1
     where: $
     transform: >
-        return $.replace('# Load DLL to use build-time cmdlets', 'if(Test-Path -Path $localAccountsPath) {\n# Load DLL to use build-time cmdlets');
+        return $.replace('# Load DLL to use build-time cmdlets', '  if(Test-Path -Path $localAccountsPath) {\n# Load DLL to use build-time cmdlets');
 # next line
   - from: generate-help.ps1
     where: $
     transform: >
-        return $.replace('# Load DLL to use build-time cmdlets', '$localAccounts = Get-ChildItem -Path $localAccountsPath -Recurse -Include \'Az.Accounts.psd1\' | Select-Object -Last 1\n# Load DLL to use build-time cmdlets');
+        return $.replace('# Load DLL to use build-time cmdlets', '    $localAccounts = Get-ChildItem -Path $localAccountsPath -Recurse -Include \'Az.Accounts.psd1\' | Select-Object -Last 1\n# Load DLL to use build-time cmdlets');
 # next line
   - from: generate-help.ps1
     where: $
     transform: >
-        return $.replace('# Load DLL to use build-time cmdlets', 'if($localAccounts) {\n              $accountsModule = Import-Module -Name ($localAccounts.FullName) -Scope Global -PassThru\n            }\n          }\n# Load DLL to use build-time cmdlets');
+        return $.replace('# Load DLL to use build-time cmdlets', '    if($localAccounts) {\n      $accountsModule = Import-Module -Name ($localAccounts.FullName) -Scope Global -PassThru\n    }\n  }\n# Load DLL to use build-time cmdlets');
 # next line
   - from: generate-help.ps1
     where: $
     transform: >
-        return $.replace('# Load DLL to use build-time cmdlets', 'if(-not $accountsModule) {\n# Load DLL to use build-time cmdlets');
+        return $.replace('# Load DLL to use build-time cmdlets', '  if(-not $accountsModule) {\n# Load DLL to use build-time cmdlets');
 # next line
   - from: generate-help.ps1
     where: $
     transform: >
-        return $.replace('# Load DLL to use build-time cmdlets', '$hasAdequateVersion = (Get-Module -Name $accountsName -ListAvailable | Where-Object { $_.Version -ge [System.Version]\'1.6.0\' } | Measure-Object).Count -gt 0\n# Load DLL to use build-time cmdlets');
+        return $.replace('# Load DLL to use build-time cmdlets', '    $hasAdequateVersion = (Get-Module -Name $accountsName -ListAvailable | Where-Object { $_.Version -ge [System.Version]\'1.6.0\' } | Measure-Object).Count -gt 0\n# Load DLL to use build-time cmdlets');
 # next line
   - from: generate-help.ps1
     where: $
     transform: >
-        return $.replace('# Load DLL to use build-time cmdlets', 'if(-not $hasAdequateVersion) {\n              $accountsModule = Import-Module -Name $accountsName -MinimumVersion 1.6.0 -Scope Global -PassThru\n            }\n          }\n        }\n# Load DLL to use build-time cmdlets');
+        return $.replace('# Load DLL to use build-time cmdlets', '    if($hasAdequateVersion) {\n      $accountsModule = Import-Module -Name $accountsName -MinimumVersion 1.6.0 -Scope Global -PassThru\n    }\n  }\n}\n# Load DLL to use build-time cmdlets');
 ```
