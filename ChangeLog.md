@@ -84,7 +84,6 @@
   - Add support for 'copy.count = 0' for variables, resources and properties
   - Resources with 'condition = false' or 'copy.count = 0' will be deleted in complete mode
 * Added an example of assigning policy at the subscription level
-* Added breaking change notice in the `AzDeployment` cmdlets
 
 #### Az.ServiceBus
 * Fixed typo `VirtualNetworkRule` parameter in **Set-AzServiceBusNetworkRuleSet** Fix for issue #9658 : Typo 
