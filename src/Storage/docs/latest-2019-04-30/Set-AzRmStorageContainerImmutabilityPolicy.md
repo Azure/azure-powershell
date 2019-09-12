@@ -16,15 +16,15 @@ ETag in If-Match is honored if given but not required for this operation.
 ### Update (Default)
 ```
 Set-AzRmStorageContainerImmutabilityPolicy -AccountName <String> -ContainerName <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-Parameter <IImmutabilityPolicy>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-ExtendPolicy]
+ [-Parameter <IImmutabilityPolicy>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
 Set-AzRmStorageContainerImmutabilityPolicy -AccountName <String> -ContainerName <String>
- -ResourceGroupName <String> -SubscriptionId <String> -ImmutabilityPeriodSinceCreationInDay <Int32>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -ImmutabilityPeriod <Int32> [-SubscriptionId <String>] [-IfMatch <String>]
+ [-ExtendPolicy] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,7 +104,42 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ImmutabilityPeriodSinceCreationInDay
+### -ExtendPolicy
+Indicate ExtendPolicy to Extend an existing ImmutabilityPolicy.
+After ImmutabilityPolicy is locked, it can only be extend.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -IfMatch
+The entity state (ETag) version of the immutability policy to update.
+A value of "*" can be used to apply the operation only if the immutability policy already exists.
+If omitted, this operation will always be applied.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ImmutabilityPeriod
 The immutability period for the blobs in the container since the policy creation, in days.
 
 ```yaml
@@ -114,7 +149,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -122,6 +157,7 @@ Dynamic: False
 
 ### -Parameter
 The ImmutabilityPolicy property of a blob container, including Id, resource name, resource type, Etag.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20180201.IImmutabilityPolicy
@@ -161,9 +197,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -214,6 +250,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20180201.IImmutabilityPolicy
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IImmutabilityPolicy>: The ImmutabilityPolicy property of a blob container, including Id, resource name, resource type, Etag.
+  - `ImmutabilityPeriodSinceCreationInDay <Int32>`: The immutability period for the blobs in the container since the policy creation, in days.
+  - `[ETag <String>]`: MISSING DESCRIPTION 03
 
 ## RELATED LINKS
 

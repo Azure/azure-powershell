@@ -8,53 +8,39 @@ schema: 2.0.0
 # New-AzStorageAccount
 
 ## SYNOPSIS
-Asynchronously creates a new storage account with the specified parameters.
+Creates a new storage account with the specified parameters.
 If an account is already created and a subsequent create request is issued with different properties, the account properties will be updated.
 If an account is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
 
 ## SYNTAX
 
-### Create (Default)
+### CreateExpandedStorageEncryption (Default)
 ```
-New-AzStorageAccount -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IStorageAccountCreateParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzStorageAccount -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -CustomDomainName <String> -EncryptionKeySource <KeySource> -Kind <Kind> -Location <String>
- -NetworkAclsDefaultAction <DefaultAction> -SkuName <SkuName> [-AccessTier <AccessTier>] [-BlobEnabled]
- [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-FileEnabled] [-IsHnsEnabled]
- [-KeyvaultpropertyKeyName <String>] [-KeyvaultpropertyKeyVaultUri <String>]
- [-KeyvaultpropertyKeyVersion <String>] [-NetworkAclsBypass <Bypass>] [-NetworkAclsIPRule <IIPRule[]>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
- [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <IStorageAccountCreateParametersTags>]
- [-UseSubDomain] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzStorageAccount -InputObject <IStorageIdentity> -CustomDomainName <String>
- -EncryptionKeySource <KeySource> -Kind <Kind> -Location <String> -NetworkAclsDefaultAction <DefaultAction>
- -SkuName <SkuName> [-AccessTier <AccessTier>] [-BlobEnabled] [-EnableAzureFilesAadIntegration]
- [-EnableHttpsTrafficOnly] [-FileEnabled] [-IsHnsEnabled] [-KeyvaultpropertyKeyName <String>]
- [-KeyvaultpropertyKeyVaultUri <String>] [-KeyvaultpropertyKeyVersion <String>] [-NetworkAclsBypass <Bypass>]
- [-NetworkAclsIPRule <IIPRule[]>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled]
- [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-TableEnabled]
- [-Tag <IStorageAccountCreateParametersTags>] [-UseSubDomain] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzStorageAccount -InputObject <IStorageIdentity> [-Parameter <IStorageAccountCreateParameters>]
+New-AzStorageAccount -Name <String> -ResourceGroupName <String> -Kind <Kind> -Location <String>
+ -SkuName <SkuName> [-SubscriptionId <String>] [-AccessTier <AccessTier>] [-AssignIdentity]
+ [-CustomDomainName <String>] [-EnableAzureFilesAadIntegration] [-EnableHierarchicalNamespace]
+ [-EnableHttpsTrafficOnly] [-EncryptBlobService] [-EncryptFileService] [-EncryptQueueService]
+ [-EncryptTableService] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetDefaultAction <DefaultAction>]
+ [-NetworkRuleSetIPRule <IIPRule[]>] [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-StorageEncryption] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateExpandedKeyVaultEncryption
+```
+New-AzStorageAccount -Name <String> -ResourceGroupName <String> -Kind <Kind> -Location <String>
+ -SkuName <SkuName> [-SubscriptionId <String>] [-AccessTier <AccessTier>] [-AssignIdentity]
+ [-CustomDomainName <String>] [-EnableAzureFilesAadIntegration] [-EnableHierarchicalNamespace]
+ [-EnableHttpsTrafficOnly] [-EncryptBlobService] [-EncryptFileService] [-EncryptQueueService]
+ [-EncryptTableService] [-KeyName <String>] [-KeyVaultEncryption] [-KeyVaultUri <String>]
+ [-KeyVersion <String>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetDefaultAction <DefaultAction>]
+ [-NetworkRuleSetIPRule <IIPRule[]>] [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Asynchronously creates a new storage account with the specified parameters.
+Creates a new storage account with the specified parameters.
 If an account is already created and a subsequent create request is issued with different properties, the account properties will be updated.
 If an account is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
 
@@ -86,27 +72,10 @@ The access tier used for billing.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.AccessTier
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -AccountName
-The name of the storage account within the specified resource group.
-Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-
-```yaml
-Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -124,23 +93,23 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BlobEnabled
-A boolean indicating whether or not the service encrypts the data as it is stored.
+### -AssignIdentity
+Specify IdentityType as 'SystemAssigned'
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -152,10 +121,10 @@ Name is the CNAME source.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -184,12 +153,28 @@ Enables Azure Files AAD Integration for SMB if sets to true.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EnableHierarchicalNamespace
+Account HierarchicalNamespace enabled if sets to true.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -200,27 +185,10 @@ Allows https traffic only to storage service if sets to true.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -EncryptionKeySource
-The encryption keySource (provider).
-Possible values (case-insensitive): Microsoft.Storage, Microsoft.Keyvault
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.KeySource
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -228,60 +196,76 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -FileEnabled
+### -EncryptBlobService
 A boolean indicating whether or not the service encrypts the data as it is stored.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -IsHnsEnabled
-Account HierarchicalNamespace enabled if sets to true.
+### -EncryptFileService
+A boolean indicating whether or not the service encrypts the data as it is stored.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -KeyvaultpropertyKeyName
+### -EncryptQueueService
+A boolean indicating whether or not the service encrypts the data as it is stored.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EncryptTableService
+A boolean indicating whether or not the service encrypts the data as it is stored.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -KeyName
 The name of KeyVault key.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpandedKeyVaultEncryption
 Aliases:
 
 Required: False
@@ -292,12 +276,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -KeyvaultpropertyKeyVaultUri
+### -KeyVaultEncryption
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpandedKeyVaultEncryption
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -KeyVaultUri
 The Uri of KeyVault.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpandedKeyVaultEncryption
 Aliases:
 
 Required: False
@@ -308,12 +308,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -KeyvaultpropertyKeyVersion
+### -KeyVersion
 The version of KeyVault key.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpandedKeyVaultEncryption
 Aliases:
 
 Required: False
@@ -330,7 +330,7 @@ Indicates the type of storage account.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.Kind
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -350,7 +350,7 @@ The geo region of a resource cannot be changed once it is created, but if an ide
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -361,13 +361,30 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkAclsBypass
+### -Name
+The name of the storage account within the specified resource group.
+Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NetworkRuleSetBypass
 Specifies whether traffic is bypassed for Logging/Metrics/AzureServices.
 Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.Bypass
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -378,15 +395,15 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkAclsDefaultAction
+### -NetworkRuleSetDefaultAction
 Specifies the default action of allow or deny when no other rules match.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.DefaultAction
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -394,12 +411,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkAclsIPRule
+### -NetworkRuleSetIPRule
 Sets the IP ACL rules
+To construct, see NOTES section for NETWORKRULESETIPRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IIPRule[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -410,49 +428,18 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkAclsVirtualNetworkRule
+### -NetworkRuleSetVirtualNetworkRule
 Sets the virtual network rules
+To construct, see NOTES section for NETWORKRULESETVIRTUALNETWORKRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IVirtualNetworkRule[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-The parameters used when creating a storage account.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IStorageAccountCreateParameters
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -QueueEnabled
-A boolean indicating whether or not the service encrypts the data as it is stored.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -464,7 +451,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -480,7 +467,7 @@ Indicates the type of storage account.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.Kind
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -498,7 +485,7 @@ Note that in older versions, SKU name was called accountType.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.SkuName
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -512,10 +499,27 @@ Dynamic: False
 ### -SkuRestriction
 The restrictions because of which SKU cannot be used.
 This is empty if there are no restrictions.
+To construct, see NOTES section for SKURESTRICTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IRestriction[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -StorageEncryption
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpandedStorageEncryption
 Aliases:
 
 Required: False
@@ -531,28 +535,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -TableEnabled
-A boolean indicating whether or not the service encrypts the data as it is stored.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -565,31 +553,13 @@ A maximum of 15 tags can be provided for a resource.
 Each tag must have a key with a length no greater than 128 characters and a value with a length no greater than 256 characters.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IStorageAccountCreateParametersTags
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -UseSubDomain
-Indicates whether indirect CName validation is enabled.
-Default value is false.
-This should only be set on updates.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -633,15 +603,28 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IStorageAccountCreateParameters
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IStorageAccount
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### NETWORKRULESETIPRULE <IIPRule[]>: Sets the IP ACL rules
+  - `IPAddressOrRange <String>`: Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
+  - `[Action <Action?>]`: The action of IP ACL rule.
+
+#### NETWORKRULESETVIRTUALNETWORKRULE <IVirtualNetworkRule[]>: Sets the virtual network rules
+  - `VirtualNetworkResourceId <String>`: Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
+  - `[Action <Action?>]`: The action of virtual network rule.
+  - `[State <State?>]`: Gets the state of virtual network rule.
+
+#### SKURESTRICTION <IRestriction[]>: The restrictions because of which SKU cannot be used. This is empty if there are no restrictions.
+  - `[ReasonCode <ReasonCode?>]`: The reason for the restriction. As of now this can be "QuotaId" or "NotAvailableForSubscription". Quota Id is set when the SKU has requiredQuotas parameter as the subscription does not belong to that quota. The "NotAvailableForSubscription" is related to capacity at DC.
 
 ## RELATED LINKS
 
