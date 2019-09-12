@@ -36,10 +36,12 @@ This command subscribes the event trigger to the specified external service even
 
 ### Example 1
 ```
-PS C:\> Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName ADF -DataFactoryName WikiADF -Name BlobEnetTrigger1
+PS C:\> Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName ADF -DataFactoryName WikiADF -Name Trigger1
 
-    TriggerName       : BlobEnetTrigger1
-    Status            : Provisioning
+TriggerName Status
+----------- ------
+Trigger1    Provisioning
+
 ```
 
 This command will subscribe BlobEnetTrigger1 trigger to the specified events from the trigger defintion.

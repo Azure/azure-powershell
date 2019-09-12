@@ -37,10 +37,12 @@ This command unsubscribes the event trigger to the specified external service ev
 
 ### Example 1
 ```
-PS C:\> Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName ADF -DataFactoryName WikiADF -Name BlobEnetTrigger1
+PS C:\> Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName ADF -DataFactoryName WikiADF -Name Trigger1
 
-    TriggerName       : BlobEnetTrigger1
-    Status            : Disabled
+TriggerName Status
+----------- ------
+Trigger1    Disabled
+
 ```
 
 This command will unsubscribe BlobEnetTrigger1 trigger to the specified events from the trigger defintion.
