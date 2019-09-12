@@ -49,7 +49,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.",
             ParameterSetName = AccountNameParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -58,7 +57,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Name.",
             ParameterSetName = AccountNameParameterSet)]
         [Alias(AccountNameAlias)]
@@ -68,21 +66,16 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Alias("N", "ShareName")]
         [Parameter(Mandatory = true,
             HelpMessage = "Share Name",
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = AccountObjectParameterSet)]
         [Parameter(Position = 2,
             Mandatory = true,
             HelpMessage = "Share Name",
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = AccountNameParameterSet)]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true,
             HelpMessage = "Storage account object",
             ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = AccountObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSStorageAccount StorageAccount { get; set; }
@@ -100,7 +93,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(Mandatory = true,
             HelpMessage = "Storage Share object",
             ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ShareObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSShare InputObject { get; set; }
