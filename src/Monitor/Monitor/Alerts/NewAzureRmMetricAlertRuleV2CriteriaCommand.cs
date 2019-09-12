@@ -26,7 +26,9 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Create Metric Criteria
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2Criteria", DefaultParameterSetName = StaticThresholdParameterSet), OutputType(typeof(IPSMultiMetricCriteria))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2Criteria", DefaultParameterSetName = StaticThresholdParameterSet), 
+     OutputType(typeof(PSMetricCriteria), ParameterSetName = new[] { StaticThresholdParameterSet }), 
+     OutputType(typeof(PSDynamicMetricCriteria), ParameterSetName = new[] { DynamicThresholdParameterSet})]
     public class NewAzureRmMetricAlertRuleV2CriteriaCommand : MonitorCmdletBase
     {
         const string StaticThresholdParameterSet = "StaticThresholdParameterSet";
@@ -96,15 +98,15 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// Gets or sets the rule Number of violated points
         /// </summary>
         [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = false, HelpMessage = "The minimum number of violations required within the selected lookback time window required to raise an alert")]
-        [Alias("FailingPeriod")]
-        public int NumberOfViolations { get; set; } = 4;
+        [Alias("FailingPeriod", "NumberOfViolations")]
+        public int ViolationCount { get; set; } = 4;
 
         /// <summary>
         /// Gets or sets the rule TotalPeriod
         /// </summary>
         [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = false, HelpMessage = "The Total number of examined points")]
-        [Alias("TotalPeriod")]
-        public int NumberOfExaminedAggregatedPoints { get; set; } = 4;
+        [Alias("TotalPeriod", "NumberOfExaminedAggregatedPoints")]
+        public int ExaminedAggregatedPointCount { get; set; } = 4;
 
         /// <summary>
         /// Gets or set IgnoreDataBefore  parameter
@@ -143,7 +145,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             }
             else
             {
-                DynamicThresholdFailingPeriods failingPeriods = new DynamicThresholdFailingPeriods(this.NumberOfExaminedAggregatedPoints, this.NumberOfViolations);
+                DynamicThresholdFailingPeriods failingPeriods = new DynamicThresholdFailingPeriods(this.ExaminedAggregatedPointCount, this.ViolationCount);
                 DynamicMetricCriteria dynamicMetricCriteria = new DynamicMetricCriteria(name: "metric1",
                     metricName: this.MetricName,
                     operatorProperty: this.Operator,
