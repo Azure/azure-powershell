@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId PeerExpressRouteCircuitPeering { get; set; }
 
         [JsonProperty(Order = 1)]
-        public PSExpressRouteConnectionPropertiesIPv6Prefix IPv6AddressPrefixProperties  { get; set; }
+        public PSExpressRouteCircuitConnectionIPv6ConnectionConfig IPv6CircuitConnectionConfig { get; set; }
 
         [JsonIgnore]
         public string ExpressRouteCircuitPeeringText
@@ -61,6 +61,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string PeerExpressRouteCircuitPeeringText
         {
             get { return JsonConvert.SerializeObject(PeerExpressRouteCircuitPeering, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string IPv6CircuitConnectionConfigText
+        {
+            get { return JsonConvert.SerializeObject(IPv6CircuitConnectionConfig, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
