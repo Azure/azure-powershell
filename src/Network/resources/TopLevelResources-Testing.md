@@ -318,7 +318,7 @@ Body:
 ### localNetworkGateways
 ### natGateways
 
-### networkInterfaces
+### Issues! networkInterfaces
 - Make required: [Name, Subnet (Id in SUBNET)] INSIDE IPConfiguration
 ```powershell
 PS C:\Code\azps-generation\src\Network [Az.Network]> New-AzNetworkInterface -Name nimy -ResourceGroupName rgmy -Location centralus
