@@ -158,16 +158,13 @@ Create or update a proximity placement group.
 Creates or updates a snapshot.
 
 ### [New-AzVM](New-AzVM.md)
-
+The operation to create a Virtual Machine.
 
 ### [New-AzVMExtension](New-AzVMExtension.md)
 The operation to create or update the extension.
 
 ### [New-AzVmss](New-AzVmss.md)
-
-
-### [New-AzVmss](New-AzVmss.md)
-
+The operation to create a Virtual Machine Scale Set.
 
 ### [New-AzVmssExtension](New-AzVmssExtension.md)
 The operation to create or update an extension.

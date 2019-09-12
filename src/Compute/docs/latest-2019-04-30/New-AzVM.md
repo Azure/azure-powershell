@@ -13,14 +13,14 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AzVM -Credential <PSCredential> -Name <String> -SubscriptionId <String> [-AddressPrefix <String>]
- [-AllocationMethod <String>] [-AsJob] [-AvailabilitySetName <String>] [-DataDiskSizeInGb <Int32[]>]
+New-AzVM -Credential <PSCredential> -Name <String> [-AddressPrefix <String>] [-AllocationMethod <String>]
+ [-AsJob] [-AvailabilitySetName <String>] [-DataDiskSizeInGb <Int32[]>]
  [-DefaultProfile <IAzureContextContainer>] [-DomainNameLabel <String>] [-EnableUltraSSD] [-Image <ImageName>]
- [-Location <String>] [-OpenPorts <Int32[]>] [-ProximityPlacementGroup <String>]
+ [-Location <String>] [-OpenPort <Int32[]>] [-ProximityPlacementGroup <String>]
  [-PublicIpAddressName <String>] [-ResourceGroupName <String>] [-SecurityGroupName <String>] [-Size <String>]
- [-SubnetAddressPrefix <String>] [-SubnetName <String>] [-SystemAssignedIdentity] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String>] [-VirtualNetworkName <String>] [-Zone <String[]>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubnetAddressPrefix <String>] [-SubnetName <String>] [-SubscriptionId <String>] [-SystemAssignedIdentity]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String>] [-VirtualNetworkName <String>] [-Zone <String[]>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -240,7 +240,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -OpenPorts
+### -OpenPort
 
 
 ```yaml
@@ -376,9 +376,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

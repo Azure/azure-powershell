@@ -25,8 +25,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Strategies
 {
     public class AzureRMAsyncCmdlet : AzureRMCmdlet, IStrategiesCmdletAdapter
     {
-        //[ArgumentCompleter(typeof(SubscriptionArgumentCompleter))]
-        [Parameter(Mandatory = true)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.DefaultInfo(
+        Name = @"",
+        Description = @"",
+        Script = @"(Get-AzContext).Subscription.Id")]
+        [Parameter(Mandatory = false)]
         public string SubscriptionId { get; set; }
 
         public string CorrelationId { get; } = Guid.NewGuid().ToString();

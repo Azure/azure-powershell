@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false)]
-        //[LocationCompleter("Microsoft.Compute/virtualMachines")]
+        [LocationCompleter("Microsoft.Compute/virtualMachines")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Compute
         public string SecurityGroupName { get; set; }
 
         [Parameter(Mandatory = false)]
-        public int[] OpenPorts { get; set; }
+        public int[] OpenPort { get; set; }
 
         [Parameter(Mandatory = false)]
         [System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.ImageName))]
@@ -192,12 +192,15 @@ namespace Microsoft.Azure.Commands.Compute
                                       .FirstOrDefault();
                         if (vmResourceType != null)
                         {
-                            var availableLocations = vmResourceType.Locations.Select(a => a.ToLower().Replace(" ", ""));
+                            var availableLocations = vmResourceType.Locations.Select(a => a.ToLower().Replace(" ", "").Replace("-", ""));
                             if (availableLocations.Any(a => a.Equals("eastus")))
                             {
                                 _defaultLocation = "eastus";
                             }
-                            _defaultLocation = availableLocations.FirstOrDefault() ?? "eastus";
+                            else
+                            {
+                                _defaultLocation = availableLocations.FirstOrDefault() ?? "eastus";
+                            }
                         }
                         else
                         {
@@ -231,11 +234,11 @@ namespace Microsoft.Azure.Commands.Compute
                     sku: PublicIPAddressStrategy.Sku.Basic,
                     zones: _cmdlet.Zone);
 
-                _cmdlet.OpenPorts = ImageAndOsType.UpdatePorts(_cmdlet.OpenPorts);
+                _cmdlet.OpenPort = ImageAndOsType.UpdatePorts(_cmdlet.OpenPort);
 
                 var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(
                     name: _cmdlet.SecurityGroupName,
-                    openPorts: _cmdlet.OpenPorts);
+                    openPorts: _cmdlet.OpenPort);
 
                 bool enableAcceleratedNetwork = Utils.DoesConfigSupportAcceleratedNetwork(_client,
                     ImageAndOsType, _cmdlet.Size, Location, DefaultLocation);

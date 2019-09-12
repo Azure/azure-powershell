@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = SimpleParameterSet,
             Mandatory = false)]
-        //[ResourceGroupCompleter]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public int[] BackendPort { get; set; } = new[] { 80 };
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        //[LocationCompleter("Microsoft.Compute/virtualMachineScaleSets")]
+        [LocationCompleter("Microsoft.Compute/virtualMachineScaleSets")]
         public string Location { get; set; }
 
         // this corresponds to VmSku in the Azure CLI
