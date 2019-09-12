@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
         [ValidateNotNullOrEmpty]
         public IVirtualNetwork VirtualNetwork { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Reference to the remote virtual network.", ParameterSetName = RemoteIdParameterSetName)]
+        [Parameter(Mandatory = true, HelpMessage = "The resource id of the virtual network in another tenant.", ParameterSetName = RemoteIdParameterSetName)]
         public string RemoteVirtualNetworkId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Switch parameter that represents if the virtual network link is registration enabled or not.")]

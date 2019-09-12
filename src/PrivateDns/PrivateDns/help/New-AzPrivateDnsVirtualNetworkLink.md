@@ -112,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -RemoteVirtualNetworkId
-Reference to the remote virtual network.
+The resource id of the virtual network in another tenant.
 
 ```yaml
 Type: System.String
