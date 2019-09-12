@@ -223,5 +223,19 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-RemoveAuditOnDatabase");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveDatabaseAuditingSettingsMultipleDiagnosticSettings()
+        {
+            RunPowerShellTest("Test-RemoveDatabaseAuditingSettingsMultipleDiagnosticSettings");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveServerAuditingSettingsMultipleDiagnosticSettings()
+        {
+            RunPowerShellTest("Test-RemoveServerAuditingSettingsMultipleDiagnosticSettings");
+        }
     }
 }

@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll","Microsoft.Azure.Commands.Insights.Metrics.GetAzureRmMetricCommand","Get-AzMetric","0","3030","The generic type for 'property Count' has been changed from 'System.Nullable1[System.Int64]' to 'System.Nullable1[System.Double]'. ","Change the generic type for 'property Count' back to 'System.Nullable`1[System.Int64]'."

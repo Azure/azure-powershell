@@ -19,11 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.1
 * Added Error Handling in all cmdlets
 * Fixed few typos
 * Enable Set-AzHealthcareApisService to allow updating tags.
+* Fixed bug around inaccurate kind
 
 ## Version 0.1.0
-
 * Added following CRUD operation cmdlets to HealthcareApis service. 
   * New-AzHealthcareApisService, Set-AzHealthcareApisService, Get-AzHealthcareApisService, Remove-AzHealthcareApisService
