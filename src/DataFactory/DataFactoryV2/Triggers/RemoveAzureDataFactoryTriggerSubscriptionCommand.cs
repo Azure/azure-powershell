@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             ByResourceId();
             ByInputObject(InputObject);
 
-            if (ShouldProcess(Name))
+            if (ShouldProcess(Name, Constants.ActionDescriptionForRemoveEventSubscription))
             {
                 DataFactoryClient.UnsubscribeFromTriggerEvents(ResourceGroupName, DataFactoryName, Name);
             }
