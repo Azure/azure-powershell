@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update example in reference documentation for `Get-AzSqlElasticPool`
+* Added vCore example to creating an elastic pool (New-AzSqlElasticPool).
+* Enabled removal of server/database auditing settings when multiple diagnostic settings that enable audit category exist.
+
+## Version 1.14.1
 * Update documentation of old Auditing cmdlets.
 
 ## Version 1.14.0

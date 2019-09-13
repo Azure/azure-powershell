@@ -149,7 +149,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
              ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix)]
         public string MD5AuthenticationKey { get; set; }
 
-
         /// <summary>
         ///     The inherited Execute function.
         /// </summary>
@@ -169,25 +168,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         /// </exception>
         private PSDirectConnection CreateDirectPeering()
         {
-
             var peeringRequest = new PSDirectConnection
-                                     {
-                                         BandwidthInMbps = this.BandwidthInMbps,
-                                         PeeringDBFacilityId = this.PeeringDBFacilityId,
-                                         ConnectionIdentifier = Guid.NewGuid().ToString(),
-                                         BgpSession = new PSBgpSession
-                                                          {
-                                                              MaxPrefixesAdvertisedV4 = !string.IsNullOrEmpty(this.SessionPrefixV4) ? (this.MaxPrefixesAdvertisedIPv4 ?? 20000) : (int?)null,
-                                                              MaxPrefixesAdvertisedV6 = !string.IsNullOrEmpty(this.SessionPrefixV6) ? (this.MaxPrefixesAdvertisedIPv6 ?? 2000) : (int?)null,
-                                             SessionPrefixV4 =
+            {
+                BandwidthInMbps = this.BandwidthInMbps,
+                PeeringDBFacilityId = this.PeeringDBFacilityId,
+                ConnectionIdentifier = Guid.NewGuid().ToString(),
+                BgpSession = new PSBgpSession
+                {
+                    MaxPrefixesAdvertisedV4 = !string.IsNullOrEmpty(this.SessionPrefixV4) ? (this.MaxPrefixesAdvertisedIPv4 ?? 20000) : (int?)null,
+                    MaxPrefixesAdvertisedV6 = !string.IsNullOrEmpty(this.SessionPrefixV6) ? (this.MaxPrefixesAdvertisedIPv6 ?? 2000) : (int?)null,
+                    SessionPrefixV4 =
                                                                   this.ValidatePrefix(
                                                                       this.SessionPrefixV4?.Trim()),
-                                                              SessionPrefixV6 =
+                    SessionPrefixV6 =
                                                                   this.ValidatePrefix(
                                                                       this.SessionPrefixV6?.Trim()),
-                                                              Md5AuthenticationKey = this.MD5AuthenticationKey
-                                                          }
-                                     };
+                    Md5AuthenticationKey = this.MD5AuthenticationKey
+                }
+            };
 
             if (this.IsValidConnection(peeringRequest)) return peeringRequest;
             throw new PSArgumentException(string.Format(Resources.Error_InvalidConnection));

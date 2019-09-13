@@ -240,7 +240,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
                     if (parameters.Contains("AppServicePlan"))
                     {
-                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, AppServicePlan);
+                        WebApp.AzureStoragePath = null; // the API to update site Object doesn't have the AzureStorage Path property
+                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, AppServicePlan, WebApp);
                     }
 
                     break;
