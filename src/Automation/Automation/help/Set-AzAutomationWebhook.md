@@ -67,7 +67,7 @@ Accept wildcard characters: False
 Specifies whether the webhook is enabled.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -133,7 +133,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### System.Boolean
 
 ### System.Collections.IDictionary
 
