@@ -21,7 +21,7 @@ Remove-AzApiManagementRegion -ApiManagement <PsApiManagement> -Location <String>
 ## DESCRIPTION
 The **Remove-AzApiManagementRegion** cmdlet removes instance of type **Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion** from a collection of **AdditionalRegions** of provided the instance of type **Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement**.
 This cmdlet does not modify deployment by itself but updates the instance of **PsApiManagement** in-memory.
-To update a deployment of an API Management, pass the modified **PsApiManagementInstance** to **Update-AzApiManagement**.
+To update a deployment of an API Management, pass the modified **PsApiManagementInstance** to **Set-AzApiManagement**.
 
 ## EXAMPLES
 
@@ -34,7 +34,7 @@ This command removes the region named East US from the **PsApiManagement** insta
 
 ### Example 2: Remove a region from a PsApiManagement instance using a series of commands
 ```
-PS C:\>Get-AzApiManagement -ResourceGroupName "Contoso" -Name ContosoApi | Remove-AzApiManagementRegion -Location "East US" | Update-AzApiManagementDeployment
+PS C:\>Get-AzApiManagement -ResourceGroupName "Contoso" -Name ContosoApi | Remove-AzApiManagementRegion -Location "East US" | Set-AzApiManagement
 ```
 
 This first command gets an instance of **PsApiManagement** from the resource group named Contoso named ContosoApi.

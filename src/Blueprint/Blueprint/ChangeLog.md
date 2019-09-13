@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.5
 * Add functionality to make sure Blueprint RP is registered before any service calls
 
 ## Version 0.2.4

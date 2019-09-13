@@ -40,60 +40,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region SFRP
 
-        protected PSCluster SendPatchRequest(ClusterUpdateParameters request, bool runOnSameThread = true)
+        protected PSCluster SendPatchRequest(ClusterUpdateParameters request)
         {
-            if (runOnSameThread)
-            {
-                WriteVerboseWithTimestamp("Begin to update the cluster");
-            }
-
-            Cluster cluster = null;
-            var tokenSource = new CancellationTokenSource();
-            try
-            {
-                var patchRequest = Task.Factory.StartNew(() =>
-                {
-                    try
-                    {
-                        cluster = this.SFRPClient.Clusters.Update(this.ResourceGroupName, this.Name, request);
-                    }
-                    finally
-                    {
-                        tokenSource.Cancel();
-                    }
-                });
-
-                while (!tokenSource.IsCancellationRequested)
-                {
-                    if (runOnSameThread)
-                    {
-                        if (!RunningTest)
-                        {
-                            var c = SafeGetResource(() => this.GetCurrentCluster(), true);
-                            if (c != null)
-                            {
-                                WriteVerboseWithTimestamp(
-                                    string.Format(
-                                        ServiceFabricProperties.Resources.ClusterStateVerbose,
-                                        c.ClusterState));
-                            }
-                        }
-                    }
-
-                    Thread.Sleep(TimeSpan.FromSeconds(WriteVerboseIntervalInSec));
-                }
-
-                if (patchRequest.IsFaulted)
-                {
-                    throw patchRequest.Exception;
-                }
-
-            }
-            catch (Exception e)
-            {
-                PrintSdkExceptionDetail(e);
-                throw GetInnerException(e);
-            }
+            WriteVerboseWithTimestamp("Begin to update the cluster");
+            Cluster cluster = StartRequestAndWait<Cluster>(
+                        () => this.SFRPClient.Clusters.BeginUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, request),
+                        () => string.Format(ServiceFabricProperties.Resources.ClusterStateVerbose, GetCurrentClusterState()));
 
             return new PSCluster(cluster);
         }
@@ -101,6 +53,18 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         protected Task<Cluster> PatchAsync(ClusterUpdateParameters request)
         {
             return this.SFRPClient.Clusters.UpdateAsync(this.ResourceGroupName, this.Name, request);
+        }
+
+        protected string GetCurrentClusterState()
+        {
+            var resource = SafeGetResource(() => this.GetCurrentCluster(), true);
+
+            if (resource != null)
+            {
+                return resource.ClusterState;
+            }
+
+            return null;
         }
 
         protected Cluster GetCurrentCluster()
