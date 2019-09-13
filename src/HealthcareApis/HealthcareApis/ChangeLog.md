@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Added Exception Handling around KeyNotFoundException
 * Added Error Handling in all cmdlets
 * Fixed few typos
 * Enable Set-AzHealthcareApisService to allow updating tags.
