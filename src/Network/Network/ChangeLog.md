@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Added properties to network interface for private ip feature
+    - Added property 'PrivateEndpoint' as type of PSResourceId to PSNetworkInterface
+    - Added property 'PrivateLinkConnectionProperties' as type of PSIpConfigurationConnectivityInformation to PSNetworkInterfaceIPConfiguration
+    - Added new model class PSIpConfigurationConnectivityInformation
+
 * MultiLink support in Virtual WAN
     - New cmdlets
         - New-AzVpnSiteLink
