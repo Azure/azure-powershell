@@ -82,7 +82,7 @@ Accept wildcard characters: False
 Specifies whether the runbook logs progress.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 Specifies whether logging includes detailed information.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -162,7 +162,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Collections.IDictionary
 
-### System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### System.Boolean
 
 ## OUTPUTS
 
