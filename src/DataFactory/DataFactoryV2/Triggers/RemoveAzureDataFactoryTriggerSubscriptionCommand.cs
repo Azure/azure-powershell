@@ -18,8 +18,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2TriggerSubscription",
-        DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(PSTriggerSubscriptionStatus))]
-    public class RemoveAzureDataFactoryTriggerSubscriptionCommand : DataFactoryContextActionBaseCmdlet
+        DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(void))]
+    public class RemoveAzureDataFactoryTriggerSubscriptionCommand : DataFactoryContextSubResourceBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpTriggerName)]
@@ -32,12 +32,22 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [ValidateNotNull]
         public PSTrigger InputObject { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpPassThru)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ByResourceId();
             ByInputObject(InputObject);
 
-            WriteObject(DataFactoryClient.UnsubscribeFromTriggerEvents(ResourceGroupName, DataFactoryName, Name));
+            if (ShouldProcess(Name))
+            {
+                DataFactoryClient.UnsubscribeFromTriggerEvents(ResourceGroupName, DataFactoryName, Name);
+            }
+            if (PassThru.IsPresent && PassThru.ToBool())
+            {
+                WriteObject(true);
+            }
         }
     }
 }
