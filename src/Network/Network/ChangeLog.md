@@ -25,6 +25,10 @@
 * Improved cloud exception parsing to display additional details if they are present
 * Improved cloud exception parsing to handle additional type of SDK exception
 * Fixed incorrect mapping of Security Rule models
+* Added properties to network interface for private ip feature
+    - Added property 'PrivateEndpoint' as type of PSResourceId to PSNetworkInterface
+    - Added property 'PrivateLinkConnectionProperties' as type of PSIpConfigurationConnectivityInformation to PSNetworkInterfaceIPConfiguration
+    - Added new model class PSIpConfigurationConnectivityInformation
 * MultiLink support in Virtual WAN
     - New cmdlets
         - New-AzVpnSiteLink
