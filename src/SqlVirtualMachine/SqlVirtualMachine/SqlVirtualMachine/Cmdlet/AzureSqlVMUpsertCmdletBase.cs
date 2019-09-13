@@ -46,9 +46,8 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         [Parameter(Mandatory = false,
             ParameterSetName = NameParameterList,
             HelpMessage = HelpMessages.SqlManagementTypeSqlVM)]
-        [PSDefaultValue(Value = "LightWeight")]
         [SqlManagementTypeCompleter]
-        public virtual string SqlManagementType { get; set; }
+        public virtual string SqlManagementType { get; set; } = "LightWeight";
 
         /// <summary>
         /// Tags will be associated to the sql virtual machine

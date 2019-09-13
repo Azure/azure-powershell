@@ -113,7 +113,8 @@ function Get-ResourceGroupNameForTest()
 
 function Get-SqlVirtualMachineGroupName()
 {
-	return "test-group"
+	$nr = Get-Random -Minimum 1000 -Maximum 5000
+	return "test-group" + $nr
 }
 
 function Get-DefaultUser()
@@ -213,7 +214,7 @@ function Create-SqlVM (
 )
 {
 	Create-VM $resourceGroupName $vmName $location	
-	$sqlvm = New-AzSqlVM -ResourceGroupName $resourceGroupName -Name $vmName -LicenseType 'PAYG' -Sku 'Enterprise'
+	$sqlvm = New-AzSqlVM -ResourceGroupName $resourceGroupName -Name $vmName -LicenseType 'PAYG' -Sku 'Enterprise' -Location $location
 	return $sqlvm
 }
 

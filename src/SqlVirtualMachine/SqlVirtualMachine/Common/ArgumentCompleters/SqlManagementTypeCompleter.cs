@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common.ArgumentCompleters
     {
         public SqlManagementTypeCompleterAttribute() : base(
                 "Full",
-                "LightWeight"
+                "LightWeight",
+                "NoAgent"
             )
         {}
     }

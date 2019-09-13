@@ -63,10 +63,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet.Co
 
         protected override IEnumerable<AzureSqlVMModel> PersistChanges(IEnumerable<AzureSqlVMModel> entity)
         {
-            return new List<AzureSqlVMModel>()
-            {
-                entity.FirstOrDefault()
-            };
+            return entity;
         }
     }
 }
