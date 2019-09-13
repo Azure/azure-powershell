@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             ByResourceId();
             ByInputObject(InputObject);
 
-            if (ShouldProcess(Name))
+            if (ShouldProcess(Name, Constants.ActionDescriptionForAddEventSubscription))
             {
                 WriteObject(DataFactoryClient.SubscribeToTriggerEvents(ResourceGroupName, DataFactoryName, Name));
             }

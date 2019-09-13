@@ -229,5 +229,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string DataFactoryId = "DataFactoryId";
 
         public const string HelpPassThru = "If specified, cmdlet will return return true on successful delete.";
+
+        public const string ActionDescriptionForAddEventSubscription = "Subscribe the event trigger to external service events.";
+
+        public const string ActionDescriptionForRemoveEventSubscription = "Unsubscribe the event trigger from external service events.";
+
     }
 }
