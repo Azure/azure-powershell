@@ -15,19 +15,20 @@ Subscribe the event trigger to external service events.
 ### ByFactoryName (Default)
 ```
 Add-AzDataFactoryV2TriggerSubscription [-Name] <String> [-ResourceGroupName] <String>
- [-DataFactoryName] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Add-AzDataFactoryV2TriggerSubscription [-InputObject] <PSTrigger> [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Add-AzDataFactoryV2TriggerSubscription [-InputObject] <PSTrigger> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Add-AzDataFactoryV2TriggerSubscription [-ResourceId] <String> [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Add-AzDataFactoryV2TriggerSubscription [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +43,6 @@ PS C:\> Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName ADF -DataFacto
 TriggerName Status
 ----------- ------
 Trigger1    Provisioning
-
 ```
 
 This command will subscribe BlobEnetTrigger1 trigger to the specified events from the trigger defintion.
@@ -71,21 +71,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Don't ask for confirmation.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
 
 Required: False
 Position: Named
@@ -185,16 +170,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 Microsoft.Azure.Commands.DataFactoryV2.Models.PSTrigger
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSTriggerSubscriptionStatus
-
 
 ## NOTES
 
