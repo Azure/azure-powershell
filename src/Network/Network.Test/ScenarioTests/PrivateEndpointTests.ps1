@@ -104,6 +104,23 @@ function Test-PrivateEndpointCRUD
         Assert-True { $vPrivateEndpoint.NetworkInterfaces.Length -gt 0 };
         Assert-AreEqual "Succeeded" $vPrivateEndpoint.ProvisioningState;
 
+        # Verify connectivity info on associated NIC
+        $nicName = ($vPrivateEndpoint.NetworkInterfaces[0].Id -split "/")[-1];
+        Assert-True { $nicName -is [string] -and $nicName.Length -gt 0 };
+
+        $nic = Get-AzNetworkInterface -ResourceGroupName $rgname -Name $nicName;
+        Assert-NotNull $nic;
+        Assert-NotNull $nic.PrivateEndpoint;
+        Assert-AreEqual $nic.PrivateEndpoint.Id $vPrivateEndpoint.Id;
+        Assert-NotNull $nic.IpConfigurations;
+        Assert-True { $nic.IpConfigurations.Length -gt 0 };
+
+        $plsProps = $nic.IpConfigurations[0].PrivateLinkConnectionProperties;
+        Assert-NotNull $plsProps;
+        Assert-True { $plsProps.GroupId -is [string] };
+        Assert-True { $plsProps.RequiredMemberName -is [string] };
+        Assert-True { $plsProps.Fqdns -is [System.Collections.Generic.List[string]] };
+
         # Get all PrivateEndpoints in resource group
         $listPrivateEndpoint = Get-AzPrivateEndpoint -ResourceGroupName $rgname;
         Assert-NotNull ($listPrivateEndpoint | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
@@ -133,8 +150,6 @@ function Test-PrivateEndpointCRUD
         $list = Get-AzPrivateEndpoint -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
 
-        #Start-Sleep -s 60
-
         # Remove Private Link Service
         $job = Remove-AzPrivateLinkService -ResourceGroupName $rgname -Name $PrivateLinkServiceName -PassThru -Force -AsJob;
         $job | Wait-Job;
@@ -143,8 +158,6 @@ function Test-PrivateEndpointCRUD
 
         $list = Get-AzPrivateLinkService -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
-
-        #Start-Sleep -s 30
     }
     finally
     {
