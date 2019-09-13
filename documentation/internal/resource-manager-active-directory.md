@@ -1,4 +1,4 @@
-## Resource Manager / Active Directory
+# Resource Manager / Active Directory
 
 The `Az.Resources` module contains cmdlets for the following services:
 
@@ -11,15 +11,15 @@ The `Az.Resources` module contains cmdlets for the following services:
 - Management Groups
     - Calls made from the `Microsoft.Azure.Management.ManagementGroups` SDK
 
-Below are the projects found in the `Resources` solution and some of the different concepts found within each.
+In the `azure-powershell` repository, the cmdlets in the `Az.Resources` module are found in the `ResourceManager` and `Resources` projects. Below are the parts of those projects that the Azure PowerShell team own and help to maintain.
 
-### `ResourceManager` project
+## `ResourceManager` project
 
 The `ResourceManager` project contains all of the Resource Manager cmdlets.
 
 One thing that differentiates the `ResourceManager` project from all other service projects is that it doesn't always use the client exposed from its corresponding SDK (`Microsoft.Azure.Management.ResourceManager`). In some cases, a generic [`HttpClient`](https://github.com/Azure/azure-powershell/blob/4fd93d58860b3ead9b6ba9acf7974457d4891aea/src/Resources/ResourceManager/RestClients/ResourceManagerRestClientBase.cs#L221) is created and used to make requests to ARM, which allows the cmdlets to make calls to endpoints that aren't yet defined in their REST API specification. This pattern was used commonly in the early stages of this module, but since then have shifted primarily to using calls exposed from the SDK that can be made using the given SDK client.
 
-#### Resources
+### Resources
 
 From the [_Azure Resource Manager overview_](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#terminology) document, a resource is defined as the following:
 
@@ -54,105 +54,76 @@ Because a resource's ID contains the identifier properties of the resource (reso
 The cmdlets currently found in the `Az.Resources` module that act upon resources are the following:
 
 - [`Get-AzResource`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Get-AzResource.md)
-    - Retrieves all resources in the current subscription or specified resource group, or gets a specific resource. The user can also filter results by resource types and tags on the given resources.
 - [`Move-AzResource`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Move-AzResource.md)
-    - Moves a resource to a different resource group or subscription.
 - [`New-AzResource`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/New-AzResource.md)
-    - Creates a resource with the given identifier properties and resource-specific properties (found in `-Properties`).
 - [`Remove-AzResource`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Remove-AzResource.md)
-    - Deletes the resource with the given identifier properties.
 - [`Set-AzResource`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Set-AzResource.md)
-    - Modifies a resource to have exactly the properties specified by the provided parameters (`PUT` operation).
 
-#### Resource Groups
+#### `Get-AzResource`
 
-From the [_Azure Resource Manager overview_](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#terminology) document, a resource group is defined as the following:
+The `Get-AzResource` cmdlet has a couple of features that make it different than a regular cmdlet:
 
-_A container that holds related resources for an Azure solution. The resource group includes those resources that you want to manage as a group. You decide which resources belong in a resource group based on what makes the most sense for your organization._
+**Wildcard support**
 
-The cmdlets currently found in the `Az.Resources` module that act upon resource groups are the following:
+To allow for another layer of filtering over the large number of resources that may be returned for a given query, wildcard support was added for the `-ResourceGroupName` and `-Name` parameters. This allows users to perform the following:
 
-- [`Export-AzResourceGroup`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Export-AzResourceGroup.md)
-    - Converts the contents of a resource group to a template and saves it to a file on the user's machine.
-- [`Get-AzResourceGroup`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Get-AzResourceGroup.md)
-    - Retrieves all resource groups in the current subscription, or gets a specific resource group. The user can also filter results by tags on the given resource groups.
-- [`New-AzResourceGroup`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/New-AzResourceGroup.md)
-    - Creates a resource group with the given properties.
-- [`Remove-AzResourceGroup`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Remove-AzResourceGroup.md)
-    - Deletes the resource group with the given identifier properties, as well as all of the resources found in the resource group.
-- [`Set-AzResourceGroup`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Set-AzResourceGroup.md)
-    - Modifies a resource group to have exactly the properties specified by the provided parameters (`PUT` operation).
+```powershell
+# List all resources that are in any resource group with the prefix "test"
+Get-AzResource -ResourceGroupName test*
 
-#### Deployments
+# List all resources with the prefix "test"
+Get-AzResource -Name test*
 
-From the [_Azure Resource Manager overview_](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#terminology) document, an ARM template is defined as the following:
+# List all resources with the prefix "test" in the resource group "test-rg"
+Get-AzResource -ResourceGroupName test-rg -Name test*
 
-_A JavaScript Object Notation (JSON) file that defines one or more resources to deploy to a resource group or subscription. The template can be used to deploy the resources consistently and repeatedly._
+# List all resources named "test" in any resource group with the prefix "test"
+Get-AzResource -ResourceGroupName test* -Name test
+```
 
-Users can find sample JSON templates to deploy in the [`azure-quickstart-templates`](https://github.com/Azure/azure-quickstart-templates) repository. The deployment cmdlets found in the `Az.Resources` module are used to manage the deployment of these templates.
+The cmdlet uses the [`TopLevelWildcardFilter()`](https://github.com/Azure/azure-powershell-common/blob/master/src/ResourceManager/Version2016_09_01/AzureRMCmdlet.cs#L394-L435) call in our common code to [filter the results by the given wildcard](https://github.com/Azure/azure-powershell/blob/master/src/Resources/ResourceManager/Implementation/Resource/GetAzureResourceCmdlet.cs#L185).
 
-The cmdlets currently found in the `Az.Resources` module that act upon deployments are the following:
+**Uses both `HttpClient` and `ResourceManagerClient`**
 
-- [`Get-AzDeployment`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Get-AzDeployment.md)
-    - Retrieves all of the deployments in the current subscription. The user can also filter the results by name and ID.
-- [`Get-AzResourceGroupDeployment`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Get-AzResourceGroupDeployment.md)
-    - Retrieves all of the deployments in the specified resource group. The user can also filter the results by name and ID.
-- [`New-AzDeployment`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/New-AzDeployment.md)
-    - Creates a new deployment in the current subscription.
-- [`New-AzResourceGroupDeployment`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/New-AzResourceGroupDeployment.md)
-    - Creates a new deployment in the specified resource group.
-- [`Remove-AzDeployment`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Remove-AzDeployment.md)
-    - Deletes a deployment in the current subscription with the given name or ID.
-- [`Remove-AzResourceGroupDeployment`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Remove-AzResourceGroupDeployment.md)
-    - Deletes a deployment in the specified resource group with the given name or ID.
-- [`Stop-AzDeployment`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Stop-AzDeployment.md)
-    - Cancels a deployment in the current subscription with the given name or ID.
-- [`Stop-AzResourceGroupDeployment`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Stop-AzResourceGroupDeployment.md)
-    - Cancels a deployment in the specified resource group with the given name or ID.
-- [`Test-AzDeployment`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Test-AzDeployment.md)
-    - Determines whether the given deployment template and its parameter values are valid in the current subscription.
-- [`Test-AzResourceGroupDeployment`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Test-AzResourceGroupDeployment.md)
-    - Determines whether the given deployment template and its parameter values are valid in the specified resource group.
+As mentioned previously, the `ResourceManager` project has a mix of cmdlets that use a generic `HttpClient` and/or the `ResourceManagerClient` to make calls to the server. Where applicable, calls that could be made using the `ResourceManagerClient` were implemented and replaced the calls using the generic `HttpClient`.
 
-#### Policy Definition
+First, the cmdlet tries to [construct a resource ID](https://github.com/Azure/azure-powershell/blob/master/src/Resources/ResourceManager/Implementation/Resource/GetAzureResourceCmdlet.cs#L129-L132) out of the parameters provided, specifically,  `-ResourceGroupName`, `-ResourceType` and `-Name`. If the user provided a value for all three of these parameters (and didn't include wildcards in either `-ResourceGroupName` or `-Name`), then we would make a [call to get the resource by ID](https://github.com/Azure/azure-powershell/blob/master/src/Resources/ResourceManager/Implementation/Resource/GetAzureResourceCmdlet.cs#L136) using the `ResourceManagerClient`. Since the `GetById()` call on the client requires both the resource ID _and_ the API version of the service, we make an additional [call to the client to get the resource provider](https://github.com/Azure/azure-powershell/blob/master/src/Resources/ResourceManager/SdkClient/ResourceManagerSdkClient.cs#L1143-L1164) of the resource we're trying to get, and when we [match the resource type from the provider](https://github.com/Azure/azure-powershell/blob/master/src/Resources/ResourceManager/SdkClient/ResourceManagerSdkClient.cs#L1168-L1170), we use either the default API version previously provided, or the latest API version of the service, and then [make the `GetById()` call](https://github.com/Azure/azure-powershell/blob/master/src/Resources/ResourceManager/SdkClient/ResourceManagerSdkClient.cs#L1173-L1177).
 
-From the [_Azure Policy definition structure_](https://docs.microsoft.com/en-us/azure/governance/policy/concepts/definition-structure) document, a policy definition is defined as the following:
+If the resource ID could not be constructed, but the user did provide a value for `-ResourceId`, then it would also follow the same flow mentioned above _unless_ the ID provided was partial and not pointing to a specific resource, but a collection of resources. For example, the resource ID `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyVM` points to a specific VM called "MyVM" in the resource group "MyResourceGroup", but if the user were to provide the ID `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines`, then we would expect to return _all_ VMs in the resource group "MyResourceGroup". Since the `ResourceManagerClient` does not support this scenario, we need to use the generic `HttpClient` to list these resources for the given resource ID.
 
-_Resource policy definitions are used by Azure Policy to establish conventions for resources. Each definition describes resource compliance and what effect to take when a resource is non-compliant._
+The last scenario that we would possibly use the generic `HttpClient` for this cmdlet would be if the user provided either the `-ApiVersion` or `-ExpandProperties` parameters. The `-ApiVersion` parameter is used to define which API version of the service should be used when retrieving the resource(s), which can change the values in the `Properties` property on the returned object(s). The `-ExpandProperties` switch parameter is used to signal that the `Properties` property on the returned object(s) should be expanded and include all resource specific information. The `ResourceManagerClient` doesn't allow for either of these scenarios (outside of providing an API version for a resource ID, which was covered previously), so the `HttpClient` must be used to provide users with this functionality.
 
-The cmdlets currently found in the `Az.Resources` module that act upon policy definitions are the following:
+For all other scenarios, the `ResourceManagerClient` is used either to [list all resources in a given resource group](https://github.com/Azure/azure-powershell/blob/master/src/Resources/ResourceManager/Implementation/Resource/GetAzureResourceCmdlet.cs#L178) or [list all resources in the current subscription](https://github.com/Azure/azure-powershell/blob/master/src/Resources/ResourceManager/Implementation/Resource/GetAzureResourceCmdlet.cs#L182).
 
-- [`Get-AzPolicyDefinition`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Get-AzPolicyDefinition.md)
-    - Retrieves all of the policy definitions in the current subscription, specified subscription ID or specified management group. The user can also filter the results by name and ID.
-- [`New-AzPolicyDefinition`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/New-AzPolicyDefinition.md)
-    - Creates a new policy definition in the current subscription, specified subscription or specified management group.
-- [`Remove-AzPolicyDefinition`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Remove-AzPolicyDefinition.md)
-    - Deletes a policy definition in the current subscription, specified subscription or specified management group, or with the given name.
-- [`Set-AzPolicyDefinition`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Set-AzPolicyDefinition.md)
-    - Modifies a policy definition to have exactly the properties specified by the provided parameters (`PUT` operation).
+**New-AzResource**
 
-#### Policy Assignment
+Unlike the `Get-AzResource` cmdlet, the `New-AzResource` cmdlet only uses the generic `HttpClient` to make calls to the server to create a resource. With this cmdlet, a user can create a resource at the tenant or subscription level against a specified API version with a defined set of properties. The cmdlet [constructs the resource ID](https://github.com/Azure/azure-powershell/blob/master/src/Resources/ResourceManager/Implementation/Resource/NewAzureResourceCmdlet.cs#L96) from the given identity parameters, [sets up the body](https://github.com/Azure/azure-powershell/blob/master/src/Resources/ResourceManager/Implementation/Resource/NewAzureResourceCmdlet.cs#L105) of the request from the property parameters, and [sends the `PUT` request](https://github.com/Azure/azure-powershell/blob/master/src/Resources/ResourceManager/Implementation/Resource/NewAzureResourceCmdlet.cs#L107-L124) to the server using the `HttpClient` in order to create the resource.
 
-From the [_Overview of the Azure Policy service_](https://docs.microsoft.com/en-us/azure/governance/policy/overview#policy-assignment) document, a policy assignment is defined as the following:
+In the future, it should be determined whether or not the `ResourceManagerClient` can be used to make the subscription level calls as it has two functions, `CreateOrUpdate()` and `CreateOrUpdateById()`, which should be able to perform the same steps outlined above.
 
-_A policy assignment is a policy definition that has been assigned to take place within a specific scope. This scope could range from a management group to a resource group. Policy assignments are inherited by all child resources. This design means that a policy applied to a resource group is also applied to resources in that resource group. However, you can exclude a subscope from the policy assignment._
+**Set-AzResource**
 
-The cmdlets currently found in the `Az.Resources` module that act upon policy assignments are the following:
+Also like the `New-AzResource` cmdlet, the `Set-AzResource` cmdlet only uses the generic `HttpClient` to make calls to the server to update a resource. This cmdlet gives users the ability to perform either a `PUT` or `PATCH` operation on the server to update the given resource. If the user provides the identity properties of a resource as parameters, they can perform a `PATCH` operation by providing the `-UsePatchSemantics` switch, providing a value for the `-Tag` or `-Sku` parameters, or not providing a value for the `-Plan`, `-Properties` and `-Kind` parameters. If the user doesn't do [any of the previous three](https://github.com/Azure/azure-powershell/blob/master/src/Resources/ResourceManager/Implementation/Resource/SetAzureResourceCmdlet.cs#L226-L229), than the cmdlet will perform a `PUT` operation.
 
-- [`Get-AzPolicyAssignment`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Get-AzPolicyAssignment.md)
-    - Retrieves all of the policy assignments in the current subscription or specified scope. The user can also filter the results by name and ID.
-- [`New-AzPolicyAssignment`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/New-AzPolicyAssignment.md)
-    - Creates a new policy assignment in the current subscription or specified scope.
-- [`Remove-AzPolicyAssignment`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Remove-AzPolicyAssignment.md)
-    - Deletes a policy assignment in the given scope or by ID.
-- [`Set-AzPolicyAssignment`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Set-AzPolicyAssignment.md)
-    - Modifies a policy assignment to have exactly the properties specified by the provided parameters (`PUT` operation).
+If the user provides a `PSResource` object to the `-InputObject` parameter, then the cmdlet will push the value of the properties on the object to the server, [unless overwritten by a parameter provided on the command line](https://github.com/Azure/azure-powershell/blob/master/src/Resources/ResourceManager/Implementation/Resource/SetAzureResourceCmdlet.cs#L94-L102). For example, if the user provides a `PSResource` for `-InputObject` and a new `Hashtable` for `-Tag`, then the tags defined on the given resource will be overwritten with whatever is in the `Hashtable` provided, and all other properties on the `PSResource` will be pushed to the server.
 
-### `Resources` project
+#### Piping Scenarios
+
+```powershell
+# Update the tags with a new key-value pair for all resources
+Get-AzResource @FilterParameters | ForEach-Object { $_.Tags.Add("SampleKey", "SampleValue") } | Set-AzResource -Force
+
+# Update a single property on a resource
+$Resource = Get-AzResource -ResourceGroupName MyResourceGroup -ResourceType Microsoft.Web/sites -Name MySite
+$Resource.Properties.Enabled = "False"
+$Resource | Set-AzResource -Force
+```
+
+## `Resources` project
 
 The `Resources` project contains all of the Active Directory, Authorization, and Management Groups cmdlets.
 
-#### Active Directory
+### Active Directory Applications
 
 From the [_Application and service principal objects in Azure Active Directory_](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Test-AzResourceGroupDeployment.md) document, an Azure AD application is defined as the following:
 
@@ -162,14 +133,34 @@ _The application object serves as the template from which common and default pro
 
 The cmdlets currently found in the `Az.Resources` module that act upon applications are the following:
 
+- [`Get-AzADAppCredential`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Get-AzADAppCredential.md)
 - [`Get-AzADApplication`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Get-AzADApplication.md)
-    - Retrieves all applications in the current tenant. The user can also filter results by object ID, application ID and display name.
+- [`New-AzADAppCredential`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/New-AzADAppCredential.md)
 - [`New-AzADApplication`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/New-AzADApplication.md)
-    - Creates a new application in the current tenant with the given properties.
+- [`Remove-AzADAppCredential`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Remove-AzADAppCredential.md)
 - [`Remove-AzADApplication`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Remove-AzADApplication.md)
-    - Deletes an application with the given object ID, application ID or display name.
 - [`Update-AzADApplication`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Update-AzADApplication.md)
-    - Updates properties of an application based on the parameters provided (`PATCH` operation).
+
+#### Piping Scenarios
+
+```powershell
+# Remove a set of applications
+Get-AzADApplication @FilterParameters | Remove-AzADApplication
+
+# (PATCH) Update a set of applications
+Get-AzADApplication @FilterParameters | Update-AzADApplication @PatchParameters
+
+# Get the credentials for a set of applications
+Get-AzADApplication @FilterParameters | Get-AzADAppCredential
+
+# Create a new credential for a set of applications
+Get-AzADApplication @FilterParameters | New-AzADAppCredential @PutParameters
+
+# Remove the credentials from a set of applications
+Get-AzADApplication @FilterParameters | Remove-AzADAppCredential
+```
+
+### Active Directory Groups
 
 From the [_Manage app and resource access using Azure Active Directory groups_](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-manage-groups#how-does-access-management-in-azure-ad-work) document, an Azure AD group does the following:
 
@@ -177,14 +168,32 @@ _Using groups lets the resource owner (or Azure AD directory owner), assign a se
 
 The cmdlets currently found in the `Az.Resources` module that act upon groups are the following:
 
+- [`Add-AzADGroupMember`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Add-AzADGroupMember.md)
 - [`Get-AzADGroup`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Get-AzADGroup.md)
-    - Retrieves all groups in the current tenant. The user can also filter results by object ID and display name.
+- [`Get-AzADGroupMember`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Get-AzADGroupMember.md)
 - [`New-AzADGroup`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/New-AzADGroup.md)
-    - Creates a new group in the current tenant with the given properties.
 - [`Remove-AzADGroup`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Remove-AzADGroup.md)
-    - Deletes a group with the given object ID or display name.
+- [`Remove-AzADGroupMember`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Remove-AzADGroupMember.md)
 
-From the [_Application and service principal objects in Azure Active Directory_](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Test-AzResourceGroupDeployment.md) document, a service principal is defined as the following:
+#### Piping Scenarios
+
+```powershell
+# Remove a set of groups
+Get-AzADUser @FilterParameters | Remove-AzADUser
+
+# Get the users of a set of groups
+Get-AzADGroup @FilterParameters | Get-AzADGroupMember
+
+# Add a user to a set of groups
+Get-AzADGroup @FilterParameters | Add-AzADGroupMember @UserParameters
+
+# Remove a user from a set of groups
+Get-AzADGroup @FilterParameters | Remove-AzADGroupMember @UserParameters
+```
+
+### Active Directory Service Principals
+
+From the [_Application and service principal objects in Azure Active Directory_](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals) document, a service principal is defined as the following:
 
 _When an application is given permission to access resources in a tenant (upon registration or consent), a service principal object is created._
 
@@ -193,80 +202,91 @@ _A service principal must be created in each tenant where the application is use
 The cmdlets currently found in the `Az.Resources` module that act upon service principals are the following:
 
 - [`Get-AzADServicePrincipal`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Get-AzADServicePrincipal.md)
-     - Retrieves all service principals in the current tenant. The user can also filter results by object ID, application ID, display name and service principal name.
+- [`Get-AzADSpCredential`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Get-AzADSpCredential.md)
 - [`New-AzADServicePrincipal`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/New-AzADServicePrincipal.md)
-     - Creates a new service principal in the current tenant with the given properties.
-     - Scenario based cmdlet -- sets default values for the following properties if the user does not provide a value for them:
-         - `-DisplayName` (default is `azure-powershell-MM-dd-yyyy-HH-mm-ss`, where the suffix is the current time)
-         - `-StartDate` (default is the current time)
-         - `-EndDate` (default is one year after the start date)
-         - `-Scope` (default is the subscription)
-         - `-Role` (default value is "Contributor")
+- [`New-AzADSpCredential`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/New-AzADSpCredential.md)
 - [`Remove-AzADServicePrincipal`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Remove-AzADServicePrincipal.md)
-    - Deletes a service principal with the given object ID, application ID, display name or service principal name.
+- [`Remove-AzADSpCredential`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Remove-AzADSpCredential.md)
 - [`Update-AzADServicePrincipal`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Update-AzADServicePrincipal.md)
-    - Updates properties of a service principal based on the parameters provided (`PATCH` operation)
+
+#### User Scenarios
+
+A common scenario is for a user to create a service principal in order to give it specific permissions over a subscription, resource group, or resource in order to automate tasks with the service principal. When the user creates a service principal using the `New-AzADServicePrincipal` cmdlet, there is no way using the Graph SDK to also give the service principal the desired permissions over a given scope; the user would need to go through the portal to manually create the permissions. One of the scenarios we added to this cmdlet was to give users the ability to also create a role assignment for the service principal within this cmdlet using new `-Role` and `-Scope` parameters. If the user provided a value for either parameter, once the service principal was created, a [call to the authorization SDK](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/ActiveDirectory/Cmdlets/NewAzureADServicePrincipalCommand.cs#L346-L380) would be made to assign the specified role to the service principal over the given scope. If neither parameter was provided, or the `-SkipAssignment` switch was set, then a role assignment would not be created. If only `-Role` was provided, `-Scope` would be [set to the user's current subscription](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/ActiveDirectory/Cmdlets/NewAzureADServicePrincipalCommand.cs#L252-L256), and if only `-Scope` was provided, `-Role` would be [set to the "Contributor"](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/ActiveDirectory/Cmdlets/NewAzureADServicePrincipalCommand.cs#L260-L264).
+
+```powershell
+# Create a service principal with no permissions
+New-AzADServicePrincipal @Properties
+
+# Create a service principal with "Reader" permissions over the current subscription
+New-AzADServicePrincipal -Role Reader @Properties
+
+# Create a service principal with "Contributor" permissions over the "MyResourceGroup" resource group
+New-AzADServicePrincipal -Scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup @Properties
+
+# Create a service principal with "Reader" permissions over the "MyResourceGroup" resource group
+New-AzADServicePrincipal -Role Reader -Scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup @Properties
+```
+
+_Note_: for parity with Azure CLI, parameters should be added in the future that would allow for the user to create a self-signed certificate and create or retrieve a certificate from a specified Azure KeyVault.
+
+Another scenario added for the `New-AzADServicePrincipal` cmdlet was to introduce smart defaults for properties that the user may not know the value of, or may not care to provide a value for, when creating a service principal. The following are the parameters that have smart defaults for this cmdlet:
+
+- `-DisplayName`
+    - Defaults to "azure-powershell-MM-dd-yyyy-HH-mm-ss", where "MM-dd-yyyy-HH-mm-ss" is the starting date of the service principal
+- `-StartDate`
+    - Defaults to the current time (in UTC)
+- `-EndDate`
+    - Defaults to one year after the value of `-StartDate`
+- `-Password`
+    - Defaults to a generated GUID that the user can retrieve from the `Secret` property on the object returned from this cmdlet
+- `-Scope`
+    - As mentioned previously, defaults to the current subscription ("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+- `-Role`
+    - As mentioned previously, defaults to "Contributor"
+
+#### Piping Scenarios
+
+```powershell
+# Get the service principals for a set of applications
+Get-AzADApplication @FilterParameters | Get-AzADServicePrincipal
+
+# Create a service principal for a set of applications
+Get-AzADApplication @FilterParameters | New-AzADServicePrincipal @PutParameters
+
+# Remove a set of service principals
+Get-AzADServicePrincipal @FilterParameters | Remove-AzADServicePrincipal
+
+# Remove a set of service principals from the given applications
+Get-AzADApplication @FilterParameters | Remove-AzADServicePrincipal
+
+# (PATCH) Update a set of service principals
+Get-AzADServicePrincipal @FilterParameters | Update-AzADServicePrincipal @PatchParameters
+
+# Get the credentials for a set of service principals
+Get-AzADServicePrincipal @FilterParameters | Get-AzADSpCredential
+
+# Create a new credential for a set of service principals
+Get-AzADServicePrincipal @FilterParameters | New-AzADSpCredential @PutParameters
+
+# Remove the credentials from a set of service principals
+Get-AzADServicePrincipal @FilterParameters | Remove-AzADSpCredential
+```
+
+### Active Directory Users
 
 The cmdlets currently found in this `Az.Resources` module that act upon users are the following:
 
 - [`Get-AzADUser`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Get-AzADUser.md)
-    - Retrieves all users in the current tenant. The user can also filter the results by object ID, display name, user principal name, or mail nickname.
 - [`New-AzADUser`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/New-AzADUser.md)
-    - Creates a new user in the current tenant with the given properties.
 - [`Remove-AzADUser`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Remove-AzADUser.md)
-    - Deletes a user with the given object ID, display name, or user principal name.
 - [`Update-AzADUser`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Update-AzADUser.md)
-    - Updates properties of a user based on the parameters provided (`PATCH` operation)
 
-#### Role Assignments
+#### Piping Scenarios
 
-From the [__What is role-based access control (RBAC) for Azure resources?_](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview#role-assignments) document, a role assignment is defined as the following:
+```powershell
+# Remove a set of users
+Get-AzADUser @FilterParameters | Remove-AzADUser
 
-_A role assignment is the process of attaching a role definition to a user, group, service principal, or managed identity at a particular scope for the purpose of granting access. Access is granted by creating a role assignment, and access is revoked by removing a role assignment._
-
-The cmdlets currently found in the `Az.Resources` module that act upon role assignments are the following:
-
-- [`Get-AzRoleAssignment`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Get-AzRoleAssignment.md)
-    - Retrieves all role assignments in the current subscription. The user can also filter the results by scope, service principal name, sign-in name, or object ID.
-- [`New-AzRoleAssignment`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/New-AzRoleAssignment.md)
-    - Creates a new role assignment in the specified scope with the given role definition.
-- [`Remove-AzRoleAssignment`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Remove-AzRoleAssignment.md)
-    - Deletes a role assignment with the given scope, service principal name, sign-in name, or object ID.
-
-#### Role Definitions
-
-From the [__What is role-based access control (RBAC) for Azure resources?_](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview#role-assignments) document, a role definition is defined as the following:
-
-_A role definition is a collection of permissions. It's sometimes just called a role. A role definition lists the operations that can be performed, such as read, write, and delete. Roles can be high-level, like owner, or specific, like virtual machine reader._
-
-The cmdlets currently found in the `Az.Resources` module that act upon role definitions are the following:
-
-- [`Get-AzRoleDefinition`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Get-AzRoleDefinition.md)
-    - Retrieves all role definitions in the current subscription. The user can also filter the results by scope, name or ID.
-- [`New-AzRoleDefinition`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/New-AzRoleDefinition.md)
-    - Creates a new custom role definition in Azure RBAC with the given properties.
-- [`Remove-AzRoleDefinition`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Remove-AzRoleDefinition.md)
-    - Deletes a role definition with the given ID or name.
-- [`Set-AzRoleDefinition`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Set-AzRoleDefinition.md)
-    - Modifies a role definition to have exactly the properties specified by the provided parameters (`PUT` operation).
-
-### Management Groups
-
-From the [_Organize your resources with Azure management groups_](https://docs.microsoft.com/en-us/azure/governance/management-groups/index) document, a management group is defined as the following:
-
-_Azure management groups provide a level of scope above subscriptions. You organize subscriptions into containers called "management groups" and apply your governance conditions to the management groups. All subscriptions within a management group automatically inherit the conditions applied to the management group. Management groups give you enterprise-grade management at a large scale no matter what type of subscriptions you might have._
-
-The cmdlets currently found in the `Az.Resources` module that act upon management groups are the following:
-
-- [`Get-AzManagementGroup`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Get-AzManagementGroup.md)
-    - Retrieves all management groups for the current user. The user can also filter the results by the name of the management group.
-- [`New-AzManagementGroup`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/New-AzManagementGroup.md)
-    - Creates a new management group with the given properties.
-- [`New-AzManagementGroupSubscription`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/New-AzManagementGroupSubscription.md)
-    - Adds a subscription to the given management group.
-- [`Remove-AzManagementGroup`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Remove-AzManagementGroup.md)
-    - Deletes a management group with the given name.
-- [`Remove-AzManagementGroupSubscription`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Remove-AzManagementGroupSubscription.md)
-    - Removes a subscription from the given management group.
-- [`Update-AzManagementGroup`](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Update-AzManagementGroup.md)
-    - Updates properties of a management group based on the parameters provided (`PATCH` operation)
+# (PATCH) Update a set of users
+Get-AzADUser @FilterParameters | Update-AzADUser @PatchParameters
+```
