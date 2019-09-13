@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2TriggerSubscription",
         DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(PSTriggerSubscriptionStatus))]
-    public class AddAzureDataFactoryTriggerSubscriptionCommand : DataFactoryContextActionBaseCmdlet
+    public class AddAzureDataFactoryTriggerSubscriptionCommand : DataFactoryContextSubResourceBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpTriggerName)]
@@ -37,7 +37,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             ByResourceId();
             ByInputObject(InputObject);
 
-            WriteObject(DataFactoryClient.SubscribeToTriggerEvents(ResourceGroupName, DataFactoryName, Name));
+            if (ShouldProcess(Name))
+            {
+                WriteObject(DataFactoryClient.SubscribeToTriggerEvents(ResourceGroupName, DataFactoryName, Name));
+            }
         }
     }
 }
