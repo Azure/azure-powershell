@@ -15,9 +15,9 @@ Sets the properties of a storage account’s Blob service, including properties 
 ### SetExpanded (Default)
 ```
 Set-AzStorageBlobServiceProperty -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AutomaticSnapshotPolicyEnabled] [-CorCorsRule <ICorsRule[]>] [-DefaultServiceVersion <String>]
- [-DeleteRetentionPolicyDay <Int32>] [-DeleteRetentionPolicyEnabled] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-AutomaticSnapshotPolicyEnabled] [-ChangeFeedEnabled] [-CorCorsRule <ICorsRule[]>]
+ [-DefaultServiceVersion <String>] [-DeleteRetentionPolicyDay <Int32>] [-DeleteRetentionPolicyEnabled]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Set
@@ -71,6 +71,22 @@ Dynamic: False
 
 ### -AutomaticSnapshotPolicyEnabled
 Automatic Snapshot is enabled if set to true.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SetExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ChangeFeedEnabled
+Indicates whether change feed event logging is enabled for the Blob service.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -280,6 +296,7 @@ To create the parameters described below, construct a hash table containing the 
 
 #### PARAMETER <IBlobServiceProperties>: The properties of a storage account’s Blob service.
   - `[AutomaticSnapshotPolicyEnabled <Boolean?>]`: Automatic Snapshot is enabled if set to true.
+  - `[ChangeFeedEnabled <Boolean?>]`: Indicates whether change feed event logging is enabled for the Blob service.
   - `[CorCorsRule <ICorsRule[]>]`: The List of CORS rules. You can include up to five CorsRule elements in the request. 
     - `AllowedHeader <String[]>`: Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request.
     - `AllowedMethod <String[]>`: Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin.
