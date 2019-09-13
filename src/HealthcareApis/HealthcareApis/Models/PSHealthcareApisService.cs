@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
             switch (kind)
             {
                 case Management.HealthcareApis.Models.Kind.Fhir:
-                    return "fhir";
+                    return "fhir-Stu3";
                 case Management.HealthcareApis.Models.Kind.FhirStu3:
                     return "fhir-Stu3";
                 case Management.HealthcareApis.Models.Kind.FhirR4:

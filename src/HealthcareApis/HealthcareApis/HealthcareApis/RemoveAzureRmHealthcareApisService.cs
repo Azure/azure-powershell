@@ -20,6 +20,8 @@ using System.Globalization;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HealthcareApis.Models;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 {
@@ -75,52 +77,63 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            RunCmdLet(() =>
+            try
             {
-                string rgName = null;
-                string name = null;
+                base.ExecuteCmdlet();
 
-                switch (ParameterSetName)
+                RunCmdLet(() =>
                 {
-                    case InputObjectParameterSet:
-                        {
-                            rgName = InputObject.ResourceGroupName;
-                            name = InputObject.Name;
-                            break;
-                        }
-                    case ServiceNameParameterSet:
-                        {
-                            rgName = this.ResourceGroupName;
-                            name = this.Name;
-                            break;
-                        }
-                    case ResourceIdParameterSet:
-                        {
-                            ValidateAndExtractName(this.ResourceId, out rgName, out name);
-                            break;
-                        }
-                }
+                    string rgName = null;
+                    string name = null;
 
-                if (!string.IsNullOrEmpty(rgName)
-                    && !string.IsNullOrEmpty(name)
-                    && ShouldProcess(name, string.Format(CultureInfo.CurrentCulture, Resources.RemoveService_ProcessMessage, name)))
-                {
-                    try
+                    switch (ParameterSetName)
                     {
-                        this.HealthcareApisClient.Services.Delete(rgName, name);
-                        if (PassThru.IsPresent)
+                        case InputObjectParameterSet:
+                            {
+                                rgName = InputObject.ResourceGroupName;
+                                name = InputObject.Name;
+                                break;
+                            }
+                        case ServiceNameParameterSet:
+                            {
+                                rgName = this.ResourceGroupName;
+                                name = this.Name;
+                                break;
+                            }
+                        case ResourceIdParameterSet:
+                            {
+                                ValidateAndExtractName(this.ResourceId, out rgName, out name);
+                                break;
+                            }
+                    }
+
+                    if (!string.IsNullOrEmpty(rgName)
+                        && !string.IsNullOrEmpty(name)
+                        && ShouldProcess(name, string.Format(CultureInfo.CurrentCulture, Resources.RemoveService_ProcessMessage, name)))
+                    {
+                        try
                         {
-                            WriteObject(true);
+                            this.HealthcareApisClient.Services.Delete(rgName, name);
+                            if (PassThru.IsPresent)
+                            {
+                                WriteObject(true);
+                            }
+                        }
+                        catch (ErrorDetailsException wex)
+                        {
+                            WriteError(WriteErrorforBadrequest(wex));
                         }
                     }
-                    catch (ErrorDetailsException wex)
-                    {
-                        WriteError(WriteErrorforBadrequest(wex));
-                    }
-                }
-            });
+                });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                WriteError(new ErrorRecord(ex, "Object Id couldnot be retrieved from the current context. Please specify at least one object ID.", ErrorCategory.OpenError, ex));
+            }
+            catch (NullReferenceException ex)
+            {
+                WriteError(new ErrorRecord(ex, "User is not logged in to any subscription. Run Connect-AzAccount to login", ErrorCategory.OpenError, ex));
+            }
         }
 
     }

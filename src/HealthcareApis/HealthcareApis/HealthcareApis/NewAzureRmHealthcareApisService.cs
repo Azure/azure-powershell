@@ -149,49 +149,59 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            RunCmdLet(() =>
+            try
             {
-                List<ServiceAccessPolicyEntry> accessPolicies = GetAccessPolicies();
+                base.ExecuteCmdlet();
 
-                ServicesDescription servicesDescription = new ServicesDescription()
+                RunCmdLet(() =>
                 {
-                    Kind = GetKind(),
-                    Location = Location,
-                    Tags = this.GetTags(),
+                    List<ServiceAccessPolicyEntry> accessPolicies = GetAccessPolicies();
 
-                    Properties = new ServicesProperties()
+                    ServicesDescription servicesDescription = new ServicesDescription()
                     {
-                        AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo() { Authority = GetAuthority(), Audience = GetAudience(), SmartProxyEnabled = EnableSmartProxy.ToBool() },
-                        CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = GetCosmosDBThroughput()},
-                        CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = CorsOrigin, Headers = CorsHeader, Methods = CorsMethod, MaxAge = CorsMaxAge, AllowCredentials = AllowCorsCredential },
-                        AccessPolicies = accessPolicies
-                    }
-                };
+                        Kind = GetKind(),
+                        Location = Location,
+                        Tags = this.GetTags(),
 
-                if (ShouldProcess(this.Name, Resources.createService))
-                {
+                        Properties = new ServicesProperties()
+                        {
+                            AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo() { Authority = GetAuthority(), Audience = GetAudience(), SmartProxyEnabled = EnableSmartProxy.ToBool() },
+                            CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = GetCosmosDBThroughput() },
+                            CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = CorsOrigin, Headers = CorsHeader, Methods = CorsMethod, MaxAge = CorsMaxAge, AllowCredentials = AllowCorsCredential },
+                            AccessPolicies = accessPolicies
+                        }
+                    };
 
-                    this.EnsureNameAvailabilityOrThrow();
-
-                    try
+                    if (ShouldProcess(this.Name, Resources.createService))
                     {
-                        var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(
-                                        this.ResourceGroupName,
-                                        this.Name,
-                                        servicesDescription);
 
+                        this.EnsureNameAvailabilityOrThrow();
 
-                        var healthCareFhirService = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
-                        WriteObject(healthCareFhirService);
+                        try
+                        {
+                            var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(
+                                            this.ResourceGroupName,
+                                            this.Name,
+                                            servicesDescription);
+
+                            var healthCareFhirService = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
+                            WriteHealthcareApisAccount(healthCareFhirService);
+                        }
+                        catch (ErrorDetailsException wex)
+                        {
+                            WriteError(WriteErrorforBadrequest(wex));
+                        }
                     }
-                    catch (ErrorDetailsException wex)
-                    {
-                        WriteError(WriteErrorforBadrequest(wex));
-                    }
-                }
-            });
+                });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                WriteError(new ErrorRecord(ex, "Object Id couldnot be retrieved from the current context. Please specify at least one object ID.", ErrorCategory.OpenError, ex));
+            }
+            catch (NullReferenceException ex)
+            {
+                WriteError(new ErrorRecord(ex, "User is not logged in to any subscription. Run Connect-AzAccount to login", ErrorCategory.OpenError, ex));
+            }
         }
 
         private List<ServiceAccessPolicyEntry> GetAccessPolicies()
@@ -212,6 +222,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             }
 
             return accessPolicies;
+
         }
 
         private Kind GetKind()
