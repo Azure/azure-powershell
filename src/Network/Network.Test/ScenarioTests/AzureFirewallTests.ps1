@@ -58,6 +58,13 @@ function Test-AzureFirewallCRUD
     $appRule2Port1 = 8080
     $appRule2ProtocolType1 = "http"
 
+    # AzureFirewallApplicationRule 3
+    $appRule3Name = "appRule3"
+    $appRule3Fqdn1 = "sql1.database.windows.net"
+    $appRule3Protocol1 = "mssql:1433"
+    $appRule3Port1 = 1433
+    $appRule3ProtocolType1 = "mssql"
+
     # AzureFirewallNetworkRuleCollection
     $networkRcName = "networkRc"
     $networkRcPriority = 200
@@ -160,11 +167,14 @@ function Test-AzureFirewallCRUD
 
         $appRule2 = New-AzFirewallApplicationRule -Name $appRule2Name -Protocol $appRule2Protocol1 -TargetFqdn $appRule2Fqdn1
 
+        $appRule3 = New-AzFirewallApplicationRule -Name $appRule3Name -Protocol $appRule3Protocol1 -TargetFqdn $appRule3Fqdn1
+
         # Create Application Rule Collection with 1 rule
         $appRc = New-AzFirewallApplicationRuleCollection -Name $appRcName -Priority $appRcPriority -Rule $appRule -ActionType $appRcActionType
 
         # Add a rule to the rule collection using AddRule method
         $appRc.AddRule($appRule2)
+        $appRc.AddRule($appRule3)
 
         # Create a second Application Rule Collection with 1 rule
         $appRc2 = New-AzFirewallApplicationRuleCollection -Name $appRc2Name -Priority $appRc2Priority -Rule $appRule -ActionType $appRc2ActionType
@@ -233,7 +243,7 @@ function Test-AzureFirewallCRUD
 
         # Check rule collections
         Assert-AreEqual 2 @($getAzureFirewall.ApplicationRuleCollections).Count
-        Assert-AreEqual 2 @($getAzureFirewall.ApplicationRuleCollections[0].Rules).Count
+        Assert-AreEqual 3 @($getAzureFirewall.ApplicationRuleCollections[0].Rules).Count
         Assert-AreEqual 1 @($getAzureFirewall.ApplicationRuleCollections[1].Rules).Count
 
         Assert-AreEqual 1 @($getAzureFirewall.NatRuleCollections).Count
@@ -245,6 +255,7 @@ function Test-AzureFirewallCRUD
         $appRc = $getAzureFirewall.GetApplicationRuleCollectionByName($appRcName)
         $appRule = $appRc.GetRuleByName($appRule1Name)
         $appRule2 = $appRc.GetRuleByName($appRule2Name)
+        $appRule3 = $appRc.GetRuleByName($appRule3Name)
 
         # Verify application rule collection 1 
         Assert-AreEqual $appRcName $appRc.Name
@@ -280,6 +291,19 @@ function Test-AzureFirewallCRUD
 
         Assert-AreEqual 1 $appRule2.TargetFqdns.Count 
         Assert-AreEqual $appRule2Fqdn1 $appRule2.TargetFqdns[0]
+
+        # Verify application rule 3
+        Assert-AreEqual $appRule3Name $appRule3.Name
+        Assert-Null $appRule3.Description
+
+        Assert-AreEqual 0 $appRule3.SourceAddresses.Count
+
+        Assert-AreEqual 1 $appRule3.Protocols.Count
+        Assert-AreEqual $appRule3ProtocolType1 $appRule3.Protocols[0].ProtocolType
+        Assert-AreEqual $appRule3Port1 $appRule3.Protocols[0].Port
+
+        Assert-AreEqual 1 $appRule3.TargetFqdns.Count
+        Assert-AreEqual $appRule3Fqdn1 $appRule3.TargetFqdns[0]
 
         # Verify application rule collection 2
         $appRc2 = $getAzureFirewall.GetApplicationRuleCollectionByName($appRc2Name)
@@ -505,16 +529,16 @@ function Test-AzureFirewallCRUDWithZones
         Assert-AreEqual @($list[0].NetworkRuleCollections).Count @($getAzureFirewall.NetworkRuleCollections).Count
 
         # list all Azure Firewalls under subscription
-        $listAll = Get-AzureRmFirewall
+        $listAll = Get-AzFirewall
         Assert-NotNull $listAll
 
-        $listAll = Get-AzureRmFirewall -Name "*"
+        $listAll = Get-AzFirewall -Name "*"
         Assert-NotNull $listAll
 
-        $listAll = Get-AzureRmFirewall -ResourceGroupName "*"
+        $listAll = Get-AzFirewall -ResourceGroupName "*"
         Assert-NotNull $listAll
 
-        $listAll = Get-AzureRmFirewall -ResourceGroupName "*" -Name "*"
+        $listAll = Get-AzFirewall -ResourceGroupName "*" -Name "*"
         Assert-NotNull $listAll
 
         # Create Application Rules

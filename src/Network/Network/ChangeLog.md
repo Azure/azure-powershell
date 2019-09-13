@@ -32,6 +32,7 @@
 * Improved cloud exception parsing to display additional details if they are present
 * Improved cloud exception parsing to handle additional type of SDK exception
 * Fixed incorrect mapping of Security Rule models
+* Added new ApplicationRuleProtocolType "mssql" for Azure Firewall resource
 
 ## Version 1.13.0
 * Updated New-AzPrivateLinkServiceIpConfig
