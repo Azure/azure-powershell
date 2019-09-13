@@ -21,6 +21,11 @@
 * Updated example in reference documentation for `Get-AzStorageAccountKey`
 * Fix Upload block blob with properties/metadate fail on container enabled ImmutabilityPolicy.
     -  Set-AzStorageBlobContent
+* Support manage Azure File shares with Management plane API
+    -  New-AzRmStorageShare
+    -  Get-AzRmStorageShare
+    -  Update-AzRmStorageShare
+    -  Remove-AzRmStorageShare
 
 ## Version 1.6.0
 * Fixed miscellaneous typos across module

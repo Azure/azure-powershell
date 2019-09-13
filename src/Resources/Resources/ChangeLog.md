@@ -26,6 +26,14 @@
     - Resources with `condition = false` or `copy.count = 0` will be deleted in complete mode
 * Fixed miscellaneous typos across module
 * Add an example of assigning policy at subscription level to help doc
+* Added breaking change notice about new required parameter `-ScopeType` in the `AzDeployment` cmdlets
+    - `Get-AzDeployment`
+    - `Get-AzDeploymentOperation`
+    - `New-AzDeployment`
+    - `Remove-AzDeployment`
+    - `Save-AzDeploymentTemplate`
+    - `Stop-AzDeployment`
+    - `Test-AzDeployment`
 
 ## Version 1.6.1
 - Remove missing cmdlet referenced in `New-AzResourceGroupDeployment` documentation

@@ -547,8 +547,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             {
                 throw new PSArgumentNullException(string.Format(Resources.Error_ConnectionIdentifierNull));
             }
-            if (connection.BgpSession == null)
-                throw new PSArgumentNullException(string.Format(Resources.Error_NullSession));
             return this.ValidBandwidth(connection.BandwidthInMbps);
         }
 
