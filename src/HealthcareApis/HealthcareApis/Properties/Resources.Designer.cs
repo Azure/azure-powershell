@@ -106,6 +106,24 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Object Id couldn&apos;t be retrieved from the current context. Please specify at least one  accesspolicy object id.
+        /// </summary>
+        internal static string keyNotFoundExceptionMessage {
+            get {
+                return ResourceManager.GetString("keyNotFoundExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User is not logged in to any subscription. Run Connect-AzAccount to login.
+        /// </summary>
+        internal static string nullPointerExceptionMessage {
+            get {
+                return ResourceManager.GetString("nullPointerExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing service.
         /// </summary>
         internal static string RemoveService_ProcessMessage {

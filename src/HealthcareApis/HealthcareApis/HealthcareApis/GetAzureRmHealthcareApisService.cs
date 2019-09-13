@@ -141,11 +141,11 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             }
             catch (KeyNotFoundException ex)
             {
-                WriteError(new ErrorRecord(ex, "Object Id couldnot be retrieved from the current context. Please specify at least one object ID.", ErrorCategory.OpenError, ex));
+                WriteError(new ErrorRecord(ex, Resources.keyNotFoundExceptionMessage, ErrorCategory.OpenError, ex));
             }
             catch (NullReferenceException ex)
             {
-                WriteError(new ErrorRecord(ex, "User is not logged in to any subscription. Run Connect-AzAccount to login", ErrorCategory.OpenError, ex));
+                WriteError(new ErrorRecord(ex, Resources.nullPointerExceptionMessage, ErrorCategory.OpenError, ex));
             }
         }
     }
