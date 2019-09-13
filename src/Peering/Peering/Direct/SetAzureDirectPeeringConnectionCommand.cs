@@ -39,22 +39,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
              Mandatory = true,
              ValueFromPipeline = true,
              HelpMessage = Constants.PeeringDirectConnectionHelp,
-             ParameterSetName = Constants.ParameterSetNameIPv4Prefix),
-         Parameter(
+             ParameterSetName = Constants.ParameterSetNameIPv4Prefix)]
+        [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
              HelpMessage = Constants.PeeringDirectConnectionHelp,
-             ParameterSetName = Constants.ParameterSetNameIPv6Prefix),
-         Parameter(
+             ParameterSetName = Constants.ParameterSetNameIPv6Prefix)]
+        [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
              HelpMessage = Constants.PeeringDirectConnectionHelp,
-             ParameterSetName = Constants.ParameterSetNameBandwidth),
-         Parameter(
+             ParameterSetName = Constants.ParameterSetNameBandwidth)]
+        [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
              HelpMessage = Constants.PeeringDirectConnectionHelp,
              ParameterSetName = Constants.ParameterSetNameMd5Authentication)]
+        [Parameter(
+             Mandatory = true,
+             ValueFromPipeline = true,
+             HelpMessage = Constants.PeeringDirectConnectionHelp,
+             ParameterSetName = Constants.ParameterSetNameUseForPeeringService)]
         public PSDirectConnection InputObject { get; set; }
 
         /// <summary>
@@ -99,10 +104,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         /// Gets or sets the m d 5 authentication key.
         /// </summary>
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = Constants.MD5AuthenticationKeyHelp,
             ParameterSetName = Constants.ParameterSetNameMd5Authentication)]
         public string MD5AuthenticationKey { get; set; }
+
+        /// <summary>
+        /// Gets or sets the m d 5 authentication key.
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = Constants.UseForPeeringServiceHelp,
+            ParameterSetName = Constants.ParameterSetNameUseForPeeringService)]
+        public bool? UseForPeeringService { get; set; }
 
         /// <summary>
         ///     Bandwidth offered at this location.
@@ -149,6 +163,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
                 {
                     newRequest = this.UpdateMD5Authentication();
                 }
+                else if (this.ParameterSetName.Equals(Constants.ParameterSetNameUseForPeeringService, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    newRequest = this.UpdateUseForPeeringService();
+                }
 
                 this.WriteObject(newRequest);
             }
@@ -190,6 +208,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         private PSDirectConnection UpdateMD5Authentication()
         {
             this.InputObject.BgpSession.Md5AuthenticationKey = this.MD5AuthenticationKey;
+            if (this.IsValidConnection(this.InputObject))
+                return this.InputObject;
+
+            throw new InvalidOperationException(string.Format(Resources.Error_WrongCommandForDirectObject));
+        }
+
+        /// <summary>
+        ///     The update InputObject offer.
+        /// </summary>
+        /// <returns>
+        ///     The <see cref="PSDirectConnection" />.
+        /// </returns>
+        private PSDirectConnection UpdateUseForPeeringService()
+        {
+            this.InputObject.UseForPeeringService = this.UseForPeeringService ?? false;
             if (this.IsValidConnection(this.InputObject))
                 return this.InputObject;
 
