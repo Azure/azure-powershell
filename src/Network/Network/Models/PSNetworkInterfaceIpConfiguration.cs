@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     using Newtonsoft.Json;
     using System.Collections.Generic;
     using WindowsAzure.Commands.Common.Attributes;
-     
+
     public class PSNetworkInterfaceIPConfiguration : PSIPConfiguration
     {
         [JsonProperty(Order = 2)]
@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 2)]
         public List<PSVirtualNetworkTap> VirtualNetworkTaps { get; set; }
 
+        [JsonProperty(Order = 2)]
         public PSIpConfigurationConnectivityInformation PrivateLinkConnectionProperties { get; set; }
 
         [JsonIgnore]
@@ -100,6 +101,5 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             return !string.IsNullOrEmpty(this.Name);
         }
-
     }
 }
