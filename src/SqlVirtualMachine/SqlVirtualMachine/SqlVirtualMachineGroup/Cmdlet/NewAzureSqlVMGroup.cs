@@ -121,7 +121,8 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
             }
 
             throw new PSArgumentException(
-                string.Format("A sql virtual machine group with the same name already exists"),
+                string.Format("A sql virtual machine group with name {0} in resource group {1} already exists. If you want to modify an existing SqlVMGroup you can use" +
+                " Update-AzSqlVMGroup command.", Name, ResourceGroupName),
                 "SqlVirtualMachineGroup");
         }
 

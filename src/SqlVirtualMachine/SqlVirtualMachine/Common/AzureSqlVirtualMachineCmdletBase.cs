@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
         /// <returns></returns>
         protected virtual string GetResourceId(M model)
         {
-            if (model is IEnumerable<object>)
+            var resource = model as IEnumerable<object>;
+            if (resource != null)
             {
-                object resource = ((IEnumerable<object>) model).FirstOrDefault();
                 if (resource != null)
                 {
                     var resourceIdProperty = resource.GetType().GetProperty("ResourceId");
