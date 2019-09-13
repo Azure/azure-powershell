@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     using System.Collections.Generic;
     using WindowsAzure.Commands.Common.Attributes;
 
-    public class PSPrivateLinkConnectionProperty
+    public class PSIpConfigurationConnectivityInformation
     {
         public string GroupId { get; set; }
 
