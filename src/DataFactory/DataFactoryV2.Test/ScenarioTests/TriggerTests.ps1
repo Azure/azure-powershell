@@ -181,13 +181,13 @@ function Test-BlobEventTriggerSubscriptions
         Verify-Trigger $expected $actual $rgname $dfname $triggername
         
         $startDate = [DateTime]::Parse("09/10/2017")
-		Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force
-		$status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force
+		Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername
+		$status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername
 		while ($status.Status -ne "Enabled"){
 			if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
 				Start-Sleep -s 150
 			}
-			$status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force
+			$status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername
 		}
         
         Start-AzDataFactoryV2Trigger -ResourceGroupName $rgname -DataFactoryName $dfname -Name $triggername -Force
