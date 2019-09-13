@@ -886,6 +886,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.Container, CNM.PSContainer>();
                 cfg.CreateMap<MNM.ContainerNetworkInterfaceConfiguration, CNM.PSContainerNetworkInterfaceConfiguration>();
                 cfg.CreateMap<MNM.IPConfigurationProfile, CNM.PSIPConfigurationProfile>();
+                cfg.CreateMap<MNM.NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties, CNM.PSIpConfigurationConnectivityInformation>();
 
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSNetworkProfile, MNM.NetworkProfile>();
@@ -894,6 +895,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSContainer, MNM.Container>();
                 cfg.CreateMap<CNM.PSContainerNetworkInterfaceConfiguration, MNM.ContainerNetworkInterfaceConfiguration>();
                 cfg.CreateMap<CNM.PSIPConfigurationProfile, MNM.IPConfigurationProfile>();
+                cfg.CreateMap<CNM.PSIpConfigurationConnectivityInformation, MNM.NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties>();
 
                 //// SDWAN
                 cfg.CreateMap<CNM.PSVirtualHub, MNM.VirtualHub>();
