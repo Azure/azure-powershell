@@ -9,7 +9,7 @@ The CI filter is a set of tooling that looks at the files changed in a pull requ
 - Which modules to generate help for
 - Which modules to run static analysis on
 
-This filtering allows for faster build times as we are no longer building _every_ project, running _every_ test, generating _all_ help and running static analysis on _everything_, but rather only on the services that are being updated in the pull request and what they are dependent on.
+This filtering allows for faster build times as we are no longer building _every_ project, running _every_ test, generating _all_ help and running static analysis on _everything_, but rather only on the services that are being updated in the pull request and the services that depend on them.
 
 ### `CreateFilterMappings.ps1`
 
