@@ -18,8 +18,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2TriggerSubscriptionStatus",
-        DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(PSTriggerSubscriptionStatus))]
-    public class GetAzureDataFactoryTriggerSubscriptionStatusCommand : DataFactoryContextActionBaseCmdlet
+        DefaultParameterSetName = ParameterSetNames.ByFactoryName), OutputType(typeof(PSTriggerSubscriptionStatus))]
+    public class GetAzureDataFactoryTriggerSubscriptionStatusCommand : DataFactoryContextSubResourceBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpTriggerName)]

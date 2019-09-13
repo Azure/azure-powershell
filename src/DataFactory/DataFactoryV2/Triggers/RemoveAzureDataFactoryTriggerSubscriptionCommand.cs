@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2TriggerSubscription",
         DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveAzureDataFactoryTriggerSubscriptionCommand : DataFactoryContextSubResourceBaseCmdlet
+    public class RemoveAzureDataFactoryTriggerSubscriptionCommand : DataFactoryContextActionBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpTriggerName)]

@@ -14,36 +14,31 @@ Unsubscribe the event trigger to external service events.
 
 ### ByFactoryName (Default)
 ```
-Remove-AzDataFactoryV2TriggerSubscription [-Name] <String> [-ResourceGroupName] <String>
- [-DataFactoryName] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Remove-AzDataFactoryV2TriggerSubscription [-Name] <String> [-PassThru] [-Force] [-ResourceGroupName] <String>
+ [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzDataFactoryV2TriggerSubscription [-InputObject] <PSTrigger> [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Remove-AzDataFactoryV2TriggerSubscription [-InputObject] <PSTrigger> [-PassThru] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzDataFactoryV2TriggerSubscription [-ResourceId] <String> [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Remove-AzDataFactoryV2TriggerSubscription [-PassThru] [-Force] [-ResourceId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 This command unsubscribes the event trigger to the specified external service events from the trigger defintion.
-
 
 ## EXAMPLES
 
 ### Example 1
 ```
 PS C:\> Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName ADF -DataFactoryName WikiADF -Name Trigger1
-
-TriggerName Status
------------ ------
-Trigger1    Disabled
-
 ```
 
 This command will unsubscribe BlobEnetTrigger1 trigger to the specified events from the trigger defintion.
@@ -125,6 +120,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PassThru
+If specified, cmdlet will return return true on successful delete.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
@@ -186,16 +196,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 Microsoft.Azure.Commands.DataFactoryV2.Models.PSTrigger
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSTriggerSubscriptionStatus
-
 
 ## NOTES
 
