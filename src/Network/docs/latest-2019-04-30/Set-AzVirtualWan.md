@@ -14,11 +14,10 @@ Creates a VirtualWAN resource if it doesn't exist else updates the existing Virt
 
 ### UpdateExpanded (Default)
 ```
-Set-AzVirtualWan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Set-AzVirtualWan -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-AllowBranchToBranchTraffic] [-AllowVnetToVnetTraffic] [-DisableVpnEncryption] [-Id <String>]
- [-Location <String>] [-P2SVpnServerConfiguration <IP2SVpnServerConfiguration_Reference[]>]
- [-SecurityProviderName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-P2SVpnServerConfiguration <IP2SVpnServerConfiguration_Reference[]>] [-SecurityProviderName <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -157,7 +156,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

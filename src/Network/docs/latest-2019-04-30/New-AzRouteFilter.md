@@ -14,10 +14,9 @@ Creates or updates a route filter in a specified resource group.
 
 ### CreateExpanded (Default)
 ```
-New-AzRouteFilter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Id <String>]
- [-Location <String>] [-Peering <IExpressRouteCircuitPeering_Reference[]>]
- [-Rule <IRouteFilterRule_Reference[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzRouteFilter -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+ [-Id <String>] [-Peering <IExpressRouteCircuitPeering_Reference[]>] [-Rule <IRouteFilterRule_Reference[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -35,7 +34,7 @@ New-AzRouteFilter -InputObject <INetworkIdentity> -RouteFilter <IRouteFilter> [-
 
 ### CreateViaIdentityExpanded
 ```
-New-AzRouteFilter -InputObject <INetworkIdentity> [-Id <String>] [-Location <String>]
+New-AzRouteFilter -InputObject <INetworkIdentity> -Location <String> [-Id <String>]
  [-Peering <IExpressRouteCircuitPeering_Reference[]>] [-Rule <IRouteFilterRule_Reference[]>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -138,7 +137,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
