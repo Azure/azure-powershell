@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add UploadSizeInBytes parameter tp New-AzDiskConfig
+* Add Incremental parameter to New-AzSnapshotConfig
 * Add a low priority virtual machine feature:
     - MaxPrice, EvictionPolicy and Priority parameters are added to New-AzVMConfig.
     - MaxPrice parameter is added to New-AzVmssConfig, Update-AzVM and Update-AzVmss cmdlets.

@@ -28,6 +28,7 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -53,6 +54,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
+        [CmdletParameterBreakingChange(nameof(DiskSizeGB), ChangeDescription = "'DiskSizeInBytes' instead of 'DiskSizeGB' is going to be used when CreateOption is 'Upload'.")]
         public int DiskSizeGB { get; set; }
 
         [Parameter(
@@ -112,6 +114,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string SourceResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public long UploadSizeInBytes { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -201,6 +208,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vCreationData.SourceResourceId = this.SourceResourceId;
             }
 
+            if (this.IsParameterBound(c => c.UploadSizeInBytes))
+            {
+                if (vCreationData == null)
+                {
+                    vCreationData = new CreationData();
+                }
+                vCreationData.UploadSizeBytes = this.UploadSizeInBytes;
+            }
+
             if (this.IsParameterBound(c => c.EncryptionSettingsEnabled))
             {
                 if (vEncryptionSettingsCollection == null)
@@ -264,6 +280,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 CreationData = vCreationData,
                 EncryptionSettingsCollection = vEncryptionSettingsCollection,
             };
+
+            // this is to hide the breaking change for upload
+            if ("upload".Equals(vDisk.CreationData?.CreateOption?.ToLowerInvariant()))
+            {
+                if (vDisk.DiskSizeGB != null)
+                {
+                    vDisk.CreationData.UploadSizeBytes = (long) vDisk.DiskSizeGB * 1073741824 + 512;
+                    vDisk.DiskSizeGB = null;
+                }
+            }
 
             WriteObject(vDisk);
         }
