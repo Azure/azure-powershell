@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.HealthcareApis;
 using System.Globalization;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.HealthcareApis.Models;
 
 namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 {
@@ -106,10 +107,17 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                     && !string.IsNullOrEmpty(name)
                     && ShouldProcess(name, string.Format(CultureInfo.CurrentCulture, Resources.RemoveService_ProcessMessage, name)))
                 {
-                    this.HealthcareApisClient.Services.Delete(rgName, name);
-                    if (PassThru.IsPresent)
+                    try
                     {
-                        WriteObject(true);
+                        this.HealthcareApisClient.Services.Delete(rgName, name);
+                        if (PassThru.IsPresent)
+                        {
+                            WriteObject(true);
+                        }
+                    }
+                    catch (ErrorDetailsException wex)
+                    {
+                        WriteError(WriteErrorforBadrequest(wex));
                     }
                 }
             });

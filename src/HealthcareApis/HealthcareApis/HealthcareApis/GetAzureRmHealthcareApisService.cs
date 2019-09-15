@@ -72,8 +72,16 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                 {
                     case ServiceNameParameterSet:
                         {
-                            var healthcareApisAccount = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
-                            WriteHealthcareApisAccount(healthcareApisAccount);
+                            try
+                            {
+                                var healthcareApisAccount = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
+                                WriteHealthcareApisAccount(healthcareApisAccount);
+                            }
+                            catch (ErrorDetailsException wex)
+                            {
+                                WriteError(WriteErrorforBadrequest(wex));
+                            }
+
                             break;
                         }
                     case ResourceIdParameterSet:
@@ -83,8 +91,15 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
                             if (ValidateAndExtractName(this.ResourceId, out resourceGroupName, out resourceName))
                             {
-                                var healthcareApisAccount = this.HealthcareApisClient.Services.Get(resourceGroupName, resourceName);
-                                WriteHealthcareApisAccount(healthcareApisAccount);
+                                try
+                                { 
+                                    var healthcareApisAccount = this.HealthcareApisClient.Services.Get(resourceGroupName, resourceName);
+                                    WriteHealthcareApisAccount(healthcareApisAccount);
+                                }
+                                catch (ErrorDetailsException wex)
+                                {
+                                    WriteError(WriteErrorforBadrequest(wex));
+                                }
                             }
                             break;
                         }
@@ -92,14 +107,28 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                         {
                             if (string.IsNullOrEmpty(this.ResourceGroupName))
                             {
-                                IPage<ServicesDescription> healthcareApisServicesBySubscription = this.HealthcareApisClient.Services.List();
-                                this.WriteObject(ToPSFhirServices(healthcareApisServicesBySubscription), enumerateCollection: true);
+                                try
+                                {
+                                    IPage<ServicesDescription> healthcareApisServicesBySubscription = this.HealthcareApisClient.Services.List();
+                                    this.WriteObject(ToPSFhirServices(healthcareApisServicesBySubscription), enumerateCollection: true);
+                                }
+                                catch (ErrorDetailsException wex)
+                                {
+                                    WriteError(WriteErrorforBadrequest(wex));
+                                }
                                 break;
                             }
                             else
                             {
-                                IPage<ServicesDescription> healthcareApisServicesResourceGroup = this.HealthcareApisClient.Services.ListByResourceGroup(this.ResourceGroupName);
-                                this.WriteObject(ToPSFhirServices(healthcareApisServicesResourceGroup), enumerateCollection: true);
+                                try
+                                {
+                                    IPage<ServicesDescription> healthcareApisServicesResourceGroup = this.HealthcareApisClient.Services.ListByResourceGroup(this.ResourceGroupName);
+                                    this.WriteObject(ToPSFhirServices(healthcareApisServicesResourceGroup), enumerateCollection: true);
+                                }
+                                catch (ErrorDetailsException wex)
+                                {
+                                    WriteError(WriteErrorforBadrequest(wex));
+                                }
                                 break;
                             }
                         }

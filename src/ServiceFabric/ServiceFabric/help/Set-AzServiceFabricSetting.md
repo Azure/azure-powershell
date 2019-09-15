@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/set-azservicefabricsetting
@@ -40,7 +40,7 @@ This command will set 'MaxFileOperationTimeout' to value '5000' under the sectio
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster.
+Specify the name of the cluster
 
 ```yaml
 Type: System.String
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-Parameter.
+Parameter name of the fabric setting
 
 ```yaml
 Type: System.String
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group.
+Specify the name of the resource group.
 
 ```yaml
 Type: System.String
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -Section
-Section.
+Section name of the fabric setting
 
 ```yaml
 Type: System.String
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -SettingsSectionDescription
-Client authentication type.
+An array of fabric settings
 
 ```yaml
 Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[]
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -Value
-Value.
+Parameter value of the fabric setting
 
 ```yaml
 Type: System.String
@@ -160,7 +160,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

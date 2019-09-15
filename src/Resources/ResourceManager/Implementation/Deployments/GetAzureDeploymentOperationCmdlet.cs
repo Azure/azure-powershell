@@ -20,11 +20,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>
     /// Gets the deployment operation.
     /// </summary>
+    [GenericBreakingChange("A new parameter \"ScopeType\" will be introduced to the cmdlet and will be mandatory when getting deployment opeartions by deployment name. ScopeType will be an enum with four values: ResourceGroup, Subscription, ManagementGroup, Tenant. Adding this parameter allows us to use one cmdlet for all Azure Resource Manager template deployments but still determine the intended level of scope.", "3.0")]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentOperation", DefaultParameterSetName = GetAzureDeploymentOperationCmdlet.SubscriptionParameterSetWithDeploymentName), OutputType(typeof(PSDeploymentOperation))]
     public class GetAzureDeploymentOperationCmdlet : ResourceManagerCmdletBase
     {
