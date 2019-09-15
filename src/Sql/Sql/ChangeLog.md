@@ -21,6 +21,7 @@
 * Update example in reference documentation for `Get-AzSqlElasticPool`
 * Added vCore example to creating an elastic pool (New-AzSqlElasticPool).
 * Enabled removal of server/database auditing settings when multiple diagnostic settings that enable audit category exist.
+* Fix email addresses validation in multiple Sql Vulnerability Assessment cmdlets (Update-AzSqlDatabaseVulnerabilityAssessmentSetting, Update-AzSqlServerVulnerabilityAssessmentSetting, Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting and Update-AzSqlInstanceVulnerabilityAssessmentSetting).
 
 ## Version 1.14.1
 * Update documentation of old Auditing cmdlets.
