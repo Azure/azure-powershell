@@ -20,8 +20,10 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification
         internal const string DatabaseObjectParameterSet = "DatabaseObjectParameterSet";
         internal const string ClassificationObjectParameterSet = "ClassificationObjectParameterSet";
         internal const string DatabaseParameterSet = "DatabaseParameterSet";
+        internal const string SqlDatabaseSensitivityRecommendation = "SqlDatabaseSensitivityRecommendation";
         internal const string SqlDatabaseSensitivityClassification = "SqlDatabaseSensitivityClassification";
         internal const string SqlInstanceDatabaseSensitivityClassification = "SqlInstanceDatabaseSensitivityClassification";
+        internal const string SqlInstanceDatabaseSensitivityRecommendation = "SqlInstanceDatabaseSensitivityRecommendation";
         internal const string ResourceGroupNameHelpMessage = "The name of the resource group.";
         internal const string ServerNameHelpMessage = "SQL server name.";
         internal const string InstanceNameHelpMessage = "Azure SQL managed instance name.";

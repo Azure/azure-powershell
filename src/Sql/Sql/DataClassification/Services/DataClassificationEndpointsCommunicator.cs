@@ -68,6 +68,34 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
                 schemaName, tableName, columnName);
         }
 
+        internal void EnableSensitivityRecommendation(string resourceGroupName, string serverName, string databaseName,
+            string schemaName, string tableName, string columnName)
+        {
+            GetCurrentSqlManagementClient().SensitivityLabels.EnableRecommendation(resourceGroupName, serverName, databaseName,
+                schemaName, tableName, columnName);
+        }
+
+        internal void DisableSensitivityRecommendation(string resourceGroupName, string serverName, string databaseName,
+            string schemaName, string tableName, string columnName)
+        {
+            GetCurrentSqlManagementClient().SensitivityLabels.DisableRecommendation(resourceGroupName, serverName, databaseName,
+                schemaName, tableName, columnName);
+        }
+
+        internal void EnableManagedDatabaseSensitivityRecommendation(string resourceGroupName, string managedInstanceName, string databaseName,
+            string schemaName, string tableName, string columnName)
+        {
+            GetCurrentSqlManagementClient().ManagedDatabaseSensitivityLabels.EnableRecommendation(resourceGroupName, managedInstanceName, databaseName,
+                schemaName, tableName, columnName);
+        }
+
+        internal void DisableManagedDatabaseSensitivityRecommendation(string resourceGroupName, string managedInstanceName, string databaseName,
+            string schemaName, string tableName, string columnName)
+        {
+            GetCurrentSqlManagementClient().ManagedDatabaseSensitivityLabels.DisableRecommendation(resourceGroupName, managedInstanceName, databaseName,
+                schemaName, tableName, columnName);
+        }
+
         internal List<SensitivityLabel> GetSensitivityLabel(string resourceGroupName, string serverName, string databaseName,
             string schemaName, string tableName, string columnName)
         {

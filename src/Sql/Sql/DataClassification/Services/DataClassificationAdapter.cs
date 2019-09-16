@@ -108,6 +108,50 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
                 sensitivityLabelModel.ColumnName));
         }
 
+        internal void EnableSensitivityRecommendations(SqlDatabaseSensitivityClassificationModel model)
+        {
+            ModifySensitivityLabels(model, sensitivityLabelModel => Communicator.EnableSensitivityRecommendation(
+                model.ResourceGroupName,
+                model.ServerName,
+                model.DatabaseName,
+                sensitivityLabelModel.SchemaName,
+                sensitivityLabelModel.TableName,
+                sensitivityLabelModel.ColumnName));
+        }
+
+        internal void DisableSensitivityRecommendations(SqlDatabaseSensitivityClassificationModel model)
+        {
+            ModifySensitivityLabels(model, sensitivityLabelModel => Communicator.DisableSensitivityRecommendation(
+                model.ResourceGroupName,
+                model.ServerName,
+                model.DatabaseName,
+                sensitivityLabelModel.SchemaName,
+                sensitivityLabelModel.TableName,
+                sensitivityLabelModel.ColumnName));
+        }
+
+        internal void EnableManagedDatabaseSensitivityRecommendations(ManagedDatabaseSensitivityClassificationModel model)
+        {
+            ModifySensitivityLabels(model, sensitivityLabelModel => Communicator.EnableManagedDatabaseSensitivityRecommendation(
+                model.ResourceGroupName,
+                model.InstanceName,
+                model.DatabaseName,
+                sensitivityLabelModel.SchemaName,
+                sensitivityLabelModel.TableName,
+                sensitivityLabelModel.ColumnName));
+        }
+
+        internal void DisableManagedDatabaseSensitivityRecommendations(ManagedDatabaseSensitivityClassificationModel model)
+        {
+            ModifySensitivityLabels(model, sensitivityLabelModel => Communicator.DisableManagedDatabaseSensitivityRecommendation(
+                model.ResourceGroupName,
+                model.InstanceName,
+                model.DatabaseName,
+                sensitivityLabelModel.SchemaName,
+                sensitivityLabelModel.TableName,
+                sensitivityLabelModel.ColumnName));
+        }
+
         internal List<SensitivityLabelModel> GetCurrentSensitivityLabel(
             string resourceGroupName, string serverName, string databaseName,
             string schemaName, string tableName, string columnName)
