@@ -102,19 +102,20 @@ function Get-DefaultCredentialForTest()
 
 function Get-LocationForTest()
 {
-	return 'eastus'
+	$location = Get-Location -providerNamespace "Microsoft.SqlVirtualMachine" -resourceType "SqlVirtualMachines" -preferredLocation "East US"
+	return $location
 }
 
 function Get-ResourceGroupNameForTest()
 {
-	$nr = Get-Random -Minimum 1000 -Maximum 5000
-	return "sqlvmcrudtest-" + $nr
+	$nr = getAssetName "sqlvmcrudtest-"
+	return $nr
 }
 
 function Get-SqlVirtualMachineGroupName()
 {
-	$nr = Get-Random -Minimum 1000 -Maximum 5000
-	return "test-group" + $nr
+	$nr = getAssetName "test-group"
+	return $nr
 }
 
 function Get-DefaultUser()
@@ -129,7 +130,7 @@ function Get-DefaultSqlService()
 
 function Get-DefaultPassword()
 {
-	return 'Sql@zure123!'
+	return getAssetName
 }
 
 function Get-DomainForTest()
@@ -139,8 +140,8 @@ function Get-DomainForTest()
 
 function Get-StorageaccountNameForTest()
 {
-	$nr = Get-Random -Minimum 1000 -Maximum 5000
-	return 'sqlvmpowershelltest' + $nr
+	$nr = getAssetName 'sqlvmpowershelltest'
+	return $nr
 }
 
 <#
