@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Insights.Alerts
@@ -95,7 +96,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         [Parameter(Mandatory = true, ValueFromPipeline = true,ValueFromPipelineByPropertyName = true, HelpMessage = "The condition for rule")]
         [ValidateNotNullOrEmpty]
         [Alias("Criteria")]
-        public List<PSMetricCriteria> Condition { get; set; }
+        public List<IPSMultiMetricCriteria> Condition { get; set; }
 
         /// <summary>
         /// Gets or sets the ActionGroup  parameter
@@ -126,13 +127,19 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
 
         protected override void ProcessRecordInternal()
         {
+            if (this.Condition.Any(c => c.CriterionType == CriterionType.DynamicThresholdCriterion))
+            {
+                this.TargetResourceScope = this.TargetResourceScope ?? new string[] { this.TargetResourceId };
+            }
+
             if (this.TargetResourceScope == null)//Single Resource Metric Alert Rule
             {
                 var scopes = new List<string>();
                 scopes.Add(this.TargetResourceId);
                 var metricCriteria = new List<MetricCriteria>();
-                foreach (var condition in this.Condition)
+                foreach (var metricCondition in this.Condition)
                 {
+                    var condition = metricCondition as PSMetricCriteria;
                     metricCriteria.Add(new MetricCriteria(name: condition.Name, metricName: condition.MetricName, operatorProperty: condition.OperatorProperty.ToString(), timeAggregation: condition.TimeAggregation.ToString(), threshold: condition.Threshold, metricNamespace: condition.MetricNamespace, dimensions: condition.Dimensions));
                 }
                 var criteria = new MetricAlertSingleResourceMultipleMetricCriteria(
@@ -164,13 +171,23 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             }
             else// Multi Resource Metric Alert Rule
             {
-                List<MultiMetricCriteria> multiMetricCriterias = new List<MultiMetricCriteria>();
+                List<MultiMetricCriteria> multiMetricCriteria = new List<MultiMetricCriteria>();
                 foreach (var condition in this.Condition)
                 {
-                    multiMetricCriterias.Add(new MetricCriteria(name: condition.Name, metricName: condition.MetricName, operatorProperty: condition.OperatorProperty.ToString(), timeAggregation: condition.TimeAggregation.ToString(), threshold: condition.Threshold, metricNamespace: condition.MetricNamespace, dimensions: condition.Dimensions));
+                    if (condition is PSMetricCriteria)
+                    {
+                        var psStaticMetricCriteria = condition as PSMetricCriteria;
+                        multiMetricCriteria.Add(new MetricCriteria(name: psStaticMetricCriteria.Name, metricName: psStaticMetricCriteria.MetricName, operatorProperty: psStaticMetricCriteria.OperatorProperty.ToString(), timeAggregation: psStaticMetricCriteria.TimeAggregation.ToString(), threshold: psStaticMetricCriteria.Threshold, metricNamespace: psStaticMetricCriteria.MetricNamespace, dimensions: psStaticMetricCriteria.Dimensions));
+                    }
+                    else
+                    {
+                        var psDynamicMetricCriteria = condition as PSDynamicMetricCriteria;
+                        multiMetricCriteria.Add(new DynamicMetricCriteria(name: psDynamicMetricCriteria.Name, metricName: psDynamicMetricCriteria.MetricName, operatorProperty: psDynamicMetricCriteria.OperatorProperty.ToString(), timeAggregation: psDynamicMetricCriteria.TimeAggregation.ToString(), metricNamespace: psDynamicMetricCriteria.MetricNamespace, dimensions: psDynamicMetricCriteria.Dimensions, alertSensitivity: psDynamicMetricCriteria.AlertSensitivity, failingPeriods: psDynamicMetricCriteria.FailingPeriods, ignoreDataBefore: psDynamicMetricCriteria.IgnoreDataBefore));
+                    }
                 }
+
                 MetricAlertMultipleResourceMultipleMetricCriteria metricCriteria = new MetricAlertMultipleResourceMultipleMetricCriteria(
-                    allOf: multiMetricCriterias
+                    allOf: multiMetricCriteria
                 );
                 var actions = new List<MetricAlertAction>();
                 foreach (var actionGroup in this.ActionGroup)
@@ -197,7 +214,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                     var result = this.MonitorManagementClient.MetricAlerts.CreateOrUpdateAsync(resourceGroupName: this.ResourceGroupName, ruleName: this.Name, parameters: metricAlertResource).Result;
                     WriteObject(result);
                 }
-                    
+
             }
         }
     }

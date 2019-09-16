@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/add-azservicefabricapplicationcertificate
@@ -22,7 +22,7 @@ Add-AzServiceFabricApplicationCertificate [-ResourceGroupName] <String> [-Name] 
 ### ByNewPfxAndVaultName
 ```
 Add-AzServiceFabricApplicationCertificate [-ResourceGroupName] <String> [-Name] <String>
- [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>] [-CertificateOutputFolder <String>]
+ [-KeyVaultResourceGroupName <String>] [-KeyVaultName <String>] [-CertificateOutputFolder <String>]
  [-CertificatePassword <SecureString>] -CertificateSubjectName <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -30,7 +30,7 @@ Add-AzServiceFabricApplicationCertificate [-ResourceGroupName] <String> [-Name] 
 ### ByExistingPfxAndVaultName
 ```
 Add-AzServiceFabricApplicationCertificate [-ResourceGroupName] <String> [-Name] <String>
- [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>] -CertificateFile <String>
+ [-KeyVaultResourceGroupName <String>] [-KeyVaultName <String>] -CertificateFile <String>
  [-CertificatePassword <SecureString>] [-CertificateCommonName <String>]
  [-CertificateIssuerThumbprint <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -43,7 +43,7 @@ You can specify a certificate you already have or have the system generate a new
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS c:> Add-AzServiceFabricApplicationCertificate -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -SecretIdentifier 'https://contoso03vault.vault.azure.net/secrets/contoso03vaultrg/7f7de9131c034172b9df37ccc549524f'
 ```
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificateFile
-The existing certificate file path.
+The path to the existing certificate
 
 ```yaml
 Type: System.String
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificateOutputFolder
-The folder path of the new certificate to be created.
+The folder where the new certificate needs to be downloaded.
 
 ```yaml
 Type: System.String
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificatePassword
-The password of the pfx file.
+The password of the certificate
 
 ```yaml
 Type: System.Security.SecureString
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificateSubjectName
-The Dns name of the certificate to be created.
+The subject name of the certificate
 
 ```yaml
 Type: System.String
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultName
-Azure key vault name.
+Azure key vault name, if not given it will be defaulted to the resource group name
 
 ```yaml
 Type: System.String
@@ -180,13 +180,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -KeyVaultResouceGroupName
-Azure key vault resource group name.
+### -KeyVaultResourceGroupName
+Azure key vault resource group name, if not given it will be defaulted to resource group name
 
 ```yaml
 Type: System.String
 Parameter Sets: ByNewPfxAndVaultName, ByExistingPfxAndVaultName
-Aliases:
+Aliases: KeyVaultResouceGroupName
 
 Required: False
 Position: Named
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster.
+Specify the name of the cluster
 
 ```yaml
 Type: System.String
@@ -226,7 +226,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecretIdentifier
-The existing Azure key vault secret uri.
+The existing Azure key vault secret URL, for example 'https://mykv.vault.azure.net:443/secrets/mysecrets/55ec7c4dc61a462bbc645ffc9b4b225f'
 
 ```yaml
 Type: System.String
@@ -256,7 +256,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

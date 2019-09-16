@@ -94,25 +94,5 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
             }
             return excludedDetectionTypes;
         }
-
-        /// <summary>
-        /// Preforms validity checks
-        /// </summary>
-        public void ValidateContent()
-        {
-            // Validity checks:
-            // 1. Check that EmailAddresses are in correct format 
-            bool areEmailAddressesInCorrectFormat = Util.AreEmailAddressesInCorrectFormat(NotificationRecipientsEmails, ';');
-            if (!areEmailAddressesInCorrectFormat)
-            {
-                throw new Exception(Properties.Resources.EmailsAreNotValid);
-            }
-
-            // 2. check that EmailAdmins is not False and NotificationRecipientsEmails is not empty
-            if (!EmailAdmins && string.IsNullOrEmpty(NotificationRecipientsEmails))
-            {
-                throw new Exception(Properties.Resources.NeedToProvideEmail);
-            }
-        }
     }
 }
