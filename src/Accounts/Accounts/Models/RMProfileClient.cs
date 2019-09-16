@@ -599,10 +599,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
                     subscription.SetAccount(accessToken.UserId);
                     subscription.SetEnvironment(environment.Name);
-                    subscription.SetTenant(subscriptionFromServer.TenantId);
+                    subscription.SetTenant(accessToken.TenantId);
 
                     tenant = new AzureTenant();
-                    tenant.Id = subscriptionFromServer.TenantId;
+                    tenant.Id = accessToken.TenantId;
                     return true;
                 }
 
@@ -735,7 +735,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             AzureContext context = new AzureContext(_profile.DefaultContext.Subscription, account, environment,
                                         CreateTenantFromString(tenantId, accessToken.TenantId));
 
-            return subscriptionClient.Subscriptions.List().Select(s => s.ToAzureSubscription(context));
+            var result = subscriptionClient.Subscriptions.ListAsync()
+                .ConfigureAwait(false).GetAwaiter().GetResult();
+
+            var subscriptions = result.Select(s => s.ToAzureSubscription(context)).ToList();
+
+            if (string.IsNullOrEmpty(result.NextPageLink))
+            {
+                return subscriptions;
+            }
+
+            while (result.NextPageLink != null)
+            {
+                result = subscriptionClient.Subscriptions.ListNextAsync(result.NextPageLink)
+                    .ConfigureAwait(false).GetAwaiter().GetResult();
+
+                subscriptions.AddRange(result.Select(s => s.ToAzureSubscription(context)));
+            }
+
+            return subscriptions;
         }
 
         private void WriteWarningMessage(string message)

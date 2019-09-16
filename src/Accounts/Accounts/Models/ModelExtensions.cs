@@ -30,7 +30,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             subscription.Id = other.SubscriptionId;
             subscription.Name = other.DisplayName;
             subscription.State = other.State.ToString();
-            subscription.SetProperty(AzureSubscription.Property.Tenants, other.TenantId.ToString());
+            subscription.SetProperty(AzureSubscription.Property.Tenants,
+                other.TenantId ?? context.Tenant.Id);
             return subscription;
         }
 
