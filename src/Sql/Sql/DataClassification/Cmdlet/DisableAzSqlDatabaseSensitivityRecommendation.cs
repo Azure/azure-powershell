@@ -18,7 +18,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 {
     [Cmdlet(
-        VerbsLifecycle.Enable,
+        VerbsLifecycle.Disable,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DataClassificationCommon.SqlDatabaseSensitivityRecommendation,
         DefaultParameterSetName = DataClassificationCommon.ClassificationObjectParameterSet,
         SupportsShouldProcess = true),
