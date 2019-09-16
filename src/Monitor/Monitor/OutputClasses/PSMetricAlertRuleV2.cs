@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public PSMetricAlertRuleV2(MetricAlertResource metricAlertResource)
             :base(location: metricAlertResource.Location, description: metricAlertResource.Description, severity: metricAlertResource.Severity, enabled: metricAlertResource.Enabled,evaluationFrequency: metricAlertResource.EvaluationFrequency,windowSize: metricAlertResource.WindowSize, criteria: metricAlertResource.Criteria,id: metricAlertResource.Id, name: metricAlertResource.Name, type: metricAlertResource.Type,tags: metricAlertResource.Tags, scopes: metricAlertResource.Scopes, autoMitigate: metricAlertResource.AutoMitigate, actions: metricAlertResource.Actions, lastUpdatedTime: metricAlertResource.LastUpdatedTime, targetResourceRegion: metricAlertResource.TargetResourceRegion, targetResourceType: metricAlertResource.TargetResourceType)
         {
-            Criteria = new List<PSMetricCriteria>();
+            Criteria = new List<IPSMultiMetricCriteria>();
             if (metricAlertResource.Criteria is MetricAlertSingleResourceMultipleMetricCriteria)
             {
                 var criteria = metricAlertResource.Criteria as MetricAlertSingleResourceMultipleMetricCriteria;
@@ -39,9 +39,14 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 var criteria = metricAlertResource.Criteria as MetricAlertMultipleResourceMultipleMetricCriteria;
                 foreach(var condition in criteria.AllOf)
                 {
-                    var obj = JsonConvert.SerializeObject(condition.AdditionalProperties, Newtonsoft.Json.Formatting.Indented);
-                    MetricCriteria metricCriteria = JsonConvert.DeserializeObject<MetricCriteria>(obj);
-                    Criteria.Add(new PSMetricCriteria(metricCriteria));
+                    if (condition is MetricCriteria)
+                    {
+                        Criteria.Add(new PSMetricCriteria(condition as MetricCriteria));
+                    }
+                    else
+                    {
+                        Criteria.Add(new PSDynamicMetricCriteria(condition as DynamicMetricCriteria));
+                    }
                 }
             }
             else
@@ -62,7 +67,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// Gets or sets list of criteria.
         /// </summary>
         [JsonProperty(PropertyName = "criteria")]
-        public new IList<PSMetricCriteria> Criteria { get; set; }
+        public new IList<IPSMultiMetricCriteria> Criteria { get; set; }
 
         /// <summary>
         /// Gets or sets list of action groups.
