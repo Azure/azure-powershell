@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for linking cross-tenant Vnets to Private DNS Zones
+
+## Version 0.1.2
 * Fixed miscellaneous typos across module
 
 ## Version 0.1.1

@@ -14,7 +14,8 @@ Create a private link service ip configuration.
 
 ```
 New-AzPrivateLinkServiceIpConfig -Name <String> [-PrivateIpAddressVersion <String>]
- [-PrivateIpAddress <String>] [-PublicIpAddress <PSPublicIpAddress>] [-Subnet <PSSubnet>]
+ [-PrivateIpAddress <String>] [-PublicIpAddress <PSPublicIpAddress>]
+ [-Subnet <PSSubnet>] [-Primary]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,7 +26,7 @@ The **New-AzPrivateLinkServiceIpConfig** cmdlet creates a private link service i
 
 ### Example 1
 ```
-New-AzPrivateLinkServiceIpConfig -Name $IpConfigurationName -PrivateIpAddress "10.0.0.5"
+New-AzPrivateLinkServiceIpConfig -Name $IpConfigurationName -PrivateIpAddress "10.0.0.5" -Primary
 ```
 
 This example create a private link service ip configuration in memory.
@@ -93,11 +94,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicIpAddress
-PublicIpAddress
+### -Primary
+Indicate current ip configuration is primary or not.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

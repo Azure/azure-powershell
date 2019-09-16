@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHub", DefaultParameterSetName = "UpdateSku", SupportsShouldProcess = true)]
@@ -121,6 +122,8 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public PSCloudToDeviceProperties CloudToDevice { get; set; }
 
+        public const string ChangeDesc = "Parameter is being deprecated without being replaced as IotHub is no longer using built-in endpoint(\"operationsMonitoringEvents\").";
+        [CmdletParameterBreakingChange("OperationsMonitoringProperties", ChangeDescription = ChangeDesc)]
         [Parameter(
             ParameterSetName = UpdateOperationsMonitoringPropertiesParameterSet,
             Mandatory = true,
@@ -170,7 +173,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                     case UpdateEventHubEndpointPropertiesParameterSet:
 
                         iotHubDescription.Properties.EventHubEndpoints["events"].RetentionTimeInDays = this.EventHubRetentionTimeInDays;
-                        iotHubDescription.Properties.EventHubEndpoints["operationsMonitoringEvents"].RetentionTimeInDays = this.EventHubRetentionTimeInDays;
                         break;
                     case UpdateFileUploadPropertiesParameterSet:
 

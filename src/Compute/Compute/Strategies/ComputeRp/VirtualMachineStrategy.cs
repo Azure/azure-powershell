@@ -51,7 +51,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IEnumerable<int> dataDisks,
             IList<string> zones,
             bool ultraSSDEnabled,
-            Func<IEngine, SubResource> proximityPlacementGroup)
+            Func<IEngine, SubResource> proximityPlacementGroup,
+            string hostId)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -87,6 +88,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Zones = zones,
                     AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null,
                     ProximityPlacementGroup = proximityPlacementGroup(engine),
+                    Host = string.IsNullOrEmpty(hostId) ? null : new SubResource(hostId)
                 });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
@@ -101,7 +103,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IEnumerable<int> dataDisks,
             IList<string> zones,
             bool ultraSSDEnabled,
-            Func<IEngine, SubResource> proximityPlacementGroup)
+            Func<IEngine, SubResource> proximityPlacementGroup,
+            string hostId)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -134,6 +137,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Zones = zones,
                     AdditionalCapabilities = ultraSSDEnabled ?  new AdditionalCapabilities(true)  : null,
                     ProximityPlacementGroup = proximityPlacementGroup(engine),
+                    Host = string.IsNullOrEmpty(hostId) ? null : new SubResource(hostId)
                 });
     }
 }

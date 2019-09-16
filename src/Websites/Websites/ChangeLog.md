@@ -18,7 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixing issue where webapp Tags were getting deleted when migrating App to new ASPwhere webapp Tags were getting deleted when migrating App to new ASP
+* Fixing the Publish-AzureWebapp to work across Linux and windows
+* Update example in `Get-AzWebAppPublishingProfile` reference documentation
+
+## Version 1.4.1
 * Fixed miscellaneous typos across module
+* Add clarification around -AppSettings parameter in Set-AzWebApp and Set-AzWebAppSlot
 
 ## Version 1.4.0
 * Fixing a bug where some SiteConfig properties were not returned by Get-AzWebApp and Set-AzWebApp

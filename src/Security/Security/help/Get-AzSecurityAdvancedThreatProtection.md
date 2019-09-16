@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSecurityAdvancedThreatProtection
 
 ## SYNOPSIS
-Gets the advanced threat protection policy for a storage account.
+Gets the advanced threat protection policy for a storage / cosmosDB account.
 
 ## SYNTAX
 
@@ -18,12 +18,12 @@ Get-AzSecurityAdvancedThreatProtection -ResourceId <String> [-DefaultProfile <IA
 ```
 
 ## DESCRIPTION
-The `Get-AzSecurityAdvancedThreatProtection` cmdlet gets the threat protection policy for a storage account.
+The `Get-AzSecurityAdvancedThreatProtection` cmdlet gets the threat protection policy for a storage / cosmosDB account.
 To use this cmdlet, specify the *ResourceId* parameter.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 : Storage Account
 ```powershell
 PS C:\> Get-AzSecurityAdvancedThreatProtection -ResourceId "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"
 
@@ -33,6 +33,17 @@ IsEnabled Id
 ```
 
 This command gets the advanced threat protection policy for resource id `"/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount/"`.
+
+### Example 2 : CosmosDB Account
+```powershell
+PS C:\> Get-AzSecurityAdvancedThreatProtection -ResourceId "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.DocumentDb/databaseAccounts/myCosmosDBAccount/"
+
+IsEnabled Id
+--------- --
+    True  "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.DocumentDb/databaseAccounts/myCosmosDBAccount/"
+```
+This command gets the advanced threat protection policy for resource id ` "/subscriptions/xxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.DocumentDb/databaseAccounts/myCosmosDBAccount/"`.
+
 
 ## PARAMETERS
 
