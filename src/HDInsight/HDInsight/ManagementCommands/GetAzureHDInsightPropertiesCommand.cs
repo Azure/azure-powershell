@@ -20,8 +20,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [CmdletOutputBreakingChange(typeof(CapabilitiesResponse), ReplacementCmdletOutputTypeName = "AzureHDInsightCapabilities")]
+    [GenericBreakingChange("Get-AzHDInsightProperties alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightProperty"),OutputType(typeof(CapabilitiesResponse))]
+    [Alias("Get-AzHDInsightProperties")]
     public class GetAzureHDInsightPropertiesCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions

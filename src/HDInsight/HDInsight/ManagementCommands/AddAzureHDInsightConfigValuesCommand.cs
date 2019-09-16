@@ -22,7 +22,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
+    [GenericBreakingChange("Add-AzHDInsightConfigValues alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightConfigValue"),OutputType(typeof(AzureHDInsightConfig))]
+    [Alias("Add-AzHDInsightConfigValues")]
     public class AddAzureHDInsightConfigValuesCommand : HDInsightCmdletBase
     {
         private Dictionary<string, Hashtable> _configurations;
