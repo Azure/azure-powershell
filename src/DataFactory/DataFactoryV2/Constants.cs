@@ -68,6 +68,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpTriggerName = "The trigger name.";
 
+        public const string HelpTriggerObject = "The trigger object.";
+
         public const string HelpPipeline = "The pipeline object.";
 
         public const string HelpDatasetName = "The dataset name.";
@@ -225,5 +227,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string Id = "Id";
 
         public const string DataFactoryId = "DataFactoryId";
+
+        public const string HelpPassThru = "If specified, cmdlet will return return true on successful delete.";
+
+        public const string ActionDescriptionForAddEventSubscription = "Subscribe the event trigger to external service events.";
+
+        public const string ActionDescriptionForRemoveEventSubscription = "Unsubscribe the event trigger from external service events.";
+
     }
 }
