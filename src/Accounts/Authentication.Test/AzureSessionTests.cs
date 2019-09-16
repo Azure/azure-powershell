@@ -50,7 +50,7 @@ namespace Common.Authentication.Test
                 store.VirtualStore[path] = content;
                 AzureSessionInitializer.CreateOrReplaceSession(store);
                 var session = AzureSession.Instance;
-                var tokenCacheFile = Path.Combine(session.ProfileDirectory, session.TokenCacheFile);
+                var tokenCacheFile = Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile);
                 Assert.True(store.FileExists(tokenCacheFile));
 
             }

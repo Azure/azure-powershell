@@ -30,17 +30,21 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
         {
             var upParameters = parameters as UsernamePasswordParameters;
-            var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, upParameters.ResourceEndpoint) };
+            var authenticationClientFactory = upParameters.AuthenticationClientFactory;
+            var resource = upParameters.Environment.GetEndpoint(upParameters.ResourceId);
+            var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, resource) };
             var clientId = AuthenticationHelpers.PowerShellClientId;
-            var authority = AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
-            var publicClient = _authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority);
+            var authority = upParameters.Environment.OnPremise ?
+                                upParameters.Environment.ActiveDirectoryAuthority :
+                                AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
+            var publicClient = authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority, useAdfs: upParameters.Environment.OnPremise);
             var response = publicClient.AcquireTokenByUsernamePassword(scopes, upParameters.UserId, upParameters.Password).ExecuteAsync();
             return AuthenticationResultToken.GetAccessTokenAsync(response);
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
         {
-            return parameters is UsernamePasswordParameters;
+            return (parameters as UsernamePasswordParameters) != null;
         }
     }
 }

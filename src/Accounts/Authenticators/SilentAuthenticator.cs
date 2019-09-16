@@ -27,10 +27,14 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
         {
             var silentParameters = parameters as SilentParameters;
-            var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, silentParameters.ResourceEndpoint) };
+            var authenticationClientFactory = silentParameters.AuthenticationClientFactory;
+            var resource = silentParameters.Environment.GetEndpoint(silentParameters.ResourceId);
+            var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, resource) };
             var clientId = AuthenticationHelpers.PowerShellClientId;
-            var authority = AuthenticationHelpers.GetAuthority(silentParameters.Environment, silentParameters.TenantId);
-            var publicClient = _authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority);
+            var authority = silentParameters.Environment.OnPremise ?
+                                silentParameters.Environment.ActiveDirectoryAuthority :
+                                AuthenticationHelpers.GetAuthority(silentParameters.Environment, silentParameters.TenantId);
+            var publicClient = authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority, useAdfs: silentParameters.Environment.OnPremise);
             var accounts = publicClient.GetAccountsAsync()
                 .ConfigureAwait(false).GetAwaiter().GetResult();
             var response = publicClient.AcquireTokenSilent(scopes, accounts.FirstOrDefault(a => a.Username == silentParameters.UserId)).ExecuteAsync();
@@ -39,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
         {
-            return parameters is SilentParameters;
+            return (parameters as SilentParameters) != null;
         }
     }
 }

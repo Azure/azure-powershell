@@ -51,14 +51,5 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <param name="token">The token based authentication information</param>
         /// <returns></returns>
         bool TryAuthenticate(AuthenticationParameters parameters, out Task<IAccessToken> token);
-
-        /// <summary>
-        /// Determine if this request can be authenticated using the given authenticator, and authenticate if it can
-        /// </summary>
-        /// <param name="parameters">The complex object containing authentication specific information (e.g., tenant, token cache, etc.)</param>
-        /// <param name="authenticationClientFactory">The factory used to create the correct client for authentication.</param>
-        /// <param name="token">The token based authentication information</param>
-        /// <returns></returns>
-        bool TryAuthenticate(AuthenticationParameters parameters, AuthenticationClientFactory authenticationClientFactory, out Task<IAccessToken> token);
     }
 }

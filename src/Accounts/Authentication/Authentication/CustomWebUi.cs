@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Identity.Client;
 using Microsoft.Identity.Client.Extensibility;
@@ -49,13 +50,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public async Task<Uri> AcquireAuthorizationCodeAsync(Uri authorizationUri, Uri redirectUri, CancellationToken cancellationToken)
         {
-            WriteWarning("Attempting to launch a browser for authorization code login.");
+            WriteWarning(Resources.TryLaunchBrowser);
             if (!OpenBrowser(authorizationUri.ToString()))
             {
-                WriteWarning("Unable to launch a browser for authorization code login. Reverting to device code login.");
+                WriteWarning(Resources.UnableToLaunchBrowser);
             }
 
-            WriteWarning("We have launched a browser for you to login. For the old experience with device code flow, please run 'Connect-AzAccount -UseDeviceAuthentication'.");
+            WriteWarning(Resources.SuccessfullyLaunchedBrowser);
             TcpListener listener = new TcpListener(IPAddress.Loopback, redirectUri.Port);
             listener.Start();
             using (TcpClient client = await listener.AcceptTcpClientAsync().ConfigureAwait(false))

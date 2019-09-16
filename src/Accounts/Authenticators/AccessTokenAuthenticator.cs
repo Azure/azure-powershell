@@ -21,12 +21,15 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 {
     public class AccessTokenAuthenticator : DelegatingAuthenticator
     {
+        private const string _accessTokenFailure = "Cannot retrieve access token for resource '{0}';. " +
+                                                   "Please ensure that you have provided the appropriate access tokens when using access token login.";
+
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
         {
             var tokenParameters = parameters as AccessTokenParameters;
             var tenant = tokenParameters.TenantId;
             var account = tokenParameters.Account;
-            var resourceId = tokenParameters.ResourceEndpoint;
+            var resourceId = tokenParameters.ResourceId;
             var environment = tokenParameters.Environment;
             var rawToken = new RawAccessToken
             {
@@ -35,27 +38,27 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 LoginType = AzureAccount.AccountType.AccessToken
             };
 
-            if ((string.Equals(resourceId, environment.AzureKeyVaultServiceEndpointResourceId, StringComparison.OrdinalIgnoreCase)
-                 || string.Equals(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, resourceId, StringComparison.OrdinalIgnoreCase))
+            if ((resourceId.EqualsInsensitively(environment.AzureKeyVaultServiceEndpointResourceId) ||
+                 resourceId.EqualsInsensitively(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId))
                  && account.IsPropertySet(AzureAccount.Property.KeyVaultAccessToken))
             {
                 rawToken.AccessToken = account.GetProperty(AzureAccount.Property.KeyVaultAccessToken);
             }
-            else if ((string.Equals(resourceId, environment.GraphEndpointResourceId, StringComparison.OrdinalIgnoreCase)
-                || string.Equals(AzureEnvironment.Endpoint.GraphEndpointResourceId, resourceId, StringComparison.OrdinalIgnoreCase))
-                && account.IsPropertySet(AzureAccount.Property.GraphAccessToken))
+            else if ((resourceId.EqualsInsensitively(environment.GraphEndpointResourceId) ||
+                      resourceId.EqualsInsensitively(AzureEnvironment.Endpoint.GraphEndpointResourceId))
+                      && account.IsPropertySet(AzureAccount.Property.GraphAccessToken))
             {
                 rawToken.AccessToken = account.GetProperty(AzureAccount.Property.GraphAccessToken);
             }
-            else if ((string.Equals(resourceId, environment.ActiveDirectoryServiceEndpointResourceId, StringComparison.OrdinalIgnoreCase)
-                || string.Equals(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, resourceId, StringComparison.OrdinalIgnoreCase))
-                && account.IsPropertySet(AzureAccount.Property.AccessToken))
+            else if ((resourceId.EqualsInsensitively(environment.ActiveDirectoryServiceEndpointResourceId) ||
+                      resourceId.EqualsInsensitively(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId))
+                      && account.IsPropertySet(AzureAccount.Property.AccessToken))
             {
                 rawToken.AccessToken = account.GetAccessToken();
             }
             else
             {
-                throw new InvalidOperationException(string.Format("Cannot retrieve access token for resource '{0}';.  Please ensure that you have provided the appropriate access tokens when using access token login.", resourceId));
+                throw new InvalidOperationException(string.Format(_accessTokenFailure, resourceId));
             }
 
             return Task.Run(() => rawToken as IAccessToken);
@@ -63,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
         {
-            return parameters is AccessTokenParameters;
+            return (parameters as AccessTokenParameters) != null;
         }
     }
 }

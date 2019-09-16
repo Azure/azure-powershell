@@ -19,6 +19,7 @@ using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Identity.Client;
 using Microsoft.Identity.Client.Extensibility;
 
@@ -32,8 +33,10 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
         {
             var interactiveParameters = parameters as InteractiveParameters;
+            var authenticationClientFactory = interactiveParameters.AuthenticationClientFactory;
             IPublicClientApplication publicClient = null;
-            var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, parameters.ResourceEndpoint) };
+            var resource = interactiveParameters.Environment.GetEndpoint(interactiveParameters.ResourceId);
+            var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, resource) };
             TcpListener listener = null;
             var replyUrl = string.Empty;
             var port = 8399;
@@ -59,8 +62,10 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 if (!string.IsNullOrEmpty(replyUrl))
                 {
                     var clientId = AuthenticationHelpers.PowerShellClientId;
-                    var authority = AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
-                    publicClient = _authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority, redirectUri: replyUrl);
+                    var authority = interactiveParameters.Environment.OnPremise ?
+                                        interactiveParameters.Environment.ActiveDirectoryAuthority :
+                                        AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
+                    publicClient = authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority, redirectUri: replyUrl);
 
                     var interactiveResponse = publicClient.AcquireTokenInteractive(scopes)
                         .WithCustomWebUi(new CustomWebUi(interactiveParameters.PromptAction))
@@ -78,7 +83,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
         {
-            return parameters is InteractiveParameters;
+            return (parameters as InteractiveParameters) != null;
         }
     }
 }

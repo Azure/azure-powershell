@@ -91,13 +91,13 @@ namespace Microsoft.Azure.Commands.Profile.Context
                                         AuthenticationClientFactory authenticationClientFactory;
                                         if (!AzureSession.Instance.TryGetComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, out authenticationClientFactory))
                                         {
-                                            WriteWarning($"No authentication client factory has been registered, unable to remove contexts for user {removedContext.Account.Id}.");
+                                            WriteWarning(string.Format(Resources.ClientFactoryNotRegisteredRemoval, removedContext.Account.Id));
                                         }
                                         else
                                         {
                                             if (!authenticationClientFactory.TryRemoveAccount(removedContext.Account.Id))
                                             {
-                                                WriteWarning($"No contexts remain for user {removedContext.Account.Id}");
+                                                WriteWarning(string.Format(Resources.NoContextsRemain, removedContext.Account.Id));
                                             }
                                         }
                                     }

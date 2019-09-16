@@ -26,11 +26,15 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     {
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
         {
+            var authenticationClientFactory = parameters.AuthenticationClientFactory;
             var cancellationTokenSource = new CancellationTokenSource();
-            var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, parameters.ResourceEndpoint) };
+            var resource = parameters.Environment.GetEndpoint(parameters.ResourceId);
+            var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, resource) };
             var clientId = AuthenticationHelpers.PowerShellClientId;
-            var authority = AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
-            var publicClient = _authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority);
+            var authority = parameters.Environment.OnPremise ?
+                                parameters.Environment.ActiveDirectoryAuthority :
+                                AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
+            var publicClient = authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority);
             var response = GetResponseAsync(publicClient, scopes, cancellationTokenSource.Token);
             return AuthenticationResultToken.GetAccessTokenAsync(response);
         }
@@ -46,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
         {
-            return parameters is DeviceCodeParameters;
+            return (parameters as DeviceCodeParameters) != null;
         }
 
         private void WriteWarning(string message)

@@ -25,6 +25,8 @@ using System.Xml.Serialization;
 using Microsoft.Azure.Commands.ResourceManager.Common.Serialization;
 using System.Collections.Concurrent;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Properties;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
@@ -68,7 +70,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 if (DefaultContextKey == "Default" && Contexts.Any(c => c.Key != "Default"))
                 {
                     // If the default context is "Default", but there are other contexts set, remove the "Default" context to throw the below exception
-                    TryRemoveContext("Default");
+                    TryCacheRemoveContext("Default");
                 }
 
                 if (!string.IsNullOrEmpty(DefaultContextKey) && Contexts != null && Contexts.ContainsKey(DefaultContextKey))
@@ -77,8 +79,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 }
                 else if (DefaultContextKey == null)
                 {
-                    throw new InvalidOperationException("The default context can no longer be found; please run `Get-AzContext -ListAvailable` to see all available contexts, " +
-                                                        "'Select-AzContext' to select a new default context, or 'Connect-AzAccount' to login with a new account.");
+                    throw new PSInvalidOperationException(Resources.DefaultContextMissing);
                 }
 
                 return result;
@@ -441,6 +442,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             bool result = Contexts.Remove(name);
             if (string.Equals(name, DefaultContextKey))
             {
+                DefaultContextKey = Contexts.Keys.FirstOrDefault() ?? "Default";
+            }
+
+            return result;
+        }
+
+        private bool TryCacheRemoveContext(string name)
+        {
+            bool result = Contexts.Remove(name);
+            if (string.Equals(name, DefaultContextKey))
+            {
                 DefaultContextKey = Contexts.Keys.Any() ? null : "Default";
             }
 
@@ -680,7 +692,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                         continue;
                     }
 
-                    removedContext |= TryRemoveContext(contextName);
+                    removedContext |= TryCacheRemoveContext(contextName);
                 }
 
                 // If no contexts were removed, return now to avoid writing to file later
@@ -709,10 +721,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     if (!removedUsers.Contains(context.Account.Id))
                     {
                         removedUsers.Add(context.Account.Id);
-                        WriteWarning($"User '{context.Account.Id}' was not found in the shared token cache; removing all contexts with this user.");
+                        WriteWarning(string.Format(Resources.UserMissingFromSharedTokenCache, context.Account.Id));
                     }
 
-                    updatedContext |= TryRemoveContext(contextName);
+                    updatedContext |= TryCacheRemoveContext(contextName);
                 }
 
                 // Check to see if each account has at least one context
@@ -724,7 +736,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                         continue;
                     }
 
-                    WriteWarning($"Creating context for each subscription accessible by account '{account.Username}'.");
+                    WriteWarning(string.Format(Resources.CreatingContextsWarning, account.Username));
                     var environment = AzureEnvironment.PublicEnvironments
                                         .Where(env => env.Value.ActiveDirectoryAuthority.Contains(account.Environment))
                                         .Select(env => env.Value)
@@ -751,13 +763,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                             var context = new AzureContext(subscription, azureAccount, environment, azureTenant);
                             if (!TryGetContextName(context, out string name))
                             {
-                                WriteWarning($"Unable to get context name for subscription with id '{subscription.Id}'.");
+                                WriteWarning(string.Format(Resources.NoContextNameForSubscription, subscription.Id));
                                 continue;
                             }
 
                             if (!TrySetContext(name, context))
                             {
-                                WriteWarning($"Cannot create a context for subscription with id '{subscription.Id}'.");
+                                WriteWarning(string.Format(Resources.UnableToCreateContextForSubscription, subscription.Id));
                             }
                             else
                             {

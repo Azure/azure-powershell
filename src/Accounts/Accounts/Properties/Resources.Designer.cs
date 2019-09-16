@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -232,6 +232,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Changing public environment is not supported..
+        /// </summary>
+        internal static string ChangingDefaultEnvironmentNotSupported {
+            get {
+                return ResourceManager.GetString("ChangingDefaultEnvironmentNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove all accounts and subscriptions for the current process..
         /// </summary>
         internal static string ClearContextProcessMessage {
@@ -273,6 +282,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string ClearContextUserTarget {
             get {
                 return ResourceManager.GetString("ClearContextUserTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No authentication client factory has been registered, unable to clear the cache..
+        /// </summary>
+        internal static string ClientFactoryNotRegisteredClear {
+            get {
+                return ResourceManager.GetString("ClientFactoryNotRegisteredClear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No authentication client factory has been registered, unable to remove contexts for user &apos;{0}&apos;..
+        /// </summary>
+        internal static string ClientFactoryNotRegisteredRemoval {
+            get {
+                return ResourceManager.GetString("ClientFactoryNotRegisteredRemoval", resourceCulture);
             }
         }
         
@@ -421,6 +448,33 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Environment name needs to be specified.
+        /// </summary>
+        internal static string EnvironmentNameNeedsToBeSpecified {
+            get {
+                return ResourceManager.GetString("EnvironmentNameNeedsToBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Environment needs to be specified.
+        /// </summary>
+        internal static string EnvironmentNeedsToBeSpecified {
+            get {
+                return ResourceManager.GetString("EnvironmentNeedsToBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The environment name &apos;{0}&apos; is not found..
+        /// </summary>
+        internal static string EnvironmentNotFound {
+            get {
+                return ResourceManager.GetString("EnvironmentNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to retrieve variable value &apos;{0}&apos; to determine AutoSaveSetting, received exception &apos;{1}&apos;..
         /// </summary>
         internal static string ErrorRetrievingAutosaveSetting {
@@ -525,6 +579,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string NoAccountProvided {
             get {
                 return ResourceManager.GetString("NoAccountProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No contexts remain for user &apos;{0}&apos;..
+        /// </summary>
+        internal static string NoContextsRemain {
+            get {
+                return ResourceManager.GetString("NoContextsRemain", resourceCulture);
             }
         }
         
@@ -696,6 +759,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string RemoveModuleError {
             get {
                 return ResourceManager.GetString("RemoveModuleError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing public environment is not supported..
+        /// </summary>
+        internal static string RemovingDefaultEnvironmentsNotSupported {
+            get {
+                return ResourceManager.GetString("RemovingDefaultEnvironmentsNotSupported", resourceCulture);
             }
         }
         

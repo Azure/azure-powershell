@@ -164,4 +164,7 @@ Use the Enable-AzDataCollection cmdlet to turn the feature On. The cmdlet can be
   <data name="SyncASPollStatusUnknownMessage" xml:space="preserve">
     <value>Failed to get the status of the synchronization request for the specified database. ServerName: {0}, RootActivityId: {1}, Date (UTC): {2}, Details: {3}.</value>
   </data>
+  <data name="ArmAccountNotFound" xml:space="preserve">
+    <value>No account found in the context. Please login using Connect-AzAccount.</value>
+  </data>
 </root>

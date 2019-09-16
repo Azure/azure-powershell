@@ -13,29 +13,34 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public abstract class AuthenticationParameters
     {
+        public AuthenticationClientFactory AuthenticationClientFactory { get; set; }
+
         public IAzureEnvironment Environment { get; set; }
 
         public IAzureTokenCache TokenCache { get; set; }
 
         public string TenantId { get; set; }
 
-        public string ResourceEndpoint { get; set; }
+        public string ResourceId { get; set; }
 
         public AuthenticationParameters(
+            AuthenticationClientFactory authenticationClientFactory,
             IAzureEnvironment environment,
             IAzureTokenCache tokenCache,
             string tenantId,
             string resourceId)
         {
+            AuthenticationClientFactory = authenticationClientFactory;
             Environment = environment;
             TokenCache = tokenCache;
             TenantId = tenantId;
-            ResourceEndpoint = environment.GetEndpoint(resourceId);
+            ResourceId = resourceId;
         }
     }
 }

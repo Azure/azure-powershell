@@ -13,16 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using System;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public class DeviceCodeParameters : AuthenticationParameters
     {
         public DeviceCodeParameters(
+            AuthenticationClientFactory authenticationClientFactory,
             IAzureEnvironment environment,
             IAzureTokenCache tokenCache,
             string tenantId,
-            string resourceId) : base(environment, tokenCache, tenantId, resourceId) { }
+            string resourceId) : base(authenticationClientFactory, environment, tokenCache, tenantId, resourceId) { }
     }
 }

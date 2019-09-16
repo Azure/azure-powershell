@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -21,11 +22,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public string UserId { get; set; }
 
         public SilentParameters(
+            AuthenticationClientFactory authenticationClientFactory,
             IAzureEnvironment environment,
             IAzureTokenCache tokenCache,
             string tenantId,
             string resourceId,
-            string userId) : base(environment, tokenCache, tenantId, resourceId)
+            string userId) : base(authenticationClientFactory, environment, tokenCache, tenantId, resourceId)
         {
             UserId = userId;
         }

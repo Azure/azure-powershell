@@ -40,13 +40,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
             string clientId = null,
             string tenantId = null,
             string authority = null,
-            string redirectUri = null)
+            string redirectUri = null,
+            bool useAdfs = false)
         {
             clientId = clientId ?? PowerShellClientId;
             var builder = PublicClientApplicationBuilder.Create(clientId);
             if (!string.IsNullOrEmpty(authority))
             {
-                builder = builder.WithAuthority(authority);
+                if (!useAdfs)
+                {
+                    builder = builder.WithAuthority(authority);
+                }
+                else
+                {
+                    builder = builder.WithAdfsAuthority(authority);
+                }
             }
 
             if (!string.IsNullOrEmpty(tenantId))
@@ -69,13 +77,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
             string authority = null,
             string redirectUri = null,
             X509Certificate2 certificate = null,
-            SecureString clientSecret = null)
+            SecureString clientSecret = null,
+            bool useAdfs = false)
         {
             clientId = clientId ?? PowerShellClientId;
             var builder = ConfidentialClientApplicationBuilder.Create(clientId);
             if (!string.IsNullOrEmpty(authority))
             {
-                builder = builder.WithAuthority(authority);
+                if (!useAdfs)
+                {
+                    builder = builder.WithAuthority(authority);
+                }
+                else
+                {
+                    builder = builder.WithAdfsAuthority(authority);
+                }
             }
 
             if (!string.IsNullOrEmpty(redirectUri))

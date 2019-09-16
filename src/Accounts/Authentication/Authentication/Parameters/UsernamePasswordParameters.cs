@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
@@ -24,12 +25,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public SecureString Password { get; set; }
 
         public UsernamePasswordParameters(
+            AuthenticationClientFactory authenticationClientFactory,
             IAzureEnvironment environment,
             IAzureTokenCache tokenCache,
             string tenantId,
             string resourceId,
             string userId,
-            SecureString password) : base(environment, tokenCache, tenantId, resourceId)
+            SecureString password) : base(authenticationClientFactory, environment, tokenCache, tenantId, resourceId)
         {
             UserId = userId;
             Password = password;

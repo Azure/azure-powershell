@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
     {
         private readonly IMemoryCache _memoryCache;
         private readonly string _cacheId = "CacheId";
+        private static readonly object _lock = new object();
 
         public InMemoryTokenCacheClientFactory()
         {
@@ -47,10 +48,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
 
         private void BeforeAccessNotification(TokenCacheNotificationArgs args)
         {
-            byte[] blob;
-            if (_memoryCache.TryGetValue(_cacheId, out blob))
+            lock (_lock)
             {
-                args.TokenCache.DeserializeMsalV3(blob);
+                byte[] blob;
+                if (_memoryCache.TryGetValue(_cacheId, out blob))
+                {
+                    args.TokenCache.DeserializeMsalV3(blob);
+                }
             }
         }
 
@@ -62,13 +66,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
 
         private void TryCacheMigration(string cacheToMigratePath)
         {
-            try
+            lock (_lock)
             {
-                var cacheStorage = GetCacheStorage(cacheToMigratePath);
-                byte[] data = cacheStorage.ReadData();
-                _memoryCache.Set(_cacheId, data);
+                try
+                {
+                    var cacheStorage = GetCacheStorage(cacheToMigratePath);
+                    byte[] data = cacheStorage.ReadData();
+                    _memoryCache.Set(_cacheId, data);
+                }
+                catch { }
             }
-            catch { }
         }
 
         private MsalCacheStorage GetCacheStorage(string filePath)

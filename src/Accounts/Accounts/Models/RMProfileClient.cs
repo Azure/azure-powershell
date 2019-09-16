@@ -29,7 +29,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
-using AuthenticationMessages = Microsoft.Azure.Commands.Common.Authentication.Properties.Resources;
 using ProfileMessages = Microsoft.Azure.Commands.Profile.Properties.Resources;
 using ResourceMessages = Microsoft.Azure.Commands.ResourceManager.Common.Properties.Resources;
 
@@ -249,7 +248,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 populateContextList = shouldPopulateContextList ?? _profile.DefaultContext?.Account == null;
             }
-            catch (InvalidOperationException) { }
+            catch (PSInvalidOperationException) { }
 
             if (newSubscription == null)
             {
@@ -401,13 +400,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             if (environment == null)
             {
-                throw new ArgumentNullException("environment", AuthenticationMessages.EnvironmentNeedsToBeSpecified);
+                throw new ArgumentNullException("environment", ProfileMessages.EnvironmentNeedsToBeSpecified);
             }
 
             if (AzureEnvironment.PublicEnvironments.ContainsKey(environment.Name))
             {
                 throw new InvalidOperationException(
-                    string.Format(AuthenticationMessages.ChangingDefaultEnvironmentNotSupported, "environment"));
+                    string.Format(ProfileMessages.ChangingDefaultEnvironmentNotSupported, "environment"));
             }
 
             IAzureEnvironment result = null;
@@ -435,11 +434,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             if (string.IsNullOrEmpty(name))
             {
-                throw new ArgumentNullException("name", AuthenticationMessages.EnvironmentNameNeedsToBeSpecified);
+                throw new ArgumentNullException("name", ProfileMessages.EnvironmentNameNeedsToBeSpecified);
             }
             if (AzureEnvironment.PublicEnvironments.ContainsKey(name))
             {
-                throw new ArgumentException(AuthenticationMessages.RemovingDefaultEnvironmentsNotSupported, "name");
+                throw new ArgumentException(ProfileMessages.RemovingDefaultEnvironmentsNotSupported, "name");
             }
 
             IAzureEnvironment environment;
@@ -449,7 +448,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
             else
             {
-                throw new ArgumentException(string.Format(AuthenticationMessages.EnvironmentNotFound, name), "name");
+                throw new ArgumentException(string.Format(ProfileMessages.EnvironmentNotFound, name), "name");
             }
         }
 

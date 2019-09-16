@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
                 AuthenticationClientFactory authenticationClientFactory;
                 if (!AzureSession.Instance.TryGetComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, out authenticationClientFactory))
                 {
-                    WriteWarning("No authentication client factory has been registered, unable to clear the cache.");
+                    WriteWarning(Resources.ClientFactoryNotRegisteredClear);
                 }
                 else
                 {

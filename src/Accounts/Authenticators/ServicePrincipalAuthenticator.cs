@@ -12,33 +12,39 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Security;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Identity.Client;
-using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
     public class ServicePrincipalAuthenticator : DelegatingAuthenticator
     {
+        private const string _authenticationFailedMessage = "No certificate thumbprint or secret provided for the given service principal '{0}'.";
+
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
         {
             var spParameters = parameters as ServicePrincipalParameters;
-            var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, spParameters.ResourceEndpoint) };
+            var authenticationClientFactory = spParameters.AuthenticationClientFactory;
+            var resource = spParameters.Environment.GetEndpoint(spParameters.ResourceId);
+            var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, resource) };
             var clientId = spParameters.ApplicationId;
             var authority = AuthenticationHelpers.GetAuthority(spParameters.Environment, spParameters.TenantId);
             var redirectUri = spParameters.Environment.ActiveDirectoryServiceEndpointResourceId;
             IConfidentialClientApplication confidentialClient = null;
-            if (spParameters.Secret == null)
+            if (!string.IsNullOrEmpty(spParameters.Thumbprint))
             {
                 var certificate = AzureSession.Instance.DataStore.GetCertificate(spParameters.Thumbprint);
-                confidentialClient = _authenticationClientFactory.CreateConfidentialClient(clientId: clientId, authority: authority, redirectUri: redirectUri, certificate: certificate);
+                confidentialClient = authenticationClientFactory.CreateConfidentialClient(clientId: clientId, authority: authority, redirectUri: redirectUri, certificate: certificate);
+            }
+            else if (spParameters.Secret != null)
+            {
+                confidentialClient = authenticationClientFactory.CreateConfidentialClient(clientId: clientId, authority: authority, redirectUri: redirectUri, clientSecret: spParameters.Secret);
             }
             else
             {
-                confidentialClient = _authenticationClientFactory.CreateConfidentialClient(clientId: clientId, authority: authority, redirectUri: redirectUri, clientSecret: spParameters.Secret);
+                throw new MsalException(MsalError.AuthenticationFailed, string.Format(_authenticationFailedMessage, clientId));
             }
 
             var response = confidentialClient.AcquireTokenForClient(scopes).ExecuteAsync();
@@ -47,7 +53,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
         {
-            return parameters is ServicePrincipalParameters;
+            return (parameters as ServicePrincipalParameters) != null;
         }
     }
 }

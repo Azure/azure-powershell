@@ -32,12 +32,12 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             return Task.Run(() => GetManagedServiceToken(msiParameters.Account,
                                                          msiParameters.Environment,
                                                          msiParameters.TenantId,
-                                                         msiParameters.ResourceEndpoint));
+                                                         msiParameters.ResourceId));
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
         {
-            return parameters is ManagedServiceIdentityParameters;
+            return (parameters as ManagedServiceIdentityParameters) != null;
         }
 
         private IAccessToken GetManagedServiceToken(IAzureAccount account, IAzureEnvironment environment, string tenant, string resourceId)

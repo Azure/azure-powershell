@@ -27,8 +27,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// </summary>
     public abstract class DelegatingAuthenticator : IAuthenticator
     {
-        protected AuthenticationClientFactory _authenticationClientFactory;
-
         public IAuthenticator Next { get; set; }
         public abstract bool CanAuthenticate(AuthenticationParameters parameters);
         public abstract Task<IAccessToken> Authenticate(AuthenticationParameters parameters);
@@ -44,16 +42,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             if (Next != null)
             {
-                return Next.TryAuthenticate(parameters, _authenticationClientFactory, out token);
+                return Next.TryAuthenticate(parameters, out token);
             }
 
             return false;
-        }
-
-        public bool TryAuthenticate(AuthenticationParameters parameters, AuthenticationClientFactory authenticationClientFactory, out Task<IAccessToken> token)
-        {
-            _authenticationClientFactory = authenticationClientFactory;
-            return TryAuthenticate(parameters, out token);
         }
     }
 }

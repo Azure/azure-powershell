@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
@@ -26,13 +27,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public SecureString Secret { get; set; }
 
         public ServicePrincipalParameters(
+            AuthenticationClientFactory authenticationClientFactory,
             IAzureEnvironment environment,
             IAzureTokenCache tokenCache,
             string tenantId,
             string resourceId,
             string applicationId,
             string thumbprint,
-            SecureString secret) : base(environment, tokenCache, tenantId, resourceId)
+            SecureString secret) : base(authenticationClientFactory, environment, tokenCache, tenantId, resourceId)
         {
             ApplicationId = applicationId;
             Thumbprint = thumbprint;

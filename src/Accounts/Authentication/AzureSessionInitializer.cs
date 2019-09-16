@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             var client = authenticationClientFactory.CreatePublicClient();
             try
             {
-                client.UserTokenCache.DeserializeAdalV3(adalData);
+                // client.UserTokenCache.DeserializeAdalV3(adalData);
             }
             catch
             {

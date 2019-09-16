@@ -57,12 +57,10 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string Environment { get; set; }
 
-        [Parameter(ParameterSetName = UserParameterSet,
-                    Mandatory = false, HelpMessage = "Optional credential")]
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
                     Mandatory = true, HelpMessage = "Service Principal Secret")]
         [Parameter(ParameterSetName = UserWithCredentialParameterSet,
-                    Mandatory = true, HelpMessage = "User Password Credential: this is only supported in Windows PowerShell 5.1")]
+                    Mandatory = true, HelpMessage = "Username/Password Credential")]
         public PSCredential Credential { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
@@ -399,7 +397,7 @@ namespace Microsoft.Azure.Commands.Profile
                 }
 
                 InitializeProfileProvider(autoSaveEnabled);
-                    IServicePrincipalKeyStore keyStore =
+                IServicePrincipalKeyStore keyStore =
 // TODO: Remove IfDef
 #if NETSTANDARD
                     new AzureRmServicePrincipalKeyStore(AzureRmProfileProvider.Instance.Profile);
