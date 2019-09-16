@@ -60,7 +60,6 @@ namespace Microsoft.Azure.Commands.Network {
                 throw new ArgumentException("Circuit Connection with Name {0} was not added to the private peering", Name);
             }
 
-
             circuitconnection.Name = this.Name;
 
             if (null != peering.Id) {
