@@ -46,7 +46,7 @@ PS C:\> Disable-AzSqlInstanceDatabaseSensitivityRecommendation -ResourceGroupNam
 
 ### Example 2: Disable sensitivity recommendations on columns which have sensitivity recommendations in an Azure SQL managed instance database with Piping.
 ```powershell
-PS C:\> Get-AzSqlInstanceDatabaseSensitivityClassification -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database | Disable-AzSqlInstanceDatabaseSensitivityRecommendation
+PS C:\> Get-AzSqlInstanceDatabaseSensitivityRecommendation -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database | Disable-AzSqlInstanceDatabaseSensitivityRecommendation
 ```
 
 ### Example 3: Disable sensitivity recommendations on a given column in an Azure SQL managed instance database with Piping.
