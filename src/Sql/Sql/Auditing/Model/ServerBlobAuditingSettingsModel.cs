@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
             {
                 try
                 {
-                    adapter.RemoveDiagnosticSettings(this);
+                    adapter.RemoveFirstDiagnosticSettings(this);
                 }
                 catch (Exception) { }
 
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         {
             if (ShoudDiagnosticSettingsBeRemovedOnDisabledPolicy(settings))
             {
-                if (adapter.RemoveDiagnosticSettings(this) == false)
+                if (adapter.RemoveFirstDiagnosticSettings(this) == false)
                 {
                     throw new Exception("Failed to remove Diagnostic Settings");
                 }

@@ -22,7 +22,7 @@ Add-AzApiManagementRegion -ApiManagement <PsApiManagement> -Location <String> [-
 ## DESCRIPTION
 The **Add-AzApiManagementRegion** cmdlet adds new instance of type **PsApiManagementRegion** to the collection of **AdditionalRegions** of provided instance of type **Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement**.
 This cmdlet does not deploy anything by itself but updates instance of **PsApiManagement** in-memory.
-To update a deployment of an API Management pass the modified **PsApiManagement** Instance to Update-AzApiManagementDeployment.
+To update a deployment of an API Management pass the modified **PsApiManagement** Instance to Set-AzApiManagement.
 
 ## EXAMPLES
 
@@ -34,8 +34,10 @@ PS C:\>Add-AzApiManagementRegion -ApiManagement $ApiManagement -Location "East U
 This command adds two premium SKU units and the region named East US to the **PsApiManagement** instance.
 
 ### Example 2: Add new deployment regions to a PsApiManagement instance and then update deployment
-```
-PS C:\>Get-AzApiManagement -ResourceGroupName "Contoso" -Name "ContosoApi" | Add-AzApiManagementRegion -Location "East US" -Sku "Premium" -Capacity 2 | Update-AzApiManagementDeployment
+```powershell
+PS C:\>$service = Get-AzApiManagement -ResourceGroupName "Contoso" -Name "ContosoApi"
+PS C:\>$service = Add-AzApiManagementRegion -ApiManagement $service -Location $secondarylocation -VirtualNetwork $additionalRegionVirtualNetwork
+PS C:\>$service = Set-AzApiManagement -InputObject $service -PassThru 
 ```
 
 This command gets a **PsApiManagement** object, adds two premium SKU units for the region named East US, and then updates deployment.
@@ -159,6 +161,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Update-AzApiManagementRegion](./Update-AzApiManagementRegion.md)
 
-[Update-AzApiManagementDeployment](./Update-AzApiManagementDeployment.md)
+[Set-AzApiManagement](./Set-AzApiManagement.md)
 
 
