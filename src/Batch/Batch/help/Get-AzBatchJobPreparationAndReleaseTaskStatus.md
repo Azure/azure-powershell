@@ -44,7 +44,7 @@ PoolId                                 : test
 ```
 
 This command gets the job preparation and release task status for job "Test".
-Use the Get-AzBatchAccountKeys cmdlet to assign a context to the $Context variable.
+Use the Get-AzBatchAccountKey cmdlet to assign a context to the $Context variable.
 
 ### Example 2: Get the job preparation and release status of a job with Filter and Select specified
 ```
@@ -63,7 +63,7 @@ This command gets the job preparation and release task status for job "Test" on 
 
 ### -BatchContext
 The BatchAccountContext instance to use when interacting with the Batch service.
-Use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.
+Use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext

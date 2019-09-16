@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetBatchSupportedImages()
         {
-            BatchController.NewInstance.RunPsTest(_logger, "Test-GetBatchSupportedImages");
+            BatchController.NewInstance.RunPsTest(_logger, "Test-GetBatchSupportedImage");
         }
     }
 }

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Batch.dll-Help.xml
 Module Name: Az.Batch
-online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchsupportedimages.md
+online version: https://docs.microsoft.com/en-us/powershell/module/az.batch/get-azbatchsupportedimage.md
 schema: 2.0.0
 ---
 
-# Get-AzBatchSupportedImages
+# Get-AzBatchSupportedImage
 
 ## SYNOPSIS
 Gets Batch supported images for a Batch account.
@@ -13,12 +13,12 @@ Gets Batch supported images for a Batch account.
 ## SYNTAX
 
 ```
-Get-AzBatchSupportedImages [-Filter <String>] [-MaxCount <Int32>] -BatchContext <BatchAccountContext>
+Get-AzBatchSupportedImage [-Filter <String>] [-MaxCount <Int32>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzBatchSupportedImages** cmdlet gets supported virtual machine images that are available in an Azure Batch account.
+The **Get-AzBatchSupportedImage** cmdlet gets supported virtual machine images that are available in an Azure Batch account.
 Specify the account by using the *BatchContext* parameter.
 
 ## EXAMPLES
@@ -26,8 +26,8 @@ Specify the account by using the *BatchContext* parameter.
 ### Example 1: Get all available supported images
 
 ```powershell
-PS C:\>$Context = Get-AzBatchAccountKeys -AccountName "ContosoBatchAccount"
-PS C:\> Get-AzBatchSupportedImages -BatchContext $Context
+PS C:\>$Context = Get-AzBatchAccountKey -AccountName "ContosoBatchAccount"
+PS C:\> Get-AzBatchSupportedImage -BatchContext $Context
 BatchSupportEndOfLife :
 Capabilities          :
 ImageReference        : canonical:ubuntuserver:16.04-lts:latest
@@ -59,7 +59,7 @@ VerificationType      : Verified
 ...
 ```
 
-The first command gets a Batch account context that contains access keys for your subscription by using **Get-AzBatchAccountKeys**.
+The first command gets a Batch account context that contains access keys for your subscription by using **Get-AzBatchAccountKey**.
 The command stores the context in the $Context variable to use in the next command.
 The second command gets all available supported images for that Batch account.
 
@@ -68,7 +68,7 @@ The second command gets all available supported images for that Batch account.
 ### -BatchContext
 The BatchAccountContext instance to use when interacting with the Batch service.
 If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service.
-To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.
+To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated.
 When using shared key authentication, the primary access key is used by default.
 To change the key to use, set the BatchAccountContext.KeyInUse property.
 
@@ -144,4 +144,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
+[Get-AzBatchAccountKey](./Get-AzBatchAccountKey.md)

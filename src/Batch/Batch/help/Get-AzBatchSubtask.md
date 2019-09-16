@@ -33,7 +33,7 @@ Subtasks provide parallel processing for individual tasks, and enable precise mo
 
 ### Example 1: Return all subtasks for a specified task
 ```
-PS C:\>$Context = Get-AzBatchAccountKeys -AccountName "contosobatchaccount"
+PS C:\>$Context = Get-AzBatchAccountKey -AccountName "contosobatchaccount"
 PS C:\> Get-AzBatchSubtask -JobId "Job-01" -TaskID "myTask" -BatchContext $Context
 ```
 
@@ -46,7 +46,7 @@ The second command then uses that object reference and the **Get-AzBatchSubtask*
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext

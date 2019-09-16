@@ -100,12 +100,12 @@ function Test-BatchAccountEndToEnd
 .SYNOPSIS
 Tests getting a list of Batch supported images
 #>
-function Test-GetBatchSupportedImages
+function Test-GetBatchSupportedImage
 {
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Get the node agent skus
-    $supportedImages = Get-AzBatchSupportedImages -BatchContext $context
+    $supportedImages = Get-AzBatchSupportedImage -BatchContext $context
 
     foreach($supportedImage in $supportedImages)
     {

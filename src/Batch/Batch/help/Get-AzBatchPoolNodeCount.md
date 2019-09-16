@@ -43,7 +43,7 @@ The Get-AzBatchPoolNodeCount cmdlet allows customers to get back node counts per
 
 ### Example 1
 ```
-PS C:\> $batchContext = Get-AzBatchAccountKeys -AccountName "contosobatch"
+PS C:\> $batchContext = Get-AzBatchAccountKey -AccountName "contosobatch"
 PS C:\> Get-AzBatchPoolNodeCount -BatchContext $batchContext
 
 PoolId                         Dedicated                                                    LowPriority
@@ -95,7 +95,7 @@ Show node counts per node state for a pool given pool id.
 ### -BatchContext
 The BatchAccountContext instance to use when interacting with the Batch service.
 If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service.
-To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.
+To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated.
 When using shared key authentication, the primary access key is used by default.
 To change the key to use, set the BatchAccountContext.KeyInUse property.
 
@@ -191,7 +191,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzBatchAccountKeys]()
+[Get-AzBatchAccountKey]()
 
 [Get-AzBatchJob]()
 

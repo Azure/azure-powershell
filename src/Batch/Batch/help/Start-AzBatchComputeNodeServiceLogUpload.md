@@ -43,7 +43,7 @@ This cmdlet gathers Azure Batch service log files from compute nodes if you are 
 PS C:\> $storageContext = New-AzStorageContext -StorageAccountName "contosogeneral" -StorageAccountKey "<Storage Key for ContosoGeneral ends with ==>"
 PS C:\> $sasToken = New-AzStorageContainerSASToken -Name "contosocontainer" -Context $storageContext
 PS C:\> $containerUrl = "https://contosogeneral.blob.core.windows.net/contosocontainer" + $sasToken
-PS C:\> $batchContext = Get-AzBatchAccountKeys -AccountName "contosobatch"
+PS C:\> $batchContext = Get-AzBatchAccountKey -AccountName "contosobatch"
 PS C:\> Start-AzBatchComputeNodeServiceLogUpload -BatchContext $batchContext -PoolId "contosopool" -ComputeNodeId "tvm-1612030122_1-20180405t234700z" -ContainerUrl $containerUrl -StartTime "2018-01-01 00:00:00Z"
 
 NumberOfFilesUploaded VirtualDirectoryName
@@ -58,7 +58,7 @@ Upload compute node service logs written on or after January 1, 2018 midnight, w
 PS C:\> $storageContext = New-AzStorageContext -StorageAccountName "contosogeneral" -StorageAccountKey "<Storage Key for ContosoGeneral ends with ==>"
 PS C:\> $sasToken = New-AzStorageContainerSASToken -Name "contosocontainer" -Context $storageContext
 PS C:\> $containerUrl = "https://contosogeneral.blob.core.windows.net/contosocontainer" + $sasToken
-PS C:\> $batchContext = Get-AzBatchAccountKeys -AccountName "contosobatch"
+PS C:\> $batchContext = Get-AzBatchAccountKey -AccountName "contosobatch"
 PS C:\> Start-AzBatchComputeNodeServiceLogUpload -BatchContext $batchContext -PoolId "contosopool" -ComputeNodeId "tvm-1612030122_1-20180405t234700z" -ContainerUrl $containerUrl -StartTime "2018-01-01 00:00:00Z" -EndTime "2018-01-10 00:00:00Z"
 
 NumberOfFilesUploaded VirtualDirectoryName
@@ -73,7 +73,7 @@ Upload compute node service logs written on or after January 1, 2018 midnight an
 PS C:\> $storageContext = New-AzStorageContext -StorageAccountName "contosogeneral" -StorageAccountKey "<Storage Key for ContosoGeneral ends with ==>"
 PS C:\> $sasToken = New-AzStorageContainerSASToken -Name "contosocontainer" -Context $storageContext
 PS C:\> $containerUrl = "https://contosogeneral.blob.core.windows.net/contosocontainer" + $sasToken
-PS C:\> $batchContext = Get-AzBatchAccountKeys -AccountName "contosobatch"
+PS C:\> $batchContext = Get-AzBatchAccountKey -AccountName "contosobatch"
 PS C:\> Get-AzBatchComputeNode -BatchContext $batchContext -Id "tvm-1612030122_1-20180405t234700z" -PoolId "contosopool" | Start-AzBatchComputeNodeServiceLogUpload -BatchContext $batchContext -ContainerUrl $containerUrl -StartTime "2018-01-01 00:00:00Z" -EndTime "2018-01-10 00:00:00Z"
 
 NumberOfFilesUploaded VirtualDirectoryName
@@ -88,7 +88,7 @@ Upload compute node service logs written on or after January 1, 2018 midnight an
 ### -BatchContext
 The BatchAccountContext instance to use when interacting with the Batch service.
 If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service.
-To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.
+To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated.
 When using shared key authentication, the primary access key is used by default.
 To change the key to use, set the BatchAccountContext.KeyInUse property.
 

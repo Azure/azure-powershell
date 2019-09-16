@@ -31,13 +31,13 @@ PS C:\>Stop-AzBatchJob -Id "Job-000001" -TerminateReason "No more tasks to run" 
 
 This command stops the job that has the ID Job-000001.
 The command specifies a reason that you chose to stop the job.
-Use the Get-AzBatchAccountKeys cmdlet to assign a context to the $Context variable.
+Use the Get-AzBatchAccountKey cmdlet to assign a context to the $Context variable.
 
 ## PARAMETERS
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -118,7 +118,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Enable-AzBatchJob](./Enable-AzBatchJob.md)
 
-[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
+[Get-AzBatchAccountKey](./Get-AzBatchAccountKey.md)
 
 [Get-AzBatchJob](./Get-AzBatchJob.md)
 
