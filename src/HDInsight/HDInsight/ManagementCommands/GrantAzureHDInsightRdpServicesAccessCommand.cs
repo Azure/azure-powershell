@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [CmdletDeprecation("3.0.0")]
+    [CmdletDeprecation("This cmdlet will be deprecated in an upcoming breaking change release 3.0.0. Please use the cmdlet Set-AzHDInsightGatewayCredential to set connection credential.")]
     [Cmdlet("Grant", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightRdpServicesAccess"),OutputType(typeof(void))]
     public class GrantAzureHDInsightRdpServicesAccessCommand : HDInsightCmdletBase
     {
