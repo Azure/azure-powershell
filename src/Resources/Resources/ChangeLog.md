@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fix bug where New-AzRoleAssignment could not be called without parameter Scope.
+* Fix New-AzADServicePrincipal to add credentials only when associate AD application is new (Issue #9815)
 
 ## Version 1.6.2
 * Add support for new api version 2019-05-10 for Microsoft.Resource

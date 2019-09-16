@@ -296,8 +296,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 Password = SecureStringExtensions.ConvertToString(Password)
             };
 
+            bool createdPassword = false;
+
             if (!this.IsParameterBound(c => c.ApplicationId))
             {
+                createdPassword = true;
                 CreatePSApplicationParameters appParameters = new CreatePSApplicationParameters
                 {
                     DisplayName = DisplayName,
@@ -321,10 +324,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 ApplicationId = ApplicationId,
                 AccountEnabled = true,
-                PasswordCredentials = new PSADPasswordCredential[]
-                {
-                    passwordCredential
-                }
             };
 
             var shouldProcessMessage = SkipRoleAssignment() ?
@@ -335,7 +334,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             if (ShouldProcess(target: createParameters.ApplicationId.ToString(), action: shouldProcessMessage))
             {
                 PSADServicePrincipalWrapper servicePrincipal = new PSADServicePrincipalWrapper(ActiveDirectoryClient.CreateServicePrincipal(createParameters));
-                servicePrincipal.Secret = Password;
+                if (createdPassword)
+                {
+                    servicePrincipal.Secret = Password;
+                }
+
                 WriteObject(servicePrincipal);
                 if (SkipRoleAssignment())
                 {
