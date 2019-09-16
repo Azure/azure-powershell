@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/remove-azservicefabricnodetype
@@ -23,7 +23,7 @@ Use the **Remove-AzServiceFabricNodeType** to remove all nodes from a specific n
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS c:> Remove-AzServiceFabricNodeType -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeTypeName 'nt1'
 ```
 
@@ -32,7 +32,7 @@ This command will remove NodeType 'nt1' from the cluster.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster.
+Specify the name of the cluster
 
 ```yaml
 Type: System.String
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -NodeType
-The node type name.
+The node type name
 
 ```yaml
 Type: System.String
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group.
+Specify the name of the resource group.
 
 ```yaml
 Type: System.String
@@ -107,7 +107,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
