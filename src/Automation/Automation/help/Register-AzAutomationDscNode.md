@@ -9,7 +9,7 @@ schema: 2.0.0
 # Register-AzAutomationDscNode
 
 ## SYNOPSIS
-Registers an Azure virtual machine as a DSC node for an Automation account.
+Registers an Azure virtual machine running Windows OS as a DSC node for an Automation account.
 
 ## SYNTAX
 
@@ -22,7 +22,7 @@ Register-AzAutomationDscNode -AzureVMName <String> [-NodeConfigurationName <Stri
 ```
 
 ## DESCRIPTION
-The **Register-AzAutomationDscNode** cmdlet registers an Azure virtual machine as an APS Desired State Configuration (DSC) node in an Azure Automation account.
+The **Register-AzAutomationDscNode** cmdlet registers an Azure virtual machine as an APS Desired State Configuration (DSC) node in an Azure Automation account. This cmdlet will only register VMs running Windows OS as an Automation DSC Node for an account.
 
 If you need to register a node to an automation account in a different subscription,
 you will need to use an ARM template rather than cmdlets. 
@@ -34,7 +34,7 @@ for more details.
 
 ### Example 1: Register an Azure virtual machine as an Azure DSC node
 ```
-PS C:\>Register-AzAutomationDscNode -AutomationAccountName "Contoso17" -AzVMName "VirtualMachine01" -ResourceGroupName "ResourceGroup01"-NodeConfigurationName "ContosoConfiguration.webserver"
+PS C:\>Register-AzAutomationDscNode -AutomationAccountName "Contoso17" -AzureVMName "VirtualMachine01" -ResourceGroupName "ResourceGroup01"-NodeConfigurationName "ContosoConfiguration.webserver"
 ```
 
 This command registers the Azure virtual machine named VirtualMachine01 as a DSC node in the Automation account named Contoso17.

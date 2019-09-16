@@ -365,7 +365,7 @@ namespace Common.Authentication.Test
         {
             AzureSessionInitializer.InitializeAzureSession();
             var tenant = Guid.NewGuid().ToString();
-            var userId = Guid.NewGuid().ToString();
+            var userId = "MSI@2";
             var environment = AzureEnvironment.PublicEnvironments["AzureCloud"];
             var account = new AzureAccount
             {
@@ -402,11 +402,52 @@ namespace Common.Authentication.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void AppServiceManagedIdentityWithDataPlane()
+        public void AppServiceUserManagedIdentityWithDataPlane()
         {
             AzureSessionInitializer.InitializeAzureSession();
             var tenant = Guid.NewGuid().ToString();
             var userId = Guid.NewGuid().ToString();
+            var environment = AzureEnvironment.PublicEnvironments["AzureCloud"];
+            var account = new AzureAccount
+            {
+                Id = userId,
+                Type = AzureAccount.AccountType.ManagedService
+            };
+            const string resource = @"https://vault.azure.com/";
+            const string endpoint = @"http://127.0.0.1:41217/MSI/token/";
+            var expectedUri = $"{endpoint}?resource={resource}&api-version=2017-09-01&clientid={userId}";
+            account.SetProperty(AzureAccount.Property.MSILoginUri, endpoint);
+            account.SetProperty(AzureAccount.Property.MSILoginSecret, @"bar");
+            const string expectedAccessToken = "foo";
+            var expectedExpiresOn = DateTimeOffset.Parse("1/23/2019 7:15:42 AM +00:00");
+            var responses = new Dictionary<string, ManagedServiceAppServiceTokenInfo>(StringComparer.OrdinalIgnoreCase)
+            {
+                {
+                    expectedUri,
+                    new ManagedServiceAppServiceTokenInfo()
+                    {
+                        AccessToken = expectedAccessToken,
+                        ExpiresOn = expectedExpiresOn,
+                        Resource = resource,
+                        TokenType = "Bearer",
+                    }
+                }
+            };
+            AzureSession.Instance.RegisterComponent(HttpClientOperationsFactory.Name, () => TestHttpOperationsFactory.Create(responses, _output), true);
+            var msat = new ManagedServiceAppServiceAccessToken(account, environment, environment.GetEndpoint(resource) ?? resource, tenant);
+            Assert.Equal(expectedUri, msat.RequestUris.Peek());
+            var accessToken = msat.AccessToken;
+            Assert.Equal(expectedAccessToken, accessToken);
+            Assert.Equal(expectedExpiresOn, msat.ExpiresOn);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AppServiceManagedIdentityWithDataPlane()
+        {
+            AzureSessionInitializer.InitializeAzureSession();
+            var tenant = Guid.NewGuid().ToString();
+            var userId = "MSI@2";
             var environment = AzureEnvironment.PublicEnvironments["AzureCloud"];
             var account = new AzureAccount
             {
@@ -447,7 +488,7 @@ namespace Common.Authentication.Test
         {
             AzureSessionInitializer.InitializeAzureSession();
             var tenant = Guid.NewGuid().ToString();
-            var userId = Guid.NewGuid().ToString();
+            var userId = "MSI@2";
             var environment = AzureEnvironment.PublicEnvironments["AzureCloud"];
             var account = new AzureAccount
             {
