@@ -19,8 +19,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
-using Microsoft.Azure.Internal.Subscriptions;
-using Microsoft.Azure.Internal.Subscriptions.Models;
+using Microsoft.Azure.Internal.Subscriptions.Version2018_06_01;
+using Microsoft.Azure.Internal.Subscriptions.Version2018_06_01.Models;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     throw new ArgumentException(ProfileMessages.SubscriptionOrTenantRequired);
                 }
 
-                tenant = string.IsNullOrWhiteSpace(tenantId) ? (string.IsNullOrWhiteSpace(subscription.GetTenant())? context.Tenant : CreateTenant(subscription.GetTenant())):  CreateTenant(tenantId);
+                tenant = string.IsNullOrWhiteSpace(tenantId) ? (string.IsNullOrWhiteSpace(subscription.GetTenant()) ? context.Tenant : CreateTenant(subscription.GetTenant())) : CreateTenant(tenantId);
             }
             else if (!string.IsNullOrWhiteSpace(tenantId))
             {
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     }
                     else
                     {
-                        var subscriptions = (subscriptionClient.ListAllSubscriptions().ToList() ??
+                        var subscriptions = (subscriptionClient.Subscriptions.List().ToList() ??
                                                 new List<Subscription>())
                                             .Where(s => "enabled".Equals(s.State.ToString(), StringComparison.OrdinalIgnoreCase) ||
                                                         "warned".Equals(s.State.ToString(), StringComparison.OrdinalIgnoreCase));
@@ -635,11 +635,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return result;
         }
         private List<AzureTenant> ListAccountTenants(
-			IAzureAccount account,
-			IAzureEnvironment environment,
-			SecureString password,
-			string promptBehavior,
-			Action<string> promptAction)
+            IAzureAccount account,
+            IAzureEnvironment environment,
+            SecureString password,
+            string promptBehavior,
+            Action<string> promptAction)
         {
             List<AzureTenant> result = new List<AzureTenant>();
             var commonTenant = GetCommonTenant(account);
@@ -735,7 +735,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             AzureContext context = new AzureContext(_profile.DefaultContext.Subscription, account, environment,
                                         CreateTenantFromString(tenantId, accessToken.TenantId));
 
-            return subscriptionClient.ListAllSubscriptions().Select(s => s.ToAzureSubscription(context));
+            var result = subscriptionClient.Subscriptions.ListAsync()
+                .ConfigureAwait(false).GetAwaiter().GetResult();
+
+            var subscriptions = result.Select(s => s.ToAzureSubscription(context)).ToList();
+
+            if (string.IsNullOrEmpty(result.NextPageLink))
+            {
+                return subscriptions;
+            }
+
+            while (result.NextPageLink != null)
+            {
+                result = subscriptionClient.Subscriptions.ListNextAsync(result.NextPageLink)
+                    .ConfigureAwait(false).GetAwaiter().GetResult();
+
+                subscriptions.AddRange(result.Select(s => s.ToAzureSubscription(context)));
+            }
+
+            return subscriptions;
         }
 
         private void WriteWarningMessage(string message)
