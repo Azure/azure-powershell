@@ -203,7 +203,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             new DownloadOptions
                             {
                                 DisableContentMD5Validation = !this.CheckMd5,
-                                PreserveSMBAttributes = context.PreserveSMBAttribute.IsPresent ? true : false
+                                PreserveSMBAttributes = context is null ? false : context.PreserveSMBAttribute.IsPresent
                             },
                             this.GetTransferContext(progressRecord, fileToBeDownloaded.Properties.Length),
                             CmdletCancellationToken);
@@ -225,7 +225,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
         public object GetDynamicParameters()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 context = new WindowsOnlyParameters();
                 return context;

@@ -133,7 +133,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             cloudFileToBeUploaded,
                             new UploadOptions
                             {
-                                PreserveSMBAttributes = context.PreserveSMBAttribute.IsPresent ? true : false
+                                PreserveSMBAttributes = context is null ? false : context.PreserveSMBAttribute.IsPresent
                             },
                             this.GetTransferContext(progressRecord, localFile.Length),
                             this.CmdletCancellationToken),
@@ -235,7 +235,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         public object GetDynamicParameters()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 context = new WindowsOnlyParameters();
                 return context;
