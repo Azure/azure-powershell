@@ -12,52 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.SignalR.Properties;
-using Microsoft.Azure.Management.SignalR;
-using Microsoft.Rest;
 using System;
-using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.SignalR.Properties;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.SignalR;
 
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
-    public abstract class SignalRCmdletBase : AzureRMCmdlet
+    public abstract class SignalRCmdletBase : SignalRCmdletBottom
     {
-        protected const string SignalRNoun = "AzureRmSignalR";
-        protected const string SignalRKeyNoun = "AzureRmSignalRKey";
-        protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
-        protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
-        protected const string ListSignalRServiceParameterSet = "ListSignalRServiceParameterSet";
-        protected const string InputObjectParameterSet = "InputObjectParameterSet";
+        private IResourceManagementClient _resourceClient;
 
-        private ISignalRManagementClient _client;
-
-        protected ISignalRManagementClient Client => _client ?? (_client = BuildClient<SignalRManagementClient>());
-
-        /// <summary>
-        /// Run Cmdlet with Error Handling (report error correctly)
-        /// </summary>
-        /// <param name="action">The actual Cmdlet action to be wrapped.</param>
-        protected void RunCmdlet(Action action)
-        {
-            try
-            {
-                action?.Invoke();
-            }
-            catch (Rest.Azure.CloudException ex)
-            {
-                throw new PSInvalidOperationException(ex.Body.Message, ex);
-            }
-        }
-
-        private T BuildClient<T>(string endpoint = null, Func<T, T> postBuild = null) where T : ServiceClient<T>
-        {
-            var instance = AzureSession.Instance.ClientFactory.CreateArmClient<T>(
-                DefaultProfile.DefaultContext, endpoint ?? AzureEnvironment.Endpoint.ResourceManager);
-            return postBuild == null ? instance : postBuild(instance);
-        }
+        protected IResourceManagementClient ResourceClient => _resourceClient ?? (_resourceClient = BuildClient<ResourceManagementClient>());
 
         public abstract string ResourceGroupName { get; set; }
 
@@ -73,6 +40,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                 return context?.GetProperty(Resources.DefaultResourceGroupKey);
             }
         }
+
         /// <summary>
         /// Use the DefaultResourceGroupName for ResourceGroupName if not specified, and optionally validate it.
         /// </summary>
@@ -86,6 +54,11 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
             {
                 throw new ArgumentException("ResourceGroupName is not specified and the default value is not present.");
             }
+        }
+
+        protected string GetLocationFromResourceGroup()
+        {
+            return ResourceClient.ResourceGroups.Get(ResourceGroupName).Location;
         }
     }
 }

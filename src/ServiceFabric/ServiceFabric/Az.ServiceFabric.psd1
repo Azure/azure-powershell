@@ -87,7 +87,20 @@ CmdletsToExport = 'Add-AzServiceFabricApplicationCertificate',
                'Remove-AzServiceFabricSetting', 'Set-AzServiceFabricSetting', 
                'Set-AzServiceFabricUpgradeType', 
                'Update-AzServiceFabricDurability', 
-               'Update-AzServiceFabricReliability'
+               'Update-AzServiceFabricReliability',
+               'New-AzServiceFabricApplication',
+               'New-AzServiceFabricApplicationType',
+               'New-AzServiceFabricApplicationTypeVersion',
+               'New-AzServiceFabricService',
+               'Update-AzServiceFabricApplication',
+               'Get-AzServiceFabricApplication',
+               'Get-AzServiceFabricApplicationType',
+               'Get-AzServiceFabricApplicationTypeVersion',
+               'Get-AzServiceFabricService',
+               'Remove-AzServiceFabricApplication',
+               'Remove-AzServiceFabricApplicationType',
+               'Remove-AzServiceFabricApplicationTypeVersion',
+               'Remove-AzServiceFabricService'
 
 # Variables to export from this module
 # VariablesToExport = @()

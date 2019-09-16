@@ -122,7 +122,10 @@ CmdletsToExport = 'Set-AzDataFactoryV2', 'Update-AzDataFactoryV2',
                'Resume-AzDataFactoryPipeline', 
                'Set-AzDataFactoryPipelineActivePeriod', 
                'Suspend-AzDataFactoryPipeline', 'Get-AzDataFactoryDataset', 
-               'New-AzDataFactoryDataset', 'Remove-AzDataFactoryDataset'
+               'New-AzDataFactoryDataset', 'Remove-AzDataFactoryDataset',
+			   'Add-AzDataFactoryV2TriggerSubscription',
+			   'Remove-AzDataFactoryV2TriggerSubscription',
+			   'Get-AzDataFactoryV2TriggerSubscriptionStatus'
 
 # Variables to export from this module
 # VariablesToExport = @()

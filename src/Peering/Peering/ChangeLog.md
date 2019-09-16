@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Peering Service Operations
+* Updated Documentation
+* Updated to SDK 1.0.0-preview
+* Supports API Version 2019-08-01-preview
 
 ## Version 0.1.3
 * Bug fix in set connection for exchange that caused CDIR notation
@@ -25,7 +29,7 @@
 * Added tests for set Exchange operations
 * Bug fix in set connection
 * Added Connection Identifier to Connection object.
-* Updated to SDK 0.10.0-review
+* Updated to SDK 0.10.0-preview
 * Supports api-version 06-01-2019-preview for Microsoft.Peering
 * Fixed miscellaneous typos across module
 

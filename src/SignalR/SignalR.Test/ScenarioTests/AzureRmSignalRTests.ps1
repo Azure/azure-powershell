@@ -103,6 +103,8 @@ function Test-AzureRmSignalRWithDefaultArgs {
     $location = Get-ProviderLocation "Microsoft.SignalRService/SignalR"
 
     try {
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
+
         # New without SignalR resource group, use the SignalR instance name as the resource group
         $signalr = New-AzSignalR -Name $resourceGroupName
         Verify-SignalR $signalr $resourceGroupName $location "Standard_S1" 1
