@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [CmdletDeprecation("Clusters based Windows Os Type don't be supported, this cmdlet will be deprecated in an upcoming breaking change release 3.0.0 with no replacement. Please create cluster based Linux Os Type.")]
+    [CmdletDeprecation("Clusters using Windows Os Type will not be supported in the future, this cmdlet will be deprecated in an upcoming breaking change release with no replacement. Please create a cluster using Linux Os Type instead.")]
     [Cmdlet("Revoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightRdpServicesAccess"),OutputType(typeof(void))]
     public class RevokeAzureHDInsightRdpServicesAccessCommand : HDInsightCmdletBase
     {
