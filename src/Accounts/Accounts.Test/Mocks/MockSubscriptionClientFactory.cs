@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Internal.Subscriptions;
-using Microsoft.Azure.Internal.Subscriptions.Models;
+using Microsoft.Azure.Internal.Subscriptions.Version2018_06_01;
+using Microsoft.Azure.Internal.Subscriptions.Version2018_06_01.Models;
 using Microsoft.Rest.Azure;
 using Moq;
 using System;
