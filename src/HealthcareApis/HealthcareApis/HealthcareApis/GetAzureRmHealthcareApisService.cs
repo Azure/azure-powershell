@@ -86,7 +86,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                                 {
                                     WriteError(WriteErrorforBadrequest(wex));
                                 }
-
                                 break;
                             }
                         case ResourceIdParameterSet:
