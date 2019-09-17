@@ -22,6 +22,7 @@
 * Adding 3 new commands for ADF V2 - Add-AzDataFactoryV2TriggerSubscription, Remove-AzDataFactoryV2TriggerSubscription, and Get-AzDataFactoryV2TriggerSubscriptionStatus
 * Updated ADF .Net SDK version to 4.1.3
 
+
 ## Version 1.2.0
 * Fix typo to capitalize "Windows" in 'New-AzDataFactoryEncryptValue" documentation
 * Fixed miscellaneous typos across module
