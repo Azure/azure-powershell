@@ -304,6 +304,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             {
                 return TagsConversionHelper.CreateTagDictionary(this.Tag, true);
             }
+
             return null;
         }
     }
