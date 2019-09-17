@@ -1,3 +1,98 @@
+## 2.7.0 - September 2019
+#### Az.ApiManagement
+* Fixed miscellaneous typos across module
+* Fix for issue https://github.com/Azure/azure-powershell/issues/9351
+	- Update .net nuget version, which does not enforce restrictions on productId, apiId, groupId and userId
+* **Get-AzApiManagementProduct** - Added support for querying products using Api. 
+  https://github.com/Azure/azure-powershell/issues/9482
+* **New-AzApiManagementApiRevision** - Fix for issue where ApiRevisionDescription was not being set when creating new api revision
+https://github.com/Azure/azure-powershell/issues/9752
+* Fixed typo in model 'PsApiManagementOAuth2AuthrozationServer' to 'PsApiManagementOAuth2AuthorizationServer'
+
+#### Az.Automation
+* Fixed miscellaneous typos across module
+
+#### Az.Compute
+* Add VmssId to New-AzVMConfig cmdlet
+* Add TerminateScheduledEvents and TerminateScheduledEventNotBeforeTimeoutInMinutes parameters to New-AzVmssConfig and Update-AzVmss
+* Add HyperVGeneration property to VM image object
+* Add Host and HostGroup features
+    - New cmdlets:
+	    New-AzHostGroup
+		New-AzHost
+		Get-AzHostGroup
+		Get-AzHost
+		Remove-AzHostGroup
+		Remove-AzHost
+	- HostId parameter is added to New-AzVMConfig and New-AzVM
+* Fixed miscellaneous typos across module
+* Update example in 'Invoke-AzVMRunCommand' documentation to use correct parameter name
+* Update '-VolumeType' description in 'Set-AzVMDiskEncryptionExtension' and 'Set-AzVmssDiskEncryptionExtension' reference documentation
+
+#### Az.DataFactory
+* Fix typo to capitalize 'Windows' in 'New-AzDataFactoryEncryptValue' documentation
+* Fixed miscellaneous typos across module
+* Updated ADF .Net SDK version to 4.1.2 
+* Add parameter 'DataProxyIntegrationRuntimeName', 'DataProxyStagingLinkedServiceName' and 'DataProxyStagingPath' for 'Set-AzureRmDataFactoryV2IntegrationRuntime' cmd to enable set up Self-Hosted Integration Runtime as a proxy for SSIS Integration Runtime
+* Updated PSTriggerRun to show the triggered pipelines, message and properties, and PSActivityRun to show the activity type
+
+#### Az.HDInsight
+* Fixed miscellaneous typos across module
+
+#### Az.IotHub
+* Fixed miscellaneous typos across module
+
+#### Az.Monitor
+* Fixed miscellaneous typos across module
+* Fixed incorrect parameter name in help documentation
+
+#### Az.Network
+* Updated New-AzPrivateLinkServiceIpConfig
+    - Deprecated the paramster 'PublicIpAddress' since this is never used in the server side.
+    - Added one optional parameter 'Primary' that indicate the current ip configuration is primary one or not.
+* Improved handling of request error exception from SDK
+    -Fixes the issue that previously SDK exceptions aren't handled correctly which results in key error details not being displayed
+* Fixed miscellaneous typos across module
+* Adjusted validation logic for Ipv6 IP Prefix to check for correct IPv6 prefix length. 
+* Updated Get-AzVirtualNetworkSubnetConfig: Added parameter set to get by subnet resource id.
+* Updated description of Location parameter for AzNetworkServiceTag
+
+#### Az.RecoveryServices
+* Fixed miscellaneous typos across module
+* Update 'Get-AzRecoveryServicesBackupJobDetail.md'
+
+#### Az.Resources
+* Add support for new api version 2019-05-10 for Microsoft.Resource
+    - Add support for 'copy.count = 0' for variables, resources and properties
+    - Resources with 'condition = false' or 'copy.count = 0' will be deleted in complete mode
+* Fixed miscellaneous typos across module
+* Add an example of assigning policy at subscription level to help doc
+
+#### Az.ServiceFabric
+* Fix add node type cmdlet bugs:
+    - NullReferenceException bug when resource group had other vmss not related to the service fabric cluster. Fixes issue: https://github.com/Azure/azure-powershell/issues/8681
+    - Fix bug where cmdlet failed if virtualNetwork was in a different resource group that the cluster. fixes issue: https://github.com/Azure/azure-powershell/issues/8407
+    - Deprecating Add-AzServiceFabricApplicationCertificate cmdlet
+
+#### Az.SignalR
+* Fixed miscellaneous typos across module
+
+#### Az.Sql
+* Update documentation of old Auditing cmdlets.
+
+#### Az.Storage
+* Fixed miscellaneous typos across module
+* Update help for Get/Close-AzStorageFileHandle, by add more scenarios to cmdlet examples and update parameter descriptions
+* Support StandardBlobTier in upload blob and copy blob
+    -  Set-AzStorageBlobContent
+    -  Start-AzStorageBlobCopy
+* Support Rehydrate Priority in copy blob
+    -  Start-AzStorageBlobCopy
+
+#### Az.Websites
+* Fixed miscellaneous typos across module
+* Add clarification around -AppSettings parameter in Set-AzWebApp and Set-AzWebAppSlot
+
 ## 2.6.0 - August 2019
 #### General
 * Fixed miscellaneous typos across numerous modules
