@@ -33,6 +33,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
         {
             var interactiveParameters = parameters as InteractiveParameters;
+            var onPremise = interactiveParameters.Environment.OnPremise;
             var authenticationClientFactory = interactiveParameters.AuthenticationClientFactory;
             IPublicClientApplication publicClient = null;
             var resource = interactiveParameters.Environment.GetEndpoint(interactiveParameters.ResourceId);
@@ -62,10 +63,10 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 if (!string.IsNullOrEmpty(replyUrl))
                 {
                     var clientId = AuthenticationHelpers.PowerShellClientId;
-                    var authority = interactiveParameters.Environment.OnPremise ?
+                    var authority = onPremise ?
                                         interactiveParameters.Environment.ActiveDirectoryAuthority :
                                         AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
-                    publicClient = authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority, redirectUri: replyUrl);
+                    publicClient = authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority, redirectUri: replyUrl, useAdfs: onPremise);
 
                     var interactiveResponse = publicClient.AcquireTokenInteractive(scopes)
                         .WithCustomWebUi(new CustomWebUi(interactiveParameters.PromptAction))

@@ -27,14 +27,15 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
         {
             var authenticationClientFactory = parameters.AuthenticationClientFactory;
+            var onPremise = parameters.Environment.OnPremise;
             var cancellationTokenSource = new CancellationTokenSource();
             var resource = parameters.Environment.GetEndpoint(parameters.ResourceId);
             var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, resource) };
             var clientId = AuthenticationHelpers.PowerShellClientId;
-            var authority = parameters.Environment.OnPremise ?
+            var authority = onPremise ?
                                 parameters.Environment.ActiveDirectoryAuthority :
                                 AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
-            var publicClient = authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority);
+            var publicClient = authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority, useAdfs: onPremise);
             var response = GetResponseAsync(publicClient, scopes, cancellationTokenSource.Token);
             return AuthenticationResultToken.GetAccessTokenAsync(response);
         }

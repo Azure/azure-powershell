@@ -26,21 +26,24 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
         {
             var spParameters = parameters as ServicePrincipalParameters;
+            var onPremise = spParameters.Environment.OnPremise;
             var authenticationClientFactory = spParameters.AuthenticationClientFactory;
             var resource = spParameters.Environment.GetEndpoint(spParameters.ResourceId);
             var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, resource) };
             var clientId = spParameters.ApplicationId;
-            var authority = AuthenticationHelpers.GetAuthority(spParameters.Environment, spParameters.TenantId);
+            var authority = onPremise ?
+                                spParameters.Environment.ActiveDirectoryAuthority :
+                                AuthenticationHelpers.GetAuthority(spParameters.Environment, spParameters.TenantId);
             var redirectUri = spParameters.Environment.ActiveDirectoryServiceEndpointResourceId;
             IConfidentialClientApplication confidentialClient = null;
             if (!string.IsNullOrEmpty(spParameters.Thumbprint))
             {
                 var certificate = AzureSession.Instance.DataStore.GetCertificate(spParameters.Thumbprint);
-                confidentialClient = authenticationClientFactory.CreateConfidentialClient(clientId: clientId, authority: authority, redirectUri: redirectUri, certificate: certificate);
+                confidentialClient = authenticationClientFactory.CreateConfidentialClient(clientId: clientId, authority: authority, redirectUri: redirectUri, certificate: certificate, useAdfs: onPremise);
             }
             else if (spParameters.Secret != null)
             {
-                confidentialClient = authenticationClientFactory.CreateConfidentialClient(clientId: clientId, authority: authority, redirectUri: redirectUri, clientSecret: spParameters.Secret);
+                confidentialClient = authenticationClientFactory.CreateConfidentialClient(clientId: clientId, authority: authority, redirectUri: redirectUri, clientSecret: spParameters.Secret, useAdfs: onPremise);
             }
             else
             {
