@@ -174,7 +174,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
                     if (ShouldProcess(this.Name, Resources.createService))
                     {
-
                         this.EnsureNameAvailabilityOrThrow();
 
                         try
@@ -222,7 +221,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             }
 
             return accessPolicies;
-
         }
 
         private Kind GetKind()
@@ -267,7 +265,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             }
 
             return CosmosOfferThroughput;
-            
         }
 
         private string GetAudience()
@@ -294,6 +291,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         {
             var checkNameInputs = new CheckNameAvailabilityParameters(this.Name, ResourceTypeName);
             var nameAvailabilityInfo = this.HealthcareApisClient.Services.CheckNameAvailability(checkNameInputs);
+
             if (nameAvailabilityInfo.NameAvailable != true)
             {
                 throw new PSArgumentException(nameAvailabilityInfo.Message);

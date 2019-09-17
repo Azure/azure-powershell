@@ -247,7 +247,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                 return accessPolicies;
             }
 
-
             return healthcareApisAccount.Properties.AccessPolicies;
         }
 
