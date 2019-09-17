@@ -19,32 +19,25 @@ using Microsoft.Azure.Commands.Compute.Strategies;
 using Microsoft.Azure.Commands.Compute.Strategies.ComputeRp;
 using Microsoft.Azure.Commands.Compute.Strategies.Network;
 using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301;
-using Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime;
 using Microsoft.Azure.Commands.Compute.Common;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Net.Http;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Strategies;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM_SimpleParameterSet", SupportsShouldProcess = true, DefaultParameterSetName = "SimpleParameterSet")]
-    [OutputType(typeof(VirtualMachine))]
+    [OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.VirtualMachine))]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Profile("latest-2019-04-30")]
     public class NewAzVM_SimpleParameterSet: AzureRMAsyncCmdlet
     {
@@ -62,16 +55,13 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-
         [Parameter(Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string[] Zone { get; set; }
 
-
         [Parameter(
             Mandatory = false)]
         public Hashtable Tag { get; set; }
-
 
         [Parameter(
             Mandatory = true)]
@@ -114,7 +104,6 @@ namespace Microsoft.Azure.Commands.Compute
         [Alias("ImageName")]
         public Microsoft.Azure.PowerShell.Cmdlets.Compute.ImageName Image { get; set; } = "Win2016Datacenter";
 
-
         [Parameter(Mandatory = false)]
         public string Size { get; set; } = "Standard_DS1_v2";
 
@@ -123,10 +112,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(Mandatory = false, HelpMessage = "Use this to add system assigned identity (MSI) to the vm")]
         public SwitchParameter SystemAssignedIdentity { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Use this to add the assign user specified identity (MSI) to the VM")]
-        [ValidateNotNullOrEmpty]
-        public string UserAssignedIdentity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -284,13 +269,8 @@ namespace Microsoft.Azure.Commands.Compute
             var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
                     DefaultProfile.DefaultContext,
                     AzureEnvironment.Endpoint.ResourceManager);
-
             var parameters = new Parameters(this, client, resourceClient);
-
-
-
             var result = await client.RunAsync(SubscriptionId, parameters, asyncCmdlet);
-
             if (result != null)
             {
                 var fqdn = PublicIPAddressStrategy.Fqdn(DomainNameLabel, Location);
@@ -327,7 +307,6 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             // ToDO: Add support for User-Assigned identities
-
             return identity;
         }
 

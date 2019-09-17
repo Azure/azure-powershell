@@ -25,16 +25,20 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Compute.Strategies;
 using Microsoft.Azure.Commands.Compute.Strategies.ComputeRp;
 using Microsoft.Azure.Commands.Compute.Strategies.Network;
 using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Strategies;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Support;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -55,8 +59,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = true)]
-        [Alias("Name")]
-        public string VMScaleSetName { get; set; }
+        [Alias("VMScaleSetName")]
+        public string Name { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.ImageName))]
@@ -119,19 +123,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add system assigned identity (MSI) to the vm")]
         public SwitchParameter SystemAssignedIdentity { get; set; }
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add the assign user specified identity (MSI) to the VM")]
-        [ValidateNotNullOrEmpty]
-        public string UserAssignedIdentity { get; set; }
-
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public SwitchParameter EnableUltraSSD { get; set; }
 
         [Parameter(
             ParameterSetName = SimpleParameterSet,
             Mandatory = false,
-            HelpMessage = "A list of availability zones denoting the IP allocated for the resource needs to come from.",
-            ValueFromPipelineByPropertyName = true)]
-        public List<string> Zone { get; set; }
+            HelpMessage = "A list of availability zones denoting the IP allocated for the resource needs to come from.")]
+        public string[] Zone { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public int[] NatBackendPort { get; set; }
@@ -150,13 +149,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
         {
             NewAzVmss_SimpleParameterSet _cmdlet { get; }
+            readonly IResourceManagementClient _resourceClient;
 
             Client _client { get; }
 
-            public Parameters(NewAzVmss_SimpleParameterSet cmdlet, Client client)
+            public Parameters(NewAzVmss_SimpleParameterSet cmdlet, Client client, IResourceManagementClient resourceClient)
             {
                 _cmdlet = cmdlet;
                 _client = client;
+                _resourceClient = resourceClient;
             }
 
             public string Location
@@ -167,7 +168,37 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             public ImageAndOsType ImageAndOsType { get; set; }
 
-            public string DefaultLocation => "eastus";
+            string _defaultLocation = null;
+
+            public string DefaultLocation
+            {
+                get
+                {
+                    if (_defaultLocation == null)
+                    {
+                        var vmResourceType = _resourceClient.Providers.GetAsync("Microsoft.Compute").ConfigureAwait(false).GetAwaiter().GetResult()
+                        .ResourceTypes.Where(a => String.Equals(a.ResourceType, "virtualMachineScaleSets", StringComparison.OrdinalIgnoreCase))
+                                      .FirstOrDefault();
+                        if (vmResourceType != null)
+                        {
+                            var availableLocations = vmResourceType.Locations.Select(a => a.ToLower().Replace(" ", "").Replace("-", ""));
+                            if (availableLocations.Any(a => a.Equals("eastus")))
+                            {
+                                _defaultLocation = "eastus";
+                            }
+                            else
+                            {
+                                _defaultLocation = availableLocations.FirstOrDefault() ?? "eastus";
+                            }
+                        }
+                        else
+                        {
+                            _defaultLocation = "eastus";
+                        }
+                    }
+                    return _defaultLocation;
+                }
+            }
 
             public async Task<ResourceConfig<VirtualMachineScaleSet>> CreateConfigAsync()
             {
@@ -177,13 +208,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // generate a domain name label if it's not specified.
                 _cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
                     domainNameLabel: _cmdlet.DomainNameLabel,
-                    name: _cmdlet.VMScaleSetName,
+                    name: _cmdlet.Name,
                     location: Location,
                     client: _client);
 
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
 
-                var noZones = _cmdlet.Zone == null || _cmdlet.Zone.Count == 0;
+                var noZones = _cmdlet.Zone == null || _cmdlet.Zone.Length == 0;
 
                 var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
                     name: _cmdlet.PublicIpAddressName,
@@ -232,7 +263,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
 
-                var inboundNatPoolName = _cmdlet.VMScaleSetName;
+                var inboundNatPoolName = _cmdlet.Name;
                 var PortRangeSize = _cmdlet.InstanceCount * 2;
 
                 var ports = _cmdlet
@@ -254,13 +285,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var networkSecurityGroup = noZones
                     ? null
                     : resourceGroup.CreateNetworkSecurityGroupConfig(
-                        _cmdlet.VMScaleSetName,
+                        _cmdlet.Name,
                         _cmdlet.NatBackendPort.Concat(_cmdlet.BackendPort).ToList());
 
                 var proximityPlacementGroup = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroup);
 
                 return resourceGroup.CreateVirtualMachineScaleSetConfig(
-                    name: _cmdlet.VMScaleSetName,
+                    name: _cmdlet.Name,
                     subnet: subnet,
                     backendAdressPool: backendAddressPool,
                     inboundNatPools: inboundNatPools,
@@ -286,18 +317,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             bool loadBalancerNamePassedIn = !String.IsNullOrWhiteSpace(LoadBalancerName);
 
-            ResourceGroupName = ResourceGroupName ?? VMScaleSetName;
-            VirtualNetworkName = VirtualNetworkName ?? VMScaleSetName;
-            SubnetName = SubnetName ?? VMScaleSetName;
-            PublicIpAddressName = PublicIpAddressName ?? VMScaleSetName;
-            SecurityGroupName = SecurityGroupName ?? VMScaleSetName;
-            LoadBalancerName = LoadBalancerName ?? VMScaleSetName;
-            FrontendPoolName = FrontendPoolName ?? VMScaleSetName;
-            BackendPoolName = BackendPoolName ?? VMScaleSetName;
+            ResourceGroupName = ResourceGroupName ?? Name;
+            VirtualNetworkName = VirtualNetworkName ?? Name;
+            SubnetName = SubnetName ?? Name;
+            PublicIpAddressName = PublicIpAddressName ?? Name;
+            SecurityGroupName = SecurityGroupName ?? Name;
+            LoadBalancerName = LoadBalancerName ?? Name;
+            FrontendPoolName = FrontendPoolName ?? Name;
+            BackendPoolName = BackendPoolName ?? Name;
 
             var client = new Client(this, asyncCmdlet);
+            var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
+                DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
-            var parameters = new Parameters(this, client);
+            var parameters = new Parameters(this, client, resourceClient);
 
             // If the user did not specify a load balancer name, mark the LB setting to ignore
             // preexisting check. The most common scenario is users will let the cmdlet create and name the LB for them with the default

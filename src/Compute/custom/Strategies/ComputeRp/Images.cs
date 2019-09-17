@@ -26,8 +26,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 
         public static Dictionary<string, Dictionary<string, ImageReference>> GenerateImageDictionary()
         {
-            //var assembly = Assembly.GetExecutingAssembly();
-            //var resourceName = "Microsoft.Azure.PowerShell.Cmdlets.Compute.Resources.Image.json";
             string ImageJson = @"{
   ""Linux"": {
     ""CentOS"": {
