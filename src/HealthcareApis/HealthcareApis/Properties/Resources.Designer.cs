@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Object Id couldn&apos;t be retrieved from the current context. Please specify at least one  accesspolicy object id.
+        ///   Looks up a localized string similar to Object Id couldn&apos;t be retrieved from the current context. Please specify at least one accesspolicy object id.
         /// </summary>
         internal static string keyNotFoundExceptionMessage {
             get {
