@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.5.1
 * Fix the null exception for Get-AzRemoteDesktopFile.
 * Fix VHD Seek method for end-relative position.
 * Fix UltraSSD issue for New-AzVM and Update-AzVM.

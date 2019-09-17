@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.3.0
 * Adding 3 new commands for ADF V2 - Add-AzDataFactoryV2TriggerSubscription, Remove-AzDataFactoryV2TriggerSubscription, and Get-AzDataFactoryV2TriggerSubscriptionStatus
 
 ## Version 1.2.0
