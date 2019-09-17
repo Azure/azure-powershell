@@ -14,12 +14,11 @@ Creates a VpnSite resource if it doesn't exist else updates the existing VpnSite
 
 ### UpdateExpanded (Default)
 ```
-Set-AzVpnSite -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Set-AzVpnSite -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-AddressPrefix <String[]>] [-BgpAsn <Int64>] [-BgpPeeringAddress <String>] [-BgpPeerWeight <Int32>]
  [-DeviceModel <String>] [-DeviceVendor <String>] [-Id <String>] [-IPAddress <String>]
- [-LinkSpeedInMbps <Int32>] [-Location <String>] [-SecuritySite] [-SiteKey <String>] [-Tag <Hashtable>]
- [-VirtualWanId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-LinkSpeedInMbps <Int32>] [-SecuritySite] [-SiteKey <String>] [-Tag <Hashtable>] [-VirtualWanId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -237,7 +236,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

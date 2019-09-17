@@ -14,9 +14,9 @@ Creates a VirtualHub resource if it doesn't exist else updates the existing Virt
 
 ### CreateExpanded (Default)
 ```
-New-AzVirtualHub -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AddressPrefix <String>] [-ExpressRouteGatewayId <String>] [-Id <String>] [-Location <String>]
- [-P2SVpnGatewayId <String>] [-Route <IVirtualHubRoute[]>] [-Tag <Hashtable>] [-VirtualWanId <String>]
+New-AzVirtualHub -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+ [-AddressPrefix <String>] [-ExpressRouteGatewayId <String>] [-Id <String>] [-P2SVpnGatewayId <String>]
+ [-Route <IVirtualHubRoute[]>] [-Tag <Hashtable>] [-VirtualWanId <String>]
  [-VnetConnection <IHubVirtualNetworkConnection[]>] [-VpnGatewayId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -36,8 +36,8 @@ New-AzVirtualHub -InputObject <INetworkIdentity> -VirtualHub <IVirtualHub> [-Def
 
 ### CreateViaIdentityExpanded
 ```
-New-AzVirtualHub -InputObject <INetworkIdentity> [-AddressPrefix <String>] [-ExpressRouteGatewayId <String>]
- [-Id <String>] [-Location <String>] [-P2SVpnGatewayId <String>] [-Route <IVirtualHubRoute[]>]
+New-AzVirtualHub -InputObject <INetworkIdentity> -Location <String> [-AddressPrefix <String>]
+ [-ExpressRouteGatewayId <String>] [-Id <String>] [-P2SVpnGatewayId <String>] [-Route <IVirtualHubRoute[]>]
  [-Tag <Hashtable>] [-VirtualWanId <String>] [-VnetConnection <IHubVirtualNetworkConnection[]>]
  [-VpnGatewayId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -173,7 +173,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -14,10 +14,11 @@ Creates a virtual wan vpn gateway if it doesn't exist else updates the existing 
 
 ### CreateExpanded (Default)
 ```
-New-AzVpnGateway -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-BgpAsn <Int64>]
- [-BgpPeeringAddress <String>] [-BgpPeerWeight <Int32>] [-Connection <IVpnConnection_Reference[]>]
- [-Id <String>] [-Location <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVpnGateway -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+ [-BgpAsn <Int64>] [-BgpPeeringAddress <String>] [-BgpPeerWeight <Int32>]
+ [-Connection <IVpnConnection_Reference[]>] [-Id <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>]
+ [-VirtualHubId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Create
@@ -35,10 +36,10 @@ New-AzVpnGateway -InputObject <INetworkIdentity> -VpnGateway <IVpnGateway> [-Def
 
 ### CreateViaIdentityExpanded
 ```
-New-AzVpnGateway -InputObject <INetworkIdentity> [-BgpAsn <Int64>] [-BgpPeeringAddress <String>]
- [-BgpPeerWeight <Int32>] [-Connection <IVpnConnection_Reference[]>] [-Id <String>] [-Location <String>]
- [-ScaleUnit <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVpnGateway -InputObject <INetworkIdentity> -Location <String> [-BgpAsn <Int64>]
+ [-BgpPeeringAddress <String>] [-BgpPeerWeight <Int32>] [-Connection <IVpnConnection_Reference[]>]
+ [-Id <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -203,7 +204,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -19,40 +19,74 @@ The location and name of the storage account cannot be changed after creation.
 
 ## SYNTAX
 
-### Update1 (Default)
+### UpdateExpanded1 (Default)
 ```
-Update-AzStorageAccount -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IStorageAccountUpdateParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SkuName <SkuName>
+ [-SubscriptionId <String>] [-AccessTier <AccessTier>] [-AssignIdentity] [-CustomDomainName <String>]
+ [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-EncryptBlobService] [-EncryptFileService]
+ [-EncryptQueueService] [-EncryptTableService] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>]
+ [-NetworkRuleSetDefaultAction <DefaultAction>] [-NetworkRuleSetIPRule <IIPRule[]>]
+ [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-NoEncryption] [-SkuKind <Kind>]
+ [-SkuRestriction <IRestriction[]>] [-Tag <Hashtable>] [-UseSubDomain] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateExpanded1
+### UpdateExpanded1KeyVaultEncryption
 ```
-Update-AzStorageAccount -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -CustomDomainName <String> -EncryptionKeySource <KeySource> -NetworkAclsDefaultAction <DefaultAction>
- -SkuName <SkuName> [-AccessTier <AccessTier>] [-BlobEnabled] [-EnableAzureFilesAadIntegration]
- [-EnableHttpsTrafficOnly] [-FileEnabled] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
- [-Kind <Kind>] [-NetworkAclsBypass <Bypass>] [-NetworkAclsIPRule <IIPRule[]>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
- [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <IStorageAccountUpdateParametersTags>]
- [-UseSubDomain] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SkuName <SkuName>
+ [-SubscriptionId <String>] [-AccessTier <AccessTier>] [-AssignIdentity] [-CustomDomainName <String>]
+ [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-EncryptBlobService] [-EncryptFileService]
+ [-EncryptQueueService] [-EncryptTableService] [-KeyName <String>] [-KeyVaultEncryption]
+ [-KeyVaultUri <String>] [-KeyVersion <String>] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>]
+ [-NetworkRuleSetDefaultAction <DefaultAction>] [-NetworkRuleSetIPRule <IIPRule[]>]
+ [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-SkuKind <Kind>]
+ [-SkuRestriction <IRestriction[]>] [-Tag <Hashtable>] [-UseSubDomain] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateExpanded1StorageEncryption
+```
+Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SkuName <SkuName>
+ [-SubscriptionId <String>] [-AccessTier <AccessTier>] [-AssignIdentity] [-CustomDomainName <String>]
+ [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-EncryptBlobService] [-EncryptFileService]
+ [-EncryptQueueService] [-EncryptTableService] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>]
+ [-NetworkRuleSetDefaultAction <DefaultAction>] [-NetworkRuleSetIPRule <IIPRule[]>]
+ [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-SkuKind <Kind>]
+ [-SkuRestriction <IRestriction[]>] [-StorageEncryption] [-Tag <Hashtable>] [-UseSubDomain]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded1
 ```
-Update-AzStorageAccount -InputObject <IStorageIdentity> -CustomDomainName <String>
- -EncryptionKeySource <KeySource> -NetworkAclsDefaultAction <DefaultAction> -SkuName <SkuName>
- [-AccessTier <AccessTier>] [-BlobEnabled] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly]
- [-FileEnabled] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>] [-Kind <Kind>]
- [-NetworkAclsBypass <Bypass>] [-NetworkAclsIPRule <IIPRule[]>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
- [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <IStorageAccountUpdateParametersTags>]
- [-UseSubDomain] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzStorageAccount -InputObject <IStorageIdentity> -SkuName <SkuName> [-AccessTier <AccessTier>]
+ [-AssignIdentity] [-CustomDomainName <String>] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly]
+ [-EncryptBlobService] [-EncryptFileService] [-EncryptQueueService] [-EncryptTableService] [-Kind <Kind>]
+ [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetDefaultAction <DefaultAction>]
+ [-NetworkRuleSetIPRule <IIPRule[]>] [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-NoEncryption] [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-Tag <Hashtable>] [-UseSubDomain]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentity1
+### UpdateViaIdentityExpanded1KeyVaultEncryption
 ```
-Update-AzStorageAccount -InputObject <IStorageIdentity> [-Parameter <IStorageAccountUpdateParameters>]
+Update-AzStorageAccount -InputObject <IStorageIdentity> -SkuName <SkuName> [-AccessTier <AccessTier>]
+ [-AssignIdentity] [-CustomDomainName <String>] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly]
+ [-EncryptBlobService] [-EncryptFileService] [-EncryptQueueService] [-EncryptTableService] [-KeyName <String>]
+ [-KeyVaultEncryption] [-KeyVaultUri <String>] [-KeyVersion <String>] [-Kind <Kind>]
+ [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetDefaultAction <DefaultAction>]
+ [-NetworkRuleSetIPRule <IIPRule[]>] [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-Tag <Hashtable>] [-UseSubDomain]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded1StorageEncryption
+```
+Update-AzStorageAccount -InputObject <IStorageIdentity> -SkuName <SkuName> [-AccessTier <AccessTier>]
+ [-AssignIdentity] [-CustomDomainName <String>] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly]
+ [-EncryptBlobService] [-EncryptFileService] [-EncryptQueueService] [-EncryptTableService] [-Kind <Kind>]
+ [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetDefaultAction <DefaultAction>]
+ [-NetworkRuleSetIPRule <IIPRule[]>] [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-StorageEncryption] [-Tag <Hashtable>] [-UseSubDomain]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -94,7 +128,7 @@ The access tier used for billing.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.AccessTier
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -105,34 +139,17 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -AccountName
-The name of the storage account within the specified resource group.
-Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-
-```yaml
-Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -BlobEnabled
-A boolean indicating whether or not the service encrypts the data as it is stored.
+### -AssignIdentity
+Specify IdentityType as 'SystemAssigned'
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -144,10 +161,10 @@ Name is the CNAME source.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -176,12 +193,12 @@ Enables Azure Files AAD Integration for SMB if sets to true.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -192,27 +209,10 @@ Allows https traffic only to storage service if sets to true.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -EncryptionKeySource
-The encryption keySource (provider).
-Possible values (case-insensitive): Microsoft.Storage, Microsoft.Keyvault
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.KeySource
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -220,17 +220,65 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -FileEnabled
+### -EncryptBlobService
 A boolean indicating whether or not the service encrypts the data as it is stored.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EncryptFileService
+A boolean indicating whether or not the service encrypts the data as it is stored.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EncryptQueueService
+A boolean indicating whether or not the service encrypts the data as it is stored.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EncryptTableService
+A boolean indicating whether or not the service encrypts the data as it is stored.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -238,10 +286,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateViaIdentity1
+Parameter Sets: UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded1KeyVaultEncryption, UpdateViaIdentityExpanded1StorageEncryption
 Aliases:
 
 Required: True
@@ -257,7 +306,23 @@ The name of KeyVault key.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1KeyVaultEncryption, UpdateViaIdentityExpanded1KeyVaultEncryption
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -KeyVaultEncryption
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded1KeyVaultEncryption, UpdateViaIdentityExpanded1KeyVaultEncryption
 Aliases:
 
 Required: False
@@ -273,7 +338,7 @@ The Uri of KeyVault.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1KeyVaultEncryption, UpdateViaIdentityExpanded1KeyVaultEncryption
 Aliases:
 
 Required: False
@@ -289,7 +354,7 @@ The version of KeyVault key.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1KeyVaultEncryption, UpdateViaIdentityExpanded1KeyVaultEncryption
 Aliases:
 
 Required: False
@@ -307,7 +372,7 @@ Currently only StorageV2 value supported by server.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.Kind
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -318,29 +383,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkAclsBypass
-Specifies whether traffic is bypassed for Logging/Metrics/AzureServices.
-Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics.
+### -Name
+The name of the storage account within the specified resource group.
+Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.Bypass
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkAclsDefaultAction
-Specifies the default action of allow or deny when no other rules match.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.DefaultAction
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Type: System.String
+Parameter Sets: UpdateExpanded1, UpdateExpanded1KeyVaultEncryption, UpdateExpanded1StorageEncryption
 Aliases:
 
 Required: True
@@ -351,12 +400,46 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkAclsIPRule
+### -NetworkRuleSetBypass
+Specifies whether traffic is bypassed for Logging/Metrics/AzureServices.
+Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.Bypass
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NetworkRuleSetDefaultAction
+Specifies the default action of allow or deny when no other rules match.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.DefaultAction
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NetworkRuleSetIPRule
 Sets the IP ACL rules
+To construct, see NOTES section for NETWORKRULESETIPRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IIPRule[]
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -367,12 +450,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkAclsVirtualNetworkRule
+### -NetworkRuleSetVirtualNetworkRule
 Sets the virtual network rules
+To construct, see NOTES section for NETWORKRULESETVIRTUALNETWORKRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IVirtualNetworkRule[]
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -383,24 +467,8 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-The parameters that can be provided when updating the storage account properties.
+### -NoEncryption
 
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IStorageAccountUpdateParameters
-Parameter Sets: Update1, UpdateViaIdentity1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -QueueEnabled
-A boolean indicating whether or not the service encrypts the data as it is stored.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -409,7 +477,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -421,7 +489,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1, UpdateExpanded1KeyVaultEncryption, UpdateExpanded1StorageEncryption
 Aliases:
 
 Required: True
@@ -437,7 +505,7 @@ Indicates the type of storage account.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.Kind
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -455,7 +523,7 @@ Note that in older versions, SKU name was called accountType.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.SkuName
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -469,10 +537,27 @@ Dynamic: False
 ### -SkuRestriction
 The restrictions because of which SKU cannot be used.
 This is empty if there are no restrictions.
+To construct, see NOTES section for SKURESTRICTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IRestriction[]
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -StorageEncryption
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded1StorageEncryption, UpdateViaIdentityExpanded1StorageEncryption
 Aliases:
 
 Required: False
@@ -488,28 +573,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -TableEnabled
-A boolean indicating whether or not the service encrypts the data as it is stored.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1, UpdateExpanded1KeyVaultEncryption, UpdateExpanded1StorageEncryption
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -522,8 +591,8 @@ A maximum of 15 tags can be provided for a resource.
 Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IStorageAccountUpdateParametersTags
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -541,12 +610,12 @@ This should only be set on updates.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -592,13 +661,41 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IStorageAccountUpdateParameters
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IStorageAccount
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INPUTOBJECT <IStorageIdentity>: Identity Parameter
+  - `[AccountName <String>]`: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  - `[BlobServicesName <String>]`: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  - `[ContainerName <String>]`: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  - `[FileServicesName <String>]`: The name of the file Service within the specified storage account. File Service Name must be "default"
+  - `[Id <String>]`: Resource identity path
+  - `[ImmutabilityPolicyName <String>]`: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  - `[Location <String>]`: The location of the Azure Storage resource.
+  - `[ManagementPolicyName <ManagementPolicyName?>]`: The name of the Storage Account Management Policy. It should always be 'default'
+  - `[ResourceGroupName <String>]`: The name of the resource group within the user's subscription. The name is case insensitive.
+  - `[ShareName <String>]`: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
+
+#### NETWORKRULESETIPRULE <IIPRule[]>: Sets the IP ACL rules
+  - `IPAddressOrRange <String>`: Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
+  - `[Action <Action?>]`: The action of IP ACL rule.
+
+#### NETWORKRULESETVIRTUALNETWORKRULE <IVirtualNetworkRule[]>: Sets the virtual network rules
+  - `VirtualNetworkResourceId <String>`: Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
+  - `[Action <Action?>]`: The action of virtual network rule.
+  - `[State <State?>]`: Gets the state of virtual network rule.
+
+#### SKURESTRICTION <IRestriction[]>: The restrictions because of which SKU cannot be used. This is empty if there are no restrictions.
+  - `[ReasonCode <ReasonCode?>]`: The reason for the restriction. As of now this can be "QuotaId" or "NotAvailableForSubscription". Quota Id is set when the SKU has requiredQuotas parameter as the subscription does not belong to that quota. The "NotAvailableForSubscription" is related to capacity at DC.
 
 ## RELATED LINKS
 

@@ -58,6 +58,11 @@ skip-model-cmdlets: true
 
 directive:
   - where:
+      subject: ^Usage$
+    set:
+      subject: StorageUsage
+  # Blob/Storage Container
+  - where:
       subject: ^BlobContainer
     set:
       subject: RmStorageContainer
@@ -65,15 +70,6 @@ directive:
       subject: ^BlobService
     set:
       subject: StorageBlobService
-  - where:
-      subject: ManagementPolicy$
-    set:
-      subject: StorageAccountManagementPolicy
-  - where:
-      verb: Test
-      subject: StorageAccountNameAvailability
-    set:
-      alias: Get-AzStorageAccountNameAvailability
   - where:
       verb: Set
       subject: RmStorageContainerLegalHold
@@ -85,15 +81,58 @@ directive:
     set:
       alias: Remove-AzRmStorageContainerLegalHold
   - where:
-      subject: ^Usage$
-    set:
-      subject: StorageUsage
+      verb: Set
+      subject: RmStorageContainerImmutabilityPolicy
+    hide: true
+  - where:
+      verb: Invoke
+      subject: ExtendBlobContainerImmutabilityPolicy
+    hide: true
   # StorageAccount
+  - where:
+      subject: ManagementPolicy$
+    set:
+      subject: StorageAccountManagementPolicy
+  - where:
+      verb: Test
+      subject: StorageAccountNameAvailability
+    set:
+      alias: Get-AzStorageAccountNameAvailability
+  - where:
+      subject: StorageAccount.*
+      parameter-name: AccountName
+    set:
+      parameter-name: Name
   - where:
       subject: StorageAccount
       parameter-name: CustomDomainUseSubDomainName
     set:
       parameter-name: UseSubDomain
+  - where:
+      subject: StorageAccount
+      parameter-name: NetworkAcls(.*)
+    set:
+      parameter-name: NetworkRuleSet$1
+  - where:
+      subject: StorageAccount
+      parameter-name: BlobEnabled
+    set:
+      parameter-name: EncryptBlobService
+  - where:
+      subject: StorageAccount
+      parameter-name: FileEnabled
+    set:
+      parameter-name: EncryptFileService
+  - where:
+      subject: StorageAccount
+      parameter-name: QueueEnabled
+    set:
+      parameter-name: EncryptQueueService
+  - where:
+      subject: StorageAccount
+      parameter-name: TableEnabled
+    set:
+      parameter-name: EncryptTableService
   - where:
       verb: Set
       subject: ^StorageAccount$
@@ -101,20 +140,41 @@ directive:
       verb: Invoke
       subject: StorageAccountFailover
   - where:
-      verb: Update
       subject: ^StorageAccount$
       parameter-name: Keyvaultproperty(.*)
     set:
       parameter-name: $1
   - where:
-      verb: Set
-      subject: ^StorageContainerImmutabilityPolicy$
+      subject: ^StorageAccount$
+      parameter-name: IsHnsEnabled
+    set:
+      parameter-name: EnableHierarchicalNamespace
+  - where:
+      subject: .*ImmutabilityPolicy.*
       parameter-name: ImmutabilityPeriodSinceCreationInDay
     set:
       parameter-name: ImmutabilityPeriod
-# Update csproj for customizations
+  - where:
+      subject: StorageAccountProperty
+    hide: true
+  - where:
+      verb: Update
+      subject: ^StorageAccount$
+    hide: true
+  - where:
+      verb: New
+      subject: ^StorageAccount$
+    hide: true
+  # Update csproj for customizations
   - from: Az.Storage.csproj
     where: $
     transform: >
         return $.replace('</Project>', '  <Import Project=\"custom\\dataplane.props\" />\n</Project>' );
+  # Fix duplicate name
+  - where:
+      subject: StorageAccountNameAvailability
+      variant: ^Check\d?$|^CheckViaIdentity\d?$
+      parameter-name: Name
+    set:
+      parameter-name: Parameter
 ```

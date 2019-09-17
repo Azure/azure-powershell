@@ -14,9 +14,9 @@ Creates a VirtualHub resource if it doesn't exist else updates the existing Virt
 
 ### UpdateExpanded (Default)
 ```
-Set-AzVirtualHub -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AddressPrefix <String>] [-ExpressRouteGatewayId <String>] [-Id <String>] [-Location <String>]
- [-P2SVpnGatewayId <String>] [-Route <IVirtualHubRoute[]>] [-Tag <Hashtable>] [-VirtualWanId <String>]
+Set-AzVirtualHub -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+ [-AddressPrefix <String>] [-ExpressRouteGatewayId <String>] [-Id <String>] [-P2SVpnGatewayId <String>]
+ [-Route <IVirtualHubRoute[]>] [-Tag <Hashtable>] [-VirtualWanId <String>]
  [-VnetConnection <IHubVirtualNetworkConnection[]>] [-VpnGatewayId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -141,7 +141,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

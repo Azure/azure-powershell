@@ -14,10 +14,9 @@ Creates or updates a route filter in a specified resource group.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzRouteFilter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Id <String>]
- [-Location <String>] [-Peering <IExpressRouteCircuitPeering_Reference[]>]
- [-Rule <IRouteFilterRule_Reference[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzRouteFilter -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+ [-Id <String>] [-Peering <IExpressRouteCircuitPeering_Reference[]>] [-Rule <IRouteFilterRule_Reference[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -108,7 +107,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

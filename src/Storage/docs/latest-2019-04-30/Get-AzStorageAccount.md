@@ -15,12 +15,18 @@ Note that storage keys are not returned; use the ListKeys operation for this.
 
 ### List2 (Default)
 ```
-Get-AzStorageAccount -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStorageAccount [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetByName
+```
+Get-AzStorageAccount -ResourceGroupName <String> -Name <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List3
 ```
-Get-AzStorageAccount -SubscriptionId <String[]> -ResourceGroupName <String> [-DefaultProfile <PSObject>]
+Get-AzStorageAccount -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -66,13 +72,29 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the storage account.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 The name of the resource group within the user's subscription.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List3
+Parameter Sets: GetByName, List3
 Aliases:
 
 Required: True
@@ -91,9 +113,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -109,6 +131,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IStorageAccount
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

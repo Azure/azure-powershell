@@ -14,10 +14,11 @@ Creates a virtual wan vpn gateway if it doesn't exist else updates the existing 
 
 ### UpdateExpanded (Default)
 ```
-Set-AzVpnGateway -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-BgpAsn <Int64>]
- [-BgpPeeringAddress <String>] [-BgpPeerWeight <Int32>] [-Connection <IVpnConnection_Reference[]>]
- [-Id <String>] [-Location <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzVpnGateway -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+ [-BgpAsn <Int64>] [-BgpPeeringAddress <String>] [-BgpPeerWeight <Int32>]
+ [-Connection <IVpnConnection_Reference[]>] [-Id <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>]
+ [-VirtualHubId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Update
@@ -172,7 +173,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

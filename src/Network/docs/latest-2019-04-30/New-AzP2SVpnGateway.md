@@ -14,12 +14,11 @@ Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the exist
 
 ### CreateExpanded (Default)
 ```
-New-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-CustomRouteAddressPrefix <String[]>] [-Id <String>] [-Location <String>]
- [-P2SVpnServerConfigurationId <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>]
- [-VpnClientAddressPrefix <String[]>] [-VpnClientAllocatedIPAddress <String[]>]
- [-VpnClientConnectionCount <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+ [-CustomRouteAddressPrefix <String[]>] [-Id <String>] [-P2SVpnServerConfigurationId <String>]
+ [-ScaleUnit <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>] [-VpnClientAddressPrefix <String[]>]
+ [-VpnClientAllocatedIPAddress <String[]>] [-VpnClientConnectionCount <Int32>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -37,8 +36,8 @@ New-AzP2SVpnGateway -InputObject <INetworkIdentity> -P2SVpnGateway <IP2SVpnGatew
 
 ### CreateViaIdentityExpanded
 ```
-New-AzP2SVpnGateway -InputObject <INetworkIdentity> [-CustomRouteAddressPrefix <String[]>] [-Id <String>]
- [-Location <String>] [-P2SVpnServerConfigurationId <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>]
+New-AzP2SVpnGateway -InputObject <INetworkIdentity> -Location <String> [-CustomRouteAddressPrefix <String[]>]
+ [-Id <String>] [-P2SVpnServerConfigurationId <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>]
  [-VirtualHubId <String>] [-VpnClientAddressPrefix <String[]>] [-VpnClientAllocatedIPAddress <String[]>]
  [-VpnClientConnectionCount <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -158,7 +157,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
