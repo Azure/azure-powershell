@@ -69,8 +69,8 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         [JsonProperty(PropertyName = "comments")]
         public string Comments { get; set; }
 
-        /// <summary>
-        /// </summary>
+        /// <summary>	
+        /// </summary>	
         [JsonProperty(PropertyName = "operationsMonitoringProperties")]
         public PSOperationsMonitoringProperties OperationsMonitoringProperties { get; set; }
 
@@ -91,5 +91,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         /// </summary>
         [JsonProperty(PropertyName = "features")]
         public PSCapabilities Features { get; set; }
+
+        /// <summary>
+        /// Gets primary and secondary location for iot hub
+        /// </summary>
+        [JsonProperty(PropertyName = "locations")]
+        public IList<PSIotHubLocationDescription> Locations { get; set; }
     }
 }
