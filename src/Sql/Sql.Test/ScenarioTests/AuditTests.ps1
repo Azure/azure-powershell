@@ -1979,3 +1979,198 @@ function Test-NewServerAuditDiagnosticsAreCreatedOnNeed
 		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
+
+<#
+.SYNOPSIS
+Tests that auditing settings are removed when multiple diagnostic settings which enable audit category exist
+#>
+function Test-RemoveDatabaseAuditingSettingsMultipleDiagnosticSettings
+{
+	# Setup
+	$testSuffix = getAssetName
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
+	$subscriptionId = (Get-AzContext).Subscription.Id
+	$workspaceResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $params.rgname + "/providers/microsoft.operationalinsights/workspaces/" + $params.workspaceName
+	$eventHubAuthorizationRuleResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $params.rgname + "/providers/microsoft.EventHub/namespaces/" + $params.eventHubNamespace + "/authorizationrules/RootManageSharedAccessKey"
+	$resourceId = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + $params.rgname + "/providers/Microsoft.Sql/servers/" + $params.serverName + "/databases/" + $params.databaseName
+
+	try
+	{
+		# Verify event hub auditing policy is disabled.
+		$policy = Get-AzSqlDatabaseAudit -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
+		Assert-AreEqual 0 $policy.AuditActionGroup.Length
+		Assert-AreEqual 0 $policy.AuditAction.Length
+		Assert-Null $policy.PredicateExpression
+		Assert-Null $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+
+		# Verify log analytics auditing policy is Disabled.
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+
+		# Enable event hub auditing policy and verify it.
+		Set-AzSqlDatabaseAudit -EventHubTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
+		$policy = Get-AzSqlDatabaseAudit -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
+		Assert-AreEqual 3 $policy.AuditActionGroup.Length
+		Assert-AreEqual 0 $policy.AuditAction.Length
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+
+		# Verify log analytics auditing policy is Disabled.
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+
+		# Verify only one diagnostic settings exists.
+		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
+		Assert-AreEqual 1 ($diagnostics).count
+
+		# Enable a new category in existing Diagnostic Settings.
+		$settingsName = ($diagnostics)[0].Name
+		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
+		
+		# Create new Diagnostic Settings and enable auditing category
+		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Category SQLSecurityAuditEvents -WorkspaceId $workspaceResourceId
+
+		# Verify Diagnostic Settings count.
+		Assert-AreEqual 2 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
+		
+		# Remove auditing settings.
+		Remove-AzSqlDatabaseAudit -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		
+		# Verify event hub auditing policy is disabled.
+		$policy = Get-AzSqlDatabaseAudit -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
+		Assert-AreEqual 3 $policy.AuditActionGroup.Length
+		Assert-AreEqual 0 $policy.AuditAction.Length
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-Null $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify log analytics auditing policy is Disabled.
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+		 
+		# Verify only one Diagnostic Settings was removed.
+		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
+		Assert-AreEqual 1 ($diagnostics).count
+		
+		# Verify audit category is disabled in remaining Diagnostic Settings.
+		$foundAuditCategory = $False
+		Foreach ($log in $diagnostics[0].Logs)
+		{
+			if ($log.Category -eq "SQLSecurityAuditEvents")
+			{
+				$foundAuditCategory = $True
+				Assert-AreEqual $False $log.Enabled
+				break
+			}
+		}
+		
+		Assert-AreEqual $True $foundAuditCategory
+	}
+	finally
+	{
+		# Cleanup
+		Remove-BlobAuditingTestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
+Tests that auditing settings are removed when multiple diagnostic settings which enable audit category exist
+#>
+function Test-RemoveServerAuditingSettingsMultipleDiagnosticSettings
+{
+	# Setup
+	$testSuffix = getAssetName
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
+	$subscriptionId = (Get-AzContext).Subscription.Id
+	$workspaceResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $params.rgname + "/providers/microsoft.operationalinsights/workspaces/" + $params.workspaceName
+	$eventHubAuthorizationRuleResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $params.rgname + "/providers/microsoft.EventHub/namespaces/" + $params.eventHubNamespace + "/authorizationrules/RootManageSharedAccessKey"
+	$resourceId = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + $params.rgname + "/providers/Microsoft.Sql/servers/" + $params.serverName + "/databases/master"
+
+	try
+	{
+		# Verify event hub auditing policy is disabled.
+		$policy = Get-AzSqlServerAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
+		Assert-AreEqual 0 $policy.AuditActionGroup.Length
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-Null $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify log analytics auditing policy is Disabled.
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+		
+		# Enable event hub auditing policy and verify it.
+		Set-AzSqlServerAudit -EventHubTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId -BlobStorageTargetState Enabled -StorageAccountResourceId $params.storageAccountResourceId
+		$policy = Get-AzSqlServerAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
+		Assert-AreEqual 3 $policy.AuditActionGroup.Length
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify log analytics auditing policy is Disabled.
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+		
+		# Verify only one diagnostic settings exists.
+		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
+		Assert-AreEqual 1 ($diagnostics).count
+		
+		# Enable a new category in existing Diagnostic Settings.
+		$settingsName = ($diagnostics)[0].Name
+		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
+		
+		# Create new Diagnostic Settings and enable auditing category
+		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Category SQLSecurityAuditEvents -WorkspaceId $workspaceResourceId
+		
+		# Verify Diagnostic Settings count.
+		Assert-AreEqual 2 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
+		
+		# Remove auditing settings.
+		Remove-AzSqlServerAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		
+		# Verify event hub auditing policy is disabled.
+		$policy = Get-AzSqlServerAudit -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
+		Assert-AreEqual 3 $policy.AuditActionGroup.Length
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-Null $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify log analytics auditing policy is Disabled.
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+		 
+		# Verify only one Diagnostic Settings was removed.
+		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
+		Assert-AreEqual 1 ($diagnostics).count
+		
+		# Verify audit category is disabled in remaining Diagnostic Settings.
+		$foundAuditCategory = $False
+		Foreach ($log in $diagnostics[0].Logs)
+		{
+			if ($log.Category -eq "SQLSecurityAuditEvents")
+			{
+				$foundAuditCategory = $True
+				Assert-AreEqual $False $log.Enabled
+				break
+			}
+		}
+		
+		Assert-AreEqual $True $foundAuditCategory
+	}
+	finally
+	{
+		# Cleanup
+		Remove-BlobAuditingTestEnvironment $testSuffix
+	}
+}

@@ -135,6 +135,9 @@
   <data name="AddIotHubRoutingEndpoint" xml:space="preserve">
     <value>Add Routing Endpoint</value>
   </data>
+  <data name="ManualFailoverIotHub" xml:space="preserve">
+    <value>Failover Iot Hub to the secondary location.</value>
+  </data>
   <data name="NewAzureRmIotHubExportDevices" xml:space="preserve">
     <value>Export All Devices</value>
   </data>
