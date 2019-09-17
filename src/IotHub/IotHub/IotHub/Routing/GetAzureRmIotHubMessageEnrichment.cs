@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "IotHub Resource Id")]
         [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.Devices/IotHubs")]
         public string ResourceId { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Name of the Iot Hub")]
@@ -82,7 +83,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             {
                 if (!iotHubDescription.Properties.Routing.Enrichments.Any(x => x.Key.Equals(this.Key.Trim(), StringComparison.OrdinalIgnoreCase)))
                 {
-                    throw new ArgumentException(string.Format("No message enrichment with key \"{0}\" exists.", this.Key));
+                    throw new ArgumentException(string.Format(Properties.Resources.MessageEnrichmentKeyMissing, this.Key));
                 }
 
                 this.WriteObject(IotHubUtils.ToPSEnrichmentMetadata(iotHubDescription.Properties.Routing.Enrichments.FirstOrDefault(x => x.Key.Equals(this.Key, StringComparison.OrdinalIgnoreCase))), false);

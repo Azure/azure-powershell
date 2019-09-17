@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "IotHub Resource Id")]
         [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.Devices/IotHubs")]
         public string ResourceId { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Name of the Iot Hub")]
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(this.Key, Properties.Resources.UpdateIotHubRoute))
+            if (ShouldProcess(this.Key, Properties.Resources.UpdateIotHubMessageEnrichment))
             {
                 IotHubDescription iotHubDescription;
                 if (ParameterSetName.Equals(InputObjectParameterSet))
@@ -114,7 +115,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 }
                 else
                 {
-                    throw new ArgumentException(string.Format("No message enrichment with key \"{0}\" exists.", this.Key));
+                    throw new ArgumentException(string.Format(Properties.Resources.MessageEnrichmentKeyMissing, this.Key));
                 }
             }
         }
