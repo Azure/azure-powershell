@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         private const string _accessTokenFailure = "Cannot retrieve access token for resource '{0}';. " +
                                                    "Please ensure that you have provided the appropriate access tokens when using access token login.";
 
-        public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
+        public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
         {
             var tokenParameters = parameters as AccessTokenParameters;
             var tenant = tokenParameters.TenantId;
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 throw new InvalidOperationException(string.Format(_accessTokenFailure, resourceId));
             }
 
-            return Task.Run(() => rawToken as IAccessToken);
+            return Task.Run(() => rawToken as IAccessToken, cancellationToken);
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)

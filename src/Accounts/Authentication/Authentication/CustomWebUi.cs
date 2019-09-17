@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 string uri = ExtractUriFromHttpRequest(httpRequest, redirectUri.Port);
                 await WriteResponseAsync(client.GetStream(), cancellationToken).ConfigureAwait(false);
                 cancellationToken.ThrowIfCancellationRequested();
-                return await Task.Run(() => { return new Uri(uri); });
+                return await Task.Run(() => { return new Uri(uri); }, cancellationToken);
             }
         }
 

@@ -17,6 +17,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Security.Cryptography;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     /// </summary>
     public class InteractiveUserAuthenticator : DelegatingAuthenticator
     {
-        public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
+        public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
         {
             var interactiveParameters = parameters as InteractiveParameters;
             var onPremise = interactiveParameters.Environment.OnPremise;
@@ -70,7 +71,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
                     var interactiveResponse = publicClient.AcquireTokenInteractive(scopes)
                         .WithCustomWebUi(new CustomWebUi(interactiveParameters.PromptAction))
-                        .ExecuteAsync();
+                        .ExecuteAsync(cancellationToken);
+                    cancellationToken.ThrowIfCancellationRequested();
                     return AuthenticationResultToken.GetAccessTokenAsync(interactiveResponse);
                 }
             }

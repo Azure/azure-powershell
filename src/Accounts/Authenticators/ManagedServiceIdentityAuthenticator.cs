@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -26,13 +27,14 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             DefaultMSILoginUri = "http://169.254.169.254/metadata/identity/oauth2/token",
             DefaultBackupMSILoginUri = "http://localhost:50342/oauth2/token";
 
-        public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
+        public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
         {
             var msiParameters = parameters as ManagedServiceIdentityParameters;
             return Task.Run(() => GetManagedServiceToken(msiParameters.Account,
                                                          msiParameters.Environment,
                                                          msiParameters.TenantId,
-                                                         msiParameters.ResourceId));
+                                                         msiParameters.ResourceId),
+                                                         cancellationToken);
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)

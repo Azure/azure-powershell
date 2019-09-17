@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 using System;
 using System.Security;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
@@ -45,11 +46,28 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         Task<IAccessToken> Authenticate(AuthenticationParameters parameters);
 
         /// <summary>
+        /// Apply this authenticator to the given authentication parameters
+        /// </summary>
+        /// <param name="parameters">The complex object containing authentication specific information (e.g., tenant, token cache, etc.)</param>
+        /// <param name="cancellationToken">The cancellation token provided from the cmdlet to halt authentication.</param>
+        /// <returns></returns>
+        Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken);
+
+        /// <summary>
         /// Determine if this request can be authenticated using the given authenticator, and authenticate if it can
         /// </summary>
         /// <param name="parameters">The complex object containing authentication specific information (e.g., tenant, token cache, etc.)</param>
         /// <param name="token">The token based authentication information</param>
         /// <returns></returns>
         bool TryAuthenticate(AuthenticationParameters parameters, out Task<IAccessToken> token);
+
+        /// <summary>
+        /// Determine if this request can be authenticated using the given authenticator, and authenticate if it can
+        /// </summary>
+        /// <param name="parameters">The complex object containing authentication specific information (e.g., tenant, token cache, etc.)</param>
+        /// <param name="cancellationToken">The cancellation token provided from the cmdlet to halt authentication.</param>
+        /// <param name="token">The token based authentication information</param>
+        /// <returns></returns>
+        bool TryAuthenticate(AuthenticationParameters parameters, CancellationToken cancellationToken, out Task<IAccessToken> token);
     }
 }

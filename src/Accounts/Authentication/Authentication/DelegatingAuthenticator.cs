@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Security;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
@@ -29,20 +30,32 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     {
         public IAuthenticator Next { get; set; }
         public abstract bool CanAuthenticate(AuthenticationParameters parameters);
-        public abstract Task<IAccessToken> Authenticate(AuthenticationParameters parameters);
+        public abstract Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken);
+
+        public Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
+        {
+            var source = new CancellationTokenSource();
+            return Authenticate(parameters, source.Token);
+        }
 
         public bool TryAuthenticate(AuthenticationParameters parameters, out Task<IAccessToken> token)
+        {
+            var source = new CancellationTokenSource();
+            return TryAuthenticate(parameters, source.Token, out token);
+        }
+
+        public bool TryAuthenticate(AuthenticationParameters parameters, CancellationToken cancellationToken, out Task<IAccessToken> token)
         {
             token = null;
             if (CanAuthenticate(parameters))
             {
-                token = Authenticate(parameters);
+                token = Authenticate(parameters, cancellationToken);
                 return true;
             }
 
             if (Next != null)
             {
-                return Next.TryAuthenticate(parameters, out token);
+                return Next.TryAuthenticate(parameters, cancellationToken, out token);
             }
 
             return false;

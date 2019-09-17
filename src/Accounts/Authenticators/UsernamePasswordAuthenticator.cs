@@ -15,6 +15,7 @@
 using System;
 using System.IO;
 using System.Security;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     /// </summary>
     public class UsernamePasswordAuthenticator : DelegatingAuthenticator
     {
-        public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
+        public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
         {
             var upParameters = parameters as UsernamePasswordParameters;
             var onPremise = upParameters.Environment.OnPremise;
@@ -39,7 +40,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                                 upParameters.Environment.ActiveDirectoryAuthority :
                                 AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
             var publicClient = authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority, useAdfs: onPremise);
-            var response = publicClient.AcquireTokenByUsernamePassword(scopes, upParameters.UserId, upParameters.Password).ExecuteAsync();
+            var response = publicClient.AcquireTokenByUsernamePassword(scopes, upParameters.UserId, upParameters.Password).ExecuteAsync(cancellationToken);
+            cancellationToken.ThrowIfCancellationRequested();
             return AuthenticationResultToken.GetAccessTokenAsync(response);
         }
 

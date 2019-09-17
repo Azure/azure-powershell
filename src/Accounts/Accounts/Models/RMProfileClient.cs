@@ -667,7 +667,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 WriteWarningMessage(string.Format(ProfileMessages.UnableToAqcuireToken, commonTenant));
                 if (account.IsPropertySet(AzureAccount.Property.Tenants))
@@ -692,9 +692,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                 return tenant;
                             }).ToList();
                 }
+
                 if (!result.Any())
                 {
-                    throw new RuntimeException("Error occurred when attempting to acquire the common tenant token. Please run 'Connect-AzAccount` again to authenticate.");
+                    WriteWarningMessage("Error occurred when attempting to acquire the common tenant token. Please run 'Connect-AzAccount` again to authenticate.");
+                    throw ex;
                 }
 
             }

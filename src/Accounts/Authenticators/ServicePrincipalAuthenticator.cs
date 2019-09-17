@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     {
         private const string _authenticationFailedMessage = "No certificate thumbprint or secret provided for the given service principal '{0}'.";
 
-        public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
+        public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
         {
             var spParameters = parameters as ServicePrincipalParameters;
             var onPremise = spParameters.Environment.OnPremise;
@@ -50,7 +51,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 throw new MsalException(MsalError.AuthenticationFailed, string.Format(_authenticationFailedMessage, clientId));
             }
 
-            var response = confidentialClient.AcquireTokenForClient(scopes).ExecuteAsync();
+            var response = confidentialClient.AcquireTokenForClient(scopes).ExecuteAsync(cancellationToken);
+            cancellationToken.ThrowIfCancellationRequested();
             return AuthenticationResultToken.GetAccessTokenAsync(response, userId: clientId, tenantId: spParameters.TenantId);
         }
 

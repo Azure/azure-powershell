@@ -15,6 +15,7 @@
 using System;
 using System.Linq;
 using System.Security;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 {
     public class SilentAuthenticator : DelegatingAuthenticator
     {
-        public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
+        public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
         {
             var silentParameters = parameters as SilentParameters;
             var onPremise = silentParameters.Environment.OnPremise;
@@ -38,7 +39,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var publicClient = authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority, useAdfs: onPremise);
             var accounts = publicClient.GetAccountsAsync()
                 .ConfigureAwait(false).GetAwaiter().GetResult();
-            var response = publicClient.AcquireTokenSilent(scopes, accounts.FirstOrDefault(a => a.Username == silentParameters.UserId)).ExecuteAsync();
+            var response = publicClient.AcquireTokenSilent(scopes, accounts.FirstOrDefault(a => a.Username == silentParameters.UserId)).ExecuteAsync(cancellationToken);
+            cancellationToken.ThrowIfCancellationRequested();
             return AuthenticationResultToken.GetAccessTokenAsync(response);
         }
 
