@@ -151,7 +151,8 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                                 try
                                 {
                                     var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(this.ResourceGroupName, this.Name, servicesDescription);
-                                    WriteHealthcareApisAccount(createAccountResponse);
+                                    var healthCareFhirService = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
+                                    WriteHealthcareApisAccount(healthCareFhirService);
                                 }
                                 catch (ErrorDetailsException wex)
                                 {
@@ -178,7 +179,8 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                                                     rgName,
                                                     name,
                                                     servicesDescription);
-                                    WriteHealthcareApisAccount(healthcareApisFhirServiceUpdateAccount);
+                                    var healthCareFhirService = this.HealthcareApisClient.Services.Get(rgName, name);
+                                    WriteHealthcareApisAccount(healthCareFhirService);
                                 }
                                 catch (ErrorDetailsException wex)
                                 {
