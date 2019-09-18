@@ -174,10 +174,10 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
                     if (ShouldProcess(this.Name, Resources.createService))
                     {
-                        this.EnsureNameAvailabilityOrThrow();
-
                         try
                         {
+                            this.EnsureNameAvailabilityOrThrow();
+
                             var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(
                                             this.ResourceGroupName,
                                             this.Name,
