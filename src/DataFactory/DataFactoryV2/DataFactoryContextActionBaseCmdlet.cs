@@ -20,50 +20,9 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    public abstract class DataFactoryContextActionBaseCmdlet : DataFactoryBaseCmdlet
+    public abstract class DataFactoryContextActionBaseCmdlet : DataFactoryContextSubResourceBaseCmdlet
     {
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = Constants.HelpResourceGroup)]
-        [ResourceGroupCompleter()]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = Constants.HelpFactoryName)]
-        [ValidateNotNullOrEmpty]
-        public string DataFactoryName { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.ByResourceId, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = Constants.HelpResourceId)]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
-
-        [ValidateNotNullOrEmpty]
-        public abstract string Name { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
         public SwitchParameter Force { get; set; }
-
-        protected void ByResourceId()
-        {
-            if (ParameterSetName.Equals(ParameterSetNames.ByResourceId, StringComparison.OrdinalIgnoreCase))
-            {
-                var parsedResourceId = new ResourceIdentifier(ResourceId);
-                ResourceGroupName = parsedResourceId.ResourceGroupName;
-                Name = parsedResourceId.ResourceName;
-                var parentResource = parsedResourceId.ParentResource.Split(new[] { '/' });
-                DataFactoryName = parentResource[parentResource.Length - 1];
-            }
-        }
-
-        protected void ByInputObject(AdfSubResource subResource)
-        {
-            if (ParameterSetName.Equals(ParameterSetNames.ByInputObject, StringComparison.OrdinalIgnoreCase))
-            {
-                DataFactoryName = subResource.DataFactoryName;
-                ResourceGroupName = subResource.ResourceGroupName;
-                Name = subResource.Name;
-            }
-        }
     }
 }
