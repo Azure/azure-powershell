@@ -15,10 +15,12 @@
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
+    [CmdletDeprecation(ReplacementCmdletName = "Get-AzHDInsightMonitoring")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightOperationsManagementSuite")]
     [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightOMS")]
     [OutputType(typeof(AzureHDInsightOMS))]

@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Fixed example typo in reference documentation for `Register-AzAutomationDscNode`
 * Added clarification on OS restriction to Register-AzAutomationDSCNode
+* Fixed Start-AzAutomationRunbook cmdlet Null reference exception for -Wait option.
 
 ## Version 1.3.2
 * Fixed miscellaneous typos across module

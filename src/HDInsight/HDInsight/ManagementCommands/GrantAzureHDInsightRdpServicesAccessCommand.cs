@@ -16,11 +16,13 @@ using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
+    [CmdletDeprecation("Clusters using Windows Os Type will not be supported in the future, this cmdlet will be deprecated in an upcoming breaking change release with no replacement. Please create a cluster using Linux Os Type instead.")]
     [Cmdlet("Grant", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightRdpServicesAccess"),OutputType(typeof(void))]
     public class GrantAzureHDInsightRdpServicesAccessCommand : HDInsightCmdletBase
     {
