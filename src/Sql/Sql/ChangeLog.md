@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed miscellaneous typos across module
+* Add support for setting Active Directory Administrator on Managed Instance
 
 ## Version 1.13.1
 * Fix missing examples for Set-AzSqlDatabaseSecondary cmdlet

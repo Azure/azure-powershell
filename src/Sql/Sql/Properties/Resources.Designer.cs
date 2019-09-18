@@ -529,6 +529,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing Azure Sql Instance Active Directory Administrator on instance &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceActiveDirectoryAdministratorDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceActiveDirectoryAdministratorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Instance Active Directory Administrator on instance &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceActiveDirectoryAdministratorWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceActiveDirectoryAdministratorWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Azure Sql Server Active Directory Administrator on server &apos;{0}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlServerActiveDirectoryAdministratorDescription {
@@ -1103,28 +1121,28 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("VulnerabilityAssessmentWrongParameterType", resourceCulture);
             }
         }
-  
 
-        /// <summary>
-        ///   Looks up a localized string similar to Permanently removing Instance Failover Group &apos;{0}&apos; on server &apos;{1}&apos;..
-        /// </summary>
-        internal static string RemoveAzureSqlDatabaseInstanceFailoverGroupDescription
-        {
-            get
-            {
-                return ResourceManager.GetString("RemoveAzureSqlDatabaseInstanceFailoverGroupDescription", resourceCulture);
-            }
-        }
 
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database Instance Failover Group &apos;{0}&apos; on server &apos;{1}&apos;?.
-        /// </summary>
-        internal static string RemoveAzureSqlDatabaseInstanceFailoverGroupWarning
-        {
-            get
-            {
-                return ResourceManager.GetString("RemoveAzureSqlDatabaseInstanceFailoverGroupWarning", resourceCulture);
-            }
-        }
-    }
+		/// <summary>
+		///   Looks up a localized string similar to Permanently removing Instance Failover Group &apos;{0}&apos; on server &apos;{1}&apos;..
+		/// </summary>
+		internal static string RemoveAzureSqlDatabaseInstanceFailoverGroupDescription
+		{
+			get
+			{
+				return ResourceManager.GetString("RemoveAzureSqlDatabaseInstanceFailoverGroupDescription", resourceCulture);
+			}
+		}
+
+		/// <summary>
+		///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database Instance Failover Group &apos;{0}&apos; on server &apos;{1}&apos;?.
+		/// </summary>
+		internal static string RemoveAzureSqlDatabaseInstanceFailoverGroupWarning
+		{
+			get
+			{
+				return ResourceManager.GetString("RemoveAzureSqlDatabaseInstanceFailoverGroupWarning", resourceCulture);
+			}
+		}
+	}
 }
