@@ -392,4 +392,22 @@
   <data name="ApplicationGatewayFirewallPolicy" xml:space="preserve">
     <value>firewallPolicy</value>
   </data>
+  <data name="InvalidIPv4IPPrefixLength" xml:space="preserve">
+    <value>Cannot validate argument on parameter PrefixLength: {0}. Supply an argument that is greater than or equal to 21 and less than or equal to 31 and then try the command again</value>
+  </data>
+  <data name="InvalidIPv6IPPrefixLength" xml:space="preserve">
+    <value>Cannot validate argument on parameter PrefixLength: {0}. Supply an argument that is greater than or equal to 117 and less than or equal to 127 and then try the command again</value>
+  </data>
+  <data name="InvalidResourceId" xml:space="preserve">
+    <value>Provided ResourceId isn't in the right format or doesn't refer to the right resource type ({0})</value>
+  </data>
+  <data name="VpnSiteLinkRequiredForVpnSiteLinkConnection" xml:space="preserve">
+    <value>A valid VpnSiteLink attached to a VpnSite is required to create a VpnSiteLinkConnection</value>
+  </data>
+  <data name="VpnConnectionPropertyIsDeprecated" xml:space="preserve">
+    <value>Update request for VpnConnection contains deprecated property. Please use corresponding VpnSiteLinkConnection property instead.</value>
+  </data>
+  <data name="VpnSitePropertyIsDeprecated" xml:space="preserve">
+    <value>Update request for VpnSite contains deprecated property. Please use corresponding VpnSiteLink property instead.</value>
+  </data>
 </root>

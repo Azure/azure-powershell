@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         public const string SubscriptionScope = "/subscriptions/{0}";
         public const string ManagementGroupScope = "/providers/Microsoft.Management/managementGroups/{0}";
         public const string BlueprintProviderNamespace = "Microsoft.Blueprint";
-        public const string MgAncestorsRequestUrlTemplate = "https://management.azure.com/subscriptions/{0}?api-version=2018-11-01&$expand=ancestors";
+        public const string MgAncestorsRequestUrlTemplate = "{0}subscriptions/{1}?api-version=2018-11-01&$expand=ancestors";
 
         public static class ParameterSetNames
         {

@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
+    using System.Threading;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.PrivateDns.Utilities;
@@ -182,9 +183,10 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
             string zoneName,
             string virtualNetworkId,
             bool isRegistrationEnabled,
-            Hashtable tags)
+            Hashtable tags,
+            Dictionary<string, List<string>> customHeaders = null)
         {
-            var response = this.PrivateDnsManagementClient.VirtualNetworkLinks.CreateOrUpdate(
+            var response = this.PrivateDnsManagementClient.VirtualNetworkLinks.CreateOrUpdateWithHttpMessagesAsync(
                 resourceGroupName,
                 zoneName,
                 name,
@@ -200,9 +202,12 @@ namespace Microsoft.Azure.Commands.PrivateDns.Models
 
                 },
                 ifMatch: null,
-                ifNoneMatch: "*");
+                ifNoneMatch: "*",
+                customHeaders: customHeaders,
+                cancellationToken: new CancellationToken()
+                ).GetAwaiter().GetResult();
 
-            return ToPrivateDnsLink(response);
+            return ToPrivateDnsLink(response.Body);
         }
 
         public PSPrivateDnsVirtualNetworkLink UpdatePrivateDnsLink(PSPrivateDnsVirtualNetworkLink link, bool overwrite)

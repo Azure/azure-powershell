@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/new-azservicefabriccluster
@@ -32,9 +32,10 @@ New-AzServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> 
 ### ByNewPfxAndVaultName
 ```
 New-AzServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
- [-CertificateOutputFolder <String>] [-CertificatePassword <SecureString>] [-KeyVaultResourceGroupName <String>]
- [-KeyVaultName <String>] [-CertificateSubjectName <String>] [-VmPassword <SecureString>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CertificateOutputFolder <String>] [-CertificatePassword <SecureString>]
+ [-KeyVaultResourceGroupName <String>] [-KeyVaultName <String>] [-CertificateSubjectName <String>]
+ [-VmPassword <SecureString>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByExistingPfxAndVaultName
@@ -130,7 +131,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificateFile
-The existing certificate file path for the primary cluster certificate.
+The existing certificate file path for the primary cluster certificate
 
 ```yaml
 Type: System.String
@@ -160,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificateOutputFolder
-The folder of the new certificate file to be created.
+The folder of the new certificate file to be created
 
 ```yaml
 Type: System.String
@@ -175,7 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificatePassword
-The password of the certificate file.
+The password of the certificate file
 
 ```yaml
 Type: System.Security.SecureString
@@ -190,7 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificateSubjectName
-The subject name of the certificate to be created.
+The subject name of the certificate to be created
 
 ```yaml
 Type: System.String
@@ -205,7 +206,8 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterSize
-The number of nodes in the cluster. Default are 5 nodes.
+The number of nodes in the cluster.
+Default are 5 nodes
 
 ```yaml
 Type: System.Int32
@@ -220,7 +222,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -235,7 +237,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultName
-Azure key vault name. If not given, it will be defaulted to the resource group name.
+Azure key vault name, if not given it will be defaulted to the resource group name
 
 ```yaml
 Type: System.String
@@ -250,12 +252,12 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultResourceGroupName
-Azure key vault resource group name. If not given, it will be defaulted to resource group name.
+Azure key vault resource group name, if not given it will be defaulted to resource group name
 
 ```yaml
 Type: System.String
 Parameter Sets: ByDefaultArmTemplate, ByNewPfxAndVaultName, ByExistingPfxAndVaultName
-Aliases:
+Aliases: KeyVaultResouceGroupName
 
 Required: False
 Position: Named
@@ -265,7 +267,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The resource group location.
+The resource group location
 
 ```yaml
 Type: System.String
@@ -280,7 +282,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster. If not given, it will be same as resource group name.
+Specify the name of the cluster, if not given it will be same as resource group name
 
 ```yaml
 Type: System.String
@@ -341,7 +343,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecondaryCertificateFile
-The existing certificate file path for the secondary cluster certificate.
+The existing certificate file path for the secondary cluster certificate
 
 ```yaml
 Type: System.String
@@ -356,7 +358,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecondaryCertificatePassword
-The password of the certificate file.
+The password of the certificate file
 
 ```yaml
 Type: System.Security.SecureString
@@ -371,7 +373,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecretIdentifier
-The existing Azure key vault secret URL, for example: 'https://mykv.vault.azure.net:443/secrets/mysecrets/55ec7c4dc61a462bbc645ffc9b4b225f'.
+The existing Azure key vault secret URL, for example 'https://mykv.vault.azure.net:443/secrets/mysecrets/55ec7c4dc61a462bbc645ffc9b4b225f'
 
 ```yaml
 Type: System.String
@@ -428,7 +430,7 @@ Accept wildcard characters: False
 ```
 
 ### -VmSku
-The Vm Sku.
+The Vm Sku
 
 ```yaml
 Type: System.String
@@ -443,7 +445,7 @@ Accept wildcard characters: False
 ```
 
 ### -VmUserName
-The user name for logging to Vm.
+The user name for logging to Vm
 
 ```yaml
 Type: System.String
@@ -473,7 +475,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

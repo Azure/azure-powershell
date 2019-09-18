@@ -36,110 +36,111 @@ using Microsoft.Azure.Graph.RBAC.Version1_6;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
-	public class SqlTestsBase : RMTestBase
-	{
-		protected EnvironmentSetupHelper Helper;
+    public class SqlTestsBase : RMTestBase
+    {
+        protected EnvironmentSetupHelper Helper;
+        protected string[] resourceTypesToIgnoreApiVersion;
 
-		protected SqlTestsBase(ITestOutputHelper output)
-		{
-			Helper = new EnvironmentSetupHelper();
+        protected SqlTestsBase(ITestOutputHelper output)
+        {
+            Helper = new EnvironmentSetupHelper();
 
-			var tracer = new XunitTracingInterceptor(output);
-			XunitTracingInterceptor.AddToContext(tracer);
-			Helper.TracingInterceptor = tracer;
-		}
+            var tracer = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(tracer);
+            Helper.TracingInterceptor = tracer;
+        }
 
-		protected virtual void SetupManagementClients(MockContext context)
-		{
-			var sqlClient = GetSqlClient(context);
-			var newResourcesClient = GetResourcesClient(context);
-			Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient);
-		}
+        protected virtual void SetupManagementClients(MockContext context)
+        {
+            var sqlClient = GetSqlClient(context);
+            var newResourcesClient = GetResourcesClient(context);
+            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient);
+        }
 
-		protected void RunPowerShellTest(params string[] scripts)
-		{
-			TestExecutionHelpers.SetUpSessionAndProfile();
-			var sf = new StackTrace().GetFrame(1);
-			var callingClassType = sf.GetMethod().ReflectedType?.ToString();
-			var mockName = sf.GetMethod().Name;
+        protected void RunPowerShellTest(params string[] scripts)
+        {
+            TestExecutionHelpers.SetUpSessionAndProfile();
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
-			var d = new Dictionary<string, string>
-			{
-				{"Microsoft.Resources", null},
-				{"Microsoft.Features", null},
-				{"Microsoft.Authorization", null},
-				{"Microsoft.Network", null},
-				{"Microsoft.KeyVault", null}
+            var d = new Dictionary<string, string>
+            {
+                {"Microsoft.Resources", null},
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null},
+                {"Microsoft.Network", null},
+                {"Microsoft.KeyVault", null},
+            };
 
-			};
-			var providersToIgnore = new Dictionary<string, string>
-			{
-				{"Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient", "1.42-previewInternal"},
-				{"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
-			};
-			HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
-			HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                {"Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient", "1.42-previewInternal"},
+                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
+            };
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithResourceApiExclusion(true, d, providersToIgnore, resourceTypesToIgnoreApiVersion);
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-			// Enable undo functionality as well as mock recording
-			using (var context = MockContext.Start(callingClassType, mockName))
-			{
-				SetupManagementClients(context);
-				Helper.SetupEnvironment(AzureModule.AzureResourceManager);
-				Helper.SetupModules(AzureModule.AzureResourceManager,
-					"ScenarioTests\\Common.ps1",
-					"ScenarioTests\\" + GetType().Name + ".ps1",
-					Helper.RMProfileModule,
-					Helper.GetRMModulePath(@"AzureRM.Sql.psd1"),
-					Helper.RMNetworkModule,
-					"AzureRM.Storage.ps1",
-					"AzureRM.Resources.ps1",
-					Helper.RMOperationalInsightsModule,
-					Helper.RMEventHubModule,
-					Helper.RMMonitorModule,
-					Helper.RMKeyVaultModule);
-				Helper.RunPowerShellTest(scripts);
-			}
-		}
+            // Enable undo functionality as well as mock recording
+            using (var context = MockContext.Start(callingClassType, mockName))
+            {
+                SetupManagementClients(context);
+                Helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                Helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + GetType().Name + ".ps1",
+                    Helper.RMProfileModule,
+                    Helper.GetRMModulePath(@"AzureRM.Sql.psd1"),
+                    Helper.RMNetworkModule,
+                    "AzureRM.Storage.ps1",
+                    "AzureRM.Resources.ps1",
+                    Helper.RMOperationalInsightsModule,
+                    Helper.RMEventHubModule,
+                    Helper.RMMonitorModule,
+                    Helper.RMKeyVaultModule);
+                Helper.RunPowerShellTest(scripts);
+            }
+        }
 
-		protected SqlManagementClient GetSqlClient(MockContext context)
-		{
-			return context.GetServiceClient<SqlManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-		}
+        protected SqlManagementClient GetSqlClient(MockContext context)
+        {
+            return context.GetServiceClient<SqlManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
 
-		protected SDKMonitor.IMonitorManagementClient GetMonitorManagementClient(MockContext context)
-		{
-			return context.GetServiceClient<SDKMonitor.MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-		}
+        protected SDKMonitor.IMonitorManagementClient GetMonitorManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<SDKMonitor.MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
 
-		protected CommonMonitor.IMonitorManagementClient GetCommonMonitorManagementClient(MockContext context)
-		{
-			return context.GetServiceClient<CommonMonitor.MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-		}
+        protected CommonMonitor.IMonitorManagementClient GetCommonMonitorManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<CommonMonitor.MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
 
-		protected IEventHubManagementClient GetEventHubManagementClient(MockContext context)
-		{
-			return context.GetServiceClient<EventHubManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-		}
+        protected IEventHubManagementClient GetEventHubManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<EventHubManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
 
-		protected IOperationalInsightsManagementClient GetOperationalInsightsManagementClient(MockContext context)
-		{
-			return context.GetServiceClient<OperationalInsightsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-		}
+        protected IOperationalInsightsManagementClient GetOperationalInsightsManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<OperationalInsightsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
 
-		protected ResourceManagementClient GetResourcesClient(MockContext context)
-		{
-			return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-		}
+        protected ResourceManagementClient GetResourcesClient(MockContext context)
+        {
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
 
-		protected GraphRbacManagementClient GetGraphClient(MockContext context)
-		{
-			GraphRbacManagementClient graphClient = context.GetGraphServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-			graphClient.BaseUri = TestEnvironmentFactory.GetTestEnvironment().Endpoints.GraphUri;
-			graphClient.TenantID = TestEnvironmentFactory.GetTestEnvironment().Tenant;
-			return graphClient;
-		}
-		
-		protected KeyVaultManagementClient GetKeyVaultClient(MockContext context)
+        protected GraphRbacManagementClient GetGraphClient(MockContext context)
+        {
+            GraphRbacManagementClient graphClient = context.GetServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            graphClient.BaseUri = TestEnvironmentFactory.GetTestEnvironment().Endpoints.GraphUri;
+            graphClient.TenantID = TestEnvironmentFactory.GetTestEnvironment().Tenant;
+            return graphClient;
+        }
+
+        protected KeyVaultManagementClient GetKeyVaultClient(MockContext context)
         {
             return context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }

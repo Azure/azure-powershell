@@ -56,10 +56,26 @@ function Test-File
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
         Assert-AreEqual $file.Count 1
         Assert-AreEqual $file[0].Name $objectName1
-		Set-AzStorageFileContent -source $localSrcFile -ShareName $shareName -Path $objectName1 -Force -Context $storageContext
+
+		if ($Env:OS -eq "Windows_NT")
+		{
+			Set-AzStorageFileContent -source $localSrcFile -ShareName $shareName -Path $objectName1  -PreserveSMBAttribute -Force -Context $storageContext
+		}
+		else
+		{
+			Set-AzStorageFileContent -source $localSrcFile -ShareName $shareName -Path $objectName1 -Force -Context $storageContext
+		}
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
         Assert-AreEqual $file.Count 1
         Assert-AreEqual $file[0].Name $objectName1
+		if ($Env:OS -eq "Windows_NT")
+		{
+			$file[0].FetchAttributes()
+			$localFileProperties = Get-ItemProperty $localSrcFile
+			Assert-AreEqual $localFileProperties.CreationTime.ToUniversalTime().Ticks $file[0].Properties.CreationTime.ToUniversalTime().Ticks
+			Assert-AreEqual $localFileProperties.LastWriteTime.ToUniversalTime().Ticks $file[0].Properties.LastWriteTime.ToUniversalTime().Ticks
+			Assert-AreEqual $localFileProperties.Attributes.ToString() $file[0].Properties.NtfsAttributes.ToString()
+		}
 
         Start-AzStorageFileCopy -SrcShareName $shareName -SrcFilePath $objectName1 -DestShareName $shareName -DestFilePath $objectName2 -Force -Context $storageContext -DestContext $storageContext
         Get-AzStorageFileCopyState -ShareName $shareName -FilePath $objectName2 -Context $storageContext -WaitForComplete
@@ -68,13 +84,29 @@ function Test-File
         Assert-AreEqual $file[0].Name $objectName1
         Assert-AreEqual $file[1].Name $objectName2
 
-        $t = Get-AzStorageFileContent -ShareName $shareName -Path $objectName1 -Destination $localDestFile -Force -Context $storageContext  -asjob
+        $t = Get-AzStorageFileContent -ShareName $shareName -Path $objectName1 -Destination $localDestFile -Force -Context $storageContext -asjob
 		$t | wait-job
 		Assert-AreEqual $t.State "Completed"
 		Assert-AreEqual $t.Error $null   
         Assert-AreEqual (Get-FileHash -Path $localDestFile -Algorithm MD5).Hash (Get-FileHash -Path $localSrcFile -Algorithm MD5).Hash
-		Get-AzStorageFileContent -ShareName $shareName -Path $objectName1 -Destination $localDestFile -Force -Context $storageContext
+				
+		if ($Env:OS -eq "Windows_NT")
+		{
+			Get-AzStorageFileContent -ShareName $shareName -Path $objectName1 -Destination $localDestFile -PreserveSMBAttribute -Force -Context $storageContext
+		}
+		else
+		{
+			Get-AzStorageFileContent -ShareName $shareName -Path $objectName1 -Destination $localDestFile -Force -Context $storageContext
+		}
         Assert-AreEqual (Get-FileHash -Path $localDestFile -Algorithm MD5).Hash (Get-FileHash -Path $localSrcFile -Algorithm MD5).Hash
+		if ($Env:OS -eq "Windows_NT")
+		{
+			$file = Get-AzStorageFile -ShareName $shareName -Path $objectName1 -Context $storageContext
+			$localFileProperties = Get-ItemProperty $localSrcFile
+			Assert-AreEqual $localFileProperties.CreationTime.ToUniversalTime().Ticks $file[0].Properties.CreationTime.ToUniversalTime().Ticks
+			Assert-AreEqual $localFileProperties.LastWriteTime.ToUniversalTime().Ticks $file[0].Properties.LastWriteTime.ToUniversalTime().Ticks
+			Assert-AreEqual $localFileProperties.Attributes.ToString() $file[0].Properties.NtfsAttributes.ToString()
+		}
 
         Remove-AzStorageFile -ShareName $shareName -Path $objectName1 -Context $storageContext
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
@@ -137,32 +169,39 @@ function Test-Blob
         $objectName2 = "blobtest2.txt"
         $ContentType = "image/jpeg"
         $ContentMD5 = "i727sP7HigloQDsqadNLHw=="
+        $StandardBlobTier = "Cool"
+        $StandardBlobTier2 = "Hot"
 
         # Create Container for blob
         New-AzStorageContainer $containerName -Context $storageContext
 
         # Upload local file to Azure Storage Blob.
-        $t = Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $objectName1 -Force -Properties @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} -Context $storageContext -asjob
-		$t | wait-job
-		Assert-AreEqual $t.State "Completed"
-		Assert-AreEqual $t.Error $null
+        $t = Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $objectName1 -StandardBlobTier $StandardBlobTier -Force -Properties @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} -Context $storageContext -asjob
+        $t | wait-job
+        Assert-AreEqual $t.State "Completed"
+        Assert-AreEqual $t.Error $null
         $blob = Get-AzStorageContainer -Name $containerName -Context $storageContext | Get-AzStorageBlob
         Assert-AreEqual $blob.Count 1
         Assert-AreEqual $blob.Name $objectName1
         Assert-AreEqual $blob.ICloudBlob.Properties.ContentType $ContentType
         Assert-AreEqual $blob.ICloudBlob.Properties.ContentMD5 $ContentMD5
-		Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $objectName2 -Force -Properties @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} -Context $storageContext
+        Assert-AreEqual $blob.ICloudBlob.Properties.StandardBlobTier $StandardBlobTier
+        $blob.ICloudBlob.SetStandardBlobTier($StandardBlobTier2, "High")
+        $blob.ICloudBlob.FetchAttributes()
+        Assert-AreEqual $blob.ICloudBlob.Properties.StandardBlobTier $StandardBlobTier2
+        Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $objectName2 -Force -Properties @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} -Context $storageContext
         $blob = Get-AzStorageContainer -Name $containerName -Context $storageContext | Get-AzStorageBlob
         Assert-AreEqual $blob.Count 2
         Get-AzStorageBlob -Container $containerName -Blob $objectName2 -Context $storageContext | Remove-AzStorageBlob -Force 
 
         # Copy blob to the same container, but with a different name.
-        Start-AzStorageBlobCopy -srcContainer $containerName -SrcBlob $objectName1 -DestContainer $containerName -DestBlob $objectName2 -Context $storageContext -DestContext $storageContext
+        Start-AzStorageBlobCopy -srcContainer $containerName -SrcBlob $objectName1 -DestContainer $containerName -DestBlob $objectName2 -StandardBlobTier $StandardBlobTier -RehydratePriority High -Context $storageContext -DestContext $storageContext
         Get-AzStorageBlobCopyState -Container $containerName -Blob $objectName2 -Context $storageContext
         $blob = Get-AzStorageBlob -Container $containerName -Context $storageContext
         Assert-AreEqual $blob.Count 2
         Assert-AreEqual $blob[0].Name $objectName1
         Assert-AreEqual $blob[1].Name $objectName2
+        Assert-AreEqual $blob[1].ICloudBlob.Properties.StandardBlobTier $StandardBlobTier
 
         # Download storage blob to compare with the local file.
         Get-AzStorageBlobContent -Container $containerName -Blob $objectName2 -Destination $localDestFile -Force -Context $storageContext
@@ -197,9 +236,17 @@ function Test-Blob
         Assert-AreEqual $blob.Count 2
         Assert-AreEqual $blob[0].ICloudBlob.IsSnapshot $true
         Assert-AreEqual $blob[1].ICloudBlob.IsSnapshot $false
-
+		
+		#Upload Blob with properties to container which enabled Immutability Policy
+		Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName -ImmutabilityPeriod 1		
+        Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob immublob -Force -Properties @{"CacheControl" = "max-age=31536000, private"; "ContentEncoding" = "gzip"; "ContentDisposition" = "123"; "ContentLanguage" = "1234"; "ContentType" = "abc/12345"; } -Metadata @{"tag1" = "value1"; "tag2" = "value22" } -Context $storageContext
+		
+		$immutabilityPolicy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName
+		Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName -Etag $immutabilityPolicy.Etag
+		
         # Clean Storage Account
         Remove-AzStorageContainer -Name $containerName -Force -Context $storageContext
+
     }
     finally
     {

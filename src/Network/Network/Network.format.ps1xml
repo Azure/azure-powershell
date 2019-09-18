@@ -2589,6 +2589,10 @@
                 <PropertyName>AllocationDate</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Identity</Label>
+                <PropertyName>IdentityText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Links</Label>
                 <PropertyName>LinksText</PropertyName>
               </ListItem>
@@ -2649,6 +2653,10 @@
               <ListItem>
                 <Label>AdminState</Label>
                 <PropertyName>AdminState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>MacSecConfig</Label>
+                <PropertyName>MacSecConfigText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -3721,6 +3729,10 @@
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>Connections</Label>
+                <PropertyName>Connections</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -3774,6 +3786,10 @@
               <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VpnSiteLinks</Label>
+                <PropertyName>VpnSiteLinks</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -4122,6 +4138,10 @@
                 <PropertyName>Alias</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Fqdns</Label>
+                <PropertyName>Fqdns</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>LoadBalancerFrontendIpConfigurations</Label>
                 <PropertyName>LoadBalancerFrontendIpConfigurationsText</PropertyName>
               </ListItem>
@@ -4176,8 +4196,8 @@
                 <PropertyName>SubnetText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>PublicIPAddress</Label>
-                <PropertyName>PublicIPAddressText</PropertyName>
+                <Label>Primary</Label>
+                <PropertyName>Primary</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

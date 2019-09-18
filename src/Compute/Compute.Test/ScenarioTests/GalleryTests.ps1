@@ -76,6 +76,7 @@ function Verify-GalleryImageVersion
         Assert-NotNull $imageVersion.Id;
 
         Assert-AreEqual $sourceImageId $imageVersion.PublishingProfile.Source.ManagedImage.Id;
+        Assert-AreEqual $sourceImageId $imageVersion.StorageProfile.Source.Id;
         Assert-AreEqual $replicaCount $imageVersion.PublishingProfile.ReplicaCount;
         Assert-False { $imageVersion.PublishingProfile.ExcludeFromLatest };
 
@@ -181,7 +182,7 @@ function Test-Gallery
         $purchasePlanProduct = "purchasePlanProduct";
         $purchasePlanPublisher = "";
         $osState = "Generalized";
-        $osType = "Linux";
+        $osType = "Windows";
 
         New-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $galleryImageName `
                                           -Location $loc -Publisher $publisherName -Offer $offerName -Sku $skuName `
@@ -336,7 +337,9 @@ function Test-Gallery
         $output = $version | Out-String;
 
         $version | Remove-AzGalleryImageVersion -Force;
+        Wait-Seconds 300;
         $definition | Remove-AzGalleryImageDefinition -Force;
+        Wait-Seconds 300;
         $gallery | Remove-AzGallery -Force;
     }
     finally
@@ -448,7 +451,7 @@ function Test-GalleryImageVersion
         $purchasePlanProduct = "purchasePlanProduct";
         $purchasePlanPublisher = "";
         $osState = "Generalized";
-        $osType = "Linux";
+        $osType = "Windows";
 
         New-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $galleryImageName `
                                           -Location $loc -Publisher $publisherName -Offer $offerName -Sku $skuName `
@@ -561,7 +564,9 @@ function Test-GalleryImageVersion
                                    $image.Id 1 $endOfLifeDate $targetRegions;
 
         $version | Remove-AzGalleryImageVersion -Force;
+        Wait-Seconds 300;
         $definition | Remove-AzGalleryImageDefinition -Force;
+        Wait-Seconds 300;
         $gallery | Remove-AzGallery -Force;
     }
     finally
