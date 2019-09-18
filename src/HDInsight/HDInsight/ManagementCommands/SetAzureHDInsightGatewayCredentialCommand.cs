@@ -19,12 +19,14 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
+    [CmdletOutputBreakingChange(typeof(HttpConnectivitySettings), ReplacementCmdletOutputTypeName = "AzureHDInsightGatewaySettings")]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightGatewayCredential", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(HttpConnectivitySettings))]
     public class SetAzureHDInsightGatewayCredentialCommand : HDInsightCmdletBase
     {

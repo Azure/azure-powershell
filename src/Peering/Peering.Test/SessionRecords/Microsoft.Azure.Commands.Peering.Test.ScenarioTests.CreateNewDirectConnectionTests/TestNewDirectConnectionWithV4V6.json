@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "63a8f7a5-8274-4607-ac8b-88032ad87704"
+          "9d2ec75a-225b-4b23-85d7-6a4a44d6b0e4"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,16 +27,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "0bf96795-8319-4055-b19f-eee2c5176794"
+          "bb07f88a-d646-496d-abd9-3be84c657a73"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "596"
+          "592"
         ],
         "x-ms-correlation-request-id": [
-          "edc46826-c4d7-4c9a-b610-57fe92ee5ad5"
+          "272e6051-fd5c-41f7-a1b1-5560ed23bf12"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20190829T183257Z:edc46826-c4d7-4c9a-b610-57fe92ee5ad5"
+          "NORTHEUROPE:20190911T171011Z:272e6051-fd5c-41f7-a1b1-5560ed23bf12"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 29 Aug 2019 18:32:57 GMT"
+          "Wed, 11 Sep 2019 17:10:10 GMT"
         ],
         "Content-Length": [
           "68896"
@@ -64,9 +64,9 @@
   "Names": {},
   "Variables": {
     "SubscriptionId": "3e919f9a-4e26-4736-aa8d-d596d9a49239",
-    "bandwidth": "70000",
-    "Hash": "c77cb7a68fea8f0b512b0d1f91985354",
-    "MaxPrefixV4": "19824",
-    "MaxPrefixV6": "146"
+    "bandwidth": "60000",
+    "Hash": "4a38a4fd37950352371fc096f36cff69",
+    "MaxPrefixV4": "15249",
+    "MaxPrefixV6": "1450"
   }
 }

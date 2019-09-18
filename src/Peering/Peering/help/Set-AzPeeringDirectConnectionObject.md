@@ -32,7 +32,13 @@ Set-AzPeeringDirectConnectionObject -InputObject <PSDirectConnection> -SessionPr
 
 ### Md5Authentication
 ```
-Set-AzPeeringDirectConnectionObject -InputObject <PSDirectConnection> [-MD5AuthenticationKey <String>]
+Set-AzPeeringDirectConnectionObject -InputObject <PSDirectConnection> -MD5AuthenticationKey <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ParameterSetNameUseForPeeringService
+```
+Set-AzPeeringDirectConnectionObject -InputObject <PSDirectConnection> -UseForPeeringService <Boolean>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -54,6 +60,19 @@ PS C:> $update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1
 ```
 
 Updates the Peering Address for the first connection in the Peering object in memory. 
+
+### Update Use for peering service
+```powershell
+PS C:> $update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringDirectConnectionObject -UseForPeeringService $true
+
+PeeringDBFacilityId    : 99999
+UseForPeeringService   : True
+SessionAddressProvider : Microsoft
+ConnectionIdentifier   : 16c24fd5-89aa-48d7-a101-38ca68a4ce6d
+BandwidthInMbps        : 30000
+```
+
+Updates the connection for use with peering service
 
 ## PARAMETERS
 
@@ -140,7 +159,7 @@ Type: System.String
 Parameter Sets: Md5Authentication
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -168,6 +187,21 @@ The peer session IPv6 address
 ```yaml
 Type: System.String
 Parameter Sets: IPv6Prefix
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseForPeeringService
+Enable for use with Microsoft Peering Service (MPS).
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: ParameterSetNameUseForPeeringService
 Aliases:
 
 Required: True
