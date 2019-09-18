@@ -207,6 +207,12 @@
   <data name="RemoveAzureSqlServerActiveDirectoryAdministratorWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Azure Sql Server Active Directory Administrator on server '{0}'?</value>
   </data>
+  <data name="RemoveAzureSqlInstanceActiveDirectoryAdministratorDescription" xml:space="preserve">
+    <value>Removing Azure Sql Instance Active Directory Administrator on instance '{0}'.</value>
+  </data>
+  <data name="RemoveAzureSqlInstanceActiveDirectoryAdministratorWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Instance Active Directory Administrator on instance '{0}'?</value>
+  </data>
   <data name="RemoveAzureSqlServerDescription" xml:space="preserve">
     <value>Permanently removing Azure Sql Database Server '{0}'.</value>
   </data>
