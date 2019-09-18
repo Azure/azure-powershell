@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Rehydrates a backup item from softdeleted state
     /// </summary>
-    [Cmdlet("Undelete", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupItem", SupportsShouldProcess = true), OutputType(typeof(JobBase))]
-    public class UndeleteAzureRmRecoveryServicesBackupItem : RSBackupVaultCmdletBase
+    [Cmdlet("Undo", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupItemDeletion", SupportsShouldProcess = true), OutputType(typeof(JobBase))]
+    public class UndoAzureRmRecoveryServicesBackupItemDeletion : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// The protected item which needs to be rehydrated

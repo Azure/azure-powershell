@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/Undelete-AzRecoveryServicesBackupItem
+online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion
 schema: 2.0.0
 ---
 
-# Undelete-AzRecoveryServicesBackupItem
+# Undo-AzRecoveryServicesBackupItemDeletion
 
 ## SYNOPSIS
 Rehydrates a soft-deleted Item
@@ -13,12 +13,12 @@ Rehydrates a soft-deleted Item
 ## SYNTAX
 
 ```
-Undelete-AzRecoveryServicesBackupItem [-Item] <ItemBase> [-Force] [-VaultId <String>]
+Undo-AzRecoveryServicesBackupItemDeletion [-Item] <ItemBase> [-Force] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Undelete-AzRecoveryServicesBackupItem cmdlet rehydrates a soft-deleted item.
+The Undo-AzRecoveryServicesBackupItemDeletion cmdlet rehydrates a soft-deleted item.
 Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -29,7 +29,7 @@ PS C:\> $Cont = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM
 PS C:\> $PI = Get-AzRecoveryServicesBackupItem -Container $Cont[0] -WorkloadType AzureVM 
 PS C:\> Disable-AzRecoveryServicesBackupProtection -Item $PI[0] -RemoveRecoveryPoints
 PS C:\> $PI = Get-AzRecoveryServicesBackupItem -Container $Cont[0] -WorkloadType AzureVM 
-PS C:\> Undelete-AzRecoveryServicesBackupItem -Item $PI[0]
+PS C:\> Undo-AzRecoveryServicesBackupItemDeletion -Item $PI[0]
 ```
 
 The first command gets an array of backup containers, and then stores it in the $Cont array.

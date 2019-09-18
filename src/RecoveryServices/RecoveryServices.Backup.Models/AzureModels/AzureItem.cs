@@ -62,6 +62,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public bool IsScheduledForPurge { get; set; }
 
+        /// <summary>
+        /// Indicates if the delete state of the item
+        /// </summary>
+        public string DeleteState { get; set; }
+
         public AzureItem(ProtectedItemResource protectedItemResource,
            string containerName, ContainerType containerType, string policyName)
             : base(protectedItemResource, containerName, containerType)
