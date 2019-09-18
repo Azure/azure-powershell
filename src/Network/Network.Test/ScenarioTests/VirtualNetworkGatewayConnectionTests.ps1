@@ -147,6 +147,71 @@ function Test-VirtualNetworkGatewayConnectionWithBgpCRUD
 
 <#
 .SYNOPSIS
+Virtual network gateway connection tests
+#>
+function Test-VirtualNetworkGatewayConnectionWithTrafficSelector
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $localnetName = Get-ResourceName
+    $vnetConnectionName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/connections"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+    
+      # Create the Virtual Network
+      $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+	  $trafficSelector = New-AzIpsecTrafficSelectorPolicy -LocalAddressRanges ("20.20.0.0/16") -RemoteAddressRanges ("10.10.0.0/16")
+
+      # Create the publicip
+      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel    
+
+      # Create VirtualNetworkGateway
+      $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+
+	  # Also test overriding the gateway ASN
+      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard -Asn 55000
+      $vnetGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $vnetGateway.BgpSettings.Asn $actual.BgpSettings.Asn	
+    
+      # Create LocalNetworkGateway    
+      $actual = New-AzLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.3.10
+      $localnetGateway = Get-AzLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName
+
+      # Create & Get VirtualNetworkGatewayConnection
+      $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -TrafficSelectorPolicies ($trafficSelector)
+      $connection = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
+	  Assert-NotNull $connection;
+	  Assert-NotNull $connection.TrafficSelectorPolicies;
+	  Assert-AreEqual $connection.TrafficSelectorPolicies.Count 1
+    
+      # Delete VirtualNetworkGatewayConnection
+      $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
+      Assert-AreEqual true $delete
+
+     }
+     finally
+     {
+      # Cleanup
+        Clean-ResourceGroup $rgname
+     }
+}
+
+<#
+.SYNOPSIS
 Virtual network gateway connection tests with Ipsec Policies and policy-based TS
 #>
 function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
