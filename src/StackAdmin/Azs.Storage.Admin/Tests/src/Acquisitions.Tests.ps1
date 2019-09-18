@@ -79,7 +79,7 @@ InModuleScope Azs.Storage.Admin {
             $global:TestName = 'TestListAllAcquisitions'
 
                 $acquisitions = Get-AzsStorageAcquisition -Location $global:Location
-                foreach ($acquisition in $acquisitions) {
+                foreach ($acquisition in $acquisitions.Value) {
                     ValidateAcquisition -Acquisition $acquisition
                 }
         }

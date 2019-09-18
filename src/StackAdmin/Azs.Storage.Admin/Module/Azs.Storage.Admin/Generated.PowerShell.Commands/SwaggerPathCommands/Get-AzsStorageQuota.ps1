@@ -10,9 +10,6 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .DESCRIPTION
     Returns a list of storage quotas at the given location.
 
-.PARAMETER Skip
-    Skip the first N items as specified by the parameter value.
-
 .PARAMETER ResourceId
     The resource id.
 
@@ -21,9 +18,6 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .PARAMETER InputObject
     The input object of type Microsoft.AzureStack.Management.Storage.Admin.Models.StorageQuota.
-
-.PARAMETER Top
-    Return the top N items as specified by the parameter value. Applies after the -Skip parameter.
 
 .PARAMETER Name
     The name of the storage quota.
@@ -45,10 +39,6 @@ function Get-AzsStorageQuota {
     [OutputType([Microsoft.AzureStack.Management.Storage.Admin.Models.StorageQuota])]
     [CmdletBinding(DefaultParameterSetName = 'List')]
     param(    
-        [Parameter(Mandatory = $false, ParameterSetName = 'List')]
-        [int]
-        $Skip = -1,
-    
         [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true, ParameterSetName = 'ResourceId')]
         [Alias('id')]
         [ValidateNotNullOrEmpty()]
@@ -63,10 +53,6 @@ function Get-AzsStorageQuota {
         [Parameter(Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = 'InputObject')]
         [Microsoft.AzureStack.Management.Storage.Admin.Models.StorageQuota]
         $InputObject,
-    
-        [Parameter(Mandatory = $false, ParameterSetName = 'List')]
-        [int]
-        $Top = -1,
     
         [Parameter(Mandatory = $true, ParameterSetName = 'Get', Position = 0)]
         [ValidateNotNullOrEmpty()]
@@ -174,32 +160,7 @@ function Get-AzsStorageQuota {
                 TaskResult = $TaskResult
             }
 
-            $TopInfo = @{
-                'Count' = 0
-                'Max'   = $Top
-            }
-            $GetTaskResult_params['TopInfo'] = $TopInfo 
-            $SkipInfo = @{
-                'Count' = 0
-                'Max'   = $Skip
-            }
-            $GetTaskResult_params['SkipInfo'] = $SkipInfo 
-            $PageResult = @{
-                'Result' = $null
-            }
-            $GetTaskResult_params['PageResult'] = $PageResult 
-            $GetTaskResult_params['PageType'] = 'Microsoft.Rest.Azure.IPage[Microsoft.AzureStack.Management.Storage.Admin.Models.StorageQuota]' -as [Type]            
             Get-TaskResult @GetTaskResult_params
-            
-            Write-Verbose -Message 'Flattening paged results.'
-            while ($PageResult -and $PageResult.Result -and (Get-Member -InputObject $PageResult.Result -Name 'nextLink') -and $PageResult.Result.'nextLink' -and (($null -eq $TopInfo) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
-                $PageResult.Result = $null
-                Write-Debug -Message "Retrieving next page: $($PageResult.Result.'nextLink')"
-                $TaskResult = $StorageAdminClient.StorageQuotas.ListNextWithHttpMessagesAsync($PageResult.Result.'nextLink')
-                $GetTaskResult_params['TaskResult'] = $TaskResult
-                $GetTaskResult_params['PageResult'] = $PageResult
-                Get-TaskResult @GetTaskResult_params
-            }
         }
     }
 

@@ -19,9 +19,6 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER InputObject
     The input object of type Microsoft.AzureStack.Management.Storage.Admin.Models.StorageAccount.
 
-.PARAMETER Skip
-    Skip the first N items as specified by the parameter value.
-
 .PARAMETER ResourceId
     The resource id.
 
@@ -30,9 +27,6 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .PARAMETER Name
     Internal storage account ID, which is not visible to tenant.
-
-.PARAMETER Top
-    Return the top N items as specified by the parameter value. Applies after the -Skip parameter.
 
 .EXAMPLE
 
@@ -63,10 +57,6 @@ function Get-AzsStorageAccount {
         [Microsoft.AzureStack.Management.Storage.Admin.Models.StorageAccount]
         $InputObject,
     
-        [Parameter(Mandatory = $false, ParameterSetName = 'List')]
-        [int]
-        $Skip = -1,
-    
         [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true, ParameterSetName = 'ResourceId')]
         [Alias('id')]
         [System.String]
@@ -80,11 +70,7 @@ function Get-AzsStorageAccount {
         [Parameter(Mandatory = $true, ParameterSetName = 'Get')]
         [Alias('AccountId')]
         [System.String]
-        $Name,
-    
-        [Parameter(Mandatory = $false, ParameterSetName = 'List')]
-        [int]
-        $Top = -1
+        $Name
     )
 
     Begin {
@@ -157,16 +143,6 @@ function Get-AzsStorageAccount {
                 TaskResult = $TaskResult
             }
 
-            $TopInfo = @{
-                'Count' = 0
-                'Max'   = $Top
-            }
-            $GetTaskResult_params['TopInfo'] = $TopInfo 
-            $SkipInfo = @{
-                'Count' = 0
-                'Max'   = $Skip
-            }
-            $GetTaskResult_params['SkipInfo'] = $SkipInfo 
             $PageResult = @{
                 'Result' = $null
             }
@@ -175,10 +151,10 @@ function Get-AzsStorageAccount {
             Get-TaskResult @GetTaskResult_params
             
             Write-Verbose -Message 'Flattening paged results.'
-            while ($PageResult -and $PageResult.Result -and (Get-Member -InputObject $PageResult.Result -Name 'nextLink') -and $PageResult.Result.'nextLink' -and (($null -eq $TopInfo) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
-                $PageResult.Result = $null
-                Write-Debug -Message "Retrieving next page: $($PageResult.Result.'nextLink')"
-                $TaskResult = $StorageAdminClient.StorageAccounts.ListNextWithHttpMessagesAsync($PageResult.Result.'nextLink')
+            while (('List' -eq $PsCmdlet.ParameterSetName) -and $PageResult -and $PageResult.Page -and (Get-Member -InputObject $PageResult.Page -Name 'NextPageLink') -and $PageResult.Page.'NextPageLink' ) {
+                Write-Debug -Message "Retrieving next page: $($PageResult.Page.'NextPageLink')"
+                $TaskResult = $StorageAdminClient.StorageAccounts.ListNextWithHttpMessagesAsync($PageResult.Page.'NextPageLink')
+                $PageResult.Page = $null
                 $GetTaskResult_params['TaskResult'] = $TaskResult
                 $GetTaskResult_params['PageResult'] = $PageResult
                 Get-TaskResult @GetTaskResult_params

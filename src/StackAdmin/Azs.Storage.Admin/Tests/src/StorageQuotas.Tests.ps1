@@ -102,7 +102,7 @@ InModuleScope Azs.Storage.Admin {
             $global:TestName = 'TestListAllStorageQuotas'
 
             $quotas = Get-AzsStorageQuota -Location $global:Location
-            foreach ($quota in $quotas) {
+            foreach ($quota in $quotas.Value) {
                 ValidateStorageQuota -storageQuota $quota
             }
         }
@@ -111,6 +111,7 @@ InModuleScope Azs.Storage.Admin {
             $global:TestName = 'TestGetStorageQuota'
 
             $quotas = Get-AzsStorageQuota -Location $global:Location
+            $quotas = $quotas.Value
             $quotaName = $quotas[0].Name.Substring($quotas[0].Name.IndexOf("/") + 1)
             $quota = Get-AzsStorageQuota -Location $global:Location -Name $quotaName
             ValidateStorageQuota -storageQuota $quota
@@ -121,6 +122,7 @@ InModuleScope Azs.Storage.Admin {
             $global:TestName = 'TestGetAllStorageQuotas'
 
             $quotas = Get-AzsStorageQuota -Location $global:Location
+            $quotas = $quotas.Value
             foreach ($quota in $quotas) {
                 $quotaName = $quota.Name.Substring($quotas[0].Name.IndexOf("/") + 1)
                 $result = Get-AzsStorageQuota -Location $global:Location -Name $quotaName
