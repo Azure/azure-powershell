@@ -9,7 +9,7 @@ schema: 2.0.0
 # Disable-AzSqlDatabaseSensitivityRecommendation
 
 ## SYNOPSIS
-Disables sensitivity recommendations on columns in the database.
+Disables (dismisses) sensitivity recommendations on columns in the database.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Disable-AzSqlDatabaseSensitivityRecommendation -DatabaseObject <AzureSqlDatabase
 ```
 
 ## DESCRIPTION
-The Disable-AzSqlDatabaseSensitivityRecommendation cmdlet disables sensitivity recommendations on columns in the database.
+The Disable-AzSqlDatabaseSensitivityRecommendation cmdlet disables (dismisses) sensitivity recommendations on columns in the database.
 
 ## EXAMPLES
 

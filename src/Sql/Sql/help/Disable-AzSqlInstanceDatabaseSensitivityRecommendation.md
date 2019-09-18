@@ -9,7 +9,7 @@ schema: 2.0.0
 # Disable-AzSqlInstanceDatabaseSensitivityRecommendation
 
 ## SYNOPSIS
-Disables sensitivity recommendations on columns in the Azure SQL managed instance database.
+Disables (dismisses) sensitivity recommendations on columns in the Azure SQL managed instance database.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Disable-AzSqlInstanceDatabaseSensitivityRecommendation -DatabaseObject <AzureSql
 ```
 
 ## DESCRIPTION
-The Disable-AzSqlInstanceDatabaseSensitivityRecommendation cmdlet disables sensitivity recommendations on columns in the Azure SQL managed instance database.
+The Disable-AzSqlInstanceDatabaseSensitivityRecommendation cmdlet disables (dismisses) sensitivity recommendations on columns in the Azure SQL managed instance database.
 
 ## EXAMPLES
 
