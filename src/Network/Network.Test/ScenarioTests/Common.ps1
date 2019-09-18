@@ -59,6 +59,11 @@ Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider, $preferredLocation = "West Central US", $useCanonical = $null)
 {
+    # This env variable should be used only for live testing
+    if($env:AZURE_NRP_TEST_LOCATION -and $env:AZURE_NRP_TEST_LOCATION -match "^[a-z0-9\s]+$")
+    {
+        return $env:AZURE_NRP_TEST_LOCATION;
+    }
     if($null -eq $useCanonical)
     {
         $useCanonical = -not $preferredLocation.Contains(" ");
@@ -67,17 +72,10 @@ function Get-ProviderLocation($provider, $preferredLocation = "West Central US",
     {
         $preferredLocation = Normalize-Location $preferredLocation;
     }
-    if((Get-NetworkTestMode) -ne 'Playback')
+    if($provider.Contains("/"))
     {
-        if($env:AZURE_NRP_TEST_LOCATION -and $env:AZURE_NRP_TEST_LOCATION -match "^[a-z0-9\s]+$")
-        {
-            return $env:AZURE_NRP_TEST_LOCATION;
-        }
-        if($provider.Contains("/"))
-        {
-            $providerNamespace, $resourceType = $provider.Split("/");
-            return Get-Location $providerNamespace $resourceType $preferredLocation -UseCanonical:$($useCanonical);
-        }
+        $providerNamespace, $resourceType = $provider.Split("/");
+        return Get-Location $providerNamespace $resourceType $preferredLocation -UseCanonical:$($useCanonical);
     }
     return $preferredLocation;
 }
