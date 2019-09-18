@@ -11,7 +11,7 @@ Version: 1.0
 A GET cmdlet is mostly used to obtain an Azure resource or validate its existence in Azure.
 With more and more customers using multiple subscriptions the ability to search for resources accross subscriptions has become a more needed convenience.
 
-We are planning to run GET accross  
+We are planning to run GET accross subscriptions within a tenant.
 
 ## Motivation
 
