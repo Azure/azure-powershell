@@ -55,5 +55,26 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
         {
             RunPowerShellTest(_logger, "Test-TriggerWithResourceId");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestBlobEventTriggerSubscriptions()
+        {
+            RunPowerShellTest(_logger, "Test-BlobEventTriggerSubscriptions");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestBlobEventTriggerSubscriptionsByInputObject()
+        {
+            RunPowerShellTest(_logger, "Test-BlobEventTriggerSubscriptionsByInputObject");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestBlobEventTriggerSubscriptionsByResourceId()
+        {
+            RunPowerShellTest(_logger, "Test-BlobEventTriggerSubscriptionsByResourceId");
+        }
     }
 }

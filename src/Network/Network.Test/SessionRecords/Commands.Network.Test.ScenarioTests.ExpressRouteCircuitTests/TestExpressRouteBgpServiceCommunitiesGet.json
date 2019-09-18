@@ -1,58 +1,58 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/bgpServiceCommunities?api-version=2019-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9iZ3BTZXJ2aWNlQ29tbXVuaXRpZXM/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/bgpServiceCommunities?api-version=2019-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9iZ3BTZXJ2aWNlQ29tbXVuaXRpZXM/YXBpLXZlcnNpb249MjAxOS0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2fd7f52d-3a9e-420c-bff8-4ae53d02e6a8"
+          "f65c1ba0-feb1-4bbc-b571-f73aa5649afc"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.26614.01",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.2.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
-        "Date": [
-          "Tue, 16 Jul 2019 09:53:40 GMT"
-        ],
         "Pragma": [
           "no-cache"
+        ],
+        "x-ms-request-id": [
+          "f8b77e25-44f2-4aaa-ab74-392afc5b696f"
+        ],
+        "x-ms-correlation-request-id": [
+          "2164e3ea-ba86-49fd-8e2b-7174ae99308e"
+        ],
+        "x-ms-arm-service-request-id": [
+          "eb913e9e-b703-486e-bbce-8051b008136f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
-        "x-ms-request-id": [
-          "00116099-3045-4bdb-8da8-08b5f32dfb84"
-        ],
-        "x-ms-correlation-request-id": [
-          "29c485a5-bddb-49d4-87f7-933631b9d8f3"
-        ],
-        "x-ms-arm-service-request-id": [
-          "bf5e1a74-5e0d-4daa-982b-e0220700aa00"
-        ],
-        "strict-transport-security": [
-          "max-age=31536000; includeSubDomains"
-        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
+          "11999"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190716T095341Z:29c485a5-bddb-49d4-87f7-933631b9d8f3"
+          "WESTUS:20190827T172819Z:2164e3ea-ba86-49fd-8e2b-7174ae99308e"
         ],
-        "x-content-type-options": [
+        "X-Content-Type-Options": [
           "nosniff"
+        ],
+        "Date": [
+          "Tue, 27 Aug 2019 17:28:19 GMT"
         ],
         "Content-Length": [
           "225017"
@@ -70,6 +70,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "18b0dc06-a2b8-4c0f-95af-550319fa5eac"
+    "SubscriptionId": "947d47b4-7883-4bb9-9d85-c5e8e2f572ce"
   }
 }

@@ -41,6 +41,8 @@ function Test-NewDirectConnectionWithV4V6
 	Assert-AreEqual $facilityId $createdConnection.PeeringDBFacilityId 
     Assert-AreEqual $sessionv4 $createdConnection.BgpSession.SessionPrefixV4
     Assert-AreEqual $sessionv6 $createdConnection.BgpSession.SessionPrefixV6
+	Assert-AreEqual $false $createdConnection.UseForPeeringService
+	Assert-AreEqual "Peer" $createdConnection.SessionAddressProvider
 }
 <#
 .SYNOPSIS
@@ -71,6 +73,8 @@ function Test-NewDirectConnectionWithV4
 	Assert-AreEqual $facilityId $createdConnection.PeeringDBFacilityId 
     Assert-AreEqual $sessionv4 $createdConnection.BgpSession.SessionPrefixV4
     Assert-Null $createdConnection.BgpSession.SessionPrefixV6
+	Assert-AreEqual $false $createdConnection.UseForPeeringService
+	Assert-AreEqual "Peer" $createdConnection.SessionAddressProvider
 }
 <#
 .SYNOPSIS
@@ -100,10 +104,12 @@ function Test-NewDirectConnectionWithV6
 	Assert-AreEqual $facilityId $createdConnection.PeeringDBFacilityId 
     Assert-Null $createdConnection.BgpSession.SessionPrefixV4
     Assert-AreEqual $sessionv6 $createdConnection.BgpSession.SessionPrefixV6
+	Assert-AreEqual $false $createdConnection.UseForPeeringService
+	Assert-AreEqual "Peer" $createdConnection.SessionAddressProvider
 }
 <#
 .SYNOPSIS
-NewDirectConnectionNoSession should fail with null value
+NewDirectConnectionNoSession should pass with null value
 #>
 function Test-NewDirectConnectionNoSession
 {
@@ -125,8 +131,12 @@ function Test-NewDirectConnectionNoSession
 	$maxv6 = maxAdvertisedIpv6
 	Write-Debug "Created maxAdvertised $maxv4 $maxv6"
 	#create Connection
-	Assert-ThrowsContains { New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5 } "Cannot process command because of one or more missing mandatory parameters: SessionPrefixV4."
-}
+    $createdConnection = New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -BandwidthInMbps $bandwidth -UseForPeeringService
+    Assert-AreEqual $bandwidth $createdConnection.BandwidthInMbps 
+	Assert-AreEqual $facilityId $createdConnection.PeeringDBFacilityId 
+    Assert-Null $createdConnection.BgpSession
+	Assert-AreEqual $true $createdConnection.UseForPeeringService
+	Assert-AreEqual "Peer" $createdConnection.SessionAddressProvider}
 <#
 .SYNOPSIS
 NewDirectConnectionWithV6 should fail with high BandwidthInMbps message
@@ -237,4 +247,27 @@ function Test-NewDirectConnectionWrongV4
 	Write-Debug "Created maxAdvertised $maxv4 $maxv6"
 	#create Connection
 	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV4 $wrongv4 -MaxPrefixesAdvertisedIPv4 $maxv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5.ToString} "Invalid Prefix: $wrongv4, must be "
+}
+
+<#
+.SYNOPSIS
+Microsoft Provided IP address 
+#>
+function Test-NewDirectConnectionWithMicrosoftIpProvidedAddress
+{
+	#Hard Coded locations becuase of limitations in locations
+	$kind = isDirect $true;
+	$loc = "Los Angeles"
+	$peeringLocation = getPeeringLocation $kind $loc;
+	$facilityId = $peeringLocation[0].PeeringDBFacilityId
+	#Create some data for the object
+	$bandwidth = getBandwidth
+	Write-Debug "Creating Connection at $facilityId"
+	#create Connection
+    $createdConnection = New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -MicrosoftProvidedIPAddress -BandwidthInMbps $bandwidth -UseForPeeringService
+    Assert-AreEqual $bandwidth $createdConnection.BandwidthInMbps 
+	Assert-AreEqual $facilityId $createdConnection.PeeringDBFacilityId 
+    Assert-AreEqual $null $createdConnection.BgpSession
+    Assert-AreEqual $true $createdConnection.UseForPeeringService
+	Assert-AreEqual "Microsoft" $createdConnection.SessionAddressProvider
 }

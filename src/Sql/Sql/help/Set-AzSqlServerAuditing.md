@@ -9,6 +9,8 @@ schema: 2.0.0
 # Set-AzSqlServerAuditing
 
 ## SYNOPSIS
+**Important: This cmdlet is deprecated, [Set-AzSqlServerAudit](https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserveraudit) is replacing it.**
+
 Changes the auditing settings of an Azure SQL server.
 
 ## SYNTAX

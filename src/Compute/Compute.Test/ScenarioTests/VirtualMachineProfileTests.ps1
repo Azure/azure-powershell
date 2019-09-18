@@ -23,8 +23,10 @@ function Test-VirtualMachineProfile
     # VM Profile & Hardware
     $vmsize = 'Standard_A2';
     $vmname = 'pstestvm' + ((Get-Random) % 10000);
-    $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+    $vmssID =  "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rggroup/providers/Microsoft.Compute/virtualMachineScaleSets/testvmss"
+    $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -VmssId $vmssID;
     Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
+    Assert-AreEqual $vmssID $p.VirtualMachineScaleSet.Id;
 
     # Network
     $ipname = 'hpfip' + ((Get-Random) % 10000);

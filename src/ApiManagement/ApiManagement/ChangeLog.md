@@ -18,12 +18,22 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update `-Format` parameter description in `Set-AzApiManagementPolicy` reference documentation
+* Removed references of deprecated cmdlet `Update-AzApiManagementDeployment` from reference documentation. Use `Set-AzApiManagement` instead.
+
+## Version 1.3.0
 * Fixed miscellaneous typos across module
+
 * Fix for issue https://github.com/Azure/azure-powershell/issues/9351
 	- Update .net nuget version, which does not enforce restrictions on productId, apiId, groupId and userId
 
-* Added support for querying products using Api
+* **Get-AzApiManagementProduct** - Added support for querying products using Api. 
   https://github.com/Azure/azure-powershell/issues/9482
+
+* **New-AzApiManagementApiRevision** - Fix for issue where ApiRevisionDescription was not being set when creating new api revision
+https://github.com/Azure/azure-powershell/issues/9752
+
+* Fixed typo in model `PsApiManagementOAuth2AuthrozationServer` to `PsApiManagementOAuth2AuthorizationServer`
 
 ## Version 1.2.0
 

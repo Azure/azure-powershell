@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Sql</PsModuleName>
@@ -24,7 +24,7 @@
     <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.34.0-preview" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
   </ItemGroup>
- 
+
   <ItemGroup>
     <ProjectReference Include="..\Sql.LegacySdk\Sql.LegacySdk.csproj" />
   </ItemGroup>

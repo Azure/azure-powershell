@@ -110,7 +110,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes
+### Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes
 
 ## NOTES
 
