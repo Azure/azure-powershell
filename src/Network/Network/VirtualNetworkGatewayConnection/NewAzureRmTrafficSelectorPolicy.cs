@@ -19,7 +19,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "TrafficSelectorPolicy"), OutputType(typeof(PSTrafficSelectorPolicy))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IpsecTrafficSelectorPolicy"), OutputType(typeof(PSTrafficSelectorPolicy))]
     public class NewAzureRmTrafficSelectorPolicyCommand : NetworkBaseCmdlet
     {
         [Parameter(
