@@ -479,7 +479,7 @@ function Test-AzureVMSoftDelete
 
 		#rehydrate the softdeleted item
 
-		Undelete-AzRecoveryServicesBackupItem `
+		Undo-AzRecoveryServicesBackupItemDeletion `
 			-VaultId $vault.ID `
 			-Item $item;
 

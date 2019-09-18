@@ -47,11 +47,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             VirtualMachineId = protectedItem.VirtualMachineId;
             HealthStatus = protectedItem.HealthStatus;
             DateOfPurge = null;
-
+            DeleteState = "NotDeleted";
             if(protectedItem.IsScheduledForDeferredDelete.HasValue)
             {
                 IsScheduledForPurge = true;
                 DateOfPurge = protectedItem.DeferredDeleteTimeInUTC.Value.AddDays(14);
+                DeleteState = "TobeDeleted";
             }
         }
     }
