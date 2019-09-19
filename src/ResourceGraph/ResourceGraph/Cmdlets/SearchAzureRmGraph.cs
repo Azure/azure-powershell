@@ -224,16 +224,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 return this.Subscription;
             }
 
-            // Use selected subscription (for example, by command "Select-AzSubscription {subscriptionId}") 
-            if (this.TryGetDefaultContext(out var context))
-            {
-                var subscriptionId = context.Subscription?.Id;
-                if (subscriptionId != null)
-                {
-                    return new List<string> { subscriptionId };
-                }
-            }
-
             var accountSubscriptions = this.DefaultContext.Account.GetSubscriptions();
             if (accountSubscriptions.Length > 0)
             {
