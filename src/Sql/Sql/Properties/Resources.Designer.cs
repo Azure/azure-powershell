@@ -97,6 +97,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Instance pool with name &apos;{0}&apos; already exists..
+        /// </summary>
+        internal static string AzureSqlInstancePoolExists {
+            get {
+                return ResourceManager.GetString("AzureSqlInstancePoolExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instance pool with name &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string AzureSqlInstancePoolNotExists {
+            get {
+                return ResourceManager.GetString("AzureSqlInstancePoolNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About to process resource.
         /// </summary>
         internal static string BaseConfirmActionProcessMessage {
@@ -201,6 +219,42 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string EnterUserId {
             get {
                 return ResourceManager.GetString("EnterUserId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failing over Azure Sql Database &apos;{0}&apos; on server &apos;{1}&apos;..
+        /// </summary>
+        internal static string FailoverAzureSqlDatabaseDescription {
+            get {
+                return ResourceManager.GetString("FailoverAzureSqlDatabaseDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to failover the Azure Sql Database &apos;{0}&apos; on server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string FailoverAzureSqlDatabaseWarning {
+            get {
+                return ResourceManager.GetString("FailoverAzureSqlDatabaseWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failing over Azure Sql Elastic Pool &apos;{0}&apos; on server &apos;{1}&apos;..
+        /// </summary>
+        internal static string FailoverAzureSqlElasticPoolDescription {
+            get {
+                return ResourceManager.GetString("FailoverAzureSqlElasticPoolDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to failover the Azure Sql Elastic Pool &apos;{0}&apos; on server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string FailoverAzureSqlElasticPoolWarning {
+            get {
+                return ResourceManager.GetString("FailoverAzureSqlElasticPoolWarning", resourceCulture);
             }
         }
         
@@ -502,6 +556,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Database Instance Failover Group &apos;{0}&apos; on region &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseInstanceFailoverGroupDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseInstanceFailoverGroupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database Instance Failover Group &apos;{0}&apos; on region &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseInstanceFailoverGroupWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseInstanceFailoverGroupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Permanently removing the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on server &apos;{2}&apos; in location &apos;{3}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlDatabaseLongTermRetentionBackupDescription {
@@ -723,6 +795,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RemoveDatabaseDataMaskingRuleWarning {
             get {
                 return ResourceManager.GetString("RemoveDatabaseDataMaskingRuleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure SQL Instance pool &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveInstancePoolWarning {
+            get {
+                return ResourceManager.GetString("RemoveInstancePoolWarning", resourceCulture);
             }
         }
         
@@ -1103,27 +1184,175 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("VulnerabilityAssessmentWrongParameterType", resourceCulture);
             }
         }
-  
 
-        /// <summary>
-        ///   Looks up a localized string similar to Permanently removing Instance Failover Group &apos;{0}&apos; on server &apos;{1}&apos;..
+         /// <summary>
+        ///   Looks up a localized string similar to Elastic Job Agent with name &apos;{0}&apos; already exists in server &apos;{1}&apos;.
         /// </summary>
-        internal static string RemoveAzureSqlDatabaseInstanceFailoverGroupDescription
-        {
-            get
-            {
-                return ResourceManager.GetString("RemoveAzureSqlDatabaseInstanceFailoverGroupDescription", resourceCulture);
+        internal static string AzureElasticJobAgentExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobAgentExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elastic Job agent &apos;{0}&apos; does not exist in server &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobAgentNotExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobAgentNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job credential with name &apos;{0}&apos; already exists in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobCredentialExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobCredentialExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job credential with name &apos;{0}&apos; does not exist in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobCredentialNotExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobCredentialNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job execution &apos;{0}&apos; does not exist in job &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobExecutionNotExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobExecutionNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job with name &apos;{0}&apos; already exists in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The requested job time interval is not supported &apos;{0}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobIntervalNotSupported {
+            get {
+                return ResourceManager.GetString("AzureElasticJobIntervalNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job with name &apos;{0}&apos; does not exist in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobNotExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job step with name &apos;{0}&apos; already exists in job &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobStepExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobStepExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job step with name &apos;{0}&apos; does not exist in job &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobStepNotExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobStepNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target with database name &apos;{0}&apos; and server name &apos;{1}&apos; already exists in target group &apos;{2}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobTargetDatabaseExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobTargetDatabaseExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target with elastic pool name &apos;{0}&apos; and server name &apos;{1}&apos; already exists in Target Group &apos;{2}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobTargetElasticPoolExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobTargetElasticPoolExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target group &apos;{0}&apos; already exists in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobTargetGroupExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobTargetGroupExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target group &apos;{0}&apos; does not exist in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobTargetGroupNotExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobTargetGroupNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target with server name &apos;{0}&apos; already exists in Target Group &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobTargetServerExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobTargetServerExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target with shard map name &apos;{0}&apos; and server name &apos;{1}&apos; already exists in Target Group &apos;{2}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobTargetShardMapExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobTargetShardMapExists", resourceCulture);
             }
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database Instance Failover Group &apos;{0}&apos; on server &apos;{1}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to remove the agent &apos;{0}&apos; from server &apos;{1}&apos;?.
         /// </summary>
-        internal static string RemoveAzureSqlDatabaseInstanceFailoverGroupWarning
-        {
-            get
-            {
-                return ResourceManager.GetString("RemoveAzureSqlDatabaseInstanceFailoverGroupWarning", resourceCulture);
+        internal static string RemoveElasticJobAgentWarning {
+            get {
+                return ResourceManager.GetString("RemoveElasticJobAgentWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the target group &apos;{0}&apos; from agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemoveElasticJobTargetGroupWarning {
+            get {
+                return ResourceManager.GetString("RemoveElasticJobTargetGroupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the job &apos;{0}&apos; from agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemoveElasticJobWarning {
+            get {
+                return ResourceManager.GetString("RemoveElasticJobWarning", resourceCulture);
             }
         }
     }

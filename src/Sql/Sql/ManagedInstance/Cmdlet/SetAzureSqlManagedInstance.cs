@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             HelpMessage = "The instance object to remove")]
         [ValidateNotNullOrEmpty]
         [Alias("SqlInstance")]
-        public Model.AzureSqlManagedInstanceModel InputObject { get; set; }
+        public AzureSqlManagedInstanceModel InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the resource id of the instance
@@ -165,18 +165,26 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public SwitchParameter AssignIdentity { get; set; }
 
         /// <summary>
+        /// Gets or sets the instance pool name
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The instance pool name.")]
+        [ResourceNameCompleter("Microsoft.Sql/instancePools")]
+        public string InstancePoolName { get; set; }
+
+        /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
         /// </summary>
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
         public SwitchParameter Force { get; set; }
-        
+
         /// <summary>
         /// Get the instance to update
         /// </summary>
         /// <returns>The instance being updated</returns>
         protected override IEnumerable<Model.AzureSqlManagedInstanceModel> GetEntity()
         {
-            return new List<Model.AzureSqlManagedInstanceModel>() { ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name) };
+            return new List<AzureSqlManagedInstanceModel>() { ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name) };
         }
 
         /// <summary>
@@ -184,7 +192,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         /// <param name="model">The result of the get operation</param>
         /// <returns>The model to send to the update</returns>
-        protected override IEnumerable<Model.AzureSqlManagedInstanceModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlManagedInstanceModel> model)
+        protected override IEnumerable<AzureSqlManagedInstanceModel> ApplyUserInputToModel(IEnumerable<AzureSqlManagedInstanceModel> model)
         {
             AzureSqlManagedInstanceModel existingInstance = ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name);
             Management.Internal.Resources.Models.Sku Sku = new Management.Internal.Resources.Models.Sku();
@@ -202,8 +210,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             }
 
             // Construct a new entity so we only send the relevant data to the Managed instance
-            List<Model.AzureSqlManagedInstanceModel> updateData = new List<Model.AzureSqlManagedInstanceModel>();
-            updateData.Add(new Model.AzureSqlManagedInstanceModel()
+            List<AzureSqlManagedInstanceModel> updateData = new List<AzureSqlManagedInstanceModel>();
+            updateData.Add(new AzureSqlManagedInstanceModel()
             {
                 ResourceGroupName = this.ResourceGroupName,
                 ManagedInstanceName = this.Name,
@@ -218,6 +226,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 ProxyOverride = this.ProxyOverride,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
+                InstancePoolName = this.InstancePoolName
             });
             return updateData;
         }
@@ -227,9 +236,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         /// <param name="entity">The update parameters</param>
         /// <returns>The response object from the service</returns>
-        protected override IEnumerable<Model.AzureSqlManagedInstanceModel> PersistChanges(IEnumerable<Model.AzureSqlManagedInstanceModel> entity)
+        protected override IEnumerable<AzureSqlManagedInstanceModel> PersistChanges(IEnumerable<AzureSqlManagedInstanceModel> entity)
         {
-            return new List<Model.AzureSqlManagedInstanceModel>() { ModelAdapter.UpsertManagedInstance(entity.First()) };
+            return new List<AzureSqlManagedInstanceModel>() { ModelAdapter.UpsertManagedInstance(entity.First()) };
         }
 
         /// <summary>
@@ -238,8 +247,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (!Force.IsPresent && !ShouldContinue(
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.SetAzureSqlInstanceDescription, this.Name),
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.SetAzureSqlInstanceWarning, this.Name)))
+               string.Format(CultureInfo.InvariantCulture, Properties.Resources.SetAzureSqlInstanceDescription, this.Name),
+               string.Format(CultureInfo.InvariantCulture, Properties.Resources.SetAzureSqlInstanceWarning, this.Name)))
             {
                 return;
             }

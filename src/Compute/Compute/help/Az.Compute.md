@@ -98,6 +98,12 @@ Get or list gallery image definitions.
 ### [Get-AzGalleryImageVersion](Get-AzGalleryImageVersion.md)
 Get or list gallery image versions.
 
+### [Get-AzHost](Get-AzHost.md)
+Get or list hosts.
+
+### [Get-AzHostGroup](Get-AzHostGroup.md)
+Get or list hosts.
+
 ### [Get-AzImage](Get-AzImage.md)
 Gets the properties of an image.
 
@@ -236,6 +242,12 @@ Create a gallery image definition.
 ### [New-AzGalleryImageVersion](New-AzGalleryImageVersion.md)
 Create a gallery image version.
 
+### [New-AzHost](New-AzHost.md)
+Creates a  host.
+
+### [New-AzHostGroup](New-AzHostGroup.md)
+Creates a host group.
+
 ### [New-AzImage](New-AzImage.md)
 Creates an image.
 
@@ -310,6 +322,12 @@ Delete a gallery image definition.
 
 ### [Remove-AzGalleryImageVersion](Remove-AzGalleryImageVersion.md)
 Delete a gallery image version.
+
+### [Remove-AzHost](Remove-AzHost.md)
+Removes a host.
+
+### [Remove-AzHostGroup](Remove-AzHostGroup.md)
+Removes a host group.
 
 ### [Remove-AzImage](Remove-AzImage.md)
 Removes an image.

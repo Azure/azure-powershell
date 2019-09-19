@@ -34,6 +34,15 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSPrivateLinkServiceIpConfiguration
     {
         [Ps1Xml(Target = ViewControl.Table)]
+        public string Name { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string Id { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string Etag { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? Primary { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public string PrivateIPAddress { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string PrivateIPAllocationMethod { get; set; }
@@ -41,23 +50,21 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ProvisioningState { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string PrivateIPAddressVersion { get; set; }
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string Name { get; set; }
         [Ps1Xml(Label = "Subnet", Target = ViewControl.Table, ScriptBlock = "$_.Subnet.Name")]
         public PSSubnet Subnet { get; set; }
+
         [Ps1Xml(Label = "PublicIPAddress", Target = ViewControl.Table, ScriptBlock = "$_.PublicIPAddress.Name")]
         public PSPublicIpAddress PublicIPAddress { get; set; }
+        [JsonIgnore]
+        public string PublicIPAddressText
+        {
+            get { return JsonConvert.SerializeObject(PublicIPAddress, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
 
         [JsonIgnore]
         public string SubnetText
         {
             get { return JsonConvert.SerializeObject(Subnet, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        [JsonIgnore]
-        public string PublicIPAddressText
-        {
-            get { return JsonConvert.SerializeObject(PublicIPAddress, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

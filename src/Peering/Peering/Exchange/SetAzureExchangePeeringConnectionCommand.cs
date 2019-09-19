@@ -14,17 +14,12 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
-    using Microsoft.Rest.Azure;
-
-    using Newtonsoft.Json;
 
     /// <inheritdoc />
     /// <summary>
@@ -33,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
     [Cmdlet(
         VerbsCommon.Set,
         "AzPeeringExchangeConnectionObject",
-        DefaultParameterSetName = Constants.ParameterSetNameMd5Authentication, SupportsShouldProcess = false)]
+        DefaultParameterSetName = Constants.ParameterSetNameIPv6Address, SupportsShouldProcess = false)]
     [OutputType(typeof(PSExchangeConnection))]
     public class SetAzureExchangePeeringConnectionCommand : PeeringBaseCmdlet
     {
@@ -98,7 +93,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         /// Gets or sets the m d 5 authentication key.
         /// </summary>
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = Constants.MD5AuthenticationKeyHelp,
             ParameterSetName = Constants.ParameterSetNameMd5Authentication)]
         public string MD5AuthenticationKey { get; set; }
@@ -140,7 +135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
             }
             catch (ErrorResponseException ex)
             {
-                                var error = this.GetErrorCodeAndMessageFromArmOrErm(ex);
+                var error = this.GetErrorCodeAndMessageFromArmOrErm(ex);
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
@@ -153,9 +148,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         /// </returns>
         private PSExchangeConnection UpdateMD5Authentication()
         {
-                this.InputObject.BgpSession.Md5AuthenticationKey = this.MD5AuthenticationKey;
-                if (this.IsValidConnection(this.InputObject))
-                    return this.InputObject;
+            this.InputObject.BgpSession.Md5AuthenticationKey = this.MD5AuthenticationKey;
+            if (this.IsValidConnection(this.InputObject))
+                return this.InputObject;
 
             throw new InvalidOperationException(string.Format(Resources.Error_InvalidInputObject_Exchange));
         }
@@ -168,11 +163,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         /// </returns>
         private PSExchangeConnection UpdateIpV4Prefix()
         {
-                this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 =
-                    this.MaxPrefixesAdvertisedIPv4 == null ? (this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 != 0 ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 : 2000) : 2000;
-                this.InputObject.BgpSession.PeerSessionIPv4Address = this.ValidatePrefix(this.PeerSessionIPv4Address, Constants.Exchange);
-                if (this.IsValidConnection(this.InputObject))
-                    return this.InputObject;
+            this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 =
+                this.MaxPrefixesAdvertisedIPv4 == null ? (this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 != 0 ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 : 20000) : this.MaxPrefixesAdvertisedIPv4;
+            this.InputObject.BgpSession.PeerSessionIPv4Address = this.PeerSessionIPv4Address?.Trim();
+            if (this.IsValidConnection(this.InputObject))
+                return this.InputObject;
 
             throw new InvalidOperationException(string.Format(Resources.Error_InvalidInputObject_Exchange));
         }
@@ -185,11 +180,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         /// </returns>
         private PSExchangeConnection UpdateIpV6Prefix()
         {
-                this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 =
-                    this.MaxPrefixesAdvertisedIPv6 == null ? (this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 != 0 ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 : 2000) : 2000;
-                this.InputObject.BgpSession.PeerSessionIPv6Address = this.ValidatePrefix(this.PeerSessionIPv6Address, Constants.Exchange);
-                if (this.IsValidConnection(this.InputObject))
-                    return this.InputObject;
+            this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 =
+                this.MaxPrefixesAdvertisedIPv6 == null ? (this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 != 0 ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 : 2000) : this.MaxPrefixesAdvertisedIPv6;
+            this.InputObject.BgpSession.PeerSessionIPv6Address = this.PeerSessionIPv6Address?.Trim();
+            if (this.IsValidConnection(this.InputObject))
+                return this.InputObject;
 
             throw new InvalidOperationException(string.Format(Resources.Error_InvalidInputObject_Exchange));
         }

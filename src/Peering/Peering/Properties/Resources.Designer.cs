@@ -250,6 +250,15 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The provider {0} was not found at location {1}. Status: {2}.
+        /// </summary>
+        internal static string Error_ProviderNotFound {
+            get {
+                return ResourceManager.GetString("Error_ProviderNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to convert legacy peering because {0} was null or empty..
         /// </summary>
         internal static string Error_UnableToConvertLegacy {
@@ -300,6 +309,15 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         internal static string Route_PrefixUnrecognized {
             get {
                 return ResourceManager.GetString("Route_PrefixUnrecognized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This should return {0}.
+        /// </summary>
+        internal static string ShouldProcessMessage {
+            get {
+                return ResourceManager.GetString("ShouldProcessMessage", resourceCulture);
             }
         }
     }

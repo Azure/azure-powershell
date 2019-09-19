@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string ReleaseNoteUri { get; set; }
         public OperatingSystemTypes OsType { get; set; }
         public OperatingSystemStateTypes OsState { get; set; }
+        public string HyperVGeneration { get; set; }
         public DateTime? EndOfLifeDate { get; set; }
         public GalleryImageIdentifier Identifier { get; set; }
         public RecommendedMachineConfiguration Recommended { get; set; }

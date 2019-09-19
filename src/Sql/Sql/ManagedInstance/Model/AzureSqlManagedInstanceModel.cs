@@ -124,5 +124,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Gets or sets the dns zone of the managed instance
         /// </summary>
         public string DnsZone { get; set; }
+
+        /// <summary>
+        /// Gets or sets the instance pool name
+        /// </summary>
+        public string InstancePoolName { get; set; }
     }
 }

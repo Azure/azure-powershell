@@ -145,6 +145,12 @@ function Test-AzureVMProtection
 			-Name $vm.Name `
 			-ResourceGroupName $vm.ResourceGroupName;
 
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name "DefaultPolicy";
+
+		Assert-True {$policy.ProtectedItemsCount -eq 1};
+
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureVM `
@@ -161,6 +167,13 @@ function Test-AzureVMProtection
 			-Item $item `
 			-RemoveRecoveryPoints `
 			-Force;
+		
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name "DefaultPolicy";
+
+		Assert-True {$policy.ProtectedItemsCount -eq 0};
+
 	}
 	finally
 	{
@@ -285,6 +298,36 @@ function Test-AzureVMFullRestore
 		# Cleanup
 		Cleanup-ResourceGroup $resourceGroupName
 		Cleanup-ResourceGroup $targetResourceGroupName
+	}
+}
+
+function Test-AzureUnmanagedVMFullRestore
+{
+	$location = Get-ResourceGroupLocation
+	$resourceGroupName = Create-ResourceGroup $location
+	
+	try
+	{
+		$saName = Create-SA $resourceGroupName $location
+		$vm = Create-UnmanagedVM $resourceGroupName $location $saName
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		$item = Enable-Protection $vault $vm $resourceGroupName
+		$backupJob = Backup-Item $vault $item
+		$rp = Get-RecoveryPoint $vault $item $backupJob
+
+		$restoreJob = Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $rp `
+			-StorageAccountName $saName `
+			-StorageAccountResourceGroupName $resourceGroupName `
+			-UseOriginalStorageAccount | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		Assert-True { $restoreJob.Status -eq "Completed" }
+	}
+	finally
+	{
+		Cleanup-ResourceGroup $resourceGroupName
 	}
 }
 
