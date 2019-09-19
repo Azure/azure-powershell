@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The flag whether to use common alert schema . This value will be neglected" +
             "for SMS, Azure App push , ITSM and Voice recievers.")]
         [ValidateNotNullOrEmpty]
-        public bool UseCommonAlertSchema { get; set; } = false;
+        public SwitchParameter UseCommonAlertSchema { get; set; }
 
         /// <summary>
         /// Gets or sets email receiver SwitchParameter
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         /// </summary>
         [Parameter(ParameterSetName = NewWebhookReceiver, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "the flag to use add auth")]
         [ValidateNotNullOrEmpty]
-        public bool UseAadAuth { get; set; } = false;
+        public SwitchParameter UseAadAuth { get; set; }
 
         /// <summary>
         /// Gets or sets the ObjectId parameter
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         /// </summary>
         [Parameter(ParameterSetName = NewAutomationRunbookReceiver, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = " indicating whether this instance is global runbook")]
         [ValidateNotNullOrEmpty]
-        public bool IsGlobalRunbook { get; set; } = false;
+        public SwitchParameter IsGlobalRunbook { get; set; }
 
         /// <summary>
         /// Gets or sets the IsGlobalRunbook parameter
