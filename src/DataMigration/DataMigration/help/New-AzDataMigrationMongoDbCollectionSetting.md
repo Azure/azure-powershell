@@ -115,7 +115,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.DataMigration.Models.MongoDbCollectionSetting>
+### Microsoft.Azure.Commands.DataMigration.Models.MongoDbCollectionSetting
 
 ## NOTES
 

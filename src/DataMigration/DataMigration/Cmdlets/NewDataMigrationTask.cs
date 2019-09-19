@@ -198,6 +198,18 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                         taskCmdlet = new MigrateSqlServerSqlDbMiSyncTaskCmdlet(this.MyInvocation);
                         expandParameterOfTask = "";
                         break;
+                    case TaskTypeEnum.ConnectToSourceSqlServerSsis:
+                        taskCmdlet = new ConnectToSourceSqlServerSsisTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output";
+                        break;
+                    case TaskTypeEnum.ConnectToTargetSqlDbMiSsis:
+                        taskCmdlet = new ConnectToTargetSqlDbMiSsisTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output";
+                        break;
+                    case TaskTypeEnum.MigrateSsis:
+                        taskCmdlet = new MigrateSsisTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "";
+                        break;
                     default:
                         throw new PSArgumentException();
                 }

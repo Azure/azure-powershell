@@ -87,7 +87,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.DataMigration.Models.MigrateSqlServerSqlDbDatabaseInput
+### Microsoft.Azure.Management.DataMigration.Models.FileShare
 
 ## NOTES
 

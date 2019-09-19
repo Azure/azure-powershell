@@ -14,29 +14,9 @@
 
 namespace Microsoft.Azure.Commands.DataMigration.Models
 {
-    public enum TaskTypeEnum
+    public enum SsisMigrationOverwriteOptionEnum
     {
-        MigrateSqlServerSqlDb,
-        ConnectToSourceSqlServer,
-        ConnectToTargetSqlDb,
-        GetUserTablesSql,
-        ConnectToTargetSqlDbMi,
-        MigrateSqlServerSqlDbMi,
-        ValidateSqlServerSqlDbMi,
-        MigrateSqlServerSqlDbSync,
-        ConnectToSourceSqlServerSync,
-        ConnectToTargetSqlSync,
-        GetUserTablesSqlSync,
-        ValidateSqlServerSqlDbSync,
-        ConnectToSourceMongoDb,
-        ConnectToTargetMongoDb,
-        MigrateMongoDb,
-        ValidateMongoDbMigration,
-        ConnectToTargetSqlDbMiSync,
-        ValidateSqlServerSqlDbMiSync,
-        MigrateSqlServerSqlDbMiSync,
-        ConnectToSourceSqlServerSsis,
-        ConnectToTargetSqlDbMiSsis,
-        MigrateSsis
+        Ignore,
+        Overwrite
     }
 }

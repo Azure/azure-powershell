@@ -840,7 +840,8 @@
     "New-AzDataMigrationSelectedDB": "New-AzureRmDataMigrationSelectedDB",
     "New-AzDataMigrationSyncSelectedDB": "New-AzureRmDataMigrationSyncSelectedDB",
     "New-AzDmsSelectedDBObject": "New-AzureRmDmsSelectedDBObject",
-    "New-AzDmsSyncSelectedDBObject": "New-AzureRmDmsSyncSelectedDBObject"
+    "New-AzDmsSyncSelectedDBObject": "New-AzureRmDmsSyncSelectedDBObject",
+    "New-AzDmsSsisMigrationInfo":  "New-AzureRmDmsSsisMigrationInfo"
   },
   "Az.DeviceProvisioningServices": {
     "New-AzIoTDeviceProvisioningService": "New-AzureRmIoTDeviceProvisioningService",
