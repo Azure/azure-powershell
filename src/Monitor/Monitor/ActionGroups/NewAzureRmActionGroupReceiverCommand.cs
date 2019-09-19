@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         public string ServiceUri { get; set; }
 
         /// <summary>
-        /// Gets or sets the UseAadAuth parameter
+        /// Gets or sets the UseAadAuth SwitchParameter
         /// </summary>
         [Parameter(ParameterSetName = NewWebhookReceiver, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "the flag to use add auth")]
         [ValidateNotNullOrEmpty]
