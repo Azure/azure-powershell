@@ -19,6 +19,16 @@
 -->
 ## Upcoming Release
 * Updated example in reference documentation for `Get-AzStorageAccountKey`
+* In upload/Downalod Azure File,support perserve the source File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the destination file
+    -  Set-AzStorageFileContent
+    -  Get-AzStorageFileContent
+* Fix Upload block blob with properties/metadate fail on container enabled ImmutabilityPolicy.
+    -  Set-AzStorageBlobContent
+* Support manage Azure File shares with Management plane API
+    -  New-AzRmStorageShare
+    -  Get-AzRmStorageShare
+    -  Update-AzRmStorageShare
+    -  Remove-AzRmStorageShare
 
 ## Version 1.6.0
 * Fixed miscellaneous typos across module

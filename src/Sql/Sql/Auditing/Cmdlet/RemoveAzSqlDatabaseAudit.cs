@@ -26,10 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     {
         protected override DatabaseAuditModel PersistChanges(DatabaseAuditModel entity)
         {
-            entity.BlobStorageTargetState = AuditStateType.Disabled;
-            entity.EventHubTargetState = AuditStateType.Disabled;
-            entity.LogAnalyticsTargetState = AuditStateType.Disabled;
-            ModelAdapter.PersistAuditChanges(entity);
+            ModelAdapter.RemoveAuditingSettings(entity);
             return null;
         }
     }

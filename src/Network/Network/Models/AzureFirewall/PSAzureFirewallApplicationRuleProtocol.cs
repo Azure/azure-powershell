@@ -26,25 +26,41 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ProtocolType { get; set; }
         public uint Port { get; set; }
 
+        public static List<string> AllProtocols()
+        {
+            return new List<string> {
+                MNM.AzureFirewallApplicationRuleProtocolType.Http,
+                MNM.AzureFirewallApplicationRuleProtocolType.Https,
+                MNM.AzureFirewallApplicationRuleProtocolType.Mssql,
+            };
+        }
+
         public static PSAzureFirewallApplicationRuleProtocol MapUserInputToApplicationRuleProtocol(string userInput)
         {
-            var protocolRegEx = new Regex("^[hH][tT][tT][pP][sS]?(:[1-9][0-9]*)?$");
+            var portRegEx = new Regex("^[1-9][0-9]*$");
 
             var supportedProtocolsAndTheirDefaultPorts = new List<PSAzureFirewallApplicationRuleProtocol>
             {
                 new PSAzureFirewallApplicationRuleProtocol { ProtocolType = MNM.AzureFirewallApplicationRuleProtocolType.Http, Port = 80 },
-                new PSAzureFirewallApplicationRuleProtocol { ProtocolType = MNM.AzureFirewallApplicationRuleProtocolType.Https, Port = 443 }
+                new PSAzureFirewallApplicationRuleProtocol { ProtocolType = MNM.AzureFirewallApplicationRuleProtocolType.Https, Port = 443 },
+                new PSAzureFirewallApplicationRuleProtocol { ProtocolType = MNM.AzureFirewallApplicationRuleProtocolType.Mssql, Port = 1433 }
             };
 
             //The actual validation is performed in NRP. Here we are just trying to map user info to our model
-            if (!protocolRegEx.IsMatch(userInput))
-            {
-                throw new ArgumentException($"Invalid protocol {userInput}");
-            }
 
             var userParts = userInput.Split(':');
             var userProtocolText = userParts[0];
             var userPortText = userParts.Length == 2 ? userParts[1] : null;
+
+            if (!AllProtocols().Contains(userProtocolText, StringComparer.OrdinalIgnoreCase))
+            {
+                throw new ArgumentException($"Invalid protocol {userProtocolText}");
+            }
+
+            if (userPortText != null && !portRegEx.IsMatch(userPortText))
+            {
+                throw new ArgumentException($"Invalid port {userPortText}");
+            }
 
             PSAzureFirewallApplicationRuleProtocol supportedProtocol;
             try

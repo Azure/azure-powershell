@@ -12,6 +12,7 @@
 namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
 {
     using System.Collections;
+    using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.PrivateDns.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -26,6 +27,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
     {
         private const string IdParameterSetName = "VirtualNetworkId";
         private const string ObjectParameterSetName = "VirtualNetworkObject";
+        private const string RemoteIdParameterSetName = "RemoteVirtualNetworkId";
 
         [Parameter(Mandatory = true, HelpMessage = "The resource group in which to create the virtual network link. Should match resource group of the private DNS zone")]
         [ResourceGroupCompleter]
@@ -49,6 +51,9 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
         [ValidateNotNullOrEmpty]
         public IVirtualNetwork VirtualNetwork { get; set; }
 
+        [Parameter(Mandatory = true, HelpMessage = "The resource id of the virtual network in another tenant.", ParameterSetName = RemoteIdParameterSetName)]
+        public string RemoteVirtualNetworkId { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Switch parameter that represents if the virtual network link is registration enabled or not.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter EnableRegistration { get; set; }
@@ -65,13 +70,25 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
                 this.Name,
                 () =>
                 {
+                    Dictionary<string, List<string>> auxAuthHeader = null;
+                    // If link is being created in a VNet belonging to a diff tenant than the Private DNS zone
+                    if (this.VirtualNetwork == null && this.VirtualNetworkId == null && !string.IsNullOrEmpty(this.RemoteVirtualNetworkId))
+                    {
+                        var auxHeaderDict = GetAuxilaryAuthHeaderFromResourceIds(new List<string>() { this.RemoteVirtualNetworkId });
+                        if (auxHeaderDict != null && auxHeaderDict.Count > 0)
+                        {
+                            auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDict);
+                        }
+                    }
+
                     var result = this.PrivateDnsClient.CreatePrivateDnsLink(
                         this.Name,
                         this.ResourceGroupName,
                         this.ZoneName,
-                        (this.VirtualNetwork != null) ? this.VirtualNetwork.Id : this.VirtualNetworkId,
+                        (this.VirtualNetwork != null) ? this.VirtualNetwork.Id : (this.VirtualNetworkId != null) ? this.VirtualNetworkId : this.RemoteVirtualNetworkId,
                         this.EnableRegistration.IsPresent,
-                        this.Tag);
+                        this.Tag,
+                        auxAuthHeader);
                     this.WriteVerbose(ProjectResources.Success);
                     this.WriteVerbose(string.Format(ProjectResources.Success_NewVirtualNetworkLink, this.Name, this.ResourceGroupName));
                     this.WriteObject(result);

@@ -437,7 +437,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 return false;
             }
 
-            model.DiagnosticsEnablingAuditCategory = new List<DiagnosticSettingsResource> { settings };
+            IList<DiagnosticSettingsResource> diagnosticsEnablingAuditCategory = model.DiagnosticsEnablingAuditCategory;
+            if (diagnosticsEnablingAuditCategory == null)
+            {
+                diagnosticsEnablingAuditCategory = new List<DiagnosticSettingsResource>();
+            }
+
+            diagnosticsEnablingAuditCategory.Add(settings);
+            model.DiagnosticsEnablingAuditCategory = diagnosticsEnablingAuditCategory;
             return true;
         }
 
@@ -445,30 +452,41 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             DiagnosticSettingsResource settings,
             dynamic model)
         {
-            DiagnosticSettingsResource updatedSettings;
+            DiagnosticSettingsResource modifiedSettings;
             if (model is DatabaseBlobAuditingSettingsModel || model is DatabaseAuditModel)
             {
-                updatedSettings = Communicator.UpdateDiagnosticSettings(settings,
+                modifiedSettings = Communicator.UpdateDiagnosticSettings(settings,
                     model.ResourceGroupName, model.ServerName, model.DatabaseName);
             }
             else
             {
-                updatedSettings = Communicator.UpdateDiagnosticSettings(settings,
+                modifiedSettings = Communicator.UpdateDiagnosticSettings(settings,
                     model.ResourceGroupName, model.ServerName);
             }
 
-            if (updatedSettings == null)
+            if (modifiedSettings == null)
             {
                 return false;
             }
 
-            model.DiagnosticsEnablingAuditCategory =
-                AuditingEndpointsCommunicator.IsAuditCategoryEnabled(updatedSettings) ?
-                new List<DiagnosticSettingsResource> { updatedSettings } : null;
+            List<DiagnosticSettingsResource> diagnosticsEnablingAuditCategory = new List<DiagnosticSettingsResource>();
+            foreach (DiagnosticSettingsResource existingSettings in model.DiagnosticsEnablingAuditCategory)
+            {
+                if (!string.Equals(modifiedSettings.Id, existingSettings.Id))
+                {
+                    diagnosticsEnablingAuditCategory.Add(existingSettings);
+                }
+                else if (AuditingEndpointsCommunicator.IsAuditCategoryEnabled(modifiedSettings))
+                {
+                    diagnosticsEnablingAuditCategory.Add(modifiedSettings);
+                }
+            }
+
+            model.DiagnosticsEnablingAuditCategory = diagnosticsEnablingAuditCategory.Any() ? diagnosticsEnablingAuditCategory : null;
             return true;
         }
 
-        internal bool RemoveDiagnosticSettings(dynamic model)
+        internal bool RemoveFirstDiagnosticSettings(dynamic model)
         {
             IList<DiagnosticSettingsResource> diagnosticsEnablingAuditCategory = model.DiagnosticsEnablingAuditCategory;
             DiagnosticSettingsResource settings = diagnosticsEnablingAuditCategory.FirstOrDefault();
@@ -480,7 +498,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 return false;
             }
 
-            model.DiagnosticsEnablingAuditCategory = null;
+            diagnosticsEnablingAuditCategory.RemoveAt(0);
+            model.DiagnosticsEnablingAuditCategory = diagnosticsEnablingAuditCategory.Any() ? diagnosticsEnablingAuditCategory : null;
             return true;
         }
 
@@ -637,6 +656,41 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             }
         }
 
+        internal void RemoveAuditingSettings(ServerAuditModel model)
+        {
+            model.BlobStorageTargetState = AuditStateType.Disabled;
+            model.EventHubTargetState = AuditStateType.Disabled;
+            model.LogAnalyticsTargetState = AuditStateType.Disabled;
+
+            DisableDiagnosticsAuditWhenDiagnosticsEnablingAuditCategoryDoNotExist(model);
+
+            Exception exception = null;
+            while (model.DiagnosticsEnablingAuditCategory != null &&
+                model.DiagnosticsEnablingAuditCategory.Any())
+            {
+                DiagnosticSettingsResource settings = model.DiagnosticsEnablingAuditCategory.First();
+                if (IsAnotherCategoryEnabled(settings))
+                {
+                    if (DisableAuditCategory(model, settings) == false)
+                    {
+                        exception = DefinitionsCommon.UpdateDiagnosticSettingsException;
+                    }
+                }
+                else
+                {
+                    if (RemoveFirstDiagnosticSettings(model) == false)
+                    {
+                        exception = DefinitionsCommon.RemoveDiagnosticSettingsException;
+                    }
+                }
+            }
+
+            if (exception != null)
+            {
+                throw exception;
+            }
+        }
+
         private void ChangeAuditWhenDiagnosticsEnablingAuditCategoryDoNotExist(
             ServerAuditModel model)
         {
@@ -678,7 +732,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             {
                 try
                 {
-                    RemoveDiagnosticSettings(model);
+                    RemoveFirstDiagnosticSettings(model);
                 }
                 catch (Exception) { }
 
@@ -803,9 +857,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             string oldEventHubAuthorizationRuleId,
             string oldWorkspaceId)
         {
-            if (RemoveDiagnosticSettings(model) == false)
+            if (RemoveFirstDiagnosticSettings(model) == false)
             {
-                throw new Exception("Failed to remove Diagnostic Settings");
+                throw DefinitionsCommon.RemoveDiagnosticSettingsException;
             }
 
             try

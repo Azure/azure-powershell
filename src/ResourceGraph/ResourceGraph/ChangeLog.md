@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Ignoring subscription from azure context
 
 ## Version 0.7.5
 * Showing warnings in cases when too many subscriptions were used or results got truncated.
