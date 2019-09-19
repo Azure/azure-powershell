@@ -16,7 +16,7 @@ As Azure evolves, existing services will expose new resources or properties and 
 Using a profile, a PowerShell script will be attached to a set of known API versions bringing the follwing benefits:
 
 - Compatibility with a specific version of Azure. For example the profile namde `hybrid-2019-03-01`  that will make a script compatible with Azure Stack on version 1904 and above.
-- Stability over time. Your script will be shield from changes happening in the cloud. In order to be able to use the newer capabilities of Azure a different profile would have to be selected.
+- Stability over time. Your script will be shielded from changes happening in the cloud, but still be able to consume the latest bug fixes. However, in order to be able to use the newer capabilities of Azure, a different profile would have to be selected.
 
 New profiles will be added on a regular cadence that still needs to be defined and old profiles will be kept available in the latest Azure PowerShell module for some months.
 
