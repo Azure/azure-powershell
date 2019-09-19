@@ -88,7 +88,9 @@ CmdletsToExport = 'Add-AzIotHubKey', 'Get-AzIotHubEventHubConsumerGroup',
                'Get-AzIotHubRoutingEndpoint', 'Add-AzIotHubRoutingEndpoint', 
                'Remove-AzIotHubRoutingEndpoint', 'Get-AzIotHubRoute', 
                'Add-AzIotHubRoute', 'Remove-AzIotHubRoute', 'Set-AzIotHubRoute', 
-               'Test-AzIotHubRoute', 'New-AzIotHubKey', 'Invoke-AzIotHubManualFailover'
+               'Test-AzIotHubRoute', 'New-AzIotHubKey', 'Invoke-AzIotHubManualFailover',
+               'Add-AzIotHubMessageEnrichment', 'Get-AzIotHubMessageEnrichment',
+			   'Remove-AzIotHubMessageEnrichment', 'Set-AzIotHubMessageEnrichment'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -96,7 +98,8 @@ CmdletsToExport = 'Add-AzIotHubKey', 'Get-AzIotHubEventHubConsumerGroup',
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzIotHubEHCG', 'Add-AzIotHubEHCG', 'Remove-AzIotHubEHCG', 
                'Set-AzIotHubVC', 'Get-AzIotHubCVC', 'New-AzIotHubExportDevices', 
-               'New-AzIotHubImportDevices'
+               'New-AzIotHubImportDevices', 'Add-AzIotHubMsgEnrich', 'Get-AzIotHubMsgEnrich',
+			   'Remove-AzIotHubMsgEnrich', 'Set-AzIotHubMsgEnrich'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
