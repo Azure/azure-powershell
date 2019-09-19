@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.5
 * Update AzureVMpolicy Object with ProtectedItemsCount Attribute
 * Added Tests for VM policy and Original Storage Account Restore
 

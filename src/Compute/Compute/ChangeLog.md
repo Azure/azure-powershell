@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.6.0
 * Add UploadSizeInBytes parameter tp New-AzDiskConfig
 * Add Incremental parameter to New-AzSnapshotConfig
 * Add a low priority virtual machine feature:
