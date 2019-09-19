@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Exception Handling
 
 ## Version 0.1.1
 * Added Error Handling in all cmdlets
