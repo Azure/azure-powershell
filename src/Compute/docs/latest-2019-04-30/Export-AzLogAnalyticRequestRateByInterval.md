@@ -14,8 +14,8 @@ Export logs that show Api requests made by this subscription in the given time w
 
 ### ExportExpanded1 (Default)
 ```
-Export-AzLogAnalyticRequestRateByInterval -Location <String> -SubscriptionId <String>
- -BlobContainerSasUri <String> -FromTime <DateTime> -IntervalLength <IntervalInMins> -ToTime <DateTime>
+Export-AzLogAnalyticRequestRateByInterval -Location <String> -BlobContainerSasUri <String>
+ -FromTime <DateTime> -IntervalLength <IntervalInMins> -ToTime <DateTime> [-SubscriptionId <String>]
  [-GroupByOperationName] [-GroupByResourceName] [-GroupByThrottlePolicy] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -239,9 +239,9 @@ Type: System.String
 Parameter Sets: ExportExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

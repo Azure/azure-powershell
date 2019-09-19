@@ -14,7 +14,7 @@ Update an image.
 
 ### UpdateExpanded1 (Default)
 ```
-Update-AzImage -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Update-AzImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DataDisk <IImageDataDisk[]>] [-HyperVGeneration <HyperVGenerationTypes>] [-ManagedDiskId <String>]
  [-OSDiskBlobUri <String>] [-OSDiskCaching <CachingTypes>] [-OSDiskOsstate <OperatingSystemStateTypes>]
  [-OSDiskOstype <OperatingSystemTypes>] [-OSDiskSizeInGb <Int32>]
@@ -369,9 +369,9 @@ Type: System.String
 Parameter Sets: UpdateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

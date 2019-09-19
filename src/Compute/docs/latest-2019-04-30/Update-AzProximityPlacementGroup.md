@@ -14,7 +14,7 @@ Update a proximity placement group.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzProximityPlacementGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Update-AzProximityPlacementGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -123,9 +123,9 @@ Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

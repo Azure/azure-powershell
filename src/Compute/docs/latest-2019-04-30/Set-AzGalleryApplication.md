@@ -13,11 +13,10 @@ Create or update a gallery Application Definition.
 ## SYNTAX
 
 ```
-Set-AzGalleryApplication -GalleryName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Location <String> [-Description <String>] [-EndOfLifeDate <DateTime>]
- [-Eula <String>] [-PrivacyStatementUri <String>] [-ReleaseNoteUri <String>]
- [-SupportedOSType <OperatingSystemTypes>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzGalleryApplication -GalleryName <String> -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-Description <String>] [-EndOfLifeDate <DateTime>] [-Eula <String>]
+ [-PrivacyStatementUri <String>] [-ReleaseNoteUri <String>] [-SupportedOSType <OperatingSystemTypes>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -251,9 +250,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

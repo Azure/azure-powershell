@@ -13,8 +13,8 @@ Create or update a proximity placement group.
 ## SYNTAX
 
 ```
-New-AzProximityPlacementGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Location <String> [-ProximityPlacementGroupType <ProximityPlacementGroupType>] [-Tag <Hashtable>]
+New-AzProximityPlacementGroup -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-ProximityPlacementGroupType <ProximityPlacementGroupType>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -140,9 +140,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

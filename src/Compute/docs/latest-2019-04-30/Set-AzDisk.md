@@ -13,7 +13,7 @@ Creates or updates a disk.
 ## SYNTAX
 
 ```
-Set-AzDisk -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
+Set-AzDisk -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-CreateOption <DiskCreateOption>] [-EncryptionEnabled] [-EncryptionSetting <IEncryptionSettingsElement[]>]
  [-HyperVGeneration <HyperVGeneration>] [-ImageReferenceId <String>] [-ImageReferenceLun <Int32>]
  [-IopsReadWrite <Int64>] [-MBpsReadWrite <Int32>] [-OSType <OperatingSystemTypes>] [-SizeInGb <Int32>]
@@ -389,9 +389,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

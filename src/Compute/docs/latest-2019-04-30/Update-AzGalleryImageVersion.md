@@ -15,7 +15,7 @@ Create or update a gallery Image Version.
 ### UpdateExpanded (Default)
 ```
 Update-AzGalleryImageVersion -GalleryImageDefinitionName <String> -GalleryName <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String> -Location <String> [-EndOfLifeDate <DateTime>]
+ -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>] [-EndOfLifeDate <DateTime>]
  [-ExcludeFromLatest] [-ManagedImageId <String>] [-ReplicaCount <Int32>]
  [-StorageAccountType <StorageAccountType>] [-Tag <Hashtable>] [-TargetRegion <ITargetRegion[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -296,9 +296,9 @@ Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

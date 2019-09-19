@@ -14,7 +14,7 @@ Update an availability set.
 
 ### UpdateExpanded1 (Default)
 ```
-Update-AzAvailabilitySet -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Update-AzAvailabilitySet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-FaultDomainCount <Int32>] [-ProximityPlacementGroupId <String>] [-SkuCapacity <Int64>] [-SkuName <String>]
  [-SkuTier <String>] [-Tag <Hashtable>] [-UpdateDomainCount <Int32>] [-VirtualMachine <ISubResource[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -207,9 +207,9 @@ Type: System.String
 Parameter Sets: UpdateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

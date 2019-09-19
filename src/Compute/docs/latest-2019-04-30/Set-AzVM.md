@@ -13,7 +13,7 @@ The operation to create or update a virtual machine.
 ## SYNTAX
 
 ```
-Set-AzVM -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
+Set-AzVM -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-AvailabilitySetId <String>] [-BillingProfileMaxPrice <Double>] [-BootDiagnosticEnabled]
  [-BootDiagnosticStorageUri <String>] [-DataDisk <IDataDisk[]>]
  [-EvictionPolicy <VirtualMachineEvictionPolicyTypes>] [-HostId <String>] [-IdentityId <Hashtable>]
@@ -826,9 +826,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

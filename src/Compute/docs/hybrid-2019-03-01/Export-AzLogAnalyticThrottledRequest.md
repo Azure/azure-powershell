@@ -14,8 +14,8 @@ Export logs that show total throttled Api requests for this subscription in the 
 
 ### ExportExpanded (Default)
 ```
-Export-AzLogAnalyticThrottledRequest -Location <String> -SubscriptionId <String> -BlobContainerSasUri <String>
- -FromTime <DateTime> -ToTime <DateTime> [-GroupByOperationName] [-GroupByResourceName]
+Export-AzLogAnalyticThrottledRequest -Location <String> -BlobContainerSasUri <String> -FromTime <DateTime>
+ -ToTime <DateTime> [-SubscriptionId <String>] [-GroupByOperationName] [-GroupByResourceName]
  [-GroupByThrottlePolicy] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -223,9 +223,9 @@ Type: System.String
 Parameter Sets: ExportExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

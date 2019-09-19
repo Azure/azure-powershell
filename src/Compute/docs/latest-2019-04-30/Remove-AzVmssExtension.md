@@ -14,8 +14,8 @@ The operation to delete the extension.
 
 ### Delete1 (Default)
 ```
-Remove-AzVmssExtension -ExtensionName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VmssName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Remove-AzVmssExtension -ExtensionName <String> -ResourceGroupName <String> -VmssName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -172,9 +172,9 @@ Type: System.String
 Parameter Sets: Delete1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

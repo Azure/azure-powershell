@@ -15,14 +15,14 @@ Gets a virtual machine image.
 ### List (Default)
 ```
 Get-AzVMImage -Location <String> -Offer <String> -PublisherName <String> -Sku <String>
- -SubscriptionId <String[]> [-FilterExpression <String>] [-Orderby <String>] [-Top <Int32>]
+ [-SubscriptionId <String[]>] [-FilterExpression <String>] [-Orderby <String>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
-Get-AzVMImage -Location <String> -Offer <String> -PublisherName <String> -Sku <String>
- -SubscriptionId <String[]> -Version <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVMImage -Location <String> -Offer <String> -PublisherName <String> -Sku <String> -Version <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
@@ -193,9 +193,9 @@ Type: System.String[]
 Parameter Sets: Get1, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

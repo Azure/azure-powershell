@@ -14,8 +14,8 @@ Deletes virtual machines in a VM scale set.
 
 ### DeleteExpanded (Default)
 ```
-Remove-AzVmssInstance -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
- -InstanceId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Remove-AzVmssInstance -ResourceGroupName <String> -VMScaleSetName <String> -InstanceId <String[]>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -156,9 +156,9 @@ Type: System.String
 Parameter Sets: DeleteExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

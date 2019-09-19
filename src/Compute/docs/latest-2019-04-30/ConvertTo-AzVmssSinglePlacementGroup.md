@@ -14,8 +14,8 @@ Converts SinglePlacementGroup property to false for a existing virtual machine s
 
 ### ConvertExpanded (Default)
 ```
-ConvertTo-AzVmssSinglePlacementGroup -ResourceGroupName <String> -SubscriptionId <String>
- -VMScaleSetName <String> [-ActivePlacementGroupId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ConvertTo-AzVmssSinglePlacementGroup -ResourceGroupName <String> -VMScaleSetName <String>
+ [-SubscriptionId <String>] [-ActivePlacementGroupId <String>] [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -142,9 +142,9 @@ Type: System.String
 Parameter Sets: ConvertExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

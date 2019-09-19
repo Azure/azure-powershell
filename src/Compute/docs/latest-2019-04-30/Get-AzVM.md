@@ -14,12 +14,12 @@ Retrieves information about the model view or the instance view of a virtual mac
 
 ### List5 (Default)
 ```
-Get-AzVM -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVM [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
-Get-AzVM -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-Expand <InstanceViewTypes>]
+Get-AzVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Expand <InstanceViewTypes>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -31,12 +31,12 @@ Get-AzVM -InputObject <IComputeIdentity> [-Expand <InstanceViewTypes>] [-Default
 
 ### List3
 ```
-Get-AzVM -Location <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVM -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List4
 ```
-Get-AzVM -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzVM -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -171,9 +171,9 @@ Type: System.String[]
 Parameter Sets: Get1, List3, List4, List5
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

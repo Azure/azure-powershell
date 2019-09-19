@@ -16,8 +16,8 @@ Instead, use deallocate to release resources and avoid charges.
 
 ### PowerOff1 (Default)
 ```
-Stop-AzVmssVM -InstanceId <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VMScaleSetName <String> [-SkipShutdown] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+Stop-AzVmssVM -InstanceId <String> -ResourceGroupName <String> -VMScaleSetName <String>
+ [-SubscriptionId <String>] [-SkipShutdown] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -194,9 +194,9 @@ Type: System.String
 Parameter Sets: PowerOff1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

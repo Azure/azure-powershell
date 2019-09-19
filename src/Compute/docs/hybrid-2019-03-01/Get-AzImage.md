@@ -14,12 +14,12 @@ Gets an image.
 
 ### List1 (Default)
 ```
-Get-AzImage -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzImage [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzImage -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-Expand <String>]
+Get-AzImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Expand <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Get-AzImage -InputObject <IComputeIdentity> [-Expand <String>] [-DefaultProfile 
 
 ### List
 ```
-Get-AzImage -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzImage -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -150,9 +150,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

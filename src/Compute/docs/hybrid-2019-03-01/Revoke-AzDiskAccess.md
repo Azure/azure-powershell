@@ -14,7 +14,7 @@ Revokes access to a disk.
 
 ### Revoke1 (Default)
 ```
-Revoke-AzDiskAccess -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Revoke-AzDiskAccess -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -158,9 +158,9 @@ Type: System.String
 Parameter Sets: Revoke1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,12 +14,12 @@ Gets information about a snapshot.
 
 ### List1 (Default)
 ```
-Get-AzSnapshot -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSnapshot [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzSnapshot -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -30,7 +30,7 @@ Get-AzSnapshot -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [<Co
 
 ### List
 ```
-Get-AzSnapshot -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzSnapshot -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -136,9 +136,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

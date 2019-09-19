@@ -13,7 +13,7 @@ Create or update an availability set.
 ## SYNTAX
 
 ```
-Set-AzAvailabilitySet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
+Set-AzAvailabilitySet -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-FaultDomainCount <Int32>] [-SkuCapacity <Int64>] [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>]
  [-UpdateDomainCount <Int32>] [-VirtualMachine <ISubResource[]>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -181,9 +181,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
