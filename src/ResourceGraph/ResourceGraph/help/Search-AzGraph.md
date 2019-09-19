@@ -55,6 +55,18 @@ westus            26
 
 A complex query on resources featuring field selection, filtering and summarizing.
 
+### Example 3
+```powershell
+PS C:\> Search-AzGraph -Query 'where type =~ "Microsoft.Compute/virtualMachines"| where properties.storageProfile.osDisk.managedDisk == "" | project name, resourceGroup, subscriptionDisplayName' -Include DisplayName
+
+name         resourceGroup      subscriptionDisplayName
+----         -------------      -----------------------
+ContosoVM    RG-Contoso         Contoso Production Subscription                                               
+
+```
+
+A query featuring all virtual machines which are not using Managed Disks and includes subscription displayname.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -123,6 +135,20 @@ Default value is 100.
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+### -Include
+Set to 'DisplayNames' to add subscriptionDisplayName and tenantDisplayName to the results.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
