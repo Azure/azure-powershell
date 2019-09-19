@@ -386,8 +386,8 @@ The acceptable values for this parameter are a comma-separated list of key opera
 the [JSON Web Key (JWK) specification](http://go.microsoft.com/fwlink/?LinkID=613300):
 - Encrypt
 - Decrypt
-- Wrap
-- Unwrap
+- WrapKey
+- UnwrapKey
 - Sign
 - Verify
 
