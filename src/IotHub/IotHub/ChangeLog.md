@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add support to invoke failover for an IotHub to the geo-paired disaster recovery region.
+
+## Version 1.2.1
 * Fixed miscellaneous typos across module
 
 ## Version 1.2.0
