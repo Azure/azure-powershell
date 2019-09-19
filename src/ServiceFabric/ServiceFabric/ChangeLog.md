@@ -18,6 +18,22 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed typo in example for `Update-AzServiceFabricReliability` reference documentation
+* Adding new cmdlets to manage appliaction and services:
+    - New-AzServiceFabricApplication
+    - New-AzServiceFabricApplicationType
+    - New-AzServiceFabricApplicationTypeVersion
+    - New-AzServiceFabricService
+    - Update-AzServiceFabricApplication
+    - Get-AzServiceFabricApplication
+    - Get-AzServiceFabricApplicationType
+    - Get-AzServiceFabricApplicationTypeVersion
+    - Get-AzServiceFabricService
+    - Remove-AzServiceFabricApplication
+    - Remove-AzServiceFabricApplicationType
+    - Remove-AzServiceFabricApplicationTypeVersion
+    - Remove-AzServiceFabricServic
+* Upgraded Service Fabric SDK to version 1.2.0 which uses service fabric resource provider api-version 2019-03-01.
 
 ## Version 1.1.2
 * Fix add node type cmdlet bugs:

@@ -29,6 +29,7 @@ using StorageBlob = Microsoft.Azure.Storage.Blob;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Storage.DataMovement;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 {
@@ -237,23 +238,31 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 TotalSize = fileInfo.Length
             };
 
+            SingleTransferContext transferContext = this.GetTransferContext(data);
+
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+            transferContext.SetAttributesCallbackAsync = async (destination) =>
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+            {
+                CloudBlob destBlob = destination as CloudBlob;
+                SetBlobProperties(destBlob, this.BlobProperties);
+                SetBlobMeta(destBlob, this.BlobMetadata);
+            };
+
             await DataMovementTransferHelper.DoTransfer(() =>
                 {
                     return this.TransferManager.UploadAsync(filePath,
                         blob,
                         null,
-                        this.GetTransferContext(data),
+                        transferContext,
                         this.CmdletCancellationToken);
                 },
                 data.Record,
                 this.OutputStream).ConfigureAwait(false);
 
-            if (this.BlobProperties != null || this.BlobMetadata != null || this.pageBlobTier != null || this.standardBlobTier != null)
+            if (this.pageBlobTier != null || this.standardBlobTier != null)
             {
-                await Task.WhenAll(
-                    this.SetBlobProperties(localChannel, blob, this.BlobProperties),
-                    this.SetBlobMeta(localChannel, blob, this.BlobMetadata),
-                    this.SetBlobTier(localChannel, blob, pageBlobTier, standardBlobTier)).ConfigureAwait(false);
+                await this.SetBlobTier(localChannel, blob, pageBlobTier, standardBlobTier).ConfigureAwait(false);
             }
 
             try
@@ -394,11 +403,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         }
 
         /// <summary>
-        /// set blob properties
+        /// set blob properties to a blob object
         /// </summary>
         /// <param name="azureBlob">CloudBlob object</param>
         /// <param name="meta">blob properties hashtable</param>
-        private async Task SetBlobProperties(IStorageBlobManagement localChannel, StorageBlob.CloudBlob blob, Hashtable properties)
+        private void SetBlobProperties(StorageBlob.CloudBlob blob, Hashtable properties)
         {
             if (properties == null)
             {
@@ -416,19 +425,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                     action(blob.Properties, value);
                 }
             }
-
-            AccessCondition accessCondition = null;
-            StorageBlob.BlobRequestOptions requestOptions = RequestOptions;
-
-            await Channel.SetBlobPropertiesAsync(blob, accessCondition, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// set blob meta
+        /// set blob metadata to a blob object
         /// </summary>
         /// <param name="azureBlob">CloudBlob object</param>
         /// <param name="meta">meta data hashtable</param>
-        private async Task SetBlobMeta(IStorageBlobManagement localChannel, StorageBlob.CloudBlob blob, Hashtable meta)
+        private void SetBlobMeta(StorageBlob.CloudBlob blob, Hashtable meta)
         {
             if (meta == null)
             {
@@ -449,11 +453,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                     blob.Metadata.Add(key, value);
                 }
             }
-
-            AccessCondition accessCondition = null;
-            StorageBlob.BlobRequestOptions requestOptions = RequestOptions;
-
-            await Channel.SetBlobMetadataAsync(blob, accessCondition, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -497,13 +496,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 AccessCondition accessCondition = null;
                 StorageBlob.BlobRequestOptions requestOptions = RequestOptions;
 
-                if (BlobProperties != null || BlobMetadata != null || this.pageBlobTier != null || this.standardBlobTier != null)
+                if (this.pageBlobTier != null || this.standardBlobTier != null)
                 {
-                    Task[] tasks = new Task[3];
-                    tasks[0] = SetBlobProperties(localChannel, blob, BlobProperties);
-                    tasks[1] = SetBlobMeta(localChannel, blob, BlobMetadata);
-                    tasks[2] = SetBlobTier(localChannel, blob, pageBlobTier, standardBlobTier);
-                    Task.WaitAll(tasks);
+                    this.SetBlobTier(localChannel, blob, pageBlobTier, standardBlobTier).Wait();
                 }
 
                 try

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
 online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/get-azsignalr
@@ -34,7 +34,7 @@ Get a specific SignalR service or all the SignalR services in a resource group o
 ## EXAMPLES
 
 ### Get all SignalR services in the subscription
-```powershell
+```
 PS C:\> Get-AzSignalR
 
 
@@ -46,8 +46,7 @@ mysignalr3.service.signalr.net                     eastus         5002       500
 ```
 
 ### Get all SignalR services in a resource group
-
-```powershell
+```
 PS C:\> Get-AzSignalR -ResourceGroupName myResourceGroup
 
 HostName                                           Location       ServerPort PublicPort ProvisioningState Version
@@ -57,8 +56,7 @@ mysignalr2.service.signalr.net                     eastus         5002       500
 ```
 
 ### Get a specific SignalR service
-
-```powershell
+```
 PS C:\> Get-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1
 
 HostName                                           Location       ServerPort PublicPort ProvisioningState Version
@@ -67,8 +65,7 @@ mysignalr1.service.signalr.net                     eastus         5002       500
 ```
 
 ### Get a specific SignalR service from the default resource group
-
-```powershell
+```
 PS C:\> Get-AzSignalR -Name mysignalr2
 
 HostName                                           Location       ServerPort PublicPort ProvisioningState Version
@@ -76,7 +73,7 @@ HostName                                           Location       ServerPort Pub
 mysignalr2.service.signalr.net                     eastus         5002       5001       Succeeded         1.0
 ```
 
-The default resource group can be set by `Set-AzDefault -ResourceGroupName myResourceGroup`.
+The default resource group can be set by \`Set-AzDefault -ResourceGroupName myResourceGroup\`.
 
 ## PARAMETERS
 
@@ -141,16 +138,14 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
-
 ## NOTES
 
 ## RELATED LINKS

@@ -47,6 +47,7 @@ function Test-AzRmHealthcareApisService{
 		# Assert
 		Assert-AreEqual $actual.Name $rname
 		Assert-AreEqual $actual.Properties.CosmosDbConfiguration.OfferThroughput $offerThroughput
+		Assert-AreEqual $actual.Kind $kind
 		#Update using parameters
 		$newOfferThroughput = $offerThroughput - 600
 		$updated = Set-AzHealthcareApisService -ResourceId $actual.Id -CosmosOfferThroughput $newOfferThroughput;
