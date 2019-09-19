@@ -27,7 +27,7 @@ The support of Azure profiles will support the following scenarios.
 ```code
 As a PowerShell script developer
 I can attach my script to a profile of Azure
-so that my script does not suffer from future Azure changes
+so that my script does not break when Azure changes
 ```
 
 ```code
