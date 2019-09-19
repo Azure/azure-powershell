@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             // TODO https://github.com/Azure/azure-powershell/issues/4155
             RunPowerShellTest("Test-ListDatabaseRestorePoints");
         }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreGeoBackup()
@@ -45,6 +46,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
                 RunPowerShellTest("Test-RestoreGeoBackup");
             }
         }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreDeletedDatabaseBackup()
@@ -56,6 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
                 RunPowerShellTest("Test-RestoreDeletedDatabaseBackup");
             }
         }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestorePointInTimeBackup()
@@ -79,18 +82,28 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
                 RunPowerShellTest("Test-RestoreLongTermRetentionBackup");
             }
         }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLongTermRetentionV2Policy()
         {
             RunPowerShellTest("Test-LongTermRetentionV2Policy");
         }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLongTermRetentionV2Backup()
         {
             RunPowerShellTest("Test-LongTermRetentionV2Backup");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLongTermRetentionV2ResourceGroupBasedBackup()
+        {
+            RunPowerShellTest("Test-LongTermRetentionV2ResourceGroupBasedBackup");
+        }
+
         [Fact(Skip = "This is not recordable test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLongTermRetentionV2()
@@ -102,6 +115,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
                 RunPowerShellTest("Test-LongTermRetentionV2");
             }
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLongTermRetentionV2ResourceGroupBased()
+        {
+            RunPowerShellTest("Test-LongTermRetentionV2ResourceGroupBased");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseGeoBackupPolicy()
@@ -113,6 +134,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
                 RunPowerShellTest("Test-DatabaseGeoBackupPolicy");
             }
         }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDatabaseRestorePoint()
@@ -124,6 +146,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
                 RunPowerShellTest("Test-NewDatabaseRestorePoint");
             }
         }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveDatabaseRestorePoint()

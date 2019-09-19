@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             if (maximumThroughputUnits.HasValue)
                 parameter.MaximumThroughputUnits = maximumThroughputUnits;
 
-            var response = Client.Namespaces.Update(resourceGroupName, namespaceName, parameter);
+            var response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
 
             return new PSNamespaceAttributes(response);
         }

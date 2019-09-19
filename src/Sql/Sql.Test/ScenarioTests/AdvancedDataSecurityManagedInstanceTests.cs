@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System.Collections.Generic;
 using Xunit;
 using Xunit.Abstractions;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -32,6 +33,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         public AdvancedDataSecurityManagedInstanceTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/managedInstances"
+            };
         }
 
         [Fact]

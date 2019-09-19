@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (FqdnTag != null)
             {
-                this.Protocol = new string[] { "http", "https" };
+                this.Protocol = PSAzureFirewallApplicationRuleProtocol.AllProtocols().ToArray();
                 FqdnTag = AzureFirewallFqdnTagHelper.MapUserInputToAllowedFqdnTags(FqdnTag, this.AzureFirewallFqdnTagClient).ToArray();
             }
 
