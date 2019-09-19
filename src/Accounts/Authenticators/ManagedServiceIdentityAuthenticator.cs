@@ -15,6 +15,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
@@ -66,9 +67,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
             if (account.IsPropertySet(AppServiceManagedIdentityFlag))
             {
+                TracingAdapter.Information(string.Format("[ManagedServiceIdentityAuthenticator] Creating App Service managed service token - Tenant: '{0}', ResourceId: '{1}', UserId: '{2}'", tenant, resourceId, account.Id));
                 return new ManagedServiceAppServiceAccessToken(account, environment, GetFunctionsResourceId(resourceId, environment), tenant);
             }
 
+            TracingAdapter.Information(string.Format("[ManagedServiceIdentityAuthenticator] Creating managed service token - Tenant: '{0}', ResourceId: '{1}', UserId: '{2}'", tenant, resourceId, account.Id));
             return new ManagedServiceAccessToken(account, environment, GetResourceId(resourceId, environment), tenant);
         }
 

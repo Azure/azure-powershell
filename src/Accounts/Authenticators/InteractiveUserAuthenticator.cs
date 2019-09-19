@@ -19,6 +19,7 @@ using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
+using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Identity.Client;
@@ -67,10 +68,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                     var authority = onPremise ?
                                         interactiveParameters.Environment.ActiveDirectoryAuthority :
                                         AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
+                    TracingAdapter.Information(string.Format("[InteractiveUserAuthenticator] Creating IPublicClientApplication - ClientId: '{0}', Authority: '{1}', ReplyUrl: '{2}' UseAdfs: '{3}'", clientId, authority, replyUrl, onPremise));
                     publicClient = authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority, redirectUri: replyUrl, useAdfs: onPremise);
-
+                    TracingAdapter.Information(string.Format("[InteractiveUserAuthenticator] Calling AcquireTokenInteractive - Scopes: '{0}'", string.Join(",", scopes)));
                     var interactiveResponse = publicClient.AcquireTokenInteractive(scopes)
-                        .WithCustomWebUi(new CustomWebUi(interactiveParameters.PromptAction))
+                        .WithCustomWebUi(new CustomWebUi())
                         .ExecuteAsync(cancellationToken);
                     cancellationToken.ThrowIfCancellationRequested();
                     return AuthenticationResultToken.GetAccessTokenAsync(interactiveResponse);

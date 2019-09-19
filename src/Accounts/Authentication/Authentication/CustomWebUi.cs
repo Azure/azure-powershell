@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -34,8 +35,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public class CustomWebUi : ICustomWebUi
     {
-        private Action<string> _promptAction;
-
         private const string CloseWindowSuccessHtml = @"<html>
   <head><title>Authentication Complete</title></head>
   <body>
@@ -43,13 +42,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
   </body>
 </html>";
 
-        public CustomWebUi(Action<string> promptAction)
-        {
-            _promptAction = promptAction;
-        }
-
         public async Task<Uri> AcquireAuthorizationCodeAsync(Uri authorizationUri, Uri redirectUri, CancellationToken cancellationToken)
         {
+            TracingAdapter.Information(string.Format("[CustomWebUi] Starting AcquireAuthorizationCodeAsync - AuthorizationUri: '{0}', RedirectUri: '{1}'", authorizationUri, redirectUri));
             WriteWarning(Resources.TryLaunchBrowser);
             if (!OpenBrowser(authorizationUri.ToString()))
             {
@@ -66,6 +61,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 string uri = ExtractUriFromHttpRequest(httpRequest, redirectUri.Port);
                 await WriteResponseAsync(client.GetStream(), cancellationToken).ConfigureAwait(false);
                 cancellationToken.ThrowIfCancellationRequested();
+                TracingAdapter.Information(string.Format("[CustomWebUi] Ending AcquireAuthorizationCodeAsync - Returning URI '{0}'", uri));
                 return await Task.Run(() => { return new Uri(uri); }, cancellationToken);
             }
         }

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
@@ -67,6 +68,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
                 builder = builder.WithRedirectUri(redirectUri);
             }
 
+            builder.WithLogging((level, message, pii) =>
+            {
+                TracingAdapter.Information(string.Format("[MSAL] {0}: {1}", level, message));
+            });
+
             var client = builder.Build();
             RegisterCache(client);
             return client;
@@ -109,6 +115,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
                 builder = builder.WithClientSecret(ConversionUtilities.SecureStringToString(clientSecret));
             }
 
+            builder.WithLogging((level, message, pii) =>
+            {
+                TracingAdapter.Information(string.Format("[MSAL] {0}: {1}", level, message));
+            });
+
             var client = builder.Build();
             RegisterCache(client);
             return client;
@@ -116,6 +127,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
 
         public bool TryRemoveAccount(string accountId)
         {
+            TracingAdapter.Information(string.Format("[AuthenticationClientFactory] Calling GetAccountsAsync"));
             var client = CreatePublicClient();
             var account = client.GetAccountsAsync()
                             .ConfigureAwait(false).GetAwaiter().GetResult()
@@ -127,6 +139,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
 
             try
             {
+                TracingAdapter.Information(string.Format("[AuthenticationClientFactory] Calling RemoveAsync - Account: '{0}'", account.Username));
                 client.RemoveAsync(account)
                     .ConfigureAwait(false).GetAwaiter().GetResult();
             }
@@ -140,6 +153,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
 
         public IEnumerable<IAccount> ListAccounts()
         {
+            TracingAdapter.Information(string.Format("[AuthenticationClientFactory] Calling GetAccountsAsync"));
             return CreatePublicClient()
                     .GetAccountsAsync()
                     .ConfigureAwait(false).GetAwaiter().GetResult();
@@ -147,6 +161,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
 
         public List<IAccessToken> GetTenantTokensForAccount(IAccount account, Action<string> promptAction)
         {
+            TracingAdapter.Information(string.Format("[AuthenticationClientFactory] Attempting to acquire tenant tokens for account '{0}'.", account.Username));
             List<IAccessToken> result = new List<IAccessToken>();
             var azureAccount = new AzureAccount()
             {
@@ -185,6 +200,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients
 
         public List<IAzureSubscription> GetSubscriptionsFromTenantToken(IAccount account, IAccessToken token, Action<string> promptAction)
         {
+            TracingAdapter.Information(string.Format("[AuthenticationClientFactory] Attempting to acquire subscriptions in tenant '{0}' for account '{1}'.", token.TenantId, account.Username));
             List<IAzureSubscription> result = new List<IAzureSubscription>();
             var azureAccount = new AzureAccount()
             {

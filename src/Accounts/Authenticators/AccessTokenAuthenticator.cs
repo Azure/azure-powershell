@@ -15,6 +15,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
@@ -43,18 +44,21 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                  resourceId.EqualsInsensitively(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId))
                  && account.IsPropertySet(AzureAccount.Property.KeyVaultAccessToken))
             {
+                TracingAdapter.Information(string.Format("[AccessTokenAuthenticator] Creating KeyVault access token - Tenant: '{0}', ResourceId: '{1}', UserId: '{2}'", tenant, resourceId, account.Id));
                 rawToken.AccessToken = account.GetProperty(AzureAccount.Property.KeyVaultAccessToken);
             }
             else if ((resourceId.EqualsInsensitively(environment.GraphEndpointResourceId) ||
                       resourceId.EqualsInsensitively(AzureEnvironment.Endpoint.GraphEndpointResourceId))
                       && account.IsPropertySet(AzureAccount.Property.GraphAccessToken))
             {
+                TracingAdapter.Information(string.Format("[AccessTokenAuthenticator] Creating Graph access token - Tenant: '{0}', ResourceId: '{1}', UserId: '{2}'", tenant, resourceId, account.Id));
                 rawToken.AccessToken = account.GetProperty(AzureAccount.Property.GraphAccessToken);
             }
             else if ((resourceId.EqualsInsensitively(environment.ActiveDirectoryServiceEndpointResourceId) ||
                       resourceId.EqualsInsensitively(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId))
                       && account.IsPropertySet(AzureAccount.Property.AccessToken))
             {
+                TracingAdapter.Information(string.Format("[AccessTokenAuthenticator] Creating access token - Tenant: '{0}', ResourceId: '{1}', UserId: '{2}'", tenant, resourceId, account.Id));
                 rawToken.AccessToken = account.GetAccessToken();
             }
             else

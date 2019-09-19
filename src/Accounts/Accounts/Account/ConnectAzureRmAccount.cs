@@ -30,6 +30,9 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.PowerShell.Authenticators;
 using System.IO;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
+using System.Threading;
+using System.Collections.Concurrent;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -187,6 +190,18 @@ namespace Microsoft.Azure.Commands.Profile
                         string.Format(Resources.UnknownEnvironment, Environment));
                 }
             }
+
+            _writeWarningEvent -= WriteWarningSender;
+            _writeWarningEvent += WriteWarningSender;
+            AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteWarningKey);
+            AzureSession.Instance.RegisterComponent("WriteWarning", () => _writeWarningEvent);
+        }
+
+        private event EventHandler<StreamEventArgs> _writeWarningEvent;
+
+        private void WriteWarningSender(object sender, StreamEventArgs args)
+        {
+            _tasks.Enqueue(new Task(() => this.WriteWarning(args.Message)));
         }
 
         public override void ExecuteCmdlet()
@@ -331,7 +346,8 @@ namespace Microsoft.Azure.Commands.Profile
                        skipContextPopulationList = false;
                    }
 
-                   WriteObject((PSAzureProfile)profileClient.Login(
+                   profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message)));
+                   var task = new Task<AzureRmProfile>( () => profileClient.Login(
                         azureAccount,
                         _environment,
                         Tenant,
@@ -342,7 +358,28 @@ namespace Microsoft.Azure.Commands.Profile
                         WriteWarning,
                         name,
                         skipContextPopulationList));
+                   task.Start();
+                   while (!task.IsCompleted)
+                   {
+                       HandleActions();
+                       Thread.Yield();
+                   }
+
+                   HandleActions();
+                   var result = (PSAzureProfile) (task.ConfigureAwait(false).GetAwaiter().GetResult());
+                   WriteObject(result);
                });
+            }
+        }
+
+        private ConcurrentQueue<Task> _tasks = new ConcurrentQueue<Task>();
+
+        private void HandleActions()
+        {
+            Task task;
+            while (_tasks.TryDequeue(out task))
+            {
+                task.RunSynchronously();
             }
         }
 

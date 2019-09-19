@@ -126,9 +126,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                         processAuthenticator = processAuthenticator.Next;
                     }
                 }
-                catch (InvalidOperationException e)
+                catch (Exception e)
                 {
-                    string blank = e.ToString();
+                    if (retries == 0)
+                    {
+                        throw e;
+                    }
+
+                    TracingAdapter.Information(string.Format("[AuthenticationFactory] Exception caught when calling TryAuthenticate, retrying authentication - Exception message: '{0}'", e.Message));
                     continue;
                 }
 

@@ -15,6 +15,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -34,7 +35,9 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var authority = onPremise ?
                                 parameters.Environment.ActiveDirectoryAuthority :
                                 AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
+            TracingAdapter.Information(string.Format("[DeviceCodeAuthenticator] Creating IPublicClientApplication - ClientId: '{0}', Authority: '{1}', UseAdfs: '{2}'", clientId, authority, onPremise));
             var publicClient = authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority, useAdfs: onPremise);
+            TracingAdapter.Information(string.Format("[DeviceCodeAuthenticator] Calling AcquireTokenWithDeviceCode - Scopes: '{0}'", string.Join(",", scopes)));
             var response = GetResponseAsync(publicClient, scopes, cancellationToken);
             cancellationToken.ThrowIfCancellationRequested();
             return AuthenticationResultToken.GetAccessTokenAsync(response);
@@ -56,7 +59,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
         private void WriteWarning(string message)
         {
-            if (AzureSession.Instance.TryGetComponent(AzureRMCmdlet.WriteWarningKey, out EventHandler<StreamEventArgs> writeWarningEvent))
+            EventHandler<StreamEventArgs> writeWarningEvent;
+            if (AzureSession.Instance.TryGetComponent("WriteWarning", out writeWarningEvent))
             {
                 writeWarningEvent(this, new StreamEventArgs() { Message = message });
             }

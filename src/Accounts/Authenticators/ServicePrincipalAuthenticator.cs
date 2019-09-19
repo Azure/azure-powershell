@@ -14,6 +14,7 @@
 
 using System.Threading;
 using System.Threading.Tasks;
+using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Identity.Client;
@@ -40,10 +41,12 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             if (!string.IsNullOrEmpty(spParameters.Thumbprint))
             {
                 var certificate = AzureSession.Instance.DataStore.GetCertificate(spParameters.Thumbprint);
+                TracingAdapter.Information(string.Format("[ServicePrincipalAuthenticator] Creating IConfidentialClientApplication with certificate - ClientId: '{0}', Authority: '{1}', RedirectUri: '{2}', Thumbprint: '{3}', UseAdfs: '{4}'", clientId, authority, redirectUri, spParameters.Thumbprint, onPremise));
                 confidentialClient = authenticationClientFactory.CreateConfidentialClient(clientId: clientId, authority: authority, redirectUri: redirectUri, certificate: certificate, useAdfs: onPremise);
             }
             else if (spParameters.Secret != null)
             {
+                TracingAdapter.Information(string.Format("[ServicePrincipalAuthenticator] Creating IConfidentialClientApplication with secret - ClientId: '{0}', Authority: '{1}', RedirectUri: '{2}', UseAdfs: '{3}'", clientId, authority, redirectUri, onPremise));
                 confidentialClient = authenticationClientFactory.CreateConfidentialClient(clientId: clientId, authority: authority, redirectUri: redirectUri, clientSecret: spParameters.Secret, useAdfs: onPremise);
             }
             else
@@ -51,6 +54,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 throw new MsalException(MsalError.AuthenticationFailed, string.Format(_authenticationFailedMessage, clientId));
             }
 
+            TracingAdapter.Information(string.Format("[ServicePrincipalAuthenticator] Calling AcquireTokenForClient - Scopes: '{0}'", string.Join(",", scopes)));
             var response = confidentialClient.AcquireTokenForClient(scopes).ExecuteAsync(cancellationToken);
             cancellationToken.ThrowIfCancellationRequested();
             return AuthenticationResultToken.GetAccessTokenAsync(response, userId: clientId, tenantId: spParameters.TenantId);

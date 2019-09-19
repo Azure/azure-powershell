@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
         /// <summary>
         /// Get the context modification scope for the current cmdlet invoication
         /// </summary>
-        /// <returns>Process if the cmdlet should only change the current process, CurrentUser 
+        /// <returns>Process if the cmdlet should only change the current process, CurrentUser
         /// if any changes should occur globally.</returns>
         protected virtual ContextModificationScope GetContextModificationScope()
         {
@@ -197,43 +197,6 @@ namespace Microsoft.Azure.Commands.Profile.Common
             }
 
             return result;
-        }
-
-        protected override void BeginProcessing()
-        {
-            InitializeEventHandlers();
-        }
-
-        private event EventHandler<StreamEventArgs> _writeDebugEvent;
-        private event EventHandler<StreamEventArgs> _writeVerboseEvent;
-        private event EventHandler<StreamEventArgs> _writeWarningEvent;
-
-        private void InitializeEventHandlers()
-        {
-            _writeDebugEvent -= WriteDebugSender;
-            _writeDebugEvent += WriteDebugSender;
-            _writeVerboseEvent -= WriteVerboseSender;
-            _writeVerboseEvent += WriteVerboseSender;
-            _writeWarningEvent -= WriteWarningSender;
-            _writeWarningEvent += WriteWarningSender;
-            AzureSession.Instance.RegisterComponent(WriteDebugKey, () => _writeDebugEvent);
-            AzureSession.Instance.RegisterComponent(WriteVerboseKey, () => _writeVerboseEvent);
-            AzureSession.Instance.RegisterComponent(WriteWarningKey, () => _writeWarningEvent);
-        }
-
-        private void WriteDebugSender(object sender, StreamEventArgs args)
-        {
-            WriteDebug(args.Message);
-        }
-
-        private void WriteVerboseSender(object sender, StreamEventArgs args)
-        {
-            WriteVerbose(args.Message);
-        }
-
-        private void WriteWarningSender(object sender, StreamEventArgs args)
-        {
-            WriteWarning(args.Message);
         }
     }
 }

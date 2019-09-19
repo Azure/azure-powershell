@@ -17,6 +17,7 @@ using System.Linq;
 using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
+using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Identity.Client;
@@ -36,9 +37,12 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var authority = onPremise ?
                                 silentParameters.Environment.ActiveDirectoryAuthority :
                                 AuthenticationHelpers.GetAuthority(silentParameters.Environment, silentParameters.TenantId);
+            TracingAdapter.Information(string.Format("[SilentAuthenticator] Creating IPublicClientApplication - ClientId: '{0}', Authority: '{1}', UseAdfs: '{2}'", clientId, authority, onPremise));
             var publicClient = authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority, useAdfs: onPremise);
+            TracingAdapter.Information(string.Format("[SilentAuthenticator] Calling GetAccountsAsync"));
             var accounts = publicClient.GetAccountsAsync()
                 .ConfigureAwait(false).GetAwaiter().GetResult();
+            TracingAdapter.Information(string.Format("[SilentAuthenticator] Calling AcquireTokenSilent - Scopes: '{0}', UserId: '{1}', Number of accounts: '{2}'", string.Join(",", scopes), silentParameters.UserId, accounts.Count()));
             var response = publicClient.AcquireTokenSilent(scopes, accounts.FirstOrDefault(a => a.Username == silentParameters.UserId)).ExecuteAsync(cancellationToken);
             cancellationToken.ThrowIfCancellationRequested();
             return AuthenticationResultToken.GetAccessTokenAsync(response);

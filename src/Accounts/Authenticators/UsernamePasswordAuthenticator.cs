@@ -17,6 +17,7 @@ using System.IO;
 using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
+using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Identity.Client;
@@ -39,7 +40,9 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var authority = onPremise ?
                                 upParameters.Environment.ActiveDirectoryAuthority :
                                 AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
+            TracingAdapter.Information(string.Format("[UsernamePasswordAuthenticator] Creating IPublicClientApplication - ClientId: '{0}', Authority: '{1}', UseAdfs: '{2}'", clientId, authority, onPremise));
             var publicClient = authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority, useAdfs: onPremise);
+            TracingAdapter.Information(string.Format("[UsernamePasswordAuthenticator] Calling AcquireTokenByUsernamePassword - Scopes: '{0}', UserId: '{1}'", string.Join(",", scopes), upParameters.UserId));
             var response = publicClient.AcquireTokenByUsernamePassword(scopes, upParameters.UserId, upParameters.Password).ExecuteAsync(cancellationToken);
             cancellationToken.ThrowIfCancellationRequested();
             return AuthenticationResultToken.GetAccessTokenAsync(response);
