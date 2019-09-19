@@ -33,7 +33,7 @@ so that my script does not break when Azure changes
 ```code
 As a PowerShell script developer
 I can select a a profile of Azure
-so that my script will run seamlessly on Azure Stack and Public Azure
+so that my script will run seamlessly on Azure Stack or Azure Sovereign clouds and Public Azure
 ```
 
 ## User Experience
