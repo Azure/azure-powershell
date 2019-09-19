@@ -22,6 +22,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER ResourceId
     The resource id.
 
+.PARAMETER RoleName
+    Name of the role to restore.
+
 .PARAMETER DecryptionCertPath
     Path to the decryption cert file with private key (.pfx).
 
@@ -57,6 +60,11 @@ function Restore-AzsBackup {
         [Parameter(Mandatory = $false, ParameterSetName = 'Backups_Restore')]
         [System.String]
         $Location,
+
+        [Parameter(Mandatory = $false, ParameterSetName = 'Backups_Restore')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
+        [System.String]
+        $RoleName = "",
 
         [Parameter(Mandatory = $true, ParameterSetName = 'Backups_Restore')]
         [Parameter(Mandatory = $true, ParameterSetName = 'ResourceId')]
@@ -144,6 +152,7 @@ function Restore-AzsBackup {
 
                 $decryptionCertBytes = [System.IO.File]::ReadAllBytes($DecryptionCertPath)
                 $decryptionCertBase64 = [System.Convert]::ToBase64String($decryptionCertBytes)
+                $RestoreOptions.RoleName = $RoleName
                 $RestoreOptions.DecryptionCertBase64 = $decryptionCertBase64
                 $RestoreOptions.DecryptionCertPassword = ConvertTo-String -SecureString $DecryptionCertPassword
 
