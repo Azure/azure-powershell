@@ -282,11 +282,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             };
 
             // this is to hide the breaking change for upload
-            if ("upload".Equals(vDisk.CreationData?.CreateOption?.ToLowerInvariant()))
+            if ("upload".Equals(vDisk.CreationData?.CreateOption?.ToLowerInvariant()) && vDisk.CreationData?.UploadSizeBytes == null)
             {
                 if (vDisk.DiskSizeGB != null)
                 {
-                    vDisk.CreationData.UploadSizeBytes = (long) vDisk.DiskSizeGB * 1073741824 + 512;
+                    vDisk.CreationData.UploadSizeBytes = (long) vDisk.DiskSizeGB * 1073741824 + 512; // multiplying 1GB and then add the size of footer (512 bytes)
                     vDisk.DiskSizeGB = null;
                 }
             }
