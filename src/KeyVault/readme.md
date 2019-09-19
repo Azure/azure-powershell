@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the KeyVault service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.4.0 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.6.0 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -49,23 +49,84 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.md
-  - $(repo)/specification/keyvault/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/keyvault/resource-manager/readme.md
-  - $(repo)/specification/keyvault/data-plane/readme.enable-multi-api.md
   - $(repo)/specification/keyvault/data-plane/readme.md
 
 title: KeyVault
 module-version: 0.0.1
-skip-model-cmdlets: true
 
+```
+
+This hot-patches the swagger to have a better parameterized host.
+
+``` yaml
+
+directive: 
+  - from: swagger-document
+    where: $["x-ms-parameterized-host"]
+    transform: >
+      return {
+      "hostTemplate": "https://{vaultName}.{keyVaultDnsSuffix}/",
+      "useSchemePrefix": false,
+      "positionInOperation": "first",
+      "parameters": [
+        {
+          "name": "vaultName",
+          "description": "The name of the vault to execute operations on.",
+          "required": true,
+          "type": "string",
+          "in": "path",
+          "x-ms-skip-url-encoding": true
+        },
+        {
+          "name": "keyVaultDnsSuffix",
+          "description": "The URI used as the base for all key vault requests.",
+          "required": true,
+          "type": "string",
+          "in": "path",
+          "x-ms-skip-url-encoding": true,
+          "default": "vault.azure.net",
+          "x-ms-parameter-location": "client"
+        }
+      ]}
+```
+
+``` yaml
 directive:
   - where:
-      verb: Get
-      subject: Deleted(.*)
+      parameter-name: OutFile
+    set:
+      alias: OutputFile
+  - where:
+      verb: Clear|Get
+      subject: VaultDeleted
     hide: true
   - where:
-      verb: Clear
-      subject: Deleted(.*)
+      verb: Clear|Get
+      subject: DeletedCertificate
+    hide: true
+  - where:
+      verb: Clear|Get
+      subject: DeletedKey
+    hide: true
+  - where:
+      verb: Clear|Get
+      subject: DeletedSecret
+    hide: true
+  - where:
+      verb: Clear|Get
+      subject: DeletedStorageAccount
+    hide: true
+  - where:
+      verb: Get
+      subject: DeletedStorageDeletedSasDefinition
+    hide: true
+  - where:
+      subject: CertificateContact
+    hide: true
+  - where:
+      verb: Invoke
+      subject: SignKey|UnwrapKey|WrapKey
     hide: true
   - where:
       verb: New
@@ -77,11 +138,6 @@ directive:
       subject: Key
     set:
       alias: Add-AzKeyVaultKey
-  - where:
-      verb: Set
-      subject: CertificateContact
-    set:
-      alias: Add-AzKeyVaultCertificateContact
   - where:
       verb: Set
       subject: StorageAccount
@@ -201,4 +257,213 @@ directive:
     set:
       verb: Protect
       subject: Key
+  - where:
+      verb: New
+      subject: ''
+      parameter-name: SkuName
+    set:
+      alias: Sku
+  - where:
+      verb: Test
+      subject: VaultNameAvailability
+    set:
+      subject: Vault
+  - where:
+      verb: Import
+      subject: Certificate
+      parameter-name: Base64EncodedCertificate
+    set:
+      parameter-name: CertificateString
+  - where:
+      verb: New
+      subject: Certificate
+      parameter-name: Policy
+    set:
+      alias: CertificatePolicy
+  - where:
+      verb: Set
+      subject: CertificateIssuer
+      parameter-name: Provider
+    set:
+      alias: IssuerProvider
+  - where:
+      verb: Set
+      subject: CertificateIssuer
+      parameter-name: CredentialsAccountId
+    set:
+      alias: AccountId
+  - where:
+      verb: Set
+      subject: CertificateIssuer
+      parameter-name: CredentialsPassword
+    set:
+      alias: ApiKey
+  - where:
+      parameter-name: Attribute(.*)
+    set:
+      parameter-name: $1
+  - where:
+      verb: Update
+      subject: CertificatePolicy
+      parameter-name: SecretPropContentType
+    set:
+      parameter-name: SecretContentType
+  - where:
+      verb: Update
+      subject: CertificatePolicy
+      parameter-name: KeyProp(.*)
+    set:
+      parameter-name: $1
+  - where:
+      verb: Update
+      subject: CertificatePolicy
+      parameter-name: X509Prop(.*)
+    set:
+      parameter-name: $1
+  - where:
+      verb: Update
+      subject: CertificatePolicy
+      parameter-name: Subject
+    set:
+      parameter-name: SubjectName
+  - where:
+      verb: Update
+      subject: CertificatePolicy
+      parameter-name: SanDnsName
+    set:
+      parameter-name: DnsName
+  - where:
+      verb: Update
+      subject: CertificatePolicy
+      parameter-name: IssuerCertificateType
+    set:
+      parameter-name: CertificateType
+  - where:
+      verb: Set
+      subject: Secret
+      parameter-name: Value
+    set:
+      parameter-name: SecretValue
+  - where:
+      verb: Set
+      subject: StorageAccount
+      parameter-name: ResourceId
+    set:
+      alias: AccountResourceId
+  - where:
+      parameter-name: Maxresult
+    set:
+      parameter-name: MaxResult
+  - where:
+      subject: StorageSasDefinition
+      variant: (.*)Expanded(.*)
+      parameter-name: Parameter
+    set:
+      parameter-name: DefinitionMetadata
+  - where:
+      verb: Test
+      subject: Vault
+      variant: Check
+    hide: true
+  - where:
+      verb: Set
+      subject: Vault
+    hide: true
+  # Format output
+  - where:
+      model-name: Vault
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - Location
+          - Uri
+  - where:
+      model-name: DeletedVault
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - Location
+          - DeletionDate
+          - ScheduledPurgeDate
+  - where:
+      model-name: KeyItem
+    set:
+      format-table:
+        properties:
+          - Name
+          - AttributeEnabled
+          - AttributeCreated
+          - AttributeUpdated
+        labels:
+          AttributeEnabled: Enabled
+          AttributeCreated: Created
+          AttributeUpdated: Updated
+  - where:
+      model-name: SecretItem
+    set:
+      format-table:
+        properties:
+          - Name
+          - AttributeEnabled
+          - AttributeCreated
+          - AttributeUpdated
+        labels:
+          AttributeEnabled: Enabled
+          AttributeCreated: Created
+          AttributeUpdated: Updated
+  - where:
+      model-name: SecretBundle
+    set:
+      format-table:
+        properties:
+          - Name
+          - Version
+          - AttributeEnabled
+          - AttributeCreated
+          - AttributeUpdated
+        labels:
+          AttributeEnabled: Enabled
+          AttributeCreated: Created
+          AttributeUpdated: Updated
+  - where:
+      model-name: CertificateIssuerItem
+    set:
+      format-table:
+        properties:
+          - Name
+          - Provider
+  - where:
+      model-name: IssuerBundle
+    set:
+      format-table:
+        properties:
+          - Name
+          - Provider
+  - where:
+      model-name: CertificateOperation
+    set:
+      format-table:
+        properties:
+          - Name
+          - Id
+          - IssuerName
+          - Status
+  - where:
+      model-name: CertificatePolicy
+    set:
+      format-table:
+        properties:
+          - X509PropSubject
+          - AttributeEnabled
+          - AttributeCreated
+          - AttributeUpdated
+        labels:
+          X509PropSubject: SubjectName
+          AttributeEnabled: Enabled
+          AttributeCreated: Created
+          AttributeUpdated: Updated
 ```

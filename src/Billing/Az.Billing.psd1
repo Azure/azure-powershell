@@ -1,5 +1,5 @@
 @{
-# region definition 
+  GUID = 'f6447640-ffdf-42f9-5ffe-a11eed4aa63f'
   RootModule = './Az.Billing.psm1'
   ModuleVersion = '0.0.1'
   CompatiblePSEditions = 'Core', 'Desktop'
@@ -11,22 +11,15 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Billing.private.dll'
   FormatsToProcess = './Az.Billing.format.ps1xml'
-# endregion 
-
-# region persistent data 
-  GUID = 'f6447640-ffdf-42f9-5ffe-a11eed4aa63f'
-# endregion 
-
-# region private data 
+  CmdletsToExport = 'Get-AzBillingPeriod', 'Get-AzBudget', 'Get-AzEnrollmentAccount', 'Get-AzInvoice', 'Get-AzMarketplace', 'Get-AzPriceSheet', 'Get-AzReservationDetail', 'Get-AzReservationSummary', 'Get-AzUsageAggregate', 'Get-AzUsageDetail', 'New-AzBudget', 'Remove-AzBudget', 'Set-AzBudget', '*'
+  AliasesToExport = 'Get-AzConsumptionBudget', 'Get-AzBillingInvoice', 'Get-AzConsumptionMarketplace', 'Get-AzConsumptionPriceSheet', 'Get-AzConsumptionReservationDetail', 'Get-AzConsumptionReservationSummary', 'Get-UsageAggregates', 'Get-AzConsumptionUsageDetail', 'New-AzConsumptionBudget', 'Remove-AzConsumptionBudget', 'Set-AzConsumptionBudget', '*'
   PrivateData = @{
     PSData = @{
-      Tags = 'Azure', 'ResourceManager', 'ARM', 'Billing'
+      Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Billing'
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
       ReleaseNotes = ''
-      Profiles = 'latest-2019-04-01'
+      Profiles = 'latest-2019-04-30'
     }
   }
-# endregion 
-
 }

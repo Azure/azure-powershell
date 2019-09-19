@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# Az.WebSite
-This directory contains the PowerShell module for the WebSite service.
+# Az.AppService
+This directory contains the PowerShell module for the AppService service.
 
 ---
 ## Status
-[![Az.WebSite](https://img.shields.io/powershellgallery/v/Az.WebSite.svg?style=flat-square&label=Az.WebSite "Az.WebSite")](https://www.powershellgallery.com/packages/Az.WebSite/)
+[![Az.AppService](https://img.shields.io/powershellgallery/v/Az.AppService.svg?style=flat-square&label=Az.AppService "Az.AppService")](https://www.powershellgallery.com/packages/Az.AppService/)
 
 ## Info
 - Modifiable: yes
@@ -17,13 +17,13 @@ This directory contains the PowerShell module for the WebSite service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.4.0 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.6.0 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.WebSite`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.AppService`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ---
@@ -49,13 +49,20 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.md
-  - $(repo)/specification/web/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/web/resource-manager/readme.md
 
+title: AppService
 module-version: 0.0.1
-skip-model-cmdlets: true
 
 directive:
+  - from: swagger-document
+    where: $..produces
+    transform: $ = $.filter( each => each === 'application/json');
+    reason: this spec adds produces application/xml and text/json erronously.
+  - where:
+      parameter-name: OutFile
+    set:
+      alias: OutputFile
   - where:
       subject: .*AppService.*
     set:
@@ -64,6 +71,60 @@ directive:
       subject: .*WebApp.*
     set:
       subject-prefix: ''
+  - where:
+      verb: Backup|New|Remove|Restart|Restore|Set|Start|Stop
+      subject: WebAppSlot
+      variant: (.*)
+    set:
+      variant: $1Slot
+  - where:
+      verb: Backup|New|Remove|Restart|Restore|Set|Start|Stop
+      subject: WebAppSlot
+    set:
+      subject: WebApp
+      alias: ${verb}-AzWebAppSlot
+  - where:
+      subject: WebAppBackup.*Slot
+      variant: (.*)
+    set:
+      variant: $1Slot
+  - where:
+      subject: WebAppBackup(.*)Slot
+    set:
+      subject: WebAppBackup$1
+      alias: ${verb}-Az${subject}Slot
+  - where:
+      subject: WebAppSnapshot.*Slot
+      variant: (.*)
+    set:
+      variant: $1Slot
+  - where:
+      subject: WebAppSnapshot(.*)Slot
+    set:
+      subject: WebAppSnapshot$1
+      alias: ${verb}-Az${subject}Slot
+  - where:
+      verb: Get
+      subject: WebAppMetricSlot
+      variant: (.*)
+    set:
+      variant: $1Slot
+  - where:
+      verb: Get
+      subject: WebAppMetricSlot
+    set:
+      subject: WebAppMetric
+  - where:
+      verb: Get
+      subject: WebAppPublishingCredentialsSlot
+      variant: (.*)
+    set:
+      variant: $1Slot
+  - where:
+      verb: Get
+      subject: WebAppPublishingCredentialsSlot
+    set:
+      subject: WebAppPublishingCredentials
   - where:
       verb: Get
       subject: AppServicePlanMetric
@@ -77,7 +138,7 @@ directive:
       verb: Get
       subject: WebAppMetric
     set:
-      alias: Get-AzWebAppMetrics
+      alias: ['Get-AzWebAppMetrics', 'Get-AzWebAppSlotMetric', 'Get-AzWebAppSlotMetrics']
   - where:
       verb: Get
       subject: WebAppPublishingProfileXml
@@ -89,31 +150,24 @@ directive:
     set:
       alias: ${verb}-AzWebAppSlotConfigName
   - where:
-      verb: Get
-      subject: WebAppMetricSlot
-    set:
-      subject: WebAppSlotMetric
-      alias: Get-AzWebAppSlotMetrics
-  - where:
       verb: Backup
       subject: WebApp
     set:
-      alias: New-AzWebAppBackup
-  - where:
-      verb: Backup
-      subject: WebAppSlot
-    set:
-      alias: New-AzWebAppSlotBackup
+      alias: ['Backup-AzWebAppSlot', 'New-AzWebAppBackup', 'New-AzWebAppSlotBackup']
   - where:
       subject: WebAppNewSitePublishingPassword
     set:
       subject: WebAppPublishingPassword
-      alias: Reset-AzWebAppPublishingProfile
+      alias: ['Reset-AzWebAppPublishingProfile', 'Reset-AzWebAppSlotPublishingProfile']
+  - where:
+      subject: WebAppNewSitePublishingPasswordSlot
+      variant: (.*)
+    set:
+      variant: $1Slot
   - where:
       subject: WebAppNewSitePublishingPasswordSlot
     set:
-      subject: WebAppSlotPublishingPassword
-      alias: Reset-AzWebAppSlotPublishingProfile
+      subject: WebAppPublishingPassword
   - where:
       verb: Restore
       subject: WebAppFromDeletedApp
@@ -122,8 +176,14 @@ directive:
   - where:
       verb: Restore
       subject: WebAppFromDeletedAppSlot
+      variant: (.*)
     set:
-      subject: DeletedWebAppSlot
+      variant: $1Slot
+  - where:
+      verb: Restore
+      subject: WebAppFromDeletedAppSlot
+    set:
+      subject: DeletedWebApp
   - where:
       subject: WebApp
       parameter-name: InputObject
@@ -191,4 +251,76 @@ directive:
       parameter-name: TargetSlot
     set:
       alias: DestinationSlotName
+  - where:
+      verb: New
+      subject: Connection
+      parameter-name: Name
+    clear-alias: true
+  - where:
+      verb: Set
+      subject: Connection
+      parameter-name: Name
+    clear-alias: true
+  - where:
+      verb: Get
+      subject: AppServicePlanMetric
+      parameter-name: Detail
+    set:
+      alias: InstanceDetails
+  - where:
+      subject: AppServicePlan
+      parameter-name: SkuTier
+    set:
+      alias: Tier
+  - where:
+      subject: AppServicePlan
+      parameter-name: Capacity
+    set:
+      alias: NumberOfWorkers
+  - where:
+      verb: Get
+      subject: WebAppMetric
+      parameter-name: Detail
+    set:
+      alias: InstanceDetails
+  - where:
+      verb: Get
+      subject: WebAppPublishingCredentials
+    set:
+      alias: ['Get-AzWebAppContainerContinuousDeploymentUrl', 'Get-AzWebAppPublishingCredentialsSlot']
+  - where:
+      verb: Restore
+      subject: DeletedWebApp
+      parameter-name: RecoverConfiguration
+    set:
+      alias: RestoreContentOnly
+  - where:
+      verb: Restore
+      subject: DeletedWebApp
+      parameter-name: (Name|ResourceGroupName|Slot)
+    set:
+      alias: Target$1
+  - where:
+      verb: Set
+      subject: WebAppBackupConfiguration
+    set:
+      alias: Edit-AzWebAppBackupConfiguration
+  - where:
+      verb: Restore
+      subject: WebApp
+    set:
+      alias: Restore-AzWebAppBackup
+  - where:
+      verb: Restore
+      subject: WebApp
+      parameter-name: (Database|IgnoreConflictingHostName)
+    set:
+      alias: $1s
+  - where:
+      variant: (.*)SlotSlot
+    set:
+      variant: $1Slot
+  - where:
+      variant: (.*)ViaIdentitySlot
+    remove: true
 ```

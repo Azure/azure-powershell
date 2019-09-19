@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Billing service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.4.0 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.6.0 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -49,14 +49,90 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.md
-  - $(repo)/specification/billing/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/billing/resource-manager/readme.md
-  - $(repo)/specification/commerce/resource-manager/readme.enable-multi-api.md
-  - $(repo)/specification/commerce/resource-manager/readme.md 
-  - $(repo)/specification/consumption/resource-manager/readme.enable-multi-api.md
+  - $(repo)/specification/commerce/resource-manager/readme.md
   - $(repo)/specification/consumption/resource-manager/readme.md
 
 module-version: 0.0.1
 title: Billing
-skip-model-cmdlets: true
+subject-prefix: ''
+
+directive:
+  - where:
+      subject: Agreement|Department|Invoice.*|PaymentMethod|RecipientTransfer|Transaction|Transfer
+    set:
+      alias: ${verb}-AzBilling${subject}
+  - where:
+      subject: AggregatedCost|Balance|Budget|Charge.*|CostTag|Forecast|Marketplace|PriceSheet|Reservation.*|UsageDetail
+    set:
+      alias: ${verb}-AzConsumption${subject}
+  - where:
+      subject: Policy|Product
+    set:
+      subject-prefix: Billing
+  - where:
+      subject: Tag|Tenant
+    set:
+      subject-prefix: Consumption
+  - where:
+      subject: AvailableBalance
+    set:
+      subject: AvailableCreditBalance
+  - where:
+      subject: CreditSummary.*
+    set:
+      subject: CreditSummary
+      alias: ${verb}-AzConsumptionCreditSummary
+  - where:
+      subject: ConsumptionEventsByBillingProfile
+    set:
+      subject: ConsumptionEvent
+  - where:
+      subject: Invoice
+      parameter-name: Top
+    set:
+      alias: MaxCount
+  - where:
+      verb: Get
+      subject: InvoiceLatest
+    hide: true
+  - where:
+      subject: BillingPeriod
+      parameter-name: Top
+    set:
+      alias: MaxCount
+  - where:
+      subject: UsageDetail
+      parameter-name: Top
+    set:
+      alias: MaxCount
+  - where:
+      subject: EnrollmentAccount
+      parameter-name: Name
+    set:
+      alias: ObjectId
+  - where:
+      subject: UsageAggregate
+      parameter-name: ShowDetail
+    set:
+      alias: ShowDetails
+  - where:
+      subject: BillingProfile
+      parameter-name: EnabledAzureSkU
+    set:
+      parameter-name: EnabledAzureSku
+  - where:
+      subject: BillingProfile
+      parameter-name: PoNumber
+    set:
+      parameter-name: PurchaseNumberOrder
+  - where:
+      verb: Get
+      subject: UsageAggregate
+    set:
+      alias: Get-UsageAggregates
+  # The below directive hides any cmdlet not currently shipped with Az.Billing
+  - where:
+      subject: ^(?!^BillingPeriod$)(?!^Budget$)(?!^EnrollmentAccount$)(?!^Invoice$)(?!^Marketplace$)(?!^PriceSheet$)(?!^ReservationDetail$)(?!^ReservationSummary$)(?!^UsageAggregate$)(?!^UsageDetail$).*$
+    hide: true
 ```

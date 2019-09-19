@@ -1,16 +1,38 @@
 [CmdletBinding()]
 Param
 (
-    [ValidateSet("Az.AppService", "Az.Billing", "Az.Compute", "Az.Dns", "Az.FrontDoor", "Az.KeyVault",
+    [ValidateSet("Az.AppService", "Az.Billing", "Az.Compute", "Az.Dns", "Az.FrontDoor", "Az.KeyVault", "Az.Media",
                  "Az.Monitor", "Az.Network", "Az.RedisCache", "Az.Resources", "Az.ServiceBus", "Az.Storage")]
     [Parameter(Mandatory)]
     [string]${Module},
 
     [Parameter(Mandatory)]
+    [ArgumentCompleter( {
+            param ( $commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters )
+
+            if ($fakeBoundParameters.ContainsKey("Module"))
+            {
+                $TempModule = $fakeBoundParameters.Module
+                $RootFolder = (Get-Item -Path $PSScriptRoot).Parent.FullName
+                $SrcFolder = Join-Path -Path $RootFolder -ChildPath "src"
+                $ModuleFolder = Join-Path -Path $SrcFolder -ChildPath ($TempModule.Replace("Az.", ""))
+                if (Test-Path -Path $ModuleFolder)
+                {
+                    $ExportsFolder = Join-Path -Path $ModuleFolder -ChildPath "exports"
+                    if (Test-Path -Path $ExportsFolder)
+                    {
+                        (Get-ChildItem -Path $ExportsFolder -Directory).Name | Where-Object { $_ -like "*$wordToComplete*" }
+                    }
+                }
+            }
+        } )]
     [string]${ApiProfile},
 
     [Parameter()]
-    [string]${OutputFile}
+    [string]${OutputFile},
+
+    [Parameter()]
+    [switch]${IgnoreForce}
 )
 
 $Result = @()
@@ -19,7 +41,6 @@ $SerializedCmdletsFolder = Join-Path -Path $ToolsFolder -ChildPath (Join-Path -P
 $RootFolder = (Get-Item -Path $ToolsFolder).Parent.FullName
 $SrcFolder = Join-Path -Path $RootFolder -ChildPath "src"
 $ModuleFolder = Join-Path -Path $SrcFolder -ChildPath ($Module.Replace("Az.", ""))
-
 $ModuleToSerializedCmdletsFile = @{
     "Az.AppService" = @( "Microsoft.Azure.PowerShell.Cmdlets.Websites.dll.json" );
     "Az.Billing"    = @( "Microsoft.Azure.PowerShell.Cmdlets.Billing.dll.json",
@@ -29,6 +50,7 @@ $ModuleToSerializedCmdletsFile = @{
     "Az.Dns"        = @( "Microsoft.Azure.PowerShell.Cmdlets.Dns.dll.json" );
     "Az.FrontDoor"  = @( "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll.json" );
     "Az.KeyVault"   = @( "Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll.json" );
+    "Az.Media"      = @( "Microsoft.Azure.PowerShell.Cmdlets.Media.dll.json" );
     "Az.Monitor"    = @( "Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll.json" );
     "Az.Network"    = @( "Microsoft.Azure.PowerShell.Cmdlets.Network.dll.json" );
     "Az.RedisCache" = @( "Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll.json" );
@@ -36,7 +58,7 @@ $ModuleToSerializedCmdletsFile = @{
                          "Microsoft.Azure.PowerShell.Cmdlets.Resources.dll.json",
                          "Microsoft.Azure.PowerShell.Cmdlets.Tags.dll.json" );
     "Az.ServiceBus" = @( "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll.json" );
-    "Az.Storage"    = @( "Microsoft.Azure.PowerShell.Cmdlets.Storage.dll.json" );
+    "Az.Storage"    = @( "Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll.json" );
 }
 
 $CmdletsToParameters = @{}
@@ -59,7 +81,7 @@ foreach ($File in $SerializedCmdletsFiles)
     Write-Debug "[DEBUG] Processing serialized cmdlet file '$FullFile'"
     $Json = ConvertFrom-Json ([System.IO.File]::ReadAllText($FullFile))
     $Hashtable = @{}
-    $Json.PSObject.Properties | ForEach-Object { $Hashtable[$_.Name] =  $_.Value }
+    $Json.PSObject.Properties | ForEach-Object { $Hashtable[$_.Name] = $_.Value }
     foreach ($Cmdlet in $Hashtable.Cmdlets)
     {
         $CmdletsToParameters[$Cmdlet.Name] = $Cmdlet.Parameters
@@ -192,7 +214,7 @@ foreach ($Script in $GeneratedScripts)
     $MissingParameters = @()
     foreach ($Parameter in $ExistingParameters)
     {
-        if (($Parameter.Name -ne 'ResourceId') -and (($Parameters | Where-Object { $_ -eq $Parameter.Name }).Count -eq 0))
+        if (($Parameter.Name -ne 'ResourceId') -and (-not $IgnoreForce -or $Parameter.Name -ne 'Force') -and (($Parameters | Where-Object { $_ -eq $Parameter.Name }).Count -eq 0))
         {
             $Found = $false
             foreach ($Alias in $Parameter.AliasList)

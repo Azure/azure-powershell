@@ -1,5 +1,5 @@
 @{
-# region definition 
+  GUID = '7417c0b6-55f6-4ee9-a3de-831752536106'
   RootModule = './Az.Dns.psm1'
   ModuleVersion = '0.0.1'
   CompatiblePSEditions = 'Core', 'Desktop'
@@ -11,27 +11,15 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Dns.private.dll'
   FormatsToProcess = './Az.Dns.format.ps1xml'
-# endregion 
-
-# region persistent data 
-  GUID = '7417c0b6-55f6-4ee9-a3de-831752536106'
-# endregion 
-
-# region private data 
+  CmdletsToExport = 'Get-AzDnsRecordSet', 'Get-AzDnsResourceReference', 'Get-AzDnsZone', 'New-AzDnsRecordSet', 'New-AzDnsZone', 'Remove-AzDnsRecordSet', 'Remove-AzDnsZone', 'Set-AzDnsRecordSet', 'Set-AzDnsZone', 'Update-AzDnsRecordSet', '*'
+  AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
-      Tags = 'Azure', 'ResourceManager', 'ARM', 'Dns'
+      Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Dns'
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
       ReleaseNotes = ''
       Profiles = 'latest-2019-04-30', 'hybrid-2019-03-01'
     }
   }
-# endregion 
-
-# region exports
-  CmdletsToExport = 'Get-AzDnsRecordSet', 'Get-AzDnsResourceReference', 'Get-AzDnsZone', 'New-AzDnsRecordSet', 'New-AzDnsZone', 'Remove-AzDnsRecordSet', 'Remove-AzDnsZone', 'Set-AzDnsRecordSet', 'Set-AzDnsZone', 'Update-AzDnsRecordSet', 'Update-AzDnsZone', '*'
-  AliasesToExport = '*'
-# endregion
-
 }

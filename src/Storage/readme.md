@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Storage service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.4.0 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.6.0 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -49,11 +49,132 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.md
-  - $(repo)/specification/storage/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/storage/resource-manager/readme.md
 
 subject-prefix: ''
 title: Storage
 module-version: 0.0.1
 skip-model-cmdlets: true
+
+directive:
+  - where:
+      subject: ^Usage$
+    set:
+      subject: StorageUsage
+  # Blob/Storage Container
+  - where:
+      subject: ^BlobContainer
+    set:
+      subject: RmStorageContainer
+  - where:
+      subject: ^BlobService
+    set:
+      subject: StorageBlobService
+  - where:
+      verb: Set
+      subject: RmStorageContainerLegalHold
+    set:
+      alias: Add-AzRmStorageContainerLegalHold
+  - where:
+      verb: Clear
+      subject: RmStorageContainerLegalHold
+    set:
+      alias: Remove-AzRmStorageContainerLegalHold
+  - where:
+      verb: Set
+      subject: RmStorageContainerImmutabilityPolicy
+    hide: true
+  - where:
+      verb: Invoke
+      subject: ExtendBlobContainerImmutabilityPolicy
+    hide: true
+  # StorageAccount
+  - where:
+      subject: ManagementPolicy$
+    set:
+      subject: StorageAccountManagementPolicy
+  - where:
+      verb: Test
+      subject: StorageAccountNameAvailability
+    set:
+      alias: Get-AzStorageAccountNameAvailability
+  - where:
+      subject: StorageAccount.*
+      parameter-name: AccountName
+    set:
+      parameter-name: Name
+  - where:
+      subject: StorageAccount
+      parameter-name: CustomDomainUseSubDomainName
+    set:
+      parameter-name: UseSubDomain
+  - where:
+      subject: StorageAccount
+      parameter-name: NetworkAcls(.*)
+    set:
+      parameter-name: NetworkRuleSet$1
+  - where:
+      subject: StorageAccount
+      parameter-name: BlobEnabled
+    set:
+      parameter-name: EncryptBlobService
+  - where:
+      subject: StorageAccount
+      parameter-name: FileEnabled
+    set:
+      parameter-name: EncryptFileService
+  - where:
+      subject: StorageAccount
+      parameter-name: QueueEnabled
+    set:
+      parameter-name: EncryptQueueService
+  - where:
+      subject: StorageAccount
+      parameter-name: TableEnabled
+    set:
+      parameter-name: EncryptTableService
+  - where:
+      verb: Set
+      subject: ^StorageAccount$
+    set:
+      verb: Invoke
+      subject: StorageAccountFailover
+  - where:
+      subject: ^StorageAccount$
+      parameter-name: Keyvaultproperty(.*)
+    set:
+      parameter-name: $1
+  - where:
+      subject: ^StorageAccount$
+      parameter-name: IsHnsEnabled
+    set:
+      parameter-name: EnableHierarchicalNamespace
+  - where:
+      subject: .*ImmutabilityPolicy.*
+      parameter-name: ImmutabilityPeriodSinceCreationInDay
+    set:
+      parameter-name: ImmutabilityPeriod
+  - where:
+      subject: StorageAccountProperty
+    hide: true
+  - where:
+      verb: Update
+      subject: ^StorageAccount$
+    hide: true
+  - where:
+      verb: New
+      subject: ^StorageAccount$
+    hide: true
+  # Update csproj for customizations
+  - from: Az.Storage.csproj
+    where: $
+    transform: >
+        return $.replace('</Project>', '  <Import Project=\"custom\\dataplane.props\" />\n</Project>' );
+  # Fix duplicate name
+  - where:
+      subject: StorageAccountNameAvailability
+      variant: ^Check\d?$|^CheckViaIdentity\d?$
+      parameter-name: Name
+    set:
+      parameter-name: Parameter
 ```

@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Dns service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.4.0 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.6.0 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -49,10 +49,83 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.md
-  - $(repo)/specification/dns/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/dns/resource-manager/readme.md
 
 title: Dns
 module-version: 0.0.1
-skip-model-cmdlets: true
+
+directive:
+# RecordSet
+  - where:
+      subject: RecordSet
+      parameter-name: Parameter
+    set:
+      parameter-name: RecordSet
+  - where: # This parameter needs removed
+      subject: RecordSet
+      parameter-name: Name
+    set:
+      parameter-name: ResourceName
+  - where:
+      subject: RecordSet
+      parameter-name: RelativeRecordSetName
+    set:
+      parameter-name: Name
+      alias: RelativeRecordSetName
+  - where:
+      subject: RecordSet
+      parameter-name: Ttl
+    set:
+      parameter-name: TimeToLive
+      alias: Ttl
+  - where:
+      subject: RecordSet
+      parameter-name: Recordsetnamesuffix
+    set:
+      parameter-name: NameSuffix
+  - where:
+      subject: RecordSet
+      parameter-name: MxRecord
+    set:
+      parameter-name: MXRecord
+  - where:
+      subject: RecordSet
+      parameter-name: NsRecord
+    set:
+      parameter-name: NSRecord
+  - where:
+      subject: RecordSet
+      parameter-name: CnameRecordCname
+    set:
+      parameter-name: CnameRecordName
+  - where:
+      verb: ^New$|^Set$|^Update$
+      subject: RecordSet
+    hide: true
+
+# ResourceReference
+  - where:
+      subject: DnsResourceReference
+      parameter-name: Parameter
+    set:
+      parameter-name: ResourceReference
+  - where:
+      verb: Get
+      subject: DnsResourceReference
+    hide: true
+
+# Zone
+  - where: # Only updates Tags
+      verb: Update
+      subject: Zone
+    remove: true
+  - where:
+      subject: Zone
+      parameter-name: Parameter
+    set:
+      parameter-name: Zone
+  - where:
+      verb: ^New$|^Set$
+      subject: Zone
+    hide: true
 ```
