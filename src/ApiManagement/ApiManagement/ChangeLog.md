@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update `-Format` parameter description in `Set-AzApiManagementPolicy` reference documentation
+* Removed references of deprecated cmdlet `Update-AzApiManagementDeployment` from reference documentation. Use `Set-AzApiManagement` instead.
 
 ## Version 1.3.0
 * Fixed miscellaneous typos across module

@@ -42,9 +42,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing
         internal const string BlobStorageParameterName = "BlobStorage";
         internal static readonly string AuditLogsDestinationWasNotSpecifiedWarning = $"Audit logs destination was not specified, {BlobStorageParameterName} is the default destination.";
         internal static readonly Exception SetAuditingSettingsException = new Exception("Setting Auditing Settings failed.");
-        internal static readonly Exception UpdateDiagnosticSettingsException = new Exception("Updating Diagnostic Settings failed.");
-        internal static readonly Exception CreateDiagnosticSettingsException =
-            new Exception("Creating Diagnostic Settings failed.");
+        internal static readonly Exception UpdateDiagnosticSettingsException = new Exception("Failed to update Diagnostic Settings.");
+        internal static readonly Exception CreateDiagnosticSettingsException = new Exception("Failed to Create Diagnostic Settings.");
+        internal static readonly Exception RemoveDiagnosticSettingsException = new Exception("Failed to remove Diagnostic Settings.");
         internal static readonly Exception EventHubAuthorizationRuleResourceIdParameterException =
             new PSArgumentException("Event hub authorization rule resource id is not provided", "EventHubAuthorizationRuleResourceId");
         internal static readonly Exception WorkspaceResourceIdParameterException =

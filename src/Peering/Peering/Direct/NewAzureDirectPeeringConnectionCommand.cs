@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
 {
     using System;
     using System.Management.Automation;
-
+    using System.Runtime.CompilerServices;
     using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
     [Cmdlet(
         VerbsCommon.New,
         "AzPeeringDirectConnectionObject",
-        DefaultParameterSetName = Constants.ParameterSetNameIPv4Prefix, SupportsShouldProcess = false)]
+        DefaultParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix, SupportsShouldProcess = false)]
     [OutputType(typeof(PSDirectConnection))]
     public class NewAzureDirectPeeringConnectionCommand : PeeringBaseCmdlet
     {
@@ -39,12 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
             Position = 0,
             Mandatory = true,
             HelpMessage = Constants.HelpPeeringDBFacilityId,
-            ParameterSetName = Constants.ParameterSetNameIPv4Prefix)]
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            HelpMessage = Constants.HelpPeeringDBFacilityId,
-            ParameterSetName = Constants.ParameterSetNameIPv6Prefix)]
+            ParameterSetName = Constants.ParameterSetNameMicrosoftProvidedIPAddress)]
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -54,15 +49,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         public int? PeeringDBFacilityId { get; set; }
 
         /// <summary>
+        ///     Microsoft provides the bgp session 
+        /// </summary>
+        [Parameter(
+             Mandatory = true,
+             HelpMessage = Constants.SessionAddressProviderHelp,
+             ParameterSetName = Constants.ParameterSetNameMicrosoftProvidedIPAddress)]
+        [ValidateNotNull]
+        public SwitchParameter MicrosoftProvidedIPAddress { get; set; }
+
+        /// <summary>
         /// Gets or sets the session ipv4.
         /// </summary>
         [Parameter(
-            Position = 1,
-            Mandatory = true,
-            HelpMessage = Constants.HelpSessionIPv4Prefix,
-            ParameterSetName = Constants.ParameterSetNameIPv4Prefix)]
-        [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = Constants.HelpSessionIPv4Prefix,
             ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix)]
         [ValidateNotNullOrEmpty]
@@ -72,12 +72,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         /// Gets or sets the session ipv6.
         /// </summary>
         [Parameter(
-            Position = 1,
-            Mandatory = true,
-            HelpMessage = Constants.HelpSessionIPv6Prefix,
-            ParameterSetName = Constants.ParameterSetNameIPv6Prefix)]
-        [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = Constants.HelpSessionIPv6Prefix,
             ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix)]
         public string SessionPrefixV6 { get; set; }
@@ -86,32 +81,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         ///     Bandwidth offered at this location.
         /// </summary>
         [Parameter(
-             Position = 2,
              Mandatory = true,
              HelpMessage = Constants.BandwidthHelp,
-             ParameterSetName = Constants.ParameterSetNameIPv4Prefix),
-         Parameter(
-             Position = 2,
+             ParameterSetName = Constants.ParameterSetNameMicrosoftProvidedIPAddress)]
+        [Parameter(
              Mandatory = true,
              HelpMessage = Constants.BandwidthHelp,
-             ParameterSetName = Constants.ParameterSetNameIPv6Prefix),
-         Parameter(
-             Position = 2,
-             Mandatory = true,
-             HelpMessage = Constants.BandwidthHelp,
-             ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix),
-         PSArgumentCompleter("10000", "20000", "30000", "40000", "50000", "60000", "70000", "80000", "90000", "100000"),
-         ValidateRange(Constants.MinRange, Constants.MaxRange), ValidateNotNullOrEmpty]
+             ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix)]
+        [PSArgumentCompleter("10000", "20000", "30000", "40000", "50000", "60000", "70000", "80000", "90000", "100000")]
+        [ValidateRange(Constants.MinRange, Constants.MaxRange), ValidateNotNullOrEmpty]
         public int? BandwidthInMbps { get; set; }
+
+        /// <summary>
+        ///     Flag to mark connection as use for peering service.
+        /// </summary>
+        [Parameter(
+             Mandatory = false,
+             HelpMessage = Constants.UseForPeeringServiceHelp,
+             ParameterSetName = Constants.ParameterSetNameMicrosoftProvidedIPAddress)]
+        [Parameter(
+             Mandatory = false,
+             HelpMessage = Constants.UseForPeeringServiceHelp,
+            ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix)]
+        [PSDefaultValue(Value = false)]
+        public SwitchParameter UseForPeeringService { get; set; }
 
         /// <summary>
         /// Gets or sets the max prefixes advertised ipv4.
         /// </summary>
         [Parameter(
-             Mandatory = false,
-             HelpMessage = Constants.HelpMaxAdvertisedIPv4,
-             ParameterSetName = Constants.ParameterSetNameIPv4Prefix),
-         Parameter(
              Mandatory = false,
              HelpMessage = Constants.HelpMaxAdvertisedIPv4,
              ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix),
@@ -124,10 +122,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         [Parameter(
              Mandatory = false,
              HelpMessage = Constants.HelpMaxAdvertisedIPv6,
-             ParameterSetName = Constants.ParameterSetNameIPv6Prefix),
-         Parameter(
-             Mandatory = false,
-             HelpMessage = Constants.HelpMaxAdvertisedIPv6,
              ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix),
          ValidateRange(1, 2000)]
         public int? MaxPrefixesAdvertisedIPv6 { get; set; }
@@ -138,17 +132,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         [Parameter(
              Mandatory = false,
              HelpMessage = Constants.MD5AuthenticationKeyHelp,
-             ParameterSetName = Constants.ParameterSetNameIPv4Prefix),
-         Parameter(
-             Mandatory = false,
-             HelpMessage = Constants.MD5AuthenticationKeyHelp,
-             ParameterSetName = Constants.ParameterSetNameIPv6Prefix),
-         Parameter(
-             Mandatory = false,
-             HelpMessage = Constants.MD5AuthenticationKeyHelp,
              ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix)]
         public string MD5AuthenticationKey { get; set; }
-
 
         /// <summary>
         ///     The inherited Execute function.
@@ -169,25 +154,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         /// </exception>
         private PSDirectConnection CreateDirectPeering()
         {
-
             var peeringRequest = new PSDirectConnection
-                                     {
-                                         BandwidthInMbps = this.BandwidthInMbps,
-                                         PeeringDBFacilityId = this.PeeringDBFacilityId,
-                                         ConnectionIdentifier = Guid.NewGuid().ToString(),
-                                         BgpSession = new PSBgpSession
-                                                          {
-                                                              MaxPrefixesAdvertisedV4 = !string.IsNullOrEmpty(this.SessionPrefixV4) ? (this.MaxPrefixesAdvertisedIPv4 ?? 20000) : (int?)null,
-                                                              MaxPrefixesAdvertisedV6 = !string.IsNullOrEmpty(this.SessionPrefixV6) ? (this.MaxPrefixesAdvertisedIPv6 ?? 2000) : (int?)null,
-                                             SessionPrefixV4 =
-                                                                  this.ValidatePrefix(
-                                                                      this.SessionPrefixV4?.Trim()),
-                                                              SessionPrefixV6 =
-                                                                  this.ValidatePrefix(
-                                                                      this.SessionPrefixV6?.Trim()),
-                                                              Md5AuthenticationKey = this.MD5AuthenticationKey
-                                                          }
-                                     };
+            {
+                BandwidthInMbps = this.BandwidthInMbps,
+                PeeringDBFacilityId = this.PeeringDBFacilityId,
+                ConnectionIdentifier = Guid.NewGuid().ToString(),
+                SessionAddressProvider = this.MicrosoftProvidedIPAddress ? Constants.Microsoft : Constants.Peer,
+                UseForPeeringService = this.UseForPeeringService,
+                BgpSession = null
+            };
+
+            if (!this.MicrosoftProvidedIPAddress && !string.IsNullOrEmpty(this.SessionPrefixV4) || !string.IsNullOrEmpty(this.SessionPrefixV6))
+            {
+                peeringRequest.BgpSession = new PSBgpSession
+                {
+                    MaxPrefixesAdvertisedV4 = !string.IsNullOrEmpty(this.SessionPrefixV4) ? (this.MaxPrefixesAdvertisedIPv4 ?? 20000) : (int?)null,
+                    MaxPrefixesAdvertisedV6 = !string.IsNullOrEmpty(this.SessionPrefixV6) ? (this.MaxPrefixesAdvertisedIPv6 ?? 2000) : (int?)null,
+                    SessionPrefixV4 = this.ValidatePrefix(this.SessionPrefixV4?.Trim()),
+                    SessionPrefixV6 = this.ValidatePrefix(this.SessionPrefixV6?.Trim()),
+                    Md5AuthenticationKey = this.MD5AuthenticationKey
+                };
+            }
 
             if (this.IsValidConnection(peeringRequest)) return peeringRequest;
             throw new PSArgumentException(string.Format(Resources.Error_InvalidConnection));

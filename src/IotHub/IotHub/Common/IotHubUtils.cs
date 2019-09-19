@@ -118,11 +118,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             return ConvertObject<PSCloudToDeviceProperties, CloudToDeviceProperties>(psCloudToDeviceProperties);
         }
 
-        public static OperationsMonitoringProperties ToOperationsMonitoringProperties(PSOperationsMonitoringProperties psOperationsMonitoringProperties)
-        {
-            return ConvertObject<PSOperationsMonitoringProperties, OperationsMonitoringProperties>(psOperationsMonitoringProperties);
-        }
-
         public static IotHubSkuInfo ToIotHubSku(PSIotHubSkuInfo psIotHubSkuInfo)
         {
             return ConvertObject<PSIotHubSkuInfo, IotHubSkuInfo>(psIotHubSkuInfo);
