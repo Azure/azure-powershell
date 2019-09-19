@@ -14,6 +14,12 @@ This topic displays help topics for the Azure SQL Database Cmdlets.
 ### [Add-AzSqlDatabaseToFailoverGroup](Add-AzSqlDatabaseToFailoverGroup.md)
 Adds one or more databases to an Azure SQL Database Failover Group.
 
+### [Add-AzSqlElasticJobStep](Add-AzSqlElasticJobStep.md)
+Adds a job step to a job
+
+### [Add-AzSqlElasticJobTarget](Add-AzSqlElasticJobTarget.md)
+Adds a target to a target group
+
 ### [Add-AzSqlInstanceKeyVaultKey](Add-AzSqlInstanceKeyVaultKey.md)
 Adds a key vault key to the provided Managed Instance. 
 
@@ -173,6 +179,30 @@ Gets a deleted database that you can restore.
 
 ### [Get-AzSqlDeletedInstanceDatabaseBackup](Get-AzSqlDeletedInstanceDatabaseBackup.md)
 Gets a deleted database that you can restore.
+
+### [Get-AzSqlElasticJob](Get-AzSqlElasticJob.md)
+Gets one or more jobs
+
+### [Get-AzSqlElasticJobAgent](Get-AzSqlElasticJobAgent.md)
+Gets a Azure SQL Elastic Job agent
+
+### [Get-AzSqlElasticJobCredential](Get-AzSqlElasticJobCredential.md)
+Gets one or more credentials
+
+### [Get-AzSqlElasticJobExecution](Get-AzSqlElasticJobExecution.md)
+Gets one or more job executions
+
+### [Get-AzSqlElasticJobStep](Get-AzSqlElasticJobStep.md)
+Gets one or more job steps
+
+### [Get-AzSqlElasticJobStepExecution](Get-AzSqlElasticJobStepExecution.md)
+Gets one or more job step executions
+
+### [Get-AzSqlElasticJobTargetExecution](Get-AzSqlElasticJobTargetExecution.md)
+Gets one or more job target executions
+
+### [Get-AzSqlElasticJobTargetGroup](Get-AzSqlElasticJobTargetGroup.md)
+Gets one or more job target groups
 
 ### [Get-AzSqlElasticPool](Get-AzSqlElasticPool.md)
 Gets elastic pools and their property values in an Azure SQL Database.
@@ -351,6 +381,18 @@ Creates a new restore point from which a SQL Database can be restored.
 ### [New-AzSqlDatabaseSecondary](New-AzSqlDatabaseSecondary.md)
 Creates a secondary database for an existing database and starts data replication.
 
+### [New-AzSqlElasticJob](New-AzSqlElasticJob.md)
+Creates a new job
+
+### [New-AzSqlElasticJobAgent](New-AzSqlElasticJobAgent.md)
+Creates a new elastic job agent
+
+### [New-AzSqlElasticJobCredential](New-AzSqlElasticJobCredential.md)
+Creates a new job credential
+
+### [New-AzSqlElasticJobTargetGroup](New-AzSqlElasticJobTargetGroup.md)
+Creates a new target group
+
 ### [New-AzSqlElasticPool](New-AzSqlElasticPool.md)
 Creates an elastic database pool for a SQL Database.
 
@@ -422,6 +464,24 @@ Terminates data replication between a SQL Database and the specified secondary d
 
 ### [Remove-AzSqlDatabaseSensitivityClassification](Remove-AzSqlDatabaseSensitivityClassification.md)
 Removes the information types and sensitivity labels of columns in the database.
+
+### [Remove-AzSqlElasticJob](Remove-AzSqlElasticJob.md)
+Removes a job
+
+### [Remove-AzSqlElasticJobAgent](Remove-AzSqlElasticJobAgent.md)
+Removes the elastic job agent
+
+### [Remove-AzSqlElasticJobCredential](Remove-AzSqlElasticJobCredential.md)
+Removes the elastic job credential
+
+### [Remove-AzSqlElasticJobStep](Remove-AzSqlElasticJobStep.md)
+Removes the job step
+
+### [Remove-AzSqlElasticJobTarget](Remove-AzSqlElasticJobTarget.md)
+Removes the target from the target group
+
+### [Remove-AzSqlElasticJobTargetGroup](Remove-AzSqlElasticJobTargetGroup.md)
+Removes the target group
 
 ### [Remove-AzSqlElasticPool](Remove-AzSqlElasticPool.md)
 Deletes an elastic database pool.
@@ -537,6 +597,18 @@ Modifies TDE property for a database.
 ### [Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.
 
+### [Set-AzSqlElasticJob](Set-AzSqlElasticJob.md)
+Updates a job
+
+### [Set-AzSqlElasticJobAgent](Set-AzSqlElasticJobAgent.md)
+Updates an elastic job agent
+
+### [Set-AzSqlElasticJobCredential](Set-AzSqlElasticJobCredential.md)
+Updates a job credential
+
+### [Set-AzSqlElasticJobStep](Set-AzSqlElasticJobStep.md)
+Updates a job step
+
 ### [Set-AzSqlElasticPool](Set-AzSqlElasticPool.md)
 Modifies properties of an elastic database pool in Azure SQL Database.
 
@@ -603,6 +675,9 @@ Starts the workflow that runs a recommended index operation.
 ### [Start-AzSqlDatabaseVulnerabilityAssessmentScan](Start-AzSqlDatabaseVulnerabilityAssessmentScan.md)
 Starts a vulnerability assessment scan.
 
+### [Start-AzSqlElasticJob](Start-AzSqlElasticJob.md)
+Starts a job, returning a job execution id that can be polled to view it's status
+
 ### [Start-AzSqlInstanceDatabaseVulnerabilityAssessmentScan](Start-AzSqlInstanceDatabaseVulnerabilityAssessmentScan.md)
 Starts a vulnerability assessment scan.
 
@@ -614,6 +689,9 @@ Cancels the asynchronous updates operation on the database.
 
 ### [Stop-AzSqlDatabaseExecuteIndexRecommendation](Stop-AzSqlDatabaseExecuteIndexRecommendation.md)
 Stops the workflow that runs a recommended index operation.
+
+### [Stop-AzSqlElasticJob](Stop-AzSqlElasticJob.md)
+Stops a job given it's job execution id
 
 ### [Stop-AzSqlElasticPoolActivity](Stop-AzSqlElasticPoolActivity.md)
 Cancels the asynchronous update operation on an elastic pool.
