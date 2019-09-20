@@ -12,13 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.FrontDoor;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Common
 {
@@ -43,6 +41,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Common
         public const string FieldsWithCertificateNameCheckParameterSet = "ByFieldsWithCertificateNameCheckParameterSet";
         public const string FieldsWithCustomHttpsConfigParameterSet = "ByFieldsWithCustomHttpsConfigParameterSet";
         public const string ObjectWithCustomHttpsConfigParameterSet = "ByObjectWithCustomHttpsConfigParameterSet";
+        public const string KeyVaultCertificateSourceParameterSet = "KeyVaultCertificateSourceParameterSet";
+        public const string FrontDoorCertificateSourceParameterSet = "FrontDoorCertificateSourceParameterSet";
 
         /// <summary>
         /// Gets or sets the Front Door management client.

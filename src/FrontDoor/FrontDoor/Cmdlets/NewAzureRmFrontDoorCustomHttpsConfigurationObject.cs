@@ -12,16 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
-using Microsoft.Azure.Management.FrontDoor;
-using System.Linq;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -41,44 +36,80 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// The source of the SSL certificate. Part of CustomHttpsConfiguration.
         /// </summary>
-        [Parameter(ParameterSetName = FieldsWithCustomHttpsConfigParameterSet, Mandatory = true, HelpMessage = "The source of the SSL certificate")]
+        [Parameter(Mandatory = true, HelpMessage = "The source of the SSL certificate")]
         [PSArgumentCompleter("AzureKeyVault", "FrontDoor")]
         public string CertificateSource { get; set; }
 
         /// <summary>
         /// The minimum TLS version required from the clients to establish an SSL handshake with Front Door. Part of CustomHttpsConfiguration.
         /// </summary>
-        [Parameter(ParameterSetName = FieldsWithCustomHttpsConfigParameterSet, Mandatory = true, HelpMessage = "The minimum TLS version required from the clients to establish an SSL handshake with Front Door.")]
+        [Parameter(Mandatory = true, HelpMessage = "The minimum TLS version required from the clients to establish an SSL handshake with Front Door.")]
         public string MinimumTlsVersion { get; set; }
 
         /// <summary>
         /// Defines the TLS extension protocol that is used for secure delivery. Part of CustomHttpsConfiguration.
         /// </summary>
-        [Parameter(ParameterSetName = FieldsWithCustomHttpsConfigParameterSet, Mandatory = false, HelpMessage = "The Key Vault containing the SSL certificate")]
+        [Parameter(ParameterSetName = KeyVaultCertificateSourceParameterSet, Mandatory = true, HelpMessage = "The Key Vault containing the SSL certificate")]
         public string Vault { get; set; }
 
         /// <summary>
         /// The name of the Key Vault secret representing the full certificate PFX. Part of CustomHttpsConfiguration.
         /// </summary>
-        [Parameter(ParameterSetName = FieldsWithCustomHttpsConfigParameterSet, Mandatory = false, HelpMessage = "The name of the Key Vault secret representing the full certificate PFX")]
+        [Parameter(ParameterSetName = KeyVaultCertificateSourceParameterSet, Mandatory = true, HelpMessage = "The name of the Key Vault secret representing the full certificate PFX")]
         public string SecretName { get; set; }
 
         /// <summary>
         /// The version of the Key Vault secret representing the full certificate PFX. Part of CustomHttpsConfiguration.
         /// </summary>
-        [Parameter(ParameterSetName = FieldsWithCustomHttpsConfigParameterSet, Mandatory = false, HelpMessage = "The version of the Key Vault secret representing the full certificate PFX")]
+        [Parameter(ParameterSetName = KeyVaultCertificateSourceParameterSet, Mandatory = true, HelpMessage = "The version of the Key Vault secret representing the full certificate PFX")]
         public string SecretVersion { get; set; }
 
         /// <summary>
         /// The type of the certificate used for secure connections to a frontendEndpoint. Part of CustomHttpsConfiguration.
         /// </summary>
-        [Parameter(ParameterSetName = FieldsWithCustomHttpsConfigParameterSet, Mandatory = false, HelpMessage = "The type of the certificate used for secure connections to a frontendEndpoint")]
+        [Parameter(ParameterSetName = KeyVaultCertificateSourceParameterSet, Mandatory = true, HelpMessage = "The type of the certificate used for secure connections to a frontendEndpoint")]
+        [Parameter(ParameterSetName = FrontDoorCertificateSourceParameterSet, Mandatory = true, HelpMessage = "The type of the certificate used for secure connections to a frontendEndpoint")]
         [PSArgumentCompleter("Shared", "Dedicated")]
         public string CertificateType { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
+            PSKeyVaultCertificateSourceParameters psKeyVaultCertificateSourceParameters = null;
+            PSFrontDoorCertificateSourceParameters psFrontDoorCertificateSourceParameters = null;
+            switch (ParameterSetName)
+            {
+                case KeyVaultCertificateSourceParameterSet:
+                    {
+                        psKeyVaultCertificateSourceParameters = new PSKeyVaultCertificateSourceParameters
+                        {
+                            Vault = Vault,
+                            SecretName = SecretName,
+                            SecretVersion = SecretVersion,
+                            CertificateType = (PSCertificateType)Enum.Parse(typeof(PSCertificateType), CertificateType)
+                        };
+                        break;
+                    }
+                case FrontDoorCertificateSourceParameterSet:
+                    {
+                        psFrontDoorCertificateSourceParameters = new PSFrontDoorCertificateSourceParameters
+                        {
+                            CertificateType = (PSCertificateType)Enum.Parse(typeof(PSCertificateType), CertificateType)
+                        };
+                        break;
+                    }
+                default:
+                    break;
+            }
+
+            var customHttpsConfiguration = new PSCustomHttpsConfiguration
+            {
+                Name = Name,
+                CertificateSource = CertificateSource,
+                MinimumTlsVersion = MinimumTlsVersion,
+                FrontDoorCertificateSourceParameters = psFrontDoorCertificateSourceParameters,
+                KeyVaultCertificateSourceParameters = psKeyVaultCertificateSourceParameters
+            };
+            WriteObject(customHttpsConfiguration);
         }
     }
 }

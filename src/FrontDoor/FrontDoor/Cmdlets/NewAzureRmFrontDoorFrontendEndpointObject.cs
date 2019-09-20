@@ -12,16 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
-using Microsoft.Azure.Management.FrontDoor;
-using System.Linq;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -41,7 +37,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// The host name of the frontendEndpoint. Must be a domain name.
         /// </summary>
-        [Parameter(Mandatory = true,  HelpMessage = "The host name of the frontendEndpoint.")]
+        [Parameter(Mandatory = true, HelpMessage = "The host name of the frontendEndpoint.")]
         public string HostName { get; set; }
 
         /// <summary>
@@ -116,27 +112,46 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public override void ExecuteCmdlet()
         {
             PSCustomHttpsConfiguration customHttpsConfiguration;
- 
+
             switch (ParameterSetName)
             {
                 case FieldsWithCustomHttpsConfigParameterSet:
-                {
-                    customHttpsConfiguration = new PSCustomHttpsConfiguration
                     {
-                        CertificateSource = CertificateSource,
-                        MinimumTlsVersion = MinimumTlsVersion,
-                        Vault = Vault,
-                        SecretName = SecretName,
-                        SecretVersion = SecretVersion,
-                        CertificateType = CertificateType
-                    };
-                    break;
-                }
+                        PSKeyVaultCertificateSourceParameters psKeyVaultCertificateSourceParameters = null;
+                        PSFrontDoorCertificateSourceParameters psFrontDoorCertificateSourceParameters = null;
+                        if (CertificateSource == "AzureKeyVault")
+                        {
+                            psKeyVaultCertificateSourceParameters = new PSKeyVaultCertificateSourceParameters
+                            {
+                                Vault = Vault,
+                                SecretName = SecretName,
+                                SecretVersion = SecretVersion,
+                                CertificateType = (PSCertificateType)Enum.Parse(typeof(PSCertificateType), CertificateType)
+                            };
+                        }
+                        else
+                        {
+                            psFrontDoorCertificateSourceParameters = new PSFrontDoorCertificateSourceParameters
+                            {
+                                CertificateType = (PSCertificateType)Enum.Parse(typeof(PSCertificateType), CertificateType)
+
+                            };
+                        }
+
+                        customHttpsConfiguration = new PSCustomHttpsConfiguration
+                        {
+                            CertificateSource = CertificateSource,
+                            MinimumTlsVersion = MinimumTlsVersion,
+                            KeyVaultCertificateSourceParameters = psKeyVaultCertificateSourceParameters,
+                            FrontDoorCertificateSourceParameters = psFrontDoorCertificateSourceParameters
+                        };
+                        break;
+                    }
                 default:
-                {
-                    customHttpsConfiguration = !this.IsParameterBound(c => c.CustomHttpsConfiguration) ? null : CustomHttpsConfiguration;
-                    break;
-                }
+                    {
+                        customHttpsConfiguration = !this.IsParameterBound(c => c.CustomHttpsConfiguration) ? null : CustomHttpsConfiguration;
+                        break;
+                    }
             }
 
             var FrontendEndpoint = new PSFrontendEndpoint

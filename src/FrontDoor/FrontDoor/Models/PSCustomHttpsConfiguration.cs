@@ -14,20 +14,34 @@
 
 namespace Microsoft.Azure.Commands.FrontDoor.Models
 {
-    public class PSCustomHttpsConfiguration
+    public class PSFrontDoorCertificateSourceParameters
     {
-        public string CertificateSource { get; set; }
+        public PSCertificateType CertificateType { get; set; }
+    }
 
-        public string MinimumTlsVersion { get; set; }
-
+    public class PSKeyVaultCertificateSourceParameters
+    {
         public string Vault { get; set; }
 
         public string SecretName { get; set; }
 
         public string SecretVersion { get; set; }
 
-        public string CertificateType { get; set; }
+        public PSCertificateType CertificateType { get; set; }
+    }
 
+    public class PSCustomHttpsConfiguration
+    {
         public const string ProtocolType = "ServerNameIndication";
+
+        public string Name { get; set; }
+
+        public string MinimumTlsVersion { get; set; }
+
+        public string CertificateSource { get; set; }
+
+        public PSKeyVaultCertificateSourceParameters KeyVaultCertificateSourceParameters { get; set; }
+
+        public PSFrontDoorCertificateSourceParameters FrontDoorCertificateSourceParameters { get; set; }
     }
 }
