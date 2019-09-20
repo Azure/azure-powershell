@@ -43,7 +43,7 @@ Tasks stopped in this manner will not be rescheduled.
 
 ### Example 1: Disable task scheduling on a compute node
 ```
-PS C:\>$Context = Get-AzBatchAccountKeys -AccountName "contosobatchaccount"
+PS C:\>$Context = Get-AzBatchAccountKey -AccountName "contosobatchaccount"
 PS C:\> Disable-AzBatchComputeNodeScheduling -PoolId "myPool" -Id "tvm-1783593343_34-20151117t222514z" -BatchContext $Context
 ```
 
@@ -55,7 +55,7 @@ Because the *DisableComputeNodeSchedulingOptions* parameter was not included any
 
 ### Example 2: Disable task scheduling on all compute nodes in a pool
 ```
-PS C:\>$Context = Get-AzBatchAccountKeys -AccountName "contosobatchaccount"
+PS C:\>$Context = Get-AzBatchAccountKey -AccountName "contosobatchaccount"
 PS C:\> Get-AzBatchComputeNode -PoolId "Pool06"  -BatchContext $Context | Disable-AzBatchComputeNodeScheduling -BatchContext $Context
 ```
 
@@ -70,7 +70,7 @@ Because the *DisableComputeNodeSchedulingOptions* parameter was not included any
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -193,7 +193,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
+[Get-AzBatchAccountKey](./Get-AzBatchAccountKey.md)
 
 [Enable-AzBatchComputeNodeScheduling](./Enable-AzBatchComputeNodeScheduling.md)
 

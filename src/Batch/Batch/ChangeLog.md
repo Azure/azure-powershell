@@ -39,6 +39,18 @@
 * Renamed `CurrentOSVersion` to `OSVersion` on `PSCloudServiceConfiguration`.
 * Removed `DataEgressGiB` and `DataIngressGiB` from `PSPoolUsageMetrics`.
 
+* Removed **Get-AzBatchNodeAgentSku** and replaced it with  **Get-AzBatchSupportedImage**. 
+  - **Get-AzBatchSupportedImage** returns the same data as **Get-AzBatchNodeAgentSku** but in a more friendly format.
+  - New non-verified images are also now returned. Additional information about `Capabilities` and `BatchSupportEndOfLife` for each image is also included.
+* Added ability to mount remote file-systems on each node of a pool via the new `MountConfiguration` parameter of **New-AzBatchPool**.
+* Now support network security rules blocking network access to a pool based on the source port of the traffic. This is done via the `SourcePortRanges` property on `PSNetworkSecurityGroupRule`.
+* When running a container, Batch now supports executing the task in the container working directory or in the Batch task working directory. This is controlled by the `WorkingDirectory` property on `PSTaskContainerSettings`.
+* Added ability to specify a collection of public IPs on `PSNetworkConfiguration` via the new `PublicIPs` property. This guarantees nodes in the Pool will have an IP from the list user provided IPs.
+* When not specified, the default value of `WaitForSuccess` on `PSSTartTask` is now `$True` (was `$False`).
+* When not specified, the default value of `Scope` on `PSAutoUserSpecification` is now `Pool` (was `Task` on Windows and `Pool` on Linux).
+
+
+
 ## Version 1.1.1
 * Fixed typo in help message and documentation to capitalize Windows
 * Fixed miscellaneous typos across module

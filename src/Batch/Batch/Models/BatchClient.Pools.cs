@@ -167,6 +167,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 pool.NetworkConfiguration = parameters.NetworkConfiguration.omObject;
             }
 
+            if (parameters.MountConfiguration != null)
+            {
+                pool.MountConfiguration = new List<MountConfiguration>();
+                foreach (PSMountConfiguration m in parameters.MountConfiguration)
+                {
+                    pool.MountConfiguration.Add(m.omObject);
+                }
+            }
+
             if (parameters.UserAccounts != null)
             {
                 pool.UserAccounts = parameters.UserAccounts.ToList().ConvertAll(user => user.omObject);

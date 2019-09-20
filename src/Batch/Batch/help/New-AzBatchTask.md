@@ -15,7 +15,7 @@ Creates a Batch task under a job.
 
 ### JobId_Single (Default)
 ```
-New-AzBatchTask -JobId <String> -Id <String> -CommandLine <String> [-DisplayName <String>]
+New-AzBatchTask -JobId <String> -Id <String> [-DisplayName <String>] -CommandLine <String>
  [-ResourceFiles <PSResourceFile[]>] [-EnvironmentSettings <IDictionary>]
  [-AuthenticationTokenSettings <PSAuthenticationTokenSettings>] [-UserIdentity <PSUserIdentity>]
  [-AffinityInformation <PSAffinityInformation>] [-Constraints <PSTaskConstraints>]
@@ -39,7 +39,7 @@ New-AzBatchTask [-Job <PSCloudJob>] [-Tasks <PSCloudTask[]>] -BatchContext <Batc
 
 ### JobObject_Single
 ```
-New-AzBatchTask [-Job <PSCloudJob>] -Id <String> -CommandLine <String> [-DisplayName <String>]
+New-AzBatchTask [-Job <PSCloudJob>] -Id <String> [-DisplayName <String>] -CommandLine <String>
  [-ResourceFiles <PSResourceFile[]>] [-EnvironmentSettings <IDictionary>]
  [-AuthenticationTokenSettings <PSAuthenticationTokenSettings>] [-UserIdentity <PSUserIdentity>]
  [-AffinityInformation <PSAffinityInformation>] [-Constraints <PSTaskConstraints>]
@@ -61,7 +61,7 @@ PS C:\>New-AzBatchTask -JobId "Job-000001" -Id "Task23" -CommandLine "cmd /c dir
 
 This command creates a task that has the ID Task23 under the job that has the ID Job-000001.
 The task runs the specified command.
-Use the **Get-AzBatchAccountKeys** cmdlet to assign a context to the $Context variable.
+Use the **Get-AzBatchAccountKey** cmdlet to assign a context to the $Context variable.
 
 ### Example 2: Create a Batch task
 ```
@@ -77,13 +77,13 @@ The task runs the specified command by using elevated permissions.
 
 ### Example 3: Add a collection of tasks to the specified job by using the pipeline
 ```
-PS C:\>$Context = Get-AzBatchAccountKeys -AccountName "ContosoBatchAccount"
+PS C:\>$Context = Get-AzBatchAccountKey -AccountName "ContosoBatchAccount"
 PS C:\> $Task01 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask("Task23", "cmd /c dir /s")
 PS C:\> $Task02 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask("Task24", "cmd /c dir /s")
 PS C:\> Get-AzBatchJob -Id "Job-000001" -BatchContext $Context | New-AzBatchTask -Tasks @($Task01, $Task02) -BatchContext $Context
 ```
 
-The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzBatchAccountKeys**.
+The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzBatchAccountKey**.
 The command stores this object reference in the $Context variable.
 The next two commands create **PSCloudTask** objects by using the New-Object cmdlet.
 The commands store the tasks in the $Task01 and $Task02 variables.
@@ -94,13 +94,13 @@ The command uses the context stored in $Context.
 
 ### Example 4: Add a collection of tasks to the specified job
 ```
-PS C:\>$Context = Get-AzBatchAccountKeys -AccountName "ContosoBatchAccount"
+PS C:\>$Context = Get-AzBatchAccountKey -AccountName "ContosoBatchAccount"
 PS C:\> $Task01 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask("Task23", "cmd /c dir /s")
 PS C:\> $Task02 = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudTask("Task24", "cmd /c dir /s")
 PS C:\> New-AzBatchTask -JobId "Job-000001" -Tasks @($Task01, $Task02) -BatchContext $Context
 ```
 
-The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzBatchAccountKeys**.
+The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzBatchAccountKey**.
 The command stores this object reference in the $Context variable.
 The next two commands create **PSCloudTask** objects by using the New-Object cmdlet.
 The commands store the tasks in the $Task01 and $Task02 variables.
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -446,7 +446,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -462,7 +462,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
+[Get-AzBatchAccountKey](./Get-AzBatchAccountKey.md)
 
 [Get-AzBatchJob](./Get-AzBatchJob.md)
 

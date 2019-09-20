@@ -13,13 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
+using System.Management.Automation;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -55,7 +52,6 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet, Mandatory = true)]
         [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet, Mandatory = true)]
-        [ValidateNotNullOrEmpty]
         public string CommandLine { get; set; }
 
         [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]

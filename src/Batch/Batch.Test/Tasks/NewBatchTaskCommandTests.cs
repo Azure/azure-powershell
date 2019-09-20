@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             cmdlet.JobId = "job-1";
 
-            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+            var e = Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
             cmdlet.Id = "testTask";
 
@@ -78,9 +78,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.ExecuteCmdlet();
         }
 
-        [Fact]
+        [Theory]
+        [InlineData("cmd /c echo hello")]
+        [InlineData("")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewBatchTaskParametersGetPassedToRequestTest()
+        public void NewBatchTaskParametersGetPassedToRequestTest(string commandline)
         {
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
@@ -90,7 +92,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.AffinityInformation = new PSAffinityInformation("affinityValue");
             cmdlet.DisplayName = "display name";
             cmdlet.Constraints = new PSTaskConstraints(TimeSpan.FromHours(1), TimeSpan.FromDays(2), 5);
-            cmdlet.CommandLine = "cmd /c echo hello";
+            cmdlet.CommandLine = commandline;
             cmdlet.EnvironmentSettings = new Dictionary<string, string>();
             cmdlet.EnvironmentSettings.Add("env1", "value1");
             cmdlet.MultiInstanceSettings = new PSMultiInstanceSettings("cmd /c echo coordinating", 3)
@@ -176,7 +178,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.ExecuteCmdlet();
         }
 
-        private void ExitConditionsAreSentToService()
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ExitConditionsAreSentToService()
         {
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
@@ -315,11 +319,65 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
-            string[] taskIds = new[] {"simple1", "simple2"};
-            PSCloudTask expected1 = new PSCloudTask(taskIds[0], commandLine);
-            PSCloudTask expected2 = new PSCloudTask(taskIds[1], commandLine);
+            const string pattern = @"**\*.txt";
+            const string containerUrl = "containerUrl";
+            const string path = "path";
+            const OutputFileUploadCondition uploadCondition = OutputFileUploadCondition.TaskCompletion;
 
-            cmdlet.Tasks = new PSCloudTask[] {expected1, expected2};
+            string[] taskIds = new[] { "simple1", "simple2" };
+            PSCloudTask[] tasks = taskIds.Select(
+                id => new PSCloudTask(id, commandLine)
+                {
+                    ResourceFiles = new[]
+                    {
+                         new PSResourceFile(ResourceFile.FromUrl("anotherFile.txt", "https://another.blob"))
+                    },
+                    OutputFiles = new[] 
+                    {
+                        new PSOutputFile(
+                            pattern,
+                            new PSOutputFileDestination(new PSOutputFileBlobContainerDestination(containerUrl, path)),
+                            new PSOutputFileUploadOptions(uploadCondition))
+                    },
+                    ApplicationPackageReferences = new[]
+                    {
+                        new PSApplicationPackageReference
+                        {
+                            ApplicationId = "1",
+                            Version = "foo"
+                        }
+                    },
+                    ExitConditions = new PSExitConditions()
+                    {
+                        ExitCodeRanges = new List<PSExitCodeRangeMapping>
+                        {
+                            new PSExitCodeRangeMapping(
+                                5,
+                                10,
+                                new PSExitOptions
+                                {
+                                    DependencyAction = Azure.Batch.Common.DependencyAction.Block
+                                })
+
+                        },
+                        ExitCodes = new List<PSExitCodeMapping>
+                        {
+                            new PSExitCodeMapping(
+                                11,
+                                new PSExitOptions
+                                {
+                                    DependencyAction = Azure.Batch.Common.DependencyAction.Block
+                                })
+
+                        },
+                        Default = new PSExitOptions
+                        {
+                            DependencyAction = Azure.Batch.Common.DependencyAction.Satisfy
+                        }
+                    }
+                }).ToArray();
+
+            cmdlet.Tasks = tasks;
 
             IList<TaskAddParameter> requestCollection = null;
 
@@ -347,6 +405,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             foreach (var task in requestCollection)
             {
                 Assert.Contains(task.Id, taskIds);
+                Assert.NotNull(task.ResourceFiles);
+                Assert.NotEmpty(task.ResourceFiles);
+                Assert.NotNull(task.OutputFiles);
+                Assert.NotEmpty(task.OutputFiles);
+                Assert.NotNull(task.ApplicationPackageReferences);
+                Assert.NotEmpty(task.ApplicationPackageReferences);
+
+                Assert.NotNull(task.ExitConditions.ExitCodeRanges);
+                Assert.NotEmpty(task.ExitConditions.ExitCodeRanges);
+                Assert.NotNull(task.ExitConditions.ExitCodes);
+                Assert.NotEmpty(task.ExitConditions.ExitCodes);
+                Assert.NotNull(task.ExitConditions.DefaultProperty);
             }
         }
 

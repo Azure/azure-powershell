@@ -258,6 +258,9 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                     ConvertEnvironmentSetting);
 
                 task.omObject.ResourceFiles = CreateSyncedList(task.ResourceFiles, ConvertResourceFile);
+                task.omObject.OutputFiles = CreateSyncedList(task.OutputFiles, ps => ps.omObject);
+                task.omObject.ApplicationPackageReferences = CreateSyncedList(task.ApplicationPackageReferences, ps => ps.omObject);
+                ExitConditionsSyncCollections(task.ExitConditions);
 
                 MultiInstanceSettingsSyncCollections(task.MultiInstanceSettings);
             }

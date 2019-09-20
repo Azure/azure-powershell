@@ -103,6 +103,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.TaskSchedulingPolicy = new PSTaskSchedulingPolicy(Azure.Batch.Common.ComputeNodeFillType.Spread);
             cmdlet.VirtualMachineConfiguration = new PSVirtualMachineConfiguration(new PSImageReference("offer", "publisher", "sku"), "node agent");
             cmdlet.VirtualMachineSize = "small";
+            cmdlet.MountConfiguration = new[] { new PSMountConfiguration(new PSAzureBlobFileSystemConfiguration("foo", "bar", "baz", AzureStorageAuthenticationKey.FromAccountKey("abc"))) };
             
             PoolAddParameter requestParameters = null;
 
@@ -142,6 +143,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Assert.Equal(cmdlet.VirtualMachineConfiguration.ImageReference.Offer, requestParameters.VirtualMachineConfiguration.ImageReference.Offer);
             Assert.Equal(cmdlet.VirtualMachineConfiguration.ImageReference.Sku, requestParameters.VirtualMachineConfiguration.ImageReference.Sku);
             Assert.Equal(cmdlet.VirtualMachineSize, requestParameters.VmSize);
+            Assert.Equal(cmdlet.MountConfiguration[0].AzureBlobFileSystemConfiguration.AccountName, requestParameters.MountConfiguration[0].AzureBlobFileSystemConfiguration.AccountName);
+            Assert.Equal(cmdlet.MountConfiguration[0].AzureBlobFileSystemConfiguration.AccountKey, requestParameters.MountConfiguration[0].AzureBlobFileSystemConfiguration.AccountKey);
+            Assert.Equal(cmdlet.MountConfiguration[0].AzureBlobFileSystemConfiguration.ContainerName, requestParameters.MountConfiguration[0].AzureBlobFileSystemConfiguration.ContainerName);
+            Assert.Equal(cmdlet.MountConfiguration[0].AzureBlobFileSystemConfiguration.RelativeMountPath, requestParameters.MountConfiguration[0].AzureBlobFileSystemConfiguration.RelativeMountPath);
         }
 
         [Fact]
