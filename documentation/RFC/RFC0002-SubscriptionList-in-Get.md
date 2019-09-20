@@ -47,7 +47,7 @@ Please insert below your anwser to the following questions or add any additional
 
   - _Your prefered default behavior_
 
-- Should the default behavior be only looking at the default subscriptions?
+- Should we provide a cmdlet to select a subset of subscriptions as the default, or would you prefer to use `$PSDefaultParameterValues` to do this?
 
   - _Your prefered default behavior_
 
