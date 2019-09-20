@@ -19,8 +19,8 @@ Explain the benefits of the change for the users.
 
 ```code
 As a PowerShell script developer
-I can run a GET command accross several subscriptions.
-so that I do not have to switch contexts to access and manage resources in multiple subscriptions
+I can run a GET command accross several subscriptions
+so I can search for Azure resources that meet scpecific criteria no matter what subscription they are in.
 ```
 
 ## User Experience
@@ -47,7 +47,7 @@ Please insert below your anwser to the following questions or add any additional
 
   - _Your prefered default behavior_
 
-- Should we provide a cmdlet to select a subset of subscriptions as the default, or would you prefer to use `$PSDefaultParameterValues` to do this?
+- What is most likely going to help you select a subset of subscriptions as the default? A new cmdlet, the use of `$PSDefaultParameterValues` or any other suggestion that you may have:
 
   - _Your prefered default behavior_
 

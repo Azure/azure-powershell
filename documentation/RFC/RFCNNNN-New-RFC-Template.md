@@ -14,7 +14,7 @@ Description of the change and rationale.
 
 Explain the benefits of the change for the users.
 
-```
+```code
 As a << user profile>>
 I can << do something >>
 so that << benefits >>
