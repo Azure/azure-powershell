@@ -22,7 +22,7 @@ New profiles will be added on a regular cadence that still needs to be defined a
 
 ## Motivation
 
-The support of Azure profiles will support the following scenarios.
+The support of Azure profiles will enable the following scenarios.
 
 ```code
 As a PowerShell script developer
