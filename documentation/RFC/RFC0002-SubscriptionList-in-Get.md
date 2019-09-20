@@ -43,7 +43,7 @@ Get-AzVm -name "bla" -SubscriptionId ['xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'x
 
 Please insert below your anwser to the following questions or add any additional questions that you may have:
 
-- Should the default behavior look after all accessible subscriptions?
+- Should the default behavior select all subscriptions in a tenant as part of connecting an account?
 
   - _Your prefered default behavior_
 
