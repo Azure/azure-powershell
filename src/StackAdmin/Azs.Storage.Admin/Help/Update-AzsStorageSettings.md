@@ -12,7 +12,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Update-AzsStorageSettings [-ResourceGroupName <String>] -RetentionPeriodForDeletedStorageAccountsInDays <Int32>
+Update-AzsStorageSettings [-Location <String>] -RetentionPeriodForDeletedStorageAccountsInDays <Int32>
  [<CommonParameters>]
 ```
 
@@ -30,8 +30,8 @@ Update the storage settings
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Resource group name.
+### -Location
+Location name.
 
 ```yaml
 Type: String

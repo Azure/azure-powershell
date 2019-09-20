@@ -12,7 +12,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Start-AzsReclaimStorageCapacity [-ResourceGroupName <String>] [-AsJob] [-Force] [-WhatIf] [-Confirm]
+Start-AzsReclaimStorageCapacity [-Location <String>] [-AsJob] [-Force] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -30,8 +30,8 @@ Start garbage collection.
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Resource group name.
+### -Location
+Location name.
 
 ```yaml
 Type: String

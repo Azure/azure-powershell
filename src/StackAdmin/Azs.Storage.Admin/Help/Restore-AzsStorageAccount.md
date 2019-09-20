@@ -13,7 +13,7 @@ schema: 2.0.0
 
 ### Undelete (Default)
 ```
-Restore-AzsStorageAccount -Name <String> [-ResourceGroupName <String>] [-AsJob] [-Force] [-WhatIf] [-Confirm]
+Restore-AzsStorageAccount -Name <String> [-Location <String>] [-AsJob] [-Force] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -51,8 +51,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource group name.
+### -Location
+Location name.
 
 ```yaml
 Type: String

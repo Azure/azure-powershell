@@ -12,7 +12,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Get-AzsStorageSettings [-ResourceGroupName <String>] [<CommonParameters>]
+Get-AzsStorageSettings [-Location <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,8 +29,8 @@ Get the storage settings.
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Resource group name.
+### -Location
+Location name.
 
 ```yaml
 Type: String

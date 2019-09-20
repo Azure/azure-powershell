@@ -8,13 +8,13 @@ schema: 2.0.0
 # Get-AzsStorageAccount
 
 ## SYNOPSIS
+Returns the requested storage account.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzsStorageAccount [-Summary] [-Filter <String>] [-Skip <Int32>] [-ResourceGroupName <String>]
- [-Top <Int32>] [<CommonParameters>]
+Get-AzsStorageAccount [-Summary] [-Filter <String>] [-Location <String>] [<CommonParameters>]
 ```
 
 ### InputObject
@@ -24,7 +24,7 @@ Get-AzsStorageAccount -InputObject <StorageAccount> [<CommonParameters>]
 
 ### Get
 ```
-Get-AzsStorageAccount [-ResourceGroupName <String>] -Name <String> [<CommonParameters>]
+Get-AzsStorageAccount [-Location <String>] -Name <String> [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -54,7 +54,7 @@ Get details of the specified storage account.
 ## PARAMETERS
 
 ### -Summary
-Switch for wheter summary or detailed information is returned.
+Switch for whether summary or detailed information is returned.
 
 ```yaml
 Type: SwitchParameter
@@ -98,23 +98,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Skip
-Skip the first N items as specified by the parameter value.
-
-```yaml
-Type: Int32
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: -1
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Resource group name.
+### -LocationName
+Location name.
 
 ```yaml
 Type: String
@@ -154,22 +139,6 @@ Aliases: AccountId
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Top
-Return the top N items as specified by the parameter value.
-Applies after the -Skip parameter.
-
-```yaml
-Type: Int32
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: -1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
