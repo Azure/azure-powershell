@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                     ForwardingProtocol = SDKForwardingConfiguration.ForwardingProtocol,
                     BackendPoolId = SDKForwardingConfiguration.BackendPool?.Id,
                     EnableCaching = SDKForwardingConfiguration.CacheConfiguration != null,
-                    QueryParameterStripDirective = SDKForwardingConfiguration.CacheConfiguration == null ? null : SDKForwardingConfiguration.CacheConfiguration.QueryParameterStripDirective,
+                    QueryParameterStripDirective = SDKForwardingConfiguration.CacheConfiguration?.QueryParameterStripDirective,
                     DynamicCompression = SDKForwardingConfiguration.CacheConfiguration == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), SDKForwardingConfiguration.CacheConfiguration.DynamicCompression)
                 };
             }
@@ -301,24 +301,23 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
 
         public static SdkFrontendEndpoint ToSdkFrontendEndpoints(this PSFrontendEndpoint psFrontendEndpoint)
         {
-            //SdkHttpsConfig psCustomHttpsConfiguration = null;
+            SdkHttpsConfig psCustomHttpsConfiguration = null;
 
-            //if ((psFrontendEndpoint.CertificateSource != null) &&
-            //    //(psFrontendEndpoint.ProtocolType != null) &&
-            //    !String.IsNullOrEmpty(psFrontendEndpoint.MinimumTlsVersion) &&
-            //    !String.IsNullOrEmpty(psFrontendEndpoint.MinimumTlsVersion) &&
-            //    (psFrontendEndpoint.SecretVersion != null) &&
-            //    (psFrontendEndpoint.CertificateType != null) &&
-            //    (psFrontendEndpoint.Vault != null))
-            //{
-            //    psCustomHttpsConfiguration = new SdkHttpsConfig(psFrontendEndpoint.CertificateSource,
-            //                                   psFrontendEndpoint.MinimumTlsVersion,
-            //                                   //psFrontendEndpoint.ProtocolType,
-            //                                   new SdkValut(psFrontendEndpoint.Vault),
-            //                                   psFrontendEndpoint.SecretName,
-            //                                   psFrontendEndpoint.SecretVersion,
-            //                                   psFrontendEndpoint.CertificateType);
-            //}
+            if ((psFrontendEndpoint.CustomHttpsConfiguration.CertificateSource != null) &&
+                //(psFrontendEndpoint.ProtocolType != null) &&
+                !String.IsNullOrEmpty(psFrontendEndpoint.CustomHttpsConfiguration.MinimumTlsVersion) &&
+                (psFrontendEndpoint.CustomHttpsConfiguration.SecretVersion != null) &&
+                (psFrontendEndpoint.CustomHttpsConfiguration.CertificateType != null) &&
+                (psFrontendEndpoint.CustomHttpsConfiguration.Vault != null))
+            {
+                psCustomHttpsConfiguration = new SdkHttpsConfig(psFrontendEndpoint.CustomHttpsConfiguration.CertificateSource,
+                                               psFrontendEndpoint.CustomHttpsConfiguration.MinimumTlsVersion,
+                                               //psFrontendEndpoint.ProtocolType,
+                                               new SdkValut(psFrontendEndpoint.CustomHttpsConfiguration.Vault),
+                                               psFrontendEndpoint.CustomHttpsConfiguration.SecretName,
+                                               psFrontendEndpoint.CustomHttpsConfiguration.SecretVersion,
+                                               psFrontendEndpoint.CustomHttpsConfiguration.CertificateType);
+            }
 
             return new SdkFrontendEndpoint
             (
@@ -345,12 +344,15 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                         (PSCustomHttpsProvisioningState?)null : (PSCustomHttpsProvisioningState)Enum.Parse(typeof(PSCustomHttpsProvisioningState), sdkFrontendEndpoint.CustomHttpsProvisioningState),
                 CustomHttpsProvisioningSubstate = sdkFrontendEndpoint.CustomHttpsProvisioningSubstate == null ?
                         (PSCustomHttpsProvisioningSubstate?)null : (PSCustomHttpsProvisioningSubstate)Enum.Parse(typeof(PSCustomHttpsProvisioningSubstate), sdkFrontendEndpoint.CustomHttpsProvisioningSubstate),
-                CertificateSource = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? null : sdkFrontendEndpoint.CustomHttpsConfiguration.CertificateSource,
-                ProtocolType = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? null : SdkHttpsConfig.ProtocolType,
-                Vault = sdkFrontendEndpoint.CustomHttpsConfiguration?.Vault?.Id,
-                SecretName = sdkFrontendEndpoint.CustomHttpsConfiguration?.SecretName,
-                SecretVersion = sdkFrontendEndpoint.CustomHttpsConfiguration?.SecretVersion,
-                CertificateType = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? null : sdkFrontendEndpoint.CustomHttpsConfiguration.CertificateType,
+                CustomHttpsConfiguration = new PSCustomHttpsConfiguration
+                {
+                    CertificateSource = sdkFrontendEndpoint.CustomHttpsConfiguration?.CertificateSource,
+                    // ProtocolType = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? null : SdkHttpsConfig.ProtocolType,
+                    Vault = sdkFrontendEndpoint.CustomHttpsConfiguration?.Vault?.Id,
+                    SecretName = sdkFrontendEndpoint.CustomHttpsConfiguration?.SecretName,
+                    SecretVersion = sdkFrontendEndpoint.CustomHttpsConfiguration?.SecretVersion,
+                    CertificateType = sdkFrontendEndpoint.CustomHttpsConfiguration?.CertificateType,
+                },
                 Name = sdkFrontendEndpoint.Name,
                 Type = sdkFrontendEndpoint.Type
             };
@@ -404,7 +406,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 Name = sdkPolicy.Name,
                 Id = sdkPolicy.Id,
                 PolicyEnabledState = sdkPolicy.PolicySettings == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkPolicy.PolicySettings.EnabledState),
-                PolicyMode = sdkPolicy.PolicySettings == null ? null : sdkPolicy.PolicySettings.Mode,
+                PolicyMode = sdkPolicy.PolicySettings?.Mode,
                 CustomRules = sdkPolicy.CustomRules?.Rules?.Select(x => x.ToPSCustomRule()).ToList(),
                 ManagedRules = sdkPolicy.ManagedRules?.ManagedRuleSets?.Select(x => x.ToPSManagedRule()).ToList(),
                 Etag = sdkPolicy.Etag,
