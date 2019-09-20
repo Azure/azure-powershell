@@ -36,7 +36,7 @@ One can specify one of several subscriptions to use:
 ```PowerShell
 Get-AzVm -name "bla" -SubscriptionId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Restart-AzVM
 
-Get-AzVm -name "bla" -SubscriptionId ['xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx']
+Get-AzVm -name "bla" -SubscriptionId ['xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'] | Restart-AzVM
 ```
 
 ## Comments and Questions
