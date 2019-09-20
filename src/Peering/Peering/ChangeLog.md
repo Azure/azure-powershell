@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.4
 * Added Peering Service Operations
 * Updated Documentation
 * Updated to SDK 1.0.0-preview
