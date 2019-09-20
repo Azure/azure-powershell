@@ -20,7 +20,7 @@ Explain the benefits of the change for the users.
 ```code
 As a PowerShell script developer
 I can run a GET command accross several subscriptions.
-so that I do not have to maintain a list of my suscriptions
+so that I do not have to switch contexts to access and manage resources in multiple subscriptions
 ```
 
 ## User Experience
