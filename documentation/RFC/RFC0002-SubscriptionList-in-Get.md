@@ -25,7 +25,7 @@ so that I do not have to switch contexts to access and manage resources in multi
 
 ## User Experience
 
-The default behavior will search accross all the subscriptions you have access:
+The default behavior will not change, but the user can specify a different subscription, or multiple subscriptions when performing gats.  The output of these gets can be filtered and piped into any other cmdlet.
 
 ```PowerShell
 Get-AzVM -name "bla"
