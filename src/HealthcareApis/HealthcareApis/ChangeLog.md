@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.2
 * Added Exception Handling around KeyNotFoundException
 
 ## Version 0.1.1
