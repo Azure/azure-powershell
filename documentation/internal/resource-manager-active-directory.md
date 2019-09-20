@@ -125,7 +125,7 @@ The `Resources` project contains all of the Active Directory, Authorization, and
 
 ### Active Directory Applications
 
-From the [_Application and service principal objects in Azure Active Directory_](https://github.com/Azure/azure-powershell/blob/master/src/Resources/Resources/help/Test-AzResourceGroupDeployment.md) document, an Azure AD application is defined as the following:
+From the [_Application and service principal objects in Azure Active Directory_](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals#application-object) document, an Azure AD application is defined as the following:
 
 _An Azure AD application is defined by its one and only application object, which resides in the Azure AD tenant where the application was registered, known as the application's "home" tenant._
 
