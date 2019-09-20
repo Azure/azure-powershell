@@ -10,7 +10,7 @@ Version: 1.0
 
 Azure comprises several clouds (Public, Azure Stack, Government), each of which comprises several services (APIs) that have different versions.
 
-Writting an application or a script that is compatible with several cloud can quickly become a very complex task as the developer has to identify for each operation to be performed which API version is compatible on each cloud.
+Writing an application or a script that is compatible with several clouds can quickly become a very complex task as the developer has to identify for each operation to be performed which API version is compatible on each cloud. Since most applications and services in Azure require a set of resources from different services, managing the api-versions of each needed service API in a script quickly multiplies this complexity.
 As Azure evolves, existing services will expose new resources or properties and potentially change how to interact with those, subject to breaking changes. We are adding the support of Azure profiles in Azure PowerShell. An Azure profiles is a definition of resources providers and associated API Version.
 
 Using a profile, a PowerShell script will be attached to a set of known API versions bringing the follwing benefits:
