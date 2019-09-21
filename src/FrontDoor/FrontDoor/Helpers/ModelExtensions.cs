@@ -298,33 +298,67 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
             );
         }
 
-        public static SdkFrontendEndpoint ToSdkFrontendEndpoints(this PSFrontendEndpoint psFrontendEndpoint)
+        public static PSCustomHttpsConfiguration ToPSCustomHttpsConfiguration(this SdkHttpsConfig sdkHttpsConfig)
         {
-            SdkHttpsConfig sdkCustomHttpsConfiguration = null;
-
-            if ((psFrontendEndpoint.CustomHttpsConfiguration.CertificateSource != null) &&
-                !String.IsNullOrEmpty(psFrontendEndpoint.CustomHttpsConfiguration.MinimumTlsVersion) &&
-                ((psFrontendEndpoint.CustomHttpsConfiguration.FrontDoorCertificateSourceParameters != null) ||
-                (psFrontendEndpoint.CustomHttpsConfiguration.KeyVaultCertificateSourceParameters != null)))
+            PSFrontDoorCertificateSourceParameters psFrontDoorCertificateSourceParameters = null;
+            PSKeyVaultCertificateSourceParameters psKeyVaultCertificateSourceParameters = null;
+            if (sdkHttpsConfig.CertificateSource == "AzureKeyVault")
             {
-                var certificateType = (psFrontendEndpoint.CustomHttpsConfiguration.CertificateSource == "FrontDoor")
-                    ? psFrontendEndpoint.CustomHttpsConfiguration.FrontDoorCertificateSourceParameters.CertificateType
-                    : psFrontendEndpoint.CustomHttpsConfiguration.KeyVaultCertificateSourceParameters.CertificateType;
-                sdkCustomHttpsConfiguration = new SdkHttpsConfig(psFrontendEndpoint.CustomHttpsConfiguration.CertificateSource,
-                                               psFrontendEndpoint.CustomHttpsConfiguration.MinimumTlsVersion,
-                                               new SdkValut(psFrontendEndpoint.CustomHttpsConfiguration.KeyVaultCertificateSourceParameters.Vault),
-                                               psFrontendEndpoint.CustomHttpsConfiguration.KeyVaultCertificateSourceParameters.SecretName,
-                                               psFrontendEndpoint.CustomHttpsConfiguration.KeyVaultCertificateSourceParameters.SecretVersion,
-                                               certificateType.ToString());
+                psKeyVaultCertificateSourceParameters = new PSKeyVaultCertificateSourceParameters
+                {
+                    Vault = sdkHttpsConfig.Vault?.Id,
+                    SecretName = sdkHttpsConfig.SecretName,
+                    SecretVersion = sdkHttpsConfig.SecretVersion,
+                    CertificateType = (PSCertificateType)Enum.Parse(typeof(PSCertificateType), sdkHttpsConfig.CertificateType)
+                };
+            }
+            else if (sdkHttpsConfig.CertificateSource == "FrontDoor")
+            {
+                psFrontDoorCertificateSourceParameters = new PSFrontDoorCertificateSourceParameters
+                {
+                    CertificateType = (PSCertificateType)Enum.Parse(typeof(PSCertificateType), sdkHttpsConfig.CertificateType)
+                };
             }
 
+            return new PSCustomHttpsConfiguration
+            {
+                CertificateSource = sdkHttpsConfig?.CertificateSource,
+                MinimumTlsVersion = sdkHttpsConfig?.MinimumTlsVersion,
+                FrontDoorCertificateSourceParameters = psFrontDoorCertificateSourceParameters,
+                KeyVaultCertificateSourceParameters = psKeyVaultCertificateSourceParameters
+            };
+        }
+
+        public static SdkHttpsConfig ToSdkCustomHttpsConfiguration(this PSCustomHttpsConfiguration psHttpsConfig)
+        {
+            SdkHttpsConfig sdkCustomHttpsConfiguration = null;
+            if ((psHttpsConfig.CertificateSource != null) &&
+                !String.IsNullOrEmpty(psHttpsConfig.MinimumTlsVersion) &&
+                ((psHttpsConfig.FrontDoorCertificateSourceParameters != null) ||
+                (psHttpsConfig.KeyVaultCertificateSourceParameters != null)))
+            {
+                var certificateType = (psHttpsConfig.CertificateSource == "FrontDoor")
+                    ? psHttpsConfig.FrontDoorCertificateSourceParameters.CertificateType
+                    : psHttpsConfig.KeyVaultCertificateSourceParameters.CertificateType;
+                sdkCustomHttpsConfiguration = new SdkHttpsConfig(psHttpsConfig.CertificateSource,
+                                               psHttpsConfig.MinimumTlsVersion,
+                                               new SdkValut(psHttpsConfig.KeyVaultCertificateSourceParameters.Vault),
+                                               psHttpsConfig.KeyVaultCertificateSourceParameters.SecretName,
+                                               psHttpsConfig.KeyVaultCertificateSourceParameters.SecretVersion,
+                                               certificateType.ToString());
+            }
+            return sdkCustomHttpsConfiguration;
+        }
+
+        public static SdkFrontendEndpoint ToSdkFrontendEndpoints(this PSFrontendEndpoint psFrontendEndpoint)
+        {
             return new SdkFrontendEndpoint
             (
                 hostName: psFrontendEndpoint.HostName,
                 sessionAffinityEnabledState: psFrontendEndpoint.SessionAffinityEnabledState.ToString(),
                 sessionAffinityTtlSeconds: psFrontendEndpoint.SessionAffinityTtlSeconds,
                 webApplicationFirewallPolicyLink: psFrontendEndpoint.WebApplicationFirewallPolicyLink == null ? null : new SdkFWPolicyLink(psFrontendEndpoint.WebApplicationFirewallPolicyLink),
-                customHttpsConfiguration: sdkCustomHttpsConfiguration,
+                customHttpsConfiguration: psFrontendEndpoint.CustomHttpsConfiguration == null ? null : psFrontendEndpoint.CustomHttpsConfiguration.ToSdkCustomHttpsConfiguration(),
                 name: psFrontendEndpoint.Name
             );
         }
@@ -343,18 +377,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                         (PSCustomHttpsProvisioningState?)null : (PSCustomHttpsProvisioningState)Enum.Parse(typeof(PSCustomHttpsProvisioningState), sdkFrontendEndpoint.CustomHttpsProvisioningState),
                 CustomHttpsProvisioningSubstate = sdkFrontendEndpoint.CustomHttpsProvisioningSubstate == null ?
                         (PSCustomHttpsProvisioningSubstate?)null : (PSCustomHttpsProvisioningSubstate)Enum.Parse(typeof(PSCustomHttpsProvisioningSubstate), sdkFrontendEndpoint.CustomHttpsProvisioningSubstate),
-                CustomHttpsConfiguration = new PSCustomHttpsConfiguration
-                {
-                    CertificateSource = sdkFrontendEndpoint.CustomHttpsConfiguration?.CertificateSource,
-                    MinimumTlsVersion = sdkFrontendEndpoint.CustomHttpsConfiguration?.MinimumTlsVersion,
-                    // ProtocolType = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? null : SdkHttpsConfig.ProtocolType,
-                    FrontDoorCertificateSourceParameters = new PSFrontDoorCertificateSourceParameters { },
-                    KeyVaultCertificateSourceParameters = new PSKeyVaultCertificateSourceParameters { }
-                    //Vault = sdkFrontendEndpoint.CustomHttpsConfiguration?.Vault?.Id,
-                    //SecretName = sdkFrontendEndpoint.CustomHttpsConfiguration?.SecretName,
-                    //SecretVersion = sdkFrontendEndpoint.CustomHttpsConfiguration?.SecretVersion,
-                    //CertificateType = sdkFrontendEndpoint.CustomHttpsConfiguration?.CertificateType,
-                },
+                CustomHttpsConfiguration = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? null : sdkFrontendEndpoint.CustomHttpsConfiguration.ToPSCustomHttpsConfiguration(),
                 Name = sdkFrontendEndpoint.Name,
                 Type = sdkFrontendEndpoint.Type
             };
