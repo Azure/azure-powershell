@@ -1025,6 +1025,15 @@ namespace Microsoft.Azure.Commands.Network
 
                 cfg.CreateMap<CNM.PSAutoApprovedPrivateLinkService, MNM.AutoApprovedPrivateLinkService>();
                 cfg.CreateMap<MNM.AutoApprovedPrivateLinkService, CNM.PSAutoApprovedPrivateLinkService>();
+
+                // Bastion
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSBastion, MNM.BastionHost>();
+                cfg.CreateMap<CNM.PSBastionIPConfiguration, MNM.BastionHostIPConfiguration>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.BastionHost, CNM.PSBastion>();
+                cfg.CreateMap<MNM.BastionHostIPConfiguration, CNM.PSBastionIPConfiguration>();
             });
 
             _mapper = config.CreateMapper();
