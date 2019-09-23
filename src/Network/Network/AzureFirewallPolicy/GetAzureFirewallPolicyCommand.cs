@@ -24,7 +24,7 @@ using Microsoft.Rest.Azure;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicy"), OutputType(typeof(PSAzureFirewall), typeof(IEnumerable<PSAzureFirewall>))]
-    public class GetAzureFirewallPOlicyCommand : AzureFirewallPolicyBaseCmdlet
+    public class GetAzureFirewallPolicyCommand : AzureFirewallPolicyBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(

@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyFilterRule", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicyApplicationRuleCollection))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyFilterRule", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicyFilterRule))]
     public class NewAzureFirewallPolicyFilterRuleCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -40,13 +40,13 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The list of application rules")]
         [ValidateNotNullOrEmpty]
-        public PSAzureFirewallApplicationRule[] Rule { get; set; }
+        public PSAzureFirewallPolicyApplicationRuleCondition[] Rule { get; set; }
 
         [Parameter(
                     Mandatory = true,
                     HelpMessage = "The list of network rules")]
         [ValidateNotNullOrEmpty]
-        public PSAzureFirewallNetworkRule[] RuleNet { get; set; }
+        public PSAzureFirewallPolicyNetworkRuleCondition[] NetworkRules { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -62,12 +62,12 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            var applicationRc = new PSAzureFirewallPolicyApplicationRuleCollection
+            var applicationRc = new PSAzureFirewallPolicyFilterRule
             {
                 Name = this.Name,
                 Priority = this.Priority,
                 Rules = this.Rule?.ToList(),
-                Action = new PSAzureFirewallPolicyRCAction { Type = ActionType }
+                Action = new PSAzureFirewallPolicyFilterRuleAction { Type = ActionType }
 
             };
             WriteObject(applicationRc);

@@ -39,22 +39,6 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
-        protected IVirtualNetworksOperations VirtualNetworkClient
-        {
-            get
-            {
-                return NetworkClient.NetworkManagementClient.VirtualNetworks;
-            }
-        }
-
-        protected IPublicIPAddressesOperations PublicIPAddressesClient
-        {
-            get
-            {
-                return NetworkClient.NetworkManagementClient.PublicIPAddresses;
-            }
-        }
-
         public bool IsAzureFirewallPresent(string resourceGroupName, string name)
         {
             try

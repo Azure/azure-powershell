@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         
         public List<PSAzureFirewallPolicyIpConfiguration> IpConfigurations { get; set; }
 
-        public List<PSAzureFirewallPolicyApplicationRuleCollection> ApplicationRuleCollections { get; set; }
+        public List<PSAzureFirewallPolicyFilterRule> ApplicationRuleCollections { get; set; }
 
-        public List<PSAzureFirewallPolicyNatRuleCollection> NatRuleCollections { get; set; }
+        public List<PSAzureFirewallPolicyNatRule> NatRuleCollections { get; set; }
 
-        public List<PSAzureFirewallPolicyNetworkRuleCollection> NetworkRuleCollections { get; set; }
+        public List<PSAzureFirewallPolicyNatRule> NetworkRuleCollections { get; set; }
 
         public string ThreatIntelMode { get; set; }
 
@@ -167,17 +167,17 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         #region Application Rule Collections Operations
 
-        public void AddApplicationRuleCollection(PSAzureFirewallPolicyApplicationRuleCollection ruleCollection)
+        public void AddApplicationRuleCollection(PSAzureFirewallPolicyFilterRule ruleCollection)
         {
             this.ApplicationRuleCollections = AddRuleCollection(ruleCollection, this.ApplicationRuleCollections);
         }
 
-        public PSAzureFirewallPolicyApplicationRuleCollection GetApplicationRuleCollectionByName(string ruleCollectionName)
+        public PSAzureFirewallPolicyFilterRule GetApplicationRuleCollectionByName(string ruleCollectionName)
         {
             return GetRuleCollectionByName(ruleCollectionName, this.ApplicationRuleCollections);
         }
 
-        public PSAzureFirewallPolicyApplicationRuleCollection GetApplicationRuleCollectionByPriority(uint priority)
+        public PSAzureFirewallPolicyFilterRule GetApplicationRuleCollectionByPriority(uint priority)
         {
             return this.ApplicationRuleCollections?.FirstOrDefault(rc => rc.Priority == priority);
         }
@@ -198,17 +198,17 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         #region NAT Rule Collections Operations
 
-        public void AddNatRuleCollection(PSAzureFirewallPolicyNatRuleCollection ruleCollection)
+        public void AddNatRuleCollection(PSAzureFirewallPolicyNatRule ruleCollection)
         {
             this.NatRuleCollections = AddRuleCollection(ruleCollection, this.NatRuleCollections);
         }
 
-        public PSAzureFirewallPolicyNatRuleCollection GetNatRuleCollectionByName(string ruleCollectionName)
+        public PSAzureFirewallPolicyNatRule GetNatRuleCollectionByName(string ruleCollectionName)
         {
             return GetRuleCollectionByName(ruleCollectionName, this.NatRuleCollections);
         }
 
-        public PSAzureFirewallPolicyNatRuleCollection GetNatRuleCollectionByPriority(uint priority)
+        public PSAzureFirewallPolicyNatRule GetNatRuleCollectionByPriority(uint priority)
         {
             return this.NatRuleCollections?.FirstOrDefault(rc => rc.Priority == priority);
         }
@@ -229,17 +229,17 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         #region Network Rule Collections Operations
 
-        public void AddNetworkRuleCollection(PSAzureFirewallPolicyNetworkRuleCollection ruleCollection)
+        public void AddNetworkRuleCollection(PSAzureFirewallPolicyNatRule ruleCollection)
         {
             this.NetworkRuleCollections = AddRuleCollection(ruleCollection, this.NetworkRuleCollections);
         }
 
-        public PSAzureFirewallPolicyNetworkRuleCollection GetNetworkRuleCollectionByName(string ruleCollectionName)
+        public PSAzureFirewallPolicyNatRule GetNetworkRuleCollectionByName(string ruleCollectionName)
         {
             return this.GetRuleCollectionByName(ruleCollectionName, this.NetworkRuleCollections);
         }
 
-        public PSAzureFirewallPolicyNetworkRuleCollection GetNetworkRuleCollectionByPriority(uint priority)
+        public PSAzureFirewallPolicyNatRule GetNetworkRuleCollectionByPriority(uint priority)
         {
             return this.NetworkRuleCollections?.FirstOrDefault(rc => rc.Priority == priority);
         }

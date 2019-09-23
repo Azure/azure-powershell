@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
             
-            var networkRule = new PSAzureFirewallNetworkRule
+            var networkRule = new PSAzureFirewallPolicyNetworkRuleCondition
             {
                 Name = this.Name,
                 Description = this.Description,

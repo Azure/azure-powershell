@@ -19,7 +19,7 @@ using Microsoft.Azure.Management.Network;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicy", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureFirewallPolicyCommand : AzureFirewallBaseCmdlet
+    public class RemoveAzureFirewallPolicyCommand : AzureFirewallPolicyBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
