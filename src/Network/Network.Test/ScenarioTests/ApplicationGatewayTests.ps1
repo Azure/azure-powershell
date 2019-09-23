@@ -973,6 +973,265 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithConditions
 	}
 }
 
+function Test-ApplicationGatewayCRUDRewriteRuleSetWithUrlConfiguration
+{
+	param
+	(
+		$basedir = "./"
+	)
+
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+
+	$rgname = Get-ResourceGroupName
+	$appgwName = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$gwSubnetName = Get-ResourceName
+	$vnetName2 = Get-ResourceName
+	$gwSubnetName2 = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$gipconfigname = Get-ResourceName
+
+	$frontendPort01Name = Get-ResourceName
+	$frontendPort02Name = Get-ResourceName
+	$fipconfigName = Get-ResourceName
+	$listener01Name = Get-ResourceName
+	$listener02Name = Get-ResourceName
+	$listener03Name = Get-ResourceName
+
+	$poolName = Get-ResourceName
+	$poolName02 = Get-ResourceName
+	$trustedRootCertName = Get-ResourceName
+	$poolSetting01Name = Get-ResourceName
+	$poolSetting02Name = Get-ResourceName
+	$probeName = Get-ResourceName
+
+	$rule01Name = Get-ResourceName
+	$rule02Name = Get-ResourceName
+
+	$customError403Url01 = "https://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
+	$customError403Url02 = "http://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
+
+	$urlPathMapName = Get-ResourceName
+	$urlPathMapName2 = Get-ResourceName
+	$PathRuleName = Get-ResourceName
+	$PathRule01Name = Get-ResourceName
+	$redirectName = Get-ResourceName
+	$sslCert01Name = Get-ResourceName
+
+	$rewriteRuleName = Get-ResourceName
+	$rewriteRuleSetName = Get-ResourceName
+
+	$wafPolicy = Get-ResourceName
+
+	try
+	{
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		# Create the Virtual Network
+		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+
+		$gwSubnet2 = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName2 -AddressPrefix 11.0.1.0/24
+		$vnet2 = New-AzVirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname -Location $location -AddressPrefix 11.0.0.0/8 -Subnet $gwSubnet2
+		$vnet2 = Get-AzVirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname
+		$gwSubnet2 = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName2 -VirtualNetwork $vnet2
+
+		# Create public ip
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+
+		# Create ip configuration
+		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
+
+		$fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
+		$fp01 = New-AzApplicationGatewayFrontendPort -Name $frontendPort01Name -Port 80
+		$fp02 = New-AzApplicationGatewayFrontendPort -Name $frontendPort02Name -Port 443
+		$listener01 = New-AzApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01 -RequireServerNameIndication false
+
+		$pool = New-AzApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
+		$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 443 -Protocol Https -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress
+
+		# sku
+		$sku = New-AzApplicationGatewaySku -Name WAF_v2 -Tier WAF_v2
+
+		$autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
+		Assert-AreEqual $autoscaleConfig.MinCapacity 3
+
+		$headerConfiguration1 = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "abc" -HeaderValue "def"
+		#url configuration with modified path only
+		$urlConfiguration1 = New-AzApplicationGatewayRewriteRuleUrlConfiguration -ModifiedPath "/abc"
+		$actionSet1 = New-AzApplicationGatewayRewriteRuleActionSet -RequestHeaderConfiguration $headerConfiguration1 -UrlConfiguration $urlConfiguration1
+		$rewriteRule1 = New-AzApplicationGatewayRewriteRule -Name "rewriterule1" -ActionSet $actionSet1
+
+		#url configuration with modified path and query string
+		$urlConfiguration2 = New-AzApplicationGatewayRewriteRuleUrlConfiguration -ModifiedPath "/def" -ModifiedQueryString "a=b&c=d%20f"
+		$actionSet2 = New-AzApplicationGatewayRewriteRuleActionSet -UrlConfiguration $urlConfiguration2
+		$rewriteRule2 = New-AzApplicationGatewayRewriteRule -Name "rewriterule2" -ActionSet $actionSet2
+
+	    #url configuration with query string only
+		$urlConfiguration3 = New-AzApplicationGatewayRewriteRuleUrlConfiguration -ModifiedQueryString "a=b&c=d%20f1"
+		$actionSet3 = New-AzApplicationGatewayRewriteRuleActionSet -UrlConfiguration $urlConfiguration3
+		$rewriteRule3 = New-AzApplicationGatewayRewriteRule -Name "rewriterule3" -ActionSet $actionSet3
+
+	    #url configuration with query string, path and reroute
+		$urlConfiguration4 = New-AzApplicationGatewayRewriteRuleUrlConfiguration -ModifiedPath "/def2" -ModifiedQueryString "a=b&c=d%20f12" -Reroute
+		$actionSet4 = New-AzApplicationGatewayRewriteRuleActionSet -UrlConfiguration $urlConfiguration4
+		$rewriteRule4 = New-AzApplicationGatewayRewriteRule -Name "rewriterule4" -ActionSet $actionSet4
+
+		$rewriteRules = New-Object System.Collections.ArrayList
+
+		$rewriteRules.Add($rewriteRule1);
+		$rewriteRules.Add($rewriteRule2);
+		$rewriteRules.Add($rewriteRule3);
+		$rewriteRules.Add($rewriteRule4);
+
+		$rewriteRuleSet = New-AzApplicationGatewayRewriteRuleSet -Name $rewriteRuleSetName -RewriteRule $rewriteRules
+
+		$videoPathRule = New-AzApplicationGatewayPathRuleConfig -Name $PathRuleName -Paths "/video" -RewriteRuleSet $rewriteRuleSet -BackendAddressPool $pool -BackendHttpSettings $poolSetting01
+		Assert-AreEqual $videoPathRule.RewriteRuleSet.Id $rewriteRuleSet.Id
+
+		$urlPathMap = New-AzApplicationGatewayUrlPathMapConfig -Name $urlPathMapName -PathRules $videoPathRule -DefaultBackendAddressPool $pool -DefaultBackendHttpSettings $poolSetting01
+
+		$probe = New-AzApplicationGatewayProbeConfig -Name $probeName -Protocol Http -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8 -MinServers 1 -PickHostNameFromBackendHttpSettings
+
+		#rule
+		$rule01 = New-AzApplicationGatewayRequestRoutingRule  -Name $rule01Name -RuleType PathBasedRouting  -HttpListener $listener01 -UrlPathMap $urlPathMap
+		
+		#Create Application Gateway
+		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01,$fp02 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -AutoscaleConfiguration $autoscaleConfig -UrlPathMap $urlPathMap -RedirectConfiguration $redirectConfig -Probe $probe -RewriteRuleSet $rewriteRuleSet
+
+		Assert-AreEqual $appgw.BackendHttpSettingsCollection.Count 1
+		Assert-AreEqual $appgw.HttpListeners.Count 1
+		Assert-AreEqual $appgw.RequestRoutingRules.Count 1
+		
+		Assert-NotNull $appgw.RewriteRuleSets
+		Assert-AreEqual 4 $appgw.RewriteRuleSets.Count
+
+		Assert-NotNull $appgw.RewriteRuleSets
+		Assert-AreEqual 1 $appgw.RewriteRuleSets.Count
+		Assert-AreEqual 4 $appgw.RewriteRuleSets.RewriteRule
+
+		Assert-AreEqual "rewriterule1" $appgw.RewriteRuleSets.RewriteRule[0].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[0].ActionSet
+		Assert-AreEqual "/abc" $appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-Null $appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual false.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+
+		Assert-AreEqual "rewriterule2" $appgw.RewriteRuleSets.RewriteRule[1].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[1].ActionSet
+		Assert-AreEqual "/def" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-AreEqual "a=b&c=d%20f" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+
+	    Assert-AreEqual "rewriterule3" $appgw.RewriteRuleSets.RewriteRule[2].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[2].ActionSet
+		Assert-Null $appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-AreEqual "a=b&c=d%20f1" $appgw.RewriteRuleSets.RewriteRule[2].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+
+		Assert-AreEqual "rewriterule4" $appgw.RewriteRuleSets.RewriteRule[1].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[1].ActionSet
+		Assert-AreEqual "/def2" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-AreEqual "a=b&c=d%20f12" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual true $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+
+		# Get Application Gateway
+		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+
+        Assert-AreEqual $appgw.BackendHttpSettingsCollection.Count 1
+		Assert-AreEqual $appgw.HttpListeners.Count 1
+		Assert-AreEqual $appgw.RequestRoutingRules.Count 1
+		
+		Assert-NotNull $appgw.RewriteRuleSets
+		Assert-AreEqual 4 $appgw.RewriteRuleSets.Count
+
+		Assert-NotNull $appgw.RewriteRuleSets
+		Assert-AreEqual 1 $appgw.RewriteRuleSets.Count
+		Assert-AreEqual 4 $appgw.RewriteRuleSets.RewriteRule
+
+		Assert-AreEqual "rewriterule1" $appgw.RewriteRuleSets.RewriteRule[0].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[0].ActionSet
+		Assert-AreEqual "/abc" $appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-Null $appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual false.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+
+		Assert-AreEqual "rewriterule2" $appgw.RewriteRuleSets.RewriteRule[1].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[1].ActionSet
+		Assert-AreEqual "/def" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-AreEqual "a=b&c=d%20f" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+
+	    Assert-AreEqual "rewriterule3" $appgw.RewriteRuleSets.RewriteRule[2].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[2].ActionSet
+		Assert-Null $appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-AreEqual "a=b&c=d%20f1" $appgw.RewriteRuleSets.RewriteRule[2].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+
+		Assert-AreEqual "rewriterule4" $appgw.RewriteRuleSets.RewriteRule[1].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[1].ActionSet
+		Assert-AreEqual "/def2" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-AreEqual "a=b&c=d%20f12" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual true $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+
+		# Updating Url Configuration
+		$appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedPath = "/abc1"
+		$appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedQueryString = "a=b&c=d"
+		
+		$appgw.RewriteRuleSets.RewriteRule[3].ActionSet.UrlConfiguration.Reroute = false
+
+		Set-AzApplicationGateway -ApplicationGateway $appgw
+
+		Assert-AreEqual $appgw.BackendHttpSettingsCollection.Count 1
+		Assert-AreEqual $appgw.HttpListeners.Count 1
+		Assert-AreEqual $appgw.RequestRoutingRules.Count 1
+		
+		Assert-NotNull $appgw.RewriteRuleSets
+		Assert-AreEqual 4 $appgw.RewriteRuleSets.Count
+
+		Assert-NotNull $appgw.RewriteRuleSets
+		Assert-AreEqual 1 $appgw.RewriteRuleSets.Count
+		Assert-AreEqual 4 $appgw.RewriteRuleSets.RewriteRule
+
+		Assert-AreEqual "rewriterule1" $appgw.RewriteRuleSets.RewriteRule[0].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[0].ActionSet
+		Assert-AreEqual "/abc" $appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-AreEqual "a=b&c=d" $appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual false.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+
+		Assert-AreEqual "rewriterule2" $appgw.RewriteRuleSets.RewriteRule[1].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[1].ActionSet
+		Assert-AreEqual "/def" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-AreEqual "a=b&c=d%20f" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+
+	    Assert-AreEqual "rewriterule3" $appgw.RewriteRuleSets.RewriteRule[2].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[2].ActionSet
+		Assert-Null $appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-AreEqual "a=b&c=d%20f1" $appgw.RewriteRuleSets.RewriteRule[2].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+
+		Assert-AreEqual "rewriterule4" $appgw.RewriteRuleSets.RewriteRule[1].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[1].ActionSet
+		Assert-AreEqual "/def2" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-AreEqual "a=b&c=d%20f12" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+
+		# Stop Application Gateway
+		$getgw1 = Stop-AzApplicationGateway -ApplicationGateway $appgw
+
+		Assert-AreEqual "Stopped" $getgw1.OperationalState
+
+		# Delete Application Gateway
+		Remove-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
 <#
 .SYNOPSIS
 Application gateway v2 tests

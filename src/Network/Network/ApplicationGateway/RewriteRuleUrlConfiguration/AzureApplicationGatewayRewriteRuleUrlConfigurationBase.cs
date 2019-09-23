@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.ApplicationGateway.RewriteRuleUrlConfiguration
+namespace Microsoft.Azure.Commands.Network
 {
     using Microsoft.Azure.Commands.Network.Models;
     using System.Management.Automation;
@@ -22,7 +22,6 @@ namespace Microsoft.Azure.Commands.Network.ApplicationGateway.RewriteRuleUrlConf
         [Parameter(
             Mandatory = false,
             HelpMessage = "Url path value.")]
-        [ValidateNotNullOrEmpty]
         public string ModifiedPath { get; set; }
 
         [Parameter(
@@ -42,14 +41,14 @@ namespace Microsoft.Azure.Commands.Network.ApplicationGateway.RewriteRuleUrlConf
 
         public PSApplicationGatewayUrlConfiguration NewObject()
         {
-            var headerConfiguration = new PSApplicationGatewayUrlConfiguration
+            var urlConfiguration = new PSApplicationGatewayUrlConfiguration
             {
                 ModifiedPath = this.ModifiedPath,
                 ModifiedQueryString = this.ModifiedQueryString,
                 Reroute = this.Reroute.IsPresent
             };
 
-            return headerConfiguration;
+            return urlConfiguration;
         }
     }
 }
