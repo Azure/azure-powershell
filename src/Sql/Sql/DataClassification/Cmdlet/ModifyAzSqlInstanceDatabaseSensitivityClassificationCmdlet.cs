@@ -11,91 +11,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.DataClassification.Model;
-using Microsoft.Azure.Commands.Sql.DataClassification.Services;
-using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 {
-    public abstract class ModifyAzSqlInstanceDatabaseSensitivityClassificationCmdlet : AzureSqlCmdletBase<ManagedDatabaseSensitivityClassificationModel, DataClassificationAdapter>
+    public abstract class ModifyAzSqlInstanceDatabaseSensitivityClassificationCmdlet : ModifyAzSqlInstanceDatabaseSensitivityCmdlet
     {
-        [Parameter(
-            ParameterSetName = DataClassificationCommon.ColumnParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = DataClassificationCommon.ResourceGroupNameHelpMessage)]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public override string ResourceGroupName { get; set; }
-
-        [Parameter(
-            ParameterSetName = DataClassificationCommon.ColumnParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = DataClassificationCommon.InstanceNameHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string InstanceName { get; set; }
-
-        [Parameter(
-            ParameterSetName = DataClassificationCommon.ColumnParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = DataClassificationCommon.ManagedDatabaseNameHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string DatabaseName { get; set; }
-
-        [Parameter(
-            ParameterSetName = DataClassificationCommon.DatabaseObjectColumnParameterSet,
-            Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = DataClassificationCommon.ManagedDatabaseObjectHelpMessage)]
-        [ValidateNotNull]
-        public AzureSqlManagedDatabaseModel DatabaseObject { get; set; }
-
-        [Parameter(
-            ParameterSetName = DataClassificationCommon.ColumnParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = DataClassificationCommon.SchemaNameHelpMessage)]
-        [Parameter(
-            ParameterSetName = DataClassificationCommon.DatabaseObjectColumnParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = DataClassificationCommon.SchemaNameHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string SchemaName { get; set; }
-
-        [Parameter(
-            ParameterSetName = DataClassificationCommon.ColumnParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = DataClassificationCommon.TableNameHelpMessage)]
-        [Parameter(
-            ParameterSetName = DataClassificationCommon.DatabaseObjectColumnParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = DataClassificationCommon.SchemaNameHelpMessage)]
-        public string TableName { get; set; }
-
-        [Parameter(
-            ParameterSetName = DataClassificationCommon.ColumnParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = DataClassificationCommon.ColumnNameHelpMessage)]
-        [Parameter(
-            ParameterSetName = DataClassificationCommon.DatabaseObjectColumnParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = DataClassificationCommon.ColumnNameHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public string ColumnName { get; set; }
-
         [Parameter(
             ParameterSetName = DataClassificationCommon.ClassificationObjectParameterSet,
             Mandatory = true,
@@ -103,21 +25,5 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
             HelpMessage = DataClassificationCommon.ManagedDatabaseSensitivityClassificationObjectHelpMessage)]
         [ValidateNotNull]
         public ManagedDatabaseSensitivityClassificationModel ClassificationObject { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = DataClassificationCommon.PassThruHelpMessage)]
-        public SwitchParameter PassThru { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = DataClassificationCommon.AsJobHelpMessage)]
-        public SwitchParameter AsJob { get; set; }
-
-        protected override DataClassificationAdapter InitModelAdapter() => new DataClassificationAdapter(DefaultProfile.DefaultContext);
-
-        protected override bool WriteResult() => PassThru;
-
-        protected override object TransformModelToOutputObject(ManagedDatabaseSensitivityClassificationModel model) => true;
     }
 }

@@ -13,10 +13,10 @@ Enables sensitivity recommendations on columns (recommendations are enabled by d
 
 ## SYNTAX
 
-### ClassificationObjectParameterSet (Default)
+### InputObjectParameterSet (Default)
 ```
 Enable-AzSqlInstanceDatabaseSensitivityRecommendation
- -ClassificationObject <ManagedDatabaseSensitivityClassificationModel> [-PassThru] [-AsJob]
+ -InputObject <ManagedDatabaseSensitivityClassificationModel> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -63,21 +63,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClassificationObject
-An object representing a SQL Managed Instance Database Sensitivity Classification.
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.DataClassification.Model.ManagedDatabaseSensitivityClassificationModel
-Parameter Sets: ClassificationObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -138,6 +123,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+An object representing a SQL Managed Instance Database Sensitivity Classification.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.DataClassification.Model.ManagedDatabaseSensitivityClassificationModel
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

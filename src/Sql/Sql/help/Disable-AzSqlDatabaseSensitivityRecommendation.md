@@ -13,11 +13,10 @@ Disables (dismisses) sensitivity recommendations on columns in the database.
 
 ## SYNTAX
 
-### ClassificationObjectParameterSet (Default)
+### InputObjectParameterSet (Default)
 ```
-Disable-AzSqlDatabaseSensitivityRecommendation
- -ClassificationObject <SqlDatabaseSensitivityClassificationModel> [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Disable-AzSqlDatabaseSensitivityRecommendation -InputObject <SqlDatabaseSensitivityClassificationModel>
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ColumnParameterSet
@@ -68,21 +67,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClassificationObject
-An object representing a SQL Database Sensitivity Classification.
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.DataClassification.Model.SqlDatabaseSensitivityClassificationModel
-Parameter Sets: ClassificationObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -143,6 +127,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+An object representing a SQL Database Sensitivity Classification.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.DataClassification.Model.SqlDatabaseSensitivityClassificationModel
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

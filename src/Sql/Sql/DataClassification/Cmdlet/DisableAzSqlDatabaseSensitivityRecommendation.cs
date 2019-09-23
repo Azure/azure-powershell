@@ -20,16 +20,16 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
     [Cmdlet(
         VerbsLifecycle.Disable,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DataClassificationCommon.SqlDatabaseSensitivityRecommendation,
-        DefaultParameterSetName = DataClassificationCommon.ClassificationObjectParameterSet,
+        DefaultParameterSetName = DataClassificationCommon.InputObjectParameterSet,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
-    public class DisableAzSqlDatabaseSensitivityRecommendation : ModifyAzSqlDatabaseSensitivityClassificationCmdlet
+    public class DisableAzSqlDatabaseSensitivityRecommendation : ModifyAzSqlDatabaseSensitivityRecommendationCmdlet
     {
         protected override SqlDatabaseSensitivityClassificationModel GetEntity()
         {
-            if (ClassificationObject != null)
+            if (InputObject != null)
             {
-                return ClassificationObject;
+                return InputObject;
             }
             else if (DatabaseObject != null)
             {

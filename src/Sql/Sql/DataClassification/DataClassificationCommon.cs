@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification
         internal const string DatabaseObjectParameterSet = "DatabaseObjectParameterSet";
         internal const string ClassificationObjectParameterSet = "ClassificationObjectParameterSet";
         internal const string DatabaseParameterSet = "DatabaseParameterSet";
+        internal const string InputObjectParameterSet = "InputObjectParameterSet";
         internal const string SqlDatabaseSensitivityRecommendation = "SqlDatabaseSensitivityRecommendation";
         internal const string SqlDatabaseSensitivityClassification = "SqlDatabaseSensitivityClassification";
         internal const string SqlInstanceDatabaseSensitivityClassification = "SqlInstanceDatabaseSensitivityClassification";

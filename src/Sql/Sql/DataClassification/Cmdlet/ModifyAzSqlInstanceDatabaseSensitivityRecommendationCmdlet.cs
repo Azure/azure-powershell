@@ -16,14 +16,14 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 {
-    public abstract class ModifyAzSqlDatabaseSensitivityClassificationCmdlet : ModifyAzSqlDatabaseSensitivityCmdlet
+    public abstract class ModifyAzSqlInstanceDatabaseSensitivityRecommendationCmdlet : ModifyAzSqlInstanceDatabaseSensitivityCmdlet
     {
         [Parameter(
-            ParameterSetName = DataClassificationCommon.ClassificationObjectParameterSet,
+            ParameterSetName = DataClassificationCommon.InputObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = DataClassificationCommon.SqlDatabaseSensitivityClassificationObjectHelpMessage)]
+            HelpMessage = DataClassificationCommon.ManagedDatabaseSensitivityClassificationObjectHelpMessage)]
         [ValidateNotNull]
-        public SqlDatabaseSensitivityClassificationModel ClassificationObject { get; set; }
+        public ManagedDatabaseSensitivityClassificationModel InputObject { get; set; }
     }
 }
