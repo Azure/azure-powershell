@@ -12,6 +12,13 @@ Provisions an Azure AD administrator for SQL Managed Instance.
 
 ## SYNTAX
 
+### UseResourceGroupAndInstanceNameParameterSet (Default)
+```
+Set-AzSqlInstanceActiveDirectoryAdministrator [-DisplayName] <String> [-ObjectId] <Guid>
+ [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### UseInputObjectParameterSet
 ```
 Set-AzSqlInstanceActiveDirectoryAdministrator [-DisplayName] <String> [-ObjectId] <Guid>
@@ -23,13 +30,6 @@ Set-AzSqlInstanceActiveDirectoryAdministrator [-DisplayName] <String> [-ObjectId
 ```
 Set-AzSqlInstanceActiveDirectoryAdministrator [-DisplayName] <String> [-ObjectId] <Guid> [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UseResourceGroupAndInstanceNameParameterSet
-```
-Set-AzSqlInstanceActiveDirectoryAdministrator [-DisplayName] <String> [-ObjectId] <Guid>
- [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
