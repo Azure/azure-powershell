@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Model;
 using Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Services;
+using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -23,22 +25,68 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
 {
     public abstract class AzureSqlInstanceActiveDirectoryAdministratorCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlInstanceActiveDirectoryAdministratorModel>, AzureSqlInstanceActiveDirectoryAdministratorAdapter>
     {
-        /// <summary>
-        /// Gets or sets the name of the Azure SQL Managed Instance that contains the Azure Active Directory administrator.
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "The name of the Azure SQL Managed Instance the Azure Active Directory administrator is in.")]
-        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
-        [ValidateNotNullOrEmpty]
-        public string InstanceName { get; set; }
+		protected const string UseInputObjectParameterSet = "UseInputObjectParameterSet";
+		protected const string UseResourceGroupAndInstanceNameParameterSet = "UseResourceGroupAndInstanceNameParameterSet";
 
-        /// <summary>
-        /// Initializes the adapter
-        /// </summary>
-        /// <returns></returns>
-        protected override AzureSqlInstanceActiveDirectoryAdministratorAdapter InitModelAdapter()
+		/// <summary>
+		/// Server resource
+		/// </summary>
+		[Parameter(ParameterSetName = UseInputObjectParameterSet,
+			Mandatory = false,
+			ValueFromPipeline = true,
+			HelpMessage = "The managed instance object to use.")]
+		[ValidateNotNullOrEmpty]
+		public AzureSqlManagedInstanceModel InputObject { get; set; }
+
+		/// <summary>
+		/// Gets or sets the name of the resource group to use.
+		/// </summary>
+		[Parameter(ParameterSetName = UseResourceGroupAndInstanceNameParameterSet,
+			Mandatory = true,
+			ValueFromPipelineByPropertyName = true,
+			Position = 0,
+			HelpMessage = "The name of the resource group.")]
+		[ResourceGroupCompleter]
+		[ValidateNotNullOrEmpty]
+		public override string ResourceGroupName { get; set; }
+
+		/// <summary>
+		/// Gets or sets the name of the managed instance to use.
+		/// </summary>
+		[Parameter(ParameterSetName = UseResourceGroupAndInstanceNameParameterSet,
+			Mandatory = true,
+			ValueFromPipelineByPropertyName = true,
+			Position = 1,
+			HelpMessage = "SQL Managed Instance name.")]
+		[ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
+		[ValidateNotNullOrEmpty]
+		public string InstanceName { get; set; }
+
+		protected string GetResourceGroupName()
+		{
+			if (string.Equals(this.ParameterSetName, UseInputObjectParameterSet, StringComparison.OrdinalIgnoreCase))
+			{
+				return InputObject.ResourceGroupName;
+			}
+
+			return ResourceGroupName;
+		}
+
+		protected string GetInstanceName()
+		{
+			if (string.Equals(this.ParameterSetName, UseInputObjectParameterSet, StringComparison.OrdinalIgnoreCase))
+			{
+				return InputObject.ManagedInstanceName;
+			}
+
+			return InstanceName;
+		}
+		
+		/// <summary>
+		/// Initializes the adapter
+		/// </summary>
+		/// <returns></returns>
+		protected override AzureSqlInstanceActiveDirectoryAdministratorAdapter InitModelAdapter()
         {
             return new AzureSqlInstanceActiveDirectoryAdministratorAdapter(DefaultProfile.DefaultContext);
         }

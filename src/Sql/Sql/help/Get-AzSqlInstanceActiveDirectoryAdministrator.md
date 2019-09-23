@@ -12,8 +12,15 @@ Gets information about an Azure AD administrator for SQL Managed Instance.
 
 ## SYNTAX
 
+### UseInputObjectParameterSet
 ```
-Get-AzSqlInstanceActiveDirectoryAdministrator [-InstanceName] <String> [-ResourceGroupName] <String>
+Get-AzSqlInstanceActiveDirectoryAdministrator [-InputObject <AzureSqlManagedInstanceModel>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### UseResourceGroupAndInstanceNameParameterSet
+```
+Get-AzSqlInstanceActiveDirectoryAdministrator [-ResourceGroupName] <String> [-InstanceName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -32,6 +39,17 @@ ResourceGroup01   ManagedInstance01 DBAs        40b79501-b343-44ed-9ce7-da4c8cc7
 
 This command gets information about an Azure AD administrator for a managed instance named ManagedInstance01 that is associated with a resource group named ResourceGroup01.
 
+### Example 2
+```powershell
+PS C:\>Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance1" | Get-AzSqlInstanceActiveDirectoryAdministrator
+ResourceGroupName InstanceName      DisplayName ObjectId 
+----------------- ----------------- ----------- -------- 
+ResourceGroup01   ManagedInstance01 DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b
+```
+
+This command gets information about an Azure AD administrator from a managed instance object.
+
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -49,12 +67,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The managed instance object to use.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+Parameter Sets: UseInputObjectParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InstanceName
 The name of the Azure SQL Managed Instance the Azure Active Directory administrator is in.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UseResourceGroupAndInstanceNameParameterSet
 Aliases:
 
 Required: True
@@ -69,7 +102,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UseResourceGroupAndInstanceNameParameterSet
 Aliases:
 
 Required: True

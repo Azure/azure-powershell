@@ -32,7 +32,7 @@ using Microsoft.Azure.Management.OperationalInsights;
 using SDKMonitor = Microsoft.Azure.Management.Monitor;
 using CommonMonitor = Microsoft.Azure.Management.Monitor.Version2018_09_01;
 using Microsoft.Azure.Management.KeyVault;
-using Microsoft.Azure.Graph.RBAC.Version1_6;
+using Microsoft.Azure.Graph.RBAC;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {

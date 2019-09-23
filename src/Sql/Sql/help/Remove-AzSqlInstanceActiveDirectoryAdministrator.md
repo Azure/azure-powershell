@@ -12,10 +12,17 @@ Removes an Azure AD administrator for SQL Managed Instance.
 
 ## SYNTAX
 
+### UseInputObjectParameterSet
 ```
-Remove-AzSqlInstanceActiveDirectoryAdministrator [-Force] [-InstanceName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Remove-AzSqlInstanceActiveDirectoryAdministrator [-Force] [-PassThru]
+ [-InputObject <AzureSqlManagedInstanceModel>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### UseResourceGroupAndInstanceNameParameterSet
+```
+Remove-AzSqlInstanceActiveDirectoryAdministrator [-Force] [-PassThru] [-ResourceGroupName] <String>
+ [-InstanceName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,11 +30,9 @@ The **Remove-AzSqlInstanceActiveDirectoryAdministrator** cmdlet removes an Azure
 
 ## EXAMPLES
 
-### Example 1
-
 ### Example 1: Remove an administrator
 ```
-PS C:\>Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstanceName01" -Confirm
+PS C:\>Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstanceName01" -Confirm -PassThru
 Are you sure you want to remove the Azure Sql Instance Active Directory Administrator on managed instance 'ManagedInstanceName01'? 
 [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"): Y 
 
@@ -37,6 +42,19 @@ ResourceGroup01   ManagedInstanceName01 DBAs        40b79501-b343-44ed-9ce7-da4c
 ```
 
 This command removes the Azure AD administrator for the managed instance named ManagedInstanceName01 associated with the resource group ResourceGroup01.
+
+### Example 2
+```powershell
+PS C:\>Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance1" | Remove-AzSqlInstanceActiveDirectoryAdministrator -Confirm -PassThru
+Are you sure you want to remove the Azure Sql Instance Active Directory Administrator on managed instance 'ManagedInstanceName01'? 
+[Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"): Y 
+
+ResourceGroupName InstanceName          DisplayName ObjectId 
+----------------- --------------------- ----------- -------- 
+ResourceGroup01   ManagedInstanceName01 DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b
+```
+
+This command removes the Azure AD administrator from the managed instance object.
 
 ## PARAMETERS
 
@@ -70,12 +88,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The managed instance object to use.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+Parameter Sets: UseInputObjectParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InstanceName
 The name of the Azure SQL Managed Instance the Azure Active Directory administrator is in.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UseResourceGroupAndInstanceNameParameterSet
 Aliases:
 
 Required: True
@@ -85,12 +118,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PassThru
+Defines whether to return the removed AD administrator
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UseResourceGroupAndInstanceNameParameterSet
 Aliases:
 
 Required: True
