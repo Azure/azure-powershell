@@ -206,6 +206,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         private void ValidateInputParameters()
         {
+            // Validate input parameters
             if (false == Uri.IsWellFormedUriString(DiskEncryptionKeyVaultId, UriKind.Absolute))
             {
                 ThrowTerminatingError(new ErrorRecord(new ArgumentException(string.Format(CultureInfo.CurrentUICulture, "Invalid DiskEncryptionKeyVaultUrl. Please provide a valid KeyVault URI for DiskEncryptionKeyVaultUrl")),
@@ -299,6 +300,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         /// </summary>
         private AzureOperationResponse<VirtualMachine> UpdateVmEncryptionSettings(DiskEncryptionSettings encryptionSettingsBackup)
         {
+            // Update Encryption Settings;
             string statusMessage = GetExtensionStatusMessage();
 
             var vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
@@ -552,23 +554,23 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                                       new DiskEncryptionSettings { Enabled = false };
 
                     // Single Pass
-                    //      newer model, supported by newer extension versions and host functionality 
+                    //      newer model, supported by newer extension versions and host functionality
                     //      if SinglePassParameterSet is used, cmdlet will default to newer extension version
                     //      [first and only pass]
                     //          only one enable extension call will be issued from the cmdlet n
-                    //          No AD identity information or protected settings will be passed to the extension 
-                    //          Host performs the necessary key vault operations and vm model updates 
+                    //          No AD identity information or protected settings will be passed to the extension
+                    //          Host performs the necessary key vault operations and vm model updates
                     // Dual Pass
-                    //      older model, supported by older extension versions  
+                    //      older model, supported by older extension versions
                     //      if an AD ParameterSet is used, cmdlet will default to older extension version
-                    //      [first pass] 
+                    //      [first pass]
                     //          AD identity information is passed into the VM via protected settings of the extension
-                    //          VM uses the AD identity to authenticate and perform key vault operations  
+                    //          VM uses the AD identity to authenticate and perform key vault operations
                     //          VM returns result of key vault operation to caller via the extension status message
                     //      [second pass]
                     //          powershell reads extension status message returned from first pass
                     //          updates VM model with encryption settings
-                    //          updates VM 
+                    //          updates VM
 
                     // First Pass
                     AzureOperationResponse<VirtualMachineExtension> firstPass = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
@@ -594,7 +596,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     }
                     else
                     {
-                        // Second pass 
+                        // Second pass
                         var secondPass = UpdateVmEncryptionSettings(encryptionSettingsBackup);
                         WriteObject(ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(secondPass));
                     }
