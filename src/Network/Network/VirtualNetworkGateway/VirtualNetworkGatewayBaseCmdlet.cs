@@ -77,5 +77,12 @@ namespace Microsoft.Azure.Commands.Network
 
             return psVpnClientIPsecParameters;
         }
+
+        public class VpnGatewayPacketCaptureResponse
+        {
+            public string Status { get; set; }
+
+            public string Data { get; set; }
+        }
     }
 }
