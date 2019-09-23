@@ -19,10 +19,16 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator [-Force] [-PassThru]
  [<CommonParameters>]
 ```
 
+### UserResourceIdParameterSet
+```
+Remove-AzSqlInstanceActiveDirectoryAdministrator [-Force] [-PassThru] [-ResourceId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### UseResourceGroupAndInstanceNameParameterSet
 ```
 Remove-AzSqlInstanceActiveDirectoryAdministrator [-Force] [-PassThru] [-ResourceGroupName] <String>
- [-InstanceName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,6 +61,19 @@ ResourceGroup01   ManagedInstanceName01 DBAs        40b79501-b343-44ed-9ce7-da4c
 ```
 
 This command removes the Azure AD administrator from the managed instance object.
+
+### Example 3
+```powershell
+PS C:\>Get-AzSqlInstance -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance1" | Remove-AzSqlInstanceActiveDirectoryAdministrator -Confirm -PassThru
+Are you sure you want to remove the Azure Sql Instance Active Directory Administrator on managed instance 'ManagedInstanceName01'? 
+[Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"): Y 
+
+ResourceGroupName InstanceName          DisplayName ObjectId 
+----------------- --------------------- ----------- -------- 
+ResourceGroup01   ManagedInstanceName01 DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b
+```
+
+This command removes the Azure AD administrator using managed instance resource identifier.
 
 ## PARAMETERS
 
@@ -103,13 +122,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -InstanceName
-The name of the Azure SQL Managed Instance the Azure Active Directory administrator is in.
+### -Name
+SQL Managed Instance name.
 
 ```yaml
 Type: System.String
 Parameter Sets: UseResourceGroupAndInstanceNameParameterSet
-Aliases:
+Aliases: InstanceName
 
 Required: True
 Position: 1
@@ -139,6 +158,21 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: UseResourceGroupAndInstanceNameParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource id of instance to use
+
+```yaml
+Type: System.String
+Parameter Sets: UserResourceIdParameterSet
 Aliases:
 
 Required: True

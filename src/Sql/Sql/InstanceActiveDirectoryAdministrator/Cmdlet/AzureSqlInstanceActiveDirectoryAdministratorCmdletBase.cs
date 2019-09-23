@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Model;
 using Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Services;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -27,6 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
     {
 		protected const string UseInputObjectParameterSet = "UseInputObjectParameterSet";
 		protected const string UseResourceGroupAndInstanceNameParameterSet = "UseResourceGroupAndInstanceNameParameterSet";
+		protected const string UserResourceIdParameterSet = "UserResourceIdParameterSet";
 
 		/// <summary>
 		/// Server resource
@@ -37,6 +39,17 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
 			HelpMessage = "The managed instance object to use.")]
 		[ValidateNotNullOrEmpty]
 		public AzureSqlManagedInstanceModel InputObject { get; set; }
+
+		/// <summary>
+		/// Gets or sets the resource id of the instance
+		/// </summary>
+		[Parameter(ParameterSetName = UserResourceIdParameterSet,
+			Mandatory = true,
+			Position = 0,
+			ValueFromPipelineByPropertyName = true,
+			HelpMessage = "The resource id of instance to use")]
+		[ValidateNotNullOrEmpty]
+		public string ResourceId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name of the resource group to use.
@@ -58,15 +71,21 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
 			ValueFromPipelineByPropertyName = true,
 			Position = 1,
 			HelpMessage = "SQL Managed Instance name.")]
+		[Alias("InstanceName")]
 		[ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
 		[ValidateNotNullOrEmpty]
-		public string InstanceName { get; set; }
+		public string Name { get; set; }
 
 		protected string GetResourceGroupName()
 		{
 			if (string.Equals(this.ParameterSetName, UseInputObjectParameterSet, StringComparison.OrdinalIgnoreCase))
 			{
 				return InputObject.ResourceGroupName;
+			}
+			else if (string.Equals(this.ParameterSetName, UserResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
+			{
+				var resourceInfo = new ResourceIdentifier(ResourceId);
+				return resourceInfo.ResourceGroupName;
 			}
 
 			return ResourceGroupName;
@@ -78,8 +97,13 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
 			{
 				return InputObject.ManagedInstanceName;
 			}
+			else if (string.Equals(this.ParameterSetName, UserResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
+			{
+				var resourceInfo = new ResourceIdentifier(ResourceId);
+				return resourceInfo.ResourceName;
+			}
 
-			return InstanceName;
+			return Name;
 		}
 		
 		/// <summary>

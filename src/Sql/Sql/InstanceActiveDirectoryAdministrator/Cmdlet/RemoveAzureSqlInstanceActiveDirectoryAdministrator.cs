@@ -79,8 +79,8 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
         public override void ExecuteCmdlet()
         {
             if (!Force.IsPresent && !ShouldProcess(
-               string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceActiveDirectoryAdministratorDescription, this.InstanceName),
-               string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceActiveDirectoryAdministratorWarning, this.InstanceName),
+               string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceActiveDirectoryAdministratorDescription, GetInstanceName()),
+               string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceActiveDirectoryAdministratorWarning, GetInstanceName()),
                Properties.Resources.ShouldProcessCaption))
             {
                 return;
