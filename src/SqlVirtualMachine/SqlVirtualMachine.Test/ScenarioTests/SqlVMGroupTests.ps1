@@ -22,6 +22,8 @@ function Test-CreateSqlVirtualMachineGroup
 	$rg = Create-ResourceGroupForTest $location
 
 	$groupName = Get-SqlVirtualMachineGroupName
+	$previousErrorActionPreferenceValue = $ErrorActionPreference
+	$ErrorActionPreference = "SilentlyContinue"
 	
 	try 
 	{
@@ -30,11 +32,11 @@ function Test-CreateSqlVirtualMachineGroup
 		Assert-NotNull $group
 		Assert-AreEqual $group.Name $groupName
 		Assert-AreEqual $group.ResourceGroupName $rg.ResourceGroupName
-		Assert-AreEqual $group.Location $location
 	}
 	finally
 	{
 		Remove-ResourceGroupForTest $rg
+		$ErrorActionPreference = $previousErrorActionPreferenceValue
 	}
 }
 
@@ -48,13 +50,15 @@ function Test-GetSqlVirtualMachineGroup
 	$rg = Create-ResourceGroupForTest $location
 
 	$groupName = Get-SqlVirtualMachineGroupName
+	$previousErrorActionPreferenceValue = $ErrorActionPreference
+	$ErrorActionPreference = "SilentlyContinue"
 	
 	try 
 	{
 		$group = Create-SqlVMGroup $rg.ResourceGroupName $groupName $location
 	
 		# Get using parameters
-		$group1 = Get-AzSqlVMGroup -ResourceGroupName $group.ResourceGroupName -Name $group.Name
+		$group1 = Get-AzSqlVMGroup -ResourceGroupName $group.ResourceGroupName -Name $groupName
 		Validate-SqlVirtualMachineGroup $group $group1
 		
 		# Get using resource id
@@ -68,6 +72,7 @@ function Test-GetSqlVirtualMachineGroup
 	finally
 	{
 		Remove-ResourceGroupForTest $rg
+		$ErrorActionPreference = $previousErrorActionPreferenceValue
 	}
 }
 
@@ -81,16 +86,20 @@ function Test-UpdateSqlVirtualMachineGroup
 	$rg = Create-ResourceGroupForTest $location
 
 	$groupName = Get-SqlVirtualMachineGroupName
+	$previousErrorActionPreferenceValue = $ErrorActionPreference
+	$ErrorActionPreference = "SilentlyContinue"
 	
 	try 
 	{
 		$group = Create-SqlVMGroup $rg.ResourceGroupName $groupName $location
+		Assert-NotNull $group
 		
 		# Update tags
 		$key = 'key'
 		$value = 'value'
 		$tags = @{$key=$value}
 		$group1 = Update-AzSqlVMGroup -InputObject $group -Tag $tags
+		$group1 = Get-AzSqlVMGroup -ResourceGroupName $rg.ResourceGroupName -Name $groupName
 		
 		Validate-SqlVirtualMachineGroup $group $group1
 		Assert-NotNull $group1.Tag
@@ -100,6 +109,7 @@ function Test-UpdateSqlVirtualMachineGroup
 	finally
 	{
 		Remove-ResourceGroupForTest $rg
+		$ErrorActionPreference = $previousErrorActionPreferenceValue
 	}
 }
 
@@ -113,19 +123,21 @@ function Test-RemoveSqlVirtualMachineGroup
 	$rg = Create-ResourceGroupForTest $location
 
 	$groupName = Get-SqlVirtualMachineGroupName
+	$previousErrorActionPreferenceValue = $ErrorActionPreference
+	$ErrorActionPreference = "SilentlyContinue"
 	
 	try 
 	{
 		# Test parameters
-		$group = Create-SqlVMGroup $rg.ResourceGroupName $groupName $location		
+		$group = Create-SqlVMGroup $rg.ResourceGroupName $groupName $location
 		Remove-AzSqlVMGroup -ResourceGroupName $group.ResourceGroupName -Name $group.Name
 		
 		# Test resource id
-		$group = Create-SqlVMGroup $rg.ResourceGroupName $groupName $location		
+		$group = Create-SqlVMGroup $rg.ResourceGroupName $groupName $location
 		Remove-AzSqlVMGroup -ResourceId $group.ResourceId
 		
 		# Test input object
-		$group = Create-SqlVMGroup $rg.ResourceGroupName $groupName $location		
+		$group = Create-SqlVMGroup $rg.ResourceGroupName $groupName $location
 		Remove-AzSqlVMGroup -InputObject $group
 		
 		$groupList = Get-AzSqlVMGroup -ResourceGroupName $group.ResourceGroupName
@@ -134,6 +146,7 @@ function Test-RemoveSqlVirtualMachineGroup
 	finally
 	{
 		Remove-ResourceGroupForTest $rg
+		$ErrorActionPreference = $previousErrorActionPreferenceValue
 	}
 }
 

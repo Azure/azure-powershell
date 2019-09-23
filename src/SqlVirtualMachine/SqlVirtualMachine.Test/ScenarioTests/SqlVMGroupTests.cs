@@ -19,6 +19,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachineGroup.Test.ScenarioTests
 {
+    [Collection("SqlVirtualMachineTests")]
     public class SqlVMGroupTests : SqlVirtualMachineTestsBase
     {
         public SqlVMGroupTests(ITestOutputHelper output) : base(output)
