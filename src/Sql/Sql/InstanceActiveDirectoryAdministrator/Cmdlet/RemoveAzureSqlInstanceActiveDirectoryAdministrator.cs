@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Auditing;
 using Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Model;
 using System.Collections.Generic;
 using System.Globalization;
@@ -28,14 +29,26 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
         public SwitchParameter Force { get; set; }
 
-        /// <summary>
-        /// Get the entities from the service
-        /// </summary>
-        /// <returns>The list of entities</returns>
-        protected override IEnumerable<AzureSqlInstanceActiveDirectoryAdministratorModel> GetEntity()
+		/// <summary>
+		/// Defines whether the cmdlets will output the model object at the end of its execution
+		/// </summary>
+		[Parameter(Mandatory = false,
+		HelpMessage = "Defines whether to return the removed AD administrator")]
+		public SwitchParameter PassThru { get; set; }
+
+		/// <summary>
+		/// Returns true if the model object that was constructed by this cmdlet should be written out
+		/// </summary>
+		protected override bool WriteResult() { return PassThru; }
+
+		/// <summary>
+		/// Get the entities from the service
+		/// </summary>
+		/// <returns>The list of entities</returns>
+		protected override IEnumerable<AzureSqlInstanceActiveDirectoryAdministratorModel> GetEntity()
         {
 			return new List<AzureSqlInstanceActiveDirectoryAdministratorModel>() {
-				ModelAdapter.GetInstanceActiveDirectoryAdministrator(this.ResourceGroupName, this.InstanceName)
+				ModelAdapter.GetInstanceActiveDirectoryAdministrator(GetResourceGroupName(), GetInstanceName())
             };
         }
 
@@ -56,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlInstanceActiveDirectoryAdministratorModel> PersistChanges(IEnumerable<AzureSqlInstanceActiveDirectoryAdministratorModel> entity)
         {
-            ModelAdapter.RemoveInstanceActiveDirectoryAdministrator(this.ResourceGroupName, this.InstanceName);
+            ModelAdapter.RemoveInstanceActiveDirectoryAdministrator(GetResourceGroupName(), GetInstanceName());
             return entity;
         }
 

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
         {
             ICollection<AzureSqlInstanceActiveDirectoryAdministratorModel> results;
 
-            results = ModelAdapter.ListInstanceActiveDirectoryAdministrators(this.ResourceGroupName, this.InstanceName);
+            results = ModelAdapter.ListInstanceActiveDirectoryAdministrators(GetResourceGroupName(), GetInstanceName());
 
             return results;
         }

@@ -12,9 +12,17 @@ Provisions an Azure AD administrator for SQL Managed Instance.
 
 ## SYNTAX
 
+### UseInputObjectParameterSet
 ```
 Set-AzSqlInstanceActiveDirectoryAdministrator [-DisplayName] <String> [-ObjectId] <Guid>
- [-InstanceName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-InputObject <AzureSqlManagedInstanceModel>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UseResourceGroupAndInstanceNameParameterSet
+```
+Set-AzSqlInstanceActiveDirectoryAdministrator [-DisplayName] <String> [-ObjectId] <Guid>
+ [-ResourceGroupName] <String> [-InstanceName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -43,15 +51,15 @@ ResourceGroup01   ManagedInstance01 DBAs        40b79501-b343-44ed-9ce7-da4c8cc7
 This command provisions an Azure AD administrator group named DBAs for the managed instance named ManagedInstance01.
 This server is associated with resource group ResourceGroup01.
 
-### Example 2: Provision an administrator user for a managed instanc
+### Example 2: Provision an administrator user for a managed instance
 ```
-PS C:\>Set-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -DisplayName "David Chew" -ObjectId "11E95548-B179-4FE1-9AF4-ACA49D13ABB9"
+PS C:\>Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" | Set-AzSqlInstanceActiveDirectoryAdmin -DisplayName "David Chew" -ObjectId "11E95548-B179-4FE1-9AF4-ACA49D13ABB9"
 ResourceGroupName InstanceName      DisplayName ObjectId 
 ----------------- ----------------- ----------- -------- 
 resourcegroup01   ManagedInstance01 David Chew  11E95548-B179-4FE1-9AF4-ACA49D13ABB9
 ```
 
-This command provisions an Azure AD user as an administrator for the managed instance named ManagedInstance01.
+This command provisions an Azure AD user as an administrator from the managed instance object.
 
 ## PARAMETERS
 
@@ -86,12 +94,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The managed instance object to use.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+Parameter Sets: UseInputObjectParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InstanceName
 The name of the Azure SQL Managed Instance the Azure Active Directory administrator is in.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UseResourceGroupAndInstanceNameParameterSet
 Aliases:
 
 Required: True
@@ -121,7 +144,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UseResourceGroupAndInstanceNameParameterSet
 Aliases:
 
 Required: True

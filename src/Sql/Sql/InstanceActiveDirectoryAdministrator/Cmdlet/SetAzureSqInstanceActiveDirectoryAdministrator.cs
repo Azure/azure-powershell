@@ -27,24 +27,24 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceActiveDirectoryAdministrator",ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true), OutputType(typeof(AzureSqlInstanceActiveDirectoryAdministratorModel))]
     public class SetAzureSqlInstanceActiveDirectoryAdministrator : AzureSqlInstanceActiveDirectoryAdministratorCmdletBase
     {
-        /// <summary>
-        /// Azure Active Directory display name for a user or group
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
+		/// <summary>
+		/// Azure Active Directory display name for a user or group
+		/// </summary>
+		[Parameter(Mandatory = true,
+			ValueFromPipelineByPropertyName = true,
+			Position = 2,
             HelpMessage = "Specifies the display name of the user or group for whom to grant permissions. This display name must exist in the active directory associated with the current subscription.")]
         [ValidateNotNullOrEmpty()]
         public string DisplayName { get; set; }
 
-        /// <summary>
-        /// Azure Active Directory object id for a user or group
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
-            HelpMessage = "Specifies the object ID of the user or group in Azure Active Directory for which to grant permissions.")]
-        [ValidateNotNullOrEmpty()]
+		/// <summary>
+		/// Azure Active Directory object id for a user or group
+		/// </summary>
+		[Parameter(Mandatory = true,
+			ValueFromPipelineByPropertyName = true,
+			Position = 3,
+			HelpMessage = "Specifies the object ID of the user or group in Azure Active Directory for which to grant permissions.")]
+		[ValidateNotNullOrEmpty()]
         public Guid ObjectId { get; set; }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
             {
                 currentActiveDirectoryAdmins = new List<AzureSqlInstanceActiveDirectoryAdministratorModel>()
                 {
-                    ModelAdapter.GetInstanceActiveDirectoryAdministrator(this.ResourceGroupName, this.InstanceName),
+                    ModelAdapter.GetInstanceActiveDirectoryAdministrator(GetResourceGroupName(), GetInstanceName()),
                 };
             }
             catch (Rest.Azure.CloudException ex)
@@ -83,8 +83,8 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
             List<Model.AzureSqlInstanceActiveDirectoryAdministratorModel> newEntity = new List<AzureSqlInstanceActiveDirectoryAdministratorModel>();
             newEntity.Add(new AzureSqlInstanceActiveDirectoryAdministratorModel()
             {
-                ResourceGroupName = ResourceGroupName,
-                InstanceName = InstanceName,
+                ResourceGroupName = GetResourceGroupName(),
+                InstanceName = GetInstanceName(),
                 DisplayName = DisplayName,
                 ObjectId = ObjectId,
             });
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
         protected override IEnumerable<AzureSqlInstanceActiveDirectoryAdministratorModel> PersistChanges(IEnumerable<AzureSqlInstanceActiveDirectoryAdministratorModel> entity)
         {
             return new List<AzureSqlInstanceActiveDirectoryAdministratorModel>() {
-                ModelAdapter.UpsertInstanceActiveDirectoryAdministrator(this.ResourceGroupName, this.InstanceName, entity.First())
+                ModelAdapter.UpsertInstanceActiveDirectoryAdministrator(GetResourceGroupName(), GetInstanceName(), entity.First())
             };
         }
     }
