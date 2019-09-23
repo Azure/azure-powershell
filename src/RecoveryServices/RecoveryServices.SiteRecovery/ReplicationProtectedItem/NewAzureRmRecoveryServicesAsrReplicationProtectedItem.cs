@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Job = Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Job;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -31,6 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [OutputType(typeof(ASRJob))]
     public class NewAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase
     {
+        const string VMwareToAzureWithDiskDetils = "VMwareToAzureWithDiskDetails";
         /// <summary>
         ///    Switch parameter to specify the replicated item is a VMware virtual machine 
         ///    or physical server that will be replicate to Azure.
@@ -38,6 +40,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(
             Position = 0,
             ParameterSetName = ASRParameterSets.VMwareToAzure,
+            Mandatory = true)]
+        [Parameter(
+            Position = 0,
+            ParameterSetName = VMwareToAzureWithDiskDetils,
             Mandatory = true)]
         public SwitchParameter VMwareToAzure { get; set; }
 
@@ -99,6 +105,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
            ParameterSetName = ASRParameterSets.VMwareToAzure,
            Mandatory = true,
            ValueFromPipeline = true)]
+        [Parameter(
+           ParameterSetName = VMwareToAzureWithDiskDetils,
+           Mandatory = true,
+           ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectableItem ProtectableItem { get; set; }
 
@@ -133,6 +143,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzure)]
+        [Parameter(ParameterSetName = VMwareToAzureWithDiskDetils)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
         [ValidateNotNullOrEmpty]
@@ -149,12 +160,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets the ID of the Azure storage account to replicate to.
         /// </summary>
-        [Parameter(
-            ParameterSetName = ASRParameterSets.EnterpriseToAzure,
-            Mandatory = true)]
-        [Parameter(
-            ParameterSetName = ASRParameterSets.HyperVSiteToAzure,
-            Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
         [ValidateNotNullOrEmpty]
         public string RecoveryAzureStorageAccountId { get; set; }
@@ -162,31 +169,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets the name of the operating system disk.
         /// </summary>
-        [Parameter(
-            ParameterSetName = ASRParameterSets.HyperVSiteToAzure,
-            Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string OSDiskName { get; set; }
 
         /// <summary>
         ///     Gets or sets the operating system family.
         /// </summary>
-        [Parameter(
-            ParameterSetName = ASRParameterSets.HyperVSiteToAzure,
-            Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            Constants.OSWindows,
-            Constants.OSLinux)]
+        [ValidateSet(Constants.OSWindows,Constants.OSLinux)]
         public string OS { get; set; }
 
         /// <summary>
         /// Gets or sets run as account to be used to push install the Mobility service if needed.
         /// Must be one from the list of run as accounts in the ASR fabric.
         /// </summary>
-        [Parameter(
-            ParameterSetName = ASRParameterSets.VMwareToAzure,
-            Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = VMwareToAzureWithDiskDetils, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRRunAsAccount Account { get; set; }
 
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets list of disks configuration to include for replication. By default all disks are included.
         /// </summary>
 
-        [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzure)]
+        [Parameter(ParameterSetName = VMwareToAzureWithDiskDetils, Mandatory = true)]
         public AsrInMageAzureV2DiskInput[] InMageAzureV2DiskInput { get; set; }
 
         /// <summary>
@@ -218,6 +218,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     in the ASR fabric corresponding to the Configuration server to specify one.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = VMwareToAzureWithDiskDetils, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRProcessServer ProcessServer { get; set; }
 
@@ -225,6 +226,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the ID of the Azure virtual network to recover the machine to in the event of a failover.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzure)]
+        [Parameter(ParameterSetName = VMwareToAzureWithDiskDetils)]
         [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
@@ -236,6 +238,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     virtual machine should be attached in the event of a failover.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzure)]
+        [Parameter(ParameterSetName = VMwareToAzureWithDiskDetils)]
         [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
@@ -248,6 +251,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = VMwareToAzureWithDiskDetils, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails, Mandatory = true)]
         [ValidateNotNullOrEmpty]
@@ -257,6 +261,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the replication group name to use to create multi-VM consistent recovery points.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzure)]
+        [Parameter(ParameterSetName = VMwareToAzureWithDiskDetils)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
         [ValidateNotNullOrEmpty]
@@ -326,6 +331,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter]
         public SwitchParameter WaitForCompletion { get; set; }
 
+        /// <summary> 
+        ///     Gets or sets the recovery disk storage account ARM Id.  
+        /// </summary> 
+        /// [Parameter(ParameterSetName = VMwareToAzureWithDiskDetils)] 
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzure, HelpMessage = "Specifies the Recovery VM managed disk type.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS")]
+        public string DiskType { get; set; }
+
         /// <summary>
         ///     ProcessRecord of the command.
         /// </summary>
@@ -381,6 +395,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         break;
 
                     case ASRParameterSets.VMwareToAzure:
+                    case VMwareToAzureWithDiskDetils:
                         if (!(policyInstanceType is InMageAzureV2PolicyDetails))
                         {
                             throw new PSArgumentException(
@@ -451,6 +466,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 TargetAzureSubnetId = this.RecoveryAzureSubnetName,
                 LogStorageAccountId = this.LogStorageAccountId,
                 MultiVmGroupName = this.ReplicationGroupName,
+                DiskType = this.DiskType,
                 MultiVmGroupId = this.ReplicationGroupName,
                 TargetAzureVmName = string.IsNullOrEmpty(this.RecoveryVmName)
                                             ? this.ProtectableItem.FriendlyName

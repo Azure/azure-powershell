@@ -68,7 +68,6 @@ Specifies the Recovery disk type.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Premium_LRS, Standard_LRS, Standard_SSD
 
 Required: True
 Position: Named

@@ -943,6 +943,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.PrimaryNicStaticIPAddress = vMNicDetails.PrimaryNicStaticIPAddress;
             this.RecoveryNicIpAddressType = vMNicDetails.RecoveryNicIpAddressType;
             this.EnableAcceleratedNetworkingOnRecovery = vMNicDetails.EnableAcceleratedNetworkingOnRecovery;
+            this.RecoveryPublicIPAddressId = vMNicDetails.RecoveryPublicIpAddressId;
+            this.RecoveryNetworkSecurityGroupId = vMNicDetails.RecoveryNetworkSecurityGroupId;
+            this.RecoveryLBBackendAddressPoolId =
+                vMNicDetails.RecoveryLBBackendAddressPoolIds?.ToList() ?? new List<string>();
         }
 
         //
@@ -1009,6 +1013,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets VM subnet name.
         /// </summary>
         public string VMSubnetName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the id of the public IP address resource associated with the NIC.
+        /// </summary>
+        public string RecoveryPublicIPAddressId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the id of the NSG associated with the NIC.
+        /// </summary>
+        public string RecoveryNetworkSecurityGroupId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the target backend address pools for the NIC.
+        /// </summary>
+        public List<string> RecoveryLBBackendAddressPoolId { get; set; }
     }
 
     /// <summary>
@@ -1299,7 +1318,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
 
                 this.ProviderSpecificDetails = new ASRHyperVReplicaAzureSpecificRPIDetails(providerSpecificDetails);
-
             }
             else if (rpi.Properties.ProviderSpecificDetails is HyperVReplicaReplicationDetails)
             {

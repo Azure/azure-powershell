@@ -190,6 +190,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string UseManagedDisk { get; set; }
 
         /// <summary>
+        ///     Gets or sets the id of the public IP address resource associated with the NIC.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryPublicIPAddressId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the id of the NSG associated with the NIC.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryNetworkSecurityGroupId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the target backend address pools for the NIC.
+        /// </summary>
+        [Parameter]
+        public string[] RecoveryLBBackendAddressPoolId { get; set; }
+
+        /// <summary>
         ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
@@ -248,6 +268,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     return;
                 }
 
+                // NSG, LB and PIP only for A2A provider.
+                if ((this.IsParameterBound(c => c.RecoveryNetworkSecurityGroupId) ||
+                    this.IsParameterBound(c => c.RecoveryPublicIPAddressId) ||
+                    this.IsParameterBound(c => c.RecoveryLBBackendAddressPoolId)) &&
+                    !(provider is A2AReplicationDetails))
+                {
+                    this.WriteWarning(Resources.NetworkingResourcesInDRNotSupportedForClassicVms);
+                    return;
+                }
 
                 var vmName = this.Name;
                 var vmSize = this.Size;
@@ -545,6 +574,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         vMNicInputDetails.SelectionType =
                             string.IsNullOrEmpty(this.NicSelectionType)
                                 ? Constants.SelectedByUser : this.NicSelectionType;
+                        vMNicInputDetails.RecoveryLBBackendAddressPoolIds =
+                            this.RecoveryLBBackendAddressPoolId?.ToList();
+                        vMNicInputDetails.RecoveryPublicIpAddressId =
+                            this.RecoveryPublicIPAddressId;
+                        vMNicInputDetails.RecoveryNetworkSecurityGroupId =
+                            this.RecoveryNetworkSecurityGroupId;
                         vMNicInputDetailsList.Add(vMNicInputDetails);
                         // NicId  matched for update
                         nicFoundToBeUpdated = true;
@@ -568,6 +603,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         vMNicInputDetails.SelectionType = nDetails.SelectionType;
                         vMNicInputDetailsList.Add(vMNicInputDetails);
                         vMNicInputDetails.EnableAcceleratedNetworkingOnRecovery = nDetails.EnableAcceleratedNetworkingOnRecovery;
+                        vMNicInputDetails.RecoveryLBBackendAddressPoolIds =
+                            nDetails.RecoveryLBBackendAddressPoolIds;
+                        vMNicInputDetails.RecoveryPublicIpAddressId =
+                            nDetails.RecoveryPublicIpAddressId;
+                        vMNicInputDetails.RecoveryNetworkSecurityGroupId =
+                            nDetails.RecoveryNetworkSecurityGroupId;
                     }
                 }
             }

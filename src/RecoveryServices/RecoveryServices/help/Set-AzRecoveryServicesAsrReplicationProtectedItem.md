@@ -21,8 +21,9 @@ Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationPr
  [-RecoveryBootDiagStorageAccountId <String>]
  [-AzureToAzureUpdateReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]>]
  [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>]
- [-KeyEncryptionVaultId <String>] [-UseManagedDisk <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyEncryptionVaultId <String>] [-UseManagedDisk <String>] [-RecoveryPublicIPAddressId <String>] 
+ [-RecoveryNetworkSecurityGroupId <String>] [-RecoveryLBBackendAddressPoolId <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -414,7 +415,48 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+### -RecoveryPublicIPAddressId
+Specifies the ID of the public IP address resource to be associated with the recovery NIC.
 
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+### -RecoveryNetworkSecurityGroupId
+Specifies the ID of the network security group to be associated with the recovery NIC.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+### -RecoveryLBBackendAddressPoolId
+Specifies the target backend address pools to be associated with the recovery NIC.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 

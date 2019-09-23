@@ -19,7 +19,12 @@
 -->
 ## Upcoming Release
 
+* Azure Site Recovery Support to select Disk type for vMWare to Azure DR.
+* Azure Site Recovery Support to update failover target Vm Network properties.
+* Bug fix for update "Recovery Plan" with pre and post actions.
+
 ## Version 2.0.0-preview
+
 * Azure Site Recovery Support to write to managed disk for vMWare to Azure.
 * Azure Site Recovery Support to NIC reduction for vMWare to Azure.
 * Azure Site Recovery Support to accelerated networking for Azure to Azure.

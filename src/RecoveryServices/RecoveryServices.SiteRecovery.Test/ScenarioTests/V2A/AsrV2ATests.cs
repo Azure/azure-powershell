@@ -119,7 +119,7 @@ namespace RecoveryServices.SiteRecovery.Test
              "\"");
         }
 
-        [Fact(Skip = "Need to ReRecord")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void V2ACreateRPI()
         {
