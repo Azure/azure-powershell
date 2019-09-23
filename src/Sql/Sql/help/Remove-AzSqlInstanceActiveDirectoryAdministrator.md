@@ -12,6 +12,12 @@ Removes an Azure AD administrator for SQL Managed Instance.
 
 ## SYNTAX
 
+### UseResourceGroupAndInstanceNameParameterSet (Default)
+```
+Remove-AzSqlInstanceActiveDirectoryAdministrator [-Force] [-PassThru] [-ResourceGroupName] <String>
+ [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### UseInputObjectParameterSet
 ```
 Remove-AzSqlInstanceActiveDirectoryAdministrator [-Force] [-PassThru]
@@ -23,12 +29,6 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator [-Force] [-PassThru]
 ```
 Remove-AzSqlInstanceActiveDirectoryAdministrator [-Force] [-PassThru] [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UseResourceGroupAndInstanceNameParameterSet
-```
-Remove-AzSqlInstanceActiveDirectoryAdministrator [-Force] [-PassThru] [-ResourceGroupName] <String>
- [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

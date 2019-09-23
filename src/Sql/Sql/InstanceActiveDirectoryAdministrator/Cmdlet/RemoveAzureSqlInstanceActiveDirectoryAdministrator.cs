@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdlet
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceActiveDirectoryAdministrator", SupportsShouldProcess = true), OutputType(typeof(AzureSqlInstanceActiveDirectoryAdministratorModel))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceActiveDirectoryAdministrator", DefaultParameterSetName = UseResourceGroupAndInstanceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(AzureSqlInstanceActiveDirectoryAdministratorModel))]
     public class RemoveAzureSqlInstanceActiveDirectoryAdministrator : AzureSqlInstanceActiveDirectoryAdministratorCmdletBase
     {
         /// <summary>

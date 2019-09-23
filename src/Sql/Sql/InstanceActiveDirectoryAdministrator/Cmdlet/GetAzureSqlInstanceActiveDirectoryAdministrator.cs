@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdlet
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceActiveDirectoryAdministrator")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceActiveDirectoryAdministrator", DefaultParameterSetName = UseResourceGroupAndInstanceNameParameterSet)]
     [OutputType(typeof(AzureSqlInstanceActiveDirectoryAdministratorModel))]
     public class GetAzureSqlInstanceActiveDirectoryAdministrator : AzureSqlInstanceActiveDirectoryAdministratorCmdletBase
     {

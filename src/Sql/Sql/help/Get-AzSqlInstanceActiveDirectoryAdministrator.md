@@ -12,6 +12,12 @@ Gets information about an Azure AD administrator for SQL Managed Instance.
 
 ## SYNTAX
 
+### UseResourceGroupAndInstanceNameParameterSet (Default)
+```
+Get-AzSqlInstanceActiveDirectoryAdministrator [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### UseInputObjectParameterSet
 ```
 Get-AzSqlInstanceActiveDirectoryAdministrator [-InputObject <AzureSqlManagedInstanceModel>]
@@ -22,12 +28,6 @@ Get-AzSqlInstanceActiveDirectoryAdministrator [-InputObject <AzureSqlManagedInst
 ```
 Get-AzSqlInstanceActiveDirectoryAdministrator [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
-```
-
-### UseResourceGroupAndInstanceNameParameterSet
-```
-Get-AzSqlInstanceActiveDirectoryAdministrator [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +64,6 @@ ResourceGroup01   ManagedInstance01 DBAs        40b79501-b343-44ed-9ce7-da4c8cc7
 ```
 
 This command gets information about an Azure AD administrator using managed instance resource identifier.
-
 
 ## PARAMETERS
 
