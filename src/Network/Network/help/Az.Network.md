@@ -602,6 +602,9 @@ Adds a condition to the RewriteRule for an application gateway.
 ### [New-AzApplicationGatewayRewriteRuleHeaderConfiguration](New-AzApplicationGatewayRewriteRuleHeaderConfiguration.md)
 Creates a rewrite rule header configuration for an application gateway.
 
+### [New-AzApplicationGatewayRewriteRuleUrlConfiguration](New-AzApplicationGatewayRewriteRuleUrlConfiguration.md)
+Creates a rewrite rule url configuration for an application gateway.
+
 ### [New-AzApplicationGatewayRewriteRuleSet](New-AzApplicationGatewayRewriteRuleSet.md)
 Creates a request routing rule for an application gateway.
 

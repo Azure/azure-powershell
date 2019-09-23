@@ -1,36 +1,33 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayrewriteruleactionset
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayrewriteruleurlconfiguration
 schema: 2.0.0
 ---
 
-# New-AzApplicationGatewayRewriteRuleActionSet
+# New-AzApplicationGatewayRewriteRuleUrlConfiguration
 
 ## SYNOPSIS
-Creates a rewrite rule action set for an application gateway.
+Creates a rewrite rule url configuration for an application gateway.
 
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayRewriteRuleActionSet
- [-RequestHeaderConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHeaderConfiguration]>]
- [-ResponseHeaderConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHeaderConfiguration]>]
- [-UrlConfiguration [Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayUrlConfiguration]]
+New-AzApplicationGatewayRewriteRuleUrlConfiguration [-ModifiedPath <String>] [-ModifiedQueryString <String>] [-Reroute]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-**The New-AzApplicationGatewayRewriteRuleActionSet** cmdlet creates a rewrite rule action set for an Azure application gateway.
+**The AzApplicationGatewayRewriteRuleUrlConfiguration** cmdlet creates a rewrite rule url configuration for an Azure application gateway.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $action = New-AzApplicationGatewayRewriteRuleActionSet -ResponseHeaderConfiguration $hc -UrlConfiguration $urlConfiguration
+PS C:\> $urlCongiguration = New-AzApplicationGatewayRewriteRuleUrlConfiguration -ModifiedPath /abc -ModifiedQueryString x=y&a=b
 ```
 
-This command creates a rewrite rule action set and stores the result in the variable named $action.
+This command creates a rewrite rule url configuration and stores the result in the variable named $urlCongiguration.
 
 ## PARAMETERS
 
@@ -49,11 +46,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RequestHeaderConfiguration
-List of request header configurations
+### -ModifiedPath
+Url path value
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHeaderConfiguration]
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ModifiedQueryString
+Url query string value
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -64,26 +76,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResponseHeaderConfiguration
-List of response header configurations
+### -Reroute
+Flag to re-evaluate the url path map provided in path based request routing rules using modified path
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHeaderConfiguration]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UrlConfiguration
-Url Configuration for action set
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayUrlConfiguration
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -103,7 +100,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRuleActionSet
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayUrlConfiguration
 
 ## NOTES
 
@@ -121,6 +118,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzApplicationGatewayRewriteRule](./New-AzApplicationGatewayRewriteRule.md)
 
-[New-AzApplicationGatewayRewriteRuleHeaderConfiguration](./New-AzApplicationGatewayRewriteRuleHeaderConfiguration.md)
-
-[New-AzApplicationGatewayRewriteRuleUrlConfiguration](./New-AzApplicationGatewayRewriteRuleUrlConfiguration.md)
+[New-AzApplicationGatewayRewriteRuleActionSet](./New-AzApplicationGatewayRewriteRuleActionSet.md)

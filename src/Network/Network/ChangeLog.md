@@ -40,6 +40,11 @@
         - New-VpnConnection
         - Update-VpnConnection
 * Fixed documents for some PowerShell examples to use Az cmdlets instead of AzureRM cmdlets
+* Added support for Url Confiugration in Rewrite Rules Action Set in the Application Gateway
+    - New cmdlets added:
+        - New-AzApplicationGatewayRewriteRuleUrlConfiguration
+    - Cmdlets updated with optional parameter - UrlConfiguration
+        - New-AzApplicationGatewayRewriteRuleActionSet
 
 ## Version 1.13.0
 * Updated New-AzPrivateLinkServiceIpConfig
