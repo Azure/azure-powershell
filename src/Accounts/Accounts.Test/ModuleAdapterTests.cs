@@ -45,6 +45,17 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPatchHostFull()
+        {
+            var baseUri = "https://manage.windowsazure.com/subscriptions?api-version=2018-06-08#start";
+            var patchbase = "https://manage.windowsazure.de/";
+            var expected = "https://manage.windowsazure.de/subscriptions?api-version=2018-06-08#start";
+            var checkValue = CreateUri(baseUri).PatchHost(patchbase);
+            Assert.Equal(expected, checkValue.GetComponents(UriComponents.AbsoluteUri, UriFormat.Unescaped));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPatchHostNegative()
         {
             Assert.Null(EnvironmentExtensions.PatchHost(null, null));
