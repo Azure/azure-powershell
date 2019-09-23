@@ -1104,118 +1104,109 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithUrlConfiguration
 		Assert-AreEqual $appgw.BackendHttpSettingsCollection.Count 1
 		Assert-AreEqual $appgw.HttpListeners.Count 1
 		Assert-AreEqual $appgw.RequestRoutingRules.Count 1
-		
-		Assert-NotNull $appgw.RewriteRuleSets
-		Assert-AreEqual 4 $appgw.RewriteRuleSets.Count
 
 		Assert-NotNull $appgw.RewriteRuleSets
 		Assert-AreEqual 1 $appgw.RewriteRuleSets.Count
-		Assert-AreEqual 4 $appgw.RewriteRuleSets.RewriteRule
+		Assert-AreEqual 4 $appgw.RewriteRuleSets.RewriteRules.Count
 
-		Assert-AreEqual "rewriterule1" $appgw.RewriteRuleSets.RewriteRule[0].Name
-		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[0].ActionSet
-		Assert-AreEqual "/abc" $appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedPath
-		Assert-Null $appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedQueryString
-		Assert-AreEqual false.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+		Assert-AreEqual "rewriterule1" $appgw.RewriteRuleSets.RewriteRules[0].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRules[0].ActionSet
+		Assert-AreEqual "/abc" $appgw.RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-Null $appgw.RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual false RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.Reroute
 
-		Assert-AreEqual "rewriterule2" $appgw.RewriteRuleSets.RewriteRule[1].Name
-		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[1].ActionSet
-		Assert-AreEqual "/def" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedPath
-		Assert-AreEqual "a=b&c=d%20f" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedQueryString
-		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+		Assert-AreEqual "rewriterule2" $appgw.RewriteRuleSets.RewriteRules[1].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRules[1].ActionSet
+		Assert-AreEqual "/def" $appgw.RewriteRuleSets.RewriteRules[1].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-AreEqual "a=b&c=d%20f" $appgw.RewriteRuleSets.RewriteRules[1].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRules[1].ActionSet.UrlConfiguration.Reroute
 
-	    Assert-AreEqual "rewriterule3" $appgw.RewriteRuleSets.RewriteRule[2].Name
-		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[2].ActionSet
-		Assert-Null $appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedPath
-		Assert-AreEqual "a=b&c=d%20f1" $appgw.RewriteRuleSets.RewriteRule[2].ActionSet.UrlConfiguration.ModifiedQueryString
-		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+	    Assert-AreEqual "rewriterule3" $appgw.RewriteRuleSets.RewriteRules[2].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRules[2].ActionSet
+		Assert-Null $appgw.RewriteRuleSets.RewriteRules[2].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-AreEqual "a=b&c=d%20f1" $appgw.RewriteRuleSets.RewriteRules[2].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRules[2].ActionSet.UrlConfiguration.Reroute
 
-		Assert-AreEqual "rewriterule4" $appgw.RewriteRuleSets.RewriteRule[1].Name
-		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[1].ActionSet
-		Assert-AreEqual "/def2" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedPath
-		Assert-AreEqual "a=b&c=d%20f12" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedQueryString
-		Assert-AreEqual true $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+		Assert-AreEqual "rewriterule4" $appgw.RewriteRuleSets.RewriteRules[3].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRules[3].ActionSet
+		Assert-AreEqual "/def2" $appgw.RewriteRuleSets.RewriteRules[3].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-AreEqual "a=b&c=d%20f12" $appgw.RewriteRuleSets.RewriteRules[3].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual true $appgw.RewriteRuleSets.RewriteRules[3].ActionSet.UrlConfiguration.Reroute
 
 		# Get Application Gateway
-		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		$appgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
 
         Assert-AreEqual $appgw.BackendHttpSettingsCollection.Count 1
 		Assert-AreEqual $appgw.HttpListeners.Count 1
 		Assert-AreEqual $appgw.RequestRoutingRules.Count 1
-		
-		Assert-NotNull $appgw.RewriteRuleSets
-		Assert-AreEqual 4 $appgw.RewriteRuleSets.Count
 
 		Assert-NotNull $appgw.RewriteRuleSets
 		Assert-AreEqual 1 $appgw.RewriteRuleSets.Count
-		Assert-AreEqual 4 $appgw.RewriteRuleSets.RewriteRule
+		Assert-AreEqual 4 $appgw.RewriteRuleSets.RewriteRules.Count
 
-		Assert-AreEqual "rewriterule1" $appgw.RewriteRuleSets.RewriteRule[0].Name
-		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[0].ActionSet
-		Assert-AreEqual "/abc" $appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedPath
-		Assert-Null $appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedQueryString
-		Assert-AreEqual false.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+		Assert-AreEqual "rewriterule1" $appgw.RewriteRuleSets.RewriteRules[0].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRules[0].ActionSet
+		Assert-AreEqual "/abc" $appgw.RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-Null $appgw.RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual false RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.Reroute
 
-		Assert-AreEqual "rewriterule2" $appgw.RewriteRuleSets.RewriteRule[1].Name
-		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[1].ActionSet
-		Assert-AreEqual "/def" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedPath
-		Assert-AreEqual "a=b&c=d%20f" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedQueryString
-		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+		Assert-AreEqual "rewriterule2" $appgw.RewriteRuleSets.RewriteRules[1].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRules[1].ActionSet
+		Assert-AreEqual "/def" $appgw.RewriteRuleSets.RewriteRules[1].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-AreEqual "a=b&c=d%20f" $appgw.RewriteRuleSets.RewriteRules[1].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRules[1].ActionSet.UrlConfiguration.Reroute
 
-	    Assert-AreEqual "rewriterule3" $appgw.RewriteRuleSets.RewriteRule[2].Name
-		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[2].ActionSet
-		Assert-Null $appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedPath
-		Assert-AreEqual "a=b&c=d%20f1" $appgw.RewriteRuleSets.RewriteRule[2].ActionSet.UrlConfiguration.ModifiedQueryString
-		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+	    Assert-AreEqual "rewriterule3" $appgw.RewriteRuleSets.RewriteRules[2].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRules[2].ActionSet
+		Assert-Null $appgw.RewriteRuleSets.RewriteRules[2].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-AreEqual "a=b&c=d%20f1" $appgw.RewriteRuleSets.RewriteRules[2].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRules[2].ActionSet.UrlConfiguration.Reroute
 
-		Assert-AreEqual "rewriterule4" $appgw.RewriteRuleSets.RewriteRule[1].Name
-		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[1].ActionSet
-		Assert-AreEqual "/def2" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedPath
-		Assert-AreEqual "a=b&c=d%20f12" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedQueryString
-		Assert-AreEqual true $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+		Assert-AreEqual "rewriterule4" $appgw.RewriteRuleSets.RewriteRules[3].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRules[3].ActionSet
+		Assert-AreEqual "/def2" $appgw.RewriteRuleSets.RewriteRules[3].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-AreEqual "a=b&c=d%20f12" $appgw.RewriteRuleSets.RewriteRules[3].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual true $appgw.RewriteRuleSets.RewriteRules[3].ActionSet.UrlConfiguration.Reroute
 
 		# Updating Url Configuration
-		$appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedPath = "/abc1"
-		$appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedQueryString = "a=b&c=d"
+		$appgw.RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.ModifiedPath = "/abc1"
+		$appgw.RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.ModifiedQueryString = "a=b&c=d"
 		
-		$appgw.RewriteRuleSets.RewriteRule[3].ActionSet.UrlConfiguration.Reroute = false
+		$appgw.RewriteRuleSets.RewriteRules[3].ActionSet.UrlConfiguration.Reroute = false
 
-		Set-AzApplicationGateway -ApplicationGateway $appgw
+		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
 
 		Assert-AreEqual $appgw.BackendHttpSettingsCollection.Count 1
 		Assert-AreEqual $appgw.HttpListeners.Count 1
 		Assert-AreEqual $appgw.RequestRoutingRules.Count 1
-		
-		Assert-NotNull $appgw.RewriteRuleSets
-		Assert-AreEqual 4 $appgw.RewriteRuleSets.Count
 
 		Assert-NotNull $appgw.RewriteRuleSets
 		Assert-AreEqual 1 $appgw.RewriteRuleSets.Count
-		Assert-AreEqual 4 $appgw.RewriteRuleSets.RewriteRule
+		Assert-AreEqual 4 $appgw.RewriteRuleSets.RewriteRules.Count
 
-		Assert-AreEqual "rewriterule1" $appgw.RewriteRuleSets.RewriteRule[0].Name
-		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[0].ActionSet
-		Assert-AreEqual "/abc" $appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedPath
-		Assert-AreEqual "a=b&c=d" $appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedQueryString
-		Assert-AreEqual false.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+		Assert-AreEqual "rewriterule1" $appgw.RewriteRuleSets.RewriteRules[0].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRules[0].ActionSet
+		Assert-AreEqual "/abc1" $appgw.RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-AreEqual "a=b&c=d" $appgw.RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual false RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.Reroute
 
-		Assert-AreEqual "rewriterule2" $appgw.RewriteRuleSets.RewriteRule[1].Name
-		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[1].ActionSet
-		Assert-AreEqual "/def" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedPath
-		Assert-AreEqual "a=b&c=d%20f" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedQueryString
-		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+		Assert-AreEqual "rewriterule2" $appgw.RewriteRuleSets.RewriteRules[1].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRules[1].ActionSet
+		Assert-AreEqual "/def" $appgw.RewriteRuleSets.RewriteRules[1].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-AreEqual "a=b&c=d%20f" $appgw.RewriteRuleSets.RewriteRules[1].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRules[1].ActionSet.UrlConfiguration.Reroute
 
-	    Assert-AreEqual "rewriterule3" $appgw.RewriteRuleSets.RewriteRule[2].Name
-		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[2].ActionSet
-		Assert-Null $appgw.RewriteRuleSets.RewriteRule[0].ActionSet.UrlConfiguration.ModifiedPath
-		Assert-AreEqual "a=b&c=d%20f1" $appgw.RewriteRuleSets.RewriteRule[2].ActionSet.UrlConfiguration.ModifiedQueryString
-		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+	    Assert-AreEqual "rewriterule3" $appgw.RewriteRuleSets.RewriteRules[2].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRules[2].ActionSet
+		Assert-Null $appgw.RewriteRuleSets.RewriteRules[2].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-AreEqual "a=b&c=d%20f1" $appgw.RewriteRuleSets.RewriteRules[2].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRules[2].ActionSet.UrlConfiguration.Reroute
 
-		Assert-AreEqual "rewriterule4" $appgw.RewriteRuleSets.RewriteRule[1].Name
-		Assert-NotNull $appgw.RewriteRuleSets.RewriteRule[1].ActionSet
-		Assert-AreEqual "/def2" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedPath
-		Assert-AreEqual "a=b&c=d%20f12" $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.ModifiedQueryString
-		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRule[1].ActionSet.UrlConfiguration.Reroute
+		Assert-AreEqual "rewriterule4" $appgw.RewriteRuleSets.RewriteRules[3].Name
+		Assert-NotNull $appgw.RewriteRuleSets.RewriteRules[3].ActionSet
+		Assert-AreEqual "/def2" $appgw.RewriteRuleSets.RewriteRules[3].ActionSet.UrlConfiguration.ModifiedPath
+		Assert-AreEqual "a=b&c=d%20f12" $appgw.RewriteRuleSets.RewriteRules[3].ActionSet.UrlConfiguration.ModifiedQueryString
+		Assert-AreEqual false $appgw.RewriteRuleSets.RewriteRules[3].ActionSet.UrlConfiguration.Reroute
 
 		# Stop Application Gateway
 		$getgw1 = Stop-AzApplicationGateway -ApplicationGateway $appgw
