@@ -1739,20 +1739,24 @@ function Test-ApplicationGatewayCRUDSubItems2
 		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
 
 		# WAF Policy and Custom Rule
-		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Content-Length
+        # Disabled until Firewall Policy cmdlets are updated
+		<#$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Content-Length
 		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator GreaterThan -MatchValue 1000 -Transform Lowercase -NegationCondition $False
 		$rule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Block
 		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname -Location $location
 		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
 		$policy.CustomRules = $rule
-		Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
-		# Get Application Gateway
+		Set-AzApplicationGatewayFirewallPolicy -InputObject $policy#>
+
+        # Get Application Gateway
 		$appgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
-		$appgw.FirewallPolicy = $policy
-		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+
+        # Disabled until Firewall Policy cmdlets are updated
+		#$appgw.FirewallPolicy = $policy
+		#$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
 
 		$appgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
-		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
+		#$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
 
 		# First Check firewall configuraiton
 		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.Enabled $true
@@ -1764,9 +1768,10 @@ function Test-ApplicationGatewayCRUDSubItems2
 		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.MaxRequestBodySizeInKb 80
 		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.FileUploadLimitInMb 70
 		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.Exclusions.Count 2
-
+        
+        # Disabled until Firewall Policy cmdlets are updated
 		# Second check firewll policy
-		Assert-AreEqual $policy.Id $appgw.FirewallPolicy.Id
+		<#Assert-AreEqual $policy.Id $appgw.FirewallPolicy.Id
 		Assert-AreEqual $policy.CustomRules[0].Name $rule.Name
 		Assert-AreEqual $policy.CustomRules[0].RuleType $rule.RuleType
 		Assert-AreEqual $policy.CustomRules[0].Action $rule.Action
@@ -1776,7 +1781,7 @@ function Test-ApplicationGatewayCRUDSubItems2
 		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].NegationConditon $rule.MatchConditions[0].NegationConditon
 		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchValues[0] $rule.MatchConditions[0].MatchValues[0]
 		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].VariableName $rule.MatchConditions[0].MatchVariables[0].VariableName
-		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].Selector $rule.MatchConditions[0].MatchVariables[0].Selector
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].Selector $rule.MatchConditions[0].MatchVariables[0].Selector#>
 
 		# Set non-exiting
 		Assert-ThrowsLike { Set-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus408 -CustomErrorPageUrl $customError403Url02 } "*does not exist*"
