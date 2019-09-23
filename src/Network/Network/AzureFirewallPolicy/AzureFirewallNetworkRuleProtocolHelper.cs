@@ -19,7 +19,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public static class AzureFirewallNetworkRuleProtocolHelper
+    public static class AzureFirewallPolicyNetworkRuleProtocolHelper
     {
         private static readonly IDictionary<string, string> SupportedNetworkRuleProtocols = (new string[]{
             MNM.AzureFirewallNetworkRuleProtocol.Any,

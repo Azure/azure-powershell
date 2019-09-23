@@ -22,7 +22,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Firewall", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewall))]
-    public class SetAzureFirewallPolicyCommand : AzureFirewallBaseCmdlet
+    public class SetAzureFirewallPolicyCommand : AzureFirewallPolicyBaseCmdlet
     {
         [Parameter(
             Mandatory = true,

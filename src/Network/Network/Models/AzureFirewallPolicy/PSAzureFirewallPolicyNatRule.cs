@@ -13,56 +13,76 @@
 // limitations under the License.
 //
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewallPolicyNatRule
+    public class PSAzureFirewallPolicyNatRule : PSAzureFirewallPolicyBaseRuleCollection
     {
-        public string Name { get; set; }
+        [JsonProperty(Order = 3)]
+        public PSAzureFirewallPolicyNatRuleAction Action { get; set; }
 
-        public string Description { get; set; }
-
-        public List<string> Protocols { get; set; }
-
-        public List<string> SourceAddresses { get; set; }
-
-        public List<string> DestinationAddresses { get; set; }
-
-        public List<string> DestinationPorts { get; set; }
+        [JsonProperty(Order = 4)]
+        public List<PSAzureFirewallPolicyNetworkRuleCondition> Rules { get; set; }
 
         public string TranslatedAddress { get; set; }
 
         public string TranslatedPort { get; set; }
 
         [JsonIgnore]
-        public string ProtocolsText
+        public string ActionText
         {
-            get { return JsonConvert.SerializeObject(Protocols, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(Action, Formatting.Indented); }
         }
 
         [JsonIgnore]
-        public string SourceAddressesText
+        public string RulesText
         {
-            get { return JsonConvert.SerializeObject(SourceAddresses, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(Rules, Formatting.Indented); }
         }
 
-        [JsonIgnore]
-        public string DestinationAddressesText
+        public void AddRule(PSAzureFirewallPolicyNetworkRuleCondition rule)
         {
-            get { return JsonConvert.SerializeObject(DestinationAddresses, Formatting.Indented); }
+            // Validate
+            if (this.Rules != null)
+            {
+                if (this.Rules.Any(rc => rc.Name.Equals(rule.Name)))
+                {
+                    throw new ArgumentException($"NAT Rule names must be unique. {rule.Name} name is already used.");
+                }
+            }
+            else
+            {
+                this.Rules = new List<PSAzureFirewallPolicyNetworkRuleCondition>();
+            }
+
+            this.Rules.Add(rule);
         }
 
-        [JsonIgnore]
-        public string DestinationPortsText
+        public PSAzureFirewallPolicyNetworkRuleCondition GetRuleByName(string ruleName)
         {
-            get { return JsonConvert.SerializeObject(DestinationPorts, Formatting.Indented); }
+            if (string.IsNullOrEmpty(ruleName))
+            {
+                throw new ArgumentException($"Rule name cannot be an empty string.");
+            }
+
+            var rule = this.Rules?.FirstOrDefault(r => ruleName.Equals(r.Name, StringComparison.OrdinalIgnoreCase));
+
+            if (rule == null)
+            {
+                throw new ArgumentException($"Rule with name {ruleName} does not exist.");
+            }
+
+            return rule;
         }
 
-        public void AddProtocol(string protocolType)
+        public void RemoveRuleByName(string ruleName)
         {
-            (Protocols ?? (Protocols = new List<string>())).Add(AzureFirewallNetworkRuleProtocolHelper.MapUserInputToNatRuleProtocol(protocolType));
+            var rule = this.GetRuleByName(ruleName);
+            this.Rules?.Remove(rule);
         }
     }
 }

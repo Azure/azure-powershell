@@ -20,8 +20,8 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyApplicationRuleCondition", SupportsShouldProcess = true, DefaultParameterSetName = AzureFirewallPolicyApplicationRuleConditionParameterSets.TargetFqdn), OutputType(typeof(PSAzureFirewallPolicyApplicationRule))]
-    public class NewAzureFirewallPolicyApplicationRuleConditionCommand : AzureFirewallPolicyBaseCmdlet
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyApplicationRuleCondition", SupportsShouldProcess = true, DefaultParameterSetName = AzureFirewallPolicyApplicationRuleConditionParameterSets.TargetFqdn), OutputType(typeof(PSAzureFirewallPolicyApplicationRuleCondition))]
+    public class NewAzFirewallPolicyApplicationRuleConditionCommand : AzureFirewallPolicyBaseCmdlet
     {
         [Parameter(
             Mandatory = true,

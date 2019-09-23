@@ -20,13 +20,17 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewallPolicyApplicationRuleCollection : PSAzureFirewallPolicyBaseRuleCollection
+    public class PSAzureFirewallPolicyFilterRule : PSAzureFirewallPolicyBaseRuleCollection
     {
         [JsonProperty(Order = 3)]
-        public PSAzureFirewallRCAction Action { get; set; }
+        public PSAzureFirewallPolicyFilterRuleAction Action { get; set; }
 
         [JsonProperty(Order = 4)]
-        public List<PSAzureFirewallPolicyApplicationRule> Rules { get; set; }
+        public List<PSAzureFirewallPolicyApplicationRuleCondition> Rules { get; set; }
+
+        [JsonProperty(Order = 4)]
+        public List<PSAzureFirewallPolicyNetworkRuleCondition> NetworkRules { get; set; }
+
 
         [JsonIgnore]
         public string ActionText
@@ -40,7 +44,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(Rules, Formatting.Indented); }
         }
 
-        public void AddRule(PSAzureFirewallPolicyApplicationRule rule)
+        public void AddRule(PSAzureFirewallPolicyApplicationRuleCondition rule)
         {
             // Validate
             if (this.Rules != null)
@@ -52,13 +56,13 @@ namespace Microsoft.Azure.Commands.Network.Models
             }
             else
             {
-                this.Rules = new List<PSAzureFirewallPolicyApplicationRule>();
+                this.Rules = new List<PSAzureFirewallPolicyApplicationRuleCondition>();
             }
 
             this.Rules.Add(rule);
         }
 
-        public PSAzureFirewallPolicyApplicationRule GetRuleByName(string ruleName)
+        public PSAzureFirewallPolicyApplicationRuleCondition GetRuleByName(string ruleName)
         {
             if (string.IsNullOrEmpty(ruleName))
             {
@@ -66,6 +70,42 @@ namespace Microsoft.Azure.Commands.Network.Models
             }
 
             var rule = this.Rules?.FirstOrDefault(r => ruleName.Equals(r.Name, StringComparison.OrdinalIgnoreCase));
+
+            if (rule == null)
+            {
+                throw new ArgumentException($"Rule with name {ruleName} does not exist.");
+            }
+
+            return rule;
+        }
+
+        
+        public void AddNetworkRuleCondition(PSAzureFirewallPolicyNetworkRuleCondition rule)
+        {
+            // Validate
+            if (this.Rules != null)
+            {
+                if (this.Rules.Any(rc => rc.Name.Equals(rule.Name)))
+                {
+                    throw new ArgumentException($"Application Rule names must be unique. {rule.Name} name is already used.");
+                }
+            }
+            else
+            {
+                this.NetworkRules = new List<PSAzureFirewallPolicyNetworkRuleCondition>();
+            }
+
+            this.NetworkRules.Add(rule);
+        }
+
+        public PSAzureFirewallPolicyNetworkRuleCondition GetNetworkRuleConditionByName(string ruleName)
+        {
+            if (string.IsNullOrEmpty(ruleName))
+            {
+                throw new ArgumentException($"Rule name cannot be an empty string.");
+            }
+
+            var rule = this.NetworkRules?.FirstOrDefault(r => ruleName.Equals(r.Name, StringComparison.OrdinalIgnoreCase));
 
             if (rule == null)
             {
