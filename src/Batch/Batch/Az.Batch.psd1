@@ -149,7 +149,7 @@ CmdletsToExport = 'Remove-AzBatchAccount',
                'New-AzBatchJobSchedule', 
                'Remove-AzBatchJobSchedule',
                'Get-AzBatchTaskCount', 
-               'Get-AzBatchPoolNodeCounts', 
+               'Get-AzBatchPoolNodeCount', 
                'Start-AzBatchComputeNodeServiceLogUpload', 
                'New-AzBatchResourceFile'
 
