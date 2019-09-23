@@ -19,11 +19,17 @@ Set-AzSqlInstanceActiveDirectoryAdministrator [-DisplayName] <String> [-ObjectId
  [<CommonParameters>]
 ```
 
+### UserResourceIdParameterSet
+```
+Set-AzSqlInstanceActiveDirectoryAdministrator [-DisplayName] <String> [-ObjectId] <Guid> [-ResourceId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### UseResourceGroupAndInstanceNameParameterSet
 ```
 Set-AzSqlInstanceActiveDirectoryAdministrator [-DisplayName] <String> [-ObjectId] <Guid>
- [-ResourceGroupName] <String> [-InstanceName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +46,7 @@ We recommend that you provision a dedicated Azure AD group as an administrator.
 
 ## EXAMPLES
 
-### Example 1: Provision an administrator group for a managed instance
+### Example 1: Provision an administrator group for a managed instance associated with resource group
 ```
 PS C:\>Set-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -DisplayName "DBAs" -ObjectId "40b79501-b343-44ed-9ce7-da4c8cc7353b"
 ResourceGroupName InstanceName      DisplayName ObjectId 
@@ -51,7 +57,7 @@ ResourceGroup01   ManagedInstance01 DBAs        40b79501-b343-44ed-9ce7-da4c8cc7
 This command provisions an Azure AD administrator group named DBAs for the managed instance named ManagedInstance01.
 This server is associated with resource group ResourceGroup01.
 
-### Example 2: Provision an administrator user for a managed instance
+### Example 2: Provision an administrator user using managed instance object
 ```
 PS C:\>Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" | Set-AzSqlInstanceActiveDirectoryAdmin -DisplayName "David Chew" -ObjectId "11E95548-B179-4FE1-9AF4-ACA49D13ABB9"
 ResourceGroupName InstanceName      DisplayName ObjectId 
@@ -60,6 +66,16 @@ resourcegroup01   ManagedInstance01 David Chew  11E95548-B179-4FE1-9AF4-ACA49D13
 ```
 
 This command provisions an Azure AD user as an administrator from the managed instance object.
+
+### Example 3: Provision an administrator using managed instance resource identifier
+```
+PS C:\>Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" | Set-AzSqlInstanceActiveDirectoryAdmin -DisplayName "David Chew" -ObjectId "11E95548-B179-4FE1-9AF4-ACA49D13ABB9"
+ResourceGroupName InstanceName      DisplayName ObjectId 
+----------------- ----------------- ----------- -------- 
+resourcegroup01   ManagedInstance01 David Chew  11E95548-B179-4FE1-9AF4-ACA49D13ABB9
+```
+
+This command provisions an Azure AD user as an administrator using managed instance resource identifier.
 
 ## PARAMETERS
 
@@ -109,13 +125,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -InstanceName
-The name of the Azure SQL Managed Instance the Azure Active Directory administrator is in.
+### -Name
+SQL Managed Instance name.
 
 ```yaml
 Type: System.String
 Parameter Sets: UseResourceGroupAndInstanceNameParameterSet
-Aliases:
+Aliases: InstanceName
 
 Required: True
 Position: 1
@@ -145,6 +161,21 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: UseResourceGroupAndInstanceNameParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource id of instance to use
+
+```yaml
+Type: System.String
+Parameter Sets: UserResourceIdParameterSet
 Aliases:
 
 Required: True

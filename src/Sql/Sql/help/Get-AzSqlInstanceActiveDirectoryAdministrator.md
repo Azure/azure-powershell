@@ -18,9 +18,15 @@ Get-AzSqlInstanceActiveDirectoryAdministrator [-InputObject <AzureSqlManagedInst
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### UserResourceIdParameterSet
+```
+Get-AzSqlInstanceActiveDirectoryAdministrator [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 ### UseResourceGroupAndInstanceNameParameterSet
 ```
-Get-AzSqlInstanceActiveDirectoryAdministrator [-ResourceGroupName] <String> [-InstanceName] <String>
+Get-AzSqlInstanceActiveDirectoryAdministrator [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -48,6 +54,16 @@ ResourceGroup01   ManagedInstance01 DBAs        40b79501-b343-44ed-9ce7-da4c8cc7
 ```
 
 This command gets information about an Azure AD administrator from a managed instance object.
+
+### Example 3
+```powershell
+PS C:\>Get-AzSqlInstance -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance1" | Get-AzSqlInstanceActiveDirectoryAdministrator
+ResourceGroupName InstanceName      DisplayName ObjectId 
+----------------- ----------------- ----------- -------- 
+ResourceGroup01   ManagedInstance01 DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b
+```
+
+This command gets information about an Azure AD administrator using managed instance resource identifier.
 
 
 ## PARAMETERS
@@ -82,13 +98,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -InstanceName
-The name of the Azure SQL Managed Instance the Azure Active Directory administrator is in.
+### -Name
+SQL Managed Instance name.
 
 ```yaml
 Type: System.String
 Parameter Sets: UseResourceGroupAndInstanceNameParameterSet
-Aliases:
+Aliases: InstanceName
 
 Required: True
 Position: 1
@@ -103,6 +119,21 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: UseResourceGroupAndInstanceNameParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource id of instance to use
+
+```yaml
+Type: System.String
+Parameter Sets: UserResourceIdParameterSet
 Aliases:
 
 Required: True
