@@ -155,5 +155,10 @@ With the new model of creating resources inline, you can replace the configurati
 ```powershell
 $agSubnetConfig = @{ Name= "myAGSubnet"; AddressPrefix = "10.0.1.0/24" }
 $backendSubnetConfig = @{ Name= "myBackendSubnet"; AddressPrefix = "10.0.2.0/24" }
-$vn1 = New-AzVirtualNetwork -Name myvnet -ResourceGroupName myrg -location centralus -AddressPrefix 10.0.0.0/16 -Subnet $agSubnetConfig, $backendSubnetConfig
+$vn1 = New-AzVirtualNetwork `
+    -Name myvnet `
+    -ResourceGroupName myrg `
+    -location centralus `
+    -AddressPrefix 10.0.0.0/16 `
+    -Subnet $agSubnetConfig, $backendSubnetConfig
 ```
