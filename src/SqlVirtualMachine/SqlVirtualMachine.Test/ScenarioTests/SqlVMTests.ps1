@@ -22,23 +22,30 @@ function Test-CreateSqlVirtualMachine
 	$location = Get-LocationForTest
 	$rg = Create-ResourceGroupForTest $location
 	$vmName = 'vm'
+	$previousErrorActionPreferenceValue = $ErrorActionPreference
+	$ErrorActionPreference = "SilentlyContinue"
 
 	try
 	{
 		Create-VM $rg.ResourceGroupName $vmName $location
 		
 		# Create Sql VM with parameters
-		$sqlvm = New-AzSqlVM -ResourceGroupName $rg.ResourceGroupName -Name $vmName -LicenseType "PAYG" -Location $location -Sku Enterprise
+		New-AzSqlVM -ResourceGroupName $rg.ResourceGroupName -Name $vmName -LicenseType "PAYG" -Location $location -Sku Enterprise
+		$sqlvm = Get-AzSqlVM -ResourceGroupName $rg.ResourceGroupName -Name $vmName
+		
+		Assert-NotNull $sqlvm
 		$sqlvm | Remove-AzSqlVM
 
 		# Create Sql VM from config
 		$config = New-AzSqlVMConfig -LicenseType "PAYG"
-		$sqlvm = New-AzSqlVM $rg.ResourceGroupName $vmName -SqlVM $config -Location $location
+		New-AzSqlVM $rg.ResourceGroupName $vmName -SqlVM $config -Location $location
+		$sqlvm = Get-AzSqlVM -ResourceGroupName $rg.ResourceGroupName -Name $vmName
 		$sqlvm | Remove-AzSqlVM
 	}
 	finally
 	{
 		Remove-ResourceGroupForTest $rg
+		$ErrorActionPreference = $previousErrorActionPreferenceValue
 	}
 }
 
@@ -51,7 +58,9 @@ function Test-GetSqlVirtualMachine
 	#Setup
 	$location = Get-LocationForTest
 	$rg = Create-ResourceGroupForTest $location
-
+	$previousErrorActionPreferenceValue = $ErrorActionPreference
+	$ErrorActionPreference = "SilentlyContinue"
+	
 	try 
 	{
 		$sqlvm = Create-SqlVM $rg.ResourceGroupName 'vm' $location
@@ -71,6 +80,7 @@ function Test-GetSqlVirtualMachine
 	finally
 	{
 		Remove-ResourceGroupForTest $rg
+		$ErrorActionPreference = $previousErrorActionPreferenceValue
 	}
 }
 
@@ -83,25 +93,31 @@ function Test-UpdateSqlVirtualMachine
 	#Setup
 	$location = Get-LocationForTest
 	$rg = Create-ResourceGroupForTest $location
+	$previousErrorActionPreferenceValue = $ErrorActionPreference
+	$ErrorActionPreference = "SilentlyContinue"
 
 	try 
 	{
 		$sqlvm = Create-SqlVM $rg.ResourceGroupName 'vm' $location
+		Assert-NotNull $sqlvm
 	
 		# Update tags
 		$key = 'key'
 		$value = 'value'
 		$tags = @{$key=$value}
 		$sqlvm1 = Update-AzSqlVM -ResourceGroupName $sqlvm.ResourceGroupName -Name $sqlvm.Name -Tag $tags
+		$sqlvm1 = Get-AzSqlVM -ResourceGroupName $sqlvm.ResourceGroupName -Name $sqlvm.Name
+		Assert-NotNull $sqlvm1
 		
-		Validate-SqlVirtualMachine $sqlvm $sqlvm1
+		Validate-SqlVirtualMachine $sqlvm $sqlvm1 
 
-		Assert-AreEqual $sqlvm1.Tag.count 1
-		Assert-AreEqual $sqlvm1.Tag[$key] $value
+		Assert-AreEqual $sqlvm1.Tags.count 1 
+		Assert-AreEqual $sqlvm1.Tags[$key] $value
 	}
 	finally
 	{
 		Remove-ResourceGroupForTest $rg
+		$ErrorActionPreference = $previousErrorActionPreferenceValue
 	}
 }
 
@@ -114,10 +130,13 @@ function Test-RemoveSqlVirtualMachine
 	#Setup
 	$location = Get-LocationForTest
 	$rg = Create-ResourceGroupForTest $location
+	$previousErrorActionPreferenceValue = $ErrorActionPreference
+	$ErrorActionPreference = "SilentlyContinue"
 
 	try 
 	{
 		$sqlvm = Create-SqlVM $rg.ResourceGroupName 'vm' $location
+		Assert-NotNull $sqlvm
 	
 		Remove-AzSqlVM -ResourceId $sqlvm.ResourceId
 
@@ -127,5 +146,6 @@ function Test-RemoveSqlVirtualMachine
 	finally
 	{
 		Remove-ResourceGroupForTest $rg
+		$ErrorActionPreference = $previousErrorActionPreferenceValue
 	}
 }

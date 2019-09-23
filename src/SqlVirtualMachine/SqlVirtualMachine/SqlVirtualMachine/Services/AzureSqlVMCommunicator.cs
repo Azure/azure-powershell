@@ -27,11 +27,6 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Services
     public class AzureSqlVMCommunicator
     {
         /// <summary>
-        /// The Sql client to be used by this end points communicator
-        /// </summary>
-        private static SqlVirtualMachineManagementClient SqlClient { get; set; }
-
-        /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
         private IAzureContext Context;
@@ -92,14 +87,10 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Services
         /// <returns>The SQL Virtual Machine Management client for the currently selected subscription.</returns>
         private SqlVirtualMachineManagementClient GetCurrentSqlClient()
         {
-            // Get the SQL VM management client for the current subscription
-            if (SqlClient == null)
-            {
-                SqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<SqlVirtualMachineManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-            }
-            return SqlClient;
+            var sqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<SqlVirtualMachineManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+            return sqlClient;
         }
 
-        
+
     }
 }

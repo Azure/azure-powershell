@@ -108,13 +108,13 @@ function Get-LocationForTest()
 
 function Get-ResourceGroupNameForTest()
 {
-	$nr = getAssetName "sqlvmcrudtest-"
+	$nr = getAssetName "rg-"
 	return $nr
 }
 
 function Get-SqlVirtualMachineGroupName()
 {
-	$nr = getAssetName "test-group"
+	$nr = getAssetName "psgr"
 	return $nr
 }
 
@@ -130,7 +130,7 @@ function Get-DefaultSqlService()
 
 function Get-DefaultPassword()
 {
-	return getAssetName
+	return getAssetName "Sql1@"
 }
 
 function Get-DomainForTest()
@@ -140,7 +140,7 @@ function Get-DomainForTest()
 
 function Get-StorageaccountNameForTest()
 {
-	$nr = getAssetName 'sqlvmpowershelltest'
+	$nr = getAssetName 'st'
 	return $nr
 }
 
@@ -150,16 +150,17 @@ function Get-StorageaccountNameForTest()
 #>
 function Validate-SqlVirtualMachine($sqlvm1, $sqlvm2)
 {
-	Assert-NotNull $sqlvm1
-	Assert-NotNull $sqlvm2
+	# tmp prevents output of assert to be returned if true
+	$tmp = Assert-NotNull $sqlvm1
+	$tmp = Assert-NotNull $sqlvm2
 
-	Assert-AreEqual $sqlvm1.ResourceId $sqlvm2.ResourceId
-	Assert-AreEqual $sqlvm1.Name $sqlvm2.Name
-	Assert-AreEqual $sqlvm1.ResourceGroupName $sqlvm2.ResourceGroupName
-	Assert-AreEqual $sqlvm1.SqlManagementType $sqlvm2.SqlManagementType
-	Assert-AreEqual $sqlvm1.LicenseType $sqlvm2.LicenseType	
-	Assert-AreEqual $sqlvm1.Offer $sqlvm2.Offer	
-	Assert-AreEqual $sqlvm1.Sku $sqlvm2.Sku	
+	$tmp = Assert-AreEqual $sqlvm1.ResourceId $sqlvm2.ResourceId
+	$tmp = Assert-AreEqual $sqlvm1.Name $sqlvm2.Name
+	$tmp = Assert-AreEqual $sqlvm1.ResourceGroupName $sqlvm2.ResourceGroupName
+	$tmp = Assert-AreEqual $sqlvm1.SqlManagementType $sqlvm2.SqlManagementType
+	$tmp = Assert-AreEqual $sqlvm1.LicenseType $sqlvm2.LicenseType	
+	$tmp = Assert-AreEqual $sqlvm1.Offer $sqlvm2.Offer	
+	$tmp = Assert-AreEqual $sqlvm1.Sku $sqlvm2.Sku	
 }
 
 <#
@@ -168,14 +169,14 @@ function Validate-SqlVirtualMachine($sqlvm1, $sqlvm2)
 #>
 function Validate-SqlVirtualMachineGroup($group1, $group2)
 {
-	Assert-NotNull $group1
-	Assert-NotNull $group2
+	$tmp = Assert-NotNull $group1
+	$tmp = Assert-NotNull $group2
 
-	Assert-AreEqual $group1.ResourceId $group2.ResourceId
-	Assert-AreEqual $group1.Name $group2.Name
-	Assert-AreEqual $group1.ResourceGroupName $group2.ResourceGroupName
-	Assert-AreEqual $group1.Offer $group2.Offer	
-	Assert-AreEqual $group1.Sku $group2.Sku	
+	$tmp = Assert-AreEqual $group1.ResourceId $group2.ResourceId
+	$tmp = Assert-AreEqual $group1.Name $group2.Name
+	$tmp = Assert-AreEqual $group1.ResourceGroupName $group2.ResourceGroupName
+	$tmp = Assert-AreEqual $group1.Offer $group2.Offer	
+	$tmp = Assert-AreEqual $group1.Sku $group2.Sku	
 }
 
 <#
@@ -214,8 +215,9 @@ function Create-SqlVM (
 	[string] $location
 )
 {
-	Create-VM $resourceGroupName $vmName $location	
+	$vm = Create-VM $resourceGroupName $vmName $location	
 	$sqlvm = New-AzSqlVM -ResourceGroupName $resourceGroupName -Name $vmName -LicenseType 'PAYG' -Sku 'Enterprise' -Location $location
+	$sqlvm = Get-AzSqlVM -ResourceGroupName $resourceGroupName -Name $vmName
 	return $sqlvm
 }
 
@@ -231,6 +233,10 @@ function Create-SqlVMGroup(
 {
 	$storageAccountName = Get-StorageaccountNameForTest
 	$storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -Location $location -Type Standard_LRS -Kind StorageV2
+	$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+	$tmp = Assert-NotNull $storageAccount
+	$tmp = Assert-NotNull $storageAccount.PrimaryEndpoints
+	$tmp = Assert-NotNull $storageAccount.PrimaryEndpoints.Blob
 	
 	$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName).Value[0]
 	$blobAccount = $storageAccount.PrimaryEndpoints.Blob
@@ -242,10 +248,11 @@ function Create-SqlVMGroup(
 	
 	$secureKey = ConvertTo-SecureString $profile.StorageAccountPrimaryKey -AsPlainText -Force
 	
-	$group = New-AzSqlVMGroup $resourceGroupName $groupName $location -ClusterOperatorAccount $profile.ClusterOperatorAccount `
+	$group = New-AzSqlVMGroup -ResourceGroupName $resourceGroupName -Name $groupName -Location $location -ClusterOperatorAccount $profile.ClusterOperatorAccount `
 		-ClusterBootstrapAccount $profile.ClusterBootstrapAccount `
 		-SqlServiceAccount $profile.SqlServiceAccount -StorageAccountUrl $profile.StorageAccountUrl `
 		-StorageAccountPrimaryKey $secureKey -DomainFqdn $profile.DomainFqdn `
 		-Offer 'SQL2017-WS2016' -Sku 'Enterprise'
+	$group = Get-AzSqlVMGroup -ResourceGroupName $resourceGroupName -Name $groupName
 	return $group
 }
