@@ -1046,7 +1046,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithUrlConfiguration
 
 		$fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
 		$fp01 = New-AzApplicationGatewayFrontendPort -Name $frontendPort01Name -Port 80
-		$fp02 = New-AzApplicationGatewayFrontendPort -Name $frontendPort02Name -Port 443
+		$fp02 = New-AzApplicationGatewayFrontendPort -Name $frontendPort02Name -Port 81
 		$listener01 = New-AzApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01 -RequireServerNameIndication false
 
 		$pool = New-AzApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
@@ -1113,7 +1113,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithUrlConfiguration
 		Assert-NotNull $appgw.RewriteRuleSets.RewriteRules[0].ActionSet
 		Assert-AreEqual "/abc" $appgw.RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.ModifiedPath
 		Assert-Null $appgw.RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.ModifiedQueryString
-		Assert-AreEqual $false RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.Reroute
+		Assert-AreEqual $false $appgw.RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.Reroute
 
 		Assert-AreEqual "rewriterule2" $appgw.RewriteRuleSets.RewriteRules[1].Name
 		Assert-NotNull $appgw.RewriteRuleSets.RewriteRules[1].ActionSet
@@ -1148,7 +1148,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithUrlConfiguration
 		Assert-NotNull $appgw.RewriteRuleSets.RewriteRules[0].ActionSet
 		Assert-AreEqual "/abc" $appgw.RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.ModifiedPath
 		Assert-Null $appgw.RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.ModifiedQueryString
-		Assert-AreEqual $false RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.Reroute
+		Assert-AreEqual $false $appgw.RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.Reroute
 
 		Assert-AreEqual "rewriterule2" $appgw.RewriteRuleSets.RewriteRules[1].Name
 		Assert-NotNull $appgw.RewriteRuleSets.RewriteRules[1].ActionSet
@@ -1174,11 +1174,17 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithUrlConfiguration
 		
 		$appgw.RewriteRuleSets.RewriteRules[3].ActionSet.UrlConfiguration.Reroute = $false
 
+		# Adding listener and request routing rule to start slow path update
+		$listener02 = New-AzApplicationGatewayHttpListener -Name $listener02Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp02 -RequireServerNameIndication false
+		$appgw.HttpListeners.Add($listener02)
+		$rule02 = New-AzApplicationGatewayRequestRoutingRule  -Name $rule02Name -RuleType PathBasedRouting  -HttpListener $listener02 -UrlPathMap $urlPathMap
+		$appgw.RequestRoutingRules.Add($rule02)
+
 		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
 
 		Assert-AreEqual $appgw.BackendHttpSettingsCollection.Count 1
-		Assert-AreEqual $appgw.HttpListeners.Count 1
-		Assert-AreEqual $appgw.RequestRoutingRules.Count 1
+		Assert-AreEqual $appgw.HttpListeners.Count 2
+		Assert-AreEqual $appgw.RequestRoutingRules.Count 2
 
 		Assert-NotNull $appgw.RewriteRuleSets
 		Assert-AreEqual 1 $appgw.RewriteRuleSets.Count
@@ -1188,7 +1194,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithUrlConfiguration
 		Assert-NotNull $appgw.RewriteRuleSets.RewriteRules[0].ActionSet
 		Assert-AreEqual "/abc1" $appgw.RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.ModifiedPath
 		Assert-AreEqual "a=b&c=d" $appgw.RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.ModifiedQueryString
-		Assert-AreEqual $false RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.Reroute
+		Assert-AreEqual $false $appgw.RewriteRuleSets.RewriteRules[0].ActionSet.UrlConfiguration.Reroute
 
 		Assert-AreEqual "rewriterule2" $appgw.RewriteRuleSets.RewriteRules[1].Name
 		Assert-NotNull $appgw.RewriteRuleSets.RewriteRules[1].ActionSet
