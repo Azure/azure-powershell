@@ -53,22 +53,10 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Location { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The list of AzureFirewallApplicationRuleCollections")]
-        public PSAzureFirewallApplicationRuleCollection[] ApplicationRuleCollection { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The list of AzureFirewallNatRuleCollections")]
-        public PSAzureFirewallNatRuleCollection[] NatRuleCollection { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The list of AzureFirewallNetworkRuleCollections")]
-        public PSAzureFirewallNetworkRuleCollection[] NetworkRuleCollection { get; set; }
+            Mandatory = true,
+            HelpMessage = "The list of rule groups")]
+        [ValidateNotNullOrEmpty]
+        public PSAzureFirewallPolicyRuleGroup[] RuleGroups { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -80,6 +68,12 @@ namespace Microsoft.Azure.Commands.Network
             MNM.AzureFirewallThreatIntelMode.Off,
             IgnoreCase = false)]
         public string ThreatIntelMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The operation mode for Threat Intelligence.")]
+        public string BasePolicy { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -97,51 +91,40 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "A list of availability zones denoting where the firewall needs to come from.")]
-        public string[] Zone { get; set; }
-
         public override void Execute()
         {
 
             base.Execute();
 
-            var present = this.IsAzureFirewallPresent(this.ResourceGroupName, this.Name);
+            var present = this.IsAzureFirewallPolicyPresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
                 Properties.Resources.CreatingResourceMessage,
                 Name,
-                () => WriteObject(this.CreateAzureFirewall()),
+                () => WriteObject(this.CreateAzureFirewallPolicy()),
                 () => present);
         }
 
-        private PSAzureFirewall CreateAzureFirewall()
+        private PSAzureFirewallPolicy CreateAzureFirewallPolicy()
         {
-            var firewall = new PSAzureFirewall()
+            var firewall = new PSAzureFirewallPolicy()
             {
                 Name = this.Name,
                 ResourceGroupName = this.ResourceGroupName,
                 Location = this.Location,
-                ApplicationRuleCollections = this.ApplicationRuleCollection?.ToList(),
-                NatRuleCollections = this.NatRuleCollection?.ToList(),
-                NetworkRuleCollections = this.NetworkRuleCollection?.ToList(),
-                ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert
+                ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
+                BasePolicy = this.BasePolicy,
+                RuleGroups = this.RuleGroups
             };
-
-            if (this.Zone != null)
-            {
-                firewall.Zones = this.Zone?.ToList();
-            }
 
             // Map to the sdk object
             var azureFirewallModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AzureFirewall>(firewall);
             azureFirewallModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create AzureFirewall call
-            this.AzureFirewallClient.CreateOrUpdate(this.ResourceGroupName, this.Name, azureFirewallModel);
-            return this.GetAzureFirewall(this.ResourceGroupName, this.Name);
+            this.AzureFirewallPolicyClient.CreateOrUpdate(this.ResourceGroupName, this.Name, azureFirewallModel);
+            return this.GetAzureFirewallPolicy(this.ResourceGroupName, this.Name);
         }
     }
 }

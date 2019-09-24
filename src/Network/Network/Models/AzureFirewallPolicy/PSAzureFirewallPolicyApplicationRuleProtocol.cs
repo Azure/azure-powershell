@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             var userProtocolText = userParts[0];
             var userPortText = userParts.Length == 2 ? userParts[1] : null;
 
-            PSAzureFirewallApplicationRuleProtocol supportedProtocol;
+            PSAzureFirewallPolicyApplicationRuleProtocol supportedProtocol;
             try
             {
                 supportedProtocol = supportedProtocolsAndTheirDefaultPorts.Single(protocol => protocol.ProtocolType.Equals(userProtocolText, StringComparison.InvariantCultureIgnoreCase));

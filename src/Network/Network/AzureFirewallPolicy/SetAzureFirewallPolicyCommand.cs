@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The AzureFirewall")]
-        public PSAzureFirewall AzureFirewall { get; set; }
+        public PSAzureFirewallPolicy AzureFirewallPolicy { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -37,19 +37,19 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (!this.IsAzureFirewallPresent(this.AzureFirewall.ResourceGroupName, this.AzureFirewall.Name))
+            if (!this.IsAzureFirewallPolicyPresent(this.AzureFirewallPolicy.ResourceGroupName, this.AzureFirewallPolicy.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
             // Map to the sdk object
-            var secureGwModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AzureFirewall>(this.AzureFirewall);
-            secureGwModel.Tags = TagsConversionHelper.CreateTagDictionary(this.AzureFirewall.Tag, validate: true);
+            var secureGwModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AzureFirewall>(this.AzureFirewallPolicy);
+            secureGwModel.Tags = TagsConversionHelper.CreateTagDictionary(this.AzureFirewallPolicy.Tag, validate: true);
 
             // Execute the PUT AzureFirewall call
-            this.AzureFirewallClient.CreateOrUpdate(this.AzureFirewall.ResourceGroupName, this.AzureFirewall.Name, secureGwModel);
+            this.AzureFirewallPolicyClient.CreateOrUpdate(this.AzureFirewallPolicy.ResourceGroupName, this.AzureFirewallPolicy.Name, secureGwModel);
 
-            var getAzureFirewall = this.GetAzureFirewall(this.AzureFirewall.ResourceGroupName, this.AzureFirewall.Name);
+            var getAzureFirewall = this.GetAzureFirewallPolicy(this.AzureFirewallPolicy.ResourceGroupName, this.AzureFirewallPolicy.Name);
             WriteObject(getAzureFirewall);
         }
     }

@@ -20,16 +20,13 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewallPolicyFilterRule : PSAzureFirewallPolicyBaseRuleCollection
+    public class PSAzureFirewallPolicyFilterRule : PSAzureFirewallPolicyBaseRule
     {
         [JsonProperty(Order = 3)]
         public PSAzureFirewallPolicyFilterRuleAction Action { get; set; }
 
         [JsonProperty(Order = 4)]
-        public List<PSAzureFirewallPolicyApplicationRuleCondition> Rules { get; set; }
-
-        [JsonProperty(Order = 4)]
-        public List<PSAzureFirewallPolicyNetworkRuleCondition> NetworkRules { get; set; }
+        public List<PSAzureFirewallPolicyRuleCondition> RuleConditions { get; set; }
 
 
         [JsonIgnore]
@@ -41,35 +38,35 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string RulesText
         {
-            get { return JsonConvert.SerializeObject(Rules, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(RuleConditions, Formatting.Indented); }
         }
 
         public void AddRule(PSAzureFirewallPolicyApplicationRuleCondition rule)
         {
             // Validate
-            if (this.Rules != null)
+            if (this.RuleConditions != null)
             {
-                if (this.Rules.Any(rc => rc.Name.Equals(rule.Name)))
+                if (this.RuleConditions.Any(rc => rc.Name.Equals(rule.Name)))
                 {
                     throw new ArgumentException($"Application Rule names must be unique. {rule.Name} name is already used.");
                 }
             }
             else
             {
-                this.Rules = new List<PSAzureFirewallPolicyApplicationRuleCondition>();
+                this.RuleConditions = new List<PSAzureFirewallPolicyRuleCondition>();
             }
 
-            this.Rules.Add(rule);
+            this.RuleConditions.Add(rule);
         }
 
-        public PSAzureFirewallPolicyApplicationRuleCondition GetRuleByName(string ruleName)
+        public PSAzureFirewallPolicyRuleCondition GetRuleByName(string ruleName)
         {
             if (string.IsNullOrEmpty(ruleName))
             {
                 throw new ArgumentException($"Rule name cannot be an empty string.");
             }
 
-            var rule = this.Rules?.FirstOrDefault(r => ruleName.Equals(r.Name, StringComparison.OrdinalIgnoreCase));
+            var rule = this.RuleConditions?.FirstOrDefault(r => ruleName.Equals(r.Name, StringComparison.OrdinalIgnoreCase));
 
             if (rule == null)
             {
@@ -79,46 +76,11 @@ namespace Microsoft.Azure.Commands.Network.Models
             return rule;
         }
 
-        
-        public void AddNetworkRuleCondition(PSAzureFirewallPolicyNetworkRuleCondition rule)
-        {
-            // Validate
-            if (this.Rules != null)
-            {
-                if (this.Rules.Any(rc => rc.Name.Equals(rule.Name)))
-                {
-                    throw new ArgumentException($"Application Rule names must be unique. {rule.Name} name is already used.");
-                }
-            }
-            else
-            {
-                this.NetworkRules = new List<PSAzureFirewallPolicyNetworkRuleCondition>();
-            }
-
-            this.NetworkRules.Add(rule);
-        }
-
-        public PSAzureFirewallPolicyNetworkRuleCondition GetNetworkRuleConditionByName(string ruleName)
-        {
-            if (string.IsNullOrEmpty(ruleName))
-            {
-                throw new ArgumentException($"Rule name cannot be an empty string.");
-            }
-
-            var rule = this.NetworkRules?.FirstOrDefault(r => ruleName.Equals(r.Name, StringComparison.OrdinalIgnoreCase));
-
-            if (rule == null)
-            {
-                throw new ArgumentException($"Rule with name {ruleName} does not exist.");
-            }
-
-            return rule;
-        }
 
         public void RemoveRuleByName(string ruleName)
         {
             var rule = this.GetRuleByName(ruleName);
-            this.Rules?.Remove(rule);
+            this.RuleConditions?.Remove(rule);
         }
     }
 }

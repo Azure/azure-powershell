@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The list of network rules")]
         [ValidateNotNullOrEmpty]
-        public PSAzureFirewallPolicyNetworkRuleCondition[] Rule { get; set; }
+        public PSAzureFirewallPolicyNetworkRuleCondition[] RuleConditions { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 Priority = this.Priority,
-                Rules = this.Rule?.ToList(),
+                RuleConditions = this.RuleConditions?.ToList(),
                 Action = new PSAzureFirewallPolicyNatRuleAction { Type = ActionType }
             };
 

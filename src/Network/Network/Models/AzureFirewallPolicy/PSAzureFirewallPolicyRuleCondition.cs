@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) Microsoft.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,22 +13,18 @@
 // limitations under the License.
 //
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewallPolicy : PSTopLevelResource
+    public class PSAzureFirewallPolicyRuleCondition
     {
-        public string ThreatIntelMode { get; set; }
+        [JsonProperty(Order = 1)]
+        public string Name { get; set; }
 
-        public string BasePolicy { get; set; }
-
-        public string ProvisioningState { get; set; }
-
-        public PSAzureFirewallPolicyRuleGroup[] RuleGroups { get; set; }
+        [JsonProperty(Order = 2)]
+        public string Description { get; set; }
 
     }
 }

@@ -18,12 +18,8 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewallPolicyNetworkRuleCondition
+    public class PSAzureFirewallPolicyNetworkRuleCondition : PSAzureFirewallPolicyRuleCondition
     {
-        public string Name { get; set; }
-
-        public string Description { get; set; }
-
         public List<string> Protocols { get; set; }
 
         public List<string> SourceAddresses { get; set; }
