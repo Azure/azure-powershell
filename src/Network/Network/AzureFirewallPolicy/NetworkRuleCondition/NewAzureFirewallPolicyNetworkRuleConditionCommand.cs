@@ -40,19 +40,19 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The source addresses of the rule")]
         [ValidateNotNullOrEmpty]
-        public string[] SourceAddress { get; set; }
+        public string[] SourceAddresses { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The destination addresses of the rule")]
         [ValidateNotNullOrEmpty]
-        public string[] DestinationAddress { get; set; }
+        public string[] DestinationAddresses { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The destination ports of the rule")]
         [ValidateNotNullOrEmpty]
-        public string[] DestinationPort { get; set; }
+        public string[] DestinationPorts { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
             MNM.AzureFirewallNetworkRuleProtocol.UDP,
             MNM.AzureFirewallNetworkRuleProtocol.ICMP,
             IgnoreCase = false)]
-        public string[] Protocol { get; set; }
+        public string[] Protocols { get; set; }
         
         public override void Execute()
         {
@@ -73,10 +73,10 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 Description = this.Description,
-                Protocols = this.Protocol?.ToList(),
-                SourceAddresses = this.SourceAddress?.ToList(),
-                DestinationAddresses = this.DestinationAddress?.ToList(),
-                DestinationPorts = this.DestinationPort?.ToList()
+                Protocols = this.Protocols?.ToList(),
+                SourceAddresses = this.SourceAddresses?.ToList(),
+                DestinationAddresses = this.DestinationAddresses?.ToList(),
+                DestinationPorts = this.DestinationPorts?.ToList()
             };
             WriteObject(networkRule);
         }

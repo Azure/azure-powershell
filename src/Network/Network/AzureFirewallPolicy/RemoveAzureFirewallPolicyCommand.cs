@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
                 () =>
                 {
-                    this.AzureFirewallClient.Delete(this.ResourceGroupName, this.Name);
+                    this.AzureFirewallPolicyClient.Delete(this.ResourceGroupName, this.Name);
                     if (PassThru)
                     {
                         WriteObject(true);

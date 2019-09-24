@@ -49,22 +49,22 @@ namespace Microsoft.Azure.Commands.Network
             base.ExecuteCmdlet();
             if (ShouldGetByName(ResourceGroupName, Name))
             {
-                var azureFirewall = this.GetAzureFirewall(this.ResourceGroupName, this.Name);
+                var azureFirewall = this.GetAzureFirewallPolicy(this.ResourceGroupName, this.Name);
 
                 WriteObject(azureFirewall);
             }
             else
             {
                 IPage<AzureFirewall> azureFirewallPage = ShouldListBySubscription(ResourceGroupName, Name)
-                    ? this.AzureFirewallClient.ListAll()
-                    : this.AzureFirewallClient.List(this.ResourceGroupName);
+                    ? this.AzureFirewallPolicyClient.ListAll()
+                    : this.AzureFirewallPolicyClient.List(this.ResourceGroupName);
 
                 // Get all resources by polling on next page link
-                var azureFirewallResponseLIst = ListNextLink<AzureFirewall>.GetAllResourcesByPollingNextLink(azureFirewallPage, this.AzureFirewallClient.ListNext);
+                var azureFirewallResponseLIst = ListNextLink<AzureFirewall>.GetAllResourcesByPollingNextLink(azureFirewallPage, this.AzureFirewallPolicyClient.ListNext);
 
                 var psAzureFirewalls = azureFirewallResponseLIst.Select(firewall =>
                 {
-                    var psAzureFirewall = this.ToPsAzureFirewall(firewall);
+                    var psAzureFirewall = this.ToPsAzureFirewallPolicy(firewall);
                     psAzureFirewall.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(firewall.Id);
                     return psAzureFirewall;
                 }).ToList();

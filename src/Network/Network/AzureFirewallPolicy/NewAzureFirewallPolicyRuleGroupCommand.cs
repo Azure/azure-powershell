@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,18 +21,18 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyFilterRule", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicyRuleGroup))]
-    public class NewAzureFirewallPolicyFilterRuleCommand : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyRuleGroup", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicyRuleGroup))]
+    public class NewAzureFirewallPolicyRuleGroupCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the Application Rule Collection")]
+            HelpMessage = "The name of the Rule Group")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The priority of the rule collection")]
+            HelpMessage = "The priority of the rule group")]
         [ValidateRange(100, 65000)]
         public uint Priority { get; set; }
 
@@ -40,35 +40,17 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The list of application rules")]
         [ValidateNotNullOrEmpty]
-        public PSAzureFirewallPolicyRuleCondition[] RuleConditions { get; set; }
-
-        [Parameter(
-                    Mandatory = true,
-                    HelpMessage = "The list of network rules")]
-        [ValidateNotNullOrEmpty]
-        public PSAzureFirewallPolicyNetworkRuleCondition[] NetworkRules { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The action of the rule collection")]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            MNM.AzureFirewallRCActionType.Allow,
-            MNM.AzureFirewallRCActionType.Deny,
-            IgnoreCase = false)]
-        public string ActionType { get; set; }
+        public PSAzureFirewallPolicyBaseRule[] Rules { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            var applicationRc = new PSAzureFirewallPolicyFilterRule
+            var applicationRc = new PSAzureFirewallPolicyRuleGroup
             {
                 Name = this.Name,
                 Priority = this.Priority,
-                RuleConditions = this.RuleConditions?.ToList(),
-                Action = new PSAzureFirewallPolicyFilterRuleAction { Type = ActionType }
-
+                Rules = this.Rules?.ToList()
             };
             WriteObject(applicationRc);
         }

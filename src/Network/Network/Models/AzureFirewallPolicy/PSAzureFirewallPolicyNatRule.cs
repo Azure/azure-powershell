@@ -20,13 +20,13 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewallPolicyNatRule : PSAzureFirewallPolicyBaseRuleCollection
+    public class PSAzureFirewallPolicyNatRule : PSAzureFirewallPolicyBaseRule
     {
         [JsonProperty(Order = 3)]
         public PSAzureFirewallPolicyNatRuleAction Action { get; set; }
 
         [JsonProperty(Order = 4)]
-        public List<PSAzureFirewallPolicyNetworkRuleCondition> Rules { get; set; }
+        public List<PSAzureFirewallPolicyNetworkRuleCondition> RuleConditions { get; set; }
 
         public string TranslatedAddress { get; set; }
 
@@ -41,25 +41,25 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string RulesText
         {
-            get { return JsonConvert.SerializeObject(Rules, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(RuleConditions, Formatting.Indented); }
         }
 
         public void AddRule(PSAzureFirewallPolicyNetworkRuleCondition rule)
         {
             // Validate
-            if (this.Rules != null)
+            if (this.RuleConditions != null)
             {
-                if (this.Rules.Any(rc => rc.Name.Equals(rule.Name)))
+                if (this.RuleConditions.Any(rc => rc.Name.Equals(rule.Name)))
                 {
                     throw new ArgumentException($"NAT Rule names must be unique. {rule.Name} name is already used.");
                 }
             }
             else
             {
-                this.Rules = new List<PSAzureFirewallPolicyNetworkRuleCondition>();
+                this.RuleConditions = new List<PSAzureFirewallPolicyNetworkRuleCondition>();
             }
 
-            this.Rules.Add(rule);
+            this.RuleConditions.Add(rule);
         }
 
         public PSAzureFirewallPolicyNetworkRuleCondition GetRuleByName(string ruleName)
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentException($"Rule name cannot be an empty string.");
             }
 
-            var rule = this.Rules?.FirstOrDefault(r => ruleName.Equals(r.Name, StringComparison.OrdinalIgnoreCase));
+            var rule = this.RuleConditions?.FirstOrDefault(r => ruleName.Equals(r.Name, StringComparison.OrdinalIgnoreCase));
 
             if (rule == null)
             {
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public void RemoveRuleByName(string ruleName)
         {
             var rule = this.GetRuleByName(ruleName);
-            this.Rules?.Remove(rule);
+            this.RuleConditions?.Remove(rule);
         }
     }
 }

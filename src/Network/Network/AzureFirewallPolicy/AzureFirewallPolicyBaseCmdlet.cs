@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     public abstract class AzureFirewallPolicyBaseCmdlet : NetworkBaseCmdlet
     {
-        public IAzureFirewallsOperations AzureFirewallClient
+        public IAzureFirewallsOperations AzureFirewallPolicyClient
         {
             get
             {
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
-        public IAzureFirewallFqdnTagsOperations AzureFirewallFqdnTagClient
+        public IAzureFirewallFqdnTagsOperations AzureFirewallPolicyFqdnTagClient
         {
             get
             {
@@ -39,11 +39,11 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
-        public bool IsAzureFirewallPresent(string resourceGroupName, string name)
+        public bool IsAzureFirewallPolicyPresent(string resourceGroupName, string name)
         {
             try
             {
-                GetAzureFirewall(resourceGroupName, name);
+                GetAzureFirewallPolicy(resourceGroupName, name);
             }
             catch (Microsoft.Rest.Azure.CloudException exception)
             {
@@ -59,20 +59,20 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public PSAzureFirewall GetAzureFirewall(string resourceGroupName, string name)
+        public PSAzureFirewallPolicy GetAzureFirewallPolicy(string resourceGroupName, string name)
         {
-            var azureFirewall = this.AzureFirewallClient.Get(resourceGroupName, name);
+            var azureFirewallPolicy = this.AzureFirewallPolicyClient.Get(resourceGroupName, name);
 
-            var psAzureFirewall = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewall>(azureFirewall);
+            var psAzureFirewall = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewallPolicy>(azureFirewallPolicy);
             psAzureFirewall.ResourceGroupName = resourceGroupName;
-            psAzureFirewall.Tag = TagsConversionHelper.CreateTagHashtable(azureFirewall.Tags);
+            psAzureFirewall.Tag = TagsConversionHelper.CreateTagHashtable(azureFirewallPolicy.Tags);
 
             return psAzureFirewall;
         }
 
-        public PSAzureFirewall ToPsAzureFirewall(AzureFirewall firewall)
+        public PSAzureFirewallPolicy ToPsAzureFirewallPolicy(PSAzureFirewallPolicy firewall)
         {
-            var azureFirewall = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewall>(firewall);
+            var azureFirewall = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewallPolicy>(firewall);
 
             azureFirewall.Tag = TagsConversionHelper.CreateTagHashtable(firewall.Tags);
 
