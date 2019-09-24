@@ -10,7 +10,7 @@ To improve consistency and simplify creation scenarios, users will no longer nee
 
 ## Motivation
 
-More consistency across Azure PowerShell commands is well known user feedback. While both flattening and Inline Creation improvements address the consistency concerns, let's focus more on the specific changes. Creating complex types prior to calling creation commands, whether that be by creating your own hashtable or calling a cmdlet to create an in memory complex object is a setup step that will no longer be necessary. We have done this by flattening complex types into simple type parameters. Users will be able to directly call a new or update command in a single call now. To demonstrate these changes we will look at the generic resource creation command `New-AzResource` for flattened parameters and a Networking scenario that no longer needs pre created in-memory configs.
+More consistency across Azure PowerShell commands is well known user feedback. While both flattening and Inline Creation improvements address the consistency concerns, let's focus more on the specific changes. Creating complex types prior to calling creation commands, whether that is by creating your own hashtable or calling a cmdlet to create an in memory complex object is a setup step that will no longer be necessary. We have made this possible by flattening complex types into simple type parameters. Using the Az 4.0 preview, you will be able to create or modify a resource using a single cmdlet execution. To demonstrate these changes, we will look at the generic resource creation command `New-AzResource` for flattened parameters and a Networking scenario that no longer needs pre created in-memory configurations.
 
 ## User Experience
 
