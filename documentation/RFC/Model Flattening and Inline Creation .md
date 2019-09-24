@@ -1,8 +1,9 @@
 RFC: Parameter Flattening and Inline Creation
 Author: Scott Phibbs
-Status:
-SupersedeBy:
-Area:
+Status: Draft
+SupersedeBy: None
+Version: 1.0
+Area: Across all commands that use configurations or complex types
 ---
 
 # Flattening to simple parameter types for easy in-line creation
@@ -162,3 +163,5 @@ $vn1 = New-AzVirtualNetwork `
     -AddressPrefix 10.0.0.0/16 `
     -Subnet $agSubnetConfig, $backendSubnetConfig
 ```
+## Comments and Questions
+Add here and for comments and questions about he proposed change
