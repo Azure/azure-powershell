@@ -1,7 +1,7 @@
 ### AzDnsRecordSet [Get, New, Remove, Set, Update] `IRecordSet, Boolean`
   - ResourceGroupName `String`
-  - SubscriptionId `String[]`
   - ZoneName `String`
+  - SubscriptionId `String[]`
   - Name `String`
   - RecordType `RecordType`
   - InputObject `IDnsIdentity`
