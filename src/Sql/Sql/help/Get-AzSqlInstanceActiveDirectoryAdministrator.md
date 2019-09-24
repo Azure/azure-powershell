@@ -14,7 +14,7 @@ Gets information about an Azure AD administrator for SQL Managed Instance.
 
 ### UseResourceGroupAndInstanceNameParameterSet (Default)
 ```
-Get-AzSqlInstanceActiveDirectoryAdministrator [-ResourceGroupName] <String> [-Name] <String>
+Get-AzSqlInstanceActiveDirectoryAdministrator [-ResourceGroupName] <String> [-InstanceName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -97,13 +97,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
+### -InstanceName
 SQL Managed Instance name.
 
 ```yaml
 Type: System.String
 Parameter Sets: UseResourceGroupAndInstanceNameParameterSet
-Aliases: InstanceName
+Aliases:
 
 Required: True
 Position: 1

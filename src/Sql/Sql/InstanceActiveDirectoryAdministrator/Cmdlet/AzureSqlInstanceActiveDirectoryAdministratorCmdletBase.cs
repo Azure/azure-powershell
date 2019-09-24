@@ -71,10 +71,9 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
 			ValueFromPipelineByPropertyName = true,
 			Position = 1,
 			HelpMessage = "SQL Managed Instance name.")]
-		[Alias("InstanceName")]
 		[ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
 		[ValidateNotNullOrEmpty]
-		public string Name { get; set; }
+		public string InstanceName { get; set; }
 
 		protected string GetResourceGroupName()
 		{
@@ -103,7 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
 				return resourceInfo.ResourceName;
 			}
 
-			return Name;
+			return InstanceName;
 		}
 		
 		/// <summary>
