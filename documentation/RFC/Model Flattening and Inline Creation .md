@@ -14,7 +14,7 @@ More consistency across Azure PowerShell commands is well known user feedback. W
 
 ## User Experience
 
-`New-AzResource` is an example of where we have flattened `Hashtable` parameters into simple types. The `-Plan` and `-Sku` parameters are both examples of parameters that previously accepted a hashtable and have now been flattened. First, let's look at the parameters for `New-AzResource` in `Az` 2.6. I only show the `[-Plan <Hashtable>]` and `[-Sku <Hashtable>]` specifically from the help content.
+`New-AzResource` is an example of where we have flattened `Hashtable` parameters into simple types. The `-Plan` and `-Sku` parameters are both examples of parameters that previously accepted a hashtable and have now been flattened. First, let's look at the `Plan` and `Sku` parameters for `New-AzResource` in `Az` 2.6.
 
 ```
 New-AzResource
