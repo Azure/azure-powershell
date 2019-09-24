@@ -733,6 +733,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (ItemProtectionState)ProviderData[ItemParams.ProtectionState];
             CmdletModel.WorkloadType workloadType =
                 (CmdletModel.WorkloadType)ProviderData[ItemParams.WorkloadType];
+            ItemDeleteState deleteState =
+               (ItemDeleteState)ProviderData[ItemParams.DeleteState];
+
             PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];
 
             // 1. Filter by container
@@ -789,6 +792,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 itemModels = itemModels.Where(itemModel =>
                 {
                     return itemModel.WorkloadType == workloadType;
+                }).ToList();
+            }
+
+            if (deleteState != 0)
+            {
+                string[] DeleteStateMap = { "TobeDeleted", "NotDeleted" };
+                itemModels = itemModels.Where(itemModel =>
+                {
+                    return ((AzureVmItem)itemModel).DeleteState == DeleteStateMap[(int)deleteState - 1];
                 }).ToList();
             }
 
