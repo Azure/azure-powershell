@@ -57,6 +57,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         public void TestStorageBlobServiceProperties()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobServiceProperties");
-        }        
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageBlobRestore()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobRestore");
+        }
     }
 }
