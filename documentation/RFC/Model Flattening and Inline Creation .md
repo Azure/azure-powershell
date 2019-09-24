@@ -72,7 +72,7 @@ New-AzResource `
     -Location centralus
 ```
 
-Some Network cmdlets use in-memory models or configurations for sub-resources that are then passed to creation cmdlets. To align all creation scenarios, we have removed all in-memory model and configuration creation commands. In `Az` 4.0 (Preview) and beyond you will create the all resources directly on Azure. A Subnet is a good example of this model as described in the [_Virtual Network Creation Quickstart_](https://docs.microsoft.com/en-us/azure/virtual-network/quick-create-powershell) document.
+Some Network cmdlets use in-memory models or configurations for sub-resources that are then passed to creation cmdlets. To align all creation scenarios, we have removed all in-memory model and configuration creation commands. In `Az` 4.0 (Preview) and beyond you will create all resources directly in Azure. A Subnet is a good example of this model as described in the [_Virtual Network Creation Quickstart_](https://docs.microsoft.com/en-us/azure/virtual-network/quick-create-powershell) document.
 
 #### `Az` 2.x
 
