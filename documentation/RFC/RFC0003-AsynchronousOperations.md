@@ -31,7 +31,7 @@ so that I can exit the script without cancelling the operation, or cleaning up b
 ```
 
 ### Cancellation
-Interactive cmdlet users can cancel execiution of cmdlets at any time using the standard `Command-<period>` key code.  This allows the user to cancel cmdlet execution that is unexpectedly long or returns an unexpected number of results.
+Interactive cmdlet users can cancel execution of cmdlets at any time using the standard `Command-<period>` key code.  This allows the user to cancel cmdlet execution that is unexpectedly long or returns an unexpected number of results.
 
 ```code
 As an interactive user
