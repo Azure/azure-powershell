@@ -82,14 +82,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public ItemProtectionState ProtectionState { get; set; }
 
         /// <summary>
-        /// Delete state of the item
-        /// </summary>
-        [Parameter(Mandatory = false, Position = 5, HelpMessage = ParamHelpMsgs.Item.DeleteState)]
-        [ValidateNotNullOrEmpty]
-        public ItemDeleteState DeleteState { get; set; }
-
-
-        /// <summary>
         /// Workload type of the item to be returned.
         /// </summary>
         [Parameter(Mandatory = true, Position = 5, HelpMessage = ParamHelpMsgs.Common.WorkloadType,
@@ -98,6 +90,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ParameterSetName = GetItemsForContainerParamSet)]
         [ValidateNotNullOrEmpty]
         public WorkloadType WorkloadType { get; set; }
+
+        /// <summary>
+        /// Delete state of the item
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 6, HelpMessage = ParamHelpMsgs.Item.DeleteState)]
+        [ValidateNotNullOrEmpty]
+        public ItemDeleteState DeleteState { get; set; }
 
         public override void ExecuteCmdlet()
         {
