@@ -26,5 +26,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ResultsText { get; set; }
 
+        public PSVirtualNetworkGatewayPacketCaptureResult()
+        {
+            this.Code = "Succeeded";
+        }
     }
 }

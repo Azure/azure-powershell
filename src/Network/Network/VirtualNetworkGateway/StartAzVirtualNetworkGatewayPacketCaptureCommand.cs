@@ -107,21 +107,13 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
             output.StartTime = DateTime.Now;
             string result = this.VirtualNetworkGatewayClient.StartPacketCapture(this.ResourceGroupName, this.Name, parameters);
             output.EndTime = DateTime.Now;
-            try
+            if (result != null)
             {
-                if(result != null)
-                {
-                    VpnGatewayPacketCaptureResponse resultObj = JsonConvert.DeserializeObject<VpnGatewayPacketCaptureResponse>(result);
-                    output.Code = resultObj.Status;
-                    output.ResultsText = resultObj.Data;
-
-                    WriteObject(output);
-                }
+                VpnGatewayPacketCaptureResponse resultObj = JsonConvert.DeserializeObject<VpnGatewayPacketCaptureResponse>(result);
+                output.Code = resultObj.Status;
+                output.ResultsText = resultObj.Data;
             }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
+            WriteObject(output);
         }
     }
 }

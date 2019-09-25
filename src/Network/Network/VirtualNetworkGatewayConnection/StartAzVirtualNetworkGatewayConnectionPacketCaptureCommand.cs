@@ -110,26 +110,17 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-            PSVirtualNetworkGatewayPacketCaptureResult output = new PSVirtualNetworkGatewayPacketCaptureResult();
+            PSVirtualNetworkGatewayConnectionPacketCaptureResult output = new PSVirtualNetworkGatewayConnectionPacketCaptureResult();
             output.StartTime = DateTime.Now;
             var result = this.VirtualNetworkGatewayConnectionClient.StartPacketCapture(this.ResourceGroupName, this.Name, parameters);
             output.EndTime = DateTime.Now;
-            try
+            if (result != null)
             {
-                if (result != null)
-                {
-                    VpnGatewayPacketCaptureResponse resultObj = JsonConvert.DeserializeObject<VpnGatewayPacketCaptureResponse>(result);
-                    output.Code = resultObj.Status;
-                    output.ResultsText = resultObj.Data;
-
-                    WriteObject(output);
-                }
+                VpnGatewayPacketCaptureResponse resultObj = JsonConvert.DeserializeObject<VpnGatewayPacketCaptureResponse>(result);
+                output.Code = resultObj.Status;
+                output.ResultsText = resultObj.Data;
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-           
+            WriteObject(output);
         }
     }
 }
