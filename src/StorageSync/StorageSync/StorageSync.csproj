@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>StorageSync</PsModuleName>
@@ -10,9 +10,8 @@
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
   </PropertyGroup>
 
-  
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.StorageSync" Version="2.8.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.StorageSync" Version="3.1.0" />
     <PackageReference Include="Microsoft.Win32.Registry" Version="4.5.0" />
     <PackageReference Include="System.Management" Version="4.5.0" />
 	</ItemGroup>

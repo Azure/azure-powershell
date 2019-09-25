@@ -374,6 +374,46 @@ function Test-ExportResourceGroup
 
 <#
 .SYNOPSIS
+Tests export resource group with resource filtering.
+#>
+function Test-ExportResourceGroupWithFiltering
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname1 = Get-ResourceName
+    $rname2 = Get-ResourceName
+    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+    $apiversion = "2014-04-01"
+    $resourceType = "Providers.Test/statefulResources"
+
+
+    try
+    {
+        # Test
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+        $r1 = New-AzResource -Name $rname1 -Location "centralus" -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        Assert-NotNull $r1.ResourceId
+
+        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+        $r2 = New-AzResource -Name $rname2 -Location "centralus" -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        Assert-NotNull $r2.ResourceId
+
+        $exportOutput = Export-AzResourceGroup -ResourceGroupName $rgname -Force -Resource @($r2.ResourceId) -IncludeParameterDefaultValue -IncludeComments
+        Assert-NotNull $exportOutput
+        Assert-True { $exportOutput.Path.Contains($rgname + ".json") }
+    }
+
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests resource group new, get and remove using positional parameters.
 #>
 function Test-ResourceGroupWithPositionalParams

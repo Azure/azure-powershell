@@ -157,7 +157,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 SampleName = model.SampleName,
                 ZoneRedundant = model.Database.ZoneRedundant,
                 ElasticPoolId = elasticPoolId,
-                LicenseType = model.Database.LicenseType
+                LicenseType = model.Database.LicenseType,
+                AutoPauseDelay = model.Database.AutoPauseDelayInMinutes,
+                MinCapacity = model.Database.MinimumCapacity,
             });
 
             return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
@@ -221,6 +223,17 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         public static AzureSqlDatabaseModelExpanded CreateExpandedDatabaseModelFromResponse(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.Database database)
         {
             return new AzureSqlDatabaseModelExpanded(resourceGroup, serverName, database);
+        }
+
+        /// <summary>
+        /// Failovers a database
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group the server is in</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="databaseName">The name of the Azure Sql Database to failover</param>
+        public void FailoverDatabase(string resourceGroupName, string serverName, string databaseName)
+        {
+            Communicator.Failover(resourceGroupName, serverName, databaseName);
         }
 
         internal IEnumerable<AzureSqlDatabaseActivityModel> ListDatabaseActivity(string resourceGroupName, string serverName, string elasticPoolName, string databaseName, Guid? operationId)
@@ -338,17 +351,20 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         ///    Standard             | Standard
         ///    Basic                | Basic
         ///    Premium              | Premium
+        ///    
+        /// Also adds _S in the end of SkuName in case if it is Serverless
         /// </summary>
         /// <param name="tier">Azure Sql database edition</param>
+        /// <param name="isServerless">If sku should be serverless type</param>
         /// <returns>The sku name</returns>
-        public static string GetDatabaseSkuName(string tier)
+        public static string GetDatabaseSkuName(string tier, bool isServerless = false)
         {
             if (string.IsNullOrWhiteSpace(tier))
             {
                 return null;
             }
 
-            return SqlSkuUtils.GetVcoreSkuPrefix(tier) ?? tier;
+            return (SqlSkuUtils.GetVcoreSkuPrefix(tier) ?? tier) + (isServerless ? "_S" : "");
         }
 
         /// <summary>

@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -69,14 +70,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "The Header value which will contain the versioning information. " +
-            "If versioning Scheme HEADER is choosen, then this value must be specified.")]
+            "If versioning Scheme HEADER is chosen, then this value must be specified.")]
         public String HeaderName { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "The Query value which will contain the versioning information. " +
-            "If versioning Scheme Query is choosen, then this value must be specified.")]
+            "If versioning Scheme Query is chosen, then this value must be specified.")]
         public String QueryName { get; set; }
 
         [Parameter(

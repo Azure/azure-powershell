@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -24,22 +25,23 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
     /// <summary>
     /// this commandlet will let you Create Eventhub namespace.
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(PSNamespaceAttributes), DeprecatedOutputProperties = new string[] {"ResourceGroup"}, NewOutputProperties = new string[] { "ResourceGroupName", "Tags"})]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubNamespace", SupportsShouldProcess = true, DefaultParameterSetName = NamespaceParameterSet), OutputType(typeof(PSNamespaceAttributes))]
     public class NewAzureEventHubNamespace : AzureEventHubsCmdletBase
     {
         /// <summary>
         /// Name of the resource group.
         /// </summary>
-        [Parameter( Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-         public string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// EventHub Namespace Name.
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "EventHub Namespace Name.")]
-        [Parameter(Mandatory = true, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 1,HelpMessage = "EventHub Namespace Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "EventHub Namespace Name.")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Name { get; set; }
@@ -47,7 +49,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         /// <summary>
         /// EventHub Namespace Location.
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Namespace Location.")]        
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Namespace Location.")]
         [Parameter(Mandatory = true, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Namespace Location.")]
         [LocationCompleter("Microsoft.EventHub/namespaces")]
         [ValidateNotNullOrEmpty]
@@ -56,7 +58,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         /// <summary>
         /// Namespace Sku Name.
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "Namespace Sku Name.")]        
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "Namespace Sku Name.")]
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "Namespace Sku Name.")]
         [ValidateSet(SKU.Basic, SKU.Standard, SKU.Premium, IgnoreCase = true)]
         public string SkuName { get; set; }
@@ -67,7 +69,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "The eventhub throughput units.")]
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "The eventhub throughput units.")]
         public int? SkuCapacity { get; set; }
-        
+
         /// <summary>
         /// Hashtables which represents resource Tags.
         /// </summary>
@@ -85,7 +87,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         /// Upper limit of throughput units when AutoInflate is enabled.
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 7, HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.")]
-        [ValidateRange(0,20)]
+        [ValidateRange(0, 20)]
         public int? MaximumThroughputUnits { get; set; }
 
         /// <summary>
@@ -102,6 +104,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         {
             // Create a new EventHub namespaces
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateNamespace, Name, ResourceGroupName)))
             {
                 try

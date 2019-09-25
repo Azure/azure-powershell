@@ -19,13 +19,14 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -94,8 +95,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vListeners = new WinRMListener();
 
-            vListeners.Protocol = this.MyInvocation.BoundParameters.ContainsKey("Protocol") ? this.Protocol : (ProtocolTypes?)null;
-            vListeners.CertificateUrl = this.MyInvocation.BoundParameters.ContainsKey("CertificateUrl") ? this.CertificateUrl : null;
+            vListeners.Protocol = this.IsParameterBound(c => c.Protocol) ? this.Protocol : (ProtocolTypes?)null;
+            vListeners.CertificateUrl = this.IsParameterBound(c => c.CertificateUrl) ? this.CertificateUrl : null;
             this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.WinRM.Listeners.Add(vListeners);
             WriteObject(this.VirtualMachineScaleSet);
         }

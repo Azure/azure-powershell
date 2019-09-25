@@ -12,12 +12,15 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using System;
-
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
+    using System;
+    using System.Text.RegularExpressions;
+
     public class PsApiManagementCertificate : PsApiManagementArmResource
     {
+        static readonly Regex CertificateIdRegex = new Regex(@"(.*?)/providers/microsoft.apimanagement/service/(?<serviceName>[^/]+)/certificates/(?<certificateId>[^/]+)", RegexOptions.IgnoreCase);
+
         public string CertificateId { get; set; }
 
         public string Subject { get; set; }
@@ -25,5 +28,25 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
         public string Thumbprint { get; set; }
 
         public DateTime ExpirationDate { get; set; }
+
+        public PsApiManagementCertificate() { }
+
+        public PsApiManagementCertificate(string armResourceId)
+        {
+            this.Id = armResourceId;
+
+            var match = CertificateIdRegex.Match(Id);
+            if (match.Success)
+            {
+                var certificateIdRegexResult = match.Groups["certificateId"];
+                if (certificateIdRegexResult != null && certificateIdRegexResult.Success)
+                {
+                    this.CertificateId = certificateIdRegexResult.Value;
+                    return;
+                }
+            }
+
+            throw new ArgumentException($"ResourceId {armResourceId} is not a valid Certificate Id.");
+        }
     }
 }

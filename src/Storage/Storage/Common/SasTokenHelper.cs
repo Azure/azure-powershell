@@ -15,11 +15,11 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Blob;
-    using Microsoft.WindowsAzure.Storage.File;
-    using Microsoft.WindowsAzure.Storage.Queue;
-    using Microsoft.WindowsAzure.Storage.Queue.Protocol;
+    using Microsoft.Azure.Storage;
+    using Microsoft.Azure.Storage.Blob;
+    using Microsoft.Azure.Storage.File;
+    using Microsoft.Azure.Storage.Queue;
+    using Microsoft.Azure.Storage.Queue.Protocol;
     using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;

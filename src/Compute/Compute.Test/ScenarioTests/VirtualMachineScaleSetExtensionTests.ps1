@@ -43,22 +43,22 @@ The instance ID number varies each time a new scale set is created, and as some
 tests accept the instance ID as a parameter this instance ID must be known in advance. 
 
 Mount the attached data disk to the virtual machine in each instance using the following manual steps:
-	retrieve the connection info for vm scale set instances (the IP address and port # for SSH or RDP) 
-	Windows Manual Steps
-		- open a remote desktop connection to the instance  (mstsc.exe [ip]:[port])
-		- run diskmgmt.msc within the VM and select the attached data disk 
-		- format the disk and make sure it is assigned a new drive letter
-		- logout
-	Linux Manual Steps
-		- open an ssh connection into the Linux VM (ssh username@[ip] -p [port])
-		- sudo to format the drive, add it to /etc/fstab using a persistent device name
+    retrieve the connection info for vm scale set instances (the IP address and port # for SSH or RDP) 
+    Windows Manual Steps
+        - open a remote desktop connection to the instance  (mstsc.exe [ip]:[port])
+        - run diskmgmt.msc within the VM and select the attached data disk 
+        - format the disk and make sure it is assigned a new drive letter
+        - logout
+    Linux Manual Steps
+        - open an ssh connection into the Linux VM (ssh username@[ip] -p [port])
+        - sudo to format the drive, add it to /etc/fstab using a persistent device name
         (see https://docs.microsoft.com/en-us/azure/virtual-machines/linux/troubleshoot-device-names-problems)
-		- run 'mount -a' and then test with lsblk to ensure it is mounted
-		- logout
+        - run 'mount -a' and then test with lsblk to ensure it is mounted
+        - logout
 These steps can be automated as follows:
-	Create a custom script to do the above steps and apply to all instances using Custom Script Extension
-	Update the VMSS scale set
-	Confirm that the update was successful. 
+    Create a custom script to do the above steps and apply to all instances using Custom Script Extension
+    Update the VMSS scale set
+    Confirm that the update was successful. 
 
 [TEST EXECUTION]
 Enable encryption - use a vmss scale set that did not yet have encryption on it. 
@@ -71,29 +71,30 @@ Delete the resource group and all of its contents (including key vault resources
 #>
 function Test-VirtualMachineScaleSetDiskEncryptionExtension
 {
-	# Common
-	$loc = 'eastus2euap';
-	$rgname = 'adetstrg';
-	$vmssName = 'vmssadetst';
-	$keyVaultResourceId = '/subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/suredd-rg/providers/Microsoft.KeyVault/vaults/sureddeuvault';
-	$diskEncryptionKeyVaultUrl = 'https://sureddeuvault.vault.azure.net';
+    # Common
+    [string]$loc = Get-ComputeVMLocation;
+    $loc = $loc.Replace(' ', '');
+    $rgname = 'adetstrg';
+    $vmssName = 'vmssadetst';
+    $keyVaultResourceId = '/subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/suredd-rg/providers/Microsoft.KeyVault/vaults/sureddeuvault';
+    $diskEncryptionKeyVaultUrl = 'https://sureddeuvault.vault.azure.net';
 
-	$vmssResult = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+    $vmssResult = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 
-	# Get Instance View
-	$vmssInstanceViewResult = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
+    # Get Instance View
+    $vmssInstanceViewResult = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceView;
 
-	# Enable
-	Set-AzVmssDiskEncryptionExtension -ResourceGroupName $rgname -VMScaleSetName $vmssName `
-		-DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -Force
+    # Enable
+    Set-AzVmssDiskEncryptionExtension -ResourceGroupName $rgname -VMScaleSetName $vmssName `
+        -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -Force
 
-	# Check Vmss
-	$result = Get-AzVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-	$result_string = $result | Out-String;
-		 
-	# Check VmssVm
-	$result = Get-AzVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-	$result_string = $result | Out-String;
+    # Check Vmss
+    $result = Get-AzVmssDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+    $result_string = $result | Out-String;
+         
+    # Check VmssVm
+    $result = Get-AzVmssVMDiskEncryption -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+    $result_string = $result | Out-String;
 }
 
 <#
@@ -105,10 +106,11 @@ Test-VirtualMachineScaleSetDiskEncryptionExtension synopsis.
 #>
 function Test-DisableVirtualMachineScaleSetDiskEncryption
 {
- 	# Common
-	$loc = 'eastus2euap';
-	$rgname = 'adetstrg';
-	$vmssName = 'vmssadetst';
+    # Common
+    [string]$loc = Get-ComputeVMLocation;
+    $loc = $loc.Replace(' ', '');
+    $rgname = 'adetstrg';
+    $vmssName = 'vmssadetst';
 
     $result = Get-AzVmssDiskEncryption;
     $result_string = $result | Out-String;
@@ -151,7 +153,8 @@ Test-VirtualMachineScaleSetDiskEncryptionExtension synopsis.
 function Test-DisableVirtualMachineScaleSetDiskEncryption2
 {
     # Common
-    $loc = 'eastus2euap';
+    [string]$loc = Get-ComputeVMLocation;
+    $loc = $loc.Replace(' ', '');
     $rgname = 'adetst2rg';
     $vmssName = 'vmssadetst2';
 
@@ -168,10 +171,11 @@ Test-VirtualMachineScaleSetDiskEncryptionExtension synopsis.
 #>
 function Test-GetVirtualMachineScaleSetDiskEncryptionStatus
 {
-	# Common
-	$loc = 'eastus2euap';
-	$rgname = 'adetst3rg';
-	$vmssName = 'vmssadetst3';
+    # Common
+    [string]$loc = Get-ComputeVMLocation;
+    $loc = $loc.Replace(' ', '');
+    $rgname = 'adetst3rg';
+    $vmssName = 'vmssadetst3';
 
     $vmssResult = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 
@@ -199,8 +203,8 @@ For creation steps, refer to notes in Test-VirtualMachineScaleSetDiskEncryptionE
 #>
 function Test-GetVirtualMachineScaleSetDiskEncryptionDataDisk
 {
-	$rgname = 'adetst4rg';
-	$vmssName = 'vmssadetst4';
+    $rgname = 'adetst4rg';
+    $vmssName = 'vmssadetst4';
 
     $result = Get-AzVmssDiskEncryption -ResourceGroupName $rgname;
     $output = $result | Out-String;

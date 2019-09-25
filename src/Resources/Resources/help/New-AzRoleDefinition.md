@@ -49,7 +49,7 @@ The input role definition MAY contain the following properties:
 1) NotActions: the set of operations that must be excluded from the Actions to determine the effective actions for the custom role.
 If there is a specific operation that you do not wish to grant access to in a custom role, it is convenient to use NotActions to exclude it, rather than specifying all operations other than that specific operation in Actions.
 2) DataActions: the set of data operations to which the custom role grants access.
-3) NotDataActions: the set of operations that must be excluded from the DataActions to determine the effective dataactions for the custom role.
+3) NotDataActions: the set of operations that must be excluded from the DataActions to determine the effective data actions for the custom role.
 If there is a specific data operation that you do not wish to grant access to in a custom role, it is convenient to use NotDataActions to exclude it, rather than specifying all operations other than that specific operation in Actions.
 NOTE: If a user is assigned a role that specifies an operation in NotActions and also assigned another role grants access to the same operation - the user will be able to perform that operation.
 NotActions is not a deny rule - it is simply a convenient way to create a set of allowed operations when specific operations need to be excluded.

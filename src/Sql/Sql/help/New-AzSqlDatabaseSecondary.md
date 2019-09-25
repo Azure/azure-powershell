@@ -171,7 +171,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecondaryComputeGeneration
-The compute generation of teh Azure Sql Database secondary.
+The compute generation of the Azure Sql Database secondary.
 
 ```yaml
 Type: System.String

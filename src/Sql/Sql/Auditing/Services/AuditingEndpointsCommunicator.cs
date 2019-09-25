@@ -14,8 +14,8 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Management.Monitor;
-using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.Azure.Management.Monitor.Version2018_09_01;
+using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure;
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 serverName, databaseName, policy).Result.Response.IsSuccessStatusCode;
         }
 
-        public bool SetAuditingPolicy(string resourceGroupName, string serverName,
+        public bool SetExtendedAuditingPolicy(string resourceGroupName, string serverName,
             ExtendedServerBlobAuditingPolicy policy)
         {
             SqlManagementClient client = GetCurrentSqlClient();

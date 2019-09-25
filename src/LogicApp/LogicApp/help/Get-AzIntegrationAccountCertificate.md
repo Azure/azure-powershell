@@ -31,14 +31,14 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 ### Example 1: Get an integration account certificate
 ```
 PS C:\>Get-AzIntegrationAccountCertificate -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -CertificateName "IntegrationAccountCertificate01"
-Id                : /subscriptions/<SusbcriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegartionAccount31/certificates/IntegrationAccountCertificate01
+Id                : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31/certificates/IntegrationAccountCertificate01
 Name              : IntegrationAccountCertificate01
 Type              : Microsoft.Logic/integrationAccounts/certificates
 CreatedTime       : 3/26/2016 6:59:07 PM
 ChangedTime       : 3/26/2016 6:59:07 PM
 KeyName           : TestKey
 KeyVersion        : 1.0
-KeyVaultId        : /subscriptions/<SusbcriptionId/resourcegroups/ResourceGroup11/providers/microsoft.keyvault/vaults/<name>
+KeyVaultId        : /subscriptions/<SubscriptionId/resourcegroups/ResourceGroup11/providers/microsoft.keyvault/vaults/<name>
 KeyVaultName      : testkeyvault
 KeyVaultName      : testkeyvault
 PublicCertificate : 
@@ -50,14 +50,14 @@ This command gets the integration account certificate named IntegrationAccountCe
 ### Example 2: Get integration account certificates by integration account name
 ```
 PS C:\>Get-AzIntegrationAccountCertificate -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31"
-Id                : /subscriptions/<SusbcriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegartionAccount31/certificates/IntegrationAccountCertificate01
+Id                : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31/certificates/IntegrationAccountCertificate01
 Name              : IntegrationAccountCertificate01
 Type              : Microsoft.Logic/integrationAccounts/certificates
 CreatedTime       : 3/26/2016 6:59:07 PM
 ChangedTime       : 3/26/2016 6:59:07 PM
 KeyName           : TestKey
 KeyVersion        : 1.0
-KeyVaultId        : /subscriptions/<SusbcriptionId>/resourcegroups/ResourceGroup11/providers/microsoft.keyvault/vaults/<name>
+KeyVaultId        : /subscriptions/<SubscriptionId>/resourcegroups/ResourceGroup11/providers/microsoft.keyvault/vaults/<name>
 KeyVaultName      : testkeyvault
 KeyVaultName      : testkeyvault
 PublicCertificate : 

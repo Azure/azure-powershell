@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 6CD1C2B8-0416-4FF3-81B0-0C9E59AE6CF9
@@ -122,7 +122,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -142,17 +142,16 @@ Accept wildcard characters: False
 ```
 
 ### -Format
-Specifies the format of the policy. When using `application/vnd.ms-az-apim.policy+xml`, 
-expressions contained within the policy must be XML-escaped. When using `application/vnd.ms-az-apim.policy.raw+xml` it 
+Specifies the format of the policy. When using `application/vnd.ms-azure-apim.policy+xml`, 
+expressions contained within the policy must be XML-escaped. When using `application/vnd.ms-azure-apim.policy.raw+xml` it 
 is **not** necessary for the policy to be XML-escaped.
-The default value is `application/vnd.ms-az-apim.policy+xml`.
+The default value is `application/vnd.ms-azure-apim.policy+xml`.
 This parameter is optional.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: application/vnd.ms-azure-apim.policy.raw+xml, application/vnd.ms-azure-apim.policy+xml
 
 Required: False
 Position: Named
@@ -257,7 +256,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add support to invoke failover for an IotHub to the geo-paired disaster recovery region.
+
+## Version 1.2.1
+* Fixed miscellaneous typos across module
+
+## Version 1.2.0
+* Add support to regenerate authorization policy keys.
+
+## Version 1.1.0
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 
 ## Version 1.0.2

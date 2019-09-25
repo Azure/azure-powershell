@@ -282,6 +282,51 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
             Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataProxyIntegrationRuntimeName)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataProxyIntegrationRuntimeName)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataProxyIntegrationRuntimeName)]
+        [ValidateNotNullOrEmpty]
+        public string DataProxyIntegrationRuntimeName { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataProxyStagingLinkedServiceName)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataProxyStagingLinkedServiceName)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataProxyStagingLinkedServiceName)]
+        [ValidateNotNullOrEmpty]
+        public string DataProxyStagingLinkedServiceName { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataProxyStagingPath)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataProxyStagingPath)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeDataProxyStagingPath)]
+        [ValidateNotNullOrEmpty]
+        public string DataProxyStagingPath { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeMaxParallelExecutionsPerNode)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceId,
@@ -527,6 +572,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 }
 
                 integrationRuntime.ComputeProperties.NumberOfNodes = NodeCount;
+
+                if (integrationRuntime.SsisProperties == null)
+                {
+                    integrationRuntime.SsisProperties = new IntegrationRuntimeSsisProperties();
+                }
             }
 
             if (MaxParallelExecutionsPerNode.HasValue)
@@ -672,6 +722,45 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     BlobContainerUri = index >= 0 ? SetupScriptContainerSasUri.Substring(0, index) : SetupScriptContainerSasUri,
                     SasToken = index >= 0 ? new SecureString(SetupScriptContainerSasUri.Substring(index)) : null
                 };
+            }
+
+            if (!string.IsNullOrEmpty(DataProxyIntegrationRuntimeName))
+            {
+                if (integrationRuntime.SsisProperties == null)
+                {
+                    integrationRuntime.SsisProperties = new IntegrationRuntimeSsisProperties();
+                }
+                if (integrationRuntime.SsisProperties.DataProxyProperties == null)
+                {
+                    integrationRuntime.SsisProperties.DataProxyProperties = new IntegrationRuntimeDataProxyProperties();
+                }
+                integrationRuntime.SsisProperties.DataProxyProperties.ConnectVia = new EntityReference("IntegrationRuntimeReference", DataProxyIntegrationRuntimeName);
+            }
+
+            if (!string.IsNullOrEmpty(DataProxyStagingLinkedServiceName))
+            {
+                if (integrationRuntime.SsisProperties == null)
+                {
+                    integrationRuntime.SsisProperties = new IntegrationRuntimeSsisProperties();
+                }
+                if (integrationRuntime.SsisProperties.DataProxyProperties == null)
+                {
+                    integrationRuntime.SsisProperties.DataProxyProperties = new IntegrationRuntimeDataProxyProperties();
+                }
+                integrationRuntime.SsisProperties.DataProxyProperties.StagingLinkedService = new EntityReference("LinkedServiceReference", DataProxyStagingLinkedServiceName);
+            }
+
+            if (!string.IsNullOrEmpty(DataProxyStagingPath))
+            {
+                if (integrationRuntime.SsisProperties == null)
+                {
+                    integrationRuntime.SsisProperties = new IntegrationRuntimeSsisProperties();
+                }
+                if (integrationRuntime.SsisProperties.DataProxyProperties == null)
+                {
+                    integrationRuntime.SsisProperties.DataProxyProperties = new IntegrationRuntimeDataProxyProperties();
+                }
+                integrationRuntime.SsisProperties.DataProxyProperties.Path = DataProxyStagingPath;
             }
 
             if (!string.IsNullOrEmpty(Edition))

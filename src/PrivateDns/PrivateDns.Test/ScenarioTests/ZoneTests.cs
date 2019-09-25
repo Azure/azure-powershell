@@ -91,6 +91,13 @@ namespace Microsoft.Azure.Commands.PrivateDns.Test.ScenarioTests
             PrivateDnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-ZoneNewAlreadyExists");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestZoneNewWithLocalSuffix()
+        {
+            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-ZoneNewWithLocalSuffix");
+        }
+
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneSetEtagMismatch()

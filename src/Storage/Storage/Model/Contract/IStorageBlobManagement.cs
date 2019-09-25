@@ -15,9 +15,9 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 {
     using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Blob;
-    using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+    using Microsoft.Azure.Storage;
+    using Microsoft.Azure.Storage.Blob;
+    using Microsoft.Azure.Storage.Shared.Protocol;
     using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
@@ -331,7 +331,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>Return copy id if succeeded.</returns>
         Task<string> StartCopyAsync(CloudPageBlob blob, Uri source, PremiumPageBlobTier premiumPageBlobTier, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken);
-        
+
+        /// <summary>
+        /// Return a task that asynchronously start copy operation to a CloudBlockBlob with StandardBlobTier.
+        /// </summary>
+        /// <param name="blob">CloudBlockBlob object</param>
+        /// <param name="source">Uri to copying source</param>
+        /// <param name="premiumPageBlobTier">The StandardBlobTier of Destination blob</param>
+        /// <param name="standardBlobTier">Access condition to source if it's file/blob in azure.</param>
+        /// <param name="destAccessCondition">Access condition to Destination blob.</param>
+        /// <param name="options">Blob request options</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <param name="cmdletCancellationToken">Cancellation token</param>
+        /// <returns>Return copy id if succeeded.</returns>
+        Task<string> StartCopyAsync(CloudBlob blob, Uri source, StandardBlobTier? standardBlobTier, RehydratePriority? rehydratePriority, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken);
+
         /// <summary>
         /// Return a task that asynchronously start Incremental copy operation to a page blob.
         /// </summary>
@@ -404,6 +418,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
         Task SetPageBlobTierAsync(CloudPageBlob blob, PremiumPageBlobTier tier, BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken);
+
+        /// <summary>
+        /// Return a task that asynchronously set block blob Tier
+        /// </summary>
+        /// <param name="blob">CloudBlockBlob object</param>
+        /// <param name="tier">block blob Tier</param>
+        /// <param name="accessCondition">Access condition</param>
+        /// <param name="options">Blob request options</param>
+        /// <param name="operationContext">An object that represents the context for the current operation.</param>
+        Task SetStandardBlobTierAsync(CloudBlockBlob blob, AccessCondition accessCondition, StandardBlobTier tier, RehydratePriority? rehydratePriority, BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken);
 
         /// <summary>
         /// List the blobs segmented in specified containers

@@ -18,6 +18,57 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated example in reference documentation for `Get-AzStorageAccountKey`
+* In upload/Downalod Azure File,support perserve the source File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the destination file
+    -  Set-AzStorageFileContent
+    -  Get-AzStorageFileContent
+* Fix Upload block blob with properties/metadate fail on container enabled ImmutabilityPolicy.
+    -  Set-AzStorageBlobContent
+* Support manage Azure File shares with Management plane API
+    -  New-AzRmStorageShare
+    -  Get-AzRmStorageShare
+    -  Update-AzRmStorageShare
+    -  Remove-AzRmStorageShare
+
+## Version 1.6.0
+* Fixed miscellaneous typos across module
+* Update help for Get/Close-AzStorageFileHandle, by add more scenarios to cmdlet examples and update parameter descriptions
+* Support StandardBlobTier in upload blob and copy blob
+    -  Set-AzStorageBlobContent
+    -  Start-AzStorageBlobCopy
+* Support Rehydrate Priority in copy blob
+    -  Start-AzStorageBlobCopy
+
+## Version 1.5.1
+* Update example in reference documentation for `Get-AzStorageAccount` to use correct parameter name
+
+## Version 1.5.0
+* Change 2 parameters "-IndexDocument" and "-ErrorDocument404Path" from required to optional  in cmdlet:
+    -  Enable-AzStorageStaticWebsite
+* Update help of Get-AzStorageBlobContent by add an example
+* Show more error information when cmdlet failed with StorageException 
+* Support create or update Storage account with Azure Files AAD DS Authentication
+    -  New-AzStorageAccount
+    -  Set-AzStorageAccount
+* Support list or close file handles of a file share, file directory or a file
+    - Get-AzStorageFileHandle
+    - Close-AzStorageFileHandle
+
+## Version 1.4.0
+* Support Kind FileStorage and SkuName Premium_ZRS when create Storage account
+    - New-AzStorageAccount
+* Clarified description of blob immutability cmdlet
+    -  Remove-AzRmStorageContainerImmutabilityPolicy
+
+## Version 1.3.0
+* Upgrade to Storage Client Library 10.0.1 (the namespace of all objects from this SDK change from "Microsoft.WindowsAzure.Storage.*" to "Microsoft.Azure.Storage.*")
+* Upgrade to Microsoft.Azure.Management.Storage 11.0.0, to support new API version 2019-04-01.
+* The default Storage account Kind in Create Storage account change from 'Storage' to 'StorageV2'
+    - New-AzStorageAccount
+* Change the Storage account cmdlet output Sku.Name to be aligned with input SkuName by add '-', like "StandardLRS" change to "Standard_LRS"
+    - New-AzStorageAccount
+    - Get-AzStorageAccount
+    - Set-AzStorageAccount
 
 ## Version 1.2.0
 * Report detail error when create Storage context with parameter -UseConnectedAccount, but without login Azure account

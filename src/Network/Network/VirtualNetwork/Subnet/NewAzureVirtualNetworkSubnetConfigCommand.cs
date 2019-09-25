@@ -43,6 +43,11 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.RouteTableId = this.RouteTable.Id;
                 }
+
+                if (this.InputObject != null)
+                {
+                    this.ResourceId = this.InputObject.Id;
+                }
             }
 
             var subnet = new PSSubnet();
@@ -59,6 +64,12 @@ namespace Microsoft.Azure.Commands.Network
             {
                 subnet.RouteTable = new PSRouteTable();
                 subnet.RouteTable.Id = this.RouteTableId;
+            }
+
+            if (!string.IsNullOrEmpty(this.ResourceId))
+            {
+                subnet.NatGateway = new PSNatGateway();
+                subnet.NatGateway.Id = this.ResourceId;
             }
 
             if (this.ServiceEndpoint != null)
@@ -81,6 +92,9 @@ namespace Microsoft.Azure.Commands.Network
             {
                 subnet.Delegations = this.Delegation?.ToList();
             }
+
+            subnet.PrivateEndpointNetworkPolicies = this.PrivateEndpointNetworkPoliciesFlag ?? "Enabled";
+            subnet.PrivateLinkServiceNetworkPolicies = this.PrivateLinkServiceNetworkPoliciesFlag ?? "Enabled";
 
             WriteObject(subnet);
         }

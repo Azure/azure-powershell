@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (MNM.VpnSite vpnSite in vpnSites)
                 {
                     PSVpnSite siteToReturn = ToPsVpnSite(vpnSite);
-                    siteToReturn.ResourceGroupName = resourceGroupName;
+                    siteToReturn.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(vpnSite.Id);
                     sitesToReturn.Add(siteToReturn);
                 }
             }

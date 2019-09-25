@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Do not ask for confirmation if you want to overrite a resource
+Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

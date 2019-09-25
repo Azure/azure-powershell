@@ -54,7 +54,11 @@ The command uses an existing App Service plan named ContosoServicePlan.
 ## PARAMETERS
 
 ### -AppServicePlan
-App Service Plan Name
+App Service Plan Name or App Service Plan Id. If a WebApp and App Service Plan are in different Resource Groups, use the ID instead of the name. 
+The App Service Plan Id can be retrieved using:
+$asp = Get-AzAppServicePlan -ResourceGroup  myRG -Name MyWebapp
+$asp.id returns the App Service Plan Id.
+
 
 ```yaml
 Type: System.String
@@ -231,7 +235,7 @@ Accept wildcard characters: False
 ```
 
 ### -GitRepositoryPath
-Path to the GitHub repository containign the web application to deploy.
+Path to the GitHub repository containing the web application to deploy.
 
 ```yaml
 Type: System.String

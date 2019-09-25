@@ -36,14 +36,14 @@ Removes an Azure Event Grid Topic.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS C:\> Remove-AzEventGridTopic -ResourceGroupName MyResourceGroupName -Name Topic1
 ```
 
 Removes the Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
 ### Example 2
-```
+```powershell
 PS C:\> Get-AzResource -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/topics/Topic1" | Remove-AzEventGridTopic
 ```
 

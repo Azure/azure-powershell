@@ -17,11 +17,11 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.Azure.Storage.Blob;
 using XTable = Microsoft.Azure.Cosmos.Table;
-using Microsoft.WindowsAzure.Storage.File;
-using Microsoft.WindowsAzure.Storage.Queue;
-using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+using Microsoft.Azure.Storage.File;
+using Microsoft.Azure.Storage.Queue;
+using Microsoft.Azure.Storage.Shared.Protocol;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
 {

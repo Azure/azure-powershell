@@ -47,21 +47,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         protected const string StorageUsageNounStr = "AzureRmStorageUsage";
 
-        protected struct AccountTypeString
-        {
-            internal const string StandardLRS = "Standard_LRS";
-            internal const string StandardZRS = "Standard_ZRS";
-            internal const string StandardGRS = "Standard_GRS";
-            internal const string StandardRAGRS = "Standard_RAGRS";
-            internal const string PremiumLRS = "Premium_LRS";
-        }
-        protected struct AccountKind
-        {
-            internal const string Storage = "Storage";
-            internal const string StorageV2 = "StorageV2";
-            internal const string BlobStorage = "BlobStorage";
-            internal const string BlockBlobStorage = "BlockBlobStorage";
-        }
         protected struct AccountAccessTier
         {
             internal const string Hot = "Hot";
@@ -113,25 +98,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
         }
 
-        protected static SkuName ParseSkuName(string skuName)
-        {
-            SkuName returnSkuName;
-            if (!Enum.TryParse<SkuName>(skuName.Replace("_", ""), true, out returnSkuName))
-            {
-                throw new ArgumentOutOfRangeException("SkuName");
-            }
-            return returnSkuName;
-        }
-
-        protected static Kind ParseAccountKind(string accountKind)
-        {
-            Kind returnKind;
-            if (!Enum.TryParse<Kind>(accountKind, true, out returnKind))
-            {
-                throw new ArgumentOutOfRangeException("Kind");
-            }
-            return returnKind;
-        }
         protected static AccessTier ParseAccessTier(string accessTier)
         {
             AccessTier returnAccessTier;

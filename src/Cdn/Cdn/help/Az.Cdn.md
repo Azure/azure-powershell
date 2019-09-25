@@ -57,10 +57,22 @@ Gets the single sign-on URL of a CDN profile.
 Gets the supported optimization types for a CDN profile.
 
 ### [Get-AzCdnSubscriptionResourceUsage](Get-AzCdnSubscriptionResourceUsage.md)
-Gets the resource usage for a susbscription.
+Gets the resource usage for a subscription.
 
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a custom domain for a CDN endpoint.
+
+### [New-AzCdnDeliveryPolicy](New-AzCdnDeliveryPolicy.md)
+Creates a deliveryPolicy for a CDN endpoint.
+
+### [New-AzCdnDeliveryRule](New-AzCdnDeliveryRule.md)
+Creates a deliveryRule for deliveryPolicy creation.
+
+### [New-AzCdnDeliveryRuleAction](New-AzCdnDeliveryRuleAction.md)
+Creates a deliveryRuleAction for deliveryRule creation.
+
+### [New-AzCdnDeliveryRuleCondition](New-AzCdnDeliveryRuleCondition.md)
+Creates a deliveryRuleCondition for deliveryRule creation.
 
 ### [New-AzCdnEndpoint](New-AzCdnEndpoint.md)
 Creates a CDN endpoint.

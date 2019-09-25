@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVpnClientIpsecPolicy
 
 ## SYNOPSIS
-This command allows the users to create the Vpn ipsec policy object specifying one or all values such as IpsecEncryption,IpsecIntegrity,IkeEncryption,IkeIntegrity,DhGroup,PfsGroup to set on the VPN gateway. This command let output object is used to set vpn ipsec policy for both new / exisitng gateway.
+This command allows the users to create the Vpn ipsec policy object specifying one or all values such as IpsecEncryption,IpsecIntegrity,IkeEncryption,IkeIntegrity,DhGroup,PfsGroup to set on the VPN gateway. This command let output object is used to set vpn ipsec policy for both new / existing gateway.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzVpnClientIpsecPolicy [-SALifeTime <Int32>] [-SADataSize <Int32>] [-IpsecEn
 ```
 
 ## DESCRIPTION
-This command allows the users to create the Vpn ipsec policy object specifying one or all values such as IpsecEncryption,IpsecIntegrity,IkeEncryption,IkeIntegrity,DhGroup,PfsGroup to set on the VPN gateway. This command let output object is used to set vpn ipsec policy for both new / exisitng gateway.
+This command allows the users to create the Vpn ipsec policy object specifying one or all values such as IpsecEncryption,IpsecIntegrity,IkeEncryption,IkeIntegrity,DhGroup,PfsGroup to set on the VPN gateway. This command let output object is used to set vpn ipsec policy for both new / existing gateway.
 
 ## EXAMPLES
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -DhGroup
-The Vpnclient DH Groups used in IKE Phase 1 for initial SA
+The VpnClient DH Groups used in IKE Phase 1 for initial SA
 
 ```yaml
 Type: System.String
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -IkeEncryption
-The Vpnclient IKE encryption algorithm (IKE Phase 2)
+The VpnClient IKE encryption algorithm (IKE Phase 2)
 
 ```yaml
 Type: System.String
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -IkeIntegrity
-The Vpnclient IKE integrity algorithm (IKE Phase 2)
+The VpnClient IKE integrity algorithm (IKE Phase 2)
 
 ```yaml
 Type: System.String
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -IpsecEncryption
-The Vpnclient IPSec encryption algorithm (IKE Phase 1)
+The VpnClient IPSec encryption algorithm (IKE Phase 1)
 
 ```yaml
 Type: System.String
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -IpsecIntegrity
-The Vpnclient IPSec integrity algorithm (IKE Phase 1)
+The VpnClient IPSec integrity algorithm (IKE Phase 1)
 
 ```yaml
 Type: System.String
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -PfsGroup
-The Vpnclient PFS Groups used in IKE Phase 2 for new child SA
+The VpnClient PFS Groups used in IKE Phase 2 for new child SA
 
 ```yaml
 Type: System.String
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 ```
 
 ### -SADataSize
-The Vpnclient IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB
+The VpnClient IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB
 
 ```yaml
 Type: System.Int32
@@ -180,7 +180,7 @@ Accept wildcard characters: False
 ```
 
 ### -SALifeTime
-The Vpnclient IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds
+The VpnClient IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds
 
 ```yaml
 Type: System.Int32

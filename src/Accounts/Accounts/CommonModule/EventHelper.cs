@@ -38,7 +38,34 @@ namespace Microsoft.Azure.Commands.Common
             {
                 Id = Guid.NewGuid().ToString(),
                 Message = message
+            };
+        }
 
+        /// <summary>
+        /// Create a new debug message event
+        /// </summary>
+        /// <param name="message">The message</param>
+        /// <returns>An event cotnainng the debug message</returns>
+        public static EventData CreateDebugEvent(string message)
+        {
+            return new EventData
+            {
+                Id = Events.Debug,
+                Message = message
+            };
+        }
+
+        /// <summary>
+        /// Create a new debug message event
+        /// </summary>
+        /// <param name="message">The message</param>
+        /// <returns>An event cotnainng the debug message</returns>
+        public static EventData CreateWarningEvent(string message)
+        {
+            return new EventData
+            {
+                Id = Events.Warning,
+                Message = message
             };
         }
 

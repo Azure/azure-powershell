@@ -33,7 +33,7 @@ CurrentValue  : 18
 Limit         : 250
 ```
 
-This command gets the Storage resources usage of of specified location under the current subscription.
+This command gets the Storage resources usage of specified location under the current subscription.
 
 ## PARAMETERS
 

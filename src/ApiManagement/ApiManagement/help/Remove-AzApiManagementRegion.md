@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 17D7EBD2-FE3F-4D24-A1AA-8C45B9B1FEF5
@@ -21,7 +21,7 @@ Remove-AzApiManagementRegion -ApiManagement <PsApiManagement> -Location <String>
 ## DESCRIPTION
 The **Remove-AzApiManagementRegion** cmdlet removes instance of type **Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion** from a collection of **AdditionalRegions** of provided the instance of type **Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement**.
 This cmdlet does not modify deployment by itself but updates the instance of **PsApiManagement** in-memory.
-To update a deployment of an API Management, pass the modified **PsApiManagementInstance** to **Update-AzApiManagement**.
+To update a deployment of an API Management, pass the modified **PsApiManagementInstance** to **Set-AzApiManagement**.
 
 ## EXAMPLES
 
@@ -34,7 +34,7 @@ This command removes the region named East US from the **PsApiManagement** insta
 
 ### Example 2: Remove a region from a PsApiManagement instance using a series of commands
 ```
-PS C:\>Get-AzApiManagement -ResourceGroupName "Contoso" -Name ContosoApi | Remove-AzApiManagementRegion -Location "East US" | Update-AzApiManagementDeployment
+PS C:\>Get-AzApiManagement -ResourceGroupName "Contoso" -Name ContosoApi | Remove-AzApiManagementRegion -Location "East US" | Set-AzApiManagement
 ```
 
 This first command gets an instance of **PsApiManagement** from the resource group named Contoso named ContosoApi.
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

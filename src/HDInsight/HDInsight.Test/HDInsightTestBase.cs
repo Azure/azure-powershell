@@ -91,6 +91,23 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             hdinsightManagementMock.Setup(c => c.GetClusterConfigurations(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(configurationResponse)
                 .Verifiable();
+
+            var listConfigurationsResponse = new ClusterListConfigurationsResponse
+            {
+                Configurations = new Dictionary<string, ClusterConfiguration>
+                {
+                    {
+                        "core-site", new ClusterConfiguration
+                        {
+                            Configuration=configurationResponse
+                        }
+                    }
+                }
+            };
+
+            hdinsightManagementMock.Setup(c => c.ListConfigurations(It.IsAny<string>(), It.IsAny<string>()))
+                .Returns(listConfigurationsResponse)
+                .Verifiable();
         }
     }
 }

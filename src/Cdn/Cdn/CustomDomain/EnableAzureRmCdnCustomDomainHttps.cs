@@ -91,13 +91,21 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
                     ResourceGroupName));
             }
 
+            var parameters = new Management.Cdn.Models.CdnManagedHttpsParameters
+            {
+                ProtocolType = Management.Cdn.Models.ProtocolType.IPBased,
+                CertificateSourceParameters = new Management.Cdn.Models.CdnCertificateSourceParameters { CertificateType = "Shared" }
+            };
+
             ConfirmAction(MyInvocation.InvocationName,
                 String.Format("{0} ({1})", existingCustomDomain.Name, existingCustomDomain.HostName),
                 () => CdnManagementClient.CustomDomains.EnableCustomHttps(
                     ResourceGroupName,
                     ProfileName,
                     EndpointName,
-                    CustomDomainName));
+                    CustomDomainName,
+                    parameters
+                    ));
 
             if (PassThru)
             {

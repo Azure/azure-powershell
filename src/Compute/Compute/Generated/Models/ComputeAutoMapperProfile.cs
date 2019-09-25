@@ -56,9 +56,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         {
             var config = new MapperConfiguration(cfg =>
             {
+                // This part is for hiding the breaking change caused by the client library update.
+                cfg.CreateMap<FROM.GalleryImageVersionPublishingProfile, TO.PSGalleryImageVersionPublishingProfile>();
+                cfg.CreateMap<TO.PSGalleryImageVersionPublishingProfile, FROM.GalleryImageVersionPublishingProfile>();
+
                 cfg.CreateMap<FROM.ContainerService, TO.PSContainerServiceList>();
                 cfg.CreateMap<TO.PSContainerServiceList, TO.PSContainerService>();
                 cfg.CreateMap<TO.PSContainerService, TO.PSContainerServiceList>();
+                cfg.CreateMap<FROM.DedicatedHostGroup, TO.PSHostGroupList>();
+                cfg.CreateMap<TO.PSHostGroupList, TO.PSHostGroup>();
+                cfg.CreateMap<TO.PSHostGroup, TO.PSHostGroupList>();
+                cfg.CreateMap<FROM.DedicatedHost, TO.PSHostList>();
+                cfg.CreateMap<TO.PSHostList, TO.PSHost>();
+                cfg.CreateMap<TO.PSHost, TO.PSHostList>();
                 cfg.CreateMap<FROM.Disk, TO.PSDiskList>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSDiskList, TO.PSDisk>()
@@ -71,12 +81,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.GalleryImage, TO.PSGalleryImageList>();
                 cfg.CreateMap<TO.PSGalleryImageList, TO.PSGalleryImage>();
                 cfg.CreateMap<TO.PSGalleryImage, TO.PSGalleryImageList>();
-                cfg.CreateMap<FROM.GalleryImageVersion, TO.PSGalleryImageVersionList>();
+                cfg.CreateMap<FROM.GalleryImageVersion, TO.PSGalleryImageVersionList>()
+                    .AfterMap((src, dest) => dest.GetPublishingProfileSourceId()); // This part is for hiding the breaking change caused by the client library update.
                 cfg.CreateMap<TO.PSGalleryImageVersionList, TO.PSGalleryImageVersion>();
                 cfg.CreateMap<TO.PSGalleryImageVersion, TO.PSGalleryImageVersionList>();
                 cfg.CreateMap<FROM.Image, TO.PSImageList>();
                 cfg.CreateMap<TO.PSImageList, TO.PSImage>();
                 cfg.CreateMap<TO.PSImage, TO.PSImageList>();
+                cfg.CreateMap<FROM.ProximityPlacementGroup, TO.PSProximityPlacementGroupList>();
+                cfg.CreateMap<TO.PSProximityPlacementGroupList, TO.PSProximityPlacementGroup>();
+                cfg.CreateMap<TO.PSProximityPlacementGroup, TO.PSProximityPlacementGroupList>();
                 cfg.CreateMap<FROM.Snapshot, TO.PSSnapshotList>();
                 cfg.CreateMap<TO.PSSnapshotList, TO.PSSnapshot>();
                 cfg.CreateMap<TO.PSSnapshot, TO.PSSnapshotList>();
@@ -105,6 +119,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSSnapshotUpdate, FROM.SnapshotUpdate>();
                 cfg.CreateMap<FROM.ContainerService, TO.PSContainerService>();
                 cfg.CreateMap<TO.PSContainerService, FROM.ContainerService>();
+                cfg.CreateMap<FROM.DedicatedHostGroup, TO.PSHostGroup>();
+                cfg.CreateMap<TO.PSHostGroup, FROM.DedicatedHostGroup>();
+                cfg.CreateMap<FROM.DedicatedHost, TO.PSHost>();
+                cfg.CreateMap<TO.PSHost, FROM.DedicatedHost>();
                 cfg.CreateMap<FROM.Disk, TO.PSDisk>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSDisk, FROM.Disk>()
@@ -115,12 +133,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSGallery, FROM.Gallery>();
                 cfg.CreateMap<FROM.GalleryImage, TO.PSGalleryImage>();
                 cfg.CreateMap<TO.PSGalleryImage, FROM.GalleryImage>();
-                cfg.CreateMap<FROM.GalleryImageVersion, TO.PSGalleryImageVersion>();
+                cfg.CreateMap<FROM.GalleryImageVersion, TO.PSGalleryImageVersion>()
+                    .AfterMap((src, dest) => dest.GetPublishingProfileSourceId()); // This part is for hiding the breaking change caused by the client library update.
                 cfg.CreateMap<TO.PSGalleryImageVersion, FROM.GalleryImageVersion>();
                 cfg.CreateMap<FROM.Image, TO.PSImage>();
                 cfg.CreateMap<TO.PSImage, FROM.Image>();
                 cfg.CreateMap<FROM.LogAnalyticsOperationResult, TO.PSLogAnalyticsOperationResult>();
                 cfg.CreateMap<TO.PSLogAnalyticsOperationResult, FROM.LogAnalyticsOperationResult>();
+                cfg.CreateMap<FROM.ProximityPlacementGroup, TO.PSProximityPlacementGroup>();
+                cfg.CreateMap<TO.PSProximityPlacementGroup, FROM.ProximityPlacementGroup>();
                 cfg.CreateMap<FROM.ResourceSku, TO.PSResourceSku>();
                 cfg.CreateMap<TO.PSResourceSku, FROM.ResourceSku>();
                 cfg.CreateMap<FROM.Snapshot, TO.PSSnapshot>();

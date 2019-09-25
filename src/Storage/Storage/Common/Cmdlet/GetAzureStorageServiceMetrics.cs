@@ -14,7 +14,7 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
-    using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+    using Microsoft.Azure.Storage.Shared.Protocol;
     using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Globalization;

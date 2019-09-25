@@ -113,7 +113,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Storage.Shared.Protocol.MetricsProperties
+### Microsoft.Azure.Storage.Shared.Protocol.MetricsProperties
 
 ## NOTES
 

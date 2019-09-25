@@ -22,7 +22,7 @@ namespace VersionController.Models
         public VersionMetadataHelper(VersionFileHelper fileHelper)
         {
             _fileHelper = fileHelper;
-            _logger = new AnalysisLogger(_fileHelper.PackageDirectory, _fileHelper.ExceptionsDirectory);
+            _logger = new AnalysisLogger(_fileHelper.ArtifactsVersionControllerDirectory, _fileHelper.ExceptionsDirectory);
         }
 
         /// <summary>
@@ -301,6 +301,8 @@ namespace VersionController.Models
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine($"Warning: {nestedModule} does not have a previously serialized cmdlet for comparison.");
                         Console.ForegroundColor = currentColor;
+                        var newCmdletFile = Path.Join(serializedCmdletsDirectory, serializedCmdletName);
+                        SerializeCmdlets(newCmdletFile, newModuleMetadata);
                         continue;
                     }
                     var oldModuleMetadata = DeserializeCmdlets(serializedCmdletFile);

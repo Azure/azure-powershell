@@ -12,19 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -50,6 +47,7 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Alias("ResourceName", "VMName")]
@@ -65,6 +63,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         [Parameter(

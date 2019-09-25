@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
 online version: https://docs.microsoft.com/en-us/powershell/module/Az.storagesync/new-Azstoragesynccloudendpoint
 schema: 2.0.0
@@ -12,19 +12,19 @@ This command creates an Azure File Sync cloud endpoint in a sync group.
 
 ## SYNTAX
 
-### ObjectParameterSet (Default)
-```
-New-AzStorageSyncCloudEndpoint [-ParentObject] <PSSyncGroup> -Name <String> -StorageAccountResourceId <String>
- -AzureFileShareName <String> [-StorageAccountTenantId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### StringParameterSet
+### StringParameterSet (Default)
 ```
 New-AzStorageSyncCloudEndpoint [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
  [-SyncGroupName] <String> -Name <String> -StorageAccountResourceId <String> -AzureFileShareName <String>
  [-StorageAccountTenantId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### ObjectParameterSet
+```
+New-AzStorageSyncCloudEndpoint [-ParentObject] <PSSyncGroup> -Name <String> -StorageAccountResourceId <String>
+ -AzureFileShareName <String> [-StorageAccountTenantId <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentStringParameterSet
@@ -63,13 +63,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AzureFileShareName
+Storage Account Share Name (Azure file share name)
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: StorageAccountShareName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -140,21 +155,6 @@ Accept wildcard characters: False
 
 ### -StorageAccountResourceId
 Storage Account Resource Id
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AzureFileShareName
-Storage Account Share Name (Azure file share name)
 
 ```yaml
 Type: System.String

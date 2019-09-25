@@ -15,7 +15,7 @@
     <None Remove="UnitTests\**" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Blueprint" Version="0.10.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Blueprint" Version="0.14.0-preview" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blueprint\Blueprint.csproj" />
@@ -26,6 +26,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Update="Microsoft.Azure.Management.ResourceManager" Version="1.9.1-preview" />
+    <PackageReference Update="Microsoft.Azure.Management.ResourceManager" Version="2.2.0-preview" />
   </ItemGroup>
 </Project>

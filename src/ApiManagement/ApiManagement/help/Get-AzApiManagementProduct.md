@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: B64E9C13-97A6-4E8B-92DB-EFAF8A48C5B8
@@ -31,6 +31,12 @@ Get-AzApiManagementProduct -Context <PsApiManagementContext> [-Title <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### GetByApiId
+```
+Get-AzApiManagementProduct -Context <PsApiManagementContext> -ApiId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzApiManagementProduct** cmdlet gets a list or a particular product.
 
@@ -54,6 +60,21 @@ This command get an API Management product by ID.
 
 ## PARAMETERS
 
+### -ApiId
+ApiId of the Api to find the correlated products. This parameter is optional.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByApiId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Context
 Specifies an instance of a **PsApiManagementContext** object.
 
@@ -65,7 +86,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -116,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

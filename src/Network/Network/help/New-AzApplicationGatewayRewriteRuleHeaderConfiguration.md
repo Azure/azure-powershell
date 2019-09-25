@@ -18,7 +18,7 @@ New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName <String> [-He
 ```
 
 ## DESCRIPTION
-**The AzApplicationGatewayRewriteRuleHeaderConfiguration** cmdlet creates a rewrite rule actionset for an Azure application gateway.
+**The AzApplicationGatewayRewriteRuleHeaderConfiguration** cmdlet creates a rewrite rule action set for an Azure application gateway.
 
 ## EXAMPLES
 

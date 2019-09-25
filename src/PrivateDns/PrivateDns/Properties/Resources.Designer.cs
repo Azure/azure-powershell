@@ -392,5 +392,14 @@ namespace Microsoft.Azure.Commands.PrivateDns.Properties {
                 return ResourceManager.GetString("Warning_InvalidLinkDetailsSpecified", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please be aware that DNS names ending with .local are reserved for use with multicast DNS and may not work as expected with some operating systems. For details refer to your operating systems documentation..
+        /// </summary>
+        internal static string Warning_ZoneNameEndsWithLocal {
+            get {
+                return ResourceManager.GetString("Warning_ZoneNameEndsWithLocal", resourceCulture);
+            }
+        }
     }
 }

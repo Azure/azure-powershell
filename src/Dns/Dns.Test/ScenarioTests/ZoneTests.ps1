@@ -82,6 +82,65 @@ function Test-ZoneCrud
 
 <#
 .SYNOPSIS
+Zone creation with delegation
+#>
+function Test-ZoneWithDelegation
+{
+	#Parent zone creation
+	$parentZoneName = Get-RandomZoneName
+    $resourceGroup = TestSetup-CreateResourceGroup
+	
+	try
+    {
+        $createdParentZone = New-AzDnsZone -Name $parentZoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1"}
+
+		Assert-NotNull $createdParentZone
+		Assert-NotNull $createdParentZone.Etag
+		Assert-AreEqual $parentZoneName $createdParentZone.Name
+		Assert-AreEqual $resourceGroup.ResourceGroupName $createdParentZone.ResourceGroupName
+		Assert-AreEqual 1 $createdParentZone.Tags.Count
+		Assert-AreEqual 2 $createdParentZone.NumberOfRecordSets
+		Assert-AreNotEqual $createdParentZone.NumberOfRecordSets $createdParentZone.MaxNumberOfRecordSets
+		Assert-Null $createdParentZone.Type
+
+		#Child zone creation , pass ParentZoneName to set up delegation
+		$childZoneNamePrefix = Get-RandomZoneName
+		$childZoneName = $childZoneNamePrefix + '.' + $parentZoneName
+		$createdChildZone = New-AzDnsZone -Name $childZoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1"} -ParentZoneName $parentZoneName
+
+		Assert-NotNull $createdChildZone
+		Assert-NotNull $createdChildZone.Etag
+		Assert-AreEqual $childZoneName $createdChildZone.Name
+		Assert-AreEqual $resourceGroup.ResourceGroupName $createdChildZone.ResourceGroupName
+		Assert-AreEqual 1 $createdChildZone.Tags.Count
+		Assert-AreEqual 2 $createdChildZone.NumberOfRecordSets
+		Assert-AreNotEqual $createdChildZone.NumberOfRecordSets $createdChildZone.MaxNumberOfRecordSets
+		Assert-Null $createdChildZone.Type
+
+		# retrieve the delegation record set in parent with name prefix of the child zone created above
+		$delegationRecordSet = Get-AzDnsRecordSet -Name $childZoneNamePrefix -RecordType NS -ZoneName $parentZoneName -ResourceGroupName $resourceGroup.ResourceGroupName
+	
+		Assert-NotNull $delegationRecordSet
+		Assert-NotNull $delegationRecordSet.Records
+		Assert-AreEqual $createdChildZone.NameServers.Count $delegationRecordSet.Records.Count
+
+		#clean up - deleting resources created as part of the test
+		$removedParent = Remove-AzDnsZone -Name $parentZoneName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru -Confirm:$false
+		$removedChild = Remove-AzDnsZone -Name $childZoneName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru -Confirm:$false
+
+		Assert-True { $removedParent }
+		Assert-True { $removedChild }
+
+		Assert-Throws { Get-AzDnsZone -Name $parentZoneName -ResourceGroupName $resourceGroup.ResourceGroupName }
+		Assert-Throws { Get-AzDnsZone -Name $childZoneName -ResourceGroupName $resourceGroup.ResourceGroupName }
+    }
+    finally
+    {
+        Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+    }
+}
+<#
+.SYNOPSIS
 Full Private Zone CRUD cycle with both registration and resolution virtual networks
 #>
 function Test-PrivateZoneCrud

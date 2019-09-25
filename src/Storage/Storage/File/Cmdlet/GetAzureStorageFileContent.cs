@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Storage.File;
+using Microsoft.Azure.Storage.File;
 using System.Globalization;
 using System.IO;
 using System.Management.Automation;
@@ -22,15 +22,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Microsoft.WindowsAzure.Storage.DataMovement;
+    using Microsoft.Azure.Storage.DataMovement;
     using System;
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
     using LocalDirectory = System.IO.Directory;
     using LocalPath = System.IO.Path;
+    using System.Runtime.InteropServices;
 
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
     [OutputType(typeof(CloudFile))]
-    public class GetAzureStorageFileContent : StorageFileDataManagementCmdletBase
+    public class GetAzureStorageFileContent : StorageFileDataManagementCmdletBase, IDynamicParameters
     {
         [Parameter(
            Position = 0,
@@ -201,7 +202,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             targetFile,
                             new DownloadOptions
                             {
-                                DisableContentMD5Validation = !this.CheckMd5
+                                DisableContentMD5Validation = !this.CheckMd5,
+                                PreserveSMBAttributes = context is null ? false : context.PreserveSMBAttribute.IsPresent
                             },
                             this.GetTransferContext(progressRecord, fileToBeDownloaded.Properties.Length),
                             CmdletCancellationToken);
@@ -221,5 +223,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 DoEndProcessing();
             }
         }
+        public object GetDynamicParameters()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                context = new WindowsOnlyParameters();
+                return context;
+            }
+            else return null;
+        }
+        private WindowsOnlyParameters context;
     }
 }

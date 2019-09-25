@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -57,6 +57,24 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Diagnostic &quot;{0}&quot; from Api &quot;{1}&quot;..
+        /// </summary>
+        internal static string ApiDiagnosticRemoveDescription {
+            get {
+                return ResourceManager.GetString("ApiDiagnosticRemoveDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Diagnostic &quot;{0}&quot; from Api &quot;{1}&quot; ?.
+        /// </summary>
+        internal static string ApiDiagnosticRemoveWarning {
+            get {
+                return ResourceManager.GetString("ApiDiagnosticRemoveWarning", resourceCulture);
             }
         }
         
@@ -133,6 +151,24 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing Schema &quot;{0}&quot; from API &quot;{1}..
+        /// </summary>
+        internal static string ApiSchemaRemoveDescription {
+            get {
+                return ResourceManager.GetString("ApiSchemaRemoveDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Schema &quot;{0}&quot; from Api &quot;{1}&quot; ?.
+        /// </summary>
+        internal static string ApiSchemaRemoveWarning {
+            get {
+                return ResourceManager.GetString("ApiSchemaRemoveWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing API Version Set &quot;{0}&quot;.
         /// </summary>
         internal static string ApiVersionSetRemoveDescription {
@@ -187,6 +223,24 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing Cache &quot;{0}&quot;.
+        /// </summary>
+        internal static string CacheRemoveDescription {
+            get {
+                return ResourceManager.GetString("CacheRemoveDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Cache &quot;{0}&quot; ? .
+        /// </summary>
+        internal static string CacheRemoveWarning {
+            get {
+                return ResourceManager.GetString("CacheRemoveWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Certificate &quot;{0}&quot;..
         /// </summary>
         internal static string CertificateRemoveDescription {
@@ -223,6 +277,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating Api Schema.
+        /// </summary>
+        internal static string CreateApiSchema {
+            get {
+                return ResourceManager.GetString("CreateApiSchema", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create an API Version Set.
         /// </summary>
         internal static string CreateApiVersionSet {
@@ -237,6 +300,42 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         internal static string CreateBackend {
             get {
                 return ResourceManager.GetString("CreateBackend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating Cache.
+        /// </summary>
+        internal static string CreateCache {
+            get {
+                return ResourceManager.GetString("CreateCache", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating Diagnostic.
+        /// </summary>
+        internal static string CreateDiagnostics {
+            get {
+                return ResourceManager.GetString("CreateDiagnostics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Diagnostic &quot;{0}&quot;..
+        /// </summary>
+        internal static string DiagnosticRemoveDescription {
+            get {
+                return ResourceManager.GetString("DiagnosticRemoveDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Diagnostic &quot;{0}&quot;?.
+        /// </summary>
+        internal static string DiagnosticRemoveWarning {
+            get {
+                return ResourceManager.GetString("DiagnosticRemoveWarning", resourceCulture);
             }
         }
         
@@ -448,6 +547,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set API Schema.
+        /// </summary>
+        internal static string SetApiSchema {
+            get {
+                return ResourceManager.GetString("SetApiSchema", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update Api Version Set.
         /// </summary>
         internal static string SetApiVersionSet {
@@ -462,6 +570,96 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         internal static string SetBackend {
             get {
                 return ResourceManager.GetString("SetBackend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Cache.
+        /// </summary>
+        internal static string SetCache {
+            get {
+                return ResourceManager.GetString("SetCache", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Diagnostics.
+        /// </summary>
+        internal static string SetDiagnostics {
+            get {
+                return ResourceManager.GetString("SetDiagnostics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Group.
+        /// </summary>
+        internal static string SetGroup {
+            get {
+                return ResourceManager.GetString("SetGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Logger.
+        /// </summary>
+        internal static string SetLogger {
+            get {
+                return ResourceManager.GetString("SetLogger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set OpenIdConnectProvider.
+        /// </summary>
+        internal static string SetOpenIdConnectProvider {
+            get {
+                return ResourceManager.GetString("SetOpenIdConnectProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Operation.
+        /// </summary>
+        internal static string SetOperation {
+            get {
+                return ResourceManager.GetString("SetOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Product.
+        /// </summary>
+        internal static string SetProduct {
+            get {
+                return ResourceManager.GetString("SetProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Property.
+        /// </summary>
+        internal static string SetProperty {
+            get {
+                return ResourceManager.GetString("SetProperty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Subscription.
+        /// </summary>
+        internal static string SetSubscription {
+            get {
+                return ResourceManager.GetString("SetSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set User.
+        /// </summary>
+        internal static string SetUser {
+            get {
+                return ResourceManager.GetString("SetUser", resourceCulture);
             }
         }
         

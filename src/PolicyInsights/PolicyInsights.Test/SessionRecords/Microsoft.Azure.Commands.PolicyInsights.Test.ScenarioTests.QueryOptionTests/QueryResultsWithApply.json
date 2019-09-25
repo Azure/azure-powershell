@@ -1,34 +1,27 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$top=10&$apply=groupby((PolicyAssignmentId%2C%20PolicyDefinitionId%2C%20ResourceId))%2Fgroupby((PolicyAssignmentId%2C%20PolicyDefinitionId)%2C%20aggregate(%24count%20as%20NumResources))",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvcG9saWN5U3RhdGVzL2xhdGVzdC9xdWVyeVJlc3VsdHM/YXBpLXZlcnNpb249MjAxOC0wNC0wNCYkdG9wPTEwJiRhcHBseT1ncm91cGJ5JTI4JTI4UG9saWN5QXNzaWdubWVudElkJTJDJTIwUG9saWN5RGVmaW5pdGlvbklkJTJDJTIwUmVzb3VyY2VJZCUyOSUyOSUyRmdyb3VwYnklMjglMjhQb2xpY3lBc3NpZ25tZW50SWQlMkMlMjBQb2xpY3lEZWZpbml0aW9uSWQlMjklMkMlMjBhZ2dyZWdhdGUlMjglMjRjb3VudCUyMGFzJTIwTnVtUmVzb3VyY2VzJTI5JTI5",
+      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-07-01-preview&$top=10&$apply=groupby%28%28PolicyAssignmentId%2C%20PolicyDefinitionId%2C%20ResourceId%29%29%2Fgroupby%28%28PolicyAssignmentId%2C%20PolicyDefinitionId%29%2C%20aggregate%28%24count%20as%20NumResources%29%29",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvcG9saWN5U3RhdGVzL2xhdGVzdC9xdWVyeVJlc3VsdHM/YXBpLXZlcnNpb249MjAxOC0wNy0wMS1wcmV2aWV3JiR0b3A9MTAmJGFwcGx5PWdyb3VwYnklMjglMjhQb2xpY3lBc3NpZ25tZW50SWQlMkMlMjBQb2xpY3lEZWZpbml0aW9uSWQlMkMlMjBSZXNvdXJjZUlkJTI5JTI5JTJGZ3JvdXBieSUyOCUyOFBvbGljeUFzc2lnbm1lbnRJZCUyQyUyMFBvbGljeURlZmluaXRpb25JZCUyOSUyQyUyMGFnZ3JlZ2F0ZSUyOCUyNGNvdW50JTIwYXMlMjBOdW1SZXNvdXJjZXMlMjklMjk=",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ac8b0000-5899-4dad-9781-441f24084e4c"
+          "80ac4e00-5744-411a-8650-3910dd0c874c"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2650.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/1.0.0.0"
+          "FxVersion/4.6.27317.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/2.0.2.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest\",\r\n  \"@odata.count\": 10,\r\n  \"value\": [\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policyassignments/22b7db96e2734cf3b0cb0912\",\r\n      \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policydefinitions/locationauditdefinition\",\r\n      \"NumResources\": 97\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policyassignments/45ab2ab7898d45ebb3087573\",\r\n      \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policydefinitions/c7b9982d-2f50-4730-935f-5c241982a441\",\r\n      \"NumResources\": 126\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policyassignments/7c7d772253b746c891c1eced\",\r\n      \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policydefinitions/c8b79b49-a579-4045-984e-1b249ab8b474\",\r\n      \"NumResources\": 1666\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policyassignments/b5048cd31f724756b65774f9\",\r\n      \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policydefinitions/c8b79b49-a579-4045-984e-1b249ab8b474\",\r\n      \"NumResources\": 4291\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policyassignments/b5048cd31f724756b65774f9\",\r\n      \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policydefinitions/24813039-7534-408a-9842-eb99f45721b1\",\r\n      \"NumResources\": 4287\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policyassignments/b5048cd31f724756b65774f9\",\r\n      \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policydefinitions/locationauditdefinition\",\r\n      \"NumResources\": 523\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policyassignments/cf6bec2814bb49b9b423045b\",\r\n      \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policydefinitions/1f20036f-28c3-48f3-9266-05d50fe391f4\",\r\n      \"NumResources\": 127\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policyassignments/ddd8ef92e3714a5ea3d208c1\",\r\n      \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policydefinitions/c8b79b49-a579-4045-984e-1b249ab8b474\",\r\n      \"NumResources\": 4291\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policyassignments/ddd8ef92e3714a5ea3d208c1\",\r\n      \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policydefinitions/24813039-7534-408a-9842-eb99f45721b1\",\r\n      \"NumResources\": 4291\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policyassignments/ddd8ef92e3714a5ea3d208c1\",\r\n      \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policydefinitions/locationauditdefinition\",\r\n      \"NumResources\": 523\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
-        "Content-Length": [
-          "5418"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
+        "Cache-Control": [
+          "no-cache"
         ],
         "Pragma": [
           "no-cache"
@@ -36,31 +29,41 @@
         "Vary": [
           "Accept-Encoding"
         ],
+        "x-ms-ratelimit-remaining-subscription-policy-insights-requests": [
+          "594"
+        ],
         "x-ms-request-id": [
-          ":dfc76902-5644-45cb-9a06-a6b0e45a33b4"
+          ":0fe93031-ec92-4458-81f0-a8ed09e201ef"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
+          "11994"
         ],
         "x-ms-correlation-request-id": [
-          "02fecd84-1601-4197-b63a-e37cf700ddec"
+          "65008b86-7a31-4dcd-992e-e4ac723dd00a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180604T192337Z:02fecd84-1601-4197-b63a-e37cf700ddec"
+          "WESTUS2:20190416T211757Z:65008b86-7a31-4dcd-992e-e4ac723dd00a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
         "Date": [
-          "Mon, 04 Jun 2018 19:23:37 GMT"
+          "Tue, 16 Apr 2019 21:17:57 GMT"
+        ],
+        "Content-Length": [
+          "4994"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
         ]
       },
+      "ResponseBody": "{\r\n  \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest\",\r\n  \"@odata.count\": 10,\r\n  \"value\": [\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policyassignments/3c3059c96b0940f0995f9464\",\r\n      \"policyDefinitionId\": \"/providers/microsoft.authorization/policydefinitions/0a914e76-4921-4c19-b460-a2d36003525a\",\r\n      \"NumResources\": 1884\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policyassignments/88deedb1a79843fa9b3cd693\",\r\n      \"policyDefinitionId\": \"/providers/microsoft.authorization/policydefinitions/37e0d2fe-28a5-43d6-a273-67d37d1f5606\",\r\n      \"NumResources\": 6494\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policyassignments/88deedb1a79843fa9b3cd693\",\r\n      \"policyDefinitionId\": \"/providers/microsoft.authorization/policydefinitions/1d84d5fb-01f6-4d12-ba4f-4a26081d403d\",\r\n      \"NumResources\": 6494\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policyassignments/88deedb1a79843fa9b3cd693\",\r\n      \"policyDefinitionId\": \"/providers/microsoft.authorization/policydefinitions/06a78e20-9358-41c9-923c-fb736d382a4d\",\r\n      \"NumResources\": 337\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policyassignments/ced209fa90cd4809bc2498a4\",\r\n      \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policydefinitions/8dc89b7c-4ffa-4051-b93e-4e8f1bd5631a\",\r\n      \"NumResources\": 1884\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policyassignments/securitycenterbuiltin\",\r\n      \"policyDefinitionId\": \"/providers/microsoft.authorization/policydefinitions/37e0d2fe-28a5-43d6-a273-67d37d1f5606\",\r\n      \"NumResources\": 6494\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policyassignments/securitycenterbuiltin\",\r\n      \"policyDefinitionId\": \"/providers/microsoft.authorization/policydefinitions/1d84d5fb-01f6-4d12-ba4f-4a26081d403d\",\r\n      \"NumResources\": 6494\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policyassignments/88deedb1a79843fa9b3cd693\",\r\n      \"policyDefinitionId\": \"/providers/microsoft.authorization/policydefinitions/11ac78e3-31bc-4f0c-8434-37ab963cea07\",\r\n      \"NumResources\": 294\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policyassignments/88deedb1a79843fa9b3cd693\",\r\n      \"policyDefinitionId\": \"/providers/microsoft.authorization/policydefinitions/86b3d65f-7626-441e-b690-81a8b71cff60\",\r\n      \"NumResources\": 325\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity\",\r\n      \"policyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/microsoft.authorization/policyassignments/88deedb1a79843fa9b3cd693\",\r\n      \"policyDefinitionId\": \"/providers/microsoft.authorization/policydefinitions/7f89b1eb-583c-429a-8828-af049802c1d9\",\r\n      \"NumResources\": 938\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],

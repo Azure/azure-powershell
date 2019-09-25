@@ -16,23 +16,36 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class ServerKeyVaultKeyTests : SqlTestsBase
     {
+
+
+        protected override void SetupManagementClients(RestTestFramework.MockContext context)
+        {
+            var sqlClient = GetSqlClient(context);
+            var newResourcesClient = GetResourcesClient(context);
+            var graphClient = GetGraphClient(context);
+            var networkClient = GetNetworkClient(context);
+            var keyVaultClient = GetKeyVaultClient(context);
+            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient, graphClient, keyVaultClient);
+        }
+
         public ServerKeyVaultKeyTests(ITestOutputHelper output) : base(output)
         {
         }
 
-        [Fact(Skip = "TODO: only works for live mode. Mihymel will fix the test issue for Create-ServerKeyVaultKeyTestEnvironment")] 
+        [Fact] 
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestServerKeyVaultKeyAdd()
         {
             RunPowerShellTest("Test-AddServerKeyVaultKey");
         }
 
-        [Fact(Skip = "TODO: only works for live mode. Mihymel will fix the test issue for Create-ServerKeyVaultKeyTestEnvironment")]
+        [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestServerKeyVaultKeyGet()
         {

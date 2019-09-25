@@ -51,11 +51,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Sku Name.")]
         [Alias(StorageAccountTypeAlias, AccountTypeAlias, Account_TypeAlias)]
-        [ValidateSet(AccountTypeString.StandardLRS,
-            AccountTypeString.StandardZRS,
-            AccountTypeString.StandardGRS,
-            AccountTypeString.StandardRAGRS,
-            AccountTypeString.PremiumLRS,
+        [ValidateSet(StorageModels.SkuName.StandardLRS,
+            StorageModels.SkuName.StandardZRS,
+            StorageModels.SkuName.StandardGRS,
+            StorageModels.SkuName.StandardRAGRS,
+            StorageModels.SkuName.PremiumLRS,
+            StorageModels.SkuName.PremiumZRS,
             IgnoreCase = true)]
         public string SkuName { get; set; }
 
@@ -71,12 +72,24 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Mandatory = false,
             HelpMessage = "Storage Account Kind.")]
-        [ValidateSet(AccountKind.Storage,
-            AccountKind.StorageV2,
-            AccountKind.BlobStorage,
-            AccountKind.BlockBlobStorage,
+        [ValidateSet(StorageModels.Kind.Storage,
+            StorageModels.Kind.StorageV2,
+            StorageModels.Kind.BlobStorage,
+            StorageModels.Kind.BlockBlobStorage,
+            StorageModels.Kind.FileStorage,
             IgnoreCase = true)]
-        public string Kind { get; set; }
+        public string Kind
+        {
+            get
+            {
+                return kind;
+            }
+            set
+            {
+                kind = value;
+            }
+        }
+        private string kind = StorageModels.Kind.StorageV2;
 
         [Parameter(
             Mandatory = false,
@@ -151,6 +164,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? enableHierarchicalNamespace = null;
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableAzureActiveDirectoryDomainServicesForFile
+        {
+            get
+            {
+                return enableAzureActiveDirectoryDomainServicesForFile.Value;
+            }
+            set
+            {
+                enableAzureActiveDirectoryDomainServicesForFile = value;
+            }
+        }
+        private bool? enableAzureActiveDirectoryDomainServicesForFile = null;
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -167,7 +197,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             StorageAccountCreateParameters createParameters = new StorageAccountCreateParameters()
             {
                 Location = this.Location,
-                Sku = new Sku(ParseSkuName(this.SkuName)),
+                Sku = new Sku(this.SkuName),
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
             };
 
@@ -184,9 +214,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 throw new System.ArgumentException(string.Format("UseSubDomain must be set together with CustomDomainName."));
             }
 
-            if (Kind != null)
+            if (kind != null)
             {
-                createParameters.Kind = ParseAccountKind(Kind);
+                createParameters.Kind = kind;
             }
 
             if (this.AccessTier != null)
@@ -209,6 +239,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (enableHierarchicalNamespace != null)
             {
                 createParameters.IsHnsEnabled = enableHierarchicalNamespace;
+            }
+            if (enableAzureActiveDirectoryDomainServicesForFile !=null)
+            {
+                createParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
+                if (enableAzureActiveDirectoryDomainServicesForFile.Value)
+                {
+                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.AADDS;
+                }
+                else
+                {
+                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
+                }
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

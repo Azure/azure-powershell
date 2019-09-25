@@ -1,12 +1,15 @@
 # To version all modules in Az (standard release), run the following command: .\RunVersionController.ps1 -Release "December 2017"
 # To version a single module (one-off release), run the following command: .\RunVersionController.ps1 -ModuleName "Az.Compute"
-[CmdletBinding()]
+[CmdletBinding(DefaultParameterSetName="ReleaseAz")]
 Param(
     [Parameter(ParameterSetName='ReleaseAz', Mandatory = $true)]
     [string]$Release,
 
     [Parameter(ParameterSetName='ReleaseSingleModule', Mandatory = $true)]
-    [string]$ModuleName
+    [string]$ModuleName,
+
+    [Parameter()]
+    [string]$GalleryName = "PSGallery"
 )
 
 enum PSVersion
@@ -152,7 +155,7 @@ if (!(Test-Path "C:/Program Files/PowerShell/Modules/PowerShellGet"))
 {
     try
     {
-        Save-Module -Name PowerShellGet -Repository PSGallery -Path "C:/Program Files/PowerShell/Modules" -ErrorAction Stop
+        Save-Module -Name PowerShellGet -Repository $GalleryName -Path "C:/Program Files/PowerShell/Modules" -ErrorAction Stop
     }
     catch
     {
@@ -171,7 +174,7 @@ switch ($PSCmdlet.ParameterSetName)
     {
         try
         {
-            Install-Module Az -Repository PSGallery
+            Install-Module Az -Repository $GalleryName -Force -AllowClobber
         }
         catch
         {
@@ -184,7 +187,7 @@ switch ($PSCmdlet.ParameterSetName)
         $localAz = Test-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1"
 
         Write-Host "Getting gallery Az information..." -ForegroundColor Yellow
-        $galleryAz = Find-Module -Name Az -Repository PSGallery
+        $galleryAz = Find-Module -Name Az -Repository $GalleryName
 
         $versionBump = [PSVersion]::NONE
         $updatedModules = @()

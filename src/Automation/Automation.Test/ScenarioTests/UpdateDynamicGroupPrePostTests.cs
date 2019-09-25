@@ -117,5 +117,14 @@ namespace Commands.Automation.Test
             TestRunner.RunTestScript("Test-GetSoftwareUpdateConfigurationRunWithPrePost");
         }
 
+        [Fact]
+        [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestGetSoftwareUpdateConfigurationAzureDynamicGroupLocationParameterBackwardCompatiple()
+        {
+            TestRunner.RunTestScript("Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsWithLocationParameterbackwardCompatiple");
+        }
     }
 }

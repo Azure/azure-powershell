@@ -229,7 +229,7 @@
     <value>Validating Certificate with Thumbprint: {0}</value>
   </data>
   <data name="ResetCertificateMessageFormat14" xml:space="preserve">
-    <value>$"Certificate is expired. Current Time: {0} Certificate NotAfter: {1}";</value>
+    <value>Certificate is expired. Current Time: {0} Certificate NotAfter: {1}</value>
   </data>
   <data name="ResetCertificateMessageFormat15" xml:space="preserve">
     <value>Certificate contains Private Key</value>
@@ -266,5 +266,8 @@
   </data>
   <data name="UnsupportedErrorFormat" xml:space="preserve">
     <value>{0} value {1} is unsupported</value>
+  </data>
+  <data name="InvokeChangeDetectionActionMessage" xml:space="preserve">
+    <value>Invoke change detection for Cloud Endpoint</value>
   </data>
 </root>

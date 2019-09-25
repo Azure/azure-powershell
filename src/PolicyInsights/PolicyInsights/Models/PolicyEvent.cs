@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models
         public string PolicySetDefinitionParameters { get; }
 
         /// <summary>
-        /// Gets comma seperated list of management group IDs, which
+        /// Gets comma separated list of management group IDs, which
         /// represent the hierarchy of the management groups the resource is
         /// under.
         /// </summary>
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models
                 return;
             }
 
-            this.AdditionalProperties = policyEvent.AdditionalProperties;
+            this.AdditionalProperties = policyEvent.AdditionalProperties ?? new Dictionary<string, object>();
             this.AdditionalProperties.Remove("@odata.id");
 
             this.Timestamp = policyEvent.Timestamp;

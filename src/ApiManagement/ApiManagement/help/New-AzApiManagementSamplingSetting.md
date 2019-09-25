@@ -1,0 +1,105 @@
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: Az.ApiManagement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementsamplingsetting
+schema: 2.0.0
+---
+
+# New-AzApiManagementSamplingSetting
+
+## SYNOPSIS
+Create a new sampling setting for the Diagnostic
+
+## SYNTAX
+
+```
+New-AzApiManagementSamplingSetting [-SamplingType <String>] [-SamplingPercentage <Double>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+## DESCRIPTION
+The cmdlet **New-AzApiManagementSamplingSetting** creates a new sampling setting for the Diagnostic
+
+## EXAMPLES
+
+### Example 1 : Create a basic Sampling setting
+```powershell
+PS C:\> New-AzApiManagementSamplingSetting -SamplingType fixed -Percentage 100
+
+SamplingType Percentage
+------------ ----------
+fixed               100
+```
+
+Creates a sampling setting of `Fixed` type with logging for 100% of the requests / responses
+
+## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SamplingPercentage
+Rate of Sampling for Fixed Rate Sampling. This parameter is optional.
+
+```yaml
+Type: System.Nullable`1[System.Double]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SamplingType
+The Type of Sampling.
+This parameter is optional.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### None
+
+## OUTPUTS
+
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSamplingSetting
+
+## NOTES
+
+## RELATED LINKS
+
+[Get-AzApiManagementDiagnostic](./Get-AzApiManagementDiagnostic.md)
+
+[Remove-AzApiManagementDiagnostic](./Remove-AzApiManagementDiagnostic.md)
+
+[Set-AzApiManagementDiagnostic](./Set-AzApiManagementDiagnostic.md)
+
+[New-AzApiManagementSamplingSetting](./New-AzApiManagementHttpMessageDiagnostic.md)

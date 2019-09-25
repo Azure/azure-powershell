@@ -99,10 +99,18 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// </summary>
         /// <param name="resourceGroupName">The integration account resource group name.</param>
         /// <param name="integrationAccountName">The integration account name.</param>
-        /// <returns>List of integration account schemas.</returns>
-        public IPage<IntegrationAccountMap> ListIntegrationAccountMaps(string resourceGroupName, string integrationAccountName)
+        /// <param name="mapType">The map type to filter by.</param>
+        /// <returns>List of integration account maps.</returns>
+        public IPage<IntegrationAccountMap> ListIntegrationAccountMaps(string resourceGroupName, string integrationAccountName, string mapType)
         {
-            return this.LogicManagementClient.IntegrationAccountMaps.List(resourceGroupName, integrationAccountName, "$filter=mapType eq 'Xslt'&$top=1000");
+            var filter = new Rest.Azure.OData.ODataQuery<IntegrationAccountMapFilter>();
+            if(!string.IsNullOrWhiteSpace(mapType))
+            {
+                filter.Filter = $"MapType eq '{mapType}'";
+            }
+            filter.Top = 1000;
+
+            return this.LogicManagementClient.IntegrationAccountMaps.List(resourceGroupName, integrationAccountName, filter);
         }
 
         /// <summary>

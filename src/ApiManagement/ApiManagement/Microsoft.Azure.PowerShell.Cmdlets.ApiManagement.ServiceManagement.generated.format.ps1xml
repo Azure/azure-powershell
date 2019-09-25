@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiSchema</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiSchema</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>SchemaId</PropertyName>
+                <Label>SchemaId</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ApiId</PropertyName>
+                <Label>Api Id</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>SchemaDocumentContentType</PropertyName>
+                <Label>Schema ContentType</Label>
+              </ListItem>
+              <ListItem>
+                <ScriptBlock>if (($_.schemaDocument -ne $null) -and ($_.schemaDocument.Length -gt 40)) { $_.schemaDocument.Substring(0, 40) + "...." } elseif ($_.schemaDocument -ne $null) { $_.schemaDocument } else { $null }</ScriptBlock>
+                <Label>Schema Document</Label>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

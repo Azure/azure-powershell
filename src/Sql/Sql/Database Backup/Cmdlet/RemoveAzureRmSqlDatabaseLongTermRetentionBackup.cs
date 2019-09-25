@@ -81,6 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         [Parameter(ParameterSetName = RemoveBackupByInputObjectSet,
             Mandatory = true,
             Position = 0,
+            ValueFromPipeline = true,
             HelpMessage = "The Database Long Term Retention Backup object to remove.")]
         [ValidateNotNullOrEmpty]
         public AzureSqlDatabaseLongTermRetentionBackupModel InputObject { get; set; }
@@ -106,6 +107,15 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             HelpMessage = "The name of the backup.")]
         [ValidateNotNullOrEmpty]
         public string BackupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ParameterSetName = RemoveBackupDefaultSet,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        public override string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
@@ -134,6 +144,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                 ServerName,
                 DatabaseName,
                 BackupName,
+                ResourceGroupName,
                 null,
                 null);
         }
@@ -157,7 +168,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> PersistChanges(
             IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> entity)
         {
-            ModelAdapter.RemoveDatabaseLongTermRetentionBackup(Location, ServerName, DatabaseName, BackupName);
+            ModelAdapter.RemoveDatabaseLongTermRetentionBackup(Location, ServerName, DatabaseName, BackupName, ResourceGroupName);
             return entity;
         }
 
@@ -172,17 +183,11 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                 ServerName = InputObject.ServerName;
                 DatabaseName = InputObject.DatabaseName;
                 BackupName = InputObject.BackupName;
+                ResourceGroupName = InputObject.ResourceGroupName;
             }
             else if (!string.IsNullOrWhiteSpace(ResourceId))
             {
-                ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
-                BackupName = identifier.ResourceName;
-                identifier = new ResourceIdentifier(identifier.ParentResource);
-                DatabaseName = identifier.ResourceName;
-                identifier = new ResourceIdentifier(identifier.ParentResource);
-                ServerName = identifier.ResourceName;
-                identifier = new ResourceIdentifier(identifier.ParentResource);
-                Location = identifier.ResourceName;
+                ParseLongTermRentionBackupResourceId(ResourceId);
             }
 
             if (ShouldProcess(this.BackupName))
@@ -193,6 +198,38 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                 {
                     base.ExecuteCmdlet();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Parse the longTermRetentionBackup resource Id
+        /// </summary>
+        /// <param name="resourceId"></param>
+        private void ParseLongTermRentionBackupResourceId(string resourceId)
+        {
+            int offset = 0;
+            string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            if (tokens.Length == 14 || tokens.Length == 12)
+            {
+                if(tokens.Length==14)
+                {
+                    ResourceGroupName = tokens[3];
+                    offset = 2;
+                }
+                else
+                {
+                    ResourceGroupName = null;
+                }
+
+                Location = tokens[5 + offset];
+                ServerName = tokens[7 + offset];
+                DatabaseName = tokens[9 + offset];
+                BackupName = tokens[11 + offset];
+            }
+            else
+            {
+                throw new ArgumentException("Invalid parameter", "ResourceId");
+
             }
         }
     }

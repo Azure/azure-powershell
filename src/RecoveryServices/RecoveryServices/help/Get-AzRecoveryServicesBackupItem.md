@@ -9,11 +9,13 @@ schema: 2.0.0
 # Get-AzRecoveryServicesBackupItem
 
 ## SYNOPSIS
+
 Gets the items from a container in Backup.
 
 ## SYNTAX
 
 ### GetItemsForContainer (Default)
+
 ```
 Get-AzRecoveryServicesBackupItem [-Container] <ContainerBase> [[-Name] <String>]
  [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>]
@@ -22,6 +24,7 @@ Get-AzRecoveryServicesBackupItem [-Container] <ContainerBase> [[-Name] <String>]
 ```
 
 ### GetItemsForVault
+
 ```
 Get-AzRecoveryServicesBackupItem [-BackupManagementType] <BackupManagementType> [[-Name] <String>]
  [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>]
@@ -30,6 +33,7 @@ Get-AzRecoveryServicesBackupItem [-BackupManagementType] <BackupManagementType> 
 ```
 
 ### GetItemsForPolicy
+
 ```
 Get-AzRecoveryServicesBackupItem [-Policy] <PolicyBase> [[-Name] <String>]
  [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>] [-VaultId <String>]
@@ -37,17 +41,20 @@ Get-AzRecoveryServicesBackupItem [-Policy] <PolicyBase> [[-Name] <String>]
 ```
 
 ## DESCRIPTION
+
 The **Get-AzRecoveryServicesBackupItem** cmdlet gets the items in a container or a value in Azure Backup and the protection status of the items.
 A container that is registered to an Azure Recovery Services vault can have one or more items that can be protected.
 For Azure virtual machines, there can be only one backup item in the virtual machine container.
-Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
+Set the vault context by using the -VaultId parameter.
 
 ## EXAMPLES
 
 ### Example 1: Get an item from a Backup container
-```
-PS C:\>$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -Name "V2VM"
-PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureVM
+
+```powershell
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> $Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -Name "V2VM" -VaultId $vault.ID
+PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureVM -VaultId $vault.ID
 ```
 
 The first command gets the container of type AzureVM, and then stores it in the $Container variable.
@@ -56,14 +63,17 @@ The second command gets the Backup item named V2VM in $Container, and then store
 ## PARAMETERS
 
 ### -BackupManagementType
+
 Specifies the Backup management type.
 The acceptable values for this parameter are:
-- AzureVM 
-- MARS 
-- SCDPM 
-- AzureBackupServer 
+
+- AzureVM
+- MARS
+- SCDPM
+- AzureBackupServer
 - AzureSQL
 - AzureStorage
+- AzureWorkload
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType
@@ -79,8 +89,9 @@ Accept wildcard characters: False
 ```
 
 ### -Container
+
 Specifies a container object from which this cmdlet gets backup items.
-To obtain an **AzureRmRecoveryServicesBackupContainer**, use the Get-AzRecoveryServicesBackupContainer cmdlet.
+To obtain an **AzureRmRecoveryServicesBackupContainer**, use the **Get-AzRecoveryServicesBackupContainer** cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
@@ -95,6 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
+
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
@@ -110,6 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+
 Specifies the name of the container.
 
 ```yaml
@@ -125,6 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
+
 Protection policy object.
 
 ```yaml
@@ -140,12 +154,14 @@ Accept wildcard characters: False
 ```
 
 ### -ProtectionState
+
 Specifies the state of protection.
 The acceptable values for this parameter are:
+
 - IRPending.
-Initial synchronization has not started and there is no recovery point yet. 
+Initial synchronization has not started and there is no recovery point yet.
 - Protected.
-Protection is ongoing. 
+Protection is ongoing.
 - ProtectionError.
 There is a protection error.
 - ProtectionStopped.
@@ -165,8 +181,10 @@ Accept wildcard characters: False
 ```
 
 ### -ProtectionStatus
+
 Specifies the overall protection status of an item in the container.
 The acceptable values for this parameter are:
+
 - Healthy
 - Unhealthy
 
@@ -184,6 +202,7 @@ Accept wildcard characters: False
 ```
 
 ### -VaultId
+
 ARM ID of the Recovery Services Vault.
 
 ```yaml
@@ -199,11 +218,14 @@ Accept wildcard characters: False
 ```
 
 ### -WorkloadType
-Specifies the workload type. 
+
+Specifies the workload type.
 The acceptable values for this parameter are:
-- AzureVM 
+
+- AzureVM
 - AzureSQLDatabase
 - AzureFiles
+- MSSQL
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
@@ -218,8 +240,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+### -CommonParameters
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -242,5 +265,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzRecoveryServicesBackupRecoveryPoint](./Get-AzRecoveryServicesBackupRecoveryPoint.md)
 
 [Restore-AzRecoveryServicesBackupItem](./Restore-AzRecoveryServicesBackupItem.md)
-
-

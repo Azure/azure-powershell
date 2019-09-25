@@ -1,0 +1,9 @@
+{
+  "if": {
+    "field": "Microsoft.KeyVault.Data/vaults/certificates/keyProperties/keyType",
+    "equals": "RSA"
+  },
+  "then": {
+    "effect": "audit"
+  }
+}

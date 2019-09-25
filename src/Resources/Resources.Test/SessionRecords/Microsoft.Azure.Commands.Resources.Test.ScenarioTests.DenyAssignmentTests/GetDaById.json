@@ -1,0 +1,169 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/denyAssignments/22704996-fbd0-4ab1-8625-722d897825d2?api-version=2018-07-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzQwMDRhOWZkLWQ1OGUtNDhkYy1hZWIyLTRhNGFlYzU4NjA2Zi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vZGVueUFzc2lnbm1lbnRzLzIyNzA0OTk2LWZiZDAtNGFiMS04NjI1LTcyMmQ4OTc4MjVkMj9hcGktdmVyc2lvbj0yMDE4LTA3LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "663ca20c-9e94-4d3c-a36c-f5146beb6850"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.9.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-charge": [
+          "1"
+        ],
+        "x-ms-request-id": [
+          "c664a449-e1f7-493a-81d8-eb555d4ab11c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "a448d285-7048-476a-92f5-736be2339a0b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181126T235021Z:a448d285-7048-476a-92f5-736be2339a0b"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 26 Nov 2018 23:50:20 GMT"
+        ],
+        "Set-Cookie": [
+          "x-ms-gateway-slice=productionb; path=/; secure; HttpOnly"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "Content-Length": [
+          "830"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"denyAssignmentName\": \"AzureAuthzSDK_22704996-FBD0-4AB1-8625-722D897825D2\",\r\n    \"description\": \"Test deny assignment for AzureAuthzSDK\",\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"foo/*\"\r\n        ],\r\n        \"notActions\": [\r\n          \"foo/*/read\"\r\n        ],\r\n        \"dataActions\": [\r\n          \"foo/*\"\r\n        ],\r\n        \"notDataActions\": []\r\n      }\r\n    ],\r\n    \"scope\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\",\r\n    \"doNotApplyToChildScopes\": false,\r\n    \"principals\": [\r\n      {\r\n        \"id\": \"f9e08843d2b74dbca5845e88a7e229a6\",\r\n        \"type\": \"Group\"\r\n      }\r\n    ],\r\n    \"excludePrincipals\": [],\r\n    \"isSystemProtected\": true,\r\n    \"createdOn\": \"2018-09-20T20:32:31.7438709Z\",\r\n    \"updatedOn\": \"2018-09-20T21:40:03.4634449Z\",\r\n    \"createdBy\": null,\r\n    \"updatedBy\": null\r\n  },\r\n  \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/denyAssignments/22704996-fbd0-4ab1-8625-722d897825d2\",\r\n  \"type\": \"Microsoft.Authorization/denyAssignments\",\r\n  \"name\": \"22704996-fbd0-4ab1-8625-722d897825d2\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/getObjectsByObjectIds?api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9nZXRPYmplY3RzQnlPYmplY3RJZHM/YXBpLXZlcnNpb249MS42",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"objectIds\": [\r\n    \"f9e08843d2b74dbca5845e88a7e229a6\"\r\n  ],\r\n  \"includeDirectoryObjectReferences\": true\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "68f50cd6-48c1-4489-b96c-b84f1d9d1a28"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Graph.RBAC.Version1.6.GraphRbacManagementClient/1.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "112"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-aad-diagnostics-server-name": [
+          "3tNvVkm/Zj7QKWAs1YPTXA5TJ87jXEFFrif+RYkOm5g="
+        ],
+        "request-id": [
+          "f957caf4-d88e-4901-ac8a-3cc195f248c6"
+        ],
+        "client-request-id": [
+          "68f50cd6-48c1-4489-b96c-b84f1d9d1a28"
+        ],
+        "x-ms-dirapi-data-contract-version": [
+          "1.6"
+        ],
+        "ocp-aad-session-key": [
+          "Y5sfhJtxzSFcGpzpT8aJ-4smt_5zacxp0f6R2T17k5v2sXOqdPFkDpBl6LLM3QngYXCeMheskr6CBJRjI02WzqiEY94Hn0asMhZsg52H_PVT9uoDV_6tDsw3NP_bpohl.zpVlBIGsm8vsTVbk-HoCz4_gzaMqcrOwMQuEwgItksE"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Duration": [
+          "362943"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 26 Nov 2018 23:50:20 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Content-Length": [
+          "641"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"f9e08843-d2b7-4dbc-a584-5e88a7e229a6\",\r\n      \"deletionTimestamp\": null,\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"powershellgroup\",\r\n      \"lastDirSyncTime\": null,\r\n      \"mail\": null,\r\n      \"mailNickname\": \"e6968bb6-df90-47ee-8d72-93eff56e1051\",\r\n      \"mailEnabled\": false,\r\n      \"onPremisesDomainName\": null,\r\n      \"onPremisesNetBiosName\": null,\r\n      \"onPremisesSamAccountName\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "4004a9fd-d58e-48dc-aeb2-4a4aec58606f",
+    "TenantId": "1273adef-00a3-4086-a51a-dbcce1857d36",
+    "Domain": "rbacclitest.onmicrosoft.com"
+  }
+}

@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Alias("ResourceName")]
@@ -50,6 +51,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Network/ddosProtectionPlans", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         public override void Execute()

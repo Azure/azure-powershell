@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 5B7B285A-6418-44D7-BD78-E14AFFAA7765
@@ -22,7 +22,7 @@ Update-AzApiManagementRegion -ApiManagement <PsApiManagement> -Location <String>
 ## DESCRIPTION
 The **Update-AzApiManagementRegion** cmdlet updates an existing instance of type **Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion** in a collection of **AdditionalRegions** objects of a provided instance of type **Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement**.
 This cmdlet does not deploy anything but updates an instance of **PsApiManagement** in-memory.
-To update a deployment of an API Management use the modified **PsApiManagementInstance** to the Update-AzApiManagementDeployment cmdlet.
+To update a deployment of an API Management use the modified **PsApiManagementInstance** to the Set-AzApiManagement cmdlet.
 
 ## EXAMPLES
 
@@ -30,12 +30,10 @@ To update a deployment of an API Management use the modified **PsApiManagementIn
 ```powershell
 PS C:\>$apimService = Get-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
 PS C:\>$apimService = Update-AzApiManagementRegion -ApiManagement $apimService -Location "North Central US" -Capacity 2 -Sku Premium
-
-# Set the ApiManagement service and Enable Msi idenity on the service
-PS C:\>$updatedService = Set-AzApiManagement -InputObject $apimService -PassThru
+PS C:\>$apimService = Set-AzApiManagement -InputObject $apimService -PassThru
 ```
 
-This command gets the API Management Premium SKU service, having regions in South Central US and North Central US. It then increases the Capacity of the North Central US region to 2 using the **Update-AzApiManagementRegion**. The next cmdlet Set-AzApiManagement applies the configuration change to the the Api Management service.
+This command gets the API Management Premium SKU service, having regions in South Central US and North Central US. It then increases the Capacity of the North Central US region to 2 using the **Set-AzApiManagement**. The next cmdlet **Set-AzApiManagement** applies the configuration change to the Api Management service.
 
 ## PARAMETERS
 
@@ -113,7 +111,7 @@ Valid values are:
 Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku
 Parameter Sets: (All)
 Aliases:
-Accepted values: Developer, Standard, Premium, Basic
+Accepted values: Developer, Standard, Premium, Basic, Consumption
 
 Required: True
 Position: Named
@@ -139,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -165,4 +163,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove-AzApiManagementRegion](./Remove-AzApiManagementRegion.md)
 
-[Update-AzApiManagementDeployment](./Update-AzApiManagementDeployment.md)
+[Set-AzApiManagement](./Set-AzApiManagement.md)

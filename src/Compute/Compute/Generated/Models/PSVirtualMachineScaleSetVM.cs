@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string InstanceId { get; set; }
         public Sku Sku { get; set; }
         public bool? LatestModelApplied { get; set; }
-        public bool? ProtectFromScaleIn { get; set; }
         public string VmId { get; set; }
         public VirtualMachineScaleSetVMInstanceView InstanceView { get; set; }
         public HardwareProfile HardwareProfile { get; set; }
@@ -51,10 +50,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public AdditionalCapabilities AdditionalCapabilities { get; set; }
         public OSProfile OsProfile { get; set; }
         public NetworkProfile NetworkProfile { get; set; }
+        public VirtualMachineScaleSetVMNetworkProfileConfiguration NetworkProfileConfiguration { get; set; }
         public DiagnosticsProfile DiagnosticsProfile { get; set; }
         public SubResource AvailabilitySet { get; set; }
         public string ProvisioningState { get; set; }
         public string LicenseType { get; set; }
+        public string ModelDefinitionApplied { get; set; }
+        public VirtualMachineScaleSetVMProtectionPolicy ProtectionPolicy { get; set; }
         public Plan Plan { get; set; }
         public IList<VirtualMachineExtension> Resources { get; set; }
         public System.Collections.Generic.IList<string> Zones { get; set; }

@@ -249,7 +249,7 @@ Modifies a Backup protection policy.
 Sets vault context.
 
 ### [Start-AzRecoveryServicesAsrApplyRecoveryPoint](Start-AzRecoveryServicesAsrApplyRecoveryPoint.md)
-Changes a recovery point for a failed over protected item before commiting the failover operation.
+Changes a recovery point for a failed over protected item before committing the failover operation.
 
 ### [Start-AzRecoveryServicesAsrCommitFailoverJob](Start-AzRecoveryServicesAsrCommitFailoverJob.md)
 Starts the commit failover action for a Site Recovery object.

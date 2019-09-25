@@ -77,6 +77,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
             HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/vpnGateways/vpnConnections", "ResourceGroupName", "ParentResourceName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         public override void Execute()

@@ -38,6 +38,11 @@ Retrieves a list of credentials associated with a service principal.
 ### [Get-AzADUser](Get-AzADUser.md)
 Filters active directory users.
 
+### [Get-AzDenyAssignment](Get-AzDenyAssignment.md)
+Lists Azure RBAC deny assignments at the specified scope.
+By default it lists all deny assignments in the selected Azure subscription.
+Use respective parameters to list deny assignments to a specific user, or to list deny assignments on a specific resource group or resource.
+
 ### [Get-AzDeployment](Get-AzDeployment.md)
 Get deployment
 
@@ -290,7 +295,7 @@ Then, modify the properties that you wish to change.
 Finally, save the role definition using this command.
 
 ### [Stop-AzDeployment](Stop-AzDeployment.md)
-Cancal a running deployment
+Cancel a running deployment
 
 ### [Stop-AzResourceGroupDeployment](Stop-AzResourceGroupDeployment.md)
 Cancels a resource group deployment.

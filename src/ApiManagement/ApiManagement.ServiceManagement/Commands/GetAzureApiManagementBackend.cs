@@ -14,47 +14,71 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
-    using System.Collections.Generic;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementBackend", DefaultParameterSetName = GetAll)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementBackend", DefaultParameterSetName = ContextParameterSet)]
     [OutputType(typeof(PsApiManagementBackend))]
     public class GetAzureApiManagementBackend : AzureApiManagementCmdletBase
     {
-        private const string GetAll = "GetAllBackends";
-        private const string GetById = "GetByBackendId";
+        #region ParameterSets
+        private const string ContextParameterSet = "ContextParameterSet";
+        private const string ResourceIdParameterSet = "ResourceIdParameterSet";
+        #endregion
 
         [Parameter(
+            ParameterSetName = ContextParameterSet,
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
-            ParameterSetName = GetById,
             ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Identifier of a backend. If specified will try to find backend by the identifier. This parameter is optional.")]
         public String BackendId { get; set; }
 
+        [Parameter(
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "Arm Resource Identifier of the backend." +
+            " If specified will try to find backend by the identifier. This parameter is required.")]
+        public String ResourceId { get; set; }
+
         public override void ExecuteApiManagementCmdlet()
         {
-            if (ParameterSetName.Equals(GetAll))
+            string resourceGroupName;
+            string serviceName;
+            string backendId;
+
+            if (ParameterSetName.Equals(ResourceIdParameterSet))
             {
-                var backends = Client.BackendsList(Context);
-                WriteObject(backends, true);
+                var psBackend = new PsApiManagementBackend(ResourceId);
+                resourceGroupName = psBackend.ResourceGroupName;
+                serviceName = psBackend.ServiceName;
+                backendId = psBackend.BackendId;
             }
-            else if (ParameterSetName.Equals(GetById))
-            {
-                var backend = Client.BackendById(Context, BackendId);
+            else
+            {                
+                resourceGroupName = Context.ResourceGroupName;
+                serviceName = Context.ServiceName;
+                backendId = BackendId;
+            }
+
+            if (!string.IsNullOrEmpty(backendId))
+            { 
+                var backend = Client.BackendById(resourceGroupName, serviceName, backendId);
                 WriteObject(backend);
             }
             else
             {
-                throw new InvalidOperationException(string.Format("Parameter set name '{0}' is not supported.", ParameterSetName));
+                var backends = Client.BackendsList(resourceGroupName, serviceName);
+                WriteObject(backends, true);
             }
         }
     }

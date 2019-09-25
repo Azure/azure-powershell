@@ -14,18 +14,25 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
     using System;
     using System.Globalization;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
 
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementSubscription", SupportsShouldProcess = true)]
-    [OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementSubscription", SupportsShouldProcess = true, DefaultParameterSetName = ExpandedParameterSet)]
+    [OutputType(typeof(bool), ParameterSetName = new[] { ExpandedParameterSet, ByInputObjectParameterSet, ByResourceIdParameterSet })]
     public class RemoveAzureApiManagementSubscription : AzureApiManagementCmdletBase
     {
+        #region Parameter Set Names
+        private const string ExpandedParameterSet = "ExpandedParameter";
+        private const string ByInputObjectParameterSet = "ByInputObject";
+        private const string ByResourceIdParameterSet = "ByResourceId";
+        #endregion
+
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -39,6 +46,22 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public String SubscriptionId { get; set; }
 
         [Parameter(
+            ParameterSetName = ByInputObjectParameterSet,
+            ValueFromPipeline = true,
+            Mandatory = true,
+            HelpMessage = "Instance of PsApiManagementSubscription. This parameter is required.")]
+        [ValidateNotNullOrEmpty]
+        public PsApiManagementSubscription InputObject { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "Arm ResourceId of Subscription. This parameter is required.")]
+        [ValidateNotNullOrEmpty]
+        public String ResourceId { get; set; }
+
+        [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "If specified will write true in case operation succeeds. This parameter is optional. Default value is false.")]
@@ -46,8 +69,32 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.SubscriptionRemoveDescription, SubscriptionId);
-            var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.SubscriptionRemoveWarning, SubscriptionId);
+            string resourceGroupName;
+            string serviceName;
+            string subscriptionId;
+
+            if (ParameterSetName.Equals(ByInputObjectParameterSet))
+            {
+                subscriptionId = InputObject.SubscriptionId;
+                resourceGroupName = InputObject.ResourceGroupName;
+                serviceName = InputObject.ServiceName;
+            }
+            else if (ParameterSetName.Equals(ExpandedParameterSet))
+            {
+                subscriptionId = SubscriptionId;
+                resourceGroupName = Context.ResourceGroupName;
+                serviceName = Context.ServiceName;
+            }
+            else
+            {
+                var subscriptionObject = new PsApiManagementSubscription(ResourceId);
+                resourceGroupName = subscriptionObject.ResourceGroupName;
+                serviceName = subscriptionObject.ServiceName;
+                subscriptionId = subscriptionObject.SubscriptionId;
+            }
+
+            var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.SubscriptionRemoveDescription, subscriptionId);
+            var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.SubscriptionRemoveWarning, subscriptionId);
 
             // Do nothing if force is not specified and user cancelled the operation
             if (!ShouldProcess(
@@ -58,7 +105,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 return;
             }
 
-            Client.SubscriptionRemove(Context, SubscriptionId);
+            Client.SubscriptionRemove(resourceGroupName, serviceName, subscriptionId);
 
             if (PassThru.IsPresent)
             {

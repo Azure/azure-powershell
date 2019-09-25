@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.dll-Help.xml
 Module Name: Az.PolicyInsights
 online version: https://docs.microsoft.com/en-us/powershell/module/az.policyinsights/get-azpolicystate
@@ -36,7 +36,7 @@ Get-AzPolicyState [-All] [-SubscriptionId <String>] -ResourceGroupName <String> 
 ### ResourceScope
 ```
 Get-AzPolicyState [-All] -ResourceId <String> [-Top <Int32>] [-OrderBy <String>] [-Select <String>]
- [-From <DateTime>] [-To <DateTime>] [-Filter <String>] [-Apply <String>]
+ [-From <DateTime>] [-To <DateTime>] [-Filter <String>] [-Apply <String>] [-Expand <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -228,6 +228,11 @@ This generates the list of all resources within the subscription that are non-co
 PS C:\> Get-AzPolicyState -Filter "IsCompliant eq false" -Apply "groupby((PolicyAssignmentId, PolicySetDefinitionId, PolicyDefinitionReferenceId, PolicyDefinitionId, ResourceId))/groupby((PolicyAssignmentId, PolicySetDefinitionId, PolicyDefinitionReferenceId, PolicyDefinitionId), aggregate(`$count as NumNonCompliantResources))" -OrderBy "NumNonCompliantResources desc" -Top 5
 ```
 
+### Example 22: Get latest policy states including policy evaluation details for a resource 
+```powershell
+PS C:\> Get-AzPolicyState -ResourceId "/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myns1/eventhubs/eh1/consumergroups/cg1" -Expand "PolicyEvaluationDetails"
+```
+
 Gets latest policy state records generated in the last day for all resources within the subscription in current session context. 
 The command limits the results returned by filtering based on compliance status (includes only non-compliant status).
 It groups the results first based on policy assignment, policy set definition, policy definition, and resource id. 
@@ -274,6 +279,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Expand
+Expand expression using OData notation.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceScope
+Aliases:
 
 Required: False
 Position: Named
@@ -483,7 +503,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

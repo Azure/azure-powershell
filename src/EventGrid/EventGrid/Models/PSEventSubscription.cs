@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
             this.EventTtl = eventSubscription.RetryPolicy?.EventTimeToLiveInMinutes;
             this.MaxDeliveryAttempt = eventSubscription.RetryPolicy?.MaxDeliveryAttempts;
             this.deadletterDestination = eventSubscription.DeadLetterDestination;
+            this.ExpirationDate = eventSubscription.ExpirationTimeUtc;
         }
 
         public PSEventSubscription(EventSubscription eventSubscription, string fullEndpointUrl)
@@ -65,6 +66,10 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
         public int? EventTtl { get; set; }
 
         public int? MaxDeliveryAttempt { get; set; }
+
+        public string EventDeliverySchema { get; set; }
+
+        public DateTime? ExpirationDate { get; set; }
 
         public string DeadLetterEndpoint
         {

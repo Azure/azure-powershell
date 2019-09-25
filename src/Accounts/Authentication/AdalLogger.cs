@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// Implements logging callback for ADAL - since only a single logger is allowed, allow
     /// reporting logs to multiple logging mechanisms
     /// </summary>
-    public class AdalLogger : IAdalLogCallback, IDisposable
+    public class AdalLogger :  IDisposable
     {
         Action<string> _logger;
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <summary>
         /// Central logging mechanism - allows registering multiple logging callbacks
         /// </summary>
-        class AdalCompositeLogger : IAdalLogCallback
+        class AdalCompositeLogger 
         {
             static object _lockObject = new object();
             IList<AdalLogger> _loggers = new List<AdalLogger>();
@@ -96,7 +96,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 lock (_lockObject)
                 {
                     Instance._loggers.Add(logger);
-                    LoggerCallbackHandler.Callback = Instance;
+                    LoggerCallbackHandler.LogCallback = Instance.Log;
+                    LoggerCallbackHandler.PiiLoggingEnabled = true;
                 }
             }
 
@@ -129,7 +130,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             /// </summary>
             /// <param name="level">The log level</param>
             /// <param name="message">The log message</param>
-            public void Log(LogLevel level, string message)
+            public void Log(LogLevel level, string message, bool containsPII)
             {
                 foreach (var logger in _loggers)
                 {

@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.SecureConnection.Model;
-
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.SecureConnection.Cmdlet
@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Cmdlet
     /// Returns the secure connection policy of a specific database.
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseSecureConnectionPolicy", SupportsShouldProcess = true), OutputType(typeof(DatabaseSecureConnectionPolicyModel))]
+    [GenericBreakingChange("Note that secure connection is deprecated and this command will be removed in a future release. Please use the SQL database blade in the Azure portal to view the connection strings")]
     public class GetAzureSqlDatabaseSecureConnectionPolicy : SqlDatabaseSecureConnectionCmdletBase
     {
         /// <summary>

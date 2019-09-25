@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 					return null;
 				}
 
-				// Unexpected error occured
+				// Unexpected error occurred
 				throw;
 			}
 

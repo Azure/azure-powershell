@@ -192,7 +192,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Specifes the event ReourceId of event.
+Specifies the event ResourceId of event.
 
 ```yaml
 Type: System.String

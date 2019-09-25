@@ -15,15 +15,17 @@
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
     using System;
     using System.Management.Automation;
 
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementGroup")]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementGroup", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementGroup))]
     public class SetAzureApiManagementGroup : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -58,12 +60,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            Client.GroupSet(Context, GroupId, Name, Description);
-
-            if (PassThru)
+            if (ShouldProcess(GroupId, Resources.SetGroup))
             {
-                var @group = Client.GroupById(Context, GroupId);
-                WriteObject(@group);
+                Client.GroupSet(Context, GroupId, Name, Description);
+
+                if (PassThru)
+                {
+                    var @group = Client.GroupById(Context, GroupId);
+                    WriteObject(@group);
+                }
             }
         }
     }

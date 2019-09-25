@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Models
                 this.ReportId = gcrpReport.Id;
                 this.StartTime = gcrpReport.Properties.StartTime;
                 this.EndTime = gcrpReport.Properties.EndTime;
+                
                 this.ComplianceStatus = gcrpReport.Properties.ComplianceStatus;
                 this.Configuration = new PolicyData.ConfigurationInfo
                 {

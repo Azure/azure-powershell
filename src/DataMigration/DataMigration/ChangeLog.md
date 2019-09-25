@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.7.3
+* Fixed miscellaneous typos across module
+
 ## Version 0.7.2
 * Added `New-AzDataMigrationAzureActiveDirectoryApp` cmdlet
     - Used as input for MI online sync migration

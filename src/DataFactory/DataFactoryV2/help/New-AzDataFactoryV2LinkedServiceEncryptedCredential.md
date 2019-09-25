@@ -31,7 +31,7 @@ The New-AzDataFactoryV2LinkedServiceEncryptCredential cmdlet encrypt credential 
 
 ## EXAMPLES
 
-### Example 1: Encrypt creadentials in a linked service
+### Example 1: Encrypt credentials in a linked service
 ```
 PS C:\> New-AzDataFactoryV2LinkedServiceEncryptCredential -ResourceGroupName resourceGroup -DataFactoryName myDataFactory -IntegrationRuntimeName myIR -File D:\sql.json
 ```

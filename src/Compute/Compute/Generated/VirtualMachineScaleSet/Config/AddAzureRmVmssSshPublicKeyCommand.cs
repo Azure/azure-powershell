@@ -19,13 +19,14 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -94,8 +95,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vPublicKeys = new SshPublicKey();
 
-            vPublicKeys.Path = this.MyInvocation.BoundParameters.ContainsKey("Path") ? this.Path : null;
-            vPublicKeys.KeyData = this.MyInvocation.BoundParameters.ContainsKey("KeyData") ? this.KeyData : null;
+            vPublicKeys.Path = this.IsParameterBound(c => c.Path) ? this.Path : null;
+            vPublicKeys.KeyData = this.IsParameterBound(c => c.KeyData) ? this.KeyData : null;
             this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.LinuxConfiguration.Ssh.PublicKeys.Add(vPublicKeys);
             WriteObject(this.VirtualMachineScaleSet);
         }

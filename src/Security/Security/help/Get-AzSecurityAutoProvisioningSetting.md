@@ -30,7 +30,7 @@ Get-AzSecurityAutoProvisioningSetting -ResourceId <String> [-DefaultProfile <IAz
 ```
 
 ## DESCRIPTION
-Automatic Provisioning Settings let you decide whether you want Azure Security Cetner to automatically proviosion a security agent that will be installed on your VMs.
+Automatic Provisioning Settings let you decide whether you want Azure Security Center to automatically provision a security agent that will be installed on your VMs.
 The security agent will monitor your VM to create security alerts and monitor the security compliance of the VM.
 
 ## EXAMPLES

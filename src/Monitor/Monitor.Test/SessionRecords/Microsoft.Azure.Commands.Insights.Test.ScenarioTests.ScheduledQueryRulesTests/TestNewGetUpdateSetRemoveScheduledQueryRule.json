@@ -1,0 +1,2180 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/ps9481?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlZ3JvdXBzL3BzOTQ4MT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d8a0998d-191d-4784-87fc-6972e723fd9a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "ddb75e55-ec0a-4fbd-8023-4ee7470aa4f1"
+        ],
+        "x-ms-correlation-request-id": [
+          "ddb75e55-ec0a-4fbd-8023-4ee7470aa4f1"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152824Z:ddb75e55-ec0a-4fbd-8023-4ee7470aa4f1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:24 GMT"
+        ],
+        "Content-Length": [
+          "165"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481\",\r\n  \"name\": \"ps9481\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505?api-version=2015-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlR3JvdXBzL3BzOTQ4MS9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2NvbXBvbmVudHMvcHM1NTA1P2FwaS12ZXJzaW9uPTIwMTUtMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1aab4c6c-4b55-4eb9-92da-3e7d207ff56e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.ApplicationInsights.Management.ApplicationInsightsManagementClient/0.2.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "9d3e4731-b993-4a7b-a601-e165db7ce581"
+        ],
+        "x-ms-correlation-request-id": [
+          "9d3e4731-b993-4a7b-a601-e165db7ce581"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152824Z:9d3e4731-b993-4a7b-a601-e165db7ce581"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:24 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "146"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'microsoft.insights/components/ps5505' under resource group 'ps9481' was not found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505?api-version=2015-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlR3JvdXBzL3BzOTQ4MS9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2NvbXBvbmVudHMvcHM1NTA1P2FwaS12ZXJzaW9uPTIwMTUtMDUtMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"kind\": \"web\",\r\n  \"properties\": {\r\n    \"Application_Type\": \"web\",\r\n    \"Request_Source\": \"AzurePowerShell\"\r\n  },\r\n  \"location\": \"West US\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "583b2e39-fce6-41d5-9c39-64a3a68138c3"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.ApplicationInsights.Management.ApplicationInsightsManagementClient/0.2.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "145"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "583b2e39-fce6-41d5-9c39-64a3a68138c3"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:920e14b1-13f3-461a-a4bb-b4fe6f1a4525"
+        ],
+        "Access-Control-Expose-Headers": [
+          "Request-Context"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "52aeafb6-0c25-4426-bd03-7c4a07fb8356"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152833Z:52aeafb6-0c25-4426-bd03-7c4a07fb8356"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:32 GMT"
+        ],
+        "Content-Length": [
+          "686"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\",\r\n  \"name\": \"ps5505\",\r\n  \"type\": \"microsoft.insights/components\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"kind\": \"web\",\r\n  \"etag\": \"\\\"3f00d24c-0000-0700-0000-5d77c11d0000\\\"\",\r\n  \"properties\": {\r\n    \"Ver\": \"v2\",\r\n    \"ApplicationId\": \"ps5505\",\r\n    \"AppId\": \"612e2280-fa98-4cdd-a603-351cb48710f6\",\r\n    \"Application_Type\": \"web\",\r\n    \"Flow_Type\": null,\r\n    \"Request_Source\": \"AzurePowerShell\",\r\n    \"InstrumentationKey\": \"ac1798e5-d660-4c86-8321-8ace89b30dca\",\r\n    \"Name\": \"ps5505\",\r\n    \"CreationDate\": \"2019-09-10T18:28:28.690154+03:00\",\r\n    \"TenantId\": \"80430018-24ee-4b28-a7bd-fb23b5a221d6\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"SamplingPercentage\": null\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlR3JvdXBzL3BzOTQ4MS9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FjdGlvbkdyb3Vwcy9wczI5OTY/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"groupShortName\": \"ASTG\",\r\n    \"enabled\": true,\r\n    \"emailReceivers\": [\r\n      {\r\n        \"name\": \"user1\",\r\n        \"emailAddress\": \"user1@example.com\",\r\n        \"useCommonAlertSchema\": false\r\n      }\r\n    ],\r\n    \"smsReceivers\": [],\r\n    \"webhookReceivers\": []\r\n  },\r\n  \"location\": \"Global\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e457f14d-5f02-4336-b0f2-c4da62504a6b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.24.1.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "321"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "73f72b8b-2056-4f52-819a-9095096ced3f"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1194"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "x-ms-correlation-request-id": [
+          "24df7fb9-d14c-429f-9e26-40a81fb99f7c"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152836Z:24df7fb9-d14c-429f-9e26-40a81fb99f7c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:36 GMT"
+        ],
+        "Content-Length": [
+          "632"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996\",\r\n  \"type\": \"Microsoft.Insights/ActionGroups\",\r\n  \"name\": \"ps2996\",\r\n  \"location\": \"Global\",\r\n  \"kind\": null,\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"groupShortName\": \"ASTG\",\r\n    \"enabled\": true,\r\n    \"emailReceivers\": [\r\n      {\r\n        \"name\": \"user1\",\r\n        \"emailAddress\": \"user1@example.com\",\r\n        \"status\": \"Enabled\",\r\n        \"useCommonAlertSchema\": false\r\n      }\r\n    ],\r\n    \"smsReceivers\": [],\r\n    \"webhookReceivers\": [],\r\n    \"itsmReceivers\": [],\r\n    \"azureAppPushReceivers\": [],\r\n    \"automationRunbookReceivers\": [],\r\n    \"voiceReceivers\": [],\r\n    \"logicAppReceivers\": [],\r\n    \"azureFunctionReceivers\": [],\r\n    \"armRoleReceivers\": []\r\n  },\r\n  \"identity\": null\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/ps9481/providers/microsoft.insights/scheduledQueryRules/ps2477?api-version=2018-04-16",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlZ3JvdXBzL3BzOTQ4MS9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL3NjaGVkdWxlZFF1ZXJ5UnVsZXMvcHMyNDc3P2FwaS12ZXJzaW9uPTIwMTgtMDQtMTY=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"SQR log alert rule\",\r\n    \"enabled\": \"true\",\r\n    \"source\": {\r\n      \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n      \"authorizedResources\": [\r\n        \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\"\r\n      ],\r\n      \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\",\r\n      \"queryType\": \"ResultCount\"\r\n    },\r\n    \"schedule\": {\r\n      \"frequencyInMinutes\": 5,\r\n      \"timeWindowInMinutes\": 5\r\n    },\r\n    \"action\": {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\",\r\n      \"severity\": \"2\",\r\n      \"aznsAction\": {\r\n        \"actionGroup\": [\r\n          \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996\"\r\n        ],\r\n        \"emailSubject\": \"SQR Log alert trigger notification\",\r\n        \"customWebhookPayload\": \"{}\"\r\n      },\r\n      \"throttlingInMin\": 5,\r\n      \"trigger\": {\r\n        \"thresholdOperator\": \"GreaterThan\",\r\n        \"threshold\": 5.0,\r\n        \"metricTrigger\": {\r\n          \"thresholdOperator\": \"GreaterThan\",\r\n          \"threshold\": 10.0,\r\n          \"metricTriggerType\": \"Total\",\r\n          \"metricColumn\": \"timestamp\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"westus\",\r\n  \"tags\": {}\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d65a2a3b-01ef-4607-baa4-4fae88d522d9"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.24.1.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1543"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:c13a1a07-630f-4f42-b89b-f5aedd031684"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1193"
+        ],
+        "x-ms-request-id": [
+          "950093fd-86ab-4d30-b8fb-d7cde43b19ae"
+        ],
+        "x-ms-correlation-request-id": [
+          "950093fd-86ab-4d30-b8fb-d7cde43b19ae"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152841Z:950093fd-86ab-4d30-b8fb-d7cde43b19ae"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:40 GMT"
+        ],
+        "Content-Length": [
+          "1952"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/scheduledqueryrules/ps2477\",\r\n  \"name\": \"ps2477\",\r\n  \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"kind\": null,\r\n  \"etag\": \"\\\"8b00b355-0000-0700-0000-5d77c1280000\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"SQR log alert rule\",\r\n    \"displayName\": \"ps2477\",\r\n    \"enabled\": \"true\",\r\n    \"lastUpdatedTime\": \"2019-09-10T15:28:38.8691114Z\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"source\": {\r\n      \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n      \"authorizedResources\": [\r\n        \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\"\r\n      ],\r\n      \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\",\r\n      \"queryType\": \"ResultCount\"\r\n    },\r\n    \"schedule\": {\r\n      \"frequencyInMinutes\": 5,\r\n      \"timeWindowInMinutes\": 5\r\n    },\r\n    \"action\": {\r\n      \"severity\": \"2\",\r\n      \"aznsAction\": {\r\n        \"actionGroup\": [\r\n          \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996\"\r\n        ],\r\n        \"emailSubject\": \"SQR Log alert trigger notification\",\r\n        \"customWebhookPayload\": \"{}\"\r\n      },\r\n      \"throttlingInMin\": 5,\r\n      \"trigger\": {\r\n        \"thresholdOperator\": \"GreaterThan\",\r\n        \"threshold\": 5,\r\n        \"metricTrigger\": {\r\n          \"thresholdOperator\": \"GreaterThan\",\r\n          \"threshold\": 10,\r\n          \"metricTriggerType\": \"Total\",\r\n          \"metricColumn\": \"timestamp\"\r\n        }\r\n      },\r\n      \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/ps9481/providers/microsoft.insights/scheduledQueryRules/ps2477?api-version=2018-04-16",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlZ3JvdXBzL3BzOTQ4MS9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL3NjaGVkdWxlZFF1ZXJ5UnVsZXMvcHMyNDc3P2FwaS12ZXJzaW9uPTIwMTgtMDQtMTY=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"SQR log alert rule\",\r\n    \"enabled\": \"true\",\r\n    \"source\": {\r\n      \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n      \"authorizedResources\": [\r\n        \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\"\r\n      ],\r\n      \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\",\r\n      \"queryType\": \"ResultCount\"\r\n    },\r\n    \"schedule\": {\r\n      \"frequencyInMinutes\": 5,\r\n      \"timeWindowInMinutes\": 5\r\n    },\r\n    \"action\": {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\",\r\n      \"severity\": \"2\",\r\n      \"aznsAction\": {\r\n        \"actionGroup\": [\r\n          \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996\"\r\n        ],\r\n        \"emailSubject\": \"SQR Log alert trigger notification\",\r\n        \"customWebhookPayload\": \"{}\"\r\n      },\r\n      \"throttlingInMin\": 5,\r\n      \"trigger\": {\r\n        \"thresholdOperator\": \"GreaterThan\",\r\n        \"threshold\": 5.0,\r\n        \"metricTrigger\": {\r\n          \"thresholdOperator\": \"GreaterThan\",\r\n          \"threshold\": 10.0,\r\n          \"metricTriggerType\": \"Total\",\r\n          \"metricColumn\": \"timestamp\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"westus\",\r\n  \"tags\": {}\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "62fef416-b54f-4f60-a288-8f2ee827e31e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.24.1.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1543"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:c13a1a07-630f-4f42-b89b-f5aedd031684"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1192"
+        ],
+        "x-ms-request-id": [
+          "28b9e766-d8e6-4bd8-a34a-2e340e3710cc"
+        ],
+        "x-ms-correlation-request-id": [
+          "28b9e766-d8e6-4bd8-a34a-2e340e3710cc"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152844Z:28b9e766-d8e6-4bd8-a34a-2e340e3710cc"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:44 GMT"
+        ],
+        "Content-Length": [
+          "1952"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/scheduledqueryrules/ps2477\",\r\n  \"name\": \"ps2477\",\r\n  \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"kind\": null,\r\n  \"etag\": \"\\\"8b005756-0000-0700-0000-5d77c12c0000\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"SQR log alert rule\",\r\n    \"displayName\": \"ps2477\",\r\n    \"enabled\": \"true\",\r\n    \"lastUpdatedTime\": \"2019-09-10T15:28:44.2607907Z\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"source\": {\r\n      \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n      \"authorizedResources\": [\r\n        \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\"\r\n      ],\r\n      \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\",\r\n      \"queryType\": \"ResultCount\"\r\n    },\r\n    \"schedule\": {\r\n      \"frequencyInMinutes\": 5,\r\n      \"timeWindowInMinutes\": 5\r\n    },\r\n    \"action\": {\r\n      \"severity\": \"2\",\r\n      \"aznsAction\": {\r\n        \"actionGroup\": [\r\n          \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996\"\r\n        ],\r\n        \"emailSubject\": \"SQR Log alert trigger notification\",\r\n        \"customWebhookPayload\": \"{}\"\r\n      },\r\n      \"throttlingInMin\": 5,\r\n      \"trigger\": {\r\n        \"thresholdOperator\": \"GreaterThan\",\r\n        \"threshold\": 5,\r\n        \"metricTrigger\": {\r\n          \"thresholdOperator\": \"GreaterThan\",\r\n          \"threshold\": 10,\r\n          \"metricTriggerType\": \"Total\",\r\n          \"metricColumn\": \"timestamp\"\r\n        }\r\n      },\r\n      \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/ps9481/providers/microsoft.insights/scheduledQueryRules/ps2477?api-version=2018-04-16",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlZ3JvdXBzL3BzOTQ4MS9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL3NjaGVkdWxlZFF1ZXJ5UnVsZXMvcHMyNDc3P2FwaS12ZXJzaW9uPTIwMTgtMDQtMTY=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"SQR log alert rule\",\r\n    \"enabled\": \"true\",\r\n    \"source\": {\r\n      \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n      \"authorizedResources\": [\r\n        \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\"\r\n      ],\r\n      \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\",\r\n      \"queryType\": \"ResultCount\"\r\n    },\r\n    \"schedule\": {\r\n      \"frequencyInMinutes\": 5,\r\n      \"timeWindowInMinutes\": 5\r\n    },\r\n    \"action\": {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\",\r\n      \"severity\": \"2\",\r\n      \"aznsAction\": {\r\n        \"actionGroup\": [\r\n          \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996\"\r\n        ],\r\n        \"emailSubject\": \"SQR Log alert trigger notification\",\r\n        \"customWebhookPayload\": \"{}\"\r\n      },\r\n      \"throttlingInMin\": 5,\r\n      \"trigger\": {\r\n        \"thresholdOperator\": \"GreaterThan\",\r\n        \"threshold\": 5.0,\r\n        \"metricTrigger\": {\r\n          \"thresholdOperator\": \"GreaterThan\",\r\n          \"threshold\": 10.0,\r\n          \"metricTriggerType\": \"Total\",\r\n          \"metricColumn\": \"timestamp\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"westus\",\r\n  \"tags\": {}\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fe69c255-c8e6-4df0-b344-4d653f76af26"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.24.1.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1543"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:c13a1a07-630f-4f42-b89b-f5aedd031684"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1191"
+        ],
+        "x-ms-request-id": [
+          "36b943c4-71db-4821-90a0-afcde1acd277"
+        ],
+        "x-ms-correlation-request-id": [
+          "36b943c4-71db-4821-90a0-afcde1acd277"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152846Z:36b943c4-71db-4821-90a0-afcde1acd277"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:45 GMT"
+        ],
+        "Content-Length": [
+          "1952"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/scheduledqueryrules/ps2477\",\r\n  \"name\": \"ps2477\",\r\n  \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"kind\": null,\r\n  \"etag\": \"\\\"8b009c56-0000-0700-0000-5d77c12e0000\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"SQR log alert rule\",\r\n    \"displayName\": \"ps2477\",\r\n    \"enabled\": \"true\",\r\n    \"lastUpdatedTime\": \"2019-09-10T15:28:45.9835588Z\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"source\": {\r\n      \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n      \"authorizedResources\": [\r\n        \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\"\r\n      ],\r\n      \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\",\r\n      \"queryType\": \"ResultCount\"\r\n    },\r\n    \"schedule\": {\r\n      \"frequencyInMinutes\": 5,\r\n      \"timeWindowInMinutes\": 5\r\n    },\r\n    \"action\": {\r\n      \"severity\": \"2\",\r\n      \"aznsAction\": {\r\n        \"actionGroup\": [\r\n          \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996\"\r\n        ],\r\n        \"emailSubject\": \"SQR Log alert trigger notification\",\r\n        \"customWebhookPayload\": \"{}\"\r\n      },\r\n      \"throttlingInMin\": 5,\r\n      \"trigger\": {\r\n        \"thresholdOperator\": \"GreaterThan\",\r\n        \"threshold\": 5,\r\n        \"metricTrigger\": {\r\n          \"thresholdOperator\": \"GreaterThan\",\r\n          \"threshold\": 10,\r\n          \"metricTriggerType\": \"Total\",\r\n          \"metricColumn\": \"timestamp\"\r\n        }\r\n      },\r\n      \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/ps9481/providers/microsoft.insights/scheduledQueryRules/ps2477?api-version=2018-04-16",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlZ3JvdXBzL3BzOTQ4MS9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL3NjaGVkdWxlZFF1ZXJ5UnVsZXMvcHMyNDc3P2FwaS12ZXJzaW9uPTIwMTgtMDQtMTY=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"SQR log alert rule\",\r\n    \"enabled\": \"true\",\r\n    \"source\": {\r\n      \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n      \"authorizedResources\": [\r\n        \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\"\r\n      ],\r\n      \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\",\r\n      \"queryType\": \"ResultCount\"\r\n    },\r\n    \"schedule\": {\r\n      \"frequencyInMinutes\": 5,\r\n      \"timeWindowInMinutes\": 5\r\n    },\r\n    \"action\": {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\",\r\n      \"severity\": \"2\",\r\n      \"aznsAction\": {\r\n        \"actionGroup\": [\r\n          \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996\"\r\n        ],\r\n        \"emailSubject\": \"SQR Log alert trigger notification\",\r\n        \"customWebhookPayload\": \"{}\"\r\n      },\r\n      \"throttlingInMin\": 5,\r\n      \"trigger\": {\r\n        \"thresholdOperator\": \"GreaterThan\",\r\n        \"threshold\": 5.0,\r\n        \"metricTrigger\": {\r\n          \"thresholdOperator\": \"GreaterThan\",\r\n          \"threshold\": 10.0,\r\n          \"metricTriggerType\": \"Total\",\r\n          \"metricColumn\": \"timestamp\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"westus\",\r\n  \"tags\": {}\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "facd9b46-9486-497e-8fba-5c67fc8143bb"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.24.1.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1543"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:c13a1a07-630f-4f42-b89b-f5aedd031684"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1190"
+        ],
+        "x-ms-request-id": [
+          "1a422084-ffe3-4431-94d2-b346a619bc13"
+        ],
+        "x-ms-correlation-request-id": [
+          "1a422084-ffe3-4431-94d2-b346a619bc13"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152847Z:1a422084-ffe3-4431-94d2-b346a619bc13"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:47 GMT"
+        ],
+        "Content-Length": [
+          "1952"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/scheduledqueryrules/ps2477\",\r\n  \"name\": \"ps2477\",\r\n  \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"kind\": null,\r\n  \"etag\": \"\\\"8b00cd56-0000-0700-0000-5d77c12f0000\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"SQR log alert rule\",\r\n    \"displayName\": \"ps2477\",\r\n    \"enabled\": \"true\",\r\n    \"lastUpdatedTime\": \"2019-09-10T15:28:47.3111367Z\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"source\": {\r\n      \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n      \"authorizedResources\": [\r\n        \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\"\r\n      ],\r\n      \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\",\r\n      \"queryType\": \"ResultCount\"\r\n    },\r\n    \"schedule\": {\r\n      \"frequencyInMinutes\": 5,\r\n      \"timeWindowInMinutes\": 5\r\n    },\r\n    \"action\": {\r\n      \"severity\": \"2\",\r\n      \"aznsAction\": {\r\n        \"actionGroup\": [\r\n          \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996\"\r\n        ],\r\n        \"emailSubject\": \"SQR Log alert trigger notification\",\r\n        \"customWebhookPayload\": \"{}\"\r\n      },\r\n      \"throttlingInMin\": 5,\r\n      \"trigger\": {\r\n        \"thresholdOperator\": \"GreaterThan\",\r\n        \"threshold\": 5,\r\n        \"metricTrigger\": {\r\n          \"thresholdOperator\": \"GreaterThan\",\r\n          \"threshold\": 10,\r\n          \"metricTriggerType\": \"Total\",\r\n          \"metricColumn\": \"timestamp\"\r\n        }\r\n      },\r\n      \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/ps9481/providers/microsoft.insights/scheduledQueryRules/ps2477?api-version=2018-04-16",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlZ3JvdXBzL3BzOTQ4MS9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL3NjaGVkdWxlZFF1ZXJ5UnVsZXMvcHMyNDc3P2FwaS12ZXJzaW9uPTIwMTgtMDQtMTY=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7e62166d-15f4-4085-b3be-0f2237c98cf8"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.24.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:c13a1a07-630f-4f42-b89b-f5aedd031684"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "5ad4b226-9d4a-4fcd-ab7e-8dae7396f0eb"
+        ],
+        "x-ms-correlation-request-id": [
+          "5ad4b226-9d4a-4fcd-ab7e-8dae7396f0eb"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152841Z:5ad4b226-9d4a-4fcd-ab7e-8dae7396f0eb"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:41 GMT"
+        ],
+        "Content-Length": [
+          "1952"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/scheduledqueryrules/ps2477\",\r\n  \"name\": \"ps2477\",\r\n  \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"kind\": null,\r\n  \"etag\": \"\\\"8b00b355-0000-0700-0000-5d77c1280000\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"SQR log alert rule\",\r\n    \"displayName\": \"ps2477\",\r\n    \"enabled\": \"true\",\r\n    \"lastUpdatedTime\": \"2019-09-10T15:28:38.8691114Z\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"source\": {\r\n      \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n      \"authorizedResources\": [\r\n        \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\"\r\n      ],\r\n      \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\",\r\n      \"queryType\": \"ResultCount\"\r\n    },\r\n    \"schedule\": {\r\n      \"frequencyInMinutes\": 5,\r\n      \"timeWindowInMinutes\": 5\r\n    },\r\n    \"action\": {\r\n      \"severity\": \"2\",\r\n      \"aznsAction\": {\r\n        \"actionGroup\": [\r\n          \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996\"\r\n        ],\r\n        \"emailSubject\": \"SQR Log alert trigger notification\",\r\n        \"customWebhookPayload\": \"{}\"\r\n      },\r\n      \"throttlingInMin\": 5,\r\n      \"trigger\": {\r\n        \"thresholdOperator\": \"GreaterThan\",\r\n        \"threshold\": 5,\r\n        \"metricTrigger\": {\r\n          \"thresholdOperator\": \"GreaterThan\",\r\n          \"threshold\": 10,\r\n          \"metricTriggerType\": \"Total\",\r\n          \"metricColumn\": \"timestamp\"\r\n        }\r\n      },\r\n      \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/ps9481/providers/microsoft.insights/scheduledQueryRules/ps2477?api-version=2018-04-16",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlZ3JvdXBzL3BzOTQ4MS9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL3NjaGVkdWxlZFF1ZXJ5UnVsZXMvcHMyNDc3P2FwaS12ZXJzaW9uPTIwMTgtMDQtMTY=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "20a6c4d1-a35a-416c-918c-03c9accaa2cd"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.24.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:c13a1a07-630f-4f42-b89b-f5aedd031684"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-request-id": [
+          "677c2fed-4636-4aa2-8549-933ae2d51f7a"
+        ],
+        "x-ms-correlation-request-id": [
+          "677c2fed-4636-4aa2-8549-933ae2d51f7a"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152843Z:677c2fed-4636-4aa2-8549-933ae2d51f7a"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:42 GMT"
+        ],
+        "Content-Length": [
+          "1952"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/scheduledqueryrules/ps2477\",\r\n  \"name\": \"ps2477\",\r\n  \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"kind\": null,\r\n  \"etag\": \"\\\"8b00b355-0000-0700-0000-5d77c1280000\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"SQR log alert rule\",\r\n    \"displayName\": \"ps2477\",\r\n    \"enabled\": \"true\",\r\n    \"lastUpdatedTime\": \"2019-09-10T15:28:38.8691114Z\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"source\": {\r\n      \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n      \"authorizedResources\": [\r\n        \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\"\r\n      ],\r\n      \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\",\r\n      \"queryType\": \"ResultCount\"\r\n    },\r\n    \"schedule\": {\r\n      \"frequencyInMinutes\": 5,\r\n      \"timeWindowInMinutes\": 5\r\n    },\r\n    \"action\": {\r\n      \"severity\": \"2\",\r\n      \"aznsAction\": {\r\n        \"actionGroup\": [\r\n          \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996\"\r\n        ],\r\n        \"emailSubject\": \"SQR Log alert trigger notification\",\r\n        \"customWebhookPayload\": \"{}\"\r\n      },\r\n      \"throttlingInMin\": 5,\r\n      \"trigger\": {\r\n        \"thresholdOperator\": \"GreaterThan\",\r\n        \"threshold\": 5,\r\n        \"metricTrigger\": {\r\n          \"thresholdOperator\": \"GreaterThan\",\r\n          \"threshold\": 10,\r\n          \"metricTriggerType\": \"Total\",\r\n          \"metricColumn\": \"timestamp\"\r\n        }\r\n      },\r\n      \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/ps9481/providers/microsoft.insights/scheduledQueryRules/ps2477?api-version=2018-04-16",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlZ3JvdXBzL3BzOTQ4MS9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL3NjaGVkdWxlZFF1ZXJ5UnVsZXMvcHMyNDc3P2FwaS12ZXJzaW9uPTIwMTgtMDQtMTY=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e1d8500c-4811-4996-b707-1b4865675a64"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.24.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:c13a1a07-630f-4f42-b89b-f5aedd031684"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-request-id": [
+          "19a0d56b-2387-48c1-be6a-a8e1e4272f52"
+        ],
+        "x-ms-correlation-request-id": [
+          "19a0d56b-2387-48c1-be6a-a8e1e4272f52"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152845Z:19a0d56b-2387-48c1-be6a-a8e1e4272f52"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:44 GMT"
+        ],
+        "Content-Length": [
+          "1952"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/scheduledqueryrules/ps2477\",\r\n  \"name\": \"ps2477\",\r\n  \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"kind\": null,\r\n  \"etag\": \"\\\"8b005756-0000-0700-0000-5d77c12c0000\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"SQR log alert rule\",\r\n    \"displayName\": \"ps2477\",\r\n    \"enabled\": \"true\",\r\n    \"lastUpdatedTime\": \"2019-09-10T15:28:44.2607907Z\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"source\": {\r\n      \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n      \"authorizedResources\": [\r\n        \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\"\r\n      ],\r\n      \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\",\r\n      \"queryType\": \"ResultCount\"\r\n    },\r\n    \"schedule\": {\r\n      \"frequencyInMinutes\": 5,\r\n      \"timeWindowInMinutes\": 5\r\n    },\r\n    \"action\": {\r\n      \"severity\": \"2\",\r\n      \"aznsAction\": {\r\n        \"actionGroup\": [\r\n          \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996\"\r\n        ],\r\n        \"emailSubject\": \"SQR Log alert trigger notification\",\r\n        \"customWebhookPayload\": \"{}\"\r\n      },\r\n      \"throttlingInMin\": 5,\r\n      \"trigger\": {\r\n        \"thresholdOperator\": \"GreaterThan\",\r\n        \"threshold\": 5,\r\n        \"metricTrigger\": {\r\n          \"thresholdOperator\": \"GreaterThan\",\r\n          \"threshold\": 10,\r\n          \"metricTriggerType\": \"Total\",\r\n          \"metricColumn\": \"timestamp\"\r\n        }\r\n      },\r\n      \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/ps9481/providers/microsoft.insights/scheduledQueryRules/ps2477?api-version=2018-04-16",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlZ3JvdXBzL3BzOTQ4MS9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL3NjaGVkdWxlZFF1ZXJ5UnVsZXMvcHMyNDc3P2FwaS12ZXJzaW9uPTIwMTgtMDQtMTY=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "68aae913-24f7-48b7-8e56-03b540814666"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.24.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:c13a1a07-630f-4f42-b89b-f5aedd031684"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-request-id": [
+          "4057733b-9582-4a21-a658-ab5c7393f7f6"
+        ],
+        "x-ms-correlation-request-id": [
+          "4057733b-9582-4a21-a658-ab5c7393f7f6"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152848Z:4057733b-9582-4a21-a658-ab5c7393f7f6"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:47 GMT"
+        ],
+        "Content-Length": [
+          "1952"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/scheduledqueryrules/ps2477\",\r\n  \"name\": \"ps2477\",\r\n  \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"kind\": null,\r\n  \"etag\": \"\\\"8b00cd56-0000-0700-0000-5d77c12f0000\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"SQR log alert rule\",\r\n    \"displayName\": \"ps2477\",\r\n    \"enabled\": \"true\",\r\n    \"lastUpdatedTime\": \"2019-09-10T15:28:47.3111367Z\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"source\": {\r\n      \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n      \"authorizedResources\": [\r\n        \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\"\r\n      ],\r\n      \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\",\r\n      \"queryType\": \"ResultCount\"\r\n    },\r\n    \"schedule\": {\r\n      \"frequencyInMinutes\": 5,\r\n      \"timeWindowInMinutes\": 5\r\n    },\r\n    \"action\": {\r\n      \"severity\": \"2\",\r\n      \"aznsAction\": {\r\n        \"actionGroup\": [\r\n          \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996\"\r\n        ],\r\n        \"emailSubject\": \"SQR Log alert trigger notification\",\r\n        \"customWebhookPayload\": \"{}\"\r\n      },\r\n      \"throttlingInMin\": 5,\r\n      \"trigger\": {\r\n        \"thresholdOperator\": \"GreaterThan\",\r\n        \"threshold\": 5,\r\n        \"metricTrigger\": {\r\n          \"thresholdOperator\": \"GreaterThan\",\r\n          \"threshold\": 10,\r\n          \"metricTriggerType\": \"Total\",\r\n          \"metricColumn\": \"timestamp\"\r\n        }\r\n      },\r\n      \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/ps9481/providers/microsoft.insights/scheduledQueryRules/ps2477?api-version=2018-04-16",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlZ3JvdXBzL3BzOTQ4MS9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL3NjaGVkdWxlZFF1ZXJ5UnVsZXMvcHMyNDc3P2FwaS12ZXJzaW9uPTIwMTgtMDQtMTY=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e7f738d3-5163-49bf-b8d2-28de069b8ae1"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.24.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:c13a1a07-630f-4f42-b89b-f5aedd031684"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-request-id": [
+          "bd9d5578-37e8-48a3-b4c5-70985d6befb5"
+        ],
+        "x-ms-correlation-request-id": [
+          "bd9d5578-37e8-48a3-b4c5-70985d6befb5"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152851Z:bd9d5578-37e8-48a3-b4c5-70985d6befb5"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:50 GMT"
+        ],
+        "Content-Length": [
+          "1953"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/scheduledqueryrules/ps2477\",\r\n  \"name\": \"ps2477\",\r\n  \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"kind\": null,\r\n  \"etag\": \"\\\"8b002457-0000-0700-0000-5d77c1310000\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"SQR log alert rule\",\r\n    \"displayName\": \"ps2477\",\r\n    \"enabled\": \"false\",\r\n    \"lastUpdatedTime\": \"2019-09-10T15:28:49.5680575Z\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"source\": {\r\n      \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n      \"authorizedResources\": [\r\n        \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\"\r\n      ],\r\n      \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\",\r\n      \"queryType\": \"ResultCount\"\r\n    },\r\n    \"schedule\": {\r\n      \"frequencyInMinutes\": 5,\r\n      \"timeWindowInMinutes\": 5\r\n    },\r\n    \"action\": {\r\n      \"severity\": \"2\",\r\n      \"aznsAction\": {\r\n        \"actionGroup\": [\r\n          \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996\"\r\n        ],\r\n        \"emailSubject\": \"SQR Log alert trigger notification\",\r\n        \"customWebhookPayload\": \"{}\"\r\n      },\r\n      \"throttlingInMin\": 5,\r\n      \"trigger\": {\r\n        \"thresholdOperator\": \"GreaterThan\",\r\n        \"threshold\": 5,\r\n        \"metricTrigger\": {\r\n          \"thresholdOperator\": \"GreaterThan\",\r\n          \"threshold\": 10,\r\n          \"metricTriggerType\": \"Total\",\r\n          \"metricColumn\": \"timestamp\"\r\n        }\r\n      },\r\n      \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/ps9481/providers/microsoft.insights/scheduledQueryRules/ps2477?api-version=2018-04-16",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlZ3JvdXBzL3BzOTQ4MS9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL3NjaGVkdWxlZFF1ZXJ5UnVsZXMvcHMyNDc3P2FwaS12ZXJzaW9uPTIwMTgtMDQtMTY=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a1800099-40e0-4e95-a011-57729c98569d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.24.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:c13a1a07-630f-4f42-b89b-f5aedd031684"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11990"
+        ],
+        "x-ms-request-id": [
+          "8116a8e8-95c1-4787-b2a3-8030da13f27e"
+        ],
+        "x-ms-correlation-request-id": [
+          "8116a8e8-95c1-4787-b2a3-8030da13f27e"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152853Z:8116a8e8-95c1-4787-b2a3-8030da13f27e"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:53 GMT"
+        ],
+        "Content-Length": [
+          "1953"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/scheduledqueryrules/ps2477\",\r\n  \"name\": \"ps2477\",\r\n  \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"kind\": null,\r\n  \"etag\": \"\\\"8b008b57-0000-0700-0000-5d77c1340000\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"SQR log alert rule\",\r\n    \"displayName\": \"ps2477\",\r\n    \"enabled\": \"false\",\r\n    \"lastUpdatedTime\": \"2019-09-10T15:28:52.3649407Z\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"source\": {\r\n      \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n      \"authorizedResources\": [\r\n        \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\"\r\n      ],\r\n      \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\",\r\n      \"queryType\": \"ResultCount\"\r\n    },\r\n    \"schedule\": {\r\n      \"frequencyInMinutes\": 5,\r\n      \"timeWindowInMinutes\": 5\r\n    },\r\n    \"action\": {\r\n      \"severity\": \"2\",\r\n      \"aznsAction\": {\r\n        \"actionGroup\": [\r\n          \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996\"\r\n        ],\r\n        \"emailSubject\": \"SQR Log alert trigger notification\",\r\n        \"customWebhookPayload\": \"{}\"\r\n      },\r\n      \"throttlingInMin\": 5,\r\n      \"trigger\": {\r\n        \"thresholdOperator\": \"GreaterThan\",\r\n        \"threshold\": 5,\r\n        \"metricTrigger\": {\r\n          \"thresholdOperator\": \"GreaterThan\",\r\n          \"threshold\": 10,\r\n          \"metricTriggerType\": \"Total\",\r\n          \"metricColumn\": \"timestamp\"\r\n        }\r\n      },\r\n      \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/providers/microsoft.insights/scheduledQueryRules?api-version=2018-04-16",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvc2NoZWR1bGVkUXVlcnlSdWxlcz9hcGktdmVyc2lvbj0yMDE4LTA0LTE2",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "eef48fcb-7284-473e-a618-00253315b686"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.24.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:c13a1a07-630f-4f42-b89b-f5aedd031684"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "9c169d2c-edcc-4e4b-8492-e68cc44311b8"
+        ],
+        "x-ms-correlation-request-id": [
+          "9c169d2c-edcc-4e4b-8492-e68cc44311b8"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152842Z:9c169d2c-edcc-4e4b-8492-e68cc44311b8"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:41 GMT"
+        ],
+        "Content-Length": [
+          "74567"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps6827/providers/microsoft.insights/scheduledqueryrules/ps9245\",\r\n      \"name\": \"ps9245\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {},\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"c9011bd7-0000-0700-0000-5d658ec40000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"SQR log alert rule\",\r\n        \"displayName\": \"ps9245\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2019-08-20T20:06:09.8141405Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n          \"authorizedResources\": [\r\n            \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps6827/providers/microsoft.insights/components/ps8853\"\r\n          ],\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps6827/providers/microsoft.insights/components/ps8853\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": {\r\n          \"frequencyInMinutes\": 5,\r\n          \"timeWindowInMinutes\": 5\r\n        },\r\n        \"action\": {\r\n          \"severity\": \"2\",\r\n          \"aznsAction\": {\r\n            \"actionGroup\": [\r\n              \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps6827/providers/microsoft.insights/actionGroups/ps5133\"\r\n            ],\r\n            \"emailSubject\": \"SQR Log alert trigger notification\",\r\n            \"customWebhookPayload\": \"{}\"\r\n          },\r\n          \"throttlingInMin\": 5,\r\n          \"trigger\": {\r\n            \"thresholdOperator\": \"GreaterThan\",\r\n            \"threshold\": 5,\r\n            \"metricTrigger\": {\r\n              \"thresholdOperator\": \"GreaterThan\",\r\n              \"threshold\": 10,\r\n              \"metricTriggerType\": \"Total\",\r\n              \"metricColumn\": \"timestamp\"\r\n            }\r\n          },\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps7444/providers/microsoft.insights/scheduledqueryrules/ps8078\",\r\n      \"name\": \"ps8078\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {},\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"0a00abbe-0000-0700-0000-5d663e980000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"SQR log alert rule\",\r\n        \"displayName\": \"ps8078\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2019-08-21T08:41:23.9257726Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n          \"authorizedResources\": [\r\n            \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps7444/providers/microsoft.insights/components/ps3115\"\r\n          ],\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps7444/providers/microsoft.insights/components/ps3115\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": {\r\n          \"frequencyInMinutes\": 5,\r\n          \"timeWindowInMinutes\": 5\r\n        },\r\n        \"action\": {\r\n          \"severity\": \"2\",\r\n          \"aznsAction\": {\r\n            \"actionGroup\": [\r\n              \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps7444/providers/microsoft.insights/actionGroups/ps2898\"\r\n            ],\r\n            \"emailSubject\": \"SQR Log alert trigger notification\",\r\n            \"customWebhookPayload\": \"{}\"\r\n          },\r\n          \"throttlingInMin\": 5,\r\n          \"trigger\": {\r\n            \"thresholdOperator\": \"GreaterThan\",\r\n            \"threshold\": 5,\r\n            \"metricTrigger\": {\r\n              \"thresholdOperator\": \"GreaterThan\",\r\n              \"threshold\": 10,\r\n              \"metricTriggerType\": \"Total\",\r\n              \"metricColumn\": \"timestamp\"\r\n            }\r\n          },\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps72/providers/microsoft.insights/scheduledqueryrules/ps2501\",\r\n      \"name\": \"ps2501\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {},\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"0a00c0f8-0000-0700-0000-5d66418c0000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"SQR log alert rule\",\r\n        \"displayName\": \"ps2501\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2019-08-21T08:49:16.4567382Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n          \"authorizedResources\": [\r\n            \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps72/providers/microsoft.insights/components/ps8944\"\r\n          ],\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps72/providers/microsoft.insights/components/ps8944\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": {\r\n          \"frequencyInMinutes\": 5,\r\n          \"timeWindowInMinutes\": 5\r\n        },\r\n        \"action\": {\r\n          \"severity\": \"2\",\r\n          \"aznsAction\": {\r\n            \"actionGroup\": [\r\n              \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps72/providers/microsoft.insights/actionGroups/ps6963\"\r\n            ],\r\n            \"emailSubject\": \"SQR Log alert trigger notification\",\r\n            \"customWebhookPayload\": \"{}\"\r\n          },\r\n          \"throttlingInMin\": 5,\r\n          \"trigger\": {\r\n            \"thresholdOperator\": \"GreaterThan\",\r\n            \"threshold\": 5,\r\n            \"metricTrigger\": {\r\n              \"thresholdOperator\": \"GreaterThan\",\r\n              \"threshold\": 10,\r\n              \"metricTriggerType\": \"Total\",\r\n              \"metricColumn\": \"timestamp\"\r\n            }\r\n          },\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9214/providers/microsoft.insights/scheduledqueryrules/ps81\",\r\n      \"name\": \"ps81\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {},\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"3c0064d9-0000-0700-0000-5d67efb20000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"SQR log alert rule\",\r\n        \"displayName\": \"ps81\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2019-08-22T15:24:32.6832014Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n          \"authorizedResources\": [\r\n            \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9214/providers/microsoft.insights/components/ps3826\"\r\n          ],\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9214/providers/microsoft.insights/components/ps3826\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": {\r\n          \"frequencyInMinutes\": 5,\r\n          \"timeWindowInMinutes\": 5\r\n        },\r\n        \"action\": {\r\n          \"severity\": \"2\",\r\n          \"aznsAction\": {\r\n            \"actionGroup\": [\r\n              \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9214/providers/microsoft.insights/actionGroups/ps8177\"\r\n            ],\r\n            \"emailSubject\": \"SQR Log alert trigger notification\",\r\n            \"customWebhookPayload\": \"{}\"\r\n          },\r\n          \"throttlingInMin\": 5,\r\n          \"trigger\": {\r\n            \"thresholdOperator\": \"GreaterThan\",\r\n            \"threshold\": 5,\r\n            \"metricTrigger\": {\r\n              \"thresholdOperator\": \"GreaterThan\",\r\n              \"threshold\": 10,\r\n              \"metricTriggerType\": \"Total\",\r\n              \"metricColumn\": \"timestamp\"\r\n            }\r\n          },\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps542/providers/microsoft.insights/scheduledqueryrules/ps142\",\r\n      \"name\": \"ps142\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {},\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"3e002f28-0000-0700-0000-5d67f54b0000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"SQR log alert rule\",\r\n        \"displayName\": \"ps142\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2019-08-22T15:53:06.1889449Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n          \"authorizedResources\": [\r\n            \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps542/providers/microsoft.insights/components/ps2046\"\r\n          ],\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps542/providers/microsoft.insights/components/ps2046\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": {\r\n          \"frequencyInMinutes\": 5,\r\n          \"timeWindowInMinutes\": 5\r\n        },\r\n        \"action\": {\r\n          \"severity\": \"2\",\r\n          \"aznsAction\": {\r\n            \"actionGroup\": [\r\n              \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps542/providers/microsoft.insights/actionGroups/ps2258\"\r\n            ],\r\n            \"emailSubject\": \"SQR Log alert trigger notification\",\r\n            \"customWebhookPayload\": \"{}\"\r\n          },\r\n          \"throttlingInMin\": 5,\r\n          \"trigger\": {\r\n            \"thresholdOperator\": \"GreaterThan\",\r\n            \"threshold\": 5,\r\n            \"metricTrigger\": {\r\n              \"thresholdOperator\": \"GreaterThan\",\r\n              \"threshold\": 10,\r\n              \"metricTriggerType\": \"Total\",\r\n              \"metricColumn\": \"timestamp\"\r\n            }\r\n          },\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps7885/providers/microsoft.insights/scheduledqueryrules/ps7613\",\r\n      \"name\": \"ps7613\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {},\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"57002ac7-0000-0700-0000-5d6925220000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"SQR log alert rule\",\r\n        \"displayName\": \"ps7613\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2019-08-23T13:24:32.4204721Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n          \"authorizedResources\": [\r\n            \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps7885/providers/microsoft.insights/components/ps4762\"\r\n          ],\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps7885/providers/microsoft.insights/components/ps4762\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": {\r\n          \"frequencyInMinutes\": 5,\r\n          \"timeWindowInMinutes\": 5\r\n        },\r\n        \"action\": {\r\n          \"severity\": \"2\",\r\n          \"aznsAction\": {\r\n            \"actionGroup\": [\r\n              \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps7885/providers/microsoft.insights/actionGroups/ps9639\"\r\n            ],\r\n            \"emailSubject\": \"SQR Log alert trigger notification\",\r\n            \"customWebhookPayload\": \"{}\"\r\n          },\r\n          \"throttlingInMin\": 5,\r\n          \"trigger\": {\r\n            \"thresholdOperator\": \"GreaterThan\",\r\n            \"threshold\": 5,\r\n            \"metricTrigger\": {\r\n              \"thresholdOperator\": \"GreaterThan\",\r\n              \"threshold\": 10,\r\n              \"metricTriggerType\": \"Total\",\r\n              \"metricColumn\": \"timestamp\"\r\n            }\r\n          },\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps242/providers/microsoft.insights/scheduledqueryrules/ps5775\",\r\n      \"name\": \"ps5775\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {},\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"5700dada-0000-0700-0000-5d6926e60000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"SQR log alert rule\",\r\n        \"displayName\": \"ps5775\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2019-08-23T13:32:21.582016Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n          \"authorizedResources\": [\r\n            \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps242/providers/microsoft.insights/components/ps5102\"\r\n          ],\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps242/providers/microsoft.insights/components/ps5102\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": {\r\n          \"frequencyInMinutes\": 5,\r\n          \"timeWindowInMinutes\": 5\r\n        },\r\n        \"action\": {\r\n          \"severity\": \"2\",\r\n          \"aznsAction\": {\r\n            \"actionGroup\": [\r\n              \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps242/providers/microsoft.insights/actionGroups/ps5911\"\r\n            ],\r\n            \"emailSubject\": \"SQR Log alert trigger notification\",\r\n            \"customWebhookPayload\": \"{}\"\r\n          },\r\n          \"throttlingInMin\": 5,\r\n          \"trigger\": {\r\n            \"thresholdOperator\": \"GreaterThan\",\r\n            \"threshold\": 5,\r\n            \"metricTrigger\": {\r\n              \"thresholdOperator\": \"GreaterThan\",\r\n              \"threshold\": 10,\r\n              \"metricTriggerType\": \"Total\",\r\n              \"metricColumn\": \"timestamp\"\r\n            }\r\n          },\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps8877/providers/microsoft.insights/scheduledqueryrules/ps7690\",\r\n      \"name\": \"ps7690\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {},\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"3d016f7c-0000-0700-0000-5d5fec7c0000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"SQR log alert rule\",\r\n        \"displayName\": \"ps7690\",\r\n        \"enabled\": \"true\",\r\n        \"lastUpdatedTime\": \"2019-08-23T13:39:07.1454182Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n          \"authorizedResources\": [\r\n            \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/CustomMetricDemo/providers/microsoft.insights/components/customMetricsTest\"\r\n          ],\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/CustomMetricDemo/providers/microsoft.insights/components/customMetricsTest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": {\r\n          \"frequencyInMinutes\": 5,\r\n          \"timeWindowInMinutes\": 5\r\n        },\r\n        \"action\": {\r\n          \"severity\": \"2\",\r\n          \"aznsAction\": {\r\n            \"actionGroup\": [\r\n              \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps8877/providers/microsoft.insights/actionGroups/ps9341\"\r\n            ],\r\n            \"emailSubject\": \"SQR Log alert trigger notification\",\r\n            \"customWebhookPayload\": \"{}\"\r\n          },\r\n          \"throttlingInMin\": 5,\r\n          \"trigger\": {\r\n            \"thresholdOperator\": \"GreaterThan\",\r\n            \"threshold\": 5,\r\n            \"metricTrigger\": {\r\n              \"thresholdOperator\": \"GreaterThan\",\r\n              \"threshold\": 10,\r\n              \"metricTriggerType\": \"Total\",\r\n              \"metricColumn\": \"timestamp\"\r\n            }\r\n          },\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps2733/providers/microsoft.insights/scheduledqueryrules/ps1821\",\r\n      \"name\": \"ps1821\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {},\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"9a00eb95-0000-0700-0000-5d711c010000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"SQR log alert rule\",\r\n        \"displayName\": \"ps1821\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2019-08-29T14:28:54.1690214Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n          \"authorizedResources\": [\r\n            \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps2733/providers/microsoft.insights/components/ps634\"\r\n          ],\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps2733/providers/microsoft.insights/components/ps634\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": {\r\n          \"frequencyInMinutes\": 5,\r\n          \"timeWindowInMinutes\": 5\r\n        },\r\n        \"action\": {\r\n          \"severity\": \"2\",\r\n          \"aznsAction\": {\r\n            \"actionGroup\": [\r\n              \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps2733/providers/microsoft.insights/actionGroups/ps5533\"\r\n            ],\r\n            \"emailSubject\": \"SQR Log alert trigger notification\",\r\n            \"customWebhookPayload\": \"{}\"\r\n          },\r\n          \"throttlingInMin\": 5,\r\n          \"trigger\": {\r\n            \"thresholdOperator\": \"GreaterThan\",\r\n            \"threshold\": 5,\r\n            \"metricTrigger\": {\r\n              \"thresholdOperator\": \"GreaterThan\",\r\n              \"threshold\": 10,\r\n              \"metricTriggerType\": \"Total\",\r\n              \"metricColumn\": \"timestamp\"\r\n            }\r\n          },\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9396/providers/microsoft.insights/scheduledqueryrules/ps4268\",\r\n      \"name\": \"ps4268\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {},\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"9a0017e0-0000-0700-0000-5d71214c0000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"SQR log alert rule\",\r\n        \"displayName\": \"ps4268\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2019-08-29T14:46:31.8147862Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n          \"authorizedResources\": [\r\n            \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9396/providers/microsoft.insights/components/ps6136\"\r\n          ],\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9396/providers/microsoft.insights/components/ps6136\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": {\r\n          \"frequencyInMinutes\": 5,\r\n          \"timeWindowInMinutes\": 5\r\n        },\r\n        \"action\": {\r\n          \"severity\": \"2\",\r\n          \"aznsAction\": {\r\n            \"actionGroup\": [\r\n              \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9396/providers/microsoft.insights/actionGroups/ps9622\"\r\n            ],\r\n            \"emailSubject\": \"SQR Log alert trigger notification\",\r\n            \"customWebhookPayload\": \"{}\"\r\n          },\r\n          \"throttlingInMin\": 5,\r\n          \"trigger\": {\r\n            \"thresholdOperator\": \"GreaterThan\",\r\n            \"threshold\": 5,\r\n            \"metricTrigger\": {\r\n              \"thresholdOperator\": \"GreaterThan\",\r\n              \"threshold\": 10,\r\n              \"metricTriggerType\": \"Total\",\r\n              \"metricColumn\": \"timestamp\"\r\n            }\r\n          },\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps1853/providers/microsoft.insights/scheduledqueryrules/ps1191\",\r\n      \"name\": \"ps1191\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {},\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"9a0077fd-0000-0700-0000-5d7123520000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"SQR log alert rule\",\r\n        \"displayName\": \"ps1191\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2019-08-29T14:59:03.2995606Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n          \"authorizedResources\": [\r\n            \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps1853/providers/microsoft.insights/components/ps2974\"\r\n          ],\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps1853/providers/microsoft.insights/components/ps2974\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": {\r\n          \"frequencyInMinutes\": 5,\r\n          \"timeWindowInMinutes\": 5\r\n        },\r\n        \"action\": {\r\n          \"severity\": \"2\",\r\n          \"aznsAction\": {\r\n            \"actionGroup\": [\r\n              \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps1853/providers/microsoft.insights/actionGroups/ps5687\"\r\n            ],\r\n            \"emailSubject\": \"SQR Log alert trigger notification\",\r\n            \"customWebhookPayload\": \"{}\"\r\n          },\r\n          \"throttlingInMin\": 5,\r\n          \"trigger\": {\r\n            \"thresholdOperator\": \"GreaterThan\",\r\n            \"threshold\": 5,\r\n            \"metricTrigger\": {\r\n              \"thresholdOperator\": \"GreaterThan\",\r\n              \"threshold\": 10,\r\n              \"metricTriggerType\": \"Total\",\r\n              \"metricColumn\": \"timestamp\"\r\n            }\r\n          },\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps2113/providers/microsoft.insights/scheduledqueryrules/ps1969\",\r\n      \"name\": \"ps1969\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {},\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"9b006a31-0000-0700-0000-5d7126f90000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"SQR log alert rule\",\r\n        \"displayName\": \"ps1969\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2019-08-29T15:16:00.5229045Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n          \"authorizedResources\": [\r\n            \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps2113/providers/microsoft.insights/components/ps7585\"\r\n          ],\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps2113/providers/microsoft.insights/components/ps7585\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": {\r\n          \"frequencyInMinutes\": 5,\r\n          \"timeWindowInMinutes\": 5\r\n        },\r\n        \"action\": {\r\n          \"severity\": \"2\",\r\n          \"aznsAction\": {\r\n            \"actionGroup\": [\r\n              \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps2113/providers/microsoft.insights/actionGroups/ps9610\"\r\n            ],\r\n            \"emailSubject\": \"SQR Log alert trigger notification\",\r\n            \"customWebhookPayload\": \"{}\"\r\n          },\r\n          \"throttlingInMin\": 5,\r\n          \"trigger\": {\r\n            \"thresholdOperator\": \"GreaterThan\",\r\n            \"threshold\": 5,\r\n            \"metricTrigger\": {\r\n              \"thresholdOperator\": \"GreaterThan\",\r\n              \"threshold\": 10,\r\n              \"metricTriggerType\": \"Total\",\r\n              \"metricColumn\": \"timestamp\"\r\n            }\r\n          },\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/scheduledqueryrules/ps2477\",\r\n      \"name\": \"ps2477\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {},\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"8b00b355-0000-0700-0000-5d77c1280000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"SQR log alert rule\",\r\n        \"displayName\": \"ps2477\",\r\n        \"enabled\": \"true\",\r\n        \"lastUpdatedTime\": \"2019-09-10T15:28:38.8691114Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n          \"authorizedResources\": [\r\n            \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\"\r\n          ],\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": {\r\n          \"frequencyInMinutes\": 5,\r\n          \"timeWindowInMinutes\": 5\r\n        },\r\n        \"action\": {\r\n          \"severity\": \"2\",\r\n          \"aznsAction\": {\r\n            \"actionGroup\": [\r\n              \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996\"\r\n            ],\r\n            \"emailSubject\": \"SQR Log alert trigger notification\",\r\n            \"customWebhookPayload\": \"{}\"\r\n          },\r\n          \"throttlingInMin\": 5,\r\n          \"trigger\": {\r\n            \"thresholdOperator\": \"GreaterThan\",\r\n            \"threshold\": 5,\r\n            \"metricTrigger\": {\r\n              \"thresholdOperator\": \"GreaterThan\",\r\n              \"threshold\": 10,\r\n              \"metricTriggerType\": \"Total\",\r\n              \"metricColumn\": \"timestamp\"\r\n            }\r\n          },\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/TestRuleNameEvent\",\r\n      \"name\": \"TestRuleNameEvent\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"0400127f-0000-0000-0000-5b634f1e0000\\\"\",\r\n      \"properties\": {\r\n        \"description\": null,\r\n        \"enabled\": \"true\",\r\n        \"lastUpdatedTime\": \"2018-06-25T06:50:13.7264352Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Event\",\r\n              \"dimensions\": null\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        },\r\n        \"displayName\": \"TestRuleNameEvent\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/Test\",\r\n      \"name\": \"Test\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"00006701-0000-0000-0000-5b729b410000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"Test\",\r\n        \"displayName\": \"Test\",\r\n        \"enabled\": \"true\",\r\n        \"lastUpdatedTime\": \"2018-08-14T09:05:04.7785642Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Average_Disk Transfers/sec\",\r\n              \"dimensions\": [\r\n                {\r\n                  \"name\": \"Computer\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"C1\",\r\n                    \"C2\",\r\n                    \"C3\",\r\n                    \"C4\",\r\n                    \"C5\"\r\n                  ]\r\n                },\r\n                {\r\n                  \"name\": \"ObjectName\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"O1\",\r\n                    \"O2\"\r\n                  ]\r\n                },\r\n                {\r\n                  \"name\": \"InstanceName\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"I1\"\r\n                  ]\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/Test-MultiSeries-Heartbeat\",\r\n      \"name\": \"Test-MultiSeries-Heartbeat\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"620093d2-0000-0000-0000-5b9bed9a0000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"NA\",\r\n        \"displayName\": \"Test-MultiSeries-Heartbeat\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2018-09-14T17:19:20.2598196Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Heartbeat\",\r\n              \"dimensions\": [\r\n                {\r\n                  \"name\": \"Computer\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"*\"\r\n                  ]\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/nrt-mts-heartbeat-1\",\r\n      \"name\": \"nrt-mts-heartbeat-1\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"0000810c-0000-0000-0000-5b7d05410000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"nrt-mts-heartbeat-1\",\r\n        \"displayName\": \"nrt-mts-heartbeat-1\",\r\n        \"enabled\": \"true\",\r\n        \"lastUpdatedTime\": \"2018-08-22T06:40:01.4606199Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Heartbeat\",\r\n              \"dimensions\": [\r\n                {\r\n                  \"name\": \"Computer\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"AlekhyaCh.fareast.corp.microsoft.com\",\r\n                    \"jtamber03.fareast.corp.microsoft.com\",\r\n                    \"sapotlap.fareast.corp.microsoft.com\"\r\n                  ]\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/MCriteria-2\",\r\n      \"name\": \"MCriteria-2\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"0000ea99-0000-0000-0000-5b8686a90000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"MCriteria-2\",\r\n        \"displayName\": \"MCriteria-2\",\r\n        \"enabled\": \"true\",\r\n        \"lastUpdatedTime\": \"2018-08-29T11:42:33.2951061Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Average_% Free Space\",\r\n              \"dimensions\": [\r\n                {\r\n                  \"name\": \"Computer\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"jtamber03.fareast.corp.microsoft.com\"\r\n                  ]\r\n                }\r\n              ]\r\n            },\r\n            {\r\n              \"metricName\": \"Average_% Processor Time\",\r\n              \"dimensions\": [\r\n                {\r\n                  \"name\": \"Computer\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"sapotlap.fareast.corp.microsoft.com\"\r\n                  ]\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/MCriteria-4\",\r\n      \"name\": \"MCriteria-4\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"0a00201d-0000-0000-0000-5b879df70000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"MCriteria-4\",\r\n        \"displayName\": \"MCriteria-4\",\r\n        \"enabled\": \"true\",\r\n        \"lastUpdatedTime\": \"2018-08-30T07:34:15.3806869Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Average_% Free Space\",\r\n              \"dimensions\": [\r\n                {\r\n                  \"name\": \"Computer\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"jtamber03.fareast.corp.microsoft.com\"\r\n                  ]\r\n                }\r\n              ]\r\n            },\r\n            {\r\n              \"metricName\": \"Average_% Processor Time\",\r\n              \"dimensions\": [\r\n                {\r\n                  \"name\": \"Computer\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"AlekhyaCh.fareast.corp.microsoft.com\"\r\n                  ]\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/test-metric-delay\",\r\n      \"name\": \"test-metric-delay\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"03002614-0000-0000-0000-5b9376360000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"abcde\",\r\n        \"displayName\": \"test-metric-delay\",\r\n        \"enabled\": \"true\",\r\n        \"lastUpdatedTime\": \"2018-09-08T07:11:50.669034Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Heartbeat\",\r\n              \"dimensions\": [\r\n                {\r\n                  \"name\": \"SourceComputerId\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"7f218a32-4b13-47e5-b2f3-4733943add56\"\r\n                  ]\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/3minTo4minRavi\",\r\n      \"name\": \"3minTo4minRavi\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"0200a575-0000-0000-0000-5b9252450000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"3minTo4minRavi\",\r\n        \"displayName\": \"3minTo4minRavi\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2018-09-07T10:26:13.5685306Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Average_% Processor Time\",\r\n              \"dimensions\": [\r\n                {\r\n                  \"name\": \"Computer\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"jtamber03.fareast.corp.microsoft.com\"\r\n                  ]\r\n                },\r\n                {\r\n                  \"name\": \"ObjectName\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"Processor\"\r\n                  ]\r\n                },\r\n                {\r\n                  \"name\": \"InstanceName\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"_Total\"\r\n                  ]\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/3minTo4minzBytesReceived\",\r\n      \"name\": \"3minTo4minzBytesReceived\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"0200a375-0000-0000-0000-5b9251fb0000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"3minTo4minzBytesReceived\",\r\n        \"displayName\": \"3minTo4minzBytesReceived\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2018-09-07T10:24:59.0523459Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Average_Bytes Received/sec\",\r\n              \"dimensions\": [\r\n                {\r\n                  \"name\": \"Computer\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"AlekhyaCh.fareast.corp.microsoft.com\"\r\n                  ]\r\n                },\r\n                {\r\n                  \"name\": \"ObjectName\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"Network Adapter\"\r\n                  ]\r\n                },\r\n                {\r\n                  \"name\": \"InstanceName\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"802.11ac Wireless LAN Card\"\r\n                  ]\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/test-multi-time-series\",\r\n      \"name\": \"test-multi-time-series\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"620094d2-0000-0000-0000-5b9bed9a0000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"multi time series\",\r\n        \"displayName\": \"test-multi-time-series\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2018-09-14T17:19:19.8135902Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Heartbeat\",\r\n              \"dimensions\": [\r\n                {\r\n                  \"name\": \"Version\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"8.0.11103.0\"\r\n                  ]\r\n                },\r\n                {\r\n                  \"name\": \"SourceComputerId\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"84a67236-60bf-48d3-9e41-3b50fce988a5\"\r\n                  ]\r\n                }\r\n              ]\r\n            },\r\n            {\r\n              \"metricName\": \"Event\",\r\n              \"dimensions\": [\r\n                {\r\n                  \"name\": \"Source\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"Service Control Manager\"\r\n                  ]\r\n                },\r\n                {\r\n                  \"name\": \"EventCategory\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"1014\"\r\n                  ]\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/Test1\",\r\n      \"name\": \"Test1\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"1d004913-0000-0000-0000-5b98ec620000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"Test1\",\r\n        \"displayName\": \"Test1\",\r\n        \"enabled\": \"true\",\r\n        \"lastUpdatedTime\": \"2018-09-12T10:37:22.85595Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Heartbeat\",\r\n              \"dimensions\": [\r\n                {\r\n                  \"name\": \"OSType\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"Windows\"\r\n                  ]\r\n                },\r\n                {\r\n                  \"name\": \"SourceComputerId\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"84a67236-60bf-48d3-9e41-3b50fce988a5\"\r\n                  ]\r\n                }\r\n              ]\r\n            },\r\n            {\r\n              \"metricName\": \"Event\",\r\n              \"dimensions\": []\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/MCriteria-New-1\",\r\n      \"name\": \"MCriteria-New-1\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"1d007041-0000-0000-0000-5b98edb30000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"MCriteria-New-1\",\r\n        \"displayName\": \"MCriteria-New-1\",\r\n        \"enabled\": \"true\",\r\n        \"lastUpdatedTime\": \"2018-09-12T10:42:59.0627203Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Heartbeat\",\r\n              \"dimensions\": [\r\n                {\r\n                  \"name\": \"Computer\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"jtamber03.fareast.corp.microsoft.com\"\r\n                  ]\r\n                }\r\n              ]\r\n            },\r\n            {\r\n              \"metricName\": \"Average_% Processor Time\",\r\n              \"dimensions\": [\r\n                {\r\n                  \"name\": \"Computer\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"jtamber03.fareast.corp.microsoft.com\"\r\n                  ]\r\n                },\r\n                {\r\n                  \"name\": \"InstanceName\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"_Total\"\r\n                  ]\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/MCriteria-Test-01\",\r\n      \"name\": \"MCriteria-Test-01\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"1d0041bd-0000-0000-0000-5b98f17b0000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"Checking available memory and disk space on cluster at an aggregate level\",\r\n        \"displayName\": \"MCriteria-Test-01\",\r\n        \"enabled\": \"true\",\r\n        \"lastUpdatedTime\": \"2018-09-12T10:59:07.292549Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Average_Available MBytes\",\r\n              \"dimensions\": []\r\n            },\r\n            {\r\n              \"metricName\": \"Average_Free Megabytes\",\r\n              \"dimensions\": [\r\n                {\r\n                  \"name\": \"InstanceName\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"C:\"\r\n                  ]\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/alertstest/providers/microsoft.insights/scheduledqueryrules/LogSearchAIAnaShah\",\r\n      \"name\": \"LogSearchAIAnaShah\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/alertstest/providers/microsoft.insights/components/alertstestFunction\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"1e008b01-0000-0000-0000-5b98f37c0000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"dsfdse\",\r\n        \"displayName\": \"LogSearchAIAnaShah\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2018-09-12T11:07:40.0333543Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": \"search *\",\r\n          \"authorizedResources\": [],\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/alertstest/providers/microsoft.insights/components/alertstestFunction\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": {\r\n          \"frequencyInMinutes\": 5,\r\n          \"timeWindowInMinutes\": 5\r\n        },\r\n        \"action\": {\r\n          \"severity\": \"3\",\r\n          \"aznsAction\": {\r\n            \"actionGroup\": [\r\n              \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/default-activitylogalerts/providers/microsoft.insights/actiongroups/anashah\"\r\n            ],\r\n            \"emailSubject\": null,\r\n            \"customWebhookPayload\": null\r\n          },\r\n          \"trigger\": {\r\n            \"thresholdOperator\": \"GreaterThan\",\r\n            \"threshold\": 1297\r\n          },\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/test-workspace-alert\",\r\n      \"name\": \"test-workspace-alert\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"64000a04-0000-0000-0000-5b9f3b0b0000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"test\",\r\n        \"displayName\": \"test-workspace-alert\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2018-09-17T05:26:33.270621Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Event\",\r\n              \"dimensions\": [\r\n                {\r\n                  \"name\": \"Source\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"Microsoft-Windows-GroupPolicy\"\r\n                  ]\r\n                },\r\n                {\r\n                  \"name\": \"EventLevel\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"8\"\r\n                  ]\r\n                }\r\n              ]\r\n            },\r\n            {\r\n              \"metricName\": \"Average_% Available Memory\",\r\n              \"dimensions\": [\r\n                {\r\n                  \"name\": \"InstanceName\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"test\"\r\n                  ]\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/MCriteria-SingleTS-01\",\r\n      \"name\": \"MCriteria-SingleTS-01\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"00001360-0000-0000-0000-5ba3785b0000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"'MCriteria-SingleTS-01\",\r\n        \"displayName\": \"MCriteria-SingleTS-01\",\r\n        \"enabled\": \"true\",\r\n        \"lastUpdatedTime\": \"2018-09-20T10:37:14.4218329Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Average_Disk Transfers/sec\",\r\n              \"dimensions\": [\r\n                {\r\n                  \"name\": \"InstanceName\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"C:\"\r\n                  ]\r\n                }\r\n              ]\r\n            },\r\n            {\r\n              \"metricName\": \"Heartbeat\",\r\n              \"dimensions\": []\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/test-billing-nrt-eus\",\r\n      \"name\": \"test-billing-nrt-eus\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"2100d1c6-0000-0000-0000-5c2c852e0000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"test-billing-nrt\",\r\n        \"displayName\": \"test-billing-nrt-eus\",\r\n        \"enabled\": \"true\",\r\n        \"lastUpdatedTime\": \"2019-01-02T09:32:30.2485637Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Heartbeat\",\r\n              \"dimensions\": []\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/test-nrt-billing-1\",\r\n      \"name\": \"test-nrt-billing-1\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"2100cdde-0000-0000-0000-5c2c9e340000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"test-nrt-billing-1\",\r\n        \"displayName\": \"test-nrt-billing-1\",\r\n        \"enabled\": \"true\",\r\n        \"lastUpdatedTime\": \"2019-01-02T11:19:15.9586206Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Average_% Processor Time\",\r\n              \"dimensions\": [\r\n                {\r\n                  \"name\": \"Computer\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"*\"\r\n                  ]\r\n                },\r\n                {\r\n                  \"name\": \"ObjectName\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"Processor\"\r\n                  ]\r\n                },\r\n                {\r\n                  \"name\": \"SourceSystem\",\r\n                  \"operator\": \"Include\",\r\n                  \"values\": [\r\n                    \"OpsManager\"\r\n                  ]\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/TestAvgHotFix\",\r\n      \"name\": \"TestAvgHotFix\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"0700a467-0000-0000-0000-5c8a6f020000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"TestAvgHotFix\",\r\n        \"displayName\": \"TestAvgHotFix\",\r\n        \"enabled\": \"true\",\r\n        \"lastUpdatedTime\": \"2019-03-14T15:10:56.9867419Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Average_Free Megabytes\",\r\n              \"dimensions\": []\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/TestAvgHotFix_sum\",\r\n      \"name\": \"TestAvgHotFix_sum\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"07002068-0000-0000-0000-5c8a6f470000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"TestAvgHotFix_sum\",\r\n        \"displayName\": \"TestAvgHotFix_sum\",\r\n        \"enabled\": \"true\",\r\n        \"lastUpdatedTime\": \"2019-03-14T15:12:07.5312462Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Average_Free Megabytes\",\r\n              \"dimensions\": []\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/30719StorageServicesLogAnalyticsStatic\",\r\n      \"name\": \"30719StorageServicesLogAnalyticsStatic\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"07000182-0000-0100-0000-5d401e9d0000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"\",\r\n        \"displayName\": \"30719StorageServicesLogAnalyticsStatic\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2019-07-30T10:40:29.6051206Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Average_% Free Space\",\r\n              \"dimensions\": []\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/30719StorageServicesLogAnalyticsDynamic\",\r\n      \"name\": \"30719StorageServicesLogAnalyticsDynamic\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"0700a582-0000-0100-0000-5d401ec60000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"\",\r\n        \"displayName\": \"30719StorageServicesLogAnalyticsDynamic\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2019-07-30T10:41:10.6776377Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Average_% Used Inodes\",\r\n              \"dimensions\": []\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/alertstest/providers/microsoft.insights/scheduledqueryrules/30719AILog\",\r\n      \"name\": \"30719AILog\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {},\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"0700acaa-0000-0100-0000-5d4025340000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"asdas\",\r\n        \"displayName\": \"30719AILog\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2019-07-30T11:08:33.7771734Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": \"requests\",\r\n          \"authorizedResources\": [],\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/alertstest/providers/microsoft.insights/components/alertstestFunction\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": {\r\n          \"frequencyInMinutes\": 5,\r\n          \"timeWindowInMinutes\": 5\r\n        },\r\n        \"action\": {\r\n          \"severity\": \"3\",\r\n          \"aznsAction\": {\r\n            \"actionGroup\": [],\r\n            \"emailSubject\": null,\r\n            \"customWebhookPayload\": null\r\n          },\r\n          \"trigger\": {\r\n            \"thresholdOperator\": \"GreaterThan\",\r\n            \"threshold\": 80\r\n          },\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/agalert225\",\r\n      \"name\": \"agalert225\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"2100e869-0000-0100-0000-5d47f5a70000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"agalert225\",\r\n        \"displayName\": \"agalert225\",\r\n        \"enabled\": \"true\",\r\n        \"lastUpdatedTime\": \"2019-08-05T09:23:50.9048767Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Average_Disk Write Bytes/sec\",\r\n              \"dimensions\": []\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/microsoft.insights/scheduledqueryrules/BugBash-OperInsightsWorkspaces\",\r\n      \"name\": \"BugBash-OperInsightsWorkspaces\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"eastus\",\r\n      \"tags\": {\r\n        \"hidden-link:/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\": \"Resource\"\r\n      },\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"4900bff1-0000-0100-0000-5d4bf5e40000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"\",\r\n        \"displayName\": \"BugBash-OperInsightsWorkspaces\",\r\n        \"enabled\": \"false\",\r\n        \"lastUpdatedTime\": \"2019-08-08T10:13:56.0933795Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": null,\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/nrteventtest/providers/Microsoft.OperationalInsights/workspaces/nrteventtest\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": null,\r\n        \"action\": {\r\n          \"criteria\": [\r\n            {\r\n              \"metricName\": \"Average_% Free Inodes\",\r\n              \"dimensions\": []\r\n            }\r\n          ],\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.LogToMetricAction\"\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/ps9481/providers/microsoft.insights/scheduledQueryRules?api-version=2018-04-16",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlZ3JvdXBzL3BzOTQ4MS9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL3NjaGVkdWxlZFF1ZXJ5UnVsZXM/YXBpLXZlcnNpb249MjAxOC0wNC0xNg==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b2bf776a-3cbf-46b2-9ed9-890311f1631c"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.24.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:c13a1a07-630f-4f42-b89b-f5aedd031684"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "f74dcb90-6091-4e53-9acc-9b31ae0bc656"
+        ],
+        "x-ms-correlation-request-id": [
+          "f74dcb90-6091-4e53-9acc-9b31ae0bc656"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152842Z:f74dcb90-6091-4e53-9acc-9b31ae0bc656"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:42 GMT"
+        ],
+        "Content-Length": [
+          "2198"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/scheduledqueryrules/ps2477\",\r\n      \"name\": \"ps2477\",\r\n      \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {},\r\n      \"kind\": null,\r\n      \"etag\": \"\\\"8b00b355-0000-0700-0000-5d77c1280000\\\"\",\r\n      \"properties\": {\r\n        \"description\": \"SQR log alert rule\",\r\n        \"displayName\": \"ps2477\",\r\n        \"enabled\": \"true\",\r\n        \"lastUpdatedTime\": \"2019-09-10T15:28:38.8691114Z\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"source\": {\r\n          \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n          \"authorizedResources\": [\r\n            \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\"\r\n          ],\r\n          \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\",\r\n          \"queryType\": \"ResultCount\"\r\n        },\r\n        \"schedule\": {\r\n          \"frequencyInMinutes\": 5,\r\n          \"timeWindowInMinutes\": 5\r\n        },\r\n        \"action\": {\r\n          \"severity\": \"2\",\r\n          \"aznsAction\": {\r\n            \"actionGroup\": [\r\n              \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996\"\r\n            ],\r\n            \"emailSubject\": \"SQR Log alert trigger notification\",\r\n            \"customWebhookPayload\": \"{}\"\r\n          },\r\n          \"throttlingInMin\": 5,\r\n          \"trigger\": {\r\n            \"thresholdOperator\": \"GreaterThan\",\r\n            \"threshold\": 5,\r\n            \"metricTrigger\": {\r\n              \"thresholdOperator\": \"GreaterThan\",\r\n              \"threshold\": 10,\r\n              \"metricTriggerType\": \"Total\",\r\n              \"metricColumn\": \"timestamp\"\r\n            }\r\n          },\r\n          \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/ps9481/providers/microsoft.insights/scheduledQueryRules/ps2477?api-version=2018-04-16",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlZ3JvdXBzL3BzOTQ4MS9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL3NjaGVkdWxlZFF1ZXJ5UnVsZXMvcHMyNDc3P2FwaS12ZXJzaW9uPTIwMTgtMDQtMTY=",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"enabled\": \"false\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "11fccc88-4d15-44c7-b51d-373ed16ed582"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.24.1.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "67"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:c13a1a07-630f-4f42-b89b-f5aedd031684"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1189"
+        ],
+        "x-ms-request-id": [
+          "6578de09-bee9-460e-bd46-b6652575e308"
+        ],
+        "x-ms-correlation-request-id": [
+          "6578de09-bee9-460e-bd46-b6652575e308"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152850Z:6578de09-bee9-460e-bd46-b6652575e308"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:50 GMT"
+        ],
+        "Content-Length": [
+          "1953"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/scheduledqueryrules/ps2477\",\r\n  \"name\": \"ps2477\",\r\n  \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"kind\": null,\r\n  \"etag\": \"\\\"8b002457-0000-0700-0000-5d77c1310000\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"SQR log alert rule\",\r\n    \"displayName\": \"ps2477\",\r\n    \"enabled\": \"false\",\r\n    \"lastUpdatedTime\": \"2019-09-10T15:28:49.5680575Z\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"source\": {\r\n      \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n      \"authorizedResources\": [\r\n        \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\"\r\n      ],\r\n      \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\",\r\n      \"queryType\": \"ResultCount\"\r\n    },\r\n    \"schedule\": {\r\n      \"frequencyInMinutes\": 5,\r\n      \"timeWindowInMinutes\": 5\r\n    },\r\n    \"action\": {\r\n      \"severity\": \"2\",\r\n      \"aznsAction\": {\r\n        \"actionGroup\": [\r\n          \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996\"\r\n        ],\r\n        \"emailSubject\": \"SQR Log alert trigger notification\",\r\n        \"customWebhookPayload\": \"{}\"\r\n      },\r\n      \"throttlingInMin\": 5,\r\n      \"trigger\": {\r\n        \"thresholdOperator\": \"GreaterThan\",\r\n        \"threshold\": 5,\r\n        \"metricTrigger\": {\r\n          \"thresholdOperator\": \"GreaterThan\",\r\n          \"threshold\": 10,\r\n          \"metricTriggerType\": \"Total\",\r\n          \"metricColumn\": \"timestamp\"\r\n        }\r\n      },\r\n      \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/ps9481/providers/microsoft.insights/scheduledQueryRules/ps2477?api-version=2018-04-16",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlZ3JvdXBzL3BzOTQ4MS9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL3NjaGVkdWxlZFF1ZXJ5UnVsZXMvcHMyNDc3P2FwaS12ZXJzaW9uPTIwMTgtMDQtMTY=",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"enabled\": \"false\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f0fa135c-bf64-437d-847b-691103ea2145"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.24.1.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "67"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:c13a1a07-630f-4f42-b89b-f5aedd031684"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1188"
+        ],
+        "x-ms-request-id": [
+          "a8c86bcd-1055-4d3f-a01c-39820b9bad69"
+        ],
+        "x-ms-correlation-request-id": [
+          "a8c86bcd-1055-4d3f-a01c-39820b9bad69"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152853Z:a8c86bcd-1055-4d3f-a01c-39820b9bad69"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:52 GMT"
+        ],
+        "Content-Length": [
+          "1953"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/scheduledqueryrules/ps2477\",\r\n  \"name\": \"ps2477\",\r\n  \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"kind\": null,\r\n  \"etag\": \"\\\"8b008b57-0000-0700-0000-5d77c1340000\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"SQR log alert rule\",\r\n    \"displayName\": \"ps2477\",\r\n    \"enabled\": \"false\",\r\n    \"lastUpdatedTime\": \"2019-09-10T15:28:52.3649407Z\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"source\": {\r\n      \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n      \"authorizedResources\": [\r\n        \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\"\r\n      ],\r\n      \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\",\r\n      \"queryType\": \"ResultCount\"\r\n    },\r\n    \"schedule\": {\r\n      \"frequencyInMinutes\": 5,\r\n      \"timeWindowInMinutes\": 5\r\n    },\r\n    \"action\": {\r\n      \"severity\": \"2\",\r\n      \"aznsAction\": {\r\n        \"actionGroup\": [\r\n          \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996\"\r\n        ],\r\n        \"emailSubject\": \"SQR Log alert trigger notification\",\r\n        \"customWebhookPayload\": \"{}\"\r\n      },\r\n      \"throttlingInMin\": 5,\r\n      \"trigger\": {\r\n        \"thresholdOperator\": \"GreaterThan\",\r\n        \"threshold\": 5,\r\n        \"metricTrigger\": {\r\n          \"thresholdOperator\": \"GreaterThan\",\r\n          \"threshold\": 10,\r\n          \"metricTriggerType\": \"Total\",\r\n          \"metricColumn\": \"timestamp\"\r\n        }\r\n      },\r\n      \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/ps9481/providers/microsoft.insights/scheduledQueryRules/ps2477?api-version=2018-04-16",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlZ3JvdXBzL3BzOTQ4MS9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL3NjaGVkdWxlZFF1ZXJ5UnVsZXMvcHMyNDc3P2FwaS12ZXJzaW9uPTIwMTgtMDQtMTY=",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"enabled\": \"false\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e7b1b7e6-ff74-41a6-b754-39f3674453f3"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.24.1.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "67"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:c13a1a07-630f-4f42-b89b-f5aedd031684"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1187"
+        ],
+        "x-ms-request-id": [
+          "c7af5154-1b6a-4df5-bc15-fa62e8e13272"
+        ],
+        "x-ms-correlation-request-id": [
+          "c7af5154-1b6a-4df5-bc15-fa62e8e13272"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152856Z:c7af5154-1b6a-4df5-bc15-fa62e8e13272"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:56 GMT"
+        ],
+        "Content-Length": [
+          "1953"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/scheduledqueryrules/ps2477\",\r\n  \"name\": \"ps2477\",\r\n  \"type\": \"microsoft.insights/scheduledqueryrules\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"kind\": null,\r\n  \"etag\": \"\\\"8b00ee57-0000-0700-0000-5d77c1370000\\\"\",\r\n  \"properties\": {\r\n    \"description\": \"SQR log alert rule\",\r\n    \"displayName\": \"ps2477\",\r\n    \"enabled\": \"false\",\r\n    \"lastUpdatedTime\": \"2019-09-10T15:28:55.0442772Z\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"source\": {\r\n      \"query\": \"traces | summarize AggregatedValue = count() by bin(timestamp, 5m)\",\r\n      \"authorizedResources\": [\r\n        \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\"\r\n      ],\r\n      \"dataSourceId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/components/ps5505\",\r\n      \"queryType\": \"ResultCount\"\r\n    },\r\n    \"schedule\": {\r\n      \"frequencyInMinutes\": 5,\r\n      \"timeWindowInMinutes\": 5\r\n    },\r\n    \"action\": {\r\n      \"severity\": \"2\",\r\n      \"aznsAction\": {\r\n        \"actionGroup\": [\r\n          \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9481/providers/microsoft.insights/actionGroups/ps2996\"\r\n        ],\r\n        \"emailSubject\": \"SQR Log alert trigger notification\",\r\n        \"customWebhookPayload\": \"{}\"\r\n      },\r\n      \"throttlingInMin\": 5,\r\n      \"trigger\": {\r\n        \"thresholdOperator\": \"GreaterThan\",\r\n        \"threshold\": 5,\r\n        \"metricTrigger\": {\r\n          \"thresholdOperator\": \"GreaterThan\",\r\n          \"threshold\": 10,\r\n          \"metricTriggerType\": \"Total\",\r\n          \"metricColumn\": \"timestamp\"\r\n        }\r\n      },\r\n      \"odata.type\": \"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/ps9481/providers/microsoft.insights/scheduledQueryRules/ps2477?api-version=2018-04-16",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlZ3JvdXBzL3BzOTQ4MS9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL3NjaGVkdWxlZFF1ZXJ5UnVsZXMvcHMyNDc3P2FwaS12ZXJzaW9uPTIwMTgtMDQtMTY=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "746810f2-b2e3-48c9-b3fb-ef557e0d5a23"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.24.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:c13a1a07-630f-4f42-b89b-f5aedd031684"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14996"
+        ],
+        "x-ms-request-id": [
+          "a6a6d81a-2da0-4459-b771-22f7ee5512de"
+        ],
+        "x-ms-correlation-request-id": [
+          "a6a6d81a-2da0-4459-b771-22f7ee5512de"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152858Z:a6a6d81a-2da0-4459-b771-22f7ee5512de"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:58 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/ps9481/providers/microsoft.insights/scheduledQueryRules/ps2477?api-version=2018-04-16",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlZ3JvdXBzL3BzOTQ4MS9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL3NjaGVkdWxlZFF1ZXJ5UnVsZXMvcHMyNDc3P2FwaS12ZXJzaW9uPTIwMTgtMDQtMTY=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d9c43ef4-b6ea-477b-80c1-345419bfada3"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.24.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:c13a1a07-630f-4f42-b89b-f5aedd031684"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14998"
+        ],
+        "x-ms-request-id": [
+          "8e6cc08e-d0d1-4dd5-b96a-0b844aa38c81"
+        ],
+        "x-ms-correlation-request-id": [
+          "8e6cc08e-d0d1-4dd5-b96a-0b844aa38c81"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152859Z:8e6cc08e-d0d1-4dd5-b96a-0b844aa38c81"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:58 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/ps9481/providers/microsoft.insights/scheduledQueryRules/ps2477?api-version=2018-04-16",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlZ3JvdXBzL3BzOTQ4MS9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL3NjaGVkdWxlZFF1ZXJ5UnVsZXMvcHMyNDc3P2FwaS12ZXJzaW9uPTIwMTgtMDQtMTY=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3382ad67-e279-4f8d-8d44-e51adad33ad0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.24.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:c13a1a07-630f-4f42-b89b-f5aedd031684"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "7834f9c3-10d3-46dd-84c1-4940d95b00c8"
+        ],
+        "x-ms-correlation-request-id": [
+          "7834f9c3-10d3-46dd-84c1-4940d95b00c8"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152900Z:7834f9c3-10d3-46dd-84c1-4940d95b00c8"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:59 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/ps9481?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlZ3JvdXBzL3BzOTQ4MT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ba4b4ed0-570f-40f2-8734-ba1dd486e682"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk0ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "ab599019-41d4-4d13-9ee5-916d9c83400e"
+        ],
+        "x-ms-correlation-request-id": [
+          "ab599019-41d4-4d13-9ee5-916d9c83400e"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152859Z:ab599019-41d4-4d13-9ee5-916d9c83400e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:28:59 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk0ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXprME9ERXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk0ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "901f0d5b-4240-4db8-a034-768af1257f2c"
+        ],
+        "x-ms-correlation-request-id": [
+          "901f0d5b-4240-4db8-a034-768af1257f2c"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152915Z:901f0d5b-4240-4db8-a034-768af1257f2c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:29:14 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk0ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXprME9ERXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk0ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "d058eba7-8303-4d8b-b97b-51d588b6dbf7"
+        ],
+        "x-ms-correlation-request-id": [
+          "d058eba7-8303-4d8b-b97b-51d588b6dbf7"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152930Z:d058eba7-8303-4d8b-b97b-51d588b6dbf7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:29:29 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk0ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXprME9ERXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk0ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "25e5998a-c370-413a-9fae-f1f5ce86bb44"
+        ],
+        "x-ms-correlation-request-id": [
+          "25e5998a-c370-413a-9fae-f1f5ce86bb44"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T152945Z:25e5998a-c370-413a-9fae-f1f5ce86bb44"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:29:45 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk0ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXprME9ERXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk0ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "043b16a4-1cc8-4d18-9cda-0b142690af3b"
+        ],
+        "x-ms-correlation-request-id": [
+          "043b16a4-1cc8-4d18-9cda-0b142690af3b"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T153001Z:043b16a4-1cc8-4d18-9cda-0b142690af3b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:30:00 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk0ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXprME9ERXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk0ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "313e990c-4552-4c4d-88fd-6abed8d216f5"
+        ],
+        "x-ms-correlation-request-id": [
+          "313e990c-4552-4c4d-88fd-6abed8d216f5"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T153016Z:313e990c-4552-4c4d-88fd-6abed8d216f5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:30:15 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk0ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXprME9ERXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk0ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-request-id": [
+          "3bccf49e-a9b8-4f53-99d2-bed4485b3857"
+        ],
+        "x-ms-correlation-request-id": [
+          "3bccf49e-a9b8-4f53-99d2-bed4485b3857"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T153032Z:3bccf49e-a9b8-4f53-99d2-bed4485b3857"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:30:31 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk0ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXprME9ERXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk0ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-request-id": [
+          "0bbc05a9-d209-4208-913f-fd80e5b211ef"
+        ],
+        "x-ms-correlation-request-id": [
+          "0bbc05a9-d209-4208-913f-fd80e5b211ef"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T153047Z:0bbc05a9-d209-4208-913f-fd80e5b211ef"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:30:47 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk0ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXprME9ERXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk0ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-request-id": [
+          "6d6e020b-9afb-4e65-a8a1-c7bea6840dba"
+        ],
+        "x-ms-correlation-request-id": [
+          "6d6e020b-9afb-4e65-a8a1-c7bea6840dba"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T153102Z:6d6e020b-9afb-4e65-a8a1-c7bea6840dba"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:31:02 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk0ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXprME9ERXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-request-id": [
+          "de8e7823-ea22-4fc8-be6a-18dfd8d32bac"
+        ],
+        "x-ms-correlation-request-id": [
+          "de8e7823-ea22-4fc8-be6a-18dfd8d32bac"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T153118Z:de8e7823-ea22-4fc8-be6a-18dfd8d32bac"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:31:17 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzk0ODEtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXprME9ERXRWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11990"
+        ],
+        "x-ms-request-id": [
+          "5b080bce-6c17-43e1-80f6-1d547be104a0"
+        ],
+        "x-ms-correlation-request-id": [
+          "5b080bce-6c17-43e1-80f6-1d547be104a0"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190910T153118Z:5b080bce-6c17-43e1-80f6-1d547be104a0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 10 Sep 2019 15:31:18 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-NewGetUpdateSetRemoveScheduledQueryRule": [
+      "ps2477",
+      "ps9216",
+      "ps8094",
+      "ps9481",
+      "ps5505",
+      "ps2996"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "80430018-24ee-4b28-a7bd-fb23b5a221d6"
+  }
+}

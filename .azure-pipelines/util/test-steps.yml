@@ -14,7 +14,7 @@ steps:
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'build.proj /t:${{ parameters.testTarget }} /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }}'
+    arguments: 'build.proj /t:${{ parameters.testTarget }} /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
 
 - template: publish-artifacts-steps.yml
   parameters:

@@ -29,7 +29,7 @@ The **Set-AzBatchApplication** cmdlet modifies settings for the specified Azure 
 PS C:\>Set-AzBatchApplication -AccountName "ContosoBatch" -ResourceGroupName "ContosoBatchGroup" -ApplicationId "Litware" -AllowUpdates $False
 ```
 
-This command changes whether the Llitware application in the ContosoBatch account allows updates.
+This command changes whether the Litware application in the ContosoBatch account allows updates.
 The command does not change the default version or display name of the application.
 
 ## PARAMETERS

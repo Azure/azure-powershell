@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var clusterRes = GetCurrentCluster();
             var nodeTypes = clusterRes.NodeTypes;
             var primaryNodeType = nodeTypes.Single(nt => nt.IsPrimary);
-            var vmss = GetVmss(primaryNodeType.Name);
+            var vmss = GetVmss(primaryNodeType.Name, clusterRes.ClusterId);
             return vmss;
         }
     }

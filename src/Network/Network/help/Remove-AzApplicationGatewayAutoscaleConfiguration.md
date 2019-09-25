@@ -30,7 +30,7 @@ PS C:\> $gw = Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 
 The first command gets the application gateway and stores it in $gw variable.
-The second command removes the autoscale configuration from the applicationg gateway.
+The second command removes the autoscale configuration from the application gateway.
 The third command updates the application gateway on Azure.
 
 ## PARAMETERS

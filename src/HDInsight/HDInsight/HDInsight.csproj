@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>HDInsight</PsModuleName>
@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.HDInsight" Version="2.0.8" />
+    <PackageReference Include="Microsoft.Azure.Management.HDInsight" Version="2.1.0" />
     <PackageReference Include="Microsoft.Azure.Management.HDInsight.Job" Version="2.0.7" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
   </ItemGroup>

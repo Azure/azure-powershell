@@ -19,13 +19,14 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -57,8 +58,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             var vVaultCertificates = new VaultCertificate();
 
-            vVaultCertificates.CertificateUrl = this.MyInvocation.BoundParameters.ContainsKey("CertificateUrl") ? this.CertificateUrl : null;
-            vVaultCertificates.CertificateStore = this.MyInvocation.BoundParameters.ContainsKey("CertificateStore") ? this.CertificateStore : null;
+            vVaultCertificates.CertificateUrl = this.IsParameterBound(c => c.CertificateUrl) ? this.CertificateUrl : null;
+            vVaultCertificates.CertificateStore = this.IsParameterBound(c => c.CertificateStore) ? this.CertificateStore : null;
 
             WriteObject(vVaultCertificates);
         }

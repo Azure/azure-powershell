@@ -31,7 +31,7 @@ Start-AzAksDashboard [-Id] <String> [-DisableBrowser] [-PassThru] [-DefaultProfi
 ```
 
 ## DESCRIPTION
-Create a Kubectl SSH tunnel to the managed cluster's dashboard. The SSH tunnel is setup in a PowerShell job called Kubectl-Tunnel and can be found by running `Get-Job`. The tunnel should be accessable via [http://127.0.0.1:8001](http://127.0.0.1:8001).
+Create a Kubectl SSH tunnel to the managed cluster's dashboard. The SSH tunnel is setup in a PowerShell job called Kubectl-Tunnel and can be found by running `Get-Job`. The tunnel should be accessible via [http://127.0.0.1:8001](http://127.0.0.1:8001).
 
 ## EXAMPLES
 
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisableBrowser
-Do not pop open a browser after establising the kubectl port-forward.
+Do not pop open a browser after establishing the kubectl port-forward.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

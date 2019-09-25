@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Terms object returned in Get-AzMarketplaceTerms cmdlet. This is a mandatory parameter if Accepted paramter is true.
+Terms object returned in Get-AzMarketplaceTerms cmdlet. This is a mandatory parameter if Accepted parameter is true.
 
 ```yaml
 Type: Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms
@@ -167,7 +167,7 @@ Accept wildcard characters: False
 ```
 
 ### -Terms
-Terms object returned in Get-AzMarketplaceTerms cmdlet. This is a mandatory parameter if Accepted paramter is true.
+Terms object returned in Get-AzMarketplaceTerms cmdlet. This is a mandatory parameter if Accepted parameter is true.
 
 ```yaml
 Type: Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms

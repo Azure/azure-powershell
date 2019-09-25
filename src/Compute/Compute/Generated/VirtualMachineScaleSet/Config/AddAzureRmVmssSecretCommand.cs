@@ -19,13 +19,14 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -82,13 +83,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vSecrets = new VaultSecretGroup();
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("SourceVaultId"))
+            if (this.IsParameterBound(c => c.SourceVaultId))
             {
                 // SourceVault
                 vSecrets.SourceVault = new SubResource();
                 vSecrets.SourceVault.Id = this.SourceVaultId;
             }
-            vSecrets.VaultCertificates = this.MyInvocation.BoundParameters.ContainsKey("VaultCertificate") ? this.VaultCertificate : null;
+            vSecrets.VaultCertificates = this.IsParameterBound(c => c.VaultCertificate) ? this.VaultCertificate : null;
             this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.Secrets.Add(vSecrets);
             WriteObject(this.VirtualMachineScaleSet);
         }

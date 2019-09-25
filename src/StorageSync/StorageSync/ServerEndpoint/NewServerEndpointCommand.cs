@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
@@ -231,10 +232,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
                 var createParameters = new ServerEndpointCreateParameters()
                 {
-                    CloudTiering = CloudTiering.IsPresent ? StorageSyncConstants.CloudTieringOn : StorageSyncConstants.CloudTieringOff,
+                    CloudTiering = CloudTiering.ToBool() ? StorageSyncConstants.CloudTieringOn : StorageSyncConstants.CloudTieringOff,
                     VolumeFreeSpacePercent = VolumeFreeSpacePercent,
                     ServerLocalPath = ServerLocalPath,
-                    ServerResourceId = ServerResourceId
+                    ServerResourceId = ServerResourceId,
+                    TierFilesOlderThanDays = TierFilesOlderThanDays,
+                    OfflineDataTransfer = OfflineDataTransfer.ToBool() ? StorageSyncConstants.OfflineDataTransferOn : StorageSyncConstants.OfflineDataTransferOff,
+                    OfflineDataTransferShareName = OfflineDataTransferShareName
                 };
 
                 string resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName;

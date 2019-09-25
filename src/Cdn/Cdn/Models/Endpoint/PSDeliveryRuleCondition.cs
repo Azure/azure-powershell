@@ -20,5 +20,16 @@ namespace Microsoft.Azure.Commands.Cdn.Models.Endpoint
 {
     public class PSDeliveryRuleCondition
     {
+        public string MatchVariable { get; set; }
+
+        public string Operator { get; set; }
+
+        public string Selector { get; set; }
+
+        public IList<string> MatchValue { get; set; }
+
+        public bool? NegateCondition { get; set; }
+
+        public IList<string> Transfroms { get; set; }
     }
 }

@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -95,8 +95,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             storageProfile.DataDisks.Add(new DataDisk
             {
-                Caching = this.MyInvocation.BoundParameters.ContainsKey("Caching") ? this.Caching : (CachingTypes?)null,
-                DiskSizeGB = this.MyInvocation.BoundParameters.ContainsKey("DiskSizeInGB") ? this.DiskSizeInGB: (int?)null,
+                Caching = this.IsParameterBound(c => c.Caching) ? this.Caching : (CachingTypes?)null,
+                DiskSizeGB = this.IsParameterBound(c => c.DiskSizeInGB) ? this.DiskSizeInGB: (int?)null,
                 Lun = this.Lun,
                 CreateOption = this.CreateOption,
                 ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.StorageAccountType),

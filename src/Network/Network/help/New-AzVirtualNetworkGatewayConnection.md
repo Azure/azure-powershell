@@ -20,7 +20,7 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-VirtualNetworkGateway2 <PSVirtualNetworkGateway>] [-LocalNetworkGateway2 <PSLocalNetworkGateway>]
  -ConnectionType <String> [-RoutingWeight <Int32>] [-SharedKey <String>] [-Peer <PSPeering>]
  [-EnableBgp <Boolean>] [-Tag <Hashtable>] [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>]
- [-IpsecPolicies <PSIpsecPolicy[]>] [-AsJob] [-ExpressRouteGatewayBypass]
+ [-IpsecPolicies <PSIpsecPolicy[]>] [-ConnectionProtocol <String>] [-AsJob] [-ExpressRouteGatewayBypass]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-VirtualNetworkGateway2 <PSVirtualNetworkGateway>] [-LocalNetworkGateway2 <PSLocalNetworkGateway>]
  -ConnectionType <String> [-RoutingWeight <Int32>] [-SharedKey <String>] [-PeerId <String>]
  [-EnableBgp <Boolean>] [-Tag <Hashtable>] [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>]
- [-IpsecPolicies <PSIpsecPolicy[]>] [-AsJob] [-ExpressRouteGatewayBypass]
+ [-IpsecPolicies <PSIpsecPolicy[]>] [-ConnectionProtocol <String>] [-AsJob] [-ExpressRouteGatewayBypass]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -73,6 +73,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ConnectionProtocol
+Gateway connection protocol:IKEv1/IKEv2
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: IKEv1, IKEv2
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

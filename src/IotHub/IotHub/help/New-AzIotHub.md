@@ -20,7 +20,7 @@ New-AzIotHub -ResourceGroupName <String> -Name <String> -SkuName <PSIotHubSku> -
 
 ## DESCRIPTION
 Creates a new IotHub.
-You can create the IotHub with either the default properties or specify the input proerties.
+You can create the IotHub with either the default properties or specify the input properties.
 
 ## EXAMPLES
 
@@ -31,7 +31,7 @@ PS C:\> New-AzIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuN
 
 Creates a new IotHub named "myiothub" of the sku "S1", capacity 1 and location "northeurope".
 
-### Example 2 Create a new IotHub with the MaxDeliveryCount of the CloudtoDevice Queue set to 20
+### Example 2 Create a new IotHub with the MaxDeliveryCount of the CloudToDevice Queue set to 20
 ```
 PS C:\> New-AzIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -SkuName "S1" -Units 1 -Location "northeurope" -Properties $properties
 ```

@@ -76,6 +76,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 "selected environment and manged storage account name." )]
         [ValidateNotNullOrEmpty]
         [Alias( Constants.StorageAccountName, Constants.Name )]
+        [SupportsWildcards]
         public string AccountName { get; set; }
 
         [Parameter(Mandatory = false,

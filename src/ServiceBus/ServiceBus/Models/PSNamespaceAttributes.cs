@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 if(evResource.Id != null)
                 Id = evResource.Id;
                 ResourceGroup = Regex.Split(evResource.Id, @"/")[4];
+                ResourceGroupName = Regex.Split(evResource.Id, @"/")[4];
                 Tags = new Dictionary<string, string>(evResource.Tags);
             }
         }
@@ -58,6 +59,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// Gets the resourcegroup name
         /// </summary>
         public string ResourceGroup { get; }
+
+        /// <summary>
+        /// Gets the resourcegroup name
+        /// </summary>
+        public string ResourceGroupName { get; }
 
         /// <summary>
         /// Gets or sets the name of the resource group the Namespace is in

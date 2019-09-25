@@ -19,7 +19,7 @@ Add-AzSqlDatabaseToFailoverGroup [-ServerName] <String> [-FailoverGroupName] <St
 ```
 
 ## DESCRIPTION
-Adds one or more databases on a Azure SQL Database Failover Group's primary server to to that Failover Group. The databases must not be secondary databases in existing replication relationships. The command will start geo-replication of any added databases to the Failover Group's secondary server.
+Adds one or more databases on a Azure SQL Database Failover Group's primary server to that Failover Group. The databases must not be secondary databases in existing replication relationships. The command will start geo-replication of any added databases to the Failover Group's secondary server.
 To obtain database objects with which to populate the '-Database' parameter, use (for example) the Get-AzSqlDatabase cmdlet.
 The Failover Group's primary server must be used to execute the command.
 

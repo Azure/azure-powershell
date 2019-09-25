@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         [ResourceNameCompleter("Microsoft.Sql/servers/elasticPools", "ResourceGroupName", "ServerName")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ElasticPoolName { get; set; }
 
         /// <summary>

@@ -108,5 +108,26 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Possible values include: 'Proxy', 'Redirect', 'Default'
         /// </summary>
         public string ProxyOverride { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Managed Instance time zone
+        /// </summary>
+        public string TimezoneId { get; set; }
+
+
+         /// <summary>
+        /// Gets or sets the resource id of the dns zone partner of the managed instance
+        /// </summary>
+        public string DnsZonePartner { get; set; }
+
+         /// <summary>
+        /// Gets or sets the dns zone of the managed instance
+        /// </summary>
+        public string DnsZone { get; set; }
+
+        /// <summary>
+        /// Gets or sets the instance pool name
+        /// </summary>
+        public string InstancePoolName { get; set; }
     }
 }

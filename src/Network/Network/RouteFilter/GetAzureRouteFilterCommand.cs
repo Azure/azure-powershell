@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Network
            ParameterSetName = "Expand")]
         [ResourceNameCompleter("Microsoft.Network/routeFilters", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         [Parameter(
@@ -53,6 +54,7 @@ namespace Microsoft.Azure.Commands.Network
            ParameterSetName = "Expand")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Parameter(

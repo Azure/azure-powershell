@@ -81,11 +81,10 @@ function Test-AvailabilitySet
         Assert-AreEqual $aset.Name $asetName;
         Assert-AreEqual $nonDefaultUD $aset.PlatformUpdateDomainCount;
         Assert-AreEqual $nonDefaultFD $aset.PlatformFaultDomainCount;
-        Assert-False {$aset.Managed};
         Assert-AreEqual 'Classic' $aset.Sku;
         Assert-AreEqual "b" $aset.Tags["a"];
 
-        $job = $aset | Update-AzAvailabilitySet -Managed -AsJob;
+        $job = $aset | Update-AzAvailabilitySet -Sku 'Aligned' -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
         $aset = Get-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName;

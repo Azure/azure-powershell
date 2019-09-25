@@ -115,14 +115,28 @@ namespace Microsoft.Azure.Commands.Compute
                         ProtectedSettings = privateSettings
                     };
 
-                    var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                        this.ResourceGroupName,
-                        this.VMName,
-                        this.Name ?? VirtualMachineADDomainExtensionContext.ExtensionDefaultName,
-                        parameters).GetAwaiter().GetResult();
+                    if (NoWait.IsPresent)
+                    {
+                        var op = this.VirtualMachineExtensionClient.BeginCreateOrUpdateWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.VMName,
+                            this.Name ?? VirtualMachineADDomainExtensionContext.ExtensionDefaultName,
+                            parameters).GetAwaiter().GetResult();
 
-                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                    WriteObject(result);
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                        WriteObject(result);
+                    }
+                    else
+                    {
+                        var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.VMName,
+                            this.Name ?? VirtualMachineADDomainExtensionContext.ExtensionDefaultName,
+                            parameters).GetAwaiter().GetResult();
+
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                        WriteObject(result);
+                    }
                 });
             }
         }

@@ -17,7 +17,6 @@ using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.Adapters;
-using Microsoft.WindowsAzure.Storage;
 using System;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
@@ -53,6 +52,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.EnableHttpsTrafficOnly = storageAccount.EnableHttpsTrafficOnly;
             this.NetworkRuleSet = PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet);
             this.EnableHierarchicalNamespace = storageAccount.IsHnsEnabled;
+            this.AzureFilesIdentityBasedAuth = storageAccount.AzureFilesIdentityBasedAuthentication is null ? null : new PSAzureFilesIdentityBasedAuthentication(storageAccount.AzureFilesIdentityBasedAuthentication);
         }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 1)]
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public Sku Sku { get; set; }
 
         [Ps1Xml(Label = "Kind", Target = ViewControl.Table, Position = 4)]
-        public Kind? Kind { get; set; }
+        public string Kind { get; set; }
         public Encryption Encryption { get; set; }
 
         [Ps1Xml(Label = "AccessTier", Target = ViewControl.Table, Position = 5)]
@@ -104,7 +104,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         [Ps1Xml(Label = "EnableHttpsTrafficOnly", Target = ViewControl.Table, Position = 8)]
         public bool? EnableHttpsTrafficOnly { get; set; }
-        
+
+        public PSAzureFilesIdentityBasedAuthentication AzureFilesIdentityBasedAuth { get; set; }
+
         public bool? EnableHierarchicalNamespace { get; set; }
 
         public PSNetworkRuleSet NetworkRuleSet { get; set; }

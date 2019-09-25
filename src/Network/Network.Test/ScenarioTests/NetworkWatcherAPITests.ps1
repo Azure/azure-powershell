@@ -505,7 +505,8 @@ function Test-PacketCapture
         Assert-AreEqual $pc1.Filters[0].RemoteIPAddress 127.0.0.1-127.0.0.255
         Assert-AreEqual $pc1.Filters[1].LocalIPAddress 127.0.0.1;127.0.0.5
         Assert-AreEqual $pc1.StorageLocation.FilePath C:\tmp\Capture.cap
-        Assert-AreEqual $pcList.Count 2
+
+        $currentCount = $pcList.Count;
 
         #Stop packet capture
         $job = Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
@@ -520,7 +521,7 @@ function Test-PacketCapture
 
         #List packet captures
         $pcList = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw
-        Assert-AreEqual $pcList.Count 1
+        Assert-AreEqual $pcList.Count ($currentCount - 1)
 
         #Remove packet capture
         Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2
@@ -560,8 +561,8 @@ function Test-Troubleshoot
 
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-        $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
         $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
  
         # Create the publicip

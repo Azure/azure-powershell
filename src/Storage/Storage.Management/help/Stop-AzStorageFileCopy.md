@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 3AC3F8DE-E25D-41AE-9083-5C459A4C8CD0
@@ -50,7 +50,7 @@ If this cmdlet does not receive a successful response before the interval elapse
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases:
+Aliases: ClientTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named
@@ -129,7 +129,7 @@ Specifies a **CloudFile** object.
 You can create a cloud file or obtain one by using the Get-AzStorageFile cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFile
+Type: Microsoft.Azure.Storage.File.CloudFile
 Parameter Sets: File
 Aliases:
 
@@ -176,7 +176,7 @@ Specifies the length of the time-out period for the server part of a request.
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases:
+Aliases: ServerTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named
@@ -236,7 +236,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.WindowsAzure.Storage.File.CloudFile
+### Microsoft.Azure.Storage.File.CloudFile
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 

@@ -15,15 +15,17 @@
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
     using System;
     using System.Management.Automation;
 
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementProduct")]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementProduct", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementProduct))]
     public class SetAzureApiManagementProduct : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -88,21 +90,24 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            Client.ProductSet(
-                Context,
-                ProductId,
-                Title,
-                Description,
-                LegalTerms,
-                SubscriptionRequired,
-                ApprovalRequired,
-                SubscriptionsLimit,
-                State);
-
-            if (PassThru)
+            if (ShouldProcess(ProductId, Resources.SetProduct))
             {
-                var product = Client.ProductById(Context, ProductId);
-                WriteObject(product);
+                Client.ProductSet(
+                    Context,
+                    ProductId,
+                    Title,
+                    Description,
+                    LegalTerms,
+                    SubscriptionRequired,
+                    ApprovalRequired,
+                    SubscriptionsLimit,
+                    State);
+
+                if (PassThru)
+                {
+                    var product = Client.ProductById(Context, ProductId);
+                    WriteObject(product);
+                }
             }
         }
     }

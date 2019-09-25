@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
         }
 
-        [Fact(Skip="Fails on Linux/macOS. Needs investigation.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourceSku()
         {

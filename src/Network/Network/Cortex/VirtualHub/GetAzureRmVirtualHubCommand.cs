@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Alias("ResourceName", "VirtualHubName")]
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/virtualHubs", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         public override void Execute()

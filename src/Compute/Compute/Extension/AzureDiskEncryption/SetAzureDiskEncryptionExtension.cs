@@ -27,7 +27,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDiskEncryptionExtension",SupportsShouldProcess = true,DefaultParameterSetName = AzureDiskEncryptionExtensionConstants.singlePassParameterSet)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDiskEncryptionExtension", SupportsShouldProcess = true, DefaultParameterSetName = AzureDiskEncryptionExtensionConstants.singlePassParameterSet)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureDiskEncryptionExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 this.ComputeClient.ComputeManagementClient.VirtualMachines
                     .DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.VMName).GetAwaiter()
                     .GetResult();
-                
+
                 // update vm
                 vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
                 this.ResourceGroupName, this.VMName));
@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             string keyEncryptAlgorithm = string.Empty;
             if (!string.IsNullOrEmpty(this.KeyEncryptionKeyUrl))
             {
-                if(!string.IsNullOrEmpty(KeyEncryptionAlgorithm))
+                if (!string.IsNullOrEmpty(KeyEncryptionAlgorithm))
                 {
                     keyEncryptAlgorithm = KeyEncryptionAlgorithm;
                 }
