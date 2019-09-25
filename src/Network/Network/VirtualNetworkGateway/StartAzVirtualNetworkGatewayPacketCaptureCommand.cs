@@ -22,11 +22,11 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 {
     [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualnetworkGatewayPacketCapture", 
-        DefaultParameterSetName = "ByVirtualNetworkGatewayName", SupportsShouldProcess = true), OutputType(typeof(PSVirtualNetworkGatewayPacketCaptureResult))]
+        DefaultParameterSetName = "ByName", SupportsShouldProcess = true), OutputType(typeof(PSVirtualNetworkGatewayPacketCaptureResult))]
     public class StartAzVirtualNetworkGatewayPacketCaptureCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
-            ParameterSetName = "ByVirtualNetworkGatewayName",
+            ParameterSetName = "ByName",
             Mandatory = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -35,16 +35,16 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 
         [Alias("ResourceName", "VirtualNetworkGatewayName", "GatewayName")]
         [Parameter(
-            ParameterSetName = "ByVirtualNetworkGatewayName",
+            ParameterSetName = "ByName",
             Mandatory = true,
-            HelpMessage = "The virtual network gateway name where packet capture to be started.")]
+            HelpMessage = "The virtual network gateway name where packet capture is to be started.")]
         [ResourceNameCompleter("Microsoft.Network/virtualNetworkGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Alias("VirtualNetworkGateway")]
         [Parameter(
-            ParameterSetName = "ByVirtualNetworkGatewayObject",
+            ParameterSetName = "ByInputObject",
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The virtual network gateway object where packet capture to be started.")]
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
         public PSVirtualNetworkGateway InputObject { get; set; }
 
         [Parameter(
-            ParameterSetName = "ByVirtualNetworkGatewayResourceId",
+            ParameterSetName = "ByResourceId",
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure resource ID of the VirtualNetworkGateway where packet capture to be started.")]
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
         {
             base.Execute();
             PSVirtualNetworkGateway existingVirtualNetworkGateway = null;
-            if (ParameterSetName.Equals("ByVirtualNetworkGatewayObject"))
+            if (ParameterSetName.Equals("ByInputObject"))
             {
                 existingVirtualNetworkGateway = this.InputObject;
                 this.ResourceGroupName = this.InputObject.ResourceGroupName;
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
             }
             else
             {
-                if (ParameterSetName.Equals("ByVirtualNetworkGatewayResourceId"))
+                if (ParameterSetName.Equals("ByResourceId"))
                 {
                     var parsedResourceId = new ResourceIdentifier(ResourceId);
                     Name = parsedResourceId.ResourceName;
@@ -102,26 +102,26 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
                 parameters.FilterData = PacketCaptureParameters;
             }
 
-            ConfirmAction(
-                Properties.Resources.CreatingResourceMessage,
-                this.Name,
-                () =>
+            WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
+            PSVirtualNetworkGatewayPacketCaptureResult output = new PSVirtualNetworkGatewayPacketCaptureResult();
+            output.StartTime = DateTime.Now;
+            string result = this.VirtualNetworkGatewayClient.StartPacketCapture(this.ResourceGroupName, this.Name, parameters);
+            output.EndTime = DateTime.Now;
+            try
+            {
+                if(result != null)
                 {
-                    WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-                    var result = this.VirtualNetworkGatewayClient.StartPacketCapture(this.ResourceGroupName, this.Name, parameters);
                     VpnGatewayPacketCaptureResponse resultObj = JsonConvert.DeserializeObject<VpnGatewayPacketCaptureResponse>(result);
-
-                    PSVirtualNetworkGatewayPacketCaptureResult output = new PSVirtualNetworkGatewayPacketCaptureResult
-                    {
-                        StartTime = DateTime.Now,
-                        EndTime = DateTime.Now
-                    };
-
                     output.Code = resultObj.Status;
                     output.ResultsText = resultObj.Data;
 
                     WriteObject(output);
-                });
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
