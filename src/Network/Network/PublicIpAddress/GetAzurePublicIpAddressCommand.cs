@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Network
            ParameterSetName = "ExpandScaleSetIp")]
         [ResourceNameCompleter("Microsoft.Network/publicIPAddresses", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
@@ -73,6 +74,7 @@ namespace Microsoft.Azure.Commands.Network
            ParameterSetName = "ExpandScaleSetIp")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(

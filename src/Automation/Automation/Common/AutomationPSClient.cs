@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Management.Automation.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -856,10 +857,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
             string password,
             string description)
         {
-            var exisitngCredential = this.GetCredential(resourceGroupName, automationAccountName, name);
+            var existingCredential = this.GetCredential(resourceGroupName, automationAccountName, name);
             var credentialUpdateParams = new CredentialUpdateParameters();
             credentialUpdateParams.Name = name;
-            credentialUpdateParams.Description = description ?? exisitngCredential.Description;
+            credentialUpdateParams.Description = description ?? existingCredential.Description;
 
             if (!string.IsNullOrWhiteSpace(userName))
             {
@@ -972,7 +973,21 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 object paramValue;
                 try
                 {
-                    paramValue = ((object)PowerShellJsonConverter.Deserialize(kvp.Value.ToString()));
+                    if (kvp.Value != null)
+                    {
+                        if (IsValidJson(kvp.Value.ToString()))
+                        {
+                            paramValue = ((object)PowerShellJsonConverter.Deserialize(kvp.Value.ToString()));
+                        }
+                        else
+                        {
+                            paramValue = kvp.Value;
+                        }
+                    }
+                    else
+                    {
+                        paramValue = null;
+                    }
                 }
                 catch (CmdletInvocationException exception)
                 {
@@ -1210,8 +1225,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (connectionModel.FieldDefinitionValues.ContainsKey(connectionFieldName))
             {
-                connectionModel.FieldDefinitionValues[connectionFieldName] =
-                    PowerShellJsonConverter.Serialize(value);
+                if (value is string)
+                {
+                    connectionModel.FieldDefinitionValues[connectionFieldName] = value.ToString();
+                }
+                else
+                {
+                    connectionModel.FieldDefinitionValues[connectionFieldName] =
+                        PowerShellJsonConverter.Serialize(value);
+                }
             }
             else
             {
@@ -1948,6 +1970,18 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 string.Equals(runbookType, RunbookTypeEnum.GraphPowerShellWorkflow, StringComparison.OrdinalIgnoreCase));
         }
 
+        public static bool IsValidJson(string value)
+        {
+            try
+            {
+                var json = JContainer.Parse(value);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         #endregion
     }
 }

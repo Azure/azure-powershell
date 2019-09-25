@@ -1,0 +1,85 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shares/sdktestingshare1/ListSynchronizationDetails?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvYWNjb3VudHMvc2RrdGVzdGluZ3NoYXJlYWNjb3VudDk3NzYvc2hhcmVzL3Nka3Rlc3RpbmdzaGFyZTEvbGlzdFN5bmNocm9uaXphdGlvbkRldGFpbHM/YXBpLXZlcnNpb249MjAxOC0xMS0wMS1wcmV2aWV3",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "x-ms-client-request-id": [
+          "fe3b4974-ca93-4e1e-b51e-752cf0cd13e3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26201.01"
+        ]
+      },
+      "ResponseBody": "{\"value\":[{\"name\":\"16d5161b-2b3f-4d90-b074-13ad7121bcc7\",\"dataSetType\":\"BlobFolder\",\"dataSetId\":\"d2411889-5357-4ca8-8d65-9363e46ef2ed\",\"status\":\"Succeeded\",\"message\":\"\",\"startTime\":\"2019-07-08T22:23:09.0473486Z\",\"endTime\":\"2019-07-08T22:24:27.9182152Z\",\"durationMs\":78870,\"filesRead\":1,\"sizeRead\":2779935,\"filesWritten\":1,\"sizeWritten\":2779935,\"vCore\":2},{\"name\":\"798a61dc-f656-49d9-ad42-843c48ddea81\",\"dataSetType\":\"Container\",\"dataSetId\":\"7c808e0b-80fa-491b-9b2f-ef2d49a12b27\",\"status\":\"InProgress\",\"message\":\"\",\"startTime\":\"2019-07-08T22:23:09.0785951Z\",\"endTime\":\"2019-07-08T22:25:12.9010532Z\",\"durationMs\":123822,\"filesRead\":13513,\"sizeRead\":54645025,\"filesWritten\":13513,\"sizeWritten\":54645025,\"vCore\":16},{\"name\":\"71e8a3ac-8d03-4799-8169-21fc9182e20f\",\"dataSetType\":\"Blob\",\"dataSetId\":\"63116d3f-515a-47a2-9b18-d981b16a9d21\",\"status\":\"Failed\",\"message\":\"\",\"startTime\":\"2019-07-08T22:23:09.1098466Z\",\"endTime\":\"2019-07-08T22:24:43.4377127Z\",\"durationMs\":94327,\"filesRead\":1,\"sizeRead\":2722645,\"filesWritten\":1,\"sizeWritten\":2722645,\"vCore\":2}]}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "191"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 22 Jun 2018 03:42:20 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14992"
+        ],
+        "x-ms-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-correlation-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20180622T034220Z:ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-ListShareSynchronizationDetailsCrud": [
+      "sdktestingadsrg4712",
+      "sdktestingshareaccount9776",
+      "sdktestingshare1"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "c39dce18-cead-4065-8fb1-3af7683a5038"
+  }
+}
+
+

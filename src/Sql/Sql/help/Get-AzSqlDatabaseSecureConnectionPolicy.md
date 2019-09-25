@@ -9,7 +9,8 @@ schema: 2.0.0
 # Get-AzSqlDatabaseSecureConnectionPolicy
 
 ## SYNOPSIS
-Gets the secure connection policy for a database.
+Gets the secure connection policy for a database. 
+Secure connection is deprecated and this command will be removed in a future release. Please use the SQL database blade in the Azure portal to view the connection strings
 
 ## SYNTAX
 

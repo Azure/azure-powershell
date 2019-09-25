@@ -50,7 +50,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet(
             MNM.AzureFirewallRCActionType.Allow,
             MNM.AzureFirewallRCActionType.Deny,
-            MNM.AzureFirewallRCActionType.Alert,
             IgnoreCase = false)]
         public string ActionType { get; set; }
 

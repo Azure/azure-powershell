@@ -26,7 +26,7 @@ function Test-DatabaseDataMaskingPrivilegedUsersChanges
 
 	try
 	{
-		# Defualt policy should be in disabled state
+		# Default policy should be in disabled state
 		$policy = Get-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 	
 		# Assert

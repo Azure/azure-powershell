@@ -22,8 +22,8 @@ using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet;
 using Microsoft.WindowsAzure.Management.Storage.Test.Common;
-using Microsoft.WindowsAzure.Storage.DataMovement;
-using Microsoft.WindowsAzure.Storage.File;
+using Microsoft.Azure.Storage.DataMovement;
+using Microsoft.Azure.Storage.File;
 using PSHFile = Microsoft.WindowsAzure.Commands.Storage.File;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet

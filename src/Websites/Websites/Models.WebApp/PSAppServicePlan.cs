@@ -48,5 +48,7 @@ namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
         {
 
         }
+
+        public string AdminSiteName { get; set; }
     }
 }

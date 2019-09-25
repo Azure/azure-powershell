@@ -19,6 +19,36 @@ jobs:
       testFramework: ${{ variables.TestFramework }}
       configuration: ${{ variables.Configuration }}
 
+- job: Analyze
+  displayName: Analyze
+  dependsOn: Build
+  condition: succeeded()
+  pool:
+    vmImage: ${{ variables.WindowsImage }}
+
+  steps:
+  - template: util/analyze-steps.yml
+    parameters:
+      osName: ${{ variables.WindowsName }}
+      configuration: ${{ variables.Configuration }}
+  - task: PowerShell@2
+    displayName: 'Cleanup Build'
+    inputs:
+      targetType: filePath
+      filePath: tools/CleanupBuild.ps1
+      pwsh: true
+  - task: NuGetCommand@2
+    displayName: 'Download BinSkim'
+    inputs:
+      command: custom
+      arguments: 'install Microsoft.CodeAnalysis.BinSkim -OutputDirectory $(System.DefaultWorkingDirectory)/tools/SecurityTools'
+  - task: PowerShell@2
+    displayName: 'Run BinSkim'
+    inputs:
+      targetType: filePath
+      filePath: tools/SecurityTools/RunBinSkim.ps1
+      pwsh: true
+
 - job: Test
   displayName: Test
   dependsOn: Build

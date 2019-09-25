@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
-                if (this.EndDate == null)
+                if (!this.IsParameterBound(c => c.EndDate))
                 {
                     WriteVerbose(Resources.Properties.Resources.DefaultEndDateUsed);
                     EndDate = StartDate.AddYears(1);

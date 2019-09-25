@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "Resource Group Name.",
+            HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = TopicNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -48,8 +49,9 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "EventGrid Topic Name.",
+            HelpMessage = EventGridConstants.TopicNameHelp,
             ParameterSetName = TopicNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.EventGrid/topics", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         [Alias("TopicName")]
         public string Name { get; set; }
@@ -65,7 +67,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(Mandatory = true,
             ValueFromPipeline = true,
             Position = 0,
-            HelpMessage = "EventGrid Topic object.",
+            HelpMessage = EventGridConstants.TopicInputObjectHelp,
             ParameterSetName = TopicInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSTopic InputObject { get; set; }
@@ -83,9 +85,9 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = "Hashtable which represents resource Tags.",
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 1,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Hashtable which represents resource Tags.",
             ParameterSetName = TopicInputObjectParameterSet)]
         public Hashtable Tag { get; set; }
@@ -93,33 +95,28 @@ namespace Microsoft.Azure.Commands.EventGrid
         public override void ExecuteCmdlet()
         {
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
-            string resourceGroupName = string.Empty;
-            string topicName = string.Empty;
 
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
-                EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
-            }
-            else if (!string.IsNullOrEmpty(this.Name))
-            {
-                resourceGroupName = this.ResourceGroupName;
-                topicName = this.Name;
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.Name = resourceIdentifier.ResourceName;
             }
             else if (this.InputObject != null)
             {
-                resourceGroupName = this.InputObject.ResourceGroupName;
-                topicName = this.InputObject.TopicName;
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.TopicName;
             }
 
-            if (this.ShouldProcess(topicName, $"Set topic {topicName} in Resource Group {resourceGroupName}"))
+            if (this.ShouldProcess(this.Name, $"Set topic {this.Name} in Resource Group {this.ResourceGroupName}"))
             {
-                Topic existingTopic = this.Client.GetTopic(resourceGroupName, topicName);
+                Topic existingTopic = this.Client.GetTopic(this.ResourceGroupName, this.Name);
                 if (existingTopic == null)
                 {
-                    throw new Exception($"Cannot find an existing topic {topicName} in resource group {resourceGroupName}");
+                    throw new Exception($"Cannot find an existing topic {this.Name} in resource group {this.ResourceGroupName}");
                 }
 
-                Topic topic = this.Client.ReplaceTopic(resourceGroupName, topicName, existingTopic.Location, tagDictionary);
+                Topic topic = this.Client.ReplaceTopic(this.ResourceGroupName, this.Name, existingTopic.Location, tagDictionary);
                 PSTopic psTopic = new PSTopic(topic);
                 this.WriteObject(psTopic);
             }

@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -25,6 +26,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
     /// <para> If Namespace name provided, a single Namespace detials will be returned</para>
     /// <para> If Namespace name not provided, list of Namespace will be returned</para>
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(PSNamespaceAttributes), DeprecatedOutputProperties = new string[] { "ResourceGroup" }, NewOutputProperties = new string[] { "ResourceGroupName", "Tags" })]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubNamespace"), OutputType(typeof(PSNamespaceAttributes))]
     public class GetAzureRmEventHubNamespace : AzureEventHubsCmdletBase
     {

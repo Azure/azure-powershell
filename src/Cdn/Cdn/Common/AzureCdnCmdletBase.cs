@@ -33,6 +33,10 @@ namespace Microsoft.Azure.Commands.Cdn.Common
         public const string ObjectParameterSet = "ByObjectParameterSet";
         public const string FieldsParameterSet = "ByFieldsParameterSet";
         public const string ResourceIdParameterSet = "ByResourceIdParameterSet";
+        public const string CacheExpirationActionParameterSet = "CacheExpirationActionParameterSet";
+        public const string HeaderActionParameterSet = "HeaderActionParameterSet";
+        public const string UrlRedirectActionParameterSet = "UrlRedirectActionParameterSet";
+
 
         /// <summary>
         /// Gets or sets the Cdn management client.

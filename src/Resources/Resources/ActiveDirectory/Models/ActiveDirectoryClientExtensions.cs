@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     Id = obj.ObjectId,
                     Type = obj.ObjectType,
                     SecurityEnabled = obj.SecurityEnabled,
-                    MailNickname = obj.Mail
+                    MailNickname = !string.IsNullOrEmpty(obj.Mail) ? obj.Mail : obj.AdditionalProperties.ContainsKey("mailNickname") ? obj.AdditionalProperties["mailNickname"]?.ToString() : null,
+                    Description = obj.AdditionalProperties.ContainsKey("description") ? obj.AdditionalProperties["description"]?.ToString() : null
                 };
             }
             else if (obj.ObjectType == typeof(ServicePrincipal).Name)
@@ -110,7 +111,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 DisplayName = group.DisplayName,
                 Id = group.ObjectId,
                 SecurityEnabled = group.SecurityEnabled,
-                MailNickname = group.Mail
+                MailNickname =  !string.IsNullOrEmpty(group.Mail) ? group.Mail : group.AdditionalProperties.ContainsKey("mailNickname") ? group.AdditionalProperties["mailNickname"]?.ToString() : null,
+                Description = group.AdditionalProperties.ContainsKey("description") ? group.AdditionalProperties["description"]?.ToString() : null
             };
         }
 

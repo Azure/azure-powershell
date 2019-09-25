@@ -14,11 +14,10 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using System;
+    using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using Properties;
-    using System;
-    using System.Linq;
-    using System.Management.Automation;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApiRelease", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementApiRelease))]

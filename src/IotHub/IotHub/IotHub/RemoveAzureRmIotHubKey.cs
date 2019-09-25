@@ -26,14 +26,26 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using PSIotHubProperties = Microsoft.Azure.Commands.Management.IotHub.Properties;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubKey", SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubKey", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSharedAccessSignatureAuthorizationRule))]
     public class RemoveAzureRmIotHubKey : IotHubBaseCmdlet
     {
+        private const string ResourceIdParameterSet = "ResourceIdSet";
+        private const string ResourceParameterSet = "ResourceSet";
 
         [Parameter(
             Position = 0,
             Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "IotHub Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string HubId { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ResourceParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
         [ResourceGroupCompleter]
@@ -43,14 +55,22 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [Parameter(
             Position = 1,
             Mandatory = true,
+            ParameterSetName = ResourceParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Iot Hub")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            HelpMessage = "Name of the Key")]
         [Parameter(
             Position = 2,
             Mandatory = true,
+            ParameterSetName = ResourceParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Key")]
         [ValidateNotNullOrEmpty]
@@ -60,6 +80,12 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         {
             if (ShouldProcess(KeyName, Properties.Resources.RemoveIotHubKey))
             {
+                if (ParameterSetName.Equals(ResourceIdParameterSet))
+                {
+                    this.ResourceGroupName = IotHubUtils.GetResourceGroupName(this.HubId);
+                    this.Name = IotHubUtils.GetIotHubName(this.HubId);
+                }
+
                 IotHubDescription iothubDesc = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
                 IList<SharedAccessSignatureAuthorizationRule> authRules = (List<SharedAccessSignatureAuthorizationRule>)this.IotHubClient.IotHubResource.ListKeys(this.ResourceGroupName, this.Name).ToList();
 

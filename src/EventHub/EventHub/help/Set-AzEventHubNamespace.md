@@ -15,16 +15,14 @@ Updates the specified Event Hubs namespace.
 ### NamespaceParameterSet (Default)
 ```
 Set-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-State] <NamespaceState>] [[-Tag] <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-State] <NamespaceState>] [[-Tag] <Hashtable>] [-EnableKafka] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AutoInflateParameterSet
 ```
 Set-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-State] <NamespaceState>] [[-Tag] <Hashtable>]
- [-EnableAutoInflate] [-MaximumThroughputUnits <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EnableAutoInflate] [-MaximumThroughputUnits <Int32>] [-EnableKafka] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,14 +32,48 @@ The Set-AzEventHubNamespace cmdlet updates the properties of the specified Event
 
 ### Example 1
 ```
-PS C:\> Set-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location "WestUS" -State Created
+PS C:\> Set-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location "WestUS" -Tag @{Tag1='TagValue1'; Tag2='TagValue2'}
+
+Name                   : MyNamespaceName
+Id                     : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
+ResourceGroupName      : Default-EventHub-WestCentralUS
+Location               : West US
+Sku                    : Name : Standard , Capacity : 1 , Tier : Standard
+Tags                   : {Tag2, TagValue2, Tag1, TagValue1}
+ProvisioningState      : Succeeded
+Status                 : Active
+CreatedAt              : 5/24/2019 12:47:27 AM
+UpdatedAt              : 5/24/2019 12:48:14 AM
+ServiceBusEndpoint     : #########
+Enabled                : True
+KafkaEnabled           : True
+IsAutoInflateEnabled   : True
+MaximumThroughputUnits : 10
+
 ```
 
-Updates the state of namespace \`MyNamespaceName\` to Created .
+Updates the Tags for namespace \`MyNamespaceName\` to Created .
 
 ### Example 2
 ```
 PS C:\> Set-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location "WestUS" -State Created -EnableAutoInflate -MaximumThroughputUnits 10
+
+Name                   : MyNamespaceName
+Id                     : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
+ResourceGroup          : Default-EventHub-WestCentralUS
+ResourceGroupName      : Default-EventHub-WestCentralUS
+Location               : West US
+Sku                    : Name : Standard , Capacity : 1 , Tier : Standard
+Tags                   :
+ProvisioningState      : Succeeded
+Status                 : Active
+CreatedAt              : 5/24/2019 12:47:27 AM
+UpdatedAt              : 5/24/2019 12:48:14 AM
+ServiceBusEndpoint     : #########
+Enabled                : True
+KafkaEnabled           : True
+IsAutoInflateEnabled   : True
+MaximumThroughputUnits : 10
 ```
 
 Updates the state of namespace \`MyNamespaceName\` with AutoInflate = enabled and MaximumThroughputUnits = 10
@@ -72,6 +104,21 @@ Parameter Sets: AutoInflateParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableKafka
+enabling or disabling Kafka for namespace
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -238,9 +285,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
-### System.Nullable`1[[Microsoft.Azure.Commands.EventHub.Models.NamespaceState, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+### System.Nullable`1[[Microsoft.Azure.Commands.EventHub.Models.NamespaceState, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.3.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ### System.Collections.Hashtable
 

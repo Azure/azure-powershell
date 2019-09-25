@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Monitor.Management.Models
         public ConditionOperator OperatorProperty { get; set; }
 
         /// <summary>
-        /// Gets or sets teh Theshold of the TheresholdRuleCondition
+        /// Gets or sets the Theshold of the TheresholdRuleCondition
         /// </summary>
         public double Threshold { get; set; }
 

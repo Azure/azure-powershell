@@ -31,9 +31,9 @@ PS C:\> $gw = Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 
 The first command gets the application gateway and stores it in $gw variable.
-The second command addes a new trusted root certificate to Application Gateway taking path of the root certificate as input.
+The second command adds a new trusted root certificate to Application Gateway taking path of the root certificate as input.
 The third command creates new backend http setting using trusted root certificate for validating the backend server certificate against.
-The fouth command updates the Application Gateway.
+The fourth command updates the Application Gateway.
 
 ## PARAMETERS
 

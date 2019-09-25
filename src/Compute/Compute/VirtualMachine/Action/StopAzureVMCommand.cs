@@ -21,12 +21,11 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", DefaultParameterSetName = ResourceGroupNameParameterSet, SupportsShouldProcess = true)]
-    [OutputType(typeof(PSComputeLongRunningOperation))]
+    [OutputType(typeof(PSComputeLongRunningOperation), typeof(PSAzureOperationResponse))]
     public class StopAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
         [Parameter(
@@ -35,14 +34,7 @@ namespace Microsoft.Azure.Commands.Compute
            ParameterSetName = ResourceGroupNameParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
-        [Parameter(
-           Mandatory = false,
-           Position = 1,
-           ParameterSetName = IdParameterSet,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The virtual machine name.")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
-        [CmdletParameterBreakingChange("Name", ChangeDescription = "Name will be removed from the Id parameter set in an upcoming breaking change release.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -57,6 +49,14 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "To keep the VM provisioned.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter StayProvisioned { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
+        public SwitchParameter NoWait { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "To request non-graceful VM shutdown when keeping the VM provisioned.")]
+        public SwitchParameter SkipShutdown { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -74,27 +74,46 @@ namespace Microsoft.Azure.Commands.Compute
                         this.Name = parsedId.ResourceName;
                     }
 
-                    Action<Func<string, string, Dictionary<string, List<string>>, CancellationToken, Task<Rest.Azure.AzureOperationResponse>>> call = f =>
+                    Rest.Azure.AzureOperationResponse op;
+                    if (this.StayProvisioned) 
                     {
-                        var op = f(this.ResourceGroupName, this.Name, null, CancellationToken.None).GetAwaiter().GetResult();
+                        bool? skipShutdown = this.SkipShutdown.IsPresent ? (bool?)true : null;
+                        if (NoWait.IsPresent)
+                        {
+                            op = this.VirtualMachineClient.BeginPowerOffWithHttpMessagesAsync(this.ResourceGroupName, this.Name, skipShutdown, null, CancellationToken.None).GetAwaiter().GetResult();
+                        }
+                        else 
+                        {
+                            op = this.VirtualMachineClient.PowerOffWithHttpMessagesAsync(this.ResourceGroupName, this.Name, skipShutdown, null, CancellationToken.None).GetAwaiter().GetResult();
+                        }
+                    }
+                    else
+                    {
+                        if (NoWait.IsPresent)
+                        {
+                            op = this.VirtualMachineClient.BeginDeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, null, CancellationToken.None).GetAwaiter().GetResult();
+                        }
+                        else
+                        {
+                            op = this.VirtualMachineClient.DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, null, CancellationToken.None).GetAwaiter().GetResult();
+                        }
+
+                    }
+                    if (NoWait.IsPresent) {
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                        WriteObject(result);
+                    }
+                    else 
+                    {
                         var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
                         result.StartTime = this.StartTime;
                         result.EndTime = DateTime.Now;
                         WriteObject(result);
-                    };
-
-                    if (this.StayProvisioned)
-                    {
-                        call(this.VirtualMachineClient.PowerOffWithHttpMessagesAsync);
-                    }
-                    else
-                    {
-                        call(this.VirtualMachineClient.DeallocateWithHttpMessagesAsync);
                     }
                 }
                 else
                 {
-                    WriteDebugWithTimestamp("[Stop-AureRmVMJob]: ShouldMethod returned false");
+                    WriteDebugWithTimestamp("[Stop-AzVMJob]: ShouldMethod returned false");
                 }
             });
         }

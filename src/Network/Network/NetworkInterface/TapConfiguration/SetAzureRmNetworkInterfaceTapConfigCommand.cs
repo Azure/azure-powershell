@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ValueFromPipeline = true,
-           HelpMessage = "The NetworkInterface Tap configurtion")]
+           HelpMessage = "The NetworkInterface Tap configuration")]
         public PSNetworkInterfaceTapConfiguration NetworkInterfaceTapConfig { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]

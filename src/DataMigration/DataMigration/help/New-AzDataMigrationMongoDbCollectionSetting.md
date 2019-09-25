@@ -59,7 +59,7 @@ Accept wildcard characters: False
 ```
 
 ### -ShardKey
-The comma seperated list of the shard keys. For mongoDb target,
+The comma separated list of the shard keys. For mongoDb target,
 you can specify shard key order of "ShardKeyName:Order",
 where order is 1, -1 or empty for hashed, for example "_id,email:-1".
 

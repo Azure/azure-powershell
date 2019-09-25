@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Network
              ParameterSetName = "List")]
         [ResourceNameCompleter("Microsoft.Network/networkWatchers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         [Parameter(
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.Network
              ParameterSetName = "List")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Parameter(

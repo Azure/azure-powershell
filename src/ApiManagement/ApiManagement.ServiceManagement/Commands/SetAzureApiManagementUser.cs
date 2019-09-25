@@ -15,17 +15,19 @@
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
     using System;
     using System.Management.Automation;
     using System.Security;
     using WindowsAzure.Commands.Common;
 
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementUser")]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementUser", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementUser))]
     public class SetAzureApiManagementUser : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -84,12 +86,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            Client.UserSet(Context, UserId, FirstName, LastName, Password != null ? Password.ConvertToString() : null, Email, State, Note);
-
-            if (PassThru)
+            if (ShouldProcess(UserId, Resources.SetUser))
             {
-                var user = Client.UserById(Context, UserId);
-                WriteObject(user);
+                Client.UserSet(Context, UserId, FirstName, LastName, Password != null ? Password.ConvertToString() : null, Email, State, Note);
+
+                if (PassThru)
+                {
+                    var user = Client.UserById(Context, UserId);
+                    WriteObject(user);
+                }
             }
         }
     }

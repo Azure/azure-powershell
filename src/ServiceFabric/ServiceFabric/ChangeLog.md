@@ -18,6 +18,36 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed typo in example for `Update-AzServiceFabricReliability` reference documentation
+* Adding new cmdlets to manage appliaction and services:
+    - New-AzServiceFabricApplication
+    - New-AzServiceFabricApplicationType
+    - New-AzServiceFabricApplicationTypeVersion
+    - New-AzServiceFabricService
+    - Update-AzServiceFabricApplication
+    - Get-AzServiceFabricApplication
+    - Get-AzServiceFabricApplicationType
+    - Get-AzServiceFabricApplicationTypeVersion
+    - Get-AzServiceFabricService
+    - Remove-AzServiceFabricApplication
+    - Remove-AzServiceFabricApplicationType
+    - Remove-AzServiceFabricApplicationTypeVersion
+    - Remove-AzServiceFabricServic
+* Upgraded Service Fabric SDK to version 1.2.0 which uses service fabric resource provider api-version 2019-03-01.
+
+## Version 1.1.2
+* Fix add node type cmdlet bugs:
+    - NullReferenceException bug when resource group had other vmss not related to the service fabric cluster. Fixes issue: https://github.com/Azure/azure-powershell/issues/8681
+    - Fix bug where cmdlet failed if virtualNetwork was in a different resource group that the cluster. fixes issue: https://github.com/Azure/azure-powershell/issues/8407
+    - Deprecating Add-AzServiceFabricApplicationCertificate cmdlet
+
+## Version 1.1.1
+* Fix add certificate ByExistingKeyVault getting the wrong thumbprint in some cases
+
+## Version 1.1.0
+* Fix typo in error message for `Update-AzServiceFabricReliability`
+
+* Fix missing character in Service Fabric cmdlines
 
 ## Version 1.0.1
 * Rollback when a certificate is added to VMSS model but an exception is thrown this is to fix bug: https://github.com/Azure/service-fabric-issues/issues/932

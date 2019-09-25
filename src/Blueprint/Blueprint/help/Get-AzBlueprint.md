@@ -69,7 +69,7 @@ PS> Get-AzBlueprint
 
 Name                 : PS-BlueprintDefinition
 Id                   : /subscriptions/00000000-1111-0000-1111-000000000000/providers/Microsoft.Blueprint/blueprints/PS-BlueprintDefinition
-DefinitionLocationId : 00000000-1111-0000-1111-000000000000
+SubscriptionId       : 00000000-1111-0000-1111-000000000000
 Versions             : {1.0}
 Description          : Powershell test blueprint
 TimeCreated          : 2019-02-01
@@ -80,14 +80,13 @@ ResourceGroups       : ResourceGroup
 
 Get the blueprint definitions within the current subscription and the management group hierarchy of the subscription.
 
-
 ### Example 2
 ```powershell
 PS> Get-AzBlueprint -ManagementGroupId "myManagementGroupId"
 
 Name                 : PS-MG-BlueprintDefinition
 Id                   : /providers/Microsoft.Management/managementGroups/myManagementGroupId/providers/Microsoft.Blueprint/blueprints/PS-MG-BlueprintDefinition
-DefinitionLocationId : myManagementGroupId
+ManagementGroupId    : myManagementGroupId
 Versions             : {1.0, 2.0, 3.0, 4.0}
 TimeCreated          : 2019-03-04
 TargetScope          : Subscription
@@ -104,7 +103,7 @@ PS> Get-AzBlueprint -SubscriptionId "00000000-1111-0000-1111-000000000000"
 
 Name                 : PS-BlueprintDefinition
 Id                   : /subscriptions/00000000-1111-0000-1111-000000000000/providers/Microsoft.Blueprint/blueprints/PS-BlueprintDefinition
-DefinitionLocationId : 00000000-1111-0000-1111-000000000000
+SubscriptionId       : 00000000-1111-0000-1111-000000000000
 Versions             : {1.0}
 Description          : Powershell test blueprint
 TimeCreated          : 2019-02-01
@@ -134,7 +133,7 @@ Get the blueprint definition with the given name and version within the specifie
 PS> Get-AzBlueprint -ManagementGroupId "myManagementGroupId" -Name "myBlueprintName" -LatestPublished
 ```
 
-Get the lastest published blueprint definition with the given name within the specified management group.
+Get the latest published blueprint definition with the given name within the specified management group.
 
 ## PARAMETERS
 

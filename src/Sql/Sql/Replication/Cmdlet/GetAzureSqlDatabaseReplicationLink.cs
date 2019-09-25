@@ -62,6 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             HelpMessage = "The name of the Azure SQL Server that has the Azure SQL Database partner.")]
         [ResourceNameCompleter("Microsoft.Sql/servers", "PartnerResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string PartnerServerName { get; set; }
 
         /// <summary>

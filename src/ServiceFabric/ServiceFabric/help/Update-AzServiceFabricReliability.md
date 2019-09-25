@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/update-azservicefabricreliability
@@ -25,7 +25,7 @@ Use **Update-AzServiceFabricReliability** to update reliability of the primary n
 
 ### Example 1
 ```
-PS c:> Add-AzServiceFabricReliability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -ReliabilityLevel Silver
+PS c:> Update-AzServiceFabricReliability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -ReliabilityLevel Silver
 ```
 
 This command changes the reliability tier of the primary node type to silver.
@@ -33,7 +33,7 @@ This command changes the reliability tier of the primary node type to silver.
 ## PARAMETERS
 
 ### -AutoAddNode
-Add node count automatically when changing reliability.
+Add node count automatically when changing reliability
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -48,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster.
+Specify the name of the cluster
 
 ```yaml
 Type: System.String
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReliabilityLevel
-Reliability tier.
+Reliability tier
 
 ```yaml
 Type: Microsoft.Azure.Commands.ServiceFabric.Models.ReliabilityLevel
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group.
+Specify the name of the resource group.
 
 ```yaml
 Type: System.String
@@ -124,7 +124,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -26,7 +26,7 @@ function Test-VirtualMachineExtension
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        
+
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
@@ -69,7 +69,7 @@ function Test-VirtualMachineExtension
         $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
         $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
         $p = Remove-AzVMDataDisk -VM $p -Name 'testDataDisk3';
-        
+
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
         Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
@@ -119,7 +119,7 @@ function Test-VirtualMachineExtension
         $settingstr = '{"fileUris":[],"commandToExecute":"powershell Get-Process"}';
         $protectedsettingstr = '{"storageAccountName":"' + $stoname + '","storageAccountKey":"' + $stokey + '"}';
         $job = Set-AzVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -ExtensionType $exttype -TypeHandlerVersion $extver -SettingString $settingstr -ProtectedSettingString $protectedsettingstr -AsJob
-		$job | Wait-Job 
+		$job | Wait-Job
 
         # Get VM Extension
         $ext = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
@@ -174,7 +174,7 @@ function Test-VirtualMachineExtensionUsingHashTable
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        
+
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
@@ -217,7 +217,7 @@ function Test-VirtualMachineExtensionUsingHashTable
         $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
         $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
         $p = Remove-AzVMDataDisk -VM $p -Name 'testDataDisk3';
-        
+
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
         Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
@@ -1106,9 +1106,9 @@ Test the Set-AzVMDiskEncryptionExtension single pass scenario
 #>
 function Test-AzureDiskEncryptionExtensionSinglePass
 {
-	$resourceGroupName = Get-ComputeTestResourceName	
-	try 
-	{ 
+	$resourceGroupName = Get-ComputeTestResourceName
+	try
+	{
 		# create virtual machine and key vault prerequisites
 		$vm = Create-VirtualMachine $resourceGroupName
 		$kv = Create-KeyVault $vm.ResourceGroupName $vm.Location
@@ -1126,9 +1126,9 @@ function Test-AzureDiskEncryptionExtensionSinglePass
 		Assert-NotNull $status
 		Assert-AreEqual $status.OsVolumeEncrypted Encrypted
 		# For Native disks we expect the cmdlet to show the data disks as encrypted.
-		Assert-AreEqual $status.DataVolumesEncrypted Encrypted 
+		Assert-AreEqual $status.DataVolumesEncrypted Encrypted
 
-		# verify encryption settings 
+		# verify encryption settings
 		$settings = $status.OsVolumeEncryptionSettings
 		Assert-NotNull $settings
 		Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
@@ -1167,7 +1167,7 @@ function Test-AzureDiskEncryptionExtensionSinglePassRemove
 		Assert-AreEqual $status.OsVolumeEncrypted Encrypted
 		Assert-AreEqual $status.DataVolumesEncrypted NoDiskFound
 
-		# verify encryption settings 
+		# verify encryption settings
 		$settings = $status.OsVolumeEncryptionSettings
 		Assert-NotNull $settings
 		Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
@@ -1180,7 +1180,7 @@ function Test-AzureDiskEncryptionExtensionSinglePassRemove
 		Assert-AreEqual $status.OsVolumeEncrypted Encrypted
 		Assert-AreEqual $status.DataVolumesEncrypted NoDiskFound
 
-		# verify encryption settings 
+		# verify encryption settings
 		$settings = $status.OsVolumeEncryptionSettings
 		Assert-NotNull $settings
 		Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
@@ -1220,7 +1220,7 @@ function Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove
 		Assert-AreEqual $status.OsVolumeEncrypted Encrypted
 		Assert-AreEqual $status.DataVolumesEncrypted Encrypted
 
-		# verify encryption settings 
+		# verify encryption settings
 		$settings = $status.OsVolumeEncryptionSettings
 		Assert-NotNull $settings
 		Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
@@ -1236,7 +1236,7 @@ function Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove
 		Assert-AreEqual $status.OsVolumeEncrypted NotEncrypted
 		Assert-AreEqual $status.DataVolumesEncrypted NotEncrypted
 
-		# verify encryption settings 
+		# verify encryption settings
 		$settings = $status.OsVolumeEncryptionSettings
 		Assert-Null $settings
 
@@ -1336,7 +1336,7 @@ function Test-AzureDiskEncryptionExtension
         #set enabledForDiskEncryption
         Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $rgname -EnabledForDiskEncryption;
         #set permissions to AAD app to write secrets and keys
-        Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ServicePrincipalName $aadClientID -PermissionsToKeys all -PermissionsToSecrets all 
+        Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ServicePrincipalName $aadClientID -PermissionsToKeys all -PermissionsToSecrets all
         #create a key in KeyVault to use as Kek
         $kek = Add-AzKeyVaultKey -VaultName $vaultName -Name $kekName -Destination "Software"
 
@@ -1355,7 +1355,7 @@ function Test-AzureDiskEncryptionExtension
         $diskEncryptionKeyVaultUrl2 = $keyVault2.VaultUri;
         $keyVaultResourceId2 = $keyVault2.ResourceId;
 
-        # VM Profile & Hardware   
+        # VM Profile & Hardware
         $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
 
         # NRP
@@ -1457,7 +1457,7 @@ function Test-AzureDiskEncryptionExtension
         Assert-NotNull $OsVolumeEncryptionSettings.DiskEncryptionKey.SecretUrl;
         Assert-NotNull $OsVolumeEncryptionSettings.DiskEncryptionKey.SourceVault;
 
-        #Remove the VM 
+        #Remove the VM
         Remove-AzVm -ResourceGroupName $rgname -Name $vmName -Force;
 
         #Create a brand new VM using the same OS vhd encrypted above
@@ -1643,7 +1643,7 @@ function Test-VirtualMachineExtensionWithSwitch
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        
+
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
@@ -1683,7 +1683,7 @@ function Test-VirtualMachineExtensionWithSwitch
 
         $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
         $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-        
+
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
         Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;

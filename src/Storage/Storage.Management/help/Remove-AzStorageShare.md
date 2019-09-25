@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: FF3AD436-CA33-4A52-8580-D2345D80A231
@@ -58,7 +58,7 @@ If this cmdlet does not receive a successful response before the interval elapse
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases:
+Aliases: ClientTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named
@@ -185,7 +185,7 @@ Specifies the length of the time-out period for the server part of a request.
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases:
+Aliases: ServerTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named
@@ -202,7 +202,7 @@ This object contains the storage context.
 If you specify this parameter, do not specify the *Context* parameter.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFileShare
+Type: Microsoft.Azure.Storage.File.CloudFileShare
 Parameter Sets: Share
 Aliases:
 
@@ -251,13 +251,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.WindowsAzure.Storage.File.CloudFileShare
+### Microsoft.Azure.Storage.File.CloudFileShare
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Storage.File.CloudFileShare
+### Microsoft.Azure.Storage.File.CloudFileShare
 
 ## NOTES
 

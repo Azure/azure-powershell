@@ -19,11 +19,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
 
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementAuthorizationServer")]
-    [OutputType(typeof(PsApiManagementOAuth2AuthrozationServer))]
+    [OutputType(typeof(PsApiManagementOAuth2AuthorizationServer))]
     public class SetAzureApiManagementAuthorizationServer : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -178,7 +179,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
             if (PassThru)
             {
-                var server = Client.AuthorizationServerById(Context, ServerId);
+                var server = Client.AuthorizationServerById(
+                    Context.ResourceGroupName,
+                    Context.ServiceName, 
+                    ServerId);
                 WriteObject(server);
             }
         }

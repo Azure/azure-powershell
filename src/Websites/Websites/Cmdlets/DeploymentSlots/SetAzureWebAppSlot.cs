@@ -129,11 +129,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
             SiteConfig siteConfig = null;
             Site site = null;
             string location = null;
+            IDictionary<string, string> tags = null;
             switch (ParameterSetName)
             {
                 case ParameterSet1Name:
                     WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
                     location = WebApp.Location;
+                    tags = WebApp.Tags;
                     var parameters = new HashSet<string>(MyInvocation.BoundParameters.Keys, StringComparer.OrdinalIgnoreCase);
                     if (parameters.Any(p => CmdletHelpers.SiteConfigParameters.Contains(p)))
                     {
@@ -167,7 +169,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                         siteConfig = WebApp.SiteConfig;
                     }
 
-                    //According to current implementation if AppSettings paramter is provided we are overriding existing AppSettings
+                    //According to current implementation if AppSettings parameter is provided we are overriding existing AppSettings
                     if (WebApp.SiteConfig.AppSettings != null && AppSettings == null)
                     {
                         foreach (var setting in WebApp.SiteConfig.AppSettings)
@@ -227,6 +229,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                         site = new Site
                         {
                             Location = location,
+                            Tags = tags,
                             ServerFarmId = WebApp.ServerFarmId,
                             Identity = parameters.Contains("AssignIdentity") ? AssignIdentity ? new ManagedServiceIdentity("SystemAssigned", null, null) : new ManagedServiceIdentity("None", null, null) : WebApp.Identity,
                             HttpsOnly = parameters.Contains("HttpsOnly") ? HttpsOnly : WebApp.HttpsOnly
@@ -237,7 +240,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
                     if (parameters.Contains("AppServicePlan"))
                     {
-                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, AppServicePlan);
+                        WebApp.AzureStoragePath = null; // the API to update site Object doesn't have the AzureStorage Path property
+                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, AppServicePlan, WebApp);
                     }
 
                     break;
@@ -275,7 +279,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                                 StringComparer.OrdinalIgnoreCase));
 
                     CmdletHelpers.TryParseAppServicePlanMetadataFromResourceId(WebApp.ServerFarmId, out rg, out servicePlanName);
-                    WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, servicePlanName);
+                    WebApp.AzureStoragePath = null; // the API to update site Object doesn't have the AzureStorage Path property
+                    WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, servicePlanName, WebApp);
                     break;
             }
 

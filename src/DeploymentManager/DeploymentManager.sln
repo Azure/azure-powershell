@@ -27,6 +27,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManagedServiceIdentity", ".
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources", "..\Resources\Resources\Resources.csproj", "{E1F5201D-6067-430E-B303-4E367652991B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceManager", "..\Resources\ResourceManager\ResourceManager.csproj", "{8058D403-06E3-4BED-8924-D166CE303961}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tags", "..\Resources\Tags\Tags.csproj", "{6BD4D521-DAFB-472B-A803-81F053AB1396}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +81,14 @@ Global
 		{E1F5201D-6067-430E-B303-4E367652991B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1F5201D-6067-430E-B303-4E367652991B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1F5201D-6067-430E-B303-4E367652991B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8058D403-06E3-4BED-8924-D166CE303961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8058D403-06E3-4BED-8924-D166CE303961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8058D403-06E3-4BED-8924-D166CE303961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8058D403-06E3-4BED-8924-D166CE303961}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BD4D521-DAFB-472B-A803-81F053AB1396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BD4D521-DAFB-472B-A803-81F053AB1396}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BD4D521-DAFB-472B-A803-81F053AB1396}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BD4D521-DAFB-472B-A803-81F053AB1396}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

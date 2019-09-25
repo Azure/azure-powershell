@@ -15,8 +15,14 @@
 $resourceGroupName = "RecoveryServicesBackupTestRg";
 $resourceName = "PsTestRsVault";
 $policyName = "PsTestPolicy";
+$defaultPolicyName = "DefaultPolicy";
 $DefaultSnapshotDays = 2;
 $UpdatedSnapShotDays = 5;
+
+# Test old polices in the VaultId
+$oldResourceGroupName = "shracrg"
+$oldVaultName = "shracsql"
+$oldPolicyName = "iaasvmretentioncheck"
 
 function Test-AzureVMPolicy
 {
@@ -46,12 +52,27 @@ function Test-AzureVMPolicy
 		Assert-AreEqual $policy.Name $policyName
 		Assert-AreEqual $policy.SnapshotRetentionInDays $DefaultSnapshotDays
 
+		# Get policy to test older policies
+		$oldVault = Get-AzRecoveryServicesVault -ResourceGroupName $oldResourceGroupName -Name $oldVaultName
+		$oldPolicy = Get-AzRecoveryServicesBackupProtectionPolicy -Name $oldPolicyName -VaultId $oldVault.ID
+		Assert-AreEqual $oldPolicy.RetentionPolicy.DailySchedule.DurationCountInDays 1
+		
 		# Get policy
 	    $policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
 			-Name $policyName
 		Assert-NotNull $policy
 		Assert-AreEqual $policy.Name $policyName
+
+		$defaultPolicy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $defaultPolicyName
+		Assert-NotNull $defaultPolicy
+		Assert-AreEqual $defaultPolicy.Name $defaultPolicyName
+		Assert-True { $defaultPolicy.SchedulePolicy.ScheduleRunDays -contains "Saturday" }
+		Assert-True { $defaultPolicy.SchedulePolicy.ScheduleRunDays -contains "Thursday" }
+		Assert-False { $defaultPolicy.SchedulePolicy.ScheduleRunDays -contains "Sunday" }
+		Assert-False { $defaultPolicy.SchedulePolicy.ScheduleRunDays -contains "Friday" }
 
 		# Get default policy objects (this data is generated partially at random. So, running this again gives different values)
 		$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM

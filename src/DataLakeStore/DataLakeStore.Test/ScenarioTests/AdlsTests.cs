@@ -16,7 +16,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using ServiceManagement.Common.Models;
+    using System;
+    using System.Reflection;
     using Xunit;
+    using System.IO;
 
     public class AdlsTests : AdlsTestsBase
     {
@@ -67,7 +70,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsFileSystem()
         {
-            NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreFileSystem -fileToCopy '{0}' -location '{1}'", ".\\ScenarioTests\\" + this.GetType().Name + ".ps1", AdlsTestsBase.ResourceGroupLocation));
+            var workingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+            var testLocation = Path.Combine(workingPath, "ScenarioTests", (this.GetType().Name + ".ps1"));
+            NewInstance.RunPsTest(_logger, string.Format("Test-DataLakeStoreFileSystem -fileToCopy '{0}' -location '{1}'", testLocation, AdlsTestsBase.ResourceGroupLocation));
         }
 
         [Fact]

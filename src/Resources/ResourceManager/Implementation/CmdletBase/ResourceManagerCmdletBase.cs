@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private ResourceManagerSdkClient resourceManagerSdkClient;
 
         /// <summary>
-        /// Field that holds the subscripotions client instance
+        /// Field that holds the subscriptions client instance
         /// </summary>
         private SubscriptionSdkClient subscriptionSdkClient;
 

@@ -72,8 +72,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     containerName = ContainerConstansts.SqlContainerNamePrefix + containerName;
                 }
 
-                if (Container.ContainerType == ContainerType.AzureVMAppContainer)
+                if (Container.ContainerType == ContainerType.AzureVMAppContainer ||
+                Container.ContainerType == ContainerType.AzureStorage)
                 {
+                    if(Container.ContainerType == ContainerType.AzureStorage)
+                    {
+                        containerName = "StorageContainer;" + containerName;
+                    }
                     var unRegisterResponse = ServiceClientAdapter.UnregisterWorkloadContainers(
                     containerName,
                     vaultName: vaultName,

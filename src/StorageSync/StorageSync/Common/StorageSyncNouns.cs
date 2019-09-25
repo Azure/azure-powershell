@@ -54,5 +54,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// The noun azure rm storage sync server certificate
         /// </summary>
         public const string NounAzureRmStorageSyncServerCertificate = NounAzureRmStorageSyncServer + "Certificate";
+        /// <summary>
+        /// The noun azure rm storage sync change detection
+        /// </summary>
+        public const string NounAzureRmStorageSyncChangeDetection = StorageSyncConstants.ProductPrefix + "ChangeDetection";
     }
 }

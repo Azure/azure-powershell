@@ -18,6 +18,29 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed example typo in reference documentation for `Register-AzAutomationDscNode`
+* Added clarification on OS restriction to Register-AzAutomationDSCNode
+* Fixed Start-AzAutomationRunbook cmdlet Null reference exception for -Wait option.
+
+## Version 1.3.2
+* Fixed miscellaneous typos across module
+
+## Version 1.3.1
+* Fix typo in resource string
+
+## Version 1.3.0
+* Fixed Set-AzAutomationConnectionFieldValue cmdlet bug to handle string value.
+* Added text to description for Register-AzAutomationDscNode to explain cross-sub
+
+## Version 1.2.2
+* Updated Get-AzAutomationJobOutputRecord to handle JSON and Text record values.
+    - Fix for issue https://github.com/Azure/azure-powershell/issues/7977
+    - Fix for issue https://github.com/Azure/azure-powershell/issues/8600
+* Bug fix for NewAZAutomationUpdateManagementAzureQuery
+* Changed behavior for Start-AzAutomationDscCompilationJob to just start the job instead of waiting for its completion.
+    * Fix for issue https://github.com/Azure/azure-powershell/issues/8347
+* Fix for Get-AzAutomationDscNode when using -Name returns all node. Now it returns matching node only.
+* Fixed Start-AzAutomationDscNodeConfigurationDeployment cmdlet to allow multiple executions
 
 ## Version 1.2.1
 * Fixed New-AzAutomationSoftwareUpdateConfiguration cmdlet bug for Inclusions. Now parameter IncludedKbNumber and IncludedPackageNameMask should work.

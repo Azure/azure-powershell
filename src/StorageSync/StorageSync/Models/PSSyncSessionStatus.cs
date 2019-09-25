@@ -40,6 +40,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// Gets or sets the last sync per item error count.
         /// </summary>
         /// <value>The last sync per item error count.</value>
-        public int? LastSyncPerItemErrorCount { get; set; }
+        public long? LastSyncPerItemErrorCount { get; set; }
     }
 }

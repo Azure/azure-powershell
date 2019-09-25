@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefinitionFile
-Specifes the path to the file containing the JSON format definition of the web service.
+Specifies the path to the file containing the JSON format definition of the web service.
 You can find the latest specification for the web service definition in the swagger spec under https://github.com/Azure/azure-rest-api-specs/tree/master/arm-machinelearning.
 
 ```yaml

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// As job parameter
         /// </summary>
-        public const string AsJobParameter = "Run cmdlet in the background";
+        public const string AsJobParameter = "Run cmdlet in the background.";
         /// <summary>
         /// The storage sync service object parameter
         /// </summary>
@@ -37,11 +37,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// The storage sync service resource identifier parameter
         /// </summary>
-        public const string StorageSyncServiceResourceIdParameter = "StorageSyncService Resource Id";
+        public const string StorageSyncServiceResourceIdParameter = "StorageSyncService Resource Id.";
         /// <summary>
         /// The storage sync service parent resource identifier parameter
         /// </summary>
-        public const string StorageSyncServiceParentResourceIdParameter = "StorageSyncService Parent Resource Id";
+        public const string StorageSyncServiceParentResourceIdParameter = "StorageSyncService Parent Resource Id.";
         /// <summary>
         /// The storage sync service name parameter
         /// </summary>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// The storage sync service force parameter
         /// </summary>
-        public const string StorageSyncServiceForceParameter = "Force to Delete the Storage Sync Service";
+        public const string StorageSyncServiceForceParameter = "Force to Delete the Storage Sync Service.";
         /// <summary>
         /// The sync group object parameter
         /// </summary>
@@ -65,15 +65,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// The sync group input object parameter
         /// </summary>
-        public const string SyncGroupInputObjectParameter = "SyncGroup Input Object";
+        public const string SyncGroupInputObjectParameter = "SyncGroup Input Object.";
         /// <summary>
         /// The sync group resource identifier parameter
         /// </summary>
-        public const string SyncGroupResourceIdParameter = "SyncGroup Resource Id";
+        public const string SyncGroupResourceIdParameter = "SyncGroup Resource Id.";
         /// <summary>
         /// The sync group parent resource identifier parameter
         /// </summary>
-        public const string SyncGroupParentResourceIdParameter = "SyncGroup Parent Resource Id";
+        public const string SyncGroupParentResourceIdParameter = "SyncGroup Parent Resource Id.";
         /// <summary>
         /// The sync group name parameter
         /// </summary>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// The sync group force parameter
         /// </summary>
-        public const string SyncGroupForceParameter = "Force to Delete the Sync Group";
+        public const string SyncGroupForceParameter = "Force to Delete the Sync Group.";
         /// <summary>
         /// The registered server object parameter
         /// </summary>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// The registered server resource identifier parameter
         /// </summary>
-        public const string RegisteredServerResourceIdParameter = "RegisteredServer Resource Id";
+        public const string RegisteredServerResourceIdParameter = "RegisteredServer Resource Id.";
         /// <summary>
         /// The registered server name parameter
         /// </summary>
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// The registered server force parameter
         /// </summary>
-        public const string RegisteredServerForceParameter = "Force to Delete the RegisteredServer";
+        public const string RegisteredServerForceParameter = "Force to Delete the RegisteredServer.";
         /// <summary>
         /// The cloud endpoint object parameter
         /// </summary>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// The cloud endpoint resource identifier parameter
         /// </summary>
-        public const string CloudEndpointResourceIdParameter = "CloudEndpoint Resource Id";
+        public const string CloudEndpointResourceIdParameter = "CloudEndpoint Resource Id.";
         /// <summary>
         /// The cloud endpoint name parameter
         /// </summary>
@@ -121,19 +121,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// The cloud endpoint force parameter
         /// </summary>
-        public const string CloudEndpointForceParameter = "Force to Delete the CloudEndpoint";
+        public const string CloudEndpointForceParameter = "Force to Delete the CloudEndpoint.";
         /// <summary>
         /// The storage account share name parameter
         /// </summary>
-        public const string AzureFileShareNameParameter = "Storage Account Share Name (Azure File Share Name)";
+        public const string AzureFileShareNameParameter = "Storage Account Share Name (Azure File Share Name).";
         /// <summary>
         /// The storage account tenant identifier parameter
         /// </summary>
-        public const string StorageAccountTenantIdParameter = "Storage Account Tenant Id (Company Directory Id)";
+        public const string StorageAccountTenantIdParameter = "Storage Account Tenant Id (Company Directory Id).";
         /// <summary>
         /// The storage account resource identifier parameter
         /// </summary>
-        public const string StorageAccountResourceIdParameter = "Storage Account Resource Id";
+        public const string StorageAccountResourceIdParameter = "Storage Account Resource Id.";
         /// <summary>
         /// The server endpoint object parameter
         /// </summary>
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// The server endpoint resource identifier parameter
         /// </summary>
-        public const string ServerEndpointResourceIdParameter = "ServerEndpoint Resource Id";
+        public const string ServerEndpointResourceIdParameter = "ServerEndpoint Resource Id.";
         /// <summary>
         /// The server endpoint name parameter
         /// </summary>
@@ -153,35 +153,35 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// The server endpoint force parameter
         /// </summary>
-        public const string ServerEndpointForceParameter = "Force to Delete the ServerEndpoint";
+        public const string ServerEndpointForceParameter = "Force to Delete the ServerEndpoint.";
         /// <summary>
         /// The server local path parameter
         /// </summary>
-        public const string ServerLocalPathParameter = "Server Local Path Parameter";
+        public const string ServerLocalPathParameter = "Server Local Path Parameter.";
         /// <summary>
         /// The cloud tiering parameter
         /// </summary>
-        public const string CloudTieringParameter = "Cloud Tiering Parameter";
+        public const string CloudTieringParameter = "Cloud Tiering Parameter.";
         /// <summary>
         /// The cloud seeded data parameter
         /// </summary>
-        public const string OfflineDataTransferParameter = "Cloud Seeded Data Parameter";
+        public const string OfflineDataTransferParameter = "Cloud Seeded Data Parameter.";
         /// <summary>
         /// The cloud seeded data file share URI parameter
         /// </summary>
-        public const string OfflineDataTransferShareNameParameter = "Cloud Seeded Data File Share Uri Parameter";
+        public const string OfflineDataTransferShareNameParameter = "Cloud Seeded Data File Share Uri Parameter.";
         /// <summary>
         /// The tier files older than days parameter
         /// </summary>
-        public const string TierFilesOlderThanDaysParameter = "Tier Files Older Than Days Parameter";
+        public const string TierFilesOlderThanDaysParameter = "Tier Files Older Than Days Parameter.";
         /// <summary>
         /// The volume free space percent parameter
         /// </summary>
-        public const string VolumeFreeSpacePercentParameter = "Volume Free Space Percent Parameter";
+        public const string VolumeFreeSpacePercentParameter = "Volume Free Space Percent Parameter.";
         /// <summary>
         /// The pattern parameter
         /// </summary>
-        public const string PatternParameter = "Pattern of the file name";
+        public const string PatternParameter = "Pattern of the file name.";
         /// <summary>
         /// The recall path parameter
         /// </summary>
@@ -190,5 +190,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// The resource group name parameter
         /// </summary>
         public const string ResourceGroupNameParameter = "Resource Group Name.";
+        /// <summary>
+        /// Change detection path parameter
+        /// </summary>
+        public const string ChangeDetectionPathParameter = "Path where change detection will be performed.";
+        /// <summary>
+        /// Change detection directory path parameter
+        /// </summary>
+        public const string ChangeDetectionDirectoryPathParameter = "Directory where change detection will be performed.";
+        /// <summary>
+        /// Change detection recurse parameter
+        /// </summary>
+        public const string ChangeDetectionRecurseParameter = "Indication whether directory change detection is recursive.";
     }
 }

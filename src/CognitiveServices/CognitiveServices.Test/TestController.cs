@@ -24,6 +24,7 @@ using System.IO;
 using Microsoft.Azure.Management.Internal.Resources;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTests
 {
@@ -34,6 +35,8 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTes
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public CognitiveServicesManagementClient CognitiveServicesClient { get; private set; }
+
+        public NetworkManagementClient NetworkClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
@@ -69,7 +72,8 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTes
             {
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
-                {"Microsoft.Authorization", null}
+                {"Microsoft.Authorization", null},
+                {"Microsoft.Network", null}
             };
             var providersToIgnore = new Dictionary<string, string>
             {
@@ -92,6 +96,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTes
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
+                    _helper.RMNetworkModule,
                     "AzureRM.Resources.ps1",
                     _helper.GetRMModulePath("AzureRM.CognitiveServices.psd1")
                 );
@@ -114,10 +119,12 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTes
         private void SetupManagementClients(RestTestFramework.MockContext context)
         {
             ResourceManagementClient = GetResourceManagementClient(context);
+            NetworkClient = GetNetworkClient(context);
             CognitiveServicesClient = GetCognitiveServicesManagementClient(context);
 
             _helper.SetupManagementClients(
                 ResourceManagementClient,
+                NetworkClient,
                 CognitiveServicesClient);
         }
 
@@ -129,6 +136,14 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTes
         private static CognitiveServicesManagementClient GetCognitiveServicesManagementClient(RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<CognitiveServicesManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected NetworkManagementClient GetNetworkClient(RestTestFramework.MockContext context)
+        {
+            NetworkManagementClient client =
+                context.GetServiceClient<NetworkManagementClient>(
+                    RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return client;
         }
     }
 }

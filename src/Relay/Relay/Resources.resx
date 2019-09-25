@@ -142,10 +142,10 @@
     <value>Removing HybridConnections: {0} of Namespace{1}</value>
   </data>
   <data name="RemoveHybirdconnectionAuthorizationrule" xml:space="preserve">
-    <value>Removing AtuhorizationRule:{0} from HybridConnection:{1} of Namespace: {2}</value>
+    <value>Removing AuthorizationRule:{0} from HybridConnection:{1} of Namespace: {2}</value>
   </data>
   <data name="RemoveNamespaceAuthorizationRule" xml:space="preserve">
-    <value>Removing AtuhorizationRule:{0} of Namespace: {1}</value>
+    <value>Removing AuthorizationRule:{0} of Namespace: {1}</value>
   </data>
   <data name="RemoveRelayNamespace" xml:space="preserve">
     <value> Removing Namespace:{0} from ResourceGroup:{1}</value>
@@ -154,16 +154,16 @@
     <value>Removing WcfRelay: {0} of Namespace{1}</value>
   </data>
   <data name="RemoveWcfRelayAuthorizationRule" xml:space="preserve">
-    <value>Removeing AtuhorizationRule:{0} from WcfRelay:{1} of Namespace: {2}</value>
+    <value>Removing AuthorizationRule:{0} from WcfRelay:{1} of Namespace: {2}</value>
   </data>
   <data name="RemovingHybirdconnectionAuthorizationrule" xml:space="preserve">
-    <value>Are you sure you want to remove AtuhorizationRule:{0} from HybridConnection:{1} of Namespace: {2}</value>
+    <value>Are you sure you want to remove AuthorizationRule:{0} from HybridConnection:{1} of Namespace: {2}</value>
   </data>
   <data name="RemovingNamespaceAuthorizationRule" xml:space="preserve">
-    <value>Are you sure you want to delete  AtuhorizationRule:{0} of Namespace: {1}</value>
+    <value>Are you sure you want to delete  AuthorizationRule:{0} of Namespace: {1}</value>
   </data>
   <data name="RemovingWcfRelayAuthorizationRule" xml:space="preserve">
-    <value>Are you sure you want to remove AtuhorizationRule:{0} from WcfRelay:{1} of Namespace: {2}</value>
+    <value>Are you sure you want to remove AuthorizationRule:{0} from WcfRelay:{1} of Namespace: {2}</value>
   </data>
   <data name="UpdateHybirdconnection" xml:space="preserve">
     <value>Updating HybridConnections:{0} of NameSpace:{1}</value>
@@ -172,7 +172,7 @@
     <value>Update AuthorizationRule named:{0} for Hybirdconnection{1}</value>
   </data>
   <data name="UpdateNamespaceAuthorizationrule" xml:space="preserve">
-    <value>Updating  AuthorizationRule named:{0} for Namespace: {1}</value>
+    <value>Updating AuthorizationRule named:{0} for Namespace: {1}</value>
   </data>
   <data name="UpdateRelayNamespace" xml:space="preserve">
     <value>Update NameSpace:{0} from ResourceGroup:{1}</value>

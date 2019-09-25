@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -45,6 +46,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Network/virtualNetworkTaps", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         [Parameter(

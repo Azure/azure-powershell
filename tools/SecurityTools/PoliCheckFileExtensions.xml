@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xmldata>
+  <PckFileTypes TotalTypes="34" TotalExts="143" UnsupportedFilesOnly="False">
+    <Type ID="0" Check="1">
+      <Name>Pure Text Files</Name>
+      <Extensions>
+        <Ext Check="1">.txt</Ext>
+        <Ext Check="1">.des</Ext>
+        <Ext Check="1">.pwd</Ext>
+        <Ext Check="1">.asm</Ext>
+        <Ext Check="1">.cmd</Ext>
+        <Ext Check="1">.ini</Ext>
+        <Ext Check="1">.poc</Ext>
+        <Ext Check="1">.pwt</Ext>
+        <Ext Check="1">.hpj</Ext>
+        <Ext Check="1">.sql</Ext>
+        <Ext Check="1">.inf</Ext>
+        <Ext Check="1">.log</Ext>
+        <Ext Check="1">.def</Ext>
+        <Ext Check="1">.url</Ext>
+        <Ext Check="1">.bat</Ext>
+        <Ext Check="1">.aspx</Ext>
+        <Ext Check="1">.idl</Ext>
+        <Ext Check="1">.strings</Ext>
+        <Ext Check="1">.md</Ext>
+        <Ext Check="1">.yml</Ext>
+        <Ext Check="1">.yaml</Ext>
+        <Ext Check="1">.ps1</Ext>
+        <Ext Check="1">.psm1</Ext>
+        <Ext Check="1">.psd1</Ext>
+        <Ext Check="1">.ps1xml</Ext>
+        <Ext Check="1">.ts</Ext>
+        <Ext Check="1">.php</Ext>
+        <Ext Check="1">.csv</Ext>
+        <Ext Check="1">.py</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="1" Check="1">
+      <Name>CodeFiles</Name>
+      <Extensions>
+        <Ext Check="1">.frm</Ext>
+        <Ext Check="1">.inc</Ext>
+        <Ext Check="1">.cpp</Ext>
+        <Ext Check="1">.cls</Ext>
+        <Ext Check="1">.c</Ext>
+        <Ext Check="1">.hpp</Ext>
+        <Ext Check="1">.vbs</Ext>
+        <Ext Check="1">.java</Ext>
+        <Ext Check="1">.cs</Ext>
+        <Ext Check="1">.cxx</Ext>
+        <Ext Check="1">.h</Ext>
+        <Ext Check="1">.jav</Ext>
+        <Ext Check="1">.bas</Ext>
+        <Ext Check="1">.hxx</Ext>
+        <Ext Check="1">.js</Ext>
+        <Ext Check="1">.pl</Ext>
+        <Ext Check="1">.rc</Ext>
+        <Ext Check="1">.vb</Ext>
+        <Ext Check="1">.json</Ext>
+        <Ext Check="1">.resjson</Ext>
+        <Ext Check="1">.fs</Ext>
+        <Ext Check="1">.fsi</Ext>
+        <Ext Check="1">.fsx</Ext>
+        <Ext Check="1">.m</Ext>
+        <Ext Check="1">.swift</Ext>
+        <Ext Check="1">.config</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="2" Check="1">
+      <Name>XML Files</Name>
+      <Extensions>
+        <Ext Check="1">.xml</Ext>
+        <Ext Check="1">.hxa</Ext>
+        <Ext Check="1">.hxk</Ext>
+        <Ext Check="1">.hxl</Ext>
+        <Ext Check="1">.xsl</Ext>
+        <Ext Check="1">.hxc</Ext>
+        <Ext Check="1">.hxt</Ext>
+        <Ext Check="1">.hxm</Ext>
+        <Ext Check="1">.resx</Ext>
+        <Ext Check="1">.hxe</Ext>
+        <Ext Check="1">.hxf</Ext>
+        <Ext Check="1">.hxv</Ext>
+        <Ext Check="1">.acctb</Ext>
+        <Ext Check="1">.accfl</Ext>
+        <Ext Check="1">.xaml</Ext>
+        <Ext Check="1">.ttml</Ext>
+        <Ext Check="1">.ddue</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="3" Check="1">
+      <Name>Microsoft Word Documents</Name>
+      <Extensions>
+        <Ext Check="1">.doc</Ext>
+        <Ext Check="1">.dot</Ext>
+        <Ext Check="1">.wiz</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="4" Check="1">
+      <Name>Microsoft Access Database Compatible</Name>
+      <Extensions>
+        <Ext Check="1">.mda</Ext>
+        <Ext Check="1">.mde</Ext>
+        <Ext Check="1">.mpd</Ext>
+        <Ext Check="1">.mdt</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="5" Check="1">
+      <Name>Microsoft PowerPoint Presentation</Name>
+      <Extensions>
+        <Ext Check="1">.ppt</Ext>
+        <Ext Check="1">.pot</Ext>
+        <Ext Check="1">.pps</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="6" Check="1">
+      <Name>Microsoft Publisher Files</Name>
+      <Extensions>
+        <Ext Check="1">.pub</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="7" Check="1">
+      <Name>Microsoft Excel Workbooks</Name>
+      <Extensions>
+        <Ext Check="1">.xls</Ext>
+        <Ext Check="1">.xlt</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="9" Check="1">
+      <Name>Localization resource databases</Name>
+      <Extensions>
+        <Ext Check="1">.lcl</Ext>
+        <Ext Check="1">.xlf</Ext>
+        <Ext Check="1">.xliff</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="10" Check="1">
+      <Name>Microsoft Project Files</Name>
+      <Extensions>
+        <Ext Check="1">.mpp</Ext>
+        <Ext Check="1">.mpt</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="11" Check="1">
+      <Name>Microsoft Visio Files</Name>
+      <Extensions>
+        <Ext Check="1">.vsd</Ext>
+        <Ext Check="1">.vdx</Ext>
+        <Ext Check="1">.vss</Ext>
+        <Ext Check="1">.vst</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="13" Check="1">
+      <Name>Zip Files</Name>
+      <Extensions>
+        <Ext Check="1">.zip</Ext>
+        <Ext Check="1">.accdt</Ext>
+       <Ext Check="1">.axtr</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="14" Check="1">
+      <Name>Cabinet / MS Compression Files</Name>
+      <Extensions>
+        <Ext Check="1">.cab</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="19" Check="1">
+      <Name>HTML Help 2.0 Files / InfoTech5.x Storage System Files</Name>
+      <Extensions>
+        <Ext Check="1">.its</Ext>
+        <Ext Check="1">.hxh</Ext>
+        <Ext Check="1">.hxr</Ext>
+        <Ext Check="1">.hxw</Ext>
+        <Ext Check="1">.hxi</Ext>
+        <Ext Check="1">.hxs</Ext>
+        <Ext Check="1">.hxq</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="21" Check="1">
+      <Name>HTML Files / Web Page</Name>
+      <Extensions>
+        <Ext Check="1">.htm</Ext>
+        <Ext Check="1">.dtd</Ext>
+        <Ext Check="1">.hhk</Ext>
+        <Ext Check="1">.htw</Ext>
+        <Ext Check="1">.asp</Ext>
+        <Ext Check="1">.htc</Ext>
+        <Ext Check="1">.htx</Ext>
+        <Ext Check="1">.html</Ext>
+        <Ext Check="1">.hhc</Ext>
+        <Ext Check="1">.css</Ext>
+        <Ext Check="1">.stm</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="22" Check="1">
+      <Name>Rich Text Files</Name>
+      <Extensions>
+        <Ext Check="1">.rtf</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="23" Check="1">
+      <Name>Windows 3.x Write Files</Name>
+      <Extensions>
+        <Ext Check="1">.wri</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="24" Check="1">
+      <Name>MHTML Files</Name>
+      <Extensions>
+        <Ext Check="1">.eml</Ext>
+        <Ext Check="1">.nws</Ext>
+        <Ext Check="1">.mht</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="25" Check="1">
+      <Name>Word 2007 Files</Name>
+      <Extensions>
+        <Ext Check="1">.docx</Ext>
+        <Ext Check="1">.docm</Ext>
+        <Ext Check="1">.dotx</Ext>
+        <Ext Check="1">.dotm</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="26" Check="1">
+      <Name>Excel 2007 Files</Name>
+      <Extensions>
+        <Ext Check="1">.xlsx</Ext>
+        <Ext Check="1">.xlsm</Ext>
+        <Ext Check="1">.xltx</Ext>
+        <Ext Check="1">.xltm</Ext>
+        <Ext Check="1">.xlsb</Ext>
+        <Ext Check="1">.xlam</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="27" Check="1">
+      <Name>Power Point 2007 Files</Name>
+      <Extensions>
+        <Ext Check="1">.pptx</Ext>
+        <Ext Check="1">.pptm</Ext>
+        <Ext Check="1">.potx</Ext>
+        <Ext Check="1">.potm</Ext>
+        <Ext Check="1">.ppsx</Ext>
+        <Ext Check="1">.ppsm</Ext>
+        <Ext Check="1">.ppam</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="28" Check="1">
+      <Name>Access 2007 Files</Name>
+      <Extensions>
+        <Ext Check="1">.accdb</Ext>
+        <Ext Check="1">.accde</Ext>
+        <Ext Check="1">.accdr</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="31" Check="1">
+      <Name>LocStudio lsg</Name>
+      <Extensions>
+        <Ext Check="1">.lsg</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="32" Check="1">
+      <Name>Microsoft Office OneNote Files</Name>
+      <Extensions>
+        <Ext Check="1">.one</Ext>
+        <Ext Check="1">.onepkg</Ext>
+      </Extensions>
+    </Type>
+    <Type ID="33" Check="1">
+      <Name>Custom Parsers</Name>
+      <Extensions />
+    </Type>
+    <!--Scanning of Visio files in new Windows User Interface format-->
+    <Type ID="34" Check="1">
+      <Name>Visio 2011 Files</Name>
+      <Extensions>
+        <Ext Check="1">.vstx</Ext>
+        <Ext Check="1">.vsdx</Ext>
+        <Ext Check="1">.vssx</Ext>
+      </Extensions>
+    </Type>
+  </PckFileTypes>
+</xmldata>

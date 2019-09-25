@@ -19,5 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 0.7.2
+* Fixed miscellaneous typos across module
+
 ## Version 0.7.1
 * Update incorrect online help URLs

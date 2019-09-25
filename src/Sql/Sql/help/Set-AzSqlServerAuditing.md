@@ -9,6 +9,8 @@ schema: 2.0.0
 # Set-AzSqlServerAuditing
 
 ## SYNOPSIS
+**Important: This cmdlet is deprecated, [Set-AzSqlServerAudit](https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserveraudit) is replacing it.**
+
 Changes the auditing settings of an Azure SQL server.
 
 ## SYNTAX
@@ -117,7 +119,18 @@ PS C:\>Set-AzSqlServerAuditing -State Enabled -ResourceGroupName "ResourceGroup0
 
 ### Example 6: Enable the event hub auditing policy of an Azure SQL server
 ```
-PS C:\>Set-AzSqlServerAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -EventHubName "EventHubName" -EventHubAuthorizationRuleResourceId "EventHubAuthorizationRuleResourceId"
+$EventHubAuthorizationRule = Get-AzEventHubAuthorizationRule `
+    -ResourceGroupName "ResourceGroup01" `
+    -Namespace "EventHubName" `
+    -Name "SharedAccessPoliceName" 
+
+Set-AzSqlServerAuditing `
+    -State Enabled `
+    -ResourceGroupName "ResourceGroup01" `
+    -ServerName "Server01" `
+    -EventHub `
+    -EventHubName "EventHubName" `
+    -EventHubAuthorizationRuleResourceId $EventHubAuthorizationRule.Id
 ```
 
 ### Example 7: Disable the event hub auditing policy of an Azure SQL server

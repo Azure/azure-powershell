@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3,
             HelpMessage = "The sync group name.")]
         [Alias("SyncGroupName")]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         /// <summary>

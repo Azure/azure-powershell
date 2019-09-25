@@ -16,7 +16,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
 {
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.WindowsAzure.Commands.Common.Storage.Properties;
-    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.Azure.Storage;
     using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;

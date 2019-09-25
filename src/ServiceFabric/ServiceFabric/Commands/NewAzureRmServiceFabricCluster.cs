@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         };
 
         private string resourceLocation;
-        public override string KeyVaultResouceGroupLocation
+        public override string KeyVaultResourceGroupLocation
         {
             get
             {
@@ -160,7 +160,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByDefaultArmTemplate,
               HelpMessage = "Azure key vault resource group name, if not given it will be defaulted to resource group name")]
         [ValidateNotNullOrEmpty]
-        public override string KeyVaultResouceGroupName { get; set; }
+        [Alias("KeyVaultResouceGroupName")]
+        public override string KeyVaultResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
                 HelpMessage = "Azure key vault name, if not given it will be defaulted to the resource group name")]
@@ -361,7 +362,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private void DeployWithoutDefaultTemplate()
         {
-            var deployment = CreateBasicDeployment(DeploymentMode.Incremental, null);
+            var deployment = CreateBasicDeployment(DeploymentMode.Incremental, this.TemplateFile, this.ParameterFile);
 
             ParseTemplate(true);
             TranslateParameters(true);
@@ -459,7 +460,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     Location = this.Location
                 });
 
-            var deployment = CreateBasicDeployment(DeploymentMode.Incremental, null);
+            var deployment = CreateBasicDeployment(DeploymentMode.Incremental, this.TemplateFile, this.ParameterFile);
 
             ParseTemplate(false);
             TranslateParameters(false);
@@ -706,57 +707,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
-        private Deployment CreateBasicDeployment(DeploymentMode deploymentMode, string debugSetting, JObject parameters = null)
-        {
-            var deployment = new Deployment
-            {
-                Properties = new DeploymentProperties
-                {
-                    Mode = deploymentMode
-                }
-            };
-
-            if (!string.IsNullOrEmpty(debugSetting))
-            {
-                deployment.Properties.DebugSetting = new DebugSetting()
-                {
-                    DetailLevel = debugSetting
-                };
-            }
-
-            JObject templateJObject;
-
-            if (!TryParse(FileUtilities.DataStore.ReadFileAsText(this.TemplateFile), out templateJObject))
-            {
-                throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidTemplateFile);
-            }
-
-            deployment.Properties.Template = templateJObject;
-
-            if (parameters == null)
-            {
-                JObject parameterJObject;
-
-                if (!TryParse(FileUtilities.DataStore.ReadFileAsText(this.ParameterFile), out parameterJObject))
-                {
-                    throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidTemplateParameterFile);
-                }
-
-                if (parameterJObject["parameters"] == null)
-                {
-                    throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidTemplateParameterFile);
-                }
-
-                deployment.Properties.Parameters = parameterJObject["parameters"];
-            }
-            else
-            {
-                deployment.Properties.Parameters = parameters;
-            }
-
-            return deployment;
-        }
-
         private JObject SetParameters(
             JObject parameters,
             string keyVault,
@@ -822,31 +772,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             this.domainNameLabel = TryGetParameter((JObject)parameters, this.domainNameLabelParameter) ?? this.domainNameLabelParameter;
         }
 
-        private void SetParameter(ref JObject parameters, string parameterName, int value)
-        {
-            var token = parameters.Children().SingleOrDefault(
-                    j => ((JProperty)j).Name.Equals(parameterName, StringComparison.OrdinalIgnoreCase));
-
-            if (token != null)
-            {
-                token.First()["value"] = value;
-            }
-        }
-
-        private void SetParameter(ref JObject parameters, string parameterName, string value)
-        {
-            if (value != null)
-            {
-                var token = parameters.Children().SingleOrDefault(
-                        j => ((JProperty)j).Name.Equals(parameterName, StringComparison.OrdinalIgnoreCase));
-
-                if (token != null && token.Any())
-                {
-                    token.First()["value"] = value;
-                }
-            }
-        }
-
         private string TryGetParameter(JObject parameters, string parameterName)
         {
             var value = parameters.GetValue(parameterName, StringComparison.OrdinalIgnoreCase);
@@ -861,10 +786,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private void ParseTemplate(bool customize)
         {
-            var templateString = FileUtilities.DataStore.ReadFileAsText(this.TemplateFile);
-
             JObject jObject;
-            if (!TryParse(templateString, out jObject))
+            if (!TryParseJson(this.TemplateFile, out jObject))
             {
                 throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidTemplateFile);
             }
@@ -908,14 +831,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         foreach (var secret in vmssProfile.OsProfile.Secrets)
                         {
                             if (
-                                !secret.SourceVault.Id.Equals(TranslateToParameterName(secret.SourceVault.Id),
+                                !secret.SourceVault.Id.Equals(TranslateToParameterName(secret.SourceVault.Id, this.TemplateFile),
                                     StringComparison.OrdinalIgnoreCase))
                             {
                                 this.keyVaultParameter = secret.SourceVault.Id;
                                 foreach (var cert in secret.VaultCertificates)
                                 {
                                     if (
-                                        !cert.CertificateUrl.Equals(TranslateToParameterName(cert.CertificateUrl),
+                                        !cert.CertificateUrl.Equals(TranslateToParameterName(cert.CertificateUrl, this.TemplateFile),
                                             StringComparison.OrdinalIgnoreCase))
                                     {
                                         this.certificateUrlParameter = cert.CertificateUrl;
@@ -979,52 +902,22 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private void TranslateParameters(bool customize)
         {
-            this.adminUserParameter = TranslateToParameterName(this.adminUserParameter);
-            this.adminPasswordParameter = TranslateToParameterName(this.adminPasswordParameter);
-            this.locationParameter = TranslateToParameterName(this.locationParameter);
-            this.clusterNameParameter = TranslateToParameterName(this.clusterNameParameter);
-            this.domainNameLabelParameter = TranslateToParameterName(this.domainNameLabelParameter);
+            this.adminUserParameter = TranslateToParameterName(this.adminUserParameter, this.TemplateFile);
+            this.adminPasswordParameter = TranslateToParameterName(this.adminPasswordParameter, this.TemplateFile);
+            this.locationParameter = TranslateToParameterName(this.locationParameter, this.TemplateFile);
+            this.clusterNameParameter = TranslateToParameterName(this.clusterNameParameter, this.TemplateFile);
+            this.domainNameLabelParameter = TranslateToParameterName(this.domainNameLabelParameter, this.TemplateFile);
 
             if (!customize)
             {
-                this.vmInstanceParameter = TranslateToParameterName(this.vmInstanceParameter);
-                this.durabilityLevelParameter = TranslateToParameterName(this.durabilityLevelParameter);
-                this.reliabilityLevelParameter = TranslateToParameterName(this.reliabilityLevelParameter);
-                this.thumbprintParameter = TranslateToParameterName(this.thumbprintParameter);
-                this.keyVaultParameter = TranslateToParameterName(this.keyVaultParameter);
-                this.certificateUrlParameter = TranslateToParameterName(this.certificateUrlParameter);
-                this.skuParameter = TranslateToParameterName(this.skuParameter);
-                this.vmImageSkuParameter = TranslateToParameterName(this.vmImageSkuParameter);
-            }
-        }
-
-        private string TranslateToParameterName(string parameter)
-        {
-            var parameterArray = parameter.Split(
-                new char[] { '[', ']', '(', ')', '\'' },
-                StringSplitOptions.RemoveEmptyEntries);
-
-            if (parameterArray.Count() <= 1)
-            {
-                return parameter;
-            }
-
-            if (parameterArray[0].Equals("variables", StringComparison.OrdinalIgnoreCase))
-            {
-                var templateString = FileUtilities.DataStore.ReadFileAsText(this.TemplateFile);
-
-                JObject jObject;
-                if (!TryParse(templateString, out jObject))
-                {
-                    throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidTemplateFile);
-                }
-
-                var variables = jObject.SelectToken("variables", true);
-                return TranslateToParameterName(variables[parameterArray[1]].ToString());
-            }
-            else
-            {
-                return parameterArray[1];
+                this.vmInstanceParameter = TranslateToParameterName(this.vmInstanceParameter, this.TemplateFile);
+                this.durabilityLevelParameter = TranslateToParameterName(this.durabilityLevelParameter, this.TemplateFile);
+                this.reliabilityLevelParameter = TranslateToParameterName(this.reliabilityLevelParameter, this.TemplateFile);
+                this.thumbprintParameter = TranslateToParameterName(this.thumbprintParameter, this.TemplateFile);
+                this.keyVaultParameter = TranslateToParameterName(this.keyVaultParameter, this.TemplateFile);
+                this.certificateUrlParameter = TranslateToParameterName(this.certificateUrlParameter, this.TemplateFile);
+                this.skuParameter = TranslateToParameterName(this.skuParameter, this.TemplateFile);
+                this.vmImageSkuParameter = TranslateToParameterName(this.vmImageSkuParameter, this.TemplateFile);
             }
         }
 
@@ -1054,86 +947,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 this.reliabilityLevel = ReliabilityLevel.Platinum.ToString();
             }
-        }
-
-        private bool TryParse(string content, out JObject jObject)
-        {
-            if (string.IsNullOrWhiteSpace(content))
-            {
-                throw new PSArgumentException(content);
-            }
-
-            try
-            {
-                jObject = JObject.Parse(content);
-                return true;
-            }
-            catch (JsonReaderException)
-            {
-                jObject = null;
-                return false;
-            }
-        }
-
-        private void DisplayInnerDetailErrorMessage(ResourceManagementErrorWithDetails error)
-        {
-            var ex = new Exception(string.Format(ErrorFormat, error.Code, error.Message));
-            WriteError(
-               new ErrorRecord(
-                   ex,
-                   string.Empty,
-                   ErrorCategory.NotSpecified,
-                   null));
-
-            if (error.Details != null)
-            {
-                foreach (var innerError in error.Details)
-                {
-                    DisplayInnerDetailErrorMessage(innerError);
-                }
-            }
-        }
-
-        private void CheckValidationResult(DeploymentValidateResult validateResult)
-        {
-            if (validateResult.Error != null)
-            {
-                if (validateResult.Error.Details != null)
-                {
-                    foreach (var error in validateResult.Error.Details)
-                    {
-                        var ex = new Exception(
-                            string.Format(ErrorFormat, error.Code, error.Message));
-                        WriteError(
-                            new ErrorRecord(
-                                ex,
-                                string.Empty,
-                                ErrorCategory.NotSpecified,
-                                null));
-
-                        if (error.Details != null && error.Details.Count > 0)
-                        {
-                            foreach (var innerError in error.Details)
-                            {
-                                DisplayInnerDetailErrorMessage(innerError);
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    var ex = new Exception(
-                           string.Format(ErrorFormat, validateResult.Error.Code, validateResult.Error.Message));
-                    WriteError(
-                           new ErrorRecord(
-                               ex,
-                               string.Empty,
-                               ErrorCategory.NotSpecified,
-                               null));
-                }
-
-                throw new PSInvalidOperationException(ServiceFabricProperties.Resources.DeploymentFailed);
-            } 
         }
     }
 }

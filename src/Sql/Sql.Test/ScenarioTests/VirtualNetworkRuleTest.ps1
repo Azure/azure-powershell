@@ -59,7 +59,7 @@ function Test-CreateAndUpdateVirtualNetworkRule
 	}
 	finally
 	{
-		# Clean the enviroment
+		# Clean the environment
 		Remove-AzSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName $virtualNetworkRuleName
 		Remove-ResourceGroupForTest $rg
 	}
@@ -112,7 +112,7 @@ function Test-GetVirtualNetworkRule
 	}
 	finally
 	{
-		# Clean the enviroment
+		# Clean the environment
 		Remove-AzSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName $virtualNetworkRuleName1
 		Remove-AzSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName $virtualNetworkRuleName2
 		Remove-ResourceGroupForTest $rg
@@ -172,7 +172,7 @@ function CreateAndGetVirtualNetwork ($resourceGroup, $vnetName, $location = "wes
 	$serviceEndpoint = "Microsoft.Sql"
 
 	$subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix $addressPrefix -ServiceEndpoint $serviceEndpoint
-	$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+	$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
 	$getVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup.ResourceGroupName
 

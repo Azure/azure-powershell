@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// Gets or sets the maximum vcore any database can consume in the pool.
         /// </summary>
         [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = false,
-            HelpMessage = "The maxmium VCore number any Azure SQL Database can consume in the pool.")]
+            HelpMessage = "The maximum VCore number any Azure SQL Database can consume in the pool.")]
         [ValidateNotNullOrEmpty]
         public double DatabaseVCoreMax { get; set; }
 

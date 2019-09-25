@@ -19,20 +19,17 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [CmdletOutputBreakingChange(typeof(PSSnapshotUpdate),
-                                DeprecatedOutputProperties = new string[] { "EncryptionSettings" },
-                                NewOutputProperties = new string[] { "EncryptionSettingsCollection" })]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SnapshotUpdateDiskEncryptionKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshotUpdate))]
     public partial class SetAzureRmSnapshotUpdateDiskEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
@@ -83,7 +80,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.SnapshotUpdate.EncryptionSettingsCollection.EncryptionSettings.Add(new EncryptionSettingsElement());
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("SecretUrl"))
+            if (this.IsParameterBound(c => c.SecretUrl))
             {
                 // DiskEncryptionKey
                 if (this.SnapshotUpdate.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey == null)
@@ -93,7 +90,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.SnapshotUpdate.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl = this.SecretUrl;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("SourceVaultId"))
+            if (this.IsParameterBound(c => c.SourceVaultId))
             {
                 // DiskEncryptionKey
                 if (this.SnapshotUpdate.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey == null)

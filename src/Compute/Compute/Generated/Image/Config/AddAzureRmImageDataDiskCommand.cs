@@ -19,14 +19,15 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -105,17 +106,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             var vDataDisks = new ImageDataDisk();
 
             vDataDisks.Lun = this.Lun;
-            vDataDisks.BlobUri = this.MyInvocation.BoundParameters.ContainsKey("BlobUri") ? this.BlobUri : null;
-            vDataDisks.Caching = this.MyInvocation.BoundParameters.ContainsKey("Caching") ? this.Caching : (CachingTypes?)null;
-            vDataDisks.DiskSizeGB = this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB") ? this.DiskSizeGB : (int?)null;
-            vDataDisks.StorageAccountType = this.MyInvocation.BoundParameters.ContainsKey("StorageAccountType") ? this.StorageAccountType : null;
-            if (this.MyInvocation.BoundParameters.ContainsKey("SnapshotId"))
+            vDataDisks.BlobUri = this.IsParameterBound(c => c.BlobUri) ? this.BlobUri : null;
+            vDataDisks.Caching = this.IsParameterBound(c => c.Caching) ? this.Caching : (CachingTypes?)null;
+            vDataDisks.DiskSizeGB = this.IsParameterBound(c => c.DiskSizeGB) ? this.DiskSizeGB : (int?)null;
+            vDataDisks.StorageAccountType = this.IsParameterBound(c => c.StorageAccountType) ? this.StorageAccountType : null;
+            if (this.IsParameterBound(c => c.SnapshotId))
             {
                 // Snapshot
                 vDataDisks.Snapshot = new SubResource();
                 vDataDisks.Snapshot.Id = this.SnapshotId;
             }
-            if (this.MyInvocation.BoundParameters.ContainsKey("ManagedDiskId"))
+            if (this.IsParameterBound(c => c.ManagedDiskId))
             {
                 // ManagedDisk
                 vDataDisks.ManagedDisk = new SubResource();

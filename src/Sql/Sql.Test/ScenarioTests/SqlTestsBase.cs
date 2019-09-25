@@ -27,15 +27,19 @@ using CommonStorage = Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Xunit.Abstractions;
-using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.EventHub;
 using Microsoft.Azure.Management.OperationalInsights;
+using SDKMonitor = Microsoft.Azure.Management.Monitor;
+using CommonMonitor = Microsoft.Azure.Management.Monitor.Version2018_09_01;
+using Microsoft.Azure.Graph.RBAC;
+using Microsoft.Azure.Management.KeyVault;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
     public class SqlTestsBase : RMTestBase
     {
         protected EnvironmentSetupHelper Helper;
+        protected string[] resourceTypesToIgnoreApiVersion;
 
         protected SqlTestsBase(ITestOutputHelper output)
         {
@@ -65,14 +69,16 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
                 {"Microsoft.Authorization", null},
-                {"Microsoft.Network", null}
+                {"Microsoft.Network", null},
+                {"Microsoft.KeyVault", null},
             };
+
             var providersToIgnore = new Dictionary<string, string>
             {
                 {"Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient", "1.42-previewInternal"},
                 {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
             };
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithResourceApiExclusion(true, d, providersToIgnore, resourceTypesToIgnoreApiVersion);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
             // Enable undo functionality as well as mock recording
@@ -90,7 +96,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     "AzureRM.Resources.ps1",
                     Helper.RMOperationalInsightsModule,
                     Helper.RMEventHubModule,
-                    Helper.RMMonitorModule);
+                    Helper.RMMonitorModule,
+                    Helper.RMKeyVaultModule);
                 Helper.RunPowerShellTest(scripts);
             }
         }
@@ -100,9 +107,14 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             return context.GetServiceClient<SqlManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        protected IMonitorManagementClient GetMonitorManagementClient(MockContext context)
+        protected SDKMonitor.IMonitorManagementClient GetMonitorManagementClient(MockContext context)
         {
-            return context.GetServiceClient<MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<SDKMonitor.MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected CommonMonitor.IMonitorManagementClient GetCommonMonitorManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<CommonMonitor.MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         protected IEventHubManagementClient GetEventHubManagementClient(MockContext context)
@@ -118,6 +130,19 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         protected ResourceManagementClient GetResourcesClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected GraphRbacManagementClient GetGraphClient(MockContext context)
+        {
+            GraphRbacManagementClient graphClient = context.GetServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            graphClient.BaseUri = TestEnvironmentFactory.GetTestEnvironment().Endpoints.GraphUri;
+            graphClient.TenantID = TestEnvironmentFactory.GetTestEnvironment().Tenant;
+            return graphClient;
+        }
+
+        protected KeyVaultManagementClient GetKeyVaultClient(MockContext context)
+        {
+            return context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         protected NetworkManagementClient GetNetworkClient(MockContext context)

@@ -61,9 +61,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public PSEndpointType EndpointType { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "Resource group of the Endpoint resoure")]
-        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Resource group of the Endpoint resoure")]
-        [Parameter(Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Resource group of the Endpoint resoure")]
+        [Parameter(Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "Resource group of the Endpoint resource")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Resource group of the Endpoint resource")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Resource group of the Endpoint resource")]
         [ValidateNotNullOrEmpty]
         public string EndpointResourceGroup { get; set; }
 

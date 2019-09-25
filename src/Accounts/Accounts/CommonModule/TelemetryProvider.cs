@@ -16,21 +16,37 @@
 using Microsoft.ApplicationInsights;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Profile.CommonModule;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
+using System.Collections;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Common
 {
     /// <summary>
     /// Class providing telemtry usage based on the user's data collection settings
     /// </summary>
-    public class TelemetryProvider
+    public class TelemetryProvider : IDictionary<string, AzurePSQoSEvent>, IDisposable
     {
         AzurePSDataCollectionProfile _dataCollectionProfile;
         MetricHelper _helper;
         Action<string> _warningLogger, _debugLogger;
+        protected IDictionary<string, AzurePSQoSEvent> ProcessRecordEvents { get; } = new ConcurrentDictionary<string, AzurePSQoSEvent>(StringComparer.OrdinalIgnoreCase);
 
+        public ICollection<string> Keys => ProcessRecordEvents.Keys;
+
+        public ICollection<AzurePSQoSEvent> Values => ProcessRecordEvents.Values;
+
+        public int Count => ProcessRecordEvents.Count;
+
+        public bool IsReadOnly => false;
+
+        public AzurePSQoSEvent this[string key] { get => ProcessRecordEvents[key]; set => ProcessRecordEvents[key] = value; }
 
         protected TelemetryProvider(AzurePSDataCollectionProfile profile, MetricHelper helper, Action<string> warningLogger, Action<string> debugLogger)
         {
@@ -38,6 +54,21 @@ namespace Microsoft.Azure.Commands.Common
             _helper = helper;
             _warningLogger = warningLogger;
             _debugLogger = debugLogger;
+        }
+
+        /// <summary>
+        /// Create a Telemetry Provider using the given event listener
+        /// </summary>
+        /// <param name="listener">The event listenet</param>
+        /// <returns>A telemetry provider that send data over the given event listener</returns>
+        public static TelemetryProvider Create(IEventListener listener)
+        {
+            Func<string, Action<string>> messageLogger = ((messageType) => ( message) => listener.Signal(messageType, listener.Token, () => new EventData { Id = messageType, Message = message }));
+            var warningLogger = messageLogger(Events.Warning);
+            var debugLogger = messageLogger(Events.Debug);
+            var profile = CreateDataCollectionProfile(warningLogger);
+            var helper = CreateMetricHelper(profile);
+            return new TelemetryProvider(profile, helper, warningLogger, debugLogger);
         }
 
         /// <summary>
@@ -54,15 +85,73 @@ namespace Microsoft.Azure.Commands.Common
         }
 
         /// <summary>
+        /// Create a telemtry provider, using the given profile settings and event store
+        /// </summary>
+        /// <param name="collect">Whether ot not to collect data</param>
+        /// <param name="store">The store for events generated during telemetry</param>
+        /// <returns></returns>
+        public static TelemetryProvider Create(bool collect, IEventStore store)
+        {
+            var profile = new AzurePSDataCollectionProfile(false);
+            var helper = CreateMetricHelper(profile);
+            return new TelemetryProvider(profile, helper, store.GetWarningLogger(), store.GetDebugLogger());
+        }
+
+        /// <summary>
         /// Log a telemtry event
         /// </summary>
         /// <param name="qosEvent">The event to log</param>
-        public void LogEvent(AzurePSQoSEvent qosEvent)
+        public virtual void LogEvent(string key)
         {
             var dataCollection = _dataCollectionProfile.EnableAzureDataCollection;
             var enabled = dataCollection.HasValue ? dataCollection.Value : true;
-            _helper.LogQoSEvent(qosEvent, enabled, enabled);
+
+            AzurePSQoSEvent qos;
+            if (this.TryGetValue(key, out qos))
+            {
+                _helper.LogQoSEvent(qos, enabled, enabled);
+                this.Remove(key);
+            }
         }
+
+        /// <summary>
+        /// Flush metrics
+        /// </summary>
+        public virtual void Flush()
+        {
+            _helper.FlushMetric();
+        }
+
+        /// <summary>
+        /// Create a telmetry record
+        /// </summary>
+        /// <param name="invocationInfo"></param>
+        /// <param name="parameterSetName"></param>
+        /// <param name="correlationId"></param>
+        /// <returns></returns>
+        public virtual AzurePSQoSEvent CreateQosEvent(InvocationInfo invocationInfo, string parameterSetName, string correlationId, string processRecordId)
+        {
+            var data = new AzurePSQoSEvent
+            {
+                CommandName = invocationInfo?.MyCommand?.Name,
+                ModuleName = invocationInfo?.MyCommand?.ModuleName,
+                ModuleVersion = invocationInfo?.MyCommand?.Module?.Version?.ToString(),
+                SessionId = correlationId,
+                ParameterSetName = parameterSetName,
+                InvocationName = invocationInfo?.InvocationName,
+                InputFromPipeline = invocationInfo?.PipelineLength > 0,
+            };
+
+            if (invocationInfo != null)
+            {
+                data.Parameters = string.Join(",", invocationInfo?.BoundParameters?.Keys?.ToArray());
+
+            }
+
+            this[processRecordId] = data;
+            return data;
+        }
+
 
         private static MetricHelper CreateMetricHelper(AzurePSDataCollectionProfile profile)
         {
@@ -85,6 +174,74 @@ namespace Microsoft.Azure.Commands.Common
 
             warningLogger(Resources.DataCollectionEnabledWarning);
             return new AzurePSDataCollectionProfile(true);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        protected void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                ProcessRecordEvents?.Clear();
+            }
+        }
+
+        public void Add(string key, AzurePSQoSEvent value)
+        {
+            ProcessRecordEvents.Add(key, value);
+        }
+
+        public bool ContainsKey(string key)
+        {
+            return ProcessRecordEvents.ContainsKey(key);
+        }
+
+        public bool Remove(string key)
+        {
+            return ProcessRecordEvents.Remove(key);
+        }
+
+        public bool TryGetValue(string key, out AzurePSQoSEvent value)
+        {
+            return ProcessRecordEvents.TryGetValue(key, out value);
+        }
+
+        public void Add(KeyValuePair<string, AzurePSQoSEvent> item)
+        {
+            ProcessRecordEvents.Add(item);
+        }
+
+        public void Clear()
+        {
+            ProcessRecordEvents.Clear();
+        }
+
+        public bool Contains(KeyValuePair<string, AzurePSQoSEvent> item)
+        {
+            return ProcessRecordEvents.Contains(item);
+        }
+
+        public void CopyTo(KeyValuePair<string, AzurePSQoSEvent>[] array, int arrayIndex)
+        {
+            ProcessRecordEvents.CopyTo(array, arrayIndex);
+        }
+
+        public bool Remove(KeyValuePair<string, AzurePSQoSEvent> item)
+        {
+            return ProcessRecordEvents.Remove(item);
+        }
+
+        public IEnumerator<KeyValuePair<string, AzurePSQoSEvent>> GetEnumerator()
+        {
+            return ProcessRecordEvents.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ProcessRecordEvents.GetEnumerator();
         }
     }
 }

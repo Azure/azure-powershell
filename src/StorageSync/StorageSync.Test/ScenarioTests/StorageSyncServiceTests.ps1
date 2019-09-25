@@ -25,13 +25,13 @@ function Test-StorageSyncService
     Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
-
         # Test
         $storageSyncServiceName = Get-ResourceName("sss")
+        $resourceGroupLocation = Get-ResourceGroupLocation
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices");
 
-        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
@@ -76,10 +76,11 @@ function Test-NewStorageSyncService
     {
         # Test
         $storageSyncServiceName = Get-ResourceName("sss")
+        $resourceGroupLocation = Get-ResourceGroupLocation
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices");
 
-        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         $storageSyncService = New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
@@ -112,11 +113,12 @@ function Test-GetStorageSyncService
     try
     {
         # Test
-         $storageSyncServiceName = Get-ResourceName("sss")
+        $storageSyncServiceName = Get-ResourceName("sss")
+        $resourceGroupLocation = Get-ResourceGroupLocation
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices");
 
-        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
@@ -152,11 +154,12 @@ function Test-GetStorageSyncServices
     try
     {
         # Test
-         $storageSyncServiceName = Get-ResourceName("sss")
+        $storageSyncServiceName = Get-ResourceName("sss")
+        $resourceGroupLocation = Get-ResourceGroupLocation
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices");
 
-        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
@@ -195,11 +198,12 @@ function Test-RemoveStorageSyncService
     try
     {
         # Test
-         $storageSyncServiceName = Get-ResourceName("sss")
+        $storageSyncServiceName = Get-ResourceName("sss")
+        $resourceGroupLocation = Get-ResourceGroupLocation
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices");
 
-        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         $storageSyncService = New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
@@ -232,11 +236,12 @@ function Test-RemoveStorageSyncServiceInputObject
     try
     {
         # Test
-         $storageSyncServiceName = Get-ResourceName("sss")
+        $storageSyncServiceName = Get-ResourceName("sss")
+        $resourceGroupLocation = Get-ResourceGroupLocation
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices");
 
-        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         $storageSyncService = New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
@@ -269,11 +274,12 @@ function Test-RemoveStorageSyncServiceResourceId
     try
     {
         # Test
-         $storageSyncServiceName = Get-ResourceName("sss")
+        $storageSyncServiceName = Get-ResourceName("sss")
+        $resourceGroupLocation = Get-ResourceGroupLocation
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices");
 
-        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         $storageSyncService = New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName

@@ -1,4 +1,4 @@
-﻿using Microsoft.WindowsAzure.Storage.DataMovement;
+﻿using Microsoft.Azure.Storage.DataMovement;
 using System;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common

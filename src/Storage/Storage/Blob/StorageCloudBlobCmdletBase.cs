@@ -18,8 +18,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.Azure.Storage;
+    using Microsoft.Azure.Storage.Blob;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
@@ -243,12 +243,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             }
         }
 
-        protected void ValidateBlobTier(BlobType type, PremiumPageBlobTier? pageBlobTier)
+        protected void ValidateBlobTier(BlobType type, PremiumPageBlobTier? pageBlobTier = null, StandardBlobTier? standardBlobTier = null, RehydratePriority? rehydratePriority = null)
         {
             if ((pageBlobTier != null)
                 && (type != BlobType.PageBlob))
             {
                 throw new ArgumentOutOfRangeException("BlobType, PageBlobTier", String.Format("PremiumPageBlobTier can only be set to Page Blob. The Current BlobType is: {0}", type));
+            }
+            if ((standardBlobTier != null || rehydratePriority != null)
+                && (type != BlobType.BlockBlob))
+            {
+                throw new ArgumentOutOfRangeException("BlobType, StandardBlobTier/RehydratePriority", String.Format("StandardBlobTier and RehydratePriority can only be set to Block Blob. The Current BlobType is: {0}", type));
             }
         }
 

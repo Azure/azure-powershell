@@ -273,7 +273,7 @@ $sas=Set-AzureKeyVaultManagedStorageSasDefinition -AccountName $sa.StorageAccoun
     - `Add-AzureKeyVaultKey`
     - `Backup-AzureKeyVaultKey`
     - `Backup-AzureKeyVaultSecret`
-    - `Get-AzureKeyVaultCertficate`
+    - `Get-AzureKeyVaultCertificate`
     - `Get-AzureKeyVaultCertificateContact`
     - `Get-AzureKeyVaultCertificateIssuer`
     - `Get-AzureKeyVaultCertificateOperation`

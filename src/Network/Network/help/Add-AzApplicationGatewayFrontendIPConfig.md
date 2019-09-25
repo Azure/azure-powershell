@@ -50,7 +50,7 @@ The third command adds the front-end IP configuration named FrontEndIp01, for th
 
 ### Example 2: Add a static private IP as the front-end IP address
 ```
-PS C:\>$VNet = Get-AzvirtualNetwork -Name "VNet01" -ResourceGroupName "ResourceGroup01"
+PS C:\>$VNet = Get-AzVirtualNetwork -Name "VNet01" -ResourceGroupName "ResourceGroup01"
 PS C:\> $Subnet = Get-AzVirtualNetworkSubnetConfig -Name "Subnet01" -VirtualNetwork $VNet
 PS C:\> $AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 PS C:\> $AppGw = Add-AzApplicationGatewayFrontendIPConfig -ApplicationGateway $AppGw -Name "FrontendIP02" -Subnet $Subnet -PrivateIPAddress 10.0.1.1
@@ -63,7 +63,7 @@ The fourth command adds a front-end IP configuration named FrontendIP02 using $S
 
 ### Example 3: Add a dynamic private IP as the front-end IP address
 ```
-PS C:\>$VNet = Get-AzvirtualNetwork -Name "VNet01" -ResourceGroupName "ResourceGroup01"
+PS C:\>$VNet = Get-AzVirtualNetwork -Name "VNet01" -ResourceGroupName "ResourceGroup01"
 PS C:\> $Subnet = Get-AzVirtualNetworkSubnetConfig -Name "Subnet01" -VirtualNetwork $VNet
 PS C:\> $AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 PS C:\> $AppGw = Add-AzApplicationGatewayFrontendIPConfig -ApplicationGateway $AppGw -Name "FrontendIP02" -Subnet $Subnet
@@ -188,7 +188,7 @@ Accept wildcard characters: False
 ### -SubnetId
 Specifies the subnet ID which this cmdlet adds as the front-end IP configuration.
 Passing subnet implies private IP.
-If the *PrivateIPAddresss* parameter is specified, it should belong to this subnet.
+If the *PrivateIPAddress* parameter is specified, it should belong to this subnet.
 Otherwise, one of the IP from this subnet is dynamically picked up as the front-end IP of the application gateway.
 
 ```yaml

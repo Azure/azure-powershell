@@ -18,7 +18,7 @@ Downloads the contents of a file.
 Get-AzStorageFileContent [-ShareName] <String> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
  [-PassThru] [-Force] [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ### Share
@@ -26,7 +26,7 @@ Get-AzStorageFileContent [-ShareName] <String> [-Path] <String> [[-Destination] 
 Get-AzStorageFileContent [-Share] <CloudFileShare> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
  [-PassThru] [-Force] [-AsJob] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ### Directory
@@ -34,7 +34,7 @@ Get-AzStorageFileContent [-Share] <CloudFileShare> [-Path] <String> [[-Destinati
 Get-AzStorageFileContent [-Directory] <CloudFileDirectory> [-Path] <String> [[-Destination] <String>]
  [-CheckMd5] [-PassThru] [-Force] [-AsJob] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ### File
@@ -42,7 +42,7 @@ Get-AzStorageFileContent [-Directory] <CloudFileDirectory> [-Path] <String> [[-D
 Get-AzStorageFileContent [-File] <CloudFile> [[-Destination] <String>] [-CheckMd5] [-PassThru] [-Force]
  [-AsJob] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,6 +64,13 @@ PS C:\>Get-AzStorageFile -ShareName sample | ? {$_.GetType().Name -eq "CloudFile
 ```
 
 This example downloads the files under sample file share
+
+### Example 3: Download an Azure file to a local file, and perserve the Azure File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the local file.
+```
+PS C:\>Get-AzStorageFileContent -ShareName sample -Path "dir1/file1" -Destination $localFilePath -PreserveSMBAttribute
+```
+
+This example downloads an Azure file to a local file, and perserves the Azure File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the local file.
 
 ## PARAMETERS
 
@@ -103,7 +110,7 @@ Specifies the client-side time-out interval, in seconds, for one service request
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases:
+Aliases: ClientTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named
@@ -184,7 +191,7 @@ To obtain a directory, use the New-AzStorageDirectory cmdlet.
 You can also use the Get-AzStorageFile cmdlet to obtain a directory.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
+Type: Microsoft.Azure.Storage.File.CloudFileDirectory
 Parameter Sets: Directory
 Aliases:
 
@@ -201,7 +208,7 @@ This cmdlet gets the file that this parameter specifies.
 To obtain a **CloudFile** object, use the Get-AzStorageFile cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFile
+Type: Microsoft.Azure.Storage.File.CloudFile
 Parameter Sets: File
 Aliases:
 
@@ -262,13 +269,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PreserveSMBAttribute
+Keep the source File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in destination File. This parameter is only available on Windows.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ServerTimeoutPerRequest
 Specifies the service side time-out interval, in seconds, for a request. If the specified interval elapses before the service processes the request, the storage service returns an error.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases:
+Aliases: ServerTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named
@@ -285,7 +307,7 @@ This object contains the storage context.
 If you specify this parameter, do not specify the *Context* parameter.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFileShare
+Type: Microsoft.Azure.Storage.File.CloudFileShare
 Parameter Sets: Share
 Aliases:
 
@@ -348,17 +370,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.WindowsAzure.Storage.File.CloudFileShare
+### Microsoft.Azure.Storage.File.CloudFileShare
 
-### Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
+### Microsoft.Azure.Storage.File.CloudFileDirectory
 
-### Microsoft.WindowsAzure.Storage.File.CloudFile
+### Microsoft.Azure.Storage.File.CloudFile
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Storage.File.CloudFile
+### Microsoft.Azure.Storage.File.CloudFile
 
 ## NOTES
 

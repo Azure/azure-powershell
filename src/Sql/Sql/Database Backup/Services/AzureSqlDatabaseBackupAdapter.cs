@@ -354,6 +354,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="serverName">The server name.</param>
         /// <param name="databaseName">The database name.</param>
         /// <param name="backupName">The backup name.</param>
+        /// <param name="resourceGroupName">The resource group name</param>
         /// <param name="onlyLatestPerDatabase">Whether or not to only get the latest backup per database.</param>
         /// <param name="databaseState">The state of databases to get backups for: All, Live, Deleted.</param>
         internal IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> GetDatabaseLongTermRetentionBackups(
@@ -361,6 +362,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             string serverName,
             string databaseName,
             string backupName,
+            string resourceGroupName,
             bool? onlyLatestPerDatabase,
             string databaseState)
         {
@@ -368,12 +370,12 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             {
                 return new List<AzureSqlDatabaseLongTermRetentionBackupModel>()
                 {
-                    GetBackupModel(Communicator.GetDatabaseLongTermRetentionBackup(locationName, serverName, databaseName, backupName), locationName)
+                    GetBackupModel(Communicator.GetDatabaseLongTermRetentionBackup(locationName, serverName, databaseName, backupName, resourceGroupName), locationName)
                 };
             }
             else
             {
-                return Communicator.GetDatabaseLongTermRetentionBackups(locationName, serverName, databaseName, onlyLatestPerDatabase, databaseState)
+                return Communicator.GetDatabaseLongTermRetentionBackups(locationName, serverName, databaseName, resourceGroupName, onlyLatestPerDatabase, databaseState)
                     .Select(b => GetBackupModel(b, locationName));
             }
         }
@@ -390,8 +392,18 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 Location = locationName,
                 ResourceId = backup.Id,
                 ServerCreateTime = backup.ServerCreateTime,
-                ServerName = backup.ServerName
+                ServerName = backup.ServerName,
+                ResourceGroupName = GetResourceGroupNameFromResourceId(backup.Id)
             };
+        }
+
+        private string GetResourceGroupNameFromResourceId(string resourceId)
+        {
+            if (resourceId.Contains("/resourceGroups/"))
+            {
+                return resourceId.Split('/')[4];
+            }
+            return null;
         }
 
         /// <summary>
@@ -401,13 +413,15 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="serverName">The server name.</param>
         /// <param name="databaseName">The database name.</param>
         /// <param name="backupName">The backup name.</param>
+        /// <param name="resourceGroupName">The name of the resource group</param>
         internal void RemoveDatabaseLongTermRetentionBackup(
             string locationName,
             string serverName,
             string databaseName,
-            string backupName)
+            string backupName,
+            string resourceGroupName)
         {
-            Communicator.RemoveDatabaseLongTermRetentionBackup(locationName, serverName, databaseName, backupName);
+            Communicator.RemoveDatabaseLongTermRetentionBackup(locationName, serverName, databaseName, backupName, resourceGroupName);
         }
 
         /// <summary>

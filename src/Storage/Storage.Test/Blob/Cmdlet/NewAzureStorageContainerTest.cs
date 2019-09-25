@@ -19,7 +19,7 @@ using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.Azure.Storage.Blob;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
 {

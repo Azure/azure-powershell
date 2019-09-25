@@ -909,7 +909,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("PolicyNotFoundException", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot configure backup for more than 100 VMs per policy
+        /// </summary>
+        public static string ProtectedItemsCountExceededException
+        {
+            get
+            {
+                return ResourceManager.GetString("ProtectedItemsCountExceededException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Successfully deleted policy.
         /// </summary>
@@ -1082,7 +1093,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("RestoreOperation", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to RetentionDuration in Days should be from 7 - 9999.
+        /// </summary>
+        public static string RetentionDurationCountInDaysInvalidException {
+            get {
+                return ResourceManager.GetString("RetentionDurationCountInDaysInvalidException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to RetentionDuration in Days/Weeks/Months/Years should be from 1 - 9999.
         /// </summary>

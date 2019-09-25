@@ -99,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Do not ask for confirmation if you want to overrite a resource
+Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The VpnConenction object to update.
+The VpnConnection object to update.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVpnConnection
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the VpnConenction object to delete.
+The resource id of the VpnConnection object to delete.
 
 ```yaml
 Type: System.String
@@ -236,7 +236,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

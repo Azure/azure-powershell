@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             HelpMessage = "The name of the Azure SQL Database to retrieve.")]
         [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string DatabaseName { get; set; }
 
         /// <summary>

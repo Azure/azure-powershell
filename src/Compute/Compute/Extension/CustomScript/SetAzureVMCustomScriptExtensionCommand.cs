@@ -399,13 +399,26 @@ namespace Microsoft.Azure.Commands.Compute
                         ForceUpdateTag = this.ForceRerun
                     };
 
-                    var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                    this.ResourceGroupName,
-                    this.VMName,
-                    this.Name,
-                    parameters).GetAwaiter().GetResult();
-                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                    WriteObject(result);
+                    if (NoWait.IsPresent)
+                    {
+                        var op = this.VirtualMachineExtensionClient.BeginCreateOrUpdateWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.VMName,
+                            this.Name,
+                            parameters).GetAwaiter().GetResult();
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                        WriteObject(result);
+                    }
+                    else
+                    {
+                        var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.VMName,
+                            this.Name,
+                            parameters).GetAwaiter().GetResult();
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                        WriteObject(result);
+                    }
                 });
             }
         }

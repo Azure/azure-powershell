@@ -46,6 +46,10 @@ using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models;
 using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.KeyVault.Models;
 using Newtonsoft.Json.Linq;
+using System.Threading;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Newtonsoft.Json;
+using SFResource = Microsoft.Azure.Management.ServiceFabric.Models.Resource;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -95,17 +99,17 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         #endregion
 
         #region RM Client
-        private Lazy<IServiceFabricManagementClient> sfrpClient;
+        private Lazy<ServiceFabricManagementClient> sfrpClient;
         private Lazy<IComputeManagementClient> computeClient;
         private Lazy<IKeyVaultManagementClient> keyVaultManageClient;
         private Lazy<IResourceManagementClient> resourcesClient;
         private Lazy<GraphRbacManagementClient> graphClient;
         private Lazy<IKeyVaultClient> keyVaultClient;
 
-        internal IServiceFabricManagementClient SFRPClient
+        internal ServiceFabricManagementClient SFRPClient
         {
             get { return sfrpClient.Value; }
-            set { sfrpClient = new Lazy<IServiceFabricManagementClient>(() => value); }
+            set { sfrpClient = new Lazy<ServiceFabricManagementClient>(() => value); }
         }
 
         internal IComputeManagementClient ComputeClient
@@ -145,7 +149,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private void InitializeAzureRmClients()
         {
-            sfrpClient = new Lazy<IServiceFabricManagementClient>(() =>
+            sfrpClient = new Lazy<ServiceFabricManagementClient>(() =>
             {
                 var armClient = AzureSession.Instance.ClientFactory.
                 CreateArmClient<ServiceFabricManagementClient>(
@@ -181,59 +185,81 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region VMSS 
 
-        protected VirtualMachineScaleSet GetVmss(string name)
+        protected VirtualMachineScaleSet GetVmss(string name, string clusterId)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
                 throw new PSArgumentNullException("Invalid vmss name");
             }
 
-            var result = ComputeClient.VirtualMachineScaleSets.List(ResourceGroupName);
-            if (result == null || !result.Any())
+            var vmssPages = ComputeClient.VirtualMachineScaleSets.List(ResourceGroupName);
+            if (vmssPages == null || !vmssPages.Any())
             {
                 throw new PSArgumentException(string.Format(
                     ServiceFabricProperties.Resources.NoVMSSFoundInRG,
                     this.ResourceGroupName));
             }
 
-            var vmss = result.FirstOrDefault(
-                vm => vm.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
-
-            if (vmss == null)
+            do
             {
-                throw new PSInvalidOperationException(
-                    string.Format(
-                        ServiceFabricProperties.Resources.CannotFindVMSS, 
-                        name));
-            }
+                if (!vmssPages.Any())
+                {
+                    break;
+                }
 
-            return vmss;
+                foreach (var vmss in vmssPages)
+                {
+                    VirtualMachineScaleSetExtension sfExtension;
+                    if (TryGetFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile?.Extensions, out sfExtension))
+                    {
+                        if (string.Equals(GetClusterIdFromExtension(sfExtension), clusterId, StringComparison.OrdinalIgnoreCase))
+                        {
+                            WriteVerboseWithTimestamp(string.Format("GetVmss: Found vmss {0} that corresponds to cluster id {1}", vmss.Id, clusterId));
+                            string nodeTypeRef = GetNodeTypeRefFromExtension(sfExtension);
+                            if (string.Equals(nodeTypeRef, name, StringComparison.OrdinalIgnoreCase))
+                            {
+                                return vmss;
+                            }
+                        }
+                    }
+                }
+            } while (!string.IsNullOrEmpty(vmssPages.NextPageLink) &&
+                     (vmssPages = this.ComputeClient.VirtualMachineScaleSets.ListNext(vmssPages.NextPageLink)) != null);
+
+            throw new PSInvalidOperationException(
+                    string.Format(
+                        ServiceFabricProperties.Resources.CannotFindVMSS,
+                        name));
         }
 
         public bool TryGetFabricVmExt(IList<VirtualMachineScaleSetExtension> extensions, out VirtualMachineScaleSetExtension sfExtension)
         {
-            var extConfigs = extensions.Where(
-                    e =>e.Type.Equals(
-                       Constants.ServiceFabricWindowsNodeExtName, StringComparison.OrdinalIgnoreCase));
-
-            if (!extConfigs.Any())
+            if (extensions == null)
             {
-                extConfigs = extensions.Where(
-                   e => e.Type.Equals(Constants.ServiceFabricLinuxNodeExtName, StringComparison.OrdinalIgnoreCase));
                 sfExtension = null;
                 return false;
             }
 
-            sfExtension = extConfigs.First();
-            return true;
+            sfExtension = extensions.FirstOrDefault(ext => IsSFExtension(ext));
+            return sfExtension != null;
         }
 
         public string GetClusterIdFromExtension(VirtualMachineScaleSetExtension sfExtension)
         {
-            JObject extSettings = (JObject)sfExtension.Settings;
-            string clusterEndpoint = (string)extSettings.SelectToken("clusterEndpoint");
-            string id = clusterEndpoint.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+            string clusterEndpoint = GetSettingFromExtension(sfExtension, "clusterEndpoint");
+            string id = clusterEndpoint?.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
             return id;
+        }
+
+        public string GetNodeTypeRefFromExtension(VirtualMachineScaleSetExtension sfExtension)
+        {
+            return GetSettingFromExtension(sfExtension, "nodeTypeRef");
+        }
+
+        internal string GetSettingFromExtension(VirtualMachineScaleSetExtension sfExtension, string settingName)
+        {
+            JObject extSettings = sfExtension.Settings as JObject;
+            return (string)extSettings.SelectToken(settingName);
         }
 
         #endregion
@@ -546,10 +572,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
             catch (ErrorModelException e)
             {
-                if (e.Body?.Error != null &&
+                if ((e.Body?.Error != null &&
                     (e.Body.Error.Code.Equals("ResourceGroupNotFound", StringComparison.OrdinalIgnoreCase) ||
                      e.Body.Error.Code.Equals("ResourceNotFound", StringComparison.OrdinalIgnoreCase)||
-                     e.Body.Error.Code.Equals("NotFound", StringComparison.OrdinalIgnoreCase)))
+                     e.Body.Error.Code.Equals("NotFound", StringComparison.OrdinalIgnoreCase))) ||
+                     e.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
                     return default(T);
                 }
@@ -611,8 +638,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         new ErrorRecord(ex, string.Empty, ErrorCategory.NotSpecified, null));
                 }
             }
-
-            if (exception is ErrorModelException)
+            else if (exception is ErrorModelException)
             {
                 var errorModelException = (ErrorModelException)exception;
                 if (errorModelException.Body != null)
@@ -623,6 +649,81 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         new ErrorRecord(ex, string.Empty, ErrorCategory.NotSpecified, null));
                 }
             }
+            else
+            {
+                WriteError(new ErrorRecord(exception, string.Empty, ErrorCategory.NotSpecified, null));
+            }
+        }
+
+        protected T StartRequestAndWait<T>(Func<Task<AzureOperationResponse<T>>> requestAction, Func<string> getResourceCurrentStatus) where T : class
+        {
+            var progress = new ProgressRecord(0, string.Format("Request for {0} in progress", typeof(T).Name), "Starting...");
+            WriteProgress(progress);
+            AzureOperationResponse<T> beginRequestResponse = null;
+            AzureOperationResponse<T> result = null;
+            string armCorrelationId = string.Empty;
+            var tokenSource = new CancellationTokenSource();
+            try
+            {
+                var requestTask = Task.Factory.StartNew(() =>
+                {
+                    try
+                    {
+                        beginRequestResponse = requestAction().GetAwaiter().GetResult();
+                        result = this.SFRPClient.GetPutOrPatchOperationResultAsync(beginRequestResponse, null, default(CancellationToken)).GetAwaiter().GetResult();
+                    }
+                    finally
+                    {
+                        tokenSource.Cancel();
+                    }
+                });
+
+                bool correlationPrinted = false;
+                while (!tokenSource.IsCancellationRequested)
+                {
+                    tokenSource.Token.WaitHandle.WaitOne(TimeSpan.FromSeconds(WriteVerboseIntervalInSec));
+
+                    if (!RunningTest)
+                    {
+                        if (!correlationPrinted && beginRequestResponse != null)
+                        {
+                            WriteVerboseWithTimestamp(string.Format(
+                                "Beging request ARM correlationId: '{0}' response: '{1}'",
+                                beginRequestResponse.RequestId,
+                                beginRequestResponse.Response.StatusCode));
+                            correlationPrinted = true;
+                        }
+
+                        string progressMessage = getResourceCurrentStatus();
+                        WriteVerboseWithTimestamp(progressMessage);
+                        progress.StatusDescription = progressMessage;
+                        WriteProgress(progress);
+                    }
+                }
+
+                if (requestTask.IsFaulted)
+                {
+                    string errorMessage = "Begin request operation failed";
+                    if (beginRequestResponse != null)
+                    {
+                        errorMessage = string.Format(
+                            "Operation Failed. Begin request with ARM correlationId: '{0}' response: '{1}'",
+                            beginRequestResponse.RequestId,
+                            beginRequestResponse.Response.StatusCode);
+                        
+                    }
+
+                    WriteErrorWithTimestamp(errorMessage);
+                    throw requestTask.Exception;
+                }
+            }
+            catch (Exception e)
+            {
+                PrintSdkExceptionDetail(e);
+                throw;
+            }
+            
+            return result?.Body;
         }
 
         private string GetCloudErrorMessage(CloudError error)
@@ -665,6 +766,209 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 Environment.NewLine);
 
             return message;
+        }
+
+        private bool IsSFExtension(VirtualMachineScaleSetExtension vmssExt)
+        {
+            return vmssExt.Type.Equals(Constants.ServiceFabricWindowsNodeExtName, StringComparison.OrdinalIgnoreCase) ||
+                   vmssExt.Type.Equals(Constants.ServiceFabricLinuxNodeExtName, StringComparison.OrdinalIgnoreCase);
+        }
+        #endregion
+
+        #region deployment helper
+        private const string ErrorFormat = "Error: Code={0}; Message={1}\r\n";
+
+        protected void CheckValidationResult(DeploymentValidateResult validateResult)
+        {
+            if (validateResult.Error != null)
+            {
+                if (validateResult.Error.Details != null)
+                {
+                    foreach (var error in validateResult.Error.Details)
+                    {
+                        var ex = new Exception(
+                            string.Format(ErrorFormat, error.Code, error.Message));
+                        WriteError(
+                            new ErrorRecord(
+                                ex,
+                                string.Empty,
+                                ErrorCategory.NotSpecified,
+                                null));
+
+                        if (error.Details != null && error.Details.Count > 0)
+                        {
+                            foreach (var innerError in error.Details)
+                            {
+                                DisplayInnerDetailErrorMessage(innerError);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    var ex = new Exception(
+                           string.Format(ErrorFormat, validateResult.Error.Code, validateResult.Error.Message));
+                    WriteError(
+                           new ErrorRecord(
+                               ex,
+                               string.Empty,
+                               ErrorCategory.NotSpecified,
+                               null));
+                }
+
+                throw new PSInvalidOperationException(ServiceFabricProperties.Resources.DeploymentFailed);
+            }
+        }
+
+        protected Deployment CreateBasicDeployment(DeploymentMode deploymentMode, string templateFilePath, string parameterFilePath, string debugSetting = null, JObject parameters = null)
+        {
+            var deployment = new Deployment
+            {
+                Properties = new DeploymentProperties
+                {
+                    Mode = deploymentMode
+                }
+            };
+
+            if (!string.IsNullOrEmpty(debugSetting))
+            {
+                deployment.Properties.DebugSetting = new DebugSetting()
+                {
+                    DetailLevel = debugSetting
+                };
+            }
+
+            JObject templateJObject;
+
+            if (!TryParseJson(templateFilePath, out templateJObject))
+            {
+                throw new PSArgumentException(Properties.Resources.InvalidTemplateFile);
+            }
+
+            deployment.Properties.Template = templateJObject;
+
+            if (parameters == null)
+            {
+                JObject parameterJObject;
+
+                if (!TryParseJson(parameterFilePath, out parameterJObject))
+                {
+                    throw new PSArgumentException(Properties.Resources.InvalidTemplateParameterFile);
+                }
+
+                if (parameterJObject["parameters"] == null)
+                {
+                    throw new PSArgumentException(Properties.Resources.InvalidTemplateParameterFile);
+                }
+
+                deployment.Properties.Parameters = parameterJObject["parameters"];
+            }
+            else
+            {
+                deployment.Properties.Parameters = parameters;
+            }
+
+            return deployment;
+        }
+
+        protected void SetParameter(ref JObject parameters, string parameterName, int value)
+        {
+            var token = parameters.Children().SingleOrDefault(
+                    j => ((JProperty)j).Name.Equals(parameterName, StringComparison.OrdinalIgnoreCase));
+
+            if (token != null)
+            {
+                token.First()["value"] = value;
+            }
+            else
+            {
+                parameters.Add(parameterName, value);
+            }
+        }
+
+        protected void SetParameter(ref JObject parameters, string parameterName, string value)
+        {
+            if (value != null)
+            {
+                var token = parameters.Children().SingleOrDefault(
+                        j => ((JProperty)j).Name.Equals(parameterName, StringComparison.OrdinalIgnoreCase));
+
+                if (token != null && token.Any())
+                {
+                    token.First()["value"] = value;
+                }
+                else
+                {
+                    parameters.Add(parameterName, value);
+                }
+            }
+        }
+
+        protected string TranslateToParameterName(string parameter, string templateFilePath)
+        {
+            var parameterArray = parameter.Split(
+                new char[] { '[', ']', '(', ')', '\'' },
+                StringSplitOptions.RemoveEmptyEntries);
+
+            if (parameterArray.Count() <= 1)
+            {
+                return parameter;
+            }
+
+            if (parameterArray[0].Equals("variables", StringComparison.OrdinalIgnoreCase))
+            {
+                JObject jObject;
+                if (!TryParseJson(templateFilePath, out jObject))
+                {
+                    throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidTemplateFile);
+                }
+
+                var variables = jObject.SelectToken("variables", true);
+                return TranslateToParameterName(variables[parameterArray[1]].ToString(), templateFilePath);
+            }
+            else
+            {
+                return parameterArray[1];
+            }
+        }
+
+        protected bool TryParseJson(string filePath, out JObject jObject)
+        {
+            var content = FileUtilities.DataStore.ReadFileAsText(filePath);
+            if (string.IsNullOrWhiteSpace(content))
+            {
+                throw new PSArgumentException(content);
+            }
+
+            try
+            {
+                jObject = JObject.Parse(content);
+                return true;
+            }
+            catch (JsonReaderException)
+            {
+                jObject = null;
+                return false;
+            }
+        }
+
+        private void DisplayInnerDetailErrorMessage(ResourceManagementErrorWithDetails error)
+        {
+            var ex = new Exception(string.Format(ErrorFormat, error.Code, error.Message));
+            WriteError(
+               new ErrorRecord(
+                   ex,
+                   string.Empty,
+                   ErrorCategory.NotSpecified,
+                   null));
+
+            if (error.Details != null)
+            {
+                foreach (var innerError in error.Details)
+                {
+                    DisplayInnerDetailErrorMessage(innerError);
+                }
+            }
         }
         #endregion
     }

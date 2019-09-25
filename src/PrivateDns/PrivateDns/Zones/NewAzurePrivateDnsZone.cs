@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.PrivateDns.Zones
 {
+    using System;
     using System.Collections;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.PrivateDns.Models;
@@ -41,6 +42,10 @@ namespace Microsoft.Azure.Commands.PrivateDns.Zones
         public override void ExecuteCmdlet()
         {
             this.Name = TrimTrailingDotInZoneName(this.Name);
+            if (this.Name.EndsWith(".local", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning(ProjectResources.Warning_ZoneNameEndsWithLocal);
+            }
 
             ConfirmAction(
                 ProjectResources.Progress_CreatingNewZone,

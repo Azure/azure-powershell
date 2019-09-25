@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
@@ -45,6 +46,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         [Parameter(Position = 2, ParameterSetName = FromDeletedResourceNameParameterSet, Mandatory = false, HelpMessage = "The deleted Azure Web App slot.")]
         public string Slot { get; set; }
 
+        [Parameter(ParameterSetName = FromDeletedResourceNameParameterSet, Mandatory = false, HelpMessage = "The location of the deleted Azure Web App.")]
+        public string Location { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "The resource group containing the new Azure Web App.")]
         public string TargetResourceGroupName { get; set; }
 
@@ -59,6 +63,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
 
         [Parameter(Mandatory = false, HelpMessage = "Restore the web app's files, but do not restore the settings.")]
         public SwitchParameter RestoreContentOnly { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Use to recover a deleted app from a scale unit that is offline.")]
+        public SwitchParameter UseDisasterRecovery { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do the restore without prompting for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -76,7 +83,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
             DeletedAppRestoreRequest restoreReq = new DeletedAppRestoreRequest()
             {
                 DeletedSiteId = deletedSiteId,
-                RecoverConfiguration = !this.RestoreContentOnly
+                RecoverConfiguration = !this.RestoreContentOnly,
+                UseDRSecondary = UseDisasterRecovery
             };
 
             Action restoreAction = () => WebsitesClient.RestoreDeletedWebApp(TargetResourceGroupName, TargetName, TargetSlot, restoreReq);
@@ -103,7 +111,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
                         null, string.Empty, string.Empty);
                     restoreAction();
                 };
-                string confirmMsg = string.Format("This web app will be created. App Name: {0}, Resource Group: {1}", TargetResourceGroupName, TargetName);
+                string confirmMsg = string.Format("This web app will be created. App Name: {0}, Resource Group: {1}", TargetName, TargetResourceGroupName);
                 if (!string.IsNullOrEmpty(TargetSlot))
                 {
                     confirmMsg += ", Slot: " + TargetSlot;
@@ -120,7 +128,17 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
             switch (ParameterSetName)
             {
                 case FromDeletedResourceNameParameterSet:
-                    var deletedSites = WebsitesClient.GetDeletedSites().Where(ds =>
+                    IEnumerable<string> locations;
+                    if (string.IsNullOrEmpty(Location))
+                    {
+                        locations = ResourcesClient.GetDeletedSitesLocations();
+                    }
+                    else
+                    {
+                        locations = new List<string> { Location };
+                    }
+
+                    var deletedSites = WebsitesClient.GetDeletedSitesFromLocations(locations).Where(ds =>
                     {
                         bool match = string.Equals(ds.ResourceGroup, ResourceGroupName, StringComparison.InvariantCultureIgnoreCase) &&
                             string.Equals(ds.Name, Name, StringComparison.InvariantCultureIgnoreCase);
@@ -139,9 +157,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
                     {
                         WriteWarning("Found multiple matching deleted apps. Restoring the most recently deleted app, deleted at " + lastDeleted.DeletedTimestamp);
                     }
-                    return "/subscriptions/" + DefaultContext.Subscription.Id + "/providers/Microsoft.Web/deletedSites/" + lastDeleted.DeletedSiteId;
+                    return "/subscriptions/" + DefaultContext.Subscription.Id + "/providers/Microsoft.Web/locations/" + lastDeleted.GeoRegionName + "/deletedSites/" + lastDeleted.DeletedSiteId;
                 case FromDeletedAppParameterSet:
-                    return "/subscriptions/" + InputObject.SubscriptionId + "/providers/Microsoft.Web/deletedSites/" + InputObject.DeletedSiteId;
+                    return "/subscriptions/" + InputObject.SubscriptionId + "/providers/Microsoft.Web/locations/" + InputObject.Location + "/deletedSites/" + InputObject.DeletedSiteId;
                 default:
                     throw new Exception("Parameter set error");
             }

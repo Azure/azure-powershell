@@ -267,12 +267,6 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
                 RetentionDays = Convert.ToInt32(model.RetentionInDays),
             };
 
-            if (policy.State == SecurityAlertPolicyState.Enabled && !policy.EmailAccountAdmins.Value && !policy.EmailAddresses.Any())
-            {
-                // For new TD policy, make sure EmailAccountAdmins is true
-                policy.EmailAccountAdmins = true;
-            }
-
             if (string.IsNullOrEmpty(model.StorageAccountName))
             {
                 policy.StorageEndpoint = null;

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         ServiceClientAdapter ServiceClientAdapter { get; set; }
         AzureWorkloadProviderHelper AzureWorkloadProviderHelper { get; set; }
         /// <summary>
-        /// Initializes the provider with the data recieved from the cmdlet layer
+        /// Initializes the provider with the data received from the cmdlet layer
         /// </summary>
         /// <param name="providerData">Data from the cmdlet layer intended for the provider</param>
         /// <param name="serviceClientAdapter">Service client adapter for communicating with the backend service</param>
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     {
                         OverwriteOption = string.Compare(wLRecoveryConfig.OverwriteWLIfpresent, "No") == 0 ?
                         OverwriteOptions.FailOnConflict : OverwriteOptions.Overwrite,
-                        DatabaseName = wLRecoveryConfig.RestoredDBName,
+                        DatabaseName = wLRecoveryConfig.TargetInstance + "/" + wLRecoveryConfig.RestoredDBName,
                         ContainerId = wLRecoveryConfig.ContainerId
                     };
                     azureWorkloadSQLRestoreRequest.AlternateDirectoryPaths = wLRecoveryConfig.targetPhysicalPath;
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     {
                         OverwriteOption = string.Compare(wLRecoveryConfig.OverwriteWLIfpresent, "No") == 0 ?
                         OverwriteOptions.FailOnConflict : OverwriteOptions.Overwrite,
-                        DatabaseName = wLRecoveryConfig.RestoredDBName,
+                        DatabaseName = wLRecoveryConfig.TargetInstance + "/" + wLRecoveryConfig.RestoredDBName,
                         ContainerId = wLRecoveryConfig.ContainerId
                     };
                     azureWorkloadSQLPointInTimeRestoreRequest.AlternateDirectoryPaths = wLRecoveryConfig.targetPhysicalPath;

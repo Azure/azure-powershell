@@ -46,6 +46,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string SetPolicyAssignmentDisplayNameHelp = "The display name of the updated policy assignment";
         public const string SetPolicyAssignmentDescriptionHelp = "The description of the updated policy assignment";
         public const string SetPolicyAssignmentMetadataHelp = "The updated metadata for the policy assignment. This can either be a path to a file name containing the metadata, or the metadata as a string.";
+        public const string SetPolicyAssignmentPolicyParameterObjectHelp = "The new policy parameters object for the policy assignment.";
+        public const string SetPolicyParameterHelp = "The new policy parameters file path or string for the policy assignment.";
         public const string SetPolicyAssignmentSkuHelp = "A hash table which specifies sku properties. This parameter is deprecated and ignored.";
         public const string PolicyAssignmentAssignIdentityHelp = "Generate and assign an Azure Active Directory Identity for this policy assignment. The identity will be used when executing deployments for 'deployIfNotExists' policies. Location is required when assigning an identity.";
         public const string PolicyAssignmentLocationHelp = "The location of the policy assignment's resource identity. This is required when the -AssignIdentity switch is used.";
@@ -65,7 +67,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string NewPolicyDefinitionRuleHelp = "The policy rule for the new policy definition. This can either be a path to a file name or uri containing the rule, or the rule as a string.";
         public const string NewPolicyDefinitionMetadataHelp = "The metadata for the new policy definition. This can either be a path to a file name containing the metadata, or the metadata as a string.";
         public const string NewPolicyDefinitionParameterHelp = "The parameters declaration for the new policy definition. This can either be a path to a file name or uri containing the parameters declaration, or the parameters declaration as a string.";
-        public const string NewPolicyDefinitionModeHelp = "The mode of the new policy definition.";
+        public const string NewPolicyDefinitionModeHelp = "The mode of the new policy definition, e.g. All, Indexed.";
         public const string NewPolicyDefinitionManagementGroupHelp = "The name of the management group of the new policy definition.";
         public const string NewPolicyDefinitionSubscriptionIdHelp = "The subscription ID of the new policy definition.";
         public const string RemovePolicyDefinitionNameHelp = "The name of the policy definition to delete.";

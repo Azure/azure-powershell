@@ -19,7 +19,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
     using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Microsoft.WindowsAzure.Storage.DataMovement;
+    using Microsoft.Azure.Storage.DataMovement;
     using System;
     using System.Globalization;
     using System.Management.Automation;
@@ -139,6 +139,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             });
 
             return transferContext;
+        }
+
+        // Dynamic Parameters which are only available on Windows.
+        public class WindowsOnlyParameters
+        {
+            [Parameter(HelpMessage = "Keep the source File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in destination File. This parameter is only available on Windows.")]
+            public SwitchParameter PreserveSMBAttribute { get; set; }
         }
     }
 }

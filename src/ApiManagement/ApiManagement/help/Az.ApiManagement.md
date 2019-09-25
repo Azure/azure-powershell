@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.ApiManagement
 Module Guid: f875725d-8ce4-423f-a6af-ea880bc63f13
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement
@@ -41,6 +41,9 @@ Get the API Release.
 ### [Get-AzApiManagementApiRevision](Get-AzApiManagementApiRevision.md)
 Gets details of all the API Revisions of an API
 
+### [Get-AzApiManagementApiSchema](Get-AzApiManagementApiSchema.md)
+Get the details of the API Schema
+
 ### [Get-AzApiManagementApiVersionSet](Get-AzApiManagementApiVersionSet.md)
 Get the details of the API Version Sets
 
@@ -50,8 +53,14 @@ Gets an API Management authorization server.
 ### [Get-AzApiManagementBackend](Get-AzApiManagementBackend.md)
 Get the details of the Backend.
 
+### [Get-AzApiManagementCache](Get-AzApiManagementCache.md)
+Get the details of the Cache.
+
 ### [Get-AzApiManagementCertificate](Get-AzApiManagementCertificate.md)
 Gets API Management certificates configured for Mutual Authentication with Backend in the service.
+
+### [Get-AzApiManagementDiagnostic](Get-AzApiManagementDiagnostic.md)
+Get details of the Diagnostic configured at the service level or the Api Level. Diagnostics are used to log requests/responses from Api Management gateway.
 
 ### [Get-AzApiManagementGroup](Get-AzApiManagementGroup.md)
 Gets all or specific API management groups.
@@ -61,6 +70,9 @@ Get the identity provider configuration details.
 
 ### [Get-AzApiManagementLogger](Get-AzApiManagementLogger.md)
 Gets API Management Logger objects.
+
+### [Get-AzApiManagementNetworkStatus](Get-AzApiManagementNetworkStatus.md)
+Gets the Connectivity Status to the external resources on which the Api Management service depends from inside the Cloud Service. This also returns the DNS Servers as visible to the CloudService.
 
 ### [Get-AzApiManagementOpenIdConnectProvider](Get-AzApiManagementOpenIdConnectProvider.md)
 Gets OpenID Connect providers.
@@ -113,6 +125,9 @@ Creates an API Release of an API Revision
 ### [New-AzApiManagementApiRevision](New-AzApiManagementApiRevision.md)
 Creates a new Revision of an Existing API.
 
+### [New-AzApiManagementApiSchema](New-AzApiManagementApiSchema.md)
+Creates the new API Schema in the ApiManagement service
+
 ### [New-AzApiManagementApiVersionSet](New-AzApiManagementApiVersionSet.md)
 Creates an API Version Set.
 
@@ -131,6 +146,9 @@ Creates a new Backend Proxy Object.
 ### [New-AzApiManagementBackendServiceFabric](New-AzApiManagementBackendServiceFabric.md)
 Creates an object of `PsApiManagementServiceFabric`
 
+### [New-AzApiManagementCache](New-AzApiManagementCache.md)
+Creates a new Cache entity
+
 ### [New-AzApiManagementCertificate](New-AzApiManagementCertificate.md)
 Creates an API Management certificate to be used during Authentication with Backend.
 
@@ -140,8 +158,14 @@ Creates an instance of PsAzureApiManagementContext.
 ### [New-AzApiManagementCustomHostnameConfiguration](New-AzApiManagementCustomHostnameConfiguration.md)
 Creates an instance of `PsApiManagementCustomHostNameConfiguration`.
 
+### [New-AzApiManagementDiagnostic](New-AzApiManagementDiagnostic.md)
+Creates a new diagnostics at the Global scope or Api Scope.
+
 ### [New-AzApiManagementGroup](New-AzApiManagementGroup.md)
 Creates an API management group.
+
+### [New-AzApiManagementHttpMessageDiagnostic](New-AzApiManagementHttpMessageDiagnostic.md)
+Creates an instance of **PsApiManagementHttpMessageDiagnostic** which is an Http Message diagnostic setting of the Diagnostic
 
 ### [New-AzApiManagementIdentityProvider](New-AzApiManagementIdentityProvider.md)
 Creates a new Identity Provider configuration.
@@ -155,6 +179,9 @@ Creates an OpenID Connect provider.
 ### [New-AzApiManagementOperation](New-AzApiManagementOperation.md)
 Creates an API management operation.
 
+### [New-AzApiManagementPipelineDiagnosticSetting](New-AzApiManagementPipelineDiagnosticSetting.md)
+Create Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
+
 ### [New-AzApiManagementProduct](New-AzApiManagementProduct.md)
 Creates an API Management product.
 
@@ -164,6 +191,12 @@ Creates a new Property.
 ### [New-AzApiManagementRegion](New-AzApiManagementRegion.md)
 Creates an instance of PsApiManagementRegion.
 
+### [New-AzApiManagementSamplingSetting](New-AzApiManagementSamplingSetting.md)
+Create a new sampling setting for the Diagnostic
+
+### [New-AzApiManagementSslSetting](New-AzApiManagementSslSetting.md)
+Creates an instance of PsApiManagementSslSetting
+
 ### [New-AzApiManagementSubscription](New-AzApiManagementSubscription.md)
 Creates a subscription.
 
@@ -172,6 +205,9 @@ Creates an instance of `PsApiManagementSystemCertificate`. The certificate can b
 
 ### [New-AzApiManagementUser](New-AzApiManagementUser.md)
 Registers a new user.
+
+### [New-AzApiManagementUserToken](New-AzApiManagementUserToken.md)
+Generates a Shared Access Token for the User.
 
 ### [New-AzApiManagementVirtualNetwork](New-AzApiManagementVirtualNetwork.md)
 Creates an instance of PsApiManagementVirtualNetwork.
@@ -194,6 +230,9 @@ Removes a particular API Release
 ### [Remove-AzApiManagementApiRevision](Remove-AzApiManagementApiRevision.md)
 Removed a particular API Revision
 
+### [Remove-AzApiManagementApiSchema](Remove-AzApiManagementApiSchema.md)
+Removes the API Schema from the API.
+
 ### [Remove-AzApiManagementApiVersionSet](Remove-AzApiManagementApiVersionSet.md)
 Removes a particular Api Version Set
 
@@ -203,8 +242,14 @@ Removes an authorization server.
 ### [Remove-AzApiManagementBackend](Remove-AzApiManagementBackend.md)
 Removes a Backend.
 
+### [Remove-AzApiManagementCache](Remove-AzApiManagementCache.md)
+Removes the cache entity.
+
 ### [Remove-AzApiManagementCertificate](Remove-AzApiManagementCertificate.md)
 Removes an API Management certificate.
+
+### [Remove-AzApiManagementDiagnostic](Remove-AzApiManagementDiagnostic.md)
+Remove the Diagnostic entity from Global or API level scope.
 
 ### [Remove-AzApiManagementGroup](Remove-AzApiManagementGroup.md)
 Removes an existing API management group.
@@ -260,6 +305,9 @@ Modifies an API.
 ### [Set-AzApiManagementApiRevision](Set-AzApiManagementApiRevision.md)
 Modifies an API Revision
 
+### [Set-AzApiManagementApiSchema](Set-AzApiManagementApiSchema.md)
+Modifies an API Schema
+
 ### [Set-AzApiManagementApiVersionSet](Set-AzApiManagementApiVersionSet.md)
 Updates an API Version Set in the API Management Context.
 
@@ -271,6 +319,9 @@ Updates a Backend.
 
 ### [Set-AzApiManagementCertificate](Set-AzApiManagementCertificate.md)
 Modifies an API Management certificate which is configured for mutual authentication with backend.
+
+### [Set-AzApiManagementDiagnostic](Set-AzApiManagementDiagnostic.md)
+Modifies an API Management diagnostic at the Global or Api scope.
 
 ### [Set-AzApiManagementGroup](Set-AzApiManagementGroup.md)
 Configures an API management group.
@@ -307,6 +358,9 @@ Sets user details.
 
 ### [Update-AzApiManagementApiRelease](Update-AzApiManagementApiRelease.md)
 Updates a particular Api Release.
+
+### [Update-AzApiManagementCache](Update-AzApiManagementCache.md)
+updates a cache in Api Management service.
 
 ### [Update-AzApiManagementRegion](Update-AzApiManagementRegion.md)
 Updates existing deployment region in PsApiManagement instance.

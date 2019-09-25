@@ -15,12 +15,12 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+    using Microsoft.Azure.Storage.Shared.Protocol;
     using System;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
-    using StorageClient = WindowsAzure.Storage.Shared.Protocol;
+    using StorageClient = Azure.Storage.Shared.Protocol;
     using XTable = Microsoft.Azure.Cosmos.Table;
 
     /// <summary>
@@ -40,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         public int? RetentionDays { get; set; }
 
         public const string LoggingOperationHelpMessage =
-            "Logging operations. (All, None, combinations of Read, Write, Delete that are seperated by semicolon.)";
+            "Logging operations. (All, None, combinations of Read, Write, Delete that are separated by semicolon.)";
         [Parameter(HelpMessage = LoggingOperationHelpMessage)]
         public StorageClient.LoggingOperations[] LoggingOperations { get; set; }
 

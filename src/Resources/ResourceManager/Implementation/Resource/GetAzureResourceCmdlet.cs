@@ -62,6 +62,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = ByTagObjectParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = ByTagNameValueParameterSet, Mandatory = false)]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         /// <summary>
@@ -89,6 +90,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = ByTagNameValueParameterSet, Mandatory = false)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Parameter(ParameterSetName = ByTagObjectParameterSet, Mandatory = true)]

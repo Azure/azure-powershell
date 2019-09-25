@@ -311,6 +311,12 @@ function Test-PublicIpAddressCRUD-IpTag
       Assert-AreEqual $IpTag.IpTagType "FirstPartyUsage"
       Assert-AreEqual $IpTag.Tag "/Sql"
 
+	  # Routing Preference behind feature flag testing to ensure value is valid
+	  $IpTag2 = New-AzPublicIpTag -IpTagType "RoutingPreference" -Tag "/Internet"
+
+      Assert-AreEqual $IpTag2.IpTagType "RoutingPreference"
+      Assert-AreEqual $IpTag2.Tag "/Internet"
+
       # Create publicIpAddres
       $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel -IpTag $IpTag
       $publicip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname

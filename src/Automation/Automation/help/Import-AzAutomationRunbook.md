@@ -287,8 +287,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzAutomationRunbook](./New-AzAutomationRunbook.md)
 
-[New-AzAutomationRunbook](./New-AzAutomationRunbook.md)
-
 [Publish-AzAutomationRunbook](./Publish-AzAutomationRunbook.md)
 
 [Remove-AzAutomationRunbook](./Remove-AzAutomationRunbook.md)

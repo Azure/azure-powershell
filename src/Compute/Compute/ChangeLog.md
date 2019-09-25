@@ -19,8 +19,92 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix the null exception for Get-AzRemoteDesktopFile.
+* Fix VHD Seek method for end-relative position.
+* Fix UltraSSD issue for New-AzVM and Update-AzVM.
+
+## Version 2.5.0
+* Add VmssId to New-AzVMConfig cmdlet
+* Add TerminateScheduledEvents and TerminateScheduledEventNotBeforeTimeoutInMinutes parameters to New-AzVmssConfig and Update-AzVmss
+* Add HyperVGeneration property to VM image object
+* Add Host and HostGroup features
+    - New cmdlets:
+	    New-AzHostGroup
+		New-AzHost
+		Get-AzHostGroup
+		Get-AzHost
+		Remove-AzHostGroup
+		Remove-AzHost
+	- HostId parameter is added to New-AzVMConfig and New-AzVM
+* Fixed miscellaneous typos across module
+* Update example in `Invoke-AzVMRunCommand` documentation to use correct parameter name
+* Update `-VolumeType` description in `Set-AzVMDiskEncryptionExtension` and `Set-AzVmssDiskEncryptionExtension` reference documentation
+
+## Version 2.4.1
+* Add missing properties (ComputerName, OsName, OsVersion and HyperVGeneration) of VM instance view object.
+
+## Version 2.4.0
+* Add HyperVGeneration parameter to New-AzImageConfig
+* Use the extension type instead of the name when disabling vmss disk encryption
+
+## Version 2.3.0
+* New-AzVm and New-AzVmss simple parameter sets now accept the `ProximityPlacementGroup` parameter.
+* Fix typo in `New-AzVM` reference documentation
+
+## Version 2.2.0
+* Added `NoWait` parameter that starts the operation and returns immediately, before the operation is completed.
+    - Updated cmdlets:
+        Export-AzLogAnalyticRequestRateByInterval
+        Export-AzLogAnalyticThrottledRequest
+        Remove-AzVM
+        Remove-AzVMAccessExtension
+        Remove-AzVMAEMExtension
+        Remove-AzVMChefExtension
+        Remove-AzVMCustomScriptExtension
+        Remove-AzVMDiagnosticsExtension
+        Remove-AzVMDiskEncryptionExtension
+        Remove-AzVMDscExtension
+        Remove-AzVMSqlServerExtension
+        Restart-AzVM
+        Set-AzVM
+        Set-AzVMAccessExtension
+        Set-AzVMADDomainExtension
+        Set-AzVMAEMExtension
+        Set-AzVMBginfoExtension
+        Set-AzVMChefExtension
+        Set-AzVMCustomScriptExtension
+        Set-AzVMDiagnosticsExtension
+        Set-AzVMDscExtension
+        Set-AzVMExtension
+        Start-AzVM
+        Stop-AzVM
+        Update-AzVM
+
+## Version 2.1.0
+* Add ProtectFromScaleIn and ProtectFromScaleSetAction parameters to Update-AzVmssVM cmdlet.
+* New-AzVM simple parameter set now uses by default an available location if 'East US' is not supported
+
+## Version 2.0.0
+* Proximity placement group feature.
+    - The following new cmdlets are added:
+	    New-AzProximityPlacementGroup
+		Get-AzProximityPlacementGroup
+		Remove-AzProximityPlacementGroup
+	- The new parameter, ProximityPlacementGroupId, is added to the following cmdlets:
+	    New-AzAvailabilitySet
+		New-AzVMConfig
+		New-AzVmssConfig
+* StorageAccountType parameter is added to New-AzGalleryImageVersion.
+* TargetRegion of New-AzGalleryImageVersion can contain StorageAccountType.
+* SkipShutdown switch parameter is added to Stop-AzVM and Stop-AzVmss		
+* Breaking changes
+    - Set-AzVMBootDiagnostics is changed to Set-AzVMBootDiagnostic.
+    - Export-AzLogAnalyticThrottledRequests is changed to Export-AzLogAnalyticThrottledRequests.
+
+## Version 1.8.0
 * Fix issue with AEM installation if resource ids of disks had lowercase resourcegroups in resource id
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Fix documentation for wildcards
 
 ## Version 1.7.0
 * Add HyperVGeneration parameter to New-AzDiskConfig and New-AzSnapshotConfig

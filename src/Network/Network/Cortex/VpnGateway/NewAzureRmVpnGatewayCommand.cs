@@ -104,16 +104,19 @@ namespace Microsoft.Azure.Commands.Network
             vpnGateway.Name = this.Name;
             vpnGateway.ResourceGroupName = this.ResourceGroupName;
             vpnGateway.VirtualHub = null;
+            string virtualHubResourceGroupName = this.ResourceGroupName; // default to common RG for ByVirtualHubName parameter set
 
             //// Resolve and Set the virtual hub
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubObject, StringComparison.OrdinalIgnoreCase))
             {
                 this.VirtualHubName = this.VirtualHub.Name;
+                virtualHubResourceGroupName = this.VirtualHub.ResourceGroupName;
             }
             else if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubResourceId, StringComparison.OrdinalIgnoreCase))
             {
                 var parsedResourceId = new ResourceIdentifier(this.VirtualHubId);
                 this.VirtualHubName = parsedResourceId.ResourceName;
+                virtualHubResourceGroupName = parsedResourceId.ResourceGroupName;
             }
             
             //// At this point, we should have the virtual hub name resolved. Fail this operation if it is not.
@@ -122,7 +125,12 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.VirtualHubRequiredForVpnGateway);
             }
 
-            var resolvedVirtualHub = new VirtualHubBaseCmdlet().GetVirtualHub(this.ResourceGroupName, this.VirtualHubName);
+            var resolvedVirtualHub = new VirtualHubBaseCmdlet().GetVirtualHub(virtualHubResourceGroupName, this.VirtualHubName);
+            if (resolvedVirtualHub == null)
+            {
+                throw new PSArgumentException(Properties.Resources.VirtualHubRequiredForExpressRouteGateway);
+            }
+
             vpnGateway.Location = resolvedVirtualHub.Location;
             vpnGateway.VirtualHub = new PSResourceId() { Id = resolvedVirtualHub.Id };
 

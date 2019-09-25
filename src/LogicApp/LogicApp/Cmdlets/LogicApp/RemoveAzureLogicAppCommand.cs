@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     public class RemoveAzureLogicAppCommand : LogicAppBaseCmdlet
     {
 
-        #region Input Paramters
+        #region Input Parameters
 
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group for the workflow.",
             ValueFromPipelineByPropertyName = true)]

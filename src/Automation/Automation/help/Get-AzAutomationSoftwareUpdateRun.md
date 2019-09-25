@@ -42,7 +42,7 @@ Get-AzAutomationSoftwareUpdateRun [-SoftwareUpdateConfiguration <SoftwareUpdateC
 ```
 
 ## DESCRIPTION
-The Get-AzAutomationSoftwareUpdateRun cmdlet returns a list of software update runs. Since a software update configuration has an associated schedule, it can be triggered multiple times. Each time a schedule is triggered will result in an update run created. Update run is an aggregate of the result of all machine runs. You can get runs for specific software update configuration by passing the SoftwareUpdateConfigurationName parameter. To get a specific runs, you need to pass the name parameter. You can also list runs with specific status, runs targeting specific operatins system, or runs started after specific time by passing the appropriate parameter.
+The Get-AzAutomationSoftwareUpdateRun cmdlet returns a list of software update runs. Since a software update configuration has an associated schedule, it can be triggered multiple times. Each time a schedule is triggered will result in an update run created. Update run is an aggregate of the result of all machine runs. You can get runs for specific software update configuration by passing the SoftwareUpdateConfigurationName parameter. To get a specific runs, you need to pass the name parameter. You can also list runs with specific status, runs targeting specific operating system, or runs started after specific time by passing the appropriate parameter.
 
 ## EXAMPLES
 

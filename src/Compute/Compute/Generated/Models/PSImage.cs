@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public SubResource SourceVirtualMachine { get; set; }
         public ImageStorageProfile StorageProfile { get; set; }
         public string ProvisioningState { get; set; }
+        public string HyperVGeneration { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }

@@ -41,7 +41,7 @@ Path map configuration settings are used in application gateway load balancing.
 ```
 PS C:\>$Gateway = Get-AzApplicationGateway -Name "ContosoApplicationGateway"
 PS C:\> $AddressPool = New-AzApplicationGatewayBackendAddressPool -Name "ContosoAddressPool" -BackendIPAddresses "192.168.1.1", "192.168.1.2"
-PS C:\> $HttpSettings = New-AzApplicationGatewayBackendHttpSettings -Name "ContosoHttpSetings" -Port 80 -Protocol "Http" -CookieBasedAffinity "Disabled"
+PS C:\> $HttpSettings = New-AzApplicationGatewayBackendHttpSettings -Name "ContosoHttpSettings" -Port 80 -Protocol "Http" -CookieBasedAffinity "Disabled"
 PS C:\> $PathRuleConfig = New-AzApplicationGatewayPathRuleConfig -Name "base" -Paths "/base" -BackendAddressPool $AddressPool -BackendHttpSettings $HttpSettings
 PS C:\> Add-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $Gateway -Name "ContosoUrlPathMap" -PathRules $PathRuleConfig -DefaultBackendAddressPool $AddressPool -DefaultBackendHttpSettings $HttpSettings
 ```
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 ### -BackendHttpSettings
 Specifies an object reference to a collection of backend HTTP settings to be added to the gateway path rule configuration settings.
 You can create this object reference by using the New-AzApplicationGatewayBackendHttpSettings cmdlet and syntax similar to this:
-$HttpSettings = New-AzApplicationGatewayBackendHttpSettings -Name "ContosoHttpSetings" -Port 80 -Protocol "Http" -CookieBasedAffinity "Disabled"
+$HttpSettings = New-AzApplicationGatewayBackendHttpSettings -Name "ContosoHttpSettings" -Port 80 -Protocol "Http" -CookieBasedAffinity "Disabled"
 The resulting variable, $HttpSettings, can then be used as the parameter value for the *DefaultBackendAddressPool* parameter:
 -DefaultBackendHttpSettings $HttpSettings
 The backend HTTP settings configure properties such as port, protocol, and cookie-based affinity for a backend pool.

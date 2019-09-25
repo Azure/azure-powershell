@@ -14,10 +14,10 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Auth;
-    using Microsoft.WindowsAzure.Storage.Blob;
-    using Microsoft.WindowsAzure.Storage.File;
+    using Microsoft.Azure.Storage;
+    using Microsoft.Azure.Storage.Auth;
+    using Microsoft.Azure.Storage.Blob;
+    using Microsoft.Azure.Storage.File;
     using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Globalization;

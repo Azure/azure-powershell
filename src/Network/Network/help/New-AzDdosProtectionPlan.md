@@ -26,11 +26,11 @@ The New-AzDdosProtectionPlan cmdlet creates a DDoS protection plan.
 ```
 D:\> $ddosProtectionPlan = New-AzDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlanName -Location "West US"
 D:\> $subnet = New-AzVirtualNetworkSubnetConfig -Name SubnetName -AddressPrefix 10.0.1.0/24
-D:\> $vnet = New-AzvirtualNetwork -Name VnetName -ResourceGroupName ResourceGroupName -Location "West US" -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EnableDdoSProtection -DdosProtectionPlanId $ddosProtectionPlan.Id
+D:\> $vnet = New-AzVirtualNetwork -Name VnetName -ResourceGroupName ResourceGroupName -Location "West US" -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EnableDdoSProtection -DdosProtectionPlanId $ddosProtectionPlan.Id
 ```
 
 First, we create a new DDoS Protection plan with the **New-AzDdosProtectionPlan** command.
-Then, we create a new virtual network with **New-AzvirtualNetwork** and we specify the ID of the newly created plan in the parameter **DdosProtectionPlanId**. In this case, since we are associating the virtual network with a plan, we can also specify the parameter **EnableDdoSProtection**.
+Then, we create a new virtual network with **New-AzVirtualNetwork** and we specify the ID of the newly created plan in the parameter **DdosProtectionPlanId**. In this case, since we are associating the virtual network with a plan, we can also specify the parameter **EnableDdoSProtection**.
 
 ### Example 2: Create and associate a DDoS protection plan with an existing virtual network
 ```

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ------------------------------------
 
+using System;
 using System.Management.Automation;
 using Commands.Security;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -26,6 +27,8 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityAlert", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSSecurityAlert))]
     public class GetAlerts : SecurityCenterCmdletBase
     {
+        private const int MaxAlertsToFetch = 1500;
+
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupScope, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
         [ValidateNotNullOrEmpty]
@@ -48,15 +51,39 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
 
         public override void ExecuteCmdlet()
         {
+            int numberOfFetchedAlerts = 0;
+            string nextLink = null;
             switch (ParameterSetName)
             {
                 case ParameterSetNames.SubscriptionScope:
                     var alerts = SecurityCenterClient.Alerts.ListWithHttpMessagesAsync().GetAwaiter().GetResult().Body;
-                    WriteObject(alerts.ConvertToPSType(), enumerateCollection: true);
+                    var PSTypeAlerts = alerts.ConvertToPSType();
+                    WriteObject(PSTypeAlerts, enumerateCollection: true);
+                    numberOfFetchedAlerts += PSTypeAlerts.Count;
+                    nextLink = alerts?.NextPageLink;
+                    while (!string.IsNullOrWhiteSpace(nextLink) && numberOfFetchedAlerts < MaxAlertsToFetch)
+                    {
+                        alerts = SecurityCenterClient.Alerts.ListNextWithHttpMessagesAsync(alerts.NextPageLink).GetAwaiter().GetResult().Body;
+                        PSTypeAlerts = alerts.ConvertToPSType();
+                        WriteObject(PSTypeAlerts, enumerateCollection: true);
+                        numberOfFetchedAlerts += PSTypeAlerts.Count;
+                        nextLink = alerts?.NextPageLink;
+                    }
                     break;
                 case ParameterSetNames.ResourceGroupScope:
                     alerts = SecurityCenterClient.Alerts.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName).GetAwaiter().GetResult().Body;
-                    WriteObject(alerts.ConvertToPSType(), enumerateCollection: true);
+                    PSTypeAlerts = alerts.ConvertToPSType();
+                    WriteObject(PSTypeAlerts, enumerateCollection: true);
+                    numberOfFetchedAlerts += PSTypeAlerts.Count;
+                    nextLink = alerts?.NextPageLink;
+                    while (!string.IsNullOrWhiteSpace(nextLink) && numberOfFetchedAlerts < MaxAlertsToFetch)
+                    {
+                        alerts = SecurityCenterClient.Alerts.ListNextWithHttpMessagesAsync(alerts.NextPageLink).GetAwaiter().GetResult().Body;
+                        PSTypeAlerts = alerts.ConvertToPSType();
+                        WriteObject(PSTypeAlerts, enumerateCollection: true);
+                        numberOfFetchedAlerts += PSTypeAlerts.Count;
+                        nextLink = alerts?.NextPageLink;
+                    }
                     break;
                 case ParameterSetNames.SubscriptionLevelResource:
                     SecurityCenterClient.AscLocation = Location;

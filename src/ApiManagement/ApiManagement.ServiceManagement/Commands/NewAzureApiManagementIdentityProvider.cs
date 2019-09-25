@@ -14,9 +14,10 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementIdentityProvider", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementIdentityProvider))]
@@ -24,6 +25,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -55,6 +57,37 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             HelpMessage = "Allowed Aad Tenants. This parameter is optional and only required when setting up Aad Authentication.")]
         public string[] AllowedTenants { get; set; }
 
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "OpenID Connect discovery endpoint hostname for AAD or AAD B2C. This parameter is optional.")]
+        [PSArgumentCompleter("login.microsoftonline.com")]
+        public String Authority { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Signup Policy Name. Only applies to AAD B2C Identity Provider. This parameter is optional.")]
+        public String SignupPolicyName { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Signin Policy Name. Only applies to AAD B2C Identity Provider. This parameter is optional.")]
+        public String SigninPolicyName { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Profile Editing Policy Name. Only applies to AAD B2C Identity Provider. This parameter is optional.")]
+        public String ProfileEditingPolicyName { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Password Reset Policy Name. Only applies to AAD B2C Identity Provider. This parameter is optional.")]
+        public String PasswordResetPolicyName { get; set; }
+
         public override void ExecuteApiManagementCmdlet()
         {
             if (ShouldProcess(Type.ToString("g"), "Creates a new Identity Provider"))
@@ -64,7 +97,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     Type.ToString("G"),
                     ClientId,
                     ClientSecret,
-                    AllowedTenants);
+                    AllowedTenants,
+                    Authority,
+                    SigninPolicyName,
+                    SignupPolicyName,
+                    PasswordResetPolicyName,
+                    ProfileEditingPolicyName);
 
                 WriteObject(identityProvider);
             }

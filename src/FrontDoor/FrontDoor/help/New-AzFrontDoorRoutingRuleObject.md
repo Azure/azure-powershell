@@ -12,23 +12,22 @@ Create a PSRoutingRuleObject for Front Door creation
 
 ## SYNTAX
 
-### ByFieldsWithForwardingParameterSet
+### ByFieldsWithForwardingParameterSet (Default)
 ```
 New-AzFrontDoorRoutingRuleObject -ResourceGroupName <String> -FrontDoorName <String> -Name <String>
  -FrontendEndpointName <String[]> -BackendPoolName <String> [-AcceptedProtocol <PSProtocol[]>]
- [-PatternToMatch <String[]>] [-CustomForwardingPath <String>] [-ForwardingProtocol <PSForwardingProtocol>]
- [-EnableCaching <Boolean>] [-QueryParameterStripDirective <PSQueryParameterStripDirective>]
- [-DynamicCompression <PSEnabledState>] [-EnabledState <PSEnabledState>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PatternToMatch <String[]>] [-CustomForwardingPath <String>] [-ForwardingProtocol <String>]
+ [-EnableCaching <Boolean>] [-QueryParameterStripDirective <String>] [-DynamicCompression <PSEnabledState>]
+ [-EnabledState <PSEnabledState>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByFieldsWithRedirectParameterSet
 ```
 New-AzFrontDoorRoutingRuleObject -ResourceGroupName <String> -FrontDoorName <String> -Name <String>
  -FrontendEndpointName <String[]> [-AcceptedProtocol <PSProtocol[]>] [-PatternToMatch <String[]>]
- [-RedirectType <PSRedirectType>] [-RedirectProtocol <PSRedirectProtocol>] [-CustomHost <String>]
- [-CustomPath <String>] [-CustomFragment <String>] [-CustomQueryString <String>]
- [-EnabledState <PSEnabledState>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-RedirectType <String>] [-RedirectProtocol <String>] [-CustomHost <String>] [-CustomPath <String>]
+ [-CustomFragment <String>] [-CustomQueryString <String>] [-EnabledState <PSEnabledState>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,29 +35,44 @@ Create a PSRoutingRuleObject for Front Door creation
 
 ## EXAMPLES
 
-### Example 1: Create a PSRoutingRuleObject for Front Door creation
+### Example 1: Create a PSRoutingRuleObject for Front Door creation with a forwarding rule
 ```powershell
-PS C:\> New-AzFrontDoorRoutingRuleObject -Name $routingRuleName -FrontDoorName $frontDoorName -ResourceGroupName  -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1" 
+PS C:\> New-AzFrontDoorRoutingRuleObject -Name $routingRuleName -FrontDoorName $frontDoorName -ResourceGroupName $rgname -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1" 
 
 FrontendEndpointIds          : {/subscriptions/{subid}/resourceGroups/{rgname}/pro
                                viders/Microsoft.Network/frontDoors/{frontdoorname}/FrontendEndpoints/frontendEndpoint1}
 AcceptedProtocols            : {Http, Https}
 PatternsToMatch              : {/*}
-ForwardingProtocol           : MatchRequest
-CustomForwardingPath         :
-QueryParameterStripDirective : StripAll
-DynamicCompression           : Enabled
 HealthProbeSettings          :
-BackendPoolId                : /subscriptions/{subid}/resourceGroups/{rgname}/prov
-                               iders/Microsoft.Network/frontDoors/{frontdoorname}/BackendPools/backendPool1
-EnableCaching                : Disabled
+RouteConfiguration           : Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingConfiguration
 EnabledState                 : Enabled
 ResourceState                :
 Id                           :
-Name                         : routingrule1
+Name                         : {routingRuleName}
 Type                         :
 ```
 
+### Example 2: Create a PSRoutingRuleObject for Front Door creation with a redirect rule
+```powershell
+PS C:\> $customHost = "www.contoso.com"
+PS C:\> $customPath = "/images/contoso.png"
+PS C:\> $queryString = "field1=value1&field2=value2"
+PS C:\> $destinationFragment = "section-header-2"
+PS C:\> New-AzFrontDoorRoutingRuleObject -Name $routingRuleName -FrontDoorName $frontDoorName -ResourceGroupName $rgname -FrontendEndpointName "frontendEndpoint1" -CustomHost $customHost -CustomPath $customPath -CustomQueryString $queryString -CustomFragment $destinationFragment
+
+FrontendEndpointIds          : {/subscriptions/{subid}/resourceGroups/{rgname}/pro
+                               viders/Microsoft.Network/frontDoors/{frontdoorname}/FrontendEndpoints/frontendEndpoint1}
+AcceptedProtocols            : {Http, Https}
+PatternsToMatch              : {/*}
+HealthProbeSettings          :
+RouteConfiguration           : Microsoft.Azure.Commands.FrontDoor.Models.PSRedirectConfiguration
+EnabledState                 : Enabled
+ResourceState                :
+Id                           :
+Name                         : {routingRuleName}
+Type                         :
+
+```
 Create a PSRoutingRuleObject for Front Door creation
 
 ## PARAMETERS
@@ -127,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -CustomHost
-Host to redirect. Leave empty to use use the incoming host as the destination host.
+Host to redirect. Leave empty to use the incoming host as the destination host.
 
 ```yaml
 Type: System.String
@@ -241,10 +255,9 @@ The protocol this rule will use when forwarding traffic to backends
 Default value is MatchRequest.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingProtocol
+Type: System.String
 Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
-Accepted values: HttpOnly, HttpsOnly, MatchRequest
 
 Required: False
 Position: Named
@@ -319,10 +332,9 @@ The treatment of URL query terms when forming the cache key.
 Default value is StripAll
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSQueryParameterStripDirective
+Type: System.String
 Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
-Accepted values: StripNone, StripAll
 
 Required: False
 Position: Named
@@ -335,10 +347,9 @@ Accept wildcard characters: False
 The protocol of the destination to where the traffic is redirected. Default value is MatchRequest
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSRedirectProtocol
+Type: System.String
 Parameter Sets: ByFieldsWithRedirectParameterSet
 Aliases:
-Accepted values: HttpOnly, HttpsOnly, MatchRequest
 
 Required: False
 Position: Named
@@ -351,10 +362,9 @@ Accept wildcard characters: False
 The redirect type the rule will use when redirecting traffic. Default Value is Moved
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSRedirectType
+Type: System.String
 Parameter Sets: ByFieldsWithRedirectParameterSet
 Aliases:
-Accepted values: Moved, Found, TemporaryRedirect, PermanentRedirect
 
 Required: False
 Position: Named

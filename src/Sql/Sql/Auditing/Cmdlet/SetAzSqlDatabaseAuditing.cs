@@ -22,6 +22,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
+    [CmdletDeprecation(ReplacementCmdletName = VerbsCommon.Set +
+        "-" +
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix +
+        DefinitionsCommon.DatabaseAuditCmdletsSuffix)]
     [CmdletOutputBreakingChange(
         typeof(DatabaseBlobAuditingSettingsModel),
         ReplacementCmdletOutputTypeName = "bool")]

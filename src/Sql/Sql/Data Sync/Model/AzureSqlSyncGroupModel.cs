@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
         public SecureString HubDatabasePassword { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy of resolving confliction between hub and member database in the sync group
+        /// Gets or sets the policy of resolving conflicts between hub and member database in the sync group
         /// </summary>
         public string ConflictResolutionPolicy { get; set; }
 

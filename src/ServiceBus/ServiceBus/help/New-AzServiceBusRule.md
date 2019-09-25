@@ -48,7 +48,7 @@ The New-AzServiceBusRule cmdlet creates a new rule for the specified Subscriptio
 ## PARAMETERS
 
 ### -ActionSqlExpression
-Action SqlFillter Expression
+Action SqlFilter Expression
 
 ```yaml
 Type: System.String
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -SqlExpression
-Sql Fillter Expression
+Sql Filter Expression
 
 ```yaml
 Type: System.String

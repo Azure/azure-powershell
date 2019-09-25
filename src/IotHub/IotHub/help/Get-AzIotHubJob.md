@@ -19,7 +19,7 @@ Get-AzIotHubJob [-ResourceGroupName] <String> [-Name] <String> [[-JobId] <String
 
 ## DESCRIPTION
 Gets the information about an IotHub Job.
-An IotHub Job gets created when an import or export operation is initialted using the New-AzIotHubExportDevices or New-AzIotHubImportDevices commands.
+An IotHub Job gets created when an import or export operation is initialized using the New-AzIotHubExportDevices or New-AzIotHubImportDevices commands.
 You can either list all the jobs or filter the jobs by the Job Identifier.
 
 ## EXAMPLES

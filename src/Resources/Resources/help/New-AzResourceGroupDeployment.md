@@ -129,7 +129,6 @@ To add a resource group deployment, specify the name of an existing resource gro
 A resource group template is a JSON string that represents a resource group for a complex cloud-based service, such as a web portal.
 The template includes parameter placeholders for required resources and configurable property values, such as names and sizes.
 You can find many templates in the Azure template gallery or you can create your own templates.
-You can use the **Get-AzResourceGroupGalleryTemplate** cmdlet to find a template in the gallery.
 To use a custom template to create a resource group, specify the *TemplateFile* parameter or *TemplateUri* parameter.
 Each template has parameters for configurable properties.
 To specify values for the template parameters, specify the *TemplateParameterFile* parameter or the *TemplateParameterObject* parameter.

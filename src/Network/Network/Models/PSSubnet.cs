@@ -42,6 +42,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSRouteTable RouteTable { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Label = "NatGateway Name", Target = ViewControl.Table, ScriptBlock = "$_.NatGateway.Name")]
+        public PSResourceId NatGateway { get; set; }
+
+        [JsonProperty(Order = 1)]
         public List<PSServiceEndpoint> ServiceEndpoints { get; set; }
 
         [JsonProperty(Order = 1)]
@@ -50,11 +54,19 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSDelegation> Delegations { get; set; }
 
         [JsonProperty(Order = 1)]
-        public List<PSInterfaceEndpoint> InterfaceEndpoints { get; set; }
+        public List<PSPrivateEndpoint> PrivateEndpoints { get; set; }
 
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string PrivateEndpointNetworkPolicies { get; set; }
+
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string PrivateLinkServiceNetworkPolicies { get; set; }
 
         [JsonIgnore]
         public string IpConfigurationsText
@@ -86,6 +98,12 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(RouteTable, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
+        [JsonIgnore]
+        public string NatGatewayText
+        {
+            get { return JsonConvert.SerializeObject(NatGateway, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
         public bool ShouldSerializeIpConfigurations()
         {
             return !string.IsNullOrEmpty(this.Name);
@@ -106,7 +124,17 @@ namespace Microsoft.Azure.Commands.Network.Models
             return !string.IsNullOrEmpty(this.Name);
         }
 
-        public bool ShouldSerializeInterfaceEndpoints()
+        public bool ShouldSerializePrivateEndpoints()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeDelegations()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeServiceAssociationLinks()
         {
             return !string.IsNullOrEmpty(this.Name);
         }
@@ -124,9 +152,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
-        public string InterfaceEndpointsText
+        public string PrivateEndpointsText
         {
-            get { return JsonConvert.SerializeObject(InterfaceEndpoints, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(PrivateEndpoints, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

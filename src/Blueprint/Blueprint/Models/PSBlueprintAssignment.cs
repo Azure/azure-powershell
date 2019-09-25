@@ -12,12 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common.Properties;
-using Microsoft.Azure.Commands.Blueprint.Common;
 using Microsoft.Azure.Management.Blueprint.Models;
 using System;
 using System.Collections.Generic;
-using Resources = Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Blueprint.Models
 {
@@ -67,23 +64,9 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 ResourceGroups = new Dictionary<string, PSResourceGroupValue>()
             };
 
-            if (DateTime.TryParse(assignment.Status.TimeCreated, out DateTime timeCreated))
-            {
-                psAssignment.Status.TimeCreated = timeCreated;
-            }
-            else
-            {
-                psAssignment.Status.TimeCreated = null;
-            }
+            psAssignment.Status.TimeCreated = assignment.Status.TimeCreated;
 
-            if (DateTime.TryParse(assignment.Status.LastModified, out DateTime lastModified))
-            {
-                psAssignment.Status.LastModified = lastModified;
-            }
-            else
-            {
-                psAssignment.Status.LastModified = null;
-            }
+            psAssignment.Status.LastModified = assignment.Status.LastModified;
 
             if (Enum.TryParse(assignment.ProvisioningState, true, out PSAssignmentProvisioningState state))
             {
@@ -105,14 +88,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
 
             foreach (var item in assignment.Parameters)
             {
-                var paramObj = item.Value as ParameterValue;
-
-                if (paramObj == null || !paramObj.GetType().Equals(typeof(ParameterValue)))
-                {
-                    throw new NotSupportedException(string.Format(Resources.SecureStringsNotSupported, psAssignment.Name));
-                }
-
-                psAssignment.Parameters.Add(item.Key, new PSParameterValue { Description = paramObj.Description, Value = paramObj.Value});
+                PSParameterValueBase parameter = GetAssignmentParameters(item);
+                psAssignment.Parameters.Add(item.Key, parameter);
             }
 
             foreach (var item in assignment.ResourceGroups)
@@ -131,6 +108,34 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
             }
 
             return psAssignment;
+        }
+
+        private static PSParameterValueBase GetAssignmentParameters(KeyValuePair<string, ParameterValueBase> parameterKvp)
+        {
+            PSParameterValueBase parameter = null;
+
+            if (parameterKvp.Value != null && parameterKvp.Value is ParameterValue)
+            {
+                // Need to cast as ParameterValue since assignment.Parameters value type is ParameterValueBase. 
+                var parameterValue = (ParameterValue) parameterKvp.Value;
+
+                parameter = new PSParameterValue { Description = parameterValue.Description, Value = parameterValue.Value };
+            }
+            else if (parameterKvp.Value != null && parameterKvp.Value is SecretReferenceParameterValue)
+            {
+                var parameterValue = (SecretReferenceParameterValue) parameterKvp.Value;
+
+                var secretReference = new PSSecretValueReference
+                {
+                    KeyVault = new PSKeyVaultReference { Id = parameterValue.Reference.KeyVault.Id },
+                    SecretName = parameterValue.Reference.SecretName,
+                    SecretVersion = parameterValue.Reference.SecretVersion
+                };
+
+                parameter = new PSSecretReferenceParameterValue { Reference = secretReference, Description = parameterValue.Description };
+            }
+
+            return parameter;
         }
     }
 }

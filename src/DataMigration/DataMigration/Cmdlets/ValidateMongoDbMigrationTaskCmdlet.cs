@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         {
             this.SimpleParam(SourceConnection, typeof(PSModels.MongoDbConnectionInfo), "Source Connection Info Detail", true);
             this.SimpleParam(TargetConnection, typeof(PSModels.MongoDbConnectionInfo), "Target Connection Info Detail", true);
-            this.SimpleParam(Replication, typeof(string), "type of migration, valid value: OneTime, Continous, or Disabled, default is OneTime");
+            this.SimpleParam(Replication, typeof(string), "type of migration, valid value: OneTime, Continuous, or Disabled, default is OneTime");
             this.SimpleParam(SelectedDatabase, typeof(MongoDbDatabaseSetting[]), "Selected database to migrate", true);
         }
 

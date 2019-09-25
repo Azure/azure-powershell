@@ -41,7 +41,7 @@ function Test-LoadBalancerCRUD-Public
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -146,7 +146,7 @@ function Test-LoadBalancerCRUD-PublicTcpReset
 
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel -Sku Standard
@@ -243,7 +243,7 @@ function Test-LoadBalancerCRUD-InternalDynamic
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -268,6 +268,7 @@ function Test-LoadBalancerCRUD-InternalDynamic
         Assert-AreEqual $frontendName $expectedLb.FrontendIPConfigurations[0].Name
         Assert-AreEqual $vnet.Subnets[0].Id $expectedLb.FrontendIPConfigurations[0].Subnet.Id
         Assert-NotNull $expectedLb.FrontendIPConfigurations[0].PrivateIpAddress
+        Assert-AreEqual "IPv4" $expectedLb.FrontendIPConfigurations[0].PrivateIpAddressVersion
 
         Assert-AreEqual $backendAddressPoolName $expectedLb.BackendAddressPools[0].Name
 
@@ -334,13 +335,13 @@ function Test-LoadBalancerCRUD-InternalStatic
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
         # Create LoadBalancer
-        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -Subnet $vnet.Subnets[0] -PrivateIpAddress "10.0.1.5"
+        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -Subnet $vnet.Subnets[0] -PrivateIpAddress "10.0.1.5" -PrivateIpAddressVersion "IPv4"
         $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
         $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
         $inboundNatRule = New-AzLoadBalancerInboundNatRuleConfig -Name $inboundNatRuleName -FrontendIPConfiguration $frontend -Protocol Tcp -FrontendPort 3389 -BackendPort 3389 -IdleTimeoutInMinutes 15 -EnableFloatingIP
@@ -359,6 +360,7 @@ function Test-LoadBalancerCRUD-InternalStatic
         Assert-AreEqual $frontendName $expectedLb.FrontendIPConfigurations[0].Name
         Assert-AreEqual $vnet.Subnets[0].Id $expectedLb.FrontendIPConfigurations[0].Subnet.Id
         Assert-AreEqual "10.0.1.5" $expectedLb.FrontendIPConfigurations[0].PrivateIpAddress
+        Assert-AreEqual "IPv4" $expectedLb.FrontendIPConfigurations[0].PrivateIpAddressVersion
 
         Assert-AreEqual $backendAddressPoolName $expectedLb.BackendAddressPools[0].Name
 
@@ -425,7 +427,7 @@ function Test-LoadBalancerCRUD-InternalHighlyAvailableBasicSku
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -505,7 +507,7 @@ function Test-LoadBalancerCRUD-InternalHighlyAvailableStandardSku
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -585,7 +587,7 @@ function Test-LoadBalancerCRUD-PublicNoInboundNATRule
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -671,7 +673,7 @@ function Test-LoadBalancerCRUD-InternalUsingId
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -760,7 +762,7 @@ function Test-LoadBalancerCRUD-PublicUsingId
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -849,7 +851,7 @@ function Test-LoadBalancerCRUD-PublicNoLbRule
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -935,7 +937,7 @@ function Test-LoadBalancerChildResource
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -1123,7 +1125,7 @@ function Test-LoadBalancerSet
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -1241,7 +1243,7 @@ function Test-LoadBalancer-NicAssociation
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic
@@ -1335,7 +1337,7 @@ function Test-LoadBalancer-NicAssociationDuringCreate
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic
@@ -1415,7 +1417,7 @@ function Test-LoadBalancerInboundNatPoolConfigCRUD-InternalLB
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -1759,7 +1761,7 @@ function Test-LoadBalancerMultiVip-Internal
         # Create the Virtual Network
         $subnet1 = New-AzVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.0.0.0/24
 		$subnet2 = New-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet1,$subnet2
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet1,$subnet2
 
         # Create LoadBalancer
         $frontend1 = New-AzLoadBalancerFrontendIpConfig -Name $frontend1Name -Subnet $vnet.Subnets[0]
@@ -1800,7 +1802,7 @@ function Test-LoadBalancerMultiVip-Internal
         Assert-AreEqual $lb.BackendAddressPools[0].Id $lb.LoadBalancingRules[0].BackendAddressPool.Id
 		
 		# Verify subnet reference
-		$vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 		Assert-AreEqual 1 @($vnet.Subnets[0].IpConfigurations).Count
         Assert-AreEqual $lb.FrontendIPConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
 		Assert-AreEqual 1 @($vnet.Subnets[1].IpConfigurations).Count
@@ -1815,7 +1817,7 @@ function Test-LoadBalancerMultiVip-Internal
 		Assert-Null $lb.FrontendIPConfigurations[2].PublicIpAddress
 
 		# Verify subnet reference
-		$vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 		Assert-AreEqual 1 @($vnet.Subnets[0].IpConfigurations).Count
         Assert-AreEqual $lb.FrontendIPConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
 		Assert-AreEqual 2 @($vnet.Subnets[1].IpConfigurations).Count
@@ -1832,7 +1834,7 @@ function Test-LoadBalancerMultiVip-Internal
 		Assert-Null $lb.FrontendIPConfigurations[2].PublicIpAddress
 		
 		# Verify subnet reference
-		$vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 		Assert-AreEqual 2 @($vnet.Subnets[0].IpConfigurations).Count
         Assert-AreEqual $lb.FrontendIPConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
 		Assert-AreEqual $lb.FrontendIPConfigurations[2].Id $vnet.Subnets[0].IpConfigurations[1].Id
@@ -1871,7 +1873,7 @@ function Test-LoadBalancerMultiVip-Internal
         Assert-AreEqual 0 @($list).Count
 
 		# Verify subnet references
-		$vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 		Assert-AreEqual 0 @($vnet.Subnets[0].IpConfigurations).Count
 		Assert-AreEqual 0 @($vnet.Subnets[1].IpConfigurations).Count
 
@@ -1997,7 +1999,7 @@ function Test-LoadBalancerCRUD-PublicBasicSku
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -2091,7 +2093,7 @@ function Test-LoadBalancerCRUD-InternalBasicSku
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -2184,7 +2186,7 @@ function Test-LoadBalancerCRUD-PublicStandardSku
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel -Sku Standard
@@ -2276,7 +2278,7 @@ function Test-LoadBalancerCRUD-InternalStandardSku
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
         # Create LoadBalancer
         $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -Subnet $vnet.Subnets[0]

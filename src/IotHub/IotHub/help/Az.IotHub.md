@@ -62,6 +62,9 @@ Get information on all the endpoints for your IoT Hub
 ### [Get-AzIotHubValidSku](Get-AzIotHubValidSku.md)
 Gets all valid skus that this IotHub can transition to.
 
+### [Invoke-AzIotHubManualFailover](Invoke-AzIotHubManualFailover.md)
+Invoke failover process for the IoT Hub to the geo-paired disaster recovery region.
+
 ### [New-AzIotHub](New-AzIotHub.md)
 Creates a new IotHub.
 
@@ -70,6 +73,9 @@ Creates a new export devices job.
 
 ### [New-AzIotHubImportDevice](New-AzIotHubImportDevice.md)
 Creates a new import devices job.
+
+### [New-AzIotHubKey](New-AzIotHubKey.md)
+Generate an Azure IoT Hub key.
 
 ### [Remove-AzIotHub](Remove-AzIotHub.md)
 Deletes an IotHub.
