@@ -202,6 +202,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? enableAzureActiveDirectoryDomainServicesForFile = null;
 
+        [Parameter(Mandatory = false, HelpMessage = "Indicates whether or not the storage account can support large file shares with more than 5 TiB capacity. Once the account is enabled, the feature cannot be disabled. Currently only supported for LRS and ZRS replication types, hence account conversions to geo-redundant accounts would not be possible. Learn more in https://go.microsoft.com/fwlink/?linkid=2086047")]
+        public SwitchParameter EnableLargeFileShare { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -280,6 +283,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         {
                             updateParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
                         }
+                    }
+                    if (this.EnableLargeFileShare.IsPresent)
+                    {
+                        updateParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(

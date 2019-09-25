@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support enable Large File share when create or update Storage account
+    -  New-AzStorageAccount
+    -  Set-AzStorageAccount
 * Support enable/disable Changefeed on Blob Service of a Storage account
     -  Update-AzStorageBlobServiceProperty
 
