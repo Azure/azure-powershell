@@ -55,7 +55,7 @@ It is advised that you save your work on the virtual machine before you run this
 
 Linux: The **VolumeType** parameter is required when encrypting Linux virtual machines, and must be set to a value ("Os", "Data", or "All") supported by the Linux distribution. 
 
-Windows: The **VolumeType** parameter may be omitted, in which case the operation defaults to All; if the VolumeType parameter is present for a Windows virtual machine, it must be set to either All or OS.
+Windows: The **VolumeType** parameter may be omitted, in which case the operation defaults to All; if the VolumeType parameter is present for a Windows virtual machine, it must be set to either All, Data or OS. For encrypting only data disks using the "Data" as volumetype, the OS disk must be encrypted first using "OS" as volumeType.
 
 ## EXAMPLES
 
@@ -567,11 +567,11 @@ Accept wildcard characters: False
 ```
 
 ### -VolumeType
-Specifies the type of virtual machine volumes on which to perform encryption operation: OS, Data, or All. 
+Specifies the type of virtual machine volumes on which to perform encryption operation: OS, Data, or All. Values are case insenstive.
 
 Linux: The **VolumeType** parameter is required when encrypting Linux virtual machines, and must be set to a value ("Os", "Data", or "All") supported by the Linux distribution. 
 
-Windows: The **VolumeType** parameter may be omitted, in which case the operation defaults to All; if the VolumeType parameter is present for a Windows virtual machine, it must be set to either All or OS.
+Windows: The **VolumeType** parameter may be omitted, in which case the operation defaults to All; if the VolumeType parameter is present for a Windows virtual machine, it must be set to either All, Data or OS. For encrypting only data disks using the "Data" as volumetype, the OS disk must be encrypted first using "OS" as volumeType.
 
 ```yaml
 Type: System.String
