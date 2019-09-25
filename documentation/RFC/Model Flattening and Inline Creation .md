@@ -164,4 +164,4 @@ $vn1 = New-AzVirtualNetwork `
     -Subnet $agSubnetConfig, $backendSubnetConfig
 ```
 ## Comments and Questions
-Add here and for comments and questions about he proposed change
+Add your comments and questions about the proposed change
