@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzIpsecTrafficSelectorPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a traffic selector policy.
 
 ## SYNTAX
 
@@ -18,13 +18,14 @@ New-AzIpsecTrafficSelectorPolicy -LocalAddressRanges <String[]> -RemoteAddressRa
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The New-AzTrafficSelectorPolicy cmdlet creates a traffic selector policy proposal to be used in a virtual network gateway connection.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$trafficSelectorPolicy = New-AzIpsecTrafficSelectorPolicy -LocalAddressRanges ("10.10.10.0/24", "20.20.20.0/24") -RemoteAddressRanges ("30.30.30.0/24", "40.40.40.0/24")
+New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey $sharedKey -UsePolicyBasedTrafficSelectors $true -TrafficSelectorPolicies ($trafficSelectorPolicy)
 ```
 
 {{ Add example description here }}
