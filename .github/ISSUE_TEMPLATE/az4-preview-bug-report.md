@@ -2,7 +2,7 @@
 name:  Az 4.x preview bug report 
 about: Report errors or unexpected behaviors specifically for the Az 4.0  module in preview
 title: ''
-labels: 'Az 4.x Preview'
+labels: 'Az 4.x Preview', 'Azure PS Team'
 assignees: ''
 
 ---
