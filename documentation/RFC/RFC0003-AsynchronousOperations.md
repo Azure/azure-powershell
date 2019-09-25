@@ -8,7 +8,7 @@ Version: 1.0
 
 # Asynchronous Operations
 
-In the Az 4.0 preview, cmdlets have deep support for asynbchronous execution, allowing the user to defer cmdlet execution to the background, support low latency scenarios, and cancel execution to make interactive and scripted management tasks more efficient.
+In the Az 4.0 preview, cmdlets have deep support for asynchronous execution, allowing the user to defer cmdlet execution to the background, support low latency scenarios, and cancel execution to make interactive and scripted management tasks more efficient.
 
 ## Motivation
 
@@ -31,7 +31,7 @@ so that I can exit the script without cancelling the operation, or cleaning up b
 ```
 
 ### Cancellation
-Interactive cmdlet users can cancel execiution of cmdlets at any time using the standard `Command-<period>` key code.  This allows the user to cancel cmdlet execution that is unexpectedly long or returns an unexpected number of results.
+Interactive cmdlet users can cancel execution of cmdlets at any time using the standard `Command-<period>` key code.  This allows the user to cancel cmdlet execution that is unexpectedly long or returns an unexpected number of results.
 
 ```code
 As an interactive user
