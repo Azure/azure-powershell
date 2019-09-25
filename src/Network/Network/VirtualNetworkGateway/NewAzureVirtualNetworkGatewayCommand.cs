@@ -267,11 +267,10 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The generation for this VirtualNetwork VPN gateway. Must be None if GatewayType is not VPN.")]
-        [ValidateSet(
+        [PSArgumentCompleter(
             MNM.VpnGatewayGeneration.None,
             MNM.VpnGatewayGeneration.Generation1,
             MNM.VpnGatewayGeneration.Generation2)]
-        [PSArgumentCompleter]
         [ValidateNotNullOrEmpty]
         public string VpnGatewayGeneration { get; set; }
 

@@ -68,9 +68,6 @@
 * Fixed validation logic for Ipv6 IP Prefix to check for correct IPv6 prefix length
 * Added parameter set to get by subnet resource id to **Get-AzVirtualNetworkSubnetConfig** 
 * Updated description of **Location** parameter for **AzNetworkServiceTag**
-* New Generations and SKUs for VirtualNetworkGateways
-  - Introduce new Generations for VirtualNetworkGateways.
-  - Introduce new high throughput SKUs for VirtualNetworkGateways.
 
 #### Az.OperationalInsights
 * Updated documentation for **New-AzOperationalInsightsLinuxSyslogDataSource**:
