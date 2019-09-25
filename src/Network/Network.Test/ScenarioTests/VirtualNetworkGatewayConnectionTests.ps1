@@ -197,6 +197,10 @@ function Test-VirtualNetworkGatewayConnectionWithTrafficSelector
 	  Assert-NotNull $connection;
 	  Assert-NotNull $connection.TrafficSelectorPolicies;
 	  Assert-AreEqual $connection.TrafficSelectorPolicies.Count 1
+	  
+	  $connectionTrafficSelector = $connection.TrafficSelectorPolicies[0];
+	  Assert-AreEqual $trafficSelector.LocalAddressRanges[0] $connectionTrafficSelector.LocalAddressRanges[0];
+	  Assert-AreEqual $trafficSelector.RemoteAddressRanges[0] $connectionTrafficSelector.RemoteAddressRanges[0];
     
       # Delete VirtualNetworkGatewayConnection
       $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
