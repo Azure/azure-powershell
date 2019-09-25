@@ -12,21 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     /// <summary>
     /// Creates a new resource group deployment.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeployment", SupportsShouldProcess = true,DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceGroupDeployment))]
-    public class NewAzureResourceGroupDeploymentCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeployment", SupportsShouldProcess = true,
+        DefaultParameterSetName = ResourceGroupParameterSetWithParameterlessTemplateFile), OutputType(typeof(PSResourceGroupDeployment))]
+    public class NewAzureResourceGroupDeploymentCmdlet : ResourceGroupDeploymentCmdletWithParameters, IDynamicParameters
     {
         [Alias("DeploymentName")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
@@ -80,13 +82,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                     var parameters = new PSDeploymentCmdletParameters()
                     {
+                        ScopeType = DeploymentScopeType.ResourceGroup,
                         ResourceGroupName = ResourceGroupName,
                         DeploymentName = Name,
                         DeploymentMode = Mode,
-                        TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
+                        TemplateFile = Uri.IsWellFormedUriString(this.TemplateFile, UriKind.Absolute) ? this.TemplateFile : this.TryResolvePath(this.TemplateFile),
                         TemplateObject = TemplateObject,
                         TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
-                        ParameterUri = TemplateParameterUri,
+                        ParameterUri = Uri.IsWellFormedUriString(this.TemplateParameterFile, UriKind.Absolute) ? this.TemplateParameterFile : null,
                         DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel),
                         OnErrorDeployment = RollbackToLastDeployment || !string.IsNullOrEmpty(RollBackDeploymentName)
                             ? new OnErrorDeployment
@@ -101,7 +104,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         WriteWarning(ProjectResources.WarnOnDeploymentDebugSetting);
                     }
-                    WriteObject(ResourceManagerSdkClient.ExecuteDeployment(parameters));
+
+                    var deployment = ResourceManagerSdkClient.ExecuteResourceGroupDeployment(parameters);
+
+                    WriteObject(deployment);
                 },
                 () => this.Mode == DeploymentMode.Complete);
         }

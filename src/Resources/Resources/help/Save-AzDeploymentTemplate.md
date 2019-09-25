@@ -12,10 +12,32 @@ Saves a deployment template to a file.
 
 ## SYNTAX
 
-### SaveByDeploymentName (Default)
+### SubscriptionWithDeploymentName (Default)
 ```
-Save-AzDeploymentTemplate -DeploymentName <String> [-Path <String>] [-Force] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Save-AzDeploymentTemplate -ScopeType <DeploymentScopeType> -DeploymentName <String> [-Path <String>] [-Force]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ResourceGroupWithDeploymentName
+```
+Save-AzDeploymentTemplate -ScopeType <DeploymentScopeType> -ResourceGroupName <String> -DeploymentName <String>
+ [-Path <String>] [-Force] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ManagementGroupWithDeploymentName
+```
+Save-AzDeploymentTemplate -ScopeType <DeploymentScopeType> -ManagementGroupId <String> -DeploymentName <String>
+ [-Path <String>] [-Force] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### TenantWithDeploymentName
+```
+Save-AzDeploymentTemplate -ScopeType <DeploymentScopeType> -DeploymentName <String> [-Path <String>] [-Force]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SaveByDeploymentObject
@@ -25,20 +47,20 @@ Save-AzDeploymentTemplate -DeploymentObject <PSDeployment> [-Path <String>] [-Fo
 ```
 
 ## DESCRIPTION
-The **Save-AzDeploymentTemplate**  cmdlet saves a deployment template to a JSON file.
+The **Save-AzDeploymentTemplate** cmdlet saves a deployment template to a JSON file.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Save template for a deployment at subscription scope
 ```powershell
-PS C:\> Save-AzDeploymentTemplate -DeploymentName "TestDeployment"
+PS C:\> Save-AzDeploymentTemplate -ScopeType "Subscription" -DeploymentName "TestDeployment"
 ```
 
 This command gets the deployment template from TestDeployment and saves it as a JSON file in the current directory.
 
 ### Example 2: Get a deployment and save its template
 ```
-PS C:\>Get-AzDeployment -Name "RolesDeployment" | Save-AzDeploymentTemplate
+PS C:\>Get-AzDeployment -ScopeType "Subscription" -Name "RolesDeployment" | Save-AzDeploymentTemplate
 ```
 
 This command gets the deployment "RolesDeployment" at the current subscription scope and saves its template.
@@ -81,7 +103,7 @@ The deployment name.
 
 ```yaml
 Type: System.String
-Parameter Sets: SaveByDeploymentName
+Parameter Sets: SubscriptionWithDeploymentName, ResourceGroupWithDeploymentName, ManagementGroupWithDeploymentName, TenantWithDeploymentName
 Aliases: Name
 
 Required: True
@@ -121,6 +143,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagementGroupId
+The management group id.
+
+```yaml
+Type: System.String
+Parameter Sets: ManagementGroupWithDeploymentName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Path
 The output path of the template file.
 
@@ -145,6 +182,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceGroupWithDeploymentName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScopeType
+The scope type of the deployment.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments.DeploymentScopeType]
+Parameter Sets: SubscriptionWithDeploymentName, ResourceGroupWithDeploymentName, ManagementGroupWithDeploymentName, TenantWithDeploymentName
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
