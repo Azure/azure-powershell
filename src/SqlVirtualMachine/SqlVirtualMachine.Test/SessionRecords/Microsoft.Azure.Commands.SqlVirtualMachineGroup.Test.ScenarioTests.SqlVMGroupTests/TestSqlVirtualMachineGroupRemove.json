@@ -381,7 +381,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"mIavDztQu9vphvul9VzykGl/qECJ8xTKMsiH76K/KT+P5GatAJZjoHXpvGBlOIFzOLBtqL85oszUGAWj9/uHYQ==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"t+la2IE+UyX+mvQAFdpNCzql+ynB5Y2rwOHnabk9yM/2OJ6CT64ioz4aiqmAexnDC2dmp28iBjz1wKcvKqde/Q==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"<HIDDEN>\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"<HIDDEN>\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1117,7 +1117,7 @@
       "RequestUri": "/subscriptions/0009fc4d-e310-4e40-8e63-c48a23e9cdc1/resourceGroups/rg-4212/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/psgr8422?api-version=2017-03-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDAwOWZjNGQtZTMxMC00ZTQwLThlNjMtYzQ4YTIzZTljZGMxL3Jlc291cmNlR3JvdXBzL3JnLTQyMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWxWaXJ0dWFsTWFjaGluZS9zcWxWaXJ0dWFsTWFjaGluZUdyb3Vwcy9wc2dyODQyMj9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"sqlImageOffer\": \"SQL2017-WS2016\",\r\n    \"sqlImageSku\": \"Enterprise\",\r\n    \"wsfcDomainProfile\": {\r\n      \"domainFqdn\": \"Domain.com\",\r\n      \"clusterBootstrapAccount\": \"myvmadmin@Domain.com\",\r\n      \"clusterOperatorAccount\": \"myvmadmin@Domain.com\",\r\n      \"sqlServiceAccount\": \"sqlservice@Domain.com\",\r\n      \"storageAccountUrl\": \"https://st4325.blob.core.windows.net/\",\r\n      \"storageAccountPrimaryKey\": \"mIavDztQu9vphvul9VzykGl/qECJ8xTKMsiH76K/KT+P5GatAJZjoHXpvGBlOIFzOLBtqL85oszUGAWj9/uHYQ==\"\r\n    }\r\n  },\r\n  \"location\": \"East US\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"sqlImageOffer\": \"SQL2017-WS2016\",\r\n    \"sqlImageSku\": \"Enterprise\",\r\n    \"wsfcDomainProfile\": {\r\n      \"domainFqdn\": \"Domain.com\",\r\n      \"clusterBootstrapAccount\": \"myvmadmin@Domain.com\",\r\n      \"clusterOperatorAccount\": \"myvmadmin@Domain.com\",\r\n      \"sqlServiceAccount\": \"sqlservice@Domain.com\",\r\n      \"storageAccountUrl\": \"https://st4325.blob.core.windows.net/\"\r\n      }\r\n  },\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "74796705-e22c-4f39-8371-0e3289f82240"
@@ -1192,7 +1192,7 @@
       "RequestUri": "/subscriptions/0009fc4d-e310-4e40-8e63-c48a23e9cdc1/resourceGroups/rg-4212/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/psgr8422?api-version=2017-03-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDAwOWZjNGQtZTMxMC00ZTQwLThlNjMtYzQ4YTIzZTljZGMxL3Jlc291cmNlR3JvdXBzL3JnLTQyMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWxWaXJ0dWFsTWFjaGluZS9zcWxWaXJ0dWFsTWFjaGluZUdyb3Vwcy9wc2dyODQyMj9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"sqlImageOffer\": \"SQL2017-WS2016\",\r\n    \"sqlImageSku\": \"Enterprise\",\r\n    \"wsfcDomainProfile\": {\r\n      \"domainFqdn\": \"Domain.com\",\r\n      \"clusterBootstrapAccount\": \"myvmadmin@Domain.com\",\r\n      \"clusterOperatorAccount\": \"myvmadmin@Domain.com\",\r\n      \"sqlServiceAccount\": \"sqlservice@Domain.com\",\r\n      \"storageAccountUrl\": \"https://st6770.blob.core.windows.net/\",\r\n      \"storageAccountPrimaryKey\": \"0eINZgCJq8jeKwlCLawSv3AP+1/tOSk/GoXPZFupgrl53GMJ38XLBIFEXtE3Fa0NyVxjtWM/g62HvkZsm6UH3A==\"\r\n    }\r\n  },\r\n  \"location\": \"East US\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"sqlImageOffer\": \"SQL2017-WS2016\",\r\n    \"sqlImageSku\": \"Enterprise\",\r\n    \"wsfcDomainProfile\": {\r\n      \"domainFqdn\": \"Domain.com\",\r\n      \"clusterBootstrapAccount\": \"myvmadmin@Domain.com\",\r\n      \"clusterOperatorAccount\": \"myvmadmin@Domain.com\",\r\n      \"sqlServiceAccount\": \"sqlservice@Domain.com\",\r\n      \"storageAccountUrl\": \"https://st6770.blob.core.windows.net/\"\r\n      }\r\n  },\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "bcfcc7de-8cbd-4771-bc49-b9722b87ab79"
@@ -1267,7 +1267,7 @@
       "RequestUri": "/subscriptions/0009fc4d-e310-4e40-8e63-c48a23e9cdc1/resourceGroups/rg-4212/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/psgr8422?api-version=2017-03-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDAwOWZjNGQtZTMxMC00ZTQwLThlNjMtYzQ4YTIzZTljZGMxL3Jlc291cmNlR3JvdXBzL3JnLTQyMTIvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWxWaXJ0dWFsTWFjaGluZS9zcWxWaXJ0dWFsTWFjaGluZUdyb3Vwcy9wc2dyODQyMj9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"sqlImageOffer\": \"SQL2017-WS2016\",\r\n    \"sqlImageSku\": \"Enterprise\",\r\n    \"wsfcDomainProfile\": {\r\n      \"domainFqdn\": \"Domain.com\",\r\n      \"clusterBootstrapAccount\": \"myvmadmin@Domain.com\",\r\n      \"clusterOperatorAccount\": \"myvmadmin@Domain.com\",\r\n      \"sqlServiceAccount\": \"sqlservice@Domain.com\",\r\n      \"storageAccountUrl\": \"https://st1398.blob.core.windows.net/\",\r\n      \"storageAccountPrimaryKey\": \"CzeH+M31OQHuC0qOZq0pOR/6aI8NMLRZ5yhgf5cFVIY99kBh5cpi8qxYRY7Daug1s0T4vJZd+XyBZqe45gEFRQ==\"\r\n    }\r\n  },\r\n  \"location\": \"East US\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"sqlImageOffer\": \"SQL2017-WS2016\",\r\n    \"sqlImageSku\": \"Enterprise\",\r\n    \"wsfcDomainProfile\": {\r\n      \"domainFqdn\": \"Domain.com\",\r\n      \"clusterBootstrapAccount\": \"myvmadmin@Domain.com\",\r\n      \"clusterOperatorAccount\": \"myvmadmin@Domain.com\",\r\n      \"sqlServiceAccount\": \"sqlservice@Domain.com\",\r\n      \"storageAccountUrl\": \"https://st1398.blob.core.windows.net/\"\r\n     }\r\n  },\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "94f8e6d0-a1b6-4443-aafd-69af37070054"
@@ -1959,7 +1959,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"0eINZgCJq8jeKwlCLawSv3AP+1/tOSk/GoXPZFupgrl53GMJ38XLBIFEXtE3Fa0NyVxjtWM/g62HvkZsm6UH3A==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"zBOU0t64XxzJZGlAYWPxbrqqzt5AV4nne8VzxZbGgMH/qPz0AJo4GENxFEieXSs2lGvgw4EhYY5EXTE40PeFLw==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"<HIDDEN>\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"<HIDDEN>\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -2385,7 +2385,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"CzeH+M31OQHuC0qOZq0pOR/6aI8NMLRZ5yhgf5cFVIY99kBh5cpi8qxYRY7Daug1s0T4vJZd+XyBZqe45gEFRQ==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"o0dqWp5xuIPHLP5KMILuN1hZmA4pVVIsLSGVnqLddCV+aSQfdU8QhBCfQbpuZNnuWEx8EDzQA6vXpdA6c84+5A==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"<HIDDEN>\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"<HIDDEN>\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {

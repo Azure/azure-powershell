@@ -50,10 +50,12 @@ function Create-VM(
 	# Create a virtual network
 	$vnet = New-AzVirtualNetwork -ResourceGroupName $resourceGroupName -Location $location `
 	   -Name $vnetName -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+	$vnet = Get-AzVirtualNetwork -ResourceGroupName $resourceGroupName -Name $vnetName
 
 	# Create a public IP address and specify a DNS name
 	$pip = New-AzPublicIpAddress -ResourceGroupName $resourceGroupName -Location $location `
 	   -AllocationMethod Static -IdleTimeoutInMinutes 4 -Name $pipName
+	$pip = Get-AzPublicIpAddress -ResourceGroupName $resourceGroupName -Name $pipName
 
 	# Rule to allow remote desktop (RDP)
 	$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name 'RDPRule' -Protocol Tcp `
@@ -70,12 +72,16 @@ function Create-VM(
 	$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $resourceGroupName `
 	   -Location $location -Name $nsgName `
 	   -SecurityRules $nsgRuleRDP,$nsgRuleSQL
+	$nsg = Get-AzNetworkSecurityGroup -ResourceGroupName $resourceGroupName -Name $nsgName
 
 	$interfaceName = $vmName + 'int'
+	$subnetId = $vnet.Subnets[0].Id
+	
 	$interface = New-AzNetworkInterface -Name $interfaceName `
 	   -ResourceGroupName $resourceGroupName -Location $location `
-	   -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id `
+	   -SubnetId $subnetId -PublicIpAddressId $pip.Id `
 	   -NetworkSecurityGroupId $nsg.Id
+	$interface = Get-AzNetworkInterface -ResourceGroupName $resourceGroupName -Name $interfaceName
 	
 	$cred = Get-DefaultCredentialForTest
 	

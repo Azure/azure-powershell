@@ -381,7 +381,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"MDuZi1t1DTKkLWOSkLkAyXHss9DEXWGuJyRLuUZcO3uhtFsjcl7Bjh0VwTygbIYcZgHfAlWGNf7FhftrtjDTCw==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"zc9yn/KKjEI6iB4J/UaChm2a11m8krKdj4WgpQbbRcggGmd+Qo1Vfz2HOOdsp2rOkNYqzGG8IpfrD2dUsYJFlA==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"<HIDDEN>\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"<HIDDEN>\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -694,7 +694,7 @@
       "RequestUri": "/subscriptions/0009fc4d-e310-4e40-8e63-c48a23e9cdc1/resourceGroups/rg-4668/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/psgr6504?api-version=2017-03-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDAwOWZjNGQtZTMxMC00ZTQwLThlNjMtYzQ4YTIzZTljZGMxL3Jlc291cmNlR3JvdXBzL3JnLTQ2NjgvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWxWaXJ0dWFsTWFjaGluZS9zcWxWaXJ0dWFsTWFjaGluZUdyb3Vwcy9wc2dyNjUwND9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"sqlImageOffer\": \"SQL2017-WS2016\",\r\n    \"sqlImageSku\": \"Enterprise\",\r\n    \"wsfcDomainProfile\": {\r\n      \"domainFqdn\": \"Domain.com\",\r\n      \"clusterBootstrapAccount\": \"myvmadmin@Domain.com\",\r\n      \"clusterOperatorAccount\": \"myvmadmin@Domain.com\",\r\n      \"sqlServiceAccount\": \"sqlservice@Domain.com\",\r\n      \"storageAccountUrl\": \"https://st489.blob.core.windows.net/\",\r\n      \"storageAccountPrimaryKey\": \"MDuZi1t1DTKkLWOSkLkAyXHss9DEXWGuJyRLuUZcO3uhtFsjcl7Bjh0VwTygbIYcZgHfAlWGNf7FhftrtjDTCw==\"\r\n    }\r\n  },\r\n  \"location\": \"East US\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"sqlImageOffer\": \"SQL2017-WS2016\",\r\n    \"sqlImageSku\": \"Enterprise\",\r\n    \"wsfcDomainProfile\": {\r\n      \"domainFqdn\": \"Domain.com\",\r\n      \"clusterBootstrapAccount\": \"myvmadmin@Domain.com\",\r\n      \"clusterOperatorAccount\": \"myvmadmin@Domain.com\",\r\n      \"sqlServiceAccount\": \"sqlservice@Domain.com\",\r\n      \"storageAccountUrl\": \"https://st489.blob.core.windows.net/\"\r\n      }\r\n  },\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "3a771262-d0c7-428d-a97b-702de2903a45"
