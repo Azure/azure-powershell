@@ -114,6 +114,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         { VaultParams.VaultName, vaultName },
                         { VaultParams.ResourceGroupName, resourceGroupName },
+                        { ItemParams.DeleteState, DeleteState },
                         { ItemParams.Container, Container },
                         { ItemParams.BackupManagementType, BackupManagementType },
                         { ItemParams.ItemName, Name },
