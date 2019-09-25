@@ -522,3 +522,38 @@ function Test-CreateLinuxIncludedPackageNameMasksSoftwareUpdateConfiguration() {
     WaitForProvisioningState $name "Succeeded"
 }
 
+
+<#
+Test-CreateLinuxOneTimeSoftwareUpdateConfigurationWithAllOption
+#>
+function Test-CreateLinuxSoftwareUpdateConfigurationWithRebootSetting {
+    $name = "linx-suc-reboot"
+	$rebootSetting = "Never"
+    $startTime = ([DateTime]::Now).AddMinutes(10)
+	$s = New-AzAutomationSchedule -ResourceGroupName $rg `
+                                       -AutomationAccountName $aa `
+                                       -Name $name `
+                                       -Description linux-suc-reboot `
+                                       -OneTime `
+                                       -StartTime $startTime `
+                                       -ForUpdate
+
+    $suc = New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg `
+                                                             -AutomationAccountName $aa `
+                                                             -Schedule $s `
+                                                             -Linux `
+                                                             -AzureVMResourceId $azureVMIdsL `
+                                                             -NonAzureComputer $nonAzurecomputers `
+                                                             -Duration (New-TimeSpan -Hours 2) `
+                                                             -IncludedPackageClassification Security,Critical `
+                                                             -ExcludedPackageNameMask Mask01,Mask02 `
+                                                             -IncludedPackageNameMask Mask100 `
+															 -RebootSetting $rebootSetting
+
+    Assert-NotNull $suc "New-AzAutomationSoftwareUpdateConfiguration returned null"
+    Assert-AreEqual $suc.Name $name "Name of created software update configuration didn't match given name"
+	Assert-AreEqual $suc.RebootSetting $rebootSetting "Reboot setting failed to match"
+
+    WaitForProvisioningState $name "Failed"
+}
+
