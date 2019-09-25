@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
+ms.assetid: DEB3D7B5-D974-472B-B8B4-9A19CA6AECCC
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem
 schema: 2.0.0
 ---
@@ -8,11 +9,13 @@ schema: 2.0.0
 # Get-AzRecoveryServicesBackupItem
 
 ## SYNOPSIS
+
 Gets the items from a container in Backup.
 
 ## SYNTAX
 
 ### GetItemsForContainer (Default)
+
 ```
 Get-AzRecoveryServicesBackupItem [-Container] <ContainerBase> [[-Name] <String>]
  [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>]
@@ -21,6 +24,7 @@ Get-AzRecoveryServicesBackupItem [-Container] <ContainerBase> [[-Name] <String>]
 ```
 
 ### GetItemsForVault
+
 ```
 Get-AzRecoveryServicesBackupItem [-BackupManagementType] <BackupManagementType> [[-Name] <String>]
  [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>]
@@ -29,6 +33,7 @@ Get-AzRecoveryServicesBackupItem [-BackupManagementType] <BackupManagementType> 
 ```
 
 ### GetItemsForPolicy
+
 ```
 Get-AzRecoveryServicesBackupItem [-Policy] <PolicyBase> [[-Name] <String>]
  [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>] [[-DeleteState] <ItemDeleteState>] [-VaultId <String>]
@@ -36,7 +41,8 @@ Get-AzRecoveryServicesBackupItem [-Policy] <PolicyBase> [[-Name] <String>]
 ```
 
 ## DESCRIPTION
-The Get-AzRecoveryServicesBackupItem cmdlet gets the items in a container or a value in Azure Backup and the protection status of the items.
+
+The **Get-AzRecoveryServicesBackupItem** cmdlet gets the items in a container or a value in Azure Backup and the protection status of the items.
 A container that is registered to an Azure Recovery Services vault can have one or more items that can be protected.
 For Azure virtual machines, there can be only one backup item in the virtual machine container.
 Set the vault context by using the -VaultId parameter.
@@ -44,7 +50,8 @@ Set the vault context by using the -VaultId parameter.
 ## EXAMPLES
 
 ### Example 1: Get an item from a Backup container
-```
+
+```powershell
 PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
 PS C:\> $Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -Name "V2VM" -VaultId $vault.ID
 PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureVM -VaultId $vault.ID
@@ -56,6 +63,7 @@ The second command gets the Backup item named V2VM in $Container, and then store
 ## PARAMETERS
 
 ### -BackupManagementType
+
 Specifies the Backup management type.
 The acceptable values for this parameter are:
 
@@ -81,8 +89,9 @@ Accept wildcard characters: False
 ```
 
 ### -Container
+
 Specifies a container object from which this cmdlet gets backup items.
-To obtain an AzureRmRecoveryServicesBackupContainer , use the Get-AzRecoveryServicesBackupContainer cmdlet.
+To obtain an **AzureRmRecoveryServicesBackupContainer**, use the **Get-AzRecoveryServicesBackupContainer** cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
@@ -97,6 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
+
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
@@ -132,6 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+
 Specifies the name of the container.
 
 ```yaml
@@ -147,6 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
+
 Protection policy object.
 
 ```yaml
@@ -162,10 +174,18 @@ Accept wildcard characters: False
 ```
 
 ### -ProtectionState
+
 Specifies the state of protection.
 The acceptable values for this parameter are:
 
-- IRPending. Initial synchronization has not started and there is no recovery point yet. - Protected. Protection is ongoing. - ProtectionError. There is a protection error. - ProtectionStopped. Protection is disabled.
+- IRPending.
+Initial synchronization has not started and there is no recovery point yet.
+- Protected.
+Protection is ongoing.
+- ProtectionError.
+There is a protection error.
+- ProtectionStopped.
+Protection is disabled.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionState
@@ -181,6 +201,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProtectionStatus
+
 Specifies the overall protection status of an item in the container.
 The acceptable values for this parameter are:
 
@@ -201,6 +222,7 @@ Accept wildcard characters: False
 ```
 
 ### -VaultId
+
 ARM ID of the Recovery Services Vault.
 
 ```yaml
@@ -216,6 +238,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkloadType
+
 Specifies the workload type.
 The acceptable values for this parameter are:
 
@@ -237,25 +260,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
+### -CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
+
 ### System.String
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
+
 ## NOTES
 
 ## RELATED LINKS
 
-[Backup-AzRecoveryServicesBackupItem]()
+[Backup-AzRecoveryServicesBackupItem](./Backup-AzRecoveryServicesBackupItem.md)
 
-[Disable-AzRecoveryServicesBackupProtection]()
+[Disable-AzRecoveryServicesBackupProtection](./Disable-AzRecoveryServicesBackupProtection.md)
 
-[Get-AzRecoveryServicesBackupRecoveryPoint]()
+[Get-AzRecoveryServicesBackupRecoveryPoint](./Get-AzRecoveryServicesBackupRecoveryPoint.md)
 
-[Restore-AzRecoveryServicesBackupItem]()
-
+[Restore-AzRecoveryServicesBackupItem](./Restore-AzRecoveryServicesBackupItem.md)
