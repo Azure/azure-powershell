@@ -6,8 +6,8 @@
 - [ETag Support](#etag-support)
 
 ## Cmdlet Consistency
-The Az 4.0 preview uses a cmdlet generator to create many of the cmdlets.  One of the benefits of this as that cmdlets have consistent names, consistent parameter types, and consistent functionality, both within a service and between services.  
-Some of the new features consistently shared by cmdlets.
+The Az 4.0 preview uses a cmdlet generator to create many of the cmdlets.  One of the benefits of this is that cmdlets have consistent names, consistent parameter types, and consistent functionality, both within a service and between services.  
+Some of the new features consistently shared by cmdlets include the following.
 - Piping from Get- cmdlets for a resource into other Action cmdlets for the same resource
 - Piping from Get-AzResource to all other resource cmdlets
 - Subscription parameters across all cmdlets that operate on resources
@@ -16,6 +16,8 @@ Some of the new features consistently shared by cmdlets.
 - Consistent use of ShouldProcess
 - Consistent output types for similar cmdlets - (e.g. Remove-* always returns nothing, and always has a PassThru parameter)
 - [Future]: Consistent support for resource modification cmdlets across RPs - in a future release, cmdlets will all support both Replace and PATCH semantics for modifying resources - across all resource providers. 
+
+Since existing Az cmdlets often inconsistently apply features and naming conventions, the added consistency in the preview cmdlets mean that there are significant breaking changes from existing cmdlets. In this case, breaking changes are necessary in order to achieve a consistent user experience between cmdlets, and between services.
 
 ## Asynchronous Operations
 New cmdlets contain several new features related to asynchronous operations, including 
