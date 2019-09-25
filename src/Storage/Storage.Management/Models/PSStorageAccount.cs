@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.NetworkRuleSet = PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet);
             this.EnableHierarchicalNamespace = storageAccount.IsHnsEnabled;
             this.FailoverInProgress = storageAccount.FailoverInProgress;
+            this.LargeFileSharesState = storageAccount.LargeFileSharesState;
             this.AzureFilesIdentityBasedAuth = storageAccount.AzureFilesIdentityBasedAuthentication is null ? null : new PSAzureFilesIdentityBasedAuthentication(storageAccount.AzureFilesIdentityBasedAuthentication);
             this.GeoReplicationStats = PSGeoReplicationStats.ParsePSGeoReplicationStats(storageAccount.GeoReplicationStats);
         }
@@ -65,6 +66,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public string Id { get; set; }
 
+        [Ps1Xml(Label = "Location", Target = ViewControl.Table, Position = 2)]
         public string Location { get; set; }
 
         [Ps1Xml(Label = "SkuName", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name", Position = 3)]
@@ -110,6 +112,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSAzureFilesIdentityBasedAuthentication AzureFilesIdentityBasedAuth { get; set; }
 
         public bool? EnableHierarchicalNamespace { get; set; }
+
+        public string LargeFileSharesState { get; set; }
 
         public bool? FailoverInProgress { get; set; }
 
