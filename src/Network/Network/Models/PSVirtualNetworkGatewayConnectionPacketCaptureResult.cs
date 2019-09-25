@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSVirtualNetworkGatewayConnectionPacketCaptureResult : PSTopLevelResource
+    public class PSVirtualNetworkGatewayConnectionPacketCaptureResult
     {
         public string Code { get; set; }
 
