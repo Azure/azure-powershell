@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.1.1'
+ModuleVersion = '2.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -149,7 +149,7 @@ CmdletsToExport = 'Remove-AzBatchAccount',
                'New-AzBatchJobSchedule', 
                'Remove-AzBatchJobSchedule',
                'Get-AzBatchTaskCount', 
-               'Get-AzBatchPoolNodeCounts', 
+               'Get-AzBatchPoolNodeCount', 
                'Start-AzBatchComputeNodeServiceLogUpload', 
                'New-AzBatchResourceFile'
 
