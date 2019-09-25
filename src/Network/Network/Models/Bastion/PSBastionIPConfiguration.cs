@@ -22,16 +22,12 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSBastionIPConfiguration : PSChildResource
     {
-        [JsonProperty(Order = 2)]
         public PSResourceId Subnet { get; set; }
 
-        [JsonProperty(Order = 3)]
         public PSResourceId PublicIpAddress { get; set; }
 
-        [JsonProperty(Order = 4)]
         public string ProvisioningState { get; set; }
 
-        [JsonProperty(Order = 5)]
         public string PrivateIpAllocationMethod { get; set; }
     }
 }
