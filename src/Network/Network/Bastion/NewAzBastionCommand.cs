@@ -181,12 +181,18 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
         [Parameter(
              Mandatory = false,
-             ValueFromPipelineByPropertyName = true,
+     
              HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
         public override void Execute()
         {
+            if (this.IsBastionPresent(this.ResourceGroupName, this.Name))
+            {
+                throw new PSArgumentException(string.Format(Properties.Resources.ResourceAlreadyPresentInResourceGroup, this.Name, this.ResourceGroupName));
+            }
+
+            //// Get PublicIpAddressRgName and PublicIpAddressName by PublicIpAddressId
             if (ParameterSetName.Contains(BastionParameterSetNames.ByIpResourceId))
             {
                 var parsedResourceId = new ResourceIdentifier(this.PublicIpAddressId);
@@ -194,7 +200,8 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                 this.PublicIpAddressName = parsedResourceId.ResourceName;
             }
 
-            if(PublicIpAddress == null)
+            //// /Get PublicIpAddress by PublicIpAddressRgName and PublicIpAddressName
+            if (ParameterSetName.Contains(BastionParameterSetNames.ByIpRGName + BastionParameterSetNames.ByIpName) || ParameterSetName.Contains(BastionParameterSetNames.ByIpResourceId))
             {
                 var publicIp = this.PublicIPAddressesClient.Get(this.PublicIpAddressRgName, this.PublicIpAddressName);
                 this.PublicIpAddress = NetworkResourceManagerProfile.Mapper.Map<PSPublicIpAddress>(publicIp);
@@ -204,23 +211,30 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                 this.PublicIpAddress = PublicIpAddress;
             }
 
-            if(this.PublicIpAddress == null)
+            if (this.PublicIpAddress == null)
             {
                 throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.PublicIpAddressName));
             }
 
+            //// Get VirtualNetworkRgName and VirtualNetworkName by ByVNResourceId
             if (ParameterSetName.Contains(BastionParameterSetNames.ByVNResourceId))
             {
                 var parsedResourceId = new ResourceIdentifier(this.VirtualNetworkId);
                 this.VirtualNetworkRgName = parsedResourceId.ResourceGroupName;
                 this.VirtualNetworkName = parsedResourceId.ResourceName;
             }
-            if (this.VirtualNetwork == null)
+
+            //// Get Virtual Network by VirtualNetworkRgName and VirtualNetworkName
+            if (ParameterSetName.Contains(BastionParameterSetNames.ByVNRGName + BastionParameterSetNames.ByVNName) || ParameterSetName.Contains(BastionParameterSetNames.ByVNResourceId))
             {
                 var vnet = this.VirtualNetworkClient.Get(this.VirtualNetworkRgName, VirtualNetworkName);
                 this.VirtualNetwork = NetworkResourceManagerProfile.Mapper.Map<PSVirtualNetwork>(vnet);
-
             }
+            else
+            {
+                this.VirtualNetwork = VirtualNetwork;
+            }
+
             if (this.VirtualNetwork == null)
             {
                 throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.VirtualNetworkName));
@@ -228,14 +242,14 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
             base.Execute();
 
-            var present = this.IsBastionPresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Properties.Resources.OverwritingResource, Name),
                 Properties.Resources.CreatingResourceMessage,
                 Name,
-                () => WriteObject(this.CreateBastion()),
-                () => present);
+                 () =>
+                 {
+                     WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
+                     WriteObject(this.CreateBastion());
+                });
         }
 
         private PSBastion CreateBastion()
