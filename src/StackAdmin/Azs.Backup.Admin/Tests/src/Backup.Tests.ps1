@@ -69,7 +69,6 @@ InModuleScope Azs.Backup.Admin {
                 # Subscriber Usage Aggregate
                 $Backup.RoleStatus          | Should Not Be $null
                 $Backup.CreatedDateTime     | Should Not Be $null
-                $Backup.BackupId            | Should Not Be $null
                 $Backup.Status              | Should Not Be $null
                 $Backup.TimeTakenToCreate   | Should Not Be $null
             }
