@@ -22,7 +22,7 @@ so that << benefits >>
 
 ## User Experience
 
-Example of the user experience with code sample
+Example of the user experience with code sample.
 
 ```PowerShell
 Invoke-new-cmdlet -parameter "MyParameter"
@@ -30,12 +30,12 @@ Invoke-new-cmdlet -parameter "MyParameter"
 
 ## Comments and Questions
 
-Add here and for comments and questions about he proposed change
+Here goes comments and questions about the proposed change.
 
 ## Specifications
 
-Describe how the implementation can be done
+Describe how the implementation can be done.
 
 ## Alernate proposals and considerations
 
-Add here any additional considerations like risks or breaking changes
+Add here any additional considerations like risks or breaking changes.
