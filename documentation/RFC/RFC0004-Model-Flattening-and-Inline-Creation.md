@@ -1,3 +1,4 @@
+---
 RFC: Parameter Flattening and Inline Creation
 Author: Scott Phibbs
 Status: Draft
