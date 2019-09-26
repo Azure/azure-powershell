@@ -300,17 +300,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
 
         public static SdkFrontendEndpoint ToSdkFrontendEndpoints(this PSFrontendEndpoint psFrontendEndpoint)
         {
-            SdkHttpsConfig customHttpsConfiguration;
-            if ((psFrontendEndpoint.CertificateSource == null) &&
-                String.IsNullOrEmpty(psFrontendEndpoint.MinimumTlsVersion) &&
-                (psFrontendEndpoint.Vault == null) &&
-                (psFrontendEndpoint.SecretName == null) &&
-                (psFrontendEndpoint.SecretVersion == null) &&
-                (psFrontendEndpoint.CertificateType == null))
-            {
-                customHttpsConfiguration = null;
-            }
-            else
+            SdkHttpsConfig customHttpsConfiguration = null;
+            if ((psFrontendEndpoint.CertificateSource != null) ||
+                !String.IsNullOrEmpty(psFrontendEndpoint.MinimumTlsVersion) ||
+                !String.IsNullOrEmpty(psFrontendEndpoint.Vault) ||
+                !String.IsNullOrEmpty(psFrontendEndpoint.SecretName) ||
+                !String.IsNullOrEmpty(psFrontendEndpoint.SecretVersion) ||
+                !String.IsNullOrEmpty(psFrontendEndpoint.CertificateType))
             {
                 customHttpsConfiguration = new SdkHttpsConfig(psFrontendEndpoint.CertificateSource,
                                    psFrontendEndpoint.MinimumTlsVersion,
@@ -319,6 +315,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                                    psFrontendEndpoint.SecretVersion,
                                    psFrontendEndpoint.CertificateType);
             }
+
             return new SdkFrontendEndpoint
             (
                 hostName: psFrontendEndpoint.HostName,

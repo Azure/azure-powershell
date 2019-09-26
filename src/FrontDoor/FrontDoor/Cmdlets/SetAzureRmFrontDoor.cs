@@ -12,10 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Helpers;
 using Microsoft.Azure.Commands.FrontDoor.Models;
@@ -23,10 +19,9 @@ using Microsoft.Azure.Commands.FrontDoor.Properties;
 using Microsoft.Azure.Management.FrontDoor;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Collections;
 using System.Linq;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.ResourceManager;
-using SdkFrontDoor = Microsoft.Azure.Management.FrontDoor.Models.FrontDoorModel;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -41,7 +36,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group to which the Front Door belongs.")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }  
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// The name of the Front Door to update.
@@ -63,7 +58,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Id of the Front Door to update")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
-        
+
         /// <summary>
         /// Routing rules associated with this Front Door
         /// </summary>
@@ -144,7 +139,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 
             var existingFrontDoor = FrontDoorManagementClient.FrontDoors.ListByResourceGroup(ResourceGroupName)
                 .FirstOrDefault(fd => fd.Name.ToLower() == Name.ToLower());
-                
+
 
             if (existingFrontDoor == null)
             {
@@ -241,5 +236,5 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             }
         }
     }
-    
+
 }
