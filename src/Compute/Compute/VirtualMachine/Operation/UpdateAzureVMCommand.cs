@@ -102,6 +102,11 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true)]
         public bool UltraSSDEnabled { get; set; }
 
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The max price of the billing of a low priority virtual machine")]
+        public double MaxPrice { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -128,10 +133,11 @@ namespace Microsoft.Azure.Commands.Compute
                         StorageProfile = this.VM.StorageProfile,
                         NetworkProfile = this.VM.NetworkProfile,
                         OsProfile = this.VM.OSProfile,
+                        BillingProfile = this.VM.BillingProfile,
                         Plan = this.VM.Plan,
-                        LicenseType = this.VM.LicenseType,
                         AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.VM.Location,
+                        LicenseType = this.VM.LicenseType,
                         Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
                         Identity = this.AssignIdentity.IsPresent 
                                    ? new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned, null)
@@ -140,7 +146,9 @@ namespace Microsoft.Azure.Commands.Compute
                         ProximityPlacementGroup = this.VM.ProximityPlacementGroup,
                         Host = this.VM.Host,
                         VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet,
-                        AdditionalCapabilities = this.VM.AdditionalCapabilities
+                        AdditionalCapabilities = this.VM.AdditionalCapabilities,
+                        EvictionPolicy = this.VM.EvictionPolicy,
+                        Priority = this.VM.Priority
                     };
 
                     if (this.IsParameterBound(c => c.IdentityType))
@@ -184,6 +192,15 @@ namespace Microsoft.Azure.Commands.Compute
                             parameters.AdditionalCapabilities = new AdditionalCapabilities();
                         }
                         parameters.AdditionalCapabilities.UltraSSDEnabled = this.UltraSSDEnabled;
+                    }
+
+                    if (this.IsParameterBound(c => c.MaxPrice))
+                    {
+                        if (parameters.BillingProfile == null)
+                        {
+                            parameters.BillingProfile = new BillingProfile();
+                        }
+                        parameters.BillingProfile.MaxPrice = this.MaxPrice;
                     }
 
                     if (NoWait.IsPresent)
