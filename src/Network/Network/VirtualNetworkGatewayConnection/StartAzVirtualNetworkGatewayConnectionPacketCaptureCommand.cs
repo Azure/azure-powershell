@@ -9,22 +9,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
+
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.IO;
 using System.Management.Automation;
-using MNM = Microsoft.Azure.Management.Network.Models;
-using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
-using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network.Models;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -118,9 +110,9 @@ namespace Microsoft.Azure.Commands.Network
                 ResourceGuid = existingConnection.ResourceGuid,
                 Location = existingConnection.Location,
             };
-            output.StartTime = DateTime.Now;
+            output.StartTime = DateTime.UtcNow;
             var result = this.VirtualNetworkGatewayConnectionClient.StartPacketCapture(this.ResourceGroupName, this.Name, parameters);
-            output.EndTime = DateTime.Now;
+            output.EndTime = DateTime.UtcNow;
             WriteObject(output);
         }
     }
