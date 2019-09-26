@@ -12,7 +12,7 @@ Azure comprises several clouds (Public, Azure Stack, Government), each of which 
 
 Writing an application or a script that is compatible with several clouds can quickly become a very complex task as the developer has to identify for each operation to be performed which API version is compatible on each cloud. Since most applications and services in Azure require a set of resources from different services, managing the api-versions of each needed service API in a script quickly multiplies this complexity.
 
-We are adding support for Azure profiles to help manage this complexity accross ther entire set of Azure services. When writing a script, simply select a profile for all services, rather than choosing a specific api-version for each service. This allows scripts to have a consistent api surface that they can be sure will work across the targeted clouds.
+We are adding support for Azure profiles to help manage this complexity accross the entire set of Azure services. When writing a script, simply select a profile for all services, rather than choosing a specific api-version for each service. This allows scripts to have a consistent api surface that they can be sure will work across the targeted clouds.
 
 Using a profile, a PowerShell script will be attached to a set of known API versions bringing the follwing benefits:
 
