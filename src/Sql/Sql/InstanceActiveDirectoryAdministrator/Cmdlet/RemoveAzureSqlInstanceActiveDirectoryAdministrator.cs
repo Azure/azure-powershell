@@ -29,26 +29,26 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
         public SwitchParameter Force { get; set; }
 
-		/// <summary>
-		/// Defines whether the cmdlets will output the model object at the end of its execution
-		/// </summary>
-		[Parameter(Mandatory = false,
-		HelpMessage = "Defines whether to return the removed AD administrator")]
-		public SwitchParameter PassThru { get; set; }
+        /// <summary>
+        /// Defines whether the cmdlets will output the model object at the end of its execution
+        /// </summary>
+        [Parameter(Mandatory = false,
+        HelpMessage = "Defines whether to return the removed AD administrator")]
+        public SwitchParameter PassThru { get; set; }
+        
+        /// <summary>
+        /// Returns true if the model object that was constructed by this cmdlet should be written out
+        /// </summary>
+        protected override bool WriteResult() { return PassThru.IsPresent; }
 
-		/// <summary>
-		/// Returns true if the model object that was constructed by this cmdlet should be written out
-		/// </summary>
-		protected override bool WriteResult() { return PassThru; }
-
-		/// <summary>
-		/// Get the entities from the service
-		/// </summary>
-		/// <returns>The list of entities</returns>
-		protected override IEnumerable<AzureSqlInstanceActiveDirectoryAdministratorModel> GetEntity()
+        /// <summary>
+        /// Get the entities from the service
+        /// </summary>
+        /// <returns>The list of entities</returns>
+        protected override IEnumerable<AzureSqlInstanceActiveDirectoryAdministratorModel> GetEntity()
         {
-			return new List<AzureSqlInstanceActiveDirectoryAdministratorModel>() {
-				ModelAdapter.GetInstanceActiveDirectoryAdministrator(GetResourceGroupName(), GetInstanceName())
+            return new List<AzureSqlInstanceActiveDirectoryAdministratorModel>() {
+                ModelAdapter.GetInstanceActiveDirectoryAdministrator(GetResourceGroupName(), GetInstanceName())
             };
         }
 

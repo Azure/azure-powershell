@@ -26,90 +26,90 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
 {
     public abstract class AzureSqlInstanceActiveDirectoryAdministratorCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlInstanceActiveDirectoryAdministratorModel>, AzureSqlInstanceActiveDirectoryAdministratorAdapter>
     {
-		protected const string UseInputObjectParameterSet = "UseInputObjectParameterSet";
-		protected const string UseResourceGroupAndInstanceNameParameterSet = "UseResourceGroupAndInstanceNameParameterSet";
-		protected const string UserResourceIdParameterSet = "UserResourceIdParameterSet";
+        protected const string UseInputObjectParameterSet = "UseInputObjectParameterSet";
+        protected const string UseResourceGroupAndInstanceNameParameterSet = "UseResourceGroupAndInstanceNameParameterSet";
+        protected const string UserResourceIdParameterSet = "UserResourceIdParameterSet";
 
-		/// <summary>
-		/// Server resource
-		/// </summary>
-		[Parameter(ParameterSetName = UseInputObjectParameterSet,
-			Mandatory = false,
-			ValueFromPipeline = true,
-			HelpMessage = "The managed instance object to use.")]
-		[ValidateNotNullOrEmpty]
-		public AzureSqlManagedInstanceModel InputObject { get; set; }
+        /// <summary>
+        /// Server resource
+        /// </summary>
+        [Parameter(ParameterSetName = UseInputObjectParameterSet,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The managed instance object to use.")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlManagedInstanceModel InputObject { get; set; }
 
-		/// <summary>
-		/// Gets or sets the resource id of the instance
-		/// </summary>
-		[Parameter(ParameterSetName = UserResourceIdParameterSet,
-			Mandatory = true,
-			Position = 0,
-			ValueFromPipelineByPropertyName = true,
-			HelpMessage = "The resource id of instance to use")]
-		[ValidateNotNullOrEmpty]
-		public string ResourceId { get; set; }
+        /// <summary>
+        /// Gets or sets the resource id of the instance
+        /// </summary>
+        [Parameter(ParameterSetName = UserResourceIdParameterSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource id of instance to use")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
-		/// <summary>
-		/// Gets or sets the name of the resource group to use.
-		/// </summary>
-		[Parameter(ParameterSetName = UseResourceGroupAndInstanceNameParameterSet,
-			Mandatory = true,
-			ValueFromPipelineByPropertyName = true,
-			Position = 0,
-			HelpMessage = "The name of the resource group.")]
-		[ResourceGroupCompleter]
-		[ValidateNotNullOrEmpty]
-		public override string ResourceGroupName { get; set; }
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(ParameterSetName = UseResourceGroupAndInstanceNameParameterSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
 
-		/// <summary>
-		/// Gets or sets the name of the managed instance to use.
-		/// </summary>
-		[Parameter(ParameterSetName = UseResourceGroupAndInstanceNameParameterSet,
-			Mandatory = true,
-			ValueFromPipelineByPropertyName = true,
-			Position = 1,
-			HelpMessage = "SQL Managed Instance name.")]
-		[ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
-		[ValidateNotNullOrEmpty]
-		public string InstanceName { get; set; }
+        /// <summary>
+        /// Gets or sets the name of the managed instance to use.
+        /// </summary>
+        [Parameter(ParameterSetName = UseResourceGroupAndInstanceNameParameterSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "SQL Managed Instance name.")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
+        [ValidateNotNullOrEmpty]
+        public string InstanceName { get; set; }
 
-		protected string GetResourceGroupName()
-		{
-			if (string.Equals(this.ParameterSetName, UseInputObjectParameterSet, StringComparison.OrdinalIgnoreCase))
-			{
-				return InputObject.ResourceGroupName;
-			}
-			else if (string.Equals(this.ParameterSetName, UserResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
-			{
-				var resourceInfo = new ResourceIdentifier(ResourceId);
-				return resourceInfo.ResourceGroupName;
-			}
+        protected string GetResourceGroupName()
+        {
+            if (string.Equals(this.ParameterSetName, UseInputObjectParameterSet, StringComparison.OrdinalIgnoreCase))
+            {
+                return InputObject.ResourceGroupName;
+            }
+            else if (string.Equals(this.ParameterSetName, UserResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            {
+                var resourceInfo = new ResourceIdentifier(ResourceId);
+                return resourceInfo.ResourceGroupName;
+            }
+            
+            return ResourceGroupName;
+        }
 
-			return ResourceGroupName;
-		}
+        protected string GetInstanceName()
+        {
+            if (string.Equals(this.ParameterSetName, UseInputObjectParameterSet, StringComparison.OrdinalIgnoreCase))
+            {
+                return InputObject.ManagedInstanceName;
+            }
+            else if (string.Equals(this.ParameterSetName, UserResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            {
+                var resourceInfo = new ResourceIdentifier(ResourceId);
+                return resourceInfo.ResourceName;
+            }
+            
+            return InstanceName;
+        }
 
-		protected string GetInstanceName()
-		{
-			if (string.Equals(this.ParameterSetName, UseInputObjectParameterSet, StringComparison.OrdinalIgnoreCase))
-			{
-				return InputObject.ManagedInstanceName;
-			}
-			else if (string.Equals(this.ParameterSetName, UserResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
-			{
-				var resourceInfo = new ResourceIdentifier(ResourceId);
-				return resourceInfo.ResourceName;
-			}
-
-			return InstanceName;
-		}
-		
-		/// <summary>
-		/// Initializes the adapter
-		/// </summary>
-		/// <returns></returns>
-		protected override AzureSqlInstanceActiveDirectoryAdministratorAdapter InitModelAdapter()
+        /// <summary>
+        /// Initializes the adapter
+        /// </summary>
+        /// <returns></returns>
+        protected override AzureSqlInstanceActiveDirectoryAdministratorAdapter InitModelAdapter()
         {
             return new AzureSqlInstanceActiveDirectoryAdministratorAdapter(DefaultProfile.DefaultContext);
         }
