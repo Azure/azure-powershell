@@ -159,6 +159,16 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             return ConvertObject<RouteProperties, PSRouteMetadata>(routeProperties);
         }
 
+        public static PSEnrichmentMetadata ToPSEnrichmentMetadata(EnrichmentProperties enrichmentProperties)
+        {
+            return ConvertObject<EnrichmentProperties, PSEnrichmentMetadata>(enrichmentProperties);
+        }
+
+        public static IEnumerable<PSEnrichmentProperties> ToPSEnrichmentProperties(IEnumerable<EnrichmentProperties> enrichmentProperties)
+        {
+            return ConvertObject<IEnumerable<EnrichmentProperties>, IEnumerable<PSEnrichmentProperties>>(enrichmentProperties);
+        }
+
         public static FallbackRouteProperties ToFallbackRouteProperty(PSFallbackRouteMetadata psRouteProperty)
         {
             return ConvertObject<PSFallbackRouteMetadata, FallbackRouteProperties>(psRouteProperty);
