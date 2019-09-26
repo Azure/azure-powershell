@@ -102,9 +102,9 @@ function Test-UpdateSqlVirtualMachineGroup
 		$group1 = Get-AzSqlVMGroup -ResourceGroupName $rg.ResourceGroupName -Name $groupName
 		
 		Validate-SqlVirtualMachineGroup $group $group1
-		Assert-NotNull $group1.Tag
-		Assert-AreEqual $group1.Tag.count 1
-		Assert-AreEqual $group1.Tag[$key] $value
+		Assert-NotNull $group1.Tags
+		Assert-AreEqual $group1.Tags.count 1
+		Assert-AreEqual $group1.Tags[$key] $value
 	}
 	finally
 	{
