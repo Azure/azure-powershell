@@ -191,10 +191,9 @@ Accept wildcard characters: False
 
 ### -Mode
 Specifies the deployment mode. The acceptable values for this parameter are:
-- Complete
-- Incremental
-In complete mode, Resource Manager deletes resources that exist in the resource group but are not
-specified in the template. In incremental mode, Resource Manager leaves unchanged resources that
+- Complete. In complete mode, Resource Manager deletes resources that exist in the resource group but are not
+specified in the template.
+- Incremental. In incremental mode, Resource Manager leaves unchanged resources that
 exist in the resource group but are not specified in the template.
 
 ```yaml
