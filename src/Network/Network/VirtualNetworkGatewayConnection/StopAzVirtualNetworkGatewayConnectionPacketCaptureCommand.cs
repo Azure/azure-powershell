@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "SAS Url for stop packet capture on virtual network gateway.")]
-        public string PacketCaptureParameters { get; set; }
+        public string SasUrl { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -104,21 +104,22 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             VpnPacketCaptureStopParameters parameters = new VpnPacketCaptureStopParameters();
-            if (this.PacketCaptureParameters != null)
+            if (this.SasUrl != null)
             {
-                parameters.SasUrl = PacketCaptureParameters;
+                parameters.SasUrl = SasUrl;
             }
             WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-            PSVirtualNetworkGatewayConnectionPacketCaptureResult output = new PSVirtualNetworkGatewayConnectionPacketCaptureResult();
+            PSVirtualNetworkGatewayConnectionPacketCaptureResult output = new PSVirtualNetworkGatewayConnectionPacketCaptureResult()
+            {
+                Name = existingConnection.Name,
+                ResourceGroupName = existingConnection.ResourceGroupName,
+                Tag = existingConnection.Tag,
+                ResourceGuid = existingConnection.ResourceGuid,
+                Location = existingConnection.Location,
+            };
             output.StartTime = DateTime.Now;
             var result = this.VirtualNetworkGatewayConnectionClient.StopPacketCapture(this.ResourceGroupName, this.Name, parameters);
             output.EndTime = DateTime.Now;
-            if (result != null)
-            {
-                VpnGatewayPacketCaptureResponse resultObj = JsonConvert.DeserializeObject<VpnGatewayPacketCaptureResponse>(result);
-                output.Code = resultObj.Status;
-                output.ResultsText = resultObj.Data;
-            }
             WriteObject(output);
         }
     }
