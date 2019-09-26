@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
                     FileShareWitnessPath = this.FileShareWitnessPath,
                     OuPath = this.OuPath
                 },
-                Tag = TagsConversionHelper.CreateTagDictionary(Tag, validate: true)
+                Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true)
             });
             return newEntity;
         }

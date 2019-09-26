@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 
             if(Tag != null)
             {
-                group.Tag = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+                group.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
             }
             
             updateData.Add(group);

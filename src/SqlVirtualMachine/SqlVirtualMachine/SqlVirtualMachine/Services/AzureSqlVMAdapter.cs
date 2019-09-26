@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
                     Sku = group.SqlImageSku,
                     Offer = group.SqlImageOffer,
                     ResourceId = group.Id,
-                    Tag = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(group.Tags), false),
+                    Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(group.Tags), false),
                     WsfcDomainProfile = group.WsfcDomainProfile
                 };
             }

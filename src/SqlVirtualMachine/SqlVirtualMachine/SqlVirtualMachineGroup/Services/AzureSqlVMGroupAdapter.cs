@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
                 SqlImageOffer = model.Offer,
                 SqlImageSku = model.Sku,
                 WsfcDomainProfile = model.WsfcDomainProfile,
-                Tags = model.Tag
+                Tags = model.Tags
             });
             return CreateSqlVirtualMachineGroupModelFromResponse(resp);
         }
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
                 Sku = resp.SqlImageSku,
                 Offer = resp.SqlImageOffer,
                 WsfcDomainProfile = resp.WsfcDomainProfile,
-                Tag = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(resp.Tags), true),
+                Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(resp.Tags), true),
                 ResourceId = resp.Id
             };
             return model;            

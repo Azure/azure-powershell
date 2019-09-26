@@ -19,7 +19,7 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model
 {
     /// <summary>
-    /// Represents the core properties of an Azure Sql Virtual Machine Group. It mirrors the .NET client object 
+    /// Represents the core properties of an Azure Sql Virtual Machine Group. It mirrors the .NET client object
     /// Microsoft.Azure.Management.SqlVirtualMachine.Models.SqlVirtualMachineGroup
     /// </summary>
     public class AzureSqlVMGroupModel
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model
         /// </summary>
         [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 0)]
         public string Name { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the location the sql virtual machine is in
         /// </summary>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model
         /// <summary>
         /// Gets or sets the tags associated with the sql virtual machine.
         /// </summary>
-        public Dictionary<string, string> Tag { get; set; }
+        public Dictionary<string, string> Tags { get; set; }
 
         /// <summary>
         /// Gets or sets the resource id of the sql virtual machine
