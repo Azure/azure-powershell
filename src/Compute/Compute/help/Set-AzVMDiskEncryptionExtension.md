@@ -567,7 +567,7 @@ Accept wildcard characters: False
 ```
 
 ### -VolumeType
-Specifies the type of virtual machine volumes on which to perform encryption operation: OS, Data, or All. Values are case insenstive.
+Specifies the type of virtual machine volumes on which to perform encryption operation: OS, Data, or All. Values are case insensitive.
 
 Linux: The **VolumeType** parameter is required when encrypting Linux virtual machines, and must be set to a value ("Os", "Data", or "All") supported by the Linux distribution. 
 
