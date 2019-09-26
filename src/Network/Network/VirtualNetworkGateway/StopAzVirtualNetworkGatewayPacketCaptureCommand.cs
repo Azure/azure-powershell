@@ -14,8 +14,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Management.Automation;
 
@@ -101,6 +99,10 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
             {
                 parameters.SasUrl = SasUrl;
             }
+            else
+            {
+
+            }
             WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
             PSVirtualNetworkGatewayPacketCaptureResult output = new PSVirtualNetworkGatewayPacketCaptureResult()
             {
@@ -111,10 +113,9 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
                 Location = existingVirtualNetworkGateway.Location,
 
             };
-            output.StartTime = DateTime.Now;
-            output.StartTime = DateTime.Now;
+            output.StartTime = DateTime.UtcNow;
             var result = this.VirtualNetworkGatewayClient.StopPacketCapture(this.ResourceGroupName, this.Name, parameters);
-            output.EndTime = DateTime.Now;
+            output.EndTime = DateTime.UtcNow;
             WriteObject(output);
         }
     }
