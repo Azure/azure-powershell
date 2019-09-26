@@ -75,8 +75,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The BGP Community of the Virtual Network")]
-        public string VirtualNetworkCommunity { get; set; }
+             HelpMessage = "The BGP Community advertised over ExpressRoute.")]
+        public string BgpCommunity { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -143,9 +143,9 @@ namespace Microsoft.Azure.Commands.Network
                 vnet.DdosProtectionPlan = new PSResourceId {Id = DdosProtectionPlanId};
             }
 
-            if (!string.IsNullOrWhiteSpace(VirtualNetworkCommunity))
+            if (!string.IsNullOrWhiteSpace(BgpCommunity))
             {
-                vnet.BgpCommunities = new PSVirtualNetworkBgpCommunities {VirtualNetworkCommunity = this.VirtualNetworkCommunity};
+                vnet.BgpCommunities = new PSVirtualNetworkBgpCommunities {VirtualNetworkCommunity = this.BgpCommunity};
             }
 
             // Map to the sdk object
