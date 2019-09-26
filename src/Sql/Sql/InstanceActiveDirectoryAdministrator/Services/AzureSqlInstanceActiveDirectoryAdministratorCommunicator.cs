@@ -72,13 +72,13 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
             return GetCurrentSqlClient().ManagedInstanceAdministrators.Get(resourceGroupName, managedInstanceName, ActiveDirectoryDefaultName);
         }
 
-		/// <summary>
-		/// Lists Azure SQL Instance Active Directory administrators
-		/// </summary>
-		public IPage<ManagedInstanceAdministrator> List(string resourceGroupName, string managedInstanceName)
-		{
-			return GetCurrentSqlClient().ManagedInstanceAdministrators.ListByInstance(resourceGroupName, managedInstanceName);	
-		}
+        /// <summary>
+        /// Lists Azure SQL Instance Active Directory administrators
+        /// </summary>
+        public IPage<ManagedInstanceAdministrator> List(string resourceGroupName, string managedInstanceName)
+        {
+            return GetCurrentSqlClient().ManagedInstanceAdministrators.ListByInstance(resourceGroupName, managedInstanceName);	
+        }
 
         /// <summary>
         /// Creates or updates a Azure SQL Instance Active Directory Administrator
@@ -106,9 +106,9 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-				SqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-			}
-			return SqlClient;
+                SqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+            }
+            return SqlClient;
         }
     }
 }

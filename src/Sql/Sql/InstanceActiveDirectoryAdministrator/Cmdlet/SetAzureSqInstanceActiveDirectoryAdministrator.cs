@@ -27,24 +27,24 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Cmdl
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceActiveDirectoryAdministrator", DefaultParameterSetName = UseResourceGroupAndInstanceNameParameterSet, ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true), OutputType(typeof(AzureSqlInstanceActiveDirectoryAdministratorModel))]
     public class SetAzureSqlInstanceActiveDirectoryAdministrator : AzureSqlInstanceActiveDirectoryAdministratorCmdletBase
     {
-		/// <summary>
-		/// Azure Active Directory display name for a user or group
-		/// </summary>
-		[Parameter(Mandatory = true,
-			ValueFromPipelineByPropertyName = true,
-			Position = 2,
+        /// <summary>
+        /// Azure Active Directory display name for a user or group
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 2,
             HelpMessage = "Specifies the display name of the user or group for whom to grant permissions. This display name must exist in the active directory associated with the current subscription.")]
         [ValidateNotNullOrEmpty()]
         public string DisplayName { get; set; }
 
-		/// <summary>
-		/// Azure Active Directory object id for a user or group
-		/// </summary>
-		[Parameter(Mandatory = true,
-			ValueFromPipelineByPropertyName = true,
-			Position = 3,
-			HelpMessage = "Specifies the object ID of the user or group in Azure Active Directory for which to grant permissions.")]
-		[ValidateNotNullOrEmpty()]
+        /// <summary>
+        /// Azure Active Directory object id for a user or group
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 3,
+            HelpMessage = "Specifies the object ID of the user or group in Azure Active Directory for which to grant permissions.")]
+        [ValidateNotNullOrEmpty()]
         public Guid ObjectId { get; set; }
 
         /// <summary>

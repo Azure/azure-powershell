@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Mode
         /// </summary>
         public string DisplayName { get; set; }
 
-		/// <summary>
-		/// Gets or sets the SID (object ID) of the Azure SQL Instance Active administrator
-		/// </summary>
-		public Guid ObjectId { get; set; }
+        /// <summary>
+        /// Gets or sets the SID (object ID) of the Azure SQL Instance Active administrator
+        /// </summary>
+        public Guid ObjectId { get; set; }
     }
 }

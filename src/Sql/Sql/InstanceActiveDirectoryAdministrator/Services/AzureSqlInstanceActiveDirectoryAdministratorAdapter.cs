@@ -11,9 +11,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Model;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
     /// </summary>
     public class AzureSqlInstanceActiveDirectoryAdministratorAdapter
     {
-		/// <summary>
-		/// Gets or sets the AzureSqlInstanceActiveDirectoryAdministratorCommunicator which has all the needed management clients
-		/// </summary>
-		private AzureSqlInstanceActiveDirectoryAdministratorCommunicator Communicator { get; set; }
+        /// <summary>
+        /// Gets or sets the AzureSqlInstanceActiveDirectoryAdministratorCommunicator which has all the needed management clients
+        /// </summary>
+        private AzureSqlInstanceActiveDirectoryAdministratorCommunicator Communicator { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
@@ -50,16 +50,16 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
             {
                 if (_activeDirectoryClient == null)
                 {
-					_activeDirectoryClient = new ActiveDirectoryClient(Context);
-					if (!Context.Environment.IsEndpointSet(AzureEnvironment.Endpoint.Graph))
+                    _activeDirectoryClient = new ActiveDirectoryClient(Context);
+                    if (!Context.Environment.IsEndpointSet(AzureEnvironment.Endpoint.Graph))
                     {
                         throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidGraphEndpoint));
                     }
                 }
                 return this._activeDirectoryClient;
-			}
+            }
 
-			set { this._activeDirectoryClient = value; }
+            set { this._activeDirectoryClient = value; }
         }
 
         /// <summary>
@@ -73,59 +73,59 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
             Communicator = new AzureSqlInstanceActiveDirectoryAdministratorCommunicator(Context);
         }
 
-		/// <summary>
-		/// Gets an Azure SQL Instance Active Directory administrator by name.
-		/// </summary>
-		/// <param name="resourceGroupName">The name of the resource group</param>
-		/// <param name="managedInstanceName">The name of the Azure SQL Managed Instance that contains the Azure Active Directory administrator</param>
-		/// <returns>The Azure Sql InstanceActiveDirectoryAdministrator object</returns>
-		internal AzureSqlInstanceActiveDirectoryAdministratorModel GetInstanceActiveDirectoryAdministrator(string resourceGroupName, string managedInstanceName)
+        /// <summary>
+        /// Gets an Azure SQL Instance Active Directory administrator by name.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="managedInstanceName">The name of the Azure SQL Managed Instance that contains the Azure Active Directory administrator</param>
+        /// <returns>The Azure Sql InstanceActiveDirectoryAdministrator object</returns>
+        internal AzureSqlInstanceActiveDirectoryAdministratorModel GetInstanceActiveDirectoryAdministrator(string resourceGroupName, string managedInstanceName)
         {
             var resp = Communicator.Get(resourceGroupName, managedInstanceName);
-			return CreateInstanceActiveDirectoryAdministratorModelFromResponse(resourceGroupName, managedInstanceName, resp);
+            return CreateInstanceActiveDirectoryAdministratorModelFromResponse(resourceGroupName, managedInstanceName, resp);
         }
 
-		/// <summary>
-		/// Gets a list of Azure SQL Instance Active Directory administrators.
-		/// </summary>
-		/// <param name="resourceGroupName">The name of the resource group</param>
-		/// <param name="managedInstanceName">The name of the Azure SQL Managed Instance that contains the Azure Active Directory administrator</param>
-		/// <returns>A list of Azure SQL Instance Active Directory administrators objects</returns>
-		internal ICollection<AzureSqlInstanceActiveDirectoryAdministratorModel> ListInstanceActiveDirectoryAdministrators(string resourceGroupName, string managedInstanceName)
+        /// <summary>
+        /// Gets a list of Azure SQL Instance Active Directory administrators.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="managedInstanceName">The name of the Azure SQL Managed Instance that contains the Azure Active Directory administrator</param>
+        /// <returns>A list of Azure SQL Instance Active Directory administrators objects</returns>
+        internal ICollection<AzureSqlInstanceActiveDirectoryAdministratorModel> ListInstanceActiveDirectoryAdministrators(string resourceGroupName, string managedInstanceName)
         {
             var response = Communicator.List(resourceGroupName, managedInstanceName);
 
-			return response.Select((administrator) =>
-			{
-				return new AzureSqlInstanceActiveDirectoryAdministratorModel()
-				{
-					ResourceGroupName = resourceGroupName,
-					InstanceName = managedInstanceName,
-					DisplayName = administrator.Login,
-					ObjectId = administrator.Sid
-				};
-			}).ToList() ;
+            return response.Select((administrator) =>
+            {
+                return new AzureSqlInstanceActiveDirectoryAdministratorModel()
+                {
+                    ResourceGroupName = resourceGroupName,
+                    InstanceName = managedInstanceName,
+                    DisplayName = administrator.Login,
+                    ObjectId = administrator.Sid
+                };
+            }).ToList() ;
         }
 
-		/// <summary>
-		/// Creates or updates an Azure SQL Instance Active Directory administrator.
-		/// </summary>
-		/// <param name="resourceGroup">The name of the resource group</param>
-		/// <param name="managedInstanceName">The name of the Azure Sql Managed Instance</param>
-		/// <param name="model">The input parameters for the create/update operation</param>
-		/// <returns>The upserted Azure SQL Instance Active Directory administrator</returns>
-		internal AzureSqlInstanceActiveDirectoryAdministratorModel UpsertInstanceActiveDirectoryAdministrator(string resourceGroup, string managedInstanceName, AzureSqlInstanceActiveDirectoryAdministratorModel model)
+        /// <summary>
+        /// Creates or updates an Azure SQL Instance Active Directory administrator.
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="managedInstanceName">The name of the Azure Sql Managed Instance</param>
+        /// <param name="model">The input parameters for the create/update operation</param>
+        /// <returns>The upserted Azure SQL Instance Active Directory administrator</returns>
+        internal AzureSqlInstanceActiveDirectoryAdministratorModel UpsertInstanceActiveDirectoryAdministrator(string resourceGroup, string managedInstanceName, AzureSqlInstanceActiveDirectoryAdministratorModel model)
         {
-			var resp = Communicator.CreateOrUpdate(resourceGroup, managedInstanceName, GetActiveDirectoryInformation(model.DisplayName, model.ObjectId));
+            var resp = Communicator.CreateOrUpdate(resourceGroup, managedInstanceName, GetActiveDirectoryInformation(model.DisplayName, model.ObjectId));
             return CreateInstanceActiveDirectoryAdministratorModelFromResponse(resourceGroup, managedInstanceName, resp);
         }
 
-		/// <summary>
-		/// Deletes a Azure SQL Instance Active Directory administrator
-		/// </summary>
-		/// <param name="resourceGroupName">The resource group the managed instance is in</param>
-		/// <param name="managedInstanceName">The name of the Azure Sql Managed Instance</param>
-		public void RemoveInstanceActiveDirectoryAdministrator(string resourceGroupName, string managedInstanceName)
+        /// <summary>
+        /// Deletes a Azure SQL Instance Active Directory administrator
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group the managed instance is in</param>
+        /// <param name="managedInstanceName">The name of the Azure Sql Managed Instance</param>
+        public void RemoveInstanceActiveDirectoryAdministrator(string resourceGroupName, string managedInstanceName)
         {
             Communicator.Remove(resourceGroupName, managedInstanceName);
         }
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
         /// <returns>The converted model</returns>
         public static AzureSqlInstanceActiveDirectoryAdministratorModel CreateInstanceActiveDirectoryAdministratorModelFromResponse(string resourceGroup, string managedInstanceName, ManagedInstanceAdministrator admin)
         {
-			AzureSqlInstanceActiveDirectoryAdministratorModel model = new AzureSqlInstanceActiveDirectoryAdministratorModel();
+            AzureSqlInstanceActiveDirectoryAdministratorModel model = new AzureSqlInstanceActiveDirectoryAdministratorModel();
 
             model.ResourceGroupName = resourceGroup;
             model.InstanceName = managedInstanceName;
@@ -157,8 +157,8 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
         /// <returns></returns>
         protected ManagedInstanceAdministrator GetActiveDirectoryInformation(string displayName, Guid objectId)
         {
-			// Gets the default Tenant id for the subscriptions
-			Guid tenantId = GetTenantId();
+            // Gets the default Tenant id for the subscriptions
+            Guid tenantId = GetTenantId();
 
             // Check for a Azure Active Directory group. Recommended to always use group.
             IEnumerable<PSADGroup> groupList = null;
