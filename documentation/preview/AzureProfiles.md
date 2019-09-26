@@ -28,9 +28,10 @@ hybrid-2019-03-01
 latest-2019-04-30
 ```
 
-If enter a value that is not supported, the command will not return an error but will not switch profiles.
-
-> NOTE: the command may takes some time to be executed.
+> **IMPORTANT NOTES:**
+>
+> - If you use a non supported value, the command will not return any errors and will not switch profiles.
+> - The command may takes some time to be executed.
 
 ## Known Issues
 
