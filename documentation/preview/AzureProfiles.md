@@ -21,7 +21,7 @@ We will be adding profiles over time and we plan to phase out older profiles aft
 Select-AzProfile -name 'hybrid-2019-03-01'
 ```
 
-Only the following names four profiles are supported in the current preview:
+Only the following profiles are supported in the current preview:
 
 ```PowerShell
 hybrid-2019-03-01
