@@ -25,14 +25,14 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
     [Cmdlet(VerbsCommon.Get,
          ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Bastion",
-         DefaultParameterSetName = "ListBySubscriptionId",
+         DefaultParameterSetName = BastionParameterSetNames.ListBysubscription,
          SupportsShouldProcess = true),
          OutputType(typeof(PSBastion), typeof(IEnumerable<PSBastion>))]
     public class GetAzBastionCommand : BastionBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "ListByResourceGroupName",
+            ParameterSetName = BastionParameterSetNames.,
             HelpMessage = "The resource group name.")]
         [Parameter(
             Mandatory = true,
