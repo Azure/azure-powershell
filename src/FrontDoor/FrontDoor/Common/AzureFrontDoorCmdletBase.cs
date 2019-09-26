@@ -39,8 +39,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Common
         public const string FieldsWithRedirectParameterSet = "ByFieldsWithRedirectParameterSet";
         public const string FieldsWithBackendPoolsSettingsParameterSet = "ByFieldsWithBackendPoolsSettingsParameterSet";
         public const string FieldsWithCertificateNameCheckParameterSet = "ByFieldsWithCertificateNameCheckParameterSet";
-        public const string FieldsWithCustomHttpsConfigParameterSet = "ByFieldsWithCustomHttpsConfigParameterSet";
-        public const string ObjectWithCustomHttpsConfigParameterSet = "ByObjectWithCustomHttpsConfigParameterSet";
         public const string KeyVaultCertificateSourceParameterSet = "KeyVaultCertificateSourceParameterSet";
         public const string FrontDoorCertificateSourceParameterSet = "FrontDoorCertificateSourceParameterSet";
 
