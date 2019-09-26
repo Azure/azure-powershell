@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
         [Parameter(
             Mandatory = false,
             HelpMessage = "Filter options for start packet capture on virtual network gateway.")]
-        public string PacketCaptureParameters { get; set; }
+        public string FilterData { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -97,22 +97,24 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
             }
 
             VpnPacketCaptureStartParameters parameters = new VpnPacketCaptureStartParameters();
-            if (this.PacketCaptureParameters != null)
+            if (this.FilterData != null)
             {
-                parameters.FilterData = PacketCaptureParameters;
+                parameters.FilterData = FilterData;
             }
 
             WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-            PSVirtualNetworkGatewayPacketCaptureResult output = new PSVirtualNetworkGatewayPacketCaptureResult();
+            PSVirtualNetworkGatewayPacketCaptureResult output = new PSVirtualNetworkGatewayPacketCaptureResult()
+            {
+                Name = existingVirtualNetworkGateway.Name,
+                ResourceGroupName = existingVirtualNetworkGateway.ResourceGroupName,
+                Tag = existingVirtualNetworkGateway.Tag,
+                ResourceGuid = existingVirtualNetworkGateway.ResourceGuid,
+                Location = existingVirtualNetworkGateway.Location,
+                
+            };
             output.StartTime = DateTime.Now;
             string result = this.VirtualNetworkGatewayClient.StartPacketCapture(this.ResourceGroupName, this.Name, parameters);
             output.EndTime = DateTime.Now;
-            if (result != null)
-            {
-                VpnGatewayPacketCaptureResponse resultObj = JsonConvert.DeserializeObject<VpnGatewayPacketCaptureResponse>(result);
-                output.Code = resultObj.Status;
-                output.ResultsText = resultObj.Data;
-            }
             WriteObject(output);
         }
     }

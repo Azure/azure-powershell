@@ -95,12 +95,5 @@ namespace Microsoft.Azure.Commands.Network
 
             return true;
         }
-
-        public class VpnGatewayPacketCaptureResponse
-        {
-            public string Status { get; set; }
-
-            public string Data { get; set; }
-        }
     }
 }

@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
         [Parameter(
             Mandatory = true,
             HelpMessage = "SAS URL packet capture on virtual network gateway.")]
-        public string PacketCaptureParameters { get; set; }
+        public string SasUrl { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -97,19 +97,24 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
             }
 
             VpnPacketCaptureStopParameters parameters = new VpnPacketCaptureStopParameters();
-            if (this.PacketCaptureParameters != null)
+            if (this.SasUrl != null)
             {
-                parameters.SasUrl = PacketCaptureParameters;
+                parameters.SasUrl = SasUrl;
             }
             WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-            PSVirtualNetworkGatewayPacketCaptureResult output = new PSVirtualNetworkGatewayPacketCaptureResult();
+            PSVirtualNetworkGatewayPacketCaptureResult output = new PSVirtualNetworkGatewayPacketCaptureResult()
+            {
+                Name = existingVirtualNetworkGateway.Name,
+                ResourceGroupName = existingVirtualNetworkGateway.ResourceGroupName,
+                Tag = existingVirtualNetworkGateway.Tag,
+                ResourceGuid = existingVirtualNetworkGateway.ResourceGuid,
+                Location = existingVirtualNetworkGateway.Location,
+
+            };
+            output.StartTime = DateTime.Now;
             output.StartTime = DateTime.Now;
             var result = this.VirtualNetworkGatewayClient.StopPacketCapture(this.ResourceGroupName, this.Name, parameters);
             output.EndTime = DateTime.Now;
-            VpnGatewayPacketCaptureResponse resultObj = JsonConvert.DeserializeObject<VpnGatewayPacketCaptureResponse>(result);
-            output.Code = resultObj.Status;
-            output.ResultsText = resultObj.Data;
-
             WriteObject(output);
         }
     }

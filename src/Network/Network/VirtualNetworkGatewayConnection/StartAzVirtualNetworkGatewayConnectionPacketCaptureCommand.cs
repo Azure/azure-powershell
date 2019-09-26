@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Filter options for start packet capture on virtual network gateway connection.")]
-        public string PacketCaptureParameters { get; set; }
+        public string FilterData { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -104,22 +104,23 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             VpnPacketCaptureStartParameters parameters = new VpnPacketCaptureStartParameters();
-            if (this.PacketCaptureParameters != null)
+            if (this.FilterData != null)
             {
-                parameters.FilterData = PacketCaptureParameters;
+                parameters.FilterData = FilterData;
             }
 
             WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-            PSVirtualNetworkGatewayConnectionPacketCaptureResult output = new PSVirtualNetworkGatewayConnectionPacketCaptureResult();
+            PSVirtualNetworkGatewayConnectionPacketCaptureResult output = new PSVirtualNetworkGatewayConnectionPacketCaptureResult()
+            {
+                Name = existingConnection.Name,
+                ResourceGroupName = existingConnection.ResourceGroupName,
+                Tag = existingConnection.Tag,
+                ResourceGuid = existingConnection.ResourceGuid,
+                Location = existingConnection.Location,
+            };
             output.StartTime = DateTime.Now;
             var result = this.VirtualNetworkGatewayConnectionClient.StartPacketCapture(this.ResourceGroupName, this.Name, parameters);
             output.EndTime = DateTime.Now;
-            if (result != null)
-            {
-                VpnGatewayPacketCaptureResponse resultObj = JsonConvert.DeserializeObject<VpnGatewayPacketCaptureResponse>(result);
-                output.Code = resultObj.Status;
-                output.ResultsText = resultObj.Data;
-            }
             WriteObject(output);
         }
     }

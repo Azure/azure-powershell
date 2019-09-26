@@ -16,7 +16,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSVirtualNetworkGatewayPacketCaptureResult
+    public class PSVirtualNetworkGatewayPacketCaptureResult : PSTopLevelResource
     {
         public string Code { get; set; }
 
