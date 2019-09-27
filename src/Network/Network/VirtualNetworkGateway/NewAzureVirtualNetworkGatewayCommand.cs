@@ -271,7 +271,6 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VpnGatewayGeneration.None,
             MNM.VpnGatewayGeneration.Generation1,
             MNM.VpnGatewayGeneration.Generation2)]
-        [ValidateNotNullOrEmpty]
         public string VpnGatewayGeneration { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
