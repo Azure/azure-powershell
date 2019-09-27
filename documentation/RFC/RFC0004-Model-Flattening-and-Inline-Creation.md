@@ -153,10 +153,10 @@ New-AzVirtualNetwork `
 With the new model of creating resources inline, you can replace the configuration step with an array of hashtable (_note_: see model flattening for more details). Here we have the property `AddressPrefix` to differentiate the VNet address prefix with subnet address prefix. Future releases can rename the flattened property here as subnet address prefix.
 
 #### `Az` 4.0 (Preview)
-
+Note: Due to a known issue with Parameter Flattening, you need to specifiy "PropertiesAddressPrefix" for the Subnet as AddressPrefix is associated to VNet. Future releases will differentiate by prepending AddressPrefix with Subnet. SubnetAddressPrefix
 ```powershell
-$agSubnetConfig = @{ Name= "myAGSubnet"; AddressPrefix = "10.0.1.0/24" }
-$backendSubnetConfig = @{ Name= "myBackendSubnet"; AddressPrefix = "10.0.2.0/24" }
+$agSubnetConfig = @{ Name= "myAGSubnet"; PropertiesAddressPrefix = "10.0.1.0/24" }
+$backendSubnetConfig = @{ Name= "myBackendSubnet"; PropertiesAddressPrefix = "10.0.2.0/24" }
 $vn1 = New-AzVirtualNetwork `
     -Name myvnet `
     -ResourceGroupName myrg `
