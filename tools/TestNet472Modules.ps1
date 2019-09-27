@@ -20,7 +20,7 @@ if ($ModuleFilter)
     $rmItems = $rmItems | Where {$_.FullName.Contains($ModuleFilter)}
 }
 
-$success = 0
+$success = $true
 
 $rmItems | %{`
   Write-Host ("Testing " + $_.FullName)
@@ -41,7 +41,7 @@ $rmItems | %{`
 		-NoNewWindow `
 		-ArgumentList $_.FullName, $testConfig, '-trait "AcceptanceType=CheckIn"', '-notrait "RunType=DesktopOnly"', '-notrait "RunType=CoreOnly"', "-xml $logPath"  -PassThru 
 	  if ($process.ExitCode -ne 0) {
-		$success = $process.ExitCode
+		$success = $false
 	  }
   }
   finally {
