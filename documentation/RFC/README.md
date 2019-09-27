@@ -11,7 +11,7 @@ While issues remain the primary mechanism to report bugs and feature requests we
 To create an new RFC, follow these steps:
 
 1. Fork this repository
-1. Create a copy of the [template](./documentation/RFC/RFCNNNN-New-RFC-Template.md)
+1. Create a copy of the [template](RFCNNNN-New-RFC-Template.md)
 1. Fill the form
 1. Submit a PR to the Azure PowerShell repo.
 
