@@ -8,14 +8,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string RegionalCommunity { get; set; }
 
-        public string VirtualNetworkCommunityText
+        public bool ShouldSerializeRegionalCommunity()
         {
-            get { return JsonConvert.SerializeObject(VirtualNetworkCommunity, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        public string RegionalCommunityText
-        {
-            get { return JsonConvert.SerializeObject(RegionalCommunity, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            return !string.IsNullOrWhiteSpace(this.RegionalCommunity);
         }
     }
 }
