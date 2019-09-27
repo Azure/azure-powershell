@@ -13,7 +13,7 @@ This new module is introducing the following changes to Azure PowerShell:
 - Subscription Parameters
 - ETag Support
 
-The [deature Page][Features] gives more details on what has been implemented with each of these features and the [Azure Profile page][AzureProfiles] will give more details on this concept.
+The [feature Page][Features] gives more details on what has been implemented with each of these features and the [Azure Profile page][AzureProfiles] will give more details on this concept.
 
 ## Getting started
 
@@ -66,10 +66,10 @@ The release notes of each module have a more details:
 - AppServices
 - Billing
 - Compute
-- [DNS](src/Dns/resources/release-notes.md)
+- [DNS](../../src/Dns/resources/release-notes.md)
 - KeyVault
 - Monitor
-- [Network](src/Network/resources/release-notes.md)
+- [Network](../../src/Network/resources/release-notes.md)
 - Resources
 - ServiceBus
 - Storage
@@ -94,15 +94,15 @@ With this preview, we are specifically looking at hearing your feedback on the f
 <!-- Local -->
 [GitHubIssues]:https://aka.ms/azps4issue
 [SendFeedback]:http://aka.ms/azps4feedback
-[Features]:documentation/preview/Features.md
-[AzureProfiles]:documentation/preview/AzureProfiles.md
+[Features]:Features.md
+[AzureProfiles]:AzureProfiles.md
 
-[RFC0001]:documentation/RFC/RFC0001-Azure-Profiles.md
-[RFC0002]:documentation/RFC/RFC0002-SubscriptionList-in-Get.md
-[RFC0003]:documentation/RFC/RFC0003-AsynchronousOperations.md
-[RFC0004]:documentation/RFC/RFC0004-Model-Flattening-and-Inline-Creation.md
-[RFC0005]:documentation/RFC/RFC0005-ETags.md
-[RFC0006]:documentation/RFC/RFC0006-Creation-and-Modification-Cmdlets.md
+[RFC0001]:../RFC/RFC0001-Azure-Profiles.md
+[RFC0002]:../RFC/RFC0002-SubscriptionList-in-Get.md
+[RFC0003]:../RFC/RFC0003-AsynchronousOperations.md
+[RFC0004]:../RFC/RFC0004-Model-Flattening-and-Inline-Creation.md
+[RFC0005]:../RFC/RFC0005-ETags.md
+[RFC0006]:../RFC/RFC0006-Creation-and-Modification-Cmdlets.md
 
 <!-- Exteral -->
 [AzGallery]: https://www.powershellgallery.com/packages/Az/
