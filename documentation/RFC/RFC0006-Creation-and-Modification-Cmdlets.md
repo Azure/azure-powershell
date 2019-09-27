@@ -10,7 +10,7 @@ Version: 1.0
 
 The cmdlets for each RP should provide the same capability for creating and updating resources, but the underlying APIs provide a mix of PUT and PATCH semantics that make cmdlet consistency difficult.  In the face of this inconsistency, cmdlets should implement a consistent cmdlets for resource creation and modificationa s follows:
 
-- All RPs should hae a `New` cmdlet, which by default creates a new resource only if no current resource exists.
+- All RPs should have a `New` cmdlet, which by default creates a new resource only if no current resource exists.
 - The `New` cmdlet should have a `-Overwrite` option which overrides this behavior to destructively create or replace a new resource as specified in the parameters.
 - All RPS should implement an `Update` cmdlet which allows the user to set one or mroe properties of the resource to update - only the specified properties will be changed on the resource in Azure
 
