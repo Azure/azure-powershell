@@ -41,5 +41,21 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-BastionVnetsIpObjectsParams");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.bastion)]
+        public void TestBastionVnetObjectParam()
+        {
+            TestRunner.RunTestScript("Test-BastionVnetObjectParam");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.bastion)]
+        public void TestBastionIpObjectParam()
+        {
+            TestRunner.RunTestScript("Test-BastionIpObjectParam");
+        }
     }
 }

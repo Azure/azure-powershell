@@ -25,30 +25,30 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
     [Cmdlet(VerbsCommon.Remove,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Bastion",
-        DefaultParameterSetName = BastionParameterSetNames.ByName,
+        DefaultParameterSetName = BastionParameterSetNames.ByResourceGroupName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
 
     public class RemoveAzBastionCommand : BastionBaseCmdlet
     {
         [Parameter(
-            ParameterSetName = BastionParameterSetNames.ByResourceGroupName + BastionParameterSetNames.ByName,
+            ParameterSetName = BastionParameterSetNames.ByResourceGroupName,
             Mandatory = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name where bastion exists.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Alias("ResourceName", "BastionName")]
         [Parameter(
-            ParameterSetName = BastionParameterSetNames.ByResourceGroupName + BastionParameterSetNames.ByName,
+            ParameterSetName = BastionParameterSetNames.ByResourceGroupName,
             Mandatory = true,
-            HelpMessage = "The Bastion name.")]
+            HelpMessage = "The bastion resource name to be deleted.")]
         [ResourceNameCompleter("Microsoft.Network/bastionHosts", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Alias("Bastion")]
+        [Alias("Bastion", "BastionObject")]
         [Parameter(
             ParameterSetName = BastionParameterSetNames.ByBastionObject,
             Mandatory = true,

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
     [Cmdlet(VerbsCommon.New,
        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Bastion",
-       DefaultParameterSetName = BastionParameterSetNames.ByResourceGroupName + BastionParameterSetNames.ByName + BastionParameterSetNames.ByIpObject + BastionParameterSetNames.ByVNObject,
+       DefaultParameterSetName = BastionParameterSetNames.ByIpObject + BastionParameterSetNames.ByVNObject,
        SupportsShouldProcess = true),
        OutputType(typeof(PSBastion))]
 
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name where you need to create bastion.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
         [Alias("ResourceName", "BastionName")]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The resource name.")]
+            HelpMessage = "The bastion resource name.")]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/bastionHosts", "ResourceGroupName")]
         public string Name { get; set; }
@@ -52,15 +52,15 @@ namespace Microsoft.Azure.Commands.Network.Bastion
         [Parameter(
             Mandatory = true,
              ParameterSetName = BastionParameterSetNames.ByIpObject + BastionParameterSetNames.ByVNObject,
-            HelpMessage = "The public IP address object.")]
+            HelpMessage = "The public IP address object for bastion.")]
         [Parameter(
             Mandatory = true,
              ParameterSetName = BastionParameterSetNames.ByIpObject + BastionParameterSetNames.ByVNRGName + BastionParameterSetNames.ByVNName,
-            HelpMessage = "The public IP address object.")]
+            HelpMessage = "The public IP address object for bastion.")]
         [Parameter(
             Mandatory = true,
              ParameterSetName = BastionParameterSetNames.ByIpObject + BastionParameterSetNames.ByVNResourceId,
-            HelpMessage = "The public IP address object.")]
+            HelpMessage = "The public IP address object for bastion.")]
         [ValidateNotNull]
         public PSPublicIpAddress PublicIpAddress { get; set; }
 
@@ -68,15 +68,15 @@ namespace Microsoft.Azure.Commands.Network.Bastion
         [Parameter(
             Mandatory = true,
              ParameterSetName = BastionParameterSetNames.ByIpResourceId + BastionParameterSetNames.ByVNObject,
-            HelpMessage = "The public Ip address Id.")]
+            HelpMessage = "The public Ip address Azure resource Id for bastion.")]
         [Parameter(
             Mandatory = true,
              ParameterSetName = BastionParameterSetNames.ByIpResourceId + BastionParameterSetNames.ByVNRGName + BastionParameterSetNames.ByVNName,
-            HelpMessage = "The public Ip address Id.")]
+            HelpMessage = "The public Ip address Azure resource Id for bastion.")]
         [Parameter(
             Mandatory = true,
              ParameterSetName = BastionParameterSetNames.ByIpResourceId + BastionParameterSetNames.ByVNResourceId,
-            HelpMessage = "The public Ip address Id.")]
+            HelpMessage = "The public Ip address Azure resource Id for bastion.")]
         [ValidateNotNullOrEmpty]
         public string PublicIpAddressId { get; set; }
 
@@ -84,30 +84,30 @@ namespace Microsoft.Azure.Commands.Network.Bastion
         [Parameter(
             Mandatory = true,
              ParameterSetName = BastionParameterSetNames.ByIpRGName + BastionParameterSetNames.ByIpName + BastionParameterSetNames.ByVNObject,
-            HelpMessage = "The public Ip address resource group name.")]
+            HelpMessage = "The public Ip address resource group name for bastion.")]
         [Parameter(
             Mandatory = true,
              ParameterSetName = BastionParameterSetNames.ByIpRGName + BastionParameterSetNames.ByIpName + BastionParameterSetNames.ByVNRGName + BastionParameterSetNames.ByVNName,
-            HelpMessage = "The public Ip address resource group name.")]
+            HelpMessage = "The public Ip address resource group name for bastion.")]
         [Parameter(
             Mandatory = true,
              ParameterSetName = BastionParameterSetNames.ByIpRGName + BastionParameterSetNames.ByIpName + BastionParameterSetNames.ByVNResourceId,
-            HelpMessage = "The public Ip address resource group name.")]
+            HelpMessage = "The public Ip address resource group name for bastion.")]
         [ValidateNotNullOrEmpty]
         public string PublicIpAddressRgName { get; set; }
 
         [Parameter(
             Mandatory = true,
              ParameterSetName = BastionParameterSetNames.ByIpRGName + BastionParameterSetNames.ByIpName + BastionParameterSetNames.ByVNObject,
-            HelpMessage = "The public Ip address resource name.")]
+            HelpMessage = "The public Ip address resource name for bastion.")]
         [Parameter(
             Mandatory = true,
              ParameterSetName = BastionParameterSetNames.ByIpRGName + BastionParameterSetNames.ByIpName + BastionParameterSetNames.ByVNRGName + BastionParameterSetNames.ByVNName,
-            HelpMessage = "The public Ip address resource name.")]
+            HelpMessage = "The public Ip address resource name for bastion.")]
         [Parameter(
             Mandatory = true,
              ParameterSetName = BastionParameterSetNames.ByIpRGName + BastionParameterSetNames.ByIpName + BastionParameterSetNames.ByVNResourceId,
-            HelpMessage = "The public Ip address resource name.")]
+            HelpMessage = "The public Ip address resource name for bastion.")]
         [ValidateNotNullOrEmpty]
         public string PublicIpAddressName { get; set; }
 
@@ -115,15 +115,15 @@ namespace Microsoft.Azure.Commands.Network.Bastion
         [Parameter(
             Mandatory = true,
              ParameterSetName = BastionParameterSetNames.ByIpObject + BastionParameterSetNames.ByVNObject,
-            HelpMessage = "The virtual network object.")]
+            HelpMessage = "The virtual network object for bastion.")]
         [Parameter(
             Mandatory = true,
              ParameterSetName = BastionParameterSetNames.ByIpRGName + BastionParameterSetNames.ByIpName + BastionParameterSetNames.ByVNObject,
-            HelpMessage = "The virtual network name.")]
+            HelpMessage = "The virtual network name for bastion.")]
         [Parameter(
             Mandatory = true,
              ParameterSetName = BastionParameterSetNames.ByIpResourceId + BastionParameterSetNames.ByVNObject,
-            HelpMessage = "The virtual network name.")]
+            HelpMessage = "The virtual network name for bastion.")]
         [ValidateNotNull]
         public PSVirtualNetwork VirtualNetwork { get; set; }
 
@@ -131,15 +131,15 @@ namespace Microsoft.Azure.Commands.Network.Bastion
         [Parameter(
            Mandatory = true,
             ParameterSetName = BastionParameterSetNames.ByIpObject + BastionParameterSetNames.ByVNResourceId,
-           HelpMessage = "The virtual network resource Id.")]
+           HelpMessage = "The virtual network Azure resource Id for bastion.")]
         [Parameter(
            Mandatory = true,
             ParameterSetName = BastionParameterSetNames.ByIpRGName + BastionParameterSetNames.ByIpName + BastionParameterSetNames.ByVNResourceId,
-           HelpMessage = "The virtual network resource Id.")]
+           HelpMessage = "The virtual network Azure resource Id for bastion.")]
         [Parameter(
            Mandatory = true,
             ParameterSetName = BastionParameterSetNames.ByIpResourceId + BastionParameterSetNames.ByVNResourceId,
-           HelpMessage = "The virtual network resource Id.")]
+           HelpMessage = "The virtual network Azure resource Id for bastion.")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkId { get; set; }
 
@@ -147,41 +147,40 @@ namespace Microsoft.Azure.Commands.Network.Bastion
         [Parameter(
             Mandatory = true,
              ParameterSetName = BastionParameterSetNames.ByIpObject + BastionParameterSetNames.ByVNRGName + BastionParameterSetNames.ByVNName,
-            HelpMessage = "The virtual network resource group name.")]
+            HelpMessage = "The virtual network resource group name for bastion.")]
         [Parameter(
             Mandatory = true,
              ParameterSetName = BastionParameterSetNames.ByIpRGName + BastionParameterSetNames.ByIpName + BastionParameterSetNames.ByVNRGName + BastionParameterSetNames.ByVNName,
-            HelpMessage = "The virtual network resource group name.")]
+            HelpMessage = "The virtual network resource group name for bastion.")]
         [Parameter(
             Mandatory = true,
              ParameterSetName = BastionParameterSetNames.ByIpResourceId + BastionParameterSetNames.ByVNRGName + BastionParameterSetNames.ByVNName,
-            HelpMessage = "The virtual network resource group name.")]
+            HelpMessage = "The virtual network resource group name for bastion.")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkRgName { get; set; }
 
         [Parameter(
            Mandatory = true,
             ParameterSetName = BastionParameterSetNames.ByIpObject + BastionParameterSetNames.ByVNRGName + BastionParameterSetNames.ByVNName,
-           HelpMessage = "The virtual network resource name.")]
+           HelpMessage = "The virtual network resource name for bastion.")]
         [Parameter(
            Mandatory = true,
             ParameterSetName = BastionParameterSetNames.ByIpRGName + BastionParameterSetNames.ByIpName + BastionParameterSetNames.ByVNRGName + BastionParameterSetNames.ByVNName,
-           HelpMessage = "The virtual network resource name.")]
+           HelpMessage = "The virtual network resource name for bastion.")]
         [Parameter(
            Mandatory = true,
             ParameterSetName = BastionParameterSetNames.ByIpResourceId + BastionParameterSetNames.ByVNRGName + BastionParameterSetNames.ByVNName,
-           HelpMessage = "The virtual network resource name.")]
+           HelpMessage = "The virtual network resource name for bastion.")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName { get; set; }
 
         [Parameter(
-           Mandatory = false,
-           HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
-        public SwitchParameter Force { get; set; }
+            Mandatory = false,
+            HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         [Parameter(
              Mandatory = false,
-     
              HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -192,53 +191,9 @@ namespace Microsoft.Azure.Commands.Network.Bastion
                 throw new PSArgumentException(string.Format(Properties.Resources.ResourceAlreadyPresentInResourceGroup, this.Name, this.ResourceGroupName));
             }
 
-            //// Get PublicIpAddressRgName and PublicIpAddressName by PublicIpAddressId
-            if (ParameterSetName.Contains(BastionParameterSetNames.ByIpResourceId))
-            {
-                var parsedResourceId = new ResourceIdentifier(this.PublicIpAddressId);
-                this.PublicIpAddressRgName = parsedResourceId.ResourceGroupName;
-                this.PublicIpAddressName = parsedResourceId.ResourceName;
-            }
+            ParsePublicIpAddressObject();
 
-            //// /Get PublicIpAddress by PublicIpAddressRgName and PublicIpAddressName
-            if (ParameterSetName.Contains(BastionParameterSetNames.ByIpRGName + BastionParameterSetNames.ByIpName) || ParameterSetName.Contains(BastionParameterSetNames.ByIpResourceId))
-            {
-                var publicIp = this.PublicIPAddressesClient.Get(this.PublicIpAddressRgName, this.PublicIpAddressName);
-                this.PublicIpAddress = NetworkResourceManagerProfile.Mapper.Map<PSPublicIpAddress>(publicIp);
-            }
-            else
-            {
-                this.PublicIpAddress = PublicIpAddress;
-            }
-
-            if (this.PublicIpAddress == null)
-            {
-                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.PublicIpAddressName));
-            }
-
-            //// Get VirtualNetworkRgName and VirtualNetworkName by ByVNResourceId
-            if (ParameterSetName.Contains(BastionParameterSetNames.ByVNResourceId))
-            {
-                var parsedResourceId = new ResourceIdentifier(this.VirtualNetworkId);
-                this.VirtualNetworkRgName = parsedResourceId.ResourceGroupName;
-                this.VirtualNetworkName = parsedResourceId.ResourceName;
-            }
-
-            //// Get Virtual Network by VirtualNetworkRgName and VirtualNetworkName
-            if (ParameterSetName.Contains(BastionParameterSetNames.ByVNRGName + BastionParameterSetNames.ByVNName) || ParameterSetName.Contains(BastionParameterSetNames.ByVNResourceId))
-            {
-                var vnet = this.VirtualNetworkClient.Get(this.VirtualNetworkRgName, VirtualNetworkName);
-                this.VirtualNetwork = NetworkResourceManagerProfile.Mapper.Map<PSVirtualNetwork>(vnet);
-            }
-            else
-            {
-                this.VirtualNetwork = VirtualNetwork;
-            }
-
-            if (this.VirtualNetwork == null)
-            {
-                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.VirtualNetworkName));
-            }
+            ParseVirtualNetworkObject();
 
             base.Execute();
 
@@ -274,6 +229,61 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             this.BastionClient.CreateOrUpdate(this.ResourceGroupName, this.Name, BastionModel);
 
             return this.GetBastion(this.ResourceGroupName, this.Name);
+        }
+        
+       public void ParsePublicIpAddressObject()
+        {
+            //// Get PublicIpAddressRgName and PublicIpAddressName by PublicIpAddressId
+            if (ParameterSetName.Contains(BastionParameterSetNames.ByIpResourceId))
+            {
+                var parsedResourceId = new ResourceIdentifier(this.PublicIpAddressId);
+                this.PublicIpAddressRgName = parsedResourceId.ResourceGroupName;
+                this.PublicIpAddressName = parsedResourceId.ResourceName;
+            }
+
+            //// Get PublicIpAddress by PublicIpAddressRgName and PublicIpAddressName
+            if (ParameterSetName.Contains(BastionParameterSetNames.ByIpRGName + BastionParameterSetNames.ByIpName) || ParameterSetName.Contains(BastionParameterSetNames.ByIpResourceId))
+            {
+                var publicIp = this.PublicIPAddressesClient.Get(this.PublicIpAddressRgName, this.PublicIpAddressName);
+                this.PublicIpAddress = NetworkResourceManagerProfile.Mapper.Map<PSPublicIpAddress>(publicIp);
+            }
+            else
+            {
+                //// Get PublicIpAddress by publicIpObject
+                this.PublicIpAddress = PublicIpAddress;
+            }
+
+            if (this.PublicIpAddress == null)
+            {
+                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.PublicIpAddressName));
+            }
+        }
+        public void ParseVirtualNetworkObject()
+        {
+            //// Get VirtualNetworkRgName and VirtualNetworkName by ByVNResourceId
+            if (ParameterSetName.Contains(BastionParameterSetNames.ByVNResourceId))
+            {
+                var parsedResourceId = new ResourceIdentifier(this.VirtualNetworkId);
+                this.VirtualNetworkRgName = parsedResourceId.ResourceGroupName;
+                this.VirtualNetworkName = parsedResourceId.ResourceName;
+            }
+
+            //// Get Virtual Network by VirtualNetworkRgName and VirtualNetworkName
+            if (ParameterSetName.Contains(BastionParameterSetNames.ByVNRGName + BastionParameterSetNames.ByVNName) || ParameterSetName.Contains(BastionParameterSetNames.ByVNResourceId))
+            {
+                var vnet = this.VirtualNetworkClient.Get(this.VirtualNetworkRgName, VirtualNetworkName);
+                this.VirtualNetwork = NetworkResourceManagerProfile.Mapper.Map<PSVirtualNetwork>(vnet);
+            }
+            else
+            {
+                //// Get virtual network by virtualNetworkObject
+                this.VirtualNetwork = VirtualNetwork;
+            }
+
+            if (this.VirtualNetwork == null)
+            {
+                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.VirtualNetworkName));
+            }
         }
     }
 }

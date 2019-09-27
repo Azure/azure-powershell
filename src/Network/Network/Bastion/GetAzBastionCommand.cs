@@ -32,12 +32,12 @@ namespace Microsoft.Azure.Commands.Network.Bastion
     {
         [Parameter(
             Mandatory = false,
-            ParameterSetName = BastionParameterSetNames.,
+            ParameterSetName = BastionParameterSetNames.ListByResourceGroup,
             HelpMessage = "The resource group name.")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = BastionParameterSetNames.ByResourceGroupName + BastionParameterSetNames.ByName,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name where bastion resource exists.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
         [Parameter(
            Mandatory = true,
            ParameterSetName = BastionParameterSetNames.ByResourceId,
-           HelpMessage = "The resource id")]
+           HelpMessage = "The bastion Azure resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
         [Parameter(
             Mandatory = true,
             ParameterSetName = BastionParameterSetNames.ByResourceGroupName + BastionParameterSetNames.ByName,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The bastion resource name.")]
         [ResourceNameCompleter("Microsoft.Network/bastionHosts", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
