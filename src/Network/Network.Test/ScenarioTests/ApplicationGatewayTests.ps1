@@ -716,7 +716,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 
 		# remove autoscale config
 		$getgw = Remove-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $getgw -Force
-		$getgw = Set-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 3 -ApplicationGateway $getgw
+		$getgw = Set-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2 -ApplicationGateway $getgw
 
 		# Set
 		$getgw01 = Set-AzApplicationGateway -ApplicationGateway $getgw
@@ -750,7 +750,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 		# check sku
 		$sku01 = Get-AzApplicationGatewaySku -ApplicationGateway $getgw01
 		Assert-NotNull $sku01
-		Assert-AreEqual $sku01.Capacity 3
+		Assert-AreEqual $sku01.Capacity 2
 		Assert-AreEqual $sku01.Name Standard_v2
 		Assert-AreEqual $sku01.Tier Standard_v2
 
@@ -919,7 +919,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithConditions
 
 		# remove autoscale config
 		$getgw = Remove-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $getgw -Force
-		$getgw = Set-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 3 -ApplicationGateway $getgw
+		$getgw = Set-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2 -ApplicationGateway $getgw
 
 		# Set
 		$getgw01 = Set-AzApplicationGateway -ApplicationGateway $getgw
@@ -954,7 +954,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithConditions
 		# check sku
 		$sku01 = Get-AzApplicationGatewaySku -ApplicationGateway $getgw01
 		Assert-NotNull $sku01
-		Assert-AreEqual $sku01.Capacity 3
+		Assert-AreEqual $sku01.Capacity 2
 		Assert-AreEqual $sku01.Name Standard_v2
 		Assert-AreEqual $sku01.Tier Standard_v2
 
@@ -1088,7 +1088,7 @@ function Test-ApplicationGatewayCRUD3
 
 		# remove autoscale config
 		$getgw = Remove-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $getgw -Force
-		$getgw = Set-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 3 -ApplicationGateway $getgw
+		$getgw = Set-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2 -ApplicationGateway $getgw
 
 		# Set
 		$getgw01 = Set-AzApplicationGateway -ApplicationGateway $getgw
@@ -1096,7 +1096,7 @@ function Test-ApplicationGatewayCRUD3
 		# check sku
 		$sku01 = Get-AzApplicationGatewaySku -ApplicationGateway $getgw01
 		Assert-NotNull $sku01
-		Assert-AreEqual $sku01.Capacity 3
+		Assert-AreEqual $sku01.Capacity 2
 		Assert-AreEqual $sku01.Name Standard_v2
 		Assert-AreEqual $sku01.Tier Standard_v2
 

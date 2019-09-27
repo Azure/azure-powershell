@@ -58,7 +58,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUD2 -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
 
-        [Fact(Skip="Disabled due to consistent InternalServerError")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestApplicationGatewayCRUD3()
@@ -82,7 +82,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUDSubItems2 -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
 
-        [Fact(Skip="Disabled due to consistent InternalServerError")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestApplicationGatewayCRUDRewriteRuleSet()
@@ -98,7 +98,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AvailableServerVariableAndHeader");
 	}
 
-        [Fact(Skip="Disabled due to consistent InternalServerError")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestApplicationGatewayCRUDRewriteRuleSetWithConditions()
