@@ -5,6 +5,8 @@ This article explains how to get started with the preview of the Az 4.0 PowerShe
 ## Table of contents
 
 1. [Benefits](##Benefits)
+    - [Features][Features]
+    - [Azure Profiles][AzureProfiles]
 2. [Getting Started](##Getting\ Started)
     - [Installation](###Installation)
     - [Log into Azure](###Log\ into\ Azure)
@@ -30,7 +32,9 @@ This new module is introducing the following changes to Azure PowerShell:
 - Subscription Parameters
 - ETag Support
 
-The [feature Page][Features] gives more details on what has been implemented with each of these features and the [Azure Profile page][AzureProfiles] will give more details on this concept.
+The [Features page][Features] explains with more details each of the above features and the [Azure Profile page][AzureProfiles] explains the concept of profiles with more details.
+
+Upcoming features for Azure PowerShell are describred in the [Upcoming features in future Az 4.0 previews][Omissions]
 
 ## Getting started
 
@@ -115,6 +119,7 @@ If there is a feature you would like to see in Azure PowerShell or if your encou
 [SendFeedback]:http://aka.ms/azps4feedback
 [Features]:Features.md
 [AzureProfiles]:AzureProfiles.md
+[Omissions]:Omissions.md
 
 [RFC0001]:../RFC/RFC0001-Azure-Profiles.md
 [RFC0002]:../RFC/RFC0002-SubscriptionList-in-Get.md
