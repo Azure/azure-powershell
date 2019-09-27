@@ -8,29 +8,30 @@ schema: 2.0.0
 # Get-AzBastion
 
 ## SYNOPSIS
-Gets a Bastion.
+Gets a Bastion resource or Bastion resources.
 
 ## SYNTAX
 
 ### ListBySubscriptionId (Default)
 ```
-Get-AzBastion [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzBastion [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ListByResourceGroupName
 ```
-Get-AzBastion [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzBastion [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByResourceGroupNameByName
 ```
-Get-AzBastion -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzBastion -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzBastion -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzBastion -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -594,6 +595,21 @@ Id                   : /subscriptions/359a08a9-ff1b-463c-92d7-6df8d946f25c/resou
 
 ## PARAMETERS
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -610,7 +626,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The resource group name.
+The bastion resource name.
 
 ```yaml
 Type: String
@@ -652,7 +668,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id
+The bastion Azure resource Id
 
 ```yaml
 Type: String
@@ -660,6 +676,22 @@ Parameter Sets: ByResourceId
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -682,7 +714,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [New-AzBastion](./New-AzBastion.md)
 
 [Remove-AzBastion](./Remove-AzBastion.md)
