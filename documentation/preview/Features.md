@@ -42,7 +42,7 @@ All cmdlets have simplified parameters as much as possible, and where simplifica
 This is a radical departure from existing cmdlets, as rather than creating a set of objects to pass to a single Create or Update cmdlet, you can always simply provide parameters by typing on the command line.  This allows for much more natural interactive use of the cmdlets.
 
 ## Subscription Parameters
-All cmdlets now have a SubscriptionId parameter, which cna be used to run operatiosn against any chosen subscription.  In addition, all Get-* cmdlets allow specifying multiple subscriptiosn with other parameters, allowing you to search across multiple subscriptiosn for resources that meet certain characteristics.  You can use `$PSDefaultParameterValues` settings to set a default set of subscriptiosn to use with your GEt-* cmdlets.
+All cmdlets now have a SubscriptionId parameter, which can be used to run operations against any chosen subscription.  In addition, all Get-* cmdlets allow specifying multiple subscriptions with other parameters, allowing you to search across multiple subscriptions for resources that meet certain characteristics.  You can use `$PSDefaultParameterValues` settings to set a default set of subscriptions to use with your Get-* cmdlets.
 
 ## ETag support
 Across all creation and update cmdets, you cna use Etags to ensure consistency of updates.  Resources are returned with an ETag property, and you can specify and ETag value on update to require the server resource to update only if the resource on the server matches the given ETag.  This allows scripts to use Get-Update retry loops to ensure consistent update under simultaneous access to cloud scale.
