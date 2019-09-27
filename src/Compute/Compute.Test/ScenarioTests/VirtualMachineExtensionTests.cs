@@ -122,6 +122,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzDiskEncryptionCreateManagedDiskVM()
+        {
+            TestRunner.RunTestScript("Test-AzDiskEncryptionCreateManagedDiskVM");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineBginfoExtension()
         {
             TestRunner.RunTestScript("Test-VirtualMachineBginfoExtension");
