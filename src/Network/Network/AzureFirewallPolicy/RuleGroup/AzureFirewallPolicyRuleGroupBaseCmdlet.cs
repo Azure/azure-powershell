@@ -1,4 +1,4 @@
-﻿
+
 // ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
@@ -21,17 +21,17 @@ using Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public abstract class AzureFirewallPolicyBaseCmdlet : NetworkBaseCmdlet
+    public abstract class AzureFirewallPolicyRuleGroupBaseCmdlet : NetworkBaseCmdlet
     {
-        public IFirewallPoliciesOperations AzureFirewallPolicyClient
+        public IFirewallPolicyRuleGroupsOperations AzureFirewallPolicyRuleGroupClient
         {
             get
             {
-                return NetworkClient.NetworkManagementClient.FirewallPolicies;
+                return NetworkClient.NetworkManagementClient.FirewallPolicyRuleGroups;
             }
         }
 
-        public IAzureFirewallFqdnTagsOperations AzureFirewallPolicyFqdnTagClient
+        public IAzureFirewallFqdnTagsOperations AzureFirewallPolicyRuleGroupFqdnTagClient
         {
             get
             {
@@ -39,36 +39,36 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
-        public bool IsAzureFirewallPolicyPresent(string resourceGroupName, string name)
-        {
-            try
-            {
-                GetAzureFirewallPolicy(resourceGroupName, name);
-            }
-            catch (Microsoft.Rest.Azure.CloudException exception)
-            {
-                if (exception.Response.StatusCode == HttpStatusCode.NotFound)
-                {
-                    // Resource is not present
-                    return false;
-                }
+        // public bool IsAzureFirewallPolicyPresent(string resourceGroupName, string name)
+        // {
+        //     try
+        //     {
+        //         GetAzureFirewallPolicy(resourceGroupName, name);
+        //     }
+        //     catch (Microsoft.Rest.Azure.CloudException exception)
+        //     {
+        //         if (exception.Response.StatusCode == HttpStatusCode.NotFound)
+        //         {
+        //             // Resource is not present
+        //             return false;
+        //         }
 
-                throw;
-            }
+        //         throw;
+        //     }
 
-            return true;
-        }
+        //     return true;
+        // }
 
-        public PSAzureFirewallPolicy GetAzureFirewallPolicy(string resourceGroupName, string name)
-        {
-            var azureFirewallPolicy = this.AzureFirewallPolicyClient.Get(resourceGroupName, name);
+        // public PSAzureFirewallPolicy GetAzureFirewallPolicy(string resourceGroupName, string name)
+        // {
+        //     var azureFirewallPolicy = this.AzureFirewallPolicyRuleGroupClient.Get(resourceGroupName, name);
 
-            var psAzureFirewall = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewallPolicy>(azureFirewallPolicy);
-            psAzureFirewall.ResourceGroupName = resourceGroupName;
-            psAzureFirewall.Tag = TagsConversionHelper.CreateTagHashtable(azureFirewallPolicy.Tags);
+        //     var psAzureFirewall = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewallPolicy>(azureFirewallPolicy);
+        //     psAzureFirewall.ResourceGroupName = resourceGroupName;
+        //     psAzureFirewall.Tag = TagsConversionHelper.CreateTagHashtable(azureFirewallPolicy.Tags);
 
-            return psAzureFirewall;
-        }
+        //     return psAzureFirewall;
+        // }
 
         public PSAzureFirewallPolicy ToPsAzureFirewallPolicy(FirewallPolicy firewall)
         {

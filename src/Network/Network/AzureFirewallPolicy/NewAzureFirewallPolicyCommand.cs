@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The list of rule groups")]
         [ValidateNotNullOrEmpty]
-        public PSAzureFirewallPolicyRuleGroup[] RuleGroups { get; set; }
+        public String[] RuleGroups { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Network
             };
 
             // Map to the sdk object
-            var azureFirewallModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AzureFirewall>(firewall);
+            var azureFirewallModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(firewall);
             azureFirewallModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create AzureFirewall call

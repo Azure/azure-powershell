@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             var stringToMap = protocolType + (port == 0 ? string.Empty : ":" + port);
 
-            var protocol = PSAzureFirewallApplicationRuleProtocol.MapUserInputToApplicationRuleProtocol(stringToMap);
+            var protocol = PSAzureFirewallPolicyApplicationRuleProtocol.MapUserInputToApplicationRuleProtocol(stringToMap);
 
             (this.Protocols ?? (this.Protocols = new List<PSAzureFirewallPolicyApplicationRuleProtocol>())).Add(protocol);
         }

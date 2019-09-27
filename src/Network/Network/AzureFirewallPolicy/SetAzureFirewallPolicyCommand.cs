@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Firewall", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewall))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicy", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewall))]
     public class SetAzureFirewallPolicyCommand : AzureFirewallPolicyBaseCmdlet
     {
         [Parameter(
@@ -43,10 +43,10 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Map to the sdk object
-            var secureGwModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AzureFirewall>(this.AzureFirewallPolicy);
+            var secureGwModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(this.AzureFirewallPolicy);
             secureGwModel.Tags = TagsConversionHelper.CreateTagDictionary(this.AzureFirewallPolicy.Tag, validate: true);
 
-            // Execute the PUT AzureFirewall call
+            // Execute the PUT AzureFirewall Policy call
             this.AzureFirewallPolicyClient.CreateOrUpdate(this.AzureFirewallPolicy.ResourceGroupName, this.AzureFirewallPolicy.Name, secureGwModel);
 
             var getAzureFirewall = this.GetAzureFirewallPolicy(this.AzureFirewallPolicy.ResourceGroupName, this.AzureFirewallPolicy.Name);

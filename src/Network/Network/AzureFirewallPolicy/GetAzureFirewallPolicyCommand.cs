@@ -55,12 +55,12 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                IPage<AzureFirewall> azureFirewallPage = ShouldListBySubscription(ResourceGroupName, Name)
+                IPage<FirewallPolicy> azureFirewallPage = ShouldListBySubscription(ResourceGroupName, Name)
                     ? this.AzureFirewallPolicyClient.ListAll()
                     : this.AzureFirewallPolicyClient.List(this.ResourceGroupName);
 
                 // Get all resources by polling on next page link
-                var azureFirewallResponseLIst = ListNextLink<AzureFirewall>.GetAllResourcesByPollingNextLink(azureFirewallPage, this.AzureFirewallPolicyClient.ListNext);
+                var azureFirewallResponseLIst = ListNextLink<FirewallPolicy>.GetAllResourcesByPollingNextLink(azureFirewallPage, this.AzureFirewallPolicyClient.ListNext);
 
                 var psAzureFirewalls = azureFirewallResponseLIst.Select(firewall =>
                 {

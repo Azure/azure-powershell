@@ -43,12 +43,6 @@ namespace Microsoft.Azure.Commands.Network
         public PSAzureFirewallPolicyRuleCondition[] RuleConditions { get; set; }
 
         [Parameter(
-                    Mandatory = true,
-                    HelpMessage = "The list of network rules")]
-        [ValidateNotNullOrEmpty]
-        public PSAzureFirewallPolicyNetworkRuleCondition[] NetworkRules { get; set; }
-
-        [Parameter(
             Mandatory = true,
             HelpMessage = "The action of the rule collection")]
         [ValidateNotNullOrEmpty]
