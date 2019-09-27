@@ -475,8 +475,6 @@ function Test-AzureVMSoftDelete
 			-Container $container `
 			-WorkloadType "AzureVM";
 
-		Assert-True { $item.IsScheduledForPurge -eq $true }
-
 		#rehydrate the softdeleted item
 
 		Undo-AzRecoveryServicesBackupItemDeletion `
@@ -489,7 +487,6 @@ function Test-AzureVMSoftDelete
 			-WorkloadType "AzureVM";
 
 		#check if item is in a rehydrated state
-		Assert-True { $item.IsScheduledForPurge -eq $false }
 		Assert-True { $item.ProtectionState -eq "ProtectionStopped" }
 
 	}
