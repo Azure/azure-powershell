@@ -58,14 +58,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public DateTime? DateOfPurge { get; set; }
 
         /// <summary>
-        /// Indicates if the item is in a softdeleted state
-        /// </summary>
-        public bool IsScheduledForPurge { get; set; }
-
-        /// <summary>
         /// Indicates if the delete state of the item
         /// </summary>
-        public string DeleteState { get; set; }
+        public ItemDeleteState DeleteState { get; set; }
 
         public AzureItem(ProtectedItemResource protectedItemResource,
            string containerName, ContainerType containerType, string policyName)

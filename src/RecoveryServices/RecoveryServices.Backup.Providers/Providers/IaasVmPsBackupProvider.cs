@@ -795,12 +795,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }).ToList();
             }
 
+            // 6. Filter by Delete State
             if (deleteState != 0)
             {
-                string[] DeleteStateMap = { "TobeDeleted", "NotDeleted" };
                 itemModels = itemModels.Where(itemModel =>
                 {
-                    return ((AzureVmItem)itemModel).DeleteState == DeleteStateMap[(int)deleteState - 1];
+                    return ((AzureVmItem)itemModel).DeleteState == deleteState;
                 }).ToList();
             }
 
