@@ -1,5 +1,4 @@
 function Set-AzLogProfile {
-[Alias('Add-AzLogProfile')]
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.ILogProfileResource')]
 [CmdletBinding(DefaultParameterSetName="UpdateExpanded", PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Profile('latest-2019-04-30')]
