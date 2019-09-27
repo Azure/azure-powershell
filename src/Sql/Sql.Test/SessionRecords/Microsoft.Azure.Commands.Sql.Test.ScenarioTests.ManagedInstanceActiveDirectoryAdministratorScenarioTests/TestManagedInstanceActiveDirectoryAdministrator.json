@@ -4110,6 +4110,7 @@
     ]
   },
   "Variables": {
-    "SubscriptionId": "ee5ea899-0791-418f-9270-77cd8273794b"
+    "SubscriptionId": "ee5ea899-0791-418f-9270-77cd8273794b",
+    "TenantId": "0c1edf5d-e5c5-4aca-ab69-ef194134f44b"
   }
 }

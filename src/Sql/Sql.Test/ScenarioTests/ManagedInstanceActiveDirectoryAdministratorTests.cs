@@ -20,28 +20,28 @@ using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-	public class ManagedInstanceActiveDirectoryAdministratorTests : SqlTestsBase
-	{
-		public ManagedInstanceActiveDirectoryAdministratorTests(ITestOutputHelper output) : base(output)
-		{
-		}
+    public class ManagedInstanceActiveDirectoryAdministratorTests : SqlTestsBase
+    {
+        public ManagedInstanceActiveDirectoryAdministratorTests(ITestOutputHelper output) : base(output)
+        {
+        }
+    
+        protected override void SetupManagementClients(RestTestFramework.MockContext context)
+        {
+            var newResourcesClient = GetResourcesClient(context);
+            var sqlClient = GetSqlClient(context);
+            var networkClient = GetNetworkClient(context);
+            var graphClient = GetGraphClientVersion1_6(context);
+            Helper.SetupSomeOfManagementClients(newResourcesClient,sqlClient, networkClient, graphClient);
+        }
 
-		protected override void SetupManagementClients(RestTestFramework.MockContext context)
-		{
-			var newResourcesClient = GetResourcesClient(context);
-			var sqlClient = GetSqlClient(context);
-			var networkClient = GetNetworkClient(context);
-			var graphClient = GetGraphClient(context);
-			Helper.SetupSomeOfManagementClients(newResourcesClient,sqlClient, networkClient, graphClient);
-		}
-
-	        [Fact(Skip = "Graph authentication blocks test passes")]
-		[Trait(Category.AcceptanceType, Category.CheckIn)]
-		public void TestManagedInstanceActiveDirectoryAdministrator()
-		{
-			RunPowerShellTest("Test-ManagedInstanceActiveDirectoryAdministrator");
-		}
-	}
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedInstanceActiveDirectoryAdministrator()
+        {
+            RunPowerShellTest("Test-ManagedInstanceActiveDirectoryAdministrator");
+        }
+    }
 }
 
 
