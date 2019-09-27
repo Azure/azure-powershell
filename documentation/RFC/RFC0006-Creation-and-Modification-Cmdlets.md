@@ -46,7 +46,7 @@ New-AzKeyVault <parameters>
 ```code
 As a user modifying resources in Azure
 I can modify ay property of a resource without having to specify properties of the resource unrelated to my change
-so that I can easily modify only the properties I want to change, for any resource iN Azure
+so that I can easily modify only the properties I want to change, for any Azure resource
 ```
 
 ## User Experience
