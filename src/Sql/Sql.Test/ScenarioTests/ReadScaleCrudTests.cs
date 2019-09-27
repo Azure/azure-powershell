@@ -38,5 +38,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-GetDatabaseReadScale");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseReadReplicaCount()
+        {
+            RunPowerShellTest("Test-DatabaseReadReplicaCount");
+        }
     }
 }

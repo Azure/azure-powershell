@@ -214,6 +214,17 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public double MinimumCapacity { get; set; }
 
         /// <summary>
+        /// Gets or sets the number of read replicas for the database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The number of readonly secondary replicas associated with the database.  For Hyperscale edition only.",
+            ParameterSetName = UpdateParameterSetName)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The number of readonly secondary replicas associated with the database.  For Hyperscale edition only.",
+            ParameterSetName = VcoreDatabaseParameterSet)]
+        public int ReadReplicaCount { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -257,6 +268,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 LicenseType = LicenseType ?? model.FirstOrDefault().LicenseType, // set to original license type
                 AutoPauseDelayInMinutes = MyInvocation.BoundParameters.ContainsKey("AutoPauseDelayInMinutes") ? AutoPauseDelayInMinutes : (int?)null,
                 MinimumCapacity = MyInvocation.BoundParameters.ContainsKey("MinimumCapacity") ? MinimumCapacity : (double?)null,
+                ReadReplicaCount = MyInvocation.BoundParameters.ContainsKey("ReadReplicaCount") ? ReadReplicaCount : (int?)null,
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);

@@ -103,8 +103,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)")]
-        [ValidateNotNullOrEmpty]
-        public DatabaseReadScale ReadScale { get; set; }
+        public DatabaseReadScale? ReadScale { get; set; }
 
         /// <summary>
         /// Gets or sets the tags associated with the Azure Sql Database
@@ -185,6 +184,13 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public double MinimumCapacity { get; set; }
 
         /// <summary>
+        /// Gets or sets the number of readonly replicas for the Azure Sql database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The number of readonly secondary replicas associated with the database to which readonly application intent connections may be routed. This property is only settable for Hyperscale edition databases.")]
+        public int ReadReplicaCount { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -246,9 +252,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 LicenseType = LicenseType, // note: default license type will be LicenseIncluded in SQL RP if not specified
                 AutoPauseDelayInMinutes = MyInvocation.BoundParameters.ContainsKey("AutoPauseDelayInMinutes") ? AutoPauseDelayInMinutes : (int?)null,
                 MinimumCapacity = MyInvocation.BoundParameters.ContainsKey("AutoPauseDelayInMinutes") ? MinimumCapacity : (double?)null,
+                ReadReplicaCount = MyInvocation.BoundParameters.ContainsKey("ReadReplicaCount") ? ReadReplicaCount : (int?)null,
             };
 
-            if(ParameterSetName == DtuDatabaseParameterSet)
+            if (ParameterSetName == DtuDatabaseParameterSet)
             {
                 newDbModel.SkuName = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? AzureSqlDatabaseAdapter.GetDatabaseSkuName(Edition) : RequestedServiceObjectiveName;
                 newDbModel.Edition = Edition;
