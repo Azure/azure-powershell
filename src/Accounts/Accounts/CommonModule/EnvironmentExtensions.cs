@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Commands.Common
             {
                 output.Path = output.Uri.AppendPathRemoveDuplicates(baseUri.AbsolutePath);
                 output.Query = baseUri.Query?.TrimStart('?');
-                output.Fragment = baseUri.Fragment;
+                output.Fragment = baseUri.Fragment?.TrimStart('#');
                 return output.Uri;
             }
 
