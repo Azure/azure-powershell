@@ -12,13 +12,7 @@ Removes a bastion resource.
 
 ## SYNTAX
 
-### ByName (Default)
-```
-Remove-AzBastion [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByResourceGroupNameByName
+### ByResourceGroupName (Default)
 ```
 Remove-AzBastion -ResourceGroupName <String> -Name <String> [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -56,7 +50,7 @@ Get-AzBastion -ResourceGroupName "BastionPowershellTest" -Name "testBastion" | R
 ```
 It deletes the bastion using its object with pipeline.
  ```
-### Example 2
+### Example 3
 ```powershell
 $bastion = Get-AzBastion -ResourceGroupName "BastionPowershellTest" -Name "testBastion"
 Remove-AzBastion -InputObject $bastion
@@ -64,7 +58,7 @@ Remove-AzBastion -InputObject $bastion
 ```
 It deletes the bastion using its object.
  ```
- 
+
 ## PARAMETERS
 
 ### -Confirm
@@ -118,7 +112,7 @@ The Bastion object to be deleted.
 ```yaml
 Type: PSBastion
 Parameter Sets: ByInputObject
-Aliases: Bastion
+Aliases: Bastion, BastionObject
 
 Required: True
 Position: Named
@@ -128,11 +122,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The Bastion name.
+The bastion resource name to be deleted.
 
 ```yaml
 Type: String
-Parameter Sets: ByResourceGroupNameByName
+Parameter Sets: ByResourceGroupName
 Aliases: ResourceName, BastionName
 
 Required: True
@@ -158,11 +152,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group name.
+The resource group name where bastion exists.
 
 ```yaml
 Type: String
-Parameter Sets: ByResourceGroupNameByName
+Parameter Sets: ByResourceGroupName
 Aliases:
 
 Required: True
@@ -219,7 +213,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [Get-AzBastion](./Get-AzBastion.md)
 
 [New-AzBastion](./New-AzBastion.md)

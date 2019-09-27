@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentNullException(nameof(virtualNetwork), "Virtual Network cannot be null!");
             }
 
-
             if (publicIpAddress == null)
             {
                 throw new ArgumentNullException(nameof(publicIpAddress), "Public IP Addresses cannot be null or empty!");

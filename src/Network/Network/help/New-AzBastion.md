@@ -12,77 +12,71 @@ Creates a bastion resource.
 
 ## SYNTAX
 
-### ByResourceGroupNameByNameByPublicIpAddressByVirtualNetwork (Default)
-```
-New-AzBastion -ResourceGroupName <String> -Name <String> [-Force] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByPublicIpAddressByVirtualNetwork
+### ByPublicIpAddressByVirtualNetwork (Default)
 ```
 New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddress <PSPublicIpAddress>
- -VirtualNetwork <PSVirtualNetwork> [-Force] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ -VirtualNetwork <PSVirtualNetwork> [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressByVirtualNetworkRGNameByVirtualNetworkName
 ```
 New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddress <PSPublicIpAddress>
- -VirtualNetworkRgName <String> -VirtualNetworkName <String> [-Force] [-Tag <Hashtable>]
+ -VirtualNetworkRgName <String> -VirtualNetworkName <String> [-AsJob] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressByVirtualNetworkId
 ```
 New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddress <PSPublicIpAddress>
- -VirtualNetworkId <String> [-Force] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ -VirtualNetworkId <String> [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressIdByVirtualNetwork
 ```
 New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressId <String>
- -VirtualNetwork <PSVirtualNetwork> [-Force] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ -VirtualNetwork <PSVirtualNetwork> [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressIdByVirtualNetworkRGNameByVirtualNetworkName
 ```
 New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressId <String>
- -VirtualNetworkRgName <String> -VirtualNetworkName <String> [-Force] [-Tag <Hashtable>]
+ -VirtualNetworkRgName <String> -VirtualNetworkName <String> [-AsJob] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressIdByVirtualNetworkId
 ```
 New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressId <String> -VirtualNetworkId <String>
- [-Force] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressRgNameByPublicIpAddressNameByVirtualNetwork
 ```
 New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressRgName <String>
- -PublicIpAddressName <String> -VirtualNetwork <PSVirtualNetwork> [-Force] [-Tag <Hashtable>]
+ -PublicIpAddressName <String> -VirtualNetwork <PSVirtualNetwork> [-AsJob] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressRgNameByPublicIpAddressNameByVirtualNetworkRGNameByVirtualNetworkName
 ```
 New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressRgName <String>
- -PublicIpAddressName <String> -VirtualNetworkRgName <String> -VirtualNetworkName <String> [-Force]
+ -PublicIpAddressName <String> -VirtualNetworkRgName <String> -VirtualNetworkName <String> [-AsJob]
  [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressRgNameByPublicIpAddressNameByVirtualNetworkId
 ```
 New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressRgName <String>
- -PublicIpAddressName <String> -VirtualNetworkId <String> [-Force] [-Tag <Hashtable>]
+ -PublicIpAddressName <String> -VirtualNetworkId <String> [-AsJob] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a bastion resource.
+Creates a bastion resource.This will need a Public Ip Address and a VirtualNetwork. There must be a subnet with name AzureBastionSubnet in this VirtualNetwork.The Pubic Ip Address must be created with Sku Standard.
 
 ## EXAMPLES
 
@@ -90,9 +84,38 @@ Creates a bastion resource.
 ```powershell
 $subnetName = "AzureBastionSubnet"
 $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
-$vnet = New-AzVirtualNetwork -Name "testVnet" -ResourceGroupName "testRg" -Location "westeurope" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-$publicip = New-AzPublicIpAddress -ResourceGroupName "testRg" -name "testIp" -location "westeurope" -AllocationMethod Static -Sku Standard
-$bastion = New-AzBastion -ResourceGroupName "testRg" –Name "testBastion" -PublicIpAddress $publicip -VirtualNetwork $vnet
+$vnet = New-AzVirtualNetwork -Name "TestVnet" -ResourceGroupName "BastionPowershellTest" -Location "westeurope" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+$publicip = New-AzPublicIpAddress -ResourceGroupName "BastionPowershellTest" -name "Test-Ip" -location "westeurope" -AllocationMethod Dynamic -Sku Standard
+$bastion = New-AzBastion -ResourceGroupName "BastionPowershellTest" â€“Name "test-Bastion2" -PublicIpAddress $publicip -VirtualNetwork $vnet
+```
+```
+IpConfigurations     : {IpConf}
+DnsName              : bst-a9ca868f-ddab-4a50-9f45-a443ea8a0187.bastion.azure.com
+ProvisioningState    : Succeeded
+IpConfigurationsText : [
+                         {
+                           "Subnet": {
+                             "Id": "/subscriptions/359a08a9-ff1b-463c-92d7-6df8d946f25c/resourceGroups/BastionPowershellTest/providers/Microsoft.Network/virtualNetworks/TestVnet/subnets/AzureBastionSubnet"
+                           },
+                           "PublicIpAddress": {
+                             "Id": "/subscriptions/359a08a9-ff1b-463c-92d7-6df8d946f25c/resourceGroups/BastionPowershellTest/providers/Microsoft.Network/publicIPAddresses/Test-Ip"
+                           },
+                           "ProvisioningState": "Succeeded",
+                           "PrivateIpAllocationMethod": "Dynamic",
+                           "Name": "IpConf",
+                           "Etag": "W/\"ed810ccd-b3f6-4e22-891e-b0ed0a26d6dd\"",
+                           "Id": "/subscriptions/359a08a9-ff1b-463c-92d7-6df8d946f25c/resourceGroups/BastionPowershellTest/providers/Microsoft.Network/bastionHosts/test-Bastion2/bastionHostIpConfigurations/IpConf"
+                         }
+                       ]
+ResourceGroupName    : BastionPowershellTest
+Location             : westeurope
+ResourceGuid         :
+Type                 : Microsoft.Network/bastionHosts
+Tag                  :
+TagsTable            :
+Name                 : test-Bastion2
+Etag                 : W/"ed810ccd-b3f6-4e22-891e-b0ed0a26d6dd"
+Id                   : /subscriptions/359a08a9-ff1b-463c-92d7-6df8d946f25c/resourceGroups/BastionPowershellTest/providers/Microsoft.Network/bastionHosts/test-Bastion2
 ```
 ```
 This example creates a bastion attached to virtual network "vnet" in the same resource group as the bastion.
@@ -139,6 +162,36 @@ Id                   : /subscriptions/359a08a9-ff1b-463c-92d7-6df8d946f25c/resou
 
 ## PARAMETERS
 
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -154,23 +207,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Do not ask for confirmation if you want to overwrite a resource
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-The resource name.
+The bastion resource name.
 
 ```yaml
 Type: String
@@ -185,7 +223,7 @@ Accept wildcard characters: False
 ```
 
 ### -PublicIpAddress
-The public IP address object.
+The public IP address object for bastion.
 
 ```yaml
 Type: PSPublicIpAddress
@@ -200,7 +238,7 @@ Accept wildcard characters: False
 ```
 
 ### -PublicIpAddressId
-The public Ip address Id.
+The public Ip address Azure resource Id for bastion.
 
 ```yaml
 Type: String
@@ -215,7 +253,7 @@ Accept wildcard characters: False
 ```
 
 ### -PublicIpAddressName
-The public Ip address resource name.
+The public Ip address resource name for bastion.
 
 ```yaml
 Type: String
@@ -230,7 +268,7 @@ Accept wildcard characters: False
 ```
 
 ### -PublicIpAddressRgName
-The public Ip address resource group name.
+The public Ip address resource group name for bastion.
 
 ```yaml
 Type: String
@@ -245,7 +283,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group name.
+The resource group name where you need to create bastion.
 
 ```yaml
 Type: String
@@ -270,12 +308,12 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -VirtualNetwork
-The virtual network object.
+The virtual network object for bastion.
 
 ```yaml
 Type: PSVirtualNetwork
@@ -290,7 +328,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkId
-The virtual network resource Id.
+The virtual network Azure resource Id for bastion.
 
 ```yaml
 Type: String
@@ -305,7 +343,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkName
-The virtual network resource name.
+The virtual network resource name for bastion.
 
 ```yaml
 Type: String
@@ -320,7 +358,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkRgName
-The virtual network resource group name.
+The virtual network resource group name for bastion.
 
 ```yaml
 Type: String
@@ -334,12 +372,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.Collections.Hashtable
+### None
 
 ## OUTPUTS
 
