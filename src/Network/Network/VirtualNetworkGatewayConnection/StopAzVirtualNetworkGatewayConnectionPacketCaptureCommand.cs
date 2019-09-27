@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("ResourceName", "ByName", "ConnectionName")]
+        [Alias("ResourceName", "ConnectionName")]
         [Parameter(
             ParameterSetName = "ByName",
             Mandatory = true,
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
             PSVirtualNetworkGatewayConnection existingConnection = null;
-            if (ParameterSetName.Equals("ByVirtualNetworkGatewayConnectionObject"))
+            if (ParameterSetName.Equals("ByInputObject"))
             {
                 existingConnection = InputObject;
                 this.ResourceGroupName = this.InputObject.ResourceGroupName;
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                if (ParameterSetName.Equals("ByVirtualNetworkGatewayConnectionResourceId"))
+                if (ParameterSetName.Equals("ByResourceId"))
                 {
                     var parsedResourceId = new ResourceIdentifier(ResourceId);
                     Name = parsedResourceId.ResourceName;
