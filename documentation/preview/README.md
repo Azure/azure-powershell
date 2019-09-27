@@ -100,7 +100,7 @@ With this preview, we are specifically looking at hearing your feedback on the f
 [RFC0001]:documentation/RFC/RFC0001-Azure-Profiles.md
 [RFC0002]:documentation/RFC/RFC0002-SubscriptionList-in-Get.md
 [RFC0003]:documentation/RFC/RFC0003-AsynchronousOperations.md
-[RFC0004]:documentation/RFC/Update\ Model\ Flattening\ and\ Inline\ Creation.md
+[RFC0004]:documentation/RFC/RFC0004-Model-Flattening-and-Inline-Creation.md
 [RFC0005]:documentation/RFC/RFC0005-ETags.md
 [RFC0006]:documentation/RFC/RFC0006-Creation-and-Modification-Cmdlets.md
 
