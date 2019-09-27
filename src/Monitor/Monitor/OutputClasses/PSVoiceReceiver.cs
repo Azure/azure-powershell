@@ -18,40 +18,30 @@ using Microsoft.Azure.Management.Monitor.Models;
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wraps the EmailReceiver class.
+    /// Wraps the VoiceReceiver class.
     /// </summary>
-    public class PSEmailReceiver : PSActionGroupReceiverBase
+    public class PSVoiceReceiver : PSActionGroupReceiverBase
     {
-        /// <summary>
-        /// Gets or sets the receiver's address.
-        /// </summary>
-        public string EmailAddress { get; set; }
+        // <summary>Gets or sets the country code.</summary>
+        public string CountryCode { get; set; }
 
-        /// <summary>
-        /// Gets or sets the receiver's status.
-        /// </summary>
-        public Management.Monitor.Management.Models.ReceiverStatus? Status { get; set; }
-        
-        /// <summary>
-        /// Gets or set a value indicating whether common alert schema is to be used or not
-        /// </summary>
-        public bool UseCommonAlertSchema { get; set; }
+        /// <summary>Gets or sets the phone number.</summar>
+        public string PhoneNumber { get; set; }
 
-        /// <summary>Initializes a new instance of the PSEmailReceiver class</summary>
-        public PSEmailReceiver()
+        /// <summary>Initializes a new instance of the PSVoiceReceiver class</summary>
+        public PSVoiceReceiver()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the PSEmailReceiver class.
+        /// Initializes a new instance of the PSVoiceReceiver class.
         /// </summary>
         /// <param name="receiver">The receiver to wrap.</param>
-        public PSEmailReceiver(EmailReceiver receiver)
+        public PSVoiceReceiver(VoiceReceiver receiver)
         {
             this.Name = receiver.Name;
-            this.EmailAddress = receiver.EmailAddress;
-            this.Status = TransitionHelpers.ConvertNamespace(receiver.Status);
-            this.UseCommonAlertSchema = receiver.UseCommonAlertSchema;
+            this.CountryCode = receiver.CountryCode;
+            this.PhoneNumber = receiver.PhoneNumber;
         }
     }
 }
