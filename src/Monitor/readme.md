@@ -53,7 +53,7 @@ require:
   - $(repo)/specification/monitor/data-plane/readme.md
 
 subject-prefix: ''
-module-version: 0.0.1
+module-version: 4.0.0
 title: Monitor
 
 directive:
@@ -288,4 +288,8 @@ directive:
   no-inline:  # the name of the model schema in the swagger file
     - Action
     - RuleCondition
+  # Make this a preview module
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
 ```

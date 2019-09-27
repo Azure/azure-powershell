@@ -20,6 +20,7 @@
       ProjectUri = 'https://github.com/Azure/azure-powershell'
       ReleaseNotes = ''
       Profiles = 'latest-2019-04-30', 'hybrid-2019-03-01'
+      Prerelease = 'preview'
     }
   }
 }

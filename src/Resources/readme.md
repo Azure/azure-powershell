@@ -55,7 +55,7 @@ require:
   - $(repo)/specification/authorization/resource-manager/readme.md
 
 subject-prefix: ''
-module-version: 0.0.1
+module-version: 4.0.0
 title: Resources
 
 directive:
@@ -717,4 +717,8 @@ directive:
           - RoleName
           - Name
           - Action
+  # Make this a preview module
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
 ```

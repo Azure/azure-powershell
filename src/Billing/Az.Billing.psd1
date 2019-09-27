@@ -1,7 +1,7 @@
 @{
   GUID = 'f6447640-ffdf-42f9-5ffe-a11eed4aa63f'
   RootModule = './Az.Billing.psm1'
-  ModuleVersion = '0.0.1'
+  ModuleVersion = '4.0.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -19,6 +19,7 @@
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
       ReleaseNotes = ''
+      Prerelease = 'preview'
       Profiles = 'latest-2019-04-30'
     }
   }

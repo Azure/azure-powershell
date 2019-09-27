@@ -53,7 +53,7 @@ require:
   - $(repo)/specification/keyvault/data-plane/readme.md
 
 title: KeyVault
-module-version: 0.0.1
+module-version: 4.0.0
 
 ```
 
@@ -466,4 +466,8 @@ directive:
           AttributeEnabled: Enabled
           AttributeCreated: Created
           AttributeUpdated: Updated
+  # Make this a preview module
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
 ```

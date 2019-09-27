@@ -53,7 +53,7 @@ require:
 
 subject-prefix: ''
 title: Storage
-module-version: 0.0.1
+module-version: 4.0.0
 skip-model-cmdlets: true
 
 directive:
@@ -177,4 +177,8 @@ directive:
       parameter-name: Name
     set:
       parameter-name: Parameter
+  # Make this a preview module
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
 ```
