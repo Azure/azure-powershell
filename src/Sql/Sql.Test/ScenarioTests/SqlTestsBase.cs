@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
     {
         protected EnvironmentSetupHelper Helper;
         protected string[] resourceTypesToIgnoreApiVersion;
+        private const string TenantIdKey = "TenantId";
 
         protected SqlTestsBase(ITestOutputHelper output)
         {
@@ -144,7 +145,20 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         {
             Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient graphClient = context.GetServiceClient<Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
             graphClient.BaseUri = TestEnvironmentFactory.GetTestEnvironment().Endpoints.GraphUri;
-            graphClient.TenantID = TestEnvironmentFactory.GetTestEnvironment().Tenant;
+            string tenantId = null;
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                tenantId = TestEnvironmentFactory.GetTestEnvironment().Tenant;
+            }
+            else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
+                {
+                    tenantId = HttpMockServer.Variables[TenantIdKey];
+                }
+            }
+            graphClient.TenantID = tenantId;
             return graphClient;
         }
 
