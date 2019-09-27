@@ -7,19 +7,19 @@ This article explains how to get started with the preview of the Az 4.0 PowerShe
 1. [Benefits](##Benefits)
     - [Features][Features]
     - [Azure Profiles][AzureProfiles]
-2. [Getting Started](##Getting\ Started)
+2. [Getting Started](##Getting-Started)
     - [Installation](###Installation)
-    - [Log into Azure](###Log\ into\ Azure)
-3. [Tutorials and Examples](##Tutorials\ and\ Examples)
-4. [Release Notes](##Release\ Notes)
-5. [Request for Comments](##Request\ for\ Comments)
+    - [Log into Azure](###Log-into-Azure)
+3. [Tutorials and Examples](##Tutorials-and-Examples)
+4. [Release Notes](##Release-Notes)
+5. [Request for Comments](##Request-for-Comments)
     - [Add support for Azure profiles][RFC0001]
     - [Ability tp run GET commands accross subscriptions][RFC0002]
     - [Support for Asynchronous operations][RFC0003]
     - [Add Model flattening to cmdlets][RFC0004]
     - [Support for Etags][RFC0005]
     - [Consistent Create and Modify Cmdlets Across Services][RFC0006]
-6. [Issues and Feedback](##Issues\ and\ Feedback)
+6. [Issues and Feedback](##Issues-and-Feedback)
 
 ## Benefits
 
