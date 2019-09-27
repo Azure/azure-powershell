@@ -12,45 +12,48 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Insights.TransitionalClasses;
 using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wraps the EmailReceiver class.
+    /// Wraps the AzureFunctionReceiver class.
     /// </summary>
-    public class PSEmailReceiver : PSActionGroupReceiverBase
+    public class PSAzureFunctionReceiver : PSActionGroupReceiverBase
     {
         /// <summary>
-        /// Gets or sets the receiver's address.
+        /// Gets or sets the function app resourceId.
         /// </summary>
-        public string EmailAddress { get; set; }
+        public string FunctionAppResourceId { get; set; }
 
         /// <summary>
-        /// Gets or sets the receiver's status.
+        /// Gets or sets the function name
         /// </summary>
-        public Management.Monitor.Management.Models.ReceiverStatus? Status { get; set; }
-        
+        public string FunctionName { get; set; }
+
         /// <summary>
-        /// Gets or set a value indicating whether common alert schema is to be used or not
+        /// Gets or sets the httpTriggerUrl.
         /// </summary>
+        public string HttpTriggerUrl { get; set; }
+
+        /// <summary>Gets or sets a value indicating whether or not use common alert schema.</summary>
         public bool UseCommonAlertSchema { get; set; }
 
-        /// <summary>Initializes a new instance of the PSEmailReceiver class</summary>
-        public PSEmailReceiver()
+        /// <summary>Initializes a new instance of the PSAzureFunctionReceiver class</summary>
+        public PSAzureFunctionReceiver()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the PSEmailReceiver class.
+        /// Initializes a new instance of the PSAzureFunctionReceiver class.
         /// </summary>
         /// <param name="receiver">The receiver to wrap.</param>
-        public PSEmailReceiver(EmailReceiver receiver)
+        public PSAzureFunctionReceiver(AzureFunctionReceiver receiver)
         {
             this.Name = receiver.Name;
-            this.EmailAddress = receiver.EmailAddress;
-            this.Status = TransitionHelpers.ConvertNamespace(receiver.Status);
+            this.FunctionAppResourceId = receiver.FunctionAppResourceId;
+            this.FunctionName = receiver.FunctionName;
+            this.HttpTriggerUrl = receiver.HttpTriggerUrl;
             this.UseCommonAlertSchema = receiver.UseCommonAlertSchema;
         }
     }
