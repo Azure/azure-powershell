@@ -18,10 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Exception Handling
-
-## Version 0.1.2
-* Added Exception Handling around KeyNotFoundException
+* Updated the powershell version to 1.0.0
+* Updated the SDK version to 1.0.2
+* Update in tests to refer to new SDK version
 
 ## Version 0.1.1
 * Added Error Handling in all cmdlets
