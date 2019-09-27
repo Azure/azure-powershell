@@ -61,4 +61,4 @@ Update-AzKeyVault -SkuName "NewSku"
 
 - Are the cmdlet verbs `New` and `Update` appropriate for the creation and modification scenarios, or would you prefer other verbs in addition (or instead of these), for example `Set`
 
-- Are there any creation or modifications cenarios that would not be covered by the proposed cmdlet changes?
+- Are there any creation or modifications scenarios that would not be covered by the proposed cmdlet changes?
