@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ProvisioningState { get; set; }
 
-        public PSAzureFirewallPolicyRuleGroup[] RuleGroups { get; set; }
+        public String[] RuleGroups { get; set; }
 
     }
 }

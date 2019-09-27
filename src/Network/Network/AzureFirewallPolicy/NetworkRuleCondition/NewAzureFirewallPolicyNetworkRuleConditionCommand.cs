@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AzFirewallPolicyNetworkRuleCondition", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallNetworkRule))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyNetworkRuleCondition", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallNetworkRule))]
     public class NewAzureFirewallPolicyNetworkRuleConditionCommand : NetworkBaseCmdlet
     {
         [Parameter(

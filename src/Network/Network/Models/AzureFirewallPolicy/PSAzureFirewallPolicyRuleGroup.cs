@@ -23,18 +23,23 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewallPolicyRuleGroup : PSChildResource
+    public class PSAzureFirewallPolicyRuleGroup : MNM.FirewallPolicyRuleGroup
     {
 
-        [JsonProperty(Order = 1)]
-        [Parameter(
-                   Mandatory = true,
-                   HelpMessage = "The priority of the rule group")]
-        [ValidateRange(100, 65000)]
-        public uint Priority { get; set; }
+        // [JsonProperty(Order = 1)]
+        // [Parameter(
+        //            Mandatory = true)]
+        // public string Name { get; set; }
 
-        [JsonProperty(Order = 2)]
-        public List<PSAzureFirewallPolicyBaseRule> Rules { get; set; }
+        // [JsonProperty(Order = 2)]
+        // [Parameter(
+        //            Mandatory = true,
+        //            HelpMessage = "The priority of the rule group")]
+        // [ValidateRange(100, 65000)]
+        // public uint Priority { get; set; }
+
+        // [JsonProperty(Order = 3)]
+        // public List<PSAzureFirewallPolicyBaseRule> Rules { get; set; }
 
     }
 }

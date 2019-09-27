@@ -22,7 +22,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
 
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyNatRuleCollection", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallNetworkRuleCollection))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyNatRule", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallNetworkRuleCollection))]
     public class NewAzureFirewallPolicyNatRuleCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -48,21 +48,34 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The type of the rule action")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
-            MNM.AzureFirewallRCActionType.Allow,
-            MNM.AzureFirewallRCActionType.Deny,
+            MNM.AzureFirewallNatRCActionType.Dnat,
             IgnoreCase = false)]
         public string ActionType { get; set; }
 
+
+        [Parameter(
+                   Mandatory = true,
+                   HelpMessage = "The translated address for this NAT rule")]
+        [ValidateNotNullOrEmpty]
+        public string TranslatedAddress { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The translated port for this NAT rule")]
+        [ValidateNotNullOrEmpty]
+        public string TranslatedPort { get; set; }
         public override void Execute()
         {
             base.Execute();
-            
+
             var networkRuleCollection = new PSAzureFirewallPolicyNatRule
             {
                 Name = this.Name,
                 Priority = this.Priority,
                 RuleConditions = this.RuleConditions?.ToList(),
-                Action = new PSAzureFirewallPolicyNatRuleAction { Type = ActionType }
+                Action = new PSAzureFirewallPolicyNatRuleAction { Type = ActionType },
+                TranslatedAddress = this.TranslatedAddress,
+                TranslatedPort = this.TranslatedPort
             };
 
             WriteObject(networkRuleCollection);

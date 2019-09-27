@@ -22,7 +22,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyRuleGroup", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicyRuleGroup))]
-    public class NewAzureFirewallPolicyRuleGroupCommand : NetworkBaseCmdlet
+    public class NewAzureFirewallPolicyRuleGroupCommand : AzureFirewallPolicyRuleGroupBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -49,9 +49,19 @@ namespace Microsoft.Azure.Commands.Network
             var applicationRc = new PSAzureFirewallPolicyRuleGroup
             {
                 Name = this.Name,
-                Priority = this.Priority,
-                Rules = this.Rules?.ToList()
+                //Priority = this.Priority,
+                //Rules = this.Rules?.ToList()
             };
+            
+
+            // Map to the sdk object
+            var azureFirewallModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicyRuleGroup>(applicationRc);
+            
+
+            // Execute the Create AzureFirewall call
+            //this.AzureFirewallPolicyRuleGroupClient.CreateOrUpdateWithHttpMessagesAsync
+            //return this.GetAzureFirewallPolicy(this.ResourceGroupName, this.Name);
+
             WriteObject(applicationRc);
         }
     }

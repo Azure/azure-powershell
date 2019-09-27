@@ -409,7 +409,14 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Test-AzPrivateLinkServiceVisibility', 
                'Approve-AzPrivateEndpointConnection', 
                'Deny-AzPrivateEndpointConnection', 
-               'Get-AzAvailablePrivateEndpointType'
+               'Get-AzAvailablePrivateEndpointType', 'New-AzFirewallPolicyNetworkRuleCondition', 
+               'New-AzFirewallPolicyApplicationRuleCondition','New-AzFirewallPolicyNatRule',
+               'New-AzFirewallPolicyFilterRule', 'New-AzFirewallPolicyRuleGroup',
+               'Set-AzFirewallPolicyRuleGroup', 'Remove-AzFirewallPolicyRuleGroup',
+               'New-AzFirewallPolicy', 'Get-AzFirewallPolicy', 'Set-AzFirewallPolicy',
+               'Remove-AzFirewallPolicy'
+
+
 
 # Variables to export from this module
 # VariablesToExport = @()
