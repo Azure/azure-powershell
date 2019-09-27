@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Add support for setting Active Directory Administrator on Managed Instance
+
 ## Version 1.14.2
 * Update example in reference documentation for `Get-AzSqlElasticPool`
 * Added vCore example to creating an elastic pool (New-AzSqlElasticPool).
