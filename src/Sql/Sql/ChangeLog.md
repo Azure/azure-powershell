@@ -24,6 +24,9 @@
 * Enabled removal of server/database auditing settings when multiple diagnostic settings that enable audit category exist.
 * Fix email addresses validation in multiple Sql Vulnerability Assessment cmdlets (Update-AzSqlDatabaseVulnerabilityAssessmentSetting, Update-AzSqlServerVulnerabilityAssessmentSetting, Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting and Update-AzSqlInstanceVulnerabilityAssessmentSetting).
 
+## Version 1.14.2
+* Add support for database ReadReplicaCount.
+
 ## Version 1.14.1
 * Update documentation of old Auditing cmdlets.
 

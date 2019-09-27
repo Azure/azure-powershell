@@ -176,6 +176,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public double? MinimumCapacity { get; set; }
 
         /// <summary>
+        /// Gets or sets the number of readonly replicas for the database
+        /// </summary>
+        public int? ReadReplicaCount { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -191,7 +196,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public AzureSqlDatabaseModel(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.Database database)
         {
             Guid id = Guid.Empty;
-            DatabaseReadScale readScale = DatabaseReadScale.Enabled;
 
             ResourceGroupName = resourceGroup;
             ServerName = serverName;
@@ -218,13 +222,17 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             Guid.TryParse(database.Properties.RequestedServiceObjectiveId, out id);
             RequestedServiceObjectiveId = id;
-
-            Enum.TryParse<DatabaseReadScale>(database.Properties.ReadScale, true, out readScale);
-            ReadScale = readScale;
+            
+            DatabaseReadScale readScale;
+            if (Enum.TryParse<DatabaseReadScale>(database.Properties.ReadScale, true, out readScale))
+            {
+                ReadScale = readScale;
+            }
 
             ZoneRedundant = false;
             AutoPauseDelayInMinutes = null;
             MinimumCapacity = null;
+            ReadReplicaCount = null;
         }
 
         /// <summary>
@@ -274,6 +282,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             AutoPauseDelayInMinutes = database.AutoPauseDelay;
             MinimumCapacity = database.MinCapacity;
+            ReadReplicaCount = database.ReadReplicaCount;
         }
     }
 }

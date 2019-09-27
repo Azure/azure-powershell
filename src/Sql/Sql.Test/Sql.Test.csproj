@@ -19,7 +19,7 @@
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.4.2" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.19.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.33.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.36.0-preview" />
   </ItemGroup>
 
   <ItemGroup>
