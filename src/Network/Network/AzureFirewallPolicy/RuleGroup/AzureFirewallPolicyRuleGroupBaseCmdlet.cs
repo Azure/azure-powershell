@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     public abstract class AzureFirewallPolicyRuleGroupBaseCmdlet : NetworkBaseCmdlet
     {
-        public IFirewallPolicyRuleGroupsOperations AzureFirewallPolicyRuleGroupClient
+        public FirewallPolicyRuleGroupsOperationsExtensions AzureFirewallPolicyRuleGroupClient
         {
             get
             {

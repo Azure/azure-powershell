@@ -53,12 +53,6 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Location { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "The list of rule groups")]
-        [ValidateNotNullOrEmpty]
-        public String[] RuleGroups { get; set; }
-
-        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The operation mode for Threat Intelligence.")]
@@ -114,8 +108,7 @@ namespace Microsoft.Azure.Commands.Network
                 ResourceGroupName = this.ResourceGroupName,
                 Location = this.Location,
                 ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
-                BasePolicy = this.BasePolicy,
-                RuleGroup = this.RuleGroups
+                BasePolicy = this.BasePolicy
             };
 
             // Map to the sdk object

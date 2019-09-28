@@ -985,7 +985,7 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.AzureFirewallFqdnTag, CNM.PSAzureFirewallFqdnTag>();
 
-                // Azure Firewall POlicies
+                // Azure Firewall Policies
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleGroup, MNM.FirewallPolicyRuleGroup>();
                 cfg.CreateMap<CNM.PSAzureFirewallPolicy, MNM.FirewallPolicy>();

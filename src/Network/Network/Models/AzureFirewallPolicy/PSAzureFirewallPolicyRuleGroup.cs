@@ -40,5 +40,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [JsonProperty(Order = 3)]
         public List<PSAzureFirewallPolicyBaseRule> Rules { get; set; }
+
+        public PSAzureFirewallPolicy AzureFirewallPolicy { get; set; }
     }
 }
