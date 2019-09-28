@@ -92,8 +92,7 @@ The release notes of each module have a more details:
 - [Monitor](../../src/Monitor/resources/ReleaseNotes.md)
 - [Network](../../src/Network/resources/release-notes.md)
 - Resources
-- ServiceBus
-- Storage
+- [Storage](../../src/Storage/resources/ReleaseNotes.md)
 
 ## Request for comments
 
