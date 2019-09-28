@@ -86,7 +86,7 @@ The release notes of each module have a more details:
 
 - AppServices
 - Billing
-- Compute
+- [Compute](../../src/Compute/resources/ReleaseNotes.md)
 - [DNS](../../src/Dns/resources/release-notes.md)
 - KeyVault
 - Monitor
