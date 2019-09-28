@@ -18,6 +18,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -42,6 +43,8 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSAzureFirewallPolicyBaseRule[] Rules { get; set; }
 
+        public PSAzureFirewallPolicy AzureFirewallPolicy { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -50,16 +53,16 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 Priority = this.Priority,
-                Rules = this.Rules?.ToList()
+                Rules = this.Rules?.ToList(),
             };
-            
+
 
             // Map to the sdk object
             var azureFirewallModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicyRuleGroup>(applicationRc);
-            
+
 
             // Execute the Create AzureFirewall call
-            //this.AzureFirewallPolicyRuleGroupClient.CreateOrUpdateWithHttpMessagesAsync
+            FirewallPolicyRuleGroupsOperationsExtensions.CreateOrUpdate(null, "daf", "abc", "def", azureFirewallModel);
             //return this.GetAzureFirewallPolicy(this.ResourceGroupName, this.Name);
 
             WriteObject(applicationRc);
