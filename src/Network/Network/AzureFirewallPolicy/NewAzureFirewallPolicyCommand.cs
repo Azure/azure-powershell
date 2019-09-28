@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Network
                 Location = this.Location,
                 ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
                 BasePolicy = this.BasePolicy,
-                RuleGroups = this.RuleGroups
+                RuleGroup = this.RuleGroups
             };
 
             // Map to the sdk object

@@ -20,41 +20,41 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSAzureFirewallPolicyNetworkRuleCondition : PSAzureFirewallPolicyRuleCondition
     {
-        public List<string> Protocols { get; set; }
+        public List<string> Protocol { get; set; }
 
-        public List<string> SourceAddresses { get; set; }
+        public List<string> SourceAddress { get; set; }
 
-        public List<string> DestinationAddresses { get; set; }
+        public List<string> DestinationAddress { get; set; }
         
-        public List<string> DestinationPorts { get; set; }
+        public List<string> DestinationPort { get; set; }
 
         [JsonIgnore]
         public string ProtocolsText
         {
-            get { return JsonConvert.SerializeObject(Protocols, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(Protocol, Formatting.Indented); }
         }
 
         [JsonIgnore]
         public string SourceAddressesText
         {
-            get { return JsonConvert.SerializeObject(SourceAddresses, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(SourceAddress, Formatting.Indented); }
         }
 
         [JsonIgnore]
         public string DestinationAddressesText
         {
-            get { return JsonConvert.SerializeObject(DestinationAddresses, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(DestinationAddress, Formatting.Indented); }
         }
         
         [JsonIgnore]
         public string DestinationPortsText
         {
-            get { return JsonConvert.SerializeObject(DestinationPorts, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(DestinationPort, Formatting.Indented); }
         }
 
         public void AddProtocol(string protocolType)
         {
-            (Protocols ?? (Protocols = new List<string>())).Add(AzureFirewallNetworkRuleProtocolHelper.MapUserInputToNetworkRuleProtocol(protocolType));
+            (Protocol ?? (Protocol = new List<string>())).Add(AzureFirewallNetworkRuleProtocolHelper.MapUserInputToNetworkRuleProtocol(protocolType));
         }
     }
 }

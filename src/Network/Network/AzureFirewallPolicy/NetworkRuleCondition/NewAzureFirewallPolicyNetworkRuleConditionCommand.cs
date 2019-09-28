@@ -73,10 +73,10 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 Description = this.Description,
-                Protocols = this.Protocols?.ToList(),
-                SourceAddresses = this.SourceAddresses?.ToList(),
-                DestinationAddresses = this.DestinationAddresses?.ToList(),
-                DestinationPorts = this.DestinationPorts?.ToList()
+                Protocol = this.Protocols?.ToList(),
+                SourceAddress = this.SourceAddresses?.ToList(),
+                DestinationAddress = this.DestinationAddresses?.ToList(),
+                DestinationPort = this.DestinationPorts?.ToList()
             };
             WriteObject(networkRule);
         }
