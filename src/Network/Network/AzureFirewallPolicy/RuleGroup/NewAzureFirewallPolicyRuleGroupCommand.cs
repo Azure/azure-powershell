@@ -49,8 +49,8 @@ namespace Microsoft.Azure.Commands.Network
             var applicationRc = new PSAzureFirewallPolicyRuleGroup
             {
                 Name = this.Name,
-                //Priority = this.Priority,
-                //Rules = this.Rules?.ToList()
+                Priority = this.Priority,
+                Rules = this.Rules?.ToList()
             };
             
 

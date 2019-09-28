@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 Priority = this.Priority,
-                RuleConditions = this.RuleConditions?.ToList(),
+                RuleCondition = this.RuleConditions?.ToList(),
                 Action = new PSAzureFirewallPolicyNatRuleAction { Type = ActionType },
                 TranslatedAddress = this.TranslatedAddress,
                 TranslatedPort = this.TranslatedPort
