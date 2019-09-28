@@ -44,6 +44,17 @@ namespace Microsoft.Azure.Commands.Network
         [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
+        [Alias("ResourceId")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource Id.")]
+        [ResourceNameCompleter("Microsoft.Network/azureFirewalls", "ResourceId")]
+        [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
+        public virtual string ResourceId { get; set; }
+
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

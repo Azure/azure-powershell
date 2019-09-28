@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The source addresses of the rule")]
         [ValidateNotNullOrEmpty]
-        public string[] SourceAddresses { get; set; }
+        public string[] SourceAddress { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = AzureFirewallPolicyApplicationRuleConditionParameterSets.TargetFqdn,
             HelpMessage = "The protocols of the rule")]
         [ValidateNotNullOrEmpty]
-        public string[] Protocols { get; set; }
+        public string[] Protocol { get; set; }
 
         public override void Execute()
         {
@@ -73,17 +73,17 @@ namespace Microsoft.Azure.Commands.Network
 
             if (FqdnTags != null)
             {
-                this.Protocols = new string[] { "http", "https" };
+                this.Protocol = new string[] { "http", "https" };
                 FqdnTags = AzureFirewallFqdnTagHelper.MapUserInputToAllowedFqdnTags(FqdnTags, this.AzureFirewallPolicyFqdnTagClient).ToArray();
             }
 
-            var protocolsAsWeExpectThem = MapUserProtocolsToFirewallPolicyProtocols(Protocols?.ToList());
+            var protocolsAsWeExpectThem = MapUserProtocolsToFirewallPolicyProtocols(Protocol?.ToList());
 
             var applicationRule = new PSAzureFirewallPolicyApplicationRuleCondition
             {
                 Name = this.Name,
                 Description = this.Description,
-                SourceAddress = this.SourceAddresses?.ToList(),
+                SourceAddress = this.SourceAddress?.ToList(),
                 Protocol = protocolsAsWeExpectThem,
                 TargetFqdn = this.TargetFqdns?.ToList(),
                 FqdnTag = this.FqdnTags?.ToList()

@@ -43,6 +43,25 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSAzureFirewallPolicyBaseRule[] Rules { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "location.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string Location { get; set; }
+
+        [Parameter(
+                   Mandatory = true,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Firewall Policy.")]
+        [ValidateNotNullOrEmpty]
         public PSAzureFirewallPolicy AzureFirewallPolicy { get; set; }
 
         public override void Execute()
@@ -60,10 +79,8 @@ namespace Microsoft.Azure.Commands.Network
             // Map to the sdk object
             var azureFirewallModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicyRuleGroup>(applicationRc);
 
-
             // Execute the Create AzureFirewall call
-            FirewallPolicyRuleGroupsOperationsExtensions.CreateOrUpdate(null, "daf", "abc", "def", azureFirewallModel);
-            //return this.GetAzureFirewallPolicy(this.ResourceGroupName, this.Name);
+            FirewallPolicyRuleGroupsOperationsExtensions.CreateOrUpdate(NetworkClient.NetworkManagementClient.FirewallPolicyRuleGroups, this.ResourceGroupName, this.AzureFirewallPolicy.Name, this.Name, azureFirewallModel);
 
             WriteObject(applicationRc);
         }
