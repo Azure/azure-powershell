@@ -89,7 +89,7 @@ The release notes of each module have a more details:
 - [Compute](../../src/Compute/resources/ReleaseNotes.md)
 - [DNS](../../src/Dns/resources/release-notes.md)
 - KeyVault
-- Monitor
+- [Monitor](../../src/Monitor/resources/ReleaseNotes.md)
 - [Network](../../src/Network/resources/release-notes.md)
 - Resources
 - ServiceBus
