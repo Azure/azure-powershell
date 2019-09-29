@@ -14,13 +14,10 @@
 
 using Microsoft.Azure.Commands.HealthcareApis.Common;
 using Microsoft.Azure.Commands.HealthcareApis.Models;
-using Microsoft.Azure.Commands.HealthcareApis.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HealthcareApis;
 using Microsoft.Azure.Management.HealthcareApis.Models;
 using Microsoft.Rest.Azure;
-using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HealthcareApis.Commands
@@ -67,20 +64,53 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         public override void ExecuteCmdlet()
         {
-            try
-            {
-                base.ExecuteCmdlet();
+            base.ExecuteCmdlet();
 
-                RunCmdLet(() =>
+            RunCmdLet(() =>
+            {
+                switch (ParameterSetName)
                 {
-                    switch (ParameterSetName)
-                    {
-                        case ServiceNameParameterSet:
+                    case ServiceNameParameterSet:
+                        {
+                            try
+                            {
+                                var healthcareApisAccount = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
+                                WriteHealthcareApisAccount(healthcareApisAccount);
+                            }
+                            catch (ErrorDetailsException wex)
+                            {
+                                WriteError(WriteErrorforBadrequest(wex));
+                            }
+
+                            break;
+                        }
+                    case ResourceIdParameterSet:
+                        {
+                            string resourceGroupName;
+                            string resourceName;
+
+                            if (ValidateAndExtractName(this.ResourceId, out resourceGroupName, out resourceName))
+                            {
+                                try
+                                { 
+                                    var healthcareApisAccount = this.HealthcareApisClient.Services.Get(resourceGroupName, resourceName);
+                                    WriteHealthcareApisAccount(healthcareApisAccount);
+                                }
+                                catch (ErrorDetailsException wex)
+                                {
+                                    WriteError(WriteErrorforBadrequest(wex));
+                                }
+                            }
+                            break;
+                        }
+                    case ListParameterSet:
+                        {
+                            if (string.IsNullOrEmpty(this.ResourceGroupName))
                             {
                                 try
                                 {
-                                    var healthcareApisAccount = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
-                                    WriteHealthcareApisAccount(healthcareApisAccount);
+                                    IPage<ServicesDescription> healthcareApisServicesBySubscription = this.HealthcareApisClient.Services.List();
+                                    WriteHealthcareApisAccountList(ToPSFhirServices(healthcareApisServicesBySubscription));
                                 }
                                 catch (ErrorDetailsException wex)
                                 {
@@ -88,65 +118,22 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                                 }
                                 break;
                             }
-                        case ResourceIdParameterSet:
+                            else
                             {
-                                string resourceGroupName;
-                                string resourceName;
-
-                                if (ValidateAndExtractName(this.ResourceId, out resourceGroupName, out resourceName))
+                                try
                                 {
-                                    try
-                                    {
-                                        var healthcareApisAccount = this.HealthcareApisClient.Services.Get(resourceGroupName, resourceName);
-                                        WriteHealthcareApisAccount(healthcareApisAccount);
-                                    }
-                                    catch (ErrorDetailsException wex)
-                                    {
-                                        WriteError(WriteErrorforBadrequest(wex));
-                                    }
+                                    IPage<ServicesDescription> healthcareApisServicesResourceGroup = this.HealthcareApisClient.Services.ListByResourceGroup(this.ResourceGroupName);
+                                    WriteHealthcareApisAccountList(ToPSFhirServices(healthcareApisServicesResourceGroup));
+                                }
+                                catch (ErrorDetailsException wex)
+                                {
+                                    WriteError(WriteErrorforBadrequest(wex));
                                 }
                                 break;
                             }
-                        case ListParameterSet:
-                            {
-                                if (string.IsNullOrEmpty(this.ResourceGroupName))
-                                {
-                                    try
-                                    {
-                                        IPage<ServicesDescription> healthcareApisServicesBySubscription = this.HealthcareApisClient.Services.List();
-                                        this.WriteObject(ToPSFhirServices(healthcareApisServicesBySubscription), enumerateCollection: true);
-                                    }
-                                    catch (ErrorDetailsException wex)
-                                    {
-                                        WriteError(WriteErrorforBadrequest(wex));
-                                    }
-                                    break;
-                                }
-                                else
-                                {
-                                    try
-                                    {
-                                        IPage<ServicesDescription> healthcareApisServicesResourceGroup = this.HealthcareApisClient.Services.ListByResourceGroup(this.ResourceGroupName);
-                                        this.WriteObject(ToPSFhirServices(healthcareApisServicesResourceGroup), enumerateCollection: true);
-                                    }
-                                    catch (ErrorDetailsException wex)
-                                    {
-                                        WriteError(WriteErrorforBadrequest(wex));
-                                    }
-                                    break;
-                                }
-                            }
-                    }
-                });
-            }
-            catch (KeyNotFoundException ex)
-            {
-                WriteError(new ErrorRecord(ex, Resources.keyNotFoundExceptionMessage, ErrorCategory.OpenError, ex));
-            }
-            catch (NullReferenceException ex)
-            {
-                WriteError(new ErrorRecord(ex, Resources.nullPointerExceptionMessage, ErrorCategory.OpenError, ex));
-            }
+                        }
+                }
+            });
         }
     }
 }

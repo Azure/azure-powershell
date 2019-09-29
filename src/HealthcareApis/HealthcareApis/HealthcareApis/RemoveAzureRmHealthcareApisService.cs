@@ -20,8 +20,6 @@ using System.Globalization;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HealthcareApis.Models;
-using System;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 {
@@ -77,63 +75,52 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         public override void ExecuteCmdlet()
         {
-            try
-            {
-                base.ExecuteCmdlet();
+            base.ExecuteCmdlet();
 
-                RunCmdLet(() =>
+            RunCmdLet(() =>
+            {
+                string rgName = null;
+                string name = null;
+
+                switch (ParameterSetName)
                 {
-                    string rgName = null;
-                    string name = null;
-
-                    switch (ParameterSetName)
-                    {
-                        case InputObjectParameterSet:
-                            {
-                                rgName = InputObject.ResourceGroupName;
-                                name = InputObject.Name;
-                                break;
-                            }
-                        case ServiceNameParameterSet:
-                            {
-                                rgName = this.ResourceGroupName;
-                                name = this.Name;
-                                break;
-                            }
-                        case ResourceIdParameterSet:
-                            {
-                                ValidateAndExtractName(this.ResourceId, out rgName, out name);
-                                break;
-                            }
-                    }
-
-                    if (!string.IsNullOrEmpty(rgName)
-                        && !string.IsNullOrEmpty(name)
-                        && ShouldProcess(name, string.Format(CultureInfo.CurrentCulture, Resources.RemoveService_ProcessMessage, name)))
-                    {
-                        try
+                    case InputObjectParameterSet:
                         {
-                            this.HealthcareApisClient.Services.Delete(rgName, name);
-                            if (PassThru.IsPresent)
-                            {
-                                WriteObject(true);
-                            }
+                            rgName = InputObject.ResourceGroupName;
+                            name = InputObject.Name;
+                            break;
                         }
-                        catch (ErrorDetailsException wex)
+                    case ServiceNameParameterSet:
                         {
-                            WriteError(WriteErrorforBadrequest(wex));
+                            rgName = this.ResourceGroupName;
+                            name = this.Name;
+                            break;
+                        }
+                    case ResourceIdParameterSet:
+                        {
+                            ValidateAndExtractName(this.ResourceId, out rgName, out name);
+                            break;
+                        }
+                }
+
+                if (!string.IsNullOrEmpty(rgName)
+                    && !string.IsNullOrEmpty(name)
+                    && ShouldProcess(name, string.Format(CultureInfo.CurrentCulture, Resources.RemoveService_ProcessMessage, name)))
+                {
+                    try
+                    {
+                        this.HealthcareApisClient.Services.Delete(rgName, name);
+                        if (PassThru.IsPresent)
+                        {
+                            WriteObject(true);
                         }
                     }
-                });
-            }
-            catch (KeyNotFoundException ex)
-            {
-                WriteError(new ErrorRecord(ex, Resources.keyNotFoundExceptionMessage, ErrorCategory.OpenError, ex));
-            }
-            catch (NullReferenceException ex)
-            {
-                WriteError(new ErrorRecord(ex, Resources.nullPointerExceptionMessage, ErrorCategory.OpenError, ex));
-            }
+                    catch (ErrorDetailsException wex)
+                    {
+                        WriteError(WriteErrorforBadrequest(wex));
+                    }
+                }
+            });
         }
 
     }
