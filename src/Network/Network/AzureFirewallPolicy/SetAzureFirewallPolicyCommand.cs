@@ -13,9 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -24,33 +27,124 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicy", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewall))]
     public class SetAzureFirewallPolicyCommand : AzureFirewallPolicyBaseCmdlet
     {
+        [Alias("ResourceName")]
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.")]
+        [ResourceNameCompleter("Microsoft.Network/azureFirewalls", "ResourceGroupName")]
+        [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
+        public virtual string Name { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
+        public virtual string ResourceGroupName { get; set; }
+
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The AzureFirewall")]
-        public PSAzureFirewallPolicy AzureFirewallPolicy { get; set; }
+            HelpMessage = "The AzureFirewall Policy")]
+        public PSAzureFirewallPolicy InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(
+                    Mandatory = false,
+                    ValueFromPipelineByPropertyName = true,
+                    HelpMessage = "The resource Id.")]
+        [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
+        public virtual string ResourceId { get; set; }
+
+        [Parameter(
+                    Mandatory = false,
+                    ValueFromPipelineByPropertyName = true,
+                    HelpMessage = "The operation mode for Threat Intelligence.")]
+        [ValidateSet(
+                    MNM.AzureFirewallThreatIntelMode.Alert,
+                    MNM.AzureFirewallThreatIntelMode.Deny,
+                    MNM.AzureFirewallThreatIntelMode.Off,
+                    IgnoreCase = false)]
+        public string ThreatIntelMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The operation mode for Threat Intelligence.")]
+        public string BasePolicy { get; set; }
+
+        [Parameter(
+                    Mandatory = true,
+                    ValueFromPipelineByPropertyName = true,
+                    HelpMessage = "location.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string Location { get; set; }
+
+        [Parameter(
+                    Mandatory = false,
+                    ValueFromPipelineByPropertyName = true,
+                    HelpMessage = "A hashtable which represents resource tags.")]
+        public Hashtable Tag { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            if (!this.IsAzureFirewallPolicyPresent(this.AzureFirewallPolicy.ResourceGroupName, this.AzureFirewallPolicy.Name))
+            if (ResourceId != null)
+            {
+                var resourceInfo = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = resourceInfo.ResourceGroupName;
+                Name = resourceInfo.ResourceName;
+            }
+            else if (InputObject != null)
+            {
+                ResourceGroupName = InputObject.ResourceGroupName;
+                Name = InputObject.Name;
+            }
+            if (!this.IsAzureFirewallPolicyPresent(ResourceGroupName, Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
-            // Map to the sdk object
-            var secureGwModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(this.AzureFirewallPolicy);
-            secureGwModel.Tags = TagsConversionHelper.CreateTagDictionary(this.AzureFirewallPolicy.Tag, validate: true);
 
-            // Execute the PUT AzureFirewall Policy call
-            this.AzureFirewallPolicyClient.CreateOrUpdate(this.AzureFirewallPolicy.ResourceGroupName, this.AzureFirewallPolicy.Name, secureGwModel);
+            if (InputObject != null)
+            {
+                // Map to the sdk object
+                var secureGwModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(InputObject);
 
-            var getAzureFirewall = this.GetAzureFirewallPolicy(this.AzureFirewallPolicy.ResourceGroupName, this.AzureFirewallPolicy.Name);
-            WriteObject(getAzureFirewall);
+                // Execute the PUT AzureFirewall Policy call
+                this.AzureFirewallPolicyClient.CreateOrUpdate(ResourceGroupName, Name, secureGwModel);
+
+                var getAzureFirewall = this.GetAzureFirewallPolicy(ResourceGroupName, Name);
+                WriteObject(getAzureFirewall);
+            }
+            else
+            {
+                var firewall = new PSAzureFirewallPolicy()
+                {
+                    Name = this.Name,
+                    ResourceGroupName = this.ResourceGroupName,
+                    Location = this.Location,
+                    ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
+                    BasePolicy = this.BasePolicy
+                };
+
+                // Map to the sdk object
+                var azureFirewallModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(firewall);
+                azureFirewallModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+
+                // Execute the Create AzureFirewall call
+                this.AzureFirewallPolicyClient.CreateOrUpdate(this.ResourceGroupName, this.Name, azureFirewallModel);
+                var getAzureFirewall = this.GetAzureFirewallPolicy(ResourceGroupName, Name);
+                WriteObject(getAzureFirewall);
+            }
+
         }
     }
 }

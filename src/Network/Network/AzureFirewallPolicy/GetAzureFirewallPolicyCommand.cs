@@ -17,6 +17,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
@@ -44,16 +45,13 @@ namespace Microsoft.Azure.Commands.Network
         [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
-        [Alias("ResourceId")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource Id.")]
-        [ResourceNameCompleter("Microsoft.Network/azureFirewalls", "ResourceId")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceId { get; set; }
-
 
         public override void ExecuteCmdlet()
         {
@@ -61,7 +59,15 @@ namespace Microsoft.Azure.Commands.Network
             if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var azureFirewall = this.GetAzureFirewallPolicy(this.ResourceGroupName, this.Name);
+                WriteObject(azureFirewall);
+            }
+            else if (ResourceId != null)
+            {
+                var resourceInfo = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = resourceInfo.ResourceGroupName;
+                Name = resourceInfo.ResourceName;
 
+                var azureFirewall = this.GetAzureFirewallPolicy(this.ResourceGroupName, this.Name);
                 WriteObject(azureFirewall);
             }
             else
