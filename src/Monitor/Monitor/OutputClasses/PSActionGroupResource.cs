@@ -65,6 +65,55 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// </summary>
         public IList<PSWebhookReceiver> WebhookReceivers { get; set; }
 
+        /// <summary>
+        /// Gets or sets the list of Itsm receivers that are part of this
+        ///             action group.
+        /// 
+        /// </summary>
+        public IList<PSItsmReceiver> ItsmReceivers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of voice receivers that are part of this
+        ///             action group.
+        /// 
+        /// </summary>
+        public IList<PSVoiceReceiver> VoiceReceivers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of arm role receivers  that are part of this
+        ///             action group.
+        /// 
+        /// </summary>
+        public IList<PSArmRoleReceiver> ArmRoleReceivers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of AzureFunctionReceivers  that are part of this
+        ///             action group.
+        /// 
+        /// </summary>
+        public IList<PSAzureFunctionReceiver> AzureFunctionReceivers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of LogicAppReceivers  that are part of this
+        ///             action group.
+        /// 
+        /// </summary>
+        public IList<PSLogicAppReceiver> LogicAppReceivers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of AutomationRunbookReceivers  that are part of this
+        ///             action group.
+        /// 
+        /// </summary>
+        public IList<PSAutomationRunbookReceiver> AutomationRunbookReceivers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of AzureAppPushReceivers  that are part of this
+        ///             action group.
+        /// 
+        /// </summary>
+        public IList<PSAzureAppPushReceiver> AzureAppPushReceivers { get; set; }
+
         /// <summary>Initializes a new instance of the PSActionGroup class.</summary>
         /// <param name="actionGroupResource">the action group resource</param>
         public PSActionGroupResource(ActionGroupResource actionGroupResource)
@@ -81,6 +130,13 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             EmailReceivers = actionGroupResource.EmailReceivers?.Select(o => new PSEmailReceiver(o)).ToList();
             SmsReceivers = actionGroupResource.SmsReceivers?.Select(o => new PSSmsReceiver(o)).ToList();
             WebhookReceivers = actionGroupResource.WebhookReceivers?.Select(o => new PSWebhookReceiver(o)).ToList();
+            ArmRoleReceivers = actionGroupResource.ArmRoleReceivers?.Select(o => new PSArmRoleReceiver(o)).ToList();
+            ItsmReceivers = actionGroupResource.ItsmReceivers?.Select(o => new PSItsmReceiver(o)).ToList();
+            VoiceReceivers = actionGroupResource.VoiceReceivers?.Select(o => new PSVoiceReceiver(o)).ToList();
+            AzureFunctionReceivers = actionGroupResource.AzureFunctionReceivers?.Select(o => new PSAzureFunctionReceiver(o)).ToList();
+            LogicAppReceivers = actionGroupResource.LogicAppReceivers?.Select(o => new PSLogicAppReceiver(o)).ToList();
+            AutomationRunbookReceivers = actionGroupResource.AutomationRunbookReceivers?.Select(o => new PSAutomationRunbookReceiver(o)).ToList();
+            AzureAppPushReceivers = actionGroupResource.AzureAppPushReceivers?.Select(o => new PSAzureAppPushReceiver(o)).ToList();
         }
     }
 }

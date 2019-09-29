@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HealthcareApis;
 using Microsoft.Azure.Management.HealthcareApis.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Common;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -131,91 +132,105 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            RunCmdLet(() =>
+            try
             {
-                switch (ParameterSetName)
+                base.ExecuteCmdlet();
+
+                RunCmdLet(() =>
                 {
-                    case ServiceNameParameterSet:
-                        {
-                            var healthcareApisAccount = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
-
-                            IList<ServiceAccessPolicyEntry> accessPolicies = GetAccessPolicies(healthcareApisAccount);
-
-                            ServicesDescription servicesDescription = GenerateServiceDescription(healthcareApisAccount, accessPolicies);
-
-                            try
+                    switch (ParameterSetName)
+                    {
+                        case ServiceNameParameterSet:
                             {
-                                var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(this.ResourceGroupName, this.Name, servicesDescription);
+                                var healthcareApisAccount = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
+
+                                IList<ServiceAccessPolicyEntry> accessPolicies = GetAccessPolicies(healthcareApisAccount);
+
+                                ServicesDescription servicesDescription = GenerateServiceDescription(healthcareApisAccount, accessPolicies);
+
+                                try
+                                {
+                                    var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(this.ResourceGroupName, this.Name, servicesDescription);
+                                    var healthCareFhirService = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
+                                    WriteHealthcareApisAccount(healthCareFhirService);
+                                }
+                                catch (ErrorDetailsException wex)
+                                {
+                                    WriteError(WriteErrorforBadrequest(wex));
+                                }
+
+                                break;
                             }
-                            catch (ErrorDetailsException wex)
+                        case ResourceIdParameterSet:
                             {
-                                WriteError(WriteErrorforBadrequest(wex));
+                                string rgName = null;
+                                string name = null;
+                                ValidateAndExtractName(this.ResourceId, out rgName, out name);
+
+                                var healthcareApisAccount = this.HealthcareApisClient.Services.Get(rgName, name);
+
+                                IList<ServiceAccessPolicyEntry> accessPolicies = GetAccessPolicies(healthcareApisAccount);
+
+                                ServicesDescription servicesDescription = GenerateServiceDescription(healthcareApisAccount, accessPolicies);
+
+                                try
+                                {
+                                    var healthcareApisFhirServiceUpdateAccount = this.HealthcareApisClient.Services.CreateOrUpdate(
+                                                    rgName,
+                                                    name,
+                                                    servicesDescription);
+                                    var healthCareFhirService = this.HealthcareApisClient.Services.Get(rgName, name);
+                                    WriteHealthcareApisAccount(healthCareFhirService);
+                                }
+                                catch (ErrorDetailsException wex)
+                                {
+                                    WriteError(WriteErrorforBadrequest(wex));
+                                }
+
+                                break;
                             }
-
-                            break;
-                        }
-                    case ResourceIdParameterSet:
-                        {
-                            string rgName = null;
-                            string name = null;
-                            ValidateAndExtractName(this.ResourceId, out rgName, out name);
-
-                            var healthcareApisAccount = this.HealthcareApisClient.Services.Get(rgName, name);
-
-                            IList<ServiceAccessPolicyEntry> accessPolicies = GetAccessPolicies(healthcareApisAccount);
-
-                            ServicesDescription servicesDescription = GenerateServiceDescription(healthcareApisAccount, accessPolicies);
-
-                            try
+                        case InputObjectParameterSet:
                             {
-                                var healthcareApisFhirServiceUpdateAccount = this.HealthcareApisClient.Services.CreateOrUpdate(
-                                                rgName,
-                                                name,
-                                                servicesDescription);
-                                WriteObject(healthcareApisFhirServiceUpdateAccount);
+                                IList<PSHealthcareApisFhirServiceAccessPolicyEntry> entries = InputObject.Properties.AccessPolicies;
+                                List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
+
+                                foreach (PSHealthcareApisFhirServiceAccessPolicyEntry entry in entries)
+                                {
+                                    accessPolicies.Add(new ServiceAccessPolicyEntry(entry.ObjectId));
+                                }
+
+                                var healthcareApisAccount = this.HealthcareApisClient.Services.Get(InputObject.ResourceGroupName,
+                                                 InputObject.Name);
+
+
+                                ServicesDescription servicesDescription = InputObjectToServiceDescription(healthcareApisAccount, accessPolicies);
+
+                                try
+                                {
+                                    var healthcareApisFhirServiceUpdateAccount = this.HealthcareApisClient.Services.CreateOrUpdate(
+                                                     InputObject.ResourceGroupName,
+                                                     InputObject.Name,
+                                                     servicesDescription);
+
+                                    WriteHealthcareApisAccount(healthcareApisFhirServiceUpdateAccount);
+                                }
+                                catch (ErrorDetailsException wex)
+                                {
+                                    WriteError(WriteErrorforBadrequest(wex));
+                                }
+                                break;
                             }
-                            catch (ErrorDetailsException wex)
-                            {
-                                WriteError(WriteErrorforBadrequest(wex));
-                            }
-
-                            break;
-                        }
-                    case InputObjectParameterSet:
-                        {
-                            IList<PSHealthcareApisFhirServiceAccessPolicyEntry> entries = InputObject.Properties.AccessPolicies;
-                            List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
-
-                            foreach (PSHealthcareApisFhirServiceAccessPolicyEntry entry in entries)
-                            {
-                                accessPolicies.Add(new ServiceAccessPolicyEntry(entry.ObjectId));
-                            }
-
-                            var healthcareApisAccount = this.HealthcareApisClient.Services.Get(InputObject.ResourceGroupName,
-                                             InputObject.Name);
-
-
-                            ServicesDescription servicesDescription = InputObjectToServiceDescription(healthcareApisAccount,accessPolicies);
-
-                            try
-                            {
-                                var healthcareApisFhirServiceUpdateAccount = this.HealthcareApisClient.Services.CreateOrUpdate(
-                                                 InputObject.ResourceGroupName,
-                                                 InputObject.Name,
-                                                 servicesDescription);
-
-                                WriteObject(healthcareApisFhirServiceUpdateAccount);
-                            }
-                            catch (ErrorDetailsException wex)
-                            {
-                                WriteError(WriteErrorforBadrequest(wex));
-                            }
-                            break;
-                        }
-                }
-            });
+                    }
+                });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                WriteError(new ErrorRecord(ex, Resources.keyNotFoundExceptionMessage, ErrorCategory.OpenError, ex));
+            }
+            catch (NullReferenceException ex)
+            {
+                WriteError(new ErrorRecord(ex, Resources.nullPointerExceptionMessage, ErrorCategory.OpenError, ex));
+            }
         }
 
         private IList<ServiceAccessPolicyEntry> GetAccessPolicies(ServicesDescription healthcareApisAccount)
@@ -231,7 +246,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
                 return accessPolicies;
             }
-
 
             return healthcareApisAccount.Properties.AccessPolicies;
         }
