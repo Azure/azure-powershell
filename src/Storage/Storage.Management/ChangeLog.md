@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgrade Storage Client Library to 11.1.0
 
 ## Version 1.7.0
 * Updated example in reference documentation for `Get-AzStorageAccountKey`
