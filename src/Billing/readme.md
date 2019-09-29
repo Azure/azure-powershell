@@ -53,7 +53,7 @@ require:
   - $(repo)/specification/commerce/resource-manager/readme.md
   - $(repo)/specification/consumption/resource-manager/readme.md
 
-module-version: 0.0.1
+module-version: 4.0.0
 title: Billing
 subject-prefix: ''
 
@@ -125,7 +125,7 @@ directive:
       subject: BillingProfile
       parameter-name: PoNumber
     set:
-      parameter-name: PurchaseNumberOrder
+      parameter-name: PurchaseOrderNumber
   - where:
       verb: Get
       subject: UsageAggregate
@@ -135,4 +135,8 @@ directive:
   - where:
       subject: ^(?!^BillingPeriod$)(?!^Budget$)(?!^EnrollmentAccount$)(?!^Invoice$)(?!^Marketplace$)(?!^PriceSheet$)(?!^ReservationDetail$)(?!^ReservationSummary$)(?!^UsageAggregate$)(?!^UsageDetail$).*$
     hide: true
+  # Make this a preview module
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
 ```

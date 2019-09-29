@@ -55,7 +55,7 @@ require:
 
 title: Network
 subject-prefix: ''
-module-version: 0.0.1
+module-version: 4.0.0
 make-sub-resources-byreference: true
 
 directive:
@@ -2953,4 +2953,8 @@ directive:
           SiteKey: Site Key
           SecuritySite: Security Site
           ProvisioningState: Provisioning State
+  # Make this a preview module
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
 ```

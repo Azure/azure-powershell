@@ -55,7 +55,7 @@ require:
 #  - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2017-07-01/containerService.json
 
 subject-prefix: ''
-module-version: 0.0.1
+module-version: 4.0.0
 
 directive:
 # subject renames for VM and Vmss
@@ -938,4 +938,8 @@ directive:
     where: $
     transform: >
         return $.replace('# Load DLL to use build-time cmdlets', '    if($hasAdequateVersion) {\n      $accountsModule = Import-Module -Name $accountsName -MinimumVersion 1.6.0 -Scope Global -PassThru\n    }\n  }\n}\n# Load DLL to use build-time cmdlets');
+  # Make this a preview module
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
 ```
