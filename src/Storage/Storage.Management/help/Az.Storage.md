@@ -47,6 +47,9 @@ Gets or lists Storage blob containers
 ### [Get-AzRmStorageContainerImmutabilityPolicy](Get-AzRmStorageContainerImmutabilityPolicy.md)
 Gets ImmutabilityPolicy of a Storage blob containers
 
+### [Get-AzRmStorageShare](Get-AzRmStorageShare.md)
+Gets or lists Storage file shares.
+
 ### [Get-AzStorageAccount](Get-AzStorageAccount.md)
 Gets a Storage account.
 
@@ -134,6 +137,9 @@ Locks ImmutabilityPolicy of a Storage blob containers
 ### [New-AzRmStorageContainer](New-AzRmStorageContainer.md)
 Creates a Storage blob container
 
+### [New-AzRmStorageShare](New-AzRmStorageShare.md)
+Creates a Storage file share.
+
 ### [New-AzStorageAccount](New-AzStorageAccount.md)
 Creates a Storage account.
 
@@ -201,10 +207,13 @@ Creates a stored access policy for an Azure storage table.
 Removes a Storage blob container
 
 ### [Remove-AzRmStorageContainerImmutabilityPolicy](Remove-AzRmStorageContainerImmutabilityPolicy.md)
-Removes ImmutabilityPolicy of a Storage blob containers
+Removes ImmutabilityPolicy of a Storage blob container with an unlocked policy
 
 ### [Remove-AzRmStorageContainerLegalHold](Remove-AzRmStorageContainerLegalHold.md)
 Removes legal hold tags from a Storage blob container
+
+### [Remove-AzRmStorageShare](Remove-AzRmStorageShare.md)
+Removes a Storage file share.
 
 ### [Remove-AzStorageAccount](Remove-AzStorageAccount.md)
 Removes a Storage account from Azure.
@@ -316,6 +325,9 @@ Stops a copy operation to the specified destination file.
 
 ### [Update-AzRmStorageContainer](Update-AzRmStorageContainer.md)
 Modifies a Storage blob container
+
+### [Update-AzRmStorageShare](Update-AzRmStorageShare.md)
+Modifies a Storage file share.
 
 ### [Update-AzStorageAccountNetworkRuleSet](Update-AzStorageAccountNetworkRuleSet.md)
 Update the NetworkRule property of a Storage account

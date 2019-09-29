@@ -1355,7 +1355,7 @@ Tests Tags are not overridden when calling Set-AzWebApp commandlet
 function Test-TagsNotRemovedBySetWebApp
 {
 	$rgname = "lketmtestantps10"
-	$appname = "lketmtestantps10"
+	$appname = "lketmtestantps10" # this is an existing app with existing tags
 	$slot = "testslot"
 
 	$getApp =  Get-AzWebApp -ResourceGroupName $rgname -Name $appname
@@ -1375,5 +1375,11 @@ function Test-TagsNotRemovedBySetWebApp
 
 	# Test - tags not removed after using Set-AzWebApp with WebApp parameter
 	$webapp =  Set-AzWebApp  -WebApp $getApp
+	Assert-notNull $webApp.Tags
+
+	$webapp = Set-AzWebApp -Name $appname -ResourceGroupName $rgname -AppServicePlan "lke-asp2-antps10"
+	Assert-notNull $webApp.Tags
+	# Move it back to the original ASP
+	$webApp = Set-AzWebApp -Name $appname -ResourceGroupName $rgname -AppServicePlan "lke-asp-antps10"
 	Assert-notNull $webApp.Tags
 }

@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* **Get-AzBatchNodeAgentSku** is deprecated and will be replaced by **Get-AzBatchSupportImage** in version 2.0.0.
 
 ## Version 1.1.1
 * Fixed typo in help message and documentation to capitalize Windows
