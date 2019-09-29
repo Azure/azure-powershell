@@ -115,29 +115,9 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Common
         {
             if (healthcareApisAccount != null)
             {
-                //string obj= ConvertToJsonString(healthcareApisAccount);
-                //WriteObject(obj);
                 PSHealthcareApisService value = PSHealthcareApisService.Create(healthcareApisAccount);
                 WriteObject(value);
             }
-        }
-
-        private static string ConvertToJsonString(ServicesDescription healthcareApisAccount)
-        {
-            return JsonConvert.SerializeObject(PSHealthcareApisService.Create(healthcareApisAccount), Formatting.Indented);
-        }
-
-        protected void WriteHealthcareApisAccountList(
-          List<ServicesDescription> healthcareApisAccounts)
-        {
-            List<string> output = new List<string>();
-            if (healthcareApisAccounts != null)
-            {
-                healthcareApisAccounts.ForEach(
-                    healthcareApisAccount => output.Add(ConvertToJsonString(healthcareApisAccount)));
-            }
-
-            WriteObject(output, true);
         }
 
         protected bool ValidateAndExtractName(string resourceId, out string resourceGroupName, out string resourceName)
@@ -166,14 +146,15 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Common
             return new PSHealthcareApisService(serviceDescription);
         }
 
-        public static List<ServicesDescription> ToPSFhirServices(IPage<ServicesDescription> fhirServiceApps)
+        public static List<PSHealthcareApisService> ToPSFhirServices(IPage<ServicesDescription> fhirServiceApps)
         {
             using (IEnumerator<ServicesDescription> sdenumerator = fhirServiceApps.GetEnumerator())
             {
-                var fhirServiceList = new List<ServicesDescription>();
+                var fhirServiceList = new List<PSHealthcareApisService>();
                 while (sdenumerator.MoveNext())
                 {
-                    fhirServiceList.Add(sdenumerator.Current);
+                    PSHealthcareApisService psHealthCareFhirService = ToPSFhirService(sdenumerator.Current);
+                    fhirServiceList.Add(psHealthCareFhirService);
                 }
 
                 return fhirServiceList;
