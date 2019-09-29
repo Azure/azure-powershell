@@ -175,5 +175,13 @@ namespace Commands.Automation.Test
         {
             TestRunner.RunTestScript("Test-CreateLinuxIncludedPackageNameMasksSoftwareUpdateConfiguration");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Service, Category.Automation)]
+        public void CreateLinuxSucWithRebootSetting()
+        {
+            TestRunner.RunTestScript("Test-CreateLinuxSoftwareUpdateConfigurationWithRebootSetting");
+        }
     }
 }
