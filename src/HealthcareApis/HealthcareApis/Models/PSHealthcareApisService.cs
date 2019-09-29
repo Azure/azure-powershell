@@ -29,15 +29,15 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
             this.Location = serviceDescription.Location;
             this.ResourceType = serviceDescription.Type;
             this.Tags = serviceDescription.Tags;
-            this.CosmosDbOfferThroughput = serviceDescription.Properties.CosmosDbConfiguration.OfferThroughput;
-            this.CorsOrigins = serviceDescription.Properties.CorsConfiguration.Origins;
-            this.CorsHeaders = serviceDescription.Properties.CorsConfiguration.Headers;
-            this.CorsMethods = serviceDescription.Properties.CorsConfiguration.Methods;
-            this.CorsMaxAge = serviceDescription.Properties.CorsConfiguration.MaxAge;
-            this.CorsAllowCredentials = serviceDescription.Properties.CorsConfiguration.AllowCredentials;
-            this.Authority = serviceDescription.Properties.AuthenticationConfiguration.Authority;
-            this.Audience = serviceDescription.Properties.AuthenticationConfiguration.Audience;
-            this.SmartProxyEnabled = serviceDescription.Properties.AuthenticationConfiguration.SmartProxyEnabled;
+            this.CosmosDbOfferThroughput = serviceDescription.Properties.CosmosDbConfiguration?.OfferThroughput;
+            this.CorsOrigins = serviceDescription.Properties.CorsConfiguration?.Origins;
+            this.CorsHeaders = serviceDescription.Properties.CorsConfiguration?.Headers;
+            this.CorsMethods = serviceDescription.Properties.CorsConfiguration?.Methods;
+            this.CorsMaxAge = serviceDescription.Properties.CorsConfiguration?.MaxAge;
+            this.CorsAllowCredentials = serviceDescription.Properties.CorsConfiguration?.AllowCredentials;
+            this.Authority = serviceDescription.Properties.AuthenticationConfiguration?.Authority;
+            this.Audience = serviceDescription.Properties.AuthenticationConfiguration?.Audience;
+            this.SmartProxyEnabled = serviceDescription.Properties.AuthenticationConfiguration?.SmartProxyEnabled;
             this.Etag = serviceDescription.Etag;
             this.Kind = GetKindValue(serviceDescription.Kind);
         }
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
             switch (kind)
             {
                 case Management.HealthcareApis.Models.Kind.Fhir:
-                    return "fhir";
+                    return "fhir-R4";
                 case Management.HealthcareApis.Models.Kind.FhirStu3:
                     return "fhir-Stu3";
                 case Management.HealthcareApis.Models.Kind.FhirR4:
