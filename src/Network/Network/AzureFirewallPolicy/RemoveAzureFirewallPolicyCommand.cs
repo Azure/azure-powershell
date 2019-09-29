@@ -14,7 +14,9 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -48,8 +50,33 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(
+                            Mandatory = false,
+                            ValueFromPipelineByPropertyName = true,
+                            HelpMessage = "The resource Id.")]
+        [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
+        public virtual string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The AzureFirewall Policy")]
+        public PSAzureFirewallPolicy InputObject { get; set; }
         public override void Execute()
         {
+            if (ResourceId != null)
+            {
+                var resourceInfo = new ResourceIdentifier(ResourceId);
+                this.ResourceGroupName = resourceInfo.ResourceGroupName;
+                this.Name = resourceInfo.ResourceName;
+            }
+            else if (InputObject != null)
+            {
+                this.ResourceGroupName = InputObject.ResourceGroupName;
+                this.Name = InputObject.Name;
+            }
+
             base.Execute();
             ConfirmAction(
                 Force.IsPresent,
