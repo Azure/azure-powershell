@@ -22,6 +22,10 @@
 * Updated the SDK version to 1.0.2
 * Update in tests to refer to new SDK version
 
+## Version 0.1.2
+* Added Exception Handling around KeyNotFoundException
+
+
 ## Version 0.1.1
 * Added Error Handling in all cmdlets
 * Fixed few typos
