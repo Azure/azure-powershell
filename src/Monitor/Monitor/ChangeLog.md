@@ -16,8 +16,36 @@
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
--->
+        
 ## Upcoming Release
+* New action group receivers added for action group
+	-ItsmReceiver
+	-VoiceReceiver
+	-ArmRoleReceiver
+	-AzureFunctionReceiver
+	-LogicAppReceiver
+	-AutomationRunbookReceiver
+	-AzureAppPushReceiver
+* Use common alert schema enabled for the receivers. This is not applicable for SMS, Azure App push , ITSM and Voice recievers
+* Webhooks now supports Azure active directory authentication .
+
+## Version 1.3.0
+* Pointing to the most recent Monitor SDK, i.e. 0.24.1-preview
+   - Adds non-braking changes to the Metrics cmdlets, i.e. the Unit enumeration supports several new values. These are read-only cmdlets, so there would be no change in the input of the cmdlets.
+   - The api-version of the **ActionGroups** requests is now **2019-06-01**, before it was **2018-03-01**. The scenario tests have been updated to accommodate for this change.
+   - The constructors for the classes **EmailReceiver** and **WebhookReceiver** added one new mandatory argument, i.e. a Boolean value called **useCommonAlertSchema**. Currently, the value is fixed to **false** to hide this breaking change from the cmdlets. **NOTE**: this is a temporary change that must be validated by the Alerts team.
+   - The order of the arguments for the constructor of the class **Source** (related to the **ScheduledQueryRuleSource** class) changed from the previous SDK. This change required two unit tests to the be fixed: they compiled, but failed to pass the tests.
+   - The order of the arguments for the constructor of the class **AlertingAction** (related to the **ScheduledQueryRuleSource** class) changed from the previous SDK. This change required two unit tests to the be fixed: they compiled, but failed to pass the tests.
+* Support Dynamic Threshold criteria for metric alert V2
+	- New-AzMetricAlertRuleV2Criteria: now creats dynamic threshold criteria also
+	- Add-AzMetricAlertRuleV2: now accept dynamic threshold criteria also
+* Improvements in Scheduled Query Rule cmdlets (SQR)
+ - Cmdlets will accept `Location` paramater in both formats, either the location (e.g. eastus) or the location display name (e.g. East US)
+ - Illustrated `Enabled` parameter in help files properly
+ - Added examples for `ActionGroup` optional parameter
+ - Overall improved help files
+* Fix bug in determining scope type for `Set-AzActionRule`
+
 
 ## Version 1.2.2
 * Fixed miscellaneous typos across module

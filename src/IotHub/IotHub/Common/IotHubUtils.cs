@@ -118,11 +118,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             return ConvertObject<PSCloudToDeviceProperties, CloudToDeviceProperties>(psCloudToDeviceProperties);
         }
 
-        public static OperationsMonitoringProperties ToOperationsMonitoringProperties(PSOperationsMonitoringProperties psOperationsMonitoringProperties)
-        {
-            return ConvertObject<PSOperationsMonitoringProperties, OperationsMonitoringProperties>(psOperationsMonitoringProperties);
-        }
-
         public static IotHubSkuInfo ToIotHubSku(PSIotHubSkuInfo psIotHubSkuInfo)
         {
             return ConvertObject<PSIotHubSkuInfo, IotHubSkuInfo>(psIotHubSkuInfo);
@@ -162,6 +157,16 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
         public static PSRouteMetadata ToPSRouteMetadata(RouteProperties routeProperties)
         {
             return ConvertObject<RouteProperties, PSRouteMetadata>(routeProperties);
+        }
+
+        public static PSEnrichmentMetadata ToPSEnrichmentMetadata(EnrichmentProperties enrichmentProperties)
+        {
+            return ConvertObject<EnrichmentProperties, PSEnrichmentMetadata>(enrichmentProperties);
+        }
+
+        public static IEnumerable<PSEnrichmentProperties> ToPSEnrichmentProperties(IEnumerable<EnrichmentProperties> enrichmentProperties)
+        {
+            return ConvertObject<IEnumerable<EnrichmentProperties>, IEnumerable<PSEnrichmentProperties>>(enrichmentProperties);
         }
 
         public static FallbackRouteProperties ToFallbackRouteProperty(PSFallbackRouteMetadata psRouteProperty)
