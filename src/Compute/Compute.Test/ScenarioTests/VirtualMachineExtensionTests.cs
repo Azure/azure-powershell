@@ -122,9 +122,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzDiskEncryptionCreateManagedDiskVM()
+        public void TestAzureDiskEncryptionLnxManagedDisk()
         {
-            TestRunner.RunTestScript("Test-AzDiskEncryptionCreateManagedDiskVM");
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionLnxManagedDisk");
         }
 
         [Fact]
