@@ -149,59 +149,49 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         public override void ExecuteCmdlet()
         {
-            try
+            base.ExecuteCmdlet();
+
+            RunCmdLet(() =>
             {
-                base.ExecuteCmdlet();
+                List<ServiceAccessPolicyEntry> accessPolicies = GetAccessPolicies();
 
-                RunCmdLet(() =>
+                ServicesDescription servicesDescription = new ServicesDescription()
                 {
-                    List<ServiceAccessPolicyEntry> accessPolicies = GetAccessPolicies();
+                    Kind = GetKind(),
+                    Location = Location,
+                    Tags = this.GetTags(),
 
-                    ServicesDescription servicesDescription = new ServicesDescription()
+                    Properties = new ServicesProperties()
                     {
-                        Kind = GetKind(),
-                        Location = Location,
-                        Tags = this.GetTags(),
+                        AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo() { Authority = GetAuthority(), Audience = GetAudience(), SmartProxyEnabled = EnableSmartProxy.ToBool() },
+                        CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = GetCosmosDBThroughput()},
+                        CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = CorsOrigin, Headers = CorsHeader, Methods = CorsMethod, MaxAge = CorsMaxAge, AllowCredentials = AllowCorsCredential },
+                        AccessPolicies = accessPolicies
+                    }
+                };
 
-                        Properties = new ServicesProperties()
-                        {
-                            AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo() { Authority = GetAuthority(), Audience = GetAudience(), SmartProxyEnabled = EnableSmartProxy.ToBool() },
-                            CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = GetCosmosDBThroughput() },
-                            CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = CorsOrigin, Headers = CorsHeader, Methods = CorsMethod, MaxAge = CorsMaxAge, AllowCredentials = AllowCorsCredential },
-                            AccessPolicies = accessPolicies
-                        }
-                    };
-
-                    if (ShouldProcess(this.Name, Resources.createService))
+                if (ShouldProcess(this.Name, Resources.createService))
+                {
+                    try
                     {
 
                         this.EnsureNameAvailabilityOrThrow();
 
-                        try
-                        {
-                            var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(
-                                            this.ResourceGroupName,
-                                            this.Name,
-                                            servicesDescription);
+                        var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(
+                                        this.ResourceGroupName,
+                                        this.Name,
+                                        servicesDescription);
 
-                            var healthCareFhirService = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
-                            WriteHealthcareApisAccount(healthCareFhirService);
-                        }
-                        catch (ErrorDetailsException wex)
-                        {
-                            WriteError(WriteErrorforBadrequest(wex));
-                        }
+
+                        var healthCareFhirService = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
+                        WriteHealthcareApisAccount(healthCareFhirService);
                     }
-                });
-            }
-            catch (KeyNotFoundException ex)
-            {
-                WriteError(new ErrorRecord(ex, Resources.keyNotFoundExceptionMessage, ErrorCategory.OpenError, ex));
-            }
-            catch (NullReferenceException ex)
-            {
-                WriteError(new ErrorRecord(ex, Resources.nullPointerExceptionMessage, ErrorCategory.OpenError, ex));
-            }
+                    catch (ErrorDetailsException wex)
+                    {
+                        WriteError(WriteErrorforBadrequest(wex));
+                    }
+                }
+            });
         }
 
         private List<ServiceAccessPolicyEntry> GetAccessPolicies()
@@ -266,6 +256,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             }
 
             return CosmosOfferThroughput;
+            
         }
 
         private string GetAudience()
@@ -292,7 +283,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         {
             var checkNameInputs = new CheckNameAvailabilityParameters(this.Name, ResourceTypeName);
             var nameAvailabilityInfo = this.HealthcareApisClient.Services.CheckNameAvailability(checkNameInputs);
-
             if (nameAvailabilityInfo.NameAvailable != true)
             {
                 throw new PSArgumentException(nameAvailabilityInfo.Message);
@@ -305,7 +295,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             {
                 return TagsConversionHelper.CreateTagDictionary(this.Tag, true);
             }
-
             return null;
         }
     }
