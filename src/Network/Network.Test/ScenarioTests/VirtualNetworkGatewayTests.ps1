@@ -973,6 +973,18 @@ function Test-VirtualNetworKGatewayPacketCapture
       # Create the resource group
       $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
       
+	  #create SAS URL
+	  $storetype = 'Standard_GRS'
+	  $containerName = "testcontainer"
+	  $storeName = 'sto' + $rgname;
+	  New-AzStorageAccount -ResourceGroupName $rgname -Name $storeName -Location $location -Type $storetype
+	  $key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeName
+	  $context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
+	  New-AzStorageContainer -Name $containerName -Context $context
+	  $container = Get-AzStorageContainer -Name $containerName -Context $context
+	  $now=get-date
+	  $sasurl = New-AzureStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
+
       # Create the Virtual Network
       $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
       $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
@@ -992,19 +1004,6 @@ function Test-VirtualNetworKGatewayPacketCapture
       Assert-AreEqual $gateway.Name $actual.Name	
       Assert-AreEqual "Vpn" $gateway.GatewayType
       Assert-AreEqual "RouteBased" $gateway.VpnType
-
-	  #create SAS URL
-	  $storetype = 'Standard_GRS'
-	  $containerName = "testcontainer"
-	  $storeName = "teststore"
-	  New-AzStorageAccount -ResourceGroupName $rgname -Name $storeName -Location $location -Type $storetype
-	  $key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeName
-	  $context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
-	  New-AzStorageContainer -Name $containerName -Context $context
-	  $container = Get-AzStorageContainer -Name $containerName -Context $context
-	  $now=get-date
-	  $sasurl = New-AzStorageBlobSASToken -Container $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
-		
 
 	  #StartPacketCapture on gateway with Name parameter
 	  $output = Start-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName  $rgname -Name $rname

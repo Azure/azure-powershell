@@ -80,5 +80,14 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionVpnDeviceConfigurations");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
+        public void TestVirtualNetworkGatewayConnectionPacketCapture()
+        {
+            TestRunner.RunTestScript("Test- VirtualNetworkGatewayConnectionPacketCapture");
+        }
+
     }
 }
