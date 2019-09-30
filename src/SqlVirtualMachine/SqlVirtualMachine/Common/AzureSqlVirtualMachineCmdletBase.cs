@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using System.Linq;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
 {
     /// <summary>
-    /// The base class for all Azure Sql virtual machne cmdlets.
+    /// The base class for all Azure Sql virtual machine cmdlets.
     /// </summary>
     /// <typeparam name="M">Type of the model the cmdlet will be working on (e.g. AzureSqlVirtualMachineModel)</typeparam>
     /// <typeparam name="A">Adapter used to call the REST APIs to perform actions on the specified model</typeparam>
@@ -29,7 +28,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
         /// Adapter used to call the REST APIs to perform actions on the specified model
         /// </summary>
         public A ModelAdapter { get; internal set; }
-        
+
         /// <summary>
         /// Get the ResourceId property value of the model provided.
         /// </summary>
@@ -40,15 +39,12 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
             var resource = model as IEnumerable<object>;
             if (resource != null)
             {
-                if (resource != null)
+                var resourceIdProperty = resource.GetType().GetProperty("ResourceId");
+                var resourceIdValue = resourceIdProperty != null ? resourceIdProperty.GetValue(resource) : null;
+                string resourceId = resourceIdValue != null ? resourceIdValue.ToString() : "";
+                if (!string.IsNullOrEmpty(resourceId))
                 {
-                    var resourceIdProperty = resource.GetType().GetProperty("ResourceId");
-                    var resourceIdValue = resourceIdProperty != null ? resourceIdProperty.GetValue(resource) : null;
-                    string resourceId = resourceIdValue != null ? resourceIdValue.ToString() : "";
-                    if (!string.IsNullOrEmpty(resourceId))
-                    {
-                        return resourceId;
-                    }
+                    return resourceId;
                 }
             }
             return string.Empty;
@@ -61,13 +57,13 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
         protected abstract M GetEntity();
 
         /// <summary>
-        /// Updates the given model element with the cmdlet specific operation 
+        /// Updates the given model element with the cmdlet specific operation
         /// </summary>
         /// <param name="model">A model object</param>
         protected virtual M ApplyUserInputToModel(M model) { return model; }
 
         /// <summary>
-        /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
+        /// This method is responsible to call the right API in the communication layer that will eventually send the information in the
         /// object to the REST endpoint
         /// </summary>
         /// <param name="entity">The model object with the data to be sent to the REST endpoints</param>
@@ -110,15 +106,15 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.Common
         protected virtual void ParseInput() { }
 
         /// <summary>
-        /// General method thaat outline which operations should be executed during the execution of a sqlvirtualmachine cmdlet
+        /// General method that outline which operations should be executed during the execution of a sqlvirtualmachine cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            // Initialize the adapter class that is responsible for the convertion between the powershell resource and the .NET one
+            // Initialize the adapter class that is responsible for the conversion between the powershell resource and the .NET one
             ModelAdapter = InitModelAdapter();
             // Parse the parameter set given as input
             ParseInput();
-            // Retrieve the Azure entity the cmdlet is refearing to
+            // Retrieve the Azure entity the cmdlet is referring to
             M model = GetEntity();
             // Apply the cmdlet to the recovered object
             M updatedModel = ApplyUserInputToModel(model);
