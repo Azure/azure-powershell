@@ -15,67 +15,65 @@ Creates an new action group receiver.
 
 ### NewEmailReceiver (Default)
 ```
-New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema <Boolean>] [-EmailReceiver]
- -EmailAddress <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema] [-EmailReceiver] -EmailAddress <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NewSmsReceiver
 ```
-New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema <Boolean>] [-SmsReceiver]
- [-CountryCode <String>] -PhoneNumber <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema] [-SmsReceiver] [-CountryCode <String>]
+ -PhoneNumber <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NewWebhookReceiver
 ```
-New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema <Boolean>] [-WebhookReceiver]
- -ServiceUri <String> [-UseAadAuth <Boolean>] [-ObjectId <String>] [-IdentifierUri <String>]
- [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema] [-WebhookReceiver] -ServiceUri <String>
+ [-UseAadAuth] [-ObjectId <String>] [-IdentifierUri <String>] [-TenantId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NewItsmReceiver
 ```
-New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema <Boolean>] [-ItsmReceiver]
- -WorkspaceId <String> -ConnectionId <String> -TicketConfiguration <String> -Region <String>
+New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema] [-ItsmReceiver] -WorkspaceId <String>
+ -ConnectionId <String> -TicketConfiguration <String> -Region <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NewVoiceReceiver
 ```
-New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema <Boolean>] [-VoiceReceiver]
- [-VoiceCountryCode <String>] -VoicePhoneNumber <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema] [-VoiceReceiver] [-VoiceCountryCode <String>]
+ -VoicePhoneNumber <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NewArmRoleReceiver
 ```
-New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema <Boolean>] [-ArmRoleReceiver] -RoleId <String>
+New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema] [-ArmRoleReceiver] -RoleId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NewAzureFunctionReceiver
 ```
-New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema <Boolean>] [-AzureFunctionReceiver]
+New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema] [-AzureFunctionReceiver]
  -FunctionAppResourceId <String> -HttpTriggerUrl <String> -FunctionName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NewLogicAppReceiver
 ```
-New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema <Boolean>] [-LogicAppReceiver]
- -ResourceId <String> -CallbackUrl <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema] [-LogicAppReceiver] -ResourceId <String>
+ -CallbackUrl <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NewAutomationRunbookReceiver
 ```
-New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema <Boolean>] [-AutomationRunbookReceiver]
- -AutomationAccountId <String> -RunbookName <String> [-IsGlobalRunbook <Boolean>]
- -AutomationRunbookServiceUri <String> -WebhookResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema] [-AutomationRunbookReceiver]
+ -AutomationAccountId <String> -RunbookName <String> [-IsGlobalRunbook] -AutomationRunbookServiceUri <String>
+ -WebhookResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NewAzureAppPushReceiver
 ```
-New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema <Boolean>] [-AzureAppPushReceiver]
+New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema] [-AzureAppPushReceiver]
  -AzureAppPushEmailAddress <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -366,7 +364,7 @@ Accept wildcard characters: False
 indicating whether this instance is global runbook
 
 ```yaml
-Type: System.Boolean
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: NewAutomationRunbookReceiver
 Aliases:
 
@@ -576,7 +574,7 @@ Accept wildcard characters: False
 the flag to use add auth
 
 ```yaml
-Type: System.Boolean
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: NewWebhookReceiver
 Aliases:
 
@@ -591,7 +589,7 @@ Accept wildcard characters: False
 The flag whether to use common alert schema . This value will be neglectedfor SMS, Azure App push , ITSM and Voice recievers.
 
 ```yaml
-Type: System.Boolean
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
