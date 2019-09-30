@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4144ff26-7c0b-4fc3-820f-78655e9adcbd"
+          "77df44a5-4718-4a66-8594-f33e5c94c069"
         ],
         "Accept-Language": [
           "en-US"
@@ -30,28 +30,28 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "ac3f842e-68ff-4501-873f-ccfb37b48334"
+          "62285250-e90e-429e-80de-441f05a5cabd"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
-        ],
         "x-ms-correlation-request-id": [
-          "d70cfad2-1627-4f72-b2ca-8c1ca5a8cda2"
+          "380ee900-c98f-4d02-b379-34cedda9e6fd"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190729T163121Z:d70cfad2-1627-4f72-b2ca-8c1ca5a8cda2"
+          "WESTUS:20190930T215958Z:380ee900-c98f-4d02-b379-34cedda9e6fd"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 29 Jul 2019 16:31:21 GMT"
+          "Mon, 30 Sep 2019 21:59:57 GMT"
         ],
         "Content-Length": [
-          "19"
+          "34"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -60,7 +60,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [],\r\n  \"count\": 0\r\n}",
       "StatusCode": 200
     },
     {
@@ -70,7 +70,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "80118305-2f73-4c27-8c51-ab6826951560"
+          "56a2d4f8-f91d-436d-b5e3-adec899d13a2"
         ],
         "Accept-Language": [
           "en-US"
@@ -93,28 +93,28 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "718404cd-3621-4c18-9093-de79849af9f1"
+          "8ce9cacf-bf1c-4067-bec6-31b13bdaf72a"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
+          "11996"
         ],
         "x-ms-correlation-request-id": [
-          "a584de75-a86b-47c1-b30a-71dcdbf613cd"
+          "65f1ff26-7741-46cf-854b-a26d5e401215"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190729T163124Z:a584de75-a86b-47c1-b30a-71dcdbf613cd"
+          "WESTUS:20190930T220001Z:65f1ff26-7741-46cf-854b-a26d5e401215"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 29 Jul 2019 16:31:23 GMT"
+          "Mon, 30 Sep 2019 22:00:00 GMT"
         ],
         "Content-Length": [
-          "1106"
+          "1120"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -123,18 +123,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/backends/ps3616\",\r\n      \"type\": \"Microsoft.ApiManagement/service/backends\",\r\n      \"name\": \"ps3616\",\r\n      \"properties\": {\r\n        \"title\": \"ps4886\",\r\n        \"description\": \"ps5755\",\r\n        \"url\": \"https://contoso.com/awesomeapi\",\r\n        \"protocol\": \"http\",\r\n        \"properties\": {\r\n          \"serviceFabricCluster\": {\r\n            \"managementEndpoints\": [\r\n              \"https://sfbackend-01.net:443\",\r\n              \"https://sfbackend-02.net:443\"\r\n            ],\r\n            \"clientCertificateThumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\",\r\n            \"serverCertificateThumbprints\": [],\r\n            \"serverX509Names\": [\r\n              {\r\n                \"name\": \"CN=foobar.net\",\r\n                \"issuerCertificateThumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\"\r\n              }\r\n            ],\r\n            \"maxPartitionResolutionRetries\": 3\r\n          }\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/backends/ps5498\",\r\n      \"type\": \"Microsoft.ApiManagement/service/backends\",\r\n      \"name\": \"ps5498\",\r\n      \"properties\": {\r\n        \"title\": \"ps530\",\r\n        \"description\": \"ps3076\",\r\n        \"url\": \"https://contoso.com/awesomeapi\",\r\n        \"protocol\": \"http\",\r\n        \"properties\": {\r\n          \"serviceFabricCluster\": {\r\n            \"managementEndpoints\": [\r\n              \"https://sfbackend-01.net:443\",\r\n              \"https://sfbackend-02.net:443\"\r\n            ],\r\n            \"clientCertificateThumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\",\r\n            \"serverCertificateThumbprints\": [],\r\n            \"serverX509Names\": [\r\n              {\r\n                \"name\": \"CN=foobar.net\",\r\n                \"issuerCertificateThumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\"\r\n              }\r\n            ],\r\n            \"maxPartitionResolutionRetries\": 3\r\n          }\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 1\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/certificates/ps6495?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2NlcnRpZmljYXRlcy9wczY0OTU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/certificates/ps5250?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2NlcnRpZmljYXRlcy9wczUyNTA/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
       "RequestMethod": "PUT",
-      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"data\": \"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\",\r\n    \"password\": \"Password\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "84d3e816-f200-438b-91bf-aa50de004511"
+          "4c411306-dbf3-4704-b128-ac805995c56c"
         ],
         "Accept-Language": [
           "en-US"
@@ -160,13 +159,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAFiA=\""
+          "\"AAAAAAAAJuA=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "9a9bba64-20b5-4b09-8178-243ae7e8a3f5"
+          "f97b43ad-8387-453d-8a67-2df8274a5b1d"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -175,16 +174,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "15d419fa-d847-487d-b7a6-2dd7b0de0222"
+          "d4d30d23-c725-4a1a-a53d-96a4e66324b5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190729T163123Z:15d419fa-d847-487d-b7a6-2dd7b0de0222"
+          "WESTUS:20190930T215959Z:d4d30d23-c725-4a1a-a53d-96a4e66324b5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 29 Jul 2019 16:31:22 GMT"
+          "Mon, 30 Sep 2019 21:59:58 GMT"
         ],
         "Content-Length": [
           "433"
@@ -196,17 +195,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/certificates/ps6495\",\r\n  \"type\": \"Microsoft.ApiManagement/service/certificates\",\r\n  \"name\": \"ps6495\",\r\n  \"properties\": {\r\n    \"subject\": \"CN=*.msitesting.net\",\r\n    \"thumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\",\r\n    \"expirationDate\": \"2036-01-01T07:00:00Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/certificates/ps5250\",\r\n  \"type\": \"Microsoft.ApiManagement/service/certificates\",\r\n  \"name\": \"ps5250\",\r\n  \"properties\": {\r\n    \"subject\": \"CN=*.msitesting.net\",\r\n    \"thumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\",\r\n    \"expirationDate\": \"2036-01-01T07:00:00Z\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/certificates/ps6495?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2NlcnRpZmljYXRlcy9wczY0OTU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/certificates/ps5250?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2NlcnRpZmljYXRlcy9wczUyNTA/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5314bf58-2c1c-43ee-a16c-6cc031571b11"
+          "11248e06-ad97-4807-8f6a-c8ff0e027490"
         ],
         "Accept-Language": [
           "en-US"
@@ -226,31 +225,31 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAFiA=\""
+          "\"AAAAAAAAJuA=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "cb26283b-ec48-4296-8c14-a666c77d8c3b"
+          "8f00d8bb-6bc2-40cc-bc39-d02984a842d6"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "da9780b7-a3fd-4530-9bfc-9902b1611b82"
+          "404eed99-0680-446a-a6b7-db96d4689b32"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190729T163123Z:da9780b7-a3fd-4530-9bfc-9902b1611b82"
+          "WESTUS:20190930T215959Z:404eed99-0680-446a-a6b7-db96d4689b32"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 29 Jul 2019 16:31:22 GMT"
+          "Mon, 30 Sep 2019 21:59:58 GMT"
         ],
         "Content-Length": [
           "433"
@@ -262,17 +261,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/certificates/ps6495\",\r\n  \"type\": \"Microsoft.ApiManagement/service/certificates\",\r\n  \"name\": \"ps6495\",\r\n  \"properties\": {\r\n    \"subject\": \"CN=*.msitesting.net\",\r\n    \"thumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\",\r\n    \"expirationDate\": \"2036-01-01T07:00:00Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/certificates/ps5250\",\r\n  \"type\": \"Microsoft.ApiManagement/service/certificates\",\r\n  \"name\": \"ps5250\",\r\n  \"properties\": {\r\n    \"subject\": \"CN=*.msitesting.net\",\r\n    \"thumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\",\r\n    \"expirationDate\": \"2036-01-01T07:00:00Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/certificates/ps6495?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2NlcnRpZmljYXRlcy9wczY0OTU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/certificates/ps5250?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2NlcnRpZmljYXRlcy9wczUyNTA/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "383f9fa7-9c04-4883-96a0-a54df538b67b"
+          "cef2deae-d462-42e6-ad4c-b8245ba68dfe"
         ],
         "Accept-Language": [
           "en-US"
@@ -295,25 +294,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "24aaf027-56b8-4073-b8c7-bd132479f491"
+          "aea74d4c-9a72-44e4-8046-1beff67a2ce3"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
+          "11993"
         ],
         "x-ms-correlation-request-id": [
-          "fc55e0ca-9da7-409c-a993-06213a0b2645"
+          "8ce693c0-d473-4257-bf27-6e2f1ca406c3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190729T163125Z:fc55e0ca-9da7-409c-a993-06213a0b2645"
+          "WESTUS:20190930T220002Z:8ce693c0-d473-4257-bf27-6e2f1ca406c3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 29 Jul 2019 16:31:25 GMT"
+          "Mon, 30 Sep 2019 22:00:02 GMT"
         ],
         "Content-Length": [
           "87"
@@ -329,13 +328,13 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/backends/ps3616?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2JhY2tlbmRzL3BzMzYxNj9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/backends/ps5498?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2JhY2tlbmRzL3BzNTQ5OD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"title\": \"ps4886\",\r\n    \"description\": \"ps2861\",\r\n    \"properties\": {\r\n      \"serviceFabricCluster\": {\r\n        \"clientCertificatethumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\",\r\n        \"managementEndpoints\": [\r\n          \"https://sfbackend-01.net:443\",\r\n          \"https://sfbackend-02.net:443\"\r\n        ],\r\n        \"serverCertificateThumbprints\": [],\r\n        \"serverX509Names\": [\r\n          {\r\n            \"name\": \"CN=foobar.net\",\r\n            \"issuerCertificateThumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"url\": \"https://contoso.com/awesomeapi\",\r\n    \"protocol\": \"http\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"title\": \"ps530\",\r\n    \"description\": \"ps1363\",\r\n    \"properties\": {\r\n      \"serviceFabricCluster\": {\r\n        \"clientCertificatethumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\",\r\n        \"managementEndpoints\": [\r\n          \"https://sfbackend-01.net:443\",\r\n          \"https://sfbackend-02.net:443\"\r\n        ],\r\n        \"serverCertificateThumbprints\": [],\r\n        \"serverX509Names\": [\r\n          {\r\n            \"name\": \"CN=foobar.net\",\r\n            \"issuerCertificateThumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"url\": \"https://contoso.com/awesomeapi\",\r\n    \"protocol\": \"http\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bf48d125-60b5-433b-9316-6265f7c7cf84"
+          "8548894d-3663-4f81-a3eb-31707e263184"
         ],
         "Accept-Language": [
           "en-US"
@@ -350,7 +349,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "675"
+          "674"
         ]
       },
       "ResponseHeaders": {
@@ -361,13 +360,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAFiM=\""
+          "\"AAAAAAAAJuM=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "c67ad0c4-b3e3-4a43-a1fb-04ca3a771498"
+          "284c27d3-09fb-4f2d-a0b7-4b5ffedda2f5"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -376,19 +375,19 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "95bc81a2-9dc5-4e4f-944c-6a469315d34e"
+          "327fce79-160b-413f-90d7-3d502e0d3559"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190729T163124Z:95bc81a2-9dc5-4e4f-944c-6a469315d34e"
+          "WESTUS:20190930T220000Z:327fce79-160b-413f-90d7-3d502e0d3559"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 29 Jul 2019 16:31:23 GMT"
+          "Mon, 30 Sep 2019 21:59:59 GMT"
         ],
         "Content-Length": [
-          "969"
+          "968"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -397,17 +396,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/backends/ps3616\",\r\n  \"type\": \"Microsoft.ApiManagement/service/backends\",\r\n  \"name\": \"ps3616\",\r\n  \"properties\": {\r\n    \"title\": \"ps4886\",\r\n    \"description\": \"ps2861\",\r\n    \"url\": \"https://contoso.com/awesomeapi\",\r\n    \"protocol\": \"http\",\r\n    \"properties\": {\r\n      \"serviceFabricCluster\": {\r\n        \"managementEndpoints\": [\r\n          \"https://sfbackend-01.net:443\",\r\n          \"https://sfbackend-02.net:443\"\r\n        ],\r\n        \"clientCertificateThumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\",\r\n        \"serverCertificateThumbprints\": [],\r\n        \"serverX509Names\": [\r\n          {\r\n            \"name\": \"CN=foobar.net\",\r\n            \"issuerCertificateThumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\"\r\n          }\r\n        ],\r\n        \"maxPartitionResolutionRetries\": 3\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/backends/ps5498\",\r\n  \"type\": \"Microsoft.ApiManagement/service/backends\",\r\n  \"name\": \"ps5498\",\r\n  \"properties\": {\r\n    \"title\": \"ps530\",\r\n    \"description\": \"ps1363\",\r\n    \"url\": \"https://contoso.com/awesomeapi\",\r\n    \"protocol\": \"http\",\r\n    \"properties\": {\r\n      \"serviceFabricCluster\": {\r\n        \"managementEndpoints\": [\r\n          \"https://sfbackend-01.net:443\",\r\n          \"https://sfbackend-02.net:443\"\r\n        ],\r\n        \"clientCertificateThumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\",\r\n        \"serverCertificateThumbprints\": [],\r\n        \"serverX509Names\": [\r\n          {\r\n            \"name\": \"CN=foobar.net\",\r\n            \"issuerCertificateThumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\"\r\n          }\r\n        ],\r\n        \"maxPartitionResolutionRetries\": 3\r\n      }\r\n    }\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/backends/ps3616?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2JhY2tlbmRzL3BzMzYxNj9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/backends/ps5498?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2JhY2tlbmRzL3BzNTQ5OD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
       "RequestMethod": "PATCH",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"ps5755\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"ps3076\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2c7d59f5-9c5b-4376-9dcf-b33fe6ff187c"
+          "41c7e9bc-964c-4ce6-9079-fe0f9ad37c5d"
         ],
         "If-Match": [
           "*"
@@ -439,7 +438,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "fe66c109-675d-443d-9ff5-f316c2a07831"
+          "ade58c6b-2989-4b6d-ba7b-d08c37bd1463"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -448,16 +447,16 @@
           "1197"
         ],
         "x-ms-correlation-request-id": [
-          "57538bc7-85ce-4dc4-b940-bc372e0c5596"
+          "e48a7c9d-94a5-4971-8c25-f1ce720b4f06"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190729T163124Z:57538bc7-85ce-4dc4-b940-bc372e0c5596"
+          "WESTUS:20190930T220000Z:e48a7c9d-94a5-4971-8c25-f1ce720b4f06"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 29 Jul 2019 16:31:23 GMT"
+          "Mon, 30 Sep 2019 22:00:00 GMT"
         ],
         "Expires": [
           "-1"
@@ -467,13 +466,13 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/backends/ps3616?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2JhY2tlbmRzL3BzMzYxNj9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/backends/ps5498?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2JhY2tlbmRzL3BzNTQ5OD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8f27ecf4-3f64-4706-9d1f-953f5132008e"
+          "4f6aaf06-8c40-40e1-8d0f-37cd60d66dd1"
         ],
         "Accept-Language": [
           "en-US"
@@ -493,13 +492,79 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAFiU=\""
+          "\"AAAAAAAAJuU=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "caa8f7a7-de81-41c5-8437-ea6ab24121f8"
+          "24fb491d-e91f-45f6-adf0-d0b930cec8b4"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "3ed6005e-b724-4268-8284-d581af20de21"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190930T220000Z:3ed6005e-b724-4268-8284-d581af20de21"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 30 Sep 2019 22:00:00 GMT"
+        ],
+        "Content-Length": [
+          "968"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/backends/ps5498\",\r\n  \"type\": \"Microsoft.ApiManagement/service/backends\",\r\n  \"name\": \"ps5498\",\r\n  \"properties\": {\r\n    \"title\": \"ps530\",\r\n    \"description\": \"ps3076\",\r\n    \"url\": \"https://contoso.com/awesomeapi\",\r\n    \"protocol\": \"http\",\r\n    \"properties\": {\r\n      \"serviceFabricCluster\": {\r\n        \"managementEndpoints\": [\r\n          \"https://sfbackend-01.net:443\",\r\n          \"https://sfbackend-02.net:443\"\r\n        ],\r\n        \"clientCertificateThumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\",\r\n        \"serverCertificateThumbprints\": [],\r\n        \"serverX509Names\": [\r\n          {\r\n            \"name\": \"CN=foobar.net\",\r\n            \"issuerCertificateThumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\"\r\n          }\r\n        ],\r\n        \"maxPartitionResolutionRetries\": 3\r\n      }\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/backends/ps5498?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2JhY2tlbmRzL3BzNTQ5OD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "30e45889-5590-4279-9138-700ff6b26480"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "\"AAAAAAAAJuU=\""
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "996f2796-c91e-4882-8fae-1387d0d36026"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -508,19 +573,19 @@
           "11995"
         ],
         "x-ms-correlation-request-id": [
-          "d2300548-5cc9-4762-8656-1ac600642573"
+          "5f63dccb-dc67-45a4-9be2-e58c85d65168"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190729T163124Z:d2300548-5cc9-4762-8656-1ac600642573"
+          "WESTUS:20190930T220001Z:5f63dccb-dc67-45a4-9be2-e58c85d65168"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 29 Jul 2019 16:31:23 GMT"
+          "Mon, 30 Sep 2019 22:00:00 GMT"
         ],
         "Content-Length": [
-          "969"
+          "968"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -529,83 +594,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/backends/ps3616\",\r\n  \"type\": \"Microsoft.ApiManagement/service/backends\",\r\n  \"name\": \"ps3616\",\r\n  \"properties\": {\r\n    \"title\": \"ps4886\",\r\n    \"description\": \"ps5755\",\r\n    \"url\": \"https://contoso.com/awesomeapi\",\r\n    \"protocol\": \"http\",\r\n    \"properties\": {\r\n      \"serviceFabricCluster\": {\r\n        \"managementEndpoints\": [\r\n          \"https://sfbackend-01.net:443\",\r\n          \"https://sfbackend-02.net:443\"\r\n        ],\r\n        \"clientCertificateThumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\",\r\n        \"serverCertificateThumbprints\": [],\r\n        \"serverX509Names\": [\r\n          {\r\n            \"name\": \"CN=foobar.net\",\r\n            \"issuerCertificateThumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\"\r\n          }\r\n        ],\r\n        \"maxPartitionResolutionRetries\": 3\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/backends/ps5498\",\r\n  \"type\": \"Microsoft.ApiManagement/service/backends\",\r\n  \"name\": \"ps5498\",\r\n  \"properties\": {\r\n    \"title\": \"ps530\",\r\n    \"description\": \"ps3076\",\r\n    \"url\": \"https://contoso.com/awesomeapi\",\r\n    \"protocol\": \"http\",\r\n    \"properties\": {\r\n      \"serviceFabricCluster\": {\r\n        \"managementEndpoints\": [\r\n          \"https://sfbackend-01.net:443\",\r\n          \"https://sfbackend-02.net:443\"\r\n        ],\r\n        \"clientCertificateThumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\",\r\n        \"serverCertificateThumbprints\": [],\r\n        \"serverX509Names\": [\r\n          {\r\n            \"name\": \"CN=foobar.net\",\r\n            \"issuerCertificateThumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\"\r\n          }\r\n        ],\r\n        \"maxPartitionResolutionRetries\": 3\r\n      }\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/backends/ps3616?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2JhY2tlbmRzL3BzMzYxNj9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/backends/ps5498?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2JhY2tlbmRzL3BzNTQ5OD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b02e460f-b21e-4f4d-b820-ff0df701a964"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27817.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "\"AAAAAAAAFiU=\""
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "184485ac-781f-4efe-b6a5-7df0a207103c"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
-        ],
-        "x-ms-correlation-request-id": [
-          "7a892b0e-07cc-4762-a6d4-f85ef6b8548c"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190729T163124Z:7a892b0e-07cc-4762-a6d4-f85ef6b8548c"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 29 Jul 2019 16:31:24 GMT"
-        ],
-        "Content-Length": [
-          "969"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/backends/ps3616\",\r\n  \"type\": \"Microsoft.ApiManagement/service/backends\",\r\n  \"name\": \"ps3616\",\r\n  \"properties\": {\r\n    \"title\": \"ps4886\",\r\n    \"description\": \"ps5755\",\r\n    \"url\": \"https://contoso.com/awesomeapi\",\r\n    \"protocol\": \"http\",\r\n    \"properties\": {\r\n      \"serviceFabricCluster\": {\r\n        \"managementEndpoints\": [\r\n          \"https://sfbackend-01.net:443\",\r\n          \"https://sfbackend-02.net:443\"\r\n        ],\r\n        \"clientCertificateThumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\",\r\n        \"serverCertificateThumbprints\": [],\r\n        \"serverX509Names\": [\r\n          {\r\n            \"name\": \"CN=foobar.net\",\r\n            \"issuerCertificateThumbprint\": \"8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2\"\r\n          }\r\n        ],\r\n        \"maxPartitionResolutionRetries\": 3\r\n      }\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/backends/ps3616?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2JhY2tlbmRzL3BzMzYxNj9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "fb1a7d2a-4243-4fe2-89e6-9b5a99811af0"
+          "716f47c5-f153-4ada-937e-63b230743a17"
         ],
         "Accept-Language": [
           "en-US"
@@ -628,25 +627,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "2825c09d-f165-4831-ac33-32afce0dacd3"
+          "9da52932-456c-4f00-904f-063fe6b6c396"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
+          "11994"
         ],
         "x-ms-correlation-request-id": [
-          "e4f2be20-0268-466a-8c41-968747eb5db0"
+          "768d8f76-7c2b-4b2f-a828-df68ef73ecff"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190729T163125Z:e4f2be20-0268-466a-8c41-968747eb5db0"
+          "WESTUS:20190930T220002Z:768d8f76-7c2b-4b2f-a828-df68ef73ecff"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 29 Jul 2019 16:31:24 GMT"
+          "Mon, 30 Sep 2019 22:00:01 GMT"
         ],
         "Content-Length": [
           "83"
@@ -662,13 +661,13 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/backends/ps3616?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2JhY2tlbmRzL3BzMzYxNj9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/backends/ps5498?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2JhY2tlbmRzL3BzNTQ5OD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f30fcb9c-1b02-45a1-a6d1-925c5c3dbad6"
+          "4ddeeb08-7d10-4d19-9e4c-dc3767fb480d"
         ],
         "If-Match": [
           "*"
@@ -694,7 +693,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "91a903bb-e374-4f77-b8a1-7f2f9bd5bc49"
+          "446c3615-7d9b-4362-bbcf-9a8698580dc3"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -703,16 +702,16 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "c05bfec8-4a21-453c-bd13-a9e50048a640"
+          "03e78dfb-98d4-45d2-bad7-eb374e6973f3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190729T163125Z:c05bfec8-4a21-453c-bd13-a9e50048a640"
+          "WESTUS:20190930T220001Z:03e78dfb-98d4-45d2-bad7-eb374e6973f3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 29 Jul 2019 16:31:24 GMT"
+          "Mon, 30 Sep 2019 22:00:01 GMT"
         ],
         "Expires": [
           "-1"
@@ -725,13 +724,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/certificates/ps6495?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2NlcnRpZmljYXRlcy9wczY0OTU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/certificates/ps5250?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2NlcnRpZmljYXRlcy9wczUyNTA/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "506977ad-e88c-4588-b789-707dbc531850"
+          "d558ab9b-678c-42ff-995a-8852e22a569b"
         ],
         "If-Match": [
           "*"
@@ -757,7 +756,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "97a05809-d81d-442e-8030-e860cd7e5509"
+          "0b5cb4ce-b2c3-4b28-9076-cf4ef3b77851"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -766,16 +765,16 @@
           "14998"
         ],
         "x-ms-correlation-request-id": [
-          "11bb9be1-f2f4-43fd-a643-9ccab9cf7e84"
+          "7ca2665d-2b37-40c7-a914-f85c277b5b27"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190729T163125Z:11bb9be1-f2f4-43fd-a643-9ccab9cf7e84"
+          "WESTUS:20190930T220002Z:7ca2665d-2b37-40c7-a914-f85c277b5b27"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 29 Jul 2019 16:31:25 GMT"
+          "Mon, 30 Sep 2019 22:00:01 GMT"
         ],
         "Expires": [
           "-1"
@@ -790,11 +789,11 @@
   ],
   "Names": {
     "": [
-      "ps6495",
-      "ps3616",
-      "ps4886",
-      "ps2861",
-      "ps5755"
+      "ps5250",
+      "ps5498",
+      "ps530",
+      "ps1363",
+      "ps3076"
     ]
   },
   "Variables": {
