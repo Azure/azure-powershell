@@ -16,16 +16,15 @@
 using Microsoft.Azure.Commands.WebApps.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
     /// <summary>
     /// this commandlet will let you get a new Azure Websites using ARM APIs
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppAccessRestriction", SupportsShouldProcess = true)]
-    [OutputType(typeof(PSAccessRestrictionSettings))]
-    public class SetAzureWebAppAccessRestrictionCmdlet : WebAppBaseClientCmdLet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppAccessRestrictionConfig")]
+    [OutputType(typeof(PSAccessRestrictionConfig))]
+    public class GetAzureWebAppAccessRestrictionConfigCmdlet : WebAppBaseClientCmdLet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.", ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
@@ -37,35 +36,16 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Scm site inherits rules set on Main site.")]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter ScmSiteUseMainSiteRestrictionSet { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Deployment Slot name.")]
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = "Deployment Slot name.")]
         public string SlotName { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
             if (!string.IsNullOrWhiteSpace(ResourceGroupName) && !string.IsNullOrWhiteSpace(Name))
             {
-                string updateAction = ScmSiteUseMainSiteRestrictionSet ? "" : "not ";
-                if (ShouldProcess(Name, $"Update Scm Site of WebApp '{Name}' to {updateAction}use Main Site Access Restriction Set"))
-                {
-                    var webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, SlotName));
-                    SiteConfig siteConfig = webApp.SiteConfig;
-
-                    if (siteConfig.ScmIpSecurityRestrictionsUseMain != ScmSiteUseMainSiteRestrictionSet)
-                    {
-                        siteConfig.ScmIpSecurityRestrictionsUseMain = ScmSiteUseMainSiteRestrictionSet;
-
-                        // Update web app configuration
-                        WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, webApp.Location, Name, SlotName, siteConfig);
-                    }
-
-                    var accessRestrictionSettings = new PSAccessRestrictionSettings(webApp.SiteConfig);
-                    WriteObject(accessRestrictionSettings);
-                }
+                var webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, SlotName));
+                var accessRestrictionConfig = new PSAccessRestrictionConfig(ResourceGroupName, Name, webApp.SiteConfig, SlotName);
+                WriteObject(accessRestrictionConfig);
             }
         }
     }
