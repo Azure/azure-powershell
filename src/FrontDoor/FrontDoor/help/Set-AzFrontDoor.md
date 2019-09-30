@@ -39,7 +39,7 @@ Set-AzFrontDoor -ResourceId <String> [-RoutingRule <PSRoutingRule[]>] [-BackendP
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByFieldsWithCertificateNameCheckSet
+### ByFieldsWithCertificateNameCheckParameterSet
 ```
 Set-AzFrontDoor [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
  [-FrontendEndpoint <PSFrontendEndpoint[]>] [-LoadBalancingSetting <PSLoadBalancingSetting[]>]
@@ -48,7 +48,7 @@ Set-AzFrontDoor [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>
  [<CommonParameters>]
 ```
 
-### ByFieldsWithBackendPoolsSettingsSet
+### ByFieldsWithBackendPoolsSettingsParameterSet
 ```
 Set-AzFrontDoor [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
  [-FrontendEndpoint <PSFrontendEndpoint[]>] [-LoadBalancingSetting <PSLoadBalancingSetting[]>]
@@ -153,7 +153,7 @@ Settings for all backendPools
 
 ```yaml
 Type: Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSettings
-Parameter Sets: ByFieldsParameterSet, ByObjectParameterSet, ByResourceIdParameterSet, ByFieldsWithBackendPoolsSettingsSet
+Parameter Sets: ByFieldsParameterSet, ByObjectParameterSet, ByResourceIdParameterSet, ByFieldsWithBackendPoolsSettingsParameterSet
 Aliases:
 
 Required: False
@@ -183,7 +183,7 @@ Whether to disable certificate name check on HTTPS requests to all backend pools
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByObjectParameterSet, ByResourceIdParameterSet, ByFieldsWithCertificateNameCheckSet
+Parameter Sets: ByObjectParameterSet, ByResourceIdParameterSet, ByFieldsWithCertificateNameCheckParameterSet
 Aliases:
 
 Required: False

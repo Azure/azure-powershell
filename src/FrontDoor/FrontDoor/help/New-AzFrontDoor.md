@@ -12,7 +12,7 @@ Create a new Azure Front Door load balancer
 
 ## SYNTAX
 
-### ByFieldsWithBackendPoolsSettingsSet (Default)
+### ByFieldsWithBackendPoolsSettingsParameterSet (Default)
 ```
 New-AzFrontDoor -ResourceGroupName <String> -Name <String> -RoutingRule <PSRoutingRule[]>
  -BackendPool <PSBackendPool[]> -FrontendEndpoint <PSFrontendEndpoint[]>
@@ -21,7 +21,7 @@ New-AzFrontDoor -ResourceGroupName <String> -Name <String> -RoutingRule <PSRouti
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByFieldsWithCertificateNameCheckSet
+### ByFieldsWithCertificateNameCheckParameterSet
 ```
 New-AzFrontDoor -ResourceGroupName <String> -Name <String> -RoutingRule <PSRoutingRule[]>
  -BackendPool <PSBackendPool[]> -FrontendEndpoint <PSFrontendEndpoint[]>

@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AzFrontDoorBackendPoolsSettingsObject [-EnforceCertificateNameCheck <PSEnabledState>]
+New-AzFrontDoorBackendPoolsSettingsObject -Name <String> [-EnforceCertificateNameCheck <PSEnabledState>]
  [-SendRecvTimeoutSeconds <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -57,6 +57,21 @@ Aliases:
 Accepted values: Enabled, Disabled
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+BackendPoolsSettings name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
