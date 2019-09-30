@@ -19,11 +19,14 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSAzureFirewallPolicyBaseRule
     {
-        
+
         [JsonProperty(Order = 1)]
         public string Name { get; set; }
 
         [JsonProperty(Order = 2)]
         public uint Priority { get; set; }
+
+        [JsonProperty(Order = 3)]
+        public string RuleType { get; set; }
     }
 }

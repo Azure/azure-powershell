@@ -61,8 +61,8 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name,
                 Priority = this.Priority,
                 RuleConditions = this.RuleConditions?.ToList(),
-                Action = new PSAzureFirewallPolicyFilterRuleAction { Type = ActionType }
-
+                Action = new PSAzureFirewallPolicyFilterRuleAction { Type = ActionType },
+                RuleType = "FirewallPolicyFilterRule"
             };
             WriteObject(applicationRc);
         }

@@ -86,7 +86,8 @@ namespace Microsoft.Azure.Commands.Network
                 SourceAddresses = this.SourceAddress?.ToList(),
                 Protocols = protocolsAsWeExpectThem,
                 TargetFqdns = this.TargetFqdns?.ToList(),
-                FqdnTags = this.FqdnTags?.ToList()
+                FqdnTags = this.FqdnTags?.ToList(),
+                RuleConditionType = "ApplicationRuleCondition"
             };
             WriteObject(applicationRule);
         }
