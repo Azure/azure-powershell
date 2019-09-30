@@ -33,6 +33,7 @@ using SDKMonitor = Microsoft.Azure.Management.Monitor;
 using CommonMonitor = Microsoft.Azure.Management.Monitor.Version2018_09_01;
 using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Graph.RBAC;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
@@ -85,8 +86,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             // Enable undo functionality as well as mock recording
             using (var context = MockContext.Start(callingClassType, mockName))
             {
-                SetupManagementClients(context);
                 Helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                SetupManagementClients(context);
                 Helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + GetType().Name + ".ps1",
@@ -159,6 +160,13 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 }
             }
             graphClient.TenantID = tenantId;
+            if (AzureRmProfileProvider.Instance != null &&
+                AzureRmProfileProvider.Instance.Profile != null &&
+                AzureRmProfileProvider.Instance.Profile.DefaultContext != null &&
+                AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant != null)
+            {
+                AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = tenantId;
+            }
             return graphClient;
         }
 
