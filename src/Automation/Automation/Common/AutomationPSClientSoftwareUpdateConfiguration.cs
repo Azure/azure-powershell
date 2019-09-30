@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                 : null,
                             ExcludedPackageNameMasks = updateConfig.Linux != null ? updateConfig.Linux.ExcludedPackageNameMasks : null,
                             IncludedPackageNameMasks = updateConfig.Linux != null ? updateConfig.Linux.IncludedPackageNameMasks : null,
-                            RebootSetting = updateConfig.Windows != null ? updateConfig.Windows.rebootSetting.ToString() : RebootSetting.IfRequired.ToString(),
+                            RebootSetting = updateConfig.Linux != null ? updateConfig.Linux.rebootSetting.ToString() : RebootSetting.IfRequired.ToString(),
                         },
                         Duration = updateConfig.Duration,
                         AzureVirtualMachines = updateConfig.AzureVirtualMachines,
