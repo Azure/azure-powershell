@@ -113,7 +113,7 @@ function Test-VolumeCrud
         Assert-AreEqual $retrievedVolume.ExportPolicy.Rules[0].AllowedClients '0.0.0.0/0'
         Assert-AreEqual $retrievedVolume.ExportPolicy.Rules[1].AllowedClients '1.2.3.0/24'
         Assert-AreEqual $retrievedVolume.ProtocolTypes[0] 'NFSv3'
-        Assert-AreEqual $retrievedVolume.ProtocolTypes[1] 'NFSv4'
+        Assert-AreEqual $retrievedVolume.ProtocolTypes[1] 'NFSv4.1'
         Assert-NotNull $retrievedVolume.MountTargets
 
         # create second volume and check using the confirm flag
