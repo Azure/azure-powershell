@@ -41,6 +41,9 @@
         - New-VpnConnection
         - Update-VpnConnection
 * Fixed documents for some PowerShell examples to use Az cmdlets instead of AzureRM cmdlets
+* New Generations and SKUs for VirtualNetworkGateways
+  - Introduce new Generations for VirtualNetworkGateways.
+  - Introduce new high throughput SKUs for VirtualNetworkGateways.
 
 ## Version 1.13.0
 * Updated New-AzPrivateLinkServiceIpConfig
