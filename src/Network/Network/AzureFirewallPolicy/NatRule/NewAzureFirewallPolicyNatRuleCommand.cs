@@ -75,7 +75,8 @@ namespace Microsoft.Azure.Commands.Network
                 RuleConditions = this.RuleConditions?.ToList(),
                 Action = new PSAzureFirewallPolicyNatRuleAction { Type = ActionType },
                 TranslatedAddress = this.TranslatedAddress,
-                TranslatedPort = this.TranslatedPort
+                TranslatedPort = this.TranslatedPort,
+                RuleType = "FirewallPolicyNatRule"
             };
 
             WriteObject(networkRuleCollection);

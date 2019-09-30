@@ -76,7 +76,8 @@ namespace Microsoft.Azure.Commands.Network
                 Protocol = this.Protocols?.ToList(),
                 SourceAddresses = this.SourceAddresses?.ToList(),
                 DestinationAddresses = this.DestinationAddresses?.ToList(),
-                DestinationPorts = this.DestinationPorts?.ToList()
+                DestinationPorts = this.DestinationPorts?.ToList(),
+                RuleConditionType = "NetworkRuleCondition"
             };
             WriteObject(networkRule);
         }

@@ -42,5 +42,22 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSAzureFirewallPolicyBaseRule> Rules { get; set; }
 
         public PSAzureFirewallPolicy AzureFirewallPolicy { get; set; }
+
+        public PSAzureFirewallPolicyBaseRule GetRuleByName(string ruleName)
+        {
+            if (string.IsNullOrEmpty(ruleName))
+            {
+                throw new ArgumentException($"Rule name cannot be an empty string.");
+            }
+
+            var rule = this.Rules?.FirstOrDefault(r => ruleName.Equals(r.Name, StringComparison.OrdinalIgnoreCase));
+
+            if (rule == null)
+            {
+                throw new ArgumentException($"Rule with name {ruleName} does not exist.");
+            }
+
+            return rule;
+        }
     }
 }

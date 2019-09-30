@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             this.RuleConditions.Add(rule);
         }
 
-        public PSAzureFirewallPolicyRuleCondition GetRuleByName(string ruleName)
+        public PSAzureFirewallPolicyRuleCondition GetRuleConditionByName(string ruleName)
         {
             if (string.IsNullOrEmpty(ruleName))
             {
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public void RemoveRuleByName(string ruleName)
         {
-            var rule = this.GetRuleByName(ruleName);
+            var rule = this.GetRuleConditionByName(ruleName);
             this.RuleConditions?.Remove(rule);
         }
     }
