@@ -45,24 +45,23 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSVirtualHub GetVirtualHub(string resourceGroupName, string name)
         {
-            MNM.VirtualHub virtualHub = null;
-            PSVirtualHub psVirtualHub = null;
-
             try
             {
                 //// The following code will throw if resource is not found
-                virtualHub = this.VirtualHubClient.Get(resourceGroupName, name);
+                MNM.VirtualHub virtualHub = this.VirtualHubClient.Get(resourceGroupName, name);
 
-                psVirtualHub = ToPsVirtualHub(virtualHub);
+                PSVirtualHub psVirtualHub = ToPsVirtualHub(virtualHub);
                 psVirtualHub.ResourceGroupName = resourceGroupName;
+                return psVirtualHub;
             }
-            catch (Microsoft.Azure.Management.Network.Models.ErrorException)
+            catch (Exception ex)
             {
-                    // Resource is not present
-                    return psVirtualHub;
+                if (ex is Microsoft.Azure.Management.Network.Models.ErrorException || ex is Rest.Azure.CloudException)
+                {
+                    return null;
+                }
+                throw;
             }
-
-            return psVirtualHub;
         }
 
         public bool IsVirtualHubPresent(string resourceGroupName, string name)
