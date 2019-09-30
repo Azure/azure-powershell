@@ -263,6 +263,8 @@ function Test-NetworkSecurityGroup-MultiValuedRules
     $securityRule1Name = Get-ResourceName
     $securityRule2Name = Get-ResourceName
     $securityRule3Name = Get-ResourceName
+	$securityRule4Name = Get-ResourceName
+	$securityRule5Name = Get-ResourceName
     $domainNameLabel = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/NetworkSecurityGroups"
@@ -277,9 +279,11 @@ function Test-NetworkSecurityGroup-MultiValuedRules
         $securityRule1 = New-AzNetworkSecurityRuleConfig -Name $securityRule1Name -Description "desciption" -Protocol Tcp -SourcePortRange 23-45,80-90 -DestinationPortRange 46-56,70-80 -SourceAddressPrefix 10.10.20.0/24,192.168.0.0/24 -DestinationAddressPrefix 10.10.30.0/24,192.168.2.0/24 -Access Allow -Priority 123 -Direction Inbound
         $securityRule2 = New-AzNetworkSecurityRuleConfig -Name $securityRule2Name -Description "desciption" -Protocol Tcp -SourcePortRange 10-20,30-40 -DestinationPortRange 10-20,30-40 -SourceAddressPrefix Storage -DestinationAddressPrefix Storage -Access Allow -Priority 120 -Direction Inbound
         $securityRule3 = New-AzNetworkSecurityRuleConfig -Name $securityRule3Name -Description "desciption" -Protocol Icmp -SourcePortRange 50-60,100-110 -DestinationPortRange 120-130,131-140 -SourceAddressPrefix Storage -DestinationAddressPrefix Storage -Access Allow -Priority 125 -Direction Inbound
+        $securityRule4 = New-AzNetworkSecurityRuleConfig -Name $securityRule4Name -Description "desciption" -Protocol Esp -SourcePortRange 150-160,170-180 -DestinationPortRange 190-200,210-220 -SourceAddressPrefix Storage -DestinationAddressPrefix Storage -Access Allow -Priority 127 -Direction Inbound
+        $securityRule5 = New-AzNetworkSecurityRuleConfig -Name $securityRule5Name -Description "desciption" -Protocol Ah -SourcePortRange 230-240,250-260 -DestinationPortRange 270-280,290-300 -SourceAddressPrefix Storage -DestinationAddressPrefix Storage -Access Allow -Priority 129 -Direction Inbound
 
         # Create NetworkSecurityGroup
-        $nsg = New-AzNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgname -Location $location -SecurityRules $securityRule1,$securityRule2,$securityRule3
+        $nsg = New-AzNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgname -Location $location -SecurityRules $securityRule1,$securityRule2,$securityRule3,$securityRule4,$securityRule5
 
         # Get NetworkSecurityGroup
         $getNsg = Get-AzNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName
@@ -289,7 +293,7 @@ function Test-NetworkSecurityGroup-MultiValuedRules
         Assert-AreEqual $nsgName $getNsg.Name
         Assert-NotNull $getNsg.Location
         Assert-NotNull $getNsg.Etag
-        Assert-AreEqual 3 @($getNsg.SecurityRules).Count
+        Assert-AreEqual 5 @($getNsg.SecurityRules).Count
         Assert-AreEqual 6 @($getNsg.DefaultSecurityRules).Count
         Assert-AreEqual "AllowVnetInBound" $getNsg.DefaultSecurityRules[0].Name
         Assert-AreEqual "AllowAzureLoadBalancerInBound" $getNsg.DefaultSecurityRules[1].Name
@@ -352,6 +356,40 @@ function Test-NetworkSecurityGroup-MultiValuedRules
         Assert-AreEqual "Allow" $getNsg.SecurityRules[2].Access
         Assert-AreEqual "125" $getNsg.SecurityRules[2].Priority
         Assert-AreEqual "Inbound" $getNsg.SecurityRules[2].Direction
+
+        # verify rule 4
+        Assert-AreEqual "desciption" $getNsg.SecurityRules[3].Description
+        Assert-AreEqual "Esp" $getNsg.SecurityRules[3].Protocol
+        Assert-AreEqual 2 @($getNsg.SecurityRules[3].SourcePortRange).Count
+        Assert-AreEqual "150-160" $getNsg.SecurityRules[3].SourcePortRange[0]
+        Assert-AreEqual "170-180" $getNsg.SecurityRules[3].SourcePortRange[1]
+        Assert-AreEqual 2 @($getNsg.SecurityRules[3].DestinationPortRange).Count
+        Assert-AreEqual "190-200" $getNsg.SecurityRules[3].DestinationPortRange[0]
+        Assert-AreEqual "210-220" $getNsg.SecurityRules[3].DestinationPortRange[1]
+        Assert-AreEqual 1 @($getNsg.SecurityRules[3].SourceAddressPrefix).Count
+        Assert-AreEqual "Storage" $getNsg.SecurityRules[3].SourceAddressPrefix[0]
+        Assert-AreEqual 1 @($getNsg.SecurityRules[3].DestinationAddressPrefix).Count
+        Assert-AreEqual "Storage" $getNsg.SecurityRules[3].DestinationAddressPrefix[0]
+        Assert-AreEqual "Allow" $getNsg.SecurityRules[3].Access
+        Assert-AreEqual "127" $getNsg.SecurityRules[3].Priority
+        Assert-AreEqual "Inbound" $getNsg.SecurityRules[3].Direction
+
+        # verify rule 5
+        Assert-AreEqual "desciption" $getNsg.SecurityRules[4].Description
+        Assert-AreEqual "Ah" $getNsg.SecurityRules[4].Protocol
+        Assert-AreEqual 2 @($getNsg.SecurityRules[4].SourcePortRange).Count
+        Assert-AreEqual "230-240" $getNsg.SecurityRules[4].SourcePortRange[0]
+        Assert-AreEqual "250-260" $getNsg.SecurityRules[4].SourcePortRange[1]
+        Assert-AreEqual 2 @($getNsg.SecurityRules[4].DestinationPortRange).Count
+        Assert-AreEqual "270-280" $getNsg.SecurityRules[4].DestinationPortRange[0]
+        Assert-AreEqual "290-300" $getNsg.SecurityRules[4].DestinationPortRange[1]
+        Assert-AreEqual 1 @($getNsg.SecurityRules[4].SourceAddressPrefix).Count
+        Assert-AreEqual "Storage" $getNsg.SecurityRules[4].SourceAddressPrefix[0]
+        Assert-AreEqual 1 @($getNsg.SecurityRules[4].DestinationAddressPrefix).Count
+        Assert-AreEqual "Storage" $getNsg.SecurityRules[4].DestinationAddressPrefix[0]
+        Assert-AreEqual "Allow" $getNsg.SecurityRules[4].Access
+        Assert-AreEqual "129" $getNsg.SecurityRules[4].Priority
+        Assert-AreEqual "Inbound" $getNsg.SecurityRules[4].Direction
 
         # list
         $list = Get-AzNetworkSecurityGroup -ResourceGroupName $rgname
