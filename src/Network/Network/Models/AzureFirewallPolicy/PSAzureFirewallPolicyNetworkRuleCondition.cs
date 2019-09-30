@@ -22,11 +22,11 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public List<string> Protocol { get; set; }
 
-        public List<string> SourceAddress { get; set; }
+        public List<string> SourceAddresses { get; set; }
 
-        public List<string> DestinationAddress { get; set; }
+        public List<string> DestinationAddresses { get; set; }
         
-        public List<string> DestinationPort { get; set; }
+        public List<string> DestinationPorts { get; set; }
 
         [JsonIgnore]
         public string ProtocolsText
@@ -37,19 +37,19 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string SourceAddressesText
         {
-            get { return JsonConvert.SerializeObject(SourceAddress, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(SourceAddresses, Formatting.Indented); }
         }
 
         [JsonIgnore]
         public string DestinationAddressesText
         {
-            get { return JsonConvert.SerializeObject(DestinationAddress, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(DestinationAddresses, Formatting.Indented); }
         }
         
         [JsonIgnore]
         public string DestinationPortsText
         {
-            get { return JsonConvert.SerializeObject(DestinationPort, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(DestinationPorts, Formatting.Indented); }
         }
 
         public void AddProtocol(string protocolType)
