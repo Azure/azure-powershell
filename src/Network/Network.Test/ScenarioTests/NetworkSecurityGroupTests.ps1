@@ -263,18 +263,18 @@ function Test-NetworkSecurityGroup-MultiValuedRules
     $securityRule1Name = Get-ResourceName
     $securityRule2Name = Get-ResourceName
     $securityRule3Name = Get-ResourceName
-	$securityRule4Name = Get-ResourceName
-	$securityRule5Name = Get-ResourceName
+    $securityRule4Name = Get-ResourceName
+    $securityRule5Name = Get-ResourceName
     $domainNameLabel = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/NetworkSecurityGroups"
     $location = Get-ProviderLocation $resourceTypeParent
-    
+
     try 
     {
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
-        
+
         # Create SecurityRule
         $securityRule1 = New-AzNetworkSecurityRuleConfig -Name $securityRule1Name -Description "desciption" -Protocol Tcp -SourcePortRange 23-45,80-90 -DestinationPortRange 46-56,70-80 -SourceAddressPrefix 10.10.20.0/24,192.168.0.0/24 -DestinationAddressPrefix 10.10.30.0/24,192.168.2.0/24 -Access Allow -Priority 123 -Direction Inbound
         $securityRule2 = New-AzNetworkSecurityRuleConfig -Name $securityRule2Name -Description "desciption" -Protocol Tcp -SourcePortRange 10-20,30-40 -DestinationPortRange 10-20,30-40 -SourceAddressPrefix Storage -DestinationAddressPrefix Storage -Access Allow -Priority 120 -Direction Inbound
@@ -287,7 +287,7 @@ function Test-NetworkSecurityGroup-MultiValuedRules
 
         # Get NetworkSecurityGroup
         $getNsg = Get-AzNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName
-        
+
         #verification
         Assert-AreEqual $rgName $getNsg.ResourceGroupName
         Assert-AreEqual $nsgName $getNsg.Name
@@ -302,7 +302,7 @@ function Test-NetworkSecurityGroup-MultiValuedRules
         Assert-AreEqual "AllowInternetOutBound" $getNsg.DefaultSecurityRules[4].Name
         Assert-AreEqual "DenyAllOutBound" $getNsg.DefaultSecurityRules[5].Name
 
-		# verify rule 1.
+        # verify rule 1.
         Assert-AreEqual $securityRule1Name $getNsg.SecurityRules[0].Name
         Assert-NotNull $getNsg.SecurityRules[0].Etag
         Assert-AreEqual "desciption" $getNsg.SecurityRules[0].Description
@@ -323,8 +323,8 @@ function Test-NetworkSecurityGroup-MultiValuedRules
         Assert-AreEqual "123" $getNsg.SecurityRules[0].Priority
         Assert-AreEqual "Inbound" $getNsg.SecurityRules[0].Direction
 
-		# verify rule 2
-		Assert-AreEqual "desciption" $getNsg.SecurityRules[1].Description
+        # verify rule 2
+        Assert-AreEqual "desciption" $getNsg.SecurityRules[1].Description
         Assert-AreEqual "Tcp" $getNsg.SecurityRules[1].Protocol
         Assert-AreEqual 2 @($getNsg.SecurityRules[1].SourcePortRange).Count
         Assert-AreEqual "10-20" $getNsg.SecurityRules[1].SourcePortRange[0]
@@ -412,7 +412,7 @@ function Test-NetworkSecurityGroup-MultiValuedRules
         # Delete NetworkSecurityGroup
         $delete = Remove-AzNetworkSecurityGroup -ResourceGroupName $rgname -name $nsgName -PassThru -Force
         Assert-AreEqual true $delete
-        
+
         $list = Get-AzNetworkSecurityGroup -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
