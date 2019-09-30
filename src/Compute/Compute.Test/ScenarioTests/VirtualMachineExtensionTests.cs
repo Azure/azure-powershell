@@ -115,6 +115,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionExtensionSinglePassEnableAndDisableWithNonDefaultParams()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionExtensionSinglePassEnableAndDisableWithNonDefaultParams");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineBginfoExtension()
         {
             TestRunner.RunTestScript("Test-VirtualMachineBginfoExtension");
