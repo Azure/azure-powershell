@@ -100,10 +100,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the read scale option to assign to the Azure SQL Database
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)",
+            HelpMessage = "If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica. This property is only settable for Premium and Business Critical databases.",
             ParameterSetName = UpdateParameterSetName)]
         [Parameter(Mandatory = false,
-            HelpMessage = "The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)",
+            HelpMessage = "If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica. This property is only settable for Premium and Business Critical databases.",
             ParameterSetName = VcoreDatabaseParameterSet)]
         [ValidateNotNullOrEmpty]
         public DatabaseReadScale ReadScale { get; set; }

@@ -331,7 +331,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReadScale
-The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)
+If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica. This property is only settable for Premium and Business Critical databases.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale
