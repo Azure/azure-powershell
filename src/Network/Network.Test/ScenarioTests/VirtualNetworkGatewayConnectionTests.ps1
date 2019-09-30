@@ -572,3 +572,112 @@ function Test-VirtualNetworkGatewayConnectionVpnDeviceConfigurations
         Clean-ResourceGroup $rgname
      }
 }
+
+function Test-VirtualNetworkGatewayConnectionPacketCapture
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $localnetName = Get-ResourceName
+    $vnetConnectionName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
+    $resourceTypeParent = "Microsoft.Network/connections"
+    $location = Get-ProviderLocation $resourceTypeParent "centraluseuap"
+    
+    try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+      
+	  #create SAS URL
+	  $storetype = 'Standard_GRS'
+	  $containerName = "testcontainer"
+	  $storeName = 'sto' + $rgname;
+	  New-AzStorageAccount -ResourceGroupName $rgname -Name $storeName -Location $location -Type $storetype
+	  $key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeName
+	  $context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
+	  New-AzStorageContainer -Name $containerName -Context $context
+	  $container = Get-AzStorageContainer -Name $containerName -Context $context
+	  $now=get-date
+	  $sasurl = New-AzureStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
+
+      # Create the Virtual Network
+      $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+      # Create the publicip
+      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel    
+
+      # Create VirtualNetworkGateway
+      $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+
+      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false
+      $vnetGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $vnetGateway.ResourceGroupName $actual.ResourceGroupName	
+      Assert-AreEqual $vnetGateway.Name $actual.Name	
+      #Assert-AreEqual "Vpn" $expected.GatewayType
+      #Assert-AreEqual "RouteBased" $expected.VpnType
+    
+      # Create LocalNetworkGateway    
+      $actual = New-AzLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.3.10
+      $localnetGateway = Get-AzLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName
+      Assert-AreEqual $localnetGateway.ResourceGroupName $actual.ResourceGroupName	
+      Assert-AreEqual $localnetGateway.Name $actual.Name	
+      Assert-AreEqual "192.168.3.10" $localnetGateway.GatewayIpAddress  
+      Assert-AreEqual "192.168.0.0/16" $localnetGateway.LocalNetworkAddressSpace.AddressPrefixes[0]
+      $localnetGateway.Location = $location
+
+      # Create & Get VirtualNetworkGatewayConnection
+      $connection = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -ConnectionProtocol IKEv1
+      
+	  #StartPacketCapture on gateway with Name parameter
+	  $output = Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName  $rgname -Name $vnetConnectionName
+	  Assert-AreEqual $connection.ResourceGroupName $output.ResourceGroupName	
+      Assert-AreEqual $connection.Name $output.Name
+	  Assert-AreEqual $connection.ResourceGroupName $output.ResourceGroupName	
+      Assert-AreEqual $connection.Location $output.Location
+	  Assert-AreEqual $output.Code "Succeeded"
+
+	  #StopPacketCapture on gateway with Name parameter
+	  $output = Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName  $rgname -Name $vnetConnectionName -SasUrl $sasurl
+	  Assert-AreEqual $connection.ResourceGroupName $output.ResourceGroupName	
+      Assert-AreEqual $connection.Name $output.Name
+	  Assert-AreEqual $connection.ResourceGroupName $output.ResourceGroupName	
+      Assert-AreEqual $connection.Location $output.Location
+	  Assert-AreEqual $connection.Code "Succeeded"
+
+	  #StartPacketCapture on gateway object
+	  $output = Start-AzVirtualNetworkGatewayConnectionPacketCapture -InputObject $connection
+	  Assert-AreEqual $connection.ResourceGroupName $output.ResourceGroupName	
+      Assert-AreEqual $connection.Name $output.Name
+	  Assert-AreEqual $connection.ResourceGroupName $output.ResourceGroupName	
+      Assert-AreEqual $connection.Location $output.Location
+	  Assert-AreEqual $connection.Code "Succeeded"
+
+	  #StopPacketCapture on gateway object
+	  $output = Stop-AzVirtualNetworkGatewayConnectionPacketCapture -InputObject $connection -SasUrl $sasurl
+	  Assert-AreEqual $connection.ResourceGroupName $output.ResourceGroupName	
+      Assert-AreEqual $connection.Name $output.Name
+	  Assert-AreEqual $connection.ResourceGroupName $output.ResourceGroupName	
+      Assert-AreEqual $connection.Location $output.Location
+	  Assert-AreEqual $connection.Code "Succeeded"
+	  
+      # Delete VirtualNetworkGatewayConnection
+      $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $connection.ResourceGroupName -name $vnetConnectionName -PassThru -Force
+      Assert-AreEqual true $delete
+    
+      $list = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $connection.ResourceGroupName
+      Assert-AreEqual 0 @($list).Count
+     }
+     finally
+     {
+      # Cleanup
+        Clean-ResourceGroup $rgname
+     }
+}
