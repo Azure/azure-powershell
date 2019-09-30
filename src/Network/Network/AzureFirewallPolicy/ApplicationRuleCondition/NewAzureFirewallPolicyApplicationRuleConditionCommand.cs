@@ -83,10 +83,10 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 Description = this.Description,
-                SourceAddress = this.SourceAddress?.ToList(),
-                Protocol = protocolsAsWeExpectThem,
-                TargetFqdn = this.TargetFqdns?.ToList(),
-                FqdnTag = this.FqdnTags?.ToList()
+                SourceAddresses = this.SourceAddress?.ToList(),
+                Protocols = protocolsAsWeExpectThem,
+                TargetFqdns = this.TargetFqdns?.ToList(),
+                FqdnTags = this.FqdnTags?.ToList()
             };
             WriteObject(applicationRule);
         }

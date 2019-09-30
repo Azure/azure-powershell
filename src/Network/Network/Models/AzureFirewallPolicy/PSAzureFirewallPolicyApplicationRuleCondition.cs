@@ -22,39 +22,39 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
 
         [JsonProperty(Order = 3)]
-        public List<string> SourceAddress { get; set; }
+        public List<string> SourceAddresses { get; set; }
 
         [JsonProperty(Order = 4)]
-        public List<string> TargetFqdn { get; set; }
+        public List<string> TargetFqdns { get; set; }
 
         [JsonProperty(Order = 5)]
-        public List<string> FqdnTag { get; set; }
+        public List<string> FqdnTags { get; set; }
 
         [JsonProperty(Order = 6)]
-        public List<PSAzureFirewallPolicyApplicationRuleProtocol> Protocol { get; set; }
+        public List<PSAzureFirewallPolicyApplicationRuleProtocol> Protocols { get; set; }
 
         [JsonIgnore]
         public string ProtocolsText
         {
-            get { return JsonConvert.SerializeObject(Protocol, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(Protocols, Formatting.Indented); }
         }
 
         [JsonIgnore]
         public string SourceAddressesText
         {
-            get { return JsonConvert.SerializeObject(SourceAddress, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(SourceAddresses, Formatting.Indented); }
         }
 
         [JsonIgnore]
         public string TargetFqdnsText
         {
-            get { return JsonConvert.SerializeObject(TargetFqdn, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(TargetFqdns, Formatting.Indented); }
         }
 
         [JsonIgnore]
         public string FqdnTagsText
         {
-            get { return JsonConvert.SerializeObject(FqdnTag, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(FqdnTags, Formatting.Indented); }
         }
 
         public void AddProtocol(string protocolType, uint port = 0)
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
             var protocol = PSAzureFirewallPolicyApplicationRuleProtocol.MapUserInputToApplicationRuleProtocol(stringToMap);
 
-            (this.Protocol ?? (this.Protocol = new List<PSAzureFirewallPolicyApplicationRuleProtocol>())).Add(protocol);
+            (this.Protocols ?? (this.Protocols = new List<PSAzureFirewallPolicyApplicationRuleProtocol>())).Add(protocol);
         }
     }
 }

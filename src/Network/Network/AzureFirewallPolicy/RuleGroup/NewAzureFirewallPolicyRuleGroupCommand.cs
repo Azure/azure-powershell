@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The list of application rules")]
+            HelpMessage = "The list of rules")]
         [ValidateNotNullOrEmpty]
-        public PSAzureFirewallPolicyBaseRule[] Rules { get; set; }
+        public PSAzureFirewallPolicyBaseRule[] Rule { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 Priority = this.Priority,
-                Rules = this.Rules?.ToList(),
+                Rules = this.Rule?.ToList(),
             };
 
 
