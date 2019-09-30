@@ -243,8 +243,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <param name="database">Database object</param>
         public AzureSqlDatabaseModel(string resourceGroup, string serverName, Management.Sql.Models.Database database)
         {
-            DatabaseReadScale readScale = DatabaseReadScale.Enabled;
-
             ResourceGroupName = resourceGroup;
             ServerName = serverName;
             CollationName = database.Collation;
@@ -267,8 +265,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             RequestedServiceObjectiveName = database.RequestedServiceObjectiveName;
 
-            Enum.TryParse<DatabaseReadScale>(database.ReadScale.ToString(), true, out readScale);
-            ReadScale = readScale;
+            DatabaseReadScale readScale;
+            if (Enum.TryParse<DatabaseReadScale>(database.ReadScale.ToString(), true, out readScale))
+            {
+                ReadScale = readScale;
+            }
 
             ZoneRedundant = database.ZoneRedundant;
 
