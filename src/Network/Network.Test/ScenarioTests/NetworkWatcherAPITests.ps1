@@ -114,7 +114,7 @@ function Wait-Vm($vm)
     $minutes = 30;
     while((Get-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name).ProvisioningState -ne "Succeeded")
     {
-        Start-Sleep 60;
+        Start-TestSleep 60;
         if(--$minutes -eq 0)
         {
             break;
