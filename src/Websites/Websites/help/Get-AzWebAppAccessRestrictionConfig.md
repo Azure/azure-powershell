@@ -4,29 +4,29 @@ Module Name: Az.Websites
 schema: 2.0.0
 ---
 
-# Set-AzWebAppAccessRestriction
+# Get-AzWebAppAccessRestrictionConfig
 
 ## SYNOPSIS
-Sets the inheritance of Main site Access Restiction settings to SCM Site for an Azure Web App.
+Gets Access Restiction configuration for an Azure Web App.
 
 ## SYNTAX
 
 ```
-Set-AzWebAppAccessRestriction [-ResourceGroupName] <String> [-Name] <String> [-ScmSiteUseMainSiteRestrictionSet]
- [-SlotName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzWebAppAccessRestrictionConfig [-ResourceGroupName] <String> [-Name] <String> [[-SlotName] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzWebAppAccessRestriction** cmdlet gets Access Restriction settings about an Azure Web App.
+The **Get-AzWebAppAccessRestrictionConfig** cmdlet gets Access Restriction config about an Azure Web App.
 
 ## EXAMPLES
 
-### Example 1: Set a Web App SCM Site to use Access Resstrictions from Main Site from a resource group
+### Example 1: Get a Web App Access Restriction Config from a resource group
 ```
-PS C:\>Set-AzWebAppAccessRestriction -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite" -ScmSiteUseMainSiteRestrictionSet
+PS C:\>Get-AzWebAppAccessRestrictionConfig -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite"
 ```
 
-This command set a Web App named ContosoSite that belongs to the resource group Default-Web-WestUS to use access restriction settings of main site on scm site.
+This command gets the access restriction config of a Web App named ContosoSite that belongs to the resource group Default-Web-WestUS.
 
 ## PARAMETERS
 
@@ -75,21 +75,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ScmSiteUseMainSiteRestrictionSet
-Scm site inherits rules set on Main site.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SlotName
 Deployment Slot name.
 
@@ -99,7 +84,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -112,18 +97,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Management.Automation.SwitchParameter
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionSettings
+### Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionConfig
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Get-AzWebAppAccessRestriction](./Get-AzWebAppAccessRestriction.md)
+[Update-AzWebAppAccessRestrictionConfig](./Update-AzWebAppAccessRestrictionConfig.md)
 
-[Add-AzWebAppAccessRestriction](./Add-AzWebAppAccessRestriction.md)
+[Add-AzWebAppAccessRestrictionRule](./Add-AzWebAppAccessRestrictionRule.md)
 
-[Remove-AzWebAppAccessRestriction](./Remove-AzWebAppAccessRestriction.md)
+[Remove-AzWebAppAccessRestrictionRule](./Remove-AzWebAppAccessRestrictionRule.md)

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.WebApps.Models
 {
-    public class PSAccessRestrictionSettings
+    public class PSAccessRestrictionConfig
     {
-        internal PSAccessRestrictionSettings(SiteConfig siteConfig)
+        internal PSAccessRestrictionConfig(string resourceGroupName, string webAppName, SiteConfig siteConfig, string slotName = null)
         {
-            ScmSiteUseMainSiteRestrictions = siteConfig.ScmIpSecurityRestrictionsUseMain ?? false;
+            ResourceGroupName = resourceGroupName;
+            WebAppName = webAppName;
+            SlotName = slotName;
+            ScmSiteUseMainSiteRestrictionConfig = siteConfig.ScmIpSecurityRestrictionsUseMain ?? false;
 
             MainSiteAccessRestrictions = new List<PSAccessRestriction>();
             if (siteConfig.IpSecurityRestrictions != null)
@@ -45,10 +48,16 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                 }
             }
         }
+        public string ResourceGroupName { get; set; }
+        
+        public string WebAppName { get; set; }
+        
+        public string SlotName { get; set; }
+
         public List<PSAccessRestriction> MainSiteAccessRestrictions { get; set; }
 
         public List<PSAccessRestriction> ScmSiteAccessRestrictions { get; set; }
 
-        public bool ScmSiteUseMainSiteRestrictions { get; set; }
+        public bool ScmSiteUseMainSiteRestrictionConfig { get; set; }
     }
 }

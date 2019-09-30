@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.4.1'
+ModuleVersion = '1.4.2'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -97,9 +97,9 @@ CmdletsToExport = 'Get-AzAppServicePlan', 'Set-AzAppServicePlan',
                'Get-AzWebAppContainerContinuousDeploymentUrl', 
                'Enter-AzWebAppContainerPSSession', 
                'New-AzWebAppContainerPSSession', 'New-AzWebAppAzureStoragePath', 
-               'Publish-AzWebApp', 'Get-AzWebAppAccessRestriction',
-			   'Add-AzWebAppAccessRestriction', 'Remove-AzWebAppAccessRestriction',
-			   'Set-AzWebAppAccessRestriction'
+               'Publish-AzWebApp', 'Get-AzWebAppAccessRestrictionConfig',
+			   'Add-AzWebAppAccessRestrictionRule', 'Remove-AzWebAppAccessRestrictionRule',
+			   'Update-AzWebAppAccessRestrictionConfig'
 
 # Variables to export from this module
 # VariablesToExport = @()

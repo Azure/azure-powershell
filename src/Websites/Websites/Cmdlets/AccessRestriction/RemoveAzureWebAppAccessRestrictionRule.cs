@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you get a new Azure Websites using ARM APIs
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppAccessRestriction", SupportsShouldProcess = true)]
-    [OutputType(typeof(PSAccessRestrictionSettings))]
-    public class RemoveAzureWebAppAccessRestrictionCmdlet : WebAppBaseClientCmdLet
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppAccessRestrictionRule", SupportsShouldProcess = true)]
+    [OutputType(typeof(PSAccessRestrictionConfig))]
+    public class RemoveAzureWebAppAccessRestrictionRuleCmdlet : WebAppBaseClientCmdLet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.", ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web app.", ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Web/sites", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string WebAppName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Access Restriction rule name. E.g.: DeveloperWorkstation.")]        
         [ValidateNotNullOrEmpty]
-        public string RuleName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Rule is aimed for Main site or Scm site.")]
         [ValidateNotNullOrEmpty]
@@ -51,11 +51,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrWhiteSpace(ResourceGroupName) && !string.IsNullOrWhiteSpace(Name))
+            if (!string.IsNullOrWhiteSpace(ResourceGroupName) && !string.IsNullOrWhiteSpace(WebAppName))
             {
-                if (ShouldProcess(Name, $"Removing Access Restriction Rule '{RuleName}' from Web App '{Name}'"))
+                if (ShouldProcess(WebAppName, $"Removing Access Restriction Rule '{Name}' from Web App '{WebAppName}'"))
                 {
-                    var webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, SlotName));
+                    var webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, WebAppName, SlotName));
                     SiteConfig siteConfig = webApp.SiteConfig;
                     var accessRestrictionList = TargetScmSite ? siteConfig.ScmIpSecurityRestrictions : siteConfig.IpSecurityRestrictions;
                     IpSecurityRestriction ipSecurityRestriction = null;
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
                     foreach (var accessRestriction in accessRestrictionList)
                     {
-                        if (accessRestriction.Name.ToLowerInvariant() == RuleName.ToLowerInvariant())
+                        if (accessRestriction.Name.ToLowerInvariant() == Name.ToLowerInvariant())
                         {
                             ipSecurityRestriction = accessRestriction;
                             accessRestrictionExists = true;
@@ -76,12 +76,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     }
 
                     // Update web app configuration
-                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, webApp.Location, Name, SlotName, siteConfig);
+                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, webApp.Location, WebAppName, SlotName, siteConfig);
 
                     // Refresh object to get the final state
-                    webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, SlotName));
-                    var accessRestrictionSettings = new PSAccessRestrictionSettings(webApp.SiteConfig);
-                    WriteObject(accessRestrictionSettings);
+                    webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, WebAppName, SlotName));
+                    var accessRestrictionConfig = new PSAccessRestrictionConfig(ResourceGroupName, WebAppName, webApp.SiteConfig, SlotName);
+                    WriteObject(accessRestrictionConfig);
                 }
             }
         }

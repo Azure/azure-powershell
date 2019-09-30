@@ -4,29 +4,30 @@ Module Name: Az.Websites
 schema: 2.0.0
 ---
 
-# Remove-AzWebAppAccessRestriction
+# Remove-AzWebAppAccessRestrictionRule
 
 ## SYNOPSIS
-Removes an Access Restriction from an Azure Web App.
+Removes an Access Restriction rule from an Azure Web App.
 
 ## SYNTAX
 
 ```
-Remove-AzWebAppAccessRestriction [-ResourceGroupName] <String> [-Name] <String> -RuleName <String>
- [-TargetScmSite] [-SlotName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Remove-AzWebAppAccessRestrictionRule [-ResourceGroupName] <String> [-WebAppName] <String> -Name <String>
+ [-TargetScmSite] [-SlotName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzWebAppAccessRestriction** cmdlet removes an Access Restriction from an Azure Web App
+The **Remove-AzWebAppAccessRestrictionRule** cmdlet removes an Access Restriction rule from an Azure Web App
 
 ## EXAMPLES
 
-### Example 1: Remove a Web App
+### Example 1: Remove a Web App Access Restriction Rule
 ```
-PS C:\>Remove-AzWebAppAccessRestriction -ResourceGroupName "Default-Web-WestUS" -Name "ContosoSite" -RuleName IpRule
+PS C:\>Remove-AzWebAppAccessRestrictionRule -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite" -Name IpRule
 ```
 
-This command removes the IpRule access restriction from Azure Web App named ContosoSite that belongs to the resource group named Default-Web-WestUS.
+This command removes the IpRule access restriction rule from Azure Web App named ContosoSite that belongs to the resource group named Default-Web-WestUS.
 
 ## PARAMETERS
 
@@ -46,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-WebApp Name
+Access Restriction Rule Name
 
 ```yaml
 Type: System.String
@@ -54,9 +55,9 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -75,23 +76,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RuleName
-Access Restriction rule name. E.g.: DeveloperWorkstation.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SlotName
-Deployment Slot name.
+Deployment Slot Name.
 
 ```yaml
 Type: System.String
@@ -120,6 +106,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WebAppName
+The name of the web app.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -129,14 +160,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionSettings
+### Microsoft.Azure.Commands.WebApps.Models.PSAccessRestrictionConfig
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Get-AzWebAppAccessRestriction](./Get-AzWebAppAccessRestriction.md)
+[Get-AzWebAppAccessRestrictionConfig](./Get-AzWebAppAccessRestrictionConfig.md)
 
-[Set-AzWebAppAccessRestriction](./Set-AzWebAppAccessRestriction.md)
+[Update-AzWebAppAccessRestrictionConfig](./Update-AzWebAppAccessRestrictionConfig.md)
 
-[Add-AzWebAppAccessRestriction](./Add-AzWebAppAccessRestriction.md)
+[Add-AzWebAppAccessRestrictionRule](./Add-AzWebAppAccessRestrictionRule.md)

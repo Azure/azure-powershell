@@ -41,10 +41,10 @@ function Test-GetWebAppAccessRestriction
 		Assert-AreEqual $serverFarm.Id $webApp.ServerFarmId
 		
 		# Get initial access restriction
-		$actual = Get-AzWebAppAccessRestriction -ResourceGroupName $rgname -Name $wname
+		$actual = Get-AzWebAppAccessRestrictionConfig -ResourceGroupName $rgname -Name $wname
 
 		# Assert
-		Assert-AreEqual $false $actual.ScmSiteUseMainSiteRestrictions
+		Assert-AreEqual $false $actual.ScmSiteUseMainSiteRestrictionConfig
 		Assert-AreEqual 1 $actual.MainSiteAccessRestrictions.Count
 		Assert-AreEqual "Allow all" $actual.MainSiteAccessRestrictions[0].RuleName
 		Assert-AreEqual "Allow" $actual.MainSiteAccessRestrictions[0].Action
@@ -64,7 +64,7 @@ function Test-GetWebAppAccessRestriction
 .SYNOPSIS
 Set inherit restrictions from main flag
 #>
-function Test-SetWebAppAccessRestrictionSimple
+function Test-UpdateWebAppAccessRestrictionSimple
 {
 	# Setup
 	$rgname = Get-ResourceGroupName
@@ -87,11 +87,11 @@ function Test-SetWebAppAccessRestrictionSimple
 		Assert-AreEqual $serverFarm.Id $webApp.ServerFarmId
 		
 		# Run Tests
-		Set-AzWebAppAccessRestriction -ResourceGroupName $rgname -Name $wname -ScmSiteUseMainSiteRestrictions
-		$actual = Get-AzWebAppAccessRestriction -ResourceGroupName $rgname -Name $wname
+		Update-AzWebAppAccessRestrictionConfig -ResourceGroupName $rgname -Name $wname -ScmSiteUseMainSiteRestrictionConfig
+		$actual = Get-AzWebAppAccessRestrictionConfig -ResourceGroupName $rgname -Name $wname
 
 		# Assert		
-		Assert-AreEqual $true $actual.ScmSiteUseMainSiteRestrictions
+		Assert-AreEqual $true $actual.ScmSiteUseMainSiteRestrictionConfig
 	}
 	finally
 	{
@@ -104,7 +104,7 @@ function Test-SetWebAppAccessRestrictionSimple
 .SYNOPSIS
 Set inherit restrictions from main flag to true and back to false
 #>
-function Test-SetWebAppAccessRestrictionComplex
+function Test-UpdateWebAppAccessRestrictionComplex
 {
 	# Setup
 	$rgname = Get-ResourceGroupName
@@ -127,17 +127,17 @@ function Test-SetWebAppAccessRestrictionComplex
 		Assert-AreEqual $serverFarm.Id $webApp.ServerFarmId
 		
 		# Run Tests
-		$actual = Set-AzWebAppAccessRestriction -ResourceGroupName $rgname -Name $wname -ScmSiteUseMainSiteRestrictions
+		$actual = Update-AzWebAppAccessRestrictionConfig -ResourceGroupName $rgname -Name $wname -ScmSiteUseMainSiteRestrictionConfig -PassThru
 
 		# Assert
-		Assert-AreEqual $true $actual.ScmSiteUseMainSiteRestrictions
+		Assert-AreEqual $true $actual.ScmSiteUseMainSiteRestrictionConfig
 
 		# Run Tests
-		Set-AzWebAppAccessRestriction -ResourceGroupName $rgname -Name $wname -ScmSiteUseMainSiteRestrictions:$false
-		$actual = Get-AzWebAppAccessRestriction -ResourceGroupName $rgname -Name $wname
+		Update-AzWebAppAccessRestrictionConfig -ResourceGroupName $rgname -Name $wname -ScmSiteUseMainSiteRestrictionConfig:$false
+		$actual = Get-AzWebAppAccessRestrictionConfig -ResourceGroupName $rgname -Name $wname
 
 		# Assert
-		Assert-AreEqual $false $actual.ScmSiteUseMainSiteRestrictions
+		Assert-AreEqual $false $actual.ScmSiteUseMainSiteRestrictionConfig
 	}
 	finally
 	{
@@ -173,7 +173,7 @@ function Test-AddWebAppAccessRestriction
 		Assert-AreEqual $serverFarm.Id $webApp.ServerFarmId
 		
 		# Run Tests
-		$actual = Add-AzWebAppAccessRestriction -ResourceGroupName $rgname -Name $wname -RuleName developers -Action Allow -IpAddress 130.220.0.0/27 -Priority 200
+		$actual = Add-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -Name developers -Action Allow -IpAddress 130.220.0.0/27 -Priority 200 -PassThru
 
 		# Assert
 		Assert-AreEqual 2 $actual.MainSiteAccessRestrictions.Count
@@ -230,7 +230,7 @@ function Test-AddWebAppAccessRestrictionServiceEndpoint
 		Assert-AreEqual $serverFarm.Id $webApp.ServerFarmId		
 		
 		# Run Tests
-		$actual = Add-AzWebAppAccessRestriction -ResourceGroupName $rgname -Name $wname -RuleName vNetIntegration -Action Allow -Subnet $subnetId -Priority 150
+		$actual = Add-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -Name vNetIntegration -Action Allow -SubnetId $subnetId -Priority 150 -PassThru
 
 		# Assert
 		Assert-AreEqual 2 $actual.MainSiteAccessRestrictions.Count
@@ -275,7 +275,7 @@ function Test-RemoveWebAppAccessRestriction
 		Assert-AreEqual $serverFarm.Id $webApp.ServerFarmId
 		
 		# Run Tests
-		$actual = Add-AzWebAppAccessRestriction -ResourceGroupName $rgname -Name $wname -RuleName developers -Action Allow -IpAddress 130.220.0.0/27 -Priority 200
+		$actual = Add-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -Name developers -Action Allow -IpAddress 130.220.0.0/27 -Priority 200 -PassThru
 
 		# Assert
 		Assert-AreEqual 2 $actual.MainSiteAccessRestrictions.Count
@@ -285,7 +285,7 @@ function Test-RemoveWebAppAccessRestriction
 		Assert-AreEqual "Deny" $actual.MainSiteAccessRestrictions[1].Action
 
 		# Run Tests
-		$actual = Remove-AzWebAppAccessRestriction -ResourceGroupName $rgname -Name $wname -RuleName developers
+		$actual = Remove-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -Name developers
 
 		# Assert
 		Assert-AreEqual 1 $actual.MainSiteAccessRestrictions.Count
@@ -326,7 +326,7 @@ function Test-AddWebAppAccessRestrictionScm
 		Assert-AreEqual $serverFarm.Id $webApp.ServerFarmId
 		
 		# Run Tests
-		$actual = Add-AzWebAppAccessRestriction -ResourceGroupName $rgname -Name $wname -RuleName developers -Action Allow -IpAddress 130.220.0.0/27 -Priority 200 -TargetScmSite
+		$actual = Add-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -Name developers -Action Allow -IpAddress 130.220.0.0/27 -Priority 200 -TargetScmSite -PassThru
 
 		# Assert
 		Assert-AreEqual 2 $actual.ScmSiteAccessRestrictions.Count
@@ -369,7 +369,7 @@ function Test-RemoveWebAppAccessRestrictionScm
 		Assert-AreEqual $serverFarm.Id $webApp.ServerFarmId
 		
 		# Run Tests
-		$actual = Add-AzWebAppAccessRestriction -ResourceGroupName $rgname -Name $wname -RuleName developers -Action Allow -IpAddress 130.220.0.0/27 -Priority 200 -TargetScmSite
+		$actual = Add-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -Name developers -Action Allow -IpAddress 130.220.0.0/27 -Priority 200 -TargetScmSite -PassThru
 
 		# Assert
 		Assert-AreEqual 2 $actual.ScmSiteAccessRestrictions.Count
@@ -379,7 +379,7 @@ function Test-RemoveWebAppAccessRestrictionScm
 		Assert-AreEqual "Deny" $actual.ScmSiteAccessRestrictions[1].Action
 
 		# Run Tests
-		$actual = Remove-AzWebAppAccessRestriction -ResourceGroupName $rgname -Name $wname -RuleName developers -TargetScmSite
+		$actual = Remove-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -Name developers -TargetScmSite
 
 		# Assert
 		Assert-AreEqual 1 $actual.ScmSiteAccessRestrictions.Count
@@ -422,10 +422,10 @@ function Test-AddWebAppAccessRestrictionSlot
 		Assert-AreEqual $serverFarm.Id $webApp.ServerFarmId
 		
 		# Get initial access restriction
-		$actual = Get-AzWebAppAccessRestriction -ResourceGroupName $rgname -Name $wname -SlotName $slotName
+		$actual = Get-AzWebAppAccessRestrictionConfig -ResourceGroupName $rgname -Name $wname -SlotName $slotName
 
 		# Assert
-		Assert-AreEqual $false $actual.ScmSiteUseMainSiteRestrictions
+		Assert-AreEqual $false $actual.ScmSiteUseMainSiteRestrictionConfig
 		Assert-AreEqual 1 $actual.MainSiteAccessRestrictions.Count
 		Assert-AreEqual "Allow all" $actual.MainSiteAccessRestrictions[0].RuleName
 		Assert-AreEqual "Allow" $actual.MainSiteAccessRestrictions[0].Action
@@ -434,7 +434,7 @@ function Test-AddWebAppAccessRestrictionSlot
 		Assert-AreEqual "Allow" $actual.ScmSiteAccessRestrictions[0].Action
 
 		# Run Tests
-		$actual = Add-AzWebAppAccessRestriction -ResourceGroupName $rgname -Name $wname -RuleName developers -Action Allow -IpAddress 130.220.0.0/27 -Priority 200 -SlotName $slotName
+		$actual = Add-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -Name developers -Action Allow -IpAddress 130.220.0.0/27 -Priority 200 -SlotName $slotName -PassThru
 
 		# Assert
 		Assert-AreEqual 2 $actual.MainSiteAccessRestrictions.Count

@@ -40,16 +40,16 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetWebAppAccessRestrictionSimple()
+        public void TestUpdateWebAppAccessRestrictionSimple()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-SetWebAppAccessRestrictionSimple");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-UpdateWebAppAccessRestrictionSimple");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetWebAppAccessRestrictionComplex()
+        public void TestUpdateWebAppAccessRestrictionComplex()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-SetWebAppAccessRestrictionComplex");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-UpdateWebAppAccessRestrictionComplex");
         }
 
         [Fact]
