@@ -414,9 +414,11 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Test-AzPrivateLinkServiceVisibility', 
                'Approve-AzPrivateEndpointConnection', 
                'Deny-AzPrivateEndpointConnection', 
-               'Get-AzAvailablePrivateEndpointType',
-			   'Start-AzVirtualNetworkGatewayPacketCapture','Stop-AzVirtualNetworkGatewayPacketCapture',
-			   'Start-AzVirtualNetworkGatewayConnectionPacketCapture','Stop-AzVirtualNetworkGatewayConnectionPacketCapture'
+               'Get-AzAvailablePrivateEndpointType', 
+               'Start-AzVirtualNetworkGatewayPacketCapture', 
+               'Stop-AzVirtualNetworkGatewayPacketCapture', 
+               'Start-AzVirtualNetworkGatewayConnectionPacketCapture', 
+               'Stop-AzVirtualNetworkGatewayConnectionPacketCapture'
 
 # Variables to export from this module
 # VariablesToExport = @()

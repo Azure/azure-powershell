@@ -47,8 +47,7 @@ PS C:\> $rgname = "testRg"
  $now=get-date
  $sasurl = New-AzureStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
 PS C:\> Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName $rgname -Name "testconn" -SasUrl $sasurl
-```
-```
+
 Code              : Succeeded
 EndTime           : 10/1/2019 12:54:51 AM
 StartTime         : 10/1/2019 12:53:40 AM
@@ -76,8 +75,7 @@ PS C:\> $rgname = "testRg"
  $sasurl = New-AzureStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
  $conn = Get-AzVirtualNetworkGatewayConnection -name "testconn" -ResourceGroupName $rgname
 PS C:\> Stop-AzVirtualNetworkGatewayConnectionPacketCapture -InputObject $conn -SasUrl $sasurl
-```
-```
+
 Code              : Succeeded
 EndTime           : 10/1/2019 12:54:51 AM
 StartTime         : 10/1/2019 12:53:40 AM
