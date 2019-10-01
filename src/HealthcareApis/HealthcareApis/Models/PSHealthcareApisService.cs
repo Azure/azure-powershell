@@ -40,6 +40,14 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
             this.SmartProxyEnabled = serviceDescription.Properties.AuthenticationConfiguration?.SmartProxyEnabled;
             this.Etag = serviceDescription.Etag;
             this.Kind = GetKindValue(serviceDescription.Kind);
+
+            var psAccessPolicies = new List<PSHealthcareApisFhirServiceAccessPolicyEntry>();
+            foreach (ServiceAccessPolicyEntry accessPolicy in serviceDescription.Properties.AccessPolicies)
+            {
+                psAccessPolicies.Add(new PSHealthcareApisFhirServiceAccessPolicyEntry(accessPolicy));
+            }
+
+            this.AccessPolicies = psAccessPolicies;
         }
 
         public IList<PSHealthcareApisFhirServiceAccessPolicyEntry> AccessPolicies { get; private set; }
