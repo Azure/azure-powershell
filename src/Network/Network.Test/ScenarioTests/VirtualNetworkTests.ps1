@@ -214,7 +214,7 @@ function Test-bgpCommunitiesCRUD
     $vnetName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/virtualNetworks"
-    $location = Get-ProviderLocation $resourceTypeParent
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
 
     try
     {
