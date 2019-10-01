@@ -1,53 +1,42 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azdeploymentoperation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azresource
 schema: 2.0.0
 ---
 
-# Get-AzDeploymentOperation
+# Get-AzResource
 
 ## SYNOPSIS
-Gets a deployments operation.
+Gets a resource by ID.
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 ```
-Get-AzDeploymentOperation -DeploymentName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> [-SubscriptionId <String[]>]
+Get-AzResource [-SubscriptionId <String[]>] [-Expand <String>] [-Filter <String>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
-Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResource -ResourceId <String> -ApiVersion <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
 ```
-Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResource -InputObject <IResourcesIdentity> -ApiVersion <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### List1
+### List
 ```
-Get-AzDeploymentOperation -DeploymentName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzResource -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Expand <String>] [-Filter <String>]
  [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets a deployments operation.
+Gets a resource by ID.
 
 ## EXAMPLES
 
@@ -71,6 +60,22 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -ApiVersion
+The API version to use for the operation.
+
+```yaml
+Type: System.String
+Parameter Sets: Get1, GetViaIdentity1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -87,15 +92,50 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DeploymentName
-The name of the deployment.
+### -Expand
+The $expand query parameter.
+You can expand createdTime and changedTime.
+For example, to expand both properties, use $expand=changedTime,createdTime
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1, List, List1
+Parameter Sets: List, List1
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Filter
+The filter to apply on the operation.
+
+The properties you can use for eq (equals) or ne (not equals) are: location, resourceType, name, resourceGroup, identity, identity/principalId, plan, plan/publisher, plan/product, plan/name, plan/version, and plan/promotionCode.
+
+For example, to filter by a resource type, use: $filter=resourceType eq 'Microsoft.Network/virtualNetworks'
+
+You can use substringof(value, property) in the filter.
+The properties you can use for substring are: name and resourceGroup.
+
+For example, to get all resources with 'demo' anywhere in the name, use: $filter=substringof('demo', name)
+
+You can link more than one substringof together by adding and/or operators.
+
+You can filter by tag names and values.
+For example, to filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue eq 'Value1'
+
+You can use some properties together when filtering.
+The combinations you can use are: substringof and/or resourceType, plan and plan/publisher and plan/name, identity and identity/principalId.
+
+```yaml
+Type: System.String
+Parameter Sets: List, List1
+Aliases: ODataQuery
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -109,7 +149,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentity1
+Parameter Sets: GetViaIdentity1
 Aliases:
 
 Required: True
@@ -120,12 +160,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -OperationId
-The ID of the operation to get.
+### -ResourceGroupName
+The resource group with the resources to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -136,13 +176,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -ResourceId
+The fully qualified ID of the resource, including the resource name and resource type.
+Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, List1
+Parameter Sets: Get1
 Aliases:
 
 Required: True
@@ -158,7 +198,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, Get1, List, List1
+Parameter Sets: List, List1
 Aliases:
 
 Required: False
@@ -171,6 +211,7 @@ Dynamic: False
 
 ### -Top
 The number of results to return.
+If null is passed, returns all resources.
 
 ```yaml
 Type: System.Int32
@@ -194,11 +235,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeploymentOperation
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IGenericResource
 
 ## ALIASES
-
-### Get-AzResourceGroupDeploymentOperation
 
 ## NOTES
 

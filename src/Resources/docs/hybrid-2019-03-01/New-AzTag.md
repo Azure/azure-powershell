@@ -1,53 +1,35 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azdeploymentoperation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-aztag
 schema: 2.0.0
 ---
 
-# Get-AzDeploymentOperation
+# New-AzTag
 
 ## SYNOPSIS
-Gets a deployments operation.
+The tag name can have a maximum of 512 characters and is case insensitive.
+Tag names created by Azure have prefixes of microsoft, azure, or windows.
+You cannot create tags with one of these prefixes.
 
 ## SYNTAX
 
-### List (Default)
+### Create (Default)
 ```
-Get-AzDeploymentOperation -DeploymentName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+New-AzTag -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### Get1
+### CreateViaIdentity
 ```
-Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity1
-```
-Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzDeploymentOperation -DeploymentName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+New-AzTag -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets a deployments operation.
+The tag name can have a maximum of 512 characters and is case insensitive.
+Tag names created by Azure have prefixes of microsoft, azure, or windows.
+You cannot create tags with one of these prefixes.
 
 ## EXAMPLES
 
@@ -87,29 +69,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DeploymentName
-The name of the deployment.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, Get1, List, List1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentity1
+Parameter Sets: CreateViaIdentity
 Aliases:
 
 Required: True
@@ -120,30 +86,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -OperationId
-The ID of the operation to get.
+### -Name
+The name of the tag to create.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
-
-```yaml
-Type: System.String
-Parameter Sets: Get1, List1
-Aliases:
+Parameter Sets: Create
+Aliases: TagName
 
 Required: True
 Position: Named
@@ -157,8 +106,8 @@ Dynamic: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, Get1, List, List1
+Type: System.String
+Parameter Sets: Create
 Aliases:
 
 Required: False
@@ -169,13 +118,30 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Top
-The number of results to return.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: List, List1
-Aliases:
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
@@ -194,11 +160,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeploymentOperation
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.ITagDetails
 
 ## ALIASES
-
-### Get-AzResourceGroupDeploymentOperation
 
 ## NOTES
 

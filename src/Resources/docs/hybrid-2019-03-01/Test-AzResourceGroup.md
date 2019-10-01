@@ -1,53 +1,31 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azdeploymentoperation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/test-azresourcegroup
 schema: 2.0.0
 ---
 
-# Get-AzDeploymentOperation
+# Test-AzResourceGroup
 
 ## SYNOPSIS
-Gets a deployments operation.
+Checks whether a resource group exists.
 
 ## SYNTAX
 
-### List (Default)
+### Check (Default)
 ```
-Get-AzDeploymentOperation -DeploymentName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Test-AzResourceGroup -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-PassThru] [<CommonParameters>]
 ```
 
-### Get1
+### CheckViaIdentity
 ```
-Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity1
-```
-Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzDeploymentOperation -DeploymentName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Test-AzResourceGroup -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets a deployments operation.
+Checks whether a resource group exists.
 
 ## EXAMPLES
 
@@ -87,29 +65,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DeploymentName
-The name of the deployment.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, Get1, List, List1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentity1
+Parameter Sets: CheckViaIdentity
 Aliases:
 
 Required: True
@@ -120,15 +82,15 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -OperationId
-The ID of the operation to get.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, Get1
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -137,12 +99,12 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group to check.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, List1
+Parameter Sets: Check
 Aliases:
 
 Required: True
@@ -157,29 +119,13 @@ Dynamic: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, Get1, List, List1
+Type: System.String
+Parameter Sets: Check
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Top
-The number of results to return.
-
-```yaml
-Type: System.Int32
-Parameter Sets: List, List1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -194,11 +140,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeploymentOperation
+### System.Boolean
 
 ## ALIASES
 
-### Get-AzResourceGroupDeploymentOperation
+### Test-AzResourceGroupExistence
 
 ## NOTES
 

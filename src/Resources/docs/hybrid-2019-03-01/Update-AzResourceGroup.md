@@ -1,53 +1,48 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azdeploymentoperation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azresourcegroup
 schema: 2.0.0
 ---
 
-# Get-AzDeploymentOperation
+# Update-AzResourceGroup
 
 ## SYNOPSIS
-Gets a deployments operation.
+Resource groups can be updated through a simple PATCH operation to a group address.
+The format of the request is the same as that for creating a resource group.
+If a field is unspecified, the current value is retained.
 
 ## SYNTAX
 
-### List (Default)
+### UpdateExpanded (Default)
 ```
-Get-AzDeploymentOperation -DeploymentName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Update-AzResourceGroup -ResourceGroupName <String> [-Name <String>] [-SubscriptionId <String>]
+ [-ManagedBy <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### Get1
+### Update
 ```
-Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Update-AzResourceGroup -Name <String> -Parameter <IResourceGroupPatchable> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity1
+### UpdateViaIdentity
 ```
-Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Update-AzResourceGroup -InputObject <IResourcesIdentity> -Parameter <IResourceGroupPatchable>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### List1
+### UpdateViaIdentityExpanded
 ```
-Get-AzDeploymentOperation -DeploymentName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Update-AzResourceGroup -InputObject <IResourcesIdentity> [-Name <String>] [-ManagedBy <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets a deployments operation.
+Resource groups can be updated through a simple PATCH operation to a group address.
+The format of the request is the same as that for creating a resource group.
+If a field is unspecified, the current value is retained.
 
 ## EXAMPLES
 
@@ -87,29 +82,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DeploymentName
-The name of the deployment.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, Get1, List, List1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentity1
+Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -120,12 +99,29 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -OperationId
-The ID of the operation to get.
+### -ManagedBy
+The ID of the resource that manages this resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name of the resource group to update.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -136,13 +132,30 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Parameter
+Resource group information.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroupPatchable
+Parameter Sets: Update, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group to update.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, List1
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -157,8 +170,8 @@ Dynamic: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, Get1, List, List1
+Type: System.String
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: False
@@ -169,13 +182,46 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Top
-The number of results to return.
+### -Tag
+The tags attached to the resource group.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: List, List1
+Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
@@ -190,15 +236,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroupPatchable
+
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeploymentOperation
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroup
 
 ## ALIASES
-
-### Get-AzResourceGroupDeploymentOperation
 
 ## NOTES
 
@@ -251,6 +297,12 @@ To create the parameters described below, construct a hash table containing the 
   - `[TagValue <String>]`: The value of the tag to delete.
   - `[TenantId <String>]`: The tenant ID.
   - `[UpnOrObjectId <String>]`: The object ID or principal name of the user for which to get information.
+
+#### PARAMETER <IResourceGroupPatchable>: Resource group information.
+  - `[ManagedBy <String>]`: The ID of the resource that manages this resource group.
+  - `[Name <String>]`: The name of the resource group.
+  - `[Tag <IResourceGroupPatchableTags>]`: The tags attached to the resource group.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 
