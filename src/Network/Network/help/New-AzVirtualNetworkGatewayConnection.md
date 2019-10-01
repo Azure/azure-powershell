@@ -20,7 +20,7 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-VirtualNetworkGateway2 <PSVirtualNetworkGateway>] [-LocalNetworkGateway2 <PSLocalNetworkGateway>]
  -ConnectionType <String> [-RoutingWeight <Int32>] [-SharedKey <String>] [-Peer <PSPeering>]
  [-EnableBgp <Boolean>] [-Tag <Hashtable>] [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>]
- [-IpsecPolicies <PSIpsecPolicy[]>] [-IpsecPolTrafficSelectorPolicies <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>] 
+ [-IpsecPolicies <PSIpsecPolicy[]>] [-IpsecTrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>] 
  [-AsJob] [-ExpressRouteGatewayBypass] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-VirtualNetworkGateway2 <PSVirtualNetworkGateway>] [-LocalNetworkGateway2 <PSLocalNetworkGateway>]
  -ConnectionType <String> [-RoutingWeight <Int32>] [-SharedKey <String>] [-PeerId <String>]
  [-EnableBgp <Boolean>] [-Tag <Hashtable>] [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>]
- [-IpsecPolicies <PSIpsecPolicy[]>] [-IpsecPolTrafficSelectorPolicies <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>] 
+ [-IpsecPolicies <PSIpsecPolicy[]>] [-IpsecTrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>] 
  [-AsJob] [-ExpressRouteGatewayBypass] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -179,7 +179,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -TrafficSelectorPolicies
+### -TrafficSelectorPolicy
 A list of Traffic Selector policies.
 
 ```yaml
