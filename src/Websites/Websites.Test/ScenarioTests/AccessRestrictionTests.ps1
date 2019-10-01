@@ -285,7 +285,7 @@ function Test-RemoveWebAppAccessRestriction
 		Assert-AreEqual "Deny" $actual.MainSiteAccessRestrictions[1].Action
 
 		# Run Tests
-		$actual = Remove-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -Name developers
+		$actual = Remove-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -Name developers -PassThru
 
 		# Assert
 		Assert-AreEqual 1 $actual.MainSiteAccessRestrictions.Count
@@ -379,7 +379,7 @@ function Test-RemoveWebAppAccessRestrictionScm
 		Assert-AreEqual "Deny" $actual.ScmSiteAccessRestrictions[1].Action
 
 		# Run Tests
-		$actual = Remove-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -Name developers -TargetScmSite
+		$actual = Remove-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -Name developers -TargetScmSite -PassThru
 
 		# Assert
 		Assert-AreEqual 1 $actual.ScmSiteAccessRestrictions.Count

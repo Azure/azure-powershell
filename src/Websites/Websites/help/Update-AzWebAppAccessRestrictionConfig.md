@@ -11,7 +11,7 @@ Updates the inheritance of Main site Access Restiction config to SCM Site for an
 
 ## SYNTAX
 
-### InputValuesParameterSet
+### InputValuesParameterSet (Default)
 ```
 Update-AzWebAppAccessRestrictionConfig [-ResourceGroupName] <String> [-Name] <String>
  [-ScmSiteUseMainSiteRestrictionConfig] [-SlotName <String>] [-PassThru]

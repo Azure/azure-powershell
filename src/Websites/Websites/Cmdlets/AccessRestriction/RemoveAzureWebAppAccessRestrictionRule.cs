@@ -49,6 +49,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Mandatory = false, HelpMessage = "Deployment Slot name.")]
         public string SlotName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Return the access restriction config object.")]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrWhiteSpace(ResourceGroupName) && !string.IsNullOrWhiteSpace(WebAppName))
@@ -78,10 +81,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     // Update web app configuration
                     WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, webApp.Location, WebAppName, SlotName, siteConfig);
 
-                    // Refresh object to get the final state
-                    webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, WebAppName, SlotName));
-                    var accessRestrictionConfig = new PSAccessRestrictionConfig(ResourceGroupName, WebAppName, webApp.SiteConfig, SlotName);
-                    WriteObject(accessRestrictionConfig);
+                    if (PassThru)
+                    {
+                        // Refresh object to get the final state
+                        webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, WebAppName, SlotName));
+                        var accessRestrictionConfig = new PSAccessRestrictionConfig(ResourceGroupName, WebAppName, webApp.SiteConfig, SlotName);
+                        WriteObject(accessRestrictionConfig);
+                    }
                 }
             }
         }

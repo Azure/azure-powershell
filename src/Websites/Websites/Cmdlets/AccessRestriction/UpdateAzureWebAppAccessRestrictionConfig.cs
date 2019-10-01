@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you update the access restriction settings of an Azure Website
     /// </summary>
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppAccessRestrictionConfig", SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppAccessRestrictionConfig", SupportsShouldProcess = true, DefaultParameterSetName = InputValuesParameterSet)]
     [OutputType(typeof(PSAccessRestrictionConfig))]
     public class UpdateAzureWebAppAccessRestrictionConfigCmdlet : WebAppBaseClientCmdLet
     {
