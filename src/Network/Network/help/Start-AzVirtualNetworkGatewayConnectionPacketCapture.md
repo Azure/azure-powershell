@@ -40,8 +40,7 @@ Starts Packet Capture Operation on a Virtual Network Gateway Connection.
 ### Example 1
 ```powershell
 Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "PktCaptureTestSite2RG" -Name "PktCaptureTestSite2Site1Cn"
-```
-```
+
 Code              : Succeeded
 EndTime           : 10/1/2019 12:52:37 AM
 StartTime         : 10/1/2019 12:52:25 AM
@@ -55,7 +54,7 @@ TagsTable         :
 Name              : PktCaptureTestSite2Site1Cn
 Etag              :
 Id                :
- ```
+```
 
 ## PARAMETERS
 

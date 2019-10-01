@@ -38,8 +38,7 @@ Starts Packet Capture Operation on a Virtual Network Gateway.
 ### Example 1
 ```powershell
 Start-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName "PktCaptureTestSite2RG" -Name "PktCaptureTestSite2VNG"
-```
-```
+
 Code              : Succeeded
 EndTime           : 10/1/2019 12:57:27 AM
 StartTime         : 10/1/2019 12:57:16 AM

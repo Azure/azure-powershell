@@ -70,7 +70,6 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            base.Execute();
             PSVirtualNetworkGatewayConnection existingConnection = null;
             if (ParameterSetName.Equals("ByInputObject"))
             {
@@ -101,19 +100,23 @@ namespace Microsoft.Azure.Commands.Network
                 parameters.FilterData = FilterData;
             }
 
-            WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-            PSVirtualNetworkGatewayConnectionPacketCaptureResult output = new PSVirtualNetworkGatewayConnectionPacketCaptureResult()
+            base.Execute();
+            if (ShouldProcess(this.Name, String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name)))
             {
-                Name = existingConnection.Name,
-                ResourceGroupName = existingConnection.ResourceGroupName,
-                Tag = existingConnection.Tag,
-                ResourceGuid = existingConnection.ResourceGuid,
-                Location = existingConnection.Location,
-            };
-            output.StartTime = DateTime.UtcNow;
-            var result = this.VirtualNetworkGatewayConnectionClient.StartPacketCapture(this.ResourceGroupName, this.Name, parameters);
-            output.EndTime = DateTime.UtcNow;
-            WriteObject(output);
+                WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
+                PSVirtualNetworkGatewayConnectionPacketCaptureResult output = new PSVirtualNetworkGatewayConnectionPacketCaptureResult()
+                {
+                    Name = existingConnection.Name,
+                    ResourceGroupName = existingConnection.ResourceGroupName,
+                    Tag = existingConnection.Tag,
+                    ResourceGuid = existingConnection.ResourceGuid,
+                    Location = existingConnection.Location,
+                };
+                output.StartTime = DateTime.UtcNow;
+                var result = this.VirtualNetworkGatewayConnectionClient.StartPacketCapture(this.ResourceGroupName, this.Name, parameters);
+                output.EndTime = DateTime.UtcNow;
+                WriteObject(output);
+            }
         }
     }
 }

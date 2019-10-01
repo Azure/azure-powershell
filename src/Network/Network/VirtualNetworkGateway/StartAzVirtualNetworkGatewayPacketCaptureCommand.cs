@@ -69,7 +69,6 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 
         public override void Execute()
         {
-            base.Execute();
             PSVirtualNetworkGateway existingVirtualNetworkGateway = null;
             if (ParameterSetName.Equals("ByInputObject"))
             {
@@ -100,20 +99,24 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
                 parameters.FilterData = FilterData;
             }
 
-            WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-            PSVirtualNetworkGatewayPacketCaptureResult output = new PSVirtualNetworkGatewayPacketCaptureResult()
+            base.Execute();
+            if (ShouldProcess(this.Name, String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name)))
             {
-                Name = existingVirtualNetworkGateway.Name,
-                ResourceGroupName = existingVirtualNetworkGateway.ResourceGroupName,
-                Tag = existingVirtualNetworkGateway.Tag,
-                ResourceGuid = existingVirtualNetworkGateway.ResourceGuid,
-                Location = existingVirtualNetworkGateway.Location,
-                
-            };
-            output.StartTime = DateTime.UtcNow;
-            string result = this.VirtualNetworkGatewayClient.StartPacketCapture(this.ResourceGroupName, this.Name, parameters);
-            output.EndTime = DateTime.UtcNow;
-            WriteObject(output);
+                WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
+                PSVirtualNetworkGatewayPacketCaptureResult output = new PSVirtualNetworkGatewayPacketCaptureResult()
+                {
+                    Name = existingVirtualNetworkGateway.Name,
+                    ResourceGroupName = existingVirtualNetworkGateway.ResourceGroupName,
+                    Tag = existingVirtualNetworkGateway.Tag,
+                    ResourceGuid = existingVirtualNetworkGateway.ResourceGuid,
+                    Location = existingVirtualNetworkGateway.Location,
+
+                };
+                output.StartTime = DateTime.UtcNow;
+                string result = this.VirtualNetworkGatewayClient.StartPacketCapture(this.ResourceGroupName, this.Name, parameters);
+                output.EndTime = DateTime.UtcNow;
+                WriteObject(output);
+            }
         }
     }
 }
