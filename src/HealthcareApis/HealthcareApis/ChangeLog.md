@@ -21,6 +21,7 @@
 * Updated the powershell version to 1.0.0
 * Updated the SDK version to 1.0.2
 * Update in tests to refer to new SDK version
+* YPdated the output structure from nested to flattened.
 
 ## Version 0.1.2
 * Added Exception Handling around KeyNotFoundException
