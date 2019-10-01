@@ -53,10 +53,22 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Location { get; set; }
 
         [Parameter(
-             Mandatory = false,
-             ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of CustomRules")]
+         Mandatory = false,
+         ValueFromPipelineByPropertyName = true,
+         HelpMessage = "The list of CustomRules")]
         public PSApplicationGatewayFirewallCustomRule[] CustomRule { get; set; }
+
+        [Parameter(
+         Mandatory = false,
+         ValueFromPipelineByPropertyName = true,
+         HelpMessage = "Policysettings of the firewall policy")]
+        public PSApplicationGatewayFirewallPolicySettings PolicySettings { get; set; }
+
+        [Parameter(
+         Mandatory = true,
+         ValueFromPipelineByPropertyName = true,
+         HelpMessage = "ManagedRules of the firewall policy")]
+        public PSApplicationGatewayFirewallPolicyManagedRules ManagedRules { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -96,6 +108,8 @@ namespace Microsoft.Azure.Commands.Network
             firewallPolicy.ResourceGroupName = this.ResourceGroupName;
             firewallPolicy.Location = this.Location;
             firewallPolicy.CustomRules = this.CustomRule?.ToList();
+            firewallPolicy.ManagedRules = this.ManagedRules;
+            firewallPolicy.PolicySettings = this.PolicySettings;
 
             // Map to the sdk object
             var firewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.WebApplicationFirewallPolicy>(firewallPolicy);
