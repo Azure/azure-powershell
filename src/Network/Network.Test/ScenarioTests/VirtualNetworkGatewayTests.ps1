@@ -25,9 +25,9 @@ function Test-VirtualNetworkExpressRouteGatewayCRUD
     $vnetName = Get-ResourceName
     $publicIpName = Get-ResourceName
     $vnetGatewayConfigName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement "East US"
+    $rglocation = Get-ProviderLocation ResourceManagement "West Central US"
     $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
-    $location = Get-ProviderLocation $resourceTypeParent "East US"
+    $location = Get-ProviderLocation $resourceTypeParent "West Central US"
     
     try 
      {
@@ -47,11 +47,12 @@ function Test-VirtualNetworkExpressRouteGatewayCRUD
       # Create & Get virtualnetworkgateway
       $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
 
-      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType ExpressRoute -GatewaySku UltraPerformance -VpnType RouteBased -Force 
+      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType ExpressRoute -GatewaySku UltraPerformance -VpnType RouteBased -VpnGatewayGeneration None -Force 
       $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual "ExpressRoute" $expected.GatewayType
+	  Assert-AreEqual "None" $expected.VpnGatewayGeneration
       
       # List virtualNetworkGateways
       $list = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname
