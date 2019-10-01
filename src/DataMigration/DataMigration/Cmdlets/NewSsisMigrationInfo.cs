@@ -19,7 +19,7 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationSsisMigrationInfo"), OutputType(typeof(MigrateSqlServerSqlDbDatabaseInput))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationSsisMigrationInfo"), OutputType(typeof(SsisMigrationInfo))]
     [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsSsisMigrationInfo")]
     public class NewSsisMigrationInfo : DataMigrationCmdlet
     {
