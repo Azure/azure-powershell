@@ -25,6 +25,11 @@
     - Cmdlets updated with optional parameter -TrafficSelectorPolicies
         -New-AzureRmVirtualNetworkGatewayConnection
         -Set-AzureRmVirtualNetworkGatewayConnection
+* Add support for ESP and AH protocols in network security rule configurations
+    - Updated cmdlets:
+        - Add-AzNetworkSecurityRuleConfig
+        - New-AzNetworkSecurityRuleConfig
+        - Set-AzNetworkSecurityRuleConfig
 * Improve handling of exceptions in Cortex cmdlets
 * Fix incorrect example in `New-AzApplicationGateway` reference documentation 
 * Add note in `Get-AzNetworkWatcherPacketCapture` reference documentation about retrieving all properties for a packet capture
