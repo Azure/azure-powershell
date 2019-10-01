@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Strategies;
 using System;
@@ -46,6 +47,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
 
             public CmdletWrap(T cmdlet )
             {
+                Module.Instance.SetProxyConfiguration(null, null, false);
                 _Cmdlet = cmdlet;
                 _pipeline = cmdlet.GetPipeline();
             }
