@@ -31,7 +31,7 @@ Remove-AzBastion -ResourceId <String> [-PassThru] [-Force] [-DefaultProfile <IAz
 ```
 
 ## DESCRIPTION
-Removes a bastion resource.
+Removes a bastion resource.Example1 deletes the bastion using its ResourceGroupName and ResourceName. Example2 deletes the bastion using its object with pipeline. Example3 deletes the bastion using its object.
 
 ## EXAMPLES
 
@@ -39,24 +39,16 @@ Removes a bastion resource.
 ```powershell
 Remove-AzBastion -ResourceGroupName "BastionPowershellTest" -Name "testBastion2"
 ```
-```
-It deletes the bastion using its ResourceGroupName and ResourceName.
- ```
 
 ### Example 2
 ```powershell
 Get-AzBastion -ResourceGroupName "BastionPowershellTest" -Name "testBastion" | Remove-AzBastion
  ```
-```
-It deletes the bastion using its object with pipeline.
- ```
+
 ### Example 3
 ```powershell
 $bastion = Get-AzBastion -ResourceGroupName "BastionPowershellTest" -Name "testBastion"
 Remove-AzBastion -InputObject $bastion
- ```
-```
-It deletes the bastion using its object.
  ```
 
 ## PARAMETERS
