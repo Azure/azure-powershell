@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -248,11 +249,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 ElasticPoolName = ElasticPoolName,
                 ReadScale = ReadScale,
-                ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
+                ZoneRedundant = this.IsParameterBound(p => p.ZoneRedundant) ? (bool?)ZoneRedundant.ToBool() : null,
                 LicenseType = LicenseType, // note: default license type will be LicenseIncluded in SQL RP if not specified
-                AutoPauseDelayInMinutes = MyInvocation.BoundParameters.ContainsKey("AutoPauseDelayInMinutes") ? AutoPauseDelayInMinutes : (int?)null,
-                MinimumCapacity = MyInvocation.BoundParameters.ContainsKey("AutoPauseDelayInMinutes") ? MinimumCapacity : (double?)null,
-                ReadReplicaCount = MyInvocation.BoundParameters.ContainsKey("ReadReplicaCount") ? ReadReplicaCount : (int?)null,
+                AutoPauseDelayInMinutes = this.IsParameterBound(p => p.AutoPauseDelayInMinutes) ? AutoPauseDelayInMinutes : (int?)null,
+                MinimumCapacity = this.IsParameterBound(p => p.MinimumCapacity) ? MinimumCapacity : (double?)null,
+                ReadReplicaCount = this.IsParameterBound(p => p.ReadReplicaCount) ? ReadReplicaCount : (int?)null,
             };
 
             if (ParameterSetName == DtuDatabaseParameterSet)

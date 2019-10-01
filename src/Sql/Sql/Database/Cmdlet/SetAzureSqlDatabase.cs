@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -266,9 +267,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                            ? (bool?)ZoneRedundant.ToBool()
                            : null,
                 LicenseType = LicenseType ?? model.FirstOrDefault().LicenseType, // set to original license type
-                AutoPauseDelayInMinutes = MyInvocation.BoundParameters.ContainsKey("AutoPauseDelayInMinutes") ? AutoPauseDelayInMinutes : (int?)null,
-                MinimumCapacity = MyInvocation.BoundParameters.ContainsKey("MinimumCapacity") ? MinimumCapacity : (double?)null,
-                ReadReplicaCount = MyInvocation.BoundParameters.ContainsKey("ReadReplicaCount") ? ReadReplicaCount : (int?)null,
+                AutoPauseDelayInMinutes = this.IsParameterBound(p => p.AutoPauseDelayInMinutes) ? AutoPauseDelayInMinutes : (int?)null,
+                MinimumCapacity = this.IsParameterBound(p => p.MinimumCapacity) ? MinimumCapacity : (double?)null,
+                ReadReplicaCount = this.IsParameterBound(p => p.ReadReplicaCount) ? ReadReplicaCount : (int?)null,
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
@@ -294,14 +295,14 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             {
                 if(!string.IsNullOrWhiteSpace(Edition) ||
                     !string.IsNullOrWhiteSpace(ComputeGeneration) ||
-                    MyInvocation.BoundParameters.ContainsKey("VCore"))
+                    this.IsParameterBound(p => p.VCore))
                 {
                     string skuTier = string.IsNullOrWhiteSpace(Edition) ? databaseCurrentSku.Tier : Edition;
                     string requestedComputeModel = string.IsNullOrWhiteSpace(ComputeModel) ? databaseCurrentComputeModel : ComputeModel;
                     newDbModel.SkuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(skuTier, requestedComputeModel == DatabaseComputeModel.Serverless);
                     newDbModel.Edition = skuTier;
                     newDbModel.Family = string.IsNullOrWhiteSpace(ComputeGeneration) ? databaseCurrentSku.Family : ComputeGeneration;
-                    newDbModel.Capacity = MyInvocation.BoundParameters.ContainsKey("VCore") ? VCore : databaseCurrentSku.Capacity;
+                    newDbModel.Capacity = this.IsParameterBound(p => p.VCore) ? VCore : databaseCurrentSku.Capacity;
                 }
 
                 newEntity.Add(newDbModel);
