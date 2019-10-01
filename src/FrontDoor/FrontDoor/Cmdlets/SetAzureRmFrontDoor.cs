@@ -104,21 +104,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
         /// </summary>
-        [Parameter(ParameterSetName = FieldsWithCertificateNameCheckParameterSet,
-            Mandatory = false, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
-        [Parameter(ParameterSetName = ObjectParameterSet,
-            Mandatory = false, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
-        [Parameter(ParameterSetName = ResourceIdParameterSet,
-            Mandatory = false, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
+        [Parameter(Mandatory = false, HelpMessage = "Settings for all backendPools")]
         public SwitchParameter DisableCertificateNameCheck { get; set; }
 
         /// <summary>
         /// Settings for all backendPools
         /// </summary>
-        [Parameter(ParameterSetName = FieldsWithBackendPoolsSettingsParameterSet, Mandatory = false, HelpMessage = "Settings for all backendPools")]
-        [Parameter(ParameterSetName = FieldsParameterSet, Mandatory = false, HelpMessage = "Settings for all backendPools")]
-        [Parameter(ParameterSetName = ObjectParameterSet, Mandatory = false, HelpMessage = "Settings for all backendPools")]
-        [Parameter(ParameterSetName = ResourceIdParameterSet, Mandatory = false, HelpMessage = "Settings for all backendPools")]
+        [Parameter(Mandatory = false, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
         public PSBackendPoolsSettings BackendPoolsSettings { get; set; }
 
         public override void ExecuteCmdlet()
@@ -195,24 +187,20 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 updateParameters.EnabledState = EnabledState;
             }
 
-            switch (ParameterSetName)
+            // Should not be able to specify both DisableCertificateNameCheck and pass in full BackendPoolsSettings object
+            // But the existence of these fields are optional and not bound to a specific parameter set
+            if (this.IsParameterBound(c => c.BackendPoolsSettings) && this.IsParameterBound(c => c.DisableCertificateNameCheck))
             {
-                case FieldsWithCertificateNameCheckParameterSet:
-                    {
-                        if (this.IsParameterBound(c => c.DisableCertificateNameCheck))
-                        {
-                            updateParameters.BackendPoolsSettings.EnforceCertificateNameCheck = DisableCertificateNameCheck ? PSEnabledState.Disabled : PSEnabledState.Enabled;
-                        }
-                        break;
-                    }
-                default:
-                    {
-                        if (this.IsParameterBound(c => c.BackendPoolsSettings))
-                        {
-                            updateParameters.BackendPoolsSettings = BackendPoolsSettings;
-                        }
-                        break;
-                    }
+                throw new PSArgumentException();
+                // Throw more specific error?
+            }
+            else if (this.IsParameterBound(c => c.BackendPoolsSettings))
+            {
+                updateParameters.BackendPoolsSettings = BackendPoolsSettings;
+            }
+            else if (this.IsParameterBound(c => c.DisableCertificateNameCheck))
+            {
+                updateParameters.BackendPoolsSettings.EnforceCertificateNameCheck = DisableCertificateNameCheck ? PSEnabledState.Disabled : PSEnabledState.Enabled;
             }
 
             updateParameters.ValidateFrontDoor(ResourceGroupName, this.DefaultContext.Subscription.Id);

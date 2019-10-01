@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 Protocol = !this.IsParameterBound(c => c.Protocol) ? PSProtocol.Http : Protocol,
                 IntervalInSeconds = !this.IsParameterBound(c => c.IntervalInSeconds) ? 30 : IntervalInSeconds,
                 HealthProbeMethod = !this.IsParameterBound(c => c.HealthProbeMethod) ? "HEAD" : HealthProbeMethod,
-                EnabledState = !this.IsParameterBound(c => c.EnabledState) ? (PSEnabledState?) null : EnabledState
+                EnabledState = !this.IsParameterBound(c => c.EnabledState) ? PSEnabledState.Enabled : EnabledState
             };
             WriteObject(HealthProbeSetting);
         }

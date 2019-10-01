@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 EnabledState = sdkFrontDoor.EnabledState == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkFrontDoor.EnabledState),
                 ResourceState = sdkFrontDoor.ResourceState,
                 ProvisioningState = sdkFrontDoor.ProvisioningState,
-                BackendPoolsSettings = sdkFrontDoor.BackendPoolsSettings.ToPSBackendPoolsSettings()
+                BackendPoolsSettings = sdkFrontDoor.BackendPoolsSettings?.ToPSBackendPoolsSettings()
             };
         }
 
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 IntervalInSeconds = sdkHealthProbeSetting.IntervalInSeconds,
                 ResourceState = sdkHealthProbeSetting.ResourceState,
                 HealthProbeMethod = sdkHealthProbeSetting.HealthProbeMethod,
-                EnabledState = sdkHealthProbeSetting.EnabledState == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkHealthProbeSetting.EnabledState)
+                EnabledState = string.IsNullOrEmpty(sdkHealthProbeSetting.EnabledState) ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkHealthProbeSetting.EnabledState)
             };
         }
 
@@ -343,12 +343,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                         (PSCustomHttpsProvisioningState?)null : (PSCustomHttpsProvisioningState)Enum.Parse(typeof(PSCustomHttpsProvisioningState), sdkFrontendEndpoint.CustomHttpsProvisioningState),
                 CustomHttpsProvisioningSubstate = sdkFrontendEndpoint.CustomHttpsProvisioningSubstate == null ?
                         (PSCustomHttpsProvisioningSubstate?)null : (PSCustomHttpsProvisioningSubstate)Enum.Parse(typeof(PSCustomHttpsProvisioningSubstate), sdkFrontendEndpoint.CustomHttpsProvisioningSubstate),
-                CertificateSource = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? null : sdkFrontendEndpoint.CustomHttpsConfiguration.CertificateSource,
-                MinimumTlsVersion = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? null : sdkFrontendEndpoint.CustomHttpsConfiguration.MinimumTlsVersion,
+                CertificateSource = sdkFrontendEndpoint.CustomHttpsConfiguration?.CertificateSource,
+                MinimumTlsVersion = sdkFrontendEndpoint.CustomHttpsConfiguration?.MinimumTlsVersion,
                 Vault = sdkFrontendEndpoint.CustomHttpsConfiguration?.Vault?.Id,
                 SecretName = sdkFrontendEndpoint.CustomHttpsConfiguration?.SecretName,
                 SecretVersion = sdkFrontendEndpoint.CustomHttpsConfiguration?.SecretVersion,
-                CertificateType = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? null : sdkFrontendEndpoint.CustomHttpsConfiguration.CertificateType,
+                CertificateType = sdkFrontendEndpoint.CustomHttpsConfiguration?.CertificateType,
                 Name = sdkFrontendEndpoint.Name,
                 Type = sdkFrontendEndpoint.Type
             };

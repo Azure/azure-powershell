@@ -84,6 +84,10 @@ function Test-FrontDoorCrud
     Remove-AzResourceGroup -Name $ResourceGroupName -Force
 }
 
+<#
+.SYNOPSIS
+Full Front Door CRUD cycle with traffic redirection
+#>
 function Test-FrontDoorCrudRedirect
 {
     $Name = getAssetName
@@ -99,7 +103,8 @@ function Test-FrontDoorCrudRedirect
     $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1" 
     $frontendEndpoint1 = New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName
     $backendpool1 = New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $Name -ResourceGroupName $resourceGroupName -Backend $backend1 -HealthProbeSettingsName "healthProbeSetting1" -LoadBalancingSettingsName "loadBalancingSetting1"
-    New-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags
+    $backendPoolsSettings1 = New-AzFrontDoorBackendPoolsSettingsObject -Name "backendpoolssettings1" -SendRecvTimeoutSeconds 33 -EnforceCertificateNameCheck "Enabled"
+	New-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -BackendPoolsSettings $backendPoolsSettings1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags
     
     $retrievedFrontDoor = Get-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName
     Assert-NotNull $retrievedFrontDoor
@@ -112,7 +117,8 @@ function Test-FrontDoorCrudRedirect
     Assert-Tags $tags $retrievedFrontDoor.Tags
     Assert-AreEqual $retrievedFrontDoor.RoutingRules[0].RouteConfiguration.GetType().Name "PSRedirectConfiguration"
     Assert-AreEqual $retrievedFrontDoor.RoutingRules[0].RouteConfiguration.CustomHost $customHost
-    Assert-AreEqual $retrievedFrontDoor.EnforceCertificateNameCheck "Enabled"
+	Assert-AreEqual $backendPoolsSettings1.SendRecvTimeoutSeconds $retrievedFrontDoor.BackendPoolsSettings[0].SendRecvTimeoutSeconds
+	Assert-AreEqual $backendPoolsSettings1.EnforceCertificateNameCheck $retrievedFrontDoor.BackendPoolsSettings[0].EnforceCertificateNameCheck
 
     $routingrule1 = New-AzFrontDoorRoutingRuleObject -Name "routingrule1" -FrontDoorName $Name -ResourceGroupName $resourceGroupName -FrontendEndpointName "frontendEndpoint1" -CustomHost $customHost -CustomPath $customPath
     $updatedFrontDoor = Set-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1
@@ -126,7 +132,8 @@ function Test-FrontDoorCrudRedirect
     Assert-AreEqual $updatedFrontDoor.RoutingRules[0].RouteConfiguration.GetType().Name "PSRedirectConfiguration"
     Assert-AreEqual $updatedFrontDoor.RoutingRules[0].RouteConfiguration.CustomHost $customHost
     Assert-AreEqual $updatedFrontDoor.RoutingRules[0].RouteConfiguration.CustomPath $customPath
-    Assert-AreEqual $updatedFrontDoor.EnforceCertificateNameCheck "Enabled"
+	Assert-AreEqual $backendPoolsSettings1.SendRecvTimeoutSeconds $updatedFrontDoor.BackendPoolsSettings[0].SendRecvTimeoutSeconds
+	Assert-AreEqual $updatedFrontDoor.BackendPoolsSettings[0].EnforceCertificateNameCheck "Enabled"
 
     $updatedFrontDoor = Set-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -DisableCertificateNameCheck
     Assert-NotNull $updatedFrontDoor
@@ -139,7 +146,7 @@ function Test-FrontDoorCrudRedirect
     Assert-AreEqual $updatedFrontDoor.RoutingRules[0].RouteConfiguration.GetType().Name "PSRedirectConfiguration"
     Assert-AreEqual $updatedFrontDoor.RoutingRules[0].RouteConfiguration.CustomHost $customHost
     Assert-AreEqual $updatedFrontDoor.RoutingRules[0].RouteConfiguration.CustomPath $customPath
-    Assert-AreEqual $updatedFrontDoor.EnforceCertificateNameCheck "Disabled"
+    Assert-AreEqual $updatedFrontDoor.BackendPoolsSettings[0].EnforceCertificateNameCheck "Disabled"
 
     $removed = Remove-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -PassThru
     Assert-True { $removed }
@@ -150,7 +157,7 @@ function Test-FrontDoorCrudRedirect
 
 <#
 .SYNOPSIS
-Front Door cycle with piping
+Front Door cycle with input piping
 #>
 function Test-FrontDoorCrudWithPiping
 {
@@ -186,7 +193,7 @@ function Test-FrontDoorCrudWithPiping
 
 <#
 .SYNOPSIS
-Front Door cycle with piping
+Set custom domain configuration for FrontDoor endpoint.
 #>
 function Test-FrontDoorEndpointCustomDomainHTTPS-FrontDoor
 {
