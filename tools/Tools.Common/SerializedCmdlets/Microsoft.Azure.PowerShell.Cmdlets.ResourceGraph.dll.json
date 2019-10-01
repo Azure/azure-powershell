@@ -105,7 +105,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceGraph.Utilities",
             "Name": "Microsoft.Azure.Commands.ResourceGraph.Utilities.IncludeOptionsEnum",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceGraph.Utilities.IncludeOptionsEnum, Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph, Version=0.7.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceGraph.Utilities.IncludeOptionsEnum, Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph, Version=0.7.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -343,7 +343,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceGraph.Utilities",
                   "Name": "Microsoft.Azure.Commands.ResourceGraph.Utilities.IncludeOptionsEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceGraph.Utilities.IncludeOptionsEnum, Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph, Version=0.7.5.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceGraph.Utilities.IncludeOptionsEnum, Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph, Version=0.7.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],

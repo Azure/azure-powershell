@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -97,6 +98,23 @@ namespace Microsoft.Azure.Commands.Compute
         public string VmssId { get; set; }
 
         [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The max price of the billing of a low priority virtual machine.")]
+        public double MaxPrice { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The eviction policy for the low priority virtual machine.  Only supported value is 'Deallocate'.")]
+        [PSArgumentCompleter("Deallocate")]
+        public string EvictionPolicy { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The priority for the virtual machine.  Only supported values are 'Regular' and 'Low'.")]
+        [PSArgumentCompleter("Regular", "Low")]
+        public string Priority { get; set; }
+
+        [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
 		[Alias("Tag")]
@@ -125,6 +143,8 @@ namespace Microsoft.Azure.Commands.Compute
                 Identity = this.AssignIdentity.IsPresent ? new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned) : null,
                 Tags = this.Tags != null ? this.Tags.ToDictionary() : null,
                 Zones = this.Zone,
+                EvictionPolicy = this.EvictionPolicy,
+                Priority = this.Priority
             };
 
             if (this.IsParameterBound(c => c.IdentityType))
@@ -171,6 +191,11 @@ namespace Microsoft.Azure.Commands.Compute
             if (this.IsParameterBound(c => c.VmssId))
             {
                 vm.VirtualMachineScaleSet = new SubResource(this.VmssId);
+            }
+
+            if (this.IsParameterBound(c => c.MaxPrice))
+            {
+                vm.BillingProfile = new BillingProfile(this.MaxPrice);
             }
 
             WriteObject(vm);

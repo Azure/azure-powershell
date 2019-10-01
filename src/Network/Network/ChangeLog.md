@@ -17,16 +17,40 @@
     * Overview of change #1
         - Additional information about change #1
 --->
+
 ## Upcoming Release
+
+## Version 1.14.0
+* Fix incorrect example in `New-AzApplicationGateway` reference documentation 
+* Add note in `Get-AzNetworkWatcherPacketCapture` reference documentation about retrieving all properties for a packet capture
+* Fixed example in `Test-AzNetworkWatcherIPFlow` reference documentation to correctly enumerate NICs
+* Improved cloud exception parsing to display additional details if they are present
+* Improved cloud exception parsing to handle additional type of SDK exception
+* Fixed incorrect mapping of Security Rule models
+* Added properties to network interface for private ip feature
+    - Added property 'PrivateEndpoint' as type of PSResourceId to PSNetworkInterface
+    - Added property 'PrivateLinkConnectionProperties' as type of PSIpConfigurationConnectivityInformation to PSNetworkInterfaceIPConfiguration
+    - Added new model class PSIpConfigurationConnectivityInformation
+* Added new ApplicationRuleProtocolType "mssql" for Azure Firewall resource
+* MultiLink support in Virtual WAN
+    - New cmdlets
+        - New-AzVpnSiteLink
+        - New-AzVpnSiteLinkConnection
+    - Updated cmdlet:
+        - New-VpnSite
+        - Update-VpnSite
+        - New-VpnConnection
+        - Update-VpnConnection
+* Fixed documents for some PowerShell examples to use Az cmdlets instead of AzureRM cmdlets
 
 ## Version 1.13.0
 * Updated New-AzPrivateLinkServiceIpConfig
-    - Deprecated the paramster 'PublicIpAddress' since this is never used in the server side.
+    - Deprecated the parameter 'PublicIpAddress' since this is never used in the server side.
     - Added one optional parameter 'Primary' that indicate the current ip configuration is primary one or not.
 * Improved handling of request error exception from SDK
     -Fixes the issue that previously SDK exceptions aren't handled correctly which results in key error details not being displayed
 * Fixed miscellaneous typos across module
-* Adjusted validation logic for Ipv6 IP Prefix to check for correct IPv6 prefix length. 
+* Adjusted validation logic for Ipv6 IP Prefix to check for correct IPv6 prefix length.
 * Updated Get-AzVirtualNetworkSubnetConfig: Added parameter set to get by subnet resource id.
 * Updated description of Location parameter for AzNetworkServiceTag
 
@@ -59,6 +83,7 @@
         - Set-AzLoadBalancerFrontendIpConfig
 * Application Gateway New-AzApplicationGatewayProbeConfig command update for supporting custom port in Probe
     - Updated New-AzApplicationGatewayProbeConfig: Added optional parameter Port which is used for probing backend server. This parameter is applicable for Standard_V2 and WAF_V2 SKU.
+
 
 ## Version 1.11.0
 * Added `RoutingPreference` to public ip tags
