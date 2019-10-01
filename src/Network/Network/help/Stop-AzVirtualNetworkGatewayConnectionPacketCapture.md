@@ -35,7 +35,7 @@ Stops Packet Capture Operation on a Virtual Network Gateway connection and will 
 
 ## EXAMPLES
 
- ### Example 1
+### Example 1
 ```powershell
 PS C:\> $rgname = "testRg"
  $storeName = "teststorage"
