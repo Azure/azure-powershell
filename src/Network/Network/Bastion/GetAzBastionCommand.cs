@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
     [Cmdlet(VerbsCommon.Get,
          ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Bastion",
-         DefaultParameterSetName = BastionParameterSetNames.ListBysubscription,
+         DefaultParameterSetName = BastionParameterSetNames.ListBySubscription,
          SupportsShouldProcess = true),
          OutputType(typeof(PSBastion), typeof(IEnumerable<PSBastion>))]
     public class GetAzBastionCommand : BastionBaseCmdlet
