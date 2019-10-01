@@ -151,6 +151,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
                 tenantId = TestEnvironmentFactory.GetTestEnvironment().Tenant;
+                HttpMockServer.Variables[TenantIdKey] = tenantId;
             }
             else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
