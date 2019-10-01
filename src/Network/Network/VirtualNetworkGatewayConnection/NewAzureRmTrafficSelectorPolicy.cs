@@ -27,21 +27,21 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A collection of CIDR address ranges")]
         [ValidateNotNullOrEmpty]
-        public virtual string[] LocalAddressRanges { get; set; }
+        public virtual string[] LocalAddressRange { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A collection of CIDR address ranges")]
         [ValidateNotNullOrEmpty]
-        public virtual string[] RemoteAddressRanges { get; set; }
+        public virtual string[] RemoteAddressRange { get; set; }
 
         public override void Execute()
         {
             base.Execute();
             var trafficSelectorPolicy = new PSTrafficSelectorPolicy();
-            trafficSelectorPolicy.LocalAddressRanges = this.LocalAddressRanges;
-            trafficSelectorPolicy.RemoteAddressRanges = this.RemoteAddressRanges;
+            trafficSelectorPolicy.LocalAddressRanges = this.LocalAddressRange;
+            trafficSelectorPolicy.RemoteAddressRanges = this.RemoteAddressRange;
 
             WriteObject(trafficSelectorPolicy);
         }

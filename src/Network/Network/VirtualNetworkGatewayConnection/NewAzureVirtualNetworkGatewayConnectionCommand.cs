@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "A list of traffic selector policies.")]
-        public PSTrafficSelectorPolicy[] TrafficSelectorPolicies { get; set; }
+        public PSTrafficSelectorPolicy[] TrafficSelectorPolicy { get; set; }
 
         [Parameter(
         Mandatory = false,
@@ -230,9 +230,9 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGatewayConnection.IpsecPolicies = this.IpsecPolicies?.ToList();
             }
 
-            if (this.TrafficSelectorPolicies != null)
+            if (this.TrafficSelectorPolicy != null)
             {
-                vnetGatewayConnection.TrafficSelectorPolicies = this.TrafficSelectorPolicies?.ToList();
+                vnetGatewayConnection.TrafficSelectorPolicies = this.TrafficSelectorPolicy?.ToList();
             }
 
             // Map to the sdk object

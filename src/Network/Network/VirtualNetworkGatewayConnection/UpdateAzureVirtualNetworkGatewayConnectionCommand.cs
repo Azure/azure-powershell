@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "A list of traffic selector policies.")]
-        public PSTrafficSelectorPolicy[] TrafficSelectorPolicies { get; set; }
+        public PSTrafficSelectorPolicy[] TrafficSelectorPolicy { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -104,9 +104,9 @@ namespace Microsoft.Azure.Commands.Network
                         this.VirtualNetworkGatewayConnection.IpsecPolicies = this.IpsecPolicies?.ToList();
                     }
 
-                    if (this.TrafficSelectorPolicies != null)
+                    if (this.TrafficSelectorPolicy != null)
                     {
-                        this.VirtualNetworkGatewayConnection.TrafficSelectorPolicies = this.TrafficSelectorPolicies?.ToList();
+                        this.VirtualNetworkGatewayConnection.TrafficSelectorPolicies = this.TrafficSelectorPolicy?.ToList();
                     }
 
                     var vnetGatewayConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGatewayConnection>(this.VirtualNetworkGatewayConnection);
