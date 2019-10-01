@@ -1,53 +1,36 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azdeploymentoperation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azresourcegroup
 schema: 2.0.0
 ---
 
-# Get-AzDeploymentOperation
+# Get-AzResourceGroup
 
 ## SYNOPSIS
-Gets a deployments operation.
+Gets a resource group.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzDeploymentOperation -DeploymentName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
+Get-AzResourceGroup [-SubscriptionId <String[]>] [-Filter <String>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get1
-```
-Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResourceGroup -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity1
-```
-Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzDeploymentOperation -DeploymentName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResourceGroup -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets a deployments operation.
+Gets a resource group.
 
 ## EXAMPLES
 
@@ -87,15 +70,18 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DeploymentName
-The name of the deployment.
+### -Filter
+The filter to apply on the operation.
+
+You can filter by tag names and values.
+For example, to filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue eq 'Value1'
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1, List, List1
-Aliases:
+Parameter Sets: List
+Aliases: ODataQuery
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -109,7 +95,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentity1
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -120,30 +106,14 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -OperationId
-The ID of the operation to get.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, Get1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ResourceGroupName
-The name of the resource group.
+### -Name
+The name of the resource group to get.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, List1
-Aliases:
+Parameter Sets: Get
+Aliases: ResourceGroupName
 
 Required: True
 Position: Named
@@ -158,7 +128,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, Get1, List, List1
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -171,10 +141,11 @@ Dynamic: False
 
 ### -Top
 The number of results to return.
+If null is passed, returns all resource groups.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List, List1
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -194,11 +165,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeploymentOperation
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroup
 
 ## ALIASES
-
-### Get-AzResourceGroupDeploymentOperation
 
 ## NOTES
 

@@ -1,53 +1,43 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azdeploymentoperation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/export-azresourcegroup
 schema: 2.0.0
 ---
 
-# Get-AzDeploymentOperation
+# Export-AzResourceGroup
 
 ## SYNOPSIS
-Gets a deployments operation.
+Captures the specified resource group as a template.
 
 ## SYNTAX
 
-### List (Default)
+### ExportExpanded (Default)
 ```
-Get-AzDeploymentOperation -DeploymentName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Export-AzResourceGroup -ResourceGroupName <String> [-SubscriptionId <String>] [-Option <String>]
+ [-Resource <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Get1
+### Export
 ```
-Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Export-AzResourceGroup -ResourceGroupName <String> -Parameter <IExportTemplateRequest>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity1
+### ExportViaIdentity
 ```
-Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Export-AzResourceGroup -InputObject <IResourcesIdentity> -Parameter <IExportTemplateRequest>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### List1
+### ExportViaIdentityExpanded
 ```
-Get-AzDeploymentOperation -DeploymentName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Export-AzResourceGroup -InputObject <IResourcesIdentity> [-Option <String>] [-Resource <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets a deployments operation.
+Captures the specified resource group as a template.
 
 ## EXAMPLES
 
@@ -87,29 +77,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DeploymentName
-The name of the deployment.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, Get1, List, List1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentity1
+Parameter Sets: ExportViaIdentity, ExportViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -120,15 +94,50 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -OperationId
-The ID of the operation to get.
+### -Option
+The export template options.
+A CSV-formatted list containing zero or more of the following: 'IncludeParameterDefaultValue', 'IncludeComments', 'SkipResourceNameParameterization', 'SkipAllParameterization'
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1
+Parameter Sets: ExportExpanded, ExportViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Parameter
+Export resource group template request parameters.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IExportTemplateRequest
+Parameter Sets: Export, ExportViaIdentity
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Resource
+The IDs of the resources to filter the export by.
+To export all resources, supply an array with single entry '*'.
+
+```yaml
+Type: System.String[]
+Parameter Sets: ExportExpanded, ExportViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -137,12 +146,11 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+The name of the resource group to export as a template.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, List1
+Parameter Sets: Export, ExportExpanded
 Aliases:
 
 Required: True
@@ -157,8 +165,8 @@ Dynamic: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, Get1, List, List1
+Type: System.String
+Parameter Sets: Export, ExportExpanded
 Aliases:
 
 Required: False
@@ -169,13 +177,30 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Top
-The number of results to return.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: List, List1
-Aliases:
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
@@ -190,15 +215,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IExportTemplateRequest
+
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeploymentOperation
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroupExportResult
 
 ## ALIASES
 
-### Get-AzResourceGroupDeploymentOperation
+### Export-AzResourceGroupTemplate
 
 ## NOTES
 
@@ -251,6 +278,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[TagValue <String>]`: The value of the tag to delete.
   - `[TenantId <String>]`: The tenant ID.
   - `[UpnOrObjectId <String>]`: The object ID or principal name of the user for which to get information.
+
+#### PARAMETER <IExportTemplateRequest>: Export resource group template request parameters.
+  - `[Option <String>]`: The export template options. A CSV-formatted list containing zero or more of the following: 'IncludeParameterDefaultValue', 'IncludeComments', 'SkipResourceNameParameterization', 'SkipAllParameterization'
+  - `[Resource <String[]>]`: The IDs of the resources to filter the export by. To export all resources, supply an array with single entry '*'.
 
 ## RELATED LINKS
 

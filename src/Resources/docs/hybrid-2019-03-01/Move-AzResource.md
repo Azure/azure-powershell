@@ -1,53 +1,50 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azdeploymentoperation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/move-azresource
 schema: 2.0.0
 ---
 
-# Get-AzDeploymentOperation
+# Move-AzResource
 
 ## SYNOPSIS
-Gets a deployments operation.
+The resources to move must be in the same source resource group.
+The target resource group may be in a different subscription.
+When moving resources, both the source group and the target group are locked for the duration of the operation.
+Write and delete operations are blocked on the groups until the move completes.
 
 ## SYNTAX
 
-### List (Default)
+### MoveExpanded (Default)
 ```
-Get-AzDeploymentOperation -DeploymentName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Move-AzResource -SourceResourceGroupName <String> [-SubscriptionId <String>] [-Resource <String[]>]
+ [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
-### Get1
+### Move
 ```
-Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Move-AzResource -SourceResourceGroupName <String> -Parameter <IResourcesMoveInfo> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity1
+### MoveViaIdentity
 ```
-Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Move-AzResource -InputObject <IResourcesIdentity> -Parameter <IResourcesMoveInfo> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### List1
+### MoveViaIdentityExpanded
 ```
-Get-AzDeploymentOperation -DeploymentName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Move-AzResource -InputObject <IResourcesIdentity> [-Resource <String[]>] [-TargetResourceGroup <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets a deployments operation.
+The resources to move must be in the same source resource group.
+The target resource group may be in a different subscription.
+When moving resources, both the source group and the target group are locked for the duration of the operation.
+Write and delete operations are blocked on the groups until the move completes.
 
 ## EXAMPLES
 
@@ -71,6 +68,22 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -87,29 +100,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DeploymentName
-The name of the deployment.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, Get1, List, List1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentity1
+Parameter Sets: MoveViaIdentity, MoveViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -120,15 +117,15 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -OperationId
-The ID of the operation to get.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, Get1
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -136,13 +133,61 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Parameter
+Parameters of move resources.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourcesMoveInfo
+Parameter Sets: Move, MoveViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Resource
+The IDs of the resources.
+
+```yaml
+Type: System.String[]
+Parameter Sets: MoveExpanded, MoveViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SourceResourceGroupName
+The name of the resource group containing the resources to move.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, List1
+Parameter Sets: Move, MoveExpanded
 Aliases:
 
 Required: True
@@ -157,8 +202,8 @@ Dynamic: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, Get1, List, List1
+Type: System.String
+Parameter Sets: Move, MoveExpanded
 Aliases:
 
 Required: False
@@ -169,13 +214,46 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Top
-The number of results to return.
+### -TargetResourceGroup
+The target resource group.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: List, List1
+Type: System.String
+Parameter Sets: MoveExpanded, MoveViaIdentityExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
@@ -190,15 +268,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourcesMoveInfo
+
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeploymentOperation
+### System.Boolean
 
 ## ALIASES
-
-### Get-AzResourceGroupDeploymentOperation
 
 ## NOTES
 
@@ -251,6 +329,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[TagValue <String>]`: The value of the tag to delete.
   - `[TenantId <String>]`: The tenant ID.
   - `[UpnOrObjectId <String>]`: The object ID or principal name of the user for which to get information.
+
+#### PARAMETER <IResourcesMoveInfo>: Parameters of move resources.
+  - `[Resource <String[]>]`: The IDs of the resources.
+  - `[TargetResourceGroup <String>]`: The target resource group.
 
 ## RELATED LINKS
 
