@@ -86,7 +86,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
         public void TestVirtualNetworkGatewayConnectionPacketCapture()
         {
-            TestRunner.RunTestScript("Test- VirtualNetworkGatewayConnectionPacketCapture");
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionPacketCapture");
         }
 
     }
