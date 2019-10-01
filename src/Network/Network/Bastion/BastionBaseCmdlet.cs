@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             }
         }
 
-        public bool IsBastionPresent(string resourceGroupName, string name)
+        public bool IsResourcePresent(string resourceGroupName, string name)
         {
             try
             {

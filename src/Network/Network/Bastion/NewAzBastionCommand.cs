@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
 
         public override void Execute()
         {
-            if (this.IsBastionPresent(this.ResourceGroupName, this.Name))
+            if (this.IsResourcePresent(this.ResourceGroupName, this.Name))
             {
                 throw new PSArgumentException(string.Format(Properties.Resources.ResourceAlreadyPresentInResourceGroup, this.Name, this.ResourceGroupName));
             }

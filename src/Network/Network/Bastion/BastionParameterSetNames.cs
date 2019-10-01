@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
         internal const string ByVNResourceId = "ByVirtualNetworkId";
         internal const string ByVNName = "ByVirtualNetworkName";
         internal const string ByVNRGName = "ByVirtualNetworkRGName";
-        internal const string ListBysubscription = "ListBySubscriptionId";
+        internal const string ListBySubscription = "ListBySubscriptionId";
         internal const string ListByResourceGroup = "ListByResourceGroupName";
     }
 }
