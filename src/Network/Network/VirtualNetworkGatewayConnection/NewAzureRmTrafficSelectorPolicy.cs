@@ -15,11 +15,16 @@
 using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Management.Automation;
+using System.Management.Automation.Internal;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IpsecTrafficSelectorPolicy"), OutputType(typeof(PSTrafficSelectorPolicy))]
+    [Cmdlet(
+        "New", 
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IpsecTrafficSelectorPolicy", 
+        DefaultParameterSetName = "ByName", SupportsShouldProcess = true), 
+        OutputType(typeof(PSTrafficSelectorPolicy))]
     public class NewAzureRmTrafficSelectorPolicyCommand : NetworkBaseCmdlet
     {
         [Parameter(
