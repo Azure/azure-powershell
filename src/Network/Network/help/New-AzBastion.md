@@ -87,8 +87,7 @@ $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0
 $vnet = New-AzVirtualNetwork -Name "TestVnet" -ResourceGroupName "BastionPowershellTest" -Location "westeurope" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 $publicip = New-AzPublicIpAddress -ResourceGroupName "BastionPowershellTest" -name "Test-Ip" -location "westeurope" -AllocationMethod Dynamic -Sku Standard
 $bastion = New-AzBastion -ResourceGroupName "BastionPowershellTest" â€“Name "test-Bastion2" -PublicIpAddress $publicip -VirtualNetwork $vnet
-```
-```
+
 IpConfigurations     : {IpConf}
 DnsName              : bst-a9ca868f-ddab-4a50-9f45-a443ea8a0187.bastion.azure.com
 ProvisioningState    : Succeeded
@@ -116,8 +115,7 @@ TagsTable            :
 Name                 : test-Bastion2
 Etag                 : W/"ed810ccd-b3f6-4e22-891e-b0ed0a26d6dd"
 Id                   : /subscriptions/359a08a9-ff1b-463c-92d7-6df8d946f25c/resourceGroups/BastionPowershellTest/providers/Microsoft.Network/bastionHosts/test-Bastion2
-```
-```
+
 This example creates a bastion attached to virtual network "vnet" in the same resource group as the bastion.
 There must be a subnet with name AzureBastionSubnet in this vnet.
 The Ip Address must be created with Sku Standard.
@@ -129,8 +127,7 @@ $vnet = Get-AzVirtualNetwork -ResourceGroupName "BastionPowershellTest" -Name "t
 Add-AzVirtualNetworkSubnetConfig -Name "AzureBastionSubnet" -VirtualNetwork $vnet -AddressPrefix "10.0.0.0/24"
 $vnet| Set-AzVirtualNetwork
 New-AzBastion -ResourceGroupName "BastionPowershellTest" -Name "testBastion2" -PublicIpAddressRgName "BastionPowershellTest" -PublicIpAddressName "testIp2" -VirtualNetworkRgName "BastionPowershellTest" -VirtualNetworkName "testVnet2"
-```
-```
+
 IpConfigurations     : {IpConf}
 DnsName              : bst-53757658-c4fd-4908-b1a7-0849e555d489.bastion.azure.com
 ProvisioningState    : Succeeded
