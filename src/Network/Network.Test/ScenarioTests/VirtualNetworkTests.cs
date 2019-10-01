@@ -53,6 +53,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestVirtualNetworkBgpCommunitiesCRUD()
+        {
+            TestRunner.RunTestScript("Test-bgpCommunitiesCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestVirtualNetworkSubnetDelegationCRUD()
         {
             TestRunner.RunTestScript("Test-subnetDelegationCRUD");
