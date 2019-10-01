@@ -26,7 +26,7 @@ function Test-FrontDoorCrud
     $hostName = "$Name.azurefd.net"
     $routingrule1 = New-AzFrontDoorRoutingRuleObject -Name "routingrule1" -FrontDoorName $Name -ResourceGroupName $resourceGroupName -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1"
     $backend1 = New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net" 
-    $healthProbeSetting1 = New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1" -HealthProbeMethod "HEAD" -EnabledState "Disabled"
+    $healthProbeSetting1 = New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1" -HealthProbeMethod "Head" -EnabledState "Disabled"
     $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1" 
     $frontendEndpoint1 = New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName
     $backendpool1 = New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $Name -ResourceGroupName $resourceGroupName -Backend $backend1 -HealthProbeSettingsName "healthProbeSetting1" -LoadBalancingSettingsName "loadBalancingSetting1"
@@ -49,17 +49,15 @@ function Test-FrontDoorCrud
 	Assert-AreEqual $healthProbeSetting1.EnabledState $retrievedFrontDoor.HealthProbeSettings[0].EnabledState
 
 	# Verify BackendPoolsSettings 
-	Assert-AreEqual $backendPoolsSettings1.Name $retrievedFrontDoor.BackendPoolsSetting.Name
-	Assert-AreEqual $backendPoolsSettings1.SendRecvTimeoutSeconds $retrievedFrontDoor.BackendPoolsSetting.SendRecvTimeoutSeconds
-	Assert-AreEqual $backendPoolsSettings1.EnforceCertificateNameCheck $retrievedFrontDoor.BackendPoolsSetting.EnforceCertificateNameCheck
+	Assert-AreEqual $backendPoolsSettings1.SendRecvTimeoutSeconds $retrievedFrontDoor.BackendPoolsSettings[0].SendRecvTimeoutSeconds
+	Assert-AreEqual $backendPoolsSettings1.EnforceCertificateNameCheck $retrievedFrontDoor.BackendPoolsSettings[0].EnforceCertificateNameCheck
 
 	## Update Azure Front Door
     $newTags = @{"tag1" = "value3"; "tag2" = "value4"}
-	$healthProbeSetting1.HealthProbeMethod = "GET"
+	$healthProbeSetting1.HealthProbeMethod = "Get"
 	$healthProbeSetting1.EnabledState = "Enabled"
-	$backendPoolsSettings1.SendRecvTimeoutSeconds = 10
-    $updatedFrontDoor = Set-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -Tag $newTags 
-							-HealthProbeSetting $healthProbeSetting1 -BackendPoolsSetting $backendPoolsSettings1
+	$backendPoolsSettings1.SendRecvTimeoutSeconds = 20
+    $updatedFrontDoor = Set-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -Tag $newTags -HealthProbeSetting $healthProbeSetting1 -BackendPoolsSetting $backendPoolsSettings1
 
     Assert-NotNull $updatedFrontDoor
     Assert-AreEqual $Name $updatedFrontDoor.Name
@@ -71,13 +69,12 @@ function Test-FrontDoorCrud
 
 	# Verify HealthProbeSettings
 	Assert-AreEqual $healthProbeSetting1.Name $updatedFrontDoor.HealthProbeSettings[0].Name
-	Assert-AreEqual $healthProbeSetting1.HealthProbeMethod $retrievedFrontDoor.HealthProbeSettings[0].HealthProbeMethod
-	Assert-AreEqual $healthProbeSetting1.EnabledState $retrievedFrontDoor.HealthProbeSettings[0].EnabledState
+	Assert-AreEqual $healthProbeSetting1.HealthProbeMethod $updatedFrontDoor.HealthProbeSettings[0].HealthProbeMethod
+	Assert-AreEqual $healthProbeSetting1.EnabledState $updatedFrontDoor.HealthProbeSettings[0].EnabledState
 
 	# Verify BackendPoolsSettings 
-	Assert-AreEqual $backendPoolsSettings1.Name $retrievedFrontDoor.BackendPoolsSetting.Name
-	Assert-AreEqual $backendPoolsSettings1.SendRecvTimeoutSeconds $retrievedFrontDoor.BackendPoolsSetting.SendRecvTimeoutSeconds
-	Assert-AreEqual $backendPoolsSettings1.EnforceCertificateNameCheck $retrievedFrontDoor.BackendPoolsSetting.EnforceCertificateNameCheck
+	Assert-AreEqual $backendPoolsSettings1.SendRecvTimeoutSeconds $updatedFrontDoor.BackendPoolsSettings[0].SendRecvTimeoutSeconds
+	Assert-AreEqual $backendPoolsSettings1.EnforceCertificateNameCheck $updatedFrontDoor.BackendPoolsSettings[0].EnforceCertificateNameCheck
 
 	## Delete Azure Front Door
     $removed = Remove-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -PassThru

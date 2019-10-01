@@ -257,7 +257,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 Path = sdkHealthProbeSetting.Path,
                 Protocol = sdkHealthProbeSetting.Protocol == null ? (PSProtocol?)null : (PSProtocol)Enum.Parse(typeof(PSProtocol), sdkHealthProbeSetting.Protocol),
                 IntervalInSeconds = sdkHealthProbeSetting.IntervalInSeconds,
-                ResourceState = sdkHealthProbeSetting.ResourceState
+                ResourceState = sdkHealthProbeSetting.ResourceState,
+                HealthProbeMethod = sdkHealthProbeSetting.HealthProbeMethod,
+                EnabledState = sdkHealthProbeSetting.EnabledState == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkHealthProbeSetting.EnabledState)
             };
         }
 
