@@ -46,7 +46,7 @@ Updates an existing healthcareApis fhir service.
 ```powershell
 PS C:\> Set-AzHealthcareApisService -Name MyService -ResourceGroupName MyResourceGroup -CosmosOfferThroughput 500
 
-Properties        : Microsoft.Azure.Management.HealthcareApis.Models.ServicesProperties
+Properties        : Microsoft.Azure.Management.HealthcareApis.Models.PSHealthcareApisServiceConfig
 ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
                     .HealthcareApis/services/MyService
 Name              : MyService

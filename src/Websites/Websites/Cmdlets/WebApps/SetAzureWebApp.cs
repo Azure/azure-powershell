@@ -248,7 +248,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
                     if (parameters.Contains("AppServicePlan"))
                     {
-                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, AppServicePlan);
+                        // AzureStorage path is not a part of the back end siteObject, but if the PSSite Object is given as an input, so simply set this to null
+                        WebApp.AzureStoragePath = null;
+                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, AppServicePlan, WebApp);
                     }
 
                     if (parameters.Contains("HostNames"))

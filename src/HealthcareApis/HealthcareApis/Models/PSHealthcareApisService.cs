@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
             this.Tags = serviceDescription.Tags;
             this.Properties = new PSHealthcareApisServiceConfig(serviceDescription.Properties);
             this.Etag = serviceDescription.Etag;
-            this.Kind = serviceDescription.Kind;
+            this.Kind = GetKindValue(serviceDescription.Kind);
         }
 
         public string ResourceGroupName { get; private set; }
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
 
         public string ResourceType { get; private set; }
 
-        public Kind Kind { get; private set; }
+        public string Kind { get; private set; }
 
         public IDictionary<string, string> Tags { get; private set; }
 
@@ -68,6 +68,18 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
             return null;
         }
 
-
+        private static string GetKindValue(Kind kind)
+        {
+            switch (kind)
+            {
+                case Management.HealthcareApis.Models.Kind.Fhir:
+                    return "fhir-Stu3";
+                case Management.HealthcareApis.Models.Kind.FhirStu3:
+                    return "fhir-Stu3";
+                case Management.HealthcareApis.Models.Kind.FhirR4:
+                    return "fhir-R4";
+            }
+            return null;
+        }
     }
 }

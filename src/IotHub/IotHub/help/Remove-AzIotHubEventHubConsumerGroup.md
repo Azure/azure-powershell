@@ -25,7 +25,7 @@ Deletes an eventhub consumergroup.
 
 ### Example 1 Remove eventhub consumergroup from the telemetry eventhub
 ```
-PS C:\> Remove-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName events -EventHubConsumerGroupName myconsumergroup
+PS C:\> Remove-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "events" -EventHubConsumerGroupName myconsumergroup
 ```
 
 Removes the consumergroup named myconsumergroup from the IotHub named "myiothub"

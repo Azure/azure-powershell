@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/remove-azservicefabricnode
@@ -23,7 +23,7 @@ Use **Remove-AzServiceFabricNode** to remove nodes from a specific node type fro
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS c:> Remove-AzServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NodeTypeName 'nt1' -NumberOfNodesToRemove 2
 ```
 
@@ -32,7 +32,7 @@ This command will remove 2 nodes from the NodeType 'nt1'.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster.
+Specify the name of the cluster
 
 ```yaml
 Type: System.String
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -NodeType
-Node type name.
+Node type name
 
 ```yaml
 Type: System.String
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -NumberOfNodesToRemove
-Number of nodes to remove.
+The number of nodes to add
 
 ```yaml
 Type: System.Int32
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group.
+Specify the name of the resource group.
 
 ```yaml
 Type: System.String
@@ -122,7 +122,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -153,4 +154,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzServiceFabricNode](./Add-AzServiceFabricNode.md) 
+[Add-AzServiceFabricNode](./Add-AzServiceFabricNode.md)

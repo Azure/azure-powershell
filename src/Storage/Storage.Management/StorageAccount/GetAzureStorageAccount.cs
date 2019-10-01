@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Rest.Azure;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
@@ -65,9 +66,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var storageAccounts = this.StorageClient.StorageAccounts.List();
-
+                IPage<Microsoft.Azure.Management.Storage.Models.StorageAccount> storageAccounts = this.StorageClient.StorageAccounts.List();
                 WriteStorageAccountList(storageAccounts);
+
+                while (storageAccounts.NextPageLink != null)
+                {
+                    storageAccounts = this.StorageClient.StorageAccounts.ListNext(storageAccounts.NextPageLink);
+                    WriteStorageAccountList(storageAccounts);
+                }
             }
             else if (string.IsNullOrEmpty(this.Name))
             {

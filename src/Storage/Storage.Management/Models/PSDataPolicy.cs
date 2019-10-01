@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public PSDateAfterModification(DateAfterModification data)
         {
-            this.DaysAfterModificationGreaterThan = data.DaysAfterModificationGreaterThan;
+            this.DaysAfterModificationGreaterThan = Convert.ToInt32(data.DaysAfterModificationGreaterThan);
         }
         public DateAfterModification ParseDateAfterModification()
         {
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public PSDateAfterCreation(DateAfterCreation data)
         {
-            this.DaysAfterCreationGreaterThan = data.DaysAfterCreationGreaterThan;
+            this.DaysAfterCreationGreaterThan = Convert.ToInt32(data.DaysAfterCreationGreaterThan);
         }
         public DateAfterCreation ParseDateAfterCreation()
         {
