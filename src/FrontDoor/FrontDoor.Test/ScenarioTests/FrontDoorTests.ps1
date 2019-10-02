@@ -198,7 +198,7 @@ Set custom domain configuration for FrontDoor endpoint.
 function Test-FrontDoorEndpointCustomDomainHTTPS-FrontDoor
 {
     $Name = "test-powershell-030620190342"
-    $resourceGroup = TestSetup-CreateResourceGroup
+	$resourceGroup = TestSetup-CreateResourceGroup
     $resourceGroupName = $resourceGroup.ResourceGroupName
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
     $hostName = "$Name.azurefd.net"
@@ -218,7 +218,7 @@ function Test-FrontDoorEndpointCustomDomainHTTPS-FrontDoor
     $retrievedFrontDoor = Get-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName
     Assert-NotNull $retrievedFrontDoor
 
-    $customDomain = Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName $ResourceGroupName -FrontDoorName $Name -FrontendEndpointName $customFrontendEndpointName
+    $customDomain = Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName $ResourceGroupName -FrontDoorName $Name -FrontendEndpointName $customFrontendEndpointName -MinimumTlsVersion "1.2"
     Assert-AreEqual $customDomain.CustomHttpsProvisioningState "Enabling"
     [int]$counter = 0
     do 
@@ -227,6 +227,7 @@ function Test-FrontDoorEndpointCustomDomainHTTPS-FrontDoor
        $customDomain = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName $ResourceGroupName -FrontDoorName $Name -Name $customFrontendEndpointName
     } while ($customDomain.CustomHttpsProvisioningState -ne "Enabled" -and $counter++ -lt 50)
     Assert-AreEqual $customDomain.CustomHttpsProvisioningState "Enabled"
+	Assert-AreEqual $customDomain.MinimumTlsVersion "1.2"
 
     $customDomain = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName $ResourceGroupName -FrontDoorName $Name -Name $customFrontendEndpointName
     $disabledCustomDomain = $customDomain | Disable-AzFrontDoorCustomDomainHttps

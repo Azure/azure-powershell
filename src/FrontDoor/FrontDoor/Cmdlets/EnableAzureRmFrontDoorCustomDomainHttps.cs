@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.FrontDoor.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.FrontDoor;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
@@ -95,6 +96,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = true, ParameterSetName = ObjectWithVaultParameterSet, HelpMessage = "The version of the Key Vault secret representing the full certificate PFX")]
         public string SecretVersion { get; set; }
 
+        /// <summary>
+        /// The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
+        /// </summary>
+        [Parameter(Mandatory = true, HelpMessage = "The minimum TLS version required from the clients to establish an SSL handshake with Front Door.")]
+        public string MinimumTlsVersion { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
@@ -131,6 +138,11 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                     customHttpsConfiguration.Vault = new Management.FrontDoor.Models.KeyVaultCertificateSourceParametersVault(VaultId);
                     customHttpsConfiguration.SecretName = SecretName;
                     customHttpsConfiguration.SecretVersion = SecretVersion;
+                }
+
+                if (this.IsParameterBound(c => c.MinimumTlsVersion))
+                {
+                    customHttpsConfiguration.MinimumTlsVersion = MinimumTlsVersion;
                 }
 
                 if (ShouldProcess(Resources.FrontDoorTarget, string.Format(Resources.EnableCustomDomainHttpsWarning, FrontendEndpointName)))
