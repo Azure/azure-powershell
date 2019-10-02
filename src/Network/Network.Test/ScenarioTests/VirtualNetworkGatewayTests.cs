@@ -125,7 +125,7 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset2)]
         public void TestVirtualNetworKGatewayPacketCapture()
         {
