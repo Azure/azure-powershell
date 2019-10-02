@@ -33,5 +33,9 @@
   <ItemGroup>
     <None Update="AzureRmNetworkStartup.ps1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Bastion\" />
+  </ItemGroup>
 
 </Project>
