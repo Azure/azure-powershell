@@ -14,28 +14,15 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
+    using Newtonsoft.Json;
+    using System.Collections.Generic;
 
-    public class PSVirtualHub : PSTopLevelResource
+    public class PSP2SVpnConnectionHealthRequest
     {
-        [Ps1Xml(Label = "Virtual Wan Id", Target = ViewControl.Table, ScriptBlock = "$_.VirtualWan.Id")]
-        public PSResourceId VirtualWan { get; set; }
+        [Ps1Xml(Label = "VpnUserNamesFilter", Target = ViewControl.Table)]
+        public List<string> VpnUserNamesFilter { get; set; }
 
-        public PSResourceId VpnGateway { get; set; }
-
-        public PSResourceId P2SVpnGateway { get; set; }
-
-        public PSResourceId ExpressRouteGateway { get; set; }
-
-        public List<PSHubVirtualNetworkConnection> VirtualNetworkConnections { get; set; }
-
-        public PSVirtualHubRouteTable RouteTable { get; set; }
-
-        [Ps1Xml(Label = "Address Prefix", Target = ViewControl.Table)]
-        public string AddressPrefix { get; set; }
-
-        [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
-        public string ProvisioningState { get; set; }
+        public string OutputBlobSasUrl;
     }
 }
