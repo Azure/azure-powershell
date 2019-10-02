@@ -168,6 +168,7 @@ namespace Microsoft.Azure.Commands.Network
                 // Subnet
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSDhcpOptions, MNM.DhcpOptions>();
+                cfg.CreateMap<CNM.PSVirtualNetworkBgpCommunities, MNM.VirtualNetworkBgpCommunities>();
                 cfg.CreateMap<CNM.PSSubnet, MNM.Subnet>()
                     .ForMember(dest => dest.AddressPrefix, opt => opt.Ignore())
                     .ForMember(dest=> dest.AddressPrefixes, opt => opt.Ignore())
@@ -190,6 +191,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.DhcpOptions, CNM.PSDhcpOptions>();
+                cfg.CreateMap<MNM.VirtualNetworkBgpCommunities, CNM.PSVirtualNetworkBgpCommunities>();
                 cfg.CreateMap<MNM.Subnet, CNM.PSSubnet>()
                     .ForMember(dest => dest.AddressPrefix, opt => opt.Ignore())
                     .AfterMap((src, dest) =>
