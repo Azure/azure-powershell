@@ -135,6 +135,10 @@ directive:
   - where:
       subject: ^(?!^BillingPeriod$)(?!^Budget$)(?!^EnrollmentAccount$)(?!^Invoice$)(?!^Marketplace$)(?!^PriceSheet$)(?!^ReservationDetail$)(?!^ReservationSummary$)(?!^UsageAggregate$)(?!^UsageDetail$).*$
     hide: true
+# Make the nuget package a preview
+  - from: Az.Billing.nuspec
+    where: $
+    transform: $ = $.replace(/<version>(\d+\.\d+\.\d+)<\/version>/, '<version>$1-preview</version>');
   # Make this a preview module
   - from: source-file-csharp
     where: $
