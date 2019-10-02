@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The list of application rules")]
         [ValidateNotNullOrEmpty]
-        public PSAzureFirewallPolicyRuleCondition[] RuleConditions { get; set; }
+        public PSAzureFirewallPolicyRuleCondition[] RuleCondition { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -58,11 +58,11 @@ namespace Microsoft.Azure.Commands.Network
 
             var applicationRc = new PSAzureFirewallPolicyFilterRule
             {
-                Name = this.Name,
-                Priority = this.Priority,
-                RuleConditions = this.RuleConditions?.ToList(),
-                Action = new PSAzureFirewallPolicyFilterRuleAction { Type = ActionType },
-                RuleType = "FirewallPolicyFilterRule"
+                name = this.Name,
+                priority = this.Priority,
+                ruleConditions = this.RuleCondition?.ToList(),
+                Action = new PSAzureFirewallPolicyFilterRuleAction { type = ActionType },
+                ruleType = "FirewallPolicyFilterRule"
             };
             WriteObject(applicationRc);
         }

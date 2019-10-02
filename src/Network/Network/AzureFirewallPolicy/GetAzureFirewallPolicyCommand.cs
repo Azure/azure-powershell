@@ -79,14 +79,14 @@ namespace Microsoft.Azure.Commands.Network
                 // Get all resources by polling on next page link
                 var azureFirewallResponseLIst = ListNextLink<FirewallPolicy>.GetAllResourcesByPollingNextLink(azureFirewallPage, this.AzureFirewallPolicyClient.ListNext);
 
-                var psAzureFirewalls = azureFirewallResponseLIst.Select(firewall =>
+                var psAzureFirewallPolicies = azureFirewallResponseLIst.Select(firewall =>
                 {
-                    var psAzureFirewall = this.ToPsAzureFirewallPolicy(firewall);
-                    psAzureFirewall.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(firewall.Id);
-                    return psAzureFirewall;
+                    var psAzureFirewallPolicy = this.ToPsAzureFirewallPolicy(firewall);
+                    psAzureFirewallPolicy.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(firewall.Id);
+                    return psAzureFirewallPolicy;
                 }).ToList();
 
-                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psAzureFirewalls), true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psAzureFirewallPolicies), true);
             }
         }
     }

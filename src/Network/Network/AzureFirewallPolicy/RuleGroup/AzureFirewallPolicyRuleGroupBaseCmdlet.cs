@@ -18,6 +18,8 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.Rest.Serialization;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -30,45 +32,6 @@ namespace Microsoft.Azure.Commands.Network
                 return NetworkClient.NetworkManagementClient.FirewallPolicyRuleGroups;
             }
         }
-
-        public IAzureFirewallFqdnTagsOperations AzureFirewallPolicyRuleGroupFqdnTagClient
-        {
-            get
-            {
-                return NetworkClient.NetworkManagementClient.AzureFirewallFqdnTags;
-            }
-        }
-
-        // public bool IsAzureFirewallPolicyPresent(string resourceGroupName, string name)
-        // {
-        //     try
-        //     {
-        //         GetAzureFirewallPolicy(resourceGroupName, name);
-        //     }
-        //     catch (Microsoft.Rest.Azure.CloudException exception)
-        //     {
-        //         if (exception.Response.StatusCode == HttpStatusCode.NotFound)
-        //         {
-        //             // Resource is not present
-        //             return false;
-        //         }
-
-        //         throw;
-        //     }
-
-        //     return true;
-        // }
-
-        // public PSAzureFirewallPolicy GetAzureFirewallPolicy(string resourceGroupName, string name)
-        // {
-        //     var azureFirewallPolicy = this.AzureFirewallPolicyRuleGroupClient.Get(resourceGroupName, name);
-
-        //     var psAzureFirewall = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewallPolicy>(azureFirewallPolicy);
-        //     psAzureFirewall.ResourceGroupName = resourceGroupName;
-        //     psAzureFirewall.Tag = TagsConversionHelper.CreateTagHashtable(azureFirewallPolicy.Tags);
-
-        //     return psAzureFirewall;
-        // }
 
         public PSAzureFirewallPolicy ToPsAzureFirewallPolicy(FirewallPolicy firewall)
         {

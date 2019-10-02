@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                var firewall = new PSAzureFirewallPolicy()
+                var firewallPolicy = new PSAzureFirewallPolicy()
                 {
                     Name = this.Name,
                     ResourceGroupName = this.ResourceGroupName,
@@ -136,13 +136,13 @@ namespace Microsoft.Azure.Commands.Network
                 };
 
                 // Map to the sdk object
-                var azureFirewallModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(firewall);
-                azureFirewallModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+                var azureFirewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(firewallPolicy);
+                azureFirewallPolicyModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
                 // Execute the Create AzureFirewall call
-                this.AzureFirewallPolicyClient.CreateOrUpdate(this.ResourceGroupName, this.Name, azureFirewallModel);
-                var getAzureFirewall = this.GetAzureFirewallPolicy(ResourceGroupName, Name);
-                WriteObject(getAzureFirewall);
+                this.AzureFirewallPolicyClient.CreateOrUpdate(this.ResourceGroupName, this.Name, azureFirewallPolicyModel);
+                var getAzureFirewallPolicy = this.GetAzureFirewallPolicy(ResourceGroupName, Name);
+                WriteObject(getAzureFirewallPolicy);
             }
 
         }

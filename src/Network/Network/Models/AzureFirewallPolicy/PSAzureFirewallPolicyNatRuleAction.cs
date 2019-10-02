@@ -17,6 +17,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSAzureFirewallPolicyNatRuleAction
     {
-        public string Type { get; set; }
+        public string type { get; set; }
     }
 }

@@ -112,11 +112,11 @@ namespace Microsoft.Azure.Commands.Network
             };
 
             // Map to the sdk object
-            var azureFirewallModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(firewall);
-            azureFirewallModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+            var azureFirewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(firewall);
+            azureFirewallPolicyModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create AzureFirewall call
-            this.AzureFirewallPolicyClient.CreateOrUpdate(this.ResourceGroupName, this.Name, azureFirewallModel);
+            this.AzureFirewallPolicyClient.CreateOrUpdate(this.ResourceGroupName, this.Name, azureFirewallPolicyModel);
             return this.GetAzureFirewallPolicy(this.ResourceGroupName, this.Name);
         }
     }

@@ -40,19 +40,19 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The source addresses of the rule")]
         [ValidateNotNullOrEmpty]
-        public string[] SourceAddresses { get; set; }
+        public string[] SourceAddress { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The destination addresses of the rule")]
         [ValidateNotNullOrEmpty]
-        public string[] DestinationAddresses { get; set; }
+        public string[] DestinationAddress { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The destination ports of the rule")]
         [ValidateNotNullOrEmpty]
-        public string[] DestinationPorts { get; set; }
+        public string[] DestinationPort { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -71,13 +71,13 @@ namespace Microsoft.Azure.Commands.Network
             
             var networkRule = new PSAzureFirewallPolicyNetworkRuleCondition
             {
-                Name = this.Name,
-                Description = this.Description,
-                Protocol = this.Protocols?.ToList(),
-                SourceAddresses = this.SourceAddresses?.ToList(),
-                DestinationAddresses = this.DestinationAddresses?.ToList(),
-                DestinationPorts = this.DestinationPorts?.ToList(),
-                RuleConditionType = "NetworkRuleCondition"
+                name = this.Name,
+                description = this.Description,
+                ipProtocols = this.Protocols?.ToList(),
+                sourceAddresses = this.SourceAddress?.ToList(),
+                destinationAddresses = this.DestinationAddress?.ToList(),
+                destinationPorts = this.DestinationPort?.ToList(),
+                ruleConditionType = "NetworkRuleCondition"
             };
             WriteObject(networkRule);
         }

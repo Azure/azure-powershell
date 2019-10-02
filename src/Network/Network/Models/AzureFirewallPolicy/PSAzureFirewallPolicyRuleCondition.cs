@@ -21,13 +21,13 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSAzureFirewallPolicyRuleCondition
     {
         [JsonProperty(Order = 1)]
-        public string Name { get; set; }
+        public string name { get; set; }
 
         [JsonProperty(Order = 2)]
-        public string Description { get; set; }
+        public string description { get; set; }
 
         [JsonProperty(Order = 3)]
-        public string RuleConditionType { get; set; }
+        public string ruleConditionType { get; set; }
 
     }
 }
