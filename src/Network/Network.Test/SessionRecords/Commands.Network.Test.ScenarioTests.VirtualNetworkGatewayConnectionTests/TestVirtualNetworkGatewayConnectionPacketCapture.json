@@ -450,6 +450,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"zqlDlniWGYS9n0SrlEl9e4MOwd75tEScGFfikDk5QDUIEu97dnFh/T+MeaQuAEVw2pUx+YJ96tGyDTpvC8ZZVA==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"RucKXDBSeuMkSjoPPArWbgOqNxR/xV42s7RxpeOOd1MS5JkTt+UiNI7kuOs6Mbz8lp8xTmcCF5U6U15Wi3Fq6Q==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
@@ -26103,6 +26104,7 @@
     {
       "RequestUri": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ps412/providers/Microsoft.Network/connections/ps6551/stopPacketCapture?api-version=2019-07-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTlhYzEyYTYtZjJiNy00NmQ0LWFmM2QtOThiYTlkOWRiZDkyL3Jlc291cmNlR3JvdXBzL3BzNDEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9jb25uZWN0aW9ucy9wczY1NTEvc3RvcFBhY2tldENhcHR1cmU/YXBpLXZlcnNpb249MjAxOS0wNy0wMQ==",
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"sasUrl\": \"https://stops412.blob.core.windows.net/testcontainer?sv=2019-02-02&sr=c&sig=8GFXUprKx3nOOb2emC2DIIB7iWGFvnz1xRsBIHP85pk%3D&st=2019-10-01T04%3A10%3A03Z&se=2019-10-02T05%3A10%3A03Z&sp=rwd\"\r\n}",
       "RequestHeaders": {
@@ -26184,6 +26186,7 @@
     },
     {
       "RequestUri": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ps412/providers/Microsoft.Network/connections/ps6551/stopPacketCapture?api-version=2019-07-01",
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTlhYzEyYTYtZjJiNy00NmQ0LWFmM2QtOThiYTlkOWRiZDkyL3Jlc291cmNlR3JvdXBzL3BzNDEyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9jb25uZWN0aW9ucy9wczY1NTEvc3RvcFBhY2tldENhcHR1cmU/YXBpLXZlcnNpb249MjAxOS0wNy0wMQ==",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"sasUrl\": \"https://stops412.blob.core.windows.net/testcontainer?sv=2019-02-02&sr=c&sig=8GFXUprKx3nOOb2emC2DIIB7iWGFvnz1xRsBIHP85pk%3D&st=2019-10-01T04%3A10%3A03Z&se=2019-10-02T05%3A10%3A03Z&sp=rwd\"\r\n}",

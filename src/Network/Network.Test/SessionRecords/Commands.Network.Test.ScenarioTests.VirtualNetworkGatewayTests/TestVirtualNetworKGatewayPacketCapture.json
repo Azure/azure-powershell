@@ -450,6 +450,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"CIHSiJBE+gD0F9txhyR8dX4cfg+yTic8oispscQWOJE6jWZhZ8rCbLio2g3L35RgEst50vxCAfeU2PBa5vPjug==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"f8qvflvRNnPP3J1tvCDaUNz7hWrY/JsOR8eXLuWvdIQxL0KADSGeqZF1XTUFhOqY6uwh74M6B2eupiwTbiS89A==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
@@ -10338,6 +10339,7 @@
     {
       "RequestUri": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ps242/providers/Microsoft.Network/virtualNetworkGateways/ps8257/stopPacketCapture?api-version=2019-08-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTlhYzEyYTYtZjJiNy00NmQ0LWFmM2QtOThiYTlkOWRiZDkyL3Jlc291cmNlR3JvdXBzL3BzMjQyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay92aXJ0dWFsTmV0d29ya0dhdGV3YXlzL3BzODI1Ny9zdG9wUGFja2V0Q2FwdHVyZT9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"sasUrl\": \"https://stops242.blob.core.windows.net/testcontainer?sv=2019-02-02&sr=c&sig=yQKlX%2FecFBpBAivg7RSEyrCi0IPpxshPA6qzAA%2BS%2FbY%3D&st=2019-10-01T22%3A09%3A19Z&se=2019-10-02T23%3A09%3A19Z&sp=rwd\"\r\n}",
       "RequestHeaders": {
@@ -10416,6 +10418,7 @@
     },
     {
       "RequestUri": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ps242/providers/Microsoft.Network/virtualNetworkGateways/ps8257/stopPacketCapture?api-version=2019-08-01",
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTlhYzEyYTYtZjJiNy00NmQ0LWFmM2QtOThiYTlkOWRiZDkyL3Jlc291cmNlR3JvdXBzL3BzMjQyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay92aXJ0dWFsTmV0d29ya0dhdGV3YXlzL3BzODI1Ny9zdG9wUGFja2V0Q2FwdHVyZT9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"sasUrl\": \"https://stops242.blob.core.windows.net/testcontainer?sv=2019-02-02&sr=c&sig=yQKlX%2FecFBpBAivg7RSEyrCi0IPpxshPA6qzAA%2BS%2FbY%3D&st=2019-10-01T22%3A09%3A19Z&se=2019-10-02T23%3A09%3A19Z&sp=rwd\"\r\n}",
