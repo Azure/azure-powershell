@@ -58,45 +58,45 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public string WebApplicationFirewallPolicyLink { get; set; }
 
         /// <summary>
-        /// The source of the SSL certificate. Part of CustomHttpsConfiguration.
+        /// The source of the SSL certificate.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The source of the SSL certificate")]
         [PSArgumentCompleter("AzureKeyVault", "FrontDoor")]
         public string CertificateSource { get; set; }
 
         /// <summary>
-        /// The minimum TLS version required from the clients to establish an SSL handshake with Front Door. Part of CustomHttpsConfiguration.
+        /// The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The minimum TLS version required from the clients to establish an SSL handshake with Front Door.")]
         public string MinimumTlsVersion { get; set; }
 
         /// <summary>
-        /// Defines the TLS extension protocol that is used for secure delivery. Part of CustomHttpsConfiguration.
+        /// Defines the TLS extension protocol that is used for secure delivery.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The TLS extension protocol that is used for secure delivery")]
         [PSArgumentCompleter("ServerNameIndication", "IPBased")]
         public string ProtocolType { get; set; }
 
         /// <summary>
-        /// Defines the TLS extension protocol that is used for secure delivery. Part of CustomHttpsConfiguration.
+        /// Defines the TLS extension protocol that is used for secure delivery.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The Key Vault containing the SSL certificate")]
         public string Vault { get; set; }
 
         /// <summary>
-        /// The name of the Key Vault secret representing the full certificate PFX. Part of CustomHttpsConfiguration.
+        /// The name of the Key Vault secret representing the full certificate PFX.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The name of the Key Vault secret representing the full certificate PFX")]
         public string SecretName { get; set; }
 
         /// <summary>
-        /// The version of the Key Vault secret representing the full certificate PFX. Part of CustomHttpsConfiguration.
+        /// The version of the Key Vault secret representing the full certificate PFX.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The version of the Key Vault secret representing the full certificate PFX")]
         public string SecretVersion { get; set; }
 
         /// <summary>
-        /// The type of the certificate used for secure connections to a frontendEndpoint. Part of CustomHttpsConfiguration.
+        /// The type of the certificate used for secure connections to a frontendEndpoint.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The type of the certificate used for secure connections to a frontendEndpoint")]
         [PSArgumentCompleter("Shared", "Dedicated")]

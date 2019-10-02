@@ -44,7 +44,7 @@ using SdkRedirectConfiguration = Microsoft.Azure.Management.FrontDoor.Models.Red
 using SdkRefId = Microsoft.Azure.Management.FrontDoor.Models.SubResource;
 using SdkRouteConfiguration = Microsoft.Azure.Management.FrontDoor.Models.RouteConfiguration;
 using SdkRoutingRule = Microsoft.Azure.Management.FrontDoor.Models.RoutingRule;
-using SdkValut = Microsoft.Azure.Management.FrontDoor.Models.KeyVaultCertificateSourceParametersVault;
+using SdkVault = Microsoft.Azure.Management.FrontDoor.Models.KeyVaultCertificateSourceParametersVault;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Helpers
 {
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
             {
                 customHttpsConfiguration = new SdkHttpsConfig(psFrontendEndpoint.CertificateSource,
                                    psFrontendEndpoint.MinimumTlsVersion,
-                                   new SdkValut(psFrontendEndpoint.Vault),
+                                   new SdkVault(psFrontendEndpoint.Vault),
                                    psFrontendEndpoint.SecretName,
                                    psFrontendEndpoint.SecretVersion,
                                    psFrontendEndpoint.CertificateType);
