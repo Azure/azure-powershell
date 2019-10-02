@@ -938,7 +938,11 @@ directive:
     where: $
     transform: >
         return $.replace('# Load DLL to use build-time cmdlets', '    if($hasAdequateVersion) {\n      $accountsModule = Import-Module -Name $accountsName -MinimumVersion 1.6.0 -Scope Global -PassThru\n    }\n  }\n}\n# Load DLL to use build-time cmdlets');
-  # Make this a preview module
+# Make the nuget package a preview
+  - from: Az.Compute.nuspec
+    where: $
+    transform: $ = $.replace(/<version>(\d+\.\d+\.\d+)<\/version>/, '<version>$1-preview</version>');
+# Make this a preview module
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );

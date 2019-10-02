@@ -2953,7 +2953,11 @@ directive:
           SiteKey: Site Key
           SecuritySite: Security Site
           ProvisioningState: Provisioning State
-  # Make this a preview module
+# Make the nuget package a preview
+  - from: Az.Network.nuspec
+    where: $
+    transform: $ = $.replace(/<version>(\d+\.\d+\.\d+)<\/version>/, '<version>$1-preview</version>');
+ # Make this a preview module
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
