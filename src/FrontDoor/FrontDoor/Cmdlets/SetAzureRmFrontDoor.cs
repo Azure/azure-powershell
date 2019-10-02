@@ -104,13 +104,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Settings for all backendPools")]
+        [Parameter(Mandatory = false, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
         public SwitchParameter DisableCertificateNameCheck { get; set; }
 
         /// <summary>
         /// Settings for all backendPools
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
+        [Parameter(Mandatory = false, HelpMessage = "Settings for all backendPools")]
         public PSBackendPoolsSettings BackendPoolsSettings { get; set; }
 
         public override void ExecuteCmdlet()
