@@ -862,6 +862,167 @@ directive:
       verb: New
       subject: VMSS
     hide: true
+# Update Table format for top-level types
+  - where:
+      model-name: AvailabilitySet
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - SkuName
+  - where:
+      model-name: Disk
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - OSType
+          - SkuName
+          - ProvisioningState
+  - where:
+      model-name: Gallery
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - ProvisioningState
+  - where:
+      model-name: GalleryApplication
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - SupportedOSType
+          - ProvisioningState
+  - where:
+      model-name: GalleryImage
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - OSType
+          - Sku
+          - ProvisioningState
+  - where:
+      model-name: Image
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - OSDiskOstype
+          - OSDiskSizeInGb
+          - ProvisioningState
+  - where:
+      model-name: ComputeOperationValue
+    set:
+      format-table:
+        properties:
+          - Name
+          - Origin
+  - where:
+      model-name: ProximityPlacementGroup
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - AvailabilitySet
+          - ProximityPlacementGroupType
+  - where:
+      model-name: Snapshot
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - OSType
+          - SkuName
+          - EncryptionEnabled
+          - ProvisioningState
+  - where:
+      model-name: VirtualMachineSize
+    set:
+      format-table:
+        properties:
+          - Name
+          - NumberOfCores
+          - MemoryInMb
+          - MaxDataDiskCount
+          - OSDiskSizeInMb
+  - where:
+      model-name: VrtualMachineExtension
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - ExtensionType
+          - ProvisioningState
+  - where:
+      model-name: VrtualMachineExtensionImage
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - OperationSyatem
+          - VMScaleSetEnabled
+  - where:
+      model-name: VrtualMachineImage
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - OSDiskImageOperatingSystem
+  - where:
+      model-name: VirtualMachineScaleSet
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - SkuName
+          - ProvisioningState
+          - Zone
+  - where:
+       model-name: VirtualMachine
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - Size
+          - NetworkInterface
+          - ProvisioningState
+          - Zone
+  - where:
+       model-name: VirtualMachineScaleSetVM
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - InstanceId
+          - SkuName
+          - ProvisioningState
+  - where:
+       model-name: VirtualMachineScaleSetSku
+    set:
+      format-table:
+        properties:
+          - SkuName
+          - CapacityScaleType
+          - DefaultCapacity
+          - MaximumCapacity
+          - MinimumCapacity
+
 # Update csproj for customizations
   - from: Az.Compute.csproj
     where: $
