@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.Network.Models
@@ -19,13 +20,13 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSTrafficSelectorPolicy
     {
         /// <summary>
-        /// CIDR formmated local address spaces 
+        /// CIDR formatted local address spaces 
         /// </summary>
         [Ps1Xml(Target = ViewControl.Table)]
         public string[] LocalAddressRanges { get; set; }
 
         /// <summary>
-        /// CIDR formmated remote address spaces 
+        /// CIDR formatted remote address spaces 
         /// </summary>
         [Ps1Xml(Target = ViewControl.Table)]
         public string[] RemoteAddressRanges { get; set; }
