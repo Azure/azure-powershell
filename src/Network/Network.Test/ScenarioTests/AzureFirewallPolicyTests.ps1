@@ -18,8 +18,8 @@ Tests AzureFirewallPolicyCRUD.
 #>
 function Test-AzureFirewallPolicyCRUD {
     # Setup
-    $rgname = "psFpTestRg4"
-    $azureFirewallPolicyName = "psFpTest4"
+    $rgname = "psFpTestRg5"
+    $azureFirewallPolicyName = "psFpTest5"
     $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
     $location = "eastus"
 
@@ -145,86 +145,86 @@ function Test-AzureFirewallPolicyCRUD {
         # Create a NAT rule
         $natRule = New-AzFirewallPolicyNatRule -Name $natRule1Name -Priority $natRcPriority -TranslatedAddress -RuleCondition $networkRule $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort -ActionType $natRcActionType
 
-        # New-AzFirewallPolicyRuleGroup -Name rg1 -Priority 100 -Rule $appRc, $appRc2, $natRule -AzureFirewallPolicy $azureFirewallPolicy
+        New-AzFirewallPolicyRuleGroup -Name rg1 -Priority 100 -Rule $appRc, $appRc2, $natRule -AzureFirewallPolicy $azureFirewallPolicy
 
 
         # # Update ThreatIntel mode
-        # $azureFirewallPolicy.ThreatIntelMode = "Deny"
-        # # Set AzureFirewallPolicy
-        # Set-AzFirewallPolicy -AzureFirewallPolicy $azureFirewallPolicy
-        # # Get AzureFirewallPolicy
-        # $getAzureFirewallPolicy = Get-AzFirewallPolicy -name $azureFirewallPolicyName -ResourceGroupName $rgName
+        $azureFirewallPolicy.ThreatIntelMode = "Deny"
+        # Set AzureFirewallPolicy
+        Set-AzFirewallPolicy -AzureFirewallPolicy $azureFirewallPolicy
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -name $azureFirewallPolicyName -ResourceGroupName $rgName
 
         # #verification
-        # Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
-        # Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
-        # Assert-NotNull $getAzureFirewallPolicy.Location
-        # Assert-AreEqual $location $getAzureFirewallPolicy.Location
-        # Assert-NotNull $getAzureFirewallPolicy.Etag
-        # Assert-AreEqual "Deny" $getAzureFirewallPolicy.ThreatIntelMode
+        Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
+        Assert-NotNull $getAzureFirewallPolicy.Location
+        Assert-AreEqual $location $getAzureFirewallPolicy.Location
+        Assert-NotNull $getAzureFirewallPolicy.Etag
+        Assert-AreEqual "Deny" $getAzureFirewallPolicy.ThreatIntelMode
 
         # # Check rule groups count
-        # Assert-AreEqual 1 @($getAzureFirewallPolicy.RuleGroups).Count
+        Assert-AreEqual 1 @($getAzureFirewallPolicy.RuleGroups).Count
 
 
-        # $rgId = $getAzureFirewallPolicy.RuleGroups[0].Id
-        # $getRg = Get-AzFirewallPolicyRuleGroup -ResourceId $rgId
+        $rgId = $getAzureFirewallPolicy.RuleGroups[0].Id
+        $getRg = Get-AzFirewallPolicyRuleGroup -ResourceId $rgId
 
-        # Assert-AreEqual 3 @($getRg.Rules).Count
+        Assert-AreEqual 3 @($getRg.Rules).Count
 
-        # $filterRule = $getRg.GetRuleByName($appRcName)
-        # $appRule = $appRc.GetRuleByName($appRc2Name)
-        # $natRc = $appRc.GetRuleByName($natRule1Name)
+        $filterRule = $getRg.GetRuleByName($appRcName)
+        $appRule = $appRc.GetRuleByName($appRc2Name)
+        $natRc = $appRc.GetRuleByName($natRule1Name)
 
-        # # Verify filter Rule1 
-        # Assert-AreEqual $appRcName $filterRule.Name
-        # Assert-AreEqual $appRcPriority $filterRule.Priority
-        # Assert-AreEqual $appRcActionType $filterRule.Action.Type
-        # Assert-AreEqual 2 $filterRule.RuleConditions.Count
+        # Verify filter Rule1 
+        Assert-AreEqual $appRcName $filterRule.Name
+        Assert-AreEqual $appRcPriority $filterRule.Priority
+        Assert-AreEqual $appRcActionType $filterRule.Action.Type
+        Assert-AreEqual 2 $filterRule.RuleConditions.Count
 
-        # $appRule = $filterRule.GetRuleConditionByName($appRule1Name)
-        # # Verify application rule 1
-        # Assert-AreEqual $appRule1Name $appRule.Name
-        # Assert-AreEqual $appRule1Desc $appRule.Description
+        $appRule = $filterRule.GetRuleConditionByName($appRule1Name)
+        # Verify application rule 1
+        Assert-AreEqual $appRule1Name $appRule.Name
+        Assert-AreEqual $appRule1Desc $appRule.Description
 
-        # Assert-AreEqual 1 $appRule.SourceAddresses.Count
-        # Assert-AreEqual $appRule1SourceAddress1 $appRule.SourceAddresses[0]
+        Assert-AreEqual 1 $appRule.SourceAddresses.Count
+        Assert-AreEqual $appRule1SourceAddress1 $appRule.SourceAddresses[0]
 
-        # Assert-AreEqual 2 $appRule.Protocols.Count 
-        # Assert-AreEqual $appRule1ProtocolType1 $appRule.Protocols[0].ProtocolType
-        # Assert-AreEqual $appRule1ProtocolType2 $appRule.Protocols[1].ProtocolType
-        # Assert-AreEqual $appRule1Port1 $appRule.Protocols[0].Port
-        # Assert-AreEqual $appRule1Port2 $appRule.Protocols[1].Port
+        Assert-AreEqual 2 $appRule.Protocols.Count 
+        Assert-AreEqual $appRule1ProtocolType1 $appRule.Protocols[0].ProtocolType
+        Assert-AreEqual $appRule1ProtocolType2 $appRule.Protocols[1].ProtocolType
+        Assert-AreEqual $appRule1Port1 $appRule.Protocols[0].Port
+        Assert-AreEqual $appRule1Port2 $appRule.Protocols[1].Port
 
-        # Assert-AreEqual 2 $appRule.TargetFqdns.Count 
-        # Assert-AreEqual $appRule1Fqdn1 $appRule.TargetFqdns[0]
-        # Assert-AreEqual $appRule1Fqdn2 $appRule.TargetFqdns[1]
+        Assert-AreEqual 2 $appRule.TargetFqdns.Count 
+        Assert-AreEqual $appRule1Fqdn1 $appRule.TargetFqdns[0]
+        Assert-AreEqual $appRule1Fqdn2 $appRule.TargetFqdns[1]
 
-        # # Verify NAT rule collection and NAT rule)
-        # $natRule = $natRc.GetRuleConditionByName($natRule1Name)
+        # Verify NAT rule collection and NAT rule)
+        $natRule = $natRc.GetRuleConditionByName($natRule1Name)
 
-        # Assert-AreEqual $natRcName $natRc.Name
-        # Assert-AreEqual $natRcPriority $natRc.Priority
+        Assert-AreEqual $natRcName $natRc.Name
+        Assert-AreEqual $natRcPriority $natRc.Priority
 
-        # Assert-AreEqual $natRule1Name $natRule.Name
-        # Assert-AreEqual $natRule1Desc $natRule.Description
+        Assert-AreEqual $natRule1Name $natRule.Name
+        Assert-AreEqual $natRule1Desc $natRule.Description
 
-        # Assert-AreEqual 2 $natRule.SourceAddresses.Count 
-        # Assert-AreEqual $natRule1SourceAddress1 $natRule.SourceAddresses[0]
-        # Assert-AreEqual $natRule1SourceAddress2 $natRule.SourceAddresses[1]
+        Assert-AreEqual 2 $natRule.SourceAddresses.Count 
+        Assert-AreEqual $natRule1SourceAddress1 $natRule.SourceAddresses[0]
+        Assert-AreEqual $natRule1SourceAddress2 $natRule.SourceAddresses[1]
 
-        # Assert-AreEqual 1 $natRule.DestinationAddresses.Count 
-        # Assert-AreEqual $publicip.IpAddress $natRule.DestinationAddresses[0]
+        Assert-AreEqual 1 $natRule.DestinationAddresses.Count 
+        Assert-AreEqual $publicip.IpAddress $natRule.DestinationAddresses[0]
 
-        # Assert-AreEqual 2 $natRule.Protocols.Count 
-        # Assert-AreEqual $natRule1Protocol1 $natRule.Protocols[0]
-        # Assert-AreEqual $natRule1Protocol2 $natRule.Protocols[1]
+        Assert-AreEqual 2 $natRule.Protocols.Count 
+        Assert-AreEqual $natRule1Protocol1 $natRule.Protocols[0]
+        Assert-AreEqual $natRule1Protocol2 $natRule.Protocols[1]
 
-        # Assert-AreEqual 1 $natRule.DestinationPorts.Count 
-        # Assert-AreEqual $natRule1DestinationPort1 $natRule.DestinationPorts[0]
+        Assert-AreEqual 1 $natRule.DestinationPorts.Count 
+        Assert-AreEqual $natRule1DestinationPort1 $natRule.DestinationPorts[0]
 
-        # Assert-AreEqual $natRule1TranslatedAddress $natRule.TranslatedAddress
-        # Assert-AreEqual $natRule1TranslatedPort $natRule.TranslatedPort
+        Assert-AreEqual $natRule1TranslatedAddress $natRule.TranslatedAddress
+        Assert-AreEqual $natRule1TranslatedPort $natRule.TranslatedPort
 
         # # Verify network rule collection and network rule
         # $networkRc = $getAzureFirewallPolicy.GetNetworkRuleCollectionByName($networkRcName)

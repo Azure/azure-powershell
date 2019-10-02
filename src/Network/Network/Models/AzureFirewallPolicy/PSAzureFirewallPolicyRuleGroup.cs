@@ -26,22 +26,15 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSAzureFirewallPolicyRuleGroup
     {
 
-        [JsonProperty(Order = 1)]
-        [Parameter(
-                   Mandatory = true)]
-        public string Name { get; set; }
-
         [JsonProperty(Order = 2)]
         [Parameter(
                    Mandatory = true,
                    HelpMessage = "The priority of the rule group")]
         [ValidateRange(100, 65000)]
-        public uint Priority { get; set; }
+        public uint priority { get; set; }
 
         [JsonProperty(Order = 3)]
-        public List<PSAzureFirewallPolicyBaseRule> Rules { get; set; }
-
-        public PSAzureFirewallPolicy AzureFirewallPolicy { get; set; }
+        public List<PSAzureFirewallPolicyBaseRule> rules { get; set; }
 
         public PSAzureFirewallPolicyBaseRule GetRuleByName(string ruleName)
         {
@@ -50,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentException($"Rule name cannot be an empty string.");
             }
 
-            var rule = this.Rules?.FirstOrDefault(r => ruleName.Equals(r.Name, StringComparison.OrdinalIgnoreCase));
+            var rule = this.rules?.FirstOrDefault(r => ruleName.Equals(r.name, StringComparison.OrdinalIgnoreCase));
 
             if (rule == null)
             {

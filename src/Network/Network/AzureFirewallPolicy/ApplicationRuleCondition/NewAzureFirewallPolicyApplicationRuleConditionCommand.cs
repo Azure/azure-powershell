@@ -51,14 +51,14 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = AzureFirewallPolicyApplicationRuleConditionParameterSets.TargetFqdn,
             HelpMessage = "The target FQDNs of the rule")]
         [ValidateNotNullOrEmpty]
-        public string[] TargetFqdns { get; set; }
+        public string[] TargetFqdn { get; set; }
 
         [Parameter(
             Mandatory = true,
             ParameterSetName = AzureFirewallPolicyApplicationRuleConditionParameterSets.FqdnTag,
             HelpMessage = "The FQDN Tags of the rule")]
         [ValidateNotNullOrEmpty]
-        public string[] FqdnTags { get; set; }
+        public string[] FqdnTag { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -71,23 +71,23 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (FqdnTags != null)
+            if (FqdnTag != null)
             {
                 this.Protocol = new string[] { "http", "https" };
-                FqdnTags = AzureFirewallFqdnTagHelper.MapUserInputToAllowedFqdnTags(FqdnTags, this.AzureFirewallPolicyFqdnTagClient).ToArray();
+                FqdnTag = AzureFirewallFqdnTagHelper.MapUserInputToAllowedFqdnTags(FqdnTag, this.AzureFirewallPolicyFqdnTagClient).ToArray();
             }
 
             var protocolsAsWeExpectThem = MapUserProtocolsToFirewallPolicyProtocols(Protocol?.ToList());
 
             var applicationRule = new PSAzureFirewallPolicyApplicationRuleCondition
             {
-                Name = this.Name,
-                Description = this.Description,
-                SourceAddresses = this.SourceAddress?.ToList(),
-                Protocols = protocolsAsWeExpectThem,
-                TargetFqdns = this.TargetFqdns?.ToList(),
-                FqdnTags = this.FqdnTags?.ToList(),
-                RuleConditionType = "ApplicationRuleCondition"
+                name = this.Name,
+                description = this.Description,
+                sourceAddresses = this.SourceAddress?.ToList(),
+                protocols = protocolsAsWeExpectThem,
+                targetFqdns = this.TargetFqdn?.ToList(),
+                fqdnTags = this.FqdnTag?.ToList(),
+                ruleConditionType = "ApplicationRuleCondition"
             };
             WriteObject(applicationRule);
         }

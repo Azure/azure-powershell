@@ -15,18 +15,19 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyRuleGroup", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureFirewallPolicyRuleGroupCommand : AzureFirewallPolicyBaseCmdlet
+    public class RemoveAzureFirewallPolicyRuleGroupCommand : AzureFirewallPolicyRuleGroupBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
-        [ResourceNameCompleter("Microsoft.Network/azureFirewalls", "ResourceGroupName")]
+        [ResourceNameCompleter("ruleGroups", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
@@ -36,6 +37,13 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
+
+        [Parameter(
+                   Mandatory = true,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Firewall Policy.")]
+        [ValidateNotNullOrEmpty]
+        public PSAzureFirewallPolicy AzureFirewallPolicy { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -58,8 +66,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
                 () =>
                 {
-                    this.AzureFirewallPolicyClient.Delete(this.ResourceGroupName, this.Name);
-                    if (PassThru)
+                    this.AzureFirewallPolicyRuleGroupClient.Delete(ResourceGroupName, Name, AzureFirewallPolicy.Name);
                     {
                         WriteObject(true);
                     }

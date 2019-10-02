@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSAzureFirewallPolicyNatRuleAction Action { get; set; }
 
         [JsonProperty(Order = 4)]
-        public List<PSAzureFirewallPolicyNetworkRuleCondition> RuleConditions { get; set; }
+        public PSAzureFirewallPolicyNetworkRuleCondition ruleCondition { get; set; }
 
-        public string TranslatedAddress { get; set; }
+        public string translatedAddress { get; set; }
 
-        public string TranslatedPort { get; set; }
+        public string translatedPort { get; set; }
 
         [JsonIgnore]
         public string ActionText
@@ -41,26 +41,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string RulesText
         {
-            get { return JsonConvert.SerializeObject(RuleConditions, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(ruleCondition, Formatting.Indented); }
         }
 
-        public void AddRule(PSAzureFirewallPolicyNetworkRuleCondition rule)
-        {
-            // Validate
-            if (this.RuleConditions != null)
-            {
-                if (this.RuleConditions.Any(rc => rc.Name.Equals(rule.Name)))
-                {
-                    throw new ArgumentException($"NAT Rule names must be unique. {rule.Name} name is already used.");
-                }
-            }
-            else
-            {
-                this.RuleConditions = new List<PSAzureFirewallPolicyNetworkRuleCondition>();
-            }
-
-            this.RuleConditions.Add(rule);
-        }
 
         public PSAzureFirewallPolicyNetworkRuleCondition GetRuleConditionByName(string ruleName)
         {
@@ -69,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentException($"Rule name cannot be an empty string.");
             }
 
-            var rule = this.RuleConditions?.FirstOrDefault(r => ruleName.Equals(r.Name, StringComparison.OrdinalIgnoreCase));
+            var rule = this.ruleCondition;
 
             if (rule == null)
             {
@@ -77,12 +60,6 @@ namespace Microsoft.Azure.Commands.Network.Models
             }
 
             return rule;
-        }
-
-        public void RemoveRuleByName(string ruleName)
-        {
-            var rule = this.GetRuleConditionByName(ruleName);
-            this.RuleConditions?.Remove(rule);
         }
     }
 }

@@ -72,11 +72,11 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSAzureFirewallPolicy ToPsAzureFirewallPolicy(FirewallPolicy firewall)
         {
-            var azureFirewall = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewallPolicy>(firewall);
+            var azureFirewallPolicy = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewallPolicy>(firewall);
 
-            azureFirewall.Tag = TagsConversionHelper.CreateTagHashtable(firewall.Tags);
+            azureFirewallPolicy.Tag = TagsConversionHelper.CreateTagHashtable(firewall.Tags);
 
-            return azureFirewall;
+            return azureFirewallPolicy;
         }
     }
 }

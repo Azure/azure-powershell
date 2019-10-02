@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The list of network rules")]
         [ValidateNotNullOrEmpty]
-        public PSAzureFirewallPolicyNetworkRuleCondition[] RuleConditions { get; set; }
+        public PSAzureFirewallPolicyNetworkRuleCondition RuleCondition { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -68,18 +68,18 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            var networkRuleCollection = new PSAzureFirewallPolicyNatRule
+            var natRule = new PSAzureFirewallPolicyNatRule
             {
-                Name = this.Name,
-                Priority = this.Priority,
-                RuleConditions = this.RuleConditions?.ToList(),
-                Action = new PSAzureFirewallPolicyNatRuleAction { Type = ActionType },
-                TranslatedAddress = this.TranslatedAddress,
-                TranslatedPort = this.TranslatedPort,
-                RuleType = "FirewallPolicyNatRule"
+                name = this.Name,
+                priority = this.Priority,
+                ruleCondition = this.RuleCondition,
+                Action = new PSAzureFirewallPolicyNatRuleAction { type = ActionType },
+                translatedAddress = this.TranslatedAddress,
+                translatedPort = this.TranslatedPort,
+                ruleType = "FirewallPolicyNatRule"
             };
 
-            WriteObject(networkRuleCollection);
+            WriteObject(natRule);
         }
     }
 }

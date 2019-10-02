@@ -19,6 +19,11 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Management.Network;
+using Newtonsoft.Json;
+using Microsoft.Rest.Azure;
+using Microsoft.Rest.Serialization;
+using System.IO;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -68,21 +73,35 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            var applicationRc = new PSAzureFirewallPolicyRuleGroup
+            var ruleGroup = new PSAzureFirewallPolicyRuleGroup
             {
-                Name = this.Name,
-                Priority = this.Priority,
-                Rules = this.Rule?.ToList(),
+                priority = this.Priority,
+                rules = this.Rule?.ToList(),
+            };
+
+            var rcWrapper = new PSAzureFirewallPolicyRuleGroupWrapper
+            {
+                name = this.Name,
+                properties = ruleGroup,
+                location = AzureFirewallPolicy.Location
             };
 
 
-            // Map to the sdk object
-            var azureFirewallModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicyRuleGroup>(applicationRc);
+            //string sample = System.IO.File.ReadAllText(@"sample.txt");
+            string serializedObject = JsonConvert.SerializeObject(rcWrapper);
+            WriteObject(serializedObject);
+            WriteObject("===================");
+            var json = serializedObject.Replace("'", "\"");
 
-            // Execute the Create AzureFirewall call
-            FirewallPolicyRuleGroupsOperationsExtensions.CreateOrUpdate(NetworkClient.NetworkManagementClient.FirewallPolicyRuleGroups, this.ResourceGroupName, this.AzureFirewallPolicy.Name, this.Name, azureFirewallModel);
-
-            WriteObject(applicationRc);
+            WriteObject(json);
+            var deserializedruleGroup = (MNM.FirewallPolicyRuleGroup)JsonConvert.DeserializeObject(
+                                        json,
+                                        typeof(MNM.FirewallPolicyRuleGroup),
+                                        new JsonConverter[] { new Iso8601TimeSpanConverter(), new PolymorphicJsonCustomConverter<MNM.FirewallPolicyRule, MNM.FirewallPolicyRuleCondition>("ruleType", "ruleConditionType"), new TransformationJsonConverter() });
+            WriteObject("===================");
+            WriteObject(deserializedruleGroup);
+            this.AzureFirewallPolicyRuleGroupClient.CreateOrUpdate(this.ResourceGroupName, this.AzureFirewallPolicy.Name, deserializedruleGroup.Name, deserializedruleGroup);
+            WriteObject(rcWrapper);
         }
     }
 }

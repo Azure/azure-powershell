@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
 
         [JsonProperty(Order = 1)]
-        public string Name { get; set; }
+        public string name { get; set; }
 
         [JsonProperty(Order = 2)]
-        public uint Priority { get; set; }
+        public uint priority { get; set; }
 
         [JsonProperty(Order = 3)]
-        public string RuleType { get; set; }
+        public string ruleType { get; set; }
     }
 }
