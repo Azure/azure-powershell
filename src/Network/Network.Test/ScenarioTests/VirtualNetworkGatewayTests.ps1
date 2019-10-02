@@ -975,16 +975,19 @@ function Test-VirtualNetworKGatewayPacketCapture
       $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
       
       #create SAS URL
-      $storetype = 'Standard_GRS'
-      $containerName = "testcontainer"
-      $storeName = 'sto' + $rgname;
-      New-AzStorageAccount -ResourceGroupName $rgname -Name $storeName -Location $location -Type $storetype
-      $key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeName
-      $context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
-      New-AzStorageContainer -Name $containerName -Context $context
-      $container = Get-AzStorageContainer -Name $containerName -Context $context
-      $now=get-date
-      $sasurl = New-AzureStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
+	  if ((Get-NetworkTestMode) -ne 'Playback')
+	  {
+	       $storetype = 'Standard_GRS'
+           $containerName = "testcontainer"
+           $storeName = 'sto' + $rgname;
+           New-AzStorageAccount -ResourceGroupName $rgname -Name $storeName -Location $location -Type $storetype
+           $key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeName
+           $context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
+           New-AzStorageContainer -Name $containerName -Context $context
+           $container = Get-AzStorageContainer -Name $containerName -Context $context
+           $now=get-date
+           $sasurl = New-AzureStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
+	  }
 
       # Create the Virtual Network
       $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
@@ -1023,7 +1026,8 @@ function Test-VirtualNetworKGatewayPacketCapture
       Assert-AreEqual $output.Code "Succeeded"
 
       #StartPacketCapture on gateway object
-      $output = Start-AzVirtualnetworkGatewayPacketCapture -InputObject $gateway
+	  $a="{`"TracingFlags`":11,`"MaxPacketBufferSize`":120,`"MaxFileSize`":500,`"Filters`":[{`"SourceSubnets`":[`"10.19.0.4/32`",`"10.20.0.4/32`"],`"DestinationSubnets`":[`"10.20.0.4/32`",`"10.19.0.4/32`"],`"IpSubnetValueAsAny`":true,`"TcpFlags`":-1,`"PortValueAsAny`":true,`"CaptureSingleDirectionTrafficOnly`":true}]}"
+      $output = Start-AzVirtualnetworkGatewayPacketCapture -InputObject $gateway -FilterData $a
       Assert-AreEqual $gateway.ResourceGroupName $output.ResourceGroupName	
       Assert-AreEqual $gateway.Name $output.Name
       Assert-AreEqual $gateway.ResourceGroupName $output.ResourceGroupName	
