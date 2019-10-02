@@ -571,7 +571,18 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("RemovingVpnGatewayWarning", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Removing a P2SVpnGateway will also remove all P2SConnectionConfigurations associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
+        /// </summary>
+        internal static string RemovingP2SVpnGatewayWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("RemovingP2SVpnGatewayWarning", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Resetting Resource.
         /// </summary>
@@ -868,7 +879,18 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VpnGatewayNotFound", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to The P2SVpnGateway to modify could not be found.
+        /// </summary>
+        internal static string P2SVpnGatewayNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("P2SVpnGatewayNotFound", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to A valid VpnGateway reference is required to create a VpnConnection..
         /// </summary>
@@ -904,7 +926,18 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VpnSiteNotFound", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to The VpnServerConfiguration could not be found..
+        /// </summary>
+        internal static string VpnServerConfigurationNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("VpnServerConfigurationNotFound", resourceCulture);
+            }
+        }        
+
         /// <summary>
         ///   Looks up a localized string similar to Update request for VpnSite contains deprecated property. Please use corresponding VpnSiteLink property instead..
         /// </summary>
