@@ -32,13 +32,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     public class NewAzureRmBackendPoolsSettingsObject : AzureFrontDoorCmdletBase
     {
         /// <summary>
-        /// Gets or sets the BackendPoolSettings name.
-        /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "BackendPoolsSettings name.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        /// <summary>
         /// Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
@@ -54,7 +47,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         {
             var backendPoolsSettings = new PSBackendPoolsSettings
             {
-                Name = Name,
                 EnforceCertificateNameCheck = !this.IsParameterBound(c => c.EnforceCertificateNameCheck) ? PSEnabledState.Enabled : EnforceCertificateNameCheck,
                 SendRecvTimeoutSeconds = !this.IsParameterBound(c => c.SendRecvTimeoutSeconds) ? (int?)null : SendRecvTimeoutSeconds
             };
