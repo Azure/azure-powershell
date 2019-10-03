@@ -30,12 +30,12 @@ New-AzFirewallPolicyApplicationRuleCondition -Name <String> [-Description <Strin
 
 ## EXAMPLES
 
-### Example 1
+### 1. Create an application rule condition
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzFirewallPolicyApplicationRuleCondition -Name AR1 -SourceAddress "192.168.0.0/16" -Protocol "http:80","https:443" -TargetFqdn "*.ro", "*.com"
 ```
 
-{{ Add example description here }}
+This example create an application rule condition with the source address, protocol and the target fqdns.
 
 ## PARAMETERS
 

@@ -23,12 +23,12 @@ New-AzFirewallPolicyNetworkRuleCondition -Name <String> [-Description <String>] 
 
 ## EXAMPLES
 
-### Example 1
+### 1. Create an application rule condition
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzFirewallPolicyNetworkRuleCondition -Name NRC1 -Protocol "TCP" -SourceAddress "192.168.0.0/16" -DestinationAddress * -DestinationPort *
 ```
 
-{{ Add example description here }}
+This example create an application rule condition with the source address, protocol , destination address and destination port
 
 ## PARAMETERS
 

@@ -23,12 +23,19 @@ New-AzFirewallPolicy -Name <String> -ResourceGroupName <String> -Location <Strin
 
 ## EXAMPLES
 
-### Example 1
+### 1. Create an empty policy
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg
 ```
 
-{{ Add example description here }}
+This example create an azure firewall policy
+
+### 1. Create an empty policy with ThreatIntel Mode
+```powershell
+PS C:\> Get-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg -ThreatIntelMode "Deny"
+```
+
+This example create an azure firewall policy with a threat intel mode
 
 ## PARAMETERS
 
