@@ -23,12 +23,12 @@ New-AzFirewallPolicyRuleGroup -Name <String> -Priority <UInt32> -Rules <PSAzureF
 
 ## EXAMPLES
 
-### Example 1
+### 1. Creating a new rule group
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzFirewallPolicyRuleGroup -Name rg1 -ResourceGroupName TestRg -Location westus -Priority 200 -Rule $filterRule1 -AzureFirewallPolicy $fp
 ```
 
-{{ Add example description here }}
+This example create a rule group in the firewall policy $fp
 
 ## PARAMETERS
 

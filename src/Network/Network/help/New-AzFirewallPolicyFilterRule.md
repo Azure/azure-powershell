@@ -23,12 +23,12 @@ New-AzFirewallPolicyFilterRule -Name <String> -Priority <UInt32>
 
 ## EXAMPLES
 
-### Example 1
+### 1. Create a Filter Rule
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzFirewallPolicyFilterRule -Name FR1 -Priority 400 -RuleCondition $appRuleCondition1 ,$appRuleCondition2 -ActionType "Allow"
 ```
 
-{{ Add example description here }}
+This example creates a Filter rule with 2 rule conditions
 
 ## PARAMETERS
 
