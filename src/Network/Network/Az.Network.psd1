@@ -296,7 +296,7 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Remove-AzVirtualNetworkGatewayConnection', 
                'Reset-AzVirtualNetworkGatewayConnectionSharedKey', 
                'Set-AzVirtualNetworkGatewayConnectionSharedKey', 
-               'Set-AzVirtualNetworkGatewayConnection', 'New-AzIpsecPolicy', 
+               'Set-AzVirtualNetworkGatewayConnection', 'New-AzIpsecPolicy', "New-AzIpsecTrafficSelectorPolicy",
                'Get-AzLoadBalancerBackendAddressPoolConfig', 
                'Add-AzLoadBalancerBackendAddressPoolConfig', 
                'New-AzLoadBalancerBackendAddressPoolConfig', 
@@ -420,7 +420,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Test-AzPrivateLinkServiceVisibility', 
                'Approve-AzPrivateEndpointConnection', 
                'Deny-AzPrivateEndpointConnection', 
-               'Get-AzAvailablePrivateEndpointType'
+               'Get-AzAvailablePrivateEndpointType',
+               'New-AzBastion', 'Get-AzBastion', 'Remove-AzBastion'
 
 # Variables to export from this module
 # VariablesToExport = @()

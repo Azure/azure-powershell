@@ -698,6 +698,9 @@ Creates a Azure Firewall Network Collection of Network rules.
 ### [New-AzIpsecPolicy](New-AzIpsecPolicy.md)
 Creates an IPSec Policy.
 
+### [New-AzIpsecTrafficSelectorPolicy](New-AzIpsecTrafficSelectorPolicy.md)
+Creates an IPSec Traffic Selector Policy.
+
 ### [New-AzLoadBalancer](New-AzLoadBalancer.md)
 Creates a load balancer.
 

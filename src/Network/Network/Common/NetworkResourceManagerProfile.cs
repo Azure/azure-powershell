@@ -168,6 +168,7 @@ namespace Microsoft.Azure.Commands.Network
                 // Subnet
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSDhcpOptions, MNM.DhcpOptions>();
+                cfg.CreateMap<CNM.PSVirtualNetworkBgpCommunities, MNM.VirtualNetworkBgpCommunities>();
                 cfg.CreateMap<CNM.PSSubnet, MNM.Subnet>()
                     .ForMember(dest => dest.AddressPrefix, opt => opt.Ignore())
                     .ForMember(dest=> dest.AddressPrefixes, opt => opt.Ignore())
@@ -190,6 +191,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.DhcpOptions, CNM.PSDhcpOptions>();
+                cfg.CreateMap<MNM.VirtualNetworkBgpCommunities, CNM.PSVirtualNetworkBgpCommunities>();
                 cfg.CreateMap<MNM.Subnet, CNM.PSSubnet>()
                     .ForMember(dest => dest.AddressPrefix, opt => opt.Ignore())
                     .AfterMap((src, dest) =>
@@ -1037,6 +1039,15 @@ namespace Microsoft.Azure.Commands.Network
 
                 cfg.CreateMap<CNM.PSAutoApprovedPrivateLinkService, MNM.AutoApprovedPrivateLinkService>();
                 cfg.CreateMap<MNM.AutoApprovedPrivateLinkService, CNM.PSAutoApprovedPrivateLinkService>();
+
+                // Bastion
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSBastion, MNM.BastionHost>();
+                cfg.CreateMap<CNM.PSBastionIPConfiguration, MNM.BastionHostIPConfiguration>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.BastionHost, CNM.PSBastion>();
+                cfg.CreateMap<MNM.BastionHostIPConfiguration, CNM.PSBastionIPConfiguration>();
             });
 
             _mapper = config.CreateMapper();

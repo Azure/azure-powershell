@@ -81,5 +81,39 @@ namespace Microsoft.Azure.Commands.Network
 
             return resourceId.Substring(startIndex, endIndex - startIndex);
         }
+
+        public static bool IsResourcePresent(Action fn)
+        {
+            try
+            {
+                fn();
+            }
+            catch (Rest.Azure.CloudException exception)
+            {
+                if (exception.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    return false;
+                }
+                throw;
+            }
+            catch (Microsoft.Azure.Management.Network.Models.ErrorException exception)
+            {
+                if (exception.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    return false;
+                }
+                throw;
+            }
+            catch (Microsoft.Azure.Management.Network.Models.ErrorResponseException exception)
+            {
+                if (exception.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    return false;
+                }
+                throw;
+            }
+
+            return true;
+        }
     }
 }
