@@ -612,6 +612,10 @@ function Test-VirtualNetworkGatewayConnectionPacketCapture
            $now=get-date
            $sasurl = New-AzureStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
 	  }
+	  else
+	  {
+	  	   $sasurl = "https://storage/test123?sp=racwdl&stvigopKcy"
+	  }
 
       # Create the Virtual Network1
       $subnet1 = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
