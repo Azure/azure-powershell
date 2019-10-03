@@ -51,7 +51,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 request.IntegrationRuntime = integrationRuntimeResource;
             }
 
-            WriteObject(DataFactoryClient.StartDebugSession(ResourceGroupName, DataFactoryName, request));
+            if (ShouldProcess(DataFactoryName, string.Format(Constants.HelpStartDataFlowDebugSessionContext, this.ResourceGroupName, this.DataFactoryName)))
+            {
+                WriteObject(DataFactoryClient.StartDebugSession(ResourceGroupName, DataFactoryName, request));
+            }            
         }
 
         private IntegrationRuntimeDebugResource ConvertRequestFromJson(string requestFile)

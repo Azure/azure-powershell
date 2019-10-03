@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactory/set-azdatafactoryv2dataflow
 schema: 2.0.0
 ---
 
@@ -38,6 +38,16 @@ DataFlowName      : TaxiDemo1
 ResourceGroupName : adf
 DataFactoryName   : WikiADF
 Properties        : Microsoft.Azure.Management.DataFactory.Models.MappingDataFlow
+
+OR
+
+PS C:\> Set-AzDataFactoryV2DataFlow -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "TaxiDemo1" -DefinitionFile "C:\\samples\\WikiSample\\TaxiDemo1.json" | Format-Table
+
+Name      Properties                                                    Id                                                                                                                                                ETag                                 ResourceGroupNa
+                                                                                                                                                                                                                                                               me
+----      ----------                                                    --                                                                                                                                                ----                                 ---------------
+TaxiDemo1 Microsoft.Azure.Management.DataFactory.Models.MappingDataFlow /subscriptions/12345678-1234-2234-3234-123456782234/resourceGroups/adf/providers/Microsoft.DataFactory/factories/WikiADF/dataflows/TaxiDemo1 7201b8e2-0000-1800-0000-5d92a2c20000 adf
+
 ```
 
 This command creates a data flow named TaxiDemo1 in the data factory named WikiADF.

@@ -20,7 +20,9 @@ using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2DataFlow", DefaultParameterSetName = ParameterSetNames.ByFactoryName,SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2DataFlow", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true)]
+    [OutputType(typeof(void))]
+    [OutputType(typeof(string))]
     public class RemoveAzureDataFactoryDataFlowCommand : DataFactoryContextActionBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true,
@@ -33,6 +35,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             HelpMessage = Constants.HelpDataFlow)]
         [ValidateNotNull]
         public PSDataFlow InputObject { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "If specified will write true in case operation succeeds. This parameter is optional.")]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -62,6 +67,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             if (response == HttpStatusCode.NoContent)
             {
                 WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.DataFlowNotFound, Name, DataFactoryName));
+            }
+
+            if (this.PassThru.IsPresent)
+            {
+                WriteObject(true);
             }
         }
     }
