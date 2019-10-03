@@ -21,8 +21,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyRuleGroup", DefaultParameterSetName = SetByNameParameterSet), OutputType(typeof(PSAzureFirewall), typeof(IEnumerable<PSAzureFirewall>))]
-    public class GetAzureFirewallPolicyRuleGroupCommand : AzureFirewallPolicyRuleGroupBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyRuleCollectionGroup", DefaultParameterSetName = SetByNameParameterSet), OutputType(typeof(PSAzureFirewall), typeof(IEnumerable<PSAzureFirewall>))]
+    public class GetAzureFirewallPolicyRuleCollectionGroupCommand : AzureFirewallPolicyRuleCollectionGroupBaseCmdlet
     {
 
         private const string SetByNameParameterSet = "SetByNameParameterSet";

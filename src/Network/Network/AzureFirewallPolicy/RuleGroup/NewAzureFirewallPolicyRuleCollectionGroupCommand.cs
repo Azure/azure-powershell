@@ -27,8 +27,8 @@ using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyRuleGroup", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicyRuleGroup))]
-    public class NewAzureFirewallPolicyRuleGroupCommand : AzureFirewallPolicyRuleGroupBaseCmdlet
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyRuleCollectionGroup", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicyRuleCollectionGroup))]
+    public class NewAzureFirewallPolicyRuleGroupCommand : AzureFirewallPolicyRuleCollectionGroupBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The list of rules")]
         [ValidateNotNullOrEmpty]
-        public PSAzureFirewallPolicyBaseRule[] Rule { get; set; }
+        public PSAzureFirewallPolicyBaseRuleCollection[] RuleCollection { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -73,13 +73,13 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            var ruleGroup = new PSAzureFirewallPolicyRuleGroup
+            var ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup
             {
                 priority = this.Priority,
-                rules = this.Rule?.ToList(),
+                rules = this.RuleCollection?.ToList(),
             };
 
-            var rcWrapper = new PSAzureFirewallPolicyRuleGroupWrapper
+            var rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper
             {
                 name = this.Name,
                 properties = ruleGroup,

@@ -21,8 +21,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyNetworkRuleCondition", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallNetworkRule))]
-    public class NewAzureFirewallPolicyNetworkRuleConditionCommand : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyNetworkRule", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallNetworkRule))]
+    public class NewAzureFirewallPolicyNetworkRuleCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
             
-            var networkRuleCondition = new PSAzureFirewallPolicyNetworkRuleCondition
+            var networkRule = new PSAzureFirewallPolicyNetworkRule
             {
                 name = this.Name,
                 ipProtocols = this.Protocols?.ToList(),
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Network
                 destinationPorts = this.DestinationPort?.ToList(),
                 ruleConditionType = "NetworkRuleCondition"
             };
-            WriteObject(networkRuleCondition);
+            WriteObject(networkRule);
         }
     }
 }

@@ -23,7 +23,7 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewallPolicyRuleGroupWrapper
+    public class PSAzureFirewallPolicyRuleCollectionGroupWrapper
     {
 
         [JsonProperty(Order = 1)]
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network.Models
                    Mandatory = true)]
         public string name { get; set; }
         public string location { get; set; }
-        public PSAzureFirewallPolicyRuleGroup properties { get; set; }
+        public PSAzureFirewallPolicyRuleCollectionGroup properties { get; set; }
 
     }
 }
