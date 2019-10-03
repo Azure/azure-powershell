@@ -1,7 +1,7 @@
 @{
   GUID = '1bb10716-570a-45be-88c4-84927b145b93'
   RootModule = './Az.Resources.psm1'
-  ModuleVersion = '4.0.0'
+  ModuleVersion = '0.0.1'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -19,7 +19,6 @@
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
       ReleaseNotes = ''
-      Prerelease = 'preview'
       Profiles = 'latest-2019-04-30', 'hybrid-2019-03-01'
     }
   }

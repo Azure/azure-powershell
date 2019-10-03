@@ -717,6 +717,14 @@ directive:
           - RoleName
           - Name
           - Action
+# Fix the name of the module in the nuspec
+  - from: Az.Resources.nuspec
+    where: $
+    transform: $ = $.replace('\$\(service-name\) cmdlets', 'preview cmdlets for Azure ARM Service');
+# Add a better description
+  - from: Az.Resources.nuspec
+    where: $
+    transform: $ = $.replace(/\$\(service-name\)/g,  'Resources');
 # Make the nuget package a preview
   - from: Az.Resources.nuspec
     where: $

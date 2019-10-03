@@ -2953,6 +2953,14 @@ directive:
           SiteKey: Site Key
           SecuritySite: Security Site
           ProvisioningState: Provisioning State
+# Fix the name of the module in the nuspec
+  - from: Az.Network.nuspec
+    where: $
+    transform: $ = $.replace('\$\(service-name\) cmdlets', 'preview cmdlets for Azure Network Service');
+# Add a better description
+  - from: Az.Network.nuspec
+    where: $
+    transform: $ = $.replace(/\$\(service-name\)/g,  'Network');
 # Make the nuget package a preview
   - from: Az.Network.nuspec
     where: $

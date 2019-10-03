@@ -1099,6 +1099,14 @@ directive:
     where: $
     transform: >
         return $.replace('# Load DLL to use build-time cmdlets', '    if($hasAdequateVersion) {\n      $accountsModule = Import-Module -Name $accountsName -MinimumVersion 1.6.0 -Scope Global -PassThru\n    }\n  }\n}\n# Load DLL to use build-time cmdlets');
+# Fix the name of the module in the nuspec
+  - from: Az.Compute.nuspec
+    where: $
+    transform: $ = $.replace('\$\(service-name\) cmdlets', 'preview cmdlets for Azure Compute Service');
+# Add a better description
+  - from: Az.Compute.nuspec
+    where: $
+    transform: $ = $.replace(/\$\(service-name\)/g,  'Compute');
 # Make the nuget package a preview
   - from: Az.Compute.nuspec
     where: $

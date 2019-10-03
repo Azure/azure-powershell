@@ -466,6 +466,14 @@ directive:
           AttributeEnabled: Enabled
           AttributeCreated: Created
           AttributeUpdated: Updated
+# Fix the name of the module in the nuspec
+  - from: Az.KeyVault.nuspec
+    where: $
+    transform: $ = $.replace('\$\(service-name\) cmdlets', 'preview cmdlets for Azure KeyVault Service');
+# Add a better description
+  - from: Az.KeyVault.nuspec
+    where: $
+    transform: $ = $.replace(/\$\(service-name\)/g,  'KeyVault');
 # Make the nuget package a preview
   - from: Az.KeyVault.nuspec
     where: $
