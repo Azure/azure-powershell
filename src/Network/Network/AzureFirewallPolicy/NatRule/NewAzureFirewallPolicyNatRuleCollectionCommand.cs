@@ -22,8 +22,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
 
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyNatRule", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallNetworkRuleCollection))]
-    public class NewAzureFirewallPolicyNatRuleCommand : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyNatRuleCollection", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallNetworkRuleCollection))]
+    public class NewAzureFirewallPolicyNatRuleCollectionsCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The list of network rules")]
         [ValidateNotNullOrEmpty]
-        public PSAzureFirewallPolicyNetworkRuleCondition RuleCondition { get; set; }
+        public PSAzureFirewallPolicyNetworkRule Rule { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -68,18 +68,18 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            var natRule = new PSAzureFirewallPolicyNatRule
+            var natRuleCollections = new PSAzureFirewallPolicyNatRuleCollection
             {
                 name = this.Name,
                 priority = this.Priority,
-                ruleCondition = this.RuleCondition,
-                Action = new PSAzureFirewallPolicyNatRuleAction { type = ActionType },
+                ruleCondition = this.Rule,
+                Action = new PSAzureFirewallPolicyNatRuleCollectionAction { type = ActionType },
                 translatedAddress = this.TranslatedAddress,
                 translatedPort = this.TranslatedPort,
                 ruleType = "FirewallPolicyNatRule"
             };
 
-            WriteObject(natRule);
+            WriteObject(natRuleCollections);
         }
     }
 }

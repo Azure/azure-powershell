@@ -987,11 +987,11 @@ namespace Microsoft.Azure.Commands.Network
 
                 // Azure Firewall Policies
                 // CNM to MNM
-                cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleGroup, MNM.FirewallPolicyRuleGroup>();
+                cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleCollectionGroup, MNM.FirewallPolicyRuleGroup>();
                 cfg.CreateMap<CNM.PSAzureFirewallPolicy, MNM.FirewallPolicy>();
 
                 // MNM to CNM
-                cfg.CreateMap<MNM.FirewallPolicyRuleGroup, CNM.PSAzureFirewallPolicyRuleGroup>();
+                cfg.CreateMap<MNM.FirewallPolicyRuleGroup, CNM.PSAzureFirewallPolicyRuleCollectionGroup>();
                 cfg.CreateMap<MNM.FirewallPolicy, CNM.PSAzureFirewallPolicy>();
 
                 // Virtual Network Tap

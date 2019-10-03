@@ -20,16 +20,16 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyApplicationRuleCondition", SupportsShouldProcess = true, DefaultParameterSetName = AzureFirewallPolicyApplicationRuleConditionParameterSets.TargetFqdn), OutputType(typeof(PSAzureFirewallPolicyApplicationRuleCondition))]
-    public class NewAzFirewallPolicyApplicationRuleConditionCommand : AzureFirewallPolicyBaseCmdlet
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyApplicationRule", SupportsShouldProcess = true, DefaultParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.TargetFqdn), OutputType(typeof(PSAzureFirewallPolicyApplicationRule))]
+    public class NewAzFirewallPolicyApplicationRuleCommand : AzureFirewallPolicyBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            ParameterSetName = AzureFirewallPolicyApplicationRuleConditionParameterSets.TargetFqdn,
+            ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.TargetFqdn,
             HelpMessage = "The name of the Application Rule")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = AzureFirewallPolicyApplicationRuleConditionParameterSets.FqdnTag,
+            ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.FqdnTag,
             HelpMessage = "The name of the Application Rule")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
@@ -48,21 +48,21 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = AzureFirewallPolicyApplicationRuleConditionParameterSets.TargetFqdn,
+            ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.TargetFqdn,
             HelpMessage = "The target FQDNs of the rule")]
         [ValidateNotNullOrEmpty]
         public string[] TargetFqdn { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = AzureFirewallPolicyApplicationRuleConditionParameterSets.FqdnTag,
+            ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.FqdnTag,
             HelpMessage = "The FQDN Tags of the rule")]
         [ValidateNotNullOrEmpty]
         public string[] FqdnTag { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = AzureFirewallPolicyApplicationRuleConditionParameterSets.TargetFqdn,
+            ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.TargetFqdn,
             HelpMessage = "The protocols of the rule")]
         [ValidateNotNullOrEmpty]
         public string[] Protocol { get; set; }
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network
 
             var protocolsAsWeExpectThem = MapUserProtocolsToFirewallPolicyProtocols(Protocol?.ToList());
 
-            var applicationRuleCondition = new PSAzureFirewallPolicyApplicationRuleCondition
+            var applicationRule = new PSAzureFirewallPolicyApplicationRule
             {
                 name = this.Name,
                 sourceAddresses = this.SourceAddress?.ToList(),
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Network
                 fqdnTags = this.FqdnTag?.ToList(),
                 ruleConditionType = "ApplicationRuleCondition"
             };
-            WriteObject(applicationRuleCondition);
+            WriteObject(applicationRule);
         }
 
         private List<PSAzureFirewallPolicyApplicationRuleProtocol> MapUserProtocolsToFirewallPolicyProtocols(List<string> userProtocols)

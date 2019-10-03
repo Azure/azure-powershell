@@ -30,7 +30,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public abstract class AzureFirewallPolicyRuleGroupBaseCmdlet : NetworkBaseCmdlet
+    public abstract class AzureFirewallPolicyRuleCollectionGroupBaseCmdlet : NetworkBaseCmdlet
     {
         public IFirewallPolicyRuleGroupsOperations AzureFirewallPolicyRuleGroupClient
         {
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
-        public PSAzureFirewallPolicyRuleGroup GetAzureFirewallPolicyRuleGroup(string resourceGroupName, string firewallPolicyName, string name)
+        public PSAzureFirewallPolicyRuleCollectionGroup GetAzureFirewallPolicyRuleGroup(string resourceGroupName, string firewallPolicyName, string name)
         {
             var settings = new JsonSerializerSettings
             {
@@ -50,10 +50,10 @@ namespace Microsoft.Azure.Commands.Network
             var ruleGroup = this.AzureFirewallPolicyRuleGroupClient.Get(resourceGroupName, firewallPolicyName, name);
             string serializedObject = JsonConvert.SerializeObject(ruleGroup, settings);
             var json = serializedObject.Replace("'", "\"");
-            var deserializedruleGroup = (PSAzureFirewallPolicyRuleGroup)JsonConvert.DeserializeObject(
+            var deserializedruleGroup = (PSAzureFirewallPolicyRuleCollectionGroup)JsonConvert.DeserializeObject(
                                         json.ToString(),
-                                        typeof(PSAzureFirewallPolicyRuleGroup),
-                                        new JsonConverter[] { new Iso8601TimeSpanConverter(), new PolymorphicJsonCustomConverter<PSAzureFirewallPolicyBaseRule, PSAzureFirewallPolicyRuleCondition>("ruleType", "ruleConditionType"), new TransformationJsonConverter() });
+                                        typeof(PSAzureFirewallPolicyRuleCollectionGroup),
+                                        new JsonConverter[] { new Iso8601TimeSpanConverter(), new PolymorphicJsonCustomConverter<PSAzureFirewallPolicyBaseRuleCollection, PSAzureFirewallPolicyRule>("ruleType", "ruleConditionType"), new TransformationJsonConverter() });
 
 
             return deserializedruleGroup;

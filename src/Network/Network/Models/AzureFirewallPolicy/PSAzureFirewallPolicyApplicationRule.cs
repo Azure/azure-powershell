@@ -18,20 +18,25 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewallPolicyNetworkRuleCondition : PSAzureFirewallPolicyRuleCondition
+    public class PSAzureFirewallPolicyApplicationRule : PSAzureFirewallPolicyRule
     {
-        public List<string> ipProtocols { get; set; }
 
+        [JsonProperty(Order = 3)]
         public List<string> sourceAddresses { get; set; }
 
-        public List<string> destinationAddresses { get; set; }
-        
-        public List<string> destinationPorts { get; set; }
+        [JsonProperty(Order = 4)]
+        public List<string> targetFqdns { get; set; }
+
+        [JsonProperty(Order = 5)]
+        public List<string> fqdnTags { get; set; }
+
+        [JsonProperty(Order = 6)]
+        public List<PSAzureFirewallPolicyApplicationRuleProtocol> protocols { get; set; }
 
         [JsonIgnore]
         public string ProtocolsText
         {
-            get { return JsonConvert.SerializeObject(ipProtocols, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(protocols, Formatting.Indented); }
         }
 
         [JsonIgnore]
@@ -41,20 +46,24 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
-        public string DestinationAddressesText
+        public string TargetFqdnsText
         {
-            get { return JsonConvert.SerializeObject(destinationAddresses, Formatting.Indented); }
-        }
-        
-        [JsonIgnore]
-        public string DestinationPortsText
-        {
-            get { return JsonConvert.SerializeObject(destinationPorts, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(targetFqdns, Formatting.Indented); }
         }
 
-        public void AddProtocol(string protocolType)
+        [JsonIgnore]
+        public string FqdnTagsText
         {
-            (ipProtocols ?? (ipProtocols = new List<string>())).Add(AzureFirewallNetworkRuleProtocolHelper.MapUserInputToNetworkRuleProtocol(protocolType));
+            get { return JsonConvert.SerializeObject(fqdnTags, Formatting.Indented); }
+        }
+
+        public void AddProtocol(string protocolType, uint port = 0)
+        {
+            var stringToMap = protocolType + (port == 0 ? string.Empty : ":" + port);
+
+            var protocol = PSAzureFirewallPolicyApplicationRuleProtocol.MapUserInputToApplicationRuleProtocol(stringToMap);
+
+            (this.protocols ?? (this.protocols = new List<PSAzureFirewallPolicyApplicationRuleProtocol>())).Add(protocol);
         }
     }
 }
