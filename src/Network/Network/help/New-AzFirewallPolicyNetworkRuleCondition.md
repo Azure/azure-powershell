@@ -28,7 +28,7 @@ New-AzFirewallPolicyNetworkRuleCondition -Name <String> [-Description <String>] 
 PS C:\> New-AzFirewallPolicyNetworkRuleCondition -Name NRC1 -Protocol "TCP" -SourceAddress "192.168.0.0/16" -DestinationAddress * -DestinationPort *
 ```
 
-This example create an application rule condition with the source address, protocol , destination address and destination port
+This example creates an application rule condition with the source address, protocol , destination address and destination port
 
 ## PARAMETERS
 

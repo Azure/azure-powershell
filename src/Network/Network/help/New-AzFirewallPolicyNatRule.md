@@ -28,7 +28,7 @@ New-AzFirewallPolicyNatRule -Name <String> -Priority <UInt32>
 PS C:\> New-AzFirewallPolicyNatRule -Name NatRule1 -Priority 200 -RuleCondition $netRuleCondition1 -ActionType "Dnat" -TranslatedAddress "192.168.0.1" -TranslatedPort "100"
 ```
 
-This example create a nat rule with a network rule condition
+This example creates a nat rule with a network rule condition
 
 ## PARAMETERS
 

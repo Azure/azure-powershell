@@ -35,7 +35,7 @@ New-AzFirewallPolicyApplicationRuleCondition -Name <String> [-Description <Strin
 PS C:\> New-AzFirewallPolicyApplicationRuleCondition -Name AR1 -SourceAddress "192.168.0.0/16" -Protocol "http:80","https:443" -TargetFqdn "*.ro", "*.com"
 ```
 
-This example create an application rule condition with the source address, protocol and the target fqdns.
+This example creates an application rule condition with the source address, protocol and the target fqdns.
 
 ## PARAMETERS
 
