@@ -20,6 +20,9 @@
 ## Upcoming Release
 * Exception Handling
 
+## Version 0.1.2
+* Added Exception Handling around KeyNotFoundException
+
 ## Version 0.1.1
 * Added Error Handling in all cmdlets
 * Fixed few typos
