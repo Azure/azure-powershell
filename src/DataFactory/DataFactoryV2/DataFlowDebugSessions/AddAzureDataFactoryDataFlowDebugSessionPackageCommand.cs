@@ -20,7 +20,9 @@ using Microsoft.Azure.Management.DataFactory.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2DataFlowDebugSessionPackage", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2DataFlowDebugSessionPackage", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true)]
+    [OutputType(typeof(void))]
+    [OutputType(typeof(string))]
     public class AddAzureDataFactoryDataFlowDebugSessionDataFlowPackageCommand : DataFactoryDataFlowDebugSessionBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true,
@@ -55,9 +57,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 package.SessionId = SessionId;
             }
 
-            DataFactoryClient.AddDataFlowToDebugSession(ResourceGroupName, DataFactoryName, package);
+            if (ShouldProcess(DataFactoryName, string.Format(Constants.HelpAddDataFlowPackageContext, this.SessionId, this.ResourceGroupName, this.DataFactoryName)))
+            {
+                DataFactoryClient.AddDataFlowToDebugSession(ResourceGroupName, DataFactoryName, package);
+            }
 
-            if (PassThru)
+            if (this.PassThru.IsPresent)
             {
                 WriteObject(true);
             }

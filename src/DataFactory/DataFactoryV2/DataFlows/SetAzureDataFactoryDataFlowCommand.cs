@@ -18,7 +18,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2DataFlow", DefaultParameterSetName = ParameterSetNames.ByFactoryName,SupportsShouldProcess = true), OutputType(typeof(PSDataFlow))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2DataFlow", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(PSDataFlow))]
     [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2DataFlow")]
     public class SetAzureDataFactoryDataFlowCommand : DataFactoryContextBaseSetCmdlet
     {
@@ -44,7 +44,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 ConfirmAction = ConfirmAction
             };
 
-            WriteObject(DataFactoryClient.CreatePSDataFlow(parameters));
+            if (ShouldProcess(Name, string.Format(Constants.HelpDataFlowCreationContext, this.Name, this.ResourceGroupName, this.DataFactoryName)))
+            {
+                WriteObject(DataFactoryClient.CreatePSDataFlow(parameters));
+            }
         }
     }
 }

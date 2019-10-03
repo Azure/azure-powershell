@@ -18,7 +18,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2DataFlowDebugSession", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2DataFlowDebugSession", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true)]
+    [OutputType(typeof(void))]
+    [OutputType(typeof(string))]
     public class StopAzureDataFactoryDataFlowDebugSessionCommand : DataFactoryDataFlowDebugSessionBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -61,7 +63,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         {
             DataFactoryClient.DeleteDebugSession(ResourceGroupName, DataFactoryName, SessionId);
 
-            if (PassThru)
+            if (this.PassThru.IsPresent)
             {
                 WriteObject(true);
             }

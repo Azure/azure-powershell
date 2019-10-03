@@ -42,7 +42,7 @@ function Test-DataFlowDebugScenario
 		Add-AzDataFactoryV2DataFlowDebugSessionPackage -DataFactory $df -PackageFile .\Resources\dataFlowDebugPackage.json -SessionId $session.SessionId
 
 		# Execute debug command 
-        $result = Invoke-AzDataFactoryV2DataFlowDebugSessionCommand -DataFactory $df -Command executePreviewQuery -SessionId $session.SessionId -StreamName source1 -RowLimits 100
+        $result = Invoke-AzDataFactoryV2DataFlowDebugSessionCommand -DataFactory $df -Command executePreviewQuery -SessionId $session.SessionId -StreamName source1 -RowLimit 100
 		Assert-AreEqual 'Succeeded' $result.Status
 		Assert-NotNull $result.Data
 

@@ -92,6 +92,14 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpDataFlowDebugColumns = "The columns list for data flow statistics preview.";
 
+        public const string HelpDataFlowCreationContext = "Creating or updating data flow '{0}' in resource group '{1}' under data factory '{2}'.";
+
+        public const string HelpAddDataFlowPackageContext = "Add data flow package to debug session '{0}' in resource group '{1}' under data factory '{2}'.";
+
+        public const string HelpInvokeDebugSessionCommandContext = "Invoke debug command of debug session '{0}' in resource group '{1}' under data factory '{2}'.";
+
+        public const string HelpStartDataFlowDebugSessionContext = "Start a data flow debug session in resource group '{0}' under data factory '{1}'.";
+
         public const string HelpLinkedServiceName = "The linked service name.";
 
         public const string HelpLinkedService = "The linked service object.";

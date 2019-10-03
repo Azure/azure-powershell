@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             HelpMessage = Constants.HelpDataFlowDebugRowLimits)]
         [Parameter(ParameterSetName = ParameterSetNames.ByResourceId, Position = 4, Mandatory = false,
             HelpMessage = Constants.HelpDataFlowDebugRowLimits)]
-        public int? RowLimits { get; set; }
+        public int? RowLimit { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 6, Mandatory = false,
             HelpMessage = Constants.HelpDataFlowDebugExpression)]
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             HelpMessage = Constants.HelpDataFlowDebugColumns)]
         [Parameter(ParameterSetName = ParameterSetNames.ByResourceId, Position = 6, Mandatory = false,
             HelpMessage = Constants.HelpDataFlowDebugColumns)]
-        public List<string> Columns { get; set; }
+        public List<string> Column { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -90,13 +90,17 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 CommandPayload = new DataFlowDebugCommandPayload
                 {
                     StreamName = StreamName,
-                    RowLimits = RowLimits,
+                    RowLimits = RowLimit,
                     Expression = Expression,
-                    Columns = Columns
+                    Columns = Column
                 }
 
             };
-            WriteObject(DataFactoryClient.InvokeDataFlowDebugSessionCommand(ResourceGroupName, DataFactoryName, request));
+
+            if (ShouldProcess(DataFactoryName, string.Format(Constants.HelpInvokeDebugSessionCommandContext, this.SessionId, this.ResourceGroupName, this.DataFactoryName)))
+            {
+                WriteObject(DataFactoryClient.InvokeDataFlowDebugSessionCommand(ResourceGroupName, DataFactoryName, request));
+            }
         }
     }
 }
