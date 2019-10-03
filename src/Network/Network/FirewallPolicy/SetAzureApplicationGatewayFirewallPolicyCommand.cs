@@ -104,7 +104,11 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 var firewallPolicy = this.GetApplicationGatewayFirewallPolicy(ResourceGroupName, Name);
-                if (this.CustomRule != null || this.PolicySettings != null || this.ManagedRules != null)
+                if (ParameterSetName.Equals(ParameterSetNames.ByFactoryObject, StringComparison.OrdinalIgnoreCase))
+                {
+                    firewallPolicy = InputObject;
+                }
+                else
                 {
                     if (this.CustomRule != null)
                     {
@@ -120,10 +124,6 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         firewallPolicy.ManagedRules = this.ManagedRules;
                     }
-                }
-                else if (ParameterSetName.Equals(ParameterSetNames.ByFactoryObject, StringComparison.OrdinalIgnoreCase))
-                {
-                    firewallPolicy = InputObject;
                 }
 
                 // Map to the sdk object
