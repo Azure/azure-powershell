@@ -412,7 +412,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Get-AzAvailablePrivateEndpointType', 'New-AzFirewallPolicyNetworkRuleCondition', 
                'New-AzFirewallPolicyApplicationRuleCondition','New-AzFirewallPolicyNatRule',
                'New-AzFirewallPolicyFilterRule', 'New-AzFirewallPolicyRuleGroup',
-               'Set-AzFirewallPolicyRuleGroup', 'Remove-AzFirewallPolicyRuleGroup',
+               'Set-AzFirewallPolicyRuleGroup', 'Get-AzFirewallPolicyRuleGroup',
+               'Remove-AzFirewallPolicyRuleGroup',
                'New-AzFirewallPolicy', 'Get-AzFirewallPolicy', 'Set-AzFirewallPolicy',
                'Remove-AzFirewallPolicy'
 

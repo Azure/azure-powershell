@@ -17,6 +17,16 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
+using MNM = Microsoft.Azure.Management.Network.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
+using Newtonsoft.Json;
+using Microsoft.Rest.Azure;
+using Microsoft.Rest.Serialization;
+using System.IO;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -28,6 +38,25 @@ namespace Microsoft.Azure.Commands.Network
             {
                 return NetworkClient.NetworkManagementClient.FirewallPolicyRuleGroups;
             }
+        }
+
+        public PSAzureFirewallPolicyRuleGroup GetAzureFirewallPolicyRuleGroup(string resourceGroupName, string firewallPolicyName, string name)
+        {
+            var settings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                MissingMemberHandling = MissingMemberHandling.Ignore
+            };
+            var ruleGroup = this.AzureFirewallPolicyRuleGroupClient.Get(resourceGroupName, firewallPolicyName, name);
+            string serializedObject = JsonConvert.SerializeObject(ruleGroup, settings);
+            var json = serializedObject.Replace("'", "\"");
+            var deserializedruleGroup = (PSAzureFirewallPolicyRuleGroup)JsonConvert.DeserializeObject(
+                                        json.ToString(),
+                                        typeof(PSAzureFirewallPolicyRuleGroup),
+                                        new JsonConverter[] { new Iso8601TimeSpanConverter(), new PolymorphicJsonCustomConverter<PSAzureFirewallPolicyBaseRule, PSAzureFirewallPolicyRuleCondition>("ruleType", "ruleConditionType"), new TransformationJsonConverter() });
+
+
+            return deserializedruleGroup;
         }
     }
 }
