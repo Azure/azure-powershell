@@ -14,7 +14,7 @@ Creates a ManagedRuleSet for the firewallPolicy
 
 ```
 New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType <String> -RuleSetVersion <String>
--RuleGroupOverrides <PSApplicationGatewayFirewallDisabledRuleGroup[]> 
+-RuleGroupOverrides <PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride[]> 
 [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 

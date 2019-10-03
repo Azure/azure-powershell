@@ -89,8 +89,8 @@ namespace Microsoft.Azure.Commands.Network
                 Mode = this.Mode,
                 State = this.State,
                 RequestBodyCheck = this.RequestBodyCheck,
-                MaxRequestBodySizeInKb = this.MaxRequestBodySizeInKb,
-                FileUploadLimitInMb = this.FileUploadLimitInMb
+                MaxRequestBodySizeInKb = this.MaxRequestBodySizeInKb == 0 ? 128 : this.MaxRequestBodySizeInKb,
+                FileUploadLimitInMb = this.FileUploadLimitInMb == 0 ? 750 : this.FileUploadLimitInMb
             };
         }
     }

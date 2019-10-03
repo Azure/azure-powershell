@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "State of the Rule.")]
+        [ValidateSet("Disabled", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string State { get; set; }
 
