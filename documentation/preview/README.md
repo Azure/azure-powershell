@@ -40,6 +40,10 @@ Upcoming features for Azure PowerShell are describred in the [Upcoming features 
 
 ### Installation
 
+> **IMPORTANT NOTE:** This is a preview module and should not be used to manage your production environment.
+>
+> It is recommended to install the preview module on a clean environment and if you decide to use it on your machine, you should remove the existing modules before proceeding.
+
 Install the preview version of Az PowerShell 4 module from the PowerShell Gallery
 
 ```powershell
@@ -73,9 +77,10 @@ Work in progress:
 
 - Create an Azure Virtual Machine
 - Create a VNet and Subnet
-- Create a log analytics workspace
+- Create a KeyVault
+- Create a WebApp
 
-We are planning to add more to this list over time.
+We are planning to extend this list over time.
 
 Contribute to the list by submitting a PR or submit an issue describing the scenario that you would like to see covered.
 
