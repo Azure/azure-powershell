@@ -86,9 +86,14 @@ namespace Microsoft.Azure.Commands.Network
                 location = AzureFirewallPolicy.Location
             };
 
+            var settings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                MissingMemberHandling = MissingMemberHandling.Ignore
+            };
 
             //string sample = System.IO.File.ReadAllText(@"sample.txt");
-            string serializedObject = JsonConvert.SerializeObject(rcWrapper);
+            string serializedObject = JsonConvert.SerializeObject(rcWrapper, settings);
             WriteObject(serializedObject);
             WriteObject("===================");
             var json = serializedObject.Replace("'", "\"");

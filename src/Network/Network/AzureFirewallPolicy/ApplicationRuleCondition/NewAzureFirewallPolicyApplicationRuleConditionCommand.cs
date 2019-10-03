@@ -79,17 +79,16 @@ namespace Microsoft.Azure.Commands.Network
 
             var protocolsAsWeExpectThem = MapUserProtocolsToFirewallPolicyProtocols(Protocol?.ToList());
 
-            var applicationRule = new PSAzureFirewallPolicyApplicationRuleCondition
+            var applicationRuleCondition = new PSAzureFirewallPolicyApplicationRuleCondition
             {
                 name = this.Name,
-                description = this.Description,
                 sourceAddresses = this.SourceAddress?.ToList(),
                 protocols = protocolsAsWeExpectThem,
                 targetFqdns = this.TargetFqdn?.ToList(),
                 fqdnTags = this.FqdnTag?.ToList(),
                 ruleConditionType = "ApplicationRuleCondition"
             };
-            WriteObject(applicationRule);
+            WriteObject(applicationRuleCondition);
         }
 
         private List<PSAzureFirewallPolicyApplicationRuleProtocol> MapUserProtocolsToFirewallPolicyProtocols(List<string> userProtocols)

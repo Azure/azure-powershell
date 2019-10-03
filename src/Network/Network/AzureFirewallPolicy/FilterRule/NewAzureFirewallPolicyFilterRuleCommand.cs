@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            var applicationRc = new PSAzureFirewallPolicyFilterRule
+            var filterRule = new PSAzureFirewallPolicyFilterRule
             {
                 name = this.Name,
                 priority = this.Priority,
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
                 Action = new PSAzureFirewallPolicyFilterRuleAction { type = ActionType },
                 ruleType = "FirewallPolicyFilterRule"
             };
-            WriteObject(applicationRc);
+            WriteObject(filterRule);
         }
     }
 }
