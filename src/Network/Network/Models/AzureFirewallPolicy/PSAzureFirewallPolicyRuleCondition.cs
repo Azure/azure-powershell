@@ -24,9 +24,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string name { get; set; }
 
         [JsonProperty(Order = 2)]
-        public string description { get; set; }
-
-        [JsonProperty(Order = 3)]
         public string ruleConditionType { get; set; }
 
     }

@@ -20,27 +20,37 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicy", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewall))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicy", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewall))]
     public class SetAzureFirewallPolicyCommand : AzureFirewallPolicyBaseCmdlet
     {
+
+        private const string SetByNameParameterSet = "SetByNameParameterSet";
+        private const string SetByInputObjectParameterSet = "SetByInputObjectParameterSet";
+        private const string SetByResourceIdParameterSet = "SetByResourceIdParameterSet";
+
         [Alias("ResourceName")]
         [Parameter(
-           Mandatory = false,
+           Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource name.")]
+           HelpMessage = "The resource name.", ParameterSetName = SetByNameParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = SetByResourceIdParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/azureFirewalls", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name.", ParameterSetName = SetByNameParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = SetByResourceIdParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
@@ -48,16 +58,20 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The AzureFirewall Policy")]
+            HelpMessage = "The AzureFirewall Policy", ParameterSetName = SetByInputObjectParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = SetByResourceIdParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = SetByNameParameterSet)]
         public PSAzureFirewallPolicy InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         [Parameter(
-                    Mandatory = false,
+                    Mandatory = true,
                     ValueFromPipelineByPropertyName = true,
-                    HelpMessage = "The resource Id.")]
+                    HelpMessage = "The resource Id.", ParameterSetName = SetByResourceIdParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = SetByNameParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceId { get; set; }
@@ -76,14 +90,16 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The operation mode for Threat Intelligence.")]
+            HelpMessage = "The base policy to inherit from")]
         public string BasePolicy { get; set; }
 
         [Parameter(
                     Mandatory = true,
                     ValueFromPipelineByPropertyName = true,
-                    HelpMessage = "location.")]
+                    HelpMessage = "location.", ParameterSetName = SetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = true, ParameterSetName = SetByResourceIdParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet)]
         public virtual string Location { get; set; }
 
         [Parameter(
@@ -96,30 +112,30 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (ResourceId != null)
+            if (this.IsParameterBound(c => c.ResourceId))
             {
                 var resourceInfo = new ResourceIdentifier(ResourceId);
                 ResourceGroupName = resourceInfo.ResourceGroupName;
                 Name = resourceInfo.ResourceName;
             }
-            else if (InputObject != null)
+            else if (this.IsParameterBound(c => c.InputObject))
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
                 Name = InputObject.Name;
             }
+
             if (!this.IsAzureFirewallPolicyPresent(ResourceGroupName, Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
-
             if (InputObject != null)
             {
                 // Map to the sdk object
-                var secureGwModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(InputObject);
+                var firewallPolicy = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(InputObject);
 
                 // Execute the PUT AzureFirewall Policy call
-                this.AzureFirewallPolicyClient.CreateOrUpdate(ResourceGroupName, Name, secureGwModel);
+                this.AzureFirewallPolicyClient.CreateOrUpdate(ResourceGroupName, Name, firewallPolicy);
 
                 var getAzureFirewall = this.GetAzureFirewallPolicy(ResourceGroupName, Name);
                 WriteObject(getAzureFirewall);

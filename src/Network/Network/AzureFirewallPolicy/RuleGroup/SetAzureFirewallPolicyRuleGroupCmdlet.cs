@@ -84,19 +84,21 @@ namespace Microsoft.Azure.Commands.Network
             };
 
 
-            string serializedObject = JsonConvert.SerializeObject(rcWrapper);
-            WriteObject(serializedObject);
-            WriteObject("===================");
+            var settings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                MissingMemberHandling = MissingMemberHandling.Ignore
+            };
+
+            string serializedObject = JsonConvert.SerializeObject(rcWrapper, settings);
             var json = serializedObject.Replace("'", "\"");
 
             WriteObject(json);
-            var azureFirewallModel = (MNM.FirewallPolicyRuleGroup)JsonConvert.DeserializeObject(
+            var deserializedruleGroup = (MNM.FirewallPolicyRuleGroup)JsonConvert.DeserializeObject(
                                         json,
                                         typeof(MNM.FirewallPolicyRuleGroup),
                                         new JsonConverter[] { new Iso8601TimeSpanConverter(), new PolymorphicJsonCustomConverter<MNM.FirewallPolicyRule, MNM.FirewallPolicyRuleCondition>("ruleType", "ruleConditionType"), new TransformationJsonConverter() });
-            WriteObject("===================");
-            WriteObject(azureFirewallModel);
-            this.AzureFirewallPolicyRuleGroupClient.CreateOrUpdate(this.ResourceGroupName, this.AzureFirewallPolicy.Name, azureFirewallModel.Name, azureFirewallModel);
+            this.AzureFirewallPolicyRuleGroupClient.CreateOrUpdate(this.ResourceGroupName, this.AzureFirewallPolicy.Name, deserializedruleGroup.Name, deserializedruleGroup);
             WriteObject(rcWrapper);
         }
     }

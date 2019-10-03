@@ -13,13 +13,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Net;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-using Microsoft.Rest.Azure;
-using Microsoft.Rest.Serialization;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -31,15 +28,6 @@ namespace Microsoft.Azure.Commands.Network
             {
                 return NetworkClient.NetworkManagementClient.FirewallPolicyRuleGroups;
             }
-        }
-
-        public PSAzureFirewallPolicy ToPsAzureFirewallPolicy(FirewallPolicy firewall)
-        {
-            var azureFirewall = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewallPolicy>(firewall);
-
-            azureFirewall.Tag = TagsConversionHelper.CreateTagHashtable(firewall.Tags);
-
-            return azureFirewall;
         }
     }
 }
