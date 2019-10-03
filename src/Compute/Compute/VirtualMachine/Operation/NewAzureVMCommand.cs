@@ -536,7 +536,10 @@ namespace Microsoft.Azure.Commands.Compute
                         ProximityPlacementGroup = this.VM.ProximityPlacementGroup,
                         Host = this.VM.Host,
                         VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet,
-                        AdditionalCapabilities = this.VM.AdditionalCapabilities
+                        AdditionalCapabilities = this.VM.AdditionalCapabilities,
+                        Priority = this.VM.Priority,
+                        EvictionPolicy = this.VM.EvictionPolicy,
+                        BillingProfile = this.VM.BillingProfile
                     };
 
                     Dictionary<string, List<string>> auxAuthHeader = null;

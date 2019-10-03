@@ -190,6 +190,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        public double MaxPrice { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public SwitchParameter TerminateScheduledEvents { get; set; }
 
         [Parameter(
@@ -448,6 +453,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vVirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
                 }
                 vVirtualMachineProfile.EvictionPolicy = this.EvictionPolicy;
+            }
+
+            if (this.IsParameterBound(c => c.MaxPrice))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.BillingProfile == null)
+                {
+                    vVirtualMachineProfile.BillingProfile = new BillingProfile();
+                }
+                vVirtualMachineProfile.BillingProfile.MaxPrice = this.MaxPrice;
             }
 
             if (this.TerminateScheduledEvents.IsPresent)
