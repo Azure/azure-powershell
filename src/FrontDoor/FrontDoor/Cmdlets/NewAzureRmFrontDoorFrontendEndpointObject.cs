@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 SecretName = SecretName,
                 SecretVersion = SecretVersion,
                 ProtocolType = this.IsParameterBound(c => c.ProtocolType) ? ProtocolType : "ServerNameIndication",
-                MinimumTlsVersion = !this.IsParameterBound(c => c.SessionAffinityTtlInSeconds) ? "1.2" : MinimumTlsVersion
+                MinimumTlsVersion = MinimumTlsVersion
             };
             WriteObject(FrontendEndpoint);
         }

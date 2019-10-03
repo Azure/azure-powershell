@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 ResourceState = sdkFrontDoor.ResourceState,
                 ProvisioningState = sdkFrontDoor.ProvisioningState,
                 BackendPoolsSettings = sdkFrontDoor.BackendPoolsSettings?.ToPSBackendPoolsSettings(),
-                EnforceCertificateNameCheck = (PSEnforceCertificateNameCheck)Enum.Parse(typeof(PSEnforceCertificateNameCheck), sdkFrontDoor.BackendPoolsSettings.EnforceCertificateNameCheck)
+                EnforceCertificateNameCheck = sdkFrontDoor.BackendPoolsSettings == null ? (PSEnforceCertificateNameCheck?)null : (PSEnforceCertificateNameCheck)Enum.Parse(typeof(PSEnforceCertificateNameCheck), sdkFrontDoor.BackendPoolsSettings.EnforceCertificateNameCheck)
             };
         }
 
