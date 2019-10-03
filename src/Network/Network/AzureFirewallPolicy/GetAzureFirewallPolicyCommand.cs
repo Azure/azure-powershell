@@ -37,7 +37,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.", ParameterSetName = SetByNameParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = SetByResourceIdParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/azureFirewalls", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
@@ -47,16 +46,14 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.", ParameterSetName = SetByNameParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = SetByResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource Id.", ParameterSetName = SetByNameParameterSet)]
-        [Parameter(Mandatory = true, ParameterSetName = SetByResourceIdParameterSet)]
+            HelpMessage = "The resource Id.", ParameterSetName = SetByResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceId { get; set; }

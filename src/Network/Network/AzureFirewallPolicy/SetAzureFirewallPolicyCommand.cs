@@ -38,8 +38,6 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.", ParameterSetName = SetByNameParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = SetByResourceIdParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/azureFirewalls", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
@@ -49,8 +47,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.", ParameterSetName = SetByNameParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = SetByResourceIdParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
@@ -59,8 +55,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The AzureFirewall Policy", ParameterSetName = SetByInputObjectParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = SetByResourceIdParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = SetByNameParameterSet)]
         public PSAzureFirewallPolicy InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -70,8 +64,6 @@ namespace Microsoft.Azure.Commands.Network
                     Mandatory = true,
                     ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The resource Id.", ParameterSetName = SetByResourceIdParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = SetByNameParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceId { get; set; }
