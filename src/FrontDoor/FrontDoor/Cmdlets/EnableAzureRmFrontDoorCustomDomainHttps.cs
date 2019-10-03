@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The minimum TLS version required from the clients to establish an SSL handshake with Front Door.")]
+        [Parameter(Mandatory = false, HelpMessage = "The minimum TLS version required from the clients to establish an SSL handshake with Front Door.")]
         public string MinimumTlsVersion { get; set; }
 
         public override void ExecuteCmdlet()
@@ -143,6 +143,10 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 if (this.IsParameterBound(c => c.MinimumTlsVersion))
                 {
                     customHttpsConfiguration.MinimumTlsVersion = MinimumTlsVersion;
+                }
+                else
+                {
+                    customHttpsConfiguration.MinimumTlsVersion = "1.2";
                 }
 
                 if (ShouldProcess(Resources.FrontDoorTarget, string.Format(Resources.EnableCustomDomainHttpsWarning, FrontendEndpointName)))
