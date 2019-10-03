@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.", ParameterSetName = SetByNameParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = SetByInputObjectParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/azureFirewalls", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
