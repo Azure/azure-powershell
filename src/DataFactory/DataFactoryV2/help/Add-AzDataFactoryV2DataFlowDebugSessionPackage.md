@@ -50,7 +50,6 @@ PS C:\WINDOWS\system32> Add-AzDataFactoryV2DataFlowDebugSessionPackage -Resource
 Add data flow package into debug session "550effe4-93a3-485c-8525-eaf25259efbd" of "WikiADF" data factory.
 Pakcage file contains data flow debug resource, list of dataset debug resouce, list of linked service debug resource, debug setting and session ID. For instance:
 
-```json
 {
   "dataFlow": {
     "name": "dataflow5",
@@ -130,7 +129,6 @@ Pakcage file contains data flow debug resource, list of dataset debug resouce, l
   },
   "sessionId": "4f988caf-e765-47d2-82cd-430334a6b135"
 }
-```
 
 SessionID parameter is used to replace the existing sessionId property in the package file.
 
