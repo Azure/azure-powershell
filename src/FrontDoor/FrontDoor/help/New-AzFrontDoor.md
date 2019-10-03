@@ -80,7 +80,7 @@ Settings for all backendPools
 
 ```yaml
 Type: Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSettings
-Parameter Sets: ByFieldsWithBackendPoolsSettingsSet
+Parameter Sets: ByFieldsWithBackendPoolsSettingsParameterSet
 Aliases:
 
 Required: False
@@ -110,7 +110,7 @@ Whether to disable certificate name check on HTTPS requests to all backend pools
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByFieldsWithCertificateNameCheckSet
+Parameter Sets: ByFieldsWithCertificateNameCheckParameterSet
 Aliases:
 
 Required: False
@@ -279,11 +279,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor
-
 ## NOTES
 
 ## RELATED LINKS

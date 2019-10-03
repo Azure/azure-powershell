@@ -35,6 +35,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// The resource group to which the Front Door belongs.
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group to which the Front Door belongs.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsWithCertificateNameCheckParameterSet, HelpMessage = "The resource group to which the Front Door belongs.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsWithBackendPoolsSettingsParameterSet, HelpMessage = "The resource group to which the Front Door belongs.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -42,6 +44,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// The name of the Front Door to update.
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the Front Door to update.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsWithCertificateNameCheckParameterSet, HelpMessage = "The name of the Front Door to update.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsWithBackendPoolsSettingsParameterSet, HelpMessage = "The name of the Front Door to update.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -49,6 +53,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         ///The Front Door object to update.
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The Front Door object to update.")]
+        [Parameter(Mandatory = true, ParameterSetName = ObjectWithCertificateNameCheckParameterSet, ValueFromPipeline = true, HelpMessage = "The Front Door object to update.")]
+        [Parameter(Mandatory = true, ParameterSetName = ObjectWithBackendPoolsSettingsParameterSet, ValueFromPipeline = true, HelpMessage = "The Front Door object to update.")]
         [ValidateNotNullOrEmpty]
         public PSFrontDoor InputObject { get; set; }
 
@@ -56,6 +62,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Resource Id of the Front Door to update
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Id of the Front Door to update")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdWithCertificateNameCheckParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Id of the Front Door to update")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdWithBackendPoolsSettingsParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Id of the Front Door to update")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -104,24 +112,30 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsWithCertificateNameCheckParameterSet, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
+        [Parameter(Mandatory = true, ParameterSetName = ObjectWithCertificateNameCheckParameterSet, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdWithCertificateNameCheckParameterSet, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
         public SwitchParameter DisableCertificateNameCheck { get; set; }
 
         /// <summary>
         /// Settings for all backendPools
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Settings for all backendPools")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsWithBackendPoolsSettingsParameterSet,HelpMessage = "Settings for all backendPools")]
+        [Parameter(Mandatory = true, ParameterSetName = ObjectWithBackendPoolsSettingsParameterSet, HelpMessage = "Settings for all backendPools")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdWithBackendPoolsSettingsParameterSet, HelpMessage = "Settings for all backendPools")]
         public PSBackendPoolsSettings BackendPoolsSettings { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName == ObjectParameterSet)
+            if ((ParameterSetName == ObjectParameterSet) || (ParameterSetName == ObjectWithBackendPoolsSettingsParameterSet)
+                || (ParameterSetName == ObjectWithCertificateNameCheckParameterSet))
             {
                 ResourceIdentifier identifier = new ResourceIdentifier(InputObject.Id);
                 ResourceGroupName = identifier.ResourceGroupName;
                 Name = InputObject.Name;
             }
-            else if (ParameterSetName == ResourceIdParameterSet)
+            else if ((ParameterSetName == ResourceIdParameterSet) || (ParameterSetName == ResourceIdWithBackendPoolsSettingsParameterSet)
+                || (ParameterSetName == ResourceIdWithCertificateNameCheckParameterSet))
             {
                 ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
                 ResourceGroupName = identifier.ResourceGroupName;
@@ -187,20 +201,16 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 updateParameters.EnabledState = EnabledState;
             }
 
-            // Should not be able to specify both DisableCertificateNameCheck and pass in full BackendPoolsSettings object
-            // But the existence of these fields are optional and not bound to a specific parameter set
-            if (this.IsParameterBound(c => c.BackendPoolsSettings) && this.IsParameterBound(c => c.DisableCertificateNameCheck))
-            {
-                throw new PSArgumentException();
-                // Throw more specific error?
-            }
-            else if (this.IsParameterBound(c => c.BackendPoolsSettings))
-            {
-                updateParameters.BackendPoolsSettings = BackendPoolsSettings;
-            }
-            else if (this.IsParameterBound(c => c.DisableCertificateNameCheck))
+            if ((ParameterSetName == FieldsWithCertificateNameCheckParameterSet) || (ParameterSetName == ObjectWithCertificateNameCheckParameterSet)
+                || (ParameterSetName == ResourceIdWithCertificateNameCheckParameterSet))
             {
                 updateParameters.BackendPoolsSettings.EnforceCertificateNameCheck = DisableCertificateNameCheck ? PSEnabledState.Disabled : PSEnabledState.Enabled;
+            }
+
+            if ((ParameterSetName == FieldsWithBackendPoolsSettingsParameterSet) || (ParameterSetName == ObjectWithBackendPoolsSettingsParameterSet)
+                || (ParameterSetName == ResourceIdWithBackendPoolsSettingsParameterSet))
+            {
+                updateParameters.BackendPoolsSettings = BackendPoolsSettings;
             }
 
             updateParameters.ValidateFrontDoor(ResourceGroupName, this.DefaultContext.Subscription.Id);

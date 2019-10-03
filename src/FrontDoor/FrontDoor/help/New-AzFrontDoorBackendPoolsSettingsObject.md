@@ -8,26 +8,43 @@ schema: 2.0.0
 # New-AzFrontDoorBackendPoolsSettingsObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create a PSBackendPoolsSettings object for Front Door creation.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorBackendPoolsSettingsObject -Name <String> [-EnforceCertificateNameCheck <PSEnabledState>]
+New-AzFrontDoorBackendPoolsSettingsObject [-EnforceCertificateNameCheck <PSEnabledState>]
  [-SendRecvTimeoutSeconds <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzFrontDoorBackendPoolsSettingsObject** cmdlet creates a new PSBackendPoolsSettings object for Front Door creation.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create BackendPoolsSettings object using defaults
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzFrontDoorBackendPoolsSettingsObject
+
+
+EnforceCertificateNameCheck : Enabled
+SendRecvTimeoutSeconds      : 30
+Id                          :
+Name                        :
+Type                        :
 ```
 
-{{ Add example description here }}
+### Example 2: Create BackendPoolsSettings object with user specified values
+```powershell
+PS C:\> New-AzFrontDoorBackendPoolsSettingsObject -SendRecvTimeoutSeconds 60 -EnforceCertificateNameCheck Enabled
+
+
+EnforceCertificateNameCheck : Enabled
+SendRecvTimeoutSeconds      : 60
+Id                          :
+Name                        :
+Type                        :
+```
 
 ## PARAMETERS
 
@@ -63,21 +80,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-BackendPoolsSettings name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SendRecvTimeoutSeconds
 Send and receive timeout on forwarding request to the backend.
 When timeout is reached, the request fails and returns.
@@ -100,11 +102,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSettings
-
 ## NOTES
 
 ## RELATED LINKS

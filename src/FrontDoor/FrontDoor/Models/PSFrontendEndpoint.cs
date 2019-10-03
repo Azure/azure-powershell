@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 
         public string CertificateSource { get; set; }
 
-        public string ProtocolType { get; set; }
+        public string ProtocolType = "ServerNameIndication";
 
         public string MinimumTlsVersion { get; set; }
 

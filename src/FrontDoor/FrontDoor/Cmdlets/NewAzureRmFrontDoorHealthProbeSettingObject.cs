@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Gets or sets the health probe setting name.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "health probe setting name.")]
+        [Parameter(Mandatory = true, HelpMessage = "Health probe setting name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

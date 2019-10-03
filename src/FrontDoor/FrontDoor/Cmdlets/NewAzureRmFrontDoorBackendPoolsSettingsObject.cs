@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             var backendPoolsSettings = new PSBackendPoolsSettings
             {
                 EnforceCertificateNameCheck = !this.IsParameterBound(c => c.EnforceCertificateNameCheck) ? PSEnabledState.Enabled : EnforceCertificateNameCheck,
-                SendRecvTimeoutSeconds = !this.IsParameterBound(c => c.SendRecvTimeoutSeconds) ? (int?)null : SendRecvTimeoutSeconds
+                SendRecvTimeoutSeconds = !this.IsParameterBound(c => c.SendRecvTimeoutSeconds) ? 30 : SendRecvTimeoutSeconds
             };
             WriteObject(backendPoolsSettings);
         }

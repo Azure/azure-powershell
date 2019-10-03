@@ -17,7 +17,25 @@ Update a Front Door load balancer
 Set-AzFrontDoor -ResourceGroupName <String> -Name <String> [-RoutingRule <PSRoutingRule[]>]
  [-BackendPool <PSBackendPool[]>] [-FrontendEndpoint <PSFrontendEndpoint[]>]
  [-LoadBalancingSetting <PSLoadBalancingSetting[]>] [-HealthProbeSetting <PSHealthProbeSetting[]>]
- [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] [-BackendPoolsSettings <PSBackendPoolsSettings>]
+ [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ByFieldsWithCertificateNameCheckParameterSet
+```
+Set-AzFrontDoor -ResourceGroupName <String> -Name <String> [-RoutingRule <PSRoutingRule[]>]
+ [-BackendPool <PSBackendPool[]>] [-FrontendEndpoint <PSFrontendEndpoint[]>]
+ [-LoadBalancingSetting <PSLoadBalancingSetting[]>] [-HealthProbeSetting <PSHealthProbeSetting[]>]
+ [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] [-DisableCertificateNameCheck]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByFieldsWithBackendPoolsSettingsParameterSet
+```
+Set-AzFrontDoor -ResourceGroupName <String> -Name <String> [-RoutingRule <PSRoutingRule[]>]
+ [-BackendPool <PSBackendPool[]>] [-FrontendEndpoint <PSFrontendEndpoint[]>]
+ [-LoadBalancingSetting <PSLoadBalancingSetting[]>] [-HealthProbeSetting <PSHealthProbeSetting[]>]
+ [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] -BackendPoolsSettings <PSBackendPoolsSettings>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,8 +44,25 @@ Set-AzFrontDoor -ResourceGroupName <String> -Name <String> [-RoutingRule <PSRout
 Set-AzFrontDoor -InputObject <PSFrontDoor> [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
  [-FrontendEndpoint <PSFrontendEndpoint[]>] [-LoadBalancingSetting <PSLoadBalancingSetting[]>]
  [-HealthProbeSetting <PSHealthProbeSetting[]>] [-Tag <Hashtable>] [-EnabledState <PSEnabledState>]
- [-DisableCertificateNameCheck] [-BackendPoolsSettings <PSBackendPoolsSettings>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByObjectWithCertificateNameCheck
+```
+Set-AzFrontDoor -InputObject <PSFrontDoor> [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
+ [-FrontendEndpoint <PSFrontendEndpoint[]>] [-LoadBalancingSetting <PSLoadBalancingSetting[]>]
+ [-HealthProbeSetting <PSHealthProbeSetting[]>] [-Tag <Hashtable>] [-EnabledState <PSEnabledState>]
+ [-DisableCertificateNameCheck] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByObjectWithBackendPoolsSettingsParameterSet
+```
+Set-AzFrontDoor -InputObject <PSFrontDoor> [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
+ [-FrontendEndpoint <PSFrontendEndpoint[]>] [-LoadBalancingSetting <PSLoadBalancingSetting[]>]
+ [-HealthProbeSetting <PSHealthProbeSetting[]>] [-Tag <Hashtable>] [-EnabledState <PSEnabledState>]
+ -BackendPoolsSettings <PSBackendPoolsSettings> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
@@ -35,26 +70,25 @@ Set-AzFrontDoor -InputObject <PSFrontDoor> [-RoutingRule <PSRoutingRule[]>] [-Ba
 Set-AzFrontDoor -ResourceId <String> [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
  [-FrontendEndpoint <PSFrontendEndpoint[]>] [-LoadBalancingSetting <PSLoadBalancingSetting[]>]
  [-HealthProbeSetting <PSHealthProbeSetting[]>] [-Tag <Hashtable>] [-EnabledState <PSEnabledState>]
- [-DisableCertificateNameCheck] [-BackendPoolsSettings <PSBackendPoolsSettings>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByFieldsWithCertificateNameCheckParameterSet
+### ByResourceIdWithCertificateNameCheckParameterSet
 ```
-Set-AzFrontDoor [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
+Set-AzFrontDoor -ResourceId <String> [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
  [-FrontendEndpoint <PSFrontendEndpoint[]>] [-LoadBalancingSetting <PSLoadBalancingSetting[]>]
  [-HealthProbeSetting <PSHealthProbeSetting[]>] [-Tag <Hashtable>] [-EnabledState <PSEnabledState>]
  [-DisableCertificateNameCheck] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### ByFieldsWithBackendPoolsSettingsParameterSet
+### ByResourceIdWithBackendPoolsSettingsParameterSet
 ```
-Set-AzFrontDoor [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
+Set-AzFrontDoor -ResourceId <String> [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
  [-FrontendEndpoint <PSFrontendEndpoint[]>] [-LoadBalancingSetting <PSLoadBalancingSetting[]>]
  [-HealthProbeSetting <PSHealthProbeSetting[]>] [-Tag <Hashtable>] [-EnabledState <PSEnabledState>]
- [-BackendPoolsSettings <PSBackendPoolsSettings>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -BackendPoolsSettings <PSBackendPoolsSettings> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -153,10 +187,10 @@ Settings for all backendPools
 
 ```yaml
 Type: Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSettings
-Parameter Sets: ByFieldsParameterSet, ByObjectParameterSet, ByResourceIdParameterSet, ByFieldsWithBackendPoolsSettingsParameterSet
+Parameter Sets: ByFieldsWithBackendPoolsSettingsParameterSet, ByObjectWithBackendPoolsSettingsParameterSet, ByResourceIdWithBackendPoolsSettingsParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -183,10 +217,10 @@ Whether to disable certificate name check on HTTPS requests to all backend pools
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByObjectParameterSet, ByResourceIdParameterSet, ByFieldsWithCertificateNameCheckParameterSet
+Parameter Sets: ByFieldsWithCertificateNameCheckParameterSet, ByObjectWithCertificateNameCheck, ByResourceIdWithCertificateNameCheckParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -244,7 +278,7 @@ The Front Door object to update.
 
 ```yaml
 Type: Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor
-Parameter Sets: ByObjectParameterSet
+Parameter Sets: ByObjectParameterSet, ByObjectWithCertificateNameCheck, ByObjectWithBackendPoolsSettingsParameterSet
 Aliases:
 
 Required: True
@@ -274,7 +308,7 @@ The name of the Front Door to update.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByFieldsWithCertificateNameCheckParameterSet, ByFieldsWithBackendPoolsSettingsParameterSet
 Aliases:
 
 Required: True
@@ -289,7 +323,7 @@ The resource group to which the Front Door belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByFieldsWithCertificateNameCheckParameterSet, ByFieldsWithBackendPoolsSettingsParameterSet
 Aliases:
 
 Required: True
@@ -304,7 +338,7 @@ Resource Id of the Front Door to update
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceIdParameterSet
+Parameter Sets: ByResourceIdParameterSet, ByResourceIdWithCertificateNameCheckParameterSet, ByResourceIdWithBackendPoolsSettingsParameterSet
 Aliases:
 
 Required: True
@@ -381,13 +415,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor
-
 ### System.String
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor
-
 ## NOTES
 
 ## RELATED LINKS

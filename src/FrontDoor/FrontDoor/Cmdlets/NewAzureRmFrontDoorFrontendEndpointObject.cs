@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Defines the TLS extension protocol that is used for secure delivery.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The TLS extension protocol that is used for secure delivery")]
-        [PSArgumentCompleter("ServerNameIndication", "IPBased")]
+        [PSArgumentCompleter("ServerNameIndication")]
         public string ProtocolType { get; set; }
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 Vault = Vault,
                 SecretName = SecretName,
                 SecretVersion = SecretVersion,
-                ProtocolType = ProtocolType,
-                MinimumTlsVersion = MinimumTlsVersion
+                ProtocolType = this.IsParameterBound(c => c.ProtocolType) ? ProtocolType : "ServerNameIndication",
+                MinimumTlsVersion = !this.IsParameterBound(c => c.SessionAffinityTtlInSeconds) ? "1.2" : MinimumTlsVersion
             };
             WriteObject(FrontendEndpoint);
         }

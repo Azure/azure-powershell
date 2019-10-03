@@ -27,29 +27,30 @@ Create a PSFrontendEndpoint Object for Front Door creation
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName
+PS C:\> New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName "frontendendpoint1"
 
 
-HostName                         : frontdoor5.azurefd.net
+HostName                         : frontendendpoint1
 SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0
 WebApplicationFirewallPolicyLink :
 Backends                         :
 CustomHttpsProvisioningState     :
 CustomHttpsProvisioningSubstate  :
-CertificateSource                : AzureKeyVault
-ProtocolType                     : ServerNameIndication
+CertificateSource                :
+MinimumTlsVersion                : 1.2
 Vault                            :
 SecretName                       :
 SecretVersion                    :
-CertificateType                  : Shared
+CertificateType                  :
 ResourceState                    :
 Id                               :
 Name                             : frontendendpoint1
 Type                             :
+ProtocolType                     : ServerNameIndication
 ```
 
-Create a PSFrontendEndpoint Object for Front Door creation
+Create a PSFrontendEndpoint Object for Front Door creation.
 
 ## PARAMETERS
 
@@ -118,7 +119,7 @@ Accept wildcard characters: False
 The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -258,11 +259,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint
-
 ## NOTES
 
 ## RELATED LINKS
