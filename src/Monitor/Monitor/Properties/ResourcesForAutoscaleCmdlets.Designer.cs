@@ -108,9 +108,9 @@ namespace Microsoft.Azure.Commands.Insights.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Minimum value for trigger TimeWindow is 5 minutes..
         /// </summary>
-        internal static string MinimumTimeWindow5min {
+        internal static string MinimumTimeWindow1min {
             get {
-                return ResourceManager.GetString("MinimumTimeWindow5min", resourceCulture);
+                return ResourceManager.GetString("MinimumTimeWindow1min", resourceCulture);
             }
         }
         

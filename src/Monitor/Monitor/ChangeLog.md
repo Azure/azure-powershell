@@ -29,6 +29,9 @@
 * Use common alert schema enabled for the receivers. This is not applicable for SMS, Azure App push , ITSM and Voice recievers
 * Webhooks now supports Azure active directory authentication .
 
+## Version 1.3.1
+* Change TimeWindow mininum from 5 to 1 minute due to Autoscale backend allows trigger TimeWindow to be 1 minute.
+
 ## Version 1.3.0
 * Pointing to the most recent Monitor SDK, i.e. 0.24.1-preview
    - Adds non-braking changes to the Metrics cmdlets, i.e. the Unit enumeration supports several new values. These are read-only cmdlets, so there would be no change in the input of the cmdlets.

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutoscaleRule"), OutputType(typeof(Management.Monitor.Management.Models.ScaleRule))]
     public class NewAzureRmAutoscaleRuleCommand : MonitorCmdletBase
     {
-        private readonly TimeSpan MinimumTimeWindow = TimeSpan.FromMinutes(5);
+        private readonly TimeSpan MinimumTimeWindow = TimeSpan.FromMinutes(1);
         private readonly TimeSpan MinimumTimeGrain = TimeSpan.FromMinutes(1);
 
         #region Cmdlet parameters
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         {
             if (this.TimeWindow != default(TimeSpan) && this.TimeWindow < MinimumTimeWindow)
             {
-                throw new ArgumentOutOfRangeException("TimeWindow", this.TimeWindow, ResourcesForAutoscaleCmdlets.MinimumTimeWindow5min);
+                throw new ArgumentOutOfRangeException("TimeWindow", this.TimeWindow, ResourcesForAutoscaleCmdlets.MinimumTimeWindow1min);
             }
 
             if (this.TimeGrain < MinimumTimeGrain)

@@ -59,10 +59,11 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             Cmdlet.TimeGrain = TimeSpan.FromMinutes(1);
             Cmdlet.ExecuteCmdlet();
 
-            Cmdlet.TimeWindow = TimeSpan.FromMinutes(4);
+            // TimeWindow minimum value is now 1 min. 
+            Cmdlet.TimeWindow = TimeSpan.FromMinutes(0);
             Assert.Throws<ArgumentOutOfRangeException>(() => Cmdlet.ExecuteCmdlet());
 
-            Cmdlet.TimeWindow = TimeSpan.FromMinutes(5);
+            Cmdlet.TimeWindow = TimeSpan.FromMinutes(1);
             Cmdlet.ExecuteCmdlet();
         }
     }

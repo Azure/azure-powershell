@@ -132,8 +132,8 @@
   <data name="MinimumTimeGrain1min" xml:space="preserve">
     <value>Minimum value for trigger TimeGrain is 1 minute.</value>
   </data>
-  <data name="MinimumTimeWindow5min" xml:space="preserve">
-    <value>Minimum value for trigger TimeWindow is 5 minutes.</value>
+  <data name="MinimumTimeWindow1min" xml:space="preserve">
+    <value>Minimum value for trigger TimeWindow is 1 minute.</value>
   </data>
   <data name="PropertiresCannotBeNull" xml:space="preserve">
     <value>Properties member cannot be null.</value>
