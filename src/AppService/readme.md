@@ -323,14 +323,15 @@ directive:
   - where:
       variant: (.*)ViaIdentitySlot
     remove: true
- # Fix the name of the module in the nuspec
+# Fix the name of the module in the nuspec
   - from: Az.AppService.nuspec
     where: $
-    transform: $ = $.replace('\$\(service-name\) cmdlets', 'preview cmdlets for Azure AppService');
-# Add a better description
+    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - App Service (Web Apps) service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor information on App Service, please visit the following$1 https://docs.microsoft.com/azure/app-service-web/');
+
+# Add release notes
   - from: Az.AppService.nuspec
     where: $
-    transform: $ = $.replace(/\$\(service-name\)/g,  'AppService');
+    transform: $ = $.replace('<releaseNotes></releaseNotes>', '<releaseNotes>Initial release of preview AppService cmdlets - see https://aka.ms/azps4doc for more information.</releaseNotes>');
  # Make the nuget package a preview
   - from: Az.AppService.nuspec
     where: $

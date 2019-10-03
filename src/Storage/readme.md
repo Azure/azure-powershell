@@ -177,14 +177,14 @@ directive:
       parameter-name: Name
     set:
       parameter-name: Parameter
- # Fix the name of the module in the nuspec
+# Fix the name of the module in the nuspec
   - from: Az.Storage.nuspec
     where: $
-    transform: $ = $.replace('\$\(service-name\) cmdlets', 'preview cmdlets for Azure Storage service');
-# Add a better description
+    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - Storage service data plane and management cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor more information on Resource Manager, please visit the following$1 https://docs.microsoft.com/azure/azure-resource-manager/\For more information on Storage, please visit the following$1 https://docs.microsoft.com/azure/storage/');
+# Add release notes
   - from: Az.Storage.nuspec
     where: $
-    transform: $ = $.replace(/\$\(service-name\)/g,  'Storage');
+    transform: $ = $.replace('<releaseNotes></releaseNotes>', '<releaseNotes>Initial release of preview Azure Storage cmdlets - see https://aka.ms/azps4doc for more information.</releaseNotes>');
 # Make the nuget package a preview
   - from: Az.Storage.nuspec
     where: $

@@ -1102,11 +1102,11 @@ directive:
 # Fix the name of the module in the nuspec
   - from: Az.Compute.nuspec
     where: $
-    transform: $ = $.replace('\$\(service-name\) cmdlets', 'preview cmdlets for Azure Compute Service');
-# Add a better description
+    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - Compute service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor more information on Virtual Machines, please visit the following$1 https://docs.microsoft.com/azure/virtual-machines/\nFor more information on Virtual Machine Scale Sets, please visit the following$1 https://docs.microsoft.com/azure/virtual-machine-scale-sets/');
+# Add release notes
   - from: Az.Compute.nuspec
     where: $
-    transform: $ = $.replace(/\$\(service-name\)/g,  'Compute');
+    transform: $ = $.replace('<releaseNotes></releaseNotes>', '<releaseNotes>Initial release of preview Compute cmdlets - see https://aka.ms/azps4doc for more information.</releaseNotes>');
 # Make the nuget package a preview
   - from: Az.Compute.nuspec
     where: $

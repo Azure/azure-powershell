@@ -2956,11 +2956,11 @@ directive:
 # Fix the name of the module in the nuspec
   - from: Az.Network.nuspec
     where: $
-    transform: $ = $.replace('\$\(service-name\) cmdlets', 'preview cmdlets for Azure Network Service');
-# Add a better description
+    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - Networking service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor more information on Networking, please visit the following$1 https://docs.microsoft.com/azure/networking/networking-overview');
+# Add release notes
   - from: Az.Network.nuspec
     where: $
-    transform: $ = $.replace(/\$\(service-name\)/g,  'Network');
+    transform: $ = $.replace('<releaseNotes></releaseNotes>', '<releaseNotes>Initial release of preview Network cmdlets - see https://aka.ms/azps4doc for more information.</releaseNotes>');
 # Make the nuget package a preview
   - from: Az.Network.nuspec
     where: $

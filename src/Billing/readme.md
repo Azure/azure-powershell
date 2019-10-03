@@ -138,7 +138,12 @@ directive:
 # Fix the name of the module in the nuspec
   - from: Az.Billing.nuspec
     where: $
-    transform: $ = $.replace('\$\(service-name\) cmdlets', 'preview cmdlets for Azure Billing Service');
+    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - Billing service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor information on Billing, please visit the following$1 https://docs.microsoft.com/azure/billing/');
+
+# Add release notes
+  - from: Az.Billing.nuspec
+    where: $
+    transform: $ = $.replace('<releaseNotes></releaseNotes>', '<releaseNotes>Initial release of preview Billing cmdlets - see https://aka.ms/azps4doc for more information.</releaseNotes>');
 # Add a better description
   - from: Az.Billing.nuspec
     where: $

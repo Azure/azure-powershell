@@ -720,11 +720,11 @@ directive:
 # Fix the name of the module in the nuspec
   - from: Az.Resources.nuspec
     where: $
-    transform: $ = $.replace('\$\(service-name\) cmdlets', 'preview cmdlets for Azure ARM Service');
-# Add a better description
+    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - Azure Resource Manager and Active Directory cmdlets in Windows PowerShell and PowerShell Core.\n\nFor more information on Resource Manager, please visit the following$1 https://docs.microsoft.com/azure/azure-resource-manager/\nFor more information on Active Directory, please visit the following$1 https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis');
+# Add release notes
   - from: Az.Resources.nuspec
     where: $
-    transform: $ = $.replace(/\$\(service-name\)/g,  'Resources');
+    transform: $ = $.replace('<releaseNotes></releaseNotes>', '<releaseNotes>Initial release of preview Azure Resource Manager and Active Directory cmdlets - see https://aka.ms/azps4doc for more information.</releaseNotes>');
 # Make the nuget package a preview
   - from: Az.Resources.nuspec
     where: $

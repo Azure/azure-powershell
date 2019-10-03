@@ -469,11 +469,11 @@ directive:
 # Fix the name of the module in the nuspec
   - from: Az.KeyVault.nuspec
     where: $
-    transform: $ = $.replace('\$\(service-name\) cmdlets', 'preview cmdlets for Azure KeyVault Service');
-# Add a better description
+    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - Key Vault service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor more information on Key Vault, please visit the following$1 https://docs.microsoft.com/azure/key-vault/');
+# Add release notes
   - from: Az.KeyVault.nuspec
     where: $
-    transform: $ = $.replace(/\$\(service-name\)/g,  'KeyVault');
+    transform: $ = $.replace('<releaseNotes></releaseNotes>', '<releaseNotes>Initial release of preview KeyVault cmdlets - see https://aka.ms/azps4doc for more information.</releaseNotes>');
 # Make the nuget package a preview
   - from: Az.KeyVault.nuspec
     where: $

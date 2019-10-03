@@ -128,14 +128,14 @@ directive:
       verb: ^New$|^Set$
       subject: Zone
     hide: true
- # Fix the name of the module in the nuspec
+# Fix the name of the module in the nuspec
   - from: Az.Dns.nuspec
     where: $
-    transform: $ = $.replace('\$\(service-name\) cmdlets', 'preview cmdlets for Azure Dns Service');
-# Add a better description
+    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - Dns service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor more information on DNS, please visit the following$1 https://docs.microsoft.com/azure/dns/');
+# Add release notes
   - from: Az.Dns.nuspec
     where: $
-    transform: $ = $.replace(/\$\(service-name\)/g,  'Dns');
+    transform: $ = $.replace('<releaseNotes></releaseNotes>', '<releaseNotes>Initial release of preview Dns cmdlets - see https://aka.ms/azps4doc for more information.</releaseNotes>');
  # Make the nuget package a preview
   - from: Az.Dns.nuspec
     where: $
