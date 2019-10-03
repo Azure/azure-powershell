@@ -269,6 +269,18 @@ directive:
       verb: Get
       subject: Baseline
     remove: true
+# Fix the name of the module in the nuspec
+  - from: Az.Monitor.nuspec
+    where: $
+    transform: $ = $.replace('\$\(service-name\) cmdlets', 'preview cmdlets for Azure Monitor Service');
+# Add a better description
+  - from: Az.Monitor.nuspec
+    where: $
+    transform: $ = $.replace(/\$\(service-name\)/g,  'Monitor');
+# Make the nuget package a preview
+  - from: Az.Monitor.nuspec
+    where: $
+    transform: $ = $.replace(/<version>(\d+\.\d+\.\d+)<\/version>/, '<version>$1-preview</version>');
 # Make this a preview module
   - from: source-file-csharp
     where: $

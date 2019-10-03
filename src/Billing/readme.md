@@ -135,6 +135,18 @@ directive:
   - where:
       subject: ^(?!^BillingPeriod$)(?!^Budget$)(?!^EnrollmentAccount$)(?!^Invoice$)(?!^Marketplace$)(?!^PriceSheet$)(?!^ReservationDetail$)(?!^ReservationSummary$)(?!^UsageAggregate$)(?!^UsageDetail$).*$
     hide: true
+# Fix the name of the module in the nuspec
+  - from: Az.Billing.nuspec
+    where: $
+    transform: $ = $.replace('\$\(service-name\) cmdlets', 'preview cmdlets for Azure Billing Service');
+# Add a better description
+  - from: Az.Billing.nuspec
+    where: $
+    transform: $ = $.replace(/\$\(service-name\)/g,  'Billing');
+# Make the nuget package a preview
+  - from: Az.Billing.nuspec
+    where: $
+    transform: $ = $.replace(/<version>(\d+\.\d+\.\d+)<\/version>/, '<version>$1-preview</version>');
   # Make this a preview module
   - from: source-file-csharp
     where: $

@@ -177,7 +177,23 @@ directive:
       parameter-name: Name
     set:
       parameter-name: Parameter
-  # Make this a preview module
+ # Fix the name of the module in the nuspec
+  - from: Az.Storage.nuspec
+    where: $
+    transform: $ = $.replace('\$\(service-name\) cmdlets', 'preview cmdlets for Azure Storage service');
+# Add a better description
+  - from: Az.Storage.nuspec
+    where: $
+    transform: $ = $.replace(/\$\(service-name\)/g,  'Storage');
+# Make the nuget package a preview
+  - from: Az.Storage.nuspec
+    where: $
+    transform: $ = $.replace(/<version>(\d+\.\d+\.\d+)<\/version>/, '<version>$1-preview</version>');
+# Add dependencies to the nuspec
+  - from: Az.Storage.nuspec
+    where: $
+    transform: $ = $.replace('<file src="bin/Az.Storage.private.deps.json" target="bin" />', '<file src="bin/Az.Storage.private.deps.json" target="bin" />\n    <file src="bin/Microsoft.Azure.Cosmos.Table.dll" target="bin" />\n    <file src="bin/Microsoft.Azure.DocumentDB.Core.dll" target="bin" />\n    <file src="bin/Microsoft.Azure.KeyVault.Core.dll" target="bin" />\n    <file src="bin/Microsoft.Azure.Storage.Blob.dll" target="bin" />\n    <file src="bin/Microsoft.Azure.Storage.Common.dll" target="bin" />\n    <file src="bin/Microsoft.Azure.Storage.DataMovement.dll" target="bin" />\n    <file src="bin/Microsoft.Azure.Storage.File.dll" target="bin" />\n    <file src="bin/Microsoft.Azure.Storage.Queue.dll" target="bin" />\n    <file src="bin/Microsoft.OData.Core.dll" target="bin" />');
+# Make this a preview module
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
