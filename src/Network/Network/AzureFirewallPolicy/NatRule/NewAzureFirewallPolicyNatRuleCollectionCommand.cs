@@ -72,11 +72,11 @@ namespace Microsoft.Azure.Commands.Network
             {
                 name = this.Name,
                 priority = this.Priority,
-                ruleCondition = this.Rule,
+                rule = this.Rule,
                 Action = new PSAzureFirewallPolicyNatRuleCollectionAction { type = ActionType },
                 translatedAddress = this.TranslatedAddress,
                 translatedPort = this.TranslatedPort,
-                ruleType = "FirewallPolicyNatRule"
+                ruleCollectionType = "FirewallPolicyNatRule"
             };
 
             WriteObject(natRuleCollections);

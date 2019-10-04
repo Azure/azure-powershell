@@ -60,9 +60,9 @@ namespace Microsoft.Azure.Commands.Network
             {
                 name = this.Name,
                 priority = this.Priority,
-                ruleConditions = this.Rule?.ToList(),
+                rules = this.Rule?.ToList(),
                 Action = new PSAzureFirewallPolicyFilterRuleCollectionAction { type = ActionType },
-                ruleType = "FirewallPolicyFilterRule"
+                ruleCollectionType = "FirewallPolicyFilterRule"
             };
             WriteObject(filterRule);
         }

@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Network
             var ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup
             {
                 priority = this.Priority,
-                rules = this.RuleCollection?.ToList(),
+                ruleCollection = this.RuleCollection?.ToList(),
             };
 
             var rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper

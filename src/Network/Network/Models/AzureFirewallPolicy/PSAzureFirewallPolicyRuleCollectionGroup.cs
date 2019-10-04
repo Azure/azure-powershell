@@ -33,21 +33,21 @@ namespace Microsoft.Azure.Commands.Network.Models
         [ValidateRange(100, 65000)]
         public uint priority { get; set; }
 
-        [JsonProperty(Order = 3)]
-        public List<PSAzureFirewallPolicyBaseRuleCollection> rules { get; set; }
+        [JsonProperty("rules")]
+        public List<PSAzureFirewallPolicyBaseRuleCollection> ruleCollection { get; set; }
 
-        public PSAzureFirewallPolicyBaseRuleCollection GetRuleByName(string ruleName)
+        public PSAzureFirewallPolicyBaseRuleCollection GetRuleCollectionByName(string ruleCollectionName)
         {
-            if (string.IsNullOrEmpty(ruleName))
+            if (string.IsNullOrEmpty(ruleCollectionName))
             {
                 throw new ArgumentException($"Rule name cannot be an empty string.");
             }
 
-            var rule = this.rules?.FirstOrDefault(r => ruleName.Equals(r.name, StringComparison.OrdinalIgnoreCase));
+            var rule = this.ruleCollection?.FirstOrDefault(r => ruleCollectionName.Equals(r.name, StringComparison.OrdinalIgnoreCase));
 
             if (rule == null)
             {
-                throw new ArgumentException($"Rule with name {ruleName} does not exist.");
+                throw new ArgumentException($"Rule with name {ruleCollectionName} does not exist.");
             }
 
             return rule;
