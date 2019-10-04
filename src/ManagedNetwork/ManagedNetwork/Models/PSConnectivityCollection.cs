@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ManagedNetwork.Models

@@ -18,7 +18,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Management.Cdn;
+using Microsoft.Azure.Management.ManagedNetwork;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -26,7 +26,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 
-namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
+namespace Microsoft.Azure.Commands.ManagedNetwork.Test.ScenarioTests.ScenarioTests
 {
     public class TestController : RMTestBase
     {
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
-        public CdnManagementClient CdnManagementClient { get; private set; }
+        public ManagedNetworkManagementClient ManagedNetworkClient { get; private set; }
 
         public static TestController NewInstance => new TestController();
 
@@ -46,11 +46,11 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
         protected void SetupManagementClients(MockContext context)
         {
             ResourceManagementClient = GetResourceManagementClient(context);
-            CdnManagementClient = GetCdnManagementClient(context);
+            ManagedNetworkClient = GetManagedNetworkManagementClient(context);
 
             _helper.SetupManagementClients(
                 ResourceManagementClient,
-                CdnManagementClient);
+                ManagedNetworkClient);
         }
 
         public void RunPowerShellTest(ServiceManagement.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
-                    _helper.GetRMModulePath("AzureRM.Cdn.psd1"),
+                    _helper.GetRMModulePath("Az.ManagedNetwork.psd1"),
                     "AzureRM.Resources.ps1");
                 try
                 {
@@ -124,9 +124,9 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private static CdnManagementClient GetCdnManagementClient(MockContext context)
+        private static ManagedNetworkManagementClient GetManagedNetworkManagementClient(MockContext context)
         {
-            return context.GetServiceClient<CdnManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<ManagedNetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

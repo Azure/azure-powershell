@@ -19,11 +19,11 @@ using Xunit;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Microsoft.Azure.Commands.Cdn.Test")]
+[assembly: AssemblyTitle("Microsoft.Azure.Commands.ManagedNetwork.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Microsoft.Azure.Commands.Cdn.Test")]
+[assembly: AssemblyProduct("Microsoft.Azure.Commands.ManagedNetwork.Test")]
 [assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -32,9 +32,6 @@ using Xunit;
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
-
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("822d5889-438f-4c18-9c06-f5db728d417d")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -45,6 +42,6 @@ using Xunit;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("4.0.0")]
-[assembly: AssemblyFileVersion("4.0.0")]
+[assembly: AssemblyVersion("1.0.0")]
+[assembly: AssemblyFileVersion("1.0.0")]
 [assembly: CollectionBehavior(DisableTestParallelization = true)]

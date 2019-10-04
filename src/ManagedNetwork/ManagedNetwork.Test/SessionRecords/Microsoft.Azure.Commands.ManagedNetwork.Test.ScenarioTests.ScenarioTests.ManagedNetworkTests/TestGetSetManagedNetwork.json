@@ -1,0 +1,203 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNCRG/providers/Microsoft.ManagedNetwork/managedNetworks/PowershellTestMN?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiYTgzNjktOTJlNC00ZDcwLThiMWUtOTM3NjYwYmRlNzk4L3Jlc291cmNlR3JvdXBzL01OQ1JHL3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlZE5ldHdvcmsvbWFuYWdlZE5ldHdvcmtzL1Bvd2Vyc2hlbGxUZXN0TU4/YXBpLXZlcnNpb249MjAxOS0wNi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a36a23d8-2959-4325-b324-a3a38f367797"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.ManagedNetwork.ManagedNetworkManagementClient/1.0.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "3e96e3c4-13e3-40aa-8f0e-f429c0e4ca03"
+        ],
+        "x-ms-correlation-request-id": [
+          "3e96e3c4-13e3-40aa-8f0e-f429c0e4ca03"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191004T055313Z:3e96e3c4-13e3-40aa-8f0e-f429c0e4ca03"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 04 Oct 2019 05:53:12 GMT"
+        ],
+        "Content-Length": [
+          "911"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNCRG/providers/Microsoft.ManagedNetwork/managedNetworks/PowershellTestMN\",\r\n  \"name\": \"PowershellTestMN\",\r\n  \"type\": \"Microsoft.ManagedNetwork/managedNetworks\",\r\n  \"location\": \"West US 2\",\r\n  \"apiVersion\": \"\",\r\n  \"tags\": {},\r\n  \"resourceGuid\": \"3412afba-a46d-441d-af00-9f4c63e869f8\",\r\n  \"provisioningState\": 0,\r\n  \"properties\": {\r\n    \"scope\": {\r\n      \"virtualNetworks\": [\r\n        {\r\n          \"id\": \"subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNC-PowerShell/providers/Microsoft.Network/virtualnetworks/Mesh1\"\r\n        },\r\n        {\r\n          \"id\": \"subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNC-PowerShell/providers/Microsoft.Network/virtualnetworks/Mesh2\"\r\n        },\r\n        {\r\n          \"id\": \"subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNC-PowerShell/providers/Microsoft.Network/virtualnetworks/Mesh3\"\r\n        }\r\n      ],\r\n      \"managementGroups\": [],\r\n      \"subscriptions\": [],\r\n      \"subNets\": []\r\n    },\r\n    \"connectivity\": {\r\n      \"peerings\": [],\r\n      \"groups\": []\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNCRG/providers/Microsoft.ManagedNetwork/managedNetworks/PowershellTestMN?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiYTgzNjktOTJlNC00ZDcwLThiMWUtOTM3NjYwYmRlNzk4L3Jlc291cmNlR3JvdXBzL01OQ1JHL3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlZE5ldHdvcmsvbWFuYWdlZE5ldHdvcmtzL1Bvd2Vyc2hlbGxUZXN0TU4/YXBpLXZlcnNpb249MjAxOS0wNi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "919b8e0f-9c2c-4cf3-878f-2b3007892c0c"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.ManagedNetwork.ManagedNetworkManagementClient/1.0.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "ab3d510e-cb13-4fcc-aadb-afc1963ea6ff"
+        ],
+        "x-ms-correlation-request-id": [
+          "ab3d510e-cb13-4fcc-aadb-afc1963ea6ff"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191004T055314Z:ab3d510e-cb13-4fcc-aadb-afc1963ea6ff"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 04 Oct 2019 05:53:14 GMT"
+        ],
+        "Content-Length": [
+          "911"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNCRG/providers/Microsoft.ManagedNetwork/managedNetworks/PowershellTestMN\",\r\n  \"name\": \"PowershellTestMN\",\r\n  \"type\": \"Microsoft.ManagedNetwork/managedNetworks\",\r\n  \"location\": \"West US 2\",\r\n  \"apiVersion\": \"\",\r\n  \"tags\": {},\r\n  \"resourceGuid\": \"3412afba-a46d-441d-af00-9f4c63e869f8\",\r\n  \"provisioningState\": 0,\r\n  \"properties\": {\r\n    \"scope\": {\r\n      \"virtualNetworks\": [\r\n        {\r\n          \"id\": \"subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNC-PowerShell/providers/Microsoft.Network/virtualnetworks/Mesh1\"\r\n        },\r\n        {\r\n          \"id\": \"subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNC-PowerShell/providers/Microsoft.Network/virtualnetworks/Mesh2\"\r\n        },\r\n        {\r\n          \"id\": \"subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNC-PowerShell/providers/Microsoft.Network/virtualnetworks/Mesh3\"\r\n        }\r\n      ],\r\n      \"managementGroups\": [],\r\n      \"subscriptions\": [],\r\n      \"subNets\": []\r\n    },\r\n    \"connectivity\": {\r\n      \"peerings\": [],\r\n      \"groups\": []\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNCRG/providers/Microsoft.ManagedNetwork/managedNetworks/PowershellTestMN?api-version=2019-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiYTgzNjktOTJlNC00ZDcwLThiMWUtOTM3NjYwYmRlNzk4L3Jlc291cmNlR3JvdXBzL01OQ1JHL3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlZE5ldHdvcmsvbWFuYWdlZE5ldHdvcmtzL1Bvd2Vyc2hlbGxUZXN0TU4/YXBpLXZlcnNpb249MjAxOS0wNi0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"scope\": {\r\n      \"managementGroups\": [],\r\n      \"subscriptions\": [],\r\n      \"virtualNetworks\": [\r\n        {\r\n          \"id\": \"subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNC-PowerShell/providers/Microsoft.Network/virtualnetworks/Mesh1\"\r\n        },\r\n        {\r\n          \"id\": \"subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNC-PowerShell/providers/Microsoft.Network/virtualnetworks/Mesh2\"\r\n        },\r\n        {\r\n          \"id\": \"subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNC-PowerShell/providers/Microsoft.Network/virtualnetworks/Mesh3\"\r\n        }\r\n      ],\r\n      \"subnets\": []\r\n    }\r\n  },\r\n  \"tags\": {},\r\n  \"location\": \"West US 2\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "53a06042-7a8d-48a6-a1f8-5c6f9f9ca75b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.ManagedNetwork.ManagedNetworkManagementClient/1.0.1.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "730"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "b7160402-5d6b-4187-a8c1-1f969a11940e"
+        ],
+        "x-ms-correlation-request-id": [
+          "b7160402-5d6b-4187-a8c1-1f969a11940e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191004T055314Z:b7160402-5d6b-4187-a8c1-1f969a11940e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 04 Oct 2019 05:53:13 GMT"
+        ],
+        "Content-Length": [
+          "875"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNCRG/providers/Microsoft.ManagedNetwork/managedNetworks/PowershellTestMN\",\r\n  \"name\": \"PowershellTestMN\",\r\n  \"type\": \"Microsoft.ManagedNetwork/managedNetworks\",\r\n  \"location\": \"West US 2\",\r\n  \"apiVersion\": \"\",\r\n  \"tags\": {},\r\n  \"resourceGuid\": \"\",\r\n  \"provisioningState\": 0,\r\n  \"properties\": {\r\n    \"scope\": {\r\n      \"virtualNetworks\": [\r\n        {\r\n          \"id\": \"subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNC-PowerShell/providers/Microsoft.Network/virtualnetworks/Mesh1\"\r\n        },\r\n        {\r\n          \"id\": \"subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNC-PowerShell/providers/Microsoft.Network/virtualnetworks/Mesh2\"\r\n        },\r\n        {\r\n          \"id\": \"subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNC-PowerShell/providers/Microsoft.Network/virtualnetworks/Mesh3\"\r\n        }\r\n      ],\r\n      \"managementGroups\": [],\r\n      \"subscriptions\": [],\r\n      \"subNets\": []\r\n    },\r\n    \"connectivity\": {\r\n      \"peerings\": [],\r\n      \"groups\": []\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "18ba8369-92e4-4d70-8b1e-937660bde798"
+  }
+}

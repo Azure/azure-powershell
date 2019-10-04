@@ -89,7 +89,15 @@ namespace Microsoft.Azure.Commands.ManagedNetwork.Common
         /// </summary>
         public const string ManagedNetworkPeeringPolicyNameHelp = "The unique name of the Managed Network Peering Policy.";
 
+        /// <summary>
+        /// ManagedNetworkHelp
+        /// </summary>
+        public const string ManagedNetworkObjectHelp = "The object of Managed Network.";
 
+        /// <summary>
+        /// InputObjectHelp
+        /// </summary>
+        public const string InputObjectHelp = "The Input Object.";
 
         /// <summary>
         /// ManagedNetworkScopeHelp
@@ -97,9 +105,14 @@ namespace Microsoft.Azure.Commands.ManagedNetwork.Common
         public const string ManagedNetworkScopeHelp = "The scope of control of the Managed Network.";
 
         /// <summary>
-        /// ManagedNetworkTagsHelp
+        /// ManagedNetworkTagHelp
         /// </summary>
-        public const string ManagedNetworkTagsHelp = "The tags assigned to a Managed Network.";
+        public const string ManagedNetworkTagHelp = "The tags assigned to a Managed Network.";
+
+        /// <summary>
+        /// ManagedNetworkLocationHelp
+        /// </summary>
+        public const string ManagedNetworkLocationHelp = "The Location assigned to a Managed Network.";
 
         /// <summary>
         /// The force help.
@@ -122,6 +135,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork.Common
         public const string ListParameterSet = "ListParameterSet";
         public const string ResourceIdParameterSet = "ResourceIdParameterSet";
         public const string InputObjectParameterSet = "InputObjectParameterSet";
+        public const string ManagedNetworkObjectParameterSet = "ManagedNetworkObjectParameterSet";
         #endregion
     }
 }

@@ -23,13 +23,8 @@ namespace Microsoft.Azure.Commands.ManagedNetwork.Models
     public class PSTrackedResource : PSResource
     {
         /// <summary>
-        /// Gets or sets Resource location
-        /// </summary>
-        public string Location { get; set; }
-
-        /// <summary>
         /// Resource tags
         /// </summary>
-        public List<string> Tags { get; set; }
+        public IDictionary<string, string> Tags { get; set; }
     }
 }
