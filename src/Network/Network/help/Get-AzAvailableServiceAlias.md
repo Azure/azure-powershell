@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version:  https://docs.microsoft.com/en-us/powershell/module/az.network/get-azavailableservicealias
 schema: 2.0.0
 ---
 
@@ -73,7 +73,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSAvailableAlias
+### Microsoft.Azure.Commands.Network.Models.PsAvailableServiceAlias
 
 ## NOTES
 

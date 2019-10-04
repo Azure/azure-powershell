@@ -23,7 +23,7 @@ using CNM = Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network.Automation
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailableServiceAlias"), OutputType(typeof(PSAvailableAlias))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailableServiceAlias"), OutputType(typeof(PsAvailableServiceAlias))]
     public partial class GetAzureAvailableServiceAliasCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -39,11 +39,11 @@ namespace Microsoft.Azure.Commands.Network.Automation
             base.Execute();
 
             var availableServiceAliasList = this.NetworkClient.NetworkManagementClient.AvailableServiceAliases.List(Location);
-            List<PSAvailableAlias> psAvailableServiceAlias = new List<PSAvailableAlias>();
+            List<PsAvailableServiceAlias> psAvailableServiceAlias = new List<PsAvailableServiceAlias>();
             
             foreach (var availableServiceAlias in availableServiceAliasList)
             {
-                psAvailableServiceAlias.Add(NetworkResourceManagerProfile.Mapper.Map<CNM.PSAvailableAlias>(availableServiceAlias));
+                psAvailableServiceAlias.Add(NetworkResourceManagerProfile.Mapper.Map<CNM.PsAvailableServiceAlias>(availableServiceAlias));
             }
             
             WriteObject(psAvailableServiceAlias, true);
