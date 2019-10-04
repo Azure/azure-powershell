@@ -3,7 +3,7 @@ using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAvailableAlias
+    public class PsAvailableServiceAlias
     {
         [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 1)]
         public string Name { get; set; }
