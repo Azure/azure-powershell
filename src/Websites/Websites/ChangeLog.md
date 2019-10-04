@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.2
 * Fixing issue where webapp Tags were getting deleted when migrating App to new ASPwhere webapp Tags were getting deleted when migrating App to new ASP
 * Fixing the Publish-AzureWebapp to work across Linux and windows
 * Update example in `Get-AzWebAppPublishingProfile` reference documentation

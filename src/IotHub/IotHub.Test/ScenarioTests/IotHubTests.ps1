@@ -30,7 +30,7 @@ function Test-AzureRmIotHubLifecycle
 	$IotHubName = getAssetName 
 	$ResourceGroupName = getAssetName 
 	$Sku = "B1"
-	$namespaceName = getAssetName
+	$namespaceName = getAssetName 'eventHub'
 	$eventHubName = getAssetName
 	$authRuleName = getAssetName
 	$Tag1Key = "key1"

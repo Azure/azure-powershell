@@ -269,5 +269,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineRemoteDesktop");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLowPriorityVirtualMachine()
+        {
+            TestRunner.RunTestScript("Test-LowPriorityVirtualMachine");
+        }
     }
 }
