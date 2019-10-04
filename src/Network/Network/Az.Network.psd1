@@ -420,7 +420,14 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Start-AzVirtualNetworkGatewayPacketCapture', 
                'Stop-AzVirtualNetworkGatewayPacketCapture', 
                'Start-AzVirtualNetworkGatewayConnectionPacketCapture', 
-               'Stop-AzVirtualNetworkGatewayConnectionPacketCapture'
+               'Stop-AzVirtualNetworkGatewayConnectionPacketCapture',
+			   'New-AzVirtualRouter',
+			   'Remove-AzVirtualRouter',
+			   'Get-AzVirtualRouter',
+			   'Add-AzVirtualRouterPeer',
+			   'Update-AzVirtualRouterPeer',
+			   'Remove-AzVirtualRouterPeer',
+			   'Get-AzVirtualRouterPeer'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -366,6 +366,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
             }
         }
         
+        /// <summary>
         ///   Looks up a localized string similar to Provided ResourceId isn&apos;t in the right format or doesn&apos;t refer to the right resource type ({0}).
         /// </summary>
         internal static string InvalidResourceId {
@@ -725,6 +726,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to A valid VirtualNetworkGateway is required to create Virtual Router.
+        /// </summary>
+        internal static string VirtualGatewayRequiredForVirtualRouter {
+            get {
+                return ResourceManager.GetString("VirtualGatewayRequiredForVirtualRouter", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to A valid VirtualHub reference is required to create an ExpressRouteGateway..
         /// </summary>

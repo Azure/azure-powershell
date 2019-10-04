@@ -89,6 +89,37 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
+        public class VirtualRouterConverter : ITypeConverter<MNM.VirtualRouter, CNM.PSVirtualRouter>
+        {
+            public CNM.PSVirtualRouter Convert(MNM.VirtualRouter source, CNM.PSVirtualRouter destination, ResolutionContext context)
+            {
+                var router = new CNM.PSVirtualRouter()
+                {
+                    Id = source.Id,
+                    Name = source.Name,
+                    Etag = source.Etag,
+                    Location = source.Location,
+                    Type = source.Type,
+                    ProvisioningState = source.ProvisioningState,
+                    VirtualRouterAsn = (uint) source.VirtualRouterAsn
+                };
+                if (source.HostedGateway != null)
+                {
+                    router.HostedGateway = new CNM.PSResourceId()
+                    {
+                        Id = source.HostedGateway.Id
+                    };
+                }
+                if (source.VirtualRouterIps != null)
+                {
+                    router.VirtualRouterIps = source.VirtualRouterIps.ToList<string>();
+                }
+
+                router.Peerings = new List<CNM.PSVirtualRouterPeer>();
+                return router;
+            }
+        }
+
         private static void MapSecurityRuleCommandToManagement<CnmType, MnmType>(CnmType cnmObj, MnmType mnmObj)
         {
             /* 
@@ -1036,6 +1067,15 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.BastionHost, CNM.PSBastion>();
                 cfg.CreateMap<MNM.BastionHostIPConfiguration, CNM.PSBastionIPConfiguration>();
+
+                // Virtual Router
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSVirtualRouter, MNM.VirtualRouter>();
+                cfg.CreateMap<CNM.PSVirtualRouterPeer, MNM.VirtualRouterPeering>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.VirtualRouter, CNM.PSVirtualRouter>().ConvertUsing(new VirtualRouterConverter());
+                cfg.CreateMap<MNM.VirtualRouterPeering, CNM.PSVirtualRouterPeer>();
             });
 
             _mapper = config.CreateMapper();
