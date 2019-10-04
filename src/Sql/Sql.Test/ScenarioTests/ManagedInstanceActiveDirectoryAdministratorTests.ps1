@@ -28,7 +28,8 @@ function Test-ManagedInstanceActiveDirectoryAdministrator
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
-
+        
+	# If there is a need to re-record this test, these values must be changed to correspond to existing group and user from Azure Active Directory related to current subscription.
 	$activeDirectoryGroup1 = "aadadmin"
 	$activeDirectoryGroup1ObjectId = "52b6d571-5ff9-4b8f-92de-4a5b1bcdbbef"
 	$activeDirectoryUser1 = "CL AAD Test User"
