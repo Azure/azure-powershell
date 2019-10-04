@@ -230,6 +230,9 @@ Gets an array of private link service id that can be linked to a private end poi
 ### [Get-AzAvailablePrivateEndpointType](Get-AzAvailablePrivateEndpointType.md)
 Return available private end point types in the location
 
+### [Get-AzAvailableServiceAlias](Get-AzAvailableServiceAlias.md)
+Get available service aliases in the region.
+
 ### [Get-AzAvailableServiceDelegation](Get-AzAvailableServiceDelegation.md)
 Get available service delegations in the region.
 

@@ -232,6 +232,13 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.AvailableDelegation, CNM.PSAvailableDelegation>();
 
+                // Available subnet aliases
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSAvailableAlias, MNM.AvailableServiceAlias>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.AvailableServiceAlias, CNM.PSAvailableAlias>();
+
                 // VirtualNetwork Peering
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>()
