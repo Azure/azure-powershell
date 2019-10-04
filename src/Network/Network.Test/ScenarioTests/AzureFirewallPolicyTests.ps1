@@ -18,10 +18,10 @@ Tests AzureFirewallPolicyCRUD.
 #>
 function Test-AzureFirewallPolicyCRUD {
     # Setup
-    $rgname = "psFpTestRg5"
-    $azureFirewallPolicyName = "psFpTest5"
+    $rgname = "psFpWcRg05"
+    $azureFirewallPolicyName = "psFpWc05"
     $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
-    $location = "eastus"
+    $location = "westcentralus"
 
     # AzureFirewallPolicyApplicationRuleCollection
     $appRcName = "appRc"
@@ -118,9 +118,9 @@ function Test-AzureFirewallPolicyCRUD {
         $appRc2 = New-AzFirewallPolicyFilterRuleCollection -Name $appRc2Name -Priority $appRc2Priority -Rule $networkRule -ActionType $appRc2ActionType
 
         # Create a NAT rule
-        $natRule = New-AzFirewallPolicyNatRuleCollection -Name $natRule1Name -Priority $natRcPriority -Rule $networkRule -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort -ActionType $natRcActionType
+        $natRc = New-AzFirewallPolicyNatRuleCollection -Name $natRule1Name -Priority $natRcPriority -Rule $networkRule -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort -ActionType $natRcActionType
 
-        New-AzFirewallPolicyRuleCollectionGroup -Name rg1 -Priority 100 -Rule $appRc, $appRc2, $natRule -AzureFirewallPolicy $azureFirewallPolicy
+        New-AzFirewallPolicyRuleCollectionGroup -Name rg1 -Priority 100 -Rule $appRc, $appRc2, $natRc -AzureFirewallPolicy $azureFirewallPolicy
 
 
         # # Update ThreatIntel mode
@@ -142,22 +142,21 @@ function Test-AzureFirewallPolicyCRUD {
         Assert-AreEqual 1 @($getAzureFirewallPolicy.RuleCollectionGroups).Count
 
 
-        $rgId = $getAzureFirewallPolicy.RuleCollectionGroups[0].Id
-        $getRg = Get-AzFirewallPolicyRuleGroup -ResourceId $rgId
+        $rgName = $getAzureFirewallPolicy.RuleCollectionGroups[0].Name
+        $getRg = Get-AzFirewallPolicyRuleCollectionGroup -ResourceId $rgName -AzureFirewallPolicy $getAzureFirewallPolicy
 
         Assert-AreEqual 3 @($getRg.RuleCollection).Count
 
-        $filterRule = $getRg.GetRuleCollectionByName($appRcName)
-        $appRule = $appRc.GetRuleCollectionByName($appRc2Name)
-        $natRc = $appRc.GetRuleCollectionByName($natRule1Name)
+        $filterRuleCollection1 = $getRg.GetRuleCollectionByName($appRcName)
+        $natRuleCollection = $appRc.GetRuleCollectionByName($natRule1Name)
 
         # Verify filter Rule1 
-        Assert-AreEqual $appRcName $filterRule.Name
-        Assert-AreEqual $appRcPriority $filterRule.Priority
-        Assert-AreEqual $appRcActionType $filterRule.Action.Type
-        Assert-AreEqual 2 $filterRule.Rules.Count
+        Assert-AreEqual $appRcName $filterRuleCollection1.Name
+        Assert-AreEqual $appRcPriority $filterRuleCollection1.Priority
+        Assert-AreEqual $appRcActionType $filterRuleCollection1.Action.Type
+        Assert-AreEqual 2 $filterRuleCollection1.Rules.Count
 
-        $appRule = $filterRule.GetRuleByName($appRule1Name)
+        $appRule = $filterRuleCollection1.GetRuleByName($appRule1Name)
         # Verify application rule 1
         Assert-AreEqual $appRule1Name $appRule.Name
         Assert-AreEqual $appRule1Desc $appRule.Description
@@ -176,10 +175,10 @@ function Test-AzureFirewallPolicyCRUD {
         Assert-AreEqual $appRule1Fqdn2 $appRule.TargetFqdns[1]
 
         # Verify NAT rule collection and NAT rule)
-        $natRule = $natRc.GetRuleByName($natRule1Name)
+        $natRule = $natRuleCollection.GetRuleByName($natRule1Name)
 
-        Assert-AreEqual $natRcName $natRc.Name
-        Assert-AreEqual $natRcPriority $natRc.Priority
+        Assert-AreEqual $natRcName $natRuleCollection.Name
+        Assert-AreEqual $natRcPriority $natRuleCollection.Priority
 
         Assert-AreEqual $natRule1Name $natRule.Name
         Assert-AreEqual $natRule1Desc $natRule.Description

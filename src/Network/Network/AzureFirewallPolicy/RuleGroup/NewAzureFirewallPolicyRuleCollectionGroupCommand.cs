@@ -28,7 +28,7 @@ using Newtonsoft.Json.Linq;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyRuleCollectionGroup", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicyRuleCollectionGroup))]
-    public class NewAzureFirewallPolicyRuleGroupCommand : AzureFirewallPolicyRuleCollectionGroupBaseCmdlet
+    public class NewAzureFirewallPolicyRuleCollectionGroupCommand : AzureFirewallPolicyRuleCollectionGroupBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -92,19 +92,12 @@ namespace Microsoft.Azure.Commands.Network
                 MissingMemberHandling = MissingMemberHandling.Ignore
             };
 
-            //string sample = System.IO.File.ReadAllText(@"sample.txt");
             string serializedObject = JsonConvert.SerializeObject(rcWrapper, settings);
-            WriteObject(serializedObject);
-            WriteObject("===================");
             var json = serializedObject.Replace("'", "\"");
-
-            WriteObject(json);
             var deserializedruleGroup = (MNM.FirewallPolicyRuleGroup)JsonConvert.DeserializeObject(
                                         json,
                                         typeof(MNM.FirewallPolicyRuleGroup),
                                         new JsonConverter[] { new Iso8601TimeSpanConverter(), new PolymorphicJsonCustomConverter<MNM.FirewallPolicyRule, MNM.FirewallPolicyRuleCondition>("ruleType", "ruleConditionType"), new TransformationJsonConverter() });
-            WriteObject("===================");
-            WriteObject(deserializedruleGroup);
             this.AzureFirewallPolicyRuleGroupClient.CreateOrUpdate(this.ResourceGroupName, this.AzureFirewallPolicy.Name, deserializedruleGroup.Name, deserializedruleGroup);
             WriteObject(rcWrapper);
         }

@@ -18,6 +18,8 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -64,6 +66,7 @@ namespace Microsoft.Azure.Commands.Network
             var azureFirewallPolicy = this.AzureFirewallPolicyClient.Get(resourceGroupName, name);
 
             var psAzureFirewall = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewallPolicy>(azureFirewallPolicy);
+            psAzureFirewall.RuleCollectionGroups = new List<Microsoft.Azure.Management.Network.Models.SubResource>(azureFirewallPolicy.RuleGroups);
             psAzureFirewall.ResourceGroupName = resourceGroupName;
             psAzureFirewall.Tag = TagsConversionHelper.CreateTagHashtable(azureFirewallPolicy.Tags);
 
