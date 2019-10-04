@@ -14,6 +14,7 @@ Creates a application gateway firewall policy.
 
 ```
 New-AzApplicationGatewayFirewallPolicy -Name <String> -ResourceGroupName <String> -Location <String>
+ -ManagedRule <PSApplicationGatewayFirewallPolicyManagedRules> -PolicySettings <PSApplicationGatewayFirewallPolicySettings>
  [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
