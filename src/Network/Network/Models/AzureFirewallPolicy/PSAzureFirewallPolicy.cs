@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ProvisioningState { get; set; }
 
-        public String[] RuleGroups { get; set; }
+        [JsonProperty("ruleGroups")]
+        public String[] RuleCollectionGroups { get; set; }
 
     }
 }
