@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Add new cmdlet Get-AzAvailableServiceAlias which can be called to get the aliases that can be used for Service Endpoint Policies.
 * Add support for ESP and AH protocols in network security rule configurations
     - Updated cmdlets:
         - Add-AzNetworkSecurityRuleConfig
