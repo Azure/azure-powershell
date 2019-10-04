@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2DataFlowDebugSessionPackage", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true)]
     [OutputType(typeof(void))]
-    [OutputType(typeof(string))]
+    [OutputType(typeof(bool))]
     public class AddAzureDataFactoryDataFlowDebugSessionDataFlowPackageCommand : DataFactoryDataFlowDebugSessionBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true,

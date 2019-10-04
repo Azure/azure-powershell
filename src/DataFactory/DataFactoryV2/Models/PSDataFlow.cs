@@ -14,6 +14,7 @@
 
 using System;
 using Microsoft.Azure.Management.DataFactory.Models;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 {
@@ -43,6 +44,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
             this.DataFactoryName = factoryName;
         }
 
+        [Ps1Xml(Label = "DataFlowName", Target = ViewControl.Table)]
         public override string Name
         {
             get
@@ -51,6 +53,25 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
             }
         }
 
+        [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table)]
+        public string RGName
+        {
+            get
+            {
+                return this.ResourceGroupName;
+            }
+        }
+
+        [Ps1Xml(Label = "DataFactoryName", Target = ViewControl.Table)]
+        public string DFName
+        {
+            get
+            {
+                return this.DataFactoryName;
+            }
+        }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public DataFlow Properties
         {
             get
