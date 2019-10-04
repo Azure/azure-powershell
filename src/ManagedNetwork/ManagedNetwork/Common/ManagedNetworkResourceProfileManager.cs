@@ -93,6 +93,9 @@ namespace Microsoft.Azure.Commands.ManagedNetwork.Common
                     cfg.CreateMap<SDK.ManagedNetworkPeeringPolicy, PS.PSManagedNetworkPeeringPolicy>();
                     cfg.CreateMap<PS.PSManagedNetworkPeeringPolicy, SDK.ManagedNetworkPeeringPolicy>();
 
+                    cfg.CreateMap<SDK.ManagedNetworkPeeringPolicyProperties, PS.PSManagedNetworkPeeringPolicyProperties>();
+                    cfg.CreateMap<PS.PSManagedNetworkPeeringPolicyProperties, SDK.ManagedNetworkPeeringPolicyProperties>();
+
                 });
             mapper = config.CreateMapper();
         }

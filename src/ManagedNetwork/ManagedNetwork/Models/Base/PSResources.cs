@@ -34,5 +34,10 @@ namespace Microsoft.Azure.Commands.ManagedNetwork.Models
         /// Gets or sets the Resource type
         /// </summary>
         public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Resource Location
+        /// </summary>
+        public string Location { get; set; }
     }
 }
