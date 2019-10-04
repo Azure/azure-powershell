@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2DataFlowDebugSession", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true)]
     [OutputType(typeof(void))]
-    [OutputType(typeof(string))]
+    [OutputType(typeof(bool))]
     public class StopAzureDataFactoryDataFlowDebugSessionCommand : DataFactoryDataFlowDebugSessionBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,

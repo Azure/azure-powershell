@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2DataFlow", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true)]
     [OutputType(typeof(void))]
-    [OutputType(typeof(string))]
+    [OutputType(typeof(bool))]
     public class RemoveAzureDataFactoryDataFlowCommand : DataFactoryContextActionBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true,

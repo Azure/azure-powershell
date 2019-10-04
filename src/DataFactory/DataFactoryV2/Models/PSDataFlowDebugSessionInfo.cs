@@ -14,6 +14,7 @@
 
 using System;
 using Microsoft.Azure.Management.DataFactory.Models;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 {
@@ -31,14 +32,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
             this._debugSessionInfo = debugSession ?? throw new ArgumentNullException("debugSession");
         }
 
-        public string DataFlowName
-        {
-            get
-            {
-                return this._debugSessionInfo.DataFlowName;
-            }
-        }
-
+        [Ps1Xml(Target = ViewControl.Table)]
         public string SessionId
         {
             get
@@ -47,6 +41,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
             }
         }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ComputeType
         {
             get
@@ -55,30 +50,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
             }
         }
 
-        public string IntegrationRuntimeName
-        {
-            get
-            {
-                return this._debugSessionInfo.IntegrationRuntimeName;
-            }
-        }
-
-        public string StartTime
-        {
-            get
-            {
-                return this._debugSessionInfo.StartTime;
-            }
-        }
-
-        public string LastActivityTime
-        {
-            get
-            {
-                return this._debugSessionInfo.LastActivityTime;
-            }
-        }
-
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? CoreCount
         {
             get
@@ -87,11 +59,48 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
             }
         }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string StartTime
+        {
+            get
+            {
+                return this._debugSessionInfo.StartTime;
+            }
+        }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string LastActivityTime
+        {
+            get
+            {
+                return this._debugSessionInfo.LastActivityTime;
+            }
+        }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? TimeToLiveInMinutes
         {
             get
             {
                 return this._debugSessionInfo.TimeToLiveInMinutes;
+            }
+        }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string IntegrationRuntimeName
+        {
+            get
+            {
+                return this._debugSessionInfo.IntegrationRuntimeName;
+            }
+        }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string DataFlowName
+        {
+            get
+            {
+                return this._debugSessionInfo.DataFlowName;
             }
         }
     }

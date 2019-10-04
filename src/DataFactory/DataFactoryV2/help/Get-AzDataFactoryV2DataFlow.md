@@ -40,20 +40,11 @@ If you do not specify a name, this cmdlet gets information about all the data fl
 ```powershell
 PS C:\> Get-AzDataFactoryV2DataFlow -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
 
-DataFlowName      : TaxiDemo1
-ResourceGroupName : adf
-DataFactoryName   : WikiADF
-Properties        : Microsoft.Azure.Management.DataFactory.Models.MappingDataFlow
-
-DataFlowName      : dataflow1
-ResourceGroupName : adf
-DataFactoryName   : WikiADF
-Properties        : Microsoft.Azure.Management.DataFactory.Models.MappingDataFlow
-
-DataFlowName      : dataflow3
-ResourceGroupName : adf
-DataFactoryName   : WikiADF
-Properties        : Microsoft.Azure.Management.DataFactory.Models.MappingDataFlow
+DataFlowName           DataFactoryName ResourceGroupName                                                    Properties
+------------           --------------- -----------------                                                    ----------
+TaxiDemo1                      WikiADF               adf Microsoft.Azure.Management.DataFactory.Models.MappingDataFlow
+dataflow1                      WikiADF               adf Microsoft.Azure.Management.DataFactory.Models.MappingDataFlow
+dataflow3                      WikiADF               adf Microsoft.Azure.Management.DataFactory.Models.MappingDataFlow
 ```
 
 This command gets information about all data flows in the data factory named WikiADF.
@@ -62,10 +53,9 @@ This command gets information about all data flows in the data factory named Wik
 ```powershell
 PS C:\> Get-AzDataFactoryV2DataFlow -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "dataflow1"
 
-DataFlowName      : dataflow1
-ResourceGroupName : adf
-DataFactoryName   : WikiADF
-Properties        : Microsoft.Azure.Management.DataFactory.Models.MappingDataFlow
+DataFlowName           DataFactoryName ResourceGroupName                                                    Properties
+------------           --------------- -----------------                                                    ----------
+TaxiDemo1                      WikiADF               adf Microsoft.Azure.Management.DataFactory.Models.MappingDataFlow
 ```
 
 This command gets information about the data flow named dataflow1 in the data factory named WikiADF.
