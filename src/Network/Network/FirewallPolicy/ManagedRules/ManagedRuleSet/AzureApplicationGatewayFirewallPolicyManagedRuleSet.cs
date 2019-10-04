@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network
         Mandatory = false,
         HelpMessage = "Rule Group Overrides.")]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride[] RuleGroupOverrides { get; set; }
+        public PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride[] RuleGroupOverride { get; set; }
 
         public override void ExecuteCmdlet()
         {

@@ -25,13 +25,13 @@ namespace Microsoft.Azure.Commands.Network
           Mandatory = true,
           HelpMessage = "List of Managed ruleSets.")]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayFirewallPolicyManagedRuleSet[] ManagedRuleSets { get; set; }
+        public PSApplicationGatewayFirewallPolicyManagedRuleSet[] ManagedRuleSet { get; set; }
         
         [Parameter(
           Mandatory = false,
           HelpMessage = "List of Exclusion Entry.")]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayFirewallPolicyExclusion[] Exclusions { get; set; }
+        public PSApplicationGatewayFirewallPolicyExclusion[] Exclusion { get; set; }
 
         public override void ExecuteCmdlet()
         {

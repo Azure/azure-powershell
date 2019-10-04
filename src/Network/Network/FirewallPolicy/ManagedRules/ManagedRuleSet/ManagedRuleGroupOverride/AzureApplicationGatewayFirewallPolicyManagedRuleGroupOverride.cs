@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "List of Rules.")]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayFirewallPolicyManagedRuleOverride[] Rules { get; set; }
+        public PSApplicationGatewayFirewallPolicyManagedRuleOverride[] Rule { get; set; }
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
