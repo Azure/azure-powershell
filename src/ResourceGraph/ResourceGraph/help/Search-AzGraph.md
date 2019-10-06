@@ -57,15 +57,24 @@ A complex query on resources featuring field selection, filtering and summarizin
 
 ### Example 3
 ```powershell
-PS C:\> Search-AzGraph -Query 'where type =~ "Microsoft.Compute/virtualMachines"| where properties.storageProfile.osDisk.managedDisk == "" | project name, resourceGroup, subscriptionDisplayName' -Include DisplayName
+PS C:\> Search-AzGraph -Query -Include DisplayName 'where type =~ "Microsoft.Compute/virtualMachines"| where properties.storageProfile.osDisk.managedDisk == "" | project name, resourceGroup, subscriptionDisplayName'
 
 name         resourceGroup      subscriptionDisplayName
 ----         -------------      -----------------------
 ContosoVM    RG-Contoso         Contoso Production Subscription                                               
 
 ```
-
 A query featuring all virtual machines which are not using Managed Disks and includes subscription displayname.
+
+### Example 4
+```powershell
+PS C:\> Search-AzGraph -Query -Include DisplayName 'summarize count() by tenantDisplayName, subscriptionDisplayName'
+
+tenantDisplayName   subscriptionDisplayName              count_
+-----------------   -----------------------              ------
+ContosoTenant       Contoso Production Subscription      118                                           
+```
+A query displaying the count of resources by tenant and subscription displayname.
 
 ## PARAMETERS
 
@@ -135,20 +144,6 @@ Default value is 100.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-### -Include
-Set to 'DisplayNames' to add subscriptionDisplayName and tenantDisplayName to the results.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
