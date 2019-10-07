@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
             return new PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride()
             {
                 RuleGroupName = this.RuleGroupName,
-                Rules = this.Rules?.ToList()
+                Rules = this.Rule?.ToList()
             };
         }
     }
