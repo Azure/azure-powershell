@@ -1255,7 +1255,7 @@ function Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove
 .SYNOPSIS
 Test the Set-AzVMDiskEncryptionExtension single pass enable and disable scenario with non default parameters
 #>
-function Test-AzureDiskEncryptionExtensionSinglePassEnableAndDisableWithNonDefaultParams
+function Test-AzureDiskEncryptionExtensionNonDefaultParams
 {
 	$resourceGroupName = Get-ComputeTestResourceName
 	try
