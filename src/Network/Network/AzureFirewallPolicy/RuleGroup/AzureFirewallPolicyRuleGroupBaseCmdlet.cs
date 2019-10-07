@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
-        public PSAzureFirewallPolicyRuleCollectionGroup GetAzureFirewallPolicyRuleGroup(string resourceGroupName, string firewallPolicyName, string name)
+        public PSAzureFirewallPolicyRuleCollectionGroupWrapper GetAzureFirewallPolicyRuleGroup(string resourceGroupName, string firewallPolicyName, string name)
         {
             var settings = new JsonSerializerSettings
             {
@@ -48,15 +48,50 @@ namespace Microsoft.Azure.Commands.Network
                 MissingMemberHandling = MissingMemberHandling.Ignore
             };
             var ruleGroup = this.AzureFirewallPolicyRuleGroupClient.Get(resourceGroupName, firewallPolicyName, name);
-            string serializedObject = JsonConvert.SerializeObject(ruleGroup, settings);
-            var json = serializedObject.Replace("'", "\"");
-            var deserializedruleGroup = (PSAzureFirewallPolicyRuleCollectionGroup)JsonConvert.DeserializeObject(
-                                        json.ToString(),
-                                        typeof(PSAzureFirewallPolicyRuleCollectionGroup),
-                                        new JsonConverter[] { new Iso8601TimeSpanConverter(), new PolymorphicJsonCustomConverter<PSAzureFirewallPolicyBaseRuleCollection, PSAzureFirewallPolicyRule>("ruleType", "ruleConditionType"), new TransformationJsonConverter() });
 
+            var ruleCollectionGroup = new PSAzureFirewallPolicyRuleCollectionGroup();
+            ruleCollectionGroup.ruleCollection = new List<PSAzureFirewallPolicyBaseRuleCollection>();
 
-            return deserializedruleGroup;
+            for (int i = 0; i < ruleGroup.Rules.Count; i++)
+            {
+                var ruleCollection = new PSAzureFirewallPolicyBaseRuleCollection();
+                if (ruleGroup.Rules[i] is MNM.FirewallPolicyFilterRule)
+                {
+                    MNM.FirewallPolicyFilterRule filterRule = (MNM.FirewallPolicyFilterRule)ruleGroup.Rules[i];
+                    PSAzureFirewallPolicyFilterRuleCollection filterRuleCollection = JsonConvert.DeserializeObject<PSAzureFirewallPolicyFilterRuleCollection>(JsonConvert.SerializeObject(ruleGroup.Rules[i]));
+                    ruleCollection.ruleCollectionType = "FirewallPolicyFilterRule";
+                    filterRuleCollection.rules = new List<PSAzureFirewallPolicyRule>();
+                    for (int j = 0; j < filterRule.RuleConditions.Count; j++)
+                    {
+                        if (filterRule.RuleConditions[j] is MNM.ApplicationRuleCondition)
+                        {
+                            PSAzureFirewallPolicyApplicationRule rule = JsonConvert.DeserializeObject<PSAzureFirewallPolicyApplicationRule>(JsonConvert.SerializeObject(filterRule.RuleConditions[j]));
+                            filterRuleCollection.rules.Add(rule);
+                        }
+                        else
+                        {
+                            PSAzureFirewallPolicyNetworkRule rule = JsonConvert.DeserializeObject<PSAzureFirewallPolicyNetworkRule>(JsonConvert.SerializeObject(filterRule.RuleConditions[j]));
+                            filterRuleCollection.rules.Add(rule);
+                        }
+                    }
+                    ruleCollectionGroup.ruleCollection.Add(filterRuleCollection);
+                }
+                else
+                {
+                    MNM.FirewallPolicyNatRule natRule = (MNM.FirewallPolicyNatRule)ruleGroup.Rules[i];
+                    PSAzureFirewallPolicyNatRuleCollection natRuleCollection = JsonConvert.DeserializeObject<PSAzureFirewallPolicyNatRuleCollection>(JsonConvert.SerializeObject(ruleGroup.Rules[i]));
+                    ruleCollection.ruleCollectionType = "FirewallPolicyNatRule";
+                    natRuleCollection.rule = JsonConvert.DeserializeObject<PSAzureFirewallPolicyNetworkRule>(JsonConvert.SerializeObject(natRule.RuleCondition));
+                    ruleCollectionGroup.ruleCollection.Add(natRuleCollection);
+                }
+            }
+
+            var ruleCollectionGroupWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper();
+            ruleCollectionGroup.priority = (uint)ruleGroup.Priority;
+            ruleCollectionGroupWrapper.properties = ruleCollectionGroup;
+            ruleCollectionGroupWrapper.name = ruleGroup.Name;
+
+            return ruleCollectionGroupWrapper;
         }
     }
 }

@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network
             var networkRule = new PSAzureFirewallPolicyNetworkRule
             {
                 name = this.Name,
-                ipProtocols = this.Protocols?.ToList(),
+                protocols = this.Protocols?.ToList(),
                 sourceAddresses = this.SourceAddress?.ToList(),
                 destinationAddresses = this.DestinationAddress?.ToList(),
                 destinationPorts = this.DestinationPort?.ToList(),

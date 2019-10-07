@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Parameter(
                    Mandatory = true)]
         public string name { get; set; }
-        public string location { get; set; }
+        
         public PSAzureFirewallPolicyRuleCollectionGroup properties { get; set; }
 
     }

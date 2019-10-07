@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSAzureFirewallPolicyNetworkRule : PSAzureFirewallPolicyRule
     {
-        public List<string> ipProtocols { get; set; }
+        [JsonProperty("ipProtocols")]
+        public List<string> protocols { get; set; }
 
         public List<string> sourceAddresses { get; set; }
 
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string ProtocolsText
         {
-            get { return JsonConvert.SerializeObject(ipProtocols, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(protocols, Formatting.Indented); }
         }
 
         [JsonIgnore]
@@ -54,7 +55,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public void AddProtocol(string protocolType)
         {
-            (ipProtocols ?? (ipProtocols = new List<string>())).Add(AzureFirewallNetworkRuleProtocolHelper.MapUserInputToNetworkRuleProtocol(protocolType));
+            (protocols ?? (protocols = new List<string>())).Add(AzureFirewallNetworkRuleProtocolHelper.MapUserInputToNetworkRuleProtocol(protocolType));
         }
     }
 }
