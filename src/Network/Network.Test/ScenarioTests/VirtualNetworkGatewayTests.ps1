@@ -601,7 +601,7 @@ function Test-VirtualNetworkGatewayIkeV2
 		$vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
       
 		# Create & Get IkeV2 + SSTP virtualnetworkgateway
-		New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert -CustomRoute 192.168.0.0/24
+		New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert -CustomRoute 192.168.0.0/24 -VpnClientProtocol "SSTP","IkeV2"
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
 		Assert-AreEqual "VpnGw1" $actual.Sku.Tier
 		$protocols = $actual.VpnClientConfiguration.VpnClientProtocols

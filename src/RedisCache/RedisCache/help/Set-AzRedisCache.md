@@ -190,6 +190,7 @@ Valid values are:
 - P2
 - P3
 - P4
+- P5
 - C0
 - C1
 - C2
@@ -204,6 +205,7 @@ Valid values are:
 - 13GB
 - 26GB
 - 53GB
+- 120GB
 The default value is 1GB or C1.
 
 ```yaml

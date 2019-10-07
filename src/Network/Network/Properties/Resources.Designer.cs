@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -852,6 +852,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update request for VpnConnection contains deprecated property. Please use corresponding VpnSiteLinkConnection property instead..
+        /// </summary>
+        internal static string VpnConnectionPropertyIsDeprecated {
+            get {
+                return ResourceManager.GetString("VpnConnectionPropertyIsDeprecated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The VpnGateway to modify could not be found.
         /// </summary>
         internal static string VpnGatewayNotFound {
@@ -870,6 +879,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A valid VpnSiteLink attached to a VpnSite is required to create a VpnSiteLinkConnection.
+        /// </summary>
+        internal static string VpnSiteLinkRequiredForVpnSiteLinkConnection {
+            get {
+                return ResourceManager.GetString("VpnSiteLinkRequiredForVpnSiteLinkConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A list of connected VpnSites is required to generate a vpnSites configuration..
         /// </summary>
         internal static string VpnSiteListRequiredForVpnSiteConfiguration {
@@ -884,6 +902,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string VpnSiteNotFound {
             get {
                 return ResourceManager.GetString("VpnSiteNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update request for VpnSite contains deprecated property. Please use corresponding VpnSiteLink property instead..
+        /// </summary>
+        internal static string VpnSitePropertyIsDeprecated {
+            get {
+                return ResourceManager.GetString("VpnSitePropertyIsDeprecated", resourceCulture);
             }
         }
         

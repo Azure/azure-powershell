@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
 
     [Cmdlet("Update",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnSite",
-        DefaultParameterSetName = CortexParameterSetNames.ByVpnSiteName + "NoVirtualWanUpdate",
+        DefaultParameterSetName = CortexParameterSetNames.ByVpnSiteName + CortexParameterSetNames.NoVirtualWanUpdate,
         SupportsShouldProcess = true),
         OutputType(typeof(PSVpnSite))]
     public class UpdateAzureRmVpnSiteCommand : VpnSiteBaseCmdlet
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The resource group name.")]
         [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByVpnSiteName + "NoVirtualWanUpdate",
+            ParameterSetName = CortexParameterSetNames.ByVpnSiteName + CortexParameterSetNames.NoVirtualWanUpdate,
             Mandatory = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The resource name.")]
         [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByVpnSiteName + "NoVirtualWanUpdate",
+            ParameterSetName = CortexParameterSetNames.ByVpnSiteName + CortexParameterSetNames.NoVirtualWanUpdate,
             Mandatory = true,
             HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/vpnSites", "ResourceGroupName")]
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The vpn site object to be modified")]
         [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByVpnSiteObject + "NoVirtualWanUpdate",
+            ParameterSetName = CortexParameterSetNames.ByVpnSiteObject + CortexParameterSetNames.NoVirtualWanUpdate,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The vpn site object to be modified")]
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure resource ID for the vpn site.")]
         [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByVpnSiteResourceId + "NoVirtualWanUpdate",
+            ParameterSetName = CortexParameterSetNames.ByVpnSiteResourceId + CortexParameterSetNames.NoVirtualWanUpdate,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure resource ID for the vpn site.")]
@@ -226,6 +226,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The list of VpnSiteLinks that this VpnSite have.")]
+        public PSVpnSiteLink[] VpnSiteLink { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -264,7 +269,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             //// Resolve the virtual wan, if specified
-            if (!ParameterSetName.Contains("NoVirtualWanUpdate"))
+            if (!ParameterSetName.Contains(CortexParameterSetNames.NoVirtualWanUpdate))
             {
                 if (ParameterSetName.Contains(CortexParameterSetNames.ByVirtualWanObject))
                 {
@@ -288,6 +293,15 @@ namespace Microsoft.Azure.Commands.Network
                     }
 
                     vpnSiteToUpdate.VirtualWan = new PSResourceId() { Id = resolvedVirtualWan.Id };
+                }
+            }
+
+            if (vpnSiteToUpdate.VpnSiteLinks != null && vpnSiteToUpdate.VpnSiteLinks.Any())
+            {
+                //// Use only link properties instead of Site properties.
+                if (this.BgpAsn > 0 || this.BgpPeeringWeight > 0 || !string.IsNullOrWhiteSpace(this.BgpPeeringAddress) || this.LinkSpeedInMbps > 0 || !string.IsNullOrWhiteSpace(this.IpAddress))
+                {
+                    throw new PSArgumentException(Properties.Resources.VpnSitePropertyIsDeprecated);
                 }
             }
 
@@ -349,6 +363,13 @@ namespace Microsoft.Azure.Commands.Network
                 }
                 
                 vpnSiteToUpdate.AddressSpace.AddressPrefixes.AddRange(this.AddressSpace);
+            }
+
+            //// VpnSiteLinks
+            if (this.VpnSiteLink != null)
+            {
+                vpnSiteToUpdate.VpnSiteLinks = new List<PSVpnSiteLink>();
+                vpnSiteToUpdate.VpnSiteLinks.AddRange(this.VpnSiteLink);
             }
 
             ConfirmAction(

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.2
+* Call out breaking changes
+
 ## Version 2.0.1
 * Fixed miscellaneous typos across module
 
