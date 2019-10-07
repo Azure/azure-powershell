@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string ThreatIntelMode { get; set; }
 
-        public string BasePolicy { get; set; }
+        public Microsoft.Azure.Management.Network.Models.SubResource BasePolicy { get; set; }
 
         public string ProvisioningState { get; set; }
 
