@@ -8,7 +8,7 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.HealthcareApis" Version="1.0.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.HealthcareApis" Version="1.0.2" />
   </ItemGroup>
 
 </Project>

@@ -190,7 +190,7 @@
     <value>Unregister Storage Sync Server for Storage Sync Service '{0}' and all content in it</value>
   </data>
   <data name="ResetCertificateMessageFormat1" xml:space="preserve">
-    <value>Starting rollover certificate for ServerId: {serverId}</value>
+    <value>Starting rollover certificate for ServerId: {0}</value>
   </data>
   <data name="ResetCertificateMessageFormat2" xml:space="preserve">
     <value>Primary Certificate Thumbprint: {0} Secondary Certificate Thumbprint: {1}</value>

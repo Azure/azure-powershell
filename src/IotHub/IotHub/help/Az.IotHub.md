@@ -20,6 +20,9 @@ Creates an eventhub consumer group.
 ### [Add-AzIotHubKey](Add-AzIotHubKey.md)
 Creates an IotHub Key.
 
+### [Add-AzIotHubMessageEnrichment](Add-AzIotHubMessageEnrichment.md)
+Creates a message enrichment for chosen endpoints in your IoT Hub.
+
 ### [Add-AzIotHubRoute](Add-AzIotHubRoute.md)
 Create a route in IoT Hub
 
@@ -46,6 +49,9 @@ Gets the information about an IotHub job.
 
 ### [Get-AzIotHubKey](Get-AzIotHubKey.md)
 Gets an IotHub Key.
+
+### [Get-AzIotHubMessageEnrichment](Get-AzIotHubMessageEnrichment.md)
+Lists all message enrichments or a particular message enrichment for your IoT Hub.
 
 ### [Get-AzIotHubQuotaMetric](Get-AzIotHubQuotaMetric.md)
 Gets the Quota Metrics for an IotHub.
@@ -89,6 +95,9 @@ Deletes an eventhub consumergroup.
 ### [Remove-AzIotHubKey](Remove-AzIotHubKey.md)
 Removes an IotHub Key.
 
+### [Remove-AzIotHubMessageEnrichment](Remove-AzIotHubMessageEnrichment.md)
+Delete a message enrichment in your IoT hub.
+
 ### [Remove-AzIotHubRoute](Remove-AzIotHubRoute.md)
 Delete a route in IoT Hub
 
@@ -97,6 +106,9 @@ Delete an endpoint for your IoT Hub
 
 ### [Set-AzIotHub](Set-AzIotHub.md)
 Updates the properties of an IotHub.
+
+### [Set-AzIotHubMessageEnrichment](Set-AzIotHubMessageEnrichment.md)
+Update a message enrichment in your IoT hub.
 
 ### [Set-AzIotHubRoute](Set-AzIotHubRoute.md)
 Update a route in IoT Hub
