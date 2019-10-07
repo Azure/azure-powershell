@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Commands.Network
         {
             return new PSApplicationGatewayFirewallPolicyManagedRules()
             {
-                Exclusions = this.Exclusions?.ToList(),
-                ManagedRuleSets = this.ManagedRuleSets?.ToList()
+                Exclusions = this.Exclusion?.ToList(),
+                ManagedRuleSets = this.ManagedRuleSet?.ToList()
             };
         }
     }
