@@ -16,9 +16,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <None Update="AzureFirewallPolicy\RuleGroup\sample.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="AzureRmNetworkStartup.ps1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
