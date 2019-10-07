@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzFirewallPolicyNatRule
+# New-AzFirewallPolicyNatRuleCollection
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -13,8 +13,8 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AzFirewallPolicyNatRule -Name <String> -Priority <UInt32>
- -RuleConditions <PSAzureFirewallPolicyNetworkRuleCondition[]> -ActionType <String> -TranslatedAddress <String>
+New-AzFirewallPolicyNatRuleCollection -Name <String> -Priority <UInt32>
+ -Rule <PSAzureFirewallPolicyNetworkRule> -ActionType <String> -TranslatedAddress <String>
  -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,12 +23,12 @@ New-AzFirewallPolicyNatRule -Name <String> -Priority <UInt32>
 
 ## EXAMPLES
 
-### 1. Create a Nat Rule
+### Example 1
 ```powershell
-PS C:\> New-AzFirewallPolicyNatRule -Name NatRule1 -Priority 200 -RuleCondition $netRuleCondition1 -ActionType "Dnat" -TranslatedAddress "192.168.0.1" -TranslatedPort "100"
+PS C:\> New-AzFirewallPolicyNatRuleCollection -Name NatRule1 -Priority 200 -Rule $netRule1 -ActionType "Dnat" -TranslatedAddress "192.168.0.1" -TranslatedPort "100"
 ```
 
-This example creates a nat rule with a network rule condition
+This example creates a nat rule collection with a network rule
 
 ## PARAMETERS
 
@@ -36,7 +36,7 @@ This example creates a nat rule with a network rule condition
 The type of the rule action
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Dnat
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 The name of the Network Rule Collection
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 The priority of the rule collection
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -93,11 +93,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleConditions
+### -Rule
 The list of network rules
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyNetworkRuleCondition[]
+Type: PSAzureFirewallPolicyNetworkRule
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 The translated address for this NAT rule
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 The translated port for this NAT rule
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -158,7 +158,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

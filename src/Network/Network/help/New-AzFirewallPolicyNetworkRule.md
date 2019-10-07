@@ -5,24 +5,17 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzFirewallPolicyApplicationRuleCondition
+# New-AzFirewallPolicyNetworkRule
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
 
 ## SYNTAX
 
-### TargetFqdn (Default)
 ```
-New-AzFirewallPolicyApplicationRuleCondition -Name <String> [-Description <String>] [-SourceAddress <String[]>]
- -TargetFqdns <String[]> -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### FqdnTag
-```
-New-AzFirewallPolicyApplicationRuleCondition -Name <String> [-Description <String>] [-SourceAddress <String[]>]
- -FqdnTags <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzFirewallPolicyNetworkRule -Name <String> [-Description <String>] -SourceAddress <String[]>
+ -DestinationAddress <String[]> -DestinationPort <String[]> -Protocols <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,12 +23,12 @@ New-AzFirewallPolicyApplicationRuleCondition -Name <String> [-Description <Strin
 
 ## EXAMPLES
 
-### 1. Create an application rule condition
+### Example 1
 ```powershell
-PS C:\> New-AzFirewallPolicyApplicationRuleCondition -Name AR1 -SourceAddress "192.168.0.0/16" -Protocol "http:80","https:443" -TargetFqdn "*.ro", "*.com"
+PS C:\> New-AzFirewallPolicyNetworkRule -Name NRC1 -Protocol "TCP" -SourceAddress "192.168.0.0/16" -DestinationAddress * -DestinationPort *
 ```
 
-This example creates an application rule condition with the source address, protocol and the target fqdns.
+This example creates an network rule with the source address, protocol , destination address and destination port
 
 ## PARAMETERS
 
@@ -43,7 +36,7 @@ This example creates an application rule condition with the source address, prot
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -58,7 +51,7 @@ Accept wildcard characters: False
 The description of the rule
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -69,26 +62,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FqdnTags
-The FQDN Tags of the rule
+### -DestinationAddress
+The destination addresses of the rule
 
 ```yaml
-Type: System.String[]
-Parameter Sets: FqdnTag
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the Application Rule
-
-```yaml
-Type: System.String
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -99,13 +77,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Protocol
+### -DestinationPort
+The destination ports of the rule
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the Network Rule
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Protocols
 The protocols of the rule
 
 ```yaml
-Type: System.String[]
-Parameter Sets: TargetFqdn
+Type: String[]
+Parameter Sets: (All)
 Aliases:
+Accepted values: Any, TCP, UDP, ICMP
 
 Required: True
 Position: Named
@@ -118,23 +127,8 @@ Accept wildcard characters: False
 The source addresses of the rule
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TargetFqdns
-The target FQDNs of the rule
-
-```yaml
-Type: System.String[]
-Parameter Sets: TargetFqdn
 Aliases:
 
 Required: True
@@ -148,7 +142,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -164,7 +158,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -184,7 +178,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyApplicationRuleCondition
+### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRule
 
 ## NOTES
 

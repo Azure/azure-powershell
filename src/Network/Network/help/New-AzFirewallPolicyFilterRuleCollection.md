@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzFirewallPolicyNetworkRuleCondition
+# New-AzFirewallPolicyFilterRuleCollection
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -13,9 +13,8 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AzFirewallPolicyNetworkRuleCondition -Name <String> [-Description <String>] -SourceAddresses <String[]>
- -DestinationAddresses <String[]> -DestinationPorts <String[]> -Protocols <String[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzFirewallPolicyFilterRuleCollection -Name <String> -Priority <UInt32> -Rule <PSAzureFirewallPolicyRule[]>
+ -ActionType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,20 +22,36 @@ New-AzFirewallPolicyNetworkRuleCondition -Name <String> [-Description <String>] 
 
 ## EXAMPLES
 
-### 1. Create an application rule condition
+### Example 1
 ```powershell
-PS C:\> New-AzFirewallPolicyNetworkRuleCondition -Name NRC1 -Protocol "TCP" -SourceAddress "192.168.0.0/16" -DestinationAddress * -DestinationPort *
+PS C:\> New-AzFirewallPolicyFilterRuleCollection -Name FR1 -Priority 400 -Rule $appRule1 ,$appRule2 -ActionType "Allow"
 ```
 
-This example creates an application rule condition with the source address, protocol , destination address and destination port
+This example creates a Filter rule with 2 rule conditions
 
 ## PARAMETERS
+
+### -ActionType
+The action of the rule collection
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Allow, Deny
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -47,56 +62,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-The description of the rule
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DestinationAddresses
-The destination addresses of the rule
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DestinationPorts
-The destination ports of the rule
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-The name of the Network Rule
+The name of the Application Rule Collection
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -107,14 +77,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Protocols
-The protocols of the rule
+### -Priority
+The priority of the rule collection
 
 ```yaml
-Type: System.String[]
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
-Accepted values: Any, TCP, UDP, ICMP
 
 Required: True
 Position: Named
@@ -123,11 +92,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceAddresses
-The source addresses of the rule
+### -Rule
+The list of application rules
 
 ```yaml
-Type: System.String[]
+Type: PSAzureFirewallPolicyRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +111,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -158,7 +127,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -178,7 +147,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRule
+### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyRuleCollectionGroup
 
 ## NOTES
 

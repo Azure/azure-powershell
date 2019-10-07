@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzFirewallPolicyFilterRule
+# New-AzFirewallPolicyRuleCollectionGroup
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -13,9 +13,10 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AzFirewallPolicyFilterRule -Name <String> -Priority <UInt32>
- -RuleConditions <PSAzureFirewallPolicyRuleCondition[]> -ActionType <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzFirewallPolicyRuleCollectionGroup -Name <String> -Priority <UInt32>
+ -RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]> -ResourceGroupName <String>
+ -AzureFirewallPolicy <PSAzureFirewallPolicy> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,28 +24,27 @@ New-AzFirewallPolicyFilterRule -Name <String> -Priority <UInt32>
 
 ## EXAMPLES
 
-### 1. Create a Filter Rule
+### Example 1
 ```powershell
-PS C:\> New-AzFirewallPolicyFilterRule -Name FR1 -Priority 400 -RuleCondition $appRuleCondition1 ,$appRuleCondition2 -ActionType "Allow"
+PS C:\> New-AzFirewallPolicyRuleCollectionGroup -Name rg1 -ResourceGroupName TestRg -Location westus -Priority 200 -RuleCollection $filterRule1 -AzureFirewallPolicy $fp
 ```
 
-This example creates a Filter rule with 2 rule conditions
+This example creates a rule collection group in the firewall policy $fp
 
 ## PARAMETERS
 
-### -ActionType
-The action of the rule collection
+### -AzureFirewallPolicy
+Firewall Policy.
 
 ```yaml
-Type: System.String
+Type: PSAzureFirewallPolicy
 Parameter Sets: (All)
 Aliases:
-Accepted values: Allow, Deny
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -64,10 +64,10 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Application Rule Collection
+The name of the Rule Group
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -79,10 +79,10 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-The priority of the rule collection
+The priority of the rule group
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -93,11 +93,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleConditions
-The list of application rules
+### -ResourceGroupName
+The resource group name.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyRuleCondition[]
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RuleCollection
+The list of rules
+
+```yaml
+Type: PSAzureFirewallPolicyBaseRuleCollection[]
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +127,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -128,7 +143,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -144,11 +159,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+
+### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyRuleGroup
+### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyRuleCollectionGroup
 
 ## NOTES
 
