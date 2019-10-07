@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Network
             firewallPolicy.ResourceGroupName = this.ResourceGroupName;
             firewallPolicy.Location = this.Location;
             firewallPolicy.CustomRules = this.CustomRule?.ToList();
-            firewallPolicy.ManagedRules = this.ManagedRules;
+            firewallPolicy.ManagedRules = this.ManagedRule;
             firewallPolicy.PolicySettings = this.PolicySettings;
 
             // Map to the sdk object
