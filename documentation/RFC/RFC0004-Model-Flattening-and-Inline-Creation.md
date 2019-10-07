@@ -32,7 +32,7 @@ Before calling `New-AzResource`, you would need to create your own hashtable for
 $sku = @{Name= "Standard_LRS"; Tier= "Standard" }
 New-AzResource `
     -Name storageskuhash `
-    -ResourceGroupName skurg `
+    -ResourceGroupName myResourceGroup `
     -ResourceType "Microsoft.Storage/storageAccounts" `
     -Sku $sku `
     -Kind "Storage" `
@@ -64,7 +64,7 @@ With the flattened parameters, the new script would look like the following:
 ```powershell
 New-AzResource `
     -Name storagesku `
-    -ResourceGroupName skurg `
+    -ResourceGroupName myResourceGroup `
     -ProviderNamespace Microsoft.Storage `
     -ResourceType "storageAccounts" `
     -SkuName "Standard_LRS" `
@@ -126,7 +126,7 @@ Now create the subnet directly and you're done:
 
 ```powershell
 New-AzVnetSubnet -Name MySubnet `
-    -ResourceGroupName MyResourceGroup `
+    -ResourceGroupName myResourceGroup `
     -VnetName myVirtualNetwork `
     -AddressPrefix 10.0.2.0/24
 ```
@@ -143,7 +143,7 @@ $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
     -Name myBackendSubnet `
     -AddressPrefix 10.0.2.0/24
 New-AzVirtualNetwork `
-    -ResourceGroupName myResourceGroupAG `
+    -ResourceGroupName myResourceGroup `
     -Location eastus `
     -Name myVNet `
     -AddressPrefix 10.0.0.0/16 `
@@ -158,7 +158,7 @@ $agSubnetConfig = @{ Name= "myAGSubnet"; PropertiesAddressPrefix = "10.0.1.0/24"
 $backendSubnetConfig = @{ Name= "myBackendSubnet"; PropertiesAddressPrefix = "10.0.2.0/24" }
 $vn1 = New-AzVirtualNetwork `
     -Name myvnet `
-    -ResourceGroupName myrg `
+    -ResourceGroupName myResourceGroup `
     -location centralus `
     -AddressPrefix 10.0.0.0/16 `
     -Subnet $agSubnetConfig, $backendSubnetConfig
