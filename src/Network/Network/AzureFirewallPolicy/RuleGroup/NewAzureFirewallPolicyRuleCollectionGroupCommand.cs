@@ -56,13 +56,6 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "location.")]
-        [ValidateNotNullOrEmpty]
-        public virtual string Location { get; set; }
-
-        [Parameter(
                    Mandatory = true,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Firewall Policy.")]
@@ -82,8 +75,7 @@ namespace Microsoft.Azure.Commands.Network
             var rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper
             {
                 name = this.Name,
-                properties = ruleGroup,
-                location = AzureFirewallPolicy.Location
+                properties = ruleGroup
             };
 
             var settings = new JsonSerializerSettings
