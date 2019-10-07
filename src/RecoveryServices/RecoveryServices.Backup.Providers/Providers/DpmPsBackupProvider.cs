@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
         {
-            throw new NotImplementedException();
+            throw new Exception(Resources.SoftdeleteNotImplementedException);
         }
 
         public RestAzureNS.AzureOperationResponse TriggerBackup()
