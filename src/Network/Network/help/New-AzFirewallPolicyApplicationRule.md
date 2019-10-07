@@ -5,17 +5,24 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzFirewallPolicyRuleGroup
+# New-AzFirewallPolicyApplicationRule
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
 
 ## SYNTAX
 
+### TargetFqdn (Default)
 ```
-New-AzFirewallPolicyRuleGroup -Name <String> -Priority <UInt32> -Rules <PSAzureFirewallPolicyBaseRule[]>
- -ResourceGroupName <String> -Location <String> -AzureFirewallPolicy <PSAzureFirewallPolicy>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
+ -TargetFqdn <String[]> -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### FqdnTag
+```
+New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
+ -FqdnTag <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,35 +30,23 @@ New-AzFirewallPolicyRuleGroup -Name <String> -Priority <UInt32> -Rules <PSAzureF
 
 ## EXAMPLES
 
-### 1. Creating a new rule group
+### Example 1
 ```powershell
-PS C:\> New-AzFirewallPolicyRuleGroup -Name rg1 -ResourceGroupName TestRg -Location westus -Priority 200 -Rule $filterRule1 -AzureFirewallPolicy $fp
+PS C:\> New-AzFirewallPolicyApplicationRule -Name AR1 -SourceAddress "192.168.0.0/16" -Protocol "http:80","https:443" -TargetFqdn "*.ro", "*.com"
 ```
 
-This example creates a rule group in the firewall policy $fp
+This example creates an application rule with the source address, protocol and the target fqdns.
+```
+
+{{ Add example description here }}
 
 ## PARAMETERS
-
-### -AzureFirewallPolicy
-Firewall Policy.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -62,26 +57,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-location.
+### -Description
+The description of the rule
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FqdnTag
+The FQDN Tags of the rule
+
+```yaml
+Type: String[]
+Parameter Sets: FqdnTag
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Rule Group
+The name of the Application Rule
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -92,12 +102,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Priority
-The priority of the rule group
+### -Protocol
+The protocols of the rule
 
 ```yaml
-Type: System.UInt32
-Parameter Sets: (All)
+Type: String[]
+Parameter Sets: TargetFqdn
 Aliases:
 
 Required: True
@@ -107,27 +117,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The resource group name.
+### -SourceAddress
+The source addresses of the rule
 
 ```yaml
-Type: System.String
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Rules
-The list of application rules
+### -TargetFqdn
+The target FQDNs of the rule
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyBaseRule[]
-Parameter Sets: (All)
+Type: String[]
+Parameter Sets: TargetFqdn
 Aliases:
 
 Required: True
@@ -141,7 +151,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -157,7 +167,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -173,13 +183,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
+### None
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyRuleGroup
+### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyApplicationRule
 
 ## NOTES
 
