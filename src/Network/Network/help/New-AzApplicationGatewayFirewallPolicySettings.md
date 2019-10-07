@@ -14,7 +14,7 @@ Creates a policy setting for the firewall policy
 
 ```
 New-AzApplicationGatewayFirewallPolicySettings -State <String> -Mode <String>  
--RequestBodyCheck <Boolean> -FileUploadLimitInMb <Integer> -MaxRequestBodySizeInKb <Integer>
+[-RequestBodyCheck] -FileUploadLimitInMb <Integer> -MaxRequestBodySizeInKb <Integer>
 [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ The **New-AzApplicationGatewayFirewallPolicySettings** creates a policy settings
 
 ### Example 1
 ```powershell
-PS C:\> $condition = New-AzApplicationGatewayFirewallPolicySettings -State $enabledState -Mode $enabledMode -RequestBodyCheck true -FileUploadLimitInMb $fileUploadLimitInMb -MaxRequestBodySizeInKb $maxRequestBodySizeInKb
+PS C:\> $condition = New-AzApplicationGatewayFirewallPolicySettings -State $enabledState -Mode $enabledMode -RequestBodyCheck -FileUploadLimitInMb $fileUploadLimitInMb -MaxRequestBodySizeInKb $maxRequestBodySizeInKb
 ```
 
 The command creates a policy setting with state as $enabledState, mode as $enabledMode, RequestBodyCheck as true, FileUploadLimitInMb as $fileUploadLimitInMb and MaxRequestBodySizeInKb as $$maxRequestBodySizeInKb.
@@ -82,13 +82,13 @@ Accept wildcard characters: False
 RequestBodyCheck in policy settings of the firewall policy.
 
 ```yaml
-Type: System.Boolean
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: true
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
