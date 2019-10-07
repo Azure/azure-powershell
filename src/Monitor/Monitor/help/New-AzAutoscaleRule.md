@@ -274,7 +274,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 1 minute
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
