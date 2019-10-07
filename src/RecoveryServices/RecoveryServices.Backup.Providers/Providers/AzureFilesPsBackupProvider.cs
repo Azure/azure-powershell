@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
         {
-            throw new NotImplementedException();
+            throw new Exception(Resources.SoftdeleteNotImplementedException);
         }
 
         public List<ContainerBase> ListProtectionContainers()
