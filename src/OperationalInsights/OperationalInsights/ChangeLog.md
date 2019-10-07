@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.3
 * Fixed miscellaneous typos across module
 * Updated documentation for `New-AzOperationalInsightsLinuxSyslogDataSource`
     - Added example

@@ -63,8 +63,8 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         [JsonProperty(PropertyName = "comments")]
         public string Comments { get; set; }
 
-        /// <summary>
-        /// </summary>
+        /// <summary>	
+        /// </summary>	
         [JsonProperty(PropertyName = "operationsMonitoringProperties")]
         public PSOperationsMonitoringProperties OperationsMonitoringProperties { get; set; }
 

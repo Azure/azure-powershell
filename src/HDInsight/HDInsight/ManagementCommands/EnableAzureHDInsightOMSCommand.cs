@@ -20,9 +20,11 @@ using System.IO;
 using System.Reflection;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
+    [CmdletDeprecation(ReplacementCmdletName = "Enable-AzHDInsightMonitoring")]
     [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightOperationsManagementSuite",SupportsShouldProcess = true)]
     [Alias("Enable-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightOMS")]
     [OutputType(typeof(OperationResource))]

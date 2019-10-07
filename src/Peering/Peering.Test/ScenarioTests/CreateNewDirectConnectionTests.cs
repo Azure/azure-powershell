@@ -122,5 +122,15 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWrongV6");
         }
+
+        /// <summary>
+        /// The test new direct connection with microsoft ip address
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDirectConnectionWithMicrosoftIpProvidedAddress()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithMicrosoftIpProvidedAddress");
+        }
     }
 }
