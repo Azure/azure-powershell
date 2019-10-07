@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 RuleSetType = this.RuleSetType,
                 RuleSetVersion = this.RuleSetVersion,               
-                RuleGroupOverrides = this.RuleGroupOverrides?.ToList()
+                RuleGroupOverrides = this.RuleGroupOverride?.ToList()
             };
         }
     }
