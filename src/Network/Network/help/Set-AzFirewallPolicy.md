@@ -40,10 +40,17 @@ Set-AzFirewallPolicy [-AsJob] -ResourceId <String> [-ThreatIntelMode <String>] [
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzFirewallPolicy -InputObject $fp
 ```
 
-{{ Add example description here }}
+This example sets the firewall policy with the new firewall policy value
+
+### Example 2
+```powershell
+PS C:\> Set-AzFirewallPolicy -Name firewallPolicy1 -ResourceGroupName TestRg -Location westcentralus -ThreatIntelMode "Alert"
+```
+
+This example sets the firewall policy with the new threat intel mode
 
 ## PARAMETERS
 
