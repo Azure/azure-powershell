@@ -12,19 +12,19 @@ schema: 2.0.0
 
 ## SYNTAX
 
-### SetByNameParameterSet (Default)
+### GetByNameParameterSet (Default)
 ```
 Get-AzFirewallPolicyRuleCollectionGroup -Name <String> -ResourceGroupName <String>
  -AzureFirewallPolicyName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### SetByInputObjectParameterSet
+### GetByInputObjectParameterSet
 ```
 Get-AzFirewallPolicyRuleCollectionGroup -Name <String> -AzureFirewallPolicy <PSAzureFirewallPolicy>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### SetByResourceIdParameterSet
+### GetByResourceIdParameterSet
 ```
 Get-AzFirewallPolicyRuleCollectionGroup -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]

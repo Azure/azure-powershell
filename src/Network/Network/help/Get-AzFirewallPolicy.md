@@ -30,10 +30,10 @@ Get-AzFirewallPolicy -ResourceId <String> [-DefaultProfile <IAzureContextContain
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzFirewallPolicy -Name firwallPolicy -ResourceGroupName TestRg
 ```
 
-{{ Add example description here }}
+This example get a firewall policy named "firewallPolicy" in the resource group "TestRg"
 
 ## PARAMETERS
 

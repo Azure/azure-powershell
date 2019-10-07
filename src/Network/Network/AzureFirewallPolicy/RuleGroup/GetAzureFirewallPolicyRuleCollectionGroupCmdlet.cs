@@ -21,20 +21,20 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyRuleCollectionGroup", DefaultParameterSetName = SetByNameParameterSet), OutputType(typeof(PSAzureFirewall), typeof(IEnumerable<PSAzureFirewall>))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyRuleCollectionGroup", DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(PSAzureFirewall), typeof(IEnumerable<PSAzureFirewall>))]
     public class GetAzureFirewallPolicyRuleCollectionGroupCommand : AzureFirewallPolicyRuleCollectionGroupBaseCmdlet
     {
 
-        private const string SetByNameParameterSet = "SetByNameParameterSet";
-        private const string SetByResourceIdParameterSet = "SetByResourceIdParameterSet";
-        private const string SetByInputObjectParameterSet = "SetByInputObjectParameterSet";
+        private const string GetByNameParameterSet = "SetByNameParameterSet";
+        private const string GetByResourceIdParameterSet = "SetByResourceIdParameterSet";
+        private const string GetByInputObjectParameterSet = "SetByInputObjectParameterSet";
 
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.", ParameterSetName = SetByNameParameterSet)]
-        [Parameter(Mandatory = true, ParameterSetName = SetByInputObjectParameterSet)]
+            HelpMessage = "The resource name.", ParameterSetName = GetByNameParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = GetByInputObjectParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/azureFirewalls", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.", ParameterSetName = SetByNameParameterSet)]
+            HelpMessage = "The resource group name.", ParameterSetName = GetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource Id.", ParameterSetName = SetByResourceIdParameterSet)]
+            HelpMessage = "The resource Id.", ParameterSetName = GetByResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceId { get; set; }
@@ -59,14 +59,14 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Firewall Policy.", ParameterSetName = SetByInputObjectParameterSet)]
+            HelpMessage = "Firewall Policy.", ParameterSetName = GetByInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSAzureFirewallPolicy AzureFirewallPolicy { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Firewall policy name", ParameterSetName = SetByNameParameterSet)]
+            HelpMessage = "The Firewall policy name", ParameterSetName = GetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string AzureFirewallPolicyName { get; set; }
