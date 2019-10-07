@@ -18,11 +18,12 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
-using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using Microsoft.Rest;
 using System;
-using System.Collections.Generic;
 using System.IO;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Provider = Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models.Provider;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
@@ -121,15 +122,41 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// <param name="subscriptionId"> SubscriptionId passed from the cmdlet</param>
         protected void RegisterBlueprintRp(string subscriptionId)
         {
+            // To save time, we'll check the registration state first before making the register call.
             ResourceManagerClient.SubscriptionId = subscriptionId;
-            var response = ResourceManagerClient.Providers.Register(BlueprintConstants.BlueprintProviderNamespace);
+            Provider provider = ResourceManagerClient.Providers.Get(BlueprintConstants.BlueprintProviderNamespace);
 
-            if (response == null)
+            if (provider.RegistrationState == RegistrationState.Registered)
             {
-                throw new KeyNotFoundException(string.Format(Resources.ResourceProviderRegistrationFailed, BlueprintConstants.BlueprintProviderNamespace));
+                return;
             }
-        }
 
+            // The reason we poll for the registrationState for RP registration is because we'd like to make sure the RP registering
+            // happens before the blueprint creation/assignment request is submitted. This should help alleviate the spike in
+            // blueprint creation/assignment failures due to RP not being registered.
+            const int MaxPoll = 20;
+            int pollCount = 0;
+
+            do
+            {
+                if (pollCount > MaxPoll)
+                {
+                    // We should ideally throw a timeout exception here but we're collecting logs on service side about RP registration failures
+                    // and would like to continue with blueprint/assignment creation flow.
+                    //
+                    // To-Do: Add TimeoutException
+                    break;
+                }
+
+                provider = ResourceManagerClient.Providers.Register(BlueprintConstants
+                    .BlueprintProviderNamespace); // Instead of Get, do Register call again since GET takes its sweet time to return the status.
+
+                TestMockSupport.Delay(TimeSpan.FromSeconds(1));
+
+                pollCount++;
+
+            } while (provider.RegistrationState != RegistrationState.Registered);
+        }
 
         /// <summary>
         /// Expects a string that consist of full file path with file extension and check if it exists.

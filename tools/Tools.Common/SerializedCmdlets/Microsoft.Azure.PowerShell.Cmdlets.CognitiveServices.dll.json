@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IgnoreMissingVnetServiceEndpoint": "System.Boolean",
               "State": "System.String",
@@ -81,7 +81,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IpAddress": "System.String"
             },
@@ -189,7 +189,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule",
             "GenericTypeArguments": [],
@@ -207,7 +207,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule",
             "GenericTypeArguments": [],
@@ -398,7 +398,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule",
                   "GenericTypeArguments": [],
@@ -517,7 +517,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule",
                   "GenericTypeArguments": [],
@@ -884,7 +884,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
               "Sku": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",
@@ -1256,7 +1256,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccountKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccountKeys, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccountKeys, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Key1": "System.String",
               "Key2": "System.String"
@@ -1495,7 +1495,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IpRules": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
               "DefaultAction": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
@@ -2385,7 +2385,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesUsage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesUsage, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesUsage, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CurrentValue": "System.Nullable`1[System.Double]",
               "Limit": "System.Nullable`1[System.Double]",
@@ -2449,7 +2449,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
               "Sku": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",
@@ -2624,7 +2624,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "NetworkRuleSet": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
                     "Sku": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",
@@ -2967,7 +2967,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
               "Sku": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",
@@ -3182,7 +3182,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IpRules": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
               "DefaultAction": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
@@ -3505,7 +3505,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IpRules": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
                     "DefaultAction": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
@@ -4418,7 +4418,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IgnoreMissingVnetServiceEndpoint": "System.Boolean",
               "State": "System.String",
@@ -4485,7 +4485,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IpAddress": "System.String"
             },
@@ -4593,7 +4593,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule",
             "GenericTypeArguments": [],
@@ -4611,7 +4611,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule",
             "GenericTypeArguments": [],
@@ -4802,7 +4802,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule",
                   "GenericTypeArguments": [],
@@ -4921,7 +4921,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule",
                   "GenericTypeArguments": [],
@@ -5288,7 +5288,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NetworkRuleSet": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
               "Sku": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",
@@ -5463,7 +5463,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IpRules": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
               "DefaultAction": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
@@ -5734,7 +5734,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IpRules": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
                     "DefaultAction": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
@@ -5904,7 +5904,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IpRules": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
               "DefaultAction": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
@@ -6033,7 +6033,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -6136,7 +6136,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule",
             "GenericTypeArguments": [],
@@ -6154,7 +6154,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule",
             "GenericTypeArguments": [],
@@ -6262,7 +6262,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6371,7 +6371,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule",
                   "GenericTypeArguments": [],
@@ -6395,7 +6395,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule",
                   "GenericTypeArguments": [],
@@ -6601,7 +6601,7 @@
     "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule": {
       "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IgnoreMissingVnetServiceEndpoint": "System.Boolean",
         "State": "System.String",
@@ -6763,7 +6763,7 @@
     "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule": {
       "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IpAddress": "System.String"
       },
@@ -7061,7 +7061,7 @@
     "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet": {
       "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IpRules": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
         "DefaultAction": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
@@ -7142,7 +7142,7 @@
     "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]": {
       "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSIpRule",
       "GenericTypeArguments": [],
@@ -7152,7 +7152,7 @@
     "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum": {
       "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetWorkRuleDefaultActionEnum, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -7257,7 +7257,7 @@
     "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[]": {
       "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSVirtualNetworkRule",
       "GenericTypeArguments": [],
@@ -7531,7 +7531,7 @@
     "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount": {
       "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "NetworkRuleSet": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet",
         "Sku": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",

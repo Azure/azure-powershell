@@ -49,6 +49,80 @@ namespace Microsoft.Azure.Commands.Network
             get { return "NetworkResourceManagerProfile"; }
         }
 
+        private static string[] SecurityRuleProps = { "SourcePortRange", "DestinationPortRange", "SourceAddressPrefix", "DestinationAddressPrefix" };
+
+        private static void MapSecurityRuleManagementToCommand<MnmType, CnmType>(MnmType mnmObj, CnmType cnmObj)
+        {
+            /* 
+             * MNM type contains properties with both singular & plural name,
+             * while CNM - only singular (while being IList at the same time).
+             * MNM->CNM mapping is done this way:
+             *   If MNM's property with plural name is non-empty list, use it
+             *   Else set CNM prop as an empty list
+             *      If MNM's prop with singular name isn't empty, add it to that list
+             */
+
+            for (int i = 0; i < SecurityRuleProps.Length; i++)
+            {
+                string singularPropName = SecurityRuleProps[i];
+                string pluralPropName = singularPropName + (singularPropName.EndsWith("Prefix") ? "es" : "s");
+
+                var cnmProp = typeof(CnmType).GetProperty(singularPropName);
+
+                var mnmPluralValue = (ICollection<string>)typeof(MnmType).GetProperty(pluralPropName).GetValue(mnmObj);
+                if (mnmPluralValue != null && mnmPluralValue.Count != 0)
+                {
+                    cnmProp.SetValue(cnmObj, mnmPluralValue);
+                }
+                else
+                {
+                    List<string> list = new List<string>();
+
+                    var mnmSingularValue = (string)typeof(MnmType).GetProperty(singularPropName).GetValue(mnmObj);
+                    if (!string.IsNullOrWhiteSpace(mnmSingularValue))
+                    {
+                        list.Add(mnmSingularValue);
+                    }
+
+                    cnmProp.SetValue(cnmObj, list);
+                }
+            }
+        }
+
+        private static void MapSecurityRuleCommandToManagement<CnmType, MnmType>(CnmType cnmObj, MnmType mnmObj)
+        {
+            /* 
+             * MNM type contains properties with both singular & plural name,
+             * while CNM - only singular (while being IList at the same time).
+             * CNM->MNM mapping is done this way:
+             *    If CNM's property (which is a list) has only one item,
+             *      use it for MNM's singular property
+             *    Else set MNM's singular property to null
+             *      and assign CNM's list to MNM's plural prop
+             */
+
+            for (int i = 0; i < SecurityRuleProps.Length; i++)
+            {
+                string singularPropName = SecurityRuleProps[i];
+                string pluralPropName = singularPropName + (singularPropName.EndsWith("Prefix") ? "es" : "s");
+
+                var mnmSingularProp = typeof(MnmType).GetProperty(singularPropName);
+                var mnmPluralProp = typeof(MnmType).GetProperty(pluralPropName);
+
+                var cnmValue = (ICollection<string>)typeof(CnmType).GetProperty(singularPropName).GetValue(cnmObj);
+                if (GeneralUtilities.HasSingleElement(cnmValue))
+                {
+                    mnmSingularProp.SetValue(mnmObj, cnmValue.First());
+                    mnmPluralProp.SetValue(mnmObj, null);
+                }
+                else
+                {
+                    mnmSingularProp.SetValue(mnmObj, null);
+                    mnmPluralProp.SetValue(mnmObj, cnmValue);
+                }
+            }
+        }
+
         private static void Initialize()
         {
             var config = new MapperConfiguration(cfg =>
@@ -62,6 +136,11 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<Rest.Azure.CloudError, MNM.Error>();
                 cfg.CreateMap<MNM.ErrorException, Rest.Azure.CloudException>();
                 cfg.CreateMap<Rest.Azure.CloudException, MNM.ErrorException>();
+
+                cfg.CreateMap<MNM.ErrorResponse, Rest.Azure.CloudError>();
+                cfg.CreateMap<Rest.Azure.CloudError, MNM.ErrorResponse>();
+                cfg.CreateMap<MNM.ErrorResponseException, Rest.Azure.CloudException>();
+                cfg.CreateMap<Rest.Azure.CloudException, MNM.ErrorResponseException>();
 
                 // Managed Service Identity
                 cfg.CreateMap<CNM.PSManagedServiceIdentity, MNM.ManagedServiceIdentity>();
@@ -456,54 +535,13 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSSecurityRule, MNM.SecurityRule>()
                     .AfterMap((src, dest) =>
                     {
-                        if (GeneralUtilities.HasSingleElement(src.SourcePortRange))
-                        {
-                            dest.SourcePortRange = src.SourcePortRange[0];
-                        }
-                        else
-                        {
-                            dest.SourcePortRanges = src.SourcePortRange;
-                            dest.SourcePortRange = null;
-                        }
-
-                        if (GeneralUtilities.HasSingleElement(src.DestinationPortRange))
-                        {
-                            dest.DestinationPortRange = src.DestinationPortRange[0];
-                        }
-                        else
-                        {
-                            dest.DestinationPortRanges = src.DestinationPortRange;
-                            dest.DestinationPortRange = null;
-                        }
-
-                        if (GeneralUtilities.HasSingleElement(src.SourceAddressPrefix))
-                        {
-                            dest.SourceAddressPrefix = src.SourceAddressPrefix[0];
-                        }
-                        else
-                        {
-                            dest.SourceAddressPrefixes = src.SourceAddressPrefix;
-                            dest.SourceAddressPrefix = null;
-                        }
-
-                        if (GeneralUtilities.HasSingleElement(src.DestinationAddressPrefix))
-                        {
-                            dest.DestinationAddressPrefix = src.DestinationAddressPrefix[0];
-                        }
-                        else
-                        {
-                            dest.DestinationAddressPrefixes = src.DestinationAddressPrefix;
-                            dest.DestinationAddressPrefix = null;
-                        }
+                        MapSecurityRuleCommandToManagement<CNM.PSSecurityRule, MNM.SecurityRule>(src, dest);
                     });
 
                 cfg.CreateMap<MNM.SecurityRule, CNM.PSSecurityRule>()
                     .AfterMap((src, dest) =>
                     {
-                        dest.SourcePortRange = GeneralUtilities.HasMoreThanOneElement(src.SourcePortRanges) ? src.SourcePortRanges : (!string.IsNullOrWhiteSpace(src.SourcePortRange) ? new List<string> { src.SourcePortRange } : new List<string>());
-                        dest.DestinationPortRange = GeneralUtilities.HasMoreThanOneElement(src.DestinationPortRanges) ? src.DestinationPortRanges : (!string.IsNullOrWhiteSpace(src.DestinationPortRange) ? new List<string> { src.DestinationPortRange } : new List<string>());
-                        dest.SourceAddressPrefix = GeneralUtilities.HasMoreThanOneElement(src.SourceAddressPrefixes) ? src.SourceAddressPrefixes : (!string.IsNullOrWhiteSpace(src.SourceAddressPrefix) ? new List<string> { src.SourceAddressPrefix } : new List<string>());
-                        dest.DestinationAddressPrefix = GeneralUtilities.HasMoreThanOneElement(src.DestinationAddressPrefixes) ? src.DestinationAddressPrefixes : (!string.IsNullOrWhiteSpace(src.DestinationAddressPrefix) ? new List<string> { src.DestinationAddressPrefix } : new List<string>());
+                        MapSecurityRuleManagementToCommand<MNM.SecurityRule, CNM.PSSecurityRule>(src, dest);
                     });
 
                 // RouteTable
@@ -533,46 +571,8 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSEffectiveNetworkSecurityGroupAssociation, MNM.EffectiveNetworkSecurityGroupAssociation>();
                 cfg.CreateMap<CNM.PSEffectiveSecurityRule, MNM.EffectiveNetworkSecurityRule>()
                     .AfterMap((src, dest) =>
-                     {
-                         if (GeneralUtilities.HasSingleElement(src.SourcePortRange))
-                         {
-                             dest.SourcePortRange = src.SourcePortRange[0];
-                         }
-                         else
-                         {
-                             dest.SourcePortRanges = src.SourcePortRange;
-                             dest.SourcePortRange = null;
-                         }
-
-                         if (GeneralUtilities.HasSingleElement(src.DestinationPortRange))
-                         {
-                             dest.DestinationPortRange = src.DestinationPortRange[0];
-                         }
-                         else
-                         {
-                             dest.DestinationPortRanges = src.DestinationPortRange;
-                             dest.DestinationPortRange = null;
-                         }
-
-                         if (GeneralUtilities.HasSingleElement(src.SourceAddressPrefix))
-                         {
-                             dest.SourceAddressPrefix = src.SourceAddressPrefix[0];
-                         }
-                         else
-                         {
-                             dest.SourceAddressPrefixes = src.SourceAddressPrefix;
-                             dest.SourceAddressPrefix = null;
-                         }
-
-                         if (GeneralUtilities.HasSingleElement(src.DestinationAddressPrefix))
-                         {
-                             dest.DestinationAddressPrefix = src.DestinationAddressPrefix[0];
-                         }
-                         else
-                         {
-                             dest.DestinationAddressPrefixes = src.DestinationAddressPrefix;
-                             dest.DestinationAddressPrefix = null;
-                         }
+                    {
+                        MapSecurityRuleCommandToManagement<CNM.PSEffectiveSecurityRule, MNM.EffectiveNetworkSecurityRule>(src, dest);
                      });
 
                 // MNM to CNM
@@ -581,10 +581,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.EffectiveNetworkSecurityRule, CNM.PSEffectiveSecurityRule>()
                     .AfterMap((src, dest) =>
                     {
-                        dest.SourcePortRange = GeneralUtilities.HasMoreThanOneElement(src.SourcePortRanges) ? src.SourcePortRanges : (!string.IsNullOrWhiteSpace(src.SourcePortRange) ? new List<string> { src.SourcePortRange } : new List<string>());
-                        dest.DestinationPortRange = GeneralUtilities.HasMoreThanOneElement(src.DestinationPortRanges) ? src.DestinationPortRanges : (!string.IsNullOrWhiteSpace(src.DestinationPortRange) ? new List<string> { src.DestinationPortRange } : new List<string>());
-                        dest.SourceAddressPrefix = GeneralUtilities.HasMoreThanOneElement(src.SourceAddressPrefixes) ? src.SourceAddressPrefixes : (!string.IsNullOrWhiteSpace(src.SourceAddressPrefix) ? new List<string> { src.SourceAddressPrefix } : new List<string>());
-                        dest.DestinationAddressPrefix = GeneralUtilities.HasMoreThanOneElement(src.DestinationAddressPrefixes) ? src.DestinationAddressPrefixes : (!string.IsNullOrWhiteSpace(src.DestinationAddressPrefix) ? new List<string> { src.DestinationAddressPrefix } : new List<string>());
+                        MapSecurityRuleManagementToCommand<MNM.EffectiveNetworkSecurityRule, CNM.PSEffectiveSecurityRule>(src, dest);
                     });
 
                 // ExpressRoutePortsLocation
@@ -890,6 +887,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.Container, CNM.PSContainer>();
                 cfg.CreateMap<MNM.ContainerNetworkInterfaceConfiguration, CNM.PSContainerNetworkInterfaceConfiguration>();
                 cfg.CreateMap<MNM.IPConfigurationProfile, CNM.PSIPConfigurationProfile>();
+                cfg.CreateMap<MNM.NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties, CNM.PSIpConfigurationConnectivityInformation>();
 
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSNetworkProfile, MNM.NetworkProfile>();
@@ -898,6 +896,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSContainer, MNM.Container>();
                 cfg.CreateMap<CNM.PSContainerNetworkInterfaceConfiguration, MNM.ContainerNetworkInterfaceConfiguration>();
                 cfg.CreateMap<CNM.PSIPConfigurationProfile, MNM.IPConfigurationProfile>();
+                cfg.CreateMap<CNM.PSIpConfigurationConnectivityInformation, MNM.NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties>();
 
                 //// SDWAN
                 cfg.CreateMap<CNM.PSVirtualHub, MNM.VirtualHub>();
@@ -907,6 +906,10 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVirtualHubRouteTable, MNM.VirtualHubRouteTable>();
                 cfg.CreateMap<CNM.PSVirtualHubRoute, MNM.VirtualHubRoute>();
                 cfg.CreateMap<CNM.PSVpnGateway, MNM.VpnGateway>();
+                cfg.CreateMap<CNM.PSVpnSiteLinkConnection, MNM.VpnSiteLinkConnection>();
+                cfg.CreateMap<CNM.PSVpnSiteLink, MNM.VpnSiteLink>();
+                cfg.CreateMap<CNM.PSVpnLinkProviderProperties, MNM.VpnLinkProviderProperties>();
+                cfg.CreateMap<CNM.PSVpnLinkBgpSettings, MNM.VpnLinkBgpSettings>();
                 cfg.CreateMap<CNM.PSVpnConnection, MNM.VpnConnection>();
                 cfg.CreateMap<CNM.PSVpnSite, MNM.VpnSite>().AfterMap((src, dest) =>
                 {
@@ -945,6 +948,10 @@ namespace Microsoft.Azure.Commands.Network
                 });
 
                 cfg.CreateMap<MNM.DeviceProperties, CNM.PSVpnSiteDeviceProperties>();
+                cfg.CreateMap<MNM.VpnSiteLinkConnection, CNM.PSVpnSiteLinkConnection>();
+                cfg.CreateMap<MNM.VpnSiteLink, CNM.PSVpnSiteLink>();
+                cfg.CreateMap<MNM.VpnLinkProviderProperties, CNM.PSVpnLinkProviderProperties>();
+                cfg.CreateMap<MNM.VpnLinkBgpSettings, CNM.PSVpnLinkBgpSettings>();
                 cfg.CreateMap<MNM.ExpressRouteGateway, CNM.PSExpressRouteGateway>();
                 cfg.CreateMap<MNM.ExpressRouteConnection, CNM.PSExpressRouteConnection>();
                 cfg.CreateMap<MNM.ExpressRouteGatewayPropertiesAutoScaleConfiguration, CNM.PSExpressRouteGatewayAutoscaleConfiguration>();
