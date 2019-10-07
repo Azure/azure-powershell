@@ -32,6 +32,11 @@
         - New-AzNetworkSecurityRuleConfig
         - Set-AzNetworkSecurityRuleConfig
 * Improve handling of exceptions in Cortex cmdlets
+* New Generations and SKUs for VirtualNetworkGateways
+  - Introduce new Generations for VirtualNetworkGateways.
+  - Introduce new high throughput SKUs for VirtualNetworkGateways.
+
+## Version 1.14.0
 * Fix incorrect example in `New-AzApplicationGateway` reference documentation 
 * Add note in `Get-AzNetworkWatcherPacketCapture` reference documentation about retrieving all properties for a packet capture
 * Fixed example in `Test-AzNetworkWatcherIPFlow` reference documentation to correctly enumerate NICs
@@ -53,9 +58,6 @@
         - New-VpnConnection
         - Update-VpnConnection
 * Fixed documents for some PowerShell examples to use Az cmdlets instead of AzureRM cmdlets
-* New Generations and SKUs for VirtualNetworkGateways
-  - Introduce new Generations for VirtualNetworkGateways.
-  - Introduce new high throughput SKUs for VirtualNetworkGateways.
 
 ## Version 1.13.0
 * Updated New-AzPrivateLinkServiceIpConfig

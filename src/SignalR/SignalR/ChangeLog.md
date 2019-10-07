@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.0
 * Add Update, Restart, CheckNameAvailability, GetUsage Cmdlets
 
 ## Version 1.0.3

@@ -14,11 +14,13 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
+    [CmdletDeprecation(ReplacementCmdletName = "Get-AzBatchSupportedImage")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchNodeAgentSku"),OutputType(typeof(PSNodeAgentSku))]
     public class GetBatchAccountNodeAgentSkuCommand : BatchObjectModelCmdletBase
     {
