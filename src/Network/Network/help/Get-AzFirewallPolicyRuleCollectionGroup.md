@@ -37,10 +37,10 @@ Get-AzFirewallPolicyRuleCollectionGroup -ResourceId <String> [-DefaultProfile <I
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzFirewallPolicyRuleCollectionGroup -Name rg1 -AzureFirewallPolicy $fp
 ```
 
-{{ Add example description here }}
+This example get the rule collectionGroup in the firewall policy $fp
 
 ## PARAMETERS
 
