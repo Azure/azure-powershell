@@ -25,10 +25,10 @@ Remove-AzFirewallPolicy -Name <String> -ResourceGroupName <String> [-Force] [-Pa
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzFirewallPolicy -Name firewallpolicy -ResourceGroupName TestRg
 ```
 
-{{ Add example description here }}
+This example removes the firewall policy named "firewallpolicy" in the resourcegroup "TestRg"
 
 ## PARAMETERS
 
