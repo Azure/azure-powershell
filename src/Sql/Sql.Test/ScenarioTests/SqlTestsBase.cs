@@ -31,8 +31,9 @@ using Microsoft.Azure.Management.EventHub;
 using Microsoft.Azure.Management.OperationalInsights;
 using SDKMonitor = Microsoft.Azure.Management.Monitor;
 using CommonMonitor = Microsoft.Azure.Management.Monitor.Version2018_09_01;
-using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.KeyVault;
+using Microsoft.Azure.Graph.RBAC;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
@@ -40,6 +41,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
     {
         protected EnvironmentSetupHelper Helper;
         protected string[] resourceTypesToIgnoreApiVersion;
+        private const string TenantIdKey = "TenantId";
 
         protected SqlTestsBase(ITestOutputHelper output)
         {
@@ -84,8 +86,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             // Enable undo functionality as well as mock recording
             using (var context = MockContext.Start(callingClassType, mockName))
             {
-                SetupManagementClients(context);
                 Helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                SetupManagementClients(context);
                 Helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + GetType().Name + ".ps1",
@@ -137,6 +139,35 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             GraphRbacManagementClient graphClient = context.GetServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
             graphClient.BaseUri = TestEnvironmentFactory.GetTestEnvironment().Endpoints.GraphUri;
             graphClient.TenantID = TestEnvironmentFactory.GetTestEnvironment().Tenant;
+            return graphClient;
+        }
+
+        protected Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient GetGraphClientVersion1_6(MockContext context)
+        {
+            Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient graphClient = context.GetServiceClient<Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            graphClient.BaseUri = TestEnvironmentFactory.GetTestEnvironment().Endpoints.GraphUri;
+            string tenantId = null;
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                tenantId = TestEnvironmentFactory.GetTestEnvironment().Tenant;
+                HttpMockServer.Variables[TenantIdKey] = tenantId;
+            }
+            else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
+                {
+                    tenantId = HttpMockServer.Variables[TenantIdKey];
+                }
+            }
+            graphClient.TenantID = tenantId;
+            if (AzureRmProfileProvider.Instance != null &&
+                AzureRmProfileProvider.Instance.Profile != null &&
+                AzureRmProfileProvider.Instance.Profile.DefaultContext != null &&
+                AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant != null)
+            {
+                AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = tenantId;
+            }
             return graphClient;
         }
 

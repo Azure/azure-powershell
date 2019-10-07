@@ -47,8 +47,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string HyperVGeneration { get; set; }
         public CreationData CreationData { get; set; }
         public int? DiskSizeGB { get; set; }
+        public long? DiskSizeBytes { get; set; }
+        public string UniqueId { get; set; }
         public EncryptionSettingsCollection EncryptionSettingsCollection { get; set; }
         public string ProvisioningState { get; set; }
+        public bool? Incremental { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
