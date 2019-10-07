@@ -17,17 +17,23 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicy", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureFirewallPolicyCommand : AzureFirewallPolicyBaseCmdlet
     {
+
+        private const string SetByNameParameterSet = "SetByNameParameterSet";
+        private const string SetByInputObjectParameterSet = "SetByInputObjectParameterSet";
+        private const string SetByResourceIdParameterSet = "SetByResourceIdParameterSet";
+
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
+            HelpMessage = "The resource name.", ParameterSetName = SetByNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/azureFirewalls", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
@@ -35,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name.", ParameterSetName = SetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
@@ -51,9 +57,9 @@ namespace Microsoft.Azure.Commands.Network
         public SwitchParameter AsJob { get; set; }
 
         [Parameter(
-                            Mandatory = false,
-                            ValueFromPipelineByPropertyName = true,
-                            HelpMessage = "The resource Id.")]
+                Mandatory = false,
+                ValueFromPipelineByPropertyName = true,
+                HelpMessage = "The resource Id.", ParameterSetName = SetByResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceId { get; set; }
@@ -61,17 +67,17 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The AzureFirewall Policy")]
+            HelpMessage = "The AzureFirewall Policy", ParameterSetName = SetByInputObjectParameterSet)]
         public PSAzureFirewallPolicy InputObject { get; set; }
         public override void Execute()
         {
-            if (ResourceId != null)
+            if (this.IsParameterBound(c => c.ResourceId))
             {
                 var resourceInfo = new ResourceIdentifier(ResourceId);
                 this.ResourceGroupName = resourceInfo.ResourceGroupName;
                 this.Name = resourceInfo.ResourceName;
             }
-            else if (InputObject != null)
+            else if (this.IsParameterBound(c => c.InputObject))
             {
                 this.ResourceGroupName = InputObject.ResourceGroupName;
                 this.Name = InputObject.Name;
