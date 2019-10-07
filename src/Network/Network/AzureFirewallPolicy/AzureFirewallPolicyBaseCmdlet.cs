@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.Network
             psAzureFirewall.RuleCollectionGroups = new List<Microsoft.Azure.Management.Network.Models.SubResource>(azureFirewallPolicy.RuleGroups);
             psAzureFirewall.ResourceGroupName = resourceGroupName;
             psAzureFirewall.Tag = TagsConversionHelper.CreateTagHashtable(azureFirewallPolicy.Tags);
+            psAzureFirewall.BasePolicy = psAzureFirewall.BasePolicy;
 
             return psAzureFirewall;
         }

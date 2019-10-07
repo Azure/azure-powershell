@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The operation mode for Threat Intelligence.")]
+            HelpMessage = "The base policy to inherit from")]
         public string BasePolicy { get; set; }
 
         [Parameter(
@@ -102,13 +102,14 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSAzureFirewallPolicy CreateAzureFirewallPolicy()
         {
+
             var firewall = new PSAzureFirewallPolicy()
             {
                 Name = this.Name,
                 ResourceGroupName = this.ResourceGroupName,
                 Location = this.Location,
                 ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
-                BasePolicy = this.BasePolicy
+                BasePolicy = BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(BasePolicy) : null
             };
 
             // Map to the sdk object
