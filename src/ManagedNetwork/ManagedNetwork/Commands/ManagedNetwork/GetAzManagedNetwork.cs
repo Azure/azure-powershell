@@ -15,11 +15,21 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
     [OutputType(typeof(PSManagedNetwork))]
     public class GetAzManagedNetwork : AzureManagedNetworkCmdletBase
     {
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = Constants.ManagedNetworkNameHelp,
+           ParameterSetName = Constants.ListParameterSet)]
+        [Parameter(
+           Mandatory = true,
+           HelpMessage = Constants.ManagedNetworkNameHelp,
+           ParameterSetName = Constants.NameParameterSet)]
+        public string Name { get; set; }
+
         /// <summary>
         /// Gets or sets The Resource Group name
         /// </summary>
         [Parameter( 
-            Mandatory = false, 
+            Mandatory = false,
             HelpMessage = Constants.ResourceGroupNameHelp, 
             ParameterSetName = Constants.ListParameterSet)]
         [Parameter(
@@ -28,12 +38,6 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
             ParameterSetName = Constants.NameParameterSet)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
-
-        [Parameter(
-            Mandatory = true, 
-            HelpMessage = Constants.ManagedNetworkNameHelp,
-            ParameterSetName = Constants.NameParameterSet)]
-        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the ARM resource ID
