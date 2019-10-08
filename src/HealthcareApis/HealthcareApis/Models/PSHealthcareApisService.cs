@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.HealthcareApis.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -28,28 +29,61 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
             this.Location = serviceDescription.Location;
             this.ResourceType = serviceDescription.Type;
             this.Tags = serviceDescription.Tags;
-            this.Properties = new PSHealthcareApisServiceConfig(serviceDescription.Properties);
+            this.CosmosDbOfferThroughput = serviceDescription.Properties.CosmosDbConfiguration?.OfferThroughput;
+            this.CorsOrigins = serviceDescription.Properties.CorsConfiguration?.Origins;
+            this.CorsHeaders = serviceDescription.Properties.CorsConfiguration?.Headers;
+            this.CorsMethods = serviceDescription.Properties.CorsConfiguration?.Methods;
+            this.CorsMaxAge = serviceDescription.Properties.CorsConfiguration?.MaxAge;
+            this.CorsAllowCredentials = serviceDescription.Properties.CorsConfiguration?.AllowCredentials;
+            this.Authority = serviceDescription.Properties.AuthenticationConfiguration?.Authority;
+            this.Audience = serviceDescription.Properties.AuthenticationConfiguration?.Audience;
+            this.SmartProxyEnabled = serviceDescription.Properties.AuthenticationConfiguration?.SmartProxyEnabled;
             this.Etag = serviceDescription.Etag;
             this.Kind = GetKindValue(serviceDescription.Kind);
+
+            var psAccessPolicies = new List<PSHealthcareApisFhirServiceAccessPolicyEntry>();
+            foreach (ServiceAccessPolicyEntry accessPolicy in serviceDescription.Properties.AccessPolicies)
+            {
+                psAccessPolicies.Add(new PSHealthcareApisFhirServiceAccessPolicyEntry(accessPolicy));
+            }
+
+            this.AccessPolicies = psAccessPolicies;
         }
 
-        public string ResourceGroupName { get; private set; }
+        public IList<PSHealthcareApisFhirServiceAccessPolicyEntry> AccessPolicies { get; private set; }
 
-        public string Name { get; private set; }
+        public string Audience { get; private set; }
+
+        public string Authority { get; private set; }
+
+        public bool? CorsAllowCredentials { get; private set; }
+        public IList<string> CorsHeaders { get; private set; }
+
+        public int? CorsMaxAge { get; private set; }
+
+        public IList<string> CorsMethods { get; private set; }
+
+        public IList<string> CorsOrigins { get; private set; }
+
+        public int? CosmosDbOfferThroughput { get; private set; }
+
+        public string Etag { get; private set; }
 
         public string Id { get; private set; }
 
+        public string Kind { get; private set; }
+
         public string Location { get; private set; }
 
-        public string ResourceType { get; private set; }
+        public string Name { get; private set; }
 
-        public string Kind { get; private set; }
+        public string ResourceGroupName { get; private set; }
 
         public IDictionary<string, string> Tags { get; private set; }
 
-        public PSHealthcareApisServiceConfig Properties { get; private set; }
+        public string ResourceType { get; private set; }
 
-        public string Etag { get; private set; }
+        public bool? SmartProxyEnabled { get; private set; }
 
         public static PSHealthcareApisService Create(ServicesDescription healthcareApisAccount)
         {
@@ -73,7 +107,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Models
             switch (kind)
             {
                 case Management.HealthcareApis.Models.Kind.Fhir:
-                    return "fhir-Stu3";
+                    return "fhir-R4";
                 case Management.HealthcareApis.Models.Kind.FhirStu3:
                     return "fhir-Stu3";
                 case Management.HealthcareApis.Models.Kind.FhirR4:
