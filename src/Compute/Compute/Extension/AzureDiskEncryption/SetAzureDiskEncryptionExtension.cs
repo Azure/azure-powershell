@@ -559,7 +559,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
             ExecuteClientAction(() =>
             {
-                this.WriteWarning("********THIS CMDLET IS GENERATED FROM A LOCAL PS BUILD. ********");
                 if (this.ShouldProcess(VMName, Properties.Resources.EnableDiskEncryptionAction)
                 && (this.Force.IsPresent ||
                 this.ShouldContinue(Properties.Resources.EnableAzureDiskEncryptionConfirmation, Properties.Resources.EnableAzureDiskEncryptionCaption)))
