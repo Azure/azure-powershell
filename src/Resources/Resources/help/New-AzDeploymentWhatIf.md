@@ -12,7 +12,7 @@ Create a deployment what-if
 
 ## SYNTAX
 
-### SubscriptionAndTenantWithTemplateFileWithAndNoParameters (Default)
+### SubscriptionWithTemplateFileWithAndNoParameters (Default)
 ```
 New-AzDeploymentWhatIf [-Name <String>] -ScopeType <DeploymentWhatIfScopeType> -Location <String>
  [-Mode <DeploymentMode>] [-ResultFormat <WhatIfResultFormat>] [-AsJob] -TemplateFile <String>
@@ -20,7 +20,7 @@ New-AzDeploymentWhatIf [-Name <String>] -ScopeType <DeploymentWhatIfScopeType> -
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SubscriptionAndTenantWithTemplateObjectAndParameterObject
+### SubscriptionWithTemplateObjectAndParameterObject
 ```
 New-AzDeploymentWhatIf [-Name <String>] -ScopeType <DeploymentWhatIfScopeType> -Location <String>
  [-Mode <DeploymentMode>] [-ResultFormat <WhatIfResultFormat>] [-AsJob] -TemplateParameterObject <Hashtable>
@@ -28,7 +28,7 @@ New-AzDeploymentWhatIf [-Name <String>] -ScopeType <DeploymentWhatIfScopeType> -
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SubscriptionAndTenantWithTemplateObjectAndParameterFile
+### SubscriptionWithTemplateObjectAndParameterFile
 ```
 New-AzDeploymentWhatIf [-Name <String>] -ScopeType <DeploymentWhatIfScopeType> -Location <String>
  [-Mode <DeploymentMode>] [-ResultFormat <WhatIfResultFormat>] [-AsJob] -TemplateParameterFile <String>
@@ -36,7 +36,7 @@ New-AzDeploymentWhatIf [-Name <String>] -ScopeType <DeploymentWhatIfScopeType> -
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SubscriptionAndTenantWithTemplateFileAndParameterObject
+### SubscriptionWithTemplateFileAndParameterObject
 ```
 New-AzDeploymentWhatIf [-Name <String>] -ScopeType <DeploymentWhatIfScopeType> -Location <String>
  [-Mode <DeploymentMode>] [-ResultFormat <WhatIfResultFormat>] [-AsJob] -TemplateParameterObject <Hashtable>
@@ -44,7 +44,7 @@ New-AzDeploymentWhatIf [-Name <String>] -ScopeType <DeploymentWhatIfScopeType> -
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SubscriptionAndTenantWithTemplateFileAndParameterFile
+### SubscriptionWithTemplateFileAndParameterFile
 ```
 New-AzDeploymentWhatIf [-Name <String>] -ScopeType <DeploymentWhatIfScopeType> -Location <String>
  [-Mode <DeploymentMode>] [-ResultFormat <WhatIfResultFormat>] [-AsJob] -TemplateParameterFile <String>
@@ -52,7 +52,7 @@ New-AzDeploymentWhatIf [-Name <String>] -ScopeType <DeploymentWhatIfScopeType> -
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SubscriptionAndTenantWithTemplateObjectAndNoParameters
+### SubscriptionWithTemplateObjectAndNoParameters
 ```
 New-AzDeploymentWhatIf [-Name <String>] -ScopeType <DeploymentWhatIfScopeType> -Location <String>
  [-Mode <DeploymentMode>] [-ResultFormat <WhatIfResultFormat>] [-AsJob] -TemplateObject <Hashtable>
@@ -106,54 +106,6 @@ New-AzDeploymentWhatIf [-Name <String>] -ScopeType <DeploymentWhatIfScopeType> -
  [-Mode <DeploymentMode>] [-ResultFormat <WhatIfResultFormat>] [-AsJob] -TemplateFile <String>
  [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ManagementGroupWithTemplateObjectAndParameterObject
-```
-New-AzDeploymentWhatIf [-Name <String>] -ScopeType <DeploymentWhatIfScopeType> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-AsJob] -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable>
- [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ManagementGroupWithTemplateFileAndParameterObject
-```
-New-AzDeploymentWhatIf [-Name <String>] -ScopeType <DeploymentWhatIfScopeType> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-AsJob] -TemplateParameterObject <Hashtable> -TemplateFile <String>
- [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ManagementGroupWithTemplateObjectAndParameterFile
-```
-New-AzDeploymentWhatIf [-Name <String>] -ScopeType <DeploymentWhatIfScopeType> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-AsJob] -TemplateParameterFile <String> -TemplateObject <Hashtable>
- [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ManagementGroupWithTemplateFileAndParameterFile
-```
-New-AzDeploymentWhatIf [-Name <String>] -ScopeType <DeploymentWhatIfScopeType> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-AsJob] -TemplateParameterFile <String> -TemplateFile <String>
- [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ManagementGroupWithTemplateObjectAndNoParameters
-```
-New-AzDeploymentWhatIf [-Name <String>] -ScopeType <DeploymentWhatIfScopeType> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-AsJob] -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ManagementGroupWithTemplateFileWithAndNoParameters
-```
-New-AzDeploymentWhatIf [-Name <String>] -ScopeType <DeploymentWhatIfScopeType> [-Mode <DeploymentMode>]
- [-ResultFormat <WhatIfResultFormat>] [-AsJob] -TemplateFile <String> [-SkipTemplateParameterPrompt]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -235,7 +187,7 @@ When set, indicates the version of the resource provider API to use.
 If not specified, the API version is automatically determined as the latest available.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -250,7 +202,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -265,7 +217,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -280,8 +232,8 @@ Accept wildcard characters: False
 The location to store deployment data.
 
 ```yaml
-Type: String
-Parameter Sets: SubscriptionAndTenantWithTemplateFileWithAndNoParameters, SubscriptionAndTenantWithTemplateObjectAndParameterObject, SubscriptionAndTenantWithTemplateObjectAndParameterFile, SubscriptionAndTenantWithTemplateFileAndParameterObject, SubscriptionAndTenantWithTemplateFileAndParameterFile, SubscriptionAndTenantWithTemplateObjectAndNoParameters
+Type: System.String
+Parameter Sets: SubscriptionWithTemplateFileWithAndNoParameters, SubscriptionWithTemplateObjectAndParameterObject, SubscriptionWithTemplateObjectAndParameterFile, SubscriptionWithTemplateFileAndParameterObject, SubscriptionWithTemplateFileAndParameterFile, SubscriptionWithTemplateObjectAndNoParameters
 Aliases:
 
 Required: True
@@ -295,7 +247,7 @@ Accept wildcard characters: False
 The deployment mode.
 
 ```yaml
-Type: DeploymentMode
+Type: Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode
 Parameter Sets: (All)
 Aliases:
 Accepted values: Incremental, Complete
@@ -313,7 +265,7 @@ Only valid when a template is used.
 When a template is used, if the user doesn't specify a deployment name, use the current time, like "20131223140835".
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: DeploymentName
 
@@ -328,7 +280,7 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -343,7 +295,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupWithTemplateObjectAndParameterObject, ResourceGroupWithTemplateObjectAndParameterFile, ResourceGroupWithTemplateFileAndParameterObject, ResourceGroupWithTemplateFileAndParameterFile, ResourceGroupWithTemplateObjectAndNoParameters, ResourceGroupWithTemplateFileWithAndNoParameters
 Aliases:
 
@@ -358,7 +310,7 @@ Accept wildcard characters: False
 The result format.
 
 ```yaml
-Type: WhatIfResultFormat
+Type: Microsoft.Azure.Management.ResourceManager.Models.WhatIfResultFormat
 Parameter Sets: (All)
 Aliases:
 Accepted values: ResourceIdOnly, FullResourcePayloads
@@ -374,7 +326,7 @@ Accept wildcard characters: False
 The deployment scope type.
 
 ```yaml
-Type: DeploymentWhatIfScopeType
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments.DeploymentWhatIfScopeType
 Parameter Sets: (All)
 Aliases:
 Accepted values: Subscription, ResourceGroup
@@ -392,7 +344,7 @@ This check would prompt the user to provide a value for the missing parameters, 
 For non-interactive scripts, -SkipTemplateParameterPrompt can be provided to provide a better error message in the case where not all required parameters are satisfied.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -407,8 +359,8 @@ Accept wildcard characters: False
 Uri or local path to the template file.
 
 ```yaml
-Type: String
-Parameter Sets: SubscriptionAndTenantWithTemplateFileWithAndNoParameters, SubscriptionAndTenantWithTemplateFileAndParameterObject, SubscriptionAndTenantWithTemplateFileAndParameterFile, ResourceGroupWithTemplateFileAndParameterObject, ResourceGroupWithTemplateFileAndParameterFile, ResourceGroupWithTemplateFileWithAndNoParameters, ManagementGroupWithTemplateFileAndParameterObject, ManagementGroupWithTemplateFileAndParameterFile, ManagementGroupWithTemplateFileWithAndNoParameters
+Type: System.String
+Parameter Sets: SubscriptionWithTemplateFileWithAndNoParameters, SubscriptionWithTemplateFileAndParameterObject, SubscriptionWithTemplateFileAndParameterFile, ResourceGroupWithTemplateFileAndParameterObject, ResourceGroupWithTemplateFileAndParameterFile, ResourceGroupWithTemplateFileWithAndNoParameters
 Aliases: TemplateUri
 
 Required: True
@@ -422,8 +374,8 @@ Accept wildcard characters: False
 A hash table which represents the template.
 
 ```yaml
-Type: Hashtable
-Parameter Sets: SubscriptionAndTenantWithTemplateObjectAndParameterObject, SubscriptionAndTenantWithTemplateObjectAndParameterFile, SubscriptionAndTenantWithTemplateObjectAndNoParameters, ResourceGroupWithTemplateObjectAndParameterObject, ResourceGroupWithTemplateObjectAndParameterFile, ResourceGroupWithTemplateObjectAndNoParameters, ManagementGroupWithTemplateObjectAndParameterObject, ManagementGroupWithTemplateObjectAndParameterFile, ManagementGroupWithTemplateObjectAndNoParameters
+Type: System.Collections.Hashtable
+Parameter Sets: SubscriptionWithTemplateObjectAndParameterObject, SubscriptionWithTemplateObjectAndParameterFile, SubscriptionWithTemplateObjectAndNoParameters, ResourceGroupWithTemplateObjectAndParameterObject, ResourceGroupWithTemplateObjectAndParameterFile, ResourceGroupWithTemplateObjectAndNoParameters
 Aliases:
 
 Required: True
@@ -437,8 +389,8 @@ Accept wildcard characters: False
 A Uri or local path to the file that has the template parameters.
 
 ```yaml
-Type: String
-Parameter Sets: SubscriptionAndTenantWithTemplateObjectAndParameterFile, SubscriptionAndTenantWithTemplateFileAndParameterFile, ResourceGroupWithTemplateObjectAndParameterFile, ResourceGroupWithTemplateFileAndParameterFile, ManagementGroupWithTemplateObjectAndParameterFile, ManagementGroupWithTemplateFileAndParameterFile
+Type: System.String
+Parameter Sets: SubscriptionWithTemplateObjectAndParameterFile, SubscriptionWithTemplateFileAndParameterFile, ResourceGroupWithTemplateObjectAndParameterFile, ResourceGroupWithTemplateFileAndParameterFile
 Aliases: TemplateParameterUri
 
 Required: True
@@ -452,8 +404,8 @@ Accept wildcard characters: False
 A hash table which represents the parameters.
 
 ```yaml
-Type: Hashtable
-Parameter Sets: SubscriptionAndTenantWithTemplateObjectAndParameterObject, SubscriptionAndTenantWithTemplateFileAndParameterObject, ResourceGroupWithTemplateObjectAndParameterObject, ResourceGroupWithTemplateFileAndParameterObject, ManagementGroupWithTemplateObjectAndParameterObject, ManagementGroupWithTemplateFileAndParameterObject
+Type: System.Collections.Hashtable
+Parameter Sets: SubscriptionWithTemplateObjectAndParameterObject, SubscriptionWithTemplateFileAndParameterObject, ResourceGroupWithTemplateObjectAndParameterObject, ResourceGroupWithTemplateFileAndParameterObject
 Aliases:
 
 Required: True
@@ -467,7 +419,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -483,7 +435,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

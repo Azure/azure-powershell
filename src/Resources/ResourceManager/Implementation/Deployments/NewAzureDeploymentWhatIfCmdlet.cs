@@ -3,7 +3,6 @@
     using System;
     using System.Management.Automation;
     using Common.ArgumentCompleters;
-    using Formatters;
     using Management.ResourceManager.Models;
     using SdkModels.Deployments;
     using WindowsAzure.Commands.Utilities.Common;
@@ -13,9 +12,9 @@
     /// </summary>
     [Cmdlet(VerbsCommon.New,
          ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentWhatIf", SupportsShouldProcess = true,
-         DefaultParameterSetName = SubscriptionAndTenantParameterSetWithParameterlessTemplateFile),
+         DefaultParameterSetName = SubscriptionParameterSetWithParameterlessTemplateFile),
      OutputType(typeof(PSWhatIfOperationResult))]
-    public class NewAzureDeploymentWhatIfCmdlet : DeploymentCmdletWithParameters, IDynamicParameters
+    public class NewAzureDeploymentWhatIfCmdlet : DeploymentWhatIfCmdletWithParameters, IDynamicParameters
     {
         [Alias("DeploymentName")]
         [Parameter(Mandatory = false,
@@ -26,17 +25,17 @@
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The deployment scope type.")]
         public DeploymentWhatIfScopeType ScopeType { get; set; }
 
-        [Parameter(ParameterSetName = SubscriptionAndTenantParameterSetWithTemplateObjectParameterObject,
+        [Parameter(ParameterSetName = SubscriptionParameterSetWithTemplateObjectParameterObject,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
-        [Parameter(ParameterSetName = SubscriptionAndTenantParameterSetWithTemplateObjectParameterFile,
+        [Parameter(ParameterSetName = SubscriptionParameterSetWithTemplateObjectParameterFile,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
-        [Parameter(ParameterSetName = SubscriptionAndTenantParameterSetWithTemplateFileParameterObject,
+        [Parameter(ParameterSetName = SubscriptionParameterSetWithTemplateFileParameterObject,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
-        [Parameter(ParameterSetName = SubscriptionAndTenantParameterSetWithTemplateFileParameterFile,
+        [Parameter(ParameterSetName = SubscriptionParameterSetWithTemplateFileParameterFile,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
-        [Parameter(ParameterSetName = SubscriptionAndTenantParameterSetWithParameterlessTemplateObject,
+        [Parameter(ParameterSetName = SubscriptionParameterSetWithParameterlessTemplateObject,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
-        [Parameter(ParameterSetName = SubscriptionAndTenantParameterSetWithParameterlessTemplateFile,
+        [Parameter(ParameterSetName = SubscriptionParameterSetWithParameterlessTemplateFile,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
         [LocationCompleter("Microsoft.Resources/resourceGroups")]
         [ValidateNotNullOrEmpty]
@@ -94,7 +93,7 @@
             }
 
             // Write status.
-            var statusMessage = "- Running... -";
+            const string statusMessage = "- Running... -";
             var information = new HostInformationMessage { Message = statusMessage, NoNewLine = true };
             var tags = new[] { "PSHOST" };
             this.WriteInformation(information, tags);
