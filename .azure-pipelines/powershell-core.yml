@@ -18,9 +18,6 @@ jobs:
       windows:
         OSName: ${{ variables.WindowsName }}
         ImageName: ${{ variables.WindowsImage }}
-      linux:
-        OSName: ${{ variables.LinuxName }}
-        ImageName: ${{ variables.LinuxImage }}
       macOS:
         OSName: ${{ variables.MacOSName }}
         ImageName: ${{ variables.MacOSImage }}
@@ -43,9 +40,6 @@ jobs:
       windows:
         OSName: ${{ variables.WindowsName }}
         ImageName: ${{ variables.WindowsImage }}
-      linux:
-        OSName: ${{ variables.LinuxName }}
-        ImageName: ${{ variables.LinuxImage }}
       macOS:
         OSName: ${{ variables.MacOSName }}
         ImageName: ${{ variables.MacOSImage }}
@@ -68,9 +62,6 @@ jobs:
       windows:
         OSName: ${{ variables.WindowsName }}
         ImageName: ${{ variables.WindowsImage }}
-      linux:
-        OSName: ${{ variables.LinuxName }}
-        ImageName: ${{ variables.LinuxImage }}
       macOS:
         OSName: ${{ variables.MacOSName }}
         ImageName: ${{ variables.MacOSImage }}
