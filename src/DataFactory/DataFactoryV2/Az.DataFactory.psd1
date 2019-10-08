@@ -56,11 +56,11 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.3'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.DataFactory.dll', 
-               '.\Microsoft.DataTransfer.Gateway.Encryption.dll', 
-               '.\System.IO.FileSystem.AccessControl.dll', 
-               '.\Microsoft.Azure.Management.DataFactories.dll', 
-               '.\Microsoft.WindowsAzure.Storage.dll'
+RequiredAssemblies = 'Microsoft.Azure.Management.DataFactory.dll', 
+               'Microsoft.DataTransfer.Gateway.Encryption.dll', 
+               'System.IO.FileSystem.AccessControl.dll', 
+               'Microsoft.Azure.Management.DataFactories.dll', 
+               'Microsoft.WindowsAzure.Storage.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -69,11 +69,11 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.DataFactory.dll',
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\DataFactoryV2.format.ps1xml', '.\DataFactories.format.ps1xml'
+FormatsToProcess = 'DataFactoryV2.format.ps1xml', 'DataFactories.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll', 
-               '.\Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll')
+NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll', 
+               'Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
