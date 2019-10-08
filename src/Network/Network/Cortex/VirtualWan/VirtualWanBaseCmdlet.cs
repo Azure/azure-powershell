@@ -107,20 +107,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool IsVirtualWanPresent(string resourceGroupName, string name)
         {
-            try
-            {
-                GetVirtualWan(resourceGroupName, name);
-            }
-            catch (Microsoft.Azure.Management.Network.Models.ErrorException exception)
-            {
-                if (exception.Response.StatusCode == HttpStatusCode.NotFound)
-                {
-                    // Resource is not present
-                    return false;
-                }
-            }
-
-            return true;
+            return NetworkBaseCmdlet.IsResourcePresent(() => { GetVirtualWan(resourceGroupName, name); });
         }
     }
 }
