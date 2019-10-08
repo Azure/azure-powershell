@@ -1042,7 +1042,7 @@ directive:
   - from: Az.Compute.psm1
     where: $
     transform: >
-        return $.replace('# Ask for the shared functionality table', 'Import-Module -Name (Join-Path $PSScriptRoot \'./bin/Az.Compute.private.dll\')\n# Ask for the shared functionality table' );
+        return $.replace('# Ask for the shared functionality table', '$null = Import-Module -Name (Join-Path $PSScriptRoot \'./bin/Az.Compute.private.dll\')\n# Ask for the shared functionality table' );
 # add again
   - from: Az.Compute.psm1
     where: $
