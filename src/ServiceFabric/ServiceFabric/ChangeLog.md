@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.0
 * Fixed typo in example for `Update-AzServiceFabricReliability` reference documentation
 * Adding new cmdlets to manage appliaction and services:
     - New-AzServiceFabricApplication

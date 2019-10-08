@@ -16,6 +16,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Net.Http;
+using Microsoft.Azure.Commands.Common.Authentication;
+using System.Net.Http.Headers;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -25,12 +28,19 @@ namespace Microsoft.Azure.Commands.Common
     /// <summary>
     /// Pipeline step for adding x-ms-unique-id header
     /// </summary>
-    public class UniqueId
+    public class UserAgent
     {
-        private static UniqueId _instance;
-        public static UniqueId Instance => UniqueId._instance ?? (UniqueId._instance = new UniqueId());
+        Version _version;
 
-        private int count;
+        public UserAgent(InvocationInfo invocation)
+            : this(invocation?.MyCommand?.Module?.Version ?? new Version("1.0.0"))
+        {
+        }
+
+        public UserAgent(Version moduleVersion)
+        {
+            _version = moduleVersion;
+        }
 
         /// <summary>
         /// Pipeline delegate to add a unique id header to an outgoing request
@@ -43,8 +53,13 @@ namespace Microsoft.Azure.Commands.Common
         /// <returns>Amended pipeline for retrieving a response</returns>
         public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken token, Action cancel, SignalDelegate signal, NextDelegate next)
         {
-            // add a header...
-            request.Headers.Add("x-ms-unique-id", Interlocked.Increment(ref this.count).ToString());
+            var userAgents = new ProductInfoHeaderValue[] { new ProductInfoHeaderValue("AzurePowerShell", $"Az4.0.0-preview") };
+            // add user agent haeaders
+
+            foreach (var userAgent in userAgents)
+            {
+                request.Headers.UserAgent.Add(userAgent);
+            }
 
             // continue with pipeline.
             return next(request, token, cancel, signal);
