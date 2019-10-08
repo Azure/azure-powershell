@@ -38,22 +38,22 @@ The **Update-AzManagedNetworkPeeringPolicy** cmdlet updates a managed network pe
 
 ### 1: Updates a managed network Peering Policy by name
 ```
-Update-AzManagedNetworkGroup -ResourceGroupName TestRG -ManagedNetworkName TestMN -Name TestPolicy -PeeringPolicyType "HubAndSpokeTopology" -Hub $hub -Spokes $list
+Update-AzManagedNetworkGroup -ResourceGroupName TestRG -ManagedNetworkName TestMN -Name TestPolicy -PeeringPolicyType "HubAndSpokeTopology" -Hub $hub -SpokeList $list
 ```
 
 ### 2: Updates a managed network Peering Policy by resourceid
 ```
-Update-AzManagedNetworkGroup -ResourceId $resourceId -PeeringPolicyType "HubAndSpokeTopology" -Hub $hub -Spokes $list
+Update-AzManagedNetworkGroup -ResourceId $resourceId -PeeringPolicyType "HubAndSpokeTopology" -Hub $hub -SpokeList $list
 ```
 
 ### 3: Updates a managed network Peering Policy by input object
 ```
-Update-AzManagedNetworkGroup -InputObject $managedNetworkpeeringpolicy -PeeringPolicyType "HubAndSpokeTopology" -Hub $hub -Spokes $list
+Update-AzManagedNetworkGroup -InputObject $managedNetworkpeeringpolicy -PeeringPolicyType "HubAndSpokeTopology" -Hub $hub -SpokeList $list
 ```
 
 ### 3: Updates a managed network Peering Policy by managednetwork object
 ```
-Update-AzManagedNetworkGroup -ManagedNetwork $managedNetwork -Name TestPolicy -PeeringPolicyType "HubAndSpokeTopology" -Hub $hub -Spokes $list
+Update-AzManagedNetworkGroup -ManagedNetwork $managedNetwork -Name TestPolicy -PeeringPolicyType "HubAndSpokeTopology" -Hub $hub -SpokeList $list
 ```
 
 

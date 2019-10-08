@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
     /// <summary>
     /// New Azure InputObject Command-let
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzManagedNetworkPeeringPolicy", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, "AzManagedNetworkPeeringPolicy", SupportsShouldProcess = true, DefaultParameterSetName = Constants.NameParameterSet)]
     [OutputType(typeof(PSManagedNetwork))]
     public class NewAzManagedNetworkPeeringPolicy : AzureManagedNetworkCmdletBase
     {
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         public string Hub { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork Policy Spoke Groups.")]
-        public List<string> Spokes { get; set; }
+        public List<string> SpokeList { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork Policy Mesh Groups.")]
         public List<string> Mesh { get; set; }
@@ -120,9 +120,9 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
                 psManagedNetworkPeeringPolicyProperties.Hub = new PSResourceId() { Id = this.Hub };
             }
 
-            if (this.Spokes != null)
+            if (this.SpokeList != null)
             {
-                psManagedNetworkPeeringPolicyProperties.Spokes = this.Spokes.Select(id => new PSResourceId() { Id = id }).ToList();
+                psManagedNetworkPeeringPolicyProperties.Spokes = this.SpokeList.Select(id => new PSResourceId() { Id = id }).ToList();
             }
 
             if (this.Mesh != null)

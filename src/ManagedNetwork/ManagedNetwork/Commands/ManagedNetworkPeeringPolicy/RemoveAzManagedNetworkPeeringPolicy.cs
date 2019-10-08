@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
     /// <summary>
     /// New Azure InputObject Command-let
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzManagedNetworkPeeringPolicy", DefaultParameterSetName = Constants.NameParameterSet)]
+    [Cmdlet(VerbsCommon.Remove, "AzManagedNetworkPeeringPolicy", SupportsShouldProcess = true, DefaultParameterSetName = Constants.NameParameterSet)]
     [OutputType(typeof(PSManagedNetwork))]
     public class RemoveAzManagedNetworkPeeringPolicy : AzureManagedNetworkCmdletBase
     {

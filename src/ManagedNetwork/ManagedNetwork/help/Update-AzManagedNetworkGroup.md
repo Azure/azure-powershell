@@ -205,7 +205,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ManagementGroupIds
+### -ManagementGroupIdList
 ```yaml
 Type: System.Collections.Generic.List<String>
 Parameter Sets: (All)
@@ -218,7 +218,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SubscriptionIds
+### -SubscriptionIdList
 ```yaml
 Type: System.Collections.Generic.List<String>
 Parameter Sets: (All)
@@ -231,7 +231,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VirtualNetworkIds
+### -VirtualNetworkIdList
 ```yaml
 Type: System.Collections.Generic.List<String>
 Parameter Sets: (All)
@@ -244,7 +244,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SubnetIds
+### -SubnetIdList
 ```yaml
 Type: System.Collections.Generic.List<String>
 Parameter Sets: (All)

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
     /// <summary>
     /// New Azure InputObject Command-let
     /// </summary>
-    [Cmdlet(VerbsData.Update, "AzManagedNetwork", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Update, "AzManagedNetwork", SupportsShouldProcess = true, DefaultParameterSetName = Constants.NameParameterSet)]
     [OutputType(typeof(PSManagedNetwork))]
     public class UpdateAzManagedNetwork : AzureManagedNetworkCmdletBase
     {

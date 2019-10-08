@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
     /// <summary>
     /// New Azure InputObject Command-let
     /// </summary>
-    [Cmdlet(VerbsData.Update, "AzManagedNetworkGroup", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Update, "AzManagedNetworkGroup", SupportsShouldProcess = true, DefaultParameterSetName = Constants.NameParameterSet)]
     [OutputType(typeof(PSManagedNetwork))]
     public class UpdateAzManagedNetworkGroup : AzureManagedNetworkCmdletBase
     {
@@ -75,16 +75,16 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         [ValidateNotNullOrEmpty]
         public PSManagedNetwork ManagedNetworkObject { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork Scope management group ids.")]
+        [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork management group ids.")]
         public List<string> ManagementGroupIdList { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork Scope subscription ids.")]
+        [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork subscription ids.")]
         public List<string> SubscriptionIdList { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork Scope virtual network ids.")]
+        [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork virtual network ids.")]
         public List<string> VirtualNetworkIdList { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork Scope subnet ids.")]
+        [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork subnet ids.")]
         public List<string> SubnetIdList { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.PassThruHelp)]

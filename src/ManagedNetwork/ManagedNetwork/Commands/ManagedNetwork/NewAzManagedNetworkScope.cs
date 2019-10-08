@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.ManagedNetwork.Models;
 
 namespace Microsoft.Azure.Commands.ManagedNetwork
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedNetworkScope", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSScope))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedNetworkScope", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSScope))]
     public class NewAzManagedNetworkScope : AzureManagedNetworkCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork Scope management group ids.")]

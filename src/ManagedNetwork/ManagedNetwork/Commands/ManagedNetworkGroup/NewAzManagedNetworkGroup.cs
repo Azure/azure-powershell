@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
     /// <summary>
     /// New Azure InputObject Command-let
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzManagedNetworkGroup", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, "AzManagedNetworkGroup", SupportsShouldProcess = true, DefaultParameterSetName = Constants.NameParameterSet)]
     [OutputType(typeof(PSManagedNetwork))]
     public class NewAzManagedNetworkGroup : AzureManagedNetworkCmdletBase
     {
@@ -59,17 +59,17 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork Scope management group ids.")]
-        public List<string> ManagementGroupIds { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork management group ids.")]
+        public List<string> ManagementGroupIdList { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork Scope subscription ids.")]
-        public List<string> SubscriptionIds { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork subscription ids.")]
+        public List<string> SubscriptionIdList { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork Scope virtual network ids.")]
-        public List<string> VirtualNetworkIds { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork virtual network ids.")]
+        public List<string> VirtualNetworkIdList { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork Scope subnet ids.")]
-        public List<string> SubnetIds { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork subnet ids.")]
+        public List<string> SubnetIdList { get; set; }
 
         /// <summary>
         ///     The AsJob parameter to run in the background.
@@ -113,24 +113,24 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         private PSManagedNetworkGroup CreateManagedNetworkGroup()
         {
             PSManagedNetworkGroup psManagedNetworkGroup = new PSManagedNetworkGroup();
-            if (this.ManagementGroupIds != null)
+            if (this.ManagementGroupIdList != null)
             {
-                psManagedNetworkGroup.ManagementGroups = this.ManagementGroupIds.Select(id => new PSResourceId() { Id = id }).ToList();
+                psManagedNetworkGroup.ManagementGroups = this.ManagementGroupIdList.Select(id => new PSResourceId() { Id = id }).ToList();
             }
 
-            if (this.SubscriptionIds != null)
+            if (this.SubscriptionIdList != null)
             {
-                psManagedNetworkGroup.Subscriptions = this.SubscriptionIds.Select(id => new PSResourceId() { Id = id }).ToList();
+                psManagedNetworkGroup.Subscriptions = this.SubscriptionIdList.Select(id => new PSResourceId() { Id = id }).ToList();
             }
 
-            if (this.VirtualNetworkIds != null)
+            if (this.VirtualNetworkIdList != null)
             {
-                psManagedNetworkGroup.VirtualNetworks = this.VirtualNetworkIds.Select(id => new PSResourceId() { Id = id }).ToList();
+                psManagedNetworkGroup.VirtualNetworks = this.VirtualNetworkIdList.Select(id => new PSResourceId() { Id = id }).ToList();
             }
 
-            if (this.SubnetIds != null)
+            if (this.SubnetIdList != null)
             {
-                psManagedNetworkGroup.Subnets = this.SubnetIds.Select(id => new PSResourceId() { Id = id }).ToList();
+                psManagedNetworkGroup.Subnets = this.SubnetIdList.Select(id => new PSResourceId() { Id = id }).ToList();
             }
 
             var sdkManagedNetworkGroup = ManagedNetworkResourceManagerProfile.Mapper.Map<ManagedNetworkGroup>(psManagedNetworkGroup);

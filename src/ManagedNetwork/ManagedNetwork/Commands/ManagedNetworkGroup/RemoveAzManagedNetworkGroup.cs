@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
     /// <summary>
     /// New Azure InputObject Command-let
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzManagedNetworkGroup", DefaultParameterSetName = Constants.NameParameterSet)]
+    [Cmdlet(VerbsCommon.Remove, "AzManagedNetworkGroup", SupportsShouldProcess = true, DefaultParameterSetName = Constants.NameParameterSet)]
     [OutputType(typeof(PSManagedNetwork))]
     public class RemoveAzManagedNetworkGroup : AzureManagedNetworkCmdletBase
     {

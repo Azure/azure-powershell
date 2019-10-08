@@ -48,7 +48,7 @@ function Test-GetSetManagedNetworkPolicy
 	[System.Collections.Generic.List[String]]$virtualNetworkGroupList = @()	
 	$virtualNetworkGroupList.Add($vnet1)
 	$virtualNetworkGroupList.Add($vnet2)
-	New-AzManagedNetworkGroup -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $groupnameHubSpoke -Location $location -VirtualNetworkIds $virtualNetworkGroupList -Force
+	New-AzManagedNetworkGroup -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $groupnameHubSpoke -Location $location -VirtualNetworkIdList $virtualNetworkGroupList -Force
 	$SpokeGroupResult = Get-AzManagedNetworkGroup -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $groupnameHubSpoke
 	
 
@@ -56,7 +56,7 @@ function Test-GetSetManagedNetworkPolicy
 	$meshgroupList.Add($vnet4)
 	$meshgroupList.Add($vnet5)
 	$meshgroupList.Add($vnet6)
-	New-AzManagedNetworkGroup -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $groupnameMesh -Location $location -VirtualNetworkIds $meshgroupList -Force
+	New-AzManagedNetworkGroup -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $groupnameMesh -Location $location -VirtualNetworkIdList $meshgroupList -Force
 	$MeshGroupResult = Get-AzManagedNetworkGroup -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $groupnameMesh
 
 	$PeeringPolicyType = "HubAndSpokeTopology"
@@ -64,7 +64,7 @@ function Test-GetSetManagedNetworkPolicy
 	[System.Collections.Generic.List[String]]$spokes = @()
 	$spokes.Add($SpokeGroupResult.Id)
 
-	New-AzManagedNetworkPeeringPolicy -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $policyNameHubSpoke -Location $location -Hub $hub -Spokes $spokes -PeeringPolicyType $PeeringPolicyType -Force
+	New-AzManagedNetworkPeeringPolicy -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $policyNameHubSpoke -Location $location -Hub $hub -SpokeList $spokes -PeeringPolicyType $PeeringPolicyType -Force
 	$managedNetworkPolicyResult = Get-AzManagedNetworkPeeringPolicy -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $policyNameHubSpoke
 	Assert-AreEqual $policyNameHubSpoke $managedNetworkPolicyResult.Name
 	Assert-AreEqual $location $managedNetworkPolicyResult.Location
