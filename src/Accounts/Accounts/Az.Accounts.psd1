@@ -56,29 +56,29 @@ DotNetFrameworkVersion = '4.7.2'
 # RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.PowerShell.Authentication.Abstractions.dll', 
-               '.\Microsoft.Azure.PowerShell.Authentication.dll', 
-               '.\Microsoft.Azure.PowerShell.Authentication.ResourceManager.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.Authorization.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.Compute.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.Graph.Rbac.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.Monitor.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.Network.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.PolicyInsights.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.ResourceManager.dll', 
-               '.\Microsoft.Azure.PowerShell.Common.dll', 
-               '.\Microsoft.Azure.PowerShell.Storage.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.Storage.Management.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.KeyVault.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.Websites.dll', 
-               '.\Hyak.Common.dll', '.\Microsoft.ApplicationInsights.dll', 
-               '.\Microsoft.Azure.Common.dll', 
-               '.\Microsoft.Rest.ClientRuntime.dll', 
-               '.\Microsoft.Rest.ClientRuntime.Azure.dll', 
-               '.\Microsoft.WindowsAzure.Storage.dll', 
-               '.\Microsoft.WindowsAzure.Storage.DataMovement.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.Aks.dll', 
-               '.\Microsoft.Azure.PowerShell.Strategies.dll'
+RequiredAssemblies = 'Microsoft.Azure.PowerShell.Authentication.Abstractions.dll', 
+               'Microsoft.Azure.PowerShell.Authentication.dll', 
+               'Microsoft.Azure.PowerShell.Authentication.ResourceManager.dll', 
+               'Microsoft.Azure.PowerShell.Clients.Authorization.dll', 
+               'Microsoft.Azure.PowerShell.Clients.Compute.dll', 
+               'Microsoft.Azure.PowerShell.Clients.Graph.Rbac.dll', 
+               'Microsoft.Azure.PowerShell.Clients.Monitor.dll', 
+               'Microsoft.Azure.PowerShell.Clients.Network.dll', 
+               'Microsoft.Azure.PowerShell.Clients.PolicyInsights.dll', 
+               'Microsoft.Azure.PowerShell.Clients.ResourceManager.dll', 
+               'Microsoft.Azure.PowerShell.Common.dll', 
+               'Microsoft.Azure.PowerShell.Storage.dll', 
+               'Microsoft.Azure.PowerShell.Clients.Storage.Management.dll', 
+               'Microsoft.Azure.PowerShell.Clients.KeyVault.dll', 
+               'Microsoft.Azure.PowerShell.Clients.Websites.dll', 
+               'Hyak.Common.dll', 'Microsoft.ApplicationInsights.dll', 
+               'Microsoft.Azure.Common.dll', 
+               'Microsoft.Rest.ClientRuntime.dll', 
+               'Microsoft.Rest.ClientRuntime.Azure.dll', 
+               'Microsoft.WindowsAzure.Storage.dll', 
+               'Microsoft.WindowsAzure.Storage.DataMovement.dll', 
+               'Microsoft.Azure.PowerShell.Clients.Aks.dll', 
+               'Microsoft.Azure.PowerShell.Strategies.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -87,10 +87,10 @@ RequiredAssemblies = '.\Microsoft.Azure.PowerShell.Authentication.Abstractions.d
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Accounts.format.ps1xml', '.\Accounts.generated.format.ps1xml'
+FormatsToProcess = 'Accounts.format.ps1xml', 'Accounts.generated.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll')
+NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
