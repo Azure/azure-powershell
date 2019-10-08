@@ -73,22 +73,22 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [ValidateNotNullOrEmpty]
         public string[] CorsOrigin { get; set; }
 
-        [Parameter(Mandatory = false,ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService List of Cors Headers. Specify HTTP headers which can be used during the request. Use \" * \" for any header.")]
-        [Parameter(Mandatory = false,ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis FhirService List of Cors Headers. Specify HTTP headers which can be used during the request. Use \" * \" for any header.")]
+        [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService List of Cors Headers. Specify HTTP headers which can be used during the request. Use \" * \" for any header.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis FhirService List of Cors Headers. Specify HTTP headers which can be used during the request. Use \" * \" for any header.")]
         [ValidateNotNullOrEmpty]
         public string[] CorsHeader { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet,HelpMessage = "HealthcareApis FhirService List of Cors Methods.")]
-        [Parameter(Mandatory = false,ParameterSetName = ResourceIdParameterSet,HelpMessage = "HealthcareApis FhirService List of Cors Methods.")]
+        [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService List of Cors Methods.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis FhirService List of Cors Methods.")]
         [ValidateNotNullOrEmpty]
         public string[] CorsMethod { get; set; }
 
-        [Parameter(Mandatory = false,ParameterSetName = ServiceNameParameterSet,HelpMessage = "HealthcareApis FhirService Cors Max Age. Specify how long a result from a request can be cached in seconds. Example: 600 means 10 minutes.")]
-        [Parameter(Mandatory = false,ParameterSetName = ResourceIdParameterSet,HelpMessage = "HealthcareApis FhirService Cors Max Age. Specify how long a result from a request can be cached in seconds. Example: 600 means 10 minutes.")]
+        [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService Cors Max Age. Specify how long a result from a request can be cached in seconds. Example: 600 means 10 minutes.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis FhirService Cors Max Age. Specify how long a result from a request can be cached in seconds. Example: 600 means 10 minutes.")]
         [ValidateNotNullOrEmpty]
         public int? CorsMaxAge { get; set; }
 
-        [Parameter(Mandatory = false,ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService AllowCorsCredentials.")]
+        [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService AllowCorsCredentials.")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis FhirService AllowCorsCredentials.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter AllowCorsCredential { get; set; }
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                             }
                         case InputObjectParameterSet:
                             {
-                                IList<PSHealthcareApisFhirServiceAccessPolicyEntry> entries = InputObject.Properties.AccessPolicies;
+                                IList<PSHealthcareApisFhirServiceAccessPolicyEntry> entries = InputObject.AccessPolicies;
                                 List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
 
                                 foreach (PSHealthcareApisFhirServiceAccessPolicyEntry entry in entries)
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         private IDictionary<string, string> GetTags(ServicesDescription healthcareApisAccount)
         {
-            if(this.Tag!=null && this.Tag.Count > 0)
+            if (this.Tag != null && this.Tag.Count > 0)
             {
                 Dictionary<string, string> tags = new Dictionary<string, string>();
                 foreach (DictionaryEntry tag in this.Tag)
@@ -341,21 +341,21 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                 {
                     AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo()
                     {
-                        Authority = InputObject.Properties.AuthenticationConfiguration.Authority?? healthcareApisAccount.Properties.AuthenticationConfiguration.Authority,
-                        Audience = InputObject.Properties.AuthenticationConfiguration.Audience ?? healthcareApisAccount.Properties.AuthenticationConfiguration.Audience,
-                        SmartProxyEnabled = InputObject.Properties.AuthenticationConfiguration.SmartProxyEnabled !=healthcareApisAccount.Properties.AuthenticationConfiguration.SmartProxyEnabled ? InputObject.Properties.AuthenticationConfiguration.SmartProxyEnabled : healthcareApisAccount.Properties.AuthenticationConfiguration.SmartProxyEnabled
+                        Authority = InputObject.Authority ?? healthcareApisAccount.Properties.AuthenticationConfiguration.Authority,
+                        Audience = InputObject.Audience ?? healthcareApisAccount.Properties.AuthenticationConfiguration.Audience,
+                        SmartProxyEnabled = InputObject.SmartProxyEnabled != healthcareApisAccount.Properties.AuthenticationConfiguration.SmartProxyEnabled ? InputObject.SmartProxyEnabled : healthcareApisAccount.Properties.AuthenticationConfiguration.SmartProxyEnabled
                     },
                     CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo()
                     {
-                        OfferThroughput = InputObject.Properties.CosmosDbConfiguration.OfferThroughput ?? healthcareApisAccount.Properties.CosmosDbConfiguration.OfferThroughput
+                        OfferThroughput = InputObject.CosmosDbOfferThroughput ?? healthcareApisAccount.Properties.CosmosDbConfiguration.OfferThroughput
                     },
                     CorsConfiguration = new ServiceCorsConfigurationInfo()
                     {
-                        Origins = InputObject.Properties.CorsConfiguration.Origins ?? healthcareApisAccount.Properties.CorsConfiguration.Origins,
-                        Headers = InputObject.Properties.CorsConfiguration.Headers ?? healthcareApisAccount.Properties.CorsConfiguration.Headers,
-                        Methods = InputObject.Properties.CorsConfiguration.Methods ?? healthcareApisAccount.Properties.CorsConfiguration.Methods,
-                        MaxAge = InputObject.Properties.CorsConfiguration.MaxAge ?? healthcareApisAccount.Properties.CorsConfiguration.MaxAge,
-                        AllowCredentials = InputObject.Properties.CorsConfiguration.AllowCredentials ?? healthcareApisAccount.Properties.CorsConfiguration.AllowCredentials
+                        Origins = InputObject.CorsOrigins ?? healthcareApisAccount.Properties.CorsConfiguration.Origins,
+                        Headers = InputObject.CorsHeaders ?? healthcareApisAccount.Properties.CorsConfiguration.Headers,
+                        Methods = InputObject.CorsMethods ?? healthcareApisAccount.Properties.CorsConfiguration.Methods,
+                        MaxAge = InputObject.CorsMaxAge ?? healthcareApisAccount.Properties.CorsConfiguration.MaxAge,
+                        AllowCredentials = InputObject.CorsAllowCredentials ?? healthcareApisAccount.Properties.CorsConfiguration.AllowCredentials
                     },
                     AccessPolicies = accessPolicies
                 },
