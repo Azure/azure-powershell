@@ -110,7 +110,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added Exception Handling around KeyNotFoundException'
+        ReleaseNotes = '* Updated Powershell to latst version of SDK.'
 
         # Prerelease string of this module
         # Prerelease = ''

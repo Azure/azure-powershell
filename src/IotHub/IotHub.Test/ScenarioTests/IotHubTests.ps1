@@ -29,6 +29,7 @@ function Test-AzureRmIotHubLifecycle
 	$Location = Get-Location "Microsoft.Devices" "IotHub" 
 	$IotHubName = getAssetName 
 	$ResourceGroupName = getAssetName 
+	$SubscriptionId = '91d12660-3dec-467a-be2a-213b5544ddc0'
 	$Sku = "B1"
 	$namespaceName = getAssetName 'eventHub'
 	$eventHubName = getAssetName
@@ -97,6 +98,8 @@ function Test-AzureRmIotHubLifecycle
 
 	Assert-True { $allIotHubsInResourceGroup.Count -eq 1 }
 	Assert-True { $iotHub.Name -eq $IotHubName }
+	Assert-True { $iotHub.Resourcegroup -eq $ResourceGroupName }
+	Assert-True { $iotHub.Subscriptionid -eq $SubscriptionId }
 	Assert-True { $iotHub.Properties.Routing.Routes.Count -eq 1}
     Assert-True { $iotHub.Properties.Routing.Routes[0].Name -eq "route"}
     Assert-True { $iotHub.Properties.Routing.Endpoints.EventHubs[0].Name -eq "eh1"}
