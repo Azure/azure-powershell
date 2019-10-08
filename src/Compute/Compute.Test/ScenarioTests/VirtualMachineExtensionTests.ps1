@@ -1254,7 +1254,7 @@ function Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove
 .SYNOPSIS
 Test the Set-AzVMDiskEncryptionExtension single pass enable and disable scenario with non default parameters
 #>
-function Test-AzureDiskEncryptionExtensionSinglePassEnableAndDisableWithNonDefaultParams
+function Test-AzureDiskEncryptionExtensionNonDefaultParams
 {
 	$resourceGroupName = Get-ComputeTestResourceName
 	try
@@ -1510,6 +1510,22 @@ function Test-AzureDiskEncryptionExtension
         Assert-NotNull $OsVolumeEncryptionSettings;
         Assert-NotNull $OsVolumeEncryptionSettings.DiskEncryptionKey.SecretUrl;
         Assert-NotNull $OsVolumeEncryptionSettings.DiskEncryptionKey.SourceVault;
+
+        #Update encryption settings on the VM from KEK to No KEK
+        Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -Force;
+        #Get encryption status
+        $encryptionStatus = Get-AzVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmName;
+        #Verify encryption is enabled on OS volume and data volumes
+        $OsVolumeEncryptionSettings = $encryptionStatus.OsVolumeEncryptionSettings;
+        Assert-AreEqual $encryptionStatus.OsVolumeEncrypted $true;
+        Assert-AreEqual $encryptionStatus.DataVolumesEncrypted $true;
+        #verify diskencryption keyvault url & secret url are not null
+        Assert-NotNull $OsVolumeEncryptionSettings;
+        Assert-NotNull $OsVolumeEncryptionSettings.DiskEncryptionKey.SecretUrl;
+        Assert-NotNull $OsVolumeEncryptionSettings.DiskEncryptionKey.SourceVault;
+		#verify key encryption key keyvault url & secret url are null after the update
+		Assert-Null $OsVolumeEncryptionSettings.KeyEncryptionKey.SecretUrl;
+        Assert-Null $OsVolumeEncryptionSettings.KeyEncryptionKey.SourceVault;
 
         #Remove the VM
         Remove-AzVm -ResourceGroupName $rgname -Name $vmName -Force;
