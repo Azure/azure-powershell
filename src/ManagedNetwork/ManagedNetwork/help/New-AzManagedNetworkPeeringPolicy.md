@@ -29,12 +29,12 @@ The **New-AzManagedNetworkPeeringPolicy** cmdlet creates a managed network polic
 
 ### 1: Create a managed network policy by Name
 ```
-$testmanagednetworkgroup = New-AzManagedNetworkPeeringPolicy -ResourceGroupName TestRG -ManagedNetworkName TestManagedNetwork -Name TestPolicy -Location exampleregion -PeeringPolicyType "HubAndSpokeTopology" -Hub $hub -Spokes $list
+$testmanagednetworkgroup = New-AzManagedNetworkPeeringPolicy -ResourceGroupName TestRG -ManagedNetworkName TestManagedNetwork -Name TestPolicy -Location exampleregion -PeeringPolicyType "HubAndSpokeTopology" -Hub $hub -SpokeList $list
 ```
 
 ### 2: Create a managed network policy by ManagedNetwork Object
 ```
-$testmanagednetworkgroup = New-AzManagedNetworkPeeringPolicy -ManagedNetwork $managednetwork -Name TestPolicy -Location exampleregion -PeeringPolicyType "HubAndSpokeTopology" -Hub $hub -Spokes $list
+$testmanagednetworkgroup = New-AzManagedNetworkPeeringPolicy -ManagedNetwork $managednetwork -Name TestPolicy -Location exampleregion -PeeringPolicyType "HubAndSpokeTopology" -Hub $hub -SpokeList $list
 ```
 
 ## PARAMETERS

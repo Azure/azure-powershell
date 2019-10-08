@@ -34,7 +34,7 @@ The **Get-AzManagedNetworkPolicy** cmdlet gets managednewtork policies.
 ### 1: Retrieve a managednetwork policy by Name
 ```
 Get-AzManagedNetworkPolicy -ResourceGroupName TestRG -ManagedNetworkName TestMN -Name TestPolicy -Location userregion
--PeeringPolicyType "HubAndSpokeTopology" -Hub $hub -Spokes $list
+-PeeringPolicyType "HubAndSpokeTopology" -Hub $hub -SpokeList $list
 
 Properties : Microsoft.Azure.Commands.ManagedNetwork.Models.PSManagedNetworkPeeringPolicyProperties
 Id         : subscriptions/{usersubscriptionId}/resourceGroups/TestRG/providers/Microsoft.ManagedNetwork
@@ -47,7 +47,7 @@ Location   : userregion
 ### 2: Retrieve a managednetwork policy by resource id
 ```
 Get-AzManagedNetworkPolicy -ResourceGroupid $resourceId  -Location userregion
--PeeringPolicyType "HubAndSpokeTopology" -Hub $hub -Spokes $list
+-PeeringPolicyType "HubAndSpokeTopology" -Hub $hub -SpokeList $list
 
 Properties : Microsoft.Azure.Commands.ManagedNetwork.Models.PSManagedNetworkPeeringPolicyProperties
 Id         : subscriptions/{usersubscriptionId}/resourceGroups/TestRG/providers/Microsoft.ManagedNetwork
@@ -60,7 +60,7 @@ Location   : {userregion}
 ### 3: Retrieve a managednetwork by ManagedNetwork Object
 ```
 Get-AzManagedNetworkPolicy -ManagedNetwork $ManagedNetwork -Name TestPolicy  -Location userregion
--PeeringPolicyType "HubAndSpokeTopology" -Hub $hub -Spokes $list
+-PeeringPolicyType "HubAndSpokeTopology" -Hub $hub -SpokeList $list
 
 Properties : Microsoft.Azure.Commands.ManagedNetwork.Models.PSManagedNetworkPeeringPolicyProperties
 Id         : subscriptions/{usersubscriptionId}/resourceGroups/TestRG/providers/Microsoft.ManagedNetwork

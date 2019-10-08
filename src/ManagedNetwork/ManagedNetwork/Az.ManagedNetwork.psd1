@@ -27,9 +27,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell - CDN service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
-
-For more information on Cdn, please visit the following: https://docs.microsoft.com/azure/cdn/'
+Description = 'Microsoft Azure PowerShell - ManagedNetwork cmdlets in Windows PowerShell and PowerShell Core.'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'
@@ -53,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.ManagedNetwork.dll'
+RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.ManagedNetwork.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -94,7 +92,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','CDN'
+        Tags = 'Azure','ResourceManager','ARM','MNC'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'

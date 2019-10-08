@@ -46,14 +46,14 @@ function Test-GetSetManagedNetworkGroup
 	$virtualNetworkGroupList.Add($vnet1)
 	$virtualNetworkGroupList.Add($vnet2)
 
-	New-AzManagedNetworkGroup -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $name -Location $location -VirtualNetworkIds $virtualNetworkGroupList -Force
+	New-AzManagedNetworkGroup -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $name -Location $location -VirtualNetworkIdList $virtualNetworkGroupList -Force
 	$managedNetworkGroupResult = Get-AzManagedNetworkGroup -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $name
 	Assert-AreEqual $name $managedNetworkGroupResult.Name
 	Assert-AreEqual $location $managedNetworkGroupResult.Location
 
 	[System.Collections.Generic.List[String]]$virtualNetworkGroupList2 = @()	
 	$virtualNetworkGroupList.Add($vnet1)
-	New-AzManagedNetworkGroup -ManagedNetworkObject $managedNetwork -Name $name -Location $location -VirtualNetworkIds $virtualNetworkGroupList2 -Force
+	New-AzManagedNetworkGroup -ManagedNetworkObject $managedNetwork -Name $name -Location $location -VirtualNetworkIdList $virtualNetworkGroupList2 -Force
 	$managedNetworkGroupResult2 = Get-AzManagedNetworkGroup -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName2 -Name $name
 	Assert-AreEqual $name $managedNetworkGroupResult2.Name
 	Assert-AreEqual $location $managedNetworkGroupResult2.Location
