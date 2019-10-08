@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fix bug where New-AzRoleAssignment could not be called without parameter Scope.
+* Add new cmdlet New-AzDeploymentWhatIf for deployment what-if operation.
 
 ## Version 1.6.3
 * Add support for new api version 2019-07-01 for Microsoft.Resource
