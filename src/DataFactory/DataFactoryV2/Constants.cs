@@ -76,6 +76,30 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpDataset = "The dataset object.";
 
+        public const string HelpDataFlowName = "The data flow name.";
+
+        public const string HelpDataFlow = "The data flow object.";
+
+        public const string HelpDataFlowDebugSessionId = "The data flow debug session ID.";
+
+        public const string HelpDataFlowDebugCommand = "The data flow debug command.";
+
+        public const string HelpDataFlowDebugStreamName = "The stream name of data flow for debugging.";
+
+        public const string HelpDataFlowDebugRowLimits = "The row limit for data flow data preview.";
+
+        public const string HelpDataFlowDebugExpression = "The expression for data flow expression preview.";
+
+        public const string HelpDataFlowDebugColumns = "The columns list for data flow statistics preview.";
+
+        public const string HelpDataFlowCreationContext = "Creating or updating data flow '{0}' in resource group '{1}' under data factory '{2}'.";
+
+        public const string HelpAddDataFlowPackageContext = "Add data flow package to debug session '{0}' in resource group '{1}' under data factory '{2}'.";
+
+        public const string HelpInvokeDebugSessionCommandContext = "Invoke debug command of debug session '{0}' in resource group '{1}' under data factory '{2}'.";
+
+        public const string HelpStartDataFlowDebugSessionContext = "Start a data flow debug session in resource group '{0}' under data factory '{1}'.";
+
         public const string HelpLinkedServiceName = "The linked service name.";
 
         public const string HelpLinkedService = "The linked service object.";
@@ -173,6 +197,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string File = "File";
 
         public const string DatasetName = "DatasetName";
+
+        public const string DataFlowName = "DataFlowName";
+
+        public const string DataFlowDebugSessionId = "SessionId";
 
         public const string DataFactoryName = "DataFactoryName";
 
