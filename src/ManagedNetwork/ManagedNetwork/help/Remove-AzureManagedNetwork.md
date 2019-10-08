@@ -1,7 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetwork.dll-Help.xml
 Module Name: Az.ManagedNetwork
-online version: https://docs.microsoft.com/en-us/powershell/module/az.managednetwork/remove-azmanagednetwork
 schema: 2.0.0
 ---
 
