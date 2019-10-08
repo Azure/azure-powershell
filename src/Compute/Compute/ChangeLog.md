@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix -skipVmBackup exception for Linux VMs with managed disks for Set-AzVMDiskEncryptionExtension. 
 
 ## Version 2.6.0
 * Add UploadSizeInBytes parameter tp New-AzDiskConfig
