@@ -17,16 +17,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Management.Automation;
 using System.Net;
-using System.Runtime.Serialization.Formatters;
+using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
@@ -35,17 +39,12 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
-using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
-using System.Management.Automation;
-using Microsoft.Rest;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
+    using System.Threading;
+
     public class ResourceManagerSdkClient
     {
         /// <summary>
@@ -1372,6 +1371,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             var deployment = this.ExecuteDeploymentInternal(parameters);
 
             return deployment.ToPSDeployment(managementGroupId: parameters.ManagementGroupId, resourceGroupName: parameters.ResourceGroupName);
+        }
+
+        public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters)
+        {
+            IDeploymentsOperations deployments = this.ResourceManagementClient.Deployments;
+            DeploymentWhatIf deploymentWhatIf = parameters.ToDeploymentWhatIf();
+
+            return new PSWhatIfOperationResult(string.IsNullOrEmpty(parameters.ResourceGroupName)
+                ? deployments.WhatIfAtSubscriptionScope(parameters.DeploymentName, deploymentWhatIf)
+                : deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf));
         }
 
         /// <summary>
