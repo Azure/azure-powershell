@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The list of application rules")]
+            HelpMessage = "The list of rules")]
         [ValidateNotNullOrEmpty]
         public PSAzureFirewallPolicyBaseRuleCollection[] RuleCollection { get; set; }
 
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            var applicationRc = new PSAzureFirewallPolicyRuleCollectionGroup
+            var ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup
             {
                 priority = this.Priority,
                 ruleCollection = this.RuleCollection?.ToList(),
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network
             var rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper
             {
                 name = this.Name,
-                properties = applicationRc
+                properties = ruleGroup
             };
 
 

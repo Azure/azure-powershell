@@ -26,10 +26,10 @@ Set-AzFirewallPolicyRuleCollectionGroup -Name <String> -Priority <UInt32>
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzFirewallPolicyRuleCollectionGroup -Name rg1 -ResourceGroupName TestRg -Priority 200 -RuleCollection $filterRule1 -AzureFirewallPolicy $fp
 ```
 
-{{ Add example description here }}
+This example updates a rule collection group in the firewall policy $fp
 
 ## PARAMETERS
 
