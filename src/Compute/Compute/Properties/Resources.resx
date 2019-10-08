@@ -597,4 +597,10 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
   <data name="NoSubscriptionInContext" xml:space="preserve">
     <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login.</value>
   </data>
+  <data name="LinuxConfigurationSpecified" xml:space="preserve">
+    <value>Linux configuration is already specified.  This cmdlet requires a Windows configuration.</value>
+  </data>
+  <data name="WindowsConfigurationSpecified" xml:space="preserve">
+    <value>Windows configuration is already specified.  This cmdlet requires a Linux configuration.</value>
+  </data>
 </root>
