@@ -14,6 +14,7 @@
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.5.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.11.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="1.1.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="2.4.1-preview" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
