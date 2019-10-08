@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix bug in update encryption settings in Set-AzVMDiskEncryptionExtension, two pass scenario.
 
 ## Version 2.6.0
 * Add UploadSizeInBytes parameter tp New-AzDiskConfig
