@@ -18,10 +18,6 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         /// <summary>
         /// Gets or sets The Resource Group name
         /// </summary>
-        [Parameter(Position = 0, 
-            Mandatory = true, 
-            HelpMessage = Constants.ResourceGroupNameHelp, 
-            ParameterSetName = Constants.ListParameterSet)]
         [Parameter(Position = 0,
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
@@ -30,10 +26,6 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, 
-            Mandatory = true, 
-            HelpMessage = Constants.ManagedNetworkNameHelp,
-            ParameterSetName = Constants.ListParameterSet)]
         [Parameter(Position = 1,
             Mandatory = true,
             HelpMessage = Constants.ManagedNetworkNameHelp,
@@ -41,7 +33,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         [ValidateNotNullOrEmpty]
         public string ManagedNetworkName { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             HelpMessage = Constants.ManagedNetworkGroupNameHelp,
             ParameterSetName = Constants.NameParameterSet)]
         [Parameter(Mandatory = false,
