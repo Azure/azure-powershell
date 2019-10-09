@@ -140,6 +140,12 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The retention in days.")]
         public int? RetentionInDays { get; set; }
 
+        /// <summary>
+        /// Gets or sets the retention in days
+        /// </summary>
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether to export (to ODS) to resource-specific (if present) or to AzureDiagnostics (default, not present)")]
+        public SwitchParameter ExportToResourceSpecific { get; set; }
+
         #endregion
 
         private bool isStorageParamPresent;
@@ -353,7 +359,8 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 StorageAccountId = properties.StorageAccountId,
                 WorkspaceId = properties.WorkspaceId,
                 EventHubAuthorizationRuleId = properties.EventHubAuthorizationRuleId,
-                ServiceBusRuleId = properties.ServiceBusRuleId
+                ServiceBusRuleId = properties.ServiceBusRuleId,
+                LogAnalyticsDestinationType = properties.LogAnalyticsDestinationType
             };
             return putParameters;
         }
@@ -526,6 +533,11 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             {
                 WriteDebugWithTimestamp("Setting workspace Id");
                 properties.WorkspaceId = this.WorkspaceId;
+
+                WriteDebugWithTimestamp("Setting LogAnalyticsDestinationType");
+                properties.LogAnalyticsDestinationType = this.ExportToResourceSpecific.IsPresent
+                    ? "Dedicated"
+                    : null;
             }
         }
 
