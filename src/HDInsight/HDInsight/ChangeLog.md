@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* update references in .psd1 to use relative path
 
 ## Version 2.0.2
 * Call out breaking changes

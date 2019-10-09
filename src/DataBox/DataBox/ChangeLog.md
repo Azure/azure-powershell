@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* update references in .psd1 to use relative path
 
 ## Version 0.1.0
 * General Availability of `Az.Databox` Module
