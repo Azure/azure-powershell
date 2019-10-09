@@ -586,6 +586,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Linux configuration is already specified.  This cmdlet requires a Windows configuration..
+        /// </summary>
+        internal static string LinuxConfigurationSpecified {
+            get {
+                return ResourceManager.GetString("LinuxConfigurationSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzAccount to login..
         /// </summary>
         internal static string NoSubscriptionInContext {
@@ -1316,6 +1325,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         internal static string VmssUseConnectionString {
             get {
                 return ResourceManager.GetString("VmssUseConnectionString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows configuration is already specified.  This cmdlet requires a Linux configuration..
+        /// </summary>
+        internal static string WindowsConfigurationSpecified {
+            get {
+                return ResourceManager.GetString("WindowsConfigurationSpecified", resourceCulture);
             }
         }
     }

@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSSubnet> Subnets { get; set; }
 
+        public PSVirtualNetworkBgpCommunities BgpCommunities { get; set; }
+
         public List<PSVirtualNetworkPeering> VirtualNetworkPeerings { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
@@ -54,6 +56,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string SubnetsText
         {
             get { return JsonConvert.SerializeObject(Subnets, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string BgpCommunitiesText
+        {
+            get { return JsonConvert.SerializeObject(BgpCommunities, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
