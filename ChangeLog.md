@@ -1,6 +1,6 @@
 ## 2.8.0 - October 2019
 ### General
-* Az.HealthcareApisService 1.0.0 release
+* Az.HealthcareApis 1.0.0 release
 
 #### Az.Accounts
 * Fixed miscellaneous typos across module
@@ -22,7 +22,7 @@
 * Adding action commands for ADF V2 data flow debug Session: Start-AzDataFactoryV2DataFlowDebugSession, Get-AzDataFactoryV2DataFlowDebugSession, Add-AzDataFactoryV2DataFlowDebugSessionPackage, Invoke-AzDataFactoryV2DataFlowDebugSessionCommand and Stop-AzDataFactoryV2DataFlowDebugSession.
 * Update ADF .Net SDK version to 4.2.0
 
-#### Az.HealthcareApisService
+#### Az.HealthcareApis
 * Updated the powershell version to 1.0.0
 * Updated the SDK version to 1.0.2
 * Update in tests to refer to new SDK version

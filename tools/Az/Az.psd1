@@ -77,7 +77,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.3'; },
                @{ModuleName = 'Az.EventHub'; RequiredVersion = '1.4.0'; }, 
                @{ModuleName = 'Az.FrontDoor'; RequiredVersion = '1.1.1'; },
                @{ModuleName = 'Az.HDInsight'; RequiredVersion = '2.0.2'; }, 
-               @{ModuleName = 'Az.HealthcareApisService'; RequiredVersion = '1.0.0'; }, 
+               @{ModuleName = 'Az.HealthcareApis'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.IotHub'; RequiredVersion = '1.3.1'; }, 
                @{ModuleName = 'Az.KeyVault'; RequiredVersion = '1.3.1'; }, 
                @{ModuleName = 'Az.LogicApp'; RequiredVersion = '1.3.1'; }, 
@@ -180,7 +180,7 @@ Az.DataFactory
 * Adding action commands for ADF V2 data flow debug Session: Start-AzDataFactoryV2DataFlowDebugSession, Get-AzDataFactoryV2DataFlowDebugSession, Add-AzDataFactoryV2DataFlowDebugSessionPackage, Invoke-AzDataFactoryV2DataFlowDebugSessionCommand and Stop-AzDataFactoryV2DataFlowDebugSession.
 * Update ADF .Net SDK version to 4.2.0
 
-## Az.HealthcareApisService
+## Az.HealthcareApis
 * Call out breaking changes * Updated the powershell version to 1.0.0
 * Updated the SDK version to 1.0.2
 * Update in tests to refer to new SDK version
