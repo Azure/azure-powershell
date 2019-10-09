@@ -141,4 +141,10 @@
   <data name="invalidAccessPolicyObjectIdMessage" xml:space="preserve">
     <value>At least one of the supplied access policy object IDs is invalid. Object ID must be a valid GUID.</value>
   </data>
+  <data name="keyNotFoundExceptionMessage" xml:space="preserve">
+    <value>Object Id couldn't be retrieved from the current context. Please specify at least one accesspolicy object id</value>
+  </data>
+  <data name="nullPointerExceptionMessage" xml:space="preserve">
+    <value>User is not logged in to any subscription. Run Connect-AzAccount to login</value>
+  </data>
 </root>
