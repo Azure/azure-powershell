@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else if (this.VM.OSProfile.WindowsConfiguration == null && this.VM.OSProfile.LinuxConfiguration != null)
             {
-                throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
+                throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.LinuxConfigurationSpecified);
             }
 
             if (this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContent == null)
