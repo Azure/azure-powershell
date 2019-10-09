@@ -574,4 +574,7 @@ Please contact Microsoft for further assistance.</value>
   <data name="ProtectedItemsCountExceededException" xml:space="preserve">
     <value>Cannot configure backup for more than 100 VMs per policy</value>
   </data>
+  <data name="SoftdeleteNotImplementedException" xml:space="preserve">
+    <value>Undo-deletion is only supported for AzureVMs. This method is not supported for other workloads.</value>
+  </data>
 </root>

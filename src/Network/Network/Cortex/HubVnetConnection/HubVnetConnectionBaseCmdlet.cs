@@ -65,20 +65,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool IsHubVnetConnectionPresent(string resourceGroupName, string parentHubName, string name)
         {
-            try
-            {
-                this.GetHubVirtualNetworkConnection(resourceGroupName, parentHubName, name);
-            }
-            catch (Microsoft.Azure.Management.Network.Models.ErrorException exception)
-            {
-                if (exception.Response.StatusCode == HttpStatusCode.NotFound)
-                {
-                    // Resource is not present
-                    return false;
-                }
-            }
-
-            return true;
+            return NetworkBaseCmdlet.IsResourcePresent(() => { GetHubVirtualNetworkConnection(resourceGroupName, parentHubName, name); });
         }
     }
 }
