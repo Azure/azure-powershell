@@ -36,9 +36,6 @@ PS C:\> New-AzFirewallPolicyApplicationRule -Name AR1 -SourceAddress "192.168.0.
 ```
 
 This example creates an application rule with the source address, protocol and the target fqdns.
-```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
