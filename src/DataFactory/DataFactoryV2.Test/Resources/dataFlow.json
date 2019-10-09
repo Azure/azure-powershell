@@ -1,0 +1,27 @@
+{
+  "properties": {
+    "type": "MappingDataFlow",
+    "typeProperties": {
+      "sources": [
+        {
+          "dataset": {
+            "referenceName": "DelimitedTextInput",
+            "type": "DatasetReference"
+          },
+          "name": "source1"
+        }
+      ],
+      "sinks": [
+        {
+          "dataset": {
+            "referenceName": "DelimitedTextOutput",
+            "type": "DatasetReference"
+          },
+          "name": "sink1"
+        }
+      ],
+      "transformations": [],
+      "script": "\n\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\trowUrlColumn: 'source',\n\twildcardPaths:['Resources-Sample-211UTF*.csv'],\n\tpartitionBy('roundRobin', 2)) ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['test.csv'],\n\tpartitionBy('hash', 1)) ~> sink1"
+    }
+  }
+}
