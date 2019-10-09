@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* update references in .psd1 to use relative path
+* Update references in .psd1 to use relative path
 
 ## Version 1.1.3
 * Fixed miscellaneous typos across module
