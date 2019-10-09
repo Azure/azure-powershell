@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* update references in .psd1 to use relative path
 
 ## Version 1.14.2
 * Update example in reference documentation for `Get-AzSqlElasticPool`

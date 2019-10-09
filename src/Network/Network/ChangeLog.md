@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* update references in .psd1 to use relative path
 
 ## Version 1.14.0
 * Fix incorrect example in `New-AzApplicationGateway` reference documentation 

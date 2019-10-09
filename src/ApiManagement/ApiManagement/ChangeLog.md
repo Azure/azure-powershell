@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* update references in .psd1 to use relative path
 
 ## Version 1.3.1
 * Update `-Format` parameter description in `Set-AzApiManagementPolicy` reference documentation

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* update references in .psd1 to use relative path
 
 ## Version 1.3.0
 * Add support to invoke failover for an IotHub to the geo-paired disaster recovery region.
