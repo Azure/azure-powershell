@@ -115,6 +115,15 @@
                 <PropertyName>SubnetsText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>BgpCommunities</Label>
+                <PropertyName>BgpCommunitiesText</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    !($_.BgpCommunities -eq $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
+              <ListItem>
                 <Label>VirtualNetworkPeerings</Label>
                 <PropertyName>VirtualNetworkPeeringsText</PropertyName>
               </ListItem>
