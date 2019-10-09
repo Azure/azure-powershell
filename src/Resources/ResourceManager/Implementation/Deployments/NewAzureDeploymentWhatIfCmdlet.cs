@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
         public DeploymentMode Mode { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The result format.")]
-        public WhatIfResultFormat ResultFormat { get; set; }
+        public WhatIfResultFormat ResultFormat { get; set; } = WhatIfResultFormat.FullResourcePayloads;
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
