@@ -18,11 +18,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
     using Management.ResourceManager.Models;
     using ResourceManager.Cmdlets.Formatters;
     using ResourceManager.Cmdlets.SdkModels.Deployments;
+    using WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
     public class WhatIfOperationResultFormatterTests
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Format_EmptyResourceChanges_ReturnsNoChangeInfo()
         {
             // Arrange.
@@ -40,6 +42,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Format_NonEmptyResourceChanges_AddsLegendAtTheBeginning()
         {
             // Arrange.
@@ -87,6 +90,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Format_NonEmptyResourceChanges_AddsStatsAtTheEnd()
         {
             // Arrange.
@@ -128,6 +132,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Format_NonEmptyResourceChanges_SortsAndGroupsThemByScopeAndChangeType()
         {
             // Arrange.
@@ -191,6 +196,7 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Format_ResourceIdOnly_SortsAndGroupsByShortResourceId()
         {
             // Arrange.
@@ -248,6 +254,7 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Format_ChangeTypeDelete_FormatsBeforeValue()
         {
             // Arrange.
@@ -284,6 +291,7 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Format_ChangeTypeCreate_FormatsAfterValue()
         {
             // Arrange.
@@ -320,6 +328,7 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Format_ChangeTypeModify_FormatsPropertyChanges()
         {
             // Arrange.
