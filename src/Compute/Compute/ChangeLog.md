@@ -19,7 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* update references in .psd1 to use relative path
+* Update references in .psd1 to use relative path
 
 ## Version 2.6.0
 * Add UploadSizeInBytes parameter tp New-AzDiskConfig

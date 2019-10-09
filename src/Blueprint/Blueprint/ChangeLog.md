@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* update references in .psd1 to use relative path
+* Update references in .psd1 to use relative path
 
 ## Version 0.2.5
 * Add functionality to make sure Blueprint RP is registered before any service calls
