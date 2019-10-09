@@ -31,6 +31,7 @@
 * Fix the null exception for Get-AzRemoteDesktopFile.
 * Fix VHD Seek method for end-relative position.
 * Fix UltraSSD issue for New-AzVM and Update-AzVM.
+* Fix code to allow non default extension publisher, type and name for Get-AzVMDiskEncryptionStatus
 
 ## Version 2.5.0
 * Add VmssId to New-AzVMConfig cmdlet

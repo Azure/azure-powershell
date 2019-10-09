@@ -44,6 +44,18 @@ PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Defa
 PS C:\>Set-AzApiManagementApi -Context $ApiMgmtContext -Name "EchoApi" -ServiceUrl "https://contoso.com/apis/echo" -Protocols @('https') -Description "Responds with what was sent" -Path "echo"
 ```
 
+### Example 2 Add an API to an existing ApiVersionSet
+```powershell
+PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>$versionSet = New-AzApiManagementApiVersionSet -Context $context -Name "Echo API Version Set" -Scheme Segment -Description "version set sample"
+PS C:\>$api = Get-AzApiManagementApi -Context $ApiMgmtContext -ApiId "echo-api"
+PS C:\>$api.ApiVersionSetId = $versionSet.Id
+PS C:\>$api.ApiVersion = "v1"
+PS C:\>$api.ApiVersionSetDescription = $versionSet.Description
+PS C:\>Set-AzApiManagementApi -InputObject $api -PassThru
+```
+This example adds an API to an existing API Version Set
+
 ## PARAMETERS
 
 ### -ApiId
