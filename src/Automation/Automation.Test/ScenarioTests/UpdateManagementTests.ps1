@@ -522,3 +522,43 @@ function Test-CreateLinuxIncludedPackageNameMasksSoftwareUpdateConfiguration() {
     WaitForProvisioningState $name "Succeeded"
 }
 
+
+<#
+Test-CreateLinuxOneTimeSoftwareUpdateConfigurationWithAllOption
+#>
+function Test-CreateLinuxSoftwareUpdateConfigurationWithRebootSetting {
+	$azureVMIdsLinux = @(
+        "/subscriptions/d2b38167-d3ca-4d1f-a020-948eee21b6bc/resourceGroups/ikanni-rhel76-hw-001-RG/providers/Microsoft.Compute/virtualMachines/ikanni-rhel76-hw-001",
+        "/subscriptions/d2b38167-d3ca-4d1f-a020-948eee21b6bc/resourceGroups/ikanni-rhel76-JPE-hw-002-RG/providers/Microsoft.Compute/virtualMachines/ikanni-rhel76-JPE-hw-002"
+    )
+
+    $name = "linx-suc-reboot"
+	$rebootSetting = "Never"
+    $startTime = ([DateTime]::Now).AddMinutes(10)
+	$s = New-AzAutomationSchedule -ResourceGroupName $rg `
+                                       -AutomationAccountName $aa `
+                                       -Name $name `
+                                       -Description linux-suc-reboot `
+                                       -OneTime `
+                                       -StartTime $startTime `
+                                       -ForUpdate
+
+    $suc = New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg `
+                                                             -AutomationAccountName $aa `
+                                                             -Schedule $s `
+                                                             -Linux `
+                                                             -AzureVMResourceId $azureVMIdsLinux `
+                                                             -NonAzureComputer $nonAzurecomputers `
+                                                             -Duration (New-TimeSpan -Hours 2) `
+                                                             -IncludedPackageClassification Security,Critical `
+                                                             -ExcludedPackageNameMask Mask01,Mask02 `
+                                                             -IncludedPackageNameMask Mask100 `
+															 -RebootSetting $rebootSetting
+	
+    Assert-NotNull $suc "New-AzAutomationSoftwareUpdateConfiguration returned null"
+    Assert-AreEqual $suc.Name $name "Name of created software update configuration didn't match given name"
+	Assert-AreEqual $suc.UpdateConfiguration.Linux.rebootSetting $rebootSetting "Reboot setting failed to match"
+
+    WaitForProvisioningState $name "Failed"
+}
+
