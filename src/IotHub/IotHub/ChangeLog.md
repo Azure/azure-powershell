@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * update references in .psd1 to use relative path
+* Add new routing source: DigitalTwinChangeEvents
+* Minor bug fix: Get-AzIothub not returning subscriptionId 
 
 ## Version 1.3.0
 * Add support to invoke failover for an IotHub to the geo-paired disaster recovery region.

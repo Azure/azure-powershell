@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 * update references in .psd1 to use relative path
+* Upgrade Storage Client Library to 11.1.0
+* List containers with Management plane API, will list with NextPageLink
+    -  Get-AzRmStorageContainer
+* List Storage accounts from subscription, will list with NextPageLink
+    -  Get-AzStorageAccount
 
 ## Version 1.7.0
 * Updated example in reference documentation for `Get-AzStorageAccountKey`

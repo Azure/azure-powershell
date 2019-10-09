@@ -20,6 +20,9 @@
 ## Upcoming Release
 * update references in .psd1 to use relative path
 
+## Version 1.6.3
+* Update telemetry and url rewriting for generated modules, fix windows unit tests.
+
 ## Version 1.6.2
 * Fixed miscellaneous typos across module
 * Support user-assigned MSI in Azure Functions Authentication (#9479)

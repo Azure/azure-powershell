@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/5f1006f9-e71f-4023-bb9e-f1c90262eda0/providers/Microsoft.Network/applicationGatewayAvailableWafRuleSets?api-version=2019-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWYxMDA2ZjktZTcxZi00MDIzLWJiOWUtZjFjOTAyNjJlZGEwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVXYWZSdWxlU2V0cz9hcGktdmVyc2lvbj0yMDE5LTA3LTAx",
+      "RequestUri": "/subscriptions/5f1006f9-e71f-4023-bb9e-f1c90262eda0/providers/Microsoft.Network/applicationGatewayAvailableWafRuleSets?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWYxMDA2ZjktZTcxZi00MDIzLWJiOWUtZjFjOTAyNjJlZGEwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVXYWZSdWxlU2V0cz9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "802ae49a-202e-4294-95f4-f367bcbb36e0"
+          "29f93e5a-a4b3-4824-8f64-c5641d177c2f"
         ],
         "accept-language": [
           "en-US"
@@ -24,7 +24,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 26 Aug 2019 22:13:39 GMT"
+          "Wed, 18 Sep 2019 22:07:27 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -34,22 +34,22 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "461eb5c8-f821-494c-94c8-a5a479616223"
+          "5aa6bc6d-28f8-4201-a7bc-2e52a86c1464"
         ],
         "x-ms-correlation-request-id": [
-          "4c4bf77f-b39a-4b69-9509-1ae110ffb5c8"
+          "de32fd12-ba67-4695-addc-4b95fb7f1f83"
         ],
         "x-ms-arm-service-request-id": [
-          "65e2bcb9-fc8c-425a-809d-8fb64a2d7f18"
+          "0a95b189-7dae-483f-ac33-8b56db087ab9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11999"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190826T221340Z:4c4bf77f-b39a-4b69-9509-1ae110ffb5c8"
+          "WESTUS2:20190918T220727Z:de32fd12-ba67-4695-addc-4b95fb7f1f83"
         ],
         "X-Content-Type-Options": [
           "nosniff"

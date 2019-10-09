@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.2'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.3'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Sql.dll', 
@@ -230,6 +230,9 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Set-AzSqlInstanceTransparentDataEncryptionProtector', 
                'Get-AzSqlServerAudit', 'Get-AzSqlDatabaseAudit', 
                'Set-AzSqlServerAudit', 'Set-AzSqlDatabaseAudit', 
+	       'Get-AzSqlInstanceActiveDirectoryAdministrator', 
+               'Remove-AzSqlInstanceActiveDirectoryAdministrator', 
+               'Set-AzSqlInstanceActiveDirectoryAdministrator',
                'Remove-AzSqlServerAudit', 'Remove-AzSqlDatabaseAudit', 
                'Get-AzSqlInstancePool', 'Set-AzSqlInstancePool', 
                'New-AzSqlInstancePool', 'Remove-AzSqlInstancePool', 
