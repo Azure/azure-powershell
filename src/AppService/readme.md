@@ -52,7 +52,7 @@ require:
   - $(repo)/specification/web/resource-manager/readme.md
 
 title: AppService
-module-version: 4.0.0
+module-version: 4.0.1
 
 directive:
   - from: swagger-document
@@ -323,20 +323,28 @@ directive:
   - where:
       variant: (.*)ViaIdentitySlot
     remove: true
- # Fix the name of the module in the nuspec
+# Fix the name of the module in the nuspec
   - from: Az.AppService.nuspec
     where: $
-    transform: $ = $.replace('\$\(service-name\) cmdlets', 'preview cmdlets for Azure AppService');
+    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - App Service (Web Apps) service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor information on App Service, please visit the following$1 https://docs.microsoft.com/azure/app-service-web/');
 # Add a better description
   - from: Az.AppService.nuspec
     where: $
     transform: $ = $.replace(/\$\(service-name\)/g,  'AppService');
+# Add release notes
+  - from: Az.AppService.nuspec
+    where: $
+    transform: $ = $.replace('<releaseNotes></releaseNotes>', '<releaseNotes>Initial release of preview AppService cmdlets - see https://aka.ms/azps4doc for more information.</releaseNotes>');
  # Make the nuget package a preview
   - from: Az.AppService.nuspec
     where: $
     transform: $ = $.replace(/<version>(\d+\.\d+\.\d+)<\/version>/, '<version>$1-preview</version>');
-  # Make this a preview module
+# Update the psd1 description
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
+    transform: $ = $.replace(/sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell(.) AppService cmdlets\"\}\'\"\);/, 'sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell - App Service (Web Apps) service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\\n\\nFor information on App Service, please visit the following$1 https://docs.microsoft.com/azure/app-service-web/\"\}\'\"\);');
+# Make this a preview module
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'Initial release of preview AppService cmdlets - see https://aka.ms/azps4doc for more information.\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
 ```

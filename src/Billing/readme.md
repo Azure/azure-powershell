@@ -53,7 +53,7 @@ require:
   - $(repo)/specification/commerce/resource-manager/readme.md
   - $(repo)/specification/consumption/resource-manager/readme.md
 
-module-version: 4.0.0
+module-version: 4.0.1
 title: Billing
 subject-prefix: ''
 
@@ -138,7 +138,12 @@ directive:
 # Fix the name of the module in the nuspec
   - from: Az.Billing.nuspec
     where: $
-    transform: $ = $.replace('\$\(service-name\) cmdlets', 'preview cmdlets for Azure Billing Service');
+    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - Billing service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor information on Billing, please visit the following$1 https://docs.microsoft.com/azure/billing/');
+
+# Add release notes
+  - from: Az.Billing.nuspec
+    where: $
+    transform: $ = $.replace('<releaseNotes></releaseNotes>', '<releaseNotes>Initial release of preview Billing cmdlets - see https://aka.ms/azps4doc for more information.</releaseNotes>');
 # Add a better description
   - from: Az.Billing.nuspec
     where: $
@@ -147,8 +152,12 @@ directive:
   - from: Az.Billing.nuspec
     where: $
     transform: $ = $.replace(/<version>(\d+\.\d+\.\d+)<\/version>/, '<version>$1-preview</version>');
-  # Make this a preview module
+# Update the psd1 description
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
+    transform: $ = $.replace(/sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell(.) Billing cmdlets\"\}\'\"\);/, 'sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell - Billing service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\\n\\nFor information on Billing, please visit the following$1 https://docs.microsoft.com/azure/billing/\"\}\'\"\);');
+# Make this a preview module
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'Initial release of preview Billing cmdlets - see https://aka.ms/azps4doc for more information.\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
 ```

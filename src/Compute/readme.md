@@ -55,7 +55,7 @@ require:
 #  - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2017-07-01/containerService.json
 
 subject-prefix: ''
-module-version: 4.0.0
+module-version: 4.0.1
 
 directive:
 # subject renames for VM and Vmss
@@ -1042,7 +1042,7 @@ directive:
   - from: Az.Compute.psm1
     where: $
     transform: >
-        return $.replace('# Ask for the shared functionality table', 'Import-Module -Name (Join-Path $PSScriptRoot \'./bin/Az.Compute.private.dll\')\n# Ask for the shared functionality table' );
+        return $.replace('# Ask for the shared functionality table', '$null = Import-Module -Name (Join-Path $PSScriptRoot \'./bin/Az.Compute.private.dll\')\n# Ask for the shared functionality table' );
 # add again
   - from: Az.Compute.psm1
     where: $
@@ -1102,17 +1102,21 @@ directive:
 # Fix the name of the module in the nuspec
   - from: Az.Compute.nuspec
     where: $
-    transform: $ = $.replace('\$\(service-name\) cmdlets', 'preview cmdlets for Azure Compute Service');
-# Add a better description
+    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - Compute service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor more information on Virtual Machines, please visit the following$1 https://docs.microsoft.com/azure/virtual-machines/\nFor more information on Virtual Machine Scale Sets, please visit the following$1 https://docs.microsoft.com/azure/virtual-machine-scale-sets/');
+# Add release notes
   - from: Az.Compute.nuspec
     where: $
-    transform: $ = $.replace(/\$\(service-name\)/g,  'Compute');
+    transform: $ = $.replace('<releaseNotes></releaseNotes>', '<releaseNotes>Initial release of preview Compute cmdlets - see https://aka.ms/azps4doc for more information.</releaseNotes>');
 # Make the nuget package a preview
   - from: Az.Compute.nuspec
     where: $
     transform: $ = $.replace(/<version>(\d+\.\d+\.\d+)<\/version>/, '<version>$1-preview</version>');
+# Update the psd1 description
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell(.) Compute cmdlets\"\}\'\"\);/, 'sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell - Compute service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\\n\\nFor more information on Virtual Machines, please visit the following$1 https://docs.microsoft.com/azure/virtual-machines/\\nFor more information on Virtual Machine Scale Sets, please visit the following$1 https://docs.microsoft.com/azure/virtual-machine-scale-sets/\"\}\'\"\);');
 # Make this a preview module
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
+    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'Initial release of preview Compute cmdlets - see https://aka.ms/azps4doc for more information.\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
 ```

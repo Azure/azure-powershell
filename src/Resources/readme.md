@@ -55,7 +55,7 @@ require:
   - $(repo)/specification/authorization/resource-manager/readme.md
 
 subject-prefix: ''
-module-version: 4.0.0
+module-version: 4.0.1
 title: Resources
 
 directive:
@@ -720,17 +720,21 @@ directive:
 # Fix the name of the module in the nuspec
   - from: Az.Resources.nuspec
     where: $
-    transform: $ = $.replace('\$\(service-name\) cmdlets', 'preview cmdlets for Azure ARM Service');
-# Add a better description
+    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - Azure Resource Manager and Active Directory cmdlets in Windows PowerShell and PowerShell Core.\n\nFor more information on Resource Manager, please visit the following$1 https://docs.microsoft.com/azure/azure-resource-manager/\nFor more information on Active Directory, please visit the following$1 https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis');
+# Add release notes
   - from: Az.Resources.nuspec
     where: $
-    transform: $ = $.replace(/\$\(service-name\)/g,  'Resources');
+    transform: $ = $.replace('<releaseNotes></releaseNotes>', '<releaseNotes>Initial release of preview Azure Resource Manager and Active Directory cmdlets - see https://aka.ms/azps4doc for more information.</releaseNotes>');
 # Make the nuget package a preview
   - from: Az.Resources.nuspec
     where: $
     transform: $ = $.replace(/<version>(\d+\.\d+\.\d+)<\/version>/, '<version>$1-preview</version>');
- # Make this a preview module
+# Update the psd1 description
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
+    transform: $ = $.replace(/sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell(.) Resources cmdlets\"\}\'\"\);/, 'sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell - Azure Resource Manager and Active Directory cmdlets in Windows PowerShell and PowerShell Core.\\n\\nFor more information on Resource Manager, please visit the following$1 https://docs.microsoft.com/azure/azure-resource-manager/\\nFor more information on Active Directory, please visit the following$1 https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis\"\}\'\"\);');
+# Make this a preview module
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'Initial release of preview Resource Manager and Active Directory cmdlets - see https://aka.ms/azps4doc for more information.\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
 ```

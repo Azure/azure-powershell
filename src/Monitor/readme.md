@@ -53,7 +53,7 @@ require:
   - $(repo)/specification/monitor/data-plane/readme.md
 
 subject-prefix: ''
-module-version: 4.0.0
+module-version: 4.0.1
 title: Monitor
 
 directive:
@@ -272,19 +272,23 @@ directive:
 # Fix the name of the module in the nuspec
   - from: Az.Monitor.nuspec
     where: $
-    transform: $ = $.replace('\$\(service-name\) cmdlets', 'preview cmdlets for Azure Monitor Service');
-# Add a better description
+    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - Monitor service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor more information on Monitor, please visit the following$1 https://docs.microsoft.com/azure/monitoring-and-diagnostics/');
+# Add release notes
   - from: Az.Monitor.nuspec
     where: $
-    transform: $ = $.replace(/\$\(service-name\)/g,  'Monitor');
+    transform: $ = $.replace('<releaseNotes></releaseNotes>', '<releaseNotes>Initial release of preview Monitor cmdlets - see https://aka.ms/azps4doc for more information.</releaseNotes>');
 # Make the nuget package a preview
   - from: Az.Monitor.nuspec
     where: $
     transform: $ = $.replace(/<version>(\d+\.\d+\.\d+)<\/version>/, '<version>$1-preview</version>');
+# Update the psd1 description
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell(.) Monitor cmdlets\"\}\'\"\);/, 'sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell - Monitor service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\\n\\nFor more information on Monitor, please visit the following$1 https://docs.microsoft.com/azure/monitoring-and-diagnostics/\"\}\'\"\);');
 # Make this a preview module
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
+    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'Initial release of preview Monitor cmdlets - see https://aka.ms/azps4doc for more information.\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
 ```
 
 ``` yaml
