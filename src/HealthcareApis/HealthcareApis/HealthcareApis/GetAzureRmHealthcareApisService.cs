@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [Parameter(
            Mandatory = false,
            ParameterSetName = ListParameterSet,
-           HelpMessage = "Resource Group Name.")]  
+           HelpMessage = "Resource Group Name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }

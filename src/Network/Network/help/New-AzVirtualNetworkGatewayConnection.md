@@ -20,8 +20,8 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-VirtualNetworkGateway2 <PSVirtualNetworkGateway>] [-LocalNetworkGateway2 <PSLocalNetworkGateway>]
  -ConnectionType <String> [-RoutingWeight <Int32>] [-SharedKey <String>] [-Peer <PSPeering>]
  [-EnableBgp <Boolean>] [-Tag <Hashtable>] [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>]
- [-IpsecPolicies <PSIpsecPolicy[]>] [-ConnectionProtocol <String>] [-AsJob] [-ExpressRouteGatewayBypass]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IpsecPolicies <PSIpsecPolicy[]>] [-IpsecTrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>] 
+ [-AsJob] [-ExpressRouteGatewayBypass] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -31,8 +31,8 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
  [-VirtualNetworkGateway2 <PSVirtualNetworkGateway>] [-LocalNetworkGateway2 <PSLocalNetworkGateway>]
  -ConnectionType <String> [-RoutingWeight <Int32>] [-SharedKey <String>] [-PeerId <String>]
  [-EnableBgp <Boolean>] [-Tag <Hashtable>] [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>]
- [-IpsecPolicies <PSIpsecPolicy[]>] [-ConnectionProtocol <String>] [-AsJob] [-ExpressRouteGatewayBypass]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IpsecPolicies <PSIpsecPolicy[]>] [-IpsecTrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>] 
+ [-AsJob] [-ExpressRouteGatewayBypass] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -169,6 +169,21 @@ A list of IPSec policies.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TrafficSelectorPolicy
+A list of Traffic Selector policies.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSTrafficSelectorPolicy[]
 Parameter Sets: (All)
 Aliases:
 
@@ -401,6 +416,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Collections.Hashtable
 
 ### Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[]
+
+### Microsoft.Azure.Commands.Network.Models.PSTrafficSelectorPolicy[]
 
 ### System.Management.Automation.SwitchParameter
 

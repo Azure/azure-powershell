@@ -1165,7 +1165,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("SetVaultContextFirst", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Undo-deletion is only supported for AzureVMs. This method is not supported for other workloads.
+        /// </summary>
+        public static string SoftdeleteNotImplementedException
+        {
+            get
+            {
+                return ResourceManager.GetString("SoftdeleteNotImplementedException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to For Azure File share, Storage account  name can not be empty.
         /// </summary>
