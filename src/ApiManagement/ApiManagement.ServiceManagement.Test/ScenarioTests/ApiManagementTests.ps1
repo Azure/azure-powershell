@@ -2964,9 +2964,88 @@ function BackendServiceFabric-CrudTest {
 
 <#
 .SYNOPSIS
-Tests CRUD operations of APIVersion set.
+Tests CRUD operations of APIVersion set when performing Set ON Api
 #>
-function ApiVersionSet-CrudTest {
+function ApiVersionSet-SetCrudTest {
+    Param($resourceGroupName, $serviceName)
+
+    $context = New-AzApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+
+    # get all apis
+    $apiversionsets = Get-AzApiManagementApiVersionSet -Context $context
+    # there should be no API Version sets initially
+    Assert-AreEqual 0 $apiversionsets.Count
+
+    # new api details
+    $swaggerPath = Join-Path (Join-Path "$TestOutputRoot" "Resources") "SwaggerPetStoreV2.json"
+    $path1 = "swaggerapifromFile"
+    $swaggerApiId1 = getAssetName        
+    $newApiVersionSetId = getAssetName
+    try {
+        $newVersionSetName = getAssetName
+        $queryName = getAssetName
+        $description = getAssetName
+
+        $newApiVersionSet = New-AzApiManagementApiVersionSet -Context $context -ApiVersionSetId $newApiVersionSetId -Name $newVersionSetName -Scheme Query `
+            -QueryName $queryName -Description $description
+
+        Assert-AreEqual $newApiVersionSetId $newApiVersionSet.ApiVersionSetId
+        Assert-AreEqual $newVersionSetName $newApiVersionSet.DisplayName
+        Assert-AreEqual $description $newApiVersionSet.Description
+        Assert-AreEqual Query $newApiVersionSet.VersioningScheme
+        Assert-AreEqual $queryName $newApiVersionSet.VersionQueryName
+        Assert-Null $newApiVersionSet.VersionHeaderName
+
+        # update the versioning scheme to be header based
+        $versionHeaderName = getAssetName
+        $newApiVersionSet = Set-AzApiManagementApiVersionSet -Context $context -ApiVersionSetId $newApiVersionSetId  `
+            -Scheme Header -HeaderName $versionHeaderName -PassThru
+
+        Assert-AreEqual $newApiVersionSetId $newApiVersionSet.ApiVersionSetId
+        Assert-AreEqual $newVersionSetName $newApiVersionSet.DisplayName
+        Assert-AreEqual $description $newApiVersionSet.Description
+        Assert-AreEqual Header $newApiVersionSet.VersioningScheme
+        Assert-AreEqual $versionHeaderName $newApiVersionSet.VersionHeaderName
+
+        # get the api version set using id
+        $newApiVersionSet = Get-AzApiManagementApiVersionSet -Context $context -ApiVersionSetId $newApiVersionSetId
+        Assert-AreEqual $newApiVersionSetId $newApiVersionSet.ApiVersionSetId
+        Assert-AreEqual $newVersionSetName $newApiVersionSet.DisplayName
+        Assert-AreEqual $description $newApiVersionSet.Description
+        Assert-AreEqual Header $newApiVersionSet.VersioningScheme
+        Assert-AreEqual $versionHeaderName $newApiVersionSet.VersionHeaderName
+        
+        # import api from file
+        $api = Import-AzApiManagementApi -Context $context -ApiId $swaggerApiId1 -SpecificationPath $swaggerPath -SpecificationFormat Swagger -Path $path1
+        Assert-AreEqual $swaggerApiId1 $api.ApiId
+        Assert-AreEqual $path1 $api.Path
+
+        # now add the api to the version set
+        $api.ApiVersionSetId = $newApiVersionSet.Id
+        $api.APIVersion = "v1"
+        $api.ApiVersionSetDescription = $newApiVersionSet.Description
+        $updatedApi = Set-AzApiManagementApi -InputObject $api -PassThru
+        Assert-NotNull $updatedApi
+        Assert-AreEqual $newApiVersionSet.Id $updatedApi.ApiVersionSetId
+        Assert-AreEqual $newApiVersionSet.Description $updatedApi.ApiVersionSetDescription
+        Assert-AreEqual "v1" $updatedApi.ApiVersion
+    }
+    finally {
+        # remove created api
+        $removed = Remove-AzApiManagementApi -Context $context -ApiId $swaggerApiId1 -PassThru
+        Assert-True { $removed }
+
+        # remove created api version set
+        $removed = Remove-AzApiManagementApiVersionSet -Context $context -ApiVersionSetId $newApiVersionSetId -PassThru
+        Assert-True { $removed }
+    }
+}
+
+<#
+.SYNOPSIS
+Tests CRUD operations of APIVersion set when Importing an API
+#>
+function ApiVersionSet-ImportCrudTest {
     Param($resourceGroupName, $serviceName)
 
     $context = New-AzApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
