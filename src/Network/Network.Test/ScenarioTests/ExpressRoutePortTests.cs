@@ -27,7 +27,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRoutePortCRUDMinimalParameters()
         {
             TestRunner.RunTestScript(string.Format("Test-ExpressRoutePortCRUD"));
