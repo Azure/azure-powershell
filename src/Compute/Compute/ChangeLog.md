@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add Priority, EvictionPolicy, and MaxPrice parameters to New-AzVM and New-AzVmss cmdlets
+* Fix warning message and help document for Add-AzVMAdditionalUnattendContent and Add-AzVMSshPublicKey cmdlets
 * Fix bug in update encryption settings in Set-AzVMDiskEncryptionExtension, two pass scenario.
 
 ## Version 2.6.0

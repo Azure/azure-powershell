@@ -53,10 +53,10 @@ Test Simple Paremeter Set for New Vm
 function Test-SimpleNewVmFromSIGImage
 {
     #This test needs to be run form the following subscription in record mode :
-	# 9e223dbe-3399-4e19-88eb-0975f02ac87f
-	#The vm needs to be created in the one of the following regions :
-	# "South Central US", "East US 2" and "Central US"
-	#To see more information on the steps to create a new SIG image go here: https://aka.ms/AA37jbt
+    # 9e223dbe-3399-4e19-88eb-0975f02ac87f
+    #The vm needs to be created in the one of the following regions :
+    # "South Central US", "East US 2" and "Central US"
+    #To see more information on the steps to create a new SIG image go here: https://aka.ms/AA37jbt
     # Setup
     $vmname = Get-ResourceName
 
@@ -102,14 +102,14 @@ function Test-SimpleNewVmWithUltraSSD
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
 
         # Common
-		#As of now the ultrasd feature is only supported in east us 2 and in the size Standard_D2s_v3, on the features GA the restriction will be lifted
-		#Use the follwing command to figure out the one to use 
-		#Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }
+        #As of now the ultrasd feature is only supported in east us 2 and in the size Standard_D2s_v3, on the features GA the restriction will be lifted
+        #Use the follwing command to figure out the one to use 
+        #Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }
         $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Location "eastus2" -EnableUltraSSD -Zone 2 -Size "Standard_D2s_v3"
 
         Assert-AreEqual $vmname $x.Name;
         Assert-Null $x.Identity
-		Assert-True { $x.AdditionalCapabilities.UltraSSDEnabled };
+        Assert-True { $x.AdditionalCapabilities.UltraSSDEnabled };
 
         $nic = Get-AzNetworkInterface -ResourceGroupName $vmname  -Name $vmname
         Assert-NotNull $nic
@@ -434,7 +434,6 @@ function Test-SimpleNewVmWithAvailabilitySet2
     }
 }
 
-
 <#
 .SYNOPSIS
 Test Simple Paremeter Set for New Vm
@@ -452,9 +451,8 @@ function Test-SimpleNewVmImageName
         [string]$domainNameLabel = "$vmname-$vmname".tolower()
 
         # Common
-        $imgversion = Get-VMImageVersion -publisher "MicrosoftWindowsServer" `
-							-offer "WindowsServer" -sku "2016-Datacenter"
-		$x = New-AzVM `
+        $imgversion = Get-VMImageVersion -publisher "MicrosoftWindowsServer" -offer "WindowsServer" -sku "2016-Datacenter"
+        $x = New-AzVM `
             -Name $vmname `
             -Credential $cred `
             -DomainNameLabel $domainNameLabel `
@@ -468,7 +466,6 @@ function Test-SimpleNewVmImageName
         Clean-ResourceGroup $vmname
     }
 }
-
 
 <#
 .SYNOPSIS
@@ -569,6 +566,37 @@ function Test-SimpleNewVmPpgId
     {
         # Cleanup
         Clean-ResourceGroup $rgname
+        Clean-ResourceGroup $vmname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New VM with eviction policy, priority and max price.
+#>
+function Test-SimpleNewVmBilling
+{
+    # Setup
+    $vmname = Get-ResourceName
+
+    try
+    {
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+
+        # Common
+        $vm = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -EvictionPolicy 'Deallocate' -Priority 'Low' -MaxPrice 0.2;
+
+        Assert-AreEqual $vmname $vm.Name;
+        Assert-AreEqual 'Deallocate' $vm.EvictionPolicy;
+        Assert-AreEqual 'Low' $vm.Priority;     
+        Assert-AreEqual 0.2 $vm.BillingProfile.MaxPrice;
+    }
+    finally
+    {
+        # Cleanup
         Clean-ResourceGroup $vmname
     }
 }
