@@ -203,6 +203,48 @@ function Test-subnetCRUD
 
 <#
 .SYNOPSIS
+Tests creating, updating & deleting a virtualNetwork with BGP Communities.
+.DESCRIPTION
+SmokeTest
+#>
+function Test-bgpCommunitiesCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+        # Create q virtual network with a BGP community
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -BgpCommunity 12076:61234
+
+        # Get the virtual network and verify that the community is set to the expected value
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual "12076:61234" $vnet.BgpCommunities.VirtualNetworkCommunity
+
+        # Update the virtual network with a different BGP community
+        $vnet.BgpCommunities.VirtualNetworkCommunity = "12076:64321"
+        $vnet | Set-AzVirtualNetwork
+
+        # Get the virtual network and verify that the community is set to the new value
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual "12076:64321" $vnet.BgpCommunities.VirtualNetworkCommunity
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests creating new virtualNetwork w/ delegated subnets.
 .DESCRIPTION
 SmokeTest

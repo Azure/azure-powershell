@@ -47,6 +47,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSAddressSpace CustomRoutes { get; set; }
 
+        public string VpnGatewayGeneration { get; set; }
+
         [JsonIgnore]
         public string IpConfigurationsText
         {
