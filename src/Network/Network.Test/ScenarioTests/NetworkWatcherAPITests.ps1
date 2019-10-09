@@ -108,6 +108,20 @@ function Get-NrpResourceGroupName
 	Get-ResourceGroupName "psnrp";
 }
 
+function Wait-Vm($vm)
+{
+    # Don't wait more than N minutes to avoid getting stuck in a loop if VM can't recover
+    $minutes = 30;
+    while((Get-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name).ProvisioningState -ne "Succeeded")
+    {
+        Start-TestSleep 60;
+        if(--$minutes -eq 0)
+        {
+            break;
+        }
+    }
+}
+
 <#
 .SYNOPSIS
 Get existing Network Watcher.
@@ -1006,20 +1020,25 @@ function Test-ConnectionMonitor
 
         #Remove connection monitor
         Remove-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName1
+        Wait-Vm $vm
 
         #Create connection monitor
         $job1 = New-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -ConfigureOnly -MonitoringIntervalInSeconds 30 -AsJob
         $job1 | Wait-Job
-        ###
         $cm1 = $job1 | Receive-Job
-        Remove-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1
 
+        Remove-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1
+        Wait-Vm $vm
+
+        #Create connection monitor
         $job1 = New-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -ConfigureOnly -MonitoringIntervalInSeconds 30 -AsJob
         $job1 | Wait-Job
         $cm1 = $job1 | Receive-Job
 
         Remove-AzNetworkWatcherConnectionMonitor -ResourceId $cm1.Id
+        Wait-Vm $vm
 
+        #Create connection monitor
         $job1 = New-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -ConfigureOnly -MonitoringIntervalInSeconds 30 -AsJob
         $job1 | Wait-Job
         $cm1 = $job1 | Receive-Job
@@ -1027,6 +1046,7 @@ function Test-ConnectionMonitor
         $rmJob = Remove-AzNetworkWatcherConnectionMonitor -InputObject $cm1 -AsJob -PassThru
         $rmJob | Wait-Job
         $result = $rmJob | Receive-Job
+        Wait-Vm $vm
 
         Assert-ThrowsLike { Set-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name "fakeName" -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 80 -MonitoringIntervalInSeconds 42 } "*not*found*"
 

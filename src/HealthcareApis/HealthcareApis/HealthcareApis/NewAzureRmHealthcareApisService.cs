@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         private Kind GetKind()
         {
-            if(this.Kind == null && this.FhirVersion!=null)
+            if (this.Kind == null && this.FhirVersion != null)
             {
                 if (FhirVersion.ToLowerInvariant() == "r4")
                 {
@@ -241,11 +241,11 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                     throw new PSArgumentException(Resources.createService_InvalidFhirVersionMessage);
                 }
             }
-            else if(this.Kind== null && this.FhirVersion == null)
+            else if (this.Kind == null && this.FhirVersion == null)
             {
                 return Management.HealthcareApis.Models.Kind.FhirR4;
             }
-            else if(this.FhirVersion != null)
+            else if (this.FhirVersion != null)
             {
                 return ParseKindFromVersion(this.FhirVersion);
             }
