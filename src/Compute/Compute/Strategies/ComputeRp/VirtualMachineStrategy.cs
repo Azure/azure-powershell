@@ -52,7 +52,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IList<string> zones,
             bool ultraSSDEnabled,
             Func<IEngine, SubResource> proximityPlacementGroup,
-            string hostId)
+            string hostId,
+            string priority,
+            string evictionPolicy,
+            double? maxPrice)
+
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -88,7 +92,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Zones = zones,
                     AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null,
                     ProximityPlacementGroup = proximityPlacementGroup(engine),
-                    Host = string.IsNullOrEmpty(hostId) ? null : new SubResource(hostId)
+                    Host = string.IsNullOrEmpty(hostId) ? null : new SubResource(hostId),
+                    Priority = priority,
+                    EvictionPolicy = evictionPolicy,
+                    BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice)
                 });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
@@ -104,7 +111,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IList<string> zones,
             bool ultraSSDEnabled,
             Func<IEngine, SubResource> proximityPlacementGroup,
-            string hostId)
+            string hostId,
+            string priority,
+            string evictionPolicy,
+            double? maxPrice)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -137,7 +147,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Zones = zones,
                     AdditionalCapabilities = ultraSSDEnabled ?  new AdditionalCapabilities(true)  : null,
                     ProximityPlacementGroup = proximityPlacementGroup(engine),
-                    Host = string.IsNullOrEmpty(hostId) ? null : new SubResource(hostId)
+                    Host = string.IsNullOrEmpty(hostId) ? null : new SubResource(hostId),
+                    Priority = priority,
+                    EvictionPolicy = evictionPolicy,
+                    BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice)
                 });
     }
 }
