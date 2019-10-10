@@ -113,7 +113,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
 ]"
                 .Replace("[", LeftSquareBracket)
                 .Replace("]", RightSquareBracket)
-                .Replace(":", Colon);
+                .Replace(":", Colon)
+                .Replace("\r\n", Environment.NewLine);
 
             // Act.
             sut.FormatJson(arrayValue);
@@ -150,7 +151,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
   path.to.foo:     ""foo""
   longPath.to.bar: ""bar""
 "
-                .Replace(":", Colon);
+                .Replace(":", Colon)
+                .Replace("\r\n", Environment.NewLine);
 
             // Act.
             sut.FormatJson(objectValue);
@@ -213,7 +215,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
 "
                 .Replace("[", LeftSquareBracket)
                 .Replace("]", RightSquareBracket)
-                .Replace(":", Colon);
+                .Replace(":", Colon)
+                .Replace("\r\n", Environment.NewLine);
 
             // Act.
             sut.FormatJson(objectValue);

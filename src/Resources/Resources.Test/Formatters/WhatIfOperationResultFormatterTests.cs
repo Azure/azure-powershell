@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
     using Management.ResourceManager.Models;
     using ResourceManager.Cmdlets.Formatters;
     using ResourceManager.Cmdlets.SdkModels.Deployments;
+    using System;
     using WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
@@ -80,7 +81,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
 "
                 .Replace("+", new ColorStringBuilder().Append("+", Color.Green).ToString())
                 .Replace("!", new ColorStringBuilder().Append("!", Color.Blue).ToString())
-                .Replace("*", new ColorStringBuilder().Append("*", Color.Cyan).ToString());
+                .Replace("*", new ColorStringBuilder().Append("*", Color.Cyan).ToString())
+                .Replace("\r\n", Environment.NewLine);
 
             // Act.
             string result = WhatIfOperationResultFormatter.Format(psWhatIfOperationResult);
@@ -185,7 +187,8 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002
 Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
 {Color.Yellow}
   ~ p1/foo2
-{Color.Reset}";
+{Color.Reset}"
+                .Replace("\r\n", Environment.NewLine);
 
             // Act.
             string result = WhatIfOperationResultFormatter.Format(
@@ -243,7 +246,8 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
   * p1/foo{Color.Reset}{Color.Reset}
   = p3/foo
 {Color.Reset}
-";
+"
+                .Replace("\r\n", Environment.NewLine);
 
             // Act.
             string result = WhatIfOperationResultFormatter.Format(
@@ -280,7 +284,8 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
       booleanValue: true
       stringValue:  ""str""
 "
-                .Replace(":", colon);
+                .Replace(":", colon)
+                .Replace("\r\n", Environment.NewLine);
 
             // Act.
             string result = WhatIfOperationResultFormatter.Format(
@@ -317,7 +322,8 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
       booleanValue: true
       stringValue:  ""str""
 "
-                .Replace(":", colon);
+                .Replace(":", colon)
+                .Replace("\r\n", Environment.NewLine);
 
             // Act.
             string result = WhatIfOperationResultFormatter.Format(
@@ -360,7 +366,8 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
     {Color.Yellow}~{Color.Reset} path.to.property.change{Color.Reset}:{Color.Reset} ""foo"" => ""bar""
 "
                 .Replace(@"""foo""", foo)
-                .Replace(@"""bar""", bar);
+                .Replace(@"""bar""", bar)
+                .Replace("\r\n", Environment.NewLine);
 
             // Act.
             string result = WhatIfOperationResultFormatter.Format(
