@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for restore of dropped databases on Managed Instances.
 
 ## Version 1.14.2
 * Update example in reference documentation for `Get-AzSqlElasticPool`
