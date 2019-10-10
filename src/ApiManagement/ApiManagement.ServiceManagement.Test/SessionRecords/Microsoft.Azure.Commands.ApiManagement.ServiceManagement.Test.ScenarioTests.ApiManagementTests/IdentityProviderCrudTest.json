@@ -4,10 +4,10 @@
       "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/Facebook?api-version=2019-01-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2lkZW50aXR5UHJvdmlkZXJzL0ZhY2Vib29rP2FwaS12ZXJzaW9uPTIwMTktMDEtMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"clientId\": \"ps7763\",\r\n    \"clientSecret\": \"ps3303\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"clientId\": \"ps3269\",\r\n    \"clientSecret\": \"ps7979\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9e351577-33b8-4276-a890-b3954a2f88a9"
+          "84e76f81-79f8-4c60-80fc-e437650c9d7b"
         ],
         "Accept-Language": [
           "en-US"
@@ -33,13 +33,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAFMw=\""
+          "\"AAAAAAAAJZ0=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "7674e6a6-b86e-48dc-bf73-c5a64393741c"
+          "c5745676-c22c-45ae-b64e-9e4915ff913f"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -48,16 +48,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "bc0d1b8b-050f-4f14-b892-47de4ae8125e"
+          "48443cda-4d9c-4c64-8679-11b18f15149a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190729T162434Z:bc0d1b8b-050f-4f14-b892-47de4ae8125e"
+          "WESTUS:20190930T215239Z:48443cda-4d9c-4c64-8679-11b18f15149a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 29 Jul 2019 16:24:34 GMT"
+          "Mon, 30 Sep 2019 21:52:39 GMT"
         ],
         "Content-Length": [
           "381"
@@ -69,7 +69,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/Facebook\",\r\n  \"type\": \"Microsoft.ApiManagement/service/identityProviders\",\r\n  \"name\": \"Facebook\",\r\n  \"properties\": {\r\n    \"clientId\": \"ps7763\",\r\n    \"clientSecret\": \"ps3303\",\r\n    \"type\": \"facebook\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/Facebook\",\r\n  \"type\": \"Microsoft.ApiManagement/service/identityProviders\",\r\n  \"name\": \"Facebook\",\r\n  \"properties\": {\r\n    \"clientId\": \"ps3269\",\r\n    \"clientSecret\": \"ps7979\",\r\n    \"type\": \"facebook\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
@@ -79,7 +79,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "024a54fe-1655-4fe6-a11d-fcc1be25fa95"
+          "d47a6c16-87d0-4ac3-948f-41196f042f8b"
         ],
         "Accept-Language": [
           "en-US"
@@ -99,13 +99,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAFMw=\""
+          "\"AAAAAAAAJZ0=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "cfbb15be-35c9-4ae2-bbc7-dd69b6f18aae"
+          "7e46bf91-8870-47d2-813c-a05109d31235"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -114,16 +114,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "072624ae-df7c-4141-ad31-1a2835a233ff"
+          "65113a43-c7cf-4e65-9837-48f3cc52e9d2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190729T162435Z:072624ae-df7c-4141-ad31-1a2835a233ff"
+          "WESTUS:20190930T215239Z:65113a43-c7cf-4e65-9837-48f3cc52e9d2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 29 Jul 2019 16:24:34 GMT"
+          "Mon, 30 Sep 2019 21:52:39 GMT"
         ],
         "Content-Length": [
           "381"
@@ -135,7 +135,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/Facebook\",\r\n  \"type\": \"Microsoft.ApiManagement/service/identityProviders\",\r\n  \"name\": \"Facebook\",\r\n  \"properties\": {\r\n    \"clientId\": \"ps7763\",\r\n    \"clientSecret\": \"ps3303\",\r\n    \"type\": \"facebook\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/Facebook\",\r\n  \"type\": \"Microsoft.ApiManagement/service/identityProviders\",\r\n  \"name\": \"Facebook\",\r\n  \"properties\": {\r\n    \"clientId\": \"ps3269\",\r\n    \"clientSecret\": \"ps7979\",\r\n    \"type\": \"facebook\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -145,7 +145,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5d97c09e-d00e-445d-a5cd-bf1bb99b29ce"
+          "cc65318d-6c86-4209-bbb3-d8fc84fdfe1d"
         ],
         "Accept-Language": [
           "en-US"
@@ -165,13 +165,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAFM0=\""
+          "\"AAAAAAAAJZ4=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "62928b5a-1477-49e4-959f-2da7e83303e0"
+          "a25501ad-e0c3-4b1d-a5e4-42aa5452a2d2"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -180,16 +180,16 @@
           "11997"
         ],
         "x-ms-correlation-request-id": [
-          "1bd6b628-822b-44b0-9773-d4c82e41a338"
+          "a666c515-5c2c-483e-bf77-a6d6f6f1c73f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190729T162435Z:1bd6b628-822b-44b0-9773-d4c82e41a338"
+          "WESTUS:20190930T215240Z:a666c515-5c2c-483e-bf77-a6d6f6f1c73f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 29 Jul 2019 16:24:35 GMT"
+          "Mon, 30 Sep 2019 21:52:39 GMT"
         ],
         "Content-Length": [
           "381"
@@ -201,7 +201,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/Facebook\",\r\n  \"type\": \"Microsoft.ApiManagement/service/identityProviders\",\r\n  \"name\": \"Facebook\",\r\n  \"properties\": {\r\n    \"clientId\": \"ps7763\",\r\n    \"clientSecret\": \"ps9125\",\r\n    \"type\": \"facebook\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/Facebook\",\r\n  \"type\": \"Microsoft.ApiManagement/service/identityProviders\",\r\n  \"name\": \"Facebook\",\r\n  \"properties\": {\r\n    \"clientId\": \"ps3269\",\r\n    \"clientSecret\": \"ps2768\",\r\n    \"type\": \"facebook\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -211,7 +211,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1e9887dc-3580-44ba-8a1e-4174fda40d6a"
+          "20256ecd-467c-4d42-acf9-a4d437b24079"
         ],
         "Accept-Language": [
           "en-US"
@@ -234,7 +234,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "2559fac6-75ed-4a7f-a318-af5553e34ce4"
+          "e3939ec9-b619-4cb5-a695-241f60cede6a"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -243,16 +243,16 @@
           "11996"
         ],
         "x-ms-correlation-request-id": [
-          "caa84fbf-30af-4233-ac31-8efa32274458"
+          "ba3eb8d5-308b-4f39-9349-d50747ef812c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190729T162436Z:caa84fbf-30af-4233-ac31-8efa32274458"
+          "WESTUS:20190930T215240Z:ba3eb8d5-308b-4f39-9349-d50747ef812c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 29 Jul 2019 16:24:36 GMT"
+          "Mon, 30 Sep 2019 21:52:40 GMT"
         ],
         "Content-Length": [
           "92"
@@ -274,7 +274,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "43cf510e-5a4d-47ba-a714-5d17eb3d78a6"
+          "cba40991-a082-4d2f-8703-6cf23b35fdb9"
         ],
         "Accept-Language": [
           "en-US"
@@ -297,7 +297,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "f89e0d93-2807-4b41-b59d-495449b916b0"
+          "f2c3805a-464e-4daa-9bdb-a47bc1b3f585"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -306,16 +306,16 @@
           "11995"
         ],
         "x-ms-correlation-request-id": [
-          "ed5856c9-c425-4c1a-8a1a-b1421ac99bd2"
+          "2afd61d5-ee42-4535-a21d-5aff8cac6b38"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190729T162436Z:ed5856c9-c425-4c1a-8a1a-b1421ac99bd2"
+          "WESTUS:20190930T215241Z:2afd61d5-ee42-4535-a21d-5aff8cac6b38"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 29 Jul 2019 16:24:36 GMT"
+          "Mon, 30 Sep 2019 21:52:40 GMT"
         ],
         "Content-Length": [
           "92"
@@ -337,7 +337,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e55f3d86-ac18-44ad-9186-4d50ed5c7a58"
+          "2c2beff4-df19-4361-9adf-30a02cee7272"
         ],
         "Accept-Language": [
           "en-US"
@@ -360,7 +360,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "b79d5dd8-a641-44a4-bd84-eb49f7a502e2"
+          "f99bc24c-9dad-4aff-ad6e-8bb521783a9f"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -369,19 +369,19 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "51fe8346-2f52-4b54-9df0-6ca9cf8eeddd"
+          "126a7ac2-4257-49e4-ae96-bb8c763167c2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190729T162435Z:51fe8346-2f52-4b54-9df0-6ca9cf8eeddd"
+          "WESTUS:20190930T215239Z:126a7ac2-4257-49e4-ae96-bb8c763167c2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 29 Jul 2019 16:24:35 GMT"
+          "Mon, 30 Sep 2019 21:52:39 GMT"
         ],
         "Content-Length": [
-          "446"
+          "461"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -390,17 +390,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/Facebook\",\r\n      \"type\": \"Microsoft.ApiManagement/service/identityProviders\",\r\n      \"name\": \"Facebook\",\r\n      \"properties\": {\r\n        \"clientId\": \"ps7763\",\r\n        \"clientSecret\": \"ps3303\",\r\n        \"type\": \"facebook\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/Facebook\",\r\n      \"type\": \"Microsoft.ApiManagement/service/identityProviders\",\r\n      \"name\": \"Facebook\",\r\n      \"properties\": {\r\n        \"clientId\": \"ps3269\",\r\n        \"clientSecret\": \"ps7979\",\r\n        \"type\": \"facebook\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": 1\r\n}",
       "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/identityProviders/Facebook?api-version=2019-01-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2lkZW50aXR5UHJvdmlkZXJzL0ZhY2Vib29rP2FwaS12ZXJzaW9uPTIwMTktMDEtMDE=",
       "RequestMethod": "PATCH",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"clientSecret\": \"ps9125\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"clientSecret\": \"ps2768\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "822b9893-9f1a-4143-8459-9084dd381cc8"
+          "6328186c-4444-46d2-a4c7-ca615b8df83e"
         ],
         "If-Match": [
           "*"
@@ -432,7 +432,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "481c876a-2c74-48fc-a3de-c5a7243d68b7"
+          "21537d6b-73dc-448d-a3da-be5617de8063"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -441,16 +441,16 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "29e9eb27-75f9-4331-828b-d917fe660293"
+          "a7f66466-39f6-43a6-88dd-aca1ff662a20"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190729T162435Z:29e9eb27-75f9-4331-828b-d917fe660293"
+          "WESTUS:20190930T215240Z:a7f66466-39f6-43a6-88dd-aca1ff662a20"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 29 Jul 2019 16:24:35 GMT"
+          "Mon, 30 Sep 2019 21:52:39 GMT"
         ],
         "Expires": [
           "-1"
@@ -466,7 +466,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d43f1adf-5d7b-4cc0-b13f-956678cace16"
+          "ad57b2a5-5f13-463a-800b-a4633c8484cc"
         ],
         "If-Match": [
           "*"
@@ -492,7 +492,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "58478014-9aef-4733-8e89-d3e41c34c9c9"
+          "4102187c-a67a-45fc-931c-c737eb8edc0e"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -501,16 +501,16 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "f28c454c-0742-4c7f-ae70-4b7f35120005"
+          "09044cf0-6a5c-4acf-b5f3-bb47caec07ce"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190729T162436Z:f28c454c-0742-4c7f-ae70-4b7f35120005"
+          "WESTUS:20190930T215240Z:09044cf0-6a5c-4acf-b5f3-bb47caec07ce"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 29 Jul 2019 16:24:35 GMT"
+          "Mon, 30 Sep 2019 21:52:40 GMT"
         ],
         "Expires": [
           "-1"
@@ -529,7 +529,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f2cdcca1-9327-4b6c-9759-cd8fe4109e00"
+          "ad62d89f-8c70-4e8a-937e-67d9b9031127"
         ],
         "If-Match": [
           "*"
@@ -555,7 +555,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "f982a667-dcbc-4127-9bca-5dab98320ad5"
+          "fb556089-f182-4b3d-ad06-9d8fece22890"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -564,16 +564,16 @@
           "14998"
         ],
         "x-ms-correlation-request-id": [
-          "ae4b789a-9a1d-430f-bb71-471e798fcd4b"
+          "c2f30819-84c4-420c-92e7-446389930420"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190729T162436Z:ae4b789a-9a1d-430f-bb71-471e798fcd4b"
+          "WESTUS:20190930T215241Z:c2f30819-84c4-420c-92e7-446389930420"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 29 Jul 2019 16:24:36 GMT"
+          "Mon, 30 Sep 2019 21:52:40 GMT"
         ],
         "Expires": [
           "-1"
@@ -585,9 +585,9 @@
   ],
   "Names": {
     "": [
-      "ps7763",
-      "ps3303",
-      "ps9125"
+      "ps3269",
+      "ps7979",
+      "ps2768"
     ]
   },
   "Variables": {

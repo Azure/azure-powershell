@@ -227,6 +227,9 @@ Gets one or more recommended actions for an Azure SQL Elastic Pool Advisor.
 ### [Get-AzSqlInstance](Get-AzSqlInstance.md)
 Returns information about Azure SQL Managed Database Instance.
 
+### [Get-AzSqlInstanceActiveDirectoryAdministrator](Get-AzSqlInstanceActiveDirectoryAdministrator.md)
+Gets information about an Azure AD administrator for SQL Managed Instance.
+
 ### [Get-AzSqlInstanceAdvancedDataSecurityPolicy](Get-AzSqlInstanceAdvancedDataSecurityPolicy.md)
 Gets Advanced Data Security policy of a managed instance.
 
@@ -493,6 +496,9 @@ Deletes an elastic database pool.
 ### [Remove-AzSqlInstance](Remove-AzSqlInstance.md)
 Removes an Azure SQL Managed Database Instance.
 
+### [Remove-AzSqlInstanceActiveDirectoryAdministrator](Remove-AzSqlInstanceActiveDirectoryAdministrator.md)
+Removes an Azure AD administrator for SQL Managed Instance.
+
 ### [Remove-AzSqlInstanceDatabase](Remove-AzSqlInstanceDatabase.md)
 Removes an Azure SQL Managed Instance database.
 
@@ -626,6 +632,9 @@ Updates the state of an Azure SQL Elastic Pool recommended action.
 
 ### [Set-AzSqlInstance](Set-AzSqlInstance.md)
 Sets properties for an Azure SQL Database Managed Instance.
+
+### [Set-AzSqlInstanceActiveDirectoryAdministrator](Set-AzSqlInstanceActiveDirectoryAdministrator.md)
+Provisions an Azure AD administrator for SQL Managed Instance.
 
 ### [Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy](Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy.md)
 Sets a backup short term retention policy.
