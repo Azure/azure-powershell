@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Utilities
     using System;
     using Xunit;
 
-    public class WhatIfResourceParserTests
+    public class ResourceParserTests
     {
         [Fact]
         public void ParseResourceId_WithSubscriptionLevelProvider_ReturnsSubscriptionScope()
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Utilities
             Guid subscriptionId = Guid.NewGuid();
             Guid roleAssignmentId = Guid.NewGuid();
 
-            (string scope, string relativePath) = WhatIfResourceIdParser.ParseResourceId(
+            (string scope, string relativePath) = ResourceIdParser.ParseResourceId(
                 $"/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleAssignment/{roleAssignmentId}");
 
             Assert.Equal($"/subscriptions/{subscriptionId}", scope);
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Utilities
         {
             Guid subscriptionId = Guid.NewGuid();
 
-            (string scope, string relativePath) = WhatIfResourceIdParser.ParseResourceId(
+            (string scope, string relativePath) = ResourceIdParser.ParseResourceId(
                 $"/subscriptions/{subscriptionId}/resourceGroups/test-what-if-rg/providers/Microsoft.Sql/servers/TestServer");
 
             Assert.Equal($"/subscriptions/{subscriptionId}/resourceGroups/test-what-if-rg", scope);
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Utilities
         {
             Guid subscriptionId = Guid.NewGuid();
 
-            (string scope, string relativePath) = WhatIfResourceIdParser.ParseResourceId(
+            (string scope, string relativePath) = ResourceIdParser.ParseResourceId(
                 $"/subscriptions/{subscriptionId}/resourceGroups/test-what-if-rg");
 
             Assert.Equal($"/subscriptions/{subscriptionId}", scope);

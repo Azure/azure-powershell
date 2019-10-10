@@ -14,7 +14,7 @@
 
         public PSWhatIfChange(WhatIfChange whatIfChange)
         {
-            (string scope, string shortResourceId) = WhatIfResourceIdParser.ParseResourceId(whatIfChange.ResourceId);
+            (string scope, string shortResourceId) = ResourceIdParser.ParseResourceId(whatIfChange.ResourceId);
 
             this.whatIfChange = whatIfChange;
             this.Scope = scope;

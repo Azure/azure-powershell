@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 {
     using System.Text.RegularExpressions;
 
-    public static class WhatIfResourceIdParser
+    public static class ResourceIdParser
     {
         private static readonly Regex SubscriptionRegex =
             new Regex(@"^\/?subscriptions\/(?<subscriptionId>[a-f0-9-]+)", RegexOptions.IgnoreCase);
@@ -28,6 +28,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             new Regex(@"^\/providers/(?<shortResourceId>.+$)");
 
         
+        /// <summary>
+        /// Parse a full qualified azure resource ID.
+        /// </summary>
+        /// <param name="fullyQualifiedResourceId">The resource ID. For now only subscription resource IDs are supported.</param>
+        /// <returns>The resource scope and short resource ID (resource provider/name).</returns>
         public static (string scope, string shortResourceId) ParseResourceId(string fullyQualifiedResourceId)
         {
             string remaining = fullyQualifiedResourceId;
