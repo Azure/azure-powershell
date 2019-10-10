@@ -151,14 +151,15 @@ function Update-ChangeLog
     ($Content + $ChangeLogContent) | Set-Content -Path $ChangeLogFile.FullName -Encoding UTF8
 }
 
-if (!(Test-Path "C:/Program Files/PowerShell/Modules/PowerShellGet"))
+if (!(Test-Path "C:/Program Files/PowerShell/6/Modules/PowerShellGet"))
 {
     try
     {
-        Save-Module -Name PowerShellGet -Repository $GalleryName -Path "C:/Program Files/PowerShell/Modules" -ErrorAction Stop
+        Save-Module -Name PowerShellGet -Repository $GalleryName -Path "C:/Program Files/PowerShell/6/Modules" -ErrorAction Stop
     }
     catch
     {
+		"Error: $_"
         throw "Please rerun in Administrator mode."
     }
 }
