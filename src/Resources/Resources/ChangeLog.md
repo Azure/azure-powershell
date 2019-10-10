@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.7.0
 * Fix bug where New-AzRoleAssignment could not be called without parameter Scope.
 
 ## Version 1.6.2
