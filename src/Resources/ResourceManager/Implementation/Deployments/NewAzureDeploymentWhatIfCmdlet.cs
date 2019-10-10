@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The deployment scope type.")]
+        [Parameter(Mandatory = true, HelpMessage = "The deployment scope type.")]
         public DeploymentWhatIfScopeType ScopeType { get; set; }
 
         [Parameter(ParameterSetName = SubscriptionParameterSetWithTemplateObjectParameterObject,
