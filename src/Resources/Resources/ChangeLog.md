@@ -18,10 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fix bug where New-AzRoleAssignment could not be called without parameter Scope.
-* Add new cmdlet New-AzDeploymentWhatIf for deployment what-if operation.
-
-## Version 1.6.3
 * Add support for new api version 2019-07-01 for Microsoft.Resource
 * Refactor the `-AzDeployment` cmdlets to support deployment at all scopes: ResourceGroup, Subscription, ManagementGroup, Tenant
   - New-AzDeployment: Added `ScopeType` parameter which is required for all parameter sets.
@@ -34,6 +30,10 @@
   - For all cmdlets above: 
     - Added `ResourceGroupName` parameter which is required when `ResourceGroup` is specified for `ScopeType`. 
     - Added `ManagementGroupId` parameter which is required when `ManagementGroup` is specified for `ScopeType`. 
+* Add new cmdlet `New-AzDeploymentWhatIf` for deployment what-if operation.
+
+## Version 1.7.0
+* Fix bug where New-AzRoleAssignment could not be called without parameter Scope.
 
 ## Version 1.6.2
 * Add support for new api version 2019-05-10 for Microsoft.Resource
@@ -127,4 +127,4 @@
 ## Version 1.0.0
 * General availability of `Az.Resources` module
 * Removed -Sku parameter from New/Set-AzPolicyAssignment
-* Removed -Password parameter from New-AzADServicePrincipal and New-AzADSpCredential
+* Removed -Password parameter from New-AzADServicePrincipal and New-AzADSpCredential Removed -Password parameter from New-AzADServicePrincipal and New-AzADSpCredential
