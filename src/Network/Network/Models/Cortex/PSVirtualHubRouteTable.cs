@@ -17,8 +17,10 @@ namespace Microsoft.Azure.Commands.Network.Models
     using System.Collections.Generic;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
-    public class PSVirtualHubRouteTable
+    public class PSVirtualHubRouteTable : PSChildResource
     {
         public List<PSVirtualHubRoute> Routes { get; set; }
+
+        public List<string> AttachedConnections { get; set; }
     }
 }

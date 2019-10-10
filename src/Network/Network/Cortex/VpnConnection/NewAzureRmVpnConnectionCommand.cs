@@ -175,6 +175,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Enable internet security for this connection")]
+        public SwitchParameter EnableInternetSecurity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -231,7 +236,8 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name,
                 EnableBgp = this.EnableBgp.IsPresent,
                 UseLocalAzureIpAddress = this.UseLocalAzureIpAddress.IsPresent,
-                UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors.IsPresent
+                UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors.IsPresent,
+                EnableInternetSecurity = this.EnableInternetSecurity.IsPresent
             };
 
             //// Resolve the VpnSite reference
