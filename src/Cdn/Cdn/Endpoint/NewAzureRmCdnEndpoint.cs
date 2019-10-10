@@ -103,6 +103,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
             HelpMessage = "The tags to associate with the Azure CDN endpoint.")]
         public Hashtable Tag { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The resource ID of a CDN WAF Policy to apply to the endpoint.")]
+        public string LinkedWafPolicyResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ObjectParameterSet)
@@ -151,7 +154,8 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                     ProbePath = ProbePath,
                     GeoFilters = GeoFilters?.Select(g => g.ToSdkGeoFilter()).ToList(),
                     DeliveryPolicy = DeliveryPolicy?.ToSdkDeliveryPolicy(),
-                    Tags = Tag.ToDictionaryTags()
+                    Tags = Tag.ToDictionaryTags(),
+                    WebApplicationFirewallPolicyLink = new EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink(LinkedWafPolicyResourceId),
                 });
 
                 WriteVerbose(Resources.Success);

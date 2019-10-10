@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Cdn.Models.CustomDomain;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Cdn;
+using Microsoft.Azure.Management.Cdn.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
@@ -58,6 +59,9 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 
         [Parameter(Mandatory = false, HelpMessage = "Return object if specified.")]
         public SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The minimum TLS version required to connect")]
+        public PSTlsVersion MinimumTlsVersion { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -102,6 +106,7 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
                     // Microsoft
                     parameters = new Management.Cdn.Models.CdnManagedHttpsParameters
                     {
+                        MinimumTlsVersion = MinimumTlsVersion.ToSdkTlsVersion(),
                         ProtocolType = Management.Cdn.Models.ProtocolType.ServerNameIndication,
                         CertificateSourceParameters = new Management.Cdn.Models.CdnCertificateSourceParameters { CertificateType = "Dedicated" }
                     };
@@ -110,6 +115,7 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
                     // Akamai
                     parameters = new Management.Cdn.Models.CdnManagedHttpsParameters
                     {
+                        MinimumTlsVersion = MinimumTlsVersion.ToSdkTlsVersion(),
                         ProtocolType = Management.Cdn.Models.ProtocolType.ServerNameIndication,
                         CertificateSourceParameters = new Management.Cdn.Models.CdnCertificateSourceParameters { CertificateType = "Shared" }
                     };
@@ -119,6 +125,7 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
                     // Verizon
                     parameters = new Management.Cdn.Models.CdnManagedHttpsParameters
                     {
+                        MinimumTlsVersion = MinimumTlsVersion.ToSdkTlsVersion(),
                         ProtocolType = Management.Cdn.Models.ProtocolType.IPBased,
                         CertificateSourceParameters = new Management.Cdn.Models.CdnCertificateSourceParameters { CertificateType = "Shared" }
                     };

@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
         private const string Profiles = "profiles";
         private const string Endpoints = "endpoints";
         private const string CustomDomains = "customdomains";
+        private const string WafPolicies = "webapplicationfirewallpolicies";
 
         public static string GetProfileName(this ResourceIdentifier resourceId)
         {

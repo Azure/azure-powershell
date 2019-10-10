@@ -59,6 +59,12 @@ Gets the supported optimization types for a CDN profile.
 ### [Get-AzCdnSubscriptionResourceUsage](Get-AzCdnSubscriptionResourceUsage.md)
 Gets the resource usage for a subscription.
 
+### [Get-AzCdnWafManagedRuleSet](Get-AzCdnWafManagedRuleSet.md)
+Gets a CDN WAF Managed Rule Set.
+
+### [Get-AzCdnWafPolicy](Get-AzCdnWafPolicy.md)
+Gets a CDN WAF Policy.
+
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a custom domain for a CDN endpoint.
 
@@ -80,6 +86,21 @@ Creates a CDN endpoint.
 ### [New-AzCdnProfile](New-AzCdnProfile.md)
 Creates a CDN profile.
 
+### [New-AzCdnWafCustomRule](New-AzCdnWafCustomRule.md)
+Creates a CDN WAF custom rule for use in a policy.
+
+### [New-AzCdnWafManagedRuleSet](New-AzCdnWafManagedRuleSet.md)
+Creates a CDN WAF managed rule set for use in a policy.
+
+### [New-AzCdnWafMatchCondition](New-AzCdnWafMatchCondition.md)
+Creates a CDN WAF match condition for use in a rule.
+
+### [New-AzCdnWafPolicy](New-AzCdnWafPolicy.md)
+Creates a CDN WAF Policy.
+
+### [New-AzCdnWafRateLimitRule](New-AzCdnWafRateLimitRule.md)
+Creates a CDN WAF rate limit rule for use in a policy.
+
 ### [Publish-AzCdnEndpointContent](Publish-AzCdnEndpointContent.md)
 Loads content to an endpoint.
 
@@ -92,6 +113,9 @@ Removes a CDN endpoint.
 ### [Remove-AzCdnProfile](Remove-AzCdnProfile.md)
 Removes a CDN profile.
 
+### [Remove-AzCdnWafPolicy](Remove-AzCdnWafPolicy.md)
+Deletes a CDN WAF Policy.
+
 ### [Set-AzCdnEndpoint](Set-AzCdnEndpoint.md)
 Updates a CDN endpoint.
 
@@ -100,6 +124,9 @@ Updates a CDN origin server.
 
 ### [Set-AzCdnProfile](Set-AzCdnProfile.md)
 Updates a CDN profile.
+
+### [Set-AzCdnWafPolicy](Set-AzCdnWafPolicy.md)
+Creates or updates a CDN WAF Policy.
 
 ### [Start-AzCdnEndpoint](Start-AzCdnEndpoint.md)
 Starts a CDN endpoint.

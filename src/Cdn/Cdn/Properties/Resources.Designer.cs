@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -106,6 +106,15 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to RuleOverride must not be empty unless the DisableAll switch is set..
+        /// </summary>
+        internal static string Error_CreateEmptyRuleGroupOverride {
+            get {
+                return ResourceManager.GetString("Error_CreateEmptyRuleGroupOverride", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is already an existing custom domain with name &apos;{0}&apos; in the endpoint &apos;{1}&apos;, profile &apos;{2}&apos;, resource group &apos;{3}&apos;.
         /// </summary>
         internal static string Error_CreateExistingCustomDomain {
@@ -120,6 +129,15 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         internal static string Error_CreateExistingEndpoint {
             get {
                 return ResourceManager.GetString("Error_CreateExistingEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is already an existing CDN WAF policy &apos;{0}&apos; in the resource group &apos;{1}&apos;.
+        /// </summary>
+        internal static string Error_CreateExistingPolicy {
+            get {
+                return ResourceManager.GetString("Error_CreateExistingPolicy", resourceCulture);
             }
         }
         
@@ -151,6 +169,15 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CDN WAF policy with name &apos;{0}&apos; in the resource group &apos;{1}&apos; does not exist..
+        /// </summary>
+        internal static string Error_DeleteNonExistingPolicy {
+            get {
+                return ResourceManager.GetString("Error_DeleteNonExistingPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Profile with name &apos;{0}&apos; in the resource group &apos;{1}&apos; does not exist..
         /// </summary>
         internal static string Error_DeleteNonExistingProfile {
@@ -160,11 +187,29 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Managed Rule Set with name &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string Error_ManagedRuleSetNotFound {
+            get {
+                return ResourceManager.GetString("Error_ManagedRuleSetNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Custom domain with name &apos;{0}&apos; in the endpoint &apos;{1}&apos;,profile &apos;{2}&apos;, resource group &apos;{3}&apos; does not exist..
         /// </summary>
         internal static string Error_NonExistingCustomDomain {
             get {
                 return ResourceManager.GetString("Error_NonExistingCustomDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Policy name must start with a letter and contain only numbers and letters.
+        /// </summary>
+        internal static string Error_PolicyNameInvalid {
+            get {
+                return ResourceManager.GetString("Error_PolicyNameInvalid", resourceCulture);
             }
         }
         
@@ -183,6 +228,24 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         internal static string Error_ResourceGroupNotSpecified {
             get {
                 return ResourceManager.GetString("Error_ResourceGroupNotSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CDN WAF policy with name &apos;{0}&apos; in the resource group &apos;{1}&apos; does not exist..
+        /// </summary>
+        internal static string Error_WafPolicyNotFound {
+            get {
+                return ResourceManager.GetString("Error_WafPolicyNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The CDN WAF policy ResourceId is not valid..
+        /// </summary>
+        internal static string Error_WafPolicyResourceIdInvalid {
+            get {
+                return ResourceManager.GetString("Error_WafPolicyResourceIdInvalid", resourceCulture);
             }
         }
         

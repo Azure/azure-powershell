@@ -61,7 +61,8 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                         CdnEndpoint.OptimizationType,
                         CdnEndpoint.ProbePath,
                         CdnEndpoint.GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList(),
-                        CdnEndpoint.DeliveryPolicy?.ToSdkDeliveryPolicy()));
+                        CdnEndpoint.DeliveryPolicy?.ToSdkDeliveryPolicy(),
+                        webApplicationFirewallPolicyLink: new EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink(CdnEndpoint.LinkedWafPolicyResourceId)));
 
                 WriteVerbose(Resources.Success);
                 WriteObject(endpoint.ToPsEndpoint());

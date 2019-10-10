@@ -15,20 +15,20 @@ Enables custom HTTPS.
 ### ByFieldsParameterSet (Default)
 ```
 Enable-AzCdnCustomDomainHttps -ResourceGroupName <String> -ProfileName <String> -EndpointName <String>
- -CustomDomainName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -CustomDomainName <String> [-PassThru] [-MinimumTlsVersion <PSTlsVersion>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Enable-AzCdnCustomDomainHttps -InputObject <PSCustomDomain> [-PassThru]
+Enable-AzCdnCustomDomainHttps -InputObject <PSCustomDomain> [-PassThru] [-MinimumTlsVersion <PSTlsVersion>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Enable-AzCdnCustomDomainHttps -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Enable-AzCdnCustomDomainHttps -ResourceId <String> [-PassThru] [-MinimumTlsVersion <PSTlsVersion>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,6 +102,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MinimumTlsVersion
+The minimum TLS version required to connect
+
+```yaml
+Type: Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSTlsVersion
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

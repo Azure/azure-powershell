@@ -23,7 +23,9 @@ using Microsoft.Azure.Commands.Cdn.Models.CustomDomain;
 using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 using Microsoft.Azure.Commands.Cdn.Models.Origin;
 using Microsoft.Azure.Commands.Cdn.Models.Profile;
+using Microsoft.Azure.Commands.Cdn.Models.WebApplicationFirewall;
 using Microsoft.Azure.Management.Cdn.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using SdkProfile = Microsoft.Azure.Management.Cdn.Models.Profile;
 using SdkSkuName = Microsoft.Azure.Management.Cdn.Models.SkuName;
@@ -37,11 +39,24 @@ using SdkEndpoint = Microsoft.Azure.Management.Cdn.Models.Endpoint;
 using SdkQueryStringCachingBehavior = Microsoft.Azure.Management.Cdn.Models.QueryStringCachingBehavior;
 using SdkOrigin = Microsoft.Azure.Management.Cdn.Models.Origin;
 using SdkCustomDomain = Microsoft.Azure.Management.Cdn.Models.CustomDomain;
+using SdkTlsVersion = Microsoft.Azure.Management.Cdn.Models.MinimumTlsVersion;
 using SdkGeoFilter = Microsoft.Azure.Management.Cdn.Models.GeoFilter;
 using SdkGeoFilterAction = Microsoft.Azure.Management.Cdn.Models.GeoFilterActions;
 using SdkDeliveryPolicy = Microsoft.Azure.Management.Cdn.Models.EndpointPropertiesUpdateParametersDeliveryPolicy;
+using SdkWafPolicy = Microsoft.Azure.Management.Cdn.Models.CdnWebApplicationFirewallPolicy;
+using SdkRateLimitRule = Microsoft.Azure.Management.Cdn.Models.RateLimitRule;
+using SdkCustomRule = Microsoft.Azure.Management.Cdn.Models.CustomRule;
+using SdkManagedRuleSet = Microsoft.Azure.Management.Cdn.Models.ManagedRuleSet;
+using SdkManagedRuleSetDefinition = Microsoft.Azure.Management.Cdn.Models.ManagedRuleSetDefinition;
+using SdkManagedRuleGroupDefinition = Microsoft.Azure.Management.Cdn.Models.ManagedRuleGroupDefinition;
+using SdkManagedRuleDefinition = Microsoft.Azure.Management.Cdn.Models.ManagedRuleDefinition;
+using SdkMatchCondition = Microsoft.Azure.Management.Cdn.Models.MatchCondition;
+using SdkActionType = Microsoft.Azure.Management.Cdn.Models.ActionType;
+using SdkManagedRuleGroupOverride = Microsoft.Azure.Management.Cdn.Models.ManagedRuleGroupOverride;
+using SdkManagedRuleOverride = Microsoft.Azure.Management.Cdn.Models.ManagedRuleOverride;
 using Microsoft.Azure.Commands.Cdn.EdgeNodes;
 using System.Management.Automation;
+using System.Runtime.CompilerServices;
 
 namespace Microsoft.Azure.Commands.Cdn.Helpers
 {
@@ -147,7 +162,8 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 OptimizationType = sdkEndpoint.OptimizationType,
                 ProbePath = sdkEndpoint.ProbePath,
                 GeoFilters = sdkEndpoint.GeoFilters.Select(ToPsGeoFilter).ToList(),
-                DeliveryPolicy = sdkEndpoint.DeliveryPolicy?.ToPsDeliveryPolicy()
+                DeliveryPolicy = sdkEndpoint.DeliveryPolicy?.ToPsDeliveryPolicy(),
+                LinkedWafPolicyResourceId = sdkEndpoint.WebApplicationFirewallPolicyLink.Id,
             };
         }
 
@@ -881,5 +897,234 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                     break;
             }
         }
+
+        public static PSPolicy ToPsPolicy(this SdkWafPolicy policy)
+        {
+            return new PSPolicy
+            {
+                Sku = policy.Sku.ToPsSku(),
+                Etag = policy.Etag,
+                ResourceState = (PSPolicyResourceState)Enum.Parse(typeof(PSPolicyResourceState), policy.ResourceState),
+                DefaultCustomBlockResponseBody = policy.PolicySettings.DefaultCustomBlockResponseBody,
+                DefaultCustomBlockResponseStatusCode = policy.PolicySettings.DefaultCustomBlockResponseStatusCode,
+                DefaultRedirectUrl = policy.PolicySettings.DefaultRedirectUrl,
+                EnabledState = (PSPolicyEnabledState)Enum.Parse(typeof(PSPolicyEnabledState), policy.PolicySettings.EnabledState),
+                Mode = (PSPolicyMode)Enum.Parse(typeof(PSPolicyMode), policy.PolicySettings.Mode),
+                RateLimitRules = policy.RateLimitRules?.Rules.Select(r => r.ToPsRateLimitRule()).ToList(),
+                CustomRules = policy.CustomRules?.Rules.Select(r => r.ToPsCustomRule()).ToList(),
+                ManagedRules = policy.ManagedRules?.ManagedRuleSets.Select(r => r.ToPsManagedRuleSet()).ToList(),
+                LinkedEndpointIds = policy.CdnEndpointLinks?.Select(e => e.Id).ToList(),
+            };
+        }
+
+        public static PSRateLimitRule ToPsRateLimitRule(this SdkRateLimitRule rateLimitRule)
+        {
+            return new PSRateLimitRule
+            {
+                RateLimitThreshold = rateLimitRule.RateLimitThreshold,
+                RateLimitDurationInMinutes = rateLimitRule.RateLimitDurationInMinutes,
+            };
+        }
+
+        public static PSCustomRule ToPsCustomRule(this SdkCustomRule customRule)
+        {
+            return new PSCustomRule
+            {
+                Name = customRule.Name,
+                EnabledState = (PSCustomRuleEnabledState)Enum.Parse(typeof(PSCustomRuleEnabledState), customRule.EnabledState),
+                Priority = customRule.Priority,
+                MatchConditions = customRule.MatchConditions.Select(mc => mc.ToPsMatchCondition()).ToList(),
+                Action = (PSActionType)Enum.Parse(typeof(PSActionType), customRule.Action),
+            };
+        }
+
+        public static PSMatchCondition ToPsMatchCondition(this SdkMatchCondition matchCondition)
+        {
+            return new PSMatchCondition
+            {
+                MatchVariable = (PSMatchVariable)Enum.Parse(typeof(PSMatchVariable), matchCondition.MatchVariable),
+                Selector = matchCondition.Selector,
+                Operator = (PSOperator)Enum.Parse(typeof(PSOperator), matchCondition.OperatorProperty),
+                NegateCondition = matchCondition.NegateCondition ?? false,
+                MatchValue = matchCondition.MatchValue?.ToList(),
+                Transform = matchCondition.Transforms?.Select(t => (PSTransform)Enum.Parse(typeof(PSTransform), t)).ToList(),
+            };
+        }
+
+        public static PSManagedRuleSet ToPsManagedRuleSet(this SdkManagedRuleSet managedRuleSet)
+        {
+            return new PSManagedRuleSet
+            {
+                RuleSetType = managedRuleSet.RuleSetType,
+                RuleSetVersion = managedRuleSet.RuleSetVersion,
+                RuleGroupOverrides = managedRuleSet.RuleGroupOverrides.Select(rgo => rgo.ToPsManagedRuleGroupOverride()).ToList(),
+            };
+        }
+
+        public static PSManagedRuleGroupOverride ToPsManagedRuleGroupOverride(this SdkManagedRuleGroupOverride managedRuleGroupOverride)
+        {
+            return new PSManagedRuleGroupOverride
+            {
+                RuleGroupName = managedRuleGroupOverride.RuleGroupName,
+                Rules = managedRuleGroupOverride.Rules.Select(r => r.ToPsManagedRuleOverride()).ToList(),
+            };
+        }
+
+        public static PSManagedRuleOverride ToPsManagedRuleOverride(this SdkManagedRuleOverride managedRuleOverride)
+        {
+            return new PSManagedRuleOverride
+            {
+                RuleId = managedRuleOverride.RuleId,
+                EnabledState = (PSManagedRuleEnabledState)Enum.Parse(typeof(PSManagedRuleEnabledState), managedRuleOverride.EnabledState),
+                Action = (PSActionType)Enum.Parse(typeof(PSActionType), managedRuleOverride.Action),
+            };
+        }
+
+        public static PSManagedRuleSetDefinition ToPsManagedRuleSetDefinition(this SdkManagedRuleSetDefinition ruleset)
+        {
+            return new PSManagedRuleSetDefinition
+            {
+                Sku = ruleset.Sku.ToPsSku(),
+                RuleSetType = ruleset.RuleSetType,
+                RuleSetVersion = ruleset.RuleSetVersion,
+                RuleGroups = ruleset.RuleGroups.Select(rg => rg.ToPsManagedRuleGroupDefinition()).ToList(),
+            };
+        }
+
+        public static PSManagedRuleGroupDefinition ToPsManagedRuleGroupDefinition(this SdkManagedRuleGroupDefinition rulegroup)
+        {
+            return new PSManagedRuleGroupDefinition
+            {
+                Name = rulegroup.RuleGroupName,
+                Description = rulegroup.Description,
+                Rules = rulegroup.Rules.Select(r => r.ToPsManagedRuleDefinition()).ToList(),
+            };
+        }
+
+        public static PSManagedRuleDefinition ToPsManagedRuleDefinition(this SdkManagedRuleDefinition rule)
+        {
+            return new PSManagedRuleDefinition {
+                RuleId = rule.RuleId,
+                Description = rule.Description,
+            };
+        }
+
+        public static SdkManagedRuleSet ToSdkManagedRuleSet(this PSManagedRuleSet ruleset)
+        {
+            return new SdkManagedRuleSet
+            {
+                RuleSetType = ruleset.RuleSetType,
+                RuleSetVersion = ruleset.RuleSetVersion,
+                RuleGroupOverrides = ruleset.RuleGroupOverrides?.Select(rg => rg.ToSdkManagedRuleGroupOverride()).ToList(),
+            };
+        }
+
+        public static SdkManagedRuleGroupOverride ToSdkManagedRuleGroupOverride(this PSManagedRuleGroupOverride rulegroupOverride)
+        {
+            return new SdkManagedRuleGroupOverride
+            {
+                RuleGroupName = rulegroupOverride.RuleGroupName,
+                Rules = rulegroupOverride.Rules?.Select(r => r.ToSdkManagedRuleOverride()).ToList(),
+            };
+        }
+
+        public static SdkManagedRuleOverride ToSdkManagedRuleOverride(this PSManagedRuleOverride ruleOverride)
+        {
+            return new SdkManagedRuleOverride
+            {
+                RuleId = ruleOverride.RuleId,
+                Action = ruleOverride.Action.ToString(),
+                EnabledState = ruleOverride.EnabledState.ToString(),
+            };
+        }
+
+        public static SdkRateLimitRule ToSdkRateLimitRule(this PSRateLimitRule rateLimitRule)
+        {
+            return new SdkRateLimitRule
+            {
+                Action = rateLimitRule.Action.ToString(),
+                EnabledState = rateLimitRule.EnabledState.ToString(),
+                MatchConditions = rateLimitRule.MatchConditions?.Select(mc => mc.ToSdkMatchCondition()).ToList(),
+                Name = rateLimitRule.Name,
+                Priority = rateLimitRule.Priority,
+                RateLimitDurationInMinutes = rateLimitRule.RateLimitDurationInMinutes,
+                RateLimitThreshold = rateLimitRule.RateLimitThreshold,
+            };
+        }
+
+        public static SdkMatchCondition ToSdkMatchCondition(this PSMatchCondition matchCondition)
+        {
+            return new SdkMatchCondition
+            {
+                MatchValue = matchCondition.MatchValue?.ToList(),
+                Transforms = matchCondition.Transform?.Select(t => t.ToString()).ToList(),
+                MatchVariable = matchCondition.MatchVariable.ToString(),
+                NegateCondition = matchCondition.NegateCondition,
+                OperatorProperty = matchCondition.Operator.ToString(),
+                Selector = matchCondition.Selector,
+            };
+        }
+
+        public static SdkCustomRule ToSdkCustomRule(this PSCustomRule customRule)
+        {
+            return new SdkCustomRule
+            {
+                Action = customRule.Action.ToString(),
+                EnabledState = customRule.EnabledState.ToString(),
+                MatchConditions = customRule.MatchConditions?.Select(mc => mc.ToSdkMatchCondition()).ToList(),
+                Name = customRule.Name,
+                Priority = customRule.Priority,
+            };
+        }
+
+        public static SdkWafPolicy ToSdkWebApplicationFirewallPolicy(this PSPolicy policy)
+        {
+            return new SdkWafPolicy(
+                policy.Location,
+                new SdkSku(policy.Sku?.ToString()),
+                id: policy.Id,
+                name: policy.Name,
+                type: policy.Type,
+                tags: policy.Tags?.ToDictionaryTags(),
+                policySettings: new PolicySettings(
+                    enabledState: policy.EnabledState.ToString(),
+                    mode: policy.Mode.ToString(),
+                    defaultRedirectUrl: policy.DefaultRedirectUrl,
+                    defaultCustomBlockResponseStatusCode: policy.DefaultCustomBlockResponseStatusCode,
+                    defaultCustomBlockResponseBody: policy.DefaultCustomBlockResponseBody),
+                rateLimitRules: new RateLimitRuleList(policy.RateLimitRules?.Select(r => r.ToSdkRateLimitRule()).ToList()),
+                customRules: new CustomRuleList(policy.CustomRules?.Select(r => r.ToSdkCustomRule()).ToList()),
+                managedRules: new ManagedRuleSetList(policy.ManagedRules?.Select(r => r.ToSdkManagedRuleSet()).ToList()));
+        }
+
+        public static SdkTlsVersion ToSdkTlsVersion(this PSTlsVersion tlsVersion)
+        {
+            switch (tlsVersion) {
+                case PSTlsVersion.None:
+                    return SdkTlsVersion.None;
+                case PSTlsVersion.TLS10:
+                    return SdkTlsVersion.TLS10;
+                case PSTlsVersion.TLS12:
+                    return SdkTlsVersion.TLS12;
+                default:
+                    throw new ArgumentException("unsupported TLS version");
+            }
+        }
+
+        public static PSTlsVersion ToPSTlsVersion(this SdkTlsVersion tlsVersion)
+        {
+            switch (tlsVersion)
+            {
+                case SdkTlsVersion.None:
+                    return PSTlsVersion.None;
+                case SdkTlsVersion.TLS10:
+                    return PSTlsVersion.TLS10;
+                case SdkTlsVersion.TLS12:
+                    return PSTlsVersion.TLS12;
+                default:
+                    throw new ArgumentException("unsupported TLS version");
+            }
+        }
     }
+
 }

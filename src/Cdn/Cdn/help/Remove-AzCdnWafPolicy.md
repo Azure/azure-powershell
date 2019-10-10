@@ -1,57 +1,54 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/enable-azcdncustomdomain
+online version:
 schema: 2.0.0
 ---
 
-# Enable-AzCdnCustomDomain
+# Remove-AzCdnWafPolicy
 
 ## SYNOPSIS
-Enables Custom Domain HTTPS (Deprecated).
+Deletes a CDN WAF Policy.
 
 ## SYNTAX
 
-### ByFieldsParameterSet (Default)
+### ByFieldsParameterSet
 ```
-Enable-AzCdnCustomDomain -CustomDomainName <String> -EndpointName <String> -ProfileName <String>
- -ResourceGroupName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzCdnWafPolicy -PolicyName <String> -ResourceGroupName <String> [-PassThru] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceIdParameterSet
+```
+Remove-AzCdnWafPolicy -ResourceId <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Enable-AzCdnCustomDomain -InputObject <PSCustomDomain> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzCdnWafPolicy -CdnWafPolicy <PSPolicy> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Enable-AzCdnCustomDomain** cmdlet enables the secured HTTPS delivery of a CDN custom domain.
+The **Remove-AzCdnWafPolicy** cmdlet removes a Azure Content Delivery Network (CDN) Web Application Firewall (WAF) policy.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-Enable-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroupName
-true
-```
-
-Enable https delivery of the custom domain.
-
 ## PARAMETERS
 
-### -CustomDomainName
-Azure CDN custom domain display name.
+### -CdnWafPolicy
+The CDN WAF policy.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Type: Microsoft.Azure.Commands.Cdn.Models.WebApplicationFirewall.PSPolicy
+Parameter Sets: ByObjectParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -70,33 +67,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EndpointName
-Azure CDN endpoint name.
+### -Force
+{{ Fill Force Description }}
 
 ```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The custom domain object.
-
-```yaml
-Type: Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain
-Parameter Sets: ByObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -111,12 +93,12 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProfileName
-Azure CDN profile name.
+### -PolicyName
+The name of the CDN WAF policy.
 
 ```yaml
 Type: System.String
@@ -131,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group of the Azure CDN profile.
+The resource group to which the CDN WAF policy belongs.
 
 ```yaml
 Type: System.String
@@ -142,6 +124,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+ResourceId of the CDN WAF policy
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -161,7 +158,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -180,7 +178,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain
+### Microsoft.Azure.Commands.Cdn.Models.WebApplicationFirewall.PSPolicy
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
