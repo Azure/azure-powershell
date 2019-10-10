@@ -19,10 +19,16 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSVirtualHubRoute
     {
-        [Ps1Xml(Label = "Address Prefixes", Target = ViewControl.Table)]
-        public List<string> AddressPrefixes { get; set; }
+        [Ps1Xml(Label = "Destination Type", Target = ViewControl.Table)]
+        public string DestinationType { get; set; }
 
-        [Ps1Xml(Label = "Next Hop IpAddress", Target = ViewControl.Table)]
-        public string NextHopIpAddress { get; set; }
+        [Ps1Xml(Label = "Destinations", Target = ViewControl.Table)]
+        public List<string> Destinations { get; set; }
+        
+        [Ps1Xml(Label = "Next Hop Type", Target = ViewControl.Table)]
+        public string NextHopType { get; set; }
+
+        [Ps1Xml(Label = "Next Hops", Target = ViewControl.Table)]
+        public List<string> NextHops { get; set; }
     }
 }

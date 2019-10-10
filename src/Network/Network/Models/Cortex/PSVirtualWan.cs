@@ -27,5 +27,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Label = "AllowBranchToBranchTraffic", Target = ViewControl.Table)]
         public bool AllowBranchToBranchTraffic { get; set; }
+        
+        [Ps1Xml(Label = "Type", Target = ViewControl.Table)]
+        public new string Type { get; set; }
     }
 }

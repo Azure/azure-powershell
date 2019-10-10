@@ -84,13 +84,18 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The route table associated with this Virtual Hub.")]
-        public PSVirtualHubRouteTable RouteTable { get; set; }
+            HelpMessage = "The route tables associated with this Virtual Hub.")]
+        public PSVirtualHubRouteTable[] RouteTable { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The sku of the Virtual Hub.")]
+        public string Sku { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -139,9 +144,15 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             //// VirtualHubRouteTable
-            if(this.RouteTable != null)
+            if (this.RouteTable != null)
             {
-                virtualHubToUpdate.RouteTable = this.RouteTable;
+                virtualHubToUpdate.RouteTables = new List<PSVirtualHubRouteTable>();
+                virtualHubToUpdate.RouteTables.AddRange(this.RouteTable);
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.Sku))
+            {
+                virtualHubToUpdate.Sku = this.Sku;
             }
 
             //// Update the virtual hub
