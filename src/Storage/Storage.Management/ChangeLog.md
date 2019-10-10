@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support enable/disable Changefeed on Blob Service of a Storage account
+    -  Update-AzStorageBlobServiceProperty
+
+## Version 1.8.0
 * Upgrade Storage Client Library to 11.1.0
 * List containers with Management plane API, will list with NextPageLink
     -  Get-AzRmStorageContainer
