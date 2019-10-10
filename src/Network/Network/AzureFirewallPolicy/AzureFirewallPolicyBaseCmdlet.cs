@@ -41,26 +41,6 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
-        public bool IsAzureFirewallPolicyPresent(string resourceGroupName, string name)
-        {
-            try
-            {
-                GetAzureFirewallPolicy(resourceGroupName, name);
-            }
-            catch (Microsoft.Rest.Azure.CloudException exception)
-            {
-                if (exception.Response.StatusCode == HttpStatusCode.NotFound)
-                {
-                    // Resource is not present
-                    return false;
-                }
-
-                throw;
-            }
-
-            return true;
-        }
-
         public PSAzureFirewallPolicy GetAzureFirewallPolicy(string resourceGroupName, string name)
         {
             var azureFirewallPolicy = this.AzureFirewallPolicyClient.Get(resourceGroupName, name);

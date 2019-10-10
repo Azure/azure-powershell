@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzFirewallPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a Azure Firewall Policy
 
 ## SYNTAX
 

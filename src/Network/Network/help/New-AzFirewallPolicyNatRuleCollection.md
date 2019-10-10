@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFirewallPolicyNatRuleCollection
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create a new Azure Firewall Policy Nat Rule Collection
 
 ## SYNTAX
 

@@ -25,18 +25,18 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicy", DefaultParameterSetName = SetByNameParameterSet), OutputType(typeof(PSAzureFirewall), typeof(IEnumerable<PSAzureFirewall>))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicy", DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(PSAzureFirewall), typeof(IEnumerable<PSAzureFirewall>))]
     public class GetAzureFirewallPolicyCommand : AzureFirewallPolicyBaseCmdlet
     {
 
-        private const string SetByNameParameterSet = "SetByNameParameterSet";
-        private const string SetByResourceIdParameterSet = "SetByResourceIdParameterSet";
+        private const string GetByNameParameterSet = "SetByNameParameterSet";
+        private const string GetByResourceIdParameterSet = "SetByResourceIdParameterSet";
 
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.", ParameterSetName = SetByNameParameterSet)]
+            HelpMessage = "The resource name.", ParameterSetName = GetByNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/azureFirewalls", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.", ParameterSetName = SetByNameParameterSet)]
+            HelpMessage = "The resource group name.", ParameterSetName = GetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource Id.", ParameterSetName = SetByResourceIdParameterSet)]
+            HelpMessage = "The resource Id.", ParameterSetName = GetByResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string ResourceId { get; set; }

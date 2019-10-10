@@ -25,11 +25,6 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Mandatory = true,
-            ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.TargetFqdn,
-            HelpMessage = "The name of the Application Rule")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = AzureFirewallPolicyApplicationRuleParameterSets.FqdnTag,
             HelpMessage = "The name of the Application Rule")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }

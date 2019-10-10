@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzFirewallPolicyRuleCollectionGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a Azure Firewall Policy Rule Collection Group
 
 ## SYNTAX
 

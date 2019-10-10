@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Network
 
             base.Execute();
 
-            var present = this.IsAzureFirewallPolicyPresent(this.ResourceGroupName, this.Name);
+            var present = NetworkBaseCmdlet.IsResourcePresent(() => GetAzureFirewallPolicy(this.ResourceGroupName, this.Name));
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),

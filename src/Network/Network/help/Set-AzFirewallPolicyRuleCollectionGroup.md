@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzFirewallPolicyRuleCollectionGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+saves a modified azure firewall policy rule collection group
 
 ## SYNTAX
 

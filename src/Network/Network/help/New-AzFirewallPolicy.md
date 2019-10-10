@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFirewallPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new Azure Firewall Policy
 
 ## SYNTAX
 

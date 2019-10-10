@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFirewallPolicyApplicationRule
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create a new Azure Firewall Policy Application Rule
 
 ## SYNTAX
 

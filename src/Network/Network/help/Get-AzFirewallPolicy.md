@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzFirewallPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a Azure Firewall Policy
 
 ## SYNTAX
 
