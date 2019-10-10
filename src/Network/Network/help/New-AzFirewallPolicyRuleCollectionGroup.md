@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFirewallPolicyRuleCollectionGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create a new Azure Firewall Policy Rule Collection Group
 
 ## SYNTAX
 

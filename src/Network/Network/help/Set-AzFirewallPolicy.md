@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzFirewallPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Saves a modified azure firewall policy
 
 ## SYNTAX
 

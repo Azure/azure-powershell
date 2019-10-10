@@ -92,7 +92,6 @@ namespace Microsoft.Azure.Commands.Network
                     HelpMessage = "location.", ParameterSetName = SetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [Parameter(Mandatory = true, ParameterSetName = SetByResourceIdParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet)]
         public virtual string Location { get; set; }
 
         [Parameter(
@@ -115,9 +114,10 @@ namespace Microsoft.Azure.Commands.Network
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
                 Name = InputObject.Name;
+                Location = InputObject.Location;
             }
 
-            if (!this.IsAzureFirewallPolicyPresent(ResourceGroupName, Name))
+            if (!NetworkBaseCmdlet.IsResourcePresent(() => GetAzureFirewallPolicy(ResourceGroupName, Name)))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
