@@ -39,12 +39,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// connection.</param>
         /// <param name="connectionIdentifier">The unique identifier (GUID) for
         /// the connection.</param>
-        public PSExchangeConnection(int? peeringDBFacilityId = default(int?), string connectionState = default(string), PSBgpSession bgpSession = default(PSBgpSession), string connectionIdentifier = default(string))
+        /// <param name="errorMessage">The error message related to the
+        /// connection state, if any.</param>
+        public PSExchangeConnection(int? peeringDBFacilityId = default(int?), string connectionState = default(string), PSBgpSession bgpSession = default(PSBgpSession), string connectionIdentifier = default(string), string errorMessage = default(string))
         {
             PeeringDBFacilityId = peeringDBFacilityId;
             ConnectionState = connectionState;
             BgpSession = bgpSession;
             ConnectionIdentifier = connectionIdentifier;
+            ErrorMessage = errorMessage;
             CustomInit();
         }
 
@@ -80,6 +83,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// </summary>
         [JsonProperty(PropertyName = "connectionIdentifier")]
         public string ConnectionIdentifier { get; set; }
+
+        /// <summary>
+        /// Gets the error message related to the connection state, if any.
+        /// </summary>
+        [JsonProperty(PropertyName = "errorMessage")]
+        public string ErrorMessage { get; private set; }
 
     }
 }
