@@ -218,11 +218,12 @@ function Test-FrontDoorCrudWithPiping
     $hostName = "$Name.azurefd.net"
     $routingrule1 = New-AzFrontDoorRoutingRuleObject -Name "routingrule1" -FrontDoorName $Name -ResourceGroupName $resourceGroupName -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1"
     $backend1 = New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net" 
-    $healthProbeSetting1 = New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1" 
+    $healthProbeSetting1 = New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1" -HealthProbeMethod "Head" -EnabledState "Disabled"
     $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1" 
     $frontendEndpoint1 = New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName
     $backendpool1 = New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $Name -ResourceGroupName $resourceGroupName -Backend $backend1 -HealthProbeSettingsName "healthProbeSetting1" -LoadBalancingSettingsName "loadBalancingSetting1"
-    New-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags
+    $backendPoolsSettings1 = New-AzFrontDoorBackendPoolsSettingsObject -SendRecvTimeoutSeconds 33 -EnforceCertificateNameCheck "Enabled"
+	New-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -BackendPoolsSettings $backendPoolsSettings1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags
     
     $newTags = @{"tag1" = "value3"; "tag2" = "value4"}
     $updatedFrontDoor = Get-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName | Set-AzFrontDoor -Tag $newTags
@@ -235,6 +236,15 @@ function Test-FrontDoorCrudWithPiping
     Assert-AreEqual $frontendEndpoint1.Name $updatedFrontDoor.FrontendEndpoints[0].Name
     Assert-Tags $newTags $updatedFrontDoor.Tags
     Assert-AreEqual $updatedFrontDoor.RoutingRules[0].RouteConfiguration.GetType().Name "PSForwardingConfiguration"
+
+	# Verify HealthProbeSettings
+	Assert-AreEqual $healthProbeSetting1.Name $updatedFrontDoor.HealthProbeSettings[0].Name
+	Assert-AreEqual $healthProbeSetting1.HealthProbeMethod $updatedFrontDoor.HealthProbeSettings[0].HealthProbeMethod
+	Assert-AreEqual $healthProbeSetting1.EnabledState $updatedFrontDoor.HealthProbeSettings[0].EnabledState
+
+	# Verify BackendPoolsSettings 
+	Assert-AreEqual $backendPoolsSettings1.SendRecvTimeoutSeconds $updatedFrontDoor.BackendPoolsSettings[0].SendRecvTimeoutSeconds
+	Assert-AreEqual $backendPoolsSettings1.EnforceCertificateNameCheck $updatedFrontDoor.BackendPoolsSettings[0].EnforceCertificateNameCheck
 
     $removed = Get-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName | Remove-AzFrontDoor  -PassThru
     Assert-True { $removed }
