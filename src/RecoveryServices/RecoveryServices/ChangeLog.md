@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Azure Site Recovery support to configure networking resources like NSG, public IP and internal load balancers for Azure to Azure.
 
 ## Version 2.0.0-preview
 * Azure Site Recovery Support to write to managed disk for vMWare to Azure.
