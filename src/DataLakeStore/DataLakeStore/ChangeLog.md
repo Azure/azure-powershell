@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix account validation so that accounts with "-" can be passed without domain
 
 ## Version 1.2.2
 * Fix hanging of Get-DataLakeStoreDeletedItem for any errors or remote exceptions.
