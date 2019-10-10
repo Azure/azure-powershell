@@ -104,7 +104,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica. This property is only settable for Premium and Business Critical databases.")]
-        public DatabaseReadScale? ReadScale { get; set; }
+        [ValidateNotNullOrEmpty]
+        public DatabaseReadScale ReadScale { get; set; }
 
         /// <summary>
         /// Gets or sets the tags associated with the Azure Sql Database
@@ -248,8 +249,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 MaxSizeBytes = MaxSizeBytes,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 ElasticPoolName = ElasticPoolName,
-                ReadScale = ReadScale,
-                ZoneRedundant = this.IsParameterBound(p => p.ZoneRedundant) ? (bool?)ZoneRedundant.ToBool() : null,
+                ReadScale = this.IsParameterBound(p => p.ReadScale) ? ReadScale : (DatabaseReadScale?)null,
+                ZoneRedundant = this.IsParameterBound(p => p.ZoneRedundant) ? ZoneRedundant.ToBool() : (bool?)null,
                 LicenseType = LicenseType, // note: default license type will be LicenseIncluded in SQL RP if not specified
                 AutoPauseDelayInMinutes = this.IsParameterBound(p => p.AutoPauseDelayInMinutes) ? AutoPauseDelayInMinutes : (int?)null,
                 MinimumCapacity = this.IsParameterBound(p => p.MinimumCapacity) ? MinimumCapacity : (double?)null,
