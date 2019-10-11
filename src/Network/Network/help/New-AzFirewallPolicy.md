@@ -19,7 +19,7 @@ New-AzFirewallPolicy -Name <String> -ResourceGroupName <String> -Location <Strin
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzFirewallPolicy** cmdlet creates an Azure Firewall Policy.
 
 ## EXAMPLES
 

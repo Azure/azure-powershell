@@ -20,7 +20,7 @@ Set-AzFirewallPolicyRuleCollectionGroup -Name <String> -Priority <UInt32>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzFirewallPolicyRuleCollectionGroup** cmdlet updates a rule collection groups in an Azure Firewall Policy.
 
 ## EXAMPLES
 

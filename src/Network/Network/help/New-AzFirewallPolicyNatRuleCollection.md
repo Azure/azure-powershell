@@ -19,7 +19,7 @@ New-AzFirewallPolicyNatRuleCollection -Name <String> -Priority <UInt32>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzFirewallPolicyNatRuleCollection** cmdlet creates a Nat rule collection for a Azure Firewall Policy.
 
 ## EXAMPLES
 
