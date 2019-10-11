@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Properties;
 using Microsoft.Rest.Azure;
 using System;
 using System.Collections;
@@ -541,9 +542,22 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                     currentOSType = virtualMachineResponse.StorageProfile.OsDisk.OsType;
 
+                    var vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
+                        this.ResourceGroupName, VMName));
+
                     if (OperatingSystemTypes.Linux.Equals(currentOSType) && !SkipVmBackup)
                     {
-                        CreateVMBackupForLinx();
+                        if (vmParameters.StorageProfile.OsDisk.ManagedDisk != null)
+                        {
+                            ThrowTerminatingError(new ErrorRecord(new ArgumentException(string.Format(CultureInfo.CurrentUICulture, Resources.EnableDiskEncryptionMissingSkipVmBackup)),
+                                                          "InvalidArgument",
+                                                          ErrorCategory.InvalidArgument,
+                                                          null));
+                        }
+                        else
+                        {
+                            CreateVMBackupForLinx();
+                        }                        
                     }
 
                     VirtualMachineExtension parameters = GetVmExtensionParameters(virtualMachineResponse);
