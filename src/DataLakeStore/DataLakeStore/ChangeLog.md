@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.3
 * Fix account validation so that accounts with "-" can be passed without domain
 
 ## Version 1.2.2

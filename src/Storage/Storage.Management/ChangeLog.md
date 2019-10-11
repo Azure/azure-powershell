@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.8.0
 * Upgrade Storage Client Library to 11.1.0
 * List containers with Management plane API, will list with NextPageLink
     -  Get-AzRmStorageContainer
