@@ -22,15 +22,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         private readonly string colorCode;
 
-        public static Color Red => new Color($"{Esc}[0;31m");
+        public static Color Red => new Color($"{Esc}[38;5;203m");
 
-        public static Color Green => new Color($"{Esc}[0;32m");
+        public static Color Green => new Color($"{Esc}[38;5;34m");
 
-        public static Color Yellow => new Color($"{Esc}[0;33m");
+        public static Color Orange => new Color($"{Esc}[38;5;214m");
 
-        public static Color Blue => new Color($"{Esc}[0;34m");
+        public static Color Blue => new Color($"{Esc}[38;5;39m");
 
-        public static Color Cyan => new Color($"{Esc}[0;36m");
+        public static Color Gray => new Color($"{Esc}[38;5;8m");
 
         public static Color Reset => new Color($"{Esc}[0m");
 

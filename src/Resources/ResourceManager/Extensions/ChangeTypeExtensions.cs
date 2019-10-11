@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             new Dictionary<ChangeType, Color>
             {
                 [ChangeType.NoChange] = Color.Reset,
-                [ChangeType.Ignore] = Color.Cyan,
+                [ChangeType.Ignore] = Color.Gray,
                 [ChangeType.Deploy] = Color.Blue,
                 [ChangeType.Create] = Color.Green,
                 [ChangeType.Delete] = Color.Red,
-                [ChangeType.Modify] = Color.Yellow
+                [ChangeType.Modify] = Color.Orange
             };
 
         private static readonly IReadOnlyDictionary<ChangeType, Symbol> SymbolsByChangeType =

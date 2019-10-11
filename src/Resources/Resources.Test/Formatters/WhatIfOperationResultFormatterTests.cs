@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
 "
                 .Replace("+", new ColorStringBuilder().Append("+", Color.Green).ToString())
                 .Replace("!", new ColorStringBuilder().Append("!", Color.Blue).ToString())
-                .Replace("*", new ColorStringBuilder().Append("*", Color.Cyan).ToString())
+                .Replace("*", new ColorStringBuilder().Append("*", Color.Gray).ToString())
                 .Replace("\r\n", Environment.NewLine);
 
             // Act.
@@ -181,11 +181,11 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
 Scope: /subscriptions/00000000-0000-0000-0000-000000000002
 {Color.Red}
   - Microsoft.Resources/resourceGroups/rg3
-  - p3/foobar2{Color.Reset}{Color.Cyan}
+  - p3/foobar2{Color.Reset}{Color.Gray}
   * p3/foobar1
 {Color.Reset}
 Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
-{Color.Yellow}
+{Color.Orange}
   ~ p1/foo2
 {Color.Reset}"
                 .Replace("\r\n", Environment.NewLine);
@@ -242,7 +242,7 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
   - p5/foo
   - p6/foo{Color.Reset}{Color.Green}
   + p2/foo{Color.Reset}{Color.Blue}
-  ! p4/foo{Color.Reset}{Color.Cyan}
+  ! p4/foo{Color.Reset}{Color.Gray}
   * p1/foo{Color.Reset}{Color.Reset}
   = p3/foo
 {Color.Reset}
@@ -361,9 +361,9 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
             string bar = $@"{Color.Green}""bar""{Color.Reset}";
             string expected = $@"
 Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
-{Color.Yellow}
+{Color.Orange}
   ~ p1/foo{Color.Reset}
-    {Color.Yellow}~{Color.Reset} path.to.property.change{Color.Reset}:{Color.Reset} ""foo"" => ""bar""
+    {Color.Orange}~{Color.Reset} path.to.property.change{Color.Reset}:{Color.Reset} ""foo"" => ""bar""
 "
                 .Replace(@"""foo""", foo)
                 .Replace(@"""bar""", bar)
