@@ -222,6 +222,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             ValueFromPipeline = true,
             HelpMessage = "The instance database object to restore")]
         [ValidateNotNullOrEmpty]
+        [Alias("InstanceDatabase")]
         public AzureSqlManagedDatabaseBaseModel InputObject { get; set; }
 
         /// <summary>
