@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.4
+
 * Fixed New-AzureAutomationSoftwareUpdateConfiguration cmdlet for Linux reboot setting parameter. 
 
 ## Version 1.3.3

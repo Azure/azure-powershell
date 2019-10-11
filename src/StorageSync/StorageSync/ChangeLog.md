@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.1
+
 * Fix Issue 9810 in Reset-AzStorageSyncServerCertificate.
 
 ## Version 1.2.0
