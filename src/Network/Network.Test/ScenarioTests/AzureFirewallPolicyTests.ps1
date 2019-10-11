@@ -18,12 +18,12 @@ Tests AzureFirewallPolicyCRUD.
 #>
 function Test-AzureFirewallPolicyCRUD {
     # Setup
-    $rgname = "psFpWcRg120"
-    $azureFirewallPolicyName = "psFpWc120"
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
     $location = "westcentralus"
 
-    $ruleGroupName = "rg120"
+    $ruleGroupName = Get-ResourceName
 
     # AzureFirewallPolicyApplicationRuleCollection
     $appRcName = "appRc"
