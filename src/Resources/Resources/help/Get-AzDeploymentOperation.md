@@ -12,10 +12,30 @@ Get deployment operation
 
 ## SYNTAX
 
-### GetByDeploymentName (Default)
+### SubscriptionWithDeploymentName (Default)
 ```
-Get-AzDeploymentOperation -DeploymentName <String> [-OperationId <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDeploymentOperation -ScopeType <DeploymentScopeType> -DeploymentName <String> [-OperationId <String>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceGroupWithDeploymentName
+```
+Get-AzDeploymentOperation -ScopeType <DeploymentScopeType> -ResourceGroupName <String> -DeploymentName <String>
+ [-OperationId <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ManagementGroupWithDeploymentName
+```
+Get-AzDeploymentOperation -ScopeType <DeploymentScopeType> -ManagementGroupId <String> -DeploymentName <String>
+ [-OperationId <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### TenantWithDeploymentName
+```
+Get-AzDeploymentOperation -ScopeType <DeploymentScopeType> -DeploymentName <String> [-OperationId <String>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByDeploymentObject
@@ -35,16 +55,37 @@ For more on this setting and how to enable it, see New-AzDeployment and Debuggin
 
 ## EXAMPLES
 
-### Get deployment operations given a deployment name
+### Get deployment operations for a deployment at subscription scope given a deployment name
 ```
-PS C:\>Get-AzDeploymentOperation -DeploymentName test
+PS C:\>Get-AzDeploymentOperation -ScopeType "Subscription" -DeploymentName test
 ```
 
 Gets deployment operation with name "test" at the current subscription scope.
 
+### Get deployment operations for a deployment at a resource group given a deployment name
+```
+PS C:\>Get-AzDeploymentOperation -ScopeType "ResourceGroup" -DeploymentName test -ResourceGroupName "testrg"
+```
+
+Gets deployment operation with name "test" at the resource group "testrg".
+
+### Get deployment operations for a deployment at a management group given a deployment name
+```
+PS C:\>Get-AzDeploymentOperation -ScopeType "ManagementGroup" -DeploymentName test -ManagementGroupId "testmg"
+```
+
+Gets deployment operation with name "test" at the management group "testmg".
+
+### Get deployment operations for a deployment at tenant scope given a deployment name
+```
+PS C:\>Get-AzDeploymentOperation -ScopeType "Tenant" -DeploymentName test
+```
+
+Gets deployment operation with name "test" at the current tenant scope.
+
 ### Get a deployment and get its deployment operations
 ```
-PS C:\>Get-AzDeployment -Name "test" | Get-AzDeploymentOperation
+PS C:\>Get-AzDeployment -ScopeType "Subscription" -Name "test" | Get-AzDeploymentOperation
 ```
 
 This command gets the deployment "test" at the current subscription scope and get its deployment operations.
@@ -87,7 +128,7 @@ The deployment name.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByDeploymentName
+Parameter Sets: SubscriptionWithDeploymentName, ResourceGroupWithDeploymentName, ManagementGroupWithDeploymentName, TenantWithDeploymentName
 Aliases:
 
 Required: True
@@ -112,12 +153,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ManagementGroupId
+The management group id.
+
+```yaml
+Type: System.String
+Parameter Sets: ManagementGroupWithDeploymentName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OperationId
 The deployment operation Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByDeploymentName
+Parameter Sets: SubscriptionWithDeploymentName, ResourceGroupWithDeploymentName, ManagementGroupWithDeploymentName, TenantWithDeploymentName
 Aliases:
 
 Required: False
@@ -136,6 +192,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceGroupWithDeploymentName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScopeType
+The scope type of the deployment.
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments.DeploymentScopeType]
+Parameter Sets: SubscriptionWithDeploymentName, ResourceGroupWithDeploymentName, ManagementGroupWithDeploymentName, TenantWithDeploymentName
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
