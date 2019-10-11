@@ -18,9 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fix bug where New-AzRoleAssignment could not be called without parameter Scope.
 
-## Version 1.6.3
+## Version 2.0.0
+* Fix bug where New-AzRoleAssignment could not be called without parameter Scope.
 * Add support for new api version 2019-07-01 for Microsoft.Resource
 * Refactor the `-AzDeployment` cmdlets to support deployment at all scopes: ResourceGroup, Subscription, ManagementGroup, Tenant
   - New-AzDeployment: Added `ScopeType` parameter which is required for all parameter sets.
