@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
             }
 
             // Write status.
-            const string statusMessage = "- Running... -";
+            const string statusMessage = "- Getting the latest status of all resources…... -";
             var information = new HostInformationMessage { Message = statusMessage, NoNewLine = true };
             var tags = new[] { "PSHOST" };
             this.WriteInformation(information, tags);

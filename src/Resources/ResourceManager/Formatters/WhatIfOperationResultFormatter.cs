@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         private void FormatStats(IList<PSWhatIfChange> resourceChanges)
         {
-            this.Builder.AppendLine().Append("Deployment what-if: ");
+            this.Builder.AppendLine().Append("Resource changes: ");
 
             if (resourceChanges == null || resourceChanges.Count == 0)
             {

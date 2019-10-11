@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
             var psWhatIfOperationResult = new PSWhatIfOperationResult(new WhatIfOperationResult());
             string noChangeInfo = new ColorStringBuilder()
                 .AppendLine()
-                .Append("Deployment what-if: no change.")
+                .Append("Resource changes: no change.")
                 .ToString();
 
             // Act.
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Formatters
 
             string stats = new ColorStringBuilder()
                 .AppendLine()
-                .Append("Deployment what-if: 1 to delete, 2 to create, 1 to modify.")
+                .Append("Resource changes: 1 to delete, 2 to create, 1 to modify.")
                 .ToString();
 
             // Act.
