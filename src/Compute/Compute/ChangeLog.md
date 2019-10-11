@@ -22,6 +22,7 @@
 * Add Priority, EvictionPolicy, and MaxPrice parameters to New-AzVM and New-AzVmss cmdlets
 * Fix warning message and help document for Add-AzVMAdditionalUnattendContent and Add-AzVMSshPublicKey cmdlets
 * Fix -skipVmBackup exception for Linux VMs with managed disks for Set-AzVMDiskEncryptionExtension. 
+* Fix bug in update encryption settings in Set-AzVMDiskEncryptionExtension, two pass scenario.
 
 ## Version 2.6.0
 * Add UploadSizeInBytes parameter tp New-AzDiskConfig
