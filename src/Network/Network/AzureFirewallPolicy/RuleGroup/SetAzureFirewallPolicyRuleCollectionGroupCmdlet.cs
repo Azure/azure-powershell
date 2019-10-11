@@ -35,13 +35,6 @@ namespace Microsoft.Azure.Commands.Network
         public PSAzureFirewallPolicyRuleCollectionGroupWrapper InputObject { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public virtual string ResourceGroupName { get; set; }
-
-        [Parameter(
                    Mandatory = true,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Firewall Policy.")]
@@ -77,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network
                                         json,
                                         typeof(MNM.FirewallPolicyRuleGroup),
                                         new JsonConverter[] { new Iso8601TimeSpanConverter(), new PolymorphicJsonCustomConverter<MNM.FirewallPolicyRule, MNM.FirewallPolicyRuleCondition>("ruleType", "ruleConditionType"), new TransformationJsonConverter() });
-            this.AzureFirewallPolicyRuleGroupClient.CreateOrUpdate(this.ResourceGroupName, this.AzureFirewallPolicy.Name, deserializedruleGroup.Name, deserializedruleGroup);
+            this.AzureFirewallPolicyRuleGroupClient.CreateOrUpdate(AzureFirewallPolicy.ResourceGroupName, this.AzureFirewallPolicy.Name, deserializedruleGroup.Name, deserializedruleGroup);
             WriteObject(InputObject);
         }
     }

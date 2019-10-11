@@ -21,13 +21,13 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyRuleCollectionGroup", DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(PSAzureFirewall), typeof(IEnumerable<PSAzureFirewall>))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyRuleCollectionGroup", DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(PSAzureFirewallPolicyRuleCollectionGroupWrapper), typeof(IEnumerable<PSAzureFirewallPolicyRuleCollectionGroupWrapper>))]
     public class GetAzureFirewallPolicyRuleCollectionGroupCommand : AzureFirewallPolicyRuleCollectionGroupBaseCmdlet
     {
 
-        private const string GetByNameParameterSet = "SetByNameParameterSet";
-        private const string GetByResourceIdParameterSet = "SetByResourceIdParameterSet";
-        private const string GetByInputObjectParameterSet = "SetByInputObjectParameterSet";
+        private const string GetByNameParameterSet = "GetByNameParameterSet";
+        private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
+        private const string GetByInputObjectParameterSet = "GetByInputObjectParameterSet";
 
         [Alias("ResourceName")]
         [Parameter(

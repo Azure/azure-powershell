@@ -12,13 +12,13 @@ Gets a Azure Firewall Policy
 
 ## SYNTAX
 
-### SetByNameParameterSet (Default)
+### GetByNameParameterSet (Default)
 ```
 Get-AzFirewallPolicy -Name <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### SetByResourceIdParameterSet
+### GetByResourceIdParameterSet
 ```
 Get-AzFirewallPolicy -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
