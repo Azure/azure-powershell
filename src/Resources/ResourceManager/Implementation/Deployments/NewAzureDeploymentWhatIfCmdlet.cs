@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
      OutputType(typeof(PSWhatIfOperationResult))]
     public class NewAzureDeploymentWhatIfCmdlet : DeploymentWhatIfCmdletWithParameters, IDynamicParameters
     {
+        [Parameter(Mandatory = true, HelpMessage = "The deployment scope type.")]
+        public DeploymentWhatIfScopeType ScopeType { get; set; }
+
         [Alias("DeploymentName")]
         [Parameter(Mandatory = false,
             HelpMessage = "The name of the deployment it's going to create. Only valid when a template is used. When a template is used, if the user doesn't specify a deployment name, use the current time, like \"20131223140835\".")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The deployment scope type.")]
-        public DeploymentWhatIfScopeType ScopeType { get; set; }
 
         [Parameter(ParameterSetName = SubscriptionParameterSetWithTemplateObjectParameterObject,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
