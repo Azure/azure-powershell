@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.5
 * Added Peering Service events
 * Removed UseForPeeringService at the Peering level
 * Updated to SDK 1.0.1-preview

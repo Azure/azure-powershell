@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.15.0
 * Add support for setting Active Directory Administrator on Managed Instance
 
 ## Version 1.14.2
