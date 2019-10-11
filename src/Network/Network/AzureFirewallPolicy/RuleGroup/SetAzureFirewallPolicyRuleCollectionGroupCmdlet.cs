@@ -27,23 +27,12 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyRuleCollectionGroup", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicyRuleCollectionGroup))]
     public class SetAzureFirewallPolicyRuleGroupCommand : AzureFirewallPolicyRuleCollectionGroupBaseCmdlet
     {
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the Rule Group")]
-        [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The priority of the rule group")]
-        [ValidateRange(100, 65000)]
-        public uint Priority { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The list of rules")]
         [ValidateNotNullOrEmpty]
-        public PSAzureFirewallPolicyBaseRuleCollection[] RuleCollection { get; set; }
+        public PSAzureFirewallPolicyRuleCollectionGroupWrapper InputObject { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -65,16 +54,15 @@ namespace Microsoft.Azure.Commands.Network
 
             var ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup
             {
-                priority = this.Priority,
-                ruleCollection = this.RuleCollection?.ToList(),
+                priority = InputObject.properties.priority,
+                ruleCollection = InputObject.properties.ruleCollection?.ToList()
             };
-
+            
             var rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper
             {
-                name = this.Name,
+                name = InputObject.name,
                 properties = ruleGroup
             };
-
 
             var settings = new JsonSerializerSettings
             {
@@ -90,7 +78,7 @@ namespace Microsoft.Azure.Commands.Network
                                         typeof(MNM.FirewallPolicyRuleGroup),
                                         new JsonConverter[] { new Iso8601TimeSpanConverter(), new PolymorphicJsonCustomConverter<MNM.FirewallPolicyRule, MNM.FirewallPolicyRuleCondition>("ruleType", "ruleConditionType"), new TransformationJsonConverter() });
             this.AzureFirewallPolicyRuleGroupClient.CreateOrUpdate(this.ResourceGroupName, this.AzureFirewallPolicy.Name, deserializedruleGroup.Name, deserializedruleGroup);
-            WriteObject(rcWrapper);
+            WriteObject(InputObject);
         }
     }
 }
