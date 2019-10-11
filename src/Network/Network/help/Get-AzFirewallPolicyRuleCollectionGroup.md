@@ -31,7 +31,7 @@ Get-AzFirewallPolicyRuleCollectionGroup -ResourceId <String> [-DefaultProfile <I
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzFirewallPolicyRuleCollectionGroup** cmdlet gets the RuleCollectionGroup mentioned from a Firewall Policy
 
 ## EXAMPLES
 

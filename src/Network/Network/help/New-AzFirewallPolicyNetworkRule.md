@@ -19,7 +19,7 @@ New-AzFirewallPolicyNetworkRule -Name <String> [-Description <String>] -SourceAd
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzFirewallPolicyNetworkRule** cmdlet creates a Network rule for a Azure Firewall Policy.
 
 ## EXAMPLES
 

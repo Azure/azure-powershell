@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Commands.Network
     public class GetAzureFirewallPolicyCommand : AzureFirewallPolicyBaseCmdlet
     {
 
-        private const string GetByNameParameterSet = "SetByNameParameterSet";
-        private const string GetByResourceIdParameterSet = "SetByResourceIdParameterSet";
+        private const string GetByNameParameterSet = "GetByNameParameterSet";
+        private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
 
         [Alias("ResourceName")]
         [Parameter(

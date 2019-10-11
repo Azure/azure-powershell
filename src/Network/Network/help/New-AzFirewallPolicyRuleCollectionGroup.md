@@ -20,7 +20,7 @@ New-AzFirewallPolicyRuleCollectionGroup -Name <String> -Priority <UInt32>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzFirewallPolicyRuleCollectionGroup** cmdlet creates a rule collection group in a Azure Firewall Policy.
 
 ## EXAMPLES
 

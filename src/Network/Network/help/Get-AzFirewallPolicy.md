@@ -24,7 +24,7 @@ Get-AzFirewallPolicy -ResourceId <String> [-DefaultProfile <IAzureContextContain
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzFirewallPolicy** cmdlet gets one or more Firewalls in a resource group
 
 ## EXAMPLES
 

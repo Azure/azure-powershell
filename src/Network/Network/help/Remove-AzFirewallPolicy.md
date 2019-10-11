@@ -8,18 +8,30 @@ schema: 2.0.0
 # Remove-AzFirewallPolicy
 
 ## SYNOPSIS
-Removes a Azure Firewall Policy
+Removes an Azure Firewall Policy
 
 ## SYNTAX
 
+### RemoveByNameParameterSet
 ```
 Remove-AzFirewallPolicy -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
- [-ResourceId <String>] -InputObject <PSAzureFirewallPolicy> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RemoveByResourceIdParameterSet
+```
+Remove-AzFirewallPolicy [-Force] [-PassThru] [-AsJob] -ResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RemoveByInputObjectParameterSet
+```
+Remove-AzFirewallPolicy [-Force] [-PassThru] [-AsJob] -InputObject <PSAzureFirewallPolicy>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzFirewallPolicy** cmdlet removes an Azure Firewall Policy.
 
 ## EXAMPLES
 
@@ -29,6 +41,20 @@ PS C:\> Remove-AzFirewallPolicy -Name firewallpolicy -ResourceGroupName TestRg
 ```
 
 This example removes the firewall policy named "firewallpolicy" in the resourcegroup "TestRg"
+
+### Example 2
+```powershell
+PS C:\> Remove-AzFirewallPolicy -Name firewallpolicy -ResourceId "/subscriptions/12345/resourceGroups/TestRg/providers/Microsoft.Network/firewallpolicies/firewallPolicy1"
+```
+
+This example removes the firewall policy by the Id.
+
+### Example 3
+```powershell
+PS C:\> Remove-AzFirewallPolicy -InputObject $fp
+```
+
+This example removes the firewall policy $fp
 
 ## PARAMETERS
 
@@ -82,7 +108,7 @@ The AzureFirewall Policy
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
-Parameter Sets: (All)
+Parameter Sets: RemoveByInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -97,7 +123,7 @@ The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RemoveByNameParameterSet
 Aliases: ResourceName
 
 Required: True
@@ -127,7 +153,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RemoveByNameParameterSet
 Aliases:
 
 Required: True
@@ -142,7 +168,7 @@ The resource Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RemoveByResourceIdParameterSet
 Aliases:
 
 Required: False

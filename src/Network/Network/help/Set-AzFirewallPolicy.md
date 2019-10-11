@@ -34,7 +34,7 @@ Set-AzFirewallPolicy [-AsJob] -ResourceId <String> [-ThreatIntelMode <String>] [
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzFirewallPolicy** cmdlet updates an Azure Firewall Policy.
 
 ## EXAMPLES
 

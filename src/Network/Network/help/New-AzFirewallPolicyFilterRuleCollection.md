@@ -18,7 +18,7 @@ New-AzFirewallPolicyFilterRuleCollection -Name <String> -Priority <UInt32> -Rule
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzFirewallPolicyFilterRuleCollection** cmdlet creates a Filter rule collection for a Azure Firewall Policy.
 
 ## EXAMPLES
 

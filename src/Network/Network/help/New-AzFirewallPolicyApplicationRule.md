@@ -26,7 +26,7 @@ New-AzFirewallPolicyApplicationRule -Name <String> [-Description <String>] [-Sou
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzFirewallPolicyApplicationRule** cmdlet creates an Application Rule for a Azure Firewall Policy.
 
 ## EXAMPLES
 
