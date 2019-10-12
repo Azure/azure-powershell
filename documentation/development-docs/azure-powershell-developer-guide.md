@@ -224,7 +224,7 @@ Please check out the [_Cmdlet Best Practices_](./design-guidelines/cmdlet-best-p
 To import modules automatically when debug has started, follow the below steps:
 
 - In the **Debug** tab mentioned previously, go to **Application arguments**
-- Import the Profile module, along with the module you are testing, by pasting the following in the **CApplication arguments** box (_note_: you have to update the <PATH_TO_REPO> and <SERVICE> values provided below):
+- Import the Profile module, along with the module you are testing, by pasting the following in the **Application arguments** box (_note_: you have to update the <PATH_TO_REPO> and <SERVICE> values provided below):
   - `-NoExit -Command "Import-Module <PATH_TO_REPO>/artifacts/Debug/Az.Accounts/Az.Accounts.psd1;Import-Module <PATH_TO_REPO>/artifacts/Debug/Az.<SERVICE>/Az.<SERVICE>.psd1;$VerbosePreference='Continue'"`
 - **Note**: if you do not see all of the changes you made to the cmdlets when importing your module in a PowerShell session (_e.g.,_ a cmdlet you added is not recognized as a cmdlet), you may need to delete any existing Azure PowerShell modules that you have on your machine (installed through the PowerShell Gallery) before you import your module.
 
