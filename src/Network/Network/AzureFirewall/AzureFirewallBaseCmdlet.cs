@@ -79,10 +79,12 @@ namespace Microsoft.Azure.Commands.Network
         {
             var azureFirewall = this.AzureFirewallClient.Get(resourceGroupName, name);
 
+            WriteObject(azureFirewall);
             var psAzureFirewall = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewall>(azureFirewall);
+            WriteObject(psAzureFirewall);
             psAzureFirewall.ResourceGroupName = resourceGroupName;
             psAzureFirewall.Tag = TagsConversionHelper.CreateTagHashtable(azureFirewall.Tags);
-
+            
             return psAzureFirewall;
         }
 
