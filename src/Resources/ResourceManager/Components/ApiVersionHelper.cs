@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 .CoalesceEnumerable()
                 .Where(provider => providerNamespace.EqualsInsensitively(provider.Namespace))
                 .SelectMany(provider => provider.ResourceTypes)
-                .Where(type => resourceType.EqualsInsensitively(topLevelResourceType))
+                .Where(type => topLevelResourceType.EqualsInsensitively(type.ResourceType))
                 .Select(type => type.ApiVersions)
                 .FirstOrDefault();
         }
