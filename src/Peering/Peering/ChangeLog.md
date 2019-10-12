@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.5
+* Added Peering Service events
+* Removed UseForPeeringService at the Peering level
+* Updated to SDK 1.0.1-preview
+* Supports API Version 2019-09-01-preview
+
 ## Version 0.1.4
 * Added Peering Service Operations
 * Updated Documentation
