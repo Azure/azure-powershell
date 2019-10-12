@@ -4,38 +4,39 @@ The Azure PowerShell Developer Guide was created to help with the development an
 
 # Table of Contents
 
+- [Azure PowerShell Developer Guide](#azure-powershell-developer-guide)
+- [Table of Contents](#table-of-contents)
 - [Prerequisites](#prerequisites)
 - [Environment Setup](#environment-setup)
-    - [GitHub Basics](#github-basics)
-    - [Building the Environment](#building-the-environment)
-    - [Generating Help](#generating-help)
-    - [Running Static Analysis](#running-static-analysis)
-    - [Running Tests](#running-tests)
+  - [GitHub Basics](#github-basics)
+  - [Building the Environment](#building-the-environment)
+  - [Generating Help](#generating-help)
+  - [Running Static Analysis](#running-static-analysis)
+  - [Running Tests](#running-tests)
 - [Before Adding a New Project](#before-adding-a-new-project)
-    - [.NET SDK](#net-sdk)
-    - [Design Review](#design-review)
-    - [Contact](#contact)
+  - [.NET SDK](#net-sdk)
+  - [Design Review](#design-review)
+  - [Point of Contact](#point-of-contact)
 - [Setting Up a New Project](#setting-up-a-new-project)
-    - [Getting Started](#getting-started)
-        - [Creating the Project](#creating-the-project)
-        - [Adding Project References](#adding-project-references)
+  - [Getting Started](#getting-started)
+    - [Creating the Project](#creating-the-project)
+    - [Adding Project References](#adding-project-references)
 - [Creating Cmdlets](#creating-cmdlets)
-    - [PowerShell Cmdlet Design Guidelines](#powershell-cmdlet-design-guidelines)
-    - [Enable Running PowerShell when Debugging](#enable-running-powershell-when-debugging)
-        - [Importing Modules](#importing-modules)
-    - [Adding Help Content](#adding-help-content)
+  - [PowerShell Cmdlet Design Guidelines](#powershell-cmdlet-design-guidelines)
+  - [Enable Running PowerShell when Debugging](#enable-running-powershell-when-debugging)
+    - [Importing Modules](#importing-modules)
+  - [Adding Help Content](#adding-help-content)
 - [Adding Tests](#adding-tests)
-    - [Using Azure TestFramework](#using-azure-testframework)
-    - [Scenario Tests](#scenario-tests)
-        - [Adding Scenario Tests](#adding-scenario-tests)
-        - [Using Common Code](#using-common-code)
-        - [Using Active Directory](#using-active-directory)
-        - [Using Certificate](#using-certificate)
-        - [AD Scenario Tests](#ad-scenario-tests)
-        - [Recording/Running Tests](#recordingrunning-tests)
+  - [Using Azure TestFramework](#using-azure-testframework)
+  - [Scenario Tests](#scenario-tests)
+    - [Adding Scenario Tests](#adding-scenario-tests)
+    - [Using Active Directory](#using-active-directory)
+    - [AD Scenario Tests](#ad-scenario-tests)
+    - [Recording/Running Tests](#recordingrunning-tests)
 - [After Development](#after-development)
+  - [Change Log](#change-log)
 - [Misc](#misc)
-    - [Publish to PowerShell Gallery](#publish-to-powershell-gallery)
+  - [Publish to PowerShell Gallery](#publish-to-powershell-gallery)
 
 # Prerequisites
 
@@ -215,15 +216,15 @@ Please check out the [_Cmdlet Best Practices_](./design-guidelines/cmdlet-best-p
   - Right click on your project in the **Solution Explorer** and select **Set as StartUp project**
 - Right-click on the project and select **Properties**
 - Go to the **Debug** tab
-- Under **Start Action**, pick _Start external program_ and type the PowerShell 6.0 directory
+- Pick _executable_ and type the PowerShell 6.0 directory
   - For example, `C:\Program Files\PowerShell\6\pwsh.exe`
 
 ### Importing Modules
 
 To import modules automatically when debug has started, follow the below steps:
 
-- In the **Debug** tab mentioned previously, go to **Start Options**
-- Import the Profile module, along with the module you are testing, by pasting the following in the **Command line arguments** box (_note_: you have to update the <PATH_TO_REPO> and <SERVICE> values provided below):
+- In the **Debug** tab mentioned previously, go to **Application arguments**
+- Import the Profile module, along with the module you are testing, by pasting the following in the **CApplication arguments** box (_note_: you have to update the <PATH_TO_REPO> and <SERVICE> values provided below):
   - `-NoExit -Command "Import-Module <PATH_TO_REPO>/artifacts/Debug/Az.Accounts/Az.Accounts.psd1;Import-Module <PATH_TO_REPO>/artifacts/Debug/Az.<SERVICE>/Az.<SERVICE>.psd1;$VerbosePreference='Continue'"`
 - **Note**: if you do not see all of the changes you made to the cmdlets when importing your module in a PowerShell session (_e.g.,_ a cmdlet you added is not recognized as a cmdlet), you may need to delete any existing Azure PowerShell modules that you have on your machine (installed through the PowerShell Gallery) before you import your module.
 

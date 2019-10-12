@@ -40,6 +40,7 @@ using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Proper
 using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using System.Management.Automation;
 using Microsoft.Rest;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
@@ -1165,8 +1166,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             foreach (var provider in providers)
             {
+                string topLevelResourceType = ResourceTypeUtility.GetTopLevelResourceType(resourceIdentifier.ResourceType);
                 var resourceType = provider.ResourceTypes
-                                           .Where(t => string.Equals(string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType), resourceIdentifier.ResourceType, StringComparison.OrdinalIgnoreCase))
+                                           .Where(t => string.Equals(string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType), topLevelResourceType, StringComparison.OrdinalIgnoreCase))
                                            .FirstOrDefault();
                 if (resourceType != null)
                 {
