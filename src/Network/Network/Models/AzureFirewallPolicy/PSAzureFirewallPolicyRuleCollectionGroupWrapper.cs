@@ -27,8 +27,6 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
 
         [JsonProperty(Order = 1)]
-        [Parameter(
-                   Mandatory = true)]
         public string name { get; set; }
         
         public PSAzureFirewallPolicyRuleCollectionGroup properties { get; set; }

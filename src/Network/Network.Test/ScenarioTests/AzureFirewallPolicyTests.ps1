@@ -143,7 +143,7 @@ function Test-AzureFirewallPolicyCRUD {
         # # Check rule groups count
         Assert-AreEqual 1 @($getAzureFirewallPolicy.RuleCollectionGroups).Count
 
-        $getRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -AzureFirewallPolicy $getAzureFirewallPolicy
+        $getRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -FirewallPolicyObject $getAzureFirewallPolicy
 
         Assert-AreEqual 3 @($getRg.properties.ruleCollection).Count
 

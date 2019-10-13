@@ -25,7 +25,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicy", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewall))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicy", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicy))]
     public class SetAzureFirewallPolicyCommand : AzureFirewallPolicyBaseCmdlet
     {
 
@@ -92,6 +92,7 @@ namespace Microsoft.Azure.Commands.Network
                     HelpMessage = "location.", ParameterSetName = SetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [Parameter(Mandatory = true, ParameterSetName = SetByResourceIdParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet)]
         public virtual string Location { get; set; }
 
         [Parameter(
