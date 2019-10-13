@@ -20,6 +20,7 @@ function Test-AzureFirewallPolicyCRUD {
     # Setup
     $rgname = Get-ResourceGroupName
     $azureFirewallPolicyName = Get-ResourceName
+    $azureFirewallPolicyAsJobName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
     $location = "westcentralus"
 
@@ -95,7 +96,7 @@ function Test-AzureFirewallPolicyCRUD {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
         
         # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
-        $azureFirewallPolicy = New-AzFirewallPolicy –Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -AsJob 
+        $azureFirewallPolicy = New-AzFirewallPolicy –Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location 
 
         # Get AzureFirewallPolicy
         $getAzureFirewallPolicy = Get-AzFirewallPolicy -name $azureFirewallPolicyName -ResourceGroupName $rgname
@@ -197,6 +198,11 @@ function Test-AzureFirewallPolicyCRUD {
         Assert-AreEqual $natRule1TranslatedAddress $natRuleCollection.TranslatedAddress
         Assert-AreEqual $natRule1TranslatedPort $natRuleCollection.TranslatedPort
 
+
+        # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
+        $azureFirewallPolicyAsJob = New-AzFirewallPolicy –Name $azureFirewallPolicyAsJobName -ResourceGroupName $rgname -Location $location -AsJob
+        $result = $azureFirewallPolicyAsJob | Wait-Job
+        Assert-AreEqual "Completed" $result.State;
     }
     finally {
         # Cleanup
