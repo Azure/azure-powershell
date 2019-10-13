@@ -95,7 +95,7 @@ function Test-AzureFirewallPolicyCRUD {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
         
         # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
-        $azureFirewallPolicy = New-AzFirewallPolicy –Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location 
+        $azureFirewallPolicy = New-AzFirewallPolicy –Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -AsJob 
 
         # Get AzureFirewallPolicy
         $getAzureFirewallPolicy = Get-AzFirewallPolicy -name $azureFirewallPolicyName -ResourceGroupName $rgname
@@ -123,7 +123,7 @@ function Test-AzureFirewallPolicyCRUD {
         # Create a NAT rule
         $natRc = New-AzFirewallPolicyNatRuleCollection -Name $networkRcName -Priority $natRcPriority -Rule $networkRule -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort -ActionType $natRcActionType
 
-        New-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -Priority 100 -RuleCollection $appRc, $appRc2, $natRc -AzureFirewallPolicy $azureFirewallPolicy -ResourceGroupName $rgName
+        New-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -Priority 100 -RuleCollection $appRc, $appRc2, $natRc -FirewallPolicyObject $azureFirewallPolicy -ResourceGroupName $rgName
 
 
         # # Update ThreatIntel mode
@@ -143,7 +143,7 @@ function Test-AzureFirewallPolicyCRUD {
         # # Check rule groups count
         Assert-AreEqual 1 @($getAzureFirewallPolicy.RuleCollectionGroups).Count
 
-        $getRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -FirewallPolicyObject $getAzureFirewallPolicy
+        $getRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -AzureFirewallPolicy $getAzureFirewallPolicy
 
         Assert-AreEqual 3 @($getRg.properties.ruleCollection).Count
 
