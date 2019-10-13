@@ -23,14 +23,10 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewallPolicyRuleCollectionGroup
+    public class PSAzureFirewallPolicyRuleCollectionGroup : PSChildResource
     {
 
         [JsonProperty(Order = 2)]
-        [Parameter(
-                   Mandatory = true,
-                   HelpMessage = "The priority of the rule group")]
-        [ValidateRange(100, 65000)]
         public uint priority { get; set; }
 
         [JsonProperty("rules")]

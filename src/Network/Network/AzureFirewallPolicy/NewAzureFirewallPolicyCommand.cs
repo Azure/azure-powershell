@@ -21,14 +21,14 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicy", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(PSAzureFirewall))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicy", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicy))]
     public class NewAzureFirewallPolicyCommand : AzureFirewallPolicyBaseCmdlet
     {
-        private const string DefaultParameterSet = "Default";
 
         [Alias("ResourceName")]
         [Parameter(
@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "location.")]
+        [LocationCompleter("Microsoft.Batch/operations")]
         [ValidateNotNullOrEmpty]
         public virtual string Location { get; set; }
 
