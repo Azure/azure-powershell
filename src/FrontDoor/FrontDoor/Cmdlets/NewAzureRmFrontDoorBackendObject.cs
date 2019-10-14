@@ -70,6 +70,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Whether to enable use of this backend.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable use of this backend. Default value is Enabled")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
         public PSEnabledState EnabledState { get; set; }
 
         /// <summary>

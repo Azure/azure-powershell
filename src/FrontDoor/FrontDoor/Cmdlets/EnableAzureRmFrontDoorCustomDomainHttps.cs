@@ -100,6 +100,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The minimum TLS version required from the clients to establish an SSL handshake with Front Door.")]
+        [PSArgumentCompleter("1.0", "1.2")]
         public string MinimumTlsVersion { get; set; }
 
         public override void ExecuteCmdlet()

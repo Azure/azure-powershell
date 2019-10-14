@@ -60,12 +60,14 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Configures which HTTP method to use to probe the backends defined under backendPools.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Configures which HTTP method to use to probe the backends defined under backendPools.")]
+        [PSArgumentCompleter("HEAD", "GET")]
         public string HealthProbeMethod { get; set; }
 
         /// <summary>
         /// Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
         public PSEnabledState EnabledState { get; set; }
 
         public override void ExecuteCmdlet()

@@ -87,6 +87,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Enabled state of the Front Door load balancer.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Enabled state of the Front Door load balancer. Default value is Enabled")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
         public PSEnabledState EnabledState { get; set; }
 
         /// <summary>
