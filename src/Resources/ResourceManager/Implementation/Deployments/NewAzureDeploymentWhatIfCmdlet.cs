@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
     /// Creates a new deployment what-if.
     /// </summary>
     [Cmdlet(VerbsCommon.New,
-         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentWhatIf", SupportsShouldProcess = true,
+         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentWhatIf",
          DefaultParameterSetName = SubscriptionParameterSetWithParameterlessTemplateFile),
      OutputType(typeof(PSWhatIfOperationResult))]
     public class NewAzureDeploymentWhatIfCmdlet : DeploymentWhatIfCmdletWithParameters, IDynamicParameters
