@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                 default:
                     // If this happens, value is malformed. Instead of throwing an exception,
                     // we handle it gracefully by printing out whatever it is.
-                    using (this.Builder.NewColorScope(Color.Red))
+                    using (this.Builder.NewColorScope(Color.Orange))
                     {
                         this.Builder
                             .AppendLine()

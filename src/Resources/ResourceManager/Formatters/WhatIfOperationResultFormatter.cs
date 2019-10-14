@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         private void FormatPropertyDelete(JToken value, int indentLevel)
         {
-            using (this.Builder.NewColorScope(Color.Red))
+            using (this.Builder.NewColorScope(Color.Orange))
             {
                 this.FormatJson(value, indentLevel: indentLevel);
             }

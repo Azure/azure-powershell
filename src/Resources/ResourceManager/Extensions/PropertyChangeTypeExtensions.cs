@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             new Dictionary<PropertyChangeType, Color>
             {
                 [PropertyChangeType.Create] = Color.Green,
-                [PropertyChangeType.Delete] = Color.Red,
-                [PropertyChangeType.Modify] = Color.Orange,
-                [PropertyChangeType.Array] = Color.Orange
+                [PropertyChangeType.Delete] = Color.Orange,
+                [PropertyChangeType.Modify] = Color.Purple,
+                [PropertyChangeType.Array] = Color.Purple
             };
 
         private static readonly IReadOnlyDictionary<PropertyChangeType, Symbol> SymbolsByPropertyChangeType =

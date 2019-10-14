@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 [ChangeType.Ignore] = Color.Gray,
                 [ChangeType.Deploy] = Color.Blue,
                 [ChangeType.Create] = Color.Green,
-                [ChangeType.Delete] = Color.Red,
-                [ChangeType.Modify] = Color.Orange
+                [ChangeType.Delete] = Color.Orange,
+                [ChangeType.Modify] = Color.Purple
             };
 
         private static readonly IReadOnlyDictionary<ChangeType, Symbol> SymbolsByChangeType =

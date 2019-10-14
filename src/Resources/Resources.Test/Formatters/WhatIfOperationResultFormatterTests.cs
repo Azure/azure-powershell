@@ -179,13 +179,13 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
   + p2/bar
 {Color.Reset}
 Scope: /subscriptions/00000000-0000-0000-0000-000000000002
-{Color.Red}
+{Color.Orange}
   - Microsoft.Resources/resourceGroups/rg3
   - p3/foobar2{Color.Reset}{Color.Gray}
   * p3/foobar1
 {Color.Reset}
 Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
-{Color.Orange}
+{Color.Purple}
   ~ p1/foo2
 {Color.Reset}"
                 .Replace("\r\n", Environment.NewLine);
@@ -238,7 +238,7 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
             };
 
             string shortResourceIds = $@"
-{Color.Red}
+{Color.Orange}
   - p5/foo
   - p6/foo{Color.Reset}{Color.Green}
   + p2/foo{Color.Reset}{Color.Blue}
@@ -277,7 +277,7 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
                 }
             };
 
-            string colon = $"{Color.Reset}:{Color.Red}";
+            string colon = $"{Color.Reset}:{Color.Orange}";
             string beforeValue = @"
 
       numberValue:  1.2
@@ -357,13 +357,13 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000002/resourceGroups/rg2
                 }
             };
 
-            string foo = $@"{Color.Red}""foo""{Color.Reset}";
+            string foo = $@"{Color.Orange}""foo""{Color.Reset}";
             string bar = $@"{Color.Green}""bar""{Color.Reset}";
             string expected = $@"
 Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
-{Color.Orange}
+{Color.Purple}
   ~ p1/foo{Color.Reset}
-    {Color.Orange}~{Color.Reset} path.to.property.change{Color.Reset}:{Color.Reset} ""foo"" => ""bar""
+    {Color.Purple}~{Color.Reset} path.to.property.change{Color.Reset}:{Color.Reset} ""foo"" => ""bar""
 "
                 .Replace(@"""foo""", foo)
                 .Replace(@"""bar""", bar)
