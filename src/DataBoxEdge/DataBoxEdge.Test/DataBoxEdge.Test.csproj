@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>DataBoxEdge</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
+
+  <PropertyGroup>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix).ScenarioTests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.EdgeGateway" Version="0.8.1-preview" />
+    <PackageReference Update="Microsoft.Rest.ClientRuntime" Version="2.3.19" />
+    <PackageReference Update="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.19" />
+  </ItemGroup>
+
+</Project>
