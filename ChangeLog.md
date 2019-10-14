@@ -1,3 +1,93 @@
+## 2.8.0 - October 2019
+### General
+* Az.HealthcareApis 1.0.0 release
+
+#### Az.Accounts
+* Update telemetry and url rewriting for generated modules, fix windows unit tests.
+
+#### Az.ApiManagement
+* **Set-AzApiManagementApi** - Added support for Updating Api into ApiVersionSet
+    - Fix for issue https://github.com/Azure/azure-powershell/issues/10068
+
+#### Az.Automation
+* Fixed New-AzureAutomationSoftwareUpdateConfiguration cmdlet for Linux reboot setting parameter. 
+
+#### Az.Batch
+* **Get-AzBatchNodeAgentSku** is deprecated and will be replaced by **Get-AzBatchSupportImage** in version 2.0.0.
+
+#### Az.Compute
+* Add Priority, EvictionPolicy, and MaxPrice parameters to New-AzVM and New-AzVmss cmdlets
+* Fix warning message and help document for Add-AzVMAdditionalUnattendContent and Add-AzVMSshPublicKey cmdlets
+* Fix -skipVmBackup exception for Linux VMs with managed disks for Set-AzVMDiskEncryptionExtension. 
+* Fix bug in update encryption settings in Set-AzVMDiskEncryptionExtension, two pass scenario.
+
+#### Az.DataFactory
+* Adding CRUD commands for ADF V2 data flow: Set-AzDataFactoryV2DataFlow, Remove-AzDataFactoryV2DataFlow, and Get-AzDataFactoryV2DataFlow.
+* Adding action commands for ADF V2 data flow debug Session: Start-AzDataFactoryV2DataFlowDebugSession, Get-AzDataFactoryV2DataFlowDebugSession, Add-AzDataFactoryV2DataFlowDebugSessionPackage, Invoke-AzDataFactoryV2DataFlowDebugSessionCommand and Stop-AzDataFactoryV2DataFlowDebugSession.
+* Update ADF .Net SDK version to 4.2.0
+
+#### Az.DataLakeStore
+* Fix account validation so that accounts with '-' can be passed without domain
+
+#### Az.HealthcareApis
+* Updated the powershell version to 1.0.0
+* Updated the SDK version to 1.0.2
+* Update in tests to refer to new SDK version
+* Updated the output structure from nested to flattened.
+
+#### Az.IotHub
+* Add new routing source: DigitalTwinChangeEvents
+* Minor bug fix: Get-AzIothub not returning subscriptionId 
+
+#### Az.Monitor
+* New action group receivers added for action group
+	-ItsmReceiver
+	-VoiceReceiver
+	-ArmRoleReceiver
+	-AzureFunctionReceiver
+	-LogicAppReceiver
+	-AutomationRunbookReceiver
+	-AzureAppPushReceiver
+* Use common alert schema enabled for the receivers. This is not applicable for SMS, Azure App push , ITSM and Voice recievers
+* Webhooks now supports Azure active directory authentication .
+
+#### Az.Network
+* Add new cmdlet Get-AzAvailableServiceAlias which can be called to get the aliases that can be used for Service Endpoint Policies.
+* Added support for the adding traffic selectors to Virtual Network Gateway Connections
+    - New cmdlets added:
+        - New-AzureRmTrafficSelectorPolicy
+    - Cmdlets updated with optional parameter -TrafficSelectorPolicies
+        -New-AzureRmVirtualNetworkGatewayConnection
+        -Set-AzureRmVirtualNetworkGatewayConnection
+* Add support for ESP and AH protocols in network security rule configurations
+    - Updated cmdlets:
+        - Add-AzNetworkSecurityRuleConfig
+        - New-AzNetworkSecurityRuleConfig
+        - Set-AzNetworkSecurityRuleConfig
+* Improve handling of exceptions in Cortex cmdlets
+* New Generations and SKUs for VirtualNetworkGateways
+  - Introduce new Generations for VirtualNetworkGateways.
+  - Introduce new high throughput SKUs for VirtualNetworkGateways.
+
+#### Az.RedisCache
+* Updated 'Set-AzRedisCache' reference documentation to include missing values for '-Size' parameter
+
+#### Az.Sql
+* Add support for setting Active Directory Administrator on Managed Instance
+
+#### Az.Storage
+* Upgrade Storage Client Library to 11.1.0
+* List containers with Management plane API, will list with NextPageLink
+    -  Get-AzRmStorageContainer
+* List Storage accounts from subscription, will list with NextPageLink
+    -  Get-AzStorageAccount
+
+#### Az.StorageSync
+* Fix Issue 9810 in Reset-AzStorageSyncServerCertificate.
+
+#### Az.Websites
+* Set-AzWebApp updating ASP of an app was failing
+
 ## 2.7.0 - September 2019
 #### Az.ApiManagement
 * Update '-Format' parameter description in 'Set-AzApiManagementPolicy' reference documentation

@@ -112,7 +112,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 else
                 {
                     var list = this.Kind != null ? this.GetPeeringByKind() : this.GetPeeringBySubscription();
-                    this.WriteObject(list, true);
+                    this.WriteObject(list);
                 }
             }
             catch (InvalidOperationException mapException)

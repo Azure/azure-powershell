@@ -58,18 +58,19 @@ function Test-ConvertLegacyToExchange
 
 	#Hard Coded locations becuase of limitations in locations
 	$kind = isDirect $false;
-	$loc = "Seattle"
+	$loc = "ashburn"
 	$resourceGroup = "testCarrier"
 	#asn has to be hard coded because its unique and finite amoungst locations
-	$asnId = 11164
+	$asnId = 57976
 	$resourceName = getAssetName "LegacyConvertExchange"
 	$asnPeerName = getAssetName "PeerName"
 	$asn = makePeerAsn $asnId
 	Assert-NotNull $asn
 	Assert-AreEqual "Approved" $asn.ValidationState
     $legacy = Get-AzLegacyPeering -Kind $kind -PeeringLocation $loc  
+	$tags = @{"tfs_$asnId" = "Active"; "tag2" = "value2"}
 	Assert-NotNull $legacy
-	$legacy | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeerAsnResourceId $asn.Id 
+	$legacy | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeerAsnResourceId $asn.Id -Tag $tags
 	$newPeering = Get-AzPeering -ResourceGroupName testCarrier -Name $resourceName
 	Assert-NotNull $newPeering
 }
@@ -142,5 +143,5 @@ function Test-UpdateExchangeMd5OnNameAndResourceGroup
 	$peering.Tags = $tags;
 	$peering.Connections[0] = $peering.Connections[0] |  Set-AzPeeringExchangeConnectionObject -MD5AuthenticationKey $hash
 	$peering.Connections[1] = $peering.Connections[1] |  Set-AzPeeringExchangeConnectionObject -MD5AuthenticationKey $hash
-	Assert-ThrowsContains {$peering | Update-AzPeering } "OperationNotSupported"
+	Assert-ThrowsContains {$peering = $peering | Update-AzPeering} "not yet supported"
 }
