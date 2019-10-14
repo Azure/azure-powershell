@@ -29,14 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSNodeAgentSku
+    public partial class PSAzureBlobFileSystemConfiguration
     {
         
-        internal Microsoft.Azure.Batch.NodeAgentSku omObject;
+        internal Microsoft.Azure.Batch.AzureBlobFileSystemConfiguration omObject;
         
-        private IReadOnlyList<PSImageReference> verifiedImageReferences;
+        public PSAzureBlobFileSystemConfiguration(string accountName, string containerName, string relativeMountPath, Microsoft.Azure.Batch.AzureStorageAuthenticationKey key, string blobfuseOptions = null)
+        {
+            this.omObject = new Microsoft.Azure.Batch.AzureBlobFileSystemConfiguration(accountName, containerName, relativeMountPath, key, blobfuseOptions);
+        }
         
-        internal PSNodeAgentSku(Microsoft.Azure.Batch.NodeAgentSku omObject)
+        internal PSAzureBlobFileSystemConfiguration(Microsoft.Azure.Batch.AzureBlobFileSystemConfiguration omObject)
         {
             if ((omObject == null))
             {
@@ -45,42 +48,51 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public string Id
+        public string AccountKey
         {
             get
             {
-                return this.omObject.Id;
+                return this.omObject.AccountKey;
             }
         }
         
-        public Microsoft.Azure.Batch.Common.OSType? OSType
+        public string AccountName
         {
             get
             {
-                return this.omObject.OSType;
+                return this.omObject.AccountName;
             }
         }
         
-        public IReadOnlyList<PSImageReference> VerifiedImageReferences
+        public string BlobfuseOptions
         {
             get
             {
-                if (((this.verifiedImageReferences == null) 
-                            && (this.omObject.VerifiedImageReferences != null)))
-                {
-                    List<PSImageReference> list;
-                    list = new List<PSImageReference>();
-                    IEnumerator<Microsoft.Azure.Batch.ImageReference> enumerator;
-                    enumerator = this.omObject.VerifiedImageReferences.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        list.Add(new PSImageReference(enumerator.Current));
-                    }
-                    this.verifiedImageReferences = list.AsReadOnly();
-                }
-                return this.verifiedImageReferences;
+                return this.omObject.BlobfuseOptions;
+            }
+        }
+        
+        public string ContainerName
+        {
+            get
+            {
+                return this.omObject.ContainerName;
+            }
+        }
+        
+        public string RelativeMountPath
+        {
+            get
+            {
+                return this.omObject.RelativeMountPath;
+            }
+        }
+        
+        public string SasKey
+        {
+            get
+            {
+                return this.omObject.SasKey;
             }
         }
     }
