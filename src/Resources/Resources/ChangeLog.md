@@ -127,4 +127,4 @@
 ## Version 1.0.0
 * General availability of `Az.Resources` module
 * Removed -Sku parameter from New/Set-AzPolicyAssignment
-* Removed -Password parameter from New-AzADServicePrincipal and New-AzADSpCredential Removed -Password parameter from New-AzADServicePrincipal and New-AzADSpCredential
+* Removed -Password parameter from New-AzADServicePrincipal and New-AzADSpCredential
