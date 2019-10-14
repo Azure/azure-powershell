@@ -1252,6 +1252,60 @@ function Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove
 
 <#
 .SYNOPSIS
+Test the Set-AzVMDiskEncryptionExtension single pass enable and disable scenario with non default parameters
+#>
+function Test-AzureDiskEncryptionExtensionSinglePassEnableAndDisableWithNonDefaultParams
+{
+	$resourceGroupName = Get-ComputeTestResourceName
+	try
+	{
+		# create virtual machine and key vault prerequisites
+		$vm = Create-VirtualMachine $resourceGroupName
+		$kv = Create-KeyVault $vm.ResourceGroupName $vm.Location
+
+		$extensionPublisher = "Microsoft.Azure.Security.Edp";
+		$extensionName = "MyExtension";
+
+		# enable encryption with single pass syntax (omits AD parameters)
+		Set-AzVMDiskEncryptionExtension `
+			-ResourceGroupName $vm.ResourceGroupName `
+			-VMName $vm.Name `
+			-DiskEncryptionKeyVaultUrl $kv.DiskEncryptionKeyVaultUrl `
+			-DiskEncryptionKeyVaultId $kv.DiskEncryptionKeyVaultId `
+			-ExtensionPublisherName $extensionPublisher `
+			-ExtensionName $extensionName `
+			-Force
+
+		# verify encryption state
+		$status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -ExtensionPublisherName $extensionPublisher -ExtensionName $extensionName
+		Assert-NotNull $status
+		Assert-AreEqual $status.OsVolumeEncrypted Encrypted
+		Assert-AreEqual $status.DataVolumesEncrypted Encrypted
+
+		# verify encryption settings
+		$settings = $status.OsVolumeEncryptionSettings
+		Assert-NotNull $settings
+		Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
+		Assert-AreEqual $settings.DiskEncryptionKey.SourceVault.Id $kv.DiskEncryptionKeyVaultId
+
+		# disable encryption
+		$status = Disable-AzVmDiskEncryption -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -ExtensionPublisherName $extensionPublisher -ExtensionName $extensionName -Force
+		Assert-NotNull $status
+
+		# verify encryption state
+		$status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -ExtensionPublisherName $extensionPublisher -ExtensionName $extensionName
+		Assert-NotNull $status
+		Assert-AreEqual $status.OsVolumeEncrypted NotEncrypted
+		Assert-AreEqual $status.DataVolumesEncrypted NotEncrypted
+	}
+	finally
+	{
+		Clean-ResourceGroup($resourceGroupName)
+	}
+}
+
+<#
+.SYNOPSIS
 Test AzureDiskEncryption extension
 #>
 function Test-AzureDiskEncryptionExtension
