@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azrmstoragecontainer
@@ -14,13 +14,13 @@ Gets or lists Storage blob containers
 
 ### AccountName (Default)
 ```
-Get-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <String> [-Name <String>]
+Get-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <String> [-Name <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
-Get-AzRmStorageContainer -StorageAccount <PSStorageAccount> [-Name <String>]
+Get-AzRmStorageContainer -StorageAccount <PSStorageAccount> [-Name <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -52,6 +52,21 @@ PS C:\>Get-AzRmStorageContainer -StorageAccount $accountObject -ContainerName "m
 This command gets a Storage blob container with Storage account object and container name.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
