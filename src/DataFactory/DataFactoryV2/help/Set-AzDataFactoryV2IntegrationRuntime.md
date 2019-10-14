@@ -17,7 +17,8 @@ Updates an integration runtime.
 Set-AzDataFactoryV2IntegrationRuntime [-ResourceGroupName] <String> [-DataFactoryName] <String>
  [-Name] <String> [-Type <String>] [-Description <String>] [-Location <String>] [-NodeSize <String>]
  [-NodeCount <Int32>] [-CatalogServerEndpoint <String>] [-CatalogAdminCredential <PSCredential>]
- [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>] [-SetupScriptContainerSasUri <String>]
+ [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>] 
+ [-PublicIPs <String[]>] [-SetupScriptContainerSasUri <String>]
  [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <SecureString>]
  [-DataProxyIntegrationRuntimeName <String>] [-DataProxyStagingLinkedServiceName <String>] [-DataProxyStagingPath <String>]
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -27,7 +28,7 @@ Set-AzDataFactoryV2IntegrationRuntime [-ResourceGroupName] <String> [-DataFactor
 ```
 Set-AzDataFactoryV2IntegrationRuntime [-ResourceId] <String> [-Type <String>] [-Description <String>]
  [-Location <String>] [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
- [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
+ [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>] [-PublicIPs <String[]>]
  [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>]
  [-DataProxyIntegrationRuntimeName <String>] [-DataProxyStagingLinkedServiceName <String>] [-DataProxyStagingPath <String>]
  [-LicenseType <String>] [-AuthKey <SecureString>] [-Force] [-DefaultProfile <IAzureContextContainer>]
@@ -53,7 +54,8 @@ Set-AzDataFactoryV2IntegrationRuntime [-ResourceGroupName] <String> [-DataFactor
 Set-AzDataFactoryV2IntegrationRuntime [-InputObject] <PSIntegrationRuntime> [-Type <String>]
  [-Description <String>] [-Location <String>] [-NodeSize <String>] [-NodeCount <Int32>]
  [-CatalogServerEndpoint <String>] [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>]
- [-VNetId <String>] [-Subnet <String>] [-SetupScriptContainerSasUri <String>] [-Edition <String>]
+ [-VNetId <String>] [-Subnet <String>] [-PublicIPs <String[]>]
+ [-SetupScriptContainerSasUri <String>] [-Edition <String>]
  [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>]  [-DataProxyIntegrationRuntimeName <String>]
  [-DataProxyStagingLinkedServiceName <String>] [-DataProxyStagingPath <String>] [-AuthKey <SecureString>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -118,6 +120,7 @@ PS C:\> Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName testgroup `
     CatalogPricingTier                : 
     VNetId                            : 
     Subnet                            : 
+    PublicIPs                         : 
     State                             : Initial
     LicenseType                       : LicenseIncluded
     SetupScriptContainerSasUri        : 
@@ -414,6 +417,21 @@ The integration runtime node size.
 
 ```yaml
 Type: System.String
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicIPs
+The public IP addresses which the integration runtime will use.
+
+```yaml
+Type: System.String[]
 Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
 Aliases:
 
