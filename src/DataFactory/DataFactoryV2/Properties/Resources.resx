@@ -386,4 +386,10 @@ Are you sure you want to continue?</value>
   <data name="LinksSwitchMissing" xml:space="preserve">
     <value>LinkedDataFactoryName parameter is working together with '-Links' switch parameter.</value>
   </data>
+  <data name="IntegrationRuntimeVNetNotProvided" xml:space="preserve">
+    <value>VNetId and Subnet should be provided when creating new integration runtime with public IP addresses.</value>
+  </data>
+  <data name="InvalidPublicIPCount" xml:space="preserve">
+    <value>Invalid number of public IP addresses are provided: {0}. Please provide 2 public IP addresses for your SSIS Integration Runtime.</value>
+  </data>
 </root>
