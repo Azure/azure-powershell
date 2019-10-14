@@ -26,10 +26,10 @@
     Copyright = '(c) 2019 Microsoft Corporation. All rights reserved.'
     
     # Description of the functionality provided by this module
-    # Description = ''
+    Description = 'Deployment Admin Client'
     
     # Minimum version of the Windows PowerShell engine required by this module
-    # PowerShellVersion = ''
+    PowerShellVersion = '5.0'
     
     # Name of the Windows PowerShell host required by this module
     # PowerShellHostName = ''
@@ -47,7 +47,8 @@
     # ProcessorArchitecture = ''
     
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules = @('AzureRm.Profile')
+    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.3'; },
+        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.4.3'; })
     
     # Assemblies that must be loaded prior to importing this module
     # RequiredAssemblies = @()
@@ -83,7 +84,30 @@
     # FileList = @()
     
     # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
-    # PrivateData = @{}
+    PrivateData       = @{
+
+        PSData = @{
+
+            # Tags applied to this module. These help with module discovery in online galleries.
+            Tags         = @('AzureStack', 'Deployment', 'Admin', 'DRP')
+
+            # A URL to the license for this module.
+            LicenseUri   = 'https://aka.ms/azps-license'
+
+            # A URL to the main website for this project.
+            ProjectUri   = 'https://github.com/Azure/azure-powershell'
+
+            # A URL to an icon representing this module.
+            # IconUri = ''
+
+            # ReleaseNotes of this module
+            ReleaseNotes = '
+            * Introducting functionalities to work with Azure Stack Deployment provider
+            '
+
+        } # End of PSData hashtable
+
+    } # End of PrivateData hashtable
     
     # HelpInfo URI of this module
     # HelpInfoURI = ''
