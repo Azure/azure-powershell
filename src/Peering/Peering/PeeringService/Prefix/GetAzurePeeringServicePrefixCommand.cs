@@ -92,6 +92,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the expand flag.
+        /// </summary>
+        [Parameter(
+            Mandatory = false, 
+            HelpMessage = Constants.PeeringServicePrefixEventHelp,
+            ParameterSetName = Constants.ParameterSetNameDefault)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.PeeringServicePrefixEventHelp,
+            ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.PeeringServicePrefixEventHelp,
+            ParameterSetName = Constants.ParameterSetNameByResourceId)]
+        public SwitchParameter Expand { get; set; }
+
         /// <inheritdoc />
         /// <summary>
         ///     Execute Override for powershell cmdlet
@@ -164,7 +181,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>List of peering service resources</returns>
         public List<PSPeeringServicePrefix> ListPeeringService()
         {
-            return this.PrefixesClient.ListByPeeringService(this.ResourceGroupName, this.PeeringServiceName).Select(ToPeeringServicePrefixPS).ToList();
+            return this.PrefixesClient.ListByPeeringService(this.ResourceGroupName, this.PeeringServiceName, this.Expand ? "events" : null).Select(ToPeeringServicePrefixPS).ToList();
         }
 
         /// <summary>
@@ -173,7 +190,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>InputObject Resource</returns>
         public object GetPeeringServicePrefixByResourceAndName()
         {
-            var prefix = this.ToPeeringServicePrefixPS(this.PeeringServicePrefixesClient.Get(this.ResourceGroupName, this.PeeringServiceName, this.Name));
+            var prefix = this.ToPeeringServicePrefixPS(this.PeeringServicePrefixesClient.Get(this.ResourceGroupName, this.PeeringServiceName, this.Name, this.Expand ? "events" : null));
             if (prefix != null)
             {
                 return prefix;
