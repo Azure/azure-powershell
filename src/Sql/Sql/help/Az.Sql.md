@@ -99,8 +99,7 @@ Gets one or more Advisors for an Azure SQL Database.
 Gets the auditing settings of an Azure SQL database.
 
 ### [Get-AzSqlDatabaseAuditing](Get-AzSqlDatabaseAuditing.md)
-**Important: This cmdlet is deprecated, [Get-AzSqlDatbaseAudit](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaseaudit) is replacing it.**
-
+**Important: This cmdlet is deprecated, [Get-AzSqlDatabaseAudit](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaseaudit) is replacing it.**
 Gets the auditing settings of an Azure SQL database.
 
 ### [Get-AzSqlDatabaseBackupLongTermRetentionPolicy](Get-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
