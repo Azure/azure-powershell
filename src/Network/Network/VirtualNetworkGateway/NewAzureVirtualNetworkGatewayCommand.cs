@@ -139,9 +139,13 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VirtualNetworkGatewaySkuTier.VpnGw1,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw2,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw3,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw4,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw5,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw1AZ,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw2AZ,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw3AZ,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw4AZ,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw5AZ,
             MNM.VirtualNetworkGatewaySkuTier.ErGw1AZ,
             MNM.VirtualNetworkGatewaySkuTier.ErGw2AZ,
             MNM.VirtualNetworkGatewaySkuTier.ErGw3AZ,
@@ -259,6 +263,15 @@ namespace Microsoft.Azure.Commands.Network
                     HelpMessage = "Custom routes AddressPool specified by customer")]
         [ValidateNotNullOrEmpty]
         public string[] CustomRoute { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The generation for this VirtualNetwork VPN gateway. Must be None if GatewayType is not VPN.")]
+        [PSArgumentCompleter(
+            MNM.VpnGatewayGeneration.None,
+            MNM.VpnGatewayGeneration.Generation1,
+            MNM.VpnGatewayGeneration.Generation2)]
+        public string VpnGatewayGeneration { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -460,6 +473,18 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 vnetGateway.CustomRoutes = null;
+            }
+
+            vnetGateway.VpnGatewayGeneration = MNM.VpnGatewayGeneration.None;
+            if (this.VpnGatewayGeneration != null)
+            {
+                if (GatewayType.Equals(MNM.VirtualNetworkGatewayType.ExpressRoute.ToString(), StringComparison.InvariantCultureIgnoreCase) &&
+                    !this.VpnGatewayGeneration.Equals(MNM.VpnGatewayGeneration.None, StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new ArgumentException("Virtual Network Express Route Gateway cannot have any generation other than None.");
+                }
+
+                vnetGateway.VpnGatewayGeneration = this.VpnGatewayGeneration;
             }
 
             // Map to the sdk object
