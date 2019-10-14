@@ -149,49 +149,59 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            RunCmdLet(() =>
+            try
             {
-                List<ServiceAccessPolicyEntry> accessPolicies = GetAccessPolicies();
+                base.ExecuteCmdlet();
 
-                ServicesDescription servicesDescription = new ServicesDescription()
+                RunCmdLet(() =>
                 {
-                    Kind = GetKind(),
-                    Location = Location,
-                    Tags = this.GetTags(),
+                    List<ServiceAccessPolicyEntry> accessPolicies = GetAccessPolicies();
 
-                    Properties = new ServicesProperties()
+                    ServicesDescription servicesDescription = new ServicesDescription()
                     {
-                        AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo() { Authority = GetAuthority(), Audience = GetAudience(), SmartProxyEnabled = EnableSmartProxy.ToBool() },
-                        CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = GetCosmosDBThroughput()},
-                        CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = CorsOrigin, Headers = CorsHeader, Methods = CorsMethod, MaxAge = CorsMaxAge, AllowCredentials = AllowCorsCredential },
-                        AccessPolicies = accessPolicies
-                    }
-                };
+                        Kind = GetKind(),
+                        Location = Location,
+                        Tags = this.GetTags(),
 
-                if (ShouldProcess(this.Name, Resources.createService))
-                {
+                        Properties = new ServicesProperties()
+                        {
+                            AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo() { Authority = GetAuthority(), Audience = GetAudience(), SmartProxyEnabled = EnableSmartProxy.ToBool() },
+                            CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = GetCosmosDBThroughput() },
+                            CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = CorsOrigin, Headers = CorsHeader, Methods = CorsMethod, MaxAge = CorsMaxAge, AllowCredentials = AllowCorsCredential },
+                            AccessPolicies = accessPolicies
+                        }
+                    };
 
-                    this.EnsureNameAvailabilityOrThrow();
-
-                    try
+                    if (ShouldProcess(this.Name, Resources.createService))
                     {
-                        var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(
-                                        this.ResourceGroupName,
-                                        this.Name,
-                                        servicesDescription);
 
+                        this.EnsureNameAvailabilityOrThrow();
 
-                        var healthCareFhirService = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
-                        WriteObject(healthCareFhirService);
+                        try
+                        {
+                            var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(
+                                            this.ResourceGroupName,
+                                            this.Name,
+                                            servicesDescription);
+
+                            var healthCareFhirService = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
+                            WriteHealthcareApisAccount(healthCareFhirService);
+                        }
+                        catch (ErrorDetailsException wex)
+                        {
+                            WriteError(WriteErrorforBadrequest(wex));
+                        }
                     }
-                    catch (ErrorDetailsException wex)
-                    {
-                        WriteError(WriteErrorforBadrequest(wex));
-                    }
-                }
-            });
+                });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                WriteError(new ErrorRecord(ex, Resources.keyNotFoundExceptionMessage, ErrorCategory.OpenError, ex));
+            }
+            catch (NullReferenceException ex)
+            {
+                WriteError(new ErrorRecord(ex, Resources.nullPointerExceptionMessage, ErrorCategory.OpenError, ex));
+            }
         }
 
         private List<ServiceAccessPolicyEntry> GetAccessPolicies()
@@ -216,7 +226,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         private Kind GetKind()
         {
-            if(this.Kind == null && this.FhirVersion!=null)
+            if (this.Kind == null && this.FhirVersion != null)
             {
                 if (FhirVersion.ToLowerInvariant() == "r4")
                 {
@@ -231,11 +241,11 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                     throw new PSArgumentException(Resources.createService_InvalidFhirVersionMessage);
                 }
             }
-            else if(this.Kind== null && this.FhirVersion == null)
+            else if (this.Kind == null && this.FhirVersion == null)
             {
                 return Management.HealthcareApis.Models.Kind.FhirR4;
             }
-            else if(this.FhirVersion != null)
+            else if (this.FhirVersion != null)
             {
                 return ParseKindFromVersion(this.FhirVersion);
             }
@@ -248,26 +258,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             return ParseKind(FhirVersion);
         }
 
-        private Kind ParseKind(string kind)
-        {
-            if (kind.Equals("fhir", StringComparison.OrdinalIgnoreCase))
-            {
-                return Management.HealthcareApis.Models.Kind.Fhir;
-            }
-            else if (kind.Equals("fhir-stu3", StringComparison.OrdinalIgnoreCase) || kind.Equals("stu3", StringComparison.OrdinalIgnoreCase))
-            {
-                return Management.HealthcareApis.Models.Kind.FhirStu3;
-            }
-            else if (kind.Equals("fhir-r4", StringComparison.OrdinalIgnoreCase) || kind.Equals("r4", StringComparison.OrdinalIgnoreCase))
-            {
-                return Management.HealthcareApis.Models.Kind.FhirR4;
-            }
-            else
-            {
-                throw new PSArgumentException(Resources.createService_InvalidKindMessage);
-            }
-        }
-
         private int? GetCosmosDBThroughput()
         {
             if (CosmosOfferThroughput == null)
@@ -276,7 +266,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             }
 
             return CosmosOfferThroughput;
-            
         }
 
         private string GetAudience()
@@ -303,6 +292,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         {
             var checkNameInputs = new CheckNameAvailabilityParameters(this.Name, ResourceTypeName);
             var nameAvailabilityInfo = this.HealthcareApisClient.Services.CheckNameAvailability(checkNameInputs);
+
             if (nameAvailabilityInfo.NameAvailable != true)
             {
                 throw new PSArgumentException(nameAvailabilityInfo.Message);
@@ -315,6 +305,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             {
                 return TagsConversionHelper.CreateTagDictionary(this.Tag, true);
             }
+
             return null;
         }
     }

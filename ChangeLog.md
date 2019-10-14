@@ -1,3 +1,222 @@
+## 2.8.0 - October 2019
+### General
+* Az.HealthcareApis 1.0.0 release
+
+#### Az.Accounts
+* Update telemetry and url rewriting for generated modules, fix windows unit tests.
+
+#### Az.ApiManagement
+* **Set-AzApiManagementApi** - Added support for Updating Api into ApiVersionSet
+    - Fix for issue https://github.com/Azure/azure-powershell/issues/10068
+
+#### Az.Automation
+* Fixed New-AzureAutomationSoftwareUpdateConfiguration cmdlet for Linux reboot setting parameter. 
+
+#### Az.Batch
+* **Get-AzBatchNodeAgentSku** is deprecated and will be replaced by **Get-AzBatchSupportImage** in version 2.0.0.
+
+#### Az.Compute
+* Add Priority, EvictionPolicy, and MaxPrice parameters to New-AzVM and New-AzVmss cmdlets
+* Fix warning message and help document for Add-AzVMAdditionalUnattendContent and Add-AzVMSshPublicKey cmdlets
+* Fix -skipVmBackup exception for Linux VMs with managed disks for Set-AzVMDiskEncryptionExtension. 
+* Fix bug in update encryption settings in Set-AzVMDiskEncryptionExtension, two pass scenario.
+
+#### Az.DataFactory
+* Adding CRUD commands for ADF V2 data flow: Set-AzDataFactoryV2DataFlow, Remove-AzDataFactoryV2DataFlow, and Get-AzDataFactoryV2DataFlow.
+* Adding action commands for ADF V2 data flow debug Session: Start-AzDataFactoryV2DataFlowDebugSession, Get-AzDataFactoryV2DataFlowDebugSession, Add-AzDataFactoryV2DataFlowDebugSessionPackage, Invoke-AzDataFactoryV2DataFlowDebugSessionCommand and Stop-AzDataFactoryV2DataFlowDebugSession.
+* Update ADF .Net SDK version to 4.2.0
+
+#### Az.DataLakeStore
+* Fix account validation so that accounts with '-' can be passed without domain
+
+#### Az.HealthcareApis
+* Updated the powershell version to 1.0.0
+* Updated the SDK version to 1.0.2
+* Update in tests to refer to new SDK version
+* Updated the output structure from nested to flattened.
+
+#### Az.IotHub
+* Add new routing source: DigitalTwinChangeEvents
+* Minor bug fix: Get-AzIothub not returning subscriptionId 
+
+#### Az.Monitor
+* New action group receivers added for action group
+	-ItsmReceiver
+	-VoiceReceiver
+	-ArmRoleReceiver
+	-AzureFunctionReceiver
+	-LogicAppReceiver
+	-AutomationRunbookReceiver
+	-AzureAppPushReceiver
+* Use common alert schema enabled for the receivers. This is not applicable for SMS, Azure App push , ITSM and Voice recievers
+* Webhooks now supports Azure active directory authentication .
+
+#### Az.Network
+* Add new cmdlet Get-AzAvailableServiceAlias which can be called to get the aliases that can be used for Service Endpoint Policies.
+* Added support for the adding traffic selectors to Virtual Network Gateway Connections
+    - New cmdlets added:
+        - New-AzureRmTrafficSelectorPolicy
+    - Cmdlets updated with optional parameter -TrafficSelectorPolicies
+        -New-AzureRmVirtualNetworkGatewayConnection
+        -Set-AzureRmVirtualNetworkGatewayConnection
+* Add support for ESP and AH protocols in network security rule configurations
+    - Updated cmdlets:
+        - Add-AzNetworkSecurityRuleConfig
+        - New-AzNetworkSecurityRuleConfig
+        - Set-AzNetworkSecurityRuleConfig
+* Improve handling of exceptions in Cortex cmdlets
+* New Generations and SKUs for VirtualNetworkGateways
+  - Introduce new Generations for VirtualNetworkGateways.
+  - Introduce new high throughput SKUs for VirtualNetworkGateways.
+
+#### Az.RedisCache
+* Updated 'Set-AzRedisCache' reference documentation to include missing values for '-Size' parameter
+
+#### Az.Sql
+* Add support for setting Active Directory Administrator on Managed Instance
+
+#### Az.Storage
+* Upgrade Storage Client Library to 11.1.0
+* List containers with Management plane API, will list with NextPageLink
+    -  Get-AzRmStorageContainer
+* List Storage accounts from subscription, will list with NextPageLink
+    -  Get-AzStorageAccount
+
+#### Az.StorageSync
+* Fix Issue 9810 in Reset-AzStorageSyncServerCertificate.
+
+#### Az.Websites
+* Set-AzWebApp updating ASP of an app was failing
+
+## 2.7.0 - September 2019
+#### Az.ApiManagement
+* Update '-Format' parameter description in 'Set-AzApiManagementPolicy' reference documentation
+* Removed references of deprecated cmdlet 'Update-AzApiManagementDeployment' from reference documentation. Use 'Set-AzApiManagement' instead.
+
+#### Az.Automation
+* Fixed example typo in reference documentation for 'Register-AzAutomationDscNode'
+* Added clarification on OS restriction to Register-AzAutomationDSCNode
+* Fixed Start-AzAutomationRunbook cmdlet Null reference exception for -Wait option.
+
+#### Az.Compute
+* Add UploadSizeInBytes parameter tp New-AzDiskConfig
+* Add Incremental parameter to New-AzSnapshotConfig
+* Add a low priority virtual machine feature:
+    - MaxPrice, EvictionPolicy and Priority parameters are added to New-AzVMConfig.
+    - MaxPrice parameter is added to New-AzVmssConfig, Update-AzVM and Update-AzVmss cmdlets.
+* Fix VM reference issue for Get-AzAvailabilitySet cmdlet when it lists all availability sets in the subscription.
+* Fix the null exception for Get-AzRemoteDesktopFile.
+* Fix VHD Seek method for end-relative position.
+* Fix UltraSSD issue for New-AzVM and Update-AzVM.
+
+#### Az.DataFactory
+* Adding 3 new commands for ADF V2 - Add-AzDataFactoryV2TriggerSubscription, Remove-AzDataFactoryV2TriggerSubscription, and Get-AzDataFactoryV2TriggerSubscriptionStatus
+* Updated ADF .Net SDK version to 4.1.3
+
+#### Az.HDInsight
+* Call out breaking changes
+
+#### Az.IotHub
+* Add support to invoke failover for an IotHub to the geo-paired disaster recovery region.
+* Add support to manage message enrichment for an IotHub. New cmdlets are:
+	- Add-AzIotHubMessageEnrichment
+	- Get-AzIotHubMessageEnrichment
+	- Remove-AzIotHubMessageEnrichment
+	- Set-AzIotHubMessageEnrichment
+
+#### Az.Monitor
+* Pointing to the most recent Monitor SDK, i.e. 0.24.1-preview
+   - Adds non-braking changes to the Metrics cmdlets, i.e. the Unit enumeration supports several new values. These are read-only cmdlets, so there would be no change in the input of the cmdlets.
+   - The api-version of the **ActionGroups** requests is now **2019-06-01**, before it was **2018-03-01**. The scenario tests have been updated to accommodate for this change.
+   - The constructors for the classes **EmailReceiver** and **WebhookReceiver** added one new mandatory argument, i.e. a Boolean value called **useCommonAlertSchema**. Currently, the value is fixed to **false** to hide this breaking change from the cmdlets. **NOTE**: this is a temporary change that must be validated by the Alerts team.
+   - The order of the arguments for the constructor of the class **Source** (related to the **ScheduledQueryRuleSource** class) changed from the previous SDK. This change required two unit tests to the be fixed: they compiled, but failed to pass the tests.
+   - The order of the arguments for the constructor of the class **AlertingAction** (related to the **ScheduledQueryRuleSource** class) changed from the previous SDK. This change required two unit tests to the be fixed: they compiled, but failed to pass the tests.
+* Support Dynamic Threshold criteria for metric alert V2
+	- New-AzMetricAlertRuleV2Criteria: now creats dynamic threshold criteria also
+	- Add-AzMetricAlertRuleV2: now accept dynamic threshold criteria also
+* Improvements in Scheduled Query Rule cmdlets (SQR)
+ - Cmdlets will accept 'Location' paramater in both formats, either the location (e.g. eastus) or the location display name (e.g. East US)
+ - Illustrated 'Enabled' parameter in help files properly
+ - Added examples for 'ActionGroup' optional parameter
+ - Overall improved help files
+* Fix bug in determining scope type for 'Set-AzActionRule'
+
+#### Az.Network
+* Fix incorrect example in 'New-AzApplicationGateway' reference documentation 
+* Add note in 'Get-AzNetworkWatcherPacketCapture' reference documentation about retrieving all properties for a packet capture
+* Fixed example in 'Test-AzNetworkWatcherIPFlow' reference documentation to correctly enumerate NICs
+* Improved cloud exception parsing to display additional details if they are present
+* Improved cloud exception parsing to handle additional type of SDK exception
+* Fixed incorrect mapping of Security Rule models
+* Added properties to network interface for private ip feature
+    - Added property 'PrivateEndpoint' as type of PSResourceId to PSNetworkInterface
+    - Added property 'PrivateLinkConnectionProperties' as type of PSIpConfigurationConnectivityInformation to PSNetworkInterfaceIPConfiguration
+    - Added new model class PSIpConfigurationConnectivityInformation
+* Added new ApplicationRuleProtocolType 'mssql' for Azure Firewall resource
+* MultiLink support in Virtual WAN
+    - New cmdlets
+        - New-AzVpnSiteLink
+        - New-AzVpnSiteLinkConnection
+    - Updated cmdlet:
+        - New-VpnSite
+        - Update-VpnSite
+        - New-VpnConnection
+        - Update-VpnConnection
+* Fixed documents for some PowerShell examples to use Az cmdlets instead of AzureRM cmdlets
+
+#### Az.RecoveryServices
+* Update AzureVMpolicy Object with ProtectedItemsCount Attribute
+* Added Tests for VM policy and Original Storage Account Restore
+
+#### Az.Resources
+* Fix bug where New-AzRoleAssignment could not be called without parameter Scope.
+
+#### Az.ServiceFabric
+* Fixed typo in example for 'Update-AzServiceFabricReliability' reference documentation
+* Adding new cmdlets to manage appliaction and services:
+    - New-AzServiceFabricApplication
+    - New-AzServiceFabricApplicationType
+    - New-AzServiceFabricApplicationTypeVersion
+    - New-AzServiceFabricService
+    - Update-AzServiceFabricApplication
+    - Get-AzServiceFabricApplication
+    - Get-AzServiceFabricApplicationType
+    - Get-AzServiceFabricApplicationTypeVersion
+    - Get-AzServiceFabricService
+    - Remove-AzServiceFabricApplication
+    - Remove-AzServiceFabricApplicationType
+    - Remove-AzServiceFabricApplicationTypeVersion
+    - Remove-AzServiceFabricServic
+* Upgraded Service Fabric SDK to version 1.2.0 which uses service fabric resource provider api-version 2019-03-01.
+
+#### Az.SignalR
+* Add Update, Restart, CheckNameAvailability, GetUsage Cmdlets
+
+#### Az.Sql
+* Update example in reference documentation for 'Get-AzSqlElasticPool'
+* Added vCore example to creating an elastic pool (New-AzSqlElasticPool).
+* Remove the validation of EmailAddresses and the check that EmailAdmins is not false in case EmailAddresses is empty in Set-AzSqlServerAdvancedThreatProtectionPolicy and Set-AzSqlDatabaseAdvancedThreatProtectionPolicy
+* Enabled removal of server/database auditing settings when multiple diagnostic settings that enable audit category exist.
+* Fix email addresses validation in multiple Sql Vulnerability Assessment cmdlets (Update-AzSqlDatabaseVulnerabilityAssessmentSetting, Update-AzSqlServerVulnerabilityAssessmentSetting, Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting and Update-AzSqlInstanceVulnerabilityAssessmentSetting).
+
+#### Az.Storage
+* Updated example in reference documentation for 'Get-AzStorageAccountKey'
+* In upload/Downalod Azure File,support perserve the source File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the destination file
+    -  Set-AzStorageFileContent
+    -  Get-AzStorageFileContent
+* Fix Upload block blob with properties/metadate fail on container enabled ImmutabilityPolicy.
+    -  Set-AzStorageBlobContent
+* Support manage Azure File shares with Management plane API
+    -  New-AzRmStorageShare
+    -  Get-AzRmStorageShare
+    -  Update-AzRmStorageShare
+    -  Remove-AzRmStorageShare
+
+#### Az.Websites
+* Fixing issue where webapp Tags were getting deleted when migrating App to new ASPwhere webapp Tags were getting deleted when migrating App to new ASP
+* Fixing the Publish-AzureWebapp to work across Linux and windows
+* Update example in 'Get-AzWebAppPublishingProfile' reference documentation
+
 ## 2.6.0 - August 2019
 #### General
 * Fixed miscellaneous typos across numerous modules

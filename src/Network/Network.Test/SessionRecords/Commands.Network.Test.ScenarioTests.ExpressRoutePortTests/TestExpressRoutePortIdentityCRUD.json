@@ -1,0 +1,1675 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourcegroups/ps8320?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlZ3JvdXBzL3BzODMyMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"westcentralus\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5826440d-31a4-4c21-92da-eae5d8b44be3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "35"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:08:29 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-request-id": [
+          "5d6921b1-6866-4979-b05a-b7d7a6adc9d1"
+        ],
+        "x-ms-correlation-request-id": [
+          "5d6921b1-6866-4979-b05a-b7d7a6adc9d1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220829Z:5d6921b1-6866-4979-b05a-b7d7a6adc9d1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "172"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320\",\r\n  \"name\": \"ps8320\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ps285?api-version=2015-08-31-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL3BzODMyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZWRJZGVudGl0eS91c2VyQXNzaWduZWRJZGVudGl0aWVzL3BzMjg1P2FwaS12ZXJzaW9uPTIwMTUtMDgtMzEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"westcentralus\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "08eceb12-95c0-4816-857e-4def8961f26d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.ManagedServiceIdentity.ManagedServiceIdentityClient/0.10.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "35"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:08:30 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourcegroups/ps8320/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ps285"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "ca07ac12-3c5d-4df6-b8bd-95f1fb8a279a"
+        ],
+        "x-ms-correlation-request-id": [
+          "ca07ac12-3c5d-4df6-b8bd-95f1fb8a279a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220831Z:ca07ac12-3c5d-4df6-b8bd-95f1fb8a279a"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "767"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourcegroups/ps8320/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ps285\",\r\n  \"name\": \"ps285\",\r\n  \"type\": \"Microsoft.ManagedIdentity/userAssignedIdentities\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"d42dcf45-a8f7-45f7-bfd6-54e49780f540\",\r\n    \"clientId\": \"40ce8fe9-5d51-4173-aa43-5a5b2b83ca9b\",\r\n    \"clientSecretUrl\": \"https://control-westcentralus.identity.azure.net/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourcegroups/ps8320/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ps285/credentials?tid=72f988bf-86f1-41af-91ab-2d7cd011db47&oid=d42dcf45-a8f7-45f7-bfd6-54e49780f540&aid=40ce8fe9-5d51-4173-aa43-5a5b2b83ca9b\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/ExpressRoutePorts/ps6928?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL3BzODMyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRXhwcmVzc1JvdXRlUG9ydHMvcHM2OTI4P2FwaS12ZXJzaW9uPTIwMTktMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6b57a12e-5363-4cb1-9db5-1ebcb8a46b91"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:08:30 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "bdd413cd-8317-461d-8e83-490eb0a01b0d"
+        ],
+        "x-ms-correlation-request-id": [
+          "bdd413cd-8317-461d-8e83-490eb0a01b0d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220831Z:bdd413cd-8317-461d-8e83-490eb0a01b0d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "152"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/expressRoutePorts/ps6928' under resource group 'ps8320' was not found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/ExpressRoutePorts/ps6928?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL3BzODMyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRXhwcmVzc1JvdXRlUG9ydHMvcHM2OTI4P2FwaS12ZXJzaW9uPTIwMTktMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:08:43 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"e328605d-92f2-46fe-b9e1-f37e8e303079\""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "8e969bc0-5a71-488f-a11f-f6a5aaea2f02"
+        ],
+        "x-ms-correlation-request-id": [
+          "e1a7a43e-97d7-4336-b3c0-d40a9cae8cac"
+        ],
+        "x-ms-arm-service-request-id": [
+          "9baef9b5-a99a-4651-aba7-f07366d5daf1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220843Z:e1a7a43e-97d7-4336-b3c0-d40a9cae8cac"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "2379"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps6928\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928\",\r\n  \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRoutePorts\",\r\n  \"location\": \"westcentralus\",\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourcegroups/ps8320/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ps285\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"ea8304a3-4432-436e-987a-82411f6da1ac\",\r\n    \"links\": [\r\n      {\r\n        \"name\": \"link1\",\r\n        \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928/links/link1\",\r\n        \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"routerName\": \"cys01-06gmr-cis-1\",\r\n          \"interfaceName\": \"TenGigabitEthernet1/2/0\",\r\n          \"patchPanelId\": \"N/A\",\r\n          \"rackId\": \"N/A\",\r\n          \"connectorType\": \"LC\",\r\n          \"adminState\": \"Disabled\",\r\n          \"macSecConfig\": {\r\n            \"cipher\": \"GcmAes128\"\r\n          }\r\n        },\r\n        \"type\": \"Microsoft.Network/expressRoutePorts/links\"\r\n      },\r\n      {\r\n        \"name\": \"link2\",\r\n        \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928/links/link2\",\r\n        \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"routerName\": \"cys01-06gmr-cis-2\",\r\n          \"interfaceName\": \"TenGigabitEthernet1/2/0\",\r\n          \"patchPanelId\": \"N/A\",\r\n          \"rackId\": \"N/A\",\r\n          \"connectorType\": \"LC\",\r\n          \"adminState\": \"Disabled\",\r\n          \"macSecConfig\": {\r\n            \"cipher\": \"GcmAes128\"\r\n          }\r\n        },\r\n        \"type\": \"Microsoft.Network/expressRoutePorts/links\"\r\n      }\r\n    ],\r\n    \"peeringLocation\": \"Cheyenne-ERDirect\",\r\n    \"bandwidthInGbps\": 100,\r\n    \"encapsulation\": \"QinQ\",\r\n    \"provisionedBandwidthInGbps\": 0.0,\r\n    \"mtu\": \"1500\",\r\n    \"etherType\": \"0x8100\",\r\n    \"allocationDate\": \"Wednesday, September 18, 2019\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/ExpressRoutePorts/ps6928?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL3BzODMyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRXhwcmVzc1JvdXRlUG9ydHMvcHM2OTI4P2FwaS12ZXJzaW9uPTIwMTktMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "09c6a93b-1d8e-48ef-80b6-da4c8c4b8f9c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:08:43 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"e328605d-92f2-46fe-b9e1-f37e8e303079\""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "9ece4ba0-81da-4e24-9cbf-bfb43d829bc9"
+        ],
+        "x-ms-correlation-request-id": [
+          "98690b18-7b56-4a73-a302-388afa33f1ca"
+        ],
+        "x-ms-arm-service-request-id": [
+          "89c7eeb0-9a09-4981-b57f-b8659f06966a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220843Z:98690b18-7b56-4a73-a302-388afa33f1ca"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "2379"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps6928\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928\",\r\n  \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRoutePorts\",\r\n  \"location\": \"westcentralus\",\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourcegroups/ps8320/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ps285\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"ea8304a3-4432-436e-987a-82411f6da1ac\",\r\n    \"links\": [\r\n      {\r\n        \"name\": \"link1\",\r\n        \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928/links/link1\",\r\n        \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"routerName\": \"cys01-06gmr-cis-1\",\r\n          \"interfaceName\": \"TenGigabitEthernet1/2/0\",\r\n          \"patchPanelId\": \"N/A\",\r\n          \"rackId\": \"N/A\",\r\n          \"connectorType\": \"LC\",\r\n          \"adminState\": \"Disabled\",\r\n          \"macSecConfig\": {\r\n            \"cipher\": \"GcmAes128\"\r\n          }\r\n        },\r\n        \"type\": \"Microsoft.Network/expressRoutePorts/links\"\r\n      },\r\n      {\r\n        \"name\": \"link2\",\r\n        \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928/links/link2\",\r\n        \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"routerName\": \"cys01-06gmr-cis-2\",\r\n          \"interfaceName\": \"TenGigabitEthernet1/2/0\",\r\n          \"patchPanelId\": \"N/A\",\r\n          \"rackId\": \"N/A\",\r\n          \"connectorType\": \"LC\",\r\n          \"adminState\": \"Disabled\",\r\n          \"macSecConfig\": {\r\n            \"cipher\": \"GcmAes128\"\r\n          }\r\n        },\r\n        \"type\": \"Microsoft.Network/expressRoutePorts/links\"\r\n      }\r\n    ],\r\n    \"peeringLocation\": \"Cheyenne-ERDirect\",\r\n    \"bandwidthInGbps\": 100,\r\n    \"encapsulation\": \"QinQ\",\r\n    \"provisionedBandwidthInGbps\": 0.0,\r\n    \"mtu\": \"1500\",\r\n    \"etherType\": \"0x8100\",\r\n    \"allocationDate\": \"Wednesday, September 18, 2019\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/ExpressRoutePorts/ps6928?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL3BzODMyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRXhwcmVzc1JvdXRlUG9ydHMvcHM2OTI4P2FwaS12ZXJzaW9uPTIwMTktMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "eb24bb1a-b5fe-47c5-885a-5b12d49af177"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:08:43 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"e328605d-92f2-46fe-b9e1-f37e8e303079\""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "a9f2e8b9-91e1-40a3-af6d-8aed64198161"
+        ],
+        "x-ms-correlation-request-id": [
+          "b12f6eb4-ed95-4351-8818-c4d45ab5604b"
+        ],
+        "x-ms-arm-service-request-id": [
+          "cf5a45af-1a8e-4e4d-9e5d-59c015e9f4e7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220843Z:b12f6eb4-ed95-4351-8818-c4d45ab5604b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "2379"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps6928\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928\",\r\n  \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRoutePorts\",\r\n  \"location\": \"westcentralus\",\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourcegroups/ps8320/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ps285\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"ea8304a3-4432-436e-987a-82411f6da1ac\",\r\n    \"links\": [\r\n      {\r\n        \"name\": \"link1\",\r\n        \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928/links/link1\",\r\n        \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"routerName\": \"cys01-06gmr-cis-1\",\r\n          \"interfaceName\": \"TenGigabitEthernet1/2/0\",\r\n          \"patchPanelId\": \"N/A\",\r\n          \"rackId\": \"N/A\",\r\n          \"connectorType\": \"LC\",\r\n          \"adminState\": \"Disabled\",\r\n          \"macSecConfig\": {\r\n            \"cipher\": \"GcmAes128\"\r\n          }\r\n        },\r\n        \"type\": \"Microsoft.Network/expressRoutePorts/links\"\r\n      },\r\n      {\r\n        \"name\": \"link2\",\r\n        \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928/links/link2\",\r\n        \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"routerName\": \"cys01-06gmr-cis-2\",\r\n          \"interfaceName\": \"TenGigabitEthernet1/2/0\",\r\n          \"patchPanelId\": \"N/A\",\r\n          \"rackId\": \"N/A\",\r\n          \"connectorType\": \"LC\",\r\n          \"adminState\": \"Disabled\",\r\n          \"macSecConfig\": {\r\n            \"cipher\": \"GcmAes128\"\r\n          }\r\n        },\r\n        \"type\": \"Microsoft.Network/expressRoutePorts/links\"\r\n      }\r\n    ],\r\n    \"peeringLocation\": \"Cheyenne-ERDirect\",\r\n    \"bandwidthInGbps\": 100,\r\n    \"encapsulation\": \"QinQ\",\r\n    \"provisionedBandwidthInGbps\": 0.0,\r\n    \"mtu\": \"1500\",\r\n    \"etherType\": \"0x8100\",\r\n    \"allocationDate\": \"Wednesday, September 18, 2019\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/ExpressRoutePorts/ps6928?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL3BzODMyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRXhwcmVzc1JvdXRlUG9ydHMvcHM2OTI4P2FwaS12ZXJzaW9uPTIwMTktMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ffca45a8-8966-48ec-9272-8aad05e5c7f2"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:08:43 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"e328605d-92f2-46fe-b9e1-f37e8e303079\""
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "c685dd51-a657-4390-8022-0c7428ee7fd5"
+        ],
+        "x-ms-correlation-request-id": [
+          "bb96b96a-bb66-44c2-88e1-f1f679cc5eb2"
+        ],
+        "x-ms-arm-service-request-id": [
+          "91b4ad53-c094-470e-b0c5-8e32a8e5182f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220844Z:bb96b96a-bb66-44c2-88e1-f1f679cc5eb2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "2379"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps6928\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928\",\r\n  \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRoutePorts\",\r\n  \"location\": \"westcentralus\",\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourcegroups/ps8320/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ps285\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"ea8304a3-4432-436e-987a-82411f6da1ac\",\r\n    \"links\": [\r\n      {\r\n        \"name\": \"link1\",\r\n        \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928/links/link1\",\r\n        \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"routerName\": \"cys01-06gmr-cis-1\",\r\n          \"interfaceName\": \"TenGigabitEthernet1/2/0\",\r\n          \"patchPanelId\": \"N/A\",\r\n          \"rackId\": \"N/A\",\r\n          \"connectorType\": \"LC\",\r\n          \"adminState\": \"Disabled\",\r\n          \"macSecConfig\": {\r\n            \"cipher\": \"GcmAes128\"\r\n          }\r\n        },\r\n        \"type\": \"Microsoft.Network/expressRoutePorts/links\"\r\n      },\r\n      {\r\n        \"name\": \"link2\",\r\n        \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928/links/link2\",\r\n        \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"routerName\": \"cys01-06gmr-cis-2\",\r\n          \"interfaceName\": \"TenGigabitEthernet1/2/0\",\r\n          \"patchPanelId\": \"N/A\",\r\n          \"rackId\": \"N/A\",\r\n          \"connectorType\": \"LC\",\r\n          \"adminState\": \"Disabled\",\r\n          \"macSecConfig\": {\r\n            \"cipher\": \"GcmAes128\"\r\n          }\r\n        },\r\n        \"type\": \"Microsoft.Network/expressRoutePorts/links\"\r\n      }\r\n    ],\r\n    \"peeringLocation\": \"Cheyenne-ERDirect\",\r\n    \"bandwidthInGbps\": 100,\r\n    \"encapsulation\": \"QinQ\",\r\n    \"provisionedBandwidthInGbps\": 0.0,\r\n    \"mtu\": \"1500\",\r\n    \"etherType\": \"0x8100\",\r\n    \"allocationDate\": \"Wednesday, September 18, 2019\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/ExpressRoutePorts/ps6928?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL3BzODMyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRXhwcmVzc1JvdXRlUG9ydHMvcHM2OTI4P2FwaS12ZXJzaW9uPTIwMTktMDgtMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"peeringLocation\": \"Cheyenne-ERDirect\",\r\n    \"bandwidthInGbps\": 100,\r\n    \"encapsulation\": \"QinQ\",\r\n    \"links\": []\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourcegroups/ps8320/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ps285\": {}\r\n    }\r\n  },\r\n  \"location\": \"westcentralus\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2f89c363-4197-4da2-9628-0a2cc89fdfc9"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "425"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:08:32 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "cd4834b1-f35c-458c-8330-9b54aed0221b"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westcentralus/operations/cd4834b1-f35c-458c-8330-9b54aed0221b?api-version=2019-08-01"
+        ],
+        "x-ms-correlation-request-id": [
+          "dd3b7216-eab5-4b5c-ba17-403dc61139c7"
+        ],
+        "Azure-AsyncNotification": [
+          "Enabled"
+        ],
+        "x-ms-arm-service-request-id": [
+          "db6330c1-7099-42f4-81af-93ffe7a7a2a5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220833Z:dd3b7216-eab5-4b5c-ba17-403dc61139c7"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "1946"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"ps6928\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928\",\r\n  \"etag\": \"W/\\\"f3c52f4c-19e3-4f06-b2e3-8d90abafcb7d\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRoutePorts\",\r\n  \"location\": \"westcentralus\",\r\n  \"identity\": {\r\n    \"type\": \"userAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourcegroups/ps8320/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ps285\": {}\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"ea8304a3-4432-436e-987a-82411f6da1ac\",\r\n    \"links\": [\r\n      {\r\n        \"name\": \"link1\",\r\n        \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928/links/link1\",\r\n        \"etag\": \"W/\\\"f3c52f4c-19e3-4f06-b2e3-8d90abafcb7d\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"connectorType\": \"LC\",\r\n          \"adminState\": \"Disabled\",\r\n          \"macSecConfig\": {\r\n            \"cipher\": \"GcmAes128\"\r\n          }\r\n        },\r\n        \"type\": \"Microsoft.Network/expressRoutePorts/links\"\r\n      },\r\n      {\r\n        \"name\": \"link2\",\r\n        \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928/links/link2\",\r\n        \"etag\": \"W/\\\"f3c52f4c-19e3-4f06-b2e3-8d90abafcb7d\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"connectorType\": \"LC\",\r\n          \"adminState\": \"Disabled\",\r\n          \"macSecConfig\": {\r\n            \"cipher\": \"GcmAes128\"\r\n          }\r\n        },\r\n        \"type\": \"Microsoft.Network/expressRoutePorts/links\"\r\n      }\r\n    ],\r\n    \"peeringLocation\": \"Cheyenne-ERDirect\",\r\n    \"bandwidthInGbps\": 100,\r\n    \"encapsulation\": \"QinQ\",\r\n    \"provisionedBandwidthInGbps\": 0.0\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westcentralus/operations/cd4834b1-f35c-458c-8330-9b54aed0221b?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdGNlbnRyYWx1cy9vcGVyYXRpb25zL2NkNDgzNGIxLWYzNWMtNDU4Yy04MzMwLTliNTRhZWQwMjIxYj9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:08:43 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "db3e9b8f-5a00-4354-b2a9-7e4d205668aa"
+        ],
+        "x-ms-correlation-request-id": [
+          "50c1000d-d40f-47cf-9250-05b635e91139"
+        ],
+        "x-ms-arm-service-request-id": [
+          "4056548c-ee46-43b0-b92b-453baf6b80aa"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220843Z:50c1000d-d40f-47cf-9250-05b635e91139"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/ExpressRoutePorts?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9FeHByZXNzUm91dGVQb3J0cz9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ed5aac54-1919-4384-a77c-3bb692f18b87"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:08:43 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "b2c74e05-55d1-4bca-85d7-68311cede0c6"
+        ],
+        "x-ms-correlation-request-id": [
+          "da485b11-0b4a-429b-9d07-df20ba8f777b"
+        ],
+        "x-ms-arm-service-request-id": [
+          "9fc4f1ff-94d8-42c1-8ea0-5337a2cdb93e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220843Z:da485b11-0b4a-429b-9d07-df20ba8f777b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "2652"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"ps6928\",\r\n      \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928\",\r\n      \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n      \"type\": \"Microsoft.Network/expressRoutePorts\",\r\n      \"location\": \"westcentralus\",\r\n      \"identity\": {\r\n        \"type\": \"userAssigned\",\r\n        \"userAssignedIdentities\": {\r\n          \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourcegroups/ps8320/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ps285\": {}\r\n        }\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"resourceGuid\": \"ea8304a3-4432-436e-987a-82411f6da1ac\",\r\n        \"links\": [\r\n          {\r\n            \"name\": \"link1\",\r\n            \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928/links/link1\",\r\n            \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"routerName\": \"cys01-06gmr-cis-1\",\r\n              \"interfaceName\": \"TenGigabitEthernet1/2/0\",\r\n              \"patchPanelId\": \"N/A\",\r\n              \"rackId\": \"N/A\",\r\n              \"connectorType\": \"LC\",\r\n              \"adminState\": \"Disabled\",\r\n              \"macSecConfig\": {\r\n                \"cipher\": \"GcmAes128\"\r\n              }\r\n            },\r\n            \"type\": \"Microsoft.Network/expressRoutePorts/links\"\r\n          },\r\n          {\r\n            \"name\": \"link2\",\r\n            \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928/links/link2\",\r\n            \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"routerName\": \"cys01-06gmr-cis-2\",\r\n              \"interfaceName\": \"TenGigabitEthernet1/2/0\",\r\n              \"patchPanelId\": \"N/A\",\r\n              \"rackId\": \"N/A\",\r\n              \"connectorType\": \"LC\",\r\n              \"adminState\": \"Disabled\",\r\n              \"macSecConfig\": {\r\n                \"cipher\": \"GcmAes128\"\r\n              }\r\n            },\r\n            \"type\": \"Microsoft.Network/expressRoutePorts/links\"\r\n          }\r\n        ],\r\n        \"peeringLocation\": \"Cheyenne-ERDirect\",\r\n        \"bandwidthInGbps\": 100,\r\n        \"encapsulation\": \"QinQ\",\r\n        \"provisionedBandwidthInGbps\": 0.0,\r\n        \"mtu\": \"1500\",\r\n        \"etherType\": \"0x8100\",\r\n        \"allocationDate\": \"Wednesday, September 18, 2019\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/ExpressRoutePorts?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9FeHByZXNzUm91dGVQb3J0cz9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0e92aa2a-e638-48e5-a882-dfc95229de49"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:08:43 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "3da5f36d-7f9e-44a1-9590-984e6cc5b6ea"
+        ],
+        "x-ms-correlation-request-id": [
+          "158fd899-b148-46e5-b7cb-41e17a0d6135"
+        ],
+        "x-ms-arm-service-request-id": [
+          "d4d4ab5e-1994-4ba3-a6da-ec482e6d583b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220844Z:158fd899-b148-46e5-b7cb-41e17a0d6135"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "2652"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"ps6928\",\r\n      \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928\",\r\n      \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n      \"type\": \"Microsoft.Network/expressRoutePorts\",\r\n      \"location\": \"westcentralus\",\r\n      \"identity\": {\r\n        \"type\": \"userAssigned\",\r\n        \"userAssignedIdentities\": {\r\n          \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourcegroups/ps8320/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ps285\": {}\r\n        }\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"resourceGuid\": \"ea8304a3-4432-436e-987a-82411f6da1ac\",\r\n        \"links\": [\r\n          {\r\n            \"name\": \"link1\",\r\n            \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928/links/link1\",\r\n            \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"routerName\": \"cys01-06gmr-cis-1\",\r\n              \"interfaceName\": \"TenGigabitEthernet1/2/0\",\r\n              \"patchPanelId\": \"N/A\",\r\n              \"rackId\": \"N/A\",\r\n              \"connectorType\": \"LC\",\r\n              \"adminState\": \"Disabled\",\r\n              \"macSecConfig\": {\r\n                \"cipher\": \"GcmAes128\"\r\n              }\r\n            },\r\n            \"type\": \"Microsoft.Network/expressRoutePorts/links\"\r\n          },\r\n          {\r\n            \"name\": \"link2\",\r\n            \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928/links/link2\",\r\n            \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"routerName\": \"cys01-06gmr-cis-2\",\r\n              \"interfaceName\": \"TenGigabitEthernet1/2/0\",\r\n              \"patchPanelId\": \"N/A\",\r\n              \"rackId\": \"N/A\",\r\n              \"connectorType\": \"LC\",\r\n              \"adminState\": \"Disabled\",\r\n              \"macSecConfig\": {\r\n                \"cipher\": \"GcmAes128\"\r\n              }\r\n            },\r\n            \"type\": \"Microsoft.Network/expressRoutePorts/links\"\r\n          }\r\n        ],\r\n        \"peeringLocation\": \"Cheyenne-ERDirect\",\r\n        \"bandwidthInGbps\": 100,\r\n        \"encapsulation\": \"QinQ\",\r\n        \"provisionedBandwidthInGbps\": 0.0,\r\n        \"mtu\": \"1500\",\r\n        \"etherType\": \"0x8100\",\r\n        \"allocationDate\": \"Wednesday, September 18, 2019\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/ExpressRoutePorts?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9FeHByZXNzUm91dGVQb3J0cz9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b6d2da71-f6d0-49d0-b80e-9cbf5f3802be"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:08:43 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "362d41d5-b1f2-4b2a-92e3-79ca3271a295"
+        ],
+        "x-ms-correlation-request-id": [
+          "1e7fbe4e-4331-41ea-9320-261a6c37dc19"
+        ],
+        "x-ms-arm-service-request-id": [
+          "d64f9a8f-9ad8-416a-ae30-0d719545269d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220844Z:1e7fbe4e-4331-41ea-9320-261a6c37dc19"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "2652"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"ps6928\",\r\n      \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928\",\r\n      \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n      \"type\": \"Microsoft.Network/expressRoutePorts\",\r\n      \"location\": \"westcentralus\",\r\n      \"identity\": {\r\n        \"type\": \"userAssigned\",\r\n        \"userAssignedIdentities\": {\r\n          \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourcegroups/ps8320/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ps285\": {}\r\n        }\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"resourceGuid\": \"ea8304a3-4432-436e-987a-82411f6da1ac\",\r\n        \"links\": [\r\n          {\r\n            \"name\": \"link1\",\r\n            \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928/links/link1\",\r\n            \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"routerName\": \"cys01-06gmr-cis-1\",\r\n              \"interfaceName\": \"TenGigabitEthernet1/2/0\",\r\n              \"patchPanelId\": \"N/A\",\r\n              \"rackId\": \"N/A\",\r\n              \"connectorType\": \"LC\",\r\n              \"adminState\": \"Disabled\",\r\n              \"macSecConfig\": {\r\n                \"cipher\": \"GcmAes128\"\r\n              }\r\n            },\r\n            \"type\": \"Microsoft.Network/expressRoutePorts/links\"\r\n          },\r\n          {\r\n            \"name\": \"link2\",\r\n            \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928/links/link2\",\r\n            \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"routerName\": \"cys01-06gmr-cis-2\",\r\n              \"interfaceName\": \"TenGigabitEthernet1/2/0\",\r\n              \"patchPanelId\": \"N/A\",\r\n              \"rackId\": \"N/A\",\r\n              \"connectorType\": \"LC\",\r\n              \"adminState\": \"Disabled\",\r\n              \"macSecConfig\": {\r\n                \"cipher\": \"GcmAes128\"\r\n              }\r\n            },\r\n            \"type\": \"Microsoft.Network/expressRoutePorts/links\"\r\n          }\r\n        ],\r\n        \"peeringLocation\": \"Cheyenne-ERDirect\",\r\n        \"bandwidthInGbps\": 100,\r\n        \"encapsulation\": \"QinQ\",\r\n        \"provisionedBandwidthInGbps\": 0.0,\r\n        \"mtu\": \"1500\",\r\n        \"etherType\": \"0x8100\",\r\n        \"allocationDate\": \"Wednesday, September 18, 2019\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/ExpressRoutePorts?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9FeHByZXNzUm91dGVQb3J0cz9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4ef19cbb-3f3d-4137-b77e-efe5d853a435"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:08:43 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "261422a9-a473-4060-bc99-09c8cdb37d88"
+        ],
+        "x-ms-correlation-request-id": [
+          "1294d3f2-9eb7-4f3c-962c-f60b99a8f113"
+        ],
+        "x-ms-arm-service-request-id": [
+          "1baf9c31-ab30-468e-96e4-d237604c4c9a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220844Z:1294d3f2-9eb7-4f3c-962c-f60b99a8f113"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "2652"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"ps6928\",\r\n      \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928\",\r\n      \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n      \"type\": \"Microsoft.Network/expressRoutePorts\",\r\n      \"location\": \"westcentralus\",\r\n      \"identity\": {\r\n        \"type\": \"userAssigned\",\r\n        \"userAssignedIdentities\": {\r\n          \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourcegroups/ps8320/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ps285\": {}\r\n        }\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"resourceGuid\": \"ea8304a3-4432-436e-987a-82411f6da1ac\",\r\n        \"links\": [\r\n          {\r\n            \"name\": \"link1\",\r\n            \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928/links/link1\",\r\n            \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"routerName\": \"cys01-06gmr-cis-1\",\r\n              \"interfaceName\": \"TenGigabitEthernet1/2/0\",\r\n              \"patchPanelId\": \"N/A\",\r\n              \"rackId\": \"N/A\",\r\n              \"connectorType\": \"LC\",\r\n              \"adminState\": \"Disabled\",\r\n              \"macSecConfig\": {\r\n                \"cipher\": \"GcmAes128\"\r\n              }\r\n            },\r\n            \"type\": \"Microsoft.Network/expressRoutePorts/links\"\r\n          },\r\n          {\r\n            \"name\": \"link2\",\r\n            \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928/links/link2\",\r\n            \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"routerName\": \"cys01-06gmr-cis-2\",\r\n              \"interfaceName\": \"TenGigabitEthernet1/2/0\",\r\n              \"patchPanelId\": \"N/A\",\r\n              \"rackId\": \"N/A\",\r\n              \"connectorType\": \"LC\",\r\n              \"adminState\": \"Disabled\",\r\n              \"macSecConfig\": {\r\n                \"cipher\": \"GcmAes128\"\r\n              }\r\n            },\r\n            \"type\": \"Microsoft.Network/expressRoutePorts/links\"\r\n          }\r\n        ],\r\n        \"peeringLocation\": \"Cheyenne-ERDirect\",\r\n        \"bandwidthInGbps\": 100,\r\n        \"encapsulation\": \"QinQ\",\r\n        \"provisionedBandwidthInGbps\": 0.0,\r\n        \"mtu\": \"1500\",\r\n        \"etherType\": \"0x8100\",\r\n        \"allocationDate\": \"Wednesday, September 18, 2019\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/ExpressRoutePorts?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL3BzODMyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRXhwcmVzc1JvdXRlUG9ydHM/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bd82c16b-2b82-4690-9a6d-b6e63b1134c4"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:08:43 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "52291bc5-d860-4d49-84c4-79be8087e796"
+        ],
+        "x-ms-correlation-request-id": [
+          "b1d74693-c53d-4e36-a1e5-65239075339e"
+        ],
+        "x-ms-arm-service-request-id": [
+          "0c40abf0-6d60-42dd-a165-d8fbf81737e4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220844Z:b1d74693-c53d-4e36-a1e5-65239075339e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "2652"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"ps6928\",\r\n      \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928\",\r\n      \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n      \"type\": \"Microsoft.Network/expressRoutePorts\",\r\n      \"location\": \"westcentralus\",\r\n      \"identity\": {\r\n        \"type\": \"userAssigned\",\r\n        \"userAssignedIdentities\": {\r\n          \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourcegroups/ps8320/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ps285\": {}\r\n        }\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"resourceGuid\": \"ea8304a3-4432-436e-987a-82411f6da1ac\",\r\n        \"links\": [\r\n          {\r\n            \"name\": \"link1\",\r\n            \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928/links/link1\",\r\n            \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"routerName\": \"cys01-06gmr-cis-1\",\r\n              \"interfaceName\": \"TenGigabitEthernet1/2/0\",\r\n              \"patchPanelId\": \"N/A\",\r\n              \"rackId\": \"N/A\",\r\n              \"connectorType\": \"LC\",\r\n              \"adminState\": \"Disabled\",\r\n              \"macSecConfig\": {\r\n                \"cipher\": \"GcmAes128\"\r\n              }\r\n            },\r\n            \"type\": \"Microsoft.Network/expressRoutePorts/links\"\r\n          },\r\n          {\r\n            \"name\": \"link2\",\r\n            \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/expressRoutePorts/ps6928/links/link2\",\r\n            \"etag\": \"W/\\\"e328605d-92f2-46fe-b9e1-f37e8e303079\\\"\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"routerName\": \"cys01-06gmr-cis-2\",\r\n              \"interfaceName\": \"TenGigabitEthernet1/2/0\",\r\n              \"patchPanelId\": \"N/A\",\r\n              \"rackId\": \"N/A\",\r\n              \"connectorType\": \"LC\",\r\n              \"adminState\": \"Disabled\",\r\n              \"macSecConfig\": {\r\n                \"cipher\": \"GcmAes128\"\r\n              }\r\n            },\r\n            \"type\": \"Microsoft.Network/expressRoutePorts/links\"\r\n          }\r\n        ],\r\n        \"peeringLocation\": \"Cheyenne-ERDirect\",\r\n        \"bandwidthInGbps\": 100,\r\n        \"encapsulation\": \"QinQ\",\r\n        \"provisionedBandwidthInGbps\": 0.0,\r\n        \"mtu\": \"1500\",\r\n        \"etherType\": \"0x8100\",\r\n        \"allocationDate\": \"Wednesday, September 18, 2019\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/ps8320/providers/Microsoft.Network/ExpressRoutePorts/ps6928?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL3BzODMyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRXhwcmVzc1JvdXRlUG9ydHMvcHM2OTI4P2FwaS12ZXJzaW9uPTIwMTktMDgtMDE=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "37d44137-e6f4-47d3-abdd-5756d3d569a4"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:08:44 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westcentralus/operationResults/719ed7b9-34fd-4bb2-a790-58fec2c79603?api-version=2019-08-01"
+        ],
+        "Retry-After": [
+          "10"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "719ed7b9-34fd-4bb2-a790-58fec2c79603"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westcentralus/operations/719ed7b9-34fd-4bb2-a790-58fec2c79603?api-version=2019-08-01"
+        ],
+        "x-ms-correlation-request-id": [
+          "2cb642b8-36dd-4e88-9fdb-8905cb3be3ee"
+        ],
+        "Azure-AsyncNotification": [
+          "Enabled"
+        ],
+        "x-ms-arm-service-request-id": [
+          "d417f6c3-cbcb-4352-ab6d-6809c20f898f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220844Z:2cb642b8-36dd-4e88-9fdb-8905cb3be3ee"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westcentralus/operations/719ed7b9-34fd-4bb2-a790-58fec2c79603?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdGNlbnRyYWx1cy9vcGVyYXRpb25zLzcxOWVkN2I5LTM0ZmQtNGJiMi1hNzkwLTU4ZmVjMmM3OTYwMz9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:08:54 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "d37e9ed8-955a-4d89-9a76-676fe1c21ec3"
+        ],
+        "x-ms-correlation-request-id": [
+          "be236d8e-1c4d-473a-8157-cb2acb8dccdb"
+        ],
+        "x-ms-arm-service-request-id": [
+          "d121f0ce-87b5-4db6-a1c3-2815ae61fbff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220854Z:be236d8e-1c4d-473a-8157-cb2acb8dccdb"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westcentralus/operationResults/719ed7b9-34fd-4bb2-a790-58fec2c79603?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdGNlbnRyYWx1cy9vcGVyYXRpb25SZXN1bHRzLzcxOWVkN2I5LTM0ZmQtNGJiMi1hNzkwLTU4ZmVjMmM3OTYwMz9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:08:54 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westcentralus/operationResults/719ed7b9-34fd-4bb2-a790-58fec2c79603?api-version=2019-08-01"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "719ed7b9-34fd-4bb2-a790-58fec2c79603"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westcentralus/operations/719ed7b9-34fd-4bb2-a790-58fec2c79603?api-version=2019-08-01"
+        ],
+        "x-ms-correlation-request-id": [
+          "2cb642b8-36dd-4e88-9fdb-8905cb3be3ee"
+        ],
+        "Azure-AsyncNotification": [
+          "Enabled"
+        ],
+        "x-ms-arm-service-request-id": [
+          "d417f6c3-cbcb-4352-ab6d-6809c20f898f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220855Z:88823e95-6e9a-45af-80fd-360818b1925c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourcegroups/ps8320?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlZ3JvdXBzL3BzODMyMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3b774c70-1e5a-47c1-a8ab-f4c55bcaf80b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:08:56 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgzMjAtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "c130b8be-110c-4c37-8547-5b1aebbdf30e"
+        ],
+        "x-ms-correlation-request-id": [
+          "c130b8be-110c-4c37-8547-5b1aebbdf30e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220856Z:c130b8be-110c-4c37-8547-5b1aebbdf30e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgzMjAtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpnek1qQXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:09:11 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgzMjAtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "568eed68-2483-4652-8d0b-bca9447d32ac"
+        ],
+        "x-ms-correlation-request-id": [
+          "568eed68-2483-4652-8d0b-bca9447d32ac"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220911Z:568eed68-2483-4652-8d0b-bca9447d32ac"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgzMjAtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpnek1qQXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:09:26 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgzMjAtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "d1f34b56-7ba7-4eb0-86f6-fee6dab96ad4"
+        ],
+        "x-ms-correlation-request-id": [
+          "d1f34b56-7ba7-4eb0-86f6-fee6dab96ad4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220926Z:d1f34b56-7ba7-4eb0-86f6-fee6dab96ad4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgzMjAtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpnek1qQXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:09:41 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgzMjAtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "16310e59-40fa-4f27-bc2d-f55a19d4c2da"
+        ],
+        "x-ms-correlation-request-id": [
+          "16310e59-40fa-4f27-bc2d-f55a19d4c2da"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220942Z:16310e59-40fa-4f27-bc2d-f55a19d4c2da"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgzMjAtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpnek1qQXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:09:56 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgzMjAtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "30daafda-61c8-4277-9b72-36286066d3b7"
+        ],
+        "x-ms-correlation-request-id": [
+          "30daafda-61c8-4277-9b72-36286066d3b7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T220957Z:30daafda-61c8-4277-9b72-36286066d3b7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgzMjAtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpnek1qQXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:10:12 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgzMjAtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-request-id": [
+          "328f3d37-ded4-4a1d-ba0a-1db28835a16a"
+        ],
+        "x-ms-correlation-request-id": [
+          "328f3d37-ded4-4a1d-ba0a-1db28835a16a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T221012Z:328f3d37-ded4-4a1d-ba0a-1db28835a16a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgzMjAtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpnek1qQXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:10:26 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgzMjAtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-request-id": [
+          "d696ec19-d795-4e93-8a25-49dd83b84422"
+        ],
+        "x-ms-correlation-request-id": [
+          "d696ec19-d795-4e93-8a25-49dd83b84422"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T221027Z:d696ec19-d795-4e93-8a25-49dd83b84422"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgzMjAtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpnek1qQXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:10:41 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-request-id": [
+          "158010c1-16bf-4598-b0c1-0310191279a3"
+        ],
+        "x-ms-correlation-request-id": [
+          "158010c1-16bf-4598-b0c1-0310191279a3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T221042Z:158010c1-16bf-4598-b0c1-0310191279a3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgzMjAtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpnek1qQXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.26614.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 18 Sep 2019 22:10:41 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-request-id": [
+          "50f21662-6781-437e-876b-acfc813ee2a4"
+        ],
+        "x-ms-correlation-request-id": [
+          "50f21662-6781-437e-876b-acfc813ee2a4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190918T221042Z:50f21662-6781-437e-876b-acfc813ee2a4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-ExpressRoutePortIdentityCRUD": [
+      "ps8320",
+      "ps6928",
+      "ps285"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "18b0dc06-a2b8-4c0f-95af-550319fa5eac"
+  }
+}

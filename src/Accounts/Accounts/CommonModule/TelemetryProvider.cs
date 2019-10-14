@@ -139,8 +139,10 @@ namespace Microsoft.Azure.Commands.Common
                 SessionId = correlationId,
                 ParameterSetName = parameterSetName,
                 InvocationName = invocationInfo?.InvocationName,
-                InputFromPipeline = invocationInfo?.PipelineLength > 0,
+                InputFromPipeline = invocationInfo?.PipelineLength > 0
             };
+
+            data.CustomProperties.Add("PSPreviewVersion", "4.0.0");
 
             if (invocationInfo != null)
             {

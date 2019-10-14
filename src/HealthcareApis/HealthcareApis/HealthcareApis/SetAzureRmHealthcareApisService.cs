@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HealthcareApis;
 using Microsoft.Azure.Management.HealthcareApis.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Common;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -72,22 +73,22 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [ValidateNotNullOrEmpty]
         public string[] CorsOrigin { get; set; }
 
-        [Parameter(Mandatory = false,ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService List of Cors Headers. Specify HTTP headers which can be used during the request. Use \" * \" for any header.")]
-        [Parameter(Mandatory = false,ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis FhirService List of Cors Headers. Specify HTTP headers which can be used during the request. Use \" * \" for any header.")]
+        [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService List of Cors Headers. Specify HTTP headers which can be used during the request. Use \" * \" for any header.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis FhirService List of Cors Headers. Specify HTTP headers which can be used during the request. Use \" * \" for any header.")]
         [ValidateNotNullOrEmpty]
         public string[] CorsHeader { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet,HelpMessage = "HealthcareApis FhirService List of Cors Methods.")]
-        [Parameter(Mandatory = false,ParameterSetName = ResourceIdParameterSet,HelpMessage = "HealthcareApis FhirService List of Cors Methods.")]
+        [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService List of Cors Methods.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis FhirService List of Cors Methods.")]
         [ValidateNotNullOrEmpty]
         public string[] CorsMethod { get; set; }
 
-        [Parameter(Mandatory = false,ParameterSetName = ServiceNameParameterSet,HelpMessage = "HealthcareApis FhirService Cors Max Age. Specify how long a result from a request can be cached in seconds. Example: 600 means 10 minutes.")]
-        [Parameter(Mandatory = false,ParameterSetName = ResourceIdParameterSet,HelpMessage = "HealthcareApis FhirService Cors Max Age. Specify how long a result from a request can be cached in seconds. Example: 600 means 10 minutes.")]
+        [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService Cors Max Age. Specify how long a result from a request can be cached in seconds. Example: 600 means 10 minutes.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis FhirService Cors Max Age. Specify how long a result from a request can be cached in seconds. Example: 600 means 10 minutes.")]
         [ValidateNotNullOrEmpty]
         public int? CorsMaxAge { get; set; }
 
-        [Parameter(Mandatory = false,ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService AllowCorsCredentials.")]
+        [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService AllowCorsCredentials.")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis FhirService AllowCorsCredentials.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter AllowCorsCredential { get; set; }
@@ -131,91 +132,105 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            RunCmdLet(() =>
+            try
             {
-                switch (ParameterSetName)
+                base.ExecuteCmdlet();
+
+                RunCmdLet(() =>
                 {
-                    case ServiceNameParameterSet:
-                        {
-                            var healthcareApisAccount = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
-
-                            IList<ServiceAccessPolicyEntry> accessPolicies = GetAccessPolicies(healthcareApisAccount);
-
-                            ServicesDescription servicesDescription = GenerateServiceDescription(healthcareApisAccount, accessPolicies);
-
-                            try
+                    switch (ParameterSetName)
+                    {
+                        case ServiceNameParameterSet:
                             {
-                                var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(this.ResourceGroupName, this.Name, servicesDescription);
+                                var healthcareApisAccount = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
+
+                                IList<ServiceAccessPolicyEntry> accessPolicies = GetAccessPolicies(healthcareApisAccount);
+
+                                ServicesDescription servicesDescription = GenerateServiceDescription(healthcareApisAccount, accessPolicies);
+
+                                try
+                                {
+                                    var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(this.ResourceGroupName, this.Name, servicesDescription);
+                                    var healthCareFhirService = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
+                                    WriteHealthcareApisAccount(healthCareFhirService);
+                                }
+                                catch (ErrorDetailsException wex)
+                                {
+                                    WriteError(WriteErrorforBadrequest(wex));
+                                }
+
+                                break;
                             }
-                            catch (ErrorDetailsException wex)
+                        case ResourceIdParameterSet:
                             {
-                                WriteError(WriteErrorforBadrequest(wex));
+                                string rgName = null;
+                                string name = null;
+                                ValidateAndExtractName(this.ResourceId, out rgName, out name);
+
+                                var healthcareApisAccount = this.HealthcareApisClient.Services.Get(rgName, name);
+
+                                IList<ServiceAccessPolicyEntry> accessPolicies = GetAccessPolicies(healthcareApisAccount);
+
+                                ServicesDescription servicesDescription = GenerateServiceDescription(healthcareApisAccount, accessPolicies);
+
+                                try
+                                {
+                                    var healthcareApisFhirServiceUpdateAccount = this.HealthcareApisClient.Services.CreateOrUpdate(
+                                                    rgName,
+                                                    name,
+                                                    servicesDescription);
+                                    var healthCareFhirService = this.HealthcareApisClient.Services.Get(rgName, name);
+                                    WriteHealthcareApisAccount(healthCareFhirService);
+                                }
+                                catch (ErrorDetailsException wex)
+                                {
+                                    WriteError(WriteErrorforBadrequest(wex));
+                                }
+
+                                break;
                             }
-
-                            break;
-                        }
-                    case ResourceIdParameterSet:
-                        {
-                            string rgName = null;
-                            string name = null;
-                            ValidateAndExtractName(this.ResourceId, out rgName, out name);
-
-                            var healthcareApisAccount = this.HealthcareApisClient.Services.Get(rgName, name);
-
-                            IList<ServiceAccessPolicyEntry> accessPolicies = GetAccessPolicies(healthcareApisAccount);
-
-                            ServicesDescription servicesDescription = GenerateServiceDescription(healthcareApisAccount, accessPolicies);
-
-                            try
+                        case InputObjectParameterSet:
                             {
-                                var healthcareApisFhirServiceUpdateAccount = this.HealthcareApisClient.Services.CreateOrUpdate(
-                                                rgName,
-                                                name,
-                                                servicesDescription);
-                                WriteObject(healthcareApisFhirServiceUpdateAccount);
+                                IList<PSHealthcareApisFhirServiceAccessPolicyEntry> entries = InputObject.AccessPolicies;
+                                List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
+
+                                foreach (PSHealthcareApisFhirServiceAccessPolicyEntry entry in entries)
+                                {
+                                    accessPolicies.Add(new ServiceAccessPolicyEntry(entry.ObjectId));
+                                }
+
+                                var healthcareApisAccount = this.HealthcareApisClient.Services.Get(InputObject.ResourceGroupName,
+                                                 InputObject.Name);
+
+
+                                ServicesDescription servicesDescription = InputObjectToServiceDescription(healthcareApisAccount, accessPolicies);
+
+                                try
+                                {
+                                    var healthcareApisFhirServiceUpdateAccount = this.HealthcareApisClient.Services.CreateOrUpdate(
+                                                     InputObject.ResourceGroupName,
+                                                     InputObject.Name,
+                                                     servicesDescription);
+
+                                    WriteHealthcareApisAccount(healthcareApisFhirServiceUpdateAccount);
+                                }
+                                catch (ErrorDetailsException wex)
+                                {
+                                    WriteError(WriteErrorforBadrequest(wex));
+                                }
+                                break;
                             }
-                            catch (ErrorDetailsException wex)
-                            {
-                                WriteError(WriteErrorforBadrequest(wex));
-                            }
-
-                            break;
-                        }
-                    case InputObjectParameterSet:
-                        {
-                            IList<PSHealthcareApisFhirServiceAccessPolicyEntry> entries = InputObject.Properties.AccessPolicies;
-                            List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
-
-                            foreach (PSHealthcareApisFhirServiceAccessPolicyEntry entry in entries)
-                            {
-                                accessPolicies.Add(new ServiceAccessPolicyEntry(entry.ObjectId));
-                            }
-
-                            var healthcareApisAccount = this.HealthcareApisClient.Services.Get(InputObject.ResourceGroupName,
-                                             InputObject.Name);
-
-
-                            ServicesDescription servicesDescription = InputObjectToServiceDescription(healthcareApisAccount,accessPolicies);
-
-                            try
-                            {
-                                var healthcareApisFhirServiceUpdateAccount = this.HealthcareApisClient.Services.CreateOrUpdate(
-                                                 InputObject.ResourceGroupName,
-                                                 InputObject.Name,
-                                                 servicesDescription);
-
-                                WriteObject(healthcareApisFhirServiceUpdateAccount);
-                            }
-                            catch (ErrorDetailsException wex)
-                            {
-                                WriteError(WriteErrorforBadrequest(wex));
-                            }
-                            break;
-                        }
-                }
-            });
+                    }
+                });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                WriteError(new ErrorRecord(ex, Resources.keyNotFoundExceptionMessage, ErrorCategory.OpenError, ex));
+            }
+            catch (NullReferenceException ex)
+            {
+                WriteError(new ErrorRecord(ex, Resources.nullPointerExceptionMessage, ErrorCategory.OpenError, ex));
+            }
         }
 
         private IList<ServiceAccessPolicyEntry> GetAccessPolicies(ServicesDescription healthcareApisAccount)
@@ -231,7 +246,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
                 return accessPolicies;
             }
-
 
             return healthcareApisAccount.Properties.AccessPolicies;
         }
@@ -270,7 +284,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         private IDictionary<string, string> GetTags(ServicesDescription healthcareApisAccount)
         {
-            if(this.Tag!=null && this.Tag.Count > 0)
+            if (this.Tag != null && this.Tag.Count > 0)
             {
                 Dictionary<string, string> tags = new Dictionary<string, string>();
                 foreach (DictionaryEntry tag in this.Tag)
@@ -327,25 +341,25 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                 {
                     AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo()
                     {
-                        Authority = InputObject.Properties.AuthenticationConfiguration.Authority?? healthcareApisAccount.Properties.AuthenticationConfiguration.Authority,
-                        Audience = InputObject.Properties.AuthenticationConfiguration.Audience ?? healthcareApisAccount.Properties.AuthenticationConfiguration.Audience,
-                        SmartProxyEnabled = InputObject.Properties.AuthenticationConfiguration.SmartProxyEnabled !=healthcareApisAccount.Properties.AuthenticationConfiguration.SmartProxyEnabled ? InputObject.Properties.AuthenticationConfiguration.SmartProxyEnabled : healthcareApisAccount.Properties.AuthenticationConfiguration.SmartProxyEnabled
+                        Authority = InputObject.Authority ?? healthcareApisAccount.Properties.AuthenticationConfiguration.Authority,
+                        Audience = InputObject.Audience ?? healthcareApisAccount.Properties.AuthenticationConfiguration.Audience,
+                        SmartProxyEnabled = InputObject.SmartProxyEnabled != healthcareApisAccount.Properties.AuthenticationConfiguration.SmartProxyEnabled ? InputObject.SmartProxyEnabled : healthcareApisAccount.Properties.AuthenticationConfiguration.SmartProxyEnabled
                     },
                     CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo()
                     {
-                        OfferThroughput = InputObject.Properties.CosmosDbConfiguration.OfferThroughput ?? healthcareApisAccount.Properties.CosmosDbConfiguration.OfferThroughput
+                        OfferThroughput = InputObject.CosmosDbOfferThroughput ?? healthcareApisAccount.Properties.CosmosDbConfiguration.OfferThroughput
                     },
                     CorsConfiguration = new ServiceCorsConfigurationInfo()
                     {
-                        Origins = InputObject.Properties.CorsConfiguration.Origins ?? healthcareApisAccount.Properties.CorsConfiguration.Origins,
-                        Headers = InputObject.Properties.CorsConfiguration.Headers ?? healthcareApisAccount.Properties.CorsConfiguration.Headers,
-                        Methods = InputObject.Properties.CorsConfiguration.Methods ?? healthcareApisAccount.Properties.CorsConfiguration.Methods,
-                        MaxAge = InputObject.Properties.CorsConfiguration.MaxAge ?? healthcareApisAccount.Properties.CorsConfiguration.MaxAge,
-                        AllowCredentials = InputObject.Properties.CorsConfiguration.AllowCredentials ?? healthcareApisAccount.Properties.CorsConfiguration.AllowCredentials
+                        Origins = InputObject.CorsOrigins ?? healthcareApisAccount.Properties.CorsConfiguration.Origins,
+                        Headers = InputObject.CorsHeaders ?? healthcareApisAccount.Properties.CorsConfiguration.Headers,
+                        Methods = InputObject.CorsMethods ?? healthcareApisAccount.Properties.CorsConfiguration.Methods,
+                        MaxAge = InputObject.CorsMaxAge ?? healthcareApisAccount.Properties.CorsConfiguration.MaxAge,
+                        AllowCredentials = InputObject.CorsAllowCredentials ?? healthcareApisAccount.Properties.CorsConfiguration.AllowCredentials
                     },
                     AccessPolicies = accessPolicies
                 },
-                Kind = InputObject.Kind,
+                Kind = ParseKind(InputObject.Kind),
                 Tags = InputObject.Tags
             };
         }

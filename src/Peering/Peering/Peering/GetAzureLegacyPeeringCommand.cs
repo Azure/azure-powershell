@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 {
-    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
 
@@ -23,8 +22,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
-
-    using Newtonsoft.Json;
 
     /// <inheritdoc />
     /// <summary>
@@ -67,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>
         /// The <see cref="object"/>.
         /// </returns>
-        /// <exception cref="ErrorResponseException">Http Response 
+        /// <exception cref="ErrorResponseException">Http Response
         /// </exception>
         private object PeeringByLegacyPeering()
         {

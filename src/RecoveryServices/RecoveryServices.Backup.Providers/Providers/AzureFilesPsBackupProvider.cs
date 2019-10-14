@@ -117,6 +117,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                 resourceGroupName: vaultResourceGroupName);
         }
 
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
+        {
+            throw new Exception(Resources.SoftdeleteNotImplementedException);
+        }
+
         public List<ContainerBase> ListProtectionContainers()
         {
             CmdletModel.BackupManagementType? backupManagementTypeNullable =

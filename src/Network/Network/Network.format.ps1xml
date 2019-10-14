@@ -115,6 +115,15 @@
                 <PropertyName>SubnetsText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>BgpCommunities</Label>
+                <PropertyName>BgpCommunitiesText</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    !($_.BgpCommunities -eq $null)
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
+              <ListItem>
                 <Label>VirtualNetworkPeerings</Label>
                 <PropertyName>VirtualNetworkPeeringsText</PropertyName>
               </ListItem>
@@ -2589,6 +2598,10 @@
                 <PropertyName>AllocationDate</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Identity</Label>
+                <PropertyName>IdentityText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Links</Label>
                 <PropertyName>LinksText</PropertyName>
               </ListItem>
@@ -2649,6 +2662,10 @@
               <ListItem>
                 <Label>AdminState</Label>
                 <PropertyName>AdminState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>MacSecConfig</Label>
+                <PropertyName>MacSecConfigText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -3721,6 +3738,10 @@
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>Connections</Label>
+                <PropertyName>Connections</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -3774,6 +3795,10 @@
               <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VpnSiteLinks</Label>
+                <PropertyName>VpnSiteLinks</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

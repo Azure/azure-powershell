@@ -95,6 +95,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Message Enrichment.
+        /// </summary>
+        internal static string AddIotHubMessageEnrichment {
+            get {
+                return ResourceManager.GetString("AddIotHubMessageEnrichment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Route.
         /// </summary>
         internal static string AddIotHubRoute {
@@ -109,6 +118,33 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string AddIotHubRoutingEndpoint {
             get {
                 return ResourceManager.GetString("AddIotHubRoutingEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failover Iot Hub to the secondary location..
+        /// </summary>
+        internal static string ManualFailoverIotHub {
+            get {
+                return ResourceManager.GetString("ManualFailoverIotHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The enrichment&apos;s key &quot;{0}&quot; already exists..
+        /// </summary>
+        internal static string MessageEnrichmentKeyExist {
+            get {
+                return ResourceManager.GetString("MessageEnrichmentKeyExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No message enrichment with key &quot;{0}&quot; exists..
+        /// </summary>
+        internal static string MessageEnrichmentKeyMissing {
+            get {
+                return ResourceManager.GetString("MessageEnrichmentKeyMissing", resourceCulture);
             }
         }
         
@@ -176,6 +212,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove Message Enrichment.
+        /// </summary>
+        internal static string RemoveIotHubMessageEnrichment {
+            get {
+                return ResourceManager.GetString("RemoveIotHubMessageEnrichment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove Route.
         /// </summary>
         internal static string RemoveIotHubRoute {
@@ -199,6 +244,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string UpdateIotHub {
             get {
                 return ResourceManager.GetString("UpdateIotHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Message Enrichment.
+        /// </summary>
+        internal static string UpdateIotHubMessageEnrichment {
+            get {
+                return ResourceManager.GetString("UpdateIotHubMessageEnrichment", resourceCulture);
             }
         }
         

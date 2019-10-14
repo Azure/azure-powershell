@@ -73,7 +73,9 @@ function Test-StorageBlobContainer
 		Assert-AreEqual $publicAccess $container.PublicAccess
 		Assert-AreEqual $metadata.Count $container.Metadata.Count
 
-		$containers = Get-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname
+		$job = Get-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -AsJob
+		$job | Wait-Job
+		$containers = $job.Output
 		Assert-AreEqual 2 $containers.Count
 		Assert-AreEqual $containerName  $containers[1].Name
 		Assert-AreEqual $containerName2  $containers[0].Name

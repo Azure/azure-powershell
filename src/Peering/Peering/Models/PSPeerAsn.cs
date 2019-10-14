@@ -41,14 +41,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// <param name="validationState">The validation state of the ASN
         /// associated with the peer. Possible values include: 'None',
         /// 'Pending', 'Approved', 'Failed'</param>
+        /// <param name="errorMessage">The error message for the validation
+        /// state</param>
         /// <param name="peerAsnProperty">The Autonomous System Number (ASN) of
         /// the peer.</param>
-        public PSPeerAsn(string name = default(string), string id = default(string), string type = default(string), PSContactInfo peerContactInfo = default(PSContactInfo), string peerName = default(string), string validationState = default(string), int? peerAsnProperty = default(int?))
+        public PSPeerAsn(string name = default(string), string id = default(string), string type = default(string), PSContactInfo peerContactInfo = default(PSContactInfo), string peerName = default(string), string validationState = default(string), string errorMessage = default(string), int? peerAsnProperty = default(int?))
             : base(name, id, type)
         {
             PeerContactInfo = peerContactInfo;
             PeerName = peerName;
             ValidationState = validationState;
+            ErrorMessage = errorMessage;
             PeerAsnProperty = peerAsnProperty;
             CustomInit();
         }
@@ -77,6 +80,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.validationState")]
         public string ValidationState { get; set; }
+
+        /// <summary>
+        /// Gets the error message for the validation state
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.errorMessage")]
+        public string ErrorMessage { get; private set; }
 
         /// <summary>
         /// Gets or sets the Autonomous System Number (ASN) of the peer.
