@@ -43,7 +43,7 @@ Get a list of all storage volumes at a given location.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-AzsVolume -ScaleUnit S-Cluster -StorageSubSystem S-Cluster.azurestack.local -Name a42d219b
+Get-AzsVolume -ScaleUnit S-Cluster -StorageSubSystem S-Cluster.azurestack.local -Name 0d7b9c1f-228f-4e08-ad61-210b115a913e
 ```
 
 Get a storage volume by name at a given location.

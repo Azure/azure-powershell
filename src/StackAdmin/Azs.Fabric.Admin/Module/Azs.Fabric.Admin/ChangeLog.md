@@ -19,6 +19,12 @@
 -->
 ## Current Release
 
+## Version 0.5.0
+* Breaking changes for Drive and Volume resources with API version 2019-05-01: (The features are supported by Azure Stack 1910+)
+    * The value of Id, Name, HealthStatus and OperationalStatus have been changed.
+    * We have supported new properties FirmwareVersion, IsIndicationEnabled, Manufacturer and StoragePool for Drive resources.
+    * The properties CanPool and CannotPoolReason of Drive resources have been deprecated, please use OperationalStatus instead.
+
 ## Version 0.4.1
 * Module dependencies updated
     * AzureRM.Resources module updated to 6.4.3

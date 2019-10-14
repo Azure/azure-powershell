@@ -43,7 +43,7 @@ Get a list of all storage drives for a given cluster.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-AzsDrive -ScaleUnit S-Cluster -StorageSubSystem S-Cluster.azurestack.local -Name a654528c-60bb-18e1-457c-51b7cdb7e14a
+Get-AzsDrive -ScaleUnit S-Cluster -StorageSubSystem S-Cluster.azurestack.local -Name '{0488db4c-41c8-46a7-b551-4cde69820f90}:PD:{025b8d76-b2cc-d02f-e8d7-38522847fa0b}'
 ```
 
 Get a storage drive by name for a given cluster.
