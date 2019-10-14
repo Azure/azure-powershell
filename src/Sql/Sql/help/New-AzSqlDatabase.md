@@ -387,7 +387,7 @@ Accept wildcard characters: False
 If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica. This property is only settable for Premium and Business Critical databases.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale]
+Type: Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale
 Parameter Sets: (All)
 Aliases:
 Accepted values: Disabled, Enabled
