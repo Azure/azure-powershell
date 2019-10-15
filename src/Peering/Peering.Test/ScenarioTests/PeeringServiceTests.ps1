@@ -43,8 +43,8 @@ GetPeeringServiceProviders
 function Test-GetPeeringServiceByResourceGroup {
     #Hard Coded locations becuase of limitations in locations
     $name = getAssetName "myPeeringService";
-    $loc = "Washington"
-    $provider = "TestPeer1"
+    $loc = "Florida"
+    $provider = "AS56845-Global1191"
     $resourceGroup = "Building40"
     $peeringService = New-AzPeeringService -ResourceGroupName $resourceGroup -Name $name -PeeringLocation $loc -PeeringServiceProvider $provider
     Assert-NotNull $peeringService
@@ -65,8 +65,8 @@ GetPeeringServiceLocations
 function Test-GetPeeringServiceByResourceId {
     #Hard Coded locations becuase of limitations in locations
     $name = getAssetName "myPeeringService";
-    $loc = "Washington"
-    $provider = "TestPeer1"
+    $loc = "Florida"
+    $provider = "AS56845-Global1191"
     $resourceGroup = "Building40"
     $peeringService = New-AzPeeringService -ResourceGroupName $resourceGroup -Name $name -PeeringLocation $loc -PeeringServiceProvider $provider
     Assert-NotNull $peeringService
@@ -96,8 +96,8 @@ GetPeeringServiceLocations
 function Test-NewPeeringService {
     #Hard Coded locations becuase of limitations in locations
     $name = getAssetName "myPeeringService";
-    $loc = "Washington"
-    $provider = "TestPeer1"
+    $loc = "Florida"
+    $provider = "AS56845-Global1191"
     $resourceGroup = "Building40"
     $peeringService = New-AzPeeringService -ResourceGroupName $resourceGroup -Name $name -PeeringLocation $loc -PeeringServiceProvider $provider
     Assert-NotNull $peeringService
@@ -114,8 +114,8 @@ function Test-NewPeeringServicePrefix {
     #Hard Coded locations becuase of limitations in locations
     $name = getAssetName "myPeeringService";
     $prefixName = getAssetName "myPrefix";
-	$loc = "Washington"
-    $provider = "TestPeer1"
+	$loc = "Florida"
+    $provider = "AS56845-Global1191"
     $resourceGroup = "Building40"
     $prefix = newIpV4Address $true $true 0 4
 	$peeringService = New-AzPeeringService -ResourceGroupName $resourceGroup -Name $name -PeeringLocation $loc -PeeringServiceProvider $provider

@@ -42,16 +42,6 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         }
 
         /// <summary>
-        /// The test get and set use for peering service.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAndSetUseForPeeringService()
-        {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetAndSetUseForPeeringService");
-        }
-
-        /// <summary>
         /// The test set new bandwidth.
         /// </summary>
         [Fact]
