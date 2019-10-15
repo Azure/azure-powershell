@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 * Update references in .psd1 to use relative path
+
+## Version 1.1.2
 * **Get-AzBatchNodeAgentSku** is deprecated and will be replaced by **Get-AzBatchSupportImage** in version 2.0.0.
 
 ## Version 1.1.1

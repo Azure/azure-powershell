@@ -18,4 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update references in .psd1 to use relative path
+
+## Version 0.1.0
 * General availability of Az.SqlVirtualMachine module

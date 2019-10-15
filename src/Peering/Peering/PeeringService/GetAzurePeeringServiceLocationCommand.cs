@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 var icList = this.PeeringServiceLocationsClient.List();
                 if (this.Country != null)
                 {
-                    var t = icList.Select(this.ToPeeringServiceLocationPS).ToList().FindAll(x => x.Country == this.Country);
+                    var t = icList.Select(this.ToPeeringServiceLocationPS).ToList().FindAll(x => x.Country.Equals(this.Country, System.StringComparison.InvariantCultureIgnoreCase));
                     return t;
                 }
                 return icList.Select(this.ToPeeringServiceLocationPS).ToList();
