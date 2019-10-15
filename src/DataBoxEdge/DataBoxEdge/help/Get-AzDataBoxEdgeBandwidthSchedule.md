@@ -30,6 +30,12 @@ Get-AzDataBoxEdgeBandwidthSchedule [-ResourceGroupName] <String> [-DeviceName] <
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### GetByParentObjectParameterSet
+```
+Get-AzDataBoxEdgeBandwidthSchedule [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>]
+ -DeviceObject <PSDataBoxEdgeDevice> [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzDataBoxEdgeBandwidthSchedule** cmdlet gets information about Bandwidth Schedules. If you specify the Name of the Schedule along with the resource group name and Device name, this cmdlet gets information about that specific Bandwidth schedule
 
@@ -87,6 +93,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DeviceObject
+Please provide corresponding device object
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice
+Parameter Sets: GetByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 BandwidthSchedule Name
 
@@ -96,6 +117,18 @@ Parameter Sets: GetByNameParameterSet
 Aliases:
 
 Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: GetByParentObjectParameterSet
+Aliases:
+
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False
