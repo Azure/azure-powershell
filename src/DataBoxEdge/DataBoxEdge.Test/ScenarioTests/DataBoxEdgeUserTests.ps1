@@ -41,9 +41,10 @@ function Test-CreateNewUser
     $rgname = Get-DeviceResourceGroupName
     $dfname = Get-DeviceName
 	$name = Get-User
-	$password = ConvertTo-SecureString -String "01000000d08c9ddf0115d1118c7a00c04fc297eb01000000e770d502af3fa14e96c5ef76752be9370000000002000000000003660000c00000001000000060335e2334f37d829965a667087d7c7b0000000004800000a00000001000000020cfadf5cd14a21a449f0f277fa7b0ba3800000032917d5e5e230025f0cfa4cb05ea413f6976ea5d4d52a8679005a219edddd1ae9f2f92c959e2ef2e14915d55429fcc257cdaa712427e889f140000003798948a3e86cdc5a82c18dfbdb96ce821bcc6b6"
-	$encryptionKey = Get-EncryptionKey
-    # Test
+	$password = ConvertTo-SecureString Get-Userpassword -AsPlainText -Force
+	$encryptionKey = ConvertTo-SecureString Get-EncryptionKey -AsPlainText -Force
+	
+	# Test
 	try
     {
         $expected = New-AzDataBoxEdgeUser $rgname $dfname $name -Password $password -EncryptionKey $encryptionKey
@@ -65,9 +66,9 @@ function Test-RemoveUser
     $rgname = Get-DeviceResourceGroupName
     $dfname = Get-DeviceName
 	$name = Get-User
-	$password = ConvertTo-SecureString -String "01000000d08c9ddf0115d1118c7a00c04fc297eb01000000e770d502af3fa14e96c5ef76752be9370000000002000000000003660000c00000001000000060335e2334f37d829965a667087d7c7b0000000004800000a00000001000000020cfadf5cd14a21a449f0f277fa7b0ba3800000032917d5e5e230025f0cfa4cb05ea413f6976ea5d4d52a8679005a219edddd1ae9f2f92c959e2ef2e14915d55429fcc257cdaa712427e889f140000003798948a3e86cdc5a82c18dfbdb96ce821bcc6b6"
-	$encryptionKey = Get-EncryptionKey
-    # Test
+	$password = ConvertTo-SecureString Get-Userpassword -AsPlainText -Force
+	$encryptionKey = ConvertTo-SecureString Get-EncryptionKey -AsPlainText -Force
+	# Test
 	try
     {
         $expected = New-AzDataBoxEdgeUser $rgname $dfname $name -Password $password -EncryptionKey $encryptionKey

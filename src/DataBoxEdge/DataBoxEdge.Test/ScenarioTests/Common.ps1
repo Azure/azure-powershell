@@ -16,6 +16,49 @@
 .SYNOPSIS
 Gets valid resource group name
 #>
+
+
+<#
+.SYNOPSIS
+Returns Userpassword used for password
+#>
+function Get-Userpassword
+{
+	return "";
+}
+
+
+
+function Get-DeviceConnectionString 
+{
+	return "";
+}
+
+
+function Get-IotDeviceConnectionString 
+{
+	return "";
+}
+
+<#
+.SYNOPSIS
+Returns EncryptionKey
+#>
+function Get-EncryptionKey
+{
+	return "";
+}
+
+<#
+.SYNOPSIS
+Returns Userpassword used for password
+#>
+function Get-Userpassword
+{
+	return "";
+}
+
+
 function Get-DeviceResourceGroupName
 {
     return "psrgpfortest"
@@ -30,15 +73,31 @@ function Get-DeviceName
     return "psdataboxedgedevice"
 }
 
+
+function Get-StringHash([String] $String,$HashName = "MD5")
+{
+	$StringBuilder = New-Object System.Text.StringBuilder
+	[System.Security.Cryptography.HashAlgorithm]::Create($HashName).ComputeHash([System.Text.Encoding]::UTF8.GetBytes($String))|%{[Void]$StringBuilder.Append($_.ToString("x2"))}
+	$StringBuilder.ToString()
+}
+
+
 <#
 .SYNOPSIS
 Returns EncryptionKey
 #>
-function Get-EncryptionKey
+function Get-EncryptionKeyForDevice($resourceGroupName, $deviceName)
 {
-	$encryptionKey = ConvertTo-SecureString -String "01000000d08c9ddf0115d1118c7a00c04fc297eb01000000e770d502af3fa14e96c5ef76752be9370000000002000000000003660000c0000000100000006019f93214b76a835d9733452ee47a1c0000000004800000a0000000100000000830aff3a8942248169a888690687ac808010000a2c4c90f211417d258a8cf7f26ad4c44817177953db509cbbbdef52b49409866349caecb6ec755ba7f106791700859ab6c0fd967c7de8df811e9c3ad4f6d7b807f0b863c63d05d8ed39ec8520cb5b6a252a2ce8db7a83135fd08f2155138642b9cc6a205df1ed5b53961d8125ddbbbf3504b0e1bf8db9d711506904520a1f6f31cfbbb9c1a5750cee6c7090e7fc9398891e3221a3c90aef798f05e52200ebfcad615c3802509c664f317d2b63933227dbbd3abfa5b280d1855643bd2f51fe97dfdecf4177c7084eeb5bbb56ec74319a37fd5bc724ea9728667879e8fb31e3f3949e22aa0bfbe545cb25ce24bd8ddcb4e0e1b8c6929e4573411f2e3f773a44e9b2959805e8e303e22140000005fc8b0ec0769223a9c400a0c3aa7e62b2975968e"
-	return $encryptionKey 
+
+	$sp = Get-AzADServicePrincipal -ApplicationId "2368d027-f996-4edb-bf48-928f98f2ab8c"
+	$e = Get-AzDataBoxEdgeDevice -ResourceGroupName $resourceGroupName -DeviceName $deviceName -ExtendedInfo
+	$k = $sp.Id+$e.ResourceKey
+	echo $k
+	return Get-StringHash $k "SHA512"
 }
+
+
+
 
 <#
 .SYNOPSIS
@@ -48,7 +107,6 @@ function Get-StorageAccountName
 {
     return getAssetName
 }
-
 
 <#
 .SYNOPSIS

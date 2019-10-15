@@ -21,6 +21,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
 
         public string Name;
 
+        public string ResourceKey;
+
         public string Id;
         [Ps1Xml(Label = "EncryptedCIK", Target = ViewControl.Table,
             ScriptBlock = "$_.dataBoxEdgeDeviceExtendedInfo.EncryptionKey")]
@@ -41,6 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
             this.DeviceName = resourceIdentifier.DeviceName;
             this.Name = resourceIdentifier.DeviceName;
             this.EncryptionKey = DataBoxEdgeDeviceExtendedInfo.EncryptionKey;
+            this.ResourceKey = DataBoxEdgeDeviceExtendedInfo.ResourceKey;
         }
     }
 }
