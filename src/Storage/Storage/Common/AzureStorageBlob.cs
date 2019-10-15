@@ -26,27 +26,44 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// CloudBlob object
         /// </summary>    
-        [Ps1Xml(Label = "Container Uri", Target = ViewControl.Table, GroupByThis = true, ScriptBlock = "$_.ICloudBlob.Container.Uri")]
+        [Ps1Xml(Label = "Container Uri", Target = ViewControl.Table, GroupByThis = true, ScriptBlock = "if ($_.IsDirectory) {$_.CloudBlobDirectory.Container.Uri} else {$_.ICloudBlob.Container.Uri}")]
         [Ps1Xml(Label = "Name", Target = ViewControl.Table, ScriptBlock = "$_.Name", Position = 0, TableColumnWidth = 20)]
-        [Ps1Xml(Label = "AccessTier", Target = ViewControl.Table, ScriptBlock = "$_.ICloudBlob.Properties.StandardBlobTier", Position = 5, TableColumnWidth = 10)]
-        public CloudBlob ICloudBlob { get; private set; }
+        [Ps1Xml(Label = "AccessTier", Target = ViewControl.Table, ScriptBlock = "$_.ICloudBlob.Properties.StandardBlobTier", Position = 6, TableColumnWidth = 10)]
+        public CloudBlob ICloudBlob { get; set; }
+
+        /// <summary>
+        /// CloudBlobDirectory object
+        /// </summary>
+        public CloudBlobDirectory CloudBlobDirectory { get; private set; }
+
+        /// <summary>
+        /// CloudBlobDirectory object
+        /// </summary>
+        [Ps1Xml(Label = "IsDirectory", Target = ViewControl.Table, Position = 1, TableColumnWidth = 12)]
+        public bool IsDirectory { get; private set; }
+
+        /// <summary>
+        /// CloudBlob or CloudBlobDirectory path Permissions
+        /// </summary>
+        [Ps1Xml(Label = "Permissions", Target = ViewControl.Table, ScriptBlock = "$_.Permissions.ToSymbolicString()", Position = 9, TableColumnWidth = 12)]
+        public PathPermissions Permissions { get; set; }
 
         /// <summary>
         /// Azure storage blob type
         /// </summary>
-        [Ps1Xml(Label = "BlobType", Target = ViewControl.Table, Position = 1, TableColumnWidth = 9)]
+        [Ps1Xml(Label = "BlobType", Target = ViewControl.Table, Position = 2, TableColumnWidth = 9)]
         public BlobType BlobType { get; private set; }
 
         /// <summary>
         /// Blob length
         /// </summary>
-        [Ps1Xml(Label = "Length", Target = ViewControl.Table, Position = 2, TableColumnWidth = 15)]
+        [Ps1Xml(Label = "Length", Target = ViewControl.Table, Position = 3, TableColumnWidth = 15)]
         public long Length { get; private set; }
 
         /// <summary>
         /// Blob IsDeleted
         /// </summary>
-        [Ps1Xml(Label = "IsDeleted", Target = ViewControl.Table, Position = 7, TableColumnWidth = 10)]
+        [Ps1Xml(Label = "IsDeleted", Target = ViewControl.Table, Position = 8, TableColumnWidth = 10)]
         public bool IsDeleted { get; private set; }
 
         /// <summary>
@@ -57,19 +74,19 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// Blob content type
         /// </summary>
-        [Ps1Xml(Label = "ContentType", Target = ViewControl.Table, Position = 3, TableColumnWidth = 30)]
+        [Ps1Xml(Label = "ContentType", Target = ViewControl.Table, Position = 4, TableColumnWidth = 30)]
         public string ContentType { get; private set; }
 
         /// <summary>
         /// Blob last modified time
         /// </summary>
-        [Ps1Xml(Label = "LastModified", Target = ViewControl.Table, ScriptBlock = "$_.LastModified.UtcDateTime.ToString(\"u\")", Position = 4, TableColumnWidth = 20)]
+        [Ps1Xml(Label = "LastModified", Target = ViewControl.Table, ScriptBlock = "$_.LastModified.UtcDateTime.ToString(\"u\")", Position = 5, TableColumnWidth = 20)]
         public DateTimeOffset? LastModified { get; private set; }
 
         /// <summary>
         /// Blob snapshot time
         /// </summary>
-        [Ps1Xml(Label = "SnapshotTime", Target = ViewControl.Table, ScriptBlock = "$_.SnapshotTime.UtcDateTime.ToString(\"u\")", Position = 6, TableColumnWidth = 20)]
+        [Ps1Xml(Label = "SnapshotTime", Target = ViewControl.Table, ScriptBlock = "$_.SnapshotTime.UtcDateTime.ToString(\"u\")", Position = 7, TableColumnWidth = 20)]
         public DateTimeOffset? SnapshotTime { get; private set; }
 
         /// <summary>
@@ -92,6 +109,31 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             ContentType = blob.Properties.ContentType;
             LastModified = blob.Properties.LastModified;
             SnapshotTime = blob.SnapshotTime;
+            IsDirectory = false;
+            if (blob.BlobType == BlobType.BlockBlob 
+                && ((CloudBlockBlob)blob).PathProperties != null)
+            {
+                Permissions = ((CloudBlockBlob)blob).PathProperties.Permissions;
+            }
+        }
+
+        /// <summary>
+        /// Azure storage blob Directory constructor
+        /// </summary>
+        /// <param name="blobDir">ICloud blob Directory object</param>
+        public AzureStorageBlob(CloudBlobDirectory blobDir)
+        {
+            Name = blobDir.Prefix;
+            CloudBlobDirectory = blobDir;
+            BlobType = BlobType.Unspecified;
+            Length = 0;
+            ContentType = blobDir.Properties.ContentType;
+            LastModified = blobDir.Properties.LastModified;
+            IsDirectory = true;
+            if (blobDir.PathProperties != null)
+            {
+                Permissions = blobDir.PathProperties.Permissions;
+            }
         }
     }
 }

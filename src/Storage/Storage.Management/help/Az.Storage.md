@@ -66,13 +66,16 @@ Checks the availability of a Storage account name.
 Get the NetWorkRule property of a Storage account
 
 ### [Get-AzStorageBlob](Get-AzStorageBlob.md)
-Lists blobs in a container.
+Lists blobs and blob directories in a container.
 
 ### [Get-AzStorageBlobContent](Get-AzStorageBlobContent.md)
 Downloads a storage blob.
 
 ### [Get-AzStorageBlobCopyState](Get-AzStorageBlobCopyState.md)
 Gets the copy status of an Azure Storage blob.
+
+### [Get-AzStorageBlobFromDirectory](Get-AzStorageBlobFromDirectory.md)
+Lists blobs and blob directories in a blob directory.
 
 ### [Get-AzStorageBlobServiceProperty](Get-AzStorageBlobServiceProperty.md)
 Gets service properties for Azure Storage Blob services.
@@ -134,6 +137,12 @@ Invokes failover of a Storage account.
 ### [Lock-AzRmStorageContainerImmutabilityPolicy](Lock-AzRmStorageContainerImmutabilityPolicy.md)
 Locks ImmutabilityPolicy of a Storage blob containers
 
+### [Move-AzStorageBlob](Move-AzStorageBlob.md)
+Move a Storage blob to another Storage blob.
+
+### [Move-AzStorageBlobDirectory](Move-AzStorageBlobDirectory.md)
+Move a Storage blob directory and all its content to another Storage blob directory.
+
 ### [New-AzRmStorageContainer](New-AzRmStorageContainer.md)
 Creates a Storage blob container
 
@@ -154,6 +163,12 @@ Creates a ManagementPolicy rule object, which can be used in Set-AzStorageAccoun
 
 ### [New-AzStorageAccountSASToken](New-AzStorageAccountSASToken.md)
 Creates an account-level SAS token.
+
+### [New-AzStorageBlobDirectory](New-AzStorageBlobDirectory.md)
+Create a Storage blob directory.
+
+### [New-AzStorageBlobPathACL](New-AzStorageBlobPathACL.md)
+Creates a Storage blob path ACL object, which can be used in Update-AzStorageBlob or Update-AzStorageBlobDirectory cmdlets.
 
 ### [New-AzStorageBlobSASToken](New-AzStorageBlobSASToken.md)
 Generates a SAS token for an Azure storage blob.
@@ -226,6 +241,9 @@ Remove IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage
 
 ### [Remove-AzStorageBlob](Remove-AzStorageBlob.md)
 Removes the specified storage blob.
+
+### [Remove-AzStorageBlobDirectory](Remove-AzStorageBlobDirectory.md)
+Remove a Storage blob directory.
 
 ### [Remove-AzStorageContainer](Remove-AzStorageContainer.md)
 Removes the specified storage container.
@@ -334,6 +352,12 @@ Update the NetworkRule property of a Storage account
 
 ### [Update-AzStorageBlobServiceProperty](Update-AzStorageBlobServiceProperty.md)
 Modifies the service properties for the Azure Storage Blob service.
+
+### [Update-AzStorageBlob](Update-AzStorageBlob.md)
+Update the properties and ACLs of a Storage blob.
+
+### [Update-AzStorageBlobDirectory](Update-AzStorageBlobDirectory.md)
+Update the properties and ACLs of a Storage blob directory.
 
 ### [Update-AzStorageServiceProperty](Update-AzStorageServiceProperty.md)
 Modifies the properties for the Azure Storage service.

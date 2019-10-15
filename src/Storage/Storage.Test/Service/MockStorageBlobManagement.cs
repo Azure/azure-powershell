@@ -730,6 +730,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
         {
             throw new NotImplementedException();
         }
+        
+        public Task<CloudBlob> GetBlobReferenceFromServerAsync(CloudBlobDirectory blobDir, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// The storage context

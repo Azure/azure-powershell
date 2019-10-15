@@ -261,6 +261,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         Task<CloudBlob> GetBlobReferenceFromServerAsync(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken);
 
         /// <summary>
+        /// Return a task that asynchronously get the blob reference from server
+        /// </summary>
+        /// <param name="blobDir">CloudBlobDirectory object</param>
+        /// <param name="blobName">Blob name</param>
+        /// <param name="accessCondition">Access condition</param>
+        /// <param name="options">Blob request options</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <param name="cmdletCancellationToken">Cancellation token</param>
+        /// <returns>A task object that asynchronously get the blob reference from server</returns>
+        Task<CloudBlob> GetBlobReferenceFromServerAsync(CloudBlobDirectory blobDir, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken);
+
+        /// <summary>
         /// Return a task that asynchronously fetch blob attributes
         /// </summary>
         /// <param name="blob">ICloud blob object</param>

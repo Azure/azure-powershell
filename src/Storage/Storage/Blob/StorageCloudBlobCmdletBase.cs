@@ -207,9 +207,49 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// </summary>
         /// <param name="blob">The output CloudBlob object</param>
         /// <param name="channel">IStorageBlobManagement channel object</param>
-        internal void WriteCloudBlobObject(long taskId, IStorageBlobManagement channel, CloudBlob blob, BlobContinuationToken continuationToken = null)
+        internal void WriteCloudBlobObject(long taskId, IStorageBlobManagement channel, CloudBlob blob, BlobContinuationToken continuationToken = null, bool fetchPermission = false)
         {
-            AzureStorageBlob azureBlob = new AzureStorageBlob(blob);
+            // TODO: this part need revise if XSCL can IListBlobItem to CloudBlobDirectory.
+            if (!isBlobDirectory(blob)) //normal blob
+            {
+                if (fetchPermission && blob.BlobType == BlobType.BlockBlob)
+                {
+                    ((CloudBlockBlob)blob).FetchAccessControls();
+                }
+                AzureStorageBlob azureBlob = new AzureStorageBlob(blob);
+                azureBlob.Context = channel.StorageContext;
+                azureBlob.ContinuationToken = continuationToken;
+                OutputStream.WriteObject(taskId, azureBlob);
+            }
+            else //blobDir
+            {
+                CloudBlobDirectory blobDir = blob.Container.GetDirectoryReference(blob.Name);
+                blobDir.FetchAttributes();
+                if (fetchPermission)
+                {
+                    blobDir.FetchAccessControls();
+                }
+                AzureStorageBlob azureBlob = new AzureStorageBlob(blobDir);
+                azureBlob.Context = channel.StorageContext;
+                azureBlob.ContinuationToken = continuationToken;
+                azureBlob.ICloudBlob = blob;
+                OutputStream.WriteObject(taskId, azureBlob);
+            }
+        }
+
+        /// <summary>
+        /// Write CloudBlobDirectory to output using specified service channel
+        /// </summary>
+        /// <param name="blobDir">The output CloudBlob Directory object</param>
+        /// <param name="channel">IStorageBlobManagement channel object</param>
+        internal void WriteCloudBlobDirectoryObject(long taskId, IStorageBlobManagement channel, CloudBlobDirectory blobDir, BlobContinuationToken continuationToken = null, bool fetchPermission = false)
+        {
+
+            if (fetchPermission)
+            {
+                blobDir.FetchAccessControls();
+            }
+            AzureStorageBlob azureBlob = new AzureStorageBlob(blobDir);
             azureBlob.Context = channel.StorageContext;
             azureBlob.ContinuationToken = continuationToken;
             OutputStream.WriteObject(taskId, azureBlob);
@@ -273,6 +313,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// decide if a blob object represent a blob Directory 
+        /// </summary>
+        /// <param name="blob">the Blob Object</param>
+        /// <returns>return true if it represent a blob Directory</returns>
+        public static bool isBlobDirectory(CloudBlob blob)
+        {
+            if (blob.Metadata.Contains(new KeyValuePair<string, string>("hdi_isfolder", "true"))
+                && blob.BlobType == BlobType.BlockBlob
+                && blob.Properties.Length == 0)
+            {
+                return true;
+            }
+            return false;
         }
 
     }

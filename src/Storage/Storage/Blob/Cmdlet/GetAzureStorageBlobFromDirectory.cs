@@ -28,70 +28,36 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// <summary>
     /// list azure blobs in specified azure container
     /// </summary>
-    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlob", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageBlob))]
-    public class GetAzureStorageBlobCommand : StorageCloudBlobCmdletBase
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobFromDirectory", DefaultParameterSetName = ListDirPathParameterSet),OutputType(typeof(AzureStorageBlob))]
+    public class GetAzureStorageBlobFromDirectoryCommand : StorageCloudBlobCmdletBase
     {
         /// <summary>
-        /// default parameter set name
+        /// prefix parameter set name
         /// </summary>
-        private const string NameParameterSet = "BlobName";
+        private const string ListDirPathParameterSet = "ListDirPath";
 
         /// <summary>
         /// prefix parameter set name
         /// </summary>
-        private const string PrefixParameterSet = "BlobPrefix";
+        private const string ListDirObjectParameterSet = "ListDirObject";
 
-        [Parameter(Position = 0, HelpMessage = "Blob name or Blob Directory Path", ParameterSetName = NameParameterSet)]
-        [Alias("BlobDirectory", "Path")]
+        [Parameter(Mandatory = false, HelpMessage = "Blob or Blob Directory Relative Path in the specified Blob Directory.")]
+        [Alias("BlobDirectoryRelativePath", "RelativePath")]
         [SupportsWildcards()]
-        public string Blob
-        {
-            get
-            {
-                return blobName;
-            }
-
-            set
-            {
-                blobName = value;
-            }
-        }
-
-        private string blobName = String.Empty;
-
-        [Parameter(HelpMessage = "Blob Prefix", ParameterSetName = PrefixParameterSet)]
-        public string Prefix
-        {
-            get
-            {
-                return blobPrefix;
-            }
-
-            set
-            {
-                blobPrefix = value;
-            }
-        }
-        private string blobPrefix = String.Empty;
-
-        [Alias("N", "Name")]
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "Container name",
-            ValueFromPipelineByPropertyName = true)]
+        public string BlobRelativePath { get; set; }
+        
+        [Parameter( Mandatory = true, HelpMessage = "Container name", ParameterSetName = ListDirPathParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string Container
-        {
-            get
-            {
-                return containerName;
-            }
+        public string Container { get; set; }
 
-            set
-            {
-                containerName = value;
-            }
-        }
+        [Parameter(Mandatory = true, HelpMessage = "Blob Directory Path to list from.", ParameterSetName = ListDirPathParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string BlobDirectoryPath { get; set; }
 
-        private string containerName = String.Empty;
+        [Parameter(Mandatory = true, HelpMessage = "Azure Blob Directory Object to list from.",
+             ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ListDirObjectParameterSet)]
+        [ValidateNotNull]
+        public CloudBlobDirectory CloudBlobDirectory { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Include deleted blobs, by default get blob won't include deleted blobs")]
         [ValidateNotNullOrEmpty]
@@ -124,28 +90,29 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public SwitchParameter FetchPermission { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the GetAzureStorageBlobCommand class.
+        /// Initializes a new instance of the GetAzureStorageBlobFromDirectoryCommand class.
         /// </summary>
-        public GetAzureStorageBlobCommand()
+        public GetAzureStorageBlobFromDirectoryCommand()
             : this(null)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the GetAzureStorageBlobCommand class.
+        /// Initializes a new instance of the GetAzureStorageBlobFromDirectoryCommand class.
         /// </summary>
         /// <param name="channel">IStorageBlobManagement channel</param>
-        public GetAzureStorageBlobCommand(IStorageBlobManagement channel)
+        public GetAzureStorageBlobFromDirectoryCommand(IStorageBlobManagement channel)
         {
             Channel = channel;
         }
 
         /// <summary>
-        /// get the CloudBlobContainer object by name if container exists
+        /// get the CloudBlobDirectory object by name if container exists
         /// </summary>
         /// <param name="containerName">container name</param>
-        /// <returns>return CloudBlobContianer object if specified container exists, otherwise throw an exception</returns>
-        internal async Task<CloudBlobContainer> GetCloudBlobContainerByName(IStorageBlobManagement localChannel, string containerName, bool skipCheckExists = false)
+        /// <param name="directoryName">directory name</param>
+        /// <returns>return CloudBlobDirectory object if specified container exists, otherwise throw an exception</returns>
+        internal CloudBlobDirectory GetCloudBlobDirectoryByName(IStorageBlobManagement localChannel, string containerName, string directoryName, bool skipCheckExists = false)
         {
             if (!NameUtil.IsValidContainerName(containerName))
             {
@@ -156,12 +123,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             CloudBlobContainer container = localChannel.GetContainerReference(containerName);
 
             if (!skipCheckExists && container.ServiceClient.Credentials.IsSharedKey
-                && !await localChannel.DoesContainerExistAsync(container, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false))
+                && !container.Exists())
             {
                 throw new ArgumentException(String.Format(Resources.ContainerNotFound, containerName));
             }
 
-            return container;
+            CloudBlobDirectory blobDir = container.GetDirectoryReference(directoryName);
+            if (!skipCheckExists && !blobDir.Exists())
+            {
+                throw new ArgumentException(String.Format("Can not find the blob directory '{0}'.", blobDir.Uri));
+            }
+
+            return blobDir;
         }
 
         /// <summary>
@@ -170,43 +143,36 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="containerName">container name</param>
         /// <param name="blobName">blob name pattern</param>
         /// <returns>An enumerable collection of IListBlobItem</returns>
-        internal async Task ListBlobsByName(long taskId, IStorageBlobManagement localChannel, string containerName, string blobName, bool includeDeleted = false)
+        internal async Task ListBlobs(long taskId, IStorageBlobManagement localChannel, CloudBlobDirectory CloudBlobDirectory, string blobRelativePath, bool includeDeleted = false)
         {
-            CloudBlobContainer container = null;
             BlobRequestOptions requestOptions = RequestOptions;
             AccessCondition accessCondition = null;
 
-            string prefix = string.Empty;
-
-            if (String.IsNullOrEmpty(blobName) || WildcardPattern.ContainsWildcardCharacters(blobName) || includeDeleted)
+            if (String.IsNullOrEmpty(blobRelativePath) || WildcardPattern.ContainsWildcardCharacters(blobRelativePath) || includeDeleted)
             {
-                container = await GetCloudBlobContainerByName(localChannel, containerName).ConfigureAwait(false);
-                prefix = NameUtil.GetNonWildcardPrefix(blobName);
                 WildcardOptions options = WildcardOptions.IgnoreCase | WildcardOptions.Compiled;
                 WildcardPattern wildcard = null;
 
-                if (!String.IsNullOrEmpty(blobName))
+                if (!String.IsNullOrEmpty(blobRelativePath))
                 {
-                    wildcard = new WildcardPattern(blobName, options);
+                    wildcard = new WildcardPattern(CloudBlobDirectory.Prefix + blobRelativePath, options);
                 }
 
                 Func<CloudBlob, bool> blobFilter = (blob) => wildcard == null || wildcard.IsMatch(blob.Name);
-                await ListBlobsByPrefix(taskId, localChannel, containerName, prefix, blobFilter, includeDeleted).ConfigureAwait(false);
+                await ListBlobsByFilter(taskId, localChannel, CloudBlobDirectory, blobFilter, includeDeleted).ConfigureAwait(false);
             }
             else
             {
-                container = await GetCloudBlobContainerByName(localChannel, containerName, true).ConfigureAwait(false);
-
-                if (!NameUtil.IsValidBlobName(blobName))
+                if (!NameUtil.IsValidBlobName(blobRelativePath))
                 {
-                    throw new ArgumentException(String.Format(Resources.InvalidBlobName, blobName));
+                    throw new ArgumentException(String.Format(Resources.InvalidBlobName, blobRelativePath));
                 }
 
-                CloudBlob blob = await localChannel.GetBlobReferenceFromServerAsync(container, blobName, accessCondition, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
+                CloudBlob blob = await localChannel.GetBlobReferenceFromServerAsync(CloudBlobDirectory, blobRelativePath, accessCondition, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
 
                 if (null == blob)
                 {
-                    throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, containerName));
+                    throw new ResourceNotFoundException(String.Format("Can not find blob '{0}' in blob directory {1}, or the blob type is unsupported.", blobRelativePath, CloudBlobDirectory.Uri));
                 }
                 else
                 {
@@ -216,15 +182,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
 
         /// <summary>
-        /// list blobs by blob prefix and container name
+        /// list blobs by Filter
         /// </summary>
         /// <param name="containerName">container name</param>
-        /// <param name="prefix">blob preifx</param>
         /// <returns>An enumerable collection of IListBlobItem</returns>
-        internal async Task ListBlobsByPrefix(long taskId, IStorageBlobManagement localChannel, string containerName, string prefix, Func<CloudBlob, bool> blobFilter = null, bool includeDeleted = false)
+        internal async Task ListBlobsByFilter(long taskId, IStorageBlobManagement localChannel, CloudBlobDirectory CloudBlobDirectory, Func<CloudBlob, bool> blobFilter = null, bool includeDeleted = false)
         {
-            CloudBlobContainer container = await GetCloudBlobContainerByName(localChannel, containerName).ConfigureAwait(false);
-
             BlobRequestOptions requestOptions = RequestOptions;
             bool useFlatBlobListing = true;
             BlobListingDetails details = BlobListingDetails.Snapshots | BlobListingDetails.Metadata | BlobListingDetails.Copy;
@@ -243,8 +206,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 requestCount = Math.Min(listCount, MaxListCount);
                 realListCount = 0;
-                BlobResultSegment blobResult = await localChannel.ListBlobsSegmentedAsync(container, prefix, useFlatBlobListing,
-                    details, requestCount, continuationToken, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
+                BlobResultSegment blobResult = await CloudBlobDirectory.ListBlobsSegmentedAsync(useFlatBlobListing, details, requestCount, 
+                        continuationToken, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);              
 
                 foreach (IListBlobItem blobItem in blobResult.Results)
                 {
@@ -281,18 +244,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             Func<long, Task> taskGenerator = null;
             IStorageBlobManagement localChannel = Channel;
 
-            if (PrefixParameterSet == ParameterSetName)
+            CloudBlobDirectory BlobDir;
+
+            if (ParameterSetName == ListDirPathParameterSet)
             {
-                string localContainerName = containerName;
-                string localPrefix = blobPrefix;
-                taskGenerator = (taskId) => ListBlobsByPrefix(taskId, localChannel, localContainerName, localPrefix, includeDeleted: IncludeDeleted.IsPresent);
+                BlobDir = GetCloudBlobDirectoryByName(localChannel, this.Container, this.BlobDirectoryPath);
             }
             else
             {
-                string localContainerName = containerName;
-                string localBlobName = blobName;
-                taskGenerator = (taskId) => ListBlobsByName(taskId, localChannel, localContainerName, localBlobName, includeDeleted: IncludeDeleted.IsPresent);
+                BlobDir = this.CloudBlobDirectory;
             }
+
+            taskGenerator = (taskId) => ListBlobs(taskId, localChannel, BlobDir, BlobRelativePath, includeDeleted: IncludeDeleted.IsPresent);
 
             RunTask(taskGenerator);
         }

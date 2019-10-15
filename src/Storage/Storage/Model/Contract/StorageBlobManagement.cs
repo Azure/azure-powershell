@@ -593,6 +593,38 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         }
 
         /// <summary>
+        /// Return a task that asynchronously get the blob reference from server
+        /// </summary>
+        /// <param name="blobDir">CloudBlobDirectory object</param>
+        /// <param name="blobName">Blob name</param>
+        /// <param name="accessCondition">Access condition</param>
+        /// <param name="options">Blob request options</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <param name="cmdletCancellationToken">Cancellation token</param>
+        /// <returns>A task object that asynchronously get the blob reference from server</returns>
+        public async Task<CloudBlob> GetBlobReferenceFromServerAsync(CloudBlobDirectory blobDir, string blobName, AccessCondition accessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
+        {
+            try
+            {
+                CloudBlob blob = blobDir.GetBlobReference(blobName);
+                await blob.FetchAttributesAsync(accessCondition, options, operationContext, cancellationToken).ConfigureAwait(false);
+
+                return Util.GetCorrespondingTypeBlobReference(blob);
+            }
+            catch (XSCL.StorageException e)
+            {
+                if (e.IsNotFoundException())
+                {
+                    return null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
+        /// <summary>
         /// Return a task that asynchronously fetch blob attributes
         /// </summary>
         /// <param name="blob">ICloud blob object</param>

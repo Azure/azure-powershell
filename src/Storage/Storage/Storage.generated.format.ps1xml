@@ -227,6 +227,11 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>IsDirectory</Label>
+            <Width>12</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>BlobType</Label>
             <Width>9</Width>
           </TableColumnHeader>
@@ -260,6 +265,11 @@
             <Label>IsDeleted</Label>
             <Width>10</Width>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Permissions</Label>
+            <Alignment>Left</Alignment>
+            <Width>12</Width>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -270,11 +280,15 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <PropertyName>BlobType</PropertyName>
+                <PropertyName>IsDirectory</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <PropertyName>Length</PropertyName>
+                <ScriptBlock>if ($_.IsDirectory -eq $false) {$_.BlobType}</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>if ($_.IsDirectory -eq $false) {$_.Length}</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
@@ -296,12 +310,16 @@
                 <Alignment>Left</Alignment>
                 <PropertyName>IsDeleted</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Permissions.ToSymbolicString()</ScriptBlock>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
       <GroupBy>
-        <ScriptBlock>$_.ICloudBlob.Container.Uri</ScriptBlock>
+        <ScriptBlock>if ($_.IsDirectory) {$_.CloudBlobDirectory.Container.Uri} else {$_.ICloudBlob.Container.Uri}</ScriptBlock>
         <Label>Container Uri</Label>
       </GroupBy>
     </View>
