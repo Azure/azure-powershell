@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         private void CreateSimpleServicePrincipal()
         {
-            var subscriptionId = DefaultProfile.DefaultContext.Subscription.Id;
+            var subscriptionId = DefaultContext.Subscription.Id;
             if (!this.IsParameterBound(c => c.Scope))
             {
                 Scope = string.Format("/subscriptions/{0}", subscriptionId);
