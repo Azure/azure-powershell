@@ -19,9 +19,11 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Profile.Errors
 {
+    [CmdletDeprecation(ChangeDescription = "Resolve-Error alias will be deprecated in the next breaking change release")]
     [Alias("Resolve-Error")]
     [Cmdlet("Resolve", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Error", DefaultParameterSetName = ResolveError.AnyErrorParameterSet)]
     [OutputType(typeof(AzureErrorRecord))]
