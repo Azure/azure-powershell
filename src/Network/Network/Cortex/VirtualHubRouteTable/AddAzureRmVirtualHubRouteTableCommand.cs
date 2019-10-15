@@ -16,11 +16,11 @@ namespace Microsoft.Azure.Commands.Network
 {
     using System;
     using System.Collections.Generic;
-    using System.Text;
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.Add,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubRouteTable",
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
             HelpMessage = "The parent resource name.")]
         [ResourceNameCompleter("Microsoft.Network/virtualHubs", "ResourceGroupName")]
-        public string ParentResourceName { get; set; }
+        public string HubName { get; set; }
 
         [Alias("VirtualHub", "ParentVirtualHub")]
         [Parameter(
@@ -51,15 +51,43 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
             HelpMessage = "The parent resource.")]
-        public PSVirtualHub ParentObject { get; set; }
+        public PSVirtualHub VirtualHub { get; set; }
 
 
         [Alias("VirtualHubRouteTable")]
         [Parameter(
            Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualHubRouteTableObject,
+            ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
+           HelpMessage = "The virtualhubroutetable resource.")]
+        [Parameter(
+           Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
            HelpMessage = "The virtualhubroutetable resource.")]
         [ValidateNotNullOrEmpty]
         public PSVirtualHubRouteTable InputObject { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            // Resolve the parameters
+            if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubObject, StringComparison.OrdinalIgnoreCase))
+            {
+                var parsedResourceId = new ResourceIdentifier(this.VirtualHub.Id);
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                this.HubName = parsedResourceId.ResourceName;
+            }
+
+            base.Execute();
+
+            var routeTable = new PSVirtualHubRouteTable
+            {
+                Name = this.InputObject.Name,
+                Routes = this.InputObject.Routes == null ? new List<PSVirtualHubRoute>() : this.InputObject.Routes,
+                AttachedConnections = this.InputObject.AttachedConnections == null ? new List<string>() : this.InputObject.AttachedConnections
+            };
+
+            this.VirtualHub.RouteTables.Add(routeTable);
+
+            WriteObject(this.VirtualHub);
+        }
     }
 }
