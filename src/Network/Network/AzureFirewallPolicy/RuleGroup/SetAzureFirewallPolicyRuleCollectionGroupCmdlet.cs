@@ -23,6 +23,7 @@ using Newtonsoft.Json;
 using Microsoft.Rest.Serialization;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -47,6 +48,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipeline = true,
             HelpMessage = "The list of rules", ParameterSetName = SetByInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSAzureFirewallPolicyRuleCollectionGroupWrapper InputObject { get; set; }
@@ -63,6 +65,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.", ParameterSetName = SetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter()]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -70,6 +73,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource Id of the Rule collection groupy", ParameterSetName = SetByResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.Network/FirewallPolicies")]
         public virtual string ResourceId { get; set; }
 
         [Parameter(
@@ -81,8 +85,10 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The priority of the rule group")]
         [ValidateRange(100, 65000)]
+        [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet)]
         [Parameter(Mandatory = true, ParameterSetName = SetByNameParameterSet)]
         [Parameter(Mandatory = true, ParameterSetName = SetByParentObjectParameterSet)]
         [Parameter(Mandatory = true, ParameterSetName = SetByResourceIdParameterSet)]
@@ -90,8 +96,10 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of rule collections")]
         [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet)]
         [Parameter(Mandatory = true, ParameterSetName = SetByNameParameterSet)]
         [Parameter(Mandatory = true, ParameterSetName = SetByParentObjectParameterSet)]
         [Parameter(Mandatory = true, ParameterSetName = SetByResourceIdParameterSet)]
@@ -114,8 +122,8 @@ namespace Microsoft.Azure.Commands.Network
 
                 ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup
                 {
-                    priority = InputObject.properties.priority,
-                    ruleCollection = InputObject.properties.ruleCollection?.ToList()
+                    priority = this.IsParameterBound(c => c.Priority) ? Priority : InputObject.properties.priority,
+                    ruleCollection = this.IsParameterBound(c => c.RuleCollection) ? RuleCollection.ToList() : InputObject.properties.ruleCollection?.ToList()
                 };
 
                 rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper
