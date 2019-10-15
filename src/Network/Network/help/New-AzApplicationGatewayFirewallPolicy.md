@@ -14,7 +14,7 @@ Creates a application gateway firewall policy.
 
 ```
 New-AzApplicationGatewayFirewallPolicy -Name <String> -ResourceGroupName <String> -Location <String>
- -ManagedRule <PSApplicationGatewayFirewallPolicyManagedRules> -PolicySettings <PSApplicationGatewayFirewallPolicySettings>
+ [-ManagedRule <PSApplicationGatewayFirewallPolicyManagedRules>] [-PolicySetting <PSApplicationGatewayFirewallPolicySettings>]
  [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -53,6 +53,36 @@ The list of CustomRules
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallCustomRule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ManagedRule
+Managed Rule Setting
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicyManagedRule
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PolicySetting
+Policy Settings for Web Application Firewall
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicySettings
 Parameter Sets: (All)
 Aliases:
 
