@@ -54,7 +54,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IEnumerable<int> dataDisks,
             IList<string> zones,
             bool ultraSSDEnabled,
-            Func<IEngine, SubResource> proximityPlacementGroup)
+            Func<IEngine, SubResource> proximityPlacementGroup,
+            string priority,
+            string evictionPolicy,
+            double? maxPrice)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -115,7 +118,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                     NetworkSecurityGroup = engine.GetReference(networkSecurityGroup)
                                 }
                             }
-                        }
+                        },
+                        Priority = priority,
+                        EvictionPolicy = evictionPolicy,
+                        BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice)
                     },
                     ProximityPlacementGroup = proximityPlacementGroup(engine),
                 });
