@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Network
     public class AzureApplicationGatewayFirewallPolicyManagedRules : NetworkBaseCmdlet
     {
         [Parameter(
-          Mandatory = true,
+          Mandatory = false,
           HelpMessage = "List of Managed ruleSets.")]
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayFirewallPolicyManagedRuleSet[] ManagedRuleSet { get; set; }
@@ -40,11 +40,25 @@ namespace Microsoft.Azure.Commands.Network
 
         protected PSApplicationGatewayFirewallPolicyManagedRules NewObject()
         {
-            return new PSApplicationGatewayFirewallPolicyManagedRules()
+            var managedRules = new PSApplicationGatewayFirewallPolicyManagedRules()
             {
                 Exclusions = this.Exclusion?.ToList(),
                 ManagedRuleSets = this.ManagedRuleSet?.ToList()
             };
+
+            if (this.ManagedRuleSet == null || this.ManagedRuleSet.Count() == 0)
+            {
+                managedRules.ManagedRuleSets = new List<PSApplicationGatewayFirewallPolicyManagedRuleSet>()
+                {
+                    new PSApplicationGatewayFirewallPolicyManagedRuleSet()
+                    {
+                        RuleSetType = "OWASP",
+                        RuleSetVersion = "3.0"
+                    }
+                };
+            }
+
+            return managedRules;
         }
     }
 }

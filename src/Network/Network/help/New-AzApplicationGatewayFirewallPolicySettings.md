@@ -14,7 +14,7 @@ Creates a policy setting for the firewall policy
 
 ```
 New-AzApplicationGatewayFirewallPolicySettings -State <String> -Mode <String>  
-[-RequestBodyCheck] -FileUploadLimitInMb <Integer> -MaxRequestBodySizeInKb <Integer>
+[-DisableRequestBodyCheck] -FileUploadLimitInMb <Integer> -MaxRequestBodySizeInKb <Integer>
 [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,10 +25,10 @@ The **New-AzApplicationGatewayFirewallPolicySettings** creates a policy settings
 
 ### Example 1
 ```powershell
-PS C:\> $condition = New-AzApplicationGatewayFirewallPolicySettings -State $enabledState -Mode $enabledMode -RequestBodyCheck -FileUploadLimitInMb $fileUploadLimitInMb -MaxRequestBodySizeInKb $maxRequestBodySizeInKb
+PS C:\> $condition = New-AzApplicationGatewayFirewallPolicySettings -State $enabledState -Mode $enabledMode -DisableRequestBodyCheck -FileUploadLimitInMb $fileUploadLimitInMb -MaxRequestBodySizeInKb $maxRequestBodySizeInKb
 ```
 
-The command creates a policy setting with state as $enabledState, mode as $enabledMode, RequestBodyCheck as true, FileUploadLimitInMb as $fileUploadLimitInMb and MaxRequestBodySizeInKb as $$maxRequestBodySizeInKb.
+The command creates a policy setting with state as $enabledState, mode as $enabledMode, RequestBodyCheck as false, FileUploadLimitInMb as $fileUploadLimitInMb and MaxRequestBodySizeInKb as $$maxRequestBodySizeInKb.
 The new policySettings is stored to $condition.
 
 ## PARAMETERS
@@ -78,8 +78,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RequestBodyCheck
-RequestBodyCheck in policy settings of the firewall policy.
+### -DisableRequestBodyCheck
+Diables the requestBodyCheck in policy settings of the firewall policy.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
