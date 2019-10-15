@@ -304,8 +304,7 @@ function Test-NewDirectConnectionWithMicrosoftIpProvidedAddress
     Assert-AreEqual $null $createdConnection.BgpSession
     Assert-AreEqual $true $createdConnection.UseForPeeringService
 	Assert-AreEqual "Microsoft" $createdConnection.SessionAddressProvider
-
-		removePeerAsn $asn
+	removePeerAsn $asn
 	
 }
 
@@ -315,7 +314,9 @@ Microsoft Provided IP address
 #>
 function Test-NewDirectConnectionWithNoPeeringFacility
 {
+$asn = makePeerAsn 65000
 	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId} "Missing an argument for parameter 'PeeringDBFacilityId'"
+		removePeerAsn $asn
 }
 
 <#
