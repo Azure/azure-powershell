@@ -31,11 +31,10 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet("Disabled", "Enabled", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string State { get; set; }
-
-
+        
         [Parameter(
-            HelpMessage = "Whether RequestBody check is checked or not.")]
-        public SwitchParameter RequestBodyCheck { get; set; }
+            HelpMessage = "Disable Request Body check.")]
+        public SwitchParameter DisableRequestBodyCheck { get; set; }
 
         [Parameter(
            HelpMessage = "Maximum request body size in KB.")]
@@ -60,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 this.State = "Enabled";
             }
-            
+
             if (!this.MyInvocation.BoundParameters.ContainsKey("MaxRequestBodySizeInKb"))
             {
                 this.MaxRequestBodySizeInKb = 128;
@@ -78,9 +77,9 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Mode = this.Mode,
                 State = this.State,
-                RequestBodyCheck = this.RequestBodyCheck.IsPresent ? true : false,
-                MaxRequestBodySizeInKb = this.MaxRequestBodySizeInKb == 0 ? 128 : this.MaxRequestBodySizeInKb,
-                FileUploadLimitInMb = this.FileUploadLimitInMb == 0 ? 750 : this.FileUploadLimitInMb
+                RequestBodyCheck = this.DisableRequestBodyCheck.IsPresent ? false : true,
+                MaxRequestBodySizeInKb = this.MaxRequestBodySizeInKb,
+                FileUploadLimitInMb = this.FileUploadLimitInMb
             };
         }
     }
