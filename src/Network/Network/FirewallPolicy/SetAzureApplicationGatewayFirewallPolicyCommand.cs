@@ -69,13 +69,13 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "Policysettings of the firewall policy")]
-        public PSApplicationGatewayFirewallPolicySettings PolicySettings { get; set; }
+        public PSApplicationGatewayFirewallPolicySettings PolicySetting { get; set; }
         
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "ManagedRules of the firewall policy")]
-        public PSApplicationGatewayFirewallPolicyManagedRules ManagedRules { get; set; }
+        public PSApplicationGatewayFirewallPolicyManagedRules ManagedRule { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -115,14 +115,14 @@ namespace Microsoft.Azure.Commands.Network
                         firewallPolicy.CustomRules = this.CustomRule.ToList();
                     }
 
-                    if (this.PolicySettings != null)
+                    if (this.PolicySetting != null)
                     {
-                        firewallPolicy.PolicySettings = this.PolicySettings;
+                        firewallPolicy.PolicySettings = this.PolicySetting;
                     }
 
-                    if (this.ManagedRules != null)
+                    if (this.ManagedRule != null)
                     {
-                        firewallPolicy.ManagedRules = this.ManagedRules;
+                        firewallPolicy.ManagedRules = this.ManagedRule;
                     }
                 }
 
