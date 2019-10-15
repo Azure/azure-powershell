@@ -35,9 +35,6 @@
     - Added `ResourceGroupName` parameter which is required when `ResourceGroup` is specified for `ScopeType`. 
     - Added `ManagementGroupId` parameter which is required when `ManagementGroup` is specified for `ScopeType`. 
 
-## Version 1.7.0
-* Fix bug where New-AzRoleAssignment could not be called without parameter Scope.
-
 ## Version 1.6.2
 * Add support for new api version 2019-05-10 for Microsoft.Resource
     - Add support for `copy.count = 0` for variables, resources and properties
