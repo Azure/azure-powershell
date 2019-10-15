@@ -20,6 +20,9 @@
 ## Upcoming Release
 * Update references in .psd1 to use relative path
 
+## Version 1.2.3
+* Fix account validation so that accounts with "-" can be passed without domain
+
 ## Version 1.2.2
 * Fix hanging of Get-DataLakeStoreDeletedItem for any errors or remote exceptions.
 * Fixed miscellaneous typos across module

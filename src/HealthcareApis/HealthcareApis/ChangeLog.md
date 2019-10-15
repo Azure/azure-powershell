@@ -20,6 +20,8 @@
 ## Upcoming Release
 * Update references in .psd1 to use relative path
 * Exception Handling
+
+## Version 1.0.0
 * Updated the powershell version to 1.0.0
 * Updated the SDK version to 1.0.2
 * Update in tests to refer to new SDK version

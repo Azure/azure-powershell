@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Update references in .psd1 to use relative path
+
+## Version 1.1.1
 * Updated `Set-AzRedisCache` reference documentation to include missing values for `-Size` parameter
 
 ## Version 1.1.0

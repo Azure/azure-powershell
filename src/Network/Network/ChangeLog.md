@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 * Update references in .psd1 to use relative path
+
+## Version 1.15.0
 * Add new cmdlet Get-AzAvailableServiceAlias which can be called to get the aliases that can be used for Service Endpoint Policies.
 * Added support for the adding traffic selectors to Virtual Network Gateway Connections
     - New cmdlets added:
