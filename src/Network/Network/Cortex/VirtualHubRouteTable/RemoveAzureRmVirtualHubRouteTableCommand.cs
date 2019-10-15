@@ -50,16 +50,28 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = CortexParameterSetNames.ByVirtualHubRouteTableName,
             HelpMessage = "The parent resource name.")]
         [ResourceNameCompleter("Microsoft.Network/virtualHubs", "ResourceGroupName")]
-        public string ParentResourceName { get; set; }
+        public string HubName { get; set; }
 
         [Alias("ResourceName", "VirtualHubRouteTableName")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubRouteTableName,
             HelpMessage = "The resource name.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
+            HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/virtualHubs/routeTables", "ResourceGroupName", "ParentResourceName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Alias("VirtualHub", "ParentVirtualHub")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualHubObject)]
+        [ValidateNotNull]
+        public PSVirtualHub VirtualHub { get; set; }
 
         [Alias("VirtualHubRouteTable")]
         [Parameter(
@@ -94,24 +106,30 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            //// Resolve the parameters
+            // Resolve the parameters
+            if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubObject, StringComparison.OrdinalIgnoreCase))
+            {
+                var parsedResourceId = new ResourceIdentifier(this.VirtualHub.Id);
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                this.HubName = parsedResourceId.ResourceName;
+            }
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubRouteTableObject, StringComparison.OrdinalIgnoreCase))
             {
                 var parsedResourceId = new ResourceIdentifier(this.InputObject.Id);
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                this.ParentResourceName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+                this.HubName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
                 this.Name = parsedResourceId.ResourceName;
             }
             else if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubRouteTableResourceId, StringComparison.OrdinalIgnoreCase))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                this.ParentResourceName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+                this.HubName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
                 this.Name = parsedResourceId.ResourceName;
             }
 
             //// Get the virtual hub - this will throw not found if the resource is invalid
-            PSVirtualHub parentVirtualHub = this.GetVirtualHub(this.ResourceGroupName, this.ParentResourceName);
+            PSVirtualHub parentVirtualHub = this.GetVirtualHub(this.ResourceGroupName, this.HubName);
 
             if (parentVirtualHub == null)
             {
@@ -131,7 +149,7 @@ namespace Microsoft.Azure.Commands.Network
                     () =>
                     {
                         parentVirtualHub.RouteTables.Remove(routeTableToRemove);
-                        this.CreateOrUpdateVirtualHub(this.ResourceGroupName, this.ParentResourceName, parentVirtualHub, parentVirtualHub.Tag);
+                        this.CreateOrUpdateVirtualHub(this.ResourceGroupName, this.HubName, parentVirtualHub, parentVirtualHub.Tag);
 
                         if (PassThru)
                         {
