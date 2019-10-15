@@ -76,6 +76,11 @@ namespace Microsoft.Azure.Commands.Network
           HelpMessage = "The auto approval list of the private link service.")]
         public string[] AutoApproval { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Whether to enable proxy protocol or not")]
+        public SwitchParameter EnableProxyProtocol { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -115,6 +120,15 @@ namespace Microsoft.Azure.Commands.Network
             {
                 psPrivateLinkService.AutoApproval = new PSPrivateLinkServiceResourceSet();
                 psPrivateLinkService.AutoApproval.Subscriptions = AutoApproval.ToList();
+            }
+
+            if (this.EnableProxyProtocol.IsPresent)
+            {
+                psPrivateLinkService.EnableProxyProtocol = true;
+            }
+            else
+            {
+                psPrivateLinkService.EnableProxyProtocol = false;
             }
 
             var plsModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PrivateLinkService>(psPrivateLinkService);

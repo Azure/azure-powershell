@@ -4217,6 +4217,10 @@
                 <PropertyName>Fqdns</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>EnableProxyProtocol</Label>
+                <PropertyName>EnableProxyProtocol</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>LoadBalancerFrontendIpConfigurations</Label>
                 <PropertyName>LoadBalancerFrontendIpConfigurationsText</PropertyName>
               </ListItem>
@@ -4303,6 +4307,10 @@
               <ListItem>
                 <Label>PrivateLinkServiceConnectionState</Label>
                 <PropertyName>PrivateLinkServiceConnectionStateText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>LinkIdentifier</Label>
+                <PropertyName>LinkIdentifier</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
