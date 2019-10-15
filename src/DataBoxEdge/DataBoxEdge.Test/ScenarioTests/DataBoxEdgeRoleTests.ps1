@@ -17,6 +17,7 @@ function Get-RoleName
     return getAssetName
 }
 
+
 <#
 .SYNOPSIS
 Negative test. Get resources from an non-existing empty group.
@@ -41,13 +42,13 @@ function Test-CreateRole
     $dfname = Get-DeviceName
 	$name = Get-RoleName
 
-	$deviceConnectionString = "HostName=iothub.azure-devices.net;DeviceId=iotDevice;SharedAccessKey=2C750FscEas3JmQ8Bnui5yQWZPyml0/UiRt1bQwd8="
+	$deviceConnectionString = Get-DeviceConnectionString
 	$deviceConnSec = ConvertTo-SecureString $deviceConnectionString -AsPlainText -Force
 
-	$iotDeviceConnectionString = "HostName=iothub.azure-devices.net;DeviceId=iotEdge;SharedAccessKey=2C750FscEas3JmQ8Bnui5yQWZPyml0/UiRt1bQwd8="
+	$iotDeviceConnectionString = Get-IotDeviceConnectionString
 	$iotDeviceConnSec = ConvertTo-SecureString $iotDeviceConnectionString -AsPlainText -Force
 
-	$encryptionKey = ConvertTo-SecureString -String "d8c66216b4fb71c3fe572a5592dbedcef5eb6f3c45d3b0e38c94f9b838e92d38a89bdda7a269c9da3b126906d037904c0d4451d4442c4ff8ef70124501d67fd2" -AsPlainText -Force
+	$encryptionKey = ConvertTo-SecureString Get-EncryptionKey -AsPlainText -Force
 
 	$enabled = "Enabled"
 	$platform = "Windows"
@@ -73,13 +74,14 @@ function Test-RemoveRole
     $dfname = Get-DeviceName
 	$name = Get-RoleName
 
-	$deviceConnectionString = "HostName=iothub.azure-devices.net;DeviceId=iotDevice;SharedAccessKey=2C750FscEas3JmQ8Bnui5yQWZPyml0/UiRt1bQwd8="
+	
+	$deviceConnectionString = Get-DeviceConnectionString
 	$deviceConnSec = ConvertTo-SecureString $deviceConnectionString -AsPlainText -Force
 
-	$iotDeviceConnectionString = "HostName=iothub.azure-devices.net;DeviceId=iotEdge;SharedAccessKey=2C750FscEas3JmQ8Bnui5yQWZPyml0/UiRt1bQwd8="
+	$iotDeviceConnectionString = Get-IotDeviceConnectionString
 	$iotDeviceConnSec = ConvertTo-SecureString $iotDeviceConnectionString -AsPlainText -Force
 
-	$encryptionKey = ConvertTo-SecureString -String "d8c66216b4fb71c3fe572a5592dbedcef5eb6f3c45d3b0e38c94f9b838e92d38a89bdda7a269c9da3b126906d037904c0d4451d4442c4ff8ef70124501d67fd2" -AsPlainText -Force
+	$encryptionKey = ConvertTo-SecureString Get-EncryptionKey -AsPlainText -Force
 
 	$enabled = "Enabled"
 	$platform = "Windows"
