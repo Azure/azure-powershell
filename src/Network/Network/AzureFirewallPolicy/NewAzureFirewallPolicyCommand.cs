@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "location.")]
-        [LocationCompleter("Microsoft.Batch/operations")]
+        [LocationCompleter("Microsoft.Network/FirewallPolicies")]
         [ValidateNotNullOrEmpty]
         public virtual string Location { get; set; }
 

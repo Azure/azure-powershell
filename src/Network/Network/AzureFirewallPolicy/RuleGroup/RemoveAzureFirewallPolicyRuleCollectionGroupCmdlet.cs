@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.", ParameterSetName = RemoveByNameParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter()]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
            Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
+           ValueFromPipeline = true,
            HelpMessage = "Firewall Policy Rule collection group object", ParameterSetName = RemoveByInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSAzureFirewallPolicyRuleCollectionGroupWrapper InputObject { get; set; }
@@ -72,6 +73,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource Id of the Rule collection groupy", ParameterSetName = RemoveByResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.Network/FirewallPolicies")]
         public virtual string ResourceId { get; set; }
 
         [Parameter(
