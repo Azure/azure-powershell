@@ -21,14 +21,12 @@ namespace Microsoft.Azure.Commands.Network
     public class AzureApplicationGatewayFirewallPolicySettings : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
             HelpMessage = "Web Application Firewall Mode.")]
         [ValidateSet("Prevention", "Detection", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Mode { get; set; }
 
         [Parameter(
-            Mandatory = true,
             HelpMessage = "Web Application Firewall State.")]
         [ValidateSet("Disabled", "Enabled", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
@@ -36,18 +34,15 @@ namespace Microsoft.Azure.Commands.Network
 
 
         [Parameter(
-            Mandatory = false,
             HelpMessage = "Whether RequestBody check is checked or not.")]
         public SwitchParameter RequestBodyCheck { get; set; }
 
         [Parameter(
-           Mandatory = true,
            HelpMessage = "Maximum request body size in KB.")]
         [ValidateNotNullOrEmpty]
         public int MaxRequestBodySizeInKb { get; set; }
 
         [Parameter(
-           Mandatory = true,
            HelpMessage = "Maximum fileUpload size in MB.")]
         [ValidateNotNullOrEmpty]
         public int FileUploadLimitInMb { get; set; }
@@ -73,7 +68,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!this.MyInvocation.BoundParameters.ContainsKey("FileUploadLimitInMb"))
             {
-                this.FileUploadLimitInMb = 750;
+                this.FileUploadLimitInMb = 100;
             }
         }
 

@@ -15,21 +15,21 @@ Updates an application gateway firewall policy.
 ### ByFactoryObject (Default)
 ```
 Set-AzApplicationGatewayFirewallPolicy -InputObject <PSApplicationGatewayWebApplicationFirewallPolicy>
- [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>] [-PolicySetting <PSApplicationGatewayFirewallPolicySettings>] [-ManagedRule <PSApplicationGatewayManagedRule>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByFactoryName
 ```
 Set-AzApplicationGatewayFirewallPolicy -Name <String> -ResourceGroupName <String>
- [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>] [-PolicySetting <PSApplicationGatewayFirewallPolicySettings>] [-ManagedRule <PSApplicationGatewayManagedRule>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Set-AzApplicationGatewayFirewallPolicy -ResourceId <String>
- [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>] [-PolicySetting <PSApplicationGatewayFirewallPolicySettings> [-ManagedRule <PSApplicationGatewayManagedRule>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 

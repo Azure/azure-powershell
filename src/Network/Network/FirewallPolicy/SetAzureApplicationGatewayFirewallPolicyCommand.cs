@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGatewayFirewallPolicySettings PolicySettings { get; set; }
         
         [Parameter(
-             Mandatory = true,
+             Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "ManagedRules of the firewall policy")]
         public PSApplicationGatewayFirewallPolicyManagedRules ManagedRules { get; set; }
