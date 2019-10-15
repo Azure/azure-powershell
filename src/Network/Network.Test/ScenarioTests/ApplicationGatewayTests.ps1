@@ -1858,7 +1858,7 @@ function Test-AvailableServerVariableAndHeader
 
 <#
 .SYNOPSIS
-Application gateway v2 tests
+Application gateway v2 top level waf tests
 #>
 function Test-ApplicationGatewayTopLevelFirewallPolicy
 {
@@ -2027,7 +2027,7 @@ function Test-ApplicationGatewayTopLevelFirewallPolicy
 		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator GreaterThan -MatchValue 1000 -Transform Lowercase -NegationCondition $False
 		$rule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Block
 		
-		$policySettings = New-ApplicationGatewayFirewallPolicySettings -Mode Prevention -State Enabled -RequestBodyCheck $true -FileUploadLimitInMb 70 -RequestBodyCheck 80
+		$policySettings = New-AzApplicationGatewayFirewallPolicySettings -Mode Prevention -State Enabled -RequestBodyCheck -FileUploadLimitInMb 70 -MaxRequestBodySizeInKb 80
 		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.0"
 		$managedRules = New-AzApplicationGatewayFirewallPolicyManagedRules -ManagedRuleSets $managedRuleSet 
 		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname -Location $location -ManagedRules $managedRules
@@ -2082,8 +2082,8 @@ function Test-ApplicationGatewayTopLevelFirewallPolicy
 		$ruleOverrideEntry3 = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 941100
 		$xssRuleGroupOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName REQUEST-941-APPLICATION-ATTACK-XSS -Rules $ruleOverrideEntry3
 		
-		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.0" -RuleGroupOverrides $sqlRuleGroupOverrideEntry,$xssRuleGroupOverrideEntry
-		$managedRules = New-AzApplicationGatewayFirewallPolicyManagedRules -ManagedRuleSets $managedRuleSet -Exclusions $exclusionEntry
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.0" -RuleGroupOverride $sqlRuleGroupOverrideEntry,$xssRuleGroupOverrideEntry
+		$managedRules = New-AzApplicationGatewayFirewallPolicyManagedRules -ManagedRuleSet $managedRuleSet -Exclusions $exclusionEntry
 		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
 		$policySettings = New-ApplicationGatewayFirewallPolicySettings -Mode Prevention -State Enabled -RequestBodyCheck $true -FileUploadLimitInMb 750 -RequestBodyCheck 128
 		$policy.managedRules = $managedRules

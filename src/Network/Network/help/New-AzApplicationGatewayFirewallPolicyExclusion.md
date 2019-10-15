@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayfirewallexclusion
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayfirewallpolicyexclusion
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Creates an exclusion on the Firewall Policy
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallPolicyExclusion -Variable <String> -Operator <String> -Selector <String>
+New-AzApplicationGatewayFirewallPolicyExclusion -MatchVariable <String> -SelectorMatchOperator <String> -Selector <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ The **New-AzApplicationGatewayFirewallPolicyExclusion** cmdlet a new exclusion r
 
 ### Example 1
 ```powershell
-PS C:\> $exclusionEntry = New-AzApplicationGatewayFirewallPolicyExclusion -Variable "RequestHeaderNames" -Operator "StartsWith" -Selector "xyz"
+PS C:\> $exclusionEntry = New-AzApplicationGatewayFirewallPolicyExclusion -MatchVariable "RequestHeaderNames" -SelectorMatchOperator "StartsWith" -Selector "xyz"
 ```
 
 This command creates a new exclusion-entry for the variable named RequestHeaderNames and operator named StartsWith and Selector named xyz. The exclusion entry is saved in $exclusionEntry.
@@ -46,7 +46,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Operator
+### -SelectorMatchOperator
 When variable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.
 
 ```yaml
@@ -76,7 +76,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Variable
+### -MatchVariable
 The variable to be excluded.
 
 ```yaml
