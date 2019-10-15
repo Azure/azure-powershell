@@ -421,7 +421,7 @@
     <value>Vulnerability assessment settings are not defined. Please run Update-AzSqlServerVulnerabilityAssessmentSetting first.</value>
   </data>
   <data name="InvalidBlobStorageSasUri" xml:space="preserve">
-    <value>Invalid BlobStorageSasUri parameter value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment?st=XXXXXX."</value>
+    <value>Invalid BlobStorageSasUri parameter value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment."</value>
   </data>
   <data name="NoStorageAccountSpecified" xml:space="preserve">
     <value>Please provide valid value for StorageAccountName or BlobStorageSasUri parameter.</value>
@@ -579,6 +579,29 @@
   </data>
   <data name="VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase" xml:space="preserve">
     <value>Vulnerability Assessment operation is not available on master database. Skipping...</value>
+  </data>
+  <data name="VulnerabilityAssessmentServerManagedIdentityAuthenticationIsRequired" xml:space="preserve">
+    <value>The selected storage is behind a firewall, authentication with server managed identity is required in order for vulnerability assessment to work. Do you want to set a managed identity for for this server and use it for storage authentication?</value>
+  </data>
+  <data name="VulnerabilityAssessmentSuggestUsingServerManagedIdentityAuthentication" xml:space="preserve">
+    <value>Do you want to use managed identity for storage authentication?</value>
+  </data>
+  <data name="VulnerabilityAssessmentStorageBehindFirewallErrorMessage" xml:space="preserve">
+    <value>The selected storage is behind a firewall, authentication with managed identity is required in order for vulnerability assessment to work.</value>
+  </data>
+  <data name="VulnerabilityAssessmentAttemptingUsingSasKeyText" xml:space="preserve">
+    <value>Attempting to use storage SAS key.</value>
+  </data>
+  <data name="VulnerabilityAssessmentAttemptingUsingStorageAccessKeyText" xml:space="preserve">
+    <value>Attempting to use storage account key.</value>
+  </data>
+  <data name="VulnerabilityAssessmentTheSelectedStorageWasNotFound" xml:space="preserve">
+    <value>the provided storage '{0}' wasn't found in the selected subscription thus we could not determine whether it is behind a firewall or a virtual network or get its access key</value>
+    <comment>{0} is the name of the storage.</comment>
+  </data>
+  <data name="VulnerabilityAssessmentUsingManagedIdentityForAuthenticionFailedFormat" xml:space="preserve">
+    <value>Using managed identity for authentication with storage failed with the following exception: {0}.</value>
+    <comment>{0} is the text in the exception </comment>
   </data>
   <data name="DoYouWantToProceed" xml:space="preserve">
     <value>Do you want to proceed?</value>

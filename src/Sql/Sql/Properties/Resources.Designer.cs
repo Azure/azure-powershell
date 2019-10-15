@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid BlobStorageSasUri parameter value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment?st=XXXXXX.&quot;.
+        ///   Looks up a localized string similar to Invalid BlobStorageSasUri parameter value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment.&quot;.
         /// </summary>
         internal static string InvalidBlobStorageSasUri {
             get {
@@ -1375,6 +1375,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attempting to use storage SAS key..
+        /// </summary>
+        internal static string VulnerabilityAssessmentAttemptingUsingSasKeyText {
+            get {
+                return ResourceManager.GetString("VulnerabilityAssessmentAttemptingUsingSasKeyText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attempting to use storage account key..
+        /// </summary>
+        internal static string VulnerabilityAssessmentAttemptingUsingStorageAccessKeyText {
+            get {
+                return ResourceManager.GetString("VulnerabilityAssessmentAttemptingUsingStorageAccessKeyText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vulnerability Assessment operation is not available on managed instance system database. Skipping....
         /// </summary>
         internal static string VulnerabilityAssessmentOperationIsNotAvailableOnManagedInstanceSystemDatabase {
@@ -1393,11 +1411,56 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The selected storage is behind a firewall, authentication with server managed identity is required in order for vulnerability assessment to work. Do you want to set a managed identity for for this server and use it for storage authentication?.
+        /// </summary>
+        internal static string VulnerabilityAssessmentServerManagedIdentityAuthenticationIsRequired {
+            get {
+                return ResourceManager.GetString("VulnerabilityAssessmentServerManagedIdentityAuthenticationIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The selected storage is behind a firewall, authentication with managed identity is required in order for vulnerability assessment to work..
+        /// </summary>
+        internal static string VulnerabilityAssessmentStorageBehindFirewallErrorMessage {
+            get {
+                return ResourceManager.GetString("VulnerabilityAssessmentStorageBehindFirewallErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to use managed identity for storage authentication?.
+        /// </summary>
+        internal static string VulnerabilityAssessmentSuggestUsingServerManagedIdentityAuthentication {
+            get {
+                return ResourceManager.GetString("VulnerabilityAssessmentSuggestUsingServerManagedIdentityAuthentication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to the provided storage &apos;{0}&apos; wasn&apos;t found in the selected subscription thus we could not determine whether it is behind a firewall or a virtual network or get its access key.
+        /// </summary>
+        internal static string VulnerabilityAssessmentTheSelectedStorageWasNotFound {
+            get {
+                return ResourceManager.GetString("VulnerabilityAssessmentTheSelectedStorageWasNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Requested type is not supported by Vulnerability Assessment..
         /// </summary>
         internal static string VulnerabilityAssessmentTypeNotSupported {
             get {
                 return ResourceManager.GetString("VulnerabilityAssessmentTypeNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Using managed identity for authentication with storage failed with the following exception: {0}..
+        /// </summary>
+        internal static string VulnerabilityAssessmentUsingManagedIdentityForAuthenticionFailedFormat {
+            get {
+                return ResourceManager.GetString("VulnerabilityAssessmentUsingManagedIdentityForAuthenticionFailedFormat", resourceCulture);
             }
         }
         

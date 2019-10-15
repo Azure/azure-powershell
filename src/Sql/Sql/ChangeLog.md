@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add support for using server managed identity for authentication with azure storage, which will enable using a storage that is behind a firewall and grants access to internal microsoft services. 
+the change has been made to the following cmdlets: Update-AzSqlDatabaseVulnerabilityAssessmentSetting, Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting, Update-AzSqlInstanceVulnerabilityAssessmentSetting ,  Update-AzSqlServerVulnerabilityAssessmentSetting.
 
 ## Version 2.3.0
 * Added support for cross subscription point in time restore on Managed Instances.

@@ -27,6 +27,8 @@ using CommonStorage = Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Xunit.Abstractions;
+using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Azure.Management.EventHub;
 using Microsoft.Azure.Management.OperationalInsights;
 using SDKMonitor = Microsoft.Azure.Management.Monitor;
@@ -132,6 +134,11 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         protected ResourceManagementClient GetResourcesClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected AuthorizationManagementClient GetAuthorizationClient(MockContext context)
+        {
+            return context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         protected GraphRbacManagementClient GetGraphClient(MockContext context)
