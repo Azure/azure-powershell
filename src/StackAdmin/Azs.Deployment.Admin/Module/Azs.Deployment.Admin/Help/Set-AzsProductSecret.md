@@ -36,21 +36,35 @@ Set-AzsProductSecret -PackageId <String> -SecretName <String> -Key <SecureString
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Locks the product subscription.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Set-AzsProductSecret -PackageId $PackageId -SecretName AdHoc -Value $value
 ```
 
-{{ Add example description here }}
+Sets the product secret value to the given value.
+
+### EXAMPLE 2
+```
+Set-AzsProductSecret -PackageId $PackageId -SecretName TlsCertificate -PfxFileName .\temp\ExternalCertificate\cert.pfx -PfxPassword $pfxPassword -Force
+```
+
+Sets the product secret value to the given value.
+
+### EXAMPLE 3
+```
+Set-AzsProductSecret -PackageId $PackageId -SecretName ExternalSymmetricKey -Key $key -Force
+```
+
+Sets the product secret value to the given value.
 
 ## PARAMETERS
 
 ### -PackageId
-{{ Fill PackageId Description }}
+Product package Id to set the product secret for.
 
 ```yaml
 Type: String
@@ -65,7 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecretName
-{{ Fill SecretName Description }}
+Name of the secret.
 
 ```yaml
 Type: String
@@ -80,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -Value
-{{ Fill Value Description }}
+Value of the secret.
 
 ```yaml
 Type: SecureString
@@ -95,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -PfxFileName
-{{ Fill PfxFileName Description }}
+Location of the pfx file.
 
 ```yaml
 Type: String
@@ -110,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -PfxPassword
-{{ Fill PfxPassword Description }}
+PFX file password.
 
 ```yaml
 Type: SecureString
@@ -125,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -Password
-{{ Fill Password Description }}
+Password Value.
 
 ```yaml
 Type: SecureString
@@ -140,7 +154,7 @@ Accept wildcard characters: False
 ```
 
 ### -Key
-{{ Fill Key Description }}
+The symmetric key.
 
 ```yaml
 Type: SecureString
@@ -155,7 +169,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-{{ Fill Force Description }}
+Do not ask for confirmation.
 
 ```yaml
 Type: SwitchParameter

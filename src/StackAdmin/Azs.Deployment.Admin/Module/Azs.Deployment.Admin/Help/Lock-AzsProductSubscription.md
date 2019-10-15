@@ -17,21 +17,21 @@ Lock-AzsProductSubscription [-ProductId] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Locks the product subscription.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Lock-AzsProductSubscription -ProductId $ProductId
 ```
 
-{{ Add example description here }}
+Locks the product subscription for the product with ID $ProductId
 
 ## PARAMETERS
 
 ### -ProductId
-{{ Fill ProductId Description }}
+Product package Id to lock the product subscription for.
 
 ```yaml
 Type: String

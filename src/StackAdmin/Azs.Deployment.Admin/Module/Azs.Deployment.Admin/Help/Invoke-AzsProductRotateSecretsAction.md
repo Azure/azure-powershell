@@ -17,21 +17,21 @@ Invoke-AzsProductRotateSecretsAction [-ProductId] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Invokes 'rotate secrets' action.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Invoke-AzsProductRotateSecretsAction -ProductId $ProductId
 ```
 
-{{ Add example description here }}
+Starts the product rotate secrets action for the specified product.
 
 ## PARAMETERS
 
 ### -ProductId
-{{ Fill ProductId Description }}
+Product package Id to start the product rotate secrets action for.
 
 ```yaml
 Type: String

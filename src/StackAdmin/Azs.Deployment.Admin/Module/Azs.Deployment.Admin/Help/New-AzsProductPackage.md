@@ -18,21 +18,21 @@ New-AzsProductPackage [-PackageId] <String> [-FileContainerId] <String> [[-ApiVe
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Create a new product package.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+New-AzsProductPackage -PackageId $PackageId -FileContainerId $ContainerId
 ```
 
-{{ Add example description here }}
+Creates a product package with the specified values.
 
 ## PARAMETERS
 
 ### -PackageId
-{{ Fill PackageId Description }}
+ID of the product package to be created.
 
 ```yaml
 Type: String
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileContainerId
-{{ Fill FileContainerId Description }}
+File container resource identifier.
 
 ```yaml
 Type: String
@@ -57,21 +57,6 @@ Aliases:
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ApiVersion
-{{ Fill ApiVersion Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: 2019-01-01
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

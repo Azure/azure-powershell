@@ -17,21 +17,28 @@ Get-AzsProductDeployment [[-ProductId] <String>] [-AsJson] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Lists product deployments or gets a product deployment properties.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-AzsProductDeployment
 ```
 
-{{ Add example description here }}
+Lists all the product package deployments in the subscription.
+
+### EXAMPLE 2
+```
+Get-AzsProductDeployment -ProductId $ProductId
+```
+
+Gets the product package deployment with the specified product Id.
 
 ## PARAMETERS
 
 ### -ProductId
-{{ Fill ProductId Description }}
+Product package Id to get the product deployment properties for.
 
 ```yaml
 Type: String
@@ -46,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -AsJson
-{{ Fill AsJson Description }}
+Outputs the result in Json format.
 
 ```yaml
 Type: SwitchParameter

@@ -8,6 +8,7 @@ schema: 2.0.0
 # Get-AzsActionPlanOperation
 
 ## SYNOPSIS
+Gets or lists action plan operations.
 
 ## SYNTAX
 
@@ -16,21 +17,21 @@ Get-AzsActionPlanOperation [-PlanId] <String> [[-OperationId] <String>] [-AsJson
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Gets or lists action plan operations.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-AzsActionPlanOperation -PlanId $planId -AsJson
 ```
 
-{{ Add example description here }}
+Gets the action plan operations for plan with id $planId.
 
 ## PARAMETERS
 
 ### -PlanId
-{{ Fill PlanId Description }}
+Action Plan Identifier.
 
 ```yaml
 Type: String
@@ -45,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -OperationId
-{{ Fill OperationId Description }}
+Operation Id to retrieve the properties for.
 
 ```yaml
 Type: String
@@ -60,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -AsJson
-{{ Fill AsJson Description }}
+Outputs the result in Json format.
 
 ```yaml
 Type: SwitchParameter

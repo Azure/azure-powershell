@@ -18,21 +18,21 @@ New-AzsFileContainer [-FileContainerId] <String> [-SourceUri] <Uri> [[-PostCopyA
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a new file container from a soucre Uri.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+New-AzsFileContainer -FileContainerId $ContainerId -SourceUri $packageUri -PostCopyAction Unzip
 ```
 
-{{ Add example description here }}
+Creates a new file container from the specified values.
 
 ## PARAMETERS
 
 ### -FileContainerId
-{{ Fill FileContainerId Description }}
+Container ID to be given to the new container.
 
 ```yaml
 Type: String
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -SourceUri
-{{ Fill SourceUri Description }}
+The remote file location URI for the container.
 
 ```yaml
 Type: Uri
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -PostCopyAction
-{{ Fill PostCopyAction Description }}
+The file post copy action.
 
 ```yaml
 Type: String
@@ -76,20 +76,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ApiVersion
-{{ Fill ApiVersion Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: 2019-01-01
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).

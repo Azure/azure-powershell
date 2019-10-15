@@ -17,21 +17,28 @@ Get-AzsProductPackage [[-PackageId] <String>] [[-ApiVersion] <String>] [-AsJson]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Lists product packages or gets a product package properties.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-AzsProductPackage
 ```
 
-{{ Add example description here }}
+Lists all the product packages in the subscription.
+
+### EXAMPLE 2
+```
+Get-AzsProductPackage -PackageId $PackageId
+```
+
+Gets the product package properties of the product with Id.
 
 ## PARAMETERS
 
 ### -PackageId
-{{ Fill PackageId Description }}
+Product package Id to get the properties for.
 
 ```yaml
 Type: String
@@ -61,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -AsJson
-{{ Fill AsJson Description }}
+Outputs the result in Json format.
 
 ```yaml
 Type: SwitchParameter

@@ -18,21 +18,21 @@ Invoke-AzsProductDeployAction [-ProductId] <String> [-Version] <String> [-Parame
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Invokes 'deploy product' action.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Invoke-AzsProductDeployAction -ProductId $ProductId -Version $ProductVersion -Parameters $Parameters
 ```
 
-{{ Add example description here }}
+Starts the product deploy action for the specified product.
 
 ## PARAMETERS
 
 ### -ProductId
-{{ Fill ProductId Description }}
+Product package Id to start the deploy action for.
 
 ```yaml
 Type: String
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-{{ Fill Version Description }}
+Product Version.
 
 ```yaml
 Type: String
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -Parameters
-{{ Fill Parameters Description }}
+Deployment parameters, value in JToken
 
 ```yaml
 Type: PSObject

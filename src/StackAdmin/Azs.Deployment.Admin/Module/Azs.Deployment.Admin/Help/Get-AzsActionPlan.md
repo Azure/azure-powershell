@@ -8,6 +8,7 @@ schema: 2.0.0
 # Get-AzsActionPlan
 
 ## SYNOPSIS
+Gets or lists the action plans.
 
 ## SYNTAX
 
@@ -16,21 +17,28 @@ Get-AzsActionPlan [[-PlanId] <String>] [-AsJson] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Gets or lists the action plans.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-AzsActionPlan
 ```
 
-{{ Add example description here }}
+Lists all the action plan under the subscription.
+
+### EXAMPLE 2
+```
+Get-AzsActionPlan -PlanId $planId -AsJson
+```
+
+Gets the action plan properties for plan with Id $planId.
 
 ## PARAMETERS
 
 ### -PlanId
-{{ Fill PlanId Description }}
+Action Plan Id to retrieve the properties for.
 
 ```yaml
 Type: String
@@ -45,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -AsJson
-{{ Fill AsJson Description }}
+Outputs the result in Json format.
 
 ```yaml
 Type: SwitchParameter

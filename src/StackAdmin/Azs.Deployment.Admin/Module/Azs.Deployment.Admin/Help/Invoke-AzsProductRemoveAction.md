@@ -17,21 +17,21 @@ Invoke-AzsProductRemoveAction [-ProductId] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Invokes 'remove product' action.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Invoke-AzsProductRemoveAction -ProductId $ProductId
 ```
 
-{{ Add example description here }}
+Starts the product remove action for the specified product.
 
 ## PARAMETERS
 
 ### -ProductId
-{{ Fill ProductId Description }}
+Product package Id to start the remove product action for.
 
 ```yaml
 Type: String

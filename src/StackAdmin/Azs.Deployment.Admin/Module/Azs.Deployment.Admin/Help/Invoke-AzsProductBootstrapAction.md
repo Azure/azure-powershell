@@ -17,21 +17,21 @@ Invoke-AzsProductBootstrapAction [-ProductId] <String> [-Version] <String> [<Com
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Invokes 'bootstrap product' action.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Invoke-AzsProductBootstrapAction -ProductId $ProductId -Version $ProductVersion
 ```
 
-{{ Add example description here }}
+Starts the bootstrap action for the specified product.
 
 ## PARAMETERS
 
 ### -ProductId
-{{ Fill ProductId Description }}
+Product package Id to start the bootstrap action for.
 
 ```yaml
 Type: String
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-{{ Fill Version Description }}
+Product version
 
 ```yaml
 Type: String

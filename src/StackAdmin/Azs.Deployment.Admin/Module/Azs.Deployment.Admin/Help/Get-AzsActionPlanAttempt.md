@@ -8,6 +8,7 @@ schema: 2.0.0
 # Get-AzsActionPlanAttempt
 
 ## SYNOPSIS
+Gets or lists the action plan attempt
 
 ## SYNTAX
 
@@ -17,7 +18,7 @@ Get-AzsActionPlanAttempt [-PlanId] <String> [-OperationId] <String> [[-AttemptNo
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Gets or lists the action plan attempts
 
 ## EXAMPLES
 
@@ -31,7 +32,7 @@ PS C:\> {{ Add example code here }}
 ## PARAMETERS
 
 ### -PlanId
-{{ Fill PlanId Description }}
+Plan Id of the action plan
 
 ```yaml
 Type: String
@@ -46,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -OperationId
-{{ Fill OperationId Description }}
+Operation Id of the action plan attempt
 
 ```yaml
 Type: String
@@ -61,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -AttemptNo
-{{ Fill AttemptNo Description }}
+Action plan attempt number
 
 ```yaml
 Type: Int32
@@ -76,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -AsJson
-{{ Fill AsJson Description }}
+Outputs the result in Json format.
 
 ```yaml
 Type: SwitchParameter

@@ -17,21 +17,21 @@ Invoke-AzsProductExecuteRunnerAction [-ProductId] <String> [-Parameters] <PSObje
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Invokes 'execute runner' action.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Invoke-AzsProductExecuteRunnerAction -ProductId $ProductId -Parameters $Parameters
 ```
 
-{{ Add example description here }}
+Starts the product execute runner action for the specified product.
 
 ## PARAMETERS
 
 ### -ProductId
-{{ Fill ProductId Description }}
+Product package Id to start the execute runner action for.
 
 ```yaml
 Type: String
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -Parameters
-{{ Fill Parameters Description }}
+Deployment parameters, value in JToken
 
 ```yaml
 Type: PSObject

@@ -17,21 +17,21 @@ Remove-AzsFileContainer [-FileContainerId] <String> [[-ApiVersion] <String>] [<C
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Removes an existing file container.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Remove-AzsFileContainer -FileContainerId $ContainerId
 ```
 
-{{ Add example description here }}
+Removes an existing file container.
 
 ## PARAMETERS
 
 ### -FileContainerId
-{{ Fill FileContainerId Description }}
+Container ID of the container to be removed.
 
 ```yaml
 Type: String
@@ -45,20 +45,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ApiVersion
-{{ Fill ApiVersion Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: 2019-01-01
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).

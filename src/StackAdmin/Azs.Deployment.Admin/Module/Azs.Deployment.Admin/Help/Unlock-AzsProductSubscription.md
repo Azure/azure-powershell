@@ -17,21 +17,21 @@ Unlock-AzsProductSubscription [-ProductId] <String> [[-Duration] <TimeSpan>] [<C
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Unlock the product subscription.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Unlock-AzsProductSubscription -ProductId $ProductId -Duration ([timespan]::FromDays(5))
 ```
 
-{{ Add example description here }}
+Unlocks the product subscription for the specified product and the specified duration
 
 ## PARAMETERS
 
 ### -ProductId
-{{ Fill ProductId Description }}
+Product package Id to unlock the product subscription for.
 
 ```yaml
 Type: String
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -Duration
-{{ Fill Duration Description }}
+The time duration for the product subscription to be unlocked.
 
 ```yaml
 Type: TimeSpan

@@ -658,7 +658,7 @@ function Remove-AzsProductPackage {
 .DESCRIPTION
     Lists product deployments or gets a product deployment properties.
 
-.PARAMETER PackageId
+.PARAMETER ProductId
     Product package Id to get the product deployment properties for.
 
 .PARAMETER AsJson
@@ -722,11 +722,14 @@ function Get-AzsProductDeployment {
 .PARAMETER ProductId
     Product package Id to start the bootstrap action for.
 
+.PARAMETER Version
+    Product version
+
 .EXAMPLE
 
     PS C:\> Invoke-AzsProductBootstrapAction -ProductId $ProductId -Version $ProductVersion
 
-    Starts the bootstrac action for the specified product.
+    Starts the bootstrap action for the specified product.
 
 
 #>
@@ -1071,8 +1074,8 @@ function Get-AzsProductSecret {
 .DESCRIPTION
     Locks the product subscription.
 
-.PARAMETER ProductId
-    Product package Id to lock the product subscription for.
+.PARAMETER PackageId
+    Product package Id to set the product secret for.
 
 .PARAMETER SecretName
     Name of the secret.

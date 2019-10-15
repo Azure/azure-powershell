@@ -17,21 +17,28 @@ Get-AzsFileContainer [[-FileContainerId] <String>] [[-ApiVersion] <String>] [-As
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Lists file containers or gets a file container properties.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-AzsFileContainer
 ```
 
-{{ Add example description here }}
+Lists the available file containers in the subscription.
+
+### EXAMPLE 2
+```
+Get-AzsFileContainer -FileContainerId <ContainerID>
+```
+
+Get the file container with id \<ContainerID\>.
 
 ## PARAMETERS
 
 ### -FileContainerId
-{{ Fill FileContainerId Description }}
+Container ID to fetch the properties for.
 
 ```yaml
 Type: String
@@ -45,23 +52,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ApiVersion
-{{ Fill ApiVersion Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: 2019-01-01
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJson
-{{ Fill AsJson Description }}
+Outputs the result in Json format.
 
 ```yaml
 Type: SwitchParameter

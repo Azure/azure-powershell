@@ -17,21 +17,29 @@ Get-AzsProductSecret [-PackageId] <String> [[-SecretName] <String>] [-AsJson] [<
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Lists product secrets or gets a product secret properties.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-AzsProductSecret -PackageId $PackageId -AsJson
 ```
 
-{{ Add example description here }}
+Lists all external secrets from package with Id $PackageId.
+Outputs in Json format.
+
+### EXAMPLE 2
+```
+Get-AzsProductSecret -PackageId $PackageId -SecretName AdHoc
+```
+
+Gets the product secret called 'AdHoc'
 
 ## PARAMETERS
 
 ### -PackageId
-{{ Fill PackageId Description }}
+Product package Id to get the product secret properties for.
 
 ```yaml
 Type: String
@@ -46,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecretName
-{{ Fill SecretName Description }}
+Name of the secret to be retrieved.
 
 ```yaml
 Type: String
@@ -61,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -AsJson
-{{ Fill AsJson Description }}
+Outputs the result in Json format.
 
 ```yaml
 Type: SwitchParameter
