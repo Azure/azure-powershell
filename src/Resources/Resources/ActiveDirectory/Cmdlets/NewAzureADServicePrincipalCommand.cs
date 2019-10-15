@@ -173,6 +173,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
+                //check if DefaultContext existed, PSInvalidOperationException will be thrown
+                var CheckDefaultContext = DefaultContext;
+
                 if (this.ParameterSetName == SimpleParameterSet)
                 {
                     CreateSimpleServicePrincipal();
@@ -248,21 +251,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         private void CreateSimpleServicePrincipal()
         {
-            var subscriptionId = DefaultContext.Subscription.Id;
-            if (!this.IsParameterBound(c => c.Scope))
-            {
-                Scope = string.Format("/subscriptions/{0}", subscriptionId);
-                WriteVerbose(string.Format("No scope provided - using the default scope '{0}'", Scope));
-            }
-
-            AuthorizationClient.ValidateScope(Scope, true);
-
-            if (!this.IsParameterBound(c => c.Role))
-            {
-                Role = "Contributor";
-                WriteVerbose(string.Format("No role provided - using the default role '{0}'", Role));
-            }
-
             if (!this.IsParameterBound(c => c.StartDate))
             {
                 DateTime currentTime = DateTime.UtcNow;
@@ -327,11 +315,31 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 }
             };
 
+            if(!SkipRoleAssignment())
+            {
+                var subscriptionId = DefaultContext.Subscription.Id;
+                if (!this.IsParameterBound(c => c.Scope))
+                {
+                    Scope = string.Format("/subscriptions/{0}", subscriptionId);
+                    WriteVerbose(string.Format("No scope provided - using the default scope '{0}'", Scope));
+                }
+
+                AuthorizationClient.ValidateScope(Scope, true);
+
+                if (!this.IsParameterBound(c => c.Role))
+                {
+                    Role = "Contributor";
+                    WriteVerbose(string.Format("No role provided - using the default role '{0}'", Role));
+                }
+                WriteWarning(string.Format("Assigning role '{0}' over scope '{1}' to the new service principal.", this.Role, this.Scope));
+            }
+            
             var shouldProcessMessage = SkipRoleAssignment() ?
                                         string.Format("Adding a new service principal to be associated with an application " +
                                                       "having AppId '{0}' with no permissions.", createParameters.ApplicationId) :
                                         string.Format("Adding a new service principal to be associated with an application " +
                                                       "having AppId '{0}' with '{1}' role over scope '{2}'.", createParameters.ApplicationId, this.Role, this.Scope);
+
             if (ShouldProcess(target: createParameters.ApplicationId.ToString(), action: shouldProcessMessage))
             {
                 PSADServicePrincipalWrapper servicePrincipal = new PSADServicePrincipalWrapper(ActiveDirectoryClient.CreateServicePrincipal(createParameters));
@@ -343,7 +351,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     return;
                 }
 
-                WriteWarning(string.Format("Assigning role '{0}' over scope '{1}' to the new service principal.", this.Role, this.Scope));
+                var subscriptionId = DefaultContext.Subscription.Id;
                 FilterRoleAssignmentsOptions parameters = new FilterRoleAssignmentsOptions()
                 {
                     Scope = this.Scope,
@@ -383,7 +391,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         private bool SkipRoleAssignment()
         {
-            return this.IsParameterBound(c => c.SkipAssignment) || (!this.IsParameterBound(c => c.Role) && !this.IsParameterBound(c => c.Scope));
+            return this.IsParameterBound(c => c.SkipAssignment) || (!this.IsParameterBound(c => c.Role) && !this.IsParameterBound(c => c.Scope) && !HasSubscription());
+        }
+
+        private bool HasSubscription()
+        {
+            return DefaultContext.Subscription != null && DefaultContext.Subscription.Id != null ;
         }
     }
 }
