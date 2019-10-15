@@ -1012,7 +1012,7 @@ function Test-EnumerateAndRestoreDataLakeStoreDeletedItem
 	{
 		# Creating Account
 		$resourceGroupName = Get-ResourceGroupName
-		$accountName = Get-DataLakeStoreAccountName
+		$accountName = Get-DataLakeStoreAccountName + "-c12" # testing accountname validation
 		New-AzResourceGroup -Name $resourceGroupName -Location $location
 		$accountCreated = New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
     
