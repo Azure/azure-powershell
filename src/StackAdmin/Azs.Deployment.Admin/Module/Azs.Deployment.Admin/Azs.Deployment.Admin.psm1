@@ -1365,9 +1365,6 @@ $ErrorActionPreference = 'Stop'
 [System.Net.Http.HttpClient] $HttpClient = [System.Net.Http.HttpClient]::new()
 
 $functions = @(
-    'Get-AzsResourceManagerAccessToken'
-    'Invoke-AzsResourceManager'
-    'Wait-AzsAsyncOperation'
     'Get-AzsFileContainer'
     'New-AzsFileContainer'
     'Remove-AzsFileContainer'

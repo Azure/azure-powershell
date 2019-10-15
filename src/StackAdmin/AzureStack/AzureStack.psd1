@@ -12,7 +12,7 @@
     # RootModule = ''
 
     # Version number of this module.
-    ModuleVersion          = '1.7.2'
+    ModuleVersion          = '1.8.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -57,6 +57,7 @@
         @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '0.3.2'; },
         @{ModuleName = 'Azs.Commerce.Admin'; RequiredVersion = '0.2.2'; },
         @{ModuleName = 'Azs.Compute.Admin'; RequiredVersion = '0.2.3'; },
+        @{ModuleName = 'Azs.Deployment.Admin'; RequiredVersion = '0.1.0'; },
         @{ModuleName = 'Azs.Fabric.Admin'; RequiredVersion = '0.5.0'; },
         @{ModuleName = 'Azs.Gallery.Admin'; RequiredVersion = '0.2.2'; },
         @{ModuleName = 'Azs.InfrastructureInsights.Admin'; RequiredVersion = '0.3.2'; },
