@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix NullReferenceException happend when no subscription or not login
 
 ## Version 1.7.0
 * Fix bug where New-AzRoleAssignment could not be called without parameter Scope.
