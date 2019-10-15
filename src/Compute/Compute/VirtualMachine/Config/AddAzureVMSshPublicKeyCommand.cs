@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else if (this.VM.OSProfile.WindowsConfiguration != null && this.VM.OSProfile.LinuxConfiguration == null)
             {
-                throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
+                throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.WindowsConfigurationSpecified);
             }
 
             if (this.VM.OSProfile.LinuxConfiguration.Ssh == null)
