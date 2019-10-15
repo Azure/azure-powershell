@@ -28,11 +28,7 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Firewall", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(PSAzureFirewall))]
     public class NewAzureFirewallCommand : AzureFirewallBaseCmdlet
     {
-
-        private const string SetByVirtualHubParameterSet = "SetByVirtualHubParameterSet";
-        private const string SetByVirtualNetworkParameterSet = "SetByVirtualNetworkParameterSet";
         private const string DefaultParameterSet = "Default";
-
         private PSVirtualNetwork virtualNetwork;
         private PSPublicIpAddress[] publicIpAddresses;
 
@@ -166,19 +162,18 @@ namespace Microsoft.Azure.Commands.Network
                 MNM.AzureFirewallSkuName.AZFWHub,
                 MNM.AzureFirewallSkuName.AZFWVNet,
                 IgnoreCase = false)]
-        [Parameter(Mandatory = true, ParameterSetName = SetByVirtualHubParameterSet)]
         public string Sku { get; set; }
 
         [Parameter(
-                Mandatory = true,
+                Mandatory = false,
                 ValueFromPipelineByPropertyName = true,
-                HelpMessage = "The virtual hub that a firewall is attached to", ParameterSetName = SetByVirtualHubParameterSet)]
+                HelpMessage = "The virtual hub that a firewall is attached to")]
         public string VirtualHubId { get; set; }
 
         [Parameter(
                 Mandatory = false,
                 ValueFromPipelineByPropertyName = true,
-                HelpMessage = "The firewall policy attached to the firewall", ParameterSetName = SetByVirtualHubParameterSet)]
+                HelpMessage = "The firewall policy attached to the firewall")]
         public string FirewallPolicyId { get; set; }
 
         public override void Execute()
@@ -219,6 +214,11 @@ namespace Microsoft.Azure.Commands.Network
             var firewall = new PSAzureFirewall();
             if (Sku == MNM.AzureFirewallSkuName.AZFWHub)
             {
+                if (VirtualHubId == null)
+                {
+                    throw new ArgumentException("VirtualHubId is needed", nameof(VirtualHubId));
+                }
+
                 firewall = new PSAzureFirewall()
                 {
                     Name = this.Name,
