@@ -92,7 +92,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','MNC'
+        Tags = 'Azure','ResourceManager','ARM','ManagedNetwork'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -104,7 +104,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added new Powershell cmdlets for Enable/Disable Custom Domain Https and deprecated the old ones'
+        ReleaseNotes = '* Added new Powershell cmdlets for ManagedNetwork'
 
         # Prerelease string of this module
         # Prerelease = ''
