@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSAzureFirewallPolicyRuleCollectionGroup : PSChildResource
     {
 
-        [JsonProperty(Order = 2)]
-        public uint priority { get; set; }
+        [JsonProperty(Order = 2, PropertyName = "priority")]
+        public uint Priority { get; set; }
 
         [JsonProperty("rules")]
         public List<PSAzureFirewallPolicyBaseRuleCollection> ruleCollection { get; set; }
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentException($"Rule name cannot be an empty string.");
             }
 
-            var rule = this.ruleCollection?.FirstOrDefault(r => ruleCollectionName.Equals(r.name, StringComparison.OrdinalIgnoreCase));
+            var rule = this.ruleCollection?.FirstOrDefault(r => ruleCollectionName.Equals(r.Name, StringComparison.OrdinalIgnoreCase));
 
             if (rule == null)
             {

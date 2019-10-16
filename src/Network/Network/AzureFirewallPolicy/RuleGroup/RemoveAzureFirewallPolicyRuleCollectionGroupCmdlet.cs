@@ -97,8 +97,8 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (this.IsParameterBound(c => c.InputObject))
             {
-                this.Name = InputObject.name;
-                var resourceId = InputObject.properties.Id;
+                this.Name = InputObject.Name;
+                var resourceId = InputObject.Properties.Id;
 
                 var resourceInfo = new ResourceIdentifier(resourceId);
                 this.AzureFirewallPolicyName = resourceInfo.ParentResource.Split('/')[1];

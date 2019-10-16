@@ -76,12 +76,12 @@ namespace Microsoft.Azure.Commands.Network
 
             var applicationRule = new PSAzureFirewallPolicyApplicationRule
             {
-                name = this.Name,
+                Name = this.Name,
                 SourceAddresses = this.SourceAddress?.ToList(),
                 Protocols = protocolsAsWeExpectThem,
                 TargetFqdns = this.TargetFqdn?.ToList(),
                 FqdnTags = this.FqdnTag?.ToList(),
-                ruleType = "ApplicationRuleCondition"
+                RuleType = "ApplicationRuleCondition"
             };
             WriteObject(applicationRule);
         }

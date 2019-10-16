@@ -150,8 +150,8 @@ function Test-AzureFirewallPolicyCRUD {
 
         Assert-AreEqual 3 @($getRg.properties.ruleCollection).Count
 
-        $filterRuleCollection1 = $getRg.properties.GetRuleCollectionByName($appRcName)
-        $natRuleCollection = $getRg.properties.GetRuleCollectionByName($networkRcName)
+        $filterRuleCollection1 = $getRg.Properties.GetRuleCollectionByName($appRcName)
+        $natRuleCollection = $getRg.Properties.GetRuleCollectionByName($networkRcName)
 
         # Verify filter Rule1 
         Assert-AreEqual $appRcName $filterRuleCollection1.Name

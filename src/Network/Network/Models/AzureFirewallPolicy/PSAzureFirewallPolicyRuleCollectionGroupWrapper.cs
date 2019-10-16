@@ -26,10 +26,11 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSAzureFirewallPolicyRuleCollectionGroupWrapper
     {
 
-        [JsonProperty(Order = 1)]
-        public string name { get; set; }
-        
-        public PSAzureFirewallPolicyRuleCollectionGroup properties { get; set; }
+        [JsonProperty(Order = 1, PropertyName = "name")]
+        public string Name { get; set; }
+
+        [JsonProperty(PropertyName = "properties")]
+        public PSAzureFirewallPolicyRuleCollectionGroup Properties { get; set; }
 
     }
 }

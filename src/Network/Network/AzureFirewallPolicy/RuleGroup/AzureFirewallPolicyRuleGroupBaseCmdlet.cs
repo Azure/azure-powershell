@@ -59,21 +59,21 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     MNM.FirewallPolicyFilterRule filterRule = (MNM.FirewallPolicyFilterRule)getRuleCollectionGroup.Rules[ruleCollectionIndex];
                     PSAzureFirewallPolicyFilterRuleCollection filterRuleCollection = JsonConvert.DeserializeObject<PSAzureFirewallPolicyFilterRuleCollection>(JsonConvert.SerializeObject(getRuleCollectionGroup.Rules[ruleCollectionIndex]));
-                    filterRuleCollection.ruleCollectionType = "FirewallPolicyFilterRule";
-                    filterRuleCollection.rules = new List<PSAzureFirewallPolicyRule>();
+                    filterRuleCollection.RuleCollectionType = "FirewallPolicyFilterRule";
+                    filterRuleCollection.Rules = new List<PSAzureFirewallPolicyRule>();
                     for (int ruleIndex = 0; ruleIndex < filterRule.RuleConditions.Count; ruleIndex++)
                     {
                         if (filterRule.RuleConditions[ruleIndex] is MNM.ApplicationRuleCondition)
                         {
                             PSAzureFirewallPolicyApplicationRule rule = JsonConvert.DeserializeObject<PSAzureFirewallPolicyApplicationRule>(JsonConvert.SerializeObject(filterRule.RuleConditions[ruleIndex]));
-                            rule.ruleType = "ApplicationRuleCondition";
-                            filterRuleCollection.rules.Add(rule);
+                            rule.RuleType = "ApplicationRuleCondition";
+                            filterRuleCollection.Rules.Add(rule);
                         }
                         else
                         {
                             PSAzureFirewallPolicyNetworkRule rule = JsonConvert.DeserializeObject<PSAzureFirewallPolicyNetworkRule>(JsonConvert.SerializeObject(filterRule.RuleConditions[ruleIndex]));
-                            rule.ruleType = "NetworkRuleCondition";
-                            filterRuleCollection.rules.Add(rule);
+                            rule.RuleType = "NetworkRuleCondition";
+                            filterRuleCollection.Rules.Add(rule);
                         }
                     }
                     ruleCollectionGroup.ruleCollection.Add(filterRuleCollection);
@@ -82,18 +82,18 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     MNM.FirewallPolicyNatRule natRule = (MNM.FirewallPolicyNatRule)getRuleCollectionGroup.Rules[ruleCollectionIndex];
                     PSAzureFirewallPolicyNatRuleCollection natRuleCollection = JsonConvert.DeserializeObject<PSAzureFirewallPolicyNatRuleCollection>(JsonConvert.SerializeObject(getRuleCollectionGroup.Rules[ruleCollectionIndex]));
-                    natRuleCollection.ruleCollectionType = "FirewallPolicyNatRule";
-                    natRuleCollection.rule = JsonConvert.DeserializeObject<PSAzureFirewallPolicyNetworkRule>(JsonConvert.SerializeObject(natRule.RuleCondition));
-                    natRuleCollection.rule.ruleType = "NetworkRuleCondition";
+                    natRuleCollection.RuleCollectionType = "FirewallPolicyNatRule";
+                    natRuleCollection.Rule = JsonConvert.DeserializeObject<PSAzureFirewallPolicyNetworkRule>(JsonConvert.SerializeObject(natRule.RuleCondition));
+                    natRuleCollection.Rule.RuleType = "NetworkRuleCondition";
                     ruleCollectionGroup.ruleCollection.Add(natRuleCollection);
                 }
             }
 
             var ruleCollectionGroupWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper();
-            ruleCollectionGroup.priority = (uint)getRuleCollectionGroup.Priority;
-            ruleCollectionGroupWrapper.properties = ruleCollectionGroup;
-            ruleCollectionGroupWrapper.name = getRuleCollectionGroup.Name;
-            ruleCollectionGroupWrapper.properties.Id = getRuleCollectionGroup.Id;
+            ruleCollectionGroup.Priority = (uint)getRuleCollectionGroup.Priority;
+            ruleCollectionGroupWrapper.Properties = ruleCollectionGroup;
+            ruleCollectionGroupWrapper.Name = getRuleCollectionGroup.Name;
+            ruleCollectionGroupWrapper.Properties.Id = getRuleCollectionGroup.Id;
 
             return ruleCollectionGroupWrapper;
         }
