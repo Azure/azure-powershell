@@ -62,7 +62,6 @@ clear-output-folder: true
 output-folder: .
 aks: $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService
 input-file:
-- $(aks)/preview/2019-09-30/openShiftManagedClusters.json
 - $(aks)/stable/2019-08-01/location.json
 - $(aks)/stable/2019-08-01/managedClusters.json
 - $(aks)/stable/2017-07-01/containerService.json
@@ -79,6 +78,11 @@ directive:
 ```
 
 <!--
+
+REMOVED FROM input-files
+- $(aks)/preview/2019-09-30/openShiftManagedClusters.json
+
+
 
 require:
   - $(repo)/specification/containerservice/resource-manager/readme.md

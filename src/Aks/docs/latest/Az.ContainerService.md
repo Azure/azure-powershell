@@ -43,9 +43,6 @@ Gets the details of the upgrade profile for a managed cluster with a specified r
 ### [Get-AzManagedClusterUserCredentials](Get-AzManagedClusterUserCredentials.md)
 Gets cluster user credential of the managed cluster with a specified resource group and name.
 
-### [Get-AzOpenShiftManagedCluster](Get-AzOpenShiftManagedCluster.md)
-Gets the details of the managed OpenShift cluster with a specified resource group and name.
-
 ### [New-AzAgentPool](New-AzAgentPool.md)
 Creates or updates an agent pool in the specified managed cluster.
 
@@ -54,9 +51,6 @@ Creates or updates a container service with the specified configuration of orche
 
 ### [New-AzManagedCluster](New-AzManagedCluster.md)
 Creates or updates a managed cluster with the specified configuration for agents and Kubernetes version.
-
-### [New-AzOpenShiftManagedCluster](New-AzOpenShiftManagedCluster.md)
-Creates or updates a OpenShift managed cluster with the specified configuration for agents and OpenShift version.
 
 ### [Remove-AzAgentPool](Remove-AzAgentPool.md)
 Deletes the agent pool in the specified managed cluster.
@@ -68,9 +62,6 @@ All the other resources created with the container service are part of the same 
 
 ### [Remove-AzManagedCluster](Remove-AzManagedCluster.md)
 Deletes the managed cluster with a specified resource group and name.
-
-### [Remove-AzOpenShiftManagedCluster](Remove-AzOpenShiftManagedCluster.md)
-Deletes the OpenShift managed cluster with a specified resource group and name.
 
 ### [Reset-AzManagedClusterAadProfile](Reset-AzManagedClusterAadProfile.md)
 Update the AAD Profile for a managed cluster.
@@ -87,12 +78,5 @@ Creates or updates a container service with the specified configuration of orche
 ### [Set-AzManagedCluster](Set-AzManagedCluster.md)
 Creates or updates a managed cluster with the specified configuration for agents and Kubernetes version.
 
-### [Set-AzOpenShiftManagedCluster](Set-AzOpenShiftManagedCluster.md)
-Creates or updates a OpenShift managed cluster with the specified configuration for agents and OpenShift version.
-
 ### [Update-AzManagedClusterTag](Update-AzManagedClusterTag.md)
 Updates a managed cluster with the specified tags.
-
-### [Update-AzOpenShiftManagedClusterTag](Update-AzOpenShiftManagedClusterTag.md)
-Updates an OpenShift managed cluster with the specified tags.
-
