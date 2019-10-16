@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the bug that customer will get "Not a valid Base-64 string" error when using Get-AzHDInsightCluster to get the cluster with ADLSGen1 storage.
 
 ## Version 2.0.2
 * Call out breaking changes
