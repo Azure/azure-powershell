@@ -21,40 +21,40 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSAzureFirewallPolicyApplicationRule : PSAzureFirewallPolicyRule
     {
 
-        [JsonProperty(Order = 3)]
-        public List<string> sourceAddresses { get; set; }
+        [JsonProperty(Order = 3, PropertyName = "sourceAddresses")]
+        public List<string> SourceAddresses { get; set; }
 
-        [JsonProperty(Order = 4)]
-        public List<string> targetFqdns { get; set; }
+        [JsonProperty(Order = 4, PropertyName = "targetFqdns")]
+        public List<string> TargetFqdns { get; set; }
 
-        [JsonProperty(Order = 5)]
-        public List<string> fqdnTags { get; set; }
+        [JsonProperty(Order = 5, PropertyName = "fqdnTags")]
+        public List<string> FqdnTags { get; set; }
 
-        [JsonProperty(Order = 6)]
-        public List<PSAzureFirewallPolicyApplicationRuleProtocol> protocols { get; set; }
+        [JsonProperty(Order = 6, PropertyName = "protocols")]
+        public List<PSAzureFirewallPolicyApplicationRuleProtocol> Protocols { get; set; }
 
         [JsonIgnore]
         public string ProtocolsText
         {
-            get { return JsonConvert.SerializeObject(protocols, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(Protocols, Formatting.Indented); }
         }
 
         [JsonIgnore]
         public string SourceAddressesText
         {
-            get { return JsonConvert.SerializeObject(sourceAddresses, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(SourceAddresses, Formatting.Indented); }
         }
 
         [JsonIgnore]
         public string TargetFqdnsText
         {
-            get { return JsonConvert.SerializeObject(targetFqdns, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(TargetFqdns, Formatting.Indented); }
         }
 
         [JsonIgnore]
         public string FqdnTagsText
         {
-            get { return JsonConvert.SerializeObject(fqdnTags, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(FqdnTags, Formatting.Indented); }
         }
 
         public void AddProtocol(string protocolType, uint port = 0)
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
             var protocol = PSAzureFirewallPolicyApplicationRuleProtocol.MapUserInputToApplicationRuleProtocol(stringToMap);
 
-            (this.protocols ?? (this.protocols = new List<PSAzureFirewallPolicyApplicationRuleProtocol>())).Add(protocol);
+            (this.Protocols ?? (this.Protocols = new List<PSAzureFirewallPolicyApplicationRuleProtocol>())).Add(protocol);
         }
     }
 }
