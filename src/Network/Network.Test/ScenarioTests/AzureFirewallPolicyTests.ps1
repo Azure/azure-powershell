@@ -101,7 +101,7 @@ function Test-AzureFirewallPolicyCRUD {
         $azureFirewallPolicy = New-AzFirewallPolicy –Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location 
 
         # Get AzureFirewallPolicy
-        $getAzureFirewallPolicy = Get-AzFirewallPolicy -name $azureFirewallPolicyName -ResourceGroupName $rgname
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
 
         #verification
         Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
@@ -134,7 +134,7 @@ function Test-AzureFirewallPolicyCRUD {
         # Set AzureFirewallPolicy
         Set-AzFirewallPolicy -InputObject $azureFirewallPolicy
         # Get AzureFirewallPolicy
-        $getAzureFirewallPolicy = Get-AzFirewallPolicy -name $azureFirewallPolicyName -ResourceGroupName $rgName
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgName
 
         # #verification
         Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
