@@ -11,19 +11,21 @@ Gets a managednetwork network group.
 
 ## SYNTAX
 
-###ByName(Default)
+### NameParameterSet (Default)
 ```
-Get-AzManagedNetworkGroup -ResourceGroupName <String> -ManagedNetworkName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzManagedNetworkGroup [-ResourceGroupName] <String> [-ManagedNetworkName] <String> [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-###ByResourceId
+### ManagedNetworkObjectParameterSet
+```
+Get-AzManagedNetworkGroup [-Name <String>] -ManagedNetwork <PSManagedNetwork>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
 ```
 Get-AzManagedNetworkGroup -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-###ByManagedNetworkObject
-```
-Get-AzManagedNetworkGroup -ManagedNetwork <PSManagedNetwork> [-Name <String>][-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +81,7 @@ Location         : {userregion}
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -93,47 +95,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the managednetwork group that this cmdlet gets.
+### -ManagedNetwork
+The object of Managed Network.
 
 ```yaml
-Type: System.String
-Parameter Sets: NameParameterSet
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
+Type: Microsoft.Azure.Commands.ManagedNetwork.Models.PSManagedNetwork
 Parameter Sets: ManagedNetworkObjectParameterSet
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group that managed network belongs to.
-
-```yaml
-Type: System.String
-Parameter Sets: NameParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ManagedNetworkName
-Specifies the name of the managed network that groups belong to.
+The unique name of the Managed Network.
 
 ```yaml
 Type: System.String
@@ -141,13 +119,44 @@ Parameter Sets: NameParameterSet
 Aliases:
 
 Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The unique name of the Managed Network Group.
+
+```yaml
+Type: System.String
+Parameter Sets: NameParameterSet, ManagedNetworkObjectParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The create or use an existing resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: NameParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Specifies the resourceId of the managedNetworkgroup that this cmdlet gets.
+The unique ARM id of an existing resource.
 
 ```yaml
 Type: System.String
@@ -157,22 +166,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ManagedNetwork
-Specifies the the managedNetwork that the group belongs to.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSManagedNetwork
-Parameter Sets: ManagedNetworkObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

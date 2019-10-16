@@ -11,14 +11,24 @@ Creates a managedNetworkGroup.
 
 ## SYNTAX
 
-### By Name
+### NameParameterSet (Default)
 ```
-New-AzManagedNetworkGroup -ResourceGroupName <String> -ManagedNetworkName <String> -Name <String> -Location <String> [-ManagementGroupIdList <String[]>] [-SubscriptionIdList <String[]>] [-VirtualNetworkIdList <String[]>] [-SubnetIdList <String[]>] [-Force][-AsJob][-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm][<CommonParameters>]
+New-AzManagedNetworkGroup [-ResourceGroupName] <String> [-ManagedNetworkName] <String> [-Name] <String>
+ -Location <String> [-ManagementGroupIdList <System.Collections.Generic.List`1[System.String]>]
+ [-SubscriptionIdList <System.Collections.Generic.List`1[System.String]>]
+ [-VirtualNetworkIdList <System.Collections.Generic.List`1[System.String]>]
+ [-SubnetIdList <System.Collections.Generic.List`1[System.String]>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### By ManagedNetwork Object
+### ManagedNetworkObjectParameterSet
 ```
-New-AzManagedNetworkGroup -ManagedNetwork <PSManagedNetwork>  -Name <String> -Location <String> [-ManagementGroupIdList <String[]>] [-SubscriptionIdList <String[]>] [-VirtualNetworkIdList <String[]>] [-SubnetIdList <String[]>][-Force][-AsJob][-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm][<CommonParameters>]
+New-AzManagedNetworkGroup [-Name] <String> -ManagedNetworkObject <PSManagedNetwork> -Location <String>
+ [-ManagementGroupIdList <System.Collections.Generic.List`1[System.String]>]
+ [-SubscriptionIdList <System.Collections.Generic.List`1[System.String]>]
+ [-VirtualNetworkIdList <System.Collections.Generic.List`1[System.String]>]
+ [-SubnetIdList <System.Collections.Generic.List`1[System.String]>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,23 +48,8 @@ $testmanagednetworkgroup = New-AzManagedNetworkGroup -ManagedNetwork $managednet
 
 ## PARAMETERS
 
-### -Force
-Do not ask for confirmation if you want to overwrite a resource
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AsJob
-Run cmdlet in the background
+Run in the background.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -83,8 +78,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Force
+Force the operation to complete
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
-location.
+The Location assigned to a Managed Network.
 
 ```yaml
 Type: System.String
@@ -94,40 +104,12 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept wildcard characters: False
-```
-
-### -Name
-The resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The resource group name.
-
-```yaml
-Type: System.String
-Parameter Sets: NameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ManagedNetworkName
-The managed network Name
+The unique name of the Managed Network.
 
 ```yaml
 Type: System.String
@@ -135,76 +117,114 @@ Parameter Sets: NameParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ManagedNetworkObject
-Specifies the ManagedNetwork Object the group belongs to. 
+The object of Managed Network.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSManagedNetwork
+Type: Microsoft.Azure.Commands.ManagedNetwork.Models.PSManagedNetwork
 Parameter Sets: ManagedNetworkObjectParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -ManagementGroupIdList
+Azure ManagedNetwork management group ids.
+
 ```yaml
-Type: System.Collections.Generic.List<String>
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionIdsList
+### -Name
+The unique name of the Managed Network Group.
+
 ```yaml
-Type: System.Collections.Generic.List<String>
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VirtualNetworkIdList
+### -ResourceGroupName
+The create or use an existing resource group name.
+
 ```yaml
-Type: System.Collections.Generic.List<String>
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: NameParameterSet
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SubnetIdList
+Azure ManagedNetwork subnet ids.
+
 ```yaml
-Type: System.Collections.Generic.List<String>
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionIdList
+Azure ManagedNetwork subscription ids.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkIdList
+Azure ManagedNetwork virtual network ids.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

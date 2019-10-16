@@ -12,7 +12,9 @@ Creates a managedNetwork.
 ## SYNTAX
 
 ```
-New-AzManagedNetwork -ResourceGroupName <String> -Name <String> -Location <String> -Scope <PSScope> [-Tag <HashTable<String, String>>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm][<CommonParameters>]
+New-AzManagedNetwork [-ResourceGroupName] <String> [-Name] <String> [-Scope] <PSScope> [-Location] <String>
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,25 +30,11 @@ $testmanagednetwork = New-AzManagedNetwork ResourceGroupName TestRG -Name TestMa
 
 This example creates a Managed Network.
 
+
 ## PARAMETERS
 
-### -Force
-Do not ask for confirmation if you want to overwrite a resource
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AsJob
-Run cmdlet in the background
+Run in the background.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -75,8 +63,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Force
+Force the operation to complete
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
-location.
+The Location assigned to a Managed Network.
 
 ```yaml
 Type: System.String
@@ -84,27 +87,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 3
 Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-The resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The resource group name.
+The unique name of the Managed Network.
 
 ```yaml
 Type: System.String
@@ -112,14 +102,29 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The create or use an existing resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Scope
-The Scope of the managed network
+The scope of control of the Managed Network.
 
 ```yaml
 Type: Microsoft.Azure.Commands.ManagedNetwork.Models.PSScope
@@ -127,15 +132,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Tag
-Key-value pairs in the form of a hash table. For example:
-@{key0="value0";key1=$null;key2="value2"}
+The tags assigned to a Managed Network.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -145,7 +149,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -11,24 +11,44 @@ Update a managedNetworkGroup.
 
 ## SYNTAX
 
-### Update ManagedNetworkGroup by name 
+### NameParameterSet (Default)
 ```
-Update-AzManagedNetworkGroup -ResourceGroupName <String> -ManagedNetworkName <String> -Name <String> [-ManagementGroupIdList <String[]>] [-SubscriptionIdList <String[]>] [-VirtualNetworkIdList <String[]>] [-SubnetIdList <String[]>] [-PassThru][-Force][-AsJob][-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm][<CommonParameters>]
-```
-
-### Update ManagedNetworkGroup by resourceid 
-```
-Update-AzManagedNetworkGroup -ResourceId <String> [-ManagementGroupIdList <String[]>] [-SubscriptionIdList <String[]>] [-VirtualNetworkIdList <String[]>] [-SubnetIdList <String[]>] [-PassThru][-Force][-AsJob][-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm][<CommonParameters>]
-```
-
-### Update ManagedNetworkGroup by input object
-```
- Update-AzManagedNetworkGroup -InputObject <PSManagedNetworkGroup> [-ManagementGroupIdList <String[]>] [-SubscriptionIdList <String[]>] [-VirtualNetworkIdList <String[]>] [-SubnetIdList <String[]>] [-PassThru][-Force][-AsJob][-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm][<CommonParameters>]
+Update-AzManagedNetworkGroup [-ResourceGroupName] <String> [-ManagedNetworkName] <String> [-Name] <String>
+ [-ManagementGroupIdList <System.Collections.Generic.List`1[System.String]>]
+ [-SubscriptionIdList <System.Collections.Generic.List`1[System.String]>]
+ [-VirtualNetworkIdList <System.Collections.Generic.List`1[System.String]>]
+ [-SubnetIdList <System.Collections.Generic.List`1[System.String]>] [-PassThru] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Update ManagedNetworkGroup by managednetwork object
+### ManagedNetworkObjectParameterSet
 ```
-Update-AzManagedNetworkGroup -ManagedNetwork <PSManagedNetwork> -Name <String>  [-ManagementGroupIdList <String[]>] [-SubscriptionIdList <String[]>] [-VirtualNetworkIdList <String[]>] [-SubnetIdList <String[]>] [-PassThru][-Force][-AsJob][-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm][<CommonParameters>]
+Update-AzManagedNetworkGroup [-Name] <String> -ManagedNetworkObject <PSManagedNetwork>
+ [-ManagementGroupIdList <System.Collections.Generic.List`1[System.String]>]
+ [-SubscriptionIdList <System.Collections.Generic.List`1[System.String]>]
+ [-VirtualNetworkIdList <System.Collections.Generic.List`1[System.String]>]
+ [-SubnetIdList <System.Collections.Generic.List`1[System.String]>] [-PassThru] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Update-AzManagedNetworkGroup -ResourceId <String>
+ [-ManagementGroupIdList <System.Collections.Generic.List`1[System.String]>]
+ [-SubscriptionIdList <System.Collections.Generic.List`1[System.String]>]
+ [-VirtualNetworkIdList <System.Collections.Generic.List`1[System.String]>]
+ [-SubnetIdList <System.Collections.Generic.List`1[System.String]>] [-PassThru] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Update-AzManagedNetworkGroup -InputObject <PSManagedNetworkGroup>
+ [-ManagementGroupIdList <System.Collections.Generic.List`1[System.String]>]
+ [-SubscriptionIdList <System.Collections.Generic.List`1[System.String]>]
+ [-VirtualNetworkIdList <System.Collections.Generic.List`1[System.String]>]
+ [-SubnetIdList <System.Collections.Generic.List`1[System.String]>] [-PassThru] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,26 +76,10 @@ Update-AzManagedNetworkGroup -InputObject $managedNetworkgroup -VirtualNetworkId
 Update-AzManagedNetworkGroup -ManagedNetwork $managedNetwork -Name TestGroup -VirtualNetworkIdList $VirtualNetworkIdList
 ```
 
-
 ## PARAMETERS
 
-### -Force
-Do not ask for confirmation if you want to overwrite a resource
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AsJob
-Run cmdlet in the background
+Run in the background.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -104,23 +108,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The resource group name.
+### -Force
+Force the operation to complete
 
 ```yaml
-Type: System.String
-Parameter Sets: NameParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The Input Object.
+
+```yaml
+Type: Microsoft.Azure.Commands.ManagedNetwork.Models.PSManagedNetworkGroup
+Parameter Sets: InputObjectParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -ManagedNetworkName
-The managed network Name
+The unique name of the Managed Network.
 
 ```yaml
 Type: System.String
@@ -128,40 +147,89 @@ Parameter Sets: NameParameterSet
 Aliases:
 
 Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedNetworkObject
+The object of Managed Network.
+
+```yaml
+Type: Microsoft.Azure.Commands.ManagedNetwork.Models.PSManagedNetwork
+Parameter Sets: ManagedNetworkObjectParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagementGroupIdList
+Azure ManagedNetwork management group ids.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-The resource name.
+The unique name of the Managed Network Group.
+
+```yaml
+Type: System.String
+Parameter Sets: NameParameterSet, ManagedNetworkObjectParameterSet
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Return true if complete
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The create or use an existing resource group name.
 
 ```yaml
 Type: System.String
 Parameter Sets: NameParameterSet
-Aliases: ResourceName
+Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ManagedNetworkObjectParameterSet
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Specifies the resourceId of the managedNetworkgroup that this cmdlet updates.
+The unique ARM id of an existing resource.
 
 ```yaml
 Type: System.String
@@ -175,85 +243,48 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Specifies the InputObject of the managedNetwork that this cmdlet updates.
+### -SubnetIdList
+Azure ManagedNetwork subnet ids.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSManagedNetworkGroup
-Parameter Sets: InputObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ManagedNetworkObject
-Specifies the ManagedNetwork Object the group belongs to. 
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSManagedNetwork
-Parameter Sets: ManagedNetworkObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ManagementGroupIdList
-```yaml
-Type: System.Collections.Generic.List<String>
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SubscriptionIdList
+Azure ManagedNetwork subscription ids.
+
 ```yaml
-Type: System.Collections.Generic.List<String>
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkIdList
+Azure ManagedNetwork virtual network ids.
+
 ```yaml
-Type: System.Collections.Generic.List<String>
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SubnetIdList
-```yaml
-Type: System.Collections.Generic.List<String>
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

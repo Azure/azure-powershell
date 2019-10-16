@@ -11,24 +11,37 @@ Update a managedNetworkPeeringPolicy.
 
 ## SYNTAX
 
-### Update ManagedNetworkPeeringPolicy by name 
+### NameParameterSet (Default)
 ```
-Update-AzManagedNetworkPeeringPolicy -ResourceGroupName <String> -ManagedNetworkName <String> -Name <String> [-PeeringPolicyType <String>] [-Hub <String>] [-Spoke <String[]>] [-Mesh <String[]>] [-AsJob][-Force][-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm][<CommonParameters>]
-```
-
-### Update ManagedNetworkPeeringPolicy by resourceid 
-```
-Update-AzManagedNetworkPeeringPolicy -ResourceId <String> [-PeeringPolicyType <String>] [-Hub <String>] [-Spoke <String[]>] [-Mesh <String[]>] [-AsJob][-Force][-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm][<CommonParameters>]
-```
-
-### Update ManagedNetworkPeeringPolicy by input object
-```
-Update-AzManagedNetworkPeeringPolicy -InputObject <PSManagedNetworkPeeringPolicy> [-PeeringPolicyType <String>] [-Hub <String>] [-Spoke <String[]>] [-Mesh <String[]>] [-AsJob][-Force][-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm][<CommonParameters>]
+Update-AzManagedNetworkPeeringPolicy [-ResourceGroupName] <String> [-ManagedNetworkName] <String>
+ [-Name] <String> [-PeeringPolicyType <String>] [-Hub <String>]
+ [-SpokeList <System.Collections.Generic.List`1[System.String]>]
+ [-Mesh <System.Collections.Generic.List`1[System.String]>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Update ManagedNetworkPeeringPolicy by managednetwork object
+### ManagedNetworkObjectParameterSet
 ```
-Update-AzManagedNetworkPeeringPolicy -ManagedNetwork <PSManagedNetwork> -Name <String> [-PeeringPolicyType <String>] [-Hub <String>] [-Spoke <String[]>] [-Mesh <String[]>] [-AsJob][-Force][-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm][<CommonParameters>]
+Update-AzManagedNetworkPeeringPolicy [-Name] <String> -ManagedNetworkObject <PSManagedNetwork>
+ [-PeeringPolicyType <String>] [-Hub <String>] [-SpokeList <System.Collections.Generic.List`1[System.String]>]
+ [-Mesh <System.Collections.Generic.List`1[System.String]>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Update-AzManagedNetworkPeeringPolicy -ResourceId <String> [-PeeringPolicyType <String>] [-Hub <String>]
+ [-SpokeList <System.Collections.Generic.List`1[System.String]>]
+ [-Mesh <System.Collections.Generic.List`1[System.String]>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Update-AzManagedNetworkPeeringPolicy -InputObject <PSManagedNetworkPeeringPolicy> [-PeeringPolicyType <String>]
+ [-Hub <String>] [-SpokeList <System.Collections.Generic.List`1[System.String]>]
+ [-Mesh <System.Collections.Generic.List`1[System.String]>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,31 +64,15 @@ Update-AzManagedNetworkGroup -ResourceId $resourceId -PeeringPolicyType "HubAndS
 Update-AzManagedNetworkGroup -InputObject $managedNetworkpeeringpolicy -PeeringPolicyType "HubAndSpokeTopology" -Hub $hub -SpokeList $list
 ```
 
-### 3: Updates a managed network Peering Policy by managednetwork object
+### 4: Updates a managed network Peering Policy by managednetwork object
 ```
 Update-AzManagedNetworkGroup -ManagedNetwork $managedNetwork -Name TestPolicy -PeeringPolicyType "HubAndSpokeTopology" -Hub $hub -SpokeList $list
 ```
 
-
 ## PARAMETERS
 
-### -Force
-Do not ask for confirmation if you want to overwrite a resource
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AsJob
-Run cmdlet in the background
+Run in the background.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -104,23 +101,53 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The resource group name.
+### -Force
+Force the operation to complete
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Hub
+Azure ManagedNetwork Policy Hub id.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The Input Object.
+
+```yaml
+Type: Microsoft.Azure.Commands.ManagedNetwork.Models.PSManagedNetworkPeeringPolicy
+Parameter Sets: InputObjectParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -ManagedNetworkName
-The managed network Name
+The unique name of the Managed Network.
 
 ```yaml
 Type: System.String
@@ -128,40 +155,89 @@ Parameter Sets: NameParameterSet
 Aliases:
 
 Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedNetworkObject
+The object of Managed Network.
+
+```yaml
+Type: Microsoft.Azure.Commands.ManagedNetwork.Models.PSManagedNetwork
+Parameter Sets: ManagedNetworkObjectParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Mesh
+Azure ManagedNetwork Policy Mesh Groups.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-The resource name.
+The unique name of the Managed Network Peering Policy.
+
+```yaml
+Type: System.String
+Parameter Sets: NameParameterSet, ManagedNetworkObjectParameterSet
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeeringPolicyType
+Azure ManagedNetwork Policy type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The create or use an existing resource group name.
 
 ```yaml
 Type: System.String
 Parameter Sets: NameParameterSet
-Aliases: ResourceName
+Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ManagedNetworkObjectParameterSet
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Specifies the resourceId of the managedNetworkpeeringpolicy that this cmdlet updates.
+The unique ARM id of an existing resource.
 
 ```yaml
 Type: System.String
@@ -175,89 +251,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Specifies the InputObject of managednetwork policy
+### -SpokeList
+Azure ManagedNetwork Policy Spoke Groups.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSManagedNetworkPeeringPolicy
-Parameter Sets: InputObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ManagedNetworkObject
-Specifies the ManagedNetwork Object the policy belongs to. 
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSManagedNetwork
-Parameter Sets: ManagedNetworkObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PeeringPolicyType
-Peering Policy Type.
-
-```yaml
-Type: System.String
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept wildcard characters: False
-```
-
-### -Hub
-Hub Vnet Id.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept wildcard characters: False
-```
-
-### -Spoke 
-Spoke List.
-
-```yaml
-Type: System.Collections.Generic.List<String>
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept wildcard characters: False
-```
-
-### -Mesh 
-Mesh List.
-
-```yaml
-Type: System.Collections.Generic.List<String>
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

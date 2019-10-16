@@ -12,7 +12,11 @@ Creates a scope for managedNetwork.
 ## SYNTAX
 
 ```
-New-AzManagedNetworkScope  [-ManagementGroupIdList <String[]>] [-SubscriptionIdList <String[]>] [-VirtualNetworkIdList <String[]>] [-SubnetIdList <String[]>][-AsJob] [-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm][<CommonParameters>] 
+New-AzManagedNetworkScope [-ManagementGroupIdList <System.Collections.Generic.List`1[System.String]>]
+ [-SubscriptionIdList <System.Collections.Generic.List`1[System.String]>]
+ [-VirtualNetworkIdList <System.Collections.Generic.List`1[System.String]>]
+ [-SubnetIdList <System.Collections.Generic.List`1[System.String]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,23 +34,8 @@ This example creates a Managed Network scope.
 
 ## PARAMETERS
 
-### -Force
-Do not ask for confirmation if you want to overwrite a resource
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AsJob
-Run cmdlet in the background
+Run in the background.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -76,54 +65,62 @@ Accept wildcard characters: False
 ```
 
 ### -ManagementGroupIdList
+Azure ManagedNetwork Scope management group ids.
+
 ```yaml
-Type: System.Collections.Generic.List<String>
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SubscriptionIdList
-```yaml
-Type: System.Collections.Generic.List<String>
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -VirtualNetworkIdList
-```yaml
-Type: System.Collections.Generic.List<String>
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SubnetIdList
+Azure ManagedNetwork Scope subnet ids.
+
 ```yaml
-Type: System.Collections.Generic.List<String>
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionIdList
+Azure ManagedNetwork Scope subscription ids.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkIdList
+Azure ManagedNetwork Scope virtual network ids.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

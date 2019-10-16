@@ -11,19 +11,23 @@ Removes a Managed Network.
 
 ## SYNTAX
 
-### Remove by Name
+
+### NameParameterSet (Default)
 ```
-Remove-AzManagedNetwork -ResourceGroupName <String> -Name <String> [-PassThru][-Force][-AsJob][-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm][<CommonParameters>]
+Remove-AzManagedNetwork [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Remove by ResourceId
+### ResourceIdParameterSet
 ```
-Remove-AzManagedNetwork -ResourceId <String> [-PassThru][-Force][-AsJob][-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm][<CommonParameters>]
+Remove-AzManagedNetwork -ResourceId <String> [-PassThru] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Remove by Input Object
+### InputObjectParameterSet
 ```
-Remove-AzManagedNetwork -InputObject <PSManagedNetwork> [-PassThru][-Force][-AsJob][-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm][<CommonParameters>]
+Remove-AzManagedNetwork -InputObject <PSManagedNetwork> [-PassThru] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +61,7 @@ This example remove a managednetwork by inputObject
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background
+Run in the background.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -72,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -87,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Forces the command to run without asking for user confirmation.
+Force the operation to complete
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -101,54 +105,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the managedNetwork that this cmdlet removes.
-
-```yaml
-Type: System.String
-Parameter Sets: NameParameterSet
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Specifies the resourceId of the managedNetwork that this cmdlet removes.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceIdParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -InputObject
-Specifies the InputObject of the managedNetwork that this cmdlet removes.
+The Input Object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSManagedNetwork
+Type: Microsoft.Azure.Commands.ManagedNetwork.Models.PSManagedNetwork
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The unique name of the Managed Network.
+
+```yaml
+Type: System.String
+Parameter Sets: NameParameterSet
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns an object representing the item with which you are working.
-By default, this cmdlet does not generate any output.
+Return true if complete
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -163,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group that contains the managedNetwork that this cmdlet removes.
+The create or use an existing resource group name.
 
 ```yaml
 Type: System.String
@@ -171,9 +159,24 @@ Parameter Sets: NameParameterSet
 Aliases:
 
 Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The unique ARM id of an existing resource.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -187,7 +190,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -203,7 +206,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
