@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         public static Color Green => new Color($"{Esc}[38;5;77m");
 
-        public static Color Purple => new Color($"{Esc}[38;5;105m");
+        public static Color Purple => new Color($"{Esc}[38;5;141m");
 
         public static Color Blue => new Color($"{Esc}[38;5;39m");
 
-        public static Color Gray => new Color($"{Esc}[38;5;8m");
+        public static Color Gray => new Color($"{Esc}[38;5;246m");
 
         public static Color Reset => new Color($"{Esc}[0m");
 
