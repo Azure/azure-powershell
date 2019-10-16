@@ -49,5 +49,8 @@ namespace Commands.Network.Test
 
         //Azure NRP Firewall dev team
         public const string azurefirewall = "azurefirewall";
+
+        // Azure NRP bastion dev team
+        public const string bastion = "bastion";
     }
 }

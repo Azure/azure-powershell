@@ -427,7 +427,9 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Set-AzFirewallPolicyRuleCollectionGroup', 'Get-AzFirewallPolicyRuleCollectionGroup',
                'Remove-AzFirewallPolicyRuleCollectionGroup',
                'New-AzFirewallPolicy', 'Get-AzFirewallPolicy', 'Set-AzFirewallPolicy',
-               'Remove-AzFirewallPolicy'
+               'Remove-AzFirewallPolicy',
+               'New-AzVirtualRouter','Remove-AzVirtualRouter','Get-AzVirtualRouter',
+               'Add-AzVirtualRouterPeer','Update-AzVirtualRouterPeer','Remove-AzVirtualRouterPeer', 'Get-AzVirtualRouterPeer'
 
 # Variables to export from this module
 # VariablesToExport = @()
