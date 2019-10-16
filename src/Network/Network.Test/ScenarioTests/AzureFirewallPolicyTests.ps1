@@ -31,6 +31,8 @@ function Test-AzureFirewallPolicyCRUD {
     $appRcPriority = 400
     $appRcActionType = "Allow"
 
+    $pipelineRcPriority = 154
+
     # AzureFirewallPolicyApplicationRuleCollection 2
     $appRc2Name = "appRc2"
     $appRc2Priority = 300
@@ -199,7 +201,11 @@ function Test-AzureFirewallPolicyCRUD {
         Assert-AreEqual $natRule1TranslatedPort $natRuleCollection.TranslatedPort
 
 
-        # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
+        $testPipelineRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -AzureFirewallPolicyName $getAzureFirewallPolicy.Name -ResourceGroupName $rgname
+        $testPipelineRg|Set-AzFirewallPolicyRuleCollectionGroup -Priority $pipelineRcPriority
+        $testPipelineRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -AzureFirewallPolicyName $getAzureFirewallPolicy.Name -ResourceGroupName $rgname
+        Assert-AreEqual $pipelineRcPriority $testPipelineRg.properties.Priority 
+
         $azureFirewallPolicyAsJob = New-AzFirewallPolicy –Name $azureFirewallPolicyAsJobName -ResourceGroupName $rgname -Location $location -AsJob
         $result = $azureFirewallPolicyAsJob | Wait-Job
         Assert-AreEqual "Completed" $result.State;

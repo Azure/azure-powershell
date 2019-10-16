@@ -25,7 +25,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicy", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicy))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicy", SupportsShouldProcess = true, DefaultParameterSetName = SetByNameParameterSet), OutputType(typeof(PSAzureFirewallPolicy))]
     public class SetAzureFirewallPolicyCommand : AzureFirewallPolicyBaseCmdlet
     {
 
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 this.Location = this.IsParameterBound(c => c.Location) ? Location : InputObject.Location;
                 this.ThreatIntelMode = this.IsParameterBound(c => c.ThreatIntelMode) ? ThreatIntelMode : InputObject.ThreatIntelMode;
-                this.BasePolicy = this.IsParameterBound(c => c.BasePolicy) ? BasePolicy : InputObject.BasePolicy.Id;
+                this.BasePolicy = this.IsParameterBound(c => c.BasePolicy) ? BasePolicy : (InputObject.BasePolicy != null ? InputObject.BasePolicy.Id : null);
 
                 var firewallPolicy = new PSAzureFirewallPolicy()
                 {
