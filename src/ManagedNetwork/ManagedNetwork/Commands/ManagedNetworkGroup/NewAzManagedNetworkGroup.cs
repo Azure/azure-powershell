@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
 
         [Parameter(Mandatory = true, HelpMessage = Constants.ManagedNetworkLocationHelp)]
         [ValidateNotNullOrEmpty]
+        [LocationCompleter("Microsoft.ManagedNetwork/managedNetworks")]
         public string Location { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork management group ids.")]

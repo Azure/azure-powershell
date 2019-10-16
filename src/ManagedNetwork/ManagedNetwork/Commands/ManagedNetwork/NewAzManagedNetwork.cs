@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
 
         [Parameter(Position = 3, Mandatory = true, HelpMessage = Constants.ManagedNetworkLocationHelp)]
         [ValidateNotNullOrEmpty]
+        [LocationCompleter("Microsoft.ManagedNetwork/managedNetworks")]
         public string Location { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ManagedNetworkTagHelp)]

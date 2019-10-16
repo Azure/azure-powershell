@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
            Mandatory = true,
            HelpMessage = Constants.ManagedNetworkNameHelp,
            ParameterSetName = Constants.NameParameterSet)]
+        [ResourceNameCompleter("Microsoft.ManagedNetwork/managedNetworks", "ResourceGroupName")]
         public string Name { get; set; }
 
         /// <summary>

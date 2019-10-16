@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
             HelpMessage = Constants.ManagedNetworkGroupNameHelp,
             ParameterSetName = Constants.ManagedNetworkObjectParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.ManagedNetwork/managedNetworks/managednetworkgroups", "ResourceGroupName", "ManagedNetworkName")]
         public string Name { get; set; }
 
         /// <summary>
