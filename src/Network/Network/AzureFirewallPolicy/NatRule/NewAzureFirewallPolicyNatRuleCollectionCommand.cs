@@ -71,13 +71,13 @@ namespace Microsoft.Azure.Commands.Network
 
             var natRuleCollections = new PSAzureFirewallPolicyNatRuleCollection
             {
-                name = this.Name,
-                priority = this.Priority,
-                rule = this.Rule,
-                Action = new PSAzureFirewallPolicyNatRuleCollectionAction { type = ActionType },
-                translatedAddress = this.TranslatedAddress,
-                translatedPort = this.TranslatedPort,
-                ruleCollectionType = "FirewallPolicyNatRule"
+                Name = this.Name,
+                Priority = this.Priority,
+                Rule = this.Rule,
+                Action = new PSAzureFirewallPolicyNatRuleCollectionAction { Type = ActionType },
+                TranslatedAddress = this.TranslatedAddress,
+                TranslatedPort = this.TranslatedPort,
+                RuleCollectionType = "FirewallPolicyNatRule"
             };
 
             WriteObject(natRuleCollections);

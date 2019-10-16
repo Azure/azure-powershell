@@ -26,11 +26,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSAzureFirewallPolicyNatRuleCollectionAction Action { get; set; }
 
         [JsonProperty("ruleCondition")]
-        public PSAzureFirewallPolicyNetworkRule rule { get; set; }
+        public PSAzureFirewallPolicyNetworkRule Rule { get; set; }
 
-        public string translatedAddress { get; set; }
+        [JsonProperty("translatedAddress")]
+        public string TranslatedAddress { get; set; }
 
-        public string translatedPort { get; set; }
+        [JsonProperty("translatedPort")]
+        public string TranslatedPort { get; set; }
 
         [JsonIgnore]
         public string ActionText
@@ -41,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string RulesText
         {
-            get { return JsonConvert.SerializeObject(rule, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(Rule, Formatting.Indented); }
         }
 
 
@@ -52,7 +54,7 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentException($"Rule name cannot be an empty string.");
             }
 
-            var rule = this.rule;
+            var rule = this.Rule;
 
             if (rule == null)
             {

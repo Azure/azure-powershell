@@ -109,8 +109,8 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.IsParameterBound(c => c.InputObject))
             {
-                this.Name = InputObject.name;
-                var resourceId = InputObject.properties.Id;
+                this.Name = InputObject.Name;
+                var resourceId = InputObject.Properties.Id;
 
                 var resourceInfo = new ResourceIdentifier(resourceId);
                 this.FirewallPolicyName = resourceInfo.ParentResource.Split('/')[1];
@@ -118,14 +118,14 @@ namespace Microsoft.Azure.Commands.Network
 
                 ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup
                 {
-                    priority = this.IsParameterBound(c => c.Priority) ? Priority : InputObject.properties.priority,
-                    ruleCollection = this.IsParameterBound(c => c.RuleCollection) ? RuleCollection.ToList() : InputObject.properties.ruleCollection?.ToList()
+                    Priority = this.IsParameterBound(c => c.Priority) ? Priority : InputObject.Properties.Priority,
+                    ruleCollection = this.IsParameterBound(c => c.RuleCollection) ? RuleCollection.ToList() : InputObject.Properties.ruleCollection?.ToList()
                 };
 
                 rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper
                 {
-                    name = InputObject.name,
-                    properties = ruleGroup
+                    Name = InputObject.Name,
+                    Properties = ruleGroup
                 };
 
             }
@@ -137,13 +137,13 @@ namespace Microsoft.Azure.Commands.Network
                 this.FirewallPolicyName = resourceInfo.ParentResource.Split('/')[1];
                 ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup
                 {
-                    priority = Priority,
+                    Priority = Priority,
                     ruleCollection = this.RuleCollection?.ToList()
                 };
                 rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper
                 {
-                    name = this.Name,
-                    properties = ruleGroup
+                    Name = this.Name,
+                    Properties = ruleGroup
                 };
             }
             else if (this.IsParameterBound(c => c.FirewallPolicyObject))
@@ -152,26 +152,26 @@ namespace Microsoft.Azure.Commands.Network
                 this.FirewallPolicyName = FirewallPolicyObject.Name;
                 ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup
                 {
-                    priority = Priority,
+                    Priority = Priority,
                     ruleCollection = this.RuleCollection?.ToList()
                 };
                 rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper
                 {
-                    name = this.Name,
-                    properties = ruleGroup
+                    Name = this.Name,
+                    Properties = ruleGroup
                 };
             }
             else if (this.IsParameterBound(c => c.FirewallPolicyName))
             {
                 ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup
                 {
-                    priority = Priority,
+                    Priority = Priority,
                     ruleCollection = this.RuleCollection?.ToList()
                 };
                 rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper
                 {
-                    name = this.Name,
-                    properties = ruleGroup
+                    Name = this.Name,
+                    Properties = ruleGroup
                 };
             }
 

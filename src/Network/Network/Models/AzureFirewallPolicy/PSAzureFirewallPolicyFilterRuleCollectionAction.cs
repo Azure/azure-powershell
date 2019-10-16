@@ -13,10 +13,13 @@
 // limitations under the License.
 //
 
+using Newtonsoft.Json;
+
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSAzureFirewallPolicyFilterRuleCollectionAction
     {
-        public string type { get; set; }
+        [JsonProperty("type")]
+        public string Type { get; set; }
     }
 }
