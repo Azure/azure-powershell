@@ -61,7 +61,7 @@ param(
 
     [Parameter(HelpMessage='Resource tags.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Dns.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Info(SerializedName='tags', PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IResourceTags]), Description='Resource tags.')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Info(SerializedName='tags', PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20171001.IResourceTags]), Description='Resource tags.')]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

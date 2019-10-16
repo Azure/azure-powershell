@@ -55,9 +55,9 @@ require:
   - $(repo)/specification/storage/resource-manager/readme.md
 
 subject-prefix: ''
-title: Storage
-module-version: 4.0.0
-skip-model-cmdlets: true
+# title: Storage
+# module-version: 4.0.0
+# skip-model-cmdlets: true
 
 directive:
   # Remove unnedded cmdlets
@@ -118,7 +118,33 @@ directive:
   - where:
       subject: ^StorageAccountNameAvailability$
     remove: true
-   
+  - where:
+      verb: Set|New|Remove|Update
+      subject: ^StorageAccount$
+    remove: true
+  - where:
+      verb: Get
+      subject: ^StorageAccountServiceSas$
+    remove: true
+  - where:
+      verb: Get
+      subject: ^StorageAccountSas$
+    remove: true
+  - where:
+      verb: New
+      subject: ^StorageAccountKey$
+    remove: true
+
+
+  # Hide Storage Account cmdlets
+  - where:
+      subject: ^StorageAccount.*
+    hide: true
+  - where:
+      subject: ^StorageAccount.*
+    set:
+      subject-prefix: ''
+  
   # StorageAccount
   - where:
       subject: StorageAccount.*
@@ -156,12 +182,6 @@ directive:
     set:
       parameter-name: EncryptTableService
   - where:
-      verb: Set
-      subject: ^StorageAccount$
-    set:
-      verb: Invoke
-      subject: StorageAccountFailover
-  - where:
       subject: ^StorageAccount$
       parameter-name: Keyvaultproperty(.*)
     set:
@@ -171,9 +191,4 @@ directive:
       parameter-name: IsHnsEnabled
     set:
       parameter-name: EnableHierarchicalNamespace
-  - where:
-      subject: .*ImmutabilityPolicy.*
-      parameter-name: ImmutabilityPeriodSinceCreationInDay
-    set:
-      parameter-name: ImmutabilityPeriod
 ```
