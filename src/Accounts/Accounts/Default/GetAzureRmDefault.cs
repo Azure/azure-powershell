@@ -20,6 +20,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Internal.Resources;
 using System;
 using System.Management.Automation;
+using System.Runtime.CompilerServices;
+using System.Transactions;
 
 namespace Microsoft.Azure.Commands.Profile.Default
 {
@@ -35,9 +37,21 @@ namespace Microsoft.Azure.Commands.Profile.Default
         [Parameter(ParameterSetName = ResourceGroupParameterSet, Mandatory = false, HelpMessage = "Display Default Resource Group", ValueFromPipelineByPropertyName = true)]
         public SwitchParameter ResourceGroup { get; set; }
 
+        protected override IAzureContext DefaultContext
+        {
+            get
+            {
+                if (AzureRmProfileProvider.Instance.Profile == null || AzureRmProfileProvider.Instance.Profile.DefaultContext == null || AzureRmProfileProvider.Instance.Profile.DefaultContext.Account == null)
+                {
+                    throw new PSInvalidOperationException(ResourceManager.Common.Properties.Resources.RunConnectAccount);
+                }
+                return AzureRmProfileProvider.Instance.Profile.DefaultContext;
+            }
+        }
+
         public override void ExecuteCmdlet()
         {
-            IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
+            IAzureContext context = DefaultContext;
             IResourceManagementClient client = AzureSession.Instance.ClientFactory.CreateCustomArmClient<ResourceManagementClient>(
                                     context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
                                     AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),
