@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 return new List<AzureTenant>() { CreateTenant(tenant) };
             }
 
-            List<AzureTenant> tenants = ListAccountTenants(_profile.DefaultContext.Account, _profile.DefaultContext.Environment, null, ShowDialog.Never, null);
+            List<AzureTenant> tenants = ListAccountTenants(DefaultContext.Account, DefaultContext.Environment, null, ShowDialog.Never, null);
             return tenants.Where(t => string.IsNullOrEmpty(tenant) ||
                                          tenant.Equals(t.Id.ToString(), StringComparison.OrdinalIgnoreCase) ||
                                          tenant.Equals(t.Directory, StringComparison.OrdinalIgnoreCase))
