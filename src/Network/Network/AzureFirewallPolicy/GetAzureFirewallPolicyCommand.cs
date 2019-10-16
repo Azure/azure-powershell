@@ -25,7 +25,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicy", DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(PSAzureFirewall), typeof(IEnumerable<PSAzureFirewall>))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicy", DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(PSAzureFirewallPolicy))]
     public class GetAzureFirewallPolicyCommand : AzureFirewallPolicyBaseCmdlet
     {
 

@@ -22,12 +22,12 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
 
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyNatRuleCollection", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallNetworkRuleCollection))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyNatRuleCollection"), OutputType(typeof(PSAzureFirewallNetworkRuleCollection))]
     public class NewAzureFirewallPolicyNatRuleCollectionsCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the Network Rule Collection")]
+            HelpMessage = "The name of the Nat Rule Collection")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network
         public uint Priority { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The list of network rules")]
         [ValidateNotNullOrEmpty]
         public PSAzureFirewallPolicyNetworkRule Rule { get; set; }
@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             MNM.AzureFirewallNatRCActionType.Dnat,
+            MNM.AzureFirewallNatRCActionType.Snat,
             IgnoreCase = false)]
         public string ActionType { get; set; }
 

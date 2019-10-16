@@ -21,12 +21,12 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyFilterRuleCollection", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicyRuleCollectionGroup))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyFilterRuleCollection"), OutputType(typeof(PSAzureFirewallPolicyRuleCollectionGroup))]
     public class NewAzureFirewallPolicyFilterRuleCollectionCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the Application Rule Collection")]
+            HelpMessage = "The name of the Filter Rule Collection")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network
         public uint Priority { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The list of application rules")]
         [ValidateNotNullOrEmpty]
         public PSAzureFirewallPolicyRule[] Rule { get; set; }

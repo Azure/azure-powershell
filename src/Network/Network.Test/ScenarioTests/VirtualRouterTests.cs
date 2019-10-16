@@ -13,42 +13,24 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
-    using Xunit.Abstractions;
-
-    public class CortexTests : NetworkTestRunner
+    public class VirtualRouterTests : NetworkTestRunner
     {
-        public CortexTests(ITestOutputHelper output)
+        public VirtualRouterTests(Xunit.Abstractions.ITestOutputHelper output)
             : base(output)
         {
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
-        public void TestCortexCRUD()
-        {
-            TestRunner.RunTestScript("Test-CortexCRUD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
-        public void TestCortexExpressRouteCRUD()
+        public void TestVirtualRouterCRUDMinimalParameters()
         {
-            TestRunner.RunTestScript("Test-CortexExpressRouteCRUD");
-        }
-
-        [Fact]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
-        public void TestCortexDownloadConfig()
-        {
-            TestRunner.RunTestScript("Test-CortexDownloadConfig");
+            TestRunner.RunTestScript(string.Format("Test-VirtualRouterCRUD"));
         }
     }
 }

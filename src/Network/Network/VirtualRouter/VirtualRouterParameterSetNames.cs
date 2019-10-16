@@ -12,25 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-
-namespace Commands.Network.Test.ScenarioTests
-{    
-    public class ExpressRoutePortsLocationTests : NetworkTestRunner
+namespace Microsoft.Azure.Commands.Network
+{
+    internal static class VirtualRouterParameterSetNames
     {
-        public ExpressRoutePortsLocationTests(Xunit.Abstractions.ITestOutputHelper output)
-            : base(output)
-        {
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
-        public void TestExpressRoutePortsLocationRead()
-        {
-            TestRunner.RunTestScript(string.Format("Test-ExpressRoutePortsLocationRead"));
-        }
+        internal const string ByHostedGateway = "HostedGatewayParameterSet";
+        internal const string ByHostedGatewayId = "HostedGatewayIdParameterSet";
+        internal const string ByVirtualRouterResourceId = "VirtualRouterResourceIdParameterSet";
+        internal const string ByVirtualRouterInputObject = "VirtualRouterInputObjectParameterSet";
+        internal const string ByVirtualRouterName = "VirtualRouterNameParameterSet";
     }
 }
