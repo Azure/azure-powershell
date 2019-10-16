@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# Az.Blockchain
-This directory contains the PowerShell module for the Blockchain service.
+# Az.ContainerService
+This directory contains the PowerShell module for the ContainerService service.
 
 ---
 ## Status
-[![Az.Blockchain](https://img.shields.io/powershellgallery/v/Az.Blockchain.svg?style=flat-square&label=Az.Blockchain "Az.Blockchain")](https://www.powershellgallery.com/packages/Az.Blockchain/)
+[![Az.ContainerService](https://img.shields.io/powershellgallery/v/Az.ContainerService.svg?style=flat-square&label=Az.ContainerService "Az.ContainerService")](https://www.powershellgallery.com/packages/Az.ContainerService/)
 
 ## Info
 - Modifiable: yes
@@ -23,7 +23,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.Blockchain`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.ContainerService`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ---
@@ -48,11 +48,46 @@ In this directory, run AutoRest:
 
 ### General settings
 > Values
+
+``` yaml
+powershell: true
+azure: true
+branch: master
+repo: https://github.com/erich-wang/azure-rest-api-specs/blob/$(branch)
+prefix: Az
+subject-prefix: ''
+module-name: $(prefix).$(service-name)
+namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
+clear-output-folder: true
+output-folder: .
+aks: $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService
+input-file:
+- $(aks)/preview/2019-09-30/openShiftManagedClusters.json
+- $(aks)/stable/2019-08-01/location.json
+- $(aks)/stable/2019-08-01/managedClusters.json
+- $(aks)/stable/2017-07-01/containerService.json
+
+module-version: 0.0.1
+title: ContainerServiceClient
+
+directive:
+  - where:
+      subject: Operation
+    hide: true
+  - where: $.definitions.Identifier.properties
+    suppress: R3019
+```
+
+<!--
+
+require:
+  - $(repo)/specification/containerservice/resource-manager/readme.md
+
 ``` yaml
 azure: true
 powershell: true
-branch: ps-preview
-repo: https://github.com/Azure/azure-rest-api-specs/blob/$(branch)
+branch: master
+repo: https://github.com/erich-wang/azure-rest-api-specs/blob/$(branch)
 ```
 
 > Names
@@ -92,3 +127,4 @@ require:
 module-version: 0.0.1
 
 ```
+-->
