@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzFirewallPolicyRuleCollectionGroup
 
 ## SYNOPSIS
-Removes a Azure Firewall Policy Rule Collection Group
+Removes a Azure Firewall Policy Rule Collection Group in a Azure firewall policy
 
 ## SYNTAX
 

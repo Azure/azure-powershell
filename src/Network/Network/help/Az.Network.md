@@ -976,6 +976,9 @@ Remove a Firewall.
 ### [Remove-AzFirewallPolicy](Remove-AzFirewallPolicy.md)
 Removes an Azure Firewall Policy.
 
+### [Remove-AzFirewallPolicyRuleCollectionGroup](Remove-AzFirewallPolicyRuleCollectionGroup.md)
+Removes an Azure Firewall Policy Rule Collection Group in a Azure firewall policy.
+
 ### [Remove-AzLoadBalancer](Remove-AzLoadBalancer.md)
 Removes a load balancer.
 
