@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -79,12 +80,17 @@ namespace Microsoft.Azure.Commands.Network
         {
             var azureFirewall = this.AzureFirewallClient.Get(resourceGroupName, name);
 
-            WriteObject(azureFirewall);
+            //WriteObject("herehadf");
             var psAzureFirewall = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewall>(azureFirewall);
-            WriteObject(psAzureFirewall);
+            // var sku = new PSAzureFirewallSku();
+            // sku.Name = azureFirewall.Sku.Name;
+            // sku.Tier = azureFirewall.Sku.Tier;
+            // psAzureFirewall.Sku = sku;
             psAzureFirewall.ResourceGroupName = resourceGroupName;
             psAzureFirewall.Tag = TagsConversionHelper.CreateTagHashtable(azureFirewall.Tags);
-            
+            WriteObject(JsonConvert.SerializeObject(psAzureFirewall));
+            WriteObject(JsonConvert.DeserializeObject<PSAzureFirewall>(JsonConvert.SerializeObject(psAzureFirewall)));
+
             return psAzureFirewall;
         }
 

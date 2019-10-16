@@ -22,11 +22,5 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Name { get; set; }
 
         public string Tier { get; set; }
-
-        public PSAzureFirewallSku(string sku)
-        {
-            this.Name = sku;
-            this.Tier = MNM.AzureFirewallSkuTier.Standard;
-        }
     }
 }
