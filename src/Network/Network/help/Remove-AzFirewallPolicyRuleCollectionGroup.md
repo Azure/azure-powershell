@@ -1,60 +1,62 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azfirewallpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azfirewallpolicyrulecollectiongroup
 schema: 2.0.0
 ---
 
-# Remove-AzFirewallPolicy
+# Remove-AzFirewallPolicyRuleCollectionGroup
 
 ## SYNOPSIS
-Removes an Azure Firewall Policy
+Removes a Azure Firewall Policy Rule Collection Group in a Azure firewall policy
 
 ## SYNTAX
 
-### RemoveByNameParameterSet
+### RemoveByNameParameterSet (Default)
 ```
-Remove-AzFirewallPolicy -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzFirewallPolicyRuleCollectionGroup -Name <String> -ResourceGroupName <String>
+ -AzureFirewallPolicyName <String> [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RemoveByResourceIdParameterSet
+### RemoveByParentInputObjectParameterSet
 ```
-Remove-AzFirewallPolicy [-Force] [-PassThru] [-AsJob] -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzFirewallPolicyRuleCollectionGroup -Name <String> -FirewallPolicyObject <PSAzureFirewallPolicy>
+ [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RemoveByInputObjectParameterSet
 ```
-Remove-AzFirewallPolicy [-Force] [-PassThru] [-AsJob] -InputObject <PSAzureFirewallPolicy>
+Remove-AzFirewallPolicyRuleCollectionGroup -InputObject <PSAzureFirewallPolicyRuleCollectionGroupWrapper>
+ [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### RemoveByResourceIdParameterSet
+```
+Remove-AzFirewallPolicyRuleCollectionGroup -ResourceId <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzFirewallPolicy** cmdlet removes an Azure Firewall Policy.
+The **Remove-AzFirewallPolicyRuleCollectionGroup** cmdlet removes a rule collection group from an Azure Firewall Policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzFirewallPolicy -Name firewallpolicy -ResourceGroupName TestRg
+PS C:\> Remove-AzFirewallPolicyRuleCollectionGroup -Name testRcGroup -FirewallPolicyObject $fp
 ```
 
-This example removes the firewall policy named "firewallpolicy" in the resourcegroup "TestRg"
+This example removes the firewall policy rule colelction group named "testRcGroup" in the firewall policy object $fp
 
 ### Example 2
 ```powershell
-PS C:\> Remove-AzFirewallPolicy -Name firewallpolicy -ResourceId "/subscriptions/12345/resourceGroups/TestRg/providers/Microsoft.Network/firewallpolicies/firewallPolicy1"
+PS C:\> Remove-AzFirewallPolicyRuleCollectionGroup -Name testRcGroup -ResourceGroupName testRg -AzureFirewallPolicyName fpName 
 ```
 
-This example removes the firewall policy by the Id.
-
-### Example 3
-```powershell
-PS C:\> Remove-AzFirewallPolicy -InputObject $fp
-```
-
-This example removes the firewall policy $fp
+This example removes the firewall policy rule colelction group named "testRcGroup" in the firewall named "fpName" frpm the resourcegroup names "testRg"
 
 ## PARAMETERS
 
@@ -62,7 +64,7 @@ This example removes the firewall policy $fp
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -77,7 +79,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -88,11 +90,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AzureFirewallPolicyName
+The name of the firewall policy
+
+```yaml
+Type: String
+Parameter Sets: RemoveByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -FirewallPolicyObject
+Firewall Policy.
+
+```yaml
+Type: PSAzureFirewallPolicy
+Parameter Sets: RemoveByParentInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Force
 Do not ask for confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -104,10 +136,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The AzureFirewall Policy
+Firewall Policy Rule collection group object
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
+Type: PSAzureFirewallPolicyRuleCollectionGroupWrapper
 Parameter Sets: RemoveByInputObjectParameterSet
 Aliases:
 
@@ -122,8 +154,20 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: RemoveByNameParameterSet
+Aliases: ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: RemoveByParentInputObjectParameterSet
 Aliases: ResourceName
 
 Required: True
@@ -138,7 +182,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -153,7 +197,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: RemoveByNameParameterSet
 Aliases:
 
@@ -165,14 +209,14 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource Id.
+The resource Id of the Rule collection groupy
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: RemoveByResourceIdParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -183,7 +227,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -199,7 +243,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -218,6 +262,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
+
+### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyRuleCollectionGroupWrapper
 
 ## OUTPUTS
 

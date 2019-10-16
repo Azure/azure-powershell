@@ -20,6 +20,7 @@ function Test-AzureFirewallPolicyCRUD {
     # Setup
     $rgname = Get-ResourceGroupName
     $azureFirewallPolicyName = Get-ResourceName
+    $azureFirewallPolicyAsJobName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
     $location = "westcentralus"
 
@@ -29,6 +30,8 @@ function Test-AzureFirewallPolicyCRUD {
     $appRcName = "appRc"
     $appRcPriority = 400
     $appRcActionType = "Allow"
+
+    $pipelineRcPriority = 154
 
     # AzureFirewallPolicyApplicationRuleCollection 2
     $appRc2Name = "appRc2"
@@ -95,10 +98,10 @@ function Test-AzureFirewallPolicyCRUD {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
         
         # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
-        $azureFirewallPolicy = New-AzFirewallPolicy –Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location 
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location 
 
         # Get AzureFirewallPolicy
-        $getAzureFirewallPolicy = Get-AzFirewallPolicy -name $azureFirewallPolicyName -ResourceGroupName $rgname
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
 
         #verification
         Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
@@ -123,7 +126,7 @@ function Test-AzureFirewallPolicyCRUD {
         # Create a NAT rule
         $natRc = New-AzFirewallPolicyNatRuleCollection -Name $networkRcName -Priority $natRcPriority -Rule $networkRule -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort -ActionType $natRcActionType
 
-        New-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -Priority 100 -RuleCollection $appRc, $appRc2, $natRc -AzureFirewallPolicy $azureFirewallPolicy -ResourceGroupName $rgName
+        New-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -Priority 100 -RuleCollection $appRc, $appRc2, $natRc -FirewallPolicyObject $azureFirewallPolicy
 
 
         # # Update ThreatIntel mode
@@ -131,7 +134,7 @@ function Test-AzureFirewallPolicyCRUD {
         # Set AzureFirewallPolicy
         Set-AzFirewallPolicy -InputObject $azureFirewallPolicy
         # Get AzureFirewallPolicy
-        $getAzureFirewallPolicy = Get-AzFirewallPolicy -name $azureFirewallPolicyName -ResourceGroupName $rgName
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgName
 
         # #verification
         Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
@@ -197,6 +200,15 @@ function Test-AzureFirewallPolicyCRUD {
         Assert-AreEqual $natRule1TranslatedAddress $natRuleCollection.TranslatedAddress
         Assert-AreEqual $natRule1TranslatedPort $natRuleCollection.TranslatedPort
 
+
+        $testPipelineRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -AzureFirewallPolicyName $getAzureFirewallPolicy.Name -ResourceGroupName $rgname
+        $testPipelineRg|Set-AzFirewallPolicyRuleCollectionGroup -Priority $pipelineRcPriority
+        $testPipelineRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -AzureFirewallPolicyName $getAzureFirewallPolicy.Name -ResourceGroupName $rgname
+        Assert-AreEqual $pipelineRcPriority $testPipelineRg.properties.Priority 
+
+        $azureFirewallPolicyAsJob = New-AzFirewallPolicy -Name $azureFirewallPolicyAsJobName -ResourceGroupName $rgname -Location $location -AsJob
+        $result = $azureFirewallPolicyAsJob | Wait-Job
+        Assert-AreEqual "Completed" $result.State;
     }
     finally {
         # Cleanup

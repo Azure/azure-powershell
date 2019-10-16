@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyNetworkRule", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallNetworkRule))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyNetworkRule"), OutputType(typeof(PSAzureFirewallNetworkRule))]
     public class NewAzureFirewallPolicyNetworkRuleCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
             MNM.AzureFirewallNetworkRuleProtocol.UDP,
             MNM.AzureFirewallNetworkRuleProtocol.ICMP,
             IgnoreCase = false)]
-        public string[] Protocols { get; set; }
+        public string[] Protocol { get; set; }
         
         public override void Execute()
         {
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network
             var networkRule = new PSAzureFirewallPolicyNetworkRule
             {
                 name = this.Name,
-                protocols = this.Protocols?.ToList(),
+                protocols = this.Protocol?.ToList(),
                 sourceAddresses = this.SourceAddress?.ToList(),
                 destinationAddresses = this.DestinationAddress?.ToList(),
                 destinationPorts = this.DestinationPort?.ToList(),

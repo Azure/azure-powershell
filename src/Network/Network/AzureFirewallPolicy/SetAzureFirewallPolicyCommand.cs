@@ -25,7 +25,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicy", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewall))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicy", SupportsShouldProcess = true, DefaultParameterSetName = SetByNameParameterSet), OutputType(typeof(PSAzureFirewallPolicy))]
     public class SetAzureFirewallPolicyCommand : AzureFirewallPolicyBaseCmdlet
     {
 
@@ -92,6 +92,7 @@ namespace Microsoft.Azure.Commands.Network
                     HelpMessage = "location.", ParameterSetName = SetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [Parameter(Mandatory = true, ParameterSetName = SetByResourceIdParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet)]
         public virtual string Location { get; set; }
 
         [Parameter(
@@ -114,7 +115,6 @@ namespace Microsoft.Azure.Commands.Network
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
                 Name = InputObject.Name;
-                Location = InputObject.Location;
             }
 
             if (!NetworkBaseCmdlet.IsResourcePresent(() => GetAzureFirewallPolicy(ResourceGroupName, Name)))
@@ -122,14 +122,25 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
-            if (InputObject != null)
+            if (this.IsParameterBound(c => c.InputObject))
             {
-                // Map to the sdk object
-                var firewallPolicy = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(InputObject);
+                this.Location = this.IsParameterBound(c => c.Location) ? Location : InputObject.Location;
+                this.ThreatIntelMode = this.IsParameterBound(c => c.ThreatIntelMode) ? ThreatIntelMode : InputObject.ThreatIntelMode;
+                this.BasePolicy = this.IsParameterBound(c => c.BasePolicy) ? BasePolicy : (InputObject.BasePolicy != null ? InputObject.BasePolicy.Id : null);
 
+                var firewallPolicy = new PSAzureFirewallPolicy()
+                {
+                    Name = this.Name,
+                    ResourceGroupName = this.ResourceGroupName,
+                    Location = this.Location,
+                    ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
+                    BasePolicy = this.BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(this.BasePolicy) : null
+                };
+
+
+                var azureFirewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(firewallPolicy);
                 // Execute the PUT AzureFirewall Policy call
-                this.AzureFirewallPolicyClient.CreateOrUpdate(ResourceGroupName, Name, firewallPolicy);
-
+                this.AzureFirewallPolicyClient.CreateOrUpdate(ResourceGroupName, Name, azureFirewallPolicyModel);
                 var getAzureFirewall = this.GetAzureFirewallPolicy(ResourceGroupName, Name);
                 WriteObject(getAzureFirewall);
             }

@@ -21,41 +21,159 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Management.Network;
 using Newtonsoft.Json;
 using Microsoft.Rest.Serialization;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyRuleCollectionGroup", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPolicyRuleCollectionGroup))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyRuleCollectionGroup", SupportsShouldProcess = true, DefaultParameterSetName = SetByNameParameterSet), OutputType(typeof(PSAzureFirewallPolicyRuleCollectionGroup))]
     public class SetAzureFirewallPolicyRuleGroupCommand : AzureFirewallPolicyRuleCollectionGroupBaseCmdlet
     {
 
+        private const string SetByNameParameterSet = "SetByNameParameterSet";
+        private const string SetByParentObjectParameterSet = "SetByParentInputObjectParameterSet";
+        private const string SetByInputObjectParameterSet = "SetByInputObjectParameterSet";
+        private const string SetByResourceIdParameterSet = "SetByResourceIdParameterSet";
+
+
+        [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The list of rules")]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource name.", ParameterSetName = SetByNameParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = SetByParentObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public virtual string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The list of rules", ParameterSetName = SetByInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSAzureFirewallPolicyRuleCollectionGroupWrapper InputObject { get; set; }
 
         [Parameter(
                    Mandatory = true,
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Firewall Policy.")]
+                   HelpMessage = "Firewall Policy.", ParameterSetName = SetByParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        public PSAzureFirewallPolicy AzureFirewallPolicy { get; set; }
+        public PSAzureFirewallPolicy FirewallPolicyObject { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.", ParameterSetName = SetByNameParameterSet)]
+        [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter()]
+        public virtual string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource Id of the Rule collection groupy", ParameterSetName = SetByResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.Network/FirewallPolicies")]
+        public virtual string ResourceId { get; set; }
+
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The name of the firewall policy", ParameterSetName = SetByNameParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public virtual string FirewallPolicyName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The priority of the rule group")]
+        [ValidateRange(100, 65000)]
+        [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = SetByNameParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = SetByParentObjectParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = SetByResourceIdParameterSet)]
+        public uint Priority { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of rule collections")]
+        [ValidateNotNullOrEmpty]
+        public PSAzureFirewallPolicyBaseRuleCollection[] RuleCollection { get; set; }
 
         public override void Execute()
         {
             base.Execute();
+            var ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup();
+            var rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper();
 
-            var ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup
+            if (this.IsParameterBound(c => c.InputObject))
             {
-                priority = InputObject.properties.priority,
-                ruleCollection = InputObject.properties.ruleCollection?.ToList()
-            };
-            
-            var rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper
+                this.Name = InputObject.name;
+                var resourceId = InputObject.properties.Id;
+
+                var resourceInfo = new ResourceIdentifier(resourceId);
+                this.FirewallPolicyName = resourceInfo.ParentResource.Split('/')[1];
+                this.ResourceGroupName = resourceInfo.ResourceGroupName;
+
+                ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup
+                {
+                    priority = this.IsParameterBound(c => c.Priority) ? Priority : InputObject.properties.priority,
+                    ruleCollection = this.IsParameterBound(c => c.RuleCollection) ? RuleCollection.ToList() : InputObject.properties.ruleCollection?.ToList()
+                };
+
+                rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper
+                {
+                    name = InputObject.name,
+                    properties = ruleGroup
+                };
+
+            }
+            else if (this.IsParameterBound(c => c.ResourceId))
             {
-                name = InputObject.name,
-                properties = ruleGroup
-            };
+                var resourceInfo = new ResourceIdentifier(ResourceId);
+                this.Name = resourceInfo.ResourceName;
+                this.ResourceGroupName = resourceInfo.ResourceGroupName;
+                this.FirewallPolicyName = resourceInfo.ParentResource.Split('/')[1];
+                ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup
+                {
+                    priority = Priority,
+                    ruleCollection = this.RuleCollection?.ToList()
+                };
+                rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper
+                {
+                    name = this.Name,
+                    properties = ruleGroup
+                };
+            }
+            else if (this.IsParameterBound(c => c.FirewallPolicyObject))
+            {
+                this.ResourceGroupName = FirewallPolicyObject.ResourceGroupName;
+                this.FirewallPolicyName = FirewallPolicyObject.Name;
+                ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup
+                {
+                    priority = Priority,
+                    ruleCollection = this.RuleCollection?.ToList()
+                };
+                rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper
+                {
+                    name = this.Name,
+                    properties = ruleGroup
+                };
+            }
+            else if (this.IsParameterBound(c => c.FirewallPolicyName))
+            {
+                ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup
+                {
+                    priority = Priority,
+                    ruleCollection = this.RuleCollection?.ToList()
+                };
+                rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper
+                {
+                    name = this.Name,
+                    properties = ruleGroup
+                };
+            }
 
             var settings = new JsonSerializerSettings
             {
@@ -70,7 +188,7 @@ namespace Microsoft.Azure.Commands.Network
                                         json,
                                         typeof(MNM.FirewallPolicyRuleGroup),
                                         new JsonConverter[] { new Iso8601TimeSpanConverter(), new PolymorphicJsonCustomConverter<MNM.FirewallPolicyRule, MNM.FirewallPolicyRuleCondition>("ruleType", "ruleConditionType"), new TransformationJsonConverter() });
-            this.AzureFirewallPolicyRuleGroupClient.CreateOrUpdate(AzureFirewallPolicy.ResourceGroupName, this.AzureFirewallPolicy.Name, deserializedruleGroup.Name, deserializedruleGroup);
+            this.AzureFirewallPolicyRuleGroupClient.CreateOrUpdate(this.ResourceGroupName, this.FirewallPolicyName, this.Name, deserializedruleGroup);
             WriteObject(InputObject);
         }
     }

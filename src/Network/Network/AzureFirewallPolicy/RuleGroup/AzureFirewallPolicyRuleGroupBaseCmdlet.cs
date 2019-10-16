@@ -93,6 +93,7 @@ namespace Microsoft.Azure.Commands.Network
             ruleCollectionGroup.priority = (uint)getRuleCollectionGroup.Priority;
             ruleCollectionGroupWrapper.properties = ruleCollectionGroup;
             ruleCollectionGroupWrapper.name = getRuleCollectionGroup.Name;
+            ruleCollectionGroupWrapper.properties.Id = getRuleCollectionGroup.Id;
 
             return ruleCollectionGroupWrapper;
         }

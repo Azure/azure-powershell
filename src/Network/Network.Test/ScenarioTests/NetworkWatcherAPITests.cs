@@ -75,7 +75,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.Owner, Category.netanalyticsdev)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestFlowLog()
         {
             TestRunner.RunTestScript("Test-FlowLog");
