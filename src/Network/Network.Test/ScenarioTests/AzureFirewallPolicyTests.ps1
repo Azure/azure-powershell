@@ -98,7 +98,7 @@ function Test-AzureFirewallPolicyCRUD {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
         
         # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
-        $azureFirewallPolicy = New-AzFirewallPolicy –Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location 
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location 
 
         # Get AzureFirewallPolicy
         $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
@@ -206,7 +206,7 @@ function Test-AzureFirewallPolicyCRUD {
         $testPipelineRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -AzureFirewallPolicyName $getAzureFirewallPolicy.Name -ResourceGroupName $rgname
         Assert-AreEqual $pipelineRcPriority $testPipelineRg.properties.Priority 
 
-        $azureFirewallPolicyAsJob = New-AzFirewallPolicy –Name $azureFirewallPolicyAsJobName -ResourceGroupName $rgname -Location $location -AsJob
+        $azureFirewallPolicyAsJob = New-AzFirewallPolicy -Name $azureFirewallPolicyAsJobName -ResourceGroupName $rgname -Location $location -AsJob
         $result = $azureFirewallPolicyAsJob | Wait-Job
         Assert-AreEqual "Completed" $result.State;
     }
