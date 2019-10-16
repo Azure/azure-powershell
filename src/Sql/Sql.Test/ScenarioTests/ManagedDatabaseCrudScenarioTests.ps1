@@ -219,7 +219,7 @@ function Test-RestoreManagedDatabase
 		$targetManagedDatabaseName = Get-ManagedDatabaseName
 		$pointInTime = (Get-date).AddMinutes(5)
 
-		# Wait for 450 seconds for restore to be ready
+		# Once database is created, backup service will automaticly take log backups every 5 minutes. We are waiting 450s to ensure backups are taken to which we can restore.
 		Wait-Seconds 450
 
 		# restore managed database to the same instance
@@ -279,7 +279,7 @@ function Test-RestoreDeletedManagedDatabase
 		$targetManagedDatabaseName4 = Get-ManagedDatabaseName
 		$targetManagedDatabaseName5 = Get-ManagedDatabaseName
 
-		# Wait for 450 seconds for restore to be ready
+		# Once database is created, backup service will automatically take log backups every 5 minutes. We are waiting 450s to ensure backups are taken to which we can restore.
 		Wait-Seconds 450
 
 		# Test remove using all parameters
