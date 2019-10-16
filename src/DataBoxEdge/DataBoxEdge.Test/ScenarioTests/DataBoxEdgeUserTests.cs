@@ -13,11 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.Commands.DataBoxEdge.Test.ScenarioTests.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.DataBoxEdge.Test.ScenarioTests
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
 {
     public class DataBoxEdgeUserTests : DataBoxEdgeScenarioTestBase
     {
@@ -38,14 +37,14 @@ namespace Microsoft.Azure.Commands.DataBoxEdge.Test.ScenarioTests
 
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestCreateUser()
         {
             DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-CreateNewUser");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveUser()
         {
             DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-RemoveUser");

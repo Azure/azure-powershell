@@ -51,7 +51,8 @@ function Test-CreateShare
 
 
 	$staname = Get-StorageAccountCredentialName
-	$encryptionKey = ConvertTo-SecureString Get-EncryptionKey -AsPlainText -Force
+	$encryptionKeyString = Get-EncryptionKey 
+	$encryptionKey = ConvertTo-SecureString $encryptionKeyString -AsPlainText -Force
 	$storageAccountType = 'GeneralPurposeStorage'
 	$storageAccountSkuName = 'Standard_LRS'
 	$storageAccountLocation = 'WestUS'
@@ -89,7 +90,9 @@ function Test-RemoveShare
 
 
 	$staname = Get-StorageAccountCredentialName
-	$encryptionKey = ConvertTo-SecureString Get-EncryptionKey -AsPlainText -Force	
+	$encryptionKeyString = Get-EncryptionKey 
+	$encryptionKey = ConvertTo-SecureString $encryptionKeyString -AsPlainText -Force
+
 	$storageAccountType = 'GeneralPurposeStorage'
 	$storageAccountSkuName = 'Standard_LRS'
 	$storageAccountLocation = 'WestUS'

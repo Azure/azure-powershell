@@ -3137,7 +3137,7 @@ device-name resource-group-name   DataBoxEdgeDevice eastus</dev:code>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>DeviceProperties</maml:name>
+          <maml:name>DeviceProperty</maml:name>
           <maml:Description>
             <maml:para>To Provide Device Properties</maml:para>
           </maml:Description>
@@ -3317,7 +3317,7 @@ device-name resource-group-name   DataBoxEdgeDevice eastus</dev:code>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-        <maml:name>DeviceProperties</maml:name>
+        <maml:name>DeviceProperty</maml:name>
         <maml:Description>
           <maml:para>To Provide Device Properties</maml:para>
         </maml:Description>
@@ -3564,9 +3564,9 @@ iot-role-name</dev:code>
           <maml:Description>
             <maml:para>Share will be created under this ResourceGroupName</maml:para>
           </maml:Description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
-            <maml:name>System.String</maml:name>
+            <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -3576,9 +3576,9 @@ iot-role-name</dev:code>
           <maml:Description>
             <maml:para>Name of the device</maml:para>
           </maml:Description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
-            <maml:name>System.String</maml:name>
+            <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -3588,9 +3588,9 @@ iot-role-name</dev:code>
           <maml:Description>
             <maml:para>Creates a share with Name with Share Access protocol as NFS and</maml:para>
           </maml:Description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
-            <maml:name>System.String</maml:name>
+            <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -3600,9 +3600,9 @@ iot-role-name</dev:code>
           <maml:Description>
             <maml:para>Provide existing StorageAccountCredential's Resource Name</maml:para>
           </maml:Description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
-            <maml:name>System.String</maml:name>
+            <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -3613,7 +3613,7 @@ iot-role-name</dev:code>
             <maml:para>Run cmdlet in the background</maml:para>
           </maml:Description>
           <dev:type>
-            <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+            <maml:name>SwitchParameter</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
@@ -3623,9 +3623,9 @@ iot-role-name</dev:code>
           <maml:Description>
             <maml:para>Read/Write Access for clientIds, For ex:@(@{"ClientId"="192.168.10.10";"AccessRight"="NoAccess"}, @{"ClientId"="192.168.10.11";"AccessRight"="ReadOnly"})</maml:para>
           </maml:Description>
-          <command:parameterValue required="true" variableLength="false">System.Collections.Hashtable[]</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">Hashtable[]</command:parameterValue>
           <dev:type>
-            <maml:name>System.Collections.Hashtable[]</maml:name>
+            <maml:name>Hashtable[]</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -3635,9 +3635,9 @@ iot-role-name</dev:code>
           <maml:Description>
             <maml:para>Set Data Format ex: PageBlob, BlobBlob</maml:para>
           </maml:Description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
-            <maml:name>System.String</maml:name>
+            <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -3647,20 +3647,20 @@ iot-role-name</dev:code>
           <maml:Description>
             <maml:para>The credentials, account, tenant, and subscription used for communication with Azure.</maml:para>
           </maml:Description>
-          <command:parameterValue required="true" variableLength="false">Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">IAzureContextContainer</command:parameterValue>
           <dev:type>
-            <maml:name>Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer</maml:name>
+            <maml:name>IAzureContextContainer</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>Nfs</maml:name>
+          <maml:name>NFS</maml:name>
           <maml:Description>
             <maml:para>AccessProtocol in the case of creating Share</maml:para>
           </maml:Description>
           <dev:type>
-            <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+            <maml:name>SwitchParameter</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
@@ -3671,7 +3671,7 @@ iot-role-name</dev:code>
             <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
           </maml:Description>
           <dev:type>
-            <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+            <maml:name>SwitchParameter</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
@@ -3682,7 +3682,7 @@ iot-role-name</dev:code>
             <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
           </maml:Description>
           <dev:type>
-            <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+            <maml:name>SwitchParameter</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
@@ -3695,9 +3695,9 @@ iot-role-name</dev:code>
           <maml:Description>
             <maml:para>Share will be created under this ResourceGroupName</maml:para>
           </maml:Description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
-            <maml:name>System.String</maml:name>
+            <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -3707,9 +3707,9 @@ iot-role-name</dev:code>
           <maml:Description>
             <maml:para>Name of the device</maml:para>
           </maml:Description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
-            <maml:name>System.String</maml:name>
+            <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -3719,9 +3719,9 @@ iot-role-name</dev:code>
           <maml:Description>
             <maml:para>Creates a share with Name with Share Access protocol as NFS and</maml:para>
           </maml:Description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
-            <maml:name>System.String</maml:name>
+            <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -3731,9 +3731,9 @@ iot-role-name</dev:code>
           <maml:Description>
             <maml:para>Provide existing StorageAccountCredential's Resource Name</maml:para>
           </maml:Description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
-            <maml:name>System.String</maml:name>
+            <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -3744,7 +3744,7 @@ iot-role-name</dev:code>
             <maml:para>Run cmdlet in the background</maml:para>
           </maml:Description>
           <dev:type>
-            <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+            <maml:name>SwitchParameter</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
@@ -3754,9 +3754,9 @@ iot-role-name</dev:code>
           <maml:Description>
             <maml:para>Set Data Format ex: PageBlob, BlobBlob</maml:para>
           </maml:Description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
-            <maml:name>System.String</maml:name>
+            <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -3766,20 +3766,20 @@ iot-role-name</dev:code>
           <maml:Description>
             <maml:para>The credentials, account, tenant, and subscription used for communication with Azure.</maml:para>
           </maml:Description>
-          <command:parameterValue required="true" variableLength="false">Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">IAzureContextContainer</command:parameterValue>
           <dev:type>
-            <maml:name>Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer</maml:name>
+            <maml:name>IAzureContextContainer</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>Smb</maml:name>
+          <maml:name>SMB</maml:name>
           <maml:Description>
             <maml:para>AccessProtocol in the case of creating Share</maml:para>
           </maml:Description>
           <dev:type>
-            <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+            <maml:name>SwitchParameter</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
@@ -3789,9 +3789,9 @@ iot-role-name</dev:code>
           <maml:Description>
             <maml:para>provide access right along with existing usernames to access SMB Share types, For ex: @(@{"Username"="user-name-1";"AccessRight"="Read"}, @{"Username"="user-name-2";"AccessRight"="Read"}, @{"Username"="user-name-3";"AccessRight"="Custom"})</maml:para>
           </maml:Description>
-          <command:parameterValue required="true" variableLength="false">System.Collections.Hashtable[]</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">Hashtable[]</command:parameterValue>
           <dev:type>
-            <maml:name>System.Collections.Hashtable[]</maml:name>
+            <maml:name>Hashtable[]</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -3802,7 +3802,7 @@ iot-role-name</dev:code>
             <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
           </maml:Description>
           <dev:type>
-            <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+            <maml:name>SwitchParameter</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
@@ -3813,7 +3813,7 @@ iot-role-name</dev:code>
             <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
           </maml:Description>
           <dev:type>
-            <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+            <maml:name>SwitchParameter</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
@@ -3826,9 +3826,9 @@ iot-role-name</dev:code>
         <maml:Description>
           <maml:para>Run cmdlet in the background</maml:para>
         </maml:Description>
-        <command:parameterValue required="true" variableLength="false">System.Management.Automation.SwitchParameter</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
-          <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>False</dev:defaultValue>
@@ -3838,9 +3838,9 @@ iot-role-name</dev:code>
         <maml:Description>
           <maml:para>Read/Write Access for clientIds, For ex:@(@{"ClientId"="192.168.10.10";"AccessRight"="NoAccess"}, @{"ClientId"="192.168.10.11";"AccessRight"="ReadOnly"})</maml:para>
         </maml:Description>
-        <command:parameterValue required="true" variableLength="false">System.Collections.Hashtable[]</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">Hashtable[]</command:parameterValue>
         <dev:type>
-          <maml:name>System.Collections.Hashtable[]</maml:name>
+          <maml:name>Hashtable[]</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -3850,9 +3850,9 @@ iot-role-name</dev:code>
         <maml:Description>
           <maml:para>Set Data Format ex: PageBlob, BlobBlob</maml:para>
         </maml:Description>
-        <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>System.String</maml:name>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -3862,9 +3862,9 @@ iot-role-name</dev:code>
         <maml:Description>
           <maml:para>The credentials, account, tenant, and subscription used for communication with Azure.</maml:para>
         </maml:Description>
-        <command:parameterValue required="true" variableLength="false">Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">IAzureContextContainer</command:parameterValue>
         <dev:type>
-          <maml:name>Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer</maml:name>
+          <maml:name>IAzureContextContainer</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -3874,9 +3874,9 @@ iot-role-name</dev:code>
         <maml:Description>
           <maml:para>Name of the device</maml:para>
         </maml:Description>
-        <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>System.String</maml:name>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -3886,21 +3886,21 @@ iot-role-name</dev:code>
         <maml:Description>
           <maml:para>Creates a share with Name with Share Access protocol as NFS and</maml:para>
         </maml:Description>
-        <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>System.String</maml:name>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-        <maml:name>Nfs</maml:name>
+        <maml:name>NFS</maml:name>
         <maml:Description>
           <maml:para>AccessProtocol in the case of creating Share</maml:para>
         </maml:Description>
-        <command:parameterValue required="true" variableLength="false">System.Management.Automation.SwitchParameter</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
-          <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>False</dev:defaultValue>
@@ -3910,21 +3910,21 @@ iot-role-name</dev:code>
         <maml:Description>
           <maml:para>Share will be created under this ResourceGroupName</maml:para>
         </maml:Description>
-        <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>System.String</maml:name>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-        <maml:name>Smb</maml:name>
+        <maml:name>SMB</maml:name>
         <maml:Description>
           <maml:para>AccessProtocol in the case of creating Share</maml:para>
         </maml:Description>
-        <command:parameterValue required="true" variableLength="false">System.Management.Automation.SwitchParameter</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
-          <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>False</dev:defaultValue>
@@ -3934,9 +3934,9 @@ iot-role-name</dev:code>
         <maml:Description>
           <maml:para>Provide existing StorageAccountCredential's Resource Name</maml:para>
         </maml:Description>
-        <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>System.String</maml:name>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -3946,9 +3946,9 @@ iot-role-name</dev:code>
         <maml:Description>
           <maml:para>provide access right along with existing usernames to access SMB Share types, For ex: @(@{"Username"="user-name-1";"AccessRight"="Read"}, @{"Username"="user-name-2";"AccessRight"="Read"}, @{"Username"="user-name-3";"AccessRight"="Custom"})</maml:para>
         </maml:Description>
-        <command:parameterValue required="true" variableLength="false">System.Collections.Hashtable[]</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">Hashtable[]</command:parameterValue>
         <dev:type>
-          <maml:name>System.Collections.Hashtable[]</maml:name>
+          <maml:name>Hashtable[]</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -3958,9 +3958,9 @@ iot-role-name</dev:code>
         <maml:Description>
           <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
         </maml:Description>
-        <command:parameterValue required="true" variableLength="false">System.Management.Automation.SwitchParameter</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
-          <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>False</dev:defaultValue>
@@ -3970,9 +3970,9 @@ iot-role-name</dev:code>
         <maml:Description>
           <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
         </maml:Description>
-        <command:parameterValue required="true" variableLength="false">System.Management.Automation.SwitchParameter</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
-          <maml:name>System.Management.Automation.SwitchParameter</maml:name>
+          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>False</dev:defaultValue>
@@ -4006,7 +4006,7 @@ iot-role-name</dev:code>
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; New-AzDataBoxEdgeShare -ResourceGroupName resource-group-name -DeviceName device-name -Name share-1
+        <dev:code>PS C:\&gt; New-AzDataBoxEdgeShare -ResourceGroupName resource-group-name -DeviceName device-name -Name share-1 -SMB
 -StorageAccountCredentialName storage-credential-name -DataFormat PageBlob
 Name       Type       DataPolicy       DataFormat       ResourceGroupName     StorageAccountName
 ---------- ---------- ---------------- ---------------- --------------------- -------------------

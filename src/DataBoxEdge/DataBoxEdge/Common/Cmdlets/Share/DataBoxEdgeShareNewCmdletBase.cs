@@ -68,13 +68,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
             ParameterSetName = SmbParameterSet,
             HelpMessage = HelpMessageShare.AccessProtocolHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter Smb { get; set; }
+        public SwitchParameter SMB { get; set; }
 
         [Parameter(Mandatory = false,
             ParameterSetName = NfsParameterSet,
             HelpMessage = HelpMessageShare.AccessProtocolHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter Nfs { get; set; }
+        public SwitchParameter NFS { get; set; }
 
         [Parameter(Mandatory = false,
             ParameterSetName = SmbParameterSet,
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
-        private ResourceModel share;
+        private ResourceModel _share;
 
         private ResourceModel GetResourceModel()
         {
@@ -139,14 +139,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
                 DataBoxEdgeManagementClient.Shares,
                 this.DeviceName,
                 this.Name,
-                share,
+                _share,
                 this.ResourceGroupName));
         }
 
 
         private ResourceModel InitShareObject()
         {
-            var accessProtocol = this.Nfs.IsPresent ? "NFS" : "SMB";
+            var accessProtocol = this.NFS.IsPresent ? "NFS" : "SMB";
             return new ResourceModel("Online",
                 "Enabled",
                 accessProtocol,
@@ -172,15 +172,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
                 this.StorageAccountCredentialName,
                 this.ResourceGroupName);
 
-            share = InitShareObject();
+            _share = InitShareObject();
 
             if (this.IsParameterBound(c => c.ClientAccessRight))
             {
-                share.ClientAccessRights = new List<ClientAccessRight>();
+                _share.ClientAccessRights = new List<ClientAccessRight>();
                 foreach (var clientAccessRight in this.ClientAccessRight)
                 {
                     var accessRightPolicy = HashtableToDictionary<string, string>(clientAccessRight);
-                    share.ClientAccessRights.Add(
+                    _share.ClientAccessRights.Add(
                         new ClientAccessRight(
                             accessRightPolicy.GetOrNull("ClientId"),
                             accessRightPolicy.GetOrNull("AccessRight")
@@ -191,12 +191,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
 
             if (this.IsParameterBound(c => c.UserAccessRight))
             {
-                share.UserAccessRights = new List<UserAccessRight>();
+                _share.UserAccessRights = new List<UserAccessRight>();
                 foreach (var userAccessRight in this.UserAccessRight)
                 {
                     var accessRightPolicy = HashtableToDictionary<string, string>(userAccessRight);
 
-                    share.UserAccessRights.Add(
+                    _share.UserAccessRights.Add(
                         new UserAccessRight(
                             GetUserId(accessRightPolicy.GetOrNull("Username")),
                             accessRightPolicy.GetOrNull("AccessRight")
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
                 }
             }
 
-            share.AzureContainerInfo = new AzureContainerInfo(sac.Id, this.Name, this.DataFormat);
+            _share.AzureContainerInfo = new AzureContainerInfo(sac.Id, this.Name, this.DataFormat);
             if (this.ShouldProcess(this.Name,
                 string.Format("Creating '{0}' in device '{1}' with name '{2}'.",
                     HelpMessageShare.ObjectName, this.DeviceName, this.Name)))

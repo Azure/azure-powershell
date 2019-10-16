@@ -14,7 +14,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Management.Automation;
 using System.Net;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;

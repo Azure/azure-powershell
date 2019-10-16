@@ -12,14 +12,14 @@ Set the new password for the user
 
 ## SYNTAX
 
-### SetByNameParameterSet  (Default)
+### SetByNameParameterSet (Default)
 ```
 Set-AzDataBoxEdgeUser [-ResourceGroupName] <String> [-DeviceName] <String> [-Name] <String>
  -Password <SecureString> -EncryptionKey <SecureString> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetByResourceIdParameterSet 
+### SetByResourceIdParameterSet
 ```
 Set-AzDataBoxEdgeUser -ResourceId <String> -Password <SecureString> -EncryptionKey <SecureString> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -79,7 +79,7 @@ Device Name
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByNameParameterSet 
+Parameter Sets: SetByNameParameterSet
 Aliases:
 
 Required: True
@@ -124,7 +124,7 @@ Username
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByNameParameterSet 
+Parameter Sets: SetByNameParameterSet
 Aliases:
 
 Required: True
@@ -154,7 +154,7 @@ Resource Group Name
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByNameParameterSet 
+Parameter Sets: SetByNameParameterSet
 Aliases:
 
 Required: True
@@ -169,7 +169,7 @@ Azure ResourceId
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceIdParameterSet 
+Parameter Sets: SetByResourceIdParameterSet
 Aliases:
 
 Required: True

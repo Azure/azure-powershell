@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/db4e2fdb-6d80-4e6e-b7cd-736098270664/resourceGroups/psrgpfortest/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/ps2736?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGI0ZTJmZGItNmQ4MC00ZTZlLWI3Y2QtNzM2MDk4MjcwNjY0L3Jlc291cmNlR3JvdXBzL3BzcmdwZm9ydGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3hFZGdlL2RhdGFCb3hFZGdlRGV2aWNlcy9wczI3MzY/YXBpLXZlcnNpb249MjAxOS0wMy0wMQ==",
+      "RequestUri": "/subscriptions/db4e2fdb-6d80-4e6e-b7cd-736098270664/resourceGroups/psrgpfortest/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/ps7868?api-version=2019-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGI0ZTJmZGItNmQ4MC00ZTZlLWI3Y2QtNzM2MDk4MjcwNjY0L3Jlc291cmNlR3JvdXBzL3BzcmdwZm9ydGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3hFZGdlL2RhdGFCb3hFZGdlRGV2aWNlcy9wczc4Njg/YXBpLXZlcnNpb249MjAxOS0wMy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "67dbbee2-ac2d-4acf-a4b3-fb764f21fb24"
+          "9db3ebd1-dadd-4983-b9cf-4d9fdf05fbc1"
         ],
         "Accept-Language": [
           "en-US"
@@ -30,13 +30,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "946319dc-15b0-4bb1-a7f2-0c649ac8ec2d"
+          "d49defda-f333-4d0a-a882-7523c74a7acc"
         ],
         "x-ms-correlation-request-id": [
-          "946319dc-15b0-4bb1-a7f2-0c649ac8ec2d"
+          "d49defda-f333-4d0a-a882-7523c74a7acc"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20191012T161157Z:946319dc-15b0-4bb1-a7f2-0c649ac8ec2d"
+          "SOUTHINDIA:20191016T095425Z:d49defda-f333-4d0a-a882-7523c74a7acc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 12 Oct 2019 16:11:56 GMT"
+          "Wed, 16 Oct 2019 09:54:24 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -57,17 +57,17 @@
           "163"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DataBoxEdge/DataBoxEdgeDevices/ps2736' under resource group 'psrgpfortest' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DataBoxEdge/DataBoxEdgeDevices/ps7868' under resource group 'psrgpfortest' was not found.\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/db4e2fdb-6d80-4e6e-b7cd-736098270664/resourceGroups/psrgpfortest/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/ps2736?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGI0ZTJmZGItNmQ4MC00ZTZlLWI3Y2QtNzM2MDk4MjcwNjY0L3Jlc291cmNlR3JvdXBzL3BzcmdwZm9ydGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3hFZGdlL2RhdGFCb3hFZGdlRGV2aWNlcy9wczI3MzY/YXBpLXZlcnNpb249MjAxOS0wMy0wMQ==",
+      "RequestUri": "/subscriptions/db4e2fdb-6d80-4e6e-b7cd-736098270664/resourceGroups/psrgpfortest/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/ps7868?api-version=2019-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGI0ZTJmZGItNmQ4MC00ZTZlLWI3Y2QtNzM2MDk4MjcwNjY0L3Jlc291cmNlR3JvdXBzL3BzcmdwZm9ydGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3hFZGdlL2RhdGFCb3hFZGdlRGV2aWNlcy9wczc4Njg/YXBpLXZlcnNpb249MjAxOS0wMy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2a61dfe6-bec8-48c6-8f92-53bedbd19de0"
+          "c99ee988-e8ca-4fc5-8f0a-7e2b53f1711b"
         ],
         "Accept-Language": [
           "en-US"
@@ -90,13 +90,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "ccc58549-f94d-4e06-85d0-b1a3c621b98f"
+          "b1b74ccd-97c8-4173-99ce-7b11a77d3d97"
         ],
         "x-ms-correlation-request-id": [
-          "ccc58549-f94d-4e06-85d0-b1a3c621b98f"
+          "b1b74ccd-97c8-4173-99ce-7b11a77d3d97"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20191012T161205Z:ccc58549-f94d-4e06-85d0-b1a3c621b98f"
+          "SOUTHINDIA:20191016T095434Z:b1b74ccd-97c8-4173-99ce-7b11a77d3d97"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -105,7 +105,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 12 Oct 2019 16:12:05 GMT"
+          "Wed, 16 Oct 2019 09:54:34 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -117,17 +117,17 @@
           "163"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DataBoxEdge/DataBoxEdgeDevices/ps2736' under resource group 'psrgpfortest' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DataBoxEdge/DataBoxEdgeDevices/ps7868' under resource group 'psrgpfortest' was not found.\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/db4e2fdb-6d80-4e6e-b7cd-736098270664/resourceGroups/psrgpfortest/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/ps2736?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGI0ZTJmZGItNmQ4MC00ZTZlLWI3Y2QtNzM2MDk4MjcwNjY0L3Jlc291cmNlR3JvdXBzL3BzcmdwZm9ydGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3hFZGdlL2RhdGFCb3hFZGdlRGV2aWNlcy9wczI3MzY/YXBpLXZlcnNpb249MjAxOS0wMy0wMQ==",
+      "RequestUri": "/subscriptions/db4e2fdb-6d80-4e6e-b7cd-736098270664/resourceGroups/psrgpfortest/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/ps7868?api-version=2019-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGI0ZTJmZGItNmQ4MC00ZTZlLWI3Y2QtNzM2MDk4MjcwNjY0L3Jlc291cmNlR3JvdXBzL3BzcmdwZm9ydGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3hFZGdlL2RhdGFCb3hFZGdlRGV2aWNlcy9wczc4Njg/YXBpLXZlcnNpb249MjAxOS0wMy0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"westus2\",\r\n  \"sku\": {\r\n    \"name\": \"Edge\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7417596a-728f-418f-bb43-51e818bc46aa"
+          "4538f5d0-5ba3-4533-aeb2-6c824f8aac25"
         ],
         "Accept-Language": [
           "en-US"
@@ -156,10 +156,10 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "145dc09e-68a8-441a-b252-d47b8f97f460"
+          "e62b5c13-f830-4f07-8c39-68f196074d9a"
         ],
         "x-ms-client-request-id": [
-          "7417596a-728f-418f-bb43-51e818bc46aa"
+          "4538f5d0-5ba3-4533-aeb2-6c824f8aac25"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -171,13 +171,13 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "320dadf7-7f4d-4124-a566-06461c8cb04c"
+          "839bc1b8-ae69-473d-a210-805e1e663f3f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20191012T161203Z:320dadf7-7f4d-4124-a566-06461c8cb04c"
+          "SOUTHINDIA:20191016T095431Z:839bc1b8-ae69-473d-a210-805e1e663f3f"
         ],
         "Date": [
-          "Sat, 12 Oct 2019 16:12:03 GMT"
+          "Wed, 16 Oct 2019 09:54:30 GMT"
         ],
         "Content-Length": [
           "609"
@@ -189,17 +189,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"westus2\",\r\n  \"tags\": {},\r\n  \"sku\": {\r\n    \"name\": \"Edge\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"etag\": \"W/\\\"datetime'2019-10-12T16%3A12%3A01.8487252Z'\\\"_W/\\\"datetime'2019-10-12T16%3A12%3A01.8557288Z'\\\"\",\r\n  \"properties\": {\r\n    \"dataBoxEdgeDeviceStatus\": \"ReadyToSetup\",\r\n    \"deviceType\": \"DataBoxEdgeDevice\",\r\n    \"deviceLocalCapacity\": 0,\r\n    \"nodeCount\": 0\r\n  },\r\n  \"id\": \"/subscriptions/db4e2fdb-6d80-4e6e-b7cd-736098270664/resourceGroups/psrgpfortest/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/ps2736\",\r\n  \"name\": \"ps2736\",\r\n  \"type\": \"Microsoft.DataBoxEdge/dataBoxEdgeDevices\"\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"westus2\",\r\n  \"tags\": {},\r\n  \"sku\": {\r\n    \"name\": \"Edge\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"etag\": \"W/\\\"datetime'2019-10-16T09%3A54%3A30.0299317Z'\\\"_W/\\\"datetime'2019-10-16T09%3A54%3A30.0469439Z'\\\"\",\r\n  \"properties\": {\r\n    \"dataBoxEdgeDeviceStatus\": \"ReadyToSetup\",\r\n    \"deviceType\": \"DataBoxEdgeDevice\",\r\n    \"deviceLocalCapacity\": 0,\r\n    \"nodeCount\": 0\r\n  },\r\n  \"id\": \"/subscriptions/db4e2fdb-6d80-4e6e-b7cd-736098270664/resourceGroups/psrgpfortest/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/ps7868\",\r\n  \"name\": \"ps7868\",\r\n  \"type\": \"Microsoft.DataBoxEdge/dataBoxEdgeDevices\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/db4e2fdb-6d80-4e6e-b7cd-736098270664/resourceGroups/psrgpfortest/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/ps2736?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGI0ZTJmZGItNmQ4MC00ZTZlLWI3Y2QtNzM2MDk4MjcwNjY0L3Jlc291cmNlR3JvdXBzL3BzcmdwZm9ydGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3hFZGdlL2RhdGFCb3hFZGdlRGV2aWNlcy9wczI3MzY/YXBpLXZlcnNpb249MjAxOS0wMy0wMQ==",
+      "RequestUri": "/subscriptions/db4e2fdb-6d80-4e6e-b7cd-736098270664/resourceGroups/psrgpfortest/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/ps7868?api-version=2019-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGI0ZTJmZGItNmQ4MC00ZTZlLWI3Y2QtNzM2MDk4MjcwNjY0L3Jlc291cmNlR3JvdXBzL3BzcmdwZm9ydGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3hFZGdlL2RhdGFCb3hFZGdlRGV2aWNlcy9wczc4Njg/YXBpLXZlcnNpb249MjAxOS0wMy0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3aecbf7a-a4be-460e-9378-b258c2d401d3"
+          "cc6f8323-425c-43f6-9229-e7ba6eec3ea7"
         ],
         "Accept-Language": [
           "en-US"
@@ -222,10 +222,10 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "8ddc6331-9f1c-45c1-9aa1-cec41ae4481b"
+          "ce542a9d-ad23-4b8f-94dd-319151fa660d"
         ],
         "x-ms-client-request-id": [
-          "3aecbf7a-a4be-460e-9378-b258c2d401d3"
+          "cc6f8323-425c-43f6-9229-e7ba6eec3ea7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -237,13 +237,13 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "3ae10393-735f-41d3-878a-822dae15ad3c"
+          "3ea936a8-ab6d-4c63-afb9-14cea8f124fd"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20191012T161205Z:3ae10393-735f-41d3-878a-822dae15ad3c"
+          "SOUTHINDIA:20191016T095434Z:3ea936a8-ab6d-4c63-afb9-14cea8f124fd"
         ],
         "Date": [
-          "Sat, 12 Oct 2019 16:12:05 GMT"
+          "Wed, 16 Oct 2019 09:54:34 GMT"
         ],
         "Expires": [
           "-1"
@@ -255,7 +255,7 @@
   ],
   "Names": {
     "Test-RemoveDevice": [
-      "ps2736"
+      "ps7868"
     ]
   },
   "Variables": {

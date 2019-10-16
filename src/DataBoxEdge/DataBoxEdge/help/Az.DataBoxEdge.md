@@ -11,7 +11,7 @@ Locale:
 Module to create a device and perform operations on DataBoxEdge devices
 
 ## Az.DataBoxEdge Cmdlets
-### [Get-AzDataBoxEdgeBandwidthSchedule](https://docs.microsoft.com/en-us/powershell/module/az.databoxedge/get-azdataboxedgebandwidthschedule)
+### [Get-AzDataBoxEdgeBandwidthSchedule](Get-AzDataBoxEdgeBandwidthSchedule.md)
 Gets the information about Bandwidth schedules
 
 ### [Get-AzDataBoxEdgeDevice](Get-AzDataBoxEdgeDevice.md)
@@ -40,9 +40,6 @@ Configures a new device
 
 ### [New-AzDataBoxEdgeRole](New-AzDataBoxEdgeRole.md)
 Creates a new Iot Role for the device
-
-### [New-AzDataBoxEdgeShare](New-AzDataBoxEdgeShare.md)
-Creates a new share in the device
 
 ### [New-AzDataBoxEdgeStorageAccountCredential](New-AzDataBoxEdgeStorageAccountCredential.md)
 Create new storage account credential object

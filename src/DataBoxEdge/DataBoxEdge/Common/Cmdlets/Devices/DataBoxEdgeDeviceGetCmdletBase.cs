@@ -44,8 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
         private const string GetExtendedInfoParameterSet = "GetExtendedInfoParameterSet";
         private const string GetNetworkSettingParameterSet = "GetNetworkSettingParameterSet";
         private const string GetSummaryUpdateParameterSet = "GetSummaryUpdateParameterSet";
-        private const string GetExtendedInfoByResourceIdParameterSet = "GetExtendedInfoByResourceIdParameterSet ";
-        private const string GetNetworkSettingByResourceIdParameterSet = "GetNetworkSettingByResourceIdParameterSet ";
+        private const string GetExtendedInfoByResourceIdParameterSet = "GetExtendedInfoByResourceIdParameterSet";
+        private const string GetNetworkSettingByResourceIdParameterSet = "GetNetworkSettingByResourceIdParameterSet";
         private const string GetSummaryUpdateByResourceIdParameterSet = "GetSummaryUpdateByResourceIdParameterSet";
 
         [Parameter(Mandatory = true,

@@ -41,8 +41,12 @@ function Test-CreateNewUser
     $rgname = Get-DeviceResourceGroupName
     $dfname = Get-DeviceName
 	$name = Get-User
-	$password = ConvertTo-SecureString Get-Userpassword -AsPlainText -Force
-	$encryptionKey = ConvertTo-SecureString Get-EncryptionKey -AsPlainText -Force
+	
+	$passwordString = Get-Userpassword
+	$password = ConvertTo-SecureString $passwordString -AsPlainText -Force
+	$encryptionKeyString = Get-EncryptionKey 
+	$encryptionKey = ConvertTo-SecureString $encryptionKeyString -AsPlainText -Force
+
 	
 	# Test
 	try
@@ -66,8 +70,12 @@ function Test-RemoveUser
     $rgname = Get-DeviceResourceGroupName
     $dfname = Get-DeviceName
 	$name = Get-User
-	$password = ConvertTo-SecureString Get-Userpassword -AsPlainText -Force
-	$encryptionKey = ConvertTo-SecureString Get-EncryptionKey -AsPlainText -Force
+
+	$passwordString = Get-Userpassword
+	$password = ConvertTo-SecureString $passwordString -AsPlainText -Force
+	$encryptionKeyString = Get-EncryptionKey 
+	$encryptionKey = ConvertTo-SecureString $encryptionKeyString -AsPlainText -Force
+
 	# Test
 	try
     {

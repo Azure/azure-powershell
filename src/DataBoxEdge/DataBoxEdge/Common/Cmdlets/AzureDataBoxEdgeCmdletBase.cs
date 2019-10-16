@@ -12,18 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.EdgeGateway;
-using System.Text;
-using Microsoft.Azure.Management.EdgeGateway.Models;
+
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common
 {
@@ -56,80 +52,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common
                                AzureEnvironment.Endpoint.ResourceManager));
             }
             set { _dataBoxManagementClient = value; }
-        }
-
-        internal DataBoxEdgeDeviceExtendedInfo GetExtendedInfo(string resourceGroupName, string deviceName)
-        {
-            return DevicesOperationsExtensions.GetExtendedInformation(
-                this.DataBoxEdgeManagementClient.Devices,
-                deviceName,
-                resourceGroupName);
-        }
-
-        internal string GetEncryptedKeyFromExtendedInfo(string resourceGroupName, string deviceName)
-        {
-            var info = GetExtendedInfo(resourceGroupName, deviceName);
-            return info.EncryptionKey;
-        }
-
-        private static byte[] _salt = Encoding.ASCII.GetBytes("o6806642kbM7c5");
-
-        private static byte[] ReadByteArray(Stream s)
-        {
-            byte[] rawLength = new byte[sizeof(int)];
-            if (s.Read(rawLength, 0, rawLength.Length) != rawLength.Length)
-            {
-                throw new SystemException("Stream did not contain properly formatted byte array");
-            }
-
-            byte[] buffer = new byte[BitConverter.ToInt32(rawLength, 0)];
-            if (s.Read(buffer, 0, buffer.Length) != buffer.Length)
-            {
-                throw new SystemException("Did not read byte array properly");
-            }
-
-            return buffer;
-        }
-
-
-        private static string DecryptStringAES(string cipherText, string sharedSecret)
-        {
-            if (string.IsNullOrEmpty(cipherText))
-                return cipherText;
-
-            AesManaged aesAlg = null;
-            string plaintext = null;
-
-            // generate the key from the shared secret and the salt
-            Rfc2898DeriveBytes key = new Rfc2898DeriveBytes(sharedSecret, _salt);
-
-            // Create the streams used for decryption.
-            byte[] bytes = Convert.FromBase64String(cipherText);
-            using (MemoryStream msDecrypt = new MemoryStream(bytes))
-            {
-                aesAlg = new AesManaged();
-                aesAlg.Key = key.GetBytes(aesAlg.KeySize / 8);
-                // Get the initialization vector from the encrypted stream
-                aesAlg.IV = ReadByteArray(msDecrypt);
-                // Create a decrytor to perform the stream transform.
-                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
-                using (CryptoStream csDecrypt =
-                    new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-                {
-                    using (StreamReader srDecrypt = new StreamReader(csDecrypt))
-
-                        // Read the decrypted bytes from the decrypting stream
-                        // and place them in a string.
-                        plaintext = srDecrypt.ReadToEnd();
-                }
-            }
-
-            return plaintext;
-        }
-
-        public static string GetAES(string encryptedKey, string encryptionKey)
-        {
-            return DecryptStringAES(encryptedKey, encryptionKey);
         }
     }
 }
