@@ -48,5 +48,5 @@ Locale: en-US
 {{ Updates a managednetwork network group.  }}
 
 ### [Update-AzManagedNetworkPeeringPolicy](Update-AzManagedNetworkPeeringPolicy.md)
-{{ Updates a managednetwork network peering policy.  }}
+{{ Updates a managednetwork network peering policy. }}
 
