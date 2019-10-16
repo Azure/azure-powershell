@@ -1,0 +1,96 @@
+//-----------------------------------------------------------------------
+// <copyright company="Microsoft">
+//     Copyright (c) Microsoft Corporation.  All rights reserved.
+// </copyright>
+// <summary>
+//   Refer to the class documentation.
+// </summary>
+//-----------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.Maintenance.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Maintenance;
+using Microsoft.Azure.Management.Maintenance.Models;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
+
+namespace Microsoft.Azure.Commands.Maintenance
+{
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MaintenanceUpdate", DefaultParameterSetName = "DefaultParameter")]
+    [OutputType(typeof(Update))]
+    public partial class GetAzureRmUpdate : MaintenanceAutomationBaseCmdlet
+    {
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+            ExecuteClientAction(() =>
+            {
+                string resourceGroupName = this.ResourceGroupName;
+                string providerName = this.ProviderName;
+                string resourceParentType = this.ResourceParentType;
+                string resourceParentName = this.ResourceParentName;
+                string resourceType = this.ResourceType;
+                string resourceName = this.ResourceName;
+
+                var result = (!string.IsNullOrEmpty(resourceParentType) && !string.IsNullOrEmpty(resourceParentName)) ?
+                    UpdatesClient.ListParent(resourceGroupName, providerName, resourceParentType, resourceParentName, resourceType, resourceName) :
+                    UpdatesClient.List(resourceGroupName, providerName, resourceType, resourceName);
+
+                var psObject = new List<PSUpdate>();
+
+                foreach (var update in result)
+                {
+                    PSUpdate psUpdate = new PSUpdate();
+                    MaintenanceAutomationAutoMapperProfile.Mapper.Map<Update, PSUpdate>(update, psUpdate);
+                    psObject.Add(psUpdate);
+                }
+            });
+        }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 2,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        public string ProviderName { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 3,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string ResourceParentType { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 4,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string ResourceParentName { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 5,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        public string ResourceType { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 6,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        public string ResourceName { get; set; }
+    }
+}
