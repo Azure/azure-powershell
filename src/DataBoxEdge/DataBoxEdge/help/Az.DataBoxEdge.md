@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DataBoxEdge
-Module Guid: 
+Module Guid: 3C11EF12-C79F-45FE-ACDF-A2C784D99C97
 Download Help Link: 
 Help Version: 
 Locale: 
@@ -11,7 +11,7 @@ Locale:
 Module to create a device and perform operations on DataBoxEdge devices
 
 ## Az.DataBoxEdge Cmdlets
-### [Get-AzDataBoxEdgeBandwidthSchedule](Get-AzDataBoxEdgeBandwidthSchedule.md)
+### [Get-AzDataBoxEdgeBandwidthSchedule](https://docs.microsoft.com/en-us/powershell/module/az.databoxedge/get-azdataboxedgebandwidthschedule)
 Gets the information about Bandwidth schedules
 
 ### [Get-AzDataBoxEdgeDevice](Get-AzDataBoxEdgeDevice.md)
