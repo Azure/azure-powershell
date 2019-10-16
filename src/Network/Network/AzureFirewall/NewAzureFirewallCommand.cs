@@ -219,18 +219,25 @@ namespace Microsoft.Azure.Commands.Network
                     throw new ArgumentException("VirtualHubId is needed", nameof(VirtualHubId));
                 }
 
+                var sku = new PSAzureFirewallSku();
+                sku.Name = MNM.AzureFirewallSkuName.AZFWHub;
+                sku.Tier = MNM.AzureFirewallSkuTier.Standard;
+
                 firewall = new PSAzureFirewall()
                 {
                     Name = this.Name,
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location,
-                    Sku = new PSAzureFirewallSku(MNM.AzureFirewallSkuName.AZFWHub),
+                    Sku = sku,
                     VirtualHub = new MNM.SubResource(VirtualHubId),
                     FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null
                 };
             }
             else
             {
+                var sku = new PSAzureFirewallSku();
+                sku.Name = MNM.AzureFirewallSkuName.AZFWVNet;
+                sku.Tier = MNM.AzureFirewallSkuTier.Standard;
                 firewall = new PSAzureFirewall()
                 {
                     Name = this.Name,
@@ -240,7 +247,7 @@ namespace Microsoft.Azure.Commands.Network
                     NatRuleCollections = this.NatRuleCollection?.ToList(),
                     NetworkRuleCollections = this.NetworkRuleCollection?.ToList(),
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
-                    Sku = new PSAzureFirewallSku(MNM.AzureFirewallSkuName.AZFWVNet)
+                    Sku = sku
                 };
 
                 if (this.Zone != null)
