@@ -32,6 +32,7 @@ using System.Security;
 using AuthenticationMessages = Microsoft.Azure.Commands.Common.Authentication.Properties.Resources;
 using ProfileMessages = Microsoft.Azure.Commands.Profile.Properties.Resources;
 using ResourceMessages = Microsoft.Azure.Commands.ResourceManager.Common.Properties.Resources;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -40,6 +41,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         private IProfileOperations _profile;
         private IAzureTokenCache _cache;
         public Action<string> WarningLog;
+
+        private IAzureContext DefaultContext
+        {
+            get
+            {
+                if(_profile == null || _profile.DefaultContext == null || _profile.DefaultContext.Account == null)
+                {
+                    throw new PSInvalidOperationException(ResourceMessages.RunConnectAccount);
+                }
+                return _profile.DefaultContext;
+            }
+        }
 
         public RMProfileClient(IProfileOperations profile)
         {
