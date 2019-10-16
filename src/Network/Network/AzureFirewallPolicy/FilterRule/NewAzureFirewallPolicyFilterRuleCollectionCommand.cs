@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network
         public uint Priority { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The list of application rules")]
         [ValidateNotNullOrEmpty]
         public PSAzureFirewallPolicyRule[] Rule { get; set; }

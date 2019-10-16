@@ -99,10 +99,6 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of rule collections")]
         [ValidateNotNullOrEmpty]
-        [Parameter(Mandatory = false, ParameterSetName = SetByInputObjectParameterSet)]
-        [Parameter(Mandatory = true, ParameterSetName = SetByNameParameterSet)]
-        [Parameter(Mandatory = true, ParameterSetName = SetByParentObjectParameterSet)]
-        [Parameter(Mandatory = true, ParameterSetName = SetByResourceIdParameterSet)]
         public PSAzureFirewallPolicyBaseRuleCollection[] RuleCollection { get; set; }
 
         public override void Execute()
