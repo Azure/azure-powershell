@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the firewall policy", ParameterSetName = RemoveByNameParameterSet)]
         [ValidateNotNullOrEmpty]
-        public virtual string FirewallPolicyName { get; set; }
+        public virtual string AzureFirewallPolicyName { get; set; }
 
         [Parameter(
            Mandatory = true,
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
             if (this.IsParameterBound(c => c.FirewallPolicyObject))
             {
-                this.FirewallPolicyName = FirewallPolicyObject.Name;
+                this.AzureFirewallPolicyName = FirewallPolicyObject.Name;
                 this.ResourceGroupName = FirewallPolicyObject.ResourceGroupName;
             }
             else if (this.IsParameterBound(c => c.InputObject))
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Network
                 var resourceId = InputObject.properties.Id;
 
                 var resourceInfo = new ResourceIdentifier(resourceId);
-                this.FirewallPolicyName = resourceInfo.ParentResource.Split('/')[1];
+                this.AzureFirewallPolicyName = resourceInfo.ParentResource.Split('/')[1];
                 this.ResourceGroupName = resourceInfo.ResourceGroupName;
             }
             else if (this.IsParameterBound(c => c.ResourceId))
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Network
                 var resourceInfo = new ResourceIdentifier(ResourceId);
                 this.Name = resourceInfo.ResourceName;
                 this.ResourceGroupName = resourceInfo.ResourceGroupName;
-                this.FirewallPolicyName = resourceInfo.ParentResource.Split('/')[1];
+                this.AzureFirewallPolicyName = resourceInfo.ParentResource.Split('/')[1];
             }
 
             ConfirmAction(
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
                 () =>
                 {
-                    this.AzureFirewallPolicyRuleGroupClient.Delete(this.ResourceGroupName, this.FirewallPolicyName, this.Name);
+                    this.AzureFirewallPolicyRuleGroupClient.Delete(this.ResourceGroupName, this.AzureFirewallPolicyName, this.Name);
                     {
                         if (this.PassThru.IsPresent)
                         {
