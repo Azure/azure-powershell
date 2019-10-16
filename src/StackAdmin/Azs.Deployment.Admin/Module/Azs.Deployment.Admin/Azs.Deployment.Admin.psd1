@@ -102,7 +102,7 @@
 
             # ReleaseNotes of this module
             ReleaseNotes = '
-            * Introducting functionalities to work with Azure Stack Deployment provider
+            * Introducing functionalities to work with Azure Stack Deployment provider
             '
 
         } # End of PSData hashtable
