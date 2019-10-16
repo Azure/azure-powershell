@@ -126,7 +126,7 @@ function Test-AzureFirewallPolicyCRUD {
         # Create a NAT rule
         $natRc = New-AzFirewallPolicyNatRuleCollection -Name $networkRcName -Priority $natRcPriority -Rule $networkRule -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort -ActionType $natRcActionType
 
-        New-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -Priority 100 -RuleCollection $appRc, $appRc2, $natRc -FirewallPolicyObject $azureFirewallPolicy -ResourceGroupName $rgName
+        New-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -Priority 100 -RuleCollection $appRc, $appRc2, $natRc -FirewallPolicyObject $azureFirewallPolicy
 
 
         # # Update ThreatIntel mode

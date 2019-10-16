@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Network
         public uint Priority { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The list of rule collections")]
         [ValidateNotNullOrEmpty]
         public PSAzureFirewallPolicyBaseRuleCollection[] RuleCollection { get; set; }
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name.", ParameterSetName = SetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
@@ -80,6 +80,7 @@ namespace Microsoft.Azure.Commands.Network
             if (this.IsParameterBound(c => c.FirewallPolicyObject))
             {
                 FirewallPolicyName = FirewallPolicyObject.Name;
+                ResourceGroupName = FirewallPolicyObject.ResourceGroupName;
             }
 
             var ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup
