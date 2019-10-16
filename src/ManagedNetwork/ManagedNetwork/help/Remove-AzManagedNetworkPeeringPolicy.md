@@ -11,24 +11,29 @@ Removes a Managed Network Peering Policy.
 
 ## SYNTAX
 
-### Remove by Name
+### NameParameterSet (Default)
 ```
-Remove-AzManagedNetworkPeeringPolicy -ResourceGroupName <String> -ManagedNetworkName <String> -Name <String> [-PassThru][-Force][-AsJob][-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm][<CommonParameters>]
-```
-
-### Remove by ResourceId
-```
-Remove-AzManagedNetworkPeeringPolicy -ResourceId <String> [-PassThru][-Force][-AsJob][-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm][<CommonParameters>]
+Remove-AzManagedNetworkPeeringPolicy [-ResourceGroupName] <String> [-ManagedNetworkName] <String>
+ [-Name] <String> [-PassThru] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### Remove by Input Object
+### ManagedNetworkObjectParameterSet
 ```
-Remove-AzManagedNetworkPeeringPolicy -InputObject <PSManagedNetworkPeeringPolicy> [-PassThru][-Force][-AsJob][-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm][<CommonParameters>]
+Remove-AzManagedNetworkPeeringPolicy [-Name] <String> -ManagedNetworkObject <PSManagedNetwork> [-PassThru]
+ [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Remove by managednetwork Object
+### ResourceIdParameterSet
 ```
-Remove-AzManagedNetworkPeeringPolicy -ManagedNetwork <PSManagedNetwork> -Name <String> [-PassThru][-Force][-AsJob][-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm][<CommonParameters>]
+Remove-AzManagedNetworkPeeringPolicy -ResourceId <String> [-PassThru] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Remove-AzManagedNetworkPeeringPolicy -InputObject <PSManagedNetworkPeeringPolicy> [-PassThru] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 
@@ -61,7 +66,7 @@ Remove-AzManagedNetworkPeeringPolicy -ManagedNetwork $managedNetwork -Name TestM
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background
+Run in the background.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -76,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -91,7 +96,82 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Forces the command to run without asking for user confirmation.
+Force the operation to complete
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The Input Object.
+
+```yaml
+Type: Microsoft.Azure.Commands.ManagedNetwork.Models.PSManagedNetworkPeeringPolicy
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedNetworkName
+The unique name of the Managed Network.
+
+```yaml
+Type: System.String
+Parameter Sets: NameParameterSet
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedNetworkObject
+The object of Managed Network.
+
+```yaml
+Type: Microsoft.Azure.Commands.ManagedNetwork.Models.PSManagedNetwork
+Parameter Sets: ManagedNetworkObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The unique name of the Managed Network Peering Policy.
+
+```yaml
+Type: System.String
+Parameter Sets: NameParameterSet, ManagedNetworkObjectParameterSet
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Return true if complete
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -106,7 +186,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group that contains the managedNetworkgroup that this cmdlet removes.
+The create or use an existing resource group name.
 
 ```yaml
 Type: System.String
@@ -114,56 +194,14 @@ Parameter Sets: NameParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ManagedNetworkName
-The managed network Name
-
-```yaml
-Type: System.String
-Parameter Sets: NameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies the name of the managedNetwork peering policy that this cmdlet removes.
-
-```yaml
-Type: System.String
-Parameter Sets: NameParameterSet
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ManagedNetworkObjectParameterSet
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Specifies the resourceId of the managedNetwork peering policy that this cmdlet removes.
+The unique ARM id of an existing resource.
 
 ```yaml
 Type: System.String
@@ -171,52 +209,6 @@ Parameter Sets: ResourceIdParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InputObject
-Specifies the InputObject of the managedNetwork peering policy that this cmdlet removes.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSManagedNetworkPeeringPolicy
-Parameter Sets: InputObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ManagedNetworkObject
-Specifies the ManagedNetwork Object the policy belongs to. 
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSManagedNetwork
-Parameter Sets: ManagedNetworkObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns an object representing the item with which you are working.
-By default, this cmdlet does not generate any output.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -233,7 +225,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -249,10 +241,11 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).

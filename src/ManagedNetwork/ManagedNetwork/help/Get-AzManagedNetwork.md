@@ -11,18 +11,25 @@ Gets a managednetwork network in a resource group.
 
 ## SYNTAX
 
-###ByName(Default)
+### NameParameterSet (Default)
 ```
-Get-AzManagedNetwork  -ResourceGroupName <String> -Name <String>  [-DefaultProfile <IAzureContextContainer>][<CommonParameters>]
+Get-AzManagedNetwork -Name <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
-###ByResourceId
+### ListParameterSet
 ```
-Get-AzManagedNetwork  -ResourceId <String> [-DefaultProfile <IAzureContextContainer>][<CommonParameters>]
+Get-AzManagedNetwork [-Name <String>] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Get-AzManagedNetwork -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzManagedNetwork** cmdlet gets one or more managednewtorks n a resource group.
+The **Get-AzManagedNetwork** cmdlet gets one or more managednewtorks in a resource group.
 
 ## EXAMPLES
 
@@ -72,34 +79,35 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-
 ### -Name
-Specifies the name of the managednetwork that this cmdlet gets.
+The unique name of the Managed Network.
 
 ```yaml
 Type: System.String
 Parameter Sets: NameParameterSet
-Aliases: ResourceName
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ```yaml
 Type: System.String
 Parameter Sets: ListParameterSet
-Aliases: ResourceName
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group that managed network belongs to.
+The create or use an existing resource group name.
 
 ```yaml
 Type: System.String
@@ -109,6 +117,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -120,6 +129,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The unique ARM id of an existing resource.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -11,19 +11,28 @@ Gets a managednetwork network policy.
 
 ## SYNTAX
 
-###ByName(Default)
+### NameParameterSet (Default)
 ```
- $managedNetworkPeeringPolicy = Get-AzManagedNetworkPeeringPolicy -ResourceGroupName <String> -ManagedNetworkName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>][<CommonParameters>]
-```
-
-###ByResourceId
-```
-$managedNetworkPeeringPolicy = Get-AzManagedNetworkPeeringPolicy -ResourceId <String> [-DefaultProfile <IAzureContextContainer>][<CommonParameters>]
+Get-AzManagedNetworkPeeringPolicy [-ResourceGroupName] <String> [-ManagedNetworkName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-###ByManagedNetworkObject
+### ListParameterSet
 ```
-$managedNetworkPeeringPolicy = Get-AzManagedNetworkPeeringPolicy -ManagedNetwork <PSManagedNetwork> [-Name <String>] [-DefaultProfile <IAzureContextContainer>][<CommonParameters>]
+Get-AzManagedNetworkPeeringPolicy [[-ResourceGroupName] <String>] [-ManagedNetworkName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ManagedNetworkObjectParameterSet
+```
+Get-AzManagedNetworkPeeringPolicy [[-Name] <String>] -ManagedNetworkObject <PSManagedNetwork>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Get-AzManagedNetworkPeeringPolicy -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +82,7 @@ Location   : {userregion}
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -87,33 +96,65 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagedNetworkName
+The unique name of the Managed Network.
+
+```yaml
+Type: System.String
+Parameter Sets: NameParameterSet, ListParameterSet
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedNetworkObject
+The object of Managed Network.
+
+```yaml
+Type: Microsoft.Azure.Commands.ManagedNetwork.Models.PSManagedNetwork
+Parameter Sets: ManagedNetworkObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
-Specifies the name of the managednetwork policy that this cmdlet gets.
+The unique name of the Managed Network Peering Policy.
 
 ```yaml
 Type: System.String
 Parameter Sets: NameParameterSet
-Aliases: ResourceName
+Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 2
 Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ```yaml
 Type: System.String
 Parameter Sets: ManagedNetworkObjectParameterSet
-Aliases: ResourceName
+Aliases:
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource policy that managed network belongs to.
+The create or use an existing resource group name.
 
 ```yaml
 Type: System.String
@@ -121,27 +162,26 @@ Parameter Sets: NameParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedNetworkName
-Specifies the name of the managed network name that policies belong to.
-
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
+Parameter Sets: ListParameterSet
 Aliases:
 
-Required: True
-Position: Named
+Required: False
+Position: 0
 Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Specifies the resourceId of the managedNetwork policy that this cmdlet gets.
+The unique ARM id of an existing resource.
 
 ```yaml
 Type: System.String
@@ -151,22 +191,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ManagedNetwork
-Specifies the the managedNetwork that the policy belongs to.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSManagedNetwork
-Parameter Sets: ManagedNetworkObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
