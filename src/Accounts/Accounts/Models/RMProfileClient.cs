@@ -32,7 +32,6 @@ using System.Security;
 using AuthenticationMessages = Microsoft.Azure.Commands.Common.Authentication.Properties.Resources;
 using ProfileMessages = Microsoft.Azure.Commands.Profile.Properties.Resources;
 using ResourceMessages = Microsoft.Azure.Commands.ResourceManager.Common.Properties.Resources;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
