@@ -80,7 +80,6 @@ namespace Microsoft.Azure.Commands.Network
         {
             var azureFirewall = this.AzureFirewallClient.Get(resourceGroupName, name);
 
-            //WriteObject("herehadf");
             var psAzureFirewall = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewall>(azureFirewall);
             // var sku = new PSAzureFirewallSku();
             // sku.Name = azureFirewall.Sku.Name;
@@ -88,8 +87,6 @@ namespace Microsoft.Azure.Commands.Network
             // psAzureFirewall.Sku = sku;
             psAzureFirewall.ResourceGroupName = resourceGroupName;
             psAzureFirewall.Tag = TagsConversionHelper.CreateTagHashtable(azureFirewall.Tags);
-            WriteObject(JsonConvert.SerializeObject(psAzureFirewall));
-            WriteObject(JsonConvert.DeserializeObject<PSAzureFirewall>(JsonConvert.SerializeObject(psAzureFirewall)));
 
             return psAzureFirewall;
         }
