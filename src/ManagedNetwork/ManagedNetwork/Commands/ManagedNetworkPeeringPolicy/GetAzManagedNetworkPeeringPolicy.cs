@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         [Parameter(Mandatory = false,
             HelpMessage = Constants.ManagedNetworkPeeringPolicyNameHelp,
             ParameterSetName = Constants.ManagedNetworkObjectParameterSet)]
+        [ResourceNameCompleter("Microsoft.ManagedNetwork/managedNetworks/managednetworkpeeringpolicies", "ResourceGroupName", "ManagedNetworkName")]
         public string Name { get; set; }
 
         /// <summary>
