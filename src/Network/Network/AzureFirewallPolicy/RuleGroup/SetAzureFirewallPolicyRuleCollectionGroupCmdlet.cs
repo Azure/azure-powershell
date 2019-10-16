@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Network
                 ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup
                 {
                     Priority = this.IsParameterBound(c => c.Priority) ? Priority : InputObject.Properties.Priority,
-                    ruleCollection = this.IsParameterBound(c => c.RuleCollection) ? RuleCollection.ToList() : InputObject.Properties.ruleCollection?.ToList()
+                    RuleCollection = this.IsParameterBound(c => c.RuleCollection) ? RuleCollection.ToList() : InputObject.Properties.RuleCollection?.ToList()
                 };
 
                 rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Network
                 ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup
                 {
                     Priority = Priority,
-                    ruleCollection = this.RuleCollection?.ToList()
+                    RuleCollection = this.RuleCollection?.ToList()
                 };
                 rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper
                 {
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Network
                 ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup
                 {
                     Priority = Priority,
-                    ruleCollection = this.RuleCollection?.ToList()
+                    RuleCollection = this.RuleCollection?.ToList()
                 };
                 rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper
                 {
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Network
                 ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup
                 {
                     Priority = Priority,
-                    ruleCollection = this.RuleCollection?.ToList()
+                    RuleCollection = this.RuleCollection?.ToList()
                 };
                 rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper
                 {

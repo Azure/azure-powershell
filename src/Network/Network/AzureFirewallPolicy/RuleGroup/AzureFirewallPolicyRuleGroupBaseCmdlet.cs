@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
             var getRuleCollectionGroup = this.AzureFirewallPolicyRuleGroupClient.Get(resourceGroupName, firewallPolicyName, name);
 
             var ruleCollectionGroup = new PSAzureFirewallPolicyRuleCollectionGroup();
-            ruleCollectionGroup.ruleCollection = new List<PSAzureFirewallPolicyBaseRuleCollection>();
+            ruleCollectionGroup.RuleCollection = new List<PSAzureFirewallPolicyBaseRuleCollection>();
 
             for (int ruleCollectionIndex = 0; ruleCollectionIndex < getRuleCollectionGroup.Rules.Count; ruleCollectionIndex++)
             {
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Network
                             filterRuleCollection.Rules.Add(rule);
                         }
                     }
-                    ruleCollectionGroup.ruleCollection.Add(filterRuleCollection);
+                    ruleCollectionGroup.RuleCollection.Add(filterRuleCollection);
                 }
                 else
                 {
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Network
                     natRuleCollection.RuleCollectionType = "FirewallPolicyNatRule";
                     natRuleCollection.Rule = JsonConvert.DeserializeObject<PSAzureFirewallPolicyNetworkRule>(JsonConvert.SerializeObject(natRule.RuleCondition));
                     natRuleCollection.Rule.RuleType = "NetworkRuleCondition";
-                    ruleCollectionGroup.ruleCollection.Add(natRuleCollection);
+                    ruleCollectionGroup.RuleCollection.Add(natRuleCollection);
                 }
             }
 
