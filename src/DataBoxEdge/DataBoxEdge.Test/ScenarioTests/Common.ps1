@@ -18,16 +18,6 @@ Gets valid resource group name
 #>
 
 
-<#
-.SYNOPSIS
-Returns Userpassword used for password
-#>
-function Get-Userpassword
-{
-	return "";
-}
-
-
 
 function Get-DeviceConnectionString 
 {
@@ -59,6 +49,8 @@ function Get-Userpassword
 }
 
 
+
+
 function Get-DeviceResourceGroupName
 {
     return "psrgpfortest"
@@ -84,7 +76,7 @@ function Get-StringHash([String] $String,$HashName = "MD5")
 
 <#
 .SYNOPSIS
-Returns EncryptionKey
+Helper script to generate EncryptionKey
 #>
 function Get-EncryptionKeyForDevice($resourceGroupName, $deviceName)
 {
@@ -92,7 +84,6 @@ function Get-EncryptionKeyForDevice($resourceGroupName, $deviceName)
 	$sp = Get-AzADServicePrincipal -ApplicationId "2368d027-f996-4edb-bf48-928f98f2ab8c"
 	$e = Get-AzDataBoxEdgeDevice -ResourceGroupName $resourceGroupName -DeviceName $deviceName -ExtendedInfo
 	$k = $sp.Id+$e.ResourceKey
-	echo $k
 	return Get-StringHash $k "SHA512"
 }
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version:https://docs.microsoft.com/en-us/powershell/module/az.databoxedge/get-azdataboxedgedevice
+online version: https://docs.microsoft.com/en-us/powershell/module/az.databoxedge/get-azdataboxedgedevice
 schema: 2.0.0
 ---
 
@@ -23,12 +23,12 @@ Get-AzDataBoxEdgeDevice [[-ResourceGroupName] <String>] [-DefaultProfile <IAzure
 Get-AzDataBoxEdgeDevice -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### GetExtendedInfoByResourceIdParameterSet 
+### GetExtendedInfoByResourceIdParameterSet
 ```
 Get-AzDataBoxEdgeDevice -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### GetNetworkSettingByResourceIdParameterSet 
+### GetNetworkSettingByResourceIdParameterSet
 ```
 Get-AzDataBoxEdgeDevice -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -174,7 +174,7 @@ Azure Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByResourceIdParameterSet, GetExtendedInfoByResourceIdParameterSet , GetNetworkSettingByResourceIdParameterSet , GetSummaryUpdateByResourceIdParameterSet
+Parameter Sets: GetByResourceIdParameterSet, GetExtendedInfoByResourceIdParameterSet, GetNetworkSettingByResourceIdParameterSet, GetSummaryUpdateByResourceIdParameterSet
 Aliases:
 
 Required: True

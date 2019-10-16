@@ -15,25 +15,25 @@ Creates a new share in the device
 ### SmbParameterSet (Default)
 ```
 New-AzDataBoxEdgeShare [-ResourceGroupName] <String> [-DeviceName] <String> [-Name] <String>
- [-StorageAccountCredentialName] <String> [-Smb] [-UserAccessRight <Hashtable[]>] -DataFormat <String> [-AsJob]
+ [-StorageAccountCredentialName] <String> [-SMB] [-UserAccessRight <Hashtable[]>] -DataFormat <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NfsParameterSet
 ```
 New-AzDataBoxEdgeShare [-ResourceGroupName] <String> [-DeviceName] <String> [-Name] <String>
- [-StorageAccountCredentialName] <String> [-Nfs] [-ClientAccessRight <Hashtable[]>] -DataFormat <String>
+ [-StorageAccountCredentialName] <String> [-NFS] [-ClientAccessRight <Hashtable[]>] -DataFormat <String>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The command **New-AzDataBoxEdgeShare** is used to create a new share in the device
+The command New-AzDataBoxEdgeShare is used to create a new share in the device
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> New-AzDataBoxEdgeShare -ResourceGroupName resource-group-name -DeviceName device-name -Name share-1
+```
+PS C:\> New-AzDataBoxEdgeShare -ResourceGroupName resource-group-name -DeviceName device-name -Name share-1 -SMB
 -StorageAccountCredentialName storage-credential-name -DataFormat PageBlob
 Name       Type       DataPolicy       DataFormat       ResourceGroupName     StorageAccountName
 ---------- ---------- ---------------- ---------------- --------------------- -------------------
@@ -46,13 +46,13 @@ share-1    SMB        Cloud            PageBlob         resource-group-name   st
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 Read/Write Access for clientIds, For ex:@(@{"ClientId"="192.168.10.10";"AccessRight"="NoAccess"}, @{"ClientId"="192.168.10.11";"AccessRight"="ReadOnly"})
 
 ```yaml
-Type: System.Collections.Hashtable[]
+Type: Hashtable[]
 Parameter Sets: NfsParameterSet
 Aliases:
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 Set Data Format ex: PageBlob, BlobBlob
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 Name of the device
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 Creates a share with Name with Share Access protocol as NFS and
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -132,17 +132,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Nfs
+### -NFS
 AccessProtocol in the case of creating Share
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: NfsParameterSet
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 Share will be created under this ResourceGroupName
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -162,17 +162,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Smb
+### -SMB
 AccessProtocol in the case of creating Share
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: SmbParameterSet
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 Provide existing StorageAccountCredential's Resource Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 provide access right along with existing usernames to access SMB Share types, For ex: @(@{"Username"="user-name-1";"AccessRight"="Read"}, @{"Username"="user-name-2";"AccessRight"="Read"}, @{"Username"="user-name-3";"AccessRight"="Custom"})
 
 ```yaml
-Type: System.Collections.Hashtable[]
+Type: Hashtable[]
 Parameter Sets: SmbParameterSet
 Aliases:
 
@@ -211,28 +211,29 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -243,11 +244,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare
-
 ## NOTES
 
 ## RELATED LINKS

@@ -78,8 +78,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
         [Parameter(
             Mandatory = false,
             ParameterSetName = IotParameterSet,
-            HelpMessage = HelpMessageRoles.DeviceProperties)]
-        public SwitchParameter DeviceProperties { get; set; }
+            HelpMessage = HelpMessageRoles.DeviceProperty)]
+        public SwitchParameter DeviceProperty { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = IotParameterSet,
@@ -298,19 +298,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
                 }
             }
 
-            if (DeviceProperties.IsPresent)
+            if (DeviceProperty.IsPresent)
             {
                 this.iotEdgeDeviceAccessKey = this.IotEdgeDeviceAccessKey.ConvertToString();
                 this.iotDeviceAccessKey = this.IotDeviceAccessKey.ConvertToString();
             }
 
-            if (!ConnectionString.IsPresent && !DeviceProperties.IsPresent)
+            if (!ConnectionString.IsPresent && !DeviceProperty.IsPresent)
             {
                 throw new Exception(
                     string.Format(
                         "Please select one of -'{0}' or -'{1}'",
                         nameof(this.ConnectionString),
-                        nameof(this.DeviceProperties)));
+                        nameof(this.DeviceProperty)));
             }
 
 

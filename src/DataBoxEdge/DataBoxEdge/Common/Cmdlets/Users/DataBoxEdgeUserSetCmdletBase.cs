@@ -29,8 +29,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Users
      OutputType(typeof(PSResourceModel))]
     public class DataBoxEdgeUserSetCmdletBase : AzureDataBoxEdgeCmdletBase
     {
-        private const string SetByNameParameterSet = "SetByNameParameterSet ";
-        private const string SetByResourceIdParameterSet = "SetByResourceIdParameterSet ";
+        private const string SetByNameParameterSet = "SetByNameParameterSet";
+        private const string SetByResourceIdParameterSet = "SetByResourceIdParameterSet";
         private const string SetByInputObjectParameterSet = "SetByInputObjectParameterSet";
 
         [Parameter(Mandatory = true,

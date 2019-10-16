@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/db4e2fdb-6d80-4e6e-b7cd-736098270664/resourceGroups/psrgpfortest/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/psdataboxedgedevice/storageAccountCredentials/ps8868?api-version=2019-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGI0ZTJmZGItNmQ4MC00ZTZlLWI3Y2QtNzM2MDk4MjcwNjY0L3Jlc291cmNlR3JvdXBzL3BzcmdwZm9ydGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3hFZGdlL2RhdGFCb3hFZGdlRGV2aWNlcy9wc2RhdGFib3hlZGdlZGV2aWNlL3N0b3JhZ2VBY2NvdW50Q3JlZGVudGlhbHMvcHM4ODY4P2FwaS12ZXJzaW9uPTIwMTktMDMtMDE=",
+      "RequestUri": "/subscriptions/db4e2fdb-6d80-4e6e-b7cd-736098270664/resourceGroups/psrgpfortest/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/psdataboxedgedevice/shares/ps2225?api-version=2019-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGI0ZTJmZGItNmQ4MC00ZTZlLWI3Y2QtNzM2MDk4MjcwNjY0L3Jlc291cmNlR3JvdXBzL3BzcmdwZm9ydGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3hFZGdlL2RhdGFCb3hFZGdlRGV2aWNlcy9wc2RhdGFib3hlZGdlZGV2aWNlL3NoYXJlcy9wczIyMjU/YXBpLXZlcnNpb249MjAxOS0wMy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a7dc50ce-a3c2-4d9d-b873-d39a7035fc15"
+          "d5b07c38-0c18-4a8d-a27c-238027bf3561"
         ],
         "Accept-Language": [
           "en-US"
@@ -30,10 +30,10 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "64f85f90-b7b4-47b1-8953-d5f6fda22c84"
+          "f40dbb3d-0adc-4e35-a3e5-03026467d730"
         ],
         "x-ms-client-request-id": [
-          "a7dc50ce-a3c2-4d9d-b873-d39a7035fc15"
+          "d5b07c38-0c18-4a8d-a27c-238027bf3561"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -42,16 +42,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11984"
+          "11969"
         ],
         "x-ms-correlation-request-id": [
-          "67adb6a9-3a74-4bde-b48f-475f9d767633"
+          "2f7fd5a3-9ed5-498f-9661-ebe2bdd80574"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20191012T162000Z:67adb6a9-3a74-4bde-b48f-475f9d767633"
+          "SOUTHINDIA:20191016T100242Z:2f7fd5a3-9ed5-498f-9661-ebe2bdd80574"
         ],
         "Date": [
-          "Sat, 12 Oct 2019 16:19:59 GMT"
+          "Wed, 16 Oct 2019 10:02:42 GMT"
         ],
         "Content-Length": [
           "178"
@@ -63,13 +63,13 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"GatewayUserErrorEntityNotFound\",\r\n    \"message\": \"Could not find the entity ps8868.\\r\\nProvide a valid entity name and retry the operation.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"GatewayUserErrorEntityNotFound\",\r\n    \"message\": \"Could not find the entity ps2225.\\r\\nProvide a valid entity name and retry the operation.\"\r\n  }\r\n}",
       "StatusCode": 404
     }
   ],
   "Names": {
-    "Test-GetStorageAccountCredentialNonExistent": [
-      "ps8868"
+    "Test-GetShareNonExistent": [
+      "ps2225"
     ]
   },
   "Variables": {

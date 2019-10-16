@@ -20,7 +20,6 @@ using System.Security;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.EdgeGateway;
 using Microsoft.Azure.Management.EdgeGateway.Models;
-using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common;
 using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.StorageAccountCredential;
@@ -77,7 +76,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.StorageA
 
         private string GetKeyForEncryption()
         {
-            return this.EncryptionKey.ConvertToString();
+            var encryptionKey = this.EncryptionKey.ConvertToString();
+            return encryptionKey;
         }
 
         private ResourceModel GetResourceModel()

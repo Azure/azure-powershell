@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
         internal const string ConnectionStringHelpMessage = "To Provide Connection Strings";
         internal const string IotDeviceConnectionStringHelpMessage = "Please provide connection string of IOT Device";
         internal const string IotEdgeDeviceConnectionStringHelpMessage = "Please provide connection string of Edge Device";
-        internal const string DeviceProperties = "To Provide Device Properties";
+        internal const string DeviceProperty = "To Provide Device Properties";
         internal const string RoleStatusHelpMessage = "Provide the status enable/disable";
         internal const string PlatformHelpMessage = "Provide the Platform, for ex: windows";
         internal const string IotHostHubHelpMessage = "Hosthub address";
