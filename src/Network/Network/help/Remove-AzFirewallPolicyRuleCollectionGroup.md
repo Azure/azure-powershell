@@ -15,7 +15,7 @@ Removes a Azure Firewall Policy Rule Collection Group in a Azure firewall policy
 ### RemoveByNameParameterSet (Default)
 ```
 Remove-AzFirewallPolicyRuleCollectionGroup -Name <String> -ResourceGroupName <String>
- -FirewallPolicyName <String> [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ -AzureFirewallPolicyName <String> [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -53,7 +53,7 @@ This example removes the firewall policy rule colelction group named "testRcGrou
 
 ### Example 2
 ```powershell
-PS C:\> Remove-AzFirewallPolicyRuleCollectionGroup -Name testRcGroup -ResourceGroupName testRg -FirewallPolicyName fpName 
+PS C:\> Remove-AzFirewallPolicyRuleCollectionGroup -Name testRcGroup -ResourceGroupName testRg -AzureFirewallPolicyName fpName 
 ```
 
 This example removes the firewall policy rule colelction group named "testRcGroup" in the firewall named "fpName" frpm the resourcegroup names "testRg"
@@ -90,7 +90,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FirewallPolicyName
+### -AzureFirewallPolicyName
 The name of the firewall policy
 
 ```yaml
