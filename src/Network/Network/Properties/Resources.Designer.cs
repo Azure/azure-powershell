@@ -538,6 +538,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing a VirtualRouter will also remove all peerings associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
+        /// </summary>
+        internal static string RemoveVirtualRouterWarning {
+            get {
+                return ResourceManager.GetString("RemoveVirtualRouterWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing an ExpressRouteGateway will also remove all ExpressRouteExpressRouteConnections associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>
         internal static string RemovingExpressRouteGatewayWarning {
@@ -732,6 +741,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string UpdatingLongRunningOperationMessage {
             get {
                 return ResourceManager.GetString("UpdatingLongRunningOperationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid VirtualNetworkGateway is required to create Virtual Router.
+        /// </summary>
+        internal static string VirtualGatewayRequiredForVirtualRouter {
+            get {
+                return ResourceManager.GetString("VirtualGatewayRequiredForVirtualRouter", resourceCulture);
             }
         }
         
