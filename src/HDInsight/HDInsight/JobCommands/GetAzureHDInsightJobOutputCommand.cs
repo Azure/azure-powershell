@@ -17,20 +17,16 @@ using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Job;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.HDInsight;
 using Microsoft.Azure.Management.HDInsight.Job.Models;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [GenericBreakingChange("Users with reader role need to specify `DefaultStorageAccountKey` parameter explicitly, otherwise error occurs.", "2.0.0", "05/06/2019")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightJobOutput"), OutputType(typeof(string))]
     public class GetAzureHDInsightJobOutputCommand : HDInsightCmdletBase
     {

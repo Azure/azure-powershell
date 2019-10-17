@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: 87B3C102-0A8C-4FFA-8429-594D2360AC32
@@ -14,7 +14,7 @@ Removes the specified HDInsight cluster from the current subscription.
 ## SYNTAX
 
 ```
-Remove-AzHDInsightCluster [-ClusterName] <String> [-ResourceGroupName <String>]
+Remove-AzHDInsightCluster [-ClusterName] <String> [-ResourceGroupName <String>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ This command removes the cluster named your-hadoop-001.
 Specifies the name of the cluster.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -69,7 +69,22 @@ Accept wildcard characters: False
 Specifies the name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+If PassThru is present, output the result
+
+```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -81,16 +96,14 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.Management.HDInsight.Models.ClusterGetResponse
-
+### System.Boolean
 ## NOTES
 
 ## RELATED LINKS

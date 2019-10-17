@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight

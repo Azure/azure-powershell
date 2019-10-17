@@ -14,9 +14,6 @@
 
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 using Xunit.Abstractions;
 

@@ -15,6 +15,7 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
+using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -24,7 +25,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightGatewayCredential", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(GatewaySettings))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightGatewayCredential", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(AzureHDInsightGatewaySettings))]
     public class SetAzureHDInsightGatewayCredentialCommand : HDInsightCmdletBase
     {
         private const string SetByNameParameterSet = "SetByNameParameterSet";
@@ -126,7 +127,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             if (ShouldProcess(Name, "set gateway http credential"))
             {
                 HDInsightManagementClient.UpdateGatewayCredential(ResourceGroupName, Name, updateGatewaySettingsParameters);
-                WriteObject(HDInsightManagementClient.GetGatewaySettings(ResourceGroupName, Name));
+                WriteObject(new AzureHDInsightGatewaySettings(HDInsightManagementClient.GetGatewaySettings(ResourceGroupName, Name)));
             }
         }
     }
