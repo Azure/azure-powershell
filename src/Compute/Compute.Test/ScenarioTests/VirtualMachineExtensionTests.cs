@@ -115,9 +115,16 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureDiskEncryptionExtensionSinglePassEnableAndDisableWithNonDefaultParams()
+        public void TestAzureDiskEncryptionExtensionNonDefaultParams()
         {
-            TestRunner.RunTestScript("Test-AzureDiskEncryptionExtensionSinglePassEnableAndDisableWithNonDefaultParams");
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionExtensionNonDefaultParams");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionLnxManagedDisk()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionLnxManagedDisk");
         }
 
         [Fact]
