@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Update references in .psd1 to use relative path
+* Added support for restore of dropped databases on Managed Instances.
 
 ## Version 1.15.0
 * Add support for setting Active Directory Administrator on Managed Instance

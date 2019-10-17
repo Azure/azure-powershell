@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Update references in .psd1 to use relative path
+* Fixed the bug that customer will get "Not a valid Base-64 string" error when using Get-AzHDInsightCluster to get the cluster with ADLSGen1 storage.
+* Add a parameter named "ApplicationId" to three cmdlets Add-AzHDInsightClusterIdentity, New-AzHDInsightClusterConfig and New-AzHDInsightCluster so that customer can provide the service principal application id for accessing Azure Data Lake.
 
 ## Version 2.0.2
 * Call out breaking changes
