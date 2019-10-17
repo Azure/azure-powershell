@@ -1,42 +1,48 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azprivateendpointconnection
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azprivatelinkresource
 schema: 2.0.0
 ---
 
-# Set-AzPrivateEndpointConnection
+# Get-AzPrivateLinkResource
 
 ## SYNOPSIS
-Updates a private endpoint connection state on private link service.
+Gets a private link resource.
 
 ## SYNTAX
 
 ### ByResourceId (Default)
 ```
-Set-AzPrivateEndpointConnection -ResourceId <String>
- -PrivateLinkServiceConnectionState <String> [-Description <String>]
+Get-AzPrivateLinkResource -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResource
 ```
-Set-AzPrivateEndpointConnection -Name <String> -ServiceName <String> -ResourceGroupName <String> [-ResourceType <String>]
- -PrivateLinkServiceConnectionState <String> [-Description <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPrivateLinkResource -ServiceName <String> -ResourceGroupName <String>
+[-Name <String>] [-ResourceType <String>] [-Description <String>]
+[-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzPrivateEndpointConnection** cmdlet updates a private endpoint connection state on a private link service
+The **Get-AzPrivateLinkResource** cmdlet retrieves a private link resource.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-Set-AzPrivateEndpointConnection -Name TestPrivateEndpointConnection -ResourceGroupName TestResourceGroup -ServiceName TestPrivateLinkService -PrivateLinkServiceConnectionState "Approved"
+Get-AzPrivateLinkResource -Name plr -ResourceGroupName TestResourceGroup -ServiceName MyPrivateLinkServiceName
 ```
 
-This example updates a private endpoint connection state to Approved.
+This example get a private link resource named plr belong to service MyPrivateLinkServiceName.
+
+### Example 2
+```
+Get-AzPrivateLinkResource -ResourceGroupName TestResourceGroup -ServiceName MyPrivateLinkServiceName
+```
+
+This example return a list of all private link resource belongs to service MyPrivateLinkServiceName.
 
 ## PARAMETERS
 
@@ -55,13 +61,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-The reason of action.
+### -Name
+The name of the private link resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: ByResource
+Aliases: ResourceName
 
 Required: False
 Position: Named
@@ -70,38 +76,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Name
-The resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResource
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PrivateLinkServiceConnectionState
-Approved or rejected the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
-The resource group name.
+The resource group name of the private link resource.
 
 ```yaml
 Type: System.String
@@ -116,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The Azure resource manager id of the private endpoint connection.
+The Azure resource manager id of the private link resource.
 
 ```yaml
 Type: System.String
@@ -146,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-The private link service name.
+The name of the service that has the private link resource belong to.
 
 ```yaml
 Type: System.String
@@ -169,7 +145,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSPrivateLinkService
+### System.Boolean
 
 ## NOTES
 

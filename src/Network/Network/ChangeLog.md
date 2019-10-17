@@ -19,6 +19,20 @@
 --->
 
 ## Upcoming Release
+* Change all cmdlets for PrivateEndpointConnection to support generic service provider.
+    - Updated cmdlet:
+        - Approve-AzPrivateEndpointConnection
+        - Deny-AzPrivateEndpointConnection
+        - Get-AzPrivateEndpointConnection
+        - Remove-AzPrivateEndpointConnection
+        - Set-AzPrivateEndpointConnection
+* Add new cmdlet for PrivateLinkResource and it also support generic service provider.
+    - New cmdlet:
+        - Get-AzPrivateLinkResource
+* Add new fields and parameter for the feature Proxy Protocol V2.
+    - Add property EnableProxyProtocol in PrivateLinkService
+    - Add property LinkIdentifier in PrivateEndpointConnection
+    - Updated New-AzPrivateLinkService to add a new optional parameter EnableProxyProtocol.
 * Fix incorrect parameter description in `New-AzApplicationGatewaySku` reference documentation
 * New cmdlets to support the azure firewall policy
 * Add support for child resource RouteTables of VirtualHub
