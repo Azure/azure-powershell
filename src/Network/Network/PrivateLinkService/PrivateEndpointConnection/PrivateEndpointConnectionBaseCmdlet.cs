@@ -21,12 +21,13 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("ResourceName")]
         [Parameter(
-           Mandatory = true,
+           Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.",
            ParameterSetName = "ByResource")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        [SupportsWildcards]
+        public virtual string Name { get; set; }
 
         [Parameter(
            Mandatory = true,
@@ -48,8 +49,26 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
           Mandatory = false,
           ValueFromPipelineByPropertyName = true,
-          HelpMessage = "The reason of action.")]
-        public string Description { get; set; }
+          HelpMessage = "The resource type.",
+          ParameterSetName = "ByResource")]
+        public string ResourceType { get; set; }
 
+        protected IPrivateLinkProvider BuildProvider(string resourceType)
+        {
+            IPrivateLinkProvider provider = null;
+
+            switch (resourceType.ToLower())
+            {
+                case "microsoft.sql/servers/privateendpointconnections":
+                    provider = new SqlProvider(this);
+                    break;
+                case "microsoft.network/privatelinkservices/privateendpointconnections":
+                default:
+                    provider = new NetworkingProvider(this);
+                    break;
+            }
+
+            return provider;
+        }
     }
 }
