@@ -219,7 +219,7 @@ function Test-RestoreManagedDatabase
 		$targetManagedDatabaseName = Get-ManagedDatabaseName
 		$pointInTime = (Get-date).AddMinutes(5)
 
-		# Wait for 450 seconds for restore to be ready
+		# Once database is created, backup service will automaticly take log backups every 5 minutes. We are waiting 450s to ensure backups are taken to which we can restore.
 		Wait-Seconds 450
 
 		# restore managed database to the same instance
@@ -239,6 +239,94 @@ function Test-RestoreManagedDatabase
 	finally
 	{
 		Remove-ResourceGroupForTest $rg
+		Remove-ResourceGroupForTest $rg2
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests restoring a managed database
+#>
+function Test-RestoreDeletedManagedDatabase
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$rg2 = Create-ResourceGroupForTest
+	$vnetName = "cl_initial"
+	$subnetName = "Cool"
+
+	# Setup VNET 
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
+
+	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
+	$managedInstance2 = Create-ManagedInstanceForTest $rg2 $subnetId
+
+	try
+	{
+		# Create with all values
+		$managedDatabaseName = Get-ManagedDatabaseName
+		$collation = "SQL_Latin1_General_CP1_CI_AS"
+		$job1 = New-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -Collation $collation -AsJob
+		$job1 | Wait-Job
+		$db = $job1.Output
+
+		Assert-AreEqual $db.Name $managedDatabaseName
+
+		$targetManagedDatabaseName1 = Get-ManagedDatabaseName
+		$targetManagedDatabaseName2 = Get-ManagedDatabaseName
+		$targetManagedDatabaseName3 = Get-ManagedDatabaseName
+		$targetManagedDatabaseName4 = Get-ManagedDatabaseName
+		$targetManagedDatabaseName5 = Get-ManagedDatabaseName
+
+		# Once database is created, backup service will automatically take log backups every 5 minutes. We are waiting 450s to ensure backups are taken to which we can restore.
+		Wait-Seconds 450
+
+		# Test remove using all parameters
+		Remove-AzSqlInstanceDatabase -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -Force
+
+		# Get deleted database
+		$deletedDatabases = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -DatabaseName $managedDatabaseName 
+
+		# restore managed database to the same instance
+		$restoredDb1 = Restore-AzSqlInstanceDatabase -FromPointInTimeBackup -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -DeletionDate $deletedDatabases[0].DeletionDate -PointInTime $deletedDatabases[0].EarliestRestorePoint -TargetInstanceDatabaseName $targetManagedDatabaseName1
+		Assert-NotNull $restoredDb1
+		Assert-AreEqual $restoredDb1.Name $targetManagedDatabaseName1
+		Assert-AreEqual $restoredDb1.ResourceGroupName $rg.ResourceGroupName
+		Assert-AreEqual $restoredDb1.ManagedInstanceName $managedInstance.ManagedInstanceName
+
+		# restore managed database to the another instance, different resource group and managed instance
+		$restoredDb2 = Restore-AzSqlInstanceDatabase -FromPointInTimeBackup -ResourceGroupName $rg.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -DeletionDate $deletedDatabases[0].DeletionDate -PointInTime $deletedDatabases[0].EarliestRestorePoint -TargetInstanceDatabaseName $targetManagedDatabaseName2 -TargetInstanceName $managedInstance2.ManagedInstanceName -TargetResourceGroupName $rg2.ResourceGroupName
+		Assert-NotNull $restoredDb2
+		Assert-AreEqual $restoredDb2.Name $targetManagedDatabaseName2
+		Assert-AreEqual $restoredDb2.ResourceGroupName $rg2.ResourceGroupName
+		Assert-AreEqual $restoredDb2.ManagedInstanceName $managedInstance2.ManagedInstanceName
+
+		# restore managed database to the same instance using InputObject
+		$restoredDb3 = Restore-AzSqlInstanceDatabase -FromPointInTimeBackup -InputObject $deletedDatabases[0] -PointInTime $deletedDatabases[0].EarliestRestorePoint -TargetInstanceDatabaseName $targetManagedDatabaseName3
+		Assert-NotNull $restoredDb3
+		Assert-AreEqual $restoredDb3.Name $targetManagedDatabaseName3
+		Assert-AreEqual $restoredDb3.ResourceGroupName $rg.ResourceGroupName
+		Assert-AreEqual $restoredDb3.ManagedInstanceName $managedInstance.ManagedInstanceName
+
+		# restore managed database to the same instance using ResourceId
+		$restoredDb4 = Restore-AzSqlInstanceDatabase -FromPointInTimeBackup -ResourceId $deletedDatabases[0].Id -PointInTime $deletedDatabases[0].EarliestRestorePoint -TargetInstanceDatabaseName $targetManagedDatabaseName4
+		Assert-NotNull $restoredDb4
+		Assert-AreEqual $restoredDb4.Name $targetManagedDatabaseName4
+		Assert-AreEqual $restoredDb4.ResourceGroupName $rg.ResourceGroupName
+		Assert-AreEqual $restoredDb4.ManagedInstanceName $managedInstance.ManagedInstanceName.
+
+		# restore managed database to the same instance using Piping
+		$restoredDb5 = $deletedDatabases[0] | Restore-AzSqlInstanceDatabase -FromPointInTimeBackup -PointInTime $deletedDatabases[0].EarliestRestorePoint -TargetInstanceDatabaseName $targetManagedDatabaseName5
+		Assert-NotNull $restoredDb5
+		Assert-AreEqual $restoredDb5.Name $targetManagedDatabaseName5
+		Assert-AreEqual $restoredDb5.ResourceGroupName $rg.ResourceGroupName
+		Assert-AreEqual $restoredDb5.ManagedInstanceName $managedInstance.ManagedInstanceName
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+		Remove-ResourceGroupForTest $rg2
 	}
 }
 
@@ -287,7 +375,7 @@ function Test-GeoRestoreManagedDatabase
 
 		Assert-NotNull $sourceDbGeoBackup
 
-	   $targetManagedDatabaseName1 = Get-ManagedDatabaseName		
+		$targetManagedDatabaseName1 = Get-ManagedDatabaseName
 		$targetManagedDatabaseName2 = Get-ManagedDatabaseName
 		$targetManagedDatabaseName3 = Get-ManagedDatabaseName
 		$targetManagedDatabaseName4 = Get-ManagedDatabaseName
@@ -323,7 +411,7 @@ function Test-GeoRestoreManagedDatabase
 	}
 	finally
 	{
-     	$restoredDb1 | Remove-AzSqlInstanceDatabase -Force
+		$restoredDb1 | Remove-AzSqlInstanceDatabase -Force
 		$restoredDb2 | Remove-AzSqlInstanceDatabase -Force
 		$restoredDb3 | Remove-AzSqlInstanceDatabase -Force
 		$restoredDb4 | Remove-AzSqlInstanceDatabase -Force
