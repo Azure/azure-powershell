@@ -69,6 +69,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreDeletedManagedDatabase()
+        {
+            RunPowerShellTest("Test-RestoreDeletedManagedDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagedDatabaseGeoBackup()
         {
             RunPowerShellTest("Test-GetManagedDatabaseGeoBackup");
