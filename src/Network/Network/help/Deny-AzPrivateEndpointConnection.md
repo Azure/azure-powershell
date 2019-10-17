@@ -21,7 +21,8 @@ Deny-AzPrivateEndpointConnection -ResourceId <String> [-Description <String>]
 ### ByResource
 ```
 Deny-AzPrivateEndpointConnection -Name <String> -ServiceName <String> -ResourceGroupName <String>
- [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+[-ResourceType <string>] [-Description <String>]
+[-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -113,8 +114,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceType
+The resource type.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResource
+Aliases: ResourceName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ServiceName
-The private link service name.
+The name of service that private endpoint connection belong to.
 
 ```yaml
 Type: System.String
