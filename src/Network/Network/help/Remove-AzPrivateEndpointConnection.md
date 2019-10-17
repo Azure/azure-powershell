@@ -14,19 +14,20 @@ Removes a private endpoint connection.
 
 ### ByResourceId (Default)
 ```
-Remove-AzPrivateEndpointConnection [-Force] [-AsJob] [-PassThru] -ResourceId <String> [-Description <String>]
+Remove-AzPrivateEndpointConnection -ResourceId <String>
+ [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResource
 ```
-Remove-AzPrivateEndpointConnection [-Force] [-AsJob] [-PassThru] -Name <String> -ServiceName <String>
- -ResourceGroupName <String> [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzPrivateEndpointConnection -Name <String> -ServiceName <String> -ResourceGroupName <String>
+ [-ResourceType <String>] [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzPrivateEndpointConnection** cmdlet removes a private endpoint connection. 
+The **Remove-AzPrivateEndpointConnection** cmdlet removes a private endpoint connection.
 
 ## EXAMPLES
 
@@ -66,21 +67,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Description
-The reason of action.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -160,8 +146,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceType
+The resource type.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResource
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ServiceName
-The name of the private link service that has the private endpoint connection.
+The name of service that the private endpoint connection belong to.
 
 ```yaml
 Type: System.String
