@@ -119,7 +119,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Execute the Create AzureFirewall call
             this.AzureFirewallPolicyClient.CreateOrUpdate(this.ResourceGroupName, this.Name, azureFirewallPolicyModel);
-            
             return this.GetAzureFirewallPolicy(this.ResourceGroupName, this.Name);
         }
     }
