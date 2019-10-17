@@ -14,14 +14,15 @@ Gets a private endpoint connection resource.
 
 ### ByResourceId (Default)
 ```
-Get-AzPrivateEndpointConnection -ResourceId <String> [-Description <String>]
+Get-AzPrivateEndpointConnection -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResource
 ```
-Get-AzPrivateEndpointConnection -Name <String> -ServiceName <String> -ResourceGroupName <String>
- [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPrivateEndpointConnection -ServiceName <String> -ResourceGroupName <String>
+[-Name <String>] [-ResourceType <String>] [-Description <String>]
+[-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +35,14 @@ The **Get-AzPrivateEndpointConnection** cmdlet retrieves a private endpoint conn
 Get-AzPrivateEndpointConnection -Name MyPrivateEndpointConnection1 -ResourceGroupName TestResourceGroup -ServiceName MyPrivateLinkServiceName
 ```
 
-This example get a private endpoint connection named MyPrivateEndpointConnection1
+This example get a private endpoint connection named MyPrivateEndpointConnection1 belong to service MyPrivateLinkServiceName.
+
+### Example 2
+```
+Get-AzPrivateEndpointConnection -ResourceGroupName TestResourceGroup -ServiceName MyPrivateLinkServiceName
+```
+
+This example return a list of all private endpoint connections belongs to service MyPrivateLinkServiceName.
 
 ## PARAMETERS
 
@@ -53,21 +61,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-The reason of action.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the private endpoint connection.
 
@@ -76,7 +69,7 @@ Type: System.String
 Parameter Sets: ByResource
 Aliases: ResourceName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -113,8 +106,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceType
+The resource type.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResource
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ServiceName
-The name of the private link service that has the private endpoint connection.
+The name of service that the private endpoint connection belong to.
 
 ```yaml
 Type: System.String
