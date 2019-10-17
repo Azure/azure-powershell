@@ -14,8 +14,6 @@
 
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.HDInsight.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
@@ -35,6 +33,9 @@ namespace Microsoft.Azure.Commands.HDInsight
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()
@@ -46,7 +47,10 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             HDInsightManagementClient.DeleteCluster(ResourceGroupName, ClusterName);
 
-            WriteObject(true);
+            if (this.PassThru.IsPresent)
+            {
+                WriteObject(true);
+            }
         }
     }
 }

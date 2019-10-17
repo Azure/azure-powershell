@@ -26,8 +26,6 @@ The **Get-AzHDInsightMonitoring** cmdlet gets the status of monitoring installat
 ```
 PS C:\> Get-AzHDInsightMonitoring -Name testcluster
 
-ClusterMonitoringEnabled
-
 {'ClusterMonitoringEnabled':'true', 'workspaceId':'1d364e89-bb71-4503-aa3d-a23535aea7bd'}
 ```
 
@@ -36,8 +34,6 @@ Monitoring is enabled on the cluster because the ClusterMonitoringEnabled proper
 ### Example 2
 ```
 PS C:\> Get-AzHDInsightMonitoring -Name testcluster -ResourceGroupName testrg
-
-ClusterMonitoringEnabled
 
 {'ClusterMonitoringEnabled':'true', 'workspaceId':'1d364e89-bb71-4503-aa3d-a23535aea7bd'}
 ```
@@ -48,9 +44,7 @@ Monitoring is enabled on the cluster because the ClusterMonitoringEnabled proper
 ```
 PS C:\> Get-AzHDInsightMonitoring -Name testcluster
 
-ClusterMonitoringEnabled
-
-{'ClusterMonitoringEnabled':'false'}
+{'ClusterMonitoringEnabled':'false', 'workspaceId': null}
 ```
 
 Monitoring is disabled on the cluster because the ClusterMonitoringEnabled property is false.
@@ -59,9 +53,7 @@ Monitoring is disabled on the cluster because the ClusterMonitoringEnabled prope
 ```
 PS C:\> Get-AzHDInsightMonitoring -Name testcluster -ResourceGroupName testrg
 
-ClusterMonitoringEnabled
-
-{'ClusterMonitoringEnabled':'false'}
+{'ClusterMonitoringEnabled':'false', 'workspaceId': null}
 ```
 
 Monitoring is disabled on the cluster because the ClusterMonitoringEnabled property is false.
@@ -94,7 +86,7 @@ Aliases: ClusterName
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -109,7 +101,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.0.0'
+ModuleVersion = '2.0.2'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -133,7 +133,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Changed Microsoft.Azure.Management.HDInsight from 2.1.0 to 5.1.0
+        ReleaseNotes = '* Fixed the bug that customer will get "Not a valid Base-64 string" error when using Get-AzHDInsightCluster to get the cluster with ADLSGen1 storage.
+* Add a parameter named "ApplicationId" to three cmdlets Add-AzHDInsightClusterIdentity, New-AzHDInsightClusterConfig and New-AzHDInsightCluster so that customer can provide the service principal application id for accessing Azure Data Lake.
+* Changed Microsoft.Azure.Management.HDInsight from 2.1.0 to 5.1.0
 * Removed five cmdlets:
     - Get-AzHDInsightOMS
     - Enable-AzHDInsightOMS
@@ -151,8 +153,8 @@ PrivateData = @{
 *  - Changed the output type of Get-AzHDInsightProperties from  CapabilitiesResponse to AzureHDInsightCapabilities.
 *  - Changed the output type of Remove-AzHDInsightCluster from ClusterGetResponse to bool.
 *  - Changed the output type of Set-AzHDInsightGatewaySettings HttpConnectivitySettings to GatewaySettings.
-* Added Scenario Test Framework and added some scenario test cases.'
-* Removed alias 'Add-AzHDInsightConfigValues' and 'Get-AzHDInsightProperties'.
+* Added Scenario Test Framework and added some scenario test cases.
+* Removed alias "Add-AzHDInsightConfigValues" and "Get-AzHDInsightProperties".'
 
         # Prerelease string of this module
         # Prerelease = ''
