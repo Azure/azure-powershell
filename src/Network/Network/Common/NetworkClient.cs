@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Management.Sql;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
@@ -36,6 +37,8 @@ namespace Microsoft.Azure.Commands.Network
     {
         public INetworkManagementClient NetworkManagementClient { get; set; }
 
+        public ISqlManagementClient SqlManagementClient { get; set; }
+
         public Action<string> VerboseLogger { get; set; }
 
         public Action<string> ErrorLogger { get; set; }
@@ -45,6 +48,7 @@ namespace Microsoft.Azure.Commands.Network
         public NetworkClient(IAzureContext context)
             : this(AzureSession.Instance.ClientFactory.CreateArmClient<NetworkManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
+            SqlManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<SqlManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         public NetworkClient(INetworkManagementClient NetworkManagementClient)
