@@ -410,4 +410,7 @@
   <data name="VpnSitePropertyIsDeprecated" xml:space="preserve">
     <value>Update request for VpnSite contains deprecated property. Please use corresponding VpnSiteLink property instead.</value>
   </data>
+  <data name="RouteTableNotFound" xml:space="preserve">
+    <value>The virtual hub route table to modify could not be found</value>
+  </data>
 </root>

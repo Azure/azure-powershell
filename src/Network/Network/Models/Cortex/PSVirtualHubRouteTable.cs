@@ -15,12 +15,14 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using System.Collections.Generic;
+    using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
     public class PSVirtualHubRouteTable : PSChildResource
     {
         public List<PSVirtualHubRoute> Routes { get; set; }
 
+        [PSDefaultValue(Value = "All_Branches")]
         public List<string> AttachedConnections { get; set; }
     }
 }

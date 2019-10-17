@@ -123,6 +123,101 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
+        private static void MapRouteTableV2sToRouteTables<MnmType, CnmType>(MnmType mnmObj, CnmType cnmObj)
+        {
+            /*
+             * MNM type Virtual Hub contains the property VirtualHubRouteTableV2s which
+             * maps to the RouteTables property of the CNM type VirtualHub
+             * So, we get the value of RouteTableV2s from the MNM obj and 
+             * set it to the RouteTables property of the CNM obj.
+             */
+            string psRouteTablesPropName = "RouteTables";
+            string mnmRouteTableV2sPropName = "VirtualHubRouteTableV2s";
+
+            var cnmRouteTablesProp = typeof(CnmType).GetProperty(psRouteTablesPropName);
+
+            List<CNM.PSVirtualHubRouteTable> cnmRouteTables = new List<CNM.PSVirtualHubRouteTable>();
+
+            // get routeTableV2s
+            var mnmValue = (ICollection<MNM.VirtualHubRouteTableV2>)typeof(MnmType).GetProperty(mnmRouteTableV2sPropName).GetValue(mnmObj);
+            foreach (var mnmRouteTableV2 in mnmValue)
+            {
+                var mnmRoutes = mnmRouteTableV2.Routes;
+                var mnmAttachedConnections = (ICollection<string>)mnmRouteTableV2.AttachedConnections;
+
+                List<CNM.PSVirtualHubRoute> cnmRoutes = new List<CNM.PSVirtualHubRoute>();
+                var cnmAttachedConnections = new List<string>(mnmAttachedConnections);
+                
+                foreach (var mnmRoute in mnmRoutes)
+                {
+                    var cnmRoute = new CNM.PSVirtualHubRoute
+                    {
+                        Destinations = new List<string>(mnmRoute.Destinations),
+                        DestinationType = mnmRoute.DestinationType,
+                        NextHops = new List<string>(mnmRoute.NextHops),
+                        NextHopType = mnmRoute.NextHopType
+                    };
+
+                    cnmRoutes.Add(cnmRoute);
+                }
+
+                var cnmRouteTable = new CNM.PSVirtualHubRouteTable
+                {
+                    Routes = cnmRoutes,
+                    AttachedConnections = cnmAttachedConnections,
+                    Name = mnmRouteTableV2.Name
+                };
+
+                cnmRouteTables.Add(cnmRouteTable);
+            }
+
+            cnmRouteTablesProp.SetValue(cnmObj, cnmRouteTables);
+        }
+
+        private static void MapRouteTablesToRouteTableV2s<CnmType, MnmType>(CnmType cnmObj, MnmType mnmObj)
+        {
+            string psRouteTablesPropName = "RouteTables";
+            string mnmRouteTableV2sPropName = "VirtualHubRouteTableV2s";
+
+            var mnmRouteTableV2sProp = typeof(MnmType).GetProperty(mnmRouteTableV2sPropName);
+
+            List<MNM.VirtualHubRouteTableV2> mnmRouteTables = new List<MNM.VirtualHubRouteTableV2>();
+
+            var cnmValue = (ICollection<CNM.PSVirtualHubRouteTable>)typeof(CnmType).GetProperty(psRouteTablesPropName).GetValue(cnmObj);
+            foreach (var cnmRouteTableV2 in cnmValue)
+            {
+                var cnmRoutes = cnmRouteTableV2.Routes;
+                var cnmAttachedConnections = (ICollection<string>)cnmRouteTableV2.AttachedConnections;
+
+                List<MNM.VirtualHubRouteV2> mnmRoutes = new List<MNM.VirtualHubRouteV2>();
+                var mnmAttachedConnections = new List<string>(cnmAttachedConnections);
+
+                foreach (var cnmRoute in cnmRoutes)
+                {
+                    var mnmRoute = new MNM.VirtualHubRouteV2
+                    {
+                        Destinations = new List<string>(cnmRoute.Destinations),
+                        DestinationType = cnmRoute.DestinationType,
+                        NextHops = new List<string>(cnmRoute.NextHops),
+                        NextHopType = cnmRoute.NextHopType
+                    };
+
+                    mnmRoutes.Add(mnmRoute);
+                }
+
+                var mnmRouteTable = new MNM.VirtualHubRouteTableV2
+                {
+                    Routes = mnmRoutes,
+                    AttachedConnections = mnmAttachedConnections,
+                    Name = cnmRouteTableV2.Name
+                };
+
+                mnmRouteTables.Add(mnmRouteTable);
+            }
+
+            mnmRouteTableV2sProp.SetValue(mnmObj, mnmRouteTables);
+        }
+
         private static void Initialize()
         {
             var config = new MapperConfiguration(cfg => {
@@ -907,10 +1002,16 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSIpConfigurationConnectivityInformation, MNM.NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties>();
 
                 //// SDWAN
-                cfg.CreateMap<CNM.PSVirtualHub, MNM.VirtualHub>();
+                cfg.CreateMap<CNM.PSVirtualHub, MNM.VirtualHub>()
+                    .AfterMap((src, dest) =>
+                    {
+                        MapRouteTablesToRouteTableV2s<CNM.PSVirtualHub, MNM.VirtualHub>(src, dest);
+                    });
                 cfg.CreateMap<CNM.PSVirtualHubId, MNM.VirtualHubId>();
                 cfg.CreateMap<CNM.PSVirtualWan, MNM.VirtualWAN>();
                 cfg.CreateMap<CNM.PSHubVirtualNetworkConnection, MNM.HubVirtualNetworkConnection>();
+                cfg.CreateMap<CNM.PSVirtualHubRouteTable, MNM.VirtualHubRouteTable>();
+                cfg.CreateMap<CNM.PSVirtualHubRoute, MNM.VirtualHubRoute>();
                 cfg.CreateMap<CNM.PSVirtualHubRouteTable, MNM.VirtualHubRouteTableV2>();
                 cfg.CreateMap<CNM.PSVirtualHubRoute, MNM.VirtualHubRouteV2>();
                 cfg.CreateMap<CNM.PSVpnGateway, MNM.VpnGateway>();
@@ -935,9 +1036,15 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSExpressRouteCircuitPeeringId, MNM.ExpressRouteCircuitPeeringId>();
 
                 cfg.CreateMap<MNM.VirtualWAN, CNM.PSVirtualWan>();
-                cfg.CreateMap<MNM.VirtualHub, CNM.PSVirtualHub>();
+                cfg.CreateMap<MNM.VirtualHub, CNM.PSVirtualHub>()
+                    .AfterMap((src, dest) =>
+                    {
+                        MapRouteTableV2sToRouteTables<MNM.VirtualHub, CNM.PSVirtualHub>(src, dest);
+                    });
                 cfg.CreateMap<MNM.VirtualHubId, CNM.PSVirtualHubId>();
                 cfg.CreateMap<MNM.HubVirtualNetworkConnection, CNM.PSHubVirtualNetworkConnection>();
+                cfg.CreateMap<MNM.VirtualHubRouteTable, CNM.PSVirtualHubRouteTable>();
+                cfg.CreateMap<MNM.VirtualHubRoute, CNM.PSVirtualHubRoute>();
                 cfg.CreateMap<MNM.VirtualHubRouteTableV2, CNM.PSVirtualHubRouteTable>();
                 cfg.CreateMap<MNM.VirtualHubRouteV2, CNM.PSVirtualHubRoute>();
                 cfg.CreateMap<MNM.VpnGateway, CNM.PSVpnGateway>();

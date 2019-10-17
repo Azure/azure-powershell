@@ -3605,8 +3605,16 @@
                 <PropertyName>VirtualNetworkExpressRouteConnections</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>RouteTables</Label>
+                <PropertyName>RouteTables</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Location</Label>
                 <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Sku</Label>
+                <PropertyName>Sku</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Type</Label>
@@ -3641,6 +3649,10 @@
               <ListItem>
                 <Label>RemoteVirtualNetwork</Label>
                 <ScriptBlock>$_.RemoteVirtualNetwork.Id</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>EnableInternetSecurity</Label>
+                <PropertyName>EnableInternetSecurity</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>ProvisioningState</Label>
@@ -3679,6 +3691,10 @@
               <ListItem>
                 <Label>Location</Label>
                 <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VirtualWANType</Label>
+                <PropertyName>VirtualWANType</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Type</Label>
@@ -3895,6 +3911,10 @@
               <ListItem>
                 <Label>Type</Label>
                 <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EnableInternetSecurity</Label>
+                <PropertyName>EnableInternetSecurity</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>ProvisioningState</Label>
