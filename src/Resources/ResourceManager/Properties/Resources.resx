@@ -450,4 +450,7 @@
   <data name="InvalidFilePath" xml:space="preserve">
     <value>The provided file {0} doesn't exist</value>
   </data>
+  <data name="InvalidParameterForSubscriptionScope" xml:space="preserve">
+    <value>The 'ResourceGroupName' parameter is not allowed when 'ScopeType' is 'Subscription'.</value>
+  </data>
 </root>

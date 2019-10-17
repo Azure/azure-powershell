@@ -26,6 +26,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Update="Microsoft.Azure.Management.ResourceManager" Version="2.4.0-preview" />
+    <PackageReference Update="Microsoft.Azure.Management.ResourceManager" Version="2.4.1-preview" />
   </ItemGroup>
 </Project>
