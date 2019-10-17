@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<string> Zones { get; set; }
 
+
         [JsonIgnore]
         public string IpConfigurationsText
         {

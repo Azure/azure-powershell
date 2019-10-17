@@ -81,10 +81,11 @@ namespace Microsoft.Azure.Commands.Network
             var azureFirewall = this.AzureFirewallClient.Get(resourceGroupName, name);
 
             var psAzureFirewall = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewall>(azureFirewall);
-            // var sku = new PSAzureFirewallSku();
-            // sku.Name = azureFirewall.Sku.Name;
-            // sku.Tier = azureFirewall.Sku.Tier;
-            // psAzureFirewall.Sku = sku;
+            psAzureFirewall.Sku = new PSAzureFirewallSku()
+            {
+                Name = azureFirewall.Sku.Name,
+                Tier = azureFirewall.Sku.Tier
+            };
             psAzureFirewall.ResourceGroupName = resourceGroupName;
             psAzureFirewall.Tag = TagsConversionHelper.CreateTagHashtable(azureFirewall.Tags);
 
