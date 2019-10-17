@@ -169,7 +169,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fix bug where New-AzRoleAssignment could not be called without parameter Scope.'
+        ReleaseNotes = '* Add new cmdlet `New-AzDeploymentWhatIf` for deployment what-if operation.'
 
         # Prerelease string of this module
         Prerelease = 'preview'
