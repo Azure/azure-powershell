@@ -64,7 +64,6 @@ aks: $(repo)/specification/containerservice/resource-manager/Microsoft.Container
 input-file:
 - $(aks)/stable/2019-08-01/location.json
 - $(aks)/stable/2019-08-01/managedClusters.json
-- $(aks)/stable/2017-07-01/containerService.json
 
 module-version: 0.0.1
 title: ContainerServiceClient
@@ -81,6 +80,7 @@ directive:
 
 REMOVED FROM input-files
 - $(aks)/preview/2019-09-30/openShiftManagedClusters.json
+- $(aks)/stable/2017-07-01/containerService.json
 
 
 
