@@ -37,7 +37,7 @@
       <HintPath>..\..\..\src\packages\Microsoft.ApplicationInsights.1.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\src\packages\Microsoft.Azure.PowerShell.Authentication.Abstractions.1.0.331-preview\lib\net452\Microsoft.Azure.Commands.Common.Authentication.Abstractions.dll</HintPath>
+      <HintPath>..\..\..\src\packages\Microsoft.Azure.PowerShell.Authentication.Abstractions.1.0.43-preview\lib\net452\Microsoft.Azure.Commands.Common.Authentication.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\src\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
@@ -58,7 +58,7 @@
       <HintPath>..\..\..\src\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Commands.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\src\packages\Microsoft.Azure.PowerShell.Common.1.0.331-preview\lib\net452\Microsoft.WindowsAzure.Commands.Common.dll</HintPath>
+      <HintPath>..\..\..\src\packages\Microsoft.Azure.PowerShell.Common.1.0.43-preview\lib\net452\Microsoft.WindowsAzure.Commands.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\src\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
@@ -104,7 +104,7 @@
     <Error Condition="!Exists('..\..\..\src\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
     <Error Condition="Exists('..\..\..\src\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
