@@ -413,4 +413,10 @@
   <data name="RouteTableNotFound" xml:space="preserve">
     <value>The virtual hub route table to modify could not be found</value>
   </data>
+  <data name="VirtualGatewayRequiredForVirtualRouter" xml:space="preserve">
+    <value>A valid VirtualNetworkGateway is required to create Virtual Router</value>
+  </data>
+  <data name="RemoveVirtualRouterWarning" xml:space="preserve">
+    <value>Removing a VirtualRouter will also remove all peerings associated with it. Are you sure you want to remove resource '{0}'</value>
+  </data>
 </root>

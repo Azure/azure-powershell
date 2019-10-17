@@ -28,7 +28,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.bastion)]
+        [Trait(Category.Owner, NrpTeamAlias.bastion)]
         public void TestBastionCRUD()
         {
             TestRunner.RunTestScript("Test-BastionCRUD");
@@ -36,7 +36,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.bastion)]
+        [Trait(Category.Owner, NrpTeamAlias.bastion)]
         public void TestBastionVnetsIpObjectsParams()
         {
             TestRunner.RunTestScript("Test-BastionVnetsIpObjectsParams");
@@ -44,7 +44,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.bastion)]
+        [Trait(Category.Owner, NrpTeamAlias.bastion)]
         public void TestBastionVnetObjectParam()
         {
             TestRunner.RunTestScript("Test-BastionVnetObjectParam");
@@ -52,7 +52,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.bastion)]
+        [Trait(Category.Owner, NrpTeamAlias.bastion)]
         public void TestBastionIpObjectParam()
         {
             TestRunner.RunTestScript("Test-BastionIpObjectParam");
