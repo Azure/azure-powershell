@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The type of the Virtual Wan.")]
-        public string Type { get; set; }
+        public string VirtualWANType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -151,9 +151,9 @@ namespace Microsoft.Azure.Commands.Network
                 virtualWanToUpdate.AllowVnetToVnetTraffic = this.AllowVnetToVnetTraffic.Value;
             }
 
-            if (!string.IsNullOrWhiteSpace(this.Type))
+            if (!string.IsNullOrWhiteSpace(this.VirtualWANType))
             {
-                virtualWanToUpdate.Type = this.Type;
+                virtualWanToUpdate.VirtualWANType = this.VirtualWANType;
             }
 
             var virtualWanModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualWAN>(virtualWanToUpdate);

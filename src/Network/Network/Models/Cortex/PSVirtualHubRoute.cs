@@ -15,11 +15,31 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using System.Collections.Generic;
+    using System.Linq;
+    using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
     public class PSVirtualHubRoute
     {
-        [Ps1Xml(Label = "Destination Type", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "Address Prefixes", Target = ViewControl.Table)]
+        public List<string> AddressPrefixes { 
+            get { return this.Destinations; }
+            set { this.Destinations = new List<string> (value); } 
+        }
+
+        [Ps1Xml(Label = "Next Hop IpAddress", Target = ViewControl.Table)]
+        public string NextHopIpAddress {
+            get { return this.NextHops.FirstOrDefault(); } 
+            set { 
+                if (this.NextHops == null)
+                {
+                    this.NextHops = new List<string>();
+                }
+                this.NextHops.Add(value); 
+            } 
+        }
+
+        [Ps1Xml(Label = "Destination Type", Target = ViewControl.Table), PSDefaultValue(Value="CIDR")]
         public string DestinationType { get; set; }
 
         [Ps1Xml(Label = "Destinations", Target = ViewControl.Table)]
@@ -28,7 +48,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Next Hop Type", Target = ViewControl.Table)]
         public string NextHopType { get; set; }
 
-        [Ps1Xml(Label = "Next Hops", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "Next Hops", Target = ViewControl.Table), PSDefaultValue(Value = "IPAddress")]
         public List<string> NextHops { get; set; }
     }
 }

@@ -14,19 +14,11 @@
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using AutoMapper;
     using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using System.Security;
-    using Microsoft.Azure.Commands.Network.Models;
-    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-    using Microsoft.Azure.Management.Network;
-    using Microsoft.WindowsAzure.Commands.Common;
-    using MNM = Microsoft.Azure.Management.Network.Models;
-    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using System.Linq;
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.Network.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.Remove,
@@ -65,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Alias("VirtualHub", "ParentVirtualHub")]
+        [Alias("ParentVirtualHub")]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
@@ -120,7 +112,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.HubName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
                 this.Name = parsedResourceId.ResourceName;
             }
-            else if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubRouteTableResourceId, StringComparison.OrdinalIgnoreCase))
+            if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubRouteTableResourceId, StringComparison.OrdinalIgnoreCase))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;

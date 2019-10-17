@@ -19,48 +19,34 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.Network.Models;
     using System.Linq;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-    
+
     [Cmdlet(
         VerbsCommon.New,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubRoute",
         SupportsShouldProcess = false),
         OutputType(typeof(PSVirtualHubRoute))]
-    public class NewAzureRmVirtualHubRouteCommand : VirtualHubRouteTableBaseCmdlet
+    public class NewAzureRmVirtualHubRouteCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "List of Destinations.")]
+            HelpMessage = "List of Address Prefixes.")]
         [ValidateNotNullOrEmpty]
-        public string[] Destination { get; set; }
-        
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "Type of Destinations.")]
-        [ValidateNotNullOrEmpty]
-        public string DestinationType { get; set; }
+        public string[] AddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "List of Next hops.")]
+            HelpMessage = "The Next Hop IpAddress.")]
         [ValidateNotNullOrEmpty]
-        public string[] NextHop { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The Next Hop type.")]
-        [ValidateNotNullOrEmpty]
-        public string NextHopType { get; set; }
+        public string NextHopIpAddress { get; set; }
 
         public override void Execute()
         {
             base.Execute();
-            
+
             var virtualHubRoute = new PSVirtualHubRoute
             {
-                Destinations = this.Destination?.ToList(),
-                DestinationType = this.DestinationType,
-                NextHops = this.NextHop?.ToList(),
-                NextHopType = this.NextHopType
+                AddressPrefixes = this.AddressPrefix?.ToList(),
+                NextHopIpAddress = this.NextHopIpAddress
             };
 
             WriteObject(virtualHubRoute);

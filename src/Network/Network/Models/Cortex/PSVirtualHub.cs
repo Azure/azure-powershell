@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSVirtualHubRouteTable> RouteTables { get; set; }
 
+        public PSVirtualHubRouteTable RouteTable { get; set; }
+
         [Ps1Xml(Label = "Address Prefix", Target = ViewControl.Table)]
         public string AddressPrefix { get; set; }
 

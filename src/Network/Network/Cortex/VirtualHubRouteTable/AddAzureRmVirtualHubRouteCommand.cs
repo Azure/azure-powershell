@@ -14,88 +14,56 @@
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using Microsoft.Azure.Commands.Network.Models;
-    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-    using System;
-    using System.Linq;
+    using System.Collections.Generic;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.Network.Models;
+    using System.Linq;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-    [Cmdlet(VerbsCommon.Add,
+    [Cmdlet(
+        VerbsCommon.Add,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubRoute",
-        DefaultParameterSetName = CortexParameterSetNames.ByVirtualHubRouteTableName),
-        OutputType(typeof(PSVirtualHubRouteTable))]
+        SupportsShouldProcess = false),
+        OutputType(typeof(PSVirtualHubRoute))]
     public class AddAzureRmVirtualHubRouteCommand : VirtualHubRouteTableBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualHubRouteTableName,
-            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
+            HelpMessage = "List of Destinations.")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public string[] Destination { get; set; }
 
-        [Alias("VirtualHubName", "ParentVirtualHubName")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualHubRouteTableName,
-            HelpMessage = "The parent resource name.")]
-        [ResourceNameCompleter("Microsoft.Network/virtualHubs", "ResourceGroupName")]
-        public string HubName { get; set; }
+            HelpMessage = "Type of Destinations.")]
+        [ValidateNotNullOrEmpty]
+        public string DestinationType { get; set; }
 
-        [Alias("VirtualHubRouteTableName")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualHubRouteTableName,
-            HelpMessage = "The virtualhubroutetable name.")]
-        [ResourceNameCompleter("Microsoft.Network/virtualHubs/routeTables", "ResourceGroupName", "ParentResourceName")]
+            HelpMessage = "List of Next hops.")]
         [ValidateNotNullOrEmpty]
-        public string RouteTableName { get; set; }
+        public string[] NextHop { get; set; }
 
-        [Alias("VirtualHubRouteTable")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipeline = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualHubRouteTableObject,
-            HelpMessage = "The virtualhubroutetable resource.")]
-        public PSVirtualHubRouteTable RouteTable { get; set; }
-
-        [Alias("VirtualHubRoute")]
-        [Parameter(
-           Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualHubRouteTableObject,
-           HelpMessage = "The virtualhubroute resource.")]
-        [Parameter(
-           Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualHubRouteTableName,
-           HelpMessage = "The virtualhubroute resource.")]
+            HelpMessage = "The Next Hop type.")]
         [ValidateNotNullOrEmpty]
-        public PSVirtualHubRoute InputObject { get; set; }
+        public string NextHopType { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            // Resolve the parameters
-            if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubRouteTableObject, StringComparison.OrdinalIgnoreCase))
-            {
-                var parsedResourceId = new ResourceIdentifier(this.RouteTable.Id);
-                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                this.HubName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
-                this.RouteTableName = parsedResourceId.ResourceName;
-            }
-
             base.Execute();
 
-            var route = new PSVirtualHubRoute
+            var virtualHubRoute = new PSVirtualHubRoute
             {
-                Destinations = this.InputObject.Destinations,
-                DestinationType = this.InputObject.DestinationType,
-                NextHops = this.InputObject.NextHops,
-                NextHopType = this.InputObject.NextHopType
+                Destinations = this.Destination?.ToList(),
+                DestinationType = this.DestinationType,
+                NextHops = this.NextHop?.ToList(),
+                NextHopType = this.NextHopType
             };
 
-            this.RouteTable.Routes.Add(route);
-
-            WriteObject(this.RouteTable);
+            WriteObject(virtualHubRoute);
         }
     }
 }

@@ -56,7 +56,8 @@ namespace Microsoft.Azure.Commands.Network
             {
                 foreach (MNM.VirtualHubRouteTableV2 routeTable in routeTables)
                 {
-                    routeTables.Add(ToPsVirtualHubRouteTable(routeTable));
+                    // TODO fix linq error
+                    // routeTables.Add(ToPsVirtualHubRouteTable(routeTable));
                 }
             }
 

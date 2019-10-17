@@ -366,6 +366,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
             }
         }
         
+        /// <summary>
         ///   Looks up a localized string similar to Provided ResourceId isn&apos;t in the right format or doesn&apos;t refer to the right resource type ({0}).
         /// </summary>
         internal static string InvalidResourceId {
@@ -623,6 +624,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string ResourceNotFound {
             get {
                 return ResourceManager.GetString("ResourceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The virtual hub route table to modify could not be found.
+        /// </summary>
+        internal static string RouteTableNotFound {
+            get {
+                return ResourceManager.GetString("RouteTableNotFound", resourceCulture);
             }
         }
         

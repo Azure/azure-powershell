@@ -14,80 +14,45 @@
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-
     using Microsoft.Azure.Commands.Network.Models;
-    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using System.Linq;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.Add,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubRouteTable",
-        DefaultParameterSetName = "SetByResource",
-        SupportsShouldProcess = true),
-        OutputType(typeof(PSVirtualHub))]
+        SupportsShouldProcess = false),
+        OutputType(typeof(PSVirtualHubRouteTable))]
     public class AddAzureRmVirtualHubRouteTableCommand : VirtualHubRouteTableBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
-            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+            HelpMessage = "Name of the route table.")]
+        public string Name { get; set; }
 
-        [Alias("VirtualHubName", "ParentVirtualHubName")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
-            HelpMessage = "The parent resource name.")]
-        [ResourceNameCompleter("Microsoft.Network/virtualHubs", "ResourceGroupName")]
-        public string HubName { get; set; }
+            HelpMessage = "List of virtual hub routes.")]
+        public PSVirtualHubRoute[] Route { get; set; }
 
-        [Alias("VirtualHub", "ParentVirtualHub")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipeline = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
-            HelpMessage = "The parent resource.")]
-        public PSVirtualHub VirtualHub { get; set; }
+            HelpMessage = "List of connections this route table is attached to.")]
+        public string[] AttachedConnection { get; set; }
 
-
-        [Alias("VirtualHubRouteTable")]
-        [Parameter(
-           Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
-           HelpMessage = "The virtualhubroutetable resource.")]
-        [Parameter(
-           Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
-           HelpMessage = "The virtualhubroutetable resource.")]
-        [ValidateNotNullOrEmpty]
-        public PSVirtualHubRouteTable InputObject { get; set; }
-
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            // Resolve the parameters
-            if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubObject, StringComparison.OrdinalIgnoreCase))
-            {
-                var parsedResourceId = new ResourceIdentifier(this.VirtualHub.Id);
-                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                this.HubName = parsedResourceId.ResourceName;
-            }
-
             base.Execute();
 
-            var routeTable = new PSVirtualHubRouteTable
+            var virtualHubRouteTable = new PSVirtualHubRouteTable
             {
-                Name = this.InputObject.Name,
-                Routes = this.InputObject.Routes == null ? new List<PSVirtualHubRoute>() : this.InputObject.Routes,
-                AttachedConnections = this.InputObject.AttachedConnections == null ? new List<string>() : this.InputObject.AttachedConnections
+                Name = this.Name,
+                Routes = this.Route == null ? new List<PSVirtualHubRoute>() : this.Route?.ToList(),
+                AttachedConnections = this.AttachedConnection == null ? new List<string>() : this.AttachedConnection.ToList()
             };
 
-            this.VirtualHub.RouteTables.Add(routeTable);
-
-            WriteObject(this.VirtualHub);
+            WriteObject(virtualHubRouteTable);
         }
     }
 }
