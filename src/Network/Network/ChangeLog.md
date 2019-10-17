@@ -35,6 +35,28 @@
 * New Generations and SKUs for VirtualNetworkGateways
   - Introduce new Generations for VirtualNetworkGateways.
   - Introduce new high throughput SKUs for VirtualNetworkGateways.
+* Add support for child resource RouteTables of VirtualHub
+	- New cmdlets added:
+		- Add-AzVirtualHubRoute
+		- Add-AzVirtualHubRouteTable
+		- Get-AzVirtualHubRouteTable
+		- Remove-AzVirtualHubRouteTable
+		- Set-AzVirtualHub
+* Add support for new properties Sku of VirtualHub and VirtualWANType of VirtualWan
+	- Cmdlets updated with optional parameters:
+		- New-AzVirtualHub
+		- Update-AzVirtualHub
+		- New-AzVirtualWan
+		- Update-AzVirtualWan
+* Add support for EnableInternetSecurity property for HubVnetConnection, VpnConnection and ExpressRouteConnection
+	- New cmdlets added:
+		- Update-AzureRmVirtualHubVnetConnection
+	- Cmdlets updated with optional parameters:
+		- New-AzureRmVirtualHubVnetConnection
+		- New-AzureRmVpnConnection
+		- Update-AzureRmVpnConnection
+		- New-AzureRmExpressRouteConnection
+		- Set-AzureRmExpressRouteConnection
 
 ## Version 1.14.0
 * Fix incorrect example in `New-AzApplicationGateway` reference documentation 
