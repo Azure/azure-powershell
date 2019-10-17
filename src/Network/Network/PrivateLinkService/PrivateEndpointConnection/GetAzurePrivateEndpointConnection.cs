@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -34,47 +35,36 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            string resourceType = string.Empty;
-            string parentResource = string.Empty;
-
             if (this.IsParameterBound(c => c.ResourceId))
             {
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+
                 if (this.ResourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Contains("privateEndpointConnections"))
                 {
                     this.Name = resourceIdentifier.ResourceName;
-                    resourceType = resourceIdentifier.ResourceType;
-                    parentResource = resourceIdentifier.ParentResource;
+                    this.ResourceType = resourceIdentifier.ResourceType;
+                    string parentResource = resourceIdentifier.ParentResource;
                     this.ServiceName = parentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
                 }
                 else
                 {
-                    this.ServiceName = resourceIdentifier.ResourceName;
+                    throw new ArgumentException(string.Format(Properties.Resources.InvalidResourceId, "[ServiceProvider]/privateEndpointConnections"));
                 }
             }
 
-            var psPrivateLinkService = this.GetPrivateLinkService(ResourceGroupName, ServiceName);
+            IPrivateLinkProvider provider = BuildProvider(this.ResourceType);
 
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(this.ResourceGroupName, this.Name))
             {
-                var peConnection = psPrivateLinkService.PrivateEndpointConnections.FirstOrDefault(
-                        resource =>
-                            string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
-
-                if (peConnection == null)
-                {
-                    throw new ArgumentException(string.Format(Properties.Resources.ResourceNotFound, this.Name));
-                }
-
-                WriteObject(peConnection);
+                var pec = provider.GetPrivateEndpointConnection(this.ResourceGroupName, this.ServiceName, this.Name);
+                WriteObject(pec);
             }
             else
             {
-                var peConnections = psPrivateLinkService.PrivateEndpointConnections;
-                WriteObject(peConnections, true);
+                var pecs = provider.ListPrivateEndpointConnections(this.ResourceGroupName, this.ServiceName);
+                WriteObject(SubResourceWildcardFilter(Name, pecs), true);
             }
-
         }
     }
 }

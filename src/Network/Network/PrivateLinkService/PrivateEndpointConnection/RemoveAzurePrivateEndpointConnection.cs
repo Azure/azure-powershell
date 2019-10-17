@@ -29,6 +29,15 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateEndpointConnection", DefaultParameterSetName = "ByResourceId", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzurePrivateEndpointConnection : PrivateEndpointConnectionBaseCmdlet
     {
+        [Alias("ResourceName")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource name.",
+            ParameterSetName = "ByResource")]
+        [ValidateNotNullOrEmpty]
+        public override string Name { get; set; }
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to delete resource")]
@@ -45,18 +54,25 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            string resourceType = string.Empty;
-            string parentResource = string.Empty;
-
             if (this.IsParameterBound(c => c.ResourceId))
             {
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.Name = resourceIdentifier.ResourceName;
-                resourceType = resourceIdentifier.ResourceType;
-                parentResource = resourceIdentifier.ParentResource;
-                this.ServiceName = parentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+
+                if (this.ResourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Contains("privateEndpointConnections"))
+                {
+                    this.Name = resourceIdentifier.ResourceName;
+                    this.ResourceType = resourceIdentifier.ResourceType;
+                    string parentResource = resourceIdentifier.ParentResource;
+                    this.ServiceName = parentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+                }
+                else
+                {
+                    throw new ArgumentException(string.Format(Properties.Resources.InvalidResourceId, "[ServiceProvider]/privateEndpointConnections"));
+                }
             }
+
+            IPrivateLinkProvider provider = BuildProvider(this.ResourceType);
 
             ConfirmAction(
                 Force.IsPresent,
@@ -65,7 +81,7 @@ namespace Microsoft.Azure.Commands.Network
                 ServiceName,
                 () =>
                 {
-                    this.PrivateLinkServiceClient.DeletePrivateEndpointConnection(this.ResourceGroupName, this.ServiceName, this.Name);
+                    provider.DeletePrivateEndpointConnection(this.ResourceGroupName, this.ServiceName, this.Name);
                     if (PassThru)
                     {
                         WriteObject(true);
