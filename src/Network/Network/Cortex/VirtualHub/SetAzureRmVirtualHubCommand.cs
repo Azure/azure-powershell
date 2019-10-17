@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("ResourceName", "VirtualHubName")]
+        [Alias("ResourceName", "VirtualHubName", "HubName")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSVirtualHub InputObject { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The route tables associated with this Virtual Hub.")]
         public PSVirtualHubRouteTable[] RouteTable { get; set; }
 
@@ -115,13 +115,25 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             //// VirtualHubRouteTable
-            if (this.RouteTable != null)
+            if(virtualHubToUpdate.RouteTables == null)
             {
-                if(virtualHubToUpdate.RouteTables == null)
-                {
-                    virtualHubToUpdate.RouteTables = new List<PSVirtualHubRouteTable>();
-                }
+                virtualHubToUpdate.RouteTables = new List<PSVirtualHubRouteTable>();
                 virtualHubToUpdate.RouteTables.AddRange(this.RouteTable);
+            }
+            else 
+            { 
+                foreach (var routeTable in this.RouteTable)
+                {
+                    // see if routeTable with same name already exists in hub, 
+                    // if it does then remove it and add the route table that we received as input
+                    // if it does not exist then directly add the input 
+                    var routeTableToRemove = virtualHubToUpdate.RouteTables.FirstOrDefault(rt => rt.Name.Equals(routeTable.Name, StringComparison.OrdinalIgnoreCase));
+                    if (routeTableToRemove != null)
+                    {
+                        virtualHubToUpdate.RouteTables.Remove(routeTableToRemove);
+                    }
+                    virtualHubToUpdate.RouteTables.Add(routeTable);
+                }
             }
 
             //// Update the virtual hub

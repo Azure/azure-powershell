@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("VirtualHubName", "ParentVirtualHubName")]
+        [Alias("VirtualHubName", "ParentVirtualHubName", "ParentResourceName")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubRouteTableName,
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Alias("ParentVirtualHub")]
+        [Alias("ParentVirtualHub", "ParentObject")]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,

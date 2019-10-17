@@ -36,21 +36,21 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("VirtualHubName", "ParentVirtualHubName")]
+        [Alias("VirtualHubName", "ParentVirtualHubName", "ParentResourceName")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
             HelpMessage = "The parent resource name.")]
         [ResourceNameCompleter("Microsoft.Network/virtualHubs", "ResourceGroupName")]
-        public string ParentResourceName { get; set; }
+        public string HubName { get; set; }
 
-        [Alias("VirtualHub", "ParentVirtualHub")]
+        [Alias("ParentObject", "ParentVirtualHub")]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
             HelpMessage = "The parent resource.")]
-        public PSVirtualHub ParentObject { get; set; }
+        public PSVirtualHub VirtualHub { get; set; }
 
         [Alias("VirtualHubId", "ParentVirtualHubId")]
         [Parameter(
@@ -76,23 +76,23 @@ namespace Microsoft.Azure.Commands.Network
 
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubObject, StringComparison.OrdinalIgnoreCase))
             {
-                this.ParentResourceName = this.ParentObject.Name;
-                this.ResourceGroupName = this.ParentObject.ResourceGroupName;
+                this.HubName = this.VirtualHub.Name;
+                this.ResourceGroupName = this.VirtualHub.ResourceGroupName;
             }
             else if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubResourceId, StringComparison.OrdinalIgnoreCase))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ParentResourceId);
-                this.ParentResourceName = parsedResourceId.ResourceName;
+                this.HubName = parsedResourceId.ResourceName;
                 ResourceGroupName = parsedResourceId.ResourceGroupName;
             }
 
             if (ShouldGetByName(ResourceGroupName, Name))
             {
-                WriteObject(this.GetVirtualHubRouteTable(this.ResourceGroupName, this.ParentResourceName, this.Name));
+                WriteObject(this.GetVirtualHubRouteTable(this.ResourceGroupName, this.HubName, this.Name));
             }
             else
             {
-                WriteObject(SubResourceWildcardFilter(Name, this.ListVirtualHubRouteTables(this.ResourceGroupName, this.ParentResourceName)), true);
+                WriteObject(SubResourceWildcardFilter(Name, this.ListVirtualHubRouteTables(this.ResourceGroupName, this.HubName)), true);
             }
         }
     }
