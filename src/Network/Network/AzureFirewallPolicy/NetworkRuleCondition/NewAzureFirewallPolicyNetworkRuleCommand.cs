@@ -71,12 +71,12 @@ namespace Microsoft.Azure.Commands.Network
             
             var networkRule = new PSAzureFirewallPolicyNetworkRule
             {
-                name = this.Name,
+                Name = this.Name,
                 protocols = this.Protocol?.ToList(),
-                sourceAddresses = this.SourceAddress?.ToList(),
-                destinationAddresses = this.DestinationAddress?.ToList(),
-                destinationPorts = this.DestinationPort?.ToList(),
-                ruleType = "NetworkRuleCondition"
+                SourceAddresses = this.SourceAddress?.ToList(),
+                DestinationAddresses = this.DestinationAddress?.ToList(),
+                DestinationPorts = this.DestinationPort?.ToList(),
+                RuleType = "NetworkRuleCondition"
             };
             WriteObject(networkRule);
         }

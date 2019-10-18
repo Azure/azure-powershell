@@ -85,14 +85,14 @@ namespace Microsoft.Azure.Commands.Network
 
             var ruleGroup = new PSAzureFirewallPolicyRuleCollectionGroup
             {
-                priority = this.Priority,
-                ruleCollection = this.RuleCollection?.ToList(),
+                Priority = this.Priority,
+                RuleCollection = this.RuleCollection?.ToList(),
             };
 
             var rcWrapper = new PSAzureFirewallPolicyRuleCollectionGroupWrapper
             {
-                name = this.Name,
-                properties = ruleGroup
+                Name = this.Name,
+                Properties = ruleGroup
             };
 
             var settings = new JsonSerializerSettings

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSAzureFirewallPolicyFilterRuleCollectionAction Action { get; set; }
 
         [JsonProperty("ruleConditions")]
-        public List<PSAzureFirewallPolicyRule> rules { get; set; }
+        public List<PSAzureFirewallPolicyRule> Rules { get; set; }
 
 
         [JsonIgnore]
@@ -38,25 +38,25 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string RulesText
         {
-            get { return JsonConvert.SerializeObject(rules, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(Rules, Formatting.Indented); }
         }
 
         public void AddRule(PSAzureFirewallPolicyApplicationRule rule)
         {
             // Validate
-            if (this.rules != null)
+            if (this.Rules != null)
             {
-                if (this.rules.Any(rc => rc.name.Equals(rule.name)))
+                if (this.Rules.Any(rc => rc.Name.Equals(rule.Name)))
                 {
-                    throw new ArgumentException($"Application Rule names must be unique. {rule.name} name is already used.");
+                    throw new ArgumentException($"Application Rule names must be unique. {rule.Name} name is already used.");
                 }
             }
             else
             {
-                this.rules = new List<PSAzureFirewallPolicyRule>();
+                this.Rules = new List<PSAzureFirewallPolicyRule>();
             }
 
-            this.rules.Add(rule);
+            this.Rules.Add(rule);
         }
 
         public PSAzureFirewallPolicyRule GetRuleByName(string ruleName)
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentException($"Rule name cannot be an empty string.");
             }
 
-            var rule = this.rules?.FirstOrDefault(r => ruleName.Equals(r.name, StringComparison.OrdinalIgnoreCase));
+            var rule = this.Rules?.FirstOrDefault(r => ruleName.Equals(r.Name, StringComparison.OrdinalIgnoreCase));
 
             if (rule == null)
             {
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public void RemoveRuleByName(string ruleName)
         {
             var rule = this.GetRuleByName(ruleName);
-            this.rules?.Remove(rule);
+            this.Rules?.Remove(rule);
         }
     }
 }

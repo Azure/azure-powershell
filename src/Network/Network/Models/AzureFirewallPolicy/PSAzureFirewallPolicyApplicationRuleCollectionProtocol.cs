@@ -17,14 +17,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSAzureFirewallPolicyApplicationRuleProtocol
     {
-        public string protocolType { get; set; }
-        public uint port { get; set; }
+        [JsonProperty(PropertyName = "protocolType")]
+        public string ProtocolType { get; set; }
+
+        [JsonProperty(PropertyName = "port")]
+        public uint Port { get; set; }
 
         public static PSAzureFirewallPolicyApplicationRuleProtocol MapUserInputToApplicationRuleProtocol(string userInput)
         {
@@ -32,8 +36,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
             var supportedProtocolsAndTheirDefaultPorts = new List<PSAzureFirewallPolicyApplicationRuleProtocol>
             {
-                new PSAzureFirewallPolicyApplicationRuleProtocol { protocolType = MNM.AzureFirewallApplicationRuleProtocolType.Http, port = 80 },
-                new PSAzureFirewallPolicyApplicationRuleProtocol { protocolType = MNM.AzureFirewallApplicationRuleProtocolType.Https, port = 443 }
+                new PSAzureFirewallPolicyApplicationRuleProtocol { ProtocolType = MNM.AzureFirewallApplicationRuleProtocolType.Http, Port = 80 },
+                new PSAzureFirewallPolicyApplicationRuleProtocol { ProtocolType = MNM.AzureFirewallApplicationRuleProtocolType.Https, Port = 443 }
             };
 
             //The actual validation is performed in NRP. Here we are just trying to map user info to our model
@@ -49,18 +53,18 @@ namespace Microsoft.Azure.Commands.Network.Models
             PSAzureFirewallPolicyApplicationRuleProtocol supportedProtocol;
             try
             {
-                supportedProtocol = supportedProtocolsAndTheirDefaultPorts.Single(protocol => protocol.protocolType.Equals(userProtocolText, StringComparison.InvariantCultureIgnoreCase));
+                supportedProtocol = supportedProtocolsAndTheirDefaultPorts.Single(protocol => protocol.ProtocolType.Equals(userProtocolText, StringComparison.InvariantCultureIgnoreCase));
             }
             catch
             {
-                throw new ArgumentException($"Unsupported protocol {userProtocolText}. Supported protocols are {string.Join(", ", supportedProtocolsAndTheirDefaultPorts.Select(proto => proto.protocolType))}");
+                throw new ArgumentException($"Unsupported protocol {userProtocolText}. Supported protocols are {string.Join(", ", supportedProtocolsAndTheirDefaultPorts.Select(proto => proto.ProtocolType))}");
             }
 
             uint port;
             if (userPortText == null)
             {
                 // Use default port for this protocol
-                port = supportedProtocol.port;
+                port = supportedProtocol.Port;
             }
             else if (!uint.TryParse(userPortText, out port))
             {
@@ -69,8 +73,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
             return new PSAzureFirewallPolicyApplicationRuleProtocol
             {
-                protocolType = supportedProtocol.protocolType,
-                port = port
+                ProtocolType = supportedProtocol.ProtocolType,
+                Port = port
             };
         }
     }
