@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
         [CmdletParameterBreakingChange(
             "VirtualNetworkName",
             deprecateByVersion: "2.0.0",
-            ChangeDescription = "This parameter will be removed in an upcoming breaking change release. After this point the Virtual Network will be provided as an object instead of a string.",
+            ChangeDescription = "This parameter will be removed in an upcoming breaking change release. After this point the Virtual Network will be provided as an object instead of a string.", 
             OldWay = "New-AzFirewall -VirtualNetworkName \"vnet-name\"",
             NewWay = "New-AzFirewall -VirtualNetwork $vnet",
             OldParamaterType = typeof(string),
