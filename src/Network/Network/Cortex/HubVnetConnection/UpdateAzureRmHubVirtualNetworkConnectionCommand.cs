@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByHubVirtualNetworkConnectionObject,
-            HelpMessage = "The hubvirtualnetworkconnection resource to modify.")]
+            HelpMessage = "The hub virtual network connection resource to modify.")]
         public PSHubVirtualNetworkConnection InputObject { get; set; }
 
         [Alias("HubVirtualNetworkConnectionId")]
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByHubVirtualNetworkConnectionResourceId,
-            HelpMessage = "The resource id of the hubvirtualnetworkconnection resource to modify.")]
+            HelpMessage = "The resource id of the hub virtual network connection resource to modify.")]
         public string ResourceId { get; set; }
 
         [Parameter(
