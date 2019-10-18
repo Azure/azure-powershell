@@ -20,9 +20,25 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSVirtualHubRouteTable : PSChildResource
     {
+        private List<string> _attachedConnections;
+
+        [Ps1Xml(Label = "Routes", Target = ViewControl.Table)]
         public List<PSVirtualHubRoute> Routes { get; set; }
 
-        [PSDefaultValue(Value = "All_Branches")]
-        public List<string> AttachedConnections { get; set; }
+        [Ps1Xml(Label = "Attached Connections", Target = ViewControl.Table)]
+        public List<string> AttachedConnections
+        {
+            get
+            {
+                return this._attachedConnections;
+            }
+            set
+            {
+                this._attachedConnections = value ?? new List<string>() { "All_Branches" };
+            }
+        }
+
+        [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
+        public string ProvisioningState { get; set; }
     }
 }

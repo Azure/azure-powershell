@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzVirtualHubRouteTable
 
 ## SYNOPSIS
-Creates a VirtualHubRouteTable resource which is a child of VirtualHub.
+Creates a Virtual Hub Route Table resource which is a child of VirtualHub.
 
 ## SYNTAX
 
@@ -27,9 +27,15 @@ be attached to and is used to route traffic in a Virtual Hub.
 ```powershell
 PS C:\> $route1 = Add-AzVirtualHubRoute -DestinationType "CIDR" -Destination @("10.4.0.0/16", "10.5.0.0/16") -NextHopType "IPAddress" -NextHop @("10.0.0.68")
 PS C:\> Add-AzVirtualHubRouteTable -Route @($route1) -AttachedConnection @("All_Vnets") -Name "routeTable1"
+
+Name                : routeTable1
+Id                  :
+Routes              : {Microsoft.Azure.Commands.Network.Models.PSVirtualHubRoute}
+AttachedConnections : {All_Vnets}
+ProvisioningState   :
 ```
 
-{{ Add example description here }}
+The above command will create a Virtual Hub Route Table resource from the routes passed to it and this object can be used for routing traffic in a Virtual Hub.  
 
 ## PARAMETERS
 

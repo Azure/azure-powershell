@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azvirtualhub
 schema: 2.0.0
 ---
 
 # Set-AzVirtualHub
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Modifies a Virtual Hub to add a Virtual HUb Route Table to it.
 
 ## SYNTAX
 
@@ -38,10 +38,27 @@ Set-AzVirtualHub -InputObject <PSVirtualHub> -RouteTable <PSVirtualHubRouteTable
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $existingHub = Get-AzVirtualHub -ResourceGroupName "testRg" -Name "westushub"
+PS C:\> $route1 = Add-AzVirtualHubRoute -DestinationType "CIDR" -Destination @("10.4.0.0/16", "10.5.0.0/16") -NextHopType "IPAddress" -NextHop @("10.0.0.68")
+PS C:\> $routeTable1 = Add-AzVirtualHubRouteTable -Route @($route1) -AttachedConnection @("All_Vnets") -Name "routeTable1"
+PS C:\> Set-AzVirtualHub -VirtualHub $existingHub -RouteTable @($routeTable1)
+
+VirtualWan                            : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/testWan
+ResourceGroupName                     : testRg
+Name                                  : westushub
+Id                                    : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubswestushub
+AddressPrefix                         : 10.40.0.0/16
+RouteTable                            : Microsoft.Azure.Commands.Network.Models.PSVirtualHubRouteTable
+VirtualNetworkExpressRouteConnections :
+RouteTables                           : {routeTable1}
+Location                              : westus
+Sku                                   : Standard
+Type                                  : Microsoft.Network/virtualHubs
+ProvisioningState                     : Succeeded
 ```
 
-{{ Add example description here }}
+First we create a Virtual Hub Route object, and use it to create a Virtual Hub Route Table resource. Then we set this route table resource to the virtual hub using the 
+Set-AzVirtualHub command.
 
 ## PARAMETERS
 

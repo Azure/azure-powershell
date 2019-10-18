@@ -16,10 +16,8 @@ namespace Microsoft.Azure.Commands.Network
 {
     using AutoMapper;
     using Microsoft.Azure.Commands.Network.Models;
-    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Network;
     using System.Collections.Generic;
-    using System.Net;
     using MNM = Microsoft.Azure.Management.Network.Models;
 
     public class VirtualHubRouteTableBaseCmdlet : VirtualHubBaseCmdlet
@@ -56,8 +54,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 foreach (MNM.VirtualHubRouteTableV2 routeTable in routeTables)
                 {
-                    // TODO fix linq error
-                    // routeTables.Add(ToPsVirtualHubRouteTable(routeTable));
+                    routeTablesToReturn.Add(ToPsVirtualHubRouteTable(routeTable));
                 }
             }
 
