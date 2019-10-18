@@ -35,6 +35,7 @@ function Test-CortexCRUD
 	$vpnConnection2Name = Get-ResourceName
 	$vpnLink1ConnectionName = Get-ResourceName
 	$vpnLink2ConnectionName = Get-ResourceName
+	$routeTable1Name = Get-ResourceName
 
 	$storeName = 'blob' + $rgName
     
@@ -225,10 +226,36 @@ function Test-CortexCRUD
 		Assert-AreEqual $hubVnetConnection.EnableInternetSecurity $true
 
 		# Create a RouteTable child Resource
+		$route1 = Add-AzVirtualHubRoute -DestinationType "CIDR" -Destination @("10.4.0.0/16", "10.5.0.0/16") -NextHopType "IPAddress" -NextHop @("10.0.0.68")
+		$route2 = Add-AzVirtualHubRoute -DestinationType "CIDR" -Destination @("0.0.0.0/0") -NextHopType "IPAddress" -NextHop @("10.0.0.68")
+    	$routeTable1 = Add-AzVirtualHubRouteTable -Route @($route1, $route2) -AttachedConnection @("All_Vnets") -Name $routeTable1Name
+		Set-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -RouteTable @($routeTable1)
+		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+		Assert-AreEqual $virtualHubName $virtualHub.Name
+		$routeTables = $virtualHub.RouteTables
+		Assert-AreEqual 1 @($routeTables).Count
+		$routes1 = $routeTables[0].Routes
+		Assert-AreEqual 2 @($routes1).Count
 
 		# Update a RouteTable child resource
-		
+		$routeTable1 = Get-AzVirtualHubRouteTable -ResourceGroupName $rgName -HubName $virtualHubName -Name $routeTable1Name
+		$routeTable1.Routes.RemoveAt(1)
+		$routeTable1.Routes[0].NextHops = @("10.0.0.67")
+		$routeTable1.AttachedConnections = @("All_Branches")
+		Set-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -RouteTable @($routeTable1)
+		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+		Assert-AreEqual $virtualHubName $virtualHub.Name
+		$routeTables = $virtualHub.RouteTables
+		Assert-AreEqual 1 @($routeTables).Count
+		$routes1 = $routeTables[0].Routes
+		Assert-AreEqual 1 @($routes1).Count
+
 		# Delete a RouteTable child resource
+		Remove-AzVirtualHubRouteTable -ResourceGroupName $rgName -HubName $virtualHubName -Name $routeTable1Name
+		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+		Assert-AreEqual $virtualHubName $virtualHub.Name
+		$routeTables = $virtualHub.RouteTables
+		Assert-AreEqual 0 @($routeTables).Count
 
         # Clean up
         $delete = Remove-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName -Force -PassThru
