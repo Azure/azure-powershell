@@ -89,15 +89,8 @@ namespace Microsoft.Azure.Commands.Network
             var azureFirewall = this.AzureFirewallClient.Get(resourceGroupName, name);
 
             var psAzureFirewall = NetworkResourceManagerProfile.Mapper.Map<PSAzureFirewall>(azureFirewall);
-            psAzureFirewall.Sku = new PSAzureFirewallSku()
-            {
-                Name = azureFirewall.Sku.Name,
-                Tier = azureFirewall.Sku.Tier
-            };
             psAzureFirewall.ResourceGroupName = resourceGroupName;
             psAzureFirewall.Tag = TagsConversionHelper.CreateTagHashtable(azureFirewall.Tags);
-            psAzureFirewall.VirtualHub = psAzureFirewall.VirtualHub;
-            WriteObject(psAzureFirewall.VirtualHub);
 
             return psAzureFirewall;
         }
