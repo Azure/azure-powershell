@@ -13,8 +13,8 @@ Creates an exclusion on the Firewall Policy
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallPolicyExclusion -MatchVariable <String> -SelectorMatchOperator <String> -Selector <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApplicationGatewayFirewallPolicyExclusion -MatchVariable <String> -SelectorMatchOperator <String>
+ -Selector <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,13 +46,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SelectorMatchOperator
-When variable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.
+### -MatchVariable
+The variable to be excluded.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: RequestHeaderNames, RequestCookieNames, RequestArgNames
 
 Required: True
 Position: Named
@@ -76,13 +77,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MatchVariable
-The variable to be excluded.
+### -SelectorMatchOperator
+When variable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Equals, Contains, StartsWith, EndsWith, EqualsAny
 
 Required: True
 Position: Named
@@ -92,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

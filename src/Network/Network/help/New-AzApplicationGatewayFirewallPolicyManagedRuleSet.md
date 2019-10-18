@@ -14,8 +14,8 @@ Creates a ManagedRuleSet for the firewallPolicy
 
 ```
 New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType <String> -RuleSetVersion <String>
--RuleGroupOverrides <PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride[]> 
-[-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-RuleGroupOverride <PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride[]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +32,6 @@ PS C:\> $managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -
 Creates a ManagedRuleSet with ruleSetType as $ruleSetType, ruleSetVersion as $ruleSetVersion and RuleGroupOverrides as a list with entires as $ruleGroupOverride1, $ruleGroupOverride2
 The new ManagedRuleSet is assigned to $managedRuleSet
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -42,6 +41,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuleGroupOverride
+Rule Group Overrides.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -80,22 +94,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleGroupOverrides
-Specify the RuleGroupOverrides in a managedRuleSet
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -13,9 +13,9 @@ Creates a policy setting for the firewall policy
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallPolicySettings -State <String> -Mode <String>  
-[-DisableRequestBodyCheck] -FileUploadLimitInMb <Integer> -MaxRequestBodySizeInKb <Integer>
-[-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApplicationGatewayFirewallPolicySettings [-Mode <String>] [-State <String>] [-DisableRequestBodyCheck]
+ [-MaxRequestBodySizeInKb <Int32>] [-FileUploadLimitInMb <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,36 +48,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -State
-State variable in policy settings of the firewall policy.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: Enabled
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Mode
-Firewall Mode in policy settings of the firewall policy.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: Detection
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DisableRequestBodyCheck
 Diables the requestBodyCheck in policy settings of the firewall policy.
 
@@ -97,7 +67,7 @@ Accept wildcard characters: False
 FileUploadLimitInMb in policy settings of the firewall policy.
 
 ```yaml
-Type: System.Integer
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +82,7 @@ Accept wildcard characters: False
 MaxRequestBodySizeInKb in policy settings of the firewall policy.
 
 ```yaml
-Type: System.Integer
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -122,7 +92,41 @@ Default value: 128
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### -Mode
+Firewall Mode in policy settings of the firewall policy.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Prevention, Detection
+
+Required: False
+Position: Named
+Default value: Detection
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -State
+State variable in policy settings of the firewall policy.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Disabled, Enabled
+
+Required: False
+Position: Named
+Default value: Enabled
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
