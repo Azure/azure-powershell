@@ -2027,10 +2027,10 @@ function Test-ApplicationGatewayTopLevelFirewallPolicy
 		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator GreaterThan -MatchValue 1000 -Transform Lowercase -NegationCondition $False
 		$rule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Block
 		
-		$policySettings = New-AzApplicationGatewayFirewallPolicySettings -Mode Prevention -State Enabled -RequestBodyCheck -FileUploadLimitInMb 70 -MaxRequestBodySizeInKb 80
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -FileUploadLimitInMb 70 -MaxRequestBodySizeInKb 80
 		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.0"
-		$managedRules = New-AzApplicationGatewayFirewallPolicyManagedRules -ManagedRuleSets $managedRuleSet 
-		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname -Location $location -ManagedRules $managedRules
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet 
+		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule
 		
 		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
 		$policy.CustomRules = $rule
