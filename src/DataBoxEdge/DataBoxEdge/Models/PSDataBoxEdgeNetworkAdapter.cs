@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
         [Ps1Xml(Label = "State", Target = ViewControl.Table, Position = 2)]
         public string State;
 
-        [Ps1Xml(Label = "DNS Servers", Target = ViewControl.Table, Position = 6)]
+        [Ps1Xml(Label = "DNS Servers", Target = ViewControl.Table, Position = 8)]
         public string DnsServers;
 
         [Ps1Xml(Label = "DeviceName", Target = ViewControl.Table, Position = 0)]

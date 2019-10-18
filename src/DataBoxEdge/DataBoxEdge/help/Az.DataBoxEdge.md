@@ -41,6 +41,9 @@ Configures a new device
 ### [New-AzDataBoxEdgeRole](New-AzDataBoxEdgeRole.md)
 Creates a new Iot Role for the device
 
+### [New-AzDataBoxEdgeShare](New-AzDataBoxEdgeShare.md)
+Creates a new share in the device
+
 ### [New-AzDataBoxEdgeStorageAccountCredential](New-AzDataBoxEdgeStorageAccountCredential.md)
 Create new storage account credential object
 
