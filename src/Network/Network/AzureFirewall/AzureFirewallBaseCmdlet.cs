@@ -48,6 +48,14 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
+        protected IVirtualHubsOperations VirtualHubClient
+        {
+            get
+            {
+                return NetworkClient.NetworkManagementClient.VirtualHubs;
+            }
+        }
+
         protected IPublicIPAddressesOperations PublicIPAddressesClient
         {
             get
@@ -88,6 +96,8 @@ namespace Microsoft.Azure.Commands.Network
             };
             psAzureFirewall.ResourceGroupName = resourceGroupName;
             psAzureFirewall.Tag = TagsConversionHelper.CreateTagHashtable(azureFirewall.Tags);
+            psAzureFirewall.VirtualHub = psAzureFirewall.VirtualHub;
+            WriteObject(psAzureFirewall.VirtualHub);
 
             return psAzureFirewall;
         }

@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -30,6 +31,8 @@ namespace Microsoft.Azure.Commands.Network
 
     {
         private const string DefaultParameterSet = "Default";
+
+        private const string VirtualHubParameterSet = "VirtualHubParameterSet";
         private PSVirtualNetwork virtualNetwork;
         private PSPublicIpAddress[] publicIpAddresses;
 
@@ -52,6 +55,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "location.")]
+        [Parameter(Mandatory = false, ParameterSetName = VirtualHubParameterSet)]
         [ValidateNotNullOrEmpty]
         public virtual string Location { get; set; }
 
@@ -169,6 +173,7 @@ namespace Microsoft.Azure.Commands.Network
                 Mandatory = false,
                 ValueFromPipelineByPropertyName = true,
                 HelpMessage = "The virtual hub that a firewall is attached to")]
+        [Parameter(Mandatory = true, ParameterSetName = VirtualHubParameterSet)]
         public string VirtualHubId { get; set; }
 
         [Parameter(
@@ -215,9 +220,16 @@ namespace Microsoft.Azure.Commands.Network
             var firewall = new PSAzureFirewall();
             if (Sku == MNM.AzureFirewallSkuName.AZFWHub)
             {
-                if (VirtualHubId == null)
+
+                if (VirtualHubId != null)
                 {
-                    throw new ArgumentException("VirtualHubId is needed", nameof(VirtualHubId));
+                    var resourceInfo = new ResourceIdentifier(VirtualHubId);
+                    var hub = this.VirtualHubClient.Get(resourceInfo.ResourceGroupName, resourceInfo.ResourceName);
+                    if (hub.Location != this.Location)
+                    {
+                        throw new ArgumentException("VirtualHub and Firewall cannot be in different locations", nameof(VirtualHubId));
+                    }
+
                 }
 
                 var sku = new PSAzureFirewallSku();
@@ -230,7 +242,7 @@ namespace Microsoft.Azure.Commands.Network
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location,
                     Sku = sku,
-                    VirtualHub = new MNM.SubResource(VirtualHubId),
+                    VirtualHub = VirtualHubId != null ? new MNM.SubResource(VirtualHubId) : null,
                     FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null
                 };
             }
