@@ -21,6 +21,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSVirtualHubRoute
     {
+        private string _destType; 
+
+        private string _nextHopType; 
+
         [Ps1Xml(Label = "Address Prefixes", Target = ViewControl.Table)]
         public List<string> AddressPrefixes { 
             get { return this.Destinations; }
@@ -39,16 +43,33 @@ namespace Microsoft.Azure.Commands.Network.Models
             } 
         }
 
-        [Ps1Xml(Label = "Destination Type", Target = ViewControl.Table), PSDefaultValue(Value="CIDR")]
-        public string DestinationType { get; set; }
+        [Ps1Xml(Label = "Destination Type", Target = ViewControl.Table)]
+        public string DestinationType {
+            get { 
+                return this._destType; 
+            }
+            set {
+                this._destType = value ?? "CIDR";
+            }
+        }
 
         [Ps1Xml(Label = "Destinations", Target = ViewControl.Table)]
         public List<string> Destinations { get; set; }
         
         [Ps1Xml(Label = "Next Hop Type", Target = ViewControl.Table)]
-        public string NextHopType { get; set; }
+        public string NextHopType
+        {
+            get
+            {
+                return this._nextHopType;
+            }
+            set
+            {
+                this._nextHopType = value ?? "IPAddress";
+            }
+        }
 
-        [Ps1Xml(Label = "Next Hops", Target = ViewControl.Table), PSDefaultValue(Value = "IPAddress")]
+        [Ps1Xml(Label = "Next Hops", Target = ViewControl.Table)]
         public List<string> NextHops { get; set; }
     }
 }

@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualhubroutetable
 schema: 2.0.0
 ---
 
 # Get-AzVirtualHubRouteTable
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a Virtual Hub Route Table in a virtual hub or lists all route tables in a virtual hub.
 
 ## SYNTAX
 
@@ -31,16 +31,41 @@ Get-AzVirtualHubRouteTable -ParentResourceId <String> [-Name <String>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Gets a Virtual Hub Route Table in a virtual hub or lists all route tables in a virtual hub.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzVirtualHubRouteTable -ResourceGroupName "testRg" -HubName "westushub" -Name "routeTable1"
+
+Name                : routeTable1
+Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/routeTables/routeTable1
+Routes              : {Microsoft.Azure.Commands.Network.Models.PSVirtualHubRoute}
+AttachedConnections : {All_Vnets}
+ProvisioningState   : Succeeded
 ```
 
-{{ Add example description here }}
+This cmdlet retrieves a route table resource using resource group name, hub name and the route table name.
+
+### Example 2
+```powershell
+PS C:\> Get-AzVirtualHubRouteTable -ResourceGroupName "testRg" -HubName "westushub"
+
+Name                : routeTable1
+Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/routeTables/routeTable1
+Routes              : {Microsoft.Azure.Commands.Network.Models.PSVirtualHubRoute}
+AttachedConnections : {All_Vnets}
+ProvisioningState   : Succeeded
+
+Name                : routeTable2
+Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/routeTables/routeTable2
+Routes              : {Microsoft.Azure.Commands.Network.Models.PSVirtualHubRoute}
+AttachedConnections : {All_Branches}
+ProvisioningState   : Succeeded
+```
+
+This cmdlet lists all route tables present in a virtual hub using resource group name and the hub name.
 
 ## PARAMETERS
 

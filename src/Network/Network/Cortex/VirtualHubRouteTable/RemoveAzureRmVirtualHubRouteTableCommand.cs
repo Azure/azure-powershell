@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubRouteTableObject,
-            HelpMessage = "The virtualhubroutetable resource to remove.")]
+            HelpMessage = "The virtual hub route table resource to remove.")]
         public PSVirtualHubRouteTable InputObject { get; set; }
 
         [Alias("VirtualHubRouteTableId")]
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubRouteTableResourceId,
-            HelpMessage = "The resource id of the virtualhubroutetable resource to remove.")]
+            HelpMessage = "The resource id of the virtual hub route table resource to remove.")]
         public string ResourceId { get; set; }
 
         [Parameter(

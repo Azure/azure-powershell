@@ -46,7 +46,9 @@ namespace Microsoft.Azure.Commands.Network
             var virtualHubRoute = new PSVirtualHubRoute
             {
                 AddressPrefixes = this.AddressPrefix?.ToList(),
-                NextHopIpAddress = this.NextHopIpAddress
+                NextHopIpAddress = this.NextHopIpAddress,
+                DestinationType = "CIDR",
+                NextHopType = "IPAddress"
             };
 
             WriteObject(virtualHubRoute);
