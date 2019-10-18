@@ -299,6 +299,14 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             return m.Success ? m.Groups["rgname"].Value : null;
         }
 
+        public static string GetSubscriptionId(string Id)
+        {
+            if (string.IsNullOrEmpty(Id)) return null;
+            Regex r = new Regex(@"(.*?)/subscriptions/(?<subscriptionid>\S+)/resourcegroups/(.*?)", RegexOptions.IgnoreCase);
+            Match m = r.Match(Id);
+            return m.Success ? m.Groups["subscriptionid"].Value : null;
+        }
+
         public static string GetIotHubName(string Id)
         {
             if (string.IsNullOrEmpty(Id)) return null;

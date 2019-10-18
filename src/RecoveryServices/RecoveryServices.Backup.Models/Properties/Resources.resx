@@ -574,4 +574,10 @@ Please contact Microsoft for further assistance.</value>
   <data name="ProtectedItemsCountExceededException" xml:space="preserve">
     <value>Cannot configure backup for more than 100 VMs per policy</value>
   </data>
+  <data name="SoftdeleteNotImplementedException" xml:space="preserve">
+    <value>Undo-deletion is only supported for AzureVMs. This method is not supported for other workloads.</value>
+  </data>
+  <data name="AFSDiscoveryFailure" xml:space="preserve">
+    <value>Failed to discover FileShare {0} under {1}. Please make sure names are correct and FileShare is not deleted</value>
+  </data>
 </root>

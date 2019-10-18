@@ -20,6 +20,24 @@
 
 ## Upcoming Release
 
+## Version 1.15.0
+* Add new cmdlet Get-AzAvailableServiceAlias which can be called to get the aliases that can be used for Service Endpoint Policies.
+* Added support for the adding traffic selectors to Virtual Network Gateway Connections
+    - New cmdlets added:
+        - New-AzureRmTrafficSelectorPolicy
+    - Cmdlets updated with optional parameter -TrafficSelectorPolicies
+        -New-AzureRmVirtualNetworkGatewayConnection
+        -Set-AzureRmVirtualNetworkGatewayConnection
+* Add support for ESP and AH protocols in network security rule configurations
+    - Updated cmdlets:
+        - Add-AzNetworkSecurityRuleConfig
+        - New-AzNetworkSecurityRuleConfig
+        - Set-AzNetworkSecurityRuleConfig
+* Improve handling of exceptions in Cortex cmdlets
+* New Generations and SKUs for VirtualNetworkGateways
+  - Introduce new Generations for VirtualNetworkGateways.
+  - Introduce new high throughput SKUs for VirtualNetworkGateways.
+
 ## Version 1.14.0
 * Fix incorrect example in `New-AzApplicationGateway` reference documentation 
 * Add note in `Get-AzNetworkWatcherPacketCapture` reference documentation about retrieving all properties for a packet capture
@@ -229,3 +247,4 @@
         - Set-AzApplicationGatewaySslCertificate
     - New-AzApplicationGateway cmdlet updated with optional parameter -UserAssignedIdentityId, -UserAssignedIdentity
 * Add MaxCapacity property in ApplicationGatewayAutoscaleConfiguration
+

@@ -39,16 +39,25 @@ Gets existing healthcareApis fhir service accounts created within the specified 
 ```powershell
 PS C:\> Get-AzHealthcareApisService -Name "MyService" -ResourceGroupName "MyResourceGroup"
 
-ResourceGroupName : MyResourceGroup
-Name:             : MyService
-Id                : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
-                    .HealthcareApis/services/MyService
-Location          : westus2
-ResourceType      : Microsoft.HealthcareApis/services
-Kind              : FhirR4
-Tags              : {}
-Properties        : Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisServiceConfig
-Etag              : val
+AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
+Audience                : https://azurehealthcareapis.com
+Authority               : https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47
+CorsAllowCredentials    : False
+CorsHeaders             : {}
+CorsMaxAge              : 0
+CorsMethods             : {}
+CorsOrigins             : {}
+CosmosDbOfferThroughput : 400
+Etag                    : "00000000-0000-0000-0000-000000000000"
+Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
+                          .HealthcareApis/services/MyService
+Kind                    : fhir-R4
+Location                : westus2
+Name                    : MyService
+ResourceGroupName       : MyResourceGroup
+Tags                    : {}
+ResourceType            : Microsoft.HealthcareApis/services
+SmartProxyEnabled       : False
 ```
 
 ### Example 2
@@ -58,27 +67,45 @@ Gets the metadata for all HealthcareApis services in the provided Resource Group
 ```powershell
 PS C:\> Get-AzHealthcareApisService -ResourceGroupName "MyResourceGroup"
 
-ResourceGroupName : MyResourceGroup
-Name:             : MyService
-Id                : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
-                    .HealthcareApis/services/MyService
-Location          : westus2
-ResourceType      : Microsoft.HealthcareApis/services
-Kind              : FhirR4
-Tags              : {}
-Properties        : Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisServiceConfig
-Etag              : val
+AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
+Audience                : https://azurehealthcareapis.com
+Authority               : https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db48
+CorsAllowCredentials    : False
+CorsHeaders             : {}
+CorsMaxAge              : 0
+CorsMethods             : {}
+CorsOrigins             : {}
+CosmosDbOfferThroughput : 400
+Etag                    : "00000000-0000-0000-0000-000000000000"
+Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
+                          .HealthcareApis/services/MyService
+Kind                    : fhir-R4
+Location                : westus2
+Name                    : MyService
+ResourceGroupName       : MyResourceGroup
+Tags                    : {}
+ResourceType            : Microsoft.HealthcareApis/services
+SmartProxyEnabled       : False
 
-ResourceGroupName : MyResourceGroup
-Name:             : MyService1
-Id                : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
-                    .HealthcareApis/services/MyService1
-Location          : westus2
-ResourceType      : Microsoft.HealthcareApis/services
-Kind              : FhirR4
-Tags              : {}
-Properties        : Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisServiceConfig
-Etag              : val
+AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
+Audience                : https://azurehealthcareapis.com
+Authority               : https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db478
+CorsAllowCredentials    : False
+CorsHeaders             : {}
+CorsMaxAge              : 0
+CorsMethods             : {}
+CorsOrigins             : {}
+CosmosDbOfferThroughput : 400
+Etag                    : "00000000-0000-0000-0000-000000000000"
+Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
+                          .HealthcareApis/services/MyService1
+Kind                    : fhir-R4
+Location                : westus2
+Name                    : MyService1
+ResourceGroupName       : MyResourceGroup
+Tags                    : {}
+ResourceType            : Microsoft.HealthcareApis/services
+SmartProxyEnabled       : False
 ```
 
 ### Example 3
@@ -88,27 +115,45 @@ Gets the metadata for all HealthcareApis services in the given subscription
 ```powershell
 PS C:\> Get-AzHealthcareApisService
 
-ResourceGroupName : MyResourceGroup
-Name:             : MyService
-Id                : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
-                    .HealthcareApis/services/MyService
-Location          : westus2
-ResourceType      : Microsoft.HealthcareApis/services
-Kind              : FhirR4
-Tags              : {}
-Properties        : Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisServiceConfig
-Etag              : val
+AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
+Audience                : https://azurehealthcareapis.com
+Authority               : https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db48
+CorsAllowCredentials    : False
+CorsHeaders             : {}
+CorsMaxAge              : 0
+CorsMethods             : {}
+CorsOrigins             : {}
+CosmosDbOfferThroughput : 400
+Etag                    : "00000000-0000-0000-0000-000000000000"
+Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
+                          .HealthcareApis/services/MyService
+Kind                    : fhir-R4
+Location                : westus2
+Name                    : MyService
+ResourceGroupName       : MyResourceGroup
+Tags                    : {}
+ResourceType            : Microsoft.HealthcareApis/services
+SmartProxyEnabled       : False
 
-ResourceGroupName : MyResourceGroup
-Name:             : MyService1
-Id                : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
-                    .HealthcareApis/services/MyService1
-Location          : westus2
-ResourceType      : Microsoft.HealthcareApis/services
-Kind              : FhirR4
-Tags              : {}
-Properties        : Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisServiceConfig
-Etag              : val
+AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
+Audience                : https://azurehealthcareapis.com
+Authority               : https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db478
+CorsAllowCredentials    : False
+CorsHeaders             : {}
+CorsMaxAge              : 0
+CorsMethods             : {}
+CorsOrigins             : {}
+CosmosDbOfferThroughput : 400
+Etag                    : "00000000-0000-0000-0000-000000000000"
+Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
+                          .HealthcareApis/services/MyService1
+Kind                    : fhir-R4
+Location                : westus2
+Name                    : MyService1
+ResourceGroupName       : MyResourceGroup
+Tags                    : {}
+ResourceType            : Microsoft.HealthcareApis/services
+SmartProxyEnabled       : False
 ```
 
 ## PARAMETERS
