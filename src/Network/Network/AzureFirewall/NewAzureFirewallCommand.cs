@@ -39,24 +39,21 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.", ParameterSetName = DefaultParameterSet)]
-        [Parameter(Mandatory = true, ParameterSetName = VirtualHubParameterSet)]
+            HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.", ParameterSetName = DefaultParameterSet)]
-        [Parameter(Mandatory = true, ParameterSetName = VirtualHubParameterSet)]
+            HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "location.", ParameterSetName = DefaultParameterSet)]
-        [Parameter(Mandatory = false, ParameterSetName = VirtualHubParameterSet)]
+            HelpMessage = "location.")]
         [ValidateNotNullOrEmpty]
         public virtual string Location { get; set; }
 
@@ -174,7 +171,6 @@ namespace Microsoft.Azure.Commands.Network
                 Mandatory = false,
                 ValueFromPipelineByPropertyName = true,
                 HelpMessage = "The virtual hub that a firewall is attached to")]
-        [Parameter(Mandatory = true, ParameterSetName = VirtualHubParameterSet)]
         public string VirtualHubId { get; set; }
 
         [Parameter(
