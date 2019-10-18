@@ -58,11 +58,11 @@ namespace Microsoft.Azure.Commands.Network
 
             var filterRule = new PSAzureFirewallPolicyFilterRuleCollection
             {
-                name = this.Name,
-                priority = this.Priority,
-                rules = this.Rule?.ToList(),
-                Action = new PSAzureFirewallPolicyFilterRuleCollectionAction { type = ActionType },
-                ruleCollectionType = "FirewallPolicyFilterRule"
+                Name = this.Name,
+                Priority = this.Priority,
+                Rules = this.Rule?.ToList(),
+                Action = new PSAzureFirewallPolicyFilterRuleCollectionAction { Type = ActionType },
+                RuleCollectionType = "FirewallPolicyFilterRule"
             };
             WriteObject(filterRule);
         }
