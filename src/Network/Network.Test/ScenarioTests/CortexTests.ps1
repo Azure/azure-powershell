@@ -219,6 +219,17 @@ function Test-CortexCRUD
         $hubVnetConnections = Get-AzureRmVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name "*"
         Assert-NotNull $hubVnetConnections
 
+		# Update a HubVirtualNetworkConnection
+		Update-AzureRmVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $hubVnetConnectionName -EnableInternetSecurity $true
+		$hubVnetConnection = Get-AzureRmVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $hubVnetConnectionName
+		Assert-AreEqual $hubVnetConnection.EnableInternetSecurity $true
+
+		# Create a RouteTable child Resource
+
+		# Update a RouteTable child resource
+		
+		# Delete a RouteTable child resource
+
         # Clean up
         $delete = Remove-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName -Force -PassThru
         Assert-AreEqual $True $delete

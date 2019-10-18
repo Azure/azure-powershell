@@ -1,77 +1,49 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvirtualwan
+online version:
 schema: 2.0.0
 ---
 
-# New-AzVirtualWan
+# Set-AzVirtualHub
 
 ## SYNOPSIS
-Creates an Azure Virtual WAN.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
+### ByVirtualHubName (Default)
 ```
-New-AzVirtualWan -ResourceGroupName <String> -Name <String> -Location <String> [-AllowVnetToVnetTraffic]
- [-AllowBranchToBranchTraffic] [-Tag <Hashtable>] [-VirtualWANType <String>] [-AsJob]
+Set-AzVirtualHub -ResourceGroupName <String> -Name <String> -RouteTable <PSVirtualHubRouteTable[]>
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByVirtualHubResourceId
+```
+Set-AzVirtualHub -ResourceId <String> -RouteTable <PSVirtualHubRouteTable[]> [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByVirtualHubObject
+```
+Set-AzVirtualHub -InputObject <PSVirtualHub> -RouteTable <PSVirtualHubRouteTable[]> [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new Azure VirtualWAN resource.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
-
 ```powershell
-PS C:\> New-AzResourceGroup -Location "West US" -Name "testRG" 
-PS C:\> New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic $true
-
-Name                       : testRG
-Id                         : /subscriptions/{SubscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
-AllowVnetToVnetTraffic     : False
-AllowBranchToBranchTraffic : True
-Location                   : West US
-VirtualWANType             : Standard
-Type                       : Microsoft.Network/virtualWans
-ProvisioningState          : Succeeded
+PS C:\> {{ Add example code here }}
 ```
 
-The above will create a resource group "testRG" in region "West US" and an Azure Virtual WAN with branch to branch traffic allowed in that resource group in Azure.
+{{ Add example description here }}
 
 ## PARAMETERS
-
-### -AllowBranchToBranchTraffic
-Allow branch to branch traffic for VirtualWan.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AllowVnetToVnetTraffic
-Allow vnet to vnet traffic for VirtualWan.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run cmdlet in the background
@@ -103,18 +75,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The location of the VirtualWAN resource.
+### -InputObject
+The Virtual hub object to be modified.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
+Type: PSVirtualHub
+Parameter Sets: ByVirtualHubObject
+Aliases: VirtualHub
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -123,8 +95,8 @@ The resource name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: ResourceName, VirtualWanName
+Parameter Sets: ByVirtualHubName
+Aliases: ResourceName, VirtualHubName, HubName
 
 Required: True
 Position: Named
@@ -138,6 +110,36 @@ The resource group name.
 
 ```yaml
 Type: String
+Parameter Sets: ByVirtualHubName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource id of the Virtual hub to be modified.
+
+```yaml
+Type: String
+Parameter Sets: ByVirtualHubResourceId
+Aliases: VirtualHubId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RouteTable
+The route tables associated with this Virtual Hub.
+
+```yaml
+Type: PSVirtualHubRouteTable[]
 Parameter Sets: (All)
 Aliases:
 
@@ -153,21 +155,6 @@ A hashtable which represents resource tags.
 
 ```yaml
 Type: Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VirtualWANType
-The type of the Virtual Wan.
-
-```yaml
-Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -214,18 +201,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+
+### Microsoft.Azure.Commands.Network.Models.PSVirtualHub
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSVirtualWan
+### Microsoft.Azure.Commands.Network.Models.PSVirtualHub
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzVirtualWan](./Get-AzVirtualWan.md)
-
-[Remove-AzVirtualWan](./Remove-AzVirtualWan.md)
-
-[Update-AzVirtualWan](./Update-AzVirtualWan.md)
