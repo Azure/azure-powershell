@@ -122,14 +122,7 @@ namespace Microsoft.Azure.Commands.Network
                 psPrivateLinkService.AutoApproval.Subscriptions = AutoApproval.ToList();
             }
 
-            if (this.EnableProxyProtocol.IsPresent)
-            {
-                psPrivateLinkService.EnableProxyProtocol = true;
-            }
-            else
-            {
-                psPrivateLinkService.EnableProxyProtocol = false;
-            }
+            psPrivateLinkService.EnableProxyProtocol = this.EnableProxyProtocol.IsPresent;
 
             var plsModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PrivateLinkService>(psPrivateLinkService);
             plsModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);

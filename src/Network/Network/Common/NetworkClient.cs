@@ -37,7 +37,24 @@ namespace Microsoft.Azure.Commands.Network
     {
         public INetworkManagementClient NetworkManagementClient { get; set; }
 
-        public ISqlManagementClient SqlManagementClient { get; set; }
+        public ISqlManagementClient SqlManagementClient
+        {
+            get
+            {
+                if (sqlManagementClient == null)
+                {
+                    sqlManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<SqlManagementClient>(azureContext, AzureEnvironment.Endpoint.ResourceManager);
+                }
+                return sqlManagementClient;
+            }
+            set
+            {
+                sqlManagementClient = value;
+            }
+        }
+        private ISqlManagementClient sqlManagementClient = null;
+
+        private IAzureContext azureContext;
 
         public Action<string> VerboseLogger { get; set; }
 
@@ -48,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
         public NetworkClient(IAzureContext context)
             : this(AzureSession.Instance.ClientFactory.CreateArmClient<NetworkManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
-            SqlManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<SqlManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            azureContext = context;
         }
 
         public NetworkClient(INetworkManagementClient NetworkManagementClient)
