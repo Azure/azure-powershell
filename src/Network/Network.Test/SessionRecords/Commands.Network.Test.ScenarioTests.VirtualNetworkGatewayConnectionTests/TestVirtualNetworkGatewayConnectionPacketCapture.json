@@ -450,6 +450,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"Fg7Ernd8+4byx5lR62wiyuOfSGsUEsgJcoMH75L4LubRvvPi3nbj3SoJ/iSX1zA9XhG8MjJHUMyISQLi81YnoA==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"x8SenaWcKZ8+iqd7AkEJeGDpPpP4wTzeFiUAhL28aZk4bwEOh+QSpqnI+37zYEg2qSu4zic4LV7mAqLMChMDOA==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
@@ -28536,6 +28537,7 @@
       "RequestUri": "/subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/ps8995/providers/Microsoft.Network/connections/ps7228/stopPacketCapture?api-version=2019-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjFmMWRlZWQtYWY2MC00YmFiLTkyMjMtNjVkMzQwNDYyZTI0L3Jlc291cmNlR3JvdXBzL3BzODk5NS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvY29ubmVjdGlvbnMvcHM3MjI4L3N0b3BQYWNrZXRDYXB0dXJlP2FwaS12ZXJzaW9uPTIwMTktMDktMDE=",
       "RequestMethod": "POST",
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestBody": "{\r\n  \"sasUrl\": \"https://stops8995.blob.core.windows.net/testcontainer?sv=2019-02-02&sr=c&sig=33tO0IOoX%2F7bKeUhYzzBhmyhO5nR2bUuzfEcTGi4z4s%3D&st=2019-10-15T21%3A57%3A10Z&se=2019-10-16T22%3A57%3A10Z&sp=rwd\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -28618,6 +28620,7 @@
       "RequestUri": "/subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/ps8995/providers/Microsoft.Network/connections/ps7228/stopPacketCapture?api-version=2019-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjFmMWRlZWQtYWY2MC00YmFiLTkyMjMtNjVkMzQwNDYyZTI0L3Jlc291cmNlR3JvdXBzL3BzODk5NS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvY29ubmVjdGlvbnMvcHM3MjI4L3N0b3BQYWNrZXRDYXB0dXJlP2FwaS12ZXJzaW9uPTIwMTktMDktMDE=",
       "RequestMethod": "POST",
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestBody": "{\r\n  \"sasUrl\": \"https://stops8995.blob.core.windows.net/testcontainer?sv=2019-02-02&sr=c&sig=33tO0IOoX%2F7bKeUhYzzBhmyhO5nR2bUuzfEcTGi4z4s%3D&st=2019-10-15T21%3A57%3A10Z&se=2019-10-16T22%3A57%3A10Z&sp=rwd\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
