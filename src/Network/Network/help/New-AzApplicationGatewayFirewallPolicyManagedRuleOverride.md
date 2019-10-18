@@ -13,8 +13,8 @@ Creates a managedRuleOverride entry for RuleGroupOverrideGroup entry.
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId <String> -State <String>
-[-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId <String> [-State <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,6 +68,7 @@ Specify the RuleId in override rule entry.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Disabled
 
 Required: False
 Position: Named
@@ -77,6 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

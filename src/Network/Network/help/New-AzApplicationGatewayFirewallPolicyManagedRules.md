@@ -13,8 +13,10 @@ Create ManagedRules for the firewall policy.
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallPolicyManagedRules -ManagedRuleSet <PSApplicationGatewayFirewallManagedRuleSet[]> -Exclusions <PSApplicationGatewayFirewallPolicyExclusion[]>
-[-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApplicationGatewayFirewallPolicyManagedRules
+ [-ManagedRuleSet <PSApplicationGatewayFirewallPolicyManagedRuleSet[]>]
+ [-Exclusion <PSApplicationGatewayFirewallPolicyExclusion[]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,26 +48,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedRuleSets
-List of ManagedRuleSet to the ManagedRuleSets in managedRules for firewall policy.
+### -Exclusion
+List of Exclusion Entry.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallManagedRuleSet[]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicyExclusion[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Exclusions
-List of Exclusion to the Exclusions in managedRules for firewall policy.
+### -ManagedRuleSet
+List of Managed ruleSets.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallExclusion[]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicyManagedRuleSet[]
 Parameter Sets: (All)
 Aliases:
 
@@ -77,6 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
