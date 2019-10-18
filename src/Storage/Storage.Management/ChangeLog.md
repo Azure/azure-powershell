@@ -21,6 +21,9 @@
 * Support enable Large File share when create or update Storage account
     -  New-AzStorageAccount
     -  Set-AzStorageAccount
+* When close/get File handle, skip check the input path is File directory or File, to avoid failure with object in DeletePending status
+    -  Get-AzStorageFileHandle
+    -  Close-AzStorageFileHandle
 * Support enable/disable Changefeed on Blob Service of a Storage account
     -  Update-AzStorageBlobServiceProperty
 * Support create or update Storage account with Azure Files Active Directory Domain Service Authentication
