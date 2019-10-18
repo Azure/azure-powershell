@@ -53,18 +53,9 @@ namespace Microsoft.Azure.Commands.Network
             {
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-
-                if (this.ResourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Contains("privateEndpointConnections"))
-                {
-                    this.Name = resourceIdentifier.ResourceName;
-                    this.ResourceType = resourceIdentifier.ResourceType;
-                    string parentResource = resourceIdentifier.ParentResource;
-                    this.ServiceName = parentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
-                }
-                else
-                {
-                    throw new ArgumentException(string.Format(Properties.Resources.InvalidResourceId, "[ServiceProvider]/privateEndpointConnections"));
-                }
+                this.Name = resourceIdentifier.ResourceName;
+                this.ResourceType = resourceIdentifier.ResourceType;
+                this.ServiceName = resourceIdentifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
             }
 
             IPrivateLinkProvider provider = BuildProvider(this.ResourceType);
