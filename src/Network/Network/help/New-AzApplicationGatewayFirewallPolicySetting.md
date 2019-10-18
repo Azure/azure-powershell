@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayfirewallpolicysettings
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayfirewallpolicysetting
 schema: 2.0.0
 ---
 
-# New-AzApplicationGatewayFirewallPolicySettings
+# New-AzApplicationGatewayFirewallPolicySetting
 
 ## SYNOPSIS
 Creates a policy setting for the firewall policy
@@ -13,19 +13,19 @@ Creates a policy setting for the firewall policy
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallPolicySettings [-Mode <String>] [-State <String>] [-DisableRequestBodyCheck]
- [-MaxRequestBodySizeInKb <Int32>] [-FileUploadLimitInMb <Int32>] [-DefaultProfile <IAzureContextContainer>]
+New-AzApplicationGatewayFirewallPolicySetting [-Mode <String>] [-State <String>] [-DisableRequestBodyCheck]
+ [-MaxRequestBodySizeInKb <Int32>] [-MaxFileUploadInMb <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzApplicationGatewayFirewallPolicySettings** creates a policy settings for a firewall policy.
+The **New-AzApplicationGatewayFirewallPolicySetting** creates a policy settings for a firewall policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $condition = New-AzApplicationGatewayFirewallPolicySettings -State $enabledState -Mode $enabledMode -DisableRequestBodyCheck -FileUploadLimitInMb $fileUploadLimitInMb -MaxRequestBodySizeInKb $maxRequestBodySizeInKb
+PS C:\> $condition = New-AzApplicationGatewayFirewallPolicySetting -State $enabledState -Mode $enabledMode -DisableRequestBodyCheck -MaxFileUploadInMb $fileUploadLimitInMb -MaxRequestBodySizeInKb $maxRequestBodySizeInKb
 ```
 
 The command creates a policy setting with state as $enabledState, mode as $enabledMode, RequestBodyCheck as false, FileUploadLimitInMb as $fileUploadLimitInMb and MaxRequestBodySizeInKb as $$maxRequestBodySizeInKb.
@@ -63,7 +63,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FileUploadLimitInMb
+### -MaxFileUploadLimitInMb
 FileUploadLimitInMb in policy settings of the firewall policy.
 
 ```yaml

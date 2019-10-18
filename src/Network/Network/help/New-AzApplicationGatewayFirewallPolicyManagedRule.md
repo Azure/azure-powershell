@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayfirewallpolicymanagedrules
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayfirewallpolicymanagedrule
 schema: 2.0.0
 ---
 
-# New-AzApplicationGatewayFirewallPolicyManagedRules
+# New-AzApplicationGatewayFirewallPolicyManagedRule
 
 ## SYNOPSIS
 Create ManagedRules for the firewall policy.
@@ -13,20 +13,20 @@ Create ManagedRules for the firewall policy.
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallPolicyManagedRules
+New-AzApplicationGatewayFirewallPolicyManagedRule
  [-ManagedRuleSet <PSApplicationGatewayFirewallPolicyManagedRuleSet[]>]
  [-Exclusion <PSApplicationGatewayFirewallPolicyExclusion[]>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzApplicationGatewayFirewallPolicyManagedRules** creates a managed-rules for a firewall policy.
+The **New-AzApplicationGatewayFirewallPolicyManagedRule** creates a managed-rules for a firewall policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $condition = New-AzApplicationGatewayFirewallPolicyManagedRules -ManagedRuleSets $managedRuleSet -Exclusions $exclusion1,$exclusion2
+PS C:\> $condition = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet -Exclusion $exclusion1,$exclusion2
 ```
 
 The command creates managed rules a list of ManagedRuleSet with $managedRuleSet and an exclusion list with entries as $exclusion1, $exclusion2.
