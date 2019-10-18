@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.Network
 
     {
         private const string DefaultParameterSet = "Default";
-
         private const string VirtualHubParameterSet = "VirtualHubParameterSet";
         private PSVirtualNetwork virtualNetwork;
         private PSPublicIpAddress[] publicIpAddresses;
@@ -40,21 +39,23 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
+            HelpMessage = "The resource name.", ParameterSetName = DefaultParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = VirtualHubParameterSet)]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name.", ParameterSetName = DefaultParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = VirtualHubParameterSet)]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "location.")]
+            HelpMessage = "location.", ParameterSetName = DefaultParameterSet)]
         [Parameter(Mandatory = false, ParameterSetName = VirtualHubParameterSet)]
         [ValidateNotNullOrEmpty]
         public virtual string Location { get; set; }
