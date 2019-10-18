@@ -53,7 +53,7 @@ require:
 
 subject-prefix: ''
 title: Storage
-module-version: 0.0.1
+module-version: 4.0.1
 skip-model-cmdlets: true
 
 directive:
@@ -177,4 +177,49 @@ directive:
       parameter-name: Name
     set:
       parameter-name: Parameter
+# Update psm1 for module load
+  - from: Az.Storage.psm1
+    where: $
+    transform: >
+        return $.replace('\$null = Import-Module -Name \(Join-Path $PSScriptRoot \'\./bin/Az\.Storage\.private\.dll\'\)', '');
+#
+  - from: Az.Storage.psm1
+    where: $
+    transform: >
+        return $.replace('\$instance = \[Microsoft\.Azure\.PowerShell\.Cmdlets\.Storage\.Module\]::Instance', '' );
+# add back in
+  - from: Az.Storage.psm1
+    where: $
+    transform: >
+        return $.replace('# Ask for the shared functionality table', '$null = Import-Module -Name (Join-Path $PSScriptRoot \'./bin/Az.Storage.private.dll\')\n# Ask for the shared functionality table' );
+# add again
+  - from: Az.Storage.psm1
+    where: $
+    transform: >
+        return $.replace('# Ask for the shared functionality table', '$instance = [Microsoft.Azure.PowerShell.Cmdlets.Storage.Module]::Instance\n# Ask for the shared functionality table' );
+
+# Fix the name of the module in the nuspec
+  - from: Az.Storage.nuspec
+    where: $
+    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - Storage service data plane and management cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor more information on Resource Manager, please visit the following$1 https://docs.microsoft.com/azure/azure-resource-manager/\nFor more information on Storage, please visit the following$1 https://docs.microsoft.com/azure/storage/');
+# Add release notes
+  - from: Az.Storage.nuspec
+    where: $
+    transform: $ = $.replace('<releaseNotes></releaseNotes>', '<releaseNotes>Initial release of preview Azure Storage cmdlets - see https://aka.ms/azps4doc for more information.</releaseNotes>');
+# Make the nuget package a preview
+  - from: Az.Storage.nuspec
+    where: $
+    transform: $ = $.replace(/<version>(\d+\.\d+\.\d+)<\/version>/, '<version>$1-preview</version>');
+# Add dependencies to the nuspec
+  - from: Az.Storage.nuspec
+    where: $
+    transform: $ = $.replace('<file src="bin/Az.Storage.private.deps.json" target="bin" />', '<file src="bin/Az.Storage.private.deps.json" target="bin" />\n    <file src="bin/Microsoft.Azure.Cosmos.Table.dll" target="bin" />\n    <file src="bin/Microsoft.Azure.DocumentDB.Core.dll" target="bin" />\n    <file src="bin/Microsoft.Azure.KeyVault.Core.dll" target="bin" />\n    <file src="bin/Microsoft.Azure.Storage.Blob.dll" target="bin" />\n    <file src="bin/Microsoft.Azure.Storage.Common.dll" target="bin" />\n    <file src="bin/Microsoft.Azure.Storage.DataMovement.dll" target="bin" />\n    <file src="bin/Microsoft.Azure.Storage.File.dll" target="bin" />\n    <file src="bin/Microsoft.Azure.Storage.Queue.dll" target="bin" />\n    <file src="bin/Microsoft.OData.Core.dll" target="bin" />');
+# Update the psd1 description
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell(.) Storage cmdlets\"\}\'\"\);/, 'sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell - Storage service data plane and management cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\\n\\nFor more information on Resource Manager, please visit the following$1 https://docs.microsoft.com/azure/azure-resource-manager/\\nFor more information on Storage, please visit the following$1 https://docs.microsoft.com/azure/storage/\"\}\'\"\);');
+# Make this a preview module
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'Initial release of preview Storage cmdlets - see https://aka.ms/azps4doc for more information.\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
 ```

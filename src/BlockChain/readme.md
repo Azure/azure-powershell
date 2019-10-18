@@ -83,6 +83,35 @@ directive:
   - where:
       subject: Operation
     hide: true
+  # Change the parameter from 'LocationName' to 'Location'
+  - where:
+      parameter-name: LocationName
+    set:
+      parameter-name: Location
+  # Should use verb 'Invoke' for the two RegenateApiKey related APIs
+  - where:
+      subject: (.*)RegenerateApiKey$
+      verb: Get
+    set:
+      verb: Invoke
+  # Drop the un-flattened parameter-set for Post/New/Set/Update related cmdlets.
+  - where:
+      subject: (.*)RegenerateApiKey$
+      variant: List
+    remove: true
+  - where:
+      verb: Update
+      variant: ^Update$|^UpdateViaIdentity$
+    remove: true
+  - where:
+      verb: New
+      variant: ^Create$|^CreateViaIdentity$
+    remove: true
+  - where:
+      verb: Test
+      variant: ^Check$|^CheckViaIdentity$
+    remove: true
+
 ```
 
 ``` yaml

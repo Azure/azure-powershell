@@ -146,10 +146,6 @@ Create or update a log profile in Azure Monitoring REST API.
 ### [Set-AzScheduledQueryRule](Set-AzScheduledQueryRule.md)
 Creates or updates an log search rule.
 
-### [Update-AzActionGroup](Update-AzActionGroup.md)
-Updates an existing action group's tags.
-To update other fields use the CreateOrUpdate method.
-
 ### [Update-AzAlertRule](Update-AzAlertRule.md)
 Updates an existing AlertRuleResource.
 To update other fields use the CreateOrUpdate method.

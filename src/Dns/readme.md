@@ -52,7 +52,7 @@ require:
   - $(repo)/specification/dns/resource-manager/readme.md
 
 title: Dns
-module-version: 0.0.1
+module-version: 4.0.1
 
 directive:
 # RecordSet
@@ -128,4 +128,24 @@ directive:
       verb: ^New$|^Set$
       subject: Zone
     hide: true
+# Fix the name of the module in the nuspec
+  - from: Az.Dns.nuspec
+    where: $
+    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - Dns service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor more information on DNS, please visit the following$1 https://docs.microsoft.com/azure/dns/');
+# Add release notes
+  - from: Az.Dns.nuspec
+    where: $
+    transform: $ = $.replace('<releaseNotes></releaseNotes>', '<releaseNotes>Initial release of preview Dns cmdlets - see https://aka.ms/azps4doc for more information.</releaseNotes>');
+ # Make the nuget package a preview
+  - from: Az.Dns.nuspec
+    where: $
+    transform: $ = $.replace(/<version>(\d+\.\d+\.\d+)<\/version>/, '<version>$1-preview</version>');
+# Update the psd1 description
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell(.) Dns cmdlets\"\}\'\"\);/, 'sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell - Dns service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\\n\\nFor more information on DNS, please visit the following$1 https://docs.microsoft.com/azure/dns/\"\}\'\"\);');
+# Make this a preview module
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'Initial release of preview Dns cmdlets - see https://aka.ms/azps4doc for more information.\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
 ```

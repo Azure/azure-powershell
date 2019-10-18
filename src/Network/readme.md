@@ -55,7 +55,7 @@ require:
 
 title: Network
 subject-prefix: ''
-module-version: 0.0.1
+module-version: 4.0.1
 make-sub-resources-byreference: true
 
 directive:
@@ -2953,4 +2953,24 @@ directive:
           SiteKey: Site Key
           SecuritySite: Security Site
           ProvisioningState: Provisioning State
+# Fix the name of the module in the nuspec
+  - from: Az.Network.nuspec
+    where: $
+    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - Networking service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor more information on Networking, please visit the following$1 https://docs.microsoft.com/azure/networking/networking-overview');
+# Add release notes
+  - from: Az.Network.nuspec
+    where: $
+    transform: $ = $.replace('<releaseNotes></releaseNotes>', '<releaseNotes>Initial release of preview Network cmdlets - see https://aka.ms/azps4doc for more information.</releaseNotes>');
+# Make the nuget package a preview
+  - from: Az.Network.nuspec
+    where: $
+    transform: $ = $.replace(/<version>(\d+\.\d+\.\d+)<\/version>/, '<version>$1-preview</version>');
+# Update the psd1 description
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell(.) Network cmdlets\"\}\'\"\);/, 'sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell - Networking service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\\n\\nFor more information on Networking, please visit the following$1 https://docs.microsoft.com/azure/networking/\"\}\'\"\);');
+# Make this a preview module
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'Initial release of preview Network cmdlets - see https://aka.ms/azps4doc for more information.\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
 ```

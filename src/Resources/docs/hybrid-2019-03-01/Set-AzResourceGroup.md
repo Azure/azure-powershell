@@ -1,33 +1,31 @@
 ---
 external help file:
-Module Name: Az.Monitor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/update-azactiongroup
+Module Name: Az.Resources
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/set-azresourcegroup
 schema: 2.0.0
 ---
 
-# Update-AzActionGroup
+# Set-AzResourceGroup
 
 ## SYNOPSIS
-Updates an existing action group's tags.
-To update other fields use the CreateOrUpdate method.
+Creates or updates a resource group.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzActionGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Enabled]
+Set-AzResourceGroup -Name <String> -Location <String> [-SubscriptionId <String>] [-ManagedBy <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### Update
 ```
-Update-AzActionGroup -InputObject <IMonitorIdentity> [-Enabled] [-Tag <Hashtable>]
+Set-AzResourceGroup -Name <String> -Parameter <IResourceGroup> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates an existing action group's tags.
-To update other fields use the CreateOrUpdate method.
+Creates or updates a resource group.
 
 ## EXAMPLES
 
@@ -67,13 +65,30 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Enabled
-Indicates whether this action group is enabled.
-If an action group is not enabled, then none of its actions will be activated.
+### -Location
+The location of the resource group.
+It cannot be changed after the resource group has been created.
+It must be one of the supported Azure locations.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ManagedBy
+The ID of the resource that manages this resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -84,13 +99,30 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -Name
+The name of the resource group to create or update.
+Can include alphanumeric, underscore, parentheses, hyphen, period (except at end), and Unicode characters that match the allowed characters.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Type: System.String
+Parameter Sets: (All)
+Aliases: ResourceGroupName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Parameter
+Resource group information.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroup
+Parameter Sets: Update
 Aliases:
 
 Required: True
@@ -101,44 +133,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Name
-The name of the action group.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: ActionGroupName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ResourceGroupName
-The name of the resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -SubscriptionId
-The Azure subscription Id.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -150,11 +150,11 @@ Dynamic: False
 ```
 
 ### -Tag
-Resource tags
+The tags attached to the resource group.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -203,11 +203,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroup
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20190301.IActionGroupResource
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroup
 
 ## ALIASES
 
@@ -216,23 +216,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### INPUTOBJECT <IMonitorIdentity>: Identity Parameter
-  - `[ActionGroupName <String>]`: The name of the action group.
-  - `[ActivityLogAlertName <String>]`: The name of the activity log alert.
-  - `[AutoscaleSettingName <String>]`: The autoscale setting name.
-  - `[Id <String>]`: Resource identity path
-  - `[IncidentName <String>]`: The name of the incident to retrieve.
-  - `[LogProfileName <String>]`: The name of the log profile.
-  - `[MetricName <String>]`: The name of the metric to retrieve the baseline for.
-  - `[Name <String>]`: The name of the diagnostic setting.
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[ResourceName <String>]`: The ARM resource name
-  - `[ResourceProvider <String>]`: The ARM resource provider name
-  - `[ResourceTypeName <String>]`: The ARM resource type name
-  - `[ResourceUri <String>]`: The identifier of the resource.
-  - `[RuleName <String>]`: The name of the rule.
-  - `[StatusName <String>]`: The name of the status.
-  - `[SubscriptionId <String>]`: The Azure subscription Id.
+#### PARAMETER <IResourceGroup>: Resource group information.
+  - `Location <String>`: The location of the resource group. It cannot be changed after the resource group has been created. It must be one of the supported Azure locations.
+  - `[ManagedBy <String>]`: The ID of the resource that manages this resource group.
+  - `[Tag <IResourceGroupTags>]`: The tags attached to the resource group.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

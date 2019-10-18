@@ -55,7 +55,7 @@ require:
 #  - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2017-07-01/containerService.json
 
 subject-prefix: ''
-module-version: 0.0.1
+module-version: 4.0.1
 
 directive:
 # subject renames for VM and Vmss
@@ -862,6 +862,167 @@ directive:
       verb: New
       subject: VMSS
     hide: true
+# Update Table format for top-level types
+  - where:
+      model-name: AvailabilitySet
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - SkuName
+  - where:
+      model-name: Disk
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - OSType
+          - SkuName
+          - ProvisioningState
+  - where:
+      model-name: Gallery
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - ProvisioningState
+  - where:
+      model-name: GalleryApplication
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - SupportedOSType
+          - ProvisioningState
+  - where:
+      model-name: GalleryImage
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - OSType
+          - Sku
+          - ProvisioningState
+  - where:
+      model-name: Image
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - OSDiskOstype
+          - OSDiskSizeInGb
+          - ProvisioningState
+  - where:
+      model-name: ComputeOperationValue
+    set:
+      format-table:
+        properties:
+          - Name
+          - Origin
+  - where:
+      model-name: ProximityPlacementGroup
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - AvailabilitySet
+          - ProximityPlacementGroupType
+  - where:
+      model-name: Snapshot
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - OSType
+          - SkuName
+          - EncryptionEnabled
+          - ProvisioningState
+  - where:
+      model-name: VirtualMachineSize
+    set:
+      format-table:
+        properties:
+          - Name
+          - NumberOfCores
+          - MemoryInMb
+          - MaxDataDiskCount
+          - OSDiskSizeInMb
+  - where:
+      model-name: VrtualMachineExtension
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - ExtensionType
+          - ProvisioningState
+  - where:
+      model-name: VrtualMachineExtensionImage
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - OperationSyatem
+          - VMScaleSetEnabled
+  - where:
+      model-name: VrtualMachineImage
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - OSDiskImageOperatingSystem
+  - where:
+      model-name: VirtualMachineScaleSet
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - SkuName
+          - ProvisioningState
+          - Zone
+  - where:
+       model-name: VirtualMachine
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - Size
+          - NetworkInterface
+          - ProvisioningState
+          - Zone
+  - where:
+       model-name: VirtualMachineScaleSetVM
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - InstanceId
+          - SkuName
+          - ProvisioningState
+  - where:
+       model-name: VirtualMachineScaleSetSku
+    set:
+      format-table:
+        properties:
+          - SkuName
+          - CapacityScaleType
+          - DefaultCapacity
+          - MaximumCapacity
+          - MinimumCapacity
+
 # Update csproj for customizations
   - from: Az.Compute.csproj
     where: $
@@ -881,7 +1042,7 @@ directive:
   - from: Az.Compute.psm1
     where: $
     transform: >
-        return $.replace('# Ask for the shared functionality table', 'Import-Module -Name (Join-Path $PSScriptRoot \'./bin/Az.Compute.private.dll\')\n# Ask for the shared functionality table' );
+        return $.replace('# Ask for the shared functionality table', '$null = Import-Module -Name (Join-Path $PSScriptRoot \'./bin/Az.Compute.private.dll\')\n# Ask for the shared functionality table' );
 # add again
   - from: Az.Compute.psm1
     where: $
@@ -938,4 +1099,24 @@ directive:
     where: $
     transform: >
         return $.replace('# Load DLL to use build-time cmdlets', '    if($hasAdequateVersion) {\n      $accountsModule = Import-Module -Name $accountsName -MinimumVersion 1.6.0 -Scope Global -PassThru\n    }\n  }\n}\n# Load DLL to use build-time cmdlets');
+# Fix the name of the module in the nuspec
+  - from: Az.Compute.nuspec
+    where: $
+    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - Compute service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor more information on Virtual Machines, please visit the following$1 https://docs.microsoft.com/azure/virtual-machines/\nFor more information on Virtual Machine Scale Sets, please visit the following$1 https://docs.microsoft.com/azure/virtual-machine-scale-sets/');
+# Add release notes
+  - from: Az.Compute.nuspec
+    where: $
+    transform: $ = $.replace('<releaseNotes></releaseNotes>', '<releaseNotes>Initial release of preview Compute cmdlets - see https://aka.ms/azps4doc for more information.</releaseNotes>');
+# Make the nuget package a preview
+  - from: Az.Compute.nuspec
+    where: $
+    transform: $ = $.replace(/<version>(\d+\.\d+\.\d+)<\/version>/, '<version>$1-preview</version>');
+# Update the psd1 description
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell(.) Compute cmdlets\"\}\'\"\);/, 'sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell - Compute service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\\n\\nFor more information on Virtual Machines, please visit the following$1 https://docs.microsoft.com/azure/virtual-machines/\\nFor more information on Virtual Machine Scale Sets, please visit the following$1 https://docs.microsoft.com/azure/virtual-machine-scale-sets/\"\}\'\"\);');
+# Make this a preview module
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'Initial release of preview Compute cmdlets - see https://aka.ms/azps4doc for more information.\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
 ```

@@ -35,7 +35,7 @@
   - SkuName `ApplicationGatewaySkuName?` **{StandardLarge, StandardMedium, StandardSmall, StandardV2, WafLarge, WafMedium, WafV2}**
   - SkuTier `ApplicationGatewayTier?` **{Standard, StandardV2, Waf, WafV2}**
   - SslCertificate `IApplicationGatewaySslCertificate[]`
-  - SslCipherSuite `ApplicationGatewaySslCipherSuite[]` **{TlsDheDssWithAes128CbcSha, TlsDheDssWithAes128CbcSha256, TlsDheDssWithAes256CbcSha, TlsDheDssWithAes256CbcSha256, TlsDheRsaWithAes128CbcSha, TlsDheRsaWithAes128GcmSha256, TlsDheRsaWithAes256CbcSha, TlsDheRsaWithAes256GcmSha384, TlsEcdheEcdsaWithAes128CbcSha, TlsEcdheEcdsaWithAes128CbcSha256, TlsEcdheEcdsaWithAes128GcmSha256, TlsEcdheEcdsaWithAes256CbcSha, TlsEcdheEcdsaWithAes256CbcSha384, TlsEcdheEcdsaWithAes256GcmSha384, TlsEcdheRsaWithAes128CbcSha, TlsEcdheRsaWithAes128CbcSha256, TlsEcdheRsaWithAes256CbcSha, TlsEcdheRsaWithAes256CbcSha384, TlsRsaWith3DesEdeCbcSha, TlsRsaWithAes128CbcSha, TlsRsaWithAes128CbcSha256, TlsRsaWithAes128GcmSha256, TlsRsaWithAes256CbcSha, TlsRsaWithAes256CbcSha256, TlsRsaWithAes256GcmSha384}**
+  - SslCipherSuite `ApplicationGatewaySslCipherSuite[]` **{TlsDheDssWith3DesEdeCbcSha, TlsDheDssWithAes128CbcSha, TlsDheDssWithAes128CbcSha256, TlsDheDssWithAes256CbcSha, TlsDheDssWithAes256CbcSha256, TlsDheRsaWithAes128CbcSha, TlsDheRsaWithAes128GcmSha256, TlsDheRsaWithAes256CbcSha, TlsDheRsaWithAes256GcmSha384, TlsEcdheEcdsaWithAes128CbcSha, TlsEcdheEcdsaWithAes128CbcSha256, TlsEcdheEcdsaWithAes128GcmSha256, TlsEcdheEcdsaWithAes256CbcSha, TlsEcdheEcdsaWithAes256CbcSha384, TlsEcdheEcdsaWithAes256GcmSha384, TlsEcdheRsaWithAes128CbcSha, TlsEcdheRsaWithAes128CbcSha256, TlsEcdheRsaWithAes128GcmSha256, TlsEcdheRsaWithAes256CbcSha, TlsEcdheRsaWithAes256CbcSha384, TlsEcdheRsaWithAes256GcmSha384, TlsRsaWith3DesEdeCbcSha, TlsRsaWithAes128CbcSha, TlsRsaWithAes128CbcSha256, TlsRsaWithAes128GcmSha256, TlsRsaWithAes256CbcSha, TlsRsaWithAes256CbcSha256, TlsRsaWithAes256GcmSha384}**
   - SslDisabledProtocol `ApplicationGatewaySslProtocol[]` **{TlSv10, TlSv11, TlSv12}**
   - SslMinimumProtocolVersion `ApplicationGatewaySslProtocol?` **{TlSv10, TlSv11, TlSv12}**
   - SslPolicyName `ApplicationGatewaySslPolicyName?` **{AppGwSslPolicy20150501, AppGwSslPolicy20170401, AppGwSslPolicy20170401S}**
@@ -77,7 +77,7 @@
   - AvailableServerVariables `String[]`
 
 ### ApplicationGatewayAvailableSslOptions [Api20171001]
-  - AvailableCipherSuite `ApplicationGatewaySslCipherSuite[]` **{TlsDheDssWithAes128CbcSha, TlsDheDssWithAes128CbcSha256, TlsDheDssWithAes256CbcSha, TlsDheDssWithAes256CbcSha256, TlsDheRsaWithAes128CbcSha, TlsDheRsaWithAes128GcmSha256, TlsDheRsaWithAes256CbcSha, TlsDheRsaWithAes256GcmSha384, TlsEcdheEcdsaWithAes128CbcSha, TlsEcdheEcdsaWithAes128CbcSha256, TlsEcdheEcdsaWithAes128GcmSha256, TlsEcdheEcdsaWithAes256CbcSha, TlsEcdheEcdsaWithAes256CbcSha384, TlsEcdheEcdsaWithAes256GcmSha384, TlsEcdheRsaWithAes128CbcSha, TlsEcdheRsaWithAes128CbcSha256, TlsEcdheRsaWithAes256CbcSha, TlsEcdheRsaWithAes256CbcSha384, TlsRsaWith3DesEdeCbcSha, TlsRsaWithAes128CbcSha, TlsRsaWithAes128CbcSha256, TlsRsaWithAes128GcmSha256, TlsRsaWithAes256CbcSha, TlsRsaWithAes256CbcSha256, TlsRsaWithAes256GcmSha384}**
+  - AvailableCipherSuite `ApplicationGatewaySslCipherSuite[]` **{TlsDheDssWith3DesEdeCbcSha, TlsDheDssWithAes128CbcSha, TlsDheDssWithAes128CbcSha256, TlsDheDssWithAes256CbcSha, TlsDheDssWithAes256CbcSha256, TlsDheRsaWithAes128CbcSha, TlsDheRsaWithAes128GcmSha256, TlsDheRsaWithAes256CbcSha, TlsDheRsaWithAes256GcmSha384, TlsEcdheEcdsaWithAes128CbcSha, TlsEcdheEcdsaWithAes128CbcSha256, TlsEcdheEcdsaWithAes128GcmSha256, TlsEcdheEcdsaWithAes256CbcSha, TlsEcdheEcdsaWithAes256CbcSha384, TlsEcdheEcdsaWithAes256GcmSha384, TlsEcdheRsaWithAes128CbcSha, TlsEcdheRsaWithAes128CbcSha256, TlsEcdheRsaWithAes128GcmSha256, TlsEcdheRsaWithAes256CbcSha, TlsEcdheRsaWithAes256CbcSha384, TlsEcdheRsaWithAes256GcmSha384, TlsRsaWith3DesEdeCbcSha, TlsRsaWithAes128CbcSha, TlsRsaWithAes128CbcSha256, TlsRsaWithAes128GcmSha256, TlsRsaWithAes256CbcSha, TlsRsaWithAes256CbcSha256, TlsRsaWithAes256GcmSha384}**
   - AvailableProtocol `ApplicationGatewaySslProtocol[]` **{TlSv10, TlSv11, TlSv12}**
   - DefaultPolicy `ApplicationGatewaySslPolicyName?` **{AppGwSslPolicy20150501, AppGwSslPolicy20170401, AppGwSslPolicy20170401S}**
   - Id `String`
@@ -88,7 +88,7 @@
   - Type `String`
 
 ### ApplicationGatewayAvailableSslOptionsPropertiesFormat [Api20171001]
-  - AvailableCipherSuite `ApplicationGatewaySslCipherSuite[]` **{TlsDheDssWithAes128CbcSha, TlsDheDssWithAes128CbcSha256, TlsDheDssWithAes256CbcSha, TlsDheDssWithAes256CbcSha256, TlsDheRsaWithAes128CbcSha, TlsDheRsaWithAes128GcmSha256, TlsDheRsaWithAes256CbcSha, TlsDheRsaWithAes256GcmSha384, TlsEcdheEcdsaWithAes128CbcSha, TlsEcdheEcdsaWithAes128CbcSha256, TlsEcdheEcdsaWithAes128GcmSha256, TlsEcdheEcdsaWithAes256CbcSha, TlsEcdheEcdsaWithAes256CbcSha384, TlsEcdheEcdsaWithAes256GcmSha384, TlsEcdheRsaWithAes128CbcSha, TlsEcdheRsaWithAes128CbcSha256, TlsEcdheRsaWithAes256CbcSha, TlsEcdheRsaWithAes256CbcSha384, TlsRsaWith3DesEdeCbcSha, TlsRsaWithAes128CbcSha, TlsRsaWithAes128CbcSha256, TlsRsaWithAes128GcmSha256, TlsRsaWithAes256CbcSha, TlsRsaWithAes256CbcSha256, TlsRsaWithAes256GcmSha384}**
+  - AvailableCipherSuite `ApplicationGatewaySslCipherSuite[]` **{TlsDheDssWith3DesEdeCbcSha, TlsDheDssWithAes128CbcSha, TlsDheDssWithAes128CbcSha256, TlsDheDssWithAes256CbcSha, TlsDheDssWithAes256CbcSha256, TlsDheRsaWithAes128CbcSha, TlsDheRsaWithAes128GcmSha256, TlsDheRsaWithAes256CbcSha, TlsDheRsaWithAes256GcmSha384, TlsEcdheEcdsaWithAes128CbcSha, TlsEcdheEcdsaWithAes128CbcSha256, TlsEcdheEcdsaWithAes128GcmSha256, TlsEcdheEcdsaWithAes256CbcSha, TlsEcdheEcdsaWithAes256CbcSha384, TlsEcdheEcdsaWithAes256GcmSha384, TlsEcdheRsaWithAes128CbcSha, TlsEcdheRsaWithAes128CbcSha256, TlsEcdheRsaWithAes128GcmSha256, TlsEcdheRsaWithAes256CbcSha, TlsEcdheRsaWithAes256CbcSha384, TlsEcdheRsaWithAes256GcmSha384, TlsRsaWith3DesEdeCbcSha, TlsRsaWithAes128CbcSha, TlsRsaWithAes128CbcSha256, TlsRsaWithAes128GcmSha256, TlsRsaWithAes256CbcSha, TlsRsaWithAes256CbcSha256, TlsRsaWithAes256GcmSha384}**
   - AvailableProtocol `ApplicationGatewaySslProtocol[]` **{TlSv10, TlSv11, TlSv12}**
   - DefaultPolicy `ApplicationGatewaySslPolicyName?` **{AppGwSslPolicy20150501, AppGwSslPolicy20170401, AppGwSslPolicy20170401S}**
   - PredefinedPolicy `ISubResource[]`
@@ -344,8 +344,8 @@
   - Value `IApplicationGateway[]`
 
 ### ApplicationGatewayOnDemandProbe [Api20190201]
-  - BackendHttpSettingName `String`
-  - BackendPoolName `String`
+  - BackendAddressPoolId `String`
+  - BackendHttpSettingId `String`
   - Host `String`
   - MatchBody `String`
   - MatchStatusCode `String[]`
@@ -436,7 +436,7 @@
   - SkuName `ApplicationGatewaySkuName?` **{StandardLarge, StandardMedium, StandardSmall, StandardV2, WafLarge, WafMedium, WafV2}**
   - SkuTier `ApplicationGatewayTier?` **{Standard, StandardV2, Waf, WafV2}**
   - SslCertificate `IApplicationGatewaySslCertificate[]`
-  - SslPolicyCipherSuite `ApplicationGatewaySslCipherSuite[]` **{TlsDheDssWithAes128CbcSha, TlsDheDssWithAes128CbcSha256, TlsDheDssWithAes256CbcSha, TlsDheDssWithAes256CbcSha256, TlsDheRsaWithAes128CbcSha, TlsDheRsaWithAes128GcmSha256, TlsDheRsaWithAes256CbcSha, TlsDheRsaWithAes256GcmSha384, TlsEcdheEcdsaWithAes128CbcSha, TlsEcdheEcdsaWithAes128CbcSha256, TlsEcdheEcdsaWithAes128GcmSha256, TlsEcdheEcdsaWithAes256CbcSha, TlsEcdheEcdsaWithAes256CbcSha384, TlsEcdheEcdsaWithAes256GcmSha384, TlsEcdheRsaWithAes128CbcSha, TlsEcdheRsaWithAes128CbcSha256, TlsEcdheRsaWithAes256CbcSha, TlsEcdheRsaWithAes256CbcSha384, TlsRsaWith3DesEdeCbcSha, TlsRsaWithAes128CbcSha, TlsRsaWithAes128CbcSha256, TlsRsaWithAes128GcmSha256, TlsRsaWithAes256CbcSha, TlsRsaWithAes256CbcSha256, TlsRsaWithAes256GcmSha384}**
+  - SslPolicyCipherSuite `ApplicationGatewaySslCipherSuite[]` **{TlsDheDssWith3DesEdeCbcSha, TlsDheDssWithAes128CbcSha, TlsDheDssWithAes128CbcSha256, TlsDheDssWithAes256CbcSha, TlsDheDssWithAes256CbcSha256, TlsDheRsaWithAes128CbcSha, TlsDheRsaWithAes128GcmSha256, TlsDheRsaWithAes256CbcSha, TlsDheRsaWithAes256GcmSha384, TlsEcdheEcdsaWithAes128CbcSha, TlsEcdheEcdsaWithAes128CbcSha256, TlsEcdheEcdsaWithAes128GcmSha256, TlsEcdheEcdsaWithAes256CbcSha, TlsEcdheEcdsaWithAes256CbcSha384, TlsEcdheEcdsaWithAes256GcmSha384, TlsEcdheRsaWithAes128CbcSha, TlsEcdheRsaWithAes128CbcSha256, TlsEcdheRsaWithAes128GcmSha256, TlsEcdheRsaWithAes256CbcSha, TlsEcdheRsaWithAes256CbcSha384, TlsEcdheRsaWithAes256GcmSha384, TlsRsaWith3DesEdeCbcSha, TlsRsaWithAes128CbcSha, TlsRsaWithAes128CbcSha256, TlsRsaWithAes128GcmSha256, TlsRsaWithAes256CbcSha, TlsRsaWithAes256CbcSha256, TlsRsaWithAes256GcmSha384}**
   - SslPolicyDisabledSslProtocol `ApplicationGatewaySslProtocol[]` **{TlSv10, TlSv11, TlSv12}**
   - SslPolicyMinProtocolVersion `ApplicationGatewaySslProtocol?` **{TlSv10, TlSv11, TlSv12}**
   - SslPolicyName `ApplicationGatewaySslPolicyName?` **{AppGwSslPolicy20150501, AppGwSslPolicy20170401, AppGwSslPolicy20170401S}**
@@ -559,20 +559,20 @@
   - PublicCertData `String`
 
 ### ApplicationGatewaySslPolicy [Api20171001, Api20190201]
-  - CipherSuite `ApplicationGatewaySslCipherSuite[]` **{TlsDheDssWithAes128CbcSha, TlsDheDssWithAes128CbcSha256, TlsDheDssWithAes256CbcSha, TlsDheDssWithAes256CbcSha256, TlsDheRsaWithAes128CbcSha, TlsDheRsaWithAes128GcmSha256, TlsDheRsaWithAes256CbcSha, TlsDheRsaWithAes256GcmSha384, TlsEcdheEcdsaWithAes128CbcSha, TlsEcdheEcdsaWithAes128CbcSha256, TlsEcdheEcdsaWithAes128GcmSha256, TlsEcdheEcdsaWithAes256CbcSha, TlsEcdheEcdsaWithAes256CbcSha384, TlsEcdheEcdsaWithAes256GcmSha384, TlsEcdheRsaWithAes128CbcSha, TlsEcdheRsaWithAes128CbcSha256, TlsEcdheRsaWithAes256CbcSha, TlsEcdheRsaWithAes256CbcSha384, TlsRsaWith3DesEdeCbcSha, TlsRsaWithAes128CbcSha, TlsRsaWithAes128CbcSha256, TlsRsaWithAes128GcmSha256, TlsRsaWithAes256CbcSha, TlsRsaWithAes256CbcSha256, TlsRsaWithAes256GcmSha384}**
+  - CipherSuite `ApplicationGatewaySslCipherSuite[]` **{TlsDheDssWith3DesEdeCbcSha, TlsDheDssWithAes128CbcSha, TlsDheDssWithAes128CbcSha256, TlsDheDssWithAes256CbcSha, TlsDheDssWithAes256CbcSha256, TlsDheRsaWithAes128CbcSha, TlsDheRsaWithAes128GcmSha256, TlsDheRsaWithAes256CbcSha, TlsDheRsaWithAes256GcmSha384, TlsEcdheEcdsaWithAes128CbcSha, TlsEcdheEcdsaWithAes128CbcSha256, TlsEcdheEcdsaWithAes128GcmSha256, TlsEcdheEcdsaWithAes256CbcSha, TlsEcdheEcdsaWithAes256CbcSha384, TlsEcdheEcdsaWithAes256GcmSha384, TlsEcdheRsaWithAes128CbcSha, TlsEcdheRsaWithAes128CbcSha256, TlsEcdheRsaWithAes128GcmSha256, TlsEcdheRsaWithAes256CbcSha, TlsEcdheRsaWithAes256CbcSha384, TlsEcdheRsaWithAes256GcmSha384, TlsRsaWith3DesEdeCbcSha, TlsRsaWithAes128CbcSha, TlsRsaWithAes128CbcSha256, TlsRsaWithAes128GcmSha256, TlsRsaWithAes256CbcSha, TlsRsaWithAes256CbcSha256, TlsRsaWithAes256GcmSha384}**
   - DisabledSslProtocol `ApplicationGatewaySslProtocol[]` **{TlSv10, TlSv11, TlSv12}**
   - MinProtocolVersion `ApplicationGatewaySslProtocol?` **{TlSv10, TlSv11, TlSv12}**
   - PolicyName `ApplicationGatewaySslPolicyName?` **{AppGwSslPolicy20150501, AppGwSslPolicy20170401, AppGwSslPolicy20170401S}**
   - PolicyType `ApplicationGatewaySslPolicyType?` **{Custom, Predefined}**
 
 ### ApplicationGatewaySslPredefinedPolicy [Api20171001]
-  - CipherSuite `ApplicationGatewaySslCipherSuite[]` **{TlsDheDssWithAes128CbcSha, TlsDheDssWithAes128CbcSha256, TlsDheDssWithAes256CbcSha, TlsDheDssWithAes256CbcSha256, TlsDheRsaWithAes128CbcSha, TlsDheRsaWithAes128GcmSha256, TlsDheRsaWithAes256CbcSha, TlsDheRsaWithAes256GcmSha384, TlsEcdheEcdsaWithAes128CbcSha, TlsEcdheEcdsaWithAes128CbcSha256, TlsEcdheEcdsaWithAes128GcmSha256, TlsEcdheEcdsaWithAes256CbcSha, TlsEcdheEcdsaWithAes256CbcSha384, TlsEcdheEcdsaWithAes256GcmSha384, TlsEcdheRsaWithAes128CbcSha, TlsEcdheRsaWithAes128CbcSha256, TlsEcdheRsaWithAes256CbcSha, TlsEcdheRsaWithAes256CbcSha384, TlsRsaWith3DesEdeCbcSha, TlsRsaWithAes128CbcSha, TlsRsaWithAes128CbcSha256, TlsRsaWithAes128GcmSha256, TlsRsaWithAes256CbcSha, TlsRsaWithAes256CbcSha256, TlsRsaWithAes256GcmSha384}**
+  - CipherSuite `ApplicationGatewaySslCipherSuite[]` **{TlsDheDssWith3DesEdeCbcSha, TlsDheDssWithAes128CbcSha, TlsDheDssWithAes128CbcSha256, TlsDheDssWithAes256CbcSha, TlsDheDssWithAes256CbcSha256, TlsDheRsaWithAes128CbcSha, TlsDheRsaWithAes128GcmSha256, TlsDheRsaWithAes256CbcSha, TlsDheRsaWithAes256GcmSha384, TlsEcdheEcdsaWithAes128CbcSha, TlsEcdheEcdsaWithAes128CbcSha256, TlsEcdheEcdsaWithAes128GcmSha256, TlsEcdheEcdsaWithAes256CbcSha, TlsEcdheEcdsaWithAes256CbcSha384, TlsEcdheEcdsaWithAes256GcmSha384, TlsEcdheRsaWithAes128CbcSha, TlsEcdheRsaWithAes128CbcSha256, TlsEcdheRsaWithAes128GcmSha256, TlsEcdheRsaWithAes256CbcSha, TlsEcdheRsaWithAes256CbcSha384, TlsEcdheRsaWithAes256GcmSha384, TlsRsaWith3DesEdeCbcSha, TlsRsaWithAes128CbcSha, TlsRsaWithAes128CbcSha256, TlsRsaWithAes128GcmSha256, TlsRsaWithAes256CbcSha, TlsRsaWithAes256CbcSha256, TlsRsaWithAes256GcmSha384}**
   - Id `String`
   - MinProtocolVersion `ApplicationGatewaySslProtocol?` **{TlSv10, TlSv11, TlSv12}**
   - Name `String`
 
 ### ApplicationGatewaySslPredefinedPolicyPropertiesFormat [Api20171001]
-  - CipherSuite `ApplicationGatewaySslCipherSuite[]` **{TlsDheDssWithAes128CbcSha, TlsDheDssWithAes128CbcSha256, TlsDheDssWithAes256CbcSha, TlsDheDssWithAes256CbcSha256, TlsDheRsaWithAes128CbcSha, TlsDheRsaWithAes128GcmSha256, TlsDheRsaWithAes256CbcSha, TlsDheRsaWithAes256GcmSha384, TlsEcdheEcdsaWithAes128CbcSha, TlsEcdheEcdsaWithAes128CbcSha256, TlsEcdheEcdsaWithAes128GcmSha256, TlsEcdheEcdsaWithAes256CbcSha, TlsEcdheEcdsaWithAes256CbcSha384, TlsEcdheEcdsaWithAes256GcmSha384, TlsEcdheRsaWithAes128CbcSha, TlsEcdheRsaWithAes128CbcSha256, TlsEcdheRsaWithAes256CbcSha, TlsEcdheRsaWithAes256CbcSha384, TlsRsaWith3DesEdeCbcSha, TlsRsaWithAes128CbcSha, TlsRsaWithAes128CbcSha256, TlsRsaWithAes128GcmSha256, TlsRsaWithAes256CbcSha, TlsRsaWithAes256CbcSha256, TlsRsaWithAes256GcmSha384}**
+  - CipherSuite `ApplicationGatewaySslCipherSuite[]` **{TlsDheDssWith3DesEdeCbcSha, TlsDheDssWithAes128CbcSha, TlsDheDssWithAes128CbcSha256, TlsDheDssWithAes256CbcSha, TlsDheDssWithAes256CbcSha256, TlsDheRsaWithAes128CbcSha, TlsDheRsaWithAes128GcmSha256, TlsDheRsaWithAes256CbcSha, TlsDheRsaWithAes256GcmSha384, TlsEcdheEcdsaWithAes128CbcSha, TlsEcdheEcdsaWithAes128CbcSha256, TlsEcdheEcdsaWithAes128GcmSha256, TlsEcdheEcdsaWithAes256CbcSha, TlsEcdheEcdsaWithAes256CbcSha384, TlsEcdheEcdsaWithAes256GcmSha384, TlsEcdheRsaWithAes128CbcSha, TlsEcdheRsaWithAes128CbcSha256, TlsEcdheRsaWithAes128GcmSha256, TlsEcdheRsaWithAes256CbcSha, TlsEcdheRsaWithAes256CbcSha384, TlsEcdheRsaWithAes256GcmSha384, TlsRsaWith3DesEdeCbcSha, TlsRsaWithAes128CbcSha, TlsRsaWithAes128CbcSha256, TlsRsaWithAes128GcmSha256, TlsRsaWithAes256CbcSha, TlsRsaWithAes256CbcSha256, TlsRsaWithAes256GcmSha384}**
   - MinProtocolVersion `ApplicationGatewaySslProtocol?` **{TlSv10, TlSv11, TlSv12}**
 
 ### ApplicationGatewayTrustedRootCertificate [Api20190201]
@@ -841,7 +841,7 @@
 
 ### AzureReachabilityReportLatencyInfo [Api20190201]
   - Score `Int32?`
-  - TimeStamp `DateTime?` **{MinValue, MaxValue}**
+  - TimeStamp `DateTime?`
 
 ### AzureReachabilityReportLocation [Api20190201]
   - City `String`
@@ -850,12 +850,12 @@
 
 ### AzureReachabilityReportParameters [Api20190201]
   - AzureLocation `String[]`
-  - EndTime `DateTime` **{MinValue, MaxValue}**
+  - EndTime `DateTime`
   - Provider `String[]`
   - ProviderLocationCity `String`
   - ProviderLocationCountry `String`
   - ProviderLocationState `String`
-  - StartTime `DateTime` **{MinValue, MaxValue}**
+  - StartTime `DateTime`
 
 ### BackendAddressPool [Api20171001, Api20190201]
   - BackendIPConfiguration `INetworkInterfaceIPConfiguration[]`
@@ -865,6 +865,7 @@
   - Name `String`
   - OutboundNatRuleId `String`
   - OutboundRuleId `String`
+  - PropertiesOutboundRules `ISubResource[]`
   - ProvisioningState `String`
 
 ### BackendAddressPoolPropertiesFormat [Api20171001, Api20190201]
@@ -872,6 +873,7 @@
   - LoadBalancingRule `ISubResource[]`
   - OutboundNatRuleId `String`
   - OutboundRuleId `String`
+  - OutboundRules `ISubResource[]`
   - ProvisioningState `String`
 
 ### BgpCommunity [Api20171001]
@@ -918,10 +920,10 @@
   - PeerWeight `Int32?`
 
 ### CloudError [Api20190201]
-  - ErrorCode `String`
-  - ErrorDetail `ICloudErrorBody[]`
-  - ErrorMessage `String`
-  - ErrorTarget `String`
+  - Code `String`
+  - Detail `ICloudErrorBody[]`
+  - Message `String`
+  - Target `String`
 
 ### CloudErrorBody [Api20190201]
   - Code `String`
@@ -979,7 +981,7 @@
   - ProvisioningState `ProvisioningState?` **{Deleting, Failed, Succeeded, Updating}**
   - SourcePort `Int32?`
   - SourceResourceId `String`
-  - StartTime `DateTime?` **{MinValue, MaxValue}**
+  - StartTime `DateTime?`
   - Tag `IConnectionMonitorResultTags <String>`
   - Type `String`
 
@@ -995,7 +997,7 @@
   - Source `IConnectionMonitorSource`
   - SourcePort `Int32?`
   - SourceResourceId `String`
-  - StartTime `DateTime?` **{MinValue, MaxValue}**
+  - StartTime `DateTime?`
 
 ### ConnectionMonitorSource [Api20190201]
   - Port `Int32?`
@@ -1011,14 +1013,14 @@
 ### ConnectionStateSnapshot [Api20190201]
   - AvgLatencyInMS `Int32?`
   - ConnectionState `ConnectionState?` **{Reachable, Unknown, Unreachable}**
-  - EndTime `DateTime?` **{MinValue, MaxValue}**
+  - EndTime `DateTime?`
   - EvaluationState `EvaluationState?` **{Completed, InProgress, NotStarted}**
   - Hop `IConnectivityHop[]`
   - MaxLatencyInMS `Int32?`
   - MinLatencyInMS `Int32?`
   - ProbesFailed `Int32?`
   - ProbesSent `Int32?`
-  - StartTime `DateTime?` **{MinValue, MaxValue}**
+  - StartTime `DateTime?`
 
 ### ConnectivityDestination [Api20190201]
   - Address `String`
@@ -1253,9 +1255,9 @@
   - Target `String`
 
 ### ErrorResponse [Api20190201]
-  - ErrorCode `String`
-  - ErrorMessage `String`
-  - ErrorTarget `String`
+  - Code `String`
+  - Message `String`
+  - Target `String`
 
 ### EvaluatedNetworkSecurityGroup [Api20190201]
   - AppliedTo `String`
@@ -2029,7 +2031,6 @@
   - Name `String`
   - PrivateIPAddress `String`
   - PrivateIPAllocationMethod `IPAllocationMethod?` **{Dynamic, Static}**
-  - Property `IIPConfigurationPropertiesFormat`
   - ProvisioningState `String`
   - PublicIPAddress `IPublicIPAddress`
   - Subnet `ISubnet`
@@ -2819,7 +2820,7 @@
   - TotalBytesPerSession `Int32?`
 
 ### PacketCaptureQueryStatusResult [Api20190201]
-  - CaptureStartTime `DateTime?` **{MinValue, MaxValue}**
+  - CaptureStartTime `DateTime?`
   - Id `String`
   - Name `String`
   - PacketCaptureError `PcError[]` **{AgentStopped, CaptureFailed, InternalError, LocalFileFailed, StorageFailed}**
@@ -2958,7 +2959,6 @@
   - IPAddress `String`
   - IPAddressVersion `IPVersion?` **{IPv4, IPv6}**
   - IPConfigurationEtag `String`
-  - IPConfigurationFormat `IIPConfigurationPropertiesFormat`
   - IPConfigurationId `String`
   - IPConfigurationName `String`
   - IPConfigurationProvisioningState `String`
@@ -2997,7 +2997,6 @@
   - IPConfigurationId `String`
   - IPConfigurationName `String`
   - IPConfigurationPropertiesProvisioningState `String`
-  - IPConfigurationProperty `IIPConfigurationPropertiesFormat`
   - IPTag `IIPTag[]`
   - PrivateIPAddress `String`
   - PrivateIPAllocationMethod `IPAllocationMethod?` **{Dynamic, Static}**
@@ -3017,6 +3016,7 @@
   - Id `String`
   - IPPrefix `String`
   - IPTag `IIPTag[]`
+  - LoadBalancerFrontendIPConfigurationId `String`
   - Location `String`
   - Name `String`
   - PrefixLength `Int32?`
@@ -3036,6 +3036,7 @@
 ### PublicIPPrefixPropertiesFormat [Api20190201]
   - IPPrefix `String`
   - IPTag `IIPTag[]`
+  - LoadBalancerFrontendIPConfigurationId `String`
   - PrefixLength `Int32?`
   - ProvisioningState `String`
   - PublicIPAddress `IReferencedPublicIPAddress[]`
@@ -3070,6 +3071,10 @@
   - Link `String`
   - LinkedResourceType `String`
   - ProvisioningState `String`
+
+### ResourceNavigationLinksListResult [Api20190201]
+  - NextLink `String`
+  - Value `IResourceNavigationLink[]`
 
 ### RetentionPolicyParameters [Api20190201]
   - Day `Int32?`
@@ -3237,6 +3242,10 @@
   - LinkedResourceType `String`
   - ProvisioningState `String`
 
+### ServiceAssociationLinksListResult [Api20190201]
+  - NextLink `String`
+  - Value `IServiceAssociationLink[]`
+
 ### ServiceDelegationPropertiesFormat [Api20190201]
   - Action `String[]`
   - ProvisioningState `String`
@@ -3340,9 +3349,9 @@
   - Tag `ITagsObjectTags <String>`
 
 ### Topology [Api20190201]
-  - CreatedDateTime `DateTime?` **{MinValue, MaxValue}**
+  - CreatedDateTime `DateTime?`
   - Id `String`
-  - LastModified `DateTime?` **{MinValue, MaxValue}**
+  - LastModified `DateTime?`
   - Resource `ITopologyResource[]`
 
 ### TopologyAssociation [Api20190201]
@@ -3399,9 +3408,9 @@
 
 ### TroubleshootingResult [Api20190201]
   - Code `String`
-  - EndTime `DateTime?` **{MinValue, MaxValue}**
+  - EndTime `DateTime?`
   - Result `ITroubleshootingDetails[]`
-  - StartTime `DateTime?` **{MinValue, MaxValue}**
+  - StartTime `DateTime?`
 
 ### TunnelConnectionHealth [Api20171001, Api20190201]
   - ConnectionStatus `VirtualNetworkGatewayConnectionStatus?` **{Connected, Connecting, NotConnected, Unknown}**
