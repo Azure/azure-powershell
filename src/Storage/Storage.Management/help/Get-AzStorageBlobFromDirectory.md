@@ -34,12 +34,36 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Get all blob and blob directories under a blob directory with permission
+```
+PS C:\>Get-AzStorageBlobFromDirectory -Container "container1"  -BlobDirectoryPath dir1 -FetchPermission
+
+   Container Uri: https://storageaccountname.blob.core.windows.net/container1
+
+Name                 IsDirectory  BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime         IsDeleted  Permissions 
+----                 -----------  --------  ------          -----------                    ------------         ---------- ------------         ---------  ----------- 
+dir1/dir2/           True                                   application/octet-stream       2019-10-15 07:34:45Z Cool                            False      rwxr-x--- 
+dir1/text1.txt       False        BlockBlob 2097152         application/octet-stream       2019-10-15 03:49:37Z Cool                            False      rw-r-----  
+dir1/text2.txt       False        BlockBlob 2097152         application/octet-stream       2019-10-15 07:34:19Z Cool                            False      rw-r-----   
+
 ```
 
-{{ Add example description here }}
+This command gets all blobs and blob directories under a blob directory dir1 with permission
+
+### Example 2: Get all blob and blob directories under a blob directory with specific name pattern
+```
+PS C:\>Get-AzStorageBlobFromDirectory -Container "container1"  -BlobDirectoryPath dir1 -BlobRelativePath te*
+
+   Container Uri: https://storageaccountname.blob.core.windows.net/container1
+
+Name                 IsDirectory  BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime         IsDeleted  Permissions 
+----                 -----------  --------  ------          -----------                    ------------         ---------- ------------         ---------  ----------- 
+dir1/text1.txt       False        BlockBlob 2097152         application/octet-stream       2019-10-15 03:49:37Z Cool                            False                  
+dir1/text2.txt       False        BlockBlob 2097152         application/octet-stream       2019-10-15 07:34:19Z Cool                            False                   
+
+```
+
+This command gets all blobs and blob directories under a blob directory dir1 with name pattern "te*"
 
 ## PARAMETERS
 

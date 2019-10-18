@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstorageblob
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/move-azstorageblob
 schema: 2.0.0
 ---
 
