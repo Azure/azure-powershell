@@ -159,6 +159,9 @@
   <data name="DeleteBlueprintFolderContentsProcessString" xml:space="preserve">
     <value>Folder '{0}' already exists. This operation will replace contents of the folder with specified blueprint and its artifacts. Would you like to continue?</value>
   </data>
+  <data name="IdentityTypeNotProvided" xml:space="preserve">
+    <value>Can't determine the identity to be used with the assignment. Make sure the assignment file contains Identity property and identity Type property.</value>
+  </data>
   <data name="OverwriteExistingOutputFileContinueMessage" xml:space="preserve">
     <value>Overwriting the output file.</value>
   </data>

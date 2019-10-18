@@ -14,7 +14,7 @@
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="29.1.0" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.4.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.15.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.16.0-preview" />
   </ItemGroup>
 
   <ItemGroup>

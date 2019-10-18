@@ -33,15 +33,25 @@ ResourceGroupName Name Location        Kind   CosmosOfferThroughput
 ----------------- ----------- -------------------------------
 MyResourceGroup   MyService   westus2    fhir-R4   400
 
-Properties        : Microsoft.Azure.Management.HealthcareApis.Models.PSHealthcareApisServiceConfig
-ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
-                    .HealthcareApis/services/MyService
-Name              : MyService
-Type              : Microsoft.HealthcareApis/services
-Kind              : FhirR4
-Location          : westus2
-Tags              : {[key, val]}
-Etag              : val
+AccessPolicies          : {77777777-6666-5555-4444-1111111111111}
+Audience                : https://azurehealthcareapis.com
+Authority               : https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47
+CorsAllowCredentials    : False
+CorsHeaders             : {}
+CorsMaxAge              : 0
+CorsMethods             : {}
+CorsOrigins             : {}
+CosmosDbOfferThroughput : 400
+Etag                    : "00000000-0000-0000-0000-000000000000"
+Id                      : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
+                          .HealthcareApis/services/MyService
+Kind                    : fhir-R4
+Location                : westus2
+Name                    : MyService
+ResourceGroupName       : MyResourceGroup
+Tags                    : {}
+ResourceType            : Microsoft.HealthcareApis/services
+SmartProxyEnabled       : False
 ```
 
 ## PARAMETERS

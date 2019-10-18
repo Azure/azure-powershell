@@ -91,6 +91,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public WorkloadType WorkloadType { get; set; }
 
+        /// <summary>
+        /// Delete state of the item
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 6, HelpMessage = ParamHelpMsgs.Item.DeleteState)]
+        [ValidateNotNullOrEmpty]
+        public ItemDeleteState DeleteState { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -106,6 +113,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         { VaultParams.VaultName, vaultName },
                         { VaultParams.ResourceGroupName, resourceGroupName },
+                        { ItemParams.DeleteState, DeleteState },
                         { ItemParams.Container, Container },
                         { ItemParams.BackupManagementType, BackupManagementType },
                         { ItemParams.ItemName, Name },
