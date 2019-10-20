@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.Network
 
     {
         private const string DefaultParameterSet = "Default";
-        private const string VirtualHubParameterSet = "VirtualHubParameterSet";
         private PSVirtualNetwork virtualNetwork;
         private PSPublicIpAddress[] publicIpAddresses;
 
