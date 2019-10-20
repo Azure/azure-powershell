@@ -1035,7 +1035,8 @@ function Test-AzureFirewallVirtualHubCRUD {
     $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
-    $location = "westcentralus"
+    $policyLocation = "westcentralus"
+    $location = Get-ProviderLocation $resourceTypeParent
     $azureFirewallPolicyName = Get-ResourceName
     $sku = "AZFW_Hub"
     $tier = "Standard"
@@ -1045,17 +1046,18 @@ function Test-AzureFirewallVirtualHubCRUD {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
         
         # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
-        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $policyLocation
 
         # Get the AzureFirewallPolicy
         $getazureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
 
+        
         Assert-NotNull $azureFirewallPolicy
         Assert-NotNull $getazureFirewallPolicy.Id
 
         $azureFirewallPolicyId = $getazureFirewallPolicy.Id
 
-        $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -Sku $sku -FirewallPolicyId $azureFirewallPolicyId
+        New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -Sku $sku -FirewallPolicyId $azureFirewallPolicyId
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
