@@ -72,6 +72,55 @@ function Test-EndpointCrudAndAction
 
 <#
 .SYNOPSIS
+Create ENdpoint with RulesEngine config
+#>
+function Test-EndpointCreateWithRulesEngine
+{
+    $profileName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $resourceLocation = "EastUS"
+    $profileSku = "Standard_Microsoft"
+    $createdProfile = New-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
+
+    $endpointName = getAssetName
+    $originName = getAssetName
+    $originHostName = "www.microsoft.com"
+
+    $nameAvailability = Get-AzCdnEndpointNameAvailability -EndpointName $endpointName
+    Assert-True{$nameAvailability.NameAvailable}
+
+	$description = 'Sample delivery policy'
+    $cond1 = New-AzCdnDeliveryRuleCondition -MatchVariable IsDevice -Operator Equal -MatchValue "Desktop"
+    $action1 = New-AzCdnDeliveryRuleAction -SourcePattern "/abc" -Destination "/def" -PreservePath
+    $action2 = New-AzCdnDeliveryRuleAction -QueryStringBehavior ExcludeAll -QueryParameter "abc","def"
+    $action3 = New-AzCdnDeliveryRuleAction -QueryStringBehavior IncludeAll
+    $redirect = New-AzCdnDeliveryRuleAction -RedirectType Found -DestinationProtocol MatchRequest
+    $rule0 = New-AzCdnDeliveryRule -Name "EmptyCondition" -Order 0 -Action $redirect,$action3
+    $rule1 = New-AzCdnDeliveryRule -Name "Rule1" -Order 1 -Condition $cond1 -Action $action1,$action2
+    $deliverypolicy = New-AzCdnDeliveryPolicy -Description $description -Rule $rule0,$rule1
+
+    $createdEndpoint = New-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName -DeliveryPolicy $deliveryPolicy
+	Assert-AreEqual $description $createdEndpoint.DeliveryPolicy.Description
+    Assert-AreEqual $endpointName $createdEndpoint.Name
+    Assert-AreEqual $rule0.Name $createdEndpoint.DeliveryPolicy.Rules[0].Name
+    Assert-AreEqual $rule1.Name $createdEndpoint.DeliveryPolicy.Rules[1].Name
+    Assert-AreEqual $profileName $createdEndpoint.ProfileName
+    Assert-AreEqual $resourceGroup.ResourceGroupName $createdEndpoint.ResourceGroupName
+    Assert-AreEqual $originName $createdEndpoint.Origins[0].Name
+    Assert-AreEqual $originHostName $createdEndpoint.Origins[0].HostName
+
+
+    $endpointRemoved = Remove-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru -Force
+    Assert-True{$endpointRemoved}
+
+    Assert-ThrowsContains { Get-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
+
+    Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+
+<#
+.SYNOPSIS
 Endpoint cycle with piping
 #>
 function Test-EndpointCrudAndActionWithPiping
