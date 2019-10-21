@@ -24,6 +24,9 @@
 * When close/get File handle, skip check the input path is File directory or File, to avoid failure with object in DeletePending status
     -  Get-AzStorageFileHandle
     -  Close-AzStorageFileHandle
+* Change NetWorkRule DefaultAction value defination to align with swagger.
+	- Update-AzStorageAccountNetworkRuleSet
+	- Get-AzStorageAccountNetworkRuleSet
 
 ## Version 1.8.0
 * Upgrade Storage Client Library to 11.1.0
