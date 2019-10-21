@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class AzureApplicationGatewayFirewallPolicySettings : NetworkBaseCmdlet
+    public class AzureApplicationGatewayFirewallPolicySetting : NetworkBaseCmdlet
     {
         [Parameter(
             HelpMessage = "Web Application Firewall Mode.")]
