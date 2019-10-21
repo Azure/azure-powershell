@@ -48,6 +48,8 @@ namespace Common.Authentication.Test
                 var settings = new ContextAutosaveSettings {Mode=ContextSaveMode.CurrentUser };
                 var content = JsonConvert.SerializeObject(settings);
                 store.VirtualStore[path] = content;
+                path = Path.Combine(AzureSession.Instance.ARMProfileDirectory, AzureSession.Instance.ARMProfileFile);
+                store.VirtualStore[path] = "";
                 AzureSessionInitializer.CreateOrReplaceSession(store);
                 var session = AzureSession.Instance;
                 var tokenCacheFile = Path.Combine(session.ProfileDirectory, session.TokenCacheFile);

@@ -158,6 +158,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     result.Mode = ContextSaveMode.CurrentUser;
                     store.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
                 }
+                EnsureFileContentAvailable(store, Path.Combine(result.ContextDirectory, result.ContextFile));
             }
             catch
             {
@@ -269,6 +270,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 }
             }
 #endif
+        }
+
+        internal static void EnsureFileContentAvailable(IDataStore store, string path)
+        {
+            store.ReadFileAsText(path);
         }
     }
 }
