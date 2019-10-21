@@ -1322,6 +1322,13 @@ function Get-AzsActionPlanOperation {
 
 .PARAMETER AsJson
     Outputs the result in Json format.
+
+.EXAMPLE
+
+    PS C:/> Get-AzsActionPlanAttempt -PlanId $planId -OperationId $operationId -AsJson
+
+    Gets or lists the action plan attempt properties for plan with id $planId and operation Id $operationId.
+
 #>
 function Get-AzsActionPlanAttempt {
     [CmdletBinding()]

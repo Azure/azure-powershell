@@ -103,6 +103,7 @@
             # ReleaseNotes of this module
             ReleaseNotes = '
             * Introducing functionalities to work with Azure Stack Deployment provider
+            * The Deployment Resource Provider (DRP) enables orchestrated deployments of Resource Providers to Azure Stack. These commands interact with the Azure Resource Manager layer to interact with DRP.
             '
 
         } # End of PSData hashtable
