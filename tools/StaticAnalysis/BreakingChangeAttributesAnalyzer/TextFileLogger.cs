@@ -62,7 +62,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
                     loggerData.LoggerInstance = logger;
                     loggerToReturn = logger;
 
-                    loggerTable.Add(fileName, logger);
+                    loggerTable.Add(fileName, loggerData);
                 }
             }
             return loggerToReturn;

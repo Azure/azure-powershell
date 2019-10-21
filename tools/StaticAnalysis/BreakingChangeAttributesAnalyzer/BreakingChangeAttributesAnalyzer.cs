@@ -13,9 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 // TODO: Remove IfDef code
-#if !NETSTANDARD
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-#endif
 using StaticAnalysis.BreakingChangeAnalyzer;
 using System;
 using System.Collections.Generic;
@@ -49,7 +47,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
             BreakingChangeAttributeReportLoggerName = "UpcomingBreakingChanges.md";
 
             //We default to creating a new file each time
-            CleanBreakingChangesFileBeforeWriting = true;
+            CleanBreakingChangesFileBeforeWriting = false;
 
             //We default to the current folder to output the file
             OutputFilePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -100,6 +98,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
             var logFileName = Path.Combine(OutputFilePath, BreakingChangeAttributeReportLoggerName);
             //Init the log file
             var logger = TextFileLogger.GetTextFileLogger(logFileName, CleanBreakingChangesFileBeforeWriting);
+            var result = "";
 
             try
             {
@@ -114,6 +113,11 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
 
                     foreach (var directory in probingDirectories)
                     {
+                        if (directory.Equals(baseDirectory))
+                        {
+                            continue;
+                        }
+
                         if (modulesToAnalyze != null &&
                             modulesToAnalyze.Any() &&
                             !modulesToAnalyze.Any(m => directory.EndsWith(m)))
@@ -165,7 +169,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
                                 Console.WriteLine(output);
                             }
 
-                            LogBreakingChangesInModule(cmdletDataForModule, logger);
+                            result += LogBreakingChangesInModule(cmdletDataForModule);
 // TODO: Remove IfDef code
 #if !NETSTANDARD
                             AppDomain.Unload(_appDomain);
@@ -176,6 +180,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
             }
             finally
             {
+                logger.LogMessage(result);
                 if (logger != null)
                 {
                     TextFileLogger.CloseLogger(logFileName);
@@ -194,14 +199,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
         //Gets the list of all modules in a folder
         private static IEnumerable<string> GetCmdletsFilesInFolder(string folderName)
         {
-            var service = Path.GetFileName(folderName);
-
             var manifestFiles = Directory.EnumerateFiles(folderName, "*.psd1").ToList();
-
-            if (manifestFiles.Count > 1)
-            {
-                manifestFiles = manifestFiles.Where(f => Path.GetFileName(f).IndexOf(service) >= 0).ToList();
-            }
 
             if (manifestFiles.Count == 0)
             {
@@ -222,28 +220,38 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
             return cmdletResult.Select(c => c.ToString().Substring(2));
         }
 
-        private const string BreakingChangeModuleHeaderFormatString = @"## Breaking changes in module {0}\n\n The following cmdlets were affected this release:\n\n";
-        private const string BreakingChangeCmdletHeaderFormatString = @"**{0}**\n";
+        private const string BreakingChangeModuleHeaderFormatString = "## Breaking changes in module {0}\n\n The following cmdlets were affected this release:\n\n";
+        private const string BreakingChangeCmdletHeaderFormatString = "\n\n\n### **{0}**\n";
+        private const string BreakingChangeParameterHeaderFormatString = "#### **{0}**\n";
 
         //Logs all the breaking changes in a module as a unit (all cmdlets in the same module appear contiguously)
-        private static void LogBreakingChangesInModule(BreakingChangeAttributesInModule moduleData, TextFileLogger logger)
+        private static string LogBreakingChangesInModule(BreakingChangeAttributesInModule moduleData)
         {
             var textForBreakingChangesInModule = string.Format(BreakingChangeModuleHeaderFormatString, Path.GetFileName(moduleData.ModuleName));
 
             foreach (var cmdletData in moduleData.CmdletList)
             {
                 textForBreakingChangesInModule += string.Format(BreakingChangeCmdletHeaderFormatString, cmdletData.CmdletName);
-// TODO: Remove IfDef code
-#if !NETSTANDARD
                 foreach (GenericBreakingChangeAttribute attribute in cmdletData.BreakingChangeAttributes)
                 {
                     textForBreakingChangesInModule += attribute.GetBreakingChangeTextFromAttribute(cmdletData.CmdletType, true) + "\n\n";
                 }
-#endif
+
+                if (cmdletData.BreakingChangeParameterList.Count() > 0)
+                {
+                    textForBreakingChangesInModule += "The following parameters were affected this release:\n";
+                }
+                foreach (BreakingChangeAttributesInParameter parameter in cmdletData.BreakingChangeParameterList)
+                {
+                    textForBreakingChangesInModule += string.Format(BreakingChangeParameterHeaderFormatString, parameter.ParameterName);
+                    foreach (CmdletParameterBreakingChangeAttribute parameterAttrs in parameter.BreakingChangeParameters)
+                    {
+                        textForBreakingChangesInModule += string.Format("{0}\n\n", parameterAttrs.GetBreakingChangeTextFromAttribute(cmdletData.CmdletType, true));
+                    }
+                }
             }
 
-            //Now that we have the text, add it to the log file
-            logger.LogMessage(textForBreakingChangesInModule);
+            return textForBreakingChangesInModule + "\n\n";
         }
 
         public void Analyze(IEnumerable<string> scopes)

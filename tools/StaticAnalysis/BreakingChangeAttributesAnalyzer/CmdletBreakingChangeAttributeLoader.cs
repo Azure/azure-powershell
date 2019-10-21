@@ -18,10 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Management.Automation;
-// TODO: Remove IfDef code
-#if !NETSTANDARD
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-#endif
 using Tools.Common.Extensions;
 
 namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
@@ -41,10 +38,15 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
     {
         public Type CmdletType { get; set; }
         public string CmdletName { get; set; }
-// TODO: Remove IfDef code
-#if !NETSTANDARD
         public List<GenericBreakingChangeAttribute> BreakingChangeAttributes { get; set; }
-#endif
+        public List<BreakingChangeAttributesInParameter> BreakingChangeParameterList { get; set; }
+    }
+
+    public class BreakingChangeAttributesInParameter
+    {
+        public Type ParameterType { get; set; }
+        public string ParameterName { get; set; }
+        public List<CmdletParameterBreakingChangeAttribute> BreakingChangeParameters { get; set; }
     }
 
     public class CmdletBreakingChangeAttributeLoader : MarshalByRefObject
@@ -56,7 +58,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
         /// <returns></returns>
         public BreakingChangeAttributesInModule GetModuleBreakingChangeAttributes(string assemblyPath)
         {
-            var results = new List<BreakingChangeAttributesInCmdlet>();
+            var breakingChangeAttributesInCmdletList = new List<BreakingChangeAttributesInCmdlet>();
 
             try
             {
@@ -64,23 +66,39 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
                 foreach (var type in assembly.GetCmdletTypes())
                 {
                     var cmdlet = type.GetAttribute<CmdletAttribute>();
-// TODO: Remove IfDef code
-#if !NETSTANDARD
                     var attributes = type.GetAttributes<GenericBreakingChangeAttribute>();
 
-                    if (attributes != null && (attributes.Count() > 0)) { }
-#endif
                     var cmdletMetadata = new BreakingChangeAttributesInCmdlet
                     {
                         CmdletType = type,
                         CmdletName = cmdlet.VerbName + "-" + cmdlet.NounName,
-// TODO: Remove IfDef code
-#if !NETSTANDARD
-                        BreakingChangeAttributes = attributes.ToList()
-#endif
+                        BreakingChangeAttributes = new List<GenericBreakingChangeAttribute>(),
+                        BreakingChangeParameterList = new List<BreakingChangeAttributesInParameter>()
                     };
 
-                    results.Add(cmdletMetadata);
+                    if (attributes != null && (attributes.Count() > 0))
+                    {
+                        cmdletMetadata.BreakingChangeAttributes = attributes.ToList();
+                    }
+
+                    foreach (var parameter in type.GetParameters())
+                    {
+                        var breakingChangeAttrs = parameter.GetAttributes<CmdletParameterBreakingChangeAttribute>();
+                        if (breakingChangeAttrs != null && breakingChangeAttrs.Count() > 0)
+                        {
+                            var parameterMatadata = new BreakingChangeAttributesInParameter
+                            {
+                                ParameterType = parameter.GetType(),
+                                ParameterName = parameter.Name,
+                                BreakingChangeParameters = breakingChangeAttrs.ToList(),
+                            };
+                            cmdletMetadata.BreakingChangeParameterList.Add(parameterMatadata);
+                        }
+                    }
+                    if (cmdletMetadata.BreakingChangeAttributes.Count() > 0 || cmdletMetadata.BreakingChangeParameterList.Count() > 0)
+                    {
+                        breakingChangeAttributesInCmdletList.Add(cmdletMetadata);
+                    }
                 }
             }
             catch (Exception ex)
@@ -88,11 +106,11 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
                 throw ex;
             }
 
-            if (!results.Any()) return null;
+            if (!breakingChangeAttributesInCmdletList.Any()) return null;
 
             var attributesInTheModule = new BreakingChangeAttributesInModule
             {
-                ModuleName = assemblyPath, CmdletList = results
+                ModuleName = assemblyPath, CmdletList = breakingChangeAttributesInCmdletList
             };
 
             return attributesInTheModule;

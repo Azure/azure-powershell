@@ -28,7 +28,7 @@ namespace StaticAnalysis
     {
         static IList<IStaticAnalyzer> Analyzers = new List<IStaticAnalyzer>()
         {
-            new DependencyAnalyzer.DependencyAnalyzer()
+            //new DependencyAnalyzer.DependencyAnalyzer()
         };
 
         static IList<string> ExceptionFileNames = new List<string>()
@@ -48,7 +48,7 @@ namespace StaticAnalysis
             AnalysisLogger analysisLogger = null;
             try
             {
-                string installDir = null;
+                string installDir = "C:\\Users\\yunwang\\source\\repos\\azure-powershell\\artifacts\\Debug";
                 if (args.Any(a => a == "--package-directory" || a == "-p"))
                 {
                     int idx = Array.FindIndex(args, a => a == "--package-directory" || a == "-p");
@@ -84,6 +84,7 @@ namespace StaticAnalysis
                     reportsDirectory = args[idx + 1];
                     logReportsDirectoryWarning = false;
                 }
+                reportsDirectory = "C:\\Users\\yunwang\\source\\repos\\azure-powershell\\artifacts\\StaticAnalysisResults";
 
                 if (!Directory.Exists(reportsDirectory))
                 {
@@ -104,19 +105,12 @@ namespace StaticAnalysis
                     }
                 }
 
-                Analyzers.Add(new SignatureVerifier.SignatureVerifier());
-                Analyzers.Add(new BreakingChangeAnalyzer.BreakingChangeAnalyzer());
+                //Analyzers.Add(new SignatureVerifier.SignatureVerifier());
+                //Analyzers.Add(new BreakingChangeAnalyzer.BreakingChangeAnalyzer());
+                Analyzers.Add(new BreakingChangeAttributesAnalyzer.BreakingChangeAttributesAnalyzer());
 
                 var helpOnly = args.Any(a => a == "--help-only" || a == "-h");
                 var skipHelp = !helpOnly && args.Any(a => a == "--skip-help" || a == "-s");
-                if(helpOnly)
-                {
-                    Analyzers.Clear();
-                }
-                if (!skipHelp)
-                {
-                    Analyzers.Add(new HelpAnalyzer.HelpAnalyzer());
-                }
 
                 // https://stackoverflow.com/a/9737418/294804
                 var assemblyDirectory = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
@@ -144,6 +138,7 @@ namespace StaticAnalysis
             }
             catch(Exception ex)
             {
+                Console.WriteLine("============================== {0}", ex.ToString());
                 analysisLogger?.WriteError(ex.ToString());
                 throw ex;
             }
