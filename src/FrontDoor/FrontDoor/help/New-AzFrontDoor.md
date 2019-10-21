@@ -17,7 +17,7 @@ Create a new Azure Front Door load balancer
 New-AzFrontDoor -ResourceGroupName <String> -Name <String> -RoutingRule <PSRoutingRule[]>
  -BackendPool <PSBackendPool[]> -FrontendEndpoint <PSFrontendEndpoint[]>
  -LoadBalancingSetting <PSLoadBalancingSetting[]> -HealthProbeSetting <PSHealthProbeSetting[]>
- [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] [-BackendPoolsSetting <PSBackendPoolsSettings>]
+ [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] [-BackendPoolsSetting <PSBackendPoolsSetting>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 Settings for all backendPools
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSettings
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSetting
 Parameter Sets: ByFieldsWithBackendPoolsSettingParameterSet
 Aliases:
 

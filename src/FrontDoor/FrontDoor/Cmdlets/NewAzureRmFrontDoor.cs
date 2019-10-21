@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// </summary>
         [Parameter(ParameterSetName = FieldsWithBackendPoolsSettingParameterSet,
             Mandatory = false, HelpMessage = "Settings for all backendPools")]
-        public PSBackendPoolsSettings BackendPoolsSetting { get; set; }
+        public PSBackendPoolsSetting BackendPoolsSetting { get; set; }
 
         public override void ExecuteCmdlet()
         {

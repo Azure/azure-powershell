@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = true, ParameterSetName = FieldsWithBackendPoolsSettingParameterSet,HelpMessage = "Settings for all backendPools")]
         [Parameter(Mandatory = true, ParameterSetName = ObjectWithBackendPoolsSettingParameterSet, HelpMessage = "Settings for all backendPools")]
         [Parameter(Mandatory = true, ParameterSetName = ResourceIdWithBackendPoolsSettingParameterSet, HelpMessage = "Settings for all backendPools")]
-        public PSBackendPoolsSettings BackendPoolsSetting { get; set; }
+        public PSBackendPoolsSetting BackendPoolsSetting { get; set; }
 
         public override void ExecuteCmdlet()
         {

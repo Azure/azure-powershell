@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 EnabledState = sdkFrontDoor.EnabledState == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkFrontDoor.EnabledState),
                 ResourceState = sdkFrontDoor.ResourceState,
                 ProvisioningState = sdkFrontDoor.ProvisioningState,
-                BackendPoolsSetting = sdkFrontDoor.BackendPoolsSettings?.ToPSBackendPoolsSettings(),
+                BackendPoolsSetting = sdkFrontDoor.BackendPoolsSettings?.ToPSBackendPoolsSetting(),
                 EnforceCertificateNameCheck = sdkFrontDoor.BackendPoolsSettings == null ? (PSEnforceCertificateNameCheck?)null : (PSEnforceCertificateNameCheck)Enum.Parse(typeof(PSEnforceCertificateNameCheck), sdkFrontDoor.BackendPoolsSettings.EnforceCertificateNameCheck)
             };
         }
@@ -231,20 +231,20 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 );
         }
 
-        public static PSBackendPoolsSettings ToPSBackendPoolsSettings(this SdkBackendPoolsSettings sdkBackendPoolsSettings)
+        public static PSBackendPoolsSetting ToPSBackendPoolsSetting(this SdkBackendPoolsSettings sdkBackendPoolsSettings)
         {
-            return new PSBackendPoolsSettings
+            return new PSBackendPoolsSetting
             {
                 EnforceCertificateNameCheck = sdkBackendPoolsSettings.EnforceCertificateNameCheck == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkBackendPoolsSettings.EnforceCertificateNameCheck),
                 SendRecvTimeoutInSeconds = sdkBackendPoolsSettings.SendRecvTimeoutSeconds
             };
         }
 
-        public static SdkBackendPoolsSettings ToSdkBackendPoolsSettings(this PSBackendPoolsSettings psBackendPoolsSettings)
+        public static SdkBackendPoolsSettings ToSdkBackendPoolsSettings(this PSBackendPoolsSetting psBackendPoolsSetting)
         {
             return new SdkBackendPoolsSettings(
-                enforceCertificateNameCheck: psBackendPoolsSettings.EnforceCertificateNameCheck?.ToString(),
-                sendRecvTimeoutSeconds: psBackendPoolsSettings.SendRecvTimeoutInSeconds
+                enforceCertificateNameCheck: psBackendPoolsSetting.EnforceCertificateNameCheck?.ToString(),
+                sendRecvTimeoutSeconds: psBackendPoolsSetting.SendRecvTimeoutInSeconds
                 );
         }
 

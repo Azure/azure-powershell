@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the New-AzFrontDoorBackendPoolsSettingsObject cmdlet.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorBackendPoolsSettingsObject"), OutputType(typeof(PSBackendPoolsSettings))]
-    public class NewAzureRmBackendPoolsSettingsObject : AzureFrontDoorCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorBackendPoolsSettingObject"), OutputType(typeof(PSBackendPoolsSetting))]
+    public class NewAzureRmBackendPoolsSettingObject : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            var backendPoolsSettings = new PSBackendPoolsSettings
+            var backendPoolsSetting = new PSBackendPoolsSetting
             {
                 EnforceCertificateNameCheck = !this.IsParameterBound(c => c.EnforceCertificateNameCheck) ? PSEnabledState.Enabled : EnforceCertificateNameCheck,
                 SendRecvTimeoutInSeconds = !this.IsParameterBound(c => c.SendRecvTimeoutInSeconds) ? 30 : SendRecvTimeoutInSeconds
             };
-            WriteObject(backendPoolsSettings);
+            WriteObject(backendPoolsSetting);
         }
     }
 }

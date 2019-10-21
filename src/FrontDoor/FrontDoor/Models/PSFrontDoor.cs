@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 
         public PSEnforceCertificateNameCheck? EnforceCertificateNameCheck { get; set; }
 
-        public PSBackendPoolsSettings BackendPoolsSetting { get; set; }
+        public PSBackendPoolsSetting BackendPoolsSetting { get; set; }
 
         public List<PSHealthProbeSetting> HealthProbeSettings { get; set; }
 

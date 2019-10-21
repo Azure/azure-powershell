@@ -35,7 +35,7 @@ Create a PSBackend object
 ### [New-AzFrontDoorBackendPoolObject](New-AzFrontDoorBackendPoolObject.md)
 Create a PSBackendPool object for Front Door creation
 
-### [New-AzFrontDoorBackendPoolsSettingsObject](New-AzFrontDoorBackendPoolsSettingsObject.md)
+### [New-AzFrontDoorBackendPoolsSettingObject](New-AzFrontDoorBackendPoolsSettingObject.md)
 Create a PSBackendPoolsSettings object for Front Door creation
 
 ### [New-AzFrontDoorFrontendEndpointObject](New-AzFrontDoorFrontendEndpointObject.md)

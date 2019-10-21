@@ -5,30 +5,30 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorBackendPoolsSettingsObject
+# New-AzFrontDoorBackendPoolsSettingObject
 
 ## SYNOPSIS
-Create a PSBackendPoolsSettings object for Front Door creation.
+Create a PSBackendPoolsSetting object for Front Door creation.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorBackendPoolsSettingsObject [-EnforceCertificateNameCheck <PSEnabledState>]
+New-AzFrontDoorBackendPoolsSettingObject [-EnforceCertificateNameCheck <PSEnabledState>]
  [-SendRecvTimeoutInSeconds <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzFrontDoorBackendPoolsSettingsObject** cmdlet creates a new PSBackendPoolsSettings object for Front Door creation.
+The **New-AzFrontDoorBackendpoolsSettingObject** cmdlet creates a new PSBackendPoolsSettings object for Front Door creation.
 
 ## EXAMPLES
 
 ### Example 1: Create BackendPoolsSettings object using defaults
 ```powershell
-PS C:\> New-AzFrontDoorBackendPoolsSettingsObject
+PS C:\> New-AzFrontDoorBackendpoolsSettingObject
 
 
 EnforceCertificateNameCheck : Enabled
-SendRecvTimeoutSeconds      : 30
+SendRecvTimeoutInSeconds      : 30
 Id                          :
 Name                        :
 Type                        :
@@ -36,11 +36,11 @@ Type                        :
 
 ### Example 2: Create BackendPoolsSettings object with user specified values
 ```powershell
-PS C:\> New-AzFrontDoorBackendPoolsSettingsObject -SendRecvTimeoutSeconds 60 -EnforceCertificateNameCheck Enabled
+PS C:\> New-AzFrontDoorBackendpoolsSettingObject -SendRecvTimeoutInSeconds 60 -EnforceCertificateNameCheck Enabled
 
 
 EnforceCertificateNameCheck : Enabled
-SendRecvTimeoutSeconds      : 60
+SendRecvTimeoutInSeconds      : 60
 Id                          :
 Name                        :
 Type                        :
@@ -101,9 +101,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSettings
+### Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSetting
+
 ## NOTES
 
 ## RELATED LINKS

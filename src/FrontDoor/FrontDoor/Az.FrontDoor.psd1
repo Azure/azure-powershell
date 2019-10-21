@@ -77,7 +77,7 @@ FunctionsToExport = @()
 CmdletsToExport = 'New-AzFrontDoor', 'Get-AzFrontDoor', 'Set-AzFrontDoor', 
                'Remove-AzFrontDoor', 'New-AzFrontDoorRoutingRuleObject', 
                'New-AzFrontDoorBackendObject', 'New-AzFrontDoorBackendPoolObject', 
-               'New-AzFrontDoorBackendPoolsSettingsObject',
+               'New-AzFrontDoorBackendPoolsSettingObject',
                'New-AzFrontDoorFrontendEndpointObject', 
                'New-AzFrontDoorHealthProbeSettingObject', 
                'New-AzFrontDoorLoadBalancingSettingObject', 
