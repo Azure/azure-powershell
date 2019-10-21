@@ -27,89 +27,33 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateLinkResource", DefaultParameterSetName = "ByResourceId"), OutputType(typeof(PSPrivateLinkResource))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateLinkResource", DefaultParameterSetName = "ByPrivateLinkResourceId"), OutputType(typeof(PSPrivateLinkResource))]
     public class GetAzurePrivateLinkResourceCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            ParameterSetName = "ByResourceId",
+            ParameterSetName = "ByPrivateLinkResourceId",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
-
-        [Alias("ResourceName")]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.",
-            ParameterSetName = "ByResource")]
-        [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
-        public virtual string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The service name.",
-            ParameterSetName = "ByResource")]
-        [ValidateNotNullOrEmpty]
-        public string ServiceName { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.",
-            ParameterSetName = "ByResource")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public virtual string ResourceGroupName { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource type.",
-            ParameterSetName = "ByResource")]
-        public string ResourceType { get; set; }
+        public string PrivateLinkResourceId { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            if (this.IsParameterBound(c => c.ResourceId))
-            {
-                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
-                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+            var resourceIdentifier = new ResourceIdentifier(this.PrivateLinkResourceId);
+            string ResourceGroupName = resourceIdentifier.ResourceGroupName;
+            string Name = resourceIdentifier.ResourceName;
+            string ResourceType = resourceIdentifier.ResourceType;
 
-                if (this.ResourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Contains("privateLinkResources"))
-                {
-                    this.Name = resourceIdentifier.ResourceName;
-                    this.ResourceType = resourceIdentifier.ResourceType;
-                    string parentResource = resourceIdentifier.ParentResource;
-                    this.ServiceName = parentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
-                }
-                else
-                {
-                    throw new ArgumentException(string.Format(Properties.Resources.InvalidResourceId, "[ServiceProvider]/privateLinkResources"));
-                }
+            IPrivateLinkProvider provider = BuildProvider(ResourceType);
+            if (provider == null)
+            {
+                throw new ArgumentException(string.Format(Properties.Resources.InvalidResourceId, this.PrivateLinkResourceId));
             }
 
-            IPrivateLinkProvider provider = BuildProvider(this.ResourceType);
-
-            if(provider == null)
-            {
-                throw new ArgumentException(string.Format(Properties.Resources.ResourceNotFound, "[ServiceProvider]/privateLinkResources"));
-            }
-
-            if (ShouldGetByName(this.ResourceGroupName,this.Name))
-            {
-                var plr = provider.GetPrivateLinkResource(this.ResourceGroupName, this.ServiceName, this.Name);
-                WriteObject(plr);
-            }
-            else
-            {
-                var plrs = provider.ListPrivateLinkResource(this.ResourceGroupName, this.ServiceName);
-                WriteObject(SubResourceWildcardFilter(Name, plrs), true);
-            }
+            var plrs = provider.ListPrivateLinkResource(ResourceGroupName, Name);
+            WriteObject(plrs, true);
 
         }
 
@@ -119,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
 
             switch (resourceType.ToLower())
             {
-                case "microsoft.sql/servers/privatelinkresources":
+                case "microsoft.sql/servers":
                     provider = new SqlProvider(this);
                     break;
                 default:

@@ -118,3 +118,74 @@ function Test-PrivateLinkServiceCRUD
     }
 } 
 
+#
+.SYNOPSIS
+Test operation for PrivateEndpointConnection.
+#>
+function Test-PrivateEndpointConnectionCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName;
+    $rname = Get-ResourceName;
+    $location = Get-ProviderLocation "Microsoft.Network/privateLinkServices" "westus2";
+    # Dependency parameters
+    $IpConfigurationName = "IpConfigurationName";
+    $vnetName = Get-ResourceName;
+    $ilbFrontName = "LB-Frontend";
+    $ilbBackendName = "LB-Backend";
+    $ilbName = Get-ResourceName;
+
+    $serverName = "server-$(Get-Random)"
+    $databaseName = "mySampleDatabase"
+    $adminSqlLogin = "SqlAdmin"
+    $password = "MyAdminPassword123456789"
+    $peName = "mype"
+
+
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location;
+
+        # Create Sql Storage Account
+        $server = New-AzSqlServer -ResourceGroupName $rgname `
+            -ServerName $serverName `
+            -Location $location `
+            -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $adminSqlLogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
+        
+        $database = New-AzSqlDatabase  -ResourceGroupName $rgname `
+            -ServerName $serverName `
+            -DatabaseName $databaseName `
+            -RequestedServiceObjectiveName "Basic" `
+            -Edition "Basic"
+
+        # Create Private Endpoint
+        $peSubnet = New-AzVirtualNetworkSubnetConfig -Name peSubnet -AddressPrefix "11.0.1.0/24" -PrivateEndpointNetworkPolicies "Disabled"
+        $vnetPE = New-AzVirtualNetwork -Name "vnetPE" -ResourceGroupName $rgname -Location $location -AddressPrefix "11.0.0.0/16" -Subnet $peSubnet
+
+        $plsConnection= New-AzPrivateLinkServiceConnection -Name plsConnection -PrivateLinkServiceId  $server.ResourceId -GroupId 'sqlServer'
+        $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $peName -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest
+
+        # Get Private Endpoint Connection
+        $pecGet = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $server.ResourceId
+        Assert-NotNull $pecGet;
+        Assert-AreEqual "Pending" $pecGet.PrivateLinkServiceConnectionState.Status
+
+        # Approve Private Endpoint Connection
+        $pecApprove = Approve-AzPrivateEndpointConnection -ResourceId $pecGet.Id
+        Assert-NotNull $pecApprove;
+        Assert-AreEqual "Approved" $pecApprove.PrivateLinkServiceConnectionState.Status
+
+        # Remove Private Endpoint Connection
+        $pecRemove = Remove-AzPrivateEndpointConnection -ResourceId $pecGet.Id
+
+        # Get Private Endpoint Connection again
+        $pecGet2 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $server.ResourceId
+        Assert-Null($pecGet2)
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
