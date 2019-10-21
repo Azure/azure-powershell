@@ -21,7 +21,7 @@ Deny-AzPrivateEndpointConnection -ResourceId <String> [-Description <String>]
 ### ByResource
 ```
 Deny-AzPrivateEndpointConnection -Name <String> -ServiceName <String> -ResourceGroupName <String>
-[-ResourceType <string>] [-Description <String>]
+[-PrivateLinkResourceType <string>] [-Description <String>]
 [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -84,6 +84,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PrivateLinkResourceType
+The private link resource type.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResource
+Aliases:
+
+Required: False
+Position: Named
+Default value: 'Microsoft.Network/privateLinkServices'
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
@@ -108,21 +123,6 @@ Parameter Sets: ByResourceId
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceType
-The resource type.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResource
-Aliases: ResourceName
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -159,8 +159,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[Approve-AzPrivateEndpointConnection](./Approve-AzPrivateEndpointConnection.md)
+
 [Get-AzPrivateEndpointConnection](./Get-AzPrivateEndpointConnection.md)
 
-[Deny-AzPrivateEndpointConnection](./Deny-AzPrivateEndpointConnection.md)
-
 [Remove-AzPrivateEndpointConnection](./Remove-AzPrivateEndpointConnection.md)
+
+[Set-AzPrivateEndpointConnection](./Set-AzPrivateEndpointConnection.md)
