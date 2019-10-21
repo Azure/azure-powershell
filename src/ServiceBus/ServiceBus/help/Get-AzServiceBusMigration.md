@@ -37,18 +37,18 @@ The **Get-AzServiceBusMigration** Retrieves Migration Configuration for the name
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMirgation
+PS C:\> Get-AzServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMigration
 
-Name              : TestingNamespaceStandardMirgation
-Id                : /subscriptions/d7670b40-0217-4af9-985c-972f6702782e/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespaceStandardMirgation/migrationConfigurations/$default
+Name              : TestingNamespaceStandardMigration
+Id                : /subscriptions/d7670b40-0217-4af9-985c-972f6702782e/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespaceStandardMigration/migrationConfigurations/$default
 Type              : Microsoft.ServiceBus/Namespaces/migrationconfigurations
 ProvisioningState : Succeeded
 PendingReplicationOperationsCount : 40
-TargetNamespace   : /subscriptions/d7670b40-0217-4af9-985c-972f6702782e/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespacePremiumMirgation
-PostMigrationName : TestingNamespaceStandardMirgationPostMigration
+TargetNamespace   : /subscriptions/d7670b40-0217-4af9-985c-972f6702782e/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespacePremiumMigration
+PostMigrationName : TestingNamespaceStandardMigrationPostMigration
 ```
 
-Gets the Migration Configuration properties of 'TestingNamespaceStandardMirgation'
+Gets the Migration Configuration properties of 'TestingNamespaceStandardMigration'
 
 ## PARAMETERS
 

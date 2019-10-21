@@ -126,9 +126,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public string RedirectProtocol { get; set; }
 
         /// <summary>
-        /// Host to redirect. Leave empty to use use the incoming host as the destination host.
+        /// Host to redirect. Leave empty to use the incoming host as the destination host.
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet, HelpMessage = "Host to redirect. Leave empty to use use the incoming host as the destination host.")]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet, HelpMessage = "Host to redirect. Leave empty to use the incoming host as the destination host.")]
         public string CustomHost { get; set; }
 
         /// <summary>

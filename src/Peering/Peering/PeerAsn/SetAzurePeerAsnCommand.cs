@@ -14,8 +14,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.Peering.Properties;
@@ -23,9 +21,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
-    using Microsoft.Rest.Azure;
-
-    using Newtonsoft.Json;
 
     /// <summary>
     ///     New Azure InputObject Command-let
@@ -104,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             }
             catch (ErrorResponseException ex)
             {
-                var error = ex.Response.Content.Contains("\"error\\\":") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(JsonConvert.DeserializeObject(ex.Response.Content).ToString()).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
+                var error = GetErrorCodeAndMessageFromArmOrErm(ex);
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }

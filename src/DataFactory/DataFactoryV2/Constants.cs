@@ -68,11 +68,37 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpTriggerName = "The trigger name.";
 
+        public const string HelpTriggerObject = "The trigger object.";
+
         public const string HelpPipeline = "The pipeline object.";
 
         public const string HelpDatasetName = "The dataset name.";
 
         public const string HelpDataset = "The dataset object.";
+
+        public const string HelpDataFlowName = "The data flow name.";
+
+        public const string HelpDataFlow = "The data flow object.";
+
+        public const string HelpDataFlowDebugSessionId = "The data flow debug session ID.";
+
+        public const string HelpDataFlowDebugCommand = "The data flow debug command.";
+
+        public const string HelpDataFlowDebugStreamName = "The stream name of data flow for debugging.";
+
+        public const string HelpDataFlowDebugRowLimits = "The row limit for data flow data preview.";
+
+        public const string HelpDataFlowDebugExpression = "The expression for data flow expression preview.";
+
+        public const string HelpDataFlowDebugColumns = "The columns list for data flow statistics preview.";
+
+        public const string HelpDataFlowCreationContext = "Creating or updating data flow '{0}' in resource group '{1}' under data factory '{2}'.";
+
+        public const string HelpAddDataFlowPackageContext = "Add data flow package to debug session '{0}' in resource group '{1}' under data factory '{2}'.";
+
+        public const string HelpInvokeDebugSessionCommandContext = "Invoke debug command of debug session '{0}' in resource group '{1}' under data factory '{2}'.";
+
+        public const string HelpStartDataFlowDebugSessionContext = "Start a data flow debug session in resource group '{0}' under data factory '{1}'.";
 
         public const string HelpLinkedServiceName = "The linked service name.";
 
@@ -113,6 +139,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string HelpIntegrationRuntimeSetupScriptContainerSasUri = "The SAS URI of the Azure blob container that contains the custom setup script.";
 
         public const string HelpIntegrationRuntimeEdition = "The edition for SSIS integration runtime which could be Standard or Enterprise, default is Standard if it is not specified.";
+
+        public const string HelpIntegrationRuntimeDataProxyIntegrationRuntimeName = "The Self-Hosted Integration Runtime name which is used as a proxy.";
+
+        public const string HelpIntegrationRuntimeDataProxyStagingLinkedServiceName = "The Azure Blob Storage Linked Service name that references the staging data store to be used when moving data between Self-Hosted and Azure-SSIS Integration Runtime.";
+
+        public const string HelpIntegrationRuntimeDataProxyStagingPath = "The path in staging data store to be used when moving data between Self-Hosted and Azure-SSIS Integration Runtimes, a default container will be used if unspecified.";
 
         public const string HelpIntegrationRuntimeMaxParallelExecutionsPerNode = "Maximum parallel execution count per node for a managed dedicated integration runtime.";
 
@@ -165,6 +197,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string File = "File";
 
         public const string DatasetName = "DatasetName";
+
+        public const string DataFlowName = "DataFlowName";
+
+        public const string DataFlowDebugSessionId = "SessionId";
 
         public const string DataFactoryName = "DataFactoryName";
 
@@ -219,5 +255,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string Id = "Id";
 
         public const string DataFactoryId = "DataFactoryId";
+
+        public const string HelpPassThru = "If specified, cmdlet will return return true on successful delete.";
+
+        public const string ActionDescriptionForAddEventSubscription = "Subscribe the event trigger to external service events.";
+
+        public const string ActionDescriptionForRemoveEventSubscription = "Unsubscribe the event trigger from external service events.";
+
     }
 }

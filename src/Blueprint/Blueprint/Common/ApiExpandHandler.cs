@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using System;
-using System.Collections.Specialized;
-using System.Web;
 
 namespace Microsoft.Azure.Commands.Blueprint.Common
 {

@@ -88,12 +88,15 @@ namespace Microsoft.Azure.Commands.Network
                 redirectConfiguration.IncludeQueryString = this.IncludeQueryString;
             }
 
-
+            if (this.TargetListener != null)
+            {
+                this.TargetListenerID = this.TargetListener.Id;
+            }
             
             if (!string.IsNullOrEmpty(this.TargetListenerID))
             {
                 redirectConfiguration.TargetListener = new PSResourceId();
-                redirectConfiguration.TargetListener.Id = this.TargetListener.Id;
+                redirectConfiguration.TargetListener.Id = this.TargetListenerID;
             }
 
             redirectConfiguration.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(

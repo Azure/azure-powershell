@@ -75,13 +75,60 @@ function maxAdvertisedIpv6
 function getHash
 {
 $hash = getPeeringVariable "Hash" $ipGenerator.BuildHash()
+Write-Debug "The hash $hash";
 return "$hash"
 }
 
 function getBandwidth
 {
 $bandwidth = getPeeringVariable "bandwidth" $ipGenerator.GetBandwidth()
+Write-Debug "The bandwidth $bandwidth";
 	return $bandwidth
+}
+
+function getRandomNumber {
+	$num = Get-Random -Maximum 65010 -Minimum 1
+	Write-Debug "The random $num";
+	return $num
+}
+
+function makePeerAsn($asn)
+{
+	$asnId = $asn
+	$asnPeerName = getAssetName "$asn-Global"
+	Write-Debug "PeerName $asnPeerName"
+	$asnPeer = getAssetName "AS$asn-Global"
+	Write-Debug "PeerName $asnPeer" 
+	[string[]]$emails = "noc@$asnPeer.com","noc@$asnPeerName.com"
+	$phone = getAssetName "2342432433"
+	Write-Debug "Email: $emails; Phone $phone" 
+	$created = New-AzPeerAsn -Name $asnPeerName -PeerName $asnPeer -PeerAsn $asnId -Email $emails -Phone $phone
+	Write-Debug "PeerName $asnPeerName"
+	$created.ValidationState = "Approved";
+	Write-Debug "ValidationState: $created" 
+	Write-Debug "Sleep 2 seconds..." 
+	Wait-Seconds 2
+	$created = $created | Set-AzPeerAsn
+	return $created
+}
+
+function NewExchangeConnectionV4V6($facilityId, $v4, $v6)
+{
+	#Create some data for the object
+	Write-Debug "Creating Connection at $facilityId"
+	$md5 = getHash
+	$md5 = $md5.ToString()
+	Write-Debug "Created Hash $md5"
+	$offset = Get-Random -Maximum 20 -Minimum 3
+	$sessionv4 = changeIp "$v4/32" $false $offset $false
+	$sessionv6 = changeIp "$v6/128" $true $offset $false
+	Write-Debug "Created IPs $sessionv4"
+	$maxv4 = maxAdvertisedIpv4
+	$maxv6 = maxAdvertisedIpv6
+	Write-Debug "Created maxAdvertised $maxv4 $maxv6"
+	#create Connection
+    $createdConnection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxv4 -PeerSessionIPv4Address $sessionv4 -PeerSessionIPv6Address $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -MD5AuthenticationKey $md5
+	return $createdConnection
 }
 
 function getPeeringVariable

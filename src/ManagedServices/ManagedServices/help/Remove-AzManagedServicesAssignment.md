@@ -63,7 +63,7 @@ PS C:\> $assignment = New-AzManagedServicesAssignment -RegistrationDefinitionId 
 PS C:\> Remove-AzManagedServicesAssignment -InputObject $assignment
 ```
 
-Deletes the registatration assignment using the input object provided.
+Deletes the registration assignment using the input object provided.
 
 ## PARAMETERS
 

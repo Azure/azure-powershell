@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [Parameter(Mandatory = true, HelpMessage = "List of possible match values.")]
         public string[] MatchValue { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Tranform to apply before matching. Possible values are Lowercase and Uppercase")]
+        [Parameter(Mandatory = false, HelpMessage = "Transform to apply before matching. Possible values are Lowercase and Uppercase")]
         [PSArgumentCompleter("Uppercase", "Lowercase")]
         public string Transform { get; set; }
 

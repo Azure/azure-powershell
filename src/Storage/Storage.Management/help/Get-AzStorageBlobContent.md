@@ -64,6 +64,14 @@ PS C:\>Get-AzStorageContainer container* | Get-AzStorageBlobContent -Blob "cbox.
 
 This example uses the asterisk wildcard character and the pipeline to find and download blob content.
 
+### Example 4: Get a blob object and save it in a variable, then download blob content with the blob object
+```
+PS C:\>$blob = Get-AzStorageBlob -Container containername -Blob blobname 
+PS C:\>Get-AzStorageBlobContent -CloudBlob $blob.ICloudBlob -Destination "C:\test"
+```
+
+This example first get a blob object and save it in a variable, then download blob content with the blob object. 
+
 ## PARAMETERS
 
 ### -AsJob
@@ -119,7 +127,7 @@ If this cmdlet does not receive a successful response before the interval elapse
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases:
+Aliases: ClientTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named
@@ -262,7 +270,7 @@ If the specified interval elapses before the service processes the request, the 
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases:
+Aliases: ServerTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named

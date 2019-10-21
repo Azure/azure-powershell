@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.3
+* Added support for linking cross-tenant Vnets to Private DNS Zones
+
+## Version 0.1.2
+* Fixed miscellaneous typos across module
+
 ## Version 0.1.1
 * Rename Update- cmdlets to Set-
 	- Changed Update-AzPrivateDnsZone, Update-AzDrivateDnsVirtualNetworkLink, Update-AzPrivateDnsRecordSet cmdlets to Set-AzPrivateDnsZone, Set-AzDrivateDnsVirtualNetworkLink, Set-AzPrivateDnsRecordSet.

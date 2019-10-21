@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         AzureWorkloadProviderHelper AzureWorkloadProviderHelper { get; set; }
 
         /// <summary>
-        /// Initializes the provider with the data recieved from the cmdlet layer
+        /// Initializes the provider with the data received from the cmdlet layer
         /// </summary>
         /// <param name="providerData">Data from the cmdlet layer intended for the provider</param>
         /// <param name="serviceClientAdapter">Service client adapter for communicating with the backend service</param>
@@ -115,6 +115,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                 protectedItemUri,
                                 vaultName: vaultName,
                                 resourceGroupName: vaultResourceGroupName);
+        }
+
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
+        {
+            throw new Exception(Resources.SoftdeleteNotImplementedException);
         }
 
         public List<ContainerBase> ListProtectionContainers()
@@ -494,7 +499,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 // Container is not discovered. Throw exception
                 string errorMessage = string.Format(
-                    Resources.DiscoveryFailure,
+                    Resources.AFSDiscoveryFailure,
                     azureFileShareName,
                     vaultResourceGroupName);
                 Logger.Instance.WriteDebug(errorMessage);

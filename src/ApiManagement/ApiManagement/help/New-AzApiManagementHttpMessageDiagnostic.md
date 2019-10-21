@@ -31,7 +31,7 @@ Headers                   Body
 {Content-Type, UserAgent} Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBodyDiagnosticSetting
 ```
 
-Create a http message diagnostic setting to log `Content-Type` and `User-Agent` headers along with 100 byts of `body`
+Create a http message diagnostic setting to log `Content-Type` and `User-Agent` headers along with 100 bytes of `body`
 
 ## PARAMETERS
 

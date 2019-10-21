@@ -12,19 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-# Snapshots require a Premium app to exist for several hours.
-# Deploy a Premium app and update these global variables to re-record the snapshots tests.
-$snapshotRgName = 'web2'
-$snapshotAppName = 'nkprem'
-$snapshotAppSlot = 'staging'
-
-# Restoring a deleted web app requires an app to have a snapshot available.
-# Deploy a web app and wait at least an hour for a snapshot.
-# Update these global variables to re-record Test-RestoreDeletedWebApp.
-$undeleteRgName = 'nickingssltests'
-$undeleteAppName = 'nkundeletetest'
-$undeleteSlot = 'testslot'
-
 # !!! Storage keys and SAS URIs will be stored in the backup test recordings !!!
 # To find them, open the json files in a text editor and search for "listkeys"
 # to find the storage keys. Search for StorageAccountUrl to find the SAS URIs.
@@ -342,48 +329,134 @@ function Test-EditAndGetWebAppBackupConfigurationPiping
 
 function Test-GetWebAppSnapshot
 {
-	# Test named parameters
-	$snapshots = Get-AzWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName
-	Assert-True { $snapshots.Length -gt 0 }
-	Assert-NotNull $snapshots[0]
-	Assert-NotNull $snapshots[0].SnapshotTime
-	Assert-AreEqual 'Production' $snapshots[0].Slot
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$wname = Get-WebsiteName
+	$slotName = "staging"
+	$location = Get-WebLocation
+	$whpName = Get-WebHostPlanName
+	$tier = "Premium"
+	$isRecordMode = ((Get-WebsitesTestMode) -ne 'Playback')
 
-	# Test positional parameters
-	$snapshots = Get-AzWebAppSnapshot $snapshotRgName  $snapshotAppName
-	Assert-True { $snapshots.Length -gt 0 }
-	Assert-NotNull $snapshots[0]
-	Assert-NotNull $snapshots[0].SnapshotTime
-	Assert-AreEqual 'Production' $snapshots[0].Slot
+	try
+	{
+		New-AzResourceGroup -Name $rgname -Location $location
+		New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
+		$app = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName 
+		New-AzWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotName
 
-	# Test snapshots for slots
-	$snapshots = Get-AzWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName -Slot $snapshotAppSlot
-	Assert-True { $snapshots.Length -gt 0 }
-	Assert-NotNull $snapshots[0]
-	Assert-NotNull $snapshots[0].SnapshotTime
-	Assert-AreEqual $snapshotAppSlot $snapshots[0].Slot
+		# Wait for at least 1 snapshot to exist
+		while ($snap -eq $null)
+		{
+			$snap = Get-AzWebAppSnapshot $app
+			if ($isRecordMode)
+			{
+				Start-Sleep -Seconds 60
+			}
+		}
 
-	# Test piping
-	$app = Get-AzWebApp -ResourceGroupName $snapshotRgName -Name $snapshotAppName
-	$snapshots = $app | Get-AzWebAppSnapshot
-	Assert-True { $snapshots.Length -gt 0 }
-	Assert-NotNull $snapshots[0]
-	Assert-NotNull $snapshots[0].SnapshotTime
-	Assert-AreEqual 'Production' $snapshots[0].Slot
+		# Test named parameters
+		$snapshots = Get-AzWebAppSnapshot -ResourceGroupName $rgname -Name $wname -UseDisasterRecovery
+		Assert-True { $snapshots.Length -gt 0 }
+		Assert-NotNull $snapshots[0]
+		Assert-NotNull $snapshots[0].SnapshotTime
+		Assert-AreEqual 'Production' $snapshots[0].Slot
+
+		# Test positional parameters
+		$snapshots = Get-AzWebAppSnapshot $rgname $wname
+		Assert-True { $snapshots.Length -gt 0 }
+		Assert-NotNull $snapshots[0]
+		Assert-NotNull $snapshots[0].SnapshotTime
+		Assert-AreEqual 'Production' $snapshots[0].Slot
+
+		# Test snapshots for slots
+		$snapshots = Get-AzWebAppSnapshot -ResourceGroupName $rgname -Name $wname -Slot $slotName
+		Assert-True { $snapshots.Length -gt 0 }
+		Assert-NotNull $snapshots[0]
+		Assert-NotNull $snapshots[0].SnapshotTime
+		Assert-AreEqual $slotName $snapshots[0].Slot
+
+		# Test piping
+		$app = Get-AzWebApp -ResourceGroupName $rgname -Name $wname
+		$snapshots = $app | Get-AzWebAppSnapshot
+		Assert-True { $snapshots.Length -gt 0 }
+		Assert-NotNull $snapshots[0]
+		Assert-NotNull $snapshots[0].SnapshotTime
+		Assert-AreEqual 'Production' $snapshots[0].Slot
+
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotName -Force
+		Remove-AzWebApp -ResourceGroupName $rgname -Name $wname -Force
+		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzResourceGroup -Name $rgname -Force
+	}
 }
 
 function Test-RestoreWebAppSnapshot
 {
-	# Test overwrite
-	$snapshot = (Get-AzWebAppSnapshot $snapshotRgName $snapshotAppName)[0]
-	Restore-AzWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName -InputObject $snapshot -Force -RecoverConfiguration
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$wname = Get-WebsiteName
+	$slotName = "staging"
+	$location = Get-WebLocation
+	$whpName = Get-WebHostPlanName
+	$tier = "Premium"
+	$isRecordMode = ((Get-WebsitesTestMode) -ne 'Playback')
 
-	# Test restore to target slot
-	Restore-AzWebAppSnapshot $snapshotRgName $snapshotAppName $snapshotAppSlot $snapshot -RecoverConfiguration -UseDisasterRecovery -Force
+	try
+	{
+		New-AzResourceGroup -Name $rgname -Location $location
+		New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
+		$app = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName 
+		New-AzWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotName
 
-	# Test piping and background job
-	$job = $snapshot | Restore-AzWebAppSnapshot -Force -AsJob
-	$job | Wait-Job
+		# Wait for at least 1 snapshot to exist
+		while ($snap -eq $null)
+		{
+			$snap = Get-AzWebAppSnapshot $app
+			if ($isRecordMode)
+			{
+				Start-Sleep -Seconds 60
+			}
+		}
+
+		# Test overwrite
+		$snapshot = (Get-AzWebAppSnapshot $rgname $wname)[0]
+		Restore-AzWebAppSnapshot -ResourceGroupName $rgname -Name $wname -InputObject $snapshot -Force -RecoverConfiguration
+
+		if ($isRecordMode)
+		{
+			Start-Sleep -Seconds 600
+		}
+
+		# Test restore to target slot
+		Restore-AzWebAppSnapshot $rgname $wname $slotName $snapshot -RecoverConfiguration -UseDisasterRecovery -Force
+
+		if ($isRecordMode)
+		{
+			Start-Sleep -Seconds 600
+		}
+
+		# Test piping and background job
+		$job = $snapshot | Restore-AzWebAppSnapshot -Force -AsJob
+		$job | Wait-Job
+
+		if ($isRecordMode)
+		{
+			Start-Sleep -Seconds 600
+		}
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotName -Force
+		Remove-AzWebApp -ResourceGroupName $rgname -Name $wname -Force
+		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzResourceGroup -Name $rgname -Force
+	}
 }
 
 function Test-GetDeletedWebApp
@@ -402,16 +475,16 @@ function Test-GetDeletedWebApp
 		New-AzResourceGroup -Name $rgname -Location $location
 		New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
 		New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName 
-		New-AzWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotName -AppServicePlan $planName
+		New-AzWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotName
 		Remove-AzWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotName -Force
 		Remove-AzWebApp -ResourceGroupName $rgname -Name $wname -Force
 
-		$deletedApp = Get-AzDeletedWebApp -ResourceGroupName $rgname -Name $wname -Slot "Production"
+		$deletedApp = Get-AzDeletedWebApp -ResourceGroupName $rgname -Name $wname -Slot "Production" -Location $location
 		Assert-NotNull $deletedApp
 		Assert-AreEqual $rgname $deletedApp.ResourceGroupName
 		Assert-AreEqual $wname $deletedApp.Name
 
-		$deletedSlot = Get-AzDeletedWebApp -ResourceGroupName $rgname -Name $wname -Slot $slotName
+		$deletedSlot = Get-AzDeletedWebApp -ResourceGroupName $rgname -Name $wname -Slot $slotName -Location $location
 		Assert-NotNull $deletedSlot
 		Assert-AreEqual $rgname $deletedSlot.ResourceGroupName
 		Assert-AreEqual $wname $deletedSlot.Name
@@ -432,22 +505,52 @@ function Test-RestoreDeletedWebAppToExisting
 	$wname = Get-WebsiteName
 	$slotName = "staging"
 	$appWithSlotName = "$wname/$slotName"
+	$delName = Get-WebsiteName
+	$delSlot = "testslot"
 	$location = Get-WebLocation
 	$whpName = Get-WebHostPlanName
-	$tier = "Standard"
+	$tier = "Premium"
+	$isRecordMode = ((Get-WebsitesTestMode) -ne 'Playback')
 
 	try
 	{
 		New-AzResourceGroup -Name $rgname -Location $location
 		New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
 		New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName 
-		New-AzWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotName -AppServicePlan $planName
+		New-AzWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotName
 
-		$deletedApp = Get-AzDeletedWebApp -ResourceGroupName $undeleteRgName -Name $undeleteAppName -Slot "Production"
+		# Make a webapp and delete it once a snapshot is available
+		$tmpApp = New-AzWebApp -ResourceGroupName $rgname -Name $delName -Location $location -AppServicePlan $whpName 
+		New-AzWebAppSlot -ResourceGroupName $rgname -Name $delName -Slot $delSlot
+
+		while ($snap -eq $null)
+		{
+			$snap = Get-AzWebAppSnapshot $tmpApp
+			if ($isRecordMode)
+			{
+				Start-Sleep -Seconds 60
+			}
+		}
+
+		Remove-AzWebAppSlot -ResourceGroupName $rgname -Name $delName -Slot $delSlot -Force
+		Remove-AzWebApp -ResourceGroupName $rgname -Name $delName -Force
+
+		$deletedApp = Get-AzDeletedWebApp -ResourceGroupName $rgname -Name $delName -Slot "Production"
+
 		# Test the InputObject parameter set
 		$restoredApp = Restore-AzDeletedWebApp $deletedApp -TargetResourceGroupName $rgname -TargetName $wname -Force
+		if ($isRecordMode) 
+		{
+			# Need extra time for restore operation to resolve globally
+			Start-Sleep -Seconds 900
+		}
+
 		# Test the FromDeletedResourceName parameter set
-		$restoredSlot = Restore-AzDeletedWebApp -ResourceGroupName $undeleteRgName -Name $undeleteAppName -Slot $undeleteSlot -TargetResourceGroupName $rgname -TargetName $wname -TargetSlot $slotName -Force
+		$restoredSlot = Restore-AzDeletedWebApp -ResourceGroupName $rgname -Name $delName -Slot $delSlot -TargetResourceGroupName $rgname -TargetName $wname -TargetSlot $slotName -Force
+		if ($isRecordMode) 
+		{
+			Start-Sleep -Seconds 900
+		}
 
 		Assert-NotNull $restoredApp
 		Assert-AreEqual $rgname $restoredApp.ResourceGroup
@@ -473,14 +576,30 @@ function Test-RestoreDeletedWebAppToNew
 	$rgname = Get-ResourceGroupName
 	$location = Get-WebLocation
 	$whpName = Get-WebHostPlanName
-	$tier = "Standard"
+	$tier = "Premium"
+	$delName = Get-WebsiteName
+	$isRecordMode = ((Get-WebsitesTestMode) -ne 'Playback')
 
 	try
 	{
 		#Setup
 		New-AzResourceGroup -Name $rgname -Location $location
 		New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
-		$deletedApp = Get-AzDeletedWebApp -ResourceGroupName $undeleteRgName -Name $undeleteAppName -Slot "Production"
+
+		# Make a webapp and delete it once a snapshot is available
+		$tmpApp = New-AzWebApp -ResourceGroupName $rgname -Name $delName -Location $location -AppServicePlan $whpName 
+		while ($snap -eq $null)
+		{
+			$snap = Get-AzWebAppSnapshot $tmpApp
+			if ($isRecordMode)
+			{
+				Start-Sleep -Seconds 60
+			}
+		}
+
+		Remove-AzWebApp -ResourceGroupName $rgname -Name $delName -Force
+		$deletedApp = Get-AzDeletedWebApp -ResourceGroupName $rgname -Name $delName -Slot "Production"
+
 		# Test piping the deleted app
 		$job = $deletedApp | Restore-AzDeletedWebApp -TargetResourceGroupName $rgname -TargetAppServicePlanName $whpName -UseDisasterRecovery -Force -AsJob
 		$result = $job | Wait-Job
@@ -489,12 +608,18 @@ function Test-RestoreDeletedWebAppToNew
 		$restoredApp = $job | Receive-Job
 		Assert-NotNull $restoredApp
 		Assert-AreEqual $rgname $restoredApp.ResourceGroup
-		Assert-AreEqual $undeleteAppName $restoredApp.Name
+		Assert-AreEqual $delName $restoredApp.Name
+
+		if ($isRecordMode) 
+		{
+			# Need extra time for restore operation to resolve globally, or cleanup will be blocked
+			Start-Sleep -Seconds 900
+		}
 	}
 	finally
 	{
 		# Cleanup
-		Remove-AzWebApp -ResourceGroupName $rgname -Name $undeleteAppName -Force
+		Remove-AzWebApp -ResourceGroupName $rgname -Name $delName -Force
 		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
 		Remove-AzResourceGroup -Name $rgname -Force
 	}

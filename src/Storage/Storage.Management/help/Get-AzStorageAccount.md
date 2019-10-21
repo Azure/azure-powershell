@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: E53D5040-C1E8-4DC1-8371-F41C00B666E3
@@ -32,7 +32,7 @@ The **Get-AzStorageAccount** cmdlet gets a specified Storage account or all of t
 
 ### Example 1: Get a specified Storage account
 ```
-PS C:\>Get-AzStorageAccount -ResourceGroupName "RG01" -AccountName "mystorageaccount"
+PS C:\>Get-AzStorageAccount -ResourceGroupName "RG01" -Name "mystorageaccount"
 ```
 
 This command gets the specified Storage account.

@@ -12,25 +12,37 @@
             <ListItems>
               <ListItem>
                 <Label>Name</Label>
-                <PropertyName>BlueprintName</PropertyName>
+                <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Id</Label>
                 <PropertyName>Id</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>DefinitionLocationId</Label>
-                <PropertyName>DefinitionLocationId</PropertyName>
+                <PropertyName>SubscriptionId</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    -not ([string]::IsNullOrEmpty($_.SubscriptionId))
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ManagementGroupId</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    -not ([string]::IsNullOrEmpty($_.ManagementGroupId))
+                  </ScriptBlock>
+                </ItemSelectionCondition>
               </ListItem>
               <ListItem>
                 <Label>Version</Label>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>Version</PropertyName>
               </ListItem>
               <ListItem>
                 <PropertyName>Description</PropertyName>
                 <ItemSelectionCondition>
                   <ScriptBlock>
-                    $_.Description -ne $null -and $_.Description -ne &quot;&quot;
+                    -not ([string]::IsNullOrEmpty($_.Description))
                   </ScriptBlock>
                 </ItemSelectionCondition>
               </ListItem>
@@ -38,13 +50,13 @@
                 <PropertyName>ChangeNotes</PropertyName>
                 <ItemSelectionCondition>
                   <ScriptBlock>
-                    $_.ChangeNotes -ne $null -and $_.ChangeNotes -ne &quot;&quot;
+                    -not ([string]::IsNullOrEmpty($_.ChangeNotes))
                   </ScriptBlock>
                 </ItemSelectionCondition>
               </ListItem>
               <ListItem>
                 <Label>TimeCreated</Label>
-                <ScriptBlock>$_.Status.TimeCreated.ToString("yyyy-MM-dd")</ScriptBlock>
+                <ScriptBlock>$_.Status.TimeCreated.ToString()</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>TargetScope</Label>
@@ -81,24 +93,41 @@
                 <PropertyName>Id</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>DefinitionLocationId</Label>
-                <PropertyName>DefinitionLocationId</PropertyName>
+                <PropertyName>SubscriptionId</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    -not ([string]::IsNullOrEmpty($_.SubscriptionId))
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ManagementGroupId</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    -not ([string]::IsNullOrEmpty($_.ManagementGroupId))
+                  </ScriptBlock>
+                </ItemSelectionCondition>
               </ListItem>
               <ListItem>
                 <Label>Versions</Label>
                 <PropertyName>Versions</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.Versions.count -gt 0
+                  </ScriptBlock>
+                </ItemSelectionCondition>
                </ListItem>
               <ListItem>
                 <PropertyName>Description</PropertyName>
                 <ItemSelectionCondition>
                   <ScriptBlock>
-                    $_.Description -ne $null -and $_.Description -ne &quot;&quot;
+                    -not ([string]::IsNullOrEmpty($_.Description))
                   </ScriptBlock>
                 </ItemSelectionCondition>
               </ListItem>
               <ListItem>
                 <Label>TimeCreated</Label>
-                <ScriptBlock>$_.Status.TimeCreated.ToString("yyyy-MM-dd")</ScriptBlock>
+                <ScriptBlock>$_.Status.TimeCreated.ToString()</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>TargetScope</Label>
@@ -142,7 +171,7 @@
                 <PropertyName>Description</PropertyName>
                 <ItemSelectionCondition>
                   <ScriptBlock>
-                    $_.Description -ne $null -and $_.Description -ne &quot;&quot;
+                    -not ([string]::IsNullOrEmpty($_.Description))
                   </ScriptBlock>
                 </ItemSelectionCondition>
               </ListItem>

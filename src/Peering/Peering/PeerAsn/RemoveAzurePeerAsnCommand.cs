@@ -14,9 +14,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
 {
     using System;
-    using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
-    using System.Linq;
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.Peering.Properties;
@@ -24,9 +22,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
-    using Microsoft.Rest.Azure;
-
-    using Newtonsoft.Json;
 
     /// <inheritdoc />
     /// <summary>
@@ -115,10 +110,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             }
             catch (ErrorResponseException ex)
             {
-                var error = ex.Response.Content.Contains("\"error\\\":") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(JsonConvert.DeserializeObject(ex.Response.Content).ToString()).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
+                var error = this.GetErrorCodeAndMessageFromArmOrErm(ex);
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
+
         /// <summary>
         /// The remove peer asn.
         /// </summary>
@@ -130,14 +126,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         {
             if (this.ParameterSetName.Equals(Constants.ParameterSetNameDefault, StringComparison.OrdinalIgnoreCase))
             {
-                this.PeeringManagementClient.PeerAsns.Delete(this.InputObject.Name);
-                if (this.PassThru) this.WriteObject(true);
+                try
+                {
+                    this.PeeringManagementClient.PeerAsns.Delete(this.InputObject.Name);
+                    if (this.PassThru) this.WriteObject(true);
+                }
+                catch
+                {
+                    if (this.PassThru) { this.WriteObject(false); }
+                    else { throw new ItemNotFoundException(); };
+                }
             }
 
             if (this.ParameterSetName.Equals(Constants.ParameterSetNameByName, StringComparison.OrdinalIgnoreCase))
             {
-                this.PeeringManagementClient.PeerAsns.Delete(this.Name);
-                if (this.PassThru) this.WriteObject(true);
+                try
+                {
+                    this.PeeringManagementClient.PeerAsns.Delete(this.Name);
+                    if (this.PassThru) this.WriteObject(true);
+                }
+                catch
+                {
+                    if (this.PassThru) { this.WriteObject(false); }
+                    else { throw new ItemNotFoundException(); };
+                }
             }
         }
     }

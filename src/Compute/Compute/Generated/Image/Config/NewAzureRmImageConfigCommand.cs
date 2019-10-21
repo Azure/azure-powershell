@@ -63,6 +63,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("V1", "V2")]
+        public string HyperVGeneration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public ImageDataDisk[] DataDisk { get; set; }
 
         [Parameter(
@@ -120,6 +126,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vImage = new PSImage
             {
+                HyperVGeneration = this.IsParameterBound(c => c.HyperVGeneration) ? this.HyperVGeneration : "V1",
                 Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
                 Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 SourceVirtualMachine = vSourceVirtualMachine,

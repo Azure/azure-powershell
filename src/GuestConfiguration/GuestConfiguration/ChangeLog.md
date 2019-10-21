@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 0.10.6
+* Fixed the inconsistency of compliance status reporting when Policy is non-compliant due to parameter updates scenario.
+* Quering data from PolicyInsights RP to get the updated compliance status.  
+
 ## Version 0.10.5
 - Fixed cmdlets failure when a subscription has an incorrect format initiative definition for GuestConfiguration category.
 

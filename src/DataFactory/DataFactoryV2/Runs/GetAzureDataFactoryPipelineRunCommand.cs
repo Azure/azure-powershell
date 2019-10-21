@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     LastUpdatedAfter = LastUpdatedAfter,
                     LastUpdatedBefore = LastUpdatedBefore
                 };
-                WriteObject(DataFactoryClient.ListPipelineRuns(runFilter));
+                WriteObject(DataFactoryClient.ListPipelineRuns(runFilter), true);
             }
         }
     }

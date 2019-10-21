@@ -197,6 +197,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
+    /// represents the delete state of the item
+    /// </summary>
+    public enum ItemDeleteState
+    {
+        /// <summary>
+        /// in a softdeleted state
+        /// </summary>
+        ToBeDeleted = 1,
+
+        /// <summary>
+        /// not deleted
+        /// </summary>
+        NotDeleted,
+    }
+
+    /// <summary>
     /// State of the protection of the item by the recovery services vault.
     /// </summary>
     public enum ItemProtectionState

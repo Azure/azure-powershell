@@ -15,6 +15,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model;
 using Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services;
 
@@ -65,7 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Cmdlet
             {
                 ResourceGroupName = this.ResourceGroupName,
                 ServerName = this.ServerName,
-                ServerKeyName = AzureSqlServerKeyVaultKeyModel.CreateServerKeyNameFromKeyId(this.KeyId),
+                ServerKeyName = TdeKeyHelper.CreateServerKeyNameFromKeyId(this.KeyId),
                 Uri = this.KeyId,
                 Type = AzureSqlServerKeyVaultKeyModel.ServerKeyType.AzureKeyVault
             });

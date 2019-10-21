@@ -102,10 +102,15 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true)]
         public bool UltraSSDEnabled { get; set; }
 
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The max price of the billing of a low priority virtual machine")]
+        public double MaxPrice { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has sucessufuly been completed, use some other mechanism.")]
+        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
         public SwitchParameter NoWait { get; set; }
 
         public override void ExecuteCmdlet()
@@ -128,6 +133,7 @@ namespace Microsoft.Azure.Commands.Compute
                         StorageProfile = this.VM.StorageProfile,
                         NetworkProfile = this.VM.NetworkProfile,
                         OsProfile = this.VM.OSProfile,
+                        BillingProfile = this.VM.BillingProfile,
                         Plan = this.VM.Plan,
                         AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.VM.Location,
@@ -136,7 +142,13 @@ namespace Microsoft.Azure.Commands.Compute
                         Identity = this.AssignIdentity.IsPresent 
                                    ? new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned, null)
                                    : ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
-                        Zones = (this.VM.Zones != null && this.VM.Zones.Count > 0) ? this.VM.Zones : null
+                        Zones = (this.VM.Zones != null && this.VM.Zones.Count > 0) ? this.VM.Zones : null,
+                        ProximityPlacementGroup = this.VM.ProximityPlacementGroup,
+                        Host = this.VM.Host,
+                        VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet,
+                        AdditionalCapabilities = this.VM.AdditionalCapabilities,
+                        EvictionPolicy = this.VM.EvictionPolicy,
+                        Priority = this.VM.Priority
                     };
 
                     if (this.IsParameterBound(c => c.IdentityType))
@@ -180,6 +192,15 @@ namespace Microsoft.Azure.Commands.Compute
                             parameters.AdditionalCapabilities = new AdditionalCapabilities();
                         }
                         parameters.AdditionalCapabilities.UltraSSDEnabled = this.UltraSSDEnabled;
+                    }
+
+                    if (this.IsParameterBound(c => c.MaxPrice))
+                    {
+                        if (parameters.BillingProfile == null)
+                        {
+                            parameters.BillingProfile = new BillingProfile();
+                        }
+                        parameters.BillingProfile.MaxPrice = this.MaxPrice;
                     }
 
                     if (NoWait.IsPresent)

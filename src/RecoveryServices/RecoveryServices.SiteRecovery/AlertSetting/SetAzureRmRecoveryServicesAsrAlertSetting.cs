@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class SetAzureRmRecoveryServicesAsrAlertSetting : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Switch paramter specifies enable notification to subscription owner.
+        ///     Switch parameter specifies enable notification to subscription owner.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EmailToSubscriptionOwner, Mandatory = true)]
         public SwitchParameter EnableEmailSubscriptionOwner { get; set; }
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string[] CustomEmailAddress { get; set; }
 
         /// <summary>
-        ///     Gets or sets mail language of alert /notifcation to user(supported culture codes from microsoft). 
+        ///     Gets or sets mail language of alert /notification to user(supported culture codes from microsoft). 
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.Set, Mandatory = false)]
         [Parameter(ParameterSetName = ASRParameterSets.DisableEmailToSubcriptionOwner)]

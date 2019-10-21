@@ -18,7 +18,9 @@ Creates a virtual network subnet configuration.
 New-AzVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String[]>
  [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [-InputObject <PSNatGateway>]
  [-ServiceEndpoint <String[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
- [-Delegation <PSDelegation[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Delegation <PSDelegation[]>] [-PrivateEndpointNetworkPoliciesFlag <String>]
+ [-PrivateLinkServiceNetworkPoliciesFlag <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -26,6 +28,7 @@ New-AzVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String[]>
 New-AzVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String[]> [-NetworkSecurityGroupId <String>]
  [-RouteTableId <String>] [-ResourceId <String>] [-ServiceEndpoint <String[]>]
  [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>] [-Delegation <PSDelegation[]>]
+ [-PrivateEndpointNetworkPoliciesFlag <String>] [-PrivateLinkServiceNetworkPoliciesFlag <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -170,6 +173,36 @@ Specifies the ID of a network security group.
 ```yaml
 Type: System.String
 Parameter Sets: SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PrivateEndpointNetworkPoliciesFlag
+Configure to enable or disable applying network policies on private endpoint in the subnet.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PrivateLinkServiceNetworkPoliciesFlag
+Configure to enable or disable applying network policies on private link service in the subnet.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False

@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Commands.Network
                         string newResponseContent = await newHttpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                         throw new Exception(string.Format("Get-AzVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1} while retrieving " +
-                            "the Vpnclient PackageUrl!", newHttpResponse.StatusCode, string.IsNullOrEmpty(newResponseContent) ? "NotAvailable" : newResponseContent));
+                            "the VpnClient PackageUrl!", newHttpResponse.StatusCode, string.IsNullOrEmpty(newResponseContent) ? "NotAvailable" : newResponseContent));
                     }
                     else
                     {
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Commands.Network
                         string newResponseContent = await newHttpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                         throw new Exception(string.Format("Get-AzVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1} while retrieving " +
-                                                          "the Vpnclient PackageUrl!", newHttpResponse.StatusCode, string.IsNullOrEmpty(newResponseContent) ? "NotAvailable" : newResponseContent));
+                                                          "the VpnClient PackageUrl!", newHttpResponse.StatusCode, string.IsNullOrEmpty(newResponseContent) ? "NotAvailable" : newResponseContent));
                     }
                     else
                     {
@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Commands.Network
                         string newResponseContent = await newHttpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                         throw new Exception(string.Format("Get-AzVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1} while retrieving " +
-                                                          "the Vpnclient PackageUrl!", newHttpResponse.StatusCode, string.IsNullOrEmpty(newResponseContent) ? "NotAvailable" : newResponseContent));
+                                                          "the VpnClient PackageUrl!", newHttpResponse.StatusCode, string.IsNullOrEmpty(newResponseContent) ? "NotAvailable" : newResponseContent));
                     }
                     else
                     {

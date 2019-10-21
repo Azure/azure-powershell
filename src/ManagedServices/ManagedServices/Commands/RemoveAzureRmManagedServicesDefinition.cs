@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
     VerbsCommon.Remove,
     Microsoft.Azure.Commands.ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedServicesDefinition",
     DefaultParameterSetName = DefaultParameterSet,
-    SupportsShouldProcess = true), OutputType(typeof(PSRegistrationDefinition))]
+    SupportsShouldProcess = true), OutputType(typeof(void))]
 
     public class RemoveAzureRmManagedServicesDefinition : ManagedServicesCmdletBase
     {
@@ -77,10 +77,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                 $"/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions{definitionId}",
                 () =>
                 {
-                    var result = this.PSManagedServicesClient.RemoveRegistrationDefinition(
+                    this.PSManagedServicesClient.RemoveRegistrationDefinition(
                         scope: scope,
                         registrationDefinitionId: definitionId);
-                    WriteObject(new PSRegistrationDefinition(result), true);
                 });
         }
     }

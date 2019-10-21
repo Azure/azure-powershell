@@ -39,8 +39,15 @@ Helper Get Legavy
 #>
 function Test-GetLegacyPeering($location)
 {
+try {
+$asn = makePeerAsn 15224
 $legacy = Get-AzLegacyPeering -PeeringLocation $location -Kind Exchange
 Assert-NotNull $legacy
+}
+finally{
+	$isRemoved = Remove-AzPeerAsn -Name $asn.Name -Force -PassThru
+		Assert-True {$isRemoved}
+}
 }
 <#
 .SYNOPSIS
@@ -48,95 +55,93 @@ Convert Legacy Exchange to New Peering
 #>
 function Test-ConvertLegacyToExchange
 {
+
 	#Hard Coded locations becuase of limitations in locations
 	$kind = isDirect $false;
-	$loc = "Seattle"
+	$loc = "ashburn"
 	$resourceGroup = "testCarrier"
 	#asn has to be hard coded because its unique and finite amoungst locations
-	$asnId = 11164
+	$asnId = 57976
 	$resourceName = getAssetName "LegacyConvertExchange"
 	$asnPeerName = getAssetName "PeerName"
-	$asnPeer = "Contoso"
-	$email = "noc@$asnPeer.com"
-	$phone = getAssetName
-	New-AzPeerAsn -Name $asnPeerName -PeerName $asnPeer -PeerAsn $asnId -Email $email -Phone $phone
-	#the ASN has to be "Approved" by admins prior to this call. 
-	$asn = Get-AzPeerAsn -Name $asnPeerName
+	$asn = makePeerAsn $asnId
 	Assert-NotNull $asn
 	Assert-AreEqual "Approved" $asn.ValidationState
     $legacy = Get-AzLegacyPeering -Kind $kind -PeeringLocation $loc  
+	$tags = @{"tfs_$asnId" = "Active"; "tag2" = "value2"}
 	Assert-NotNull $legacy
-	$legacy | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeerAsnResourceId $asn.Id 
+	$legacy | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeerAsnResourceId $asn.Id -Tag $tags
 	$newPeering = Get-AzPeering -ResourceGroupName testCarrier -Name $resourceName
 	Assert-NotNull $newPeering
-	#Assert-AreEqual $legacy.
-	#Assert-AreEqual $resourceName $newPeering.Name
 }
+
 <#
 .SYNOPSIS
 Helper New Asn Exchange
 #>
-function Test-UpdateExchangeIPv4OnResourceId
+function Test-UpdateExchangeIPv4OnInputObject 
 {
-	$hash = getHash
-	$peering = Get-AzPeering -Kind "Exchange" | Select-Object -First 1
+# Hard coded name because the resource has to exist and cant be created ad-hoc.
+	$resourceName = getAssetName "LegacyConvertExchange"
+	$resourceGroup = "testCarrier"
+	$peering = Get-AzPeering -ResourceGroupName $resourceGroup | Where-Object {$_.Name -match "Convert"}
 	Assert-NotNull $peering
 	$ipv4 = $peering.Connections[0].BgpSession.PeerSessionIPv4Address
 	$newipv4 = getPeeringVariable "newIpv4" (changeIp "$ipv4/32" $false 15 $false)
-	$maxv4 = maxAdvertisedIpv4
 	$ipv42 = $peering.Connections[1].BgpSession.PeerSessionIPv4Address
 	$newipv42 = getPeeringVariable "newIpv42" (changeIp "$ipv4/32" $false 17 $false)
-	$maxv42 = maxAdvertisedIpv4
 	$oldpeering = $peering
-	$peering.Connections[0] = $peering.Connections[0] |  Set-AzPeeringExchangeConnectionObject -PeerSessionIPv4Address $newipv4 -MaxPrefixesAdvertisedIPv4 $maxv4
-	$peering.Connections[1] = $peering.Connections[1] |  Set-AzPeeringExchangeConnectionObject -PeerSessionIPv4Address $newipv42 -MaxPrefixesAdvertisedIPv4 $maxv42
-	$update = Update-AzPeering -ResourceId $peering.Id $peering.Connections
+	$tags = New-Object 'system.collections.generic.dictionary[string,string]'
+	$tags["tfs_234234"] = "Active";
+	$peering.Tags = $tags;
+	$peering.Connections[0] = $peering.Connections[0] |  Set-AzPeeringExchangeConnectionObject -PeerSessionIPv4Address $newipv4
+	$peering.Connections[1] = $peering.Connections[1] |  Set-AzPeeringExchangeConnectionObject -PeerSessionIPv4Address $newipv42
+	Write-Debug "ResourceId: $peering.Id" 
+	$update =  $peering | Update-AzPeering 
 	Assert-AreEqual $newipv4 $update.Connections[0].BgpSession.PeerSessionIPv4Address 
-	Assert-AreEqual $maxv4 $update.Connections[0].BgpSession.MaxPrefixesAdvertisedV4 
 	Assert-AreEqual $newipv42 $update.Connections[1].BgpSession.PeerSessionIPv4Address 
-	Assert-AreEqual $maxv42 $update.Connections[1].BgpSession.MaxPrefixesAdvertisedV4 
 }
 <#
 .SYNOPSIS
 Helper New Asn Exchange changeIp $ipv4 $false $offset $withPrefix
 #>
-function Test-UpdateExchangeIPv4OnInputObject
+function Test-UpdateExchangeIPv6OnResourceId
 {
-	$hash = getHash
-	$peering = Get-AzPeering -Kind "Exchange" | Select-Object -First 1
+# Hard coded name because the resource has to exist and cant be created ad-hoc.
+	$resourceName = getAssetName "LegacyConvertExchange"
+	$resourceGroup = "testCarrier"
+	$peering = Get-AzPeering -ResourceGroupName $resourceGroup | Where-Object {$_.Name -match "Convert"}
 	Assert-NotNull $peering
-	$ipv4 = $peering.Connections[0].BgpSession.PeerSessionIPv4Address
-	$newipv4 = getPeeringVariable "newIpv4" (changeIp "$ipv4/32" $false 14 $false)
-	$maxv4 = maxAdvertisedIpv4
-	$ipv42 = $peering.Connections[1].BgpSession.PeerSessionIPv4Address
-	$newipv42 = getPeeringVariable "newIpv42" (changeIp "$ipv4/32" $false 16 $false)
-	$maxv42 = maxAdvertisedIpv4
+	$ipv6 = $peering.Connections[0].BgpSession.PeerSessionIPv6Address
+	$newipv6 = getPeeringVariable "newIpv6" (changeIp "$ipv6/128" $true 14 $false)
+	$ipv62 = $peering.Connections[1].BgpSession.PeerSessionIPv6Address
+	$newipv62 = getPeeringVariable "newIpv62" (changeIp "$ipv6/128" $true 16 $false)
 	$oldpeering = $peering
-	$peering.Connections[0] = $peering.Connections[0] |  Set-AzPeeringExchangeConnectionObject -PeerSessionIPv4Address $newipv4 -MaxPrefixesAdvertisedIPv4 $maxv4
-	$peering.Connections[1] = $peering.Connections[1] |  Set-AzPeeringExchangeConnectionObject -PeerSessionIPv4Address $newipv42 -MaxPrefixesAdvertisedIPv4 $maxv42
-	$update = $peering | Update-AzPeering 
+	$peering.Connections[0] = $peering.Connections[0] |  Set-AzPeeringExchangeConnectionObject -PeerSessionIPv6Address $newipv6 
+	$peering.Connections[1] = $peering.Connections[1] |  Set-AzPeeringExchangeConnectionObject -PeerSessionIPv6Address $newipv62
+	Write-Debug $peering.Name
+	$update = Update-AzPeering -ResourceId $peering.Id $peering.Connections 
 	Assert-NotNull $update
-	Assert-AreEqual $newipv4 $update.Connections[0].BgpSession.PeerSessionIPv4Address 
-	Assert-AreEqual $maxv4 $update.Connections[0].BgpSession.MaxPrefixesAdvertisedV4 
-	Assert-AreEqual $newipv42 $update.Connections[1].BgpSession.PeerSessionIPv4Address 
-	Assert-AreEqual $maxv42 $update.Connections[1].BgpSession.MaxPrefixesAdvertisedV4 
+	Assert-AreEqual $newipv6 $update.Connections[0].BgpSession.PeerSessionIPv6Address 
+	Assert-AreEqual $newipv62 $update.Connections[1].BgpSession.PeerSessionIPv6Address 
 }
 <#
 .SYNOPSIS
-Helper New Asn Exchange
+Helper Not supported
 #>
 function Test-UpdateExchangeMd5OnNameAndResourceGroup
 {
 	$hash = getHash
-	$peering = Get-AzPeering -Kind "Exchange" | Select-Object -First 1
+# Hard coded name because the resource has to exist and cant be created ad-hoc.
+	$resourceGroup = "testCarrier"
+	$peering = Get-AzPeering -ResourceGroupName $resourceGroup | Where-Object {$_.Name -match "Convert"}
 	Assert-NotNull $peering
 	$resourceName = $peering.Name
-	$resourceGroup = "testCarrier"
 	$oldpeering = $peering
+	$tags = New-Object 'system.collections.generic.dictionary[string,string]'
+	$tags["tfs_234234"] = "Active";
+	$peering.Tags = $tags;
 	$peering.Connections[0] = $peering.Connections[0] |  Set-AzPeeringExchangeConnectionObject -MD5AuthenticationKey $hash
 	$peering.Connections[1] = $peering.Connections[1] |  Set-AzPeeringExchangeConnectionObject -MD5AuthenticationKey $hash
-	$update = Update-AzPeering -ResourceGroupName $resourceGroup -Name $resourceName -ExchangeConnection $peering.Connections
-	Assert-NotNull $update
-	Assert-AreEqual $hash $update.Connections[0].BgpSession.Md5AuthenticationKey 
-	Assert-AreEqual $hash $update.Connections[1].BgpSession.Md5AuthenticationKey 
+	Assert-ThrowsContains {$peering = $peering | Update-AzPeering} "not yet supported"
 }

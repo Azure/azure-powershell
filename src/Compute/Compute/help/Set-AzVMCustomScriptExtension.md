@@ -169,7 +169,7 @@ Accept wildcard characters: False
 
 ### -FileName
 Specifies the name of the script file. If the file is stored in Azure Blob storage, the file name
-value is case-senstive. File names of files stored in Azure File storage are not case-senstive.
+value is case-sensitive. File names of files stored in Azure File storage are not case-sensitive.
 
 ```yaml
 Type: System.String[]
@@ -297,7 +297,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has sucessufuly been completed, use some other mechanism.
+Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

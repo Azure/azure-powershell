@@ -38,6 +38,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RadiusServerAddress { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string RadiusServerSecret { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string AadTenant { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string AadIssuer { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string AadAudience { get; set; }
         public PSAddressSpace VpnClientAddressPool { get; set; }
         public List<PSVpnClientRootCertificate> VpnClientRootCertificates { get; set; }
         public List<PSVpnClientRevokedCertificate> VpnClientRevokedCertificates { get; set; }

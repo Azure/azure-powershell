@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -68,6 +69,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -88,10 +92,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
             else
             {
-                var container = this.StorageClient.BlobContainers.List(
-                           this.ResourceGroupName,
-                           this.StorageAccountName);
-                WriteContainerList(container.Value);
+                IPage<ListContainerItem> containerlistResult = this.StorageClient.BlobContainers.List(
+                               this.ResourceGroupName,
+                               this.StorageAccountName);
+                WriteContainerList(containerlistResult);
+                while (containerlistResult.NextPageLink != null)
+                {
+                    containerlistResult = this.StorageClient.BlobContainers.ListNext(containerlistResult.NextPageLink);
+                    WriteContainerList(containerlistResult);
+                }
             }
         }
     }

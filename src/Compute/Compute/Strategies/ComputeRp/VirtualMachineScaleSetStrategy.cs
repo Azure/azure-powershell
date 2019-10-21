@@ -20,6 +20,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System;
 using Microsoft.Azure.Commands.Common.Strategies;
+using SubResource = Microsoft.Azure.Management.Compute.Models.SubResource;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -48,11 +49,15 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string vmSize,
             int instanceCount,
             VirtualMachineScaleSetIdentity identity,
-            Boolean singlePlacementGroup,
+            bool singlePlacementGroup,
             UpgradeMode? upgradeMode,
             IEnumerable<int> dataDisks,
             IList<string> zones,
-            bool ultraSSDEnabled)
+            bool ultraSSDEnabled,
+            Func<IEngine, SubResource> proximityPlacementGroup,
+            string priority,
+            string evictionPolicy,
+            double? maxPrice)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -113,8 +118,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                     NetworkSecurityGroup = engine.GetReference(networkSecurityGroup)
                                 }
                             }
-                        }
-                    }
+                        },
+                        Priority = priority,
+                        EvictionPolicy = evictionPolicy,
+                        BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice)
+                    },
+                    ProximityPlacementGroup = proximityPlacementGroup(engine),
                 });
     }
 }

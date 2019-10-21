@@ -141,12 +141,26 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NewAzureStorageAccountBlockBlobStorage");
         }
-        
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAzStorageAccountFileAADDS()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzStorageAccountFileAADDS");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageAccountManagementPolicy()
         {
             TestRunner.RunTestScript("Test-StorageAccountManagementPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAzureStorageAccount_LargeFileShare()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_LargeFileShare");
         }
     }
 }

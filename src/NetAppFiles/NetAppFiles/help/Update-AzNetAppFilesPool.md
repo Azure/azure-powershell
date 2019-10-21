@@ -8,28 +8,35 @@ schema: 2.0.0
 # Update-AzNetAppFilesPool
 
 ## SYNOPSIS
-Updates an Azure NetApp Files (ANF) pool with the new data set.
+Updates an Azure NetApp Files (ANF) pool according to the optional modifiers provided.
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Update-AzNetAppFilesPool -ResourceGroupName <String> -Location <String> -AccountName <String> -Name <String>
- -PoolSize <Int64> -ServiceLevel <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzNetAppFilesPool -ResourceGroupName <String> [-Location <String>] -AccountName <String> -Name <String>
+ [-PoolSize <Int64>] [-ServiceLevel <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Update-AzNetAppFilesPool -Name <String> -PoolSize <Int64> -ServiceLevel <String>
+Update-AzNetAppFilesPool -Name <String> [-PoolSize <Int64>] [-ServiceLevel <String>] [-Tag <Hashtable>]
  -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
+### ByResourceIdParameterSet
+```
+Update-AzNetAppFilesPool [-PoolSize <Int64>] [-ServiceLevel <String>] [-Tag <Hashtable>] -ResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByObjectParameterSet
 ```
-Update-AzNetAppFilesPool -PoolSize <Int64> -ServiceLevel <String> -InputObject <PSNetAppFilesPool>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzNetAppFilesPool [-PoolSize <Int64>] [-ServiceLevel <String>] [-Tag <Hashtable>]
+ -InputObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -126,7 +133,7 @@ Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -156,7 +163,7 @@ Type: Int64
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -178,6 +185,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+The resource id of the ANF pool
+
+```yaml
+Type: String
+Parameter Sets: ByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ServiceLevel
 The service level of the ANF pool
 
@@ -186,7 +208,22 @@ Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+A hashtable which represents resource tags
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: Tags
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -229,6 +266,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### System.String
 
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
 

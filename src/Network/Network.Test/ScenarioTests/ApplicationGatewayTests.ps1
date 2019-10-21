@@ -108,8 +108,8 @@ function Test-ApplicationGatewayCRUD
 		# Create the Virtual Network
 		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
 		$nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name $nicSubnetName -AddressPrefix 10.0.2.0/24
-		$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
-		$vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
  		$nicSubnet = Get-AzVirtualNetworkSubnetConfig -Name $nicSubnetName -VirtualNetwork $vnet
 
@@ -469,8 +469,8 @@ function Test-ApplicationGatewayCRUD2
 		# Create the Virtual Network
 		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
 		$nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name $nicSubnetName -AddressPrefix 10.0.2.0/24
-		$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
-		$vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
  		$nicSubnet = Get-AzVirtualNetworkSubnetConfig -Name $nicSubnetName -VirtualNetwork $vnet
 
@@ -619,8 +619,8 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
 		# Create the Virtual Network
 		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
-		$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
-		$vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
 
 		# Create public ip
@@ -638,7 +638,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 		$certFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
 		$trustedRoot01 = New-AzApplicationGatewayTrustedRootCertificate -Name $trustedRootCertName -CertificateFile $certFilePath
 		$pool = New-AzApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
-		$probeHttp = New-AzApplicationGatewayProbeConfig -Name $probeHttpName -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
+		$probeHttp = New-AzApplicationGatewayProbeConfig -Name $probeHttpName -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8 -port 1234
 		$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 443 -Protocol Https -Probe $probeHttp -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress -TrustedRootCertificate $trustedRoot01
 
 		#Rewrite Rule Set
@@ -716,7 +716,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 
 		# remove autoscale config
 		$getgw = Remove-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $getgw -Force
-		$getgw = Set-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 3 -ApplicationGateway $getgw
+		$getgw = Set-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2 -ApplicationGateway $getgw
 
 		# Set
 		$getgw01 = Set-AzApplicationGateway -ApplicationGateway $getgw
@@ -750,9 +750,22 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 		# check sku
 		$sku01 = Get-AzApplicationGatewaySku -ApplicationGateway $getgw01
 		Assert-NotNull $sku01
-		Assert-AreEqual $sku01.Capacity 3
+		Assert-AreEqual $sku01.Capacity 2
 		Assert-AreEqual $sku01.Name Standard_v2
 		Assert-AreEqual $sku01.Tier Standard_v2
+
+		# check probe
+		$probe01 = Get-AzApplicationGatewayProbeConfig -ApplicationGateway $getgw01
+		Assert-NotNull $probe01
+		Assert-AreEqual $probe01.Port 1234
+		Assert-AreEqual $probe01.Host "probe.com"
+		Assert-AreEqual $probe01.Path "/path/path.htm"
+		Assert-AreEqual $probe01.Interval 89
+		Assert-AreEqual $probe01.Timeout 88
+		Assert-AreEqual $probe01.UnhealthyThreshold 8
+
+		Assert-ThrowsLike { Set-AzApplicationGatewayProbeConfig -ApplicationGateway $getgw01 -Name "fakeName" -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8 -port 1234} "*does not exist*"
+		Assert-ThrowsLike { Add-AzApplicationGatewayProbeConfig -ApplicationGateway $getgw01 -Name $probeHttpName -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8 -port 1234} "*already exists*"
 
 		# Stop Application Gateway
 		$getgw1 = Stop-AzApplicationGateway -ApplicationGateway $getgw01
@@ -807,8 +820,8 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithConditions
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
 		# Create the Virtual Network
 		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
-		$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
-		$vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
 
 		# Create public ip
@@ -906,7 +919,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithConditions
 
 		# remove autoscale config
 		$getgw = Remove-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $getgw -Force
-		$getgw = Set-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 3 -ApplicationGateway $getgw
+		$getgw = Set-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2 -ApplicationGateway $getgw
 
 		# Set
 		$getgw01 = Set-AzApplicationGateway -ApplicationGateway $getgw
@@ -941,7 +954,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithConditions
 		# check sku
 		$sku01 = Get-AzApplicationGatewaySku -ApplicationGateway $getgw01
 		Assert-NotNull $sku01
-		Assert-AreEqual $sku01.Capacity 3
+		Assert-AreEqual $sku01.Capacity 2
 		Assert-AreEqual $sku01.Name Standard_v2
 		Assert-AreEqual $sku01.Tier Standard_v2
 
@@ -1000,8 +1013,8 @@ function Test-ApplicationGatewayCRUD3
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
 		# Create the Virtual Network
 		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
-		$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
-		$vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
 
 		# Create Managed Identity
@@ -1075,7 +1088,7 @@ function Test-ApplicationGatewayCRUD3
 
 		# remove autoscale config
 		$getgw = Remove-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $getgw -Force
-		$getgw = Set-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 3 -ApplicationGateway $getgw
+		$getgw = Set-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2 -ApplicationGateway $getgw
 
 		# Set
 		$getgw01 = Set-AzApplicationGateway -ApplicationGateway $getgw
@@ -1083,7 +1096,7 @@ function Test-ApplicationGatewayCRUD3
 		# check sku
 		$sku01 = Get-AzApplicationGatewaySku -ApplicationGateway $getgw01
 		Assert-NotNull $sku01
-		Assert-AreEqual $sku01.Capacity 3
+		Assert-AreEqual $sku01.Capacity 2
 		Assert-AreEqual $sku01.Name Standard_v2
 		Assert-AreEqual $sku01.Tier Standard_v2
 
@@ -1320,13 +1333,13 @@ function Test-ApplicationGatewayCRUDSubItems
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
 		# Create the Virtual Network
 		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
-		$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
-		$vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
 
 		$gwSubnet2 = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName2 -AddressPrefix 10.0.0.0/24
-		$vnet2 = New-AzvirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/8 -Subnet $gwSubnet2
-		$vnet2 = Get-AzvirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname
+		$vnet2 = New-AzVirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/8 -Subnet $gwSubnet2
+		$vnet2 = Get-AzVirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname
 		$gwSubnet2 = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName2 -VirtualNetwork $vnet2
 
 		# Create public ip
@@ -1615,13 +1628,13 @@ function Test-ApplicationGatewayCRUDSubItems2
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
 		# Create the Virtual Network
 		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
-		$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
-		$vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
 
 		$gwSubnet2 = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName2 -AddressPrefix 11.0.1.0/24
-		$vnet2 = New-AzvirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname -Location $location -AddressPrefix 11.0.0.0/8 -Subnet $gwSubnet2
-		$vnet2 = Get-AzvirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname
+		$vnet2 = New-AzVirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname -Location $location -AddressPrefix 11.0.0.0/8 -Subnet $gwSubnet2
+		$vnet2 = Get-AzVirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname
 		$gwSubnet2 = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName2 -VirtualNetwork $vnet2
 
 		# Create public ip
@@ -1655,7 +1668,9 @@ function Test-ApplicationGatewayCRUDSubItems2
 		$rewriteRuleSet = New-AzApplicationGatewayRewriteRuleSet -Name $rewriteRuleSetName -RewriteRule $rewriteRule
 
 		$videoPathRule = New-AzApplicationGatewayPathRuleConfig -Name $PathRuleName -Paths "/video" -RedirectConfiguration $redirectConfig -RewriteRuleSet $rewriteRuleSet
+		Assert-AreEqual $videoPathRule.RewriteRuleSet.Id $rewriteRuleSet.Id
 		$imagePathRule = New-AzApplicationGatewayPathRuleConfig -Name $PathRule01Name -Paths "/image" -RedirectConfigurationId $redirectConfig.Id -RewriteRuleSetId $rewriteRuleSet.Id
+		Assert-AreEqual $imagePathRule.RewriteRuleSet.Id $rewriteRuleSet.Id
 		$urlPathMap = New-AzApplicationGatewayUrlPathMapConfig -Name $urlPathMapName -PathRules $videoPathRule -DefaultBackendAddressPool $pool -DefaultBackendHttpSettings $poolSetting01
 		$urlPathMap2 = New-AzApplicationGatewayUrlPathMapConfig -Name $urlPathMapName2 -PathRules $videoPathRule,$imagePathRule -DefaultRedirectConfiguration $redirectConfig -DefaultRewriteRuleSet $rewriteRuleSet
 		$probe = New-AzApplicationGatewayProbeConfig -Name $probeName -Protocol Http -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8 -MinServers 1 -PickHostNameFromBackendHttpSettings
@@ -1724,20 +1739,24 @@ function Test-ApplicationGatewayCRUDSubItems2
 		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
 
 		# WAF Policy and Custom Rule
-		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Content-Length
+        # Disabled until Firewall Policy cmdlets are updated
+		<#$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Content-Length
 		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator GreaterThan -MatchValue 1000 -Transform Lowercase -NegationCondition $False
 		$rule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Block
 		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname -Location $location
 		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
 		$policy.CustomRules = $rule
-		Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
-		# Get Application Gateway
+		Set-AzApplicationGatewayFirewallPolicy -InputObject $policy#>
+
+        # Get Application Gateway
 		$appgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
-		$appgw.FirewallPolicy = $policy
-		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+
+        # Disabled until Firewall Policy cmdlets are updated
+		#$appgw.FirewallPolicy = $policy
+		#$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
 
 		$appgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
-		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
+		#$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
 
 		# First Check firewall configuraiton
 		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.Enabled $true
@@ -1749,9 +1768,10 @@ function Test-ApplicationGatewayCRUDSubItems2
 		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.MaxRequestBodySizeInKb 80
 		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.FileUploadLimitInMb 70
 		Assert-AreEqual $appgw.WebApplicationFirewallConfiguration.Exclusions.Count 2
-
+        
+        # Disabled until Firewall Policy cmdlets are updated
 		# Second check firewll policy
-		Assert-AreEqual $policy.Id $appgw.FirewallPolicy.Id
+		<#Assert-AreEqual $policy.Id $appgw.FirewallPolicy.Id
 		Assert-AreEqual $policy.CustomRules[0].Name $rule.Name
 		Assert-AreEqual $policy.CustomRules[0].RuleType $rule.RuleType
 		Assert-AreEqual $policy.CustomRules[0].Action $rule.Action
@@ -1761,7 +1781,7 @@ function Test-ApplicationGatewayCRUDSubItems2
 		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].NegationConditon $rule.MatchConditions[0].NegationConditon
 		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchValues[0] $rule.MatchConditions[0].MatchValues[0]
 		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].VariableName $rule.MatchConditions[0].MatchVariables[0].VariableName
-		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].Selector $rule.MatchConditions[0].MatchVariables[0].Selector
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].Selector $rule.MatchConditions[0].MatchVariables[0].Selector#>
 
 		# Set non-exiting
 		Assert-ThrowsLike { Set-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus408 -CustomErrorPageUrl $customError403Url02 } "*does not exist*"

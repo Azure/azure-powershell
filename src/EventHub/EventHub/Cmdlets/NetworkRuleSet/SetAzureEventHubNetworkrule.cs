@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
         [Alias(AliasNamespaceName)]
         public string Name { get; set; }       
 
-        [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet,   HelpMessage = "Default Action for NetwrokeuleSet")]
+        [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet,   HelpMessage = "Default Action for NetworkRuleSet")]
         [PSArgumentCompleter("Allow", "Deny")]
         [PSDefaultValue(Value ="Deny")]
         public string DefaultAction { get; set; }
@@ -51,7 +51,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
 
         [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet,  Position = 3, HelpMessage = "List of VirtualNetworkRules")]
         [ValidateNotNullOrEmpty]
-        public PSNWRuleSetVirtualNetworkRulesAttributes[] VirtualNteworkRule { get; set; }
+        [Alias(AliasVirtualNetworkRule)]
+        public PSNWRuleSetVirtualNetworkRulesAttributes[] VirtualNetworkRule { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetInputObjectParameterSet, ValueFromPipeline = true, Position = 2, HelpMessage = "NetworkruleSet Configuration Object")]
         [ValidateNotNullOrEmpty]
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
                         {
                             DefaultAction = DefaultAction,
                             IpRules = IPRule.OfType<PSNWRuleSetIpRulesAttributes>().ToList(),
-                            VirtualNetworkRules = VirtualNteworkRule.OfType<PSNWRuleSetVirtualNetworkRulesAttributes>().ToList()
+                            VirtualNetworkRules = VirtualNetworkRule.OfType<PSNWRuleSetVirtualNetworkRulesAttributes>().ToList()
                         };
 
                         WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSetAttributes));

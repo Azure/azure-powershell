@@ -18,9 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Azure Site Recovery support to configure networking resources like NSG, public IP and internal load balancers for Azure to Azure.
 
-## Version 2.0.0-preview
+* Azure Site Recovery support to configure networking resources like NSG, public IP and internal load balancers for Azure to Azure.
 * Azure Site Recovery Support to write to managed disk for vMWare to Azure.
 * Azure Site Recovery Support to NIC reduction for vMWare to Azure.
 * Azure Site Recovery Support to accelerated networking for Azure to Azure.
@@ -28,6 +27,31 @@
 * Azure Site Recovery Support to Standard SSD for Azure to Azure.
 * Azure Site Recovery Support to Azure Disk Encryption two pass for Azure to Azure.
 * Azure Site Recovery Support to protect newly added disk for Azure to Azure.
+* Added SoftDelete feature for VM and added tests for softdelete
+
+## Version 1.4.5
+* Update AzureVMpolicy Object with ProtectedItemsCount Attribute
+* Added Tests for VM policy and Original Storage Account Restore
+
+## Version 1.4.4
+* Fixed miscellaneous typos across module
+* Update 'Get-AzRecoveryServicesBackupJobDetail.md'
+
+## Version 1.4.3
+* Update 'Get-AzRecoveryServicesBackupJob.md'
+* Update 'Get-AzRecoveryServicesBackupContainer.md'
+* Update 'Get-AzRecoveryServicesVault.md'
+* Update 'Wait-AzRecoveryServicesBackupJob.md'
+* Update 'Set-AzRecoveryServicesVaultContext.md'
+* Update 'Get-AzRecoveryServicesBackupItem.md'
+* Update 'Get-AzRecoveryServicesBackupRecoveryPoint.md'
+* Update 'Restore-AzRecoveryServicesBackupItem.md'
+* Updated service call for Unregistering container for Azure File Share
+* Update 'Set-AzRecoveryServicesAsrAlertSetting.md'
+
+## Version 1.4.2
+* Fix for get-policy command for IaaSVMs
+* Fixes regarding 'Set-AzRecoveryServicesVaultContext' deprecation
 
 ## Version 1.4.1
 * IaaSVM policy minimum retention in days changed to 7 from 1

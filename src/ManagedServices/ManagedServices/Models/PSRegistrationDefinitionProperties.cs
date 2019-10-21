@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
 
         public string ManagedByTenantId { get; set; }
 
-        public ProvisioningState? ProvisioningState { get; }
+        public string ProvisioningState { get; }
 
         public string ManagedByTenantName { get; }
 

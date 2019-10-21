@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// </summary>
         /// <param name="storageAccountId">Storage account id</param>
         /// <returns>Dictionary containing storage keys</returns>
-        private async Task<Dictionary<StorageKeyKind, string>> RetrieveStorageKeysAsync(string storageAccountId)
+        internal async Task<Dictionary<StorageKeyKind, string>> RetrieveStorageKeysAsync(string storageAccountId)
         {
             var isClassicStorage = storageAccountId.Contains("Microsoft.ClassicStorage/storageAccounts");
 
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <param name="storageAccountSubscriptionId">Storage account subscription id</param>
         /// <param name="storageAccountName">Storage account name</param>
         /// <returns>Id of the storage account</returns>
-        private async Task<string> RetrieveStorageAccountIdAsync(Guid storageAccountSubscriptionId, string storageAccountName)
+        internal async Task<string> RetrieveStorageAccountIdAsync(Guid storageAccountSubscriptionId, string storageAccountName)
         {
             // Build a URI for calling corresponding REST-API.
             //

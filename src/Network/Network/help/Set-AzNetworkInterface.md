@@ -48,7 +48,7 @@ $nic | Set-AzNetworkInterface
 
 The first command gets a network interface named NetworkInterface1 that exists within resource group ResourceGroup1. The second command adds DNS server 192.168.1.100 to this interface. The third command applies these changes to the network interface. To remove a DNS server, follow the commands listed above, but replace ".Add" with ".Remove" in the second command.
 
-### Example 3: Enable IP forwading on a network interface
+### Example 3: Enable IP forwarding on a network interface
 ```
 $nic = Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" -Name "NetworkInterface1"
 $nic.EnableIPForwarding = 1

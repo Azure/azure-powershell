@@ -27,7 +27,7 @@ Get-AzAutomationDscNodeConfigurationDeployment -JobId <Guid> [-ResourceGroupName
 ```
 
 ## DESCRIPTION
-The **Get-AzAutomationDscNodeConfigurationDeployment** cmdlet deployes an APS Desired State Configuration (DSC) node configuration in Azure Automation.
+The **Get-AzAutomationDscNodeConfigurationDeployment** cmdlet deploys an APS Desired State Configuration (DSC) node configuration in Azure Automation.
 
 ## EXAMPLES
 

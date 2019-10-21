@@ -41,6 +41,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
+            HelpMessage = "The resource name.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.Default,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
@@ -50,6 +55,11 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
+            HelpMessage = "The resource group name.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
             HelpMessage = "The resource group name.")]
         [Parameter(
             Mandatory = true,
@@ -64,6 +74,11 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
+            HelpMessage = "location.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
             HelpMessage = "location.")]
         [Parameter(
             Mandatory = true,
@@ -124,9 +139,13 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VirtualNetworkGatewaySkuTier.VpnGw1,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw2,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw3,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw4,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw5,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw1AZ,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw2AZ,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw3AZ,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw4AZ,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw5AZ,
             MNM.VirtualNetworkGatewaySkuTier.ErGw1AZ,
             MNM.VirtualNetworkGatewaySkuTier.ErGw2AZ,
             MNM.VirtualNetworkGatewaySkuTier.ErGw3AZ,
@@ -215,11 +234,44 @@ namespace Microsoft.Azure.Commands.Network
         public SecureString RadiusServerSecret { get; set; }
 
         [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
+            HelpMessage = "P2S AAD authentication option:AadTenantUri.")]
+        [ValidateNotNullOrEmpty]
+        public string AadTenantUri { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
+            HelpMessage = "P2S AAD authentication option:AadAudienceId.")]
+        [ValidateNotNullOrEmpty]
+        public string AadAudienceId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
+            HelpMessage = "P2S AAD authentication option:AadIssuerUri.")]
+        [ValidateNotNullOrEmpty]
+        public string AadIssuerUri { get; set; }
+
+        [Parameter(
                     Mandatory = false,
                     ValueFromPipelineByPropertyName = true,
                     HelpMessage = "Custom routes AddressPool specified by customer")]
         [ValidateNotNullOrEmpty]
         public string[] CustomRoute { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The generation for this VirtualNetwork VPN gateway. Must be None if GatewayType is not VPN.")]
+        [PSArgumentCompleter(
+            MNM.VpnGatewayGeneration.None,
+            MNM.VpnGatewayGeneration.Generation1,
+            MNM.VpnGatewayGeneration.Generation2)]
+        public string VpnGatewayGeneration { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -319,7 +371,8 @@ namespace Microsoft.Azure.Commands.Network
                 this.VpnClientRootCertificates != null ||
                 this.VpnClientRevokedCertificates != null ||
                 this.RadiusServerAddress != null ||
-                (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Length != 0))
+                (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Length != 0) ||
+                this.AadTenantUri != null)
             {
                 vnetGateway.VpnClientConfiguration = new PSVpnClientConfiguration();
 
@@ -366,6 +419,26 @@ namespace Microsoft.Azure.Commands.Network
                     vnetGateway.VpnClientConfiguration.RadiusServerAddress = this.RadiusServerAddress;
                     vnetGateway.VpnClientConfiguration.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
                 }
+                
+                if (this.AadTenantUri != null)
+                {
+                    if (this.AadIssuerUri == null || this.AadAudienceId == null)
+                    {
+                        throw new ArgumentException("AadTenantUri, AadIssuerUri and AadAudienceId must be specified if AAD authentication is being configured for P2S.");
+                    }
+
+                    if (vnetGateway.VpnClientConfiguration.VpnClientProtocols.Count() == 1 && 
+                        vnetGateway.VpnClientConfiguration.VpnClientProtocols.First().Equals(MNM.VpnClientProtocol.OpenVPN))
+                    {
+                        vnetGateway.VpnClientConfiguration.AadTenant = this.AadTenantUri;
+                        vnetGateway.VpnClientConfiguration.AadIssuer = this.AadIssuerUri;
+                        vnetGateway.VpnClientConfiguration.AadAudience = this.AadAudienceId;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Virtual Network Gateway VpnClientProtocol should be :" + MNM.VpnClientProtocol.OpenVPN + " when P2S AAD authentication is being configured.");
+                    }
+                }
             }
             else
             {
@@ -400,6 +473,18 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 vnetGateway.CustomRoutes = null;
+            }
+
+            vnetGateway.VpnGatewayGeneration = MNM.VpnGatewayGeneration.None;
+            if (this.VpnGatewayGeneration != null)
+            {
+                if (GatewayType.Equals(MNM.VirtualNetworkGatewayType.ExpressRoute.ToString(), StringComparison.InvariantCultureIgnoreCase) &&
+                    !this.VpnGatewayGeneration.Equals(MNM.VpnGatewayGeneration.None, StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new ArgumentException("Virtual Network Express Route Gateway cannot have any generation other than None.");
+                }
+
+                vnetGateway.VpnGatewayGeneration = this.VpnGatewayGeneration;
             }
 
             // Map to the sdk object

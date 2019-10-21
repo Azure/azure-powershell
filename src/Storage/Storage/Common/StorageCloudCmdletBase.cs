@@ -51,9 +51,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         public virtual IStorageContext Context { get; set; }
 
         [Parameter(HelpMessage = "The server time out for each request in seconds.")]
+        [Alias("ServerTimeoutPerRequestInSeconds")]
         public virtual int? ServerTimeoutPerRequest { get; set; }
 
         [Parameter(HelpMessage = "The client side maximum execution time for each request in seconds.")]
+        [Alias("ClientTimeoutPerRequestInSeconds")]
         public virtual int? ClientTimeoutPerRequest { get; set; }
 
         /// <summary>

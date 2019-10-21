@@ -144,6 +144,21 @@ namespace Microsoft.Azure.Commands.Network
              HelpMessage = "A list of IPSec policies.")]
         public PSIpsecPolicy[] IpsecPolicies { get; set; }
 
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "A list of traffic selector policies.")]
+        public PSTrafficSelectorPolicy[] TrafficSelectorPolicy { get; set; }
+
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "Gateway connection protocol:IKEv1/IKEv2")]
+        [ValidateSet(
+            MNM.VirtualNetworkGatewayConnectionProtocol.IKEv1,
+            MNM.VirtualNetworkGatewayConnectionProtocol.IKEv2,
+            IgnoreCase = true)]
+        public string ConnectionProtocol { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -186,6 +201,11 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnection.UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors;
             vnetGatewayConnection.ExpressRouteGatewayBypass = this.ExpressRouteGatewayBypass.IsPresent;
 
+            if (!string.IsNullOrWhiteSpace(this.ConnectionProtocol))
+            {
+                vnetGatewayConnection.ConnectionProtocol = this.ConnectionProtocol;
+            }
+            
             if (!string.IsNullOrEmpty(this.AuthorizationKey))
             {
                 vnetGatewayConnection.AuthorizationKey = this.AuthorizationKey;
@@ -204,10 +224,15 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGatewayConnection.Peer = new PSResourceId();
                 vnetGatewayConnection.Peer.Id = this.PeerId;
             }
-            
+
             if (this.IpsecPolicies != null)
             {
                 vnetGatewayConnection.IpsecPolicies = this.IpsecPolicies?.ToList();
+            }
+
+            if (this.TrafficSelectorPolicy != null)
+            {
+                vnetGatewayConnection.TrafficSelectorPolicies = this.TrafficSelectorPolicy?.ToList();
             }
 
             // Map to the sdk object

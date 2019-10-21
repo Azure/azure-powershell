@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The MircosoftConfigAdvertisedPublicPrefixes")]
+            HelpMessage = "The MicrosoftConfigAdvertisedPublicPrefixes")]
         [ValidateNotNullOrEmpty]
         public string[] MicrosoftConfigAdvertisedPublicPrefix { get; set; }
 
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The MircosoftConfigRoutingRegistryName")]
+            HelpMessage = "The MicrosoftConfigRoutingRegistryName")]
         [ValidateNotNullOrEmpty]
         public string MicrosoftConfigRoutingRegistryName { get; set; }
 

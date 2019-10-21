@@ -19,6 +19,11 @@ $defaultPolicyName = "DefaultPolicy";
 $DefaultSnapshotDays = 2;
 $UpdatedSnapShotDays = 5;
 
+# Test old polices in the VaultId
+$oldResourceGroupName = "shracrg"
+$oldVaultName = "shracsql"
+$oldPolicyName = "iaasvmretentioncheck"
+
 function Test-AzureVMPolicy
 {
 	$location = Get-ResourceGroupLocation
@@ -47,6 +52,11 @@ function Test-AzureVMPolicy
 		Assert-AreEqual $policy.Name $policyName
 		Assert-AreEqual $policy.SnapshotRetentionInDays $DefaultSnapshotDays
 
+		# Get policy to test older policies
+		$oldVault = Get-AzRecoveryServicesVault -ResourceGroupName $oldResourceGroupName -Name $oldVaultName
+		$oldPolicy = Get-AzRecoveryServicesBackupProtectionPolicy -Name $oldPolicyName -VaultId $oldVault.ID
+		Assert-AreEqual $oldPolicy.RetentionPolicy.DailySchedule.DurationCountInDays 1
+		
 		# Get policy
 	    $policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `

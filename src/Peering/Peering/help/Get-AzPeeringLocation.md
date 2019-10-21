@@ -12,7 +12,7 @@ Gets the Peering locations offered by Microsoft
 
 ## SYNTAX
 
-### PeeringByKind (Default)
+### Default (Default)
 ```
 Get-AzPeeringLocation [-Kind] <String> [-PeeringLocation <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -20,8 +20,14 @@ Get-AzPeeringLocation [-Kind] <String> [-PeeringLocation <String>] [-DefaultProf
 
 ### LocationByFacilityId
 ```
-Get-AzPeeringLocation [-Kind] <String> [-PeeringDbFacilityId] <Int32>
+Get-AzPeeringLocation [-Kind] <String> [-PeeringDbFacilityId <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### LocationByDirectType
+```
+Get-AzPeeringLocation [-Kind] <String> [-PeeringLocation <String>] [-DirectPeeringType] <String>
+ [-PeeringDbFacilityId <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,6 +109,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DirectPeeringType
+Select 'Edge', 'CDN', and 'Transit'.
+
+```yaml
+Type: System.String
+Parameter Sets: LocationByDirectType
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Kind
 Shows all Peering resource by Kind.
 
@@ -122,12 +143,12 @@ Accept wildcard characters: False
 The PeeringDB.com Facility ID
 
 ```yaml
-Type: System.Int32
-Parameter Sets: LocationByFacilityId
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: LocationByFacilityId, LocationByDirectType
 Aliases:
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -138,7 +159,7 @@ The location of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: PeeringByKind
+Parameter Sets: Default, LocationByDirectType
 Aliases:
 
 Required: False
@@ -149,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -19,6 +19,34 @@
 -->
 ## Upcoming Release
 
+## Version 1.5.0
+* Set-AzWebApp updating ASP of an app was failing
+
+## Version 1.4.2
+* Fixing issue where webapp Tags were getting deleted when migrating App to new ASP
+* Fixing the Publish-AzureWebapp to work across Linux and windows
+* Update example in `Get-AzWebAppPublishingProfile` reference documentation
+* Add support for working with Access Restrictions
+	- New cmdlets
+		- Get-AzWebAppAccessRestrictionConfig
+		- Update-AzWebAppAccessRestrictionConfig
+		- Add-AzWebAppAccessRestrictionRule
+		- Remove-AzWebAppAccessRestrictionRule
+
+## Version 1.4.1
+* Fixed miscellaneous typos across module
+* Add clarification around -AppSettings parameter in Set-AzWebApp and Set-AzWebAppSlot
+
+## Version 1.4.0
+* Fixing a bug where some SiteConfig properties were not returned by Get-AzWebApp and Set-AzWebApp
+* Adds a new Location parameter to Get-AzDeletedWebApp and Restore-AzDeletedWebApp
+* Fixes a bug with cloning web app slots using New-AzWebApp -IncludeSourceWebAppSlots
+
+
+## Version 1.3.0
+* Optimizes Get-AzWebAppCertificate to filter by resource group on the server instead of the client
+* Adds -UseDisasterRecovery switch parameter to Get-AzWebAppSnapshot
+
 ## Version 1.2.2
 * fixes the issue where using  Set-AzWebApp and Set-AzWebAppSlot with -WebApp property was removing the tags
 

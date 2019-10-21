@@ -116,21 +116,21 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-RestoreWebAppSnapshot");
         }
 
-        [Fact(Skip="Get-AzDeletedWebApp returning null in recorded tests #9191")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetDeletedWebApp()
         {
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetDeletedWebApp");
         }
 
-        [Fact(Skip="Get-AzDeletedWebApp returning null in recorded tests #9191")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreDeletedWebAppToExisting()
         {
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-RestoreDeletedWebAppToExisting");
         }
 
-        [Fact(Skip="Get-AzDeletedWebApp returning null in recorded tests #9191")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreDeletedWebAppToNew()
         {

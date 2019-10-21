@@ -73,7 +73,7 @@ R1        DeviceMessages events        True
 R5        DeviceMessages E1            True
 ```
 
-Test all route with source "DeviceMessges".
+Test all route with source "DeviceMessages".
 
 ### Example 2
 ```
@@ -239,7 +239,7 @@ Source of the route
 Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource
 Parameter Sets: InputObjectTestAllRouteSet, TestAllRouteSet, ResourceIdTestAllRouteSet
 Aliases:
-Accepted values: Invalid, DeviceMessages, TwinChangeEvents, DeviceLifecycleEvents, DeviceJobLifecycleEvents
+Accepted values: Invalid, DeviceMessages, TwinChangeEvents, DeviceLifecycleEvents, DeviceJobLifecycleEvents, DigitalTwinChangeEvents
 
 Required: True
 Position: 1

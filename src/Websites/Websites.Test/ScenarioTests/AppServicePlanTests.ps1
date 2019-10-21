@@ -95,7 +95,7 @@ function Test-CreateNewAppServicePlanHyperV
 		Assert-AreEqual $skuName $getResult.Sku.Name
 		Assert-AreEqual $capacity $getResult.Sku.Capacity
         Assert-AreEqual $true $getResult.IsXenon
-        Assert-AreEqual "xenon" $getResult.Kind
+        Assert-AreEqual "windows" $getResult.Kind
 
 	}
 	finally

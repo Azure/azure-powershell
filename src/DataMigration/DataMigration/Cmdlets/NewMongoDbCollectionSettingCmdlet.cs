@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         [Parameter(
            Mandatory = false,
-           HelpMessage = "Comma seperated field names to represent shard key to be created, with format of 'a:-1,b:1,c' where -1/1 is for order"
+           HelpMessage = "Comma separated field names to represent shard key to be created, with format of 'a:-1,b:1,c' where -1/1 is for order"
                )]
         public string ShardKey { get; set; }
 

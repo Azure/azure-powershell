@@ -67,7 +67,7 @@ Install-Module -Name Az.{{service}}
 To install a preview version of a specific `Az` module, run the following command:
 
 ```
-Install-Module -Name Az.{{service}} -RequiredVersion {{version}} -AllowPrelease
+Install-Module -Name Az.{{service}} -RequiredVersion {{version}} -AllowPrerelease
 ```
 
 _Note_: to install preview versions of modules, version 1.6.0 or greater of the `PowerShellGet` module will be needed. Users can run the following command to get the latest version of this module:

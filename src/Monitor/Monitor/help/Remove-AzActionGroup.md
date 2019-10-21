@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The action group resourc
+The action group resource
 
 ```yaml
 Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource

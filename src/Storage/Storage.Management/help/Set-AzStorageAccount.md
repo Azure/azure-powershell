@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 4D7EEDD7-89D4-4B1E-A9A1-B301E759CE72
@@ -18,8 +18,9 @@ Modifies a Storage account.
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity]
- [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2]
+ [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyvaultEncryption
@@ -27,7 +28,8 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-KeyvaultEncryption] -KeyName <String> -KeyVersion <String>
- -KeyVaultUri <String> [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2] [-AsJob]
+ -KeyVaultUri <String> [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2]
+ [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -113,6 +115,13 @@ PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "
 
 The command upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account.
 
+### Example 10: Update a Storage account by enable Azure Files AAD DS Authentication.
+```
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -EnableAzureActiveDirectoryDomainServicesForFile $true
+```
+
+The command update a Storage account by enable Azure Files AAD DS Authentication.
+
 ## PARAMETERS
 
 ### -AccessTier
@@ -196,11 +205,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableAzureActiveDirectoryDomainServicesForFile
+Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableHttpsTrafficOnly
 Indicates whether or not the Storage account only enables HTTPS traffic.
 
 ```yaml
 Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableLargeFileShare
+Indicates whether or not the storage account can support large file shares with more than 5 TiB capacity. 
+Once the account is enabled, the feature cannot be disabled. 
+Currently only supported for LRS and ZRS replication types, hence account conversions to geo-redundant accounts would not be possible. 
+Learn more in https://go.microsoft.com/fwlink/?linkid=2086047
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

@@ -129,6 +129,9 @@
   <data name="RemoveAccount_ProcessMessage" xml:space="preserve">
     <value>Deleting account {0}.</value>
   </data>
+  <data name="SetAccount_ProcessMessage" xml:space="preserve">
+    <value>Updating account {0}.</value>
+  </data>
   <data name="SetAccount_ProcessMessage_UpdateSku" xml:space="preserve">
     <value>Updating account {0} with Sku {1}.</value>
   </data>

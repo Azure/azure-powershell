@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifes the name of the Azure Resource Manager (ARM) resource that represents the extension.
+Specifies the name of the Azure Resource Manager (ARM) resource that represents the extension.
 If this parameter is not specified, this cmdlet defaults to "AzureDiskEncryption for Windows VMs".
 
 ```yaml

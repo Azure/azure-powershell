@@ -19,6 +19,24 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.1
+* Add new routing source: DigitalTwinChangeEvents
+* Minor bug fix: Get-AzIothub not returning subscriptionId 
+
+## Version 1.3.0
+* Add support to invoke failover for an IotHub to the geo-paired disaster recovery region.
+* Add support to manage message enrichment for an IotHub. New cmdlets are:
+	- Add-AzIotHubMessageEnrichment
+	- Get-AzIotHubMessageEnrichment
+	- Remove-AzIotHubMessageEnrichment
+	- Set-AzIotHubMessageEnrichment
+
+## Version 1.2.1
+* Fixed miscellaneous typos across module
+
+## Version 1.2.0
+* Add support to regenerate authorization policy keys.
+
 ## Version 1.1.0
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 

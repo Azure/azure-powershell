@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProtectionContainer
-Get protection container mappings corresponding to the the specified ASR protection container object.
+Get protection container mappings corresponding to the specified ASR protection container object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer

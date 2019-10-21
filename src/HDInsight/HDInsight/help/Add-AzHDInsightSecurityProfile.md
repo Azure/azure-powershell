@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
 ms.assetid: FB37494B-4035-45B7-88AB-DF33CEEF0D0A
@@ -9,7 +9,7 @@ schema: 2.0.0
 # Add-AzHDInsightSecurityProfile
 
 ## SYNOPSIS
-Adds a security profileto a cluster configuration object.
+Adds a security profile to a cluster configuration object.
 
 ## SYNTAX
 
@@ -26,12 +26,55 @@ Security profile contains configuration related joining the cluster to Active Di
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Add security profile to the cluster configuration object
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> #Primary storage account info
+PS C:\> $storageAccountResourceGroupName = "Group"
+PS C:\> $storageAccountName = "yourstorageacct001"
+PS C:\> $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
+
+PS C:\> $storageContainer = "container001"
+
+# Cluster configuration info
+PS C:\> $location = "East US 2"
+PS C:\> $clusterResourceGroupName = "Group"
+PS C:\> $clusterName = "your-hadoop-001"
+PS C:\> $clusterCreds = Get-Credential
+
+# If the cluster's resource group doesn't exist yet, run:
+#   New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+
+#Security profile info
+PS C:\> $domain="sampledomain.onmicrosoft.com"
+PS C:\> $domainUser="sample.user@sampledomain.onmicrosoft.com"
+PS C:\> $domainPassword=ConvertTo-SecureString "domainPassword" -AsPlainText -Force
+PS C:\> $domainUserCredential=New-Object System.Management.Automation.PSCredential($domainUser, $domainPassword)
+PS C:\> $organizationalUnitDN="ou=testunitdn"
+PS C:\> $ldapsUrls=("ldaps://sampledomain.onmicrosoft.com:636","ldaps://sampledomain.onmicrosoft.com:389")
+PS C:\> $clusterUsersGroupDNs=("groupdn1","groupdn2")
+
+# Create the cluster
+PS C:\> New-AzHDInsightClusterConfig `
+            | Add-AzHDInsightSecurityProfile `
+                -Domain $domain `
+                -DomainUserCredential $domainUserCredential `
+                -OrganizationalUnitDN $organizationalUnitDN `
+                -LdapsUrls $ldapsUrls `
+                -ClusterUsersGroupDNs $clusterUsersGroupDNs `
+            | New-AzHDInsightCluster `
+                -ClusterType Spark `
+                -OSType Linux `
+                -ClusterSizeInNodes 4 `
+                -ResourceGroupName $clusterResourceGroupName `
+                -ClusterName $clusterName `
+                -HttpCredential $clusterCreds `
+                -Location $location `
+                -DefaultStorageAccountName "$storageAccountName.blob.core.contoso.net" `
+                -DefaultStorageAccountKey $storageAccountKey `
+                -DefaultStorageContainer $storageContainer
 ```
 
-{{ Add example description here }}
+This command adds a security profile value to the cluster named your-hadoop-001.
 
 ## PARAMETERS
 
@@ -152,7 +195,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -165,22 +208,20 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightSecurityProfile
-
 ## NOTES
 
 ## RELATED LINKS

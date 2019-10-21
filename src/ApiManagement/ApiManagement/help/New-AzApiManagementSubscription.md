@@ -55,7 +55,7 @@ PS C:\>New-AzApiManagementSubscription -Context $context -Scope "/products/start
 ## PARAMETERS
 
 ### -AllowTracing
-Flag which determines whether Tracing can be enabled at the Subscription Leve. This is optional parameter and default is $null.
+Flag which determines whether Tracing can be enabled at the Subscription Level. This is optional parameter and default is $null.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

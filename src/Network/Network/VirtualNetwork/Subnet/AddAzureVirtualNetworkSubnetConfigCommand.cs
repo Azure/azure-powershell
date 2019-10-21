@@ -105,6 +105,9 @@ namespace Microsoft.Azure.Commands.Network
                 subnet.Delegations = this.Delegation?.ToList();
             }
 
+            subnet.PrivateEndpointNetworkPolicies = this.PrivateEndpointNetworkPoliciesFlag ?? "Enabled";
+            subnet.PrivateLinkServiceNetworkPolicies = this.PrivateLinkServiceNetworkPoliciesFlag ?? "Enabled";
+
             this.VirtualNetwork.Subnets.Add(subnet);
 
             WriteObject(this.VirtualNetwork);

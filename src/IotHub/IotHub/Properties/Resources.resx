@@ -129,17 +129,32 @@
   <data name="AddIotHubKey" xml:space="preserve">
     <value>Add an IoT Hub Key</value>
   </data>
+  <data name="AddIotHubMessageEnrichment" xml:space="preserve">
+    <value>Add Message Enrichment</value>
+  </data>
   <data name="AddIotHubRoute" xml:space="preserve">
     <value>Add Route</value>
   </data>
   <data name="AddIotHubRoutingEndpoint" xml:space="preserve">
     <value>Add Routing Endpoint</value>
   </data>
+  <data name="ManualFailoverIotHub" xml:space="preserve">
+    <value>Failover Iot Hub to the secondary location.</value>
+  </data>
+  <data name="MessageEnrichmentKeyExist" xml:space="preserve">
+    <value>The enrichment's key "{0}" already exists.</value>
+  </data>
+  <data name="MessageEnrichmentKeyMissing" xml:space="preserve">
+    <value>No message enrichment with key "{0}" exists.</value>
+  </data>
   <data name="NewAzureRmIotHubExportDevices" xml:space="preserve">
     <value>Export All Devices</value>
   </data>
   <data name="NewAzureRmIotHubImportDevices" xml:space="preserve">
     <value>Import All Devices</value>
+  </data>
+  <data name="NewIotHubKey" xml:space="preserve">
+    <value>Generate IoT Hub Key</value>
   </data>
   <data name="RemoveEventHubConsumerGroup" xml:space="preserve">
     <value>Remove Event Hub Consumer Group</value>
@@ -153,6 +168,9 @@
   <data name="RemoveIotHubKey" xml:space="preserve">
     <value>Remove IoT Hub Key</value>
   </data>
+  <data name="RemoveIotHubMessageEnrichment" xml:space="preserve">
+    <value>Remove Message Enrichment</value>
+  </data>
   <data name="RemoveIotHubRoute" xml:space="preserve">
     <value>Remove Route</value>
   </data>
@@ -161,6 +179,9 @@
   </data>
   <data name="UpdateIotHub" xml:space="preserve">
     <value>Update IoT Hub </value>
+  </data>
+  <data name="UpdateIotHubMessageEnrichment" xml:space="preserve">
+    <value>Update Message Enrichment</value>
   </data>
   <data name="UpdateIotHubRoute" xml:space="preserve">
     <value>Update Route</value>

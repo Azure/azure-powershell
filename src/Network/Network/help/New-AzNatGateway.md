@@ -13,9 +13,10 @@ Create new Nat Gateway resource with properties Public Ip Address/Public Ip Pref
 ## SYNTAX
 
 ```
-New-AzNatGateway -ResourceGroupName <String> -Name <String> [-IdleTimeoutInMinutes <Int32>] [-Sku <String>]
- [-Location <String>] [-Tag <Hashtable>] [-PublicIpAddress <PSResourceId[]>] [-PublicIpPrefix <PSResourceId[]>]
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNatGateway -ResourceGroupName <String> -Name <String> [-IdleTimeoutInMinutes <Int32>] [-Zone <String[]>]
+ [-Sku <String>] [-Location <String>] [-Tag <Hashtable>] [-PublicIpAddress <PSResourceId[]>]
+ [-PublicIpPrefix <PSResourceId[]>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +42,15 @@ PS C:> $natgateway = New-AzNatGateway -ResourceGroupName "natgateway_test" -Name
 PS C:> $publicipprefix = New-AzPublicIpPrefix -Name "prefix2" -ResourceGroupName "natgateway_test" -Location "eastus2" -Sku "Standard" -PrefixLength "31"
 PS C:> $natgateway = New-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_gateway" -IdleTimeoutInMinutes 4 -Sku "Standard" -Location "eastus2" -PublicIpPrefix $publicipprefix
 ```
+
+### Example 3 : Create Nat Gateway with Public IP Address in Availability Zone 1
+```powershell
+PS C:> $pip = New-AzPublicIpAddress -Name "pip" -ResourceGroupName "natgateway_test" -Location "eastus2" -Sku "Standard" -IdleTimeoutInMinutes 4 -AllocationMethod "static"
+PS C:> $natgateway = New-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_gateway" -IdleTimeoutInMinutes 4 -Sku "Standard" -Location "eastus2" -PublicIpAddress $pip -Zone "1"
+```
+
+The first command creates standard Public IP Address.
+The second command creates NAT Gateway with Public IP Address in Availability Zone 1.
 
 ## PARAMETERS
 
@@ -199,6 +209,21 @@ A hashtable which represents resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+A list of availability zones denoting the zone in which Nat Gateway should be deployed.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

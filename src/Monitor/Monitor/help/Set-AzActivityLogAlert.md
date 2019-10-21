@@ -65,7 +65,7 @@ PS C:\>$actionGrp1 = New-AzActionGroup -ActionGroupId 'actiongr1' -WebhookProper
 PS C:\>Set-AzActivityLogAlert -Location $location -Name $alertName -ResourceGroupName $resourceGroupName -Scope 'scope1','scope2' -Action $actionGrp1 -Condition $condition1, $condition2
 ```
 
-The first four commands create leaf condition and and action group.
+The first four commands create leaf condition and action group.
 The final command creates an Activity Log Alert using the condition and the action group.
 
 ### Example 2: Create an Activity Log Alert disabled
@@ -81,7 +81,7 @@ PS C:\>$actionGrp1 = New-AzActionGroup -ActionGroupId 'actiongr1' -WebhookProper
 PS C:\>Set-AzActivityLogAlert -Location $location -Name $alertName -ResourceGroupName $resourceGroupName -Scope 'scope1','scope2' -Action $actionGrp1 -Condition $condition1, $condition2 -DisableAlert
 ```
 
-The first four commands create leaf condition and and action group.
+The first four commands create leaf condition and action group.
 The final command creates an Activity Log Alert using the condition and the action group, but it creates the alert disabled.
 
 ### Example 3: Set an activity log alert based using a value from the pipe or the InputObject parameter
@@ -459,4 +459,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzActionGroup](./New-AzActionGroup.md)
 
-[New-AzActivityLogAlertCondition](./Get-AzActivityLogAlertCondition.md)
+[New-AzActivityLogAlertCondition](./New-AzActivityLogAlertCondition.md)

@@ -16,14 +16,28 @@ using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
-    public class PSMetricCriteria : MetricCriteria
+    /// <summary>
+    /// PS object for static metric criteria
+    /// </summary>
+    public class PSMetricCriteria : MetricCriteria, IPSMultiMetricCriteria
     {
         /// <summary>
-        /// Initializes a new instance of the PSMetricCriteria class.
+        /// Gets the type of the metric criteria
         /// </summary>
-        /// <param name="metricCriteria">The input MetricCriteria object</param>
+        public CriterionType CriterionType => CriterionType.StaticThresholdCriterion;
+
+        /// <summary>
+        /// Initiliazes a PS object for static metric criteria
+        /// </summary>
+        /// <param name="metricCriteria">The original static metric criteria object</param>
         public PSMetricCriteria(MetricCriteria metricCriteria)
-            :base(name: metricCriteria.Name, metricName: metricCriteria.MetricName, operatorProperty: metricCriteria.OperatorProperty, timeAggregation: metricCriteria.TimeAggregation, threshold: metricCriteria.Threshold, metricNamespace: metricCriteria.MetricNamespace, dimensions: metricCriteria.Dimensions)
+            : base(name: metricCriteria.Name,
+                  metricName: metricCriteria.MetricName,
+                  operatorProperty: metricCriteria.OperatorProperty,
+                  timeAggregation: metricCriteria.TimeAggregation,
+                  threshold: metricCriteria.Threshold,
+                  metricNamespace: metricCriteria.MetricNamespace,
+                  dimensions: metricCriteria.Dimensions)
         {
         }
     }

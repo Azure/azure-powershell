@@ -325,7 +325,7 @@ function Api-ImportExportWadlTest {
 
         # commented as powershell test framework on running test in playback mode, throws 403, as the exported link of file
         # gets expired
-        # export api to pipline
+        # export api to pipeline
         # $result = Export-AzApiManagementApi -Context $context -ApiId $wadlApiId -SpecificationFormat Wadl
 
         # Assert-True {$result -like '*<doc title="Yahoo News Search">Yahoo News Search API</doc>*'}
@@ -1048,6 +1048,33 @@ function Product-CrudTest {
         Assert-NotNull $newProduct
         Assert-AreEqual $productName $newProduct.Title
 
+		# get the product by apiId
+		$products = Get-AzApiManagementProduct -Context $context -ApiId $apis[0].ApiId
+		Assert-NotNull $products
+
+		# there should be 3 products
+		Assert-AreEqual 3 $products.Count
+		
+		$found = 0
+		for ($i = 0; $i -lt $products.Count; $i++) {
+			Assert-NotNull $products[$i].ProductId
+			Assert-NotNull $products[$i].Description
+			Assert-AreEqual Published $products[$i].State
+
+			if ($products[$i].Title -eq 'Starter') {
+	            $found += 1;
+			}
+
+	        if ($products[$i].Title -eq 'Unlimited') {
+		        $found += 1;
+			}
+
+			if ($products[$i].Title -eq $productName) {
+		        $found += 1;
+			}
+		}
+		Assert-AreEqual 3 $found
+
         #remove api from product
         Get-AzApiManagementApi -Context $context | Remove-AzApiManagementApiFromProduct -Context $context -ProductId $productId
 
@@ -1130,6 +1157,58 @@ function SubscriptionOldModel-CrudTest {
         Assert-AreEqual $patchedSk $sub.SecondaryKey
         Assert-AreEqual $newSubscriptionState $sub.State
         Assert-AreEqual $patchedExpirationDate $sub.ExpirationDate
+
+        # Get subscriptions by product id
+        $productSubs = Get-AzApiManagementSubscription -Context $context -ProductId $subs[0].ProductId
+
+        Assert-AreEqual 2 $productSubs.Count
+        for ($i = 0; $i -lt $productSubs.Count; $i++) 
+        {
+            Assert-NotNull $productSubs[$i]
+            Assert-NotNull $productSubs[$i].SubscriptionId
+            Assert-NotNull $productSubs[$i].Scope
+            Assert-NotNull $productSubs[$i].State
+            Assert-NotNull $productSubs[$i].CreatedDate
+            Assert-NotNull $productSubs[$i].PrimaryKey
+            Assert-NotNull $productSubs[$i].SecondaryKey
+
+            Assert-AreEqual $subs[0].ProductId $productSubs[$i].ProductId
+        }
+
+        # Get subscriptions by user id
+        $userSubs = Get-AzApiManagementSubscription -Context $context -UserId $subs[0].UserId
+
+        Assert-AreEqual 3 $userSubs.Count
+        for ($i = 0; $i -lt $userSubs.Count; $i++) 
+        {
+            Assert-NotNull $userSubs[$i]
+            Assert-NotNull $userSubs[$i].SubscriptionId
+            Assert-NotNull $userSubs[$i].Scope
+            Assert-NotNull $userSubs[$i].State
+            Assert-NotNull $userSubs[$i].CreatedDate
+            Assert-NotNull $userSubs[$i].PrimaryKey
+            Assert-NotNull $userSubs[$i].SecondaryKey
+
+            Assert-AreEqual $subs[0].UserId $userSubs[$i].UserId
+        }
+
+        # get Subscriptions by User and Product
+        $productUserSubs = Get-AzApiManagementSubscription -Context $context -UserId $subs[0].UserId -ProductId $subs[0].ProductId
+
+        Assert-AreEqual 2 $productUserSubs.Count
+        for ($i = 0; $i -lt $productUserSubs.Count; $i++) 
+        {
+            Assert-NotNull $productUserSubs[$i]
+            Assert-NotNull $productUserSubs[$i].SubscriptionId
+            Assert-NotNull $productUserSubs[$i].Scope
+            Assert-NotNull $productUserSubs[$i].State
+            Assert-NotNull $productUserSubs[$i].CreatedDate
+            Assert-NotNull $productUserSubs[$i].PrimaryKey
+            Assert-NotNull $productUserSubs[$i].SecondaryKey
+
+            Assert-AreEqual $subs[0].UserId $productUserSubs[$i].UserId
+            Assert-AreEqual $subs[0].ProductId $productUserSubs[$i].ProductId
+        }
     }
     finally {
         # remove created subscription
@@ -1221,6 +1300,18 @@ function SubscriptionNewModel-CrudTest {
         Assert-AreEqual 1 $sub.UserId
         Assert-NotNull $sub.OwnerId
 
+        # get subscription by apiId
+        $sub = Get-AzApiManagementSubscription -Context $context -Scope $allApisScope
+
+        Assert-AreEqual $newSubscriptionId $sub.SubscriptionId
+        Assert-AreEqual $patchedName $sub.Name
+        Assert-AreEqual $patchedPk $sub.PrimaryKey
+        Assert-AreEqual $patchedSk $sub.SecondaryKey
+        Assert-AreEqual $newSubscriptionState $sub.State
+        Assert-AreEqual $patchedExpirationDate $sub.ExpirationDate
+        Assert-NotNull $sub.UserId
+        Assert-AreEqual 1 $sub.UserId
+        Assert-NotNull $sub.OwnerId
     }
     finally {
         # remove created subscription
@@ -2873,20 +2964,22 @@ function BackendServiceFabric-CrudTest {
 
 <#
 .SYNOPSIS
-Tests CRUD operations of APIVersion set.
+Tests CRUD operations of APIVersion set when performing Set ON Api
 #>
-function ApiVersionSet-CrudTest {
+function ApiVersionSet-SetCrudTest {
     Param($resourceGroupName, $serviceName)
 
     $context = New-AzApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
     # get all apis
     $apiversionsets = Get-AzApiManagementApiVersionSet -Context $context
-
     # there should be no API Version sets initially
     Assert-AreEqual 0 $apiversionsets.Count
-    
-    # create new api
+
+    # new api details
+    $swaggerPath = Join-Path (Join-Path "$TestOutputRoot" "Resources") "SwaggerPetStoreV2.json"
+    $path1 = "swaggerapifromFile"
+    $swaggerApiId1 = getAssetName        
     $newApiVersionSetId = getAssetName
     try {
         $newVersionSetName = getAssetName
@@ -2921,8 +3014,102 @@ function ApiVersionSet-CrudTest {
         Assert-AreEqual $description $newApiVersionSet.Description
         Assert-AreEqual Header $newApiVersionSet.VersioningScheme
         Assert-AreEqual $versionHeaderName $newApiVersionSet.VersionHeaderName
+        
+        # import api from file
+        $api = Import-AzApiManagementApi -Context $context -ApiId $swaggerApiId1 -SpecificationPath $swaggerPath -SpecificationFormat Swagger -Path $path1
+        Assert-AreEqual $swaggerApiId1 $api.ApiId
+        Assert-AreEqual $path1 $api.Path
+
+        # now add the api to the version set
+        $api.ApiVersionSetId = $newApiVersionSet.Id
+        $api.APIVersion = "v1"
+        $api.ApiVersionSetDescription = $newApiVersionSet.Description
+        $updatedApi = Set-AzApiManagementApi -InputObject $api -PassThru
+        Assert-NotNull $updatedApi
+        Assert-AreEqual $newApiVersionSet.Id $updatedApi.ApiVersionSetId
+        Assert-AreEqual $newApiVersionSet.Description $updatedApi.ApiVersionSetDescription
+        Assert-AreEqual "v1" $updatedApi.ApiVersion
     }
     finally {
+        # remove created api
+        $removed = Remove-AzApiManagementApi -Context $context -ApiId $swaggerApiId1 -PassThru
+        Assert-True { $removed }
+
+        # remove created api version set
+        $removed = Remove-AzApiManagementApiVersionSet -Context $context -ApiVersionSetId $newApiVersionSetId -PassThru
+        Assert-True { $removed }
+    }
+}
+
+<#
+.SYNOPSIS
+Tests CRUD operations of APIVersion set when Importing an API
+#>
+function ApiVersionSet-ImportCrudTest {
+    Param($resourceGroupName, $serviceName)
+
+    $context = New-AzApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+
+    # get all apis
+    $apiversionsets = Get-AzApiManagementApiVersionSet -Context $context
+
+    # there should be no API Version sets initially
+    Assert-AreEqual 0 $apiversionsets.Count
+    
+    # create new api and apiVersionSet
+    $swaggerApiId1 = getAssetName
+    $newApiVersionSetId = getAssetName
+    try {
+        $newVersionSetName = getAssetName
+        $queryName = getAssetName
+        $description = getAssetName
+
+        $newApiVersionSet = New-AzApiManagementApiVersionSet -Context $context -ApiVersionSetId $newApiVersionSetId -Name $newVersionSetName -Scheme Query `
+            -QueryName $queryName -Description $description
+
+        Assert-AreEqual $newApiVersionSetId $newApiVersionSet.ApiVersionSetId
+        Assert-AreEqual $newVersionSetName $newApiVersionSet.DisplayName
+        Assert-AreEqual $description $newApiVersionSet.Description
+        Assert-AreEqual Query $newApiVersionSet.VersioningScheme
+        Assert-AreEqual $queryName $newApiVersionSet.VersionQueryName
+        Assert-Null $newApiVersionSet.VersionHeaderName
+
+        # update the versioning scheme to be header based
+        $versionHeaderName = getAssetName
+        $newApiVersionSet = Set-AzApiManagementApiVersionSet -Context $context -ApiVersionSetId $newApiVersionSetId  `
+            -Scheme Header -HeaderName $versionHeaderName -PassThru
+
+        Assert-AreEqual $newApiVersionSetId $newApiVersionSet.ApiVersionSetId
+        Assert-AreEqual $newVersionSetName $newApiVersionSet.DisplayName
+        Assert-AreEqual $description $newApiVersionSet.Description
+        Assert-AreEqual Header $newApiVersionSet.VersioningScheme
+        Assert-AreEqual $versionHeaderName $newApiVersionSet.VersionHeaderName
+
+        # get the api version set using id
+        $newApiVersionSet = Get-AzApiManagementApiVersionSet -Context $context -ApiVersionSetId $newApiVersionSetId
+        Assert-AreEqual $newApiVersionSetId $newApiVersionSet.ApiVersionSetId
+        Assert-AreEqual $newVersionSetName $newApiVersionSet.DisplayName
+        Assert-AreEqual $description $newApiVersionSet.Description
+        Assert-AreEqual Header $newApiVersionSet.VersioningScheme
+        Assert-AreEqual $versionHeaderName $newApiVersionSet.VersionHeaderName
+
+        # now import an api into the ApiVersionSet
+        $swaggerPath = Join-Path (Join-Path "$TestOutputRoot" "Resources") "SwaggerPetStoreV2.json"
+        $path1 = "swaggerapifromFile"        
+        $apiVersion = "2"
+
+        $api = Import-AzApiManagementApi -Context $context -ApiId $swaggerApiId1 -SpecificationPath $swaggerPath -SpecificationFormat Swagger -Path $path1 -ApiVersion $apiVersion -ApiVersionSetId $newApiVersionSetId
+        Assert-NotNull $api
+        Assert-AreEqual $apiVersion $api.ApiVersion
+        Assert-AreEqual $swaggerApiId1 $api.ApiId
+        Assert-AreEqual $path1 $api.Path
+        Assert-AreEqual $newApiVersionSet.Id $api.ApiVersionSetId
+    }
+    finally {
+        # remove created api
+        $removed = Remove-AzApiManagementApi -Context $context -ApiId $swaggerApiId1 -PassThru
+        Assert-True { $removed }
+
         # remove created api version set
         $removed = Remove-AzApiManagementApiVersionSet -Context $context -ApiVersionSetId $newApiVersionSetId -PassThru
         Assert-True { $removed }
@@ -2943,6 +3130,7 @@ function ApiRevision-CrudTest {
     $swaggerApiId1 = getAssetName
     $apiRevisionId = "2"
     $apiReleaseId = getAssetName
+	$apiRevisionDescription = getAssetName
 
     try {
         # import api from file
@@ -2971,9 +3159,11 @@ function ApiRevision-CrudTest {
 
         # now lets create an api revision
         $expectedApiId = [string]::Format("{0};rev={1}", $swaggerApiId1, $apiRevisionId) 
-        $apiRevision = New-AzApiManagementApiRevision -Context $context -ApiId $swaggerApiId1 -ApiRevision $apiRevisionId -SourceApiRevision "1"
+        $apiRevision = New-AzApiManagementApiRevision -Context $context -ApiId $swaggerApiId1 -ApiRevision $apiRevisionId -SourceApiRevision "1" -ApiRevisionDescription $apiRevisionDescription
         Assert-AreEqual $expectedApiId $apiRevision.ApiId
         Assert-AreEqual $apiRevisionId $apiRevision.ApiRevision
+        Assert-NotNull $apiRevision.ApiRevisionDescription
+        Assert-AreEqual $apiRevisionDescription $apiRevision.ApiRevisionDescription
         Assert-AreEqual $path1 $apiRevision.Path        
         Assert-False { $apiRevision.IsCurrent }
 

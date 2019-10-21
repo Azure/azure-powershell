@@ -141,6 +141,9 @@
   <data name="Error_CloudError" xml:space="preserve">
     <value>ErrorCode: {0} ErrorMessage: {1}</value>
   </data>
+  <data name="Error_ConnectionIdentifierNull" xml:space="preserve">
+    <value>Connection Identifier cannot be null.</value>
+  </data>
   <data name="Error_GenericSyntax" xml:space="preserve">
     <value>Unable to complete the request. Check your syntax for errors.</value>
   </data>
@@ -160,7 +163,7 @@
     <value>Invalid Prefix: {0}, must be {1}</value>
   </data>
   <data name="Error_InvalidPrefixRange" xml:space="preserve">
-    <value>Invalid Prefix Range: {0} must be at least {1} not greater than {2}</value>
+    <value>Invalid Prefix Range: {0}, the prefix must be {1}</value>
   </data>
   <data name="Error_Mapping" xml:space="preserve">
     <value>Failed to map object {0}</value>
@@ -176,6 +179,9 @@
   </data>
   <data name="Error_NullSession" xml:space="preserve">
     <value>Session cannot be null or empty.</value>
+  </data>
+  <data name="Error_ProviderNotFound" xml:space="preserve">
+    <value>The provider {0} was not found at location {1}. Status: {2}</value>
   </data>
   <data name="Error_UnableToConvertLegacy" xml:space="preserve">
     <value>Unable to convert legacy peering because {0} was null or empty.</value>
@@ -194,5 +200,8 @@
   </data>
   <data name="Route_PrefixUnrecognized" xml:space="preserve">
     <value>Unrecognized routePrefix {0}</value>
+  </data>
+  <data name="ShouldProcessMessage" xml:space="preserve">
+    <value>This should return {0}</value>
   </data>
 </root>

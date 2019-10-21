@@ -21,7 +21,7 @@ New-AzKeyVaultCertificatePolicy [-IssuerName] <String> [-SubjectName] <String>
  [-KeyUsage <System.Collections.Generic.List`1[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags]>]
  [-Ekus <System.Collections.Generic.List`1[System.String]>] [-ValidityInMonths <Int32>]
  [-CertificateType <String>] [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>]
- [-KeyType <String>] [-KeyNotExportable] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-KeySize <Int32>] [-KeyType <String>] [-KeyNotExportable] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ New-AzKeyVaultCertificatePolicy [-IssuerName] <String> [[-SubjectName] <String>]
  [-KeyUsage <System.Collections.Generic.List`1[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags]>]
  [-Ekus <System.Collections.Generic.List`1[System.String]>] [-ValidityInMonths <Int32>]
  [-CertificateType <String>] [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>]
- [-KeyType <String>] [-KeyNotExportable] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-KeySize <Int32>] [-KeyType <String>] [-KeyNotExportable] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -199,6 +199,26 @@ Indicates that the key is not exportable.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -KeySize
+Specifies the key size of the certificate.
+The acceptable values for this parameter are:
+- 2048
+- 3072
+- 4096
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+Accepted values: 2048, 3072, 4096
 
 Required: False
 Position: Named

@@ -115,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualMachine
-Virutal Machines.
+Virtual Machines.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Security.Models.JitNetworkAccessPolicies.PSSecurityJitNetworkAccessPolicyVirtualMachine[]

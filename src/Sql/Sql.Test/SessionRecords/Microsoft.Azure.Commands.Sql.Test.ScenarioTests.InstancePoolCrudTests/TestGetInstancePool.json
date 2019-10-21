@@ -1,0 +1,652 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Network/virtualNetworks/vnet-cssinstancepool0?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmU3ZmU0YmQtOTBjNy00NTRlLThiYjYtZGM0NDY0OWYyN2IyL3Jlc291cmNlR3JvdXBzL2luc3RhbmNlUG9vbENTU2RlbW8vcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL3ZpcnR1YWxOZXR3b3Jrcy92bmV0LWNzc2luc3RhbmNlcG9vbDA/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "628aad18-fc5d-483e-8519-0c27dcaba9cf"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.13.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"d029c78e-8326-47ae-b850-8fd1a71a575e\""
+        ],
+        "x-ms-request-id": [
+          "a6be8c7e-e765-4ce7-a9aa-25ba68a4c9b6"
+        ],
+        "x-ms-correlation-request-id": [
+          "121f52be-c8d6-499d-95d7-9b3b6a1d3f21"
+        ],
+        "x-ms-arm-service-request-id": [
+          "2f5b526f-999e-4a0d-9416-7c0a0e35c91d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190730T221306Z:121f52be-c8d6-499d-95d7-9b3b6a1d3f21"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 30 Jul 2019 22:13:05 GMT"
+        ],
+        "Content-Length": [
+          "1762"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"vnet-cssinstancepool0\",\r\n  \"id\": \"/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Network/virtualNetworks/vnet-cssinstancepool0\",\r\n  \"etag\": \"W/\\\"d029c78e-8326-47ae-b850-8fd1a71a575e\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"canadacentral\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"fe3cf902-4098-42cc-8eab-e581f66f6f58\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"InstancePool\",\r\n        \"id\": \"/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Network/virtualNetworks/vnet-cssinstancepool0/subnets/InstancePool\",\r\n        \"etag\": \"W/\\\"d029c78e-8326-47ae-b850-8fd1a71a575e\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.0.0/24\",\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Network/networkSecurityGroups/nsg-cssinstancepool0\"\r\n          },\r\n          \"routeTable\": {\r\n            \"id\": \"/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Network/routeTables/rt-cssinstancepool0\"\r\n          },\r\n          \"delegations\": [],\r\n          \"privateEndpointNetworkPolicies\": \"Enabled\",\r\n          \"privateLinkServiceNetworkPolicies\": \"Enabled\"\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false,\r\n    \"enableVmProtection\": false\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Sql/instancePools/cssinstancepool0?api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmU3ZmU0YmQtOTBjNy00NTRlLThiYjYtZGM0NDY0OWYyN2IyL3Jlc291cmNlR3JvdXBzL2luc3RhbmNlUG9vbENTU2RlbW8vcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvaW5zdGFuY2VQb29scy9jc3NpbnN0YW5jZXBvb2wwP2FwaS12ZXJzaW9uPTIwMTgtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c24087fb-71b9-4977-8b03-1b864cb9dfe9"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.33.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b3cbd9ed-4a75-478c-988d-8909372fbfd7"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "00b9adc4-52b3-435c-8510-187509cad99d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190727T013347Z:00b9adc4-52b3-435c-8510-187509cad99d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 27 Jul 2019 01:33:46 GMT"
+        ],
+        "Content-Length": [
+          "579"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Sql/instancePools/cssinstancepool0' under resource group 'instancePoolCSSdemo' was not found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Sql/instancePools/cssinstancepool0?api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmU3ZmU0YmQtOTBjNy00NTRlLThiYjYtZGM0NDY0OWYyN2IyL3Jlc291cmNlR3JvdXBzL2luc3RhbmNlUG9vbENTU2RlbW8vcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvaW5zdGFuY2VQb29scy9jc3NpbnN0YW5jZXBvb2wwP2FwaS12ZXJzaW9uPTIwMTgtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.33.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "15146b7a-9da8-42d9-b550-6a08a47401bb"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "1a24d840-9b30-46f8-8574-375a7930c64b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190727T013448Z:1a24d840-9b30-46f8-8574-375a7930c64b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 27 Jul 2019 01:34:47 GMT"
+        ],
+        "Content-Length": [
+          "579"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"GP_Gen5\",\r\n    \"tier\": \"GeneralPurpose\",\r\n    \"family\": \"Gen5\"\r\n  },\r\n  \"properties\": {\r\n    \"subnetId\": \"/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Network/virtualNetworks/vnet-cssinstancepool0/subnets/InstancePool\",\r\n    \"vCores\": 16,\r\n    \"licenseType\": \"LicenseIncluded\"\r\n  },\r\n  \"location\": \"canadacentral\",\r\n  \"tags\": {\r\n    \"instance\": \"Pools\"\r\n  },\r\n  \"id\": \"/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Sql/instancePools/cssinstancepool0\",\r\n  \"name\": \"cssinstancepool0\",\r\n  \"type\": \"Microsoft.Sql/instancePools\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Sql/instancePools/cssinstancepool0?api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmU3ZmU0YmQtOTBjNy00NTRlLThiYjYtZGM0NDY0OWYyN2IyL3Jlc291cmNlR3JvdXBzL2luc3RhbmNlUG9vbENTU2RlbW8vcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvaW5zdGFuY2VQb29scy9jc3NpbnN0YW5jZXBvb2wwP2FwaS12ZXJzaW9uPTIwMTgtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fdd9d85a-2ed7-4618-88b9-af4060e2cc10"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.33.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "36b1fb8e-e145-4304-8c59-25861ffe49ab"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "988fd3e8-cd14-45bf-a152-9f113e17adf3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190727T013448Z:988fd3e8-cd14-45bf-a152-9f113e17adf3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 27 Jul 2019 01:34:47 GMT"
+        ],
+        "Content-Length": [
+          "579"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"GP_Gen5\",\r\n    \"tier\": \"GeneralPurpose\",\r\n    \"family\": \"Gen5\"\r\n  },\r\n  \"properties\": {\r\n    \"subnetId\": \"/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Network/virtualNetworks/vnet-cssinstancepool0/subnets/InstancePool\",\r\n    \"vCores\": 16,\r\n    \"licenseType\": \"LicenseIncluded\"\r\n  },\r\n  \"location\": \"canadacentral\",\r\n  \"tags\": {\r\n    \"instance\": \"Pools\"\r\n  },\r\n  \"id\": \"/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Sql/instancePools/cssinstancepool0\",\r\n  \"name\": \"cssinstancepool0\",\r\n  \"type\": \"Microsoft.Sql/instancePools\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Sql/instancePools/cssinstancepool0?api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmU3ZmU0YmQtOTBjNy00NTRlLThiYjYtZGM0NDY0OWYyN2IyL3Jlc291cmNlR3JvdXBzL2luc3RhbmNlUG9vbENTU2RlbW8vcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvaW5zdGFuY2VQb29scy9jc3NpbnN0YW5jZXBvb2wwP2FwaS12ZXJzaW9uPTIwMTgtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0ec5fbeb-f2cf-40ae-a4b6-5ec655f25cfe"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.33.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b8b5c34f-0ad0-4658-bebd-9b8eab0850e5"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "21dd0bee-fa87-4e49-bbf1-b8e0c9d01bc4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190727T013448Z:21dd0bee-fa87-4e49-bbf1-b8e0c9d01bc4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 27 Jul 2019 01:34:47 GMT"
+        ],
+        "Content-Length": [
+          "579"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"GP_Gen5\",\r\n    \"tier\": \"GeneralPurpose\",\r\n    \"family\": \"Gen5\"\r\n  },\r\n  \"properties\": {\r\n    \"subnetId\": \"/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Network/virtualNetworks/vnet-cssinstancepool0/subnets/InstancePool\",\r\n    \"vCores\": 16,\r\n    \"licenseType\": \"LicenseIncluded\"\r\n  },\r\n  \"location\": \"canadacentral\",\r\n  \"tags\": {\r\n    \"instance\": \"Pools\"\r\n  },\r\n  \"id\": \"/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Sql/instancePools/cssinstancepool0\",\r\n  \"name\": \"cssinstancepool0\",\r\n  \"type\": \"Microsoft.Sql/instancePools\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Sql/instancePools/cssinstancepool0?api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmU3ZmU0YmQtOTBjNy00NTRlLThiYjYtZGM0NDY0OWYyN2IyL3Jlc291cmNlR3JvdXBzL2luc3RhbmNlUG9vbENTU2RlbW8vcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvaW5zdGFuY2VQb29scy9jc3NpbnN0YW5jZXBvb2wwP2FwaS12ZXJzaW9uPTIwMTgtMDYtMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"GP_Gen5\",\r\n    \"tier\": \"GeneralPurpose\",\r\n    \"family\": \"Gen5\"\r\n  },\r\n  \"properties\": {\r\n    \"subnetId\": \"/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Network/virtualNetworks/vnet-cssinstancepool0/subnets/InstancePool\",\r\n    \"vCores\": 16,\r\n    \"licenseType\": \"LicenseIncluded\"\r\n  },\r\n  \"location\": \"canadacentral\",\r\n  \"tags\": {\r\n    \"instance\": \"Pools\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "12721f69-df83-45d4-8f9b-7c71c9707441"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.33.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "450"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Sql/locations/canadacentral/instancePoolOperationResults/bd28f629-3395-4d2d-b2b7-951b9663b9f3?api-version=2018-06-01-preview"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Sql/locations/canadacentral/instancePoolAzureAsyncOperation/bd28f629-3395-4d2d-b2b7-951b9663b9f3?api-version=2018-06-01-preview"
+        ],
+        "x-ms-request-id": [
+          "bd476b2e-3943-4eec-b6f3-daa152275081"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "c1e6298c-5980-4d49-ae2c-2bec3f6ced84"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190727T013347Z:c1e6298c-5980-4d49-ae2c-2bec3f6ced84"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 27 Jul 2019 01:33:47 GMT"
+        ],
+        "Content-Length": [
+          "78"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"UpsertInstancePoolAsync\",\r\n  \"startTime\": \"2019-07-27T01:33:47.303Z\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Sql/locations/canadacentral/instancePoolAzureAsyncOperation/bd28f629-3395-4d2d-b2b7-951b9663b9f3?api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmU3ZmU0YmQtOTBjNy00NTRlLThiYjYtZGM0NDY0OWYyN2IyL3Jlc291cmNlR3JvdXBzL2luc3RhbmNlUG9vbENTU2RlbW8vcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL2NhbmFkYWNlbnRyYWwvaW5zdGFuY2VQb29sQXp1cmVBc3luY09wZXJhdGlvbi9iZDI4ZjYyOS0zMzk1LTRkMmQtYjJiNy05NTFiOTY2M2I5ZjM/YXBpLXZlcnNpb249MjAxOC0wNi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.33.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "x-ms-request-id": [
+          "1144f77d-6e12-460e-83a4-f22e0e3dde4c"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "56861c4e-2e5e-4e9f-a107-c9807845d8c4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190727T013447Z:56861c4e-2e5e-4e9f-a107-c9807845d8c4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 27 Jul 2019 01:34:47 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"bd28f629-3395-4d2d-b2b7-951b9663b9f3\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2019-07-27T01:33:47.303Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Sql/instancePools?api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmU3ZmU0YmQtOTBjNy00NTRlLThiYjYtZGM0NDY0OWYyN2IyL3Jlc291cmNlR3JvdXBzL2luc3RhbmNlUG9vbENTU2RlbW8vcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvaW5zdGFuY2VQb29scz9hcGktdmVyc2lvbj0yMDE4LTA2LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "49f22023-771d-4685-822e-7d31014a5338"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.33.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "eb7fa51a-50e9-4a34-a329-28097e969cab"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-correlation-request-id": [
+          "152a2623-2604-4bb2-b947-8c1e3bbbfe96"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190727T013448Z:152a2623-2604-4bb2-b947-8c1e3bbbfe96"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 27 Jul 2019 01:34:47 GMT"
+        ],
+        "Content-Length": [
+          "591"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"GP_Gen5\",\r\n        \"tier\": \"GeneralPurpose\",\r\n        \"family\": \"Gen5\"\r\n      },\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Network/virtualNetworks/vnet-cssinstancepool0/subnets/InstancePool\",\r\n        \"vCores\": 16,\r\n        \"licenseType\": \"LicenseIncluded\"\r\n      },\r\n      \"location\": \"canadacentral\",\r\n      \"tags\": {\r\n        \"instance\": \"Pools\"\r\n      },\r\n      \"id\": \"/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Sql/instancePools/cssinstancepool0\",\r\n      \"name\": \"cssinstancepool0\",\r\n      \"type\": \"Microsoft.Sql/instancePools\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/providers/Microsoft.Sql/instancePools?api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmU3ZmU0YmQtOTBjNy00NTRlLThiYjYtZGM0NDY0OWYyN2IyL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2luc3RhbmNlUG9vbHM/YXBpLXZlcnNpb249MjAxOC0wNi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "28dd2236-16c5-45bd-9ae1-beaf40ecf75d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.33.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-original-request-ids": [
+          "f50cffa9-738f-4da5-a062-3d8d656dc8b8",
+          "a56030dc-381f-42ea-8ca3-920f0a71b617"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-request-id": [
+          "6912f255-56b2-4a7d-bc30-d37b1e1c3055"
+        ],
+        "x-ms-correlation-request-id": [
+          "6912f255-56b2-4a7d-bc30-d37b1e1c3055"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190727T013448Z:6912f255-56b2-4a7d-bc30-d37b1e1c3055"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 27 Jul 2019 01:34:47 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "1705"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"GP_Gen5\",\r\n        \"tier\": \"GeneralPurpose\",\r\n        \"family\": \"Gen5\"\r\n      },\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/poolsPS/providers/Microsoft.Network/virtualNetworks/vnet-ps-instancepool-0/subnets/InstancePool\",\r\n        \"vCores\": 8,\r\n        \"licenseType\": \"LicenseIncluded\"\r\n      },\r\n      \"location\": \"canadacentral\",\r\n      \"id\": \"/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/poolsPS/providers/Microsoft.Sql/instancePools/ps-instancepool-0\",\r\n      \"name\": \"ps-instancepool-0\",\r\n      \"type\": \"Microsoft.Sql/instancePools\"\r\n    },\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"GP_Gen5\",\r\n        \"tier\": \"GeneralPurpose\",\r\n        \"family\": \"Gen5\"\r\n      },\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Network/virtualNetworks/vnet-cssinstancepool0/subnets/InstancePool\",\r\n        \"vCores\": 16,\r\n        \"licenseType\": \"LicenseIncluded\"\r\n      },\r\n      \"location\": \"canadacentral\",\r\n      \"tags\": {\r\n        \"instance\": \"Pools\"\r\n      },\r\n      \"id\": \"/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Sql/instancePools/cssinstancepool0\",\r\n      \"name\": \"cssinstancepool0\",\r\n      \"type\": \"Microsoft.Sql/instancePools\"\r\n    },\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"GP_Gen5\",\r\n        \"tier\": \"GeneralPurpose\",\r\n        \"family\": \"Gen5\"\r\n      },\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancepoolnetsdkcanadacentral/providers/Microsoft.Network/virtualNetworks/vnet-netsdk-jp/subnets/InstancePool\",\r\n        \"vCores\": 16,\r\n        \"licenseType\": \"LicenseIncluded\"\r\n      },\r\n      \"location\": \"eastus2euap\",\r\n      \"tags\": {\r\n        \"tagKey2\": \"TagValue2\"\r\n      },\r\n      \"id\": \"/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancepoolnetsdkcanadacentral/providers/Microsoft.Sql/instancePools/netsdk-jp\",\r\n      \"name\": \"netsdk-jp\",\r\n      \"type\": \"Microsoft.Sql/instancePools\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Sql/instancePools/cssinstancepool0/managedInstances?api-version=2018-06-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmU3ZmU0YmQtOTBjNy00NTRlLThiYjYtZGM0NDY0OWYyN2IyL3Jlc291cmNlR3JvdXBzL2luc3RhbmNlUG9vbENTU2RlbW8vcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvaW5zdGFuY2VQb29scy9jc3NpbnN0YW5jZXBvb2wwL21hbmFnZWRJbnN0YW5jZXM/YXBpLXZlcnNpb249MjAxOC0wNi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f8e8bb09-118c-4694-a52e-b43766fca538"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.33.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "246c8ed6-3de5-4a7e-874c-88196516a9f0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-correlation-request-id": [
+          "6feb576b-7de4-4620-b7f2-3eccf41560aa"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190727T013448Z:6feb576b-7de4-4620-b7f2-3eccf41560aa"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 27 Jul 2019 01:34:47 GMT"
+        ],
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "2e7fe4bd-90c7-454e-8bb6-dc44649f27b2"
+  }
+}

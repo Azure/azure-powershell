@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 ActivityName = ActivityName,
                 Status = Status
             };
-            WriteObject(DataFactoryClient.ListActivityRuns(activityRunFilter));
+            WriteObject(DataFactoryClient.ListActivityRuns(activityRunFilter), true);
         }
     }
 }

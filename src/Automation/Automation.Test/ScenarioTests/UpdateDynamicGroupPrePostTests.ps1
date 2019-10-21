@@ -18,13 +18,13 @@
 #    $aa = "JemalOMSAutomation"
 # 2. need to have a resource group in which the automation account exist
 #    eg. $rg = "mms-wcus"
-# 2. need to have windows azure Vms that are already onborded to Update managment
+# 2. need to have windows azure Vms that are already onborded to Update management
 #     eg.  $azureVMIdsW
-# 3 need to have Linux azure Vms that are already onborded to Update managment
+# 3 need to have Linux azure Vms that are already onborded to Update management
 #     eg. $azureVMIdsL
-# 4. need to have non azure computers that are already onborded to update managment
+# 4. need to have non azure computers that are already onborded to update management
 #     eg. $nonAzurecomputers
-# 5. need to have a subscription or resource group id in which update managment onboarded Vms exists
+# 5. need to have a subscription or resource group id in which update management onboarded Vms exists
 #.....eg $query1Scope = @(
 #       "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-wcus"
 #   )

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 4682807D-34E8-4057-8894-36820447067B
@@ -152,18 +152,20 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-Specifies the service tier of the workspace.
-Valid values are: 
+Specifies the service tier of the workspace. For more information regarding which value to use please check https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers.
+Valid values are:
 - free
-- standard
-- standalone
+- pergb2018
+- pernode
 - premium
+- standalone
+- standard
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: free, standard, premium, pernode, standalone
+Accepted values: free, pergb2018, pernode, premium, standalone, standard
 
 Required: False
 Position: 3

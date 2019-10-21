@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Management.CognitiveServices.ArgumentCompleters;
+using Microsoft.Azure.Commands.Management.CognitiveServices.Models;
 using Microsoft.Azure.Commands.Management.CognitiveServices.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CognitiveServices;
@@ -93,6 +94,13 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [AllowEmptyCollection]
         public string CustomSubdomainName { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "NetworkRuleSet is used to define a set of configuration rules for firewalls and virtual networks, as well as to set values for network properties such as how to handle requests that don't match any of the defined rules")]
+        [ValidateNotNull]
+        [AllowEmptyCollection]
+        public PSNetworkRuleSet NetworkRuleSet { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
@@ -102,18 +110,23 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
             RunCmdLet(() =>
             {
+                var properties = new JObject();
+                if (!string.IsNullOrWhiteSpace(CustomSubdomainName))
+                {
+                    properties["customSubDomainName"] = CustomSubdomainName;
+                }
+                if (NetworkRuleSet != null)
+                {
+                    properties["networkAcls"] = JToken.FromObject(NetworkRuleSet);
+                }
+
                 CognitiveServicesAccountCreateParameters createParameters = new CognitiveServicesAccountCreateParameters()
                 {
                     Location = Location,
                     Kind = Type, // must have value, mandatory parameter
                     Sku = new Sku(SkuName),
                     Tags = TagsConversionHelper.CreateTagDictionary(Tag),
-                    Properties = string.IsNullOrWhiteSpace(CustomSubdomainName) ?
-                        new object():
-                        JToken.Parse(string.Format(
-                            CultureInfo.InvariantCulture,
-                            "{{\"customSubDomainName\":\"{0}\"}}",
-                            CustomSubdomainName))
+                    Properties = properties
                 };
 
                 if (ShouldProcess(

@@ -38,7 +38,7 @@ The **Get-AzRecoveryServicesAsrPolicy** cmdlet gets the list of configured Azure
 PS C:\> $Policy = Get-AzRecoveryServicesAsrPolicy
 ```
 
-Retuns the list of replication policies
+Returns the list of replication policies
 
 ### Example 2
 ```
@@ -52,7 +52,7 @@ ReplicationProvider         : HyperVReplicaAzure
 ReplicationProviderSettings : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRHyperVReplicaAzurePolicyDetails
 ```
 
-Retuns replication policy with name.
+Returns replication policy with name.
 
 ### Example 3
 ```

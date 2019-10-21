@@ -16,30 +16,19 @@ using Microsoft.Azure.Commands.Blueprint.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Internal.Subscriptions;
-using System;
-using Microsoft.Rest;
-using Microsoft.Rest.Azure;
-using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
-using Microsoft.Azure.Commands.Blueprint.Models;
-using Microsoft.Azure.Management.Blueprint.Models;
-using System.Collections.Generic;
-using System.Collections;
-using System.Linq;
-using System.Net.Http;
-using System.Net;
-using System.Threading;
-using Newtonsoft.Json.Linq;
-using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
-using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
+using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
+using Microsoft.Rest;
+using System;
+using System.IO;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Provider = Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models.Provider;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     public class BlueprintCmdletBase : AzureRMCmdlet
     {
-        #region Properties
         /// <summary>
         /// The blueprint client.
         /// </summary>
@@ -111,9 +100,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             set => resourceManagerClient = value;
         }
 
-        #endregion Properties
-
-        #region Cmdlet Overrides
         protected override void WriteExceptionError(Exception ex)
         {
             var aggEx = ex as AggregateException;
@@ -129,159 +115,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
             base.WriteExceptionError(ex);
         }
-        #endregion Cmdlet Overrides
-
-        #region Protected Methods
-
-        protected void ThrowIfAssignmentExits(string scope, string name)
-        {
-            PSBlueprintAssignment assignment = null;
-
-            try
-            {
-                assignment = BlueprintClient.GetBlueprintAssignment(scope, name);
-            }
-            catch (Exception ex)
-            {
-                if (ex is CloudException cex && cex.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
-                {
-                    // if exception is for a reason other than .NotFound, pass it to the caller.
-                    throw;
-                }
-            }
-
-            if (assignment != null)
-            {
-                throw new Exception(string.Format(Resources.AssignmentExists, name, scope));
-            }
-        }
-
-        protected void ThrowIfAssignmentNotExist(string scope, string name)
-        {
-            PSBlueprintAssignment assignment = null;
-
-            try
-            {
-                assignment = BlueprintClient.GetBlueprintAssignment(scope, name);
-            }
-            catch (Exception ex)
-            {
-                if (ex is CloudException cex && cex.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
-                {
-                    // if exception is for a reason other than .NotFound, pass it to the caller.
-                    throw;
-                }
-            }
-
-            if (assignment == null)
-            {
-                throw new Exception(string.Format(Resources.AssignmentNotExist, name, scope));
-            }
-        }
-
-        /// <summary>
-        /// Creates an assignment object to be submitted
-        /// </summary>
-        /// <param name="identityType"></param>
-        /// <param name="bpLocation"></param>
-        /// <param name="blueprintId"></param>
-        /// <param name="lockMode"></param>
-        /// <param name="Parameters"></param>
-        /// <param name="ResourceGroups"></param>
-        /// <returns></returns>
-        protected Assignment CreateAssignmentObject(string identityType, string userAssignedIdentity, string bpLocation, string blueprintId, PSLockMode? lockMode, Hashtable Parameters, Hashtable ResourceGroups, Hashtable SecureStringParameters)
-        {
-            Dictionary<string, UserAssignedIdentity> userAssignedIdentities = null;
-
-            if (userAssignedIdentity != null)
-            {
-                userAssignedIdentities = new Dictionary<string, UserAssignedIdentity>()
-                {
-                    { userAssignedIdentity, new UserAssignedIdentity() }
-                };
-            }
-
-            var localAssignment = new Assignment
-            {
-                Identity = new ManagedServiceIdentity { Type = identityType, UserAssignedIdentities = userAssignedIdentities },
-                Location = bpLocation,
-                BlueprintId = blueprintId,
-                Locks = new AssignmentLockSettings { Mode = lockMode == null ? PSLockMode.None.ToString() : lockMode.ToString() },
-                Parameters = new Dictionary<string, ParameterValueBase>(),
-                ResourceGroups = new Dictionary<string, ResourceGroupValue>()
-            };
-
-            if (Parameters != null)
-            {
-                foreach (var key in Parameters.Keys)
-                {
-                    var value = new ParameterValue(Parameters[key], null);   
-                    localAssignment.Parameters.Add(key.ToString(), value);
-                }   
-            }
-
-            if (SecureStringParameters != null)
-            {
-                foreach (var key in SecureStringParameters.Keys)
-                {
-                    var kvp = SecureStringParameters[key] as Hashtable;
-                    string keyVaultId = null;
-                    string secretName = null;
-                    string secretVersion = null;
-
-                    foreach (var k in kvp.Keys)
-                    {
-                        var paramKey = k.ToString();
-
-                        if (string.Equals(paramKey, "keyVaultId", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            keyVaultId = kvp[k].ToString();
-                        }
-                        else if (string.Equals(paramKey, "secretName", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            secretName = kvp[k].ToString();
-                        }
-                        else if (string.Equals(paramKey, "secretVersion", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            secretVersion = kvp[k].ToString();
-                        }
-                    }
-
-                    var secretValue = new SecretReferenceParameterValue(new SecretValueReference(new KeyVaultReference(keyVaultId), secretName, secretVersion));
-                    localAssignment.Parameters.Add(key.ToString(), secretValue);
-                }
-            }
-
-            if (ResourceGroups != null)
-            {
-                foreach (var key in ResourceGroups.Keys)
-                {
-                    var kvp = ResourceGroups[key] as Hashtable;
-                    string name = null;
-                    string location = null;
-
-                    foreach (var k in kvp.Keys)
-                    {
-                        var rgKey = k.ToString();
-
-                        if (string.Equals(rgKey, "name", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            name = kvp[k].ToString();
-                        }
-
-                        if (string.Equals(rgKey, "location", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            location = kvp[k].ToString();
-                        }
-                    }
-
-                    var rgv = new ResourceGroupValue(name, location);
-                    localAssignment.ResourceGroups.Add(key.ToString(), rgv);
-                }
-            }
-
-            return localAssignment;
-        }
 
         /// <summary>
         /// Register Blueprint RP with a subscription.
@@ -289,140 +122,97 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// <param name="subscriptionId"> SubscriptionId passed from the cmdlet</param>
         protected void RegisterBlueprintRp(string subscriptionId)
         {
+            // To save time, we'll check the registration state first before making the register call.
             ResourceManagerClient.SubscriptionId = subscriptionId;
-            var response = ResourceManagerClient.Providers.Register(BlueprintConstants.BlueprintProviderNamespace);
+            Provider provider = ResourceManagerClient.Providers.Get(BlueprintConstants.BlueprintProviderNamespace);
 
-            if (response == null)
+            if (provider.RegistrationState == RegistrationState.Registered)
             {
-                throw new KeyNotFoundException(string.Format(Resources.ResourceProviderRegistrationFailed, BlueprintConstants.BlueprintProviderNamespace));
-            }
-        }
-
-        /// <summary>
-        /// Get Blueprint SPN object Id for this tenant
-        /// </summary>
-        /// <param name="scope"></param>
-        /// <param name="assignmentName"></param>
-        /// <returns>"spnObjectId"</returns>
-        protected string GetBlueprintSpn(string scope, string assignmentName)
-        {
-            var response = BlueprintClient.GetBlueprintSpnObjectId(scope, assignmentName);
-
-            if (response == null)
-            {
-                throw new KeyNotFoundException(Resources.BlueprintSpnObjectIdNotFound);
+                return;
             }
 
-            return response.ObjectId;
-        }
+            // The reason we poll for the registrationState for RP registration is because we'd like to make sure the RP registering
+            // happens before the blueprint creation/assignment request is submitted. This should help alleviate the spike in
+            // blueprint creation/assignment failures due to RP not being registered.
+            const int MaxPoll = 20;
+            int pollCount = 0;
 
-        /// <summary>
-        /// Assign owner role to Blueprint RP (so that we can do deployments)
-        /// </summary>
-        /// <param name="subscriptionId"></param>
-        /// <param name="spnObjectId"></param>
-        protected void AssignOwnerPermission(string subscriptionId, string spnObjectId)
-        {
-            string scope = string.Format(BlueprintConstants.SubscriptionScope, subscriptionId);
-
-            var filter = new Rest.Azure.OData.ODataQuery<RoleAssignmentFilter>();
-            filter.SetFilter(a => a.AssignedTo(spnObjectId));
-
-            var roleAssignmentList = AuthorizationManagementClient.RoleAssignments.ListForScopeAsync(scope, filter).GetAwaiter().GetResult();
-
-            var roleAssignment = roleAssignmentList?
-                .Where(ra => ra.Id.EndsWith(BlueprintConstants.OwnerRoleDefinitionId))
-                .FirstOrDefault();
-
-            if (roleAssignment != null) return;
-
-            var roleAssignmentParams = new RoleAssignmentProperties(
-                roleDefinitionId: BlueprintConstants.OwnerRoleDefinitionId, principalId: spnObjectId);
-
-            try
+            do
             {
-                AuthorizationManagementClient.RoleAssignments.CreateAsync(scope: scope, 
-                    roleAssignmentName: Guid.NewGuid().ToString(), 
-                    parameters: new RoleAssignmentCreateParameters(roleAssignmentParams))
-                    .GetAwaiter().GetResult();
-            }
-            catch (Exception ex)
-            {
-                // ignore if it already exists
-                if (ex is CloudException cex && cex.Response.StatusCode != HttpStatusCode.Conflict)
+                if (pollCount > MaxPoll)
                 {
-                    throw;
+                    // We should ideally throw a timeout exception here but we're collecting logs on service side about RP registration failures
+                    // and would like to continue with blueprint/assignment creation flow.
+                    //
+                    // To-Do: Add TimeoutException
+                    break;
                 }
-            }
+
+                provider = ResourceManagerClient.Providers.Register(BlueprintConstants
+                    .BlueprintProviderNamespace); // Instead of Get, do Register call again since GET takes its sweet time to return the status.
+
+                TestMockSupport.Delay(TimeSpan.FromSeconds(1));
+
+                pollCount++;
+
+            } while (provider.RegistrationState != RegistrationState.Registered);
         }
 
         /// <summary>
-        /// Get management group ancestors for a given subscription
+        /// Expects a string that consist of full file path with file extension and check if it exists.
         /// </summary>
-        /// <param name="subscriptionId"></param>
+        /// <param name="fileFullName"></param>
         /// <returns></returns>
-        protected List<string> GetManagementGroupAncestorsForSubscription(string subscriptionId)
+        protected string GetValidatedFilePath(string fileFullName)
         {
-            List<string> managementGroupAncestors = new List<string>();
-
-            if (subscriptionId != null)
+            var filePath = ResolveUserPath(fileFullName);
+            if (filePath == null || !new FileInfo(filePath).Exists)
             {
-                string result = GetManagementGroupAncestorsAsync(subscriptionId).GetAwaiter().GetResult();
-                var resultJObjects = JObject.Parse(result);
-                var managementGroupAncestorsObjects = resultJObjects["managementGroupAncestors"].Children().ToList();
-
-                foreach (var mgObject in managementGroupAncestorsObjects)
-                {
-                    managementGroupAncestors.Add(mgObject.ToString());
-                }
+                throw new FileNotFoundException(string.Format("Cannot find path: " + fileFullName));
             }
-            return managementGroupAncestors;
+
+            return filePath;
         }
 
         /// <summary>
-        /// Task for get management group ancestors
+        ///  This overloaded function expects a folder path and a file name and combines them. Checks if resulting full file name exist.
         /// </summary>
-        /// <param name="subscriptionId"></param>
+        /// <param name="inputPath"></param>
+        /// <param name="fileName"></param>
         /// <returns></returns>
-        private async Task<string> GetManagementGroupAncestorsAsync(string subscriptionId)
+        protected string GetValidatedFilePath(string path, string fileName)
         {
-            var url = string.Format(BlueprintConstants.MgAncestorsRequestUrlTemplate, subscriptionId);
-            var httpRequest = new HttpRequestMessage();
-            httpRequest.Method = new HttpMethod("GET");
-            httpRequest.RequestUri = new Uri(url);
+            var resolvedPath = ResolveUserPath(path);
 
-            HttpResponseMessage httpResponse = null;
-            string responseContent = null;
+            var blueprintPath = Path.Combine(resolvedPath, fileName + ".json");
 
-            try
+            if (!AzureSession.Instance.DataStore.FileExists(blueprintPath))
             {
-                using (HttpClient client = new HttpClient())
-                {
-                    await ClientCredentials.ProcessHttpRequestAsync(httpRequest, new CancellationToken(false)).ConfigureAwait(false);
-                    httpResponse = await client.SendAsync(httpRequest, new CancellationToken(false));
-
-                    HttpStatusCode statusCode = httpResponse.StatusCode;
-                    // If we can't find the given subscription in the tenant, show error message.
-                    if (statusCode == HttpStatusCode.NotFound)
-                    {
-                        CloudException cex = new CloudException(string.Format("Subscription Id '{0}' could not be found in current tenant.", subscriptionId));
-                        throw cex;
-                    }
-
-                    responseContent = httpResponse.EnsureSuccessStatusCode().Content.ReadAsStringAsync().Result;
-                }
-                return responseContent;
-
+                throw new Exception(
+                    $"Cannot locate a file with the name {fileName} in: {resolvedPath}.");
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-                throw;
-            }
+
+            return blueprintPath;
         }
 
-        protected string FormatManagementGroupAncestorScope(string mg) => string.Format(BlueprintConstants.ManagementGroupScope, mg);
+        /// <summary>
+        /// Combines input folder path and folder name and check if the resulting path exists. 
+        /// </summary>
+        /// <param name="inputPath"></param>
+        /// <param name="folderName"></param>
+        /// <returns></returns>
+        protected string GetValidatedFolderPath(string path, string folderName)
+        {
+            var resolvedPath = ResolveUserPath(path);
 
-        #endregion Protected Methods
+            var artifactsPath = Path.Combine(resolvedPath, folderName);
+
+            if (!AzureSession.Instance.DataStore.DirectoryExists(artifactsPath))
+            {
+                artifactsPath = null;
+            }
+
+            return artifactsPath;
+        }
     }
 }

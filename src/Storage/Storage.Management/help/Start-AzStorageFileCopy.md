@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: A96A1A67-6C9C-499F-9935-B90F7ACEB50E
@@ -139,7 +139,7 @@ If this cmdlet does not receive a successful response before the interval elapse
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases:
+Aliases: ClientTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named
@@ -281,7 +281,7 @@ Specifies the length of the time-out period for the server part of a request.
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases:
+Aliases: ServerTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named

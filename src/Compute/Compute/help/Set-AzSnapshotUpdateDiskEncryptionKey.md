@@ -57,7 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecretUrl
-Specifes the secret Url.
+Specifies the secret Url.
 
 ```yaml
 Type: System.String

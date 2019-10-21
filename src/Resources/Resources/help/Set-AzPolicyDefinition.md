@@ -64,6 +64,22 @@ PS C:\> Set-AzPolicyDefinition -Name 'VMPolicyDefinition' -Mode 'All'
 This command updates the policy definition named VMPolicyDefinition by using the Set-AzPolicyDefinition cmdlet to 
 set its mode property to 'All'.
 
+### Example 3: Update the metadata of a policy definition
+```
+PS C:\> Set-AzPolicyDefinition -Name 'VMPolicyDefinition' -Metadata '{"category":"Virtual Machine"}'
+
+
+Name               : VMPolicyDefinition
+ResourceId         : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/policyDefinitions/VMPolicyDefinition
+ResourceName       : VMPolicyDefinition
+ResourceType       : Microsoft.Authorization/policyDefinitions
+SubscriptionId     : 11111111-1111-1111-1111-111111111111
+Properties         : @{displayName=VMPolicyDefinition; policyType=Custom; mode=All; metadata=; policyRule=}
+PolicyDefinitionId : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/policyDefinitions/VMPolicyDefinition
+```
+
+This command updates the metadata of a policy definition named VMPolicyDefinition to indicate its category is "Virtual Machine".
+
 ## PARAMETERS
 
 ### -ApiVersion
@@ -264,7 +280,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

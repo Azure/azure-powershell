@@ -108,6 +108,20 @@ function Get-NrpResourceGroupName
 	Get-ResourceGroupName "psnrp";
 }
 
+function Wait-Vm($vm)
+{
+    # Don't wait more than N minutes to avoid getting stuck in a loop if VM can't recover
+    $minutes = 30;
+    while((Get-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name).ProvisioningState -ne "Succeeded")
+    {
+        Start-TestSleep 60;
+        if(--$minutes -eq 0)
+        {
+            break;
+        }
+    }
+}
+
 <#
 .SYNOPSIS
 Get existing Network Watcher.
@@ -505,7 +519,8 @@ function Test-PacketCapture
         Assert-AreEqual $pc1.Filters[0].RemoteIPAddress 127.0.0.1-127.0.0.255
         Assert-AreEqual $pc1.Filters[1].LocalIPAddress 127.0.0.1;127.0.0.5
         Assert-AreEqual $pc1.StorageLocation.FilePath C:\tmp\Capture.cap
-        Assert-AreEqual $pcList.Count 2
+
+        $currentCount = $pcList.Count;
 
         #Stop packet capture
         $job = Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
@@ -520,7 +535,7 @@ function Test-PacketCapture
 
         #List packet captures
         $pcList = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw
-        Assert-AreEqual $pcList.Count 1
+        Assert-AreEqual $pcList.Count ($currentCount - 1)
 
         #Remove packet capture
         Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2
@@ -560,8 +575,8 @@ function Test-Troubleshoot
 
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-        $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
         $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
  
         # Create the publicip
@@ -1005,20 +1020,25 @@ function Test-ConnectionMonitor
 
         #Remove connection monitor
         Remove-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName1
+        Wait-Vm $vm
 
         #Create connection monitor
         $job1 = New-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -ConfigureOnly -MonitoringIntervalInSeconds 30 -AsJob
         $job1 | Wait-Job
-        ###
         $cm1 = $job1 | Receive-Job
-        Remove-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1
 
+        Remove-AzNetworkWatcherConnectionMonitor -Location $locationMod -Name $cmName1
+        Wait-Vm $vm
+
+        #Create connection monitor
         $job1 = New-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -ConfigureOnly -MonitoringIntervalInSeconds 30 -AsJob
         $job1 | Wait-Job
         $cm1 = $job1 | Receive-Job
 
         Remove-AzNetworkWatcherConnectionMonitor -ResourceId $cm1.Id
+        Wait-Vm $vm
 
+        #Create connection monitor
         $job1 = New-AzNetworkWatcherConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -ConfigureOnly -MonitoringIntervalInSeconds 30 -AsJob
         $job1 | Wait-Job
         $cm1 = $job1 | Receive-Job
@@ -1026,6 +1046,7 @@ function Test-ConnectionMonitor
         $rmJob = Remove-AzNetworkWatcherConnectionMonitor -InputObject $cm1 -AsJob -PassThru
         $rmJob | Wait-Job
         $result = $rmJob | Receive-Job
+        Wait-Vm $vm
 
         Assert-ThrowsLike { Set-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name "fakeName" -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 80 -MonitoringIntervalInSeconds 42 } "*not*found*"
 

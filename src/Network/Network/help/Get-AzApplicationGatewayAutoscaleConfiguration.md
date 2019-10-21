@@ -30,7 +30,7 @@ PS C:\> $autoscaleConfiguration.MinCapacity
 ```
 
 The first command gets the application gateway and stores it in $gw variable.
-The second command extracts out the autoscale configuration from the applicationg gateway.
+The second command extracts out the autoscale configuration from the application gateway.
 
 ## PARAMETERS
 

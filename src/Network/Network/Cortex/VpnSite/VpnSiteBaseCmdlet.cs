@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (MNM.VpnSite vpnSite in vpnSites)
                 {
                     PSVpnSite siteToReturn = ToPsVpnSite(vpnSite);
-                    siteToReturn.ResourceGroupName = resourceGroupName;
+                    siteToReturn.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(vpnSite.Id);
                     sitesToReturn.Add(siteToReturn);
                 }
             }
@@ -113,20 +113,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool IsVpnSitePresent(string resourceGroupName, string name)
         {
-            try
-            {
-                GetVpnSite(resourceGroupName, name);
-            }
-            catch (Microsoft.Azure.Management.Network.Models.ErrorException exception)
-            {
-                if (exception.Response.StatusCode == HttpStatusCode.NotFound)
-                {
-                    // Resource is not present
-                    return false;
-                }
-            }
-
-            return true;
+            return NetworkBaseCmdlet.IsResourcePresent( () => { GetVpnSite(resourceGroupName, name); } );
         }
     }
 }

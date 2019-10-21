@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 {
     using Microsoft.Azure.ServiceManagement.Common.Models;
+    using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
     using Xunit;
@@ -38,8 +39,8 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         /// </param>
         public CreateNewDirectConnectionTests(ITestOutputHelper output)
         {
-            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
+            this.logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(this.logger);
         }
 
         /// <summary>
@@ -120,6 +121,16 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         public void TestNewDirectConnectionWrongV6()
         {
             TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWrongV6");
+        }
+
+        /// <summary>
+        /// The test new direct connection with microsoft ip address
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDirectConnectionWithMicrosoftIpProvidedAddress()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithMicrosoftIpProvidedAddress");
         }
     }
 }

@@ -14,17 +14,12 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
-    using Microsoft.Rest.Azure;
-
-    using Newtonsoft.Json;
 
     /// <inheritdoc />
     /// <summary>
@@ -33,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
     [Cmdlet(
         VerbsCommon.Set,
         "AzPeeringExchangeConnectionObject",
-        DefaultParameterSetName = Constants.ParameterSetNameMd5Authentication, SupportsShouldProcess = false)]
+        DefaultParameterSetName = Constants.ParameterSetNameIPv6Address, SupportsShouldProcess = false)]
     [OutputType(typeof(PSExchangeConnection))]
     public class SetAzureExchangePeeringConnectionCommand : PeeringBaseCmdlet
     {
@@ -98,7 +93,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         /// Gets or sets the m d 5 authentication key.
         /// </summary>
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = Constants.MD5AuthenticationKeyHelp,
             ParameterSetName = Constants.ParameterSetNameMd5Authentication)]
         public string MD5AuthenticationKey { get; set; }
@@ -140,7 +135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
             }
             catch (ErrorResponseException ex)
             {
-                                var error = ex.Response.Content.Contains("\"error\\\":") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(JsonConvert.DeserializeObject(ex.Response.Content).ToString()).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
+                var error = this.GetErrorCodeAndMessageFromArmOrErm(ex);
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
@@ -153,12 +148,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         /// </returns>
         private PSExchangeConnection UpdateMD5Authentication()
         {
-            if (this.InputObject is PSExchangeConnection inputObject)
-            {
-                inputObject.BgpSession.Md5AuthenticationKey = this.MD5AuthenticationKey;
-                if (this.IsValidConnection(inputObject))
-                    return inputObject;
-            }
+            this.InputObject.BgpSession.Md5AuthenticationKey = this.MD5AuthenticationKey;
+            if (this.IsValidConnection(this.InputObject))
+                return this.InputObject;
 
             throw new InvalidOperationException(string.Format(Resources.Error_InvalidInputObject_Exchange));
         }
@@ -171,17 +163,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         /// </returns>
         private PSExchangeConnection UpdateIpV4Prefix()
         {
-            if (this.InputObject is PSExchangeConnection inputObject)
-            {
-                inputObject.BgpSession.PeerSessionIPv4Address = this.PeerSessionIPv4Address;
-                if (this.MaxPrefixesAdvertisedIPv4 != null)
-                {
-                    inputObject.BgpSession.MaxPrefixesAdvertisedV4 = this.MaxPrefixesAdvertisedIPv4;
-                }
-
-                if (this.IsValidConnection(inputObject))
-                    return inputObject;
-            }
+            this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 =
+                this.MaxPrefixesAdvertisedIPv4 == null ? (this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 != 0 ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 : 20000) : this.MaxPrefixesAdvertisedIPv4;
+            this.InputObject.BgpSession.PeerSessionIPv4Address = this.PeerSessionIPv4Address?.Trim();
+            if (this.IsValidConnection(this.InputObject))
+                return this.InputObject;
 
             throw new InvalidOperationException(string.Format(Resources.Error_InvalidInputObject_Exchange));
         }
@@ -194,17 +180,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         /// </returns>
         private PSExchangeConnection UpdateIpV6Prefix()
         {
-            if (this.InputObject is PSExchangeConnection inputObject)
-            {
-                inputObject.BgpSession.PeerSessionIPv6Address = this.PeerSessionIPv6Address;
-                if (this.MaxPrefixesAdvertisedIPv6 != null)
-                {
-                    inputObject.BgpSession.MaxPrefixesAdvertisedV6 = this.MaxPrefixesAdvertisedIPv4;
-                }
-
-                if (this.IsValidConnection(inputObject))
-                    return inputObject;
-            }
+            this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 =
+                this.MaxPrefixesAdvertisedIPv6 == null ? (this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 != 0 ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 : 2000) : this.MaxPrefixesAdvertisedIPv6;
+            this.InputObject.BgpSession.PeerSessionIPv6Address = this.PeerSessionIPv6Address?.Trim();
+            if (this.IsValidConnection(this.InputObject))
+                return this.InputObject;
 
             throw new InvalidOperationException(string.Format(Resources.Error_InvalidInputObject_Exchange));
         }

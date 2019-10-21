@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            var toReturn = DataLakeStoreFileSystemClient.EnumerateDeletedItems(Account, Filter, Count, CmdletCancellationToken).Select(entry => new DataLakeStoreDeletedItem(entry)).ToList();
+            var toReturn = DataLakeStoreFileSystemClient.EnumerateDeletedItems(Account, Filter, Count, this, CmdletCancellationToken).Select(entry => new DataLakeStoreDeletedItem(entry)).ToList();
             WriteObject(toReturn);
         }
     }

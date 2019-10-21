@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
             HelpMessage = "Path to output file. Can be a Local path or Adl Path. By default"+
-                          " it is local. If SaveToAdl is pecified then it is an ADL path in the same account")]
+                          " it is local. If SaveToAdl is specified then it is an ADL path in the same account")]
         [ValidateNotNullOrEmpty]
         public string OutputPath { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage =
                 "Save output to ADL Store, in the same account. The OutputPath parameter should be the full ADL path to output to." + 
-                "Default is to save to a local file. In that case, OutputPath specifies the pathto local file.")]
+                "Default is to save to a local file. In that case, OutputPath specifies the path to local file.")]
         public SwitchParameter SaveToAdl { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,

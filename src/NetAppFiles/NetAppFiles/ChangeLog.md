@@ -19,5 +19,24 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.2
+
+* Addition of ProtocolTypes and MountTargets to volume properties
+* Addition of ProtocolType parameter for new volume creation
+* Pool size and Volume usageThreshold required on creation
+
+* Fixed miscellaneous typos across module
+
+## Version 0.1.1
+* Add new cmdlets:
+    - `Set-AzNetAppFilesAccount`
+    - `Update-AzNetAppFilesAccount`
+* Account:
+    * Active Directory `PSNetAppFilesActiveDirectory` added to account methods `New-AnfAccount`, `Set-AnfAccount` and `Update-AnfAccount`
+* Volume:
+    * Export Policy `PSNetAppFilesVolumeExportPolicy` added to volume methods `New-AnfVolume` and `Update-AnfVolume`
+* Snapshot:
+    * FileSystemId is now optional during snapshot creation `New-AnfSnapshot`
+
 ## Version 0.1.0
 * Preview of `Az.NetAppFiles` module

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Connection Identifier cannot be null..
+        /// </summary>
+        internal static string Error_ConnectionIdentifierNull {
+            get {
+                return ResourceManager.GetString("Error_ConnectionIdentifierNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to complete the request. Check your syntax for errors..
         /// </summary>
         internal static string Error_GenericSyntax {
@@ -187,7 +196,7 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid Prefix Range: {0} must be at least {1} not greater than {2}.
+        ///   Looks up a localized string similar to Invalid Prefix Range: {0}, the prefix must be {1}.
         /// </summary>
         internal static string Error_InvalidPrefixRange {
             get {
@@ -237,6 +246,15 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         internal static string Error_NullSession {
             get {
                 return ResourceManager.GetString("Error_NullSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provider {0} was not found at location {1}. Status: {2}.
+        /// </summary>
+        internal static string Error_ProviderNotFound {
+            get {
+                return ResourceManager.GetString("Error_ProviderNotFound", resourceCulture);
             }
         }
         
@@ -291,6 +309,15 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         internal static string Route_PrefixUnrecognized {
             get {
                 return ResourceManager.GetString("Route_PrefixUnrecognized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This should return {0}.
+        /// </summary>
+        internal static string ShouldProcessMessage {
+            get {
+                return ResourceManager.GetString("ShouldProcessMessage", resourceCulture);
             }
         }
     }

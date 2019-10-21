@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Blueprint.Common
 {
@@ -52,6 +53,18 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         public static string GetScopeForSubscription(string subscriptionId)
         {
             return string.Format(BlueprintConstants.SubscriptionScope, subscriptionId);
+        }
+
+        public static void ValidateName(string name)
+        {
+            var regex = @"^[0-9a-zA-Z_-]*$";
+
+            Match match = Regex.Match(name, regex, RegexOptions.CultureInvariant);
+
+            if (!match.Success)
+            {
+                throw new ArgumentException(string.Format($"Name '{1}' contains invalid characters.", name));
+            }
         }
     }
 }

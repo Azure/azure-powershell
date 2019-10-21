@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVpnConnectionResourceId,
-            HelpMessage = "The resource id of the VpnConenction object to delete.")]
+            HelpMessage = "The resource id of the VpnConnection object to delete.")]
         public string ResourceId { get; set; }
 
         [Alias("VpnConnection")]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
             Mandatory = true,
             ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByVpnConnectionObject,
-            HelpMessage = "The VpnConenction object to update.")]
+            HelpMessage = "The VpnConnection object to update.")]
         public PSVpnConnection InputObject { get; set; }
 
         [Parameter(
@@ -86,18 +86,33 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The bandwith that needs to be handled by this connection in mbps.")]
+            HelpMessage = "The bandwidth that needs to be handled by this connection in mbps.")]
         public uint ConnectionBandwidthInMbps { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The bandwith that needs to be handled by this connection in mbps.")]
+            HelpMessage = "The bandwidth that needs to be handled by this connection in mbps.")]
         public PSIpsecPolicy IpSecPolicy { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Enable BGP for this connection")]
         public bool? EnableBgp { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Use local azure ip address as source ip for this connection.")]
+        public bool? UseLocalAzureIpAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Use policy based traffic selectors for this connection.")]
+        public bool? UsePolicyBasedTrafficSelectors { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of VpnSiteLinkConnections that this VpnConnection needs to have.")]
+        public PSVpnSiteLinkConnection[] VpnSiteLinkConnection { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -145,6 +160,15 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
                 vpnConnectionToModify = this.InputObject;
             }
 
+            if (vpnConnectionToModify.VpnLinkConnections != null && vpnConnectionToModify.VpnLinkConnections.Any())
+            {
+                //// Use only link connection properties instead of vpn connection properties.
+                if (this.SharedKey != null || this.ConnectionBandwidthInMbps > 0 || this.EnableBgp.HasValue || this.UseLocalAzureIpAddress.HasValue || this.UsePolicyBasedTrafficSelectors.HasValue || this.IpSecPolicy != null)
+                {
+                    throw new PSArgumentException(Properties.Resources.VpnConnectionPropertyIsDeprecated);
+                }
+            }
+
             if (this.SharedKey != null)
             {
                 vpnConnectionToModify.SharedKey = SecureStringExtensions.ConvertToString(this.SharedKey);
@@ -160,9 +184,26 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
                 vpnConnectionToModify.EnableBgp = this.EnableBgp.Value;
             }
 
+            if (this.UseLocalAzureIpAddress.HasValue)
+            {
+                vpnConnectionToModify.UseLocalAzureIpAddress = this.UseLocalAzureIpAddress.Value;
+            }
+
+            if (this.UsePolicyBasedTrafficSelectors.HasValue)
+            {
+                vpnConnectionToModify.UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors.Value;
+            }
+
             if (this.IpSecPolicy != null)
             {
                 vpnConnectionToModify.IpsecPolicies = new List<PSIpsecPolicy> { this.IpSecPolicy };
+            }
+
+            //// Modify the linkconnections
+            if (this.VpnSiteLinkConnection != null)
+            {
+                vpnConnectionToModify.VpnLinkConnections = new List<PSVpnSiteLinkConnection>();
+                vpnConnectionToModify.VpnLinkConnections.AddRange(this.VpnSiteLinkConnection);
             }
 
             ConfirmAction(

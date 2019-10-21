@@ -33,5 +33,15 @@ namespace Commands.Automation.Test
         {
             TestRunner.RunTestScript("Test-E2EConnections");
         }
+
+        [Fact]
+        [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestSetConnectionFieldValue()
+        {
+            TestRunner.RunTestScript("Test-SetConnectionFieldValue");
+        }
     }
 }

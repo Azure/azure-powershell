@@ -114,8 +114,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
             else
             {
-                var anfSnapshot = AzureNetAppFilesManagementClient.Volumes.List(ResourceGroupName, AccountName, PoolName).Select(e => e.ToPsNetAppFilesVolume());
-                WriteObject(anfSnapshot, true);
+                var anfVolumes = AzureNetAppFilesManagementClient.Volumes.List(ResourceGroupName, AccountName, PoolName).Select(e => e.ToPsNetAppFilesVolume());
+                WriteObject(anfVolumes, true);
             }
         }
     }

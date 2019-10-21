@@ -716,7 +716,7 @@ function Test-AEMExtensionAdvancedLinuxMD_E
     }
     catch 
     {
-        Write-Debug "Exception while runnign test: $($_)"
+        Write-Debug "Exception while running test: $($_)"
         throw
     }
     finally

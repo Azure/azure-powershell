@@ -18,6 +18,8 @@ using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Commands.Common.Strategies;
 using System.Collections.Generic;
+using System;
+using SubResource = Microsoft.Azure.Management.Compute.Models.SubResource;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -48,7 +50,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             VirtualMachineIdentity identity,
             IEnumerable<int> dataDisks,
             IList<string> zones,
-            bool ultraSSDEnabled)
+            bool ultraSSDEnabled,
+            Func<IEngine, SubResource> proximityPlacementGroup,
+            string hostId,
+            string priority,
+            string evictionPolicy,
+            double? maxPrice)
+
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -82,7 +90,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     },
                     AvailabilitySet = engine.GetReference(availabilitySet),
                     Zones = zones,
-                    AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null
+                    AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null,
+                    ProximityPlacementGroup = proximityPlacementGroup(engine),
+                    Host = string.IsNullOrEmpty(hostId) ? null : new SubResource(hostId),
+                    Priority = priority,
+                    EvictionPolicy = evictionPolicy,
+                    BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice)
                 });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
@@ -96,7 +109,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             VirtualMachineIdentity identity,
             IEnumerable<int> dataDisks,
             IList<string> zones,
-            bool ultraSSDEnabled)
+            bool ultraSSDEnabled,
+            Func<IEngine, SubResource> proximityPlacementGroup,
+            string hostId,
+            string priority,
+            string evictionPolicy,
+            double? maxPrice)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -127,7 +145,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Identity = identity,
                     AvailabilitySet = engine.GetReference(availabilitySet),
                     Zones = zones,
-                    AdditionalCapabilities = ultraSSDEnabled ?  new AdditionalCapabilities(true)  : null
+                    AdditionalCapabilities = ultraSSDEnabled ?  new AdditionalCapabilities(true)  : null,
+                    ProximityPlacementGroup = proximityPlacementGroup(engine),
+                    Host = string.IsNullOrEmpty(hostId) ? null : new SubResource(hostId),
+                    Priority = priority,
+                    EvictionPolicy = evictionPolicy,
+                    BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice)
                 });
     }
 }

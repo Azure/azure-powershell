@@ -30,13 +30,14 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-SubnetAddressPrefix <String>] [-FrontendPoolName <String>] [-BackendPoolName <String>]
  [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-EnableUltraSSD]
  [-Zone <System.Collections.Generic.List`1[System.String]>] [-NatBackendPort <Int32[]>]
- [-DataDiskSizeInGb <Int32[]>] [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DataDiskSizeInGb <Int32[]>] [-ProximityPlacementGroup <String>] [-Priority <String>]
+ [-EvictionPolicy <String>] [-MaxPrice <Double>] [-DefaultProfile <IAzureContextContainer>]
+ [-SinglePlacementGroup] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **New-AzVmss** cmdlet creates a Virtual Machine Scale Set (VMSS) in Azure.
-Use the simple parameter set (`SimpleParameterSet`) to quickly create a pre-set VMSS and associated resources. Use the default parameter set (`DefaultParameter`) for more advanced scenarios when you need to precisely configure each component of the the VMSS and each associated resource before creation.
+Use the simple parameter set (`SimpleParameterSet`) to quickly create a pre-set VMSS and associated resources. Use the default parameter set (`DefaultParameter`) for more advanced scenarios when you need to precisely configure each component of the VMSS and each associated resource before creation.
 
 ## EXAMPLES
 
@@ -273,7 +274,7 @@ Accept wildcard characters: False
 ```
 
 ### -DomainNameLabel
-The domain name label for the public Fully-Qualified domain name (FQDN) for this Scale Set. This is the first component of the domain name that is automatically assiged to the Scale Set. Automatically assigned Domain names use the form (<DomainNameLabel>.<Location>.cloudapp.azure.com). If no value is supplied, the default domain name label will be the concatenation of <ScaleSetName> and <ResourceGroupName>.
+The domain name label for the public Fully-Qualified domain name (FQDN) for this Scale Set. This is the first component of the domain name that is automatically assigned to the Scale Set. Automatically assigned Domain names use the form (<DomainNameLabel>.<Location>.cloudapp.azure.com). If no value is supplied, the default domain name label will be the concatenation of <ScaleSetName> and <ResourceGroupName>.
 
 ```yaml
 Type: System.String
@@ -302,8 +303,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EvictionPolicy
+The eviction policy for the low priority virtual machine scale set.  Only supported values are 'Deallocate' and 'Delete'.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FrontendPoolName
-The name of the frontend address pool to usein the Scale Set locad balancer.  If no value is supplied, a new Frontend Address Pool will be created, with the same name as the scale set.
+The name of the frontend address pool to use in the Scale Set load balancer.  If no value is supplied, a new Frontend Address Pool will be created, with the same name as the scale set.
 
 ```yaml
 Type: System.String
@@ -377,11 +393,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MaxPrice
+The max price of the billing of a low priority virtual machine scale set.
+
+```yaml
+Type: System.Double
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NatBackendPort
 Backend port for inbound network address translation.
 
 ```yaml
 Type: System.Int32[]
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Priority
+The priority for the virtual machine scale set.  Only supported values are 'Regular' and 'Low'.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProximityPlacementGroup
+The name or resource id of the Proximity Placement Group to use with this Scale Set.
+
+```yaml
+Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -495,7 +556,7 @@ Accept wildcard characters: False
 ```
 
 ### -SystemAssignedIdentity
-If the parameter is present then the VM(s) in the scale set is(are) assingned a managed system identity that is auto generated.
+If the parameter is present then the VM(s) in the scale set is(are) assigned a managed system identity that is auto generated.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

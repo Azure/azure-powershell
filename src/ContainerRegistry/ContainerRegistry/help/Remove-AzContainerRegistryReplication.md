@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll-Help.xml
 Module Name: Az.ContainerRegistry
 online version: https://docs.microsoft.com/en-us/powershell/module/az.containerregistry/remove-azcontainerregistryreplication
@@ -20,7 +20,7 @@ Remove-AzContainerRegistryReplication [-Name] <String> [-ResourceGroupName] <Str
 
 ### ReplicationObjectParameterSet
 ```
-Remove-AzContainerRegistryReplication -Replicatoin <PSContainerRegistryReplication> [-PassThru]
+Remove-AzContainerRegistryReplication -Replication <PSContainerRegistryReplication> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -105,13 +105,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Replicatoin
+### -Replication
 Container Registry Object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication
 Parameter Sets: ReplicationObjectParameterSet
-Aliases:
+Aliases: Replicatoin
 
 Required: True
 Position: Named
@@ -182,7 +182,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -36,14 +36,14 @@ Regenerates the shared access key for an Azure Event Grid Topic.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS C:\> New-AzEventGridTopicKey -ResourceGroup MyResourceGroupName -TopicName Topic1 -KeyName key1
 ```
 
 Regenerate the key corresponding to key \'key1'\ of Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
 ### Example 2
-```
+```powershell
 PS C:\> Get-AzEventGridTopic -ResourceGroup MyResourceGroupName -Name Topic1 | New-AzEventGridTopicKey -KeyName "key1"
 ```
 
@@ -86,19 +86,7 @@ The name of the key that needs to be regenerated
 
 ```yaml
 Type: System.String
-Parameter Sets: TopicNameParameterSet, ResourceIdEventSubscriptionParameterSet
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: TopicInputObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True

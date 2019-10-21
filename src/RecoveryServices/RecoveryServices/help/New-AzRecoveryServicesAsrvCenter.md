@@ -34,7 +34,7 @@ Adds a vCenter server to discover protectable items from.
 ## PARAMETERS
 
 ### -Account
-User login creadential Account.
+User login credential Account.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRunAsAccount

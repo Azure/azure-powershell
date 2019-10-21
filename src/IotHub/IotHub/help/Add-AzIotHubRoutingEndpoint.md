@@ -116,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -EndpointResourceGroup
-Resource group of the Endpoint resoure
+Resource group of the Endpoint resource
 
 ```yaml
 Type: System.String

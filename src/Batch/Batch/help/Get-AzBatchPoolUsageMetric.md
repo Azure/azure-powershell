@@ -135,7 +135,7 @@ Accept wildcard characters: False
 ```
 
 ### -Filter
-Specifies an OData filter clause to use to filter the metrics that this cmdlet retruns.
+Specifies an OData filter clause to use to filter the metrics that this cmdlet returns.
 The only valid property is **poolId** with a string value.
 Possible operations are the following: eq, ge, gt, le, lt, startswith.
 

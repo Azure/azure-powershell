@@ -57,6 +57,7 @@ IpConfigurations           : [
 ApplicationRuleCollections : []
 NatRuleCollections         : []
 NetworkRuleCollections     : []
+Zones                      : {}
 
 Name                       : azFw1
 ResourceGroupName          : rgName
@@ -88,6 +89,7 @@ IpConfigurations           : [
 ApplicationRuleCollections : []
 NatRuleCollections         : []
 NetworkRuleCollections     : []
+Zones                      : {}
 ```
 
 This example retrieves all Firewalls in resource group "rgName".
@@ -126,6 +128,7 @@ IpConfigurations           : [
 ApplicationRuleCollections : []
 NatRuleCollections         : []
 NetworkRuleCollections     : []
+Zones                      : {}
 ```
 
 This example retrieves Firewall named "azFw" in resource group "rgName".
@@ -164,6 +167,7 @@ IpConfigurations           : [
 ApplicationRuleCollections : []
 NatRuleCollections         : []
 NetworkRuleCollections     : []
+Zones                      : {}
 
 Name                       : azFw1
 ResourceGroupName          : rgName
@@ -195,6 +199,7 @@ IpConfigurations           : [
 ApplicationRuleCollections : []
 NatRuleCollections         : []
 NetworkRuleCollections     : []
+Zones                      : {}
 ```
 
 This example retrieves all Firewalls that start with "azFw"

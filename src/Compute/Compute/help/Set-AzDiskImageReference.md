@@ -31,7 +31,7 @@ PS C:\> New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk
 ```
 
 The first command creates a local disk object with size 10GB in Premium_LRS storage account type.  It also sets Windows OS type.
-The second command sets the image id and the logical unit number 0 for the disk obejct.
+The second command sets the image id and the logical unit number 0 for the disk object.
 The last command takes the disk object and creates a disk with name 'Disk01' in resource group 'ResourceGroup01'.
 
 ## PARAMETERS

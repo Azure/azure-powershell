@@ -22,9 +22,9 @@ Set-AzVmssDiskEncryptionExtension [-ResourceGroupName] <String> [-VMScaleSetName
 ```
 
 ## DESCRIPTION
-The **Set-AzVmssDiskEncryptionExtension** cmdlet enables encryption on a VM scale set.
-This cmdlet enables encryption by installing the disk encryption extension on the VM scale set.
-If no *Name* parameter is specified, an extension with the default name AzureDiskEncryption for virtual machines that run the Windows operating system or AzureDiskEncryptionForLinux for Linux virtual machines are installed.
+The **Set-AzVmssDiskEncryptionExtension** cmdlet enables encryption on a VM scale set. This cmdlet enables encryption by installing the disk encryption extension on the VM scale set.
+
+For Linux virtual machines, the *VolumeType* parameter must be present and must be set to "Data"
 
 ## EXAMPLES
 
@@ -36,10 +36,27 @@ $VaultName= "MyKeyVault"
 $KeyVault = Get-AzKeyVault -VaultName $VaultName -ResourceGroupName $RGName
 $DiskEncryptionKeyVaultUrl = $KeyVault.VaultUri
 $KeyVaultResourceId = $KeyVault.ResourceId
+
 PS C:\> Set-AzVmssDiskEncryptionExtension -ResourceGroupName $RGName -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
 ```
 
-This command enables encryption on all disks of all VMs in the VM scale set.
+This command enables encryption on all disks of all Windows VMs in a VM scale set.
+
+### Example 2
+```
+$RGName = "MyResourceGroup"
+$VmssName = "MyTestVmss"
+$VaultName= "MyKeyVault"
+$KeyVault = Get-AzKeyVault -VaultName $VaultName -ResourceGroupName $RGName
+$DiskEncryptionKeyVaultUrl = $KeyVault.VaultUri
+$KeyVaultResourceId = $KeyVault.ResourceId
+$VolumeType = "Data"
+
+PS C:\> Set-AzVmssDiskEncryptionExtension -ResourceGroupName $RGName -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
+ -VolumeType $volumeType
+```
+
+This command enables encryption on the data disks of all Linux VMs in a VM scale set.
 
 ## PARAMETERS
 
@@ -257,7 +274,12 @@ Accept wildcard characters: False
 ```
 
 ### -VolumeType
-Type of the volume (OS or Data) to perform encryption operation
+Specifies the type of virtual machine volumes on which to perform encryption operation: OS, Data, or All. 
+
+Linux: The **VolumeType** parameter must be present and must be set to Data. 
+
+Windows: The **VolumeType** parameter, if present, must be set to either All or OS. If the **VolumeType** parameter is omitted it defaults to "All".
+
 
 ```yaml
 Type: System.String

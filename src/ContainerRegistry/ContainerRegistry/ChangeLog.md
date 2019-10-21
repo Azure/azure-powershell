@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Fix typo in Remove-AzContainerRegistryReplication for Replication parameter
+    - More information here https://github.com/Azure/azure-powershell/issues/9633
+
 ## Version 1.0.1
 * Update incorrect online help URLs
 

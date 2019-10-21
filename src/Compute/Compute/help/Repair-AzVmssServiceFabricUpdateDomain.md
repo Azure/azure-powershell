@@ -54,7 +54,7 @@ This command forces service fabric update walk on UD 1 for the virtual machine s
 
 ### Example 3
 ```
-PS C:\> Repair-AzVmssServiceFabricUpdateDomain -ResourceId $resoureId  -PlatformUpdateDomain 2;
+PS C:\> Repair-AzVmssServiceFabricUpdateDomain -ResourceId $resourceId  -PlatformUpdateDomain 2;
 ```
 
 This command forces service fabric update walk on UD 2 for the virtual machine scale set specified by resource id.

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Stop-AzDataFactoryV2PipelineRun
 
 ## SYNOPSIS
-Stops a pieline run in a data factory.
+Stops a pipeline run in a data factory.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Stop-AzDataFactoryV2PipelineRun [-PipelineRunId] <String> [-PassThru] [-DataFact
 ```
 
 ## DESCRIPTION
-The **Stop-AzDataFactoryV2PipelineRun** cmdlet stops a pipeline run in a data factory specified with the pieline run ID.
+The **Stop-AzDataFactoryV2PipelineRun** cmdlet stops a pipeline run in a data factory specified with the pipeline run ID.
 
 ## EXAMPLES
 

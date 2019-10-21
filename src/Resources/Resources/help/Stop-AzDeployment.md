@@ -8,7 +8,7 @@ schema: 2.0.0
 # Stop-AzDeployment
 
 ## SYNOPSIS
-Cancal a running deployment
+Cancel a running deployment
 
 ## SYNTAX
 

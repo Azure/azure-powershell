@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.NetAppFiles.Models
 {
     /// <summary>
@@ -53,5 +55,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets azure lifecycle management
         /// </summary>
         public string ProvisioningState { get; set; }
+
+        /// <summary>
+        /// Gets or sets active directory
+        /// </summary>
+        public List<PSNetAppFilesActiveDirectory> ActiveDirectories { get; set; }
     }
 }

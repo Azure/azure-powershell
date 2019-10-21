@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     public class RemoveAzureIntegrationAccountMapCommand : LogicAppBaseCmdlet
     {
 
-        #region Input Paramters
+        #region Input Parameters
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account resource group name.",
             ValueFromPipelineByPropertyName = true)]

@@ -23,7 +23,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class AzureVmItem : AzureItem
     {
         public string VirtualMachineId { get; set; }
-        
+
+        public string HealthStatus { get; set; }
+
         /// <summary>
         /// Constructor. Takes the service client object representing the protected item 
         /// and converts it in to the PS protected item model
@@ -43,6 +45,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 EnumUtils.GetEnum<ItemProtectionState>(protectedItem.ProtectionState.ToString());
             ProtectionStatus = EnumUtils.GetEnum<ItemProtectionStatus>(protectedItem.ProtectionStatus);
             VirtualMachineId = protectedItem.VirtualMachineId;
+            HealthStatus = protectedItem.HealthStatus;
+            DateOfPurge = null;
+            DeleteState = EnumUtils.GetEnum<ItemDeleteState>("NotDeleted");
+            if (protectedItem.IsScheduledForDeferredDelete.HasValue)
+            {
+                DateOfPurge = protectedItem.DeferredDeleteTimeInUTC.Value.AddDays(14);
+                DeleteState = EnumUtils.GetEnum<ItemDeleteState>("ToBeDeleted");
+            }
         }
     }
 

@@ -163,7 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountName
-Specifies the name of the storage account to be used. Wildcards are not permitted. This parameter is not required. When this parameter is not provided, the cmdlet will use the storage account that was defined previously as part of the advanced threat protection settings of the database. If this is the first time a database theat detection settings is defined and this parameter is not provided, the cmdlet will fail.
+Specifies the name of the storage account to be used. Wildcards are not permitted. This parameter is not required. When this parameter is not provided, the cmdlet will use the storage account that was defined previously as part of the advanced threat protection settings of the database. If this is the first time a database threat detection settings is defined and this parameter is not provided, the cmdlet will fail.
 
 ```yaml
 Type: System.String

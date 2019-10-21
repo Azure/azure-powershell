@@ -30,7 +30,7 @@ The **New-AzAvailabilitySet** cmdlet creates an Azure availability set.
 PS C:\> New-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" -Location "West US"
 ```
 
-This command creates an availability set named AvailablitySet03 in the resource group named ResourceGroup11.
+This command creates an availability set named AvailabilitySet03 in the resource group named ResourceGroup11.
 
 ## PARAMETERS
 

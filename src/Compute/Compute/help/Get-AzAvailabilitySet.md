@@ -45,7 +45,7 @@ Statuses                  : []
 VirtualMachinesReferences : []
 ```
 
-This command gets the availability set named AvailablitySet03 in the resource group named ResourceGroup11.
+This command gets the availability set named AvailabilitySet03 in the resource group named ResourceGroup11.
 
 ### Example 2: Get all availability sets
 ```

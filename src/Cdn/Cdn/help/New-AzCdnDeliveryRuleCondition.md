@@ -114,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -Transform
-Tranform to apply before matching.
+Transform to apply before matching.
 Possible values are Lowercase and Uppercase
 
 ```yaml

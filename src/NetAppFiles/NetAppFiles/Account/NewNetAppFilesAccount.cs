@@ -14,7 +14,6 @@
 
 using System.Collections;
 using System.Management.Automation;
-//using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
@@ -34,6 +33,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
     {
         [Parameter(
             Mandatory = true,
+            ParameterSetName = FieldsParameterSet,
             HelpMessage = "The resource group of the ANF account")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter()]
@@ -47,28 +47,35 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
         public string Location { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "A hashtable which represents resource tags")]
-        [ValidateNotNullOrEmpty]
-        [Alias("Tags")]
-        public Hashtable Tag { get; set; }
-
-        [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the ANF account")]
         [ValidateNotNullOrEmpty]
         [Alias("AccountName")]
         public string Name { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable array which represents the active directories")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesActiveDirectory[] ActiveDirectory { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable which represents resource tags")]
+        [ValidateNotNullOrEmpty]
+        [Alias("Tags")]
+        public Hashtable Tag { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var netAppAccountBody = new NetAppAccount()
             {
                 Location = Location,
+                ActiveDirectories = (ActiveDirectory != null) ? ModelExtensions.ConvertActiveDirectoriesFromPs(ActiveDirectory) : null,
                 Tags = Tag
             };
 
-            if (ShouldProcess(Name, "Create the new account"))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
                 var anfAccount = AzureNetAppFilesManagementClient.Accounts.CreateOrUpdate(netAppAccountBody, ResourceGroupName, Name);
                 WriteObject(anfAccount.ToPsNetAppFilesAccount());

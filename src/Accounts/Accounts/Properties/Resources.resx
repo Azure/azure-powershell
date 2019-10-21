@@ -450,4 +450,19 @@
   <data name="PasswordNotSupported" xml:space="preserve">
     <value>Username + Password authentication is not supported in PowerShell Core.  Please use device code authentication for interactive log in, or Service Principal authentication for script log in.</value>
   </data>
+  <data name="HybridProfileDescription" xml:space="preserve">
+    <value>A snapshot of the Service API versions in AzureStack, Azure Sovereign clouds, and the Azure Global Cloud.</value>
+  </data>
+  <data name="ProdProfileDescription" xml:space="preserve">
+    <value>A snapshot of the service API versions in the Azure Global Cloud.</value>
+  </data>
+  <data name="SelectProfileAction" xml:space="preserve">
+    <value>Load modules with profile</value>
+  </data>
+  <data name="SelectProfileTarget" xml:space="preserve">
+    <value>Modules</value>
+  </data>
+  <data name="SovereignProfileDescription" xml:space="preserve">
+    <value>A snapshot of the service API versiosn available in Azure Sovereign Clouds and the Azure Global Cloud.</value>
+  </data>
 </root>
