@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "List of connections this route table is attached to.")]
-        public string[] AttachedConnection { get; set; }
+        public string[] Connection { get; set; }
 
         public override void Execute()
         {
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 Routes = this.Route == null ? new List<PSVirtualHubRoute>() : this.Route?.ToList(),
-                AttachedConnections = this.AttachedConnection == null ? new List<string>() : this.AttachedConnection.ToList()
+                Connections = this.Connection == null ? new List<string>() : this.Connection.ToList()
             };
 
             WriteObject(virtualHubRouteTable);

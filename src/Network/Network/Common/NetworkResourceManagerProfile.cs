@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.Network
                 var cnmRouteTable = new CNM.PSVirtualHubRouteTable
                 {
                     Routes = cnmRoutes,
-                    AttachedConnections = cnmAttachedConnections,
+                    Connections = cnmAttachedConnections,
                     Name = mnmRouteTableV2.Name
                 };
 
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Commands.Network
             foreach (var cnmRouteTableV2 in cnmValue)
             {
                 var cnmRoutes = cnmRouteTableV2.Routes;
-                var cnmAttachedConnections = (ICollection<string>)cnmRouteTableV2.AttachedConnections;
+                var cnmAttachedConnections = (ICollection<string>)cnmRouteTableV2.Connections;
 
                 List<MNM.VirtualHubRouteV2> mnmRoutes = new List<MNM.VirtualHubRouteV2>();
                 var mnmAttachedConnections = new List<string>(cnmAttachedConnections);

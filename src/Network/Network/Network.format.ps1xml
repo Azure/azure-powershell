@@ -3697,8 +3697,8 @@
                 <PropertyName>Routes</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>AttachedConnections</Label>
-                <PropertyName>AttachedConnections</PropertyName>
+                <Label>Connections</Label>
+                <PropertyName>Connections</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>ProvisioningState</Label>
