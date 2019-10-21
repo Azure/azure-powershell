@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Change NetWorkRule DefaultAction value defination to align with swagger.
+	- Update-AzStorageAccountNetworkRuleSet
+	- Get-AzStorageAccountNetworkRuleSet
 
 ## Version 1.14.0
 * Added breaking change notice for Azure File cmdlets output change in a future release
