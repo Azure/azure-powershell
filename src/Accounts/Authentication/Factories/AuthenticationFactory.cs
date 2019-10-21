@@ -95,11 +95,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
             IAccessToken token = null;
-            var cache = tokenCache.GetUserCache() as TokenCache;
-            if (cache == null)
-            {
-                cache = new TokenCache();
-            }
+            // var cache = (tokenCache as AzureTokenCache).GetUserCache() as TokenCache;
+            // if (cache == null)
+            // {
+            //     cache = new TokenCache();
+            // }
 
             AuthenticationClientFactory authenticationClientFactory;
             if (!AzureSession.Instance.TryGetComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, out authenticationClientFactory))
@@ -344,8 +344,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
         {
-            TokenCache cache = tokenCache.GetUserCache() as TokenCache;
-            if (cache != null && account != null && !string.IsNullOrEmpty(account.Id) && !string.IsNullOrWhiteSpace(account.Type))
+            // figure out what to do with tokencache here...
+            if (account != null && !string.IsNullOrEmpty(account.Id) && !string.IsNullOrWhiteSpace(account.Type))
             {
                 switch (account.Type)
                 {
@@ -367,10 +367,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                             // make best effort to remove credentials
                         }
 
-                        RemoveFromTokenCache(cache, account);
+                        RemoveFromTokenCache(account);
                         break;
                     case AzureAccount.AccountType.User:
-                        RemoveFromTokenCache(cache, account);
+                        RemoveFromTokenCache(account);
                         break;
                 }
             }
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return account.GetProperty(tokenKey);
         }
 
-        private void RemoveFromTokenCache(TokenCache cache, IAzureAccount account)
+        private void RemoveFromTokenCache(IAzureAccount account)
         {
             AuthenticationClientFactory authenticationClientFactory;
             if (!AzureSession.Instance.TryGetComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, out authenticationClientFactory))
