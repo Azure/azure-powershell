@@ -21,8 +21,9 @@ Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationPr
  [-RecoveryBootDiagStorageAccountId <String>]
  [-AzureToAzureUpdateReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]>]
  [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>]
- [-KeyEncryptionVaultId <String>] [-UseManagedDisk <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyEncryptionVaultId <String>] [-UseManagedDisk <String>] [-RecoveryPublicIPAddressId <String>]
+ [-RecoveryNetworkSecurityGroupId <String>] [-RecoveryLBBackendAddressPoolId <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -308,8 +309,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RecoveryLBBackendAddressPoolId
+Specifies the target backend address pools to be associated with the recovery NIC.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RecoveryNetworkId
 Specifies the ID of the Azure virtual network to which the protected item should be failed over.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryNetworkSecurityGroupId
+Specifies the ID of the network security group to be associated with the recovery NIC.
 
 ```yaml
 Type: System.String
@@ -340,6 +371,21 @@ Accept wildcard characters: False
 
 ### -RecoveryNicSubnetName
 Specifies the name of the subnet on the recovery Azure virtual network to which this NIC of the protected item should be connected to on failover.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryPublicIPAddressId
+Specifies the ID of the public IP address resource to be associated with the recovery NIC.
 
 ```yaml
 Type: System.String
@@ -446,7 +492,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
