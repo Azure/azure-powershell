@@ -12,37 +12,23 @@ Gets a private link resource.
 
 ## SYNTAX
 
-### ByResourceId (Default)
+### ByPrivateLinkResourceId (Default)
 ```
-Get-AzPrivateLinkResource -ResourceId <String>
+Get-AzPrivateLinkResource -PrivateLinkResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByResource
-```
-Get-AzPrivateLinkResource -ServiceName <String> -ResourceGroupName <String>
-[-Name <String>] [-ResourceType <String>] [-Description <String>]
-[-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-The **Get-AzPrivateLinkResource** cmdlet retrieves a private link resource.
+The **Get-AzPrivateLinkResource** cmdlet retrieves all link resources belongs PrivateLinkResource.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-Get-AzPrivateLinkResource -Name plr -ResourceGroupName TestResourceGroup -ServiceName MyPrivateLinkServiceName
+Get-AzPrivateLinkResource -PrivateLinkResourceId '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Sql/servers/mySql'
 ```
 
-This example get a private link resource named plr belong to service MyPrivateLinkServiceName.
-
-### Example 2
-```
-Get-AzPrivateLinkResource -ResourceGroupName TestResourceGroup -ServiceName MyPrivateLinkServiceName
-```
-
-This example return a list of all private link resource belongs to service MyPrivateLinkServiceName.
+This example list all private link resources nbelong to sql server named mySql.
 
 ## PARAMETERS
 
@@ -61,72 +47,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the private link resource.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResource
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The resource group name of the private link resource.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResource
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
+### -PrivateLinkResourceId
 The Azure resource manager id of the private link resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceType
-The resource type.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResource
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ServiceName
-The name of the service that has the private link resource belong to.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResource
+Parameter Sets: ByPrivateLinkResourceId
 Aliases:
 
 Required: True
