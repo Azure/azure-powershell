@@ -118,7 +118,7 @@ function Test-PrivateLinkServiceCRUD
     }
 } 
 
-#
+<#
 .SYNOPSIS
 Test operation for PrivateEndpointConnection.
 #>
@@ -175,8 +175,11 @@ function Test-PrivateEndpointConnectionCRUD
         Assert-NotNull $pecApprove;
         Assert-AreEqual "Approved" $pecApprove.PrivateLinkServiceConnectionState.Status
 
+        Start-Sleep -s 30
+
         # Remove Private Endpoint Connection
-        $pecRemove = Remove-AzPrivateEndpointConnection -ResourceId $pecGet.Id
+        $pecRemove = Remove-AzPrivateEndpointConnection -ResourceId $pecGet.Id -PassThru -Force
+        Assert-AreEqual true $pecRemove
 
         # Get Private Endpoint Connection again
         $pecGet2 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $server.ResourceId
