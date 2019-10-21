@@ -14,7 +14,7 @@ Create a PSBackendPoolsSettings object for Front Door creation.
 
 ```
 New-AzFrontDoorBackendPoolsSettingsObject [-EnforceCertificateNameCheck <PSEnabledState>]
- [-SendRecvTimeoutSeconds <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SendRecvTimeoutInSeconds <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,9 +80,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SendRecvTimeoutSeconds
-Send and receive timeout on forwarding request to the backend.
-When timeout is reached, the request fails and returns.
+### -SendRecvTimeoutInSeconds
+Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns.
 
 ```yaml
 Type: System.Int32

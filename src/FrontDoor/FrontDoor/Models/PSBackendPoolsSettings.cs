@@ -22,6 +22,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
     {
         public PSEnabledState? EnforceCertificateNameCheck { get; set; }
 
-        public int? SendRecvTimeoutSeconds { get; set; }
+        public int? SendRecvTimeoutInSeconds { get; set; }
     }
 }

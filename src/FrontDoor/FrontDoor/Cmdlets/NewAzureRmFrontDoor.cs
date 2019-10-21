@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the New-AzFrontDoor cmdlet.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor", DefaultParameterSetName = FieldsWithBackendPoolsSettingsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFrontDoor))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor", DefaultParameterSetName = FieldsWithBackendPoolsSettingParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFrontDoor))]
     public class NewAzureRmFrontDoor : AzureFrontDoorCmdletBase
     {
         /// <summary>
@@ -100,9 +100,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Settings for all backendPools
         /// </summary>
-        [Parameter(ParameterSetName = FieldsWithBackendPoolsSettingsParameterSet,
+        [Parameter(ParameterSetName = FieldsWithBackendPoolsSettingParameterSet,
             Mandatory = false, HelpMessage = "Settings for all backendPools")]
-        public PSBackendPoolsSettings BackendPoolsSettings { get; set; }
+        public PSBackendPoolsSettings BackendPoolsSetting { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 }
                 default:
                 {
-                    backendPoolsSettings = BackendPoolsSettings?.ToSdkBackendPoolsSettings();
+                    backendPoolsSettings = BackendPoolsSetting?.ToSdkBackendPoolsSettings();
                     break;
                 }
             }

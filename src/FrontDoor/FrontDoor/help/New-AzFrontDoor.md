@@ -12,12 +12,12 @@ Create a new Azure Front Door load balancer
 
 ## SYNTAX
 
-### ByFieldsWithBackendPoolsSettingsParameterSet (Default)
+### ByFieldsWithBackendPoolsSettingParameterSet (Default)
 ```
 New-AzFrontDoor -ResourceGroupName <String> -Name <String> -RoutingRule <PSRoutingRule[]>
  -BackendPool <PSBackendPool[]> -FrontendEndpoint <PSFrontendEndpoint[]>
  -LoadBalancingSetting <PSLoadBalancingSetting[]> -HealthProbeSetting <PSHealthProbeSetting[]>
- [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] [-BackendPoolsSettings <PSBackendPoolsSettings>]
+ [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] [-BackendPoolsSetting <PSBackendPoolsSettings>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -75,12 +75,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BackendPoolsSettings
+### -BackendPoolsSetting
 Settings for all backendPools
 
 ```yaml
 Type: Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSettings
-Parameter Sets: ByFieldsWithBackendPoolsSettingsParameterSet
+Parameter Sets: ByFieldsWithBackendPoolsSettingParameterSet
 Aliases:
 
 Required: False

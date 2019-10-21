@@ -42,14 +42,14 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns.")]
-        public int SendRecvTimeoutSeconds { get; set; }
+        public int SendRecvTimeoutInSeconds { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var backendPoolsSettings = new PSBackendPoolsSettings
             {
                 EnforceCertificateNameCheck = !this.IsParameterBound(c => c.EnforceCertificateNameCheck) ? PSEnabledState.Enabled : EnforceCertificateNameCheck,
-                SendRecvTimeoutSeconds = !this.IsParameterBound(c => c.SendRecvTimeoutSeconds) ? 30 : SendRecvTimeoutSeconds
+                SendRecvTimeoutInSeconds = !this.IsParameterBound(c => c.SendRecvTimeoutInSeconds) ? 30 : SendRecvTimeoutInSeconds
             };
             WriteObject(backendPoolsSettings);
         }

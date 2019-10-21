@@ -35,13 +35,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Common
         public const string FieldsWithVaultParameterSet = "ByFieldsWithVaultParameterSet";
         public const string ResourceIdWithVaultParameterSet = "ByResourceIdWithVaultParameterSet";
         public const string ResourceIdWithCertificateNameCheckParameterSet = "ByResourceIdWithCertificateNameCheckParameterSet";
-        public const string ResourceIdWithBackendPoolsSettingsParameterSet = "ByResourceIdWithBackendPoolsSettingsParameterSet";
+        public const string ResourceIdWithBackendPoolsSettingParameterSet = "ByResourceIdWithBackendPoolSettingsParameterSet";
         public const string ObjectWithVaultParameterSet = "ByObjectWithVaultParameterSet";
         public const string ObjectWithCertificateNameCheckParameterSet = "ByObjectWithCertificateNameCheck";
-        public const string ObjectWithBackendPoolsSettingsParameterSet = "ByObjectWithBackendPoolsSettingsParameterSet";
+        public const string ObjectWithBackendPoolsSettingParameterSet = "ByObjectWithBackendPoolsSettingParameterSet";
         public const string FieldsWithForwardingParameterSet = "ByFieldsWithForwardingParameterSet";
         public const string FieldsWithRedirectParameterSet = "ByFieldsWithRedirectParameterSet";
-        public const string FieldsWithBackendPoolsSettingsParameterSet = "ByFieldsWithBackendPoolsSettingsParameterSet";
+        public const string FieldsWithBackendPoolsSettingParameterSet = "ByFieldsWithBackendPoolsSettingParameterSet";
         public const string FieldsWithCertificateNameCheckParameterSet = "ByFieldsWithCertificateNameCheckParameterSet";
 
         /// <summary>
