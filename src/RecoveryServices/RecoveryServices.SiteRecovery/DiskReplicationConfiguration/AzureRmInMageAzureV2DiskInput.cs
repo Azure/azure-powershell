@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
@@ -50,10 +51,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Mandatory = true,
             HelpMessage = "Specifies the Recovery disk type.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            Constants.Premium_LRS,
-            Constants.Standard_LRS,
-            Constants.Standard_SSD)]
+        [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS")]
         public string DiskType { get; set; }
 
         #endregion Parameters
@@ -64,13 +62,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
-            AzureRmAsrInMageAzureV2DiskInput diskRelicationConfig = null;
+            AsrInMageAzureV2DiskInput diskRelicationConfig = null;
 
             if (this.ShouldProcess(
                 this.DiskId,
                 VerbsCommon.New))
             {
-                diskRelicationConfig = new AzureRmAsrInMageAzureV2DiskInput()
+                diskRelicationConfig = new AsrInMageAzureV2DiskInput()
                 {
                     DiskId = this.DiskId,
                     DiskType = this.DiskType,
