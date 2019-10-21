@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
           Mandatory = false,
           ValueFromPipelineByPropertyName = true,
-          HelpMessage = "The resource type.",
+          HelpMessage = "The private link resource type.",
           ParameterSetName = "ByResource")]
-        public string ResourceType { get; set; }
+        public string PrivateLinkResourceType { get; set; }
 
         protected IPrivateLinkProvider BuildProvider(string resourceType)
         {
@@ -59,10 +59,10 @@ namespace Microsoft.Azure.Commands.Network
 
             switch (resourceType.ToLower())
             {
-                case "microsoft.sql/servers/privateendpointconnections":
+                case "microsoft.sql/servers":
                     provider = new SqlProvider(this);
                     break;
-                case "microsoft.network/privatelinkservices/privateendpointconnections":
+                case "microsoft.network/privatelinkservices":
                 default:
                     provider = new NetworkingProvider(this);
                     break;
