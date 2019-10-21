@@ -3294,6 +3294,18 @@
                 <Label>ThreatIntelMode</Label>
                 <PropertyName>ThreatIntelMode</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>Sku</Label>
+                <PropertyName>Sku</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VirtualHub</Label>
+                <PropertyName>VirtualHub</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>FirewallPolicy</Label>
+                <PropertyName>FirewallPolicy</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
