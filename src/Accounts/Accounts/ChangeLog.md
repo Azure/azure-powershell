@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add the deprecat message of `Resolve-Error` alias.
+* Add a deprecation message for `Resolve-Error` alias.
 
 ## Version 1.6.3
 * Update telemetry and url rewriting for generated modules, fix windows unit tests.
