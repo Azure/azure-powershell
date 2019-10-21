@@ -20,35 +20,20 @@ namespace Commands.Network.Test.ScenarioTests
     using Xunit;
     using Xunit.Abstractions;
 
-    public class CortexTests : NetworkTestRunner
+    public class VirtualHubRouteTableTest : NetworkTestRunner
     {
-        public CortexTests(ITestOutputHelper output)
+        public VirtualHubRouteTableTest(ITestOutputHelper output)
             : base(output)
         {
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
-        public void TestCortexCRUD()
-        {
-            TestRunner.RunTestScript("Test-CortexCRUD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
-        public void TestCortexExpressRouteCRUD()
+        public void TestCortexVirtualHubRouteTableCRUD()
         {
-            TestRunner.RunTestScript("Test-CortexExpressRouteCRUD");
+            TestRunner.RunTestScript("Test-VirtualHubRouteTableCRUD");
         }
 
-        [Fact]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
-        public void TestCortexDownloadConfig()
-        {
-            TestRunner.RunTestScript("Test-CortexDownloadConfig");
-        }
     }
 }
