@@ -98,7 +98,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ReachabilityReport");
         }
 
-        [Fact]
+        [Fact(Skip = "API is no longer available to customers")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestProvidersList()
