@@ -750,6 +750,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="cmdletCancellationToken">CancellationToken</param>
         public void GetFileProperties(string accountName, string path, bool getAclUsage, string dumpFileName, bool getDiskUsage , bool saveToLocal, int numThreads, bool displayFiles, bool hideConsistentAcl , long maxDepth, Cmdlet cmdlet, CancellationToken cmdletCancellationToken)
         {
+            Console.WriteLine(string.Format("================ {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10} ================", accountName, path, getAclUsage, dumpFileName, getDiskUsage, saveToLocal, numThreads, displayFiles, hideConsistentAcl, maxDepth, cmdletCancellationToken));
             var client = AdlsClientFactory.GetAdlsClient(accountName, _context);
             Task exportTask = Task.Run(() => client
                     .GetFileProperties(

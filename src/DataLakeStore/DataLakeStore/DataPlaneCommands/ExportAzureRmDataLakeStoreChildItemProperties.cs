@@ -1,4 +1,5 @@
-﻿using System.Management.Automation;
+﻿using System;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
@@ -89,7 +90,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         {
             // Currently SDK default thread calculation is not correct, so pass a default thread count
             int threadCount = Concurrency == -1 ? DataLakeStoreFileSystemClient.ImportExportMaxThreads : Concurrency;
-
             DataLakeStoreFileSystemClient.GetFileProperties(Account, Path.TransformedPath, GetAcl, OutputPath,
                 GetDiskUsage, !SaveToAdl, threadCount, IncludeFile, HideConsistentAcl, MaximumDepth, this, CmdletCancellationToken);
             if (PassThru)

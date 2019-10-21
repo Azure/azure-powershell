@@ -700,7 +700,7 @@ function Test-DataLakeStoreFileSystem
 
 		# Export DiskUsage
 		$targetFile = Join-Path $currentDir "DuOutput"
-		Export-AzDataLakeStoreChildItemProperties -Account $accountName -Path $summaryFolder -OutputPath $targetFile -GetDiskUsage -IncludeFile
+		Export-AzDataLakeStoreChildItemProperties -Account $accountName -Path $summaryFolder -OutputPath $targetFile -GetDiskUsage -IncludeFile -GetAcl
 		$result = Get-Item -Path $targetFile
 		Assert-NotNull $result "No file was created on export properties"
         Remove-Item -Path $targetFile
