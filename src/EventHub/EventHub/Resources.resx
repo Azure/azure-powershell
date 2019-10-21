@@ -166,7 +166,7 @@
     <value>Delete NameSpace:{0} from ResourceGroup:{1}</value>
   </data>
   <data name="RemoveNetwrokruleSet" xml:space="preserve">
-    <value>Delete NetwrokruleSet for Namespace {0} of ResourceGroup {1}</value>
+    <value>Delete NetworkruleSet for Namespace {0} of ResourceGroup {1}</value>
   </data>
   <data name="RemovingEventHub" xml:space="preserve">
     <value>Deleting EventHub: {0} of Namespace{1}</value>

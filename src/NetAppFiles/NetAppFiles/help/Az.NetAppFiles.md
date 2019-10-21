@@ -2,7 +2,7 @@
 Module Name: Az.NetAppFiles
 Module Guid: e20e99dc-6df9-479b-8504-2960f0088f00
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles
-Help Version: 0.9.0.0
+Help Version: 1.0.0.0
 Locale: en-US
 ---
 
@@ -46,6 +46,12 @@ Deletes an Azure NetApp Files (ANF) snapshot.
 
 ### [Remove-AzNetAppFilesVolume](Remove-AzNetAppFilesVolume.md)
 Deletes an Azure NetApp Files (ANF) volume.
+
+### [Set-AzNetAppFilesAccount](Set-AzNetAppFilesAccount.md)
+Provide a full new dataset for an Azure NetApp Files (ANF) account.
+
+### [Update-AzNetAppFilesAccount](Update-AzNetAppFilesAccount.md)
+Amend the properties of an Azure NetApp Files (ANF) account.
 
 ### [Update-AzNetAppFilesPool](Update-AzNetAppFilesPool.md)
 Updates an Azure NetApp Files (ANF) pool.

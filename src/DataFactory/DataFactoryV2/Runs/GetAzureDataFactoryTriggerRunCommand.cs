@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 TriggerRunStartedAfter = TriggerRunStartedAfter,
                 TriggerRunStartedBefore = TriggerRunStartedBefore
             };
-            WriteObject(DataFactoryClient.ListTriggerRuns(triggerRunFilter));
+            WriteObject(DataFactoryClient.ListTriggerRuns(triggerRunFilter), true);
         }
     }
 }

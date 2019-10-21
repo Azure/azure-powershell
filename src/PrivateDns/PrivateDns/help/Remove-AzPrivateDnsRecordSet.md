@@ -173,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Private DNS RecprdSet ResourceID.
+Private DNS RecordSet ResourceID.
 
 ```yaml
 Type: System.String

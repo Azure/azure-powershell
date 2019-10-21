@@ -408,7 +408,7 @@
     <value>The runbook type is invalid for the file extension. PowerShell workflow and scripts should be .ps1. Graph runbook extension should be .graphrunbook. Provided file extension: {0}  </value>
   </data>
   <data name="RunbookFileAlreadyExists" xml:space="preserve">
-    <value>Runbook file already exists. Specify the force switch switch overwrite. Runbook file name: {0}</value>
+    <value>Runbook file already exists. Specify the force switch to overwrite. Runbook file name: {0}</value>
     <comment>Automation</comment>
   </data>
   <data name="FileNameRunbookNameMismatch" xml:space="preserve">

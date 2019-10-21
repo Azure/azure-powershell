@@ -57,7 +57,7 @@ Gets the single sign-on URL of a CDN profile.
 Gets the supported optimization types for a CDN profile.
 
 ### [Get-AzCdnSubscriptionResourceUsage](Get-AzCdnSubscriptionResourceUsage.md)
-Gets the resource usage for a susbscription.
+Gets the resource usage for a subscription.
 
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a custom domain for a CDN endpoint.

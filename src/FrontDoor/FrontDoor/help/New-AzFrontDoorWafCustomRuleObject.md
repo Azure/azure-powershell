@@ -128,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -RateLimitThreshold
-Rate limit thresold
+Rate limit threshold
 
 ```yaml
 Type: System.Nullable`1[System.Int32]

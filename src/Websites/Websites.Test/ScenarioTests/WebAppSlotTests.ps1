@@ -131,37 +131,31 @@ function Test-StartStopRestartWebAppSlot
 		$slot = $slot | Stop-AzWebAppSlot
 
 		Assert-AreEqual "Stopped" $slot.State
-		$ping = PingWebApp $slot
 
 		# Start web app
 		$slot = $slot | Start-AzWebAppSlot
 
 		Assert-AreEqual "Running" $slot.State
-		$ping = PingWebApp $slot
 
 		# Stop web app
 		$slot = Stop-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname
 
 		Assert-AreEqual "Stopped" $slot.State
-		$ping = PingWebApp $slot
 
 		# Start web app
 		$slot = Start-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname
 
 		Assert-AreEqual "Running" $slot.State
-		$ping = PingWebApp $slot
 
 		# Retart web app
 		$slot = Restart-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname
 
 		Assert-AreEqual "Running" $slot.State
-		$ping = PingWebApp $slot
 
 		# Restart web app
 		$slot = $slot | Restart-AzWebAppSlot
 
 		Assert-AreEqual "Running" $slot.State
-		$ping = PingWebApp $slot
 	}
 	finally
 	{
@@ -848,10 +842,10 @@ function Test-SetAzureStorageWebAppHyperVSlot
 	$tier = "PremiumContainer"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
-    $containerImageName = "testcontainer.io/test/iis"
-    $containerRegistryUrl = "https://testcontainer.azurecr.io"
-    $ontainerRegistryUser = "testregistry"
-    $pass = "7Dxo9p79Ins2K3ZU"
+	$containerImageName = "pstestacr.azurecr.io/tests/iis:latest"
+    $containerRegistryUrl = "https://pstestacr.azurecr.io"
+    $containerRegistryUser = "pstestacr"
+    $pass = "cYK4qnENExflnnOkBN7P+gkmBG0sqgIv"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|" 
 	$azureStorageAccountCustomId1 = "mystorageaccount"
@@ -878,7 +872,7 @@ function Test-SetAzureStorageWebAppHyperVSlot
 		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Small -HyperV
 		
 		# Create new web app
-		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $ontainerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
+		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $containerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
 		$job | Wait-Job
 		$actual = $job | Receive-Job
 		

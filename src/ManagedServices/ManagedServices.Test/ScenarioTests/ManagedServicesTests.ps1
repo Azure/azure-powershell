@@ -104,18 +104,18 @@ function Test-ManagedServices_CRUD
     $roleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7";
 	$managedByTenantId = "bab3375b-6197-4a15-a44b-16c41faa91d7";
 	$principalId = "d6f6c88a-5b7a-455e-ba40-ce146d4d3671";
-	$subscriptionId = "38bd4bef-41ff-45b5-b3af-d03e55a4ca15"
+	$subscriptionId = "002b3477-bfbf-4402-b377-6003168b75d3"
 	$name = getAssetName
-	$assignmentId = "846b8de3-400b-4e89-b1f4-5bb7b73f12be";
-	$definitionId = "e7d4730c-b52a-42b4-b974-6772d88cf7c6"
+	$assignmentId = "8af8768c-73c2-4993-86ae-7a45c9b232c6";
+	$definitionId = "1ccdb215-959a-48b9-bd7c-0584d461ea6c"
 
 	#put def
-	$definition = New-AzManagedServicesDefinitionWithId -ManagedByTenantId $managedByTenantId -RoleDefinitionId $roleDefinitionId -PrincipalId $principalId -Name $name -RegistrationDefinitionId e7d4730c-b52a-42b4-b974-6772d88cf7c6
+	$definition = New-AzManagedServicesDefinitionWithId -ManagedByTenantId $managedByTenantId -RoleDefinitionId $roleDefinitionId -PrincipalId $principalId -Name $name -RegistrationDefinitionId $definitionId
 
 	Assert-AreEqual $name $definition.Properties.Name
 	Assert-AreEqual $managedByTenantId $definition.Properties.ManagedByTenantId 
 	Assert-AreEqual $roleDefinitionId $definition.Properties.Authorization[0].RoleDefinitionId 
-	Assert-AreEqual $principalId $definition.Properties.Authorization[0].PrincipalId
+	Assert-AreEqual $principalId $definition.Properties.Authorization[0].PrincipalId	
 
 	# get def
 	$getDef = Get-AzManagedServicesDefinition -Name $definitionId
@@ -125,8 +125,7 @@ function Test-ManagedServices_CRUD
 	#put assignment
 	$assignment = New-AzManagedServicesAssignmentWithId `
 					-RegistrationDefinitionResourceId $definition.Id `
-					-RegistrationAssignmentId 846b8de3-400b-4e89-b1f4-5bb7b73f12be
-	
+					-RegistrationAssignmentId $assignmentId	
 	Assert-NotNull $assignment
 
 	#get assignment
@@ -136,10 +135,22 @@ function Test-ManagedServices_CRUD
 	Assert-AreEqual $definition.Id $getAssignment.Properties.RegistrationDefinitionId
 
 	#remove assignment
-	$removeAssignment = Remove-AzManagedServicesAssignment -Id $assignmentId
-	Assert-NotNull	$removeAssignment
+	Remove-AzManagedServicesAssignment -Id $assignmentId
 	
 	#remove definition
-	$removeDef = Remove-AzManagedServicesDefinition -Id $definitionId
-	Assert-NotNull	$removeDef
+	Remove-AzManagedServicesDefinition -Id $definitionId
+
+	#list assignments
+	$assignments = Get-AzManagedServicesAssignment
+	Foreach($assignment in $assignments)
+	{
+		Assert-AreNotEqual($assignmentId, $assignment.Name)
+	}
+
+	#list definitions
+	$definitions = Get-AzManagedServicesDefinition
+	Foreach($definition in $definitions)
+	{
+		Assert-AreNotEqual($definitionId, $definition.Name)
+	}
 }

@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Websites" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Websites" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +21,10 @@
     <None Update="ScenarioTests\Resources\nodejs-sample.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AccessRestrictionTests\" />
   </ItemGroup>
 
 </Project>

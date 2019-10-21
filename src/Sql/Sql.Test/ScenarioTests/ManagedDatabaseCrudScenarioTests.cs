@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         public ManagedDatabaseCrudScenarioTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/managedInstances"
+            };
         }
 
         [Fact]
@@ -62,6 +65,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestRestoreManagedDatabase()
         {
             RunPowerShellTest("Test-RestoreManagedDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreDeletedManagedDatabase()
+        {
+            RunPowerShellTest("Test-RestoreDeletedManagedDatabase");
         }
 
         [Fact]

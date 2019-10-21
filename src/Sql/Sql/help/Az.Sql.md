@@ -14,6 +14,15 @@ This topic displays help topics for the Azure SQL Database Cmdlets.
 ### [Add-AzSqlDatabaseToFailoverGroup](Add-AzSqlDatabaseToFailoverGroup.md)
 Adds one or more databases to an Azure SQL Database Failover Group.
 
+### [Add-AzSqlElasticJobStep](Add-AzSqlElasticJobStep.md)
+Adds a job step to a job
+
+### [Add-AzSqlElasticJobTarget](Add-AzSqlElasticJobTarget.md)
+Adds a target to a target group
+
+### [Add-AzSqlInstanceKeyVaultKey](Add-AzSqlInstanceKeyVaultKey.md)
+Adds a key vault key to the provided Managed Instance. 
+
 ### [Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate](Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate.md)
 Adds a Transparent Data Encryption Certificate for the given managed instance
 
@@ -86,6 +95,9 @@ Gets the advanced threat protection settings for a database.
 ### [Get-AzSqlDatabaseAdvisor](Get-AzSqlDatabaseAdvisor.md)
 Gets one or more Advisors for an Azure SQL Database.
 
+### [Get-AzSqlDatabaseAudit](Get-AzSqlDatabaseAudit.md)
+Gets the auditing settings of an Azure SQL database.
+
 ### [Get-AzSqlDatabaseAuditing](Get-AzSqlDatabaseAuditing.md)
 Gets the auditing settings of an Azure SQL database.
 
@@ -118,6 +130,9 @@ Gets the details of an import or export of an Azure SQL Database.
 
 ### [Get-AzSqlDatabaseIndexRecommendation](Get-AzSqlDatabaseIndexRecommendation.md)
 Gets the recommended index operations for a server or database.
+
+### [Get-AzSqlDatabaseInstanceFailoverGroup](Get-AzSqlDatabaseInstanceFailoverGroup.md)
+Gets or lists Instance Failover Groups.
 
 ### [Get-AzSqlDatabaseLongTermRetentionBackup](Get-AzSqlDatabaseLongTermRetentionBackup.md)
 Gets one or more long term retention backups.
@@ -165,6 +180,30 @@ Gets a deleted database that you can restore.
 ### [Get-AzSqlDeletedInstanceDatabaseBackup](Get-AzSqlDeletedInstanceDatabaseBackup.md)
 Gets a deleted database that you can restore.
 
+### [Get-AzSqlElasticJob](Get-AzSqlElasticJob.md)
+Gets one or more jobs
+
+### [Get-AzSqlElasticJobAgent](Get-AzSqlElasticJobAgent.md)
+Gets a Azure SQL Elastic Job agent
+
+### [Get-AzSqlElasticJobCredential](Get-AzSqlElasticJobCredential.md)
+Gets one or more credentials
+
+### [Get-AzSqlElasticJobExecution](Get-AzSqlElasticJobExecution.md)
+Gets one or more job executions
+
+### [Get-AzSqlElasticJobStep](Get-AzSqlElasticJobStep.md)
+Gets one or more job steps
+
+### [Get-AzSqlElasticJobStepExecution](Get-AzSqlElasticJobStepExecution.md)
+Gets one or more job step executions
+
+### [Get-AzSqlElasticJobTargetExecution](Get-AzSqlElasticJobTargetExecution.md)
+Gets one or more job target executions
+
+### [Get-AzSqlElasticJobTargetGroup](Get-AzSqlElasticJobTargetGroup.md)
+Gets one or more job target groups
+
 ### [Get-AzSqlElasticPool](Get-AzSqlElasticPool.md)
 Gets elastic pools and their property values in an Azure SQL Database.
 
@@ -185,6 +224,9 @@ Gets one or more recommended actions for an Azure SQL Elastic Pool Advisor.
 
 ### [Get-AzSqlInstance](Get-AzSqlInstance.md)
 Returns information about Azure SQL Managed Database Instance.
+
+### [Get-AzSqlInstanceActiveDirectoryAdministrator](Get-AzSqlInstanceActiveDirectoryAdministrator.md)
+Gets information about an Azure AD administrator for SQL Managed Instance.
 
 ### [Get-AzSqlInstanceAdvancedDataSecurityPolicy](Get-AzSqlInstanceAdvancedDataSecurityPolicy.md)
 Gets Advanced Data Security policy of a managed instance.
@@ -213,6 +255,18 @@ Gets all vulnerability assessment scan record(s) associated with a given managed
 ### [Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting](Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a managed database.
 
+### [Get-AzSqlInstanceKeyVaultKey](Get-AzSqlInstanceKeyVaultKey.md)
+Gets a SQL managed instance's Key Vault keys.
+
+### [Get-AzSqlInstancePool](Get-AzSqlInstancePool.md)
+Returns information about the Azure SQL Instance pool.
+
+### [Get-AzSqlInstancePoolUsage](Get-AzSqlInstancePoolUsage.md)
+Returns information about an Azure SQL Instance pool's usage.
+
+### [Get-AzSqlInstanceTransparentDataEncryptionProtector](Get-AzSqlInstanceTransparentDataEncryptionProtector.md)
+Gets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
+
 ### [Get-AzSqlInstanceVulnerabilityAssessmentSetting](Get-AzSqlInstanceVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a managed instance.
 
@@ -233,6 +287,9 @@ Gets the advanced threat protection settings for a server.
 
 ### [Get-AzSqlServerAdvisor](Get-AzSqlServerAdvisor.md)
 Gets one or more Advisors for an Azure SQL Server.
+
+### [Get-AzSqlServerAudit](Get-AzSqlServerAudit.md)
+Gets the auditing settings of an Azure SQL server.
 
 ### [Get-AzSqlServerAuditing](Get-AzSqlServerAuditing.md)
 Gets the auditing settings of an Azure SQL server.
@@ -294,6 +351,12 @@ Returns information about the sync schema of a member database or a hub database
 ### [Get-AzSqlVirtualCluster](Get-AzSqlVirtualCluster.md)
 Returns information about Azure SQL Virtual Cluster.
 
+### [Invoke-AzSqlDatabaseFailover](Invoke-AzSqlDatabaseFailover.md)
+Failovers a database.
+
+### [Invoke-AzSqlElasticPoolFailover](Invoke-AzSqlElasticPoolFailover.md)
+Failovers an elastic pool.
+
 ### [New-AzSqlDatabase](New-AzSqlDatabase.md)
 Creates a database or an elastic database.
 
@@ -312,11 +375,26 @@ This command creates a new Azure SQL Database Failover Group.
 ### [New-AzSqlDatabaseImport](New-AzSqlDatabaseImport.md)
 Imports a .bacpac file and create a new database on the server.
 
+### [New-AzSqlDatabaseInstanceFailoverGroup](New-AzSqlDatabaseInstanceFailoverGroup.md)
+This command creates a new Azure SQL Database Instance Failover Group.
+
 ### [New-AzSqlDatabaseRestorePoint](New-AzSqlDatabaseRestorePoint.md)
 Creates a new restore point from which a SQL Database can be restored.
 
 ### [New-AzSqlDatabaseSecondary](New-AzSqlDatabaseSecondary.md)
 Creates a secondary database for an existing database and starts data replication.
+
+### [New-AzSqlElasticJob](New-AzSqlElasticJob.md)
+Creates a new job
+
+### [New-AzSqlElasticJobAgent](New-AzSqlElasticJobAgent.md)
+Creates a new elastic job agent
+
+### [New-AzSqlElasticJobCredential](New-AzSqlElasticJobCredential.md)
+Creates a new job credential
+
+### [New-AzSqlElasticJobTargetGroup](New-AzSqlElasticJobTargetGroup.md)
+Creates a new target group
 
 ### [New-AzSqlElasticPool](New-AzSqlElasticPool.md)
 Creates an elastic database pool for a SQL Database.
@@ -326,6 +404,9 @@ Creates an Azure SQL Database Managed Instance.
 
 ### [New-AzSqlInstanceDatabase](New-AzSqlInstanceDatabase.md)
 Creates an Azure SQL Managed Instance database.
+
+### [New-AzSqlInstancePool](New-AzSqlInstancePool.md)
+Creates an Azure SQL Instance pool.
 
 ### [New-AzSqlServer](New-AzSqlServer.md)
 Creates a SQL Database server.
@@ -360,6 +441,9 @@ Creates an Azure SQL Database Sync Member.
 ### [Remove-AzSqlDatabase](Remove-AzSqlDatabase.md)
 Removes an Azure SQL database.
 
+### [Remove-AzSqlDatabaseAudit](Remove-AzSqlDatabaseAudit.md)
+Removes the auditing settings of an Azure SQL database.
+
 ### [Remove-AzSqlDatabaseDataMaskingRule](Remove-AzSqlDatabaseDataMaskingRule.md)
 Removes a data masking rule from a database.
 
@@ -368,6 +452,9 @@ Removes an Azure SQL Database Failover Group.
 
 ### [Remove-AzSqlDatabaseFromFailoverGroup](Remove-AzSqlDatabaseFromFailoverGroup.md)
 Removes one or more databases from an Azure SQL Database Failover Group.
+
+### [Remove-AzSqlDatabaseInstanceFailoverGroup](Remove-AzSqlDatabaseInstanceFailoverGroup.md)
+Removes an Instance Failover Group.
 
 ### [Remove-AzSqlDatabaseLongTermRetentionBackup](Remove-AzSqlDatabaseLongTermRetentionBackup.md)
 Deletes a long term retention backup.
@@ -381,11 +468,32 @@ Terminates data replication between a SQL Database and the specified secondary d
 ### [Remove-AzSqlDatabaseSensitivityClassification](Remove-AzSqlDatabaseSensitivityClassification.md)
 Removes the information types and sensitivity labels of columns in the database.
 
+### [Remove-AzSqlElasticJob](Remove-AzSqlElasticJob.md)
+Removes a job
+
+### [Remove-AzSqlElasticJobAgent](Remove-AzSqlElasticJobAgent.md)
+Removes the elastic job agent
+
+### [Remove-AzSqlElasticJobCredential](Remove-AzSqlElasticJobCredential.md)
+Removes the elastic job credential
+
+### [Remove-AzSqlElasticJobStep](Remove-AzSqlElasticJobStep.md)
+Removes the job step
+
+### [Remove-AzSqlElasticJobTarget](Remove-AzSqlElasticJobTarget.md)
+Removes the target from the target group
+
+### [Remove-AzSqlElasticJobTargetGroup](Remove-AzSqlElasticJobTargetGroup.md)
+Removes the target group
+
 ### [Remove-AzSqlElasticPool](Remove-AzSqlElasticPool.md)
 Deletes an elastic database pool.
 
 ### [Remove-AzSqlInstance](Remove-AzSqlInstance.md)
 Removes an Azure SQL Managed Database Instance.
+
+### [Remove-AzSqlInstanceActiveDirectoryAdministrator](Remove-AzSqlInstanceActiveDirectoryAdministrator.md)
+Removes an Azure AD administrator for SQL Managed Instance.
 
 ### [Remove-AzSqlInstanceDatabase](Remove-AzSqlInstanceDatabase.md)
 Removes an Azure SQL Managed Instance database.
@@ -393,11 +501,20 @@ Removes an Azure SQL Managed Instance database.
 ### [Remove-AzSqlInstanceDatabaseSensitivityClassification](Remove-AzSqlInstanceDatabaseSensitivityClassification.md)
 Removes the information types and sensitivity labels of columns in the Azure SQL managed instance database.
 
+### [Remove-AzSqlInstanceKeyVaultKey](Remove-AzSqlInstanceKeyVaultKey.md)
+Removes a Key Vault key from a SQL managed instance
+
+### [Remove-AzSqlInstancePool](Remove-AzSqlInstancePool.md)
+Removes an Azure SQL Instance pool.
+
 ### [Remove-AzSqlServer](Remove-AzSqlServer.md)
 Removes an Azure SQL Database server.
 
 ### [Remove-AzSqlServerActiveDirectoryAdministrator](Remove-AzSqlServerActiveDirectoryAdministrator.md)
 Removes an Azure AD administrator for SQL Server.
+
+### [Remove-AzSqlServerAudit](Remove-AzSqlServerAudit.md)
+Removes the auditing settings of an Azure SQL server.
 
 ### [Remove-AzSqlServerCommunicationLink](Remove-AzSqlServerCommunicationLink.md)
 Deletes a communication link for elastic database transactions between two servers.
@@ -444,6 +561,9 @@ Sets properties for a database, or moves an existing database into an elastic po
 ### [Set-AzSqlDatabaseAdvisorAutoExecuteStatus](Set-AzSqlDatabaseAdvisorAutoExecuteStatus.md)
 Modifies auto execute status of an Azure SQL Database Advisor.
 
+### [Set-AzSqlDatabaseAudit](Set-AzSqlDatabaseAudit.md)
+Changes the auditing settings for an Azure SQL database.
+
 ### [Set-AzSqlDatabaseAuditing](Set-AzSqlDatabaseAuditing.md)
 Changes the auditing settings for an Azure SQL database.
 
@@ -465,6 +585,9 @@ Modifies the configuration of an Azure SQL Database Failover Group.
 ### [Set-AzSqlDatabaseGeoBackupPolicy](Set-AzSqlDatabaseGeoBackupPolicy.md)
 Sets a database geo backup policy.
 
+### [Set-AzSqlDatabaseInstanceFailoverGroup](Set-AzSqlDatabaseInstanceFailoverGroup.md)
+Modifies the configuration of an Instance Failover Group.
+
 ### [Set-AzSqlDatabaseRecommendedActionState](Set-AzSqlDatabaseRecommendedActionState.md)
 Updates the state of an Azure SQL Database recommended action.
 
@@ -480,6 +603,18 @@ Modifies TDE property for a database.
 ### [Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.
 
+### [Set-AzSqlElasticJob](Set-AzSqlElasticJob.md)
+Updates a job
+
+### [Set-AzSqlElasticJobAgent](Set-AzSqlElasticJobAgent.md)
+Updates an elastic job agent
+
+### [Set-AzSqlElasticJobCredential](Set-AzSqlElasticJobCredential.md)
+Updates a job credential
+
+### [Set-AzSqlElasticJobStep](Set-AzSqlElasticJobStep.md)
+Updates a job step
+
 ### [Set-AzSqlElasticPool](Set-AzSqlElasticPool.md)
 Modifies properties of an elastic database pool in Azure SQL Database.
 
@@ -492,6 +627,9 @@ Updates the state of an Azure SQL Elastic Pool recommended action.
 ### [Set-AzSqlInstance](Set-AzSqlInstance.md)
 Sets properties for an Azure SQL Database Managed Instance.
 
+### [Set-AzSqlInstanceActiveDirectoryAdministrator](Set-AzSqlInstanceActiveDirectoryAdministrator.md)
+Provisions an Azure AD administrator for SQL Managed Instance.
+
 ### [Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy](Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy.md)
 Sets a backup short term retention policy.
 
@@ -501,6 +639,12 @@ Sets the information types and sensitivity labels of columns in the Azure SQL ma
 ### [Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.
 
+### [Set-AzSqlInstancePool](Set-AzSqlInstancePool.md)
+Sets properties for an Azure SQL Instance pool.
+
+### [Set-AzSqlInstanceTransparentDataEncryptionProtector](Set-AzSqlInstanceTransparentDataEncryptionProtector.md)
+Sets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
+
 ### [Set-AzSqlServer](Set-AzSqlServer.md)
 Modifies properties of a SQL Database server.
 
@@ -509,6 +653,9 @@ Provisions an Azure AD administrator for SQL Server.
 
 ### [Set-AzSqlServerAdvisorAutoExecuteStatus](Set-AzSqlServerAdvisorAutoExecuteStatus.md)
 Updates the auto execute status of an Azure SQL Server Advisor.
+
+### [Set-AzSqlServerAudit](Set-AzSqlServerAudit.md)
+Changes the auditing settings of an Azure SQL server.
 
 ### [Set-AzSqlServerAuditing](Set-AzSqlServerAuditing.md)
 Changes the auditing settings of an Azure SQL server.
@@ -537,6 +684,9 @@ Starts the workflow that runs a recommended index operation.
 ### [Start-AzSqlDatabaseVulnerabilityAssessmentScan](Start-AzSqlDatabaseVulnerabilityAssessmentScan.md)
 Starts a vulnerability assessment scan.
 
+### [Start-AzSqlElasticJob](Start-AzSqlElasticJob.md)
+Starts a job, returning a job execution id that can be polled to view it's status
+
 ### [Start-AzSqlInstanceDatabaseVulnerabilityAssessmentScan](Start-AzSqlInstanceDatabaseVulnerabilityAssessmentScan.md)
 Starts a vulnerability assessment scan.
 
@@ -549,6 +699,9 @@ Cancels the asynchronous updates operation on the database.
 ### [Stop-AzSqlDatabaseExecuteIndexRecommendation](Stop-AzSqlDatabaseExecuteIndexRecommendation.md)
 Stops the workflow that runs a recommended index operation.
 
+### [Stop-AzSqlElasticJob](Stop-AzSqlElasticJob.md)
+Stops a job given it's job execution id
+
 ### [Stop-AzSqlElasticPoolActivity](Stop-AzSqlElasticPoolActivity.md)
 Cancels the asynchronous update operation on an elastic pool.
 
@@ -560,6 +713,9 @@ Suspends a SQL Data Warehouse database.
 
 ### [Switch-AzSqlDatabaseFailoverGroup](Switch-AzSqlDatabaseFailoverGroup.md)
 Executes a failover of an Azure SQL Database Failover Group.
+
+### [Switch-AzSqlDatabaseInstanceFailoverGroup](Switch-AzSqlDatabaseInstanceFailoverGroup.md)
+Executes a failover of an Instance Failover Group.
 
 ### [Update-AzSqlDatabaseAdvancedThreatProtectionSettings](Update-AzSqlDatabaseAdvancedThreatProtectionSettings.md)
 Sets a advanced threat protection settings on a database.
@@ -587,6 +743,6 @@ Updates an Azure SQL Database Sync Member.
 
 ### [Update-AzSqlSyncSchema](Update-AzSqlSyncSchema.md)
 Update the sync schema for a sync member database or a sync hub database.
-It will get the the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
+It will get the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
 If "SyncMemberName" is specified, it will refresh the member database schema; if not, it will refresh the hub database schema.
 

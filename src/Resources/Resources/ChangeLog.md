@@ -19,6 +19,40 @@
 -->
 ## Upcoming Release
 
+## Version 1.7.0
+* Fix bug where New-AzRoleAssignment could not be called without parameter Scope.
+
+## Version 1.6.2
+* Add support for new api version 2019-05-10 for Microsoft.Resource
+    - Add support for `copy.count = 0` for variables, resources and properties
+    - Resources with `condition = false` or `copy.count = 0` will be deleted in complete mode
+* Fixed miscellaneous typos across module
+* Add an example of assigning policy at subscription level to help doc
+* Added breaking change notice about new required parameter `-ScopeType` in the `AzDeployment` cmdlets
+    - `Get-AzDeployment`
+    - `Get-AzDeploymentOperation`
+    - `New-AzDeployment`
+    - `Remove-AzDeployment`
+    - `Save-AzDeploymentTemplate`
+    - `Stop-AzDeployment`
+    - `Test-AzDeployment`
+
+## Version 1.6.1
+- Remove missing cmdlet referenced in `New-AzResourceGroupDeployment` documentation
+- Updated policy cmdlets to use new api version 2019-01-01
+
+## Version 1.6.0
+- Fix help text for Get-AzPolicyState -Top parameter
+- Add client-side paging support for Get-AzPolicyAlias
+- Add new parameters for Set-AzPolicyAssignment, -PolicyParameters and -PolicyParametersObject
+- Handful of doc and example updates for Policy cmdlets
+
+## Version 1.5.0
+* Support for additional Template Export options
+    - Add `-SkipResourceNameParameterization` parameter to Export-AzResourceGroup
+    - Add `-SkipAllParameterization` parameter to Export-AzResourceGroup
+    - Add `-Resource` parameter to Export-AzResourceGroup for exported resource filtering
+
 ## Version 1.4.0
 * Add new cmdlet Get-AzureRmDenyAssignment for retrieving deny assignments
 * Added 'Description' parameter when working with Azure AD Groups:

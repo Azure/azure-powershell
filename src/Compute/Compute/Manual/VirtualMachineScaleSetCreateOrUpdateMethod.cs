@@ -12,6 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
+using System.Net;
+using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.Compute.Properties;
@@ -21,14 +27,7 @@ using Microsoft.Azure.Commands.Compute.Strategies.Network;
 using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -130,6 +129,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage ="Use this to create the Scale set in a single placement group, default is multiple groups")]
         public SwitchParameter SinglePlacementGroup;
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        public string ProximityPlacementGroup { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
+            HelpMessage = "The priority for the virtual machine scale set.  Only supported values are 'Regular' and 'Low'.")]
+        [PSArgumentCompleter("Regular", "Low")]
+        public string Priority { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
+            HelpMessage = "The eviction policy for the low priority virtual machine scale set.  Only supported values are 'Deallocate' and 'Delete'.")]
+        [PSArgumentCompleter("Deallocate", "Delete")]
+        public string EvictionPolicy { get; set; }
+        
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
+            HelpMessage = "The max price of the billing of a low priority virtual machine scale set.")]
+        public double MaxPrice { get; set; }
 
         const int FirstPortRangeStart = 50000;
 
@@ -243,6 +259,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         _cmdlet.VMScaleSetName,
                         _cmdlet.NatBackendPort.Concat(_cmdlet.BackendPort).ToList());
 
+                var proximityPlacementGroup = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroup);
+
                 return resourceGroup.CreateVirtualMachineScaleSetConfig(
                     name: _cmdlet.VMScaleSetName,
                     subnet: subnet,                    
@@ -261,7 +279,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     zones: _cmdlet.Zone,
                     ultraSSDEnabled : _cmdlet.EnableUltraSSD.IsPresent,
                     identity: _cmdlet.GetVmssIdentityFromArgs(),
-                    singlePlacementGroup : _cmdlet.SinglePlacementGroup.IsPresent);
+                    singlePlacementGroup : _cmdlet.SinglePlacementGroup.IsPresent,
+                    proximityPlacementGroup: proximityPlacementGroup,
+                    priority: _cmdlet.Priority,
+                    evictionPolicy: _cmdlet.EvictionPolicy,
+                    maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null
+                    );
             }
         }
 

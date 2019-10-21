@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     [OutputType(typeof(IntegrationAccountControlNumber))]
     public class UpdateAzureIntegrationAccountReceivedIcnCommand : LogicAppBaseCmdlet
     {
-        #region Input Paramters
+        #region Input Parameters
 
         /// <summary>
         /// Gets or sets the resource group name.

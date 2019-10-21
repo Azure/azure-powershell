@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzServiceBusIPRule
 
 ## SYNOPSIS
-Add a single IPrule to the NetworkRuleSet of the given Namespace
+Add a single IP rule to the NetworkRuleSet of the given Namespace
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Add-AzServiceBusIPRule [-ResourceGroupName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
-Add a single IPrule to the NetworkRuleSet of the given Namespace
+Add a single IP rule to the NetworkRuleSet of the given Namespace
 
 ## EXAMPLES
 
@@ -41,7 +41,7 @@ Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : {11.22.33.44, Allow}
 VirtualNetworkRules : 
 
-add the IPRule with IpMask "11.22.33.44" and Action Allow fro the given namesapce.
+add the IPRule with IpMask "11.22.33.44" and Action Allow fro the given namespace.
 
 ### Example 2
 ```powershell
@@ -54,7 +54,7 @@ Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : {11.22.33.44, Allow}
 VirtualNetworkRules : 
 
-add the IPRule with IpMask "11.22.33.44" and Action Allow fro the given namesapce.
+add the IPRule with IpMask "11.22.33.44" and Action Allow fro the given namespace.
 
 ## PARAMETERS
 

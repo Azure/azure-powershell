@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter VMwareToAzure { get; set; }
 
         /// <summary>
-        ///    Switch Parameter to re-protect a Hyper-V virtual machine after fail-back..
+        ///    Switch Parameter to re-protect a Hyper-V virtual machine after fail-back.
         /// </summary>
         [Parameter(
             Position = 0,

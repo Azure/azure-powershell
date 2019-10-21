@@ -36,11 +36,7 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
             EventHubsController.NewInstance.RunPsTest(_logger, "EventHubsTests");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Fails in NetStandard, investigation needed: $namespaceListKeys.PrimaryConnectionString.Contains($updatedAuthRule.PrimaryKey)")]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventHubsAuthorizationRulesCRUD()
         {

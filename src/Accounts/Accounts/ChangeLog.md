@@ -19,6 +19,28 @@
 -->
 ## Upcoming Release
 
+## Version 1.6.3
+* Update telemetry and url rewriting for generated modules, fix windows unit tests.
+
+## Version 1.6.2
+* Fixed miscellaneous typos across module
+* Support user-assigned MSI in Azure Functions Authentication (#9479)
+
+## Version 1.6.1
+* Update common code to use latest version of ClientRuntime
+
+## Version 1.6.0
+* Add support for profile cmdlets
+* Add support for environments and data planes in generated cmdlets
+* Update common packages to include new PolicyInsights library * Fix bug where incorrect endpoint was being used in some cases for data plane cmdlets in Windows PowerShell
+
+## Version 1.5.3
+* Fix bug with incorrect URL being used in some cases for Functions calls
+    - More information here: https://github.com/Azure/azure-powershell/issues/8983
+* Fix Issue with aliases from AzureRM to Az cmdlets
+  - Set-AzureRmVMBootDiagnostics -> Set-AzVMBootDiagnostic
+  - Export-AzureRMLogAnalyticThrottledRequests -> Export-AzLogAnalyticThrottledRequest
+
 ## Version 1.5.2
 * Update Authentication Library to fix ADFS issues with username/password auth
 

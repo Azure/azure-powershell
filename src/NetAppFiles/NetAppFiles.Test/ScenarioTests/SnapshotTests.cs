@@ -27,14 +27,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact(Skip = "The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSnapshotCrud()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-SnapshotCrud");
         }
 
-        [Fact(Skip = "The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSnapshotPipelines()
         {

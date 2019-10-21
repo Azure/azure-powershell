@@ -27,10 +27,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         OutputType(typeof(PSStaticWebsiteProperties))]
     public class EnableAzureStorageServiceStaticWebsiteCommand : StorageCloudBlobCmdletBase
     {
-        [Parameter(Mandatory = true, Position = 0, HelpMessage = "The name of the index document in each directory.")]
+        [Parameter(Mandatory = false, Position = 0, HelpMessage = "The name of the index document in each directory.")]
+        [ValidateNotNull]
         public string IndexDocument { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, HelpMessage = "the path to the error document that should be shown when a 404 is issued (meaning, when a browser requests a page that does not exist.)")]
+        [Parameter(Mandatory = false, Position = 1, HelpMessage = "the path to the error document that should be shown when a 404 is issued (meaning, when a browser requests a page that does not exist.)")]
+        [ValidateNotNull]
         public string ErrorDocument404Path { get; set; }
 
         [Parameter(Mandatory = false)]
@@ -57,8 +59,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 serviceProperties.StaticWebsite = new StaticWebsiteProperties();
             }
             serviceProperties.StaticWebsite.Enabled = true;
-            serviceProperties.StaticWebsite.IndexDocument = this.IndexDocument;
-            serviceProperties.StaticWebsite.ErrorDocument404Path = this.ErrorDocument404Path;
+            if (this.IndexDocument != null)
+            {
+                serviceProperties.StaticWebsite.IndexDocument = this.IndexDocument;
+            }
+            if (this.ErrorDocument404Path != null)
+            {
+                serviceProperties.StaticWebsite.ErrorDocument404Path = this.ErrorDocument404Path;
+            }
         }
 
         /// <summary>

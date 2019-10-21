@@ -38,13 +38,13 @@ The **New-AzOperationalInsightsStorageInsight** cmdlet creates a new Storage Ins
 ```
 PS C:\>$Storage = Get-AzStorageAccount -ResourceGroupName "ContosoResourceGroup" -Name "ContosoStorage"
 
-PS C:\>$StorageKey = ($Storage | Get-AzStorageAccountKey).Key1
+PS C:\>$StorageKey = ($Storage | Get-AzStorageAccountKey).Value[0]
 
 PS C:\>New-AzOperationalInsightsStorageInsight -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "MyWorkspace" -Name "MyStorageInsight" -StorageAccountResourceId $Storage.Id -StorageAccountKey $StorageKey -Tables @("WADWindowsEventLogsTable")
 ```
 
 The first command uses the Get-AzStorageAccount cmdlet to get the storage account named ContosoStorage, and then stores it in the $Storage variable.
-The second command passes the storage account in $Storage to the Get-AzStorageAccountKey cmdlet by using the pipeline operator to get the specified storage account key, and then stores it in the $StorageKey variable.
+The second command passes the storage account in $Storage to the Get-AzStorageAccountKey cmdlet by using the pipeline operator to get the specified storage account key, and then stores it in the $StorageKey variable. This example retrieves the first key. To retrieve the other one, use Value[1] instead of Value[0].
 The final command creates a storage insight named MyStorageInsight in the workspace named MyWorkspace.
 This storage insight consumes data from the WADWindowsEventLogsTable table in the specified storage account resource.
 
@@ -54,14 +54,14 @@ PS C:\>$Workspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName "Conto
 
 PS C:\>$Storage = Get-AzStorageAccount -ResourceGroupName "ContosoResourceGroup" -Name "ContosoStorage"
 
-PS C:\>$StorageKey = ($Storage | Get-AzStorageAccountKey).Key1
+PS C:\>$StorageKey = ($Storage | Get-AzStorageAccountKey).Value[0]
 
 PS C:\>New-AzOperationalInsightsStorageInsight -Workspace $Workspace -Name "MyStorageInsight" -StorageAccountResourceId $Storage.Id -StorageAccountKey $StorageKey -Tables @("WADWindowsEventLogsTable")
 ```
 
 The first command uses the Get-AzOperationalInsightsWorkspace cmdlet to get the workspace named MyWorkspace, and then stores it in the $Workspace variable.
 The second command uses the Get-AzStorageAccount cmdlet to get the specified storage account, and then stores it in the $Storage variable.
-The third command passes the storage account in $Storage to the Get-AzStorageAccountKey cmdlet by using the pipeline operator to get the specified key, and then stores it in the $StorageKey variable.
+The third command passes the storage account in $Storage to the Get-AzStorageAccountKey cmdlet by using the pipeline operator to get the specified key, and then stores it in the $StorageKey variable. This example retrieves the first key. To retrieve the other one, use Value[1] instead of Value[0].
 The final command creates a storage insight named MyStorageInsight in the workspace defined in $Workspace.
 The Storage Insight consumes data from the WADWindowsEventLogsTable table in the specified storage account resource.
 

@@ -78,23 +78,6 @@ namespace Microsoft.Azure.Commands.Sql.Services
         /// Checks if email addresses are in a correct format
         /// </summary>
         /// <param name="emailAddresses">The email addresses</param>
-        /// <param name="seperator">The character that seperates different emails in the emailAddresses string</param>
-        /// <returns>Returns whether the email addresses are in a correct format</returns>
-        public static bool AreEmailAddressesInCorrectFormat(string emailAddresses, char seperator)
-        {
-            if (string.IsNullOrEmpty(emailAddresses))
-            {
-                return true;
-            }
-
-            string[] emailAddressesArray = emailAddresses.Split(seperator).Where(s => !string.IsNullOrEmpty(s)).ToArray();
-            return AreEmailAddressesInCorrectFormat(emailAddressesArray);
-        }
-
-        /// <summary>
-        /// Checks if email addresses are in a correct format
-        /// </summary>
-        /// <param name="emailAddresses">The email addresses</param>
         /// <returns>Returns whether the email addresses are in a correct format</returns>
         public static bool AreEmailAddressesInCorrectFormat(string[] emailAddresses)
         {
@@ -107,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.Services
                 new Regex(string.Format("{0}{1}",
                     @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))",
                     @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$"));
-            return !emailAddresses.Any(e => !emailRegex.IsMatch(e));
+            return !emailAddresses.Any(e => !emailRegex.IsMatch(e.ToLower()));
         }
     }
 }

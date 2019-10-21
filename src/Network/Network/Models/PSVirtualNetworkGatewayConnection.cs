@@ -59,7 +59,12 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSIpsecPolicy> IpsecPolicies { get; set; }
 
+        public List<PSTrafficSelectorPolicy> TrafficSelectorPolicies { get; set; }
+
         public bool ExpressRouteGatewayBypass { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string ConnectionProtocol { get; set; }
 
         [JsonIgnore]
         public string VirtualNetworkGateway1Text

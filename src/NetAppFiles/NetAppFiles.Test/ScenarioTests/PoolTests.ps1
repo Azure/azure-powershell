@@ -18,14 +18,14 @@ Test Pool CRUD operations
 #>
 function Test-PoolCrud
 {
-    $resourceGroup = "pws-sdk-tests-rg-1"
-    $accName = "pws-sdk-acc-1"
-    $poolName1 = "pws-sdk-pool-1" 
-    $poolName2 = "pws-sdk-pool-2" 
-    $resourceLocation = "westus2"
+    $resourceGroup = Get-ResourceGroupName
+    $accName = Get-ResourceName
+    $poolName1 = Get-ResourceName 
+    $poolName2 = Get-ResourceName 
+    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
-
+    
     try
     {
         # create the resource group
@@ -52,8 +52,9 @@ function Test-PoolCrud
 
         # get and check pools by group (list)
         $retrievedPool = Get-AzNetAppFilesPool -ResourceGroupName $resourceGroup -AccountName $accName
-        Assert-AreEqual "$accName/$poolName1" $retrievedPool[0].Name
-        Assert-AreEqual "$accName/$poolName2" $retrievedPool[1].Name
+        # check the names but the order does not appear to be guaranteed (perhaps because the names are randomly generated)
+        Assert-True {"$accName/$poolName1" -eq $retrievedPool[0].Name -or "$accName/$poolName2" -eq $retrievedPool[0].Name}
+        Assert-True {"$accName/$poolName1" -eq $retrievedPool[1].Name -or "$accName/$poolName2" -eq $retrievedPool[1].Name}
         Assert-AreEqual 2 $retrievedPool.Length
 
         # get and check a pool by name
@@ -65,10 +66,13 @@ function Test-PoolCrud
         Assert-AreEqual "$accName/$poolName1" $retrievedPoolById.Name
 
         # update (patch) and check the pool
-        # only tags can currently be patched so there is no implemented cmdlet
+        # changing a single item verifies this is a patch not a put
+        $retrievedPool = Update-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName1 -ServiceLevel "Standard"
+        Assert-AreEqual "$accName/$poolName1" $retrievedPool.Name
+        Assert-AreEqual "Standard" $retrievedPool.ServiceLevel
 
-        # Update and check the Pool
-        $retrievedPool = Update-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName1 -PoolSize $poolSize -ServiceLevel "Standard"
+        # do it again but change nothing and demonstrate location is optional
+        $retrievedPool = Update-AzNetAppFilesPool -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName1
         Assert-AreEqual "$accName/$poolName1" $retrievedPool.Name
         Assert-AreEqual "Standard" $retrievedPool.ServiceLevel
 
@@ -98,14 +102,14 @@ Test Pool Pipeline operations (using command aliases)
 #>
 function Test-PoolPipelines
 {
-    $resourceGroup = "pws-sdk-tests-rg-1"
-    $accName = "pws-sdk-acc-1"
-    $poolName1 = "pws-sdk-pool-1"
-    $poolName2 = "pws-sdk-pool-2"
-    $resourceLocation = "westus2"
+    $resourceGroup = Get-ResourceGroupName
+    $accName = Get-ResourceName
+    $poolName1 = Get-ResourceName
+    $poolName2 = Get-ResourceName
+    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
-
+    
     try
     {
         # create the resource group
@@ -115,7 +119,7 @@ function Test-PoolPipelines
         New-AnfAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName | New-AnfPool -Name $poolName1 -PoolSize $poolSize -ServiceLevel $serviceLevel
 		
         # modify pool by piping from Pool
-        $retrievedPool = Get-AnfPool -ResourceGroupName $resourceGroup -AccountName $accName -Name $poolName1 | Update-AnfPool -PoolSize $poolSize -ServiceLevel "Standard"
+        $retrievedPool = Get-AnfPool -ResourceGroupName $resourceGroup -AccountName $accName -Name $poolName1 | Update-AnfPool -ServiceLevel "Standard"
         Assert-AreEqual "Standard" $retrievedPool.ServiceLevel
 		
         # and again modify pool this time by piping from account
@@ -128,7 +132,8 @@ function Test-PoolPipelines
         # recreate two pools
         New-AnfPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -Name $PoolName1 -PoolSize $poolSize -ServiceLevel $serviceLevel
 
-        New-AnfPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName2 -PoolSize $poolSize -ServiceLevel $serviceLevel
+        # one using a pipe from account
+        Get-AnfAccount -ResourceGroupName $resourceGroup -Name $accName | New-AnfPool -PoolName $poolName2 -PoolSize $poolSize -ServiceLevel $serviceLevel
 
         # delete one of the pools by piping from pool get
         Get-AnfPool -ResourceGroupName $resourceGroup -AccountName $accName -Name $poolName1 | Remove-AzNetAppFilesPool

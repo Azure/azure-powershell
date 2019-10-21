@@ -155,5 +155,26 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SimpleNewVmImageNameMicrosoftSqlUbuntu");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmPpg()
+        {
+            TestRunner.RunTestScript("Test-SimpleNewVmPpg");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmPpgId()
+        {
+            TestRunner.RunTestScript("Test-SimpleNewVmPpgId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmBilling()
+        {
+            TestRunner.RunTestScript("Test-SimpleNewVmBilling");
+        }
     }
 }

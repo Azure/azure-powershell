@@ -20,16 +20,14 @@ Update-AzPeering -InputObject <PSPeering> [[-ExchangeConnection] <PSExchangeConn
 
 ### DefaultDirect
 ```
-Update-AzPeering -InputObject <PSPeering> [-UseForPeeringService <Boolean>]
- [-DirectConnection <PSDirectConnection[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzPeering -InputObject <PSPeering> [-DirectConnection <PSDirectConnection[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdDirect
 ```
-Update-AzPeering -ResourceId <String> [-UseForPeeringService <Boolean>]
- [-DirectConnection <PSDirectConnection[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzPeering -ResourceId <String> [-DirectConnection <PSDirectConnection[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdExchange
@@ -40,9 +38,8 @@ Update-AzPeering -ResourceId <String> [-ExchangeConnection] <PSExchangeConnectio
 
 ### Direct
 ```
-Update-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-UseForPeeringService <Boolean>]
- [-DirectConnection <PSDirectConnection[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-DirectConnection <PSDirectConnection[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Exchange
@@ -225,21 +222,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -UseForPeeringService
-Enable for use with Microsoft InputObject Service (MPS).
-
-```yaml
-Type: System.Nullable`1[System.Boolean]
-Parameter Sets: DefaultDirect, ByResourceIdDirect, Direct
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -272,7 +254,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

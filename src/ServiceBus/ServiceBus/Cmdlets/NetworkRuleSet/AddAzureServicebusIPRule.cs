@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.ServiceBus
             PSNetworkRuleSetAttributes networkRuleSet = Client.GetNetworkRuleSet(ResourceGroupName, Name);
             if (!networkRuleSet.IpRules.Contains(new PSNWRuleSetIpRulesAttributes { IpMask = IpMask }))
             {
-                if (ShouldProcess(target: Name, action: string.Format("Adding IPrule for NetworkRuleSet of {0} in Resourcegroup {1}", Name, ResourceGroupName)))
+                if (ShouldProcess(target: Name, action: string.Format("Adding IP rule for NetworkRuleSet of {0} in Resourcegroup {1}", Name, ResourceGroupName)))
                 {
                     try
                     {

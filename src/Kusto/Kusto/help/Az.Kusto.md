@@ -30,7 +30,7 @@ Deletes an existing Kusto cluster.
 Deletes an existing Kusto database.
 
 ### [Resume-AzKustoCluster](Resume-AzKustoCluster.md)
-Resume a suspeneded Kusto cluster.
+Resume a suspended Kusto cluster.
 
 ### [Suspend-AzKustoCluster](Suspend-AzKustoCluster.md)
 Suspend an existing Kusto cluster.

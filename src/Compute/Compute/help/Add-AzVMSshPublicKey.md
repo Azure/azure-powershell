@@ -19,7 +19,7 @@ Add-AzVMSshPublicKey [-VM] <PSVirtualMachine> [[-KeyData] <String>] [[-Path] <St
 ```
 
 ## DESCRIPTION
-The **Add-AzVMSshPublicKey** cmdlet adds the public keys that you can use to connect to a virtual machine over Secure Shell (SSH).
+The **Add-AzVMSshPublicKey** cmdlet adds the public keys that you can use to connect to a Linux virtual machine over Secure Shell (SSH).
 
 ## EXAMPLES
 
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 
 ### -KeyData
 Specifies a base 64 encoding of a public key.
-You can connect to a virtual machine by using SSH or by using the key that this parameter specifies.
+You can connect to a Linux virtual machine by using SSH or by using the key that this parameter specifies.
 
 ```yaml
 Type: System.String

@@ -21,9 +21,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Security;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter;
+using Microsoft.Azure.Commands.Sql.Instance_Pools.Model;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Sql.Instance_Pools.Services;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
@@ -42,12 +45,55 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         protected const string NewByEditionAndComputeGenerationParameterSet =
             "NewByEditionAndComputeGenerationParameterSet";
 
+        protected const string NewByInstancePoolParentObjectParameterSet =
+            "NewByInstancePoolParentObjectParameterSet";
+
+        protected const string NewByInstancePoolResourceIdParameterSet =
+            "NewByInstancePoolResourceIdParameterSet";
+
+        /// <summary>
+        /// Gets or sets the instance pool parent object
+        /// </summary>
+        [Parameter(Mandatory = true,
+            Position = 0,
+            HelpMessage = "The instance pool parent object.",
+            ValueFromPipeline = true,
+            ParameterSetName = NewByInstancePoolParentObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        [Alias("ParentObject")]
+        public AzureSqlInstancePoolModel InstancePool { get; set; }
+
+        /// <summary>
+        /// Gets or sets the instance pool resource id
+        /// </summary>
+        [Parameter(Mandatory = true,
+            Position = 0,
+            HelpMessage = "The instance pool resource id.",
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = NewByInstancePoolResourceIdParameterSet)]
+        [Alias("ResourceId")]
+        [ResourceIdCompleter("Microsoft.Sql/instancePools")]
+        public string InstancePoolResourceId { get; set; }
+
         /// <summary>
         /// Gets or sets the name of the instance.
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
-            HelpMessage = "The name of the instance.")]
+            HelpMessage = "The name of the instance.",
+            ParameterSetName = NewBySkuNameParameterSet)]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            HelpMessage = "The name of the instance.",
+            ParameterSetName = NewByEditionAndComputeGenerationParameterSet)]
+        [Parameter(Mandatory = true,
+            Position = 1,
+            HelpMessage = "The name of the instance.",
+            ParameterSetName = NewByInstancePoolParentObjectParameterSet)]
+        [Parameter(Mandatory = true,
+            Position = 1,
+            HelpMessage = "The name of the instance.",
+            ParameterSetName = NewByInstancePoolResourceIdParameterSet)]
         [Alias("InstanceName")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
@@ -58,7 +104,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 1,
-            HelpMessage = "The name of the resource group.")]
+            HelpMessage = "The name of the resource group.",
+            ParameterSetName = NewBySkuNameParameterSet)]
+        [Parameter(Mandatory = true,
+            Position = 1,
+            HelpMessage = "The name of the resource group.",
+            ParameterSetName = NewByEditionAndComputeGenerationParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
@@ -74,7 +125,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// The location in which to create the instance
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = "The location in which to create the instance.")]
+            HelpMessage = "The location in which to create the instance.",
+            ParameterSetName = NewBySkuNameParameterSet)]
+        [Parameter(Mandatory = true,
+            HelpMessage = "The location in which to create the instance.",
+            ParameterSetName = NewByEditionAndComputeGenerationParameterSet)]
         [LocationCompleter("Microsoft.Sql/managedInstances")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -83,7 +138,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Gets or sets the instance Subnet Id
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = "The Subnet Id to use for instance creation.")]
+            HelpMessage = "The Subnet Id to use for instance creation.",
+            ParameterSetName = NewBySkuNameParameterSet)]
+        [Parameter(Mandatory = true,
+            HelpMessage = "The Subnet Id to use for instance creation.",
+            ParameterSetName = NewByEditionAndComputeGenerationParameterSet)]
         [ValidateNotNullOrEmpty]
         public string SubnetId { get; set; }
 
@@ -91,6 +150,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Gets or sets the instance License Type
         /// </summary>
         [Parameter(Mandatory = false,
+            ParameterSetName = NewBySkuNameParameterSet,
+            HelpMessage = "Determines which License Type to use. Possible values are BasePrice (with AHB discount) and LicenseIncluded (without AHB discount).")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = NewByEditionAndComputeGenerationParameterSet,
             HelpMessage = "Determines which License Type to use. Possible values are BasePrice (with AHB discount) and LicenseIncluded (without AHB discount).")]
         [PSArgumentCompleter(Constants.LicenseTypeBasePrice, Constants.LicenseTypeLicenseIncluded)]
         public string LicenseType { get; set; }
@@ -222,6 +285,18 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string DnsZonePartner { get; set; }
 
         /// <summary>
+        /// Gets or sets the instance pool name
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The instance pool to place this instance in.",
+            ParameterSetName = NewBySkuNameParameterSet)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The instance pool to place this instance in.",
+            ParameterSetName = NewByEditionAndComputeGenerationParameterSet)]
+        [ResourceNameCompleter("Microsoft.Sql/instancePools")]
+        public string InstancePoolName { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -232,6 +307,48 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            if (this.IsParameterBound(c => c.InstancePool))
+            {
+                this.ResourceGroupName = this.InstancePool.ResourceGroupName;
+                this.InstancePoolName = this.InstancePool.InstancePoolName;
+                this.ComputeGeneration = this.InstancePool.ComputeGeneration;
+                this.Edition = this.InstancePool.Edition;
+                this.SubnetId = this.InstancePool.SubnetId;
+                this.LicenseType = this.InstancePool.LicenseType;
+                this.Location = this.InstancePool.Location;
+            }
+
+            if (this.IsParameterBound(c => c.InstancePoolResourceId))
+            {
+                var resourceId = new ResourceIdentifier(this.InstancePoolResourceId);
+                this.ResourceGroupName = resourceId.ResourceGroupName;
+                this.InstancePoolName = resourceId.ResourceName;
+
+                try
+                {
+                    AzureSqlInstancePoolCommunicator communicator = new AzureSqlInstancePoolCommunicator(DefaultContext);
+                    var instancePool = communicator.GetInstancePool(this.ResourceGroupName, this.InstancePoolName);
+                    this.ComputeGeneration = instancePool.Sku.Family;
+                    this.Edition = instancePool.Sku.Tier;
+                    this.SubnetId = instancePool.SubnetId;
+                    this.LicenseType = instancePool.LicenseType;
+                    this.Location = instancePool.Location;
+                }
+                catch (CloudException ex)
+                {
+                    if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    {
+                        // The instance pool does not exist
+                        throw new PSArgumentException(
+                            string.Format(Properties.Resources.AzureSqlInstancePoolNotExists, this.InstancePoolName),
+                            "InstancePoolName");
+                    }
+
+                    // Unexpected exception
+                    throw;
+                }
+            }
+
             base.ExecuteCmdlet();
         }
 
@@ -277,13 +394,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             {
                 Sku.Name = SkuName;
             }
-            else if (string.Equals(this.ParameterSetName, NewByEditionAndComputeGenerationParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            else if (string.Equals(this.ParameterSetName, NewByEditionAndComputeGenerationParameterSet, System.StringComparison.OrdinalIgnoreCase) ||
+                     string.Equals(this.ParameterSetName, NewByInstancePoolParentObjectParameterSet, System.StringComparison.OrdinalIgnoreCase) ||
+                     string.Equals(this.ParameterSetName, NewByInstancePoolResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
                 string editionShort = AzureSqlManagedInstanceAdapter.GetInstanceSkuPrefix(Edition);
                 Sku.Name = editionShort + "_" + ComputeGeneration;
             }
 
-            newEntity.Add(new Model.AzureSqlManagedInstanceModel()
+            newEntity.Add(new AzureSqlManagedInstanceModel()
             {
                 Location = this.Location,
                 ResourceGroupName = this.ResourceGroupName,
@@ -305,7 +424,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 PublicDataEndpointEnabled = this.PublicDataEndpointEnabled,
                 ProxyOverride = this.ProxyOverride,
                 TimezoneId = this.TimezoneId,
-                DnsZonePartner = this.DnsZonePartner
+                DnsZonePartner = this.DnsZonePartner,
+                InstancePoolName = this.InstancePoolName
             });
             return newEntity;
         }

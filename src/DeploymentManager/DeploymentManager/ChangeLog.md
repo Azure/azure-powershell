@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.1
+* Fixed miscellaneous typos across module
+
 ## Version 1.0.0
 * GA release of Deployment Manager cmdlets
 

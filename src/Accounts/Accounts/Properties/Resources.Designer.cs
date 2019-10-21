@@ -457,6 +457,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A snapshot of the Service API versions in AzureStack, Azure Sovereign clouds, and the Azure Global Cloud..
+        /// </summary>
+        internal static string HybridProfileDescription {
+            get {
+                return ResourceManager.GetString("HybridProfileDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to import authentication information into the global cache.  Please try executing the command again..
         /// </summary>
         internal static string ImportAuthenticationFailure {
@@ -561,6 +570,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string ProcessImportContextFromObject {
             get {
                 return ResourceManager.GetString("ProcessImportContextFromObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A snapshot of the service API versions in the Azure Global Cloud..
+        /// </summary>
+        internal static string ProdProfileDescription {
+            get {
+                return ResourceManager.GetString("ProdProfileDescription", resourceCulture);
             }
         }
         
@@ -745,6 +763,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Load modules with profile.
+        /// </summary>
+        internal static string SelectProfileAction {
+            get {
+                return ResourceManager.GetString("SelectProfileAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modules.
+        /// </summary>
+        internal static string SelectProfileTarget {
+            get {
+                return ResourceManager.GetString("SelectProfileTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter your email if you are interested in providing follow up information:.
         /// </summary>
         internal static string SendFeedbackEmailQuestion {
@@ -831,6 +867,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string ShouldRemoveModule {
             get {
                 return ResourceManager.GetString("ShouldRemoveModule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A snapshot of the service API versiosn available in Azure Sovereign Clouds and the Azure Global Cloud..
+        /// </summary>
+        internal static string SovereignProfileDescription {
+            get {
+                return ResourceManager.GetString("SovereignProfileDescription", resourceCulture);
             }
         }
         

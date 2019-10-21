@@ -33,6 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Reflection;
     using System.Security.Permissions;
     using System.Threading.Tasks;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Start", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobCopy", SupportsShouldProcess = true, DefaultParameterSetName = ContainerNameParameterSet),OutputType(typeof(AzureStorageBlob))]
     [Alias("Start-CopyAzureStorageBlob")]
@@ -195,8 +196,47 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 pageBlobTier = value;
             }
         }
-
         private PremiumPageBlobTier? pageBlobTier = null;
+
+        [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive. See detail in https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
+        [PSArgumentCompleter("Hot", "Cool", "Archive")]
+        [ValidateSet("Hot", "Cool", "Archive", IgnoreCase = true)]
+        public string StandardBlobTier
+        {
+            get
+            {
+                return standardBlobTier is null ? null : standardBlobTier.Value.ToString();
+            }
+
+            set
+            {
+                if (value != null)
+                {
+                    standardBlobTier = ((StandardBlobTier)Enum.Parse(typeof(StandardBlobTier), value, true));
+                }
+                else
+                {
+                    standardBlobTier = null;
+                }
+            }
+        }
+        private StandardBlobTier? standardBlobTier = null;
+
+        [Parameter(HelpMessage = "Block Blob RehydratePriority. Indicates the priority with which to rehydrate an archived blob. Valid values are High/Standard.", Mandatory = false)]
+        [ValidateSet("Standard", "High", IgnoreCase = true)]
+        public RehydratePriority RehydratePriority
+        {
+            get
+            {
+                return rehydratePriority.Value;
+            }
+
+            set
+            {
+                rehydratePriority = value;
+            }
+        }
+        private RehydratePriority? rehydratePriority = null;
 
         [Alias("SrcContext", "SourceContext")]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerNameParameterSet)]
@@ -385,7 +425,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private void StartCopyBlob(IStorageBlobManagement destChannel, CloudBlob srcCloudBlob, CloudBlob destCloudBlob)
         {
             ValidateBlobType(srcCloudBlob);
-            ValidateBlobTier(srcCloudBlob.BlobType, pageBlobTier);
+            ValidateBlobTier(srcCloudBlob.BlobType, pageBlobTier, standardBlobTier, rehydratePriority);
 
             Func<long, Task> taskGenerator = (taskId) => StartCopyAsync(taskId, destChannel, srcCloudBlob, destCloudBlob);
             RunTask(taskGenerator);
@@ -567,6 +607,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
             }
 
+            ValidateBlobTier(destBlob.BlobType, pageBlobTier, standardBlobTier, rehydratePriority);
+
             if (!destExist || this.ConfirmOverwrite(srcUri.AbsoluteUri.ToString(), destBlob.Uri.ToString()))
             {
                 string copyId;
@@ -574,14 +616,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 //Clean the Metadata of the destination Blob object, or the source metadata won't overwirte the dest blob metadata. See https://docs.microsoft.com/en-us/rest/api/storageservices/copy-blob
                 destBlob.Metadata.Clear();
 
-                if (pageBlobTier == null)
-                {
-                    copyId = await destChannel.StartCopyAsync(destBlob, srcUri, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
-                }
-                else
+                // The Blob Type and Blob Tier must match, since already checked they are match at the begin of ExecuteCmdlet().
+                if (pageBlobTier != null)
                 {
                     copyId = await destChannel.StartCopyAsync((CloudPageBlob)destBlob, srcUri, pageBlobTier.Value, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
                 }
+                else if (standardBlobTier != null || rehydratePriority != null)
+                {
+                    copyId = await destChannel.StartCopyAsync(destBlob, srcUri, standardBlobTier, rehydratePriority, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
+                }
+                else
+                { 
+                    copyId = await destChannel.StartCopyAsync(destBlob, srcUri, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
+                }
+
                 this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destBlob.Name, destBlob.Container.Name, copyId));
                 this.WriteCloudBlobObject(taskId, destChannel, destBlob);
             }

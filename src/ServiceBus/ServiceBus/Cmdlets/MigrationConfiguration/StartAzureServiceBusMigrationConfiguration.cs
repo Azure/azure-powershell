@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
         [ValidateNotNullOrEmpty]
         public string TargetNameSpace { get; set; }
 
-        [Parameter(Mandatory = true,  Position = 3, HelpMessage = "Post Migration Name for Standrad Namespace in Migration")]
+        [Parameter(Mandatory = true,  Position = 3, HelpMessage = "Post Migration Name for Standard Namespace in Migration")]
         [ValidateNotNullOrEmpty]
         public string PostMigrationName { get; set; }
 

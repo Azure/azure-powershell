@@ -1,28 +1,28 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Global6687?api-version=2019-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDQ0NWJmMTEtNjFjNC00MzZmLWE5NDAtNjAxOTRmOGFjYTU3L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy9HbG9iYWw2Njg3P2FwaS12ZXJzaW9uPTIwMTktMDMtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/20940-Global8726?api-version=2019-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8yMDk0MC1HbG9iYWw4NzI2P2FwaS12ZXJzaW9uPTIwMTktMDktMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 3257,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"noc@ps5960.com\",\r\n        \"noc@Global6687.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"ps351\"\r\n      ]\r\n    },\r\n    \"peerName\": \"ps5960\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 20940,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"noc@AS20940-Global7422.com\",\r\n        \"noc@20940-Global8726.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"23424324337002\"\r\n      ]\r\n    },\r\n    \"peerName\": \"AS20940-Global7422\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "331c591d-f957-483a-a76b-418d4c9c7dd4"
+          "e61ca09d-a876-483a-9711-2f9d4214fdd9"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.9.0"
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.12.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "240"
+          "280"
         ]
       },
       "ResponseHeaders": {
@@ -33,16 +33,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "230c9d8b-3f00-49ea-af08-3f8039e3d20d"
+          "d4af7e73-f391-4987-a6e8-7ecff479a866"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "59"
         ],
         "x-ms-correlation-request-id": [
-          "7d4b6b23-3b9d-43d0-ac2f-0a637974d042"
+          "1c3adbf7-c606-4762-8a63-dd9edaeb39d2"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20190415T165541Z:7d4b6b23-3b9d-43d0-ac2f-0a637974d042"
+          "NORTHEUROPE:20191007T184514Z:1c3adbf7-c606-4762-8a63-dd9edaeb39d2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,10 +51,10 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Apr 2019 16:55:41 GMT"
+          "Mon, 07 Oct 2019 18:45:14 GMT"
         ],
         "Content-Length": [
-          "450"
+          "502"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -63,26 +63,32 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 3257,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"noc@ps5960.com\",\r\n        \"noc@Global6687.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"ps351\"\r\n      ]\r\n    },\r\n    \"peerName\": \"ps5960\",\r\n    \"validationState\": \"None\"\r\n  },\r\n  \"name\": \"Global6687\",\r\n  \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Global6687\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 20940,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"noc@AS20940-Global7422.com\",\r\n        \"noc@20940-Global8726.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"23424324337002\"\r\n      ]\r\n    },\r\n    \"peerName\": \"AS20940-Global7422\",\r\n    \"validationState\": \"None\"\r\n  },\r\n  \"name\": \"20940-Global8726\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/20940-Global8726\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Global6687?api-version=2019-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDQ0NWJmMTEtNjFjNC00MzZmLWE5NDAtNjAxOTRmOGFjYTU3L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy9HbG9iYWw2Njg3P2FwaS12ZXJzaW9uPTIwMTktMDMtMDEtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/20940-Global8726?api-version=2019-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8yMDk0MC1HbG9iYWw4NzI2P2FwaS12ZXJzaW9uPTIwMTktMDktMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 20940,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"noc@AS20940-Global7422.com\",\r\n        \"noc@20940-Global8726.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"23424324337002\"\r\n      ]\r\n    },\r\n    \"peerName\": \"AS20940-Global7422\",\r\n    \"validationState\": \"Approved\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ba469662-2427-4c2d-bb25-0286a1ab3946"
+          "3c5d12c9-505f-477b-a7b3-3e3672ed111e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.9.0"
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.12.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "316"
         ]
       },
       "ResponseHeaders": {
@@ -93,16 +99,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "06d0c623-7a5c-41ae-b84a-77e5dc5599da"
+          "7a9ab7ef-cbc7-4d43-bdec-26d1f7944c76"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14994"
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "58"
         ],
         "x-ms-correlation-request-id": [
-          "29aac761-7c3d-4d41-8430-e95fd8a82ff8"
+          "85a3347c-eb4c-4db8-af87-9d6bc47900a9"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20190415T165607Z:29aac761-7c3d-4d41-8430-e95fd8a82ff8"
+          "NORTHEUROPE:20191007T184517Z:85a3347c-eb4c-4db8-af87-9d6bc47900a9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,10 +117,10 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Apr 2019 16:56:06 GMT"
+          "Mon, 07 Oct 2019 18:45:17 GMT"
         ],
         "Content-Length": [
-          "454"
+          "506"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -123,26 +129,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 3257,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"noc@ps5960.com\",\r\n        \"noc@Global6687.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"ps351\"\r\n      ]\r\n    },\r\n    \"peerName\": \"ps5960\",\r\n    \"validationState\": \"Approved\"\r\n  },\r\n  \"name\": \"Global6687\",\r\n  \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Global6687\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 20940,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"noc@AS20940-Global7422.com\",\r\n        \"noc@20940-Global8726.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"23424324337002\"\r\n      ]\r\n    },\r\n    \"peerName\": \"AS20940-Global7422\",\r\n    \"validationState\": \"Approved\"\r\n  },\r\n  \"name\": \"20940-Global8726\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/20940-Global8726\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/legacyPeerings?peeringLocation=Amsterdam&kind=Direct&api-version=2019-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDQ0NWJmMTEtNjFjNC00MzZmLWE5NDAtNjAxOTRmOGFjYTU3L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9sZWdhY3lQZWVyaW5ncz9wZWVyaW5nTG9jYXRpb249QW1zdGVyZGFtJmtpbmQ9RGlyZWN0JmFwaS12ZXJzaW9uPTIwMTktMDMtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/20940-Global8726?api-version=2019-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8yMDk0MC1HbG9iYWw4NzI2P2FwaS12ZXJzaW9uPTIwMTktMDktMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "535a3aa9-2357-4a18-bff6-cb30a25de0a8"
+          "7e6dfde0-1c39-4cce-9ee0-f517540d72d7"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.9.0"
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.12.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -153,16 +159,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "17295c18-ff09-46b2-96b8-15c6b2f2b440"
+          "771fb98d-47ce-487d-99e2-91e21d83ee46"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14993"
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "59"
         ],
         "x-ms-correlation-request-id": [
-          "b55093a3-a3bc-4728-a187-73c1b4d75978"
+          "b07d561e-29ab-4794-9128-f581c4636bc9"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20190415T165607Z:b55093a3-a3bc-4728-a187-73c1b4d75978"
+          "NORTHEUROPE:20191007T184517Z:b07d561e-29ab-4794-9128-f581c4636bc9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -171,10 +177,10 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Apr 2019 16:56:06 GMT"
+          "Mon, 07 Oct 2019 18:45:17 GMT"
         ],
         "Content-Length": [
-          "1273"
+          "502"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -183,18 +189,135 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Basic_Direct_Free\",\r\n        \"tier\": \"Basic\",\r\n        \"family\": \"Direct\",\r\n        \"size\": \"Free\"\r\n      },\r\n      \"kind\": \"Direct\",\r\n      \"properties\": {\r\n        \"direct\": {\r\n          \"connections\": [\r\n            {\r\n              \"bandwidthInMbps\": 0,\r\n              \"provisionedBandwidthInMbps\": 30000,\r\n              \"peeringDBFacilityId\": 63,\r\n              \"connectionState\": \"Active\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"46.33.95.12/30\",\r\n                \"sessionPrefixV6\": \"2001:668:0:3::6000:110/126\",\r\n                \"microsoftSessionIPv4Address\": \"46.33.95.14\",\r\n                \"microsoftSessionIPv6Address\": \"2001:668:0:3::6000:112\",\r\n                \"peerSessionIPv4Address\": \"46.33.95.13\",\r\n                \"peerSessionIPv6Address\": \"2001:668:0:3::6000:111\",\r\n                \"sessionStateV4\": \"Established\",\r\n                \"sessionStateV6\": \"Established\",\r\n                \"maxPrefixesAdvertisedV4\": 20000,\r\n                \"maxPrefixesAdvertisedV6\": 2000\r\n              }\r\n            }\r\n          ],\r\n          \"useForPeeringService\": false\r\n        },\r\n        \"peeringLocation\": \"Amsterdam\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 20940,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"noc@AS20940-Global7422.com\",\r\n        \"noc@20940-Global8726.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"23424324337002\"\r\n      ]\r\n    },\r\n    \"peerName\": \"AS20940-Global7422\",\r\n    \"validationState\": \"None\"\r\n  },\r\n  \"name\": \"20940-Global8726\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/20940-Global8726\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/legacyPeerings?peeringLocation=Amsterdam&kind=Direct&api-version=2019-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9sZWdhY3lQZWVyaW5ncz9wZWVyaW5nTG9jYXRpb249QW1zdGVyZGFtJmtpbmQ9RGlyZWN0JmFwaS12ZXJzaW9uPTIwMTktMDktMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2ea19677-4fb1-40ae-8556-b69c644140b4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.12.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "6d859141-4786-4408-911d-fa8610fe13ac"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "59"
+        ],
+        "x-ms-correlation-request-id": [
+          "28a47268-5aaf-4736-84f6-f0da7d840dae"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20191007T184518Z:28a47268-5aaf-4736-84f6-f0da7d840dae"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 07 Oct 2019 18:45:17 GMT"
+        ],
+        "Content-Length": [
+          "2567"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Basic_Direct_Free\",\r\n        \"tier\": \"Basic\",\r\n        \"family\": \"Direct\",\r\n        \"size\": \"Free\"\r\n      },\r\n      \"kind\": \"Direct\",\r\n      \"properties\": {\r\n        \"direct\": {\r\n          \"connections\": [\r\n            {\r\n              \"bandwidthInMbps\": 0,\r\n              \"provisionedBandwidthInMbps\": 100000,\r\n              \"sessionAddressProvider\": \"Default\",\r\n              \"useForPeeringService\": false,\r\n              \"peeringDBFacilityId\": 1236,\r\n              \"connectionState\": \"Active\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"104.44.13.90/31\",\r\n                \"sessionPrefixV6\": \"2a01:111:2000:1::f24/126\",\r\n                \"microsoftSessionIPv4Address\": \"104.44.13.90\",\r\n                \"microsoftSessionIPv6Address\": \"2a01:111:2000:1::f25\",\r\n                \"peerSessionIPv4Address\": \"104.44.13.91\",\r\n                \"peerSessionIPv6Address\": \"2a01:111:2000:1::f26\",\r\n                \"sessionStateV4\": \"Connect\",\r\n                \"sessionStateV6\": \"Active\",\r\n                \"maxPrefixesAdvertisedV4\": 20000,\r\n                \"maxPrefixesAdvertisedV6\": 2000\r\n              },\r\n              \"connectionIdentifier\": \"4be9bea2-7f01-49f8-80a9-ef188044f8cc\"\r\n            },\r\n            {\r\n              \"bandwidthInMbps\": 0,\r\n              \"provisionedBandwidthInMbps\": 100000,\r\n              \"sessionAddressProvider\": \"Default\",\r\n              \"useForPeeringService\": false,\r\n              \"peeringDBFacilityId\": 1236,\r\n              \"connectionState\": \"Active\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"104.44.15.154/31\",\r\n                \"sessionPrefixV6\": \"2a01:111:2000:1::10a4/126\",\r\n                \"microsoftSessionIPv4Address\": \"104.44.15.154\",\r\n                \"microsoftSessionIPv6Address\": \"2a01:111:2000:1::10a5\",\r\n                \"peerSessionIPv4Address\": \"104.44.15.155\",\r\n                \"peerSessionIPv6Address\": \"2a01:111:2000:1::10a6\",\r\n                \"sessionStateV4\": \"Established\",\r\n                \"sessionStateV6\": \"Established\",\r\n                \"maxPrefixesAdvertisedV4\": 20000,\r\n                \"maxPrefixesAdvertisedV6\": 2000\r\n              },\r\n              \"connectionIdentifier\": \"e1949e61-fd6a-4d1e-95d0-96c8efe2df61\"\r\n            }\r\n          ],\r\n          \"useForPeeringService\": false,\r\n          \"peerAsn\": {\r\n            \"id\": \"20940\"\r\n          },\r\n          \"directPeeringType\": \"Edge\"\r\n        },\r\n        \"peeringLocation\": \"Amsterdam\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/20940-Global8726?api-version=2019-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8yMDk0MC1HbG9iYWw4NzI2P2FwaS12ZXJzaW9uPTIwMTktMDktMDEtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b023ad73-f6a8-48bf-b061-ac2a9d0b5cc6"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.12.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "18d4c409-fc6c-4eb7-a5d1-9921b3518d42"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "6f7fd324-4553-4032-b226-4cc7d924fdf3"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20191007T184518Z:6f7fd324-4553-4032-b226-4cc7d924fdf3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 07 Oct 2019 18:45:18 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
       "StatusCode": 200
     }
   ],
   "Names": {
     "Test-GetLegacyKindDirectAmsterdam": [
-      "Global6687",
-      "ps5960",
-      "ps351"
+      "20940-Global8726",
+      "AS20940-Global7422",
+      "23424324337002"
     ]
   },
   "Variables": {
-    "SubscriptionId": "4445bf11-61c4-436f-a940-60194f8aca57"
+    "SubscriptionId": "3e919f9a-4e26-4736-aa8d-d596d9a49239"
   }
 }

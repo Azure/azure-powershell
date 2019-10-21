@@ -131,7 +131,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The ExpressRouteConenction object to update.
+The ExpressRouteConnection object to update.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteConnection
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the ExpressRouteConenction object to delete.
+The resource id of the ExpressRouteConnection object to delete.
 
 ```yaml
 Type: System.String

@@ -71,13 +71,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             Mandatory = true,
             HelpMessage = "The size of the ANF pool")]
         [ValidateNotNullOrEmpty]
-        public long? PoolSize { get; set; }
+        public long PoolSize { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The service level of the ANF pool")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard", "Premium", "Extreme")]
+        [PSArgumentCompleter("Standard", "Premium", "Ultra")]
         public string ServiceLevel { get; set; }
 
         [Parameter(
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 Tags = Tag
             };
 
-            if (ShouldProcess(Name, "Create the new pool"))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
                 var anfPool = AzureNetAppFilesManagementClient.Pools.CreateOrUpdate(capacityPoolBody, ResourceGroupName, AccountName, Name);
                 WriteObject(anfPool);

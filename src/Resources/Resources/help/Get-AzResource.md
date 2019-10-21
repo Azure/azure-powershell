@@ -236,7 +236,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group the resource(s) that is retireved belongs in. This parameter supports wildcards at the beginning and/or end of the string.
+The resource group the resource(s) that is retrieved belongs in. This parameter supports wildcards at the beginning and/or end of the string.
 
 ```yaml
 Type: System.String

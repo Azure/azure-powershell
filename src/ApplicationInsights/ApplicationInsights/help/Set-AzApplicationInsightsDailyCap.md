@@ -48,7 +48,7 @@ PS C:\> Set-AzApplicationInsightsDailyCap -ResourceGroupName "testgroup" -Name "
 400         0                           True
 ```
 
-Set the daily data volumen cap to 400GB per day and stop send notification when hit cap for resource "test" in resource group "testgroup"
+Set the daily data volume cap to 400GB per day and stop send notification when hit cap for resource "test" in resource group "testgroup"
 
 ## PARAMETERS
 

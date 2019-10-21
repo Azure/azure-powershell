@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public override void ExecuteCmdlet()
         {
             var cluster = GetCurrentCluster();
-            var vmss = GetVmss(this.NodeType);
+            var vmss = GetVmss(this.NodeType, cluster.ClusterId);
             var nodeType = GetNodeType(cluster, this.NodeType);
             var durabilityLevel = (DurabilityLevel)Enum.Parse(typeof(DurabilityLevel), nodeType.DurabilityLevel);
 

@@ -12,19 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Blueprint.Models;
 using Microsoft.Azure.Commands.Blueprint.Models;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.Blueprint;
+using Microsoft.Azure.Management.Blueprint.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Blueprint;
-using BlueprintManagement = Microsoft.Azure.Management.Blueprint;
 using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
-using Microsoft.Rest;
+using BlueprintManagement = Microsoft.Azure.Management.Blueprint;
 
 namespace Microsoft.Azure.Commands.Blueprint.Common
 {
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         {
             var result = blueprintManagementClient.Blueprints.GetWithHttpMessagesAsync(scope, blueprintName)
                 .GetAwaiter().GetResult();
-
+            
             return PSBlueprint.FromBlueprintModel(result.Body, scope);
         }
 
@@ -73,6 +72,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             var result = blueprintManagementClient.Assignments.GetWithHttpMessagesAsync(subscriptionId, blueprintAssignmentName).GetAwaiter().GetResult();
 
             return PSBlueprintAssignment.FromAssignment(result.Body, subscriptionId);
+        }
+
+        public PSBlueprint DeleteBlueprint(string scope, string blueprintName)
+        {
+            return PSBlueprint.FromBlueprintModel(blueprintManagementClient.Blueprints.Delete(scope, blueprintName), scope);
         }
 
         public PSPublishedBlueprint GetPublishedBlueprint(string scope, string blueprintName, string version)
@@ -207,11 +211,151 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             return null;
         }
 
+        public PSBlueprint CreateOrUpdateBlueprint(string scope, string name, BlueprintModel bp)
+        {
+            return PSBlueprint.FromBlueprintModel(blueprintManagementClient.Blueprints.CreateOrUpdate(scope, name, bp), scope);
+        }
+
+        public PSPublishedBlueprint CreatePublishedBlueprint(string scope, string name, string version, PublishedBlueprint publishedBP)
+        {
+            return PSPublishedBlueprint.FromPublishedBlueprintModel(blueprintManagementClient.PublishedBlueprints.Create(scope, name, version, publishedBP), scope);
+        }
+
+
+        public PSArtifact CreateArtifact(string scope, string blueprintName, string artifactName, Artifact artifactObject)
+        {
+            var artifact = blueprintManagementClient.Artifacts.CreateOrUpdate(scope, blueprintName, artifactName, artifactObject);
+
+            PSArtifact psArtifact = null;
+
+            switch (artifact)
+            {
+                case TemplateArtifact templateArtifact:
+                    psArtifact = PSTemplateArtifact.FromArtifactModel(artifact as TemplateArtifact, scope);
+                    break;
+                case PolicyAssignmentArtifact policyArtifact:
+                    psArtifact = PSPolicyAssignmentArtifact.FromArtifactModel(artifact as PolicyAssignmentArtifact, scope);
+                    break;
+                case RoleAssignmentArtifact roleAssignmentArtifact:
+                    psArtifact = PSRoleAssignmentArtifact.FromArtifactModel(artifact as RoleAssignmentArtifact, scope);
+                    break;
+                default:
+                    throw new NotSupportedException(Resources.ArtifactTypeNotSupported);
+            }
+
+            return psArtifact;
+        }
+
+        public PSArtifact GetArtifact(string scope, string blueprintName, string artifactName, string version)
+        {
+            var artifact = string.IsNullOrEmpty(version) 
+                ? blueprintManagementClient.Artifacts.Get(scope, blueprintName, artifactName) 
+                : blueprintManagementClient.PublishedArtifacts.Get(scope, blueprintName, artifactName, version);
+
+            PSArtifact psArtifact = null;
+            switch (artifact)
+            {
+                case TemplateArtifact templateArtifact:
+                    psArtifact = PSTemplateArtifact.FromArtifactModel(artifact as TemplateArtifact, scope);
+                    break;
+                case PolicyAssignmentArtifact policyArtifact:
+                    psArtifact = PSPolicyAssignmentArtifact.FromArtifactModel(artifact as PolicyAssignmentArtifact, scope);
+                    break; 
+                case RoleAssignmentArtifact roleAssignmentArtifact:
+                    psArtifact = PSRoleAssignmentArtifact.FromArtifactModel(artifact as RoleAssignmentArtifact, scope);
+                    break;
+                default:
+                    throw new NotSupportedException(Resources.ArtifactTypeNotSupported);
+            }
+
+            return psArtifact;
+        }
+
+        public IEnumerable<PSArtifact> ListArtifacts(string scope, string blueprintName, string version)
+        {
+            var list = new List<PSArtifact>();
+
+            var artifacts = string.IsNullOrEmpty(version)
+                ? blueprintManagementClient.Artifacts.List(scope, blueprintName)
+                : blueprintManagementClient.PublishedArtifacts.List(scope, blueprintName, version);
+
+            foreach (var artifact in artifacts)
+            {
+                switch (artifact)
+                {
+                    case TemplateArtifact templateArtifact:
+                        list.Add(PSTemplateArtifact.FromArtifactModel(artifact as TemplateArtifact, scope));
+                        break;
+                    case PolicyAssignmentArtifact policyArtifact:
+                        list.Add(PSPolicyAssignmentArtifact.FromArtifactModel(artifact as PolicyAssignmentArtifact, scope));
+                        break;
+                    case RoleAssignmentArtifact roleAssignmentArtifact:
+                        list.Add(PSRoleAssignmentArtifact.FromArtifactModel(artifact as RoleAssignmentArtifact, scope));
+                        break;
+                    default:
+                        throw new NotSupportedException(Resources.ArtifactTypeNotSupported);
+                }
+            }
+
+            return list;
+        }
+
+        public PSArtifact DeleteArtifact(string scope, string blueprintName, string artifactName)
+        {
+            var artifact = blueprintManagementClient.Artifacts.Delete(scope, blueprintName, artifactName);
+
+            PSArtifact psArtifact;
+
+            switch (artifact)
+            {
+                case TemplateArtifact templateArtifact:
+                    psArtifact = PSTemplateArtifact.FromArtifactModel(artifact as TemplateArtifact, scope);
+                    break;
+                case PolicyAssignmentArtifact policyArtifact:
+                    psArtifact = PSPolicyAssignmentArtifact.FromArtifactModel(artifact as PolicyAssignmentArtifact, scope);
+                    break;
+                case RoleAssignmentArtifact roleAssignmentArtifact:
+                    psArtifact = PSRoleAssignmentArtifact.FromArtifactModel(artifact as RoleAssignmentArtifact, scope);
+                    break;
+                default:
+                    throw new NotSupportedException(Resources.ArtifactTypeNotSupported);
+            }
+
+            return psArtifact;
+
+        }
+
         public PSWhoIsBlueprintContract GetBlueprintSpnObjectId(string scope, string assignmentName)
         {
             var result = blueprintManagementClient.Assignments.WhoIsBlueprint(scope, assignmentName);
 
             return result != null ? new PSWhoIsBlueprintContract(result) : null;
+        }
+
+        // export
+        public string GetBlueprintDefinitionJsonFromObject(PSBlueprintBase blueprintObject, string version)
+        {
+            if (string.IsNullOrEmpty(version))
+            {
+                var blueprint = blueprintManagementClient.Blueprints.Get(blueprintObject.Scope, blueprintObject.Name);
+
+                return JsonConvert.SerializeObject(blueprint, DefaultJsonSettings.SerializerSettings);
+            }
+
+            var publishedBlueprint = blueprintManagementClient.PublishedBlueprints.Get(blueprintObject.Scope, blueprintObject.Name, version);
+
+            return JsonConvert.SerializeObject(publishedBlueprint, DefaultJsonSettings.SerializerSettings);
+        }
+
+        public string GetBlueprintArtifactJsonFromObject(string scope, string blueprintName, PSArtifact artifact, string version)
+        {
+            var artifactObj = string.IsNullOrEmpty(version)
+             ? blueprintManagementClient.Artifacts.Get(scope, blueprintName, artifact.Name)
+             : blueprintManagementClient.PublishedArtifacts.Get(scope, blueprintName, version, artifact.Name);
+
+
+            return JsonConvert.SerializeObject(artifactObj, DefaultJsonSettings.SerializerSettings);
+
         }
 
         /// <summary>

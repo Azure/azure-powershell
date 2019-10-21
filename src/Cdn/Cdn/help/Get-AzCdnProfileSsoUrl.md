@@ -26,7 +26,7 @@ Get-AzCdnProfileSsoUrl -CdnProfile <PSProfile> [-DefaultProfile <IAzureContextCo
 
 ## DESCRIPTION
 The **Get-AzCdnProfileSsoUrl** cmdlet gets the single sign-on URL of the Azure Content Delivery Network (CDN) profile.
-This URL lets users conntect to a supplementary portal and use additional features of  CDN.
+This URL lets users connect to a supplementary portal and use additional features of  CDN.
 
 ## EXAMPLES
 

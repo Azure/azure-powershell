@@ -142,7 +142,7 @@ For PowerShell to determine which parameter set a user is intending to use with 
 
 #### Positional Parameters Limit
 
-It is possibile to call a PowerShell cmdlet without providing the parameter names, but just the values you would like to pass through. This is done by specifying the position at which the value of each parameter should be provided by using the `Position` property for a parameter.  However, when there are too many positional parameters in a single parameter set, it can be difficult for the user to remember the exact ordering in which the parameter values should be provided. From the remarks section of [_Parameter Attribute Declaration_](https://docs.microsoft.com/en-us/powershell/developer/cmdlet/parameter-attribute-declaration#remarks):
+It is possible to call a PowerShell cmdlet without providing the parameter names, but just the values you would like to pass through. This is done by specifying the position at which the value of each parameter should be provided by using the `Position` property for a parameter.  However, when there are too many positional parameters in a single parameter set, it can be difficult for the user to remember the exact ordering in which the parameter values should be provided. From the remarks section of [_Parameter Attribute Declaration_](https://docs.microsoft.com/en-us/powershell/developer/cmdlet/parameter-attribute-declaration#remarks):
 
 > _When you specify positional parameters, limit the number of positional parameters in a parameter set to less than five. And, positional parameters do not have to be contiguous. Positions 5, 100, and 250 work the same as positions 0, 1, and 2._
 

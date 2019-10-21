@@ -97,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The action group resourc
+The action group resource
 
 ```yaml
 Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource
@@ -199,7 +199,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-The tags of the action group resourc
+The tags of the action group resource
 
 ```yaml
 Type: System.Collections.Generic.IDictionary`2[System.String,System.String]

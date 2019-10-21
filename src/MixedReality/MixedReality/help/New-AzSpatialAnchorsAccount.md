@@ -18,7 +18,7 @@ New-AzSpatialAnchorsAccount -ResourceGroupName <String> -Name <String> -Location
 ```
 
 ## DESCRIPTION
-Create a new Spatial Inelligence Account in certain Subscription, Resource Group and Region.
+Create a new Spatial Intelligence Account in certain Subscription, Resource Group and Region.
 
 ## EXAMPLES
 

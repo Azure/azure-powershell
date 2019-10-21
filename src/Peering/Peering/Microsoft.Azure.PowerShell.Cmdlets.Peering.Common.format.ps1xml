@@ -21,6 +21,13 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
+                  <ScriptBlock>$_.ConnectionIdentifier -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>ConnectionIdentifier</Label>
+                <ScriptBlock>$_.ConnectionIdentifier</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
                   <ScriptBlock>$_.BgpSession.PeerSessionIPv4Address -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
                 <Label>PeerSessionIPv4Address</Label>
@@ -108,11 +115,26 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
                 <PropertyName>PeeringDBFacilityId</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>UseForPeeringService</Label>
+                <PropertyName>UseForPeeringService</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>SessionAddressProvider</Label>
+                <PropertyName>SessionAddressProvider</PropertyName>
+              </ListItem>
+              <ListItem>
                 <ItemSelectionCondition>
                   <ScriptBlock>$_.BgpSession.SessionPrefixV4 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
                 <Label>SessionPrefixV4</Label>
                 <ScriptBlock>$_.BgpSession.SessionPrefixV4</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.ConnectionIdentifier -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>ConnectionIdentifier</Label>
+                <ScriptBlock>$_.ConnectionIdentifier</ScriptBlock>
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
@@ -257,78 +279,6 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
                 </ItemSelectionCondition>
                 <Label>SessionStateV6</Label>
                 <ScriptBlock>$_.SessionStateV6</ScriptBlock>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringLocation</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringLocation</TypeName>
-      </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <Label>PeeringLocation</Label>
-                <PropertyName>PeeringLocation</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Country</Label>
-                <PropertyName>Country</PropertyName>
-              </ListItem>
-              <ListItem>
-                <ItemSelectionCondition>
-                  <ScriptBlock>$_.ExchangeName -ne $null</ScriptBlock>
-                </ItemSelectionCondition>
-                <Label>ExchangeName</Label>
-                <PropertyName>ExchangeName</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>PeeringDBFacilityId</Label>
-                <PropertyName>PeeringDBFacilityId</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>PeeringDBFacilityLink</Label>
-                <PropertyName>PeeringDBFacilityLink</PropertyName>
-              </ListItem>
-              <ListItem>
-                <ItemSelectionCondition>
-                  <ScriptBlock>$_.BandwidthOffers -ne $null</ScriptBlock>
-                </ItemSelectionCondition>
-                <Label>BandwidthOffers</Label>
-                <ScriptBlock>$_.BandwidthOffers</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <ItemSelectionCondition>
-                  <ScriptBlock>$_.FacilityIPv4Prefix -ne $null</ScriptBlock>
-                </ItemSelectionCondition>
-                <Label>FacilityIPv4Prefix</Label>
-                <PropertyName>FacilityIPv4Prefix</PropertyName>
-              </ListItem>
-              <ListItem>
-                <ItemSelectionCondition>
-                  <ScriptBlock>$_.FacilityIPv6Prefix -ne $null</ScriptBlock>
-                </ItemSelectionCondition>
-                <Label>FacilityIPv6Prefix</Label>
-                <PropertyName>FacilityIPv6Prefix</PropertyName>
-              </ListItem>
-              <ListItem>
-                <ItemSelectionCondition>
-                  <ScriptBlock>$_.MicrosoftIPv4Address -ne $null</ScriptBlock>
-                </ItemSelectionCondition>
-                <Label>MicrosoftIPv4Address</Label>
-                <PropertyName>MicrosoftIPv4Address</PropertyName>
-              </ListItem>
-              <ListItem>
-                <ItemSelectionCondition>
-                  <ScriptBlock>$_.MicrosoftIPv6Address -ne $null</ScriptBlock>
-                </ItemSelectionCondition>
-                <Label>MicrosoftIPv6Address</Label>
-                <PropertyName>MicrosoftIPv6Address</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -516,6 +466,13 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
                 </ItemSelectionCondition>
                 <Label>LocalRegions</Label>
                 <PropertyName>LocalRegions</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.Region -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>Azure Region</Label>
+                <PropertyName>Region</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

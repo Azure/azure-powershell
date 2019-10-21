@@ -23,6 +23,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -185,6 +186,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         [PSArgumentCompleter("Deallocate", "Delete")]
         public string EvictionPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public double MaxPrice { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter TerminateScheduledEvents { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public int TerminateScheduledEventNotBeforeTimeoutInMinutes { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -437,6 +453,53 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vVirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
                 }
                 vVirtualMachineProfile.EvictionPolicy = this.EvictionPolicy;
+            }
+
+            if (this.IsParameterBound(c => c.MaxPrice))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.BillingProfile == null)
+                {
+                    vVirtualMachineProfile.BillingProfile = new BillingProfile();
+                }
+                vVirtualMachineProfile.BillingProfile.MaxPrice = this.MaxPrice;
+            }
+
+            if (this.TerminateScheduledEvents.IsPresent)
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.ScheduledEventsProfile == null)
+                {
+                    vVirtualMachineProfile.ScheduledEventsProfile = new ScheduledEventsProfile();
+                }
+                if (vVirtualMachineProfile.ScheduledEventsProfile.TerminateNotificationProfile == null)
+                {
+                    vVirtualMachineProfile.ScheduledEventsProfile.TerminateNotificationProfile = new TerminateNotificationProfile();
+                }
+                vVirtualMachineProfile.ScheduledEventsProfile.TerminateNotificationProfile.Enable = this.TerminateScheduledEvents.IsPresent;
+            }
+
+            if (this.IsParameterBound(c => c.TerminateScheduledEventNotBeforeTimeoutInMinutes))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.ScheduledEventsProfile == null)
+                {
+                    vVirtualMachineProfile.ScheduledEventsProfile = new ScheduledEventsProfile();
+                }
+                if (vVirtualMachineProfile.ScheduledEventsProfile.TerminateNotificationProfile == null)
+                {
+                    vVirtualMachineProfile.ScheduledEventsProfile.TerminateNotificationProfile = new TerminateNotificationProfile();
+                }
+                vVirtualMachineProfile.ScheduledEventsProfile.TerminateNotificationProfile.NotBeforeTimeout = XmlConvert.ToString(new TimeSpan(0, this.TerminateScheduledEventNotBeforeTimeoutInMinutes, 0));
             }
 
             if (this.IsParameterBound(c => c.ProximityPlacementGroupId))

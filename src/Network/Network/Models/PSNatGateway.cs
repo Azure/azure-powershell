@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ProvisioningState { get; set; }
         [Ps1Xml(Label = "Sku Name", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name")]
         public PSNatGatewaySku Sku { get; set; }
+        public List<string> Zones { get; set; }
         public List<PSResourceId> PublicIpAddresses { get; set; }
         public List<PSResourceId> PublicIpPrefixes { get; set; }
 

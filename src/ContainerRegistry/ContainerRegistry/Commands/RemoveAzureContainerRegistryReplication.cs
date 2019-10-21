@@ -37,8 +37,9 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public string RegistryName { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ReplicationObjectParameterSet, ValueFromPipeline = true, HelpMessage = "Container Registry Object.")]
+        [Alias("Replicatoin")]
         [ValidateNotNull]
-        public PSContainerRegistryReplication Replicatoin { get; set; }
+        public PSContainerRegistryReplication Replication { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The container registry replication resource id")]
         [ValidateNotNullOrEmpty]
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         {
             if (string.Equals(ParameterSetName, ReplicationObjectParameterSet))
             {
-                ResourceId = Replicatoin.Id;
+                ResourceId = Replication.Id;
             }
             if (MyInvocation.BoundParameters.ContainsKey("ResourceId") || !string.IsNullOrWhiteSpace(ResourceId))
             {

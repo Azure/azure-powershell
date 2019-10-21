@@ -80,6 +80,28 @@ If user wants to start the service again, the Allocate method should be called o
 The new VNet and Public IP must be in the same resource group as the Firewall. Again, for changes to be reflected in cloud,
 Set-AzFirewall must be called.
 
+### 5:	Add a Public IP address to an Azure Firewall
+```
+$pip = New-AzPublicIpAddress -Name "azFwPublicIp1" -ResourceGroupName "rg" -Sku "Standard" -Location "centralus" -AllocationMethod Static
+$azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
+$azFw.AddPublicIpAddress($pip)
+
+$azFw | Set-AzFirewall
+```
+
+In this example, the Public IP Address "azFwPublicIp1" as attached to the Firewall.
+
+### 6:	Remove a Public IP address from an Azure Firewall
+```
+$pip = Get-AzPublicIpAddress -Name "azFwPublicIp1" -ResourceGroupName "rg"
+$azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
+$azFw.RemovePublicIpAddress($pip)
+
+$azFw | Set-AzFirewall
+```
+
+In this example, the Public IP Address "azFwPublicIp1" as detached from the Firewall.
+
 ## PARAMETERS
 
 ### -AsJob

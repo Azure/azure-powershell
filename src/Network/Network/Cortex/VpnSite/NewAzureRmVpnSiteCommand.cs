@@ -31,12 +31,11 @@ namespace Microsoft.Azure.Commands.Network
 
     [Cmdlet(VerbsCommon.New,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnSite",
-        DefaultParameterSetName = CortexParameterSetNames.ByVirtualWanName,
+        DefaultParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnSiteIpAddress,
         SupportsShouldProcess = true),
         OutputType(typeof(PSVpnSite))]
     public class NewAzureRmVpnSiteCommand : VpnSiteBaseCmdlet
     {
-
         [Parameter(Mandatory = true,
             HelpMessage = "The resource name.")]
         [ResourceGroupCompleter]
@@ -58,32 +57,55 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualWanName,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnSiteIpAddress,
+            HelpMessage = "The resource group name of the VirtualWan this VpnSite needs to be connected to.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnSiteLinkObject,
             HelpMessage = "The resource group name of the VirtualWan this VpnSite needs to be connected to.")]
         [ResourceGroupCompleter]
         public string VirtualWanResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualWanName,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnSiteIpAddress,
+            HelpMessage = "The name of the VirtualWan this VpnSite needs to be connected to.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnSiteLinkObject,
             HelpMessage = "The name of the VirtualWan this VpnSite needs to be connected to.")]
         [ResourceNameCompleter("Microsoft.Network/virtualWans", "VirtualWanResourceGroupName")]
         public string VirtualWanName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualWanObject,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanObject + CortexParameterSetNames.ByVpnSiteIpAddress,
+            HelpMessage = "The VirtualWan this VpnSite needs to be connected to.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanObject + CortexParameterSetNames.ByVpnSiteLinkObject,
             HelpMessage = "The VirtualWan this VpnSite needs to be connected to.")]
         public PSVirtualWan VirtualWan { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId + CortexParameterSetNames.ByVpnSiteIpAddress,
+            HelpMessage = "The ResourceId VirtualWan this VpnSite needs to be connected to.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId + CortexParameterSetNames.ByVpnSiteLinkObject,
             HelpMessage = "The ResourceId VirtualWan this VpnSite needs to be connected to.")]
         [ResourceIdCompleter("Microsot.Network/virtualWans")]
         public string VirtualWanId { get; set; }
 
         [Parameter(Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnSiteIpAddress,
+            HelpMessage = "The IpAddress for this VpnSite.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanObject + CortexParameterSetNames.ByVpnSiteIpAddress,
+            HelpMessage = "The IpAddress for this VpnSite.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId + CortexParameterSetNames.ByVpnSiteIpAddress,
             HelpMessage = "The IpAddress for this VpnSite.")]
         public string IpAddress { get; set; }
 
@@ -103,25 +125,61 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The device vendor of the remote vpn device.")]
         public string DeviceVendor { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The device model of the remote vpn device.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnSiteIpAddress,
+            HelpMessage = "Link Speed In Mbps.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanObject + CortexParameterSetNames.ByVpnSiteIpAddress,
+            HelpMessage = "Link Speed In Mbps.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId + CortexParameterSetNames.ByVpnSiteIpAddress,
+            HelpMessage = "Link Speed In Mbps.")]
         public uint LinkSpeedInMbps { get; set; }
 
-        [Parameter(
-            Mandatory = false,
+        [Parameter(Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnSiteIpAddress,
+            HelpMessage = "The BGP ASN for this VpnSite.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanObject + CortexParameterSetNames.ByVpnSiteIpAddress,
+            HelpMessage = "The BGP ASN for this VpnSite.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId + CortexParameterSetNames.ByVpnSiteIpAddress,
             HelpMessage = "The BGP ASN for this VpnSite.")]
         public uint BgpAsn { get; set; }
 
-        [Parameter(
-            Mandatory = false,
+        [Parameter(Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnSiteIpAddress,
+            HelpMessage = "The BGP Peering Address for this VpnSite.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanObject + CortexParameterSetNames.ByVpnSiteIpAddress,
+            HelpMessage = "The BGP Peering Address for this VpnSite.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId + CortexParameterSetNames.ByVpnSiteIpAddress,
             HelpMessage = "The BGP Peering Address for this VpnSite.")]
         public string BgpPeeringAddress { get; set; }
 
-        [Parameter(
-            Mandatory = false,
+        [Parameter(Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnSiteIpAddress,
             HelpMessage = "The BGP Peering weight for this VpnSite.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanObject + CortexParameterSetNames.ByVpnSiteIpAddress,
+            HelpMessage = "The BGP Peering weight for this VpnSite.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId + CortexParameterSetNames.ByVpnSiteIpAddress,
+            HelpMessage = "The BGP Peering weight for this VpnSite.")]        
         public uint BgpPeeringWeight { get; set; }
+
+        [Parameter(Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnSiteLinkObject,
+            HelpMessage = "The list of VpnSiteLinks that this VpnSite have.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanObject + CortexParameterSetNames.ByVpnSiteLinkObject,
+            HelpMessage = "The list of VpnSiteLinks that this VpnSite have.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId + CortexParameterSetNames.ByVpnSiteLinkObject,
+            HelpMessage = "The list of VpnSiteLinks that this VpnSite have.")]
+        [ValidateNotNullOrEmpty]
+        public PSVpnSiteLink[] VpnSiteLink { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -148,12 +206,12 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             //// Resolve the virtual wan
-            if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualWanObject, StringComparison.OrdinalIgnoreCase))
+            if (ParameterSetName.Contains(CortexParameterSetNames.ByVirtualWanObject))
             {
                 this.VirtualWanResourceGroupName = this.VirtualWan.ResourceGroupName;
                 this.VirtualWanName = this.VirtualWan.Name;
             }
-            else if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualWanResourceId, StringComparison.OrdinalIgnoreCase))
+            else if (ParameterSetName.Contains(CortexParameterSetNames.ByVirtualWanResourceId))
             {
                 var parsedWanResourceId = new ResourceIdentifier(this.VirtualWanId);
                 this.VirtualWanResourceGroupName = parsedWanResourceId.ResourceGroupName;
@@ -169,36 +227,51 @@ namespace Microsoft.Azure.Commands.Network
 
             vpnSiteToCreate.VirtualWan = new PSResourceId() { Id = resolvedVirtualWan.Id };
 
-            //// Bgp Settings
-            if (this.BgpAsn > 0 || this.BgpPeeringWeight > 0 || !string.IsNullOrWhiteSpace(this.BgpPeeringAddress))
-            {
-                vpnSiteToCreate.BgpSettings = this.ValidateAndCreatePSBgpSettings(this.BgpAsn, this.BgpPeeringWeight, this.BgpPeeringAddress);
-            }
-
             //// VpnSite device settings
             if (!string.IsNullOrWhiteSpace(this.DeviceModel) || !string.IsNullOrWhiteSpace(this.DeviceVendor))
             {
                 vpnSiteToCreate.DeviceProperties = this.ValidateAndCreateVpnSiteDeviceProperties(
-                    this.DeviceModel??string.Empty, 
-                    this.DeviceVendor??string.Empty, 
+                    this.DeviceModel ?? string.Empty,
+                    this.DeviceVendor ?? string.Empty,
                     this.LinkSpeedInMbps);
             }
 
-            //// IpAddress
-            System.Net.IPAddress ipAddress;
-            if (!System.Net.IPAddress.TryParse(this.IpAddress, out ipAddress))
+            if (ParameterSetName.Contains(CortexParameterSetNames.ByVpnSiteIpAddress))
             {
-                throw new PSArgumentException(Properties.Resources.InvalidIPAddress);
+                //// IpAddress
+                System.Net.IPAddress ipAddress;
+                if (!System.Net.IPAddress.TryParse(this.IpAddress, out ipAddress))
+                {
+                    throw new PSArgumentException(Properties.Resources.InvalidIPAddress);
+                }
+
+                vpnSiteToCreate.IpAddress = this.IpAddress;
+
+                //// Bgp Settings
+                if (this.BgpAsn > 0 || this.BgpPeeringWeight > 0 || !string.IsNullOrWhiteSpace(this.BgpPeeringAddress))
+                {
+                    vpnSiteToCreate.BgpSettings = this.ValidateAndCreatePSBgpSettings(this.BgpAsn, this.BgpPeeringWeight, this.BgpPeeringAddress);
+                }
             }
 
-            vpnSiteToCreate.IpAddress = this.IpAddress;
-
-            //// Adress spaces
-            if (this.AddressSpace.Any())
+            //// Address spaces
+            if (this.AddressSpace != null && this.AddressSpace.Any())
             {
                 vpnSiteToCreate.AddressSpace = new PSAddressSpace();
                 vpnSiteToCreate.AddressSpace.AddressPrefixes = new List<string>();
                 vpnSiteToCreate.AddressSpace.AddressPrefixes.AddRange(this.AddressSpace);
+            }
+
+            if (this.VpnSiteLink != null)
+            {
+                //// Use only link properties instead of Site properties.
+                if (this.BgpAsn > 0 || this.BgpPeeringWeight > 0 || !string.IsNullOrWhiteSpace(this.BgpPeeringAddress) || this.LinkSpeedInMbps > 0 || !string.IsNullOrWhiteSpace(this.IpAddress))
+                {
+                    throw new PSArgumentException(Properties.Resources.VpnSitePropertyIsDeprecated);
+                }
+
+                vpnSiteToCreate.VpnSiteLinks = new List<PSVpnSiteLink>();
+                vpnSiteToCreate.VpnSiteLinks.AddRange(this.VpnSiteLink);
             }
 
             ConfirmAction(

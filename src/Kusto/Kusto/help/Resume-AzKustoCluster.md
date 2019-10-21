@@ -8,7 +8,7 @@ schema: 2.0.0
 # Resume-AzKustoCluster
 
 ## SYNOPSIS
-Resume a suspeneded Kusto cluster.
+Resume a suspended Kusto cluster.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Resume-AzKustoCluster [-InputObject] <PSKustoCluster> [-PassThru] [-DefaultProfi
 ```
 
 ## DESCRIPTION
-Resume a suspeneded Kusto cluster.
+Resume a suspended Kusto cluster.
 
 ## EXAMPLES
 

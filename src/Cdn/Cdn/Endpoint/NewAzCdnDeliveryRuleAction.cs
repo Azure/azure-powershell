@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [ValidateNotNullOrEmpty]
         public string CustomPath { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Host to redirect. Leave empty to use use the incoming host as the destination host.", ParameterSetName = UrlRedirectActionParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Host to redirect. Leave empty to use the incoming host as the destination host.", ParameterSetName = UrlRedirectActionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string CustomHostname { get; set; }
 

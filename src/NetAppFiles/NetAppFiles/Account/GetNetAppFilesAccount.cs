@@ -71,8 +71,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             }
             else
             {
-                var anfAccount = AzureNetAppFilesManagementClient.Accounts.List(ResourceGroupName).Select(e => e.ToPsNetAppFilesAccount());
-                WriteObject(anfAccount, true);
+                var anfAccounts = AzureNetAppFilesManagementClient.Accounts.List(ResourceGroupName).Select(e => e.ToPsNetAppFilesAccount());
+                WriteObject(anfAccounts, true);
             }
         }
     }

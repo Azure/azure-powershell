@@ -26,7 +26,7 @@ The **New-AzRecoveryServicesAsrStorageClassificationMapping** cmdlet creates a s
 
 ### Example 1
 ```
-PS C:\> $currentJob = New-AzRecoveryServicesAsrStorageClassificationMapping -Name $StrorageClassificationMappingName -PrimaryStorageClassification $PrimaryStorageClassification -RecoveryStorageClassification $RecoveryStorageClassification
+PS C:\> $currentJob = New-AzRecoveryServicesAsrStorageClassificationMapping -Name $StorageClassificationMappingName -PrimaryStorageClassification $PrimaryStorageClassification -RecoveryStorageClassification $RecoveryStorageClassification
 ```
 
 Starts the storage classification mapping creation operation with the specified parameters and returns the ASR job used to track the operation.

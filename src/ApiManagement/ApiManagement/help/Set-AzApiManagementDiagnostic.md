@@ -114,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -BackendSetting
-Diagnostic setting for incoming/outgoing Http Messsages to the Backend. This parameter is optional.
+Diagnostic setting for incoming/outgoing Http Messages to the Backend. This parameter is optional.
 
 ```yaml
 Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementPipelineDiagnosticSetting
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### -FrontEndSetting
-Diagnostic setting for incoming/outgoing Http Messsages to the Gateway. This parameter is optional.
+Diagnostic setting for incoming/outgoing Http Messages to the Gateway. This parameter is optional.
 
 ```yaml
 Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementPipelineDiagnosticSetting

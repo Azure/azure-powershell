@@ -1,4 +1,8 @@
-﻿using Microsoft.Azure.Commands.WebApps.Models;
+﻿using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.WebSites.Models;
@@ -115,7 +119,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             {
                 result.Properties.Add(
                     new KeyValuePair<string, AzureStorageInfoValue>(
-                        item.Name, 
+                        item.Name,
                         new AzureStorageInfoValue(
                             item.Type,
                             item.AccountName,
@@ -155,7 +159,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             var result = false;
             qualifiedSiteName = webSiteName;
-// TODO: Remove IfDef
+            // TODO: Remove IfDef
 #if NETSTANDARD
             const string siteNamePattern = "{0}/{1}";
 #else
@@ -394,13 +398,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             var certificateResources = resourceClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions
             {
+                ResourceGroup = resourceGroupName,
                 ResourceType = "Microsoft.Web/Certificates"
             }).ToArray();
-
-            if (!string.IsNullOrEmpty(resourceGroupName))
-            {
-                certificateResources = certificateResources.Where(c => string.Equals(c.ResourceGroupName, resourceGroupName, StringComparison.OrdinalIgnoreCase)).ToArray();
-            }
 
             var certificates =
                 certificateResources.Select(
@@ -435,6 +435,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 HandlerMappings = config.HandlerMappings,
                 HttpLoggingEnabled = config.HttpLoggingEnabled,
                 IpSecurityRestrictions = config.IpSecurityRestrictions,
+                ScmIpSecurityRestrictions = config.ScmIpSecurityRestrictions,
+                ScmIpSecurityRestrictionsUseMain = config.ScmIpSecurityRestrictionsUseMain,
+                Http20Enabled = config.Http20Enabled,
                 JavaContainer = config.JavaContainer,
                 JavaContainerVersion = config.JavaContainerVersion,
                 JavaVersion = config.JavaVersion,
@@ -461,7 +464,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 VirtualApplications = config.VirtualApplications,
                 VnetName = config.VnetName,
                 WebSocketsEnabled = config.WebSocketsEnabled,
-                WindowsFxVersion = config.WindowsFxVersion
+                WindowsFxVersion = config.WindowsFxVersion,
+                ManagedServiceIdentityId = config.ManagedServiceIdentityId,
+                MinTlsVersion = config.MinTlsVersion,
+                FtpsState = config.FtpsState,
+                ReservedInstanceCount = config.ReservedInstanceCount
             };
         }
 
@@ -512,7 +519,77 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 VnetName = config.VnetName,
                 WebSocketsEnabled = config.WebSocketsEnabled,
                 WindowsFxVersion = config.WindowsFxVersion,
+                ReservedInstanceCount = config.ReservedInstanceCount,
+                ManagedServiceIdentityId = config.ManagedServiceIdentityId,
+                MinTlsVersion = config.MinTlsVersion,
+                FtpsState = config.FtpsState,
+                ScmIpSecurityRestrictions = config.ScmIpSecurityRestrictions,
+                ScmIpSecurityRestrictionsUseMain = config.ScmIpSecurityRestrictionsUseMain,
+                Http20Enabled = config.Http20Enabled
             };
+        }
+
+        internal static string ValidateSubnet(string subnet, string virtualNetworkName, string resourceGroupName, string subscriptionId)
+        {
+            //Resource Id Format: "subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworks/{2}/subnets/{3}"
+            ResourceIdentifier subnetResourceId = null;
+            if (subnet.ToLowerInvariant().Contains("/subnets/"))
+            {
+                try
+                {
+                    subnetResourceId = new ResourceIdentifier(subnet);
+                }
+                catch (ArgumentException ae)
+                {
+                    throw new ArgumentException("Subnet ResourceId is invalid.", ae);
+                }
+            }
+            else
+            {
+                subnetResourceId = new ResourceIdentifier();
+                subnetResourceId.Subscription = subscriptionId;
+                subnetResourceId.ResourceGroupName = resourceGroupName;
+                subnetResourceId.ResourceType = "Microsoft.Network/virtualNetworks/subnets";
+                subnetResourceId.ParentResource = $"virtualNetworks/{virtualNetworkName}";
+                subnetResourceId.ResourceName = subnet;
+            }
+            return subnetResourceId.ToString();
+        }
+
+        internal static void VerifySubnetDelegation(IAzureContext context, string subnet)
+        {
+            var subnetResourceId = new ResourceIdentifier(subnet);
+            var resourceGroupName = subnetResourceId.ResourceGroupName;
+            var virtualNetworkName = subnetResourceId.ParentResource.Substring(subnetResourceId.ParentResource.IndexOf('/') + 1);
+            var subnetName = subnetResourceId.ResourceName;
+
+            var networkClient = AzureSession.Instance.ClientFactory.CreateArmClient<NetworkManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            Subnet subnetObj = networkClient.Subnets.Get(resourceGroupName, virtualNetworkName, subnetName);
+            var serviceEndpointServiceName = "Microsoft.Web";
+            var serviceEndpointLocations = new List<string>() { "*" };
+            if (subnetObj.ServiceEndpoints == null)
+            {
+                subnetObj.ServiceEndpoints = new List<ServiceEndpointPropertiesFormat>();                
+                subnetObj.ServiceEndpoints.Add(new ServiceEndpointPropertiesFormat(serviceEndpointServiceName, serviceEndpointLocations));
+                networkClient.Subnets.CreateOrUpdate(resourceGroupName, virtualNetworkName, subnetName, subnetObj);
+            }
+            else
+            {
+                bool serviceEndpointExists = false;
+                foreach (var serviceEndpoint in subnetObj.ServiceEndpoints)
+                {
+                    if (serviceEndpoint.Service == serviceEndpointServiceName)
+                    {
+                        serviceEndpointExists = true;
+                        break;
+                    }
+                }
+                if (!serviceEndpointExists)
+                {
+                    subnetObj.ServiceEndpoints.Add(new ServiceEndpointPropertiesFormat(serviceEndpointServiceName, serviceEndpointLocations));
+                    networkClient.Subnets.CreateOrUpdate(resourceGroupName, virtualNetworkName, subnetName, subnetObj);
+                }
+            }            
         }
     }
 }

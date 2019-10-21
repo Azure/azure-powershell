@@ -68,25 +68,25 @@ function Get-NewCertName
 function Get-SecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprint
-    return "https://azurermsfkvtest.vault.azure.net/secrets/AzureRMSFTestCert2/f6bb2b6492e04ffb8fb6acc6cd05005a"
+    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCert2/6e96bff504d54f36916489281423b8c6"
 }
 
 function Get-Thumbprint
 {
     # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprint
-    return "EC8CA0BBC391A08860115619701E2B858FF44C72"
+    return "910AC565E683987971F34531A824284E3B936040"
 }
 
 function Get-CertAppSecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/722cb6a2fd80461d8c60f2fc6107346e"
+    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/ca4c0f7efa254d9ba0b267b8aaebb878"
 }
 
 function Get-CertAppThumbprint
 {
     # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return "07F8E7F9A90CB655FED09548969A97C8CF6BDFAC"
+    return "EE28AF31B2741B52311A00F78DFF4F46240BB4F8"
 }
 
 function Get-CACertCommonName
@@ -101,12 +101,12 @@ function Get-CACertIssuerThumbprint
 
 function Get-CACertSecretUrl
 {
-	return "https://azurermsfkvtest.vault.azure.net:443/secrets/azurermsfcntest/6f453495b69c4cf9ae42f12bd7f89620"
+	return "https://azurermsfkvtest.vault.azure.net:443/secrets/azurermsfcntest/0cd47f8218aa40e3a47e0597b8017247"
 }
 
 function Get-CertWUSecretUrl
 {
-	return "https://azurermsfkvtestwu.vault.azure.net:443/secrets/AzureRMSFTestCertWU/7d400ad07f874c08b6325338bc44be39"
+	return "https://azurermsfkvtestwu.vault.azure.net/secrets/AzureRMSFTestCertWU/5250a7acbaa143fa9d493840d4de1c01"
 }
 
 function Get-DurabilityLevel
@@ -180,4 +180,36 @@ function WaitForClusterReadyState($clusterName, $resourceGroupName, $timeoutInSe
 
     Write-Error "WaitForClusterReadyState timed out"
     return $false
+}
+
+# Application functions
+
+function Get-AppTypeName
+{
+    return "CalcServiceApp"
+}
+
+function Get-AppTypeV1Name
+{
+    return "1.0"
+}
+
+function Get-AppTypeV2Name
+{
+    return "1.1"
+}
+
+function Get-AppPackageV1
+{
+    return "https://azsfapptest.blob.core.windows.net/azsfapptest/CalcApp_1.0.sfpkg"
+}
+
+function Get-AppPackageV2
+{
+    return "https://azsfapptest.blob.core.windows.net/azsfapptest/CalcApp_1.1.sfpkg"
+}
+
+function Get-ServiceTypeName
+{
+    return "CalcServiceType"
 }

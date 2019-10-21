@@ -33,7 +33,7 @@ function Test-LBWithMultiIpConfigNICCRUD
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic
@@ -150,7 +150,7 @@ function Test-AddNICToLBWithMultiIpConfig
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic
@@ -228,7 +228,7 @@ function Test-LBWithMultiIpConfigMultiNIC
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicips
         $publicip1 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIp1Name -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -260,7 +260,7 @@ function Test-LBWithMultiIpConfigMultiNIC
 		 Assert-AreEqual $nic.IpConfigurations[1].Id $publicip2.IpConfiguration.Id
 
         # Check Subnet address reference
-        $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         Assert-AreEqual $nic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
         Assert-AreEqual $nic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
 		Assert-AreEqual $nic.IpConfigurations[1].Subnet.Id $vnet.Subnets[0].Id
@@ -319,7 +319,7 @@ function Test-MultiIpConfigCRUD
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -366,7 +366,7 @@ function Test-MultiIpConfigCRUD
         Assert-AreEqual $expectedNic.IpConfigurations[0].Id $publicip.IpConfiguration.Id
 
         # Check Subnet address reference
-        $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
 		Assert-AreEqual $expectedNic.IpConfigurations[1].Subnet.Id $vnet.Subnets[0].Id
         Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id		

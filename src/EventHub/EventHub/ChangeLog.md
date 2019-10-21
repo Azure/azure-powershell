@@ -19,6 +19,17 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.0
+* Fixed miscellaneous typos across module
+* Fix for issue #9658 : Typo VirtualNteworkRule parameter in Set-AzEventHubNetworkRuleSet
+* Fix for issue #9558 : Set-AzEventHubNamespace is using PATCH instead of PUT
+* added EnableKafka parameter to Set-AzEventHubNamespace cmdlet
+* Fix for issue #9786 : cannot create a rule with Listen only rights
+
+## Version 1.3.0
+* Added new cmmdlet added for generating SAS token : New-AzEventHubAuthorizationRuleSASToken
+* added verification and error message for authorizationrules rights if only 'Manage' is assigned
+
 ## Version 1.2.0
 * Fix for #9231 - Get-AzEventHubNamespace does not return tags
 * Fix for #9230 - Get-AzEventHubNamespace returns ResourceGroup instead of ResourceGroupName

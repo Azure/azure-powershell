@@ -355,6 +355,228 @@ function Test-NewAzureRmCognitiveServicesAccountWithCustomDomain
 
 <#
 .SYNOPSIS
+Test New-AzCognitiveServicesAccount
+#>
+function Test-NewAzureRmCognitiveServicesAccountWithVnet
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $vnetname = 'vnet' + $rgname;
+        $skuname = 'S2';
+        $accounttype = 'TextAnalytics';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West Central US";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+
+		$vnet = CreateAndGetVirtualNetwork $rgname $vnetname
+
+		$networkRuleSet = [Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet]::New()
+		$networkRuleSet.AddIpRule("200.0.0.0")
+		$networkRuleSet.AddVirtualNetworkRule($vnet.Subnets[0].Id)
+
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force -NetworkRuleSet $networkRuleSet;
+        Assert-NotNull $createdAccount;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+
+<#
+.SYNOPSIS
+Test Set-AzCognitiveServicesAccount
+#>
+function Test-SetAzureRmCognitiveServicesAccountWithCustomDomain
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S2';
+        $accounttype = 'TextAnalytics';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West Central US";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
+        Assert-NotNull $createdAccount;
+        
+		$changedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -CustomSubdomainName $accountname -Force;
+		Assert-NotNull $changedAccount;
+        Assert-True {$changedAccount.Endpoint.Contains('cognitiveservices.azure.com')}
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+SetAzureRmCognitiveServicesAccountWithVnet
+#>
+function Test-SetAzureRmCognitiveServicesAccountWithVnet
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $vnetname = 'vnet' + $rgname;
+        $skuname = 'S0';
+        $accounttype = 'Face';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "Central US EUAP";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force;
+        Assert-NotNull $createdAccount;
+
+		$vnet = CreateAndGetVirtualNetwork $rgname $vnetname
+
+		$networkRuleSet = [Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet]::New()
+		$networkRuleSet.AddIpRule("200.0.0.0")
+		$networkRuleSet.AddVirtualNetworkRule($vnet.Subnets[0].Id)
+
+		$changedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -NetworkRuleSet $networkRuleSet -Force;
+		Assert-NotNull $changedAccount;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+
+
+
+
+<#
+.SYNOPSIS
+TestNetworkRuleSet
+#>
+function Test-NetworkRuleSet
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $vnetname = 'vnet' + $rgname;
+        $skuname = 'S0';
+        $accounttype = 'Face';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "Central US EUAP";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force;
+        Assert-NotNull $createdAccount;
+
+		$vnet = CreateAndGetVirtualNetwork $rgname $vnetname
+
+		$vnetid = $vnet.Subnets[0].Id
+		$vnetid2 = $vnet.Subnets[1].Id
+
+		$ruleSet = Get-AzCognitiveServicesAccountNetworkRuleSet -ResourceGroupName $rgname -Name $accountname
+		Assert-Null $ruleSet
+
+		Update-AzCognitiveServicesAccountNetworkRuleSet -ResourceGroupName $rgname -Name $accountname -DefaultAction Deny
+		$ruleSet = Get-AzCognitiveServicesAccountNetworkRuleSet -ResourceGroupName $rgname -Name $accountname
+		Assert-NotNull $ruleSet
+		Assert-AreEqual 'Deny' $ruleSet.DefaultAction
+		Assert-AreEqual 0 $ruleSet.IpRules.Count
+		Assert-AreEqual 0 $ruleSet.VirtualNetworkRules.Count
+
+		Add-AzCognitiveServicesAccountNetworkRule -ResourceGroupName $rgname -Name $accountname -VirtualNetworkResourceId $vnetid
+		$ruleSet = Get-AzCognitiveServicesAccountNetworkRuleSet -ResourceGroupName $rgname -Name $accountname
+		Assert-NotNull $ruleSet
+		Assert-AreEqual 'Deny' $ruleSet.DefaultAction
+		Assert-AreEqual 0 $ruleSet.IpRules.Count
+		Assert-AreEqual 1 $ruleSet.VirtualNetworkRules.Count
+
+		Add-AzCognitiveServicesAccountNetworkRule -ResourceGroupName $rgname -Name $accountname -VirtualNetworkResourceId $vnetid2
+		$ruleSet = Get-AzCognitiveServicesAccountNetworkRuleSet -ResourceGroupName $rgname -Name $accountname
+		Assert-NotNull $ruleSet
+		Assert-AreEqual 'Deny' $ruleSet.DefaultAction
+		Assert-AreEqual 0 $ruleSet.IpRules.Count
+		Assert-AreEqual 2 $ruleSet.VirtualNetworkRules.Count
+
+		Remove-AzCognitiveServicesAccountNetworkRule -ResourceGroupName $rgname -Name $accountname -VirtualNetworkResourceId $vnetid
+		$ruleSet = Get-AzCognitiveServicesAccountNetworkRuleSet -ResourceGroupName $rgname -Name $accountname
+		Assert-NotNull $ruleSet
+		Assert-AreEqual 'Deny' $ruleSet.DefaultAction
+		Assert-AreEqual 0 $ruleSet.IpRules.Count
+		Assert-AreEqual 1 $ruleSet.VirtualNetworkRules.Count
+
+		Remove-AzCognitiveServicesAccountNetworkRule -ResourceGroupName $rgname -Name $accountname -VirtualNetworkResourceId $vnetid2
+		$ruleSet = Get-AzCognitiveServicesAccountNetworkRuleSet -ResourceGroupName $rgname -Name $accountname
+		Assert-NotNull $ruleSet
+		Assert-AreEqual 'Deny' $ruleSet.DefaultAction
+		Assert-AreEqual 0 $ruleSet.IpRules.Count
+		Assert-AreEqual 0 $ruleSet.VirtualNetworkRules.Count
+
+		Add-AzCognitiveServicesAccountNetworkRule -ResourceGroupName $rgname -AccountName $accountname -IpAddressOrRange "16.17.18.0"
+		$ruleSet = Get-AzCognitiveServicesAccountNetworkRuleSet -ResourceGroupName $rgname -Name $accountname
+		Assert-NotNull $ruleSet
+		Assert-AreEqual 'Deny' $ruleSet.DefaultAction
+		Assert-AreEqual 1 $ruleSet.IpRules.Count
+		Assert-AreEqual 0 $ruleSet.VirtualNetworkRules.Count
+
+		Add-AzCognitiveServicesAccountNetworkRule -ResourceGroupName $rgname -AccountName $accountname -IpAddressOrRange "16.17.18.1"
+		$ruleSet = Get-AzCognitiveServicesAccountNetworkRuleSet -ResourceGroupName $rgname -Name $accountname
+		Assert-NotNull $ruleSet
+		Assert-AreEqual 'Deny' $ruleSet.DefaultAction
+		Assert-AreEqual 2 $ruleSet.IpRules.Count
+		Assert-AreEqual 0 $ruleSet.VirtualNetworkRules.Count
+
+		Remove-AzCognitiveServicesAccountNetworkRule -ResourceGroupName $rgname -Name $accountname -IpAddressOrRange "16.17.18.0"
+		$ruleSet = Get-AzCognitiveServicesAccountNetworkRuleSet -ResourceGroupName $rgname -Name $accountname
+		Assert-NotNull $ruleSet
+		Assert-AreEqual 'Deny' $ruleSet.DefaultAction
+		Assert-AreEqual 1 $ruleSet.IpRules.Count
+		Assert-AreEqual 0 $ruleSet.VirtualNetworkRules.Count
+
+		Remove-AzCognitiveServicesAccountNetworkRule -ResourceGroupName $rgname -Name $accountname -IpAddressOrRange "16.17.18.1"
+		$ruleSet = Get-AzCognitiveServicesAccountNetworkRuleSet -ResourceGroupName $rgname -Name $accountname
+		Assert-NotNull $ruleSet
+		Assert-AreEqual 'Deny' $ruleSet.DefaultAction
+		Assert-AreEqual 0 $ruleSet.IpRules.Count
+		Assert-AreEqual 0 $ruleSet.VirtualNetworkRules.Count
+
+		Update-AzCognitiveServicesAccountNetworkRuleSet -ResourceGroupName $rgname -AccountName $accountname -DefaultAction Allow -IPRule (@{IpAddress="200.0.0.0"},@{IpAddress="28.2.0.0/16"}) -VirtualNetworkRule (@{Id=$vnetid},@{Id=$vnetid2})
+		$ruleSet = Get-AzCognitiveServicesAccountNetworkRuleSet -ResourceGroupName $rgname -Name $accountname
+		Assert-NotNull $ruleSet
+		Assert-AreEqual 'Allow' $ruleSet.DefaultAction
+		Assert-AreEqual 2 $ruleSet.IpRules.Count
+		Assert-AreEqual 2 $ruleSet.VirtualNetworkRules.Count
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Get-AzCognitiveServicesAccountSkus
 #>
 function Test-GetAzureRmCognitiveServicesAccountSkus
@@ -601,4 +823,20 @@ function Test-GetUsages
         # Cleanup
         Clean-ResourceGroup $rgname
     }
+}
+
+<#
+.SYNOPSIS
+Create a virtual network
+#>
+function CreateAndGetVirtualNetwork ($resourceGroupName, $vnetName, $location = "centraluseuap")
+{
+
+	$subnet1 = New-AzVirtualNetworkSubnetConfig -Name "default" -AddressPrefix "200.0.0.0/24"
+	$subnet2 = New-AzVirtualNetworkSubnetConfig -Name "subnet" -AddressPrefix "200.0.1.0/24"
+	$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix "200.0.0.0/16" -Subnet $subnet1,$subnet2
+
+	$getVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+
+	return $getVnet
 }

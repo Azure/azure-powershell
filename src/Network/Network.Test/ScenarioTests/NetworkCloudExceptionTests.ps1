@@ -18,19 +18,17 @@ Check NotFound exception processing
 function Test-NotFound
 {
     $rgLocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/PublicIpAddresses"
-    $location = Get-ProviderLocation $resourceTypeParent
 
     $rgName = Get-ResourceGroupName
-    $resourceName = Get-ResourceName
+    $pipName = Get-ResourceName
 
     try
     {
         # Create the resource group
-        New-AzResourceGroup -Name $rgName -Location $location
+        New-AzResourceGroup -Name $rgName -Location $rgLocation
 
         # Get PublicIpAddress that doesn't exist
-        Assert-ThrowsLike { $ip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name $resourceName } "*was not found.*StatusCode:*404*ReasonPhrase:*Not Found*OperationID :*";
+        Assert-ThrowsLike { Get-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName } "*ResourceNotFound*was not found*"
     }
     finally
     {
@@ -46,18 +44,19 @@ Check InvalidName exception processing
 function Test-InvalidName
 {
     $rgLocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/PublicIpAddresses"
-    $location = Get-ProviderLocation $resourceTypeParent
+    $location = Get-ProviderLocation "Microsoft.Network/publicIpAddresses"
 
     $rgName = Get-ResourceGroupName
-    $resourceInvalidName = "!"
+    $invalidName = "!"
 
     try
     {
         # Create the resource group
-        New-AzResourceGroup -Name $rgName -Location $location
+        New-AzResourceGroup -Name $rgName -Location $rgLocation
 
-        Assert-ThrowsLike { $ip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $resourceInvalidName -Location $location -AllocationMethod Dynamic } "*Resource name ! is invalid.*StatusCode: 400*ReasonPhrase: Bad Request*OperationID :*";
+        # Create PublicIpAddress with incorrect name
+        $scriptBlock = { New-AzPublicIpAddress -ResourceGroupName $rgName -Name $invalidName -Location $location -AllocationMethod Dynamic }
+        Assert-ThrowsLike $scriptBlock "*InvalidResourceName*Resource name ${invalidName} is invalid*"
     }
     finally
     {
@@ -68,16 +67,16 @@ function Test-InvalidName
 
 <#
 .SYNOPSIS
-Check InvalidName exception processing
+Check DuplicateResourceName exception processing
 #>
 function Test-DuplicateResource
 {
     $rgLocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/PublicIpAddresses"
-    $location = Get-ProviderLocation $resourceTypeParent
+    $location = Get-ProviderLocation "Microsoft.Network/virtualNetworks"
 
     $rgName = Get-ResourceGroupName
-    $resourceName = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
 
     $vnetAddressPrefix = "10.0.0.0/8"
     $subnetAddressPrefix = "10.0.1.0/24"
@@ -85,11 +84,14 @@ function Test-DuplicateResource
     try
     {
         # Create the resource group
-        New-AzResourceGroup -Name $rgName -Location $location
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $resourceName -AddressPrefix $subnetAddressPrefix
-        $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $resourceName -Location $location -AddressPrefix $vnetAddressPrefix -Subnet $subnet
-        $vnet.Subnets.Add($subnet);
-        Assert-ThrowsLike { Set-AzVirtualNetwork -VirtualNetwork $vnet } "*Cannot parse the request.*StatusCode: 400*ReasonPhrase: Bad Request*OperationID*";
+        New-AzResourceGroup -Name $rgName -Location $rgLocation
+
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix $subnetAddressPrefix
+        $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix $vnetAddressPrefix -Subnet $subnet
+        $vnet.Subnets.Add($subnet)
+
+        # Update VirtualNetwork with two duplicate subnets
+        Assert-ThrowsLike { Set-AzVirtualNetwork -VirtualNetwork $vnet } "*InvalidRequestFormat*Additional details*DuplicateResourceName*"
     }
     finally
     {
@@ -100,16 +102,16 @@ function Test-DuplicateResource
 
 <#
 .SYNOPSIS
-Check InvalidName exception processing
+Check NetcfgInvalidSubnet exception processing
 #>
 function Test-IntersectAddressSpace
 {
     $rgLocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/PublicIpAddresses"
-    $location = Get-ProviderLocation $resourceTypeParent
+    $location = Get-ProviderLocation "Microsoft.Network/virtualNetworks"
 
     $rgName = Get-ResourceGroupName
-    $resourceName = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
 
     $vnetAddressPrefix = "10.0.0.0/8"
     $subnetAddressPrefix = "10.0.1.0/24"
@@ -117,11 +119,53 @@ function Test-IntersectAddressSpace
     try
     {
         # Create the resource group
-        New-AzResourceGroup -Name $rgName -Location $location
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $resourceName -AddressPrefix $subnetAddressPrefix
-        $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $resourceName -Location $location -AddressPrefix $vnetAddressPrefix -Subnet $subnet
-        Add-AzVirtualNetworkSubnetConfig -Name "${resourceName}2" -AddressPrefix $subnetAddressPrefix -VirtualNetwork $vnet
-        Assert-ThrowsLike { Set-AzVirtualNetwork -VirtualNetwork $vnet } "*Subnet*is not valid in virtual network*StatusCode: 400*ReasonPhrase: Bad Request*OperationID*";
+        New-AzResourceGroup -Name $rgName -Location $rgLocation
+
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix $subnetAddressPrefix
+        $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix $vnetAddressPrefix -Subnet $subnet
+        Add-AzVirtualNetworkSubnetConfig -Name "${subnetName}2" -AddressPrefix $subnetAddressPrefix -VirtualNetwork $vnet
+        
+        # Update VirtualNetwork with two intersecting subnets
+        Assert-ThrowsLike { Set-AzVirtualNetwork -VirtualNetwork $vnet } "*NetcfgInvalidSubnet*Subnet*is not valid in virtual network*"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgName
+    }
+}
+
+<#
+.SYNOPSIS
+Check processing of ErrorResponse exceptions
+#>
+function Test-ErrorResponseException
+{
+    $rgLocation = Get-ProviderLocation ResourceManagement
+
+    $rgName = Get-ResourceGroupName
+    $nwName = Get-ResourceName
+
+    try
+    {
+        # Create the resource group
+        New-AzResourceGroup -Name $rgName -Location $rgLocation
+
+        # Try to create another NW in a region
+        [array]$nw = Get-AzNetworkWatcher
+        if($nw.Length -gt 0)
+        {
+            $existingLocation = $nw[0].Location
+            Assert-ThrowsLike { New-AzNetworkWatcher -Name $nwName -ResourceGroupName $rgName -Location $existingLocation } "*NetworkWatcherCountLimitReached*"
+        }
+
+        # Try to create NW with invalid name
+        [array]$availableLocations = (Get-AzResourceProvider -ProviderNamespace "Microsoft.Network" | Where-Object { $_.ResourceTypes.ResourceTypeName -eq "networkWatchers" }).Locations
+        if($availableLocations.Length -gt 0)
+        {
+            $location = Normalize-Location $availableLocations[0]
+            Assert-ThrowsLike { New-AzNetworkWatcher -Name "!" -ResourceGroupName $rgName -Location $location } "*InvalidResourceName*"
+        }
     }
     finally
     {

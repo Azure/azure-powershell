@@ -21,16 +21,16 @@ function Test-SnapshotCrud
     $currentSub = (Get-AzureRmContext).Subscription	
     $subsid = $currentSub.SubscriptionId
 
-    $resourceGroup = "pws-sdk-tests-rg-2"
-    $accName = "pws-sdk-acc-2"
-    $poolName = "pws-sdk-pool-1"
-    $volName = "pws-sdk-vol-1"
-    $snName1 = "pws-sdk-snapshot-1"
-    $snName2 = "pws-sdk-snapshot-2"
+    $resourceGroup = Get-ResourceGroupName
+    $accName = Get-ResourceName
+    $poolName = Get-ResourceName
+    $volName = Get-ResourceName
+    $snName1 = Get-ResourceName
+    $snName2 = Get-ResourceName
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
-    $resourceLocation = "westus2"
+    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
     $subnetName = "default"
     $standardPoolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -64,7 +64,8 @@ function Test-SnapshotCrud
         $retrieveSn = New-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName1 -FileSystemId $retrievedVolume.FileSystemId
         Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrieveSn.Name
 
-        $retrieveSn = New-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName2 -FileSystemId $retrievedVolume.FileSystemId
+        # one without using the filesystem id
+        $retrieveSn = New-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName2
         Assert-AreEqual "$accName/$poolName/$volName/$snName2" $retrieveSn.Name
 
         # get and check snapshots by group (list)
@@ -105,16 +106,16 @@ function Test-SnapshotPipelines
     $currentSub = (Get-AzureRmContext).Subscription	
     $subsid = $currentSub.SubscriptionId
 
-    $resourceGroup = "pws-sdk-tests-rg-1"
-    $accName = "pws-sdk-acc-1"
-    $poolName = "pws-sdk-pool-1"
-    $volName = "pws-sdk-vol-1"
-    $snName1 = "pws-sdk-snapshot-1"
-    $snName2 = "pws-sdk-snapshot-2"
+    $resourceGroup = Get-ResourceGroupName
+    $accName = Get-ResourceName
+    $poolName = Get-ResourceName
+    $volName = Get-ResourceName
+    $snName1 = Get-ResourceName
+    $snName2 = Get-ResourceName
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
-    $resourceLocation = "eastus"
+    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -143,14 +144,12 @@ function Test-SnapshotPipelines
         $retrieveSn = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName | New-AnfSnapshot -SnapshotName $snName1
         Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrieveSn.Name
         
-        # temporarily removed - snapshots cannot be deleted due to a change in status code in the RP
-        # this will be fixed in the R3.5 version of the swagger
         # delete the snapshot by piping from snapshot get
-        #Get-AnfSnapshot -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -Name $snName1 | Remove-AnfSnapshot
+        Get-AnfSnapshot -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -Name $snName1 | Remove-AnfSnapshot
 
         # and check the snapshot list by piping from volume get
-        #$retrievedSnapshot = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -Name $volName | Get-AnfSnapshot 
-        #Assert-AreEqual 0 $retrievedSnapshot.Length
+        $retrievedSnapshot = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -Name $volName | Get-AnfSnapshot 
+        Assert-AreEqual 0 $retrievedSnapshot.Length
     }
     finally
     {

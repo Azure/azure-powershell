@@ -199,7 +199,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// Construct is supposed to generate a file name based on the three parameters, file name without extension, extension and the number to append.
         /// </summary>
         /// <param name="baseFileName">Original file name.</param>
-        /// <param name="conflict">A delegate takes one file name as parameter and returns true when no confliction is found.</param>
+        /// <param name="conflict">A delegate takes one file name as parameter and returns true when no conflicts is found.</param>
         /// <param name="construct">A delegate takes three parameters, file name without extension, extension and the number to append, and returns
         /// a file name constructed by these three parameters.</param>
         /// <returns>Valid file name by calling Conflict and Construct.</returns>

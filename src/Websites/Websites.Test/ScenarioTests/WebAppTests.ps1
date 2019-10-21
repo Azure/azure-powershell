@@ -469,10 +469,10 @@ function Test-CreateNewWebAppHyperV
 	$tier = "PremiumContainer"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
-    $containerImageName = "testcontainer.io/paltest/iis"
-    $containerRegistryUrl = "https://testcontainer.azurecr.io"
-    $ontainerRegistryUser = "testregistry"
-    $pass = "7Dxo9p79Ins2K3ZU"
+    $containerImageName = "pstestacr.azurecr.io/tests/iis:latest"
+    $containerRegistryUrl = "https://pstestacr.azurecr.io"
+    $containerRegistryUser = "pstestacr"
+    $pass = "cYK4qnENExflnnOkBN7P+gkmBG0sqgIv"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|" 
 
@@ -484,7 +484,7 @@ function Test-CreateNewWebAppHyperV
 		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Small -HyperV
 		
 		# Create new web app
-		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $ontainerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
+		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $containerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
 		$job | Wait-Job
 		$actual = $job | Receive-Job
 		
@@ -503,7 +503,7 @@ function Test-CreateNewWebAppHyperV
 
         $appSettings = @{
         "DOCKER_REGISTRY_SERVER_URL" = $containerRegistryUrl;
-        "DOCKER_REGISTRY_SERVER_USERNAME" = $ontainerRegistryUser;
+        "DOCKER_REGISTRY_SERVER_USERNAME" = $containerRegistryUser;
         "DOCKER_REGISTRY_SERVER_PASSWORD" = $pass;}
 
         foreach($nvp in $webApp.SiteConfig.AppSettings)
@@ -539,10 +539,10 @@ function Test-EnableContainerContinuousDeploymentAndGetUrl
 	$tier = "PremiumContainer"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
-    $containerImageName = "microsoft/iis"
-    $containerRegistryUrl = "https://testcontainer.azurecr.io"
-    $ontainerRegistryUser = "testregistry"
-    $pass = "7Dxo9p79Ins2K3ZU"
+    $containerImageName = "pstestacr.azurecr.io/tests/iis:latest"
+    $containerRegistryUrl = "https://pstestacr.azurecr.io"
+    $containerRegistryUser = "pstestacr"
+    $pass = "cYK4qnENExflnnOkBN7P+gkmBG0sqgIv"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|"
  	try
@@ -552,7 +552,7 @@ function Test-EnableContainerContinuousDeploymentAndGetUrl
 		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Small -HyperV
 
 		# Create new web app
-		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $ontainerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -EnableContainerContinuousDeployment -AsJob
+		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $containerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -EnableContainerContinuousDeployment -AsJob
 		$job | Wait-Job
 		$actual = $job | Receive-Job
 		
@@ -569,7 +569,7 @@ function Test-EnableContainerContinuousDeploymentAndGetUrl
         Assert-AreEqual ($dockerPrefix + $containerImageName)  $result.SiteConfig.WindowsFxVersion
          $appSettings = @{
         "DOCKER_REGISTRY_SERVER_URL" = $containerRegistryUrl;
-        "DOCKER_REGISTRY_SERVER_USERNAME" = $ontainerRegistryUser;
+        "DOCKER_REGISTRY_SERVER_USERNAME" = $containerRegistryUser;
         "DOCKER_REGISTRY_SERVER_PASSWORD" = $pass;
         "DOCKER_ENABLE_CI" = "true"}
          foreach($nvp in $webApp.SiteConfig.AppSettings)
@@ -683,18 +683,17 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 
 		# Validating that the client can at least issue the EnterPsSession command.
 		# This will validate that this cmdlet will run succesfully in Cloud Shell.
-		# If the current PsVersion is 5.1 or less (Windows PowerShell) and the current WSMAN settings will not allow the user
+		# If the current Operating System is Windows and the current WSMAN settings will not allow the user
 		# to connect (for example: invalid Trusted Hosts, Basic Auth not enabled) this command will issue a Warning instructing the user
 		# to fix WSMAN settings. It will not attempt to run EnterPsSession.
 		#
-		# If the current version is 6.0 (PowerShell Core) this command will not attempt to validate WSMAN settings and 
-		# just try to run EnterPsSession. EnterPsSession is available in Cloud Shell
+		# If the current is not Windows, this command will not attempt to validate WSMAN settings and 
+		# just try to run EnterPsSession if the current PsCore version is 6.1.0.0 or subsequent. EnterPsSession using WinRM is available in Cloud Shell
 		#
-		# We need an real Windows Container app running to fully validate the returned PsSession object, which is not 
+		# We need a real Windows Container app running to fully validate the returned PsSession object, which is not 
 		# possible in 'Playback' mode.
 		#
-		# This assert at least verifies that the EnterPsSession command is attempted and that the behavior is the expected in
-		# Windows PowerShell and PowerShell Core.
+		# This assert at least verifies that the EnterPsSession command is attempted and that the behavior is the expected
 		New-AzWebAppContainerPSSession -ResourceGroupName $rgname -Name $wname -WarningVariable wv -WarningAction SilentlyContinue -ErrorAction SilentlyContinue -Force
 		
 
@@ -707,12 +706,28 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 		}
 		else
 		{
-			# Two possible messages in Playback mode since the site will not exist.
+			# Three possible error messages in Playback mode.
 			$messageDNS = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client cannot process the request because the server name cannot be resolved"
 			$messageUnavailable = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client sent a request to an HTTP server and got a response saying the requested HTTP URL was not available."
-			$resultError = ($Error[0] -like "*$($messageDNS)*") -or ($Error[0] -like "*$($messageUnavailable)*")
-			Write-Debug "Expected Message 1: $messageDNS"
-			Write-Debug "Expected Message 2: $messageUnavailable"
+			$messagePsVersionNotSupported = "Remote Powershell sessions into Windows Containers on App Service from this version of PowerShell is not supported.";
+
+			# One possible warning message in Playback mode.
+			$messageWSMANNotConfigured = "Your current WSMAN Trusted Hosts settings will prevent you from connecting to your Container Web App";
+
+			$resultError = ($Error[0] -like "*$($messageDNS)*") -or 
+				($Error[0] -like "*$($messageUnavailable)*") -or 
+				($Error[0] -like "*$($messageWSMANNotConfigured)*") -or
+				($Error[0] -like "*$($messagePsVersionNotSupported)*")
+			
+			$resultWarning = ($wv[0] -like "*$($messageWSMANNotConfigured)*")
+
+			Write-Debug "Expected error message 1: $messageDNS"
+			Write-Debug "Expected error message 2: $messageUnavailable"
+			Write-Debug "Expected error message 3: $messagePsVersionNotSupported"
+			
+			Write-Debug "Expected Warning message 1: $messageWSMANNotConfigured"
+
+
 		}
 		
 		Write-Debug "Error: $Error[0]"
@@ -729,12 +744,12 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 		}
 
 		
-		If(!$resultError)
+		If(!$resultError -or !$resultWarning)
 		{
 			Write-Output "expected error $($message), actual error $($Error[0])"
 			Write-Output "Warnings: $wv"
 		}
-		Assert-True {$resultError}
+		Assert-True {$resultError -or $resultWarning}
  	}
 	finally
 	{
@@ -882,10 +897,10 @@ function Test-SetAzureStorageWebAppHyperV
 	$tier = "PremiumContainer"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
-    $containerImageName = "testcontainer.io/test/iis"
-    $containerRegistryUrl = "https://testcontainer.azurecr.io"
-    $ontainerRegistryUser = "testregistry"
-    $pass = "7Dxo9p79Ins2K3ZU"
+    $containerImageName = "pstestacr.azurecr.io/tests/iis:latest"
+    $containerRegistryUrl = "https://pstestacr.azurecr.io"
+    $containerRegistryUser = "pstestacr"
+    $pass = "cYK4qnENExflnnOkBN7P+gkmBG0sqgIv"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|" 
 	$azureStorageAccountCustomId1 = "mystorageaccount"
@@ -908,7 +923,7 @@ function Test-SetAzureStorageWebAppHyperV
 		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Small -HyperV
 		
 		# Create new web app
-		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $ontainerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
+		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $containerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
 		$job | Wait-Job
 		$actual = $job | Receive-Job
 		
@@ -999,11 +1014,11 @@ function Test-CreateNewWebAppOnAse
 	# Setup
 	# Creating and provisioning an ASE currently takes 30 mins to an hour, hence this test requires that the ASE & ASP are already created 
 	# before creating the app on the ASE
-	$rgname = "appdemorg"
+	$rgname = "mnresourcegroup"
 	$wname = Get-WebsiteName
-	$location = "West US"
-	$whpName = "travelproductionplan"
-	$aseName = "asedemops"
+	$location = "South Central US"
+	$whpName = "powershellasp"
+	$aseName = "mnASE"
 	$resourceType = "Microsoft.Web/sites"
 	try
 	{
@@ -1340,8 +1355,10 @@ Tests Tags are not overridden when calling Set-AzWebApp commandlet
 function Test-TagsNotRemovedBySetWebApp
 {
 	$rgname = "lketmtestantps10"
-	$appname = "lketmtestantps10"
+	$appname = "tagstestantps10" # this is an existing app with existing tags
 	$slot = "testslot"
+	$aspName = "tagstestAspantps10"
+	$aspToMove = "tagstestAsp2antps10"
 
 	$getApp =  Get-AzWebApp -ResourceGroupName $rgname -Name $appname
 	$getSlot = Get-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slot
@@ -1360,5 +1377,18 @@ function Test-TagsNotRemovedBySetWebApp
 
 	# Test - tags not removed after using Set-AzWebApp with WebApp parameter
 	$webapp =  Set-AzWebApp  -WebApp $getApp
+	Assert-notNull $webApp.Tags
+
+	$webapp = Set-AzWebApp -Name $appname -ResourceGroupName $rgname -AppServicePlan $aspToMove
+	# verify that App has been successfully moved to the new ASP
+	$asp = Get-AzAppServicePlan -ResourceGroupName $rgname -Name $aspToMove
+	Assert-AreEqual $webApp.ServerFarmId $asp.id
+	# verify tags are not removed after ASP move
+	Assert-notNull $webApp.Tags
+
+	# Move it back to the original ASP
+	$webApp = Set-AzWebApp -Name $appname -ResourceGroupName $rgname -AppServicePlan $aspName
+	$asp = Get-AzAppServicePlan -ResourceGroupName $rgname -Name $aspName
+	Assert-AreEqual $webApp.ServerFarmId $asp.id
 	Assert-notNull $webApp.Tags
 }

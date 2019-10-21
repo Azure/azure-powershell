@@ -38,7 +38,7 @@ The **New-AzPolicySetDefinition** cmdlet creates a policy set definition.
 
 ## EXAMPLES
 
-### Example 1: Create a policy set definition by using a policy set file
+### Example 1: Create a policy set definition with metadata by using a policy set file
 ```
 [
    {
@@ -59,10 +59,10 @@ The **New-AzPolicySetDefinition** cmdlet creates a policy set definition.
 ```
 
 ```
-PS C:\> New-AzPolicySetDefinition -Name 'VMPolicyDefinition' -PolicyDefinition C:\VMPolicySet.json
+PS C:\> New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"Virtual Machine"}' -PolicyDefinition C:\VMPolicySet.json
 ```
 
-This command creates a policy set definition named VMPolicyDefinition that contains the policy definitions specified in C:\VMPolicy.json. Example content of the VMPolicy.json is provided above.
+This command creates a policy set definition named VMPolicySetDefinition with metadata indicating its category is "Virtual Machine" that contains the policy definitions specified in C:\VMPolicy.json. Example content of the VMPolicy.json is provided above.
 
 ### Example 2: Create a parameterized policy set definition
 ```
@@ -85,10 +85,10 @@ This command creates a policy set definition named VMPolicyDefinition that conta
 ```
 
 ```
-PS C:\> New-AzPolicySetDefinition -Name 'VMPolicyDefinition' -PolicyDefinition C:\VMPolicySet.json -Parameter '{ "buTagValue": { "type": "string" } }'
+PS C:\> New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicySet.json -Parameter '{ "buTagValue": { "type": "string" } }'
 ```
 
-This command creates a parameterized policy set definition named VMPolicyDefinition that contains the policy definitions specified in C:\VMPolicy.json. Example content of the VMPolicy.json is provided above.
+This command creates a parameterized policy set definition named VMPolicySetDefinition that contains the policy definitions specified in C:\VMPolicy.json. Example content of the VMPolicy.json is provided above.
 
 ## PARAMETERS
 
@@ -215,7 +215,7 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyDefinition
-The policy set definition. This can either be a path to a file name containing the policy definitions, or the policy set definition as string.
+The policy definitions. This can either be a path to a file name containing the policy definitions, or the policy definitions as string.
 
 ```yaml
 Type: System.String
@@ -290,7 +290,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -120,6 +120,10 @@ function EventHubsAuthTests
 	$namespaceName = getAssetName "Eventhub-Namespace-"
 	$eventHubName = getAssetName "EventHub-"
 	$authRuleName = getAssetName "Eventhub-Namespace-AuthorizationRule"
+    $authRuleName = getAssetName "authorule-"
+	$authRuleNameListen = getAssetName "authorule-"
+	$authRuleNameSend = getAssetName "authorule-"
+	$authRuleNameAll = getAssetName "authorule-"
 
 	# Create ResourceGroup
 	Write-Debug " Create resource group"    
@@ -163,6 +167,23 @@ function EventHubsAuthTests
 	Assert-AreEqual 2 $result.Rights.Count
 	Assert-True { $result.Rights -Contains "Listen" }
 	Assert-True { $result.Rights -Contains "Send" }
+
+	$resultListen = New-AzEventHubAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleNameListen -Rights @("Listen")
+	Assert-AreEqual $authRuleNameListen $resultListen.Name
+    Assert-AreEqual 1 $resultListen.Rights.Count
+    Assert-True { $resultListen.Rights -Contains "Listen" }
+
+	$resultSend = New-AzEventHubAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleNameSend -Rights @("Send")
+	Assert-AreEqual $authRuleNameSend $resultSend.Name
+    Assert-AreEqual 1 $resultSend.Rights.Count
+    Assert-True { $resultSend.Rights -Contains "Send" }
+
+	$resultall3 = New-AzEventHubAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleNameAll -Rights @("Listen","Send","Manage")
+	Assert-AreEqual $authRuleNameAll $resultall3.Name
+    Assert-AreEqual 3 $resultall3.Rights.Count
+    Assert-True { $resultall3.Rights -Contains "Send" }
+	Assert-True { $resultall3.Rights -Contains "Listen" }
+	Assert-True { $resultall3.Rights -Contains "Manage" }
 
 	# Get Created Eventhub Authorization Rule
 	Write-Debug "Get created authorizationRule"
@@ -217,8 +238,12 @@ function EventHubsAuthTests
 	Write-Debug "Get Eventhub authorizationRules connectionStrings"
 	$namespaceListKeys = Get-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName
 
-	Assert-True {$namespaceListKeys.PrimaryConnectionString.Contains($updatedAuthRule.PrimaryKey)}
-	Assert-True {$namespaceListKeys.SecondaryConnectionString.Contains($updatedAuthRule.SecondaryKey)}
+	Assert-True {$namespaceListKeys.PrimaryConnectionString -like "*$($updatedAuthRule.PrimaryKey)*"}
+	Assert-True {$namespaceListKeys.SecondaryConnectionString -like "*$($updatedAuthRule.SecondaryKey)*"}
+	
+	$StartTime = Get-Date
+	$EndTime = $StartTime.AddHours(2.0)
+	$SasToken = New-AzEventHubAuthorizationRuleSASToken -ResourceId $updatedAuthRule.Id -KeyType Primary -ExpiryTime $EndTime -StartTime $StartTime
 	
 	# Regentrate the Keys 
 	$policyKey = "PrimaryKey"

@@ -48,14 +48,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var disks = storageProfile.DataDisks.ToList();
                 disks.RemoveAll(d => d.Lun == this.Lun);
 
-                if (disks.Count == 0)
-                {
-                    storageProfile.DataDisks = null;
-                }
-                else
-                {
-                    storageProfile.DataDisks = disks;
-                }
+                storageProfile.DataDisks = disks;
             }
 
             this.VirtualMachineScaleSetVM.StorageProfile = storageProfile;

@@ -541,6 +541,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to -skipVmBackup parameter is a required parameter for encrypting Linux VMs with managed disks. For more information, see https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux. .
+        /// </summary>
+        internal static string EnableDiskEncryptionMissingSkipVmBackup {
+            get {
+                return ResourceManager.GetString("EnableDiskEncryptionMissingSkipVmBackup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error occurred when choosing existing standard storage account for boot diagnostics: {0}.
         /// </summary>
         internal static string ErrorDuringChoosingStandardStorageAccount {
@@ -573,6 +582,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         internal static string InvalidImageName {
             get {
                 return ResourceManager.GetString("InvalidImageName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Linux configuration is already specified.  This cmdlet requires a Windows configuration..
+        /// </summary>
+        internal static string LinuxConfigurationSpecified {
+            get {
+                return ResourceManager.GetString("LinuxConfigurationSpecified", resourceCulture);
             }
         }
         
@@ -793,7 +811,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Network disruption occured, retrying..
+        ///   Looks up a localized string similar to Network disruption occurred, retrying..
         /// </summary>
         internal static string PSSyncOutputEventsRetryingAfterANetworkDisruption {
             get {
@@ -1230,7 +1248,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The RDP file cannot be generated because the network interface of the virtual machine does not reference a PublicIP or an InboungNatRule of the load balancer..
+        ///   Looks up a localized string similar to The RDP file cannot be generated because the network interface of the virtual machine does not reference a PublicIP or an InboundNatRule of the load balancer..
         /// </summary>
         internal static string VirtualMachineReferencesInternalNetworkInterface {
             get {
@@ -1307,6 +1325,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         internal static string VmssUseConnectionString {
             get {
                 return ResourceManager.GetString("VmssUseConnectionString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows configuration is already specified.  This cmdlet requires a Linux configuration..
+        /// </summary>
+        internal static string WindowsConfigurationSpecified {
+            get {
+                return ResourceManager.GetString("WindowsConfigurationSpecified", resourceCulture);
             }
         }
     }

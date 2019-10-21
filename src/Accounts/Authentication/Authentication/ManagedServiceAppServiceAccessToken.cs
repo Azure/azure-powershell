@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -24,10 +26,22 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
         }
 
+        public ManagedServiceAppServiceAccessToken(IAzureAccount account, IAzureEnvironment environment, string resourceId, string tenant = "Common")
+            : base(account, environment, resourceId, tenant)
+        {
+        }
+
         protected override IEnumerable<string> BuildTokenUri(string baseUri, IAzureAccount account, IdentityType identityType,
             string resourceId)
         {
-            yield return $"{baseUri}?resource={resourceId}&api-version=2017-09-01";;
+            StringBuilder query = new StringBuilder($"{baseUri}?resource={resourceId}&api-version=2017-09-01");
+
+            if(identityType == IdentityType.ClientId || identityType == IdentityType.ObjectId)
+            {
+                query.Append($"&clientid={Uri.EscapeDataString(account.Id)}");
+            }
+
+            yield return query.ToString();
         }
 
         protected override void SetToken(ManagedServiceAppServiceTokenInfo infoWebApps)

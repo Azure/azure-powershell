@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
                 VolumeName = NameParts[2];
             }
 
-            if (ShouldProcess(Name, "Remove the snapshot"))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveResourceMessage, ResourceGroupName)))
             {
                 AzureNetAppFilesManagementClient.Snapshots.Delete(ResourceGroupName, AccountName, PoolName, VolumeName, Name);
                 success = true;

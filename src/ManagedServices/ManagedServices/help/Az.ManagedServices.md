@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.ManagedServices Module
 ## Description
-This feature is used by customers of Managed Service Providers (MSPs). Customers give an MSP the ability to manage their subscription. In addition to granting access, the customer can also remove access or view existing access delegations. MSPs are able able to view the list of customers who have granted them access to subscriptions. There are two objects involved in this process: A registration definition which identifies the MSP and the role definitions granted to the MSP. The MSP can optionally define this object using a Managed Services marketplace offering Access assignments which associate a subscription with the definition.
+This feature is used by customers of Managed Service Providers (MSPs). Customers give an MSP the ability to manage their subscription. In addition to granting access, the customer can also remove access or view existing access delegations. MSPs are able to view the list of customers who have granted them access to subscriptions. There are two objects involved in this process: A registration definition which identifies the MSP and the role definitions granted to the MSP. The MSP can optionally define this object using a Managed Services marketplace offering Access assignments which associate a subscription with the definition.
 
 ## Az.ManagedServices Cmdlets
 ### [Get-AzManagedServicesAssignment](Get-AzManagedServicesAssignment.md)

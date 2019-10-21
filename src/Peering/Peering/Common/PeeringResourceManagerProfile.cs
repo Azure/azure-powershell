@@ -63,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                 cfg =>
                     {
                         cfg.AddProfile<PeeringResourceManagerProfile>();
-                        // MNM to CNM 
+                        // MNM to CNM
                         cfg.CreateMap<MNM.BgpSession, CNM.PSBgpSession>();
                         cfg.CreateMap<MNM.DirectConnection, CNM.PSDirectConnection>();
                         cfg.CreateMap<MNM.DirectPeeringFacility, CNM.PSDirectPeeringFacility>();
@@ -81,6 +81,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                         cfg.CreateMap<MNM.Resource, CNM.PSResource>();
                         cfg.CreateMap<MNM.SubResource, CNM.PSSubResource>();
                         cfg.CreateMap<MNM.ContactInfo, CNM.PSContactInfo>();
+                        cfg.CreateMap<MNM.PeeringService, CNM.PSPeeringService>();
+                        cfg.CreateMap<MNM.PeeringServiceLocation, CNM.PSPeeringServiceLocation>();
+                        cfg.CreateMap<MNM.PeeringServicePrefix, CNM.PSPeeringServicePrefix>();
+                        cfg.CreateMap<MNM.PeeringServiceProvider, CNM.PSPeeringServiceProvider>();
+                        cfg.CreateMap<MNM.PeeringServicePrefixEvent, CNM.PSPeeringServicePrefixEvent>();
                         // CNM to MNM
                         cfg.CreateMap<CNM.PSBgpSession, MNM.BgpSession>();
                         cfg.CreateMap<CNM.PSDirectConnection, MNM.DirectConnection>();
@@ -99,6 +104,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                         cfg.CreateMap<CNM.PSResource, MNM.Resource>();
                         cfg.CreateMap<CNM.PSSubResource, MNM.SubResource>();
                         cfg.CreateMap<CNM.PSContactInfo, MNM.ContactInfo>();
+                        cfg.CreateMap<CNM.PSPeeringService, MNM.PeeringService>();
+                        cfg.CreateMap<CNM.PSPeeringServiceLocation, MNM.PeeringServiceLocation>();
+                        cfg.CreateMap<CNM.PSPeeringServicePrefix, MNM.PeeringServicePrefix>();
+                        cfg.CreateMap<CNM.PSPeeringServiceProvider, MNM.PeeringServiceProvider>();
+                        cfg.CreateMap<CNM.PSPeeringServicePrefixEvent, MNM.PeeringServicePrefixEvent>();
                     });
             mapper = config.CreateMapper();
         }

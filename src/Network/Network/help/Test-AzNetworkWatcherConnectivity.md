@@ -199,7 +199,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProtocolConfiguration
-Protocal configuration on which check connectivity will be performed.
+Protocol configuration on which check connectivity will be performed.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherProtocolConfiguration

@@ -70,6 +70,80 @@ function Create-VM(
 	return $vm
 }
 
+
+function Create-UnmanagedVM(
+	[string] $resourceGroupName,
+	[string] $location,
+	[string] $saname,
+	[int] $nick = 0)
+{
+	$suffix = $(Get-RandomSuffix 5) + $nick
+	$vmName = "PSTestVM" + $suffix
+
+	$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName -ErrorAction Ignore
+
+	if ($vm -eq $null)
+	{
+		$subnetConfigName = "PSTestSNC" + $suffix
+		$subnetConfig = New-AzVirtualNetworkSubnetConfig -Name $subnetConfigName -AddressPrefix 192.168.1.0/24
+
+
+		$vnetName = "PSTestVNET" + $suffix
+		$vnet = New-AzVirtualNetwork -ResourceGroupName $resourceGroupName -Location $location `
+			-Name $vnetName -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig -Force
+
+		$pipName = "pstestpublicdns" + $suffix
+		$pip = New-AzPublicIpAddress -ResourceGroupName $resourceGroupName -Location $location `
+			-AllocationMethod Static -IdleTimeoutInMinutes 4 -Name $pipName -Force
+
+
+		$nsgRuleRDPName = "PSTestNSGRuleRDP" + $suffix
+		$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name $nsgRuleRDPName  -Protocol Tcp `
+			-Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
+			-DestinationPortRange 3389 -Access Allow
+
+		$nsgRuleWebName = "PSTestNSGRuleWeb" + $suffix
+		$nsgRuleWeb = New-AzNetworkSecurityRuleConfig -Name $nsgRuleWebName  -Protocol Tcp `
+			-Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
+			-DestinationPortRange 80 -Access Allow
+
+		$nsgName = "PSTestNSG" + $suffix
+		$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $resourceGroupName -Location $location `
+			-Name $nsgName -SecurityRules $nsgRuleRDP,$nsgRuleWeb -Force
+
+
+		$nicName = "PSTestNIC" + $suffix
+		$nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $resourceGroupName -Location $location `
+			-SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id -Force
+
+		$UserName='demouser'
+		$PasswordString = $(Get-RandomSuffix 12)
+		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
+		$Credential=New-Object PSCredential($UserName,$Password)
+
+
+		$vmsize = "Standard_D1"
+		$vm = New-AzVMConfig -VMName $vmName -VMSize $vmSize
+		$pubName = "MicrosoftWindowsServer"
+		$offerName = "WindowsServer"
+		$skuName = "2016-Datacenter"
+		$vm = Set-AzVMOperatingSystem -VM $vm -Windows -ComputerName $vmName -Credential $Credential
+		$vm = Set-AzVMSourceImage -VM $vm -PublisherName $pubName -Offer $offerName -Skus $skuName -Version "latest" 
+		$vm = Add-AzVMNetworkInterface -VM $vm -Id $NIC.Id 
+
+
+		$sa = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $saname
+		$diskName = "mydisk"
+		$OSDiskUri = $sa.PrimaryEndpoints.Blob.ToString() + "vhds/" + $diskName? + ".vhd"
+
+		$vm = Set-AzVMOSDisk -VM $vm -Name $diskName -VhdUri $OSDiskUri -CreateOption fromImage
+
+		New-AzVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm | Out-Null
+	}
+
+	return $vm
+}
+
 function Create-GalleryVM(
 	[string] $resourceGroupName, 
 	[string] $location, 
@@ -164,7 +238,8 @@ function Start-TestSleep($milliseconds)
 
 function Enable-Protection(
 	$vault, 
-	$vm)
+	$vm,
+	[string] $resourceGroupName = "")
 {
     # Sleep to give the service time to add the default policy to the vault
     Start-TestSleep 5000
@@ -172,6 +247,11 @@ function Enable-Protection(
 		-VaultId $vault.ID `
 		-ContainerType AzureVM `
 		-FriendlyName $vm.Name;
+
+	if($resourceGroupName -eq "")
+	{
+		$resourceGroupName = $vm.ResourceGroupName
+	}
 
 	if ($container -eq $null)
 	{
@@ -183,7 +263,7 @@ function Enable-Protection(
 			-VaultId $vault.ID `
 			-Policy $policy `
 			-Name $vm.Name `
-			-ResourceGroupName $vm.ResourceGroupName | Out-Null
+			-ResourceGroupName $resourceGroupName | Out-Null
 
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `

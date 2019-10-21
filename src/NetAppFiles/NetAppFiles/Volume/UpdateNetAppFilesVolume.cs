@@ -16,9 +16,11 @@ using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
+using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -98,10 +100,24 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "A hashtable array which represents the export policy")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesVolumeExportPolicy ExportPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
         public Hashtable Tag { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ResourceIdParameterSet,
+            HelpMessage = "The resource id of the ANF volume")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
@@ -121,7 +137,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName == ObjectParameterSet)
+            if (ParameterSetName == ResourceIdParameterSet)
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                var parentResources = resourceIdentifier.ParentResource.Split('/');
+                AccountName = parentResources[1];
+                PoolName = parentResources[3];
+                Name = resourceIdentifier.ResourceName;
+            }
+            else if (ParameterSetName == ObjectParameterSet)
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
                 Location = InputObject.Location;
@@ -143,13 +168,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             {
                 ServiceLevel = ServiceLevel,
                 UsageThreshold = UsageThreshold,
+                ExportPolicy = (ExportPolicy != null) ? ModelExtensions.ConvertExportPolicyPatchFromPs(ExportPolicy) : null,
                 Tags = Tag
             };
 
-            if (ShouldProcess(Name, "Update the pool"))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
                 var anfVolume = AzureNetAppFilesManagementClient.Volumes.Update(volumePatchBody, ResourceGroupName, AccountName, PoolName, Name);
-                WriteObject(anfVolume);
+                WriteObject(anfVolume.ToPsNetAppFilesVolume());
             }
         }
     }

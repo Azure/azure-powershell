@@ -646,7 +646,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The resource group should have a valid VM extension for Service Fabric..
+        ///   Looks up a localized string similar to No valid Service Fabric extension found in resource group &apos;{0}&apos; that corresponds to cluster id &apos;{1}&apos;. The resource group should have a valid VM extension for Service Fabric..
         /// </summary>
         internal static string VmExtensionNotFound {
             get {

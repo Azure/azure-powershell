@@ -20,30 +20,28 @@ New-AzApiManagementVirtualNetwork -SubnetResourceId <String> [-DefaultProfile <I
 
 ## DESCRIPTION
 The **New-AzApiManagementVirtualNetwork** cmdlet is a helper command to create an instance of **PsApiManagementVirtualNetwork**.
-This command is used with **Update-AzApiManagementDeployment** cmdlet.
+This command is used with **Set-AzApiManagement** and **New-AzApiManagement** cmdlet.
 
 ## EXAMPLES
 
-### Example 1: Create a virtual network
-```
-PS C:\>$vnetName = "myvnet"
-PS C:\>$subnetName = "default"
-PS C:\>$subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-PS C:\>$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-
-# Create a Virtual Network Object
-PS C:\>$virtualNetwork = New-AzApiManagementVirtualNetwork -Location $location -SubnetResourceId $vnet.Subnets[0].Id
-
-# Get the service
-PS C:\>$service = Get-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName    
-PS C:\>$service.VirtualNetwork = $virtualNetwork
-PS C:\>$service.VpnType = "External"
-
-# Update the Deployment with Virtual Network
-PS C:\>Update-AzApiManagementDeployment -ApiManagement $service
+### Example 1: Create a virtual network and Update an existing APIM service into the VNET
+```powershell
+PS C:\> $virtualNetwork = New-AzApiManagementVirtualNetwork -Location "East US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/Api-Default-WestUS/providers/Microsoft.Network/virtualNetworks/dfVirtualNetwork/subnets/backendSubnet"
+PS C:\> $apim = Get-AzApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
+PS C:\> $apim.VpnType = "External"
+PS C:\> $apim.VirtualNetwork = $virtualNetwork
+PS C:\> Set-AzApiManagement -InputObject $apim
 ```
 
-This example creates a virtual network and then calls the **Update-AzApiManagementDeployment** cmdlet.
+This example creates a virtual network and then calls the **Set-AzApiManagement** cmdlet.
+
+### Example 2: Create an API Management service for an external virtual network
+```powershell
+PS C:\> $virtualNetwork = New-AzApiManagementVirtualNetwork -Location "West US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-b1e8-3726ab15d0e2/resourceGroups/ContosoGroup/providers/Microsoft.Network/virtualNetworks/westUsVirtualNetwork/subnets/backendSubnet"
+PS C:\> New-AzApiManagement -ResourceGroupName "ContosoGroup" -Location "West US" -Name "ContosoApi" -Organization Contoso -AdminEmail admin@contoso.com -VirtualNetwork $virtualNetwork -VpnType "External" -Sku "Premium"
+```
+
+This example creates a new APIM service into a Virtual Network in `External` mode
 
 ## PARAMETERS
 
@@ -92,5 +90,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Update-AzApiManagementDeployment](./Update-AzApiManagementDeployment.md)
+[Set-AzApiManagement](./Set-AzApiManagement.md)
+[New-AzApiManagement](./New-AzApiManagement.md)
 

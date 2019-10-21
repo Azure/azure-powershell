@@ -47,11 +47,15 @@ Set-AzVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String>
 ```
 
 ## DESCRIPTION
-The **Set-AzVMDiskEncryptionExtension** cmdlet enables encryption on a running infrastructure as a service (IaaS) virtual machine in Azure.
-This cmdlet enables encryption by installing the disk encryption extension on the virtual machine.
-If no *Name* parameter is specified, an extension with the default name AzureDiskEncryption for virtual machines that run the Windows operating system or AzureDiskEncryptionForLinux for Linux virtual machines are installed.
+The **Set-AzVMDiskEncryptionExtension** cmdlet enables encryption on a running infrastructure as a service (IaaS) virtual machine in Azure.  It enables encryption by installing the disk encryption extension on the virtual machine. 
+
 This cmdlet requires confirmation from the users as one of the steps to enable encryption requires a restart of the virtual machine.
+
 It is advised that you save your work on the virtual machine before you run this cmdlet.
+
+Linux: The **VolumeType** parameter is required when encrypting Linux virtual machines, and must be set to a value ("Os", "Data", or "All") supported by the Linux distribution. 
+
+Windows: The **VolumeType** parameter may be omitted, in which case the operation defaults to All; if the VolumeType parameter is present for a Windows virtual machine, it must be set to either All or OS.
 
 ## EXAMPLES
 
@@ -63,10 +67,11 @@ $VaultName= "MyKeyVault"
 $KeyVault = Get-AzKeyVault -VaultName $VaultName -ResourceGroupName $RGName
 $DiskEncryptionKeyVaultUrl = $KeyVault.VaultUri
 $KeyVaultResourceId = $KeyVault.ResourceId
-Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
+$VolumeType = "All"
+Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType $VolumeType
 ```
 
-This example demonstrates enabling encryption without specifying AD credentials.   
+This example enables encryption on a VM without specifying AD credentials.
 
 ### Example 2: Enable encryption with pipelined input
 ```
@@ -83,7 +88,7 @@ $params = New-Object PSObject -Property @{
 $params | Set-AzVmDiskEncryptionExtension
 ```
 
-This example demonstrates sending parameters using pipelined input to enable encryption without specifying AD credentials.  
+This example sends parameters using pipelined input to enable encryption on a VM, without specifying AD credentials.
 
 ### Example 3: Enable encryption using Azure AD Client ID and Client Secret
 ```
@@ -95,10 +100,11 @@ $VaultName= "MyKeyVault"
 $KeyVault = Get-AzKeyVault -VaultName $VaultName -ResourceGroupName $RGName
 $DiskEncryptionKeyVaultUrl = $KeyVault.VaultUri
 $KeyVaultResourceId = $KeyVault.ResourceId
-Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -AadClientID $AADClientID -AadClientSecret $AADClientSecret -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
+$VolumeType = "All"
+Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -AadClientID $AADClientID -AadClientSecret $AADClientSecret -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType $VolumeType
 ```
 
-This example enables encryption using Azure AD client ID, and client secret.
+This example uses Azure AD client ID and client secret to enable encryption on a VM.
 
 ### Example 4: Enable encryption using Azure AD client ID and client certification thumbprint
 ```
@@ -109,6 +115,7 @@ $VaultName= "MyKeyVault"
 $KeyVault = Get-AzKeyVault -VaultName $VaultName -ResourceGroupName $RGName
 $DiskEncryptionKeyVaultUrl = $KeyVault.VaultUri
 $KeyVaultResourceId = $KeyVault.ResourceId
+$VolumeType = "All"
 
 # create Azure AD application and associate the certificate
 $CertPath = "C:\certificates\examplecert.pfx"
@@ -147,10 +154,10 @@ $VM = Add-AzVMSecret -VM $VM -SourceVaultId $SourceVaultId -CertificateStore "My
 Update-AzVM -VM $VM -ResourceGroupName $RGName 
 
 #Enable encryption on the virtual machine using Azure AD client ID and client cert thumbprint
-Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -AadClientID $AADClientID -AadClientCertThumbprint $AADClientCertThumbprint -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
+Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -AadClientID $AADClientID -AadClientCertThumbprint $AADClientCertThumbprint -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType $VolumeType
 ```
 
-This example enables encryption using Azure AD client ID and client certification thumbprints.
+This example uses Azure AD client ID and client certification thumbprints to enable encryption on a VM.
 
 ### Example 5: Enable encryption using Azure AD client ID, client secret, and wrap disk encryption key by using key encryption key
 ```
@@ -164,15 +171,16 @@ $VaultName= "MyKeyVault"
 $KeyVault = Get-AzKeyVault -VaultName $VaultName -ResourceGroupName $RGName
 $DiskEncryptionKeyVaultUrl = $KeyVault.VaultUri
 $KeyVaultResourceId = $KeyVault.ResourceId
+$VolumeType = "All"
 
 $KEKName = "MyKeyEncryptionKey"
 $KEK = Add-AzKeyVaultKey -VaultName $VaultName -Name $KEKName -Destination "Software"
 $KeyEncryptionKeyUrl = $KEK.Key.kid
 
-Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -AadClientID $AADClientID -AadClientSecret $AADClientSecret -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $KeyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId
+Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -AadClientID $AADClientID -AadClientSecret $AADClientSecret -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $KeyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId -VolumeType $VolumeType
 ```
 
-This example enables encryption using Azure AD client ID, client secret, and wrap disk encryption key by using the key encryption key.
+This example uses Azure AD client ID and client secret to enable encryption on a VM, and wraps the disk encryption key using a key encryption key.
 
 ### Example 6: Enable encryption using Azure AD client ID, client cert thumbprint, and wrap disk encryptionkey by using key encryption key
 ```
@@ -186,6 +194,7 @@ $KeyVaultResourceId = $KeyVault.ResourceId
 $KEKName = "MyKeyEncryptionKey"
 $KEK = Add-AzKeyVaultKey -VaultName $VaultName -Name $KEKName -Destination "Software"
 $KeyEncryptionKeyUrl = $KEK.Key.kid
+$VolumeType = "All"
 
 # create Azure AD application and associate the certificate
 $CertPath = "C:\certificates\examplecert.pfx"
@@ -223,10 +232,10 @@ $VM = Add-AzVMSecret -VM $VM -SourceVaultId $SourceVaultId -CertificateStore "My
 Update-AzVM -VM $VM -ResourceGroupName $RGName 
 
 #Enable encryption on the virtual machine using Azure AD client ID and client cert thumbprint
-Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGname -VMName $VMName -AadClientID $AADClientID -AadClientCertThumbprint $AADClientCertThumbprint -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $KeyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId
+Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGname -VMName $VMName -AadClientID $AADClientID -AadClientCertThumbprint $AADClientCertThumbprint -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $KeyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId -VolumeType $VolumeType
 ```
 
-This example enables encryption using Azure AD client ID, client cert thumbprint, and wrap disk encryption key by using key encryption key.
+This example uses Azure AD client ID and client cert thumbprint to enable encryption on a VM, and wraps the disk encryption key using a key encryption key.
 
 ## PARAMETERS
 
@@ -449,8 +458,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Azure Resource Manager resource that represents the extension.
-The default value is AzureDiskEncryption for virtual machines that run the Windows operating system or AzureDiskEncryptionForLinux for Linux virtual machines.
+Specifies the name of the Azure Resource Manager resource that represents the extension. If the *Name* parameter is omitted, the installed extension will be named AzureDiskEncryption on Windows virtual machines and AzureDiskEncryptionForLinux on Linux virtual machines.
+
 
 ```yaml
 Type: System.String
@@ -558,9 +567,11 @@ Accept wildcard characters: False
 ```
 
 ### -VolumeType
-Specifies the type of virtual machine volumes to perform the encryption operation.
-Allowed values for virtual machines that run the Windows operating system are as follows: All, OS, and Data.
-The allowed values for Linux virtual machines are as follows: Data only.
+Specifies the type of virtual machine volumes on which to perform encryption operation: OS, Data, or All. 
+
+Linux: The **VolumeType** parameter is required when encrypting Linux virtual machines, and must be set to a value ("Os", "Data", or "All") supported by the Linux distribution. 
+
+Windows: The **VolumeType** parameter may be omitted, in which case the operation defaults to All; if the VolumeType parameter is present for a Windows virtual machine, it must be set to either All or OS.
 
 ```yaml
 Type: System.String

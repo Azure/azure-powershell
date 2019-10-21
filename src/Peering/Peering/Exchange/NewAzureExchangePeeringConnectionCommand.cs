@@ -140,17 +140,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         private PSExchangeConnection CreateExchangePeeringConnection()
         {
             var peeringRequest = new PSExchangeConnection
-                                     {
-                                         BgpSession = new PSBgpSession
-                                                          {
-                                                              MaxPrefixesAdvertisedV4 = !string.IsNullOrEmpty(this.PeerSessionIPv4Address) ? (this.MaxPrefixesAdvertisedIPv4 ?? 20000) : (int?)null,
-                                                              MaxPrefixesAdvertisedV6 = !string.IsNullOrEmpty(this.PeerSessionIPv6Address) ? (this.MaxPrefixesAdvertisedIPv6 ?? 2000) : (int?)null,
-                                                              Md5AuthenticationKey = this.MD5AuthenticationKey,
-                                                              PeerSessionIPv4Address = this.PeerSessionIPv4Address,
-                                                              PeerSessionIPv6Address = this.PeerSessionIPv6Address
-                                                          },
-                                         PeeringDBFacilityId = this.PeeringDBFacilityId,
-                                     };
+            {
+                ConnectionIdentifier = Guid.NewGuid().ToString(),
+                BgpSession = new PSBgpSession
+                {
+                    MaxPrefixesAdvertisedV4 = !string.IsNullOrEmpty(this.PeerSessionIPv4Address) ? (this.MaxPrefixesAdvertisedIPv4 ?? 20000) : (int?)null,
+                    MaxPrefixesAdvertisedV6 = !string.IsNullOrEmpty(this.PeerSessionIPv6Address) ? (this.MaxPrefixesAdvertisedIPv6 ?? 2000) : (int?)null,
+                    Md5AuthenticationKey = this.MD5AuthenticationKey,
+                    PeerSessionIPv4Address = this.PeerSessionIPv4Address?.Trim(),
+                    PeerSessionIPv6Address = this.PeerSessionIPv6Address?.Trim()
+                },
+                PeeringDBFacilityId = this.PeeringDBFacilityId,
+            };
             if (this.IsValidConnection(peeringRequest))
             {
                 return peeringRequest;

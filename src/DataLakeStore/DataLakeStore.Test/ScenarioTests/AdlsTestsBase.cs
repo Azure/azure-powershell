@@ -60,9 +60,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
             var mockName = sf.GetMethod().Name;
 
             _helper.TracingInterceptor = logger;
+            var newScripts = new List<string>(scripts);
+            newScripts.Insert(0, "$ProgressPreference=\"SilentlyContinue\"");
 
             RunPsTestWorkflow(
-                () => scripts,
+                () => newScripts.ToArray(),
                 // no custom cleanup
                 null,
                 callingClassType,

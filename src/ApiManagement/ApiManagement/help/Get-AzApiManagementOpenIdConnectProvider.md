@@ -47,10 +47,10 @@ This command gets all OpenID Connect providers for the specified context.
 ### Example 2: Get a provider by using an ID
 ```
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementOpenIdConnectProvider -Context $apimContext -OpenIdConnectProviderId "OICProvicer01"
+PS C:\>Get-AzApiManagementOpenIdConnectProvider -Context $apimContext -OpenIdConnectProviderId "OICProvider01"
 ```
 
-This command gets the provider that has the ID OICProvicer01.
+This command gets the provider that has the ID OICProvider01.
 
 ### Example 3: Get a provider by using a name
 ```

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Kusto</PsModuleName>
@@ -12,9 +12,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.ManagedServices" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.ManagedServices" Version="1.1.0" />
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="SessionRecords\Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Test.ScenarioTests.ManagedServicesTests\" />
   </ItemGroup>

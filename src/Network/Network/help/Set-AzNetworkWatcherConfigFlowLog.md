@@ -145,7 +145,7 @@ Format           : {
                    }
 ```
 
-In this example, we configure flow logging on a Network Security Group (NSG) with version 2 logs specified. In the response, we see the specified NSG has flow logging enabled, the format is set, and there is no retention policy configured. If the region does not support version you specificed, Network Watcher will write the default supported version in the region.
+In this example, we configure flow logging on a Network Security Group (NSG) with version 2 logs specified. In the response, we see the specified NSG has flow logging enabled, the format is set, and there is no retention policy configured. If the region does not support version you specified, Network Watcher will write the default supported version in the region.
 
 ### Example 3: Configure Flow Logging and Traffic Analytics for a Specified NSG
 ```

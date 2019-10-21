@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
                     return;
                 }
 
-                throw new Exception("Error occured while getting Log Alert rules", ex.InnerException);
+                throw new Exception("Error occurred while getting Log Alert rules", ex.InnerException);
             }
         }
     }

@@ -12,6 +12,8 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 
         public const string RadiusServerConfiguration = @"RadiusServerConfiguration";
 
+        public const string AadAuthenticationConfiguration = @"AadAuthenticationConfiguration";
+
         public const string UpdateResourceWithTags = @"UpdateResourceWithTags";
     }
 }

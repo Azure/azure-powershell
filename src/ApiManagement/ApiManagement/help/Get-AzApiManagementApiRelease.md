@@ -40,7 +40,7 @@ UpdatedDateTime   : 5/17/2018 12:21:12 AM
 Notes             : creating a new release
 Id                : /subscriptions/subid/resourceGroups/Api-Default-WestUS/providers/Microsoft.ApiManagement/service/contoso/apis/5adf6fbf0faadf3ad8558065/releases/5afccaf6b89fd067426d402e
 ResourceGroupName : Api-Default-WestUS
-ServiceName       : contos
+ServiceName       : contoso
 ```
 
 This command gets all of the releases of the `echo-api` API for the specified context.
@@ -55,10 +55,10 @@ CreatedDateTime   : 5/17/2018 12:21:12 AM
 UpdatedDateTime   : 5/17/2018 12:21:12 AM
 Notes             : creating a new release
 Id                : /subscriptions/subid/resourceGroups/Api-Default-WestUS/providers/Mi
-                    crosoft.ApiManagement/service/contos/apis/5adf6fbf0faadf3ad8558065/releases/5afccaf6b89fd067426d402
+                    crosoft.ApiManagement/service/contoso/apis/5adf6fbf0faadf3ad8558065/releases/5afccaf6b89fd067426d402
                     e
 ResourceGroupName : Api-Default-WestUS
-ServiceName       : contos
+ServiceName       : contoso
 ```
 
 This command gets the releases information of a particular API with the specified releaseId.

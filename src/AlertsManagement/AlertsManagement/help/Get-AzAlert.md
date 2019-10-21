@@ -1,0 +1,359 @@
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
+Module Name: Az.AlertsManagement
+online version: https://docs.microsoft.com/en-us/powershell/module/az.alertsmanagement/get-azalert
+schema: 2.0.0
+---
+
+# Get-AzAlert
+
+## SYNOPSIS
+Get Alerts Information
+
+## SYNTAX
+
+### AlertsListByFilter (Default)
+```
+Get-AzAlert [-TargetResourceType <String>] [-TargetResourceGroup <String>] [-MonitorService <String>]
+ [-MonitorCondition <String>] [-Severity <String>] [-State <String>] [-AlertRuleId <String>]
+ [-SmartGroupId <String>] [-IncludeContext <Boolean>] [-IncludeEgressConfig <Boolean>] [-PageCount <Int32>]
+ [-SortBy <String>] [-SortOrder <String>] [-TimeRange <String>] [-CustomTimeRange <String>] [-Select <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### AlertById
+```
+Get-AzAlert -AlertId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### AlertsListByTargetResourceIdFilter
+```
+Get-AzAlert [-TargetResourceId <String>] [-MonitorService <String>] [-MonitorCondition <String>]
+ [-Severity <String>] [-State <String>] [-AlertRuleId <String>] [-SmartGroupId <String>]
+ [-IncludeContext <Boolean>] [-IncludeEgressConfig <Boolean>] [-PageCount <Int32>] [-SortBy <String>]
+ [-SortOrder <String>] [-TimeRange <String>] [-CustomTimeRange <String>] [-Select <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+## DESCRIPTION
+**Get-AzAlert** cmdlet gets fired alert instances.
+
+## EXAMPLES
+
+### Example 1
+```powershell
+PS C:\> Get-AzAlert -Severity "Sev2" -MonitorCondition "Fired" -IncludeContext true
+```
+
+List all alerts with Sev2 severity and Fired monitor condition. Setting IncludeContext to true, include custom payload of alert.
+Use Format-List to get the complete details of each alert in list.
+
+### Example 2
+```powershell
+PS C:\> Get-AzAlert -AlertId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529" | Format-List
+```
+
+Get Alert details by Id (GUID) or Resource Id (Complete ARM Id)
+
+## PARAMETERS
+
+### -AlertId
+Unique Identifier of Alert / ResourceId of alert.
+
+```yaml
+Type: System.String
+Parameter Sets: AlertById
+Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AlertRuleId
+Filter on Alert Rule Id
+
+```yaml
+Type: System.String
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomTimeRange
+Supported format - \<start-time\>/\<end-time\> where time is in ISO-8601 format
+
+```yaml
+Type: System.String
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeContext
+Include context (custom payload) of alert
+
+```yaml
+Type: System.Boolean
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeEgressConfig
+Include EgressConfig
+
+```yaml
+Type: System.Boolean
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonitorCondition
+Filter on Monitor Condition
+
+```yaml
+Type: System.String
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonitorService
+Filter on Moniter Service
+
+```yaml
+Type: System.String
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PageCount
+Number of alerts to be fetched in a page.
+
+```yaml
+Type: System.Int32
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Select
+Project the required fields out of essentials.
+Expected input is comma-separated.
+
+```yaml
+Type: System.String
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Severity
+Filter on Severity of alert
+
+```yaml
+Type: System.String
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SmartGroupId
+Filter all the alerts having the Smart Group Id
+
+```yaml
+Type: System.String
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SortBy
+Alert property to use while sorting
+
+```yaml
+Type: System.String
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SortOrder
+Sort Order
+
+```yaml
+Type: System.String
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -State
+Filter on State of alert
+
+```yaml
+Type: System.String
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetResourceGroup
+Filter on Resource group name of the target resource of alert.
+
+```yaml
+Type: System.String
+Parameter Sets: AlertsListByFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetResourceId
+Filter on Resource Id of the target resource of alert.
+
+```yaml
+Type: System.String
+Parameter Sets: AlertsListByTargetResourceIdFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetResourceType
+Filter on Resource type of the target resource of alert.
+
+```yaml
+Type: System.String
+Parameter Sets: AlertsListByFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TimeRange
+Supported time range values - 1h, 1d, 7d, 30d (Default is 1d)
+
+```yaml
+Type: System.String
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### None
+
+## OUTPUTS
+
+### Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert
+
+## NOTES
+
+## RELATED LINKS

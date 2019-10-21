@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            var sourceApp = new PSSite(WebsitesClient.GetWebApp(InputObject.ResourceGroupName, InputObject.Name, InputObject.Slot));
+            var sourceApp = ResourcesClient.GetAppResource(InputObject.Name, InputObject.Slot);
             SnapshotRecoverySource source = new SnapshotRecoverySource()
             {
                 Location = sourceApp.Location,

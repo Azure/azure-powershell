@@ -20,11 +20,11 @@ Enable HTTPS for a custom domain using Front Door managed certificate or using o
 ### [Get-AzFrontDoor](Get-AzFrontDoor.md)
 Get Front Door load balancer
 
-### [Get-AzFrontDoorWafPolicy](Get-AzFrontDoorWafPolicy.md)
-Get WAF policy
-
 ### [Get-AzFrontDoorFrontendEndpoint](Get-AzFrontDoorFrontendEndpoint.md)
 Get a front door frontend endpoint.
+
+### [Get-AzFrontDoorWafPolicy](Get-AzFrontDoorWafPolicy.md)
+Get WAF policy
 
 ### [New-AzFrontDoor](New-AzFrontDoor.md)
 Create a new Azure Front Door load balancer
@@ -35,12 +35,6 @@ Create a PSBackend object
 ### [New-AzFrontDoorBackendPoolObject](New-AzFrontDoorBackendPoolObject.md)
 Create a PSBackendPool object for Front Door creation
 
-### [New-AzFrontDoorWafCustomRuleObject](New-AzFrontDoorWafCustomRuleObject.md)
-Create CustomRule Object for WAF policy creation
-
-### [New-AzFrontDoorWafPolicy](New-AzFrontDoorWafPolicy.md)
-Create WAF policy
-
 ### [New-AzFrontDoorFrontendEndpointObject](New-AzFrontDoorFrontendEndpointObject.md)
 Create a PSFrontendEndpoint Object for Front Door creation
 
@@ -49,6 +43,12 @@ Create a PSHealthProbeSetting object for Front Door creation
 
 ### [New-AzFrontDoorLoadBalancingSettingObject](New-AzFrontDoorLoadBalancingSettingObject.md)
 Create a PSLoadBalancingSetting object for Front Door creation
+
+### [New-AzFrontDoorRoutingRuleObject](New-AzFrontDoorRoutingRuleObject.md)
+Create a PSRoutingRuleObject for Front Door creation
+
+### [New-AzFrontDoorWafCustomRuleObject](New-AzFrontDoorWafCustomRuleObject.md)
+Create CustomRule Object for WAF policy creation
 
 ### [New-AzFrontDoorWafManagedRuleObject](New-AzFrontDoorWafManagedRuleObject.md)
 Create ManagedRule Object for WAF policy creation
@@ -59,8 +59,8 @@ Create managed rule override object
 ### [New-AzFrontDoorWafMatchConditionObject](New-AzFrontDoorWafMatchConditionObject.md)
 Create MatchCondition Object for WAF policy creation
 
-### [New-AzFrontDoorRoutingRuleObject](New-AzFrontDoorRoutingRuleObject.md)
-Create a PSRoutingRuleObject for Front Door creation
+### [New-AzFrontDoorWafPolicy](New-AzFrontDoorWafPolicy.md)
+Create WAF policy
 
 ### [New-AzFrontDoorWafRuleGroupOverrideObject](New-AzFrontDoorWafRuleGroupOverrideObject.md)
 Create RuleGroupOverride Object for WAF policy creation

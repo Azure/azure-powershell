@@ -25,7 +25,7 @@ Export-AzMlWebService -WebService <WebService> [-ToJsonString] [-Force]
 ```
 
 ## DESCRIPTION
-Exports the definition object for the specified web servive as a JSON formatted string.
+Exports the definition object for the specified web service as a JSON formatted string.
 You can return the string immediately or save it to a file.
 
 ## EXAMPLES

@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 PoolName = NameParts[1];
             }
 
-            if (ShouldProcess(Name, "Remove the volume"))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveResourceMessage, ResourceGroupName)))
             {
                 AzureNetAppFilesManagementClient.Volumes.Delete(ResourceGroupName, AccountName, PoolName, Name);
                 success = true;
