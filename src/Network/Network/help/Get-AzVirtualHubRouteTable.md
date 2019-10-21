@@ -42,7 +42,7 @@ PS C:\> Get-AzVirtualHubRouteTable -ResourceGroupName "testRg" -HubName "westush
 Name                : routeTable1
 Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/routeTables/routeTable1
 Routes              : {Microsoft.Azure.Commands.Network.Models.PSVirtualHubRoute}
-AttachedConnections : {All_Vnets}
+Connections : {All_Vnets}
 ProvisioningState   : Succeeded
 ```
 
@@ -55,13 +55,13 @@ PS C:\> Get-AzVirtualHubRouteTable -ResourceGroupName "testRg" -HubName "westush
 Name                : routeTable1
 Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/routeTables/routeTable1
 Routes              : {Microsoft.Azure.Commands.Network.Models.PSVirtualHubRoute}
-AttachedConnections : {All_Vnets}
+Connections : {All_Vnets}
 ProvisioningState   : Succeeded
 
 Name                : routeTable2
 Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/routeTables/routeTable2
 Routes              : {Microsoft.Azure.Commands.Network.Models.PSVirtualHubRoute}
-AttachedConnections : {All_Branches}
+Connections : {All_Branches}
 ProvisioningState   : Succeeded
 ```
 
