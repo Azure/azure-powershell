@@ -59,11 +59,11 @@ namespace Microsoft.Azure.Commands.Network
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.Name = resourceIdentifier.ResourceName;
-                this.ResourceType = resourceIdentifier.ResourceType;
+                this.PrivateLinkResourceType = resourceIdentifier.ResourceType.Substring(0, resourceIdentifier.ResourceType.LastIndexOf('/'));
                 this.ServiceName = resourceIdentifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
             }
 
-            IPrivateLinkProvider provider = BuildProvider(this.ResourceType);
+            IPrivateLinkProvider provider = BuildProvider(this.PrivateLinkResourceType);
 
             ConfirmAction(
                 Force.IsPresent,

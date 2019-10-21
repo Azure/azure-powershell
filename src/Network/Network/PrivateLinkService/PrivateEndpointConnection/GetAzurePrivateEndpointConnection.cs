@@ -27,9 +27,16 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateEndpointConnection", DefaultParameterSetName = "ByResourceId"), OutputType(typeof(PSPrivateEndpointConnection))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateEndpointConnection", DefaultParameterSetName = "ByPrivateLinkResourceId"), OutputType(typeof(PSPrivateEndpointConnection))]
     public class GetAzurePrivateEndpointConnection : PrivateEndpointConnectionBaseCmdlet
     {
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = "ByPrivateLinkResourceId",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string PrivateLinkResourceId { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -39,11 +46,18 @@ namespace Microsoft.Azure.Commands.Network
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.Name = resourceIdentifier.ResourceName;
-                this.ResourceType = resourceIdentifier.ResourceType;
+                this.PrivateLinkResourceType = resourceIdentifier.ResourceType.Substring(0, resourceIdentifier.ResourceType.LastIndexOf('/'));
                 this.ServiceName = resourceIdentifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
             }
+            else if (this.IsParameterBound(c => c.PrivateLinkResourceId))
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.PrivateLinkResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.PrivateLinkResourceType = resourceIdentifier.ResourceType;
+                this.ServiceName = resourceIdentifier.ResourceName;
+            }
 
-            IPrivateLinkProvider provider = BuildProvider(this.ResourceType);
+            IPrivateLinkProvider provider = BuildProvider(this.PrivateLinkResourceType);
 
             if (ShouldGetByName(this.ResourceGroupName, this.Name))
             {
