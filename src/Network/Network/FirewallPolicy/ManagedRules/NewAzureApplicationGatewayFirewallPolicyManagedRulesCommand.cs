@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayFirewallPolicyManagedRules"), OutputType(typeof(PSApplicationGatewayFirewallPolicyManagedRules))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayFirewallPolicyManagedRule"), OutputType(typeof(PSApplicationGatewayFirewallPolicyManagedRules))]
     public class NewAzureApplicationGatewayFirewallPolicyManagedRulesCommand : AzureApplicationGatewayFirewallPolicyManagedRules
     {
         public override void ExecuteCmdlet()
