@@ -15,7 +15,7 @@ Gets the geo-replication links between an Azure SQL Database and a resource grou
 
 ```
 Get-AzSqlDatabaseReplicationLink [-DatabaseName] <String> -PartnerResourceGroupName <String>
- [-PartnerServerName <String>] [-ServerName] <String> [-ResourceGroupName] <String>
+ -PartnerServerName <String> -ServerName <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
