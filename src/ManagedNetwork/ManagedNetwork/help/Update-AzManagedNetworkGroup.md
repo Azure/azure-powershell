@@ -14,40 +14,40 @@ Update a managedNetworkGroup.
 ### NameParameterSet (Default)
 ```
 Update-AzManagedNetworkGroup [-ResourceGroupName] <String> [-ManagedNetworkName] <String> [-Name] <String>
- [-ManagementGroupIdList <System.Collections.Generic.List`1[System.String]>]
- [-SubscriptionIdList <System.Collections.Generic.List`1[System.String]>]
- [-VirtualNetworkIdList <System.Collections.Generic.List`1[System.String]>]
- [-SubnetIdList <System.Collections.Generic.List`1[System.String]>] [-PassThru] [-Force] [-AsJob]
+ [-ManagementGroupIdList <String[]>]
+ [-SubscriptionIdList <String[]>]
+ [-VirtualNetworkIdList <String[]>]
+ [-SubnetIdList <String[]>] [-PassThru] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagedNetworkObjectParameterSet
 ```
 Update-AzManagedNetworkGroup [-Name] <String> -ManagedNetworkObject <PSManagedNetwork>
- [-ManagementGroupIdList <System.Collections.Generic.List`1[System.String]>]
- [-SubscriptionIdList <System.Collections.Generic.List`1[System.String]>]
- [-VirtualNetworkIdList <System.Collections.Generic.List`1[System.String]>]
- [-SubnetIdList <System.Collections.Generic.List`1[System.String]>] [-PassThru] [-Force] [-AsJob]
+ [-ManagementGroupIdList <String[]>]
+ [-SubscriptionIdList <String[]>]
+ [-VirtualNetworkIdList <String[]>]
+ [-SubnetIdList <String[]>] [-PassThru] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Update-AzManagedNetworkGroup -ResourceId <String>
- [-ManagementGroupIdList <System.Collections.Generic.List`1[System.String]>]
- [-SubscriptionIdList <System.Collections.Generic.List`1[System.String]>]
- [-VirtualNetworkIdList <System.Collections.Generic.List`1[System.String]>]
- [-SubnetIdList <System.Collections.Generic.List`1[System.String]>] [-PassThru] [-Force] [-AsJob]
+ [-ManagementGroupIdList <String[]>]
+ [-SubscriptionIdList <String[]>]
+ [-VirtualNetworkIdList <String[]>]
+ [-SubnetIdList <String[]>] [-PassThru] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Update-AzManagedNetworkGroup -InputObject <PSManagedNetworkGroup>
- [-ManagementGroupIdList <System.Collections.Generic.List`1[System.String]>]
- [-SubscriptionIdList <System.Collections.Generic.List`1[System.String]>]
- [-VirtualNetworkIdList <System.Collections.Generic.List`1[System.String]>]
- [-SubnetIdList <System.Collections.Generic.List`1[System.String]>] [-PassThru] [-Force] [-AsJob]
+ [-ManagementGroupIdList <String[]>]
+ [-SubscriptionIdList <String[]>]
+ [-VirtualNetworkIdList <String[]>]
+ [-SubnetIdList <String[]>] [-PassThru] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 Azure ManagedNetwork management group ids.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -247,7 +247,7 @@ Accept wildcard characters: False
 Azure ManagedNetwork subnet ids.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -262,7 +262,7 @@ Accept wildcard characters: False
 Azure ManagedNetwork subscription ids.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -277,7 +277,7 @@ Accept wildcard characters: False
 Azure ManagedNetwork virtual network ids.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -326,7 +326,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Collections.Generic.List<String>
+### String[]
 
 ### Microsoft.Azure.Commands.Network.Models.PSManagedNetwork
 

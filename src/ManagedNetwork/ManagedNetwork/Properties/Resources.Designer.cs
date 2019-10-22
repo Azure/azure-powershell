@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Cdn.Properties {
+namespace Microsoft.Azure.Commands.ManagedNetwork.Properties {
     using System;
     
     
@@ -61,219 +61,76 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to permanently remove custom domain &apos;{0}&apos; from endpoint &apos;{1}&apos; in profile &apos;{2}&apos;, resource group &apos;{3}&apos;?.
+        ///   {0} already exists. Are you sure you want to overwrite it.
         /// </summary>
-        internal static string Confirm_RemoveCustomDomain {
+        internal static string ConfirmOverwriteResource {
             get {
-                return ResourceManager.GetString("Confirm_RemoveCustomDomain", resourceCulture);
+                return ResourceManager.GetString("ConfirmOverwriteResource", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to permanently remove endpoint &apos;{0}&apos; from profile &apos;{1}&apos; in resource group &apos;{2}&apos;?.
+        ///   {0} exists. Are you sure you want to delete it.
         /// </summary>
-        internal static string Confirm_RemoveEndpoint {
+        internal static string ConfirmDeleteResource {
             get {
-                return ResourceManager.GetString("Confirm_RemoveEndpoint", resourceCulture);
+                return ResourceManager.GetString("ConfirmDeleteResource", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Profile {0} currently contains endpoints.  Are you sure you want to permanently remove profile &apos;{0}&apos;?.
+        ///   Creating Resource.
         /// </summary>
-        internal static string Confirm_RemoveProfile {
+        internal static string CreatingResource {
             get {
-                return ResourceManager.GetString("Confirm_RemoveProfile", resourceCulture);
+                return ResourceManager.GetString("CreatingResource", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to stop endpoint &apos;{0}&apos; from profile &apos;{1}&apos; in resource group &apos;{2}&apos;?.
+        ///   Updating Resource.
         /// </summary>
-        internal static string Confirm_StopEndpoint {
+        internal static string UpdatingResource {
             get {
-                return ResourceManager.GetString("Confirm_StopEndpoint", resourceCulture);
+                return ResourceManager.GetString("UpdatingResource", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirm.
+        ///   Deleting Resource.
         /// </summary>
-        internal static string Confirm_Title {
+        internal static string DeletingResource {
             get {
-                return ResourceManager.GetString("Confirm_Title", resourceCulture);
+                return ResourceManager.GetString("DeletingResource", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is already an existing custom domain with name &apos;{0}&apos; in the endpoint &apos;{1}&apos;, profile &apos;{2}&apos;, resource group &apos;{3}&apos;.
+        ///  A Managed Network with name '{0}' in resource group '{1}' does not exist. Please use New-AzManagedNetwork to create a Managed Network with these properties.
         /// </summary>
-        internal static string Error_CreateExistingCustomDomain {
+        internal static string ManagedNetworkDoesNotExist {
             get {
-                return ResourceManager.GetString("Error_CreateExistingCustomDomain", resourceCulture);
+                return ResourceManager.GetString("ManagedNetworkDoesNotExist", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is already an existing endpoint with name &apos;{0}&apos;..
+        ///  A Managed Network Group with name '{0}' in managed network '{1}' and  resource group '{2}' does not exist. Please use New-AzManagedNetwork to create a Managed Network with these properties.
         /// </summary>
-        internal static string Error_CreateExistingEndpoint {
+        internal static string ManagedNetworkGroupDoesNotExist {
             get {
-                return ResourceManager.GetString("Error_CreateExistingEndpoint", resourceCulture);
+                return ResourceManager.GetString("ManagedNetworkGroupDoesNotExist", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is already an existing profile with name &apos;{0}&apos; in the resource group &apos;{1}&apos;..
+        ///  A Managed Network Peering Policy with name '{0}' in managed network '{1}' and  resource group '{2}' does not exist. Please use New-AzManagedNetwork to create a Managed Network with these properties.
         /// </summary>
-        internal static string Error_CreateExistingProfile {
+        internal static string ManagedNetworkPeeringPolicyDoesNotExist {
             get {
-                return ResourceManager.GetString("Error_CreateExistingProfile", resourceCulture);
+                return ResourceManager.GetString("ManagedNetworkPeeringPolicyDoesNotExist", resourceCulture);
             }
         }
         
-        /// <summary>
-        ///   Looks up a localized string similar to Endpoint with name &apos;{0}&apos; in the profile &apos;{1}&apos; and resource group &apos;{2}&apos; does not exist..
-        /// </summary>
-        internal static string Error_DeleteNonExistingEndpoint {
-            get {
-                return ResourceManager.GetString("Error_DeleteNonExistingEndpoint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Origin with name &apos;{0}&apos; on endpoint &apos;{1}&apos; could not be found..
-        /// </summary>
-        internal static string Error_DeleteNonExistingOrigin {
-            get {
-                return ResourceManager.GetString("Error_DeleteNonExistingOrigin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Profile with name &apos;{0}&apos; in the resource group &apos;{1}&apos; does not exist..
-        /// </summary>
-        internal static string Error_DeleteNonExistingProfile {
-            get {
-                return ResourceManager.GetString("Error_DeleteNonExistingProfile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Custom domain with name &apos;{0}&apos; in the endpoint &apos;{1}&apos;,profile &apos;{2}&apos;, resource group &apos;{3}&apos; does not exist..
-        /// </summary>
-        internal static string Error_NonExistingCustomDomain {
-            get {
-                return ResourceManager.GetString("Error_NonExistingCustomDomain", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Profile with name &apos;{0}&apos; in the resource group &apos;{1}&apos; does not exist..
-        /// </summary>
-        internal static string Error_ProfileNotFound {
-            get {
-                return ResourceManager.GetString("Error_ProfileNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The resource group name is not specified. Specify the resource group or do not specify profile name..
-        /// </summary>
-        internal static string Error_ResourceGroupNotSpecified {
-            get {
-                return ResourceManager.GetString("Error_ResourceGroupNotSpecified", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removing custom domain ....
-        /// </summary>
-        internal static string Progress_RemovingCustomDomain {
-            get {
-                return ResourceManager.GetString("Progress_RemovingCustomDomain", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removing endpoint ....
-        /// </summary>
-        internal static string Progress_RemovingEndpoint {
-            get {
-                return ResourceManager.GetString("Progress_RemovingEndpoint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removing origin....
-        /// </summary>
-        internal static string Progress_RemovingOrigin {
-            get {
-                return ResourceManager.GetString("Progress_RemovingOrigin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removing profile ....
-        /// </summary>
-        internal static string Progress_RemovingProfile {
-            get {
-                return ResourceManager.GetString("Progress_RemovingProfile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Success!.
-        /// </summary>
-        internal static string Success {
-            get {
-                return ResourceManager.GetString("Success", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Remove-AzCdnCustomDomain on {0}..
-        /// </summary>
-        internal static string Success_RemoveCustomDomain {
-            get {
-                return ResourceManager.GetString("Success_RemoveCustomDomain", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Remove-AzCdnEndpoint on {0}..
-        /// </summary>
-        internal static string Success_RemoveEndpoint {
-            get {
-                return ResourceManager.GetString("Success_RemoveEndpoint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Remove-AzCdnProfile on {0}..
-        /// </summary>
-        internal static string Success_RemoveProfile {
-            get {
-                return ResourceManager.GetString("Success_RemoveProfile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Endpoint with name &apos;{0}&apos; in the profile &apos;{1}&apos; and resource group &apos;{2}&apos; has been started..
-        /// </summary>
-        internal static string Success_StartEndpoint {
-            get {
-                return ResourceManager.GetString("Success_StartEndpoint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Stop-AzCdnEndpoint on {0}..
-        /// </summary>
-        internal static string Success_StopEndpoint {
-            get {
-                return ResourceManager.GetString("Success_StopEndpoint", resourceCulture);
-            }
-        }
     }
 }

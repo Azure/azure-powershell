@@ -20,25 +20,26 @@ using Microsoft.Azure.Commands.ManagedNetwork.Models;
 
 namespace Microsoft.Azure.Commands.ManagedNetwork
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedNetworkScope", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSScope))]
+    [Cmdlet("New", "AzManagedNetworkScope", SupportsShouldProcess = true), OutputType(typeof(PSScope))]
+    [OutputType(typeof(PSScope))]
     public class NewAzManagedNetworkScope : AzureManagedNetworkCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork Scope management group ids.")]
-        public List<string> ManagementGroupIdList { get; set; }
+        public string[] ManagementGroupIdList { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork Scope subscription ids.")]
-        public List<string> SubscriptionIdList { get; set; }
+        public string[] SubscriptionIdList { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork Scope virtual network ids.")]
-        public List<string> VirtualNetworkIdList { get; set; }
+        public string[] VirtualNetworkIdList { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork Scope subnet ids.")]
-        public List<string> SubnetIdList { get; set; }
+        public string[] SubnetIdList { get; set; }
 
         /// <summary>
         ///     The AsJob parameter to run in the background.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelp)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessage.AsJobHelp)]
         public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()

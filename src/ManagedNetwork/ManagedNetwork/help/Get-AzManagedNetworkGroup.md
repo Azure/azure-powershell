@@ -19,7 +19,7 @@ Get-AzManagedNetworkGroup [-ResourceGroupName] <String> [-ManagedNetworkName] <S
 
 ### ManagedNetworkObjectParameterSet
 ```
-Get-AzManagedNetworkGroup [-Name <String>] -ManagedNetwork <PSManagedNetwork>
+Get-AzManagedNetworkGroup [-Name <String>] -ManagedNetworkObejct <PSManagedNetwork>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -65,7 +65,7 @@ Location         : {userregion}
 
 ### 3: Retrieve a managednetwork by ManagedNetwork Object
 ```
-Get-AzManagedNetworkGroup -ManagedNetwork $ManagedNetwork -Name TestGroup
+Get-AzManagedNetworkGroup -ManagedNetworkObejct $ManagedNetwork -Name TestGroup
 
 ManagementGroups : {}
 Subscriptions    : {}

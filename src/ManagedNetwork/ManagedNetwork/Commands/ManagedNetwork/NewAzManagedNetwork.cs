@@ -20,37 +20,37 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         /// <summary>
         /// Gets or sets The Resource Group name
         /// </summary>
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = Constants.ResourceGroupNameHelp)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = HelpMessage.ResourceGroupNameHelp)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = Constants.ManagedNetworkNameHelp)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = HelpMessage.ManagedNetworkNameHelp)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = Constants.ManagedNetworkScopeHelp)]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = HelpMessage.ManagedNetworkScopeHelp)]
         [ValidateNotNullOrEmpty]
         public PSScope Scope { get; set; }
 
-        [Parameter(Position = 3, Mandatory = true, HelpMessage = Constants.ManagedNetworkLocationHelp)]
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = HelpMessage.ManagedNetworkLocationHelp)]
         [ValidateNotNullOrEmpty]
         [LocationCompleter("Microsoft.ManagedNetwork/managedNetworks")]
         public string Location { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.ManagedNetworkTagHelp)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessage.ManagedNetworkTagHelp)]
         public Hashtable Tag { get; set; }
 
         /// <summary>
         ///     The Force parameter to run in the background.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = Constants.ForceHelp)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessage.ForceHelp)]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
         ///     The AsJob parameter to run in the background.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelp)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessage.AsJobHelp)]
         public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
@@ -59,8 +59,8 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
             var present = IsManagedNetworkPresent(ResourceGroupName, Name);
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Constants.ConfirmOverwriteResource, Name),
-                Constants.CreatingResource,
+                string.Format(Properties.Resources.ConfirmOverwriteResource, Name),
+                Properties.Resources.CreatingResource,
                 Name,
                 () =>
                 {

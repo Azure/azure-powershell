@@ -14,8 +14,8 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
     /// <summary>
     /// New Azure InputObject Command-let
     /// </summary>
-    [Cmdlet(VerbsData.Update, "AzManagedNetworkPeeringPolicy", SupportsShouldProcess = true, DefaultParameterSetName = Constants.NameParameterSet)]
-    [OutputType(typeof(PSManagedNetwork))]
+    [Cmdlet(VerbsData.Update, "AzManagedNetworkPeeringPolicy", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.NameParameterSet)]
+    [OutputType(typeof(NewAzManagedNetworkPeeringPolicy))]
     public class UpdateAzManagedNetworkPeeringPolicy : AzureManagedNetworkCmdletBase
     {
         /// <summary>
@@ -23,26 +23,26 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         /// </summary>
         [Parameter(Position = 0,
             Mandatory = true,
-            HelpMessage = Constants.ResourceGroupNameHelp,
-            ParameterSetName = Constants.NameParameterSet)]
+            HelpMessage = HelpMessage.ResourceGroupNameHelp,
+            ParameterSetName = ParameterSetNames.NameParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Position = 1,
             Mandatory = true,
-            HelpMessage = Constants.ManagedNetworkNameHelp,
-            ParameterSetName = Constants.NameParameterSet)]
+            HelpMessage = HelpMessage.ManagedNetworkNameHelp,
+            ParameterSetName = ParameterSetNames.NameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ManagedNetworkName { get; set; }
 
         [Parameter(Position = 2,
             Mandatory = true,
-            HelpMessage = Constants.ManagedNetworkPeeringPolicyNameHelp,
-            ParameterSetName = Constants.NameParameterSet)]
+            HelpMessage = HelpMessage.ManagedNetworkPeeringPolicyNameHelp,
+            ParameterSetName = ParameterSetNames.NameParameterSet)]
         [Parameter(Mandatory = true,
-            HelpMessage = Constants.ManagedNetworkPeeringPolicyNameHelp,
-            ParameterSetName = Constants.ManagedNetworkObjectParameterSet)]
+            HelpMessage = HelpMessage.ManagedNetworkPeeringPolicyNameHelp,
+            ParameterSetName = ParameterSetNames.ManagedNetworkObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.ManagedNetwork/managedNetworks/managednetworkpeeringpolicies", "ResourceGroupName", "ManagedNetworkName")]
         public string Name { get; set; }
@@ -51,19 +51,20 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         /// Gets or sets the ARM resource ID
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = Constants.ResourceIdNameHelp,
+            HelpMessage = HelpMessage.ResourceIdNameHelp,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = Constants.ResourceIdParameterSet)]
+            ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.ManagedNetwork/managedNetworks/managednetworkpeeringpolicies")]
         public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the Input Object
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = Constants.InputObjectHelp,
+            HelpMessage = HelpMessage.InputObjectHelp,
             ValueFromPipeline = true,
-            ParameterSetName = Constants.InputObjectParameterSet)]
+            ParameterSetName = ParameterSetNames.InputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSManagedNetworkPeeringPolicy InputObject { get; set; }
 
@@ -71,8 +72,9 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         /// Gets or sets the managed network
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = Constants.ManagedNetworkObjectHelp,
-            ParameterSetName = Constants.ManagedNetworkObjectParameterSet)]
+            HelpMessage = HelpMessage.ManagedNetworkObjectHelp,
+            ValueFromPipeline = true,
+            ParameterSetName = ParameterSetNames.ManagedNetworkObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSManagedNetwork ManagedNetworkObject { get; set; }
 
@@ -83,63 +85,58 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         public string Hub { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork Policy Spoke Groups.")]
-        public List<string> SpokeList { get; set; }
+        public string[] SpokeList { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork Policy Mesh Groups.")]
-        public List<string> Mesh { get; set; }
+        public string[] Mesh { get; set; }
 
         /// <summary>
-        ///     The AsJob parameter to run in the background.
+        ///     Do not ask for confirmation if you want to override a resource
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = Constants.ForceHelp)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessage.ForceHelp)]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
         ///     The AsJob parameter to run in the background.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelp)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessage.AsJobHelp)]
         public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
-            if (string.Equals(
-                this.ParameterSetName,
-                Constants.ResourceIdParameterSet))
+            switch (this.ParameterSetName)
             {
-                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
-                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.ManagedNetworkName = resourceIdentifier.ParentResource.Split('/')[1];
-                this.Name = resourceIdentifier.ResourceName;
-            }
-            else if (string.Equals(
-                    this.ParameterSetName,
-                    Constants.InputObjectParameterSet))
-            {
-                var resourceIdentifier = new ResourceIdentifier(this.InputObject.Id);
-                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.ManagedNetworkName = resourceIdentifier.ParentResource.Split('/')[1];
-                this.Name = resourceIdentifier.ResourceName;
-            }
-            else if (string.Equals(
-                    this.ParameterSetName,
-                    Constants.ManagedNetworkObjectParameterSet))
-            {
-                var resourceIdentifier = new ResourceIdentifier(this.ManagedNetworkObject.Id);
-                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.ManagedNetworkName = resourceIdentifier.ResourceName;
+                case ParameterSetNames.ResourceIdParameterSet:
+                    var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                    this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                    this.ManagedNetworkName = resourceIdentifier.ParentResource.Split('/')[1];
+                    this.Name = resourceIdentifier.ResourceName;
+                    break;
+                case ParameterSetNames.InputObjectParameterSet:
+                    resourceIdentifier = new ResourceIdentifier(this.InputObject.Id);
+                    this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                    this.ManagedNetworkName = resourceIdentifier.ParentResource.Split('/')[1];
+                    this.Name = resourceIdentifier.ResourceName;
+                    break;
+                case ParameterSetNames.ManagedNetworkObjectParameterSet:
+                    resourceIdentifier = new ResourceIdentifier(this.ManagedNetworkObject.Id);
+                    this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                    this.ManagedNetworkName = resourceIdentifier.ResourceName;
+                    break;
+                default:
+                    break;
             }
 
             var present = IsManagedNetworkPeeringPolicyPresent(ResourceGroupName, ManagedNetworkName, Name);
             if(!present)
             {
-                throw new Exception(string.Format(Constants.ManagedNetworkPeeringPolicyDoesNotExist, this.Name, this.ManagedNetworkName, this.ResourceGroupName));
+                throw new Exception(string.Format(Properties.Resources.ManagedNetworkPeeringPolicyDoesNotExist, this.Name, this.ManagedNetworkName, this.ResourceGroupName));
             }
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Constants.ConfirmOverwriteResource, Name),
-                Constants.UpdatingResource,
+                string.Format(Properties.Resources.ConfirmOverwriteResource, Name),
+                Properties.Resources.UpdatingResource,
                 Name,
                 () =>
                 {

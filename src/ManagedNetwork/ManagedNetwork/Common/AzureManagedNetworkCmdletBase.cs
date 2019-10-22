@@ -30,10 +30,6 @@ namespace Microsoft.Azure.Commands.ManagedNetwork.Common
 
         private Dictionary<string, List<string>> _defaultRequestHeaders;
 
-        public const string ObjectParameterSet = "ByObjectParameterSet";
-        public const string FieldsParameterSet = "ByFieldsParameterSet";
-        public const string ResourceIdParameterSet = "ByResourceIdParameterSet";
-
         /// <summary>
         /// Gets or sets the ManagedNetwork management client.
         /// </summary>
@@ -105,15 +101,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork.Common
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            try
-            {
-                Execute();
-            }
-            catch (Rest.Azure.CloudException ex)
-            {
-                //TODO Create custom exception
-                throw ex;
-            }
+            Execute();
         }
         public virtual void Execute()
         {

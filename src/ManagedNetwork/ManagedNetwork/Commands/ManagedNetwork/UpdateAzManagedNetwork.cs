@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
     /// <summary>
     /// New Azure InputObject Command-let
     /// </summary>
-    [Cmdlet(VerbsData.Update, "AzManagedNetwork", SupportsShouldProcess = true, DefaultParameterSetName = Constants.NameParameterSet)]
+    [Cmdlet(VerbsData.Update, "AzManagedNetwork", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.NameParameterSet)]
     [OutputType(typeof(PSManagedNetwork))]
     public class UpdateAzManagedNetwork : AzureManagedNetworkCmdletBase
     {
@@ -23,94 +23,101 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         /// </summary>
         [Parameter(Position = 0,
             Mandatory = true,
-            HelpMessage = Constants.ResourceGroupNameHelp,
-            ParameterSetName = Constants.NameParameterSet)]
+            HelpMessage = HelpMessage.ResourceGroupNameHelp,
+            ParameterSetName = ParameterSetNames.NameParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Position = 1,
             Mandatory = true,
-            HelpMessage = Constants.ManagedNetworkNameHelp,
-            ParameterSetName = Constants.NameParameterSet)]
+            HelpMessage = HelpMessage.ManagedNetworkNameHelp,
+            ParameterSetName = ParameterSetNames.NameParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.ManagedNetwork/managedNetworks", "ResourceGroupName")]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.ManagedNetworkScopeHelp)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessage.ManagedNetworkScopeHelp)]
         public PSScope Scope { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.ManagedNetworkTagHelp)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessage.ManagedNetworkTagHelp)]
         public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Gets or sets the ARM resource ID
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = Constants.ResourceIdNameHelp,
+            HelpMessage = HelpMessage.ResourceIdNameHelp,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = Constants.ResourceIdParameterSet)]
+            ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.ManagedNetwork/managedNetworks")]
         public string ResourceId { get; set; }
 
         /// <summary>
-        /// Gets or sets the ARM resource ID
+        /// Gets or sets the Input Object
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = Constants.InputObjectHelp,
+            HelpMessage = HelpMessage.InputObjectHelp,
             ValueFromPipeline = true,
-            ParameterSetName = Constants.InputObjectParameterSet)]
+            ParameterSetName = ParameterSetNames.InputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSManagedNetwork InputObject { get; set; }
 
         /// <summary>
-        ///     The AsJob parameter to run in the background.
+        ///     Do not ask for confirmation if you want to override a resource
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = Constants.ForceHelp)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessage.ForceHelp)]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
         ///     The AsJob parameter to run in the background.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelp)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessage.AsJobHelp)]
         public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+            switch (this.ParameterSetName)
+            {
+                case ParameterSetNames.ResourceIdParameterSet:
+                    var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                    this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                    this.Name = resourceIdentifier.ResourceName;
+                    break;
+                case ParameterSetNames.InputObjectParameterSet:
+                    resourceIdentifier = new ResourceIdentifier(this.InputObject.Id);
+                    this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                    this.Name = resourceIdentifier.ResourceName;
+                    if (this.Scope == null)
+                    {
+                        this.Scope = this.InputObject.Scope;
+                    }
 
-            if (string.Equals(
-                this.ParameterSetName,
-                Constants.ResourceIdParameterSet))
-            {
-                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
-                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.Name = resourceIdentifier.ResourceName;
+                    if (this.Tag == null)
+                    {
+                        this.Tag = new Hashtable();
+                        foreach (var entry in this.InputObject.Tags)
+                        {
+                            this.Tag.Add(entry.Key, entry.Value);
+                        }
+                    }
+                    break;
+                default:
+                    break;
             }
-            else if (string.Equals(
-                    this.ParameterSetName,
-                    Constants.InputObjectParameterSet))
-            {
-                var resourceIdentifier = new ResourceIdentifier(this.InputObject.Id);
-                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.Name = resourceIdentifier.ResourceName;
-                this.Scope = this.InputObject.Scope;
-                this.Tag = new Hashtable();
-                foreach(var entry in this.InputObject.Tags)
-                {
-                    this.Tag.Add(entry.Key, entry.Value);
-                }
-            }
+
 
             var present = IsManagedNetworkPresent(ResourceGroupName, Name);
             if(!present)
             {
-                throw new Exception(string.Format(Constants.ManagedNetworkDoesNotExist, this.Name, this.ResourceGroupName));
+                throw new Exception(string.Format(Properties.Resources.ManagedNetworkDoesNotExist, this.Name, this.ResourceGroupName));
             }
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Constants.ConfirmOverwriteResource, Name),
-                Constants.UpdatingResource,
+                string.Format(Properties.Resources.ConfirmOverwriteResource, Name),
+                Properties.Resources.UpdatingResource,
                 Name,
                 () =>
                 {
