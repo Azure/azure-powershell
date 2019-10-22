@@ -20,9 +20,9 @@ namespace Commands.Network.Test.ScenarioTests
     using Xunit;
     using Xunit.Abstractions;
 
-    public class VirtualHubRouteTableTest : NetworkTestRunner
+    public class VirtualHubRouteTableTests : NetworkTestRunner
     {
-        public VirtualHubRouteTableTest(ITestOutputHelper output)
+        public VirtualHubRouteTableTests(ITestOutputHelper output)
             : base(output)
         {
         }
@@ -30,7 +30,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
-        public void TestCortexVirtualHubRouteTableCRUD()
+        public void TestVirtualHubRouteTableCRUD()
         {
             TestRunner.RunTestScript("Test-VirtualHubRouteTableCRUD");
         }
