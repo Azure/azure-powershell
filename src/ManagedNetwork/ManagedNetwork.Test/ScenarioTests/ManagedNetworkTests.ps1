@@ -29,8 +29,8 @@ function Test-GetSetManagedNetwork
 	$virtualNetworkList.Add($vnet1)
 	$virtualNetworkList.Add($vnet2)
 	$virtualNetworkList.Add($vnet3)
-	
-	$scope = New-AzManagedNetworkScope -VirtualNetworkIdList $virtualNetworkList
+	[System.String[]]$virtualNetworkArray = $virtualNetworkList
+	$scope = New-AzManagedNetworkScope -VirtualNetworkIdList $virtualNetworkArray
 	New-AzManagedNetwork -ResourceGroupName $resourceGroup -Name $name -scope $scope -Location $location -Force
 	
 	$managedNetwork = Get-AzManagedNetwork -ResourceGroupName $resourceGroup -Name $name

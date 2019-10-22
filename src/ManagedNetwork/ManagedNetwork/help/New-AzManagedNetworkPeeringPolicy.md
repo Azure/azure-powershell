@@ -15,16 +15,16 @@ Creates a managedNetwork peering policy.
 ```
 New-AzManagedNetworkPeeringPolicy [-ResourceGroupName] <String> [-ManagedNetworkName] <String> [-Name] <String>
  -Location <String> -PeeringPolicyType <String> [-Hub <String>]
- [-SpokeList <System.Collections.Generic.List`1[System.String]>]
- [-Mesh <System.Collections.Generic.List`1[System.String]>] [-Force] [-AsJob]
+ [-SpokeList <String[]>]
+ [-Mesh <String[]>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagedNetworkObjectParameterSet
 ```
 New-AzManagedNetworkPeeringPolicy [-Name] <String> -ManagedNetworkObject <PSManagedNetwork> -Location <String>
- -PeeringPolicyType <String> [-Hub <String>] [-SpokeList <System.Collections.Generic.List`1[System.String]>]
- [-Mesh <System.Collections.Generic.List`1[System.String]>] [-Force] [-AsJob]
+ -PeeringPolicyType <String> [-Hub <String>] [-SpokeList <String[]>]
+ [-Mesh <String[]>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 Azure ManagedNetwork Policy Mesh Groups.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 Azure ManagedNetwork Policy Spoke Groups.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -263,7 +263,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Collections.Generic.List<String>
+### String[]
 
 ### Microsoft.Azure.Commands.Network.Models.PSManagedNetwork
 

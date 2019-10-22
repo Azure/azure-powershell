@@ -33,9 +33,10 @@ function Test-GetSetManagedNetworkGroup
 	$virtualNetworkList.Add($vnet1)
 	$virtualNetworkList.Add($vnet2)
 	$virtualNetworkList.Add($vnet3)
-	
-	$scope = New-AzManagedNetworkScope -VirtualNetworkIdList $virtualNetworkList
-	Write-Host $scope
+
+	[System.String[]]$virtualNetworkArray = $virtualNetworkList
+	$scope = New-AzManagedNetworkScope -VirtualNetworkIdList $virtualNetworkArray
+
 	New-AzManagedNetwork -ResourceGroupName $resourceGroup -Name $managedNetworkName -scope $scope -Location $location -Force
 	New-AzManagedNetwork -ResourceGroupName $resourceGroup -Name $managedNetworkName2 -scope $scope -Location $location -Force
 
@@ -45,15 +46,18 @@ function Test-GetSetManagedNetworkGroup
 	[System.Collections.Generic.List[String]]$virtualNetworkGroupList = @()	
 	$virtualNetworkGroupList.Add($vnet1)
 	$virtualNetworkGroupList.Add($vnet2)
+	[System.String[]]$virtualNetworkGroupArray = $virtualNetworkGroupList
 
-	New-AzManagedNetworkGroup -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $name -Location $location -VirtualNetworkIdList $virtualNetworkGroupList -Force
+	New-AzManagedNetworkGroup -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $name -Location $location -VirtualNetworkIdList $virtualNetworkGroupArray -Force
 	$managedNetworkGroupResult = Get-AzManagedNetworkGroup -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $name
 	Assert-AreEqual $name $managedNetworkGroupResult.Name
 	Assert-AreEqual $location $managedNetworkGroupResult.Location
 
 	[System.Collections.Generic.List[String]]$virtualNetworkGroupList2 = @()	
-	$virtualNetworkGroupList.Add($vnet1)
-	New-AzManagedNetworkGroup -ManagedNetworkObject $managedNetwork -Name $name -Location $location -VirtualNetworkIdList $virtualNetworkGroupList2 -Force
+	$virtualNetworkGroupList2.Add($vnet1)
+	[System.String[]]$virtualNetworkGroupArray2 = $virtualNetworkGroupList2
+
+	New-AzManagedNetworkGroup -ManagedNetworkObject $managedNetwork -Name $name -Location $location -VirtualNetworkIdList $virtualNetworkGroupArray2 -Force
 	$managedNetworkGroupResult2 = Get-AzManagedNetworkGroup -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName2 -Name $name
 	Assert-AreEqual $name $managedNetworkGroupResult2.Name
 	Assert-AreEqual $location $managedNetworkGroupResult2.Location

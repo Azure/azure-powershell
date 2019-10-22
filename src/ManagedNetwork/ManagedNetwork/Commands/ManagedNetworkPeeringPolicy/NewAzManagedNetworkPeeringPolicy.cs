@@ -13,8 +13,8 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
     /// <summary>
     /// New Azure InputObject Command-let
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzManagedNetworkPeeringPolicy", SupportsShouldProcess = true, DefaultParameterSetName = Constants.NameParameterSet)]
-    [OutputType(typeof(PSManagedNetwork))]
+    [Cmdlet(VerbsCommon.New, "AzManagedNetworkPeeringPolicy", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.NameParameterSet)]
+    [OutputType(typeof(NewAzManagedNetworkPeeringPolicy))]
     public class NewAzManagedNetworkPeeringPolicy : AzureManagedNetworkCmdletBase
     {
         /// <summary>
@@ -22,38 +22,39 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         /// </summary>
         [Parameter(Position = 0, 
             Mandatory = true, 
-            HelpMessage = Constants.ResourceGroupNameHelp,
-            ParameterSetName = Constants.NameParameterSet)]
+            HelpMessage = HelpMessage.ResourceGroupNameHelp,
+            ParameterSetName = ParameterSetNames.NameParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Position = 1, 
             Mandatory = true, 
-            HelpMessage = Constants.ManagedNetworkNameHelp,
-            ParameterSetName = Constants.NameParameterSet)]
+            HelpMessage = HelpMessage.ManagedNetworkNameHelp,
+            ParameterSetName = ParameterSetNames.NameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ManagedNetworkName { get; set; }
 
         [Parameter(Position = 2, 
             Mandatory = true, 
-            HelpMessage = Constants.ManagedNetworkPeeringPolicyNameHelp,
-            ParameterSetName = Constants.NameParameterSet)]
+            HelpMessage = HelpMessage.ManagedNetworkPeeringPolicyNameHelp,
+            ParameterSetName = ParameterSetNames.NameParameterSet)]
         [Parameter(Mandatory = true,
-            HelpMessage = Constants.ManagedNetworkPeeringPolicyNameHelp,
-            ParameterSetName = Constants.ManagedNetworkObjectParameterSet)]
+            HelpMessage = HelpMessage.ManagedNetworkPeeringPolicyNameHelp,
+            ParameterSetName = ParameterSetNames.ManagedNetworkObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true,
-            HelpMessage = Constants.ManagedNetworkObjectHelp,
+            HelpMessage = HelpMessage.ManagedNetworkObjectHelp,
             ValueFromPipeline = true,
-            ParameterSetName = Constants.ManagedNetworkObjectParameterSet)]
+            ParameterSetName = ParameterSetNames.ManagedNetworkObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSManagedNetwork ManagedNetworkObject { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Azure ManagedNetwork Policy location.")]
         [ValidateNotNullOrEmpty]
+        [LocationCompleter("Microsoft.ManagedNetwork/managedNetworks/managednetworkpeeringpolicies")]
         public string Location { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Azure ManagedNetwork Policy type.")]
@@ -64,21 +65,21 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         public string Hub { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork Policy Spoke Groups.")]
-        public List<string> SpokeList { get; set; }
+        public string[] SpokeList { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork Policy Mesh Groups.")]
-        public List<string> Mesh { get; set; }
+        public string[] Mesh { get; set; }
 
         /// <summary>
-        ///     The AsJob parameter to run in the background.
+        ///     Do not ask for confirmation if you want to override a resource.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = Constants.ForceHelp)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessage.ForceHelp)]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
         ///     The AsJob parameter to run in the background.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelp)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessage.AsJobHelp)]
         public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
 
             if (string.Equals(
                     this.ParameterSetName,
-                    Constants.ManagedNetworkObjectParameterSet))
+                    ParameterSetNames.ManagedNetworkObjectParameterSet))
             {
                 var resourceIdentifier = new ResourceIdentifier(this.ManagedNetworkObject.Id);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
@@ -97,8 +98,8 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
             var present = IsManagedNetworkPeeringPolicyPresent(ResourceGroupName, ManagedNetworkName, Name);
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Constants.ConfirmOverwriteResource, Name),
-                Constants.CreatingResource,
+                string.Format(Properties.Resources.ConfirmOverwriteResource, Name),
+                Properties.Resources.CreatingResource,
                 Name,
                 () =>
                 {

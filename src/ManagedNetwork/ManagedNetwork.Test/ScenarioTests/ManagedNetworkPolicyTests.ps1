@@ -40,15 +40,18 @@ function Test-GetSetManagedNetworkPolicy
 	$virtualNetworkList.Add($vnet4)
 	$virtualNetworkList.Add($vnet5)
 	$virtualNetworkList.Add($vnet6)
+	[System.String[]]$virtualNetworkArray = $virtualNetworkList
 
-	$scope = New-AzManagedNetworkScope -VirtualNetworkIdList $virtualNetworkList
+	$scope = New-AzManagedNetworkScope -VirtualNetworkIdList $virtualNetworkArray
 	New-AzManagedNetwork -ResourceGroupName $resourceGroup -Name $managedNetworkName -scope $scope -Location $location -Force
 	$managedNetwork = Get-AzManagedNetwork -ResourceGroupName $resourceGroup -Name $managedNetworkName
 
 	[System.Collections.Generic.List[String]]$virtualNetworkGroupList = @()	
 	$virtualNetworkGroupList.Add($vnet1)
 	$virtualNetworkGroupList.Add($vnet2)
-	New-AzManagedNetworkGroup -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $groupnameHubSpoke -Location $location -VirtualNetworkIdList $virtualNetworkGroupList -Force
+	[System.String[]]$virtualNetworkGroupArray = $virtualNetworkGroupList;
+
+	New-AzManagedNetworkGroup -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $groupnameHubSpoke -Location $location -VirtualNetworkIdList $virtualNetworkGroupArray -Force
 	$SpokeGroupResult = Get-AzManagedNetworkGroup -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $groupnameHubSpoke
 	
 
@@ -56,15 +59,16 @@ function Test-GetSetManagedNetworkPolicy
 	$meshgroupList.Add($vnet4)
 	$meshgroupList.Add($vnet5)
 	$meshgroupList.Add($vnet6)
-	New-AzManagedNetworkGroup -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $groupnameMesh -Location $location -VirtualNetworkIdList $meshgroupList -Force
+	[System.String[]] $meshgroupArray = $meshgroupList
+	New-AzManagedNetworkGroup -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $groupnameMesh -Location $location -VirtualNetworkIdList $meshgroupArray -Force
 	$MeshGroupResult = Get-AzManagedNetworkGroup -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $groupnameMesh
 
 	$PeeringPolicyType = "HubAndSpokeTopology"
 	$hub = $vnet3
 	[System.Collections.Generic.List[String]]$spokes = @()
 	$spokes.Add($SpokeGroupResult.Id)
-
-	New-AzManagedNetworkPeeringPolicy -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $policyNameHubSpoke -Location $location -Hub $hub -SpokeList $spokes -PeeringPolicyType $PeeringPolicyType -Force
+	[System.String[]] $spokesArray = $spokes
+	New-AzManagedNetworkPeeringPolicy -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $policyNameHubSpoke -Location $location -Hub $hub -SpokeList $spokesArray -PeeringPolicyType $PeeringPolicyType -Force
 	$managedNetworkPolicyResult = Get-AzManagedNetworkPeeringPolicy -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $policyNameHubSpoke
 	Assert-AreEqual $policyNameHubSpoke $managedNetworkPolicyResult.Name
 	Assert-AreEqual $location $managedNetworkPolicyResult.Location
@@ -74,7 +78,8 @@ function Test-GetSetManagedNetworkPolicy
 	$PeeringPolicyTypeMesh = "MeshTopology"
 	[System.Collections.Generic.List[String]]$mesh = @()	
 	$mesh.Add($MeshGroupResult.id)
-	New-AzManagedNetworkPeeringPolicy -ManagedNetworkObject $managedNetwork -Name $policyNameMesh -Location $location -Mesh $mesh -PeeringPolicyType $PeeringPolicyTypeMesh -Force
+	[System.String[]] $meshArray = $mesh
+	New-AzManagedNetworkPeeringPolicy -ManagedNetworkObject $managedNetwork -Name $policyNameMesh -Location $location -Mesh $meshArray -PeeringPolicyType $PeeringPolicyTypeMesh -Force
 	$meshPolicyResult = Get-AzManagedNetworkPeeringPolicy -ResourceGroupName $resourceGroup -ManagedNetworkName $managedNetworkName -Name $policyNameMesh
 	Assert-AreEqual $policyNameMesh $meshPolicyResult.Name
 	Assert-AreEqual $location $meshPolicyResult.Location

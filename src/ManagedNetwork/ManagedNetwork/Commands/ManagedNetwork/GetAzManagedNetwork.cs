@@ -11,18 +11,18 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
     /// <summary>
     /// New Azure InputObject Command-let
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzManagedNetwork", DefaultParameterSetName = Constants.NameParameterSet)]
+    [Cmdlet(VerbsCommon.Get, "AzManagedNetwork", DefaultParameterSetName = ParameterSetNames.NameParameterSet)]
     [OutputType(typeof(PSManagedNetwork))]
     public class GetAzManagedNetwork : AzureManagedNetworkCmdletBase
     {
         [Parameter(
            Mandatory = false,
-           HelpMessage = Constants.ManagedNetworkNameHelp,
-           ParameterSetName = Constants.ListParameterSet)]
+           HelpMessage = HelpMessage.ManagedNetworkNameHelp,
+           ParameterSetName = ParameterSetNames.ListParameterSet)]
         [Parameter(
            Mandatory = true,
-           HelpMessage = Constants.ManagedNetworkNameHelp,
-           ParameterSetName = Constants.NameParameterSet)]
+           HelpMessage = HelpMessage.ManagedNetworkNameHelp,
+           ParameterSetName = ParameterSetNames.NameParameterSet)]
         [ResourceNameCompleter("Microsoft.ManagedNetwork/managedNetworks", "ResourceGroupName")]
         public string Name { get; set; }
 
@@ -31,12 +31,12 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         /// </summary>
         [Parameter( 
             Mandatory = false,
-            HelpMessage = Constants.ResourceGroupNameHelp, 
-            ParameterSetName = Constants.ListParameterSet)]
+            HelpMessage = HelpMessage.ResourceGroupNameHelp,
+            ParameterSetName = ParameterSetNames.ListParameterSet)]
         [Parameter(
             Mandatory = true,
-            HelpMessage = Constants.ResourceGroupNameHelp,
-            ParameterSetName = Constants.NameParameterSet)]
+            HelpMessage = HelpMessage.ResourceGroupNameHelp,
+            ParameterSetName = ParameterSetNames.NameParameterSet)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
@@ -44,9 +44,10 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         /// Gets or sets the ARM resource ID
         /// </summary>
         [Parameter(Mandatory = true, 
-            HelpMessage = Constants.ResourceIdNameHelp,
-            ParameterSetName = Constants.ResourceIdParameterSet)]
+            HelpMessage = HelpMessage.ResourceIdNameHelp,
+            ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.ManagedNetwork/managedNetworks")]
         public string ResourceId { get; set; }
 
         public override void ExecuteCmdlet()
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
 
             if (string.Equals(
                     this.ParameterSetName,
-                    Constants.ResourceIdParameterSet))
+                    ParameterSetNames.ResourceIdParameterSet))
             {
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;

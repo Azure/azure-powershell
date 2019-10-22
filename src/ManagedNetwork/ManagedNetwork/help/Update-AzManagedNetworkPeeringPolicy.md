@@ -15,32 +15,32 @@ Update a managedNetworkPeeringPolicy.
 ```
 Update-AzManagedNetworkPeeringPolicy [-ResourceGroupName] <String> [-ManagedNetworkName] <String>
  [-Name] <String> [-PeeringPolicyType <String>] [-Hub <String>]
- [-SpokeList <System.Collections.Generic.List`1[System.String]>]
- [-Mesh <System.Collections.Generic.List`1[System.String]>] [-Force] [-AsJob]
+ [-SpokeList <String[]>]
+ [-Mesh <String[]>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ManagedNetworkObjectParameterSet
 ```
 Update-AzManagedNetworkPeeringPolicy [-Name] <String> -ManagedNetworkObject <PSManagedNetwork>
- [-PeeringPolicyType <String>] [-Hub <String>] [-SpokeList <System.Collections.Generic.List`1[System.String]>]
- [-Mesh <System.Collections.Generic.List`1[System.String]>] [-Force] [-AsJob]
+ [-PeeringPolicyType <String>] [-Hub <String>] [-SpokeList <String[]>]
+ [-Mesh <String[]>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Update-AzManagedNetworkPeeringPolicy -ResourceId <String> [-PeeringPolicyType <String>] [-Hub <String>]
- [-SpokeList <System.Collections.Generic.List`1[System.String]>]
- [-Mesh <System.Collections.Generic.List`1[System.String]>] [-Force] [-AsJob]
+ [-SpokeList <String[]>]
+ [-Mesh <String[]>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Update-AzManagedNetworkPeeringPolicy -InputObject <PSManagedNetworkPeeringPolicy> [-PeeringPolicyType <String>]
- [-Hub <String>] [-SpokeList <System.Collections.Generic.List`1[System.String]>]
- [-Mesh <System.Collections.Generic.List`1[System.String]>] [-Force] [-AsJob]
+ [-Hub <String>] [-SpokeList <String[]>]
+ [-Mesh <String[]>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -180,7 +180,7 @@ Accept wildcard characters: False
 Azure ManagedNetwork Policy Mesh Groups.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -255,7 +255,7 @@ Accept wildcard characters: False
 Azure ManagedNetwork Policy Spoke Groups.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -304,7 +304,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Collections.Generic.List<String>
+### String[]
 
 ### Microsoft.Azure.Commands.Network.Models.PSManagedNetwork
 

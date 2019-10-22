@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.0.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -48,7 +48,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.ManagedNetwork.dll'
@@ -69,7 +69,18 @@ NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.ManagedNetwork.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = '*'
+CmdletsToExport = 'Get-AzManagedNetwork',
+                  'New-AzManagedNetwork',
+                  'New-AzManagedNetworkScope',
+                  'Remove-AzManagedNetwork',
+                  'Update-AzManagedNetwork',
+                  'Get-AzManagedNetworkGroup',
+                  'New-AzManagedNetworkGroup',
+                  'Remove-AzManagedNetworkGroup',
+                  'Update-AzManagedNetworkGroup',
+                  'Get-AzManagedNetworkPeeringPolicy',
+                  'Remove-AzManagedNetworkPeeringPolicy',
+                  'Update-AzManagedNetworkPeeringPolicy'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -107,7 +118,7 @@ PrivateData = @{
         ReleaseNotes = '* Added new Powershell cmdlets for ManagedNetwork'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        # Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false

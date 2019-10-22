@@ -10,17 +10,17 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
     /// <summary>
     /// New Azure InputObject Command-let
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzManagedNetwork", SupportsShouldProcess = true, DefaultParameterSetName = Constants.NameParameterSet)]
-    [OutputType(typeof(PSManagedNetwork))]
+    [Cmdlet(VerbsCommon.Remove, "AzManagedNetwork", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.NameParameterSet)]
+    [OutputType(typeof(bool))]
     public class RemoveAzureManagedNetwork : AzureManagedNetworkCmdletBase
     {
         /// <summary>
         /// Gets or sets The Resource Group name
         /// </summary>
-        [Parameter(Position = 0, 
-            Mandatory = true, 
-            HelpMessage = Constants.ResourceGroupNameHelp, 
-            ParameterSetName = Constants.NameParameterSet)]
+        [Parameter(Position = 0,
+            Mandatory = true,
+            HelpMessage = HelpMessage.ResourceGroupNameHelp,
+            ParameterSetName = ParameterSetNames.NameParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         /// </summary>
         [Parameter(Position = 1, 
             Mandatory = true, 
-            HelpMessage = Constants.ManagedNetworkNameHelp,
-            ParameterSetName = Constants.NameParameterSet)]
+            HelpMessage = HelpMessage.ManagedNetworkNameHelp,
+            ParameterSetName = ParameterSetNames.NameParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.ManagedNetwork/managedNetworks", "ResourceGroupName")]
         public string Name { get; set; }
@@ -40,33 +40,32 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         /// Gets or sets the ARM resource ID
         /// </summary>
         [Parameter(Mandatory = true, 
-            HelpMessage = Constants.ResourceIdNameHelp,
-            ParameterSetName = Constants.ResourceIdParameterSet)]
+            HelpMessage = HelpMessage.ResourceIdNameHelp,
+            ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.ManagedNetwork/managedNetworks")]
         public string ResourceId { get; set; }
 
-        /// <summary>
-        /// Gets or sets the Input Obejct
-        /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = Constants.InputObjectHelp,
-            ParameterSetName = Constants.InputObjectParameterSet)]
+            HelpMessage = HelpMessage.InputObjectHelp,
+            ValueFromPipeline = true,
+            ParameterSetName = ParameterSetNames.InputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSManagedNetwork InputObject { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.PassThruHelp)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessage.PassThruHelp)]
         public SwitchParameter PassThru { get; set; }
 
         /// <summary>
         ///     The Force parameter to run in the background.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = Constants.ForceHelp)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessage.ForceHelp)]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
         ///     The AsJob parameter to run in the background.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelp)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessage.AsJobHelp)]
         public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
@@ -75,8 +74,8 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
             var present = IsManagedNetworkPresent(ResourceGroupName, Name);
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Constants.ConfirmDeleteResource, Name),
-                Constants.DeletingResource,
+                string.Format(Properties.Resources.ConfirmDeleteResource, Name),
+                Properties.Resources.DeletingResource,
                 Name,
                 () =>
                 {
@@ -92,21 +91,20 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         }
         private void RemoveManagedNetwork()
         {
-            if (string.Equals(
-                this.ParameterSetName,
-                Constants.ResourceIdParameterSet))
+            switch (this.ParameterSetName)
             {
-                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
-                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.Name = resourceIdentifier.ResourceName;
-            }
-            else if (string.Equals(
-                    this.ParameterSetName,
-                    Constants.InputObjectParameterSet))
-            {
-                var resourceIdentifier = new ResourceIdentifier(this.InputObject.Id);
-                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.Name = resourceIdentifier.ResourceName;
+                case ParameterSetNames.ResourceIdParameterSet:
+                    var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                    this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                    this.Name = resourceIdentifier.ResourceName;
+                    break;
+                case ParameterSetNames.InputObjectParameterSet:
+                    resourceIdentifier = new ResourceIdentifier(this.InputObject.Id);
+                    this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                    this.Name = resourceIdentifier.ResourceName;
+                    break;
+                default:
+                    break;
             }
 
             this.ManagedNetworkManagementClient.ManagedNetworks.Delete(this.ResourceGroupName, this.Name);
