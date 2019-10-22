@@ -102,8 +102,7 @@ function Test-EndpointCreateWithRulesEngine
     $createdEndpoint = New-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName -DeliveryPolicy $deliveryPolicy
 	Assert-AreEqual $description $createdEndpoint.DeliveryPolicy.Description
     Assert-AreEqual $endpointName $createdEndpoint.Name
-    Assert-AreEqual $rule0.Name $createdEndpoint.DeliveryPolicy.Rules[0].Name
-    Assert-AreEqual $rule1.Name $createdEndpoint.DeliveryPolicy.Rules[1].Name
+    Assert-AreEqual $deliverypolicy.Count $createdEndpoint.DeliveryPolicy.Count
     Assert-AreEqual $profileName $createdEndpoint.ProfileName
     Assert-AreEqual $resourceGroup.ResourceGroupName $createdEndpoint.ResourceGroupName
     Assert-AreEqual $originName $createdEndpoint.Origins[0].Name
