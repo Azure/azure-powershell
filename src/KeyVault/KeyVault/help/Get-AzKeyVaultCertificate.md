@@ -94,8 +94,8 @@ Certificate : [Subject]
               [Thumbprint] 
                 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-KeyId       : https://contoso.vault.azure.net:443/keys/TestCert01/1fe415d5518240c1a6fce89986b8d334
-SecretId    : https://contoso.vault.azure.net:443/secrets/TestCert01/1fe415d5518240c1a6fce89986b8d334
+KeyId       : https://contoso.vault.azure.net:443/keys/TestCert01/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+SecretId    : https://contoso.vault.azure.net:443/secrets/TestCert01/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 Thumbprint  : XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 Tags        : 
 Enabled     : True
@@ -103,6 +103,7 @@ Created     : 2/8/2016 11:21:45 PM
 Updated     : 2/8/2016 11:21:45 PM
 ```
 
+### Example 2: Get cert and save it as pfx
 This command gets the certificate named TestCert01 from the key vault named ContosoKV01. To download the certificate as pfx file, run following command. These commands access SecredId and then save the content as a pfx file.
 
 ```powershell
@@ -119,7 +120,7 @@ $pfxFileByte = $x509Cert.Export($type, $password)
 [System.IO.File]::WriteAllBytes("KeyValt.pfx", $pfxFileByte)
 ```
 
-### Example 2: Get all the certificates that have been deleted but not purged for this key vault.
+### Example 3: Get all the certificates that have been deleted but not purged for this key vault.
 ```powershell
 PS C:\> Get-AzKeyVaultCertificate -VaultName 'contoso' -InRemovedState
 
@@ -151,7 +152,7 @@ Id                 : https://contoso.vault.azure.net:443/certificates/test2
 
 This command gets all the certificates that have been previously deleted, but not purged, in the key vault named Contoso.
 
-### Example 3: Gets the certificate MyCert that has been deleted but not purged for this key vault.
+### Example 4: Gets the certificate MyCert that has been deleted but not purged for this key vault.
 ```powershell
 PS C:\> Get-AzKeyVaultCertificate -VaultName 'contoso' -Name 'test1' -InRemovedState
 
@@ -194,7 +195,7 @@ Id                 : https://contoso.vault.azure.net:443/certificates/test1/7fe4
 This command gets the certificate named 'MyCert' that has been previously deleted, but not purged, in the key vault named Contoso.
 This command will return metadata such as the deletion date, and the scheduled purging date of this deleted certificate.
 
-### Example 4: List certificates using filtering
+### Example 5: List certificates using filtering
 ```powershell
 PS C:\> Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "test*"
 
