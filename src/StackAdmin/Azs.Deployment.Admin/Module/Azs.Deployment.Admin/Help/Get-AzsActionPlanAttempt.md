@@ -24,10 +24,10 @@ Gets or lists the action plan attempts
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:/> Get-AzsActionPlanAttempt -PlanId $planId -OperationId $operationId -AsJson
 ```
 
-{{ Add example description here }}
+Gets or lists the action plan attempt properties for plan with id $planId and operation Id $operationId.
 
 ## PARAMETERS
 
