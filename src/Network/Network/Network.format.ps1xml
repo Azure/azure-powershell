@@ -3295,6 +3295,10 @@
                 <PropertyName>ThreatIntelMode</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>AdditionalProperty</Label>
+                <PropertyName>AdditionalPropertyText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Sku</Label>
                 <PropertyName>Sku</PropertyName>
               </ListItem>

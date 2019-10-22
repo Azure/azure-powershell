@@ -14,6 +14,7 @@
 //
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
@@ -42,9 +43,17 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ThreatIntelMode { get; set; }
 
+        public Hashtable AdditionalProperty { get; set; }
+
         public string ProvisioningState { get; set; }
 
         public List<string> Zones { get; set; }
+
+        [JsonIgnore]
+        public string AdditionalPropertyText
+        {
+            get { return JsonConvert.SerializeObject(AdditionalProperty, Formatting.Indented); }
+        }
 
         [JsonIgnore]
         public string IpConfigurationsText
