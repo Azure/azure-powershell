@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public RMProfileClient(IProfileOperations profile)
         {
             _profile = profile;
-            var context = DefaultContext;
+            var context = _profile.DefaultContext;
             _cache = AzureSession.Instance.TokenCache;
             if (_profile != null && context != null &&
                 context.TokenCache != null)
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
             }
 
-            shouldPopulateContextList &= DefaultContext?.Account == null;
+            shouldPopulateContextList &= _profile.DefaultContext?.Account == null;
             if (newSubscription == null)
             {
                 if (subscriptionId != null)
@@ -298,10 +298,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
             }
 
-            DefaultContext.TokenCache = _cache;
+            _profile.DefaultContext.TokenCache = _cache;
             if (shouldPopulateContextList)
             {
-                var defaultContext = DefaultContext;
+                var defaultContext = _profile.DefaultContext;
                 var subscriptions = ListSubscriptions(tenantId).Take(25);
                 foreach (var subscription in subscriptions)
                 {
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             IAzureTenant tenant = null;
             Guid subscriptionId;
             IAzureContext context = new AzureContext();
-            context.CopyFrom(DefaultContext);
+            context.CopyFrom(_profile.DefaultContext);
             if (!string.IsNullOrWhiteSpace(subscriptionNameOrId))
             {
                 if (Guid.TryParse(subscriptionNameOrId, out subscriptionId))
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             context.WithTenant(tenant).WithSubscription(subscription);
             _profile.TrySetDefaultContext(name, context);
-            DefaultContext.ExtendedProperties.Clear();
+            _profile.DefaultContext.ExtendedProperties.Clear();
             return context;
         }
 
@@ -472,8 +472,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public IAccessToken AcquireAccessToken(string tenantId, Action<string> promptAction = null)
         {
             return AcquireAccessToken(
-                DefaultContext.Account,
-                DefaultContext.Environment,
+                _profile.DefaultContext.Account,
+                _profile.DefaultContext.Environment,
                 tenantId, null,
                 ShowDialog.Auto,
                 promptAction);
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 {
                     WriteWarningMessage(string.Format(
                         ProfileMessages.UnableToLogin,
-                        DefaultContext.Account,
+                        _profile.DefaultContext.Account,
                         tenant));
                 }
 
@@ -723,8 +723,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         private IEnumerable<AzureSubscription> ListAllSubscriptionsForTenant(
             string tenantId)
         {
-            IAzureAccount account = DefaultContext.Account;
-            IAzureEnvironment environment = DefaultContext.Environment;
+            IAzureAccount account = _profile.DefaultContext.Account;
+            IAzureEnvironment environment = _profile.DefaultContext.Environment;
             SecureString password = null;
             string promptBehavior = ShowDialog.Never;
             IAccessToken accessToken = null;
@@ -744,7 +744,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     new TokenCredentials(accessToken.AccessToken) as ServiceClientCredentials,
                     AzureSession.Instance.ClientFactory.GetCustomHandlers());
 
-            AzureContext context = new AzureContext(DefaultContext.Subscription, account, environment,
+            AzureContext context = new AzureContext(_profile.DefaultContext.Subscription, account, environment,
                                         CreateTenantFromString(tenantId, accessToken.TenantId));
 
             return subscriptionClient.ListAllSubscriptions().Select(s => s.ToAzureSubscription(context));
