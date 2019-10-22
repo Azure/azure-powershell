@@ -95,6 +95,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The sku of the Virtual Hub.")]
+        [PSArgumentCompleter("Basic", "Standard")]
         public string Sku { get; set; }
 
         [Parameter(

@@ -35,7 +35,7 @@ function Test-CortexCRUD
 	$vpnConnection2Name = Get-ResourceName
 	$vpnLink1ConnectionName = Get-ResourceName
 	$vpnLink2ConnectionName = Get-ResourceName
-	
+
 	$storeName = 'blob' + $rgName
     
 	try
