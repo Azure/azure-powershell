@@ -135,6 +135,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
+        /// Add disks to replicated protected item.
+        /// </summary>
+        /// <param name="fabricName">Fabric Name</param>
+        /// <param name="protectionContainerName">Protection Container ID</param>
+        /// <param name="replicationProtectedItemName">Virtual Machine ID or Replication group Id</param>
+        /// <param name="input">Add disks input.</param>
+        /// <returns>Job response</returns>
+        public PSSiteRecoveryLongRunningOperation AddDisks(
+            string fabricName,
+            string protectionContainerName,
+            string replicationProtectedItemName,
+            AddDisksInput input)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectedItems.BeginAddDisksWithHttpMessagesAsync(
+                    fabricName,
+                    protectionContainerName,
+                    replicationProtectedItemName,
+                    input,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
         ///     Retrieves Protected Items.
         /// </summary>
         /// <param name="recoveryPlanName">Recovery Plan Name</param>

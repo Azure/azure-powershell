@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/new-azrecoveryservicesasrnetworkmapping
@@ -56,7 +56,7 @@ Starts the network mapping for creation operation using the specified name, prim
 ## PARAMETERS
 
 ### -AzureToAzure
-{{Fill AzureToAzure Description}}
+Flag to create AzureToAzure scenario.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

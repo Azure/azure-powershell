@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -24,13 +25,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Updates the replication direction for the specified replication protected item or recovery plan.
     ///     Used to re-protect/reverse replicate a failed over replicated item or recovery plan.
     /// </summary>
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrProtectionDirection",DefaultParameterSetName = ASRParameterSets.ByRPIObject,SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrProtectionDirection", DefaultParameterSetName = ASRParameterSets.ByRPIObject, SupportsShouldProcess = true)]
     [Alias("Update-ASRProtectionDirection")]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrProtection : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///    Switch Parameter to update replication direction from Azure to Vmware.
+        ///    Switch Parameter to update replication direction from Azure to vMWare.
         /// </summary>
         [Parameter(
             Position = 0,
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter VMwareToAzure { get; set; }
 
         /// <summary>
-        ///    Switch Parameter to reprotect a Hyper-V virtual machine after failback..
+        ///    Switch Parameter to re-protect a Hyper-V virtual machine after fail-back.
         /// </summary>
         [Parameter(
             Position = 0,
@@ -88,7 +89,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRRunAsAccount Account { get; set; }
 
         /// <summary>
-        ///     Gets or sets DataStore of MT server for the on-premise vmware machine.
+        ///     Gets or sets DataStore of MT server for the on-premise vMWare machine.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToVMware, Mandatory = true)]
         [ValidateNotNullOrEmpty]
@@ -145,6 +146,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [ValidateNotNullOrEmpty]
         public ASRAzuretoAzureDiskReplicationConfig[] AzureToAzureDiskReplicationConfiguration { get; set; }
 
+        /* TODO:: uncomment SRS service start supporting this.
+                /// <summary>
+                /// Gets or sets the resource ID of the recovery cloud service to failover this virtual machine to.
+                /// </summary>
+                [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, HelpMessage = "Specify the availability zone to used by the failover Vm in target recovery region.")]
+                [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount, HelpMessage = "Specify the availability zone to used by the failover Vm in target recovery region.")]
+                [ValidateNotNullOrEmpty]
+                public string RecoveryAvailabilityZone { get; set; }
+        */
         /// <summary>
         ///     Gets or sets recovery plan object.
         /// </summary>
@@ -256,6 +266,47 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.AzureToVMware, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRRetentionVolume RetentionVolume { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets DiskEncryptionVaultId.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureToAzure,
+            HelpMessage = "Specifies the disk encryption secret key vault ID(Azure disk encryption) to be used be recovery VM after failover.")]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount,
+            HelpMessage = "Specifies the disk encryption secret key vault ID(Azure disk encryption) to be used be recovery VM after failover.")]
+        public string DiskEncryptionVaultId { get; set; }
+
+        /// <summary>
+        /// Gets or sets DiskEncryptionSecretUrl.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureToAzure,
+            HelpMessage = "Specifies the disk encryption secret URL(Azure disk encryption) to be used be recovery VM after failover.")]
+        [Parameter
+            (ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount,
+            HelpMessage = "Specifies the disk encryption secret URL(Azure disk encryption) to be used be recovery VM after failover.")]
+        public string DiskEncryptionSecretUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets KeyEncryptionKeyUrl.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure,
+            HelpMessage = "Specifies the disk encryption secret key URL(Azure disk encryption) to be used be recovery VM after failover.")]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount,
+            HelpMessage = "Specifies the disk encryption secret key URL(Azure disk encryption) to be used be recovery VM after failover.")]
+        public string KeyEncryptionKeyUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets KeyEncryptionVaultId.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure,
+            HelpMessage = "Specifies the disk encryption secret key vault ID(Azure disk encryption) to be used be recovery VM after failover.")]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount,
+            HelpMessage = "Specifies the disk encryption secret key vault ID(Azure disk encryption) to be used be recovery VM after failover.")]
+        public string KeyEncryptionVaultId { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -385,7 +436,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 // Validate the direction as RecoveryToPrimary.
                 if (this.Direction == Constants.RecoveryToPrimary)
                 {
-                    // Set the InMage Provider specific input in the Reprotect Input.
+                    // Set the InMage Provider specific input in the Re-protect Input.
                     var reprotectInput = new InMageReprotectInput
                     {
                         ProcessServerId = this.ProcessServer.Id,
@@ -430,7 +481,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 // Validate the Direction as RecoveryToPrimary.
                 if (this.Direction == Constants.RecoveryToPrimary)
                 {
-                    // Set the InMageAzureV2 Provider specific input in the Reprotect Input.
+                    // Set the InMageAzureV2 Provider specific input in the Re-protect Input.
                     var reprotectInput = new InMageAzureV2ReprotectInput
                     {
                         ProcessServerId = this.ProcessServer.Id,
@@ -560,6 +611,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     populateManagedDiskInputDetails(a2aSwitchInput, replicationProtectedItemResponse);
                 }
 
+                // Add disk encryption related values.
+                a2aSwitchInput.DiskEncryptionInfo = this.A2AEncryptionDetails();
+
                 input.Properties.ProviderSpecificDetails = a2aSwitchInput;
             }
 
@@ -607,8 +661,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     DiskId = osDisk.ManagedDisk.Id,
                     RecoveryResourceGroupId = this.RecoveryResourceGroupId,
                     PrimaryStagingAzureStorageAccountId = this.LogStorageAccountId,
-                    RecoveryReplicaDiskAccountType = osDisk.ManagedDisk.StorageAccountType.toStorageString(),
-                    RecoveryTargetDiskAccountType = osDisk.ManagedDisk.StorageAccountType.toStorageString()
+                    RecoveryReplicaDiskAccountType = osDisk.ManagedDisk.StorageAccountType,
+                    RecoveryTargetDiskAccountType = osDisk.ManagedDisk.StorageAccountType
                 });
                 if (virtualMachine.StorageProfile.DataDisks != null)
                 {
@@ -619,8 +673,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             DiskId = dataDisk.ManagedDisk.Id,
                             RecoveryResourceGroupId = this.RecoveryResourceGroupId,
                             PrimaryStagingAzureStorageAccountId = this.LogStorageAccountId,
-                            RecoveryReplicaDiskAccountType = dataDisk.ManagedDisk.StorageAccountType.toStorageString(),
-                            RecoveryTargetDiskAccountType = dataDisk.ManagedDisk.StorageAccountType.toStorageString()
+                            RecoveryReplicaDiskAccountType = dataDisk.ManagedDisk.StorageAccountType,
+                            RecoveryTargetDiskAccountType = dataDisk.ManagedDisk.StorageAccountType
                         });
                     }
                 }
@@ -635,7 +689,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         RecoveryResourceGroupId = disk.RecoveryResourceGroupId,
                         RecoveryReplicaDiskAccountType = disk.RecoveryReplicaDiskAccountType,
                         RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType,
-                        PrimaryStagingAzureStorageAccountId = this.LogStorageAccountId,
+                        PrimaryStagingAzureStorageAccountId = disk.LogStorageAccountId,
                     });
                 }
             }
@@ -677,7 +731,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 foreach (ASRAzuretoAzureDiskReplicationConfig disk in this.AzureToAzureDiskReplicationConfiguration)
                 {
-                    // logstorage account id in required param cann't be null.
+                    // log storage account id in required parameter can't be null.
                     if (string.IsNullOrEmpty(disk.RecoveryAzureStorageAccountId))
                     {
                         throw new PSArgumentException(
@@ -716,8 +770,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
         }
 
+        /**
+         * Creating DiskEncryptionInfo for A2A encrypted Vm.
+         */
+        private DiskEncryptionInfo A2AEncryptionDetails()
+        {
+            // Checking if any encryption data is present then the only creating DiskEncryptionInfo.
+            if (this.IsParameterBound(c => c.DiskEncryptionSecretUrl) ||
+                this.IsParameterBound(c => c.DiskEncryptionVaultId) ||
+                this.IsParameterBound(c => c.KeyEncryptionKeyUrl) ||
+                this.IsParameterBound(c => c.KeyEncryptionVaultId))
+            {
+                DiskEncryptionInfo diskEncryptionInfo = new DiskEncryptionInfo();
+                // BEK DATA is present
+                if (this.IsParameterBound(c => c.DiskEncryptionSecretUrl) && this.IsParameterBound(c => c.DiskEncryptionVaultId))
+                {
+                    diskEncryptionInfo.DiskEncryptionKeyInfo = new DiskEncryptionKeyInfo(this.DiskEncryptionSecretUrl, this.DiskEncryptionVaultId);
+                    // KEK Data is present in pair.
+                    if (this.IsParameterBound(c => c.KeyEncryptionKeyUrl) && this.IsParameterBound(c => c.KeyEncryptionVaultId))
+                    {
+                        diskEncryptionInfo.KeyEncryptionKeyInfo = new KeyEncryptionKeyInfo(this.KeyEncryptionKeyUrl, this.KeyEncryptionVaultId);
+                    }
+                }
+                else
+                {
+                    throw new Exception("Provide Disk DiskEncryptionSecretUrl and DiskEncryptionVaultId.");
+                }
+                return diskEncryptionInfo;
+            }
+            return null;
+        }
+
         /// <summary>
-        ///     validate parameter vaules for recovery plan.
+        ///     validate parameter values for recovery plan.
         /// </summary>
         private void validateRPSwitchParam(RecoveryPlan rp, string replicationProvider)
         {
