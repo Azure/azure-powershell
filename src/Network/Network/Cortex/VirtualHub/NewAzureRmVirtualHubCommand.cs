@@ -85,8 +85,8 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The route tables associated with this Virtual Hub.")]
-        public PSVirtualHubRouteTable[] RouteTable { get; set; }
+            HelpMessage = "The route table associated with this Virtual Hub.")]
+        public PSVirtualHubRouteTable RouteTable { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -157,11 +157,7 @@ namespace Microsoft.Azure.Commands.Network
                         virtualHub.VirtualNetworkConnections.AddRange(this.HubVnetConnection);
                     }
 
-                    virtualHub.RouteTables = new List<PSVirtualHubRouteTable>();
-                    if (this.RouteTable != null)
-                    {
-                        virtualHub.RouteTables.AddRange(this.RouteTable);
-                    }
+                    virtualHub.RouteTable = this.RouteTable;
 
                     if (string.IsNullOrWhiteSpace(this.Sku))
                     {
