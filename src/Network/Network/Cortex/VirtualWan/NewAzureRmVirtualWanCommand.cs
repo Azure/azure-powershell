@@ -72,6 +72,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The type of the Virtual Wan.")]
+        [PSArgumentCompleter("Basic", "Standard")]
         public string VirtualWANType { get; set; }
 
         [Parameter(
