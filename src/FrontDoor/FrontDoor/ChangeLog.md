@@ -18,12 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 1.1.2
-* Introduced UrlRewriteAction and CacheKeyQueryStringAction to RulesEngine.
-* Fixed several bugs like missing "Selector" Input in New-AzDeliveryRuleCondition cmdlet.
-
-## Version 1.1.1
 * Fixed miscellaneous typos across module
 
 ## Version 1.1.0
