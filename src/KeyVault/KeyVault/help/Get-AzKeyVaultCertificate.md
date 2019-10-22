@@ -104,7 +104,7 @@ Updated     : 2/8/2016 11:21:45 PM
 ```
 
 ### Example 2: Get cert and save it as pfx
-This command gets the certificate named TestCert01 from the key vault named ContosoKV01. To download the certificate as pfx file, run following command. These commands access SecredId and then save the content as a pfx file.
+This command gets the certificate named TestCert01 from the key vault named ContosoKV01. To download the certificate as pfx file, run following command. These commands access SecretId and then save the content as a pfx file.
 
 ```powershell
 $cert = Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
