@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(
         VerbsCommon.Add,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubRoute",
-        SupportsShouldProcess = true),
+        SupportsShouldProcess = false),
         OutputType(typeof(PSVirtualHubRoute))]
     public class AddAzureRmVirtualHubRouteCommand : VirtualHubRouteTableBaseCmdlet
     {
