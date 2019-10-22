@@ -15,22 +15,28 @@ Updates an application gateway firewall policy.
 ### ByFactoryObject (Default)
 ```
 Set-AzApplicationGatewayFirewallPolicy -InputObject <PSApplicationGatewayWebApplicationFirewallPolicy>
- [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>] [-PolicySetting <PSApplicationGatewayFirewallPolicySettings>] [-ManagedRule <PSApplicationGatewayManagedRule>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>]
+ [-PolicySetting <PSApplicationGatewayFirewallPolicySettings>]
+ [-ManagedRule <PSApplicationGatewayFirewallPolicyManagedRules>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByFactoryName
 ```
 Set-AzApplicationGatewayFirewallPolicy -Name <String> -ResourceGroupName <String>
- [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>] [-PolicySetting <PSApplicationGatewayFirewallPolicySettings>] [-ManagedRule <PSApplicationGatewayManagedRule>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>]
+ [-PolicySetting <PSApplicationGatewayFirewallPolicySettings>]
+ [-ManagedRule <PSApplicationGatewayFirewallPolicyManagedRules>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Set-AzApplicationGatewayFirewallPolicy -ResourceId <String>
- [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>] [-PolicySetting <PSApplicationGatewayFirewallPolicySettings> [-ManagedRule <PSApplicationGatewayManagedRule>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-CustomRule <PSApplicationGatewayFirewallCustomRule[]>]
+ [-PolicySetting <PSApplicationGatewayFirewallPolicySettings>]
+ [-ManagedRule <PSApplicationGatewayFirewallPolicyManagedRules>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,6 +113,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ManagedRule
+ManagedRules of the firewall policy
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicyManagedRules
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 The Firewall Policy Name.
 
@@ -119,6 +140,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PolicySetting
+Policysettings of the firewall policy
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicySettings
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -152,8 +188,38 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
