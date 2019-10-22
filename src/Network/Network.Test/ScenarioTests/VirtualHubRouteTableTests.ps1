@@ -20,13 +20,13 @@ function Test-VirtualHubRouteTableCRUD
 {
     # Setup
     $rgName = Get-ResourceGroupName
-    # ExpressRoute gateways have been enabled only in westcentralus region
     $rglocation = Get-ProviderLocation "ResourceManagement" "westcentralus"
 
     $virtualWanName = Get-ResourceName
     $virtualHubName = Get-ResourceName
     $expressRouteGatewayName = Get-ResourceName
 	$routeTable1Name = Get-ResourceName
+	$remoteVirtualNetworkName = Get-ResourceName
 
     try
     {
@@ -76,35 +76,17 @@ function Test-VirtualHubRouteTableCRUD
 		Assert-AreEqual 1 @($routes1).Count
 
 		# Delete a RouteTable child resource
-		Remove-AzVirtualHubRouteTable -ResourceGroupName $rgName -HubName $virtualHubName -Name $routeTable1Name
+		Remove-AzVirtualHubRouteTable -ResourceGroupName $rgName -HubName $virtualHubName -Name $routeTable1Name -Force
 		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
 		Assert-AreEqual $virtualHubName $virtualHub.Name
 		$routeTables = $virtualHub.RouteTables
 		Assert-AreEqual 0 @($routeTables).Count
-
-		# Create a HubVirtualNetworkConnection
-		$remoteVirtualNetwork = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $remoteVirtualNetworkName -Location $rglocation -AddressPrefix "10.0.1.0/24"
-		$createdHubVnetConnection = New-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $hubVnetConnectionName -RemoteVirtualNetwork $remoteVirtualNetwork
-		$hubVnetConnection = Get-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $hubVnetConnectionName
-		Assert-AreEqual $hubVnetConnectionName $hubVnetConnection.Name
-        $hubVnetConnections = Get-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName
-        Assert-NotNull $hubVnetConnections
-        $hubVnetConnections = Get-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name "*"
-        Assert-NotNull $hubVnetConnections
-
-		# Update a HubVirtualNetworkConnection
-		Update-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $hubVnetConnectionName -EnableInternetSecurity $true
-		$hubVnetConnection = Get-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $hubVnetConnectionName
-		Assert-AreEqual $hubVnetConnection.EnableInternetSecurity $true
-
+		
         # Clean up
-		$delete = Remove-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName -Force -PassThru
-        Assert-AreEqual $True $delete
-
         Remove-AzureRmExpressRouteGateway -ResourceGroupName $rgName -Name $expressRouteGatewayName -Force
         Assert-ThrowsLike { Get-AzureRmExpressRouteGateway -ResourceGroupName $rgName -Name $expressRouteGatewayName } "*Not*Found*"
 
-        Remove-AzureRmVirtualHub -ResourceGroupName $hubRgName -Name $virtualHubName -Force
+        Remove-AzureRmVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force
 
         Remove-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force
         Assert-ThrowsLike { Get-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName } "*Not*Found*"
