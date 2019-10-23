@@ -65,5 +65,9 @@ namespace Microsoft.Azure.Commands.Network
 
         internal const string ByRemoteVirtualNetworkObject = "ByRemoteVirtualNetworkObject";
         internal const string ByRemoteVirtualNetworkResourceId = "ByRemoteVirtualNetworkResourceId";
+
+        internal const string ByVirtualHubRouteTableObject = "ByVirtualHubRouteTableObject";
+        internal const string ByVirtualHubRouteTableResourceId = "ByVirtualHubRouteTableResourceId";
+        internal const string ByVirtualHubRouteTableName = "ByVirtualHubRouteTableName";
     }
 }

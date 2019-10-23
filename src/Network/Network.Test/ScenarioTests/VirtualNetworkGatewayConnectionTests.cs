@@ -67,7 +67,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset4)]
         public void TestVirtualNetworkGatewayConnectionWithActiveAcitveGateway()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionWithActiveActiveGateway");
@@ -75,10 +75,26 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset4)]
         public void TestVirtualNetworkGatewayVpnDeviceConfigurationScripts()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionVpnDeviceConfigurations");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset4)]
+        public void TestVirtualNetworkGatewayConnectionPacketCapture()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionPacketCapture");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset4)]
+        public void TestVirtualNetworkGatewayConnectionWithTrafficSelectorCRUD()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionWithTrafficSelector");
         }
     }
 }

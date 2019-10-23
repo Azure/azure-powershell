@@ -19,12 +19,63 @@
 --->
 
 ## Upcoming Release
+* Add new cmdlet Get-AzAvailableServiceAlias which can be called to get the aliases that can be used for Service Endpoint Policies.
+* Added support for the adding traffic selectors to Virtual Network Gateway Connections
+    - New cmdlets added:
+        - New-AzureRmTrafficSelectorPolicy
+    - Cmdlets updated with optional parameter -TrafficSelectorPolicies
+        -New-AzureRmVirtualNetworkGatewayConnection
+        -Set-AzureRmVirtualNetworkGatewayConnection
 * Add support for ESP and AH protocols in network security rule configurations
     - Updated cmdlets:
         - Add-AzNetworkSecurityRuleConfig
         - New-AzNetworkSecurityRuleConfig
         - Set-AzNetworkSecurityRuleConfig
 * Improve handling of exceptions in Cortex cmdlets
+* New Generations and SKUs for VirtualNetworkGateways
+  - Introduce new Generations for VirtualNetworkGateways.
+  - Introduce new high throughput SKUs for VirtualNetworkGateways.
+* New cmdlets to support the azure firewall policy
+* Add support for child resource RouteTables of VirtualHub
+	- New cmdlets added:
+		- Add-AzVirtualHubRoute
+		- Add-AzVirtualHubRouteTable
+		- Get-AzVirtualHubRouteTable
+		- Remove-AzVirtualHubRouteTable
+		- Set-AzVirtualHub
+* Add support for new properties Sku of VirtualHub and VirtualWANType of VirtualWan
+	- Cmdlets updated with optional parameters:
+		- New-AzVirtualHub : added parameter Sku
+		- Update-AzVirtualHub : added parameter Sku
+		- New-AzVirtualWan : added parameter VirtualWANType
+		- Update-AzVirtualWan : added parameter VirtualWANType
+* Add support for EnableInternetSecurity property for HubVnetConnection, VpnConnection and ExpressRouteConnection
+	- New cmdlets added:
+		- Update-AzureRmVirtualHubVnetConnection
+	- Cmdlets updated with optional parameters:
+		- New-AzureRmVirtualHubVnetConnection : added parameter EnableInternetSecurity
+		- New-AzureRmVpnConnection : added parameter EnableInternetSecurity
+		- Update-AzureRmVpnConnection : added parameter EnableInternetSecurity
+		- New-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
+		- Set-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
+* Virtual Wan Point to site feature release.
+  - Introduce new command lets for managing point to site VpnServerConfiguraiton resource
+    - Get-AzVpnServerConfiguration
+    - New-AzVpnServerConfiguration
+    - Remove-AzVpnServerConfiguration
+    - Update-AzVpnServerConfiguration
+  - Introduce new command lets for managing P2SVpnGateway resource that will be used for Point to site connectivity from Virtual wan perspective
+    - Get-AzP2sVpnGateway
+    - Get-AzP2sVpnGatewayConnectionHealth
+    - Get-AzP2sVpnGatewayDetailedConnectionHealth
+    - New-AzP2sVpnGateway
+    - Remove-AzP2sVpnGateway
+    - Update-AzP2sVpnGateway
+  - Introduce new command lets for VirtualWan resource to get all associated VpnServerConfigurations and download Wan level Point to site client profile.
+    - Get-AzVirtualWanVpnServerConfiguration
+    - Get-AzVirtualWanVpnServerConfigurationVpnProfile
+
+## Version 1.14.0
 * Fix incorrect example in `New-AzApplicationGateway` reference documentation 
 * Add note in `Get-AzNetworkWatcherPacketCapture` reference documentation about retrieving all properties for a packet capture
 * Fixed example in `Test-AzNetworkWatcherIPFlow` reference documentation to correctly enumerate NICs
@@ -46,25 +97,6 @@
         - New-VpnConnection
         - Update-VpnConnection
 * Fixed documents for some PowerShell examples to use Az cmdlets instead of AzureRM cmdlets
-* New Generations and SKUs for VirtualNetworkGateways
-  - Introduce new Generations for VirtualNetworkGateways.
-  - Introduce new high throughput SKUs for VirtualNetworkGateways.
-* Virtual wan Point to site feature release.
-  - Introduce new command lets for managing point to site VpnServerConfiguraiton resource
-    - Get-AzVpnServerConfiguration
-    - New-AzVpnServerConfiguration
-    - Remove-AzVpnServerConfiguration
-    - Update-AzVpnServerConfiguration
-  - Introduce new command lets for managing P2SVpnGateway resource that will be used for Point to site connectivity from Virtual wan perspective
-    - Get-AzP2sVpnGateway
-    - Get-AzP2sVpnGatewayConnectionHealth
-    - Get-AzP2sVpnGatewayDetailedConnectionHealth
-    - New-AzP2sVpnGateway
-    - Remove-AzP2sVpnGateway
-    - Update-AzP2sVpnGateway
-  - Introduce new command lets for VirtualWan resource to get all associated VpnServerConfigurations and download Wan level Point to site client profile.
-    - Get-AzVirtualWanVpnServerConfiguration
-    - Get-AzVirtualWanVpnServerConfigurationVpnProfile
 
 ## Version 1.13.0
 * Updated New-AzPrivateLinkServiceIpConfig
@@ -252,3 +284,4 @@
         - Set-AzApplicationGatewaySslCertificate
     - New-AzApplicationGateway cmdlet updated with optional parameter -UserAssignedIdentityId, -UserAssignedIdentity
 * Add MaxCapacity property in ApplicationGatewayAutoscaleConfiguration
+
