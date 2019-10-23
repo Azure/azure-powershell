@@ -20,9 +20,8 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [CmdletDeprecation(ReplacementCmdletName = "Get-AzBatchSupportedImage")]
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchNodeAgentSku"),OutputType(typeof(PSNodeAgentSku))]
-    public class GetBatchAccountNodeAgentSkuCommand : BatchObjectModelCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchSupportedImage"),OutputType(typeof(PSImageInformation))]
+    public class GetBatchAccountSupportedImagesCommand : BatchObjectModelCmdletBase
     {
         private int maxCount = Constants.DefaultMaxCount;
 
@@ -38,9 +37,9 @@ namespace Microsoft.Azure.Commands.Batch
             set { this.maxCount = value; }
         }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
-            foreach (PSNodeAgentSku nodeAgentSku in BatchClient.ListNodeAgentSkus(this.BatchContext, this.Filter, this.MaxCount, this.AdditionalBehaviors))
+            foreach (PSImageInformation nodeAgentSku in BatchClient.ListSupportedImages(this.BatchContext, this.Filter, this.MaxCount, this.AdditionalBehaviors))
             {
                 WriteObject(nodeAgentSku);
             }
