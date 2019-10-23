@@ -58,6 +58,7 @@
 		- Update-AzureRmVpnConnection : added parameter EnableInternetSecurity
 		- New-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
 		- Set-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
+* Support for Destination FQDNs in Network Rules and Translated FQDN in NAT Rules for Azure Firewall
 
 ## Version 1.14.0
 * Fix incorrect example in `New-AzApplicationGateway` reference documentation 
