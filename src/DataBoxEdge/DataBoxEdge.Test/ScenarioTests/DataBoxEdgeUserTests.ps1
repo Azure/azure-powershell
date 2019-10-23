@@ -14,7 +14,7 @@
 
 function Get-User
 {
-    return getAssetName
+	return getAssetName
 }
 
 <#
@@ -23,12 +23,12 @@ Negative test. Get resources from an non-existing empty group.
 #>
 function Test-GetNonExistingUser
 {	
-    $rgname = Get-DeviceResourceGroupName
-    $dfname = Get-DeviceName
+	$rgname = Get-DeviceResourceGroupName
+	$dfname = Get-DeviceName
 	$name = Get-User
 	
-    # Test
-	Assert-ThrowsContains { Get-AzDataBoxEdgeUser -ResourceGroupName $rgname -DeviceName $dfname -Name $name  } "not find"    
+	# Test
+	Assert-ThrowsContains { Get-AzDataBoxEdgeUser -ResourceGroupName $rgname -DeviceName $dfname -Name $name  } "not find"	
 }
 
 
@@ -38,8 +38,8 @@ Tests Create New User
 #>
 function Test-CreateNewUser
 {	
-    $rgname = Get-DeviceResourceGroupName
-    $dfname = Get-DeviceName
+	$rgname = Get-DeviceResourceGroupName
+	$dfname = Get-DeviceName
 	$name = Get-User
 	
 	$passwordString = Get-Userpassword
@@ -50,14 +50,14 @@ function Test-CreateNewUser
 	
 	# Test
 	try
-    {
-        $expected = New-AzDataBoxEdgeUser $rgname $dfname $name -Password $password -EncryptionKey $encryptionKey
+	{
+		$expected = New-AzDataBoxEdgeUser $rgname $dfname $name -Password $password -EncryptionKey $encryptionKey
 		Assert-AreEqual $expected.Name $name
-    }
-    finally
-    {
+	}
+	finally
+	{
 		Remove-AzDataBoxEdgeUser $rgname $dfname $name
-    }  
+	}  
 }
 
 
@@ -67,8 +67,8 @@ Test remove User. Creates new user then removes user and try to get the user
 #>
 function Test-RemoveUser
 {	
-    $rgname = Get-DeviceResourceGroupName
-    $dfname = Get-DeviceName
+	$rgname = Get-DeviceResourceGroupName
+	$dfname = Get-DeviceName
 	$name = Get-User
 
 	$passwordString = Get-Userpassword
@@ -78,13 +78,13 @@ function Test-RemoveUser
 
 	# Test
 	try
-    {
-        $expected = New-AzDataBoxEdgeUser $rgname $dfname $name -Password $password -EncryptionKey $encryptionKey
+	{
+		$expected = New-AzDataBoxEdgeUser $rgname $dfname $name -Password $password -EncryptionKey $encryptionKey
 		Assert-AreEqual $expected.Name $name
 		Remove-AzDataBoxEdgeUser $rgname $dfname $name
 	}
-    finally
-    {
-		Assert-ThrowsContains { Get-AzDataBoxEdgeUser -ResourceGroupName $rgname -DeviceName $dfname -Name $name  } "not find"    
-    }  
+	finally
+	{
+		Assert-ThrowsContains { Get-AzDataBoxEdgeUser -ResourceGroupName $rgname -DeviceName $dfname -Name $name  } "not find"	
+	}  
 }

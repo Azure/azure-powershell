@@ -14,12 +14,12 @@
 
 function Get-StorageAccountCredentialName
 {
-    return getAssetName
+	return getAssetName
 }
 
 function Get-ShareName
 {
-    return getAssetName
+	return getAssetName
 }
 
 
@@ -30,12 +30,12 @@ Negative test. Get resources from an non-existing empty group.
 #>
 function Test-GetShareNonExistent
 {	
-    $rgname = Get-DeviceResourceGroupName
-    $dfname = Get-DeviceName
+	$rgname = Get-DeviceResourceGroupName
+	$dfname = Get-DeviceName
 	$sharename = Get-ShareName
 	
-    # Test
-	Assert-ThrowsContains { Get-AzDataBoxEdgeShare $rgname $dfname $sharename  } "not find"    
+	# Test
+	Assert-ThrowsContains { Get-AzDataBoxEdgeShare $rgname $dfname $sharename  } "not find"	
 }
 
 <#
@@ -44,8 +44,8 @@ Tests Create New StorageAccountCredential
 #>
 function Test-CreateShare
 {	
-    $rgname = Get-DeviceResourceGroupName
-    $dfname = Get-DeviceName
+	$rgname = Get-DeviceResourceGroupName
+	$dfname = Get-DeviceName
 	$sharename = Get-ShareName
 	$dataFormat = 'BlockBlob'
 
@@ -60,21 +60,21 @@ function Test-CreateShare
 
 	$storageAccountKeys = Get-AzStorageAccountKey $rgname $staname
 	$storageAccountKey = ConvertTo-SecureString $storageAccountKeys[0] -AsPlainText -Force
-    $storageAccountCredential = New-AzDataBoxEdgeStorageAccountCredential $rgname $dfname $staname -StorageAccountType $storageAccountType -StorageAccountAccessKey $storageAccountKey -EncryptionKey $encryptionKey
+	$storageAccountCredential = New-AzDataBoxEdgeStorageAccountCredential $rgname $dfname $staname -StorageAccountType $storageAccountType -StorageAccountAccessKey $storageAccountKey -EncryptionKey $encryptionKey
 		
 	# Test
 	try
-    {
-        $expected = New-AzDataBoxEdgeShare $rgname $dfname $sharename $storageAccountCredential.Name -Smb -DataFormat $dataFormat
+	{
+		$expected = New-AzDataBoxEdgeShare $rgname $dfname $sharename $storageAccountCredential.Name -Smb -DataFormat $dataFormat
 		Assert-AreEqual $expected.Name $sharename
 		
-    }
-    finally
-    {
+	}
+	finally
+	{
 		Remove-AzDataBoxEdgeShare $rgname $dfname $sharename
 		Remove-AzDataBoxEdgeStorageAccountCredential $rgname $dfname $staname
 		Remove-AzStorageAccount $rgname $staname
-    }  
+	}  
 }
 
 <#
@@ -83,8 +83,8 @@ Tests Create New StorageAccountCredential
 #>
 function Test-RemoveShare
 {	
-    $rgname = Get-DeviceResourceGroupName
-    $dfname = Get-DeviceName
+	$rgname = Get-DeviceResourceGroupName
+	$dfname = Get-DeviceName
 	$sharename = Get-ShareName
 	$dataFormat = 'BlockBlob'
 
@@ -100,20 +100,20 @@ function Test-RemoveShare
 
 	$storageAccountKeys = Get-AzStorageAccountKey $rgname $staname
 	$storageAccountKey = ConvertTo-SecureString $storageAccountKeys[0] -AsPlainText -Force
-    $storageAccountCredential = New-AzDataBoxEdgeStorageAccountCredential $rgname $dfname $staname -StorageAccountType $storageAccountType -StorageAccountAccessKey $storageAccountKey -EncryptionKey $encryptionKey
+	$storageAccountCredential = New-AzDataBoxEdgeStorageAccountCredential $rgname $dfname $staname -StorageAccountType $storageAccountType -StorageAccountAccessKey $storageAccountKey -EncryptionKey $encryptionKey
 		
 	# Test
 	try
-    {
-        $expected = New-AzDataBoxEdgeShare $rgname $dfname $sharename $storageAccountCredential.Name -Smb -DataFormat $dataFormat
+	{
+		$expected = New-AzDataBoxEdgeShare $rgname $dfname $sharename $storageAccountCredential.Name -Smb -DataFormat $dataFormat
 		Remove-AzDataBoxEdgeShare $rgname $dfname $sharename
-		Assert-ThrowsContains { Get-AzDataBoxEdgeShare $rgname $dfname $sharename  } "not find"    
+		Assert-ThrowsContains { Get-AzDataBoxEdgeShare $rgname $dfname $sharename  } "not find"	
 
 		
-    }
-    finally
-    {
+	}
+	finally
+	{
 		Remove-AzDataBoxEdgeStorageAccountCredential $rgname $dfname $staname
 		Remove-AzStorageAccount $rgname $staname
-    }  
+	}  
 }

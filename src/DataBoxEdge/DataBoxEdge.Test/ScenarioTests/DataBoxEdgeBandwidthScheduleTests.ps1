@@ -14,7 +14,7 @@
 
 function Get-BandwidthScheduleName
 {
-    return getAssetName
+	return getAssetName
 }
 
 <#
@@ -23,13 +23,13 @@ Negative test. Get resources from an non-existing empty group.
 #>
 function Test-GetNonExistingBandwidthSchedule
 {	
-    $rgname = Get-DeviceResourceGroupName
-    $dfname = Get-DeviceName
+	$rgname = Get-DeviceResourceGroupName
+	$dfname = Get-DeviceName
 	$bwname = Get-BandwidthScheduleName
 	
-    
-    # Test
-	Assert-ThrowsContains { Get-AzDataBoxEdgeBandwidthSchedule -ResourceGroupName $rgname -DeviceName $dfname -Name $bwname } "not find"    
+	
+	# Test
+	Assert-ThrowsContains { Get-AzDataBoxEdgeBandwidthSchedule -ResourceGroupName $rgname -DeviceName $dfname -Name $bwname } "not find"	
 }
 
 <#
@@ -38,24 +38,24 @@ Create Bandwidth schedule
 #>
 function Test-CreateBandwidthSchedule
 {	
-    $rgname = Get-DeviceResourceGroupName
-    $dfname = Get-DeviceName
+	$rgname = Get-DeviceResourceGroupName
+	$dfname = Get-DeviceName
 	$bwname = Get-BandwidthScheduleName
 	$bwRateInMbps = 45
 	$bwStartTime = "11:00:00"
 	$bwStopTime = "13:00:00"
 	$bwDaysOfWeek = "Sunday,Saturday"
 
-    # Test
+	# Test
 	try
-    {
-        $expected = New-AzDataBoxEdgeBandwidthSchedule $rgname $dfname $bwname -DaysOfWeek $bwDaysOfWeek -StartTime $bwStartTime -StopTime $bwStopTime -Bandwidth $bwRateInMbps
+	{
+		$expected = New-AzDataBoxEdgeBandwidthSchedule $rgname $dfname $bwname -DaysOfWeek $bwDaysOfWeek -StartTime $bwStartTime -StopTime $bwStopTime -Bandwidth $bwRateInMbps
 		Assert-AreEqual $expected.Name $bwname
-    }
-    finally
-    {
+	}
+	finally
+	{
 		Remove-AzDataBoxEdgeBandwidthSchedule $rgname $dfname $bwname
-    }  
+	}  
 }
 
 <#
@@ -64,8 +64,8 @@ Update Bandwidth schedule
 #>
 function Test-UpdateBandwidthSchedule
 {	
-    $rgname = Get-DeviceResourceGroupName
-    $dfname = Get-DeviceName
+	$rgname = Get-DeviceResourceGroupName
+	$dfname = Get-DeviceName
 	$bwname = Get-BandwidthScheduleName
 	$bwRateInMbps = 45
 	$bwStartTime = "14:00:00"
@@ -73,17 +73,17 @@ function Test-UpdateBandwidthSchedule
 	$bwDaysOfWeek = "Sunday,Saturday"
 	$bwNewRateInMbps = 95
 	
-    # Test
+	# Test
 	try
-    {
-        New-AzDataBoxEdgeBandwidthSchedule $rgname $dfname $bwname -DaysOfWeek $bwDaysOfWeek -StartTime $bwStartTime -StopTime $bwStopTime -Bandwidth $bwRateInMbps
+	{
+		New-AzDataBoxEdgeBandwidthSchedule $rgname $dfname $bwname -DaysOfWeek $bwDaysOfWeek -StartTime $bwStartTime -StopTime $bwStopTime -Bandwidth $bwRateInMbps
 		$expected = Set-AzDataBoxEdgeBandwidthSchedule $rgname $dfname $bwname -Bandwidth $bwNewRateInMbps
 		Assert-AreEqual $expected.BandwidthSchedule.RateInMbps $bwNewRateInMbps
-    }
-    finally
-    {
+	}
+	finally
+	{
 		Remove-AzDataBoxEdgeBandwidthSchedule $rgname $dfname $bwname
-    }  
+	}  
 }
 
 
@@ -93,24 +93,24 @@ Unlimited Bandwidth schedule
 #>
 function Test-CreateUnlimitedBandwidthSchedule
 {	
-    $rgname = Get-DeviceResourceGroupName
-    $dfname = Get-DeviceName
+	$rgname = Get-DeviceResourceGroupName
+	$dfname = Get-DeviceName
 	$bwname = Get-BandwidthScheduleName
 	$bwStartTime = "17:00:00"
 	$bwStopTime = "19:00:00"
 	$bwDaysOfWeek = "Sunday,Saturday"
 	$bwUnlimitedRateInMbps = 0
 	
-    # Test
+	# Test
 	try
-    {
-        $expected  = New-AzDataBoxEdgeBandwidthSchedule $rgname $dfname $bwname -DaysOfWeek $bwDaysOfWeek -StartTime $bwStartTime -StopTime $bwStopTime -UnlimitedBandwidth $true
+	{
+		$expected  = New-AzDataBoxEdgeBandwidthSchedule $rgname $dfname $bwname -DaysOfWeek $bwDaysOfWeek -StartTime $bwStartTime -StopTime $bwStopTime -UnlimitedBandwidth $true
 		Assert-AreEqual $expected.BandwidthSchedule.RateInMbps $bwUnlimitedRateInMbps
-    }
-    finally
-    {
+	}
+	finally
+	{
 		Remove-AzDataBoxEdgeBandwidthSchedule $rgname $dfname $bwname
-    }  
+	}  
 }
 
 
@@ -120,23 +120,23 @@ Test Remove BandwidthSchedule
 #>
 function Test-RemoveBandwidthSchedule
 {	
-    $rgname = Get-DeviceResourceGroupName
-    $dfname = Get-DeviceName
+	$rgname = Get-DeviceResourceGroupName
+	$dfname = Get-DeviceName
 	$bwname = Get-BandwidthScheduleName
 	$bwRateInMbps = 45
 	$bwStartTime = "11:00:00"
 	$bwStopTime = "13:00:00"
 	$bwDaysOfWeek = "Sunday,Saturday"
 
-    # Test
+	# Test
 	try
-    {
-        $expected = New-AzDataBoxEdgeBandwidthSchedule $rgname $dfname $bwname -DaysOfWeek $bwDaysOfWeek -StartTime $bwStartTime -StopTime $bwStopTime -Bandwidth $bwRateInMbps
+	{
+		$expected = New-AzDataBoxEdgeBandwidthSchedule $rgname $dfname $bwname -DaysOfWeek $bwDaysOfWeek -StartTime $bwStartTime -StopTime $bwStopTime -Bandwidth $bwRateInMbps
 		Assert-AreEqual $expected.Name $bwname
 		Remove-AzDataBoxEdgeBandwidthSchedule $rgname $dfname $bwname
-    }
-    finally
-    {
-		Assert-ThrowsContains { Get-AzDataBoxEdgeBandwidthSchedule -ResourceGroupName $rgname -DeviceName $dfname -Name $bwname } "not find"    
-    }  
+	}
+	finally
+	{
+		Assert-ThrowsContains { Get-AzDataBoxEdgeBandwidthSchedule -ResourceGroupName $rgname -DeviceName $dfname -Name $bwname } "not find"	
+	}  
 }

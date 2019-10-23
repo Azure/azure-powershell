@@ -14,7 +14,7 @@
 
 function Get-StorageAccountCredentialName
 {
-    return getAssetName
+	return getAssetName
 }
 
 <#
@@ -23,12 +23,12 @@ Negative test. Get resources from an non-existing empty group.
 #>
 function Test-GetStorageAccountCredentialNonExistent
 {	
-    $rgname = Get-DeviceResourceGroupName
-    $dfname = Get-DeviceName
+	$rgname = Get-DeviceResourceGroupName
+	$dfname = Get-DeviceName
 	$staname = Get-StorageAccountCredentialName
 	
-    # Test
-	Assert-ThrowsContains { Get-AzDataBoxEdgeStorageAccountCredential $rgname $dfname $staname  } "not find"    
+	# Test
+	Assert-ThrowsContains { Get-AzDataBoxEdgeStorageAccountCredential $rgname $dfname $staname  } "not find"
 }
 
 <#
@@ -37,8 +37,8 @@ Tests Create New StorageAccountCredential
 #>
 function Test-CreateStorageAccountCredential
 {	
-    $rgname = Get-DeviceResourceGroupName
-    $dfname = Get-DeviceName
+	$rgname = Get-DeviceResourceGroupName
+	$dfname = Get-DeviceName
 	$staname = Get-StorageAccountCredentialName
 	$encryptionKeyString = Get-EncryptionKey 
 	$encryptionKey = ConvertTo-SecureString $encryptionKeyString -AsPlainText -Force
@@ -50,18 +50,18 @@ function Test-CreateStorageAccountCredential
 
 	$storageAccountKeys = Get-AzStorageAccountKey $rgname $staname
 	$storageAccountKey = ConvertTo-SecureString $storageAccountKeys[0] -AsPlainText -Force
-    # Test
+	# Test
 	try
-    {
-        $expected = New-AzDataBoxEdgeStorageAccountCredential $rgname $dfname $staname -StorageAccountType $storageAccountType -StorageAccountAccessKey $storageAccountKey -EncryptionKey $encryptionKey
+	{
+		$expected = New-AzDataBoxEdgeStorageAccountCredential $rgname $dfname $staname -StorageAccountType $storageAccountType -StorageAccountAccessKey $storageAccountKey -EncryptionKey $encryptionKey
 		Assert-AreEqual $expected.Name $staname
 		
-    }
-    finally
-    {
+	}
+	finally
+	{
 		Remove-AzDataBoxEdgeStorageAccountCredential $rgname $dfname $staname
 		Remove-AzStorageAccount $rgname $staname
-    }  
+	}  
 }
 
 <#
@@ -70,8 +70,8 @@ Tests Remove StorageAccountCredential
 #>
 function Test-RemoveStorageAccountCredential
 {	
-     $rgname = Get-DeviceResourceGroupName
-    $dfname = Get-DeviceName
+	 $rgname = Get-DeviceResourceGroupName
+	$dfname = Get-DeviceName
 	$staname = Get-StorageAccountCredentialName
 	$encryptionKeyString = Get-EncryptionKey 
 	$encryptionKey = ConvertTo-SecureString $encryptionKeyString -AsPlainText -Force
@@ -83,15 +83,15 @@ function Test-RemoveStorageAccountCredential
 
 	$storageAccountKeys = Get-AzStorageAccountKey $rgname $staname
 	$storageAccountKey = ConvertTo-SecureString $storageAccountKeys[0] -AsPlainText -Force
-    # Test
+	# Test
 	try
-    {
-        New-AzDataBoxEdgeStorageAccountCredential $rgname $dfname $staname -StorageAccountType $storageAccountType -StorageAccountAccessKey $storageAccountKey -EncryptionKey $encryptionKey
+	{
+		New-AzDataBoxEdgeStorageAccountCredential $rgname $dfname $staname -StorageAccountType $storageAccountType -StorageAccountAccessKey $storageAccountKey -EncryptionKey $encryptionKey
 		Remove-AzDataBoxEdgeStorageAccountCredential $rgname $dfname $staname
-    }
-    finally
-    {
-		Assert-ThrowsContains { Get-AzDataBoxEdgeStorageAccountCredential $rgname $dfname $staname  } "not find"    
+	}
+	finally
+	{
+		Assert-ThrowsContains { Get-AzDataBoxEdgeStorageAccountCredential $rgname $dfname $staname  } "not find"	
 		Remove-AzStorageAccount $rgname $staname 
-    }  
+	}  
 }

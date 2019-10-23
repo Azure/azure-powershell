@@ -14,7 +14,7 @@
 
 function Get-RoleName
 {
-    return getAssetName
+	return getAssetName
 }
 
 
@@ -24,12 +24,12 @@ Negative test. Get resources from an non-existing empty group.
 #>
 function Test-GetRoleNonExistent
 {	
-    $rgname = Get-DeviceResourceGroupName
-    $dfname = Get-DeviceName
+	$rgname = Get-DeviceResourceGroupName
+	$dfname = Get-DeviceName
 	$name = Get-RoleName
 	
-    # Test
-	Assert-ThrowsContains { Get-AzDataBoxEdgeRole $rgname $dfname $name  } "not find"    
+	# Test
+	Assert-ThrowsContains { Get-AzDataBoxEdgeRole $rgname $dfname $name  } "not find"	
 }
 
 <#
@@ -38,8 +38,8 @@ Tests Create New Role
 #>
 function Test-CreateRole
 {	
-    $rgname = Get-DeviceResourceGroupName
-    $dfname = Get-DeviceName
+	$rgname = Get-DeviceResourceGroupName
+	$dfname = Get-DeviceName
 	$name = Get-RoleName
 
 	$deviceConnectionString = Get-DeviceConnectionString
@@ -53,16 +53,16 @@ function Test-CreateRole
 
 	$enabled = "Enabled"
 	$platform = "Windows"
-    # Test
+	# Test
 	try
-    {
+	{
 		$expected  = New-AzDataBoxEdgeRole -ResourceGroupName $rgname -DeviceName $dfname -Name $name -ConnectionString -IotEdgeDeviceConnectionString $iotDeviceConnSec -IotDeviceConnectionString $deviceConnSec -Platform $platform -RoleStatus $enabled -EncryptionKey $encryptionKey
-        Assert-AreEqual $expected.Name $name	
-    }
-    finally
-    {
+		Assert-AreEqual $expected.Name $name	
+	}
+	finally
+	{
 		Remove-AzDataBoxEdgeRole $rgname $dfname $name
-    }  
+	}  
 }
 
 <#
@@ -71,8 +71,8 @@ Tests Remove Role
 #>
 function Test-RemoveRole
 {	
-    $rgname = Get-DeviceResourceGroupName
-    $dfname = Get-DeviceName
+	$rgname = Get-DeviceResourceGroupName
+	$dfname = Get-DeviceName
 	$name = Get-RoleName
 
 	
@@ -87,14 +87,14 @@ function Test-RemoveRole
 
 	$enabled = "Enabled"
 	$platform = "Windows"
-    # Test
+	# Test
 	try
-    {
+	{
 		$expected  = New-AzDataBoxEdgeRole -ResourceGroupName $rgname -DeviceName $dfname -Name $name -ConnectionString -IotEdgeDeviceConnectionString $iotDeviceConnSec -IotDeviceConnectionString $deviceConnSec -Platform $platform -RoleStatus $enabled -EncryptionKey $encryptionKey
 		Remove-AzDataBoxEdgeRole $rgname $dfname $name
-    }
-    finally
-    {
-		Assert-ThrowsContains { Get-AzDataBoxEdgeRole $rgname $dfname $name  } "not find"    
-    }  
+	}
+	finally
+	{
+		Assert-ThrowsContains { Get-AzDataBoxEdgeRole $rgname $dfname $name  } "not find"	
+	}  
 }
