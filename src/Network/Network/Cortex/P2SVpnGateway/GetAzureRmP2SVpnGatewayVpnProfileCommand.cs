@@ -24,26 +24,50 @@ namespace Microsoft.Azure.Commands.Network
     using Newtonsoft.Json;
     using MNM = Microsoft.Azure.Management.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "P2sVpnGatewayVpnProfile", SupportsShouldProcess = true), OutputType(typeof(PSVpnProfileResponse))]
+    [Cmdlet("Get", 
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "P2sVpnGatewayVpnProfile",
+        DefaultParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName,
+        SupportsShouldProcess = true), 
+        OutputType(typeof(PSVpnProfileResponse))]
     public class GetAzureRmP2SVpnGatewayVpnProfileCommand : P2SVpnGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/p2sVpnGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        public virtual string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
+
+        [Alias("P2SVpnGateway")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayObject,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The p2s vpn gateway object to be modified")]
+        [ValidateNotNullOrEmpty]
+        public PSP2SVpnGateway InputObject { get; set; }
+
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayResourceId,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Azure resource ID of the P2SVpnGateway to be modified.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -58,6 +82,31 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+
+            PSP2SVpnGateway existingP2SVpnGateway = null;
+            if (ParameterSetName.Equals(CortexParameterSetNames.ByP2SVpnGatewayObject, StringComparison.OrdinalIgnoreCase))
+            {
+                existingP2SVpnGateway = this.InputObject;
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.Name;
+            }
+            else
+            {
+                if (ParameterSetName.Equals(CortexParameterSetNames.ByP2SVpnGatewayResourceId, StringComparison.OrdinalIgnoreCase))
+                {
+                    var parsedResourceId = new ResourceIdentifier(ResourceId);
+                    Name = parsedResourceId.ResourceName;
+                    ResourceGroupName = parsedResourceId.ResourceGroupName;
+                }
+
+                existingP2SVpnGateway = this.GetP2SVpnGateway(this.ResourceGroupName, this.Name);
+            }
+
+            if (existingP2SVpnGateway == null)
+            {
+                throw new PSArgumentException(Properties.Resources.P2SVpnGatewayNotFound);
+            }
+
             string shouldProcessMessage = string.Format("Execute Get-AzureRmP2sVpnGatewayVpnProfile for ResourceGroupName {0} P2SVpnGateway {1}", ResourceGroupName, Name);
             if (ShouldProcess(shouldProcessMessage, VerbsCommon.Get))
             {

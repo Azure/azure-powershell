@@ -44,5 +44,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(VpnClientConnectionHealth, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
+
+        [JsonIgnore]
+        public string P2SConnectionConfigurationsText
+        {
+            get { return JsonConvert.SerializeObject(P2SConnectionConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }

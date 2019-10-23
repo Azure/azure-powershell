@@ -339,6 +339,9 @@
   <data name="VpnSiteRequiredForVpnConnection" xml:space="preserve">
     <value>A valid VpnSite is required to create a VpnConnection</value>
   </data>
+  <data name="VpnServerConfigurationRequiredForP2SVpnGateway" xml:space="preserve">
+    <value>A valid VpnServerConfiguration is required to create a P2SVpnGateway</value>
+  </data>  
   <data name="VpnServerConfigurationNotFound" xml:space="preserve">
     <value>The VpnServerConfiguration could not be found.</value>
   </data>  

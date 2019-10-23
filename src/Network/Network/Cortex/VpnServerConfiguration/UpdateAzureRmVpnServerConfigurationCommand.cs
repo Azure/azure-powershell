@@ -33,13 +33,21 @@ namespace Microsoft.Azure.Commands.Network
 
     [Cmdlet("Update",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnServerConfiguration",
-        DefaultParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.NoVirtualWanUpdate,
+        DefaultParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByCertificateAuthentication,
         SupportsShouldProcess = true),
         OutputType(typeof(PSVpnServerConfiguration))]
     public class UpdateAzureRmVpnServerConfigurationCommand : VpnServerConfigurationBaseCmdlet
     {
         [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByCertificateAuthentication,
+            Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
+            Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByAadAuthentication,
             Mandatory = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -48,7 +56,15 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("ResourceName", "VpnServerConfigurationName")]
         [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByCertificateAuthentication,
+            Mandatory = true,
+            HelpMessage = "The resource name.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
+            Mandatory = true,
+            HelpMessage = "The resource name.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByAadAuthentication,
             Mandatory = true,
             HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/vpnServerConfigurations", "ResourceGroupName")]
@@ -57,7 +73,17 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("VpnServerConfiguration")]
         [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject + CortexParameterSetNames.ByCertificateAuthentication,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The vpn server configuration object to be modified")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject + CortexParameterSetNames.ByRadiusAuthentication,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The vpn server configuration object to be modified")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationObject + CortexParameterSetNames.ByAadAuthentication,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The vpn server configuration object to be modified")]
@@ -66,7 +92,17 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("VpnServerConfigurationId")]
         [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByCertificateAuthentication,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Azure resource ID for the vpn server configuration.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByRadiusAuthentication,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Azure resource ID for the vpn server configuration.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationResourceId + CortexParameterSetNames.ByAadAuthentication,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure resource ID for the vpn server configuration.")]
@@ -285,49 +321,48 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // VpnAuthenticationType = Certificate related validations.
-            if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes == null || vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.Certificate))
+            if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes == null || 
+                (vpnServerConfigurationToUpdate.VpnAuthenticationTypes != null && vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.Certificate)))
             {
                 // Read the VpnClientRootCertificates if present
                 if (this.VpnClientRootCertificateFilesList != null)
                 {
-                    vpnServerConfigurationToUpdate.VpnServerConfigVpnClientRootCertificates = new List<PSVpnServerConfigVpnClientRootCertificate>();
+                    vpnServerConfigurationToUpdate.VpnClientRootCertificates = new List<PSClientRootCertificate>();
 
                     foreach (string vpnClientRootCertPath in this.VpnClientRootCertificateFilesList)
                     {
                         X509Certificate2 VpnClientRootCertificate = new X509Certificate2(vpnClientRootCertPath);
 
-                        PSVpnServerConfigVpnClientRootCertificate vpnClientRootCert = new PSVpnServerConfigVpnClientRootCertificate()
+                        PSClientRootCertificate vpnClientRootCert = new PSClientRootCertificate()
                         {
                             Name = Path.GetFileNameWithoutExtension(vpnClientRootCertPath),
                             PublicCertData = Convert.ToBase64String(VpnClientRootCertificate.Export(X509ContentType.Cert))
                         };
-
-                        vpnServerConfigurationToUpdate.VpnServerConfigVpnClientRootCertificates.Add(vpnClientRootCert);
+                        vpnServerConfigurationToUpdate.VpnClientRootCertificates.Add(vpnClientRootCert);
                     }
                 }
 
                 // Read the VpnClientRevokedCertificates if present
                 if (this.VpnClientRevokedCertificateFilesList != null)
                 {
-                    vpnServerConfigurationToUpdate.VpnServerConfigVpnClientRevokedCertificates = new List<PSVpnServerConfigVpnClientRevokedCertificate>();
+                    vpnServerConfigurationToUpdate.VpnClientRevokedCertificates = new List<PSClientCertificate>();
 
                     foreach (string vpnClientRevokedCertPath in this.VpnClientRevokedCertificateFilesList)
                     {
                         X509Certificate2 vpnClientRevokedCertificate = new X509Certificate2(vpnClientRevokedCertPath);
 
-                        PSVpnServerConfigVpnClientRevokedCertificate vpnClientRevokedCert = new PSVpnServerConfigVpnClientRevokedCertificate()
+                        PSClientCertificate vpnClientRevokedCert = new PSClientCertificate()
                         {
                             Name = Path.GetFileNameWithoutExtension(vpnClientRevokedCertPath),
                             Thumbprint = vpnClientRevokedCertificate.Thumbprint
                         };
 
-                        vpnServerConfigurationToUpdate.VpnServerConfigVpnClientRevokedCertificates.Add(vpnClientRevokedCert);
+                        vpnServerConfigurationToUpdate.VpnClientRevokedCertificates.Add(vpnClientRevokedCert);
                     }
                 }
             }
-
             // VpnAuthenticationType = Radius related validations.
-            if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes != null && vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Equals(MNM.VpnAuthenticationType.Radius))
+            else if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.Radius))
             {
                 if (this.RadiusServerAddress != null)
                 {
@@ -347,44 +382,43 @@ namespace Microsoft.Azure.Commands.Network
                 // Read the RadiusServerRootCertificates if present
                 if (this.RadiusServerRootCertificateFilesList != null)
                 {
-                    vpnServerConfigurationToUpdate.VpnServerConfigRadiusServerRootCertificates = new List<PSVpnServerConfigRadiusServerRootCertificate>();
+                    vpnServerConfigurationToUpdate.RadiusServerRootCertificates = new List<PSClientRootCertificate>();
 
                     foreach (string radiusServerRootCertPath in this.RadiusServerRootCertificateFilesList)
                     {
                         X509Certificate2 RadiusServerRootCertificate = new X509Certificate2(radiusServerRootCertPath);
 
-                        PSVpnServerConfigRadiusServerRootCertificate radiusServerRootCert = new PSVpnServerConfigRadiusServerRootCertificate()
+                        PSClientRootCertificate radiusServerRootCert = new PSClientRootCertificate()
                         {
                             Name = Path.GetFileNameWithoutExtension(radiusServerRootCertPath),
                             PublicCertData = Convert.ToBase64String(RadiusServerRootCertificate.Export(X509ContentType.Cert))
                         };
 
-                        vpnServerConfigurationToUpdate.VpnServerConfigRadiusServerRootCertificates.Add(radiusServerRootCert);
+                        vpnServerConfigurationToUpdate.RadiusServerRootCertificates.Add(radiusServerRootCert);
                     }
                 }
 
                 // Read the RadiusClientRootCertificates if present
                 if (this.RadiusClientRootCertificateFilesList != null)
                 {
-                    vpnServerConfigurationToUpdate.VpnServerConfigRadiusClientRootCertificates = new List<PSVpnServerConfigRadiusClientRootCertificate>();
+                    vpnServerConfigurationToUpdate.RadiusClientRootCertificates = new List<PSClientCertificate>();
 
                     foreach (string radiusClientRootCertPath in this.RadiusClientRootCertificateFilesList)
                     {
                         X509Certificate2 radiusClientRootCertificate = new X509Certificate2(radiusClientRootCertPath);
 
-                        PSVpnServerConfigRadiusClientRootCertificate radiusClientRootCert = new PSVpnServerConfigRadiusClientRootCertificate()
+                        PSClientCertificate radiusClientRootCert = new PSClientCertificate()
                         {
                             Name = Path.GetFileNameWithoutExtension(radiusClientRootCertPath),
                             Thumbprint = radiusClientRootCertificate.Thumbprint
                         };
 
-                        vpnServerConfigurationToUpdate.VpnServerConfigRadiusClientRootCertificates.Add(radiusClientRootCert);
+                        vpnServerConfigurationToUpdate.RadiusClientRootCertificates.Add(radiusClientRootCert);
                     }
                 }
             }
-
             // VpnAuthenticationType = AAD related validations.
-            if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes != null && vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Equals(MNM.VpnAuthenticationType.AAD))
+            else if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.AAD))
             {
                 if (vpnServerConfigurationToUpdate.AadAuthenticationParameters == null)
                 {

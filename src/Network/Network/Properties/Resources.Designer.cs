@@ -955,5 +955,16 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VpnSiteRequiredForVpnConnection", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to A valid VpnServerConfiguration is required to create a P2SVpnGateway.
+        /// </summary>
+        internal static string VpnServerConfigurationRequiredForP2SVpnGateway
+        {
+            get
+            {
+                return ResourceManager.GetString("VpnServerConfigurationRequiredForP2SVpnGateway", resourceCulture);
+            }
+        }
     }
 }

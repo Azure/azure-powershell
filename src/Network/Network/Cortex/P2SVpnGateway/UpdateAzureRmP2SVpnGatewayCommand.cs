@@ -31,13 +31,21 @@ namespace Microsoft.Azure.Commands.Network
 
     [Cmdlet("Update",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "P2sVpnGateway",
-        DefaultParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName,
+        DefaultParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName + CortexParameterSetNames.NoVpnServerConfigurationUpdate,
         SupportsShouldProcess = true),
         OutputType(typeof(PSP2SVpnGateway))]
     public class UpdateAzureRmP2SVpnGatewayCommand : P2SVpnGatewayBaseCmdlet
     {
         [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName + CortexParameterSetNames.NoVpnServerConfigurationUpdate,
+            Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName + CortexParameterSetNames.ByVpnServerConfigurationObject,
+            Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
             Mandatory = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -46,7 +54,15 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("ResourceName", "P2SVpnGatewayName", "GatewayName")]
         [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName + CortexParameterSetNames.NoVpnServerConfigurationUpdate,
+            Mandatory = true,
+            HelpMessage = "The P2S vpn gateway name.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName + CortexParameterSetNames.ByVpnServerConfigurationObject,
+            Mandatory = true,
+            HelpMessage = "The P2S vpn gateway name.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
             Mandatory = true,
             HelpMessage = "The P2S vpn gateway name.")]
         [ResourceNameCompleter("Microsoft.Network/p2sVpnGateways", "ResourceGroupName")]
@@ -55,7 +71,17 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("P2SVpnGateway")]
         [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayObject,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayObject + CortexParameterSetNames.NoVpnServerConfigurationUpdate,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The p2s vpn gateway object to be modified")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayObject + CortexParameterSetNames.ByVpnServerConfigurationObject,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The p2s vpn gateway object to be modified")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayObject + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The p2s vpn gateway object to be modified")]
@@ -63,7 +89,17 @@ namespace Microsoft.Azure.Commands.Network
         public PSP2SVpnGateway InputObject { get; set; }
 
         [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayResourceId,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayResourceId + CortexParameterSetNames.NoVpnServerConfigurationUpdate,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Azure resource ID of the P2SVpnGateway to be modified.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayResourceId + CortexParameterSetNames.ByVpnServerConfigurationObject,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Azure resource ID of the P2SVpnGateway to be modified.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayResourceId + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure resource ID of the P2SVpnGateway to be modified.")]
@@ -79,8 +115,37 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipeline = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName + CortexParameterSetNames.ByVpnServerConfigurationObject,
+            HelpMessage = "The VpnServerConfiguration to be attached to this P2SVpnGateway.")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayObject + CortexParameterSetNames.ByVpnServerConfigurationObject,
+            HelpMessage = "The VpnServerConfiguration to be attached to this P2SVpnGateway.")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayResourceId + CortexParameterSetNames.ByVpnServerConfigurationObject,
             HelpMessage = "The VpnServerConfiguration to be attached to this P2SVpnGateway.")]
         public PSVpnServerConfiguration VpnServerConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            HelpMessage = "The id of Vpn server configuration object this P2SVpnGateway will be attached to.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayObject + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            HelpMessage = "The id of Vpn server configuration object this P2SVpnGateway will be attached to.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayResourceId + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            HelpMessage = "The id of Vpn server configuration object this P2SVpnGateway will be attached to.")]
+        [ResourceIdCompleter("Microsoft.Network/vpnServerConfigurations")]
+        public string VpnServerConfigurationId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -100,7 +165,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             PSP2SVpnGateway existingP2SVpnGateway = null;
-            if (ParameterSetName.Equals(CortexParameterSetNames.ByP2SVpnGatewayObject))
+            if (ParameterSetName.Contains(CortexParameterSetNames.ByP2SVpnGatewayObject))
             {
                 existingP2SVpnGateway = this.InputObject;
                 this.ResourceGroupName = this.InputObject.ResourceGroupName;
@@ -108,7 +173,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                if (ParameterSetName.Equals(CortexParameterSetNames.ByP2SVpnGatewayResourceId))
+                if (ParameterSetName.Contains(CortexParameterSetNames.ByP2SVpnGatewayResourceId))
                 {
                     var parsedResourceId = new ResourceIdentifier(ResourceId);
                     Name = parsedResourceId.ResourceName;
@@ -154,14 +219,44 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            ConfirmAction(
-                    Properties.Resources.SettingResourceMessage,
-                    this.Name,
-                    () =>
+            //// Resolve the VpnServerConfiguration, if specified
+            string vpnServerConfigurationResourceGroupName = string.Empty;
+            string vpnServerConfigurationName = string.Empty;
+            if (!ParameterSetName.Contains(CortexParameterSetNames.NoVpnServerConfigurationUpdate))
+            {
+                if (ParameterSetName.Contains(CortexParameterSetNames.ByVpnServerConfigurationObject))
+                {
+                    vpnServerConfigurationResourceGroupName = this.VpnServerConfiguration.ResourceGroupName;
+                    vpnServerConfigurationName = this.VpnServerConfiguration.Name;
+                }
+                else if (ParameterSetName.Contains(CortexParameterSetNames.ByVpnServerConfigurationResourceId))
+                {
+                    var parsedVpnServerConfigurationResourceId = new ResourceIdentifier(this.VpnServerConfigurationId);
+                    vpnServerConfigurationResourceGroupName = parsedVpnServerConfigurationResourceId.ResourceGroupName;
+                    vpnServerConfigurationName = parsedVpnServerConfigurationResourceId.ResourceName;
+                }
+
+                if (!string.IsNullOrWhiteSpace(vpnServerConfigurationResourceGroupName) && !string.IsNullOrWhiteSpace(vpnServerConfigurationName))
+                {
+                    PSVpnServerConfiguration resolvedVpnServerConfiguration = new VpnServerConfigurationBaseCmdlet().GetVpnServerConfiguration(vpnServerConfigurationResourceGroupName, vpnServerConfigurationName);
+
+                    if (resolvedVpnServerConfiguration == null)
                     {
-                        WriteVerbose(String.Format(Properties.Resources.UpdatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-                        WriteObject(this.CreateOrUpdateP2SVpnGateway(this.ResourceGroupName, this.Name, existingP2SVpnGateway, this.Tag));
-                    });
+                        throw new PSArgumentException(Properties.Resources.VpnServerConfigurationNotFound);
+                    }
+
+                    existingP2SVpnGateway.VpnServerConfiguration = new PSResourceId() { Id = resolvedVpnServerConfiguration.Id };
+                }
+            }
+
+            ConfirmAction(
+                Properties.Resources.SettingResourceMessage,
+                this.Name,
+                () =>
+                {
+                    WriteVerbose(String.Format(Properties.Resources.UpdatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
+                    WriteObject(this.CreateOrUpdateP2SVpnGateway(this.ResourceGroupName, this.Name, existingP2SVpnGateway, this.Tag));
+                });
         }
     }
 }

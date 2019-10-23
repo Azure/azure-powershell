@@ -24,36 +24,111 @@ namespace Microsoft.Azure.Commands.Network
     using Newtonsoft.Json;
     using MNM = Microsoft.Azure.Management.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualWanVpnServerConfigurationVpnProfile", SupportsShouldProcess = true), OutputType(typeof(PSVpnProfileResponse))]
+    [Cmdlet("Get",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualWanVpnServerConfigurationVpnProfile",
+        DefaultParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnServerConfigurationObject,
+        SupportsShouldProcess = true),
+        OutputType(typeof(PSVpnProfileResponse))]
     public class GetAzureRmVirtualWanVpnServerConfigurationVpnProfileCommand : VirtualWanBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnServerConfigurationObject,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource name.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/virtualWans", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnServerConfigurationObject,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        public virtual string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
+
+        [Alias("VirtualWan")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanObject + CortexParameterSetNames.ByVpnServerConfigurationObject,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The virtual wan object.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanObject + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The virtual wan object.")]
+        [ValidateNotNullOrEmpty]
+        public PSVirtualWan InputObject { get; set; }
+
+        [Alias("VirtualWanId")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId + CortexParameterSetNames.ByVpnServerConfigurationObject,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Azure resource ID for the virtual wan.")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Azure resource ID for the virtual wan.")]
+        [ResourceIdCompleter("Microsoft.Network/virtualWan")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnServerConfigurationObject,
+            HelpMessage = "The VpnServerConfiguration with which this VirtualWan is associated.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanObject + CortexParameterSetNames.ByVpnServerConfigurationObject,
+            HelpMessage = "The VpnServerConfiguration with which this VirtualWan is associated.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId + CortexParameterSetNames.ByVpnServerConfigurationObject,
             HelpMessage = "The VpnServerConfiguration with which this VirtualWan is associated.")]
         [ValidateNotNull]
         public PSVpnServerConfiguration VpnServerConfiguration { get; set; }
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            HelpMessage = "The id of Vpn server configuraiton object this Virtual wan will be associated with.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanObject + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            HelpMessage = "The id of Vpn server configuraiton object this Virtual wan will be associated with.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            HelpMessage = "The id of Vpn server configuraiton object this Virtual wan will be associated with.")]
+        [ResourceIdCompleter("Microsoft.Network/vpnServerConfigurations")]
+        public string VpnServerConfigurationId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Authentication Method")]
         [ValidateSet(
@@ -65,6 +140,31 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+
+            PSVirtualWan virtualWan = null;
+            if (ParameterSetName.Contains(CortexParameterSetNames.ByVirtualWanObject))
+            {
+                virtualWan = this.InputObject;
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.Name;
+            }
+            else
+            {
+                if (ParameterSetName.Contains(CortexParameterSetNames.ByVirtualWanResourceId))
+                {
+                    var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+                    this.Name = parsedResourceId.ResourceName;
+                    this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                }
+
+                virtualWan = GetVirtualWan(this.ResourceGroupName, this.Name);
+            }
+
+            if (virtualWan == null)
+            {
+                throw new PSArgumentException(Properties.Resources.VirtualWanNotFound);
+            }
+
             string shouldProcessMessage = string.Format("Execute Get-AzureRmVirtualWanVpnServerConfigurationVpnProfile for ResourceGroupName {0} VirtualWan {1} and the associated VpnServerConfiguration{2}",
                 ResourceGroupName, Name, VpnServerConfiguration.Name);
             if (ShouldProcess(shouldProcessMessage, VerbsCommon.Get))

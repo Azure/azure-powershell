@@ -83,12 +83,12 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnSiteObject, StringComparison.OrdinalIgnoreCase))
+            if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnServerConfigurationObject, StringComparison.OrdinalIgnoreCase))
             {
                 Name = InputObject.Name;
                 ResourceGroupName = InputObject.ResourceGroupName;
             }
-            else if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnSiteResourceId, StringComparison.OrdinalIgnoreCase))
+            else if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnServerConfigurationResourceId, StringComparison.OrdinalIgnoreCase))
             {
                 var parsedResourceId = new ResourceIdentifier(ResourceId);
                 Name = parsedResourceId.ResourceName;

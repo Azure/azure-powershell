@@ -25,26 +25,50 @@ namespace Microsoft.Azure.Commands.Network
     using MNM = Microsoft.Azure.Management.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using System.Linq;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "P2sVpnGatewayDetailedConnectionHealth", SupportsShouldProcess = true), OutputType(typeof(PSP2SVpnConnectionHealth))]
+    [Cmdlet("Get", 
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "P2sVpnGatewayDetailedConnectionHealth",
+        DefaultParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName,
+        SupportsShouldProcess = true), 
+        OutputType(typeof(PSP2SVpnConnectionHealth))]
     public class GetAzureRmP2SVpnGatewayDetailedConnectionHealthCommand : P2SVpnGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/p2sVpnGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        public virtual string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
+
+        [Alias("P2SVpnGateway")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayObject,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The p2s vpn gateway object to be modified")]
+        [ValidateNotNullOrEmpty]
+        public PSP2SVpnGateway InputObject { get; set; }
+
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayResourceId,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Azure resource ID of the P2SVpnGateway to be modified.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -61,15 +85,39 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            string shouldProcessMessage = string.Format("Execute Get-AzureRmP2sVpnGatewayDetailedConnectionHealth for ResourceGroupName {0} P2SVpnGateway {1}", ResourceGroupName, Name);
+
+            PSP2SVpnGateway existingP2SVpnGateway = null;
+            if (ParameterSetName.Equals(CortexParameterSetNames.ByP2SVpnGatewayObject, StringComparison.OrdinalIgnoreCase))
+            {
+                existingP2SVpnGateway = this.InputObject;
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.Name;
+            }
+            else
+            {
+                if (ParameterSetName.Equals(CortexParameterSetNames.ByP2SVpnGatewayResourceId, StringComparison.OrdinalIgnoreCase))
+                {
+                    var parsedResourceId = new ResourceIdentifier(ResourceId);
+                    Name = parsedResourceId.ResourceName;
+                    ResourceGroupName = parsedResourceId.ResourceGroupName;
+                }
+
+                existingP2SVpnGateway = this.GetP2SVpnGateway(this.ResourceGroupName, this.Name);
+            }
+
+            if (existingP2SVpnGateway == null)
+            {
+                throw new PSArgumentException(Properties.Resources.P2SVpnGatewayNotFound);
+            }
+
+            string shouldProcessMessage = string.Format("Execute Get-AzureRmP2sVpnGatewayDetailedConnectionHealth for ResourceGroupName {0} P2SVpnGateway {1}", this.ResourceGroupName, this.Name);
             if (ShouldProcess(shouldProcessMessage, VerbsCommon.Get))
             {
                 PSP2SVpnConnectionHealthRequest p2sVpnConnectionHealthParams = new PSP2SVpnConnectionHealthRequest();
                 p2sVpnConnectionHealthParams.OutputBlobSasUrl = this.OutputBlobSasUrl;
-                p2sVpnConnectionHealthParams.VpnUserNamesFilter = this.VpnUserNamesFilter?.ToList();
-
+                p2sVpnConnectionHealthParams.VpnUserNamesFilter = this.VpnUserNamesFilter != null ? this.VpnUserNamesFilter?.ToList() : new List<string>();
                 var p2sVpnConnectionHealthParamsModel = NetworkResourceManagerProfile.Mapper.Map<MNM.P2SVpnConnectionHealthRequest>(p2sVpnConnectionHealthParams);
-
+                
                 // There may be a required Json serialize for the returned contents to conform to REST-API
                 // The try-catch below handles the case till the change is made and deployed to PROD
                 string serializedP2SVpnGatewayDetailedConnectionHealth = this.NetworkClient.GetP2SVpnGatewayDetailedConnectionHealth(this.ResourceGroupName, this.Name, p2sVpnConnectionHealthParamsModel);
@@ -83,7 +131,7 @@ namespace Microsoft.Azure.Commands.Network
                     Console.WriteLine(e.Message);
                 }
 
-                PSP2SVpnConnectionHealth p2sVpnGatewayWithHealthResponse = this.ToPsP2SVpnConnectionHealth(p2sVpnGatewayDetailedConnectionHealth);
+                PSP2SVpnConnectionHealth p2sVpnGatewayWithHealthResponse = new PSP2SVpnConnectionHealth() { SasUrl = p2sVpnGatewayDetailedConnectionHealth?.SasUrl };
                 WriteObject(p2sVpnGatewayWithHealthResponse);
             }
         }
