@@ -77,7 +77,7 @@ Logs
    Category : Category4
 ```
 
-This command enables the metrics cateories called Category1 and Category2.
+This command enables the metrics categories called Category1 and Category2.
 All the other categories remain the same.
 
 ### Example 4: Enable/disable multiple log categories
@@ -122,7 +122,7 @@ All other time grains and categories are unchanged.
 PS C:\>Get-AzureRmDiagnosticSetting -ResourceId "Resource01" | Set-AzureRmDiagnosticSetting
 ```
 
-This command uses the PowerShell pipeline to set (not change made) a diagnostic setting.
+This command uses the PowerShell pipeline to set (no change made) a diagnostic setting.
 
 ## PARAMETERS
 
