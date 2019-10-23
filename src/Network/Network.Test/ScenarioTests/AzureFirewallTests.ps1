@@ -1083,20 +1083,6 @@ function Test-AzureFirewallVirtualHubCRUD {
 .SYNOPSIS
 Tests AzureFirewall AdditionalProperty
 #>
-function Assert-AreEqualHashtables {
-    param (
-        [Parameter(Mandatory = $true)] [Hashtable]$left,
-        [Parameter(Mandatory = $true)] [Hashtable]$right
-	)
-
-    Assert-True { $left.Keys.Count -eq $right.Keys.Count } "Different Key counts: $($left.Keys.Count) vs $($right.Keys.Count)"
-
-    $left.Keys | % {
-        Assert-True { $right.ContainsKey($_) } "Keys mismatch: '$_' vs None"
-        Assert-True { $left[$_] -eq $right[$_] } "Values mismatch for Key '$_': '$($left[$_])' vs '$($right[$_])'"
-    }
-}
-
 function Test-AzureFirewallAdditionalPropertyCRUD {
     $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
