@@ -19,27 +19,37 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.Network.Models;
     using System.Linq;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
-    [CmdletDeprecation(ReplacementCmdletName = "Add-AzVirtualHubRoute")]
     [Cmdlet(
-        VerbsCommon.New,
+        VerbsCommon.Add,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubRoute",
         SupportsShouldProcess = false),
         OutputType(typeof(PSVirtualHubRoute))]
-    public class NewAzureRmVirtualHubRouteCommand : NetworkBaseCmdlet
+    public class AddAzureRmVirtualHubRouteCommand : VirtualHubRouteTableBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "List of Address Prefixes.")]
+            HelpMessage = "List of Destinations.")]
         [ValidateNotNullOrEmpty]
-        public string[] AddressPrefix { get; set; }
+        public string[] Destination { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The Next Hop IpAddress.")]
+            HelpMessage = "Type of Destinations.")]
         [ValidateNotNullOrEmpty]
-        public string NextHopIpAddress { get; set; }
+        public string DestinationType { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "List of Next hops.")]
+        [ValidateNotNullOrEmpty]
+        public string[] NextHop { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The Next Hop type.")]
+        [ValidateNotNullOrEmpty]
+        public string NextHopType { get; set; }
 
         public override void Execute()
         {
@@ -47,10 +57,10 @@ namespace Microsoft.Azure.Commands.Network
 
             var virtualHubRoute = new PSVirtualHubRoute
             {
-                AddressPrefixes = this.AddressPrefix?.ToList(),
-                NextHopIpAddress = this.NextHopIpAddress,
-                DestinationType = "CIDR",
-                NextHopType = "IPAddress"
+                Destinations = this.Destination?.ToList(),
+                DestinationType = this.DestinationType,
+                NextHops = this.NextHop?.ToList(),
+                NextHopType = this.NextHopType
             };
 
             WriteObject(virtualHubRoute);
