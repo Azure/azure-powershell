@@ -12,19 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.Models
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+
+namespace Commands.Network.Test.ScenarioTests
 {
-    using Microsoft.WindowsAzure.Commands.Common.Attributes;
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Xunit;
+    using Xunit.Abstractions;
 
-    public class PSHubVirtualNetworkConnection : PSChildResource
+    public class VirtualHubRouteTableTests : NetworkTestRunner
     {
-        [Ps1Xml(Label = "Remote VirtualNetwork Id", Target = ViewControl.Table, ScriptBlock = "$_.RemoteVirtualNetwork.Id")]
-        public PSResourceId RemoteVirtualNetwork { get; set; }
+        public VirtualHubRouteTableTests(ITestOutputHelper output)
+            : base(output)
+        {
+        }
 
-        [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
-        public string ProvisioningState { get; set; }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        public void TestVirtualHubRouteTableCRUD()
+        {
+            TestRunner.RunTestScript("Test-VirtualHubRouteTableCRUD");
+        }
 
-        [Ps1Xml(Label = "Internet Security Enabled", Target = ViewControl.Table)]
-        public bool EnableInternetSecurity { get; set; }
     }
 }
