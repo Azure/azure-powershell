@@ -853,11 +853,11 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlServerVulnerabilityAssessmentSettings first..
+        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlServerVulnerabilityAssessmentSetting first..
         /// </summary>
-        internal static string RunSetVulnerabilityAssemenSettings {
+        internal static string RunSetVulnerabilityAssessmentSettings {
             get {
-                return ResourceManager.GetString("RunSetVulnerabilityAssemenSettings", resourceCulture);
+                return ResourceManager.GetString("RunSetVulnerabilityAssessmentSettings", resourceCulture);
             }
         }
         
