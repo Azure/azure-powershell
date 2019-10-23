@@ -59,6 +59,10 @@ module-version: 4.0.1
 make-sub-resources-byreference: true
 
 directive:
+# we must pick a model to not inline when there is a circular reference (previously it was picking an arbitrary one, and this was very bad)
+  - no-inline: 
+    - IPConfiguration 
+
 # General
   - where:
       enum-name: SecurityRuleProtocol

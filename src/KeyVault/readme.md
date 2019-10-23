@@ -62,6 +62,10 @@ This hot-patches the swagger to have a better parameterized host.
 ``` yaml
 
 directive: 
+  # we have to pick the model that will not be inlined in a circular reference. (was very bad previously)
+  - no-inline: 
+    - Error
+    
   - from: swagger-document
     where: $["x-ms-parameterized-host"]
     transform: >
