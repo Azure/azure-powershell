@@ -108,7 +108,6 @@ function Test-EndpointCreateWithRulesEngine
     Assert-AreEqual $originName $createdEndpoint.Origins[0].Name
     Assert-AreEqual $originHostName $createdEndpoint.Origins[0].HostName
 
-
     $endpointRemoved = Remove-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru -Force
     Assert-True{$endpointRemoved}
 
