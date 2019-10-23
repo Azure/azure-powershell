@@ -57,7 +57,7 @@
         @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '0.3.2'; },
         @{ModuleName = 'Azs.Commerce.Admin'; RequiredVersion = '0.2.2'; },
         @{ModuleName = 'Azs.Compute.Admin'; RequiredVersion = '0.2.3'; },
-        @{ModuleName = 'Azs.Fabric.Admin'; RequiredVersion = '0.4.1'; },
+        @{ModuleName = 'Azs.Fabric.Admin'; RequiredVersion = '0.5.0'; },
         @{ModuleName = 'Azs.Gallery.Admin'; RequiredVersion = '0.2.2'; },
         @{ModuleName = 'Azs.InfrastructureInsights.Admin'; RequiredVersion = '0.3.2'; },
         @{ModuleName = 'Azs.KeyVault.Admin'; RequiredVersion = '0.2.2'; },

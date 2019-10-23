@@ -85,10 +85,12 @@ InModuleScope Azs.Fabric.Admin {
                 $Drive.HealthStatus       | Should Not Be $null
                 $Drive.OperationalStatus  | Should Not Be $null
                 $Drive.Usage              | Should Not Be $null
-                $Drive.CanPool            | Should Not Be $null
-                $Drive.CannotPoolReason   | Should Not Be $null
                 $Drive.PhysicalLocation   | Should Not Be $null
                 $Drive.Model              | Should Not Be $null
+                $Drive.FirmwareVersion    | Should Not Be $null
+                $Drive.IsIndicationEnabled| Should Not Be $null
+                $Drive.Manufacturer       | Should Not Be $null
+                $Drive.StoragePool        | Should Not Be $null
                 $Drive.MediaType          | Should Not Be $null
                 $Drive.CapacityGB         | Should Not Be $null
                 $Drive.Description        | Should Not Be $null
@@ -121,10 +123,12 @@ InModuleScope Azs.Fabric.Admin {
                     $Found.HealthStatus       | Should Be $Expected.HealthStatus
                     $Found.OperationalStatus  | Should Be $Expected.OperationalStatus
                     $Found.Usage              | Should Be $Expected.Usage
-                    $Found.CanPool            | Should Be $Expected.CanPool
-                    $Found.CannotPoolReason   | Should Be $Expected.CannotPoolReason
                     $Found.PhysicalLocation   | Should Be $Expected.PhysicalLocation
                     $Found.Model              | Should Be $Expected.Model
+                    $Found.FirmwareVersion    | Should Be $Expected.FirmwareVersion
+                    $Found.IsIndicationEnabled| Should Be $Expected.IsIndicationEnabled
+                    $Found.Manufacturer       | Should Be $Expected.Manufacturer 
+                    $Found.StoragePool        | Should Be $Expected.StoragePool
                     $Found.MediaType          | Should Be $Expected.MediaType
                     $Found.CapacityGB         | Should Be $Expected.CapacityGB
                     $Found.Description        | Should Be $Expected.Description
