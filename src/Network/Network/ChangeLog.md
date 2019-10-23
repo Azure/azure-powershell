@@ -36,6 +36,7 @@
   - Introduce new Generations for VirtualNetworkGateways.
   - Introduce new high throughput SKUs for VirtualNetworkGateways.
 * New cmdlets to support the azure firewall policy
+* Add 'AdditionalProperty' to AzureFirewall cmdlets
 
 ## Version 1.14.0
 * Fix incorrect example in `New-AzApplicationGateway` reference documentation 
