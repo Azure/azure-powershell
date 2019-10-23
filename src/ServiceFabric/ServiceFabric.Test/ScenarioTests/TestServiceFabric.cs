@@ -169,22 +169,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 
         [Fact, TestPriority(0)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAddAzureRmServiceFabricApplicationCertificate()
-        {
-            ServiceFabricCmdletBase.TestAppCert = true;
-            TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricApplicationCertificate");
-        }
-
-        [Fact, TestPriority(0)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAddAzureRmServiceFabricApplicationCertificateRollback()
-        {
-            ServiceFabricCmdletBase.TestAppCert = true;
-            TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricApplicationCertificateRollback");
-        }
-
-        [Fact, TestPriority(0)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DefaultTemplateFilesAvailable()
         {
             var assemblyFolder = AppDomain.CurrentDomain.BaseDirectory;
