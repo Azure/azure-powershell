@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            HelpMessage = "Maximum fileUpload size in MB.")]
         [ValidateNotNullOrEmpty]
-        public int FileUploadLimitInMb { get; set; }
+        public int MaxFileUploadInMb { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -65,9 +65,9 @@ namespace Microsoft.Azure.Commands.Network
                 this.MaxRequestBodySizeInKb = 128;
             }
 
-            if (!this.MyInvocation.BoundParameters.ContainsKey("FileUploadLimitInMb"))
+            if (!this.MyInvocation.BoundParameters.ContainsKey("MaxFileUploadInMb"))
             {
-                this.FileUploadLimitInMb = 100;
+                this.MaxFileUploadInMb = 100;
             }
         }
 
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network
                 State = this.State,
                 RequestBodyCheck = this.DisableRequestBodyCheck.IsPresent ? false : true,
                 MaxRequestBodySizeInKb = this.MaxRequestBodySizeInKb,
-                FileUploadLimitInMb = this.FileUploadLimitInMb
+                FileUploadLimitInMb = this.MaxFileUploadInMb
             };
         }
     }
