@@ -15,10 +15,30 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using System.Collections.Generic;
+    using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
-    public class PSVirtualHubRouteTable
+    public class PSVirtualHubRouteTable : PSChildResource
     {
+        private List<string> _connections;
+
+        [Ps1Xml(Label = "Routes", Target = ViewControl.Table)]
         public List<PSVirtualHubRoute> Routes { get; set; }
+
+        [Ps1Xml(Label = "Connections", Target = ViewControl.Table)]
+        public List<string> Connections
+        {
+            get
+            {
+                return this._connections;
+            }
+            set
+            {
+                this._connections = value ?? new List<string>() { "All_Branches" };
+            }
+        }
+
+        [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
+        public string ProvisioningState { get; set; }
     }
 }

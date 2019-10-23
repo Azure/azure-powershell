@@ -29,7 +29,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.brooklynft)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
         public void TestCortexCRUD()
         {
             TestRunner.RunTestScript("Test-CortexCRUD");
@@ -37,7 +37,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.pgtm)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestCortexExpressRouteCRUD()
         {
             TestRunner.RunTestScript("Test-CortexExpressRouteCRUD");
@@ -45,7 +45,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.Owner, Category.brooklynft)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
         public void TestCortexDownloadConfig()
         {
             TestRunner.RunTestScript("Test-CortexDownloadConfig");

@@ -230,6 +230,9 @@ Gets an array of private link service id that can be linked to a private end poi
 ### [Get-AzAvailablePrivateEndpointType](Get-AzAvailablePrivateEndpointType.md)
 Return available private end point types in the location
 
+### [Get-AzAvailableServiceAlias](Get-AzAvailableServiceAlias.md)
+Get available service aliases in the region.
+
 ### [Get-AzAvailableServiceDelegation](Get-AzAvailableServiceDelegation.md)
 Get available service delegations in the region.
 
@@ -310,6 +313,12 @@ Gets a Azure Firewall.
 
 ### [Get-AzFirewallFqdnTag](Get-AzFirewallFqdnTag.md)
 Gets the available Azure Firewall Fqdn Tags.
+
+### [Get-AzFirewallPolicy](Get-AzFirewallPolicy.md)
+Gets a Azure Firewall Policy.
+
+### [Get-AzFirewallPolicyRuleCollectionGroup](Get-AzFirewallPolicyRuleCollectionGroup.md)
+Gets a Azure Firewall Policy Rule Collection Group.
 
 ### [Get-AzLoadBalancer](Get-AzLoadBalancer.md)
 Gets a load balancer.
@@ -677,8 +686,29 @@ Creates a Firewall Network Rule.
 ### [New-AzFirewallNetworkRuleCollection](New-AzFirewallNetworkRuleCollection.md)
 Creates a Azure Firewall Network Collection of Network rules.
 
+### [New-AzFirewallPolicy](New-AzFirewallPolicy.md)
+Creates a new Azure Firewall Policy.
+
+### [New-AzFirewallPolicyApplicationRule](New-AzFirewallPolicyApplicationRule.md)
+Create a new Azure Firewall Policy Application Rule.
+
+### [New-AzFirewallPolicyFilterRuleCollection](New-AzFirewallPolicyFilterRuleCollection.md)
+Create a new Azure Firewall Policy Filter Rule Collection.
+
+### [New-AzFirewallPolicyNatRuleCollection](New-AzFirewallPolicyNatRuleCollection.md)
+Create a new Azure Firewall Policy Nat Rule Collection.
+
+### [New-AzFirewallPolicyNetworkRule](New-AzFirewallPolicyNetworkRule.md)
+Create a new Azure Firewall Policy Network Rule.
+
+### [New-AzFirewallPolicyRuleCollectionGroup](New-AzFirewallPolicyRuleCollectionGroup.md)
+Create a new Azure Firewall Policy Rule Collection Group.
+
 ### [New-AzIpsecPolicy](New-AzIpsecPolicy.md)
 Creates an IPSec Policy.
+
+### [New-AzIpsecTrafficSelectorPolicy](New-AzIpsecTrafficSelectorPolicy.md)
+Creates an IPSec Traffic Selector Policy.
 
 ### [New-AzLoadBalancer](New-AzLoadBalancer.md)
 Creates a load balancer.
@@ -943,6 +973,12 @@ Removes an ExpressRoutePort.
 ### [Remove-AzFirewall](Remove-AzFirewall.md)
 Remove a Firewall.
 
+### [Remove-AzFirewallPolicy](Remove-AzFirewallPolicy.md)
+Removes an Azure Firewall Policy.
+
+### [Remove-AzFirewallPolicyRuleCollectionGroup](Remove-AzFirewallPolicyRuleCollectionGroup.md)
+Removes an Azure Firewall Policy Rule Collection Group in a Azure firewall policy.
+
 ### [Remove-AzLoadBalancer](Remove-AzLoadBalancer.md)
 Removes a load balancer.
 
@@ -1185,6 +1221,12 @@ Modifies an ExpressRoutePort.
 
 ### [Set-AzFirewall](Set-AzFirewall.md)
 Saves a modified Firewall.
+
+### [Set-AzFirewallPolicy](Set-AzFirewallPolicy.md)
+Saves a modified azure firewall policy.
+
+### [Set-AzFirewallPolicyRuleCollectionGroup](Set-AzFirewallPolicyRuleCollectionGroup.md)
+saves a modified azure firewall policy rule collection group.
 
 ### [Set-AzLoadBalancer](Set-AzLoadBalancer.md)
 Updates a load balancer.

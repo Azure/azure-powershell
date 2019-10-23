@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         private const string AzureFirewallSubnetName = "AzureFirewallSubnet";
         private const string AzureFirewallIpConfigurationName = "AzureFirewallIpConfiguration";
-        
+
+
         public List<PSAzureFirewallIpConfiguration> IpConfigurations { get; set; }
 
         public List<PSAzureFirewallApplicationRuleCollection> ApplicationRuleCollections { get; set; }
@@ -32,6 +33,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSAzureFirewallNatRuleCollection> NatRuleCollections { get; set; }
 
         public List<PSAzureFirewallNetworkRuleCollection> NetworkRuleCollections { get; set; }
+
+        public PSAzureFirewallSku Sku { get; set; }
+
+        public Microsoft.Azure.Management.Network.Models.SubResource VirtualHub { get; set; }
+
+        public Microsoft.Azure.Management.Network.Models.SubResource FirewallPolicy { get; set; }
 
         public string ThreatIntelMode { get; set; }
 
@@ -72,7 +79,6 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentNullException(nameof(virtualNetwork), "Virtual Network cannot be null!");
             }
 
-            
             if (publicIpAddresses == null || publicIpAddresses.Count() == 0)
             {
                 throw new ArgumentNullException(nameof(publicIpAddresses), "Public IP Addresses cannot be null or empty!");
