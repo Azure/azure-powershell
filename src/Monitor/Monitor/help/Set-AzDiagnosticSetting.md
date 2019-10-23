@@ -122,7 +122,7 @@ All other time grains and categories are unchanged.
 PS C:\>Get-AzDiagnosticSetting -ResourceId "Resource01" | Set-AzDiagnosticSetting
 ```
 
-This command uses the PowerShell pipeline to set (not change made) a diagnostic setting.
+This command uses the PowerShell pipeline to set (no change made) a diagnostic setting.
 
 ## PARAMETERS
 
