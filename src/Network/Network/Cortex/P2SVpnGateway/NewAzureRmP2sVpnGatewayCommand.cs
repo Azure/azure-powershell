@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.Network
 
     [Cmdlet(VerbsCommon.New,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "P2sVpnGateway",
-        DefaultParameterSetName = CortexParameterSetNames.ByVirtualHubName,
+        DefaultParameterSetName = CortexParameterSetNames.ByVirtualHubName + CortexParameterSetNames.ByVpnServerConfigurationObject,
         SupportsShouldProcess = true),
-        OutputType(typeof(PSVpnGateway))]
+        OutputType(typeof(PSP2SVpnGateway))]
     public class NewAzureRmP2SVpnGatewayCommand : P2SVpnGatewayBaseCmdlet
     {
         [Parameter(
@@ -57,30 +57,73 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualHubName + CortexParameterSetNames.ByVpnServerConfigurationObject,
+            HelpMessage = "The Id of the VirtualHub this P2SVpnGateway needs to be associated with.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualHubName + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            HelpMessage = "The Id of the VirtualHub this P2SVpnGateway needs to be associated with.")]
+        public string VirtualHubName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
             ValueFromPipeline = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
+            ParameterSetName = CortexParameterSetNames.ByVirtualHubObject + CortexParameterSetNames.ByVpnServerConfigurationObject,
+            HelpMessage = "The VirtualHub this P2SVpnGateway needs to be associated with.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualHubObject + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
             HelpMessage = "The VirtualHub this P2SVpnGateway needs to be associated with.")]
         public PSVirtualHub VirtualHub { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualHubResourceId,
+            ParameterSetName = CortexParameterSetNames.ByVirtualHubResourceId + CortexParameterSetNames.ByVpnServerConfigurationObject,
+            HelpMessage = "The Id of the VirtualHub this P2SVpnGateway needs to be associated with.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualHubResourceId + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
             HelpMessage = "The Id of the VirtualHub this P2SVpnGateway needs to be associated with.")]
         [ResourceIdCompleter("Microsoft.Network/virtualHubs")]
         public string VirtualHubId { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
-            HelpMessage = "The Id of the VirtualHub this P2SVpnGateway needs to be associated with.")]
-        public string VirtualHubName { get; set; }
-
+            Mandatory = false,
+            ValueFromPipeline = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualHubName + CortexParameterSetNames.ByVpnServerConfigurationObject,
+            HelpMessage = "The VpnServerConfiguration to be attached to this P2SVpnGateway.")]
         [Parameter(
             Mandatory = false,
             ValueFromPipeline = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualHubObject + CortexParameterSetNames.ByVpnServerConfigurationObject,
+            HelpMessage = "The VpnServerConfiguration to be attached to this P2SVpnGateway.")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualHubResourceId + CortexParameterSetNames.ByVpnServerConfigurationObject,
             HelpMessage = "The VpnServerConfiguration to be attached to this P2SVpnGateway.")]
         public PSVpnServerConfiguration VpnServerConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualHubName + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            HelpMessage = "The id of Vpn server configuration object this P2SVpnGateway will be attached to.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualHubObject + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            HelpMessage = "The id of Vpn server configuration object this P2SVpnGateway will be attached to.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualHubResourceId + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
+            HelpMessage = "The id of Vpn server configuration object this P2SVpnGateway will be attached to.")]
+        [ResourceIdCompleter("Microsoft.Network/vpnServerConfigurations")]
+        public string VpnServerConfigurationId { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -115,12 +158,12 @@ namespace Microsoft.Azure.Commands.Network
             string virtualHubResourceGroupName = this.ResourceGroupName; // default to common RG for ByVirtualHubName parameter set
 
             //// Resolve and Set the virtual hub
-            if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubObject, StringComparison.OrdinalIgnoreCase))
+            if (ParameterSetName.Contains(CortexParameterSetNames.ByVirtualHubObject))
             {
                 this.VirtualHubName = this.VirtualHub.Name;
                 virtualHubResourceGroupName = this.VirtualHub.ResourceGroupName;
             }
-            else if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubResourceId, StringComparison.OrdinalIgnoreCase))
+            else if (ParameterSetName.Contains(CortexParameterSetNames.ByVirtualHubResourceId))
             {
                 var parsedResourceId = new ResourceIdentifier(this.VirtualHubId);
                 this.VirtualHubName = parsedResourceId.ResourceName;
@@ -142,10 +185,6 @@ namespace Microsoft.Azure.Commands.Network
             p2sVpnGateway.Location = resolvedVirtualHub.Location;
             p2sVpnGateway.VirtualHub = new PSResourceId() { Id = resolvedVirtualHub.Id };
 
-            //// Set the VpnServerConfiguration
-            p2sVpnGateway.VpnServerConfiguration = this.VpnServerConfiguration;
-            p2sVpnGateway.VpnServerConfigurationLocation = this.VpnServerConfiguration.Location;
-
             //// Set P2SConnectionConfigurations. Currently, only one P2SConnectionConfiguration is allowed.
             PSP2SConnectionConfiguration p2sConnectionConfig = new PSP2SConnectionConfiguration()
             {
@@ -166,6 +205,27 @@ namespace Microsoft.Azure.Commands.Network
             {
                 p2sVpnGateway.VpnGatewayScaleUnit = Convert.ToInt32(this.VpnGatewayScaleUnit);
             }
+
+            //// Resolve the VpnServerConfiguration reference
+            //// And set it in the P2SVpnGateway object.
+            string vpnServerConfigurationResolvedId = null;
+            if (ParameterSetName.Contains(CortexParameterSetNames.ByVpnServerConfigurationObject))
+            {
+                vpnServerConfigurationResolvedId = this.VpnServerConfiguration.Id;
+            }
+            else if (ParameterSetName.Contains(CortexParameterSetNames.ByVpnServerConfigurationResourceId))
+            {
+                vpnServerConfigurationResolvedId = this.VpnServerConfigurationId;
+            }
+
+            if (string.IsNullOrWhiteSpace(vpnServerConfigurationResolvedId))
+            {
+                throw new PSArgumentException(Properties.Resources.VpnServerConfigurationRequiredForP2SVpnGateway);
+            }
+
+            //// Let's not resolve the vpnServerConfiguration here. If this does not exist, NRP/GWM will fail the call.
+            p2sVpnGateway.VpnServerConfiguration = new PSResourceId() { Id = vpnServerConfigurationResolvedId };
+            p2sVpnGateway.VpnServerConfigurationLocation = string.IsNullOrWhiteSpace(this.VpnServerConfiguration.Location) ? string.Empty : this.VpnServerConfiguration.Location;
 
             ConfirmAction(
                 Properties.Resources.CreatingResourceMessage,

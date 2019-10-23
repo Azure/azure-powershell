@@ -26,50 +26,51 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "VpnAuthenticationTypes", Target = ViewControl.Table)]
         public List<string> VpnAuthenticationTypes { get; set; }
 
-        public List<PSVpnServerConfigVpnClientRootCertificate> VpnServerConfigVpnClientRootCertificates { get; set; }
+        public List<PSClientRootCertificate> VpnClientRootCertificates { get; set; }
 
-        public List<PSVpnServerConfigVpnClientRevokedCertificate> VpnServerConfigVpnClientRevokedCertificates { get; set; }
+        public List<PSClientCertificate> VpnClientRevokedCertificates { get; set; }
 
-        public List<PSVpnServerConfigRadiusServerRootCertificate> VpnServerConfigRadiusServerRootCertificates { get; set; }
+        public List<PSClientRootCertificate> RadiusServerRootCertificates { get; set; }
 
-        public List<PSVpnServerConfigRadiusClientRootCertificate> VpnServerConfigRadiusClientRootCertificates { get; set; }
+        public List<PSClientCertificate> RadiusClientRootCertificates { get; set; }
 
         public List<PSIpsecPolicy> VpnClientIpsecPolicies { get; set; }
 
-        public string RadiusServerAddress;
+        [Ps1Xml(Label = "Radius server address", Target = ViewControl.Table)]
+        public string RadiusServerAddress { get; set; }
 
-        public string RadiusServerSecret;
+        public string RadiusServerSecret { get; set; }
 
         public PSAadAuthenticationParameters AadAuthenticationParameters { get; set; }
 
         [Ps1Xml(Label = "P2SVpnGateway ids", Target = ViewControl.Table)]
-        public List<PSResourceId> P2sVpnGateways { get; set; }
+        public List<PSResourceId> P2SVpnGateways { get; set; }
 
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
-        public string VpnServerConfigVpnClientRootCertificatesText
+        public string VpnClientRootCertificatesText
         {
-            get { return JsonConvert.SerializeObject(VpnServerConfigVpnClientRootCertificates, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(VpnClientRootCertificates, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
-        public string VpnServerConfigVpnClientRevokedCertificatesText
+        public string VpnClientRevokedCertificatesText
         {
-            get { return JsonConvert.SerializeObject(VpnServerConfigVpnClientRevokedCertificates, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(VpnClientRevokedCertificates, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
-        public string VpnServerConfigRadiusServerRootCertificatesText
+        public string RadiusServerRootCertificatesText
         {
-            get { return JsonConvert.SerializeObject(VpnServerConfigRadiusServerRootCertificates, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(RadiusServerRootCertificates, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
-        public string VpnServerConfigRadiusClientRootCertificatesText
+        public string RadiusClientRootCertificatesText
         {
-            get { return JsonConvert.SerializeObject(VpnServerConfigRadiusClientRootCertificates, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(RadiusClientRootCertificates, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
@@ -82,6 +83,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string AadAuthenticationParametersText
         {
             get { return JsonConvert.SerializeObject(AadAuthenticationParameters, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string P2SVpnGatewaysText
+        {
+            get { return JsonConvert.SerializeObject(P2SVpnGateways, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

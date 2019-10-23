@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Network
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnServerConfiguration",
         DefaultParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByCertificateAuthentication,
         SupportsShouldProcess = true),
-        OutputType(typeof(PSVpnSite))]
+        OutputType(typeof(PSVpnServerConfiguration))]
     public class NewAzureRmVpnServerConfigurationCommand : VpnServerConfigurationBaseCmdlet
     {
         [Parameter(Mandatory = true,
@@ -87,14 +87,14 @@ namespace Microsoft.Azure.Commands.Network
         public string[] VpnClientRevokedCertificateFilesList { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External Radius server address.")]
         [ValidateNotNullOrEmpty]
         public string RadiusServerAddress { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVpnServerConfigurationName + CortexParameterSetNames.ByRadiusAuthentication,
             HelpMessage = "P2S External Radius server secret.")]
         [ValidateNotNullOrEmpty]
@@ -185,6 +185,9 @@ namespace Microsoft.Azure.Commands.Network
                 () =>
                 {
                     WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
+                    Console.WriteLine("vpnServerConfigurationToCreate : {0}", vpnServerConfigurationToCreate);
+                    WriteObject("vpnServerConfigurationToCreate");
+                    WriteObject(vpnServerConfigurationToCreate);
                     WriteObject(this.CreateOrUpdateVpnServerConfiguration(this.ResourceGroupName, this.Name, vpnServerConfigurationToCreate, this.Tag));
                 });
         }

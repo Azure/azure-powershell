@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Network
         public string ProcessorArchitecture { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Authentication Method")]
         [ValidateSet(

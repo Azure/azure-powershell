@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSP2SConnectionConfiguration : PSChildResource
     {
-        [Ps1Xml(Target = ViewControl.Table)]
+        [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
         public PSAddressSpace VpnClientAddressPool { get; set; }

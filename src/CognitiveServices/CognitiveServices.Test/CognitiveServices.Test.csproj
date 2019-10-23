@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.CognitiveServices" Version="6.0.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.16.2-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.16.1-preview" />
   </ItemGroup>
 
 </Project>

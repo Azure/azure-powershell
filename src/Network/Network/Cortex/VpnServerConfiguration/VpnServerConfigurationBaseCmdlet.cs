@@ -59,12 +59,15 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSVpnServerConfiguration CreateOrUpdateVpnServerConfiguration(string resourceGroupName, string vpnServerConfigurationName, PSVpnServerConfiguration vpnServerConfiguration, Hashtable tags)
         {
-            var vpnServerConfigurationModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VpnServerConfiguration>(vpnServerConfiguration);
+            var vpnServerConfigurationModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VpnServerConfiguration>(vpnServerConfiguration);            
+            WriteObject("vpnServerConfigurationModel");
+            WriteObject(vpnServerConfigurationModel);
             vpnServerConfigurationModel.Location = vpnServerConfiguration.Location;
             vpnServerConfigurationModel.Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
 
-            var vpnSiteCreatedOrUpdated = this.VpnServerConfigurationClient.CreateOrUpdate(resourceGroupName, vpnServerConfigurationName, vpnServerConfigurationModel);
-            PSVpnServerConfiguration vpnServerConfigToReturn = ToPsVpnServerConfiguration(vpnSiteCreatedOrUpdated);
+            Console.WriteLine("vpnServerConfigurationModel : {0}", vpnServerConfigurationModel);
+            var vpnServerConfigCreatedOrUpdated = this.VpnServerConfigurationClient.CreateOrUpdate(resourceGroupName, vpnServerConfigurationName, vpnServerConfigurationModel);
+            PSVpnServerConfiguration vpnServerConfigToReturn = ToPsVpnServerConfiguration(vpnServerConfigCreatedOrUpdated);
             vpnServerConfigToReturn.ResourceGroupName = resourceGroupName;
 
             return vpnServerConfigToReturn;
@@ -92,20 +95,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool IsVpnServerConfigurationPresent(string resourceGroupName, string name)
         {
-            try
-            {
-                GetVpnServerConfiguration(resourceGroupName, name);
-            }
-            catch (Microsoft.Azure.Management.Network.Models.ErrorException exception)
-            {
-                if (exception.Response.StatusCode == HttpStatusCode.NotFound)
-                {
-                    // Resource is not present
-                    return false;
-                }
-            }
-
-            return true;
+            return NetworkBaseCmdlet.IsResourcePresent(() => { GetVpnServerConfiguration(resourceGroupName, name); });
         }
 
         public PSVpnServerConfiguration CreateVpnServerConfigurationObject(
@@ -139,49 +129,50 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // VpnAuthenticationType = Certificate related validations.
-            if (vpnAuthenticationType == null || vpnAuthenticationType.Contains(MNM.VpnAuthenticationType.Certificate))
+            if (vpnAuthenticationType == null || 
+                (vpnAuthenticationType != null && vpnAuthenticationType.Contains(MNM.VpnAuthenticationType.Certificate)))
+                
             {
                 // Read the VpnClientRootCertificates if present
                 if (vpnClientRootCertificateFilesList != null)
                 {
-                    vpnServerConfiguration.VpnServerConfigVpnClientRootCertificates = new List<PSVpnServerConfigVpnClientRootCertificate>();
+                    vpnServerConfiguration.VpnClientRootCertificates = new List<PSClientRootCertificate>();
 
                     foreach (string vpnClientRootCertPath in vpnClientRootCertificateFilesList)
                     {
                         X509Certificate2 VpnClientRootCertificate = new X509Certificate2(vpnClientRootCertPath);
 
-                        PSVpnServerConfigVpnClientRootCertificate vpnClientRootCert = new PSVpnServerConfigVpnClientRootCertificate()
+                        PSClientRootCertificate vpnClientRootCert = new PSClientRootCertificate()
                         {
                             Name = Path.GetFileNameWithoutExtension(vpnClientRootCertPath),
                             PublicCertData = Convert.ToBase64String(VpnClientRootCertificate.Export(X509ContentType.Cert))
                         };
 
-                        vpnServerConfiguration.VpnServerConfigVpnClientRootCertificates.Add(vpnClientRootCert);
+                        vpnServerConfiguration.VpnClientRootCertificates.Add(vpnClientRootCert);
                     }
                 }
 
                 // Read the VpnClientRevokedCertificates if present
                 if (vpnClientRevokedCertificateFilesList != null)
                 {
-                    vpnServerConfiguration.VpnServerConfigVpnClientRevokedCertificates = new List<PSVpnServerConfigVpnClientRevokedCertificate>();
+                    vpnServerConfiguration.VpnClientRevokedCertificates = new List<PSClientCertificate>();
 
                     foreach (string vpnClientRevokedCertPath in vpnClientRevokedCertificateFilesList)
                     {
                         X509Certificate2 vpnClientRevokedCertificate = new X509Certificate2(vpnClientRevokedCertPath);
 
-                        PSVpnServerConfigVpnClientRevokedCertificate vpnClientRevokedCert = new PSVpnServerConfigVpnClientRevokedCertificate()
+                        PSClientCertificate vpnClientRevokedCert = new PSClientCertificate()
                         {
                             Name = Path.GetFileNameWithoutExtension(vpnClientRevokedCertPath),
                             Thumbprint = vpnClientRevokedCertificate.Thumbprint
                         };
 
-                        vpnServerConfiguration.VpnServerConfigVpnClientRevokedCertificates.Add(vpnClientRevokedCert);
+                        vpnServerConfiguration.VpnClientRevokedCertificates.Add(vpnClientRevokedCert);
                     }
                 }
             }
-
             // VpnAuthenticationType = Radius related validations.
-            if (vpnAuthenticationType != null && vpnAuthenticationType.Equals(MNM.VpnAuthenticationType.Radius))
+            else if (vpnAuthenticationType.Contains(MNM.VpnAuthenticationType.Radius))
             {
                 if (radiusServerAddress == null || radiusServerSecret == null)
                 {
@@ -194,44 +185,43 @@ namespace Microsoft.Azure.Commands.Network
                 // Read the RadiusServerRootCertificates if present
                 if (radiusServerRootCertificateFilesList != null)
                 {
-                    vpnServerConfiguration.VpnServerConfigRadiusServerRootCertificates = new List<PSVpnServerConfigRadiusServerRootCertificate>();
+                    vpnServerConfiguration.RadiusServerRootCertificates = new List<PSClientRootCertificate>();
 
                     foreach (string radiusServerRootCertPath in radiusServerRootCertificateFilesList)
                     {
                         X509Certificate2 RadiusServerRootCertificate = new X509Certificate2(radiusServerRootCertPath);
 
-                        PSVpnServerConfigRadiusServerRootCertificate radiusServerRootCert = new PSVpnServerConfigRadiusServerRootCertificate()
+                        PSClientRootCertificate radiusServerRootCert = new PSClientRootCertificate()
                         {
                             Name = Path.GetFileNameWithoutExtension(radiusServerRootCertPath),
                             PublicCertData = Convert.ToBase64String(RadiusServerRootCertificate.Export(X509ContentType.Cert))
                         };
 
-                        vpnServerConfiguration.VpnServerConfigRadiusServerRootCertificates.Add(radiusServerRootCert);
+                        vpnServerConfiguration.RadiusServerRootCertificates.Add(radiusServerRootCert);
                     }
                 }
 
                 // Read the RadiusClientRootCertificates if present
                 if (radiusClientRootCertificateFilesList != null)
                 {
-                    vpnServerConfiguration.VpnServerConfigRadiusClientRootCertificates = new List<PSVpnServerConfigRadiusClientRootCertificate>();
+                    vpnServerConfiguration.RadiusClientRootCertificates = new List<PSClientCertificate>();
 
                     foreach (string radiusClientRootCertPath in radiusClientRootCertificateFilesList)
                     {
                         X509Certificate2 radiusClientRootCertificate = new X509Certificate2(radiusClientRootCertPath);
 
-                        PSVpnServerConfigRadiusClientRootCertificate radiusClientRootCert = new PSVpnServerConfigRadiusClientRootCertificate()
+                        PSClientCertificate radiusClientRootCert = new PSClientCertificate()
                         {
                             Name = Path.GetFileNameWithoutExtension(radiusClientRootCertPath),
                             Thumbprint = radiusClientRootCertificate.Thumbprint
                         };
 
-                        vpnServerConfiguration.VpnServerConfigRadiusClientRootCertificates.Add(radiusClientRootCert);
+                        vpnServerConfiguration.RadiusClientRootCertificates.Add(radiusClientRootCert);
                     }
                 }
             }
-
             // VpnAuthenticationType = AAD related validations.
-            if (vpnAuthenticationType != null && vpnAuthenticationType.Equals(MNM.VpnAuthenticationType.AAD))
+            else if (vpnAuthenticationType.Contains(MNM.VpnAuthenticationType.AAD))
             {
                 if (aadTenant == null || aadAudience == null || aadIssuer == null)
                 {

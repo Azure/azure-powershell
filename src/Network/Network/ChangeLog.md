@@ -49,6 +49,22 @@
 * New Generations and SKUs for VirtualNetworkGateways
   - Introduce new Generations for VirtualNetworkGateways.
   - Introduce new high throughput SKUs for VirtualNetworkGateways.
+* Virtual wan Point to site feature release.
+  - Introduce new command lets for managing point to site VpnServerConfiguraiton resource
+    - Get-AzVpnServerConfiguration
+    - New-AzVpnServerConfiguration
+    - Remove-AzVpnServerConfiguration
+    - Update-AzVpnServerConfiguration
+  - Introduce new command lets for managing P2SVpnGateway resource that will be used for Point to site connectivity from Virtual wan perspective
+    - Get-AzP2sVpnGateway
+    - Get-AzP2sVpnGatewayConnectionHealth
+    - Get-AzP2sVpnGatewayDetailedConnectionHealth
+    - New-AzP2sVpnGateway
+    - Remove-AzP2sVpnGateway
+    - Update-AzP2sVpnGateway
+  - Introduce new command lets for VirtualWan resource to get all associated VpnServerConfigurations and download Wan level Point to site client profile.
+    - Get-AzVirtualWanVpnServerConfiguration
+    - Get-AzVirtualWanVpnServerConfigurationVpnProfile
 
 ## Version 1.13.0
 * Updated New-AzPrivateLinkServiceIpConfig

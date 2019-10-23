@@ -595,8 +595,9 @@ namespace Microsoft.Azure.Commands.Network
         }
 
         public string GetP2SVpnGatewayConnectionHealth(string resourceGroupName, string p2sVpnGatewayName)
-        {
-            return Task.Factory.StartNew(() => GetP2SVpnGatewayConnectionHealthAsync(resourceGroupName, p2sVpnGatewayName)).Unwrap().GetAwaiter().GetResult();
+        {            
+            string result =  Task.Factory.StartNew(() => GetP2SVpnGatewayConnectionHealthAsync(resourceGroupName, p2sVpnGatewayName)).Unwrap().GetAwaiter().GetResult();
+            return result;
         }
 
         public async Task<string> GetP2SVpnGatewayConnectionHealthAsync(string resourceGroupName, string p2sVpnGatewayName,
@@ -641,7 +642,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
             }
 
-            AzureOperationResponse<string> result = await this.ExecuteOperationWithHttpMessagesAsync(resourceGroupName, p2sVpnGatewayName, null, url, apiVersion, null, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<string> result = await this.ExecuteOperationWithHttpMessagesAsync(resourceGroupName, p2sVpnGatewayName, parameters, url, apiVersion, null, cancellationToken).ConfigureAwait(false);
             return result.Body;
         }
 
@@ -768,6 +769,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new Exception(string.Format("Operation Failed as no valid Location header value received in response!"));
             }
+
             #endregion
 
             #region Wait for Async operation to succeed and then Get the content from locationResults
@@ -795,9 +797,8 @@ namespace Microsoft.Azure.Commands.Network
                     if (DateTime.UtcNow > giveUpAt)
                     {
                         string newResponseContent = await newHttpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-
-                        throw new Exception(string.Format("Operation returned an invalid status code '{0}' with Exception:{1} while retrieving " +
-                                                          " the content!", newHttpResponse.StatusCode, string.IsNullOrEmpty(newResponseContent) ? "NotAvailable" : newResponseContent));
+                        throw new Exception(string.Format("Operation returned an invalid status code '{0}' with Exception:'{1}' while retrieving " +
+                                                          " the content '{2}'!", newHttpResponse.StatusCode, string.IsNullOrEmpty(newResponseContent) ? "NotAvailable" : newResponseContent));
                     }
                     else
                     {

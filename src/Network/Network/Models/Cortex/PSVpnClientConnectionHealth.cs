@@ -16,15 +16,25 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using System.Collections.Generic;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
+    using Newtonsoft.Json;
 
     public class PSVpnClientConnectionHealth
     {
+        [Ps1Xml(Label = "VpnClient connections count", Target = ViewControl.Table)]
         public int VpnClientConnectionsCount { get; set; }
 
         public List<string> AllocatedIpAddresses { get; set; }
 
+        [Ps1Xml(Label = "Total ingress bytes transferred", Target = ViewControl.Table)]
         public ulong TotalIngressBytesTransferred { get; set; }
 
+        [Ps1Xml(Label = "Total egress bytes transferred", Target = ViewControl.Table)]
         public ulong TotalEgressBytesTransferred { get; set; }
+
+        [JsonIgnore]
+        public string AllocatedIpAddressesText
+        {
+            get { return JsonConvert.SerializeObject(AllocatedIpAddresses, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }
