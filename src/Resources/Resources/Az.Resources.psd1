@@ -65,7 +65,8 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.Authorization.dll',
                '.\Microsoft.Extensions.DependencyInjection.Abstractions.dll', 
                '.\Microsoft.Extensions.Options.dll', 
                '.\Microsoft.Extensions.Primitives.dll', 
-               '.\Microsoft.Azure.Graph.RBAC.dll'
+               '.\Microsoft.Azure.Graph.RBAC.dll',
+               '.\System.Runtime.CompilerServices.Unsafe.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
