@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Added support for restore of dropped databases on Managed Instances.
+* Remove aliases for deprecated Vulnerability Assessment Settings cmdlets
+* Deprecate Advanced Threat Detection Settings cmdlets 
 
 ## Version 1.15.0
 * Add support for setting Active Directory Administrator on Managed Instance

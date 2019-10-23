@@ -32,9 +32,6 @@ Adds a Key Vault key to a SQL server.
 ### [Add-AzSqlServerTransparentDataEncryptionCertificate](Add-AzSqlServerTransparentDataEncryptionCertificate.md)
 Adds a Transparent Data Encryption Certificate for the given SQL Server instance
 
-### [Clear-AzSqlDatabaseAdvancedThreatProtectionSettings](Clear-AzSqlDatabaseAdvancedThreatProtectionSettings.md)
-Removes the advanced threat protection settings from a database.
-
 ### [Clear-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline](Clear-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Clears the vulnerability assessment rule baseline.
 
