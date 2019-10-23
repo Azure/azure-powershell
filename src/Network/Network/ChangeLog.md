@@ -43,6 +43,7 @@
         - Update-AzureRmVpnConnection : added parameter EnableInternetSecurity
         - New-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
         - Set-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
+* Support for Destination FQDNs in Network Rules and Translated FQDN in NAT Rules for Azure Firewall
 
 ## Version 1.15.0
 * Add new cmdlet Get-AzAvailableServiceAlias which can be called to get the aliases that can be used for Service Endpoint Policies.
