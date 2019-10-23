@@ -53,7 +53,7 @@ function Get-Userpassword
 
 function Get-DeviceResourceGroupName
 {
-    return "psrgpfortest"
+	return "psrgpfortest"
 }
 
 <#
@@ -62,7 +62,7 @@ Gets valid resource name
 #>
 function Get-DeviceName
 {
-    return "psdataboxedgedevice"
+	return "psdataboxedgedevice"
 }
 
 
@@ -96,7 +96,7 @@ Gets valid storage account name
 #>
 function Get-StorageAccountName
 {
-    return getAssetName
+	return getAssetName
 }
 
 <#
@@ -105,18 +105,18 @@ Asserts if two tags are equal
 #>
 function Assert-Tags($tags1, $tags2)
 {
-    if($tags1.count -ne $tags2.count)
-    {
-        throw "Tag size not equal. Tag1: $tags1.count Tag2: $tags2.count"
-    }
+	if($tags1.count -ne $tags2.count)
+	{
+		throw "Tag size not equal. Tag1: $tags1.count Tag2: $tags2.count"
+	}
 
-    foreach($key in $tags1.Keys)
-    {
-        if($tags1[$key] -ne $tags2[$key])
-        {
-            throw "Tag content not equal. Key:$key Tags1:" +  $tags1[$key] + "Tags2:" + $tags2[$key]
-        }
-    }
+	foreach($key in $tags1.Keys)
+	{
+		if($tags1[$key] -ne $tags2[$key])
+		{
+			throw "Tag content not equal. Key:$key Tags1:" +  $tags1[$key] + "Tags2:" + $tags2[$key]
+		}
+	}
 }
 
 
@@ -126,10 +126,10 @@ Sleep in record mode only
 #>
 function SleepInRecordMode ([int]$SleepIntervalInSec)
 {
-    $mode = $env:AZURE_TEST_MODE
-    if ( $mode -ne $null -and $mode.ToUpperInvariant() -eq "RECORD")
-    {
-        Wait-Seconds $SleepIntervalInSec 
-    }
+	$mode = $env:AZURE_TEST_MODE
+	if ( $mode -ne $null -and $mode.ToUpperInvariant() -eq "RECORD")
+	{
+		Wait-Seconds $SleepIntervalInSec 
+	}
 }
 

@@ -78,7 +78,6 @@ FunctionsToExport = @()
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzDataBoxEdgeJob', 
 				  'Get-AzDataBoxEdgeDevice', 'New-AzDataBoxEdgeDevice', 'Remove-AzDataBoxEdgeDevice',
-				  'Get-AzDataBoxEdgeDeviceExtendedInfo',
 				  'Get-AzDataBoxEdgeUser', 'New-AzDataBoxEdgeUser','Set-AzDataBoxEdgeUser','Remove-AzDataBoxEdgeUser',
 				  'Get-AzDataBoxEdgeStorageAccountCredential', 'New-AzDataBoxEdgeStorageAccountCredential', 'Set-AzDataBoxEdgeStorageAccountCredential','Remove-AzDataBoxEdgeStorageAccountCredential',
 				  'Get-AzDataBoxEdgeShare', 'New-AzDataBoxEdgeShare', 'Set-AzDataBoxEdgeShare', 'Remove-AzDataBoxEdgeShare',
