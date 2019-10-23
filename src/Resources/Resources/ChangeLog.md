@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add new cmdlet `New-AzDeploymentWhatIf` for deployment what-if operation.
+
 
 ## Version 2.0.0
 * Fix bug where New-AzRoleAssignment could not be called without parameter Scope.
