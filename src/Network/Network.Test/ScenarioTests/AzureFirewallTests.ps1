@@ -1083,6 +1083,20 @@ function Test-AzureFirewallVirtualHubCRUD {
 .SYNOPSIS
 Tests AzureFirewall AdditionalProperty
 #>
+function Assert-AreEqualHashtables {
+    param (
+        [Parameter(Mandatory = $true)] [Hashtable]$left,
+        [Parameter(Mandatory = $true)] [Hashtable]$right
+	)
+
+    Assert-True { $left.Keys.Count -eq $right.Keys.Count } "Different Key counts: $($left.Keys.Count) vs $($right.Keys.Count)"
+
+    $left.Keys | % {
+        Assert-True { $right.ContainsKey($_) } "Keys mismatch: '$_' vs None"
+        Assert-True { $left[$_] -eq $right[$_] } "Values mismatch for Key '$_': '$($left[$_])' vs '$($right[$_])'"
+    }
+}
+
 function Test-AzureFirewallAdditionalPropertyCRUD {
     $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
@@ -1093,8 +1107,8 @@ function Test-AzureFirewallAdditionalPropertyCRUD {
     $subnetName = "AzureFirewallSubnet"
     $publicIpName = Get-ResourceName
 
-    $threatIntelProp1 = @{"ThreatIntel.Whitelist.FQDNs" = "*.microsoft.com, microsoft.com"; "Threatintel.Whitelist.IpAddresses" = "8.8.8.8, 1.1.1.1"}
-    $threatIntelProp2 = @{"ThreatIntel.Whitelist.IpAddresses" = "  2.2.2.2  ,  3.3.3.3  "; "Threatintel.Whitelist.FQDNs" = "  bing.com  ,  yammer.com  "}
+    $threatIntelProp1 = @{"ThreatIntel.Whitelist.FQDNs" = "*.microsoft.com, microsoft.com"; "ThreatIntel.Whitelist.IpAddresses" = "8.8.8.8, 1.1.1.1"}
+    $threatIntelProp2 = @{"ThreatIntel.Whitelist.IpAddresses" = "  2.2.2.2  ,  3.3.3.3  "; "ThreatIntel.Whitelist.FQDNs" = "  bing.com  ,  yammer.com  "}
 
     try {
         # Create the resource group
@@ -1112,13 +1126,13 @@ function Test-AzureFirewallAdditionalPropertyCRUD {
 
         # Verify
         $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
-        Assert-AreEqual $threatIntelProp1 $getAzureFirewall.AdditionalProperty
+        Assert-AreEqualHashtables $threatIntelProp1 $getAzureFirewall.AdditionalProperty
 
         # Modify
         $azureFirewall.AdditionalProperty = $threatIntelProp2
         Set-AzFirewall -AzureFirewall $azureFirewall
         $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
-        Assert-AreEqual $threatIntelProp2 $getAzureFirewall.AdditionalProperty
+        Assert-AreEqualHashtables $threatIntelProp2 $getAzureFirewall.AdditionalProperty
     }
     finally {
         # Cleanup
