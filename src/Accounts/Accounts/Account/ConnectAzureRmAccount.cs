@@ -14,9 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -387,7 +385,13 @@ namespace Microsoft.Azure.Commands.Profile
                     autoSaveEnabled = localAutosave;
                 }
 
-                InitializeProfileProvider(autoSaveEnabled);
+                if(!InitializeProfileProvider(autoSaveEnabled))
+                {
+                    AzureSession.Instance.ARMContextSaveMode = ContextSaveMode.Process;
+                    ContextAutosaveSettings autoSavingSetting = null;
+                    DisableAutosave(AzureSession.Instance, true, out autoSavingSetting);
+                }
+
                 IServicePrincipalKeyStore keyStore =
 // TODO: Remove IfDef
 #if NETSTANDARD
