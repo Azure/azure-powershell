@@ -637,6 +637,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The virtual hub route table to modify could not be found.
+        /// </summary>
+        internal static string RouteTableNotFound {
+            get {
+                return ResourceManager.GetString("RouteTableNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SetByFqdn.
         /// </summary>
         internal static string SetByFqdn {
