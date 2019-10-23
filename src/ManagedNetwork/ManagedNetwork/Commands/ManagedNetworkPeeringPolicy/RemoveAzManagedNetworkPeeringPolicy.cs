@@ -11,6 +11,7 @@ using System.Resources;
 using System.Collections;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Properties = Microsoft.Azure.PowerShell.Cmdlets.ManagedNetwork.Properties;
 
 namespace Microsoft.Azure.Commands.ManagedNetwork
 {

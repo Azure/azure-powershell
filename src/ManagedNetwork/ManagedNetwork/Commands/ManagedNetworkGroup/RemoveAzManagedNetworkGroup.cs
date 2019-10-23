@@ -4,6 +4,7 @@ using Microsoft.Azure.Management.ManagedNetwork;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ManagedNetwork.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Properties = Microsoft.Azure.PowerShell.Cmdlets.ManagedNetwork.Properties;
 
 namespace Microsoft.Azure.Commands.ManagedNetwork
 {

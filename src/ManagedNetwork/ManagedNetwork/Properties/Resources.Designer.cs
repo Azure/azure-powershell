@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ManagedNetwork.Properties {
+namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedNetwork.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Cdn.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.PowerShell.Cmdlets.ManagedNetwork.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,16 +61,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork.Properties {
         }
         
         /// <summary>
-        ///   {0} already exists. Are you sure you want to overwrite it.
-        /// </summary>
-        internal static string ConfirmOverwriteResource {
-            get {
-                return ResourceManager.GetString("ConfirmOverwriteResource", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   {0} exists. Are you sure you want to delete it.
+        ///   Looks up a localized string similar to {0} exists. Are you sure you want to delete it..
         /// </summary>
         internal static string ConfirmDeleteResource {
             get {
@@ -79,7 +70,16 @@ namespace Microsoft.Azure.Commands.ManagedNetwork.Properties {
         }
         
         /// <summary>
-        ///   Creating Resource.
+        ///   Looks up a localized string similar to {0} already exists. Are you sure you want to overwrite it..
+        /// </summary>
+        internal static string ConfirmOverwriteResource {
+            get {
+                return ResourceManager.GetString("ConfirmOverwriteResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating Resource....
         /// </summary>
         internal static string CreatingResource {
             get {
@@ -88,16 +88,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork.Properties {
         }
         
         /// <summary>
-        ///   Updating Resource.
-        /// </summary>
-        internal static string UpdatingResource {
-            get {
-                return ResourceManager.GetString("UpdatingResource", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Deleting Resource.
+        ///   Looks up a localized string similar to Deleting Resource....
         /// </summary>
         internal static string DeletingResource {
             get {
@@ -106,7 +97,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork.Properties {
         }
         
         /// <summary>
-        ///  A Managed Network with name '{0}' in resource group '{1}' does not exist. Please use New-AzManagedNetwork to create a Managed Network with these properties.
+        ///   Looks up a localized string similar to A Managed Network with name &apos;{0}&apos; in resource group &apos;{1}&apos; does not exist. Please use New-AzManagedNetwork to create a Managed Network with these properties..
         /// </summary>
         internal static string ManagedNetworkDoesNotExist {
             get {
@@ -115,7 +106,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork.Properties {
         }
         
         /// <summary>
-        ///  A Managed Network Group with name '{0}' in managed network '{1}' and  resource group '{2}' does not exist. Please use New-AzManagedNetwork to create a Managed Network with these properties.
+        ///   Looks up a localized string similar to A Managed Network Group with name &apos;{0}&apos; in managed network &apos;{1}&apos; and  resource group &apos;{2}&apos; does not exist. Please use New-AzManagedNetwork to create a Managed Network with these properties..
         /// </summary>
         internal static string ManagedNetworkGroupDoesNotExist {
             get {
@@ -124,7 +115,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork.Properties {
         }
         
         /// <summary>
-        ///  A Managed Network Peering Policy with name '{0}' in managed network '{1}' and  resource group '{2}' does not exist. Please use New-AzManagedNetwork to create a Managed Network with these properties.
+        ///   Looks up a localized string similar to A Managed Network Peering Policy with name &apos;{0}&apos; in managed network &apos;{1}&apos; and  resource group &apos;{2}&apos; does not exist. Please use New-AzManagedNetwork to create a Managed Network with these properties..
         /// </summary>
         internal static string ManagedNetworkPeeringPolicyDoesNotExist {
             get {
@@ -132,5 +123,13 @@ namespace Microsoft.Azure.Commands.ManagedNetwork.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Updating Resource....
+        /// </summary>
+        internal static string UpdatingResource {
+            get {
+                return ResourceManager.GetString("UpdatingResource", resourceCulture);
+            }
+        }
     }
 }

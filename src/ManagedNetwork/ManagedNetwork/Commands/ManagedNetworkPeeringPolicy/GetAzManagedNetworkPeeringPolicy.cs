@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
     /// New Azure InputObject Command-let
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzManagedNetworkPeeringPolicy", DefaultParameterSetName = ParameterSetNames.NameParameterSet)]
-    [OutputType(typeof(NewAzManagedNetworkPeeringPolicy))]
+    [OutputType(typeof(PSManagedNetworkPeeringPolicy))]
     public class GetAzManagedNetworkPeeringPolicy : AzureManagedNetworkCmdletBase
     {
         /// <summary>
