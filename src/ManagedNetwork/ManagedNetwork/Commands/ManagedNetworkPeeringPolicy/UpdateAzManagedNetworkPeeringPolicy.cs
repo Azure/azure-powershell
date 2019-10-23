@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Microsoft.Azure.Commands.ManagedNetwork.Models;
 using System;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Properties = Microsoft.Azure.PowerShell.Cmdlets.ManagedNetwork.Properties;
 
 namespace Microsoft.Azure.Commands.ManagedNetwork
 {
@@ -15,7 +16,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
     /// New Azure InputObject Command-let
     /// </summary>
     [Cmdlet(VerbsData.Update, "AzManagedNetworkPeeringPolicy", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.NameParameterSet)]
-    [OutputType(typeof(NewAzManagedNetworkPeeringPolicy))]
+    [OutputType(typeof(PSManagedNetworkPeeringPolicy))]
     public class UpdateAzManagedNetworkPeeringPolicy : AzureManagedNetworkCmdletBase
     {
         /// <summary>

@@ -78,6 +78,7 @@ CmdletsToExport = 'Get-AzManagedNetwork',
                   'New-AzManagedNetworkGroup',
                   'Remove-AzManagedNetworkGroup',
                   'Update-AzManagedNetworkGroup',
+				  'New-AzManagedNetworkPeeringPolicy',
                   'Get-AzManagedNetworkPeeringPolicy',
                   'Remove-AzManagedNetworkPeeringPolicy',
                   'Update-AzManagedNetworkPeeringPolicy'
