@@ -19,31 +19,37 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.Network.Models;
     using System.Linq;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
-    [CmdletDeprecation(ReplacementCmdletName = "Add-AzVirtualHubRouteTable")]
-    [Cmdlet(VerbsCommon.New,
+    [Cmdlet(VerbsCommon.Add,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubRouteTable",
         SupportsShouldProcess = false),
         OutputType(typeof(PSVirtualHubRouteTable))]
-    public class NewAzureRmVirtualHubRouteTableCommand : NetworkBaseCmdlet
+    public class AddAzureRmVirtualHubRouteTableCommand : VirtualHubRouteTableBaseCmdlet
     {
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Name of the route table.")]
+        public string Name { get; set; }
+
         [Parameter(
             Mandatory = true,
             HelpMessage = "List of virtual hub routes.")]
         public PSVirtualHubRoute[] Route { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "List of connections this route table is attached to.")]
+        public string[] Connection { get; set; }
+
         public override void Execute()
         {
             base.Execute();
 
-            // Since this cmdlet and the VirtualHubRouteTable property of
-            // hub will be deprecated, we will rename this route table to 
-            // called defaultRouteTable and it will be attached to All_Branches
-            var virtualHubRouteTable = new PSVirtualHubRouteTable { 
+            var virtualHubRouteTable = new PSVirtualHubRouteTable
+            {
+                Name = this.Name,
                 Routes = this.Route == null ? new List<PSVirtualHubRoute>() : this.Route?.ToList(),
-                Name = "defaultRouteTable",
-                Connections = new List<string>() { "All_Branches" }
+                Connections = this.Connection == null ? new List<string>() : this.Connection.ToList()
             };
 
             WriteObject(virtualHubRouteTable);

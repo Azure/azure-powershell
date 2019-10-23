@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSHubVirtualNetworkConnection> VirtualNetworkConnections { get; set; }
 
+        public List<PSVirtualHubRouteTable> RouteTables { get; set; }
+
         public PSVirtualHubRouteTable RouteTable { get; set; }
 
         [Ps1Xml(Label = "Address Prefix", Target = ViewControl.Table)]
@@ -35,5 +37,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+        
+        [Ps1Xml(Label = "Sku", Target = ViewControl.Table)]
+        public string Sku { get; set; }
     }
 }
