@@ -4,7 +4,7 @@
   "parameters": {
     "storageAccountName": {
       "type": "string",
-      "defaultValue": "armbuilddemo1813"
+      "defaultValue": "armbuilddemo1811"
     },
     "nestedDeploymentRG": {
       "type": "string",
@@ -48,19 +48,10 @@
       }
     },
     {
-      "type": "Microsoft.Resources/resourceGroups",
-      "name": "[parameters('nestedDeploymentRG')]",
-      "apiVersion": "2018-05-01",
-      "location": "west us",
-      "properties": {
-      }
-    },
-    {
       "type": "Microsoft.Resources/deployments",
       "name": "rg-nested",
       "apiVersion": "2017-05-10",
       "resourceGroup": "[parameters('nestedDeploymentRG')]",
-      "dependsOn": [ "[parameters('nestedDeploymentRG')]" ],
       "properties": {
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",

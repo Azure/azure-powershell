@@ -23,17 +23,6 @@
 ## Version 2.0.0
 * Fix bug where New-AzRoleAssignment could not be called without parameter Scope.
 * Add support for new api version 2019-07-01 for Microsoft.Resource
-* Refactor the `-AzDeployment` cmdlets to support deployment at all scopes: ResourceGroup, Subscription, ManagementGroup, Tenant
-  - New-AzDeployment: Added `ScopeType` parameter which is required for all parameter sets.
-  - Test-AzDeployment: Added `ScopeType` parameter which is required for all parameter sets. 
-  - Get-AzDeployment: Added `ScopeType` parameter which is required when getting deployment by deployment name.
-  - Get-AzDeploymentOperation: Added `ScopeType` parameter which is required when getting deployment operation by deployment name.
-  - Stop-AzDeployment: Added `ScopeType` parameter which is required when stopping deployment by deployment name.
-  - Remove-AzDeployment: Added `ScopeType` parameter which is required when removing deployment by deployment name.
-  - Save-AzDeploymentTemplate: Added `ScopeType` parameter which is required when saving template by deployment name.
-  - For all cmdlets above: 
-    - Added `ResourceGroupName` parameter which is required when `ResourceGroup` is specified for `ScopeType`. 
-    - Added `ManagementGroupId` parameter which is required when `ManagementGroup` is specified for `ScopeType`. 
 
 ## Version 1.6.2
 * Add support for new api version 2019-05-10 for Microsoft.Resource

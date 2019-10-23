@@ -12,32 +12,10 @@ Removes a deployment and any associated operations
 
 ## SYNTAX
 
-### SubscriptionWithDeploymentName (Default)
+### RemoveByDeploymentName (Default)
 ```
-Remove-AzDeployment -ScopeType <DeploymentScopeType> [-Name] <String> [-AsJob] [-PassThru]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ResourceGroupWithDeploymentName
-```
-Remove-AzDeployment -ScopeType <DeploymentScopeType> -ResourceGroupName <String> [-Name] <String> [-AsJob]
- [-PassThru] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ManagementGroupWithDeploymentName
-```
-Remove-AzDeployment -ScopeType <DeploymentScopeType> -ManagementGroupId <String> [-Name] <String> [-AsJob]
- [-PassThru] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### TenantWithDeploymentName
-```
-Remove-AzDeployment -ScopeType <DeploymentScopeType> [-Name] <String> [-AsJob] [-PassThru]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzDeployment [-Name] <String> [-AsJob] [-PassThru] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByDeploymentId
@@ -53,41 +31,20 @@ Remove-AzDeployment -InputObject <PSDeployment> [-AsJob] [-PassThru] [-ApiVersio
 ```
 
 ## DESCRIPTION
-The **Remove-AzDeployment** cmdlet removes an Azure deployment and its associated operations at subscription, resource group, management group, or tenant scope.
+The **Remove-AzDeployment** cmdlet removes an Azure deployment at subscription scope and any associated operations.
 
 ## EXAMPLES
 
-### Example 1: Remove a deployment at subscription scope
+### Example 1: Remove a deployment with a given name
 ```
-PS C:\>Remove-AzDeployment -ScopeType "Subscription" -Name "RolesDeployment"
+PS C:\>Remove-AzDeployment -Name "RolesDeployment"
 ```
 
 This command removes the deployment "RolesDeployment" at the current subscription scope.
 
-### Example 2: Remove a deployment at resource group
+### Example 2: Get a deployment and remove it
 ```
-PS C:\>Remove-AzDeployment -ScopeType "ResourceGroup" -ResourceGroupName "testrg" -Name "RolesDeployment"
-```
-
-This command removes the deployment "RolesDeployment" at resource group "testrg".
-
-### Example 3: Remove a deployment at management group
-```
-PS C:\>Remove-AzDeployment -ScopeType "ManagementGroup" -ManagementGroupId "testmg" -Name "RolesDeployment"
-```
-
-This command removes the deployment "RolesDeployment" at management group "testmg".
-
-### Example 4: Remove a deployment at tenant scope
-```
-PS C:\>Remove-AzDeployment -ScopeType "Tenant" -Name "RolesDeployment"
-```
-
-This command removes the deployment "RolesDeployment" at the current tenant scope.
-
-### Example 5: Get a deployment and remove it
-```
-PS C:\>Get-AzDeployment -ScopeType "Subscription" -Name "RolesDeployment" | Remove-AzDeployment
+PS C:\>Get-AzDeployment -Name "RolesDeployment" | Remove-AzDeployment
 ```
 
 This command gets the deployment "RolesDeployment" at the current subscription scope and removes it.
@@ -171,27 +128,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagementGroupId
-The management group id.
-
-```yaml
-Type: System.String
-Parameter Sets: ManagementGroupWithDeploymentName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the deployment.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionWithDeploymentName, ResourceGroupWithDeploymentName, ManagementGroupWithDeploymentName, TenantWithDeploymentName
+Parameter Sets: RemoveByDeploymentName
 Aliases: DeploymentName
 
 Required: True
@@ -225,36 +167,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The resource group name.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceGroupWithDeploymentName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScopeType
-The scope type of the deployment.
-
-```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments.DeploymentScopeType]
-Parameter Sets: SubscriptionWithDeploymentName, ResourceGroupWithDeploymentName, ManagementGroupWithDeploymentName, TenantWithDeploymentName
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

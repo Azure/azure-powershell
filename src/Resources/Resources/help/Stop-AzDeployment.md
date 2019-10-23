@@ -12,29 +12,9 @@ Cancel a running deployment
 
 ## SYNTAX
 
-### SubscriptionWithDeploymentName (Default)
+### StopByDeploymentName (Default)
 ```
-Stop-AzDeployment -ScopeType <DeploymentScopeType> [-Name] <String> [-PassThru] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceGroupWithDeploymentName
-```
-Stop-AzDeployment -ScopeType <DeploymentScopeType> -ResourceGroupName <String> [-Name] <String> [-PassThru]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ManagementGroupWithDeploymentName
-```
-Stop-AzDeployment -ScopeType <DeploymentScopeType> -ManagementGroupId <String> [-Name] <String> [-PassThru]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### TenantWithDeploymentName
-```
-Stop-AzDeployment -ScopeType <DeploymentScopeType> [-Name] <String> [-PassThru] [-ApiVersion <String>] [-Pre]
+Stop-AzDeployment [-Name] <String> [-PassThru] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -51,7 +31,7 @@ Stop-AzDeployment -InputObject <PSDeployment> [-PassThru] [-ApiVersion <String>]
 ```
 
 ## DESCRIPTION
-The **Stop-AzDeployment** cmdlet cancels a deployment at subscription, resource group, management group, or tenant scope.
+The **Stop-AzDeployment** cmdlet cancels a deployment at subscription scope that has started but not completed.
 To stop a deployment, the deployment must have an incomplete provisioning state, such as Provisioning, and not a completed state, such as Provisioned or Failed.
 
 To create a deployment at subscription scope, use the New-AzDeployment cmdlet.
@@ -62,35 +42,14 @@ This cmdlet stops only one running deployment. Use the *Name* parameter to stop 
 
 ### Example 1
 ```
-PS C:\>Stop-AzDeployment -ScopeType "Subscription" -Name "deployment01"
+PS C:\>Stop-AzDeployment -Name "deployment01"
 ```
 
 This command cancels a running deployment "deployment01" at the current subscription scope.
 
 ### Example 2
 ```
-PS C:\>Stop-AzDeployment -ScopeType "ResourceGroup" -ResourceGroupName "testrg" -Name "deployment01"
-```
-
-This command cancels a running deployment "deployment01" at resource group "testrg".
-
-### Example 3
-```
-PS C:\>Stop-AzDeployment -ScopeType "ManagementGroup" -ManagementGroupId "testmg" -Name "deployment01"
-```
-
-This command cancels a running deployment "deployment01" at management group "testmg".
-
-### Example 4
-```
-PS C:\>Stop-AzDeployment -ScopeType "Tenant" -Name "deployment01"
-```
-
-This command cancels a running deployment "deployment01" at the current tenant scope.
-
-### Example 5
-```
-PS C:\>Get-AzDeployment -ScopeType "Subscription" -Name "deployment01" | Stop-AzDeployment
+PS C:\>Get-AzDeployment -Name "deployment01" | Stop-AzDeployment
 ```
 
 This command gets the deployment "deployment01" at the current subscription scope and cancels it. 
@@ -159,27 +118,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagementGroupId
-The management group id.
-
-```yaml
-Type: System.String
-Parameter Sets: ManagementGroupWithDeploymentName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the deployment.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionWithDeploymentName, ResourceGroupWithDeploymentName, ManagementGroupWithDeploymentName, TenantWithDeploymentName
+Parameter Sets: StopByDeploymentName
 Aliases: DeploymentName
 
 Required: True
@@ -213,36 +157,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The resource group name.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceGroupWithDeploymentName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScopeType
-The scope type of the deployment.
-
-```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments.DeploymentScopeType]
-Parameter Sets: SubscriptionWithDeploymentName, ResourceGroupWithDeploymentName, ManagementGroupWithDeploymentName, TenantWithDeploymentName
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
