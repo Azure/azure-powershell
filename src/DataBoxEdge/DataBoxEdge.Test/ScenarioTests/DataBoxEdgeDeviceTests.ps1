@@ -14,12 +14,12 @@
 
 function Get-PSResourceGroupName
 {
-    return Get-DeviceResourceGroupName
+	return Get-DeviceResourceGroupName
 }
 
 function Get-PSDeviceName
 {
-    return getAssetName
+	return getAssetName
 }
 
 <#
@@ -28,11 +28,11 @@ Negative test. Get resources from an non-existing empty group.
 #>
 function Test-GetDeviceNonExistent
 {	
-    $rgname = Get-PSResourceGroupName
-    $dfname = Get-PSDeviceName
+	$rgname = Get-PSResourceGroupName
+	$dfname = Get-PSDeviceName
 	
-    # Test
-	Assert-ThrowsContains { Get-AzDataBoxEdgeDevice $rgname $dfname } "not found"    
+	# Test
+	Assert-ThrowsContains { Get-AzDataBoxEdgeDevice $rgname $dfname } "not found"	
 }
 
 <#
@@ -41,22 +41,22 @@ Tests Create New StorageAccountCredential
 #>
 function Test-CreateDevice
 {	
-    $rgname = Get-PSResourceGroupName
-    $dfname = Get-PSDeviceName
+	$rgname = Get-PSResourceGroupName
+	$dfname = Get-PSDeviceName
 	$sku = 'Edge'
 	$location = 'westus2'
 
 	# Test
 	try
-    {
-        $expected = New-AzDataBoxEdgeDevice $rgname $dfname -Sku $sku -Location $location
+	{
+		$expected = New-AzDataBoxEdgeDevice $rgname $dfname -Sku $sku -Location $location
 		Assert-AreEqual $expected.Name $dfname
 		
-    }
-    finally
-    {
+	}
+	finally
+	{
 		Remove-AzDataBoxEdgeDevice $rgname $dfname
-    }  
+	}  
 }
 
 <#
@@ -65,8 +65,8 @@ Tests Create New StorageAccountCredential
 #>
 function Test-RemoveDevice
 {	
-    $rgname = Get-PSResourceGroupName
-    $dfname = Get-PSDeviceName
+	$rgname = Get-PSResourceGroupName
+	$dfname = Get-PSDeviceName
 	$sku = 'Edge'
 	$location = 'westus2'
 
