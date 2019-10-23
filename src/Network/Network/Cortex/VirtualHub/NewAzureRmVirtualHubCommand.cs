@@ -158,6 +158,7 @@ namespace Microsoft.Azure.Commands.Network
                     }
 
                     virtualHub.RouteTable = this.RouteTable;
+                    virtualHub.RouteTables = new List<PSVirtualHubRouteTable>();
 
                     if (string.IsNullOrWhiteSpace(this.Sku))
                     {

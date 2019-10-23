@@ -47,6 +47,7 @@ Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG
 AddressPrefix             : 10.0.1.0/24
 RouteTable                : 
 VirtualNetworkConnections : {}
+RouteTables                           : {}
 Location                  : West US
 Sku                  : Standard
 Type                      : Microsoft.Network/virtualHubs
@@ -69,6 +70,7 @@ Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG
 AddressPrefix             : 10.0.1.0/24
 RouteTable                : 
 VirtualNetworkConnections : {}
+RouteTables                           : {}
 Location                  : West US
 Sku                  : Standard
 Type                      : Microsoft.Network/virtualHubs
@@ -96,6 +98,7 @@ Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG
 AddressPrefix             : 10.0.1.0/24
 RouteTable                : Microsoft.Azure.Commands.Network.Models.PSVirtualHubRouteTable
 VirtualNetworkConnections : {}
+RouteTables                           : {}
 Location                  : West US
 Sku                  : Standard
 Type                      : Microsoft.Network/virtualHubs
@@ -217,7 +220,7 @@ Accept wildcard characters: False
 The route table associated with this Virtual Hub.
 
 ```yaml
-Type: PSVirtualHubRouteTable[]
+Type: PSVirtualHubRouteTable
 Parameter Sets: (All)
 Aliases:
 
