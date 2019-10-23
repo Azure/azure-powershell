@@ -29,12 +29,12 @@ namespace Microsoft.Azure.Commands.Network
     using System.Linq;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-    [Cmdlet("Update",
+    [Cmdlet("Set",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHub",
         DefaultParameterSetName = CortexParameterSetNames.ByVirtualHubName,
         SupportsShouldProcess = true),
         OutputType(typeof(PSVirtualHub))]
-    public class UpdateAzureRmVirtualHubCommand : VirtualHubBaseCmdlet
+    public class SetAzureRmVirtualHubCommand : VirtualHubBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("ResourceName", "VirtualHubName")]
+        [Alias("ResourceName", "VirtualHubName", "HubName")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
@@ -73,30 +73,14 @@ namespace Microsoft.Azure.Commands.Network
         public PSVirtualHub InputObject { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The address space string for this virtual hub.")]
-        public string AddressPrefix { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The hub virtual network connections associated with this Virtual Hub.")]
-        public PSHubVirtualNetworkConnection[] HubVnetConnection { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The route table associated with this Virtual Hub.")]
-        public PSVirtualHubRouteTable RouteTable { get; set; }
+            Mandatory = true,
+            HelpMessage = "The route tables associated with this Virtual Hub.")]
+        public PSVirtualHubRouteTable[] RouteTable { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The sku of the Virtual Hub.")]
-        [PSArgumentCompleter("Basic", "Standard")]
-        public string Sku { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -106,13 +90,12 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            PSVirtualHub virtualHubToUpdate = null;
 
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubObject, StringComparison.OrdinalIgnoreCase))
             {
-                virtualHubToUpdate = this.InputObject;
-                this.ResourceGroupName = virtualHubToUpdate.ResourceGroupName;
-                this.Name = virtualHubToUpdate.Name;
+                var hub = this.InputObject;
+                this.ResourceGroupName = hub.ResourceGroupName;
+                this.Name = hub.Name;
             }
             else
             {
@@ -123,36 +106,34 @@ namespace Microsoft.Azure.Commands.Network
                     this.ResourceGroupName = parsedResourceId.ResourceGroupName;
                 }
 
-                virtualHubToUpdate = this.GetVirtualHub(this.ResourceGroupName, this.Name);
             }
-            
+            PSVirtualHub virtualHubToUpdate = this.GetVirtualHub(this.ResourceGroupName, this.Name);
+
             if (virtualHubToUpdate == null)
             {
                 throw new PSArgumentException(Properties.Resources.VirtualHubToUpdateNotFound);
             }
 
-            //// Update address prefix, if specified
-            if (!string.IsNullOrWhiteSpace(this.AddressPrefix))
-            {
-                virtualHubToUpdate.AddressPrefix = this.AddressPrefix;
-            }
-
-            //// HubVirtualNetworkConnections
-            if (this.HubVnetConnection != null)
-            {
-                virtualHubToUpdate.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
-                virtualHubToUpdate.VirtualNetworkConnections.AddRange(this.HubVnetConnection);
-            }
-
             //// VirtualHubRouteTable
-            if (this.RouteTable != null)
+            if(virtualHubToUpdate.RouteTables == null)
             {
-                virtualHubToUpdate.RouteTable = this.RouteTable;
+                virtualHubToUpdate.RouteTables = new List<PSVirtualHubRouteTable>();
+                virtualHubToUpdate.RouteTables.AddRange(this.RouteTable);
             }
-
-            if (!string.IsNullOrWhiteSpace(this.Sku))
-            {
-                virtualHubToUpdate.Sku = this.Sku;
+            else 
+            { 
+                foreach (var routeTable in this.RouteTable)
+                {
+                    // see if routeTable with same name already exists in hub, 
+                    // if it does then remove it and add the route table that we received as input
+                    // if it does not exist then directly add the input 
+                    var routeTableToRemove = virtualHubToUpdate.RouteTables.FirstOrDefault(rt => rt.Name.Equals(routeTable.Name, StringComparison.OrdinalIgnoreCase));
+                    if (routeTableToRemove != null)
+                    {
+                        virtualHubToUpdate.RouteTables.Remove(routeTableToRemove);
+                    }
+                    virtualHubToUpdate.RouteTables.Add(routeTable);
+                }
             }
 
             //// Update the virtual hub
