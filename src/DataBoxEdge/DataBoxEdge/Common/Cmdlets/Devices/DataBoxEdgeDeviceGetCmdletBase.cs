@@ -111,21 +111,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
             ParameterSetName = GetExtendedInfoParameterSet,
             HelpMessage = Constants.ResourceGroupNameHelpMessage)]
         [ValidateNotNullOrEmpty]
-        [ResourceGroupCompleter]
         public SwitchParameter ExtendedInfo { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetNetworkSettingParameterSet,
             HelpMessage = Constants.ResourceGroupNameHelpMessage)]
         [ValidateNotNullOrEmpty]
-        [ResourceGroupCompleter]
         public SwitchParameter NetworkSetting { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetSummaryUpdateParameterSet,
             HelpMessage = Constants.ResourceGroupNameHelpMessage)]
         [ValidateNotNullOrEmpty]
-        [ResourceGroupCompleter]
         public SwitchParameter UpdateSummary { get; set; }
 
         private ResourceModel GetResourceModel()
