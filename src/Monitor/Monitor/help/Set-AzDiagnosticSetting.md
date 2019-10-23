@@ -119,7 +119,7 @@ All other time grains and categories are unchanged.
 
 ### Example 5: Using pipeline
 ```
-PS C:\>Get-AzDiagnosticSetting -ResourceId "Resource01" | Set-AzDiagnosticSetting
+PS C:\>Get-AzDiagnosticSetting -ResourceId "Resource01" | Set-AzDiagnosticSetting -Enabled $True -Category Category1,Category2
 ```
 
 This command uses the PowerShell pipeline to set (no change made) a diagnostic setting.
