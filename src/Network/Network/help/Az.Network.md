@@ -1345,3 +1345,41 @@ Updates a scalable VPN gateway.
 ### [Update-AzVpnSite](Update-AzVpnSite.md)
 Updates a VPN site.
 
+### [Get-AzP2sVpnGateway](Get-AzP2sVpnGateway.md)
+Gets a P2S vpn gateway.
+
+### [Get-AzP2sVpnGatewayConnectionHealth](Get-AzP2sVpnGatewayConnectionHealth.md)
+Gets aggregated point to site connections health details.
+
+### [Get-AzP2sVpnGatewayDetailedConnectionHealth](Get-AzP2sVpnGatewayDetailedConnectionHealth.md)
+Gets detailed point to site connections health.
+
+### [Get-AzP2sVpnGatewayVpnProfile](Get-AzP2sVpnGatewayVpnProfile.md)
+Generates and gets Vpn profile for P2S vpn gateway.
+
+### [Get-AzVirtualWanVpnServerConfiguration](Get-AzVirtualWanVpnServerConfiguration.md)
+Gets list of all associated VpnServerConfigurations to Virtual Wan.
+
+### [Get-AzVirtualWanVpnServerConfigurationVpnProfile](Get-AzVirtualWanVpnServerConfigurationVpnProfile.md)
+Generates and gets Vpn profile for Virtual Wan - VpnServerConfiguration combination.
+
+### [Get-AzVpnServerConfiguration](Get-AzVpnServerConfiguration.md)
+Gets Vpn server configuration.
+
+### [New-AzP2sVpnGateway](New-AzP2sVpnGateway.md)
+Creates a P2S vpn gateway.
+
+### [New-AzVpnServerConfiguration](New-AzVpnServerConfiguration.md)
+Creates a Vpn server configuration.
+
+### [Remove-AzP2sVpnGateway](Remove-AzP2sVpnGateway.md)
+Removes a P2S vpn gateway.
+
+### [Remove-AzVpnServerConfiguration](Remove-AzVpnServerConfiguration.md)
+Removes a Vpn server configuration.
+
+### [Update-AzP2sVpnGateway](Update-AzP2sVpnGateway.md)
+Updates a P2S vpn gateway.
+
+### [Update-AzVpnServerConfiguration](Update-AzVpnServerConfiguration.md)
+Updates a Vpn server configuration.
