@@ -15,7 +15,7 @@ Creates a scope for managedNetwork.
 New-AzManagedNetworkScope [-ManagementGroupIdList <String[]>]
  [-SubscriptionIdList <String[]>]
  [-VirtualNetworkIdList <String[]>]
- [-SubnetIdList <String[]>] [-AsJob]
+ [-SubnetIdList <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,21 +33,6 @@ $testmanagednetworkscope = New-AzManagedNetworkScope -ManagementGroupIdList $Man
 This example creates a Managed Network scope.
 
 ## PARAMETERS
-
-### -AsJob
-Run in the background.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -68,7 +53,7 @@ Accept wildcard characters: False
 Azure ManagedNetwork Scope management group ids.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +68,7 @@ Accept wildcard characters: False
 Azure ManagedNetwork Scope subnet ids.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +83,7 @@ Accept wildcard characters: False
 Azure ManagedNetwork Scope subscription ids.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +98,7 @@ Accept wildcard characters: False
 Azure ManagedNetwork Scope virtual network ids.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -160,7 +145,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String []
+### System.String []
 
 ## OUTPUTS
 

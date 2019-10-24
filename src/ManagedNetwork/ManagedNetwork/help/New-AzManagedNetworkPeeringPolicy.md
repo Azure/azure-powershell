@@ -154,7 +154,7 @@ Accept wildcard characters: False
 Azure ManagedNetwork Policy Mesh Groups.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 Azure ManagedNetwork Policy Spoke Groups.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -263,7 +263,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### String[]
+### System.String[]
 
 ### Microsoft.Azure.Commands.Network.Models.PSManagedNetwork
 

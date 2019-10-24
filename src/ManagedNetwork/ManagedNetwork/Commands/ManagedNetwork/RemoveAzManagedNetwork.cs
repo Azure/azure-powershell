@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
         /// </summary>
         [Parameter(Mandatory = true, 
             HelpMessage = HelpMessage.ResourceIdNameHelp,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceIdCompleter("Microsoft.ManagedNetwork/managedNetworks")]
