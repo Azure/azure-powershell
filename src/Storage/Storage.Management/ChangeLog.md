@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix issue in enabled Azure Files Active Directory Domain Service Authentication, on a new Storage account which has never enable it. 
+
+## Version 1.8.1
 * Support enable Large File share when create or update Storage account
     -  New-AzStorageAccount
     -  Set-AzStorageAccount
