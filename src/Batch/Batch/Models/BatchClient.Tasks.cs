@@ -139,12 +139,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             if (parameters.ResourceFiles != null)
             {
-                task.ResourceFiles = new List<ResourceFile>();
-                foreach (DictionaryEntry d in parameters.ResourceFiles)
-                {
-                    ResourceFile file = new ResourceFile(d.Value.ToString(), d.Key.ToString());
-                    task.ResourceFiles.Add(file);
-                }
+                task.ResourceFiles = parameters.ResourceFiles.Select(file => file.omObject).ToList();
             }
 
             if (parameters.AffinityInformation != null)

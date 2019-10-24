@@ -187,6 +187,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Can&apos;t determine the identity to be used with the assignment. Make sure the assignment file contains Identity property and identity Type property..
+        /// </summary>
+        internal static string IdentityTypeNotProvided {
+            get {
+                return ResourceManager.GetString("IdentityTypeNotProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Overwriting the output file..
         /// </summary>
         internal static string OverwriteExistingOutputFileContinueMessage {

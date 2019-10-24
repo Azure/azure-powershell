@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [Parameter(Mandatory = true, HelpMessage = "Match variable of the condition.")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("RemoteAddress", "RequestMethod", "QueryString", "PostArgs", "RequestUri",
-            "RequestHeader", "RequestBody", "RequestScheme", "UrlPath", "UrlFileExtension", "UrlFileName", "IsDevice")]
+            "RequestHeader", "RequestBody", "RequestScheme", "UrlPath", "UrlFileExtension", "UrlFileName", "IsDevice", "Cookies", "HttpVersion")]
         public string MatchVariable { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Describes operator to be matched")]
@@ -42,6 +42,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [PSArgumentCompleter("Any", "IPMatch", "GeoMatch", "Equal", "Contains","LessThan", "GreaterThan",
             "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "Wildcard")]
         public string Operator { get; set; }
+        
+        [Parameter(Mandatory = false, HelpMessage = "Name of Selector to be matched")]
+        public string Selector { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "List of possible match values.")]
         public string[] MatchValue { get; set; }
@@ -59,6 +62,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
             {
                 MatchVariable = MatchVariable,
                 Operator = Operator,
+                Selector = Selector,
                 MatchValue = MatchValue,
                 NegateCondition = NegateCondition,
                 Transfroms = Transform == null? null : new List<string> { Transform }

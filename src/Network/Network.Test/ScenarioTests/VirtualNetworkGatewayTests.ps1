@@ -25,9 +25,9 @@ function Test-VirtualNetworkExpressRouteGatewayCRUD
     $vnetName = Get-ResourceName
     $publicIpName = Get-ResourceName
     $vnetGatewayConfigName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement "East US"
+    $rglocation = Get-ProviderLocation ResourceManagement "West Central US"
     $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
-    $location = Get-ProviderLocation $resourceTypeParent "East US"
+    $location = Get-ProviderLocation $resourceTypeParent "West Central US"
     
     try 
      {
@@ -47,11 +47,12 @@ function Test-VirtualNetworkExpressRouteGatewayCRUD
       # Create & Get virtualnetworkgateway
       $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
 
-      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType ExpressRoute -GatewaySku UltraPerformance -VpnType RouteBased -Force 
+      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType ExpressRoute -GatewaySku UltraPerformance -VpnType RouteBased -VpnGatewayGeneration None -Force 
       $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual "ExpressRoute" $expected.GatewayType
+	  Assert-AreEqual "None" $expected.VpnGatewayGeneration
       
       # List virtualNetworkGateways
       $list = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname
@@ -952,3 +953,111 @@ function Test-VirtualNetworkGatewayVpnClientConnectionHealth
     }
 }
 
+<#
+.SYNOPSIS
+Virtual network gateway tests
+#>
+function Test-VirtualNetworKGatewayPacketCapture
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "WestCentralUS"
+    $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
+    $location = Get-ProviderLocation $resourceTypeParent "WestCentralUS"
+    try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+      
+      #create SAS URL
+	  if ((Get-NetworkTestMode) -ne 'Playback')
+	  {
+	       $storetype = 'Standard_GRS'
+           $containerName = "testcontainer"
+           $storeName = 'sto' + $rgname;
+           New-AzStorageAccount -ResourceGroupName $rgname -Name $storeName -Location $location -Type $storetype
+           $key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeName
+           $context = New-AzStorageContext -StorageAccountName $storeName -StorageAccountKey $key[0].Value
+           New-AzStorageContainer -Name $containerName -Context $context
+           $container = Get-AzStorageContainer -Name $containerName -Context $context
+           $now=get-date
+           $sasurl = New-AzureStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
+	  }
+	  else
+	  {
+	       $sasurl = "https://storage/test123?sp=racwdl&stvigopKcy"
+	  }
+
+      # Create the Virtual Network
+      $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+      # Create the publicip
+      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel    
+
+      # Create & Get virtualnetworkgateway
+      $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+      $job = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -AsJob
+      $job | Wait-Job
+      $actual = $job | Receive-Job
+      $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $gateway.ResourceGroupName $actual.ResourceGroupName	
+      Assert-AreEqual $gateway.Name $actual.Name	
+      Assert-AreEqual "Vpn" $gateway.GatewayType
+      Assert-AreEqual "RouteBased" $gateway.VpnType
+
+      #StartPacketCapture on gateway with Name parameter
+      $output = Start-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName  $rgname -Name $rname
+      Assert-AreEqual $gateway.ResourceGroupName $output.ResourceGroupName	
+      Assert-AreEqual $gateway.Name $output.Name
+      Assert-AreEqual $gateway.ResourceGroupName $output.ResourceGroupName	
+      Assert-AreEqual $gateway.Location $output.Location
+      Assert-AreEqual $output.Code "Succeeded"
+
+      #StopPacketCapture on gateway with Name parameter
+      $output = Stop-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName  $rgname -Name $rname -SasUrl $sasurl
+      Assert-AreEqual $gateway.ResourceGroupName $output.ResourceGroupName	
+      Assert-AreEqual $gateway.Name $output.Name
+      Assert-AreEqual $gateway.ResourceGroupName $output.ResourceGroupName	
+      Assert-AreEqual $gateway.Location $output.Location
+      Assert-AreEqual $output.Code "Succeeded"
+
+      #StartPacketCapture on gateway object
+	  $a="{`"TracingFlags`":11,`"MaxPacketBufferSize`":120,`"MaxFileSize`":500,`"Filters`":[{`"SourceSubnets`":[`"10.19.0.4/32`",`"10.20.0.4/32`"],`"DestinationSubnets`":[`"10.20.0.4/32`",`"10.19.0.4/32`"],`"IpSubnetValueAsAny`":true,`"TcpFlags`":-1,`"PortValueAsAny`":true,`"CaptureSingleDirectionTrafficOnly`":true}]}"
+      $output = Start-AzVirtualnetworkGatewayPacketCapture -InputObject $gateway -FilterData $a
+      Assert-AreEqual $gateway.ResourceGroupName $output.ResourceGroupName	
+      Assert-AreEqual $gateway.Name $output.Name
+      Assert-AreEqual $gateway.ResourceGroupName $output.ResourceGroupName	
+      Assert-AreEqual $gateway.Location $output.Location
+      Assert-AreEqual $output.Code "Succeeded"
+
+      #StopPacketCapture on gateway object
+      $output = Stop-AzVirtualnetworkGatewayPacketCapture -InputObject $gateway -SasUrl $sasurl
+      Assert-AreEqual $gateway.ResourceGroupName $output.ResourceGroupName	
+      Assert-AreEqual $gateway.Name $output.Name
+      Assert-AreEqual $gateway.ResourceGroupName $output.ResourceGroupName	
+      Assert-AreEqual $gateway.Location $output.Location
+      Assert-AreEqual $output.Code "Succeeded"
+
+      # Delete virtualNetworkGateway
+      $job = Remove-AzVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force -AsJob
+      $job | Wait-Job
+      $delete = $job | Receive-Job
+      Assert-AreEqual true $delete
+      
+      $list = Get-AzVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual 0 @($list).Count
+     }
+     finally
+     {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+     }
+}

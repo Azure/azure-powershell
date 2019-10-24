@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.1
+* Updated `Set-AzRedisCache` reference documentation to include missing values for `-Size` parameter
+
 ## Version 1.1.0
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 

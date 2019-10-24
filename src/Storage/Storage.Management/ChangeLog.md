@@ -18,6 +18,21 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support enable Large File share when create or update Storage account
+    -  New-AzStorageAccount
+    -  Set-AzStorageAccount
+* When close/get File handle, skip check the input path is File directory or File, to avoid failure with object in DeletePending status
+    -  Get-AzStorageFileHandle
+    -  Close-AzStorageFileHandle
+
+## Version 1.8.0
+* Upgrade Storage Client Library to 11.1.0
+* List containers with Management plane API, will list with NextPageLink
+    -  Get-AzRmStorageContainer
+* List Storage accounts from subscription, will list with NextPageLink
+    -  Get-AzStorageAccount
+
+## Version 1.7.0
 * Updated example in reference documentation for `Get-AzStorageAccountKey`
 * In upload/Downalod Azure File,support perserve the source File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the destination file
     -  Set-AzStorageFileContent

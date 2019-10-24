@@ -45,9 +45,6 @@ function Test-NewExchangePeering()
 	Assert-NotNull $createdPeering
 	Assert-NotNull $createdPeering.Connections.ConnectionIdentifier
 	}
-	catch{
-	Write-Debug $error
-	}
 	finally{
 		$isRemoved = Remove-AzPeerAsn -Name $peerAsn.Name -Force -PassThru;
 		Assert-True {$isRemoved}

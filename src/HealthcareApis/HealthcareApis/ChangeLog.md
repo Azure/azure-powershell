@@ -19,11 +19,22 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* Updated the powershell version to 1.0.0
+* Updated the SDK version to 1.0.2
+* Update in tests to refer to new SDK version
+* Updated the output structure from nested to flattened.
+
+## Version 0.1.2
+* Added Exception Handling around KeyNotFoundException
+
+
 ## Version 0.1.1
 * Added Error Handling in all cmdlets
 * Fixed few typos
 * Enable Set-AzHealthcareApisService to allow updating tags.
-* Fixed bug around inaccurate kind
+* Fixed bug around inaccurate kind.
+* Added Exception Handling around KeyNotFoundException.
 
 ## Version 0.1.0
 * Added following CRUD operation cmdlets to HealthcareApis service. 
