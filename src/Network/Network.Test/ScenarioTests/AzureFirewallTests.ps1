@@ -108,16 +108,15 @@ function Test-AzureFirewallCRUD {
     $natRule1TranslatedPort = "91"
 
 	# AzureFirewallNatRule 2
-    $natRule1Name = "natRule2"
-    $natRule1Desc = "desc2"
-    $natRule1SourceAddress1 = "10.0.0.0"
-    $natRule1SourceAddress2 = "111.1.0.0/24"
-    $natRule1DestinationAddress1 = "1.2.3.4"
-    $natRule1Protocol1 = "UDP"
-    $natRule1Protocol2 = "TCP"
-    $natRule1DestinationPort1 = "95"
-    $natRule1TranslatedFqdn = "server1.internal.com"
-    $natRule1TranslatedPort = "96"
+    $natRule2Name = "natRule2"
+    $natRule2Desc = "desc2"
+    $natRule2SourceAddress1 = "10.0.0.0"
+    $natRule2SourceAddress2 = "111.1.0.0/24"
+    $natRule2Protocol1 = "UDP"
+    $natRule2Protocol2 = "TCP"
+    $natRule2DestinationPort1 = "95"
+    $natRule2TranslatedFqdn = "server1.internal.com"
+    $natRule2TranslatedPort = "96"
 
     try {
         # Create the resource group
@@ -241,7 +240,7 @@ function Test-AzureFirewallCRUD {
         $natRc = New-AzFirewallNatRuleCollection -Name $natRcName -Priority $natRcPriority -Rule $natRule
 
         # Add second NAT Rule to rule Collection
-        $natRc.AddRule($$natRule2)
+        $natRc.AddRule($natRule2)
 
         # Add ApplicationRuleCollections to the Firewall using method AddApplicationRuleCollection
         $azureFirewall.AddApplicationRuleCollection($appRc)
@@ -450,8 +449,8 @@ function Test-AzureFirewallCRUD {
         Assert-AreEqual $networkRule2SourceAddress1 $networkRule2.SourceAddresses[0]
         Assert-AreEqual $networkRule2SourceAddress2 $networkRule2.SourceAddresses[1]
 
-        Assert-AreEqual 1 $networkRule2.DestinationAddresses.Count 
-        Assert-AreEqual $networkRule2DestinationAddress1 $networkRule2.DestinationAddresses[0]
+        Assert-AreEqual 1 $networkRule2.DestinationFqdns.Count 
+        Assert-AreEqual $networkRule2DestinationFqdn1 $networkRule2.DestinationFqdns[0]
 
         Assert-AreEqual 3 $networkRule2.Protocols.Count
         Assert-AreEqual $networkRule2Protocol1 $networkRule2.Protocols[0]
@@ -528,11 +527,6 @@ function Test-AzureFirewallCRUDWithZones {
     $networkRcPriority = 200
     $networkRcActionType = "Deny"
 
-    # AzureFirewallNetworkRuleCollection2
-    $networkRcName2 = "networkRc2"
-    $networkRcPriority2 = 300
-    $networkRcActionType = "Deny"
-
     # AzureFirewallNetworkRule 1
     $networkRule1Name = "networkRule"
     $networkRule1Desc = "desc1"
@@ -559,18 +553,6 @@ function Test-AzureFirewallCRUDWithZones {
     $natRule1DestinationPort1 = "90"
     $natRule1TranslatedAddress = "10.1.2.3"
     $natRule1TranslatedPort = "91"
-
-    # AzureFirewallNatRule 2
-    $natRule2Name = "natRule2"
-    $natRule2Desc = "desc2"
-    $natRule2SourceAddress1 = "10.0.0.0"
-    $natRule2SourceAddress2 = "111.1.0.0/24"
-    $natRule2DestinationAddress1 = "1.2.3.4"
-    $natRule2Protocol1 = "UDP"
-    $natRule2Protocol2 = "TCP"
-    $natRule2DestinationPort1 = "9001"
-    $natRule2TranslatedFqdn = "httpserver.internal.com"
-    $natRule2TranslatedPort = "9001"
 
     try {
         # Create the resource group
