@@ -15,11 +15,7 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-<<<<<<< Updated upstream
-    class PSAzureFirewallThreatIntelWhitelist
-=======
     public class PSAzureFirewallThreatIntelWhitelist
->>>>>>> Stashed changes
     {
         public string FQDNs { get; set; }
 
