@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The destination FQDNs of the rule")]
+            HelpMessage = "The destination FQDN of the rule")]
         [ValidateNotNullOrEmpty]
-        public string[] DestinationFqdns { get; set; }
+        public string[] DestinationFqdn { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -76,22 +76,22 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (DestinationFqdns != null)
+            if (DestinationFqdn != null)
             {
-                foreach (string fqdn in DestinationFqdns)
+                foreach (string fqdn in DestinationFqdn)
                 {
                     ValidateIsFqdn(fqdn);
                 }
             }
 
             // Only one of DestinationAddress or DestinationFqdns is allowed
-            if ((DestinationAddress != null) && (DestinationFqdns != null))
+            if ((DestinationAddress != null) && (DestinationFqdn != null))
             {
                 throw new ArgumentException("Both DestinationAddress and DestinationFqdns not allowed");
             }
 
             // One of DestinationAddress or DestinationFqdns must be present
-            if ((DestinationAddress == null) && (DestinationFqdns == null))
+            if ((DestinationAddress == null) && (DestinationFqdn == null))
             {
                 throw new ArgumentException("Either DestinationAddress or DestinationFqdns is required");
             }
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Network
                 Protocols = this.Protocol?.ToList(),
                 SourceAddresses = this.SourceAddress?.ToList(),
                 DestinationAddresses = this.DestinationAddress?.ToList(),
-                DestinationFqdns = this.DestinationFqdns?.ToList(),
+                DestinationFqdns = this.DestinationFqdn?.ToList(),
                 DestinationPorts = this.DestinationPort?.ToList()
             };
             WriteObject(networkRule);
