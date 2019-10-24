@@ -753,6 +753,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
             catch (Exception ex)
             {
+                PrintSdkExceptionDetail(ex);
                 throw GetInnerException(ex);
             }
 

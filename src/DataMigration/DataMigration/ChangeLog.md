@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.3
 * Fixed miscellaneous typos across module
 
 ## Version 0.7.2

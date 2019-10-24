@@ -47,8 +47,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             cmdlet.TimeAggregation = "Total";
             cmdlet.ExecuteCmdlet();
 
-            Func<PSMetricCriteria, bool> verify = r =>
+            Func<IPSMultiMetricCriteria, bool> verify = crit =>
             {
+                var r = crit as PSMetricCriteria;
                 Assert.Equal("PacketsInDDoS", r.MetricName);
                 Assert.Equal("GreaterThan", r.OperatorProperty);
                 Assert.Equal(2, r.Threshold);
@@ -56,7 +57,37 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                 return true;
             };
 
-            this.commandRuntimeMock.Verify(o => o.WriteObject(It.Is<PSMetricCriteria>(r => verify(r))), Times.Once);
+            this.commandRuntimeMock.Verify(o => o.WriteObject(It.Is<IPSMultiMetricCriteria>(r => verify(r))), Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewDynamicMetricAlertRuleV2CriteriaParametersProcessing()
+        {
+            // Setting required parameter
+            cmdlet.MetricName = "PacketsInDDoS";
+            cmdlet.Operator = "GreaterOrLessThan";
+            cmdlet.TimeAggregation = "Total";
+            cmdlet.ThresholdSensitivity = "High";
+            cmdlet.ViolationCount= 2;
+            cmdlet.ExaminedAggregatedPointCount= 4;
+            cmdlet.IgnoreDataBefore = new DateTime(1,1,1);
+            cmdlet.DynamicThreshold = new SwitchParameter(true);
+            cmdlet.ExecuteCmdlet();
+
+            Func<IPSMultiMetricCriteria, bool> verify = crit =>
+            {
+                var r = crit as PSDynamicMetricCriteria;
+                Assert.Equal("PacketsInDDoS", r.MetricName);
+                Assert.Equal("GreaterOrLessThan", r.OperatorProperty);
+                Assert.Equal("Total", r.TimeAggregation);
+                Assert.Equal("High", r.AlertSensitivity);
+                Assert.Equal(2, r.FailingPeriods.MinFailingPeriodsToAlert);
+                Assert.Equal(4, r.FailingPeriods.NumberOfEvaluationPeriods);
+                return true;
+            };
+
+            this.commandRuntimeMock.Verify(o => o.WriteObject(It.Is<IPSMultiMetricCriteria>(r => verify(r))), Times.Once);
         }
     }
 }

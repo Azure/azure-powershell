@@ -11,10 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="28.3.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.14.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="29.2.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.16.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.2.1-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="3.1.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="3.1.2-preview" />
   </ItemGroup>
 
   <ItemGroup>

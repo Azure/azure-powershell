@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/remove-azservicefabricclientcertificate
@@ -45,7 +45,7 @@ Use **Remove-AzServiceFabricClientCertificate** to remove a client certificate(s
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS c:> Remove-AzServiceFabricClientCertificate -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -Thumbprint 5F3660C715EBBDA31DB1FFDCF508302348DE8E7A
 ```
 
@@ -54,7 +54,7 @@ This command will remove client certificate with thumbprint '5F3660C715EBBDA31DB
 ## PARAMETERS
 
 ### -AdminClientThumbprint
-Specify client certificate thumbprint that only has admin permission.
+Specify client certificate thumbprint which only has admin permission
 
 ```yaml
 Type: System.String[]
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClientCertificateCommonName
-Specify client common name, issuer thumbprint, and authentication type.
+Specify client common name , issuer thumbprint and authentication type
 
 ```yaml
 Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[]
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -CommonName
-Specify client certificate common name.
+Specify client certificate common name
 
 ```yaml
 Type: System.String
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -IssuerThumbprint
-Specify client certificate issuer thumbprint.
+Specify thumbprint of client certificate's issuer
 
 ```yaml
 Type: System.String
@@ -129,7 +129,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster.
+Specify the name of the cluster
 
 ```yaml
 Type: System.String
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReadonlyClientThumbprint
-Specify client certificate thumbprint that has read only permission.
+Specify client certificate thumbprint which only has read only permission
 
 ```yaml
 Type: System.String[]
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group.
+Specify the name of the resource group.
 
 ```yaml
 Type: System.String
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### -Thumbprint
-Specify client certificate thumbprint.
+Specify client certificate thumbprint
 
 ```yaml
 Type: System.String
@@ -204,7 +204,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

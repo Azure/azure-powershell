@@ -57,5 +57,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-IntersectAddressSpace");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
+        public void TestErrorResponseException()
+        {
+            TestRunner.RunTestScript("Test-ErrorResponseException");
+        }
     }
 }

@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHub", DefaultParameterSetName = "UpdateSku", SupportsShouldProcess = true)]
@@ -31,7 +32,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         const string UpdateEventHubEndpointPropertiesParameterSet = "UpdateEventHubEndpointProperties";
         const string UpdateFileUploadPropertiesParameterSet = "UpdateFileUploadProperties";
         const string UpdateCloudToDevicePropertiesParameterSet = "UpdateCloudToDeviceProperties";
-        const string UpdateOperationsMonitoringPropertiesParameterSet = "UpdateOperationsMonitoringProperties";
         const string UpdateRoutingPropertiesParameterSet = "UpdateRoutingProperties";        
         const string UpdateRoutePropertiesParameterSet = "UpdateRouteProperties";
         const string UpdateFallbackRoutePropertyParameterSet = "UpdateFallbackRouteProperty";
@@ -122,13 +122,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public PSCloudToDeviceProperties CloudToDevice { get; set; }
 
         [Parameter(
-            ParameterSetName = UpdateOperationsMonitoringPropertiesParameterSet,
-            Mandatory = true,
-            HelpMessage = "Set Operations Monitoring Properties")]
-        [ValidateNotNullOrEmpty]
-        public PSOperationsMonitoringProperties OperationsMonitoringProperties { get; set; }
-
-        [Parameter(
             ParameterSetName = UpdateRoutingPropertiesParameterSet,
             Mandatory = false,
             HelpMessage = "Set Routing Properties")]
@@ -170,7 +163,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                     case UpdateEventHubEndpointPropertiesParameterSet:
 
                         iotHubDescription.Properties.EventHubEndpoints["events"].RetentionTimeInDays = this.EventHubRetentionTimeInDays;
-                        iotHubDescription.Properties.EventHubEndpoints["operationsMonitoringEvents"].RetentionTimeInDays = this.EventHubRetentionTimeInDays;
                         break;
                     case UpdateFileUploadPropertiesParameterSet:
 
@@ -207,14 +199,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                         if (this.CloudToDevice != null)
                         {
                             iotHubDescription.Properties.CloudToDevice = IotHubUtils.ToCloudToDeviceProperties(this.CloudToDevice);
-                        }
-
-                        break;
-                    case UpdateOperationsMonitoringPropertiesParameterSet:
-
-                        if (this.OperationsMonitoringProperties != null)
-                        {
-                            iotHubDescription.Properties.OperationsMonitoringProperties = IotHubUtils.ToOperationsMonitoringProperties(this.OperationsMonitoringProperties);
                         }
 
                         break;

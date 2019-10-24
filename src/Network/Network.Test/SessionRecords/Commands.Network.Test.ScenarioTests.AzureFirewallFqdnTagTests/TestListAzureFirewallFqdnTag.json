@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/d2ad5196-2292-4080-b209-ce4399b0a807/providers/Microsoft.Network/azureFirewallFqdnTags?api-version=2019-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDJhZDUxOTYtMjI5Mi00MDgwLWIyMDktY2U0Mzk5YjBhODA3L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9henVyZUZpcmV3YWxsRnFkblRhZ3M/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestUri": "/subscriptions/d2ad5196-2292-4080-b209-ce4399b0a807/providers/Microsoft.Network/azureFirewallFqdnTags?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDJhZDUxOTYtMjI5Mi00MDgwLWIyMDktY2U0Mzk5YjBhODA3L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9henVyZUZpcmV3YWxsRnFkblRhZ3M/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0b219752-0d55-4fb5-a2e0-2f0888128dde"
+          "4ffb1e7b-cf47-474c-b88a-1a3385a6ad5e"
         ],
         "accept-language": [
           "en-US"
@@ -15,8 +15,8 @@
         "User-Agent": [
           "FxVersion/4.6.26614.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.2.0.0"
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -24,7 +24,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 07:07:04 GMT"
+          "Wed, 18 Sep 2019 22:03:21 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -34,21 +34,24 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "3231e5ba-63bf-4231-96ad-dd3178d0a85a"
+          "4b6d52e2-cec2-43ba-b65c-228bfaab8c45"
         ],
         "x-ms-correlation-request-id": [
-          "7591b134-4b22-4169-8995-833b37047c6c"
+          "ae1eb8d9-0327-4c16-92d2-1b07e093e5dc"
         ],
-        "strict-transport-security": [
+        "x-ms-arm-service-request-id": [
+          "8572482d-0af2-46cf-bff7-a4245b63d639"
+        ],
+        "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T070704Z:7591b134-4b22-4169-8995-833b37047c6c"
+          "WESTUS2:20190918T220321Z:ae1eb8d9-0327-4c16-92d2-1b07e093e5dc"
         ],
-        "x-content-type-options": [
+        "X-Content-Type-Options": [
           "nosniff"
         ],
         "Content-Length": [

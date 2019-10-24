@@ -14,18 +14,12 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.LegacySdk;
-using Microsoft.Azure.Management.Sql.LegacySdk.Models;
-using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
 {
@@ -96,45 +90,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="managedInstanceName">The name of the Azure SQL Managed Instance</param>
         /// <param name="databaseName">The name of the Azure SQL Managed database</param>
-        /// <param name="parameters">Parameters describing the managed database restore request</param>
+        /// <param name="model">Model describing the managed database restore request</param>
         /// <returns>Restored database object</returns>
-        public Management.Sql.Models.ManagedDatabase RestoreDatabase(string resourceGroupName, string managedInstanceName, string managedDatabaseName, string resourceId, AzureSqlManagedDatabaseModel model)
+        public Management.Sql.Models.ManagedDatabase RestoreDatabase(string resourceGroupName, string managedInstanceName, string managedDatabaseName, Management.Sql.Models.ManagedDatabase model)
         {
-            GenericResource resource = new GenericResource
-            {
-                Location = model.Location,
-                Properties = new Dictionary<string, object>
-                {
-                    { "createMode", model.CreateMode }   
-                }
-            };
-
-            switch(model.CreateMode)
-            {
-                case "Recovery":
-                     ((Dictionary<string, object>)resource.Properties).Add("recoverableDatabaseId", model.RecoverableDatabaseId);
-                    break;
-                case "PointInTimeRestore":
-                    ((Dictionary<string, object>)resource.Properties).Add("sourceDatabaseId", resourceId);
-
-                    ((Dictionary<string, object>)resource.Properties).Add("restorePointInTime", model.RestorePointInTime);
-
-                    ((Dictionary<string, object>)resource.Properties).Add("storageContainerUri", model.StorageContainerUri);
-
-                    ((Dictionary<string, object>)resource.Properties).Add("storageContainerSasToken", model.StorageContainerSasToken);
-                    break;
-            }
-            
-            GenericResource database = GetCurrentResourcesClient().Resources.CreateOrUpdate(resourceGroupName, "Microsoft.Sql", string.Format("managedInstances/{0}", managedInstanceName), "databases", managedDatabaseName, "2017-03-01-preview", resource);
-
-            if (database != null)
-            {
-                return GetCurrentSqlClient().ManagedDatabases.Get(resourceGroupName, managedInstanceName, managedDatabaseName);
-            }
-            else
-            {
-                return null;
-            }
+            return GetCurrentSqlClient().ManagedDatabases.CreateOrUpdate(resourceGroupName, managedInstanceName, managedDatabaseName, model);
         }
 
         /// <summary>
