@@ -1028,7 +1028,7 @@ function Test-AzureFirewallAllocateAndDeallocate {
 
 <#
 .SYNOPSIS
-Tests AzureFirewall Set and Remove IpConfiguration
+Tests AzureFirewall VirtualHub integration
 #>
 function Test-AzureFirewallVirtualHubCRUD {
     # Setup
@@ -1072,6 +1072,53 @@ function Test-AzureFirewallVirtualHubCRUD {
         Assert-AreEqual $tier $getAzureFirewall.Sku.Tier
         Assert-NotNull $getAzureFirewall.FirewallPolicy
         Assert-AreEqual $azureFirewallPolicyId $getAzureFirewall.FirewallPolicy.Id
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests AzureFirewall AdditionalProperty
+#>
+function Test-AzureFirewallAdditionalPropertyCRUD {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+
+    $threatIntelProp1 = @{"ThreatIntel.Whitelist.FQDNs" = "*.microsoft.com, microsoft.com"; "ThreatIntel.Whitelist.IpAddresses" = "8.8.8.8, 1.1.1.1"}
+    $threatIntelProp2 = @{"ThreatIntel.Whitelist.IpAddresses" = "  2.2.2.2  ,  3.3.3.3  "; "ThreatIntel.Whitelist.FQDNs" = "  bing.com  ,  yammer.com  "}
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create public ip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+
+        # Create AzureFirewall
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -AdditionalProperty $threatIntelProp1
+
+        # Verify
+        $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+        Assert-AreEqualHashtables $threatIntelProp1 $getAzureFirewall.AdditionalProperty
+
+        # Modify
+        $azureFirewall.AdditionalProperty = $threatIntelProp2
+        Set-AzFirewall -AzureFirewall $azureFirewall
+        $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+        Assert-AreEqualHashtables $threatIntelProp2 $getAzureFirewall.AdditionalProperty
     }
     finally {
         # Cleanup
