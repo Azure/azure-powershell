@@ -147,27 +147,36 @@ function Test-PrivateEndpointConnectionCRUD
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location;
 
-        # Create Sql Storage Account
-        $server = New-AzSqlServer -ResourceGroupName $rgname `
-            -ServerName $serverName `
-            -Location $location `
-            -SqlAdministratorCredentials $credentials
-        
-        $database = New-AzSqlDatabase  -ResourceGroupName $rgname `
-            -ServerName $serverName `
-            -DatabaseName $databaseName `
-            -RequestedServiceObjectiveName "Basic" `
-            -Edition "Basic"
+        if ((Get-NetworkTestMode) -ne 'Playback')
+        {
+            # Create Sql Storage Account
+            $server = New-AzSqlServer -ResourceGroupName $rgname `
+                -ServerName $serverName `
+                -Location $location `
+                -SqlAdministratorCredentials $credentials
+
+            $database = New-AzSqlDatabase  -ResourceGroupName $rgname `
+                -ServerName $serverName `
+                -DatabaseName $databaseName `
+                -RequestedServiceObjectiveName "Basic" `
+                -Edition "Basic"
+
+            $sqlResourceId = $server.ResourceId
+        }
+        else
+        {
+            $sqlResourceId = "/subscriptions/e05dbbce-79c2-45a2-a7ef-f1058856feb3/resourceGroups/ps3301/providers/Microsoft.Sql/servers/server-841315352"
+        }
 
         # Create Private Endpoint
         $peSubnet = New-AzVirtualNetworkSubnetConfig -Name peSubnet -AddressPrefix "11.0.1.0/24" -PrivateEndpointNetworkPolicies "Disabled"
         $vnetPE = New-AzVirtualNetwork -Name "vnetPE" -ResourceGroupName $rgname -Location $location -AddressPrefix "11.0.0.0/16" -Subnet $peSubnet
 
-        $plsConnection= New-AzPrivateLinkServiceConnection -Name plsConnection -PrivateLinkServiceId  $server.ResourceId -GroupId 'sqlServer'
+        $plsConnection= New-AzPrivateLinkServiceConnection -Name plsConnection -PrivateLinkServiceId  $sqlResourceId -GroupId 'sqlServer'
         $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $peName -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest
 
         # Get Private Endpoint Connection
-        $pecGet = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $server.ResourceId
+        $pecGet = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $sqlResourceId
         Assert-NotNull $pecGet;
         Assert-AreEqual "Pending" $pecGet.PrivateLinkServiceConnectionState.Status
 
@@ -183,7 +192,7 @@ function Test-PrivateEndpointConnectionCRUD
         Assert-AreEqual true $pecRemove
 
         # Get Private Endpoint Connection again
-        $pecGet2 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $server.ResourceId
+        $pecGet2 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $sqlResourceId
         Assert-Null($pecGet2)
 
     }
