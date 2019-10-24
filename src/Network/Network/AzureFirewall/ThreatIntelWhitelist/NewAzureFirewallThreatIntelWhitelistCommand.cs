@@ -18,7 +18,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 
-namespace Microsoft.Azure.Commands.Network.AzureFirewall.ThreatIntelWhitelist
+namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallThreatIntelWhitelist", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallThreatIntelWhitelist))]
     class NewAzureFirewallThreatIntelWhitelistCommand : AzureFirewallBaseCmdlet
