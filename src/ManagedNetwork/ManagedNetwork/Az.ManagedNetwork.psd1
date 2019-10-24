@@ -78,10 +78,10 @@ CmdletsToExport = 'Get-AzManagedNetwork',
                   'New-AzManagedNetworkGroup',
                   'Remove-AzManagedNetworkGroup',
                   'Update-AzManagedNetworkGroup',
-				  'New-AzManagedNetworkPeeringPolicy',
+                  'New-AzManagedNetworkPeeringPolicy',
                   'Get-AzManagedNetworkPeeringPolicy',
                   'Remove-AzManagedNetworkPeeringPolicy',
-				  'Update-AzManagedNetworkPeeringPolicy'
+                  'Update-AzManagedNetworkPeeringPolicy'
 
 # Variables to export from this module
 # VariablesToExport = @()
