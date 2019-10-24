@@ -58,6 +58,22 @@
 		- Update-AzureRmVpnConnection : added parameter EnableInternetSecurity
 		- New-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
 		- Set-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
+* Add support for Configuring TopLevel WebApplicationFirewall Policy
+    - New cmdlets added:
+        - New-AzApplicationGatewayFirewallPolicySetting
+        - New-AzApplicationGatewayFirewallPolicyExclusion
+        - New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride
+        - New-AzApplicationGatewayFirewallPolicyManagedRuleOverride
+        - New-AzApplicationGatewayFirewallPolicyManagedRule
+        - New-AzApplicationGatewayFirewallPolicyManagedRuleSet
+    - Cmdlets updated with optional parameters:
+        - New-AzApplicationGatewayFirewallPolicy : added parameter PolicySetting, ManagedRule
+* Added support for Geo-Match operator on CustomRule
+    - Added GeoMatch to the operator on the FirewallCondition
+* Added support for perListener and perSite Firewall policy
+    - Cmdlets updated with optional parameters:
+        - New-AzApplicationGatewayHttpListener : added parameter FirewallPolicy, FirewallPolicyId
+        - New-AzApplicationGatewayPathRuleConfig : added parameter FirewallPolicy, FirewallPolicyId
 
 ## Version 1.14.0
 * Fix incorrect example in `New-AzApplicationGateway` reference documentation 
