@@ -272,10 +272,6 @@ function Test-InvalidArgumentsThreatDetection
 		#  Check that NotificationRecipientsEmails are in correct format 
 		Assert-Throws {Update-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -NotificationRecipientsEmails "kokogmail.com"} 
 
-		#  Check that EmailAdmins is not False and NotificationRecipientsEmails is not empty 
-		Assert-Throws {Update-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EmailAdmins $false -StorageAccountName $params.storageAccount} 
-		Assert-Throws {Update-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EmailAdmins $false -NotificationRecipientsEmails "" -StorageAccountName $params.storageAccount} 
-
 		#  Check that ExcludedDetectionType doesn't hold None and any other type 
 		Assert-Throws {Update-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EmailAdmins $true -ExcludedDetectionType "None", "Sql_Injection_Vulnerability" -StorageAccountName $params.storageAccount} 
 	}
