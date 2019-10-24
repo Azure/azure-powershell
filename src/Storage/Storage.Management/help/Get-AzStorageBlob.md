@@ -93,7 +93,7 @@ The final command uses the **Echo** command to display the total.
 ### -Blob
 Specifies a name or name pattern, which can be used for a wildcard search.
 If no blob name is specified, the cmdlet lists all the blobs in the specified container.
-If a value is specified for this parameter, the cmdlet lists all blobs with names that match this parameter.
+If a value is specified for this parameter, the cmdlet lists all blobs with names that match this parameter. This parameter supports wildcards anywhere in the string.
 
 ```yaml
 Type: System.String
@@ -104,7 +104,7 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ClientTimeoutPerRequest
