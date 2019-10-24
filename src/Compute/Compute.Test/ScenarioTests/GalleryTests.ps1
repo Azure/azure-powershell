@@ -75,7 +75,6 @@ function Verify-GalleryImageVersion
         Assert-AreEqual "Microsoft.Compute/galleries/images/versions" $imageVersion.Type;
         Assert-NotNull $imageVersion.Id;
 
-        Assert-AreEqual $sourceImageId $imageVersion.PublishingProfile.Source.ManagedImage.Id;
         Assert-AreEqual $sourceImageId $imageVersion.StorageProfile.Source.Id;
         Assert-AreEqual $replicaCount $imageVersion.PublishingProfile.ReplicaCount;
         Assert-False { $imageVersion.PublishingProfile.ExcludeFromLatest };

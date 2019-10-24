@@ -54,7 +54,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        [CmdletParameterBreakingChange(nameof(DiskSizeGB), ChangeDescription = "'DiskSizeInBytes' instead of 'DiskSizeGB' is going to be used when CreateOption is 'Upload'.")]
         public int DiskSizeGB { get; set; }
 
         [Parameter(
@@ -280,16 +279,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 CreationData = vCreationData,
                 EncryptionSettingsCollection = vEncryptionSettingsCollection,
             };
-
-            // this is to hide the breaking change for upload
-            if ("upload".Equals(vDisk.CreationData?.CreateOption?.ToLowerInvariant()) && vDisk.CreationData?.UploadSizeBytes == null)
-            {
-                if (vDisk.DiskSizeGB != null)
-                {
-                    vDisk.CreationData.UploadSizeBytes = (long) vDisk.DiskSizeGB * 1073741824 + 512; // multiplying 1GB and then add the size of footer (512 bytes)
-                    vDisk.DiskSizeGB = null;
-                }
-            }
 
             WriteObject(vDisk);
         }

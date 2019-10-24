@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/new-azrecoveryservicesasrrecoveryplan
@@ -33,7 +33,7 @@ New-AzRecoveryServicesAsrRecoveryPlan -Path <String> [-DefaultProfile <IAzureCon
 ```
 
 ## DESCRIPTION
-The **New-AzRecoveryServicesAsrRecoveryPlan** cmdlet creates an Azure Site Recovery recovery plan in the Recovery Services vault.
+The **New-AzRecoveryServicesAsrRecoveryPlan** cmdlet creates an Azure Site Recovery, recovery plan in the Recovery Services vault.
 
 A recovery plan gathers virtual machines belonging to an application into a unit to allow them to be recovered together.
 
@@ -49,7 +49,7 @@ Starts the recovery plan creation operation with the specified parameters and re
 ## PARAMETERS
 
 ### -Azure
-{{Fill Azure Description}}
+Switch parameter specifies the scenario for azure to azure disaster recovery, recovery plan creation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
