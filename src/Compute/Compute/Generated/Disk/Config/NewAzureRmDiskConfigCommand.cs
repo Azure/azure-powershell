@@ -28,6 +28,7 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -116,6 +117,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        public long UploadSizeInBytes { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public bool? EncryptionSettingsEnabled { get; set; }
 
         [Parameter(
@@ -199,6 +205,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vCreationData = new CreationData();
                 }
                 vCreationData.SourceResourceId = this.SourceResourceId;
+            }
+
+            if (this.IsParameterBound(c => c.UploadSizeInBytes))
+            {
+                if (vCreationData == null)
+                {
+                    vCreationData = new CreationData();
+                }
+                vCreationData.UploadSizeBytes = this.UploadSizeInBytes;
             }
 
             if (this.IsParameterBound(c => c.EncryptionSettingsEnabled))

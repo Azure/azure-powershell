@@ -86,20 +86,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool IsVpnGatewayPresent(string resourceGroupName, string name)
         {
-            try
-            {
-                GetVpnGateway(resourceGroupName, name);
-            }
-            catch (Microsoft.Azure.Management.Network.Models.ErrorException exception)
-            {
-                if (exception.Response.StatusCode == HttpStatusCode.NotFound)
-                {
-                    // Resource is not present
-                    return false;
-                }
-            }
-
-            return true;
+            return NetworkBaseCmdlet.IsResourcePresent(() => { GetVpnGateway(resourceGroupName, name); });
         }
     }
 }

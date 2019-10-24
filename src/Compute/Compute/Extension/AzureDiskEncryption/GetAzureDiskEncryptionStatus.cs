@@ -340,12 +340,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             switch(vm.StorageProfile.OsDisk.OsType)
             {
                 case OperatingSystemTypes.Linux:
-                    extensionPublisher = AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher;
-                    extensionName = AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
+                    extensionPublisher = this.ExtensionPublisherName ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher;
+                    extensionName = this.Name ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
                     break;
                 case OperatingSystemTypes.Windows:
-                    extensionPublisher = AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher;
-                    extensionName = AzureDiskEncryptionExtensionContext.ExtensionDefaultName;
+                    extensionPublisher = this.ExtensionPublisherName ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher;
+                    extensionName = this.Name ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultName;
                     break;
             }
 
@@ -373,12 +373,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             switch(vm.StorageProfile.OsDisk.OsType)
             {
                 case OperatingSystemTypes.Linux:
-                    extensionPublisher = AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher;
-                    extensionType = AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultType;
+                    extensionPublisher = this.ExtensionPublisherName ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher;
+                    extensionType = this.ExtensionType ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultType;
                     break;
                 case OperatingSystemTypes.Windows:
-                    extensionPublisher = AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher;
-                    extensionType = AzureDiskEncryptionExtensionContext.ExtensionDefaultType;
+                    extensionPublisher = this.ExtensionPublisherName ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher;
+                    extensionType = this.ExtensionType ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultType;
                     break;
             }
 
@@ -518,16 +518,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     };
                     break;
                 case OperatingSystemTypes.Linux:
-                    if (!this.IsExtensionInstalled(vm) && this.isVMRunning(vm))
-                    {
-                        VirtualMachineExtension parameters = GetDualPassQueryVmExtensionParameters(vm);
-
-                        this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.VMName,
-                            this.Name,
-                            parameters).GetAwaiter().GetResult();
-                    }
 
                     Dictionary<string, string> encryptionStatusParsed = null;
                     try
