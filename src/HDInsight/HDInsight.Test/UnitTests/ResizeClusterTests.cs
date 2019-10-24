@@ -45,30 +45,27 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanResizeCluster()
         {
-            var cluster = new Cluster
+            var cluster = new Cluster(id: "id", name: ClusterName + "1")
             {
-                Id = "id",
-                Name = ClusterName + "1",
                 Location = Location,
                 Properties = new ClusterGetProperties
                 {
-                    ClusterVersion = "3.1",
+                    ClusterVersion = "3.6",
                     ClusterState = "Running",
                     ClusterDefinition = new ClusterDefinition
                     {
-                        ClusterType = ClusterType
+                        Kind = ClusterType
                     },
                     QuotaInfo = new QuotaInfo
                     {
                         CoresUsed = 24
                     },
-                    OperatingSystemType = OSType.Windows
+                    OsType = OSType.Linux
                 },
             };
 
-            var getresponse = new ClusterGetResponse { Cluster = cluster };
             hdinsightManagementMock.Setup(c => c.Get(ResourceGroupName, ClusterName))
-                .Returns(getresponse)
+                .Returns(cluster)
                 .Verifiable();
 
             hdinsightManagementMock.Setup(c => c.GetCluster(It.IsAny<string>(), It.IsAny<string>()))
@@ -80,12 +77,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     c.ResizeCluster(ResourceGroupName, ClusterName,
                         It.Is<ClusterResizeParameters>(
                             param => param.TargetInstanceCount == targetcount)))
-                .Returns(new OperationResource
-                {
-                    ErrorInfo = null,
-                    StatusCode = HttpStatusCode.OK,
-                    State = AsyncOperationState.Succeeded
-                })
                 .Verifiable();
 
             cmdlet.ExecuteCmdlet();

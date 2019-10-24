@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.2
 * **Set-AzApiManagementApi** - Added support for Updating Api into ApiVersionSet
     - Fix for issue https://github.com/Azure/azure-powershell/issues/10068
     
