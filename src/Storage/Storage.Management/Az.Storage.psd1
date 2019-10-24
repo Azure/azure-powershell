@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.8.1'
+ModuleVersion = '1.8.2'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -150,8 +150,8 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Remove-AzStorageAccountManagementPolicy', 
                'New-AzStorageAccountManagementPolicyFilter', 
                'New-AzStorageAccountManagementPolicyRule', 
-               'Add-AzStorageAccountManagementPolicyAction', 
-			   'Invoke-AzStorageAccountFailover',
+               'Add-AzStorageAccountManagementPolicyAction',
+			   'Invoke-AzStorageAccountFailover', 
                'Update-AzStorageBlobServiceProperty', 
                'Get-AzStorageBlobServiceProperty', 
                'Enable-AzStorageBlobDeleteRetentionPolicy', 
