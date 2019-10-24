@@ -53,7 +53,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
-        [Trait(Category.Owner, Category.brooklynft)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
         public void TestP2SCortexCRUD()
         {
             TestRunner.RunTestScript("Test-P2SCortexCRUD");
