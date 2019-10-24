@@ -224,6 +224,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallCustomRule[]
 
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicySettings
+
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicyManagedRules
+
 ### System.Collections.Hashtable
 
 ## OUTPUTS
