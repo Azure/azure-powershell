@@ -28,18 +28,18 @@ using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 {
-    public class GetBatchNodeAgentSkusCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class GetBatchSupportedImagesCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        private GetBatchAccountNodeAgentSkuCommand cmdlet;
+        private GetBatchAccountSupportedImagesCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public GetBatchNodeAgentSkusCommandTests(Xunit.Abstractions.ITestOutputHelper output)
+        public GetBatchSupportedImagesCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new GetBatchAccountNodeAgentSkuCommand()
+            cmdlet = new GetBatchAccountSupportedImagesCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object,
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ListBatchNodeAgentSkusParametersTest()
+        public void ListBatchSupportedImagesParametersTest()
         {
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
@@ -56,29 +56,29 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             string[] idsOfNodeAgentSkus = new[] { "batch.node.centos 7", "batch.node.debian 8", "batch.node.opensuse 13.2" };
 
             // Don't go to the service on an Get NodeAgentSkus call
-            AzureOperationResponse<IPage<ProxyModels.NodeAgentSku>, ProxyModels.AccountListNodeAgentSkusHeaders> response =
-                BatchTestHelpers.CreateNodeAgentSkuResponse(idsOfNodeAgentSkus);
+            AzureOperationResponse<IPage<ProxyModels.ImageInformation>, ProxyModels.AccountListSupportedImagesHeaders> response =
+                BatchTestHelpers.CreateSupportedImagesResponse(idsOfNodeAgentSkus);
 
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.AccountListNodeAgentSkusOptions,
-                AzureOperationResponse<IPage<ProxyModels.NodeAgentSku>, ProxyModels.AccountListNodeAgentSkusHeaders>>(responseToUse: response);
+                ProxyModels.AccountListSupportedImagesOptions,
+                AzureOperationResponse<IPage<ProxyModels.ImageInformation>, ProxyModels.AccountListSupportedImagesHeaders>>(responseToUse: response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
-            List<PSNodeAgentSku> pipeline = new List<PSNodeAgentSku>();
+            var pipeline = new List<PSImageInformation>();
             commandRuntimeMock.Setup(r =>
-                r.WriteObject(It.IsAny<PSNodeAgentSku>()))
-                .Callback<object>(p => pipeline.Add((PSNodeAgentSku)p));
+                r.WriteObject(It.IsAny<PSImageInformation>()))
+                .Callback<object>(p => pipeline.Add((PSImageInformation)p));
 
             // Verify no exceptions when required parameter is set
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(3, pipeline.Count);
             int nodeAgentCount = 0;
-            foreach (PSNodeAgentSku p in pipeline)
+            foreach (PSImageInformation imageInfo in pipeline)
             {
-                Assert.Contains(p.Id, idsOfNodeAgentSkus);
+                Assert.Contains(imageInfo.NodeAgentSkuId, idsOfNodeAgentSkus);
                 nodeAgentCount++;
             }
             Assert.Equal(idsOfNodeAgentSkus.Length, nodeAgentCount);
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ListBatchNodeAgentSkusWithFilterTest()
+        public void ListBatchSupportedImagesWithFilterTest()
         {
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
@@ -95,11 +95,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             string requestFilter = null;
 
             // Don't go to the service on an Get NodeAgentSkus call
-            AzureOperationResponse<IPage<ProxyModels.NodeAgentSku>, ProxyModels.AccountListNodeAgentSkusHeaders> getResponse = BatchTestHelpers.CreateGenericAzureOperationListResponse<ProxyModels.NodeAgentSku, ProxyModels.AccountListNodeAgentSkusHeaders>();
-            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.AccountListNodeAgentSkusOptions, AzureOperationResponse<IPage<ProxyModels.NodeAgentSku>, ProxyModels.AccountListNodeAgentSkusHeaders>>(responseToUse: getResponse);
+            var getResponse = BatchTestHelpers.CreateGenericAzureOperationListResponse<ProxyModels.ImageInformation, ProxyModels.AccountListSupportedImagesHeaders>();
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.AccountListSupportedImagesOptions,
+                AzureOperationResponse<IPage<ProxyModels.ImageInformation>,
+                ProxyModels.AccountListSupportedImagesHeaders>>(responseToUse: getResponse);
             ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
             {
-                ProxyModels.AccountListNodeAgentSkusOptions listNodeAgentSkusOptions = (ProxyModels.AccountListNodeAgentSkusOptions)request.Options;
+                var listNodeAgentSkusOptions = (ProxyModels.AccountListSupportedImagesOptions)request.Options;
                 requestFilter = listNodeAgentSkusOptions.Filter;
 
                 return Task.FromResult(response);

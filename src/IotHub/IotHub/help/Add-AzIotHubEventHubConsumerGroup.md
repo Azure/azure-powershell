@@ -14,8 +14,8 @@ Creates an eventhub consumer group.
 
 ```
 Add-AzIotHubEventHubConsumerGroup [-ResourceGroupName] <String> [-Name] <String>
- [-EventHubEndpointName] <String> [-EventHubConsumerGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EventHubConsumerGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Creates a consumer group in the Eventhub associated with the specified IotHub.
 
 ### Example 1: Add a consumer group to the telemetry eventhub
 ```
-PS C:\> Add-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "events" -EventHubConsumerGroupName "myconsumergroup"
+PS C:\> Add-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubConsumerGroupName "myconsumergroup"
 ```
 
 Adds a new consumergroup named "myconsumergroup" to the eventhub for telemetry events in the iothub named "myiothub"
@@ -54,23 +54,6 @@ Name of the EventHub ConsumerGroup that you want to add.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EventHubEndpointName
-Name of the EventHub Endpoint.
-Possible values events, operationsMonitoringEvents
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: events, operationsMonitoringEvents
 
 Required: True
 Position: 2
