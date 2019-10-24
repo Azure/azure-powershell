@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Batch
             }
         }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             BatchAccountContext context = BatchClient.RegenerateKeys(this.ResourceGroupName, this.AccountName, this.keyType);
             WriteObject(context);
