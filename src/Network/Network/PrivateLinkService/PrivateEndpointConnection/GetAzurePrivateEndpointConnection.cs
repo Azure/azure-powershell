@@ -27,7 +27,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateEndpointConnection", DefaultParameterSetName = "ByPrivateLinkResourceId"), OutputType(typeof(PSPrivateEndpointConnection))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateEndpointConnection", DefaultParameterSetName = "ByResourceId"), OutputType(typeof(PSPrivateEndpointConnection))]
     public class GetAzurePrivateEndpointConnection : PrivateEndpointConnectionBaseCmdlet
     {
         [Parameter(
