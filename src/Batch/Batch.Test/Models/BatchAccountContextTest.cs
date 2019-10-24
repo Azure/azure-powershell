@@ -44,7 +44,8 @@ namespace Microsoft.Azure.Commands.BatchManager.Test
                 "https://foo.vaults.azure.com");
 
             BatchAccount resource = new BatchAccount(
-                coreQuota: BatchTestHelpers.DefaultQuotaCount,
+                dedicatedCoreQuota: BatchTestHelpers.DefaultQuotaCount,
+                lowPriorityCoreQuota: BatchTestHelpers.DefaultQuotaCount,
                 poolQuota: BatchTestHelpers.DefaultQuotaCount,
                 activeJobAndJobScheduleQuota: BatchTestHelpers.DefaultQuotaCount,
                 accountEndpoint: endpoint,

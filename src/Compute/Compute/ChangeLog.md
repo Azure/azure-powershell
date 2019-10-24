@@ -19,6 +19,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add PublicIPAddressVersion parameter to New-AzVmssIPConfig
+* Move FileUris of custom script extension from public setting to protected setting
+* Add ScaleInPolicy to New-AzVmss, New-AzVmssConfig and Update-AzVmss cmdlets
+* Breaking changes
+    - UploadSizeInBytes parameter is used instead of DiskSizeGB for New-AzDiskConfig when CreateOption is Upload
+    - PublishingProfile.Source.ManagedImage.Id is replaced with StorageProfile.Source.Id in GalleryImageVersion object
 
 ## Version 2.7.0
 * Add Priority, EvictionPolicy, and MaxPrice parameters to New-AzVM and New-AzVmss cmdlets
