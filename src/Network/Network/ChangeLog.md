@@ -36,6 +36,7 @@
   - Introduce new Generations for VirtualNetworkGateways.
   - Introduce new high throughput SKUs for VirtualNetworkGateways.
 * New cmdlets to support the azure firewall policy
+* Add 'AdditionalProperty' to AzureFirewall cmdlets
 * Add support for child resource RouteTables of VirtualHub
 	- New cmdlets added:
 		- Add-AzVirtualHubRoute
