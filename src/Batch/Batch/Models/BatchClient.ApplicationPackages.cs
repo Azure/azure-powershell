@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public partial class BatchClient
     {
-        public virtual void DeleteApplicationPackage(string resourceGroupName, string accountName, string applicationId, string version)
+        public virtual void DeleteApplicationPackage(string resourceGroupName, string accountName, string applicationName, string version)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            BatchManagementClient.ApplicationPackage.Delete(resourceGroupName, accountName, applicationId, version);
+            BatchManagementClient.ApplicationPackage.Delete(resourceGroupName, accountName, applicationName, version);
         }
 
-        public virtual PSApplicationPackage GetApplicationPackage(string resourceGroupName, string accountName, string applicationId, string version)
+        public virtual PSApplicationPackage GetApplicationPackage(string resourceGroupName, string accountName, string applicationName, string version)
         {
             // single account lookup - find its resource group if not specified
             if (string.IsNullOrEmpty(resourceGroupName))
@@ -50,16 +50,38 @@ namespace Microsoft.Azure.Commands.Batch.Models
             var response = BatchManagementClient.ApplicationPackage.Get(
                 resourceGroupName,
                 accountName,
-                applicationId,
+                applicationName,
                 version);
 
             return ConvertGetApplicationPackageResponseToApplicationPackage(response);
         }
 
+        public virtual IEnumerable<PSApplicationPackage> ListApplicationPackages(string resourceGroupName, string accountName, string applicationName)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                // use resource mgr to see if account exists and then use resource group name to do the actual lookup
+                resourceGroupName = GetGroupForAccount(accountName);
+            }
+
+            IPage<ApplicationPackage> response = BatchManagementClient.ApplicationPackage.List(resourceGroupName, accountName, applicationName);
+            List<PSApplicationPackage> psApplicationPackages = response.Select(ConvertGetApplicationPackageResponseToApplicationPackage).ToList();
+
+            string nextLink = response.NextPageLink;
+            while (nextLink != null)
+            {
+                response = BatchManagementClient.ApplicationPackage.ListNext(nextLink);
+                psApplicationPackages.AddRange(response.Select(ConvertGetApplicationPackageResponseToApplicationPackage));
+                nextLink = response.NextPageLink;
+            }
+
+            return psApplicationPackages;
+        }
+
         public virtual PSApplicationPackage UploadAndActivateApplicationPackage(
             string resourceGroupName,
             string accountName,
-            string applicationId,
+            string applicationName,
             string version,
             string filePath,
             string format,
@@ -74,7 +96,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             if (activateOnly)
             {
                 // If the package has already been uploaded but wasn't activated.
-                ActivateApplicationPackage(resourceGroupName, accountName, applicationId, version, format, Resources.FailedToActivate);
+                ActivateApplicationPackage(resourceGroupName, accountName, applicationName, version, format, Resources.FailedToActivate);
             }
             else
             {
@@ -91,25 +113,25 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 // Else create Application Package and upload.
                 bool appPackageAlreadyExists;
 
-                var storageUrl = GetStorageUrl(resourceGroupName, accountName, applicationId, version, out appPackageAlreadyExists);
+                var storageUrl = GetStorageUrl(resourceGroupName, accountName, applicationName, version, out appPackageAlreadyExists);
 
                 if (appPackageAlreadyExists)
                 {
-                    CheckApplicationAllowsUpdates(resourceGroupName, accountName, applicationId, version);
+                    CheckApplicationAllowsUpdates(resourceGroupName, accountName, applicationName, version);
                 }
 
-                UploadFileToApplicationPackage(resourceGroupName, accountName, applicationId, version, filePath, storageUrl, appPackageAlreadyExists);
+                UploadFileToApplicationPackage(resourceGroupName, accountName, applicationName, version, filePath, storageUrl, appPackageAlreadyExists);
 
-                ActivateApplicationPackage(resourceGroupName, accountName, applicationId, version, format, Resources.UploadedApplicationButFailedToActivate);
+                ActivateApplicationPackage(resourceGroupName, accountName, applicationName, version, format, Resources.UploadedApplicationButFailedToActivate);
             }
 
-            return GetApplicationPackage(resourceGroupName, accountName, applicationId, version);
+            return GetApplicationPackage(resourceGroupName, accountName, applicationName, version);
         }
 
         private void UploadFileToApplicationPackage(
             string resourceGroupName,
             string accountName,
-            string applicationId,
+            string applicationName,
             string version,
             string filePath,
             string storageUrl,
@@ -133,7 +155,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     // If we are creating a new application package and the upload fails we should delete the application package.
                     try
                     {
-                        DeleteApplicationPackage(resourceGroupName, accountName, applicationId, version);
+                        DeleteApplicationPackage(resourceGroupName, accountName, applicationName, version);
                     }
                     catch
                     {
@@ -149,25 +171,25 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
 
-        private void ActivateApplicationPackage(string resourceGroupName, string accountName, string applicationId, string version, string format, string errorMessageFormat)
+        private void ActivateApplicationPackage(string resourceGroupName, string accountName, string applicationName, string version, string format, string errorMessageFormat)
         {
             try
             {
                 BatchManagementClient.ApplicationPackage.Activate(
                     resourceGroupName,
                     accountName,
-                    applicationId,
+                    applicationName,
                     version,
                     format);
             }
             catch (Exception exception)
             {
-                var message = string.Format(errorMessageFormat, applicationId, version, exception.Message);
+                var message = string.Format(errorMessageFormat, applicationName, version, exception.Message);
                 throw new NewApplicationPackageException(message, exception);
             }
         }
 
-        private string GetStorageUrl(string resourceGroupName, string accountName, string applicationId, string version, out bool didCreateAppPackage)
+        private string GetStorageUrl(string resourceGroupName, string accountName, string applicationName, string version, out bool didCreateAppPackage)
         {
             try
             {
@@ -175,7 +197,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 var response = BatchManagementClient.ApplicationPackage.Get(
                     resourceGroupName,
                     accountName,
-                    applicationId,
+                    applicationName,
                     version);
 
                 didCreateAppPackage = false;
@@ -186,7 +208,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 // If the application package is not found we want to create a new application package.
                 if (exception.Response.StatusCode != HttpStatusCode.NotFound)
                 {
-                    var message = string.Format(Resources.FailedToGetApplicationPackage, applicationId, version, exception.Message);
+                    var message = string.Format(Resources.FailedToGetApplicationPackage, applicationName, version, exception.Message);
                     throw new CloudException(message, exception);
                 }
             }
@@ -196,7 +218,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 var addResponse = BatchManagementClient.ApplicationPackage.Create(
                     resourceGroupName,
                     accountName,
-                    applicationId,
+                    applicationName,
                     version);
 
                 // If Application was created we need to return a flag.
@@ -205,7 +227,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             catch (Exception exception)
             {
-                var message = string.Format(Resources.FailedToAddApplicationPackage, applicationId, version, exception.Message);
+                var message = string.Format(Resources.FailedToAddApplicationPackage, applicationName, version, exception.Message);
                 throw new NewApplicationPackageException(message, exception);
             }
         }
@@ -219,20 +241,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 StorageUrlExpiry = response.StorageUrlExpiry.Value,
                 State = response.State.Value,
                 Id = response.Id,
-                Version = response.Version,
+                Name = response.Name,
                 LastActivationTime = response.LastActivationTime
             };
-        }
-
-        private static IList<PSApplicationPackage> ConvertApplicationPackagesToPsApplicationPackages(IEnumerable<ApplicationPackage> applicationPackages)
-        {
-            return applicationPackages.Select(applicationPackage => new PSApplicationPackage
-            {
-                Format = applicationPackage.Format,
-                LastActivationTime = applicationPackage.LastActivationTime,
-                State = applicationPackage.State.Value,
-                Version = applicationPackage.Version
-            }).ToList();
         }
     }
 }

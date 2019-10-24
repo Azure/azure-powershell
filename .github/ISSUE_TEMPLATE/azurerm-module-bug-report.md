@@ -2,7 +2,7 @@
 name: AzureRM module bug report
 about: Report errors or unexpected behaviors for the AzureRM module
 title: ''
-labels: ''
+labels: triage
 assignees: ''
 
 ---
