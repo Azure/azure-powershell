@@ -517,6 +517,14 @@
             <Label>ProtectionStatus</Label>
             <Width>20</Width>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HealthStatus</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DeleteState</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -535,6 +543,12 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProtectionStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HealthStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DeleteState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

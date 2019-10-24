@@ -17,14 +17,59 @@
     * Overview of change #1
         - Additional information about change #1
 --->
+
 ## Upcoming Release
+* Fix incorrect parameter description in `New-AzApplicationGatewaySku` reference documentation
+
+## Version 1.15.0
+* Add new cmdlet Get-AzAvailableServiceAlias which can be called to get the aliases that can be used for Service Endpoint Policies.
+* Added support for the adding traffic selectors to Virtual Network Gateway Connections
+    - New cmdlets added:
+        - New-AzureRmTrafficSelectorPolicy
+    - Cmdlets updated with optional parameter -TrafficSelectorPolicies
+        -New-AzureRmVirtualNetworkGatewayConnection
+        -Set-AzureRmVirtualNetworkGatewayConnection
+* Add support for ESP and AH protocols in network security rule configurations
+    - Updated cmdlets:
+        - Add-AzNetworkSecurityRuleConfig
+        - New-AzNetworkSecurityRuleConfig
+        - Set-AzNetworkSecurityRuleConfig
+* Improve handling of exceptions in Cortex cmdlets
+* New Generations and SKUs for VirtualNetworkGateways
+  - Introduce new Generations for VirtualNetworkGateways.
+  - Introduce new high throughput SKUs for VirtualNetworkGateways.
+
+## Version 1.14.0
+* Fix incorrect example in `New-AzApplicationGateway` reference documentation
+* Add note in `Get-AzNetworkWatcherPacketCapture` reference documentation about retrieving all properties for a packet capture
+* Fixed example in `Test-AzNetworkWatcherIPFlow` reference documentation to correctly enumerate NICs
+* Improved cloud exception parsing to display additional details if they are present
+* Improved cloud exception parsing to handle additional type of SDK exception
+* Fixed incorrect mapping of Security Rule models
+* Added properties to network interface for private ip feature
+    - Added property 'PrivateEndpoint' as type of PSResourceId to PSNetworkInterface
+    - Added property 'PrivateLinkConnectionProperties' as type of PSIpConfigurationConnectivityInformation to PSNetworkInterfaceIPConfiguration
+    - Added new model class PSIpConfigurationConnectivityInformation
+* Added new ApplicationRuleProtocolType "mssql" for Azure Firewall resource
+* MultiLink support in Virtual WAN
+    - New cmdlets
+        - New-AzVpnSiteLink
+        - New-AzVpnSiteLinkConnection
+    - Updated cmdlet:
+        - New-VpnSite
+        - Update-VpnSite
+        - New-VpnConnection
+        - Update-VpnConnection
+* Fixed documents for some PowerShell examples to use Az cmdlets instead of AzureRM cmdlets
+
+## Version 1.13.0
 * Updated New-AzPrivateLinkServiceIpConfig
-    - Deprecated the paramster 'PublicIpAddress' since this is never used in the server side.
+    - Deprecated the parameter 'PublicIpAddress' since this is never used in the server side.
     - Added one optional parameter 'Primary' that indicate the current ip configuration is primary one or not.
 * Improved handling of request error exception from SDK
     -Fixes the issue that previously SDK exceptions aren't handled correctly which results in key error details not being displayed
 * Fixed miscellaneous typos across module
-* Adjusted validation logic for Ipv6 IP Prefix to check for correct IPv6 prefix length. 
+* Adjusted validation logic for Ipv6 IP Prefix to check for correct IPv6 prefix length.
 * Updated Get-AzVirtualNetworkSubnetConfig: Added parameter set to get by subnet resource id.
 * Updated description of Location parameter for AzNetworkServiceTag
 
@@ -58,6 +103,7 @@
 * Application Gateway New-AzApplicationGatewayProbeConfig command update for supporting custom port in Probe
     - Updated New-AzApplicationGatewayProbeConfig: Added optional parameter Port which is used for probing backend server. This parameter is applicable for Standard_V2 and WAF_V2 SKU.
 
+
 ## Version 1.11.0
 * Added `RoutingPreference` to public ip tags
 * Improve examples for `Get-AzNetworkServiceTag` reference documentation
@@ -67,11 +113,11 @@
     - New cmdlets
         - Get-AzVirtualNetworkGatewayVpnClientConnectionHealth
 * Add AvailablePrivateEndpointType
-    - New cmdlets 
+    - New cmdlets
         - Get-AzAvailablePrivateEndpointType
 * Add PrivatePrivateLinkService
-    - New cmdlets 
-        - Get-AzPrivateLinkService 
+    - New cmdlets
+        - Get-AzPrivateLinkService
         - New-AzPrivateLinkService
         - Remove-AzPrivateLinkService
         - New-AzPrivateLinkServiceIpConfig
@@ -100,8 +146,8 @@
         - Added parameter -PublicIpAddress which accepts one or more Public IP Address objects
         - Added parameter -VirtualNetwork which accepts a Virtual Network object
         - Added methods AddPublicIpAddress and RemovePublicIpAddress on firewall object - these accept a Public IP Address object as input
-        - Deprecated parameters -PublicIpName and -VirtualNetworkName 
-* Updated below commands for feature: Set VpnClient AAD authentication options to Virtual network gateway resource. 
+        - Deprecated parameters -PublicIpName and -VirtualNetworkName
+* Updated below commands for feature: Set VpnClient AAD authentication options to Virtual network gateway resource.
     - Updated New-AzVirtualNetworkGateway: Added optional parameters AadTenantUri,AadAudienceId,AadIssuerUri to set VpnClient AAD authentication options on Gateway.
     - Updated Set-AzVirtualNetworkGateway: Added optional parameter AadTenantUri,AadAudienceId,AadIssuerUri to set VpnClient AAD authentication options on Gateway.
     - Updated Set-AzVirtualNetworkGateway: Added optional switch parameter RemoveAadAuthentication to remove VpnClient AAD authentication options from Gateway.
@@ -143,7 +189,7 @@
         - New-AzApplicationGatewayRewriteRuleCondition
     - Cmdlets updated with optional parameter - RuleSequence and Condition
         - New-AzApplicationGatewayRewriteRule
-        
+
 ## Version 1.5.0
 * Add Threat Intelligence support for Azure Firewall
 * Add Application Gateway Firewall Policy top level resource and Custom Rules
@@ -202,3 +248,4 @@
         - Set-AzApplicationGatewaySslCertificate
     - New-AzApplicationGateway cmdlet updated with optional parameter -UserAssignedIdentityId, -UserAssignedIdentity
 * Add MaxCapacity property in ApplicationGatewayAutoscaleConfiguration
+

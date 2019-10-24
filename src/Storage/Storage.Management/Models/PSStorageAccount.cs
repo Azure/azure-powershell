@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.EnableHttpsTrafficOnly = storageAccount.EnableHttpsTrafficOnly;
             this.NetworkRuleSet = PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet);
             this.EnableHierarchicalNamespace = storageAccount.IsHnsEnabled;
+            this.LargeFileSharesState = storageAccount.LargeFileSharesState;
             this.AzureFilesIdentityBasedAuth = storageAccount.AzureFilesIdentityBasedAuthentication is null ? null : new PSAzureFilesIdentityBasedAuthentication(storageAccount.AzureFilesIdentityBasedAuthentication);
         }
 
@@ -108,6 +109,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSAzureFilesIdentityBasedAuthentication AzureFilesIdentityBasedAuth { get; set; }
 
         public bool? EnableHierarchicalNamespace { get; set; }
+
+        public string LargeFileSharesState { get; set; }
 
         public PSNetworkRuleSet NetworkRuleSet { get; set; }
 

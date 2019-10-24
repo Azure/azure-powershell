@@ -87,6 +87,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             bool isComputeAzureVM = false;
             string sourceResourceId = null;
 
+            AzureVmPolicy azureVmPolicy = (AzureVmPolicy)ProviderData[ItemParams.Policy];
+            ValidateProtectedItemCount(azureVmPolicy);
+
             if (itemBase == null)
             {
                 isComputeAzureVM = string.IsNullOrEmpty(azureVMCloudServiceName) ? true : false;
@@ -261,6 +264,47 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 IdUtils.GetValueByName(iaasVmItem.Id, IdUtils.IdNames.ProtectionContainerName),
                 IdUtils.GetValueByName(iaasVmItem.Id, IdUtils.IdNames.ProtectedItemName),
                 triggerBackupRequest,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
+        }
+
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
+        {
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+            AzureVmItem item = (AzureVmItem)ProviderData[ItemParams.Item];
+
+            Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
+            string containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
+            string protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
+
+            bool isComputeAzureVM = false;
+            isComputeAzureVM = IsComputeAzureVM(item.VirtualMachineId);
+
+            AzureIaaSVMProtectedItem properties;
+            if (isComputeAzureVM == false)
+            {
+                properties = new AzureIaaSClassicComputeVMProtectedItem();
+            }
+            else
+            {
+                properties = new AzureIaaSComputeVMProtectedItem();
+            }
+
+            properties.PolicyId = null;
+            properties.ProtectionState = ProtectionState.ProtectionStopped;
+            properties.SourceResourceId = item.SourceResourceId;
+            properties.IsRehydrate = true;
+
+            ProtectedItemResource serviceClientRequest = new ProtectedItemResource()
+            {
+                Properties = properties,
+            };
+
+            return ServiceClientAdapter.CreateOrUpdateProtectedItem(
+                containerUri,
+                protectedItemUri,
+                serviceClientRequest,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName);
         }
@@ -689,6 +733,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (ItemProtectionState)ProviderData[ItemParams.ProtectionState];
             CmdletModel.WorkloadType workloadType =
                 (CmdletModel.WorkloadType)ProviderData[ItemParams.WorkloadType];
+            ItemDeleteState deleteState =
+               (ItemDeleteState)ProviderData[ItemParams.DeleteState];
+
             PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];
 
             // 1. Filter by container
@@ -745,6 +792,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 itemModels = itemModels.Where(itemModel =>
                 {
                     return itemModel.WorkloadType == workloadType;
+                }).ToList();
+            }
+
+            // 6. Filter by Delete State
+            if (deleteState != 0)
+            {
+                itemModels = itemModels.Where(itemModel =>
+                {
+                    return ((AzureVmItem)itemModel).DeleteState == deleteState;
                 }).ToList();
             }
 
@@ -835,6 +891,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         #region private
 
+
+        private void ValidateProtectedItemCount(AzureVmPolicy azureVmPolicy)
+        {
+            if (azureVmPolicy.ProtectedItemsCount > 100)
+            {
+                throw new ArgumentException(Resources.ProtectedItemsCountExceededException);
+            }
+        }
+
         private void ValidateAzureVMWorkloadType(CmdletModel.WorkloadType type)
         {
             if (type != CmdletModel.WorkloadType.AzureVM)
@@ -888,7 +953,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             ValidateAzureVMWorkloadType(policy.WorkloadType);
-
             // call validation
             policy.Validate();
         }

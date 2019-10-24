@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         internal static ServiceClientCredentials MockCredentials = null;
         private static string HandleAccntName(string accnt,IAzureContext context)
         {
-            if (Regex.IsMatch(accnt, @"^[a-zA-Z0-9]+$"))
+            if (Regex.IsMatch(accnt, @"^[a-zA-Z0-9\-]+$"))
             {
                 string domain = context.Environment.GetEndpoint(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix);
                 if (domain.EndsWith("/"))

@@ -1,22 +1,22 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/West%20Central%20US/serviceTags?api-version=2019-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvV2VzdCUyMENlbnRyYWwlMjBVUy9zZXJ2aWNlVGFncz9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/West%20Central%20US/serviceTags?api-version=2019-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvV2VzdCUyMENlbnRyYWwlMjBVUy9zZXJ2aWNlVGFncz9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "70b1949a-088d-443d-bdb1-4acac2517b7c"
+          "1de432e6-3c88-4902-ac16-8507e67ab395"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27617.04",
+          "FxVersion/4.6.28008.02",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.2.0.0"
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -27,13 +27,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "9f126162-c8db-48ba-8d79-d5d24e67618d"
+          "e713892e-6e35-4408-af1a-2261ad1deb15"
         ],
         "x-ms-correlation-request-id": [
-          "36903514-d913-410b-8d2e-f1425968cfd7"
+          "6d6eda32-f986-4159-846c-806385c475dc"
         ],
         "x-ms-arm-service-request-id": [
-          "c8427f61-a345-4797-98e7-a62c3811d3d8"
+          "af15a20a-c387-4613-aac2-1c24fcbaae89"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,16 +43,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11889"
+          "11998"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190715T113117Z:36903514-d913-410b-8d2e-f1425968cfd7"
+          "WESTUS:20190919T220404Z:6d6eda32-f986-4159-846c-806385c475dc"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 11:31:17 GMT"
+          "Thu, 19 Sep 2019 22:04:03 GMT"
         ],
         "Content-Length": [
           "623145"

@@ -17,8 +17,40 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-
 ## Upcoming Release
+* Renamed `CoreQuota` on `BatchAccountContext` to `DedicatedCoreQuota`. There is also a new `LowPriorityCoreQuota`.
+  - This impacts **Get-AzBatchAccount**.
+* **New-AzBatchTask** `-ResourceFile` parameter now takes a collection of `PSResourceFile` objects, which can be constructed using the new **New-AzBatchResourceFile** cmdlet.
+* New **New-AzBatchResourceFile** cmdlet to help create `PSResourceFile` objects. These can be supplied to **New-AzBatchTask** on the `-ResourceFile` parameter.
+  - This supports two new kinds of resource file in addition to the existing `HttpUrl` way:
+    - `AutoStorageContainerName` based resource files download an entire auto-storage container to the Batch node.
+    - `StorageContainerUrl` based resource files download the container specified in the URL to the Batch node.
+* Removed `ApplicationPackages` property of `PSApplication` returned by **Get-AzBatchApplication**.
+  - The specific packages inside of an application now can be retrieved using **Get-AzBatchApplicationPackage**. For example: `Get-AzBatchApplication -AccountName myaccount -ResourceGroupName myresourcegroup -ApplicationId myapplication`.
+* Renamed `ApplicationId` to `ApplicationName` on **Get-AzBatchApplicationPackage**, **New-AzBatchApplicationPackage**, **Remove-AzBatchApplicationPackage**, **Get-AzBatchApplication**, **New-AzBatchApplication**, **Remove-AzBatchApplication**, and **Set-AzBatchApplication**.
+  - `ApplicationId` now is an alias of `ApplicationName`.
+* Added new `PSWindowsUserConfiguration` property to `PSUserAccount`.
+* Renamed `Version` to `Name` on `PSApplicationPackage`.
+* Renamed `BlobSource` to `HttpUrl` on `PSResourceFile`.
+* Removed `OSDisk` property from `PSVirtualMachineConfiguration`.
+* Removed **Set-AzBatchPoolOSVersion**. This operation is no longer supported.
+* Removed `TargetOSVersion` from `PSCloudServiceConfiguration`.
+* Renamed `CurrentOSVersion` to `OSVersion` on `PSCloudServiceConfiguration`.
+* Removed `DataEgressGiB` and `DataIngressGiB` from `PSPoolUsageMetrics`.
+* Removed **Get-AzBatchNodeAgentSku** and replaced it with  **Get-AzBatchSupportedImage**. 
+  - **Get-AzBatchSupportedImage** returns the same data as **Get-AzBatchNodeAgentSku** but in a more friendly format.
+  - New non-verified images are also now returned. Additional information about `Capabilities` and `BatchSupportEndOfLife` for each image is also included.
+* Added ability to mount remote file-systems on each node of a pool via the new `MountConfiguration` parameter of **New-AzBatchPool**.
+* Now support network security rules blocking network access to a pool based on the source port of the traffic. This is done via the `SourcePortRanges` property on `PSNetworkSecurityGroupRule`.
+* When running a container, Batch now supports executing the task in the container working directory or in the Batch task working directory. This is controlled by the `WorkingDirectory` property on `PSTaskContainerSettings`.
+* Added ability to specify a collection of public IPs on `PSNetworkConfiguration` via the new `PublicIPs` property. This guarantees nodes in the Pool will have an IP from the list user provided IPs.
+* When not specified, the default value of `WaitForSuccess` on `PSSTartTask` is now `$True` (was `$False`).
+* When not specified, the default value of `Scope` on `PSAutoUserSpecification` is now `Pool` (was `Task` on Windows and `Pool` on Linux).
+
+## Version 1.1.2
+* **Get-AzBatchNodeAgentSku** is deprecated and will be replaced by **Get-AzBatchSupportImage** in version 2.0.0.
+
+## Version 1.1.1
 * Fixed typo in help message and documentation to capitalize Windows
 * Fixed miscellaneous typos across module
 

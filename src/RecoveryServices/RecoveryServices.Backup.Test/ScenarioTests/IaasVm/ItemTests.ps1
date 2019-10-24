@@ -145,6 +145,12 @@ function Test-AzureVMProtection
 			-Name $vm.Name `
 			-ResourceGroupName $vm.ResourceGroupName;
 
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name "DefaultPolicy";
+
+		Assert-True {$policy.ProtectedItemsCount -eq 1};
+
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureVM `
@@ -161,6 +167,13 @@ function Test-AzureVMProtection
 			-Item $item `
 			-RemoveRecoveryPoints `
 			-Force;
+		
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name "DefaultPolicy";
+
+		Assert-True {$policy.ProtectedItemsCount -eq 0};
+
 	}
 	finally
 	{
@@ -288,6 +301,36 @@ function Test-AzureVMFullRestore
 	}
 }
 
+function Test-AzureUnmanagedVMFullRestore
+{
+	$location = Get-ResourceGroupLocation
+	$resourceGroupName = Create-ResourceGroup $location
+	
+	try
+	{
+		$saName = Create-SA $resourceGroupName $location
+		$vm = Create-UnmanagedVM $resourceGroupName $location $saName
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		$item = Enable-Protection $vault $vm $resourceGroupName
+		$backupJob = Backup-Item $vault $item
+		$rp = Get-RecoveryPoint $vault $item $backupJob
+
+		$restoreJob = Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $rp `
+			-StorageAccountName $saName `
+			-StorageAccountResourceGroupName $resourceGroupName `
+			-UseOriginalStorageAccount | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		Assert-True { $restoreJob.Status -eq "Completed" }
+	}
+	finally
+	{
+		Cleanup-ResourceGroup $resourceGroupName
+	}
+}
+
 function Test-AzureVMRPMountScript
 {
 	$location = Get-ResourceGroupLocation
@@ -394,5 +437,61 @@ function Test-AzureVMSetVaultContext
 	{
 		# Cleanup
 		Cleanup-ResourceGroup $resourceGroupName
+	}
+}
+
+function Test-AzureVMSoftDelete
+{
+	$location = "southeastasia"
+	$resourceGroupName = Create-ResourceGroup $location
+
+	try
+	{	
+		#Setup
+		$vm = Create-VM $resourceGroupName $location
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		Set-AzRecoveryServicesVaultContext -Vault $vault
+
+		$item = Enable-Protection $vault $vm
+		$backupJob = Backup-Item $vault $item
+		
+		#SoftDelete
+		
+		Disable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Item $item `
+			-RemoveRecoveryPoints `
+			-Force;
+
+		#Check if the item is in a softdeleted state
+
+		$container = Get-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-ContainerType "AzureVM" `
+			-FriendlyName $vm.Name;
+
+		$item = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType "AzureVM";
+
+		#rehydrate the softdeleted item
+
+		Undo-AzRecoveryServicesBackupItemDeletion `
+			-VaultId $vault.ID `
+			-Item $item;
+
+		$item = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType "AzureVM";
+
+		#check if item is in a rehydrated state
+		Assert-True { $item.ProtectionState -eq "ProtectionStopped" }
+
+	}
+	finally
+	{
+		#write cleanup for softdeleted state
 	}
 }

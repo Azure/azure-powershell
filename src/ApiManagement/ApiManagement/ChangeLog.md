@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.2
+* **Set-AzApiManagementApi** - Added support for Updating Api into ApiVersionSet
+    - Fix for issue https://github.com/Azure/azure-powershell/issues/10068
+    
+## Version 1.3.1
+* Update `-Format` parameter description in `Set-AzApiManagementPolicy` reference documentation
+* Removed references of deprecated cmdlet `Update-AzApiManagementDeployment` from reference documentation. Use `Set-AzApiManagement` instead.
+
+## Version 1.3.0
 * Fixed miscellaneous typos across module
 
 * Fix for issue https://github.com/Azure/azure-powershell/issues/9351

@@ -56,10 +56,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         {
             var config = new MapperConfiguration(cfg =>
             {
-                // This part is for hiding the breaking change caused by the client library update.
-                cfg.CreateMap<FROM.GalleryImageVersionPublishingProfile, TO.PSGalleryImageVersionPublishingProfile>();
-                cfg.CreateMap<TO.PSGalleryImageVersionPublishingProfile, FROM.GalleryImageVersionPublishingProfile>();
-
                 cfg.CreateMap<FROM.ContainerService, TO.PSContainerServiceList>();
                 cfg.CreateMap<TO.PSContainerServiceList, TO.PSContainerService>();
                 cfg.CreateMap<TO.PSContainerService, TO.PSContainerServiceList>();
@@ -81,8 +77,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.GalleryImage, TO.PSGalleryImageList>();
                 cfg.CreateMap<TO.PSGalleryImageList, TO.PSGalleryImage>();
                 cfg.CreateMap<TO.PSGalleryImage, TO.PSGalleryImageList>();
-                cfg.CreateMap<FROM.GalleryImageVersion, TO.PSGalleryImageVersionList>()
-                    .AfterMap((src, dest) => dest.GetPublishingProfileSourceId()); // This part is for hiding the breaking change caused by the client library update.
+                cfg.CreateMap<FROM.GalleryImageVersion, TO.PSGalleryImageVersionList>();
                 cfg.CreateMap<TO.PSGalleryImageVersionList, TO.PSGalleryImageVersion>();
                 cfg.CreateMap<TO.PSGalleryImageVersion, TO.PSGalleryImageVersionList>();
                 cfg.CreateMap<FROM.Image, TO.PSImageList>();
@@ -133,8 +128,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSGallery, FROM.Gallery>();
                 cfg.CreateMap<FROM.GalleryImage, TO.PSGalleryImage>();
                 cfg.CreateMap<TO.PSGalleryImage, FROM.GalleryImage>();
-                cfg.CreateMap<FROM.GalleryImageVersion, TO.PSGalleryImageVersion>()
-                    .AfterMap((src, dest) => dest.GetPublishingProfileSourceId()); // This part is for hiding the breaking change caused by the client library update.
+                cfg.CreateMap<FROM.GalleryImageVersion, TO.PSGalleryImageVersion>();
                 cfg.CreateMap<TO.PSGalleryImageVersion, FROM.GalleryImageVersion>();
                 cfg.CreateMap<FROM.Image, TO.PSImage>();
                 cfg.CreateMap<TO.PSImage, FROM.Image>();

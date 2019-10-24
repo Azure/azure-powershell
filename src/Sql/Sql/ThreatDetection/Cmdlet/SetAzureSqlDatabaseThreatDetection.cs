@@ -116,7 +116,6 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
                 model.StorageAccountName = StorageAccountName;
             }
 
-            model.ValidateContent();
             return model;
         }
     }

@@ -19,6 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.7
+* Bug Fix: Use user assigned identity defined in the assignment file instead of cmdlet parameter during blueprint assignment (Set- cmdlet).
+* Update module version information in the .psd1 file
+
+## Version 0.2.6
+* Bug Fix: Use user assigned identity defined in the assignment file instead of cmdlet parameter during blueprint assignment.
+
+## Version 0.2.5
+* Add functionality to make sure Blueprint RP is registered before any service calls
+
 ## Version 0.2.4
 * Fixed miscellaneous typos across module
 * Bug fix (Get-AzBlueprint should work on national clouds)

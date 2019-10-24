@@ -2,7 +2,7 @@ variables:
   WindowsName: windows
   WindowsImage: VS2017-Win2016
   LinuxName: linux
-  LinuxImage: Ubuntu-16.04
+  LinuxImage: Ubuntu-18.04
   MacOSName: macOS
   MacOSImage: macOS-10.13
   TestFramework: netcoreapp2.1

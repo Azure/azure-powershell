@@ -63,6 +63,17 @@ function Test-ThreatDetectionDatabaseUpdatePolicy
 
 	try
 	{
+		# Test upsert of TD policy without admins or an email accoun
+		Update-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		$policy = Get-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+	
+		# Assert
+		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
+		Assert-AreEqual $policy.NotificationRecipientsEmails ""
+		Assert-False {$policy.EmailAdmins}
+		Assert-AreEqual $policy.ExcludedDetectionTypes.Count 0
+		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
+
 		# Test
 		Update-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com" -EmailAdmins $false -ExcludedDetectionType "Sql_Injection_Vulnerability" -StorageAccountName $params.storageAccount
 		$policy = Get-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
@@ -136,6 +147,16 @@ function Test-ThreatDetectionServerUpdatePolicy
 
 	try
 	{
+		# Test upsert of TD policy without admins or an email account
+		Update-AzSqlServerAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -EmailAdmins $false
+		$policy = Get-AzSqlServerAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName
+	
+		# Assert
+		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
+		Assert-AreEqual $policy.NotificationRecipientsEmails ""
+		Assert-False {$policy.EmailAdmins}
+		Assert-AreEqual $policy.ExcludedDetectionTypes.Count 0
+
 		# Test
 		Update-AzSqlServerAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com" -EmailAdmins $false -ExcludedDetectionType Sql_Injection_Vulnerability -StorageAccountName $params.storageAccount
 		$policy = Get-AzSqlServerAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName

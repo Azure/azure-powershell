@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.WebSites.Version2016_09_01.Models;
+
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 {
     /// <summary>
@@ -29,7 +31,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// The CDN Parameter set name.
         /// </summary>
-        public const string CDN = "CDN";
+        public const string CDN = "Cdn";
+
+        /// <summary>
+        /// The CDN Parameter set name.
+        /// </summary>
+        public const string Transit = "Transit";
+
+        /// <summary>
+        /// The CDN Parameter set name.
+        /// </summary>
+        public const string Edge = "Edge";
 
         /// <summary>
         /// The Direct InputObject Parameter set name.
@@ -41,7 +53,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </summary>
         public const string Exchange = "Exchange";
 
-        #endregion
+        /// <summary>
+        /// The peering service kind
+        /// </summary>
+        public const string PeeringService = "PeeringService";
+
+        /// <summary>
+        /// The avaliable setting
+        /// </summary>
+        public const string Available = "Available";
+
+        /// <summary>
+        /// The session provided address peer
+        /// </summary>
+        public const string Peer = "Peer";
+
+        /// <summary>
+        /// The session provided address microsoft
+        /// </summary>
+        public const string Microsoft = "Microsoft";
+
+        #endregion Kind
 
         #region Ranges
 
@@ -55,7 +87,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </summary>
         public const int MaxRange = 100000;
 
-        #endregion
+        #endregion Ranges
 
         #region ParameterSetName
 
@@ -72,17 +104,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// The parameter set name location by city.
         /// </summary>
-        public const string ParameterSetNameLocationByCity = "ByPeeringLocation";
+        public const string ParameterSetNameLocationByDirectType = "LocationByDirectType";
 
         /// <summary>
         /// ParameterSetName for GetPeering
         /// </summary>
-        public const string ParameterSetNamePeeringByResource = "PeeringByResource";
+        public const string ParameterSetNameByResourceGroupName = "ByResourceGroupName";
 
         /// <summary>
         /// Parameter set name for PeeringByResourceAndName
         /// </summary>
-        public const string ParameterSetNamePeeringByResourceAndName = "PeeringByResourceAndName";
+        public const string ParameterSetNameByResourceAndName = "ByResourceGroupAndName";
 
         /// <summary>
         /// The parameter set name by name.
@@ -115,6 +147,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public const string ParameterSetNameIPv6Prefix = "IPv6Prefix";
 
         /// <summary>
+        /// The parameter set name for microsoft provided IP.
+        /// </summary>
+        public const string ParameterSetNameMicrosoftProvidedIPAddress = "ParameterSetNameMicrosoftProvidedIPAddress";
+
+        /// <summary>
+        /// The parameter set name for use for peering service
+        /// </summary>
+        public const string ParameterSetNameUseForPeeringService = "ParameterSetNameUseForPeeringService";
+
+        /// <summary>
         /// The parameter set name md 5 authentication.
         /// </summary>
         public const string ParameterSetNameMd5Authentication = "Md5Authentication";
@@ -139,7 +181,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </summary>
         public const string ParameterSetNameIPv6Address = "IPv6Address";
 
-        #endregion
+        #endregion ParameterSetName
 
         #region Help
 
@@ -152,6 +194,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// The legacy item help.
         /// </summary>
         public const string LegacyItemHelp = "Use Get-AzLegacyPeering to retrieve this object.";
+
+        /// <summary>
+        /// The input item help.
+        /// </summary>
+        public const string PrefixInputObjectHelp = "Use a Get-AzPeeringService";
+
+        /// <summary>
+        /// The input item help.
+        /// </summary>
+        public const string InputObjectHelp = "Use a Get-AzPeering";
 
         /// <summary>
         /// The peering object help.
@@ -189,10 +241,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public const string LocationHelp = "The location of the resource.";
 
         /// <summary>
+        /// The Direct peering Type Hep
+        /// </summary>
+        public const string DirectPeeringTypeHelp = @"Select 'Edge', 'CDN', and 'Transit'.";
+
+        /// <summary>
         /// PeeringLocationHelp
         /// </summary>
         public const string PeeringLocationHelp =
             "The Physical Location Different from Azure Region. Use Get-AzPeeringLocation -Kind <kind> use City name as key.";
+
+        /// <summary>
+        /// PeeringLocationHelp
+        /// </summary>
+        public const string PeeringServiceLocationHelp =
+            "The Physical Location Different from Azure Region. Use Get-AzPeeringServiceLocation [-Country <country>]";
 
         /// <summary>
         /// PeeringAsnHelp
@@ -213,6 +276,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// BandwidthHelp
         /// </summary>
         public const string BandwidthHelp = "The Bandwidth offered at this location in Mbps.";
+
+        /// <summary>
+        /// Session address provider help.
+        /// </summary>
+        public const string SessionAddressProviderHelp = "Enable flag that tells Microsoft to provide the BGP session addresses.";
 
         /// <summary>
         /// AsJobHelp
@@ -237,7 +305,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// The use for partner peering.
         /// </summary>
-        public const string UseForPeeringServiceHelp = "Enable for use with Microsoft InputObject Service (MPS).";
+        public const string UseForPeeringServiceHelp = "Enable for use with Microsoft Peering Service (MPS).";
 
         /// <summary>
         /// The prefix help.
@@ -275,6 +343,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </summary>
         public const string PeeringDirectConnectionHelp =
             "Create a new Direct connections using the New-AzDirectPeeringConnectionObject and pipe to this command.";
+
+        public const string PeeringDirectSkuHelp = "Select Basic_Direct_Free or Premium_Direct_Free unless explicitly told to select another option.";
 
         /// <summary>
         /// The peering direct connection index help.
@@ -317,7 +387,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </summary>
         public const string HelpMaxAdvertisedIPv4 = "The maximum advertised IPv4";
 
-        #endregion
+        /// <summary>
+        /// The peering country help
+        /// </summary>
+        public const string PeeringCountryHelp = "The country filter";
+
+        /// <summary>
+        /// The peering service provider help
+        /// </summary>
+        public const string PeeringServiceProviderHelp = "The peering service provider name. Use Get-AzPeeringServiceProvider cmdlet for a list";
+
+        /// <summary>
+        /// The peering service help
+        /// </summary>
+        public const string PeeringServiceHelp = "The peering service name. Use New-AzPeeringService cmdlet for a new peering service or Get-AzPeeringService for a list.";
+
+        /// <summary>
+        /// The peering service prefix event expand flag
+        /// </summary>
+        public const string PeeringServicePrefixEventHelp = "View the events for a peering service prefix";
+
+        #endregion Help
 
         #region SKU
 
@@ -332,6 +422,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public const string PremiumDirectFree = "Premium_Direct_Free";
 
         /// <summary>
+        /// The premium direct metered.
+        /// </summary>
+        public const string PremiumDirectMetered = "Premium_Direct_Metered";
+
+        /// <summary>
+        /// The premium direct unlimited.
+        /// </summary>
+        public const string PremiumDirectUnlimited = "Premium_Direct_Unlimited";
+
+        /// <summary>
         /// The basic direct free.
         /// </summary>
         public const string BasicDirectFree = "Basic_Direct_Free";
@@ -341,6 +441,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </summary>
         public const string BasicExchangeFree = "Basic_Exchange_Free";
 
-        #endregion
+        #endregion SKU
     }
 }

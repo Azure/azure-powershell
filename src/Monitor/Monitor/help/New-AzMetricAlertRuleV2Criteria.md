@@ -21,9 +21,9 @@ New-AzMetricAlertRuleV2Criteria -MetricName <String> [-MetricNamespace <String>]
 
 ### DynamicThresholdParameterSet
 ```
-New-AzMetricAlertRuleV2Criteria -MetricName <String> [-MetricNamespace <String>]
+New-AzMetricAlertRuleV2Criteria [-DynamicThreshold] -MetricName <String> [-MetricNamespace <String>]
  [-DimensionSelection <PSMetricDimension[]>] -TimeAggregation <String> -Operator <String>
- -DynamicThreshold <String> [-Sensitivity <String>] [-FailingPeriod <Int32>] [-TotalPeriod <Int32>]
+ [-ThresholdSensitivity <String>] [-ViolationCount <Int32>] [-ExaminedAggregatedPointCount <Int32>]
  [-IgnoreDataBefore <DateTime>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -37,30 +37,51 @@ The **New-AzMetricAlertRuleV2Criteria** cmdlet creates a local metric criteria o
 ```powershell
 PS C:\> New-AzMetricAlertRuleV2Criteria -MetricName "Percentage CPU" -MetricNameSpace "Microsoft.Compute/virtualMachines" -TimeAggregation Average -Operator GreaterThan -Threshold 5
 
+CriterionType        : StaticThresholdCriterion
+OperatorProperty     : GreaterThan
+Threshold            : 5
+AdditionalProperties :
 Name                 : metric1
 MetricName           : Percentage CPU
 MetricNamespace      : Microsoft.Compute/virtualMachines
-OperatorProperty     : GreaterThan
 TimeAggregation      : Average
-Threshold            : 5
 Dimensions           :
-AdditionalProperties :
 ```
 
 This command creates a simple metric alert criteria that can be used in a metric alert rule
 
-### Example 2: Create a more complex metric alert criteria
+### Example 2: Create a dynamic metric alert criteria
+
+```powershell
+PS C:\>New-AzMetricAlertRuleV2Criteria -Dynamic -MetricName "Percentage CPU" -MetricNameSpace "Microsoft.Compute/virtualMachines" -TimeAggregation Average -Operator GreaterThan -ThresholdSensitivity Medium -ViolationCount 2 -ExaminedAggregatedPointCount 4
+CriterionType        : DynamicThresholdCriterion
+OperatorProperty     : GreaterThan
+AlertSensitivity     : Medium
+FailingPeriods       : Microsoft.Azure.Management.Monitor.Models.DynamicThresholdFailingPeriods
+IgnoreDataBefore     :
+AdditionalProperties :
+Name                 : metric1
+MetricName           : Percentage CPU
+MetricNamespace      : Microsoft.Compute/virtualMachines
+TimeAggregation      : Average
+Dimensions           :
+```
+
+This command creates a Dynamic metric alert criteria that can be used in a metric alert rule
+
+### Example 3: Create a more complex metric alert criteria
 
 ```powershell
 PS C:\>New-AzMetricAlertRuleV2DimensionSelection -DimensionName "availabilityResult/name" -ValuesToInclude "gdtest" | New-AzMetricAlertRuleV2Criteria -MetricName "availabilityResults/availabilityPercentage" -TimeAggregation Average -Operator GreaterThan -Threshold 2
+CriterionType        : StaticThresholdCriterion
+OperatorProperty     : GreaterThan
+Threshold            : 2
+AdditionalProperties :
 Name                 : metric1
 MetricName           : availabilityResults/availabilityPercentage
 MetricNamespace      :
-OperatorProperty     : GreaterThan
 TimeAggregation      : Average
-Threshold            : 2
 Dimensions           : {availabilityResult/name}
-AdditionalProperties :
 ```
 
 This set of commands creates a more complex metric alert criteria which includes dimension selection
@@ -98,10 +119,10 @@ Accept wildcard characters: False
 ```
 
 ### -DynamicThreshold
-The Dynamic Threshold for rule condition
+Switch parameter for using Dynamic Threshold Type
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: DynamicThresholdParameterSet
 Aliases:
 
@@ -112,13 +133,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FailingPeriod
-The Failing Period for rule condition
+### -ExaminedAggregatedPointCount
+The Total number of examined points
 
 ```yaml
 Type: System.Int32
 Parameter Sets: DynamicThresholdParameterSet
-Aliases:
+Aliases: TotalPeriod, NumberOfExaminedAggregatedPoints
 
 Required: False
 Position: Named
@@ -187,21 +208,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Sensitivity
-The sensitivity for rule condition
-
-```yaml
-Type: System.String
-Parameter Sets: DynamicThresholdParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Threshold
 The threshold for rule condition
 
@@ -211,6 +217,21 @@ Parameter Sets: StaticThresholdParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ThresholdSensitivity
+The sensitivity for rule condition
+
+```yaml
+Type: System.String
+Parameter Sets: DynamicThresholdParameterSet
+Aliases: Sensitivity
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -232,13 +253,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TotalPeriod
-The Total Period for rule condition
+### -ViolationCount
+The minimum number of violations required within the selected lookback time window required to raise an alert
 
 ```yaml
 Type: System.Int32
 Parameter Sets: DynamicThresholdParameterSet
-Aliases:
+Aliases: FailingPeriod, NumberOfViolations
 
 Required: False
 Position: Named
@@ -256,7 +277,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricCriteria
+### Microsoft.Azure.Commands.Insights.OutputClasses.IPSMultiMetricCriteria
 
 ## NOTES
 
