@@ -20,6 +20,29 @@
 
 ## Upcoming Release
 * Fix incorrect parameter description in `New-AzApplicationGatewaySku` reference documentation
+* New cmdlets to support the azure firewall policy
+* Add support for child resource RouteTables of VirtualHub
+    - New cmdlets added:
+        - Add-AzVirtualHubRoute
+        - Add-AzVirtualHubRouteTable
+        - Get-AzVirtualHubRouteTable
+        - Remove-AzVirtualHubRouteTable
+        - Set-AzVirtualHub
+* Add support for new properties Sku of VirtualHub and VirtualWANType of VirtualWan
+    - Cmdlets updated with optional parameters:
+        - New-AzVirtualHub : added parameter Sku
+        - Update-AzVirtualHub : added parameter Sku
+        - New-AzVirtualWan : added parameter VirtualWANType
+        - Update-AzVirtualWan : added parameter VirtualWANType
+* Add support for EnableInternetSecurity property for HubVnetConnection, VpnConnection and ExpressRouteConnection
+    - New cmdlets added:
+        - Update-AzureRmVirtualHubVnetConnection
+    - Cmdlets updated with optional parameters:
+        - New-AzureRmVirtualHubVnetConnection : added parameter EnableInternetSecurity
+        - New-AzureRmVpnConnection : added parameter EnableInternetSecurity
+        - Update-AzureRmVpnConnection : added parameter EnableInternetSecurity
+        - New-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
+        - Set-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
 
 ## Version 1.15.0
 * Add new cmdlet Get-AzAvailableServiceAlias which can be called to get the aliases that can be used for Service Endpoint Policies.
@@ -38,29 +61,6 @@
 * New Generations and SKUs for VirtualNetworkGateways
   - Introduce new Generations for VirtualNetworkGateways.
   - Introduce new high throughput SKUs for VirtualNetworkGateways.
-* New cmdlets to support the azure firewall policy
-* Add support for child resource RouteTables of VirtualHub
-	- New cmdlets added:
-		- Add-AzVirtualHubRoute
-		- Add-AzVirtualHubRouteTable
-		- Get-AzVirtualHubRouteTable
-		- Remove-AzVirtualHubRouteTable
-		- Set-AzVirtualHub
-* Add support for new properties Sku of VirtualHub and VirtualWANType of VirtualWan
-	- Cmdlets updated with optional parameters:
-		- New-AzVirtualHub : added parameter Sku
-		- Update-AzVirtualHub : added parameter Sku
-		- New-AzVirtualWan : added parameter VirtualWANType
-		- Update-AzVirtualWan : added parameter VirtualWANType
-* Add support for EnableInternetSecurity property for HubVnetConnection, VpnConnection and ExpressRouteConnection
-	- New cmdlets added:
-		- Update-AzureRmVirtualHubVnetConnection
-	- Cmdlets updated with optional parameters:
-		- New-AzureRmVirtualHubVnetConnection : added parameter EnableInternetSecurity
-		- New-AzureRmVpnConnection : added parameter EnableInternetSecurity
-		- Update-AzureRmVpnConnection : added parameter EnableInternetSecurity
-		- New-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
-		- Set-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
 
 ## Version 1.14.0
 * Fix incorrect example in `New-AzApplicationGateway` reference documentation
