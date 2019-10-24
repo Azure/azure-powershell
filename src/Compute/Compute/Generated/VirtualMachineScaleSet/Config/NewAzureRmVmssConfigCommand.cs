@@ -208,6 +208,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string ProximityPlacementGroupId { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("Default", "OldestVM", "NewestVM")]
+        public string[] ScaleInPolicy { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ParameterSetName = "ExplicitIdentityParameterSet",
             ValueFromPipelineByPropertyName = true)]
@@ -238,6 +244,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // UpgradePolicy
             UpgradePolicy vUpgradePolicy = null;
 
+            // AutomaticRepairsPolicy
+            AutomaticRepairsPolicy vAutomaticRepairsPolicy = null;
+
             // VirtualMachineProfile
             VirtualMachineScaleSetVMProfile vVirtualMachineProfile = null;
 
@@ -246,6 +255,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // AdditionalCapabilities
             AdditionalCapabilities vAdditionalCapabilities = null;
+
+            // ScaleInPolicy
+            ScaleInPolicy vScaleInPolicy = null;
 
             // Identity
             VirtualMachineScaleSetIdentity vIdentity = null;
@@ -519,6 +531,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
             }
 
+            if (this.IsParameterBound(c => c.ScaleInPolicy))
+            {
+                if (vScaleInPolicy == null)
+                {
+                    vScaleInPolicy = new ScaleInPolicy();
+                }
+                vScaleInPolicy.Rules = this.ScaleInPolicy;
+            }
+
             if (this.AssignIdentity.IsPresent)
             {
                 if (vIdentity == null)
@@ -564,9 +585,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Sku = vSku,
                 Plan = vPlan,
                 UpgradePolicy = vUpgradePolicy,
+                AutomaticRepairsPolicy = vAutomaticRepairsPolicy,
                 VirtualMachineProfile = vVirtualMachineProfile,
                 ProximityPlacementGroup = vProximityPlacementGroup,
                 AdditionalCapabilities = vAdditionalCapabilities,
+                ScaleInPolicy = vScaleInPolicy,
                 Identity = vIdentity,
             };
 

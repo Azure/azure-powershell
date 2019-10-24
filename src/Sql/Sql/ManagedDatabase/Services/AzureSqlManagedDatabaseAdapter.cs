@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
 {
@@ -116,12 +117,21 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// <summary>
         /// Restore a given Sql Azure Managed Database
         /// </summary>
-        /// <param name="resourceId">The resource ID of the DB to restore (live, geo backup, deleted database, long term retention backup, etc.)</param>
         /// <param name="model">An object modeling the database to create via restore</param>
         /// <returns>Restored database object</returns>
-        internal AzureSqlManagedDatabaseModel RestoreManagedDatabase(string resourceId, AzureSqlManagedDatabaseModel model)
+        internal AzureSqlManagedDatabaseModel RestoreManagedDatabase(AzureSqlManagedDatabaseModel model)
         {
-            Management.Sql.Models.ManagedDatabase database = Communicator.RestoreDatabase(model.ResourceGroupName, model.ManagedInstanceName, model.Name, resourceId, model);
+            var dbModel = new Management.Sql.Models.ManagedDatabase()
+            {
+                Location = model.Location,
+                CreateMode = model.CreateMode,
+                RestorePointInTime = model.RestorePointInTime,
+                RecoverableDatabaseId = model.RecoverableDatabaseId,
+                RestorableDroppedDatabaseId = model.RestorableDroppedDatabaseId,
+                SourceDatabaseId = model.SourceDatabaseId,
+            };
+
+            Management.Sql.Models.ManagedDatabase database = Communicator.RestoreDatabase(model.ResourceGroupName, model.ManagedInstanceName, model.Name, dbModel);
 
             return new AzureSqlManagedDatabaseModel(model.ResourceGroupName, model.ManagedInstanceName, database);
         }
@@ -150,6 +160,20 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         {
             AzureSqlManagedDatabaseAdapter managedInstanceAdapter = new AzureSqlManagedDatabaseAdapter(Context);
             var managedInstance = managedInstanceAdapter.GetManagedDatabase(resourceGroupName, managedInstanceName, managedDatabaseName);
+            return managedInstance.Id;
+        }
+
+        /// <summary>
+        /// Gets the Resource id of the managed instance.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group the managed instance is in</param>
+        /// <param name="managedInstanceName">The name of the managed instance</param>
+        /// <param name="managedDatabaseName">The name of the managed databse</param>
+        /// <returns></returns>
+        public string GetDeletedManagedDatabaseResourceId(string resourceGroupName, string managedInstanceName, string managedDatabaseName)
+        {
+            AzureSqlManagedDatabaseBackupAdapter managedInstanceAdapter = new AzureSqlManagedDatabaseBackupAdapter(Context);
+            var managedInstance = managedInstanceAdapter.GetDeletedDatabaseBackup(resourceGroupName, managedInstanceName, managedDatabaseName);
             return managedInstance.Id;
         }
 

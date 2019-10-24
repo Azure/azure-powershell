@@ -44,30 +44,27 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         {
             cmdlet.ClusterName = ClusterName;
             cmdlet.ResourceGroupName = ResourceGroupName;
-            var cluster = new Cluster
+            var cluster = new Cluster(id: "id", name: ClusterName)
             {
-                Id = "id",
-                Name = ClusterName,
                 Location = Location,
                 Properties = new ClusterGetProperties
                 {
-                    ClusterVersion = "3.1",
+                    ClusterVersion = "3.6",
                     ClusterState = "Running",
                     ClusterDefinition = new ClusterDefinition
                     {
-                        ClusterType = ClusterType
+                        Kind = ClusterType
                     },
                     QuotaInfo = new QuotaInfo
                     {
                         CoresUsed = 24
                     },
-                    OperatingSystemType = OSType.Windows
+                    OsType = OSType.Linux
                 }
             };
 
-            var getresponse = new ClusterGetResponse { Cluster = cluster };
             hdinsightManagementMock.Setup(c => c.Get(ResourceGroupName, ClusterName))
-                .Returns(getresponse)
+                .Returns(cluster)
                 .Verifiable();
 
             hdinsightManagementMock.Setup(c => c.GetCluster(It.IsAny<string>(), It.IsAny<string>()))
@@ -85,49 +82,45 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         public void CanListHDInsightClustersInRG()
         {
             cmdlet.ResourceGroupName = ResourceGroupName;
-            var cluster1 = new Cluster
+            var cluster1 = new Cluster(id: "id", name: ClusterName + "1")
             {
-                Id = "id",
-                Name = ClusterName + "1",
                 Location = Location,
                 Properties = new ClusterGetProperties
                 {
-                    ClusterVersion = "3.1",
+                    ClusterVersion = "3.6",
                     ClusterState = "Running",
                     ClusterDefinition = new ClusterDefinition
                     {
-                        ClusterType = ClusterType
+                        Kind = ClusterType
                     },
                     QuotaInfo = new QuotaInfo
                     {
                         CoresUsed = 24
                     },
-                    OperatingSystemType = OSType.Windows
+                    OsType = OSType.Linux
                 }
             };
 
-            var cluster2 = new Cluster
+            var cluster2 = new Cluster(id: "id", name: ClusterName + "2")
             {
-                Id = "id",
-                Name = ClusterName + "2",
                 Location = Location,
                 Properties = new ClusterGetProperties
                 {
-                    ClusterVersion = "3.1",
+                    ClusterVersion = "3.6",
                     ClusterState = "Running",
                     ClusterDefinition = new ClusterDefinition
                     {
-                        ClusterType = ClusterType
+                        Kind = ClusterType
                     },
                     QuotaInfo = new QuotaInfo
                     {
                         CoresUsed = 24
                     },
-                    OperatingSystemType = OSType.Windows
+                    OsType = OSType.Linux
                 }
             };
 
-            var listresponse = new ClusterListResponse { Clusters = new[] { cluster1, cluster2 } };
+            var listresponse = new[] { cluster1, cluster2 };
             hdinsightManagementMock.Setup(c => c.ListClusters(ResourceGroupName))
                 .Returns(listresponse)
                 .Verifiable();
@@ -153,49 +146,45 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanListHDInsightClusters()
         {
-            var cluster1 = new Cluster
+            var cluster1 = new Cluster(id: "id", name: ClusterName + "1")
             {
-                Id = "id",
-                Name = ClusterName + "1",
                 Location = Location,
                 Properties = new ClusterGetProperties
                 {
-                    ClusterVersion = "3.1",
+                    ClusterVersion = "3.6",
                     ClusterState = "Running",
                     ClusterDefinition = new ClusterDefinition
                     {
-                        ClusterType = ClusterType
+                        Kind = ClusterType
                     },
                     QuotaInfo = new QuotaInfo
                     {
                         CoresUsed = 24
                     },
-                    OperatingSystemType = OSType.Windows
+                    OsType = OSType.Linux
                 }
             };
 
-            var cluster2 = new Cluster
+            var cluster2 = new Cluster(id: "id", name: ClusterName + "2")
             {
-                Id = "id",
-                Name = ClusterName + "2",
                 Location = Location,
                 Properties = new ClusterGetProperties
                 {
-                    ClusterVersion = "3.1",
+                    ClusterVersion = "3.6",
                     ClusterState = "Running",
                     ClusterDefinition = new ClusterDefinition
                     {
-                        ClusterType = ClusterType
+                        Kind = ClusterType
                     },
                     QuotaInfo = new QuotaInfo
                     {
                         CoresUsed = 24
                     },
-                    OperatingSystemType = OSType.Windows
+                    OsType = OSType.Linux
                 }
             };
 
-            var listresponse = new ClusterListResponse { Clusters = new[] { cluster1, cluster2 } };
+            var listresponse = new[] { cluster1, cluster2 };
             hdinsightManagementMock.Setup(c => c.ListClusters())
                 .Returns(listresponse)
                 .Verifiable();

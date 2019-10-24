@@ -59,7 +59,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 resourceCulture = value;
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to discover FileShare {0} under {1}. Please make sure names are correct and FileShare is not deleted.
+        /// </summary>
+        public static string AFSDiscoveryFailure
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSDiscoveryFailure", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Handling aggregate exception.
         /// </summary>

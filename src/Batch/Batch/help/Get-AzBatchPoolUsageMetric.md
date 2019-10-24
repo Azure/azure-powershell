@@ -26,7 +26,7 @@ You can get the statistics for a specific pool and for a time range.
 
 ### Example 1: Get pool usage metrics for a time range
 ```
-PS C:\>$Context = Get-AzBatchAccountKeys -AccountName "ContosoBatchAccount"
+PS C:\>$Context = Get-AzBatchAccountKey -AccountName "ContosoBatchAccount"
 PS C:\> $StartTime = Get-Date -Date "2016-05-16 00:00:00Z"
 PS C:\> $EndTime = Get-Date -Date "2016-05-16 01:00:00Z"
 PS C:\> Get-AzBatchPoolUsageMetric -StartTime $StartTime -EndTime $EndTime -BatchContext $context
@@ -63,7 +63,7 @@ TotalCoreHours     : 11.9999999993333
 VirtualMachineSize : standard_d4
 ```
 
-The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzBatchAccountKeys**.
+The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzBatchAccountKey**.
 The command stores this object reference in the $Context variable.
 The next two commands create **DateTime** objects by using the Get-Date cmdlet.
 The commands store these values in the $StartTime and $EndTime variables for use with the final command.
@@ -88,7 +88,7 @@ The command specifies a filter string to specify that pool, and uses the same $C
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -183,7 +183,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzBatchAccountKeys](./Get-AzBatchAccountKeys.md)
+[Get-AzBatchAccountKey](./Get-AzBatchAccountKey.md)
 
 [Get-AzBatchPoolStatistics](./Get-AzBatchPoolStatistics.md)
 
