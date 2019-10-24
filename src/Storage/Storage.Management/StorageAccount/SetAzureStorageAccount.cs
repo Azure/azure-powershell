@@ -349,7 +349,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         {
                             //if user want to enable AADDS, must first disable AD
                             var originStorageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
-                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AD)
+                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication != null 
+                                && originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AD)
                             {
                                 throw new System.ArgumentException("The Storage account already enabled ActiveDirectoryDomainServicesForFile, please disable it by run this cmdlets with \"-EnableActiveDirectoryDomainServicesForFile $false\" before enable AzureActiveDirectoryDomainServicesForFile.");
                             }
@@ -360,7 +361,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         {
                             // Only disable AADDS; else keep unchanged
                             var originStorageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
-                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AADDS)
+                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication == null
+                                || originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AADDS)
                             {
                                 updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
                                 updateParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
@@ -390,7 +392,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
                             //if user want to enable AD, must first disable AADDS
                             var originStorageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
-                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AADDS)
+                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication != null
+                                && originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AADDS)
                             {
                                 throw new System.ArgumentException("The Storage account already enabled AzureActiveDirectoryDomainServicesForFile, please disable it by run this cmdlets with \"-EnableAzureActiveDirectoryDomainServicesForFile $false\" before enable ActiveDirectoryDomainServicesForFile.");
                             }
@@ -422,7 +425,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
                             // Only disable AD; else keep unchanged
                             var originStorageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
-                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AD)
+                            if (originStorageAccount.AzureFilesIdentityBasedAuthentication == null
+                                || originStorageAccount.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions == DirectoryServiceOptions.AD)
                             {
                                 updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
                                 updateParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
