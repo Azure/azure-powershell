@@ -147,6 +147,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "The max price of the billing of a low priority virtual machine scale set.")]
         public double MaxPrice { get; set; }
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
+            HelpMessage = "The rules to be followed when scaling-in a virtual machine scale set.  "
+                        + "Possible values are: 'Default', 'OldestVM' and 'NewestVM'.  "
+                        + "'Default' when a virtual machine scale set is scaled in, the scale set will first be balanced across zones if it is a zonal scale set.  "
+                        + "Then, it will be balanced across Fault Domains as far as possible.  "
+                        + "Within each Fault Domain, the virtual machines chosen for removal will be the newest ones that are not protected from scale-in.  "
+                        + "'OldestVM' when a virtual machine scale set is being scaled-in, the oldest virtual machines that are not protected from scale-in will be chosen for removal.  "
+                        + "For zonal virtual machine scale sets, the scale set will first be balanced across zones.  "
+                        + "Within each zone, the oldest virtual machines that are not protected will be chosen for removal.  "
+                        + "'NewestVM' when a virtual machine scale set is being scaled-in, the newest virtual machines that are not protected from scale-in will be chosen for removal.  "
+                        + "For zonal virtual machine scale sets, the scale set will first be balanced across zones.  "
+                        + "Within each zone, the newest virtual machines that are not protected will be chosen for removal.")]
+        [PSArgumentCompleter("Default", "OldestVM", "NewestVM")]
+        public string[] ScaleInPolicy { get; set; }
+
         const int FirstPortRangeStart = 50000;
 
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
@@ -283,7 +298,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     proximityPlacementGroup: proximityPlacementGroup,
                     priority: _cmdlet.Priority,
                     evictionPolicy: _cmdlet.EvictionPolicy,
-                    maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null
+                    maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
+                    scaleInPolicy: _cmdlet.ScaleInPolicy
                     );
             }
         }
