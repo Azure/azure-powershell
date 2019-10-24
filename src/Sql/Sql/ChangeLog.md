@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add support for database ReadReplicaCount.
 
 ## Version 1.14.2
 * Update example in reference documentation for `Get-AzSqlElasticPool`
@@ -26,9 +27,6 @@
 * Enabled removal of server/database auditing settings when multiple diagnostic settings that enable audit category exist.
 * Fix email addresses validation in multiple Sql Vulnerability Assessment cmdlets (Update-AzSqlDatabaseVulnerabilityAssessmentSetting, Update-AzSqlServerVulnerabilityAssessmentSetting, Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting and Update-AzSqlInstanceVulnerabilityAssessmentSetting).
 * Add support for setting Active Directory Administrator on Managed Instance
-
-## Version 1.14.2
-* Add support for database ReadReplicaCount.
 
 ## Version 1.14.1
 * Update documentation of old Auditing cmdlets.
