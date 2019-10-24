@@ -19,9 +19,9 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String>
  [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
- [-AdditionalProperty <Hashtable>] [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-Sku <String>]
- [-VirtualHubId <String>] [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>]
+ [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### OldIpConfigurationParameterValues
@@ -30,9 +30,9 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  -PublicIpName <String> [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
- [-AdditionalProperty <Hashtable>] [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-Sku <String>]
- [-VirtualHubId <String>] [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>]
+ [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### IpConfigurationParameterValues
@@ -42,9 +42,9 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
- [-AdditionalProperty <Hashtable>] [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-Sku <String>]
- [-VirtualHubId <String>] [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>]
+ [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -161,21 +161,6 @@ New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -Sku 
 This example creates a Firewall attached to virtual hub "vHub". A firewall policy $fp will be attached to the firewall. This firewall allows/denies the traffic based on the rules mentioned in the firewall policy $fp. The virtual hub and the firewall should be in the same regions.
 
 ## PARAMETERS
-
-### -AdditionalProperty
-Additional properties for Azure Firewall.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -ApplicationRuleCollection
 Specifies the collections of application rules for the new Firewall.
