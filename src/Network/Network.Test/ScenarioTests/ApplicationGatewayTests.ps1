@@ -2092,12 +2092,13 @@ function Test-ApplicationGatewayTopLevelFirewallPolicy
 		# Cleanup
 		Clean-ResourceGroup $rgname
 	}
+}
 
 <#
 .SYNOPSIS
-Application gateway v2 top level waf tests
+This case tests the per-site and per-listener firewall policies. At the end we try to add a global firewall polcy and test the whole thing.
 #>
-function Test-ApplicationGatewayHttpListenerFirewallPolicy
+function Test-ApplicationGatewayWithFirewallPolicy
 {
 	param
 	(
@@ -2105,7 +2106,7 @@ function Test-ApplicationGatewayHttpListenerFirewallPolicy
 	)
 
 	# Setup
-	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+	# $location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "South Central US"
 
 	$rgname = Get-ResourceGroupName
 	$appgwName = Get-ResourceName
@@ -2148,6 +2149,9 @@ function Test-ApplicationGatewayHttpListenerFirewallPolicy
 
 	try
 	{
+		# The Per-Site firewall policy can only be enabled in regions which have the dynamic setting set to true.
+		# Currently Central US EUAP region has it enabled so hardcoding it to this region, This can be removed once it is enabled on regions in production.
+		$location = "centraluseuap"
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
 		# Create the Virtual Network
 		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
@@ -2169,7 +2173,19 @@ function Test-ApplicationGatewayHttpListenerFirewallPolicy
 		$fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
 		$fp01 = New-AzApplicationGatewayFrontendPort -Name $frontendPort01Name -Port 80
 		$fp02 = New-AzApplicationGatewayFrontendPort -Name $frontendPort02Name -Port 443
-		$listener01 = New-AzApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01 -RequireServerNameIndication false
+		
+		# Create a firewall policy for http listener
+		$listenerPolicyName = "listenerhttpPolicy"
+		$policySetting = New-AzApplicationGatewayFirewallPolicySetting -Mode "Prevention" -State Enabled -MaxFileUploadInMb 300 
+		New-AzApplicationGatewayFirewallPolicy -Name $listenerPolicyName -ResourceGroupName $rgname -Location $location -PolicySetting $policySetting
+		$httpPolicy = Get-AzApplicationGatewayFirewallPolicy -Name $listenerPolicyName -ResourceGroupName $rgname
+		Assert-AreEqual $httpPolicy.PolicySettings.FileUploadLimitInMb  $policySetting.FileUploadLimitInMb
+		Assert-AreEqual $httpPolicy.PolicySettings.Mode  $policySetting.Mode
+		Assert-AreEqual $httpPolicy.PolicySettings.State  $policySetting.State
+		
+		$listener01 = New-AzApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01 -RequireServerNameIndication false -FirewallPolicy $httpPolicy
+		Assert-AreEqual $listener01.FirewallPolicy.Id $httpPolicy.Id
+
 		$pool = New-AzApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
 		$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 443 -Protocol Https -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress
 
@@ -2187,14 +2203,36 @@ function Test-ApplicationGatewayHttpListenerFirewallPolicy
 		$actionSet = New-AzApplicationGatewayRewriteRuleActionSet -RequestHeaderConfiguration $headerConfiguration
 		$rewriteRule = New-AzApplicationGatewayRewriteRule -Name $rewriteRuleName -ActionSet $actionSet
 		$rewriteRuleSet = New-AzApplicationGatewayRewriteRuleSet -Name $rewriteRuleSetName -RewriteRule $rewriteRule
-		$videoPathRule = New-AzApplicationGatewayPathRuleConfig -Name $PathRuleName -Paths "/video" -RedirectConfiguration $redirectConfig -RewriteRuleSet $rewriteRuleSet
+		
+		# Create two polices for path rules /video and /image
+		$videoPolicyName = "videoPolicyName"
+		$policySetting = New-AzApplicationGatewayFirewallPolicySetting -Mode "Prevention" -State Enabled -MaxFileUploadInMb 150 
+		New-AzApplicationGatewayFirewallPolicy -Name $videoPolicyName -ResourceGroupName $rgname -Location $location -PolicySetting $policySetting
+		$videoPolicy = Get-AzApplicationGatewayFirewallPolicy -Name $videoPolicyName -ResourceGroupName $rgname
+		Assert-AreEqual $videoPolicy.PolicySettings.FileUploadLimitInMb  $policySetting.FileUploadLimitInMb
+		Assert-AreEqual $videoPolicy.PolicySettings.Mode  $policySetting.Mode
+		Assert-AreEqual $videoPolicy.PolicySettings.State  $policySetting.State
+
+		$imagePolicyName = "imagePolicyName"
+		$policySetting = New-AzApplicationGatewayFirewallPolicySetting -Mode "Prevention" -State Enabled -MaxFileUploadInMb 50 
+		New-AzApplicationGatewayFirewallPolicy -Name $imagePolicyName -ResourceGroupName $rgname -Location $location -PolicySetting $policySetting
+		$imagePolicy = Get-AzApplicationGatewayFirewallPolicy -Name $imagePolicyName -ResourceGroupName $rgname
+		Assert-AreEqual $imagePolicy.PolicySettings.FileUploadLimitInMb  $policySetting.FileUploadLimitInMb
+		Assert-AreEqual $imagePolicy.PolicySettings.Mode  $policySetting.Mode
+		Assert-AreEqual $imagePolicy.PolicySettings.State  $policySetting.State
+		
+		# Create path rule
+		$videoPathRule = New-AzApplicationGatewayPathRuleConfig -Name $PathRuleName -Paths "/video" -RedirectConfiguration $redirectConfig -RewriteRuleSet $rewriteRuleSet -FirewallPolicy $videoPolicy
 		Assert-AreEqual $videoPathRule.RewriteRuleSet.Id $rewriteRuleSet.Id
-		$imagePathRule = New-AzApplicationGatewayPathRuleConfig -Name $PathRule01Name -Paths "/image" -RedirectConfigurationId $redirectConfig.Id -RewriteRuleSetId $rewriteRuleSet.Id
+		Assert-AreEqual $videoPathRule.FirewallPolicy.Id $videoPolicy.Id
+
+		$imagePathRule = New-AzApplicationGatewayPathRuleConfig -Name $PathRule01Name -Paths "/image" -RedirectConfigurationId $redirectConfig.Id -RewriteRuleSetId $rewriteRuleSet.Id -FirewallPolicyId $imagePolicy.Id
 		Assert-AreEqual $imagePathRule.RewriteRuleSet.Id $rewriteRuleSet.Id
+		Assert-AreEqual $imagePathRule.FirewallPolicy.Id $imagePolicy.Id
 		$urlPathMap = New-AzApplicationGatewayUrlPathMapConfig -Name $urlPathMapName -PathRules $videoPathRule -DefaultBackendAddressPool $pool -DefaultBackendHttpSettings $poolSetting01
 		$urlPathMap2 = New-AzApplicationGatewayUrlPathMapConfig -Name $urlPathMapName2 -PathRules $videoPathRule,$imagePathRule -DefaultRedirectConfiguration $redirectConfig -DefaultRewriteRuleSet $rewriteRuleSet
 		$probe = New-AzApplicationGatewayProbeConfig -Name $probeName -Protocol Http -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8 -MinServers 1 -PickHostNameFromBackendHttpSettings
-
+	
 		#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
 		$pw01 = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
 		$sslCert01Path = $basedir + "/ScenarioTests/Data/ApplicationGatewaySslCert1.pfx"
@@ -2223,8 +2261,6 @@ function Test-ApplicationGatewayHttpListenerFirewallPolicy
 		Assert-ThrowsLike { Add-AzApplicationGatewayTrustedRootCertificate -ApplicationGateway $appgw -Name $trustedRootCertName -CertificateFile $certFilePath } "*already exists*"
 		Assert-ThrowsLike { Add-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url01 } "*already exists*"
 
-		# Add unsupported
-		Assert-ThrowsLike { Add-AzApplicationGatewayBackendAddressPool -ApplicationGateway $appgw -Name $poolName02 -BackendIPAddresses www.microsoft.com -BackendFqdns www.bing.com } "*At most one of*can be specified*"
 		Add-AzApplicationGatewayBackendAddressPool -ApplicationGateway $appgw -Name $poolName02 -BackendFqdns www.bing.com,www.microsoft.com
 		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
 
@@ -2233,6 +2269,9 @@ function Test-ApplicationGatewayHttpListenerFirewallPolicy
 		Assert-AreEqual $appgw.BackendHttpSettingsCollection.Count 2
 		Assert-AreEqual $appgw.HttpListeners.Count 3
 		Assert-AreEqual $appgw.RequestRoutingRules.Count 2
+		Assert-AreEqual $appgw.HttpListeners[0].FirewallPolicy.Id $httpPolicy.Id
+		Assert-AreEqual $appgw.UrlPathMaps[1].PathRules[0].FirewallPolicy.Id $videoPolicy.Id
+		Assert-AreEqual $appgw.UrlPathMaps[1].PathRules[1].FirewallPolicy.Id $imagePolicy.Id
 
 		# Get
 		$trustedCert = Get-AzApplicationGatewayTrustedRootCertificate -ApplicationGateway $appgw -Name $trustedRootCertName
@@ -2242,84 +2281,44 @@ function Test-ApplicationGatewayHttpListenerFirewallPolicy
 		$trustedCerts = Get-AzApplicationGatewayTrustedRootCertificate -ApplicationGateway $appgw
 		Assert-NotNull $trustedCerts
 		Assert-AreEqual $trustedCerts.Count 1
-
-		# Set
-		$listener01 = Get-AzApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener01Name
-		Set-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $appgw -MinCapacity 2
-		Set-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url02
-		Set-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $appgw -Enabled $true -FirewallMode Prevention -RuleSetType "OWASP" -RuleSetVersion "3.0" -RequestBodyCheck $true -MaxRequestBodySizeInKb 70 -FileUploadLimitInMb 70
-		Set-AzApplicationGatewayTrustedRootCertificate -ApplicationGateway $appgw -Name $trustedRootCertName -CertificateFile $certFilePath2
-		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
-
-		# WAF Policy and Custom Rule
-		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Content-Length
-		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator GreaterThan -MatchValue 1000 -Transform Lowercase -NegationCondition $False
-		$rule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Block
+		
+		# Add a basic global firewall policy
 		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70
 		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.0"
 		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet 
 		$wafPolicyName = "wafPolicy1"
 		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings
 	
-
 		# Get Application Gateway
 		$appgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
-		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
-		$appgw.FirewallPolicy = $policy
+		$globalPolicy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+		$appgw.FirewallPolicy = $globalPolicy
 		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
 	
-		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
-		$policy.CustomRules = $rule
-		Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
-
 		$appgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
-		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+		$globalPolicy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
 
 		# Second check firewll policy
-		Assert-AreEqual $policy.Id $appgw.FirewallPolicy.Id
-		Assert-AreEqual $policy.CustomRules[0].Name $rule.Name
-		Assert-AreEqual $policy.CustomRules[0].RuleType $rule.RuleType
-		Assert-AreEqual $policy.CustomRules[0].Action $rule.Action
-		Assert-AreEqual $policy.CustomRules[0].Priority $rule.Priority
-		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].OperatorProperty $rule.MatchConditions[0].OperatorProperty
-		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].Transforms[0] $rule.MatchConditions[0].Transforms[0]
-		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].NegationConditon $rule.MatchConditions[0].NegationConditon
-		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchValues[0] $rule.MatchConditions[0].MatchValues[0]
-		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].VariableName $rule.MatchConditions[0].MatchVariables[0].VariableName
-		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].Selector $rule.MatchConditions[0].MatchVariables[0].Selector
-		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
-		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
-		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
-		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
-		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+		Assert-AreEqual $globalPolicy.Id $appgw.FirewallPolicy.Id
+		Assert-AreEqual $globalPolicy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
+		Assert-AreEqual $globalPolicy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
+		Assert-AreEqual $globalPolicy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
+		Assert-AreEqual $globalPolicy.PolicySettings.Mode $policySettings.Mode
+		Assert-AreEqual $globalPolicy.PolicySettings.State $policySettings.State
 
-		#Add Exclusions and disabled rules to the firewall policy
-		$exclusionEntry = New-AzApplicationGatewayFirewallPolicyExclusion -MatchVariable RequestArgNames -SelectorMatchOperator Contains -Selector Bingo
-		$ruleOverrideEntry1 = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 942100
-		$ruleOverrideEntry2 = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 942110
-		$sqlRuleGroupOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName REQUEST-942-APPLICATION-ATTACK-SQLI -Rule $ruleOverrideEntry1,$ruleOverrideEntry2
-		
-		$ruleOverrideEntry3 = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 941100
-		$xssRuleGroupOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName REQUEST-941-APPLICATION-ATTACK-XSS -Rule $ruleOverrideEntry3
-		
-		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.0" -RuleGroupOverride $sqlRuleGroupOverrideEntry,$xssRuleGroupOverrideEntry
-		$managedRules = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet -Exclusion $exclusionEntry
-		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
-		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 750 -MaxRequestBodySizeInKb 128
-		$policy.managedRules = $managedRules
-		$policy.PolicySettings = $policySettings
-		Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+		# Create a new policy and switch the appgw to the new policy
+		$globalPolicyName2 = "globalpolicy2"
+		New-AzApplicationGatewayFirewallPolicy -Name $globalPolicyName2 -ResourceGroupName $rgname -Location $location
+		$globalPolicy =  Get-AzApplicationGatewayFirewallPolicy -Name $globalPolicyName2 -ResourceGroupName $rgname
+		$appgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		$appgw.FirewallPolicy = $globalPolicy
+		Set-AzApplicationGateway -ApplicationGateway $appgw
 
-		# Get firewall policy
-		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
-		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets.Count 1
-		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[0].RuleGroupOverrides.Count 2
-		Assert-AreEqual $policy.ManagedRules.Exclusions.Count 1
-		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
-		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
-		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
-		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
-		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+		$appgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		$globalPolicy = Get-AzApplicationGatewayFirewallPolicy -Name $globalPolicyName2 -ResourceGroupName $rgname
+
+		# Second check firewll policy
+		Assert-AreEqual $globalPolicy.Id $appgw.FirewallPolicy.Id
 	}
 	finally
 	{

@@ -117,9 +117,9 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
-        public void TestApplicationGatewayWithPerSiteFirewallPolicy()
+        public void TestApplicationGatewayWithFirewallPolicy()
         {
-            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayHttpListenerFirewallPolicy -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayWithFirewallPolicy -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
     }
 }
