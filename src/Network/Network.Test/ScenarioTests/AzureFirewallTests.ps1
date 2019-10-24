@@ -241,7 +241,7 @@ function Test-AzureFirewallCRUD {
         $natRc = New-AzFirewallNatRuleCollection -Name $natRcName -Priority $natRcPriority -Rule $natRule
 
         # Add second NAT Rule to rule Collection
-        $natRc.AddRule($$natRule2)
+        $natRc.AddRule($natRule2)
 
         # Add ApplicationRuleCollections to the Firewall using method AddApplicationRuleCollection
         $azureFirewall.AddApplicationRuleCollection($appRc)
