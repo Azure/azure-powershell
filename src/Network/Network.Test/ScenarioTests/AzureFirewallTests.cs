@@ -34,7 +34,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AzureFirewallCRUD");
         }
 
-        [Fact]
+        [Fact(Skip = "skip")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestAzureFirewallCRUDWithZones()
@@ -42,7 +42,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AzureFirewallCRUDWithZones");
         }
 
-        [Fact(Skip ="")]
+        [Fact(Skip ="skip")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestAzureFirewallPIPAndVNETObjectTypeParams()
@@ -50,7 +50,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AzureFirewallPIPAndVNETObjectTypeParams");
         }
 
-        [Fact(Skip = "")]
+        [Fact(Skip = "skip")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestAzureFirewallAllocateAndDeallocate()
@@ -58,7 +58,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AzureFirewallAllocateAndDeallocate");
         }
 
-        [Fact(Skip = "")]
+        [Fact(Skip = "skip")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestAzureFirewallVirtualHubCRUD()
