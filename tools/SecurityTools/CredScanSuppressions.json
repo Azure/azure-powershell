@@ -418,11 +418,27 @@
       "_justification": "Expired test session storage SAS"
     },
     {
+      "file": "src\\Batch\\Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUpdateApplicationPackage.json",
+      "_justification": "Expired test session storage SAS"
+    },
+    {
+      "file": "src\\Batch\\Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestCreatePoolWithApplicationPackage.json",
+      "_justification": "Expired test session storage SAS"
+    },
+    {
       "file": "src\\Batch\\Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestCreatePoolWithApplicationPackage.json",
       "_justification": "Expired test session storage SAS"
     },
     {
       "file": "src\\Batch\\Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUploadApplicationPackage.json",
+      "_justification": "Expired test session storage SAS"
+    },
+    {
+      "file": "src\\Batch\\Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUploadApplicationPackage.json",
+      "_justification": "Expired test session storage SAS"
+    },
+    {
+      "file": "src\\Batch\\Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\\TestUpdatePoolWithApplicationPackage.json",
       "_justification": "Expired test session storage SAS"
     },
     {

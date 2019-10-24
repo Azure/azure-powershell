@@ -29,17 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSOSDisk
+    public partial class PSNfsMountConfiguration
     {
         
-        internal Microsoft.Azure.Batch.OSDisk omObject;
+        internal Microsoft.Azure.Batch.NfsMountConfiguration omObject;
         
-        public PSOSDisk(System.Nullable<Microsoft.Azure.Batch.Common.CachingType> caching = null)
+        public PSNfsMountConfiguration(string source, string relativeMountPath, string mountOptions = null)
         {
-            this.omObject = new Microsoft.Azure.Batch.OSDisk(caching);
+            this.omObject = new Microsoft.Azure.Batch.NfsMountConfiguration(source, relativeMountPath, mountOptions);
         }
         
-        internal PSOSDisk(Microsoft.Azure.Batch.OSDisk omObject)
+        internal PSNfsMountConfiguration(Microsoft.Azure.Batch.NfsMountConfiguration omObject)
         {
             if ((omObject == null))
             {
@@ -48,11 +48,27 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public Microsoft.Azure.Batch.Common.CachingType? Caching
+        public string MountOptions
         {
             get
             {
-                return this.omObject.Caching;
+                return this.omObject.MountOptions;
+            }
+        }
+        
+        public string RelativeMountPath
+        {
+            get
+            {
+                return this.omObject.RelativeMountPath;
+            }
+        }
+        
+        public string Source
+        {
+            get
+            {
+                return this.omObject.Source;
             }
         }
     }
