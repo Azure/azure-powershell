@@ -136,11 +136,12 @@ function Test-PrivateEndpointConnectionCRUD
     $ilbName = Get-ResourceName;
 
     $serverName = "server-$(Get-Random)"
+    $serverLogin = "testusername"
+    <#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
+    $serverPassword = "t357ingP@s5w0rd!Sec"
+    $credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
     $databaseName = "mySampleDatabase"
-    $adminSqlLogin = "SqlAdmin"
-    $password = "MyAdminPassword123456789"
     $peName = "mype"
-
 
     try
     {
@@ -150,7 +151,7 @@ function Test-PrivateEndpointConnectionCRUD
         $server = New-AzSqlServer -ResourceGroupName $rgname `
             -ServerName $serverName `
             -Location $location `
-            -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $adminSqlLogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
+            -SqlAdministratorCredentials $credentials
         
         $database = New-AzSqlDatabase  -ResourceGroupName $rgname `
             -ServerName $serverName `
