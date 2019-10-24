@@ -20,7 +20,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletOutputBreakingChange(typeof(PSExpressRouteCircuit), DeprecatedOutputProperties = new[] { "AllowGlobalReach" })]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuitPeeringConfig"), OutputType(typeof(PSExpressRouteCircuit))]
     public class RemoveAzureExpressRouteCircuitPeeringConfigCommand : NetworkBaseCmdlet
     {

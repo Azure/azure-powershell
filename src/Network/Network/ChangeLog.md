@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Planned breaking change: property AllowGlobalReach was removed from PSExpressRouteCircuit
 * Add new cmdlet Get-AzAvailableServiceAlias which can be called to get the aliases that can be used for Service Endpoint Policies.
 * Added support for the adding traffic selectors to Virtual Network Gateway Connections
     - New cmdlets added:
