@@ -138,12 +138,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Additional properties for Azure Firewall.")]
-        public Hashtable AdditionalProperty { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -279,7 +273,6 @@ namespace Microsoft.Azure.Commands.Network
             // Map to the sdk object
             var azureFirewallModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AzureFirewall>(firewall);
             azureFirewallModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
-            azureFirewallModel.AdditionalProperties = TagsConversionHelper.CreateTagDictionary(this.AdditionalProperty, validate: true);
 
             // Execute the Create AzureFirewall call
             this.AzureFirewallClient.CreateOrUpdate(this.ResourceGroupName, this.Name, azureFirewallModel);
