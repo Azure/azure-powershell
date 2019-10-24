@@ -19,18 +19,18 @@
 -->
 
 ## Upcoming Release
-    * Create cmdlets for Az.ManagedNetwork.
-        - Get-AzManagedNetwork: To get managed network 
-        - New-AzManagedNetwork: To create managed network 
-        - New-AzManagedNetworkScope: To create managed network Scope
-        - Remove-AzManaged Network: To remote managed network 
-        - Update-AzManagedNetwork: To update managed network 
-        - Get-AzManagedNetworkGroup: To get managed network group
-        - New-AzManagedNetworkGroup: To create managed network group 
-        - Remove-AzManagedNetworkGroup: To remove managed network group 
-        - Update-AzManagedNetworkGroup: To update managed network group 
-        - Get-AzManagedNetworkPeeringPolicy: To get managed network peering policy 
-        - New-AzManagedNetworkPeeringPolicy: To create managed network peering policy 
-        - Remove-AzManagedNetworkPeeringPolicy: To remove managed network peering policy 
-        - Update-AzManagedNetworkPeeringPolicy: To update managed network peering policy
+* Create cmdlets for Az.ManagedNetwork.
+    - Get-AzManagedNetwork: To get managed network
+    - New-AzManagedNetwork: To create managed network
+    - New-AzManagedNetworkScope: To create managed network Scope
+    - Remove-AzManaged Network: To remote managed network
+    - Update-AzManagedNetwork: To update managed network
+    - Get-AzManagedNetworkGroup: To get managed network group
+    - New-AzManagedNetworkGroup: To create managed network group
+    - Remove-AzManagedNetworkGroup: To remove managed network group
+    - Update-AzManagedNetworkGroup: To update managed network group
+    - Get-AzManagedNetworkPeeringPolicy: To get managed network peering policy
+    - New-AzManagedNetworkPeeringPolicy: To create managed network peering policy
+    - Remove-AzManagedNetworkPeeringPolicy: To remove managed network peering policy
+    - Update-AzManagedNetworkPeeringPolicy: To update managed network peering policy
 
