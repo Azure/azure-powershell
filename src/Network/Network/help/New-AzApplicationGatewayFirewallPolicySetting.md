@@ -63,8 +63,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaxFileUploadLimitInMb
-FileUploadLimitInMb in policy settings of the firewall policy.
+### -MaxFileUploadInMb
+Maximum fileUpload size in MB.
 
 ```yaml
 Type: System.Int32
@@ -73,7 +73,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 750
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -134,7 +134,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallCondition
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicySettings
 
 ## NOTES
 
