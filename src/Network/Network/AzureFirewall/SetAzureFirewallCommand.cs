@@ -43,12 +43,11 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Map to the sdk object
-            var azureFirewallModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AzureFirewall>(this.AzureFirewall);
-            azureFirewallModel.Tags = TagsConversionHelper.CreateTagDictionary(this.AzureFirewall.Tag, validate: true);
-            azureFirewallModel.AdditionalProperties = TagsConversionHelper.CreateTagDictionary(this.AzureFirewall.AdditionalProperty, validate: true);
+            var secureGwModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AzureFirewall>(this.AzureFirewall);
+            secureGwModel.Tags = TagsConversionHelper.CreateTagDictionary(this.AzureFirewall.Tag, validate: true);
 
             // Execute the PUT AzureFirewall call
-            this.AzureFirewallClient.CreateOrUpdate(this.AzureFirewall.ResourceGroupName, this.AzureFirewall.Name, azureFirewallModel);
+            this.AzureFirewallClient.CreateOrUpdate(this.AzureFirewall.ResourceGroupName, this.AzureFirewall.Name, secureGwModel);
 
             var getAzureFirewall = this.GetAzureFirewall(this.AzureFirewall.ResourceGroupName, this.AzureFirewall.Name);
             WriteObject(getAzureFirewall);
