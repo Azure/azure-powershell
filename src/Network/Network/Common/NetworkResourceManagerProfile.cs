@@ -1115,10 +1115,10 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.VpnServerConfigurationsResponse, CNM.PSVpnServerConfigurationsResponse>();
                 cfg.CreateMap<MNM.VpnProfileResponse, CNM.PSVpnProfileResponse>();
                 cfg.CreateMap<MNM.VpnServerConfiguration, CNM.PSVpnServerConfiguration>();
-                cfg.CreateMap<MNM.VpnServerConfigVpnClientRootCertificate, CNM.PSClientRootCertificate>(); // Todo: rename VpnServerConfigVpnClientRootCertificate -> VpnClientRootCertificate after new package import.
-                cfg.CreateMap<MNM.VpnServerConfigVpnClientRevokedCertificate, CNM.PSClientCertificate>(); // Todo: rename VpnServerConfigVpnClientRevokedCertificate -> VpnClientRevokedCertificate after new package import.
-                cfg.CreateMap<MNM.VpnServerConfigRadiusServerRootCertificate, CNM.PSClientRootCertificate>(); // Todo: rename VpnServerConfigRadiusServerRootCertificate -> RadiusServerRootCertificate after new package import.
-                cfg.CreateMap<MNM.VpnServerConfigRadiusClientRootCertificate, CNM.PSClientCertificate>(); // Todo: rename VpnServerConfigRadiusClientRootCertificate -> RadiusClientRootCertificate after new package import.
+                cfg.CreateMap<MNM.VpnServerConfigVpnClientRootCertificate, CNM.PSClientRootCertificate>(); 
+                cfg.CreateMap<MNM.VpnServerConfigVpnClientRevokedCertificate, CNM.PSClientCertificate>();
+                cfg.CreateMap<MNM.VpnServerConfigRadiusServerRootCertificate, CNM.PSClientRootCertificate>();
+                cfg.CreateMap<MNM.VpnServerConfigRadiusClientRootCertificate, CNM.PSClientCertificate>();
                 cfg.CreateMap<MNM.AadAuthenticationParameters, CNM.PSAadAuthenticationParameters>();
                 cfg.CreateMap<MNM.P2SVpnConnectionHealthRequest, CNM.PSP2SVpnConnectionHealthRequest>();
 
