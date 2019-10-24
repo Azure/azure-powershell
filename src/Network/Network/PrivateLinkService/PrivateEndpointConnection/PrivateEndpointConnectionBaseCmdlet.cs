@@ -10,7 +10,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class PrivateEndpointConnectionBaseCmdlet : PrivateLinkServiceBaseCmdlet
+    public abstract class PrivateEndpointConnectionBaseCmdlet : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
