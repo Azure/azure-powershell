@@ -180,17 +180,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         }
 
         /// <summary>
-        /// Gets the management group id from the resource id.
-        /// </summary>
-        /// <param name="resourceId">The resource id.</param>
-        public static string GetManagementGroupId(string resourceId)
-        {
-            return resourceId.StartsWithInsensitively(Constants.ManagementGroupIdPrefix)
-                ? ResourceIdUtility.GetNextSegmentAfter(resourceId: resourceId, segmentName: Constants.ManagementGroups)
-                : null;
-        }
-
-        /// <summary>
         /// Gets the subscription id from the resource id.
         /// </summary>
         /// <param name="resourceId">The resource id.</param>
@@ -256,15 +245,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         public static string GetResourceName(string resourceId)
         {
             return ResourceIdUtility.GetResourceTypeOrName(resourceId: resourceId, getResourceName: true);
-        }
-
-        /// <summary>
-        /// Gets the deployment name
-        /// </summary>
-        /// <param name="resourceId">The resource Id.</param>
-        public static string GetDeploymentName(string resourceId)
-        {
-            return ResourceIdUtility.GetResourceTypeOrName(resourceId: resourceId, getResourceName: true, useLastSegment: true);
         }
 
         /// <summary>

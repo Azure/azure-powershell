@@ -19,16 +19,13 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
@@ -43,8 +40,6 @@ using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Proper
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
-    using System.Threading;
-
     public class ResourceManagerSdkClient
     {
         /// <summary>
@@ -66,19 +61,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// </summary>
         private List<DeploymentOperation> operations;
 
-        /// <summary>
-        /// The azure context.
-        /// </summary>
-        private IAzureContext azureContext;
-
-        /// <summary>
-        /// The resource management client dictionary for cross subscriptions.
-        /// </summary>
-        private InsensitiveDictionary<IResourceManagementClient> resourceManagementClientCache = new InsensitiveDictionary<IResourceManagementClient>();
-
-        /// <summary>
-        /// The default resource management client.
-        /// </summary>
         public IResourceManagementClient ResourceManagementClient { get; set; }
 
         public Action<string> VerboseLogger { get; set; }
@@ -104,7 +86,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             : this(
                 AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
-            this.azureContext = context;
+
         }
 
         /// <summary>
@@ -125,32 +107,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         public ResourceManagerSdkClient()
         {
 
-        }
-
-        private IResourceManagementClient GetResourceManagementClient(string subscriptionId)
-        {
-            if (!subscriptionId.EqualsInsensitively(this.ResourceManagementClient.SubscriptionId))
-            {
-                if (this.resourceManagementClientCache.ContainsKey(subscriptionId))
-                {
-                    return resourceManagementClientCache[subscriptionId];
-                }
-
-                if (this.azureContext != null)
-                {
-                    var sdkClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
-                        context: this.azureContext,
-                        endpoint: AzureEnvironment.Endpoint.ResourceManager);
-
-                    sdkClient.SubscriptionId = subscriptionId;
-
-                    resourceManagementClientCache[subscriptionId] = sdkClient;
-
-                    return resourceManagementClientCache[subscriptionId];
-                }
-            }
-
-            return this.ResourceManagementClient;
         }
 
         private string GetDeploymentParameters(Hashtable templateParameterObject)
@@ -248,35 +204,34 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        public DeploymentExtended ProvisionDeploymentStatus(PSDeploymentCmdletParameters parameters, Deployment deployment)
+        public DeploymentExtended ProvisionDeploymentStatus(string resourceGroup, string deploymentName, Deployment deployment)
         {
             operations = new List<DeploymentOperation>();
 
-            var getDeploymentFunc = this.GetDeploymentAction(parameters);
-            Action writeProgressAction = () => this.WriteDeploymentProgress(parameters, deployment);
-
-            return this.WaitDeploymentStatus(
-                getDeploymentFunc,
-                writeProgressAction,
+            return WaitDeploymentStatus(
+                resourceGroup,
+                deploymentName,
+                deployment,
+                WriteDeploymentProgress,
                 ProvisioningState.Canceled,
                 ProvisioningState.Succeeded,
                 ProvisioningState.Failed);
         }
 
-        private void WriteDeploymentProgress(PSDeploymentCmdletParameters parameters, Deployment deployment)
+        private void WriteDeploymentProgress(string resourceGroup, string deploymentName, Deployment deployment)
         {
             const string normalStatusFormat = "Resource {0} '{1}' provisioning status is {2}";
             const string failureStatusFormat = "Resource {0} '{1}' failed with message '{2}'";
             List<DeploymentOperation> newOperations;
 
-            var result = this.ListDeploymentOperations(parameters);
+            var result = this.ListDeploymentOperations(resourceGroup, deploymentName);
 
             newOperations = GetNewOperations(operations, result);
             operations.AddRange(newOperations);
 
             while (!string.IsNullOrEmpty(result.NextPageLink))
             {
-                result = this.ListNextDeploymentOperations(parameters, result.NextPageLink);
+                result = this.ListNextDeploymentOperations(resourceGroup, result.NextPageLink);
                 newOperations = GetNewOperations(operations, result);
                 operations.AddRange(newOperations);
             }
@@ -352,8 +307,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         private DeploymentExtended WaitDeploymentStatus(
-            Func<Task<AzureOperationResponse<DeploymentExtended>>> getDeployment,
-            Action listDeploymentOperations,
+            string resourceGroup,
+            string deploymentName,
+            Deployment basicDeployment,
+            Action<string, string, Deployment> job,
             params ProvisioningState[] status)
         {
             DeploymentExtended deployment;
@@ -375,12 +332,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     phaseOne -= step;
                 }
 
-                if (listDeploymentOperations != null)
+                if (job != null)
                 {
-                    listDeploymentOperations();
+                    job(resourceGroup, deploymentName, basicDeployment);
                 }
 
-                var getDeploymentTask = getDeployment();
+                var getDeploymentTask = resourceGroup != null
+                    ? ResourceManagementClient.Deployments.GetWithHttpMessagesAsync(resourceGroup, deploymentName)
+                    : ResourceManagementClient.Deployments.GetAtSubscriptionScopeWithHttpMessagesAsync(deploymentName);
 
                 using (var getResult = getDeploymentTask.ConfigureAwait(false).GetAwaiter().GetResult())
                 {
@@ -398,25 +357,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             } while (!status.Any(s => s.ToString().Equals(deployment.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase)));
 
             return deployment;
-        }
-
-        Func<Task<AzureOperationResponse<DeploymentExtended>>> GetDeploymentAction(PSDeploymentCmdletParameters parameters)
-        {
-            switch (parameters.ScopeType)
-            {
-                case DeploymentScopeType.Tenant:
-                    return () => ResourceManagementClient.Deployments.GetAtTenantScopeWithHttpMessagesAsync(parameters.DeploymentName);
-
-                case DeploymentScopeType.ManagementGroup:
-                    return () => ResourceManagementClient.Deployments.GetAtManagementGroupScopeWithHttpMessagesAsync(parameters.ManagementGroupId, parameters.DeploymentName);
-
-                case DeploymentScopeType.ResourceGroup:
-                    return () => ResourceManagementClient.Deployments.GetWithHttpMessagesAsync(parameters.ResourceGroupName, parameters.DeploymentName);
-
-                case DeploymentScopeType.Subscription:
-                default:
-                    return () => ResourceManagementClient.Deployments.GetAtSubscriptionScopeWithHttpMessagesAsync(parameters.DeploymentName);
-            }
         }
 
         private List<DeploymentOperation> GetNewOperations(List<DeploymentOperation> old, IPage<DeploymentOperation> current)
@@ -437,15 +377,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     Enum.TryParse<HttpStatusCode>(operation.Properties.StatusCode, out statusCode);
                     if (!statusCode.IsClientFailureRequest())
                     {
-                        var nestedDeploymentOperations = this.GetNestedDeploymentOperations(operation.Properties.TargetResource.Id);
+                        var resourceGroupName = ResourceIdUtility.GetResourceGroupName(operation.Properties.TargetResource.Id);
+                        var deploymentName = operation.Properties.TargetResource.ResourceName;
 
-                        foreach (DeploymentOperation op in nestedDeploymentOperations)
+                        if (this.CheckDeploymentExistence(resourceGroupName, deploymentName) == true)
                         {
-                            DeploymentOperation nestedOperationWithSameIdAndProvisioningState = newOperations.Find(o => o.OperationId.Equals(op.OperationId) && o.Properties.ProvisioningState.Equals(op.Properties.ProvisioningState));
+                            List<DeploymentOperation> newNestedOperations = new List<DeploymentOperation>();
 
-                            if (nestedOperationWithSameIdAndProvisioningState == null)
+                            var result = this.ListDeploymentOperations(resourceGroupName, deploymentName);
+
+                            newNestedOperations = GetNewOperations(operations, result);
+
+                            foreach (DeploymentOperation op in newNestedOperations)
                             {
-                                newOperations.Add(op);
+                                DeploymentOperation nestedOperationWithSameIdAndProvisioningState = newOperations.Find(o => o.OperationId.Equals(op.OperationId) && o.Properties.ProvisioningState.Equals(op.Properties.ProvisioningState));
+
+                                if (nestedOperationWithSameIdAndProvisioningState == null)
+                                {
+                                    newOperations.Add(op);
+                                }
                             }
                         }
                     }
@@ -453,39 +403,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
 
             return newOperations;
-        }
-
-        private List<DeploymentOperation> GetNestedDeploymentOperations(string deploymentId)
-        {
-            var subscriptionId = ResourceIdUtility.GetSubscriptionId(deploymentId);
-
-            if (string.IsNullOrEmpty(subscriptionId))
-            {
-                var managementGroupId = ResourceIdUtility.GetManagementGroupId(deploymentId);
-                var deploymentName = ResourceIdUtility.GetDeploymentName(deploymentId);
-
-                if (this.CheckDeploymentExistenceAtTenantOrManagementGroup(managementGroupId, deploymentName) == true)
-                {
-                    var result = this.ListDeploymentOperationsAtTenantOrManagementGroup(managementGroupId, deploymentName);
-
-                    return GetNewOperations(operations, result);
-                }
-            }
-            else
-            {
-                var resourceGroupName = ResourceIdUtility.GetResourceGroupName(deploymentId);
-                var deploymentName = ResourceIdUtility.GetDeploymentName(deploymentId);
-
-                // (tiano): specify the subscription id.
-                if (this.CheckDeploymentExistence(subscriptionId, resourceGroupName, deploymentName) == true)
-                {
-                    var result = this.ListDeploymentOperations(subscriptionId, resourceGroupName, deploymentName);
-
-                    return GetNewOperations(operations, result);
-                }
-            }
-
-            return new List<DeploymentOperation>();
         }
 
         private Deployment CreateBasicDeployment(PSDeploymentCmdletParameters parameters, DeploymentMode deploymentMode, string debugSetting)
@@ -544,11 +461,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return deployment;
         }
 
-        private TemplateValidationInfo GetTemplateValidationResult(PSDeploymentCmdletParameters parameters, Deployment deployment)
+        private TemplateValidationInfo CheckBasicDeploymentErrors(string resourceGroup, string deploymentName, Deployment deployment)
         {
             try
             {
-                var validationResult = this.ValidateDeployment(parameters, deployment);
+                DeploymentValidateResult validationResult = resourceGroup != null
+                    ? ResourceManagementClient.Deployments.Validate(resourceGroup, deploymentName, deployment)
+                    : ResourceManagementClient.Deployments.ValidateAtSubscriptionScope(deploymentName, deployment);
 
                 return new TemplateValidationInfo(validationResult);
             }
@@ -559,205 +478,65 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        private DeploymentValidateResult ValidateDeployment(PSDeploymentCmdletParameters parameters, Deployment deployment)
-        {
-            switch (parameters.ScopeType)
-            {
-                case DeploymentScopeType.Tenant:
-                    return ResourceManagementClient.Deployments.ValidateAtTenantScope(parameters.DeploymentName, deployment);
-
-                case DeploymentScopeType.ManagementGroup:
-                    return ResourceManagementClient.Deployments.ValidateAtManagementGroupScope(parameters.ManagementGroupId, parameters.DeploymentName, deployment);
-
-                case DeploymentScopeType.ResourceGroup:
-                    return ResourceManagementClient.Deployments.Validate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
-
-                case DeploymentScopeType.Subscription:
-                default:
-                    return ResourceManagementClient.Deployments.ValidateAtSubscriptionScope(parameters.DeploymentName, deployment);
-            }
-        }
-
-        private List<ErrorResponse> HandleError(Exception ex)
+        private List<ResourceManagementErrorWithDetails> HandleError(Exception ex)
         {
             if (ex == null)
             {
                 return null;
             }
 
-            ErrorResponse error = null;
+            ResourceManagementErrorWithDetails error = null;
             var innerException = HandleError(ex.InnerException);
             if (ex is CloudException)
             {
                 var cloudEx = ex as CloudException;
-                error = new ErrorResponse(cloudEx.Body?.Code, cloudEx.Body?.Message, cloudEx.Body?.Target, innerException);
+                error = new ResourceManagementErrorWithDetails(cloudEx.Body?.Code, cloudEx.Body?.Message, cloudEx.Body?.Target, innerException);
             }
             else
             {
-                error = new ErrorResponse(null, ex.Message, null, innerException);
+                error = new ResourceManagementErrorWithDetails(null, ex.Message, null, innerException);
             }
 
-            return new List<ErrorResponse> { error };
+            return new List<ResourceManagementErrorWithDetails> { error };
 
-        }
-
-        private IPage<DeploymentOperation> ListDeploymentOperations(PSDeploymentCmdletParameters parameters)
-        {
-            switch (parameters.ScopeType)
-            {
-                case DeploymentScopeType.Tenant:
-                    return ResourceManagementClient.DeploymentOperations.ListAtTenantScope(parameters.DeploymentName);
-
-                case DeploymentScopeType.ManagementGroup:
-                    return ResourceManagementClient.DeploymentOperations.ListAtManagementGroupScope(parameters.ManagementGroupId, parameters.DeploymentName);
-
-                case DeploymentScopeType.ResourceGroup:
-                    return ResourceManagementClient.DeploymentOperations.List(parameters.ResourceGroupName, parameters.DeploymentName);
-
-                case DeploymentScopeType.Subscription:
-                default:
-                    return ResourceManagementClient.DeploymentOperations.ListAtSubscriptionScope(parameters.DeploymentName);
-            }
-        }
-
-        private IPage<DeploymentOperation> ListNextDeploymentOperations(PSDeploymentCmdletParameters parameters, string nextLink)
-        {
-            switch (parameters.ScopeType)
-            {
-                case DeploymentScopeType.Tenant:
-                    return ResourceManagementClient.DeploymentOperations.ListAtTenantScopeNext(nextLink);
-
-                case DeploymentScopeType.ManagementGroup:
-                    return ResourceManagementClient.DeploymentOperations.ListAtManagementGroupScopeNext(nextLink);
-
-                case DeploymentScopeType.ResourceGroup:
-                    return ResourceManagementClient.DeploymentOperations.ListNext(nextLink);
-
-                case DeploymentScopeType.Subscription:
-                default:
-                    return ResourceManagementClient.DeploymentOperations.ListAtSubscriptionScopeNext(nextLink);
-            }
-        }
-
-        private IPage<DeploymentOperation> ListDeploymentOperationsAtTenantOrManagementGroup(string managementGroupId, string deploymentName)
-        {
-            return !string.IsNullOrEmpty(managementGroupId)
-                ? this.ResourceManagementClient.DeploymentOperations.ListAtManagementGroupScope(managementGroupId, deploymentName, null)
-                : this.ResourceManagementClient.DeploymentOperations.ListAtTenantScope(deploymentName, null);
-        }
-
-        private IPage<DeploymentOperation> ListNextDeploymentOperationsAtManagementGroup(string managementGroup, string nextLink)
-        {
-            return this.ResourceManagementClient.DeploymentOperations.ListAtManagementGroupScopeNext(nextLink);
         }
 
         private IPage<DeploymentOperation> ListDeploymentOperations(string resourceGroupName, string deploymentName)
         {
-            return !string.IsNullOrEmpty(resourceGroupName)
+            return resourceGroupName != null
                 ? this.ResourceManagementClient.DeploymentOperations.List(resourceGroupName, deploymentName, null)
                 : this.ResourceManagementClient.DeploymentOperations.ListAtSubscriptionScope(deploymentName, null);
         }
 
-        private IPage<DeploymentOperation> ListDeploymentOperations(string subscriptionId, string resourceGroupName, string deploymentName)
-        {
-            return !string.IsNullOrEmpty(resourceGroupName)
-                ? this.GetResourceManagementClient(subscriptionId).DeploymentOperations.List(resourceGroupName, deploymentName, null)
-                : this.GetResourceManagementClient(subscriptionId).DeploymentOperations.ListAtSubscriptionScope(deploymentName, null);
-        }
-
         private IPage<DeploymentOperation> ListNextDeploymentOperations(string resourceGroupName, string nextLink)
         {
-            return !string.IsNullOrEmpty(resourceGroupName)
+            return resourceGroupName != null
                 ? this.ResourceManagementClient.DeploymentOperations.ListNext(nextLink)
                 : this.ResourceManagementClient.DeploymentOperations.ListAtSubscriptionScopeNext(nextLink);
         }
 
-        private bool CheckDeploymentExistenceAtTenantOrManagementGroup(string managementGroupId, string deploymentName)
+        private bool CheckDeploymentExistence(string resourceGroupName, string deploymentName)
         {
-            return !string.IsNullOrEmpty(managementGroupId)
-                ? this.ResourceManagementClient.Deployments.CheckExistenceAtManagementGroupScope(managementGroupId, deploymentName)
-                : this.ResourceManagementClient.Deployments.CheckExistenceAtTenantScope(deploymentName);
+            return resourceGroupName != null
+                ? this.ResourceManagementClient.Deployments.CheckExistence(resourceGroupName, deploymentName)
+                : this.ResourceManagementClient.Deployments.CheckExistenceAtSubscriptionScope(deploymentName);
         }
 
-        private bool CheckDeploymentExistence(string subscriptionId, string resourceGroupName, string deploymentName)
+        private void BeginDeployment(string resourceGroupName, string deploymentName, Deployment deployment)
         {
-            return !string.IsNullOrEmpty(resourceGroupName)
-                ? this.GetResourceManagementClient(subscriptionId).Deployments.CheckExistence(resourceGroupName, deploymentName)
-                : this.GetResourceManagementClient(subscriptionId).Deployments.CheckExistenceAtSubscriptionScope(deploymentName);
-        }
-
-        private void BeginDeployment(PSDeploymentCmdletParameters parameters, Deployment deployment)
-        {
-            switch (parameters.ScopeType)
+            if (resourceGroupName == null)
             {
-                case DeploymentScopeType.Tenant:
-                    ResourceManagementClient.Deployments.BeginCreateOrUpdateAtTenantScope(parameters.DeploymentName, deployment);
-                    break;
-
-                case DeploymentScopeType.ManagementGroup:
-                    ResourceManagementClient.Deployments.BeginCreateOrUpdateAtManagementGroupScope(parameters.ManagementGroupId, parameters.DeploymentName, deployment);
-                    break;
-
-                case DeploymentScopeType.ResourceGroup:
-                    ResourceManagementClient.Deployments.BeginCreateOrUpdate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
-                    break;
-
-                case DeploymentScopeType.Subscription:
-                default:
-                    ResourceManagementClient.Deployments.BeginCreateOrUpdateAtSubscriptionScope(parameters.DeploymentName, deployment);
-                    break;
-            }
-        }
-
-        private void RunDeploymentValidation(PSDeploymentCmdletParameters parameters, Deployment deployment)
-        {
-            var validationResult = this.GetTemplateValidationResult(parameters, deployment);
-
-            if (validationResult.Errors.Count != 0)
-            {
-                foreach (var error in validationResult.Errors)
-                {
-                    WriteError(string.Format(ErrorFormat, error.Code, error.Message));
-                    if (error.Details != null && error.Details.Count > 0)
-                    {
-                        foreach (var innerError in error.Details)
-                        {
-                            DisplayInnerDetailErrorMessage(innerError);
-                        }
-                    }
-                }
-                throw new InvalidOperationException(ProjectResources.FailedDeploymentValidation);
+                this.ResourceManagementClient.Deployments.BeginCreateOrUpdateAtSubscriptionScope(deploymentName, deployment);
             }
             else
             {
-                WriteVerbose(ProjectResources.TemplateValid);
+                this.ResourceManagementClient.Deployments.BeginCreateOrUpdate(resourceGroupName, deploymentName, deployment);
             }
         }
 
-        public string GetDeploymentTemplateAtTenantScope(string deploymentName)
-        {
-            var exportResult = ResourceManagementClient.Deployments.ExportTemplateAtTenantScope(deploymentName);
-
-            return JToken.FromObject(exportResult.Template).ToString();
-        }
-
-        public string GetDeploymentTemplateAtManagementGroup(string managementGroupId, string deploymentName)
-        {
-            var exportResult = ResourceManagementClient.Deployments.ExportTemplateAtManagementGroupScope(managementGroupId, deploymentName);
-
-            return JToken.FromObject(exportResult.Template).ToString();
-        }
-
-        public string GetDeploymentTemplateAtSubscrpitionScope(string deploymentName)
+        public string GetDeploymentTemplate(string deploymentName)
         {
             var exportResult = ResourceManagementClient.Deployments.ExportTemplateAtSubscriptionScope(deploymentName);
-
-            return JToken.FromObject(exportResult.Template).ToString();
-        }
-
-        public string GetDeploymentTemplateAtResourceGroup(string resourceGroupName, string deploymentName)
-        {
-            var exportResult = ResourceManagementClient.Deployments.ExportTemplate(resourceGroupName, deploymentName);
 
             return JToken.FromObject(exportResult.Template).ToString();
         }
@@ -990,224 +769,82 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
-        /// Filters the resource group deployments with provided options
+        /// Filters the deployments at subscription scope.
         /// </summary>
         /// <param name="options">The filtering options</param>
-        public virtual List<PSResourceGroupDeployment> FilterResourceGroupDeployments(FilterDeploymentOptions options)
+        /// <returns>The filtered list of deployments</returns>
+        public virtual List<PSDeployment> FilterDeploymentsAtSubscriptionScope(FilterDeploymentOptions options)
         {
+            List<PSDeployment> deployments = new List<PSDeployment>();
+            string name = options.DeploymentName;
             List<string> excludedProvisioningStates = options.ExcludedProvisioningStates ?? new List<string>();
 
-            var deployments = this
-                .ListDeploymentsAtResourceGroup(options.ResourceGroupName, options.DeploymentName)
-                .Select(deployment => deployment.ToPSResourceGroupDeployment(options.ResourceGroupName))
-                .ToList();
-
-            if (excludedProvisioningStates.Count > 0)
+            if (!string.IsNullOrEmpty(name))
             {
-                return deployments.Where(d => excludedProvisioningStates
-                    .All(s => !s.Equals(d.ProvisioningState, StringComparison.OrdinalIgnoreCase))).ToList();
-            }
-            else
-            {
-                return deployments;
-            }
-        }
-
-        /// <summary>
-        /// Filters deployments with the provided options
-        /// </summary>
-        /// <param name="options">The filtering options</param>
-        public virtual List<PSDeployment> FilterDeployments(FilterDeploymentOptions options)
-        {
-            List<string> excludedProvisioningStates = options.ExcludedProvisioningStates ?? new List<string>();
-
-            var deployments = this.ListDeployments(options);
-
-            if (excludedProvisioningStates.Count > 0)
-            {
-                return deployments.Where(d => excludedProvisioningStates
-                    .All(s => !s.Equals(d.ProvisioningState, StringComparison.OrdinalIgnoreCase))).ToList();
-            }
-            else
-            {
-                return deployments;
-            }
-        }
-
-        /// <summary>
-        /// List deployments with fiter options.
-        /// </summary>
-        /// <param name="options">The filtering options</param>
-        private List<PSDeployment> ListDeployments(FilterDeploymentOptions options)
-        {
-            List<DeploymentExtended> deployments = null;
-
-            switch (options.ScopeType)
-            {
-                case DeploymentScopeType.Tenant:
-                    deployments = this.ListDeploymentsAtTenantScope(options.DeploymentName);
-                    break;
-
-                case DeploymentScopeType.ManagementGroup:
-                    deployments = this.ListDeploymentsAtManagementGroup(options.ManagementGroupId, options.DeploymentName);
-                    break;
-
-                case DeploymentScopeType.ResourceGroup:
-                    deployments = this.ListDeploymentsAtResourceGroup(options.ResourceGroupName, options.DeploymentName);
-                    break;
-
-                case DeploymentScopeType.Subscription:
-                default:
-                    deployments = this.ListDeploymentsAtSubscription(options.DeploymentName);
-                    break;
-            }
-
-            return deployments.Select(deployment => deployment.ToPSDeployment(managementGroupId: options.ManagementGroupId, resourceGroupName: options.ResourceGroupName)).ToList();
-        }
-
-        /// <summary>
-        /// List deployments at tenant scope.
-        /// </summary>
-        /// <param name="deploymentName">The deployment name</param>
-        private List<DeploymentExtended> ListDeploymentsAtTenantScope(string deploymentName)
-        {
-            List<DeploymentExtended> deployments = new List<DeploymentExtended>();
-
-            if (!string.IsNullOrEmpty(deploymentName))
-            {
-                deployments.Add(ResourceManagementClient.Deployments.GetAtTenantScope(deploymentName));
-            }
-            else
-            {
-                var result = ResourceManagementClient.Deployments.ListAtTenantScope();
-
-                deployments.AddRange(result);
-
-                while (!string.IsNullOrEmpty(result.NextPageLink))
-                {
-                    result = ResourceManagementClient.Deployments.ListAtTenantScopeNext(result.NextPageLink);
-                    deployments.AddRange(result);
-                }
-            }
-
-            return deployments;
-        }
-
-        /// <summary>
-        /// List deployments at a management group.
-        /// </summary>
-        /// <param name="managementGroupId">The management group id</param>
-        /// <param name="deploymentName">The deployment name</param>
-        private List<DeploymentExtended> ListDeploymentsAtManagementGroup(string managementGroupId, string deploymentName)
-        {
-            List<DeploymentExtended> deployments = new List<DeploymentExtended>();
-
-            if (!string.IsNullOrEmpty(deploymentName))
-            {
-                deployments.Add(ResourceManagementClient.Deployments.GetAtManagementGroupScope(managementGroupId, deploymentName));
-            }
-            else
-            {
-                var result = ResourceManagementClient.Deployments.ListAtManagementGroupScope(managementGroupId);
-
-                deployments.AddRange(result);
-
-                while (!string.IsNullOrEmpty(result.NextPageLink))
-                {
-                    result = ResourceManagementClient.Deployments.ListAtManagementGroupScopeNext(result.NextPageLink);
-                    deployments.AddRange(result);
-                }
-            }
-
-            return deployments;
-        }
-
-        /// <summary>
-        /// List deployments at subscription scope.
-        /// </summary>
-        /// <param name="deploymentName">The deployment name</param>
-        private List<DeploymentExtended> ListDeploymentsAtSubscription(string deploymentName)
-        {
-            List<DeploymentExtended> deployments = new List<DeploymentExtended>();
-
-            if (!string.IsNullOrEmpty(deploymentName))
-            {
-                deployments.Add(ResourceManagementClient.Deployments.GetAtSubscriptionScope(deploymentName));
+                deployments.Add(ResourceManagementClient.Deployments.GetAtSubscriptionScope(name).ToPSDeployment());
             }
             else
             {
                 var result = ResourceManagementClient.Deployments.ListAtSubscriptionScope();
 
-                deployments.AddRange(result);
+                deployments.AddRange(result.Select(d => d.ToPSDeployment()));
 
                 while (!string.IsNullOrEmpty(result.NextPageLink))
                 {
                     result = ResourceManagementClient.Deployments.ListAtSubscriptionScopeNext(result.NextPageLink);
-                    deployments.AddRange(result);
+                    deployments.AddRange(result.Select(d => d.ToPSDeployment()));
                 }
             }
 
-            return deployments;
-        }
-
-        /// <summary>
-        /// List deployments at a resource group.
-        /// </summary>
-        /// <param name="resourceGroupName">The resource group name</param>
-        /// <param name="deploymentName">The deployment name</param>
-        private List<DeploymentExtended> ListDeploymentsAtResourceGroup(string resourceGroupName, string deploymentName)
-        {
-            List<DeploymentExtended> deployments = new List<DeploymentExtended>();
-
-            if (!string.IsNullOrEmpty(deploymentName))
+            if (excludedProvisioningStates.Count > 0)
             {
-                deployments.Add(ResourceManagementClient.Deployments.Get(resourceGroupName, deploymentName));
+                return deployments.Where(d => excludedProvisioningStates
+                    .All(s => !s.Equals(d.ProvisioningState, StringComparison.OrdinalIgnoreCase))).ToList();
             }
             else
             {
-                var result = ResourceManagementClient.Deployments.ListByResourceGroup(resourceGroupName, null);
+                return deployments;
+            }
+        }
 
-                deployments.AddRange(result);
+        /// <summary>
+        /// Filters the resource group deployments
+        /// </summary>
+        /// <param name="options">The filtering options</param>
+        /// <returns>The filtered list of deployments</returns>
+        public virtual List<PSResourceGroupDeployment> FilterResourceGroupDeployments(FilterDeploymentOptions options)
+        {
+            List<PSResourceGroupDeployment> deployments = new List<PSResourceGroupDeployment>();
+            string resourceGroup = options.ResourceGroupName;
+            string name = options.DeploymentName;
+            List<string> excludedProvisioningStates = options.ExcludedProvisioningStates ?? new List<string>();
+
+            if (!string.IsNullOrEmpty(resourceGroup) && !string.IsNullOrEmpty(name))
+            {
+                deployments.Add(ResourceManagementClient.Deployments.Get(resourceGroup, name).ToPSResourceGroupDeployment(options.ResourceGroupName));
+            }
+            else if (!string.IsNullOrEmpty(resourceGroup))
+            {
+                var result = ResourceManagementClient.Deployments.ListByResourceGroup(resourceGroup, null);
+
+                deployments.AddRange(result.Select(d => d.ToPSResourceGroupDeployment(options.ResourceGroupName)));
 
                 while (!string.IsNullOrEmpty(result.NextPageLink))
                 {
                     result = ResourceManagementClient.Deployments.ListByResourceGroupNext(result.NextPageLink);
-                    deployments.AddRange(result);
+                    deployments.AddRange(result.Select(d => d.ToPSResourceGroupDeployment(options.ResourceGroupName)));
                 }
             }
 
-            return deployments;
-        }
-
-        /// <summary>
-        /// Gets the deployment operations at management group scope.
-        /// </summary>
-        /// <param name="managementGroupId">The management group id</param>
-        /// <param name="deploymentName">The deployment name</param>
-        /// <param name="operationId">The operation Id</param>
-        /// <returns>The deployment operations</returns>
-        public virtual List<PSDeploymentOperation> GetDeploymentOperationsAtManagementGroup(string managementGroupId, string deploymentName, string operationId = null)
-        {
-            List<PSDeploymentOperation> deploymentOperations = new List<PSDeploymentOperation>();
-
-            if (!string.IsNullOrEmpty(operationId))
+            if (excludedProvisioningStates.Count > 0)
             {
-                deploymentOperations.Add(ResourceManagementClient.DeploymentOperations.GetAtManagementGroupScope(managementGroupId, deploymentName, operationId).ToPSDeploymentOperation());
+                return deployments.Where(d => excludedProvisioningStates
+                    .All(s => !s.Equals(d.ProvisioningState, StringComparison.OrdinalIgnoreCase))).ToList();
             }
             else
             {
-                var result = ResourceManagementClient.DeploymentOperations.ListAtManagementGroupScope(managementGroupId, deploymentName);
-
-                deploymentOperations.AddRange(result.Select(d => d.ToPSDeploymentOperation()));
-
-                while (!string.IsNullOrEmpty(result.NextPageLink))
-                {
-                    result = ResourceManagementClient.DeploymentOperations.ListAtManagementGroupScopeNext(result.NextPageLink);
-                    deploymentOperations.AddRange(result.Select(d => d.ToPSDeploymentOperation()));
-                }
+                return deployments;
             }
-
-            return deploymentOperations;
         }
 
         /// <summary>
@@ -1241,177 +878,84 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
-        /// List deployment operations at tenant scope.
-        /// </summary>
-        /// <param name="deploymentName">The deployment name</param>
-        /// <param name="operationId">The operation Id</param>
-        /// <returns>The deployment operations</returns>
-        public virtual List<PSDeploymentOperation> ListDeploymentOperationsAtTenantScope(string deploymentName, string operationId = null)
-        {
-            List<PSDeploymentOperation> deploymentOperations = new List<PSDeploymentOperation>();
-
-            if (!string.IsNullOrEmpty(operationId))
-            {
-                deploymentOperations.Add(ResourceManagementClient.DeploymentOperations.GetAtTenantScope(deploymentName, operationId).ToPSDeploymentOperation());
-            }
-            else
-            {
-                var result = ResourceManagementClient.DeploymentOperations.ListAtTenantScope(deploymentName);
-
-                deploymentOperations.AddRange(result.Select(d => d.ToPSDeploymentOperation()));
-
-                while (!string.IsNullOrEmpty(result.NextPageLink))
-                {
-                    result = ResourceManagementClient.DeploymentOperations.ListAtTenantScopeNext(result.NextPageLink);
-                    deploymentOperations.AddRange(result.Select(d => d.ToPSDeploymentOperation()));
-                }
-            }
-
-            return deploymentOperations;
-        }
-
-        /// <summary>
-        /// List deployment operations at management group.
-        /// </summary>
-        /// <param name="managementGroupId">The management group id</param>
-        /// <param name="deploymentName">The deployment name</param>
-        /// <param name="operationId">The operation Id</param>
-        /// <returns>The deployment operations</returns>
-        public virtual List<PSDeploymentOperation> ListDeploymentOperationsAtManagementGroup(string managementGroupId, string deploymentName, string operationId = null)
-        {
-            List<PSDeploymentOperation> deploymentOperations = new List<PSDeploymentOperation>();
-
-            if (!string.IsNullOrEmpty(operationId))
-            {
-                deploymentOperations.Add(ResourceManagementClient.DeploymentOperations.GetAtManagementGroupScope(managementGroupId, deploymentName, operationId).ToPSDeploymentOperation());
-            }
-            else
-            {
-                var result = ResourceManagementClient.DeploymentOperations.ListAtManagementGroupScope(managementGroupId, deploymentName);
-
-                deploymentOperations.AddRange(result.Select(d => d.ToPSDeploymentOperation()));
-
-                while (!string.IsNullOrEmpty(result.NextPageLink))
-                {
-                    result = ResourceManagementClient.DeploymentOperations.ListAtManagementGroupScopeNext(result.NextPageLink);
-                    deploymentOperations.AddRange(result.Select(d => d.ToPSDeploymentOperation()));
-                }
-            }
-
-            return deploymentOperations;
-        }
-
-        /// <summary>
-        /// List deployment operations at subscription scope.
-        /// </summary>
-        /// <param name="deploymentName">The deployment name</param>
-        /// <param name="operationId">The operation Id</param>
-        /// <returns>The deployment operations</returns>
-        public virtual List<PSDeploymentOperation> ListDeploymentOperationsAtSubscriptionScope(string deploymentName, string operationId = null)
-        {
-            List<PSDeploymentOperation> deploymentOperations = new List<PSDeploymentOperation>();
-
-            if (!string.IsNullOrEmpty(operationId))
-            {
-                deploymentOperations.Add(ResourceManagementClient.DeploymentOperations.GetAtSubscriptionScope(deploymentName, operationId).ToPSDeploymentOperation());
-            }
-            else
-            {
-                var result = ResourceManagementClient.DeploymentOperations.ListAtSubscriptionScope(deploymentName);
-
-                deploymentOperations.AddRange(result.Select(d => d.ToPSDeploymentOperation()));
-
-                while (!string.IsNullOrEmpty(result.NextPageLink))
-                {
-                    result = ResourceManagementClient.DeploymentOperations.ListAtSubscriptionScopeNext(result.NextPageLink);
-                    deploymentOperations.AddRange(result.Select(d => d.ToPSDeploymentOperation()));
-                }
-            }
-
-            return deploymentOperations;
-        }
-
-        /// <summary>
-        /// List deployment operations at resource group.
-        /// </summary>
-        /// <param name="resourceGroupName">The resource group name</param>
-        /// <param name="deploymentName">The deployment name</param>
-        /// <param name="operationId">The operation Id</param>
-        /// <returns>The deployment operations</returns>
-        public virtual List<PSDeploymentOperation> ListDeploymentOperationsAtResourceGroup(string resourceGroupName, string deploymentName, string operationId = null)
-        {
-            List<PSDeploymentOperation> deploymentOperations = new List<PSDeploymentOperation>();
-
-            if (!string.IsNullOrEmpty(operationId))
-            {
-                deploymentOperations.Add(ResourceManagementClient.DeploymentOperations.Get(resourceGroupName, deploymentName, operationId).ToPSDeploymentOperation());
-            }
-            else
-            {
-                var result = ResourceManagementClient.DeploymentOperations.List(resourceGroupName, deploymentName);
-
-                deploymentOperations.AddRange(result.Select(d => d.ToPSDeploymentOperation()));
-
-                while (!string.IsNullOrEmpty(result.NextPageLink))
-                {
-                    result = ResourceManagementClient.DeploymentOperations.ListNext(result.NextPageLink);
-                    deploymentOperations.AddRange(result.Select(d => d.ToPSDeploymentOperation()));
-                }
-            }
-
-            return deploymentOperations;
-        }
-
-        /// <summary>
-        /// Creates new deployment at the specified scope.
+        /// Creates new deployment
         /// </summary>
         /// <param name="parameters">The create deployment parameters</param>
-        public virtual PSDeployment ExecuteDeployment(PSDeploymentCmdletParameters parameters)
-        {
-            var deployment = this.ExecuteDeploymentInternal(parameters);
-
-            return deployment.ToPSDeployment(managementGroupId: parameters.ManagementGroupId, resourceGroupName: parameters.ResourceGroupName);
-        }
-
-        public virtual PSWhatIfOperationResult ExecuteDeploymentWhatIf(PSDeploymentWhatIfCmdletParameters parameters)
-        {
-            IDeploymentsOperations deployments = this.ResourceManagementClient.Deployments;
-            DeploymentWhatIf deploymentWhatIf = parameters.ToDeploymentWhatIf();
-
-            return new PSWhatIfOperationResult(string.IsNullOrEmpty(parameters.ResourceGroupName)
-                ? deployments.WhatIfAtSubscriptionScope(parameters.DeploymentName, deploymentWhatIf)
-                : deployments.WhatIf(parameters.ResourceGroupName, parameters.DeploymentName, deploymentWhatIf));
-        }
-
-        /// <summary>
-        /// Creates new deployment at a resource group.
-        /// </summary>
-        /// <param name="parameters">The create deployment parameters</param>
-        public virtual PSResourceGroupDeployment ExecuteResourceGroupDeployment(PSDeploymentCmdletParameters parameters)
-        {
-            var deployment = this.ExecuteDeploymentInternal(parameters);
-
-            return deployment.ToPSResourceGroupDeployment(resourceGroup: parameters.ResourceGroupName);
-        }
-
-        /// <summary>
-        /// Executes deployment internal
-        /// </summary>
-        /// <param name="parameters">The create deployment parameters</param>
-        private DeploymentExtended ExecuteDeploymentInternal(PSDeploymentCmdletParameters parameters)
+        public virtual PSDeployment ExecuteDeploymentAtSubscriptionScope(PSDeploymentCmdletParameters parameters)
         {
             parameters.DeploymentName = GenerateDeploymentName(parameters);
             Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode, parameters.DeploymentDebugLogLevel);
 
-            this.RunDeploymentValidation(parameters, deployment);
+            TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
 
-            this.BeginDeployment(parameters, deployment);
+            if (validationInfo.Errors.Count != 0)
+            {
+                foreach (var error in validationInfo.Errors)
+                {
+                    WriteError(string.Format(ErrorFormat, error.Code, error.Message));
+                    if (error.Details != null && error.Details.Count > 0)
+                    {
+                        foreach (var innerError in error.Details)
+                        {
+                            DisplayInnerDetailErrorMessage(innerError);
+                        }
+                    }
+                }
+                throw new InvalidOperationException(ProjectResources.FailedDeploymentValidation);
+            }
+            else
+            {
+                WriteVerbose(ProjectResources.TemplateValid);
+            }
+
+            this.BeginDeployment(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
 
             WriteVerbose(string.Format(ProjectResources.CreatedDeployment, parameters.DeploymentName));
-            return ProvisionDeploymentStatus(parameters, deployment);
+            DeploymentExtended result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+
+            return result.ToPSDeployment();
         }
 
-        private void DisplayInnerDetailErrorMessage(ErrorResponse error)
+        /// <summary>
+        /// Creates new deployment
+        /// </summary>
+        /// <param name="parameters">The create deployment parameters</param>
+        public virtual PSResourceGroupDeployment ExecuteDeployment(PSDeploymentCmdletParameters parameters)
+        {
+            parameters.DeploymentName = GenerateDeploymentName(parameters);
+            Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode, parameters.DeploymentDebugLogLevel);
+
+            TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+
+            if (validationInfo.Errors.Count != 0)
+            {
+                foreach (var error in validationInfo.Errors)
+                {
+                    WriteError(string.Format(ErrorFormat, error.Code, error.Message));
+                    if (error.Details != null && error.Details.Count > 0)
+                    {
+                        foreach (var innerError in error.Details)
+                        {
+                            DisplayInnerDetailErrorMessage(innerError);
+                        }
+                    }
+                }
+                throw new InvalidOperationException(ProjectResources.FailedDeploymentValidation);
+            }
+            else
+            {
+                WriteVerbose(ProjectResources.TemplateValid);
+            }
+
+            this.BeginDeployment(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+
+            WriteVerbose(string.Format(ProjectResources.CreatedDeployment, parameters.DeploymentName));
+            DeploymentExtended result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+
+            return result.ToPSResourceGroupDeployment(parameters.ResourceGroupName);
+        }
+
+        private void DisplayInnerDetailErrorMessage(ResourceManagementErrorWithDetails error)
         {
             WriteError(string.Format(ErrorFormat, error.Code, error.Message));
             if (error.Details != null)
@@ -1440,36 +984,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
-        /// Deletes a deployment at tenant scope
-        /// </summary>
-        /// <param name="deploymentName">Deployment name</param>
-        public virtual void DeleteDeploymentAtTenantScope(string deploymentName)
-        {
-            if (!ResourceManagementClient.Deployments.CheckExistenceAtTenantScope(deploymentName))
-            {
-                throw new ArgumentException(string.Format(ProjectResources.DeploymentDoesntExistAtTenantScope, deploymentName));
-            }
-
-            ResourceManagementClient.Deployments.DeleteAtTenantScope(deploymentName);
-        }
-
-        /// <summary>
-        /// Deletes a deployment at management group
-        /// </summary>
-        /// <param name="managementGroupId">The management group id</param>
-        /// <param name="deploymentName">Deployment name</param>
-        public virtual void DeleteDeploymentAtManagementGroup(string managementGroupId, string deploymentName)
-        {
-            if (!ResourceManagementClient.Deployments.CheckExistenceAtManagementGroupScope(managementGroupId, deploymentName))
-            {
-                throw new ArgumentException(string.Format(ProjectResources.DeploymentDoesntExistAtManagementGroupScope, deploymentName, managementGroupId));
-            }
-
-            ResourceManagementClient.Deployments.DeleteAtManagementGroupScope(managementGroupId, deploymentName);
-        }
-
-        /// <summary>
-        /// Deletes a deployment at subscription scope
+        /// Deletes a deployment
         /// </summary>
         /// <param name="deploymentName">Deployment name</param>
         public virtual void DeleteDeploymentAtSubscriptionScope(string deploymentName)
@@ -1483,12 +998,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
-        /// Deletes a deployment at resource group
+        /// Deletes a deployment
         /// </summary>
         /// <param name="resourceGroup">The resource group name</param>
         /// <param name="deploymentName">Deployment name</param>
-        public virtual void DeleteDeploymentAtResourceGroup(string resourceGroup, string deploymentName)
+        public virtual void DeleteDeployment(string resourceGroup, string deploymentName)
         {
+
             if (!ResourceManagementClient.Deployments.CheckExistence(resourceGroup, deploymentName))
             {
                 throw new ArgumentException(string.Format(ProjectResources.DeploymentDoesntExistInResourceGroup, deploymentName, resourceGroup));
@@ -1498,16 +1014,49 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
-        /// Cancels the active deployment in a resource group.
+        /// Cancels the active deployment.
         /// </summary>
-        /// <param name="resourceGroupName">The resource group name</param>
         /// <param name="deploymentName">Deployment name</param>
-        public virtual void CancelResourceGroupDeployment(string resourceGroupName, string deploymentName)
+        public virtual void CancelDeploymentAtSubscriptionScope(string deploymentName)
         {
-            FilterDeploymentOptions options = new FilterDeploymentOptions(DeploymentScopeType.ResourceGroup)
+            if (string.IsNullOrEmpty(deploymentName))
+            {
+                throw new ArgumentException(string.Format(ProjectResources.NoDeploymentToCancel, deploymentName));
+            }
+
+            FilterDeploymentOptions options = new FilterDeploymentOptions
             {
                 DeploymentName = deploymentName,
-                ResourceGroupName = resourceGroupName
+                ExcludedProvisioningStates = new List<string>
+                {
+                    ProvisioningState.Failed.ToString(),
+                    ProvisioningState.Succeeded.ToString()
+                }
+            };
+
+            List<PSDeployment> deployments = this.FilterDeploymentsAtSubscriptionScope(options);
+
+            if (deployments.Count == 0)
+            {
+                throw new ArgumentException(string.Format(ProjectResources.NoRunningDeploymentsAtSubscriptionScope, deploymentName));
+            }
+            else
+            {
+                ResourceManagementClient.Deployments.CancelAtSubscriptionScope(deployments.First().DeploymentName);
+            }
+        }
+
+        /// <summary>
+        /// Cancels the active deployment.
+        /// </summary>
+        /// <param name="resourceGroup">The resource group name</param>
+        /// <param name="deploymentName">Deployment name</param>
+        public virtual void CancelDeployment(string resourceGroup, string deploymentName)
+        {
+            FilterDeploymentOptions options = new FilterDeploymentOptions
+            {
+                DeploymentName = deploymentName,
+                ResourceGroupName = resourceGroup
             };
 
             if (string.IsNullOrEmpty(deploymentName))
@@ -1529,126 +1078,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
                 else
                 {
-                    throw new ArgumentException(string.Format(ProjectResources.NoRunningDeployments, resourceGroupName));
+                    throw new ArgumentException(string.Format(ProjectResources.NoRunningDeployments, resourceGroup));
                 }
             }
             else if (deployments.Count == 1)
             {
-                ResourceManagementClient.Deployments.Cancel(resourceGroupName, deployments.First().DeploymentName);
+                ResourceManagementClient.Deployments.Cancel(resourceGroup, deployments.First().DeploymentName);
             }
             else
             {
                 throw new ArgumentException(ProjectResources.MultipleRunningDeployment);
-            }
-        }
-
-        /// <summary>
-        /// Cancels the active deployment.
-        /// </summary>
-        /// <param name="options">The deployment filter options</param>
-        public void CancelDeployment(FilterDeploymentOptions options)
-        {
-            if (string.IsNullOrEmpty(options.DeploymentName))
-            {
-                throw new ArgumentException(string.Format(ProjectResources.NoDeploymentToCancel, options.DeploymentName));
-            }
-
-            options.ExcludedProvisioningStates = new List<string>
-            {
-                ProvisioningState.Failed.ToString(),
-                ProvisioningState.Succeeded.ToString()
-            };
-
-            List<PSDeployment> deployments = this.FilterDeployments(options);
-
-            switch (options.ScopeType)
-            {
-                case DeploymentScopeType.Tenant:
-                    this.CancelDeploymentAtTenantScope(deployments, options.DeploymentName);
-                    break;
-
-                case DeploymentScopeType.ManagementGroup:
-                    this.CancelDeploymentAtManagementGroup(deployments, options.ManagementGroupId, options.DeploymentName);
-                    break;
-
-                case DeploymentScopeType.ResourceGroup:
-                    this.CancelDeploymentAtResourceGroup(deployments, options.ResourceGroupName, options.DeploymentName);
-                    break;
-
-                case DeploymentScopeType.Subscription:
-                default:
-                    this.CancelDeploymentAtSubscriptionScope(deployments, options.DeploymentName);
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// Cancels the active deployment at tenant scope.
-        /// </summary>
-        /// <param name="deployments">Deployments</param>
-        /// <param name="deploymentName">Deployment name</param>
-        private void CancelDeploymentAtTenantScope(List<PSDeployment> deployments, string deploymentName)
-        {
-            if (deployments.Count == 0)
-            {
-                throw new ArgumentException(string.Format(ProjectResources.NoRunningDeploymentsAtTenantScope, deploymentName));
-            }
-            else
-            {
-                ResourceManagementClient.Deployments.CancelAtTenantScope(deployments.First().DeploymentName);
-            }
-        }
-
-        /// <summary>
-        /// Cancels the active deployment at management group.
-        /// </summary>
-        /// <param name="deployments">Deployments</param>
-        /// <param name="managementGroupId">Management group id</param>
-        /// <param name="deploymentName">Deployment name</param>
-        private void CancelDeploymentAtManagementGroup(List<PSDeployment> deployments, string managementGroupId, string deploymentName)
-        {
-            if (deployments.Count == 0)
-            {
-                throw new ArgumentException(string.Format(ProjectResources.NoRunningDeploymentsAtManagementGroup, deploymentName, managementGroupId));
-            }
-            else
-            {
-                ResourceManagementClient.Deployments.CancelAtManagementGroupScope(managementGroupId, deployments.First().DeploymentName);
-            }
-        }
-
-        /// <summary>
-        /// Cancels the active deployment at subscription scope.
-        /// </summary>
-        /// <param name="deployments">Deployments</param>
-        /// <param name="deploymentName">Deployment name</param>
-        private void CancelDeploymentAtSubscriptionScope(List<PSDeployment> deployments, string deploymentName)
-        {
-            if (deployments.Count == 0)
-            {
-                throw new ArgumentException(string.Format(ProjectResources.NoRunningDeploymentsAtSubscriptionScope, deploymentName));
-            }
-            else
-            {
-                ResourceManagementClient.Deployments.CancelAtSubscriptionScope(deployments.First().DeploymentName);
-            }
-        }
-
-        /// <summary>
-        /// Cancels the active deployment at a resource group.
-        /// </summary>
-        /// <param name="deployments">Deployments</param>
-        /// <param name="resourceGroupName">Resource group name</param>
-        /// <param name="deploymentName">Deployment name</param>
-        private void CancelDeploymentAtResourceGroup(List<PSDeployment> deployments, string resourceGroupName, string deploymentName)
-        {
-            if (deployments.Count == 0)
-            {
-                throw new ArgumentException(string.Format(ProjectResources.NoRunningDeploymentsAtResourceGroup, deploymentName, resourceGroupName));
-            }
-            else
-            {
-                ResourceManagementClient.Deployments.Cancel(resourceGroupName, deployments.First().DeploymentName);
             }
         }
 
@@ -1658,12 +1097,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <param name="parameters">The deployment create options</param>
         /// <param name="deploymentMode">The deployment mode</param>
         /// <returns>The validation errors if there's any, or empty list otherwise.</returns>
-        public virtual List<PSResourceManagerError> ValidateDeployment(PSDeploymentCmdletParameters parameters)
+        public virtual List<PSResourceManagerError> ValidateDeployment(PSDeploymentCmdletParameters parameters, DeploymentMode deploymentMode)
         {
-            Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode, null);
+            Deployment deployment = CreateBasicDeployment(parameters, deploymentMode, null);
             var deploymentName = GenerateDeploymentName(parameters);
-
-            var validationInfo = this.GetTemplateValidationResult(parameters, deployment);
+            TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, deploymentName, deployment);
 
             if (validationInfo.Errors.Count == 0)
             {

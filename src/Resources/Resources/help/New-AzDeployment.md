@@ -12,180 +12,106 @@ Create a deployment
 
 ## SYNTAX
 
-### SubscriptionAndTenantWithTemplateFileWithAndNoParameters (Default)
+### ByTemplateFileWithNoParameters (Default)
 ```
-New-AzDeployment [-Name <String>] -ScopeType <DeploymentScopeType> -Location <String> [-Mode <DeploymentMode>]
- [-DeploymentDebugLogLevel <String>] [-RollbackToLastDeployment] [-RollBackDeploymentName <String>] [-AsJob]
+New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-AsJob]
  -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SubscriptionAndTenantWithTemplateObjectAndParameterObject
+### ByTemplateObjectAndParameterObject
 ```
-New-AzDeployment [-Name <String>] -ScopeType <DeploymentScopeType> -Location <String> [-Mode <DeploymentMode>]
- [-DeploymentDebugLogLevel <String>] [-RollbackToLastDeployment] [-RollBackDeploymentName <String>] [-AsJob]
+New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-AsJob]
  -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### SubscriptionAndTenantWithTemplateObjectAndParameterFile
+### ByTemplateFileAndParameterObject
 ```
-New-AzDeployment [-Name <String>] -ScopeType <DeploymentScopeType> -Location <String> [-Mode <DeploymentMode>]
- [-DeploymentDebugLogLevel <String>] [-RollbackToLastDeployment] [-RollBackDeploymentName <String>] [-AsJob]
- -TemplateParameterFile <String> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### SubscriptionAndTenantWithTemplateFileAndParameterObject
-```
-New-AzDeployment [-Name <String>] -ScopeType <DeploymentScopeType> -Location <String> [-Mode <DeploymentMode>]
- [-DeploymentDebugLogLevel <String>] [-RollbackToLastDeployment] [-RollBackDeploymentName <String>] [-AsJob]
+New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-AsJob]
  -TemplateParameterObject <Hashtable> -TemplateFile <String> [-SkipTemplateParameterPrompt]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### SubscriptionAndTenantWithTemplateFileAndParameterFile
+### ByTemplateUriAndParameterObject
 ```
-New-AzDeployment [-Name <String>] -ScopeType <DeploymentScopeType> -Location <String> [-Mode <DeploymentMode>]
- [-DeploymentDebugLogLevel <String>] [-RollbackToLastDeployment] [-RollBackDeploymentName <String>] [-AsJob]
+New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-AsJob]
+ -TemplateParameterObject <Hashtable> -TemplateUri <String> [-SkipTemplateParameterPrompt]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByTemplateObjectAndParameterFile
+```
+New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-AsJob]
+ -TemplateParameterFile <String> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByTemplateFileAndParameterFile
+```
+New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-AsJob]
  -TemplateParameterFile <String> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
  [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SubscriptionAndTenantWithTemplateObjectAndNoParameters
+### ByTemplateUriAndParameterFile
 ```
-New-AzDeployment [-Name <String>] -ScopeType <DeploymentScopeType> -Location <String> [-Mode <DeploymentMode>]
- [-DeploymentDebugLogLevel <String>] [-RollbackToLastDeployment] [-RollBackDeploymentName <String>] [-AsJob]
- -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ManagementGroupWithTemplateObjectAndParameterObject
-```
-New-AzDeployment [-Name <String>] -ScopeType <DeploymentScopeType> -Location <String>
- -ManagementGroupId <String> [-Mode <DeploymentMode>] [-DeploymentDebugLogLevel <String>]
- [-RollbackToLastDeployment] [-RollBackDeploymentName <String>] [-AsJob] -TemplateParameterObject <Hashtable>
- -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-AsJob]
+ -TemplateParameterFile <String> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ManagementGroupWithTemplateObjectAndParameterFile
+### ByTemplateObjectAndParameterUri
 ```
-New-AzDeployment [-Name <String>] -ScopeType <DeploymentScopeType> -Location <String>
- -ManagementGroupId <String> [-Mode <DeploymentMode>] [-DeploymentDebugLogLevel <String>]
- [-RollbackToLastDeployment] [-RollBackDeploymentName <String>] [-AsJob] -TemplateParameterFile <String>
- -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ManagementGroupWithTemplateFileAndParameterObject
-```
-New-AzDeployment [-Name <String>] -ScopeType <DeploymentScopeType> -Location <String>
- -ManagementGroupId <String> [-Mode <DeploymentMode>] [-DeploymentDebugLogLevel <String>]
- [-RollbackToLastDeployment] [-RollBackDeploymentName <String>] [-AsJob] -TemplateParameterObject <Hashtable>
- -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ManagementGroupWithTemplateFileAndParameterFile
-```
-New-AzDeployment [-Name <String>] -ScopeType <DeploymentScopeType> -Location <String>
- -ManagementGroupId <String> [-Mode <DeploymentMode>] [-DeploymentDebugLogLevel <String>]
- [-RollbackToLastDeployment] [-RollBackDeploymentName <String>] [-AsJob] -TemplateParameterFile <String>
- -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ManagementGroupWithTemplateObjectAndNoParameters
-```
-New-AzDeployment [-Name <String>] -ScopeType <DeploymentScopeType> -Location <String>
- -ManagementGroupId <String> [-Mode <DeploymentMode>] [-DeploymentDebugLogLevel <String>]
- [-RollbackToLastDeployment] [-RollBackDeploymentName <String>] [-AsJob] -TemplateObject <Hashtable>
- [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ManagementGroupWithTemplateFileWithAndNoParameters
-```
-New-AzDeployment [-Name <String>] -ScopeType <DeploymentScopeType> -Location <String>
- -ManagementGroupId <String> [-Mode <DeploymentMode>] [-DeploymentDebugLogLevel <String>]
- [-RollbackToLastDeployment] [-RollBackDeploymentName <String>] [-AsJob] -TemplateFile <String>
- [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceGroupWithTemplateObjectAndParameterObject
-```
-New-AzDeployment [-Name <String>] -ScopeType <DeploymentScopeType> -ResourceGroupName <String>
- [-Mode <DeploymentMode>] [-DeploymentDebugLogLevel <String>] [-RollbackToLastDeployment]
- [-RollBackDeploymentName <String>] [-AsJob] -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable>
- [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceGroupWithTemplateObjectAndParameterFile
-```
-New-AzDeployment [-Name <String>] -ScopeType <DeploymentScopeType> -ResourceGroupName <String>
- [-Mode <DeploymentMode>] [-DeploymentDebugLogLevel <String>] [-RollbackToLastDeployment]
- [-RollBackDeploymentName <String>] [-AsJob] -TemplateParameterFile <String> -TemplateObject <Hashtable>
- [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceGroupWithTemplateFileAndParameterObject
-```
-New-AzDeployment [-Name <String>] -ScopeType <DeploymentScopeType> -ResourceGroupName <String>
- [-Mode <DeploymentMode>] [-DeploymentDebugLogLevel <String>] [-RollbackToLastDeployment]
- [-RollBackDeploymentName <String>] [-AsJob] -TemplateParameterObject <Hashtable> -TemplateFile <String>
- [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceGroupWithTemplateFileAndParameterFile
-```
-New-AzDeployment [-Name <String>] -ScopeType <DeploymentScopeType> -ResourceGroupName <String>
- [-Mode <DeploymentMode>] [-DeploymentDebugLogLevel <String>] [-RollbackToLastDeployment]
- [-RollBackDeploymentName <String>] [-AsJob] -TemplateParameterFile <String> -TemplateFile <String>
- [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceGroupWithTemplateObjectAndNoParameters
-```
-New-AzDeployment [-Name <String>] -ScopeType <DeploymentScopeType> -ResourceGroupName <String>
- [-Mode <DeploymentMode>] [-DeploymentDebugLogLevel <String>] [-RollbackToLastDeployment]
- [-RollBackDeploymentName <String>] [-AsJob] -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
+New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-AsJob]
+ -TemplateParameterUri <String> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### ResourceGroupWithTemplateFileWithAndNoParameters
+### ByTemplateFileAndParameterUri
 ```
-New-AzDeployment [-Name <String>] -ScopeType <DeploymentScopeType> -ResourceGroupName <String>
- [-Mode <DeploymentMode>] [-DeploymentDebugLogLevel <String>] [-RollbackToLastDeployment]
- [-RollBackDeploymentName <String>] [-AsJob] -TemplateFile <String> [-SkipTemplateParameterPrompt]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-AsJob]
+ -TemplateParameterUri <String> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByTemplateUriAndParameterUri
+```
+New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-AsJob]
+ -TemplateParameterUri <String> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByTemplateObjectWithNoParameters
+```
+New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-AsJob]
+ -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByTemplateUriWithNoParameters
+```
+New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-AsJob]
+ -TemplateUri <String> [-SkipTemplateParameterPrompt] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzDeployment** cmdlet creates a template deployment at the specified scope. The supported scopes are: resource group, subscription, management group and tenant. 
-
-A template contains resources that can be deployed to Azure.
+The **New-AzDeployment** cmdlet adds a deployment at the current subscription scope.
+This includes the resources that the deployment requires.
 
 An Azure resource is a user-managed Azure entity. A resource can live in a resource group, like database server, database, website, virtual machine, or Storage account.
-A resource can be a subscription level resource, like role definition, policy definition, resource group, etc.
-A resource can also be at management group scope, like role assignment, policy assignment, etc.
-Or, a resource can be a tenant level resource, like management group, role assignment, etc.
+Or, it can be a subscription level resource, like role definition, policy definition, etc.
 
-To create a deployment at a resource group, specify *ResourceGroup* for *ScopeType*, and a *ResourceGroupName* parameter. 
-To create a deployment at the current subscription scope, specify *Subscription* for *ScopeType*, and a *Location* parameter.
-To create a deployment at a management group, specify *ManagementGroup* for *ScopeType*, and specify the *ManagementGroupId* and *Location* parameter.
-To create a deployment at the tenant scope, specify *Tenant* for *ScopeType* and a *Location* parameter.
+To add resources to a resource group, use the **New-AzResourceGroupDeployment** which creates a deployment at a resource group.
+The **New-AzDeployment** cmdlet creates a deployment at the current subscription scope, which deploys subscription level resources.
 
+To add a deployment at subscription, specify the location and a template.
 The location tells Azure Resource Manager where to store the deployment data. The template is a JSON string that contains individual resources to be deployed.
 The template includes parameter placeholders for required resources and configurable property values, such as names and sizes.
 
@@ -198,52 +124,26 @@ Template parameter values that you enter at the command prompt take precedence o
 
 ## EXAMPLES
 
-### Example 1: Create a deployment at subscription scope with a custom template and parameter file
+### Example 1: Use a custom template and parameter file to create a deployment
 ```
-PS C:\> New-AzDeployment -ScopeType "Subscription" -DeploymentName "deploy-01" -Location "West US" -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json"
+PS C:\> New-AzDeployment -Location "West US" -TemplateFile "D:\Azure\Templates\EngineeringSite.json" -TemplateParameterFile "D:\Azure\Templates\EngSiteParms.json" -TemplateVersion "2.1"
 ```
 
 This command creates a new deployment at the current subscription scope by using a custom template and a template file on disk.
-The command uses the *Location* parameter to specify where to store the deployment data.
 The command uses the *TemplateFile* parameter to specify the template and the *TemplateParameterFile* parameter to specify a file that contains parameters and parameter values.
+It uses the *TemplateVersion* parameter to specify the version of the template.
 
-### Example 2: Create a deployment at a resource group with a custom template and parameter file
+### Example 2: Use a custom template object and parameter file to create a deployment
 ```
-PS C:\> New-AzDeployment -ScopeType "ResourceGroup" -DeploymentName "deploy-01" -ResourceGroupName "servicerg" -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json"
-```
-
-This command creates a new deployment at a resource group by using a custom template and a template file on disk.
-This command uses the *ResourceGroupName* parameter to specify the resource group to deploy to. 
-The command uses the *TemplateFile* parameter to specify the template and the *TemplateParameterFile* parameter to specify a file that contains parameters and parameter values.
-
-### Example 3: Create a deployment at a management group with a custom template and parameter file
-```
-PS C:\> New-AzDeployment -ScopeType "ManagementGroup" -DeploymentName "deploy-01" -ManagementGroupId "mg01" -Location "West US" -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json"
-```
-
-This command creates a new deployment at a management group by using a custom template and a template file on disk.
-This command uses the *ManagementGroupId* parameter to specify the management group to deploy to. It uses *Location* parameter to specify where to store the deployment data.
-The command uses the *TemplateFile* parameter to specify the template and the *TemplateParameterFile* parameter to specify a file that contains parameters and parameter values.
-
-### Example 4: Create a deployment at tenant scope with a custom template and parameter file
-```
-PS C:\> New-AzDeployment -ScopeType "Tenant" -DeploymentName "deploy-01" -Tenant -Location "West US" -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json"
-```
-
-This command creates a new deployment at tenant scope by using a custom template and a template file on disk.
-This command uses the *Tenant* parameter to incidcate it's a tenant level deployment. It uses *Location* parameter to specify where to store the deployment data.
-The command uses the *TemplateFile* parameter to specify the template and the *TemplateParameterFile* parameter to specify a file that contains parameters and parameter values.
-
-### Example 5: Use a custom template object and parameter file to create a deployment
-```
-PS C:\> $TemplateFileText = [System.IO.File]::ReadAllText("D:\Azure\Templates\ServiceTemplate.json")
+PS C:\> $TemplateFileText = [System.IO.File]::ReadAllText("D:\Azure\Templates\EngineeringSite.json")
 PS C:\> $TemplateObject = ConvertFrom-Json $TemplateFileText -AsHashtable
-PS C:\> New-AzDeployment -ScopeType "Subscription" -Location "West US" -TemplateObject $TemplateObject -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json"
+PS C:\> New-AzDeployment -Location "West US" -TemplateObject $TemplateObject -TemplateParameterFile "D:\Azure\Templates\EngSiteParams.json" -TemplateVersion "2.1"
 ```
 
-This command creates a new deployment at the current subscription scope by using a template file on disk that has been converted to an in-memory hashtable.
+This command creates a new deployment at the current subscription scope by using a custom template and a template file on disk that has been converted to an in-memory hashtable.
 The first two commands read the text for the template file on disk and convert it to an in-memory hashtable.
 The last command uses the *TemplateObject* parameter to specify this hashtable and the *TemplateParameterFile* parameter to specify a file that contains parameters and parameter values.
+It uses the *TemplateVersion* parameter to specify the version of the template.
 
 ## PARAMETERS
 
@@ -304,7 +204,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -313,43 +213,13 @@ The location to store deployment data.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionAndTenantWithTemplateFileWithAndNoParameters, SubscriptionAndTenantWithTemplateObjectAndParameterObject, SubscriptionAndTenantWithTemplateObjectAndParameterFile, SubscriptionAndTenantWithTemplateFileAndParameterObject, SubscriptionAndTenantWithTemplateFileAndParameterFile, SubscriptionAndTenantWithTemplateObjectAndNoParameters, ManagementGroupWithTemplateObjectAndParameterObject, ManagementGroupWithTemplateObjectAndParameterFile, ManagementGroupWithTemplateFileAndParameterObject, ManagementGroupWithTemplateFileAndParameterFile, ManagementGroupWithTemplateObjectAndNoParameters, ManagementGroupWithTemplateFileWithAndNoParameters
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ManagementGroupId
-Specifies the management group ID to deploy to.
-
-```yaml
-Type: System.String
-Parameter Sets: ManagementGroupWithTemplateObjectAndParameterObject, ManagementGroupWithTemplateObjectAndParameterFile, ManagementGroupWithTemplateFileAndParameterObject, ManagementGroupWithTemplateFileAndParameterFile, ManagementGroupWithTemplateObjectAndNoParameters, ManagementGroupWithTemplateFileWithAndNoParameters
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Mode
-The deployment mode.
-
-```yaml
-Type: Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -385,70 +255,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Specifies the resource group name to deploy to.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceGroupWithTemplateObjectAndParameterObject, ResourceGroupWithTemplateObjectAndParameterFile, ResourceGroupWithTemplateFileAndParameterObject, ResourceGroupWithTemplateFileAndParameterFile, ResourceGroupWithTemplateObjectAndNoParameters, ResourceGroupWithTemplateFileWithAndNoParameters
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RollBackDeploymentName
-Rollback to the successful deployment with the given name in the resource group, should not be used if -RollbackToLastDeployment is used.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RollbackToLastDeployment
-Rollback to the last successful deployment in the resource group, should not be present if -RollBackDeploymentName is used.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScopeType
-The scope type of the deployment.
-- Subscription: Creates deployment at subscription scope. 
-- ResourceGroup: Creates deployment in a resource group.
-- ManagementGroup: Creates deployment at management group scope.
-- Tenant: Creates deployment at tenant scope.
-
-```yaml
-Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments.DeploymentScopeType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: Subscription
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SkipTemplateParameterPrompt
 Skips the PowerShell dynamic parameter processing that checks if the provided template parameter contains all necessary parameters used by the template. This check would prompt the user to provide a value for the missing parameters, but providing the -SkipTemplateParameterPrompt will ignore this prompt and error out immediately if a parameter was found not to be bound in the template. For non-interactive scripts, -SkipTemplateParameterPrompt can be provided to provide a better error message in the case where not all required parameters are satisfied.
 
@@ -465,12 +271,12 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateFile
-A Uri or local path to the template file.
+Local path to the template file.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionAndTenantWithTemplateFileWithAndNoParameters, SubscriptionAndTenantWithTemplateFileAndParameterObject, SubscriptionAndTenantWithTemplateFileAndParameterFile, ManagementGroupWithTemplateFileAndParameterObject, ManagementGroupWithTemplateFileAndParameterFile, ManagementGroupWithTemplateFileWithAndNoParameters, ResourceGroupWithTemplateFileAndParameterObject, ResourceGroupWithTemplateFileAndParameterFile, ResourceGroupWithTemplateFileWithAndNoParameters
-Aliases: TemplateUri
+Parameter Sets: ByTemplateFileWithNoParameters, ByTemplateFileAndParameterObject, ByTemplateFileAndParameterFile, ByTemplateFileAndParameterUri
+Aliases:
 
 Required: True
 Position: Named
@@ -484,7 +290,7 @@ A hash table which represents the template.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: SubscriptionAndTenantWithTemplateObjectAndParameterObject, SubscriptionAndTenantWithTemplateObjectAndParameterFile, SubscriptionAndTenantWithTemplateObjectAndNoParameters, ManagementGroupWithTemplateObjectAndParameterObject, ManagementGroupWithTemplateObjectAndParameterFile, ManagementGroupWithTemplateObjectAndNoParameters, ResourceGroupWithTemplateObjectAndParameterObject, ResourceGroupWithTemplateObjectAndParameterFile, ResourceGroupWithTemplateObjectAndNoParameters
+Parameter Sets: ByTemplateObjectAndParameterObject, ByTemplateObjectAndParameterFile, ByTemplateObjectAndParameterUri, ByTemplateObjectWithNoParameters
 Aliases:
 
 Required: True
@@ -495,12 +301,12 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateParameterFile
-A Uri or local path to the template parameters file.
+A file that has the template parameters.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionAndTenantWithTemplateObjectAndParameterFile, SubscriptionAndTenantWithTemplateFileAndParameterFile, ManagementGroupWithTemplateObjectAndParameterFile, ManagementGroupWithTemplateFileAndParameterFile, ResourceGroupWithTemplateObjectAndParameterFile, ResourceGroupWithTemplateFileAndParameterFile
-Aliases: TemplateParameterUri
+Parameter Sets: ByTemplateObjectAndParameterFile, ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile
+Aliases:
 
 Required: True
 Position: Named
@@ -514,7 +320,37 @@ A hash table which represents the parameters.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: SubscriptionAndTenantWithTemplateObjectAndParameterObject, SubscriptionAndTenantWithTemplateFileAndParameterObject, ManagementGroupWithTemplateObjectAndParameterObject, ManagementGroupWithTemplateFileAndParameterObject, ResourceGroupWithTemplateObjectAndParameterObject, ResourceGroupWithTemplateFileAndParameterObject
+Parameter Sets: ByTemplateObjectAndParameterObject, ByTemplateFileAndParameterObject, ByTemplateUriAndParameterObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TemplateParameterUri
+Uri to the template parameter file.
+
+```yaml
+Type: System.String
+Parameter Sets: ByTemplateObjectAndParameterUri, ByTemplateFileAndParameterUri, ByTemplateUriAndParameterUri
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TemplateUri
+Uri to the template file.
+
+```yaml
+Type: System.String
+Parameter Sets: ByTemplateUriAndParameterObject, ByTemplateUriAndParameterFile, ByTemplateUriAndParameterUri, ByTemplateUriWithNoParameters
 Aliases:
 
 Required: True

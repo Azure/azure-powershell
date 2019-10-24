@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             ConfirmAction(
                 ProjectResources.CancelDeploymentMessage,
                 ResourceGroupName,
-                () => ResourceManagerSdkClient.CancelResourceGroupDeployment(ResourceGroupName, Name));
+                () => ResourceManagerSdkClient.CancelDeployment(ResourceGroupName, Name));
 
             WriteObject(true);
 

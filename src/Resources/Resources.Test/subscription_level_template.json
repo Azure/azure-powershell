@@ -4,16 +4,12 @@
   "parameters": {
     "storageAccountName": {
       "type": "string",
-      "defaultValue": "armbuilddemo1813"
+      "defaultValue": "armbuilddemo1811"
     },
     "nestedDeploymentRG": {
       "type": "string",
       "defaultValue": "demo-rg"
-    },
-    "policyLocation": {
-      "type": "string",
-      "defaultValue": "northeurope"
-    } 
+    }
   },
   "variables": {},
   "resources": [
@@ -27,7 +23,7 @@
         "policyRule": {
           "if": {
             "field": "location",
-            "equals": "[parameters('policyLocation')]"
+            "equals": "northeurope"
           },
           "then": {
             "effect": "deny"
@@ -48,19 +44,10 @@
       }
     },
     {
-      "type": "Microsoft.Resources/resourceGroups",
-      "name": "[parameters('nestedDeploymentRG')]",
-      "apiVersion": "2018-05-01",
-      "location": "west us",
-      "properties": {
-      }
-    },
-    {
       "type": "Microsoft.Resources/deployments",
       "name": "rg-nested",
       "apiVersion": "2017-05-10",
       "resourceGroup": "[parameters('nestedDeploymentRG')]",
-      "dependsOn": [ "[parameters('nestedDeploymentRG')]" ],
       "properties": {
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
