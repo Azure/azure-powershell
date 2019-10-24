@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.ManagedNetwork.Models;
 
 namespace Microsoft.Azure.Commands.ManagedNetwork
 {
-    [Cmdlet("New", "AzManagedNetworkScope", SupportsShouldProcess = true), OutputType(typeof(PSScope))]
+    [Cmdlet("New", "AzManagedNetworkScope", SupportsShouldProcess = false)]
     [OutputType(typeof(PSScope))]
     public class NewAzManagedNetworkScope : AzureManagedNetworkCmdletBase
     {
@@ -35,12 +35,6 @@ namespace Microsoft.Azure.Commands.ManagedNetwork
 
         [Parameter(Mandatory = false, HelpMessage = "Azure ManagedNetwork Scope subnet ids.")]
         public string[] SubnetIdList { get; set; }
-
-        /// <summary>
-        ///     The AsJob parameter to run in the background.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = HelpMessage.AsJobHelp)]
-        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {

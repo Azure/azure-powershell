@@ -71,7 +71,7 @@ Update-AzManagedNetworkGroup -ResourceId $resourceId -VirtualNetworkIdList $Virt
 Update-AzManagedNetworkGroup -InputObject $managedNetworkgroup -VirtualNetworkIdList $VirtualNetworkIdList
 ```
 
-### 3: Updates a managed network group by managednetwork object
+### 4: Updates a managed network group by managednetwork object
 ```
 Update-AzManagedNetworkGroup -ManagedNetwork $managedNetwork -Name TestGroup -VirtualNetworkIdList $VirtualNetworkIdList
 ```
@@ -164,7 +164,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 Azure ManagedNetwork management group ids.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -247,7 +247,7 @@ Accept wildcard characters: False
 Azure ManagedNetwork subnet ids.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -262,7 +262,7 @@ Accept wildcard characters: False
 Azure ManagedNetwork subscription ids.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -277,7 +277,7 @@ Accept wildcard characters: False
 Azure ManagedNetwork virtual network ids.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -326,7 +326,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### String[]
+### System.String[]
 
 ### Microsoft.Azure.Commands.Network.Models.PSManagedNetwork
 

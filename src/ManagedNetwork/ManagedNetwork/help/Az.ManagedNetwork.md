@@ -2,7 +2,7 @@
 Module Name: Az.ManagedNetwork
 Module Guid: 00000000-0000-0000-0000-000000000000
 Download Help Link: {{ Update Download Link }}
-Help Version: 1.0.0.0
+Help Version: 0.1.0.0
 Locale: en-US
 ---
 

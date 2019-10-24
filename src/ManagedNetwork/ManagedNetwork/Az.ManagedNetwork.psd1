@@ -81,7 +81,7 @@ CmdletsToExport = 'Get-AzManagedNetwork',
 				  'New-AzManagedNetworkPeeringPolicy',
                   'Get-AzManagedNetworkPeeringPolicy',
                   'Remove-AzManagedNetworkPeeringPolicy',
-                  'Update-AzManagedNetworkPeeringPolicy'
+				  'Update-AzManagedNetworkPeeringPolicy'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -119,7 +119,7 @@ PrivateData = @{
         ReleaseNotes = '* Added new Powershell cmdlets for ManagedNetwork'
 
         # Prerelease string of this module
-        # Prerelease = 'preview'
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
