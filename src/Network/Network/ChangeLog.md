@@ -44,6 +44,13 @@
         - New-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
         - Set-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
 * Fix required subnet with name AzureBastionSubnet in `PSBastion` can be case insensitive
+* Support for Destination FQDNs in Network Rules and Translated FQDN in NAT Rules for Azure Firewall
+* Add support for top level resource RouteTables of IpGroup
+    - New cmdlets added:
+        - New-AzIpGroup
+        - Remove-AzIpGroup
+        - Get-AzIpGroup
+        - Set-AzIpGroup
 
 ## Version 1.15.0
 * Add new cmdlet Get-AzAvailableServiceAlias which can be called to get the aliases that can be used for Service Endpoint Policies.
