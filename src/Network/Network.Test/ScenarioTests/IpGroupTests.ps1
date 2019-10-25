@@ -43,22 +43,14 @@ function Test-IpGroupsCRUD
     
       # Create IpGroup
 	  $actualIpGroup = New-AzIpGroup -ResourceGroupName $rgname -location $location -Name $IpGroupsName -IpAddress 10.0.0.0/24,11.9.0.0/24
-	  $expectedIpGroup = Get-AzIpGroup -ResourceGroupName $rgname -Name $IpGroupsName
+
+      $expectedIpGroup = Get-AzIpGroup -ResourceGroupName $rgname -Name $IpGroupsName
+    
 	  Assert-AreEqual $expectedIpGroup.ResourceGroupName $actualIpGroup.ResourceGroupName	
       Assert-AreEqual $expectedIpGroup.Name $actualIpGroup.Name
-
-	  # List IpGroups
-	  $ipGroup = Get-AzIpGroup -ResourceId $actualIpGroup.Id
-      Assert-AreEqual $ipGroup.ResourceGroupName $actualIpGroup.ResourceGroupName	
-      Assert-AreEqual $ipGroup.Name $actualIpGroup.Name	
-      Assert-AreEqual $ipGroup.Location $actualIpGroup.Location
-
 	  # Delete IpGroup
 	  $deleteIpGroup = Remove-AzIpGroup -ResourceGroupName $rgname -Name $IpGroupsName -PassThru -Force
       Assert-AreEqual true $deleteIpGroup
-
-	  $ipGroup = Get-AzIpGroup -ResourceGroupName $rgname -Name $IpGroupsName
-      Assert-NULL $ipGroup
 
     }
     finally
