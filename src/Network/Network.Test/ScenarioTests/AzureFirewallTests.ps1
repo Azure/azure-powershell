@@ -1078,3 +1078,52 @@ function Test-AzureFirewallVirtualHubCRUD {
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests AzureFirewall AdditionalProperty
+#>
+function Test-AzureFirewallAdditionalPropertyCRUD {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+
+    $threatIntelWhitelist1 = New-AzFirewallThreatIntelWhitelist -FQDN "*.microsoft.com, microsoft.com" -IpAddress "8.8.8.8, 1.1.1.1"
+    $threatIntelWhitelist2 = New-AzFirewallThreatIntelWhitelist -IpAddress "  2.2.2.2  ,  3.3.3.3  " -FQDN "  bing.com  ,  yammer.com  "
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create public ip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+
+        # Create AzureFirewall
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -ThreatIntelWhitelist $threatIntelWhitelist1
+
+        # Verify
+        $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+        Assert-AreEqual $threatIntelWhitelist1.FQDNs $getAzureFirewall.ThreatIntelWhitelist.FQDNs
+        Assert-AreEqual $threatIntelWhitelist1.IpAddresses $getAzureFirewall.ThreatIntelWhitelist.IpAddresses
+
+        # Modify
+        $azureFirewall.ThreatIntelWhitelist = $threatIntelWhitelist2
+        Set-AzFirewall -AzureFirewall $azureFirewall
+        $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+        Assert-AreEqual $threatIntelWhitelist2.FQDNs $getAzureFirewall.ThreatIntelWhitelist.FQDNs
+        Assert-AreEqual $threatIntelWhitelist2.IpAddresses $getAzureFirewall.ThreatIntelWhitelist.IpAddresses
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
