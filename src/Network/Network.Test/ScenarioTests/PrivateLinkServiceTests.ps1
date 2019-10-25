@@ -26,15 +26,6 @@ function Check-CmdletReturnType
 
 <#
 .SYNOPSIS
-Gets the subscription ID from the recorded mock for a test
-#>
-function getSubscription
-{
-   return $(getVariable "SubscriptionId")
-}
-
-<#
-.SYNOPSIS
 Test creating new PrivateLinkService using minimal set of parameters
 #>
 function Test-PrivateLinkServiceCRUD
