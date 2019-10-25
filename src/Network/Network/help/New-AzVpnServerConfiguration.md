@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvpnserverconfiguration
 schema: 2.0.0
 ---
 
 # New-AzVpnServerConfiguration
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Create a new VpnServerConfiguration for point to site connectivity.
 
 ## SYNTAX
 
@@ -40,16 +40,40 @@ New-AzVpnServerConfiguration -ResourceGroupName <String> -Name <String> -Locatio
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzVpnServerConfiguration** cmdlet enables you to create a new VpnServerConfiguration with different VpnProtocols, VpnAuthenticationTypes, IpsecPolicies and to set selected vpn authentication type related parameters as  per the customer's requirement for Point to site connectivity.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $VpnServerConfigCertFilePath = Join-Path -Path $basedir -ChildPath "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
+PS C:\> $listOfCerts = New-Object "System.Collections.Generic.List[String]"
+PS C:\> $listOfCerts.Add($VpnServerConfigCertFilePath)
+PS C:\> New-AzVpnServerConfiguration -Name "test1config" -ResourceGroupName "P2SCortexGATesting" -VpnProtocol IkeV2 -VpnAuthenticationType Certificate -VpnClientRootCertificateFilesList $listOfCerts -VpnClientRevokedCertificateFilesList $listOfCerts -Location "westus"
+ResourceGroupName            : P2SCortexGATesting
+Name                         : test1config
+Id                           : /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/vpnServerConfigurations/test1config
+Location                     : westus
+VpnProtocols                 : {IkeV2, OpenVPN}
+VpnAuthenticationTypes       : {Certificate}
+VpnClientRootCertificates    :
+VpnClientRevokedCertificates : [
+                                 {
+                                   "Name": "cert2",
+                                   "Thumbprint": "83FFBFC8848B5A5836C94D0112367E16148A286F"
+                                 }
+                               ]
+RadiusServerAddress          :
+RadiusServerRootCertificates : []
+RadiusClientRootCertificates : []
+VpnClientIpsecPolicies       : []
+AadAuthenticationParameters  : null
+P2sVpnGateways               : []
+Type                         : Microsoft.Network/vpnServerConfigurations
+ProvisioningState            : Succeeded
 ```
 
-{{ Add example description here }}
+The above command will create a new VpnServerConfiguration with VpnAuthenticationType as Certificate.
 
 ## PARAMETERS
 

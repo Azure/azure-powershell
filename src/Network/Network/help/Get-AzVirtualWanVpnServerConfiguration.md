@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualwanvpnserverconfiguration
 schema: 2.0.0
 ---
 
 # Get-AzVirtualWanVpnServerConfiguration
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the list of all VpnServerConfigurations that are associated with this VirtualWan.
 
 ## SYNTAX
 
@@ -31,16 +31,17 @@ Get-AzVirtualWanVpnServerConfiguration -ResourceId <String> [-DefaultProfile <IA
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzVirtualWanVpnServerConfiguration** cmdlet will return the list of all VpnServerConfigurations that are associated with this VirtualWan. i.e. All the VpnServerConfigurations which are attached to any P2SVpnGateways under VirutalHubs of this VirtualWan.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> Get-AzVirtualWanVpnServerConfiguration -Name WestUsVirtualWan -ResourceGroupName P2SCortexGATesting
 
-{{ Add example description here }}
+VpnServerConfigurationResourceIds : [
+                                      "/subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/vpnServerConfigurations/WestUsConfig"                           ]
+```
 
 ## PARAMETERS
 

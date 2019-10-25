@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualwanvpnserverconfigurationvpnprofile
 schema: 2.0.0
 ---
 
 # Get-AzVirtualWanVpnServerConfigurationVpnProfile
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Generates and downloads Vpn profile at VirtualWan-VpnServerConfiguration level for Point to site client setup.
 
 ## SYNTAX
 
@@ -55,16 +55,19 @@ Get-AzVirtualWanVpnServerConfigurationVpnProfile -ResourceId <String> -VpnServer
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzVirtualWanVpnServerConfigurationVpnProfile** cmdlet enables you to generate and download the Vpn profile at VirtualWan-VpnServerConfiguration level for Point to site client setup. This is required for Point to site connectivity from Point to site client to Azure P2SVpnGateway.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzVirtualWanVpnServerConfigurationVpnProfile -Name WestUsVirtualWan -ResourceGroupName P2SCortexGATesting -VpnServerConfiguration $vpnServerConfig -AuthenticationMethod EAPTLS
+
+ProfileUrl : https://nfvprodsuppby.blob.core.windows.net/vpnprofileimmutable/aa316f33-d0f6-4e61-994a-9aa24c0e5f70/vpnprofile/eb99aa3d-1106-49eb-9644-791c045c5cca/vpnclientconfiguration.zip?sv=2017-04-17&sr=b&sig=kZinevNqW
+             qsEAbWAcYiKfUHFxZzh2hwvtb49dfVtUDA%3D&st=2019-10-25T19%3A52%3A36Z&se=2019-10-25T20%3A52%3A36Z&sp=r&fileExtension=.zip
 ```
 
-{{ Add example description here }}
+The above command will generate and returns SAS Url for customer to download the Vpn profile at VirtualWan-VpnServerConfiguration level for Point to site client setup.
 
 ## PARAMETERS
 

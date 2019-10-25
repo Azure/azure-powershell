@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/update-azvpnserverconfiguration
 schema: 2.0.0
 ---
 
 # Update-AzVpnServerConfiguration
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates an existing VpnServerConfiguration.
 
 ## SYNTAX
 
@@ -91,16 +91,39 @@ Update-AzVpnServerConfiguration -ResourceId <String> [-VpnProtocol <String[]>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Update-AzVpnServerConfiguration** cmdlet enables you to update the existing VpnServerConfiguration with different VpnProtocols, VpnAuthenticationTypes, IpsecPolicies and to set selected vpn authentication type related parameters as  per the customer's requirement for Point to site connectivity.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Update-AzVpnServerConfiguration -Name "test1config" -ResourceGroupName "P2SCortexGATesting" -VpnProtocol IkeV2
+
+PS C:\> New-AzVpnServerConfiguration -Name "test1config" -ResourceGroupName "P2SCortexGATesting" -VpnProtocol IkeV2 -VpnAuthenticationType Certificate -VpnClientRootCertificateFilesList $listOfCerts -VpnClientRevokedCertificateFilesList $listOfCerts -Location "westus"
+ResourceGroupName            : P2SCortexGATesting
+Name                         : test1config
+Id                           : /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/vpnServerConfigurations/test1config
+Location                     : westus
+VpnProtocols                 : {IkeV2}
+VpnAuthenticationTypes       : {Certificate}
+VpnClientRootCertificates    :
+VpnClientRevokedCertificates : [
+                                 {
+                                   "Name": "cert2",
+                                   "Thumbprint": "83FFBFC8848B5A5836C94D0112367E16148A286F"
+                                 }
+                               ]
+RadiusServerAddress          :
+RadiusServerRootCertificates : []
+RadiusClientRootCertificates : []
+VpnClientIpsecPolicies       : []
+AadAuthenticationParameters  : null
+P2sVpnGateways               : []
+Type                         : Microsoft.Network/vpnServerConfigurations
+ProvisioningState            : Succeeded
 ```
 
-{{ Add example description here }}
+The above command will update an existing VpnServerConfiguration with VpnProtocol as IkeV2.
 
 ## PARAMETERS
 
