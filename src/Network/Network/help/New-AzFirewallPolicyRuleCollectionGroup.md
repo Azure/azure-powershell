@@ -12,20 +12,19 @@ Create a new Azure Firewall Policy Rule Collection Group
 
 ## SYNTAX
 
-### SetByInputObjectParameterSet
+### SetByNameParameterSet (Default)
 ```
 New-AzFirewallPolicyRuleCollectionGroup -Name <String> -Priority <UInt32>
- -RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]> -ResourceGroupName <String>
- -FirewallPolicyObject <PSAzureFirewallPolicy> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>] -ResourceGroupName <String>
+ -FirewallPolicyName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### SetByNameParameterSet
+### SetByInputObjectParameterSet
 ```
 New-AzFirewallPolicyRuleCollectionGroup -Name <String> -Priority <UInt32>
- -RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]> -ResourceGroupName <String>
- -FirewallPolicyName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>] -FirewallPolicyObject <PSAzureFirewallPolicy>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,7 +121,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetByNameParameterSet
 Aliases:
 
 Required: True
@@ -140,7 +139,7 @@ Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyBaseRuleColle
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

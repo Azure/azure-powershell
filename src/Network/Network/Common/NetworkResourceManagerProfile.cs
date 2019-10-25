@@ -1107,7 +1107,20 @@ namespace Microsoft.Azure.Commands.Network
 
                 // Azure Firewalls
                 // CNM to MNM
-                cfg.CreateMap<CNM.PSAzureFirewall, MNM.AzureFirewall>();
+                cfg.CreateMap<CNM.PSAzureFirewall, MNM.AzureFirewall>().AfterMap((src, dest) =>
+                {
+                    if (src.ThreatIntelWhitelist == null)
+                    {
+                        dest.AdditionalProperties = null;
+                        return;
+                    }
+
+                    dest.AdditionalProperties = new Dictionary<string, string>()
+                    {
+                        { "ThreatIntel.Whitelist.FQDNs", src.ThreatIntelWhitelist.FQDNs },
+                        { "ThreatIntel.Whitelist.IpAddresses", src.ThreatIntelWhitelist.IpAddresses }
+                    };
+                });
                 cfg.CreateMap<CNM.PSAzureFirewallSku, MNM.AzureFirewallSku>();
                 cfg.CreateMap<CNM.PSAzureFirewallIpConfiguration, MNM.AzureFirewallIPConfiguration>();
                 cfg.CreateMap<CNM.PSAzureFirewallApplicationRuleCollection, MNM.AzureFirewallApplicationRuleCollection>();
@@ -1121,7 +1134,14 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSAzureFirewallApplicationRuleProtocol, MNM.AzureFirewallApplicationRuleProtocol>();
 
                 // MNM to CNM
-                cfg.CreateMap<MNM.AzureFirewall, CNM.PSAzureFirewall>();
+                cfg.CreateMap<MNM.AzureFirewall, CNM.PSAzureFirewall>().AfterMap((src, dest) =>
+                {
+                    dest.ThreatIntelWhitelist = new CNM.PSAzureFirewallThreatIntelWhitelist
+                    {
+                        FQDNs = src.AdditionalProperties.SingleOrDefault(kvp => kvp.Key.Equals("ThreatIntel.Whitelist.FQDNs")).Value,
+                        IpAddresses = src.AdditionalProperties.SingleOrDefault(kvp => kvp.Key.Equals("ThreatIntel.Whitelist.IpAddresses")).Value
+                    };
+                });
                 cfg.CreateMap<MNM.AzureFirewallSku, CNM.PSAzureFirewallSku>();
                 cfg.CreateMap<MNM.AzureFirewallIPConfiguration, CNM.PSAzureFirewallIpConfiguration>();
                 cfg.CreateMap<MNM.AzureFirewallApplicationRuleCollection, CNM.PSAzureFirewallApplicationRuleCollection>();

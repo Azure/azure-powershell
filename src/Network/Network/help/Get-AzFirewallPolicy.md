@@ -41,7 +41,7 @@ This example get a firewall policy named "firewallPolicy" in the resource group 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -56,8 +56,8 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
-Parameter Sets: SetByNameParameterSet
+Type: System.String
+Parameter Sets: GetByNameParameterSet
 Aliases: ResourceName
 
 Required: True
@@ -71,8 +71,8 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
-Parameter Sets: SetByNameParameterSet
+Type: System.String
+Parameter Sets: GetByNameParameterSet
 Aliases:
 
 Required: True
@@ -86,8 +86,8 @@ Accept wildcard characters: False
 The resource Id.
 
 ```yaml
-Type: String
-Parameter Sets: SetByResourceIdParameterSet
+Type: System.String
+Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 
 Required: True
