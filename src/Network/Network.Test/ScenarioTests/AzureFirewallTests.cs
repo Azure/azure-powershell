@@ -69,9 +69,9 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
-        public void TestAzureFirewallAdditionalPropertyCRUD()
+        public void TestAzureFirewallThreatIntelWhitelistCRUD()
         {
-            TestRunner.RunTestScript("Test-AzureFirewallAdditionalPropertyCRUD");
+            TestRunner.RunTestScript("Test-AzureFirewallThreatIntelWhitelistCRUD");
         }
 
     }

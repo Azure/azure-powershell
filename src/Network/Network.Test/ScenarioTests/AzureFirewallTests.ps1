@@ -1081,9 +1081,9 @@ function Test-AzureFirewallVirtualHubCRUD {
 
 <#
 .SYNOPSIS
-Tests AzureFirewall AdditionalProperty
+Tests AzureFirewall ThreatIntelWhitelist
 #>
-function Test-AzureFirewallAdditionalPropertyCRUD {
+function Test-AzureFirewallThreatIntelWhitelistCRUD {
     $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
@@ -1093,8 +1093,8 @@ function Test-AzureFirewallAdditionalPropertyCRUD {
     $subnetName = "AzureFirewallSubnet"
     $publicIpName = Get-ResourceName
 
-    $threatIntelWhitelist1 = New-AzFirewallThreatIntelWhitelist -FQDN "*.microsoft.com, microsoft.com" -IpAddress "8.8.8.8, 1.1.1.1"
-    $threatIntelWhitelist2 = New-AzFirewallThreatIntelWhitelist -IpAddress "  2.2.2.2  ,  3.3.3.3  " -FQDN "  bing.com  ,  yammer.com  "
+    $threatIntelWhitelist1 = New-AzFirewallThreatIntelWhitelist -FQDN @("*.microsoft.com", "microsoft.com") -IpAddress @("8.8.8.8", "1.1.1.1")
+    $threatIntelWhitelist2 = New-AzFirewallThreatIntelWhitelist -IpAddress @("  2.2.2.2  ","  3.3.3.3  ") -FQDN @("  bing.com  ",  "yammer.com  ")
 
     try {
         # Create the resource group

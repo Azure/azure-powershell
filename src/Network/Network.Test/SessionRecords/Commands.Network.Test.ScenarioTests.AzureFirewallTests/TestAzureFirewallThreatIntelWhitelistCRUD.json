@@ -985,7 +985,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps2007\",\r\n  \"id\": \"/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007\",\r\n  \"etag\": \"W/\\\"45d3985c-9722-4518-bf3d-903941a72054\\\"\",\r\n  \"type\": \"Microsoft.Network/azureFirewalls\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"8.8.8.8, 1.1.1.1\",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"*.microsoft.com, microsoft.com\"\r\n    },\r\n    \"ipConfigurations\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps2007\",\r\n  \"id\": \"/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007\",\r\n  \"etag\": \"W/\\\"45d3985c-9722-4518-bf3d-903941a72054\\\"\",\r\n  \"type\": \"Microsoft.Network/azureFirewalls\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"8.8.8.8,1.1.1.1\",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"*.microsoft.com,microsoft.com\"\r\n    },\r\n    \"ipConfigurations\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": []\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1055,7 +1055,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps2007\",\r\n  \"id\": \"/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007\",\r\n  \"etag\": \"W/\\\"45d3985c-9722-4518-bf3d-903941a72054\\\"\",\r\n  \"type\": \"Microsoft.Network/azureFirewalls\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"8.8.8.8, 1.1.1.1\",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"*.microsoft.com, microsoft.com\"\r\n    },\r\n    \"ipConfigurations\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps2007\",\r\n  \"id\": \"/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007\",\r\n  \"etag\": \"W/\\\"45d3985c-9722-4518-bf3d-903941a72054\\\"\",\r\n  \"type\": \"Microsoft.Network/azureFirewalls\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"8.8.8.8,1.1.1.1\",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"*.microsoft.com,microsoft.com\"\r\n    },\r\n    \"ipConfigurations\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": []\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1125,7 +1125,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps2007\",\r\n  \"id\": \"/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007\",\r\n  \"etag\": \"W/\\\"45d3985c-9722-4518-bf3d-903941a72054\\\"\",\r\n  \"type\": \"Microsoft.Network/azureFirewalls\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"8.8.8.8, 1.1.1.1\",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"*.microsoft.com, microsoft.com\"\r\n    },\r\n    \"ipConfigurations\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps2007\",\r\n  \"id\": \"/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007\",\r\n  \"etag\": \"W/\\\"45d3985c-9722-4518-bf3d-903941a72054\\\"\",\r\n  \"type\": \"Microsoft.Network/azureFirewalls\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"8.8.8.8,1.1.1.1\",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"*.microsoft.com,microsoft.com\"\r\n    },\r\n    \"ipConfigurations\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": []\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1195,7 +1195,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps2007\",\r\n  \"id\": \"/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007\",\r\n  \"etag\": \"W/\\\"45d3985c-9722-4518-bf3d-903941a72054\\\"\",\r\n  \"type\": \"Microsoft.Network/azureFirewalls\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"8.8.8.8, 1.1.1.1\",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"*.microsoft.com, microsoft.com\"\r\n    },\r\n    \"ipConfigurations\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps2007\",\r\n  \"id\": \"/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007\",\r\n  \"etag\": \"W/\\\"45d3985c-9722-4518-bf3d-903941a72054\\\"\",\r\n  \"type\": \"Microsoft.Network/azureFirewalls\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"8.8.8.8,1.1.1.1\",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"*.microsoft.com,microsoft.com\"\r\n    },\r\n    \"ipConfigurations\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": []\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1259,7 +1259,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps2007\",\r\n  \"id\": \"/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007\",\r\n  \"etag\": \"W/\\\"d28b2646-047c-4918-a9cb-ac6a5ec05219\\\"\",\r\n  \"type\": \"Microsoft.Network/azureFirewalls\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"  2.2.2.2  ,  3.3.3.3  \",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"  bing.com  ,  yammer.com  \"\r\n    },\r\n    \"ipConfigurations\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps2007\",\r\n  \"id\": \"/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007\",\r\n  \"etag\": \"W/\\\"d28b2646-047c-4918-a9cb-ac6a5ec05219\\\"\",\r\n  \"type\": \"Microsoft.Network/azureFirewalls\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"2.2.2.2,3.3.3.3\",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"bing.com,yammer.com\"\r\n    },\r\n    \"ipConfigurations\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": []\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1329,7 +1329,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps2007\",\r\n  \"id\": \"/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007\",\r\n  \"etag\": \"W/\\\"d28b2646-047c-4918-a9cb-ac6a5ec05219\\\"\",\r\n  \"type\": \"Microsoft.Network/azureFirewalls\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"  2.2.2.2  ,  3.3.3.3  \",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"  bing.com  ,  yammer.com  \"\r\n    },\r\n    \"ipConfigurations\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps2007\",\r\n  \"id\": \"/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007\",\r\n  \"etag\": \"W/\\\"d28b2646-047c-4918-a9cb-ac6a5ec05219\\\"\",\r\n  \"type\": \"Microsoft.Network/azureFirewalls\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"2.2.2.2,3.3.3.3\",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"bing.com,yammer.com\"\r\n    },\r\n    \"ipConfigurations\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": []\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1399,14 +1399,14 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps2007\",\r\n  \"id\": \"/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007\",\r\n  \"etag\": \"W/\\\"d28b2646-047c-4918-a9cb-ac6a5ec05219\\\"\",\r\n  \"type\": \"Microsoft.Network/azureFirewalls\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"  2.2.2.2  ,  3.3.3.3  \",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"  bing.com  ,  yammer.com  \"\r\n    },\r\n    \"ipConfigurations\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps2007\",\r\n  \"id\": \"/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007\",\r\n  \"etag\": \"W/\\\"d28b2646-047c-4918-a9cb-ac6a5ec05219\\\"\",\r\n  \"type\": \"Microsoft.Network/azureFirewalls\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"2.2.2.2,3.3.3.3\",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"bing.com,yammer.com\"\r\n    },\r\n    \"ipConfigurations\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": []\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007?api-version=2019-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODg5N2U4YTItODRlNS00NGQ3LTkxNWQtNjAxODgwNTJhNzMxL3Jlc291cmNlR3JvdXBzL3BzNzExNS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXp1cmVGaXJld2FsbHMvcHMyMDA3P2FwaS12ZXJzaW9uPTIwMTktMDktMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"ipConfigurations\": [],\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"8.8.8.8, 1.1.1.1\",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"*.microsoft.com, microsoft.com\"\r\n    }\r\n  },\r\n  \"zones\": [],\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"ipConfigurations\": [],\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"8.8.8.8,1.1.1.1\",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"*.microsoft.com,microsoft.com\"\r\n    }\r\n  },\r\n  \"zones\": [],\r\n  \"location\": \"eastus2euap\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "cb0debe1-717f-4c81-9fad-b821a7ef6183"
@@ -1481,14 +1481,14 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps2007\",\r\n  \"id\": \"/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007\",\r\n  \"etag\": \"W/\\\"4910ac51-5dfb-49f9-876e-eaa34b4f092d\\\"\",\r\n  \"type\": \"Microsoft.Network/azureFirewalls\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"8.8.8.8, 1.1.1.1\",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"*.microsoft.com, microsoft.com\"\r\n    },\r\n    \"ipConfigurations\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps2007\",\r\n  \"id\": \"/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007\",\r\n  \"etag\": \"W/\\\"4910ac51-5dfb-49f9-876e-eaa34b4f092d\\\"\",\r\n  \"type\": \"Microsoft.Network/azureFirewalls\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"8.8.8.8,1.1.1.1\",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"*.microsoft.com,microsoft.com\"\r\n    },\r\n    \"ipConfigurations\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": []\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
       "RequestUri": "/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007?api-version=2019-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODg5N2U4YTItODRlNS00NGQ3LTkxNWQtNjAxODgwNTJhNzMxL3Jlc291cmNlR3JvdXBzL3BzNzExNS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvYXp1cmVGaXJld2FsbHMvcHMyMDA3P2FwaS12ZXJzaW9uPTIwMTktMDktMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"ipConfigurations\": [],\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"  2.2.2.2  ,  3.3.3.3  \",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"  bing.com  ,  yammer.com  \"\r\n    }\r\n  },\r\n  \"zones\": [],\r\n  \"id\": \"/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007\",\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"ipConfigurations\": [],\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"2.2.2.2,3.3.3.3\",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"bing.com,yammer.com\"\r\n    }\r\n  },\r\n  \"zones\": [],\r\n  \"id\": \"/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007\",\r\n  \"location\": \"eastus2euap\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "69d7d61e-e7ef-4fca-8dcb-7039a152a823"
@@ -1563,7 +1563,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps2007\",\r\n  \"id\": \"/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007\",\r\n  \"etag\": \"W/\\\"c3443c96-3ff1-48bd-b63d-7c7cdd23a2bf\\\"\",\r\n  \"type\": \"Microsoft.Network/azureFirewalls\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"  2.2.2.2  ,  3.3.3.3  \",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"  bing.com  ,  yammer.com  \"\r\n    },\r\n    \"ipConfigurations\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps2007\",\r\n  \"id\": \"/subscriptions/8897e8a2-84e5-44d7-915d-60188052a731/resourceGroups/ps7115/providers/Microsoft.Network/azureFirewalls/ps2007\",\r\n  \"etag\": \"W/\\\"c3443c96-3ff1-48bd-b63d-7c7cdd23a2bf\\\"\",\r\n  \"type\": \"Microsoft.Network/azureFirewalls\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"sku\": {\r\n      \"name\": \"AZFW_VNet\",\r\n      \"tier\": \"Standard\"\r\n    },\r\n    \"threatIntelMode\": \"Alert\",\r\n    \"additionalProperties\": {\r\n      \"ThreatIntel.Whitelist.IpAddresses\": \"2.2.2.2,3.3.3.3\",\r\n      \"ThreatIntel.Whitelist.FQDNs\": \"bing.com,yammer.com\"\r\n    },\r\n    \"ipConfigurations\": [],\r\n    \"networkRuleCollections\": [],\r\n    \"applicationRuleCollections\": [],\r\n    \"natRuleCollections\": []\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -2368,7 +2368,7 @@
     }
   ],
   "Names": {
-    "Test-AzureFirewallAdditionalPropertyCRUD": [
+    "Test-AzureFirewallThreatIntelWhitelistCRUD": [
       "ps7115",
       "ps2007",
       "ps901",
