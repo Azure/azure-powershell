@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSAzureFirewallThreatIntelWhitelist
     {
-        public string FQDNs { get; set; }
+        public string[] FQDNs { get; set; }
 
-        public string IpAddresses { get; set; }
+        public string[] IpAddresses { get; set; }
     }
 }

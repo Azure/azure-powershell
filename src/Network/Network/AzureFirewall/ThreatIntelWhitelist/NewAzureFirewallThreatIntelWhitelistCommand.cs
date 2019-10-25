@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Commands.Network
 
             var threatIntelWhitelist = new PSAzureFirewallThreatIntelWhitelist
             {
-                FQDNs = this.FQDN?.Select(str => str.Trim()).Aggregate((result, item) => result + "," + item),
-                IpAddresses = this.IpAddress?.Select(str => str.Trim()).Aggregate((result, item) => result + "," + item),
+                FQDNs = this.FQDN?.Select(str => str.Trim()).ToArray(),
+                IpAddresses = this.IpAddress?.Select(str => str.Trim()).ToArray(),
             };
             WriteObject(threatIntelWhitelist);
         }
