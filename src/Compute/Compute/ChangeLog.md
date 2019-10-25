@@ -19,7 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Disk Encryption Set features
+* Disk Encryption Set feature
     - New cmdlets:
         New-AzDiskEncryptionSetConfig
         New-AzDiskEncryptionSet
