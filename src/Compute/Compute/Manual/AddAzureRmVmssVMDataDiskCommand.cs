@@ -66,6 +66,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string StorageAccountType { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = HelpMessages.VmssVMDiskEncryptionSetId)]
+        [ValidateNotNullOrEmpty]
+        public string DiskEncryptionSetId { get; set; }
+
+        [Parameter(
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VmssVMDataDiskCaching)]
         public CachingTypes Caching { get; set; }
@@ -99,7 +105,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 DiskSizeGB = this.IsParameterBound(c => c.DiskSizeInGB) ? this.DiskSizeInGB: (int?)null,
                 Lun = this.Lun,
                 CreateOption = this.CreateOption,
-                ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.StorageAccountType),
+                ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.DiskEncryptionSetId, this.StorageAccountType),
                 WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent
             });
 
