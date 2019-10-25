@@ -42,6 +42,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ThreatIntelMode { get; set; }
 
+        public PSAzureFirewallThreatIntelWhitelist ThreatIntelWhitelist { get; set; }
+
         public string ProvisioningState { get; set; }
 
         public List<string> Zones { get; set; }
@@ -68,6 +70,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string NetworkRuleCollectionsText
         {
             get { return JsonConvert.SerializeObject(NetworkRuleCollections, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string ThreatIntelWhitelistText
+        {
+            get { return JsonConvert.SerializeObject(ThreatIntelWhitelist, Formatting.Indented); }
         }
 
         #region Ip Configuration Operations

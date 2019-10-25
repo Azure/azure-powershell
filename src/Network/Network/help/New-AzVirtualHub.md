@@ -16,7 +16,7 @@ Creates an Azure VirtualHub resource.
 ```
 New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWan <PSVirtualWan> -AddressPrefix <String>
  -Location <String> [-HubVnetConnection <PSHubVirtualNetworkConnection[]>]
- [-RouteTable <PSVirtualHubRouteTable[]>] [-Tag <Hashtable>] [-Sku <String>] [-AsJob]
+ [-RouteTable <PSVirtualHubRouteTable>] [-Tag <Hashtable>] [-Sku <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWan <PSVirtu
 ```
 New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWanId <String> -AddressPrefix <String>
  -Location <String> [-HubVnetConnection <PSHubVirtualNetworkConnection[]>]
- [-RouteTable <PSVirtualHubRouteTable[]>] [-Tag <Hashtable>] [-Sku <String>] [-AsJob]
+ [-RouteTable <PSVirtualHubRouteTable>] [-Tag <Hashtable>] [-Sku <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -115,7 +115,7 @@ This example is similar to Example 2, but also attaches a route table to the vir
 The address space string for this virtual hub.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -160,7 +160,7 @@ Accept wildcard characters: False
 The hub virtual network connections associated with this Virtual Hub.
 
 ```yaml
-Type: PSHubVirtualNetworkConnection[]
+Type: Microsoft.Azure.Commands.Network.Models.PSHubVirtualNetworkConnection[]
 Parameter Sets: (All)
 Aliases:
 
@@ -175,7 +175,7 @@ Accept wildcard characters: False
 location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName, VirtualHubName
 
@@ -205,7 +205,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -220,7 +220,7 @@ Accept wildcard characters: False
 The route table associated with this Virtual Hub.
 
 ```yaml
-Type: PSVirtualHubRouteTable
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHubRouteTable
 Parameter Sets: (All)
 Aliases:
 
@@ -235,7 +235,7 @@ Accept wildcard characters: False
 The sku of the Virtual Hub.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -250,7 +250,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -265,7 +265,7 @@ Accept wildcard characters: False
 The virtual wan object this hub is linked to.
 
 ```yaml
-Type: PSVirtualWan
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualWan
 Parameter Sets: ByVirtualWanObject
 Aliases:
 
@@ -280,7 +280,7 @@ Accept wildcard characters: False
 The id of virtual wan object this hub is linked to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualWanResourceId
 Aliases:
 
@@ -295,7 +295,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -311,7 +311,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

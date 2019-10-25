@@ -14,8 +14,8 @@ Create a new Azure Firewall Policy Nat Rule Collection
 
 ```
 New-AzFirewallPolicyNatRuleCollection -Name <String> -Priority <UInt32>
- -Rule <PSAzureFirewallPolicyNetworkRule> -ActionType <String> -TranslatedAddress <String>
- -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Rule <PSAzureFirewallPolicyNetworkRule>] -ActionType <String> -TranslatedAddress <String>
+ -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,10 +36,10 @@ This example creates a nat rule collection with a network rule
 The type of the rule action
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Dnat
+Accepted values: Dnat, Snat
 
 Required: True
 Position: Named
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 The name of the Network Rule Collection
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 The priority of the rule collection
 
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -97,11 +97,11 @@ Accept wildcard characters: False
 The list of network rules
 
 ```yaml
-Type: PSAzureFirewallPolicyNetworkRule
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyNetworkRule
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 The translated address for this NAT rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -127,42 +127,11 @@ Accept wildcard characters: False
 The translated port for this NAT rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
