@@ -67,7 +67,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents sku properties.")]
         public Hashtable Sku { get; set; }
 
-
         /// <summary>
         /// Gets or sets the tags.
         /// </summary>

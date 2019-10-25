@@ -26,13 +26,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     /// <summary>
     /// Helper class for tags.
     /// </summary>
-    internal static class TagsHelper
+    public static class TagsHelper
     {
         /// <summary>
         /// Gets a tags dictionary from an enumerable of tags.
         /// </summary>
         /// <param name="tags">The enumerable of tags</param>
-        internal static InsensitiveDictionary<string> GetTagsDictionary(Hashtable tags)
+        public static InsensitiveDictionary<string> GetTagsDictionary(Hashtable tags)
         {
             if(tags == null)
             {
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// Gets a tags hash table from a tags dictionary.
         /// </summary>
         /// <param name="tags">The tags dictionary.</param>
-        internal static Hashtable GetTagsHashtable(InsensitiveDictionary<string> tags)
+        public static Hashtable GetTagsHashtable(InsensitiveDictionary<string> tags)
         {
             return tags == null
                 ? null

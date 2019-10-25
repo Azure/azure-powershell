@@ -11,4 +11,7 @@
     <RootNamespace>$(LegacyAssemblyPrefix)Tags</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ResourceManager\ResourceManager.csproj" />
+  </ItemGroup>
 </Project>

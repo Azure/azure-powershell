@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Commands.Tags.Properties;
+using ResourceStrings = Microsoft.Azure.Commands.Tags.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Tags.Tag
 {
@@ -43,7 +42,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
             PSTag tag = null;
 
             ConfirmAction(
-                Resources.RemoveTagMessage,
+                ResourceStrings.RemoveTagMessage,
                 Name,
                 () =>
                 {

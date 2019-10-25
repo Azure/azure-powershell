@@ -129,4 +129,7 @@
   <data name="TagNotFoundMessage" xml:space="preserve">
     <value>Tag '{0}' not found</value>
   </data>
+  <data name="UpdatingSubscriptionTags" xml:space="preserve">
+    <value>Updating subscription tags ...</value>
+  </data>
 </root>
