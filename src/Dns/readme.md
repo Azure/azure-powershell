@@ -151,5 +151,6 @@ directive:
 # Add storage cmdlet subset
 require:
   - $(this-folder)/../helpers/Storage/readme.md
-   
+  - $(this-folder)/../helpers/AppInsights/readme.md
+
 ```
