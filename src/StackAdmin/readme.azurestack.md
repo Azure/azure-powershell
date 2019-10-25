@@ -6,6 +6,16 @@ azure: true
 powershell: true
 branch: azs
 repo: https://github.com/bganapa/azure-rest-api-specs/tree/$(branch)
+metadata:
+  authors: Microsoft Corporation
+  owners: Microsoft Corporation
+  description: 'Microsoft Azure PowerShell: $(service-name) cmdlets'
+  copyright: Microsoft Corporation. All rights reserved.
+  tags: Azure ResourceManager ARM PSModule $(service-name)
+  companyName: Microsoft Corporation
+  requireLicenseAcceptance: true
+  licenseUri: https://aka.ms/azps-license
+  projectUri: https://github.com/Azure/azure-powershell
 ```
 
 > Names
