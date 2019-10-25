@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvpnserverconfiguration
 schema: 2.0.0
 ---
 
 # Get-AzVpnServerConfiguration
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets an existing VpnServerConfiguration for point to site connectivity.
 
 ## SYNTAX
 
@@ -25,16 +25,38 @@ Get-AzVpnServerConfiguration [-ResourceGroupName <String>] [-Name <String>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzVpnServerConfiguration** cmdlet returns the existing VpnServerConfiguration for Point to site connectivity.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzVpnServerConfiguration -ResourceGroupName P2SCortexGATesting -Name test1config
+
+ResourceGroupName            : P2SCortexGATesting
+Name                         : test1config
+Id                           : /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/vpnServerConfigurations/test1config
+Location                     : westus
+VpnProtocols                 : {IkeV2, OpenVPN}
+VpnAuthenticationTypes       : {Certificate}
+VpnClientRootCertificates    :
+VpnClientRevokedCertificates : [
+                                 {
+                                   "Name": "cert2",
+                                   "Thumbprint": "83FFBFC8848B5A5836C94D0112367E16148A286F"
+                                 }
+                               ]
+RadiusServerAddress          :
+RadiusServerRootCertificates : []
+RadiusClientRootCertificates : []
+VpnClientIpsecPolicies       : []
+AadAuthenticationParameters  : null
+P2sVpnGateways               : []
+Type                         : Microsoft.Network/vpnServerConfigurations
+ProvisioningState            : Succeeded
 ```
 
-{{ Add example description here }}
+The above command will get the existing VpnServerConfiguration.
 
 ## PARAMETERS
 

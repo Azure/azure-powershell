@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azp2svpngateway
 schema: 2.0.0
 ---
 
 # New-AzP2sVpnGateway
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Create a new P2SVpnGateway under VirtualHub for point to site connectivity.
 
 ## SYNTAX
 
@@ -60,16 +60,47 @@ New-AzP2sVpnGateway -ResourceGroupName <String> -Name <String> -VpnGatewayScaleU
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzP2sVpnGateway** cmdlet enables you to create a new P2SVpnGateway under VirtualHub for Point to site connectivity from Point to site clients to Azure VirtualWan.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $virtualHub = Get-AzVirtualHub -ResourceGroupName P2SCortexGATesting -Name WestUsVirtualHub
+PS C:\> $vpnServerConfig1 = Get-AzVpnServerConfiguration -ResourceGroupName P2SCortexGATesting -Name WestUsConfig
+PS C:\> $vpnClientAddressSpaces = New-Object string[] 1
+PS C:\> $vpnClientAddressSpaces[0] = "192.168.2.0/24"
+PS C:\> $createdP2SVpnGateway = New-AzP2sVpnGateway -ResourceGroupName P2SCortexGATesting -Name 683482ade8564515aed4b8448c9757ea-westus-gw -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -VpnServerConfiguration $vpnServerConfig1
+
+ResourceGroupName              : P2SCortexGATesting
+Name                           : 683482ade8564515aed4b8448c9757ea-westus-gw
+Id                             : /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/p2sVpnGateways/683482ade8564515a
+                                 ed4b8448c9757ea-westus-gw
+Location                       : westus
+VpnGatewayScaleUnit            : 1
+VirtualHub                     : /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/virtualHubs/WestUsVirtualHub
+VpnServerConfiguration         : /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/vpnServerConfigurations/WestUsConfig
+VpnServerConfigurationLocation :
+VpnClientConnectionHealth      : null
+Type                           : Microsoft.Network/p2sVpnGateways
+ProvisioningState              : Succeeded
+P2SConnectionConfigurations    : [
+                                   {
+                                     "ProvisioningState": "Succeeded",
+                                     "VpnClientAddressPool": {
+                                       "AddressPrefixes": [
+                                         "192.168.2.0/24"
+                                       ]
+                                     },
+                                     "Name": "P2SConnectionConfigDefault",
+                                     "Etag": "W/\"4b96e6a2-b4d8-46b3-9210-76d40f359bef\"",
+                                     "Id": "/subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/p2sVpnGateways/683482
+                                 ade8564515aed4b8448c9757ea-westus-gw/p2sConnectionConfigurations/P2SConnectionConfigDefault"
+                                   }
+                                 ]
 ```
 
-{{ Add example description here }}
+The **New-AzP2sVpnGateway** cmdlet enables you to create a new P2SVpnGateway under VirtualHub for Point to site connectivity.
 
 ## PARAMETERS
 

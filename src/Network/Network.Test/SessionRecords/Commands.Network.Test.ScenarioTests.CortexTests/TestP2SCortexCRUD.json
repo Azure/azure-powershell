@@ -25400,6 +25400,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]	  
       "ResponseBody": "{\r\n  \"profileUrl\": \"https://nfvprodsuppcy.blob.core.windows.net/vpnprofileimmutable/479c0033-3bf1-4778-b12c-e12e7aaf400d/vpnprofile/4d4399eb-d183-4228-a111-3c1ba202675b/vpnclientconfiguration.zip?sv=2017-04-17&sr=b&sig=OGl7hHrepJqTA7h0Iv44VrjqCaEc4OOMmbdKGpM2OK0%3D&st=2019-10-21T23%3A52%3A01Z&se=2019-10-22T00%3A52%3A01Z&sp=r&fileExtension=.zip\"\r\n}",
       "StatusCode": 200
     },
@@ -31630,6 +31631,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]	  
       "ResponseBody": "{\r\n  \"profileUrl\": \"https://nfvprodsuppcy.blob.core.windows.net/vpnprofileimmutable/0dc8ab53-9908-48a2-a2a4-d38ab7532538/vpnprofile/53b4e7fb-cac1-42af-a0e6-49da762ca359/vpnclientconfiguration.zip?sv=2017-04-17&sr=b&sig=e82bZGvNrv%2Fh8yif6lzWgMLyLRVmDjlKRYy5e6VFR18%3D&st=2019-10-21T23%3A52%3A08Z&se=2019-10-22T00%3A52%3A08Z&sp=r&fileExtension=.zip\"\r\n}",
       "StatusCode": 200
     },
@@ -37843,6 +37845,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]	  
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"6aauh2xo5s75NDZGGyhOKCvSRrNUKa2b9xX2tn2NudGXmW0vn3O/3NSLkg0FIpHbHmYyaIY2I03Xf2JcCpx/mA==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"jGp8qj5KHYF79uWVKIMVkFc8LMwsos4/cRd6zKKPN3C+Ru+y387E11CisLV3A8O0ixD/fbuNaBnsXUOWL5d3Sg==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
@@ -37850,6 +37853,7 @@
       "RequestUri": "/subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/ps5849/providers/Microsoft.Network/p2sVpnGateways/ps8445/getp2svpnconnectionhealthdetailed?api-version=2019-08-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjFmMWRlZWQtYWY2MC00YmFiLTkyMjMtNjVkMzQwNDYyZTI0L3Jlc291cmNlR3JvdXBzL3BzNTg0OS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcDJzVnBuR2F0ZXdheXMvcHM4NDQ1L2dldHAyc3ZwbmNvbm5lY3Rpb25oZWFsdGhkZXRhaWxlZD9hcGktdmVyc2lvbj0yMDE5LTA4LTAx",
       "RequestMethod": "POST",
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]	  
       "RequestBody": "{\r\n  \"vpnUserNamesFilter\": [],\r\n  \"outputBlobSasUrl\": \"https://blobps5849.blob.core.windows.net/contps5849/emptyfile.txt?sv=2019-02-02&sr=b&sig=D%2BDZzigw20l%2F8TPaQ4EPH%2BKAp52JxXQJOEAFbcqhjZs%3D&st=2019-10-21T23%3A05%3A18Z&se=2019-10-23T00%3A05%3A18Z&sp=rwd\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [

@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azvpnserverconfiguration
 schema: 2.0.0
 ---
 
 # Remove-AzVpnServerConfiguration
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes an existing VpnServerConfiguration.
 
 ## SYNTAX
 
@@ -37,10 +37,10 @@ Remove-AzVpnServerConfiguration -ResourceId <String> [-Force] [-PassThru]
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzVpnServerConfiguration -Name "test1config" -ResourceGroupName "P2SCortexGATesting" -Force -PassThru
 ```
 
-{{ Add example description here }}
+The above command will remove an existing VpnServerConfiguration.
 
 ## PARAMETERS
 

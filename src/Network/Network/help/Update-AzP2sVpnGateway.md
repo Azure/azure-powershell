@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/update-azp2svpngateway
 schema: 2.0.0
 ---
 
 # Update-AzP2sVpnGateway
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Update an existing P2SVpnGateway under VirtualHub for point to site connectivity.
 
 ## SYNTAX
 
@@ -76,16 +76,47 @@ Update-AzP2sVpnGateway -ResourceId <String> [-VpnClientAddressPool <String[]>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Update-AzP2sVpnGateway** cmdlet enables you to update an existing P2SVpnGateway under VirtualHub with new VpnClientAddressPool or new VpnServerConfiguration or change of VpnGatewayScaleUnit.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $vpnClientAddressSpaces = New-Object string[] 1 
+PS C:\> $vpnClientAddressSpaces[0] = "101.10.0.0/16"
+PS C:\> Update-AzP2sVpnGateway -ResourceGroupName P2SCortexGATesting -Name 683482ade8564515aed4b8448c9757ea-westus-gw -VpnClientAddressPool $vpnClientAddressSpaces                                    
+
+ResourceGroupName              : P2SCortexGATesting
+Name                           : 683482ade8564515aed4b8448c9757ea-westus-gw
+Id                             : /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/p2sVpnGateways/683482ade8564515a
+                                 ed4b8448c9757ea-westus-gw
+Location                       : westus
+VpnGatewayScaleUnit            : 1
+VirtualHub                     : /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/virtualHubs/NilamdWestUsVirtualH
+                                 ub
+VpnServerConfiguration         : /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/vpnServerConfigurations/NilamdWe
+                                 stUsConfig
+VpnServerConfigurationLocation :
+VpnClientConnectionHealth      : null
+Type                           : Microsoft.Network/p2sVpnGateways
+ProvisioningState              : Succeeded
+P2SConnectionConfigurations    : [
+                                   {
+                                     "ProvisioningState": "Succeeded",
+                                     "VpnClientAddressPool": {
+                                       "AddressPrefixes": [
+                                         "101.10.0.0/16"
+                                       ]
+                                     },
+                                     "Name": "P2SConnectionConfigDefault",
+                                     "Etag": "W/\"d7debc2f-ccbb-4f00-bddc-42c99b52fda3\"",
+                                     "Id": "/subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/p2sVpnGateways/683482
+                                 ade8564515aed4b8448c9757ea-westus-gw/p2sConnectionConfigurations/P2SConnectionConfigDefault"
+                                   }
+                                 ]
 ```
 
-{{ Add example description here }}
+The **Update-AzP2sVpnGateway** cmdlet enables you to update an existing P2SVpnGateway under VirtualHub with new VpnClientAddressPool. When Point to site client connects with this P2SVpnGateway, one of the ip address from this VpnClientAddressPool gets allocated to that client.
 
 ## PARAMETERS
 
