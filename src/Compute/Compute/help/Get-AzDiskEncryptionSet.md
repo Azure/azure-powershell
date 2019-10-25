@@ -65,7 +65,6 @@ Name              : enc2
 Type              : Microsoft.Compute/diskEncryptionSets
 Location          : westcentralus
 Tags              : {}
-
 ```
 
 Get all disk encryption sets in resource group 'rg1'.
