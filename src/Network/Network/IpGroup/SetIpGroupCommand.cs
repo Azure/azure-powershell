@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!this.IsIpGroupsPresent(this.IpGroup.ResourceGroupName, this.IpGroup.Name))
             {
-                throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+                throw new System.ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.IpGroup.Name));
             }
 
             // Map to the sdk object

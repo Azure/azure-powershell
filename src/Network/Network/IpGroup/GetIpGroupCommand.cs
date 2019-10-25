@@ -58,6 +58,11 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void ExecuteCmdlet()
         {
+            if (!this.IsIpGroupsPresent(this.ResourceGroupName, this.Name))
+            {
+                throw new System.ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.Name));
+            }
+
             base.ExecuteCmdlet();
 
             if (string.Equals(this.ParameterSetName, IpGroupParameterSetNames.ByResourceId, System.StringComparison.OrdinalIgnoreCase))
@@ -73,33 +78,9 @@ namespace Microsoft.Azure.Commands.Network
 
                 WriteObject(ipGroups);
             }
-            else if (ShouldListByResourceGroup(this.ResourceGroupName, this.Name))
-            {
-                var result = this.IpGroupsClient.ListByResourceGroup(this.ResourceGroupName);
-                var resultList = result.ToList();
-                var nextPageLink = result.NextPageLink;
-                while (!string.IsNullOrEmpty(nextPageLink))
-                {
-                    var pageResult = this.IpGroupsClient.ListByResourceGroupNext(nextPageLink);
-                    foreach (var pageItem in pageResult)
-                    {
-                        resultList.Add(pageItem);
-                    }
-                    nextPageLink = pageResult.NextPageLink;
-                }
-
-                var PSIpGroups = resultList.Select(ipGroups =>
-                {
-                    var PSIpGroup = this.ToPSIpGroup(ipGroups);
-                    PSIpGroup.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(ipGroups.Id);
-                    return PSIpGroup;
-                }).ToList();
-
-                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, PSIpGroups), true);
-            }
             else
             {
-                IPage<IpGroup> ipGroupsPage = ShouldListBySubscription(ResourceGroupName, Name)
+               var ipGroupsPage = ShouldListBySubscription(ResourceGroupName, Name)
                     ? this.IpGroupsClient.List()
                     : this.IpGroupsClient.ListByResourceGroup(this.ResourceGroupName);
 
