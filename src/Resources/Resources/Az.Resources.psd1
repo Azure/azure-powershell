@@ -130,7 +130,8 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
                'Get-AzDeployment', 'Test-AzDeployment', 'Remove-AzDeployment', 
                'Stop-AzDeployment', 'Save-AzDeploymentTemplate', 
                'Get-AzDeploymentOperation', 'Get-AzPolicyAlias', 'Remove-AzTag', 
-               'Get-AzTag', 'New-AzTag', 'Get-AzDenyAssignment'
+               'Get-AzTag', 'New-AzTag', 'Get-AzDenyAssignment',
+               'Get-AzSubscriptionTag', 'Update-AzSubscriptionTag'
 
 # Variables to export from this module
 # VariablesToExport = @()

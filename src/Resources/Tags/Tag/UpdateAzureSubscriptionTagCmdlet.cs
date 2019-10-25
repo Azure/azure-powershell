@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
 
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(
+            this.ConfirmAction(
                 ResourceStrings.UpdatingSubscriptionTags,
                 this.DefaultContext.Subscription.Id,
                 () =>
