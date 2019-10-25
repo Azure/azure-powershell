@@ -21,6 +21,11 @@
 ## Upcoming Release
 * Fix incorrect parameter description in `New-AzApplicationGatewaySku` reference documentation
 * New cmdlets to support the azure firewall policy
+* Add support for ThreatIntelWhitelist property for AzFirewall
+    - New cmdlet added:
+        - New-AzFirewallThreatIntelWhitelist
+    - Cmdlets updated with optional parameters:
+        - New-AzFirewall : added parameter ThreatIntelWhitelist
 * Add support for child resource RouteTables of VirtualHub
     - New cmdlets added:
         - Add-AzVirtualHubRoute
@@ -43,11 +48,6 @@
         - Update-AzureRmVpnConnection : added parameter EnableInternetSecurity
         - New-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
         - Set-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
-* Add support for ThreatIntelWhitelist property for AzFirewall
-    - New cmdlet added:
-        - New-AzFirewallThreatIntelWhitelist
-    - Cmdlets updated with optional parameters:
-        - New-AzFirewall : added parameter ThreatIntelWhitelist
 
 ## Version 1.15.0
 * Add new cmdlet Get-AzAvailableServiceAlias which can be called to get the aliases that can be used for Service Endpoint Policies.
