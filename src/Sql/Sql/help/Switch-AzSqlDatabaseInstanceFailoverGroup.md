@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 online version: https://docs.microsoft.com/en-us/powershell/module/Az.sql/switch-Azsqldatabaseinstancefailovergroup
 schema: 2.0.0
@@ -12,23 +12,22 @@ Executes a failover of an Instance Failover Group.
 
 ## SYNTAX
 
-### SwitchIFGDefault (Default)
+### SwitchInstanceFailoverGroupDefaultSet (Default)
 ```
-Switch-AzSqlDatabaseInstanceFailoverGroup [-ResourceGroupName] <String> [-Location] <String>
- [-Name] <String> [-AllowDataLoss] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Switch-AzSqlDatabaseInstanceFailoverGroup [-ResourceGroupName] <String> [-Location] <String> [-Name] <String>
+ [-AllowDataLoss] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Switch a Instance Failover Group from Resource Id
+### SwitchInstanceFailoverGroupByResourceIdSet
 ```
 Switch-AzSqlDatabaseInstanceFailoverGroup [-Location] <String> [-ResourceId] <String> [-AllowDataLoss]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Switch a Instance Failover Group from AzureSqlInstanceFailoverGroupModel instance definition
+### SwitchInstanceFailoverGroupByInputObjectSet
 ```
-Switch-AzSqlDatabaseInstanceFailoverGroup -InputObject <AzureSqlInstanceFailoverGroupModel>
- [-AllowDataLoss] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Switch-AzSqlDatabaseInstanceFailoverGroup [-InputObject] <AzureSqlInstanceFailoverGroupModel> [-AllowDataLoss]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,7 +84,7 @@ Complete the failover even if doing so may result in data loss.
 This will allow the failover to proceed even if a primary database is unavailable.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -100,9 +99,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -115,8 +114,8 @@ Accept wildcard characters: False
 The Instance Failover Group object to switch
 
 ```yaml
-Type: AzureSqlInstanceFailoverGroupModel
-Parameter Sets: Switch a Instance Failover Group from AzureSqlInstanceFailoverGroupModel instance definition
+Type: Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Model.AzureSqlInstanceFailoverGroupModel
+Parameter Sets: SwitchInstanceFailoverGroupByInputObjectSet
 Aliases:
 
 Required: True
@@ -130,8 +129,8 @@ Accept wildcard characters: False
 The name of the Local Region from which to retrieve the Instance Failover Group.
 
 ```yaml
-Type: String
-Parameter Sets: SwitchIFGDefault, Switch a Instance Failover Group from Resource Id
+Type: System.String
+Parameter Sets: SwitchInstanceFailoverGroupDefaultSet, SwitchInstanceFailoverGroupByResourceIdSet
 Aliases:
 
 Required: True
@@ -145,8 +144,8 @@ Accept wildcard characters: False
 The name of the Instance Failover Group.
 
 ```yaml
-Type: String
-Parameter Sets: SwitchIFGDefault
+Type: System.String
+Parameter Sets: SwitchInstanceFailoverGroupDefaultSet
 Aliases:
 
 Required: True
@@ -160,8 +159,8 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
-Parameter Sets: SwitchIFGDefault
+Type: System.String
+Parameter Sets: SwitchInstanceFailoverGroupDefaultSet
 Aliases:
 
 Required: True
@@ -175,14 +174,14 @@ Accept wildcard characters: False
 The Resource ID of the Instance Failover Group to switch.
 
 ```yaml
-Type: String
-Parameter Sets: Switch a Instance Failover Group from Resource Id
+Type: System.String
+Parameter Sets: SwitchInstanceFailoverGroupByResourceIdSet
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -190,7 +189,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -206,7 +205,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -218,7 +217,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
