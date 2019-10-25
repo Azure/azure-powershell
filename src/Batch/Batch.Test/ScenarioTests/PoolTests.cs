@@ -85,28 +85,5 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
                 MethodBase.GetCurrentMethod().Name);
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public  void TestChangeOSVersion()
-        {
-            BatchController controller = BatchController.NewInstance;
-            BatchAccountContext context = null;
-            string poolId = "changeospool";
-            controller.RunPsTestWorkflow(
-                _logger,
-                () => { return new string[] { string.Format("Test-ChangeOSVersion '{0}' '{1}'", poolId, specificOSVersion) }; },
-                () =>
-                {
-                    context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateTestPool(controller, context, poolId, targetDedicated: 0, targetLowPriority: 0);
-                },
-                () =>
-                {
-                    ScenarioTestHelpers.DeletePool(controller, context, poolId);
-                },
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name);
-        }
     }
 }
