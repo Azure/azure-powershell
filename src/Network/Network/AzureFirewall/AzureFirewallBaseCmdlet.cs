@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -44,6 +45,14 @@ namespace Microsoft.Azure.Commands.Network
             get
             {
                 return NetworkClient.NetworkManagementClient.VirtualNetworks;
+            }
+        }
+
+        protected IVirtualHubsOperations VirtualHubClient
+        {
+            get
+            {
+                return NetworkClient.NetworkManagementClient.VirtualHubs;
             }
         }
 

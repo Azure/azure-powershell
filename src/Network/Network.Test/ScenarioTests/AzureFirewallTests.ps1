@@ -16,8 +16,7 @@
 .SYNOPSIS
 Tests AzureFirewallCRUD.
 #>
-function Test-AzureFirewallCRUD
-{
+function Test-AzureFirewallCRUD {
     # Setup
     $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
@@ -97,8 +96,7 @@ function Test-AzureFirewallCRUD
     $natRule1TranslatedAddress = "10.1.2.3"
     $natRule1TranslatedPort = "91"
 
-    try 
-    {
+    try {
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
         
@@ -201,7 +199,7 @@ function Test-AzureFirewallCRUD
         Assert-ThrowsContains { $natRule.AddProtocol("ABCD") } "Invalid protocol"
         # Test handling of ICMP protocol
         Assert-ThrowsContains {
-            New-AzFirewallNatRule -Name $natRule1Name -Protocol $natRule1Protocol1,"ICMP" -SourceAddress $natRule1SourceAddress1 -DestinationAddress $natRule1DestinationAddress1 -DestinationPort $natRule1DestinationPort1 -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort
+            New-AzFirewallNatRule -Name $natRule1Name -Protocol $natRule1Protocol1, "ICMP" -SourceAddress $natRule1SourceAddress1 -DestinationAddress $natRule1DestinationAddress1 -DestinationPort $natRule1DestinationPort1 -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort
         } "The argument `"ICMP`" does not belong to the set"
         Assert-ThrowsContains { $natRule.AddProtocol("ICMP") } "Invalid protocol"
 
@@ -395,8 +393,7 @@ function Test-AzureFirewallCRUD
         $list = Get-AzFirewall -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
-    finally
-    {
+    finally {
         # Cleanup
         Clean-ResourceGroup $rgname
     }
@@ -406,8 +403,7 @@ function Test-AzureFirewallCRUD
 .SYNOPSIS
 Tests AzureFirewallCRUD With Availability Zones.
 #>
-function Test-AzureFirewallCRUDWithZones
-{
+function Test-AzureFirewallCRUDWithZones {
     # Setup
     $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
@@ -480,8 +476,7 @@ function Test-AzureFirewallCRUDWithZones
     $natRule1TranslatedAddress = "10.1.2.3"
     $natRule1TranslatedPort = "91"
 
-    try 
-    {
+    try {
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
 
@@ -493,7 +488,7 @@ function Test-AzureFirewallCRUDWithZones
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
 
         # Create AzureFirewall (with no rules, ThreatIntel is in Alert mode by default)
-        $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName -Zone 1,2,3
+        $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName -Zone 1, 2, 3
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
@@ -577,7 +572,7 @@ function Test-AzureFirewallCRUDWithZones
         Assert-ThrowsContains { $natRule.AddProtocol("ABCD") } "Invalid protocol"
         # Test handling of ICMP protocol
         Assert-ThrowsContains {
-            New-AzFirewallNatRule -Name $natRule1Name -Protocol $natRule1Protocol1,"ICMP" -SourceAddress $natRule1SourceAddress1 -DestinationAddress $natRule1DestinationAddress1 -DestinationPort $natRule1DestinationPort1 -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort
+            New-AzFirewallNatRule -Name $natRule1Name -Protocol $natRule1Protocol1, "ICMP" -SourceAddress $natRule1SourceAddress1 -DestinationAddress $natRule1DestinationAddress1 -DestinationPort $natRule1DestinationPort1 -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort
         } "The argument `"ICMP`" does not belong to the set"
         Assert-ThrowsContains { $natRule.AddProtocol("ICMP") } "Invalid protocol"
 
@@ -594,8 +589,8 @@ function Test-AzureFirewallCRUDWithZones
         # Add NetworkRuleCollections to the Firewall using method AddNetworkRuleCollection
         $azureFirewall.AddNetworkRuleCollection($netRc)
 
-		# Update ThreatIntel mode
-		$azureFirewall.ThreatIntelMode = "Deny"
+        # Update ThreatIntel mode
+        $azureFirewall.ThreatIntelMode = "Deny"
 
         # Set AzureFirewall
         Set-AzFirewall -AzureFirewall $azureFirewall
@@ -610,7 +605,7 @@ function Test-AzureFirewallCRUDWithZones
         Assert-NotNull $getAzureFirewall.Location
         Assert-AreEqual $location $getAzureFirewall.Location
         Assert-NotNull $getAzureFirewall.Etag
-		Assert-AreEqual "Deny" $getAzureFirewall.ThreatIntelMode
+        Assert-AreEqual "Deny" $getAzureFirewall.ThreatIntelMode
 
         Assert-AreEqual 1 @($getAzureFirewall.IpConfigurations).Count
         Assert-NotNull $azureFirewallIpConfiguration[0].Subnet.Id
@@ -760,8 +755,7 @@ function Test-AzureFirewallCRUDWithZones
         $list = Get-AzFirewall -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
-    finally
-    {
+    finally {
         # Cleanup
         Clean-ResourceGroup $rgname
     }
@@ -771,8 +765,7 @@ function Test-AzureFirewallCRUDWithZones
 .SYNOPSIS
 Tests AzureFirewall with new style params for VNET and Public IPs - objects instead of strings
 #>
-function Test-AzureFirewallPIPAndVNETObjectTypeParams
-{
+function Test-AzureFirewallPIPAndVNETObjectTypeParams {
     # Setup
     $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
@@ -784,8 +777,7 @@ function Test-AzureFirewallPIPAndVNETObjectTypeParams
     $publicIp1Name = Get-ResourceName
     $publicIp2Name = Get-ResourceName
 
-    try 
-    {
+    try {
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
 
@@ -917,8 +909,7 @@ function Test-AzureFirewallPIPAndVNETObjectTypeParams
         $list = Get-AzFirewall -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
-    finally
-    {
+    finally {
         # Cleanup
         Clean-ResourceGroup $rgname
     }
@@ -928,8 +919,7 @@ function Test-AzureFirewallPIPAndVNETObjectTypeParams
 .SYNOPSIS
 Tests AzureFirewall Set and Remove IpConfiguration
 #>
-function Test-AzureFirewallAllocateAndDeallocate
-{
+function Test-AzureFirewallAllocateAndDeallocate {
     # Setup
     $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
@@ -940,8 +930,7 @@ function Test-AzureFirewallAllocateAndDeallocate
     $subnetName = "AzureFirewallSubnet"
     $publicIpName = Get-ResourceName
 
-    try 
-    {
+    try {
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
 
@@ -1031,8 +1020,60 @@ function Test-AzureFirewallAllocateAndDeallocate
         $list = Get-AzFirewall -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
-    finally
-    {
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests AzureFirewall Set and Remove IpConfiguration
+#>
+function Test-AzureFirewallVirtualHubCRUD {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $policyLocation = "westcentralus"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $azureFirewallPolicyName = Get-ResourceName
+    $sku = "AZFW_Hub"
+    $tier = "Standard"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+        
+        # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $policyLocation
+
+        # Get the AzureFirewallPolicy
+        $getazureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        
+        Assert-NotNull $azureFirewallPolicy
+        Assert-NotNull $getazureFirewallPolicy.Id
+
+        $azureFirewallPolicyId = $getazureFirewallPolicy.Id
+
+        New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -Sku $sku -FirewallPolicyId $azureFirewallPolicyId
+
+        # Get AzureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+
+        #verification
+        Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
+        Assert-AreEqual $azureFirewallName $getAzureFirewall.Name
+        Assert-NotNull $getAzureFirewall.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewall.Location
+        Assert-NotNull $sku $getAzureFirewall.Sku
+        Assert-AreEqual $sku $getAzureFirewall.Sku.Name
+        Assert-AreEqual $tier $getAzureFirewall.Sku.Tier
+        Assert-NotNull $getAzureFirewall.FirewallPolicy
+        Assert-AreEqual $azureFirewallPolicyId $getAzureFirewall.FirewallPolicy.Id
+    }
+    finally {
         # Cleanup
         Clean-ResourceGroup $rgname
     }
