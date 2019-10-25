@@ -31,7 +31,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Maintenance
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ConfigurationAssignmentParent", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ConfigurationAssignment", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSConfigurationAssignment))]
     public partial class NewAzureRmConfigurationAssignment : MaintenanceAutomationBaseCmdlet
     {
