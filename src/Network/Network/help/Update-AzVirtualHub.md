@@ -97,7 +97,7 @@ This example is similar to Example 1, but also attaches a route table to the vir
 The address space string for this virtual hub.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 The hub virtual network connections associated with this Virtual Hub.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSHubVirtualNetworkConnection[]
+Type: PSHubVirtualNetworkConnection[]
 Parameter Sets: (All)
 Aliases:
 
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 The Virtual hub object to be modified.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHub
+Type: PSVirtualHub
 Parameter Sets: ByVirtualHubObject
 Aliases: VirtualHub
 
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualHubName
 Aliases: ResourceName, VirtualHubName
 
@@ -187,7 +187,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualHubName
 Aliases:
 
@@ -202,7 +202,7 @@ Accept wildcard characters: False
 The resource id of the Virtual hub to be modified.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualHubResourceId
 Aliases: VirtualHubId
 
@@ -217,7 +217,7 @@ Accept wildcard characters: False
 The route table associated with this Virtual Hub.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHubRouteTable
+Type: PSVirtualHubRouteTable
 Parameter Sets: (All)
 Aliases:
 
@@ -232,7 +232,7 @@ Accept wildcard characters: False
 The sku of the Virtual Hub.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -247,7 +247,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -262,7 +262,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -278,7 +278,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

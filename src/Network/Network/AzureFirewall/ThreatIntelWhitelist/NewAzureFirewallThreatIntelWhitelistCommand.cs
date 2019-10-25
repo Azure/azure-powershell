@@ -21,19 +21,19 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallThreatIntelWhitelist", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallThreatIntelWhitelist))]
-    public class NewAzureFirewallThreatIntelWhitelistCommand : AzureFirewallBaseCmdlet
+    class NewAzureFirewallThreatIntelWhitelistCommand : AzureFirewallBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
             HelpMessage = "The FQDNs of the Threat Intel Whitelist")]
         [ValidateNotNull]
-        public string FQDN { get; set; }
+        public string FQDNs { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The IP Addresses of the Threat Intel Whitelist")]
         [ValidateNotNull]
-        public string IpAddress { get; set; }
+        public string IpAddresses { get; set; }
 
         public override void Execute()
         {
@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Commands.Network
 
             var threatIntelWhitelist = new PSAzureFirewallThreatIntelWhitelist
             {
-                FQDNs = this.FQDN,
-                IpAddresses = this.IpAddress
+                FQDNs = this.FQDNs,
+                IpAddresses = this.IpAddresses
             };
             WriteObject(threatIntelWhitelist);
         }

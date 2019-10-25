@@ -48,8 +48,8 @@ This example get the rule collectionGroup in the firewall policy $fp
 Firewall Policy.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
-Parameter Sets: GetByInputObjectParameterSet
+Type: PSAzureFirewallPolicy
+Parameter Sets: SetByInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -63,8 +63,8 @@ Accept wildcard characters: False
 The Firewall policy name
 
 ```yaml
-Type: System.String
-Parameter Sets: GetByNameParameterSet
+Type: String
+Parameter Sets: SetByNameParameterSet
 Aliases:
 
 Required: True
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -93,8 +93,8 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
-Parameter Sets: GetByNameParameterSet
+Type: String
+Parameter Sets: SetByNameParameterSet
 Aliases: ResourceName
 
 Required: True
@@ -105,8 +105,8 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.String
-Parameter Sets: GetByInputObjectParameterSet
+Type: String
+Parameter Sets: SetByInputObjectParameterSet
 Aliases: ResourceName
 
 Required: True
@@ -120,8 +120,8 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
-Parameter Sets: GetByNameParameterSet
+Type: String
+Parameter Sets: SetByNameParameterSet
 Aliases:
 
 Required: True
@@ -135,8 +135,8 @@ Accept wildcard characters: False
 The resource Id.
 
 ```yaml
-Type: System.String
-Parameter Sets: GetByResourceIdParameterSet
+Type: String
+Parameter Sets: SetByResourceIdParameterSet
 Aliases:
 
 Required: True

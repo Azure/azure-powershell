@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
+external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/update-azvirtualhubvnetconnection
 schema: 2.0.0
@@ -15,20 +15,20 @@ Updates an existing HubVirtualNetworkConnection.
 ### ByHubVirtualNetworkConnectionName (Default)
 ```
 Update-AzVirtualHubVnetConnection -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
- [-EnableInternetSecurity <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -EnableInternetSecurity <Boolean> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByHubVirtualNetworkConnectionObject
 ```
 Update-AzVirtualHubVnetConnection -InputObject <PSHubVirtualNetworkConnection>
- [-EnableInternetSecurity <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -EnableInternetSecurity <Boolean> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByHubVirtualNetworkConnectionResourceId
 ```
-Update-AzVirtualHubVnetConnection -ResourceId <String> [-EnableInternetSecurity <Boolean>] [-AsJob]
+Update-AzVirtualHubVnetConnection -ResourceId <String> -EnableInternetSecurity <Boolean> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -65,7 +65,6 @@ Run cmdlet in the background
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
 Required: False
 Position: Named
 Default value: None
@@ -77,10 +76,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
+Aliases: AzContext, AzureCredential
 Required: False
 Position: Named
 Default value: None
@@ -95,8 +93,7 @@ Enable internet security for this connection.
 Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -110,7 +107,6 @@ The hubvirtualnetworkconnection resource to modify.
 Type: Microsoft.Azure.Commands.Network.Models.PSHubVirtualNetworkConnection
 Parameter Sets: ByHubVirtualNetworkConnectionObject
 Aliases: HubVirtualNetworkConnection
-
 Required: True
 Position: Named
 Default value: None
@@ -125,7 +121,6 @@ The resource name.
 Type: System.String
 Parameter Sets: ByHubVirtualNetworkConnectionName
 Aliases: ResourceName, HubVirtualNetworkConnectionName
-
 Required: True
 Position: Named
 Default value: None
@@ -140,7 +135,6 @@ The parent resource name.
 Type: System.String
 Parameter Sets: ByHubVirtualNetworkConnectionName
 Aliases: VirtualHubName, ParentVirtualHubName
-
 Required: True
 Position: Named
 Default value: None
@@ -155,7 +149,6 @@ The resource group name.
 Type: System.String
 Parameter Sets: ByHubVirtualNetworkConnectionName
 Aliases:
-
 Required: True
 Position: Named
 Default value: None
@@ -170,7 +163,6 @@ The resource id of the hubvirtualnetworkconnection resource to modify.
 Type: System.String
 Parameter Sets: ByHubVirtualNetworkConnectionResourceId
 Aliases: HubVirtualNetworkConnectionId
-
 Required: True
 Position: Named
 Default value: None
@@ -185,7 +177,6 @@ Prompts you for confirmation before running the cmdlet.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
-
 Required: False
 Position: Named
 Default value: None
@@ -201,7 +192,6 @@ The cmdlet is not run.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
 Required: False
 Position: Named
 Default value: None
@@ -210,7 +200,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -223,7 +213,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Network.Models.PSHubVirtualNetworkConnection
 
 ## NOTES
-
-## RELATED LINKS
 
 ## RELATED LINKS

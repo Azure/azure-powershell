@@ -86,7 +86,7 @@ $subnetName = "AzureBastionSubnet"
 $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
 $vnet = New-AzVirtualNetwork -Name "TestVnet" -ResourceGroupName "BastionPowershellTest" -Location "westeurope" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 $publicip = New-AzPublicIpAddress -ResourceGroupName "BastionPowershellTest" -name "Test-Ip" -location "westeurope" -AllocationMethod Dynamic -Sku Standard
-$bastion = New-AzBastion -ResourceGroupName "BastionPowershellTest" â€"Name "test-Bastion2" -PublicIpAddress $publicip -VirtualNetwork $vnet
+$bastion = New-AzBastion -ResourceGroupName "BastionPowershellTest" â€“Name "test-Bastion2" -PublicIpAddress $publicip -VirtualNetwork $vnet
 
 IpConfigurations     : {IpConf}
 DnsName              : bst-a9ca868f-ddab-4a50-9f45-a443ea8a0187.bastion.azure.com
@@ -163,9 +163,24 @@ Id                   : /subscriptions/359a08a9-ff1b-463c-92d7-6df8d946f25c/resou
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -178,7 +193,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -193,7 +208,7 @@ Accept wildcard characters: False
 The bastion resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName, BastionName
 
@@ -208,7 +223,7 @@ Accept wildcard characters: False
 The public IP address object for bastion.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
+Type: PSPublicIpAddress
 Parameter Sets: ByPublicIpAddressByVirtualNetwork, ByPublicIpAddressByVirtualNetworkRGNameByVirtualNetworkName, ByPublicIpAddressByVirtualNetworkId
 Aliases: PublicIpAddressObject
 
@@ -223,7 +238,7 @@ Accept wildcard characters: False
 The public Ip address Azure resource Id for bastion.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByPublicIpAddressIdByVirtualNetwork, ByPublicIpAddressIdByVirtualNetworkRGNameByVirtualNetworkName, ByPublicIpAddressIdByVirtualNetworkId
 Aliases: PublicIpAddressResourceId
 
@@ -238,7 +253,7 @@ Accept wildcard characters: False
 The public Ip address resource name for bastion.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByPublicIpAddressRgNameByPublicIpAddressNameByVirtualNetwork, ByPublicIpAddressRgNameByPublicIpAddressNameByVirtualNetworkRGNameByVirtualNetworkName, ByPublicIpAddressRgNameByPublicIpAddressNameByVirtualNetworkId
 Aliases:
 
@@ -253,7 +268,7 @@ Accept wildcard characters: False
 The public Ip address resource group name for bastion.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByPublicIpAddressRgNameByPublicIpAddressNameByVirtualNetwork, ByPublicIpAddressRgNameByPublicIpAddressNameByVirtualNetworkRGNameByVirtualNetworkName, ByPublicIpAddressRgNameByPublicIpAddressNameByVirtualNetworkId
 Aliases: PublicIpAddressResourceGroupName
 
@@ -268,7 +283,7 @@ Accept wildcard characters: False
 The resource group name where you need to create bastion.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -283,7 +298,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -298,7 +313,7 @@ Accept wildcard characters: False
 The virtual network object for bastion.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
+Type: PSVirtualNetwork
 Parameter Sets: ByPublicIpAddressByVirtualNetwork, ByPublicIpAddressIdByVirtualNetwork, ByPublicIpAddressRgNameByPublicIpAddressNameByVirtualNetwork
 Aliases: VirtualNetworkObject
 
@@ -313,7 +328,7 @@ Accept wildcard characters: False
 The virtual network Azure resource Id for bastion.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByPublicIpAddressByVirtualNetworkId, ByPublicIpAddressIdByVirtualNetworkId, ByPublicIpAddressRgNameByPublicIpAddressNameByVirtualNetworkId
 Aliases: VirtualNetworkResourceId
 
@@ -328,7 +343,7 @@ Accept wildcard characters: False
 The virtual network resource name for bastion.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByPublicIpAddressByVirtualNetworkRGNameByVirtualNetworkName, ByPublicIpAddressIdByVirtualNetworkRGNameByVirtualNetworkName, ByPublicIpAddressRgNameByPublicIpAddressNameByVirtualNetworkRGNameByVirtualNetworkName
 Aliases:
 
@@ -343,26 +358,11 @@ Accept wildcard characters: False
 The virtual network resource group name for bastion.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByPublicIpAddressByVirtualNetworkRGNameByVirtualNetworkName, ByPublicIpAddressIdByVirtualNetworkRGNameByVirtualNetworkName, ByPublicIpAddressRgNameByPublicIpAddressNameByVirtualNetworkRGNameByVirtualNetworkName
 Aliases: VirtualNetworkResourceGroupName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -374,7 +374,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -399,7 +399,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [Get-AzBastion](./Get-AzBastion.md)
 
 [Remove-AzBastion](./Remove-AzBastion.md)

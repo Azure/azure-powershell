@@ -37,7 +37,7 @@ Gets a Virtual Hub Route Table in a virtual hub or lists all route tables in a v
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzVirtualHubRouteTableï¿½-ResourceGroupNameï¿½"testRg"ï¿½-HubNameï¿½"westushub"ï¿½-Nameï¿½"routeTable1"
+PS C:\> Get-AzVirtualHubRouteTable -ResourceGroupName "testRg" -HubName "westushub" -Name "routeTable1"
 
 Name                : routeTable1
 Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/routeTables/routeTable1
@@ -50,7 +50,7 @@ This cmdlet retrieves a route table resource using resource group name, hub name
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzVirtualHubRouteTableï¿½-ResourceGroupNameï¿½"testRg"ï¿½-HubNameï¿½"westushub"
+PS C:\> Get-AzVirtualHubRouteTable -ResourceGroupName "testRg" -HubName "westushub"
 
 Name                : routeTable1
 Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/westushub/routeTables/routeTable1
@@ -73,7 +73,7 @@ This cmdlet lists all route tables present in a virtual hub using resource group
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 The parent resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualHubName
 Aliases: VirtualHubName, ParentVirtualHubName, ParentResourceName
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName, VirtualHubRouteTableName
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 The parent resource id.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualHubResourceId
 Aliases: VirtualHubId, ParentVirtualHubId
 
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualHubName
 Aliases:
 
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 The parent resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHub
+Type: PSVirtualHub
 Parameter Sets: ByVirtualHubObject
 Aliases: ParentObject, ParentVirtualHub
 
