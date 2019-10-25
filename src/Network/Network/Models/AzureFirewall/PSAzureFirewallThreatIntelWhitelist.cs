@@ -15,10 +15,64 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
+    using System;
+    using System.Management.Automation;
+    using System.Net;
+    using System.Text.RegularExpressions;
+
     public class PSAzureFirewallThreatIntelWhitelist
     {
-        public string[] FQDNs { get; set; }
+        private string[] fqdns;
 
-        public string[] IpAddresses { get; set; }
+        private string[] ipAddresses;
+
+        public string[] FQDNs { 
+            get { return this.fqdns; }
+            set
+            {
+                fqdns = value;
+                ValidateFqdns();
+            }
+        }
+
+        public string[] IpAddresses
+        {
+            get { return this.ipAddresses; }
+            set
+            {
+                ipAddresses = value;
+                ValidateIpAddresses();
+            }
+        }
+
+        private const string SecureGatewayThreatIntelFqdnRegex = "^\\*?([a-zA-Z0-9\\-\\.]?[a-zA-Z0-9])*$";
+
+        private void ValidateFqdns()
+        {
+            if (fqdns == null)
+                return;
+            foreach (var fqdn in fqdns)
+            {
+                var matchingRegEx = new Regex(SecureGatewayThreatIntelFqdnRegex);
+                if (!matchingRegEx.IsMatch(fqdn))
+                {
+                    throw new PSArgumentException(String.Format("\'{0}\' is not a valid threat intel whitelist FQDN", fqdn));
+                }
+            }
+        }
+
+        private void ValidateIpAddresses()
+        {
+            if (IpAddresses == null)
+                return;
+            foreach (var ip in IpAddresses)
+            {
+                IPAddress ipVal;
+                if (!IPAddress.TryParse(ip, out ipVal) || ipVal.AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    throw new PSArgumentException(String.Format("\'{0}\' is not a valid threat intel whitelist Ip Address", ip));
+                }
+            }
+        }
     }
 }
