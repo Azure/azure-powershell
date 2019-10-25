@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
+        [ResourceNameCompleter("Microsoft.Network/ipGroups", "ResourceGroupName")]
         public virtual string ResourceGroupName { get; set; }
 
         [Alias("ResourceName")]
