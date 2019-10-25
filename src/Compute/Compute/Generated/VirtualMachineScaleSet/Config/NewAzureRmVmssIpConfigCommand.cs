@@ -25,6 +25,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -106,6 +107,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string PublicIPPrefix { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("IPv4", "IPv6")]
+        public string PublicIPAddressVersion { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -202,6 +209,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
 
                 vIpConfigurations.PublicIPAddressConfiguration.PublicIPPrefix.Id = this.PublicIPPrefix;
+            }
+
+            // PublicIPAddressVersion
+            if (this.IsParameterBound(c => c.PublicIPAddressVersion))
+            {
+                if (vIpConfigurations.PublicIPAddressConfiguration == null)
+                {
+                    vIpConfigurations.PublicIPAddressConfiguration = new VirtualMachineScaleSetPublicIPAddressConfiguration();
+                }
+
+                vIpConfigurations.PublicIPAddressConfiguration.PublicIPAddressVersion = this.PublicIPAddressVersion;
             }
 
             // ApplicationGatewayBackendAddressPoolsId
