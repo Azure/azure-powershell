@@ -26,7 +26,7 @@ using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSDisk
+    public partial class PSDiskEncryptionSet
     {
         // Gets or sets the property of 'ResourceGroupName'
         public string ResourceGroupName
@@ -40,22 +40,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
             }
         }
 
-        public string ManagedBy { get; set; }
-        public DiskSku Sku { get; set; }
-        public System.Collections.Generic.IList<string> Zones { get; set; }
-        public DateTime? TimeCreated { get; set; }
-        public OperatingSystemTypes? OsType { get; set; }
-        public string HyperVGeneration { get; set; }
-        public CreationData CreationData { get; set; }
-        public int? DiskSizeGB { get; set; }
-        public long? DiskSizeBytes { get; set; }
-        public string UniqueId { get; set; }
-        public EncryptionSettingsCollection EncryptionSettingsCollection { get; set; }
+        public EncryptionSetIdentity Identity { get; set; }
+        public KeyVaultAndKeyReference ActiveKey { get; set; }
+        public IList<KeyVaultAndKeyReference> PreviousKeys { get; set; }
         public string ProvisioningState { get; set; }
-        public long? DiskIOPSReadWrite { get; set; }
-        public int? DiskMBpsReadWrite { get; set; }
-        public string DiskState { get; set; }
-        public Encryption Encryption { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }

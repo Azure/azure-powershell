@@ -165,7 +165,9 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
                'New-AzProximityPlacementGroup', 'Get-AzProximityPlacementGroup', 
                'Remove-AzProximityPlacementGroup', 'New-AzHostGroup', 
                'Get-AzHostGroup', 'Remove-AzHostGroup', 'New-AzHost', 'Get-AzHost', 
-               'Remove-AzHost'
+               'Remove-AzHost',
+               'New-AzDiskEncryptionSetConfig', 'New-AzDiskEncryptionSet',
+               'Get-AzDiskEncryptionSet', 'Remove-AzDiskEncryptionSet'
 
 # Variables to export from this module
 # VariablesToExport = @()
