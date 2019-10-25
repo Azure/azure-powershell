@@ -21,7 +21,8 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [[-Zone] <String
  [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] [-Image <String>]
  [-Size <String>] [-AvailabilitySetName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>]
  [-AsJob] [-DataDiskSizeInGb <Int32[]>] [-EnableUltraSSD] [-ProximityPlacementGroup <String>]
- [-HostId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-HostId <String>] [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
@@ -39,6 +40,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] -Name <String> [
  [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] -DiskFile <String> [-Linux] [-Size <String>]
  [-AvailabilitySetName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-AsJob]
  [-DataDiskSizeInGb <Int32[]>] [-EnableUltraSSD] [-ProximityPlacementGroup <String>] [-HostId <String>]
+ [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -332,6 +334,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EvictionPolicy
+The eviction policy for the low priority virtual machine.  Only supported value is 'Deallocate'.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -HostId
 The Id of Host
 
@@ -425,6 +442,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MaxPrice
+The max price of the billing of a low priority virtual machine.
+
+```yaml
+Type: System.Double
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the VM resource.
 
@@ -445,6 +477,21 @@ A list of ports to open on the network security group (NSG) for the created VM. 
 
 ```yaml
 Type: System.Int32[]
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Priority
+The priority for the virtual machine.  Only supported values are 'Regular' and 'Low'.
+
+```yaml
+Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 

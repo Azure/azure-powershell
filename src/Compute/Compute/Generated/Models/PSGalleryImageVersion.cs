@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
             }
         }
 
+        public GalleryImageVersionPublishingProfile PublishingProfile { get; set; }
         public string ProvisioningState { get; set; }
         public GalleryImageVersionStorageProfile StorageProfile { get; set; }
         public ReplicationStatus ReplicationStatus { get; set; }

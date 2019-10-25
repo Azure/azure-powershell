@@ -19,10 +19,19 @@
 -->
 ## Upcoming Release
 
+* Azure Site Recovery support to configure networking resources like NSG, public IP and internal load balancers for Azure to Azure.
+* Azure Site Recovery Support to write to managed disk for vMWare to Azure.
+* Azure Site Recovery Support to NIC reduction for vMWare to Azure.
+* Azure Site Recovery Support to accelerated networking for Azure to Azure.
+* Azure Site Recovery Support to agent auto update for Azure to Azure.
+* Azure Site Recovery Support to Standard SSD for Azure to Azure.
+* Azure Site Recovery Support to Azure Disk Encryption two pass for Azure to Azure.
+* Azure Site Recovery Support to protect newly added disk for Azure to Azure.
+* Added SoftDelete feature for VM and added tests for softdelete
+
 ## Version 1.4.5
 * Update AzureVMpolicy Object with ProtectedItemsCount Attribute
 * Added Tests for VM policy and Original Storage Account Restore
-* Added SoftDelete feature for VM and added tests for softdelete
 
 ## Version 1.4.4
 * Fixed miscellaneous typos across module
