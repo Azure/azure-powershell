@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             PSSubnet BastionSubnet = null;
             try
             {
-                BastionSubnet = virtualNetwork.Subnets.Single(subnet => BastionSubnetName.Equals(subnet.Name));
+                BastionSubnet = virtualNetwork.Subnets.Single(subnet => BastionSubnetName.Equals(subnet.Name, StringComparison.OrdinalIgnoreCase));
             }
 
             catch (InvalidOperationException)

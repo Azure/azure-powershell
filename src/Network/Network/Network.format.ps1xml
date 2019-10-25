@@ -3294,6 +3294,18 @@
                 <Label>ThreatIntelMode</Label>
                 <PropertyName>ThreatIntelMode</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>Sku</Label>
+                <PropertyName>Sku</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VirtualHub</Label>
+                <PropertyName>VirtualHub</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>FirewallPolicy</Label>
+                <PropertyName>FirewallPolicy</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -3605,8 +3617,16 @@
                 <PropertyName>VirtualNetworkExpressRouteConnections</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>RouteTables</Label>
+                <PropertyName>RouteTables</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Location</Label>
                 <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Sku</Label>
+                <PropertyName>Sku</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Type</Label>
@@ -3641,6 +3661,44 @@
               <ListItem>
                 <Label>RemoteVirtualNetwork</Label>
                 <ScriptBlock>$_.RemoteVirtualNetwork.Id</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>EnableInternetSecurity</Label>
+                <PropertyName>EnableInternetSecurity</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSVirtualHubRouteTable</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVirtualHubRouteTable</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Routes</Label>
+                <PropertyName>Routes</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Connections</Label>
+                <PropertyName>Connections</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>ProvisioningState</Label>
@@ -3679,6 +3737,10 @@
               <ListItem>
                 <Label>Location</Label>
                 <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VirtualWANType</Label>
+                <PropertyName>VirtualWANType</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Type</Label>
@@ -3895,6 +3957,10 @@
               <ListItem>
                 <Label>Type</Label>
                 <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EnableInternetSecurity</Label>
+                <PropertyName>EnableInternetSecurity</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>ProvisioningState</Label>
@@ -4320,6 +4386,106 @@
               <ListItem>
                 <Label>PrivateLinkService</Label>
                 <PropertyName>PrivateLinkService</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSVirtualRouter</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVirtualRouter</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Etag</Label>
+                <PropertyName>Etag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>HostedGateway</Label>
+                <PropertyName>HostedGatewayText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VirtualRouterAsn</Label>
+                <PropertyName>VirtualRouterAsn</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VirtualRouterIps</Label>
+                <PropertyName>VirtualRouterIps</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Peerings</Label>
+                <PropertyName>PeeringsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSVirtualRouterPeer</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVirtualRouterPeer</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Etag</Label>
+                <PropertyName>Etag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PeerAsn</Label>
+                <PropertyName>PeerAsn</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PeerIp</Label>
+                <PropertyName>PeerIp</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
