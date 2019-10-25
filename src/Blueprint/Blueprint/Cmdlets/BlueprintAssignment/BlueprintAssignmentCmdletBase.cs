@@ -240,5 +240,21 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 throw new Exception(string.Format(Resources.AssignmentNotExist, name, scope));
             }
         }
+
+        /// <summary>
+        /// Checks if an assignment uses user assigned identity.
+        /// </summary>
+        /// <param name="identity"></param>
+        /// <returns></returns>
+        protected bool IsUserAssignedIdentity(ManagedServiceIdentity identity)
+        {
+            if (String.IsNullOrEmpty(identity?.Type))
+            {
+                throw new Exception(Resources.IdentityTypeNotProvided);
+            }
+
+            return identity.Type.Equals(ManagedServiceIdentityType.UserAssigned, StringComparison.OrdinalIgnoreCase);
+
+        }
     }
 }

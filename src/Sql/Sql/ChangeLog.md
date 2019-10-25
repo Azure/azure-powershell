@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for restore of dropped databases on Managed Instances.
+* Deprecated from code old auditing cmdlets.
+* Removed deprecated aliases:
+  * Get-AzSqlDatabaseIndexRecommendations (use Get-AzSqlDatabaseIndexRecommendation instead)
+  * Get-AzSqlDatabaseRestorePoints (use Get-AzSqlDatabaseRestorePoint instead)
+
+## Version 1.15.0
+* Add support for setting Active Directory Administrator on Managed Instance
 
 ## Version 1.14.2
 * Update example in reference documentation for `Get-AzSqlElasticPool`
@@ -25,7 +33,6 @@
 * Remove the validation of EmailAddresses and the check that EmailAdmins is not false in case EmailAddresses is empty in Set-AzSqlServerAdvancedThreatProtectionPolicy and Set-AzSqlDatabaseAdvancedThreatProtectionPolicy
 * Enabled removal of server/database auditing settings when multiple diagnostic settings that enable audit category exist.
 * Fix email addresses validation in multiple Sql Vulnerability Assessment cmdlets (Update-AzSqlDatabaseVulnerabilityAssessmentSetting, Update-AzSqlServerVulnerabilityAssessmentSetting, Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting and Update-AzSqlInstanceVulnerabilityAssessmentSetting).
-* Add support for setting Active Directory Administrator on Managed Instance
 
 ## Version 1.14.1
 * Update documentation of old Auditing cmdlets.

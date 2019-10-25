@@ -1355,8 +1355,10 @@ Tests Tags are not overridden when calling Set-AzWebApp commandlet
 function Test-TagsNotRemovedBySetWebApp
 {
 	$rgname = "lketmtestantps10"
-	$appname = "lketmtestantps10" # this is an existing app with existing tags
+	$appname = "tagstestantps10" # this is an existing app with existing tags
 	$slot = "testslot"
+	$aspName = "tagstestAspantps10"
+	$aspToMove = "tagstestAsp2antps10"
 
 	$getApp =  Get-AzWebApp -ResourceGroupName $rgname -Name $appname
 	$getSlot = Get-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slot
@@ -1377,9 +1379,16 @@ function Test-TagsNotRemovedBySetWebApp
 	$webapp =  Set-AzWebApp  -WebApp $getApp
 	Assert-notNull $webApp.Tags
 
-	$webapp = Set-AzWebApp -Name $appname -ResourceGroupName $rgname -AppServicePlan "lke-asp2-antps10"
+	$webapp = Set-AzWebApp -Name $appname -ResourceGroupName $rgname -AppServicePlan $aspToMove
+	# verify that App has been successfully moved to the new ASP
+	$asp = Get-AzAppServicePlan -ResourceGroupName $rgname -Name $aspToMove
+	Assert-AreEqual $webApp.ServerFarmId $asp.id
+	# verify tags are not removed after ASP move
 	Assert-notNull $webApp.Tags
+
 	# Move it back to the original ASP
-	$webApp = Set-AzWebApp -Name $appname -ResourceGroupName $rgname -AppServicePlan "lke-asp-antps10"
+	$webApp = Set-AzWebApp -Name $appname -ResourceGroupName $rgname -AppServicePlan $aspName
+	$asp = Get-AzAppServicePlan -ResourceGroupName $rgname -Name $aspName
+	Assert-AreEqual $webApp.ServerFarmId $asp.id
 	Assert-notNull $webApp.Tags
 }

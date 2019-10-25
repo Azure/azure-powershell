@@ -2,7 +2,7 @@
 Module Name: Az.Cdn
 Module Guid: 91832aaa-dc11-4583-8239-bce5fd531604
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.cdn
-Help Version: 4.2.2.0
+Help Version: 4.2.4.0
 Locale: en-US
 ---
 
@@ -63,16 +63,16 @@ Gets the resource usage for a subscription.
 Creates a custom domain for a CDN endpoint.
 
 ### [New-AzCdnDeliveryPolicy](New-AzCdnDeliveryPolicy.md)
-Creates a deliveryPolicy for a CDN endpoint.
+Creates a delivery policy.
 
 ### [New-AzCdnDeliveryRule](New-AzCdnDeliveryRule.md)
-Creates a deliveryRule for deliveryPolicy creation.
+Creates a delivery rule.
 
 ### [New-AzCdnDeliveryRuleAction](New-AzCdnDeliveryRuleAction.md)
-Creates a deliveryRuleAction for deliveryRule creation.
+Creates a delivery action.
 
 ### [New-AzCdnDeliveryRuleCondition](New-AzCdnDeliveryRuleCondition.md)
-Creates a deliveryRuleCondition for deliveryRule creation.
+Creates a delivery rule condition.
 
 ### [New-AzCdnEndpoint](New-AzCdnEndpoint.md)
 Creates a CDN endpoint.
