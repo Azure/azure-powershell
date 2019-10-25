@@ -43,6 +43,7 @@
         - Update-AzureRmVpnConnection : added parameter EnableInternetSecurity
         - New-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
         - Set-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
+* Fix required subnet with name AzureBastionSubnet in `PSBastion` can be case insensitive
 
 ## Version 1.15.0
 * Add new cmdlet Get-AzAvailableServiceAlias which can be called to get the aliases that can be used for Service Endpoint Policies.
