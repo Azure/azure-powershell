@@ -21,6 +21,7 @@
 * Added support for restore of dropped databases on Managed Instances.
 * Remove aliases for deprecated Vulnerability Assessment Settings
 * Deprecate Advanced Threat Detection Settings
+* Deprecated from code old auditing cmdlets.
 * Removed deprecated aliases:
   * Get-AzSqlDatabaseIndexRecommendations (use Get-AzSqlDatabaseIndexRecommendation instead)
   * Get-AzSqlDatabaseRestorePoints (use Get-AzSqlDatabaseRestorePoint instead)
