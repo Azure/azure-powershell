@@ -38,6 +38,13 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
+        [CmdletParameterBreakingChange("Description", ChangeDescription = "Parameter is being deprecated without being replaced")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The reason of action.")]
+        public string Description { get; set; }
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to delete resource")]
