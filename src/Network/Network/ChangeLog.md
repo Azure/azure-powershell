@@ -43,6 +43,7 @@
         - Update-AzureRmVpnConnection : added parameter EnableInternetSecurity
         - New-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
         - Set-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
+* Fix required subnet with name AzureBastionSubnet in `PSBastion` can be case insensitive
 * Support for Destination FQDNs in Network Rules and Translated FQDN in NAT Rules for Azure Firewall
 
 ## Version 1.15.0
