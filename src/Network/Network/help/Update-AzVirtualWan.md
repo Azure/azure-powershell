@@ -63,7 +63,7 @@ The above will create a resource group "testRG" in region "West US" and an Azure
 Allow branch to branch traffic for VirtualWan.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 Allow vnet to vnet traffic for VirtualWan.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 The virtual wan object to be modified
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualWan
+Type: PSVirtualWan
 Parameter Sets: ByVirtualWanObject
 Aliases: VirtualWan
 
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualWanName
 Aliases: ResourceName, VirtualWanName
 
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualWanName
 Aliases:
 
@@ -183,7 +183,7 @@ Accept wildcard characters: False
 The Azure resource ID for the virtual wan.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualWanResourceId
 Aliases: VirtualWanId
 
@@ -198,7 +198,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -213,7 +213,7 @@ Accept wildcard characters: False
 The type of the Virtual Wan.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -228,7 +228,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -244,7 +244,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

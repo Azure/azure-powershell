@@ -24,7 +24,7 @@ Creates a VirtualHubRoute object.
 
 ### Example 1
 ```powershell
-PS C:\> Add-AzVirtualHubRouteï¿½-DestinationTypeï¿½"CIDR"ï¿½-Destinationï¿½@("10.4.0.0/16",ï¿½"10.5.0.0/16")ï¿½-NextHopTypeï¿½"IPAddress"ï¿½-NextHopï¿½@("10.0.0.68")
+PS C:\> Add-AzVirtualHubRoute -DestinationType "CIDR" -Destination @("10.4.0.0/16", "10.5.0.0/16") -NextHopType "IPAddress" -NextHop @("10.0.0.68")
 
 AddressPrefixes  : {10.4.0.0/16, 10.5.0.0/16}
 NextHopIpAddress : 10.0.0.68
@@ -42,7 +42,7 @@ The above command will create a VirtualHubRoute object which can then be added t
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 List of Destinations.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 Type of Destinations.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 List of Next hops.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 The Next Hop type.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

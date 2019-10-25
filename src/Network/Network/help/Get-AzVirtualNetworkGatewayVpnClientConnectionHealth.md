@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualnetworkgatewayvpnclientconnectionhealth
@@ -7,28 +7,14 @@ schema: 2.0.0
 
 # Get-AzVirtualNetworkGatewayVpnClientConnectionHealth
 
-## SYNOPSIS
+## SYNOPSIS 
 Get the list of vpn client connection health of an Azure virtual network gateway for per vpn client connection
 
 ## SYNTAX
 
-### ByFactoryName (Default)
 ```
-Get-AzVirtualNetworkGatewayVpnClientConnectionHealth -VirtualNetworkGatewayName <String>
- -ResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByResourceId
-```
-Get-AzVirtualNetworkGatewayVpnClientConnectionHealth [-ResourceId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByFactoryObject
-```
-Get-AzVirtualNetworkGatewayVpnClientConnectionHealth [-InputObject <PSVirtualNetworkGateway>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzVirtualNetworkGatewayVpnClientConnectionHealth -ResourceName <String> -ResourceGroupName <String> -InputObject <PSVirtualNetworkGateway> -ResourceId <ResourceId>
+ [-AsJob] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,33 +69,47 @@ For the Azure virtual network gateway named gatewayname in resource group resour
 
 ## PARAMETERS
 
-### -AsJob
-Run cmdlet in the background
+### -ResourceGroupName
+Virtual network gateway resource group's name
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -ResourceName
+Virtual network gateway name
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.String
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: VirtualNetworkGatewayName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+### -ResourceId
+Virtual network gateway resource Id
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ResourceId
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -118,7 +118,7 @@ Virtual network gateway object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
-Parameter Sets: ByFactoryObject
+Parameter Sets: (All)
 Aliases: VirtualNetworkGateway
 
 Required: False
@@ -128,73 +128,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Virtual network gateway resource group's name
+### -AsJob
+Run cmdlet in the background
 
 ```yaml
-Type: System.String
-Parameter Sets: ByFactoryName
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Virtual network gateway resource Id
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases: VirtualNetworkGatewayId
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -VirtualNetworkGatewayName
-Virtual network gateway name
-
-```yaml
-Type: System.String
-Parameter Sets: ByFactoryName
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
 
 Required: False
 Position: Named

@@ -12,17 +12,17 @@ saves a modified azure firewall policy rule collection group
 
 ## SYNTAX
 
-### SetByNameParameterSet (Default)
+### SetByNameParameterSet
 ```
 Set-AzFirewallPolicyRuleCollectionGroup -Name <String> -ResourceGroupName <String> -FirewallPolicyName <String>
- -Priority <UInt32> [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>]
+ -Priority <UInt32> -RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByParentInputObjectParameterSet
 ```
 Set-AzFirewallPolicyRuleCollectionGroup -Name <String> -FirewallPolicyObject <PSAzureFirewallPolicy>
- -Priority <UInt32> [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>]
+ -Priority <UInt32> -RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ Set-AzFirewallPolicyRuleCollectionGroup -InputObject <PSAzureFirewallPolicyRuleC
 ### SetByResourceIdParameterSet
 ```
 Set-AzFirewallPolicyRuleCollectionGroup -ResourceId <String> -Priority <UInt32>
- [-RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]>] [-DefaultProfile <IAzureContextContainer>]
+ -RuleCollection <PSAzureFirewallPolicyBaseRuleCollection[]> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -110,7 +110,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -203,13 +203,25 @@ The list of rule collections
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyBaseRuleCollection[]
-Parameter Sets: (All)
+Parameter Sets: SetByNameParameterSet, SetByParentInputObjectParameterSet, SetByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyBaseRuleCollection[]
+Parameter Sets: SetByInputObjectParameterSet
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

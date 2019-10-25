@@ -3295,10 +3295,6 @@
                 <PropertyName>ThreatIntelMode</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>ThreatIntelWhitelist</Label>
-                <PropertyName>ThreatIntelWhitelistText</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>Sku</Label>
                 <PropertyName>Sku</PropertyName>
               </ListItem>

@@ -129,7 +129,7 @@ The connection is then updated to have a new shared key using the secure string 
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 The bandwidth that needs to be handled by this connection in mbps.
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 Enable BGP for this connection
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 Enable internet security for this connection
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -204,7 +204,7 @@ Accept wildcard characters: False
 The VpnConnection object to update.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVpnConnection
+Type: PSVpnConnection
 Parameter Sets: ByVpnConnectionObject
 Aliases: VpnConnection
 
@@ -219,7 +219,7 @@ Accept wildcard characters: False
 The bandwidth that needs to be handled by this connection in mbps.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy
+Type: PSIpsecPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -234,7 +234,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVpnConnectionName
 Aliases: ResourceName, VpnConnectionName
 
@@ -249,7 +249,7 @@ Accept wildcard characters: False
 The parent resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVpnConnectionName
 Aliases: ParentVpnGatewayName, VpnGatewayName
 
@@ -264,7 +264,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVpnConnectionName
 Aliases:
 
@@ -279,7 +279,7 @@ Accept wildcard characters: False
 The resource id of the VpnConnection object to delete.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVpnConnectionResourceId
 Aliases: VpnConnectionId
 
@@ -294,7 +294,7 @@ Accept wildcard characters: False
 The shared key required to set this connection up.
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -309,7 +309,7 @@ Accept wildcard characters: False
 Use local azure ip address as source address while initiating connection.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -324,7 +324,7 @@ Accept wildcard characters: False
 Use policy based traffic selectors for this connection.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -339,7 +339,7 @@ Accept wildcard characters: False
 The list of VpnSiteLinkConnections that this VpnConnection needs to have.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVpnSiteLinkConnection[]
+Type: PSVpnSiteLinkConnection[]
 Parameter Sets: (All)
 Aliases:
 
@@ -354,7 +354,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -370,7 +370,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

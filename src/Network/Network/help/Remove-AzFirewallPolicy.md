@@ -12,7 +12,7 @@ Removes an Azure Firewall Policy
 
 ## SYNTAX
 
-### RemoveByNameParameterSet (Default)
+### RemoveByNameParameterSet
 ```
 Remove-AzFirewallPolicy -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -172,7 +172,7 @@ Type: System.String
 Parameter Sets: RemoveByResourceIdParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
