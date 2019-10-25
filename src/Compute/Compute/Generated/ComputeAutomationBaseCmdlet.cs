@@ -106,6 +106,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public IDiskEncryptionSetsOperations DiskEncryptionSetsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.DiskEncryptionSets;
+            }
+        }
+
         public IDisksOperations DisksClient
         {
             get
@@ -199,6 +207,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             get
             {
                 return ComputeClient.ComputeManagementClient.VirtualMachineScaleSets;
+            }
+        }
+
+        public IVirtualMachineScaleSetVMExtensionsOperations VirtualMachineScaleSetVMExtensionsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.VirtualMachineScaleSetVMExtensions;
             }
         }
 
