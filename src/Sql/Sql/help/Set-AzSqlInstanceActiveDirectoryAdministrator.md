@@ -22,7 +22,7 @@ Set-AzSqlInstanceActiveDirectoryAdministrator [-DisplayName] <String> [-ObjectId
 ### UseInputObjectParameterSet
 ```
 Set-AzSqlInstanceActiveDirectoryAdministrator [-DisplayName] <String> [-ObjectId] <Guid>
- [-InputObject <AzureSqlManagedInstanceModel>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -InputObject <AzureSqlManagedInstanceModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -118,7 +118,7 @@ Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstance
 Parameter Sets: UseInputObjectParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
