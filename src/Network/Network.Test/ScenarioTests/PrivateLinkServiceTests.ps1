@@ -26,6 +26,15 @@ function Check-CmdletReturnType
 
 <#
 .SYNOPSIS
+Gets the subscription ID from the recorded mock for a test
+#>
+function getSubscription
+{
+   return $(getVariable "SubscriptionId")
+}
+
+<#
+.SYNOPSIS
 Test creating new PrivateLinkService using minimal set of parameters
 #>
 function Test-PrivateLinkServiceCRUD
@@ -135,13 +144,14 @@ function Test-PrivateEndpointConnectionCRUD
     $ilbBackendName = "LB-Backend";
     $ilbName = Get-ResourceName;
 
-    $serverName = "server-$(Get-Random)"
+    $serverName = Get-ResourceName
     $serverLogin = "testusername"
     <#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
     $serverPassword = "t357ingP@s5w0rd!Sec"
     $credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
     $databaseName = "mySampleDatabase"
     $peName = "mype"
+    $subId = getSubscription
 
     try
     {
@@ -165,7 +175,7 @@ function Test-PrivateEndpointConnectionCRUD
         }
         else
         {
-            $sqlResourceId = "/subscriptions/e05dbbce-79c2-45a2-a7ef-f1058856feb3/resourceGroups/ps3301/providers/Microsoft.Sql/servers/server-841315352"
+            $sqlResourceId = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.Sql/servers/$serverName"
         }
 
         # Create Private Endpoint
