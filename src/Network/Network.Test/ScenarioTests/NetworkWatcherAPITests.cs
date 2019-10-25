@@ -75,7 +75,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.Owner, Category.netanalyticsdev)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestFlowLog()
         {
             TestRunner.RunTestScript("Test-FlowLog");
@@ -98,7 +98,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ReachabilityReport");
         }
 
-        [Fact]
+        [Fact(Skip = "API is no longer available to customers")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestProvidersList()
