@@ -1632,7 +1632,6 @@
     "New-AzFirewallNatRule": "New-AzureRmFirewallNatRule",
     "New-AzFirewallNetworkRuleCollection": "New-AzureRmFirewallNetworkRuleCollection",
     "New-AzFirewallNetworkRule": "New-AzureRmFirewallNetworkRule",
-    "New-AzFirewallThreatIntelWhitelist": "New-AzureRmFirewallThreatIntelWhitelist",
     "Get-AzFirewallFqdnTag": "Get-AzureRmFirewallFqdnTag",
     "Add-AzNetworkInterfaceTapConfig": "Add-AzureRmNetworkInterfaceTapConfig",
     "Get-AzNetworkInterfaceTapConfig": "Get-AzureRmNetworkInterfaceTapConfig",
