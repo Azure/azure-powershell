@@ -57,5 +57,14 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureFirewallAllocateAndDeallocate");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallVirtualHubCRUD()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallVirtualHubCRUD");
+        }
+
     }
 }

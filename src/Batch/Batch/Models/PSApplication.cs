@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
         public string Id { get; set; }
 
+        public string Name { get; set; }
+
         public string DefaultVersion { get; set; }
 
         public string DisplayName { get; set; }
