@@ -291,7 +291,7 @@ For serverless Azure Sql databases only.
 ```yaml
 Type: System.Double
 Parameter Sets: Update, VcoreBasedDatabase
-Aliases: MinVCore
+Aliases: MinVCore, MinCapacity
 
 Required: False
 Position: Named

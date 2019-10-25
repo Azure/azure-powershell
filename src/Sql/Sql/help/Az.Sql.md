@@ -99,6 +99,8 @@ Gets one or more Advisors for an Azure SQL Database.
 Gets the auditing settings of an Azure SQL database.
 
 ### [Get-AzSqlDatabaseAuditing](Get-AzSqlDatabaseAuditing.md)
+**Important: This cmdlet is deprecated, [Get-AzSqlDatbaseAudit](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaseaudit) is replacing it.**
+
 Gets the auditing settings of an Azure SQL database.
 
 ### [Get-AzSqlDatabaseBackupLongTermRetentionPolicy](Get-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
@@ -286,6 +288,8 @@ Gets one or more Advisors for an Azure SQL Server.
 Gets the auditing settings of an Azure SQL server.
 
 ### [Get-AzSqlServerAuditing](Get-AzSqlServerAuditing.md)
+**Important: This cmdlet is deprecated, [Get-AzSqlServerAudit](https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserveraudit) is replacing it.**
+
 Gets the auditing settings of an Azure SQL server.
 
 ### [Get-AzSqlServerCommunicationLink](Get-AzSqlServerCommunicationLink.md)
@@ -559,6 +563,8 @@ Modifies auto execute status of an Azure SQL Database Advisor.
 Changes the auditing settings for an Azure SQL database.
 
 ### [Set-AzSqlDatabaseAuditing](Set-AzSqlDatabaseAuditing.md)
+**Important: This cmdlet is deprecated, [Set-AzSqlDatabaseAudit](https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqldatabaseaudit) is replacing it.**
+
 Changes the auditing settings for an Azure SQL database.
 
 ### [Set-AzSqlDatabaseBackupLongTermRetentionPolicy](Set-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
@@ -652,6 +658,8 @@ Updates the auto execute status of an Azure SQL Server Advisor.
 Changes the auditing settings of an Azure SQL server.
 
 ### [Set-AzSqlServerAuditing](Set-AzSqlServerAuditing.md)
+**Important: This cmdlet is deprecated, [Set-AzSqlServerAudit](https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserveraudit) is replacing it.**
+
 Changes the auditing settings of an Azure SQL server.
 
 ### [Set-AzSqlServerDisasterRecoveryConfiguration](Set-AzSqlServerDisasterRecoveryConfiguration.md)
