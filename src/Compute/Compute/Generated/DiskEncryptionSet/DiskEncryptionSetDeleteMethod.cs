@@ -107,6 +107,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceIdCompleter("Microsoft.Compute/diskEncryptionSets")]
         public string ResourceId { get; set; }
 
         [Alias("DiskEncryptionSet")]
