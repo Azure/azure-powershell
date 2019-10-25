@@ -20,7 +20,7 @@ Get-AzSqlInstanceActiveDirectoryAdministrator [-ResourceGroupName] <String> [-In
 
 ### UseInputObjectParameterSet
 ```
-Get-AzSqlInstanceActiveDirectoryAdministrator [-InputObject <AzureSqlManagedInstanceModel>]
+Get-AzSqlInstanceActiveDirectoryAdministrator -InputObject <AzureSqlManagedInstanceModel>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -90,7 +90,7 @@ Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstance
 Parameter Sets: UseInputObjectParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

@@ -98,9 +98,6 @@ Gets one or more Advisors for an Azure SQL Database.
 ### [Get-AzSqlDatabaseAudit](Get-AzSqlDatabaseAudit.md)
 Gets the auditing settings of an Azure SQL database.
 
-### [Get-AzSqlDatabaseAuditing](Get-AzSqlDatabaseAuditing.md)
-Gets the auditing settings of an Azure SQL database.
-
 ### [Get-AzSqlDatabaseBackupLongTermRetentionPolicy](Get-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
 Gets a database long term retention policy.
 
@@ -289,9 +286,6 @@ Gets the advanced threat protection settings for a server.
 Gets one or more Advisors for an Azure SQL Server.
 
 ### [Get-AzSqlServerAudit](Get-AzSqlServerAudit.md)
-Gets the auditing settings of an Azure SQL server.
-
-### [Get-AzSqlServerAuditing](Get-AzSqlServerAuditing.md)
 Gets the auditing settings of an Azure SQL server.
 
 ### [Get-AzSqlServerCommunicationLink](Get-AzSqlServerCommunicationLink.md)
@@ -564,9 +558,6 @@ Modifies auto execute status of an Azure SQL Database Advisor.
 ### [Set-AzSqlDatabaseAudit](Set-AzSqlDatabaseAudit.md)
 Changes the auditing settings for an Azure SQL database.
 
-### [Set-AzSqlDatabaseAuditing](Set-AzSqlDatabaseAuditing.md)
-Changes the auditing settings for an Azure SQL database.
-
 ### [Set-AzSqlDatabaseBackupLongTermRetentionPolicy](Set-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
 Sets a server long term retention policy.
 
@@ -655,9 +646,6 @@ Provisions an Azure AD administrator for SQL Server.
 Updates the auto execute status of an Azure SQL Server Advisor.
 
 ### [Set-AzSqlServerAudit](Set-AzSqlServerAudit.md)
-Changes the auditing settings of an Azure SQL server.
-
-### [Set-AzSqlServerAuditing](Set-AzSqlServerAuditing.md)
 Changes the auditing settings of an Azure SQL server.
 
 ### [Set-AzSqlServerDisasterRecoveryConfiguration](Set-AzSqlServerDisasterRecoveryConfiguration.md)

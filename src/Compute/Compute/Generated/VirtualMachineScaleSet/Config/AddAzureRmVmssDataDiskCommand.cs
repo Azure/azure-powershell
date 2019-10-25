@@ -80,6 +80,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS")]
         public string StorageAccountType { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string DiskEncryptionSetId { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "Add"))
@@ -121,6 +126,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 // ManagedDisk
                 vDataDisks.ManagedDisk = new VirtualMachineScaleSetManagedDiskParameters();
                 vDataDisks.ManagedDisk.StorageAccountType = this.StorageAccountType;
+            }
+            if (this.IsParameterBound(c => c.DiskEncryptionSetId))
+            {
+                if (vDataDisks.ManagedDisk == null)
+                {
+                    vDataDisks.ManagedDisk = new VirtualMachineScaleSetManagedDiskParameters();
+                }
+                // DiskEncryptionSet
+                vDataDisks.ManagedDisk.DiskEncryptionSet = new DiskEncryptionSetParameters();
+                vDataDisks.ManagedDisk.DiskEncryptionSet.Id = this.DiskEncryptionSetId;
             }
             this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.DataDisks.Add(vDataDisks);
             WriteObject(this.VirtualMachineScaleSet);
