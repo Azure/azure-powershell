@@ -202,7 +202,29 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
             {
                 return new PSDeliveryRuleUrlRedirectAction
                 {
-                    RedirectType = urlRedirectAction.Parameters.RedirectType
+                    RedirectType = urlRedirectAction.Parameters.RedirectType,
+                    DestinationProtocol = urlRedirectAction.Parameters.DestinationProtocol,
+                    CustomHostname = urlRedirectAction.Parameters.CustomHostname,
+                    CustomPath = urlRedirectAction.Parameters.CustomPath,
+                    CustomFragment = urlRedirectAction.Parameters.CustomFragment,
+                    CustomQueryString = urlRedirectAction.Parameters.CustomQueryString
+                };
+            }
+            else if (deliveryRuleAction is UrlRewriteAction urlRewriteAction)
+            {
+                return new PSDeliveryRuleUrlRewriteAction
+                {
+                    SourcePattern = urlRewriteAction.Parameters.SourcePattern,
+                    Destination = urlRewriteAction.Parameters.Destination,
+                    PreservePath = urlRewriteAction.Parameters.PreserveUnmatchedPath ?? true
+                };
+            }
+            else if (deliveryRuleAction is DeliveryRuleCacheKeyQueryStringAction deliveryRuleCacheKeyQueryStringAction)
+            {
+                return new PSDeliveryRuleCacheKeyQueryStringAction
+                {
+                    QueryStringBehavior = deliveryRuleCacheKeyQueryStringAction.Parameters.QueryStringBehavior,
+                    QueryParameter = deliveryRuleCacheKeyQueryStringAction.Parameters.QueryParameters
                 };
             }
             else
@@ -340,6 +362,26 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                     MatchVariable = "IsDevice",
                     NegateCondition = deliveryRuleIsDeviceCondition.Parameters.NegateCondition,
                     MatchValue = deliveryRuleIsDeviceCondition.Parameters.MatchValues
+                };
+            }
+            else if (deliveryRuleCondition is DeliveryRuleHttpVersionCondition deliveryRuleHttpVersionCondition)
+            {
+                return new PSDeliveryRuleCondition
+                {
+                    MatchVariable = "HttpVersion",
+                    NegateCondition = deliveryRuleHttpVersionCondition.Parameters.NegateCondition,
+                    MatchValue = deliveryRuleHttpVersionCondition.Parameters.MatchValues
+                };
+            }
+            else if (deliveryRuleCondition is DeliveryRuleCookiesCondition deliveryRuleCookiesCondition)
+            {
+                return new PSDeliveryRuleCondition
+                {
+                    MatchVariable = "Cookies",
+                    NegateCondition = deliveryRuleCookiesCondition.Parameters.NegateCondition,
+                    Selector = deliveryRuleCookiesCondition.Parameters.Selector,
+                    MatchValue = deliveryRuleCookiesCondition.Parameters.MatchValues,
+                    Transfroms = deliveryRuleCookiesCondition.Parameters.Transforms
                 };
             }
             else
@@ -519,6 +561,27 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                             Transforms = psDeliveryRuleCondition.Transfroms
                         }
                     };
+                case "HttpVersion":
+                    return new DeliveryRuleHttpVersionCondition
+                    {
+                        Parameters = new HttpVersionMatchConditionParameters
+                        {
+                            MatchValues = psDeliveryRuleCondition.MatchValue,
+                            NegateCondition = psDeliveryRuleCondition.NegateCondition
+                        }
+                    };
+                case "Cookies":
+                    return new DeliveryRuleCookiesCondition
+                    {
+                        Parameters = new CookiesMatchConditionParameters
+                        {
+                            MatchValues = psDeliveryRuleCondition.MatchValue,
+                            NegateCondition = psDeliveryRuleCondition.NegateCondition,
+                            OperatorProperty = psDeliveryRuleCondition.Operator,
+                            Selector = psDeliveryRuleCondition.Selector,
+                            Transforms = psDeliveryRuleCondition.Transfroms
+                        }
+                    };
                 default:
                     return new DeliveryRuleCondition();
             }
@@ -579,6 +642,29 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                     }
                 };
             }
+            else if (psDeliveryRuleAction is PSDeliveryRuleCacheKeyQueryStringAction psDeliveryRuleCacheKeyQueryStringAction)
+            {
+                return new DeliveryRuleCacheKeyQueryStringAction
+                {
+                    Parameters = new CacheKeyQueryStringActionParameters
+                    {
+                        QueryStringBehavior = psDeliveryRuleCacheKeyQueryStringAction.QueryStringBehavior,
+                        QueryParameters = psDeliveryRuleCacheKeyQueryStringAction.QueryParameter
+                    }
+                };
+            }
+            else if (psDeliveryRuleAction is PSDeliveryRuleUrlRewriteAction psDeliveryRuleUrlRewriteAction)
+            {
+                return new UrlRewriteAction
+                {
+                    Parameters = new UrlRewriteActionParameters
+                    {
+                        SourcePattern = psDeliveryRuleUrlRewriteAction.SourcePattern,
+                        Destination = psDeliveryRuleUrlRewriteAction.Destination,
+                        PreserveUnmatchedPath = psDeliveryRuleUrlRewriteAction.PreservePath
+                    }
+                };
+            }
             return new DeliveryRuleAction();
         }
 
@@ -589,7 +675,7 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 Name = psDeliveryRule.Name,
                 Order = psDeliveryRule.Order,
                 Actions = psDeliveryRule.Actions.Select(action => action.ToDeliveryRuleAction()).ToList(),
-                Conditions = psDeliveryRule.Conditions.Select(condition => condition.ToDeliveryRuleCondition()).ToList()
+                Conditions = psDeliveryRule.Conditions?.Select(condition => condition.ToDeliveryRuleCondition()).ToList()
             };
         }
 
@@ -758,12 +844,13 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                         condition.Operator != "LessThanOrEqual" && condition.Operator != "GreaterThan" && condition.Operator != "GreaterThanOrEqual")
                     {
                         throw new PSArgumentException(string.Format(
-                                "Invalid Operator {0} found for {1} match condition. Valid operators are IPMatch, Any, GeoMatch", condition.Operator, condition.MatchVariable
+                                "Invalid Operator {0} found for {1} match condition. Valid operators are Any, Equal, Contains, BeginsWith, EndsWith, LessThan, LessThanOrEqual, GreaterThan, GreaterThanOrEqual.", condition.Operator, condition.MatchVariable
                                 ));
                     }
                     break;
                 case "RequestHeader":
                 case "PostArgs":
+                case "Cookies":
                     if (condition.Selector == null)
                     {
                         throw new PSArgumentException(string.Format(
@@ -782,6 +869,7 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 case "RequestScheme":
                 case "IsDevice":
                 case "RequestMethod":
+                case "HttpVersion":
                     if (condition.Operator !="Equal")
                     {
                         throw new PSArgumentException(string.Format(
