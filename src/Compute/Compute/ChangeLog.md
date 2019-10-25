@@ -34,6 +34,7 @@
         Set-AzVMDataDisk
         Add-AzVMDataDisk
         Add-AzVmssDataDisk
+        Add-AzVmssVMDataDisk
     - DiskEncryptionSetId and EncryptionType parameters are added to the following cmdlets:
         New-AzDiskConfig
         New-AzSnapshotConfig
