@@ -1,4 +1,5 @@
-﻿# ----------------------------------------------------------------------------------
+﻿#----------------------------------------------------------------------------------
+
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -40,26 +41,17 @@ function Test-IpGroupsCRUD
     {
       # Create the resource group
       New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
-    
+
       # Create IpGroup
-	  $actualIpGroup = New-AzIpGroup -ResourceGroupName $rgname -location $location -Name $IpGroupsName IpAddress 10.0.0.0/24,11.9.0.0/24
-	  $expectedIpGroup = Get-AzIpGroup -ResourceGroupName $rgname -Name $IpGroupsName
+	  $actualIpGroup = New-AzIpGroup -ResourceGroupName $rgname -location $location -Name $IpGroupsName -IpAddress 10.0.0.0/24,11.9.0.0/24
+      $expectedIpGroup = Get-AzIpGroup -ResourceGroupName $rgname -Name $IpGroupsName
 	  Assert-AreEqual $expectedIpGroup.ResourceGroupName $actualIpGroup.ResourceGroupName	
       Assert-AreEqual $expectedIpGroup.Name $actualIpGroup.Name
-
-	  # List IpGroups
-	  $list = Get-AzIpGroup -ResourceGroupName $rgname
-      Assert-AreEqual 1 @($list).Count
-      Assert-AreEqual $list[0].ResourceGroupName $actualIpGroup.ResourceGroupName	
-      Assert-AreEqual $list[0].Name $actualIpGroup.Name	
-      Assert-AreEqual $list[0].Location $actualIpGroup.Location
 
 	  # Delete IpGroup
 	  $deleteIpGroup = Remove-AzIpGroup -ResourceGroupName $rgname -Name $IpGroupsName -PassThru -Force
       Assert-AreEqual true $deleteIpGroup
 
-	  $list = Get-AzIpGroup -ResourceGroupName $rgname
-	  Assert-AreEqual 0 @($list).Count
     }
     finally
     {
@@ -67,4 +59,3 @@ function Test-IpGroupsCRUD
         Clean-ResourceGroup $rgname
     }
 }
-
