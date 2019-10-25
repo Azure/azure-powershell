@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azfirewallthreatintelwhitelist
 schema: 2.0.0
 ---
 
 # New-AzFirewallThreatIntelWhitelist
 
 ## SYNOPSIS
-Create a new ThreatIntelWhitelist for Azure Firewall
+Create a new threat intelligence whitelist for Azure Firewall
 
 ## SYNTAX
 
