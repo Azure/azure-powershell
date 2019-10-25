@@ -42,14 +42,14 @@ function Test-IpGroupsCRUD
       New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
     
       # Create IpGroup
-	  $actualIpGroup = New-AzIpGroup -ResourceGroupName $rgname -location $location -Name $IpGroupsName -IpAddresses {"10.0.0.3/24","11.0.0.1/24"}
+	  $actualIpGroup = New-AzIpGroup -ResourceGroupName $rgname -location $location -Name $IpGroupsName 
 	  $expectedIpGroup = Get-AzIpGroup -ResourceGroupName $rgname -Name $IpGroupsName
 	  Assert-AreEqual $expectedIpGroup.ResourceGroupName $actualIpGroup.ResourceGroupName	
       Assert-AreEqual $expectedIpGroup.Name $actualIpGroup.Name
 
 	  # List IpGroups
 	  $list = Get-AzIpGroup -ResourceGroupName $rgname
-      Assert-AreEqual 1 @($list).Count
+
       Assert-AreEqual $list[0].ResourceGroupName $actualIpGroup.ResourceGroupName	
       Assert-AreEqual $list[0].Name $actualIpGroup.Name	
       Assert-AreEqual $list[0].Location $actualIpGroup.Location
