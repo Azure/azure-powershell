@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
@@ -43,6 +44,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Network/ipGroups", "ResourceGroupName")]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -55,6 +57,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "location.")]
         [ValidateNotNullOrEmpty]
+        [LocationCompleter("Microsoft.Network/ipGroups")]
         public virtual string Location { get; set; }
 
         [Parameter(
