@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.Network/ipGroups", "ResourceGroupName")]
+        [ResourceGroupCompleter]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
