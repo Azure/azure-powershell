@@ -37,6 +37,13 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string PrivateLinkResourceId { get; set; }
 
+        [CmdletParameterBreakingChange("Description", ChangeDescription = "Parameter is being deprecated without being replaced")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The reason of action.")]
+        public string Description { get; set; }
+
         public override void Execute()
         {
             base.Execute();
