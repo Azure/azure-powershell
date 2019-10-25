@@ -19,11 +19,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [GenericBreakingChange("Get-AzSqlDatabaseRestorePoints alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseRestorePoint", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.None)]
     [OutputType(typeof(AzureSqlDatabaseRestorePointModel))]
-    [Alias("Get-AzSqlDatabaseRestorePoints")]
-    public class GetAzureSqlDatabaseRestorePoints : AzureSqlDatabaseRestorePointCmdletBase
+    public class GetAzureSqlDatabaseRestorePoint : AzureSqlDatabaseRestorePointCmdletBase
     {
         /// <summary>
         /// Get the entities from the service
