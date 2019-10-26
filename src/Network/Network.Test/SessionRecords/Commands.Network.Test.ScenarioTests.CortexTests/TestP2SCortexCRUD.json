@@ -39947,6 +39947,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]	  
       "ResponseBody": "{\r\n  \"sasUrl\": \"https://blobps5849.blob.core.windows.net/contps5849/emptyfile.txt?sv=2019-02-02&sr=b&sig=D%2BDZzigw20l%2F8TPaQ4EPH%2BKAp52JxXQJOEAFbcqhjZs%3D&st=2019-10-21T23%3A05%3A18Z&se=2019-10-23T00%3A05%3A18Z&sp=rwd\"\r\n}",
       "StatusCode": 200
     },
