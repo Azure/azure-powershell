@@ -42,9 +42,9 @@ The **Get-AzP2sVpnGatewayDetailedConnectionHealth** cmdlet enables you to get th
 ```powershell
 PS C:\> $blobSasUrl = New-AzStorageBlobSASToken -Container contp2stesting -Blob emptyfile.txt -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
 PS C:\> $blobSasUrl
-https://blobp2stesting.blob.core.windows.net/contp2stesting/emptyfile.txt?sv=2018-11-09&sr=b&sig=uEXWHprZa0yiIrsTY9tp8vzKx%2FAd92InA9Xvl32764s%3D&st=2019-10-25T18%3A47%3A12Z&se=2019-10-26T19%3A47%3A12Z&sp=rwd
+SignedSasUrl
 PS C:\> Get-AzP2sVpnGatewayDetailedConnectionHealth -Name 683482ade8564515aed4b8448c9757ea-westus-gw -ResourceGroupName P2SCortexGATesting -OutputBlobSasUrl $blobSasUrl
-SasUrl : https://blobp2stesting.blob.core.windows.net/contp2stesting/emptyfile.txt?sv=2018-11-09&sr=b&sig=uEXWHprZa0yiIrsTY9tp8vzKx%2FAd92InA9Xvl32764s%3D&st=2019-10-25T18%3A47%3A12Z&se=2019-10-26T19%3A47%3A12Z&sp=rwd
+SasUrl : SignedSasUrl
 ```
 
 The **Get-AzP2sVpnGatewayDetailedConnectionHealth** cmdlet enables you to get the detailed information of current point to site connections from P2SVpnGateway. Customer can download health details from passed SAS url download. This will show information of each point to site connection with usernames, bytes in, bytes out, allocated ip address etc.
