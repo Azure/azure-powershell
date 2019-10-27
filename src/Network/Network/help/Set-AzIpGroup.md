@@ -24,11 +24,9 @@ The **Set-AzIpGroup** cmdlet updates an Azure IpGroup
 
 ### Example 1
 ```powershell
-PS C:\> $ipGroup = Get-AzIpGroup -ResourceId /subscriptions/cdb5b03a-0h18-45a4-86d6-81908115daef/resourceGroups/rg2/providers/Microsoft.Network/ipGroups/testIpGroup
-PS C:\>$ipGroup.IpAddresses.Add("11.11.0.0/24")
-
- PS C:\>Set-AzIpGroup -IpGroup $ipGroup
-
+$ipGroup = Get-AzIpGroup -ResourceGroupName ipGroupRG -Name ipGroup
+$ipGroup.IpAddresses.Add("11.11.0.0/24")
+Set-AzIpGroup -IpGroup $ipGroup
 ```
 
 ## PARAMETERS
