@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IpGroup", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IpGroup", DefaultParameterSetName = IpGroupParameterSetNames.ByName, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveIpGroupsCommand : IpGroupBaseCmdlet
     {
         [Alias("ResourceName")]
