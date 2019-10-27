@@ -13,9 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-
 using Microsoft.Azure.Commands.Batch.Models;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Batch
@@ -32,18 +30,29 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the id of the application.")]
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the application.")]
         [ValidateNotNullOrEmpty]
-        public string ApplicationId { get; set; }
+        [Alias("ApplicationId")]
+        public string ApplicationName { get; set; }
 
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the version of the application.")]
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = true, HelpMessage = "Specifies the version of the application.")]
         [ValidateNotNullOrEmpty]
         public string ApplicationVersion { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
-            PSApplicationPackage context = BatchClient.GetApplicationPackage(this.ResourceGroupName, this.AccountName, this.ApplicationId, this.ApplicationVersion);
-            WriteObject(context);
+            if (string.IsNullOrEmpty(this.ApplicationVersion))
+            {
+                foreach (PSApplicationPackage context in BatchClient.ListApplicationPackages(this.ResourceGroupName, this.AccountName, this.ApplicationName))
+                {
+                    WriteObject(context);
+                }
+            }
+            else
+            {
+                PSApplicationPackage context = BatchClient.GetApplicationPackage(this.ResourceGroupName, this.AccountName, this.ApplicationName, this.ApplicationVersion);
+                WriteObject(context);
+            }
         }
     }
 }
