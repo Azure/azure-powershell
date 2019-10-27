@@ -151,7 +151,8 @@ function Test-VirtualMachineScaleSetProfile
 
     $vmss4 = $vmss4 | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
-            -ImageReferencePublisher $imgRef.PublisherName -OsDiskWriteAccelerator -ManagedDisk "Premium_LRS" -DiffDiskSetting "Local";
+            -ImageReferencePublisher $imgRef.PublisherName -OsDiskWriteAccelerator `
+            -ManagedDisk "Premium_LRS" -DiffDiskSetting "Local" -DiskEncryptionSetId "enc_id1";
 
     # Storage profile
     Assert-AreEqual $createOption $vmss4.VirtualMachineProfile.StorageProfile.OsDisk.CreateOption;
@@ -161,6 +162,7 @@ function Test-VirtualMachineScaleSetProfile
     Assert-AreEqual $imgRef.Version $vmss4.VirtualMachineProfile.StorageProfile.ImageReference.Version;
     Assert-AreEqual $imgRef.PublisherName $vmss4.VirtualMachineProfile.StorageProfile.ImageReference.Publisher;
     Assert-AreEqual "Premium_LRS" $vmss4.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk.StorageAccountType;
+    Assert-AreEqual "enc_id1" $vmss4.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk.DiskEncryptionSet.Id;
     Assert-AreEqual "Local" $vmss4.VirtualMachineProfile.StorageProfile.OsDisk.DiffDiskSettings.Option;
     Assert-AreEqual $ppgid $vmss4.ProximityPlacementGroup.Id;
 }

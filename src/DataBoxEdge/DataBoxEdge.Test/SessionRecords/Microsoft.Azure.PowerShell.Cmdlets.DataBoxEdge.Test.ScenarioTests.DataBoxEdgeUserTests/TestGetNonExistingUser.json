@@ -1,0 +1,78 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/db4e2fdb-6d80-4e6e-b7cd-736098270664/resourceGroups/psrgpfortest/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/psdataboxedgedevice/users/ps5821?api-version=2019-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGI0ZTJmZGItNmQ4MC00ZTZlLWI3Y2QtNzM2MDk4MjcwNjY0L3Jlc291cmNlR3JvdXBzL3BzcmdwZm9ydGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3hFZGdlL2RhdGFCb3hFZGdlRGV2aWNlcy9wc2RhdGFib3hlZGdlZGV2aWNlL3VzZXJzL3BzNTgyMT9hcGktdmVyc2lvbj0yMDE5LTAzLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "50ecd79e-1a7f-459f-9b4f-b9c9bc8d9e93"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28008.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.EdgeGateway.DataBoxEdgeManagementClient/0.8.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "869900ef-2840-46ee-946f-956e886350c0"
+        ],
+        "x-ms-client-request-id": [
+          "50ecd79e-1a7f-459f-9b4f-b9c9bc8d9e93"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11983"
+        ],
+        "x-ms-correlation-request-id": [
+          "a1f5e690-8225-4e91-982d-75b8850864d5"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20191016T102051Z:a1f5e690-8225-4e91-982d-75b8850864d5"
+        ],
+        "Date": [
+          "Wed, 16 Oct 2019 10:20:50 GMT"
+        ],
+        "Content-Length": [
+          "178"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"GatewayUserErrorEntityNotFound\",\r\n    \"message\": \"Could not find the entity ******.\\r\\nProvide a valid entity name and retry the operation.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    }
+  ],
+  "Names": {
+    "Test-GetNonExistingUser": [
+      "ps5821"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "db4e2fdb-6d80-4e6e-b7cd-736098270664"
+  }
+}

@@ -44,16 +44,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
         {
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
-            string applicationId = "applicationId";
+            string applicationName = "applicationName";
             string displayName = "displayName";
 
             PSApplication expected = new PSApplication();
 
-            batchClientMock.Setup(b => b.AddApplication(resourceGroup, accountName, applicationId, true, displayName)).Returns(expected);
+            batchClientMock.Setup(b => b.AddApplication(resourceGroup, accountName, applicationName, true, displayName)).Returns(expected);
 
             cmdlet.ResourceGroupName = resourceGroup;
             cmdlet.AccountName = accountName;
-            cmdlet.ApplicationId = applicationId;
+            cmdlet.ApplicationName = applicationName;
             cmdlet.AllowUpdates = true;
             cmdlet.DisplayName = displayName;
 
@@ -68,16 +68,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
         {
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
-            string applicationId = "applicationId";
+            string applicationName = "applicationName";
             string displayName = "displayName";
 
             PSApplication expected = new PSApplication();
 
-            batchClientMock.Setup(b => b.AddApplication(resourceGroup, accountName, applicationId, null, displayName)).Returns(expected);
+            batchClientMock.Setup(b => b.AddApplication(resourceGroup, accountName, applicationName, null, displayName)).Returns(expected);
 
             cmdlet.ResourceGroupName = resourceGroup;
             cmdlet.AccountName = accountName;
-            cmdlet.ApplicationId = applicationId;
+            cmdlet.ApplicationName = applicationName;
 
             cmdlet.DisplayName = displayName;
 
