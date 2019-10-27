@@ -790,3 +790,59 @@ function Test-DiskUpload
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Testing disk upload
+#>
+function Test-DiskEncryptionSet
+{
+    # Setup
+    $loc = "westcentralus";
+    $rgname = "pstest";
+    $encryptionName = "enc" + $rgname;
+    $vaultName = 'kv' + $rgname;
+    $kekName = 'kek' + $rgname;
+
+    try
+    {
+        #
+        # Note: In order to record this test, you need to run the following commands to create KeyValut key and KeyVault secret in a separate Powershell window.
+        #
+        #New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        #$vault = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $loc -Sku Standard;
+        #$userPrincipalName = (Get-AzContext).Account.Id;
+        #Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $rgname -EnabledForDiskEncryption;
+        #Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $rgname -ServicePrincipalName $userPrincipalName -PermissionsToKeys decrypt,encrypt,unwrapKey,wrapKey,verify,sign,get,list,update,create,import,delete,backup,restore,recover,purge;
+        #$kek = Add-AzKeyVaultKey -VaultName $vaultName -Name $kekName -Destination "Software";
+        #$secret = Set-AzKeyVaultSecret -VaultName $vaultName -Name $secretname -SecretValue $securestring;
+        #$mockkey = $kek.Id
+
+        $subId = Get-SubscriptionIdFromResourceGroup $rgname;
+        $mockkey = "https://kvpstest.vault.azure.net:443/keys/kekpstest/bf109281146949a9b3ae234db1728493";
+        $mocksourcevault = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.KeyVault/vaults/' + $vaultName;
+
+        New-AzDiskEncryptionSetConfig -Location $loc -KeyUrl $mockkey -SourceVaultId $mocksourcevault -IdentityType "SystemAssigned" `
+        | New-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $encryptionName;
+
+        $encSet = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $encryptionName;
+        Assert-AreEqual $encryptionName $encSet.Name;
+        Assert-AreEqual $loc $encSet.Location;
+        Assert-AreEqual "SystemAssigned" $encSet.Identity.Type;
+        Assert-NotNull $encSet.Identity.PrincipalId;
+        Assert-NotNull $encSet.Identity.TenantId;
+        Assert-AreEqual $mockkey $encSet.ActiveKey.KeyUrl;
+        Assert-AreEqual $mocksourcevault $encSet.ActiveKey.SourceVault.Id;
+
+        $encSets = Get-AzDiskEncryptionSet -ResourceGroupName $rgname;
+        Assert-True {$encSets.Count -ge 1};
+
+        $encSets = Get-AzDiskEncryptionSet;
+        Assert-True {$encSets.Count -ge 1};
+    }
+    finally
+    {
+        # Cleanup
+        $encSet | Remove-AzDiskEncryptionSet -Force;
+    }
+}
