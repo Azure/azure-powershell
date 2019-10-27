@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IpGroup"), OutputType(typeof(PSIpGroup), typeof(IEnumerable<PSIpGroup>))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IpGroup", DefaultParameterSetName = IpGroupParameterSetNames.ByName), OutputType(typeof(PSIpGroup), typeof(IEnumerable<PSIpGroup>))]
     public class GetIpGroupsCommand : IpGroupBaseCmdlet
     {
         [Parameter(
