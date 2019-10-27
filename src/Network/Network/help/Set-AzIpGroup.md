@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzIpGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Saves a modified Firewall.
 
 ## SYNTAX
 
