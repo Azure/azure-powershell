@@ -23,6 +23,7 @@
 * Removed deprecated aliases:
   * Get-AzSqlDatabaseIndexRecommendations (use Get-AzSqlDatabaseIndexRecommendation instead)
   * Get-AzSqlDatabaseRestorePoints (use Get-AzSqlDatabaseRestorePoint instead)
+* Remove Get-AzSqlDatabaseSecureConnectionPolicy cmdlet
 
 ## Version 1.15.0
 * Add support for setting Active Directory Administrator on Managed Instance
