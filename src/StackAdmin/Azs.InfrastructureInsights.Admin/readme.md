@@ -61,7 +61,6 @@ psd1: Azs.InfrastructureInsights.Admin.psd1
 psm1: Azs.InfrastructureInsights.Admin.psm1
 
 ### Parameter default values
-``` yaml
 directive:
   - where:
       parameter-name: ResourceGroupName

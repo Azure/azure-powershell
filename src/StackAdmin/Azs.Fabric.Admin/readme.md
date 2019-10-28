@@ -63,7 +63,7 @@ module-version: 0.0.1
 ### Parameter default values
 directive:
   - where:
-      parameter-name: Location
+      parameter-name: ResourceGroupName
     set:
       default:
         script: -join("System.",(Get-AzLocation)[0].Name)
