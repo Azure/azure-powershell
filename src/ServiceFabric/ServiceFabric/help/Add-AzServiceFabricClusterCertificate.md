@@ -292,5 +292,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzServiceFabricClusterCertificate](./Remove-AzServiceFabricClusterCertificate.md)
 
 [New-AzServiceFabricCluster](./New-AzServiceFabricCluster.md)
-
-[Add-AzServiceFabricApplicationCertificate](./Add-AzServiceFabricApplicationCertificate.md)

@@ -37,6 +37,13 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEndpointCreateWithRulesEngine()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointCreateWithRulesEngine");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEndpointCrudAndActionWithPiping()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointCrudAndActionWithPiping");

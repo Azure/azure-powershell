@@ -175,6 +175,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             return Utilities.IpageToList(pages);
         }
 
+
+        /// <summary>
+        ///     Update Azure Site Recovery Protection Container Mapping.
+        /// </summary>
+        /// <param name="fabricName">Fabric Name</param>
+        /// <param name="protectionContainerName">Protection Container Name</param>
+        /// <param name="mappingName">Protection Container Mapping Name</param>
+        /// <param name="updateInput">Update ProtectionContainerMapping Input</param>
+        /// <returns></returns>
+        public PSSiteRecoveryLongRunningOperation UpdateAzureSiteRecoveryProtectionContainerMapping(
+            string fabricName,
+            string protectionContainerName,
+            string mappingName,
+            UpdateProtectionContainerMappingInput updateInput)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectionContainerMappings.BeginUpdateWithHttpMessagesAsync(
+                    fabricName,
+                    protectionContainerName,
+                    mappingName,
+                    updateInput,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult()
+                .Body;
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
         /// <summary>
         ///     Gets Azure Site Recovery Protection Container Mapping.
         /// </summary>

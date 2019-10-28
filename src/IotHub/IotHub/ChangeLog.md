@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.1
 * Add new routing source: DigitalTwinChangeEvents
 * Minor bug fix: Get-AzIothub not returning subscriptionId 
 

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public ComputeNodeRebootOption? RebootOption { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             RebootComputeNodeParameters parameters = new RebootComputeNodeParameters(this.BatchContext, this.PoolId,
                 this.Id, this.ComputeNode, this.AdditionalBehaviors)
