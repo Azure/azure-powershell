@@ -1202,6 +1202,10 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.VirtualRouter, CNM.PSVirtualRouter>().ConvertUsing(new VirtualRouterConverter());
                 cfg.CreateMap<MNM.VirtualRouterPeering, CNM.PSVirtualRouterPeer>();
+
+                // IpGroup
+                cfg.CreateMap<CNM.PSIpGroup, MNM.IpGroup>();
+                cfg.CreateMap<MNM.IpGroup, CNM.PSIpGroup>();
             });
 
             _mapper = config.CreateMapper();
