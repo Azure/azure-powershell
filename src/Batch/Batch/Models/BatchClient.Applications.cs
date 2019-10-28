@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public partial class BatchClient
     {
-        public virtual PSApplication AddApplication(string resourceGroupName, string accountName, string applicationId, bool? allowUpdates, string displayName)
+        public virtual PSApplication AddApplication(string resourceGroupName, string accountName, string applicationName, bool? allowUpdates, string displayName)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            AddApplicationParameters addApplicationParameters = new AddApplicationParameters()
+            Application addApplicationParameters = new Application()
             {
                 DisplayName = displayName,
                 AllowUpdates = allowUpdates
@@ -44,13 +44,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
              var response = BatchManagementClient.Application.Create(
                 resourceGroupName,
                 accountName,
-                applicationId,
+                applicationName,
                 addApplicationParameters);
 
             return ConvertApplicationToPSApplication(response);
         }
 
-        public virtual void DeleteApplication(string resourceGroupName, string accountName, string applicationId)
+        public virtual void DeleteApplication(string resourceGroupName, string accountName, string applicationName)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -58,10 +58,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            BatchManagementClient.Application.Delete(resourceGroupName, accountName, applicationId);
+            BatchManagementClient.Application.Delete(resourceGroupName, accountName, applicationName);
         }
 
-        public virtual PSApplication GetApplication(string resourceGroupName, string accountName, string applicationId)
+        public virtual PSApplication GetApplication(string resourceGroupName, string accountName, string applicationName)
         {
             // single account lookup - find its resource group if not specified
             if (string.IsNullOrEmpty(resourceGroupName))
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            Application response = BatchManagementClient.Application.Get(resourceGroupName, accountName, applicationId);
+            Application response = BatchManagementClient.Application.Get(resourceGroupName, accountName, applicationName);
 
             return ConvertApplicationToPSApplication(response);
         }
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public virtual void UpdateApplication(
             string resourceGroupName,
             string accountName,
-            string applicationId,
+            string applicationName,
             bool? allowUpdates,
             string defaultVersion,
             string displayName)
@@ -110,45 +110,45 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            UpdateApplicationParameters uap = new UpdateApplicationParameters();
+            Application application = new Application();
 
             if (allowUpdates != null)
             {
-                uap.AllowUpdates = allowUpdates;
+                application.AllowUpdates = allowUpdates;
             }
 
             if (defaultVersion != null)
             {
-                uap.DefaultVersion = defaultVersion;
+                application.DefaultVersion = defaultVersion;
             }
 
             if (displayName != null)
             {
-                uap.DisplayName = displayName;
+                application.DisplayName = displayName;
             }
 
             BatchManagementClient.Application.Update(
                 resourceGroupName,
                 accountName,
-                applicationId,
-                uap);
+                applicationName,
+                application);
         }
 
-        private void CheckApplicationAllowsUpdates(string resourceGroupName, string accountName, string applicationId, string version)
+        private void CheckApplicationAllowsUpdates(string resourceGroupName, string accountName, string applicationName, string version)
         {
             try
             {
-                PSApplication psApplication = this.GetApplication(resourceGroupName, accountName, applicationId);
+                PSApplication psApplication = this.GetApplication(resourceGroupName, accountName, applicationName);
 
                 if (psApplication.AllowUpdates == false)
                 {
-                    var allowUpdateErrorMessage = string.Format(Resources.ApplicationDoesNotAllowUpdates, applicationId, version);
+                    var allowUpdateErrorMessage = string.Format(Resources.ApplicationDoesNotAllowUpdates, applicationName, version);
                     throw new NewApplicationPackageException(allowUpdateErrorMessage);
                 }
             }
             catch (CloudException exception)
             {
-                var errorMessage = string.Format(Resources.FailedToCheckApplication, applicationId, version, exception);
+                var errorMessage = string.Format(Resources.FailedToCheckApplication, applicationName, version, exception);
                 throw new CloudException(errorMessage, exception);
             }
         }
@@ -158,10 +158,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
             return new PSApplication()
             {
                 AllowUpdates = application.AllowUpdates.Value,
-                ApplicationPackages = ConvertApplicationPackagesToPsApplicationPackages(application.Packages),
                 DefaultVersion = application.DefaultVersion,
                 DisplayName = application.DisplayName,
-                Id = application.Id,
+                Name = application.Name,
+                Id = application.Id
             };
         }
     }

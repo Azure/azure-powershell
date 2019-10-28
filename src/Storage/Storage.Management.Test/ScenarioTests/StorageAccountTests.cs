@@ -155,5 +155,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-StorageAccountManagementPolicy");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAzureStorageAccount_LargeFileShare()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_LargeFileShare");
+        }
     }
 }

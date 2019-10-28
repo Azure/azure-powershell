@@ -105,5 +105,21 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayCRUDRewriteRuleSetWithConditions -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+        public void TestTopLevelWafResourceWithApplicationGateway()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayTopLevelFirewallPolicy -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+        public void TestApplicationGatewayWithFirewallPolicy()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayWithFirewallPolicy -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
     }
 }

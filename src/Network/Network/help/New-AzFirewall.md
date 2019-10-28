@@ -18,8 +18,9 @@ Creates a new Firewall in a resource group.
 New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String>
  [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
- [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-Zone <String[]>] [-ThreatIntelMode <String>]
- [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>]
+ [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -28,8 +29,9 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String>
 New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -VirtualNetworkName <String>
  -PublicIpName <String> [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
- [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-Zone <String[]>] [-ThreatIntelMode <String>]
- [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>]
+ [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -40,7 +42,8 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
- [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>]
+ [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -144,6 +147,19 @@ New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -Virt
 
 This example creates a Firewall which allows MSSQL traffic on standard port 1433 to SQL database sql1.database.windows.net.
 
+### 9:  Create a Firewall attached to a virtual hub
+```
+$rgName = "resourceGroupName"
+$fp = Get-AzFirewallPolicy -ResourceGroupName $rgName -Name "fp"
+$fpId = $fp.Id
+$vHub = Get-AzVirtualHub -Name "hub"
+$vHubId = $vHub.Id
+
+New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -Sku AZFW_Hub -VirtualHubId $vHubId -FirewallPolicyId -$fpId
+```
+
+This example creates a Firewall attached to virtual hub "vHub". A firewall policy $fp will be attached to the firewall. This firewall allows/denies the traffic based on the rules mentioned in the firewall policy $fp. The virtual hub and the firewall should be in the same regions.
+
 ## PARAMETERS
 
 ### -ApplicationRuleCollection
@@ -188,6 +204,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FirewallPolicyId
+The firewall policy attached to the firewall
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -311,18 +342,19 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Zone
-A list of availability zones denoting where the firewall needs to come from.
+### -Sku
+The sku type for firewall
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: AZFW_Hub, AZFW_VNet
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -359,6 +391,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -VirtualHubId
+The virtual hub that a firewall is attached to
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VirtualNetwork
 Virtual Network
 
@@ -386,6 +433,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Zone
+A list of availability zones denoting where the firewall needs to come from.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -421,7 +483,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

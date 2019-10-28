@@ -32,5 +32,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-PrivateLinkServiceCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestPrivateEndpointConnectionCRUD()
+        {
+            TestRunner.RunTestScript("Test-PrivateEndpointConnectionCRUD");
+        }
     }
 }

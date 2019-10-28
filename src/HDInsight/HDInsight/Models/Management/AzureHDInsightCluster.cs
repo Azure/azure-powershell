@@ -17,7 +17,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Security;
 using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
@@ -30,22 +29,25 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             Name = cluster.Name;
             Location = cluster.Location;
             ClusterVersion = cluster.Properties.ClusterVersion;
-            OperatingSystemType = cluster.Properties.OperatingSystemType;
-            ClusterTier = cluster.Properties.ClusterTier;
+            OperatingSystemType = cluster.Properties.OsType ?? OSType.Linux;
+            ClusterTier = cluster.Properties.Tier ?? Tier.Standard;
             ClusterState = cluster.Properties.ClusterState;
-            ClusterType = cluster.Properties.ClusterDefinition.ClusterType;
-            CoresUsed = cluster.Properties.QuotaInfo.CoresUsed;
+            ClusterType = cluster.Properties.ClusterDefinition.Kind;
+            CoresUsed = cluster.Properties.QuotaInfo.CoresUsed ?? 0;
             var httpEndpoint =
-                cluster.Properties.ConnectivityEndpoints.FirstOrDefault(c => c.Name.Equals("HTTPS", StringComparison.OrdinalIgnoreCase));
+                cluster.Properties.ConnectivityEndpoints?.FirstOrDefault(c => c.Name.Equals("HTTPS", StringComparison.OrdinalIgnoreCase));
             HttpEndpoint = httpEndpoint != null ? httpEndpoint.Location : null;
-            Error = cluster.Properties.ErrorInfos.Select(s => s.Message).FirstOrDefault();
+            Error = cluster.Properties.Errors?.Select(s => s.Message).FirstOrDefault();
             ResourceGroup = ClusterConfigurationUtils.GetResourceGroupFromClusterId(cluster.Id);
             ComponentVersion = new List<string>();
-            foreach(var componentVersion in cluster.Properties.ClusterDefinition.ComponentVersion)
+            if (cluster.Properties.ClusterDefinition.ComponentVersion != null && cluster.Properties.ClusterDefinition.ComponentVersion.Any())
             {
-                ComponentVersion.Add(componentVersion.ToString());
+                foreach (var componentVersion in cluster.Properties.ClusterDefinition.ComponentVersion)
+                {
+                    ComponentVersion.Add(componentVersion.ToString());
+                }
             }
-            WorkerNodeDataDisksGroups = new List<DataDisksGroupProperties>();
+            WorkerNodeDataDisksGroups = new List<DataDisksGroups>();
             if (cluster.Properties.ComputeProfile != null && cluster.Properties.ComputeProfile.Roles.Any())
             {
                 var rolesWithDataDisksGroups = cluster.Properties.ComputeProfile.Roles.Where(x => x.DataDisksGroups != null);
@@ -191,7 +193,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Data Disks Group Properties for the Worker Role.
         /// </summary>
-        public List<DataDisksGroupProperties> WorkerNodeDataDisksGroups { get; set; }
+        public List<DataDisksGroups> WorkerNodeDataDisksGroups { get; set; }
 		
         /// Gets or sets the security profile.
         /// </summary>

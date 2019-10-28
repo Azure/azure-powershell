@@ -15,18 +15,18 @@ Gets a list of peering service prefixes for a subscription.
 ### ByResourceGroupAndName (Default)
 ```
 Get-AzPeeringServicePrefix [-ResourceGroupName] <String> [-PeeringServiceName] <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Expand] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Default
 ```
-Get-AzPeeringServicePrefix [-PeeringServiceObject] <PSPeeringService> [-Name <String>]
+Get-AzPeeringServicePrefix [-PeeringServiceObject] <PSPeeringService> [-Name <String>] [-Expand]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzPeeringServicePrefix [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzPeeringServicePrefix [-ResourceId] <String> [-Expand] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -92,6 +92,24 @@ Type                  : Microsoft.Peering/peeringServices/prefixes
 
 Gets a specific prefix for a peering service by resource id.
 
+### Example 4
+```powershell
+PS C:\> Get-AzPeeringServicePrefix -ResourceGroupName $rgName -PeeringServiceName $peeringServiceName -Name $prefixName -Expand
+
+Prefix                : 10.2.6.0/24
+PrefixValidationState : Failed
+LearnedType           : None
+ErrorMessage          :
+Events                : {}
+ProvisioningState     : Succeeded
+Name                  : ps0
+Id                    : /subscriptions/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService6616/pre
+                        fixes/ps0
+Type                  : Microsoft.Peering/peeringServices/prefixes
+```
+
+Gets a specific prefix for a peering service with expanded attributes
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -101,6 +119,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Expand
+View the events for a peering service prefix
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
