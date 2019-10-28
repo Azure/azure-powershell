@@ -19,6 +19,20 @@
 --->
 
 ## Upcoming Release
+* Change all cmdlets for PrivateEndpointConnection to support generic service provider.
+    - Updated cmdlet:
+        - Approve-AzPrivateEndpointConnection
+        - Deny-AzPrivateEndpointConnection
+        - Get-AzPrivateEndpointConnection
+        - Remove-AzPrivateEndpointConnection
+        - Set-AzPrivateEndpointConnection
+* Add new cmdlet for PrivateLinkResource and it also support generic service provider.
+    - New cmdlet:
+        - Get-AzPrivateLinkResource
+* Add new fields and parameter for the feature Proxy Protocol V2.
+    - Add property EnableProxyProtocol in PrivateLinkService
+    - Add property LinkIdentifier in PrivateEndpointConnection
+    - Updated New-AzPrivateLinkService to add a new optional parameter EnableProxyProtocol.
 * Fix incorrect parameter description in `New-AzApplicationGatewaySku` reference documentation
 * New cmdlets to support the azure firewall policy
 * Add support for child resource RouteTables of VirtualHub
@@ -43,8 +57,30 @@
         - Update-AzureRmVpnConnection : added parameter EnableInternetSecurity
         - New-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
         - Set-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
+* Add support for Configuring TopLevel WebApplicationFirewall Policy
+    - New cmdlets added:
+        - New-AzApplicationGatewayFirewallPolicySetting
+        - New-AzApplicationGatewayFirewallPolicyExclusion
+        - New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride
+        - New-AzApplicationGatewayFirewallPolicyManagedRuleOverride
+        - New-AzApplicationGatewayFirewallPolicyManagedRule
+        - New-AzApplicationGatewayFirewallPolicyManagedRuleSet
+    - Cmdlets updated with optional parameters:
+        - New-AzApplicationGatewayFirewallPolicy : added parameter PolicySetting, ManagedRule
+* Added support for Geo-Match operator on CustomRule
+    - Added GeoMatch to the operator on the FirewallCondition
+* Added support for perListener and perSite Firewall policy
+    - Cmdlets updated with optional parameters:
+        - New-AzApplicationGatewayHttpListener : added parameter FirewallPolicy, FirewallPolicyId
+        - New-AzApplicationGatewayPathRuleConfig : added parameter FirewallPolicy, FirewallPolicyId
 * Fix required subnet with name AzureBastionSubnet in `PSBastion` can be case insensitive
 * Support for Destination FQDNs in Network Rules and Translated FQDN in NAT Rules for Azure Firewall
+* Add support for top level resource RouteTables of IpGroup
+    - New cmdlets added:
+        - New-AzIpGroup
+        - Remove-AzIpGroup
+        - Get-AzIpGroup
+        - Set-AzIpGroup
 
 ## Version 1.15.0
 * Add new cmdlet Get-AzAvailableServiceAlias which can be called to get the aliases that can be used for Service Endpoint Policies.
