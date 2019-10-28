@@ -49,9 +49,7 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azurestack.md
   - $(repo)/specification/azsadmin/resource-manager/fabric/readme.azsautogen.md
-
-subject-prefix: ''
-module-version: 0.0.1
+  - $(repo)/specification/azsadmin/resource-manager/fabric/readme.md
 
 ### File Renames 
 module-name: Azs.Fabric.Admin 
@@ -59,11 +57,13 @@ csproj: Azs.Fabric.Admin.csproj
 psd1: Azs.Fabric.Admin.psd1 
 psm1: Azs.Fabric.Admin.psm1
 
+subject-prefix: ''
+module-version: 0.0.1
+
 ### Parameter default values
-``` yaml
 directive:
   - where:
-      parameter-name: ResourceGroupName
+      parameter-name: Location
     set:
       default:
         script: -join("System.",(Get-AzLocation)[0].Name)
