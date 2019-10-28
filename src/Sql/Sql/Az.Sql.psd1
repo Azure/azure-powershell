@@ -249,7 +249,12 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Set-AzSqlElasticJobStep', 'Start-AzSqlElasticJob', 
                'Stop-AzSqlElasticJob', 'Get-AzSqlElasticJobExecution', 
                'Get-AzSqlElasticJobStepExecution', 
-               'Get-AzSqlElasticJobTargetExecution'
+               'Get-AzSqlElasticJobTargetExecution',
+			   'Get-AzSqlElasticJobTargetExecution',
+			   'Enable-AzSqlDatabaseSensitivityRecommendation',
+			   'Disable-AzSqlDatabaseSensitivityRecommendation',
+			   'Enable-AzSqlInstanceDatabaseSensitivityRecommendation',
+			   'Disable-AzSqlInstanceDatabaseSensitivityRecommendation'
 
 # Variables to export from this module
 # VariablesToExport = @()

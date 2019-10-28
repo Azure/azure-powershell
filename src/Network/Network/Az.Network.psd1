@@ -110,7 +110,13 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzApplicationGatewayFirewallPolicy', 
                'Get-AzApplicationGatewayFirewallPolicy', 
                'Remove-AzApplicationGatewayFirewallPolicy', 
-               'Set-AzApplicationGatewayFirewallPolicy', 
+               'Set-AzApplicationGatewayFirewallPolicy',
+			   'New-AzApplicationGatewayFirewallPolicyExclusion',
+			   'New-AzApplicationGatewayFirewallPolicyManagedRule',
+			   'New-AzApplicationGatewayFirewallPolicyManagedRuleOverride',
+			   'New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride',
+			   'New-AzApplicationGatewayFirewallPolicyManagedRuleSet',
+			   'New-AzApplicationGatewayFirewallPolicySetting',
                'Add-AzApplicationGatewayFrontendIPConfig', 
                'Get-AzApplicationGatewayFrontendIPConfig', 
                'New-AzApplicationGatewayFrontendIPConfig', 
@@ -434,7 +440,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzFirewallPolicy', 'Get-AzFirewallPolicy', 'Set-AzFirewallPolicy',
                'Remove-AzFirewallPolicy',
                'New-AzVirtualRouter','Remove-AzVirtualRouter','Get-AzVirtualRouter',
-               'Add-AzVirtualRouterPeer','Update-AzVirtualRouterPeer','Remove-AzVirtualRouterPeer', 'Get-AzVirtualRouterPeer'
+               'Add-AzVirtualRouterPeer','Update-AzVirtualRouterPeer','Remove-AzVirtualRouterPeer', 'Get-AzVirtualRouterPeer',
+               'New-AzIpGroup','Remove-AzIpGroup','Get-AzIpGroup','Set-AzIpGroup'
 
 # Variables to export from this module
 # VariablesToExport = @()

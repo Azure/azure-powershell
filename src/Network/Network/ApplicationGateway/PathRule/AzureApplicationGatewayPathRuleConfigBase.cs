@@ -80,7 +80,17 @@ namespace Microsoft.Azure.Commands.Network
                 HelpMessage = "Application gateway RedirectConfiguration")]
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayRedirectConfiguration RedirectConfiguration { get; set; }
+        
+        [Parameter(
+           ParameterSetName = "SetByResourceId",
+           HelpMessage = "FirewallPolicyId")]
+        public string FirewallPolicyId { get; set; }
 
+        [Parameter(
+            ParameterSetName = "SetByResource",
+            HelpMessage = "FirewallPolicy")]
+        public PSApplicationGatewayWebApplicationFirewallPolicy FirewallPolicy { get; set; }
+        
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -91,17 +101,25 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.BackendAddressPoolId = this.BackendAddressPool.Id;
                 }
+
                 if (BackendHttpSettings != null)
                 {
                     this.BackendHttpSettingsId = this.BackendHttpSettings.Id;
                 }
+
                 if (RewriteRuleSet != null)
                 {
                     this.RewriteRuleSetId = this.RewriteRuleSet.Id;
                 }
+
                 if (RedirectConfiguration != null)
                 {
                     this.RedirectConfigurationId = this.RedirectConfiguration.Id;
+                }
+
+                if (FirewallPolicy != null)
+                {
+                    this.FirewallPolicyId = this.FirewallPolicy.Id;
                 }
             }
         }
@@ -135,6 +153,12 @@ namespace Microsoft.Azure.Commands.Network
             {
                 pathRule.RedirectConfiguration = new PSResourceId();
                 pathRule.RedirectConfiguration.Id = this.RedirectConfigurationId;
+            }
+            
+            if (!string.IsNullOrEmpty(this.FirewallPolicyId))
+            {
+                pathRule.FirewallPolicy = new PSResourceId();
+                pathRule.FirewallPolicy.Id = this.FirewallPolicyId;
             }
 
             return pathRule;
