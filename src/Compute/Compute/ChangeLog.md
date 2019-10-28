@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.8.0
 * Disk Encryption Set feature
     - New cmdlets:
         New-AzDiskEncryptionSetConfig
