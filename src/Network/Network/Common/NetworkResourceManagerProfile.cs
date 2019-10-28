@@ -1109,18 +1109,12 @@ namespace Microsoft.Azure.Commands.Network
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSAzureFirewall, MNM.AzureFirewall>().AfterMap((src, dest) =>
                 {
-                    if (src.ThreatIntelWhitelist == null)
-                    {
-                        dest.AdditionalProperties = null;
-                        return;
-                    }
-
                     dest.AdditionalProperties = new Dictionary<string, string>()
                     {
-                        { "ThreatIntel.Whitelist.FQDNs", src.ThreatIntelWhitelist.FQDNs.Aggregate((result, item) => result + "," + item) },
-                        { "ThreatIntel.Whitelist.IpAddresses", src.ThreatIntelWhitelist.IpAddresses.Aggregate((result, item) => result + "," + item) },
-                    };
-                }); ;
+                        { "ThreatIntel.Whitelist.FQDNs", src.ThreatIntelWhitelist?.FQDNs?.Aggregate((result, item) => result + "," + item) },
+                        { "ThreatIntel.Whitelist.IpAddresses", src.ThreatIntelWhitelist?.IpAddresses?.Aggregate((result, item) => result + "," + item) },
+                    }.Where(kvp => kvp.Value != null).ToDictionary(key => key.Key, val => val.Value);   // TODO: remove after backend code is refactored
+                });
                 cfg.CreateMap<CNM.PSAzureFirewallSku, MNM.AzureFirewallSku>();
                 cfg.CreateMap<CNM.PSAzureFirewallIpConfiguration, MNM.AzureFirewallIPConfiguration>();
                 cfg.CreateMap<CNM.PSAzureFirewallApplicationRuleCollection, MNM.AzureFirewallApplicationRuleCollection>();
@@ -1138,8 +1132,8 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     dest.ThreatIntelWhitelist = new CNM.PSAzureFirewallThreatIntelWhitelist
                     {
-                        FQDNs = src.AdditionalProperties.SingleOrDefault(kvp => kvp.Key.Equals("ThreatIntel.Whitelist.FQDNs")).Value?.Split(',').Select(str => str.Trim()).ToArray(),
-                        IpAddresses = src.AdditionalProperties.SingleOrDefault(kvp => kvp.Key.Equals("ThreatIntel.Whitelist.IpAddresses")).Value?.Split(',').Select(str => str.Trim()).ToArray()
+                        FQDNs = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("ThreatIntel.Whitelist.FQDNs")).Value?.Split(',').Select(str => str.Trim()).ToArray(),
+                        IpAddresses = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("ThreatIntel.Whitelist.IpAddresses")).Value?.Split(',').Select(str => str.Trim()).ToArray()
                     };
                 }); ;
                 cfg.CreateMap<MNM.AzureFirewallSku, CNM.PSAzureFirewallSku>();

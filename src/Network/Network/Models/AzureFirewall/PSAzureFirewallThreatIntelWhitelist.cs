@@ -26,12 +26,13 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         private string[] ipAddresses;
 
-        public string[] FQDNs { 
+        public string[] FQDNs
+        {
             get { return this.fqdns; }
             set
             {
+                ValidateFqdns(value);
                 fqdns = value;
-                ValidateFqdns();
             }
         }
 
@@ -40,14 +41,14 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return this.ipAddresses; }
             set
             {
+                ValidateIpAddresses(value);
                 ipAddresses = value;
-                ValidateIpAddresses();
             }
         }
 
         private const string SecureGatewayThreatIntelFqdnRegex = "^\\*?([a-zA-Z0-9\\-\\.]?[a-zA-Z0-9])*$";
 
-        private void ValidateFqdns()
+        private void ValidateFqdns(string[] fqdns)
         {
             if (fqdns == null)
                 return;
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             }
         }
 
-        private void ValidateIpAddresses()
+        private void ValidateIpAddresses(string[] ipAddresses)
         {
             if (IpAddresses == null)
                 return;
