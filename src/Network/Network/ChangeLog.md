@@ -57,6 +57,22 @@
         - Update-AzureRmVpnConnection : added parameter EnableInternetSecurity
         - New-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
         - Set-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
+* Add support for Configuring TopLevel WebApplicationFirewall Policy
+    - New cmdlets added:
+        - New-AzApplicationGatewayFirewallPolicySetting
+        - New-AzApplicationGatewayFirewallPolicyExclusion
+        - New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride
+        - New-AzApplicationGatewayFirewallPolicyManagedRuleOverride
+        - New-AzApplicationGatewayFirewallPolicyManagedRule
+        - New-AzApplicationGatewayFirewallPolicyManagedRuleSet
+    - Cmdlets updated with optional parameters:
+        - New-AzApplicationGatewayFirewallPolicy : added parameter PolicySetting, ManagedRule
+* Added support for Geo-Match operator on CustomRule
+    - Added GeoMatch to the operator on the FirewallCondition
+* Added support for perListener and perSite Firewall policy
+    - Cmdlets updated with optional parameters:
+        - New-AzApplicationGatewayHttpListener : added parameter FirewallPolicy, FirewallPolicyId
+        - New-AzApplicationGatewayPathRuleConfig : added parameter FirewallPolicy, FirewallPolicyId
 * Fix required subnet with name AzureBastionSubnet in `PSBastion` can be case insensitive
 * Support for Destination FQDNs in Network Rules and Translated FQDN in NAT Rules for Azure Firewall
 * Add support for top level resource RouteTables of IpGroup
