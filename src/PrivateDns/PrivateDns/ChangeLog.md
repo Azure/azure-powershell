@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* 1.0.0 GA released
+
 ## Version 0.1.3
 * Added support for linking cross-tenant Vnets to Private DNS Zones
 
