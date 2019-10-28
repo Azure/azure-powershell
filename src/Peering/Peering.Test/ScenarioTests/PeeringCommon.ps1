@@ -112,6 +112,10 @@ function makePeerAsn($asn)
 	return $created
 }
 
+function removePeerAsn($asn){
+	$asn | Remove-AzPeerAsn -Force
+}
+
 function NewExchangeConnectionV4V6($facilityId, $v4, $v6)
 {
 	#Create some data for the object
