@@ -1,31 +1,31 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/get-azaksagentpoolavailableagentpoolversion
+online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/invoke-azrotateakscertificate
 schema: 2.0.0
 ---
 
-# Get-AzAksAgentPoolAvailableAgentPoolVersion
+# Invoke-AzRotateAksCertificate
 
 ## SYNOPSIS
-Gets a list of supported versions for the specified agent pool.
+Rotate certificates of a managed cluster.
 
 ## SYNTAX
 
-### Get (Default)
+### Rotate (Default)
 ```
-Get-AzAksAgentPoolAvailableAgentPoolVersion -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Invoke-AzRotateAksCertificate -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### RotateViaIdentity
 ```
-Get-AzAksAgentPoolAvailableAgentPoolVersion -InputObject <IAksIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Invoke-AzRotateAksCertificate -InputObject <IAksIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets a list of supported versions for the specified agent pool.
+Rotate certificates of a managed cluster.
 
 ## EXAMPLES
 
@@ -49,6 +49,22 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -71,7 +87,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: RotateViaIdentity
 Aliases:
 
 Required: True
@@ -82,12 +98,44 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Rotate
 Aliases:
 
 Required: True
@@ -103,7 +151,7 @@ The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Rotate
 Aliases:
 
 Required: True
@@ -119,13 +167,46 @@ Subscription credentials which uniquely identify Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get
+Type: System.String
+Parameter Sets: Rotate
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -140,7 +221,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IAgentPoolAvailableVersions
+### System.Boolean
 
 ## ALIASES
 
@@ -152,9 +233,8 @@ To create the parameters described below, construct a hash table containing the 
 #### INPUTOBJECT <IAksIdentity>: Identity Parameter
   - `[AgentPoolName <String>]`: The name of the agent pool.
   - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of a supported Azure region.
+  - `[Name <String>]`: The name of the managed cluster resource.
   - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[ResourceName <String>]`: The name of the managed cluster resource.
   - `[RoleName <String>]`: The name of the role for managed cluster accessProfile resource.
   - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 

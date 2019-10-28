@@ -13,7 +13,7 @@ Gets cluster user credential of the managed cluster with a specified resource gr
 ## SYNTAX
 
 ```
-Get-AzAksUserCredentials -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String[]>]
+Get-AzAksUserCredentials -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -58,8 +58,8 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
+### -Name
+The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
@@ -74,8 +74,8 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceName
-The name of the managed cluster resource.
+### -ResourceGroupName
+The name of the resource group.
 
 ```yaml
 Type: System.String
@@ -147,7 +147,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.ICredentialResult
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.ICredentialResult
 
 ## ALIASES
 

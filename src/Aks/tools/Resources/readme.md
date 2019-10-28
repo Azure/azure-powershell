@@ -74,7 +74,7 @@ clear-output-folder: true
 
 ``` yaml
 input-file:
-  - https://github.com/erich-wang/azure-rest-api-specs/blob/master/specification/resources/resource-manager/Microsoft.Resources/stable/2018-05-01/resources.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/master/specification/resources/resource-manager/Microsoft.Resources/stable/2018-05-01/resources.json
 module-name: Az.Resources.TestSupport
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Resources
 

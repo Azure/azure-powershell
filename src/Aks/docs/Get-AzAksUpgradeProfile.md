@@ -14,7 +14,7 @@ Gets the details of the upgrade profile for a managed cluster with a specified r
 
 ### Get (Default)
 ```
-Get-AzAksUpgradeProfile -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String[]>]
+Get-AzAksUpgradeProfile -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -81,8 +81,8 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
+### -Name
+The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
@@ -97,8 +97,8 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceName
-The name of the managed cluster resource.
+### -ResourceGroupName
+The name of the resource group.
 
 ```yaml
 Type: System.String
@@ -139,7 +139,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IManagedClusterUpgradeProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IManagedClusterUpgradeProfile
 
 ## ALIASES
 
@@ -151,9 +151,8 @@ To create the parameters described below, construct a hash table containing the 
 #### INPUTOBJECT <IAksIdentity>: Identity Parameter
   - `[AgentPoolName <String>]`: The name of the agent pool.
   - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of a supported Azure region.
+  - `[Name <String>]`: The name of the managed cluster resource.
   - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[ResourceName <String>]`: The name of the managed cluster resource.
   - `[RoleName <String>]`: The name of the role for managed cluster accessProfile resource.
   - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 

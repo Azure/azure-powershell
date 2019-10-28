@@ -28,8 +28,9 @@ Set-AzAks [-Id] <String> [-SubscriptionId <String>] [-AadProfileClientAppId <Str
  [-NodeOsDiskSize <Int32>] [-NodeResourceGroup <String>] [-NodeVmSize <String>]
  [-OutboundIPPrefixPublicIpprefix <IResourceReference[]>] [-OutboundIPPublicIP <IResourceReference[]>]
  [-ServicePrincipalProfileClientId <String>] [-ServicePrincipalProfileSecret <String>] [-SshKeyValue <String>]
- [-SshPublicKey <IContainerServiceSshPublicKey[]>] [-Tag <Hashtable>] [-WindowProfileAdminPassword <String>]
- [-WindowProfileAdminUsername <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SshPublicKey <IContainerServiceSshPublicKey[]>] [-Tag <Hashtable>]
+ [-WindowProfileAdminPassword <SecureString>] [-WindowProfileAdminUsername <String>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
@@ -48,8 +49,9 @@ Set-AzAks [-InputObject] <IAksIdentity> [-SubscriptionId <String>] [-AadProfileC
  [-NodeOsDiskSize <Int32>] [-NodeResourceGroup <String>] [-NodeVmSize <String>]
  [-OutboundIPPrefixPublicIpprefix <IResourceReference[]>] [-OutboundIPPublicIP <IResourceReference[]>]
  [-ServicePrincipalProfileClientId <String>] [-ServicePrincipalProfileSecret <String>] [-SshKeyValue <String>]
- [-SshPublicKey <IContainerServiceSshPublicKey[]>] [-Tag <Hashtable>] [-WindowProfileAdminPassword <String>]
- [-WindowProfileAdminUsername <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SshPublicKey <IContainerServiceSshPublicKey[]>] [-Tag <Hashtable>]
+ [-WindowProfileAdminPassword <SecureString>] [-WindowProfileAdminUsername <String>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### NameParameterSet
@@ -68,8 +70,9 @@ Set-AzAks [-ResourceGroupName] <String> [-Name] <String> [-SubscriptionId <Strin
  [-NodeOsDiskSize <Int32>] [-NodeResourceGroup <String>] [-NodeVmSize <String>]
  [-OutboundIPPrefixPublicIpprefix <IResourceReference[]>] [-OutboundIPPublicIP <IResourceReference[]>]
  [-ServicePrincipalProfileClientId <String>] [-ServicePrincipalProfileSecret <String>] [-SshKeyValue <String>]
- [-SshPublicKey <IContainerServiceSshPublicKey[]>] [-Tag <Hashtable>] [-WindowProfileAdminPassword <String>]
- [-WindowProfileAdminUsername <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SshPublicKey <IContainerServiceSshPublicKey[]>] [-Tag <Hashtable>]
+ [-WindowProfileAdminPassword <SecureString>] [-WindowProfileAdminUsername <String>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -183,7 +186,7 @@ Properties of the agent pool.
 To construct, see NOTES section for AGENTPOOLPROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IManagedClusterAgentPoolProfile[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IManagedClusterAgentPoolProfile[]
 Parameter Sets: (All)
 Aliases:
 
@@ -342,7 +345,7 @@ Dynamic: False
 ```
 
 ### -InputObject
-A PSKubernetesCluster object, normally passed through the pipeline.
+A IAksIdentity object, normally passed through the pipeline.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -395,7 +398,7 @@ The effective outbound IP resources of the cluster load balancer.
 To construct, see NOTES section for LOADBALANCERPROFILEEFFECTIVEOUTBOUNDIP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -657,7 +660,7 @@ A list of public IP prefix resources.
 To construct, see NOTES section for OUTBOUNDIPPREFIXPUBLICIPPREFIX properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -674,7 +677,7 @@ A list of public IP resources.
 To construct, see NOTES section for OUTBOUNDIPPUBLICIP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -757,7 +760,7 @@ Only expect one key specified.
 To construct, see NOTES section for SSHPUBLICKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IContainerServiceSshPublicKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IContainerServiceSshPublicKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -806,7 +809,7 @@ Dynamic: False
 The administrator password to use for Windows VMs.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -878,7 +881,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IManagedCluster
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IManagedCluster
 
 ## ALIASES
 
@@ -906,12 +909,11 @@ To create the parameters described below, construct a hash table containing the 
   - `[VnetSubnetId <String>]`: VNet SubnetID specifies the VNet's subnet identifier.
   - `[Name <String>]`: Unique name of the agent pool profile in the context of the subscription and resource group.
 
-#### INPUTOBJECT <IAksIdentity>: A PSKubernetesCluster object, normally passed through the pipeline.
+#### INPUTOBJECT <IAksIdentity>: A IAksIdentity object, normally passed through the pipeline.
   - `[AgentPoolName <String>]`: The name of the agent pool.
   - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of a supported Azure region.
+  - `[Name <String>]`: The name of the managed cluster resource.
   - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[ResourceName <String>]`: The name of the managed cluster resource.
   - `[RoleName <String>]`: The name of the role for managed cluster accessProfile resource.
   - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 

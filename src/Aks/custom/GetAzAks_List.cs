@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.PowerShell.Cmdlets.Aks.custom;
-using Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801;
+using Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001;
 using Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime;
 using Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PowerShell;
 
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
         /// <param name="response">
-        ///     the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.ICloudError" /> from the
+        ///     the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.ICloudError" /> from the
         ///     remote call
         /// </param>
         /// <param name="returnNow">
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
         /// <param name="response">
         ///     the body result as a
-        ///     <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IManagedClusterListResult" /> from the remote
+        ///     <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IManagedClusterListResult" /> from the remote
         ///     call
         /// </param>
         /// <param name="returnNow">
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
         /// <param name="response">
-        ///     the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.ICloudError" /> from the
+        ///     the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.ICloudError" /> from the
         ///     remote call
         /// </param>
         /// <returns>
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
         /// <param name="response">
         ///     the body result as a
-        ///     <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IManagedClusterListResult" /> from the remote
+        ///     <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IManagedClusterListResult" /> from the remote
         ///     call
         /// </param>
         /// <returns>

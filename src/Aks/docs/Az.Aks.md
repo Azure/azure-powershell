@@ -12,7 +12,7 @@ Microsoft Azure PowerShell: Aks cmdlets
 
 ## Az.Aks Cmdlets
 ### [Get-AzAks](Get-AzAks.md)
-Gets the details of the managed cluster with a specified resource group and name.
+List Kubernetes managed clusters.
 
 ### [Get-AzAksAccessProfile](Get-AzAksAccessProfile.md)
 Gets the accessProfile for the specified role name of the managed cluster with a specified resource group and name.
@@ -23,15 +23,11 @@ Gets cluster admin credential of the managed cluster with a specified resource g
 ### [Get-AzAksAgentPool](Get-AzAksAgentPool.md)
 Gets the details of the agent pool by managed cluster and resource group.
 
-### [Get-AzAksAgentPoolAvailableAgentPoolVersion](Get-AzAksAgentPoolAvailableAgentPoolVersion.md)
-Gets a list of supported versions for the specified agent pool.
-
 ### [Get-AzAksAgentPoolUpgradeProfile](Get-AzAksAgentPoolUpgradeProfile.md)
 Gets the details of the upgrade profile for an agent pool with a specified resource group and managed cluster name.
 
-### [Get-AzAksOrchestrator](Get-AzAksOrchestrator.md)
-Gets a list of supported orchestrators in the specified subscription.
-The operation returns properties of each orchestrator including version, available upgrades and whether that version or upgrades are in preview.
+### [Get-AzAksAvailableAgentPoolVersion](Get-AzAksAvailableAgentPoolVersion.md)
+Gets a list of supported versions for the specified agent pool.
 
 ### [Get-AzAksUpgradeProfile](Get-AzAksUpgradeProfile.md)
 Gets the details of the upgrade profile for a managed cluster with a specified resource group and name.
@@ -41,6 +37,9 @@ Gets cluster user credential of the managed cluster with a specified resource gr
 
 ### [Import-AzAksCredential](Import-AzAksCredential.md)
 Import and merge Kubectl config for a managed Kubernetes Cluster.
+
+### [Invoke-AzRotateAksCertificate](Invoke-AzRotateAksCertificate.md)
+Rotate certificates of a managed cluster.
 
 ### [New-AzAks](New-AzAks.md)
 Creates a managed cluster with the specified configuration for agents and Kubernetes version.

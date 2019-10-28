@@ -12,35 +12,11 @@ Creates or updates an agent pool in the specified managed cluster.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
-New-AzAksAgentPool -Name <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] [-AvailabilityZone <String[]>] [-Count <Int32>] [-EnableAutoScaling]
- [-EnableNodePublicIP] [-MaxCount <Int32>] [-MaxPod <Int32>] [-MinCount <Int32>] [-NodeTaint <String[]>]
+New-AzAksAgentPool -AksName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AvailabilityZone <String[]>] [-Count <Int32>] [-EnableAutoScaling] [-EnableNodePublicIP]
+ [-MaxCount <Int32>] [-MaxPod <Int32>] [-MinCount <Int32>] [-NodeTaint <String[]>]
  [-OrchestratorVersion <String>] [-OSDiskSizeGb <Int32>] [-OSType <OSType>]
- [-ScaleSetEvictionPolicy <ScaleSetEvictionPolicy>] [-ScaleSetPriority <ScaleSetPriority>]
- [-Type <AgentPoolType>] [-VMSize <ContainerServiceVMSizeTypes>] [-VnetSubnetId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzAksAgentPool -Name <String> -ResourceGroupName <String> -ResourceName <String> -Parameter <IAgentPool>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzAksAgentPool -InputObject <IAksIdentity> -Parameter <IAgentPool> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzAksAgentPool -InputObject <IAksIdentity> [-AvailabilityZone <String[]>] [-Count <Int32>]
- [-EnableAutoScaling] [-EnableNodePublicIP] [-MaxCount <Int32>] [-MaxPod <Int32>] [-MinCount <Int32>]
- [-NodeTaint <String[]>] [-OrchestratorVersion <String>] [-OSDiskSizeGb <Int32>] [-OSType <OSType>]
  [-ScaleSetEvictionPolicy <ScaleSetEvictionPolicy>] [-ScaleSetPriority <ScaleSetPriority>]
  [-Type <AgentPoolType>] [-VMSize <ContainerServiceVMSizeTypes>] [-VnetSubnetId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -71,6 +47,22 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -AksName
+The name of the managed cluster resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -AsJob
 Run the command as a job
 
@@ -93,7 +85,7 @@ Must use VirtualMachineScaleSets AgentPoolType.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -111,7 +103,7 @@ The default value is 1.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -143,7 +135,7 @@ Whether to enable auto-scaler
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -159,7 +151,7 @@ Enable public IP for nodes
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -170,29 +162,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -MaxCount
 Maximum number of nodes for auto-scaling
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -208,7 +183,7 @@ Maximum number of pods that can run on a node.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -224,7 +199,7 @@ Minimum number of nodes for auto-scaling
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -240,7 +215,7 @@ The name of the agent pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases: AgentPoolName
 
 Required: True
@@ -257,7 +232,7 @@ For example, key=value:NoSchedule.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -289,7 +264,7 @@ Version of orchestrator specified when creating the managed cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -306,7 +281,7 @@ If you specify 0, it will apply the default osDisk size according to the vmSize 
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -324,7 +299,7 @@ Default to Linux.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OSType
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -335,45 +310,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Agent Pool.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IAgentPool
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ResourceName
-The name of the managed cluster resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -390,7 +332,7 @@ Default to Delete.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ScaleSetEvictionPolicy
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -407,7 +349,7 @@ Default to regular.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ScaleSetPriority
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -424,7 +366,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -440,7 +382,7 @@ AgentPoolType represents types of an agent pool
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.AgentPoolType
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -456,7 +398,7 @@ Size of agent VMs.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ContainerServiceVMSizeTypes
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -472,7 +414,7 @@ VNet SubnetID specifies the VNet's subnet identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -521,47 +463,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IAgentPool
-
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IAgentPool
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IAgentPool
 
 ## ALIASES
 
 ## NOTES
-
-### COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-#### INPUTOBJECT <IAksIdentity>: Identity Parameter
-  - `[AgentPoolName <String>]`: The name of the agent pool.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of a supported Azure region.
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[ResourceName <String>]`: The name of the managed cluster resource.
-  - `[RoleName <String>]`: The name of the role for managed cluster accessProfile resource.
-  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-#### PARAMETER <IAgentPool>: Agent Pool.
-  - `Count <Int32>`: Number of agents (VMs) to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1. 
-  - `VMSize <ContainerServiceVMSizeTypes>`: Size of agent VMs.
-  - `[AvailabilityZone <String[]>]`: (PREVIEW) Availability zones for nodes. Must use VirtualMachineScaleSets AgentPoolType.
-  - `[EnableAutoScaling <Boolean?>]`: Whether to enable auto-scaler
-  - `[EnableNodePublicIP <Boolean?>]`: Enable public IP for nodes
-  - `[MaxCount <Int32?>]`: Maximum number of nodes for auto-scaling
-  - `[MaxPod <Int32?>]`: Maximum number of pods that can run on a node.
-  - `[MinCount <Int32?>]`: Minimum number of nodes for auto-scaling
-  - `[NodeTaint <String[]>]`: Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule.
-  - `[OSDiskSizeGb <Int32?>]`: OS Disk Size in GB to be used to specify the disk size for every machine in this master/agent pool. If you specify 0, it will apply the default osDisk size according to the vmSize specified.
-  - `[OSType <OSType?>]`: OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
-  - `[OrchestratorVersion <String>]`: Version of orchestrator specified when creating the managed cluster.
-  - `[ScaleSetEvictionPolicy <ScaleSetEvictionPolicy?>]`: ScaleSetEvictionPolicy to be used to specify eviction policy for low priority virtual machine scale set. Default to Delete.
-  - `[ScaleSetPriority <ScaleSetPriority?>]`: ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.
-  - `[Type <AgentPoolType?>]`: AgentPoolType represents types of an agent pool
-  - `[VnetSubnetId <String>]`: VNet SubnetID specifies the VNet's subnet identifier.
 
 ## RELATED LINKS
 

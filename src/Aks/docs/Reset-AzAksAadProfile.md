@@ -14,22 +14,9 @@ Update the AAD Profile for a managed cluster.
 
 ### ResetExpanded (Default)
 ```
-Reset-AzAksAadProfile -ResourceGroupName <String> -ResourceName <String> -ClientAppId <String>
- -ServerAppId <String> [-SubscriptionId <String>] [-ServerAppSecret <String>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Reset
-```
-Reset-AzAksAadProfile -ResourceGroupName <String> -ResourceName <String>
- -Parameter <IManagedClusterAadProfile> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ResetViaIdentity
-```
-Reset-AzAksAadProfile -InputObject <IAksIdentity> -Parameter <IManagedClusterAadProfile>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Reset-AzAksAadProfile -Name <String> -ResourceGroupName <String> -ClientAppId <String> -ServerAppId <String>
+ [-SubscriptionId <String>] [-ServerAppSecret <String>] [-TenantId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ResetViaIdentityExpanded
@@ -85,7 +72,7 @@ The client AAD application ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded, ResetViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -118,13 +105,29 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: ResetViaIdentity, ResetViaIdentityExpanded
+Parameter Sets: ResetViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name of the managed cluster resource.
+
+```yaml
+Type: System.String
+Parameter Sets: ResetExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -141,23 +144,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-AADProfile specifies attributes for Azure Active Directory integration.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IManagedClusterAadProfile
-Parameter Sets: Reset, ResetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -183,23 +169,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reset, ResetExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ResourceName
-The name of the managed cluster resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Reset, ResetExpanded
+Parameter Sets: ResetExpanded
 Aliases:
 
 Required: True
@@ -215,7 +185,7 @@ The server AAD application ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded, ResetViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -231,7 +201,7 @@ The server AAD application secret.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded, ResetViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -248,7 +218,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reset, ResetExpanded
+Parameter Sets: ResetExpanded
 Aliases:
 
 Required: False
@@ -265,7 +235,7 @@ If not specified, will use the tenant of the deployment subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded, ResetViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -314,8 +284,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IManagedClusterAadProfile
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
 
 ## OUTPUTS
@@ -332,17 +300,10 @@ To create the parameters described below, construct a hash table containing the 
 #### INPUTOBJECT <IAksIdentity>: Identity Parameter
   - `[AgentPoolName <String>]`: The name of the agent pool.
   - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of a supported Azure region.
+  - `[Name <String>]`: The name of the managed cluster resource.
   - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[ResourceName <String>]`: The name of the managed cluster resource.
   - `[RoleName <String>]`: The name of the role for managed cluster accessProfile resource.
   - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-#### PARAMETER <IManagedClusterAadProfile>: AADProfile specifies attributes for Azure Active Directory integration.
-  - `ClientAppId <String>`: The client AAD application ID.
-  - `ServerAppId <String>`: The server AAD application ID.
-  - `[ServerAppSecret <String>]`: The server AAD application secret.
-  - `[TenantId <String>]`: The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription.
 
 ## RELATED LINKS
 

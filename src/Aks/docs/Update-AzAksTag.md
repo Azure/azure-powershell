@@ -132,7 +132,7 @@ Tags object for patch operations.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.ITagsObject
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.ITagsObject
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -247,13 +247,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.ITagsObject
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.ITagsObject
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IManagedCluster
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IManagedCluster
 
 ## ALIASES
 
@@ -265,9 +265,8 @@ To create the parameters described below, construct a hash table containing the 
 #### INPUTOBJECT <IAksIdentity>: Identity Parameter
   - `[AgentPoolName <String>]`: The name of the agent pool.
   - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of a supported Azure region.
+  - `[Name <String>]`: The name of the managed cluster resource.
   - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[ResourceName <String>]`: The name of the managed cluster resource.
   - `[RoleName <String>]`: The name of the role for managed cluster accessProfile resource.
   - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 

@@ -27,8 +27,9 @@ New-AzAks [-ResourceGroupName] <String> [-Name] <String> [-SubscriptionId <Strin
  [-NodeOsDiskSize <Int32>] [-NodeResourceGroup <String>] [-NodeVmSize <String>]
  [-OutboundIPPrefixPublicIpprefix <IResourceReference[]>] [-OutboundIPPublicIP <IResourceReference[]>]
  [-ServicePrincipalProfileClientId <String>] [-ServicePrincipalProfileSecret <String>] [-SshKeyValue <String>]
- [-SshPublicKey <IContainerServiceSshPublicKey[]>] [-Tag <Hashtable>] [-WindowProfileAdminPassword <String>]
- [-WindowProfileAdminUsername <String>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SshPublicKey <IContainerServiceSshPublicKey[]>] [-Tag <Hashtable>]
+ [-WindowProfileAdminPassword <SecureString>] [-WindowProfileAdminUsername <String>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -142,7 +143,7 @@ Properties of the agent pool.
 To construct, see NOTES section for AGENTPOOLPROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IManagedClusterAgentPoolProfile[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IManagedClusterAgentPoolProfile[]
 Parameter Sets: (All)
 Aliases:
 
@@ -321,7 +322,7 @@ The effective outbound IP resources of the cluster load balancer.
 To construct, see NOTES section for LOADBALANCERPROFILEEFFECTIVEOUTBOUNDIP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -583,7 +584,7 @@ A list of public IP prefix resources.
 To construct, see NOTES section for OUTBOUNDIPPREFIXPUBLICIPPREFIX properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -600,7 +601,7 @@ A list of public IP resources.
 To construct, see NOTES section for OUTBOUNDIPPUBLICIP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -683,7 +684,7 @@ Only expect one key specified.
 To construct, see NOTES section for SSHPUBLICKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IContainerServiceSshPublicKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IContainerServiceSshPublicKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -732,7 +733,7 @@ Dynamic: False
 The administrator password to use for Windows VMs.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -800,7 +801,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IManagedCluster
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IManagedCluster
 
 ## ALIASES
 

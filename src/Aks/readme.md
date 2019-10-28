@@ -70,6 +70,30 @@ directive:
         script: '(Get-AzContext).Subscription.Id'
 ```
 
+``` yaml
+directive:
+  - from: managedClusters.json
+    where: $.definitions.SubResource.properties
+    transform: >
+      return {
+        "id": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource ID."
+        },
+        "name": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The name of the resource that is unique within a resource group. This name can be used to access the resource."
+        },
+        "restype": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource type"
+        }
+      }
+```
+
 ### General settings
 > Values
 
@@ -78,7 +102,7 @@ service-name: Aks
 powershell: true
 azure: true
 branch: master
-repo: https://github.com/erich-wang/azure-rest-api-specs/blob/$(branch)
+repo: https://github.com/Azure/azure-rest-api-specs/blob/$(branch)
 prefix: Az
 subject-prefix: ''
 module-name: $(prefix).$(service-name)
@@ -87,8 +111,7 @@ clear-output-folder: true
 output-folder: .
 aks: $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService
 input-file:
-- $(aks)/stable/2019-08-01/location.json
-- $(aks)/stable/2019-08-01/managedClusters.json
+- $(aks)/stable/2019-10-01/managedClusters.json
 
 module-version: 0.0.1
 title: AksClient
@@ -105,6 +128,21 @@ directive:
       variant: Create|CreateViaIdentity|Update|UpdateViaIdentity|Get|List|Delete
     remove: true
   - where:
+      verb: Set
+      subject: AgentPool
+      variant: ^Update$
+    remove: true
+  - where:
+      verb: New
+      subject: AgentPool
+      variant: ^(Create|CreateViaIdentity|CreateViaIdentityExpanded)$
+    remove: true
+  - where:
+      verb: Reset
+      subject: AadProfile|ServicePrincipalProfile
+      variant: ^(Reset|ResetViaIdentity)$
+    remove: true
+  - where:
       subject: (ManagedCluster|ContainerService)(.*)
     set:
       subject: Aks$2
@@ -114,11 +152,28 @@ directive:
       subject: Aks$1$2
   - where:
       verb: New|Set|Remove|Get
-      subject: Aks
+      subject: ^Aks(?!.*AgentPool).*$
       parameter-name: ResourceName
     set:
       parameter-name: Name
-      alias-name: ResouceName
+      alias-name: ResourceName
+  - where:
+      verb: New|Set|Remove|Get
+      subject: AksAgentPool
+      parameter-name: ResourceName
+    set:
+      parameter-name: AksName
+      alias-name: ResourceName
+  - where:
+      subject: AksAgentPoolAvailableAgentPoolVersion|AksAgentPoolUpgradeProfile
+      parameter-name: ResourceName
+    set:
+      parameter-name: Name
+      alias-name: ResourceName
+  - where:
+      subject: AksAgentPoolAvailableAgentPoolVersion
+    set:
+      subject: AksAvailableAgentPoolVersion
   - where:
       model-name: ManagedCluster
     set:
@@ -132,6 +187,11 @@ directive:
           - KubernetesVersion
           - Id
           - Tag
+  - where:
+      model-name: AksIdentity|ManagedCluster
+      property-name: ResourceName
+    set:
+      property-name: Name
 
 # Update csproj for customizations
   - from: Az.Aks.csproj
@@ -144,4 +204,3 @@ directive:
     where: $
     transform: $ = $.replace('SerializedName = @"restype"', 'SerializedName = @"type"');
 ```
-

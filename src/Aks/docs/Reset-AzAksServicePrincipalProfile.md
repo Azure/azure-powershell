@@ -14,23 +14,9 @@ Update the service principal Profile for a managed cluster.
 
 ### ResetExpanded (Default)
 ```
-Reset-AzAksServicePrincipalProfile -ResourceGroupName <String> -ResourceName <String> -ClientId <String>
+Reset-AzAksServicePrincipalProfile -Name <String> -ResourceGroupName <String> -ClientId <String>
  [-SubscriptionId <String>] [-Secret <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Reset
-```
-Reset-AzAksServicePrincipalProfile -ResourceGroupName <String> -ResourceName <String>
- -Parameter <IManagedClusterServicePrincipalProfile> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ResetViaIdentity
-```
-Reset-AzAksServicePrincipalProfile -InputObject <IAksIdentity>
- -Parameter <IManagedClusterServicePrincipalProfile> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ResetViaIdentityExpanded
@@ -85,7 +71,7 @@ The ID for the service principal.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded, ResetViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -118,13 +104,29 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: ResetViaIdentity, ResetViaIdentityExpanded
+Parameter Sets: ResetViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name of the managed cluster resource.
+
+```yaml
+Type: System.String
+Parameter Sets: ResetExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -141,23 +143,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-Information about a service principal identity for the cluster to use for manipulating Azure APIs.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IManagedClusterServicePrincipalProfile
-Parameter Sets: Reset, ResetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -183,23 +168,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reset, ResetExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ResourceName
-The name of the managed cluster resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Reset, ResetExpanded
+Parameter Sets: ResetExpanded
 Aliases:
 
 Required: True
@@ -215,7 +184,7 @@ The secret password associated with the service principal in plain text.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded, ResetViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -232,7 +201,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reset, ResetExpanded
+Parameter Sets: ResetExpanded
 Aliases:
 
 Required: False
@@ -281,8 +250,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IManagedClusterServicePrincipalProfile
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
 
 ## OUTPUTS
@@ -299,15 +266,10 @@ To create the parameters described below, construct a hash table containing the 
 #### INPUTOBJECT <IAksIdentity>: Identity Parameter
   - `[AgentPoolName <String>]`: The name of the agent pool.
   - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of a supported Azure region.
+  - `[Name <String>]`: The name of the managed cluster resource.
   - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[ResourceName <String>]`: The name of the managed cluster resource.
   - `[RoleName <String>]`: The name of the role for managed cluster accessProfile resource.
   - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-#### PARAMETER <IManagedClusterServicePrincipalProfile>: Information about a service principal identity for the cluster to use for manipulating Azure APIs.
-  - `ClientId <String>`: The ID for the service principal.
-  - `[Secret <String>]`: The secret password associated with the service principal in plain text.
 
 ## RELATED LINKS
 

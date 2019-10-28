@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.Aks.Models;
-using Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801;
+using Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.custom
 {

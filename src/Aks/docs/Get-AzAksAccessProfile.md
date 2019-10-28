@@ -14,7 +14,7 @@ Gets the accessProfile for the specified role name of the managed cluster with a
 
 ### Get (Default)
 ```
-Get-AzAksAccessProfile -ResourceGroupName <String> -ResourceName <String> -RoleName <String>
+Get-AzAksAccessProfile -Name <String> -ResourceGroupName <String> -RoleName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -82,8 +82,8 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
+### -Name
+The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
@@ -98,8 +98,8 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceName
-The name of the managed cluster resource.
+### -ResourceGroupName
+The name of the resource group.
 
 ```yaml
 Type: System.String
@@ -189,7 +189,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IManagedClusterAccessProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IManagedClusterAccessProfile
 
 ## ALIASES
 
@@ -201,9 +201,8 @@ To create the parameters described below, construct a hash table containing the 
 #### INPUTOBJECT <IAksIdentity>: Identity Parameter
   - `[AgentPoolName <String>]`: The name of the agent pool.
   - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of a supported Azure region.
+  - `[Name <String>]`: The name of the managed cluster resource.
   - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[ResourceName <String>]`: The name of the managed cluster resource.
   - `[RoleName <String>]`: The name of the role for managed cluster accessProfile resource.
   - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 

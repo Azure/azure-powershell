@@ -1,6 +1,6 @@
 ﻿using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801;
+using Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.custom
 {

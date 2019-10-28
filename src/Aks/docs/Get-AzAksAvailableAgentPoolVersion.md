@@ -1,48 +1,31 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/get-azaks
+online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/get-azaksavailableagentpoolversion
 schema: 2.0.0
 ---
 
-# Get-AzAks
+# Get-AzAksAvailableAgentPoolVersion
 
 ## SYNOPSIS
-List Kubernetes managed clusters.
+Gets a list of supported versions for the specified agent pool.
 
 ## SYNTAX
 
-### List (Default)
+### Get (Default)
 ```
-Get-AzAks [-SubscriptionId <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GroupNameParameterSet
-```
-Get-AzAks [-ResourceGroupName] <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAksAvailableAgentPoolVersion -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### IdParameterSet
+### GetViaIdentity
 ```
-Get-AzAks [-Id] <String> [-SubscriptionId <String[]>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzAksAvailableAgentPoolVersion -InputObject <IAksIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### InputObjectParameterSet
-```
-Get-AzAks -InputObject <IAksIdentity> [-SubscriptionId <String[]>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### NameParameterSet
-```
-Get-AzAks [-ResourceGroupName] <String> [-Name] <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-List Kubernetes managed clusters.
+Gets a list of supported versions for the specified agent pool.
 
 ## EXAMPLES
 
@@ -70,9 +53,9 @@ PS C:\> {{ Add code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -82,29 +65,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Id
-Id of a managed Kubernetes cluster
-
-```yaml
-Type: System.String
-Parameter Sets: IdParameterSet
-Aliases: ResourceId
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -InputObject
-A IAksIdentity object, normally passed through the pipeline.
+Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: InputObjectParameterSet
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -120,11 +87,11 @@ The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
+Parameter Sets: Get
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -136,11 +103,11 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: GroupNameParameterSet, NameParameterSet
+Parameter Sets: Get
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -153,7 +120,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: False
@@ -171,11 +138,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
 
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IManagedCluster
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IAgentPoolAvailableVersions
 
 ## ALIASES
 
@@ -184,7 +149,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### INPUTOBJECT <IAksIdentity>: A IAksIdentity object, normally passed through the pipeline.
+#### INPUTOBJECT <IAksIdentity>: Identity Parameter
   - `[AgentPoolName <String>]`: The name of the agent pool.
   - `[Id <String>]`: Resource identity path
   - `[Name <String>]`: The name of the managed cluster resource.

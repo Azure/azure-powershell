@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Aks.private.dll'
   FormatsToProcess = './Az.Aks.format.ps1xml'
-  CmdletsToExport = 'Get-AzAks', 'Get-AzAksAccessProfile', 'Get-AzAksAdminCredentials', 'Get-AzAksAgentPool', 'Get-AzAksAgentPoolAvailableAgentPoolVersion', 'Get-AzAksAgentPoolUpgradeProfile', 'Get-AzAksOrchestrator', 'Get-AzAksUpgradeProfile', 'Get-AzAksUserCredentials', 'Import-AzAksCredential', 'New-AzAks', 'New-AzAksAgentPool', 'Remove-AzAks', 'Remove-AzAksAgentPool', 'Reset-AzAksAadProfile', 'Reset-AzAksServicePrincipalProfile', 'Set-AzAks', 'Set-AzAksAgentPool', 'Start-AzAksDashboard', 'Stop-AzAksDashboard', 'Update-AzAksTag', '*'
+  CmdletsToExport = 'Get-AzAks', 'Get-AzAksAccessProfile', 'Get-AzAksAdminCredentials', 'Get-AzAksAgentPool', 'Get-AzAksAgentPoolUpgradeProfile', 'Get-AzAksAvailableAgentPoolVersion', 'Get-AzAksUpgradeProfile', 'Get-AzAksUserCredentials', 'Import-AzAksCredential', 'Invoke-AzRotateAksCertificate', 'New-AzAks', 'New-AzAksAgentPool', 'Remove-AzAks', 'Remove-AzAksAgentPool', 'Reset-AzAksAadProfile', 'Reset-AzAksServicePrincipalProfile', 'Set-AzAks', 'Set-AzAksAgentPool', 'Start-AzAksDashboard', 'Stop-AzAksDashboard', 'Update-AzAksTag', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

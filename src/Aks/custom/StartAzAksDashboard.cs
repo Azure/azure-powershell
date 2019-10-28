@@ -27,7 +27,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.Aks.Models;
-using Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801;
+using Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001;
 using Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime;
 using Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PowerShell;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.custom
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
         /// <param name="response">
-        ///     the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.ICloudError" /> from the
+        ///     the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.ICloudError" /> from the
         ///     remote call
         /// </param>
         /// <returns>
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.custom
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
         /// <param name="response">
         ///     the body result as a
-        ///     <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IManagedClusterAccessProfile" /> from the
+        ///     <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IManagedClusterAccessProfile" /> from the
         ///     remote call
         /// </param>
         /// <returns>
