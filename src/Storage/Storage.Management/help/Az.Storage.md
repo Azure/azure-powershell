@@ -41,6 +41,15 @@ Enable delete retention policy  for the Azure Storage Blob service.
 ### [Enable-AzStorageStaticWebsite](Enable-AzStorageStaticWebsite.md)
 Enable static website for the Azure Storage account.
 
+### [Get-AzDataLakeGen2ChildItem](Get-AzDataLakeGen2ChildItem.md)
+Lists sub folders and files from a folder or container.
+
+### [Get-AzDataLakeGen2Item](Get-AzDataLakeGen2Item.md)
+Gets the details of a file or folder in a container.
+
+### [Get-AzDataLakeGen2ItemContent](Get-AzDataLakeGen2ItemContent.md)
+Download a file.
+
 ### [Get-AzRmStorageContainer](Get-AzRmStorageContainer.md)
 Gets or lists Storage blob containers
 
@@ -134,6 +143,15 @@ Invokes failover of a Storage account.
 ### [Lock-AzRmStorageContainerImmutabilityPolicy](Lock-AzRmStorageContainerImmutabilityPolicy.md)
 Locks ImmutabilityPolicy of a Storage blob containers
 
+### [Move-AzDataLakeGen2Item](Move-AzDataLakeGen2Item.md)
+Move a file or folder to another a file or folder in same Storage account.
+
+### [New-AzDataLakeGen2Item](New-AzDataLakeGen2Item.md)
+Create a file or folder in a container.
+
+### [New-AzDataLakeGen2ItemAclObject](New-AzDataLakeGen2ItemAclObject.md)
+Creates a DataLake gen2 item ACL object, which can be used in Update-AzDataLakeGen2Item cmdlet.
+
 ### [New-AzRmStorageContainer](New-AzRmStorageContainer.md)
 Creates a Storage blob container
 
@@ -202,6 +220,9 @@ Generates an SAS token for an Azure Storage table.
 
 ### [New-AzStorageTableStoredAccessPolicy](New-AzStorageTableStoredAccessPolicy.md)
 Creates a stored access policy for an Azure storage table.
+
+### [Remove-AzDataLakeGen2Item](Remove-AzDataLakeGen2Item.md)
+Remove a file or folder.
 
 ### [Remove-AzRmStorageContainer](Remove-AzRmStorageContainer.md)
 Removes a Storage blob container
@@ -322,6 +343,9 @@ Stops a copy operation.
 
 ### [Stop-AzStorageFileCopy](Stop-AzStorageFileCopy.md)
 Stops a copy operation to the specified destination file.
+
+### [Update-AzDataLakeGen2Item](Update-AzDataLakeGen2Item.md)
+Update a file or folder on properties, metadata, permission, ACL, and owner.
 
 ### [Update-AzRmStorageContainer](Update-AzRmStorageContainer.md)
 Modifies a Storage blob container
