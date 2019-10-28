@@ -151,11 +151,13 @@ function Update-ChangeLog
     ($Content + $ChangeLogContent) | Set-Content -Path $ChangeLogFile.FullName -Encoding UTF8
 }
 
-if (!(Test-Path "C:/Program Files/PowerShell/6/Modules/PowerShellGet"))
+$PowerShellGetModuleList = gmo -l PowerShellGet | where version -ge '2.2.1'
+if ($PowerShellGetModuleList.Count -ne 0)
 {
+    $PowerShellGetPath = $PowerShellGetModuleList.path.Split('PowerShellGet')[0]
     try
     {
-        Save-Module -Name PowerShellGet -Repository $GalleryName -Path "C:/Program Files/PowerShell/6/Modules" -ErrorAction Stop
+        Save-Module -Name PowerShellGet -Repository $GalleryName -Path $PowerShellGetPath -ErrorAction Stop
     }
     catch
     {
