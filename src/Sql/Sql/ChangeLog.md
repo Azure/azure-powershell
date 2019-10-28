@@ -25,6 +25,7 @@
   * Get-AzSqlDatabaseRestorePoints (use Get-AzSqlDatabaseRestorePoint instead)
 * Remove Get-AzSqlDatabaseSecureConnectionPolicy cmdlet
 * Adding cmdlets to Disable and enable sensitivity recommendations on columns in a database.
+* Fix a small bug when reading auditing settings of a server or a database.
 
 ## Version 1.15.0
 * Add support for setting Active Directory Administrator on Managed Instance
