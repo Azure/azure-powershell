@@ -64,9 +64,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         private void ValidateIpAddresses(string[] ipAddresses)
         {
-            if (IpAddresses == null)
+            if (ipAddresses == null)
                 return;
-            foreach (var ip in IpAddresses)
+            foreach (var ip in ipAddresses)
             {
                 IPAddress ipVal;
                 if (!IPAddress.TryParse(ip, out ipVal) || ipVal.AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork)

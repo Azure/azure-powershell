@@ -15,8 +15,10 @@
 namespace Microsoft.Azure.Commands.Network
 {
     using AutoMapper;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Management.Automation;
     using WindowsAzure.Commands.Common;
     using CNM = Microsoft.Azure.Commands.Network.Models;
     using MNM = Microsoft.Azure.Management.Network.Models;
@@ -1130,12 +1132,25 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.AzureFirewall, CNM.PSAzureFirewall>().AfterMap((src, dest) =>
                 {
-                    dest.ThreatIntelWhitelist = new CNM.PSAzureFirewallThreatIntelWhitelist
+                    // TODO: refactor after backend is refactored
+                    dest.ThreatIntelWhitelist = new CNM.PSAzureFirewallThreatIntelWhitelist();
+                    try
                     {
-                        FQDNs = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("ThreatIntel.Whitelist.FQDNs")).Value?.Split(',').Select(str => str.Trim()).ToArray(),
-                        IpAddresses = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("ThreatIntel.Whitelist.IpAddresses")).Value?.Split(',').Select(str => str.Trim()).ToArray()
-                    };
-                }); ;
+                        dest.ThreatIntelWhitelist.FQDNs = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("ThreatIntel.Whitelist.FQDNs", StringComparison.OrdinalIgnoreCase)).Value?.Split(',').Select(str => str.Trim()).ToArray();
+                    }
+                    catch (PSArgumentException)
+                    {
+                        dest.ThreatIntelWhitelist.FQDNs = null;
+                    }
+                    try
+                    {
+                        dest.ThreatIntelWhitelist.IpAddresses = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("ThreatIntel.Whitelist.IpAddresses", StringComparison.OrdinalIgnoreCase)).Value?.Split(',').Select(str => str.Trim()).ToArray();
+                    }
+                    catch (PSArgumentException)
+                    {
+                        dest.ThreatIntelWhitelist.IpAddresses = null;
+                    }
+                });
                 cfg.CreateMap<MNM.AzureFirewallSku, CNM.PSAzureFirewallSku>();
                 cfg.CreateMap<MNM.AzureFirewallIPConfiguration, CNM.PSAzureFirewallIpConfiguration>();
                 cfg.CreateMap<MNM.AzureFirewallApplicationRuleCollection, CNM.PSAzureFirewallApplicationRuleCollection>();
