@@ -13,18 +13,19 @@
 // limitations under the License.
 //
 
+using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSApplicationGatewayWebApplicationFirewallPolicy : PSTopLevelResource
+    public partial class PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride
     {
-        public List<PSApplicationGatewayFirewallCustomRule> CustomRules { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string RuleGroupName { get; set; }
 
-        public PSApplicationGatewayFirewallPolicySettings PolicySettings { get; set; }
-
-        public PSApplicationGatewayFirewallPolicyManagedRules ManagedRules { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public List<PSApplicationGatewayFirewallPolicyManagedRuleOverride> Rules { get; set; }
     }
 }
