@@ -62,8 +62,14 @@ Converts a vulnerability assessment scan results to Excel format.
 ### [Convert-AzSqlInstanceDatabaseVulnerabilityAssessmentScan](Convert-AzSqlInstanceDatabaseVulnerabilityAssessmentScan.md)
 Converts a vulnerability assessment scan results to Excel format.
 
+### [Disable-AzSqlDatabaseSensitivityRecommendation](Disable-AzSqlDatabaseSensitivityRecommendation)
+Disables sensitivity recommendations on columns in the database.
+
 ### [Disable-AzSqlInstanceAdvancedDataSecurity](Disable-AzSqlInstanceAdvancedDataSecurity.md)
 Disables Advanced Data Security on a managed instance.
+
+### [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](Disable-AzSqlInstanceDatabaseSensitivityRecommendation)
+Disbles sensitivity recommendations on columns in the Azure SQL managed instance database.
 
 ### [Disable-AzSqlServerAdvancedDataSecurity](Disable-AzSqlServerAdvancedDataSecurity.md)
 Disables Advanced Data Security on a server.
@@ -71,8 +77,14 @@ Disables Advanced Data Security on a server.
 ### [Disable-AzSqlServerAdvancedThreatProtection](Disable-AzSqlServerAdvancedThreatProtection.md)
 Disables Advanced Threat Protection on a server.
 
+### [Enable-AzSqlDatabaseSensitivityRecommendation](Enable-AzSqlDatabaseSensitivityRecommendation)
+Enables sensitivity recommendations on columns in the database.
+
 ### [Enable-AzSqlInstanceAdvancedDataSecurity](Enable-AzSqlInstanceAdvancedDataSecurity.md)
 Enables Advanced Data Security on a managed instance.
+
+### [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](Enable-AzSqlInstanceDatabaseSensitivityRecommendation)
+Enables sensitivity recommendations on columns in the Azure SQL managed instance database.
 
 ### [Enable-AzSqlServerAdvancedDataSecurity](Enable-AzSqlServerAdvancedDataSecurity.md)
 Enables Advanced Data Security on a server.
@@ -142,10 +154,6 @@ Gets the geo-replication links between an Azure SQL Database and a resource grou
 
 ### [Get-AzSqlDatabaseRestorePoint](Get-AzSqlDatabaseRestorePoint.md)
 Retrieves the distinct restore points from which a SQL Data Warehouse can be restored.
-
-### [Get-AzSqlDatabaseSecureConnectionPolicy](Get-AzSqlDatabaseSecureConnectionPolicy.md)
-Gets the secure connection policy for a database. 
-Secure connection is deprecated and this command will be removed in a future release. Please use the SQL database blade in the Azure portal to view the connection strings
 
 ### [Get-AzSqlDatabaseSensitivityClassification](Get-AzSqlDatabaseSensitivityClassification.md)
 Gets the current information types and sensitivity labels of columns in the database.
