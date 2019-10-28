@@ -33,7 +33,7 @@ The **Publish-AzureRmVMDscConfiguration** cmdlet uploads a Desired State Configu
 
 ## EXAMPLES
 
-### Example 1: Create a .zip package an upload it to Azure storage
+### Example 1: Create a .zip package and upload it to Azure storage
 ```
 PS C:\> Publish-AzureRmVMDscConfiguration ".\MyConfiguration.ps1"
 ```
