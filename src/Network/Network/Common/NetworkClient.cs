@@ -109,9 +109,9 @@ namespace Microsoft.Azure.Commands.Network
 
         public async Task<string> GetVpnProfilePackageUrlAsync(string resourceGroupName, string virtualNetworkGatewayName, CancellationToken cancellationToken = default(CancellationToken))
         {
-            AzureOperationResponse<string> result = await this.GetVpnProfilePackageUrlWithHttpMessagesAsync(resourceGroupName, 
+            AzureOperationResponse<string> result = await this.GetVpnProfilePackageUrlWithHttpMessagesAsync(resourceGroupName,
                 virtualNetworkGatewayName,
-                null, 
+                null,
                 cancellationToken).ConfigureAwait(false);
 
             return result.Body;
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "virtualNetworkGatewayName");
             }
-            
+
             // Construct URL
             var url = new Uri(new Uri(baseUrl + (baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/" +
                                                                                      "providers/Microsoft.Network/virtualnetworkgateways/{virtualNetworkGatewayName}/getvpnprofilepackageurl").ToString();
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Commands.Network
             HttpRequestMessage httpRequest = new HttpRequestMessage();
             httpRequest.Method = new HttpMethod("POST");
             httpRequest.RequestUri = new Uri(url);
-            
+
             // Set Headers
             httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
 
@@ -561,5 +561,282 @@ namespace Microsoft.Azure.Commands.Network
             }
             #endregion
         }
+
+        #region Virtual Wan APIs
+
+        public string GetVirtualWanVpnServerConfigurations(string resourceGroupName, string virtualWanName)
+        {
+            return Task.Factory.StartNew(() => GetVirtualWanVpnServerConfigurationsAsync(resourceGroupName, virtualWanName)).Unwrap().GetAwaiter().GetResult();
+        }
+
+        public async Task<string> GetVirtualWanVpnServerConfigurationsAsync(string resourceGroupName, string virtualWanName,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string baseUrl = NetworkManagementClient.BaseUri.ToString();
+            string apiVersion = "2019-08-01";
+
+            // Construct URL
+            var url = new Uri(new Uri(baseUrl + (baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/" +
+                                                                                     "providers/Microsoft.Network/virtualWans/{virtualWanName}/vpnServerConfigurations").ToString();
+            url = url.Replace("{resourceGroupName}", Uri.EscapeDataString(resourceGroupName));
+            url = url.Replace("{virtualWanName}", Uri.EscapeDataString(virtualWanName));
+            url = url.Replace("{subscriptionId}", Uri.EscapeDataString(NetworkManagementClient.SubscriptionId));
+            url += "?" + string.Join("&", string.Format("api-version={0}", Uri.EscapeDataString(apiVersion)));
+
+            AzureOperationResponse<string> result = await this.ExecuteOperationWithHttpMessagesAsync(resourceGroupName, virtualWanName, null, url, apiVersion, null, cancellationToken).ConfigureAwait(false);
+            return result.Body;
+        }
+
+        public string GenerateVirtualWanVpnProfile(string resourceGroupName, string virtualWanName, VirtualWanVpnProfileParameters parameters)
+        {
+            return Task.Factory.StartNew(() => GenerateVirtualWanVpnProfileAsync(resourceGroupName, virtualWanName, parameters)).Unwrap().GetAwaiter().GetResult();
+        }
+
+        public async Task<string> GenerateVirtualWanVpnProfileAsync(string resourceGroupName, string virtualWanName, VirtualWanVpnProfileParameters parameters,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string baseUrl = NetworkManagementClient.BaseUri.ToString();
+            string apiVersion = "2019-08-01";
+
+            // Construct URL
+            var url = new Uri(new Uri(baseUrl + (baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/" +
+                                                                                     "providers/Microsoft.Network/virtualWans/{virtualWanName}/generatevpnprofile").ToString();
+            url = url.Replace("{resourceGroupName}", Uri.EscapeDataString(resourceGroupName));
+            url = url.Replace("{virtualWanName}", Uri.EscapeDataString(virtualWanName));
+            url = url.Replace("{subscriptionId}", Uri.EscapeDataString(NetworkManagementClient.SubscriptionId));
+            url += "?" + string.Join("&", string.Format("api-version={0}", Uri.EscapeDataString(apiVersion)));
+
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+
+            AzureOperationResponse<string> result = await this.ExecuteOperationWithHttpMessagesAsync(resourceGroupName, virtualWanName, parameters, url, apiVersion, null, cancellationToken).ConfigureAwait(false);
+            return result.Body;
+        }
+
+        public string GetP2SVpnGatewayConnectionHealth(string resourceGroupName, string p2sVpnGatewayName)
+        {            
+            string result =  Task.Factory.StartNew(() => GetP2SVpnGatewayConnectionHealthAsync(resourceGroupName, p2sVpnGatewayName)).Unwrap().GetAwaiter().GetResult();
+            return result;
+        }
+
+        public async Task<string> GetP2SVpnGatewayConnectionHealthAsync(string resourceGroupName, string p2sVpnGatewayName,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string baseUrl = NetworkManagementClient.BaseUri.ToString();
+            string apiVersion = "2019-08-01";
+
+            // Construct URL
+            var url = new Uri(new Uri(baseUrl + (baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/" +
+                                                                                     "providers/Microsoft.Network/p2sVpnGateways/{p2sVpnGatewayName}/getp2svpnconnectionhealth").ToString();
+            url = url.Replace("{resourceGroupName}", Uri.EscapeDataString(resourceGroupName));
+            url = url.Replace("{p2sVpnGatewayName}", Uri.EscapeDataString(p2sVpnGatewayName));
+            url = url.Replace("{subscriptionId}", Uri.EscapeDataString(NetworkManagementClient.SubscriptionId));
+            url += "?" + string.Join("&", string.Format("api-version={0}", Uri.EscapeDataString(apiVersion)));
+
+            AzureOperationResponse<string> result = await this.ExecuteOperationWithHttpMessagesAsync(resourceGroupName, p2sVpnGatewayName, null, url, apiVersion, null, cancellationToken).ConfigureAwait(false);
+            return result.Body;
+        }
+
+        public string GetP2SVpnGatewayDetailedConnectionHealth(string resourceGroupName, string p2sVpnGatewayName, P2SVpnConnectionHealthRequest parameters)
+        {
+            return Task.Factory.StartNew(() => GetP2SVpnGatewayDetailedConnectionHealthAsync(resourceGroupName, p2sVpnGatewayName, parameters)).Unwrap().GetAwaiter().GetResult();
+        }
+
+        public async Task<string> GetP2SVpnGatewayDetailedConnectionHealthAsync(string resourceGroupName, string p2sVpnGatewayName, P2SVpnConnectionHealthRequest parameters,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string baseUrl = NetworkManagementClient.BaseUri.ToString();
+            string apiVersion = "2019-08-01";
+
+            // Construct URL
+            var url = new Uri(new Uri(baseUrl + (baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/" +
+                                                                                     "providers/Microsoft.Network/p2sVpnGateways/{p2sVpnGatewayName}/getp2svpnconnectionhealthdetailed").ToString();
+            url = url.Replace("{resourceGroupName}", Uri.EscapeDataString(resourceGroupName));
+            url = url.Replace("{p2sVpnGatewayName}", Uri.EscapeDataString(p2sVpnGatewayName));
+            url = url.Replace("{subscriptionId}", Uri.EscapeDataString(NetworkManagementClient.SubscriptionId));
+            url += "?" + string.Join("&", string.Format("api-version={0}", Uri.EscapeDataString(apiVersion)));
+
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+
+            AzureOperationResponse<string> result = await this.ExecuteOperationWithHttpMessagesAsync(resourceGroupName, p2sVpnGatewayName, parameters, url, apiVersion, null, cancellationToken).ConfigureAwait(false);
+            return result.Body;
+        }
+
+        public string GenerateP2SVpnGatewayVpnProfile(string resourceGroupName, string p2sVpnGatewayName, P2SVpnProfileParameters parameters)
+        {
+            return Task.Factory.StartNew(() => GenerateP2SVpnGatewayVpnProfileAsync(resourceGroupName, p2sVpnGatewayName, parameters)).Unwrap().GetAwaiter().GetResult();
+        }
+
+        public async Task<string> GenerateP2SVpnGatewayVpnProfileAsync(string resourceGroupName, string p2sVpnGatewayName, P2SVpnProfileParameters parameters,
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            string baseUrl = NetworkManagementClient.BaseUri.ToString();
+            string apiVersion = "2019-08-01";
+
+            // Construct URL
+            var url = new Uri(new Uri(baseUrl + (baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/" +
+                                                                                     "providers/Microsoft.Network/p2sVpnGateways/{p2sVpnGatewayName}/generatevpnprofile").ToString();
+            url = url.Replace("{resourceGroupName}", Uri.EscapeDataString(resourceGroupName));
+            url = url.Replace("{p2sVpnGatewayName}", Uri.EscapeDataString(p2sVpnGatewayName));
+            url = url.Replace("{subscriptionId}", Uri.EscapeDataString(NetworkManagementClient.SubscriptionId));
+            url += "?" + string.Join("&", string.Format("api-version={0}", Uri.EscapeDataString(apiVersion)));
+
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+
+            AzureOperationResponse<string> result = await this.ExecuteOperationWithHttpMessagesAsync(resourceGroupName, p2sVpnGatewayName, parameters, url, apiVersion, null, cancellationToken).ConfigureAwait(false);
+            return result.Body;
+        }
+
+        /// <summary>
+        /// The network operation in the specified resource group through Network resource provider.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='resourceName'>
+        /// The name of the resource.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the Begin the operation through Network resource provider.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<AzureOperationResponse<string>> ExecuteOperationWithHttpMessagesAsync(string resourceGroupName, string resourceName,
+            object parameters, string apiUrl, string apiVersion, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            #region Send Async request to generate p2s vpn gateway vpn profile
+
+            // 1. Send Async request to generate virtual wan vpn profile        
+            if (string.IsNullOrWhiteSpace(apiUrl))
+            {
+                apiVersion = "2019-08-01";
+            }
+            if (resourceGroupName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceName");
+            }
+            if (string.IsNullOrWhiteSpace(apiUrl))
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "apiUrl");
+            }
+
+            // Create HTTP transport objects
+            HttpRequestMessage httpRequest = new HttpRequestMessage();
+            httpRequest.Method = new HttpMethod("POST");
+            httpRequest.RequestUri = new Uri(apiUrl);
+            // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+
+            // Serialize Request
+            string requestContent = JsonConvert.SerializeObject(parameters, NetworkManagementClient.SerializationSettings);
+            httpRequest.Content = new StringContent(requestContent, Encoding.UTF8);
+            httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+
+            // Set Credentials
+            if (NetworkManagementClient.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await NetworkManagementClient.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            cancellationToken.ThrowIfCancellationRequested();
+
+            var client = this.NetworkManagementClient as NetworkManagementClient;
+            HttpClient httpClient = client.HttpClient;
+            HttpResponseMessage httpResponse = await httpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+
+            HttpStatusCode statusCode = httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            if ((int)statusCode != 202)
+            {
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                throw new Exception(string.Format("Operation returned an invalid status code '{0}' with Exception:{1}",
+                    statusCode, string.IsNullOrEmpty(responseContent) ? "NotAvailable" : responseContent));
+            }
+
+            // Create Result
+            var result = new AzureOperationResponse<string>();
+            result.Request = httpRequest;
+            result.Response = httpResponse;
+            string locationResultsUrl = string.Empty;
+
+            // Retrieve the location from LocationUri
+            if (httpResponse.Headers.Contains("Location"))
+            {
+                locationResultsUrl = httpResponse.Headers.GetValues("Location").FirstOrDefault();
+            }
+            else
+            {
+                throw new Exception(string.Format("Operation Failed as no valid Location header received in response!"));
+            }
+
+            if (string.IsNullOrEmpty(locationResultsUrl))
+            {
+                throw new Exception(string.Format("Operation Failed as no valid Location header value received in response!"));
+            }
+
+            #endregion
+
+            #region Wait for Async operation to succeed and then Get the content from locationResults
+            //Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport.Delay(60000);
+            DateTime startTime = DateTime.UtcNow;
+            DateTime giveUpAt = DateTime.UtcNow.AddMinutes(3);
+
+            // Send the Get locationResults request for operaitonId till either we get StatusCode 200 or it time outs (3 minutes in this case)
+            while (true)
+            {
+                HttpRequestMessage newHttpRequest = new HttpRequestMessage();
+                newHttpRequest.Method = new HttpMethod("GET");
+                newHttpRequest.RequestUri = new Uri(locationResultsUrl);
+
+                if (NetworkManagementClient.Credentials != null)
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+                    await NetworkManagementClient.Credentials.ProcessHttpRequestAsync(newHttpRequest, cancellationToken).ConfigureAwait(false);
+                }
+
+                HttpResponseMessage newHttpResponse = await httpClient.SendAsync(newHttpRequest, cancellationToken).ConfigureAwait(false);
+
+                if ((int)newHttpResponse.StatusCode != 200)
+                {
+                    if (DateTime.UtcNow > giveUpAt)
+                    {
+                        string newResponseContent = await newHttpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                        throw new Exception(string.Format("Operation returned an invalid status code '{0}' with Exception:'{1}' while retrieving " +
+                                                          " the content '{2}'!", newHttpResponse.StatusCode, string.IsNullOrEmpty(newResponseContent) ? "NotAvailable" : newResponseContent));
+                    }
+                    else
+                    {
+                        // Wait for 30 seconds before retrying
+                        Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport.Delay(30000);
+                    }
+                }
+                else
+                {
+                    // Get the content from locationResults
+                    result.Body = newHttpResponse.Content.ReadAsStringAsync().Result;
+                    return result;
+                }
+            }
+            #endregion
+        }
+
+        #endregion
     }
 }
