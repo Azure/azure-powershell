@@ -35,6 +35,11 @@
     - Updated New-AzPrivateLinkService to add a new optional parameter EnableProxyProtocol.
 * Fix incorrect parameter description in `New-AzApplicationGatewaySku` reference documentation
 * New cmdlets to support the azure firewall policy
+* Add support for ThreatIntelWhitelist property for AzFirewall
+    - New cmdlet added:
+        - New-AzFirewallThreatIntelWhitelist
+    - Cmdlets updated with optional parameters:
+        - New-AzFirewall : added parameter ThreatIntelWhitelist
 * Add support for child resource RouteTables of VirtualHub
     - New cmdlets added:
         - Add-AzVirtualHubRoute
