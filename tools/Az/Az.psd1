@@ -91,7 +91,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.4'; },
                @{ModuleName = 'Az.OperationalInsights'; RequiredVersion = '1.3.3'; }, 
                @{ModuleName = 'Az.PolicyInsights'; RequiredVersion = '1.1.3'; }, 
                @{ModuleName = 'Az.PowerBIEmbedded'; RequiredVersion = '1.1.0'; }, 
-               @{ModuleName = 'Az.PrivateDns'; RequiredVersion = '0.1.3'; }, 
+               @{ModuleName = 'Az.PrivateDns'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.RecoveryServices'; RequiredVersion = '2.1.0'; }, 
                @{ModuleName = 'Az.RedisCache'; RequiredVersion = '1.1.1'; }, 
                @{ModuleName = 'Az.Relay'; RequiredVersion = '1.0.2'; }, 
@@ -161,6 +161,10 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '3.0.0 - November 2019
+		
+Az.PrivateDns
+* 1.0.0 GA released
+
 Az.Accounts
 * Add a deprecation message for ''Resolve-Error'' alias.
 
@@ -382,4 +386,3 @@ Az.Storage
 # DefaultCommandPrefix = ''
 
 }
-
