@@ -18,7 +18,7 @@ ModuleVersion = '0.1.0'
 CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
-GUID = '00000000-0000-0000-0000-000000000000'
+GUID = '981534ad-cd8b-4ce1-b51a-62544eb9b8cc'
 
 # Author of this module
 Author = 'Microsoft Corporation'
@@ -54,7 +54,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.2'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\AutoMapper.dll', 
+RequiredAssemblies = '.\AutoMapper.dll',
                '.\Microsoft.Azure.Management.ManagedNetwork.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -73,13 +73,13 @@ NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.ManagedNetwork.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzManagedNetwork', 'New-AzManagedNetwork', 
-               'New-AzManagedNetworkScope', 'Remove-AzManagedNetwork', 
-               'Update-AzManagedNetwork', 'Get-AzManagedNetworkGroup', 
-               'New-AzManagedNetworkGroup', 'Remove-AzManagedNetworkGroup', 
-               'Update-AzManagedNetworkGroup', 'New-AzManagedNetworkPeeringPolicy', 
-               'Get-AzManagedNetworkPeeringPolicy', 
-               'Remove-AzManagedNetworkPeeringPolicy', 
+CmdletsToExport = 'Get-AzManagedNetwork', 'New-AzManagedNetwork',
+               'New-AzManagedNetworkScope', 'Remove-AzManagedNetwork',
+               'Update-AzManagedNetwork', 'Get-AzManagedNetworkGroup',
+               'New-AzManagedNetworkGroup', 'Remove-AzManagedNetworkGroup',
+               'Update-AzManagedNetworkGroup', 'New-AzManagedNetworkPeeringPolicy',
+               'Get-AzManagedNetworkPeeringPolicy',
+               'Remove-AzManagedNetworkPeeringPolicy',
                'Update-AzManagedNetworkPeeringPolicy'
 
 # Variables to export from this module
