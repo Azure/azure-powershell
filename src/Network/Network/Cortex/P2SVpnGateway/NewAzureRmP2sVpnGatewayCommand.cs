@@ -58,11 +58,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName + CortexParameterSetNames.ByVpnServerConfigurationObject,
-            HelpMessage = "The Id of the VirtualHub this P2SVpnGateway needs to be associated with.")]
+            HelpMessage = "The name of the VirtualHub this P2SVpnGateway needs to be associated with.")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
-            HelpMessage = "The Id of the VirtualHub this P2SVpnGateway needs to be associated with.")]
+            HelpMessage = "The name of the VirtualHub this P2SVpnGateway needs to be associated with.")]
         public string VirtualHubName { get; set; }
 
         [Parameter(

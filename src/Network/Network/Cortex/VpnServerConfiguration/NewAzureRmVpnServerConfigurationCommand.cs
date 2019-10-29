@@ -135,9 +135,9 @@ namespace Microsoft.Azure.Commands.Network
         public string AadIssuer { get; set; }
 
         [Parameter(
-             Mandatory = false,
-            ValueFromPipeline = true,
-             HelpMessage = "A list of IPSec policies for VpnServerConfiguration.")]
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A list of IPSec policies for VpnServerConfiguration.")]
         public PSIpsecPolicy[] VpnClientIpsecPolicy { get; set; }
 
         [Parameter(

@@ -28,8 +28,7 @@ namespace Microsoft.Azure.Commands.Network
 
     [Cmdlet("Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualWanVpnServerConfigurationVpnProfile",
-        DefaultParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnServerConfigurationObject,
-        SupportsShouldProcess = true),
+        DefaultParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnServerConfigurationObject),
         OutputType(typeof(PSVpnProfileResponse))]
     public class GetAzureRmVirtualWanVpnServerConfigurationVpnProfileCommand : VirtualWanBaseCmdlet
     {
@@ -37,12 +36,10 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnServerConfigurationObject,
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/virtualWans", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
@@ -51,12 +48,10 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnServerConfigurationObject,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnServerConfigurationResourceId,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -74,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The virtual wan object.")]
         [ValidateNotNullOrEmpty]
-        public PSVirtualWan InputObject { get; set; }
+        public PSVirtualWan VirtualWanObject { get; set; }
 
         [Alias("VirtualWanId")]
         [Parameter(
@@ -129,7 +124,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Authentication Method")]
         [ValidateSet(
             MNM.AuthenticationMethod.EAPTLS,
@@ -144,9 +138,9 @@ namespace Microsoft.Azure.Commands.Network
             PSVirtualWan virtualWan = null;
             if (ParameterSetName.Contains(CortexParameterSetNames.ByVirtualWanObject))
             {
-                virtualWan = this.InputObject;
-                this.ResourceGroupName = this.InputObject.ResourceGroupName;
-                this.Name = this.InputObject.Name;
+                virtualWan = this.VirtualWanObject;
+                this.ResourceGroupName = this.VirtualWanObject.ResourceGroupName;
+                this.Name = this.VirtualWanObject.Name;
             }
             else
             {
@@ -165,39 +159,34 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.VirtualWanNotFound);
             }
 
-            string shouldProcessMessage = string.Format("Execute Get-AzureRmVirtualWanVpnServerConfigurationVpnProfile for ResourceGroupName {0} VirtualWan {1} and the associated VpnServerConfiguration{2}",
-                ResourceGroupName, Name, VpnServerConfiguration.Name);
-            if (ShouldProcess(shouldProcessMessage, VerbsCommon.Get))
+            PSVirtualWanVpnProfileParameters virtualWanVpnProfileParams = new PSVirtualWanVpnProfileParameters();
+
+            virtualWanVpnProfileParams.AuthenticationMethod = string.IsNullOrWhiteSpace(this.AuthenticationMethod)
+                ? MNM.AuthenticationMethod.EAPTLS.ToString()
+                : this.AuthenticationMethod;
+
+            if (this.VpnServerConfiguration != null)
             {
-                PSVirtualWanVpnProfileParameters virtualWanVpnProfileParams = new PSVirtualWanVpnProfileParameters();
-
-                virtualWanVpnProfileParams.AuthenticationMethod = string.IsNullOrWhiteSpace(this.AuthenticationMethod)
-                    ? MNM.AuthenticationMethod.EAPTLS.ToString()
-                    : this.AuthenticationMethod;
-
-                if (this.VpnServerConfiguration != null)
-                {
-                    virtualWanVpnProfileParams.VpnServerConfigurationResourceId = this.VpnServerConfiguration.Id;
-                }
-
-                var virtualWanVpnProfileParametersModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualWanVpnProfileParameters>(virtualWanVpnProfileParams);
-
-                // There may be a required Json serialize for the package URL to conform to REST-API
-                // The try-catch below handles the case till the change is made and deployed to PROD
-                string serializedPackageUrl = this.NetworkClient.GenerateVirtualWanVpnProfile(this.ResourceGroupName, this.Name, virtualWanVpnProfileParametersModel);
-                MNM.VpnProfileResponse vpnProfile = new MNM.VpnProfileResponse();
-                try
-                {
-                    vpnProfile = JsonConvert.DeserializeObject<MNM.VpnProfileResponse>(serializedPackageUrl);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-
-                PSVpnProfileResponse vpnProfileResponse = new PSVpnProfileResponse() { ProfileUrl = vpnProfile.ProfileUrl };
-                WriteObject(vpnProfileResponse);
+                virtualWanVpnProfileParams.VpnServerConfigurationResourceId = this.VpnServerConfiguration.Id;
             }
+
+            var virtualWanVpnProfileParametersModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualWanVpnProfileParameters>(virtualWanVpnProfileParams);
+
+            // There may be a required Json serialize for the package URL to conform to REST-API
+            // The try-catch below handles the case till the change is made and deployed to PROD
+            string serializedPackageUrl = this.NetworkClient.GenerateVirtualWanVpnProfile(this.ResourceGroupName, this.Name, virtualWanVpnProfileParametersModel);
+            MNM.VpnProfileResponse vpnProfile = new MNM.VpnProfileResponse();
+            try
+            {
+                vpnProfile = JsonConvert.DeserializeObject<MNM.VpnProfileResponse>(serializedPackageUrl);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            PSVpnProfileResponse vpnProfileResponse = new PSVpnProfileResponse() { ProfileUrl = vpnProfile.ProfileUrl };
+            WriteObject(vpnProfileResponse);
         }
     }
 }

@@ -26,10 +26,9 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-    [Cmdlet("Get", 
+    [Cmdlet("Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "P2sVpnGatewayConnectionHealth",
-        DefaultParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName,
-        SupportsShouldProcess = true), 
+        DefaultParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName),
         OutputType(typeof(PSP2SVpnGateway))]
     public class GetAzureRmP2SVpnGatewayConnectionHealthCommand : P2SVpnGatewayBaseCmdlet
     {
@@ -96,33 +95,29 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new PSArgumentException(Properties.Resources.P2SVpnGatewayNotFound);
             }
-            
-            string shouldProcessMessage = string.Format("Execute Get-AzureRmP2sVpnGatewayConnectionHealth for ResourceGroupName {0} P2SVpnGateway {1}", this.ResourceGroupName, this.Name);
-            if (ShouldProcess(shouldProcessMessage, VerbsCommon.Get))
+
+            // There may be a required Json serialize for the returned contents to conform to REST-API
+            // The try-catch below handles the case till the change is made and deployed to PROD
+            string serializedP2SVpnGatewayConnectionHealth = this.NetworkClient.GetP2SVpnGatewayConnectionHealth(this.ResourceGroupName, this.Name);
+
+            MNM.P2SVpnGateway p2sVpnGatewayConnectionHealth = new MNM.P2SVpnGateway();
+            try
             {
-                // There may be a required Json serialize for the returned contents to conform to REST-API
-                // The try-catch below handles the case till the change is made and deployed to PROD
-                string serializedP2SVpnGatewayConnectionHealth = this.NetworkClient.GetP2SVpnGatewayConnectionHealth(this.ResourceGroupName, this.Name);
-
-                MNM.P2SVpnGateway p2sVpnGatewayConnectionHealth = new MNM.P2SVpnGateway();
-                try
-                {
-                    p2sVpnGatewayConnectionHealth = JsonConvert.DeserializeObject<MNM.P2SVpnGateway>(serializedP2SVpnGatewayConnectionHealth);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-
-                PSP2SVpnGateway p2sVpnGatewayWithHealthResponse = new PSP2SVpnGateway()
-                {
-                    VpnClientConnectionHealth = new PSVpnClientConnectionHealth()
-                    {
-                        VpnClientConnectionsCount = (int)p2sVpnGatewayConnectionHealth.VpnClientConnectionHealth.VpnClientConnectionsCount
-                    }
-                };
-                WriteObject(p2sVpnGatewayWithHealthResponse);
+                p2sVpnGatewayConnectionHealth = JsonConvert.DeserializeObject<MNM.P2SVpnGateway>(serializedP2SVpnGatewayConnectionHealth);
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            PSP2SVpnGateway p2sVpnGatewayWithHealthResponse = new PSP2SVpnGateway()
+            {
+                VpnClientConnectionHealth = new PSVpnClientConnectionHealth()
+                {
+                    VpnClientConnectionsCount = (int)p2sVpnGatewayConnectionHealth.VpnClientConnectionHealth.VpnClientConnectionsCount
+                }
+            };
+            WriteObject(p2sVpnGatewayWithHealthResponse);
         }
     }
 }

@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Commands.Network
 
     [Cmdlet(VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnServerConfiguration",
-        DefaultParameterSetName = "ListBySubscriptionId",
-        SupportsShouldProcess = true),
+        DefaultParameterSetName = "ListBySubscriptionId"),
         OutputType(typeof(PSVpnServerConfiguration))]
     public class GetAzureRmVpnServerConfigurationCommand : VpnServerConfigurationBaseCmdlet
     {
