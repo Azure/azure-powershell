@@ -1112,15 +1112,15 @@ function Test-AzureFirewallThreatIntelWhitelistCRUD {
 
         # Verify
         $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
-        Assert-AreEqual true (-not (Compare-Object $threatIntelWhitelist1.FQDNs $getAzureFirewall.ThreatIntelWhitelist.FQDNs))
-        Assert-AreEqual true (-not (Compare-Object $threatIntelWhitelist1.IpAddresses $getAzureFirewall.ThreatIntelWhitelist.IpAddresses))
+        Assert-AreEqualArray $threatIntelWhitelist1.FQDNs $getAzureFirewall.ThreatIntelWhitelist.FQDNs
+        Assert-AreEqualArray $threatIntelWhitelist1.IpAddresses $getAzureFirewall.ThreatIntelWhitelist.IpAddresses
 
         # Modify
         $azureFirewall.ThreatIntelWhitelist = $threatIntelWhitelist2
         Set-AzFirewall -AzureFirewall $azureFirewall
         $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
-		Assert-AreEqual true (-not (Compare-Object $threatIntelWhitelist2.FQDNs $getAzureFirewall.ThreatIntelWhitelist.FQDNs))
-        Assert-AreEqual true (-not (Compare-Object $threatIntelWhitelist2.IpAddresses $getAzureFirewall.ThreatIntelWhitelist.IpAddresses))
+        Assert-AreEqualArray $threatIntelWhitelist2.FQDNs $getAzureFirewall.ThreatIntelWhitelist.FQDNs
+        Assert-AreEqualArray $threatIntelWhitelist2.IpAddresses $getAzureFirewall.ThreatIntelWhitelist.IpAddresses
     }
     finally {
         # Cleanup
