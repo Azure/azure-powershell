@@ -137,7 +137,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The whitelist for Threat Intelligence")]
         public PSAzureFirewallThreatIntelWhitelist ThreatIntelWhitelist { get; set; }
 

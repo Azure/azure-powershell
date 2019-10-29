@@ -141,7 +141,7 @@ Adds a VPN client root certificate.
 Approves a private endpoint connection.
 
 ### [Deny-AzPrivateEndpointConnection](Deny-AzPrivateEndpointConnection.md)
-denies a private endpoint connection.
+Denies a private endpoint connection.
 
 ### [Get-AzApplicationGateway](Get-AzApplicationGateway.md)
 Gets an application gateway.

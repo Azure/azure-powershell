@@ -20,7 +20,8 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallThreatIntelWhitelist", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallThreatIntelWhitelist))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallThreatIntelWhitelist"), OutputType(typeof(PSAzureFirewallThreatIntelWhitelist))]
+    [Alias("New-AzFirewallThreatIntelWhitelistObject")]
     public class NewAzureFirewallThreatIntelWhitelistCommand : AzureFirewallBaseCmdlet
     {
         [Parameter(
