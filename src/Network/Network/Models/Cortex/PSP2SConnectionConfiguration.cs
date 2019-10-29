@@ -16,31 +16,19 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using System.Collections.Generic;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
+    using Newtonsoft.Json;
 
-    public class PSVirtualHub : PSTopLevelResource
+    public class PSP2SConnectionConfiguration : PSChildResource
     {
-        [Ps1Xml(Label = "Virtual Wan Id", Target = ViewControl.Table, ScriptBlock = "$_.VirtualWan.Id")]
-        public PSResourceId VirtualWan { get; set; }
-
-        public PSResourceId VpnGateway { get; set; }
-
-        public PSResourceId P2SVpnGateway { get; set; }
-
-        public PSResourceId ExpressRouteGateway { get; set; }
-
-        public List<PSHubVirtualNetworkConnection> VirtualNetworkConnections { get; set; }
-
-        public List<PSVirtualHubRouteTable> RouteTables { get; set; }
-
-        public PSVirtualHubRouteTable RouteTable { get; set; }
-
-        [Ps1Xml(Label = "Address Prefix", Target = ViewControl.Table)]
-        public string AddressPrefix { get; set; }
-
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
-        
-        [Ps1Xml(Label = "Sku", Target = ViewControl.Table)]
-        public string Sku { get; set; }
+
+        public PSAddressSpace VpnClientAddressPool { get; set; }
+
+        [JsonIgnore]
+        public string VpnClientAddressPoolText
+        {
+            get { return JsonConvert.SerializeObject(VpnClientAddressPool, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }
