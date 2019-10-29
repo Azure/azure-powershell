@@ -1,3 +1,168 @@
+## 3.0.0 - November 2019
+### General
+* Az.PrivateDns 1.0.0 released
+
+#### Az.Accounts
+* Add a deprecation message for 'Resolve-Error' alias.
+
+#### Az.Advisor
+* Added new category 'Operational Excellence' to Get-AzAdvisorRecommendation cmdlet.
+
+#### Az.Cdn
+* Introduced UrlRewriteAction and CacheKeyQueryStringAction to RulesEngine.
+* Fixed several bugs like missing 'Selector' Input in New-AzDeliveryRuleCondition cmdlet.
+
+#### Az.Compute
+* Disk Encryption Set feature
+    - New cmdlets:
+        New-AzDiskEncryptionSetConfig
+        New-AzDiskEncryptionSet
+        Get-AzDiskEncryptionSet
+        Remove-AzDiskEncryptionSet
+    - DiskEncryptionSetId parameter is added to the following cmdlets:
+        Set-AzImageOSDisk
+        Set-AzVMOSDisk
+        Set-AzVmssStorageProfile        
+        Add-AzImageDataDisk
+        New-AzVMDataDisk
+        Set-AzVMDataDisk
+        Add-AzVMDataDisk
+        Add-AzVmssDataDisk
+        Add-AzVmssVMDataDisk
+    - DiskEncryptionSetId and EncryptionType parameters are added to the following cmdlets:
+        New-AzDiskConfig
+        New-AzSnapshotConfig
+* Add PublicIPAddressVersion parameter to New-AzVmssIPConfig
+* Move FileUris of custom script extension from public setting to protected setting
+* Add ScaleInPolicy to New-AzVmss, New-AzVmssConfig and Update-AzVmss cmdlets
+* Breaking changes
+    - UploadSizeInBytes parameter is used instead of DiskSizeGB for New-AzDiskConfig when CreateOption is Upload
+    - PublishingProfile.Source.ManagedImage.Id is replaced with StorageProfile.Source.Id in GalleryImageVersion object
+
+#### Az.DataFactory
+* Update ADF .Net SDK version to 4.3.0
+
+#### Az.DataLakeStore
+* Update ADLS SDK version (https://github.com/Azure/azure-data-lake-store-net/blob/preview-alpha/CHANGELOG.md#version-123-alpha), brings following fixes
+* Avoid throwing exception while unable to deserialize the creationtime of the trash or directory entry.
+* Expose setting per request timeout in adlsclient
+* Fix passing the original syncflag for badoffset recovery
+* Fix EnumerateDirectory to retrieve continuation token once response is checked
+* Fix Concat Bug
+
+#### Az.FrontDoor
+* Fixed miscellaneous typos across module
+
+#### Az.HDInsight
+* Fixed the bug that customer will get 'Not a valid Base-64 string' error when using Get-AzHDInsightCluster to get the cluster with ADLSGen1 storage.
+* Add a parameter named 'ApplicationId' to three cmdlets Add-AzHDInsightClusterIdentity, New-AzHDInsightClusterConfig and New-AzHDInsightCluster so that customer can provide the service principal application id for accessing Azure Data Lake.
+* Changed Microsoft.Azure.Management.HDInsight from 2.1.0 to 5.1.0
+* Removed five cmdlets:
+    - Get-AzHDInsightOMS
+    - Enable-AzHDInsightOMS
+    - Disable-AzHDInsightOMS
+    - Grant-AzHDInsightRdpServicesAccess
+    - Revoke-AzHDInsightRdpServicesAccess
+* Added three cmdlets:
+    - Get-AzHDInsightMonitoring to replace Get-AzHDInsightOMS.
+    - Enable-AzHDInsightMonitoring to replace Enable-AzHDInsightOMS.
+    - Disable-AzHDInsightMonitoring to replace Disable-AzHDInsightOMS.
+* Fixed cmdlet Get-AzHDInsightProperties to support get capabilities information from a specific location.
+* Removed parameter sets('Spark1', 'Spark2') from Add-AzHDInsightConfigValue.
+* Add examples to the help documents of cmdlet Add-AzHDInsightSecurityProfile.
+* Changed output type of the following cmdlets:
+*  - Changed the output type of Get-AzHDInsightProperties from  CapabilitiesResponse to AzureHDInsightCapabilities.
+*  - Changed the output type of Remove-AzHDInsightCluster from ClusterGetResponse to bool.
+*  - Changed the output type of Set-AzHDInsightGatewaySettings HttpConnectivitySettings to GatewaySettings.
+* Added some scenario test cases.
+* Remove some alias: 'Add-AzHDInsightConfigValues', 'Get-AzHDInsightProperties'.
+
+#### Az.Network
+* Change all cmdlets for PrivateEndpointConnection to support generic service provider.
+    - Updated cmdlet:
+        - Approve-AzPrivateEndpointConnection
+        - Deny-AzPrivateEndpointConnection
+        - Get-AzPrivateEndpointConnection
+        - Remove-AzPrivateEndpointConnection
+        - Set-AzPrivateEndpointConnection
+* Add new cmdlet for PrivateLinkResource and it also support generic service provider.
+    - New cmdlet:
+        - Get-AzPrivateLinkResource
+* Add new fields and parameter for the feature Proxy Protocol V2.
+    - Add property EnableProxyProtocol in PrivateLinkService
+    - Add property LinkIdentifier in PrivateEndpointConnection
+    - Updated New-AzPrivateLinkService to add a new optional parameter EnableProxyProtocol.
+* Fix incorrect parameter description in 'New-AzApplicationGatewaySku' reference documentation
+* New cmdlets to support the azure firewall policy
+* Add support for child resource RouteTables of VirtualHub
+    - New cmdlets added:
+        - Add-AzVirtualHubRoute
+        - Add-AzVirtualHubRouteTable
+        - Get-AzVirtualHubRouteTable
+        - Remove-AzVirtualHubRouteTable
+        - Set-AzVirtualHub
+* Add support for new properties Sku of VirtualHub and VirtualWANType of VirtualWan
+    - Cmdlets updated with optional parameters:
+        - New-AzVirtualHub : added parameter Sku
+        - Update-AzVirtualHub : added parameter Sku
+        - New-AzVirtualWan : added parameter VirtualWANType
+        - Update-AzVirtualWan : added parameter VirtualWANType
+* Add support for EnableInternetSecurity property for HubVnetConnection, VpnConnection and ExpressRouteConnection
+    - New cmdlets added:
+        - Update-AzureRmVirtualHubVnetConnection
+    - Cmdlets updated with optional parameters:
+        - New-AzureRmVirtualHubVnetConnection : added parameter EnableInternetSecurity
+        - New-AzureRmVpnConnection : added parameter EnableInternetSecurity
+        - Update-AzureRmVpnConnection : added parameter EnableInternetSecurity
+        - New-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
+        - Set-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
+* Add support for Configuring TopLevel WebApplicationFirewall Policy
+    - New cmdlets added:
+        - New-AzApplicationGatewayFirewallPolicySetting
+        - New-AzApplicationGatewayFirewallPolicyExclusion
+        - New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride
+        - New-AzApplicationGatewayFirewallPolicyManagedRuleOverride
+        - New-AzApplicationGatewayFirewallPolicyManagedRule
+        - New-AzApplicationGatewayFirewallPolicyManagedRuleSet
+    - Cmdlets updated with optional parameters:
+        - New-AzApplicationGatewayFirewallPolicy : added parameter PolicySetting, ManagedRule
+* Added support for Geo-Match operator on CustomRule
+    - Added GeoMatch to the operator on the FirewallCondition
+* Added support for perListener and perSite Firewall policy
+    - Cmdlets updated with optional parameters:
+        - New-AzApplicationGatewayHttpListener : added parameter FirewallPolicy, FirewallPolicyId
+        - New-AzApplicationGatewayPathRuleConfig : added parameter FirewallPolicy, FirewallPolicyId
+* Fix required subnet with name AzureBastionSubnet in 'PSBastion' can be case insensitive
+* Support for Destination FQDNs in Network Rules and Translated FQDN in NAT Rules for Azure Firewall
+* Add support for top level resource RouteTables of IpGroup
+    - New cmdlets added:
+        - New-AzIpGroup
+        - Remove-AzIpGroup
+        - Get-AzIpGroup
+        - Set-AzIpGroup
+
+#### Az.ServiceFabric
+* Remove Add-AzServiceFabricApplicationCertificate cmdlet as this scenario is covered by Add-AzVmssSecret.
+
+#### Az.Sql
+* Added support for restore of dropped databases on Managed Instances.
+* Deprecated from code old auditing cmdlets.
+* Removed deprecated aliases:
+* Get-AzSqlDatabaseIndexRecommendations (use Get-AzSqlDatabaseIndexRecommendation instead)
+* Get-AzSqlDatabaseRestorePoints (use Get-AzSqlDatabaseRestorePoint instead)
+* Remove Get-AzSqlDatabaseSecureConnectionPolicy cmdlet
+* Remove aliases for deprecated Vulnerability Assessment Settings cmdlets
+* Deprecate Advanced Threat Detection Settings cmdlets 
+* Adding cmdlets to Disable and enable sensitivity recommendations on columns in a database.
+
+#### Az.Storage
+* Support enable Large File share when create or update Storage account
+    -  New-AzStorageAccount
+    -  Set-AzStorageAccount
+* When close/get File handle, skip check the input path is File directory or File, to avoid failure with object in DeletePending status
+    -  Get-AzStorageFileHandle
+    -  Close-AzStorageFileHandle
+
 ## 2.8.0 - October 2019
 ### General
 * Az.HealthcareApis 1.0.0 release
