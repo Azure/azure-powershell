@@ -99,6 +99,7 @@ namespace Microsoft.Azure.Commands.Network
             // There may be a required Json serialize for the returned contents to conform to REST-API
             // The try-catch below handles the case till the change is made and deployed to PROD
             string serializedP2SVpnGatewayConnectionHealth = this.NetworkClient.GetP2SVpnGatewayConnectionHealth(this.ResourceGroupName, this.Name);
+            WriteObject(serializedP2SVpnGatewayConnectionHealth);
 
             MNM.P2SVpnGateway p2sVpnGatewayConnectionHealth = new MNM.P2SVpnGateway();
             try
@@ -110,14 +111,9 @@ namespace Microsoft.Azure.Commands.Network
                 Console.WriteLine(e.Message);
             }
 
-            PSP2SVpnGateway p2sVpnGatewayWithHealthResponse = new PSP2SVpnGateway()
-            {
-                VpnClientConnectionHealth = new PSVpnClientConnectionHealth()
-                {
-                    VpnClientConnectionsCount = (int)p2sVpnGatewayConnectionHealth.VpnClientConnectionHealth.VpnClientConnectionsCount
-                }
-            };
-            WriteObject(p2sVpnGatewayWithHealthResponse);
+            var psP2SVpnGatewayConnectionHealth = this.ToPsP2SVpnGateway(p2sVpnGatewayConnectionHealth);
+            psP2SVpnGatewayConnectionHealth.ResourceGroupName = this.ResourceGroupName;
+            WriteObject(psP2SVpnGatewayConnectionHealth);
         }
     }
 }

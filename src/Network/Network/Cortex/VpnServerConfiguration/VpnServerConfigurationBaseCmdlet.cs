@@ -60,12 +60,10 @@ namespace Microsoft.Azure.Commands.Network
         public PSVpnServerConfiguration CreateOrUpdateVpnServerConfiguration(string resourceGroupName, string vpnServerConfigurationName, PSVpnServerConfiguration vpnServerConfiguration, Hashtable tags)
         {
             var vpnServerConfigurationModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VpnServerConfiguration>(vpnServerConfiguration);            
-            WriteObject("vpnServerConfigurationModel");
-            WriteObject(vpnServerConfigurationModel);
             vpnServerConfigurationModel.Location = vpnServerConfiguration.Location;
             vpnServerConfigurationModel.Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
+            WriteObject(vpnServerConfigurationModel);
 
-            Console.WriteLine("vpnServerConfigurationModel : {0}", vpnServerConfigurationModel);
             var vpnServerConfigCreatedOrUpdated = this.VpnServerConfigurationClient.CreateOrUpdate(resourceGroupName, vpnServerConfigurationName, vpnServerConfigurationModel);
             PSVpnServerConfiguration vpnServerConfigToReturn = ToPsVpnServerConfiguration(vpnServerConfigCreatedOrUpdated);
             vpnServerConfigToReturn.ResourceGroupName = resourceGroupName;
