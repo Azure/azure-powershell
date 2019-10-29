@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 2.0.0
 * Change all cmdlets for PrivateEndpointConnection to support generic service provider.
     - Updated cmdlet:
         - Approve-AzPrivateEndpointConnection
