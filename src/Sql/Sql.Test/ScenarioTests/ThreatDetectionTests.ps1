@@ -26,7 +26,7 @@ function Test-ThreatDetectionGetDefaultPolicy
 	try 
 	{
 		# Test
-		$policy = Get-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		$policy = Get-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 
 		# Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Disabled"
@@ -35,7 +35,7 @@ function Test-ThreatDetectionGetDefaultPolicy
 		Assert-AreEqual $policy.ExcludedDetectionTypes.Count 0
 
 		# Test
-		$policy = Get-AzSqlServerAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName
+		$policy = Get-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName
 
 		# Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Disabled"
@@ -64,8 +64,8 @@ function Test-ThreatDetectionDatabaseUpdatePolicy
 	try
 	{
 		# Test upsert of TD policy without admins or an email accoun
-		Update-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
-		$policy = Get-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Update-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		$policy = Get-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
@@ -75,8 +75,8 @@ function Test-ThreatDetectionDatabaseUpdatePolicy
 		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
 
 		# Test
-		Update-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com" -EmailAdmins $false -ExcludedDetectionType "Sql_Injection_Vulnerability" -StorageAccountName $params.storageAccount
-		$policy = Get-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Update-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com" -EmailAdmins $false -ExcludedDetectionType "Sql_Injection_Vulnerability" -StorageAccountName $params.storageAccount
+		$policy = Get-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
@@ -87,8 +87,8 @@ function Test-ThreatDetectionDatabaseUpdatePolicy
 		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Sql_Injection_Vulnerability)}
 
 		# Test
-		Update-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -ExcludedDetectionType "Sql_Injection", "Sql_Injection_Vulnerability", "Access_Anomaly", "Data_Exfiltration", "Unsafe_Action"
-		$policy = Get-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Update-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -ExcludedDetectionType "Sql_Injection", "Sql_Injection_Vulnerability", "Access_Anomaly", "Data_Exfiltration", "Unsafe_Action"
+		$policy = Get-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
@@ -103,8 +103,8 @@ function Test-ThreatDetectionDatabaseUpdatePolicy
 		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Unsafe_Action)}
         
 		# Test
-		Clear-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-		$policy = Get-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Clear-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		$policy = Get-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Disabled"
@@ -118,8 +118,8 @@ function Test-ThreatDetectionDatabaseUpdatePolicy
 		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Unsafe_Action)}
 	
 		# Test
-		Update-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -ExcludedDetectionType "None"
-		$policy = Get-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Update-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -ExcludedDetectionType "None"
+		$policy = Get-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
@@ -148,8 +148,8 @@ function Test-ThreatDetectionServerUpdatePolicy
 	try
 	{
 		# Test upsert of TD policy without admins or an email account
-		Update-AzSqlServerAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -EmailAdmins $false
-		$policy = Get-AzSqlServerAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Update-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -EmailAdmins $false
+		$policy = Get-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
@@ -158,8 +158,8 @@ function Test-ThreatDetectionServerUpdatePolicy
 		Assert-AreEqual $policy.ExcludedDetectionTypes.Count 0
 
 		# Test
-		Update-AzSqlServerAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com" -EmailAdmins $false -ExcludedDetectionType Sql_Injection_Vulnerability -StorageAccountName $params.storageAccount
-		$policy = Get-AzSqlServerAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Update-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com" -EmailAdmins $false -ExcludedDetectionType Sql_Injection_Vulnerability -StorageAccountName $params.storageAccount
+		$policy = Get-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
@@ -169,8 +169,8 @@ function Test-ThreatDetectionServerUpdatePolicy
 		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Sql_Injection_Vulnerability)}
 
 		# Test
-		Update-AzSqlServerAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -ExcludedDetectionType Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action -StorageAccountName $params.storageAccount
-		$policy = Get-AzSqlServerAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Update-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -ExcludedDetectionType Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action -StorageAccountName $params.storageAccount
+		$policy = Get-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
@@ -184,8 +184,8 @@ function Test-ThreatDetectionServerUpdatePolicy
 		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Unsafe_Action)}
         
 		# Test
-		Clear-AzSqlServerAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName
-		$policy = Get-AzSqlServerAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Clear-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName
+		$policy = Get-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Disabled"
@@ -199,8 +199,8 @@ function Test-ThreatDetectionServerUpdatePolicy
 		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Unsafe_Action)}
 	
 		# Test
-		Update-AzSqlServerAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName  -ExcludedDetectionType None -StorageAccountName $params.storageAccount
-		$policy = Get-AzSqlServerAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Update-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName  -ExcludedDetectionType None -StorageAccountName $params.storageAccount
+		$policy = Get-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
@@ -229,22 +229,22 @@ function Test-DisablingThreatDetection
 	try
 	{
 		# 1. Test
-		Update-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EmailAdmins $true
-		$policy = Get-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Update-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EmailAdmins $true
+		$policy = Get-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
 
 		# 2. Test
-		Clear-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName 
-		$policy = Get-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Clear-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName 
+		$policy = Get-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 
 		# Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Disabled"
 
 		# 3. Test - that no exception is thrown
-		Update-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EmailAdmins $true
-		$policy = Get-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Update-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EmailAdmins $true
+		$policy = Get-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	}
 	finally
 	{
@@ -267,17 +267,13 @@ function Test-InvalidArgumentsThreatDetection
 	try
 	{
 		# turning on threat detection without storage account
-		Assert-Throws {Update-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName} 
+		Assert-Throws {Update-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName} 
 
 		#  Check that NotificationRecipientsEmails are in correct format 
-		Assert-Throws {Update-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -NotificationRecipientsEmails "kokogmail.com"} 
-
-		#  Check that EmailAdmins is not False and NotificationRecipientsEmails is not empty 
-		Assert-Throws {Update-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EmailAdmins $false -StorageAccountName $params.storageAccount} 
-		Assert-Throws {Update-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EmailAdmins $false -NotificationRecipientsEmails "" -StorageAccountName $params.storageAccount} 
+		Assert-Throws {Update-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -NotificationRecipientsEmails "kokogmail.com"} 
 
 		#  Check that ExcludedDetectionType doesn't hold None and any other type 
-		Assert-Throws {Update-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EmailAdmins $true -ExcludedDetectionType "None", "Sql_Injection_Vulnerability" -StorageAccountName $params.storageAccount} 
+		Assert-Throws {Update-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EmailAdmins $true -ExcludedDetectionType "None", "Sql_Injection_Vulnerability" -StorageAccountName $params.storageAccount} 
 	}
 	finally
 	{
