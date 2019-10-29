@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added support for restore of dropped databases on Managed Instances.
+* Fixed Set-AzSqlDatabase when zone redundancy not set
 
 ## Version 1.15.0
 * Add support for setting Active Directory Administrator on Managed Instance
