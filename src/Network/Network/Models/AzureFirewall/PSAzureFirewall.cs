@@ -42,6 +42,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ThreatIntelMode { get; set; }
 
+        public PSAzureFirewallThreatIntelWhitelist ThreatIntelWhitelist { get; set; }
+
         public string ProvisioningState { get; set; }
 
         public List<string> Zones { get; set; }
@@ -70,6 +72,12 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(NetworkRuleCollections, Formatting.Indented); }
         }
 
+        [JsonIgnore]
+        public string ThreatIntelWhitelistText
+        {
+            get { return JsonConvert.SerializeObject(ThreatIntelWhitelist, Formatting.Indented); }
+        }
+
         #region Ip Configuration Operations
 
         public void Allocate(PSVirtualNetwork virtualNetwork, PSPublicIpAddress[] publicIpAddresses)
@@ -96,7 +104,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
             this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
 
-            for(var i = 0; i < publicIpAddresses.Count(); i++)
+            for (var i = 0; i < publicIpAddresses.Count(); i++)
             {
                 this.IpConfigurations.Add(
                     new PSAzureFirewallIpConfiguration
@@ -111,7 +119,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public void Deallocate()
         {
-            this.IpConfigurations = new List<PSAzureFirewallIpConfiguration> ();
+            this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
         }
 
         public void AddPublicIpAddress(PSPublicIpAddress publicIpAddress)
@@ -277,7 +285,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             return existingRuleCollections;
         }
 
-        private BaseRuleCollection GetRuleCollectionByName<BaseRuleCollection> (string ruleCollectionName, List<BaseRuleCollection> ruleCollections) where BaseRuleCollection : PSAzureFirewallBaseRuleCollection
+        private BaseRuleCollection GetRuleCollectionByName<BaseRuleCollection>(string ruleCollectionName, List<BaseRuleCollection> ruleCollections) where BaseRuleCollection : PSAzureFirewallBaseRuleCollection
         {
             if (string.IsNullOrEmpty(ruleCollectionName))
             {
