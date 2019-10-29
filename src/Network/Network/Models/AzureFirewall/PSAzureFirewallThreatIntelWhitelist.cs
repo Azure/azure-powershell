@@ -52,9 +52,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             if (fqdns == null)
                 return;
+
+            var matchingRegEx = new Regex(SecureGatewayThreatIntelFqdnRegex);
             foreach (var fqdn in fqdns)
             {
-                var matchingRegEx = new Regex(SecureGatewayThreatIntelFqdnRegex);
                 if (!matchingRegEx.IsMatch(fqdn))
                 {
                     throw new PSArgumentException(String.Format("\'{0}\' is not a valid threat intel whitelist FQDN", fqdn));
@@ -66,6 +67,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             if (ipAddresses == null)
                 return;
+
             foreach (var ip in ipAddresses)
             {
                 IPAddress ipVal;

@@ -451,7 +451,8 @@ AliasesToExport = 'List-AzApplicationGatewayAvailableWafRuleSets',
                'Get-AzExpressRouteCircuitStats', 
                'Get-AzApplicationGatewayAvailableWafRuleSets', 
                'Get-AzApplicationGatewayAvailableSslOptions', 
-               'Get-AzInterfaceEndpoint'
+               'Get-AzInterfaceEndpoint',
+               'New-AzFirewallThreatIntelWhitelistObject'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
