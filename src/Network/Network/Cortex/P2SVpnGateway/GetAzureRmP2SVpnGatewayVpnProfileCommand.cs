@@ -26,10 +26,9 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-    [Cmdlet("Get", 
+    [Cmdlet("Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "P2sVpnGatewayVpnProfile",
-        DefaultParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName,
-        SupportsShouldProcess = true), 
+        DefaultParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName),
         OutputType(typeof(PSVpnProfileResponse))]
     public class GetAzureRmP2SVpnGatewayVpnProfileCommand : P2SVpnGatewayBaseCmdlet
     {
@@ -37,7 +36,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName,
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/p2sVpnGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
@@ -46,7 +44,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -71,7 +68,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Authentication Method")]
         [ValidateSet(
             MNM.AuthenticationMethod.EAPTLS,
@@ -107,33 +103,29 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.P2SVpnGatewayNotFound);
             }
 
-            string shouldProcessMessage = string.Format("Execute Get-AzureRmP2sVpnGatewayVpnProfile for ResourceGroupName {0} P2SVpnGateway {1}", ResourceGroupName, Name);
-            if (ShouldProcess(shouldProcessMessage, VerbsCommon.Get))
+            PSP2SVpnProfileParameters p2sVpnProfileParams = new PSP2SVpnProfileParameters();
+
+            p2sVpnProfileParams.AuthenticationMethod = string.IsNullOrWhiteSpace(this.AuthenticationMethod)
+                ? MNM.AuthenticationMethod.EAPTLS.ToString()
+                : this.AuthenticationMethod;
+
+            var p2sVpnProfileParametersModel = NetworkResourceManagerProfile.Mapper.Map<MNM.P2SVpnProfileParameters>(p2sVpnProfileParams);
+
+            // There may be a required Json serialize for the package URL to conform to REST-API
+            // The try-catch below handles the case till the change is made and deployed to PROD
+            string serializedPackageUrl = this.NetworkClient.GenerateP2SVpnGatewayVpnProfile(this.ResourceGroupName, this.Name, p2sVpnProfileParametersModel);
+            MNM.VpnProfileResponse p2sVpnGatewayVpnProfile = new MNM.VpnProfileResponse();
+            try
             {
-                PSP2SVpnProfileParameters p2sVpnProfileParams = new PSP2SVpnProfileParameters();
-
-                p2sVpnProfileParams.AuthenticationMethod = string.IsNullOrWhiteSpace(this.AuthenticationMethod)
-                    ? MNM.AuthenticationMethod.EAPTLS.ToString()
-                    : this.AuthenticationMethod;
-
-                var p2sVpnProfileParametersModel = NetworkResourceManagerProfile.Mapper.Map<MNM.P2SVpnProfileParameters>(p2sVpnProfileParams);
-
-                // There may be a required Json serialize for the package URL to conform to REST-API
-                // The try-catch below handles the case till the change is made and deployed to PROD
-                string serializedPackageUrl = this.NetworkClient.GenerateP2SVpnGatewayVpnProfile(this.ResourceGroupName, this.Name, p2sVpnProfileParametersModel);
-                MNM.VpnProfileResponse p2sVpnGatewayVpnProfile = new MNM.VpnProfileResponse();
-                try
-                {
-                    p2sVpnGatewayVpnProfile = JsonConvert.DeserializeObject<MNM.VpnProfileResponse>(serializedPackageUrl);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-
-                PSVpnProfileResponse vpnProfileResponse = new PSVpnProfileResponse() { ProfileUrl = p2sVpnGatewayVpnProfile?.ProfileUrl };
-                WriteObject(vpnProfileResponse);
+                p2sVpnGatewayVpnProfile = JsonConvert.DeserializeObject<MNM.VpnProfileResponse>(serializedPackageUrl);
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            PSVpnProfileResponse vpnProfileResponse = new PSVpnProfileResponse() { ProfileUrl = p2sVpnGatewayVpnProfile?.ProfileUrl };
+            WriteObject(vpnProfileResponse);
         }
     }
 }

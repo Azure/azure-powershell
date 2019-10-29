@@ -27,16 +27,14 @@ namespace Microsoft.Azure.Commands.Network
     using System.Linq;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-    [Cmdlet("Get", 
+    [Cmdlet("Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualWanVpnServerConfiguration",
-        DefaultParameterSetName = CortexParameterSetNames.ByVirtualWanName,
-        SupportsShouldProcess = true), 
+        DefaultParameterSetName = CortexParameterSetNames.ByVirtualWanName),
         OutputType(typeof(PSVpnServerConfigurationsResponse))]
     public class GetAzureRmVirtualWanVpnServerConfigurationsCommand : VirtualWanBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByVirtualWanName,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
@@ -45,7 +43,6 @@ namespace Microsoft.Azure.Commands.Network
         public string Name { get; set; }
 
         [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByVirtualWanName,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
@@ -60,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The virtual wan object.")]
         [ValidateNotNullOrEmpty]
-        public PSVirtualWan InputObject { get; set; }
+        public PSVirtualWan VirtualWanObject { get; set; }
 
         [Alias("VirtualWanId")]
         [Parameter(
@@ -79,9 +76,9 @@ namespace Microsoft.Azure.Commands.Network
             PSVirtualWan virtualWan = null;
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualWanObject, StringComparison.OrdinalIgnoreCase))
             {
-                virtualWan = this.InputObject;
-                this.ResourceGroupName = this.InputObject.ResourceGroupName;
-                this.Name = this.InputObject.Name;
+                virtualWan = this.VirtualWanObject;
+                this.ResourceGroupName = this.VirtualWanObject.ResourceGroupName;
+                this.Name = this.VirtualWanObject.Name;
             }
             else
             {
@@ -100,25 +97,21 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.VirtualWanNotFound);
             }
 
-            string shouldProcessMessage = string.Format("Execute Get-AzureRmVirtualWanVpnServerConfiguration for ResourceGroupName {0} VirtualWan {1}", ResourceGroupName, Name);
-            if (ShouldProcess(shouldProcessMessage, VerbsCommon.Get))
+            // There may be a required Json serialize for the returned contents to conform to REST-API
+            // The try-catch below handles the case till the change is made and deployed to PROD
+            string serializedVpnServerConfigurations = this.NetworkClient.GetVirtualWanVpnServerConfigurations(this.ResourceGroupName, this.Name);
+            MNM.VpnServerConfigurationsResponse vpnServerConfigurations = new MNM.VpnServerConfigurationsResponse();
+            try
             {
-                // There may be a required Json serialize for the returned contents to conform to REST-API
-                // The try-catch below handles the case till the change is made and deployed to PROD
-                string serializedVpnServerConfigurations = this.NetworkClient.GetVirtualWanVpnServerConfigurations(this.ResourceGroupName, this.Name);
-                MNM.VpnServerConfigurationsResponse vpnServerConfigurations = new MNM.VpnServerConfigurationsResponse();
-                try
-                {
-                    vpnServerConfigurations = JsonConvert.DeserializeObject<MNM.VpnServerConfigurationsResponse>(serializedVpnServerConfigurations);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-
-                PSVpnServerConfigurationsResponse vpnServerConfigurationsResponse = new PSVpnServerConfigurationsResponse() { VpnServerConfigurationResourceIds = vpnServerConfigurations?.VpnServerConfigurationResourceIds.ToList() };
-                WriteObject(vpnServerConfigurationsResponse);
+                vpnServerConfigurations = JsonConvert.DeserializeObject<MNM.VpnServerConfigurationsResponse>(serializedVpnServerConfigurations);
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            PSVpnServerConfigurationsResponse vpnServerConfigurationsResponse = new PSVpnServerConfigurationsResponse() { VpnServerConfigurationResourceIds = vpnServerConfigurations?.VpnServerConfigurationResourceIds.ToList() };
+            WriteObject(vpnServerConfigurationsResponse);
         }
     }
 }

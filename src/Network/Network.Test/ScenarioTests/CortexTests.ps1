@@ -503,8 +503,8 @@ function Test-CortexExpressRouteCRUD
     $VpnServerConfiguration2Name = Get-ResourceName
     $P2SVpnGatewayName = Get-ResourceName
     $vpnclientAuthMethod = "EAPTLS"
- 	
-	$storeName = 'blob' + $rgName
+
+    $storeName = 'blob' + $rgName
 
     try
 	{
