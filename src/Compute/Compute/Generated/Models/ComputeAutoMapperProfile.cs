@@ -65,6 +65,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.DedicatedHost, TO.PSHostList>();
                 cfg.CreateMap<TO.PSHostList, TO.PSHost>();
                 cfg.CreateMap<TO.PSHost, TO.PSHostList>();
+                cfg.CreateMap<FROM.DiskEncryptionSet, TO.PSDiskEncryptionSetList>();
+                cfg.CreateMap<TO.PSDiskEncryptionSetList, TO.PSDiskEncryptionSet>();
+                cfg.CreateMap<TO.PSDiskEncryptionSet, TO.PSDiskEncryptionSetList>();
                 cfg.CreateMap<FROM.Disk, TO.PSDiskList>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSDiskList, TO.PSDisk>()
@@ -118,6 +121,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSHostGroup, FROM.DedicatedHostGroup>();
                 cfg.CreateMap<FROM.DedicatedHost, TO.PSHost>();
                 cfg.CreateMap<TO.PSHost, FROM.DedicatedHost>();
+                cfg.CreateMap<FROM.DiskEncryptionSet, TO.PSDiskEncryptionSet>();
+                cfg.CreateMap<TO.PSDiskEncryptionSet, FROM.DiskEncryptionSet>();
                 cfg.CreateMap<FROM.Disk, TO.PSDisk>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSDisk, FROM.Disk>()
