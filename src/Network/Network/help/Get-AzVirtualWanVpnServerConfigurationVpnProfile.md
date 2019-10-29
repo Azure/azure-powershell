@@ -147,7 +147,9 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualWanObject
-The virtual wan object.```yaml
+The virtual wan object.
+
+```yaml
 Type: PSVirtualWan
 Parameter Sets: ByVirtualWanObjectByVpnServerConfigurationObject, ByVirtualWanObjectByVpnServerConfigurationResourceId
 Aliases: VirtualWan
