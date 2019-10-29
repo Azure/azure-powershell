@@ -94,7 +94,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     Expression = Expression,
                     Columns = Column
                 }
-
             };
 
             if (ShouldProcess(DataFactoryName, string.Format(Constants.HelpInvokeDebugSessionCommandContext, this.SessionId, this.ResourceGroupName, this.DataFactoryName)))
