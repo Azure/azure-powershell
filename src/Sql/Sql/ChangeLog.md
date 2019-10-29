@@ -23,10 +23,13 @@
 * Added support for restore of dropped databases on Managed Instances.
 * Deprecated from code old auditing cmdlets.
 * Removed deprecated aliases:
-  * Get-AzSqlDatabaseIndexRecommendations (use Get-AzSqlDatabaseIndexRecommendation instead)
-  * Get-AzSqlDatabaseRestorePoints (use Get-AzSqlDatabaseRestorePoint instead)
+* Get-AzSqlDatabaseIndexRecommendations (use Get-AzSqlDatabaseIndexRecommendation instead)
+* Get-AzSqlDatabaseRestorePoints (use Get-AzSqlDatabaseRestorePoint instead)
 * Remove Get-AzSqlDatabaseSecureConnectionPolicy cmdlet
+* Remove aliases for deprecated Vulnerability Assessment Settings cmdlets
+* Deprecate Advanced Threat Detection Settings cmdlets 
 * Adding cmdlets to Disable and enable sensitivity recommendations on columns in a database.
+
 
 ## Version 1.15.0
 * Add support for setting Active Directory Administrator on Managed Instance
