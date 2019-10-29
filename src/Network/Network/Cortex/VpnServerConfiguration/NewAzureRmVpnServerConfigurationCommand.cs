@@ -185,8 +185,6 @@ namespace Microsoft.Azure.Commands.Network
                 () =>
                 {
                     WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-                    Console.WriteLine("vpnServerConfigurationToCreate : {0}", vpnServerConfigurationToCreate);
-                    WriteObject("vpnServerConfigurationToCreate");
                     WriteObject(vpnServerConfigurationToCreate);
                     WriteObject(this.CreateOrUpdateVpnServerConfiguration(this.ResourceGroupName, this.Name, vpnServerConfigurationToCreate, this.Tag));
                 });
