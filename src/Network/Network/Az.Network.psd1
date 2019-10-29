@@ -56,7 +56,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.3'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Network.dll'
+RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Network.dll', '.\Microsoft.Azure.Management.Sql.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -110,7 +110,13 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzApplicationGatewayFirewallPolicy', 
                'Get-AzApplicationGatewayFirewallPolicy', 
                'Remove-AzApplicationGatewayFirewallPolicy', 
-               'Set-AzApplicationGatewayFirewallPolicy', 
+               'Set-AzApplicationGatewayFirewallPolicy',
+			   'New-AzApplicationGatewayFirewallPolicyExclusion',
+			   'New-AzApplicationGatewayFirewallPolicyManagedRule',
+			   'New-AzApplicationGatewayFirewallPolicyManagedRuleOverride',
+			   'New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride',
+			   'New-AzApplicationGatewayFirewallPolicyManagedRuleSet',
+			   'New-AzApplicationGatewayFirewallPolicySetting',
                'Add-AzApplicationGatewayFrontendIPConfig', 
                'Get-AzApplicationGatewayFrontendIPConfig', 
                'New-AzApplicationGatewayFrontendIPConfig', 
@@ -419,7 +425,9 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Test-AzPrivateLinkServiceVisibility', 
                'Approve-AzPrivateEndpointConnection', 
                'Deny-AzPrivateEndpointConnection', 
-               'Get-AzAvailablePrivateEndpointType', 'Get-AzAvailableServiceAlias', 
+               'Get-AzAvailablePrivateEndpointType',
+               'Get-AzAvailableServiceAlias',
+               'Get-AzPrivateLinkResource',
                'New-AzBastion', 'Get-AzBastion', 'Remove-AzBastion', 
                'Start-AzVirtualNetworkGatewayPacketCapture', 
                'Stop-AzVirtualNetworkGatewayPacketCapture', 
@@ -433,7 +441,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzFirewallPolicy', 'Get-AzFirewallPolicy', 'Set-AzFirewallPolicy',
                'Remove-AzFirewallPolicy',
                'New-AzVirtualRouter','Remove-AzVirtualRouter','Get-AzVirtualRouter',
-               'Add-AzVirtualRouterPeer','Update-AzVirtualRouterPeer','Remove-AzVirtualRouterPeer', 'Get-AzVirtualRouterPeer'
+               'Add-AzVirtualRouterPeer','Update-AzVirtualRouterPeer','Remove-AzVirtualRouterPeer', 'Get-AzVirtualRouterPeer',
+               'New-AzIpGroup','Remove-AzIpGroup','Get-AzIpGroup','Set-AzIpGroup'
 
 # Variables to export from this module
 # VariablesToExport = @()

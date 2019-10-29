@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed bug in Peering location 
+* Added tests to direct connection
 
 ## Version 0.1.5
 * Added Peering Service events
