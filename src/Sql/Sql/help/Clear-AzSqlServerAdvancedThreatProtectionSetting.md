@@ -2,11 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: DCAB75A1-B4EF-4C41-9D6B-A954B6DB0028
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/Clear-AzSqlServerAdvancedThreatProtectionSettings
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/Clear-AzSqlServerAdvancedThreatProtectionSetting
 schema: 2.0.0
 ---
 
-# Clear-AzSqlServerAdvancedThreatProtectionSettings
+# Clear-AzSqlServerAdvancedThreatProtectionSetting
 
 ## SYNOPSIS
 Removes the advanced threat protection settings from a server.
@@ -14,20 +14,20 @@ Removes the advanced threat protection settings from a server.
 ## SYNTAX
 
 ```
-Clear-AzSqlServerAdvancedThreatProtectionSettings [-PassThru] -ServerName <String>
+Clear-AzSqlServerAdvancedThreatProtectionSetting [-PassThru] -ServerName <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Clear-AzSqlServerAdvancedThreatProtectionSettings cmdlet removes the advanced threat protection settings from an Azure SQL server.
+The Clear-AzSqlServerAdvancedThreatProtectionSetting cmdlet removes the advanced threat protection settings from an Azure SQL server.
 To use this cmdlet, specify the ResourceGroupName and ServerName parameters to identify the server from which this cmdlet removes the settings.
 
 ## EXAMPLES
 
 ### Example 1: Remove a advanced threat protection settings for a database
 ```
-PS C:\> Clear-AzSqlServerAdvancedThreatProtectionSettings -ResourceGroupName "ResourceGroup11" -ServerName "Server01"
+PS C:\> Clear-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName "ResourceGroup11" -ServerName "Server01"
 ```
 
 This command removes the advanced threat protection settings from a server named Server01.
