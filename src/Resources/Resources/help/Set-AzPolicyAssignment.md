@@ -16,44 +16,48 @@ Modifies a policy assignment.
 ### NameParameterSet (Default)
 ```
 Set-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] [-AssignIdentity] [-Location <String>] [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Description <String>] [-Metadata <String>] [-AssignIdentity] [-Location <String>]
+ [-EnforcementMode <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### PolicyParameterNameObjectParameterSet
 ```
 Set-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-Metadata <String>] -PolicyParameterObject <Hashtable> [-AssignIdentity]
- [-Location <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-Location <String>] [-EnforcementMode <String>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### PolicyParameterNameStringParameterSet
 ```
 Set-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-Metadata <String>] -PolicyParameter <String> [-AssignIdentity] [-Location <String>]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EnforcementMode <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
 Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String>] [-Description <String>]
- [-Metadata <String>] [-AssignIdentity] [-Location <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Metadata <String>] [-AssignIdentity] [-Location <String>] [-EnforcementMode <String>] [-ApiVersion <String>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### PolicyParameterIdObjectParameterSet
 ```
 Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String>] [-Description <String>]
  [-Metadata <String>] -PolicyParameterObject <Hashtable> [-AssignIdentity] [-Location <String>]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EnforcementMode <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### PolicyParameterIdStringParameterSet
 ```
 Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String>] [-Description <String>]
- [-Metadata <String>] -PolicyParameter <String> [-AssignIdentity] [-Location <String>] [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Metadata <String>] -PolicyParameter <String> [-AssignIdentity] [-Location <String>]
+ [-EnforcementMode <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,6 +124,19 @@ PS C:\> Set-AzPolicyAssignment -Name 'PolicyAssignment' -PolicyParameter .\Allow
 ```
 
 The command updates the policy assignment named 'PolicyAssignment' using the policy parameter file AllowedLocations.json from the local working directory.
+
+### Example 5: Update an enforcementMode
+```
+PS C:\> $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
+PS C:\> $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
+PS C:\> Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode 'Default'
+```
+
+The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet.
+The command stores that object in the $ResourceGroup variable.
+The second command gets the policy assignment named PolicyAssignment by using the Get-AzPolicyAssignment cmdlet.
+The command stores that object in the $PolicyAssignment variable.
+The final command updates the enforcementMode property on the policy assignment on the resource group identified by the **ResourceId** property of $ResourceGroup.
 
 ## PARAMETERS
 
@@ -195,6 +212,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnforcementMode
+The enforcement mode for policy assignment
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: Default
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
