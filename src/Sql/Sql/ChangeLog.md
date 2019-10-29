@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 
-## Version 1.16.0
+## Version 2.0.0
 * Added support for restore of dropped databases on Managed Instances.
 * Deprecated from code old auditing cmdlets.
 * Removed deprecated aliases:
