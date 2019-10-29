@@ -274,6 +274,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             var identifierUri = "http://" + DisplayName;
 
             bool printPassword = false;
+            bool printUseExistingSecret = true;
 
             // Handle credentials
             var Password = Guid.NewGuid().ToString().ConvertToSecureString();
@@ -281,6 +282,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             // Create an application and get the applicationId
             if (!this.IsParameterBound(c => c.ApplicationId))
             {
+                printUseExistingSecret = false;
                 CreatePSApplicationParameters appParameters = new CreatePSApplicationParameters
                 {
                     DisplayName = DisplayName,
@@ -342,6 +344,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 if(printPassword)
                 {
                     servicePrincipal.Secret = Password;
+                }
+                else if(printUseExistingSecret)
+                {
+                    WriteVerbose(String.Format("No new secret was created. This ServicePrincipal will use the password associated with application {0}.", ApplicationId));
                 }
                 WriteObject(servicePrincipal);
                 if (SkipRoleAssignment())
