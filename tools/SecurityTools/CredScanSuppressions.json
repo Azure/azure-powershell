@@ -1092,6 +1092,6 @@
     {
       "file": "src\\Compute\\generated\\cmdlets\\UpdateAzVM_UpdateExpanded1.cs",
       "_justification": "Generated cs, specified disallowed password values"
-    },
+    }
   ]
 }
