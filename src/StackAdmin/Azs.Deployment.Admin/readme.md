@@ -67,4 +67,10 @@ directive:
     set:
       default:
         script: -join("System.",(Get-AzLocation)[0].Name)
+
+  - no-inline:
+    - ActionPlanResourceEntity
+    - ActionPlanAdminProperties
+    - ExtendedErrorInfo
+
 ```
