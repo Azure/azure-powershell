@@ -1,11 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>  Stop-AzKubernetesDashboard
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Stops the existing SSH tunnel setup by executing Start-AzKubernetesDashboard
 
 ### Example 2: {{ Add title here }}
 ```powershell

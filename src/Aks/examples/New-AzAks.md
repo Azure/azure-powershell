@@ -1,11 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzAks -ResourceGroupName group -Name myCluster
 
 {{ Add output here }}
 ```
 
-{{ Add description here }}
+Create a new managed Kubernetes cluster with default params
 
 ### Example 2: {{ Add title here }}
 ```powershell

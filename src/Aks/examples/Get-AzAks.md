@@ -1,11 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzAks
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+List Kubernetes managed clusters.
 
 ### Example 2: {{ Add title here }}
 ```powershell

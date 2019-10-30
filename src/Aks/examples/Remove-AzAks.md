@@ -1,11 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: 
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzAks -ResourceGroupName group -Name myCluster
 
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
+Delete an existing managed Kubernetes cluster
 
 ### Example 2: {{ Add title here }}
 ```powershell

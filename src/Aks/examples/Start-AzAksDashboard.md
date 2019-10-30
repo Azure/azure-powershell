@@ -1,11 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: 
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Start-AzAksDashboard -ResourceGroupName group -Name myCluster
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Start an SSH tunnel and open a browser to the Kubernetes dashboard
 
 ### Example 2: {{ Add title here }}
 ```powershell

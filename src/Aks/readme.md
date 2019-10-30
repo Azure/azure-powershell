@@ -46,7 +46,7 @@ In this directory, run AutoRest:
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 
-> Directives
+> Metadata
 ``` yaml
 metadata:
   authors: Microsoft Corporation
@@ -59,6 +59,26 @@ metadata:
   licenseUri: https://aka.ms/azps-license
   projectUri: https://github.com/Azure/azure-powershell
 
+service-name: Aks
+powershell: true
+azure: true
+branch: master
+repo: https://github.com/Azure/azure-rest-api-specs/blob/$(branch)
+prefix: Az
+subject-prefix: ''
+module-name: $(prefix).$(service-name)
+namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
+clear-output-folder: true
+output-folder: .
+aks: $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService
+input-file:
+- $(aks)/stable/2019-10-01/managedClusters.json
+
+module-version: 4.0.1
+title: AksClient
+```
+
+``` yaml
 directive:
   - where:
       subject: Operation
@@ -68,10 +88,6 @@ directive:
     set:
       default:
         script: '(Get-AzContext).Subscription.Id'
-```
-
-``` yaml
-directive:
   - from: managedClusters.json
     where: $.definitions.SubResource.properties
     transform: >
@@ -98,24 +114,6 @@ directive:
 > Values
 
 ``` yaml
-service-name: Aks
-powershell: true
-azure: true
-branch: master
-repo: https://github.com/Azure/azure-rest-api-specs/blob/$(branch)
-prefix: Az
-subject-prefix: ''
-module-name: $(prefix).$(service-name)
-namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
-clear-output-folder: true
-output-folder: .
-aks: $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService
-input-file:
-- $(aks)/stable/2019-10-01/managedClusters.json
-
-module-version: 0.0.1
-title: AksClient
-
 directive:
   - where:
       subject: Operation
