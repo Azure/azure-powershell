@@ -18,24 +18,22 @@ Gets and removes custom domain with running endpoint.
 #>
 function Test-AccountRelatedCmdlets
 {
-  $rgname = "testResourceGroupName2"
+  $rgname = "testrg7894512091210"
   $preferedlocation = "East US"
   $locationlist = "East US", "West US"
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgname  -Location $preferedlocation
 
-   $cosmosDBAccountName1 = "testcosmosdbaccountpowershellcmdlets" 
+   $cosmosDBAccountName1 = "testcosmosdb7894512091210" 
 
    $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName1 -Location  $locationlist
    Assert-AreEqual $cosmosDBAccountName1 $cosmosDBAccount.Name
 
-   $cosmosDBAccountName2 = "testcosmosdbaccountpowershellcmdlets2" 
-   $cosmosDBAccount2 = New-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName2 -DefaultConsistencyLevel "Eventual" -Location  $locationlist -EnableMultipleWriteLocations -ApiKind "MongoDB"
+   $cosmosDBAccountName2 = "testcosmosdb78945112091210" 
+   $cosmosDBAccount2 = New-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName2 -DefaultConsistencyLevel "Eventual" -Location  $locationlist  -ApiKind "MongoDB"
    Assert-AreEqual $cosmosDBAccountName2 $cosmosDBAccount2.Name
    Assert-AreEqual "Eventual" $cosmosDBAccount2.ConsistencyPolicy.DefaultConsistencyLevel
-   Assert-AreEqual "true" $cosmosDBAccount2.EnableMultipleWriteLocations
    Assert-AreEqual "MongoDB" $cosmosDBAccount2.Kind
-
-
+  
   Remove-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName2
 
   $getCosmosDBAccountResult1 = Get-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName1
@@ -44,31 +42,15 @@ function Test-AccountRelatedCmdlets
   $getCosmosDBAccountResult2 = Get-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName2
   Assert-Null $getCosmosDBAccountResult2.Name
 
-  #$VCLrule = "id1", "id2"
   $ipRangeFilter = "192.168.0.1"
   $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
 
-  $cosmosDBAccountName2 = "testcosmosdbaccountpowershellcmdlets2" 
-  $cosmosDBAccount2 = New-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName2 -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $locationlist -IpRangeFilter $ipRangeFilter -Tag $tags
-  Assert-AreEqual $cosmosDBAccountName2 $cosmosDBAccount2.Name
-  Assert-AreEqual "BoundedStaleness" $cosmosDBAccount2.ConsistencyPolicy.DefaultConsistencyLevel
-  Assert-AreEqual 10 $cosmosDBAccount2.ConsistencyPolicy.MaxIntervalInSeconds
-  Assert-AreEqual 20 $cosmosDBAccount2.ConsistencyPolicy.MaxStalenessPrefix
-  #Assert-AreEqual "id1" $cosmosDBAccount2.VirtualNetworkRule[0].Id
-  #Assert-AreEqual "id2" $cosmosDBAccount2.VirtualNetworkRule[1].Id
-  Assert-AreEqual "192.168.0.1" $cosmosDBAccount2.IpRangeFilter
-  #Assert-Tags($tags, $cosmosDBAccount2.Tags)
-
-  $accountKey = Get-AzCosmosDBAccountKey -Name $cosmosDBAccount.Name  -ResourceGroupName $rgname
-  Assert-NotNull $accountKey
-
-  $accountKey = Get-AzCosmosDBAccountKey -ResourceId $cosmosDBAccount.Id
-  Assert-NotNull $accountKey
-
-  $newAccountKey = New-AzCosmosDBAccountKey -KeyKind "primaryReadonly" -Name $cosmosDBAccount.Name -ResourceGroupName $rgname
-  Assert-AreNotEqual $accountKey $newAccountKey.PrimaryReadonlyMasterKey
-
-  $updatedCosmosDBAccount = Update-AzCosmosDBAccount  -Name  $cosmosDBAccount.Name -ResourceGroupName  $rgname -EnableAutomaticFailover false
-  Assert-AreEqual $updatedCosmosDBAccount.EnableAutomaticFailover false
+  $cosmosDBAccountName3 = "testcosmosdb78945212091210" 
+  $cosmosDBAccount3 = New-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName3 -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $locationlist -IpRangeFilter $ipRangeFilter -Tag $tags
+  Assert-AreEqual $cosmosDBAccountName3 $cosmosDBAccount3.Name
+  Assert-AreEqual "BoundedStaleness" $cosmosDBAccount3.ConsistencyPolicy.DefaultConsistencyLevel
+  Assert-AreEqual 10 $cosmosDBAccount3.ConsistencyPolicy.MaxIntervalInSeconds
+  Assert-AreEqual 20 $cosmosDBAccount3.ConsistencyPolicy.MaxStalenessPrefix
+  Assert-AreEqual "192.168.0.1" $cosmosDBAccount3.IpRangeFilter
 
 }

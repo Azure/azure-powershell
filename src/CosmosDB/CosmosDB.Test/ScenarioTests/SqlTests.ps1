@@ -18,12 +18,12 @@ Gets and removes custom domain with running endpoint.
 #>
 function Test-SqlCmdlets
 {
-  $rgname = "testResourceGroupName"
+  $rgname = "testrg5671"
   $preferedlocation = "East US"
   $locationlist = "East US", "West US"
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgname  -Location $preferedlocation
 
-  $cosmosDBAccountName1 = "testcosmosdbaccountpowershellcmdlets" 
+  $cosmosDBAccountName1 = "testcosmosdb789501" 
 
   $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName1 -Location  $locationlist
   Assert-AreEqual $cosmosDBAccountName1 $cosmosDBAccount.Name

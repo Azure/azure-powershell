@@ -169,9 +169,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
             string IpRangeFilterAsString = null;
             if (IpRangeFilter != null)
             {
-                foreach (string ipRangeFilter in IpRangeFilter)
+
+                for (int i = 0; i < IpRangeFilter.Length; i++)
                 {
-                    IpRangeFilterAsString = string.Concat(IpRangeFilterAsString, ",", ipRangeFilter);
+                    if (i == 0)
+                    {
+                        IpRangeFilterAsString = IpRangeFilter[0];
+                    }
+                    else
+                        IpRangeFilterAsString = string.Concat(IpRangeFilterAsString, ",", IpRangeFilter[i]);
                 }
             }
 

@@ -46,6 +46,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Name = resourceIdentifier.ResourceName;
             }
 
+            if (Type == null)
+                Type = "Keys";
+
             if (Type.Equals("ConnectionStrings"))
             {
                 var response = CosmosClient.DatabaseAccounts.ListConnectionStringsWithHttpMessagesAsync(ResourceGroupName, Name).Result;
