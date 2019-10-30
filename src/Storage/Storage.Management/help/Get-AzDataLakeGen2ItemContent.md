@@ -30,7 +30,7 @@ Get-AzDataLakeGen2ItemContent -InputObject <AzureDataLakeGen2Item> [-Destination
 
 ## DESCRIPTION
 The **Get-AzDataLakeGen2ItemContent** cmdlet download a file in a container in an Azure storage account.
-This cmdlet only works if Hierarchical Namespace is enabled for the Storage account.
+This cmdlet only works if Hierarchical Namespace is enabled for the Storage account. This kind of account can be created by run "New-AzStorageAccount" cmdlet with "-EnableHierarchicalNamespace $true".
 
 ## EXAMPLES
 

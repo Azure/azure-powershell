@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             PSPathAccessControlEntry psacl = new PSPathAccessControlEntry(this.AccessControlType, RolePermissions.ParseSymbolic(this.Permission, false), this.DefaultScope, this.EntityId);
             psacls.Add(psacl);
 
-            WriteObject(psacls.ToArray());
+            WriteObject(psacls.ToArray(), true);
         }
     }
 }

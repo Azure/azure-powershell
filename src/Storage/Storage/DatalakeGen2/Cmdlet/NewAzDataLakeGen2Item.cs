@@ -113,6 +113,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
         private Hashtable BlobMetadata = null;
 
+        // Overwrite the useless parameter
+        public override int? ConcurrentTaskCount { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the NewAzDataLakeGen2ItemCommand class.
         /// </summary>
