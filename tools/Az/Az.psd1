@@ -60,7 +60,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.4'; },
                @{ModuleName = 'Az.ApiManagement'; RequiredVersion = '1.3.2'; }, 
                @{ModuleName = 'Az.ApplicationInsights'; RequiredVersion = '1.0.2'; }, 
                @{ModuleName = 'Az.Automation'; RequiredVersion = '1.3.4'; }, 
-               @{ModuleName = 'Az.Batch'; RequiredVersion = '1.1.2'; }, 
+               @{ModuleName = 'Az.Batch'; RequiredVersion = '2.0.1'; }, 
                @{ModuleName = 'Az.Billing'; RequiredVersion = '1.0.1'; }, 
                @{ModuleName = 'Az.Cdn'; RequiredVersion = '1.4.0'; }, 
                @{ModuleName = 'Az.CognitiveServices'; RequiredVersion = '1.2.1'; }, 
@@ -92,7 +92,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.4'; },
                @{ModuleName = 'Az.PolicyInsights'; RequiredVersion = '1.1.3'; }, 
                @{ModuleName = 'Az.PowerBIEmbedded'; RequiredVersion = '1.1.0'; }, 
                @{ModuleName = 'Az.PrivateDns'; RequiredVersion = '1.0.0'; }, 
-               @{ModuleName = 'Az.RecoveryServices'; RequiredVersion = '1.4.5'; }, 
+               @{ModuleName = 'Az.RecoveryServices'; RequiredVersion = '2.0.1'; }, 
                @{ModuleName = 'Az.RedisCache'; RequiredVersion = '1.1.1'; }, 
                @{ModuleName = 'Az.Relay'; RequiredVersion = '1.0.2'; }, 
                @{ModuleName = 'Az.Resources'; RequiredVersion = '1.7.0'; }, 
@@ -160,7 +160,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '3.0.0 - November 2019
+ReleaseNotes = '3.0.0 - November 2019
 Az.Accounts
 * Add a deprecation message for ''Resolve-Error'' alias.
 
@@ -170,6 +170,30 @@ Az.Advisor
 Az.Cdn
 * Introduced UrlRewriteAction and CacheKeyQueryStringAction to RulesEngine.
 * Fixed several bugs like missing ''Selector'' Input in New-AzDeliveryRuleCondition cmdlet.
+
+Az.Batch
+* Renamed `CoreQuota` on `BatchAccountContext` to `DedicatedCoreQuota`. There is also a new `LowPriorityCoreQuota`.
+  - This impacts **Get-AzBatchAccount**.
+* **New-AzBatchTask** `-ResourceFile` parameter now takes a collection of `PSResourceFile` objects, which can be constructed using the new **New-AzBatchResourceFile** cmdlet.
+* New **New-AzBatchResourceFile** cmdlet to help create `PSResourceFile` objects. These can be supplied to **New-AzBatchTask** on the `-ResourceFile` parameter.
+  - This supports two new kinds of resource file in addition to the existing `HttpUrl` way:
+    - `AutoStorageContainerName` based resource files download an entire auto-storage container to the Batch node.
+    - `StorageContainerUrl` based resource files download the container specified in the URL to the Batch node.
+* Removed `ApplicationPackages` property of `PSApplication` returned by **Get-AzBatchApplication**.
+  - The specific packages inside of an application now can be retrieved using **Get-AzBatchApplicationPackage**. For example: `Get-AzBatchApplication -AccountName myaccount -ResourceGroupName myresourcegroup -ApplicationId myapplication`.
+* Renamed `ApplicationId` to `ApplicationName` on **Get-AzBatchApplicationPackage**, **New-AzBatchApplicationPackage**, **Remove-AzBatchApplicationPackage**, **Get-AzBatchApplication**, **New-AzBatchApplication**, **Remove-AzBatchApplication**, and **Set-AzBatchApplication**.
+  - `ApplicationId` now is an alias of `ApplicationName`.
+* Added new `PSWindowsUserConfiguration` property to `PSUserAccount`.
+* Renamed `Version` to `Name` on `PSApplicationPackage`.
+* Renamed `BlobSource` to `HttpUrl` on `PSResourceFile`.
+* Removed `OSDisk` property from `PSVirtualMachineConfiguration`.
+* Removed **Set-AzBatchPoolOSVersion**. This operation is no longer supported.
+* Removed `TargetOSVersion` from `PSCloudServiceConfiguration`.
+* Renamed `CurrentOSVersion` to `OSVersion` on `PSCloudServiceConfiguration`.
+* Removed `DataEgressGiB` and `DataIngressGiB` from `PSPoolUsageMetrics`.
+* Removed **Get-AzBatchNodeAgentSku** and replaced it with  **Get-AzBatchSupportedImage**. 
+  - **Get-AzBatchSupportedImage** returns the same data as **Get-AzBatchNodeAgentSku** but in a more friendly format.
+  - New non-verified images are also now returned. Additional information about `Capabilities` and `BatchSupportEndOfLife` for each image is also included.
 
 Az.Compute
 * Disk Encryption Set feature
@@ -192,7 +216,6 @@ Az.Compute
         New-AzDiskConfig
         New-AzSnapshotConfig
 * Add PublicIPAddressVersion parameter to New-AzVmssIPConfig
-* Move FileUris of custom script extension from public setting to protected setting
 * Add ScaleInPolicy to New-AzVmss, New-AzVmssConfig and Update-AzVmss cmdlets
 * Breaking changes
     - UploadSizeInBytes parameter is used instead of DiskSizeGB for New-AzDiskConfig when CreateOption is Upload
@@ -205,9 +228,7 @@ Az.DataLakeStore
 * Update ADLS SDK version (https://github.com/Azure/azure-data-lake-store-net/blob/preview-alpha/CHANGELOG.md#version-123-alpha), brings following fixes
 * Avoid throwing exception while unable to deserialize the creationtime of the trash or directory entry.
 * Expose setting per request timeout in adlsclient
-* Fix passing the original syncflag for badoffset recovery
 * Fix EnumerateDirectory to retrieve continuation token once response is checked
-* Fix Concat Bug
 
 Az.FrontDoor
 * Fixed miscellaneous typos across module
@@ -226,14 +247,11 @@ Az.HDInsight
     - Get-AzHDInsightMonitoring to replace Get-AzHDInsightOMS.
     - Enable-AzHDInsightMonitoring to replace Enable-AzHDInsightOMS.
     - Disable-AzHDInsightMonitoring to replace Disable-AzHDInsightOMS.
-* Fixed cmdlet Get-AzHDInsightProperties to support get capabilities information from a specific location.
 * Removed parameter sets(''Spark1'', ''Spark2'') from Add-AzHDInsightConfigValue.
-* Add examples to the help documents of cmdlet Add-AzHDInsightSecurityProfile.
 * Changed output type of the following cmdlets:
 *  - Changed the output type of Get-AzHDInsightProperties from  CapabilitiesResponse to AzureHDInsightCapabilities.
 *  - Changed the output type of Remove-AzHDInsightCluster from ClusterGetResponse to bool.
 *  - Changed the output type of Set-AzHDInsightGatewaySettings HttpConnectivitySettings to GatewaySettings.
-* Added some scenario test cases.
 * Remove some alias: ''Add-AzHDInsightConfigValues'', ''Get-AzHDInsightProperties''.
 
 Az.Network
@@ -251,7 +269,6 @@ Az.Network
     - Add property EnableProxyProtocol in PrivateLinkService
     - Add property LinkIdentifier in PrivateEndpointConnection
     - Updated New-AzPrivateLinkService to add a new optional parameter EnableProxyProtocol.
-* Fix incorrect parameter description in ''New-AzApplicationGatewaySku'' reference documentation
 * New cmdlets to support the azure firewall policy
 * Add support for child resource RouteTables of VirtualHub
     - New cmdlets added:
@@ -266,23 +283,9 @@ Az.Network
         - Update-AzVirtualHub : added parameter Sku
         - New-AzVirtualWan : added parameter VirtualWANType
         - Update-AzVirtualWan : added parameter VirtualWANType
-* Add support for EnableInternetSecurity property for HubVnetConnection, VpnConnection and ExpressRouteConnection
-    - New cmdlets added:
-        - Update-AzureRmVirtualHubVnetConnection
-    - Cmdlets updated with optional parameters:
-        - New-AzureRmVirtualHubVnetConnection : added parameter EnableInternetSecurity
-        - New-AzureRmVpnConnection : added parameter EnableInternetSecurity
-        - Update-AzureRmVpnConnection : added parameter EnableInternetSecurity
-        - New-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
-        - Set-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
 * Add support for Configuring TopLevel WebApplicationFirewall Policy
     - New cmdlets added:
-        - New-AzApplicationGatewayFirewallPolicySetting
-        - New-AzApplicationGatewayFirewallPolicyExclusion
-        - New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride
-        - New-AzApplicationGatewayFirewallPolicyManagedRuleOverride
-        - New-AzApplicationGatewayFirewallPolicyManagedRule
-        - New-AzApplicationGatewayFirewallPolicyManagedRuleSet
+        - New-AzApplicationGatewayFirewallPolicy*
     - Cmdlets updated with optional parameters:
         - New-AzApplicationGatewayFirewallPolicy : added parameter PolicySetting, ManagedRule
 * Added support for Geo-Match operator on CustomRule
@@ -291,14 +294,24 @@ Az.Network
     - Cmdlets updated with optional parameters:
         - New-AzApplicationGatewayHttpListener : added parameter FirewallPolicy, FirewallPolicyId
         - New-AzApplicationGatewayPathRuleConfig : added parameter FirewallPolicy, FirewallPolicyId
-* Fix required subnet with name AzureBastionSubnet in ''PSBastion'' can be case insensitive
-* Support for Destination FQDNs in Network Rules and Translated FQDN in NAT Rules for Azure Firewall
+ Firewall
 * Add support for top level resource RouteTables of IpGroup
     - New cmdlets added:
         - New-AzIpGroup
         - Remove-AzIpGroup
         - Get-AzIpGroup
         - Set-AzIpGroup
+
+Az.RecoveryServices
+* Configure networking resources like NSG, public IP and internal load balancers for Azure to Azure.
+* Write to managed disk for vMWare to Azure.
+* NIC reduction for vMWare to Azure.
+* Accelerated networking for Azure to Azure.
+* Agent auto update for Azure to Azure.
+* Standard SSD for Azure to Azure.
+* Azure Disk Encryption two pass for Azure to Azure.
+* Protect newly added disk for Azure to Azure.
+* Added SoftDelete feature for VM and added tests for softdelete
 
 Az.ServiceFabric
 * Remove Add-AzServiceFabricApplicationCertificate cmdlet as this scenario is covered by Add-AzVmssSecret.
