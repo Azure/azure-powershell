@@ -29,7 +29,7 @@ Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdle
 
 ### Example 1: Get a specific container
 ```
-PS C:\>Get-AzureRmRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "V2VM";
+PS C:\>Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "V2VM";
 ```
 
 This command gets the container named V2VM of type AzureVM.
