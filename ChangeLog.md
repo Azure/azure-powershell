@@ -134,7 +134,7 @@
 * Added SoftDelete feature for VM and added tests for softdelete
 
 #### Az.Resources
-* Update dependency assemlby Microsoft.Extensions.Caching.Memory from 1.1.1 to 2.2
+* Update dependency assembly Microsoft.Extensions.Caching.Memory from 1.1.1 to 2.2
 
 #### Az.Network
 * Change all cmdlets for PrivateEndpointConnection to support generic service provider.
