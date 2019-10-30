@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.7.1
+
+* Update dependency assemlby Microsoft.Extensions.Caching.Memory from 1.1.1 to 2.2
+
 ## Version 1.7.0
 * Fix bug where New-AzRoleAssignment could not be called without parameter Scope.
 
