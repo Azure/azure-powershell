@@ -272,4 +272,16 @@ directive:
     where: $
     transform: >
         return $.replace('# Load DLL to use build-time cmdlets', '    if($hasAdequateVersion) {\n      $accountsModule = Import-Module -Name $accountsName -MinimumVersion 1.6.0 -Scope Global -PassThru\n    }\n  }\n}\n# Load DLL to use build-time cmdlets');
+# Fix the name of the module in the nuspec
+  - from: Az.Aks.nuspec
+    where: $
+    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - Aks service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor more information on DNS, please visit the following$1 https://docs.microsoft.com/azure/aks/');
+# Add release notes
+  - from: Az.Aks.nuspec
+    where: $
+    transform: $ = $.replace('<releaseNotes></releaseNotes>', '<releaseNotes>Initial release of preview Aks cmdlets - see https://aka.ms/azps4doc for more information.</releaseNotes>');
+ # Make the nuget package a preview
+  - from: Az.Aks.nuspec
+    where: $
+    transform: $ = $.replace(/<version>(\d+\.\d+\.\d+)<\/version>/, '<version>$1-preview</version>');
 ```
