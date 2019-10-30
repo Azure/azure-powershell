@@ -4,7 +4,7 @@
 ``` yaml
 azure: true
 powershell: true
-branch: resource-hybrid-profile
+branch: resource-hybrid-profile-fix
 repo: https://github.com/Azure/azure-rest-api-specs/blob/$(branch)
 metadata:
   authors: Microsoft Corporation
