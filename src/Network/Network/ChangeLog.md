@@ -37,6 +37,11 @@
     - Updated New-AzPrivateLinkService to add a new optional parameter EnableProxyProtocol.
 * Fix incorrect parameter description in `New-AzApplicationGatewaySku` reference documentation
 * New cmdlets to support the azure firewall policy
+* Add support for ThreatIntelWhitelist property for AzFirewall
+    - New cmdlet added:
+        - New-AzFirewallThreatIntelWhitelist
+    - Cmdlets updated with optional parameters:
+        - New-AzFirewall : added parameter ThreatIntelWhitelist
 * Add support for child resource RouteTables of VirtualHub
     - New cmdlets added:
         - Add-AzVirtualHubRoute
@@ -83,6 +88,22 @@
         - Remove-AzIpGroup
         - Get-AzIpGroup
         - Set-AzIpGroup
+* Virtual Wan Point to site feature release.
+  - Introduce new command lets for managing point to site VpnServerConfiguraiton resource
+    - Get-AzVpnServerConfiguration
+    - New-AzVpnServerConfiguration
+    - Remove-AzVpnServerConfiguration
+    - Update-AzVpnServerConfiguration
+  - Introduce new command lets for managing P2SVpnGateway resource that will be used for Point to site connectivity from Virtual wan perspective
+    - Get-AzP2sVpnGateway
+    - Get-AzP2sVpnGatewayConnectionHealth
+    - Get-AzP2sVpnGatewayDetailedConnectionHealth
+    - New-AzP2sVpnGateway
+    - Remove-AzP2sVpnGateway
+    - Update-AzP2sVpnGateway
+  - Introduce new command lets for VirtualWan resource to get all associated VpnServerConfigurations and download Wan level Point to site client profile.
+    - Get-AzVirtualWanVpnServerConfiguration
+    - Get-AzVirtualWanVpnServerConfigurationVpnProfile
 
 ## Version 1.15.0
 * Add new cmdlet Get-AzAvailableServiceAlias which can be called to get the aliases that can be used for Service Endpoint Policies.

@@ -137,6 +137,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The whitelist for Threat Intelligence")]
+        public PSAzureFirewallThreatIntelWhitelist ThreatIntelWhitelist { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
@@ -256,6 +261,7 @@ namespace Microsoft.Azure.Commands.Network
                     NatRuleCollections = this.NatRuleCollection?.ToList(),
                     NetworkRuleCollections = this.NetworkRuleCollection?.ToList(),
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
+                    ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                     Sku = sku
                 };
 
