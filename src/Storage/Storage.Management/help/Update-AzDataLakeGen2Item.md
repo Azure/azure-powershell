@@ -17,8 +17,7 @@ Update a file or folder on properties, metadata, permission, ACL, and owner.
 Update-AzDataLakeGen2Item [-Container] <String> [-Path] <String> [-Permission <String>] [-Owner <String>]
  [-Group <String>] [-Property <Hashtable>] [-Metadata <Hashtable>] [-Acl <PSPathAccessControlEntry[]>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ItemPipeline
@@ -26,13 +25,12 @@ Update-AzDataLakeGen2Item [-Container] <String> [-Path] <String> [-Permission <S
 Update-AzDataLakeGen2Item -InputObject <AzureDataLakeGen2Item> [-Permission <String>] [-Owner <String>]
  [-Group <String>] [-Property <Hashtable>] [-Metadata <Hashtable>] [-Acl <PSPathAccessControlEntry[]>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Update-AzDataLakeGen2Item** cmdlet updates a file or folder on properties, metadata, permission, ACL, and owner.
-This cmdlet only works if Hierarchical Namespace is enabled for the Storage account.
+This cmdlet only works if Hierarchical Namespace is enabled for the Storage account. This kind of account can be created by run "New-AzStorageAccount" cmdlet with "-EnableHierarchicalNamespace $true".
 
 ## EXAMPLES
 
@@ -157,22 +155,6 @@ The client side maximum execution time for each request in seconds.
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases: ClientTimeoutPerRequestInSeconds
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConcurrentTaskCount
-The total amount of concurrent async tasks.
-The default value is 10.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -390,13 +372,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob
+### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureDataLakeGen2Item
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob
+### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureDataLakeGen2Item
 
 ## NOTES
 

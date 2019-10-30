@@ -108,6 +108,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public PSPathAccessControlEntry[] Acl { get; set; }
 
+        // Overwrite the useless parameter
+        public override int? ConcurrentTaskCount { get; set; }
+
 
         /// <summary>
         /// Initializes a new instance of the SetAzDataLakeGen2ItemCommand class.

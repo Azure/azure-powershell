@@ -40,7 +40,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 "The path in the specified container that should be retrieved. Can be a file or folder " +
                 "In the format 'folder/file.txt' or 'folder1/folder2/'")]
         [ValidateNotNullOrEmpty]
-        public string Path { get; set; }
+        public string Path { get; set; }        
+        
+        // Overwrite the useless parameter
+        public override int? ConcurrentTaskCount { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the GetDataLakeGen2ItemCommand class.

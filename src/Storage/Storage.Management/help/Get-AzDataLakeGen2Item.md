@@ -15,12 +15,12 @@ Gets the details of a file or folder in a container.
 ```
 Get-AzDataLakeGen2Item [-Container] <String> [-Path] <String> [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Get-AzDataLakeGen2Item** cmdlet gets the details of a file or folder in a container in an Azure storage account.
-This cmdlet only works if Hierarchical Namespace is enabled for the Storage account.
+This cmdlet only works if Hierarchical Namespace is enabled for the Storage account. This kind of account can be created by run "New-AzStorageAccount" cmdlet with "-EnableHierarchicalNamespace $true".
 
 ## EXAMPLES
 
@@ -103,22 +103,6 @@ The client side maximum execution time for each request in seconds.
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases: ClientTimeoutPerRequestInSeconds
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConcurrentTaskCount
-The total amount of concurrent async tasks.
-The default value is 10.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -214,7 +198,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob
+### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureDataLakeGen2Item
 
 ## NOTES
 

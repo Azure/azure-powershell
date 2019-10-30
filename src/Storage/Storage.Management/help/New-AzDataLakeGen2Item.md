@@ -17,8 +17,7 @@ Create a file or folder in a container.
 New-AzDataLakeGen2Item [-Container] <String> [-Path] <String> -Source <String> [-Umask <String>]
  [-Permission <String>] [-Property <Hashtable>] [-Metadata <Hashtable>] [-Force] [-AsJob]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Folder
@@ -26,17 +25,16 @@ New-AzDataLakeGen2Item [-Container] <String> [-Path] <String> -Source <String> [
 New-AzDataLakeGen2Item [-Container] <String> [-Path] <String> [-Folder] [-Umask <String>]
  [-Permission <String>] [-Property <Hashtable>] [-Metadata <Hashtable>] [-Force] [-AsJob]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **New-AzDataLakeGen2Item** cmdlet creates a file or folder in a container in an Azure storage account.
-This cmdlet only works if Hierarchical Namespace is enabled for the Storage account.
+This cmdlet only works if Hierarchical Namespace is enabled for the Storage account. This kind of account can be created by run "New-AzStorageAccount" cmdlet with "-EnableHierarchicalNamespace $true".
 
 ## EXAMPLES
 
-### Example 1: Create a folder with specified Permission, Umask, properties, and metadata
+### Example 1: Create a folder with specified permission, Umask, properties, and metadata
 ```
 PS C:\>New-AzDataLakeGen2Item -Container "testcontainer" -Path "dir1/dir2/" -Folder -Permission rwxrwxrwx -Umask ---rw---- -Property @{"CacheControl" = "READ"; "ContentDisposition" = "True"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
 
@@ -96,22 +94,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ConcurrentTaskCount
-The total amount of concurrent async tasks.
-The default value is 10.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Container
 Container name
 
@@ -159,6 +141,7 @@ Accept wildcard characters: False
 
 ### -Folder
 Indicates that this new item is a folder and not a file.
+Without specifying this parameter, it's a file item.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -341,7 +324,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob
+### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureDataLakeGen2Item
 
 ## NOTES
 

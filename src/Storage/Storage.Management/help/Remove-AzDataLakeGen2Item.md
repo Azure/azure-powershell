@@ -16,21 +16,19 @@ Remove a file or folder.
 ```
 Remove-AzDataLakeGen2Item [-Container] <String> [-Path] <String> [-Force] [-AsJob] [-PassThru]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ItemPipeline
 ```
 Remove-AzDataLakeGen2Item -InputObject <AzureDataLakeGen2Item> [-Force] [-AsJob] [-PassThru]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Remove-AzDataLakeGen2Item** cmdlet removes a file or folder from a Storage account.
-This cmdlet only works if Hierarchical Namespace is enabled for the Storage account.
+This cmdlet only works if Hierarchical Namespace is enabled for the Storage account. This kind of account can be created by run "New-AzStorageAccount" cmdlet with "-EnableHierarchicalNamespace $true".
 
 ## EXAMPLES
 
@@ -79,22 +77,6 @@ The client side maximum execution time for each request in seconds.
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases: ClientTimeoutPerRequestInSeconds
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConcurrentTaskCount
-The total amount of concurrent async tasks.
-The default value is 10.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -262,7 +244,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob
+### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureDataLakeGen2Item
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 

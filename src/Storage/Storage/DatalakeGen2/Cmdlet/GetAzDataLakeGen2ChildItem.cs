@@ -42,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Fetch Blob Permission. This only works if Hierarchical Namespace is enabled for the account. ")]
+        [Parameter(Mandatory = false, HelpMessage = "Fetch Blob permission/ACL/owner.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter FetchPermission { get; set; }
 
@@ -74,6 +74,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        // Overwrite the useless parameter
+        public override int? ConcurrentTaskCount { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the GetAzDataLakeGen2ChildItemCommand class.
