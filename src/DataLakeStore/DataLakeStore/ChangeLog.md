@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.4
 * Update ADLS SDK version (https://github.com/Azure/azure-data-lake-store-net/blob/preview-alpha/CHANGELOG.md#version-123-alpha), brings following fixes
 * Avoid throwing exception while unable to deserialize the creationtime of the trash or directory entry.
 * Expose setting per request timeout in adlsclient
