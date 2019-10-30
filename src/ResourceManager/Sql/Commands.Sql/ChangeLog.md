@@ -22,6 +22,7 @@
 * Fixed issue with using Get-AzureRmSqlDatabaseVulnerabilityAssessment with DotNet core
 * Modified documentation of help messages related to SQL Auditing cmdlets.
 * Minor changes for upcoming AzureRM to Az transition
+* Fixed issue where Tags were not being added correctly in create secondary
 
 ## Version 4.12.0
 * Added new cmdlets for CRUD operations on Azure Sql Database Managed Instance and Azure Sql Managed Database
