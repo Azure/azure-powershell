@@ -203,4 +203,25 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('SerializedName = @"restype"', 'SerializedName = @"type"');
+
+# Update psm1 for module load
+  - from: Az.Aks.psm1
+    where: $
+    transform: >
+        return $.replace('\$null = Import-Module -Name \(Join-Path $PSScriptRoot \'\./bin/Az\.Aks\.private\.dll\'\)', '');
+#
+  - from: Az.Aks.psm1
+    where: $
+    transform: >
+        return $.replace('\$instance = \[Microsoft\.Azure\.PowerShell\.Cmdlets\.Aks\.Module\]::Instance', '' );
+# add back in
+  - from: Az.Aks.psm1
+    where: $
+    transform: >
+        return $.replace('# Ask for the shared functionality table', '$null = Import-Module -Name (Join-Path $PSScriptRoot \'./bin/Az.Aks.private.dll\')\n# Ask for the shared functionality table' );
+# add again
+  - from: Az.Aks.psm1
+    where: $
+    transform: >
+        return $.replace('# Ask for the shared functionality table', '$instance = [Microsoft.Azure.PowerShell.Cmdlets.Aks.Module]::Instance\n# Ask for the shared functionality table' );
 ```
