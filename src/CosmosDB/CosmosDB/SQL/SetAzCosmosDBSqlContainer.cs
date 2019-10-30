@@ -81,19 +81,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 sqlContainerResource.DefaultTtl = TtlInSeconds;
             }
-            //if (IndexingPolicy != null)
-            //{
-            //    IndexingPolicy indexingPolicy = new IndexingPolicy();
-            //    IncludedPath includedPath = new IncludedPath();
-                
-            //    foreach(string path in IndexingPolicy.Index)
-            //    {
-            //        includedPath.Path.
-            //    }
-            //    //sqlContainerResource.IndexingPolicy = new IndexingPolicy(includedPaths: IndexingPolicy.IncludedPath, excludedPaths: IndexingPolicy.ExcludedPath);
-            //}
 
-            if(UniqueKeyPolicy != null)
+            if (UniqueKeyPolicy != null)
             {
                 UniqueKeyPolicy uniqueKeyPolicy = new UniqueKeyPolicy();
                 foreach (PSSqlUniqueKey uniqueKey in UniqueKeyPolicy.UniqueKey)

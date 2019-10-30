@@ -24,8 +24,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{587561E4-3E87-4698-BF6E-773E589871BC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,14 +86,6 @@ Global
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|x64.ActiveCfg = Release|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|x64.Build.0 = Release|Any CPU
-		{587561E4-3E87-4698-BF6E-773E589871BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{587561E4-3E87-4698-BF6E-773E589871BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{587561E4-3E87-4698-BF6E-773E589871BC}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{587561E4-3E87-4698-BF6E-773E589871BC}.Debug|x64.Build.0 = Debug|Any CPU
-		{587561E4-3E87-4698-BF6E-773E589871BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{587561E4-3E87-4698-BF6E-773E589871BC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{587561E4-3E87-4698-BF6E-773E589871BC}.Release|x64.ActiveCfg = Release|Any CPU
-		{587561E4-3E87-4698-BF6E-773E589871BC}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -150,9 +150,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             Dictionary<string, string> tags = new Dictionary<string, string>();
             if (Tag != null)
             {
-                foreach (KeyValuePair<string, string> keyValuePair in Tag)
+                foreach (string key in Tag.Keys)
                 {
-                    tags.Add(keyValuePair.Key, keyValuePair.Value);
+                    tags.Add(key, Tag[key].ToString());
                 }
             }
 
