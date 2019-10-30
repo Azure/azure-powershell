@@ -924,6 +924,174 @@
     {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestAzureDiskEncryptionLnxManagedDisk.json",
       "_justification": "Generated test resource group, deleted after test execution"
-    }
+    },
+    {
+      "file": "src\\Compute\\exports\\hybrid-2019-03-01\\Set-AzVmssVM.ps1",
+      "_justification": "specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\exports\\hybrid-2019-03-01\\Set-AzVmss.ps1",
+      "_justification": "specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\exports\\hybrid-2019-03-01\\ProxyCmdletDefinitions.ps1",
+      "_justification": "specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\exports\\hybrid-2019-03-01\\Update-AzVM.ps1",
+      "_justification": "specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\exports\\latest-2019-04-30\\Set-AzVM.ps1",
+      "_justification": "specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\exports\\hybrid-2019-03-01\\Set-AzVM.ps1",
+      "_justification": "specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\exports\\latest-2019-04-30\\Set-AzVmssVM.ps1",
+      "_justification": "specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\exports\\latest-2019-04-30\\Set-AzVmss.ps1",
+      "_justification": "specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\exports\\latest-2019-04-30\\Update-AzVM.ps1",
+      "_justification": "specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\exports\\latest-2019-04-30\\ProxyCmdletDefinitions.ps1",
+      "_justification": "specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\api\\Models\\Api20171201\\OSProfile.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\api\\Models\\Api20171201\\VirtualMachine.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\api\\Models\\Api20171201\\VirtualMachineProperties.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\api\\Models\\Api20171201\\VirtualMachineScaleSetOSProfile.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\api\\Models\\Api20171201\\VirtualMachineScaleSetVMProperties.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\api\\Models\\Api20171201\\VirtualMachineScaleSetVMProfile.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\api\\Models\\Api20171201\\VirtualMachineUpdate.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\api\\Models\\Api20171201\\VirtualMachineScaleSetVM.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\api\\Models\\Api20190301\\OSProfile.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\api\\Models\\Api20190301\\VirtualMachine.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\api\\Models\\Api20190301\\VirtualMachineProperties.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\api\\Models\\Api20190301\\VirtualMachineScaleSetOSProfile.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\api\\Models\\Api20190301\\VirtualMachineScaleSetVM.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\api\\Models\\Api20190301\\VirtualMachineUpdate.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\api\\Models\\Api20190301\\VirtualMachineScaleSetVMProperties.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\api\\Models\\Api20190301\\VirtualMachineScaleSetVMProfile.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\cmdlets\\NewAzVM_CreateExpanded1.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\cmdlets\\NewAzVM_CreateExpanded.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\cmdlets\\SetAzVmssVM_UpdateExpanded.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\cmdlets\\SetAzVmssVM_UpdateExpanded1.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\cmdlets\\SetAzVM_UpdateExpanded.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\cmdlets\\SetAzVM_UpdateExpanded1.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\cmdlets\\UpdateAzVM_UpdateExpanded.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\cmdlets\\UpdateAzVM_UpdateViaIdentityExpanded.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\cmdlets\\UpdateAzVM_UpdateViaIdentityExpanded1.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\internal\\hybrid-2019-03-01\\New-AzVM.ps1",
+      "_justification": "specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\internal\\hybrid-2019-03-01\\New-AzVmss.ps1",
+      "_justification": "specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\internal\\latest-2019-04-30\\New-AzVM.ps1",
+      "_justification": "specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\internal\\latest-2019-04-30\\New-AzVmss.ps1",
+      "_justification": "specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\internal\\hybrid-2019-03-01\\ProxyCmdletDefinitions.ps1",
+      "_justification": "specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\internal\\latest-2019-04-30\\ProxyCmdletDefinitions.ps1",
+      "_justification": "specified disallowed password values"
+    },
+    {
+      "file": "src\\Compute\\generated\\cmdlets\\UpdateAzVM_UpdateExpanded1.cs",
+      "_justification": "Generated cs, specified disallowed password values"
+    },
   ]
 }
