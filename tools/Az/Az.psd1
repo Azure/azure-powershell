@@ -95,7 +95,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.4'; },
                @{ModuleName = 'Az.RecoveryServices'; RequiredVersion = '2.0.1'; }, 
                @{ModuleName = 'Az.RedisCache'; RequiredVersion = '1.1.1'; }, 
                @{ModuleName = 'Az.Relay'; RequiredVersion = '1.0.2'; }, 
-               @{ModuleName = 'Az.Resources'; RequiredVersion = '1.7.0'; }, 
+               @{ModuleName = 'Az.Resources'; RequiredVersion = '1.7.1'; }, 
                @{ModuleName = 'Az.ServiceBus'; RequiredVersion = '1.4.0'; }, 
                @{ModuleName = 'Az.ServiceFabric'; RequiredVersion = '2.0.0'; }, 
                @{ModuleName = 'Az.SignalR'; RequiredVersion = '1.1.0'; }, 
@@ -312,6 +312,9 @@ Az.RecoveryServices
 * Azure Disk Encryption two pass for Azure to Azure.
 * Protect newly added disk for Azure to Azure.
 * Added SoftDelete feature for VM and added tests for softdelete
+
+Az.Resources
+* Update dependency assemlby Microsoft.Extensions.Caching.Memory from 1.1.1 to 2.2
 
 Az.ServiceFabric
 * Remove Add-AzServiceFabricApplicationCertificate cmdlet as this scenario is covered by Add-AzVmssSecret.
