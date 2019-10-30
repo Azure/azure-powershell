@@ -779,6 +779,9 @@ Create a new Azure Firewall Policy Network Rule
 ### [New-AzFirewallPolicyRuleCollectionGroup](New-AzFirewallPolicyRuleCollectionGroup.md)
 Create a new Azure Firewall Policy Rule Collection Group
 
+### [New-AzFirewallThreatIntelWhitelist](New-AzFirewallThreatIntelWhitelist.md)
+Create a new threat intelligence whitelist for Azure Firewall
+
 ### [New-AzIpGroup](New-AzIpGroup.md)
 Creates an Azure IpGroup.
 
@@ -1515,6 +1518,9 @@ Update an existing P2SVpnGateway under VirtualHub for point to site connectivity
 
 ### [Update-AzVirtualHub](Update-AzVirtualHub.md)
 Updates a virtual hub.
+
+### [Update-AzVirtualHubVnetConnection](Update-AzVirtualHubVnetConnection.md)
+Updates an existing HubVirtualNetworkConnection.
 
 ### [Update-AzVirtualRouterPeer](Update-AzVirtualRouterPeer.md)
 Update a Peer in an Azure VirtualRouter

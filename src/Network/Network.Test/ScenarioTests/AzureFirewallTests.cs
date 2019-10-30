@@ -66,5 +66,13 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AzureFirewallVirtualHubCRUD");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallThreatIntelWhitelistCRUD()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallThreatIntelWhitelistCRUD");
+        }
+
     }
 }

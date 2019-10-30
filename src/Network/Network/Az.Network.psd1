@@ -394,7 +394,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzFirewallApplicationRuleCollection', 
                'New-AzFirewallApplicationRule', 'New-AzFirewallNatRuleCollection', 
                'New-AzFirewallNatRule', 'New-AzFirewallNetworkRuleCollection', 
-               'New-AzFirewallNetworkRule', 'Get-AzFirewallFqdnTag', 
+               'New-AzFirewallNetworkRule', 'New-AzFirewallThreatIntelWhitelist',
+               'Get-AzFirewallFqdnTag', 
                'Get-AzNetworkProfile', 'New-AzNetworkProfile', 
                'Remove-AzNetworkProfile', 'Set-AzNetworkProfile', 
                'New-AzContainerNicConfig', 'New-AzContainerNicConfigIpConfig', 
@@ -464,7 +465,8 @@ AliasesToExport = 'List-AzApplicationGatewayAvailableWafRuleSets',
                'Get-AzExpressRouteCircuitStats', 
                'Get-AzApplicationGatewayAvailableWafRuleSets', 
                'Get-AzApplicationGatewayAvailableSslOptions', 
-               'Get-AzInterfaceEndpoint'
+               'Get-AzInterfaceEndpoint',
+               'New-AzFirewallThreatIntelWhitelistObject'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

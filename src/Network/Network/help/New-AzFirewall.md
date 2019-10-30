@@ -19,9 +19,9 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String>
  [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
- [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>]
- [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>] [-FirewallPolicyId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### OldIpConfigurationParameterValues
@@ -30,9 +30,9 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  -PublicIpName <String> [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
- [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>]
- [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>] [-FirewallPolicyId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IpConfigurationParameterValues
@@ -42,9 +42,9 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
- [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>]
- [-FirewallPolicyId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-Zone <String[]>] [-Sku <String>] [-VirtualHubId <String>] [-FirewallPolicyId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -159,6 +159,18 @@ New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -Sku 
 ```
 
 This example creates a Firewall attached to virtual hub "vHub". A firewall policy $fp will be attached to the firewall. This firewall allows/denies the traffic based on the rules mentioned in the firewall policy $fp. The virtual hub and the firewall should be in the same regions.
+
+### 10: Create a Firewall with threat intelligence whitelist setup
+```
+$rgName = "resourceGroupName"
+$vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name "vnet"
+$pip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name "publicIpName"
+
+$tiWhitelist = New-AzFirewallThreatIntelWhitelist -FQDN @("www.microsoft.com") -IpAddresses @("8.8.8.8")
+New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress $pip -ThreatIntelWhitelist $tiWhitelist
+```
+
+This example creates a Firewall that whitelist "www.microsoft.com" and "8.8.8.8" from threat intelligence
 
 ## PARAMETERS
 
@@ -388,6 +400,21 @@ Required: False
 Position: Named
 Default value: Alert
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ThreatIntelWhitelist
+The whitelist for Threat Intelligence
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallThreatIntelWhitelist
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
