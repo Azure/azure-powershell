@@ -30,8 +30,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.AccountNameHelpMessage)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Value from: {ConnectionStrings, Keys, ReadOnlyKeys}. Default is Keys. ")]
-        [PSArgumentCompleter("ConnectionStrings", "Keys", "ReadOnlyKeys")]
+        [Parameter(Mandatory = false, HelpMessage = Constants.AccountKeyTypeHelpMessage)]
         public string Type { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = Constants.ResourceIdHelpMessage)]

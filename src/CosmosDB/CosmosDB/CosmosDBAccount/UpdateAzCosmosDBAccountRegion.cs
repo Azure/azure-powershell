@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.AccountNameHelpMessage)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.AccountUpdateLocation)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.AccountUpdateLocationHelpMessage)]
         public string[] Location { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = Constants.ResourceIdHelpMessage)]

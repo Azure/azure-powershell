@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
 
         public const string AccountNameHelpMessage = "Name of the Cosmos DB database account.";
         public const string AccountKeyKindHelpMessage = "The access key to regenerate. Accepted values: primary, primaryReadonly, secondary, secondaryReadonly ";
-        public const string AccountFailoverPolicy = "Array of strings having region names, ordered by failover priority. E.g eastus, westus";
-        public const string AccountObject = "CosmosDB Account object";
-        public const string AccountUpdateLocation = "Name of the location to be added.";
+        public const string AccountFailoverPolicyHelpMessage = "Array of strings having region names, ordered by failover priority. E.g eastus, westus";
+        public const string AccountObjectHelpMessage = "CosmosDB Account object";
+        public const string AccountUpdateLocationHelpMessage = "Name of the location to be added.";
         public const string DefaultConsistencyLevelHelpMessage = "Default consistency level of the Cosmos DB database account. Accepted values: BoundedStaleness, ConsistentPrefix, Eventual, Session, Strong";
         public const string EnableAutomaticFailoverHelpMessage = "Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage. Automatic failover will result" +
                " in a new write region for the account and is chosen based on the failover priorities configured for the account. Accepted values: false, true ";
@@ -41,7 +41,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string DisableKeyBasedMetadataWriteAccessHelpMessage = "SwitchParameter to disable key based metadata write access ";
         public const string ApiKindHelpMessage = "The type of Cosmos DB database account to create. Accepted values: GlobalDocumentDB, Sql, MongoDB, Gremlin, Table, Cassandra. Default value: GlobalDocumentDB ";
         public const string CorsHelpMessage = "Hashtable with key values being : AllowedOrigins, AllowedMethods, AllowedHeaders, ExposedHeaders, MaxAgeInSeconds";
-
+        public const string AccountKeyTypeHelpMessage = "Value from: {ConnectionStrings, Keys, ReadOnlyKeys}. Default is Keys.";
+        
         //Sql cmdlets help messages
         public const string DatabaseNameHelpMessage = "Database name.";
         public const string ContainerNameHelpMessage = "Container name.";

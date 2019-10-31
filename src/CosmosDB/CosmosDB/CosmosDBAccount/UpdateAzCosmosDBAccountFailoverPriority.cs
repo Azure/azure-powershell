@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = Constants.ResourceIdHelpMessage)]
         public string ResourceId { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.AccountFailoverPolicy)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.AccountFailoverPolicyHelpMessage)]
         public string[] FailoverPolicy { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.AccountObject)]
+        [Parameter(Mandatory = false, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
         public PSDatabaseAccount InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]

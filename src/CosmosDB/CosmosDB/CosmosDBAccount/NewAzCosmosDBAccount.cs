@@ -187,16 +187,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountCreateUpdateParameters.EnableAutomaticFailover = EnableAutomaticFailover;
             databaseAccountCreateUpdateParameters.VirtualNetworkRules = virtualNetworkRule;
 
-            
-            try
-            {
-                DatabaseAccountInner cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.BeginCreateOrUpdateAsync(ResourceGroupName, Name, databaseAccountCreateUpdateParameters).GetAwaiter().GetResult();
-                WriteObject(cosmosDBAccount);
-            }
-            catch (Exception e)
-            {
-                WriteObject("Exception in sdk call" + e.ToString());
-            }
+            DatabaseAccountInner cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.BeginCreateOrUpdateAsync(ResourceGroupName, Name, databaseAccountCreateUpdateParameters).GetAwaiter().GetResult();
+            WriteObject(cosmosDBAccount);
+
         }
     }
 }
