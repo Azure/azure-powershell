@@ -18,8 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support enable Large File share when create or update Storage account
+    -  New-AzStorageAccount
+    -  Set-AzStorageAccount
+* When close/get File handle, skip check the input path is File directory or File, to avoid failure with object in DeletePending status
+    -  Get-AzStorageFileHandle
+    -  Close-AzStorageFileHandle
 
-## Version 1.8.1
+## Version 1.8.2
 * Fix issue in enabled Azure Files Active Directory Domain Service Authentication, on a new Storage account which has never enable it.
 
 ## Version 1.8.1
