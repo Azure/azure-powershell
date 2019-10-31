@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Remove Add-AzServiceFabricApplicationCertificate cmdlet as this scenario is covered by Add-AzVmssSecret.
 
 ## Version 1.2.0
 * Fixed typo in example for `Update-AzServiceFabricReliability` reference documentation

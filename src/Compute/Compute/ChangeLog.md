@@ -19,6 +19,31 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Disk Encryption Set feature
+    - New cmdlets:
+        New-AzDiskEncryptionSetConfig
+        New-AzDiskEncryptionSet
+        Get-AzDiskEncryptionSet
+        Remove-AzDiskEncryptionSet
+    - DiskEncryptionSetId parameter is added to the following cmdlets:
+        Set-AzImageOSDisk
+        Set-AzVMOSDisk
+        Set-AzVmssStorageProfile        
+        Add-AzImageDataDisk
+        New-AzVMDataDisk
+        Set-AzVMDataDisk
+        Add-AzVMDataDisk
+        Add-AzVmssDataDisk
+        Add-AzVmssVMDataDisk
+    - DiskEncryptionSetId and EncryptionType parameters are added to the following cmdlets:
+        New-AzDiskConfig
+        New-AzSnapshotConfig
+* Add PublicIPAddressVersion parameter to New-AzVmssIPConfig
+* Move FileUris of custom script extension from public setting to protected setting
+* Add ScaleInPolicy to New-AzVmss, New-AzVmssConfig and Update-AzVmss cmdlets
+* Breaking changes
+    - UploadSizeInBytes parameter is used instead of DiskSizeGB for New-AzDiskConfig when CreateOption is Upload
+    - PublishingProfile.Source.ManagedImage.Id is replaced with StorageProfile.Source.Id in GalleryImageVersion object
 
 ## Version 2.7.0
 * Add Priority, EvictionPolicy, and MaxPrice parameters to New-AzVM and New-AzVmss cmdlets

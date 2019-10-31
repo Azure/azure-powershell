@@ -56,7 +56,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.3'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Network.dll'
+RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Network.dll', '.\Microsoft.Azure.Management.Sql.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -110,7 +110,13 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzApplicationGatewayFirewallPolicy', 
                'Get-AzApplicationGatewayFirewallPolicy', 
                'Remove-AzApplicationGatewayFirewallPolicy', 
-               'Set-AzApplicationGatewayFirewallPolicy', 
+               'Set-AzApplicationGatewayFirewallPolicy',
+			   'New-AzApplicationGatewayFirewallPolicyExclusion',
+			   'New-AzApplicationGatewayFirewallPolicyManagedRule',
+			   'New-AzApplicationGatewayFirewallPolicyManagedRuleOverride',
+			   'New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride',
+			   'New-AzApplicationGatewayFirewallPolicyManagedRuleSet',
+			   'New-AzApplicationGatewayFirewallPolicySetting',
                'Add-AzApplicationGatewayFrontendIPConfig', 
                'Get-AzApplicationGatewayFrontendIPConfig', 
                'New-AzApplicationGatewayFrontendIPConfig', 
@@ -365,8 +371,11 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Set-AzServiceEndpointPolicy', 'New-AzVirtualWan', 
                'Update-AzVirtualWan', 'Get-AzVirtualWan', 'Remove-AzVirtualWan', 
                'New-AzVirtualHub', 'Get-AzVirtualHub', 'Update-AzVirtualHub', 
-               'Remove-AzVirtualHub', 'New-AzVirtualHubRoute', 
-               'New-AzVirtualHubRouteTable', 'New-AzVpnGateway', 'Get-AzVpnGateway', 
+               'Remove-AzVirtualHub', 'Set-AzVirtualHub', 
+			   'New-AzVirtualHubRoute', 'Add-AzVirtualHubRoute', 
+			   'New-AzVirtualHubRouteTable', 'Add-AzVirtualHubRouteTable', 
+			   'Get-AzVirtualHubRouteTable', 'Remove-AzVirtualHubRouteTable', 
+			   'New-AzVpnGateway', 'Get-AzVpnGateway', 
                'Update-AzVpnGateway', 'Remove-AzVpnGateway', 'New-AzVpnSite', 
                'New-AzVpnSiteLink', 'New-AzVpnSiteLinkConnection', 'Get-AzVpnSite', 
                'Update-AzVpnSite', 'Remove-AzVpnSite', 'New-AzVpnConnection', 
@@ -374,12 +383,14 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Remove-AzVpnConnection', 'New-AzVirtualHubVnetConnection', 
                'Get-AzVirtualHubVnetConnection', 
                'Remove-AzVirtualHubVnetConnection', 
+               'Update-AzVirtualHubVnetConnection', 
                'Get-AzVirtualWanVpnConfiguration', 'Get-AzFirewall', 
                'Set-AzFirewall', 'New-AzFirewall', 'Remove-AzFirewall', 
                'New-AzFirewallApplicationRuleCollection', 
                'New-AzFirewallApplicationRule', 'New-AzFirewallNatRuleCollection', 
                'New-AzFirewallNatRule', 'New-AzFirewallNetworkRuleCollection', 
-               'New-AzFirewallNetworkRule', 'Get-AzFirewallFqdnTag', 
+               'New-AzFirewallNetworkRule', 'New-AzFirewallThreatIntelWhitelist',
+               'Get-AzFirewallFqdnTag', 
                'Get-AzNetworkProfile', 'New-AzNetworkProfile', 
                'Remove-AzNetworkProfile', 'Set-AzNetworkProfile', 
                'New-AzContainerNicConfig', 'New-AzContainerNicConfigIpConfig', 
@@ -414,12 +425,24 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Test-AzPrivateLinkServiceVisibility', 
                'Approve-AzPrivateEndpointConnection', 
                'Deny-AzPrivateEndpointConnection', 
-               'Get-AzAvailablePrivateEndpointType', 'Get-AzAvailableServiceAlias', 
+               'Get-AzAvailablePrivateEndpointType',
+               'Get-AzAvailableServiceAlias',
+               'Get-AzPrivateLinkResource',
                'New-AzBastion', 'Get-AzBastion', 'Remove-AzBastion', 
                'Start-AzVirtualNetworkGatewayPacketCapture', 
                'Stop-AzVirtualNetworkGatewayPacketCapture', 
                'Start-AzVirtualNetworkGatewayConnectionPacketCapture', 
-               'Stop-AzVirtualNetworkGatewayConnectionPacketCapture'
+               'Stop-AzVirtualNetworkGatewayConnectionPacketCapture',
+               'New-AzFirewallPolicyNetworkRule', 
+               'New-AzFirewallPolicyApplicationRule','New-AzFirewallPolicyNatRuleCollection',
+               'New-AzFirewallPolicyFilterRuleCollection', 'New-AzFirewallPolicyRuleCollectionGroup',
+               'Set-AzFirewallPolicyRuleCollectionGroup', 'Get-AzFirewallPolicyRuleCollectionGroup',
+               'Remove-AzFirewallPolicyRuleCollectionGroup',
+               'New-AzFirewallPolicy', 'Get-AzFirewallPolicy', 'Set-AzFirewallPolicy',
+               'Remove-AzFirewallPolicy',
+               'New-AzVirtualRouter','Remove-AzVirtualRouter','Get-AzVirtualRouter',
+               'Add-AzVirtualRouterPeer','Update-AzVirtualRouterPeer','Remove-AzVirtualRouterPeer', 'Get-AzVirtualRouterPeer',
+               'New-AzIpGroup','Remove-AzIpGroup','Get-AzIpGroup','Set-AzIpGroup'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -437,7 +460,8 @@ AliasesToExport = 'List-AzApplicationGatewayAvailableWafRuleSets',
                'Get-AzExpressRouteCircuitStats', 
                'Get-AzApplicationGatewayAvailableWafRuleSets', 
                'Get-AzApplicationGatewayAvailableSslOptions', 
-               'Get-AzInterfaceEndpoint'
+               'Get-AzInterfaceEndpoint',
+               'New-AzFirewallThreatIntelWhitelistObject'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

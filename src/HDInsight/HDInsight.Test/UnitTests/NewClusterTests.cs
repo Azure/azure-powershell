@@ -62,24 +62,22 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.DefaultStorageAccountKey = StorageKey;
             cmdlet.ClusterType = ClusterType;
 
-            var cluster = new Cluster
+            var cluster = new Cluster(id: "id", name: ClusterName)
             {
-                Id = "id",
-                Name = ClusterName,
                 Location = Location,
                 Properties = new ClusterGetProperties
                 {
-                    ClusterVersion = "3.1",
+                    ClusterVersion = "3.6",
                     ClusterState = "Running",
                     ClusterDefinition = new ClusterDefinition
                     {
-                        ClusterType = ClusterType
+                        Kind = ClusterType
                     },
                     QuotaInfo = new QuotaInfo
                     {
                         CoresUsed = 24
                     },
-                    OperatingSystemType = OSType.Windows
+                    OsType = OSType.Linux
                 }
             };
             var coreConfigs = new Dictionary<string, string>
@@ -105,9 +103,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             var serializedConfig = JsonConvert.SerializeObject(configurations);
             cluster.Properties.ClusterDefinition.Configurations = serializedConfig;
 
-            var getresponse = new ClusterGetResponse { Cluster = cluster };
-
-            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
+            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, OSType.Linux, It.Is<ClusterCreateParameters>(
                 parameters =>
                     parameters.ClusterSizeInNodes == ClusterSize &&
                     parameters.DefaultStorageInfo as AzureStorageInfo != null &&
@@ -116,9 +112,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     parameters.Location == Location &&
                     parameters.UserName == _httpCred.UserName &&
                     parameters.Password == _httpCred.Password.ConvertToString() &&
-                    parameters.ClusterType == ClusterType &&
-                    parameters.OSType == OSType.Windows)))
-            .Returns(getresponse)
+                    parameters.ClusterType == ClusterType)))
+            .Returns(cluster)
             .Verifiable();
 
             cmdlet.ExecuteCmdlet();
@@ -128,11 +123,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 clusterout =>
                     clusterout.ClusterState == "Running" &&
                     clusterout.ClusterType == ClusterType &&
-                    clusterout.ClusterVersion == "3.1" &&
+                    clusterout.ClusterVersion == "3.6" &&
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&
                     clusterout.Name == ClusterName &&
-                    clusterout.OperatingSystemType == OSType.Windows)),
+                    clusterout.OperatingSystemType == OSType.Linux)),
                     Times.Once);
         }
 
@@ -159,7 +154,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         public void CanCreateNewHDInsightCluster_RServer_Linux()
         {
             ClusterType = "RServer";
-            HdiVersion = "3.5";
+            HdiVersion = "3.6";
 
             CreateNewHDInsightCluster(setEdgeNodeVmSize:true);
         }
@@ -220,7 +215,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.DefaultStorageAccountKey = StorageKey;
             cmdlet.ClusterType = ClusterType;
             cmdlet.SshCredential = _sshCred;
-            cmdlet.OSType = OSType.Linux;
             cmdlet.DisksPerWorkerNode = workerNodeDataDisks;
             if (setEdgeNodeVmSize)
             {
@@ -228,10 +222,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             }
 
             // Construct cluster Object
-            var cluster = new Cluster
+            var cluster = new Cluster(id: "id", name: ClusterName)
             {
-                Id = "id",
-                Name = ClusterName,
                 Location = Location,
                 Properties = new ClusterGetProperties
                 {
@@ -239,13 +231,13 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     ClusterState = "Running",
                     ClusterDefinition = new ClusterDefinition
                     {
-                        ClusterType = ClusterType
+                        Kind = ClusterType
                     },
                     QuotaInfo = new QuotaInfo
                     {
                         CoresUsed = 24
                     },
-                    OperatingSystemType = OSType.Linux,
+                    OsType = OSType.Linux,
                     ComputeProfile = new ComputeProfile()
                     {
                         Roles = new List<Role>()
@@ -258,9 +250,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 cluster.Properties.ComputeProfile.Roles.Add(new Role()
                 {
                     Name = "workernode",
-                    DataDisksGroups = new List<DataDisksGroupProperties>()
+                    DataDisksGroups = new List<DataDisksGroups>()
                     {
-                        new DataDisksGroupProperties()
+                        new DataDisksGroups()
                         {
                             DisksPerNode = workerNodeDataDisks
                         }
@@ -310,11 +302,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             var serializedConfig = JsonConvert.SerializeObject(configurations);
             cluster.Properties.ClusterDefinition.Configurations = serializedConfig;
 
-            var getresponse = new ClusterGetResponse {Cluster = cluster};
-
             // Setup Mocks and verify successfull GET response
             hdinsightManagementMock.Setup(
-                c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
+                c => c.CreateNewCluster(ResourceGroupName, ClusterName, OSType.Linux, It.Is<ClusterCreateParameters>(
                     parameters =>
                         parameters.ClusterSizeInNodes == ClusterSize &&
                         parameters.DefaultStorageInfo as AzureStorageInfo != null &&
@@ -324,12 +314,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                         parameters.UserName == _httpCred.UserName &&
                         parameters.Password == _httpCred.Password.ConvertToString() &&
                         parameters.ClusterType == ClusterType &&
-                        parameters.OSType == OSType.Linux &&
                         parameters.SshUserName == _sshCred.UserName &&
                         parameters.SshPassword == _sshCred.Password.ConvertToString() &&
                         ((!setEdgeNodeVmSize && parameters.EdgeNodeSize == null) || (setEdgeNodeVmSize && parameters.EdgeNodeSize == "edgeNodeVmSizeSetTest")) &&
                         (workerNodeDataDisks == 0) || (workerNodeDataDisks > 0 && parameters.WorkerNodeDataDisksGroups.First().DisksPerNode == workerNodeDataDisks))))
-                .Returns(getresponse)
+                .Returns(cluster)
                 .Verifiable();
 
             // Execute Cmdlet and verify output
@@ -369,27 +358,24 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.DefaultStorageAccountKey = StorageKey;
             cmdlet.ClusterType = "Spark";
             cmdlet.SshCredential = _sshCred;
-            cmdlet.OSType = OSType.Linux;
             cmdlet.ComponentVersion = componentVersion;
 
-            var cluster = new Cluster
+            var cluster = new Cluster(id: "id", name: ClusterName)
             {
-                Id = "id",
-                Name = ClusterName,
                 Location = Location,
                 Properties = new ClusterGetProperties
                 {
-                    ClusterVersion = "3.5",
+                    ClusterVersion = "3.6",
                     ClusterState = "Running",
                     ClusterDefinition = new ClusterDefinition
                     {
-                        ClusterType = sparkClusterType
+                        Kind = sparkClusterType
                     },
                     QuotaInfo = new QuotaInfo
                     {
                         CoresUsed = 24
                     },
-                    OperatingSystemType = OSType.Linux
+                    OsType = OSType.Linux
                 }
             };
 
@@ -418,9 +404,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             var serializedConfig = JsonConvert.SerializeObject(configurations);
             cluster.Properties.ClusterDefinition.Configurations = serializedConfig;
 
-            var getresponse = new ClusterGetResponse {Cluster = cluster};
-
-            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
+            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, OSType.Linux, It.Is<ClusterCreateParameters>(
                 parameters =>
                     parameters.ClusterSizeInNodes == ClusterSize &&
                     parameters.DefaultStorageInfo as AzureStorageInfo != null &&
@@ -430,14 +414,13 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     parameters.UserName == _httpCred.UserName &&
                     parameters.Password == _httpCred.Password.ConvertToString() &&
                     parameters.ClusterType == sparkClusterType &&
-                    parameters.OSType == OSType.Linux &&
                     parameters.SshUserName == _sshCred.UserName &&
                     parameters.SshPassword == _sshCred.Password.ConvertToString() &&
                     parameters.ComponentVersion["Spark"] == componentVersion["Spark"])))
-            .Returns(getresponse)
+            .Returns(cluster)
             .Verifiable();
             hdinsightManagementMock.Setup(
-                c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
+                c => c.CreateNewCluster(ResourceGroupName, ClusterName, OSType.Linux, It.Is<ClusterCreateParameters>(
                     parameters =>
                         parameters.ClusterSizeInNodes == ClusterSize &&
                         parameters.DefaultStorageInfo as AzureStorageInfo != null &&
@@ -447,10 +430,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                         parameters.UserName == _httpCred.UserName &&
                         parameters.Password == _httpCred.Password.ConvertToString() &&
                         parameters.ClusterType == ClusterType &&
-                        parameters.OSType == OSType.Linux &&
                         parameters.SshUserName == _sshCred.UserName &&
                         parameters.SshPassword == _sshCred.Password.ConvertToString())))
-                .Returns(getresponse)
+                .Returns(cluster)
                 .Verifiable();
 
             cmdlet.ExecuteCmdlet();
@@ -460,7 +442,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 clusterout =>
                     clusterout.ClusterState == "Running" &&
                     clusterout.ClusterType == sparkClusterType &&
-                    clusterout.ClusterVersion == "3.5" &&
+                    clusterout.ClusterVersion == "3.6" &&
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&
                     clusterout.Name == ClusterName &&
@@ -492,11 +474,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.DefaultStorageAccountKey = StorageKey;
             cmdlet.ClusterType = ClusterType;
 
-            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.IsAny<ClusterCreateParameters>()));
+            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName,  OSType.Linux, It.IsAny<ClusterCreateParameters>()));
 
             cmdlet.ExecuteCmdlet();
 
-            hdinsightManagementMock.Verify(c => c.CreateNewCluster(It.IsAny<string>(), It.IsAny<string>(), It.Is<ClusterCreateParameters>(
+            hdinsightManagementMock.Verify(c => c.CreateNewCluster(It.IsAny<string>(), It.IsAny<string>(), OSType.Linux, It.Is<ClusterCreateParameters>(
                 parameters =>
                     parameters.ClusterSizeInNodes == ClusterSize &&
                     parameters.DefaultStorageInfo as AzureStorageInfo != null &&
@@ -505,8 +487,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     parameters.Location == Location &&
                     parameters.UserName == _httpCred.UserName &&
                     parameters.Password == _httpCred.Password.ConvertToString() &&
-                    parameters.ClusterType == ClusterType &&
-                    parameters.OSType == OSType.Windows)),
+                    parameters.ClusterType == ClusterType)),
                 Times.Once);
         }
 
@@ -524,11 +505,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.ClusterType = ClusterType;
             cmdlet.DefaultStorageAccountType = StorageType.AzureStorage;
 
-            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.IsAny<ClusterCreateParameters>()));
+            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, OSType.Linux, It.IsAny<ClusterCreateParameters>()));
 
             cmdlet.ExecuteCmdlet();
 
-            hdinsightManagementMock.Verify(c => c.CreateNewCluster(It.IsAny<string>(), It.IsAny<string>(), It.Is<ClusterCreateParameters>(
+            hdinsightManagementMock.Verify(c => c.CreateNewCluster(It.IsAny<string>(), It.IsAny<string>(), OSType.Linux, It.Is<ClusterCreateParameters>(
                 parameters =>
                     parameters.ClusterSizeInNodes == ClusterSize &&
                     parameters.DefaultStorageInfo as AzureStorageInfo != null &&
@@ -537,8 +518,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     parameters.Location == Location &&
                     parameters.UserName == _httpCred.UserName &&
                     parameters.Password == _httpCred.Password.ConvertToString() &&
-                    parameters.ClusterType == ClusterType &&
-                    parameters.OSType == OSType.Windows)),
+                    parameters.ClusterType == ClusterType)),
                 Times.Once);
         }
 
@@ -557,11 +537,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.ClusterType = ClusterType;
             cmdlet.DefaultStorageAccountType = StorageType.AzureDataLakeStore;
 
-            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.IsAny<ClusterCreateParameters>()));
+            hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, OSType.Linux, It.IsAny<ClusterCreateParameters>()));
 
             cmdlet.ExecuteCmdlet();
 
-            hdinsightManagementMock.Verify(c => c.CreateNewCluster(It.IsAny<string>(), It.IsAny<string>(), It.Is<ClusterCreateParameters>(
+            hdinsightManagementMock.Verify(c => c.CreateNewCluster(It.IsAny<string>(), It.IsAny<string>(), OSType.Linux, It.Is<ClusterCreateParameters>(
                 parameters =>
                     parameters.ClusterSizeInNodes == ClusterSize &&
                     parameters.DefaultStorageInfo as AzureDataLakeStoreInfo != null &&
@@ -570,8 +550,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     parameters.Location == Location &&
                     parameters.UserName == _httpCred.UserName &&
                     parameters.Password == _httpCred.Password.ConvertToString() &&
-                    parameters.ClusterType == ClusterType &&
-                    parameters.OSType == OSType.Windows)),
+                    parameters.ClusterType == ClusterType)),
                 Times.Once);
         }
     }

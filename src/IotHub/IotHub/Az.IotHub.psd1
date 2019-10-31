@@ -98,8 +98,7 @@ CmdletsToExport = 'Add-AzIotHubKey', 'Get-AzIotHubEventHubConsumerGroup',
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzIotHubEHCG', 'Add-AzIotHubEHCG', 'Remove-AzIotHubEHCG', 
-               'Set-AzIotHubVC', 'Get-AzIotHubCVC', 'New-AzIotHubExportDevices', 
-               'New-AzIotHubImportDevices', 'Add-AzIotHubMsgEnrich', 
+               'Set-AzIotHubVC', 'Get-AzIotHubCVC', 'Add-AzIotHubMsgEnrich', 
                'Get-AzIotHubMsgEnrich', 'Remove-AzIotHubMsgEnrich', 
                'Set-AzIotHubMsgEnrich'
 
