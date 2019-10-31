@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string TranslatedAddress { get; set; }
 
+        public string TranslatedFqdn { get; set; }
+
         public string TranslatedPort { get; set; }
 
         [JsonIgnore]

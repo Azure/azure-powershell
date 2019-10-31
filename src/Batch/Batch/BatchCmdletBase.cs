@@ -19,11 +19,13 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Linq;
+using System.Text;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    public class BatchCmdletBase : AzureRMCmdlet
+    public abstract class BatchCmdletBase : AzureRMCmdlet
     {
         private BatchClient batchClient;
 
@@ -43,62 +45,63 @@ namespace Microsoft.Azure.Commands.Batch
             set { batchClient = value; }
         }
 
-        protected virtual void OnProcessRecord()
-        {
-            // Intentionally left blank
-        }
+        protected abstract void ExecuteCmdletImpl();
 
         public override void ExecuteCmdlet()
         {
             try
             {
                 Validate.ValidateInternetConnection();
-                ProcessRecord();
-                OnProcessRecord();
-            }
-            catch (AggregateException ex)
-            {
-                // When the OM encounters an error, it'll throw a BatchException.
-                // BatchExceptions have special handling to extract detailed failure information.  When an AggregateException
-                // is encountered, loop through the inner exceptions.  If there's a nested BatchException, perform the 
-                // special handling.  Otherwise, just write out the error.
-                AggregateException flattened = ex.Flatten();
-                foreach (Exception inner in flattened.InnerExceptions)
-                {
-                    BatchException asBatch = inner as BatchException;
-                    if (asBatch != null)
-                    {
-                        HandleBatchException(asBatch);
-                    }
-                    else
-                    {
-                        WriteExceptionError(inner);
-                    }
-                }
+                ExecuteCmdletImpl();
             }
             catch (BatchException ex)
             {
-                HandleBatchException(ex);
+                if (ex?.RequestInformation != null)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.AppendLine($"HttpStatusCode: " + ex.RequestInformation.HttpStatusCode);
+                    sb.AppendLine($"StatusMessage: " + ex.RequestInformation.HttpStatusMessage);
+                    sb.AppendLine($"ClientRequestId: {ex.RequestInformation.ClientRequestId}");
+                    sb.AppendLine($"RequestId: {ex.RequestInformation.ServiceRequestId}");
+
+                    if (ex.RequestInformation.BatchError != null)
+                    {
+                        sb.AppendLine();
+                        sb.AppendLine($"Error code: {ex.RequestInformation.BatchError.Code}");
+                        if (ex.RequestInformation.BatchError.Message != null)
+                        {
+                            sb.AppendLine($"Message: {ex.RequestInformation.BatchError.Message.Value}");
+                        }
+
+                        if (ex.RequestInformation.BatchError.Values != null && ex.RequestInformation.BatchError.Values.Any())
+                        {
+                            sb.AppendLine("Error details:");
+                            foreach (var item in ex.RequestInformation.BatchError.Values)
+                            {
+                                sb.AppendLine($"{item.Key}: {item.Value}");
+                            }
+                        }
+                    }
+
+                    throw new BatchException(ex.RequestInformation, sb.ToString(), ex.InnerException);
+                }
+
+                throw;
             }
             catch (CloudException ex)
             {
-                var updatedEx = ex;
-
-                if (ex.Response != null && ex.Response.Content != null)
+                if (ex.Response?.Content != null)
                 {
                     var message = FindDetailedMessage(ex.Response.Content);
 
                     if (message != null)
                     {
-                        updatedEx = new CloudException(message, ex);
+                        var updatedEx = new CloudException(message, ex);
+                        throw updatedEx;
                     }
                 }
 
-                WriteExceptionError(updatedEx);
-            }
-            catch (Exception ex)
-            {
-                WriteExceptionError(ex);
+                throw;
             }
         }
 
@@ -110,7 +113,6 @@ namespace Microsoft.Azure.Commands.Batch
         /// <returns></returns>
         internal static string FindDetailedMessage(string content)
         {
-            // TODO: Revise after Task 2362107 is completed on the server side
             string message = null;
 
             if (CloudException.IsJson(content))
@@ -145,25 +147,6 @@ namespace Microsoft.Azure.Commands.Batch
             }
 
             return message;
-        }
-
-        /// <summary>
-        /// Extracts failure details from the BatchException object to create a more informative error message for the user.
-        /// </summary>
-        /// <param name="ex">The BatchException object</param>
-        private void HandleBatchException(BatchException ex)
-        {
-            if (ex != null)
-            {
-                if (ex.RequestInformation != null && ex.RequestInformation.BatchError != null)
-                {
-                    WriteExceptionError(new BatchException(ex.RequestInformation, ex.ToString(), ex.InnerException));
-                }
-                else
-                {
-                    WriteExceptionError(ex);
-                }
-            }
         }
     }
 }

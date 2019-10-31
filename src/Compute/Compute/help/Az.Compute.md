@@ -89,6 +89,9 @@ Gets a container service.
 ### [Get-AzDisk](Get-AzDisk.md)
 Gets the properties of a Managed disk.
 
+### [Get-AzDiskEncryptionSet](Get-AzDiskEncryptionSet.md)
+Get or list disk encryption sets.
+
 ### [Get-AzGallery](Get-AzGallery.md)
 Get or list galleries.
 
@@ -230,6 +233,12 @@ Creates a managed disk.
 ### [New-AzDiskConfig](New-AzDiskConfig.md)
 Creates a configurable disk object.
 
+### [New-AzDiskEncryptionSet](New-AzDiskEncryptionSet.md)
+Creates a disk encryption key.
+
+### [New-AzDiskEncryptionSetConfig](New-AzDiskEncryptionSetConfig.md)
+Creates a configurable disk encryption set object.
+
 ### [New-AzDiskUpdateConfig](New-AzDiskUpdateConfig.md)
 Creates a configurable disk update object.
 
@@ -313,6 +322,9 @@ Removes an agent pool profile from a container service.
 
 ### [Remove-AzDisk](Remove-AzDisk.md)
 Removes a disk.
+
+### [Remove-AzDiskEncryptionSet](Remove-AzDiskEncryptionSet.md)
+Removes a disk encryption set.
 
 ### [Remove-AzGallery](Remove-AzGallery.md)
 Delete a gallery.
