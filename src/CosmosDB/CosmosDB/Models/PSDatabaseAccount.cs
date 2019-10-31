@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
     using System.Collections.Generic;
     using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
 
-    public class PSDatabaseAccount : PSResource
+    public class PSDatabaseAccount
     {
         public PSDatabaseAccount()
         {
@@ -44,6 +44,15 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             EnableMultipleWriteLocations = databaseAccountInner.EnableMultipleWriteLocations;
         }
 
+        //public PSDatabaseAccount(IEnumerable<DatabaseAccountInner> databaseAccounts)
+        //{
+        //    foreach(DatabaseAccountInner databaseAccount in databaseAccounts)
+        //    {
+        //        DatabaseAccounts.Add(new PSDatabaseAccount(databaseAccount));
+        //    }
+        //}
+
+        //public IList<PSDatabaseAccount> DatabaseAccounts { get; set; }
         //
         // Summary:
         //     Gets or sets ResourceId

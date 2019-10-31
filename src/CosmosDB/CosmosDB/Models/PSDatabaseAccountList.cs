@@ -15,15 +15,29 @@
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
     using System;
-    using System.Collections;
+    using System.Collections.Generic;
     using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
 
-    public class PSCorsRule
+    public class PSDatabaseAccountList
     {
-        public PSCorsRule()
+        public PSDatabaseAccountList()
         {
         }        
+        
+        public PSDatabaseAccountList(DatabaseAccountInner databaseAccount)
+        {
+            DatabaseAccounts.Add(new PSDatabaseAccount(databaseAccount));
+        }
 
-        public Hashtable CorsProperties { get; set; }
+        public PSDatabaseAccountList(IEnumerable<DatabaseAccountInner> databaseAccounts)
+        {
+            foreach (DatabaseAccountInner databaseAccount in databaseAccounts)
+            {
+                DatabaseAccounts.Add(new PSDatabaseAccount(databaseAccount));
+            }
+        }
+
+        public IList<PSDatabaseAccount> DatabaseAccounts { get; set; } = new List<PSDatabaseAccount>();
+
     }
 }

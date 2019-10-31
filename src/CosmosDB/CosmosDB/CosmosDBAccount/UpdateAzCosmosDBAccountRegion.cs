@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             DatabaseAccountCreateUpdateParametersInner createUpdateParameters = new DatabaseAccountCreateUpdateParametersInner(locations);
             CosmosDBManagementClient.DatabaseAccounts.CreateOrUpdateAsync(ResourceGroupName, Name, createUpdateParameters);
-            WriteObject(CosmosDBManagementClient.DatabaseAccounts.GetAsync(ResourceGroupName, Name).Result);
+            WriteObject(CosmosDBManagementClient.DatabaseAccounts.GetAsync(ResourceGroupName, Name).GetAwaiter().GetResult());
         }
     }
 }

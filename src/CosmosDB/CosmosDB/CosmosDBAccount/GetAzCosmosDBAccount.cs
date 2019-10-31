@@ -18,17 +18,19 @@ using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccount", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSDatabaseAccount))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccount", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSDatabaseAccountList))]
     public class GetAzCosmosDBAccount : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.AccountNameHelpMessage)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.AccountNameHelpMessage)]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = Constants.ResourceIdHelpMessage)]
@@ -36,17 +38,20 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void ExecuteCmdlet()
         {
+            DatabaseAccountInner databaseAccount = new DatabaseAccountInner();
             if (ParameterSetName.Equals(NameParameterSet, StringComparison.OrdinalIgnoreCase))
             {
                 if (Name != null)
                 {
-                    var response = CosmosDBManagementClient.DatabaseAccounts.GetWithHttpMessagesAsync(ResourceGroupName, Name).Result; 
-                    WriteObject(response);
+                    databaseAccount = CosmosDBManagementClient.DatabaseAccounts.GetWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body; 
+                    WriteObject(databaseAccount);
                 }
                 else
                 {
-                    var response = CosmosDBManagementClient.DatabaseAccounts.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName).Result;
-                    WriteObject(response);
+                    IEnumerable<DatabaseAccountInner> databaseAccounts = null;
+                    databaseAccounts = CosmosDBManagementClient.DatabaseAccounts.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName).GetAwaiter().GetResult().Body;
+                    WriteObject(new PSDatabaseAccountList(databaseAccounts));
+                    return;
                 }
             }
             else if (ParameterSetName.Equals(ResourceIdParameterSet, StringComparison.OrdinalIgnoreCase))
@@ -54,9 +59,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ResourceId);
                 Name = resourceIdentifier.ResourceName;
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                var response = CosmosDBManagementClient.DatabaseAccounts.GetWithHttpMessagesAsync(Name, ResourceGroupName).Result;
-                WriteObject(response);
+                databaseAccount = CosmosDBManagementClient.DatabaseAccounts.GetWithHttpMessagesAsync(Name, ResourceGroupName).GetAwaiter().GetResult().Body;
             }
+
+            WriteObject(new PSDatabaseAccountList(databaseAccount));
+            return;
         }
     }
 }

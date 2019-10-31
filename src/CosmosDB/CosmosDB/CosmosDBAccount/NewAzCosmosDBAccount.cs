@@ -71,12 +71,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [PSArgumentCompleter("GlobalDocumentDB", "MongoDB")]
         public string ApiKind { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.DisableKeyBasedMetadataWriteAccessHelpMessage)]
-        public SwitchParameter DisableKeyBasedMetadataWriteAccess { get; set; }
-
-        [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, ValueFromPipeline = true, HelpMessage = Constants.CorsHelpMessage)]
-        public PSCorsRule[] Cors { get; set; }
-
         [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
@@ -111,7 +105,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     default:
                         consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Fluent.Models.DefaultConsistencyLevel.Session;
                         break;
-
                 }
             }
 
@@ -169,7 +162,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
             string IpRangeFilterAsString = null;
             if (IpRangeFilter != null)
             {
-
                 for (int i = 0; i < IpRangeFilter.Length; i++)
                 {
                     if (i == 0)
@@ -189,7 +181,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             DatabaseAccountInner cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.BeginCreateOrUpdateAsync(ResourceGroupName, Name, databaseAccountCreateUpdateParameters).GetAwaiter().GetResult();
             WriteObject(cosmosDBAccount);
-
         }
     }
 }

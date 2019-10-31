@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.ObjectModel;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
@@ -45,12 +46,16 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.PassThruHelpMessage)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             Collection<FailoverPolicyInner> failoverPolicys = new Collection<FailoverPolicyInner>();
             for (int i = 0 ; i < FailoverPolicy.Length; i++ )
             {
                 FailoverPolicyInner failoverPolicy = new FailoverPolicyInner(locationName: FailoverPolicy[i], failoverPriority: i);
+                failoverPolicys.Add(failoverPolicy);
             }
            
             if(ParameterSetName.Equals(ResourceIdParameterSet))
@@ -66,7 +71,16 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Name = resourceIdentifier.ResourceName;
             }
 
-            CosmosDBManagementClient.DatabaseAccounts.FailoverPriorityChangeAsync(ResourceGroupName, Name, failoverPolicys);
+            try
+            {
+                CosmosDBManagementClient.DatabaseAccounts.FailoverPriorityChangeAsync(ResourceGroupName, Name, failoverPolicys);
+                if (PassThru)
+                    WriteObject(bool.TrueString);
+            }
+            catch(Exception)
+            {
+                WriteObject("Exception caught while updating FailoverPolicy.");
+            }
         }
     }
 }

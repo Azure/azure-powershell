@@ -38,9 +38,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string TagHelpMessage = "Hashtable of tags as key-value pairs. Use empty string to clear existing tag.";
         public const string LocationHelpMessage = "Add a location to the Cosmos DB database account. Array of strings, ordered by failover priority.";
         public const string VirtualNetworkRuleHelpMessage = "Array of string values of ACL's for virtual network.";
-        public const string DisableKeyBasedMetadataWriteAccessHelpMessage = "SwitchParameter to disable key based metadata write access ";
         public const string ApiKindHelpMessage = "The type of Cosmos DB database account to create. Accepted values: GlobalDocumentDB, Sql, MongoDB, Gremlin, Table, Cassandra. Default value: GlobalDocumentDB ";
-        public const string CorsHelpMessage = "Hashtable with key values being : AllowedOrigins, AllowedMethods, AllowedHeaders, ExposedHeaders, MaxAgeInSeconds";
         public const string AccountKeyTypeHelpMessage = "Value from: {ConnectionStrings, Keys, ReadOnlyKeys}. Default is Keys.";
         
         //Sql cmdlets help messages

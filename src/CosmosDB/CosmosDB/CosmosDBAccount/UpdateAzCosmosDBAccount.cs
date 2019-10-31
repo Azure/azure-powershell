@@ -71,12 +71,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.VirtualNetworkRuleHelpMessage)]
         public string[] VirtualNetworkRule { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.DisableKeyBasedMetadataWriteAccessHelpMessage)]
-        public SwitchParameter DisableKeyBasedMetadataWriteAccess { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.CorsHelpMessage)]
-        public PSCorsRule[] Cors { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
@@ -131,9 +125,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             Dictionary<string, string> tags = new Dictionary<string, string>();
             if (Tag != null)
             {
-                foreach (KeyValuePair<string, string> keyValuePair in Tag)
+                foreach (string key in Tag.Keys)
                 {
-                    tags.Add(keyValuePair.Key, keyValuePair.Value);
+                    tags.Add(key, Tag[key].ToString());
                 }
             }
 
