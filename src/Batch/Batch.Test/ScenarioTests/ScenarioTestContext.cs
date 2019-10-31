@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             this.PrimaryAccountKey = BatchController.BatchAccountKey;
             this.TaskTenantUrl = BatchController.BatchAccountUrl;
             this.ResourceGroupName = BatchController.BatchResourceGroup;
+            this.Subscription = BatchController.Subscription;
         }
 
         protected override BatchServiceClient CreateBatchRestClient(string url, ServiceClientCredentials credentials, DelegatingHandler handler = default(DelegatingHandler))
