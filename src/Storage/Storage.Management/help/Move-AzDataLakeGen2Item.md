@@ -8,7 +8,7 @@ schema: 2.0.0
 # Move-AzDataLakeGen2Item
 
 ## SYNOPSIS
-Move a file or folder to another a file or folder in same Storage account.
+Move a file or directory to another a file or directory in same Storage account.
 
 ## SYNTAX
 
@@ -29,7 +29,7 @@ Move-AzDataLakeGen2Item -InputObject <AzureDataLakeGen2Item> -DestFileSystem <St
 ```
 
 ## DESCRIPTION
-The **Move-AzDataLakeGen2Item** cmdlet moves a a file or folder to another a file or folder in same Storage account.
+The **Move-AzDataLakeGen2Item** cmdlet moves a a file or directory to another a file or directory in same Storage account.
 This cmdlet only works if Hierarchical Namespace is enabled for the Storage account. This kind of account can be created by run "New-AzStorageAccount" cmdlet with "-EnableHierarchicalNamespace $true".
 
 ## EXAMPLES
@@ -45,7 +45,7 @@ Path                 IsDirectory  Length          ContentType                   
 dir2/                True                         application/octet-stream       2019-10-29 04:23:05Z rw-rw--wx    $superuser $superuser
 ```
 
-This command move folder 'dir/' to folder 'dir2' in the same Filesystem.
+This command move directory 'dir/' to directory 'dir2' in the same Filesystem.
 
 ### Example 2: Move a file by pipeline, to another Filesystem in the same Storage account
 ```
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 
 ### -Path
 The path in the specified Filesystem that should be move from.
-Can be a file or folder In the format 'folder/file.txt' or 'folder1/folder2/'
+Can be a file or directory In the format 'directory/file.txt' or 'directory1/directory2/'
 
 ```yaml
 Type: System.String

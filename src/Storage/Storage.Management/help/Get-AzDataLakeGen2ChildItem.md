@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataLakeGen2ChildItem
 
 ## SYNOPSIS
-Lists sub folders and files from a folder or filesystem root.
+Lists sub directorys and files from a directory or filesystem root.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Get-AzDataLakeGen2ChildItem [-FileSystem] <String> [[-Path] <String>] [-FetchPer
 ```
 
 ## DESCRIPTION
-The **Get-AzDataLakeGen2ChildItem** cmdlet lists sub folders and files in a folder or Filesystem in an Azure storage account.
+The **Get-AzDataLakeGen2ChildItem** cmdlet lists sub directorys and files in a directory or Filesystem in an Azure storage account.
 This cmdlet only works if Hierarchical Namespace is enabled for the Storage account. This kind of account can be created by run "New-AzStorageAccount" cmdlet with "-EnableHierarchicalNamespace $true".
 
 ## EXAMPLES
@@ -40,7 +40,7 @@ dir2/                True
 
 This command lists the direct sub items from a Filesystem
 
-### Example 2: List recursively from a folder, and fetch permission/owner/ACL
+### Example 2: List recursively from a directory, and fetch permission/owner/ACL
 ```
 PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" -Path "dir1/" -Recurse -FetchPermission
 
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 
 ### -Path
 The path in the specified Filesystem that should be retrieved.
-Should be a folder, in the format 'folder1/folder2/'.
+Should be a directory, in the format 'directory1/directory2/'.
 
 ```yaml
 Type: System.String

@@ -36,9 +36,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     public class NewAzDataLakeGen2ItemCommand : StorageDataMovementCmdletBase
     {
         /// <summary>
-        /// Create a Folder parameter
+        /// Create a Directory parameter
         /// </summary>
-        private const string FolderParameterSet = "Folder";
+        private const string DirectoryParameterSet = "Directory";
 
         /// <summary>
         /// Create a file parameter
@@ -50,13 +50,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public string FileSystem { get; set; }
 
         [Parameter(ValueFromPipeline = true, Position = 1, Mandatory = true, HelpMessage =
-                "The path in the specified FileSystem that should be create. Can be a file or folder " +
-                "In the format 'folder/file.txt' or 'folder1/folder2/'")]
+                "The path in the specified FileSystem that should be create. Can be a file or directory " +
+                "In the format 'directory/file.txt' or 'directory1/directory2/'")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Indicates that this new item is a folder and not a file.", ParameterSetName = FolderParameterSet)]
-        public SwitchParameter Folder { get; set; }
+        [Parameter(Mandatory = true, HelpMessage = "Indicates that this new item is a directory and not a file.", ParameterSetName = DirectoryParameterSet)]
+        public SwitchParameter Directory { get; set; }
 
         [Parameter(ValueFromPipeline = true, Mandatory = true, HelpMessage = "Specify the local source file path which will be upload to a Datalake Gen2 file.", ParameterSetName = FileParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -69,7 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private string FileName = String.Empty;
 
         [Parameter(Mandatory = false,
-            HelpMessage = "When creating New Item and the parent folder does not have a default ACL, the umask restricts the permissions of the file or directory to be created. The resulting permission is given by p & ^u, where p is the permission and u is the umask. Symbolic (rwxrw-rw-) is supported.")]
+            HelpMessage = "When creating New Item and the parent directory does not have a default ACL, the umask restricts the permissions of the file or directory to be created. The resulting permission is given by p & ^u, where p is the permission and u is the umask. Symbolic (rwxrw-rw-) is supported.")]
         [ValidateNotNullOrEmpty]
         [ValidatePattern("([r-][w-][x-]){3}")]
         public string Umask { get; set; }
@@ -80,9 +80,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public string Permission { get; set; }
 
 
-        [Parameter(HelpMessage = "Specifies properties for the created folder or file. "+
+        [Parameter(HelpMessage = "Specifies properties for the created directory or file. "+
             "The supported properties for file are: CacheControl, ContentDisposition, ContentEncoding, ContentLanguage, ContentMD5, ContentType." +
-            "The supported properties for folder are: CacheControl, ContentDisposition, ContentEncoding, ContentLanguage.", 
+            "The supported properties for directory are: CacheControl, ContentDisposition, ContentEncoding, ContentLanguage.", 
             Mandatory = false)]
         public Hashtable Property
         {
@@ -98,7 +98,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
         private Hashtable BlobProperties = null;
 
-        [Parameter(HelpMessage = "Specifies metadata for the created folder or file.", Mandatory = false)]
+        [Parameter(HelpMessage = "Specifies metadata for the created directory or file.", Mandatory = false)]
         public Hashtable Metadata
         {
             get
@@ -162,10 +162,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             BlobRequestOptions requestOptions = RequestOptions;
             CloudBlobContainer container = GetCloudBlobContainerByName(localChannel, this.FileSystem).ConfigureAwait(false).GetAwaiter().GetResult();
 
-            if (this.Folder.IsPresent)
+            if (this.Directory.IsPresent)
             {
                 CloudBlobDirectory blobDir = container.GetDirectoryReference(this.Path);
-                if (ShouldProcess(blobDir.Uri.ToString(), "Create Folder: "))
+                if (ShouldProcess(blobDir.Uri.ToString(), "Create Directory: "))
                 {
                     if (blobDir.Exists())
                     {
