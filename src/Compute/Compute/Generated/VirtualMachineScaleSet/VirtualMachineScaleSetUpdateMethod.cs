@@ -235,6 +235,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string[] ScaleInPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
         public bool SinglePlacementGroup { get; set; }
 
         [Parameter(
@@ -835,6 +840,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile.WindowsConfiguration = new WindowsConfiguration();
                 }
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile.WindowsConfiguration.ProvisionVMAgent = this.ProvisionVMAgent;
+            }
+
+            if (this.IsParameterBound(c => c.ScaleInPolicy))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.ScaleInPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.ScaleInPolicy = new ScaleInPolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.ScaleInPolicy.Rules = this.ScaleInPolicy;
             }
 
             if (this.IsParameterBound(c => c.SinglePlacementGroup))
@@ -1441,6 +1459,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration = new WindowsConfiguration();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.ProvisionVMAgent = this.ProvisionVMAgent;
+            }
+
+            if (this.IsParameterBound(c => c.ScaleInPolicy))
+            {
+                if (this.VirtualMachineScaleSet.ScaleInPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ScaleInPolicy = new ScaleInPolicy();
+                }
+                this.VirtualMachineScaleSet.ScaleInPolicy.Rules = this.ScaleInPolicy;
             }
 
             if (this.IsParameterBound(c => c.SinglePlacementGroup))

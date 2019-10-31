@@ -186,16 +186,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewSetAzureStorageAccount_LargeFileShare()
+        public void TestNewSetAzureStorageAccountRAGZRS()
         {
-            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_LargeFileShare");
+            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_RAGZRS");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewSetAzureStorageAccountRAGZRS()
+        public void TestNewSetAzureStorageAccount_LargeFileShare()
         {
-            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_RAGZRS");
+            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_LargeFileShare");
         }
     }
 }

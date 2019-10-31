@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix for issue 10301 : Fix the SAS Token date format
 
 ## Version 1.4.0
 * Fixed miscellaneous typos across module
