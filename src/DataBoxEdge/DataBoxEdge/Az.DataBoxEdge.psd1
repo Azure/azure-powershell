@@ -76,13 +76,20 @@ NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzDataBoxEdgeJob', 
-				  'Get-AzDataBoxEdgeDevice', 'New-AzDataBoxEdgeDevice', 'Remove-AzDataBoxEdgeDevice',
-				  'Get-AzDataBoxEdgeUser', 'New-AzDataBoxEdgeUser','Set-AzDataBoxEdgeUser','Remove-AzDataBoxEdgeUser',
-				  'Get-AzDataBoxEdgeStorageAccountCredential', 'New-AzDataBoxEdgeStorageAccountCredential', 'Set-AzDataBoxEdgeStorageAccountCredential','Remove-AzDataBoxEdgeStorageAccountCredential',
-				  'Get-AzDataBoxEdgeShare', 'New-AzDataBoxEdgeShare', 'Set-AzDataBoxEdgeShare', 'Remove-AzDataBoxEdgeShare',
-				  'Get-AzDataBoxEdgeBandwidthSchedule', 'Set-AzDataBoxEdgeBandwidthSchedule', 'New-AzDataBoxEdgeBandwidthSchedule', 'Remove-AzDataBoxEdgeBandwidthSchedule',
-				  'Get-AzDataBoxEdgeRole', 'New-AzDataBoxEdgeRole', 'Remove-AzDataBoxEdgeRole'
+CmdletsToExport = 'Get-AzDataBoxEdgeJob', 'Get-AzDataBoxEdgeDevice', 
+                'New-AzDataBoxEdgeDevice', 'Remove-AzDataBoxEdgeDevice', 
+                'Get-AzDataBoxEdgeUser', 'New-AzDataBoxEdgeUser', 
+                'Set-AzDataBoxEdgeUser', 'Remove-AzDataBoxEdgeUser', 
+                'Get-AzDataBoxEdgeStorageAccountCredential', 
+                'New-AzDataBoxEdgeStorageAccountCredential', 
+                'Remove-AzDataBoxEdgeStorageAccountCredential', 
+                'Get-AzDataBoxEdgeShare', 'New-AzDataBoxEdgeShare', 
+                'Set-AzDataBoxEdgeShare', 'Remove-AzDataBoxEdgeShare', 
+                'Get-AzDataBoxEdgeBandwidthSchedule', 
+                'Set-AzDataBoxEdgeBandwidthSchedule', 
+                'New-AzDataBoxEdgeBandwidthSchedule', 
+                'Remove-AzDataBoxEdgeBandwidthSchedule', 'Get-AzDataBoxEdgeRole', 
+                'New-AzDataBoxEdgeRole', 'Remove-AzDataBoxEdgeRole'
 
 
 # Variables to export from this module
