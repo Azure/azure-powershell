@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
         /// The policy assignment enforcement mode.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public string EnforcementMode { get; set; }
+        public PolicyAssignmentEnforcementMode? EnforcementMode { get; set; }
 
         /// <summary>
         /// The policy definition id.

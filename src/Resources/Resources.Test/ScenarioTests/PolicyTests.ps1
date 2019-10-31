@@ -432,14 +432,15 @@ function Test-PolicyAssignmentEnforcementMode
     $policy = New-AzPolicyDefinition -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Description $description
 
     # assign the policy definition to the resource group, get the assignment back and validate
-    $actual = New-AzPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $rg.ResourceId -Description $description -Location $location -EnforcementMode $enforcementModeDoNotEnforce
+    $actual = New-AzPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $rg.ResourceId -Description $description -Location $location -EnforcementMode DoNotEnforce
     $expected = Get-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId
     Assert-AreEqual $expected.Name $actual.Name
     Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
     Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
     Assert-AreEqual $expected.Properties.PolicyDefinitionId $policy.PolicyDefinitionId
     Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
-    Assert-AreEqual $expected.Properties.EnforcementMode $actual.Properties.EnforcementMode    
+    Assert-AreEqual $expected.Properties.EnforcementMode $actual.Properties.EnforcementMode
+	Assert-AreEqual $expected.Properties.EnforcementMode $enforcementModeDoNotEnforce
     Assert-AreEqual $location $actual.Location
     Assert-AreEqual $expected.Location $actual.Location
 
@@ -447,10 +448,15 @@ function Test-PolicyAssignmentEnforcementMode
     $actualById = Get-AzPolicyAssignment -Id $actual.ResourceId    
     Assert-AreEqual $actual.Properties.EnforcementMode $actualById.Properties.EnforcementMode    
 
-    # update the policy assignment, validate enforcement mode is updated correctly.
-    $setResult = Set-AzPolicyAssignment -Id $actualById.ResourceId -DisplayName "testDisplay" -EnforcementMode $enforcementModeDefault
+	# update the policy assignment, validate enforcement mode is updated correctly with Default enum value.
+    $setResult = Set-AzPolicyAssignment -Id $actualById.ResourceId -DisplayName "testDisplay" -EnforcementMode Default
     Assert-AreEqual "testDisplay" $setResult.Properties.DisplayName
     Assert-AreEqual $enforcementModeDefault $setResult.Properties.EnforcementMode
+
+    # update the policy assignment, validate enforcement mode is updated correctly with 'Default' enum as string value.
+    $setResult = Set-AzPolicyAssignment -Id $actualById.ResourceId -DisplayName "testDisplay" -EnforcementMode $enforcementModeDefault
+    Assert-AreEqual "testDisplay" $setResult.Properties.DisplayName
+    Assert-AreEqual $enforcementModeDefault $setResult.Properties.EnforcementMode	
 
     # make another policy assignment without an enforcementMode, validate default mode is set
     $withoutEnforcementMode = New-AzPolicyAssignment -Name test2 -Scope $rg.ResourceId -PolicyDefinition $policy -Description $description
@@ -458,6 +464,10 @@ function Test-PolicyAssignmentEnforcementMode
 
     # set an enforcement mode to the new assignment using the SET cmdlet
     $setResult = Set-AzPolicyAssignment -Id $withoutEnforcementMode.ResourceId -Location $location -EnforcementMode $enforcementModeDoNotEnforce
+    Assert-AreEqual $enforcementModeDoNotEnforce $setResult.Properties.EnforcementMode
+
+	# set an enforcement mode to the new assignment using the SET cmdlet enum value and validate
+    $setResult = Set-AzPolicyAssignment -Id $withoutEnforcementMode.ResourceId -Location $location -EnforcementMode DoNotEnforce
     Assert-AreEqual $enforcementModeDoNotEnforce $setResult.Properties.EnforcementMode
 
     # verify enforcement mode is returned in collection GET
