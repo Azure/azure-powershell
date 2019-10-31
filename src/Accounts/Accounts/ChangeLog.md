@@ -21,6 +21,7 @@
 
 ## Version 1.6.4
 * Add a deprecation message for `Resolve-Error` alias.
+* Disable context auto saving when AzureRmContext.json not available
 
 ## Version 1.6.3
 * Update telemetry and url rewriting for generated modules, fix windows unit tests.

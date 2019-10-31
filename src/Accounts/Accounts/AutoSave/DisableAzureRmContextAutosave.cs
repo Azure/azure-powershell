@@ -13,16 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-// TODO: Remove IfDef
-#if NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Core;
-#endif
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
-using Newtonsoft.Json;
-using System.IO;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
@@ -61,38 +54,6 @@ namespace Microsoft.Azure.Commands.Profile.Context
                             WriteObject(settings);
                         });
                     });
-            }
-        }
-
-        void DisableAutosave(IAzureSession session, bool writeAutoSaveFile, out ContextAutosaveSettings result)
-        {
-            var store = session.DataStore;
-            string tokenPath = Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile);
-            result = new ContextAutosaveSettings
-            {
-                Mode = ContextSaveMode.Process
-            };
-
-            FileUtilities.DataStore = session.DataStore;
-            session.ARMContextSaveMode = ContextSaveMode.Process;
-            var memoryCache = session.TokenCache as AuthenticationStoreTokenCache;
-            if (memoryCache == null)
-            {
-                var diskCache = session.TokenCache as ProtectedFileTokenCache;
-                memoryCache = new AuthenticationStoreTokenCache(new AzureTokenCache());
-                if (diskCache != null && diskCache.Count > 0)
-                {
-                    memoryCache.Deserialize(diskCache.Serialize());
-                }
-
-                session.TokenCache = memoryCache;
-            }
-
-            if (writeAutoSaveFile)
-            {
-                FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
-                string autoSavePath = Path.Combine(session.ProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
-                session.DataStore.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
             }
         }
     }
