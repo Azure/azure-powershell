@@ -14,7 +14,7 @@ Download a file.
 
 ### ReceiveManual (Default)
 ```
-Get-AzDataLakeGen2ItemContent [-Container] <String> [-Path] <String> [-Destination <String>] [-CheckMd5]
+Get-AzDataLakeGen2ItemContent [-FileSystem] <String> [-Path] <String> [-Destination <String>] [-CheckMd5]
  [-Force] [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -29,16 +29,16 @@ Get-AzDataLakeGen2ItemContent -InputObject <AzureDataLakeGen2Item> [-Destination
 ```
 
 ## DESCRIPTION
-The **Get-AzDataLakeGen2ItemContent** cmdlet download a file in a container in an Azure storage account.
+The **Get-AzDataLakeGen2ItemContent** cmdlet download a file in a Filesystem in an Azure storage account.
 This cmdlet only works if Hierarchical Namespace is enabled for the Storage account. This kind of account can be created by run "New-AzStorageAccount" cmdlet with "-EnableHierarchicalNamespace $true".
 
 ## EXAMPLES
 
 ### Example 1: Download a file without prompt
 ```
-PS C:\> Get-AzDataLakeGen2ItemContent -Container "container1" -Path "dir1/file1" -Destination $localDestFile -Force
+PS C:\> Get-AzDataLakeGen2ItemContent -FileSystem "filesystem1" -Path "dir1/file1" -Destination $localDestFile -Force
 
-   Container Uri: https://storageaccountname.blob.core.windows.net/container1
+   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
 
 Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
 ----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
@@ -49,9 +49,9 @@ This command downloads a file to a local file without prompt.
 
 ### Example 2: Get a file, then pipeline to download the file to a local file
 ```
-PS C:\> Get-AzDataLakeGen2Item -Container "container1" -Path "dir1/file1" |  Get-AzDataLakeGen2ItemContent -Destination $localDestFile 
+PS C:\> Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" |  Get-AzDataLakeGen2ItemContent -Destination $localDestFile 
 
-   Container Uri: https://storageaccountname.blob.core.windows.net/container1
+   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
 
 Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
 ----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
@@ -123,21 +123,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Container
-Container name
-
-```yaml
-Type: System.String
-Parameter Sets: ReceiveManual
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Context
 Azure Storage Context Object
 
@@ -183,6 +168,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FileSystem
+FileSystem name
+
+```yaml
+Type: System.String
+Parameter Sets: ReceiveManual
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Force
 Force to overwrite the existing blob or file
 
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-The path in the specified container that should be removed.
+The path in the specified Filesystem that should be removed.
 Can be a file or folder In the format 'folder/file.txt' or 'folder1/folder2/'
 
 ```yaml

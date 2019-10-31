@@ -302,7 +302,7 @@
       </TableControl>
       <GroupBy>
         <ScriptBlock>$_.ICloudBlob.Container.Uri</ScriptBlock>
-        <Label>Container Uri</Label>
+        <Label>FileSystem Uri</Label>
       </GroupBy>
     </View>
     <View>

@@ -45,12 +45,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         private const string FileParameterSet = "File";
 
-        [Parameter(ValueFromPipeline = true, Position = 0, Mandatory = true, HelpMessage = "Container name")]
+        [Parameter(ValueFromPipeline = true, Position = 0, Mandatory = true, HelpMessage = "FileSystem name")]
         [ValidateNotNullOrEmpty]
-        public string Container { get; set; }
+        public string FileSystem { get; set; }
 
         [Parameter(ValueFromPipeline = true, Position = 1, Mandatory = true, HelpMessage =
-                "The path in the specified container that should be create. Can be a file or folder " +
+                "The path in the specified FileSystem that should be create. Can be a file or folder " +
                 "In the format 'folder/file.txt' or 'folder1/folder2/'")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
@@ -160,7 +160,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             IStorageBlobManagement localChannel = Channel;
             BlobRequestOptions requestOptions = RequestOptions;
-            CloudBlobContainer container = GetCloudBlobContainerByName(localChannel, this.Container).ConfigureAwait(false).GetAwaiter().GetResult();
+            CloudBlobContainer container = GetCloudBlobContainerByName(localChannel, this.FileSystem).ConfigureAwait(false).GetAwaiter().GetResult();
 
             if (this.Folder.IsPresent)
             {
@@ -214,7 +214,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         /// <param name="blob">Dest CloudBlob object</param>
         /// <param name="fileName">source local file path</param>
-        /// <param name="isValidBlob">whether the source container validated</param>
+        /// <param name="isValidBlob">whether the source FileSystem validated</param>
         /// <returns>the uploaded blob object</returns>
         internal void SetBlobContent(CloudBlockBlob blob, string fileName, bool isValidBlob = false)
         {

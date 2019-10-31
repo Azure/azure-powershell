@@ -14,7 +14,7 @@ Update a file or folder on properties, metadata, permission, ACL, and owner.
 
 ### ReceiveManual (Default)
 ```
-Update-AzDataLakeGen2Item [-Container] <String> [-Path] <String> [-Permission <String>] [-Owner <String>]
+Update-AzDataLakeGen2Item [-FileSystem] <String> [-Path] <String> [-Permission <String>] [-Owner <String>]
  [-Group <String>] [-Property <Hashtable>] [-Metadata <Hashtable>] [-Acl <PSPathAccessControlEntry[]>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -34,14 +34,14 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 
 ## EXAMPLES
 
-### Example 1: Create an ACL object with 3 ACL entry, and update ACL to all items in a container recursively
+### Example 1: Create an ACL object with 3 ACL entry, and update ACL to all items in a Filesystem recursively
 ```
 PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope
 PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
 PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rw-" -InputObject $acl
-PS C:\>Get-AzDataLakeGen2ChildItem -Container "testcontainer" -Recurse | Update-AzDataLakeGen2Item -ACL $acl
+PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "testfilesystem" -Recurse | Update-AzDataLakeGen2Item -ACL $acl
 
-   Container Uri: https://testaccount.blob.core.windows.net/testcontainer
+   FileSystem Uri: https://testaccount.blob.core.windows.net/testfilesystem
 
 Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
 ----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
@@ -54,7 +54,7 @@ This command creates an ACL object with 3 acl entry (use -InputObject parameter 
 
 ### Example 2: Update all properties on a file, and show them
 ```
-PS C:\> Update-AzDataLakeGen2Item -Container "testcontainer" -Path "dir1/file1" `
+PS C:\> Update-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/file1" `
                  -Acl $acl `
                  -Property @{"ContentType" = "image/jpeg"; "ContentMD5" = "i727sP7HigloQDsqadNLHw=="; "ContentEncoding" = "UDF8"; "CacheControl" = "READ"; "ContentDisposition" = "True"; "ContentLanguage" = "EN-US"} `
                  -Metadata  @{"tag1" = "value1"; "tag2" = "value2" } `
@@ -64,7 +64,7 @@ PS C:\> Update-AzDataLakeGen2Item -Container "testcontainer" -Path "dir1/file1" 
 
 PS C:\> $file
 
-   Container Uri: https://testaccount.blob.core.windows.net/testcontainer
+   FileSystem Uri: https://testaccount.blob.core.windows.net/testfilesystem
 
 Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
 ----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
@@ -119,13 +119,13 @@ This command updates all properties on a file (ACL, permission,owner, group, met
 ### Example 3: Add an ACL entry to a folder
 ```
 ## Get the origin ACL
-$acl = (Get-AzDataLakeGen2Item -Container "testcontainer" -Path 'dir1/dir2/').ACL
+$acl = (Get-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path 'dir1/dir2/').ACL
 
 # Add a new ACL entry
 $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType Other -EntityId $id -Permission rw- -InputObject $acl  
 
 # set the new acl to the directory
-update-AzDataLakeGen2Item -Container "testcontainer" -Path 'dir1/dir2/' -ACL $acl
+update-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path 'dir1/dir2/' -ACL $acl
 ```
 
 This command gets ACL from a folder, adds an ACL entry, and sets back to the folder.
@@ -163,21 +163,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Container
-Container name
-
-```yaml
-Type: System.String
-Parameter Sets: ReceiveManual
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Context
 Azure Storage Context Object
 
@@ -205,6 +190,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FileSystem
+FileSystem name
+
+```yaml
+Type: System.String
+Parameter Sets: ReceiveManual
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -269,7 +269,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-The path in the specified container that should be updated.
+The path in the specified Filesystem that should be updated.
 Can be a file or folder In the format 'folder/file.txt' or 'folder1/folder2/'
 
 ```yaml

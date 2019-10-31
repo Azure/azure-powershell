@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Collections.Generic;
 
     /// <summary>
-    /// create a new azure container
+    /// create a new azure FileSystem
     /// </summary>
     [Cmdlet("Move", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "DataLakeGen2Item", DefaultParameterSetName = ManualParameterSet, SupportsShouldProcess = true),OutputType(typeof(AzureDataLakeGen2Item))]
     public class MoveAzDataLakeGen2ItemCommand : StorageCloudBlobCmdletBase
@@ -41,12 +41,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         private const string BlobParameterSet = "ItemPipeline";
 
-        [Parameter(ValueFromPipeline = true, Position = 0, Mandatory = true, HelpMessage = "Container name", ParameterSetName = ManualParameterSet)]
+        [Parameter(ValueFromPipeline = true, Position = 0, Mandatory = true, HelpMessage = "FileSystem name", ParameterSetName = ManualParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string Container { get; set; }
+        public string FileSystem { get; set; }
 
         [Parameter(ValueFromPipeline = true, Position = 1, Mandatory = true, HelpMessage =
-                "The path in the specified container that should be move from. Can be a file or folder. " +
+                "The path in the specified FileSystem that should be move from. Can be a file or folder. " +
                 "In the format 'folder/file.txt' or 'folder1/folder2/'", ParameterSetName = ManualParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
@@ -56,11 +56,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNull]
         public AzureDataLakeGen2Item InputObject { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Dest Container name")]
+        [Parameter(Mandatory = true, HelpMessage = "Dest FileSystem name")]
         [ValidateNotNullOrEmpty]
-        public string DestContainer { get; set; }
+        public string DestFileSystem { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Dest Blob path")]
+        [Parameter(Mandatory = true, HelpMessage = "Dest item path")]
         [ValidateNotNullOrEmpty]
         public string DestPath { get; set; }
 
@@ -116,7 +116,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             CloudBlobDirectory srcBlobDir = null;
             if (ParameterSetName == ManualParameterSet)
             {
-                CloudBlobContainer container = GetCloudBlobContainerByName(localChannel, this.Container).ConfigureAwait(false).GetAwaiter().GetResult();
+                CloudBlobContainer container = GetCloudBlobContainerByName(localChannel, this.FileSystem).ConfigureAwait(false).GetAwaiter().GetResult();
                 foundAFolder = GetExistDataLakeGen2Item(container, this.Path, out srcBlob, out srcBlobDir);
             }
             else //BlobParameterSet
@@ -133,7 +133,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
 
             // Create Dest Blob Dir object
-            CloudBlobContainer destblobContainer = GetCloudBlobContainerByName(localChannel, this.DestContainer).ConfigureAwait(false).GetAwaiter().GetResult();
+            CloudBlobContainer destblobContainer = GetCloudBlobContainerByName(localChannel, this.DestFileSystem).ConfigureAwait(false).GetAwaiter().GetResult();
 
 
             if (foundAFolder)

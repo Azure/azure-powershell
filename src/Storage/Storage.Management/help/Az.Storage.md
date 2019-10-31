@@ -42,10 +42,10 @@ Enable delete retention policy  for the Azure Storage Blob service.
 Enable static website for the Azure Storage account.
 
 ### [Get-AzDataLakeGen2ChildItem](Get-AzDataLakeGen2ChildItem.md)
-Lists sub folders and files from a folder or container.
+Lists sub folders and files from a folder or filesystem root.
 
 ### [Get-AzDataLakeGen2Item](Get-AzDataLakeGen2Item.md)
-Gets the details of a file or folder in a container.
+Gets the details of a file or folder in a filesystem.
 
 ### [Get-AzDataLakeGen2ItemContent](Get-AzDataLakeGen2ItemContent.md)
 Download a file.
@@ -147,7 +147,7 @@ Locks ImmutabilityPolicy of a Storage blob containers
 Move a file or folder to another a file or folder in same Storage account.
 
 ### [New-AzDataLakeGen2Item](New-AzDataLakeGen2Item.md)
-Create a file or folder in a container.
+Create a file or folder in a filesystem.
 
 ### [New-AzDataLakeGen2ItemAclObject](New-AzDataLakeGen2ItemAclObject.md)
 Creates a DataLake gen2 item ACL object, which can be used in Update-AzDataLakeGen2Item cmdlet.
