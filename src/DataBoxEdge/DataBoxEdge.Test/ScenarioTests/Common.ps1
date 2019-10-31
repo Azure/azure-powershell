@@ -12,19 +12,21 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+
 <#
 .SYNOPSIS
-Gets valid resource group name
+Gets valid Device Connection String
 #>
-
-
 
 function Get-DeviceConnectionString 
 {
 	return "";
 }
 
-
+<#
+.SYNOPSIS
+Gets valid IOT Device Connection String
+#>
 function Get-IotDeviceConnectionString 
 {
 	return "";
@@ -32,25 +34,28 @@ function Get-IotDeviceConnectionString
 
 <#
 .SYNOPSIS
-Returns EncryptionKey
-#>
-function Get-EncryptionKey
+Returns Userpassword used for password
+Gets valid resource group name
+ #>
+function Get-Userpassword
 {
 	return "";
 }
 
 <#
 .SYNOPSIS
-Returns Userpassword used for password
+Returns standard EncryptionKey
 #>
-function Get-Userpassword
+function Get-EncryptionKey
 {
-	return "";
+	$encryptionKey = ConvertTo-SecureString -String ""
+	return $encryptionKey 
 }
 
-
-
-
+<#
+.SYNOPSIS
+Gets valid resource group name
+#>
 function Get-DeviceResourceGroupName
 {
 	return "psrgpfortest"
@@ -76,19 +81,17 @@ function Get-StringHash([String] $String,$HashName = "MD5")
 
 <#
 .SYNOPSIS
-Helper script to generate EncryptionKey
+Returns EncryptionKey
 #>
 function Get-EncryptionKeyForDevice($resourceGroupName, $deviceName)
 {
 
 	$sp = Get-AzADServicePrincipal -ApplicationId "2368d027-f996-4edb-bf48-928f98f2ab8c"
-	$e = Get-AzDataBoxEdgeDevice -ResourceGroupName $resourceGroupName -DeviceName $deviceName -ExtendedInfo
+	$e = Get-AzDataBoxEdgeDevice -ResourceGroupName $resourceGroupName -Name $deviceName -ExtendedInfo
 	$k = $sp.Id+$e.ResourceKey
+	echo $k
 	return Get-StringHash $k "SHA512"
 }
-
-
-
 
 <#
 .SYNOPSIS
@@ -132,4 +135,5 @@ function SleepInRecordMode ([int]$SleepIntervalInSec)
 		Wait-Seconds $SleepIntervalInSec 
 	}
 }
+
 

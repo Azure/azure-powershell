@@ -19,52 +19,61 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.EdgeGateway;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.BandwidthSchedule;
-using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeBandWidthSchedule;
+using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.Trigger;
+using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger;
 using PSTopLevelResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice;
 
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Bandwidth
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
 {
-    [Cmdlet(VerbsCommon.Get, Constants.BandwidthSchedule, DefaultParameterSetName = ListParameterSet
-     ),
+    [Cmdlet(VerbsCommon.Get, Constants.Trigger, DefaultParameterSetName = ListParameterSet),
      OutputType(typeof(PSResourceModel))]
-    public class DataBoxEdgeBandwidthGetCmdletBase : AzureDataBoxEdgeCmdletBase
+    public class DataBoxEdgeTriggerGetCmdletBase : AzureDataBoxEdgeCmdletBase
     {
         private const string ListParameterSet = "ListParameterSet";
         private const string GetByNameParameterSet = "GetByNameParameterSet";
         private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
         private const string GetByParentObjectParameterSet = "GetByParentObjectParameterSet";
 
-        [Parameter(Mandatory = true, ParameterSetName = GetByResourceIdParameterSet,
+        [Parameter(Mandatory = true,
+            ParameterSetName = GetByResourceIdParameterSet,
             HelpMessage = Constants.ResourceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ListParameterSet,
-            HelpMessage = Constants.ResourceGroupNameHelpMessage, Position = 0)]
-        [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet,
-            HelpMessage = Constants.ResourceGroupNameHelpMessage, Position = 0)]
-        [ResourceGroupCompleter]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ListParameterSet,
+            HelpMessage = Constants.ResourceGroupNameHelpMessage,
+            Position = 0)]
+        [Parameter(Mandatory = true,
+            ParameterSetName = GetByNameParameterSet,
+            HelpMessage = Constants.ResourceGroupNameHelpMessage,
+            Position = 0)]
         [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ListParameterSet,
-            HelpMessage = Constants.DeviceNameHelpMessage, Position = 1)]
-        [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet,
-            HelpMessage = Constants.DeviceNameHelpMessage, Position = 1)]
-        [ResourceNameCompleter("Microsoft.DataBoxEdge/dataBoxEdgeDevices", nameof(ResourceGroupName))]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ListParameterSet,
+            HelpMessage = Constants.DeviceNameHelpMessage,
+            Position = 1)]
+        [Parameter(Mandatory = true,
+            ParameterSetName = GetByNameParameterSet,
+            HelpMessage = Constants.DeviceNameHelpMessage,
+            Position = 1)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.DataBoxEdge/dataBoxEdgeDevices", nameof(ResourceGroupName))]
         public string DeviceName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet, HelpMessage = Constants.NameHelpMessage,
+        [Parameter(Mandatory = true,
+            ParameterSetName = GetByNameParameterSet,
+            HelpMessage = Constants.NameHelpMessage,
             Position = 2)]
         [Parameter(Mandatory = false,
             ParameterSetName = GetByParentObjectParameterSet,
-            HelpMessage = Constants.NameHelpMessage
+            HelpMessage = HelpMessageTrigger.NameHelpMessage
         )]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("bandwidthSchedules", nameof(ResourceGroupName), nameof(DeviceName))]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true,
@@ -75,31 +84,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Bandwidt
 
         private ResourceModel GetResourceModel()
         {
-            return BandwidthSchedulesOperationsExtensions.Get(
-                this.DataBoxEdgeManagementClient.BandwidthSchedules,
-                this.DeviceName,
-                this.Name,
-                this.ResourceGroupName);
+            return this.DataBoxEdgeManagementClient.Triggers.Get(this.DeviceName, this.Name, this.ResourceGroupName);
         }
 
         private List<PSResourceModel> GetByResourceName()
         {
             var resourceModel = GetResourceModel();
-            return new List<PSResourceModel>() {new PSResourceModel(resourceModel)};
+            return new List<PSResourceModel>() {PSResourceModel.PSDataBoxEdgeTriggerObject(resourceModel)};
         }
 
         private IPage<ResourceModel> ListResourceModel()
         {
-            return BandwidthSchedulesOperationsExtensions.ListByDataBoxEdgeDevice(
-                this.DataBoxEdgeManagementClient.BandwidthSchedules,
+            return TriggersOperationsExtensions.ListByDataBoxEdgeDevice(
+                this.DataBoxEdgeManagementClient.Triggers,
                 this.DeviceName,
                 this.ResourceGroupName);
         }
 
         private IPage<ResourceModel> ListResourceModel(string nextPageLink)
         {
-            return BandwidthSchedulesOperationsExtensions.ListByDataBoxEdgeDeviceNext(
-                this.DataBoxEdgeManagementClient.BandwidthSchedules,
+            return TriggersOperationsExtensions.ListByDataBoxEdgeDeviceNext(
+                this.DataBoxEdgeManagementClient.Triggers,
                 nextPageLink
             );
         }
@@ -119,23 +124,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Bandwidt
                 paginatedResult.AddRange(resourceModel);
             }
 
-            return paginatedResult.Select(t => new PSResourceModel(t)).ToList();
+            return paginatedResult.Select(PSResourceModel.PSDataBoxEdgeTriggerObject).ToList();
         }
 
         public override void ExecuteCmdlet()
         {
+            if (this.IsParameterBound(c => this.DeviceObject))
+            {
+                this.ResourceGroupName = this.DeviceObject.ResourceGroupName;
+                this.DeviceName = this.DeviceObject.Name;
+            }
+
             if (this.IsParameterBound(c => c.ResourceId))
             {
                 var resourceIdentifier = new DataBoxEdgeResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.DeviceName = resourceIdentifier.DeviceName;
                 this.Name = resourceIdentifier.ResourceName;
-            }
-
-            if (this.IsParameterBound(c => this.DeviceObject))
-            {
-                this.ResourceGroupName = this.DeviceObject.ResourceGroupName;
-                this.DeviceName = this.DeviceObject.Name;
             }
 
             var results = ListPSResourceModels();
