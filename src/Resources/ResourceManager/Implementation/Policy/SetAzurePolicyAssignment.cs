@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
@@ -118,9 +120,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the policy assignment enforcement mode.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentEnforcementModeHelp)]
-        [PSArgumentCompleter(Entities.Policy.EnforcementMode.Default, Entities.Policy.EnforcementMode.DoNotEnforce)]
         [ValidateNotNullOrEmpty]
-        public string EnforcementMode { get; set; }
+        public PolicyAssignmentEnforcementMode? EnforcementMode { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -162,6 +163,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             var metaDataJson = string.IsNullOrEmpty(this.Metadata) ? resource.Properties["metadata"]?.ToString() : GetObjectFromParameter(this.Metadata).ToString();
 
+            PolicyAssignmentEnforcementMode? existingMode = null;
+            if (Enum.TryParse(resource.Properties["enforcementMode"]?.ToString(), true, out PolicyAssignmentEnforcementMode tempMode))
+            {
+                existingMode = tempMode;
+            }
+
             var policyAssignmentObject = new PolicyAssignment
             {
                 Name = this.Name ?? resource.Name,
@@ -175,7 +182,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     NotScopes = this.NotScope ?? resource.Properties["NotScopes"]?.ToString().Split(','),
                     PolicyDefinitionId = resource.Properties["policyDefinitionId"].ToString(),
                     Metadata = string.IsNullOrEmpty(this.Metadata) ? null : JObject.Parse(metaDataJson),
-                    EnforcementMode = this.EnforcementMode ?? resource.Properties["enforcementMode"]?.ToString(),
+                    EnforcementMode = this.EnforcementMode ?? existingMode,
                     Parameters = this.GetParameters(this.PolicyParameter, this.PolicyParameterObject) ?? (JObject)resource.Properties["parameters"]
                 }
             };

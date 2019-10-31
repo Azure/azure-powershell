@@ -15,18 +15,18 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
 {
     /// <summary>
-    /// The policy definition mode.
+    /// The policy assignment enforcement mode.
     /// </summary>
-    public class EnforcementMode
+    public enum PolicyAssignmentEnforcementMode
     {
         /// <summary>
         /// The policy effect is enforced during resource creation or update.
         /// </summary>
-        public const string Default = "Default";
+        Default,
 
         /// <summary>
         /// The policy effect is not enforced during resource creation or update.
         /// </summary>
-        public const string DoNotEnforce = "DoNotEnforce";
+        DoNotEnforce
     }
 }
