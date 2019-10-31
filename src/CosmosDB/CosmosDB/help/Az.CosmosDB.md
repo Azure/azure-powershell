@@ -29,3 +29,6 @@ Locale: en-US
 ### [Update-AzCosmosDBAccount](Update-AzCosmosDBAccount.md)
 {{ Fill in the Description }}
 
+### [Update-AzCosmosDBAccountFailoverPriority](Update-AzCosmosDBAccountFailoverPriority.md)
+{{ Fill in the Description }}
+
