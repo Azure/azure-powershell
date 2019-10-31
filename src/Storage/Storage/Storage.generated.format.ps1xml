@@ -302,7 +302,7 @@
       </TableControl>
       <GroupBy>
         <ScriptBlock>$_.ICloudBlob.Container.Uri</ScriptBlock>
-        <Label>FileSystem Uri</Label>
+        <Label>Container Uri</Label>
       </GroupBy>
     </View>
     <View>
@@ -394,7 +394,7 @@
       </TableControl>
       <GroupBy>
         <ScriptBlock>if ($_.IsDirectory) {$_.CloudBlobDirectory.Container.Uri} else {$_.ICloudBlob.Container.Uri}</ScriptBlock>
-        <Label>Container Uri</Label>
+        <Label>FileSystem Uri</Label>
       </GroupBy>
     </View>
     <View>

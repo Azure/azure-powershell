@@ -671,8 +671,12 @@ function Test-Common
     }    
 }
 
-function New-TestResourceGroupAndStorageAccount
-{ 
+<#
+    .SYNOPSIS
+    Tests DatalakeGen-only related commands.
+#>
+function Test-DatalakeGen2
+{
     Param(
         [Parameter(Mandatory = $True)]
         [string]
@@ -682,8 +686,153 @@ function New-TestResourceGroupAndStorageAccount
         $ResourceGroupName
     ) 
 
+    New-TestResourceGroupAndStorageAccount -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -EnableHNFS $true
+
+    try{
+
+        $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
+        $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
+
+        $localSrcFile = "localsrcDatalakeGen2testfile.psd1" #The file need exist before test, and should be 512 bytes aligned
+        New-Item $localSrcFile -ItemType File -Force
+        $localDestFile = "localdestDatalakeGen2testfile.txt"
+		
+        $filesystemName = "adlsgen2testfilesystem" 
+		$directoryPath1 = "dir1/"
+		$directoryPath2 = "dir2/"
+		$directoryPath3 = "dir3/"
+        $filePath1 = "dir1/Item1.txt"
+        $filePath2 = "dir2/Item2.txt"
+        $filePath3 = "dir2/Item3.txt"
+        $ContentType = "image/jpeg"
+        $ContentMD5 = "i727sP7HigloQDsqadNLHw=="
+
+        # Create FileSystem (actually a container)
+        New-AzStorageContainer $filesystemName -Context $storageContext
+
+		# Create folders
+		$dir1 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -Directory -Permission rwxrwxrwx -Umask ---rwx---  -Property @{"ContentEncoding" = "UDF8"; "CacheControl" = "READ"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
+		Assert-AreEqual $dir1.Path $directoryPath1
+        Assert-AreEqual $dir1.Permissions.ToSymbolicString() "rwx---rwx"
+		$dir2 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath2 -Directory
+
+		# Create (upload) File
+		$t = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1 -Source $localSrcFile -Force -AsJob
+		$t | wait-job
+        Assert-AreEqual $t.State "Completed"
+        Assert-AreEqual $t.Error $null
+		$file2 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath2 -Source $localSrcFile -Permission rwxrwxrwx -Umask ---rwx--- -Property @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5}  -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
+        Assert-AreEqual $file2.Path $filePath2
+        Assert-AreEqual $file2.ICloudBlob.Properties.ContentType $ContentType
+        Assert-AreEqual $file2.ICloudBlob.Properties.ContentMD5 $ContentMD5
+        Assert-AreEqual $file2.ICloudBlob.Metadata.Count 2
+        Assert-AreEqual $file2.Permissions.ToSymbolicString() "rwx---rwx"
+
+		# update Blob and Directory
+        $ContentType = "application/octet-stream"
+        $ContentMD5 = "NW/H9Zxr2md6L1/yhNKdew=="
+		$ContentEncoding = "UDF8"
+		## create ACL with 3 ACEs
+		$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
+		$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
+		$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "-wx" -InputObject $acl
+		##Update File with pipeline		
+		$file1 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1 | Update-AzDataLakeGen2Item  `
+                -Acl $acl `
+                -Property @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} `
+                -Metadata  @{"tag1" = "value1"; "tag2" = "value2" } `
+                -Permission rw-rw--wx `
+                -Owner '$superuser' `
+                -Group '$superuser'
+		$file1 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1
+		Assert-AreEqual $file1.Path $filePath1
+        Assert-AreEqual $file1.Permissions.ToSymbolicString() "rw-rw--wx"
+        Assert-AreEqual $file1.ICloudBlob.Properties.ContentMD5 $ContentMD5
+        Assert-AreEqual $file1.ICloudBlob.Properties.ContentType $ContentType
+        Assert-AreEqual $file1.ICloudBlob.Metadata.Count 2
+        Assert-AreEqual $file1.Owner '$superuser'
+        Assert-AreEqual $file1.Group '$superuser'
+		## Update Directory
+		$dir1 = Update-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 `
+                 -Acl $acl `
+                 -Property @{"ContentEncoding" = $ContentEncoding} `
+                 -Metadata  @{"tag1" = "value1"; "tag2" = "value2" } `
+                 -Permission rw-rw--wx `
+                 -Owner '$superuser' `
+                 -Group '$superuser' 
+		$dir1 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1
+		Assert-AreEqual $dir1.Path $directoryPath1
+        Assert-AreEqual $dir1.Permissions.ToSymbolicString() "rw-rw--wx"
+        Assert-AreEqual $dir1.CloudBlobDirectory.Properties.ContentEncoding $ContentEncoding
+        Assert-AreEqual $dir1.CloudBlobDirectory.Metadata.Count 3
+        Assert-AreEqual $dir1.Owner '$superuser'
+        Assert-AreEqual $dir1.Group '$superuser'
+
+		#list Items
+		## List direct Items from FileSystem
+		$items = Get-AzDataLakeGen2ChildItem -Context $storageContext -FileSystem $filesystemName -FetchPermission
+        Assert-AreEqual $items.Count 2
+		Assert-NotNull $items[0].Permissions
+		$items = Get-AzDataLakeGen2ChildItem -Context $storageContext -FileSystem $filesystemName -Recurse 
+        Assert-AreEqual $items.Count 4
+		Assert-Null $items[0].Permissions
+
+		#download File
+		$t  = Get-AzDataLakeGen2ItemContent -Context $storageContext -FileSystem $filesystemName -Path $filePath1 -Destination $localDestFile -AsJob -Force
+		$t  | Wait-Job
+		Assert-AreEqual $t.State "Completed"
+		Assert-AreEqual $t.Error $null
+        Assert-AreEqual (Get-FileHash -Path $localDestFile -Algorithm MD5).Hash (Get-FileHash -Path $localSrcFile -Algorithm MD5).Hash
+
+        # Move Items
+		## Move File
+        $file3 = Move-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath2 -DestFileSystem $filesystemName -DestPath $filePath3 -Umask --------- -PathRenameMode Posix
+		$file3 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath3
+		Assert-AreEqual $file3.Path $filePath3
+        Assert-AreEqual $file3.Permissions $file2.Permissions
+		$file2 = $file3 | Move-AzDataLakeGen2Item -DestFileSystem $filesystemName -DestPath $filePath2
+		$file2 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath2
+		Assert-AreEqual $file2.Path $filePath2
+        Assert-AreEqual $file2.Permissions $file3.Permissions
+		## Move Folder
+        $dir3 = Move-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -DestFileSystem $filesystemName -DestPath $directoryPath3 -Umask --------- -PathRenameMode Posix
+		$dir3 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath3
+		Assert-AreEqual $dir3.Path $directoryPath3
+        Assert-AreEqual $dir3.Permissions $dir1.Permissions
+		$dir1 = $dir3 | Move-AzDataLakeGen2Item -DestFileSystem $filesystemName -DestPath $directoryPath1
+		$dir1 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1
+		Assert-AreEqual $dir1.Path $directoryPath1
+
+		# Remove Items
+        Remove-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1 -Force
+        Remove-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -Force
+
+        # Clean Storage Account
+        Get-AzDataLakeGen2ChildItem -Context $storageContext -FileSystem $filesystemName | Remove-AzDataLakeGen2Item -Force
+
+    }
+    finally
+    {
+        Clean-ResourceGroup $ResourceGroupName
+    }
+}
+
+function New-TestResourceGroupAndStorageAccount
+{ 
+    Param(
+        [Parameter(Mandatory = $True)]
+        [string]
+        $StorageAccountName,
+        [Parameter(Mandatory = $True)]
+        [string]
+        $ResourceGroupName,
+        [Parameter(Mandatory = $false)]
+        [bool]
+        $EnableHNFS = $false
+    ) 
+
     $location = Get-ProviderLocation ResourceManagement    
     $storageAccountType = 'Standard_LRS'# Standard Geo-Reduntand Storage
     New-AzResourceGroup -Name $ResourceGroupName -Location $location
-    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $ResourceGroupName -Location $location -Type $storageAccountType
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $ResourceGroupName -Location $location -Type $storageAccountType -EnableHierarchicalNamespace $EnableHNFS
 }
