@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed miscellaneous typos across module
+* Added EnabledState parameter to New-AzFrontDoorWafCustomRuleObject
 
 ## Version 1.1.0
 * New-AzFrontDoorWafMatchConditionObject
