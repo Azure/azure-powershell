@@ -21,7 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 
     /// <summary>
-    /// remove specified azure container
+    /// remove specified azure FileSystem
     /// </summary>
     [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "DataLakeGen2Item", DefaultParameterSetName = ManualParameterSet, SupportsShouldProcess = true),OutputType(typeof(Boolean))]
     public class RemoveAzDataLakeGen2ItemCommand : StorageCloudBlobCmdletBase
@@ -36,12 +36,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         private const string BlobParameterSet = "ItemPipeline";
 
-        [Parameter(ValueFromPipeline = true, Position = 0, Mandatory = true, HelpMessage = "Container name", ParameterSetName = ManualParameterSet)]
+        [Parameter(ValueFromPipeline = true, Position = 0, Mandatory = true, HelpMessage = "FileSystem name", ParameterSetName = ManualParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string Container { get; set; }
+        public string FileSystem { get; set; }
 
         [Parameter(ValueFromPipeline = true, Position = 1, Mandatory = true, HelpMessage =
-                "The path in the specified container that should be removed. Can be a file or folder " +
+                "The path in the specified FileSystem that should be removed. Can be a file or folder " +
                 "In the format 'folder/file.txt' or 'folder1/folder2/'", ParameterSetName = ManualParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
@@ -62,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Return whether the specified container is successfully removed")]
+        [Parameter(Mandatory = false, HelpMessage = "Return whether the specified FileSystem is successfully removed")]
         public SwitchParameter PassThru { get; set; }
 
         // Overwrite the useless parameter
@@ -107,7 +107,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             CloudBlobDirectory blobDir = null;
             if (ParameterSetName == ManualParameterSet)
             {
-                CloudBlobContainer container = GetCloudBlobContainerByName(localChannel, this.Container).ConfigureAwait(false).GetAwaiter().GetResult();
+                CloudBlobContainer container = GetCloudBlobContainerByName(localChannel, this.FileSystem).ConfigureAwait(false).GetAwaiter().GetResult();
                 foundAFolder = GetExistDataLakeGen2Item(container, this.Path, out blob, out blobDir);
             }
             else //BlobParameterSet

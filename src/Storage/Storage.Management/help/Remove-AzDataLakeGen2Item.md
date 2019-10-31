@@ -14,7 +14,7 @@ Remove a file or folder.
 
 ### ReceiveManual (Default)
 ```
-Remove-AzDataLakeGen2Item [-Container] <String> [-Path] <String> [-Force] [-AsJob] [-PassThru]
+Remove-AzDataLakeGen2Item [-FileSystem] <String> [-Path] <String> [-Force] [-AsJob] [-PassThru]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -34,24 +34,24 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 
 ### Example 1: Removes a folder
 ```
-PS C:\>Remove-AzDataLakeGen2tem -Container "container1" -Path "dir1/"
+PS C:\>Remove-AzDataLakeGen2tem -FileSystem "filesystem1" -Path "dir1/"
 ```
 
-This command removes a folder from a container.
+This command removes a folder from a Filesystem.
 
 ### Example 2: Removes a file without prompt
 ```
-PS C:\>Remove-AzDataLakeGen2tem -Container "container1" -Path "dir1/file1"
+PS C:\>Remove-AzDataLakeGen2tem -FileSystem "filesystem1" -Path "dir1/file1"
 ```
 
-This command removes a folder from a container.
+This command removes a folder from a Filesystem.
 
-### Example 3: Remove all items in a container with pipeline
+### Example 3: Remove all items in a Filesystem with pipeline
 ```
-PS C:\>Get-AzDataLakeGen2ChildItem -Container "container1" | Remove-AzDataLakeGen2Item -Force
+PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" | Remove-AzDataLakeGen2Item -Force
 ```
 
-This command removes all items in a container with pipeline.
+This command removes all items in a Filesystem with pipeline.
 
 ## PARAMETERS
 
@@ -85,21 +85,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Container
-Container name
-
-```yaml
-Type: System.String
-Parameter Sets: ReceiveManual
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Context
 Azure Storage Context Object
 
@@ -130,8 +115,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FileSystem
+FileSystem name
+
+```yaml
+Type: System.String
+Parameter Sets: ReceiveManual
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Force
-Force to remove the container and all content in it
+Force to remove the Filesystem and all content in it
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Return whether the specified container is successfully removed
+Return whether the specified Filesystem is successfully removed
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-The path in the specified container that should be removed.
+The path in the specified Filesystem that should be removed.
 Can be a file or folder In the format 'folder/file.txt' or 'folder1/folder2/'
 
 ```yaml

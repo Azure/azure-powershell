@@ -8,28 +8,28 @@ schema: 2.0.0
 # Get-AzDataLakeGen2Item
 
 ## SYNOPSIS
-Gets the details of a file or folder in a container.
+Gets the details of a file or folder in a filesystem.
 
 ## SYNTAX
 
 ```
-Get-AzDataLakeGen2Item [-Container] <String> [-Path] <String> [-Context <IStorageContext>]
+Get-AzDataLakeGen2Item [-FileSystem] <String> [-Path] <String> [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzDataLakeGen2Item** cmdlet gets the details of a file or folder in a container in an Azure storage account.
+The **Get-AzDataLakeGen2Item** cmdlet gets the details of a file or folder in a Filesystem in an Azure storage account.
 This cmdlet only works if Hierarchical Namespace is enabled for the Storage account. This kind of account can be created by run "New-AzStorageAccount" cmdlet with "-EnableHierarchicalNamespace $true".
 
 ## EXAMPLES
 
-### Example 1: Get a folder from a container, and show the details
+### Example 1: Get a folder from a Filesystem, and show the details
 ```
-PS C:\> $dir1 = Get-AzDataLakeGen2tem -Container "container1" -Path "dir1/"
+PS C:\> $dir1 = Get-AzDataLakeGen2tem -FileSystem "filesystem1" -Path "dir1/"
 PS C:\> $dir1
 
-   Container Uri: https://storageaccountname.blob.core.windows.net/container1
+   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
 
 Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
 ----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
@@ -79,20 +79,20 @@ DeletedTime                        :
 RemainingDaysBeforePermanentDelete :
 ```
 
-This command gets a folder from a container, and show the details.
+This command gets a folder from a Filesystem, and show the details.
 
-### Example 2: Get a file from a container
+### Example 2: Get a file from a Filesystem
 ```
-PS C:\> Get-AzDataLakeGen2Item -Container "container1" -Path "dir1/file1"
+PS C:\> Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1"
 
-   Container Uri: https://storageaccountname.blob.core.windows.net/container1
+   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
 
 Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
 ----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
 dir1/file1           False        14400000        application/octet-stream       2019-10-29 07:40:28Z rwx---rwx    $superuser $superuser
 ```
 
-This command gets the details of a file from a container.
+This command gets the details of a file from a Filesystem.
 
 ## PARAMETERS
 
@@ -108,21 +108,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Container
-Container name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -156,8 +141,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FileSystem
+FileSystem name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Path
-The path in the specified container that should be retrieved.
+The path in the specified Filesystem that should be retrieved.
 Can be a file or folder In the format 'folder/file.txt' or 'folder1/folder2/'
 
 ```yaml

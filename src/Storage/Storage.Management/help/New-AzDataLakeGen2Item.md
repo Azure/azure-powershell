@@ -8,13 +8,13 @@ schema: 2.0.0
 # New-AzDataLakeGen2Item
 
 ## SYNOPSIS
-Create a file or folder in a container.
+Create a file or folder in a filesystem.
 
 ## SYNTAX
 
 ### File (Default)
 ```
-New-AzDataLakeGen2Item [-Container] <String> [-Path] <String> -Source <String> [-Umask <String>]
+New-AzDataLakeGen2Item [-FileSystem] <String> [-Path] <String> -Source <String> [-Umask <String>]
  [-Permission <String>] [-Property <Hashtable>] [-Metadata <Hashtable>] [-Force] [-AsJob]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -22,23 +22,23 @@ New-AzDataLakeGen2Item [-Container] <String> [-Path] <String> -Source <String> [
 
 ### Folder
 ```
-New-AzDataLakeGen2Item [-Container] <String> [-Path] <String> [-Folder] [-Umask <String>]
+New-AzDataLakeGen2Item [-FileSystem] <String> [-Path] <String> [-Folder] [-Umask <String>]
  [-Permission <String>] [-Property <Hashtable>] [-Metadata <Hashtable>] [-Force] [-AsJob]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzDataLakeGen2Item** cmdlet creates a file or folder in a container in an Azure storage account.
+The **New-AzDataLakeGen2Item** cmdlet creates a file or folder in a Filesystem in an Azure storage account.
 This cmdlet only works if Hierarchical Namespace is enabled for the Storage account. This kind of account can be created by run "New-AzStorageAccount" cmdlet with "-EnableHierarchicalNamespace $true".
 
 ## EXAMPLES
 
 ### Example 1: Create a folder with specified permission, Umask, properties, and metadata
 ```
-PS C:\>New-AzDataLakeGen2Item -Container "testcontainer" -Path "dir1/dir2/" -Folder -Permission rwxrwxrwx -Umask ---rw---- -Property @{"CacheControl" = "READ"; "ContentDisposition" = "True"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
+PS C:\>New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/" -Folder -Permission rwxrwxrwx -Umask ---rw---- -Property @{"CacheControl" = "READ"; "ContentDisposition" = "True"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
 
-   Container Uri: https://storageaccountname.blob.core.windows.net/container1
+   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
 
 Name                 IsDirectory  BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime         IsDeleted  Permissions 
 ----                 -----------  --------  ------          -----------                    ------------         ---------- ------------         ---------  ----------- 
@@ -49,11 +49,11 @@ This command creates a folder with specified Permission, Umask, properties, and 
 
 ### Example 2: Create(upload) a data lake file from a local source file, and the cmdlet runs in background
 ```
-PS C:\> $task = New-AzDataLakeGen2Item  -Container "testcontainer" -Path "dir1/dir2/file1" -Source "c:\sourcefile.txt" -Force -asjob
+PS C:\> $task = New-AzDataLakeGen2Item  -FileSystem "testfilesystem" -Path "dir1/dir2/file1" -Source "c:\sourcefile.txt" -Force -asjob
 PS C:\> $task | Wait-Job
 PS C:\> $task.Output
 
-   Container Uri: https://storageaccountname.blob.core.windows.net/container1
+   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
 
 Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
 ----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
@@ -94,21 +94,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Container
-Container name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Context
 Azure Storage Context Object
 
@@ -136,6 +121,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FileSystem
+FileSystem name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -186,7 +186,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-The path in the specified container that should be create.
+The path in the specified Filesystem that should be create.
 Can be a file or folder In the format 'folder/file.txt' or 'folder1/folder2/'
 
 ```yaml

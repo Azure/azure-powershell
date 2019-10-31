@@ -26,18 +26,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Collections.Generic;
 
     /// <summary>
-    /// list azure blobs in specified azure container
+    /// list azure blobs in specified azure FileSystem
     /// </summary>
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "DataLakeGen2ChildItem"),OutputType(typeof(AzureDataLakeGen2Item))]
     public class GetAzDataLakeGen2ChildItemCommand : StorageCloudBlobCmdletBase
     {
 
-        [Parameter(ValueFromPipeline = true, Position = 0, Mandatory = true, HelpMessage = "Container name")]
+        [Parameter(ValueFromPipeline = true, Position = 0, Mandatory = true, HelpMessage = "FileSystem name")]
         [ValidateNotNullOrEmpty]
-        public string Container { get; set; }
+        public string FileSystem { get; set; }
 
         [Parameter(ValueFromPipeline = true, Position = 1, Mandatory = false, HelpMessage =
-                "The path in the specified container that should be retrieved. Can be a folder " +
+                "The path in the specified FileSystem that should be retrieved. Can be a folder " +
                 "In the format 'folder1/folder2/'")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
@@ -102,7 +102,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public override void ExecuteCmdlet()
         {
             IStorageBlobManagement localChannel = Channel;
-            CloudBlobContainer container = GetCloudBlobContainerByName(localChannel, this.Container).ConfigureAwait(false).GetAwaiter().GetResult();
+            CloudBlobContainer container = GetCloudBlobContainerByName(localChannel, this.FileSystem).ConfigureAwait(false).GetAwaiter().GetResult();
 
             BlobRequestOptions requestOptions = RequestOptions;
             bool useFlatBlobListing = this.Recurse.IsPresent ? true : false;

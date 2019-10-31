@@ -27,9 +27,9 @@ The **New-AzDataLakeGen2ItemAclObject** cmdlet creates a DataLake gen2 item ACL 
 PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope
 PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
 PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rw-" -InputObject $acl
-PS C:\>Update-AzDataLakeGen2Item -Container "testcontainer" -Path "dir1/dir2" -ACL $acl
+PS C:\>Update-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2" -ACL $acl
 
-   Container Uri: https://testaccount.blob.core.windows.net/testcontainer
+   FileSystem Uri: https://testaccount.blob.core.windows.net/testfilesystem
 
 Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
 ----                 -----------  ------          -----------                    ------------         -----------  -----      -----               

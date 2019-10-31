@@ -27,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
 
     /// <summary>
-    /// create a new azure container
+    /// create a new azure FileSystem
     /// </summary>
     [Cmdlet("Update", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "DataLakeGen2Item", DefaultParameterSetName = ManualParameterSet, SupportsShouldProcess = true),OutputType(typeof(AzureDataLakeGen2Item))]
     public class SetAzDataLakeGen2ItemCommand : StorageCloudBlobCmdletBase
@@ -42,12 +42,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         private const string BlobParameterSet = "ItemPipeline";
 
-        [Parameter(ValueFromPipeline = true, Position = 0, Mandatory = true, HelpMessage = "Container name", ParameterSetName = ManualParameterSet)]
+        [Parameter(ValueFromPipeline = true, Position = 0, Mandatory = true, HelpMessage = "FileSystem name", ParameterSetName = ManualParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string Container { get; set; }
+        public string FileSystem { get; set; }
 
         [Parameter(ValueFromPipeline = true, Position = 1, Mandatory = true, HelpMessage =
-                "The path in the specified container that should be updated. Can be a file or folder " +
+                "The path in the specified FileSystem that should be updated. Can be a file or folder " +
                 "In the format 'folder/file.txt' or 'folder1/folder2/'", ParameterSetName = ManualParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
@@ -142,7 +142,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             CloudBlobDirectory blobDir = null;
             if (ParameterSetName == ManualParameterSet)
             {
-                CloudBlobContainer container = GetCloudBlobContainerByName(localChannel, this.Container).ConfigureAwait(false).GetAwaiter().GetResult();
+                CloudBlobContainer container = GetCloudBlobContainerByName(localChannel, this.FileSystem).ConfigureAwait(false).GetAwaiter().GetResult();
                 foundAFolder = GetExistDataLakeGen2Item(container, this.Path, out blob, out blobDir);
             }
             else //BlobParameterSet

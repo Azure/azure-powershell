@@ -8,29 +8,29 @@ schema: 2.0.0
 # Get-AzDataLakeGen2ChildItem
 
 ## SYNOPSIS
-Lists sub folders and files from a folder or container.
+Lists sub folders and files from a folder or filesystem root.
 
 ## SYNTAX
 
 ```
-Get-AzDataLakeGen2ChildItem [-Container] <String> [[-Path] <String>] [-FetchPermission] [-Recurse]
+Get-AzDataLakeGen2ChildItem [-FileSystem] <String> [[-Path] <String>] [-FetchPermission] [-Recurse]
  [-MaxCount <Int32>] [-ContinuationToken <BlobContinuationToken>] [-AsJob] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzDataLakeGen2ChildItem** cmdlet lists sub folders and files in a folder or container in an Azure storage account.
+The **Get-AzDataLakeGen2ChildItem** cmdlet lists sub folders and files in a folder or Filesystem in an Azure storage account.
 This cmdlet only works if Hierarchical Namespace is enabled for the Storage account. This kind of account can be created by run "New-AzStorageAccount" cmdlet with "-EnableHierarchicalNamespace $true".
 
 ## EXAMPLES
 
-### Example 1: List the direct sub items from a container
+### Example 1: List the direct sub items from a Filesystem
 ```
-PS C:\>Get-AzDataLakeGen2ChildItem -Container "container1" 
+PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" 
 
 
-   Container Uri: https://storageaccountname.blob.core.windows.net/container1
+   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
 
 Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
 ----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
@@ -38,14 +38,14 @@ dir1/                True
 dir2/                True
 ```
 
-This command lists the direct sub items from a container
+This command lists the direct sub items from a Filesystem
 
 ### Example 2: List recursively from a folder, and fetch permission/owner/ACL
 ```
-PS C:\>Get-AzDataLakeGen2ChildItem -Container "container1" -Path "dir1/" -Recurse -FetchPermission
+PS C:\>Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" -Path "dir1/" -Recurse -FetchPermission
 
 
-   Container Uri: https://storageaccountname.blob.core.windows.net/container1
+   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
 
 Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
 ----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
@@ -53,26 +53,26 @@ dir1/dir1/           True                         application/octet-stream      
 dir1/dir1/testfile1  False        14400000        application/octet-stream       2019-10-29 04:14:36Z rw-r-----    $superuser $superuser
 ```
 
-This command lists the direct sub items from a container
+This command lists the direct sub items from a Filesystem
 
-### Example 3: List items recursively from a container in multiple batches
+### Example 3: List items recursively from a Filesystem in multiple batches
 ```
 PS C:\> $MaxReturn = 10000
-PS C:\> $ContainerName = "container1"
+PS C:\> $FileSystemName = "filesystem1"
 PS C:\> $Total = 0
 PS C:\> $Token = $Null
 PS C:\> do
  {
-     $items = Get-AzDataLakeGen2ChildItem -Container $ContainerName -Recurse -MaxCount $MaxReturn  -ContinuationToken $Token
+     $items = Get-AzDataLakeGen2ChildItem -FileSystem $FileSystemName -Recurse -MaxCount $MaxReturn  -ContinuationToken $Token
      $Total += $items.Count
      if($items.Length -le 0) { Break;}
      $Token = $items[$items.Count -1].ContinuationToken;
  }
  While ($Token -ne $Null)
-PS C:\> Echo "Total $Total items in container $ContainerName"
+PS C:\> Echo "Total $Total items in Filesystem $FileSystemName"
 ```
 
-This example uses the *MaxCount* and *ContinuationToken* parameters to list items recursively from a container in multiple batches.
+This example uses the *MaxCount* and *ContinuationToken* parameters to list items recursively from a Filesystem in multiple batches.
 The first four commands assign values to variables to use in the example.
 The fifth command specifies a **Do-While** statement that uses the **Get-AzDataLakeGen2ChildItem** cmdlet to list items.
 The statement includes the continuation token stored in the $Token variable.
@@ -108,21 +108,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Container
-Container name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -186,6 +171,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FileSystem
+FileSystem name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -MaxCount
 The max count of the blobs that can return.
 
@@ -202,7 +202,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-The path in the specified container that should be retrieved.
+The path in the specified Filesystem that should be retrieved.
 Should be a folder, in the format 'folder1/folder2/'.
 
 ```yaml

@@ -41,12 +41,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         private const string BlobParameterSet = "ItemPipeline";
 
-        [Parameter(ValueFromPipeline = true, Position = 0, Mandatory = true, HelpMessage = "Container name", ParameterSetName = ManualParameterSet)]
+        [Parameter(ValueFromPipeline = true, Position = 0, Mandatory = true, HelpMessage = "FileSystem name", ParameterSetName = ManualParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string Container { get; set; }
+        public string FileSystem { get; set; }
 
         [Parameter(ValueFromPipeline = true, Position = 1, Mandatory = true, HelpMessage =
-                "The path in the specified container that should be get content from. Must be a file." +
+                "The path in the specified FileSystem that should be get content from. Must be a file." +
                 "In the format 'folder/file.txt'", ParameterSetName = ManualParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
@@ -134,7 +134,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         /// <param name="blob">source CloudBlob object</param>
         /// <param name="fileName">destination file path</param>
-        /// <param name="isValidBlob">whether the source container validated</param>
+        /// <param name="isValidBlob">whether the source FileSystem validated</param>
         /// <returns>the downloaded blob object</returns>
         internal void GetBlobContent(CloudBlob blob, string fileName, bool isValidBlob = false)
         {
@@ -234,11 +234,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             CloudBlobDirectory blobDir = null;
             if (ParameterSetName == ManualParameterSet)
             {
-                CloudBlobContainer container = GetCloudBlobContainerByName(Channel, this.Container).ConfigureAwait(false).GetAwaiter().GetResult();
+                CloudBlobContainer container = GetCloudBlobContainerByName(Channel, this.FileSystem).ConfigureAwait(false).GetAwaiter().GetResult();
                 foundAFolder = GetExistDataLakeGen2Item(container, this.Path, out blob, out blobDir);
                 if (foundAFolder)
                 {
-                    throw new ArgumentException(String.Format("The input Container '{0}', path '{1}' point to a Folder, which don't have content to get.", this.Container, this.Path));
+                    throw new ArgumentException(String.Format("The input FileSystem '{0}', path '{1}' point to a Folder, which don't have content to get.", this.FileSystem, this.Path));
                 }
             }
             else //BlobParameterSet

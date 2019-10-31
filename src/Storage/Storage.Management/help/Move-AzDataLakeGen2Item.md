@@ -14,7 +14,7 @@ Move a file or folder to another a file or folder in same Storage account.
 
 ### ReceiveManual (Default)
 ```
-Move-AzDataLakeGen2Item [-Container] <String> [-Path] <String> -DestContainer <String> -DestPath <String>
+Move-AzDataLakeGen2Item [-FileSystem] <String> [-Path] <String> -DestFileSystem <String> -DestPath <String>
  [-Umask <String>] [-PathRenameMode <PathRenameMode>] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -22,7 +22,7 @@ Move-AzDataLakeGen2Item [-Container] <String> [-Path] <String> -DestContainer <S
 
 ### ItemPipeline
 ```
-Move-AzDataLakeGen2Item -InputObject <AzureDataLakeGen2Item> -DestContainer <String> -DestPath <String>
+Move-AzDataLakeGen2Item -InputObject <AzureDataLakeGen2Item> -DestFileSystem <String> -DestPath <String>
  [-Umask <String>] [-PathRenameMode <PathRenameMode>] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -34,31 +34,31 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 
 ## EXAMPLES
 
-### Example 1: Move a fold in same container
+### Example 1: Move a fold in same Filesystem
 ```
-PS C:\> Move-AzDataLakeGen2Item -Container "container1" -Path "dir1/" -DestContainer "container1" -DestPath "dir2/" -Umask --x--x--- -PathRenameMode Posix
+PS C:\> Move-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/" -DestFileSystem "filesystem1" -DestPath "dir2/" -Umask --x--x--- -PathRenameMode Posix
 
-   Container Uri: https://storageaccountname.blob.core.windows.net/container1
+   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
 
 Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
 ----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
 dir2/                True                         application/octet-stream       2019-10-29 04:23:05Z rw-rw--wx    $superuser $superuser
 ```
 
-This command move folder 'dir/' to folder 'dir2' in the same container.
+This command move folder 'dir/' to folder 'dir2' in the same Filesystem.
 
-### Example 2: Move a file by pipeline, to another container in the same Storage account
+### Example 2: Move a file by pipeline, to another Filesystem in the same Storage account
 ```
-PS C:\> Get-AzDataLakeGen2Item -Container "container1" -Path "dir1/file1" | Move-AzDataLakeGen2Item -DestContainer "container2" -DestPath "dir2/file2"
+PS C:\> Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" | Move-AzDataLakeGen2Item -DestFileSystem "filesystem2" -DestPath "dir2/file2"
 
-   Container Uri: https://storageaccountname.blob.core.windows.net/container2
+   FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem2
 
 Path                 IsDirectory  Length          ContentType                    LastModified         Permissions  Owner      Group               
 ----                 -----------  ------          -----------                    ------------         -----------  -----      -----               
 dir2/                True                         application/octet-stream       2019-10-29 04:23:05Z rw-rw--wx    $superuser $superuser
 ```
 
-This command move file 'dir1/file1' in 'container1' to file 'dir2/file2' in 'container2' in the same Storage account.
+This command move file 'dir1/file1' in 'filesystem1' to file 'dir2/file2' in 'filesystem2' in the same Storage account.
 
 ## PARAMETERS
 
@@ -74,21 +74,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Container
-Container name
-
-```yaml
-Type: System.String
-Parameter Sets: ReceiveManual
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -122,8 +107,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DestContainer
-Dest Container name
+### -DestFileSystem
+Dest FileSystem name
 
 ```yaml
 Type: System.String
@@ -152,6 +137,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FileSystem
+FileSystem name
+
+```yaml
+Type: System.String
+Parameter Sets: ReceiveManual
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Azure Datalake Gen2 Item Object to move from.
 
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-The path in the specified container that should be move from.
+The path in the specified Filesystem that should be move from.
 Can be a file or folder In the format 'folder/file.txt' or 'folder1/folder2/'
 
 ```yaml
