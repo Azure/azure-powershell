@@ -22,7 +22,7 @@ The **New-AzDataLakeGen2ItemAclObject** cmdlet creates a DataLake gen2 item ACL 
 
 ## EXAMPLES
 
-### Example 1: Create an ACL object with 3 ACL entry, and update ACL on a Folder
+### Example 1: Create an ACL object with 3 ACL entry, and update ACL on a directory
 ```
 PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope
 PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
@@ -36,7 +36,7 @@ Path                 IsDirectory  Length          ContentType                   
 dir1/dir2            True                         application/octet-stream       2019-10-30 02:43:09Z rw-rw--wx    $superuser $superuser
 ```
 
-This command creates an ACL object with 3 acl entry (use -InputObject parameter to add acl entry to existing acl object), and updates ACL on a Folder.
+This command creates an ACL object with 3 acl entry (use -InputObject parameter to add acl entry to existing acl object), and updates ACL on a directory.
 
 ## PARAMETERS
 

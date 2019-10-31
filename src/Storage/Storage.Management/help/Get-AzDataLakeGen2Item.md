@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataLakeGen2Item
 
 ## SYNOPSIS
-Gets the details of a file or folder in a filesystem.
+Gets the details of a file or directory in a filesystem.
 
 ## SYNTAX
 
@@ -19,12 +19,12 @@ Get-AzDataLakeGen2Item [-FileSystem] <String> [-Path] <String> [-Context <IStora
 ```
 
 ## DESCRIPTION
-The **Get-AzDataLakeGen2Item** cmdlet gets the details of a file or folder in a Filesystem in an Azure storage account.
+The **Get-AzDataLakeGen2Item** cmdlet gets the details of a file or directory in a Filesystem in an Azure storage account.
 This cmdlet only works if Hierarchical Namespace is enabled for the Storage account. This kind of account can be created by run "New-AzStorageAccount" cmdlet with "-EnableHierarchicalNamespace $true".
 
 ## EXAMPLES
 
-### Example 1: Get a folder from a Filesystem, and show the details
+### Example 1: Get a directory from a Filesystem, and show the details
 ```
 PS C:\> $dir1 = Get-AzDataLakeGen2tem -FileSystem "filesystem1" -Path "dir1/"
 PS C:\> $dir1
@@ -79,7 +79,7 @@ DeletedTime                        :
 RemainingDaysBeforePermanentDelete :
 ```
 
-This command gets a folder from a Filesystem, and show the details.
+This command gets a directory from a Filesystem, and show the details.
 
 ### Example 2: Get a file from a Filesystem
 ```
@@ -158,7 +158,7 @@ Accept wildcard characters: False
 
 ### -Path
 The path in the specified Filesystem that should be retrieved.
-Can be a file or folder In the format 'folder/file.txt' or 'folder1/folder2/'
+Can be a file or directory In the format 'directory/file.txt' or 'directory1/directory2/'
 
 ```yaml
 Type: System.String

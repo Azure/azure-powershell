@@ -37,8 +37,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public string FileSystem { get; set; }
 
         [Parameter(ValueFromPipeline = true, Position = 1, Mandatory = true, HelpMessage =
-                "The path in the specified FileSystem that should be retrieved. Can be a file or folder " +
-                "In the format 'folder/file.txt' or 'folder1/folder2/'")]
+                "The path in the specified FileSystem that should be retrieved. Can be a file or directory " +
+                "In the format 'directory/file.txt' or 'directory1/directory2/'")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }        
         

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDataLakeGen2Item
 
 ## SYNOPSIS
-Update a file or folder on properties, metadata, permission, ACL, and owner.
+Update a file or directory on properties, metadata, permission, ACL, and owner.
 
 ## SYNTAX
 
@@ -29,7 +29,7 @@ Update-AzDataLakeGen2Item -InputObject <AzureDataLakeGen2Item> [-Permission <Str
 ```
 
 ## DESCRIPTION
-The **Update-AzDataLakeGen2Item** cmdlet updates a file or folder on properties, metadata, permission, ACL, and owner.
+The **Update-AzDataLakeGen2Item** cmdlet updates a file or directory on properties, metadata, permission, ACL, and owner.
 This cmdlet only works if Hierarchical Namespace is enabled for the Storage account. This kind of account can be created by run "New-AzStorageAccount" cmdlet with "-EnableHierarchicalNamespace $true".
 
 ## EXAMPLES
@@ -116,7 +116,7 @@ RemainingDaysBeforePermanentDelete :
 
 This command updates all properties on a file (ACL, permission,owner, group, metadata, property can be updated with any conbination), and show them in Powershell console.
 
-### Example 3: Add an ACL entry to a folder
+### Example 3: Add an ACL entry to a directory
 ```
 ## Get the origin ACL
 $acl = (Get-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path 'dir1/dir2/').ACL
@@ -128,7 +128,7 @@ $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType Other -EntityId $id -P
 update-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path 'dir1/dir2/' -ACL $acl
 ```
 
-This command gets ACL from a folder, adds an ACL entry, and sets back to the folder.
+This command gets ACL from a directory, adds an ACL entry, and sets back to the directory.
 
 ## PARAMETERS
 
@@ -239,7 +239,7 @@ Accept wildcard characters: False
 ```
 
 ### -Metadata
-Specifies metadata for the folder or file.
+Specifies metadata for the directory or file.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -270,7 +270,7 @@ Accept wildcard characters: False
 
 ### -Path
 The path in the specified Filesystem that should be updated.
-Can be a file or folder In the format 'folder/file.txt' or 'folder1/folder2/'
+Can be a file or directory In the format 'directory/file.txt' or 'directory1/directory2/'
 
 ```yaml
 Type: System.String
@@ -303,9 +303,9 @@ Accept wildcard characters: False
 ```
 
 ### -Property
-Specifies properties for the folder or file. 
+Specifies properties for the directory or file. 
 The supported properties for file are: CacheControl, ContentDisposition, ContentEncoding, ContentLanguage, ContentMD5, ContentType.
-The supported properties for folder are: CacheControl, ContentDisposition, ContentEncoding, ContentLanguage.
+The supported properties for directory are: CacheControl, ContentDisposition, ContentEncoding, ContentLanguage.
 
 ```yaml
 Type: System.Collections.Hashtable

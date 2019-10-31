@@ -47,8 +47,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public string FileSystem { get; set; }
 
         [Parameter(ValueFromPipeline = true, Position = 1, Mandatory = true, HelpMessage =
-                "The path in the specified FileSystem that should be updated. Can be a file or folder " +
-                "In the format 'folder/file.txt' or 'folder1/folder2/'", ParameterSetName = ManualParameterSet)]
+                "The path in the specified FileSystem that should be updated. Can be a file or directory " +
+                "In the format 'directory/file.txt' or 'directory1/directory2/'", ParameterSetName = ManualParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
@@ -70,9 +70,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Group { get; set; }
 
-        [Parameter(HelpMessage = "Specifies properties for the folder or file. " +
+        [Parameter(HelpMessage = "Specifies properties for the directory or file. " +
             "The supported properties for file are: CacheControl, ContentDisposition, ContentEncoding, ContentLanguage, ContentMD5, ContentType." +
-            "The supported properties for folder are: CacheControl, ContentDisposition, ContentEncoding, ContentLanguage.", 
+            "The supported properties for directory are: CacheControl, ContentDisposition, ContentEncoding, ContentLanguage.", 
             Mandatory = false)]
         public Hashtable Property
         {
@@ -88,7 +88,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
         private Hashtable BlobProperties = null;
 
-        [Parameter(HelpMessage = "Specifies metadata for the folder or file.", 
+        [Parameter(HelpMessage = "Specifies metadata for the directory or file.", 
             Mandatory = false)]
         public Hashtable Metadata
         {
@@ -160,7 +160,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (foundAFolder)
             {
-                if (ShouldProcess(blobDir.Uri.ToString(), "Update Folder: "))
+                if (ShouldProcess(blobDir.Uri.ToString(), "Update Directory: "))
                 {
                     //Set Permission
                     if (this.Permission != null || this.Owner != null || this.Group != null)

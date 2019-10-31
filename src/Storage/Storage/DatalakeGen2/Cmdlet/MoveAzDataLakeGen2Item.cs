@@ -46,8 +46,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public string FileSystem { get; set; }
 
         [Parameter(ValueFromPipeline = true, Position = 1, Mandatory = true, HelpMessage =
-                "The path in the specified FileSystem that should be move from. Can be a file or folder. " +
-                "In the format 'folder/file.txt' or 'folder1/folder2/'", ParameterSetName = ManualParameterSet)]
+                "The path in the specified FileSystem that should be move from. Can be a file or directory. " +
+                "In the format 'directory/file.txt' or 'directory1/directory2/'", ParameterSetName = ManualParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
@@ -138,7 +138,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (foundAFolder)
             {
-                if (ShouldProcess(srcBlobDir.Uri.ToString(), "Move Folder: "))
+                if (ShouldProcess(srcBlobDir.Uri.ToString(), "Move Directory: "))
                 {
                     CloudBlobDirectory destBlobDir = destblobContainer.GetDirectoryReference(this.DestPath);
                     srcBlobDir.Move(destBlobDir.Uri, null, null, requestOptions, OperationContext,

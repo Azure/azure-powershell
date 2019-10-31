@@ -47,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         [Parameter(ValueFromPipeline = true, Position = 1, Mandatory = true, HelpMessage =
                 "The path in the specified FileSystem that should be get content from. Must be a file." +
-                "In the format 'folder/file.txt'", ParameterSetName = ManualParameterSet)]
+                "In the format 'directory/file.txt'", ParameterSetName = ManualParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
@@ -238,7 +238,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 foundAFolder = GetExistDataLakeGen2Item(container, this.Path, out blob, out blobDir);
                 if (foundAFolder)
                 {
-                    throw new ArgumentException(String.Format("The input FileSystem '{0}', path '{1}' point to a Folder, which don't have content to get.", this.FileSystem, this.Path));
+                    throw new ArgumentException(String.Format("The input FileSystem '{0}', path '{1}' point to a Directory, which don't have content to get.", this.FileSystem, this.Path));
                 }
             }
             else //BlobParameterSet
@@ -249,7 +249,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
                 else
                 {
-                    throw new ArgumentException(String.Format("The InputObject is a Folder, which don't have content to get."));
+                    throw new ArgumentException(String.Format("The InputObject is a Directory, which don't have content to get."));
                 }
             }
 

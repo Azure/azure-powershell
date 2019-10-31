@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzDataLakeGen2Item
 
 ## SYNOPSIS
-Remove a file or folder.
+Remove a file or directory.
 
 ## SYNTAX
 
@@ -27,24 +27,24 @@ Remove-AzDataLakeGen2Item -InputObject <AzureDataLakeGen2Item> [-Force] [-AsJob]
 ```
 
 ## DESCRIPTION
-The **Remove-AzDataLakeGen2Item** cmdlet removes a file or folder from a Storage account.
+The **Remove-AzDataLakeGen2Item** cmdlet removes a file or directory from a Storage account.
 This cmdlet only works if Hierarchical Namespace is enabled for the Storage account. This kind of account can be created by run "New-AzStorageAccount" cmdlet with "-EnableHierarchicalNamespace $true".
 
 ## EXAMPLES
 
-### Example 1: Removes a folder
+### Example 1: Removes a directory
 ```
 PS C:\>Remove-AzDataLakeGen2tem -FileSystem "filesystem1" -Path "dir1/"
 ```
 
-This command removes a folder from a Filesystem.
+This command removes a directory from a Filesystem.
 
 ### Example 2: Removes a file without prompt
 ```
 PS C:\>Remove-AzDataLakeGen2tem -FileSystem "filesystem1" -Path "dir1/file1"
 ```
 
-This command removes a folder from a Filesystem.
+This command removes a directory from a Filesystem.
 
 ### Example 3: Remove all items in a Filesystem with pipeline
 ```
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 
 ### -Path
 The path in the specified Filesystem that should be removed.
-Can be a file or folder In the format 'folder/file.txt' or 'folder1/folder2/'
+Can be a file or directory In the format 'directory/file.txt' or 'directory1/directory2/'
 
 ```yaml
 Type: System.String

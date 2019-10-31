@@ -215,7 +215,7 @@ Accept wildcard characters: False
 
 ### -Path
 The path in the specified Filesystem that should be removed.
-Can be a file or folder In the format 'folder/file.txt' or 'folder1/folder2/'
+Can be a file or directory In the format 'directory/file.txt' or 'directory1/directory2/'
 
 ```yaml
 Type: System.String

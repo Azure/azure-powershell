@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataLakeGen2Item
 
 ## SYNOPSIS
-Create a file or folder in a filesystem.
+Create a file or directory in a filesystem.
 
 ## SYNTAX
 
@@ -20,23 +20,23 @@ New-AzDataLakeGen2Item [-FileSystem] <String> [-Path] <String> -Source <String> 
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Folder
+### Directory
 ```
-New-AzDataLakeGen2Item [-FileSystem] <String> [-Path] <String> [-Folder] [-Umask <String>]
+New-AzDataLakeGen2Item [-FileSystem] <String> [-Path] <String> [-Directory] [-Umask <String>]
  [-Permission <String>] [-Property <Hashtable>] [-Metadata <Hashtable>] [-Force] [-AsJob]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzDataLakeGen2Item** cmdlet creates a file or folder in a Filesystem in an Azure storage account.
+The **New-AzDataLakeGen2Item** cmdlet creates a file or directory in a Filesystem in an Azure storage account.
 This cmdlet only works if Hierarchical Namespace is enabled for the Storage account. This kind of account can be created by run "New-AzStorageAccount" cmdlet with "-EnableHierarchicalNamespace $true".
 
 ## EXAMPLES
 
-### Example 1: Create a folder with specified permission, Umask, properties, and metadata
+### Example 1: Create a directory with specified permission, Umask, properties, and metadata
 ```
-PS C:\>New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/" -Folder -Permission rwxrwxrwx -Umask ---rw---- -Property @{"CacheControl" = "READ"; "ContentDisposition" = "True"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
+PS C:\>New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/" -Directory -Permission rwxrwxrwx -Umask ---rw---- -Property @{"CacheControl" = "READ"; "ContentDisposition" = "True"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
 
    FileSystem Uri: https://storageaccountname.blob.core.windows.net/filesystem1
 
@@ -45,7 +45,7 @@ Name                 IsDirectory  BlobType  Length          ContentType         
 dir1/dir2/           True                                   application/octet-stream       2019-10-14 07:54:47Z                                 False      rwx--xrwx
 ```
 
-This command creates a folder with specified Permission, Umask, properties, and metadata
+This command creates a directory with specified Permission, Umask, properties, and metadata
 
 ### Example 2: Create(upload) a data lake file from a local source file, and the cmdlet runs in background
 ```
@@ -124,6 +124,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Directory
+Indicates that this new item is a directory and not a file.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Directory
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FileSystem
 FileSystem name
 
@@ -136,22 +151,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Folder
-Indicates that this new item is a folder and not a file.
-Without specifying this parameter, it's a file item.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Folder
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -171,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -Metadata
-Specifies metadata for the created folder or file.
+Specifies metadata for the created directory or file.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -187,7 +186,7 @@ Accept wildcard characters: False
 
 ### -Path
 The path in the specified Filesystem that should be create.
-Can be a file or folder In the format 'folder/file.txt' or 'folder1/folder2/'
+Can be a file or directory In the format 'directory/file.txt' or 'directory1/directory2/'
 
 ```yaml
 Type: System.String
@@ -219,9 +218,9 @@ Accept wildcard characters: False
 ```
 
 ### -Property
-Specifies properties for the created folder or file. 
+Specifies properties for the created directory or file. 
 The supported properties for file are: CacheControl, ContentDisposition, ContentEncoding, ContentLanguage, ContentMD5, ContentType.
-The supported properties for folder are: CacheControl, ContentDisposition, ContentEncoding, ContentLanguage.
+The supported properties for directory are: CacheControl, ContentDisposition, ContentEncoding, ContentLanguage.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -266,7 +265,7 @@ Accept wildcard characters: False
 ```
 
 ### -Umask
-When creating New Item and the parent folder does not have a default ACL, the umask restricts the permissions of the file or directory to be created.
+When creating New Item and the parent directory does not have a default ACL, the umask restricts the permissions of the file or directory to be created.
 The resulting permission is given by p & ^u, where p is the permission and u is the umask.
 Symbolic (rwxrw-rw-) is supported.
 
