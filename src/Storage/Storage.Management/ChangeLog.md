@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support DataLake Gen2 
+    -  New-AzDataLakeGen2Item
+    -  Get-AzDataLakeGen2Item
+    -  Get-AzDataLakeGen2ChildItem
+    -  Move-AzDataLakeGen2Item
+    -  New-AzDataLakeGen2ItemAclObject
+    -  Update-AzDataLakeGen2Item
+    -  Get-AzDataLakeGen2ItemContent
+    -  Remove-AzDataLakeGen2Item
+
+## Version 1.9.0
 * Support enable Large File share when create or update Storage account
     -  New-AzStorageAccount
     -  Set-AzStorageAccount
