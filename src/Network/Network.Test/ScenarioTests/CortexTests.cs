@@ -50,5 +50,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-CortexDownloadConfig");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+        public void TestP2SCortexCRUD()
+        {
+            TestRunner.RunTestScript("Test-P2SCortexCRUD");
+        }
     }
 }
