@@ -45,6 +45,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         private const string FileParameterSet = "File";
 
+        private const string defaultFilePermission = "rw-rw-rw-";
+        private const string defaultUmask = "----w-rwx";
+
         [Parameter(ValueFromPipeline = true, Position = 0, Mandatory = true, HelpMessage = "FileSystem name")]
         [ValidateNotNullOrEmpty]
         public string FileSystem { get; set; }
@@ -302,11 +305,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             //  default umask is 027
             if (string.IsNullOrEmpty(permission))
             {
-                permission = "rw-rw-rw-";
+                permission = defaultFilePermission;
             }
             if (string.IsNullOrEmpty(umask))
             {
-                umask = "----w-rwx";
+                umask = defaultUmask;
             }
 
             // Get the permission value to set, from input Permission and Umask
