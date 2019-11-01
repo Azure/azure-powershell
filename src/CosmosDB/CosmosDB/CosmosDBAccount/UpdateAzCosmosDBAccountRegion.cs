@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
@@ -45,6 +46,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.PassThruHelpMessage)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             List<Location> locations = new List<Location>();
@@ -68,7 +72,22 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             DatabaseAccountCreateUpdateParametersInner createUpdateParameters = new DatabaseAccountCreateUpdateParametersInner(locations);
-            CosmosDBManagementClient.DatabaseAccounts.CreateOrUpdateAsync(ResourceGroupName, Name, createUpdateParameters);
+            try
+            {
+                CosmosDBManagementClient.DatabaseAccounts.CreateOrUpdateAsync(ResourceGroupName, Name, createUpdateParameters);
+                if (PassThru)
+                {
+                    WriteObject(bool.TrueString);
+                }
+            }
+            catch(Exception)
+            {
+                if(PassThru)
+                {
+                    WriteObject("Exception caught while updating Region");
+                }
+            }
+
             WriteObject(CosmosDBManagementClient.DatabaseAccounts.GetAsync(ResourceGroupName, Name).GetAwaiter().GetResult());
         }
     }

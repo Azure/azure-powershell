@@ -118,7 +118,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     default:
                         consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Fluent.Models.DefaultConsistencyLevel.Session;
                         break;
-
                 }
             }
 
@@ -156,7 +155,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
-            DatabaseAccountCreateUpdateParametersInner databaseAccountCreateUpdateParameters = new DatabaseAccountCreateUpdateParametersInner(locations: null, name: Name, consistencyPolicy: consistencyPolicy, tags: tags, ipRangeFilter: IpRangeFilterAsString);
+            DatabaseAccountInner readDatabase = CosmosDBManagementClient.DatabaseAccounts.GetAsync(ResourceGroupName, Name).GetAwaiter().GetResult();
+            List<Location> locations = new List<Location>();
+            locations.AddRange(readDatabase.WriteLocations);
+            locations.AddRange(readDatabase.ReadLocations);
+
+            DatabaseAccountCreateUpdateParametersInner databaseAccountCreateUpdateParameters = new DatabaseAccountCreateUpdateParametersInner(locations: locations, location:locations[0].LocationName, name: Name, consistencyPolicy: consistencyPolicy, tags: tags, ipRangeFilter: IpRangeFilterAsString);
             databaseAccountCreateUpdateParameters.EnableMultipleWriteLocations = EnableMultipleWriteLocations;
             databaseAccountCreateUpdateParameters.IsVirtualNetworkFilterEnabled = EnableVirtualNetwork;
             databaseAccountCreateUpdateParameters.EnableAutomaticFailover = EnableAutomaticFailover;
@@ -165,7 +169,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
             DatabaseAccountInner cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.BeginCreateOrUpdateAsync(ResourceGroupName, Name, databaseAccountCreateUpdateParameters).Result;
 
             WriteObject(cosmosDBAccount);
-
         }
     }
 }

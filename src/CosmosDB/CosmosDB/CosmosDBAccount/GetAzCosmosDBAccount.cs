@@ -20,37 +20,35 @@ using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccount", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSDatabaseAccountList))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccount", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSDatabaseAccount))]
     public class GetAzCosmosDBAccount : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.AccountNameHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.AccountNameHelpMessage)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = Constants.ResourceIdHelpMessage)]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = Constants.ResourceIdHelpMessage)]
         public string ResourceId { get; set; }
 
         public override void ExecuteCmdlet()
         {
             DatabaseAccountInner databaseAccount = new DatabaseAccountInner();
+
             if (ParameterSetName.Equals(NameParameterSet, StringComparison.OrdinalIgnoreCase))
             {
-                if (Name != null)
-                {
-                    databaseAccount = CosmosDBManagementClient.DatabaseAccounts.GetWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body; 
-                    WriteObject(databaseAccount);
-                }
-                else
-                {
-                    IEnumerable<DatabaseAccountInner> databaseAccounts = null;
-                    databaseAccounts = CosmosDBManagementClient.DatabaseAccounts.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName).GetAwaiter().GetResult().Body;
-                    WriteObject(new PSDatabaseAccountList(databaseAccounts));
+                if (Name == null)
+                { 
+                    IEnumerable<DatabaseAccountInner> DatabaseAccounts = null;
+                    DatabaseAccounts = CosmosDBManagementClient.DatabaseAccounts.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName).GetAwaiter().GetResult().Body;
+                    var PSDatabaseAccounts = DatabaseAccounts.Select(p => new PSDatabaseAccount(p));
+                    WriteObject(PSDatabaseAccounts);
                     return;
                 }
             }
@@ -59,10 +57,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ResourceId);
                 Name = resourceIdentifier.ResourceName;
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                databaseAccount = CosmosDBManagementClient.DatabaseAccounts.GetWithHttpMessagesAsync(Name, ResourceGroupName).GetAwaiter().GetResult().Body;
             }
 
-            WriteObject(new PSDatabaseAccountList(databaseAccount));
+            databaseAccount = CosmosDBManagementClient.DatabaseAccounts.GetWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
+            WriteObject(new PSDatabaseAccount(databaseAccount));
             return;
         }
     }

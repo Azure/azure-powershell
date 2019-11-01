@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzCosmosDBAccount
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Update a CosmosDB account attributes.
 
 ## SYNTAX
 
@@ -43,17 +43,36 @@ Update-AzCosmosDBAccount [-InputObject <PSDatabaseAccount>] [-DefaultConsistency
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Update the properties of a CosmosDB account. Cannot update Account Regions simulataneously with other properties.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Update-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name accountName -DefaultConsistencyLevel "Strong" -EnableAutomaticFailover 1 -EnableMultipleWriteLocations 1 -EnableVirtualNetwork 1
+
+Kind                          : GlobalDocumentDB
+ProvisioningState             : Initializing
+DocumentEndpoint              :
+DatabaseAccountOfferType      : Standard
+IpRangeFilter                 :
+IsVirtualNetworkFilterEnabled : True
+EnableAutomaticFailover       : True
+ConsistencyPolicy             : Microsoft.Azure.Management.CosmosDB.Fluent.Models.ConsistencyPolicy
+Capabilities                  : {}
+WriteLocations                : {accountName-eastus}
+ReadLocations                 : {accountName-eastus}
+FailoverPolicies              : {accountName-eastus}
+VirtualNetworkRules           : {}
+EnableMultipleWriteLocations  : True
+Location                      : East US
+Tags                          : {}
+Id                            : /subscriptions/{subscriptionid}/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName
+Name                          : accountName
+Type                          : Microsoft.DocumentDB/databaseAccounts
 ```
 
-{{ Add example description here }}
-
+Updated DefaultConsistencyLevel to "Strong", Enabled AutomaticFailover, Enabled MultipleWriteLocations and Enabled VirtualNetwork for CosmosDB Account with name accountName. 
 ## PARAMETERS
 
 ### -AsJob

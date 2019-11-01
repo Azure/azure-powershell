@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
 
@@ -26,44 +27,26 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         
         public PSDatabaseAccountListKeys(DatabaseAccountListReadOnlyKeysResultInner databaseAccountListReadOnlyKeysResultInner)
         {
-            PrimaryReadonlyMasterKey = databaseAccountListReadOnlyKeysResultInner.PrimaryReadonlyMasterKey;
-            SecondaryReadonlyMasterKey = databaseAccountListReadOnlyKeysResultInner.SecondaryReadonlyMasterKey;
+            Keys.Add("PrimaryReadonlyMasterKey", databaseAccountListReadOnlyKeysResultInner.PrimaryReadonlyMasterKey);
+            Keys.Add("SecondaryReadonlyMasterKey", databaseAccountListReadOnlyKeysResultInner.SecondaryReadonlyMasterKey);
         }
 
         public PSDatabaseAccountListKeys(DatabaseAccountListConnectionStringsResultInner databaseAccountConnectionString)
         {
-            ConnectionStrings = databaseAccountConnectionString.ConnectionStrings;
+            foreach (DatabaseAccountConnectionString connectionString in databaseAccountConnectionString.ConnectionStrings)
+            {
+                Keys.Add(connectionString.Description, connectionString.ConnectionString);
+            }
         }
 
         public PSDatabaseAccountListKeys(DatabaseAccountListKeysResultInner databaseAccountListKeysResultInner)
         {
-            PrimaryMasterKey = databaseAccountListKeysResultInner.PrimaryMasterKey;
-            SecondaryMasterKey = databaseAccountListKeysResultInner.SecondaryMasterKey;
-            PrimaryReadonlyMasterKey = databaseAccountListKeysResultInner.PrimaryReadonlyMasterKey;
-            SecondaryReadonlyMasterKey = databaseAccountListKeysResultInner.SecondaryReadonlyMasterKey;
+            Keys.Add("PrimaryMasterKey", databaseAccountListKeysResultInner.PrimaryMasterKey);
+            Keys.Add("SecondaryMasterKey", databaseAccountListKeysResultInner.SecondaryMasterKey);
+            Keys.Add("PrimaryReadonlyMasterKey", databaseAccountListKeysResultInner.PrimaryReadonlyMasterKey);
+            Keys.Add("SecondaryReadonlyMasterKey", databaseAccountListKeysResultInner.SecondaryReadonlyMasterKey);
         }
 
-        //
-        // Summary:
-        //     Gets base 64 encoded value of the primary read-write key.
-        public string PrimaryMasterKey { get; set; }
-        //
-        // Summary:
-        //     Gets base 64 encoded value of the secondary read-write key.
-        public string SecondaryMasterKey { get; set; }
-        //
-        // Summary:
-        //     Gets base 64 encoded value of the primary read-only key.
-        public string PrimaryReadonlyMasterKey { get; set; }
-        //
-        // Summary:
-        //     Gets base 64 encoded value of the secondary read-only key.
-        public string SecondaryReadonlyMasterKey { get; set; }
-        //
-        // Summary:
-        //     Gets or sets an array that contains the connection strings for the Cosmos DB
-        //     account.
-        public IList<DatabaseAccountConnectionString> ConnectionStrings { get; set; }
-
+        public Hashtable Keys { get; set; } = new Hashtable();
     }
 }

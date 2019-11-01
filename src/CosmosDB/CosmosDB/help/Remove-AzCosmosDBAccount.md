@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzCosmosDBAccount
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Remove a CosmosDB Account.
 
 ## SYNTAX
 
@@ -31,16 +31,18 @@ Remove-AzCosmosDBAccount [-InputObject <PSDatabaseAccount>] [-AsJob] [-PassThru]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Remove a CosmosDB Account with a given Name in the given ResourceGroup.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzCosmosDBAccount -ResourceGroupName rg -Name dbname  -PassThru
+
+True
 ```
 
-{{ Add example description here }}
+The Account with account name dbname in ResourceGroup rg is deleted. 
 
 ## PARAMETERS
 

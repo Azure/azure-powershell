@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.IpRangeFilterHelpMessage)]
         public string[] IpRangeFilter { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.LocationHelpMessage)]
+        [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.LocationHelpMessage)]
         public string[] Location { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.MaxStalenessIntervalInSecondsHelpMessage)]

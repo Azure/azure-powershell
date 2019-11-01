@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/get-azcosmosdbaccount
 schema: 2.0.0
 ---
 
 # Get-AzCosmosDBAccount
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get CosmosDB Account.
 
 ## SYNTAX
 
@@ -24,16 +24,34 @@ Get-AzCosmosDBAccount -ResourceId <String> [-DefaultProfile <IAzureContextContai
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzCosmosDBAccount** cmdlet gets the list of all existing CosmosDB accounts for a given ResourceGroupName and gets a single CosmosDB account for a given ResourceGroupName and AccountName.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzCosmosDBAccount -ResourceGroupName {resourceGroupName} -Name {databaseAccountName}
+
+
+Id                            : /subscriptions/{subscriptionid}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{databaseAccountName}
+Name                          : {databaseAccountName}
+FailoverPolicies              : {databaseAccountName-region1}
+ReadLocations                 : {databaseAccountName-region1}
+WriteLocations                : {databaseAccountName-region1}
+Capabilities                  : {}
+ConsistencyPolicy             : Microsoft.Azure.Management.CosmosDB.Fluent.Models.ConsistencyPolicy
+EnableAutomaticFailover       : False
+IsVirtualNetworkFilterEnabled : False
+IpRangeFilter                 :
+DatabaseAccountOfferType      : Standard
+DocumentEndpoint              : https://databaseAccountName.documents.azure.com:443/
+ProvisioningState             : Succeeded
+Kind                          : GlobalDocumentDB
+VirtualNetworkRules           : {}
+EnableMultipleWriteLocations  : False
 ```
 
-{{ Add example description here }}
+Get CosmosDB database account with name databaseAccountName in ResourceGroup resourceGroupName.
 
 ## PARAMETERS
 

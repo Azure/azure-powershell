@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzCosmosDBAccountRegion
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Update Regions of a CosmosDB Account.
 
 ## SYNTAX
 
@@ -31,13 +31,33 @@ Update-AzCosmosDBAccountRegion -Location <String[]> [-InputObject <PSDatabaseAcc
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Update Regions of a CosmosDB Account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Update-AzCosmosDBAccountRegion -ResourceGroupName rg1 -Name dbname -Location "location1, location2"
+
+Kind                          : GlobalDocumentDB
+ProvisioningState             : Succeeded
+DocumentEndpoint              : https://dbname.documents.azure.com:443/
+DatabaseAccountOfferType      : Standard
+IpRangeFilter                 :
+IsVirtualNetworkFilterEnabled : False
+EnableAutomaticFailover       : False
+ConsistencyPolicy             : Microsoft.Azure.Management.CosmosDB.Fluent.Models.ConsistencyPolicy
+Capabilities                  : {}
+WriteLocations                : {dbname-location1}
+ReadLocations                 : {dbname-location2}
+FailoverPolicies              : {dbname-location1, dbname-location2}
+VirtualNetworkRules           : {}
+EnableMultipleWriteLocations  : False
+Location                      : location1
+Tags                          : {}
+Id                            : /subscriptions/{subscriptionid}/resourceGroups/rg1/providers/Microsoft.DocumentDB/databaseAccounts/dbname
+Name                          : dbname
+Type                          : Microsoft.DocumentDB/databaseAccounts
 ```
 
 {{ Add example description here }}

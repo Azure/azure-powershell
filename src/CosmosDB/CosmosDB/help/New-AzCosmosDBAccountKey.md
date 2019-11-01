@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCosmosDBAccountKey
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Regenerate a given CosmosDB Account Key.
 
 ## SYNTAX
 
@@ -25,17 +25,17 @@ New-AzCosmosDBAccountKey [-KeyKind <String>] [-ResourceId <String>] [-AsJob]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Create a new CosmosDB Account in the given ResourceGroup.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzCosmosDBAccountKey -ResourceGroupName rg -Name dbname
+
 ```
 
-{{ Add example description here }}
-
+New keys are generated for Account with account name dbname in ResourceGroup rg.
 ## PARAMETERS
 
 ### -AsJob

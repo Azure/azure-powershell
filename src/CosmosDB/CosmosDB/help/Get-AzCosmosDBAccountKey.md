@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzCosmosDBAccountKey
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get Keys{"ConnectionKeys", "PrimaryReadOnly" or "Keys"} for the given CosmosDB Account. 
 
 ## SYNTAX
 
@@ -25,16 +25,21 @@ Get-AzCosmosDBAccountKey [-Type <String>] [-ResourceId <String>] [-DefaultProfil
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Get the list of connection keys.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>  Get-AzCosmosDBAccountKey -ResourceGroupName rg1 -Name dbname -Type "ReadOnlyKeys"
+
+Name                           Value
+----                           -----
+PrimaryReadonlyMasterKey       qjw0ISW1WNN0BIVPeaI7Tm3H8uZ1h7ESQjxaUendxHmIUNQowVvcL84fTqeXoC2HFgyu8Zo1mCFEcg0jZJHPjA==
+SecondaryReadonlyMasterKey     9YRcTABuOHcKyHAKf0lmCeHsrcXu02aeID1g3wjXjlX8SU4s2WNlEB5htJoy3xqxNDqIyGfnq3dblLbrZDbesg==
 ```
 
-{{ Add example description here }}
+Lists the keys for CosmosDB Account. The Key Type can be value from : ConnectionStrings, Keys and ReadOnlyKeys. Default is Keys.
 
 ## PARAMETERS
 

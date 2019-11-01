@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCosmosDBAccount
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create a new CosmosDB Account.
 
 ## SYNTAX
 
@@ -22,16 +22,36 @@ New-AzCosmosDBAccount [-ResourceGroupName <String>] [-Name <String>] [-DefaultCo
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Create a new CosmosDB Account in the given ResourceGroup.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name databaseAccountName  -Location "East US"
+
+Kind                          : GlobalDocumentDB
+ProvisioningState             : Initializing
+DocumentEndpoint              :
+DatabaseAccountOfferType      : Standard
+IpRangeFilter                 :
+IsVirtualNetworkFilterEnabled : False
+EnableAutomaticFailover       : False
+ConsistencyPolicy             : Microsoft.Azure.Management.CosmosDB.Fluent.Models.ConsistencyPolicy
+Capabilities                  : {}
+WriteLocations                : {databaseAccountName-eastus}
+ReadLocations                 : {databaseAccountName-eastus}
+FailoverPolicies              : {databaseAccountName-eastus}
+VirtualNetworkRules           : {}
+EnableMultipleWriteLocations  : False
+Location                      : East US
+Tags                          : {}
+Id                            : /subscriptions/{subscriptionid}/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/databaseAccountName
+Name                          : databaseAccountName
+Type                          : Microsoft.DocumentDB/databaseAccounts
 ```
 
-{{ Add example description here }}
+A new CosmosDB Account with name databaseAccountName is created in the ResourceGroup resourceGroupName.
 
 ## PARAMETERS
 

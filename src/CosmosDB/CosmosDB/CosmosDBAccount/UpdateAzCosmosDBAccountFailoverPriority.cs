@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
@@ -51,11 +52,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void ExecuteCmdlet()
         {
-            Collection<FailoverPolicyInner> failoverPolicys = new Collection<FailoverPolicyInner>();
+            IList<FailoverPolicyInner> failoverPolicies = new List<FailoverPolicyInner>();
             for (int i = 0 ; i < FailoverPolicy.Length; i++ )
             {
                 FailoverPolicyInner failoverPolicy = new FailoverPolicyInner(locationName: FailoverPolicy[i], failoverPriority: i);
-                failoverPolicys.Add(failoverPolicy);
+                failoverPolicies.Add(failoverPolicy);
             }
            
             if(ParameterSetName.Equals(ResourceIdParameterSet))
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             try
             {
-                CosmosDBManagementClient.DatabaseAccounts.FailoverPriorityChangeAsync(ResourceGroupName, Name, failoverPolicys);
+                CosmosDBManagementClient.DatabaseAccounts.FailoverPriorityChangeAsync(ResourceGroupName, Name, failoverPolicies);
                 if (PassThru)
                     WriteObject(bool.TrueString);
             }

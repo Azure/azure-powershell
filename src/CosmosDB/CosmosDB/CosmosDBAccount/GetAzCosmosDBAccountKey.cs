@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
@@ -22,7 +23,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccountKey", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSDatabaseAccountListKeys))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccountKey", DefaultParameterSetName = NameParameterSet), OutputType(typeof(Hashtable))]
     public class GetAzCosmosDBAccountKey : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
@@ -53,17 +54,17 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (Type.Equals("ConnectionStrings"))
             {
                 DatabaseAccountListConnectionStringsResultInner response = CosmosDBManagementClient.DatabaseAccounts.ListConnectionStringsWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
-                WriteObject(new PSDatabaseAccountListKeys(response));
+                WriteObject(new PSDatabaseAccountListKeys(response).Keys);
             }
             else if (Type.Equals("ReadOnlyKeys"))
             {
                 DatabaseAccountListReadOnlyKeysResultInner response = CosmosDBManagementClient.DatabaseAccounts.ListReadOnlyKeysWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
-                WriteObject(new PSDatabaseAccountListKeys(response));
+                WriteObject(new PSDatabaseAccountListKeys(response).Keys);
             }
             else
             {
                 DatabaseAccountListKeysResultInner response = CosmosDBManagementClient.DatabaseAccounts.ListKeysWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
-                WriteObject(new PSDatabaseAccountListKeys(response));
+                WriteObject(new PSDatabaseAccountListKeys(response).Keys);
             }
             return;
         }
