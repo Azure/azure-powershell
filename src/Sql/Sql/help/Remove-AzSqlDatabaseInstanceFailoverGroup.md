@@ -122,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+Specifies whether to pass through cmdlet execution output.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
