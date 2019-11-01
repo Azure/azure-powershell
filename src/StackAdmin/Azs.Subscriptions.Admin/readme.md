@@ -54,10 +54,10 @@ subject-prefix: ''
 module-version: 0.0.1
 sanitize-names: false
 
-### File Renames 
-module-name: Azs.Subscriptions.Admin 
-csproj: Azs.Subscriptions.Admin.csproj 
-psd1: Azs.Subscriptions.Admin.psd1 
+### File Renames
+module-name: Azs.Subscriptions.Admin
+csproj: Azs.Subscriptions.Admin.csproj
+psd1: Azs.Subscriptions.Admin.psd1
 psm1: Azs.Subscriptions.Admin.psm1
 
 directive:
