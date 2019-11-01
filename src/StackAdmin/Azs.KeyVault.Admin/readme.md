@@ -51,6 +51,10 @@ require:
   - $(repo)/specification/azsadmin/resource-manager/keyvault/readme.azsautogen.md
   - $(repo)/specification/azsadmin/resource-manager/keyvault/readme.md
 
+input-file:
+  - $(repo)/specification/azsadmin/resource-manager/keyvault/Microsoft.KeyVault.Admin/preview/2017-02-01-preview/KeyVault.json
+  - $(repo)/specification/azsadmin/resource-manager/keyvault/Microsoft.KeyVault.Admin/preview/2017-02-01-preview/Quotas.json
+
 subject-prefix: ''
 module-version: 0.0.1
 

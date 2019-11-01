@@ -48,8 +48,14 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azurestack.md
-  - $(repo)/specification/azsadmin/resource-manager/infrastructureinsights/readme.azsautogen.md
   - $(repo)/specification/azsadmin/resource-manager/infrastructureinsights/readme.md
+
+input-file:
+  - $(repo)/specification/azsadmin/resource-manager/infrastructureinsights/Microsoft.InfrastructureInsights.Admin/preview/2016-05-01/InfrastructureInsights.json
+  - $(repo)/specification/azsadmin/resource-manager/infrastructureinsights/Microsoft.InfrastructureInsights.Admin/preview/2016-05-01/Alert.json
+  - $(repo)/specification/azsadmin/resource-manager/infrastructureinsights/Microsoft.InfrastructureInsights.Admin/preview/2016-05-01/RegionHealth.json
+  - $(repo)/specification/azsadmin/resource-manager/infrastructureinsights/Microsoft.InfrastructureInsights.Admin/preview/2016-05-01/ResourceHealth.json
+  - $(repo)/specification/azsadmin/resource-manager/infrastructureinsights/Microsoft.InfrastructureInsights.Admin/preview/2016-05-01/ServiceHealth.json
 
 subject-prefix: ''
 module-version: 0.0.1

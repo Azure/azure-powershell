@@ -48,8 +48,11 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azurestack.md
-  - $(repo)/specification/azsadmin/resource-manager/gallery/readme.azsautogen.md
   - $(repo)/specification/azsadmin/resource-manager/gallery/readme.md
+
+input-file:
+  - $(repo)/specification/azsadmin/resource-manager/gallery/Microsoft.Gallery.Admin/preview/2015-04-01/Gallery.json
+  - $(repo)/specification/azsadmin/resource-manager/gallery/Microsoft.Gallery.Admin/preview/2015-04-01/GalleryItem.json
 
 subject-prefix: ''
 module-version: 0.0.1
