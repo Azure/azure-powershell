@@ -241,32 +241,30 @@ namespace Microsoft.Azure.Commands.Profile.Common
 
         protected void DisableAutosaveT(IAzureSession session, bool writeAutoSaveFile)
         {
+            var store = session.DataStore;
+            string tokenPath = Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile);
+            ContextAutosaveSettings result = new ContextAutosaveSettings
+            {
+                Mode = ContextSaveMode.Process
+            };
+
             session.ARMContextSaveMode = ContextSaveMode.Process;
-            return;
-            //var store = session.DataStore;
-            //string tokenPath = Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile);
-            //ContextAutosaveSettings result = new ContextAutosaveSettings
-            //{
-            //    Mode = ContextSaveMode.Process
-            //};
+            var memorycache = session.TokenCache as AuthenticationStoreTokenCache;
+            if (memorycache == null)
+            {
+                var diskcache = session.TokenCache as ProtectedFileTokenCache;
+                memorycache = new AuthenticationStoreTokenCache(new AzureTokenCache());
+                if (diskcache != null && diskcache.Count > 0)
+                {
+                    memorycache.Deserialize(diskcache.Serialize());
+                }
 
-            //FileUtilities.DataStore = session.DataStore;
-            //session.ARMContextSaveMode = ContextSaveMode.Process;
-            //var memorycache = session.tokencache as authenticationstoretokencache;
-            //if (memorycache == null)
-            //{
-            //    var diskcache = session.tokencache as protectedfiletokencache;
-            //    memorycache = new authenticationstoretokencache(new azuretokencache());
-            //    if (diskcache != null && diskcache.count > 0)
-            //    {
-            //        memorycache.deserialize(diskcache.serialize());
-            //    }
-
-            //    session.tokencache = memorycache;
-            //}
+                //session.TokenCache = memorycache;
+            }
 
             //if (writeAutoSaveFile)
             //{
+            //    FileUtilities.DataStore = session.DataStore;
             //    FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
             //    string autoSavePath = Path.Combine(session.ProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
             //    session.DataStore.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
