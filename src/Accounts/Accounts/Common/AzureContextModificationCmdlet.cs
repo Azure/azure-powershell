@@ -238,5 +238,39 @@ namespace Microsoft.Azure.Commands.Profile.Common
                 session.DataStore.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
             }
         }
+
+        protected void DisableAutosaveT(IAzureSession session, bool writeAutoSaveFile)
+        {
+            session.ARMContextSaveMode = ContextSaveMode.Process;
+            return;
+            //var store = session.DataStore;
+            //string tokenPath = Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile);
+            //ContextAutosaveSettings result = new ContextAutosaveSettings
+            //{
+            //    Mode = ContextSaveMode.Process
+            //};
+
+            //FileUtilities.DataStore = session.DataStore;
+            //session.ARMContextSaveMode = ContextSaveMode.Process;
+            //var memorycache = session.tokencache as authenticationstoretokencache;
+            //if (memorycache == null)
+            //{
+            //    var diskcache = session.tokencache as protectedfiletokencache;
+            //    memorycache = new authenticationstoretokencache(new azuretokencache());
+            //    if (diskcache != null && diskcache.count > 0)
+            //    {
+            //        memorycache.deserialize(diskcache.serialize());
+            //    }
+
+            //    session.tokencache = memorycache;
+            //}
+
+            //if (writeAutoSaveFile)
+            //{
+            //    FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
+            //    string autoSavePath = Path.Combine(session.ProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
+            //    session.DataStore.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
+            //}
+        }
     }
 }

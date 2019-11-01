@@ -389,9 +389,8 @@ namespace Microsoft.Azure.Commands.Profile
 
                 if(!InitializeProfileProvider(autoSaveEnabled))
                 {
-                    AzureSession.Instance.ARMContextSaveMode = ContextSaveMode.Process;
-                    ContextAutosaveSettings autoSavingSetting = null;
-                    DisableAutosave(AzureSession.Instance, false, out autoSavingSetting);
+                    //ContextAutosaveSettings autoSavingSetting = null;
+                    DisableAutosaveT(AzureSession.Instance, false);
                 }
                 IServicePrincipalKeyStore keyStore =
 // TODO: Remove IfDef
