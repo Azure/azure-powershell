@@ -151,13 +151,19 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'New-AzStorageAccountManagementPolicyFilter', 
                'New-AzStorageAccountManagementPolicyRule', 
                'Add-AzStorageAccountManagementPolicyAction', 
+               'Invoke-AzStorageAccountFailover', 
                'Update-AzStorageBlobServiceProperty', 
                'Get-AzStorageBlobServiceProperty', 
                'Enable-AzStorageBlobDeleteRetentionPolicy', 
                'Disable-AzStorageBlobDeleteRetentionPolicy', 
+			   'Revoke-AzStorageAccountUserDelegationKeys',
                'Get-AzStorageFileHandle', 'Close-AzStorageFileHandle', 
                'New-AzRmStorageShare', 'Remove-AzRmStorageShare', 
-               'Get-AzRmStorageShare', 'Update-AzRmStorageShare'
+               'Get-AzRmStorageShare', 'Update-AzRmStorageShare',
+               'Get-AzDataLakeGen2ChildItem', 'Get-AzDataLakeGen2Item',
+               'New-AzDataLakeGen2Item', 'Move-AzDataLakeGen2Item',
+               'Remove-AzDataLakeGen2Item', 'Update-AzDataLakeGen2Item',
+               'New-AzDataLakeGen2ItemAclObject', 'Get-AzDataLakeGen2ItemContent'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -165,7 +171,10 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzStorageContainerAcl', 'Start-CopyAzureStorageBlob', 
                'Stop-CopyAzureStorageBlob', 'Enable-AzStorageSoftDelete', 
-               'Disable-AzStorageSoftDelete'
+               'Disable-AzStorageSoftDelete','Enable-AzureStorageStaticWebsite',
+               'Disable-AzureStorageStaticWebsite','Invoke-AzureRmStorageAccountFailover',
+               'Get-AzureRmStorageAccountManagementPolicy','Set-AzureRmStorageAccountManagementPolicy',
+               'Remove-AzureRmStorageAccountManagementPolicy'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
