@@ -20,6 +20,15 @@
 
 ## Upcoming Release
 
+* Added cmdlet `Invoke-AzDataBoxEdgeDevice`
+ - Invoke scan update, download update, install updates on the device
+* Added cmdlet `Get-AzDataBoxEdgeTrigger`
+ - Gets the information about Triggers
+* Added cmdlet `New-AzDataBoxEdgeTrigger`
+ - Create new Triggers
+* Added cmdlet `Remove-AzDataBoxEdgeTrigger`
+ - Remove the Triggers
+
 ## Version 0.1.1
 
 * Remove cmdlet `Set-AzDataBoxEdgeStorageAccountCredential`
