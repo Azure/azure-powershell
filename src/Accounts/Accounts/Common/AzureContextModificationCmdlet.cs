@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
                     memorycache.Deserialize(diskcache.Serialize());
                 }
 
-                //session.TokenCache = memorycache;
+                session.TokenCache = memorycache;
             }
 
             if (writeAutoSaveFile)
