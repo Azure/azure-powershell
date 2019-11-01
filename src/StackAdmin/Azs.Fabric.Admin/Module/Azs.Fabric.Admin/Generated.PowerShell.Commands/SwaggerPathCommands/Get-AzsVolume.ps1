@@ -45,7 +45,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .EXAMPLE
 
-    PS C:\> Get-AzsVolume -ScaleUnit S-Cluster -StorageSubSystem S-Cluster.azurestack.local -Name a42d219b
+    PS C:\> Get-AzsVolume -ScaleUnit S-Cluster -StorageSubSystem S-Cluster.azurestack.local -Name 0d7b9c1f-228f-4e08-ad61-210b115a913e
 
     Get a storage volume by name at a given location.
 

@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Fabric.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.4.1'
+    ModuleVersion     = '0.5.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -129,8 +129,10 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
             # ReleaseNotes of this module
             ReleaseNotes = '
-            * Module dependencies updated
-                * AzureRM.Resources
+            * Breaking changes for Drive and Volume resources with API version 2019-05-01: (The features are supported by Azure Stack 1910+)
+                * The value of Id, Name, HealthStatus and OperationalStatus have been changed.
+                * We have supported new properties FirmwareVersion, IsIndicationEnabled, Manufacturer and StoragePool for Drive resources.
+                * The properties CanPool and CannotPoolReason of Drive resources have been deprecated, please use OperationalStatus instead.
             '
 
         } # End of PSData hashtable
