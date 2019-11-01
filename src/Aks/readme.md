@@ -126,6 +126,11 @@ directive:
       variant: Create|CreateViaIdentity|Update|UpdateViaIdentity|Get|List|Delete
     remove: true
   - where:
+      verb: Update
+      subject: ManagedClusterTag
+      variant: $Update$|$UpdateViaIdentity
+    remove: true
+  - where:
       verb: Set
       subject: AgentPool
       variant: ^Update$
@@ -163,11 +168,27 @@ directive:
       parameter-name: AksName
       alias-name: ResourceName
   - where:
-      subject: AksAgentPoolAvailableAgentPoolVersion|AksAgentPoolUpgradeProfile
+      subject: AksAgentPoolAvailableAgentPoolVersion|AksTag
       parameter-name: ResourceName
     set:
       parameter-name: Name
       alias-name: ResourceName
+  - where:
+      subject: AksAgentPoolUpgradeProfile
+      parameter-name: ResourceName
+    set:
+      parameter-name: AksName
+      alias-name: ResourceName
+  - where:
+      subject: AksAgentPoolUpgradeProfile
+      parameter-name: AgentPoolName
+    set:
+      parameter-name: Name
+      alias-name: AgentPoolName
+  - where:
+      parameter-name: NetworkProfile(.*)
+    set:
+      parameter-name: $1
   - where:
       subject: AksAgentPoolAvailableAgentPoolVersion
     set:

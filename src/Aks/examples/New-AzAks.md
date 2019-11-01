@@ -1,18 +1,16 @@
 ### Example 1:
 ```powershell
 PS C:\> New-AzAks -ResourceGroupName group -Name myCluster
-
-{{ Add output here }}
 ```
 
 Create a new managed Kubernetes cluster with default params
 
-### Example 2: {{ Add title here }}
+### Example 2:
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $addOn = @{enabled=$true}
+PS C:\> $addonProfile = @{additionalProperties=($addOn)}
+PS C:\> New-AzAks -ResourceGroupName group -Name myCluster -AddOnProfile $addonProfile
 ```
 
-{{ Add description here }}
+Create a new managed Kubernetes cluster with AddOnProfile
 

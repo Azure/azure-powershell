@@ -480,7 +480,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.custom
                 @"An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.",
             SerializedName = @"dnsServiceIP",
             PossibleTypes = new[] {typeof(string)})]
-        public string NetworkProfileDnsServiceIP
+        public string DnsServiceIP
         {
             get => ParametersBody.NetworkProfileDnsServiceIP ?? null;
             set => ParametersBody.NetworkProfileDnsServiceIP = value;
@@ -502,7 +502,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.custom
                 @"A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes service address range.",
             SerializedName = @"dockerBridgeCidr",
             PossibleTypes = new[] {typeof(string)})]
-        public string NetworkProfileDockerBridgeCidr
+        public string DockerBridgeCidr
         {
             get => ParametersBody.NetworkProfileDockerBridgeCidr ?? null;
             set => ParametersBody.NetworkProfileDockerBridgeCidr = value;
@@ -566,7 +566,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.custom
             Description = @"A CIDR notation IP range from which to assign pod IPs when kubenet is used.",
             SerializedName = @"podCidr",
             PossibleTypes = new[] {typeof(string)})]
-        public string NetworkProfilePodCidr
+        public string PodCidr
         {
             get => ParametersBody.NetworkProfilePodCidr ?? null;
             set => ParametersBody.NetworkProfilePodCidr = value;
@@ -586,7 +586,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.custom
                 @"A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.",
             SerializedName = @"serviceCidr",
             PossibleTypes = new[] {typeof(string)})]
-        public string NetworkProfileServiceCidr
+        public string ServiceCidr
         {
             get => ParametersBody.NetworkProfileServiceCidr ?? null;
             set => ParametersBody.NetworkProfileServiceCidr = value;
