@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the Set-AzFrontDoor cmdlet.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor", SupportsShouldProcess = true, DefaultParameterSetName = FieldsWithBackendPoolsSettingParameterSet), OutputType(typeof(PSFrontDoor))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSFrontDoor))]
     public class SetAzureRmFrontDoor : AzureFrontDoorCmdletBase
     {
         /// <summary>
