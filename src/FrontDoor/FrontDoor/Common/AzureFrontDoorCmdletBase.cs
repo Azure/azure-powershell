@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Common
         public const string FieldsWithForwardingParameterSet = "ByFieldsWithForwardingParameterSet";
         public const string FieldsWithRedirectParameterSet = "ByFieldsWithRedirectParameterSet";
         public const string FieldsWithBackendPoolsSettingParameterSet = "ByFieldsWithBackendPoolsSettingParameterSet";
+        public const string ObjectWithBackendPoolsSettingParameterSet = "ByObjectWithBackendPoolsSettingParameterSet";
+        public const string ResourceIdWithBackendPoolsSettingParameterSet = "ByResourceIdWithBackendPoolsSettingParameterSet";
         public const string FieldsWithCertificateNameCheckParameterSet = "ByFieldsWithCertificateNameCheckParameterSet";
 
         /// <summary>
