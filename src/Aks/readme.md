@@ -305,4 +305,8 @@ directive:
   - from: Az.Aks.nuspec
     where: $
     transform: $ = $.replace(/<version>(\d+\.\d+\.\d+)<\/version>/, '<version>$1-preview</version>');
+ # Include YamlDotNet.dll
+  - from: Az.Aks.nuspec
+    where: $
+    transform: $ = $.replace('<file src="bin/Az.Aks.private.dll" target="bin" />', '<file src="bin/Az.Aks.private.dll" target="bin" />\n    <file src="bin/YamlDotNet.dll" target="bin" />')
 ```
