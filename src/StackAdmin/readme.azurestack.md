@@ -34,9 +34,10 @@ output-folder: .
 > Directives
 ``` yaml
 directive:
+    # Remove cmdlets for /operations call
   - where:
       subject: Operation
-    hide: true
+    remove: true
   - where:
       parameter-name: SubscriptionId
     set:

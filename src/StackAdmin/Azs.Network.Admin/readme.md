@@ -62,13 +62,16 @@ psm1: Azs.Network.Admin.psm1 # script module file
 ### Parameter default values
 ``` yaml
 directive:
+    # Prepend Network for the Quota cmdlets
   - where:
       subject: Quota
     set:
       subject-prefix: Network
+    # Remove LocationsOperation, OnPremLocation cmdlets
   - where:
       subject: (Location)
-    hide: true
+    remove: true
+
 ### New-AzsNetworkQuota.ps1
   - where:
       verb: New
@@ -112,6 +115,6 @@ directive:
     set:
       default:
         script: '50'
-		
+
 subject-prefix: ''
 module-version: 0.0.1
