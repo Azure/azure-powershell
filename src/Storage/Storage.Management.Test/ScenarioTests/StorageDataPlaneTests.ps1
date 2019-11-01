@@ -723,9 +723,9 @@ function Test-DatalakeGen2
         Assert-AreEqual $t.Error $null
 		$file2 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath2 -Source $localSrcFile -Permission rwxrwxrwx -Umask ---rwx--- -Property @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5}  -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
         Assert-AreEqual $file2.Path $filePath2
-        Assert-AreEqual $file2.ICloudBlob.Properties.ContentType $ContentType
-        Assert-AreEqual $file2.ICloudBlob.Properties.ContentMD5 $ContentMD5
-        Assert-AreEqual $file2.ICloudBlob.Metadata.Count 2
+        Assert-AreEqual $file2.File.Properties.ContentType $ContentType
+        Assert-AreEqual $file2.File.Properties.ContentMD5 $ContentMD5
+        Assert-AreEqual $file2.File.Metadata.Count 2
         Assert-AreEqual $file2.Permissions.ToSymbolicString() "rwx---rwx"
 
 		# update Blob and Directory
@@ -747,9 +747,9 @@ function Test-DatalakeGen2
 		$file1 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1
 		Assert-AreEqual $file1.Path $filePath1
         Assert-AreEqual $file1.Permissions.ToSymbolicString() "rw-rw--wx"
-        Assert-AreEqual $file1.ICloudBlob.Properties.ContentMD5 $ContentMD5
-        Assert-AreEqual $file1.ICloudBlob.Properties.ContentType $ContentType
-        Assert-AreEqual $file1.ICloudBlob.Metadata.Count 2
+        Assert-AreEqual $file1.File.Properties.ContentMD5 $ContentMD5
+        Assert-AreEqual $file1.File.Properties.ContentType $ContentType
+        Assert-AreEqual $file1.File.Metadata.Count 2
         Assert-AreEqual $file1.Owner '$superuser'
         Assert-AreEqual $file1.Group '$superuser'
 		## Update Directory
@@ -763,8 +763,8 @@ function Test-DatalakeGen2
 		$dir1 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1
 		Assert-AreEqual $dir1.Path $directoryPath1
         Assert-AreEqual $dir1.Permissions.ToSymbolicString() "rw-rw--wx"
-        Assert-AreEqual $dir1.CloudBlobDirectory.Properties.ContentEncoding $ContentEncoding
-        Assert-AreEqual $dir1.CloudBlobDirectory.Metadata.Count 3
+        Assert-AreEqual $dir1.Directory.Properties.ContentEncoding $ContentEncoding
+        Assert-AreEqual $dir1.Directory.Metadata.Count 3
         Assert-AreEqual $dir1.Owner '$superuser'
         Assert-AreEqual $dir1.Group '$superuser'
 

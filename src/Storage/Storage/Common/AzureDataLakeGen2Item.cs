@@ -24,12 +24,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     /// </summary>
     public class AzureDataLakeGen2Item : AzureStorageBase
     {
-        public CloudBlockBlob ICloudBlob { get; set; }
+        public CloudBlockBlob File { get; set; }
 
         /// <summary>
         /// CloudBlobDirectory object
         /// </summary>
-        public CloudBlobDirectory CloudBlobDirectory { get; private set; }
+        public CloudBlobDirectory Directory { get; private set; }
 
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         {
             Name = blob.Name;
             Path = blob.Name;
-            ICloudBlob = blob;
+            File = blob;
             BlobType = blob.BlobType;
             Length = blob.Properties.Length;
             ContentType = blob.Properties.ContentType;
@@ -126,7 +126,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         {
             Name = blobDir.Prefix;
             Path = blobDir.Prefix;
-            CloudBlobDirectory = blobDir;
+            Directory = blobDir;
             BlobType = BlobType.Unspecified;
             Length = 0;
             ContentType = blobDir.Properties.ContentType;

@@ -149,11 +149,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 if (!InputObject.IsDirectory)
                 {
-                    blob = (CloudBlockBlob)InputObject.ICloudBlob;
+                    blob = (CloudBlockBlob)InputObject.File;
                 }
                 else
                 {
-                    blobDir = InputObject.CloudBlobDirectory;
+                    blobDir = InputObject.Directory;
                     foundAFolder = true;
                 }
             }
