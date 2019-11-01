@@ -58,8 +58,16 @@ input-file:
 subject-prefix: ''
 module-version: 0.0.1
 
-### File Renames 
-module-name: Azs.KeyVault.Admin 
-csproj: Azs.KeyVault.Admin.csproj 
-psd1: Azs.KeyVault.Admin.psd1 
+### File Renames
+module-name: Azs.KeyVault.Admin
+csproj: Azs.KeyVault.Admin.csproj
+psd1: Azs.KeyVault.Admin.psd1
 psm1: Azs.KeyVault.Admin.psm1
+
+# Cmdlet renames
+  - where:
+      verb: Get
+      subject: AzsQuota
+    set:
+      verb: Get
+      subject: AzsKeyvaultQuota
