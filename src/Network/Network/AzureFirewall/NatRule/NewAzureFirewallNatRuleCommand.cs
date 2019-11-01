@@ -66,10 +66,16 @@ namespace Microsoft.Azure.Commands.Network
         public string[] Protocol { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The translated address for this NAT rule")]
         [ValidateNotNullOrEmpty]
         public string TranslatedAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The translated FQDN for this NAT rule")]
+        [ValidateNotNullOrEmpty]
+        public string TranslatedFqdn { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -95,7 +101,26 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 ValidateIsSingleIpNotRange(DestinationAddress.Single());
-                ValidateIsSingleIpNotRange(TranslatedAddress);
+                if (TranslatedAddress != null)
+                {
+                    ValidateIsSingleIpNotRange(TranslatedAddress);
+                }
+                if (TranslatedFqdn != null)
+                {
+                    ValidateIsFqdn(TranslatedFqdn);
+                }
+
+                // Only one of TranslatedAddress or TranslatedFqdn is allowed
+                if ((TranslatedAddress != null) && (TranslatedFqdn != null))
+                {
+                    throw new ArgumentException("Both TranslatedAddress and TranslatedFqdn not allowed");
+                }
+
+                // One of TranslatedAddress or TranslatedFqdn must be present
+                if ((TranslatedAddress == null) && (TranslatedFqdn == null))
+                {
+                    throw new ArgumentException("Either TranslatedAddress or TranslatedFqdn is required");
+                }
 
                 ValidateIsSinglePortNotRange(DestinationPort.Single());
                 ValidateIsSinglePortNotRange(TranslatedPort);
@@ -110,6 +135,7 @@ namespace Microsoft.Azure.Commands.Network
                 DestinationAddresses = this.DestinationAddress?.ToList(),
                 DestinationPorts = this.DestinationPort?.ToList(),
                 TranslatedAddress = this.TranslatedAddress,
+                TranslatedFqdn = this.TranslatedFqdn,
                 TranslatedPort = this.TranslatedPort
             };
             WriteObject(networkRule);
@@ -131,6 +157,16 @@ namespace Microsoft.Azure.Commands.Network
             if (!uint.TryParse(portStr, out parsed))
             {
                 throw new ArgumentException($"Invalid value {portStr}. Only a single port value is accepted (e.g. 8080).");
+            }
+        }
+
+        private void ValidateIsFqdn(string fqdn)
+        {
+            var fqdnRegEx = new Regex("^[a-zA-Z0-9]+(([a-zA-Z0-9_\\-]*[a-zA-Z0-9]+)*\\.)*(?:[a-zA-Z0-9]{2,})$");
+
+            if (!fqdnRegEx.IsMatch(fqdn))
+            {
+                throw new ArgumentException($"Invalid value {fqdn}.");
             }
         }
     }

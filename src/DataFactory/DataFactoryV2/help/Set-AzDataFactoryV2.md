@@ -102,7 +102,7 @@ PS C:\> Set-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Location "
     RepoConfiguration :
 ```
 
-### Example 2: Create a data factory with repoconfiguration details using an existing factory object.
+### Example 2: Create a data factory with repo configuration details using an existing factory object.
 ```
 PS C:\> Get-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" | Set-AzDataFactoryV2 -AccountName msdata -RepositoryName ADFRepo -CollaborationBranch master -RootFolder / -ProjectName "Azure Data Factory"
 
@@ -116,7 +116,23 @@ PS C:\> Get-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" | Set-AzDat
     RepoConfiguration : Microsoft.Azure.Management.DataFactory.Models.FactoryVSTSConfiguration
 ```
 
-This command creates a data factory named WikiADF in the resource group named ADF in the WestUS location.
+This command creates a data factory named WikiADF in the resource group named ADF in the EastUS location with Azure DevOps source control configuration.
+
+### Example 3: Create a data factory with GitHub repo configuration details using a new factory object.
+```
+PS C:\> New-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Location 'EastUS' -HostName 'https://github.com' -AccountName msdata -RepositoryName ADFRepo -CollaborationBranch master -RootFolder /
+
+    DataFactoryName   : WikiADF
+    DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf
+    ResourceGroupName : ADF
+    Location          : EastUS
+    Tags              : {}
+    Identity          : Microsoft.Azure.Management.DataFactory.Models.FactoryIdentity
+    ProvisioningState : Succeeded
+    RepoConfiguration : Microsoft.Azure.Management.DataFactory.Models.FactoryGitHubConfiguration
+```
+
+This command creates a data factory named WikiADF in the resource group named ADF in the EastUS location with GitHub source control configuration..
 
 ## PARAMETERS
 
@@ -205,7 +221,7 @@ Accept wildcard characters: False
 ```
 
 ### -HostName
-The host name for repo configuration.
+The host name for GitHub repo configuration.
 
 ```yaml
 Type: System.String
@@ -292,7 +308,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-The project name for repo configuration.
+The project name Azure DevOps for repo configuration.
 
 ```yaml
 Type: System.String
@@ -418,7 +434,7 @@ Accept wildcard characters: False
 ```
 
 ### -TenantId
-The tenant id for repo configuration.
+The tenant id for Azure DevOps repo configuration.
 
 ```yaml
 Type: System.String

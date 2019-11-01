@@ -95,6 +95,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The sku of the Virtual Hub.")]
+        [PSArgumentCompleter("Basic", "Standard")]
+        public string Sku { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -152,6 +158,12 @@ namespace Microsoft.Azure.Commands.Network
                     }
 
                     virtualHub.RouteTable = this.RouteTable;
+                    virtualHub.RouteTables = new List<PSVirtualHubRouteTable>();
+
+                    if (string.IsNullOrWhiteSpace(this.Sku))
+                    {
+                        virtualHub.Sku = "Standard";
+                    }
 
                     WriteObject(this.CreateOrUpdateVirtualHub(
                         this.ResourceGroupName,

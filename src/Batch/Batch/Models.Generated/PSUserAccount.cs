@@ -36,14 +36,21 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSLinuxUserConfiguration linuxUserConfiguration;
         
-        public PSUserAccount(string name, string password, System.Nullable<Microsoft.Azure.Batch.Common.ElevationLevel> elevationLevel = null, PSLinuxUserConfiguration linuxUserConfiguration = default(PSLinuxUserConfiguration))
+        private PSWindowsUserConfiguration windowsUserConfiguration;
+        
+        public PSUserAccount(string name, string password, System.Nullable<Microsoft.Azure.Batch.Common.ElevationLevel> elevationLevel = null, PSLinuxUserConfiguration linuxUserConfiguration = default(PSLinuxUserConfiguration), PSWindowsUserConfiguration windowsUserConfiguration = default(PSWindowsUserConfiguration))
         {
             Microsoft.Azure.Batch.LinuxUserConfiguration linuxUserConfigurationOmObject = null;
             if ((linuxUserConfiguration != null))
             {
                 linuxUserConfigurationOmObject = linuxUserConfiguration.omObject;
             }
-            this.omObject = new Microsoft.Azure.Batch.UserAccount(name, password, elevationLevel, linuxUserConfigurationOmObject);
+            Microsoft.Azure.Batch.WindowsUserConfiguration windowsUserConfigurationOmObject = null;
+            if ((windowsUserConfiguration != null))
+            {
+                windowsUserConfigurationOmObject = windowsUserConfiguration.omObject;
+            }
+            this.omObject = new Microsoft.Azure.Batch.UserAccount(name, password, elevationLevel, linuxUserConfigurationOmObject, windowsUserConfigurationOmObject);
         }
         
         internal PSUserAccount(Microsoft.Azure.Batch.UserAccount omObject)
@@ -113,6 +120,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.Password = value;
+            }
+        }
+        
+        public PSWindowsUserConfiguration WindowsUserConfiguration
+        {
+            get
+            {
+                if (((this.windowsUserConfiguration == null) 
+                            && (this.omObject.WindowsUserConfiguration != null)))
+                {
+                    this.windowsUserConfiguration = new PSWindowsUserConfiguration(this.omObject.WindowsUserConfiguration);
+                }
+                return this.windowsUserConfiguration;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.WindowsUserConfiguration = null;
+                }
+                else
+                {
+                    this.omObject.WindowsUserConfiguration = value.omObject;
+                }
+                this.windowsUserConfiguration = value;
             }
         }
     }

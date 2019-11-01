@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 
-## Version 1.1.1
+## Version 1.1.2
 * Fixed miscellaneous typos across module
 
 ## Version 1.1.0

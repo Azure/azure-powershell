@@ -159,6 +159,50 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
                 : InformationProtectionPolicy.DefaultInformationProtectionPolicy;
         }
 
+        internal void EnableSensitivityRecommendations(SqlDatabaseSensitivityClassificationModel model)
+        {
+            ModifySensitivityLabels(model, sensitivityLabelModel => Communicator.EnableSensitivityRecommendation(
+                model.ResourceGroupName,
+                model.ServerName,
+                model.DatabaseName,
+                sensitivityLabelModel.SchemaName,
+                sensitivityLabelModel.TableName,
+                sensitivityLabelModel.ColumnName));
+        }
+
+        internal void DisableSensitivityRecommendations(SqlDatabaseSensitivityClassificationModel model)
+        {
+            ModifySensitivityLabels(model, sensitivityLabelModel => Communicator.DisableSensitivityRecommendation(
+                model.ResourceGroupName,
+                model.ServerName,
+                model.DatabaseName,
+                sensitivityLabelModel.SchemaName,
+                sensitivityLabelModel.TableName,
+                sensitivityLabelModel.ColumnName));
+        }
+
+        internal void EnableManagedDatabaseSensitivityRecommendations(ManagedDatabaseSensitivityClassificationModel model)
+        {
+            ModifySensitivityLabels(model, sensitivityLabelModel => Communicator.EnableManagedDatabaseSensitivityRecommendation(
+                model.ResourceGroupName,
+                model.InstanceName,
+                model.DatabaseName,
+                sensitivityLabelModel.SchemaName,
+                sensitivityLabelModel.TableName,
+                sensitivityLabelModel.ColumnName));
+        }
+
+        internal void DisableManagedDatabaseSensitivityRecommendations(ManagedDatabaseSensitivityClassificationModel model)
+        {
+            ModifySensitivityLabels(model, sensitivityLabelModel => Communicator.DisableManagedDatabaseSensitivityRecommendation(
+                model.ResourceGroupName,
+                model.InstanceName,
+                model.DatabaseName,
+                sensitivityLabelModel.SchemaName,
+                sensitivityLabelModel.TableName,
+                sensitivityLabelModel.ColumnName));
+        }
+
         private List<SensitivityLabelModel> ToSensitivityLabelModelList(List<SensitivityLabel> sensitivityLabels)
         {
             return sensitivityLabels.Select(l => ToSensitivityLabelModel(l)).ToList();
