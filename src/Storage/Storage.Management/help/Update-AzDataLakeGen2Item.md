@@ -78,14 +78,14 @@ False        User                       rw-
 False        Group                      rw-        
 False        Other                      -wx 
 
-PS C:\> $file.ICloudBlob.Metadata
+PS C:\> $file.File.Metadata
 
 Key  Value 
 ---  ----- 
 tag2 value2
 tag1 value1
 
-PS C:\> $file.ICloudBlob.Properties
+PS C:\> $file.File.Properties
 
 CacheControl                       : READ
 ContentDisposition                 : True

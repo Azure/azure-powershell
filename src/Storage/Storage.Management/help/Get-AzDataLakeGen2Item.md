@@ -43,14 +43,14 @@ False        User                       rw-
 False        Group                      rw-        
 False        Other                      -wx   
 
-PS C:\> $dir1.CloudBlobDirectory.Metadata
+PS C:\> $dir1.Directory.Metadata
 
 Key          Value  
 ---          -----  
 tag1         value1 
 hdi_isfolder true 
 
-PS C:\WINDOWS\system32> $dir1.CloudBlobDirectory.Properties
+PS C:\WINDOWS\system32> $dir1.Directory.Properties
 
 CacheControl                       : READ
 ContentDisposition                 : True
