@@ -262,13 +262,13 @@ namespace Microsoft.Azure.Commands.Profile.Common
                 //session.TokenCache = memorycache;
             }
 
-            //if (writeAutoSaveFile)
-            //{
-            //    FileUtilities.DataStore = session.DataStore;
-            //    FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
-            //    string autoSavePath = Path.Combine(session.ProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
-            //    session.DataStore.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
-            //}
+            if (writeAutoSaveFile)
+            {
+                FileUtilities.DataStore = session.DataStore;
+                FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
+                string autoSavePath = Path.Combine(session.ProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
+                session.DataStore.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
+            }
         }
     }
 }
