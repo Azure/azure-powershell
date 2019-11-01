@@ -49,9 +49,7 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azurestack.md
   - $(repo)/specification/azsadmin/resource-manager/storage/readme.azsautogen.md
-```
 
-``` yaml
 subject-prefix: 'Storage'
 module-version: 0.0.1
 
@@ -60,4 +58,23 @@ module-name: Azs.Storage.Admin
 csproj: Azs.Storage.Admin.csproj 
 psd1: Azs.Storage.Admin.psd1 
 psm1: Azs.Storage.Admin.psm1
+
+directive:
+  - where:
+      subject: StorageQuota
+      parameter-name: QuotaName
+    set:
+      parameter-name: Name
+  - where:
+      verb: New
+      parameter-name: CapacityInGb
+    set:
+      default:
+        script: '500'
+  - where:
+      verb: New
+      parameter-name: NumberOfStorageAccount
+    set:
+      default:
+        script: '20'
 ```

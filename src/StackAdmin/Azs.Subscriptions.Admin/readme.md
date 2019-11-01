@@ -59,3 +59,101 @@ module-name: Azs.Subscriptions.Admin
 csproj: Azs.Subscriptions.Admin.csproj 
 psd1: Azs.Subscriptions.Admin.psd1 
 psm1: Azs.Subscriptions.Admin.psm1
+
+directive:
+  - where:
+      subject: DelegatedProviderOffer
+      parameter-name: DelegatedProviderSubscriptionId
+    set:
+      parameter-name: DelegatedProviderId
+  - where:
+      parameter-name: DelegatedProvider
+    set:
+      parameter-name: DelegatedProviderId
+  - where:
+      subject: (.*)Offer$
+      parameter-name: Offer
+    set:
+      parameter-name: Name
+  - where:
+      subject: (.*)Tenant$
+      parameter-name: Tenant
+    set:
+      parameter-name: Name
+  - where:
+      subject: (.*)OfferDelegation$
+      parameter-name: OfferDelegationName
+    set:
+      parameter-name: Name
+  - where:
+      subject: ^Offer(.*)
+      parameter-name: Offer
+    set:
+      parameter-name: OfferName
+  - where:
+      subject: Plan
+      parameter-name: Plan
+    set:
+      parameter-name: Name
+  - where:
+      subject: ^Plan(.*)
+      parameter-name: Plan
+    set:
+      parameter-name: PlanName
+  - where:
+      subject: Quota
+      parameter-name: Quota
+    set:
+      parameter-name: Name
+  - where:
+      verb: Get
+      subject: Subscription
+    set:
+      subject: UserSubscription
+  - where:
+      verb: Get
+      subject: UserSubscription
+      parameter-name: Subscription
+    set:
+      parameter-name: TargetSubscriptionId
+  - where:
+      parameter-name: Resources
+    set:
+      parameter-name: ResourceId
+  - where:
+      parameter-name: TargetDelegatedProviderOffer
+    set:
+      parameter-name: DestinationDelegatedProviderOffer
+  - where:
+      verb: New
+      subject: Offer
+      parameter-name: State
+    set:
+      default:
+        script: 'Private'
+  - where:
+      parameter-name: AddonPlans
+    set:
+      parameter-name: AddonPlanDefinition
+  - where:
+      verb: Remove
+      subject: Subscription
+    set:
+      subject: UserSubscription
+  - where:
+      verb: Remove
+      subject: UserSubscription
+      parameter-name: Subscription
+    set:
+      parameter-name: UserSubscriptionId
+  - where:
+      verb: Test
+      subject: SubscriptionMoveSubscription
+    set:
+      subject: MoveSubscription
+  - where:
+      verb: Test
+      subject: SubscriptionNameAvailability
+    set:
+      subject: NameAvailability
+```

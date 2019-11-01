@@ -4,8 +4,8 @@
 ``` yaml
 azure: true
 powershell: true
-branch: azs
-repo: https://github.com/bganapa/azure-rest-api-specs/tree/$(branch)
+branch: stackadmin
+repo: https://github.com/Azure/azure-rest-api-specs/tree/$(branch)
 metadata:
   authors: Microsoft Corporation
   owners: Microsoft Corporation
