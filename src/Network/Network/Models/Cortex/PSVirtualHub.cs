@@ -24,6 +24,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSResourceId VpnGateway { get; set; }
 
+        public PSResourceId P2SVpnGateway { get; set; }
+
         public PSResourceId ExpressRouteGateway { get; set; }
 
         public List<PSHubVirtualNetworkConnection> VirtualNetworkConnections { get; set; }
