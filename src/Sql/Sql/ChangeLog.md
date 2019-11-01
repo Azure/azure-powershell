@@ -29,6 +29,7 @@
 * Remove aliases for deprecated Vulnerability Assessment Settings cmdlets
 * Deprecate Advanced Threat Detection Settings cmdlets 
 * Adding cmdlets to Disable and enable sensitivity recommendations on columns in a database.
+* Added support for database ReadReplicaCount.
 
 
 ## Version 1.15.0
