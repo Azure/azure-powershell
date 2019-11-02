@@ -67,12 +67,31 @@ directive:
       subject: Quota
     set:
       subject-prefix: Network
+
     # Remove LocationsOperation, OnPremLocation cmdlets
   - where:
       subject: (Location)
-    remove: true
+    remove: true.
 
-### New-AzsNetworkQuota.ps1
+    # Default to Format-List for the Quota commandlets as there are many important fields
+  - where:
+      model-name: Quota
+    set:
+      suppress-format: true
+
+    # Rename Get-AzsResourceProviderState to Get-AzsNetworkAdminOverView
+  - where:
+      verb: Get
+      subject: ResourceProviderState
+    set:
+      subject: NetworkAdminOverview
+    # Default to Format-List for AdminOverview as there are many important fields
+  - where:
+      model-name: AdminOverview
+    set:
+      suppress-format: true
+
+    # New-AzsNetworkQuota.ps1 - Assign default values matching to the portal UI
   - where:
       verb: New
       parameter-name: MaxLoadBalancersPerSubscription
