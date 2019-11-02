@@ -543,6 +543,7 @@ function ThrowTerminatingError
     }
 
     $errorRecord = New-Object -TypeName System.Management.Automation.ErrorRecord -ArgumentList ($Exception, $ErrorId, $ErrorCategory, $TargetObject)
+    #$PSCmdlet.ThrowTerminatingError($errorRecord)
     throw $errorRecord
 }
 
@@ -593,7 +594,24 @@ function GetLinuxFxVersion
 
     if ($IsConsumption)
     {
-        return "$runtimeName|$runtimeVersion"
+        if ($RuntimeName -eq "Node")
+        {
+            # TODO: Remove this workaround at the end of November once linuxfxversion change is deployed
+            #       and just return "$runtimeName|$runtimeVersion"
+            if ($RuntimeVersion -eq "8")
+            {
+                return "node|8.16.2"
+            }
+            elseif ($RuntimeVersion -eq "10")
+            {
+                return "node|10.17.0"
+            }
+        }
+        else 
+        {
+            $runtimeName = $runtimeName.ToLower()
+            return "$runtimeName|$runtimeVersion"
+        }
     }
 
     # App service or Elastic Premium
@@ -624,10 +642,17 @@ function GetErrorMessage
 
     if ($Response.Exception.ResponseBody)
     {
-        $details = ConvertFrom-Json $Response.Exception.ResponseBody
-        if ($details.Message)
+        try
         {
-            return $details.Message
+            $details = ConvertFrom-Json $Response.Exception.ResponseBody
+            if ($details.Message)
+            {
+                return $details.Message
+            }
+        }
+        catch 
+        {
+            # Ignore the deserialization error
         }
     }
 }
@@ -667,4 +692,72 @@ function GetRuntimeVersion
     }
     
     return $null
+}
+
+function ValidateRuntime
+{
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Runtime,
+
+        [Switch]
+        $OSIsLinux
+    )
+
+    if ($OSIsLinux)
+    {
+        if (-not ($LinuxRuntimes -contains $Runtime))
+        {
+            $runtimeOptions = $LinuxRuntimes -join ", "
+            $errorMessage = "Invalid runtime for Linux. Currently supported runtimes are: $runtimeOptions"
+            $exception = [System.InvalidOperationException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "InvalidRuntimeForLinux" `
+                                -ErrorMessage $errorMessage `
+                                -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                -Exception $exception
+        }
+    }
+    else
+    {
+        # Windows runtime
+        if (-not ($WindowsRuntimes -contains $Runtime))
+        {
+            $runtimeOptions = $WindowsRuntimes -join ", "
+            $errorMessage = "Invalid runtime for Windows. Currently supported runtimes are: $runtimeOptions"
+            $exception = [System.InvalidOperationException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "InvalidRuntimeForWindows" `
+                                -ErrorMessage $errorMessage `
+                                -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                -Exception $exception
+        }
+    }
+}
+
+function ValidateConsumptionPlanLocation
+{
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Location
+    )
+
+    $Location = $Location.Trim()
+
+    $availableLocations = @(Az.Functions.internal\Get-AzFunctionAppAvailableLocation -LinuxWorkersEnabled | ForEach-Object { $_.Name })
+
+    if (-not ($availableLocations -contains $Location))
+    {
+        $locationOptions = $availableLocations -join ", "
+        $errorMessage = "Location is invalid. Currently supported locations are: $locationOptions"
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "LocationIsInvalid" `
+                            -ErrorMessage $errorMessage `
+                            -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                            -Exception $exception
+    }
 }

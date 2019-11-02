@@ -29,23 +29,17 @@ Starts a function app.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a function app by name and start it.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Start-AzFunctionApp -PassThru
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Start the function app by given name.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Start-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -PassThru
 
-{{ Add output here }}
 ```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

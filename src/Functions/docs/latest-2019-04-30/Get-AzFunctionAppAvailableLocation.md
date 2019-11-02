@@ -22,23 +22,17 @@ Gets the location where a function app for the given os and plan type is availab
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the locations where Premium is available for Linux.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get the locations where Premium is available for Windows.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Windows
 
-{{ Add output here }}
 ```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

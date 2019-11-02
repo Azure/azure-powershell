@@ -43,23 +43,30 @@ Gets function apps in a subscription.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all function apps.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzFunctionApp
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get function apps by resource group name.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzFunctionApp -ResourceGroupName MyResourceGroupName
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+### Example 3: Get function apps for the given subscriptions.
+```powershell
+PS C:\> Get-AzFunctionApp -SubscriptionId 52d8cf1b-bcac-493a-bbae-f234b5ff3889, 07308f04-ea00-494b-b320-690df74b1c07
+
+```
+
+### Example 4: Get function apps by location.
+```powershell
+PS C:\> Get-AzFunctionApp -Location "Central US"
+
+```
+
 
 ## PARAMETERS
 

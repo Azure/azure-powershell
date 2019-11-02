@@ -11,10 +11,9 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Functions.private.dll'
   FormatsToProcess = './Az.Functions.format.ps1xml', './custom/Functions.format.ps1xml'
-  TypesToProcess = './custom/Functions.types.ps1xml'
+  TypesToProcess = './custom/Functions.types.ps1xml' 
   ScriptsToProcess = './custom/HelperFunctions.ps1'
-  CmdletsToExport =  'Get-AzFunctionApp', 'Get-AzFunctionAppAvailableLocation', 'Get-AzFunctionAppPlan', 'New-AzFunctionApp', 'New-AzFunctionAppPlan', 'Remove-AzFunctionApp', 'Remove-AzFunctionAppPlan', 'Restart-AzFunctionApp', 'Start-AzFunctionApp', 'Stop-AzFunctionApp'
-  AliasesToExport = '*'
+  CmdletsToExport = 'Get-AzFunctionApp', 'Get-AzFunctionAppAvailableLocation', 'Get-AzFunctionAppPlan', 'New-AzFunctionApp', 'New-AzFunctionAppPlan', 'Remove-AzFunctionApp', 'Remove-AzFunctionAppPlan', 'Restart-AzFunctionApp', 'Start-AzFunctionApp', 'Stop-AzFunctionApp'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Functions'

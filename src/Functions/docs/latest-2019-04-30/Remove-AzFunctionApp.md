@@ -29,23 +29,18 @@ Deletes a function app.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a function app by name and delete it.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionApp -PassThru
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete the function app by given name.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -PassThru
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
 
 ## PARAMETERS
 

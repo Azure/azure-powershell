@@ -14,18 +14,18 @@ Creates a function app.
 
 ### ByAppServicePlan (Default)
 ```
-New-AzFunctionApp [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
- [-DisableApplicationInsights] [-Name <String>] [-OSType <Object>] [-PassThru] [-PlanName <String>]
- [-ResourceGroupName <String>] [-Runtime <String>] [-StorageAccountName <String>] [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzFunctionApp -OSType <String> -PlanName <String> -Runtime <String> [-ApplicationInsightsKey <String>]
+ [-ApplicationInsightsName <String>] [-DisableApplicationInsights] [-Name <String>] [-PassThru]
+ [-ResourceGroupName <String>] [-StorageAccountName <String>] [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Consumption
 ```
-New-AzFunctionApp -Name <String> -ResourceGroupName <String> -StorageAccountName <String>
+New-AzFunctionApp -Location <String> -Name <String> -ResourceGroupName <String> -StorageAccountName <String>
  [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>] [-DisableApplicationInsights]
- [-Location <String>] [-OSType <Object>] [-PassThru] [-Runtime <String>] [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-OSType <String>] [-PassThru] [-Runtime <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,23 +33,15 @@ Creates a function app.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a PowerShell function app. Note that the service plan and storage account must exist before this operation.
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> New-AzFunctionApp -Name MyUniqueFyunctionAppName `
+                          -ResourceGroupName MyResourceGroupName `
+                          -PlanName MyPlanName `
+                          -StorageAccount MyStorageAccountName `
+                          -OSType Windows `
+                          -Runtime PowerShell
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -76,22 +68,6 @@ Name of the existing App Insights project to be added to the function app.
 Type: System.String
 Parameter Sets: (All)
 Aliases: AppInsightsName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -AsJob
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -142,7 +118,7 @@ Type: System.String
 Parameter Sets: Consumption
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -166,31 +142,15 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NoWait
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -OSType
 The OS to host the function app.
 
 ```yaml
-Type: System.Object
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -222,7 +182,7 @@ Type: System.String
 Parameter Sets: ByAppServicePlan
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -254,7 +214,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

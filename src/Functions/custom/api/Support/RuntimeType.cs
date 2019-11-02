@@ -24,10 +24,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("DotNet", "DotNet", global::System.Management.Automation.CompletionResultType.ParameterValue, "DotNet");
             }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Node".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Node", "Node", global::System.Management.Automation.CompletionResultType.ParameterValue, "Node");
-            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Node_8".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("Node_8", "Node_8", global::System.Management.Automation.CompletionResultType.ParameterValue, "Node_8");
@@ -43,10 +39,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PowerShell".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("PowerShell", "PowerShell", global::System.Management.Automation.CompletionResultType.ParameterValue, "PowerShell");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Python".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Python", "Python", global::System.Management.Automation.CompletionResultType.ParameterValue, "Python");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Python_3.6".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {

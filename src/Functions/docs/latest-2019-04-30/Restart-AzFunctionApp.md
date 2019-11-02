@@ -29,23 +29,17 @@ Restarts a function app.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a function app by name and restart it.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Restart-AzFunctionApp -PassThru
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Restart the function app by given name.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Restart-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -PassThru
 
-{{ Add output here }}
 ```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

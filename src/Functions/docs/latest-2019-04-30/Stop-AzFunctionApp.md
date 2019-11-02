@@ -29,20 +29,16 @@ Stops a function app.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a function app by name and stop it.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Stop-AzFunctionApp -PassThru
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Stop the function app by given name.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Stop-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName -PassThru
 
-{{ Add output here }}
 ```
 
 {{ Add description here }}

@@ -43,23 +43,29 @@ Get function apps plans in a subscription.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all function apps plans.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzFunctionAppPlan
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get function apps plans by resource group name.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+### Example 3: Get function apps plans for the given subscriptions.
+```powershell
+PS C:\> Get-AzFunctionAppPlan -SubscriptionId 52d8cf1b-bcac-493a-bbae-f234b5ff3889, 07308f04-ea00-494b-b320-690df74b1c07
+
+```
+
+### Example 4: Get function apps plans by location.
+```powershell
+PS C:\> Get-AzFunctionAppPlan -Location "Central US"
+
+```
 
 ## PARAMETERS
 

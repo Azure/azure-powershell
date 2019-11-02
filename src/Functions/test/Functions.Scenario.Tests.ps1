@@ -18,10 +18,10 @@ $resourceGroupNameWindowsConsumption = "Func99-Central-US-Windows-Consumption"
 $premiumPlanLocation = "West Europe"
 $linuxConsumptionLocation = "Southeast Asia"
 $windowsConsumptionLocation = "Central US"
-$planNameWorkerTypeLinux = "Functions-West-Europe-Linux"
-$planNameWorkerTypeWindows = "Functions-West-Europe-Windows"
-$storageAccountWindows = "functionswinstorage"
-$storageAccountLinux = "functionslinuxstorage"
+$planNameWorkerTypeLinux = "Func99-West-Europe-Linux-Premium"
+$planNameWorkerTypeWindows = "Func99-West-Europe-Windows-Premium"
+$storageAccountWindows = "functionswinstorage999"
+$storageAccountLinux = "functionslinuxstorage999"
 
 function CreateFunctionApps
 {
@@ -74,6 +74,7 @@ function CreateFunctionApps
 
     # Create function apps
     $functionAppsToCreate = @(
+        <#
         @{
             FunctionAppHostingPlan = "ServicePlan"
             ResourceGroupName = $resourceGroupNameWindowsPremium
@@ -82,16 +83,16 @@ function CreateFunctionApps
             OSType = "Windows"
             Runtime = "PowerShell"
             Name = "Func99-Windows-Premium-PowerShell"
-        },<#
+        },
         @{
             FunctionAppHostingPlan = "ServicePlan"
             ResourceGroupName = $resourceGroupNameLinuxPremium
             PlanName = $planNameWorkerTypeLinux
             StorageAccountName = $storageAccountLinux
             OSType = "Linux"
-            Runtime = "Node"
-            Name = "Func99-Linux-Premium-Node"
-        },
+            Runtime = "Node_8"
+            Name = "Func99-Linux-Premium-Node-8"
+        },#>
         @{
             FunctionAppHostingPlan = "Consumption"
             ResourceGroupName = $resourceGroupNameWindowsConsumption
@@ -99,16 +100,16 @@ function CreateFunctionApps
             StorageAccountName = $storageAccountWindows
             OSType = "Windows"
             Runtime = "DotNet"
-            Name = "Func99-Windows-Consumption-DoNet"
-        },#>        
+            Name = "Func99-Windows-Consumption-DoNet-2"
+        },       
         @{
             FunctionAppHostingPlan = "Consumption"
             ResourceGroupName = $resourceGroupNameLinuxConsumption      
             StorageAccountName = $storageAccountLinux
             Location = $linuxConsumptionLocation
             OSType = "Linux"
-            Runtime = "Python"
-            Name = "Func99-Linux-Consumption-Python"
+            Runtime = "Python_3.6"
+            Name = "Func99-Linux-Consumption-Python-3-6"
         }        
     )
 
@@ -122,8 +123,7 @@ function CreateFunctionApps
                             -PlanName $fuctionAppDefinition.PlanName `
                             -StorageAccount $fuctionAppDefinition.StorageAccountName `
                             -OSType $fuctionAppDefinition.OSType `
-                            -Runtime $fuctionAppDefinition.Runtime `
-                            -NoWait
+                            -Runtime $fuctionAppDefinition.Runtime
         }
         else 
         {
@@ -133,8 +133,7 @@ function CreateFunctionApps
                             -Location $fuctionAppDefinition.Location  `
                             -StorageAccount $fuctionAppDefinition.StorageAccountName `
                             -OSType $fuctionAppDefinition.OSType `
-                            -Runtime $fuctionAppDefinition.Runtime `
-                            -NoWait
+                            -Runtime $fuctionAppDefinition.Runtime 
         }
     }
 }
@@ -265,13 +264,12 @@ Describe 'Functions End to End Tests' {
     It "Validate New-AzFunctionApp and Remove-AzFunctionApp" {
 
         $functionName = "Func99-Windows-Node-" + (Get-Random).ToString()
-         New-AzFunctionApp -Name $functionName `
-                                        -ResourceGroupName $resourceGroupNameWindowsPremium `
-                                        -PlanName $planNameWorkerTypeWindows `
-                                        -StorageAccount $storageAccountWindows `
-                                        -OSType "Windows" `
-                                        -Runtime "Node" `
-                                        -NoWait
+        New-AzFunctionApp -Name $functionName `
+                           -ResourceGroupName $resourceGroupNameWindowsPremium `
+                           -PlanName $planNameWorkerTypeWindows `
+                           -StorageAccount $storageAccountWindows `
+                           -OSType "Windows" `
+                           -Runtime "Node_8"
 
         $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameWindowsPremium
         $functionApp.OSType | Should -Be "Windows"
@@ -282,5 +280,88 @@ Describe 'Functions End to End Tests' {
 
         $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameWindowsPremium
         $functionApp | Should -Be $null
+    }
+    
+    <#
+    It "Validate New-AzFunctionApp -AsJob and Remove-AzFunctionApp" {
+
+        # Create a service plan
+        Write-Host "Creating service plan"
+        $planName = "Func99-Windows-Premium" + (Get-Random).ToString()
+        New-AzFunctionAppPlan -Name $planName `
+                              -ResourceGroupName $resourceGroupNameWindowsPremium `
+                              -WorkerType "Windows" `
+                              -MinimumWorkerCount 1 `
+                              -MaximumWorkerCount 10 `
+                              -Location $premiumPlanLocation `
+                              -Sku EP1
+        $plans = @(Get-AzFunctionAppPlan | ForEach-Object {$_.Name})
+        $plans | Should -Contain $planName
+
+        $functionName = "Func99-Windows-PowerShell-" + (Get-Random).ToString()
+        $job = New-AzFunctionApp -Name $functionName `
+                                -ResourceGroupName $resourceGroupNameWindowsPremium `
+                                -PlanName $planName `
+                                -StorageAccount $storageAccountWindows `
+                                -OSType "Windows" `
+                                -Runtime "PowerShell" `
+                                -AsJob
+
+        # Wait for the job to complete. Max timeout is 5 minutes
+        $result = $null
+        $maxNumberOfTries = 100
+        $waitTimeinSeconds = 3
+
+        $tries = 1
+        while($true)
+        {
+            Write-Verbose "Wait time in seconds: $($tries*$waitTimeinSeconds)" -Verbose
+            Start-Sleep -Seconds $waitTimeinSeconds
+            $result = Get-Job -Id $job.Id
+            Write-Verbose "JobState: $($result.State)" -Verbose
+
+            if (($tries -ge $maxNumberOfTries) -or ($result.State -ne "Running"))
+            {
+                break
+            }
+
+            $tries++
+        }
+
+        $result.State | Should -Be "Completed"
+
+        $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameWindowsPremium
+        $functionApp.OSType | Should -Be "Windows"
+        $functionApp.RuntimeName | Should -Be "PowerShell"
+
+        $result = Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameWindowsPremium | Remove-AzFunctionApp -PassThru
+        $result | Should -Be $true
+
+        $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $resourceGroupNameWindowsPremium
+        $functionApp | Should -Be $null
+    }
+    #>
+
+    It "Validate New-AzFunctionAppPlan and Remove-AzFunctionAppPlan" {
+
+        $planName = "Func99-Windows-Premium-" + (Get-Random).ToString()
+        New-AzFunctionAppPlan -Name $planName `
+                              -ResourceGroupName $resourceGroupNameWindowsPremium `
+                              -WorkerType "Windows" `
+                              -MinimumWorkerCount 1 `
+                              -MaximumWorkerCount 10 `
+                              -Location $premiumPlanLocation `
+                              -Sku EP1
+
+        $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupNameWindowsPremium
+        $plan.WorkerType | Should -Be "Windows"
+        $plan.SkuTier | Should -Be "ElasticPremium"
+        $plan.SkuName | Should -Be "EP1"
+
+        $result = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupNameWindowsPremium | Remove-AzFunctionAppPlan -PassThru
+        $result | Should -Be $true
+
+        $plan = Get-AzFunctionAppPlan -Name $planName -ResourceGroupName $resourceGroupNameWindowsPremium
+        $plan | Should -Be $null
     }
 }

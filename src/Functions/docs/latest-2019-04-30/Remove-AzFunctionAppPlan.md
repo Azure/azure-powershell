@@ -29,23 +29,17 @@ Deletes a function app plan.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a function app plan by name and delete it.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionAppPlan -PassThru
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete the function app plan by given name.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName -PassThru
 
-{{ Add output here }}
 ```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
