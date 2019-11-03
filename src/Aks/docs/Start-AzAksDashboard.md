@@ -1,59 +1,49 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/get-azaks
+online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/start-azaksdashboard
 schema: 2.0.0
 ---
 
-# Get-AzAks
+# Start-AzAksDashboard
 
 ## SYNOPSIS
-
+Create a Kubectl SSH tunnel to the managed cluster's dashboard.
 
 ## SYNTAX
 
-### List (Default)
+### IdParameterSet (Default)
 ```
-Get-AzAks [-SubscriptionId <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GroupNameParameterSet
-```
-Get-AzAks [-ResourceGroupName] <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### IdParameterSet
-```
-Get-AzAks [-Id] <String> [-SubscriptionId <String[]>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Start-AzAksDashboard [-Id] <String> [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-DisableBrowser] [-ListenPort <Int32>] [-PassThru] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Get-AzAks -InputObject <IAksIdentity> [-SubscriptionId <String[]>] [-DefaultProfile <IAzureContextContainer>]
+Start-AzAksDashboard [-InputObject] <IAksIdentity> [-SubscriptionId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-DisableBrowser] [-ListenPort <Int32>] [-PassThru]
  [<CommonParameters>]
 ```
 
 ### NameParameterSet
 ```
-Get-AzAks [-ResourceGroupName] <String> [-Name] <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Start-AzAksDashboard [-ResourceGroupName] <String> [-Name] <String> [-SubscriptionId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-DisableBrowser] [-ListenPort <Int32>] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
+Create a Kubectl SSH tunnel to the managed cluster's dashboard.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: 
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Start-AzAksDashboard -ResourceGroupName group -Name myCluster
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Start an SSH tunnel and open a browser to the Kubernetes dashboard
 
 ### Example 2: {{ Add title here }}
 ```powershell
@@ -67,7 +57,7 @@ PS C:\> {{ Add code here }}
 ## PARAMETERS
 
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -82,8 +72,24 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Id
+### -DisableBrowser
+Do not pop open a browser after establishing the kubectl port-forward.
 
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Id
+Id of a managed Kubernetes cluster
 
 ```yaml
 Type: System.String
@@ -99,6 +105,7 @@ Dynamic: False
 ```
 
 ### -InputObject
+A IAksIdentity object, normally passed through the pipeline.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -107,15 +114,32 @@ Parameter Sets: InputObjectParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Name
+### -ListenPort
+The listening port for the dashboard.
+Default value is 8003.
 
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+Name of your managed Kubernetes cluster
 
 ```yaml
 Type: System.String
@@ -130,12 +154,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceGroupName
+### -PassThru
 
 
 ```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceGroupName
+Resource group name
+
+```yaml
 Type: System.String
-Parameter Sets: GroupNameParameterSet, NameParameterSet
+Parameter Sets: NameParameterSet
 Aliases:
 
 Required: True
@@ -147,10 +187,11 @@ Dynamic: False
 ```
 
 ### -SubscriptionId
-
+Subscription credentials which uniquely identify Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -173,7 +214,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IManagedCluster
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.custom.KubeTunnelJob
 
 ## ALIASES
 
@@ -182,7 +223,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### INPUTOBJECT <IAksIdentity>: 
+#### INPUTOBJECT <IAksIdentity>: A IAksIdentity object, normally passed through the pipeline.
   - `[AgentPoolName <String>]`: The name of the agent pool.
   - `[Id <String>]`: Resource identity path
   - `[Name <String>]`: The name of the managed cluster resource.

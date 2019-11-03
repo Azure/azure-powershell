@@ -1,39 +1,31 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/start-azaksdashboard
+online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/remove-azaksagentpool
 schema: 2.0.0
 ---
 
-# Start-AzAksDashboard
+# Remove-AzAksAgentPool
 
 ## SYNOPSIS
-
+Deletes the agent pool in the specified managed cluster.
 
 ## SYNTAX
 
-### IdParameterSet (Default)
+### Delete (Default)
 ```
-Start-AzAksDashboard [-Id] <String> [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-DisableBrowser] [-ListenPort <Int32>] [-PassThru] [<CommonParameters>]
-```
-
-### InputObjectParameterSet
-```
-Start-AzAksDashboard [-InputObject] <IAksIdentity> [-SubscriptionId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-DisableBrowser] [-ListenPort <Int32>] [-PassThru]
- [<CommonParameters>]
+Remove-AzAksAgentPool -AksName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### NameParameterSet
+### DeleteViaIdentity
 ```
-Start-AzAksDashboard [-ResourceGroupName] <String> [-Name] <String> [-SubscriptionId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-DisableBrowser] [-ListenPort <Int32>] [-PassThru]
- [<CommonParameters>]
+Remove-AzAksAgentPool -InputObject <IAksIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
+Deletes the agent pool in the specified managed cluster.
 
 ## EXAMPLES
 
@@ -57,15 +49,15 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -DefaultProfile
-
+### -AksName
+The name of the managed cluster resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Type: System.String
+Parameter Sets: Delete
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -73,8 +65,8 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DisableBrowser
-
+### -AsJob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -89,43 +81,60 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Id
-
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.String
-Parameter Sets: IdParameterSet
-Aliases: ResourceId
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -InputObject
+Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: InputObjectParameterSet
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ListenPort
-
+### -Name
+The name of the agent pool.
 
 ```yaml
-Type: System.Int32
+Type: System.String
+Parameter Sets: Delete
+Aliases: AgentPoolName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -137,24 +146,8 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Name
-
-
-```yaml
-Type: System.String
-Parameter Sets: NameParameterSet
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -PassThru
-
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -170,15 +163,15 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-
+The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
+Parameter Sets: Delete
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -186,16 +179,50 @@ Dynamic: False
 ```
 
 ### -SubscriptionId
-
+Subscription credentials which uniquely identify Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -208,11 +235,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
 
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.custom.KubeTunnelJob
+### System.Boolean
 
 ## ALIASES
 
@@ -221,7 +246,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### INPUTOBJECT <IAksIdentity>: 
+#### INPUTOBJECT <IAksIdentity>: Identity Parameter
   - `[AgentPoolName <String>]`: The name of the agent pool.
   - `[Id <String>]`: Resource identity path
   - `[Name <String>]`: The name of the managed cluster resource.

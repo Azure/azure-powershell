@@ -1271,23 +1271,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.custom
             //    aksServicePrincipal.ClientSecret);
 
             WriteVerbose(string.Format(Resources.DeployingYourManagedKubeCluster, AcsSpFilePath));
-            var managedCluster = new ManagedCluster(new Dictionary<string, object>
-            {
-                {nameof(Name), Name},
-                {nameof(Location), Location},
-                {nameof(Tag), Tag},
-                {nameof(DnsPrefix), DnsPrefix},
-                {nameof(KubernetesVersion), KubernetesVersion},
-                {nameof(AgentPoolProfile), new[] {defaultAgentPoolProfile}},
-                {
-                    nameof(LinuxProfileAdminUsername),
-                    string.IsNullOrEmpty(LinuxProfileAdminUsername) ? "azureuser" : LinuxProfileAdminUsername
-                },
-                {nameof(SshPublicKey), pubKey},
-                {nameof(ServicePrincipalProfileClientId), ServicePrincipalProfileClientId},
-                {nameof(ServicePrincipalProfileSecret), ServicePrincipalProfileSecret}
-            });
-            return managedCluster;
+
+            AgentPoolProfile = new[] { defaultAgentPoolProfile };
+            LinuxProfileAdminUsername = string.IsNullOrEmpty(LinuxProfileAdminUsername) ? "azureuser" : LinuxProfileAdminUsername;
+            SshPublicKey = pubKey;
+
+            return ParametersBody;
         }
 
         /// <summary>

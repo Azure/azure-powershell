@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzAks
 
 ## SYNOPSIS
-
+Creates a managed cluster with the specified configuration for agents and Kubernetes version.
 
 ## SYNTAX
 
@@ -32,32 +32,30 @@ New-AzAks [-ResourceGroupName] <String> [-Name] <String> [-SubscriptionId <Strin
 ```
 
 ## DESCRIPTION
-
+Creates a managed cluster with the specified configuration for agents and Kubernetes version.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> New-AzAks -ResourceGroupName group -Name myCluster
 ```
 
-{{ Add description here }}
+Create a new managed Kubernetes cluster with default params
 
-### Example 2: {{ Add title here }}
+### Example 2:
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $addOn = @{enabled=$true}
+PS C:\> $addonProfile = @{additionalProperties=($addOn)}
+PS C:\> New-AzAks -ResourceGroupName group -Name myCluster -AddOnProfile $addonProfile
 ```
 
-{{ Add description here }}
+Create a new managed Kubernetes cluster with AddOnProfile
 
 ## PARAMETERS
 
 ### -AadProfileClientAppId
-
+The client AAD application ID.
 
 ```yaml
 Type: System.String
@@ -73,7 +71,7 @@ Dynamic: False
 ```
 
 ### -AadProfileServerAppId
-
+The server AAD application ID.
 
 ```yaml
 Type: System.String
@@ -89,7 +87,7 @@ Dynamic: False
 ```
 
 ### -AadProfileServerAppSecret
-
+The server AAD application secret.
 
 ```yaml
 Type: System.String
@@ -105,7 +103,8 @@ Dynamic: False
 ```
 
 ### -AadProfileTenantId
-
+The AAD tenant ID to use for authentication.
+If not specified, will use the tenant of the deployment subscription.
 
 ```yaml
 Type: System.String
@@ -121,7 +120,7 @@ Dynamic: False
 ```
 
 ### -AddOnProfile
-
+Profile of managed cluster add-on.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -137,6 +136,7 @@ Dynamic: False
 ```
 
 ### -AgentPoolProfile
+Properties of the agent pool.
 To construct, see NOTES section for AGENTPOOLPROFILE properties and create a hash table.
 
 ```yaml
@@ -153,7 +153,7 @@ Dynamic: False
 ```
 
 ### -AsJob
-
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -169,7 +169,7 @@ Dynamic: False
 ```
 
 ### -AuthorizedIPRange
-
+Authorized IP Ranges to kubernetes API server.
 
 ```yaml
 Type: System.String[]
@@ -185,7 +185,7 @@ Dynamic: False
 ```
 
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -201,7 +201,7 @@ Dynamic: False
 ```
 
 ### -DnsPrefix
-
+DNS prefix specified when creating the managed cluster.
 
 ```yaml
 Type: System.String
@@ -217,7 +217,8 @@ Dynamic: False
 ```
 
 ### -DnsServiceIP
-
+An IP address assigned to the Kubernetes DNS service.
+It must be within the Kubernetes service address range specified in serviceCidr.
 
 ```yaml
 Type: System.String
@@ -233,7 +234,8 @@ Dynamic: False
 ```
 
 ### -DockerBridgeCidr
-
+A CIDR notation IP range assigned to the Docker bridge network.
+It must not overlap with any Subnet IP ranges or the Kubernetes service address range.
 
 ```yaml
 Type: System.String
@@ -249,7 +251,7 @@ Dynamic: False
 ```
 
 ### -EnablePodSecurityPolicy
-
+(PREVIEW) Whether to enable Kubernetes Pod security policy.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -265,7 +267,7 @@ Dynamic: False
 ```
 
 ### -EnablePrivateCluster
-
+Whether to create the cluster as a private cluster or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -281,7 +283,7 @@ Dynamic: False
 ```
 
 ### -EnableRbac
-
+Whether to enable Kubernetes Role-Based Access Control.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -297,7 +299,9 @@ Dynamic: False
 ```
 
 ### -IdentityType
-
+The type of identity used for the managed cluster.
+Type 'SystemAssigned' will use an implicitly created identity in master components and an auto-created user assigned identity in MC_ resource group in agent nodes.
+Type 'None' will not use MSI for the managed cluster, service principal will be used instead.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ResourceIdentityType
@@ -313,7 +317,7 @@ Dynamic: False
 ```
 
 ### -KubernetesVersion
-
+Version of Kubernetes specified when creating the managed cluster.
 
 ```yaml
 Type: System.String
@@ -329,7 +333,7 @@ Dynamic: False
 ```
 
 ### -LinuxProfileAdminUsername
-
+The administrator username to use for Linux VMs.
 
 ```yaml
 Type: System.String
@@ -345,6 +349,7 @@ Dynamic: False
 ```
 
 ### -LoadBalancerProfileEffectiveOutboundIP
+The effective outbound IP resources of the cluster load balancer.
 To construct, see NOTES section for LOADBALANCERPROFILEEFFECTIVEOUTBOUNDIP properties and create a hash table.
 
 ```yaml
@@ -361,7 +366,7 @@ Dynamic: False
 ```
 
 ### -LoadBalancerSku
-
+The load balancer sku for the managed cluster.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.LoadBalancerSku
@@ -377,7 +382,7 @@ Dynamic: False
 ```
 
 ### -Location
-
+Resource location
 
 ```yaml
 Type: System.String
@@ -393,7 +398,9 @@ Dynamic: False
 ```
 
 ### -ManagedOutboundIPCount
-
+Desired number of outbound IP created/managed by Azure for the cluster load balancer.
+Allowed values must be in the range of 1 to 100 (inclusive).
+The default value is 1.
 
 ```yaml
 Type: System.Int32
@@ -409,7 +416,7 @@ Dynamic: False
 ```
 
 ### -Name
-
+The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
@@ -425,7 +432,7 @@ Dynamic: False
 ```
 
 ### -NetworkPlugin
-
+Network plugin used for building Kubernetes network.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.NetworkPlugin
@@ -441,7 +448,7 @@ Dynamic: False
 ```
 
 ### -NetworkPolicy
-
+Network policy used for building Kubernetes network.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.NetworkPolicy
@@ -457,7 +464,7 @@ Dynamic: False
 ```
 
 ### -NodeCount
-
+The default number of nodes for the node pools.
 
 ```yaml
 Type: System.Int32
@@ -473,7 +480,7 @@ Dynamic: False
 ```
 
 ### -NodeOsDiskSize
-
+The default number of nodes for the node pools.
 
 ```yaml
 Type: System.Int32
@@ -489,7 +496,7 @@ Dynamic: False
 ```
 
 ### -NodeResourceGroup
-
+Name of the resource group containing agent pool nodes.
 
 ```yaml
 Type: System.String
@@ -505,7 +512,7 @@ Dynamic: False
 ```
 
 ### -NodeVmSize
-
+The size of the Virtual Machine.
 
 ```yaml
 Type: System.String
@@ -521,7 +528,7 @@ Dynamic: False
 ```
 
 ### -NoWait
-
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -537,6 +544,7 @@ Dynamic: False
 ```
 
 ### -OutboundIPPrefixPublicIpprefix
+A list of public IP prefix resources.
 To construct, see NOTES section for OUTBOUNDIPPREFIXPUBLICIPPREFIX properties and create a hash table.
 
 ```yaml
@@ -553,6 +561,7 @@ Dynamic: False
 ```
 
 ### -OutboundIPPublicIP
+A list of public IP resources.
 To construct, see NOTES section for OUTBOUNDIPPUBLICIP properties and create a hash table.
 
 ```yaml
@@ -569,7 +578,7 @@ Dynamic: False
 ```
 
 ### -PodCidr
-
+A CIDR notation IP range from which to assign pod IPs when kubenet is used.
 
 ```yaml
 Type: System.String
@@ -585,7 +594,7 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-
+The name of the resource group.
 
 ```yaml
 Type: System.String
@@ -601,7 +610,8 @@ Dynamic: False
 ```
 
 ### -ServiceCidr
-
+A CIDR notation IP range from which to assign service cluster IPs.
+It must not overlap with any Subnet IP ranges.
 
 ```yaml
 Type: System.String
@@ -617,7 +627,7 @@ Dynamic: False
 ```
 
 ### -ServicePrincipalProfileClientId
-
+The ID for the service principal.
 
 ```yaml
 Type: System.String
@@ -633,7 +643,7 @@ Dynamic: False
 ```
 
 ### -ServicePrincipalProfileSecret
-
+The secret password associated with the service principal in plain text.
 
 ```yaml
 Type: System.String
@@ -649,7 +659,8 @@ Dynamic: False
 ```
 
 ### -SshKeyValue
-
+SSH key file value or key file path.
+Defaults to {HOME}/.ssh/id_rsa.pub.
 
 ```yaml
 Type: System.String
@@ -665,6 +676,8 @@ Dynamic: False
 ```
 
 ### -SshPublicKey
+The list of SSH public keys used to authenticate with Linux-based VMs.
+Only expect one key specified.
 To construct, see NOTES section for SSHPUBLICKEY properties and create a hash table.
 
 ```yaml
@@ -681,7 +694,8 @@ Dynamic: False
 ```
 
 ### -SubscriptionId
-
+Subscription credentials which uniquely identify Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
@@ -697,7 +711,7 @@ Dynamic: False
 ```
 
 ### -Tag
-
+Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -713,7 +727,7 @@ Dynamic: False
 ```
 
 ### -WindowProfileAdminPassword
-
+The administrator password to use for Windows VMs.
 
 ```yaml
 Type: System.Security.SecureString
@@ -729,7 +743,7 @@ Dynamic: False
 ```
 
 ### -WindowProfileAdminUsername
-
+The administrator username to use for Windows VMs.
 
 ```yaml
 Type: System.String
@@ -793,7 +807,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### AGENTPOOLPROFILE <IManagedClusterAgentPoolProfile[]>: 
+#### AGENTPOOLPROFILE <IManagedClusterAgentPoolProfile[]>: Properties of the agent pool.
   - `Count <Int32>`: Number of agents (VMs) to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1. 
   - `VMSize <ContainerServiceVMSizeTypes>`: Size of agent VMs.
   - `[AvailabilityZone <String[]>]`: (PREVIEW) Availability zones for nodes. Must use VirtualMachineScaleSets AgentPoolType.
@@ -812,16 +826,16 @@ To create the parameters described below, construct a hash table containing the 
   - `[VnetSubnetId <String>]`: VNet SubnetID specifies the VNet's subnet identifier.
   - `[Name <String>]`: Unique name of the agent pool profile in the context of the subscription and resource group.
 
-#### LOADBALANCERPROFILEEFFECTIVEOUTBOUNDIP <IResourceReference[]>: 
+#### LOADBALANCERPROFILEEFFECTIVEOUTBOUNDIP <IResourceReference[]>: The effective outbound IP resources of the cluster load balancer.
   - `[Id <String>]`: The fully qualified Azure resource id.
 
-#### OUTBOUNDIPPREFIXPUBLICIPPREFIX <IResourceReference[]>: 
+#### OUTBOUNDIPPREFIXPUBLICIPPREFIX <IResourceReference[]>: A list of public IP prefix resources.
   - `[Id <String>]`: The fully qualified Azure resource id.
 
-#### OUTBOUNDIPPUBLICIP <IResourceReference[]>: 
+#### OUTBOUNDIPPUBLICIP <IResourceReference[]>: A list of public IP resources.
   - `[Id <String>]`: The fully qualified Azure resource id.
 
-#### SSHPUBLICKEY <IContainerServiceSshPublicKey[]>: 
+#### SSHPUBLICKEY <IContainerServiceSshPublicKey[]>: The list of SSH public keys used to authenticate with Linux-based VMs. Only expect one key specified.
   - `KeyData <String>`: Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers.
 
 ## RELATED LINKS

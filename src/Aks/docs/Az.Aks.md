@@ -14,9 +14,6 @@ Microsoft Azure PowerShell: Aks cmdlets
 ### [Get-AzAks](Get-AzAks.md)
 List Kubernetes managed clusters.
 
-### [Get-AzAks](Get-AzAks.md)
-
-
 ### [Get-AzAksAccessProfile](Get-AzAksAccessProfile.md)
 Gets the accessProfile for the specified role name of the managed cluster with a specified resource group and name.
 
@@ -41,26 +38,17 @@ Gets cluster user credential of the managed cluster with a specified resource gr
 ### [Import-AzAksCredential](Import-AzAksCredential.md)
 Import and merge Kubectl config for a managed Kubernetes Cluster.
 
-### [Import-AzAksCredential](Import-AzAksCredential.md)
-
-
 ### [Invoke-AzRotateAksCertificate](Invoke-AzRotateAksCertificate.md)
 Rotate certificates of a managed cluster.
 
 ### [New-AzAks](New-AzAks.md)
 Creates a managed cluster with the specified configuration for agents and Kubernetes version.
 
-### [New-AzAks](New-AzAks.md)
-
-
 ### [New-AzAksAgentPool](New-AzAksAgentPool.md)
 Creates or updates an agent pool in the specified managed cluster.
 
 ### [Remove-AzAks](Remove-AzAks.md)
 Deletes the managed cluster with a specified resource group and name.
-
-### [Remove-AzAks](Remove-AzAks.md)
-
 
 ### [Remove-AzAksAgentPool](Remove-AzAksAgentPool.md)
 Deletes the agent pool in the specified managed cluster.
@@ -74,23 +62,14 @@ Update the service principal Profile for a managed cluster.
 ### [Set-AzAks](Set-AzAks.md)
 Updates a managed cluster with the specified configuration for agents and Kubernetes version.
 
-### [Set-AzAks](Set-AzAks.md)
-
-
 ### [Set-AzAksAgentPool](Set-AzAksAgentPool.md)
 Creates or updates an agent pool in the specified managed cluster.
 
 ### [Start-AzAksDashboard](Start-AzAksDashboard.md)
 Create a Kubectl SSH tunnel to the managed cluster's dashboard.
 
-### [Start-AzAksDashboard](Start-AzAksDashboard.md)
-
-
 ### [Stop-AzAksDashboard](Stop-AzAksDashboard.md)
 Stop the Kubectl SSH tunnel created in Start-AzKubernetesDashboard.
-
-### [Stop-AzAksDashboard](Stop-AzAksDashboard.md)
-
 
 ### [Update-AzAksTag](Update-AzAksTag.md)
 Updates a managed cluster with the specified tags.
