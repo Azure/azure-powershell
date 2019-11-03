@@ -186,6 +186,7 @@ directive:
       parameter-name: Name
       alias-name: AgentPoolName
   - where:
+      subject: ^Aks$
       parameter-name: NetworkProfile(.*)
     set:
       parameter-name: $1

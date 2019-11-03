@@ -518,7 +518,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.custom
             SerializedName = @"loadBalancerSku",
             PossibleTypes = new[] {typeof(LoadBalancerSku)})]
         [ArgumentCompleter(typeof(LoadBalancerSku))]
-        public LoadBalancerSku NetworkProfileLoadBalancerSku
+        public LoadBalancerSku LoadBalancerSku
         {
             get => ParametersBody.NetworkProfileLoadBalancerSku ?? ((LoadBalancerSku) "");
             set => ParametersBody.NetworkProfileLoadBalancerSku = value;
@@ -534,7 +534,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.custom
             SerializedName = @"networkPlugin",
             PossibleTypes = new[] {typeof(NetworkPlugin)})]
         [ArgumentCompleter(typeof(NetworkPlugin))]
-        public NetworkPlugin NetworkProfileNetworkPlugin
+        public NetworkPlugin NetworkPlugin
         {
             get => ParametersBody.NetworkProfileNetworkPlugin ?? ((NetworkPlugin) "");
             set => ParametersBody.NetworkProfileNetworkPlugin = value;
@@ -550,7 +550,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.custom
             SerializedName = @"networkPolicy",
             PossibleTypes = new[] {typeof(NetworkPolicy)})]
         [ArgumentCompleter(typeof(NetworkPolicy))]
-        public NetworkPolicy NetworkProfileNetworkPolicy
+        public NetworkPolicy NetworkPolicy
         {
             get => ParametersBody.NetworkProfileNetworkPolicy ?? ((NetworkPolicy) "");
             set => ParametersBody.NetworkProfileNetworkPolicy = value;
