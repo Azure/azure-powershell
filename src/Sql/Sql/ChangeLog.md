@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for database ReadReplicaCount.
+* Fixed Set-AzSqlDatabase when zone redundancy not set
+
+## Version 2.0.0
 * Added support for restore of dropped databases on Managed Instances.
 * Deprecated from code old auditing cmdlets.
 * Removed deprecated aliases:
@@ -27,7 +31,7 @@
 * Remove aliases for deprecated Vulnerability Assessment Settings cmdlets
 * Deprecate Advanced Threat Detection Settings cmdlets 
 * Adding cmdlets to Disable and enable sensitivity recommendations on columns in a database.
-* Fixed Set-AzSqlDatabase when zone redundancy not set
+* Fix a small bug when reading auditing settings of a server or a database.
 
 ## Version 1.15.0
 * Add support for setting Active Directory Administrator on Managed Instance

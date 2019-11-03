@@ -141,7 +141,7 @@ Adds a VPN client root certificate.
 Approves a private endpoint connection.
 
 ### [Deny-AzPrivateEndpointConnection](Deny-AzPrivateEndpointConnection.md)
-Denies a private endpoint connection.
+denies a private endpoint connection.
 
 ### [Get-AzApplicationGateway](Get-AzApplicationGateway.md)
 Gets an application gateway.
@@ -335,6 +335,9 @@ Gets a Azure Firewall Policy
 ### [Get-AzFirewallPolicyRuleCollectionGroup](Get-AzFirewallPolicyRuleCollectionGroup.md)
 Gets a Azure Firewall Policy Rule Collection Group
 
+### [Get-AzIpGroup](Get-AzIpGroup.md)
+Get an Azure IpGroup
+
 ### [Get-AzLoadBalancer](Get-AzLoadBalancer.md)
 Gets a load balancer.
 
@@ -422,11 +425,26 @@ Gets a network level view of resources and their relationships in a resource gro
 ### [Get-AzNetworkWatcherTroubleshootingResult](Get-AzNetworkWatcherTroubleshootingResult.md)
 Gets the troubleshooting result from the previously run or currently running troubleshooting operation.
 
+### [Get-AzP2sVpnGateway](Get-AzP2sVpnGateway.md)
+Gets an existing P2SVpnGateway under VirtualHub.
+
+### [Get-AzP2sVpnGatewayConnectionHealth](Get-AzP2sVpnGatewayConnectionHealth.md)
+Gets the current aggregared point to site connections health infomation from P2SVpnGateway.
+
+### [Get-AzP2sVpnGatewayDetailedConnectionHealth](Get-AzP2sVpnGatewayDetailedConnectionHealth.md)
+Gets the detailed information of current point to site connections from P2SVpnGateway.
+
+### [Get-AzP2sVpnGatewayVpnProfile](Get-AzP2sVpnGatewayVpnProfile.md)
+Generates and returns a SAS url for customer to download Vpn profile for point to site client setup to have point to site connectivity to P2SVpnGateway.
+
 ### [Get-AzPrivateEndpoint](Get-AzPrivateEndpoint.md)
 Get a private endpoint
 
 ### [Get-AzPrivateEndpointConnection](Get-AzPrivateEndpointConnection.md)
 Gets a private endpoint connection resource.
+
+### [Get-AzPrivateLinkResource](Get-AzPrivateLinkResource.md)
+Gets a private link resource.
 
 ### [Get-AzPrivateLinkService](Get-AzPrivateLinkService.md)
 Gets private link service
@@ -522,6 +540,12 @@ Gets a Virtual WAN or all Virtual WANs in a resource group or subscription.
 Gets the Vpn configuration for a subset of VpnSites connected to this WAN via VpnConnections. Uploads the generated Vpn
 configuration to a storage blob specified by the customer.
 
+### [Get-AzVirtualWanVpnServerConfiguration](Get-AzVirtualWanVpnServerConfiguration.md)
+Gets the list of all VpnServerConfigurations that are associated with this VirtualWan.
+
+### [Get-AzVirtualWanVpnServerConfigurationVpnProfile](Get-AzVirtualWanVpnServerConfigurationVpnProfile.md)
+Generates and downloads Vpn profile at VirtualWan-VpnServerConfiguration level for Point to site client setup.
+
 ### [Get-AzVpnClientConfiguration](Get-AzVpnClientConfiguration.md)
 Allows users to easily download the Vpn Profile package that was generated using the New-AzVpnClientConfiguration commandlet.
 
@@ -542,6 +566,9 @@ Gets a vpn connection by name or lists all vpn connections connected to a VpnGat
 
 ### [Get-AzVpnGateway](Get-AzVpnGateway.md)
 Gets a VpnGateway resource using ResourceGroupName and GatewayName OR lists all gateways by ResourceGroupName or SubscriptionId.
+
+### [Get-AzVpnServerConfiguration](Get-AzVpnServerConfiguration.md)
+Gets an existing VpnServerConfiguration for point to site connectivity.
 
 ### [Get-AzVpnSite](Get-AzVpnSite.md)
 Gets an Azure VpnSite resource by name OR lists all VpnSites in a ResourceGroup or SubscriptionId. 
@@ -581,24 +608,6 @@ Creates a match condition for custom rule
 ### [New-AzApplicationGatewayFirewallCustomRule](New-AzApplicationGatewayFirewallCustomRule.md)
 Creates a new custom rule for the application gateway firewall policy.
 
-### [New-AzApplicationGatewayFirewallPolicySettings](New-AzApplicationGatewayFirewallPolicySettings.md)
-Creates a policy setting for the firewall policy.
-
-### [New-AzApplicationGatewayFirewallPolicyManagedRules](New-AzApplicationGatewayFirewallPolicyManagedRules.md)
-Creates a managed rule for the firewall policy.
-
-### [New-AzApplicationGatewayFirewallPolicyManagedRuleSet](New-AzApplicationGatewayFirewallPolicyManagedRuleSet.md)
-Creates a managed ruleset for the firewall policy.
-
-### [New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride](New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride.md)
-Creates a managed rule group override for the firewall policy.
-
-### [New-AzApplicationGatewayFirewallPolicyManagedRuleOverride](New-AzApplicationGatewayFirewallPolicyManagedRuleOverride.md)
-Creates a rule override to add to managed rule group override.
-
-### [New-AzApplicationGatewayFirewallPolicyExclusion](New-AzApplicationGatewayFirewallPolicyExclusion.md)
-Creates a exclusion entry to be added to managed rules.
-
 ### [New-AzApplicationGatewayFirewallDisabledRuleGroupConfig](New-AzApplicationGatewayFirewallDisabledRuleGroupConfig.md)
 Creates a new disabled rule group configuration.
 
@@ -610,6 +619,24 @@ Creates a match variable for firewall condition.
 
 ### [New-AzApplicationGatewayFirewallPolicy](New-AzApplicationGatewayFirewallPolicy.md)
 Creates a application gateway firewall policy.
+
+### [New-AzApplicationGatewayFirewallPolicyExclusion](New-AzApplicationGatewayFirewallPolicyExclusion.md)
+Creates an exclusion on the Firewall Policy
+
+### [New-AzApplicationGatewayFirewallPolicyManagedRule](New-AzApplicationGatewayFirewallPolicyManagedRule.md)
+Create ManagedRules for the firewall policy.
+
+### [New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride](New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride.md)
+Creates RuleGroupOverride entry in ManagedRuleSets for the firewall policy.
+
+### [New-AzApplicationGatewayFirewallPolicyManagedRuleOverride](New-AzApplicationGatewayFirewallPolicyManagedRuleOverride.md)
+Creates a managedRuleOverride entry for RuleGroupOverrideGroup entry.
+
+### [New-AzApplicationGatewayFirewallPolicyManagedRuleSet](New-AzApplicationGatewayFirewallPolicyManagedRuleSet.md)
+Creates a ManagedRuleSet for the firewallPolicy
+
+### [New-AzApplicationGatewayFirewallPolicySetting](New-AzApplicationGatewayFirewallPolicySetting.md)
+Creates a policy setting for the firewall policy
 
 ### [New-AzApplicationGatewayFrontendIPConfig](New-AzApplicationGatewayFrontendIPConfig.md)
 Creates a front-end IP configuration for an application gateway.
@@ -755,6 +782,9 @@ Create a new Azure Firewall Policy Rule Collection Group
 ### [New-AzFirewallThreatIntelWhitelist](New-AzFirewallThreatIntelWhitelist.md)
 Create a new threat intelligence whitelist for Azure Firewall
 
+### [New-AzIpGroup](New-AzIpGroup.md)
+Creates an Azure IpGroup.
+
 ### [New-AzIpsecPolicy](New-AzIpsecPolicy.md)
 Creates an IPSec Policy.
 
@@ -821,6 +851,9 @@ Creates a new packet capture resource and starts a packet capture session on a V
 
 ### [New-AzNetworkWatcherProtocolConfiguration](New-AzNetworkWatcherProtocolConfiguration.md)
 Creates a new protocol configuration object.
+
+### [New-AzP2sVpnGateway](New-AzP2sVpnGateway.md)
+Create a new P2SVpnGateway under VirtualHub for point to site connectivity.
 
 ### [New-AzPacketCaptureFilterConfig](New-AzPacketCaptureFilterConfig.md)
 Creates a new packet capture filter object.
@@ -920,6 +953,9 @@ Creates a IPSec connection that connects a VpnGateway to a remote customer branc
 
 ### [New-AzVpnGateway](New-AzVpnGateway.md)
 Creates a Scalable VPN Gateway.
+
+### [New-AzVpnServerConfiguration](New-AzVpnServerConfiguration.md)
+Create a new VpnServerConfiguration for point to site connectivity.
 
 ### [New-AzVpnSite](New-AzVpnSite.md)
 Creates a new Azure VpnSite resource. This is an RM representation of customer branches that are uploaded to Azure
@@ -1045,6 +1081,9 @@ Removes an Azure Firewall Policy
 ### [Remove-AzFirewallPolicyRuleCollectionGroup](Remove-AzFirewallPolicyRuleCollectionGroup.md)
 Removes a Azure Firewall Policy Rule Collection Group in a Azure firewall policy
 
+### [Remove-AzIpGroup](Remove-AzIpGroup.md)
+Deletes an Azure IpGroup.
+
 ### [Remove-AzLoadBalancer](Remove-AzLoadBalancer.md)
 Removes a load balancer.
 
@@ -1101,6 +1140,9 @@ Remove connection monitor.
 
 ### [Remove-AzNetworkWatcherPacketCapture](Remove-AzNetworkWatcherPacketCapture.md)
 Removes a packet capture resource.
+
+### [Remove-AzP2sVpnGateway](Remove-AzP2sVpnGateway.md)
+Removes an existing P2SVpnGateway.
 
 ### [Remove-AzPrivateEndpoint](Remove-AzPrivateEndpoint.md)
 Removes a private endpoint.
@@ -1191,6 +1233,9 @@ Removes a VpnConnection.
 
 ### [Remove-AzVpnGateway](Remove-AzVpnGateway.md)
 The Remove-AzVpnGateway cmdlet removes an Azure VPN gateway. This is a gateway specific to Azure Virtual WAN's software defined connectivity.
+
+### [Remove-AzVpnServerConfiguration](Remove-AzVpnServerConfiguration.md)
+Removes an existing VpnServerConfiguration.
 
 ### [Remove-AzVpnSite](Remove-AzVpnSite.md)
 Removes an Azure VpnSite resource.
@@ -1305,6 +1350,9 @@ Saves a modified azure firewall policy
 
 ### [Set-AzFirewallPolicyRuleCollectionGroup](Set-AzFirewallPolicyRuleCollectionGroup.md)
 saves a modified azure firewall policy rule collection group
+
+### [Set-AzIpGroup](Set-AzIpGroup.md)
+Saves a modified Firewall.
 
 ### [Set-AzLoadBalancer](Set-AzLoadBalancer.md)
 Updates a load balancer.
@@ -1465,6 +1513,9 @@ Test availability of a private IP address in a virtual network.
 ### [Test-AzPrivateLinkServiceVisibility](Test-AzPrivateLinkServiceVisibility.md)
 The **Test-AzPrivateLinkServiceVisibility** checks whether a private link service is visible for current use.
 
+### [Update-AzP2sVpnGateway](Update-AzP2sVpnGateway.md)
+Update an existing P2SVpnGateway under VirtualHub for point to site connectivity.
+
 ### [Update-AzVirtualHub](Update-AzVirtualHub.md)
 Updates a virtual hub.
 
@@ -1482,6 +1533,9 @@ Updates a VPN connection.
 
 ### [Update-AzVpnGateway](Update-AzVpnGateway.md)
 Updates a scalable VPN gateway.
+
+### [Update-AzVpnServerConfiguration](Update-AzVpnServerConfiguration.md)
+Updates an existing VpnServerConfiguration.
 
 ### [Update-AzVpnSite](Update-AzVpnSite.md)
 Updates a VPN site.
