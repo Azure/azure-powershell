@@ -30,6 +30,7 @@
 * Remove aliases for deprecated Vulnerability Assessment Settings cmdlets
 * Deprecate Advanced Threat Detection Settings cmdlets 
 * Adding cmdlets to Disable and enable sensitivity recommendations on columns in a database.
+* Fix a small bug when reading auditing settings of a server or a database.
 
 ## Version 1.15.0
 * Add support for setting Active Directory Administrator on Managed Instance
