@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/d2ad5196-2292-4080-b209-ce4399b0a807/providers/Microsoft.Network/azureFirewallFqdnTags?api-version=2019-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDJhZDUxOTYtMjI5Mi00MDgwLWIyMDktY2U0Mzk5YjBhODA3L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9henVyZUZpcmV3YWxsRnFkblRhZ3M/YXBpLXZlcnNpb249MjAxOS0wOC0wMQ==",
+      "RequestUri": "/subscriptions/d2ad5196-2292-4080-b209-ce4399b0a807/providers/Microsoft.Network/azureFirewallFqdnTags?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDJhZDUxOTYtMjI5Mi00MDgwLWIyMDktY2U0Mzk5YjBhODA3L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9henVyZUZpcmV3YWxsRnFkblRhZ3M/YXBpLXZlcnNpb249MjAxOS0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4ffb1e7b-cf47-474c-b88a-1a3385a6ad5e"
+          "c827931a-e70d-4e32-bc57-8ff196bc962b"
         ],
         "accept-language": [
           "en-US"
@@ -24,7 +24,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Sep 2019 22:03:21 GMT"
+          "Mon, 14 Oct 2019 17:17:11 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -34,13 +34,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-request-id": [
-          "4b6d52e2-cec2-43ba-b65c-228bfaab8c45"
+          "b5999873-3121-434b-971b-e27c1435fb3c"
         ],
         "x-ms-correlation-request-id": [
-          "ae1eb8d9-0327-4c16-92d2-1b07e093e5dc"
+          "3b6aa5e3-2949-4a4d-ae5c-a6facbd0239c"
         ],
         "x-ms-arm-service-request-id": [
-          "8572482d-0af2-46cf-bff7-a4245b63d639"
+          "ca6de6f7-3d61-4aeb-8df1-75d962a3face"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -49,7 +49,7 @@
           "11999"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190918T220321Z:ae1eb8d9-0327-4c16-92d2-1b07e093e5dc"
+          "WESTUS2:20191014T171711Z:3b6aa5e3-2949-4a4d-ae5c-a6facbd0239c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
