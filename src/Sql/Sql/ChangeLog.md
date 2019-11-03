@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added support for database ReadReplicaCount.
+* Fixed Set-AzSqlDatabase when zone redundancy not set
 
 ## Version 2.0.0
 * Added support for restore of dropped databases on Managed Instances.
