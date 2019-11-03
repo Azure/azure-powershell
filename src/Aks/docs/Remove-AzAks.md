@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzAks
 
 ## SYNOPSIS
-
+Deletes the managed cluster with a specified resource group and name.
 
 ## SYNTAX
 
@@ -33,18 +33,18 @@ Remove-AzAks [-InputObject] <IAksIdentity> [-SubscriptionId <String>]
 ```
 
 ## DESCRIPTION
-
+Deletes the managed cluster with a specified resource group and name.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: 
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzAks -ResourceGroupName group -Name myCluster
 
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
+Delete an existing managed Kubernetes cluster
 
 ### Example 2: {{ Add title here }}
 ```powershell
@@ -58,7 +58,7 @@ PS C:\> {{ Add code here }}
 ## PARAMETERS
 
 ### -AsJob
-
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -74,7 +74,7 @@ Dynamic: False
 ```
 
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -90,7 +90,7 @@ Dynamic: False
 ```
 
 ### -Id
-
+Id of a managed Kubernetes cluster
 
 ```yaml
 Type: System.String
@@ -106,6 +106,7 @@ Dynamic: False
 ```
 
 ### -InputObject
+A IAksIdentity object, normally passed through the pipeline.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -122,7 +123,7 @@ Dynamic: False
 ```
 
 ### -Name
-
+Name of your managed Kubernetes cluster
 
 ```yaml
 Type: System.String
@@ -138,7 +139,7 @@ Dynamic: False
 ```
 
 ### -NoWait
-
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -154,7 +155,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -170,7 +171,7 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-
+Resource group name
 
 ```yaml
 Type: System.String
@@ -186,7 +187,8 @@ Dynamic: False
 ```
 
 ### -SubscriptionId
-
+Subscription credentials which uniquely identify Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
@@ -254,7 +256,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### INPUTOBJECT <IAksIdentity>: 
+#### INPUTOBJECT <IAksIdentity>: A IAksIdentity object, normally passed through the pipeline.
   - `[AgentPoolName <String>]`: The name of the agent pool.
   - `[Id <String>]`: Resource identity path
   - `[Name <String>]`: The name of the managed cluster resource.

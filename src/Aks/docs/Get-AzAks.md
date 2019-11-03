@@ -1,39 +1,67 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/get-azaksupgradeprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/get-azaks
 schema: 2.0.0
 ---
 
-# Get-AzAksUpgradeProfile
+# Get-AzAks
 
 ## SYNOPSIS
-Gets the details of the upgrade profile for a managed cluster with a specified resource group and name.
+List Kubernetes managed clusters.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
 ```
-Get-AzAksUpgradeProfile -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAks [-SubscriptionId <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### GroupNameParameterSet
 ```
-Get-AzAksUpgradeProfile -InputObject <IAksIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAks [-ResourceGroupName] <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### IdParameterSet
+```
+Get-AzAks [-Id] <String> [-SubscriptionId <String[]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Get-AzAks -InputObject <IAksIdentity> [-SubscriptionId <String[]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### NameParameterSet
+```
+Get-AzAks [-ResourceGroupName] <String> [-Name] <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the details of the upgrade profile for a managed cluster with a specified resource group and name.
+List Kubernetes managed clusters.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1:
 ```powershell
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.aks/get-azaksupgradeprofile
+PS C:\> Get-AzAks
+
 ```
 
+List Kubernetes managed clusters.
 
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -41,9 +69,9 @@ To view examples, please use the -Online parameter with Get-Help or navigate to:
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -53,13 +81,29 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Id
+Id of a managed Kubernetes cluster
+
+```yaml
+Type: System.String
+Parameter Sets: IdParameterSet
+Aliases: ResourceId
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
-Identity Parameter
+A IAksIdentity object, normally passed through the pipeline.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: InputObjectParameterSet
 Aliases:
 
 Required: True
@@ -75,11 +119,11 @@ The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: NameParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -91,11 +135,11 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GroupNameParameterSet, NameParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -108,7 +152,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -126,9 +170,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
 
+### System.String
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IManagedClusterUpgradeProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IManagedCluster
 
 ## ALIASES
 
@@ -137,7 +183,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### INPUTOBJECT <IAksIdentity>: Identity Parameter
+#### INPUTOBJECT <IAksIdentity>: A IAksIdentity object, normally passed through the pipeline.
   - `[AgentPoolName <String>]`: The name of the agent pool.
   - `[Id <String>]`: Resource identity path
   - `[Name <String>]`: The name of the managed cluster resource.

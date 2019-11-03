@@ -1,52 +1,51 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/update-azakstag
+online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/invoke-azrotateakscertificate
 schema: 2.0.0
 ---
 
-# Update-AzAksTag
+# Invoke-AzRotateAksCertificate
 
 ## SYNOPSIS
-Updates a managed cluster with the specified tags.
+Rotate certificates of a managed cluster.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### Rotate (Default)
 ```
-Update-AzAksTag -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzAksTag -Name <String> -ResourceGroupName <String> -Parameter <ITagsObject> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzRotateAksCertificate -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentity
+### RotateViaIdentity
 ```
-Update-AzAksTag -InputObject <IAksIdentity> -Parameter <ITagsObject> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzAksTag -InputObject <IAksIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzRotateAksCertificate -InputObject <IAksIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a managed cluster with the specified tags.
+Rotate certificates of a managed cluster.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.aks/update-azakstag
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
+{{ Add description here }}
 
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -88,29 +87,13 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: RotateViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Name
-The name of the managed cluster resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Update, UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -131,19 +114,18 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Tags object for patch operations.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.ITagsObject
-Parameter Sets: Update, UpdateViaIdentity
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -153,7 +135,23 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Rotate
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceName
+The name of the managed cluster resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Rotate
 Aliases:
 
 Required: True
@@ -170,28 +168,12 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Rotate
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -235,13 +217,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.ITagsObject
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IManagedCluster
+### System.Boolean
 
 ## ALIASES
 
@@ -257,10 +237,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[RoleName <String>]`: The name of the role for managed cluster accessProfile resource.
   - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-#### PARAMETER <ITagsObject>: Tags object for patch operations.
-  - `[Tag <ITagsObjectTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

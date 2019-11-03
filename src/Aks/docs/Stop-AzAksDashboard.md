@@ -8,7 +8,7 @@ schema: 2.0.0
 # Stop-AzAksDashboard
 
 ## SYNOPSIS
-
+Stop the Kubectl SSH tunnel created in Start-AzKubernetesDashboard.
 
 ## SYNTAX
 
@@ -18,18 +18,17 @@ Stop-AzAksDashboard [-SubscriptionId <String>] [-DefaultProfile <IAzureContextCo
 ```
 
 ## DESCRIPTION
-
+Stop the Kubectl SSH tunnel created in Start-AzKubernetesDashboard.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>  Stop-AzKubernetesDashboard
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Stops the existing SSH tunnel setup by executing Start-AzKubernetesDashboard
 
 ### Example 2: {{ Add title here }}
 ```powershell
@@ -43,7 +42,7 @@ PS C:\> {{ Add code here }}
 ## PARAMETERS
 
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -75,7 +74,8 @@ Dynamic: False
 ```
 
 ### -SubscriptionId
-
+Subscription credentials which uniquely identify Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String

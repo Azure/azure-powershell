@@ -1,40 +1,51 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/get-azaksaccessprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/get-azaksavailableagentpoolversion
 schema: 2.0.0
 ---
 
-# Get-AzAksAccessProfile
+# Get-AzAksAvailableAgentPoolVersion
 
 ## SYNOPSIS
-Gets the accessProfile for the specified role name of the managed cluster with a specified resource group and name.
+Gets a list of supported versions for the specified agent pool.
 
 ## SYNTAX
 
 ### Get (Default)
 ```
-Get-AzAksAccessProfile -Name <String> -ResourceGroupName <String> -RoleName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzAksAvailableAgentPoolVersion -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzAksAccessProfile -InputObject <IAksIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Get-AzAksAvailableAgentPoolVersion -InputObject <IAksIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the accessProfile for the specified role name of the managed cluster with a specified resource group and name.
+Gets a list of supported versions for the specified agent pool.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.aks/get-azaksaccessprofile
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
+{{ Add description here }}
 
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -103,22 +114,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RoleName
-The name of the role for managed cluster accessProfile resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -SubscriptionId
 Subscription credentials which uniquely identify Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -136,39 +131,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -178,7 +140,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IManagedClusterAccessProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IAgentPoolAvailableVersions
 
 ## ALIASES
 

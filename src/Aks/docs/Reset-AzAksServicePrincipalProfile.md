@@ -1,38 +1,32 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/import-azakscredential
+online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/reset-azaksserviceprincipalprofile
 schema: 2.0.0
 ---
 
-# Import-AzAksCredential
+# Reset-AzAksServicePrincipalProfile
 
 ## SYNOPSIS
-
+Update the service principal Profile for a managed cluster.
 
 ## SYNTAX
 
-### IdParameterSet (Default)
+### ResetExpanded (Default)
 ```
-Import-AzAksCredential [-Id] <String> [-SubscriptionId <String>] [-Admin] [-ConfigPath <String>]
- [-DefaultProfile <IAzureContextContainer>] [-Force] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### InputObjectParameterSet
-```
-Import-AzAksCredential -InputObject <IAksIdentity> [-SubscriptionId <String>] [-Admin] [-ConfigPath <String>]
- [-DefaultProfile <IAzureContextContainer>] [-Force] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Reset-AzAksServicePrincipalProfile -Name <String> -ResourceGroupName <String> -ClientId <String>
+ [-SubscriptionId <String>] [-Secret <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### NameParameterSet
+### ResetViaIdentityExpanded
 ```
-Import-AzAksCredential [-ResourceGroupName] <String> [-Name] <String> [-SubscriptionId <String>] [-Admin]
- [-ConfigPath <String>] [-DefaultProfile <IAzureContextContainer>] [-Force] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Reset-AzAksServicePrincipalProfile -InputObject <IAksIdentity> -ClientId <String> [-Secret <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
+Update the service principal Profile for a managed cluster.
 
 ## EXAMPLES
 
@@ -56,8 +50,8 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -Admin
-
+### -AsJob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -72,15 +66,15 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ConfigPath
-
+### -ClientId
+The ID for the service principal.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -89,59 +83,28 @@ Dynamic: False
 ```
 
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Force
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Id
-
-
-```yaml
-Type: System.String
-Parameter Sets: IdParameterSet
-Aliases: ResourceId
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -InputObject
+Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: InputObjectParameterSet
+Parameter Sets: ResetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -153,15 +116,31 @@ Dynamic: False
 ```
 
 ### -Name
-
+The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
+Parameter Sets: ResetExpanded
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -169,7 +148,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -185,15 +164,31 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-
+The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
+Parameter Sets: ResetExpanded
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Secret
+The secret password associated with the service principal in plain text.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -201,11 +196,12 @@ Dynamic: False
 ```
 
 ### -SubscriptionId
-
+Subscription credentials which uniquely identify Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResetExpanded
 Aliases:
 
 Required: False
@@ -256,11 +252,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
 
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20191001.IManagedClusterAccessProfile
+### System.Boolean
 
 ## ALIASES
 
@@ -269,7 +263,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### INPUTOBJECT <IAksIdentity>: 
+#### INPUTOBJECT <IAksIdentity>: Identity Parameter
   - `[AgentPoolName <String>]`: The name of the agent pool.
   - `[Id <String>]`: Resource identity path
   - `[Name <String>]`: The name of the managed cluster resource.

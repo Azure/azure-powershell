@@ -1,41 +1,53 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/reset-azaksserviceprincipalprofile
+online version: https://docs.microsoft.com/en-us/powershell/module/az.aks/reset-azaksaadprofile
 schema: 2.0.0
 ---
 
-# Reset-AzAksServicePrincipalProfile
+# Reset-AzAksAadProfile
 
 ## SYNOPSIS
-Update the service principal Profile for a managed cluster.
+Update the AAD Profile for a managed cluster.
 
 ## SYNTAX
 
 ### ResetExpanded (Default)
 ```
-Reset-AzAksServicePrincipalProfile -Name <String> -ResourceGroupName <String> -ClientId <String>
- [-SubscriptionId <String>] [-Secret <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Reset-AzAksAadProfile -Name <String> -ResourceGroupName <String> -ClientAppId <String> -ServerAppId <String>
+ [-SubscriptionId <String>] [-ServerAppSecret <String>] [-TenantId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ResetViaIdentityExpanded
 ```
-Reset-AzAksServicePrincipalProfile -InputObject <IAksIdentity> -ClientId <String> [-Secret <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Reset-AzAksAadProfile -InputObject <IAksIdentity> -ClientAppId <String> -ServerAppId <String>
+ [-ServerAppSecret <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update the service principal Profile for a managed cluster.
+Update the AAD Profile for a managed cluster.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.aks/reset-azaksserviceprincipalprofile
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
+{{ Add description here }}
 
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -55,8 +67,8 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ClientId
-The ID for the service principal.
+### -ClientAppId
+The client AAD application ID.
 
 ```yaml
 Type: System.String
@@ -168,8 +180,24 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Secret
-The secret password associated with the service principal in plain text.
+### -ServerAppId
+The server AAD application ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ServerAppSecret
+The server AAD application secret.
 
 ```yaml
 Type: System.String
@@ -196,6 +224,23 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TenantId
+The AAD tenant ID to use for authentication.
+If not specified, will use the tenant of the deployment subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
