@@ -114,7 +114,6 @@ namespace Microsoft.Azure.Commands.Profile.Common
         /// </summary>
         internal bool InitializeProfileProvider(bool useAutoSaveProfile = false)
         {
-            bool protectedProfileProviderInitSuccess = true;
 #if DEBUG
             if (!TestMockSupport.RunningMocked)
             {
@@ -128,15 +127,11 @@ namespace Microsoft.Azure.Commands.Profile.Common
                     catch(Exception e)
                     {
                         WriteDebugWithTimestamp(e.Message);
-                        protectedProfileProviderInitSuccess = false;
+                        ResourceManagerProfileProvider.InitializeResourceManagerProfile(true);
                     }
                 }
 
-                if (!protectedProfileProviderInitSuccess)
-                {
-                    ResourceManagerProfileProvider.InitializeResourceManagerProfile(true);
-                }
-                else if(!useAutoSaveProfile)
+                if (null == AzureRmProfileProvider.Instance)
                 {
                     switch (GetContextModificationScope())
                     {
@@ -155,7 +150,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
                 ResourceManagerProfileProvider.InitializeResourceManagerProfile();
             }
 #endif
-            return protectedProfileProviderInitSuccess;
+            return AzureRmProfileProvider.Instance is ProtectedProfileProvider;
         }
 
         /// <summary>
@@ -221,7 +216,6 @@ namespace Microsoft.Azure.Commands.Profile.Common
                 Mode = ContextSaveMode.Process
             };
 
-            FileUtilities.DataStore = session.DataStore;
             session.ARMContextSaveMode = ContextSaveMode.Process;
             var memoryCache = session.TokenCache as AuthenticationStoreTokenCache;
             if (memoryCache == null)
@@ -238,6 +232,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
 
             if (writeAutoSaveFile)
             {
+                FileUtilities.DataStore = session.DataStore;
                 FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
                 string autoSavePath = Path.Combine(session.ProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
                 session.DataStore.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));

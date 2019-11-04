@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
 using System.IO;
@@ -97,13 +98,20 @@ namespace Microsoft.Azure.Commands.Profile.Test
             string faker = Path.Combine(Directory.GetParent(profileBasePath).ToString(), "faker");
             faker = Path.Combine(faker,Resources.AzureDirectoryName);
             var backupPath = HookSettingFile(faker);
+
             try
             {
+                AzureSessionInitializer.CreateOrReplaceSession(dataStore);
+                TestMockSupport.RunningMocked = true;
                 var cmdlet = new ConnectAzureRmAccountCommand();
                 cmdlet.OnImport();
                 Assert.Equal(ContextSaveMode.Process, AzureSession.Instance.ARMContextSaveMode);
-                Assert.Equal(typeof(AuthenticationStoreTokenCache), AzureSession.Instance.TokenCache.GetType());
                 Assert.Equal(typeof(ResourceManagerProfileProvider), AzureRmProfileProvider.Instance.GetType());
+                var afterModified = dataStore.ReadFileAsText(settingsPath);
+                var newSetting = JsonConvert.DeserializeObject<ContextAutosaveSettings>(afterModified) as ContextAutosaveSettings;
+                Assert.NotNull(newSetting);
+                Assert.Equal(ContextSaveMode.CurrentUser, newSetting.Mode);
+                Assert.Equal(typeof(AuthenticationStoreTokenCache), AzureSession.Instance.TokenCache.GetType());
             }
             finally
             {
