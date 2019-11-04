@@ -135,5 +135,5 @@ directive:
       default:
         script: '50'
 
-subject-prefix: 'AzureBridge'
+subject-prefix: ''
 module-version: 0.0.1
