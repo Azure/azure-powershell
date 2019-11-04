@@ -188,7 +188,7 @@ function AddFunctionAppSettings
     )
 
     $App.AppServicePlan = ($App.ServerFarmId -split "/")[-1]
-    $App.OSType = if ($App.kind.ToLower().Contains("linux"){ "Linux" } else { "Windows" }
+    $App.OSType = if ($App.kind.ToLower().Contains("linux")){ "Linux" } else { "Windows" }
     
     $currentSubscription = $null
     $resetDefaultSubscription = $false
