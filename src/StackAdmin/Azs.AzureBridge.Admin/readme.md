@@ -1,6 +1,6 @@
 <!-- region Generated -->
 # Azs.AzureBridge.Admin
-This directory contains the PowerShell module for the BackupAdmin service.
+This directory contains the PowerShell module for the BridgeAdmin service.
 
 ---
 ## Status
@@ -48,14 +48,27 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azurestack.md
-  - $(repo)/specification/azsadmin/resource-manager/backup/readme.azsautogen.md
-  - $(repo)/specification/azsadmin/resource-manager/backup/readme.md
+  - $(repo)/specification/azsadmin/resource-manager/azurebridge/readme.azsautogen.md
+  - $(repo)/specification/azsadmin/resource-manager/azurebridge/readme.md
 
-### File Renames 
-module-name: Azs.AzureBridge.Admin 
-csproj: Azs.AzureBridge.Admin.csproj 
-psd1: Azs.AzureBridge.Admin.psd1 
+### File Renames
+module-name: Azs.AzureBridge.Admin
+csproj: Azs.AzureBridge.Admin.csproj
+psd1: Azs.AzureBridge.Admin.psd1
 psm1: Azs.AzureBridge.Admin.psm1
+
+directive:
+    # Default to Format-List for the Activation commandlets
+  - where:
+      model-name: ActivationResource
+    set:
+      suppress-format: true
+
+  - select: command
+    where:
+        parameter-name: ProductName
+      set:
+        alias: Name
 
 subject-prefix: ''
 module-version: 0.0.1
