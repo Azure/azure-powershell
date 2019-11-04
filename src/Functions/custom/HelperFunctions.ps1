@@ -188,7 +188,7 @@ function AddFunctionAppSettings
     )
 
     $App.AppServicePlan = ($App.ServerFarmId -split "/")[-1]
-    $App.OSType = if ($App.kind.Contains("linux", [StringComparison]::OrdinalIgnoreCase)){ "Linux" } else { "Windows" }
+    $App.OSType = if ($App.kindToLower().Contains("linux"){ "Linux" } else { "Windows" }
     
     $currentSubscription = $null
     $resetDefaultSubscription = $false
@@ -261,7 +261,7 @@ function GetFunctionApps
         $status = "Complete: $($index + 1)/$($Apps.Count) function apps processed."
         Write-Progress -Activity "Getting function apps" -Status $status -PercentComplete $percentageCompleted
         
-        if ($app.kind.Contains("functionapp", [StringComparison]::OrdinalIgnoreCase))
+        if ($app.kind.ToLower().Contains("functionapp"))
         {
             if ($Location)
             {

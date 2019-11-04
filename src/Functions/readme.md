@@ -54,6 +54,17 @@ module-version: 0.0.1
 title: Functions
 subject-prefix: ''
 
+metadata:
+  authors: Microsoft Corporation
+  owners: Microsoft Corporation
+  description: 'Microsoft Azure PowerShell - Azure Functions service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor information on Azure Functions, please visit the following: https://docs.microsoft.com/azure/azure-functions/'
+  copyright: Microsoft Corporation. All rights reserved.
+  tags: Azure ResourceManager ARM PSModule Functions
+  companyName: Microsoft Corporation
+  requireLicenseAcceptance: true
+  licenseUri: https://aka.ms/azps-license
+  projectUri: https://github.com/Azure/azure-powershell
+
 directive:
   - from: swagger-document
     where: $..produces
