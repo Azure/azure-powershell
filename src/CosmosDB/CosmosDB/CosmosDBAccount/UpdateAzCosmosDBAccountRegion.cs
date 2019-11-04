@@ -51,24 +51,26 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void ExecuteCmdlet()
         {
+            if (!ParameterSetName.Equals(NameParameterSet))
+            {
+                ResourceIdentifier resourceIdentifier = null;
+                if (ParameterSetName.Equals(ResourceIdParameterSet))
+                {
+                    resourceIdentifier = new ResourceIdentifier(ResourceId);
+                }
+                else if (ParameterSetName.Equals(ObjectParameterSet))
+                {
+                    resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                }
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                Name = resourceIdentifier.ResourceName;
+            }
+
             List<Location> locations = new List<Location>();
             foreach(string location in Location)
             {
                 Location l = new Location(location);
                 locations.Add(l);
-            }
-
-            if(ParameterSetName.Equals(ResourceIdParameterSet))
-            {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ResourceId);
-                ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                Name = resourceIdentifier.ResourceName;
-            }
-            else if(ParameterSetName.Equals(ObjectParameterSet))
-            {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
-                ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                Name = resourceIdentifier.ResourceName;
             }
 
             DatabaseAccountCreateUpdateParametersInner createUpdateParameters = new DatabaseAccountCreateUpdateParametersInner(locations);
@@ -88,7 +90,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
-            WriteObject(CosmosDBManagementClient.DatabaseAccounts.GetAsync(ResourceGroupName, Name).GetAwaiter().GetResult());
+            DatabaseAccountInner databaseAccount = CosmosDBManagementClient.DatabaseAccounts.GetAsync(ResourceGroupName, Name).GetAwaiter().GetResult();
+            WriteObject(new PSDatabaseAccount(databaseAccount));
         }
     }
 }

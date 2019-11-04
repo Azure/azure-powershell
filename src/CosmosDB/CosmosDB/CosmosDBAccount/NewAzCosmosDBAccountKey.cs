@@ -14,8 +14,8 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
+using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.CosmosDB.Fluent.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
@@ -40,18 +40,47 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, ParameterSetName = GetByResourceIdParameterSet, HelpMessage = Constants.ResourceIdHelpMessage)]
         public string ResourceId { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
+        public PSDatabaseAccount InputObject { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.PassThruHelpMessage)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
-           if (ParameterSetName.Equals(GetByResourceIdParameterSet))
+            if (!ParameterSetName.Equals(NameParameterSet))
             {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ResourceId);
+                ResourceIdentifier resourceIdentifier = null;
+                if (ParameterSetName.Equals(ResourceIdParameterSet))
+                {
+                    resourceIdentifier = new ResourceIdentifier(ResourceId);
+                }
+                else if (ParameterSetName.Equals(ObjectParameterSet))
+                {
+                    resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                }
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 Name = resourceIdentifier.ResourceName;
             }
-            CosmosDBManagementClient.DatabaseAccounts.RegenerateKeyWithHttpMessagesAsync(ResourceGroupName, Name, KeyKind);
+
+            try
+            {
+                CosmosDBManagementClient.DatabaseAccounts.RegenerateKeyWithHttpMessagesAsync(ResourceGroupName, Name, KeyKind);
+                if(PassThru)
+                {
+                    WriteObject(bool.TrueString);
+                }
+            }
+            catch
+            {
+                if (PassThru)
+                {
+                    WriteObject("Exception caught while Regenerating Key");
+                }
+            }
         }
     }
 }

@@ -33,5 +33,19 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AccountRelatedCmdlets");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestResourceIdParameterSet()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ResourceIdParameterSet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAccountRelatedCmdletsUsingObjectParameterSet()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ObjectParameterSet");
+        }
     }
 }

@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string[] VirtualNetworkRule { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.ApiKindHelpMessage)]
-        [PSArgumentCompleter("GlobalDocumentDB", "MongoDB")]
+        [PSArgumentCompleter("GlobalDocumentDB", "MongoDB", "Others")]
         public string ApiKind { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.AsJobHelpMessage)]
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountCreateUpdateParameters.VirtualNetworkRules = virtualNetworkRule;
 
             DatabaseAccountInner cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.BeginCreateOrUpdateAsync(ResourceGroupName, Name, databaseAccountCreateUpdateParameters).GetAwaiter().GetResult();
-            WriteObject(cosmosDBAccount);
+            WriteObject(new PSDatabaseAccount(cosmosDBAccount));
         }
     }
 }

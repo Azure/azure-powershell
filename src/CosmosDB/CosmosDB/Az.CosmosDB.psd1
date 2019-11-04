@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.3.0'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -76,14 +76,7 @@ FunctionsToExport = @()
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'New-AzCosmosDBAccount', 'Remove-AzCosmosDBAccount', 'Get-AzCosmosDBAccount',
                'Get-AzCosmosDBAccountKey', 'New-AzCosmosDBAccountKey', 'Update-AzCosmosDBAccount', 
-               'Update-AzCosmosDBAccountRegion', 'Update-AzCosmosDBAccountFailoverPriority',
-               'Get-AzCosmosDBSqlContainer', 'Get-AzCosmosDBSqlContainerThroughput',
-               'Get-AzCosmosDBSqlDatabase', 'Get-AzCosmosDBSqlDatabaseThroughput',
-               'New-AzCosmosDBSqlCompositeIndex', 'New-AzCosmosDBSqlConflictResolutionPolicy',
-               'New-AzCosmosDBSqlIndexingPolicy', 'New-AzCosmosDBSqlSpatialSpec',
-               'New-AzCosmosDBSqlUniqueKey', 'New-AzCosmosDBSqlUniqueKeyPolicy',
-               'Remove-AzCosmosDBSqlContainer', 'Remove-AzCosmosDBSqlDatabase',
-               'Set-AzCosmosDBSqlContainer', 'Set-AzCosmosDBSqlDatabase'
+               'Update-AzCosmosDBAccountRegion', 'Update-AzCosmosDBAccountFailoverPriority'
  
 # Variables to export from this module
 # VariablesToExport = @()

@@ -76,73 +76,94 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName.Equals(ResourceIdParameterSet))
+            if (!ParameterSetName.Equals(NameParameterSet))
             {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ResourceId);
-                ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                Name = resourceIdentifier.ResourceName;
-            }
-            else if (ParameterSetName.Equals(ObjectParameterSet))
-            {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
-                ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                Name = resourceIdentifier.ResourceName;
-            }
-
-            ConsistencyPolicy consistencyPolicy = new ConsistencyPolicy();
-            {
-                switch (DefaultConsistencyLevel)
+                ResourceIdentifier resourceIdentifier = null;
+                if (ParameterSetName.Equals(ResourceIdParameterSet))
                 {
-                    case "Strong":
-                        consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Fluent.Models.DefaultConsistencyLevel.Strong;
-                        break;
+                    resourceIdentifier = new ResourceIdentifier(ResourceId);
+                }
+                else if (ParameterSetName.Equals(ObjectParameterSet))
+                {
+                    resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                }
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                Name = resourceIdentifier.ResourceName;
+            }
 
-                    case "Session":
-                        consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Fluent.Models.DefaultConsistencyLevel.Session;
-                        break;
+            DatabaseAccountInner readDatabase = CosmosDBManagementClient.DatabaseAccounts.GetAsync(ResourceGroupName, Name).GetAwaiter().GetResult();
 
-                    case "Eventual":
-                        consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Fluent.Models.DefaultConsistencyLevel.Eventual;
-                        break;
+            DatabaseAccountCreateUpdateParametersInner databaseAccountCreateUpdateParameters = new DatabaseAccountCreateUpdateParametersInner(locations: readDatabase.ReadLocations, location: readDatabase.WriteLocations.ElementAt(0).LocationName, name: Name);
+            databaseAccountCreateUpdateParameters.EnableMultipleWriteLocations = EnableMultipleWriteLocations;
+            databaseAccountCreateUpdateParameters.IsVirtualNetworkFilterEnabled = EnableVirtualNetwork;
+            databaseAccountCreateUpdateParameters.EnableAutomaticFailover = EnableAutomaticFailover;
 
-                    case "ConsistentPrefix":
-                        consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Fluent.Models.DefaultConsistencyLevel.ConsistentPrefix;
-                        break;
+            if (DefaultConsistencyLevel != null)
+            {
+                ConsistencyPolicy consistencyPolicy = new ConsistencyPolicy();
+                {
+                    switch (DefaultConsistencyLevel)
+                    {
+                        case "Strong":
+                            consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Fluent.Models.DefaultConsistencyLevel.Strong;
+                            break;
 
-                    case "BoundedStaleness":
-                        consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Fluent.Models.DefaultConsistencyLevel.BoundedStaleness;
-                        consistencyPolicy.MaxIntervalInSeconds = MaxStalenessIntervalInSeconds;
-                        consistencyPolicy.MaxStalenessPrefix = MaxStalenessPrefix;
-                        break;
+                        case "Session":
+                            consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Fluent.Models.DefaultConsistencyLevel.Session;
+                            break;
 
-                    default:
-                        consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Fluent.Models.DefaultConsistencyLevel.Session;
-                        break;
+                        case "Eventual":
+                            consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Fluent.Models.DefaultConsistencyLevel.Eventual;
+                            break;
+
+                        case "ConsistentPrefix":
+                            {
+                                consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Fluent.Models.DefaultConsistencyLevel.ConsistentPrefix;
+                                break;
+                            }
+
+                        case "BoundedStaleness":
+                            {
+                                consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Fluent.Models.DefaultConsistencyLevel.BoundedStaleness;
+                                consistencyPolicy.MaxIntervalInSeconds = MaxStalenessIntervalInSeconds;
+                                consistencyPolicy.MaxStalenessPrefix = MaxStalenessPrefix;
+                                break;
+                            }
+
+                        default:
+                            consistencyPolicy.DefaultConsistencyLevel = Management.CosmosDB.Fluent.Models.DefaultConsistencyLevel.Session;
+                            break;
+                    }
+                    databaseAccountCreateUpdateParameters.ConsistencyPolicy = consistencyPolicy;
                 }
             }
 
-            Dictionary<string, string> tags = new Dictionary<string, string>();
             if (Tag != null)
             {
+                Dictionary<string, string> tags = new Dictionary<string, string>();
                 foreach (string key in Tag.Keys)
                 {
                     tags.Add(key, Tag[key].ToString());
                 }
+                databaseAccountCreateUpdateParameters.Tags = tags;
             }
 
-            Collection<VirtualNetworkRule> virtualNetworkRule = new Collection<VirtualNetworkRule>();
             if (VirtualNetworkRule != null)
             {
+                Collection<VirtualNetworkRule> virtualNetworkRule = new Collection<VirtualNetworkRule>();
+
                 foreach (string id in VirtualNetworkRule)
                 {
                     VirtualNetworkRule vNetRule = new VirtualNetworkRule(id: id);
                     virtualNetworkRule.Add(vNetRule);
                 }
+
+                databaseAccountCreateUpdateParameters.VirtualNetworkRules = virtualNetworkRule;
             }
 
-            string IpRangeFilterAsString = null;
             if (IpRangeFilter != null)
             {
+                string IpRangeFilterAsString = null;
 
                 for (int i = 0; i < IpRangeFilter.Length; i++)
                 {
@@ -153,22 +174,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     else
                     IpRangeFilterAsString = string.Concat(IpRangeFilterAsString, ",", IpRangeFilter[i]);
                 }
+                databaseAccountCreateUpdateParameters.IpRangeFilter = IpRangeFilterAsString;
             }
 
-            DatabaseAccountInner readDatabase = CosmosDBManagementClient.DatabaseAccounts.GetAsync(ResourceGroupName, Name).GetAwaiter().GetResult();
-            List<Location> locations = new List<Location>();
-            locations.AddRange(readDatabase.WriteLocations);
-            locations.AddRange(readDatabase.ReadLocations);
-
-            DatabaseAccountCreateUpdateParametersInner databaseAccountCreateUpdateParameters = new DatabaseAccountCreateUpdateParametersInner(locations: locations, location:locations[0].LocationName, name: Name, consistencyPolicy: consistencyPolicy, tags: tags, ipRangeFilter: IpRangeFilterAsString);
-            databaseAccountCreateUpdateParameters.EnableMultipleWriteLocations = EnableMultipleWriteLocations;
-            databaseAccountCreateUpdateParameters.IsVirtualNetworkFilterEnabled = EnableVirtualNetwork;
-            databaseAccountCreateUpdateParameters.EnableAutomaticFailover = EnableAutomaticFailover;
-            databaseAccountCreateUpdateParameters.VirtualNetworkRules = virtualNetworkRule;
-
-            DatabaseAccountInner cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.BeginCreateOrUpdateAsync(ResourceGroupName, Name, databaseAccountCreateUpdateParameters).Result;
-
+            DatabaseAccountInner cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.BeginCreateOrUpdateAsync(ResourceGroupName, Name, databaseAccountCreateUpdateParameters).GetAwaiter().GetResult();
             WriteObject(cosmosDBAccount);
+
+            return;
         }
     }
 }

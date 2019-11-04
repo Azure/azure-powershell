@@ -11,38 +11,54 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-
 <#
 .SYNOPSIS
 Gets and removes custom domain with running endpoint.
 #>
+
 function Test-AccountRelatedCmdlets
 {
-  $rgname = "testrg789451294120172101"
-  $preferedlocation = "East US"
+  $rgName = "rgtest9921232812"
+  $location = "East US"
   $locationlist = "East US", "West US"
-  $locationlist2 = "West US", "East US"
-  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgname  -Location $preferedlocation
-  $cosmosDBAccountName1 = "testcosmosdb789451294120172101"
-  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName1 -Location  $locationlist
+  $locationlist2 = "East US", "UK South", "UK West", "South India"
+  $locationlist3 = "West US", "East US"
+
+  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+
+  $cosmosDBAccountName1 = "cosmosdb9921232812"
+  $cosmosDBAccountName2 = "cosmosdb99121232812"
+  $cosmosDBAccountName3 = "cosmosdb99221232812" 
+
+  $cosmosDBExistingAccountName = "cosmosdb99"
+  $existingResourceGroupName = "rgtest99"
+
+  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName1 -Location  $locationlist
+  do 
+    {
+       $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName1
+    } while ($cosmosDBAccount.ProvisioningState -ne "Succeeded")
   Assert-AreEqual $cosmosDBAccountName1 $cosmosDBAccount.Name
 
-  $cosmosDBAccountName2 = "testcosmosdb789451194120172101"
-  $cosmosDBAccount2 = New-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName2 -DefaultConsistencyLevel "Eventual" -Location  $locationlist  -ApiKind "MongoDB"
+  $cosmosDBAccount2 = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName2 -DefaultConsistencyLevel "Eventual" -Location  $locationlist  -ApiKind "MongoDB"
+  do 
+    {
+       $cosmosDBAccount2 = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName2
+    } while ($cosmosDBAccount2.ProvisioningState -ne "Succeeded")
+
   Assert-AreEqual $cosmosDBAccountName2 $cosmosDBAccount2.Name
   Assert-AreEqual "Eventual" $cosmosDBAccount2.ConsistencyPolicy.DefaultConsistencyLevel
   Assert-AreEqual "MongoDB" $cosmosDBAccount2.Kind
   
-  Remove-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName2
-
-  $getCosmosDBAccountResult1 = Get-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName1
-  Assert-NotNull $getCosmosDBAccountResult1
-
   $ipRangeFilter = "192.168.0.1"
   $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
 
-  $cosmosDBAccountName3 = "testcosmosdb789452194120172101" 
-  $cosmosDBAccount3 = New-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName3 -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $locationlist -IpRangeFilter $ipRangeFilter -Tag $tags -EnableVirtualNetwork  -EnableMultipleWriteLocations  -EnableAutomaticFailover
+  $cosmosDBAccount3 = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName3 -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $locationlist -IpRangeFilter $ipRangeFilter -Tag $tags -EnableVirtualNetwork  -EnableMultipleWriteLocations  -EnableAutomaticFailover
+    do 
+    {
+       $cosmosDBAccount3 = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName3
+    } while ($cosmosDBAccount3.ProvisioningState -ne "Succeeded")
+
   Assert-AreEqual $cosmosDBAccountName3 $cosmosDBAccount3.Name
   Assert-AreEqual "BoundedStaleness" $cosmosDBAccount3.ConsistencyPolicy.DefaultConsistencyLevel
   Assert-AreEqual 10 $cosmosDBAccount3.ConsistencyPolicy.MaxIntervalInSeconds
@@ -52,21 +68,187 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual $cosmosDBAccount3.EnableMultipleWriteLocations 1
   Assert-AreEqual $cosmosDBAccount3.IsVirtualNetworkFilterEnabled 1
 
-  $IsAccountDeleted = Remove-AzCosmosDBAccount -Name $cosmosDBAccountName1 -ResourceGroupName $rgname -PassThru
-  Assert-AreEqual $IsAccountDeleted true
- 
-  #$updatedCosmosDBAccount2 = Update-AzCosmosDBAccount -ResourceGroupName $rgname -Name $cosmosDBAccountName2 -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRangeFilter $ipRangeFilter -Tag $tags -EnableVirtualNetwork 1 -EnableMultipleWriteLocations 1 -EnableAutomaticFailover 1 -Location $locationlist2
-  #Assert-AreEqual $cosmosDBAccountName2 $cosmosDBAccount2.Name
-  #Assert-AreEqual "BoundedStaleness" $cosmosDBAccount2.ConsistencyPolicy.DefaultConsistencyLevel
-  #Assert-AreEqual 10 $cosmosDBAccount2.ConsistencyPolicy.MaxIntervalInSeconds
-  #Assert-AreEqual 20 $cosmosDBAccount2.ConsistencyPolicy.MaxStalenessPrefix
-  #Assert-AreEqual "192.168.0.1" $cosmosDBAccount2.IpRangeFilter
-  #Assert-AreEqual $cosmosDBAccount2.EnableAutomaticFailover 1 
-  #Assert-AreEqual $cosmosDBAccount2.EnableMultipleWriteLocations 1
-  #Assert-AreEqual $cosmosDBAccount2.IsVirtualNetworkFilterEnabled 1
+  $updatedCosmosDBAccount2 = Update-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRangeFilter $ipRangeFilter -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 
+    do 
+    {
+       $updatedCosmosDBAccount2 = Get-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName
+    } while ($updatedCosmosDBAccount2.ProvisioningState -ne "Succeeded")
 
-  $updatedCosmosDBAccount2Location = Update-AzCosmosDBAccountRegion -ResourceGroupName $rgname -Name $cosmosDBAccountName2 -Location $locationlist2
-  
-  $updatedFailoverPriority = Update-AzCosmosDBAccountFailoverPriority -ResourceGroupName $rgname -Name $cosmosDBAccountName2 -FailoverPolicy $locationlist -PassThru
+  Assert-AreEqual $cosmosDBExistingAccountName $updatedCosmosDBAccount2.Name
+  Assert-AreEqual "BoundedStaleness" $updatedCosmosDBAccount2.ConsistencyPolicy.DefaultConsistencyLevel
+  Assert-AreEqual 10 $updatedCosmosDBAccount2.ConsistencyPolicy.MaxIntervalInSeconds
+  Assert-AreEqual 20 $updatedCosmosDBAccount2.ConsistencyPolicy.MaxStalenessPrefix
+  Assert-AreEqual "192.168.0.1" $updatedCosmosDBAccount2.IpRangeFilter
+  Assert-AreEqual $updatedCosmosDBAccount2.EnableAutomaticFailover 1 
+  Assert-AreEqual $updatedCosmosDBAccount2.IsVirtualNetworkFilterEnabled 1
+
+  $updatedCosmosDBAccount2Location = Update-AzCosmosDBAccountRegion -ResourceGroupName $rgName -Name $cosmosDBAccountName2 -Location $locationlist2 -PassThru
+  $updatedFailoverPriority = Update-AzCosmosDBAccountFailoverPriority -ResourceGroupName $rgName -Name $cosmosDBAccountName2 -FailoverPolicy $locationlist -PassThru
   Assert-AreEqual $updatedFailoverPriority true
+
+  $IsAccountDeleted = Remove-AzCosmosDBAccount -Name $cosmosDBAccountName1 -ResourceGroupName $rgName -PassThru
+  Assert-AreEqual $IsAccountDeleted true
+
+  do 
+    {
+		$DeletedAccount = Get-AzCosmosDBAccount -Name $cosmosDBAccountName1 -ResourceGroupName $rgName
+    } while ($DeletedAccount.ProvisioningState -ne "Deleting")
+  
+  $IsAccountDeleted = Remove-AzCosmosDBAccount -Name $cosmosDBAccountName2 -ResourceGroupName $rgName -PassThru
+  Assert-AreEqual $IsAccountDeleted true
+
+  do 
+    {
+		$DeletedAccount = Get-AzCosmosDBAccount -Name $cosmosDBAccountName2 -ResourceGroupName $rgName
+    } while ($DeletedAccount.ProvisioningState -ne "Deleting")
+
+  $IsAccountDeleted = Remove-AzCosmosDBAccount -Name $cosmosDBAccountName3 -ResourceGroupName $rgName -PassThru
+  Assert-AreEqual $IsAccountDeleted true
+
+  do 
+    {
+		$DeletedAccount = Get-AzCosmosDBAccount -Name $cosmosDBAccountName3 -ResourceGroupName $rgName
+    } while ($DeletedAccount.ProvisioningState -ne "Deleting")
+}
+
+function Test-ResourceIdParameterSet
+{
+  $rgName = "rgtest992125"
+  $location = "East US"
+  $locationlist = "East US", "West US"
+  $locationlist2 = "East US", "UK South", "UK West", "South India"
+  $locationlist3 = "West US", "East US"
+
+  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+
+  $cosmosDBAccountName1 = "cosmosdb992125"
+  $cosmosDBAccountName2 = "cosmosdb9912125"
+  $cosmosDBAccountName3 = "cosmosdb9922125" 
+
+  $cosmosDBExistingAccountName = "cosmosdb99"
+  $existingResourceGroupName = "rgtest99"
+
+  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName1 -Location  $locationlist
+  do 
+    {
+       $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceId $cosmosDBAccount.Id
+    } while ($cosmosDBAccount.ProvisioningState -ne "Succeeded")
+  Assert-AreEqual $cosmosDBAccountName1 $cosmosDBAccount.Name
+
+  $cosmosDBAccount2 = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName2 -DefaultConsistencyLevel "Eventual" -Location  $locationlist  -ApiKind "MongoDB"
+  do 
+    {
+       $cosmosDBAccount2 = Get-AzCosmosDBAccount -ResourceId $cosmosDBAccount2.Id
+    } while ($cosmosDBAccount2.ProvisioningState -ne "Succeeded")
+
+  Assert-AreEqual $cosmosDBAccountName2 $cosmosDBAccount2.Name
+  Assert-AreEqual "Eventual" $cosmosDBAccount2.ConsistencyPolicy.DefaultConsistencyLevel
+  Assert-AreEqual "MongoDB" $cosmosDBAccount2.Kind
+  
+  $ipRangeFilter = "192.168.0.1"
+  $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
+
+  $cosmosDBAccount3 = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName3 -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $locationlist -IpRangeFilter $ipRangeFilter -Tag $tags -EnableVirtualNetwork  -EnableMultipleWriteLocations  -EnableAutomaticFailover
+    do 
+    {
+       $cosmosDBAccount3 = Get-AzCosmosDBAccount -ResourceId  $cosmosDBAccount3.Id
+    } while ($cosmosDBAccount3.ProvisioningState -ne "Succeeded")
+
+  Assert-AreEqual $cosmosDBAccountName3 $cosmosDBAccount3.Name
+  Assert-AreEqual "BoundedStaleness" $cosmosDBAccount3.ConsistencyPolicy.DefaultConsistencyLevel
+  Assert-AreEqual 10 $cosmosDBAccount3.ConsistencyPolicy.MaxIntervalInSeconds
+  Assert-AreEqual 20 $cosmosDBAccount3.ConsistencyPolicy.MaxStalenessPrefix
+  Assert-AreEqual "192.168.0.1" $cosmosDBAccount3.IpRangeFilter
+  Assert-AreEqual $cosmosDBAccount3.EnableAutomaticFailover 1 
+  Assert-AreEqual $cosmosDBAccount3.EnableMultipleWriteLocations 1
+  Assert-AreEqual $cosmosDBAccount3.IsVirtualNetworkFilterEnabled 1
+
+  $updatedCosmosDBAccount2 = Update-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRangeFilter $ipRangeFilter -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 
+    do 
+    {
+       $updatedCosmosDBAccount2 = Get-AzCosmosDBAccount -ResourceId $updatedCosmosDBAccount2.Id
+    } while ($updatedCosmosDBAccount2.ProvisioningState -ne "Succeeded")
+
+  Assert-AreEqual $cosmosDBExistingAccountName $updatedCosmosDBAccount2.Name
+  Assert-AreEqual "BoundedStaleness" $updatedCosmosDBAccount2.ConsistencyPolicy.DefaultConsistencyLevel
+  Assert-AreEqual 10 $updatedCosmosDBAccount2.ConsistencyPolicy.MaxIntervalInSeconds
+  Assert-AreEqual 20 $updatedCosmosDBAccount2.ConsistencyPolicy.MaxStalenessPrefix
+  Assert-AreEqual "192.168.0.1" $updatedCosmosDBAccount2.IpRangeFilter
+  Assert-AreEqual $updatedCosmosDBAccount2.EnableAutomaticFailover 1 
+  Assert-AreEqual $updatedCosmosDBAccount2.IsVirtualNetworkFilterEnabled 1
+
+  $updatedCosmosDBAccount2Location = Update-AzCosmosDBAccountRegion -ResourceId $cosmosDBAccount2.Id -Location $locationlist2 -PassThru
+  $updatedFailoverPriority = Update-AzCosmosDBAccountFailoverPriority -ResourceId $cosmosDBAccount2.Id -FailoverPolicy $locationlist -PassThru
+  Assert-AreEqual $updatedFailoverPriority true
+
+  $IsAccountDeleted = Remove-AzCosmosDBAccount -ResourceId $cosmosDBAccount.Id -PassThru
+  Assert-AreEqual $IsAccountDeleted true
+
+  do 
+    {
+		$DeletedAccount = Get-AzCosmosDBAccount -ResourceId $cosmosDBAccount.Id
+    } while ($DeletedAccount.ProvisioningState -ne "Deleting")
+  
+  $IsAccountDeleted = Remove-AzCosmosDBAccount -ResourceId $cosmosDBAccount.Id -PassThru
+  Assert-AreEqual $IsAccountDeleted true
+
+  do 
+    {
+		$DeletedAccount = Get-AzCosmosDBAccount -ResourceId $cosmosDBAccount2.Id
+    } while ($DeletedAccount.ProvisioningState -ne "Deleting")
+
+  $IsAccountDeleted = Remove-AzCosmosDBAccount -ResourceId $cosmosDBAccount3.Id -PassThru
+  Assert-AreEqual $IsAccountDeleted true
+
+  do 
+    {
+		$DeletedAccount = Get-AzCosmosDBAccount -ResourceId $cosmosDBAccount3.Id
+    } while ($DeletedAccount.ProvisioningState -ne "Deleting")
+}
+
+function Test-ObjectParameterSet
+{
+  $rgName = "rgtest99212328411212"
+  $location = "East US"
+  $locationlist = "East US", "West US"
+  $locationlist2 = "East US", "UK South", "UK West", "South India"
+  $locationlist3 = "West US", "East US"
+
+  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+
+  $cosmosDBAccountName1 = "cosmosdb99212328411212"
+
+  $cosmosDBExistingAccountName = "cosmosdb99"
+  $existingResourceGroupName = "rgtest99"
+
+  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName1 -Location  $locationlist
+  do 
+    {
+       $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName1
+    } while ($cosmosDBAccount.ProvisioningState -ne "Succeeded")
+  Assert-AreEqual $cosmosDBAccountName1 $cosmosDBAccount.Name
+
+  $ipRangeFilter = "192.168.0.1"
+  $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
+
+  $updatedCosmosDBAccount2 = Update-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRangeFilter $ipRangeFilter -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 
+    do 
+    {
+       $updatedCosmosDBAccount2 = Get-AzCosmosDBAccount -ResourceGroupName $existingResourceGroupName -Name $cosmosDBExistingAccountName
+    } while ($updatedCosmosDBAccount2.ProvisioningState -ne "Succeeded")
+
+  Assert-AreEqual $cosmosDBExistingAccountName $updatedCosmosDBAccount2.Name
+  Assert-AreEqual "BoundedStaleness" $updatedCosmosDBAccount2.ConsistencyPolicy.DefaultConsistencyLevel
+  Assert-AreEqual 10 $updatedCosmosDBAccount2.ConsistencyPolicy.MaxIntervalInSeconds
+  Assert-AreEqual 20 $updatedCosmosDBAccount2.ConsistencyPolicy.MaxStalenessPrefix
+  Assert-AreEqual "192.168.0.1" $updatedCosmosDBAccount2.IpRangeFilter
+  Assert-AreEqual $updatedCosmosDBAccount2.EnableAutomaticFailover 1 
+  Assert-AreEqual $updatedCosmosDBAccount2.IsVirtualNetworkFilterEnabled 1
+
+  $updatedCosmosDBAccount2Location = Update-AzCosmosDBAccountRegion -InputObject $cosmosDBAccount -Location $locationlist2 -PassThru
+  $updatedFailoverPriority = Update-AzCosmosDBAccountFailoverPriority -InputObject $cosmosDBAccount -FailoverPolicy $locationlist -PassThru
+  Assert-AreEqual $updatedFailoverPriority true
+
+  $IsAccountDeleted = Remove-AzCosmosDBAccount -InputObject $cosmosDBAccount -PassThru
+  Assert-AreEqual $IsAccountDeleted true
 }

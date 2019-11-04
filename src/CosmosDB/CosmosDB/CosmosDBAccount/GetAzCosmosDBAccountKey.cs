@@ -39,11 +39,22 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = Constants.ResourceIdHelpMessage)]
         public string ResourceId { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
+        public PSDatabaseAccount InputObject { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName.Equals(ResourceIdParameterSet))
+            if (!ParameterSetName.Equals(NameParameterSet))
             {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ResourceId);
+                ResourceIdentifier resourceIdentifier = null;
+                if (ParameterSetName.Equals(ResourceIdParameterSet))
+                {
+                   resourceIdentifier = new ResourceIdentifier(ResourceId);
+                }
+                else if (ParameterSetName.Equals(ObjectParameterSet))
+                {
+                   resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                }
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 Name = resourceIdentifier.ResourceName;
             }

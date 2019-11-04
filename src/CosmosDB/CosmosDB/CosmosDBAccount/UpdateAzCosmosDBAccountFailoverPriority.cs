@@ -52,26 +52,28 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void ExecuteCmdlet()
         {
+            if (!ParameterSetName.Equals(NameParameterSet))
+            {
+                ResourceIdentifier resourceIdentifier = null;
+                if (ParameterSetName.Equals(ResourceIdParameterSet))
+                {
+                    resourceIdentifier = new ResourceIdentifier(ResourceId);
+                }
+                else if (ParameterSetName.Equals(ObjectParameterSet))
+                {
+                    resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                }
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                Name = resourceIdentifier.ResourceName;
+            }
+
             IList<FailoverPolicyInner> failoverPolicies = new List<FailoverPolicyInner>();
             for (int i = 0 ; i < FailoverPolicy.Length; i++ )
             {
                 FailoverPolicyInner failoverPolicy = new FailoverPolicyInner(locationName: FailoverPolicy[i], failoverPriority: i);
                 failoverPolicies.Add(failoverPolicy);
             }
-           
-            if(ParameterSetName.Equals(ResourceIdParameterSet))
-            {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ResourceId);
-                ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                Name = resourceIdentifier.ResourceName;
-            }
-            else if(ParameterSetName.Equals(ObjectParameterSet))
-            {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(InputObject.Id);
-                ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                Name = resourceIdentifier.ResourceName;
-            }
-
+                     
             try
             {
                 CosmosDBManagementClient.DatabaseAccounts.FailoverPriorityChangeAsync(ResourceGroupName, Name, failoverPolicies);
