@@ -74,7 +74,7 @@ aks: $(repo)/specification/containerservice/resource-manager/Microsoft.Container
 input-file:
 - $(aks)/stable/2019-10-01/managedClusters.json
 
-module-version: 4.0.1
+module-version: 4.0.0
 title: AksClient
 ```
 
@@ -297,7 +297,7 @@ directive:
 # Fix the name of the module in the nuspec
   - from: Az.Aks.nuspec
     where: $
-    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - Aks service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor more information on DNS, please visit the following$1 https://docs.microsoft.com/azure/aks/');
+    transform: $ = $.replace(/Microsoft Azure PowerShell(.) \$\(service-name\) cmdlets/, 'Microsoft Azure PowerShell - Aks service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor more information on Aks, please visit the following$1 https://docs.microsoft.com/azure/aks/');
 # Add release notes
   - from: Az.Aks.nuspec
     where: $
@@ -310,4 +310,17 @@ directive:
   - from: Az.Aks.nuspec
     where: $
     transform: $ = $.replace('<file src="bin/Az.Aks.private.dll" target="bin" />', '<file src="bin/Az.Aks.private.dll" target="bin" />\n    <file src="bin/YamlDotNet.dll" target="bin" />')
+# Update the psd1 description
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell(.) Aks cmdlets\"\}\'\"\);/, 'sb.AppendLine\(\$@\"\{Indent\}Description = \'\{\"Microsoft Azure PowerShell - Aks service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\\n\\nFor more information on Aks, please visit the following$1 https://docs.microsoft.com/azure/aks/\"\}\'\"\);');
+# Make this a preview module
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'\'\"\);', 'sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}ReleaseNotes = \'Initial release of preview Aks cmdlets - see https://aka.ms/azps4doc for more information.\'\"\);\n            sb.AppendLine\(\$@\"\{Indent\}\{Indent\}\{Indent\}Prerelease = \'preview\'\"\);' );
+# Update .gitignore for samples for preview
+  - from: .gitignore
+    where: $
+    transform: $ = $.replace('exports', '/exports');
+
 ```
