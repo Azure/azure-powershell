@@ -14,7 +14,7 @@
 
 function Test-AzureVMGetItems
 {
-	$location = Get-ResourceGroupLocation
+	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup $location
 
 	try
@@ -121,7 +121,7 @@ function Test-AzureVMGetItems
 
 function Test-AzureVMProtection
 {
-	$location = Get-ResourceGroupLocation
+	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup $location
 
 	try
@@ -184,7 +184,7 @@ function Test-AzureVMProtection
 
 function Test-AzureVMGetRPs
 {
-	$location = Get-ResourceGroupLocation
+	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup $location
 
 	try
@@ -249,7 +249,7 @@ function Test-AzureVMGetRPs
 
 function Test-AzureVMFullRestore
 {
-	$location = Get-ResourceGroupLocation
+	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup $location
 	$targetResourceGroupName = Create-ResourceGroup $location 1
 
@@ -303,7 +303,7 @@ function Test-AzureVMFullRestore
 
 function Test-AzureUnmanagedVMFullRestore
 {
-	$location = Get-ResourceGroupLocation
+	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup $location
 	
 	try
@@ -333,7 +333,7 @@ function Test-AzureUnmanagedVMFullRestore
 
 function Test-AzureVMRPMountScript
 {
-	$location = Get-ResourceGroupLocation
+	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup $location
 
 	try
@@ -369,7 +369,7 @@ function Test-AzureVMRPMountScript
 
 function Test-AzureVMBackup
 {
-	$location = Get-ResourceGroupLocation
+	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup $location
 
 	try
@@ -395,7 +395,7 @@ function Test-AzureVMBackup
 
 function Test-AzureVMSetVaultContext
 {
-	$location = Get-ResourceGroupLocation
+	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup $location
 
 	try

@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$containerName = "pstestwlvm1bca8"
+$containerName = "pstestvm8896"
 $resourceGroupName = "pstestwlRG1bca8"
 $vaultName = "pstestwlRSV1bca8"
 $resourceId = "/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestwlRG1bca8/providers/Microsoft.Compute/virtualMachines/pstestwlvm1bca8"
