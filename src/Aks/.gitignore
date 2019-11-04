@@ -3,7 +3,7 @@ obj
 .vs
 generated
 internal
-exports
+/exports
 custom/*.psm1
 test/*-TestResults.xml
 /*.ps1
