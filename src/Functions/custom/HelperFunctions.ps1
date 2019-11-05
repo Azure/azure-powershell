@@ -229,7 +229,7 @@ function AddFunctionAppSettings
     $App.ApplicationSettings = $applicationSettings
 
     $runtimeName = $settings.Property["FUNCTIONS_WORKER_RUNTIME"]
-    $App.RuntimeName = $RuntimeToFormattedName[$runtimeName]
+    $App.RuntimeName = if (($runtimeName -ne $null) -and ($RuntimeToFormattedName.ContainsKey($runtimeName))) {$RuntimeToFormattedName[$runtimeName]} else {""}
     $App.HostVersion = $settings.Property["FUNCTIONS_EXTENSION_VERSION"]
 
     return $App
