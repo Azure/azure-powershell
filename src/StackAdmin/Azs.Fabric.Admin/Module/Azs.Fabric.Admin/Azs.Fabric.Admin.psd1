@@ -133,6 +133,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
                 * The value of Id, Name, HealthStatus and OperationalStatus have been changed.
                 * We have supported new properties FirmwareVersion, IsIndicationEnabled, Manufacturer and StoragePool for Drive resources.
                 * The properties CanPool and CannotPoolReason of Drive resources have been deprecated, please use OperationalStatus instead.
+            * Model updated for Fabriclocation
+                * Get-AzsInfrastructurelocation support new fields of external DNS endpoints, admin operation name and status and Startup / Shutdown time.
             '
 
         } # End of PSData hashtable
