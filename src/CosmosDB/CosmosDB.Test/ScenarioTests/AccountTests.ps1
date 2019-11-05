@@ -118,14 +118,14 @@ function Test-ResourceIdParameterSet
   $locationlist = "East US", "West US"
   $locationlist2 = "East US", "UK South", "UK West", "South India"
 
-  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location $location
 
   $cosmosDBAccountName1 = "cosmosdb9921251"
 
   $cosmosDBExistingAccountName = "cosmosdb99"
   $existingResourceGroupName = "rgtest99"
 
-  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName1 -Location  $locationlist
+  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName1 -Location $locationlist
   do 
     {
        $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceId $cosmosDBAccount.Id
