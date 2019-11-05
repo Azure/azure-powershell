@@ -9,7 +9,7 @@ schema: 2.0.0
 # Restore-AzDataLakeStoreDeletedItem
 
 ## SYNOPSIS
-Restore a deleted file or folder in Azure Data Lake.
+Restore a deleted file or folder in Azure Data Lake. Caution: Undeleting files is a best effort operation. There are no guarantees that a file can be restored once it is deleted. The use of this API is enabled via whitelisting. If your ADL account is not whitelisted, then using this api will throw Not implemented exception. For further information and assistance please contact Microsoft support.
 
 ## SYNTAX
 

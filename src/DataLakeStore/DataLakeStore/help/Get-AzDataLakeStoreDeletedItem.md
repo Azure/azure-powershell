@@ -9,7 +9,7 @@ schema: 2.0.0
 # Get-AzDataLakeStoreDeletedItem
 
 ## SYNOPSIS
-Searches for deleted entries in trash which match the filter.
+Searches for deleted entries in trash which match the filter. Caution: Undeleting files is a best effort operation. There are no guarantees that a file can be restored once it is deleted. The use of this API is enabled via whitelisting. If your ADL account is not whitelisted, then using this api will throw Not implemented exception. For further information and assistance please contact Microsoft support.
 
 ## SYNTAX
 
