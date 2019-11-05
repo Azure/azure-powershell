@@ -55,7 +55,7 @@ input-file:
   - $(repo)/specification/azsadmin/resource-manager/keyvault/Microsoft.KeyVault.Admin/preview/2017-02-01-preview/KeyVault.json
   - $(repo)/specification/azsadmin/resource-manager/keyvault/Microsoft.KeyVault.Admin/preview/2017-02-01-preview/Quotas.json
 
-subject-prefix: ''
+subject-prefix: 'Keyvault'
 module-version: 0.0.1
 
 ### File Renames
@@ -63,11 +63,3 @@ module-name: Azs.KeyVault.Admin
 csproj: Azs.KeyVault.Admin.csproj
 psd1: Azs.KeyVault.Admin.psd1
 psm1: Azs.KeyVault.Admin.psm1
-
-# Cmdlet renames
-  - where:
-      verb: Get
-      subject: AzsQuota
-    set:
-      verb: Get
-      subject: AzsKeyvaultQuota
