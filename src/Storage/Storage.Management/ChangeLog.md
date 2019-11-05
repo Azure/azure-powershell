@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.9.0
 * Support enable Large File share when create or update Storage account
     -  New-AzStorageAccount
     -  Set-AzStorageAccount
