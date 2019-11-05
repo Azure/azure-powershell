@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Status = privateEndpointConnection.PrivateLinkServiceConnectionState.Status,
                 Description = privateEndpointConnection.PrivateLinkServiceConnectionState.Description,
-                ActionRequired = privateEndpointConnection.PrivateLinkServiceConnectionState.ActionsRequired
+                ActionsRequired = privateEndpointConnection.PrivateLinkServiceConnectionState.ActionsRequired
             };
 
             return psPEC;

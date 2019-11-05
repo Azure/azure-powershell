@@ -36,6 +36,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Status { get; set; }
         public string Description { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
-        public string ActionRequired { get; set; }
+        public string ActionsRequired { get; set; }
     }
 }
