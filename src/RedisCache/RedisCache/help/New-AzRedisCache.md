@@ -258,6 +258,7 @@ Valid values are:
 - P2
 - P3
 - P4
+- P5
 - C0
 - C1
 - C2
@@ -278,6 +279,7 @@ The default value is 1GB or C1.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: P1, P2, P3, P4, P5, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2.5GB, 6GB, 13GB, 26GB, 53GB, 120GB
 
 Required: False
 Position: Named
