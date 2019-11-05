@@ -58,16 +58,13 @@ psd1: Azs.AzureBridge.Admin.psd1
 psm1: Azs.AzureBridge.Admin.psm1
 
 directive:
-    # Default to Format-List for the Activation commandlets
   - where:
       model-name: ActivationResource
     set:
       suppress-format: true
-
-  - select: command
-    where:
+  - where:
         parameter-name: ProductName
-      set:
+    set:
         alias: Name
 
 subject-prefix: ''
