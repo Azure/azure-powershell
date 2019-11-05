@@ -298,17 +298,7 @@ function AddFunctionAppPlanWorkerType
         try
         {
             # Get the service plan by name does set the Reserved property
-            $planObject = Az.Functions.internal\Get-AzFunctionAppPlan -Name $AppPlan.Name -ResourceGroupName $AppPlan.ResourceGroup -SubscriptionId $AppPlan.SubscriptionId -ErrorAction SilentlyContinue
-
-            if ($null -eq $planObject)
-            {
-                $resetDefaultSubscription = $true
-                $currentSubscription = (Get-AzContext).Subscription.Id
-                $null = Select-AzSubscription $App.SubscriptionId
-
-                $planObject = Az.Functions.internal\Get-AzFunctionAppPlan -Name $AppPlan.Name -ResourceGroupName $AppPlan.ResourceGroup -SubscriptionId $AppPlan.SubscriptionId -ErrorAction SilentlyContinue
-            }
-
+            $planObject = Az.Functions.internal\Get-AzFunctionAppPlan -Name $AppPlan.Name -ResourceGroupName $AppPlan.ResourceGroup -SubscriptionId $AppPlan.Subscription -ErrorAction SilentlyContinue
             $AppPlan = $planObject
         }
         finally
