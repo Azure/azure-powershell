@@ -19,8 +19,9 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
  [-EnableHierarchicalNamespace <Boolean>] [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>]
- [-EnableLargeFileShare] [-AsJob] [-EncryptionKeyTypeForTable <String>] [-EncryptionKeyTypeForQueue <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AsJob]
+ [-EncryptionKeyTypeForTable <String>] [-EncryptionKeyTypeForQueue <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -28,12 +29,13 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
 New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String> [-Location] <String>
  [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-EnableHierarchicalNamespace <Boolean>] [-EnableLargeFileShare]
- [-EnableActiveDirectoryDomainServicesForFile <Boolean>] [-ActiveDirectoryDomainName <String>]
- [-ActiveDirectoryNetBiosDomainName <String>] [-ActiveDirectoryForestName <String>]
- [-ActiveDirectoryDomainGuid <String>] [-ActiveDirectoryDomainSid <String>]
- [-ActiveDirectoryAzureStorageSid <String>] [-AsJob] [-EncryptionKeyTypeForTable <String>]
- [-EncryptionKeyTypeForQueue <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EnableHierarchicalNamespace <Boolean>] [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>]
+ [-PublishInternetEndpoint <Boolean>] [-EnableActiveDirectoryDomainServicesForFile <Boolean>]
+ [-ActiveDirectoryDomainName <String>] [-ActiveDirectoryNetBiosDomainName <String>]
+ [-ActiveDirectoryForestName <String>] [-ActiveDirectoryDomainGuid <String>]
+ [-ActiveDirectoryDomainSid <String>] [-ActiveDirectoryAzureStorageSid <String>] [-AsJob]
+ [-EncryptionKeyTypeForTable <String>] [-EncryptionKeyTypeForQueue <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -142,6 +144,32 @@ Enabled LastEnabledTime     KeyType
 ```
 
 This command creates a Storage account with Queue and Table Service use account-scoped encryption key, so Queue and Table will use same encryption key with Blob and File service. Then get the Storage account properties, and view the encryption keytype of Queue and Table Service.
+
+### Example 10: Create a Storage account with RoutingPreference setting
+```powershell
+PS C:\>$account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -PublishMicrosoftEndpoint $true -PublishInternetEndpoint $true -RoutingChoice MicrosoftRouting
+
+PS C:\>$account.RoutingPreference
+
+RoutingChoice    PublishMicrosoftEndpoints PublishInternetEndpoints
+-------------    ------------------------- ------------------------
+MicrosoftRouting                     True                     True
+
+PS C:\>$account.PrimaryEndpoints
+
+Blob               : https://mystorageaccount.blob.core.windows.net/
+Queue              : https://mystorageaccount.queue.core.windows.net/
+Table              : https://mystorageaccount.table.core.windows.net/
+File               : https://mystorageaccount.file.core.windows.net/
+Web                : https://mystorageaccount.z2.web.core.windows.net/
+Dfs                : https://mystorageaccount.dfs.core.windows.net/
+MicrosoftEndpoints : {"Blob":"https://mystorageaccount-microsoftrouting.blob.core.windows.net/","Queue":"https://mystorageaccount-microsoftrouting.queue.core.windows.net/","Table":"https://mystorageaccount-microsoftrouting.table.core.windows.net/","File":"ht
+                     tps://mystorageaccount-microsoftrouting.file.core.windows.net/","Web":"https://mystorageaccount-microsoftrouting.z2.web.core.windows.net/","Dfs":"https://mystorageaccount-microsoftrouting.dfs.core.windows.net/"}
+InternetEndpoints  : {"Blob":"https://mystorageaccount-internetrouting.blob.core.windows.net/","File":"https://mystorageaccount-internetrouting.file.core.windows.net/","Web":"https://mystorageaccount-internetrouting.z2.web.core.windows.net/","Dfs":"https://w
+                     eirp3-internetrouting.dfs.core.windows.net/"}
+```
+
+This command creates a Storage account with RoutingPreference setting: PublishMicrosoftEndpoint and PublishInternetEndpoint as true, and RoutingChoice as MicrosoftRouting.
 
 ## PARAMETERS
 
@@ -498,6 +526,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublishInternetEndpoint
+Indicates whether internet  routing storage endpoints are to be published
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublishMicrosoftEndpoint
+Indicates whether microsoft routing storage endpoints are to be published
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the resource group in which to add the Storage account.
 
@@ -510,6 +568,22 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RoutingChoice
+Routing Choice defines the kind of network routing opted by the user. Possible values include: 'MicrosoftRouting', 'InternetRouting'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: MicrosoftRouting, InternetRouting
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
