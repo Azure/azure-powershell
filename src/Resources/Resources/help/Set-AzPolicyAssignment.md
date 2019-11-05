@@ -218,7 +218,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnforcementMode
-The enforcement mode for policy assignment
+The enforcement mode for policy assignment. Currently, valid values are Default, DoNotEnforce.
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyAssignmentEnforcementMode]
