@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>NetAppFiles</PsModuleName>
@@ -7,7 +7,7 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.NetApp" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Azure.Management.NetApp" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>
