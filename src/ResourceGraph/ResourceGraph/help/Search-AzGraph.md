@@ -55,6 +55,27 @@ westus            26
 
 A complex query on resources featuring field selection, filtering and summarizing.
 
+### Example 3
+```powershell
+PS C:\> Search-AzGraph -Include DisplayName -Query 'where type =~ "Microsoft.Compute/virtualMachines"| where properties.storageProfile.osDisk.managedDisk == "" | project name, resourceGroup, subscriptionDisplayName'
+
+name         resourceGroup      subscriptionDisplayName
+----         -------------      -----------------------
+ContosoVM    RG-Contoso         Contoso Production Subscription                                               
+
+```
+A query featuring all virtual machines which are not using Managed Disks and includes subscription display names.
+
+### Example 4
+```powershell
+PS C:\> Search-AzGraph -Include DisplayName -Query 'summarize count() by tenantDisplayName, subscriptionDisplayName'
+
+tenantDisplayName   subscriptionDisplayName              count_
+-----------------   -----------------------              ------
+ContosoTenant       Contoso Production Subscription      118                                           
+```
+A query displaying the count of resources by tenant and subscription display names.
+
 ## PARAMETERS
 
 ### -DefaultProfile

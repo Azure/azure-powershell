@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.6
+* Fixed bug in Peering location 
+* Added tests to direct connection
+
 ## Version 0.1.5
 * Added Peering Service events
 * Removed UseForPeeringService at the Peering level

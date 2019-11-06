@@ -118,6 +118,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public KeyVaultAndKeyReference KeyEncryptionKey { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string DiskEncryptionSetId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("EncryptionAtRestWithPlatformKey", "EncryptionAtRestWithCustomerKey")]
+        public string EncryptionType { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("Snapshot", "New"))
@@ -136,6 +147,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // EncryptionSettingsCollection
             EncryptionSettingsCollection vEncryptionSettingsCollection = null;
+
+            // Encryption
+            Encryption vEncryption = null;
 
             if (this.IsParameterBound(c => c.SkuName))
             {
@@ -240,6 +254,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vEncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey = this.KeyEncryptionKey;
             }
 
+            if (this.IsParameterBound(c => c.DiskEncryptionSetId))
+            {
+                if (vEncryption == null)
+                {
+                    vEncryption = new Encryption();
+                }
+                vEncryption.DiskEncryptionSetId = this.DiskEncryptionSetId;
+            }
+
+            if (this.IsParameterBound(c => c.EncryptionType))
+            {
+                if (vEncryption == null)
+                {
+                    vEncryption = new Encryption();
+                }
+                vEncryption.Type = this.EncryptionType;
+            }
+
             var vSnapshot = new PSSnapshot
             {
                 OsType = this.IsParameterBound(c => c.OsType) ? this.OsType : (OperatingSystemTypes?)null,
@@ -251,6 +283,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Sku = vSku,
                 CreationData = vCreationData,
                 EncryptionSettingsCollection = vEncryptionSettingsCollection,
+                Encryption = vEncryption,
             };
 
             WriteObject(vSnapshot);

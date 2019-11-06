@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public long? DiskIOPSReadWrite { get; set; }
         public int? DiskMBpsReadWrite { get; set; }
         public string DiskState { get; set; }
+        public Encryption Encryption { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
