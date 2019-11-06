@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `MinimumTlsVersion` parameter in `New-AzRedisCache` and `Set-AzRedisCache` cmdlets. Also, added `MinimumTlsVersion` in the output of `Get-AzRedisCache` cmdlet.
 
 ## Version 1.1.1
 * Updated `Set-AzRedisCache` reference documentation to include missing values for `-Size` parameter
