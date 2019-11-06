@@ -334,7 +334,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 Action = sdkRule.Action,
                 RuleType = sdkRule.RuleType,
                 Priority = sdkRule.Priority,
-                MatchConditions = sdkRule.MatchConditions?.Select(x => x.ToPSMatchCondition()).ToList()
+                MatchConditions = sdkRule.MatchConditions?.Select(x => x.ToPSMatchCondition()).ToList(),
+                EnabledState = sdkRule.EnabledState
             };
         }
 
@@ -448,7 +449,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 Action = psRule.Action,
                 MatchConditions = psRule.MatchConditions?.Select(x => x.ToSdkMatchCondition()).ToList(),
                 Priority = psRule.Priority,
-                RuleType = psRule.RuleType
+                RuleType = psRule.RuleType,
+                EnabledState = psRule.EnabledState
             };
         }
 

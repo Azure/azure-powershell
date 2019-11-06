@@ -21,7 +21,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator [-Force] [-PassThru] [-Resource
 ### UseInputObjectParameterSet
 ```
 Remove-AzSqlInstanceActiveDirectoryAdministrator [-Force] [-PassThru]
- [-InputObject <AzureSqlManagedInstanceModel>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -InputObject <AzureSqlManagedInstanceModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -115,7 +115,7 @@ Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstance
 Parameter Sets: UseInputObjectParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

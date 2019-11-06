@@ -43,7 +43,7 @@ Type              : Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapsh
 Tags              :
 SnapshotId        : ca7c4ebd-91cb-0e30-91f5-9154050033df
 FileSystemId      : 3e2773a7-2a72-d003-0637-1a8b1fa3eaaf
-CreationDate      :
+Created           :
 ProvisioningState : Succeeded
 ```
 
