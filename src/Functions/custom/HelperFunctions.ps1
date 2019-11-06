@@ -295,20 +295,8 @@ function AddFunctionAppPlanWorkerType
     # TODO: Remove this code once  https://msazure.visualstudio.com/Antares/_workitems/edit/5623226 is fixed.
     if ($null -eq $AppPlan.Reserved)
     {
-        try
-        {
-            # Get the service plan by name does set the Reserved property
-            $planObject = Az.Functions.internal\Get-AzFunctionAppPlan -Name $AppPlan.Name -ResourceGroupName $AppPlan.ResourceGroup -SubscriptionId $AppPlan.Subscription -ErrorAction SilentlyContinue
-            $AppPlan = $planObject
-        }
-        finally
-        {
-            if ($resetDefaultSubscription)
-            {
-                $null = Select-AzSubscription $currentSubscription
-            }
-        }
-
+        # Get the service plan by name does set the Reserved property
+        $planObject = Az.Functions.internal\Get-AzFunctionAppPlan -Name $AppPlan.Name -ResourceGroupName $AppPlan.ResourceGroup -SubscriptionId $AppPlan.SubscriptionId -ErrorAction SilentlyContinue
         $AppPlan = $planObject
     }
 
