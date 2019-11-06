@@ -21,6 +21,9 @@
 
 * Azure Site Recovery support to select disk type at enabling protection.
 * Azure Site Recovery bug fix for recovery plan action edit.
+
+## Version 2.0.1
+
 * Azure Site Recovery support to configure networking resources like NSG, public IP and internal load balancers for Azure to Azure.
 * Azure Site Recovery Support to write to managed disk for vMWare to Azure.
 * Azure Site Recovery Support to NIC reduction for vMWare to Azure.
