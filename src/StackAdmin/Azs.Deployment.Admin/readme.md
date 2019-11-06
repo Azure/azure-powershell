@@ -48,8 +48,16 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azurestack.md
-  - $(repo)/specification/azsadmin/resource-manager/deployment/readme.azsautogen.md
   - $(repo)/specification/azsadmin/resource-manager/deployment/readme.md
+
+input-file:
+  - $(repo)/specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/Deployment.json
+  - $(repo)/specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ActionPlan.json
+  - $(repo)/specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ActionPlanOperation.json
+  - $(repo)/specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/FileContainer.json
+  - $(repo)/specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductDeployment.json
+  - $(repo)/specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductPackage.json
+  - $(repo)/specification/azsadmin/resource-manager/deployment/Microsoft.Deployment.Admin/preview/2019-01-01/ProductSecret.json
 
 ### File Renames 
 module-name: Azs.Deployment.Admin 
