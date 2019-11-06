@@ -862,7 +862,7 @@ function Test-CreateDeleteSpCredentials
 .SYNOPSIS
 Tests registering and a resource provider feature.
 #>
-function Test-ServicePrincipalNameNotFound
+function Test-RemoveServicePrincipalWithNameNotFound
 {
     $FakeServicePrincipalName = "this is a fake service principal name and there are no way this can be valid"
 

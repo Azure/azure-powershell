@@ -661,9 +661,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestServicePrincipalNameNotFound()
+        public void TestRemoveServicePrincipalWithNameNotFound()
         {
-            TestRunner.RunTestScript("Test-ServicePrincipalNameNotFound");
+            TestRunner.RunTestScript("Test-RemoveServicePrincipalWithNameNotFound");
         }
 
         private User CreateNewAdUser(ResourcesController controllerAdmin)
