@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Bugfix in PrivateLinkServiceConnectionState.
+    - property "ActionRequired" renamed to "ActionsRequired"
 
 ## Version 2.0.0
 * Change all cmdlets for PrivateEndpointConnection to support generic service provider.
