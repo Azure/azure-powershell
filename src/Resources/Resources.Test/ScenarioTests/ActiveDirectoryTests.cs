@@ -659,6 +659,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 MethodBase.GetCurrentMethod().Name);
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServicePrincipalNameNotFound()
+        {
+            TestRunner.RunTestScript("Test-ServicePrincipalNameNotFound");
+        }
+
         private User CreateNewAdUser(ResourcesController controllerAdmin)
         {
             var name = TestUtilities.GenerateName("aduser");
