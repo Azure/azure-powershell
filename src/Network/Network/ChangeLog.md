@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Change `Start-AzVirtualNetworkGatewayConnectionPacketCapture.md` and `Start-AzVirtualnetworkGatewayPacketCapture.md` FilterData option examples.
 
 ## Version 2.0.0
 * Change all cmdlets for PrivateEndpointConnection to support generic service provider.
