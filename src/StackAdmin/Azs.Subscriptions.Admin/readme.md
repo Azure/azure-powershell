@@ -61,6 +61,62 @@ psd1: Azs.Subscriptions.Admin.psd1
 psm1: Azs.Subscriptions.Admin.psm1
 
 directive:
+## add alias for cmdlets
+  - where:
+      verb: Get
+      subject: AcquiredPlan
+    set:
+      alias: Get-AzsSubscriptionPlan
+  - where:
+      verb: New
+      subject: AcquiredPlan
+    set:
+      alias: New-AzsSubscriptionPlan
+  - where:
+      verb: Remove
+      subject: AcquiredPlan
+    set:
+      alias: Remove-AzsSubscriptionPlan
+## rename cmdlets
+  - where:
+      verb: Get
+      subject: DelegatedProviderOffer 
+    set:
+      subject: DelegatedProviderManagedOffer
+  - where:
+      verb: Get
+      subject: Offer
+    set:
+      subject: ManagedOffer
+  - where:
+      verb: Get
+      subject: Quota
+    set:
+      subject: SubscriptionQuota
+  - where:
+      subject: Subscription
+    set:
+      subject: UserSubscription
+  - where:
+      verb: Test
+      subject: SubscriptionMoveSubscription
+    set:
+      subject: MoveSubscription
+  - where:
+      verb: Test
+      subject: SubscriptionNameAvailability
+    set:
+      subject: NameAvailability
+## remove cmdlets
+  - where:
+      verb: Get
+      subject: LocationOperationStatus
+    remove: True
+  - where:
+      verb: New
+      subject: Location
+    remove: True
+## rename parameters
   - where:
       subject: DelegatedProviderOffer
       parameter-name: DelegatedProviderSubscriptionId
@@ -146,14 +202,4 @@ directive:
       parameter-name: Subscription
     set:
       parameter-name: UserSubscriptionId
-  - where:
-      verb: Test
-      subject: SubscriptionMoveSubscription
-    set:
-      subject: MoveSubscription
-  - where:
-      verb: Test
-      subject: SubscriptionNameAvailability
-    set:
-      subject: NameAvailability
 ```
