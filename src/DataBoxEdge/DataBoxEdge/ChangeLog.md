@@ -20,6 +20,10 @@
 
 ## Upcoming Release
 
+## Version 0.1.1
+
+* Remove cmdlet `Set-AzDataBoxEdgeStorageAccountCredential`
+
 ## Version 0.1.0
 * General Availability of `Az.DataboxEdge` Module
 * Added cmdlet `Get-AzDataBoxEdgeBandwidthSchedule`

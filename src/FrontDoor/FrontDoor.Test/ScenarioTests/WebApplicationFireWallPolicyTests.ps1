@@ -59,6 +59,16 @@ function Test-PolicyCrud
     Assert-AreEqual $customRule2.Priority $updatedPolicy.CustomRules[0].Priority
     Assert-AreEqual $managedRule1.RuleGroupOverrides[0].ManagedRuleOverrides[0].Action $updatedPolicy.ManagedRules[0].RuleGroupOverrides[0].ManagedRuleOverrides[0].Action
 
+    $customRule3 = New-AzFrontDoorWafCustomRuleObject -Name "Rule3" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Log -Priority 3 -EnabledState Disabled
+    $updatedPolicy = Update-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule3
+    Assert-NotNull $updatedPolicy
+    Assert-AreEqual $Name $updatedPolicy.Name
+    Assert-AreEqual $customRule3.Name $updatedPolicy.CustomRules[0].Name
+    Assert-AreEqual $customRule3.Action $updatedPolicy.CustomRules[0].Action
+    Assert-AreEqual $customRule3.Priority $updatedPolicy.CustomRules[0].Priority
+    Assert-AreEqual $customRule3.EnabledState $updatedPolicy.CustomRules[0].EnabledState
+    Assert-AreEqual $managedRule1.RuleGroupOverrides[0].ManagedRuleOverrides[0].Action $updatedPolicy.ManagedRules[0].RuleGroupOverrides[0].ManagedRuleOverrides[0].Action
+
     $removed = Remove-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -PassThru
     Assert-True { $removed }
     Assert-ThrowsContains { Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName } "does not exist."
