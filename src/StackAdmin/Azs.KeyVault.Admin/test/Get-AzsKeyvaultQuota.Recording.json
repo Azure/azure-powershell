@@ -1,0 +1,38 @@
+{
+  "Get-AzsKeyvaultQuota+[NoContext]+List+$GET+https://adminmanagement.local.azurestack.external/subscriptions/e0472ab8-6c95-464d-bd13-590c91be5bbf/providers/Microsoft.KeyVault.Admin/locations/local/quotas?api-version=2017-02-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.local.azurestack.external/subscriptions/e0472ab8-6c95-464d-bd13-590c91be5bbf/providers/Microsoft.KeyVault.Admin/locations/local/quotas?api-version=2017-02-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-keyvault-service-version": [ "1.1.41.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14990" ],
+        "x-ms-request-id": [ "449771dd-e4a7-46cb-b193-607f4140f5bc" ],
+        "x-ms-correlation-request-id": [ "449771dd-e4a7-46cb-b193-607f4140f5bc" ],
+        "x-ms-routing-request-id": [ "LOCAL:20191107T221155Z:449771dd-e4a7-46cb-b193-607f4140f5bc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Thu, 07 Nov 2019 22:11:55 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "328" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/e0472ab8-6c95-464d-bd13-590c91be5bbf/providers/Microsoft.KeyVault.Admin/locations/local/quotas/Unlimited\",\"name\":\"local/Unlimited\",\"type\":\"Microsoft.KeyVault.Admin/locations/quotas\",\"location\":\"local\",\"plan\":null,\"sku\":null,\"kind\":null,\"tags\":null,\"etag\":null,\"properties\":null}],\"nextLink\":null}"
+    }
+  }
+}
