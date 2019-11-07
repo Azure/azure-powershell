@@ -32,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
          SupportsShouldProcess = true
      ),
      OutputType(typeof(PSResourceModel))]
-    public class DataBoxEdgeTriggerNewCmdletBase : AzureDataBoxEdgeCmdletBase
+    public class DataBoxEdgeTriggerNewCmdlet : AzureDataBoxEdgeCmdletBase
     {
         private const string FileEventTriggerParameterSet = "FileEventTriggerParameterSet";
         private const string FileEventTriggerResourceIdParameterSet = "FileEventTriggerResourceIdParameterSet";
@@ -143,12 +143,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
-        private ResourceModel _trigger;
 
         private ResourceModel GetResourceModel()
         {
-            return TriggersOperationsExtensions.Get(
-                this.DataBoxEdgeManagementClient.Triggers,
+            return this.DataBoxEdgeManagementClient.Triggers.Get(
                 this.DeviceName,
                 this.Name,
                 this.ResourceGroupName);
@@ -156,8 +154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
 
         private string GetRoleId()
         {
-            return RolesOperationsExtensions.Get(
-                this.DataBoxEdgeManagementClient.Roles,
+            return this.DataBoxEdgeManagementClient.Roles.Get(
                 this.DeviceName,
                 this.RoleName,
                 this.ResourceGroupName).Id;
@@ -165,8 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
 
         private string GetShareId()
         {
-            return SharesOperationsExtensions.Get(
-                this.DataBoxEdgeManagementClient.Shares,
+            return this.DataBoxEdgeManagementClient.Shares.Get(
                 this.DeviceName,
                 this.ShareName,
                 this.ResourceGroupName).Id;
@@ -200,16 +196,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
 
         private PSResourceModel CreateResourceModel()
         {
+            ResourceModel trigger;
             var roleSinkInfo = new RoleSinkInfo(this.RoleId);
             if (this.FileEvent.IsPresent)
             {
                 var fileSourceInfo = new FileSourceInfo(this.ShareId);
-                _trigger = new FileEventTrigger(fileSourceInfo, roleSinkInfo, name: this.Name);
+                trigger = new FileEventTrigger(fileSourceInfo, roleSinkInfo, name: this.Name);
             }
-            else if (this.PeriodicTimerEvent.IsPresent)
+            else
             {
-                var _periodicSourceInfo = new PeriodicTimerSourceInfo(this.StartTime, this.Schedule, this.Topic);
-                _trigger = new PeriodicTimerEventTrigger(_periodicSourceInfo, roleSinkInfo, name: this.Name);
+                var periodicSourceInfo = new PeriodicTimerSourceInfo(this.StartTime, this.Schedule, this.Topic);
+                trigger = new PeriodicTimerEventTrigger(periodicSourceInfo, roleSinkInfo, name: this.Name);
             }
 
 
@@ -217,7 +214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
                 DataBoxEdgeManagementClient.Triggers,
                 this.DeviceName,
                 this.Name,
-                _trigger,
+                trigger,
                 this.ResourceGroupName));
         }
 

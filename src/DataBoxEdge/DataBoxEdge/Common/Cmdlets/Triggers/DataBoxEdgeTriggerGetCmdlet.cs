@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
 {
     [Cmdlet(VerbsCommon.Get, Constants.Trigger, DefaultParameterSetName = ListParameterSet),
      OutputType(typeof(PSResourceModel))]
-    public class DataBoxEdgeTriggerGetCmdletBase : AzureDataBoxEdgeCmdletBase
+    public class DataBoxEdgeTriggerGetCmdlet : AzureDataBoxEdgeCmdletBase
     {
         private const string ListParameterSet = "ListParameterSet";
         private const string GetByNameParameterSet = "GetByNameParameterSet";
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
             return this.DataBoxEdgeManagementClient.Triggers.Get(this.DeviceName, this.Name, this.ResourceGroupName);
         }
 
-        private List<PSResourceModel> GetByResourceName()
+        private List<PSResourceModel> ListResourceByName()
         {
             var resourceModel = GetResourceModel();
             return new List<PSResourceModel>() {PSResourceModel.PSDataBoxEdgeTriggerObject(resourceModel)};
@@ -95,16 +95,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
 
         private IPage<ResourceModel> ListResourceModel()
         {
-            return TriggersOperationsExtensions.ListByDataBoxEdgeDevice(
-                this.DataBoxEdgeManagementClient.Triggers,
+            return this.DataBoxEdgeManagementClient.Triggers.ListByDataBoxEdgeDevice(
                 this.DeviceName,
                 this.ResourceGroupName);
         }
 
         private IPage<ResourceModel> ListResourceModel(string nextPageLink)
         {
-            return TriggersOperationsExtensions.ListByDataBoxEdgeDeviceNext(
-                this.DataBoxEdgeManagementClient.Triggers,
+            return this.DataBoxEdgeManagementClient.Triggers.ListByDataBoxEdgeDeviceNext(
+                
                 nextPageLink
             );
         }
@@ -113,7 +112,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
         {
             if (!string.IsNullOrEmpty(this.Name))
             {
-                return GetByResourceName();
+                return ListResourceByName();
             }
 
             var resourceModel = ListResourceModel();

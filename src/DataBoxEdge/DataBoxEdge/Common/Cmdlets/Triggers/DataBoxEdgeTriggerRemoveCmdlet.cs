@@ -25,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
          SupportsShouldProcess = true
      ),
      OutputType(typeof(bool))]
-    public class DataBoxEdgeTriggerRemoveCmdletBase : AzureDataBoxEdgeCmdletBase
+    public class DataBoxEdgeTriggerRemoveCmdlet : AzureDataBoxEdgeCmdletBase
     {
         private const string DeleteByNameParameterSet = "DeleteByNameParameterSet";
         private const string DeleteByInputObjectParameterSet = "DeleteByInputObjectParameterSet";
@@ -82,8 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
 
         private bool Remove()
         {
-            TriggersOperationsExtensions.Delete(
-                this.DataBoxEdgeManagementClient.Triggers,
+            this.DataBoxEdgeManagementClient.Triggers.Delete(
                 this.DeviceName,
                 this.Name,
                 this.ResourceGroupName);
