@@ -16,8 +16,6 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using System.Collections.Generic;
-using System.Collections;
-using System;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
@@ -27,17 +25,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         public static List<ActiveDirectory> ConvertActiveDirectoriesFromPs(PSNetAppFilesActiveDirectory[] psActiveDirectories)
         {
             return psActiveDirectories.Select(psActiveDirectory => new ActiveDirectory
-                {
-                    // ActiveDirectoryId
-                    Username = psActiveDirectory.Username,
-                    Password = psActiveDirectory.Password,
-                    Domain = psActiveDirectory.Domain,
-                    Dns = psActiveDirectory.Dns,
-                    // Status
-                    SmbServerName = psActiveDirectory.SmbServerName
-                    // OrganizationalUnit
-                })
-                .ToList();
+            {
+                // ActiveDirectoryId
+                Username = psActiveDirectory.Username,
+                Password = psActiveDirectory.Password,
+                Domain = psActiveDirectory.Domain,
+                Dns = psActiveDirectory.Dns,
+                // Status
+                SmbServerName = psActiveDirectory.SmbServerName
+                // OrganizationalUnit
+            }).ToList();
         }
 
         public static List<PSNetAppFilesActiveDirectory> ConvertActiveDirectoriesToPs(IList<ActiveDirectory> ActiveDirectories)
@@ -109,7 +106,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                     UnixReadWrite = rule.UnixReadWrite,
                     Cifs = rule.Cifs,
                     Nfsv3 = rule.Nfsv3,
-                    Nfsv4 = rule.Nfsv4,
+                    Nfsv41 = rule.Nfsv41,
                     AllowedClients = rule.AllowedClients
                 };
 
@@ -132,7 +129,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                     UnixReadWrite = rule.UnixReadWrite,
                     Cifs = rule.Cifs,
                     Nfsv3 = rule.Nfsv3,
-                    Nfsv4 = rule.Nfsv4,
+                    Nfsv41 = rule.Nfsv41,
                     AllowedClients = rule.AllowedClients
                 };
 
@@ -156,7 +153,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                     UnixReadWrite = Rule.UnixReadWrite,
                     Cifs = Rule.Cifs,
                     Nfsv3 = Rule.Nfsv3,
-                    Nfsv4 = Rule.Nfsv4,
+                    Nfsv41 = Rule.Nfsv41,
                     AllowedClients = Rule.AllowedClients
                 };
                 rules.Add(PsExportPolicyRule);
@@ -200,7 +197,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Tags = snapshot.Tags,
                 FileSystemId = snapshot.FileSystemId,
                 SnapshotId = snapshot.SnapshotId,
-                CreationDate = snapshot.CreationDate,
+                Created = snapshot.Created,
                 ProvisioningState = snapshot.ProvisioningState,
             };
         }
