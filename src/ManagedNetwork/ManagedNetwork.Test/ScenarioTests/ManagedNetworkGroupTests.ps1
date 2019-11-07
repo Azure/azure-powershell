@@ -27,9 +27,9 @@ function Test-GetSetManagedNetworkGroup
 	
 	[System.Collections.Generic.List[String]]$virtualNetworkList = @()
 
-	$vnet1 = "subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNC-PowerShell/providers/Microsoft.Network/virtualnetworks/Mesh1"
-	$vnet2 = "subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNC-PowerShell/providers/Microsoft.Network/virtualnetworks/Mesh2"
-	$vnet3 = "subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNC-PowerShell/providers/Microsoft.Network/virtualnetworks/Mesh3"
+	$vnet1 = "/subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNC-PowerShell/providers/Microsoft.Network/virtualnetworks/Mesh1"
+	$vnet2 = "/subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNC-PowerShell/providers/Microsoft.Network/virtualnetworks/Mesh2"
+	$vnet3 = "/subscriptions/18ba8369-92e4-4d70-8b1e-937660bde798/resourceGroups/MNC-PowerShell/providers/Microsoft.Network/virtualnetworks/Mesh3"
 	$virtualNetworkList.Add($vnet1)
 	$virtualNetworkList.Add($vnet2)
 	$virtualNetworkList.Add($vnet3)
