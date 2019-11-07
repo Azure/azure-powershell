@@ -14,19 +14,20 @@ Removes a private endpoint connection.
 
 ### ByResourceId (Default)
 ```
-Remove-AzPrivateEndpointConnection [-Force] [-AsJob] [-PassThru] -ResourceId <String> [-Description <String>]
+Remove-AzPrivateEndpointConnection -ResourceId <String>
+ [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResource
 ```
-Remove-AzPrivateEndpointConnection [-Force] [-AsJob] [-PassThru] -Name <String> -ServiceName <String>
- -ResourceGroupName <String> [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzPrivateEndpointConnection -Name <String> -ServiceName <String> -ResourceGroupName <String>
+ [-PrivateLinkResourceType <String>] [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzPrivateEndpointConnection** cmdlet removes a private endpoint connection. 
+The **Remove-AzPrivateEndpointConnection** cmdlet removes a private endpoint connection.
 
 ## EXAMPLES
 
@@ -66,21 +67,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Description
-The reason of action.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -130,6 +116,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PrivateLinkResourceType
+The private link resource type.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResource
+Aliases:
+
+Required: False
+Position: Named
+Default value: 'Microsoft.Network/privateLinkServices'
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name of the private endpoint connection.
 
@@ -161,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-The name of the private link service that has the private endpoint connection.
+The name of service that the private endpoint connection belong to.
 
 ```yaml
 Type: System.String
@@ -220,5 +221,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Approve-AzPrivateEndpointConnection](./Approve-AzPrivateEndpointConnection.md)
+
+[Deny-AzPrivateEndpointConnection](./Deny-AzPrivateEndpointConnection.md)
+
+[Get-AzPrivateEndpointConnection](./Get-AzPrivateEndpointConnection.md)
 
 [Set-AzPrivateEndpointConnection](./Set-AzPrivateEndpointConnection.md)

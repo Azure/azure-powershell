@@ -12,19 +12,19 @@ Adds a key vault key to the provided Managed Instance.
 
 ## SYNTAX
 
-### AddAzureRmSqlInstanceKeyVaultKeyDefaultParameterSet (Default)
+### AddAzureRmSqlManagedInstanceKeyVaultKeyDefaultParameterSet (Default)
 ```
 Add-AzSqlInstanceKeyVaultKey [-ResourceGroupName] <String> [-InstanceName] <String> [-KeyId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### AddAzureRmSqlInstanceKeyVaultKeyInputObjectParameterSet
+### AddAzureRmSqlManagedInstanceKeyVaultKeyInputObjectParameterSet
 ```
 Add-AzSqlInstanceKeyVaultKey [-Instance] <AzureSqlManagedInstanceModel> [-KeyId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### AddAzureRmSqlInstanceKeyVaultKeyResourceIdParameterSet
+### AddAzureRmSqlManagedInstanceKeyVaultKeyResourceIdParameterSet
 ```
 Add-AzSqlInstanceKeyVaultKey [-InstanceResourceId] <String> [-KeyId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]

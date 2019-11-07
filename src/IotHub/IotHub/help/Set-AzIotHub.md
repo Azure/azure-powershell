@@ -38,13 +38,6 @@ Set-AzIotHub -ResourceGroupName <String> -Name <String> -CloudToDevice <PSCloudT
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateOperationsMonitoringProperties
-```
-Set-AzIotHub -ResourceGroupName <String> -Name <String>
- -OperationsMonitoringProperties <PSOperationsMonitoringProperties> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### UpdateRoutingProperties
 ```
 Set-AzIotHub -ResourceGroupName <String> -Name <String> [-RoutingProperties <PSRoutingProperties>]
@@ -81,7 +74,7 @@ Update the sku to S1 and units to 5 for the IotHub named "myiothub"
 PS C:\> Set-AzIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubRetentionTimeInDays 4
 ```
 
-Update the retention time in days to 4 for both the telemetry and operationsmonitoringevents events for the IotHub named "myiothub"
+Update the retention time of telemetry in days to 4 for the IotHub named "myiothub"
 
 ## PARAMETERS
 
@@ -247,21 +240,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -OperationsMonitoringProperties
-The properties related to operations monitoring.
-
-```yaml
-Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties
-Parameter Sets: UpdateOperationsMonitoringProperties
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
