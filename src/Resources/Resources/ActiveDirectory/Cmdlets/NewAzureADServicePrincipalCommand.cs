@@ -396,7 +396,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         private bool HasSubscription()
         {
-            return DefaultContext.Subscription != null && DefaultContext.Subscription.Id != null ;
+            //return DefaultContext.Subscription != null && DefaultContext.Subscription.Id != null ;
+            return DefaultContext.Subscription?.Id != null;
         }
     }
 }
