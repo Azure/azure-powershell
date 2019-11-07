@@ -134,8 +134,13 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
 
             if (isAuditEnabled)
             {
+                if (storageAccountSubscriptionId == null || Guid.Empty.Equals(storageAccountSubscriptionId))
+                {
+                    storageAccountSubscriptionId = Subscription.GetId();
+                }
+
                 model.StorageAccountResourceId = AzureCommunicator.RetrieveStorageAccountIdAsync(
-                    storageAccountSubscriptionId ?? Subscription.GetId(),
+                    (Guid)storageAccountSubscriptionId,
                     GetStorageAccountName(storageEndpoint)).GetAwaiter().GetResult();
                 ModelizeRetentionInfo(model, retentionDays);
             }
