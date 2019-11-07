@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = false,
             HelpMessage = "A hashtable array which represents the protocol types")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("NFSv3", "CIFS")]
+        [PSArgumentCompleter("NFSv3", "NFSv4.1", "CIFS")]
         public string[] ProtocolType { get; set; }
 
         [Parameter(
