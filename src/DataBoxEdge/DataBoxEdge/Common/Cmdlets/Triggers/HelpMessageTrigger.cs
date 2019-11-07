@@ -17,10 +17,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
 {
     internal class HelpMessageTrigger
     {
-        internal const string StorageAccountCredentialHelpMessage =
-            "Provide existing StorageAccountCredential's Resource Name";
-
-
         internal const string NameHelpMessage = "Name of the Trigger";
         internal const string ObjectName = "Trigger";
 

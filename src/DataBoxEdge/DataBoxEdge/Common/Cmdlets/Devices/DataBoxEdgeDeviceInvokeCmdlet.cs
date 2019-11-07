@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.EdgeGateway;
@@ -27,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
      ),
      OutputType(typeof(bool)),
     ]
-    public class DataBoxEdgeDeviceInvokeCmdletBase : AzureDataBoxEdgeCmdletBase
+    public class DataBoxEdgeDeviceInvokeCmdlet : AzureDataBoxEdgeCmdletBase
     {
         private const string InvokeScanForUpdateParameterSet = "InvokeScanForUpdateParameterSet";
 
@@ -199,7 +198,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
             }
             else if (this.FetchUpdate.IsPresent)
             {
-                result = InstallUpdates();
+                result = DownloadUpdates();
             }
             else if (this.InstallUpdate.IsPresent)
             {
