@@ -53,9 +53,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public PSMatchCondition[] MatchCondition { get; set; }
 
         /// <summary>
-        /// Type of Actions. Possible values include: 'Allow', 'Block', 'Log'
+        /// Type of Actions. Possible values include: 'Allow', 'Block', 'Log', 'Redirect'
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "Type of Actions. Possible values include: 'Allow', 'Block', 'Log'. ")]
+        [Parameter(Mandatory = true, HelpMessage = "Type of Actions. Possible values include: 'Allow', 'Block', 'Log', 'Redirect'.")]
         [PSArgumentCompleter("Allow","Block","Log","Redirect")]
         public string Action { get; set; }
 
@@ -77,6 +77,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Rate limit threshold")]
         public int? RateLimitThreshold { get; set; }
 
+        /// <summary>
+        /// Enabled State. Possible values include: 'Enabled', 'Disabled'
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Enabled State. Possible values include: 'Enabled', 'Disabled'.")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string EnabledState { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var CustomRule = new PSCustomRule
@@ -87,7 +94,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                RuleType = RuleType,
                RateLimitDurationInMinutes = !this.IsParameterBound(c => c.RateLimitDurationInMinutes)? 1 : RateLimitDurationInMinutes,
                RateLimitThreshold = RateLimitThreshold,
-               Action = Action
+               Action = Action,
+               EnabledState = !this.IsParameterBound(c => c.EnabledState) ? "Enabled" : EnabledState
             };
             WriteObject(CustomRule);
         }

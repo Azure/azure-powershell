@@ -29,7 +29,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<string> SourceAddresses { get; set; }
 
         public List<string> DestinationAddresses { get; set; }
-        
+
+        public List<string> DestinationFqdns { get; set; }
+
         public List<string> DestinationPorts { get; set; }
 
         [JsonIgnore]
@@ -49,7 +51,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(DestinationAddresses, Formatting.Indented); }
         }
-        
+
+        [JsonIgnore]
+        public string DestinationFqdnsText
+        {
+            get { return JsonConvert.SerializeObject(DestinationFqdns, Formatting.Indented); }
+        }
+
         [JsonIgnore]
         public string DestinationPortsText
         {

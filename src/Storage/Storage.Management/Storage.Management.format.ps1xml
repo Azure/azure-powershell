@@ -44,6 +44,10 @@
             <Alignment>Left</Alignment>
             <Label>EnableHttpsTrafficOnly</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>LargeFileShares</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -83,6 +87,10 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>EnableHttpsTrafficOnly</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>LargeFileSharesState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
