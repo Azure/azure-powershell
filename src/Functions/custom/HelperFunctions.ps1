@@ -331,18 +331,23 @@ function GetFunctionAppPlans
         $status = "Complete: $($index + 1)/$($Plans.Count) function apps plans processed."
         Write-Progress -Activity "Getting function app plans" -Status $status -PercentComplete $percentageCompleted
 
-        if ($Location)
-        {
-            if ($plan.Location -eq $Location)
+        try {
+            if ($Location)
+            {
+                if ($plan.Location -eq $Location)
+                {
+                    $plan = AddFunctionAppPlanWorkerType -AppPlan $plan
+                    $plan
+                }
+            }
+            else
             {
                 $plan = AddFunctionAppPlanWorkerType -AppPlan $plan
                 $plan
             }
         }
-        else
-        {
-            $plan = AddFunctionAppPlanWorkerType -AppPlan $plan
-            $plan
+        catch {
+            continue;
         }
     }
 }
