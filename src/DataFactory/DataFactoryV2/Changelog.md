@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.1
 * Update ADF .Net SDK version to 4.3.0
 
 ## Version 1.4.0

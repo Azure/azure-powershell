@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string NewPolicyAssignmentPolicyParameterObjectHelp = "The policy parameters object for the new policy assignment.";
         public const string NewPolicyParameterHelp = "The policy parameters file path or string for the new policy assignment.";
         public const string NewPolicyAssignmentMetadataHelp = "The metadata for the new policy assignment. This can either be a path to a file name containing the metadata, or the metadata as a string.";
+        public const string NewPolicyAssignmentEnforcementModeHelp = "The enforcement mode for the new policy assignment, e.g. Default, DoNotEnforce. It indicates whether a policy effect will be enforced or not during assignment creation and update. Please visit https://aka.ms/azure-policyAssignment-enforcement-mode for more information.";
         public const string NewPolicyAssignmentSkuHelp = "A hash table which specifies sku properties. This parameter is deprecated and ignored.";
         public const string RemovePolicyAssignmentNameHelp = "The name of the policy assignment to delete.";
         public const string RemovePolicyAssignmentScopeHelp = "The scope of the policy assignment to delete, e.g. /providers/managementGroups/{managementGroupName}.";
