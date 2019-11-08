@@ -16,9 +16,9 @@
 # Please create reservation through portal and use id to run tests
 # Once reservation is created you will have reservationOrderId (which is container for reservation),
 # reservationId, subscriptionId to run this test
-$subscriptionId ="302110e3-cd4e-4244-9874-07c91853c809"
-$reservationOrderId = "704aee8c-c906-47c7-bd22-781841fb48b5"
-$reservationId = "ac7f6b04-ff45-4da1-83f3-b0f2f6c8128e"
+$subscriptionId ="d3ae48e5-dbb2-4618-afd4-fb1b8559cb80"
+$reservationOrderId = "11e0f3cb-d8d2-42d4-8b24-b460cab90b67"
+$reservationId = "153f4fea-dde4-4656-949a-50e3191840c9"
 
 <#
 .SYNOPSIS
@@ -89,10 +89,12 @@ function Test-GetReservationOrderId
 Split reservation
 #>
 function Test-SplitReservation
-{
+{	
+	$reservationOrderIdSplit = "36ff776c-c4e7-44f0-bd82-82dad39f02c1"
+	$reservationIdSplit = "55f911b5-9415-4250-8f3c-75f669046794"
 	$type = "Microsoft.Capacity/reservationOrders/reservations"
 
-	$splitResult = Split-AzReservation -ReservationOrderId $reservationOrderId -ReservationId $reservationId -Quantity 1,1
+	$splitResult = Split-AzReservation -ReservationOrderId $reservationOrderIdSplit -ReservationId $reservationIdSplit -Quantity 1,2
 	Foreach ($splitItem in $splitResult)
 	{
 		Assert-NotNull $splitItem
@@ -110,10 +112,11 @@ Merge reservations
 #>
 function Test-MergeReservation
 {
-	$reservationId1 = "efcd2077-baa6-4be3-8190-2b9ba939c8bc"
-	$reservationId2 = "0281e256-5b31-424a-8df8-e67f6531113a"
+	$reservationOrderIdMerge = "36ff776c-c4e7-44f0-bd82-82dad39f02c1"
+	$reservationId1 = "b395f9f2-74d2-44f4-82c5-a89fac180766"
+	$reservationId2 = "b3c08e0c-265e-4851-848d-5a5aab8bc851"
 	$type = "Microsoft.Capacity/reservationOrders/reservations"
-	$mergeResult = Merge-AzReservation -ReservationOrderId $reservationOrderId -ReservationId $reservationId1,$reservationId2
+	$mergeResult = Merge-AzReservation -ReservationOrderId $reservationOrderIdMerge -ReservationId $reservationId1,$reservationId2
 	Foreach ($mergeItem in $mergeResult)
 	{
 		Assert-NotNull $mergeItem
@@ -176,7 +179,7 @@ Update reservation
 function Test-UpdateReservationToSingle
 {
 	$type = "Microsoft.Capacity/reservationOrders/reservations"
-	$subscription = "/subscriptions/302110e3-cd4e-4244-9874-07c91853c809"
+	$subscription = "/subscriptions/d3ae48e5-dbb2-4618-afd4-fb1b8559cb80"
 
 	$reservationItem = Update-AzReservation -ReservationOrderId $reservationOrderId -ReservationId $reservationId -appliedscopetype Single -appliedscope $subscription -InstanceFlexibility On
 
