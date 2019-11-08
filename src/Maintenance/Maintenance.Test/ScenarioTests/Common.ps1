@@ -23,6 +23,24 @@ function Get-RandomMaintenanceConfigurationName
 
 <#
 .SYNOPSIS
+Gets virtual machine name
+#>
+function Get-RandomVirtualMachineName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets dedicated host name
+#>
+function Get-RandomDedicatedHostName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets resource group name
 #>
 function Get-RandomResourceGroupName

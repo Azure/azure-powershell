@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzMaintenanceConfiguration
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create or Update configuration record
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzMaintenanceConfiguration [-ResourceGroupName] <String> [-ResourceName] <St
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Create or Update configuration record
 
 ## EXAMPLES
 

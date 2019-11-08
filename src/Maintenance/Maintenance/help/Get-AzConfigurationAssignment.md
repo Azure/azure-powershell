@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzConfigurationAssignment
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+List configurationAssignments for resource.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Get-AzConfigurationAssignment [-ResourceGroupName] <String> [-ProviderName] <Str
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+List configurationAssignments for resource.
 
 ## EXAMPLES
 

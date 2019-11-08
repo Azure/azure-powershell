@@ -31,15 +31,15 @@ namespace Microsoft.Azure.Commands.Maintenance
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceName, VerbsCommon.Remove)
+                if (ShouldProcess(this.Name, VerbsCommon.Remove)
                     && (this.Force.IsPresent ||
                         this.ShouldContinue(Properties.Resources.ResourceRemovalConfirmation,
                                             "Remove-AzMaintenanceConfiguration operation")))
                 {
                     string resourceGroupName = this.ResourceGroupName;
-                    string resourceName = this.ResourceName;
+                    string name = this.Name;
 
-                    var result = MaintenanceConfigurationsClient.Delete(resourceGroupName, resourceName);
+                    var result = MaintenanceConfigurationsClient.Delete(resourceGroupName, name);
                     var psObject = new PSMaintenanceConfiguration();
                     MaintenanceAutomationAutoMapperProfile.Mapper.Map<MaintenanceConfiguration, PSMaintenanceConfiguration>(result, psObject);
                     WriteObject(psObject);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Maintenance
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        public string ResourceName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",

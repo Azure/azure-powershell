@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzApplyUpdate
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Apply maintenance updates to resource
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzApplyUpdate [-ResourceGroupName] <String> [[-ProviderName] <String>] [[-Re
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Apply maintenance updates to resource
 
 ## EXAMPLES
 

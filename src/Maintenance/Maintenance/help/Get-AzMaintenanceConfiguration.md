@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzMaintenanceConfiguration
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get Maintenance configuration record
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzMaintenanceConfiguration [[-ResourceGroupName] <String>] [[-ResourceName] 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Get Maintenance configuration record
 
 ## EXAMPLES
 

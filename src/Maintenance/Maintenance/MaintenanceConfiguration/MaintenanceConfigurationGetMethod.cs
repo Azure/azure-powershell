@@ -29,12 +29,27 @@ namespace Microsoft.Azure.Commands.Maintenance
             ExecuteClientAction(() =>
             {
                 string resourceGroupName = this.ResourceGroupName;
-                string resourceName = this.ResourceName;
+                string name = this.Name;
 
-                if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(resourceName))
+                if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(name))
                 {
-                    var result = MaintenanceConfigurationsClient.Get(resourceGroupName, resourceName);
+                    var result = MaintenanceConfigurationsClient.Get(resourceGroupName, name);
                     WriteObject(result);
+                }
+
+                else
+                {
+                    var psObject = new List<PSMaintenanceConfiguration>();
+                    var result = MaintenanceConfigurationsClient.List();
+
+                    foreach (var maintenanceConfiguration in result)
+                    {
+                        PSMaintenanceConfiguration psMaintenanceConfiguration = new PSMaintenanceConfiguration();
+                        MaintenanceAutomationAutoMapperProfile.Mapper.Map<MaintenanceConfiguration, PSMaintenanceConfiguration>(maintenanceConfiguration, psMaintenanceConfiguration);
+                        psObject.Add(psMaintenanceConfiguration);
+                    }
+
+                    WriteObject(psObject);
                 }
             });
         }
@@ -50,6 +65,6 @@ namespace Microsoft.Azure.Commands.Maintenance
             ParameterSetName = "DefaultParameter",
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        public string ResourceName { get; set; }
+        public string Name { get; set; }
     }
 }

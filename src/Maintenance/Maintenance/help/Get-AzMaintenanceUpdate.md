@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzMaintenanceUpdate
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get pending maintenance updates to resource.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Get-AzMaintenanceUpdate [-ResourceGroupName] <String> [-ProviderName] <String> [
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Get pending maintenance updates to resource.
 
 ## EXAMPLES
 

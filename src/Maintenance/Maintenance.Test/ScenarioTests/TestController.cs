@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.ScenarioTests
                 { "Microsoft.Resources", null },
                 { "Microsoft.Features", null },
                 { "Microsoft.Authorization", null },
-                { "Microsoft.Compute", null }
+                { "Microsoft.Maintenance", null }
             };
 
             var providersToIgnore = new Dictionary<string, string>()
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.ScenarioTests
                     "AzureRM.Resources.ps1",
                     "ScenarioTests\\Common.ps1",
                     _helper.RMProfileModule,
-                    _helper.GetRMModulePath(@"AzureRM.Maintenance.psd1"));
+                    _helper.GetRMModulePath(@"Az.Maintenance.psd1"));
 
                 if (scripts != null)
                 {
