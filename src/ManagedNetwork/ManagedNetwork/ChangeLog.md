@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Fix issue of leading slash in test cases
+
+## Version 0.1.0
 * Create cmdlets for Az.ManagedNetwork.
     - Get-AzManagedNetwork: To get managed network
     - New-AzManagedNetwork: To create managed network
