@@ -334,7 +334,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     Role = "Contributor";
                     WriteVerbose(string.Format("No role provided - using the default role '{0}'", Role));
                 }
-                WriteWarning(string.Format("Assigning role '{0}' over scope '{1}' to the new service principal.", this.Role, this.Scope));
 
                 shouldProcessMessage = string.Format("Adding a new service principal to be associated with an application " +
                                                       "having AppId '{0}' with '{1}' role over scope '{2}'.", createParameters.ApplicationId, this.Role, this.Scope);
@@ -352,6 +351,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 }
 
                 var subscriptionId = DefaultContext.Subscription.Id;
+                WriteWarning(string.Format("Assigning role '{0}' over scope '{1}' to the new service principal.", this.Role, this.Scope));
                 FilterRoleAssignmentsOptions parameters = new FilterRoleAssignmentsOptions()
                 {
                     Scope = this.Scope,
