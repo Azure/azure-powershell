@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated PrivateDns .net sdk to version 1.0.0
 
 ## Version 1.0.0
 * 1.0.0 version released
