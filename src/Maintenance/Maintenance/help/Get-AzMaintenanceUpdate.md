@@ -25,10 +25,10 @@ Get pending maintenance updates to resource.
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzMaintenanceUpdate -ResourceGroupName smdtest$location -ResourceParentType hostGroups -ResourceParentName smddhg$location -ResourceType hosts -ResourceName smddh$location -ProviderName Microsoft.Compute
 ```
 
-{{ Add example description here }}
+Get pending maintenance updates to resource.
 
 ## PARAMETERS
 
