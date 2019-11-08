@@ -59,6 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
         [Parameter(Mandatory = true,
             ParameterSetName = InvokeScanForUpdateByResourceIdParameterSet,
             HelpMessage = Constants.ResourceIdHelpMessage)]
+        [ResourceIdCompleter("Microsoft.DataBoxEdge/dataBoxEdgeDevices")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
