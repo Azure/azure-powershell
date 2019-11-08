@@ -84,9 +84,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
         public string FailoverGroupId { get; set; }
 
         /// <summary>
-        /// Gets or sets the failover group Id
+        /// Gets or sets the recoverable database id
         /// </summary>
         public string RecoverableDatabaseId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the restorable dropped database Id
+        /// </summary>
+        public string RestorableDroppedDatabaseId { get; set; }
 
         /// <summary>
         /// Construct AzureSqlManagedDatabaseModel
@@ -122,6 +127,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
             SourceDatabaseId = database.SourceDatabaseId;
             FailoverGroupId = database.FailoverGroupId;
             RecoverableDatabaseId = database.RecoverableDatabaseId;
+            RestorableDroppedDatabaseId = database.RestorableDroppedDatabaseId;
         }
     }
 }

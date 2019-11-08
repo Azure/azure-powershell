@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using System.Linq;
     using System.Management.Automation;
     using System.Net.Http;
-
+    using System.Threading;
     using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
@@ -154,11 +154,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [ValidateNotNull]
         public PSDirectConnection[] DirectConnection { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Microsoft Network
+        /// </summary>
         [Parameter(
-            Mandatory = false,
-            HelpMessage = Constants.UseForPeeringServiceHelp,
+            Mandatory = true,
+            HelpMessage = Constants.PeeringDirectSkuHelp,
             ParameterSetName = Constants.Direct)]
-        public SwitchParameter UseForPeeringService { get; set; }
+        [PSArgumentCompleter(Constants.BasicDirectFree, Constants.PremiumDirectFree, Constants.PremiumDirectMetered, Constants.PremiumDirectUnlimited)]
+        [PSDefaultValue(Value = Constants.BasicDirectFree)]
+        public string Sku { get; set; }
 
         /// <summary>
         /// Gets or sets the tag.
@@ -185,21 +190,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     this.WriteObject(new PSDirectPeeringModelView(this.CreateDirectPeering()));
                 if (this.ParameterSetName.Equals(Constants.ParameterSetNameConvertLegacyPeering))
                 {
-                    if (this.InputObject.Exchange != null && string.Equals(
-                            this.InputObject.Kind,
+                    var legacy = this.InputObject;
+                    if (legacy.Exchange != null && string.Equals(
+                            legacy.Kind,
                             Constants.Exchange,
                             StringComparison.OrdinalIgnoreCase))
                     {
-                        this.WriteObject(new PSExchangePeeringModelView(this.ConvertClassicToExchangePeering()), true);
+                        this.WriteObject(this.ConvertClassicToExchangePeering(new PSExchangePeeringModelView(legacy)), true);
                     }
-
-                    if (this.InputObject.Direct != null && string.Equals(
-                            this.InputObject.Kind,
-                            Constants.Direct,
-                            StringComparison.OrdinalIgnoreCase))
+                    else if (legacy.Direct != null && string.Equals(
+                                 legacy.Kind,
+                                 Constants.Direct,
+                                 StringComparison.OrdinalIgnoreCase))
                     {
-                        this.WriteObject(new PSDirectPeeringModelView(this.ConvertClassicToDirectPeering()), true);
+                        this.WriteObject(this.ConvertClassicToDirectPeering(new PSDirectPeeringModelView(legacy)), true);
                     }
+                    base.EndProcessing();
                 }
             }
             catch (InvalidOperationException mapException)
@@ -230,13 +236,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 new PSPeering(
                     name: this.Name,
                     location: this.GetAzureRegion(this.PeeringLocation, Constants.Direct),
-                    sku: this.UseForPeeringService ? new PSPeeringSku { Name = Constants.PremiumDirectFree } : new PSPeeringSku { Name = Constants.BasicDirectFree },
+                    sku: new PSPeeringSku { Name = this.Sku },
                     kind: Constants.Direct)
                 {
                     PeeringLocation = this.PeeringLocation,
                     Direct = new PSPeeringPropertiesDirect
                     {
-                        UseForPeeringService = this.UseForPeeringService,
+                        DirectPeeringType = Constants.Edge,
                         Connections = new List<PSDirectConnection>(),
                         PeerAsn = new PSSubResource(this.PeerAsnResourceId)
                     },
@@ -251,6 +257,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             {
                 if (this.IsValidConnection(psDirectConnection))
                     peeringRequest.Direct.Connections.Add(psDirectConnection);
+            }
+
+            if (this.Sku.Equals(Constants.PremiumDirectMetered, StringComparison.InvariantCultureIgnoreCase) || this.Sku.Equals(Constants.PremiumDirectUnlimited, StringComparison.InvariantCultureIgnoreCase))
+            {
+                peeringRequest.Direct.DirectPeeringType = Constants.CDN;
+            }
+            else
+            {
+                peeringRequest.Sku = this.DirectConnection.Any((c) => c.UseForPeeringService == true) ? new PSPeeringSku { Name = Constants.PremiumDirectFree } : new PSPeeringSku { Name = Constants.BasicDirectFree };
             }
 
             if (this.ParameterSetName.Equals(Constants.Direct))
@@ -368,14 +383,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>
         /// The <see cref="object"/>.
         /// </returns>
-        private PSPeering ConvertClassicToExchangePeering()
+        private PSPeering ConvertClassicToExchangePeering(PSExchangePeeringModelView peering)
         {
-            if (this.InputObject == null)
+            if (peering == null)
                 throw new PSArgumentNullException(string.Format(Resources.Error_UnableToConvertLegacy, "LegacyPeering"));
-            if (this.InputObject.Exchange.Connections == null)
+            if (peering.Connections == null)
                 throw new PSArgumentNullException(string.Format(Resources.Error_UnableToConvertLegacy, "Connection"));
 
-            var connections = this.InputObject.Exchange.Connections.ToList();
+            var connections = peering.Connections.ToList();
             if (this.ExchangeConnection != null)
             {
                 this.ExchangeConnection.ToList().ForEach(x => connections.Add(x));
@@ -383,10 +398,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 
             var newPeering = new PSPeering
             {
-                Location = this.GetAzureRegion(this.InputObject.PeeringLocation, Constants.Exchange),
-                PeeringLocation = this.InputObject.PeeringLocation,
-                Kind = this.InputObject.Kind ?? Constants.Exchange,
-                Sku = this.InputObject.Sku ?? new PSPeeringSku { Name = Constants.BasicExchangeFree },
+                Location = this.GetAzureRegion(peering.PeeringLocation, Constants.Exchange),
+                PeeringLocation = peering.PeeringLocation,
+                Kind = peering.Kind ?? Constants.Exchange,
+                Sku = peering.Sku ?? new PSPeeringSku { Name = Constants.BasicExchangeFree },
                 Exchange = new PSPeeringPropertiesExchange
                 {
                     Connections = connections,
@@ -415,19 +430,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>
         /// The <see cref="object"/>.
         /// </returns>
-        private PSPeering ConvertClassicToDirectPeering()
+        private PSPeering ConvertClassicToDirectPeering(PSDirectPeeringModelView peering)
         {
-            if (this.InputObject == null)
+            if (peering == null)
                 throw new PSArgumentNullException(string.Format(Resources.Error_UnableToConvertLegacy, "LegacyPeering"));
-            if (this.InputObject.Direct.Connections == null)
+            if (peering.Connections == null)
                 throw new PSArgumentNullException(string.Format(Resources.Error_UnableToConvertLegacy, "Connection"));
-            var connections = this.InputObject.Direct.Connections.ToList();
+            var connections = peering.Connections.ToList();
             var newPeering = new PSPeering
             {
-                Location = this.GetAzureRegion(this.InputObject.PeeringLocation, Constants.Direct),
-                PeeringLocation = this.InputObject.PeeringLocation,
-                Kind = this.InputObject.Kind ?? Constants.Direct,
-                Sku = this.InputObject.Sku ?? new PSPeeringSku(Constants.BasicDirectFree),
+                Location = this.GetAzureRegion(peering.PeeringLocation, Constants.Direct),
+                PeeringLocation = peering.PeeringLocation,
+                Kind = peering.Kind ?? Constants.Direct,
+                Sku = peering.Sku ?? new PSPeeringSku(Constants.BasicDirectFree),
                 Direct = new PSPeeringPropertiesDirect
                 {
                     Connections = connections,

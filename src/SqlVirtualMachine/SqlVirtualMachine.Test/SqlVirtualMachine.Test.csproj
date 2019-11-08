@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>SqlVirtualMachine</PsModuleName>
@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="29.1.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.15.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="30.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.16.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="13.1.0" />
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="2.2.0-preview" />
   </ItemGroup>

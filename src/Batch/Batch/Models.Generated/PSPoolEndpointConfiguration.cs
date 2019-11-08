@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         list.Add(new PSInboundNatPool(enumerator.Current));
                     }
-                    this.inboundNatPools = list.AsReadOnly();
+                    this.inboundNatPools = list;
                 }
                 return this.inboundNatPools;
             }
