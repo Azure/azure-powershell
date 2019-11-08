@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Commands.Maintenance
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.ResourceName, VerbsCommon.New))
+                if (ShouldProcess(this.Name, VerbsCommon.New))
                 {
                     string resourceGroupName = this.ResourceGroupName;
-                    string resourceName = this.ResourceName;
+                    string resourceName = this.Name;
                     MaintenanceConfiguration configuration = new MaintenanceConfiguration();
                     if (this.Location != null)
                     {
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Maintenance
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        public string ResourceName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",

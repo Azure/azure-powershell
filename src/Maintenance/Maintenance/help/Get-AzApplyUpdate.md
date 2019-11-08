@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzApplyUpdate
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Track maintenance updates to resource
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Get-AzApplyUpdate [-ResourceGroupName] <String> [[-ResourceParentType] <String>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Track maintenance updates to resource
 
 ## EXAMPLES
 
@@ -33,7 +33,7 @@ PS C:\> {{ Add example code here }}
 ## PARAMETERS
 
 ### -ApplyUpdateName
-{{ Fill ApplyUpdateName Description }}
+applyUpdate Id
 
 ```yaml
 Type: String
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProviderName
-{{ Fill ProviderName Description }}
+Resource provider name
 
 ```yaml
 Type: String
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+Resource group name
 
 ```yaml
 Type: String
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceName
-{{ Fill ResourceName Description }}
+Resource identifier
 
 ```yaml
 Type: String

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConfigurationAssignment
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Register configuration for resource.
 
 ## SYNTAX
 
@@ -21,7 +21,7 @@ New-AzConfigurationAssignment [-ResourceGroupName] <String> [-ProviderName] <Str
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Register configuration for resource.
 
 ## EXAMPLES
 

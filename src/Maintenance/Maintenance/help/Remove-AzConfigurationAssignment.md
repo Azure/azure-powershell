@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzConfigurationAssignment
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Unregister configuration for resource.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Remove-AzConfigurationAssignment [-ResourceGroupName] <String> [-ProviderName] <
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Unregister configuration for resource.
 
 ## EXAMPLES
 

@@ -34,58 +34,23 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateMaintenanceConfiguration()
+        public void TestMaintenanceConfiguration()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmMaintenanceConfiguration");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzMaintenanceConfiguration");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateMaintenanceConfigurationWithIdentity()
+        public void TestConfigurationAssignment()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmMaintenanceConfigurationWithIdentity");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzConfigurationAssignment");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateMaintenanceConfigurationWithIdentities()
+        public void TestMaintenanceUpdate()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmMaintenanceConfigurationWithIdentities");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestContainerInstanceLog()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmContainerInstanceLog");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateMaintenanceConfigurationWithVolume()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmMaintenanceConfigurationWithVolume");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateMaintenanceConfigurationWithVolumeAndIdentity()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmMaintenanceConfigurationWithVolumeAndIdentity");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateMaintenanceConfigurationWithVolumeAndIdentities()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmMaintenanceConfigurationWithVolumeAndIdentities");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateMaintenanceConfigurationDnsLabel()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmMaintenanceConfigurationWithDnsNameLabel");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzMaintenanceUpdate");
         }
     }
 }
