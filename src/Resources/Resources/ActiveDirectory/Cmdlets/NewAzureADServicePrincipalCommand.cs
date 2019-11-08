@@ -251,6 +251,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         private void CreateSimpleServicePrincipal()
         {
+            var subscriptionId = DefaultContext.Subscription?.Id;
             if (!this.IsParameterBound(c => c.StartDate))
             {
                 DateTime currentTime = DateTime.UtcNow;
@@ -320,7 +321,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
             if (!SkipRoleAssignment())
             {
-                var subscriptionId = DefaultContext.Subscription.Id;
                 if (!this.IsParameterBound(c => c.Scope))
                 {
                     Scope = string.Format("/subscriptions/{0}", subscriptionId);
@@ -350,7 +350,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     return;
                 }
 
-                var subscriptionId = DefaultContext.Subscription.Id;
                 WriteWarning(string.Format("Assigning role '{0}' over scope '{1}' to the new service principal.", this.Role, this.Scope));
                 FilterRoleAssignmentsOptions parameters = new FilterRoleAssignmentsOptions()
                 {
