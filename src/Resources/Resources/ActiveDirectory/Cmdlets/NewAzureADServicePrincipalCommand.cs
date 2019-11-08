@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
-                //check if DefaultContext existed, PSInvalidOperationException will be thrown
+                //safe gauard for login status, check if DefaultContext not existed, PSInvalidOperationException will be thrown
                 var CheckDefaultContext = DefaultContext;
 
                 if (this.ParameterSetName == SimpleParameterSet)
