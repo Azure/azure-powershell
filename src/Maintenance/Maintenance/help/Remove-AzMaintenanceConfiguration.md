@@ -5,21 +5,20 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzMaintenanceConfiguration
+# Remove-AzMaintenanceConfiguration
 
 ## SYNOPSIS
-Create or Update configuration record
+Delete Configuration record
 
 ## SYNTAX
 
 ```
-New-AzMaintenanceConfiguration [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [-Tag <Hashtable>] [-ExtensionProperty <Hashtable>] [-MaintenanceScope <String>] [-AsJob]
+Remove-AzMaintenanceConfiguration [-ResourceGroupName] <String> [-Name] <String> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or Update configuration record
+Delete Configuration record
 
 ## EXAMPLES
 
@@ -62,41 +61,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExtensionProperty
-{{ Fill ExtensionProperty Description }}
+### -Force
+{{ Fill Force Description }}
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-{{ Fill Location Description }}
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -MaintenanceScope
-{{ Fill MaintenanceScope Description }}
-
-```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -134,21 +103,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Tag
-{{ Fill Tag Description }}
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
