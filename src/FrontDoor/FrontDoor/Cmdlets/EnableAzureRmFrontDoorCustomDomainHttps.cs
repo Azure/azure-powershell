@@ -137,8 +137,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                     customHttpsConfiguration.SecretVersion = SecretVersion;
                 }
 
-                customHttpsConfiguration.ProtocolType = PSProtocolType.ServerNameIndication.ToString();
-                
                 if (ShouldProcess(Resources.FrontDoorTarget, string.Format(Resources.EnableCustomDomainHttpsWarning, FrontendEndpointName)))
                 {
                     FrontDoorManagementClient.FrontendEndpoints.BeginEnableHttps(ResourceGroupName, FrontDoorName, FrontendEndpointName, customHttpsConfiguration);

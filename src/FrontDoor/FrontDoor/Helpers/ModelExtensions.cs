@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 CustomHttpsProvisioningSubstate = sdkFrontendEndpoint.CustomHttpsProvisioningSubstate == null ?
                         (PSCustomHttpsProvisioningSubstate?)null : (PSCustomHttpsProvisioningSubstate)Enum.Parse(typeof(PSCustomHttpsProvisioningSubstate), sdkFrontendEndpoint.CustomHttpsProvisioningSubstate),
                 CertificateSource = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? null : sdkFrontendEndpoint.CustomHttpsConfiguration.CertificateSource,
-                ProtocolType = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? null : sdkFrontendEndpoint.CustomHttpsConfiguration.ProtocolType,
+                ProtocolType = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? null : SdkHttpsConfig.ProtocolType,
                 Vault = sdkFrontendEndpoint.CustomHttpsConfiguration?.Vault?.Id,
                 SecretName = sdkFrontendEndpoint.CustomHttpsConfiguration?.SecretName,
                 SecretVersion = sdkFrontendEndpoint.CustomHttpsConfiguration?.SecretVersion,
