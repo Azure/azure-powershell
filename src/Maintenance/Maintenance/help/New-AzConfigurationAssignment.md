@@ -21,16 +21,26 @@ New-AzConfigurationAssignment [-ResourceGroupName] <String> [-ProviderName] <Str
 ```
 
 ## DESCRIPTION
-Register configuration for resource.
+Register maintenance configuration for resource.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzConfigurationAssignment -ResourceGroupName smdtest$location -ResourceParentType hostGroups -ResourceParentName smddhg$location -ResourceType hosts -ResourceName smddh$location -ProviderName Microsoft.Compute -ConfigurationAssignmentName $maintenanceConfigurationName -MaintenanceConfigurationId $maintenanceConfigurationCreated.Id -Location $location
+
+
+Location                   : westus2
+MaintenanceConfigurationId : /subscriptions/42c974dd-2c03-4f1b-96ad-b07f050aaa74/resourcegroups/ps1/providers/Microsoft.Maintenance/maintenanceConfigurations/ps2
+ResourceId                 : 7b32ed22-dc7b-4a17-9c42-36c024f4c9f9
+Id                         :
+/subscriptions/42c974dd-2c03-4f1b-96ad-b07f050aaa74/resourcegroups/smdtestwestus2/providers/Microsoft.Compute/hostGroups/smddhgwestus2/hosts/smddhwestus2/providers/Microsoft.Maintenance/configurationAssignments/ps2
+Name                       : ps2
+Type                       : Microsoft.Maintenance/configurationAssignments
+
 ```
 
-{{ Add example description here }}
+Register maintenance configuration for didicated host.
 
 ## PARAMETERS
 

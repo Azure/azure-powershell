@@ -25,10 +25,19 @@ Create or Update configuration record
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzMaintenanceConfiguration -ResourceGroupName smdtest -Name workervmscentralus -MaintenanceScope Host -Location centralus
+
+
+Location            : centralus
+Tags                : {}
+ExtensionProperties : {}
+MaintenanceScope    : Host
+Id                  : /subscriptions/42c974dd-2c03-4f1b-96ad-b07f050aaa74/resourcegroups/smdtest/providers/Microsoft.Maintenance/maintenanceConfigurations/workervmscentralus
+Name                : workervmscentralus
+Type                : Microsoft.Maintenance/maintenanceConfigurations
 ```
 
-{{ Add example description here }}
+Create a maintenance configuration with scope Host
 
 ## PARAMETERS
 
