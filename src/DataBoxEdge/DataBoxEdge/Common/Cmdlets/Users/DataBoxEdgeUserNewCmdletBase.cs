@@ -19,6 +19,7 @@ using System.Net;
 using System.Security;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.EdgeGateway;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Utils;
 using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -108,11 +109,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Users
 
         private PSResourceModel CreateResourceModel()
         {
+            var password = this.Password.ConvertToString();
+            PasswordUtility.ValidateUserPasswordPattern(nameof(this.Password), password);
             var encryptedSecret =
                 DataBoxEdgeManagementClient.Devices.GetAsymmetricEncryptedSecret(
                     this.DeviceName,
                     this.ResourceGroupName,
-                    this.Password.ConvertToString(),
+                    password,
                     this.GetKeyForEncryption()
                 );
             return new PSResourceModel(
