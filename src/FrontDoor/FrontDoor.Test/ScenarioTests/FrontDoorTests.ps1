@@ -192,20 +192,7 @@ function Test-FrontDoorEndpointCustomDomainHTTPS-FrontDoor
     [int]$counter = 0
     do 
     {
-       Wait-Seconds 600
        $customDomain = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName $ResourceGroupName -FrontDoorName $Name -Name $customFrontendEndpointName
     } while ($customDomain.CustomHttpsProvisioningState -ne "Enabled" -and $counter++ -lt 50)
     Assert-AreEqual $customDomain.CustomHttpsProvisioningState "Enabled"
-
-    $customDomain = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName $ResourceGroupName -FrontDoorName $Name -Name $customFrontendEndpointName
-    $disabledCustomDomain = $customDomain | Disable-AzFrontDoorCustomDomainHttps
-    Assert-AreEqual $disabledCustomDomain.CustomHttpsProvisioningState "Disabling"
-    [int]$counter = 0
-    do 
-    {
-       Wait-Seconds 600
-       $disabledCustomDomain = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName $ResourceGroupName -FrontDoorName $Name -Name $customFrontendEndpointName
-    } while ($disabledCustomDomain.CustomHttpsProvisioningState -ne "Disabled" -and $counter++ -lt 50)
-    Assert-AreEqual $disabledCustomDomain.CustomHttpsProvisioningState "Disabled"
-    $disabledCustomDomain = Get-AzFrontDoorFrontendEndpoint -ResourceId $disabledCustomDomain.Id
 }

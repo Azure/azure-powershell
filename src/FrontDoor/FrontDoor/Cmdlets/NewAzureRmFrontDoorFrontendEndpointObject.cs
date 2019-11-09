@@ -12,16 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
-using Microsoft.Azure.Management.FrontDoor;
-using System.Linq;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -73,7 +68,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Defines the TLS extension protocol that is used for secure delivery
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The TLS extension protocol that is used for secure delivery")]
-        [PSArgumentCompleter("ServerNameIndication", "IPBased")]
+        [PSArgumentCompleter("ServerNameIndication")]
         public string ProtocolType { get; set; }
 
         /// <summary>
@@ -101,6 +96,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [PSArgumentCompleter("Shared", "Dedicated")]
         public string CertificateType { get; set; }
 
+        /// <summary>
+        /// Minimum TLS version to support
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Minimum TLS version to support")]
+        [PSArgumentCompleter("1.0", "1.2")]
+        public string MinimumTlsVersion { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var FrontendEndpoint = new PSFrontendEndpoint
@@ -110,12 +112,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 SessionAffinityEnabledState = !this.IsParameterBound(c => c.SessionAffinityEnabledState)? PSEnabledState.Disabled : SessionAffinityEnabledState,
                 SessionAffinityTtlSeconds = !this.IsParameterBound(c => c.SessionAffinityTtlInSeconds) ? 0 : SessionAffinityTtlInSeconds,
                 WebApplicationFirewallPolicyLink = WebApplicationFirewallPolicyLink,
-                CertificateSource = CertificateSource,
-                CertificateType = CertificateType,
+                CertificateSource = !this.IsParameterBound(c => c.CertificateSource) ? "AzureKeyVault" : CertificateSource,
+                CertificateType = !this.IsParameterBound(c => c.CertificateType) ? "Shared" : CertificateType,
                 Vault = Vault,
                 SecretName = SecretName,
                 SecretVersion = SecretVersion,
-                ProtocolType = ProtocolType
+                ProtocolType = !this.IsParameterBound(c => c.ProtocolType) ? "ServerNameIndication" : ProtocolType,
+                MinimumTlsVersion = !this.IsParameterBound(c => c.MinimumTlsVersion) ? "1.0" : MinimumTlsVersion
             };
             WriteObject(FrontendEndpoint);
         }

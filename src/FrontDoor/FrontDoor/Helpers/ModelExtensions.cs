@@ -12,40 +12,39 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.FrontDoor.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
-using Microsoft.Azure.Commands.FrontDoor.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using sdkAzManagedRuleGroupOverride = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleGroupOverride;
 using sdkAzManagedRuleOverride = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleOverride;
-using SdkFrontDoor = Microsoft.Azure.Management.FrontDoor.Models.FrontDoorModel;
-using SdkRoutingRule = Microsoft.Azure.Management.FrontDoor.Models.RoutingRule;
 using SdkBackend = Microsoft.Azure.Management.FrontDoor.Models.Backend;
-using SdkHealthProbeSetting = Microsoft.Azure.Management.FrontDoor.Models.HealthProbeSettingsModel;
-using SdkLoadBalancingSetting = Microsoft.Azure.Management.FrontDoor.Models.LoadBalancingSettingsModel;
-using SdkFrontendEndpoint = Microsoft.Azure.Management.FrontDoor.Models.FrontendEndpoint;
-using SdkRouteConfiguration = Microsoft.Azure.Management.FrontDoor.Models.RouteConfiguration;
-using SdkForwardingConfiguration = Microsoft.Azure.Management.FrontDoor.Models.ForwardingConfiguration;
-using SdkRedirectConfiguration = Microsoft.Azure.Management.FrontDoor.Models.RedirectConfiguration;
-using SdkResourceState = Microsoft.Azure.Management.FrontDoor.Models.FrontDoorResourceState;
 using SdkBackendPool = Microsoft.Azure.Management.FrontDoor.Models.BackendPool;
 using SdkBackendPoolsSettings = Microsoft.Azure.Management.FrontDoor.Models.BackendPoolsSettings;
 using SdkCacheConfiguration = Microsoft.Azure.Management.FrontDoor.Models.CacheConfiguration;
 using SdkCustomRule = Microsoft.Azure.Management.FrontDoor.Models.CustomRule;
 using SdkCustomRuleList = Microsoft.Azure.Management.FrontDoor.Models.CustomRuleList;
 using SdkFirewallPolicy = Microsoft.Azure.Management.FrontDoor.Models.WebApplicationFirewallPolicy;
+using SdkForwardingConfiguration = Microsoft.Azure.Management.FrontDoor.Models.ForwardingConfiguration;
+using SdkFrontDoor = Microsoft.Azure.Management.FrontDoor.Models.FrontDoorModel;
+using SdkFrontendEndpoint = Microsoft.Azure.Management.FrontDoor.Models.FrontendEndpoint;
 using SdkFWPolicyLink = Microsoft.Azure.Management.FrontDoor.Models.FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink;
+using SdkHealthProbeSetting = Microsoft.Azure.Management.FrontDoor.Models.HealthProbeSettingsModel;
 using SdkHttpsConfig = Microsoft.Azure.Management.FrontDoor.Models.CustomHttpsConfiguration;
+using SdkLoadBalancingSetting = Microsoft.Azure.Management.FrontDoor.Models.LoadBalancingSettingsModel;
 using SdkManagedRule = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleSet;
 using SdkManagedRuleList = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleSetList;
 using sdkMatchCondition = Microsoft.Azure.Management.FrontDoor.Models.MatchCondition;
 using sdkPolicySetting = Microsoft.Azure.Management.FrontDoor.Models.PolicySettings;
+using SdkRedirectConfiguration = Microsoft.Azure.Management.FrontDoor.Models.RedirectConfiguration;
 using SdkRefId = Microsoft.Azure.Management.FrontDoor.Models.SubResource;
+using SdkRouteConfiguration = Microsoft.Azure.Management.FrontDoor.Models.RouteConfiguration;
+using SdkRoutingRule = Microsoft.Azure.Management.FrontDoor.Models.RoutingRule;
 using SdkValut = Microsoft.Azure.Management.FrontDoor.Models.KeyVaultCertificateSourceParametersVault;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Helpers
@@ -291,7 +290,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 sessionAffinityTtlSeconds: psFrontendEndpoint.SessionAffinityTtlSeconds,
                 webApplicationFirewallPolicyLink: psFrontendEndpoint.WebApplicationFirewallPolicyLink == null ? null : new SdkFWPolicyLink(psFrontendEndpoint.WebApplicationFirewallPolicyLink),
                 customHttpsConfiguration: new SdkHttpsConfig(psFrontendEndpoint.CertificateSource,
-                                   psFrontendEndpoint.ProtocolType,
+                                   psFrontendEndpoint.MinimumTlsVersion,
                                    new SdkValut(psFrontendEndpoint.Vault),
                                    psFrontendEndpoint.SecretName,
                                    psFrontendEndpoint.SecretVersion,
@@ -314,14 +313,15 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                         (PSCustomHttpsProvisioningState?)null : (PSCustomHttpsProvisioningState)Enum.Parse(typeof(PSCustomHttpsProvisioningState), sdkFrontendEndpoint.CustomHttpsProvisioningState),
                 CustomHttpsProvisioningSubstate = sdkFrontendEndpoint.CustomHttpsProvisioningSubstate == null ?
                         (PSCustomHttpsProvisioningSubstate?)null : (PSCustomHttpsProvisioningSubstate)Enum.Parse(typeof(PSCustomHttpsProvisioningSubstate), sdkFrontendEndpoint.CustomHttpsProvisioningSubstate),
-                CertificateSource = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? null : sdkFrontendEndpoint.CustomHttpsConfiguration.CertificateSource,
-                ProtocolType = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? null : SdkHttpsConfig.ProtocolType,
+                CertificateSource = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? "AzureKeyVault" : sdkFrontendEndpoint.CustomHttpsConfiguration.CertificateSource,
+                ProtocolType = SdkHttpsConfig.ProtocolType,
                 Vault = sdkFrontendEndpoint.CustomHttpsConfiguration?.Vault?.Id,
                 SecretName = sdkFrontendEndpoint.CustomHttpsConfiguration?.SecretName,
                 SecretVersion = sdkFrontendEndpoint.CustomHttpsConfiguration?.SecretVersion,
-                CertificateType = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? null : sdkFrontendEndpoint.CustomHttpsConfiguration.CertificateType,
+                CertificateType = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? "Shared" : sdkFrontendEndpoint.CustomHttpsConfiguration.CertificateType,
                 Name = sdkFrontendEndpoint.Name,
-                Type = sdkFrontendEndpoint.Type
+                Type = sdkFrontendEndpoint.Type,
+                MinimumTlsVersion = sdkFrontendEndpoint.CustomHttpsConfiguration?.MinimumTlsVersion ?? "1.0"
             };
         }
         public static PSCustomRule ToPSCustomRule(this SdkCustomRule sdkRule)

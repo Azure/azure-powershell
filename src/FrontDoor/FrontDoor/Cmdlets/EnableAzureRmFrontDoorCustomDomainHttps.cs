@@ -12,18 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Helpers;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.Azure.Commands.FrontDoor.Properties;
-using Microsoft.Azure.Management.FrontDoor;
-using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.FrontDoor;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -99,6 +96,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = true, ParameterSetName = ObjectWithVaultParameterSet, HelpMessage = "The version of the Key Vault secret representing the full certificate PFX")]
         public string SecretVersion { get; set; }
 
+        /// <summary>
+        /// Minimum TLS version to support
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Minimum TLS version to support")]
+        [PSArgumentCompleter("1.0", "1.2")]
+        public string MinimumTlsVersion { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
@@ -122,7 +126,10 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                     FrontDoorName = ResourceIdentifierExtensions.GetFrontDoorName(identifier);
                 }
 
-                var customHttpsConfiguration = new Management.FrontDoor.Models.CustomHttpsConfiguration();
+                var customHttpsConfiguration = new Management.FrontDoor.Models.CustomHttpsConfiguration()
+                {
+                    MinimumTlsVersion = !this.IsParameterBound(c => c.MinimumTlsVersion) ? "1.0" : MinimumTlsVersion
+                };
 
                 if (ParameterSetName == FieldsParameterSet || ParameterSetName == ResourceIdParameterSet || ParameterSetName == ObjectParameterSet)
                 {
