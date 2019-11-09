@@ -48,5 +48,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
         public string CertificateType { get; set; }
 
         public string ResourceState { get; set; }
+
+        public string MinimumTlsVersion { get; set; }
     }
 }
