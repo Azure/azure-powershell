@@ -22,6 +22,7 @@
 ## Version 2.1.0
 * Added support for database ReadReplicaCount.
 * Fixed Set-AzSqlDatabase when zone redundancy not set
+* Fix vulnerability assessment set baseline cmdlets functionality to work on master db for azure database and limit it on managed instance system databases. 
 
 ## Version 2.0.0
 * Added support for restore of dropped databases on Managed Instances.
