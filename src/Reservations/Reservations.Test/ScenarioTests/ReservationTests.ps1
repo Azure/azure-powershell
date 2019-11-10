@@ -16,9 +16,9 @@
 # Please create reservation through portal and use id to run tests
 # Once reservation is created you will have reservationOrderId (which is container for reservation),
 # reservationId, subscriptionId to run this test
-$subscriptionId ="302110e3-cd4e-4244-9874-07c91853c809"
-$reservationOrderId = "704aee8c-c906-47c7-bd22-781841fb48b5"
-$reservationId = "ac7f6b04-ff45-4da1-83f3-b0f2f6c8128e"
+$subscriptionId ="d3ae48e5-dbb2-4618-afd4-fb1b8559cb80"
+$reservationOrderId = "b9fbc5c6-fa93-4c1d-b7dc-81a786af5813"
+$reservationId = "d42d1cd5-9ea9-4a93-b3ca-c50a2ab0c0b9"
 
 <#
 .SYNOPSIS
@@ -90,9 +90,11 @@ Split reservation
 #>
 function Test-SplitReservation
 {
+	$reservationOrderIdSplit = "0c0e972c-a418-497c-8fc9-96b5d43fcb1d"
+	$reservationIdSplit = "f9fa8575-9576-4469-95b4-22504c365178"
 	$type = "Microsoft.Capacity/reservationOrders/reservations"
 
-	$splitResult = Split-AzReservation -ReservationOrderId $reservationOrderId -ReservationId $reservationId -Quantity 1,1
+	$splitResult = Split-AzReservation -ReservationOrderId $reservationOrderIdSplit -ReservationId $reservationIdSplit -Quantity 1,2
 	Foreach ($splitItem in $splitResult)
 	{
 		Assert-NotNull $splitItem
@@ -110,10 +112,11 @@ Merge reservations
 #>
 function Test-MergeReservation
 {
-	$reservationId1 = "efcd2077-baa6-4be3-8190-2b9ba939c8bc"
-	$reservationId2 = "0281e256-5b31-424a-8df8-e67f6531113a"
+	$reservationId1 = "edde0097-21bd-46e4-a495-1bda7e7f9aba"
+	$reservationId2 = "77ade667-6d1e-49ed-8aa1-341b6009b3a0"
+	$reservationOrderIdMerge = "0c0e972c-a418-497c-8fc9-96b5d43fcb1d"
 	$type = "Microsoft.Capacity/reservationOrders/reservations"
-	$mergeResult = Merge-AzReservation -ReservationOrderId $reservationOrderId -ReservationId $reservationId1,$reservationId2
+	$mergeResult = Merge-AzReservation -ReservationOrderId $reservationOrderIdMerge -ReservationId $reservationId1,$reservationId2
 	Foreach ($mergeItem in $mergeResult)
 	{
 		Assert-NotNull $mergeItem
@@ -151,17 +154,20 @@ function Test-GetReservation
 .SYNOPSIS
 Update reservation
 #>
+$ReservationOrderIdTestScope = "11e0f3cb-d8d2-42d4-8b24-b460cab90b67"
+$ReservationIdTestScope = "153f4fea-dde4-4656-949a-50e3191840c9"
+
 function Test-UpdateReservationToShared
 {
 	$type = "Microsoft.Capacity/reservationOrders/reservations"
 
-	$reservationItem = Update-AzReservation -ReservationOrderId $reservationOrderId -ReservationId $reservationId -appliedscopetype Shared -InstanceFlexibility On
+	$reservationItem = Update-AzReservation -ReservationOrderId $ReservationOrderIdTestScope -ReservationId $ReservationIdTestScope -appliedscopetype Shared -InstanceFlexibility On
 
 	Assert-NotNull $reservationItem
 	Assert-NotNull $reservationItem.Etag
 
-	$name = $reservationOrderId + '/' + $reservationId
-	$id = "/providers/microsoft.capacity/reservationOrders/" + $reservationOrderId + "/reservations/" + $reservationId
+	$name = $ReservationOrderIdTestScope + '/' + $ReservationIdTestScope
+	$id = "/providers/microsoft.capacity/reservationOrders/" + $ReservationOrderIdTestScope + "/reservations/" + $ReservationIdTestScope
 
 	Assert-AreEqual $reservationItem.Id $id
 	Assert-AreEqual $reservationItem.Name $name
@@ -176,15 +182,15 @@ Update reservation
 function Test-UpdateReservationToSingle
 {
 	$type = "Microsoft.Capacity/reservationOrders/reservations"
-	$subscription = "/subscriptions/302110e3-cd4e-4244-9874-07c91853c809"
+	$subscription = "/subscriptions/d3ae48e5-dbb2-4618-afd4-fb1b8559cb80"
 
-	$reservationItem = Update-AzReservation -ReservationOrderId $reservationOrderId -ReservationId $reservationId -appliedscopetype Single -appliedscope $subscription -InstanceFlexibility On
+	$reservationItem = Update-AzReservation -ReservationOrderId $ReservationOrderIdTestScope -ReservationId $ReservationIdTestScope -appliedscopetype Single -appliedscope $subscription -InstanceFlexibility On
 
 	Assert-NotNull $reservationItem
 	Assert-NotNull $reservationItem.Etag
 
-	$name = $reservationOrderId + '/' + $reservationId
-	$id = "/providers/microsoft.capacity/reservationOrders/" + $reservationOrderId + "/reservations/" + $reservationId
+	$name = $ReservationOrderIdTestScope + '/' + $ReservationIdTestScope
+	$id = "/providers/microsoft.capacity/reservationOrders/" + $ReservationOrderIdTestScope + "/reservations/" + $ReservationIdTestScope
 
 	Assert-AreEqual $reservationItem.Id $id
 	Assert-AreEqual $reservationItem.Name $name
