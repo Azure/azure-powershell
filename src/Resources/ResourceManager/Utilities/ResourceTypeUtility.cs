@@ -8,8 +8,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
     {
         public static string GetTopLevelResourceType(string resourceType)
         {
-            string[] resourceTypeFieldList = resourceType.Split('/'); // resourceType is like {providerNameSpace}/{topLevelResource}/[{subLevelResource}] at least two fields
-            string topLevelResourceType = string.Format("{0}/{1}", resourceTypeFieldList[0], resourceTypeFieldList[1]);
+            if (resourceType == null)
+            {
+                return null;
+            }
+            string[] resourceTypeFieldList = resourceType.Split('/');
+            string topLevelResourceType;
+            if (resourceTypeFieldList.Length == 1)
+            {
+                topLevelResourceType = resourceTypeFieldList[0];
+            }
+            else // resourceType is like {providerNameSpace}/{topLevelResource}/[{subLevelResource}] at least two fields
+            {
+                topLevelResourceType = string.Format("{0}/{1}", resourceTypeFieldList[0], resourceTypeFieldList[1]);
+            }
 
             return topLevelResourceType;
         }
