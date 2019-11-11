@@ -21,6 +21,7 @@
 - Updated policy cmdlets to use new api version 2019-06-01 that has new EnforcementMode property in policy assignment.
 - Updated create policy definition help example
 - Fix bug Remove-AZADServicePrincipal -ServicePrincipalName, throw null reference when service principal name not found.
+- Fix bug New-AZADServicePrincipal，throw null reference when tenant doesn't have any subscription.
 - Fix the bug that the output of some sub-resource is empty when using `Get-AzResource`.
 
 ## Version 1.7.1

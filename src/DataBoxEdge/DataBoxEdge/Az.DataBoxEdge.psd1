@@ -75,7 +75,8 @@ NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzDataBoxEdgeJob', 'Get-AzDataBoxEdgeDevice', 
+
+CmdletsToExport = 'Get-AzDataBoxEdgeJob', 'Get-AzDataBoxEdgeDevice', 'Invoke-AzDataBoxEdgeDevice',
                'New-AzDataBoxEdgeDevice', 'Remove-AzDataBoxEdgeDevice', 
                'Get-AzDataBoxEdgeUser', 'New-AzDataBoxEdgeUser', 
                'Set-AzDataBoxEdgeUser', 'Remove-AzDataBoxEdgeUser', 
@@ -88,7 +89,9 @@ CmdletsToExport = 'Get-AzDataBoxEdgeJob', 'Get-AzDataBoxEdgeDevice',
                'Set-AzDataBoxEdgeBandwidthSchedule', 
                'New-AzDataBoxEdgeBandwidthSchedule', 
                'Remove-AzDataBoxEdgeBandwidthSchedule', 'Get-AzDataBoxEdgeRole', 
-               'New-AzDataBoxEdgeRole', 'Remove-AzDataBoxEdgeRole'
+               'New-AzDataBoxEdgeRole', 'Remove-AzDataBoxEdgeRole',
+			   'Get-AzDataBoxEdgeTrigger', 'New-AzDataBoxEdgeTrigger', 
+			   'Remove-AzDataBoxEdgeTrigger'
 
 # Variables to export from this module
 # VariablesToExport = @()
