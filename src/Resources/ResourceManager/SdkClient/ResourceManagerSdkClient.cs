@@ -1163,10 +1163,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
             }
 
+            string topLevelResourceType = ResourceTypeUtility.GetTopLevelResourceType(resourceIdentifier.ResourceType);
             foreach (var provider in providers)
             {
                 var resourceType = provider.ResourceTypes
-                                           .Where(t => string.Equals(string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType), resourceIdentifier.ResourceType, StringComparison.OrdinalIgnoreCase))
+                                           .Where(t => string.Equals(string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType), topLevelResourceType, StringComparison.OrdinalIgnoreCase))
                                            .FirstOrDefault();
                 if (resourceType != null)
                 {

@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 // TODO: Remove IfDef
 #if NETSTANDARD
     using Microsoft.Extensions.Caching.Memory;
@@ -127,11 +128,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                     cancellationToken: cancellationToken),
                 cancellationToken: cancellationToken);
 
+            string topLevelResourceType = ResourceTypeUtility.GetTopLevelResourceType(resourceType);
             return providers
                 .CoalesceEnumerable()
                 .Where(provider => providerNamespace.EqualsInsensitively(provider.Namespace))
                 .SelectMany(provider => provider.ResourceTypes)
-                .Where(type => resourceType.EqualsInsensitively(type.ResourceType))
+                .Where(type => topLevelResourceType.EqualsInsensitively(type.ResourceType))
                 .Select(type => type.ApiVersions)
                 .FirstOrDefault();
         }
