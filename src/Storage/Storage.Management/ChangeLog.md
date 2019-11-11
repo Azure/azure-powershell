@@ -25,6 +25,9 @@
     - Restore-AzStorageBlobRange
 * Support get blob restore status of Storage account by run get-AzureRMStorageAccount with parameter -IncludeBlobRestoreStatus 
     - Get-AzureRMStorageAccount
+* Integrate Azure.Storage.Blobs 12.3.0, to handle new storage features in the future.
+    - Blob cmdlets output type "AzureStorageBlob" has 2 new properties: BlobClient, BlobProperties
+    - Container cmdlets output type "AzureStorageContainer" has 2 new properties: BlobContainerClient, BlobContainerProperties
 
 ## Version 1.12.0
 * Support set Table/Queue Encryption Keytype in Create Storage Account
