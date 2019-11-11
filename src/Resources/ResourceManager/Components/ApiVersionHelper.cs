@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 // TODO: Remove IfDef
 #if NETSTANDARD
     using Microsoft.Extensions.Caching.Memory;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 #else
     using System.Runtime.Caching;
 #endif
