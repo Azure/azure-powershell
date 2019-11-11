@@ -52,7 +52,7 @@ function Test-RedisCache
     Assert-AreEqual "succeeded" $cacheUpdated.ProvisioningState
     Assert-AreEqual "allkeys-lru" $cacheUpdated.RedisConfiguration.Item("maxmemory-policy")
     Assert-True  { $cacheUpdated.EnableNonSslPort }
-	Asset-AreEqual "1.2" $cacheUpdated.MinimumTlsVersion
+	Assert-AreEqual "1.2" $cacheUpdated.MinimumTlsVersion
 
     Assert-NotNull $cacheUpdated.PrimaryKey "PrimaryKey do not exists"
     Assert-NotNull $cacheUpdated.SecondaryKey "SecondaryKey do not exists"
@@ -152,7 +152,7 @@ function Test-RedisCachePipeline
     Assert-AreEqual "1GB" $cacheCreated.Size
     Assert-AreEqual "Standard" $cacheCreated.Sku
     Assert-True { $cacheCreated.EnableNonSslPort }
-	Asset-AreEqual "1.2" $cacheUpdated.MinimumTlsVersion
+	Assert-AreEqual "1.2" $cacheCreated.MinimumTlsVersion
 
     Assert-NotNull $cacheCreated.PrimaryKey "PrimaryKey do not exists"
     Assert-NotNull $cacheCreated.SecondaryKey "SecondaryKey do not exists"
@@ -184,7 +184,7 @@ function Test-RedisCachePipeline
     Assert-AreEqual "Standard" $cacheUpdatedPiped.Sku
     Assert-AreEqual "allkeys-random"  $cacheUpdatedPiped.RedisConfiguration.Item("maxmemory-policy")
     Assert-False  { $cacheUpdatedPiped.EnableNonSslPort }
-	Asset-AreEqual "1.2" $cacheUpdated.MinimumTlsVersion
+	Assert-AreEqual "1.2" $cacheUpdatedPiped.MinimumTlsVersion
 
     # Get cache keys
     $cacheKeysBeforeUpdate = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Get-AzRedisCacheKey
@@ -822,7 +822,7 @@ function Test-Zones
     # Setup
     $resourceGroupName = "PowerShellTest-9"
     $cacheName = "redisteam009"
-    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "East US 2"
+    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "East US"
 
     # Create resource group
     New-AzResourceGroup -Name $resourceGroupName -Location $location
