@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.Reservations
 Module Guid: 43d3b085-6323-4ac4-a7c3-81d75ea036e5
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.reservations
@@ -35,8 +35,3 @@ Split a `Reservation`.
 ### [Update-AzReservation](Update-AzReservation.md)
 Update a `Reservation`.
 
-###[Calculate-AzCalculatePrice](Calculate-AzCalculatePrice.md)
-Calculate price for a `Reservation`.
-
-###[Purchase-AzReservationOrder](Purchase-AzReservationOrder.md)
-Purchase a `Reservationrder`.
