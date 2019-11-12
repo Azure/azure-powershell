@@ -69,6 +69,49 @@ function Test-GetCatalog
 
 <#
 .SYNOPSIS
+Calculate price
+#>
+function Test-CalculatePrice
+{
+    $reservedResourceType = "VirtualMachines"
+    $location = "westus"
+    $term = "P1Y"
+    $quantity = 1
+    $billingPlan = "Upfront"
+    $applyScopeType = "Shared"
+    $renew = $false
+    $sku = "standard_b1ls"
+    $disPlayName = "test"
+
+    $calculateP = Calculate-AzCalculatePrice -ReservedResourceType $reservedResourceType -Location $location -BillingScopeId $subscriptionId -Term $term -Quantity $quantity -BillingPlan $billingPlan  -AppliedScopeType $applyScopeType -Sku $sku -DisplayName $disPlayName
+    Assert-NotNull $calculateP
+    Assert-NotNull $calculateP.Properties
+    Assert-NotNull $calculateP.Properties.ReservationOrderId
+}
+
+<#
+.SYNOPSIS
+Purchase
+#>
+function Test-Purchase
+{
+    $roId = "48a6e568-638f-44ec-923b-3e8d1ccc1ac3"
+    $reservedResourceType = "VirtualMachines"
+    $location = "westus"
+    $term = "P1Y"
+    $quantity = 1
+    $billingPlan = "Upfront"
+    $applyScopeType = "Shared"
+    $renew = $false
+    $sku = "standard_b1ls"
+    $disPlayName = "test"
+
+    $purcahseResult = Purchase-AzReservationOrder -ReservationOrderId $roId -ReservedResourceType $reservedResourceType -Location $location -BillingScopeId $subscriptionId -Term $term -Quantity $quantity -BillingPlan $billingPlan  -AppliedScopeType $applyScopeType -Sku $sku -DisplayName $disPlayName
+    Assert-NotNull $purcahseResult
+}
+
+<#
+.SYNOPSIS
 Get applied reservation list
 #>
 function Test-GetReservationOrderId
