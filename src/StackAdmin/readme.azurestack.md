@@ -4,7 +4,7 @@
 ``` yaml
 azure: true
 powershell: true
-branch: stackadmin2
+branch: stackadmin
 repo: https://github.com/Azure/azure-rest-api-specs/tree/$(branch)
 metadata:
   authors: Microsoft Corporation
