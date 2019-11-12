@@ -37,12 +37,19 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Rule override list")]
         public PSAzureManagedRuleOverride[] ManagedRuleOverride { get; set; }
 
+        /// <summary>
+        /// Exclusions
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Exclusions")]
+        public PSManagedRuleExclusion[] Exclusions { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var ruleGroupOverride = new PSAzureRuleGroupOverride 
             {
                ManagedRuleOverrides = ManagedRuleOverride?.ToList(),
-               RuleGroupName = RuleGroupName
+               RuleGroupName = RuleGroupName,
+               Exclusions = Exclusions?.ToList()
             };
             WriteObject(ruleGroupOverride);
         }
