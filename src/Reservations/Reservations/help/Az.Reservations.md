@@ -35,3 +35,8 @@ Split a `Reservation`.
 ### [Update-AzReservation](Update-AzReservation.md)
 Update a `Reservation`.
 
+###[Calculate-AzCalculatePrice](Calculate-AzCalculatePrice.md)
+Calculate price for a `Reservation`.
+
+###[Purchase-AzReservationOrder](Purchase-AzReservationOrder.md)
+Purchase a `Reservationrder`.
