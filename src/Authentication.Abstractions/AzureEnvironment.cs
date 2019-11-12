@@ -32,17 +32,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     /// </summary>
     [Serializable]
     public class AzureEnvironment : IAzureEnvironment
-    {
-        private const string ArmMetadataRequestUri = "https://management.azure.com/metadata/endpoints?api-version=2019-05-01";
-        private const int ArmMetadataRetryCount = 3;
+    {        
+        private const int GetArmMetadataRetryCount = 3;
+        private const string ArmMetadataEnvVariable = "ARM_CLOUD_METADATA_URL";
         private static readonly HttpClient Client = new HttpClient();        
 
         static IDictionary<string, AzureEnvironment> InitializeBuiltInEnvironments()
         {
-            IDictionary<string, AzureEnvironment> armAzureEnvironments;
+            IDictionary<string, AzureEnvironment> armAzureEnvironments = null;
             try
             {
-                armAzureEnvironments = InitializeEnvironmentsFromArm().Result;
+                var armMetadataRequestUri = Environment.GetEnvironmentVariable(ArmMetadataEnvVariable);
+                if (!string.IsNullOrEmpty(armMetadataRequestUri))
+                {
+                    armAzureEnvironments = InitializeEnvironmentsFromArm(armMetadataRequestUri).Result;
+                }
             }
             catch (Exception)
             {
@@ -162,20 +166,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// Initializes cloud metadata dynamically from ARM.
         /// </summary>
-        private static async Task<IDictionary<string, AzureEnvironment>> InitializeEnvironmentsFromArm()
+        private static async Task<IDictionary<string, AzureEnvironment>> InitializeEnvironmentsFromArm(string armMetadataRequestUri)
         {
             HttpResponseMessage armResponseMessage = null;
             await Policy
                 .Handle<HttpRequestException>()
                 .WaitAndRetryAsync(
-                    ArmMetadataRetryCount,
+                    GetArmMetadataRetryCount,
                     r => TimeSpan.FromSeconds(2 * r),
                     (ex, ts, r) =>
                         Debug.WriteLine(
-                            $"Could not retrieve ARM metadata. Attempt #{r}/{3}. Will try again in {ts.TotalSeconds} seconds. Exception={ex}"))
+                            $"Could not retrieve ARM metadata. Attempt #{r}/{GetArmMetadataRetryCount}. Will try again in {ts.TotalSeconds} seconds. Exception={ex}"))
                 .ExecuteAsync(async () =>
                 {
-                    armResponseMessage = await Client.GetAsync(ArmMetadataRequestUri);
+                    armResponseMessage = await Client.GetAsync(armMetadataRequestUri);
                 });
 
             if (armResponseMessage == null || armResponseMessage?.StatusCode != HttpStatusCode.OK)
