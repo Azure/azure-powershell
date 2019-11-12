@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             get
             {
-                return enableChangeFeed is null? false : enableChangeFeed.Value;
+                return enableChangeFeed is null ? false : enableChangeFeed.Value;
             }
             set
             {
@@ -99,6 +99,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
         }
         private bool? enableChangeFeed = null;
+
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "Gets or sets versioning is enabled if set to true.")]
+        [ValidateNotNullOrEmpty]
+        public bool IsVersioningEnabled
+        {
+            get
+            {
+                return isVersioningEnabled is null ? false : isVersioningEnabled.Value;
+            }
+            set
+            {
+                isVersioningEnabled = value;
+            }
+        }
+        private bool? isVersioningEnabled = null;
 
         public override void ExecuteCmdlet()
         {
@@ -132,6 +149,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 {
                     serviceProperties.ChangeFeed = new ChangeFeed();
                     serviceProperties.ChangeFeed.Enabled = enableChangeFeed;
+                }
+                if (isVersioningEnabled != null)
+                {
+                    serviceProperties.IsVersioningEnabled = isVersioningEnabled;
                 }
 
                 serviceProperties = this.StorageClient.BlobServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, serviceProperties);

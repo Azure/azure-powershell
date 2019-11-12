@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         [Ps1Xml(Label = "RestorePolicy.LastEnabledTime", Target = ViewControl.Table, ScriptBlock = "$_.RestorePolicy.LastEnabledTime", Position = 7)]
         public PSRestorePolicy RestorePolicy { get; set; }
         public PSCorsRules Cors { get; set; }
+        public bool? IsVersioningEnabled { get; set; }
 
         public PSBlobServiceProperties()
         { }
@@ -60,6 +61,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.DeleteRetentionPolicy = policy.DeleteRetentionPolicy is null ? null : new PSDeleteRetentionPolicy(policy.DeleteRetentionPolicy);
             this.RestorePolicy = policy.RestorePolicy is null ? null : new PSRestorePolicy(policy.RestorePolicy);
             this.ChangeFeed = policy.ChangeFeed is null ? null : new PSChangeFeed(policy.ChangeFeed);
+            this.IsVersioningEnabled = policy.IsVersioningEnabled;
         }
         public BlobServiceProperties ParseBlobServiceProperties()
         {
@@ -69,7 +71,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 DefaultServiceVersion = this.DefaultServiceVersion,
                 DeleteRetentionPolicy = this.DeleteRetentionPolicy is null ? null : this.DeleteRetentionPolicy.ParseDeleteRetentionPolicy(),
                 RestorePolicy = this.RestorePolicy is null ? null : this.RestorePolicy.ParseRestorePolicy(),
-                ChangeFeed = this.ChangeFeed is null ? null : this.ChangeFeed.ParseChangeFeed()
+                ChangeFeed = this.ChangeFeed is null ? null : this.ChangeFeed.ParseChangeFeed(),
+                IsVersioningEnabled = this.IsVersioningEnabled                
             };
         }
 
