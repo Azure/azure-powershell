@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Reservations.dll-Help.xml
 Module Name: Az.Reservations
-online version:
+online version: .
 schema: 2.0.0
 ---
 
@@ -21,21 +21,24 @@ Purchase-AzReservationOrder -ReservationOrderId <String> -ReservedResourceType <
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Purchase a reservation Instance and get benefit
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Purchase-AzReservationOrder -ReservationOrderId 112382d9-9af7-4fd5-b136-b71f0a69a1d0 -ReservedResourceType VirtualMachines [-Sku VirtualMachines] -Location centralus
+ -BillingScopeId /subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0 -Term P1Y [-BillingPlan Monthly] -Quantity 2 [-DisplayName demo]
+ -AppliedScopeType <String> [-AppliedScopes <System.Collections.Generic.IList`1[System.String]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-{{ Add example description here }}
+After calculate price, customer could purcahse that RI provide by calculatePrice
 
 ## PARAMETERS
 
 ### -AppliedScopes
-{{ Fill AppliedScopes Description }}
+If AppliedScopeType is "Shared", it will be all subscriptions under the CAID/EA. If "Single" it will only give benefit to that specific subscription
 
 ```yaml
 Type: System.Collections.Generic.IList`1[System.String]
@@ -50,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -AppliedScopeType
-{{ Fill AppliedScopeType Description }}
+"Single" "Shared"
 
 ```yaml
 Type: String
@@ -65,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -BillingPlan
-{{ Fill BillingPlan Description }}
+"Mothly" "Upfront"
 
 ```yaml
 Type: String
@@ -80,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -BillingScopeId
-{{ Fill BillingScopeId Description }}
+The subscription who will be charge for the RI
 
 ```yaml
 Type: String
@@ -110,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-{{ Fill DisplayName Description }}
+Custom name
 
 ```yaml
 Type: String
@@ -125,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-{{ Fill Location Description }}
+Pick a location
 
 ```yaml
 Type: String
@@ -140,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -Quantity
-{{ Fill Quantity Description }}
+Quantity of RIs
 
 ```yaml
 Type: Int32
@@ -155,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReservationOrderId
-{{ Fill ReservationOrderId Description }}
+The ReservationOrderId which get from calculatePrice
 
 ```yaml
 Type: String
@@ -170,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReservedResourceType
-{{ Fill ReservedResourceType Description }}
+Reservation Instance type, ex: VirtualMachines, Sql, CosmosDB
 
 ```yaml
 Type: String
@@ -185,7 +188,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-{{ Fill Sku Description }}
+Pick specific product under the resourceType
 
 ```yaml
 Type: String
@@ -200,7 +203,9 @@ Accept wildcard characters: False
 ```
 
 ### -Term
-{{ Fill Term Description }}
+"P1Y"  1 year
+"P3y"  3 years
+3 years will get more discount 
 
 ```yaml
 Type: String
