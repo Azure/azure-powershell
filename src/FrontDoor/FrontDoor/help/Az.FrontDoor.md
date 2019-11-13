@@ -50,6 +50,9 @@ Create a PSRoutingRuleObject for Front Door creation
 ### [New-AzFrontDoorWafCustomRuleObject](New-AzFrontDoorWafCustomRuleObject.md)
 Create CustomRule Object for WAF policy creation
 
+### [New-AzFrontDoorWafManagedRuleExclusionObject](New-AzFrontDoorWafManagedRuleExclusionObject.md)
+Create managed rule exclusion object for WAF managed rule sets, groups, or rules
+
 ### [New-AzFrontDoorWafManagedRuleObject](New-AzFrontDoorWafManagedRuleObject.md)
 Create ManagedRule Object for WAF policy creation
 
