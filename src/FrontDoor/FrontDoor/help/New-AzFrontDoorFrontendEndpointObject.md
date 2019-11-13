@@ -17,7 +17,7 @@ New-AzFrontDoorFrontendEndpointObject -Name <String> -HostName <String>
  [-SessionAffinityEnabledState <PSEnabledState>] [-SessionAffinityTtlInSeconds <Int32>]
  [-WebApplicationFirewallPolicyLink <String>] [-CertificateSource <String>] [-ProtocolType <String>]
  [-Vault <String>] [-SecretName <String>] [-SecretVersion <String>] [-CertificateType <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-MinimumTlsVersion <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,6 +108,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinimumTlsVersion
+Minimum TLS version to support
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

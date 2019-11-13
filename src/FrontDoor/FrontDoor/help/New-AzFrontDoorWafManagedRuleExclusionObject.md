@@ -1,41 +1,35 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorwafrulegroupoverrideobject
+online version:
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorWafRuleGroupOverrideObject
+# New-AzFrontDoorWafManagedRuleExclusionObject
 
 ## SYNOPSIS
-Create RuleGroupOverride Object for WAF policy creation
+Create managed rule exclusion object for WAF managed rule sets, groups, or rules.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafRuleGroupOverrideObject -RuleGroupName <String>
- [-ManagedRuleOverride <PSAzureManagedRuleOverride[]>] [-Exclusions <PSManagedRuleExclusion[]>]
+New-AzFrontDoorWafManagedRuleExclusionObject -Variable <String> -Operator <String> [-Selector <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create RuleGroupOverride Object for WAF policy creation
+Create managed rule exclusion object for WAF managed rule sets, groups, or rules.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $ruleOverride1 = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942250" -Action Log -EnabledState Enabled
-PS C:\> $ruleOverride2 = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942251" -Action Log -EnabledState Enabled
+PS C:> New-AzFrontDoorWafManagedRuleExclusionObject -Variable QueryStringArgNames -Operator Equals -Selector "ParameterName"
 
-PS C:\> New-AzFrontDoorWafRuleGroupOverrideObject -RuleGroupName SQLI -ManagedRuleOverride $ruleOverride1,$ruleOverride2
-
-RuleGroupName ManagedRuleOverrides
-------------- --------------------
-SQLI          {942250, 942251}
+MatchVariable       SelectorMatchOperator Selector
+-------------       --------------------- --------
+QueryStringArgNames Equals                ParameterName
 ```
-
-Create a RuleGroupOverride Object
 
 ## PARAMETERS
 
@@ -43,7 +37,7 @@ Create a RuleGroupOverride Object
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -54,11 +48,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Exclusions
-Exclusions
+### -Operator
+Operator
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRuleExclusion[]
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Selector
+Selector
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -69,26 +78,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedRuleOverride
-Rule override list
+### -Variable
+Match variable
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRuleOverride[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RuleGroupName
-Rule Group Name for which these overrides apply
-
-```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -108,10 +102,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride
+### Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRuleExclusion
 
 ## NOTES
 
 ## RELATED LINKS
-
+[New-AzFrontDoorWafManagedRuleOverrideObject](./New-AzFrontDoorWafManagedRuleOverrideObject.md)
+[New-AzFrontDoorWafRuleGroupOverrideObject](./New-AzFrontDoorWafRuleGroupOverrideObject.md)
 [New-AzFrontDoorWafManagedRuleObject](./New-AzFrontDoorWafManagedRuleObject.md)
