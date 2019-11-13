@@ -14,7 +14,7 @@ Create ManagedRule Object for WAF policy creation
 
 ```
 New-AzFrontDoorWafManagedRuleObject -Type <String> -Version <String>
- [-RuleGroupOverride <PSAzureRuleGroupOverride[]>] [-Exclusions <PSManagedRuleExclusion[]>]
+ [-RuleGroupOverride <PSAzureRuleGroupOverride[]>] [-Exclusion <PSManagedRuleExclusion[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -58,8 +58,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Exclusions
-Exclusions
+### -Exclusion
+Exclusion
 
 ```yaml
 Type: Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRuleExclusion[]
