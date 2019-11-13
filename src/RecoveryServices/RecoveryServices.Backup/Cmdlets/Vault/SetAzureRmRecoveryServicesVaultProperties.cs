@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Used to set RecoveryServices Vault properties
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesVaultProperties"), OutputType(typeof(void))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesVaultProperties"), OutputType(typeof(BackupResourceVaultConfigResource))]
     public class SetAzureRmRecoveryServicesVaultProperties : RSBackupVaultCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipeline = false)]

@@ -375,8 +375,8 @@ function Test-AzureVMBackup
 	try
 	{
 		# Setup
-		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		$vm = Create-VM $resourceGroupName $location
 		$item = Enable-Protection $vault $vm
 		
 		# Trigger backup and wait for completion
@@ -448,10 +448,12 @@ function Test-AzureVMSoftDelete
 	try
 	{	
 		#Setup
-		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		Set-AzRecoveryServicesVaultProperties -VaultId $vault.ID -SoftDeleteFeatureState "Enabled"
+		$vm = Create-VM $resourceGroupName $location
+		
 		Set-AzRecoveryServicesVaultContext -Vault $vault
-
+		
 		$item = Enable-Protection $vault $vm
 		$backupJob = Backup-Item $vault $item
 		

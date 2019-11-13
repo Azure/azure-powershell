@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$containerName = "pstestvm8896"
+$containerName = "psbvtsqlvm"
 $resourceGroupName = "pstestwlRG1bca8"
 $vaultName = "pstestwlRSV1bca8"
 $resourceId = "/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestwlRG1bca8/providers/Microsoft.Compute/virtualMachines/pstestwlvm1bca8"
@@ -230,7 +230,7 @@ function Test-AzureVmWorkloadEnableAutoProtectableItem
 			-Container $container `
 			-WorkloadType MSSQL;
 		
-		Assert-True { $items.Count -eq 4 }
+		Assert-True { $items.Count -eq 1 }
 
 		foreach($protectedItem in $items)
 		{
