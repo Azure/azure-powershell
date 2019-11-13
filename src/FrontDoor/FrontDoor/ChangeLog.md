@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added WAF managed rules exclusion support
 
 ## Version 1.1.2
 * Fixed miscellaneous typos across module

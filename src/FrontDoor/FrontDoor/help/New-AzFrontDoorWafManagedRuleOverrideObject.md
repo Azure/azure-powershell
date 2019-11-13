@@ -14,7 +14,7 @@ Create managed rule override object
 
 ```
 New-AzFrontDoorWafManagedRuleOverrideObject -RuleId <String> [-Action <String>] [-Disabled]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Exclusions <PSManagedRuleExclusion[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,6 +70,21 @@ Disabled state
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Exclusions
+Exclusions
+
+```yaml
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRuleExclusion[]
 Parameter Sets: (All)
 Aliases:
 
