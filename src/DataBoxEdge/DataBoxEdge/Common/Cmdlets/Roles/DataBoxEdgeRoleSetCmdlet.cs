@@ -26,8 +26,10 @@ using PSTopLevelResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.M
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
 {
-    [Cmdlet(VerbsCommon.Set, Constants.Role, DefaultParameterSetName = SetByNameParameterSet
-     ),
+    [Cmdlet(VerbsCommon.Set,
+         Constants.Role,
+         DefaultParameterSetName = SetByNameParameterSet,
+         SupportsShouldProcess = true),
      OutputType(typeof(PSResourceModel))]
     public class DataBoxEdgeRoleSetCmdletBase : AzureDataBoxEdgeCmdletBase
     {
