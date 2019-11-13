@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         public int? ShardCount { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Specify the TLS version required by clients to connect to cache.")]
-        [ValidateSet(TlsStrings.OneFullStopZero, TlsStrings.OneFullStopOne, TlsStrings.OneFullStopTwo)]
+        [PSArgumentCompleter(TlsStrings.OneFullStopZero, TlsStrings.OneFullStopOne, TlsStrings.OneFullStopTwo)]
         public string MinimumTlsVersion { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "A hash table which represents tags.")]

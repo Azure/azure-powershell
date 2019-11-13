@@ -149,7 +149,6 @@ Specify the TLS version required by clients to connect to cache.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: 1.0, 1.1, 1.2
 
 Required: False
 Position: Named
