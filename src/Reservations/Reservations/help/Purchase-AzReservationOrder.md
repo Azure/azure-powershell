@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Reservations.dll-Help.xml
 Module Name: Az.Reservations
-online version: .
+online version:https://docs.microsoft.com/en-us/powershell/module/az.reservations/purcahse-azreservationorder
 schema: 2.0.0
 ---
 
 # Purchase-AzReservationOrder
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Purcahse a reservationOrder
 
 ## SYNTAX
 
