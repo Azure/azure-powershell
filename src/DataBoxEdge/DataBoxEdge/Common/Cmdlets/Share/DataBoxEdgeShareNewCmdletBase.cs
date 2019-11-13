@@ -37,6 +37,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
     {
         private const string NfsParameterSet = "NfsParameterSet";
         private const string SmbParameterSet = "SmbParameterSet";
+        private const string CloudShareNfsParameterSet = "CloudShareNfsParameterSet";
+        private const string CloudShareSmbParameterSet = "CloudShareSmbParameterSet";
 
         [Parameter(Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
@@ -58,40 +60,81 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+
         [Parameter(Mandatory = true,
-            HelpMessage = HelpMessageShare.StorageAccountCredentialHelpMessage,
-            Position = 3)]
+            ParameterSetName = CloudShareNfsParameterSet,
+            Position = 3,
+            HelpMessage = HelpMessageShare.StorageAccountCredentialHelpMessage)]
+        [Parameter(Mandatory = true,
+            ParameterSetName = CloudShareSmbParameterSet,
+            Position = 3,
+            HelpMessage = HelpMessageShare.StorageAccountCredentialHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountCredentialName { get; set; }
 
         [Parameter(Mandatory = false,
+            ParameterSetName = CloudShareNfsParameterSet,
+            HelpMessage = HelpMessageShare.StorageAccountCredentialHelpMessage)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = CloudShareSmbParameterSet,
+            HelpMessage = HelpMessageShare.StorageAccountCredentialHelpMessage)]
+        public SwitchParameter CloudShare { get; set; }
+
+        [Parameter(Mandatory = true,
+            ParameterSetName = CloudShareNfsParameterSet,
+            HelpMessage = HelpMessageShare.DataFormatHelpMessage)]
+        [Parameter(Mandatory = true,
+            ParameterSetName = CloudShareSmbParameterSet,
+            HelpMessage = HelpMessageShare.DataFormatHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("BlockBlob", "PageBlob", "AzureFile")]
+        public string DataFormat { get; set; }
+
+        [Parameter(Mandatory = false,
+            ParameterSetName = CloudShareSmbParameterSet,
+            HelpMessage = HelpMessageShare.ContainerName)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = CloudShareNfsParameterSet,
+            HelpMessage = HelpMessageShare.ContainerName)]
+        [ValidateNotNullOrEmpty]
+        public string ContainerName { get; set; }
+
+        [Parameter(Mandatory = false,
             ParameterSetName = SmbParameterSet,
+            HelpMessage = HelpMessageShare.AccessProtocolHelpMessage)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = CloudShareSmbParameterSet,
             HelpMessage = HelpMessageShare.AccessProtocolHelpMessage)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter SMB { get; set; }
 
         [Parameter(Mandatory = false,
-            ParameterSetName = NfsParameterSet,
-            HelpMessage = HelpMessageShare.AccessProtocolHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter NFS { get; set; }
-
-        [Parameter(Mandatory = false,
             ParameterSetName = SmbParameterSet,
+            HelpMessage = HelpMessageShare.SetUserAccessRightsHelpMessage)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = CloudShareSmbParameterSet,
             HelpMessage = HelpMessageShare.SetUserAccessRightsHelpMessage)]
         [ValidateNotNullOrEmpty]
         public Hashtable[] UserAccessRight { get; set; }
 
         [Parameter(Mandatory = false,
             ParameterSetName = NfsParameterSet,
+            HelpMessage = HelpMessageShare.AccessProtocolHelpMessage)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = CloudShareNfsParameterSet,
+            HelpMessage = HelpMessageShare.AccessProtocolHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter NFS { get; set; }
+
+        [Parameter(Mandatory = false,
+            ParameterSetName = NfsParameterSet,
+            HelpMessage = HelpMessageShare.SetClientAccessRightsHelpMessage)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = CloudShareNfsParameterSet,
             HelpMessage = HelpMessageShare.SetClientAccessRightsHelpMessage)]
         [ValidateNotNullOrEmpty]
         public Hashtable[] ClientAccessRight { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = HelpMessageShare.DataFormatHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("BlockBlob", "PageBlob", "AzureFile")]
-        public string DataFormat { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
@@ -143,14 +186,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
                 this.ResourceGroupName));
         }
 
+        private ResourceModel AddAzureContainer(ResourceModel resourceModel)
+        {
+            var sac = this.DataBoxEdgeManagementClient.StorageAccountCredentials.Get(
+                this.DeviceName,
+                this.StorageAccountCredentialName,
+                this.ResourceGroupName);
+            resourceModel.AzureContainerInfo = this.IsParameterBound(c => c.ContainerName)
+                ? new AzureContainerInfo(sac.Id, ContainerName, DataFormat)
+                : new AzureContainerInfo(sac.Id, Name, this.DataFormat);
+            return resourceModel;
+        }
 
         private ResourceModel InitShareObject()
         {
+            var dataPolicy = "Local";
+            if (this.IsParameterBound(c => c.StorageAccountCredentialName))
+            {
+                dataPolicy = "Cloud";
+            }
+
             var accessProtocol = this.NFS.IsPresent ? "NFS" : "SMB";
-            return new ResourceModel("Online",
+            var share = new ResourceModel("Online",
                 "Enabled",
                 accessProtocol,
-                dataPolicy: "Cloud");
+                null, dataPolicy: dataPolicy);
+            share = dataPolicy == "Cloud" ? AddAzureContainer(share) : share;
+            return share;
         }
 
         private string GetUserId(string username)
@@ -166,12 +228,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
 
         public override void ExecuteCmdlet()
         {
-            var sac = StorageAccountCredentialsOperationsExtensions.Get(
-                this.DataBoxEdgeManagementClient.StorageAccountCredentials,
-                this.DeviceName,
-                this.StorageAccountCredentialName,
-                this.ResourceGroupName);
-
             _share = InitShareObject();
 
             if (this.IsParameterBound(c => c.ClientAccessRight))
@@ -204,7 +260,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
                 }
             }
 
-            _share.AzureContainerInfo = new AzureContainerInfo(sac.Id, this.Name, this.DataFormat);
             if (this.ShouldProcess(this.Name,
                 string.Format("Creating '{0}' in device '{1}' with name '{2}'.",
                     HelpMessageShare.ObjectName, this.DeviceName, this.Name)))
