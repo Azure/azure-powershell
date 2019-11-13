@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Exclusions
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Exclusions")]
-        public PSManagedRuleExclusion[] Exclusions { get; set; }
+        public PSManagedRuleExclusion[] Exclusion { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 RuleId = RuleId,
                 Action = this.IsParameterBound(c => c.Action) ? Action : null,
                 EnabledState = (this.IsParameterBound(c => c.Disabled) && Disabled.IsPresent) ? PSEnabledState.Disabled : PSEnabledState.Enabled,
-                Exclusions = Exclusions?.ToList()
+                Exclusions = Exclusion?.ToList()
             };
             WriteObject(managedRuleOverride);
         }

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Exclusions
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Exclusions")]
-        public PSManagedRuleExclusion[] Exclusions { get; set; }
+        public PSManagedRuleExclusion[] Exclusion { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             {
                ManagedRuleOverrides = ManagedRuleOverride?.ToList(),
                RuleGroupName = RuleGroupName,
-               Exclusions = Exclusions?.ToList()
+               Exclusions = Exclusion?.ToList()
             };
             WriteObject(ruleGroupOverride);
         }
