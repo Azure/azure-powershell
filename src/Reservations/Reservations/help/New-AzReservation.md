@@ -5,17 +5,18 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.reservatio
 schema: 2.0.0
 ---
 
-# Purchase-AzReservationOrder
+# New-AzReservation
 
 ## SYNOPSIS
-Purcahse a reservationOrder
+Purcahse a reservation
 
 ## SYNTAX
 
 ```
-New-AzReservation -ReservationOrderId "112382d9-9af7-4fd5-b136-b71f0a69a1d0" -ReservedResourceType "VirtualMachines" [-Sku "standard b1"] -Location "centralus"
--BillingScopeId "/subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0" -Term "P1Y" [-BillingPlan "Monthly"] -Quantity 2 [-DisplayName "demo"] -AppliedScopeType "Shared" [-AppliedScope ""]
-
+New-AzReservation -ReservationOrderId <String> -ReservedResourceType <String> -Sku <String> -Location <String>
+ -BillingScopeId <String> -Term <String> [-BillingPlan <String>] -Quantity <Int32> [-DisplayName <String>]
+ -AppliedScopeType <String> [-AppliedScope <System.Collections.Generic.IList`1[System.String]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,16 +26,15 @@ Purchase a reservation Instance and get benefit
 
 ### Example 1
 ```powershell
-PS C:> New-AzReservation -ReservationOrderId "112382d9-9af7-4fd5-b136-b71f0a69a1d0" -ReservedResourceType "VirtualMachines" [-Sku "standard b1"] -Location "centralus"
--BillingScopeId "/subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0" -Term "P1Y" [-BillingPlan "Monthly"] -Quantity 2 [-DisplayName "demo"] -AppliedScopeType "Shared" [-AppliedScope ""]
-
+PS C:\> New-AzReservation -ReservationOrderId "112382d9-9af7-4fd5-b136-b71f0a69a1d0" -ReservedResourceType "VirtualMachines" [-Sku "standard b1"] -Location "centralus"
+-BillingScopeId "/subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0" -Term "P1Y" [-BillingPlan "Monthly"] -Quantity 2 [-DisplayName "demo"] -AppliedScopeType "Shared" [-AppliedScopes ""]
 ```
 
 After calculate price, customer could purcahse that RI provide by calculatePrice
 
 ## PARAMETERS
 
-### -AppliedScopes
+### -AppliedScope
 If AppliedScopeType is "Shared", it will be all subscriptions under the CAID/EA. If "Single" it will only give benefit to that specific subscription
 
 ```yaml
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -BillingScopeId
-The subscription who will be charge for the RI
+The subscription who will be charged for the RI purchase
 
 ```yaml
 Type: String
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReservedResourceType
-Reservation Instance type, ex: VirtualMachines, Sql, CosmosDB
+Reservation Instance type, ex: VirtualMachines, Sql, CosmosDB .etc
 
 ```yaml
 Type: String
@@ -192,7 +192,7 @@ Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -202,7 +202,7 @@ Accept wildcard characters: False
 ### -Term
 "P1Y"  1 year
 "P3y"  3 years
-3 years will get more discount 
+
 
 ```yaml
 Type: String

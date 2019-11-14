@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.reservatio
 schema: 2.0.0
 ---
 
-# Get-AzCalculatePrice
+# Request-AzReservationQuote
 
 ## SYNOPSIS
 Calculate price for reservation order
@@ -13,9 +13,10 @@ Calculate price for reservation order
 ## SYNTAX
 
 ```
-Request-AzReservationQuote -ReservedResourceType "VirtualMachines" [-Sku "standard b1"] -Location "centralus"
--BillingScopeId "/subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0" -Term "P1Y" [-BillingPlan "Monthly"] -Quantity 2 [-DisplayName "demo"] -AppliedScopeType "Shared" [-AppliedScope ""]
-
+Request-AzReservationQuote -ReservedResourceType <String> -Sku <String> -Location <String>
+ -BillingScopeId <String> -Term <String> [-BillingPlan <String>] -Quantity <Int32> [-DisplayName <String>]
+ -AppliedScopeType <String> [-AppliedScope <System.Collections.Generic.IList`1[System.String]>]
+ [-Renew <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,16 +26,15 @@ Calculate the price of a reservationOrder with specific sku, region, quantuty an
 
 ### Example 1
 ```powershell
-PS C:> Request-AzReservationQuote -ReservedResourceType "VirtualMachines" [-Sku "standard b1"] -Location "centralus"
--BillingScopeId "/subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0" -Term "P1Y" [-BillingPlan "Monthly"] -Quantity 2 [-DisplayName "demo"] -AppliedScopeType "Shared" [-AppliedScope ""]
-
+PS C:\> Request-AzReservationQuote -ReservedResourceType "VirtualMachines" [-Sku "standard b1"] -Location "centralus"
+-BillingScopeId "/subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0" -Term "P1Y" [-BillingPlan "Monthly"] -Quantity 2 [-DisplayName "demo"] -AppliedScopeType "Shared" [-AppliedScopes ""]
 ```
 
 After get catalog, customer can get the differe product based on location. By using those infomation, check the price properly
 
 ## PARAMETERS
 
-### -AppliedScopes
+### -AppliedScope
 If AppliedScopeType is "Shared", it will be all subscriptions under the CAID/EA. If "Single" it will only give benefit to that specific subscription
 
 ```yaml
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### -Quantity
-{{ Fill Quantity Description }}
+Quantity of RIs
 
 ```yaml
 Type: Int32
@@ -154,8 +154,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Renew
+Set autoRenewal on/off
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReservedResourceType
-Reservation Instance type, ex: VirtualMachines, Sql, CosmosDB
+Reservation Instance type, ex: VirtualMachines, Sql, CosmosDB .etc
 
 ```yaml
 Type: String
@@ -177,7 +192,7 @@ Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -188,6 +203,7 @@ Accept wildcard characters: False
 "P1Y"  1 year
 "P3y"  3 years
 3 years will get more discount 
+
 
 ```yaml
 Type: String
