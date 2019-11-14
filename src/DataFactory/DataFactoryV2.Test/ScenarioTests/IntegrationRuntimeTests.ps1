@@ -144,22 +144,22 @@ function Test-SsisAzure-IntegrationRuntime
         $mycreds = New-Object System.Management.Automation.PSCredential($catalogAdminUsername, $secpasswd)
 
 		# Prepare express custom setup
-		# Create Cmdkey
+		# Create setup for cmdkey
 		$targetName = 'fakeserver'
 		$userName = 'fakeuser'
 		$password = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString('fakepassword')
 		$setup1 = New-Object Microsoft.Azure.Management.DataFactory.Models.CmdkeySetup($targetName, $userName, $password)
 
-		# Create Environment Variable
+		# Create setup for environment variable
 		$variableName = 'name'
 		$variableValue = 'value'
 		$setup2 = New-Object Microsoft.Azure.Management.DataFactory.Models.EnvironmentVariableSetup($variableName, $variableValue)
 
-		# Create Setup for 3rd party component without license KeyName
+		# Create setup for 3rd party component without license Key
 		$componentName1 = 'componentName1'
 		$setup3 = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($componentName1)
 
-		# Create Setup for 3rd party component with license KeyName
+		# Create setup for 3rd party component with license Key
 		$componentName2 = 'componentName2'
 		$licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString('fakelicensekey')
 		$setup4 = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($componentName2, $licenseKey)
