@@ -1,36 +1,36 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Reservations.dll-Help.xml
 Module Name: Az.Reservations
-online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/get-azcalculateprice
+online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/new-azreservation
 schema: 2.0.0
 ---
 
-# Get-AzCalculatePrice
+# Purchase-AzReservationOrder
 
 ## SYNOPSIS
-Calculate price for reservation order
+Purcahse a reservationOrder
 
 ## SYNTAX
 
 ```
-Get-AzCalculatePrice -ReservedResourceType "VirtualMachines" [-Sku "standard b1"] -Location "centralus"
--BillingScopeId "/subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0" -Term "P1Y" [-BillingPlan "Monthly"] -Quantity 2 [-DisplayName "demo"] -AppliedScopeType "Shared" [-AppliedScopes ""]
+New-AzReservation -ReservationOrderId "112382d9-9af7-4fd5-b136-b71f0a69a1d0" -ReservedResourceType "VirtualMachines" [-Sku "standard b1"] -Location "centralus"
+-BillingScopeId "/subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0" -Term "P1Y" [-BillingPlan "Monthly"] -Quantity 2 [-DisplayName "demo"] -AppliedScopeType "Shared" [-AppliedScope ""]
 
 ```
 
 ## DESCRIPTION
-Calculate the price of a reservationOrder with specific sku, region, quantuty and location
+Purchase a reservation Instance and get benefit
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:> Get-AzCalculatePrice -ReservedResourceType "VirtualMachines" [-Sku "standard b1"] -Location "centralus"
--BillingScopeId "/subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0" -Term "P1Y" [-BillingPlan "Monthly"] -Quantity 2 [-DisplayName "demo"] -AppliedScopeType "Shared" [-AppliedScopes ""]
+PS C:> New-AzReservation -ReservationOrderId "112382d9-9af7-4fd5-b136-b71f0a69a1d0" -ReservedResourceType "VirtualMachines" [-Sku "standard b1"] -Location "centralus"
+-BillingScopeId "/subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0" -Term "P1Y" [-BillingPlan "Monthly"] -Quantity 2 [-DisplayName "demo"] -AppliedScopeType "Shared" [-AppliedScope ""]
 
 ```
 
-After get catalog, customer can get the differe product based on location. By using those infomation, check the price properly
+After calculate price, customer could purcahse that RI provide by calculatePrice
 
 ## PARAMETERS
 
@@ -140,10 +140,25 @@ Accept wildcard characters: False
 ```
 
 ### -Quantity
-{{ Fill Quantity Description }}
+Quantity of RIs
 
 ```yaml
 Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReservationOrderId
+The ReservationOrderId which get from calculatePrice
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -210,7 +225,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Reservations.Models.CalculatePriceResponse
+### Microsoft.Azure.Management.Reservations.Models.ReservationOrderResponse
 
 ## NOTES
 

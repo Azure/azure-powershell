@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PurchaseReservationOrder"), OutputType(typeof(ReservationOrderResponse))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Reservation"), OutputType(typeof(ReservationOrderResponse))]
     public class Purchase : AzureReservationsCmdletBase
     {
         [Parameter(Mandatory = true)]
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 
         [Parameter(Mandatory = false)]
         [ValidateNotNull]
-        public IList<string> AppliedScopes { get; set; }
+        public IList<string> AppliedScope { get; set; }
 
         public bool? Renew { get; set; }
 
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
             PurchaseRequest.Renew = Renew;
             PurchaseRequest.Term = Term;
             PurchaseRequest.AppliedScopeType = AppliedScopeType;
-            PurchaseRequest.AppliedScopes = AppliedScopes;
+            PurchaseRequest.AppliedScopes = AppliedScope;
             PurchaseRequest.BillingScopeId = BillingScopeId;
             PurchaseRequest.BillingPlan = BillingPlan;
             PurchaseRequest.DisplayName = DisplayName;

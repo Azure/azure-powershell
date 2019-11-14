@@ -1,39 +1,36 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Reservations.dll-Help.xml
 Module Name: Az.Reservations
-online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/purchase-azreservationorder
+online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/request-azreservationquote
 schema: 2.0.0
 ---
 
-# Purchase-AzReservationOrder
+# Get-AzCalculatePrice
 
 ## SYNOPSIS
-Purcahse a reservationOrder
+Calculate price for reservation order
 
 ## SYNTAX
 
 ```
-Purchase-AzReservationOrder -ReservationOrderId <String> -ReservedResourceType <String> [-Sku <String>]
- -Location <String> -BillingScopeId <String> -Term <String> [-BillingPlan <String>] -Quantity <Int32>
- [-DisplayName <String>] -AppliedScopeType <String>
- [-AppliedScopes <System.Collections.Generic.IList`1[System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Request-AzReservationQuote -ReservedResourceType "VirtualMachines" [-Sku "standard b1"] -Location "centralus"
+-BillingScopeId "/subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0" -Term "P1Y" [-BillingPlan "Monthly"] -Quantity 2 [-DisplayName "demo"] -AppliedScopeType "Shared" [-AppliedScope ""]
+
 ```
 
 ## DESCRIPTION
-Purchase a reservation Instance and get benefit
+Calculate the price of a reservationOrder with specific sku, region, quantuty and location
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Purchase-AzReservationOrder -ReservationOrderId 112382d9-9af7-4fd5-b136-b71f0a69a1d0 -ReservedResourceType VirtualMachines [-Sku VirtualMachines] -Location centralus
- -BillingScopeId /subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0 -Term P1Y [-BillingPlan Monthly] -Quantity 2 [-DisplayName demo]
- -AppliedScopeType <String> [-AppliedScopes <System.Collections.Generic.IList`1[System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+PS C:> Request-AzReservationQuote -ReservedResourceType "VirtualMachines" [-Sku "standard b1"] -Location "centralus"
+-BillingScopeId "/subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0" -Term "P1Y" [-BillingPlan "Monthly"] -Quantity 2 [-DisplayName "demo"] -AppliedScopeType "Shared" [-AppliedScope ""]
+
 ```
 
-After calculate price, customer could purcahse that RI provide by calculatePrice
+After get catalog, customer can get the differe product based on location. By using those infomation, check the price properly
 
 ## PARAMETERS
 
@@ -143,25 +140,10 @@ Accept wildcard characters: False
 ```
 
 ### -Quantity
-Quantity of RIs
+{{ Fill Quantity Description }}
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReservationOrderId
-The ReservationOrderId which get from calculatePrice
-
-```yaml
-Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -228,7 +210,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Reservations.Models.ReservationOrderResponse
+### Microsoft.Azure.Management.Reservations.Models.CalculatePriceResponse
 
 ## NOTES
 
