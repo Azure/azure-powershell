@@ -9,7 +9,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CalculatePrice"), OutputType(typeof(CalculatePriceResponse))]
+    [Cmdlet("Request", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ReservationQuote"), OutputType(typeof(CalculatePriceResponse))]
     public class Calculate : AzureReservationsCmdletBase
     {
         [Parameter(Mandatory = true)]
@@ -53,8 +53,9 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 
         [Parameter(Mandatory = false)]
         [ValidateNotNull]
-        public IList<string> AppliedScopes { get; set; }
+        public IList<string> AppliedScope { get; set; }
 
+        [Parameter(Mandatory = false)]
         public bool? Renew { get; set; }
 
         public PurchaseRequestPropertiesReservedResourceProperties ReservedResourceProperties { get; set; }
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
             PurchaseRequest.Renew = Renew;
             PurchaseRequest.Term = Term;
             PurchaseRequest.AppliedScopeType = AppliedScopeType;
-            PurchaseRequest.AppliedScopes = AppliedScopes;
+            PurchaseRequest.AppliedScopes = AppliedScope;
             PurchaseRequest.BillingScopeId = BillingScopeId;
             PurchaseRequest.BillingPlan = BillingPlan;
             PurchaseRequest.DisplayName = DisplayName;

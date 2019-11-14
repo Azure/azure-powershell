@@ -7,7 +7,7 @@
       "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"standard_b1ls\"\r\n  },\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"reservedResourceType\": \"VirtualMachines\",\r\n    \"billingScopeId\": \"d3ae48e5-dbb2-4618-afd4-fb1b8559cb80\",\r\n    \"term\": \"P1Y\",\r\n    \"billingPlan\": \"Upfront\",\r\n    \"quantity\": 1,\r\n    \"displayName\": \"test\",\r\n    \"appliedScopeType\": \"Shared\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ead6a4e5-9228-4114-bc97-a4d681426699"
+          "f08b85c7-63f1-4834-b4fd-4a1d6b390682"
         ],
         "Accept-Language": [
           "en-US"
@@ -39,10 +39,10 @@
           "1199"
         ],
         "x-ms-test": [
-          "{\"contact\":\"kgautam\",\"scenarios\":\"v6-recurrence-test,time-scale:35040,AcceleratedPayment\",\"retention\":\"2/12/2020 4:06:47 AM\"}"
+          "{\"contact\":\"kgautam\",\"scenarios\":\"v6-recurrence-test,time-scale:35040,AcceleratedPayment\",\"retention\":\"2/12/2020 8:35:54 PM\"}"
         ],
         "x-ms-request-id": [
-          "westus:27389d89-81b6-4e6b-9c07-526aa333aa25"
+          "westus:5f1e7e07-d633-4840-afe9-be465ff3faf7"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -51,16 +51,16 @@
           "Microsoft-IIS/10.0"
         ],
         "x-ms-correlation-request-id": [
-          "0987c3d4-0861-4128-845f-3e572e9e4ca8"
+          "cd4c77d0-1409-4e98-b5bd-50f94df48f62"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191114T040700Z:0987c3d4-0861-4128-845f-3e572e9e4ca8"
+          "WESTUS:20191114T203556Z:cd4c77d0-1409-4e98-b5bd-50f94df48f62"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Thu, 14 Nov 2019 04:07:00 GMT"
+          "Thu, 14 Nov 2019 20:35:56 GMT"
         ],
         "Content-Length": [
           "344"
@@ -72,7 +72,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"billingCurrencyTotal\": {\r\n      \"currencyCode\": \"USD\",\r\n      \"amount\": 32.0\r\n    },\r\n    \"netTotal\": 0.0,\r\n    \"taxTotal\": 0.0,\r\n    \"grandTotal\": 0.0,\r\n    \"reservationOrderId\": \"07c6527f-e939-4fa0-b16c-c85dabcc4a7f\",\r\n    \"skuTitle\": \"Reserved VM Instance, Standard_B1ls, US West, 1 Year\",\r\n    \"skuDescription\": \"standard_b1ls\",\r\n    \"pricingCurrencyTotal\": {\r\n      \"currencyCode\": \"USD\",\r\n      \"amount\": 32.0\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"billingCurrencyTotal\": {\r\n      \"currencyCode\": \"USD\",\r\n      \"amount\": 32.0\r\n    },\r\n    \"netTotal\": 0.0,\r\n    \"taxTotal\": 0.0,\r\n    \"grandTotal\": 0.0,\r\n    \"reservationOrderId\": \"53f2a7dd-04ba-4354-afa8-68301b2d3d28\",\r\n    \"skuTitle\": \"Reserved VM Instance, Standard_B1ls, US West, 1 Year\",\r\n    \"skuDescription\": \"standard_b1ls\",\r\n    \"pricingCurrencyTotal\": {\r\n      \"currencyCode\": \"USD\",\r\n      \"amount\": 32.0\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],

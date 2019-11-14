@@ -78,7 +78,7 @@ CmdletsToExport = 'Get-AzReservationOrder', 'Get-AzReservation',
                'Get-AzReservationHistory', 'Update-AzReservation', 
                'Merge-AzReservation', 'Split-AzReservation', 
                'Get-AzReservationOrderId', 'Get-AzReservationCatalog',
-               'Get-AzCalculatePrice', 'Get-AzPurchaseReservationOrder'
+               'Request-AzReservationQuote', 'New-AzReservation'
 
 # Variables to export from this module
 # VariablesToExport = @()
