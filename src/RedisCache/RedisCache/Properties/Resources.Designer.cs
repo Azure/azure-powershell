@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -165,6 +165,15 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         internal static string InvalidResourceGroupName {
             get {
                 return ResourceManager.GetString("InvalidResourceGroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Size. Example for valid values: For Standard or Basic Sku: (C0, C1, C2, C3, C4, C5, C6), for Premium Sku: (P1, P2, P3, P4, P5).
+        /// </summary>
+        internal static string InvalidSize {
+            get {
+                return ResourceManager.GetString("InvalidSize", resourceCulture);
             }
         }
         
