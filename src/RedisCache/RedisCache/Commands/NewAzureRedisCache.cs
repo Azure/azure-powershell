@@ -91,11 +91,15 @@ namespace Microsoft.Azure.Commands.RedisCache
 
             if (string.IsNullOrEmpty(Size))
             {
-                Size = SizeConverter.C1String;
+                if (SkuStrings.Premium.Equals(Sku, StringComparison.OrdinalIgnoreCase))
+                    Size = SizeConverter.P1String;
+                else
+                    Size = SizeConverter.C1String;
             }
             else
             {
                 Size = SizeConverter.GetSizeInRedisSpecificFormat(Size, SkuStrings.Premium.Equals(Sku));
+                SizeConverter.ValidateSize(Size.ToUpper(), SkuStrings.Premium.Equals(Sku));
             }
 
             int skuCapacity = 1;
