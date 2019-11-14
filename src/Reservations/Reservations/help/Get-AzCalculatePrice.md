@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Reservations.dll-Help.xml
 Module Name: Az.Reservations
-online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/calculate-azcalculateprice
+online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/get-azcalculateprice
 schema: 2.0.0
 ---
 
-# Calculate-AzCalculatePrice
+# Get-AzCalculatePrice
 
 ## SYNOPSIS
 Calculate price for reservation order
@@ -13,9 +13,9 @@ Calculate price for reservation order
 ## SYNTAX
 
 ```
-Calculate-AzCalculatePrice -ReservedResourceType <String> [-Sku <String>] -Location <String>
- -BillingScopeId <String> -Term <String> [-BillingPlan <String>] -Quantity <Int32> [-DisplayName <String>]
- -AppliedScopeType <String> [-AppliedScopes <System.Collections.Generic.IList`1[System.String]>]
+Get-AzCalculatePrice -ReservedResourceType <String> [-Sku <String>] -Location <String> -BillingScopeId <String>
+ -Term <String> [-BillingPlan <String>] -Quantity <Int32> [-DisplayName <String>] -AppliedScopeType <String>
+ [-AppliedScopes <System.Collections.Generic.IList`1[System.String]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Calculate the price of a reservationOrder with specific sku, region, quantuty an
 
 ### Example 1
 ```powershell
-PS C:\> Calculate-AzCalculatePrice -ReservedResourceType VirtualMachines [-Sku VirtualMachines] -Location centralus
+PS C:\> Get-AzCalculatePrice -ReservedResourceType VirtualMachines [-Sku VirtualMachines] -Location centralus
  -BillingScopeId /subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0 -Term P1Y [-BillingPlan Monthly] -Quantity 2 [-DisplayName demo]
  -AppliedScopeType <String> [-AppliedScopes <System.Collections.Generic.IList`1[System.String]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -Quantity
-choose quantity to get the price
+{{ Fill Quantity Description }}
 
 ```yaml
 Type: Int32

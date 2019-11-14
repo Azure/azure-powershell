@@ -9,7 +9,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
-    [Cmdlet("Calculate", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CalculatePrice"), OutputType(typeof(CalculatePriceResponse))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CalculatePrice"), OutputType(typeof(CalculatePriceResponse))]
     public class Calculate : AzureReservationsCmdletBase
     {
         [Parameter(Mandatory = true)]
@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ReservedResourceType { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Sku { get; set; }
 
