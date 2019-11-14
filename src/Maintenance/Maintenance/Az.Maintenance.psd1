@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.2'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.4'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll', 
@@ -78,7 +78,7 @@ FunctionsToExport = @()
 CmdletsToExport = 'Get-ApplyUpdate','Get-ConfigurationAssignment', 'Get-MaintenanceConfiguration', 'Get-MaintenanceUpdate', 
 	'New-ApplyUpdate', 'New-ConfigurationAssignment', 'New-MaintenanceConfiguration', 
 	'Remove-ConfigurationAssignment', 'Remove-MaintenanceConfiguration', 
-	'Update-MaintenanceConfiguration', '*'
+	'Update-MaintenanceConfiguration'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -116,7 +116,7 @@ PrivateData = @{
         ReleaseNotes = '* Adding support for Azure Maintenance using powershell'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
