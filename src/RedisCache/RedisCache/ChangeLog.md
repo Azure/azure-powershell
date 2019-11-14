@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added validation on `-Size` parameter for `Set-AzRedisCache` and `New-AzRedisCache` cmdlets
 
 ## Version 1.1.1
 * Updated `Set-AzRedisCache` reference documentation to include missing values for `-Size` parameter
