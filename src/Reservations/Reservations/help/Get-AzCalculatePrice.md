@@ -13,10 +13,9 @@ Calculate price for reservation order
 ## SYNTAX
 
 ```
-Get-AzCalculatePrice -ReservedResourceType <String> [-Sku <String>] -Location <String> -BillingScopeId <String>
- -Term <String> [-BillingPlan <String>] -Quantity <Int32> [-DisplayName <String>] -AppliedScopeType <String>
- [-AppliedScopes <System.Collections.Generic.IList`1[System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzCalculatePrice -ReservedResourceType "VirtualMachines" [-Sku "standard b1"] -Location "centralus"
+-BillingScopeId "/subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0" -Term "P1Y" [-BillingPlan "Monthly"] -Quantity 2 [-DisplayName "demo"] -AppliedScopeType "Shared" [-AppliedScopes ""]
+
 ```
 
 ## DESCRIPTION
@@ -26,10 +25,9 @@ Calculate the price of a reservationOrder with specific sku, region, quantuty an
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCalculatePrice -ReservedResourceType VirtualMachines [-Sku VirtualMachines] -Location centralus
- -BillingScopeId /subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0 -Term P1Y [-BillingPlan Monthly] -Quantity 2 [-DisplayName demo]
- -AppliedScopeType <String> [-AppliedScopes <System.Collections.Generic.IList`1[System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+PS C:> Get-AzCalculatePrice -ReservedResourceType "VirtualMachines" [-Sku "standard b1"] -Location "centralus"
+-BillingScopeId "/subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0" -Term "P1Y" [-BillingPlan "Monthly"] -Quantity 2 [-DisplayName "demo"] -AppliedScopeType "Shared" [-AppliedScopes ""]
+
 ```
 
 After get catalog, customer can get the differe product based on location. By using those infomation, check the price properly
