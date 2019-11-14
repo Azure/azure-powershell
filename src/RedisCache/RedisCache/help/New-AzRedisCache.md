@@ -258,6 +258,7 @@ Valid values are:
 - P2
 - P3
 - P4
+- P5
 - C0
 - C1
 - C2
