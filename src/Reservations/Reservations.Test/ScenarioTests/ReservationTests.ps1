@@ -83,7 +83,7 @@ function Test-CalculatePrice
     $sku = "standard_b1ls"
     $disPlayName = "test"
 
-    $calculateP = Calculate-AzCalculatePrice -ReservedResourceType $reservedResourceType -Location $location -BillingScopeId $subscriptionId -Term $term -Quantity $quantity -BillingPlan $billingPlan  -AppliedScopeType $applyScopeType -Sku $sku -DisplayName $disPlayName
+    $calculateP = Get-AzCalculatePrice -ReservedResourceType $reservedResourceType -Location $location -BillingScopeId $subscriptionId -Term $term -Quantity $quantity -BillingPlan $billingPlan  -AppliedScopeType $applyScopeType -Sku $sku -DisplayName $disPlayName
     Assert-NotNull $calculateP
     Assert-NotNull $calculateP.Properties
     Assert-NotNull $calculateP.Properties.ReservationOrderId
@@ -95,7 +95,7 @@ Purchase
 #>
 function Test-Purchase
 {
-    $roId = "48a6e568-638f-44ec-923b-3e8d1ccc1ac3"
+    $roId = "07c6527f-e939-4fa0-b16c-c85dabcc4a7f"
     $reservedResourceType = "VirtualMachines"
     $location = "westus"
     $term = "P1Y"
@@ -106,7 +106,7 @@ function Test-Purchase
     $sku = "standard_b1ls"
     $disPlayName = "test"
 
-    $purcahseResult = Purchase-AzReservationOrder -ReservationOrderId $roId -ReservedResourceType $reservedResourceType -Location $location -BillingScopeId $subscriptionId -Term $term -Quantity $quantity -BillingPlan $billingPlan  -AppliedScopeType $applyScopeType -Sku $sku -DisplayName $disPlayName
+    $purcahseResult = Get-AzPurchaseReservationOrder -ReservationOrderId $roId -ReservedResourceType $reservedResourceType -Location $location -BillingScopeId $subscriptionId -Term $term -Quantity $quantity -BillingPlan $billingPlan  -AppliedScopeType $applyScopeType -Sku $sku -DisplayName $disPlayName
     Assert-NotNull $purcahseResult
 }
 

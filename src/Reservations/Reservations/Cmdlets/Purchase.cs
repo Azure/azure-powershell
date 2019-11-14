@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
-    [Cmdlet("Purchase", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ReservationOrder"), OutputType(typeof(ReservationOrderResponse))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PurchaseReservationOrder"), OutputType(typeof(ReservationOrderResponse))]
     public class Purchase : AzureReservationsCmdletBase
     {
         [Parameter(Mandatory = true)]
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ReservedResourceType { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Sku { get; set; }
 
