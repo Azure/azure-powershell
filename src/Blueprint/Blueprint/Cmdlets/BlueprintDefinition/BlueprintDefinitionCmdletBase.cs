@@ -101,8 +101,9 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
         protected void ImportBlueprint(string blueprintName, string scope, string inputPath, bool force)
         {
-            const string blueprintFileName = "Blueprint";
-            var blueprintPath = GetValidatedFilePath(inputPath, blueprintFileName);
+ 
+            
+            var blueprintPath = GetValidatedFilePathForBlueprint(inputPath);
 
             BlueprintModel bpObject;
             try
@@ -170,9 +171,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
         protected void ImportArtifacts(string blueprintName, string scope, string inputPath)
         {
-            const string artifacts = "Artifacts";
-
-            var artifactsPath = GetValidatedFolderPath(inputPath, artifacts);
+            var artifactsPath = GetValidatedFolderPathForArtifacts(inputPath);
 
             if (artifactsPath == null)
             {

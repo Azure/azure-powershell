@@ -24,6 +24,7 @@ using System.IO;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Provider = Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models.Provider;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
@@ -180,19 +181,20 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// <param name="inputPath"></param>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        protected string GetValidatedFilePath(string path, string fileName)
+        protected string GetValidatedFilePathForBlueprint(string path)
         {
-            var resolvedPath = ResolveUserPath(path);
-
-            var blueprintPath = Path.Combine(resolvedPath, fileName + ".json");
-
-            if (!AzureSession.Instance.DataStore.FileExists(blueprintPath))
+ 
+            var blueprintFileName = AzureSession.Instance.DataStore.GetFiles(ResolveUserPath(path), "*.*", SearchOption.TopDirectoryOnly)
+                .Select(file => Path.GetFileName(file))
+                .FirstOrDefault(name => String.Equals(name, "blueprint.json", StringComparison.OrdinalIgnoreCase));
+                    
+            if (blueprintFileName == null)
             {
                 throw new Exception(
-                    $"Cannot locate a file with the name {fileName} in: {resolvedPath}.");
+                    $"Cannot locate Blueprint.json in: {ResolveUserPath(path)}.");
             }
 
-            return blueprintPath;
+            return Path.Combine(ResolveUserPath(path), blueprintFileName);
         }
 
         /// <summary>
@@ -201,18 +203,13 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// <param name="inputPath"></param>
         /// <param name="folderName"></param>
         /// <returns></returns>
-        protected string GetValidatedFolderPath(string path, string folderName)
+        protected string GetValidatedFolderPathForArtifacts(string path)
         {
-            var resolvedPath = ResolveUserPath(path);
+            var artifactsFolderName = AzureSession.Instance.DataStore.GetDirectories(ResolveUserPath(path))
+                .Select(folder => Path.GetFileName(folder))
+                .FirstOrDefault(name => String.Equals(name, "artifacts", StringComparison.OrdinalIgnoreCase));
 
-            var artifactsPath = Path.Combine(resolvedPath, folderName);
-
-            if (!AzureSession.Instance.DataStore.DirectoryExists(artifactsPath))
-            {
-                artifactsPath = null;
-            }
-
-            return artifactsPath;
+            return artifactsFolderName == null ? null : Path.Combine(ResolveUserPath(path), artifactsFolderName);
         }
     }
 }
