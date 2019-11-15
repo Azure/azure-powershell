@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
-        [PSArgumentCompleter("Enabled", "Disabled")]
         public PSEnabledState EnforceCertificateNameCheck { get; set; }
 
         /// <summary>
