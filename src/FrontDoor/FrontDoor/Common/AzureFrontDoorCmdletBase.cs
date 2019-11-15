@@ -41,6 +41,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Common
         public const string ObjectWithBackendPoolsSettingParameterSet = "ByObjectWithBackendPoolsSettingParameterSet";
         public const string ResourceIdWithBackendPoolsSettingParameterSet = "ByResourceIdWithBackendPoolsSettingParameterSet";
         public const string FieldsWithCertificateNameCheckParameterSet = "ByFieldsWithCertificateNameCheckParameterSet";
+        public const string ObjectWithCertificateNameCheckParameterSet = "ByObjectWithCertificateNameCheckParameterSet";
+        public const string ResourceIdWithCertificateNameCheckParameterSet = "ByResourceIdWithCertificateNameCheckParameterSet";
 
         /// <summary>
         /// Gets or sets the Front Door management client.
