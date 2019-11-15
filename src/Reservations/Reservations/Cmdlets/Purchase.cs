@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Reservation"), OutputType(typeof(ReservationOrderResponse))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Reservation", SupportsShouldProcess = true), OutputType(typeof(ReservationOrderResponse))]
     public class Purchase : AzureReservationsCmdletBase
     {
         [Parameter(Mandatory = true)]
