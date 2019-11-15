@@ -22,6 +22,7 @@ using System;
 using System.Management.Automation;
 using System.Security;
 using System.Threading;
+using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
@@ -347,7 +348,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 }
                 else if(printUseExistingSecret)
                 {
-                    WriteVerbose(String.Format("No new secret was created. This ServicePrincipal will use the password associated with application {0}.", ApplicationId));
+                    WriteVerbose(String.Format(ProjectResources.ServicePrincipalCreatedWithCredentials, ApplicationId));
                 }
                 WriteObject(servicePrincipal);
                 if (SkipRoleAssignment())
