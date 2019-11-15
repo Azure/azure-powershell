@@ -22,6 +22,7 @@
 - Updated create policy definition help example
 * Fix bug Remove-AZADServicePrincipal -ServicePrincipalName, throw null reference when service principal name not found.
 * Fix bug New-AZADServicePrincipal，throw null reference when tenant doesn't have any subscription.
+* Change New-AzAdServicePrincipal to add credentials only to associated application.
 
 ## Version 1.7.1
 * Update dependency assembly Microsoft.Extensions.Caching.Memory from 1.1.1 to 2.2

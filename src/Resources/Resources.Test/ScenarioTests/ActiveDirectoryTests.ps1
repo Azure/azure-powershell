@@ -559,8 +559,7 @@ function Test-NewADServicePrincipalWithoutApp
     # Assert
     Assert-NotNull $servicePrincipal
     Assert-AreEqual $servicePrincipal.DisplayName $displayName
-    Assert-Null $role
-    Assert-NotNull $servicePrincipal.Secret
+	Assert-Null $role
 
     # GetServicePrincipal by ObjectId
     $sp1 = Get-AzADServicePrincipal -ObjectId $servicePrincipal.Id
@@ -578,12 +577,6 @@ function Test-NewADServicePrincipalWithoutApp
     $app1 =  Get-AzADApplication -ApplicationId $servicePrincipal.ApplicationId
     Assert-NotNull $app1
     Assert-AreEqual $app1.Count 1
-
-    #Verify credential
-    $cred = Get-AzADSpCredential -ObjectId $servicePrincipal.Id
-    Assert-Null $cred
-    $cred = Get-AzADAppCredential -ApplicationId $servicePrincipal.ApplicationId
-    Assert-AreEqual $cred.Count 1
 
     # update SP displayName
     $newDisplayName = getAssetName
