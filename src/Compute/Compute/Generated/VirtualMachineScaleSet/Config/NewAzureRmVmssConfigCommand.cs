@@ -149,6 +149,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public RollingUpgradePolicy RollingUpgradePolicy { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter EnableAutomaticRepair { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string AutomaticRepairGracePeriod { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public int AutomaticRepairMaxInstanceRepairsPercent { get; set; }
+
+        [Parameter(
             Mandatory = false)]
         public SwitchParameter AutoOSUpgrade { get; set; }
 
@@ -179,6 +194,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("Regular", "Low", "Spot")]
         public string Priority { get; set; }
 
         [Parameter(
@@ -352,6 +368,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vUpgradePolicy.AutomaticOSUpgradePolicy = new AutomaticOSUpgradePolicy();
             }
             vUpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = this.AutoOSUpgrade.IsPresent;
+
+            if (vAutomaticRepairsPolicy == null)
+            {
+                vAutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+            }
+            vAutomaticRepairsPolicy.Enabled = this.EnableAutomaticRepair.IsPresent;
+
+            if (this.IsParameterBound(c => c.AutomaticRepairGracePeriod))
+            {
+                if (vAutomaticRepairsPolicy == null)
+                {
+                    vAutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                }
+                vAutomaticRepairsPolicy.GracePeriod = this.AutomaticRepairGracePeriod;
+            }
+
+            if (this.IsParameterBound(c => c.AutomaticRepairMaxInstanceRepairsPercent))
+            {
+                if (vAutomaticRepairsPolicy == null)
+                {
+                    vAutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                }
+                vAutomaticRepairsPolicy.MaxInstanceRepairsPercent = this.AutomaticRepairMaxInstanceRepairsPercent;
+            }
 
             if (this.IsParameterBound(c => c.DisableAutoRollback))
             {

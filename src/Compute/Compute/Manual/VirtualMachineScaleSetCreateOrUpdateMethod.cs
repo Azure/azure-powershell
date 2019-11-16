@@ -134,8 +134,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string ProximityPlacementGroup { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
-            HelpMessage = "The priority for the virtual machine scale set.  Only supported values are 'Regular' and 'Low'.")]
-        [PSArgumentCompleter("Regular", "Low")]
+            HelpMessage = "The priority for the virtual machine scale set.  Only supported values are 'Regular', 'Low' and 'Spot'.")]
+        [PSArgumentCompleter("Regular", "Low", "Spot")]
         public string Priority { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,

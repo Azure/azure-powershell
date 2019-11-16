@@ -234,10 +234,10 @@ namespace Microsoft.Azure.Commands.Compute
         public string HostId { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
-            HelpMessage = "The priority for the virtual machine.  Only supported values are 'Regular' and 'Low'.")]
+            HelpMessage = "The priority for the virtual machine.  Only supported values are 'Regular', 'Low' and 'Spot'.")]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
-            HelpMessage = "The priority for the virtual machine.  Only supported values are 'Regular' and 'Low'.")]
-        [PSArgumentCompleter("Regular", "Low")]
+            HelpMessage = "The priority for the virtual machine.  Only supported values are 'Regular', 'Low' and 'Spot'.")]
+        [PSArgumentCompleter("Regular", "Low", "Spot")]
         public string Priority { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
