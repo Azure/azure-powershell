@@ -207,12 +207,18 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 || (ParameterSetName == ResourceIdWithCertificateNameCheckParameterSet))
             {
                 updateParameters.BackendPoolsSetting.EnforceCertificateNameCheck = DisableCertificateNameCheck ? PSEnabledState.Disabled : PSEnabledState.Enabled;
+                // PSFrontDoor parameter EnforceCertificateNameCheck is no longer used to update Front Door, in favor of BackendPoolsSetting which 
+                // encapsulates this property. However, for backwards compability, we set this field so that it is still displayed to users.
+                updateParameters.EnforceCertificateNameCheck = (PSEnforceCertificateNameCheck) updateParameters.BackendPoolsSetting.EnforceCertificateNameCheck;
             }
 
             if ((ParameterSetName == FieldsWithBackendPoolsSettingParameterSet) || (ParameterSetName == ObjectWithBackendPoolsSettingParameterSet)
                 || (ParameterSetName == ResourceIdWithBackendPoolsSettingParameterSet))
             {
                 updateParameters.BackendPoolsSetting = BackendPoolsSetting;
+                // PSFrontDoor parameter EnforceCertificateNameCheck is no longer used to update Front Door, in favor of BackendPoolsSetting which 
+                // encapsulates this property. However, for backwards compability, we set this field so that it is still displayed to users.
+                updateParameters.EnforceCertificateNameCheck = (PSEnforceCertificateNameCheck)updateParameters.BackendPoolsSetting.EnforceCertificateNameCheck;
             }
 
             updateParameters.ValidateFrontDoor(ResourceGroupName, this.DefaultContext.Subscription.Id);

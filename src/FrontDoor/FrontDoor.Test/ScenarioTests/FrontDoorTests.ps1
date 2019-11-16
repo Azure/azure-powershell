@@ -51,6 +51,7 @@ function Test-FrontDoorCrud
 	# Verify backendPoolsSetting 
 	Assert-AreEqual $backendPoolsSetting1.SendRecvTimeoutInSeconds $retrievedFrontDoor.BackendPoolsSetting[0].SendRecvTimeoutInSeconds
 	Assert-AreEqual $backendPoolsSetting1.EnforceCertificateNameCheck $retrievedFrontDoor.BackendPoolsSetting[0].EnforceCertificateNameCheck
+	Assert-AreEqual $backendPoolsSetting1.EnforceCertificateNameCheck $retrievedFrontDoor.EnforceCertificateNameCheck
 
 	## Update Azure Front Door
     $newTags = @{"tag1" = "value3"; "tag2" = "value4"}
@@ -75,6 +76,7 @@ function Test-FrontDoorCrud
 	# Verify backendPoolsSetting 
 	Assert-AreEqual $backendPoolsSetting1.SendRecvTimeoutInSeconds $updatedFrontDoor.BackendPoolsSetting[0].SendRecvTimeoutInSeconds
 	Assert-AreEqual $backendPoolsSetting1.EnforceCertificateNameCheck $updatedFrontDoor.BackendPoolsSetting[0].EnforceCertificateNameCheck
+	Assert-AreEqual $backendPoolsSetting1.EnforceCertificateNameCheck $updatedFrontDoor.EnforceCertificateNameCheck
 
 	## Delete Azure Front Door
     $removed = Remove-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -PassThru
@@ -125,6 +127,7 @@ function Test-FrontDoorCrudDefaults
 	# Verify Default backendPoolsSetting 
 	Assert-AreEqual $retrievedFrontDoor.BackendPoolsSetting[0].SendRecvTimeoutInSeconds 30
 	Assert-AreEqual $retrievedFrontDoor.BackendPoolsSetting[0].EnforceCertificateNameCheck "Enabled"
+	Assert-AreEqual $retrievedFrontDoor.EnforceCertificateNameCheck "Enabled"
 
 	## Delete Azure Front Door
     $removed = Remove-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -PassThru
@@ -245,6 +248,7 @@ function Test-FrontDoorCrudWithPiping
 	# Verify backendPoolsSetting 
 	Assert-AreEqual $backendPoolsSetting1.SendRecvTimeoutInSeconds $updatedFrontDoor.BackendPoolsSetting[0].SendRecvTimeoutInSeconds
 	Assert-AreEqual $backendPoolsSetting1.EnforceCertificateNameCheck $updatedFrontDoor.BackendPoolsSetting[0].EnforceCertificateNameCheck
+	Assert-AreEqual $backendPoolsSetting1.EnforceCertificateNameCheck $updatedFrontDoor.EnforceCertificateNameCheck
 
     $removed = Get-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName | Remove-AzFrontDoor  -PassThru
     Assert-True { $removed }
