@@ -99,6 +99,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string AutomaticRepairGracePeriod { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        public int AutomaticRepairMaxInstanceRepairsPercent { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
         public bool BootDiagnosticsEnabled { get; set; }
 
         [Parameter(
@@ -118,6 +127,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false)]
         public bool DisablePasswordAuthentication { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        public bool EnableAutomaticRepair { get; set; }
 
         [Parameter(
             Mandatory = false)]
@@ -312,6 +325,32 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = this.AutomaticOSUpgrade;
             }
 
+            if (this.IsParameterBound(c => c.AutomaticRepairGracePeriod))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy.GracePeriod = this.AutomaticRepairGracePeriod;
+            }
+
+            if (this.IsParameterBound(c => c.AutomaticRepairMaxInstanceRepairsPercent))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy.MaxInstanceRepairsPercent = this.AutomaticRepairMaxInstanceRepairsPercent;
+            }
+
             if (this.IsParameterBound(c => c.BootDiagnosticsEnabled))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
@@ -409,6 +448,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile.LinuxConfiguration.DisablePasswordAuthentication = this.DisablePasswordAuthentication;
             }
 
+            if (this.IsParameterBound(c => c.EnableAutomaticRepair))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy.Enabled = this.EnableAutomaticRepair;
+            }
+
             if (this.IsParameterBound(c => c.EnableAutomaticUpdate))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
@@ -429,6 +481,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.OsProfile.WindowsConfiguration.EnableAutomaticUpdates = this.EnableAutomaticUpdate;
             }
+
 
             if (this.IsParameterBound(c => c.IdentityId))
             {
@@ -1047,6 +1100,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = this.AutomaticOSUpgrade;
             }
 
+            if (this.IsParameterBound(c => c.AutomaticRepairGracePeriod))
+            {
+                if (this.VirtualMachineScaleSet.AutomaticRepairsPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.AutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                }
+                this.VirtualMachineScaleSet.AutomaticRepairsPolicy.GracePeriod = this.AutomaticRepairGracePeriod;
+            }
+
+            if (this.IsParameterBound(c => c.AutomaticRepairMaxInstanceRepairsPercent))
+            {
+                if (this.VirtualMachineScaleSet.AutomaticRepairsPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.AutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                }
+                this.VirtualMachineScaleSet.AutomaticRepairsPolicy.MaxInstanceRepairsPercent = this.AutomaticRepairMaxInstanceRepairsPercent;
+            }
+
             if (this.IsParameterBound(c => c.BootDiagnosticsEnabled))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -1122,6 +1193,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.LinuxConfiguration = new LinuxConfiguration();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.LinuxConfiguration.DisablePasswordAuthentication = this.DisablePasswordAuthentication;
+            }
+
+            if (this.IsParameterBound(c => c.EnableAutomaticRepair))
+            {
+                if (this.VirtualMachineScaleSet.AutomaticRepairsPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.AutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                }
+                this.VirtualMachineScaleSet.AutomaticRepairsPolicy.Enabled = this.EnableAutomaticRepair;
             }
 
             if (this.IsParameterBound(c => c.EnableAutomaticUpdate))
