@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// The type of the certificate used for secure connections to a frontendEndpoint.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The type of the certificate used for secure connections to a frontendEndpoint")]
-        [PSArgumentCompleter("Shared", "Dedicated")]
+        [PSArgumentCompleter("Dedicated")]
         public string CertificateType { get; set; }
 
         public override void ExecuteCmdlet()
