@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using Microsoft.Azure.Commands.DataBoxEdge.Common;
-using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Azure.Management.EdgeGateway.Models;
+using Microsoft.CSharp.RuntimeBinder;
 using DataBoxEdgeOrder = Microsoft.Azure.Management.EdgeGateway.Models.Order;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
@@ -21,6 +24,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
         public string DeviceName;
 
         public string Id;
+        public List<PSDataBoxEdgeOrderStatus> OrderHistory;
+        public List<PSDataBoxEdgeOrderTrackingInfo> ForwardTrackingInfo;
+        public List<PSDataBoxEdgeOrderTrackingInfo> ReturnTrackingInfo;
+        public Address ShippingAddress;
 
         public PSDataBoxEdgeOrder()
         {
@@ -39,7 +46,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
             var dataBoxEdgeResourceIdentifier = new DataBoxEdgeResourceIdentifier(dataBoxEdgeOrder.Id);
             this.ResourceGroupName = dataBoxEdgeResourceIdentifier.ResourceGroupName;
             this.DeviceName = dataBoxEdgeResourceIdentifier.DeviceName;
-                                                                                    
+            OrderHistory = dataBoxEdgeOrder.OrderHistory.Select(t => new PSDataBoxEdgeOrderStatus(t)).ToList();
+            ForwardTrackingInfo = dataBoxEdgeOrder.DeliveryTrackingInfo
+                .Select(t => new PSDataBoxEdgeOrderTrackingInfo(t)).ToList();
+            ReturnTrackingInfo = dataBoxEdgeOrder.ReturnTrackingInfo.Select(t => new PSDataBoxEdgeOrderTrackingInfo(t))
+                .ToList();
+            ShippingAddress = dataBoxEdgeOrder.ShippingAddress;
         }
     }
 }

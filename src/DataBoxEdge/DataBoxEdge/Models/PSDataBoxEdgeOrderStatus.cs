@@ -1,7 +1,5 @@
-﻿using System;
-using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using Microsoft.Azure.Commands.DataBoxEdge.Common;
-using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
+﻿using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using System;
 using DataBoxEdgeOrderStatus = Microsoft.Azure.Management.EdgeGateway.Models.OrderStatus;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models

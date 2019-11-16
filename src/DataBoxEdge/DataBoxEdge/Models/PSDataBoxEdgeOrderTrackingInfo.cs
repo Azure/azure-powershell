@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.WindowsAzure.Commands.Common.Attributes;
+﻿using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using System;
 using DataBoxEdgeTrackingInfo = Microsoft.Azure.Management.EdgeGateway.Models.TrackingInfo;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models

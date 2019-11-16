@@ -12,25 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.EdgeGateway;
-using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
-using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.Order;
+using System.Collections.Generic;
+using System.Management.Automation;
 using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder;
+using PSTopLevelResource = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice;
+using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.Order;
 
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
 {
     [Cmdlet(VerbsCommon.Get, Constants.Order, DefaultParameterSetName = GetByNameParameterSet
      ),
-     OutputType(typeof(PSResourceModel)),
-     OutputType(typeof(PSDataBoxEdgeOrderStatus)),
-     OutputType(typeof(PSDataBoxEdgeOrderTrackingInfo)),
+     OutputType(typeof(PSResourceModel))
     ]
     public class DataBoxEdgeOrderGetCmdlet : AzureDataBoxEdgeCmdletBase
     {
@@ -43,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
             ParameterSetName = GetByDeviceObjectParameterSet,
             HelpMessage = Constants.PsDeviceObjectHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public PSDataBoxEdgeDevice DeviceObject { get; set; }
+        public PSTopLevelResource DeviceObject { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetByResourceIdParameterSet,
@@ -68,23 +64,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
         [ValidateNotNullOrEmpty]
         public string DeviceName { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = HelpMessageOrder.ForwardTrackingInfo)]
-        public SwitchParameter ForwardTrackingInfo;
-
-        [Parameter(Mandatory = false,
-            HelpMessage = HelpMessageOrder.ReturnTrackingInfo)]
-        public SwitchParameter ReturnTrackingInfo;
-
-
-        [Parameter(Mandatory = false,
-            HelpMessage = HelpMessageOrder.CurrentOrderStatus)]
-        public SwitchParameter OrderStatus;
-
-        [Parameter(Mandatory = false,
-            HelpMessage = HelpMessageOrder.OrderStatusHistory)]
-        public SwitchParameter OrderStatusHistory;
-
         private ResourceModel GetResourceModel()
         {
             return this.DataBoxEdgeManagementClient.Orders.Get(
@@ -103,30 +82,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
             return ListResourceByName();
         }
 
-        private List<PSDataBoxEdgeOrderTrackingInfo> ListTrackingInfo()
-        {
-            var resourceModel = GetResourceModel();
-            return resourceModel.DeliveryTrackingInfo.Select(t => new PSDataBoxEdgeOrderTrackingInfo(t)).ToList();
-        }
-
-        private List<PSDataBoxEdgeOrderTrackingInfo> ListReturnTrackingInfo()
-        {
-            var resourceModel = GetResourceModel();
-            return resourceModel.ReturnTrackingInfo.Select(t => new PSDataBoxEdgeOrderTrackingInfo(t)).ToList();
-        }
-
-        private PSDataBoxEdgeOrderStatus GetCurrentOrderStatus()
-        {
-            var resourceModel = GetResourceModel();
-            return new PSDataBoxEdgeOrderStatus(resourceModel.CurrentStatus);
-        }
-
-        private List<PSDataBoxEdgeOrderStatus> ListOrderStatusHistory()
-        {
-            var resourceModel = GetResourceModel();
-            return resourceModel.OrderHistory.Select(t => new PSDataBoxEdgeOrderStatus(t)).ToList();
-        }
-
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.ResourceId))
@@ -142,28 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
                 this.DeviceName = this.DeviceObject.Name;
             }
 
-            if (this.ForwardTrackingInfo.IsPresent)
-            {
-                WriteObject(ListTrackingInfo(), true);
-            }
-            else if (this.ReturnTrackingInfo.IsPresent)
-            {
-                WriteObject(ListReturnTrackingInfo(), true);
-            }
-            else if (this.OrderStatus.IsPresent)
-            {
-                WriteObject(GetCurrentOrderStatus(), true);
-            }
-            else if (this.OrderStatusHistory.IsPresent)
-            {
-                WriteObject(ListOrderStatusHistory(), true);
-            }
-            else
-            {
-                WriteObject(ListResource(), true);
-            }
-
-
+            WriteObject(ListResource(), true);
         }
     }
 }

@@ -13,9 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System.Management.Automation;
 using Microsoft.Azure.Management.EdgeGateway;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
 using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders

@@ -15,20 +15,18 @@ Get the order details for the device
 ### GetByNameParameterSet (Default)
 ```
 Get-AzDataBoxEdgeOrder [-ResourceGroupName] <String> [-DeviceName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ForwardTrackingInfo] [-ReturnTrackingInfo] [-OrderStatus]
- [-OrderStatusHistory] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByDeviceObjectParameterSet
 ```
 Get-AzDataBoxEdgeOrder -DeviceObject <PSDataBoxEdgeDevice> [-DefaultProfile <IAzureContextContainer>]
- [-ForwardTrackingInfo] [-ReturnTrackingInfo] [-OrderStatus] [-OrderStatusHistory] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzDataBoxEdgeOrder -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-ForwardTrackingInfo]
- [-ReturnTrackingInfo] [-OrderStatus] [-OrderStatusHistory] [<CommonParameters>]
+Get-AzDataBoxEdgeOrder -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,51 +89,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ForwardTrackingInfo
-Fetch the Forward TrackingInfo for the Device
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OrderStatus
-Current order status
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OrderStatusHistory
-History of order status updates
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Resource Group Name
 
@@ -160,21 +113,6 @@ Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReturnTrackingInfo
-Fetch the Return TrackingInfo for the Device
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
