@@ -37,12 +37,13 @@ The **New-AzFrontDoor** cmdlet creates a new Azure Front Door load balancer in t
 
 ### Example 1: Create a Front Door based on given parameters.
 ```powershell
-PS C:\> New-AzFrontDoor -Name "frontDoor1" -ResourceGroupName "rg1" -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1
+PS C:\> New-AzFrontDoor -Name "frontDoor1" -ResourceGroupName "rg1" -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -BackendPoolsSetting $backendPoolsSetting1
 
 FriendlyName                : frontdoor1
 RoutingRules                : {routingrule1}
 BackendPools                : {backendpool1}
-EnforceCertificateNameCheck : Enabled
+BackendPoolsSetting         : {backendPoolsSetting1}
+EnforceCertificateNameCheck : {backendPoolsSetting1.EnforceCertificateNameCheck}
 HealthProbeSettings         : {healthProbeSetting1}
 LoadBalancingSettings       : {loadbalancingsetting1}
 FrontendEndpoints           : {frontendendpoint1}
