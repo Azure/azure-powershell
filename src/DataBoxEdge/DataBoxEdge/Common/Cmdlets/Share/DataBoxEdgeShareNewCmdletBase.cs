@@ -188,13 +188,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
 
         private ResourceModel AddAzureContainer(ResourceModel resourceModel)
         {
-            var sac = this.DataBoxEdgeManagementClient.StorageAccountCredentials.Get(
+            var storageAccountCredential = this.DataBoxEdgeManagementClient.StorageAccountCredentials.Get(
                 this.DeviceName,
                 this.StorageAccountCredentialName,
                 this.ResourceGroupName);
             resourceModel.AzureContainerInfo = this.IsParameterBound(c => c.ContainerName)
-                ? new AzureContainerInfo(sac.Id, ContainerName, DataFormat)
-                : new AzureContainerInfo(sac.Id, Name, this.DataFormat);
+                ? new AzureContainerInfo(storageAccountCredential.Id, ContainerName, DataFormat)
+                : new AzureContainerInfo(storageAccountCredential.Id, Name, this.DataFormat);
             return resourceModel;
         }
 
