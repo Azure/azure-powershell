@@ -37,21 +37,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetByDeviceObjectParameterSet,
+            ValueFromPipeline = true,
             HelpMessage = Constants.PsDeviceObjectHelpMessage)]
         [ValidateNotNullOrEmpty]
         public PSTopLevelResource DeviceObject { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetByResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
+
         public string ResourceId { get; set; }
 
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetByNameParameterSet,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
-            Position = 0)]
+            ValueFromPipelineByPropertyName = true,
+        Position = 0)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
@@ -59,6 +63,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
         [Parameter(Mandatory = true,
             ParameterSetName = GetByNameParameterSet,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
+            ValueFromPipelineByPropertyName = true, 
             Position = 1)]
         [ResourceNameCompleter("Microsoft.DataBoxEdge/dataBoxEdgeDevices", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]

@@ -39,6 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
 
         [Parameter(Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
+            ValueFromPipelineByPropertyName = true,
             Position = 0)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -46,11 +47,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
 
         [Parameter(Mandatory = true,
             HelpMessage = Constants.NameHelpMessage,
+            ValueFromPipelineByPropertyName = true,
             Position = 1)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.DataBoxEdge/dataBoxEdgeDevices", nameof(ResourceGroupName))]
         public string DeviceName { get; set; }
-
 
         [Parameter(Mandatory = true,
             HelpMessage = HelpMessageOrder.ContactPerson)]
@@ -120,7 +121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
                 this.ResourceGroupName);
         }
 
-        private string GetResourceNotFoundMessage()
+        private string GetResourceAlreadyExistMessage()
         {
             return string.Format("'{0}'{1}{2}'.",
                 HelpMessageOrder.ObjectName, Constants.ResourceAlreadyExists, this.DeviceName);
@@ -132,8 +133,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
             {
                 var resource = GetResourceModel();
                 if (resource == null) return false;
-                var msg = GetResourceNotFoundMessage();
-                throw new Exception(msg);
+                throw new Exception(GetResourceAlreadyExistMessage());
             }
             catch (CloudException e)
             {

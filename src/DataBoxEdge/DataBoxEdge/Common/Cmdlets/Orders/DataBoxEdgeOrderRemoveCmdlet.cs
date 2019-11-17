@@ -44,21 +44,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
             HelpMessage = Constants.InputObjectHelpMessage
         )]
         [ValidateNotNull]
-        public PSResourceModel InputObject { get; set; }
+        public PSResourceModel DeviceObject { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = DeleteByNameParameterSet,
-            HelpMessage = Constants.ResourceGroupNameHelpMessage, Position = 0)]
+        [Parameter(Mandatory = true, 
+            ParameterSetName = DeleteByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.ResourceGroupNameHelpMessage, 
+            Position = 0)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = DeleteByNameParameterSet,
-            HelpMessage = Constants.DeviceNameHelpMessage, Position = 1)]
+        [Parameter(Mandatory = true, 
+            ParameterSetName = DeleteByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.DeviceNameHelpMessage, 
+            Position = 1)]
         [ValidateNotNullOrEmpty]
         public string DeviceName { get; set; }
 
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.PassThruHelpMessage)]
+        [Parameter(Mandatory = false, 
+            HelpMessage = Constants.PassThruHelpMessage)]
         public SwitchParameter PassThru;
 
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
@@ -82,10 +89,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
                 this.DeviceName = resourceIdentifier.DeviceName;
             }
 
-            if (this.IsParameterBound(c => c.InputObject))
+            if (this.IsParameterBound(c => c.DeviceObject))
             {
-                this.ResourceGroupName = this.InputObject.ResourceGroupName;
-                this.DeviceName = this.InputObject.DeviceName;
+                this.ResourceGroupName = this.DeviceObject.ResourceGroupName;
+                this.DeviceName = this.DeviceObject.DeviceName;
             }
 
             if (this.ShouldProcess(this.DeviceName,

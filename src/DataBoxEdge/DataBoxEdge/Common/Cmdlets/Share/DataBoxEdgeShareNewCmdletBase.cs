@@ -42,12 +42,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
 
         [Parameter(Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
+            ValueFromPipelineByPropertyName = true,
             Position = 0)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.DeviceNameHelpMessage,
             Position = 1)]
         [ResourceNameCompleter("Microsoft.DataBoxEdge/dataBoxEdgeDevices", nameof(ResourceGroupName))]
@@ -55,6 +57,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
         public string DeviceName { get; set; }
 
         [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.NameHelpMessage,
             Position = 2)]
         [ValidateNotNullOrEmpty]
@@ -150,7 +153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
                 this.ResourceGroupName);
         }
 
-        private string GetResourceNotFoundMessage()
+        private string GetResourceAlreadyExistMessage()
         {
             return string.Format("'{0}'{1}{2}'.",
                 HelpMessageShare.ObjectName, Constants.ResourceAlreadyExists, this.Name);
@@ -162,8 +165,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
             {
                 var resource = GetResourceModel();
                 if (resource == null) return false;
-                var msg = GetResourceNotFoundMessage();
-                throw new Exception(msg);
+                throw new Exception(GetResourceAlreadyExistMessage());
             }
             catch (CloudException e)
             {

@@ -39,12 +39,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
 
         [Parameter(Mandatory = true,
             ParameterSetName = SetByResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = SetByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
             Position = 0)]
         [ValidateNotNullOrEmpty]
@@ -53,6 +55,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
 
         [Parameter(Mandatory = true,
             ParameterSetName = SetByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.DeviceNameHelpMessage,
             Position = 1)]
         [ValidateNotNullOrEmpty]
@@ -71,7 +74,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
         [ValidateNotNullOrEmpty]
         public string[] ShareName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true,
+        [Parameter(Mandatory = true,
+            ValueFromPipeline = true,
             ParameterSetName = SetByParentObjectParameterSet,
             HelpMessage = Constants.PsDeviceObjectHelpMessage)]
         [ValidateNotNull]
