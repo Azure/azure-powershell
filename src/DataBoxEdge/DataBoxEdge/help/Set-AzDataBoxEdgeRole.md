@@ -1,61 +1,52 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll-Help.xml
 Module Name: Az.DataBoxEdge
-online version: https://docs.microsoft.com/en-us/powershell/module/az.databoxedge/remove-azdataboxedgetrigger
+online version: https://docs.microsoft.com/en-us/powershell/module/az.databoxedge/set-azdataboxedgerole
 schema: 2.0.0
 ---
 
-# Remove-AzDataBoxEdgeTrigger
+# Set-AzDataBoxEdgeRole
 
 ## SYNOPSIS
-Removes the trigger
+Update the Role
 
 ## SYNTAX
 
-### DeleteByNameParameterSet (Default)
+### SetByNameParameterSet (Default)
 ```
-Remove-AzDataBoxEdgeTrigger [-ResourceGroupName] <String> [-DeviceName] <String> [-Name] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteByResourceIdParameterSet
-```
-Remove-AzDataBoxEdgeTrigger [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzDataBoxEdgeRole [-ResourceGroupName] <String> [-DeviceName] <String> -Name <String> -ShareName <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteByInputObjectParameterSet
+### SetByResourceIdParameterSet
 ```
-Remove-AzDataBoxEdgeTrigger [-InputObject] <PSDataBoxEdgeTrigger> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzDataBoxEdgeRole -ResourceId <String> -Name <String> -ShareName <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByParentObjectParameterSet
+```
+Set-AzDataBoxEdgeRole -Name <String> -ShareName <String[]> [-DefaultProfile <IAzureContextContainer>]
+ -DeviceObject <PSDataBoxEdgeDevice> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This **Remove-AzDataBoxEdgeTrigger** will remove the Trigger for the device.
+This **Set-AzDataBoxEdgeRole** will replace the share mappings with the new ones
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDataBoxEdgeTrigger ResourceGroupName resource-group-name -DeviceName device-name -Name trigger-name
+PS C:\> $a = Set-AzDataBoxEdgeRole -ResourceGroupName rgname -DeviceName device-name -Name role-name -ShareName sharename1,sharename2,sharename3
+
+Name 
+-----------
+iot-role-name
 ```
+
+Share Names will replace the old mounted shares with the newly provided ones
 
 ## PARAMETERS
-
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -77,7 +68,7 @@ Device Name
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteByNameParameterSet
+Parameter Sets: SetByNameParameterSet
 Aliases:
 
 Required: True
@@ -87,45 +78,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Input Object
+### -DeviceObject
+Please provide corresponding device object
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger
-Parameter Sets: DeleteByInputObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice
+Parameter Sets: SetByParentObjectParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -Name
-Resource Name
+Name of the Role
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteByNameParameterSet
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-returns true if successful
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -137,7 +113,7 @@ Resource Group Name
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteByNameParameterSet
+Parameter Sets: SetByNameParameterSet
 Aliases:
 
 Required: True
@@ -152,13 +128,28 @@ Azure ResourceId
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteByResourceIdParameterSet
+Parameter Sets: SetByResourceIdParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ShareName
+Mount points of local share in role(s)
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -178,8 +169,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -198,13 +188,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger
+### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole
 
 ## NOTES
 

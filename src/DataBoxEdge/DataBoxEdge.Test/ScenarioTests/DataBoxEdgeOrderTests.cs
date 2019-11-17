@@ -12,16 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
 {
-    public class DataBoxEdgeShareTests : DataBoxEdgeScenarioTestBase
+    public class DataBoxEdgeOrderTests : DataBoxEdgeScenarioTestBase
     {
         private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
 
-        public DataBoxEdgeShareTests(Xunit.Abstractions.ITestOutputHelper output)
+        public DataBoxEdgeOrderTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
@@ -29,31 +30,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetNonExistingShare()
+        public void TestGetNonExistingOrder()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-GetShareNonExistent");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
-        public void TestCreateShare()
-        {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-CreateShare");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateLocalShare()
-        {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-CreateLocalShare");
+            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-GetOrderNonExistent");
         }
 
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveShare()
+        public void TestCreateOrder()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-RemoveShare");
+            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-CreateNewOrder");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveOrder()
+        {
+            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-RemoveOrder");
         }
     }
 }

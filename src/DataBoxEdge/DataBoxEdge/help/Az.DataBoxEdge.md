@@ -20,6 +20,9 @@ Get the available devices
 ### [Get-AzDataBoxEdgeJob](Get-AzDataBoxEdgeJob.md)
 Get job by Name
 
+### [Get-AzDataBoxEdgeOrder](Get-AzDataBoxEdgeOrder.md)
+Get the order details for the device
+
 ### [Get-AzDataBoxEdgeRole](Get-AzDataBoxEdgeRole.md)
 Fetch the available roles for a device
 
@@ -44,6 +47,9 @@ Create a new Bandwidth schedule
 ### [New-AzDataBoxEdgeDevice](New-AzDataBoxEdgeDevice.md)
 Configures a new device
 
+### [New-AzDataBoxEdgeOrder](New-AzDataBoxEdgeOrder.md)
+Create a new order for the device
+
 ### [New-AzDataBoxEdgeRole](New-AzDataBoxEdgeRole.md)
 Creates a new Iot Role for the device
 
@@ -65,6 +71,9 @@ Removes a Bandwidth Schedule
 ### [Remove-AzDataBoxEdgeDevice](Remove-AzDataBoxEdgeDevice.md)
 Remove a device
 
+### [Remove-AzDataBoxEdgeOrder](Remove-AzDataBoxEdgeOrder.md)
+Remove the Order for a data box
+
 ### [Remove-AzDataBoxEdgeRole](Remove-AzDataBoxEdgeRole.md)
 Removes the assosciated Role for the device
 
@@ -75,13 +84,16 @@ Removes the assosciated Role for the device
 Removes a storage account credentail object for the device
 
 ### [Remove-AzDataBoxEdgeTrigger](Remove-AzDataBoxEdgeTrigger.md)
-Removes a trigger for the device
+Removes the trigger
 
 ### [Remove-AzDataBoxEdgeUser](Remove-AzDataBoxEdgeUser.md)
 Removes the user
 
 ### [Set-AzDataBoxEdgeBandwidthSchedule](Set-AzDataBoxEdgeBandwidthSchedule.md)
 Update a Bandwidth Schedule for the device
+
+### [Set-AzDataBoxEdgeRole](Set-AzDataBoxEdgeRole.md)
+Update the Role
 
 ### [Set-AzDataBoxEdgeShare](Set-AzDataBoxEdgeShare.md)
 Update the share 
