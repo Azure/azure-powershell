@@ -66,36 +66,42 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 1,
+            Position = 0,
             Mandatory = true,
+            HelpMessage = "The resource Group Name.",
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 1,
             Mandatory = true,
+            HelpMessage = "The maintenance configuration Name.",
             ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
+            Position = 2,
             Mandatory = true,
+            HelpMessage = "The maintenance configuration location.",
             ValueFromPipelineByPropertyName = true)]
         public string Location { get; set; }
 
         [Parameter(
-            Mandatory = false)]
+            Mandatory = false,
+            HelpMessage = "The ARM Tags.")]
         public Hashtable Tag { get; set; }
 
         [Parameter(
-            Mandatory = false)]
+            Mandatory = false,
+            HelpMessage = "The Extension properties per resource.")]
         public Hashtable ExtensionProperty { get; set; }
 
         [Parameter(
-            Mandatory = false)]
+            Mandatory = false,
+            HelpMessage = "The Maintenance Scope.")]
         public string MaintenanceScope { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]

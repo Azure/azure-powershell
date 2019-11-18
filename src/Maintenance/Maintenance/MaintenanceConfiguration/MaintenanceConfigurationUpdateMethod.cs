@@ -50,23 +50,26 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 1,
+            Position = 0,
             Mandatory = true,
+            HelpMessage = "The resource Group Name.",
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 1,
             Mandatory = true,
+            HelpMessage = "The maintenance configuration Name.",
             ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
+            Position = 2,
             Mandatory = true,
+            HelpMessage = "The maintenance configuration to be updated.",
             ValueFromPipeline = true)]
         public PSMaintenanceConfiguration Configuration { get; set; }
 

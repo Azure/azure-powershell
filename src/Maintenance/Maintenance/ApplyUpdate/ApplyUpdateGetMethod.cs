@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Maintenance
             ParameterSetName = "DefaultParameter",
             Position = 0,
             Mandatory = true,
+            HelpMessage = "The resource Group Name.",
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
@@ -62,26 +63,30 @@ namespace Microsoft.Azure.Commands.Maintenance
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 1,
+            Mandatory = true,
+            HelpMessage = "The resource provider Name.",
+            ValueFromPipelineByPropertyName = true)]
+        public string ProviderName { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
             Mandatory = false,
+            HelpMessage = "The parent resource type.",
             ValueFromPipelineByPropertyName = true)]
         public string ResourceParentType { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false,
+            HelpMessage = "The parent resource name.",
             ValueFromPipelineByPropertyName = true)]
         public string ResourceParentName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true)]
-        public string ProviderName { get; set; }
-
-        [Parameter(
-            ParameterSetName = "DefaultParameter",
             Position = 2,
             Mandatory = true,
+            HelpMessage = "The resource type.",
             ValueFromPipelineByPropertyName = true)]
         public string ResourceType { get; set; }
 
@@ -89,12 +94,14 @@ namespace Microsoft.Azure.Commands.Maintenance
             ParameterSetName = "DefaultParameter",
             Position = 3,
             Mandatory = true,
+            HelpMessage = "The resource name.",
             ValueFromPipelineByPropertyName = true)]
         public string ResourceName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = true,
+            HelpMessage = "The apply update resource name.",
             ValueFromPipelineByPropertyName = true)]
         public string ApplyUpdateName { get; set; }
     }
