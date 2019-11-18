@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Maintenance.dll-Help.xml
 Module Name: Az.Maintenance
-online version:https://docs.microsoft.com/en-us/powershell/module/az.maintenance/new-azconfigurationassignment
+online version: https://docs.microsoft.com/en-us/powershell/module/az.maintenance/new-azconfigurationassignment
 schema: 2.0.0
 ---
 
@@ -37,7 +37,6 @@ Id                         :
 /subscriptions/42c974dd-2c03-4f1b-96ad-b07f050aaa74/resourcegroups/smdtestwestus2/providers/Microsoft.Compute/hostGroups/smddhgwestus2/hosts/smddhwestus2/providers/Microsoft.Maintenance/configurationAssignments/ps2
 Name                       : ps2
 Type                       : Microsoft.Maintenance/configurationAssignments
-
 ```
 
 Register maintenance configuration for didicated host.

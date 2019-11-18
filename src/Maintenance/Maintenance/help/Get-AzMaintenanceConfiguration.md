@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Maintenance.dll-Help.xml
 Module Name: Az.Maintenance
-online version:https://docs.microsoft.com/en-us/powershell/module/az.maintenance/get-azmaintenanceconfiguration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.maintenance/get-azmaintenanceconfiguration
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Get Maintenance configuration record
 ## SYNTAX
 
 ```
-Get-AzMaintenanceConfiguration [[-ResourceGroupName] <String>] [[-Name] <String>]
+Get-AzMaintenanceConfiguration [[-ResourceGroupName] <String>] [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -65,7 +65,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
