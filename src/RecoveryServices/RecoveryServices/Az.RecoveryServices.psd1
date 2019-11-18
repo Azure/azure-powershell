@@ -186,9 +186,7 @@ CmdletsToExport = 'Get-AzRecoveryServicesBackupProperty',
                'Get-AzRecoveryServicesBackupRPMountScript', 
                'Disable-AzRecoveryServicesBackupRPMountScript', 
                'Get-AzRecoveryServicesBackupStatus',
-               'Undo-AzRecoveryServicesBackupItemDeletion',
-			   'Set-AzRecoveryServicesVaultProperties',
-			   'Get-AzRecoveryServicesVaultProperties'
+               'Undo-AzRecoveryServicesBackupItemDeletion'
 
 # Variables to export from this module
 # VariablesToExport = @()
