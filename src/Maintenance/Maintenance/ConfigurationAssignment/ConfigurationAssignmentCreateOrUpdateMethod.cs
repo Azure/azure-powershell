@@ -61,15 +61,7 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Mandatory = true,
             Position = 0,
-            HelpMessage = "The configuration assignment name, should match the MaintenanceConfigurationName.",
-            ValueFromPipelineByPropertyName = true)]
-        public string ConfigurationAssignmentName { get; set; }
-
-        [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Position = 1,
             Mandatory = true,
             HelpMessage = "The resource Group Name.",
             ValueFromPipelineByPropertyName = true)]
@@ -78,7 +70,7 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 1,
             Mandatory = true,
             HelpMessage = "The resource provider Name.",
             ValueFromPipelineByPropertyName = true)]
@@ -100,18 +92,26 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position =3,
+            Position = 2,
             Mandatory = true,
-            HelpMessage = "The resource type for configuration assignment.",
+            HelpMessage = "The resource type.",
             ValueFromPipelineByPropertyName = true)]
         public string ResourceType { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
+            Position = 3,
             Mandatory = true,
-            HelpMessage = "The resource name for configuration assignment.",
+            HelpMessage = "The resource name.",
             ValueFromPipelineByPropertyName = true)]
         public string ResourceName { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Mandatory = true,
+            HelpMessage = "The configuration assignment name, should match the MaintenanceConfigurationName.",
+            ValueFromPipelineByPropertyName = true)]
+        public string ConfigurationAssignmentName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",

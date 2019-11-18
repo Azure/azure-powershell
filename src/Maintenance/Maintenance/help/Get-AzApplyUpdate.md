@@ -13,8 +13,8 @@ Track maintenance updates to resource
 ## SYNTAX
 
 ```
-Get-AzApplyUpdate [-ResourceGroupName] <String> [[-ResourceParentType] <String>] [-ResourceParentName <String>]
- -ProviderName <String> [-ResourceType] <String> [-ResourceName] <String> -ApplyUpdateName <String>
+Get-AzApplyUpdate [-ResourceGroupName] <String> [-ProviderName] <String> [-ResourceParentType <String>]
+ [-ResourceParentName <String>] [-ResourceType] <String> [-ResourceName] <String> -ApplyUpdateName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -79,7 +79,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -139,7 +139,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
