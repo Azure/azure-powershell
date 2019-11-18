@@ -88,10 +88,11 @@ CmdletsToExport = 'Get-AzDataBoxEdgeJob', 'Get-AzDataBoxEdgeDevice', 'Invoke-AzD
                'Get-AzDataBoxEdgeBandwidthSchedule', 
                'Set-AzDataBoxEdgeBandwidthSchedule', 
                'New-AzDataBoxEdgeBandwidthSchedule', 
-               'Remove-AzDataBoxEdgeBandwidthSchedule', 'Get-AzDataBoxEdgeRole', 
+               'Remove-AzDataBoxEdgeBandwidthSchedule', 'Get-AzDataBoxEdgeRole', 'Set-AzDataBoxEdgeRole', 
                'New-AzDataBoxEdgeRole', 'Remove-AzDataBoxEdgeRole',
 			   'Get-AzDataBoxEdgeTrigger', 'New-AzDataBoxEdgeTrigger', 
-			   'Remove-AzDataBoxEdgeTrigger'
+			   'Remove-AzDataBoxEdgeTrigger',
+			   'Get-AzDataBoxEdgeOrder', 'New-AzDataBoxEdgeOrder', 'Remove-AzDataBoxEdgeOrder'
 
 # Variables to export from this module
 # VariablesToExport = @()
