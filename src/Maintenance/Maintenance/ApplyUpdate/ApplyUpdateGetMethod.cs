@@ -68,35 +68,32 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string ResourceParentName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 4,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string ProviderName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 5,
+            Position = 3,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string ResourceType { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 6,
+            Position = 4,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string ResourceName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 7,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string ApplyUpdateName { get; set; }

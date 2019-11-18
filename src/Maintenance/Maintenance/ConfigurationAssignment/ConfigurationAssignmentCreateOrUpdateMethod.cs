@@ -78,7 +78,6 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
             Mandatory = false,
             HelpMessage = "The parent resource type.",
             ValueFromPipelineByPropertyName = true)]
@@ -86,7 +85,6 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 4,
             Mandatory = false,
             HelpMessage = "The parent resource name.",
             ValueFromPipelineByPropertyName = true)]
@@ -94,7 +92,7 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 5,
+            Position =3,
             Mandatory = true,
             HelpMessage = "The resource type for configuration assignment.",
             ValueFromPipelineByPropertyName = true)]
@@ -102,33 +100,34 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 6,
+            Position = 4,
             Mandatory = true,
+            HelpMessage = "The resource name for configuration assignment.",
             ValueFromPipelineByPropertyName = true)]
         public string ResourceName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 7,
             Mandatory = true,
+            HelpMessage = "The configuration assignment name, should match the MaintenanceConfigurationName.",
             ValueFromPipelineByPropertyName = true)]
         public string ConfigurationAssignmentName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 8,
+            HelpMessage = "The configuration assignment name, should match the MaintenanceConfigurationName.",
             Mandatory = false)]
         public string ResourceId { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 12,
+            HelpMessage = "The location without spaces for the resource.",
             Mandatory = true)]
         public string Location { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 13,
+            HelpMessage = "The fully qualified MaintenanceConfiguration.",
             Mandatory = true)]
         public string MaintenanceConfigurationId { get; set; }
 
