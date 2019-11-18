@@ -13,7 +13,7 @@ Delete Configuration record
 ## SYNTAX
 
 ```
-Remove-AzMaintenanceConfiguration [-ResourceGroupName] <String> -Name <String> [-Force] [-AsJob] [-PassThru]
+Remove-AzMaintenanceConfiguration [-ResourceGroupName] <String> [-Name] <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -89,7 +89,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

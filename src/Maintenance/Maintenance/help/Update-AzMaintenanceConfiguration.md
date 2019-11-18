@@ -13,7 +13,7 @@ Patch configuration record
 ## SYNTAX
 
 ```
-Update-AzMaintenanceConfiguration [-ResourceGroupName] <String> -Name <String>
+Update-AzMaintenanceConfiguration [-ResourceGroupName] <String> [-Name] <String>
  [-Configuration] <PSMaintenanceConfiguration> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -95,7 +95,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -14,8 +14,8 @@ List configurationAssignments for resource.
 
 ```
 Get-AzConfigurationAssignment [-ResourceGroupName] <String> [-ProviderName] <String>
- [-ResourceParentType] <String> [-ResourceParentName] <String> [-ResourceType] <String>
- [-ResourceName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -ResourceParentType <String> -ResourceParentName <String> [-ResourceType] <String> [-ResourceName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,7 +93,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -108,7 +108,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -123,7 +123,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -138,7 +138,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 5
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
