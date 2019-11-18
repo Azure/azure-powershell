@@ -57,7 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -Configuration
-{{ Fill Configuration Description }}
+The maintenance configuration to be updated.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{ Fill Name Description }}
+The maintenance configuration Name.
 
 ```yaml
 Type: System.String
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+The resource Group Name.
 
 ```yaml
 Type: System.String

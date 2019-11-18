@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{ Fill Name Description }}
+The maintenance configuration Name.
 
 ```yaml
 Type: System.String
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+The resource Group Name.
 
 ```yaml
 Type: System.String
@@ -165,7 +165,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration
+### System.Boolean
 
 ## NOTES
 
