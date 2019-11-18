@@ -15,7 +15,7 @@ Register configuration for resource.
 ```
 New-AzConfigurationAssignment [-ConfigurationAssignmentName] <String> [-ResourceGroupName] <String>
  [-ProviderName] <String> [-ResourceParentType <String>] [-ResourceParentName <String>]
- [-ResourceType] <String> [-ResourceName] <String> [-ResourceId <String>] -Location <String>
+ [-ResourceType] <String> -ResourceName <String> [-ResourceId <String>] -Location <String>
  -MaintenanceConfigurationId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -172,7 +172,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
