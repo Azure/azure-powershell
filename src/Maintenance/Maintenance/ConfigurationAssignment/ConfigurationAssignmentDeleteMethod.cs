@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Maintenance
                         ConfigurationAssignmentsClient.Delete(resourceGroupName, providerName, resourceType, resourceName, configurationAssignmentName);
                     }
 
-                    if (this.PassThru)
+                    if (this.PassThru.IsPresent)
                     {
                         this.WriteObject(true);
                     }

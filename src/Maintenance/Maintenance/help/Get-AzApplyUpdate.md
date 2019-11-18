@@ -13,9 +13,9 @@ Track maintenance updates to resource
 ## SYNTAX
 
 ```
-Get-AzApplyUpdate [-ResourceGroupName] <String> [[-ResourceParentType] <String>]
- [[-ResourceParentName] <String>] [-ProviderName] <String> [-ResourceType] <String> [-ResourceName] <String>
- [-ApplyUpdateName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzApplyUpdate [-ResourceGroupName] <String> [[-ResourceParentType] <String>] [-ResourceParentName <String>]
+ -ProviderName <String> [-ResourceType] <String> [-ResourceName] <String> -ApplyUpdateName <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +49,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -79,7 +79,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -109,7 +109,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -124,7 +124,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -154,7 +154,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 5
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

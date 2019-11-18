@@ -61,6 +61,14 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
+            Mandatory = true,
+            Position = 0,
+            HelpMessage = "The configuration assignment name, should match the MaintenanceConfigurationName.",
+            ValueFromPipelineByPropertyName = true)]
+        public string ConfigurationAssignmentName { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
             Position = 1,
             Mandatory = true,
             HelpMessage = "The resource Group Name.",
@@ -105,13 +113,6 @@ namespace Microsoft.Azure.Commands.Maintenance
             HelpMessage = "The resource name for configuration assignment.",
             ValueFromPipelineByPropertyName = true)]
         public string ResourceName { get; set; }
-
-        [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Mandatory = true,
-            HelpMessage = "The configuration assignment name, should match the MaintenanceConfigurationName.",
-            ValueFromPipelineByPropertyName = true)]
-        public string ConfigurationAssignmentName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",

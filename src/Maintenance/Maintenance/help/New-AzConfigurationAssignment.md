@@ -13,11 +13,11 @@ Register configuration for resource.
 ## SYNTAX
 
 ```
-New-AzConfigurationAssignment [-ResourceGroupName] <String> [-ProviderName] <String>
- [[-ResourceParentType] <String>] [[-ResourceParentName] <String>] [-ResourceType] <String>
- [-ResourceName] <String> [-ConfigurationAssignmentName] <String> [[-ResourceId] <String>] [-Location] <String>
- [-MaintenanceConfigurationId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzConfigurationAssignment [-ConfigurationAssignmentName] <String> [-ResourceGroupName] <String>
+ [-ProviderName] <String> [-ResourceParentType <String>] [-ResourceParentName <String>]
+ [-ResourceType] <String> [-ResourceName] <String> [-ResourceId <String>] -Location <String>
+ -MaintenanceConfigurationId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +67,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -97,7 +97,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 12
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -112,7 +112,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 13
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -157,7 +157,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -172,7 +172,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -187,7 +187,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -202,7 +202,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -217,7 +217,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 5
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -13,8 +13,8 @@ Apply maintenance updates to resource
 ## SYNTAX
 
 ```
-New-AzApplyUpdate [-ResourceGroupName] <String> [[-ProviderName] <String>] [[-ResourceParentType] <String>]
- [-ResourceParentName] <String> [-ResourceType] <String> [-ResourceName] <String> [-AsJob]
+New-AzApplyUpdate [-ResourceGroupName] <String> [[-ProviderName] <String>] [-ResourceParentType <String>]
+ -ResourceParentName <String> [-ResourceType] <String> [-ResourceName] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -110,7 +110,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -125,7 +125,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -140,7 +140,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -155,7 +155,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 5
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

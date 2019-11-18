@@ -13,7 +13,7 @@ Get Maintenance configuration record
 ## SYNTAX
 
 ```
-Get-AzMaintenanceConfiguration [[-ResourceGroupName] <String>] [-Name <String>]
+Get-AzMaintenanceConfiguration [[-ResourceGroupName] <String>] [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -65,7 +65,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
