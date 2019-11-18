@@ -176,40 +176,37 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         }
 
         /// <summary>
-        ///  This overloaded function expects a folder path and a file name and combines them. Checks if resulting full file name exist.
+        ///  Returns the blueprint file path.
         /// </summary>
-        /// <param name="inputPath"></param>
-        /// <param name="fileName"></param>
+        /// <param name="path"></param>
         /// <returns></returns>
         protected string GetValidatedFilePathForBlueprint(string path)
         {
- 
-            var blueprintFileName = AzureSession.Instance.DataStore.GetFiles(ResolveUserPath(path), "*.*", SearchOption.TopDirectoryOnly)
+            var blueprintFileName = AzureSession.Instance.DataStore.GetFiles(path, "*.*", SearchOption.TopDirectoryOnly)
                 .Select(file => Path.GetFileName(file))
                 .FirstOrDefault(name => String.Equals(name, "blueprint.json", StringComparison.OrdinalIgnoreCase));
                     
             if (blueprintFileName == null)
             {
                 throw new Exception(
-                    $"Cannot locate Blueprint.json in: {ResolveUserPath(path)}.");
+                    $"Cannot locate Blueprint.json in: {path}.");
             }
 
-            return Path.Combine(ResolveUserPath(path), blueprintFileName);
+            return Path.Combine(path, blueprintFileName);
         }
 
         /// <summary>
-        /// Combines input folder path and folder name and check if the resulting path exists. 
+        /// Returns the artifacts folder path. 
         /// </summary>
-        /// <param name="inputPath"></param>
-        /// <param name="folderName"></param>
+        /// <param name="path"></param>
         /// <returns></returns>
         protected string GetValidatedFolderPathForArtifacts(string path)
         {
-            var artifactsFolderName = AzureSession.Instance.DataStore.GetDirectories(ResolveUserPath(path))
+            var artifactsFolderName = AzureSession.Instance.DataStore.GetDirectories(path)
                 .Select(folder => Path.GetFileName(folder))
                 .FirstOrDefault(name => String.Equals(name, "artifacts", StringComparison.OrdinalIgnoreCase));
 
-            return artifactsFolderName == null ? null : Path.Combine(ResolveUserPath(path), artifactsFolderName);
+            return artifactsFolderName == null ? null : Path.Combine(path, artifactsFolderName);
         }
     }
 }
