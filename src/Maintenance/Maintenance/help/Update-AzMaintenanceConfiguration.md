@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Maintenance.dll-Help.xml
 Module Name: Az.Maintenance
-online version:https://docs.microsoft.com/en-us/powershell/module/az.maintenance/update-azmaintenanceconfiguration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.maintenance/update-azmaintenanceconfiguration
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Patch configuration record
 ## SYNTAX
 
 ```
-Update-AzMaintenanceConfiguration [-ResourceGroupName] <String> [-Name] <String>
+Update-AzMaintenanceConfiguration [-ResourceGroupName] <String> -Name <String>
  [-Configuration] <PSMaintenanceConfiguration> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -35,7 +35,6 @@ MaintenanceScope    : Host
 Id                  : /subscriptions/42c974dd-2c03-4f1b-96ad-b07f050aaa74/resourcegroups/smdtest/providers/Microsoft.Maintenance/maintenanceConfigurations/workervmscentralus
 Name                : workervmscentralus
 Type                : Microsoft.Maintenance/maintenanceConfigurations
-
 ```
 
 Patch maintenance configuration record
@@ -96,7 +95,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

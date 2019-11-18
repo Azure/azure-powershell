@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Maintenance.dll-Help.xml
 Module Name: Az.Maintenance
-online version:https://docs.microsoft.com/en-us/powershell/module/az.maintenance/remove-azconfigurationassignment
+online version: https://docs.microsoft.com/en-us/powershell/module/az.maintenance/remove-azconfigurationassignment
 schema: 2.0.0
 ---
 
@@ -15,7 +15,7 @@ Unregister configuration for resource.
 ```
 Remove-AzConfigurationAssignment [-ResourceGroupName] <String> [-ProviderName] <String>
  [[-ResourceParentType] <String>] [[-ResourceParentName] <String>] [-ResourceType] <String>
- [-ResourceName] <String> [-ConfigurationAssignmentName] <String> [-Force] [-AsJob]
+ [-ResourceName] <String> [-ConfigurationAssignmentName] <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -84,6 +84,21 @@ Accept wildcard characters: False
 
 ### -Force
 {{ Fill Force Description }}
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+{{ Fill PassThru Description }}
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

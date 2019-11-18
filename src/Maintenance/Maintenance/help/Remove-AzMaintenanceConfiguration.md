@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Maintenance.dll-Help.xml
 Module Name: Az.Maintenance
-online version:https://docs.microsoft.com/en-us/powershell/module/az.maintenance/remove-azmaintenanceconfiguration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.maintenance/remove-azmaintenanceconfiguration
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Delete Configuration record
 ## SYNTAX
 
 ```
-Remove-AzMaintenanceConfiguration [-ResourceGroupName] <String> [-Name] <String> [-Force] [-AsJob]
+Remove-AzMaintenanceConfiguration [-ResourceGroupName] <String> -Name <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,8 +29,6 @@ PS C:\> Remove-AzMaintenanceConfiguration -ResourceGroupName smdtest -Name worke
 Remove-AzMaintenanceConfiguration operation
 This cmdlet will remove the specified resource.  Do you want to continue?
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
-
-
 ```
 
 Delete Maintenance Configuration record
@@ -91,9 +89,24 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+{{ Fill PassThru Description }}
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
