@@ -40,7 +40,6 @@ This **Remove-AzDataBoxEdgeTrigger** will remove the Trigger for the device.
 PS C:\> Remove-AzDataBoxEdgeTrigger ResourceGroupName resource-group-name -DeviceName device-name -Name trigger-name
 ```
 
-
 ## PARAMETERS
 
 ### -AsJob
