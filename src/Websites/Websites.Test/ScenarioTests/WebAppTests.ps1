@@ -710,6 +710,7 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 			$messageDNS = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client cannot process the request because the server name cannot be resolved"
 			$messageUnavailable = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client sent a request to an HTTP server and got a response saying the requested HTTP URL was not available."
 			$messagePsVersionNotSupported = "Remote Powershell sessions into Windows Containers on App Service from this version of PowerShell is not supported.";
+			$messageMIResulFailed = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : MI_RESULT_FAILED";
 
 			# One possible warning message in Playback mode.
 			$messageWSMANNotConfigured = "Your current WSMAN Trusted Hosts settings will prevent you from connecting to your Container Web App";
@@ -717,8 +718,9 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 			$resultError = ($Error[0] -like "*$($messageDNS)*") -or 
 				($Error[0] -like "*$($messageUnavailable)*") -or 
 				($Error[0] -like "*$($messageWSMANNotConfigured)*") -or
-				($Error[0] -like "*$($messagePsVersionNotSupported)*")
-			
+				($Error[0] -like "*$($messagePsVersionNotSupported)*") -or
+				($Error[0] -like "*$($messageMIResulFailed)*")
+				
 			$resultWarning = ($wv[0] -like "*$($messageWSMANNotConfigured)*")
 
 			Write-Debug "Expected error message 1: $messageDNS"
