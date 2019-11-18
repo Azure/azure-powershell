@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 1,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position =1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string ProviderName { get; set; }
@@ -86,14 +86,14 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
+            Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string ResourceType { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 4,
+            Position = 3,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string ResourceName { get; set; }
