@@ -449,7 +449,6 @@ function Test-AzureVMSoftDelete
 	{	
 		#Setup
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
-		Set-AzRecoveryServicesVaultProperties -VaultId $vault.ID -SoftDeleteFeatureState "Enabled"
 		$vm = Create-VM $resourceGroupName $location
 		
 		Set-AzRecoveryServicesVaultContext -Vault $vault
