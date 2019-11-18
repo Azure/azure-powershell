@@ -44,10 +44,13 @@ Generally, the types returned by the Authentication Factory encapsulate the actu
 ## Authentication Scenarios
 
 ### User Authentication
+In User Authentication, Azure PowerShell authenticates on behalf of a user in the authenticating tenant.  The privileges granted will be those privileges that the user is assigned.
 
 #### Overview
+In user authentication, powershell athenticates to the tenant on behalf of the user.  The authentication methods are essntially mehcnisms for the user to supply their credetnails for authentication.
 
 #### Interactive Authentication
+In this mechanism, the user uses a browser pointing at the authentication website to provide credentials.  PowerShell supplies a callback that is used once authentication is complete.  This callback must match on of the 'replyUrls' configured for the application.  In PowerShell's case, this configuration is in the first party app registration for PowerShell.
 
 #### Username/Password Authentication
 
