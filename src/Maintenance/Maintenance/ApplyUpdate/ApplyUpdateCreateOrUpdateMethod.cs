@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Maintenance
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 3,
-            Mandatory = true,
+            Mandatory = true, 
             HelpMessage = "The resource name.",
             ValueFromPipelineByPropertyName = true)]
         public string ResourceName { get; set; }
