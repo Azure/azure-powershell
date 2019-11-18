@@ -25,7 +25,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Maintenance
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MaintenanceConfiguration", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(PSMaintenanceConfiguration))]
+    [OutputType(typeof(bool))]
     public partial class RemoveAzureRmMaintenanceConfiguration : MaintenanceAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -41,10 +41,12 @@ namespace Microsoft.Azure.Commands.Maintenance
                     string resourceGroupName = this.ResourceGroupName;
                     string name = this.Name;
 
-                    var result = MaintenanceConfigurationsClient.Delete(resourceGroupName, name);
-                    var psObject = new PSMaintenanceConfiguration();
-                    MaintenanceAutomationAutoMapperProfile.Mapper.Map<MaintenanceConfiguration, PSMaintenanceConfiguration>(result, psObject);
-                    WriteObject(psObject);
+                    MaintenanceConfigurationsClient.Delete(resourceGroupName, name);
+
+                    if (this.PassThru.IsPresent)
+                    {
+                        this.WriteObject(true);
+                    }
                 }
             });
         }
@@ -71,5 +73,8 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
     }
 }

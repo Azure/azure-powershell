@@ -25,7 +25,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Maintenance
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ConfigurationAssignment", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(PSConfigurationAssignment))]
+    [OutputType(typeof(bool))]
     public partial class RemoveAzureRmConfigurationAssignment : MaintenanceAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -46,13 +46,19 @@ namespace Microsoft.Azure.Commands.Maintenance
                     string resourceName = this.ResourceName;
                     string configurationAssignmentName = this.ConfigurationAssignmentName;
 
-                    var result = (!string.IsNullOrEmpty(resourceParentType) && !string.IsNullOrEmpty(resourceParentName)) ?
-                        ConfigurationAssignmentsClient.DeleteParent(resourceGroupName, providerName, resourceParentType, resourceParentName, resourceType, resourceName, configurationAssignmentName) :
+                    if (!string.IsNullOrEmpty(resourceParentType) && !string.IsNullOrEmpty(resourceParentName))
+                    {
+                        ConfigurationAssignmentsClient.DeleteParent(resourceGroupName, providerName, resourceParentType, resourceParentName, resourceType, resourceName, configurationAssignmentName);
+                    }
+                    else
+                    {
                         ConfigurationAssignmentsClient.Delete(resourceGroupName, providerName, resourceType, resourceName, configurationAssignmentName);
+                    }
 
-                    var psObject = new PSConfigurationAssignment();
-                    MaintenanceAutomationAutoMapperProfile.Mapper.Map<ConfigurationAssignment, PSConfigurationAssignment>(result, psObject);
-                    WriteObject(psObject);
+                    if (this.PassThru)
+                    {
+                        this.WriteObject(true);
+                    }
                 }
             });
         }
@@ -74,28 +80,26 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string ResourceParentType { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 4,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string ResourceParentName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 5,
+            Position = 3,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string ResourceType { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 6,
+            Position = 4,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string ResourceName { get; set; }
@@ -114,5 +118,8 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
     }
 }

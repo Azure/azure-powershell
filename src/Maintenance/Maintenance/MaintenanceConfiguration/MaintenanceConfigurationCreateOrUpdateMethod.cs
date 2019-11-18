@@ -88,17 +88,14 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             Mandatory = false)]
-        [AllowNull]
         public Hashtable Tag { get; set; }
 
         [Parameter(
             Mandatory = false)]
-        [AllowNull]
         public Hashtable ExtensionProperty { get; set; }
 
         [Parameter(
             Mandatory = false)]
-        [AllowNull]
         public string MaintenanceScope { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
