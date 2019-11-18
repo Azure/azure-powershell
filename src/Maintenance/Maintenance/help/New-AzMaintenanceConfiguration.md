@@ -72,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExtensionProperty
-{{ Fill ExtensionProperty Description }}
+The Extension properties per resource.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-{{ Fill Location Description }}
+The maintenance configuration location.
 
 ```yaml
 Type: System.String
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -MaintenanceScope
-{{ Fill MaintenanceScope Description }}
+The Maintenance Scope.
 
 ```yaml
 Type: System.String
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{ Fill Name Description }}
+The maintenance configuration Name.
 
 ```yaml
 Type: System.String
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+The resource Group Name.
 
 ```yaml
 Type: System.String
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-{{ Fill Tag Description }}
+The ARM Tags.
 
 ```yaml
 Type: System.Collections.Hashtable

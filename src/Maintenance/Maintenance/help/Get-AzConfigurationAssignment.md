@@ -55,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProviderName
-{{ Fill ProviderName Description }}
+The resource provider Name.
 
 ```yaml
 Type: System.String
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+The resource Group Name.
 
 ```yaml
 Type: System.String
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceName
-{{ Fill ResourceName Description }}
+The resource name.
 
 ```yaml
 Type: System.String
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceParentName
-{{ Fill ResourceParentName Description }}
+The parent resource name.
 
 ```yaml
 Type: System.String
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceParentType
-{{ Fill ResourceParentType Description }}
+The parent resource type.
 
 ```yaml
 Type: System.String
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceType
-{{ Fill ResourceType Description }}
+The resource type.
 
 ```yaml
 Type: System.String

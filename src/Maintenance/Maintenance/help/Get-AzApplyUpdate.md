@@ -41,7 +41,7 @@ Track maintenance updates to resource
 ## PARAMETERS
 
 ### -ApplyUpdateName
-applyUpdate Id
+The apply update resource name.
 
 ```yaml
 Type: System.String
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProviderName
-Resource provider name
+The resource provider Name.
 
 ```yaml
 Type: System.String
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource group name
+The resource Group Name.
 
 ```yaml
 Type: System.String
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceName
-Resource identifier
+The resource name.
 
 ```yaml
 Type: System.String
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceParentName
-{{ Fill ResourceParentName Description }}
+The parent resource name.
 
 ```yaml
 Type: System.String
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceParentType
-{{ Fill ResourceParentType Description }}
+The parent resource type.
 
 ```yaml
 Type: System.String
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceType
-{{ Fill ResourceType Description }}
+The resource type.
 
 ```yaml
 Type: System.String
