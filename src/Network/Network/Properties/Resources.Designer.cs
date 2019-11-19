@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -366,6 +366,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
             }
         }
         
+        /// <summary>
         ///   Looks up a localized string similar to Provided ResourceId isn&apos;t in the right format or doesn&apos;t refer to the right resource type ({0}).
         /// </summary>
         internal static string InvalidResourceId {
@@ -537,6 +538,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing a VirtualRouter will also remove all peerings associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
+        /// </summary>
+        internal static string RemoveVirtualRouterWarning {
+            get {
+                return ResourceManager.GetString("RemoveVirtualRouterWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing an ExpressRouteGateway will also remove all ExpressRouteExpressRouteConnections associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>
         internal static string RemovingExpressRouteGatewayWarning {
@@ -571,7 +581,18 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("RemovingVpnGatewayWarning", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Removing a P2SVpnGateway will also remove all P2SConnectionConfigurations associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
+        /// </summary>
+        internal static string RemovingP2SVpnGatewayWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("RemovingP2SVpnGatewayWarning", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Resetting Resource.
         /// </summary>
@@ -623,6 +644,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string ResourceNotFound {
             get {
                 return ResourceManager.GetString("ResourceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The virtual hub route table to modify could not be found.
+        /// </summary>
+        internal static string RouteTableNotFound {
+            get {
+                return ResourceManager.GetString("RouteTableNotFound", resourceCulture);
             }
         }
         
@@ -722,6 +752,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string UpdatingLongRunningOperationMessage {
             get {
                 return ResourceManager.GetString("UpdatingLongRunningOperationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid VirtualNetworkGateway is required to create Virtual Router.
+        /// </summary>
+        internal static string VirtualGatewayRequiredForVirtualRouter {
+            get {
+                return ResourceManager.GetString("VirtualGatewayRequiredForVirtualRouter", resourceCulture);
             }
         }
         
@@ -852,6 +891,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update request for VpnConnection contains deprecated property. Please use corresponding VpnSiteLinkConnection property instead..
+        /// </summary>
+        internal static string VpnConnectionPropertyIsDeprecated {
+            get {
+                return ResourceManager.GetString("VpnConnectionPropertyIsDeprecated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The VpnGateway to modify could not be found.
         /// </summary>
         internal static string VpnGatewayNotFound {
@@ -859,13 +907,33 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VpnGatewayNotFound", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to The P2SVpnGateway to modify could not be found.
+        /// </summary>
+        internal static string P2SVpnGatewayNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("P2SVpnGatewayNotFound", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to A valid VpnGateway reference is required to create a VpnConnection..
         /// </summary>
         internal static string VpnGatewayRequiredToCreateVpnConnection {
             get {
                 return ResourceManager.GetString("VpnGatewayRequiredToCreateVpnConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid VpnSiteLink attached to a VpnSite is required to create a VpnSiteLinkConnection.
+        /// </summary>
+        internal static string VpnSiteLinkRequiredForVpnSiteLinkConnection {
+            get {
+                return ResourceManager.GetString("VpnSiteLinkRequiredForVpnSiteLinkConnection", resourceCulture);
             }
         }
         
@@ -886,6 +954,26 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VpnSiteNotFound", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The VpnServerConfiguration could not be found..
+        /// </summary>
+        internal static string VpnServerConfigurationNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("VpnServerConfigurationNotFound", resourceCulture);
+            }
+        }        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Update request for VpnSite contains deprecated property. Please use corresponding VpnSiteLink property instead..
+        /// </summary>
+        internal static string VpnSitePropertyIsDeprecated {
+            get {
+                return ResourceManager.GetString("VpnSitePropertyIsDeprecated", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to A valid VpnSite is required to create a VpnConnection.
@@ -893,6 +981,17 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string VpnSiteRequiredForVpnConnection {
             get {
                 return ResourceManager.GetString("VpnSiteRequiredForVpnConnection", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to A valid VpnServerConfiguration is required to create a P2SVpnGateway.
+        /// </summary>
+        internal static string VpnServerConfigurationRequiredForP2SVpnGateway
+        {
+            get
+            {
+                return ResourceManager.GetString("VpnServerConfigurationRequiredForP2SVpnGateway", resourceCulture);
             }
         }
     }

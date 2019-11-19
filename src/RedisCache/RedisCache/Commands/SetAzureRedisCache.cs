@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using System.Collections;
     using System.Management.Automation;
     using SkuStrings = Microsoft.Azure.Management.Redis.Models.SkuName;
+    using TlsStrings = Microsoft.Azure.Management.Redis.Models.TlsVersion;
 
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCache", SupportsShouldProcess = true), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
     public class SetAzureRedisCache : RedisCacheCmdletBase
@@ -56,6 +57,10 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "The number of shards to create on a Premium Cluster Cache.")]
         public int? ShardCount { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Specify the TLS version required by clients to connect to cache.")]
+        [PSArgumentCompleter(TlsStrings.OneFullStopZero, TlsStrings.OneFullStopOne, TlsStrings.OneFullStopTwo)]
+        public string MinimumTlsVersion { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "A hash table which represents tags.")]
         public Hashtable Tag { get; set; }
@@ -95,6 +100,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             else
             {
                 Size = SizeConverter.GetSizeInRedisSpecificFormat(Size, SkuStrings.Premium.Equals(Sku));
+                SizeConverter.ValidateSize(Size.ToUpper(), SkuStrings.Premium.Equals(Sku));
                 skuFamily = Size.Substring(0, 1);
                 int.TryParse(Size.Substring(1), out skuCapacity);
             }
@@ -102,7 +108,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             if (!ShardCount.HasValue && response.ShardCount.HasValue)
             {
                 ShardCount = response.ShardCount;
-            }
+            }            
 
             ConfirmAction(
               string.Format(Resources.UpdateRedisCache, Name),
@@ -110,7 +116,7 @@ namespace Microsoft.Azure.Commands.RedisCache
               () =>
               {
                   var redisResource = CacheClient.UpdateCache(ResourceGroupName, Name, skuFamily, skuCapacity,
-                      skuName, RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, Tag);
+                      skuName, RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, MinimumTlsVersion, Tag);
                   var redisAccessKeys = CacheClient.GetAccessKeys(ResourceGroupName, Name);
                   WriteObject(new RedisCacheAttributesWithAccessKeys(redisResource, redisAccessKeys, ResourceGroupName));
               });

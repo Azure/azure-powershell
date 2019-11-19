@@ -1,0 +1,68 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peeringServiceProviders?api-version=2019-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyaW5nU2VydmljZVByb3ZpZGVycz9hcGktdmVyc2lvbj0yMDE5LTA5LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6292d56e-e695-4e58-bcec-f310e4dd28bf"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.12.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "469b5105-c8d4-4074-ba9e-d0764e9064db"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "59"
+        ],
+        "x-ms-correlation-request-id": [
+          "1df55da9-00e7-4a37-aa54-dfe2c95ef18a"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20191007T230444Z:1df55da9-00e7-4a37-aa54-dfe2c95ef18a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 07 Oct 2019 23:04:43 GMT"
+        ],
+        "Content-Length": [
+          "987"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"serviceProviderName\": \"TestPeer1\"\r\n      },\r\n      \"name\": \"TestPeer1\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceProviders\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serviceProviderName\": \"AS47765-Global2536\"\r\n      },\r\n      \"name\": \"AS47765-Global2536\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceProviders\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serviceProviderName\": \"AS8088-Global1513\"\r\n      },\r\n      \"name\": \"AS8088-Global1513\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceProviders\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serviceProviderName\": \"AS26601-Global9517\"\r\n      },\r\n      \"name\": \"AS26601-Global9517\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceProviders\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"serviceProviderName\": \"AS56845-Global1191\"\r\n      },\r\n      \"name\": \"AS56845-Global1191\",\r\n      \"type\": \"Microsoft.Peering/peeringServiceProviders\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "3e919f9a-4e26-4736-aa8d-d596d9a49239"
+  }
+}

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public ComputeNodeReimageOption? ReimageOption { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             ReimageComputeNodeParameters parameters = new ReimageComputeNodeParameters(this.BatchContext, this.PoolId,
                 this.Id, this.ComputeNode, this.AdditionalBehaviors)

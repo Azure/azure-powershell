@@ -17,6 +17,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
@@ -30,7 +31,6 @@ using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -432,21 +432,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
         }
 
-        public static string toStorageString(this StorageAccountTypes? storageAccountTypes)
-        {
-            if (StorageAccountTypes.PremiumLRS.Equals(storageAccountTypes))
-            {
-                return Constants.Premium_LRS;
-            }
-
-            if (StorageAccountTypes.StandardLRS.Equals(storageAccountTypes))
-            {
-                return Constants.Standard_LRS;
-            }
-
-            return null;
-        }
-
         /// <summary>
         ///     Validate the email addresses.
         /// </summary>
@@ -530,6 +515,54 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
 
             return fullFileName;
+        }
+
+        /// <summary>
+        /// Checks the encryption type of (windows/linux) VM 
+        /// Using the following Azure Disk Encryption extension versions.
+        /// Linux [1-pass-majorversion="1."] Linux [2-pass-majorversion="0."]
+        /// Windows[1-pass-majorversion="2."] Windows[2-pass-majorversion="1."]
+        /// </summary>
+        /// <param name="virtualMachine">Arm V2 type virtual machine object.</param>
+        private static AzureDiskEncryptionType FindEncryptionType(Common.Compute.Version_2018_04.Models.VirtualMachine virtualMachine)
+        {
+            AzureDiskEncryptionType encryptionType = AzureDiskEncryptionType.NotEncrypted;
+            if (virtualMachine.InstanceView.Extensions != null)
+            {
+                foreach (var extension in virtualMachine.InstanceView.Extensions)
+                {
+                    if (extension.Name != null && extension.Name.Equals(
+                        AzureDiskEncryptionExtensionType.AzureDiskEncryption.ToString(),
+                        StringComparison.OrdinalIgnoreCase) && extension.TypeHandlerVersion != null)
+                    {
+                        if (Regex.IsMatch(extension.TypeHandlerVersion, "^(2.)"))
+                        {
+                            encryptionType = AzureDiskEncryptionType.OnePassEncrypted;
+                        }
+                        else if (Regex.IsMatch(extension.TypeHandlerVersion, "^(1.)"))
+                        {
+                            encryptionType = AzureDiskEncryptionType.TwoPassEncrypted;
+                        }
+
+                        break;
+                    }
+                    if (extension.Name != null && extension.Name.Equals(
+                        AzureDiskEncryptionExtensionType.AzureDiskEncryptionForLinux.ToString(),
+                        StringComparison.OrdinalIgnoreCase) && extension.TypeHandlerVersion != null)
+                    {
+                        if (Regex.IsMatch(extension.TypeHandlerVersion, "^(1.)"))
+                        {
+                            encryptionType = AzureDiskEncryptionType.OnePassEncrypted;
+                        }
+                        else if (Regex.IsMatch(extension.TypeHandlerVersion, "^(0.)"))
+                        {
+                            encryptionType = AzureDiskEncryptionType.TwoPassEncrypted;
+                        }
+                        break;
+                    }
+                }
+            }
+            return encryptionType;
         }
     }
 
@@ -623,6 +656,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         JsonCreationConverter<RecoveryPlanActionDetails>
     {
         /// <summary>
+        ///     Gets a value indicating whether this Newtonsoft.Json.JsonConverter can write JSON
+        /// </summary>
+        public override bool CanWrite => true;
+
+        /// <summary>
         ///     Creates recovery plan action custom details.
         /// </summary>
         /// <param name="objectType">Object type.</param>
@@ -654,6 +692,50 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             return outputType;
         }
+
+        /// <summary>
+        ///     Writes the JSON representation of the object.
+        /// </summary>
+        /// <param name="writer">The Newtonsoft.Json.JsonWriter to write to.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="serializer">The calling serializer.</param>
+        public override void WriteJson(
+            JsonWriter writer,
+            object value,
+            JsonSerializer serializer)
+        {
+            JToken t = JToken.FromObject(value);
+            string instanceType = null;
+            if (value != null)
+            {
+                if (string.Compare(value.GetType().ToString(), typeof(RecoveryPlanAutomationRunbookActionDetails).ToString()) == 0)
+                {
+                    instanceType = RecoveryPlanActionDetailsType.AutomationRunbookActionDetails.ToString();
+                }
+                else if (string.Compare(value.GetType().ToString(), typeof(RecoveryPlanManualActionDetails).ToString()) == 0)
+                {
+                    instanceType = RecoveryPlanActionDetailsType.ManualActionDetails.ToString();
+                }
+                else if (string.Compare(value.GetType().ToString(), typeof(RecoveryPlanScriptActionDetails).ToString()) == 0)
+                {
+                    instanceType = RecoveryPlanActionDetailsType.ScriptActionDetails.ToString();
+                }
+            }
+            if (t.Type != JTokenType.Object)
+            {
+                t.WriteTo(writer);
+            }
+            else
+            {
+                JObject o = (JObject)t;
+                IList<string> propertyNames = o.Properties().Select(p => p.Name).ToList();
+
+                o.AddFirst(new JProperty(Constants.InstanceType, instanceType));
+
+                o.WriteTo(writer);
+            }
+        }
+
     }
 
     /// <summary>

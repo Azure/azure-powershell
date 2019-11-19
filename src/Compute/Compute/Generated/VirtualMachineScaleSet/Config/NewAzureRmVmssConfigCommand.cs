@@ -149,6 +149,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public RollingUpgradePolicy RollingUpgradePolicy { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter EnableAutomaticRepair { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string AutomaticRepairGracePeriod { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public int AutomaticRepairMaxInstanceRepairsPercent { get; set; }
+
+        [Parameter(
             Mandatory = false)]
         public SwitchParameter AutoOSUpgrade { get; set; }
 
@@ -179,6 +194,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("Regular", "Low", "Spot")]
         public string Priority { get; set; }
 
         [Parameter(
@@ -186,6 +202,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         [PSArgumentCompleter("Deallocate", "Delete")]
         public string EvictionPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public double MaxPrice { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -201,6 +222,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string ProximityPlacementGroupId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("Default", "OldestVM", "NewestVM")]
+        public string[] ScaleInPolicy { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -233,6 +260,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // UpgradePolicy
             UpgradePolicy vUpgradePolicy = null;
 
+            // AutomaticRepairsPolicy
+            AutomaticRepairsPolicy vAutomaticRepairsPolicy = null;
+
             // VirtualMachineProfile
             VirtualMachineScaleSetVMProfile vVirtualMachineProfile = null;
 
@@ -241,6 +271,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // AdditionalCapabilities
             AdditionalCapabilities vAdditionalCapabilities = null;
+
+            // ScaleInPolicy
+            ScaleInPolicy vScaleInPolicy = null;
 
             // Identity
             VirtualMachineScaleSetIdentity vIdentity = null;
@@ -335,6 +368,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vUpgradePolicy.AutomaticOSUpgradePolicy = new AutomaticOSUpgradePolicy();
             }
             vUpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = this.AutoOSUpgrade.IsPresent;
+
+            if (vAutomaticRepairsPolicy == null)
+            {
+                vAutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+            }
+            vAutomaticRepairsPolicy.Enabled = this.EnableAutomaticRepair.IsPresent;
+
+            if (this.IsParameterBound(c => c.AutomaticRepairGracePeriod))
+            {
+                if (vAutomaticRepairsPolicy == null)
+                {
+                    vAutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                }
+                vAutomaticRepairsPolicy.GracePeriod = this.AutomaticRepairGracePeriod;
+            }
+
+            if (this.IsParameterBound(c => c.AutomaticRepairMaxInstanceRepairsPercent))
+            {
+                if (vAutomaticRepairsPolicy == null)
+                {
+                    vAutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                }
+                vAutomaticRepairsPolicy.MaxInstanceRepairsPercent = this.AutomaticRepairMaxInstanceRepairsPercent;
+            }
 
             if (this.IsParameterBound(c => c.DisableAutoRollback))
             {
@@ -450,6 +507,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.EvictionPolicy = this.EvictionPolicy;
             }
 
+            if (this.IsParameterBound(c => c.MaxPrice))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.BillingProfile == null)
+                {
+                    vVirtualMachineProfile.BillingProfile = new BillingProfile();
+                }
+                vVirtualMachineProfile.BillingProfile.MaxPrice = this.MaxPrice;
+            }
+
             if (this.TerminateScheduledEvents.IsPresent)
             {
                 if (vVirtualMachineProfile == null)
@@ -501,6 +571,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
             }
 
+            if (this.IsParameterBound(c => c.ScaleInPolicy))
+            {
+                if (vScaleInPolicy == null)
+                {
+                    vScaleInPolicy = new ScaleInPolicy();
+                }
+                vScaleInPolicy.Rules = this.ScaleInPolicy;
+            }
+
             if (this.AssignIdentity.IsPresent)
             {
                 if (vIdentity == null)
@@ -546,9 +625,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Sku = vSku,
                 Plan = vPlan,
                 UpgradePolicy = vUpgradePolicy,
+                AutomaticRepairsPolicy = vAutomaticRepairsPolicy,
                 VirtualMachineProfile = vVirtualMachineProfile,
                 ProximityPlacementGroup = vProximityPlacementGroup,
                 AdditionalCapabilities = vAdditionalCapabilities,
+                ScaleInPolicy = vScaleInPolicy,
                 Identity = vIdentity,
             };
 

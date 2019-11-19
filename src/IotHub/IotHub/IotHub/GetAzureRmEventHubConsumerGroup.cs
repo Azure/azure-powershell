@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubEventHubConsumerGroup"), OutputType(typeof(PSEventHubConsumerGroupInfo))]
@@ -43,22 +44,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(
-            Position = 2,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the Event Hub Endpoint. Possible values are 'events', 'operationsMonitoringEvents'")]
-        [ValidateNotNullOrEmpty]
-        [ValidateSetAttribute(EventsEndpointName, OperationsMonitoringEventsEndpointName)]
-        public string EventHubEndpointName { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            IEnumerable<EventHubConsumerGroupInfo> iotHubEHConsumerGroups = this.IotHubClient.IotHubResource.ListEventHubConsumerGroups(this.ResourceGroupName, this.Name, this.EventHubEndpointName);
+            string eventsEndpointName = "events";
+            IEnumerable<EventHubConsumerGroupInfo> iotHubEHConsumerGroups = this.IotHubClient.IotHubResource.ListEventHubConsumerGroups(this.ResourceGroupName, this.Name, eventsEndpointName);
             this.WriteObject(IotHubUtils.ToPSEventHubConsumerGroupInfo(iotHubEHConsumerGroups), true);
         }
-
-        private const string EventsEndpointName = "events";
-        private const string OperationsMonitoringEventsEndpointName = "operationsMonitoringEvents";
     }
 }

@@ -601,6 +601,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing Azure Sql Instance Active Directory Administrator on instance &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceActiveDirectoryAdministratorDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceActiveDirectoryAdministratorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Instance Active Directory Administrator on instance &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlInstanceActiveDirectoryAdministratorWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlInstanceActiveDirectoryAdministratorWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Azure Sql Server Active Directory Administrator on server &apos;{0}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlServerActiveDirectoryAdministratorDescription {
@@ -826,7 +844,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlInstanceVulnerabilityAssessmentSettings first..
+        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlInstanceVulnerabilityAssessmentSetting first..
         /// </summary>
         internal static string RunSetManagedDatabaseVulnerabilityAssemenSettings {
             get {
@@ -835,11 +853,11 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlServerVulnerabilityAssessmentSettings first..
+        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlServerVulnerabilityAssessmentSetting first..
         /// </summary>
-        internal static string RunSetVulnerabilityAssemenSettings {
+        internal static string RunSetVulnerabilityAssessmentSettings {
             get {
-                return ResourceManager.GetString("RunSetVulnerabilityAssemenSettings", resourceCulture);
+                return ResourceManager.GetString("RunSetVulnerabilityAssessmentSettings", resourceCulture);
             }
         }
         

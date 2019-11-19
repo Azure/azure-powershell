@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 online version: https://docs.microsoft.com/en-us/powershell/module/Az.sql/set-Azsqldatabaseinstancefailovergroup
 schema: 2.0.0
@@ -12,28 +12,25 @@ Modifies the configuration of an Instance Failover Group.
 
 ## SYNTAX
 
-### SetIFGDefault (Default)
+### SetInstanceFailoverGroupDefaultSet (Default)
 ```
 Set-AzSqlDatabaseInstanceFailoverGroup [-ResourceGroupName] <String> [-Location] <String> [-Name] <String>
- [-FailoverPolicy <FailoverPolicy>] [-GracePeriodWithDataLossHours <Int32>]
- [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-FailoverPolicy <String>] [-GracePeriodWithDataLossHours <Int32>] [-AllowReadOnlyFailoverToPrimary <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Set a Instance Failover Group from Resource Id
+### SetInstanceFailoverGroupByResourceIdSet
 ```
-Set-AzSqlDatabaseInstanceFailoverGroup [-Location] <String> [-ResourceId] <String>
- [-FailoverPolicy <FailoverPolicy>] [-GracePeriodWithDataLossHours <Int32>]
- [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSqlDatabaseInstanceFailoverGroup [-Location] <String> [-ResourceId] <String> [-FailoverPolicy <String>]
+ [-GracePeriodWithDataLossHours <Int32>] [-AllowReadOnlyFailoverToPrimary <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Set a Instance Failover Group from AzureSqlInstanceFailoverGroupModel instance definition
+### SetInstanceFailoverGroupByAzureSqlInstanceFailoverGroupModelSet
 ```
-Set-AzSqlDatabaseInstanceFailoverGroup -InputObject <AzureSqlInstanceFailoverGroupModel>
- [-FailoverPolicy <FailoverPolicy>] [-GracePeriodWithDataLossHours <Int32>]
- [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSqlDatabaseInstanceFailoverGroup [-InputObject] <AzureSqlInstanceFailoverGroupModel>
+ [-FailoverPolicy <String>] [-GracePeriodWithDataLossHours <Int32>] [-AllowReadOnlyFailoverToPrimary <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,10 +70,9 @@ Whether outages on the secondary server should trigger automatic failover of the
 This feature is not yet supported.
 
 ```yaml
-Type: AllowReadOnlyFailoverToPrimary
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -89,9 +85,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -104,10 +100,9 @@ Accept wildcard characters: False
 The failover policy of the Instance Failover Group.
 
 ```yaml
-Type: FailoverPolicy
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Automatic, Manual
 
 Required: False
 Position: Named
@@ -120,7 +115,7 @@ Accept wildcard characters: False
 Interval before automatic failover is initiated if an outage occurs on the primary server and failover cannot be completed without data loss.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -135,8 +130,8 @@ Accept wildcard characters: False
 The Instance Failover Group object to set
 
 ```yaml
-Type: AzureSqlInstanceFailoverGroupModel
-Parameter Sets: Set a Instance Failover Group from AzureSqlInstanceFailoverGroupModel instance definition
+Type: Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Model.AzureSqlInstanceFailoverGroupModel
+Parameter Sets: SetInstanceFailoverGroupByAzureSqlInstanceFailoverGroupModelSet
 Aliases:
 
 Required: True
@@ -150,8 +145,8 @@ Accept wildcard characters: False
 The name of the Local Region from which to retrieve the Instance Failover Group.
 
 ```yaml
-Type: String
-Parameter Sets: SetIFGDefault, Set a Instance Failover Group from Resource Id
+Type: System.String
+Parameter Sets: SetInstanceFailoverGroupDefaultSet, SetInstanceFailoverGroupByResourceIdSet
 Aliases:
 
 Required: True
@@ -165,8 +160,8 @@ Accept wildcard characters: False
 The name of the Instance Failover Group.
 
 ```yaml
-Type: String
-Parameter Sets: SetIFGDefault
+Type: System.String
+Parameter Sets: SetInstanceFailoverGroupDefaultSet
 Aliases:
 
 Required: True
@@ -180,8 +175,8 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
-Parameter Sets: SetIFGDefault
+Type: System.String
+Parameter Sets: SetInstanceFailoverGroupDefaultSet
 Aliases:
 
 Required: True
@@ -195,14 +190,14 @@ Accept wildcard characters: False
 The Resource ID of the Instance Failover Group to set.
 
 ```yaml
-Type: String
-Parameter Sets: Set a Instance Failover Group from Resource Id
+Type: System.String
+Parameter Sets: SetInstanceFailoverGroupByResourceIdSet
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -210,7 +205,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -226,7 +221,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -238,7 +233,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

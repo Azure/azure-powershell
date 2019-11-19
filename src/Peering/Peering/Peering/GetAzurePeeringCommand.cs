@@ -19,16 +19,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.Peering.Properties;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Peering;
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
-    using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
-
-    using Newtonsoft.Json;
 
     /// <inheritdoc />
     /// <summary>
@@ -45,7 +41,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Position = 0,
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
-            ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
+            ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -56,7 +52,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.PeeringNameHelp,
-            ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
+            ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
         public string Name { get; set; }
 
         /// <summary>
@@ -69,6 +65,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [PSArgumentCompleter(Constants.Direct, Constants.Partner, Constants.Exchange)]
         public string Kind { get; set; }
 
+        /// <summary>
+        /// The resource  id
+        /// </summary>
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            HelpMessage = Constants.ResourceIdHelp,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.ParameterSetNameByResourceId)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         /// <inheritdoc />
         /// <summary>
         ///     Execute Override for powershell cmdlet
@@ -80,7 +88,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             {
                 if (string.Equals(
                     this.ParameterSetName,
-                    Constants.ParameterSetNamePeeringByResourceAndName,
+                    Constants.ParameterSetNameByResourceAndName,
                     StringComparison.OrdinalIgnoreCase))
                 {
                     if (this.Name != null)
@@ -89,15 +97,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                         this.WriteObject(item);
                     }
                     else
-                    { 
+                    {
                         var list = this.GetPeeringByResource();
                         this.WriteObject(list, true);
                     }
                 }
+                else if (string.Equals(this.ParameterSetName, Constants.ParameterSetNameByResourceId))
+                {
+                    var resourceId = new ResourceIdentifier(this.ResourceId);
+                    this.ResourceGroupName = resourceId.ResourceGroupName;
+                    this.Name = resourceId.ResourceName;
+                    this.WriteObject(this.GetPeeringByResourceAndName());
+                }
                 else
                 {
                     var list = this.Kind != null ? this.GetPeeringByKind() : this.GetPeeringBySubscription();
-                    this.WriteObject(list, true);
+                    this.WriteObject(list);
                 }
             }
             catch (InvalidOperationException mapException)
@@ -110,7 +125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
-        
+
         /// <summary>
         ///     Gets InputObject by its Kind
         /// </summary>

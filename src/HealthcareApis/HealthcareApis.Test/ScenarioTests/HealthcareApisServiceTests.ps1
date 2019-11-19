@@ -46,7 +46,8 @@ function Test-AzRmHealthcareApisService{
 
 		# Assert
 		Assert-AreEqual $actual.Name $rname
-		Assert-AreEqual $actual.Properties.CosmosDbConfiguration.OfferThroughput $offerThroughput
+		Assert-AreEqual $actual.CosmosDbOfferThroughput $offerThroughput
+		Assert-AreEqual $actual.Kind $kind
 		#Update using parameters
 		$newOfferThroughput = $offerThroughput - 600
 		$updated = Set-AzHealthcareApisService -ResourceId $actual.Id -CosmosOfferThroughput $newOfferThroughput;
@@ -54,7 +55,7 @@ function Test-AzRmHealthcareApisService{
 		$updatedAccount = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname
 		# Assert the update
 		Assert-AreEqual $updatedAccount.Name $rname
-		Assert-AreEqual $updatedAccount.Properties.CosmosDbConfiguration.OfferThroughput $newOfferThroughput
+		Assert-AreEqual $updatedAccount.CosmosDbOfferThroughput $newOfferThroughput
 
 		$rname1 = $rname + "1"
 		$created1 = New-AzHealthcareApisService -Name $rname1 -ResourceGroupName  $rgname -Location $location -AccessPolicyObjectId $object_id -CosmosOfferThroughput $offerThroughput;
@@ -63,7 +64,7 @@ function Test-AzRmHealthcareApisService{
 
 		# Assert
 		Assert-AreEqual $actual1.Name $rname1
-		Assert-AreEqual $actual1.Properties.CosmosDbConfiguration.OfferThroughput $offerThroughput
+		Assert-AreEqual $actual1.CosmosDbOfferThroughput $offerThroughput
 
 		$list = Get-AzHealthcareApisService -ResourceGroupName $rgname
 

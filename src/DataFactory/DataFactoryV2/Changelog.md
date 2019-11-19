@@ -17,13 +17,27 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-
 ## Upcoming Release
+* Update ADF .Net SDK version to 4.4.0
+* Add parameter "ExpressCustomSetup" for "Set-AzureRmDataFactoryV2IntegrationRuntime" cmd to enable setup configurations and 3rd party components without custom setup script.
+
+## Version 1.4.1
+* Update ADF .Net SDK version to 4.3.0
+
+## Version 1.4.0
+* Adding CRUD commands for ADF V2 data flow: Set-AzDataFactoryV2DataFlow, Remove-AzDataFactoryV2DataFlow, and Get-AzDataFactoryV2DataFlow.
+* Adding action commands for ADF V2 data flow debug Session: Start-AzDataFactoryV2DataFlowDebugSession, Get-AzDataFactoryV2DataFlowDebugSession, Add-AzDataFactoryV2DataFlowDebugSessionPackage, Invoke-AzDataFactoryV2DataFlowDebugSessionCommand and Stop-AzDataFactoryV2DataFlowDebugSession.
+* Update ADF .Net SDK version to 4.2.0
+
+## Version 1.3.0
+* Adding 3 new commands for ADF V2 - Add-AzDataFactoryV2TriggerSubscription, Remove-AzDataFactoryV2TriggerSubscription, and Get-AzDataFactoryV2TriggerSubscriptionStatus
+* Updated ADF .Net SDK version to 4.1.3
+
 
 ## Version 1.2.0
 * Fix typo to capitalize "Windows" in 'New-AzDataFactoryEncryptValue" documentation
 * Fixed miscellaneous typos across module
-* Updated ADF .Net SDK version to 4.1.2 
+* Updated ADF .Net SDK version to 4.1.2
 * Add parameter "DataProxyIntegrationRuntimeName", "DataProxyStagingLinkedServiceName" and "DataProxyStagingPath" for "Set-AzureRmDataFactoryV2IntegrationRuntime" cmd to enable set up Self-Hosted Integration Runtime as a proxy for SSIS Integration Runtime
 * Updated PSTriggerRun to show the triggered pipelines, message and properties, and PSActivityRun to show the activity type
 

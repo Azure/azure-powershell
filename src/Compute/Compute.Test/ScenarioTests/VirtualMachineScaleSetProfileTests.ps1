@@ -62,7 +62,9 @@ function Test-VirtualMachineScaleSetProfile
           | Set-AzVmssOSProfile -ComputerNamePrefix $computePrefix  -AdminUsername $adminUsername -AdminPassword $adminPassword `
           | Set-AzVmssStorageProfile -OsDiskCreateOption $createOption -OsDiskCaching $osCaching `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version -ImageReferencePublisher $imgRef.PublisherName `
-          | Add-AzVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true;
+          | Add-AzVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true `
+          | Add-AzVmssDataDisk -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeGB  20 -Lun 1 -CreateOption Empty -DiskIOPSReadWrite 100 -DiskMBpsReadWrite 1000;
+
 
     # IP config and Network profile
     Assert-AreEqual $ipName $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name;
@@ -101,6 +103,14 @@ function Test-VirtualMachineScaleSetProfile
     Assert-AreEqual $imgRef.Version $vmss.VirtualMachineProfile.StorageProfile.ImageReference.Version;
     Assert-AreEqual $imgRef.PublisherName $vmss.VirtualMachineProfile.StorageProfile.ImageReference.Publisher;
     Assert-Null $vmss.VirtualMachineProfile.StorageProfile.OsDisk.DiffDiskSettings;
+
+    Assert-AreEqual 'testDataDisk1' $vmss.VirtualMachineProfile.StorageProfile.DataDisks[0].Name;
+    Assert-AreEqual 'ReadOnly' $vmss.VirtualMachineProfile.StorageProfile.DataDisks[0].Caching;
+    Assert-AreEqual 20 $vmss.VirtualMachineProfile.StorageProfile.DataDisks[0].DiskSizeGB;
+    Assert-AreEqual 1 $vmss.VirtualMachineProfile.StorageProfile.DataDisks[0].Lun;
+    Assert-AreEqual 'Empty' $vmss.VirtualMachineProfile.StorageProfile.DataDisks[0].CreateOption;
+    Assert-AreEqual 100 $vmss.VirtualMachineProfile.StorageProfile.DataDisks[0].DiskIOPSReadWrite;
+    Assert-AreEqual 1000 $vmss.VirtualMachineProfile.StorageProfile.DataDisks[0].DiskMBpsReadWrite;
 
     # Extension profile
     Assert-AreEqual $extname $vmss.VirtualMachineProfile.ExtensionProfile.Extensions[0].Name;
@@ -151,7 +161,8 @@ function Test-VirtualMachineScaleSetProfile
 
     $vmss4 = $vmss4 | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
             -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
-            -ImageReferencePublisher $imgRef.PublisherName -OsDiskWriteAccelerator -ManagedDisk "Premium_LRS" -DiffDiskSetting "Local";
+            -ImageReferencePublisher $imgRef.PublisherName -OsDiskWriteAccelerator `
+            -ManagedDisk "Premium_LRS" -DiffDiskSetting "Local" -DiskEncryptionSetId "enc_id1";
 
     # Storage profile
     Assert-AreEqual $createOption $vmss4.VirtualMachineProfile.StorageProfile.OsDisk.CreateOption;
@@ -161,6 +172,7 @@ function Test-VirtualMachineScaleSetProfile
     Assert-AreEqual $imgRef.Version $vmss4.VirtualMachineProfile.StorageProfile.ImageReference.Version;
     Assert-AreEqual $imgRef.PublisherName $vmss4.VirtualMachineProfile.StorageProfile.ImageReference.Publisher;
     Assert-AreEqual "Premium_LRS" $vmss4.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk.StorageAccountType;
+    Assert-AreEqual "enc_id1" $vmss4.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk.DiskEncryptionSet.Id;
     Assert-AreEqual "Local" $vmss4.VirtualMachineProfile.StorageProfile.OsDisk.DiffDiskSettings.Option;
     Assert-AreEqual $ppgid $vmss4.ProximityPlacementGroup.Id;
 }

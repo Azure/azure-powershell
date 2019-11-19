@@ -42,38 +42,52 @@ function Test-VolumeCrud
 
     $rule1 = @{
         RuleIndex = 1
-        UnixReadOnly = 'false'
-        UnixReadWrite = 'true'
-        Cifs = 'false'
-        Nfsv3 = 'true'
-        Nfsv4 = 'false'
+        UnixReadOnly = $false
+        UnixReadWrite = $true
+        Cifs = $false
+        Nfsv3 = $true
+        Nfsv41 = $false
         AllowedClients = '0.0.0.0/0'
     }
     $rule2 = @{
         RuleIndex = 2
-        UnixReadOnly = 'false'
-        UnixReadWrite = 'true'
-        Cifs = 'false'
-        Nfsv3 = 'true'
-        Nfsv4 = 'false'
+        UnixReadOnly = $false
+        UnixReadWrite = $true
+        Cifs = $false
+        Nfsv3 = $false
+        Nfsv41 = $true
         AllowedClients = '1.2.3.0/24'
     }
     $rule3 = @{
         RuleIndex = 2
-        UnixReadOnly = 'false'
-        UnixReadWrite = 'true'
-        Cifs = 'false'
-        Nfsv3 = 'true'
-        Nfsv4 = 'false'
+        UnixReadOnly = $false
+        UnixReadWrite = $true
+        Cifs = $false
+        Nfsv3 = $true
+        Nfsv41 = $false
         AllowedClients = '2.3.4.0/24'
     }
-
+    $rule5 = @{
+        RuleIndex = 1
+        UnixReadOnly = $false
+        UnixReadWrite = $true
+        Cifs = $false
+        Nfsv3 = $false
+        Nfsv41 = $true
+        AllowedClients = '1.2.3.0/24'
+    }
     $exportPolicy = @{
 		Rules = (
 			$rule1, $rule2
 		)
 	}
     
+    $exportPolicyv4 = @{
+		Rules = (
+			$rule5
+		)
+	}
+
     $exportPolicyMod = @{
 		Rules = (
 			$rule3
@@ -81,9 +95,8 @@ function Test-VolumeCrud
 	}
 
     # create the list of protocol types
-    $protocolTypes = New-Object string[] 2
+    $protocolTypes = New-Object string[] 1
     $protocolTypes[0] = "NFSv3"
-    $protocolTypes[1] = "NFSv4"
 
     try
     {
@@ -113,15 +126,17 @@ function Test-VolumeCrud
         Assert-AreEqual $retrievedVolume.ExportPolicy.Rules[0].AllowedClients '0.0.0.0/0'
         Assert-AreEqual $retrievedVolume.ExportPolicy.Rules[1].AllowedClients '1.2.3.0/24'
         Assert-AreEqual $retrievedVolume.ProtocolTypes[0] 'NFSv3'
-        Assert-AreEqual $retrievedVolume.ProtocolTypes[1] 'NFSv4'
         Assert-NotNull $retrievedVolume.MountTargets
 
+        # use the NFSv4.1
+        $protocolTypesv4 = New-Object string[] 1
+        $protocolTypesv4[0] = "NFSv4.1"
+
         # create second volume and check using the confirm flag
-        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName2 -CreationToken $volName2 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -Confirm:$false
+        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName2 -CreationToken $volName2 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -ExportPolicy $exportPolicyv4 -ProtocolType $protocolTypesv4 -Confirm:$false
         Assert-AreEqual "$accName/$poolName/$volName2" $retrievedVolume.Name
         Assert-AreEqual $serviceLevel $retrievedVolume.ServiceLevel
-        # default protocol type for new volume
-        Assert-AreEqual $retrievedVolume.ProtocolTypes[0] 'NFSv3'
+        Assert-AreEqual $retrievedVolume.ProtocolTypes[0] 'NFSv4.1'
 
         # create and check a third volume  using the WhatIf - it should not be created
         $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName3 -CreationToken $volName2 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -WhatIf
@@ -153,11 +168,11 @@ function Test-VolumeCrud
 
         $rule4 = @{
             RuleIndex = 3
-            UnixReadOnly = 'false'
-            UnixReadWrite = 'true'
-            Cifs = 'false'
-            Nfsv3 = 'true'
-            Nfsv4 = 'false'
+            UnixReadOnly = $false
+            UnixReadWrite = $true
+            Cifs = $false
+            Nfsv3 = $true
+            Nfsv41 = $false
             AllowedClients = '1.2.3.0/24'
         }
 
@@ -190,7 +205,7 @@ function Test-VolumeCrud
         # create the volume and check
         $newTagName = "tag1"
         $newTagValue = "tagValue1"
-        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName2 -VolumeName $volName4 -CreationToken $volName4 -UsageThreshold $doubleUsage -ServiceLevel "Standard" -SubnetId $subnetId -Tag @{$newTagName = $newTagValue} -ExportPolicy $exportPolicy -ProtocolType $protocolTypes
+        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName2 -VolumeName $volName4 -CreationToken $volName4 -UsageThreshold $doubleUsage -ServiceLevel "Standard" -SubnetId $subnetId -Tag @{$newTagName = $newTagValue} -ExportPolicy $exportPolicy
         Assert-AreEqual "$accName/$poolName2/$volName4" $retrievedVolume.Name
         Assert-AreEqual "Standard" $retrievedVolume.ServiceLevel
         Assert-AreEqual True $retrievedVolume.Tags.ContainsKey($newTagName)
@@ -198,6 +213,8 @@ function Test-VolumeCrud
         Assert-NotNull $retrievedVolume.ExportPolicy
         Assert-AreEqual '0.0.0.0/0' $retrievedVolume.ExportPolicy.Rules[0].AllowedClients
         Assert-AreEqual '1.2.3.0/24' $retrievedVolume.ExportPolicy.Rules[1].AllowedClients
+        # default protocol type for new volume
+        Assert-AreEqual $retrievedVolume.ProtocolTypes[0] 'NFSv3'
 
         # update (patch) export policy and check no change to rest of volume
         $retrievedVolume = Update-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName2 -VolumeName $volName4 -ExportPolicy $exportPolicyMod

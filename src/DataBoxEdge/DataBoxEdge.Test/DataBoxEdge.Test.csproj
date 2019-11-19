@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>DataBoxEdge</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.EdgeGateway" Version="0.8.1-preview" />
+  </ItemGroup>
+
+</Project>

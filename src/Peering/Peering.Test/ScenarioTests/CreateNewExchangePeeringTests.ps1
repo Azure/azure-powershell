@@ -13,29 +13,6 @@
 # ----------------------------------------------------------------------------------
 <#
 .SYNOPSIS
-Helper Function NewExchangeConnectionV4V6 
-#>
-function NewExchangeConnectionV4V6($facilityId, $v4, $v6)
-{
-	#Create some data for the object
-	Write-Debug "Creating Connection at $facilityId"
-	$md5 = getHash
-	$md5 = $md5.ToString()
-	Write-Debug "Created Hash $md5"
-	$offset = Get-Random -Maximum 20 -Minimum 3
-	$sessionv4 = changeIp "$v4/32" $false $offset $false
-	$sessionv6 = changeIp "$v6/128" $true $offset $false
-	Write-Debug "Created IPs $sessionv4"
-	$maxv4 = maxAdvertisedIpv4
-	$maxv6 = maxAdvertisedIpv6
-	Write-Debug "Created maxAdvertised $maxv4 $maxv6"
-	#create Connection
-    $createdConnection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxv4 -PeerSessionIPv4Address $sessionv4 -PeerSessionIPv6Address $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -MD5AuthenticationKey $md5
-	return $createdConnection
-}
-
-<#
-.SYNOPSIS
 Tests new Exchange Peering 
 #>
 function Test-NewExchangePeering()
@@ -47,16 +24,16 @@ function Test-NewExchangePeering()
 	$kind = IsDirect $false
 	Write-Debug "Getting the Facility Information"
 	try {
-	$facility = Get-AzPeeringLocation -PeeringLocation $peeringLocation -Kind $kind
-	$microsoftIpAddressV4 = $facility[0].MicrosoftIPv4Address.Split(',') | Select-Object -First 1
-	$microsoftIpAddressV6 = $facility[0].MicrosoftIPv6Address.Split(',') | Select-Object -First 1
-	$facilityId = $facility[0].PeeringDBFacilityId
-	$peeringLocation = $facility[0].PeeringLocation
 	Write-Debug "Getting the Asn Information"
 	$randNum = getRandomNumber
 	Write-Debug "Random Number $randNum";
 	$peerAsn = makePeerAsn $randNum
 	$asn = $peerAsn.Id
+	$facility = Get-AzPeeringLocation -PeeringLocation $peeringLocation -Kind $kind
+	$microsoftIpAddressV4 = $facility[0].MicrosoftIPv4Address.Split(',') | Select-Object -First 1
+	$microsoftIpAddressV6 = $facility[0].MicrosoftIPv6Address.Split(',') | Select-Object -First 1
+	$facilityId = $facility[0].PeeringDBFacilityId
+	$peeringLocation = $facility[0].PeeringLocation
 	Write-Debug "Creating Connections"
 	$connection1 = NewExchangeConnectionV4V6 $facilityId $microsoftIpAddressV4 $microsoftIpAddressV6
 	$connection2 = NewExchangeConnectionV4V6 $facilityId $microsoftIpAddressV4 $microsoftIpAddressV6
@@ -67,9 +44,6 @@ function Test-NewExchangePeering()
     $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -ExchangeConnection $connection1,$connection2 -Tag $tags
 	Assert-NotNull $createdPeering
 	Assert-NotNull $createdPeering.Connections.ConnectionIdentifier
-	}
-	catch{
-	Write-Debug $error
 	}
 	finally{
 		$isRemoved = Remove-AzPeerAsn -Name $peerAsn.Name -Force -PassThru;

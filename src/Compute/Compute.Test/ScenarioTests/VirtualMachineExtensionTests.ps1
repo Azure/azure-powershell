@@ -119,7 +119,7 @@ function Test-VirtualMachineExtension
         $settingstr = '{"fileUris":[],"commandToExecute":"powershell Get-Process"}';
         $protectedsettingstr = '{"storageAccountName":"' + $stoname + '","storageAccountKey":"' + $stokey + '"}';
         $job = Set-AzVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -ExtensionType $exttype -TypeHandlerVersion $extver -SettingString $settingstr -ProtectedSettingString $protectedsettingstr -AsJob
-		$job | Wait-Job
+        $job | Wait-Job
 
         # Get VM Extension
         $ext = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
@@ -441,7 +441,6 @@ function Test-VirtualMachineCustomScriptExtension
         Assert-AreEqual $ext.ExtensionType $exttype;
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
         Assert-AreEqual $ext.CommandToExecute $expCommand;
-        Assert-True {$ext.Uri[0].Contains($expUri)};
         Assert-NotNull $ext.ProvisioningState;
 
         $ext = Get-AzVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
@@ -451,7 +450,6 @@ function Test-VirtualMachineCustomScriptExtension
         Assert-AreEqual $ext.ExtensionType $exttype;
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
         Assert-AreEqual $ext.CommandToExecute $expCommand;
-        Assert-True {$ext.Uri[0].Contains($expUri)};
         Assert-NotNull $ext.ProvisioningState;
         Assert-NotNull $ext.Statuses;
 
@@ -776,7 +774,6 @@ function Test-VirtualMachineCustomScriptExtensionSecureExecution
         Assert-AreEqual $ext.ExtensionType $exttype;
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
         Assert-Null $ext.CommandToExecute;
-        Assert-True {$ext.Uri[0].Contains($expUri)};
         Assert-NotNull $ext.ProvisioningState;
     }
     finally
@@ -905,8 +902,6 @@ function Test-VirtualMachineCustomScriptExtensionFileUri
         Assert-AreEqual $ext.ExtensionType $exttype;
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
         Assert-AreEqual $ext.CommandToExecute $expCommand;
-        Assert-True {$ext.Uri[0].Contains($expUri)};
-        Assert-True {$ext.Uri[1].Contains($expUri)};
         Assert-NotNull $ext.ProvisioningState;
 
         $ext = Get-AzVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
@@ -916,8 +911,6 @@ function Test-VirtualMachineCustomScriptExtensionFileUri
         Assert-AreEqual $ext.ExtensionType $exttype;
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
         Assert-AreEqual $ext.CommandToExecute $expCommand;
-        Assert-True {$ext.Uri[0].Contains($expUri)};
-        Assert-True {$ext.Uri[1].Contains($expUri)};
         Assert-NotNull $ext.ProvisioningState;
         Assert-NotNull $ext.Statuses;
 
@@ -944,6 +937,92 @@ function Test-VirtualMachineCustomScriptExtensionFileUri
     {
         # Cleanup
         Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Custom Script Extensions on Linux VM
+#>
+function Test-VirtualMachineCustomScriptExtensionLinuxVM
+{
+    $testMode = Get-ComputeTestMode
+    $rgname = Get-ComputeTestResourceName
+    try
+    {
+        # create virtual machine
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # VM Profile & Hardware
+        $vmsize = 'Standard_D2S_V3';
+        $vmname = 'vm' + $rgname;
+        $imagePublisher = "RedHat";
+        $imageOffer = "RHEL";
+        $imageSku = "7.5";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
+
+        # Storage Account (SA)
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        Retry-IfException { $global:stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        $stokey = (Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname)[0].Value;
+
+        $osDiskName = 'linuxOsDisk';
+        $osDiskCaching = 'ReadWrite';
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/linuxos.vhd";
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -Caching $osDiskCaching -CreateOption FromImage -Linux;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
+
+        # OS & Image
+        $user = "Foo12";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $vhdContainer = "https://$stoname.blob.core.windows.net/test";
+
+        $p = Set-AzVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred;
+        $p = Set-AzVMSourceImage -VM $p -PublisherName $imagePublisher -Offer $imageOffer -Skus $imageSku -Version "latest"
+        Assert-AreEqual $p.OSProfile.AdminUsername $user;
+        Assert-AreEqual $p.OSProfile.ComputerName $computerName;
+        Assert-AreEqual $p.OSProfile.AdminPassword $password;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imageOffer;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imagePublisher;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imageSku;
+
+        # Virtual Machine
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+
+        $csename = "myCustomExtension";
+        $fileUri = "https://raw.githubusercontent.com/neilpeterson/nepeters-azure-templates/master/windows-custom-script-simple/support-scripts/Create-File.ps1";
+        $runname = "Create-File.ps1";
+
+        Assert-ThrowsContains { `
+            Set-AzVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $csename -Location $loc -FileUri $fileUri -Run $runname; } `
+            "The current VM is a Linux VM.  Custom script extension can be set only to Windows VM.";
+    }
+    finally
+    {
+        Clean-ResourceGroup($rgname)
     }
 }
 
@@ -1018,7 +1097,8 @@ function Test-VirtualMachineAccessExtension
         # OS & Image
         $user = "Foo12";
         $password = $PLACEHOLDER;
-        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force; <#[SuppressMessage("Microsoft.Security", "CS001:SecretInline", Justification="Credentials are used only for the duration of test. Resources are deleted at the end of the test.")]#>
+        <#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Credentials are used only for the duration of test. Resources are deleted at the end of the test.")]#>
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
@@ -1106,38 +1186,38 @@ Test the Set-AzVMDiskEncryptionExtension single pass scenario
 #>
 function Test-AzureDiskEncryptionExtensionSinglePass
 {
-	$resourceGroupName = Get-ComputeTestResourceName
-	try
-	{
-		# create virtual machine and key vault prerequisites
-		$vm = Create-VirtualMachine $resourceGroupName
-		$kv = Create-KeyVault $vm.ResourceGroupName $vm.Location
+    $resourceGroupName = Get-ComputeTestResourceName
+    try
+    {
+        # create virtual machine and key vault prerequisites
+        $vm = Create-VirtualMachine $resourceGroupName
+        $kv = Create-KeyVault $vm.ResourceGroupName $vm.Location
 
-		# enable encryption with single pass syntax (omits AD parameters)
-		Set-AzVMDiskEncryptionExtension `
-			-ResourceGroupName $vm.ResourceGroupName `
-			-VMName $vm.Name `
-			-DiskEncryptionKeyVaultUrl $kv.DiskEncryptionKeyVaultUrl `
-			-DiskEncryptionKeyVaultId $kv.DiskEncryptionKeyVaultId `
-			-Force
+        # enable encryption with single pass syntax (omits AD parameters)
+        Set-AzVMDiskEncryptionExtension `
+            -ResourceGroupName $vm.ResourceGroupName `
+            -VMName $vm.Name `
+            -DiskEncryptionKeyVaultUrl $kv.DiskEncryptionKeyVaultUrl `
+            -DiskEncryptionKeyVaultId $kv.DiskEncryptionKeyVaultId `
+            -Force
 
-		# verify encryption state
-		$status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
-		Assert-NotNull $status
-		Assert-AreEqual $status.OsVolumeEncrypted Encrypted
-		# For Native disks we expect the cmdlet to show the data disks as encrypted.
-		Assert-AreEqual $status.DataVolumesEncrypted Encrypted
+        # verify encryption state
+        $status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
+        Assert-NotNull $status
+        Assert-AreEqual $status.OsVolumeEncrypted Encrypted
+        # For Native disks we expect the cmdlet to show the data disks as encrypted.
+        Assert-AreEqual $status.DataVolumesEncrypted Encrypted
 
-		# verify encryption settings
-		$settings = $status.OsVolumeEncryptionSettings
-		Assert-NotNull $settings
-		Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
-		Assert-AreEqual $settings.DiskEncryptionKey.SourceVault.Id $kv.DiskEncryptionKeyVaultId
-	}
-	finally
-	{
-		Clean-ResourceGroup($resourceGroupName)
-	}
+        # verify encryption settings
+        $settings = $status.OsVolumeEncryptionSettings
+        Assert-NotNull $settings
+        Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
+        Assert-AreEqual $settings.DiskEncryptionKey.SourceVault.Id $kv.DiskEncryptionKeyVaultId
+    }
+    finally
+    {
+        Clean-ResourceGroup($resourceGroupName)
+    }
 }
 
 <#
@@ -1146,51 +1226,51 @@ Test the Get-AzVmDiskEncryptionStatus single pass remove scenario
 #>
 function Test-AzureDiskEncryptionExtensionSinglePassRemove
 {
-	$resourceGroupName = Get-ComputeTestResourceName
-	try
-	{
-		# create virtual machine and key vault prerequisites
-		$vm = Create-VirtualMachineNoDataDisks $resourceGroupName
-		$kv = Create-KeyVault $vm.ResourceGroupName $vm.Location
+    $resourceGroupName = Get-ComputeTestResourceName
+    try
+    {
+        # create virtual machine and key vault prerequisites
+        $vm = Create-VirtualMachineNoDataDisks $resourceGroupName
+        $kv = Create-KeyVault $vm.ResourceGroupName $vm.Location
 
-		# enable encryption with single pass syntax (omits AD parameters)
-		Set-AzVMDiskEncryptionExtension `
-			-ResourceGroupName $vm.ResourceGroupName `
-			-VMName $vm.Name `
-			-DiskEncryptionKeyVaultUrl $kv.DiskEncryptionKeyVaultUrl `
-			-DiskEncryptionKeyVaultId $kv.DiskEncryptionKeyVaultId `
-			-Force
+        # enable encryption with single pass syntax (omits AD parameters)
+        Set-AzVMDiskEncryptionExtension `
+            -ResourceGroupName $vm.ResourceGroupName `
+            -VMName $vm.Name `
+            -DiskEncryptionKeyVaultUrl $kv.DiskEncryptionKeyVaultUrl `
+            -DiskEncryptionKeyVaultId $kv.DiskEncryptionKeyVaultId `
+            -Force
 
-		# verify encryption state
-		$status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
-		Assert-NotNull $status
-		Assert-AreEqual $status.OsVolumeEncrypted Encrypted
-		Assert-AreEqual $status.DataVolumesEncrypted NoDiskFound
+        # verify encryption state
+        $status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
+        Assert-NotNull $status
+        Assert-AreEqual $status.OsVolumeEncrypted Encrypted
+        Assert-AreEqual $status.DataVolumesEncrypted NoDiskFound
 
-		# verify encryption settings
-		$settings = $status.OsVolumeEncryptionSettings
-		Assert-NotNull $settings
-		Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
-		Assert-AreEqual $settings.DiskEncryptionKey.SourceVault.Id $kv.DiskEncryptionKeyVaultId
+        # verify encryption settings
+        $settings = $status.OsVolumeEncryptionSettings
+        Assert-NotNull $settings
+        Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
+        Assert-AreEqual $settings.DiskEncryptionKey.SourceVault.Id $kv.DiskEncryptionKeyVaultId
 
-		# remove extension
-		Remove-AzVmDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Force
-		$status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
-		Assert-NotNull $status
-		Assert-AreEqual $status.OsVolumeEncrypted Encrypted
-		Assert-AreEqual $status.DataVolumesEncrypted NoDiskFound
+        # remove extension
+        Remove-AzVmDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Force
+        $status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
+        Assert-NotNull $status
+        Assert-AreEqual $status.OsVolumeEncrypted Encrypted
+        Assert-AreEqual $status.DataVolumesEncrypted NoDiskFound
 
-		# verify encryption settings
-		$settings = $status.OsVolumeEncryptionSettings
-		Assert-NotNull $settings
-		Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
-		Assert-AreEqual $settings.DiskEncryptionKey.SourceVault.Id $kv.DiskEncryptionKeyVaultId
+        # verify encryption settings
+        $settings = $status.OsVolumeEncryptionSettings
+        Assert-NotNull $settings
+        Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
+        Assert-AreEqual $settings.DiskEncryptionKey.SourceVault.Id $kv.DiskEncryptionKeyVaultId
 
-	}
-	finally
-	{
-		Clean-ResourceGroup($resourceGroupName)
-	}
+    }
+    finally
+    {
+        Clean-ResourceGroup($resourceGroupName)
+    }
 }
 
 <#
@@ -1199,55 +1279,191 @@ Test the Set-AzVMDiskEncryptionExtension single pass disable and remove scenario
 #>
 function Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove
 {
-	$resourceGroupName = Get-ComputeTestResourceName
-	try
-	{
-		# create virtual machine and key vault prerequisites
-		$vm = Create-VirtualMachine $resourceGroupName
-		$kv = Create-KeyVault $vm.ResourceGroupName $vm.Location
+    $resourceGroupName = Get-ComputeTestResourceName
+    try
+    {
+        # create virtual machine and key vault prerequisites
+        $vm = Create-VirtualMachine $resourceGroupName
+        $kv = Create-KeyVault $vm.ResourceGroupName $vm.Location
 
-		# enable encryption with single pass syntax (omits AD parameters)
-		Set-AzVMDiskEncryptionExtension `
-			-ResourceGroupName $vm.ResourceGroupName `
-			-VMName $vm.Name `
-			-DiskEncryptionKeyVaultUrl $kv.DiskEncryptionKeyVaultUrl `
-			-DiskEncryptionKeyVaultId $kv.DiskEncryptionKeyVaultId `
-			-Force
+        # enable encryption with single pass syntax (omits AD parameters)
+        Set-AzVMDiskEncryptionExtension `
+            -ResourceGroupName $vm.ResourceGroupName `
+            -VMName $vm.Name `
+            -DiskEncryptionKeyVaultUrl $kv.DiskEncryptionKeyVaultUrl `
+            -DiskEncryptionKeyVaultId $kv.DiskEncryptionKeyVaultId `
+            -Force
 
-		# verify encryption state
-		$status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
-		Assert-NotNull $status
-		Assert-AreEqual $status.OsVolumeEncrypted Encrypted
-		Assert-AreEqual $status.DataVolumesEncrypted Encrypted
+        # verify encryption state
+        $status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
+        Assert-NotNull $status
+        Assert-AreEqual $status.OsVolumeEncrypted Encrypted
+        Assert-AreEqual $status.DataVolumesEncrypted Encrypted
 
-		# verify encryption settings
-		$settings = $status.OsVolumeEncryptionSettings
-		Assert-NotNull $settings
-		Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
-		Assert-AreEqual $settings.DiskEncryptionKey.SourceVault.Id $kv.DiskEncryptionKeyVaultId
+        # verify encryption settings
+        $settings = $status.OsVolumeEncryptionSettings
+        Assert-NotNull $settings
+        Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
+        Assert-AreEqual $settings.DiskEncryptionKey.SourceVault.Id $kv.DiskEncryptionKeyVaultId
 
-		# disable encryption
-		$status = Disable-AzVmDiskEncryption -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Force
-		Assert-NotNull $status
+        # disable encryption
+        $status = Disable-AzVmDiskEncryption -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Force
+        Assert-NotNull $status
 
-		# verify encryption state
-		$status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
-		Assert-NotNull $status
-		Assert-AreEqual $status.OsVolumeEncrypted NotEncrypted
-		Assert-AreEqual $status.DataVolumesEncrypted NotEncrypted
+        # verify encryption state
+        $status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
+        Assert-NotNull $status
+        Assert-AreEqual $status.OsVolumeEncrypted NotEncrypted
+        Assert-AreEqual $status.DataVolumesEncrypted NotEncrypted
 
-		# verify encryption settings
-		$settings = $status.OsVolumeEncryptionSettings
-		Assert-Null $settings
+        # verify encryption settings
+        $settings = $status.OsVolumeEncryptionSettings
+        Assert-Null $settings
 
-		# remove extension
-		$status = Remove-AzVmDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Force
-		Assert-NotNull $status
-	}
-	finally
-	{
-		Clean-ResourceGroup($resourceGroupName)
-	}
+        # remove extension
+        $status = Remove-AzVmDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Force
+        Assert-NotNull $status
+    }
+    finally
+    {
+        Clean-ResourceGroup($resourceGroupName)
+    }
+}
+
+<#
+.SYNOPSIS
+Test the Set-AzVMDiskEncryptionExtension single pass enable and disable scenario with non default parameters
+#>
+function Test-AzureDiskEncryptionExtensionNonDefaultParams
+{
+    $resourceGroupName = Get-ComputeTestResourceName
+    try
+    {
+        # create virtual machine and key vault prerequisites
+        $vm = Create-VirtualMachine $resourceGroupName
+        $kv = Create-KeyVault $vm.ResourceGroupName $vm.Location
+
+        $extensionPublisher = "Microsoft.Azure.Security.Edp";
+        $extensionName = "MyExtension";
+
+        # enable encryption with single pass syntax (omits AD parameters)
+        Set-AzVMDiskEncryptionExtension `
+            -ResourceGroupName $vm.ResourceGroupName `
+            -VMName $vm.Name `
+            -DiskEncryptionKeyVaultUrl $kv.DiskEncryptionKeyVaultUrl `
+            -DiskEncryptionKeyVaultId $kv.DiskEncryptionKeyVaultId `
+            -ExtensionPublisherName $extensionPublisher `
+            -ExtensionName $extensionName `
+            -Force
+
+        # verify encryption state
+        $status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -ExtensionPublisherName $extensionPublisher -ExtensionName $extensionName
+        Assert-NotNull $status
+        Assert-AreEqual $status.OsVolumeEncrypted Encrypted
+        Assert-AreEqual $status.DataVolumesEncrypted Encrypted
+
+        # verify encryption settings
+        $settings = $status.OsVolumeEncryptionSettings
+        Assert-NotNull $settings
+        Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
+        Assert-AreEqual $settings.DiskEncryptionKey.SourceVault.Id $kv.DiskEncryptionKeyVaultId
+
+        # disable encryption
+        $status = Disable-AzVmDiskEncryption -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -ExtensionPublisherName $extensionPublisher -ExtensionName $extensionName -Force
+        Assert-NotNull $status
+
+        # verify encryption state
+        $status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -ExtensionPublisherName $extensionPublisher -ExtensionName $extensionName
+        Assert-NotNull $status
+        Assert-AreEqual $status.OsVolumeEncrypted NotEncrypted
+        Assert-AreEqual $status.DataVolumesEncrypted NotEncrypted
+    }
+    finally
+    {
+        Clean-ResourceGroup($resourceGroupName)
+    }
+}
+
+<#
+.SYNOPSIS
+Test the Set-AzVMDiskEncryptionExtension single pass enable for Linux managed disk VMs
+#>
+function Test-AzureDiskEncryptionLnxManagedDisk
+{
+    $testMode = Get-ComputeTestMode
+    $rgname = Get-ComputeTestResourceName
+    try
+    {
+        # create virtual machine
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # VM Profile & Hardware
+        $vmsize = 'Standard_D2S_V3';
+        $vmname = 'vm' + $rgname;
+        $imagePublisher = "RedHat";
+        $imageOffer = "RHEL";
+        $imageSku = "7.5";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
+
+        # Storage Account (SA)
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        Retry-IfException { $global:stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        $stokey = (Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname)[0].Value;
+
+        $osDiskName = 'linuxOsDisk';
+        $osDiskCaching = 'ReadWrite';
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/linuxos.vhd";
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -Caching $osDiskCaching -CreateOption FromImage -Linux;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
+        # OS & Image
+        $user = "Foo12";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force; <#[SuppressMessage("Microsoft.Security", "CS001:SecretInline", Justification="Credentials are used only for the duration of test. Resources are deleted at the end of the test.")]#>
+        <#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Credentials are used only for the duration of test. Resources are deleted at the end of the test.")]#>
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $vhdContainer = "https://$stoname.blob.core.windows.net/test";
+
+        $p = Set-AzVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred;
+        $p = Set-AzVMSourceImage -VM $p -PublisherName $imagePublisher -Offer $imageOffer -Skus $imageSku -Version "latest"
+        Assert-AreEqual $p.OSProfile.AdminUsername $user;
+        Assert-AreEqual $p.OSProfile.ComputerName $computerName;
+        Assert-AreEqual $p.OSProfile.AdminPassword $password;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imageOffer;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imagePublisher;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imageSku;
+
+        # Virtual Machine
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        $kv = Create-KeyVault $rgname $loc;
+        # Enable single pass encryption without -skipVmBackup on Linux VM managed disk and verify exception is thrown
+        Assert-ThrowsContains { Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmname -DiskEncryptionKeyVaultUrl $kv.DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $kv.DiskEncryptionKeyVaultId -VolumeType "OS" -Force; } `
+            "skipVmBackup parameter is a required parameter for encrypting Linux VMs with managed disks"; #>
+    }
+    finally
+    {
+        Clean-ResourceGroup($rgname)
+    }
 }
 
 <#
@@ -1457,6 +1673,22 @@ function Test-AzureDiskEncryptionExtension
         Assert-NotNull $OsVolumeEncryptionSettings.DiskEncryptionKey.SecretUrl;
         Assert-NotNull $OsVolumeEncryptionSettings.DiskEncryptionKey.SourceVault;
 
+        #Update encryption settings on the VM from KEK to No KEK
+        Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -Force;
+        #Get encryption status
+        $encryptionStatus = Get-AzVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmName;
+        #Verify encryption is enabled on OS volume and data volumes
+        $OsVolumeEncryptionSettings = $encryptionStatus.OsVolumeEncryptionSettings;
+        Assert-AreEqual $encryptionStatus.OsVolumeEncrypted $true;
+        Assert-AreEqual $encryptionStatus.DataVolumesEncrypted $true;
+        #verify diskencryption keyvault url & secret url are not null
+        Assert-NotNull $OsVolumeEncryptionSettings;
+        Assert-NotNull $OsVolumeEncryptionSettings.DiskEncryptionKey.SecretUrl;
+        Assert-NotNull $OsVolumeEncryptionSettings.DiskEncryptionKey.SourceVault;
+        #verify key encryption key keyvault url & secret url are null after the update
+        Assert-Null $OsVolumeEncryptionSettings.KeyEncryptionKey.SecretUrl;
+        Assert-Null $OsVolumeEncryptionSettings.KeyEncryptionKey.SourceVault;
+
         #Remove the VM
         Remove-AzVm -ResourceGroupName $rgname -Name $vmName -Force;
 
@@ -1547,7 +1779,8 @@ function Test-VirtualMachineBginfoExtension
         # OS & Image
         $user = "Foo12";
         $password = $PLACEHOLDER;
-        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force; <#[SuppressMessage("Microsoft.Security", "CS001:SecretInline", Justification="Credentials are used only for the duration of test. Resources are deleted at the end of the test.")]#>
+        <#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Credentials are used only for the duration of test. Resources are deleted at the end of the test.")]#>
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
@@ -1602,7 +1835,6 @@ function Test-VirtualMachineBginfoExtension
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
         Assert-NotNull $ext.ProvisioningState;
         Assert-NotNull $ext.Statuses;
-        #Assert-NotNull $ext.SubStatuses;
 
         # Get VM
         $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
