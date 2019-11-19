@@ -126,12 +126,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
                 return GetResourceByName();
             }
 
-            var listResourceModel = ListResource();
-            var paginatedResult = new List<Role>(listResourceModel);
-            while (!string.IsNullOrEmpty(listResourceModel.NextPageLink))
+            var listResource = ListResource();
+            var paginatedResult = new List<Role>(listResource);
+            while (!string.IsNullOrEmpty(listResource.NextPageLink))
             {
-                listResourceModel = ListResource(listResourceModel.NextPageLink);
-                paginatedResult.AddRange(listResourceModel);
+                listResource = ListResource(listResource.NextPageLink);
+                paginatedResult.AddRange(listResource);
             }
 
             return paginatedResult.Select(t => new PSDataBoxEdgeRole(t)).ToList();
