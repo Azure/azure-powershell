@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.9.1
 * Support DataLake Gen2 
     -  New-AzDataLakeGen2Item
     -  Get-AzDataLakeGen2Item
