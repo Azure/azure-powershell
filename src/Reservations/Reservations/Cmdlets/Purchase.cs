@@ -35,10 +35,12 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         public string BillingScopeId { get; set; }
 
         [Parameter(Mandatory = true)]
+        [PSArgumentCompleter("P1Y", "P3Y")]
         [ValidateNotNullOrEmpty]
         public string Term { get; set; }
 
         [Parameter(Mandatory = false)]
+        [PSArgumentCompleter("Upfront", "Monthly")]
         [ValidateNotNullOrEmpty]
         public string BillingPlan { get; set; }
 
@@ -57,31 +59,40 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 
         [Parameter(Mandatory = false)]
         [ValidateNotNull]
-        public IList<string> AppliedScope { get; set; }
+        public string AppliedScope { get; set; }
 
         public bool? Renew { get; set; }
 
-        public PurchaseRequestPropertiesReservedResourceProperties ReservedResourceProperties { get; set; }
+        public string InstanceFlexibility { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var skuN = new SkuName(Sku);
             PurchaseRequest PurchaseRequest = new PurchaseRequest();
+            PurchaseRequestPropertiesReservedResourceProperties resourceProperties = new PurchaseRequestPropertiesReservedResourceProperties(InstanceFlexibility);
             PurchaseRequest.Location = Location;
             PurchaseRequest.Quantity = Quantity;
             PurchaseRequest.Renew = Renew;
             PurchaseRequest.Term = Term;
             PurchaseRequest.AppliedScopeType = AppliedScopeType;
-            PurchaseRequest.AppliedScopes = AppliedScope;
+
+            if (AppliedScope != null)
+            {
+                PurchaseRequest.AppliedScopes = new List<string>() { AppliedScope };
+            }
             PurchaseRequest.BillingScopeId = BillingScopeId;
             PurchaseRequest.BillingPlan = BillingPlan;
             PurchaseRequest.DisplayName = DisplayName;
             PurchaseRequest.Sku = skuN;
-            PurchaseRequest.ReservedResourceProperties = ReservedResourceProperties;
+            PurchaseRequest.ReservedResourceProperties = resourceProperties;
             PurchaseRequest.ReservedResourceType = ReservedResourceType;
 
-            var response = AzureReservationAPIClient.ReservationOrder.Purchase(ReservationOrderId, PurchaseRequest);
-            WriteObject(response);
+            var resourceInfo = $"Reservation order {ReservationOrderId}";
+            if (ShouldProcess(resourceInfo, "Purchase"))
+            {
+                var response = AzureReservationAPIClient.ReservationOrder.Purchase(ReservationOrderId, PurchaseRequest);
+                WriteObject(response);
+            }
         }
     }
 }
