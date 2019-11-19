@@ -67,6 +67,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.4'; },
                @{ModuleName = 'Az.Compute'; RequiredVersion = '3.1.0'; }, 
                @{ModuleName = 'Az.ContainerInstance'; RequiredVersion = '1.0.1'; }, 
                @{ModuleName = 'Az.ContainerRegistry'; RequiredVersion = '1.1.0'; }, 
+               @{ModuleName = 'Az.DataBoxEdge'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.DataFactory'; RequiredVersion = '1.5.0'; }, 
                @{ModuleName = 'Az.DataLakeAnalytics'; RequiredVersion = '1.0.1'; }, 
                @{ModuleName = 'Az.DataLakeStore'; RequiredVersion = '1.2.5'; }, 
@@ -100,6 +101,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.4'; },
                @{ModuleName = 'Az.ServiceFabric'; RequiredVersion = '2.0.0'; }, 
                @{ModuleName = 'Az.SignalR'; RequiredVersion = '1.1.0'; }, 
                @{ModuleName = 'Az.Sql'; RequiredVersion = '2.1.0'; }, 
+               @{ModuleName = 'Az.SqlVirtualMachine'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.Storage'; RequiredVersion = '1.9.0'; }, 
                @{ModuleName = 'Az.StorageSync'; RequiredVersion = '1.2.1'; }, 
                @{ModuleName = 'Az.StreamAnalytics'; RequiredVersion = '1.0.0'; }, 
@@ -175,6 +177,26 @@ Az.Compute
 * Add OSDiskImage and DataDiskImage parameters to New-AzGalleryImageVersion cmdlet
 * Add HyperVGeneration parameter to New-AzGalleryImageDefinition cmdlet
 
+Az.DataBoxEdge
+* Added cmdlet `Get-AzDataBoxEdgeOrder`
+    - Get the Order
+* Added cmdlet `New-AzDataBoxEdgeOrder`
+    - Create new Order
+* Added cmdlet `Remove-AzDataBoxEdgeOrder`
+    - Remove the Order
+* Change in cmdlet `New-AzDataBoxEdgeShare`
+    - Now creates Local Share
+* Added cmdlet `Set-AzDataBoxEdgeRole`
+    - Now IotRole can be mapped to Share
+* Added cmdlet `Invoke-AzDataBoxEdgeDevice`
+    - Invoke scan update, download update, install updates on the device
+* Added cmdlet `Get-AzDataBoxEdgeTrigger`
+    - Gets the information about Triggers
+* Added cmdlet `New-AzDataBoxEdgeTrigger`
+    - Create new Triggers
+* Added cmdlet `Remove-AzDataBoxEdgeTrigger`
+    - Remove the Triggers
+
 Az.DataFactory
 * Update ADF .Net SDK version to 4.4.0
 * Add parameter ''ExpressCustomSetup'' for ''Set-AzureRmDataFactoryV2IntegrationRuntime'' cmd to enable setup configurations and 3rd party components without custom setup script.
@@ -215,6 +237,9 @@ Az.Resources
 Az.Sql
 * Added support for database ReadReplicaCount.
 * Fixed Set-AzSqlDatabase when zone redundancy not set
+
+Az.SqlVirtualMachine
+* Added to the Az roll-up module
 '
 
         # Prerelease string of this module
