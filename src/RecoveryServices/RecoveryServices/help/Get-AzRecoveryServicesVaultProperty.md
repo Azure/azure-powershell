@@ -82,5 +82,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzRecoveryServicesVault](./Get-AzRecoveryServicesVault.md)
 
 [Set-AzRecoveryServicesVaultProperty](./Set-AzRecoveryServicesVaultProperty.md)
-
-
