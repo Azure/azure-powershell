@@ -1,4 +1,8 @@
 ## 3.1.0 - November 2019
+### Highlights since the last major release
+* Az.DataBoxEdge 1.0.0 released
+* Az.SqlVirtualMachine 1.0.0 released
+
 #### Az.Compute
 * VM Reapply feature
     - Add Reapply parameter to Set-AzVM cmdlet
