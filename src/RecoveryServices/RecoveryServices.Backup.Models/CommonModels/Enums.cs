@@ -238,7 +238,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         ProtectionStopped
     }
 
-
     #region policy
     public enum WeekOfMonth
     {
