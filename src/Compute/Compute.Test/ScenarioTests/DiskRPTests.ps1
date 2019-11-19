@@ -76,6 +76,8 @@ function Test-Disk
         $disk = Get-AzDisk -ResourceGroupName $rgname
         Assert-AreEqual $null $disk.Zones;
         Assert-AreEqual 5 $disk.DiskSizeGB;
+        Assert-AreEqual (5 * 1073741824) $disk.DiskSizeBytes;
+
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
@@ -84,6 +86,7 @@ function Test-Disk
         $disk = Get-AzDisk -ResourceGroupName $wildcardRgQuery
         Assert-AreEqual $null $disk.Zones;
         Assert-AreEqual 5 $disk.DiskSizeGB;
+        Assert-AreEqual (5 * 1073741824) $disk.DiskSizeBytes;
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
@@ -92,6 +95,7 @@ function Test-Disk
         $disk = Get-AzDisk -Name $diskname
         Assert-AreEqual $null $disk.Zones;
         Assert-AreEqual 5 $disk.DiskSizeGB;
+        Assert-AreEqual (5 * 1073741824) $disk.DiskSizeBytes;
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
@@ -100,6 +104,7 @@ function Test-Disk
         $disk = Get-AzDisk -Name $wildcardNameQuery
         Assert-AreEqual $null $disk.Zones;
         Assert-AreEqual 5 $disk.DiskSizeGB;
+        Assert-AreEqual (5 * 1073741824) $disk.DiskSizeBytes;
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
@@ -116,6 +121,7 @@ function Test-Disk
         $disk = Get-AzDisk -ResourceGroupName $wildcardRgQuery -Name $wildcardNameQuery
         Assert-AreEqual $null $disk.Zones;
         Assert-AreEqual 5 $disk.DiskSizeGB;
+        Assert-AreEqual (5 * 1073741824) $disk.DiskSizeBytes;
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
@@ -132,6 +138,7 @@ function Test-Disk
         $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
         Assert-AreEqual $null $disk.Zones;
         Assert-AreEqual 5 $disk.DiskSizeGB;
+        Assert-AreEqual (5 * 1073741824) $disk.DiskSizeBytes;
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
@@ -161,6 +168,9 @@ function Test-Disk
         $job = Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
+
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
+        Assert-AreEqual (10 * 1073741824) $disk.DiskSizeBytes;
 
         # Remove test
         $job = Remove-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Force -AsJob;
@@ -227,6 +237,7 @@ function Test-Snapshot
 
         $snapshot = Get-AzSnapshot -ResourceGroupName $rgname
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
+        Assert-AreEqual (5 * 1073741824) $snapshot.DiskSizeBytes;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
@@ -234,6 +245,7 @@ function Test-Snapshot
 
         $snapshot = Get-AzSnapshot -ResourceGroupName $wildcardRgQuery
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
+        Assert-AreEqual (5 * 1073741824) $snapshot.DiskSizeBytes;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
@@ -241,6 +253,7 @@ function Test-Snapshot
 
         $snapshot = Get-AzSnapshot -SnapshotName $snapshotname;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
+        Assert-AreEqual (5 * 1073741824) $snapshot.DiskSizeBytes;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
@@ -248,6 +261,7 @@ function Test-Snapshot
 
         $snapshot = Get-AzSnapshot -SnapshotName $wildcardNameQuery;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
+        Assert-AreEqual (5 * 1073741824) $snapshot.DiskSizeBytes;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
@@ -255,6 +269,7 @@ function Test-Snapshot
 
         $snapshot = Get-AzSnapshot -ResourceGroupName $wildcardRgQuery -SnapshotName $wildcardNameQuery;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
+        Assert-AreEqual (5 * 1073741824) $snapshot.DiskSizeBytes;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
@@ -262,6 +277,7 @@ function Test-Snapshot
 
         $snapshot = Get-AzSnapshot -ResourceGroupName $wildcardRgQuery -SnapshotName $snapshotname;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
+        Assert-AreEqual (5 * 1073741824) $snapshot.DiskSizeBytes;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
@@ -269,6 +285,7 @@ function Test-Snapshot
 
         $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $wildcardNameQuery;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
+        Assert-AreEqual (5 * 1073741824) $snapshot.DiskSizeBytes;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
@@ -276,11 +293,13 @@ function Test-Snapshot
 
         $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
+        Assert-AreEqual (5 * 1073741824) $snapshot.DiskSizeBytes;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
         Assert-AreEqual $false $snapshot.EncryptionSettingsCollection.Enabled;
         Assert-AreEqual "V2" $snapshot.HyperVGeneration;
+        Assert-False {$snapshot.Incremental}
 
         # Grant access test
         $job = Grant-AzSnapshotAccess -ResourceGroupName $rgname -SnapshotName $snapshotname -Access $access -DurationInSecond 5 -AsJob;
@@ -300,6 +319,9 @@ function Test-Snapshot
         $job = Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -SnapshotUpdate $updateconfig -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
+
+        $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname;
+        Assert-AreEqual (10 * 1073741824) $snapshot.DiskSizeBytes;
 
         # Remove test
         $job = Remove-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Force -AsJob;
@@ -700,5 +722,127 @@ function Test-SnapshotEncrypt
     {
         # Cleanup
         Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Testing disk upload
+#>
+function Test-DiskUpload
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $diskname0 = 'disk0' + $rgname;
+    $diskname1 = 'disk1' + $rgname;
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $diskconfig = New-AzDiskConfig -Location $loc -SkuName 'Standard_LRS' -OsType 'Windows' `
+                                        -DiskSizeGB 32767 -CreateOption 'Upload';
+
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskname0 -Disk $diskconfig;
+
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0;
+        Assert-AreEqual 35183298347520 $disk.CreationData.UploadSizeBytes; # 35,183,298,347,520 = 32,767 * 1,073,741,824 + 512 (for vhd footer)
+        Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
+        Assert-AreEqual Windows $disk.OsType;
+        Assert-AreEqual "ReadyToUpload" $disk.DiskState;
+
+        # Update disk
+        $disk | Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname0;
+
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0;
+        Assert-AreEqual 35183298347520 $disk.CreationData.UploadSizeBytes;
+        Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
+        Assert-AreEqual Windows $disk.OsType;
+        Assert-AreEqual "ReadyToUpload" $disk.DiskState;
+
+        Remove-AzDisk -ResourceGroupName $rgname -DiskName $diskname0 -Force;
+
+        $diskconfig = New-AzDiskConfig -Location $loc -SkuName 'Standard_LRS' -OsType 'Windows' `
+                                       -UploadSizeInBytes 35183298347520 -CreateOption 'Upload';
+
+        New-AzDisk -ResourceGroupName $rgname -DiskName $diskname1 -Disk $diskconfig;
+
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname1;
+        Assert-AreEqual 35183298347520 $disk.CreationData.UploadSizeBytes;
+        Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
+        Assert-AreEqual Windows $disk.OsType;
+        Assert-AreEqual "ReadyToUpload" $disk.DiskState;
+
+        # Update disk
+        $disk | Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname1;
+
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname1;
+        Assert-AreEqual 35183298347520 $disk.CreationData.UploadSizeBytes;
+        Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
+        Assert-AreEqual Windows $disk.OsType;
+        Assert-AreEqual "ReadyToUpload" $disk.DiskState;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Testing disk upload
+#>
+function Test-DiskEncryptionSet
+{
+    # Setup
+    $loc = "westcentralus";
+    $rgname = "pstest";
+    $encryptionName = "enc" + $rgname;
+    $vaultName = 'kv' + $rgname;
+    $kekName = 'kek' + $rgname;
+
+    try
+    {
+        #
+        # Note: In order to record this test, you need to run the following commands to create KeyValut key and KeyVault secret in a separate Powershell window.
+        #
+        #New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        #$vault = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $loc -Sku Standard;
+        #$userPrincipalName = (Get-AzContext).Account.Id;
+        #Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $rgname -EnabledForDiskEncryption;
+        #Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $rgname -ServicePrincipalName $userPrincipalName -PermissionsToKeys decrypt,encrypt,unwrapKey,wrapKey,verify,sign,get,list,update,create,import,delete,backup,restore,recover,purge;
+        #$kek = Add-AzKeyVaultKey -VaultName $vaultName -Name $kekName -Destination "Software";
+        #$secret = Set-AzKeyVaultSecret -VaultName $vaultName -Name $secretname -SecretValue $securestring;
+        #$mockkey = $kek.Id
+
+        $subId = Get-SubscriptionIdFromResourceGroup $rgname;
+        $mockkey = "https://kvpstest.vault.azure.net:443/keys/kekpstest/bf109281146949a9b3ae234db1728493";
+        $mocksourcevault = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.KeyVault/vaults/' + $vaultName;
+
+        New-AzDiskEncryptionSetConfig -Location $loc -KeyUrl $mockkey -SourceVaultId $mocksourcevault -IdentityType "SystemAssigned" `
+        | New-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $encryptionName;
+
+        $encSet = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $encryptionName;
+        Assert-AreEqual $encryptionName $encSet.Name;
+        Assert-AreEqual $loc $encSet.Location;
+        Assert-AreEqual "SystemAssigned" $encSet.Identity.Type;
+        Assert-NotNull $encSet.Identity.PrincipalId;
+        Assert-NotNull $encSet.Identity.TenantId;
+        Assert-AreEqual $mockkey $encSet.ActiveKey.KeyUrl;
+        Assert-AreEqual $mocksourcevault $encSet.ActiveKey.SourceVault.Id;
+
+        $encSets = Get-AzDiskEncryptionSet -ResourceGroupName $rgname;
+        Assert-True {$encSets.Count -ge 1};
+
+        $encSets = Get-AzDiskEncryptionSet;
+        Assert-True {$encSets.Count -ge 1};
+    }
+    finally
+    {
+        # Cleanup
+        $encSet | Remove-AzDiskEncryptionSet -Force;
     }
 }

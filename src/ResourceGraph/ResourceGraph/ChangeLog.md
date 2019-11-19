@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 0.7.6
+* Ignoring subscription from azure context
+* Add two examples for cmdlet `Search-AzGraph` with parameter `-Include`.
+
 ## Version 0.7.5
 * Showing warnings in cases when too many subscriptions were used or results got truncated.
 * Adding param to extend query result with subscription and tenant names

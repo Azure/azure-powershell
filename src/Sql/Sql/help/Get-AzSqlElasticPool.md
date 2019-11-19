@@ -80,7 +80,7 @@ This command gets the elastic pool named ElasticPool0127 on the server named Ser
 
 ### Example 3: Get metrics for a Azure SQL Elastic Database Pool
 ```
-PS C:\>Get-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" | Get-Metrics -TimeGrain 0:5:0
+PS C:\>Get-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" | Get-AzMetric -TimeGrain 0:5:0 -MetricName storage_percent
 DimensionName  : 
 DimensionValue : 
 Name           : cpu_percent
@@ -202,7 +202,7 @@ Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName

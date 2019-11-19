@@ -63,6 +63,8 @@ function Test-SnapshotCrud
         # create two snapshots and check
         $retrieveSn = New-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName1 -FileSystemId $retrievedVolume.FileSystemId
         Assert-AreEqual "$accName/$poolName/$volName/$snName1" $retrieveSn.Name
+        # check created date has been populated
+        Assert-NotNull $retrieveSn.Created
 
         # one without using the filesystem id
         $retrieveSn = New-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName2

@@ -136,6 +136,71 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove data flow &apos;{0}&apos; in data factory &apos;{1}&apos;?.
+        /// </summary>
+        internal static string DataFlowConfirmationMessage {
+            get {
+                return ResourceManager.GetString("DataFlowConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating data flow &apos;{0}&apos; in data factory &apos;{1}&apos;..
+        /// </summary>
+        internal static string DataFlowCreating {
+            get {
+                return ResourceManager.GetString("DataFlowCreating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to stop data flow debug session &apos;{0}&apos; in data factory &apos;{1}&apos;?.
+        /// </summary>
+        internal static string DataFlowDebugSessionConfirmationMessage {
+            get {
+                return ResourceManager.GetString("DataFlowDebugSessionConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopping data flow debug session &apos;{0}&apos; in data factory &apos;{1}&apos;..
+        /// </summary>
+        internal static string DataFlowDebugSessionRemoving {
+            get {
+                return ResourceManager.GetString("DataFlowDebugSessionRemoving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A data flow with the name {0} in the data factory {1} already exists. 
+        ///Continuing execution will overwrite the exisiting one. 
+        ///Are you sure you want to continue?.
+        /// </summary>
+        internal static string DataFlowExists {
+            get {
+                return ResourceManager.GetString("DataFlowExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data flow &apos;{0}&apos; does not exist in data factory &apos;{1}&apos;..
+        /// </summary>
+        internal static string DataFlowNotFound {
+            get {
+                return ResourceManager.GetString("DataFlowNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing data flow &apos;{0}&apos; in data factory &apos;{1}&apos;..
+        /// </summary>
+        internal static string DataFlowRemoving {
+            get {
+                return ResourceManager.GetString("DataFlowRemoving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove dataset &apos;{0}&apos; in data factory &apos;{1}&apos;?.
         /// </summary>
         internal static string DatasetConfirmationMessage {

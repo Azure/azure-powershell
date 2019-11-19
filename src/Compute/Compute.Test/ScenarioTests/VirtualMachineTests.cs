@@ -202,6 +202,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineReapply()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineReapply");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineGetStatus()
         {
             TestRunner.RunTestScript("Test-VirtualMachineGetStatus");
@@ -261,6 +268,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineStop()
         {
             TestRunner.RunTestScript("Test-VirtualMachineStop");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineRemoteDesktop()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineRemoteDesktop");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLowPriorityVirtualMachine()
+        {
+            TestRunner.RunTestScript("Test-LowPriorityVirtualMachine");
         }
     }
 }

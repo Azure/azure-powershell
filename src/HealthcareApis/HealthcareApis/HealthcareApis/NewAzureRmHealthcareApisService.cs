@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.HealthcareApis.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.HealthcareApis.Properties;
 using System;
+using Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Common;
 
 namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 {
@@ -39,7 +40,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
           ValueFromPipelineByPropertyName = true,
           HelpMessage = "HealthcareApis Service Name.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern("^[a-z0-9][a-z0-9-]{1,21}[a-z0-9]$")]
         [ValidateLength(2, 64)]
         public string Name { get; set; }
 
@@ -70,7 +70,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         Mandatory = false,
         HelpMessage = "List of Access Policy Object IDs.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern("^(([0-9A-Fa-f]{8}[-]?(?:[0-9A-Fa-f]{4}[-]?){3}[0-9A-Fa-f]{12}){1})+$")]
         public string[] AccessPolicyObjectId { get; set; }
 
         [Parameter(
@@ -83,7 +82,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             Mandatory = false,
             HelpMessage = "HealthcareApis Fhir Service Audience.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern("^((?:[hH][tT][tT][pP](?:[sS]|)\\:\\/\\/.+)|([0-9A-Fa-f]{8}[-]?(?:[0-9A-Fa-f]{4}[-]?){3}[0-9A-Fa-f]{12}))$")]
         public string Audience { get; set; }
 
         [Parameter(
@@ -98,33 +96,28 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [ValidateNotNullOrEmpty]
         public string[] CorsHeader { get; set; }
 
-
         [Parameter(
             Mandatory = false,
             HelpMessage = "HealthcareApis Fhir Service Cors Max Age. Specify how long a result from a request can be cached in seconds. Example: 600 means 10 minutes.")]
         [ValidateNotNullOrEmpty]
-        [ValidateRange(0,99999)]
         public int CorsMaxAge { get; set; }
 
         [Parameter(
         Mandatory = false,
         HelpMessage = "HealthcareApis Fhir Service List of Cors Method.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("DELETE", "GET", "OPTIONS", "PATCH", "POST", "PUT")]
         public string[] CorsMethod { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "HealthcareApis Fhir Service List of Cors Origin. Specify URLs of origin sites that can access this API, or use \" * \" to allow access from any site.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern("^(?:(?:(?:[hH][tT][tT][pP](?:[sS]|))\\:\\/\\/(?:[a-zA-Z0-9-]+[.]?)+(?:\\:[0-9]{1,5})?|[*]))$")]
         public string[] CorsOrigin { get; set; }
 
         [Parameter(
            Mandatory = false,
            HelpMessage = "HealthcareApis Fhir Service CosmosOfferThroughput.")]
         [ValidateNotNullOrEmpty]
-        [ValidateRange(400,10000)]
         public int? CosmosOfferThroughput { get; set; }
 
 
@@ -156,58 +149,84 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            RunCmdLet(() =>
+            try
             {
-                if (AccessPolicyObjectId == null || AccessPolicyObjectId.Length == 0)
-                {
-                    AccessPolicyObjectId = new string[1];
-                    string objectID = base.AccessPolicyID;
-                    AccessPolicyObjectId[0] = objectID;
-                }
+                base.ExecuteCmdlet();
 
-                List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
-                foreach (string objectId in AccessPolicyObjectId)
+                RunCmdLet(() =>
                 {
-                    accessPolicies.Add(new ServiceAccessPolicyEntry(objectId));
-                }
+                    List<ServiceAccessPolicyEntry> accessPolicies = GetAccessPolicies();
 
-                ServicesDescription servicesDescription = new ServicesDescription()
-                {
-                    Kind = GetKind(),
-                    Location = Location,
-                    Tags = this.GetTags(),
-
-                    Properties = new ServicesProperties()
+                    ServicesDescription servicesDescription = new ServicesDescription()
                     {
-                        AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo() { Authority = GetAuthority(), Audience = GetAudience(), SmartProxyEnabled = EnableSmartProxy.ToBool() },
-                        CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = GetCosmosDBThroughput()},
-                        CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = CorsOrigin, Headers = CorsHeader, Methods = CorsMethod, MaxAge = CorsMaxAge, AllowCredentials = AllowCorsCredential },
-                        AccessPolicies = accessPolicies
+                        Kind = GetKind(),
+                        Location = Location,
+                        Tags = this.GetTags(),
+
+                        Properties = new ServicesProperties()
+                        {
+                            AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo() { Authority = GetAuthority(), Audience = GetAudience(), SmartProxyEnabled = EnableSmartProxy.ToBool() },
+                            CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = GetCosmosDBThroughput() },
+                            CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = CorsOrigin, Headers = CorsHeader, Methods = CorsMethod, MaxAge = CorsMaxAge, AllowCredentials = AllowCorsCredential },
+                            AccessPolicies = accessPolicies
+                        }
+                    };
+
+                    if (ShouldProcess(this.Name, Resources.createService))
+                    {
+
+                        this.EnsureNameAvailabilityOrThrow();
+
+                        try
+                        {
+                            var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(
+                                            this.ResourceGroupName,
+                                            this.Name,
+                                            servicesDescription);
+
+                            var healthCareFhirService = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
+                            WriteHealthcareApisAccount(healthCareFhirService);
+                        }
+                        catch (ErrorDetailsException wex)
+                        {
+                            WriteError(WriteErrorforBadrequest(wex));
+                        }
                     }
-                };
+                });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                WriteError(new ErrorRecord(ex, Resources.keyNotFoundExceptionMessage, ErrorCategory.OpenError, ex));
+            }
+            catch (NullReferenceException ex)
+            {
+                WriteError(new ErrorRecord(ex, Resources.nullPointerExceptionMessage, ErrorCategory.OpenError, ex));
+            }
+        }
 
-                if (ShouldProcess(this.Name, Resources.createService))
-                {
+        private List<ServiceAccessPolicyEntry> GetAccessPolicies()
+        {
+            List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
 
-                    this.EnsureNameAvailabilityOrThrow();
+            if (AccessPolicyObjectId == null || AccessPolicyObjectId.Length == 0)
+            {
+                string objectID = base.AccessPolicyID;
+                accessPolicies.Add(new ServiceAccessPolicyEntry(objectID));
+                return accessPolicies;
+            }
 
-                    var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(
-                                    this.ResourceGroupName,
-                                    this.Name,
-                                    servicesDescription);
+            foreach (var objectID in AccessPolicyObjectId)
+            {
+                HealthcareApisArgumentValidator.ValidateObjectId(objectID);
+                accessPolicies.Add(new ServiceAccessPolicyEntry(objectID));
+            }
 
-                    var healthCareFhirService = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
-
-                    WriteObject(healthCareFhirService);
-                }
-            });
+            return accessPolicies;
         }
 
         private Kind GetKind()
         {
-            if(this.Kind == null && this.FhirVersion!=null)
+            if (this.Kind == null && this.FhirVersion != null)
             {
                 if (FhirVersion.ToLowerInvariant() == "r4")
                 {
@@ -222,11 +241,11 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                     throw new PSArgumentException(Resources.createService_InvalidFhirVersionMessage);
                 }
             }
-            else if(this.Kind== null && this.FhirVersion == null)
+            else if (this.Kind == null && this.FhirVersion == null)
             {
                 return Management.HealthcareApis.Models.Kind.FhirR4;
             }
-            else if(this.FhirVersion != null)
+            else if (this.FhirVersion != null)
             {
                 return ParseKindFromVersion(this.FhirVersion);
             }
@@ -239,26 +258,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             return ParseKind(FhirVersion);
         }
 
-        private Kind ParseKind(string kind)
-        {
-            if (kind.Equals("fhir", StringComparison.OrdinalIgnoreCase))
-            {
-                return Management.HealthcareApis.Models.Kind.Fhir;
-            }
-            else if (kind.Equals("fhir-stu3", StringComparison.OrdinalIgnoreCase) || kind.Equals("stu3", StringComparison.OrdinalIgnoreCase))
-            {
-                return Management.HealthcareApis.Models.Kind.FhirStu3;
-            }
-            else if (kind.Equals("fhir-r4", StringComparison.OrdinalIgnoreCase) || kind.Equals("r4", StringComparison.OrdinalIgnoreCase))
-            {
-                return Management.HealthcareApis.Models.Kind.FhirR4;
-            }
-            else
-            {
-                throw new PSArgumentException(Resources.createService_InvalidKindMessage);
-            }
-        }
-
         private int? GetCosmosDBThroughput()
         {
             if (CosmosOfferThroughput == null)
@@ -267,7 +266,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             }
 
             return CosmosOfferThroughput;
-            
         }
 
         private string GetAudience()
@@ -294,6 +292,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         {
             var checkNameInputs = new CheckNameAvailabilityParameters(this.Name, ResourceTypeName);
             var nameAvailabilityInfo = this.HealthcareApisClient.Services.CheckNameAvailability(checkNameInputs);
+
             if (nameAvailabilityInfo.NameAvailable != true)
             {
                 throw new PSArgumentException(nameAvailabilityInfo.Message);
@@ -306,6 +305,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             {
                 return TagsConversionHelper.CreateTagDictionary(this.Tag, true);
             }
+
             return null;
         }
     }

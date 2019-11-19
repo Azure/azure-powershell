@@ -112,6 +112,29 @@ function makePeerAsn($asn)
 	return $created
 }
 
+function removePeerAsn($asn){
+	$asn | Remove-AzPeerAsn -Force
+}
+
+function NewExchangeConnectionV4V6($facilityId, $v4, $v6)
+{
+	#Create some data for the object
+	Write-Debug "Creating Connection at $facilityId"
+	$md5 = getHash
+	$md5 = $md5.ToString()
+	Write-Debug "Created Hash $md5"
+	$offset = Get-Random -Maximum 20 -Minimum 3
+	$sessionv4 = changeIp "$v4/32" $false $offset $false
+	$sessionv6 = changeIp "$v6/128" $true $offset $false
+	Write-Debug "Created IPs $sessionv4"
+	$maxv4 = maxAdvertisedIpv4
+	$maxv6 = maxAdvertisedIpv6
+	Write-Debug "Created maxAdvertised $maxv4 $maxv6"
+	#create Connection
+    $createdConnection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxv4 -PeerSessionIPv4Address $sessionv4 -PeerSessionIPv6Address $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -MD5AuthenticationKey $md5
+	return $createdConnection
+}
+
 function getPeeringVariable
 {
    param([string]$variableName, $value)

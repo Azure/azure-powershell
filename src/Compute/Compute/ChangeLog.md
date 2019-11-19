@@ -19,6 +19,63 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* VM Reapply feature
+    - Add Reapply parameter to Set-AzVM cmdlet
+* VM Scale Set AutomaticRepairs feature:
+    - Add EnableAutomaticRepair, AutomaticRepairGracePeriod, and AutomaticRepairMaxInstanceRepairsPercent parameters to the following cmdlets:
+        New-AzVmssConfig
+        Update-AzVmss
+* Cross tenant gallery image support for New-AzVM
+* Add 'Spot' to the argument completer of Priority parameter in New-AzVM, New-AzVMConfig and New-AzVmss cmdlets
+* Add DiskIOPSReadWrite and DiskMBpsReadWrite parameters to Add-AzVmssDataDisk cmdlet
+* Change SourceImageId parameter of New-AzGalleryImageVersion cmdlet to optional
+* Add OSDiskImage and DataDiskImage parameters to New-AzGalleryImageVersion cmdlet
+* Add HyperVGeneration parameter to New-AzGalleryImageDefinition cmdlet
+
+## Version 3.0.0
+* Disk Encryption Set feature
+    - New cmdlets:
+        New-AzDiskEncryptionSetConfig
+        New-AzDiskEncryptionSet
+        Get-AzDiskEncryptionSet
+        Remove-AzDiskEncryptionSet
+    - DiskEncryptionSetId parameter is added to the following cmdlets:
+        Set-AzImageOSDisk
+        Set-AzVMOSDisk
+        Set-AzVmssStorageProfile        
+        Add-AzImageDataDisk
+        New-AzVMDataDisk
+        Set-AzVMDataDisk
+        Add-AzVMDataDisk
+        Add-AzVmssDataDisk
+        Add-AzVmssVMDataDisk
+    - DiskEncryptionSetId and EncryptionType parameters are added to the following cmdlets:
+        New-AzDiskConfig
+        New-AzSnapshotConfig
+* Add PublicIPAddressVersion parameter to New-AzVmssIPConfig
+* Move FileUris of custom script extension from public setting to protected setting
+* Add ScaleInPolicy to New-AzVmss, New-AzVmssConfig and Update-AzVmss cmdlets
+* Breaking changes
+    - UploadSizeInBytes parameter is used instead of DiskSizeGB for New-AzDiskConfig when CreateOption is Upload
+    - PublishingProfile.Source.ManagedImage.Id is replaced with StorageProfile.Source.Id in GalleryImageVersion object
+
+## Version 2.7.0
+* Add Priority, EvictionPolicy, and MaxPrice parameters to New-AzVM and New-AzVmss cmdlets
+* Fix warning message and help document for Add-AzVMAdditionalUnattendContent and Add-AzVMSshPublicKey cmdlets
+* Fix -skipVmBackup exception for Linux VMs with managed disks for Set-AzVMDiskEncryptionExtension. 
+* Fix bug in update encryption settings in Set-AzVMDiskEncryptionExtension, two pass scenario.
+
+## Version 2.6.0
+* Add UploadSizeInBytes parameter tp New-AzDiskConfig
+* Add Incremental parameter to New-AzSnapshotConfig
+* Add a low priority virtual machine feature:
+    - MaxPrice, EvictionPolicy and Priority parameters are added to New-AzVMConfig.
+    - MaxPrice parameter is added to New-AzVmssConfig, Update-AzVM and Update-AzVmss cmdlets.
+* Fix VM reference issue for Get-AzAvailabilitySet cmdlet when it lists all availability sets in the subscription.
+* Fix the null exception for Get-AzRemoteDesktopFile.
+* Fix VHD Seek method for end-relative position.
+* Fix UltraSSD issue for New-AzVM and Update-AzVM.
+* Fix code to allow non default extension publisher, type and name for Get-AzVMDiskEncryptionStatus
 
 ## Version 2.5.0
 * Add VmssId to New-AzVMConfig cmdlet
@@ -26,13 +83,13 @@
 * Add HyperVGeneration property to VM image object
 * Add Host and HostGroup features
     - New cmdlets:
-	    New-AzHostGroup
-		New-AzHost
-		Get-AzHostGroup
-		Get-AzHost
-		Remove-AzHostGroup
-		Remove-AzHost
-	- HostId parameter is added to New-AzVMConfig and New-AzVM
+        New-AzHostGroup
+        New-AzHost
+        Get-AzHostGroup
+        Get-AzHost
+        Remove-AzHostGroup
+        Remove-AzHost
+    - HostId parameter is added to New-AzVMConfig and New-AzVM
 * Fixed miscellaneous typos across module
 * Update example in `Invoke-AzVMRunCommand` documentation to use correct parameter name
 * Update `-VolumeType` description in `Set-AzVMDiskEncryptionExtension` and `Set-AzVmssDiskEncryptionExtension` reference documentation
@@ -84,16 +141,16 @@
 ## Version 2.0.0
 * Proximity placement group feature.
     - The following new cmdlets are added:
-	    New-AzProximityPlacementGroup
-		Get-AzProximityPlacementGroup
-		Remove-AzProximityPlacementGroup
-	- The new parameter, ProximityPlacementGroupId, is added to the following cmdlets:
-	    New-AzAvailabilitySet
-		New-AzVMConfig
-		New-AzVmssConfig
+        New-AzProximityPlacementGroup
+        Get-AzProximityPlacementGroup
+        Remove-AzProximityPlacementGroup
+    - The new parameter, ProximityPlacementGroupId, is added to the following cmdlets:
+        New-AzAvailabilitySet
+        New-AzVMConfig
+        New-AzVmssConfig
 * StorageAccountType parameter is added to New-AzGalleryImageVersion.
 * TargetRegion of New-AzGalleryImageVersion can contain StorageAccountType.
-* SkipShutdown switch parameter is added to Stop-AzVM and Stop-AzVmss		
+* SkipShutdown switch parameter is added to Stop-AzVM and Stop-AzVmss
 * Breaking changes
     - Set-AzVMBootDiagnostics is changed to Set-AzVMBootDiagnostic.
     - Export-AzLogAnalyticThrottledRequests is changed to Export-AzLogAnalyticThrottledRequests.

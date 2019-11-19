@@ -14,7 +14,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
 
@@ -25,8 +24,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
-
-    using Newtonsoft.Json;
 
     /// <inheritdoc />
     /// <summary>
@@ -102,23 +99,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether use for peering service.
-        /// </summary>
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = Constants.UseForPeeringServiceHelp,
-            ParameterSetName = Constants.Direct)]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = Constants.ParameterSetNameDefault + Constants.Direct,
-            HelpMessage = Constants.UseForPeeringServiceHelp)]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = Constants.ParameterSetNameByResourceId + Constants.Direct,
-            HelpMessage = Constants.UseForPeeringServiceHelp)]
-        public bool? UseForPeeringService { get; set; }
-
-        /// <summary>
         /// Gets or sets the exchange session.
         /// </summary>
         [Parameter(
@@ -170,12 +150,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                         var peeringRequest = this.InputUpdateDirect();
                         this.WriteObject(peeringRequest);
                     }
-
                     if (this.InputObject is PSExchangePeeringModelView)
                     {
                         var peeringRequest = this.InputUpdateExchange();
-                        if (this.UseForPeeringService != null)
-                            this.WriteVerbose("UseForPeeringService is only offered for Direct Peerings.");
                         this.WriteObject(peeringRequest);
                     }
                 }
@@ -254,17 +231,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                             Connections = directPeeringModelView.Connections,
                             PeerAsn = new PSSubResource(
                                                                directPeeringModelView.PeerAsn.Id),
-                            UseForPeeringService = directPeeringModelView
-                                                               .UseForPeeringService
                         }
                     };
-                    if (this.UseForPeeringService != null)
-                    {
-                        peering.Sku = this.UseForPeeringService == true
-                                          ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
-                                          : new PSPeeringSku { Name = Constants.BasicDirectFree };
-                        peering.Direct.UseForPeeringService = this.UseForPeeringService;
-                    }
 
                     if (this.DirectConnection != null)
                     {
@@ -363,13 +331,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         private PSDirectPeeringModelView GetAndUpdateDirectPeering()
         {
             var directPeering = this.ToPeeringPs(this.PeeringClient.Get(this.ResourceGroupName, this.Name));
-            if (this.UseForPeeringService != null)
-            {
-                directPeering.Sku = this.UseForPeeringService == true
-                                        ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
-                                        : new PSPeeringSku { Name = Constants.BasicDirectFree };
-                directPeering.Direct.UseForPeeringService = this.UseForPeeringService;
-            }
 
             directPeering.Direct.PeerAsn = new PSSubResource(directPeering.Direct.PeerAsn.Id);
             if (this.DirectConnection != null)
@@ -399,11 +360,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             string resourceGroupName,
             string name)
         {
-            if (this.UseForPeeringService != null)
-            {
-                directPeering.Direct.UseForPeeringService = this.UseForPeeringService;
-            }
-
             directPeering.Direct.PeerAsn = new PSSubResource(directPeering.Direct.PeerAsn.Id);
             if (this.DirectConnection != null)
             {

@@ -59,7 +59,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 resourceCulture = value;
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to discover FileShare {0} under {1}. Please make sure names are correct and FileShare is not deleted.
+        /// </summary>
+        public static string AFSDiscoveryFailure
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSDiscoveryFailure", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Handling aggregate exception.
         /// </summary>
@@ -1165,7 +1176,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("SetVaultContextFirst", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Undo-deletion is only supported for AzureVMs. This method is not supported for other workloads.
+        /// </summary>
+        public static string SoftdeleteNotImplementedException
+        {
+            get
+            {
+                return ResourceManager.GetString("SoftdeleteNotImplementedException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to For Azure File share, Storage account  name can not be empty.
         /// </summary>

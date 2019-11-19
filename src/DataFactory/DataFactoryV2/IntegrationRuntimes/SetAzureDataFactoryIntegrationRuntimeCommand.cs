@@ -282,6 +282,21 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
             Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeExpressCustomSetup)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeExpressCustomSetup)]
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+            Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeExpressCustomSetup)]
+        [ValidateNotNullOrEmpty]
+        public System.Collections.ArrayList ExpressCustomSetup { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+            Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeDataProxyIntegrationRuntimeName)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceId,
@@ -722,6 +737,20 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     BlobContainerUri = index >= 0 ? SetupScriptContainerSasUri.Substring(0, index) : SetupScriptContainerSasUri,
                     SasToken = index >= 0 ? new SecureString(SetupScriptContainerSasUri.Substring(index)) : null
                 };
+            }
+
+            if (ExpressCustomSetup != null && ExpressCustomSetup.ToArray().Length > 0)
+            {
+                if (integrationRuntime.SsisProperties == null)
+                {
+                    integrationRuntime.SsisProperties = new IntegrationRuntimeSsisProperties();
+                }
+                System.Collections.Generic.IList<CustomSetupBase> setups = new System.Collections.Generic.List<CustomSetupBase>();
+                foreach (CustomSetupBase setup in ExpressCustomSetup)
+                {
+                    setups.Add(setup);
+                }
+                integrationRuntime.SsisProperties.ExpressCustomSetupProperties = setups;
             }
 
             if (!string.IsNullOrEmpty(DataProxyIntegrationRuntimeName))

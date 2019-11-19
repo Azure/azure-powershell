@@ -34,9 +34,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.NetworkSecurityGroupRule omObject;
         
-        public PSNetworkSecurityGroupRule(int priority, Microsoft.Azure.Batch.Common.NetworkSecurityGroupRuleAccess access, string sourceAddressPrefix)
+        private IReadOnlyList<System.String> sourcePortRanges;
+        
+        public PSNetworkSecurityGroupRule(int priority, Microsoft.Azure.Batch.Common.NetworkSecurityGroupRuleAccess access, string sourceAddressPrefix, System.Collections.Generic.IReadOnlyList<string> sourcePortRanges = null)
         {
-            this.omObject = new Microsoft.Azure.Batch.NetworkSecurityGroupRule(priority, access, sourceAddressPrefix);
+            this.omObject = new Microsoft.Azure.Batch.NetworkSecurityGroupRule(priority, access, sourceAddressPrefix, sourcePortRanges);
         }
         
         internal PSNetworkSecurityGroupRule(Microsoft.Azure.Batch.NetworkSecurityGroupRule omObject)
@@ -69,6 +71,29 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.SourceAddressPrefix;
+            }
+        }
+        
+        public IReadOnlyList<System.String> SourcePortRanges
+        {
+            get
+            {
+                if (((this.sourcePortRanges == null) 
+                            && (this.omObject.SourcePortRanges != null)))
+                {
+                    List<System.String> list;
+                    list = new List<System.String>();
+                    IEnumerator<System.String> enumerator;
+                    enumerator = this.omObject.SourcePortRanges.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(enumerator.Current);
+                    }
+                    this.sourcePortRanges = list;
+                }
+                return this.sourcePortRanges;
             }
         }
     }

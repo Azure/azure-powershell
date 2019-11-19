@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+- Updated policy cmdlets to use new api version 2019-06-01 that has new EnforcementMode property in policy assignment.
+- Updated create policy definition help example
+* Fix bug Remove-AZADServicePrincipal -ServicePrincipalName, throw null reference when service principal name not found.
+* Fix bug New-AZADServicePrincipal，throw null reference when tenant doesn't have any subscription.
+
+## Version 1.7.1
+* Update dependency assembly Microsoft.Extensions.Caching.Memory from 1.1.1 to 2.2
+
+## Version 1.7.0
+* Fix bug where New-AzRoleAssignment could not be called without parameter Scope.
 
 ## Version 1.6.2
 * Add support for new api version 2019-05-10 for Microsoft.Resource
@@ -25,6 +35,14 @@
     - Resources with `condition = false` or `copy.count = 0` will be deleted in complete mode
 * Fixed miscellaneous typos across module
 * Add an example of assigning policy at subscription level to help doc
+* Added breaking change notice about new required parameter `-ScopeType` in the `AzDeployment` cmdlets
+    - `Get-AzDeployment`
+    - `Get-AzDeploymentOperation`
+    - `New-AzDeployment`
+    - `Remove-AzDeployment`
+    - `Save-AzDeploymentTemplate`
+    - `Stop-AzDeployment`
+    - `Test-AzDeployment`
 
 ## Version 1.6.1
 - Remove missing cmdlet referenced in `New-AzResourceGroupDeployment` documentation

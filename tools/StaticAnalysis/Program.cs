@@ -46,6 +46,7 @@ namespace StaticAnalysis
         public static void Main(string[] args)
         {
             AnalysisLogger analysisLogger = null;
+            Console.WriteLine("Analyzer invoked with parameters: {0}", string.Join(" ", args));
             try
             {
                 string installDir = null;

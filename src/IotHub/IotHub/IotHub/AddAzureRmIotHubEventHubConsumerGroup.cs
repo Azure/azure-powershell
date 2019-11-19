@@ -16,10 +16,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 {
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.Azure.Management.IotHub;
-    using ResourceManager.Common.ArgumentCompleters;
     using Azure.Management.IotHub.Models;
     using Common;
+    using Microsoft.Azure.Management.IotHub;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubEventHubConsumerGroup", SupportsShouldProcess = true), OutputType(typeof(string))]
     [Alias("Add-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubEHCG")]
@@ -43,31 +44,21 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string Name { get; set; }
 
         [Parameter(
-            Position = 2,
-            Mandatory = true,
-            HelpMessage = "Name of the Event Hub Endpoint. Possible values are 'events', 'operationsMonitoringEvents'")]
-        [ValidateNotNullOrEmpty]
-        [ValidateSetAttribute(EventsEndpointName, OperationsMonitoringEventsEndpointName)]
-        public string EventHubEndpointName { get; set; }
-
-        [Parameter(
-            Position = 3,
-            Mandatory = true,
-            HelpMessage = "Name of the EventHub ConsumerGroup")]
+           Position = 2,
+           Mandatory = true,
+           HelpMessage = "Name of the EventHub ConsumerGroup")]
         [ValidateNotNullOrEmpty]
         public string EventHubConsumerGroupName { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            string eventsEndpointName = "events";
             if (ShouldProcess(EventHubConsumerGroupName, Properties.Resources.AddEventHubConsumerGroup))
             {
-                this.IotHubClient.IotHubResource.CreateEventHubConsumerGroup(this.ResourceGroupName, this.Name, this.EventHubEndpointName, this.EventHubConsumerGroupName);
-                IEnumerable<EventHubConsumerGroupInfo> iotHubEHConsumerGroups = this.IotHubClient.IotHubResource.ListEventHubConsumerGroups(this.ResourceGroupName, this.Name, this.EventHubEndpointName);
+                this.IotHubClient.IotHubResource.CreateEventHubConsumerGroup(this.ResourceGroupName, this.Name, eventsEndpointName, this.EventHubConsumerGroupName);
+                IEnumerable<EventHubConsumerGroupInfo> iotHubEHConsumerGroups = this.IotHubClient.IotHubResource.ListEventHubConsumerGroups(this.ResourceGroupName, this.Name, eventsEndpointName);
                 this.WriteObject(IotHubUtils.ToPSEventHubConsumerGroupInfo(iotHubEHConsumerGroups), true);
             }
         }
-
-        private const string EventsEndpointName = "events";
-        private const string OperationsMonitoringEventsEndpointName = "operationsMonitoringEvents";
     }
 }
