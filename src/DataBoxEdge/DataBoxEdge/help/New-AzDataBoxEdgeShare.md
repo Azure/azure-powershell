@@ -14,16 +14,32 @@ Creates a new share in the device
 
 ### SmbParameterSet (Default)
 ```
+New-AzDataBoxEdgeShare [-ResourceGroupName] <String> [-DeviceName] <String> [-Name] <String> [-SMB]
+ [-UserAccessRight <Hashtable[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CloudShareNfsParameterSet
+```
 New-AzDataBoxEdgeShare [-ResourceGroupName] <String> [-DeviceName] <String> [-Name] <String>
- [-StorageAccountCredentialName] <String> [-SMB] [-UserAccessRight <Hashtable[]>] -DataFormat <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-StorageAccountCredentialName] <String> [-CloudShare] -DataFormat <String> [-ContainerName <String>] [-NFS]
+ [-ClientAccessRight <Hashtable[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CloudShareSmbParameterSet
+```
+New-AzDataBoxEdgeShare [-ResourceGroupName] <String> [-DeviceName] <String> [-Name] <String>
+ [-StorageAccountCredentialName] <String> [-CloudShare] -DataFormat <String> [-ContainerName <String>] [-SMB]
+ [-UserAccessRight <Hashtable[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### NfsParameterSet
 ```
-New-AzDataBoxEdgeShare [-ResourceGroupName] <String> [-DeviceName] <String> [-Name] <String>
- [-StorageAccountCredentialName] <String> [-NFS] [-ClientAccessRight <Hashtable[]>] -DataFormat <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzDataBoxEdgeShare [-ResourceGroupName] <String> [-DeviceName] <String> [-Name] <String> [-NFS]
+ [-ClientAccessRight <Hashtable[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +78,37 @@ Read/Write Access for clientIds, For ex:@(@{"ClientId"="192.168.10.10";"AccessRi
 
 ```yaml
 Type: System.Collections.Hashtable[]
-Parameter Sets: NfsParameterSet
+Parameter Sets: CloudShareNfsParameterSet, NfsParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CloudShare
+Provide existing StorageAccountCredential's Resource Name
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CloudShareNfsParameterSet, CloudShareSmbParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContainerName
+If provided, will use the same container name in the storage account, if container is not present it will create a new one
+
+```yaml
+Type: System.String
+Parameter Sets: CloudShareNfsParameterSet, CloudShareSmbParameterSet
 Aliases:
 
 Required: False
@@ -77,7 +123,7 @@ Set Data Format ex: PageBlob, BlobBlob
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CloudShareNfsParameterSet, CloudShareSmbParameterSet
 Aliases:
 
 Required: True
@@ -137,7 +183,7 @@ AccessProtocol in the case of creating Share
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: NfsParameterSet
+Parameter Sets: CloudShareNfsParameterSet, NfsParameterSet
 Aliases:
 
 Required: False
@@ -167,7 +213,7 @@ AccessProtocol in the case of creating Share
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SmbParameterSet
+Parameter Sets: SmbParameterSet, CloudShareSmbParameterSet
 Aliases:
 
 Required: False
@@ -182,7 +228,7 @@ Provide existing StorageAccountCredential's Resource Name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CloudShareNfsParameterSet, CloudShareSmbParameterSet
 Aliases:
 
 Required: True
@@ -197,7 +243,7 @@ provide access right along with existing usernames to access SMB Share types, Fo
 
 ```yaml
 Type: System.Collections.Hashtable[]
-Parameter Sets: SmbParameterSet
+Parameter Sets: SmbParameterSet, CloudShareSmbParameterSet
 Aliases:
 
 Required: False

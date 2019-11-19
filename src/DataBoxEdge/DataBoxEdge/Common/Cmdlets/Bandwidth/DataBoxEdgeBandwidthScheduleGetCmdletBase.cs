@@ -64,6 +64,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Bandwidt
             HelpMessage = Constants.NameHelpMessage
         )]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("bandwidthSchedules", nameof(ResourceGroupName), nameof(DeviceName))]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true,
