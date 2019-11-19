@@ -119,13 +119,14 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
+            HelpMessage = "Force remove without confirmation.",
             Mandatory = false)]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = "Returns the status of the Remove operation. By default, this cmdlet does not generate any output.")]
         public SwitchParameter PassThru { get; set; }
     }
 }
