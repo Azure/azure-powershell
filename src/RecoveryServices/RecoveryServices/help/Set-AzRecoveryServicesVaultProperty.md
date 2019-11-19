@@ -15,7 +15,7 @@ Updates properties of a Vault.
 
 ```
 Set-AzRecoveryServicesVaultProperty [-VaultId <String>] [-SoftDeleteFeatureState <VaultSoftDeleteFeatureState>] 
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +37,21 @@ The first command gets a Vault object and then stores it in the $vault variable.
 The second command Updates the SoftDeleteFeatureState property of the vault to "Enabled" state.
 
 ## PARAMETERS
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.

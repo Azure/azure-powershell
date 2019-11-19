@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Used to set RecoveryServices Vault properties
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesVaultProperty"), OutputType(typeof(BackupResourceVaultConfigResource))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesVaultProperty", SupportsShouldProcess = true), OutputType(typeof(BackupResourceVaultConfigResource))]
     public class SetAzureRmRecoveryServicesVaultProperty : RSBackupVaultCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipeline = false)]
@@ -34,25 +34,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            try
+            ExecutionBlock(() =>
             {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
-                string vaultName = resourceIdentifier.ResourceName;
-                string resourceGroupName = resourceIdentifier.ResourceGroupName;
+                try
+                {
+                    ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                    string vaultName = resourceIdentifier.ResourceName;
+                    string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
-                BackupResourceVaultConfigResource currentConfig = ServiceClientAdapter.GetVaultProperty(vaultName, resourceGroupName);
+                    BackupResourceVaultConfigResource currentConfig = ServiceClientAdapter.GetVaultProperty(vaultName, resourceGroupName);
 
-                BackupResourceVaultConfigResource param = new BackupResourceVaultConfigResource();
-                param.Properties = new BackupResourceVaultConfig();
-                param.Properties.SoftDeleteFeatureState = SoftDeleteFeatureState.ToString() + "d";
-                param.Properties.EnhancedSecurityState = currentConfig.Properties.EnhancedSecurityState;
-                BackupResourceVaultConfigResource result = ServiceClientAdapter.SetVaultProperty(vaultName, resourceGroupName, param);
-                WriteObject(result.Properties);
-            }
-            catch (Exception exception)
-            {
-                WriteExceptionError(exception);
-            }
+                    BackupResourceVaultConfigResource param = new BackupResourceVaultConfigResource();
+                    param.Properties = new BackupResourceVaultConfig();
+                    param.Properties.SoftDeleteFeatureState = SoftDeleteFeatureState.ToString() + "d";
+                    param.Properties.EnhancedSecurityState = currentConfig.Properties.EnhancedSecurityState;
+                    BackupResourceVaultConfigResource result = ServiceClientAdapter.SetVaultProperty(vaultName, resourceGroupName, param);
+                    WriteObject(result.Properties);
+                }
+                catch (Exception exception)
+                {
+                    WriteExceptionError(exception);
+                }
+            }, ShouldProcess(VaultId, VerbsCommon.Set));
         }
     }
 }
