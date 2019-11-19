@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// The host name of the frontendEndpoint. Must be a domain name.
         /// </summary>
-        [Parameter(Mandatory = true,  HelpMessage = "The host name of the frontendEndpoint.")]
+        [Parameter(Mandatory = true, HelpMessage = "The host name of the frontendEndpoint.")]
         public string HostName { get; set; }
 
         /// <summary>
-        /// Whether to allow session affinity on this host. Valid options are ‘Enabled’ or ‘Disabled’
+        /// Whether to allow session affinity on this host. Valid options are ‘Enabled’ or ‘Disabled’.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Whether to allow session affinity on this host. Default value is Disabled")]
         public PSEnabledState SessionAffinityEnabledState { get; set; }
@@ -52,56 +52,56 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public int SessionAffinityTtlInSeconds { get; set; }
 
         /// <summary>
-        /// The resource id of Web Application Firewall policy for each host (if applicable)
+        /// The resource id of Web Application Firewall policy for each host (if applicable).
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The resource id of Web Application Firewall policy for each host (if applicable)")]
         public string WebApplicationFirewallPolicyLink { get; set; }
 
         /// <summary>
-        /// The source of the SSL certificate
+        /// The source of the SSL certificate.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The source of the SSL certificate")]
         [PSArgumentCompleter("AzureKeyVault", "FrontDoor")]
         public string CertificateSource { get; set; }
 
         /// <summary>
-        /// Defines the TLS extension protocol that is used for secure delivery
+        /// The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The minimum TLS version required from the clients to establish an SSL handshake with Front Door.")]
+        [PSArgumentCompleter("1.0", "1.2")]
+        public string MinimumTlsVersion { get; set; }
+
+        /// <summary>
+        /// Defines the TLS extension protocol that is used for secure delivery.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The TLS extension protocol that is used for secure delivery")]
         [PSArgumentCompleter("ServerNameIndication")]
         public string ProtocolType { get; set; }
 
         /// <summary>
-        /// Defines the TLS extension protocol that is used for secure delivery
+        /// Defines the TLS extension protocol that is used for secure delivery.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The Key Vault containing the SSL certificate")]
         public string Vault { get; set; }
 
         /// <summary>
-        /// The name of the Key Vault secret representing the full certificate PFX
+        /// The name of the Key Vault secret representing the full certificate PFX.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The name of the Key Vault secret representing the full certificate PFX")]
         public string SecretName { get; set; }
 
         /// <summary>
-        /// The version of the Key Vault secret representing the full certificate PFX
+        /// The version of the Key Vault secret representing the full certificate PFX.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The version of the Key Vault secret representing the full certificate PFX")]
         public string SecretVersion { get; set; }
 
         /// <summary>
-        /// the type of the certificate used for secure connections to a frontendEndpoint
+        /// The type of the certificate used for secure connections to a frontendEndpoint.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "the type of the certificate used for secure connections to a frontendEndpoint")]
-        [PSArgumentCompleter("Shared", "Dedicated")]
+        [Parameter(Mandatory = false, HelpMessage = "The type of the certificate used for secure connections to a frontendEndpoint")]
+        [PSArgumentCompleter("Dedicated")]
         public string CertificateType { get; set; }
-
-        /// <summary>
-        /// Minimum TLS version to support
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Minimum TLS version to support")]
-        [PSArgumentCompleter("1.0", "1.2")]
-        public string MinimumTlsVersion { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -109,16 +109,16 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             {
                 Name = Name,
                 HostName = HostName,
-                SessionAffinityEnabledState = !this.IsParameterBound(c => c.SessionAffinityEnabledState)? PSEnabledState.Disabled : SessionAffinityEnabledState,
+                SessionAffinityEnabledState = !this.IsParameterBound(c => c.SessionAffinityEnabledState) ? PSEnabledState.Disabled : SessionAffinityEnabledState,
                 SessionAffinityTtlSeconds = !this.IsParameterBound(c => c.SessionAffinityTtlInSeconds) ? 0 : SessionAffinityTtlInSeconds,
                 WebApplicationFirewallPolicyLink = WebApplicationFirewallPolicyLink,
-                CertificateSource = !this.IsParameterBound(c => c.CertificateSource) ? "AzureKeyVault" : CertificateSource,
-                CertificateType = !this.IsParameterBound(c => c.CertificateType) ? "Shared" : CertificateType,
+                CertificateSource = CertificateSource,
+                CertificateType = CertificateType,
                 Vault = Vault,
                 SecretName = SecretName,
                 SecretVersion = SecretVersion,
-                ProtocolType = !this.IsParameterBound(c => c.ProtocolType) ? "ServerNameIndication" : ProtocolType,
-                MinimumTlsVersion = !this.IsParameterBound(c => c.MinimumTlsVersion) ? "1.0" : MinimumTlsVersion
+                ProtocolType = this.IsParameterBound(c => c.ProtocolType) ? ProtocolType : "ServerNameIndication",
+                MinimumTlsVersion = MinimumTlsVersion
             };
             WriteObject(FrontendEndpoint);
         }

@@ -20,7 +20,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
-
 using sdkAzManagedRuleExclusion = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleExclusion;
 using sdkAzManagedRuleGroupOverride = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleGroupOverride;
 using sdkAzManagedRuleOverride = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleOverride;
@@ -46,7 +45,7 @@ using SdkRedirectConfiguration = Microsoft.Azure.Management.FrontDoor.Models.Red
 using SdkRefId = Microsoft.Azure.Management.FrontDoor.Models.SubResource;
 using SdkRouteConfiguration = Microsoft.Azure.Management.FrontDoor.Models.RouteConfiguration;
 using SdkRoutingRule = Microsoft.Azure.Management.FrontDoor.Models.RoutingRule;
-using SdkValut = Microsoft.Azure.Management.FrontDoor.Models.KeyVaultCertificateSourceParametersVault;
+using SdkVault = Microsoft.Azure.Management.FrontDoor.Models.KeyVaultCertificateSourceParametersVault;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Helpers
 {
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 backendPools: psFrontDoor.BackendPools?.Select(x => x.ToSdkBackendPool()).ToList(),
                 frontendEndpoints: psFrontDoor.FrontendEndpoints?.Select(x => x.ToSdkFrontendEndpoints()).ToList(),
                 enabledState: psFrontDoor.EnabledState.ToString(),
-                backendPoolsSettings: new SdkBackendPoolsSettings(psFrontDoor.EnforceCertificateNameCheck?.ToString())
+                backendPoolsSettings: psFrontDoor.BackendPoolsSetting.ToSdkBackendPoolsSettings()
                 );
         }
         public static PSFrontDoor ToPSFrontDoor(this SdkFrontDoor sdkFrontDoor)
@@ -90,7 +89,10 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 EnabledState = sdkFrontDoor.EnabledState == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkFrontDoor.EnabledState),
                 ResourceState = sdkFrontDoor.ResourceState,
                 ProvisioningState = sdkFrontDoor.ProvisioningState,
-                EnforceCertificateNameCheck = (PSEnforceCertificateNameCheck)Enum.Parse(typeof(PSEnforceCertificateNameCheck), sdkFrontDoor.BackendPoolsSettings.EnforceCertificateNameCheck)
+                BackendPoolsSetting = sdkFrontDoor.BackendPoolsSettings?.ToPSBackendPoolsSetting(),
+                // PSFrontDoor parameter EnforceCertificateNameCheck is no longer actively used, in favor of BackendPoolsSetting which 
+                // encapsulates this property. However, for backwards compability, we set this field so that it is still displayed to users.
+                EnforceCertificateNameCheck = sdkFrontDoor.BackendPoolsSettings == null ? (PSEnforceCertificateNameCheck?)null : (PSEnforceCertificateNameCheck)Enum.Parse(typeof(PSEnforceCertificateNameCheck), sdkFrontDoor.BackendPoolsSettings.EnforceCertificateNameCheck)
             };
         }
 
@@ -105,7 +107,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                     ForwardingProtocol = SDKForwardingConfiguration.ForwardingProtocol,
                     BackendPoolId = SDKForwardingConfiguration.BackendPool?.Id,
                     EnableCaching = SDKForwardingConfiguration.CacheConfiguration != null,
-                    QueryParameterStripDirective = SDKForwardingConfiguration.CacheConfiguration == null ? null : SDKForwardingConfiguration.CacheConfiguration.QueryParameterStripDirective,
+                    QueryParameterStripDirective = SDKForwardingConfiguration.CacheConfiguration?.QueryParameterStripDirective,
                     DynamicCompression = SDKForwardingConfiguration.CacheConfiguration == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), SDKForwardingConfiguration.CacheConfiguration.DynamicCompression)
                 };
             }
@@ -218,7 +220,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 HealthProbeSettingRef = sdkBackendPool.HealthProbeSettings.Id,
                 ResourceState = sdkBackendPool.ResourceState,
                 Backends = sdkBackendPool.Backends?.Select(x => x.ToPSBackend()).ToList()
-                
+
             };
         }
 
@@ -232,6 +234,23 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 );
         }
 
+        public static PSBackendPoolsSetting ToPSBackendPoolsSetting(this SdkBackendPoolsSettings sdkBackendPoolsSettings)
+        {
+            return new PSBackendPoolsSetting
+            {
+                EnforceCertificateNameCheck = sdkBackendPoolsSettings.EnforceCertificateNameCheck == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkBackendPoolsSettings.EnforceCertificateNameCheck),
+                SendRecvTimeoutInSeconds = sdkBackendPoolsSettings.SendRecvTimeoutSeconds
+            };
+        }
+
+        public static SdkBackendPoolsSettings ToSdkBackendPoolsSettings(this PSBackendPoolsSetting psBackendPoolsSetting)
+        {
+            return new SdkBackendPoolsSettings(
+                enforceCertificateNameCheck: psBackendPoolsSetting.EnforceCertificateNameCheck?.ToString(),
+                sendRecvTimeoutSeconds: psBackendPoolsSetting.SendRecvTimeoutInSeconds
+                );
+        }
+
         public static PSHealthProbeSetting ToPSHealthProbeSetting(this SdkHealthProbeSetting sdkHealthProbeSetting)
         {
             return new PSHealthProbeSetting
@@ -242,7 +261,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 Path = sdkHealthProbeSetting.Path,
                 Protocol = sdkHealthProbeSetting.Protocol == null ? (PSProtocol?)null : (PSProtocol)Enum.Parse(typeof(PSProtocol), sdkHealthProbeSetting.Protocol),
                 IntervalInSeconds = sdkHealthProbeSetting.IntervalInSeconds,
-                ResourceState = sdkHealthProbeSetting.ResourceState
+                ResourceState = sdkHealthProbeSetting.ResourceState,
+                HealthProbeMethod = sdkHealthProbeSetting.HealthProbeMethod,
+                EnabledState = string.IsNullOrEmpty(sdkHealthProbeSetting.EnabledState) ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkHealthProbeSetting.EnabledState)
             };
         }
 
@@ -252,8 +273,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 path: psHealthProbeSetting.Path,
                 protocol: psHealthProbeSetting.Protocol.ToString(),
                 intervalInSeconds: psHealthProbeSetting.IntervalInSeconds,
-                name: psHealthProbeSetting.Name
-
+                name: psHealthProbeSetting.Name,
+                healthProbeMethod: psHealthProbeSetting.HealthProbeMethod,
+                enabledState: psHealthProbeSetting.EnabledState.ToString()
             );
         }
 
@@ -284,18 +306,29 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
 
         public static SdkFrontendEndpoint ToSdkFrontendEndpoints(this PSFrontendEndpoint psFrontendEndpoint)
         {
+            SdkHttpsConfig customHttpsConfiguration = null;
+            if ((psFrontendEndpoint.CertificateSource != null) ||
+                !String.IsNullOrEmpty(psFrontendEndpoint.MinimumTlsVersion) ||
+                !String.IsNullOrEmpty(psFrontendEndpoint.Vault) ||
+                !String.IsNullOrEmpty(psFrontendEndpoint.SecretName) ||
+                !String.IsNullOrEmpty(psFrontendEndpoint.SecretVersion) ||
+                !String.IsNullOrEmpty(psFrontendEndpoint.CertificateType))
+            {
+                customHttpsConfiguration = new SdkHttpsConfig(psFrontendEndpoint.CertificateSource,
+                                   psFrontendEndpoint.MinimumTlsVersion,
+                                   new SdkVault(psFrontendEndpoint.Vault),
+                                   psFrontendEndpoint.SecretName,
+                                   psFrontendEndpoint.SecretVersion,
+                                   psFrontendEndpoint.CertificateType);
+            }
+
             return new SdkFrontendEndpoint
             (
                 hostName: psFrontendEndpoint.HostName,
                 sessionAffinityEnabledState: psFrontendEndpoint.SessionAffinityEnabledState.ToString(),
                 sessionAffinityTtlSeconds: psFrontendEndpoint.SessionAffinityTtlSeconds,
                 webApplicationFirewallPolicyLink: psFrontendEndpoint.WebApplicationFirewallPolicyLink == null ? null : new SdkFWPolicyLink(psFrontendEndpoint.WebApplicationFirewallPolicyLink),
-                customHttpsConfiguration: new SdkHttpsConfig(psFrontendEndpoint.CertificateSource,
-                                   psFrontendEndpoint.MinimumTlsVersion,
-                                   new SdkValut(psFrontendEndpoint.Vault),
-                                   psFrontendEndpoint.SecretName,
-                                   psFrontendEndpoint.SecretVersion,
-                                   psFrontendEndpoint.CertificateType),
+                customHttpsConfiguration: customHttpsConfiguration,
                 name: psFrontendEndpoint.Name
             );
         }
@@ -314,17 +347,17 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                         (PSCustomHttpsProvisioningState?)null : (PSCustomHttpsProvisioningState)Enum.Parse(typeof(PSCustomHttpsProvisioningState), sdkFrontendEndpoint.CustomHttpsProvisioningState),
                 CustomHttpsProvisioningSubstate = sdkFrontendEndpoint.CustomHttpsProvisioningSubstate == null ?
                         (PSCustomHttpsProvisioningSubstate?)null : (PSCustomHttpsProvisioningSubstate)Enum.Parse(typeof(PSCustomHttpsProvisioningSubstate), sdkFrontendEndpoint.CustomHttpsProvisioningSubstate),
-                CertificateSource = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? "AzureKeyVault" : sdkFrontendEndpoint.CustomHttpsConfiguration.CertificateSource,
-                ProtocolType = SdkHttpsConfig.ProtocolType,
+                CertificateSource = sdkFrontendEndpoint.CustomHttpsConfiguration?.CertificateSource,
+                MinimumTlsVersion = sdkFrontendEndpoint.CustomHttpsConfiguration?.MinimumTlsVersion,
                 Vault = sdkFrontendEndpoint.CustomHttpsConfiguration?.Vault?.Id,
                 SecretName = sdkFrontendEndpoint.CustomHttpsConfiguration?.SecretName,
                 SecretVersion = sdkFrontendEndpoint.CustomHttpsConfiguration?.SecretVersion,
-                CertificateType = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? "Shared" : sdkFrontendEndpoint.CustomHttpsConfiguration.CertificateType,
+                CertificateType = sdkFrontendEndpoint.CustomHttpsConfiguration?.CertificateType,
                 Name = sdkFrontendEndpoint.Name,
-                Type = sdkFrontendEndpoint.Type,
-                MinimumTlsVersion = sdkFrontendEndpoint.CustomHttpsConfiguration?.MinimumTlsVersion ?? "1.0"
+                Type = sdkFrontendEndpoint.Type
             };
         }
+
         public static PSCustomRule ToPSCustomRule(this SdkCustomRule sdkRule)
         {
             return new PSCustomRule
@@ -387,7 +420,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 Name = sdkPolicy.Name,
                 Id = sdkPolicy.Id,
                 PolicyEnabledState = sdkPolicy.PolicySettings == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkPolicy.PolicySettings.EnabledState),
-                PolicyMode = sdkPolicy.PolicySettings == null ? null : sdkPolicy.PolicySettings.Mode,
+                PolicyMode = sdkPolicy.PolicySettings?.Mode,
                 CustomRules = sdkPolicy.CustomRules?.Rules?.Select(x => x.ToPSCustomRule()).ToList(),
                 ManagedRules = sdkPolicy.ManagedRules?.ManagedRuleSets?.Select(x => x.ToPSManagedRule()).ToList(),
                 Etag = sdkPolicy.Etag,
@@ -492,7 +525,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 },
                 CustomRules = new SdkCustomRuleList()
                 {
-                    Rules =  psPolicy.CustomRules?.Select(x => x.ToSdkCustomRule()).ToList()
+                    Rules = psPolicy.CustomRules?.Select(x => x.ToSdkCustomRule()).ToList()
                 },
                 ManagedRules = new SdkManagedRuleList()
                 {
@@ -599,8 +632,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
             // Validate reference in each resources
             foreach (var routingRule in frontDoor.RoutingRules)
             {
-                
-                foreach(var id in routingRule.FrontendEndpointIds)
+
+                foreach (var id in routingRule.FrontendEndpointIds)
                 {
                     if (frontendEndpointIds.FirstOrDefault(x => x.Equals(id.ToLower())) == null)
                     {
@@ -623,14 +656,14 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                     }
                 }
             }
-            
+
             foreach (var backendPool in frontDoor.BackendPools)
             {
                 if (healthProbeSettingIds.FirstOrDefault(x => x.Equals(backendPool.HealthProbeSettingRef.ToLower())) == null)
                 {
                     throw new PSArgumentException(string.Format(
                             "Invalid HealthProbeSetting {0} in {1}. Target doesn't exist",
-                            backendPool.HealthProbeSettingRef,backendPool.Name
+                            backendPool.HealthProbeSettingRef, backendPool.Name
                             ));
                 }
 
@@ -645,5 +678,5 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
 
         }
 
-    }    
+    }
 }

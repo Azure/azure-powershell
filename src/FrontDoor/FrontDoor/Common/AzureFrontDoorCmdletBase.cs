@@ -12,13 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.FrontDoor;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Common
 {
@@ -39,6 +37,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Common
         public const string ObjectWithVaultParameterSet = "ByObjectWithVaultParameterSet";
         public const string FieldsWithForwardingParameterSet = "ByFieldsWithForwardingParameterSet";
         public const string FieldsWithRedirectParameterSet = "ByFieldsWithRedirectParameterSet";
+        public const string FieldsWithBackendPoolsSettingParameterSet = "ByFieldsWithBackendPoolsSettingParameterSet";
+        public const string ObjectWithBackendPoolsSettingParameterSet = "ByObjectWithBackendPoolsSettingParameterSet";
+        public const string ResourceIdWithBackendPoolsSettingParameterSet = "ByResourceIdWithBackendPoolsSettingParameterSet";
+        public const string FieldsWithCertificateNameCheckParameterSet = "ByFieldsWithCertificateNameCheckParameterSet";
+        public const string ObjectWithCertificateNameCheckParameterSet = "ByObjectWithCertificateNameCheckParameterSet";
+        public const string ResourceIdWithCertificateNameCheckParameterSet = "ByResourceIdWithCertificateNameCheckParameterSet";
 
         /// <summary>
         /// Gets or sets the Front Door management client.
