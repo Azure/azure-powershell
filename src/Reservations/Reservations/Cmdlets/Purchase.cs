@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         public string ReservationOrderId { get; set; }
 
         [Parameter(Mandatory = true)]
-        [PSArgumentCompleter("VirtualMachines", "SqlDatabases", "SuseLinux", "CosmosDb", "RedHat", "SqlDataWarehouse", "VMwareCloudSimple", "RedHatOsa")]
+        [PSArgumentCompleter("VirtualMachines", "SqlDatabases", "SuseLinux", "CosmosDb", "RedHat", "SqlDataWarehouse", "VMwareCloudSimple", "RedHatOsa", "Databricks")]
         [ValidateNotNullOrEmpty]
         public string ReservedResourceType { get; set; }
 
