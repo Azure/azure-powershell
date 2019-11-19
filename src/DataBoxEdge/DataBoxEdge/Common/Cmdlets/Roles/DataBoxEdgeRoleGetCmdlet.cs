@@ -12,24 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.EdgeGateway;
+using Microsoft.Azure.Management.EdgeGateway.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.EdgeGateway;
-using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.Role;
-using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole;
-using PSTopLevelResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice;
 
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
 {
     [Cmdlet(VerbsCommon.Get, Constants.Role, DefaultParameterSetName = ListParameterSet
      ),
-     OutputType(typeof(PSResourceModel))]
-    public class DataBoxEdgeRoleGetCmdletBase : AzureDataBoxEdgeCmdletBase
+     OutputType(typeof(PSDataBoxEdgeRole))]
+    public class DataBoxEdgeRoleGetCmdlet : AzureDataBoxEdgeCmdletBase
     {
         private const string ListParameterSet = "ListParameterSet";
         private const string GetByNameParameterSet = "GetByNameParameterSet";
@@ -38,16 +37,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetByResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = ListParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
             Position = 0)]
         [Parameter(Mandatory = true,
             ParameterSetName = GetByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
             Position = 0)]
         [ValidateNotNullOrEmpty]
@@ -56,10 +58,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
 
         [Parameter(Mandatory = true,
             ParameterSetName = ListParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.DeviceNameHelpMessage,
             Position = 1)]
         [Parameter(Mandatory = true,
             ParameterSetName = GetByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.DeviceNameHelpMessage,
             Position = 1)]
         [ValidateNotNullOrEmpty]
@@ -69,68 +73,68 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
         [Parameter(Mandatory = true,
             ParameterSetName = GetByNameParameterSet,
             HelpMessage = Constants.NameHelpMessage,
+            ValueFromPipelineByPropertyName = true,
             Position = 2)]
         [Parameter(Mandatory = false,
             ParameterSetName = GetByParentObjectParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessageRoles.Name
         )]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true,
+        [Parameter(Mandatory = true,
+            ValueFromPipeline = true,
             ParameterSetName = GetByParentObjectParameterSet,
             HelpMessage = Constants.PsDeviceObjectHelpMessage)]
         [ValidateNotNull]
-        public PSTopLevelResourceModel DeviceObject;
+        public PSDataBoxEdgeDevice DeviceObject;
 
-        private ResourceModel GetResourceModel()
+        private Role GetResource()
         {
-            return RolesOperationsExtensions.Get(
-                this.DataBoxEdgeManagementClient.Roles,
+            return this.DataBoxEdgeManagementClient.Roles.Get(
                 this.DeviceName,
                 this.Name,
                 this.ResourceGroupName);
         }
 
-        private List<PSResourceModel> GetByResourceName()
+        private List<PSDataBoxEdgeRole> GetResourceByName()
         {
-            var resourceModel = GetResourceModel();
-            return new List<PSResourceModel>() {new PSResourceModel(resourceModel)};
+            var role = GetResource();
+            return new List<PSDataBoxEdgeRole>() {new PSDataBoxEdgeRole(role)};
         }
 
-        private IPage<ResourceModel> ListResourceModel()
+        private IPage<Role> ListResource()
         {
-            return RolesOperationsExtensions.ListByDataBoxEdgeDevice(
-                this.DataBoxEdgeManagementClient.Roles,
+            return this.DataBoxEdgeManagementClient.Roles.ListByDataBoxEdgeDevice(
                 this.DeviceName,
                 this.ResourceGroupName);
         }
 
-        private IPage<ResourceModel> ListResourceModel(string nextPageLink)
+        private IPage<Role> ListResource(string nextPageLink)
         {
-            return RolesOperationsExtensions.ListByDataBoxEdgeDeviceNext(
-                this.DataBoxEdgeManagementClient.Roles,
+            return this.DataBoxEdgeManagementClient.Roles.ListByDataBoxEdgeDeviceNext(
                 nextPageLink
             );
         }
 
 
-        private List<PSResourceModel> ListPSResourceModels()
+        private List<PSDataBoxEdgeRole> ListPSResource()
         {
             if (!string.IsNullOrEmpty(this.Name))
             {
-                return GetByResourceName();
+                return GetResourceByName();
             }
 
-            var resourceModel = ListResourceModel();
-            var paginatedResult = new List<ResourceModel>(resourceModel);
-            while (!string.IsNullOrEmpty(resourceModel.NextPageLink))
+            var listResourceModel = ListResource();
+            var paginatedResult = new List<Role>(listResourceModel);
+            while (!string.IsNullOrEmpty(listResourceModel.NextPageLink))
             {
-                resourceModel = ListResourceModel(resourceModel.NextPageLink);
-                paginatedResult.AddRange(resourceModel);
+                listResourceModel = ListResource(listResourceModel.NextPageLink);
+                paginatedResult.AddRange(listResourceModel);
             }
 
-            return paginatedResult.Select(t => new PSResourceModel(t)).ToList();
+            return paginatedResult.Select(t => new PSDataBoxEdgeRole(t)).ToList();
         }
 
         public override void ExecuteCmdlet()
@@ -149,7 +153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
                 this.Name = resourceIdentifier.ResourceName;
             }
 
-            var results = ListPSResourceModels();
+            var results = ListPSResource();
             WriteObject(results, true);
         }
     }

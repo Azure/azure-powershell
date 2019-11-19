@@ -12,33 +12,33 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.EdgeGateway;
+using Microsoft.Azure.Management.EdgeGateway.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Security;
-using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.EdgeGateway;
-using Microsoft.Azure.Management.EdgeGateway.Models;
-using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Common;
-using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.Role;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
 {
     [Cmdlet(VerbsCommon.New, Constants.Role, DefaultParameterSetName = ConnectionStringParameterSet,
          SupportsShouldProcess = true
      ),
-     OutputType(typeof(PSResourceModel))]
-    public class DataBoxEdgeRoleNewCmdletBase : AzureDataBoxEdgeCmdletBase
+     OutputType(typeof(PSDataBoxEdgeRole))]
+    public class DataBoxEdgeRoleNewCmdlet : AzureDataBoxEdgeCmdletBase
     {
         private const string ConnectionStringParameterSet = "ConnectionStringParameterSet";
         private const string IotParameterSet = "IotParameterSet";
 
         [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
             Position = 0)]
         [ValidateNotNullOrEmpty]
@@ -46,6 +46,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.DeviceNameHelpMessage,
             Position = 1)]
         [ValidateNotNullOrEmpty]
@@ -141,17 +142,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
         private const string DeviceId = "DeviceId";
         private const string SharedAccessKey = "SharedAccessKey";
 
-        private ResourceModel GetResourceModel()
+        private Role GetResource()
         {
-            return RolesOperationsExtensions.Get(
-                this.DataBoxEdgeManagementClient.Roles,
+            return this.DataBoxEdgeManagementClient.Roles.Get(
                 this.DeviceName,
                 this.Name,
                 this.ResourceGroupName);
         }
 
 
-        private string GetResourceNotFoundMessage()
+        private string GetResourceAlreadyExistMessage()
         {
             return string.Format("'{0}'{1}{2}'.",
                 HelpMessageRoles.ObjectName, Constants.ResourceAlreadyExists, this.Name);
@@ -161,10 +161,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
         {
             try
             {
-                var resource = GetResourceModel();
-                if (resource == null) return false;
-                var msg = GetResourceNotFoundMessage();
-                throw new Exception(msg);
+                if (GetResource() == null) return false;
+                throw new Exception(GetResourceAlreadyExistMessage());
             }
             catch (CloudException e)
             {
@@ -178,7 +176,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
         }
 
 
-        public static IoTRole GetIoTRoleObject(
+        public static IoTRole InitIotRoleObject(
             string deviceId,
             string edgeDeviceId,
             string ioTHostHub,
@@ -246,7 +244,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
             this.iotEdgeDeviceHostHub = deviceProperties.GetOrNull(HostName);
         }
 
-        private PSResourceModel CreateResourceModel()
+        private PSDataBoxEdgeRole CreateResource()
         {
             var iotDeviceSecret = DataBoxEdgeManagementClient.Devices.GetAsymmetricEncryptedSecret(
                 this.DeviceName,
@@ -262,7 +260,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
                 this.EncryptionKey.ConvertToString()
             );
 
-            var iotRole = GetIoTRoleObject(
+            var iotRole = InitIotRoleObject(
                 this.IotDeviceId,
                 this.IotEdgeDeviceId,
                 this.IotHostHub,
@@ -271,7 +269,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
                 iotEdgeDeviceSecret,
                 this.RoleStatus
             );
-            return new PSResourceModel(
+            return new PSDataBoxEdgeRole(
                 DataBoxEdgeManagementClient.Roles.CreateOrUpdate(
                     this.DeviceName, this.Name, iotRole,
                     this.ResourceGroupName)
@@ -284,11 +282,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
             if (ConnectionString.IsPresent)
             {
                 ParseIotDeviceConnectionString();
-                WriteVerbose(this.IotDeviceConnectionString.ConvertToString());
-                WriteVerbose(this.IotEdgeDeviceConnectionString.ConvertToString());
                 ParseEdgeDeviceConnectionString();
-                int c = string.Compare(this.iotDeviceHostHub, this.iotEdgeDeviceHostHub);
-                if (c != 0)
+                var compareHostHubDomain = string.Compare(this.iotDeviceHostHub, this.iotEdgeDeviceHostHub);
+                if (compareHostHubDomain != 0)
                 {
                     ThrowInvalidConnection(HelpMessageRoles.ShouldBeFromSameHostHub);
                 }
@@ -319,9 +315,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
                     HelpMessageRoles.ObjectName, this.DeviceName, this.Name)))
             {
                 DoesResourceExists();
-                var results = new List<PSResourceModel>()
+                var results = new List<PSDataBoxEdgeRole>()
                 {
-                    CreateResourceModel()
+                    CreateResource()
                 };
 
                 WriteObject(results, true);

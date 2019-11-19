@@ -15,14 +15,13 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.EdgeGateway;
 using Microsoft.Azure.Management.EdgeGateway.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
-using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.Order;
 
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
          DefaultParameterSetName = CreateByNewParameterSet,
          SupportsShouldProcess = true
      ),
-     OutputType(typeof(PSResourceModel))]
+     OutputType(typeof(PSDataBoxEdgeOrder))]
     public class DataBoxEdgeOrderNewCmdlet : AzureDataBoxEdgeCmdletBase
     {
         private const string CreateByNewParameterSet = "CreateByNewParameterSet";
@@ -112,11 +111,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
-        private IOrdersOperations _operations;
 
-        private ResourceModel GetResourceModel()
+        private Order GetResource()
         {
-            return this._operations.Get(
+            return this.DataBoxEdgeManagementClient.Orders.Get(
                 this.DeviceName,
                 this.ResourceGroupName);
         }
@@ -131,8 +129,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
         {
             try
             {
-                var resource = GetResourceModel();
-                if (resource == null) return false;
+                if (GetResource() == null) return false;
                 throw new Exception(GetResourceAlreadyExistMessage());
             }
             catch (CloudException e)
@@ -146,7 +143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
             }
         }
 
-        private PSResourceModel CreateResourceModel()
+        private PSDataBoxEdgeOrder CreateOrder()
         {
             var contactDetails = new ContactDetails(ContactPerson, CompanyName, Phone, Email);
             var address = new Address(AddressLine1, PostalCode, City, State, Country, AddressLine2, AddressLine3);
@@ -160,26 +157,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
                 address.AddressLine3 = this.AddressLine3;
             }
 
-            var order = new ResourceModel(contactDetails, address);
-            var psResourceModel = new PSResourceModel(
-                _operations.CreateOrUpdate(
+            var order = new Order(contactDetails, address);
+            return new PSDataBoxEdgeOrder(
+                this.DataBoxEdgeManagementClient.Orders.CreateOrUpdate(
                     this.DeviceName,
                     order,
                     this.ResourceGroupName));
-            return psResourceModel;
         }
 
         public override void ExecuteCmdlet()
         {
-            _operations = this.DataBoxEdgeManagementClient.Orders;
             if (this.ShouldProcess(this.DeviceName,
                 string.Format("Creating '{0}' with name '{1}'.",
                     HelpMessageOrder.ObjectName, this.DeviceName)))
             {
                 DoesResourceExists();
-                var results = new List<PSResourceModel>
+                var results = new List<PSDataBoxEdgeOrder>
                 {
-                    CreateResourceModel()
+                    CreateOrder()
                 };
                 WriteObject(results, true);
             }

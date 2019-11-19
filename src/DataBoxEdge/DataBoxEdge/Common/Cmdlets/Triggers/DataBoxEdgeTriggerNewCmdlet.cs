@@ -12,17 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.EdgeGateway;
+using Microsoft.Azure.Management.EdgeGateway.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.EdgeGateway;
-using Microsoft.Azure.Management.EdgeGateway.Models;
-using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeTrigger;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.Trigger;
 
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
          DefaultParameterSetName = FileEventTriggerParameterSet,
          SupportsShouldProcess = true
      ),
-     OutputType(typeof(PSResourceModel))]
+     OutputType(typeof(PSDataBoxEdgeTrigger))]
     public class DataBoxEdgeTriggerNewCmdlet : AzureDataBoxEdgeCmdletBase
     {
         private const string FileEventTriggerParameterSet = "FileEventTriggerParameterSet";
@@ -40,30 +39,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
         private const string PeriodicTimerTriggerParameterSet = "PeriodicTimerTriggerParameterSet";
         private const string PeriodicTimerTriggerResourceIdParameterSet = "PeriodicTimerTriggerResourceIdParameterSet";
 
-        [Parameter(Mandatory = true, ParameterSetName = PeriodicTimerTriggerParameterSet,
+        [Parameter(Mandatory = true,
+            ParameterSetName = PeriodicTimerTriggerParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
             Position = 0)]
-        [Parameter(Mandatory = true, ParameterSetName = FileEventTriggerParameterSet,
+        [Parameter(Mandatory = true,
+            ParameterSetName = FileEventTriggerParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
             Position = 0)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = FileEventTriggerParameterSet,
+        [Parameter(Mandatory = true,
+            ParameterSetName = FileEventTriggerParameterSet,
             HelpMessage = Constants.DeviceNameHelpMessage,
+            ValueFromPipelineByPropertyName = true,
             Position = 1)]
-        [Parameter(Mandatory = true, ParameterSetName = PeriodicTimerTriggerParameterSet,
+        [Parameter(Mandatory = true,
+            ParameterSetName = PeriodicTimerTriggerParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.DeviceNameHelpMessage,
             Position = 1)]
         [ResourceNameCompleter("Microsoft.DataBoxEdge/dataBoxEdgeDevices", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string DeviceName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = FileEventTriggerParameterSet,
+        [Parameter(Mandatory = true,
+            ParameterSetName = FileEventTriggerParameterSet,
             HelpMessage = Constants.NameHelpMessage,
             Position = 2)]
-        [Parameter(Mandatory = true, ParameterSetName = PeriodicTimerTriggerParameterSet,
+        [Parameter(Mandatory = true,
+            ParameterSetName = PeriodicTimerTriggerParameterSet,
             HelpMessage = Constants.NameHelpMessage,
             Position = 2)]
         [ValidateNotNullOrEmpty]
@@ -144,7 +153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
         public SwitchParameter AsJob { get; set; }
 
 
-        private ResourceModel GetResourceModel()
+        private Trigger GetResource()
         {
             return this.DataBoxEdgeManagementClient.Triggers.Get(
                 this.DeviceName,
@@ -168,7 +177,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
                 this.ResourceGroupName).Id;
         }
 
-        private string GetResourceFoundMessage()
+        private string GetResourceAlreadyExistMessage()
         {
             return string.Format("'{0}'{1}{2}'.",
                 HelpMessageTrigger.ObjectName, Constants.ResourceAlreadyExists, this.Name);
@@ -178,10 +187,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
         {
             try
             {
-                var resource = GetResourceModel();
-                if (resource == null) return false;
-                var msg = GetResourceFoundMessage();
-                throw new Exception(msg);
+                if (GetResource() == null) return false;
+                throw new Exception(GetResourceAlreadyExistMessage());
             }
             catch (CloudException e)
             {
@@ -194,9 +201,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
             }
         }
 
-        private PSResourceModel CreateResourceModel()
+        private PSDataBoxEdgeTrigger CreateResource()
         {
-            ResourceModel trigger;
+            Trigger trigger;
             var roleSinkInfo = new RoleSinkInfo(this.RoleId);
             if (this.FileEvent.IsPresent)
             {
@@ -210,12 +217,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
             }
 
 
-            return PSResourceModel.PSDataBoxEdgeTriggerObject(TriggersOperationsExtensions.CreateOrUpdate(
-                DataBoxEdgeManagementClient.Triggers,
-                this.DeviceName,
-                this.Name,
-                trigger,
-                this.ResourceGroupName));
+            return PSDataBoxEdgeTrigger.PSDataBoxEdgeTriggerObject(
+                this.DataBoxEdgeManagementClient.Triggers.CreateOrUpdate(
+                    this.DeviceName,
+                    this.Name,
+                    trigger,
+                    this.ResourceGroupName));
         }
 
         public override void ExecuteCmdlet()
@@ -235,9 +242,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
                     HelpMessageTrigger.ObjectName, this.DeviceName, this.Name)))
             {
                 DoesResourceExists();
-                var results = new List<PSResourceModel>()
+                var results = new List<PSDataBoxEdgeTrigger>()
                 {
-                    CreateResourceModel()
+                    CreateResource()
                 };
 
                 WriteObject(results, true);

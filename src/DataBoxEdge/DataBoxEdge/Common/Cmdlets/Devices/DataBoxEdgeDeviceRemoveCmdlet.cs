@@ -13,10 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System.Management.Automation;
 using Microsoft.Azure.Management.EdgeGateway;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
 {
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
          SupportsShouldProcess = true
      ),
      OutputType(typeof(bool))]
-    public class DataBoxEdgeDeviceRemoveCmdletBase : AzureDataBoxEdgeCmdletBase
+    public class DataBoxEdgeDeviceRemoveCmdlet : AzureDataBoxEdgeCmdletBase
     {
         private const string DeleteByNameParameterSet = "DeleteByNameParameterSet";
         private const string DeleteByInputObjectParameterSet = "DeleteByInputObjectParameterSet";
@@ -42,10 +42,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
             HelpMessage = Constants.InputObjectHelpMessage,
             ValueFromPipeline = true)]
         [ValidateNotNull]
-        public PSResourceModel InputObject { get; set; }
+        public PSDataBoxEdgeDevice InputObject { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = DeleteByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
             Position = 0)]
         [ResourceGroupCompleter]
@@ -54,10 +55,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
 
         [Parameter(Mandatory = true,
             ParameterSetName = DeleteByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.NameHelpMessage,
             Position = 1)]
         [ResourceNameCompleter("Microsoft.DataBoxEdge/dataBoxEdgeDevices", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
+        [Alias("DeviceName")]
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.PassThruHelpMessage)]
@@ -68,8 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
 
         private bool Remove()
         {
-            DevicesOperationsExtensions.Delete(
-                this.DataBoxEdgeManagementClient.Devices,
+            this.DataBoxEdgeManagementClient.Devices.Delete(
                 this.Name,
                 this.ResourceGroupName);
             return true;

@@ -12,28 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.EdgeGateway;
+using Microsoft.Azure.Management.EdgeGateway.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
-using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.EdgeGateway;
-using Microsoft.Azure.Management.EdgeGateway.Models;
-using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.Share;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Shares
 {
     [Cmdlet(VerbsCommon.New, Constants.Share,
          DefaultParameterSetName = SmbParameterSet,
          SupportsShouldProcess = true
      ),
-     OutputType(typeof(PSResourceModel))]
-    public class DataBoxEdgeShareNewCmdletBase : AzureDataBoxEdgeCmdletBase
+     OutputType(typeof(PSDataBoxEdgeShare))]
+    public class DataBoxEdgeShareNewCmdlet : AzureDataBoxEdgeCmdletBase
     {
         private const string NfsParameterSet = "NfsParameterSet";
         private const string SmbParameterSet = "SmbParameterSet";
@@ -142,12 +141,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
-        private ResourceModel _share;
+        private Share _share;
 
-        private ResourceModel GetResourceModel()
+        private Share GetResource()
         {
-            return SharesOperationsExtensions.Get(
-                this.DataBoxEdgeManagementClient.Shares,
+            return this.DataBoxEdgeManagementClient.Shares.Get(
                 this.DeviceName,
                 this.Name,
                 this.ResourceGroupName);
@@ -163,8 +161,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
         {
             try
             {
-                var resource = GetResourceModel();
-                if (resource == null) return false;
+                if (GetResource() == null) return false;
                 throw new Exception(GetResourceAlreadyExistMessage());
             }
             catch (CloudException e)
@@ -178,9 +175,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
             }
         }
 
-        private PSResourceModel CreateResourceModel()
+        private PSDataBoxEdgeShare CreateResource()
         {
-            return new PSResourceModel(SharesOperationsExtensions.CreateOrUpdate(
+            return new PSDataBoxEdgeShare(SharesOperationsExtensions.CreateOrUpdate(
                 DataBoxEdgeManagementClient.Shares,
                 this.DeviceName,
                 this.Name,
@@ -188,19 +185,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
                 this.ResourceGroupName));
         }
 
-        private ResourceModel AddAzureContainer(ResourceModel resourceModel)
+        private Share AddAzureContainer(Share share)
         {
             var storageAccountCredential = this.DataBoxEdgeManagementClient.StorageAccountCredentials.Get(
                 this.DeviceName,
                 this.StorageAccountCredentialName,
                 this.ResourceGroupName);
-            resourceModel.AzureContainerInfo = this.IsParameterBound(c => c.ContainerName)
+            share.AzureContainerInfo = this.IsParameterBound(c => c.ContainerName)
                 ? new AzureContainerInfo(storageAccountCredential.Id, ContainerName, DataFormat)
                 : new AzureContainerInfo(storageAccountCredential.Id, Name, this.DataFormat);
-            return resourceModel;
+            return share;
         }
 
-        private ResourceModel InitShareObject()
+        private Share InitShareObject()
         {
             var dataPolicy = "Local";
             if (this.IsParameterBound(c => c.StorageAccountCredentialName))
@@ -209,7 +206,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
             }
 
             var accessProtocol = this.NFS.IsPresent ? "NFS" : "SMB";
-            var share = new ResourceModel("Online",
+            var share = new Share("Online",
                 "Enabled",
                 accessProtocol,
                 null, dataPolicy: dataPolicy);
@@ -219,8 +216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
 
         private string GetUserId(string username)
         {
-            var user = UsersOperationsExtensions.Get(
-                this.DataBoxEdgeManagementClient.Users,
+            var user = this.DataBoxEdgeManagementClient.Users.Get(
                 this.DeviceName,
                 username,
                 this.ResourceGroupName
@@ -253,7 +249,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
                 foreach (var userAccessRight in this.UserAccessRight)
                 {
                     var accessRightPolicy = HashtableToDictionary<string, string>(userAccessRight);
-
                     _share.UserAccessRights.Add(
                         new UserAccessRight(
                             GetUserId(accessRightPolicy.GetOrNull("Username")),
@@ -267,9 +262,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
                     HelpMessageShare.ObjectName, this.DeviceName, this.Name)))
             {
                 DoesResourceExists();
-                var results = new List<PSResourceModel>()
+                var results = new List<PSDataBoxEdgeShare>()
                 {
-                    CreateResourceModel()
+                    CreateResource()
                 };
 
                 WriteObject(results, true);

@@ -1,6 +1,6 @@
-﻿using System;
-using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
+﻿using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using System;
 using Share = Microsoft.Azure.Management.EdgeGateway.Models.Share;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models

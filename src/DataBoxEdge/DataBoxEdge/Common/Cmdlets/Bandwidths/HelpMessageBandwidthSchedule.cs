@@ -13,17 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.StorageAccountCredential
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Bandwidths
 {
-    internal class HelpMessageStorageAccountCredential
+     class HelpMessageBandwidthSchedule
     {
-        internal const string StorageAccountNameHelpMessage = "Name of the storage account to be used";
-        internal const string ObjectName = "StorageAccountCredential";
-        internal const string StorageAccountTypeHelpMessage = "Possible Storage Access type";
+        internal const string ObjectName = "BandwidthSchedule";
+        internal const string StopTime = "Schedule Stop Time";
+        internal const string StartTime = "Schedule Start Time";
+        internal const string DaysOfWeek = "Scheduled DaysOfWeek";
+        internal const string Bandwidth = "Bandwidth in Mbps";
+        internal const string UnlimitedBandwidth = "Will Set Unlimited Bandwidth";
+        internal const string NewUnlimitedBandwidth = "Will Set Unlimited Bandwidth, if set to false will set default value as 20 Mbps";
 
-        internal const string StorageAccountAccessKeyHelpMessage = "provide storage account access key";
-
-        /*"To enable/ disable ssl status message, possible values are Enabled/Disabled";*/
-        internal const string SslStatus = "Enabled";
     }
 }

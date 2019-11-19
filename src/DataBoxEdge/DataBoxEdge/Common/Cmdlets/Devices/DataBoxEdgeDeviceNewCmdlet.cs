@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.EdgeGateway;
 using Microsoft.Azure.Management.EdgeGateway.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
+using Microsoft.Rest.Azure;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
-using Microsoft.Azure.Management.EdgeGateway;
-using Microsoft.Rest.Azure;
-using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.DataBoxEdgeDevice;
 
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
@@ -31,8 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
          DefaultParameterSetName = CreateByNewParameterSet,
          SupportsShouldProcess = true
      ),
-     OutputType(typeof(PSResourceModel))]
-    public class DataBoxEdgeDeviceNewCmdletBase : AzureDataBoxEdgeCmdletBase
+     OutputType(typeof(PSDataBoxEdgeDevice))]
+    public class DataBoxEdgeDeviceNewCmdlet : AzureDataBoxEdgeCmdletBase
     {
         private const string CreateByNewParameterSet = "CreateByNewParameterSet";
 
@@ -63,15 +62,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
-        private ResourceModel GetResourceModel()
+        private DataBoxEdgeDevice GetResource()
         {
-            return DevicesOperationsExtensions.Get(
-                this.DataBoxEdgeManagementClient.Devices,
+            return this.DataBoxEdgeManagementClient.Devices.Get(
                 this.Name,
                 this.ResourceGroupName);
         }
 
-        private string GetResourceNotFoundMessage()
+        private string GetResourceAlreadyExistMessage()
         {
             return string.Format("'{0}'{1}{2}'.",
                 HelpMessageDevice.ObjectName, Constants.ResourceAlreadyExists, this.Name);
@@ -81,10 +79,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
         {
             try
             {
-                var resource = GetResourceModel();
-                if (resource == null) return false;
-                var msg = GetResourceNotFoundMessage();
-                throw new Exception(msg);
+                if (GetResource() == null) return false;
+                throw new Exception(GetResourceAlreadyExistMessage());
             }
             catch (CloudException e)
             {
@@ -98,17 +94,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
         }
 
 
-        private PSResourceModel CreateResourceModel()
+        private PSDataBoxEdgeDevice CreateResource()
         {
-            var dbe = new DataBoxEdgeDevice {Sku = new Sku(this.Sku), Location = this.Location};
-
-            var device = new PSResourceModel(
-                DevicesOperationsExtensions.CreateOrUpdate(
-                    this.DataBoxEdgeManagementClient.Devices,
+            var dataBoxEdgeDevice = new DataBoxEdgeDevice {Sku = new Sku(this.Sku), Location = this.Location};
+            var psDataBoxEdgeDevice = new PSDataBoxEdgeDevice(
+                this.DataBoxEdgeManagementClient.Devices.CreateOrUpdate(
                     this.Name,
-                    dbe,
+                    dataBoxEdgeDevice,
                     this.ResourceGroupName));
-            return device;
+            return psDataBoxEdgeDevice;
         }
 
         public override void ExecuteCmdlet()
@@ -118,9 +112,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
                     HelpMessageDevice.ObjectName, this.Name)))
             {
                 DoesResourceExists();
-                var results = new List<PSResourceModel>
+                var results = new List<PSDataBoxEdgeDevice>
                 {
-                    CreateResourceModel()
+                    CreateResource()
                 };
                 WriteObject(results, true);
             }

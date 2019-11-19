@@ -12,17 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.EdgeGateway;
+using Microsoft.Azure.Management.EdgeGateway.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
+using Microsoft.Rest.Azure;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Management.EdgeGateway;
-using Microsoft.Rest.Azure;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.Alert;
-using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeAlert;
-using PSTopLevelResourceObject = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
 {
-    public class DataBoxEdgeAlert
+    public class DataBoxEdgeDeviceAlert
     {
         public string ResourceId { get; set; }
 
@@ -30,63 +29,59 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Devices
 
         public string DeviceName { get; set; }
         public string Name { get; set; }
-        private DataBoxEdgeManagementClient _dataBoxManagementClient;
+        public DataBoxEdgeManagementClient DataBoxEdgeManagementClient;
 
-        public PSTopLevelResourceObject DeviceObject { get; set; }
+        public PSDataBoxEdgeDevice DeviceObject { get; set; }
 
 
-        private ResourceModel GetResourceModel()
+        private Alert GetResource()
         {
-            return AlertsOperationsExtensions.Get(
-                this._dataBoxManagementClient.Alerts,
+            return this.DataBoxEdgeManagementClient.Alerts.Get(
                 this.DeviceName,
                 this.Name,
                 this.ResourceGroupName);
         }
 
-        private IPage<ResourceModel> ListResourceModel()
+        private IPage<Alert> ListResource()
         {
-            return AlertsOperationsExtensions.ListByDataBoxEdgeDevice(
-                this._dataBoxManagementClient.Alerts,
+            return this.DataBoxEdgeManagementClient.Alerts.ListByDataBoxEdgeDevice(
                 this.DeviceName,
                 this.ResourceGroupName);
         }
 
-        private IPage<ResourceModel> ListResourceModel(string nextPageLink)
+        private IPage<Alert> ListResource(string nextPageLink)
         {
-            return AlertsOperationsExtensions.ListByDataBoxEdgeDeviceNext(
-                this._dataBoxManagementClient.Alerts,
+            return this.DataBoxEdgeManagementClient.Alerts.ListByDataBoxEdgeDeviceNext(
                 nextPageLink);
         }
 
-        private List<PSResourceModel> GetByResourceName()
+        private List<PSDataBoxEdgeAlert> GetResourceByName()
         {
-            var resourceModel = GetResourceModel();
-            return new List<PSResourceModel>() {new PSResourceModel(resourceModel)};
+            return new List<PSDataBoxEdgeAlert>() {new PSDataBoxEdgeAlert(GetResource()) };
         }
 
-        public List<PSResourceModel> Get()
+        public List<PSDataBoxEdgeAlert> Get()
         {
             if (!string.IsNullOrEmpty(this.Name))
             {
-                return GetByResourceName();
+                return GetResourceByName();
             }
 
-            var resourceModels = ListResourceModel();
-            var paginatedResult = new List<ResourceModel>(resourceModels);
-            while (!string.IsNullOrEmpty(resourceModels.NextPageLink))
+            var listResource = ListResource();
+            var paginatedResult = new List<Alert>(listResource);
+            while (!string.IsNullOrEmpty(listResource.NextPageLink))
             {
-                resourceModels = ListResourceModel(resourceModels.NextPageLink);
-                paginatedResult.AddRange(resourceModels);
+                listResource = ListResource(listResource.NextPageLink);
+                paginatedResult.AddRange(listResource);
             }
 
-            return paginatedResult.Select(t => new PSResourceModel(t)).ToList();
+            return paginatedResult.Select(t => new PSDataBoxEdgeAlert(t)).ToList();
         }
 
-        public DataBoxEdgeAlert(DataBoxEdgeManagementClient dataBoxManagementClient,
+        public DataBoxEdgeDeviceAlert(DataBoxEdgeManagementClient dataBoxManagementClient,
             string respResourceGroupName, string deviceName)
         {
-            this._dataBoxManagementClient = dataBoxManagementClient;
+            this.DataBoxEdgeManagementClient = dataBoxManagementClient;
             this.DeviceName = deviceName;
             this.ResourceGroupName = respResourceGroupName;
         }

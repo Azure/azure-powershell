@@ -17,8 +17,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Management.EdgeGateway;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using PSTopLevelResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice;
-using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeJob;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Jobs
 {
@@ -26,8 +25,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Jobs
          Constants.Job,
          DefaultParameterSetName = GetByNameParameterSet
      ),
-     OutputType(typeof(PSResourceModel))]
-    public class DataBoxEdgeJobsGetCmdletBase : AzureDataBoxEdgeCmdletBase
+     OutputType(typeof(PSDataBoxEdgeJob))]
+    public class DataBoxEdgeJobsGetCmdlet : AzureDataBoxEdgeCmdletBase
     {
         private const string GetByNameParameterSet = "GetByNameParameterSet";
         private const string GetByResourceIdObject = "GetByResourceIdObject";
@@ -35,12 +34,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Jobs
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetByResourceIdObject,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
             Position = 0)]
         [ValidateNotNullOrEmpty]
@@ -49,6 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Jobs
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessageJobs.DeviceName,
             Position = 1)]
         [ResourceNameCompleter("Microsoft.DataBoxEdge/dataBoxEdgeDevices", nameof(ResourceGroupName))]
@@ -57,10 +59,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Jobs
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessageJobs.Name,
             Position = 2)]
         [Parameter(Mandatory = true,
             ParameterSetName = GetByParentObjectParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessageJobs.Name
         )]
         [ValidateNotNullOrEmpty]
@@ -70,7 +74,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Jobs
             ParameterSetName = GetByParentObjectParameterSet,
             HelpMessage = Constants.PsDeviceObjectHelpMessage)]
         [ValidateNotNull]
-        public PSTopLevelResourceModel DeviceObject;
+        public PSDataBoxEdgeDevice DeviceObject;
+
+        private PSDataBoxEdgeJob GetResource()
+        {
+            return new PSDataBoxEdgeJob(
+                this.DataBoxEdgeManagementClient.Jobs.Get(
+                    this.DeviceName,
+                    this.Name,
+                    this.ResourceGroupName
+                )
+            );
+        }
 
 
         public override void ExecuteCmdlet()
@@ -89,23 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Jobs
                 this.DeviceName = this.DeviceObject.Name;
             }
 
-            var results = new List<PSResourceModel>();
-            if (!string.IsNullOrEmpty(this.Name) &&
-                !string.IsNullOrEmpty(this.DeviceName) &&
-                !string.IsNullOrEmpty(this.ResourceGroupName))
-            {
-                results.Add(
-                    new PSResourceModel(
-                        JobsOperationsExtensions.Get(
-                            this.DataBoxEdgeManagementClient.Jobs,
-                            this.DeviceName,
-                            this.Name,
-                            this.ResourceGroupName
-                        )
-                    )
-                );
-            }
-
+            var results = new List<PSDataBoxEdgeJob>() {GetResource()};
             WriteObject(results, true);
         }
     }

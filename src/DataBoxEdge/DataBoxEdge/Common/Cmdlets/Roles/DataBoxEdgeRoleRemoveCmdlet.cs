@@ -12,64 +12,61 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.EdgeGateway;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.Share;
-using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare;
+using System.Management.Automation;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.Share, DefaultParameterSetName = DeleteByNameParameterSet,
+    [Cmdlet(VerbsCommon.Remove, Constants.Role,
+         DefaultParameterSetName = DeleteByNameParameterSet,
          SupportsShouldProcess = true
      ),
-     OutputType(typeof(bool))]
-    public class DataBoxEdgeShareRemoveCmdletBase : AzureDataBoxEdgeCmdletBase
+     OutputType(typeof(PSDataBoxEdgeRole))]
+    public class DataBoxEdgeRoleRemoveCmdlet : AzureDataBoxEdgeCmdletBase
     {
         private const string DeleteByNameParameterSet = "DeleteByNameParameterSet";
         private const string DeleteByInputObjectParameterSet = "DeleteByInputObjectParameterSet";
         private const string DeleteByResourceIdParameterSet = "DeleteByResourceIdParameterSet";
 
-        [Parameter(
-            Mandatory = true,
+        [Parameter(Mandatory = true,
             ParameterSetName = DeleteByResourceIdParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = Constants.ResourceIdHelpMessage,
-            Position = 0)]
+            HelpMessage = Constants.ResourceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(
-            Mandatory = true,
+        [Parameter(Mandatory = true,
             ValueFromPipeline = true,
             ParameterSetName = DeleteByInputObjectParameterSet,
-            HelpMessage = Constants.InputObjectHelpMessage,
-            Position = 0
+            HelpMessage = Constants.InputObjectHelpMessage
         )]
         [ValidateNotNull]
-        public PSResourceModel InputObject { get; set; }
-
+        public PSDataBoxEdgeRole InputObject { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = DeleteByNameParameterSet,
-            HelpMessage = Constants.ResourceGroupNameHelpMessage,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.ResourceGroupNameHelpMessage, 
             Position = 0)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = DeleteByNameParameterSet,
-            HelpMessage = Constants.DeviceNameHelpMessage,
+            HelpMessage = Constants.DeviceNameHelpMessage, 
             Position = 1)]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.DataBoxEdge/dataBoxEdgeDevices", nameof(ResourceGroupName))]
         public string DeviceName { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = true, 
             ParameterSetName = DeleteByNameParameterSet,
-            HelpMessage = Constants.NameHelpMessage,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.NameHelpMessage, 
             Position = 2)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -82,8 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
 
         private bool Remove()
         {
-            SharesOperationsExtensions.Delete(
-                this.DataBoxEdgeManagementClient.Shares,
+            this.DataBoxEdgeManagementClient.Roles.Delete(
                 this.DeviceName,
                 this.Name,
                 this.ResourceGroupName);
@@ -110,7 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
 
             if (this.ShouldProcess(this.Name,
                 string.Format("Removing '{0}' in device '{1}' with name '{2}'.",
-                    HelpMessageShare.ObjectName, this.DeviceName, this.Name)))
+                    HelpMessageRoles.ObjectName, this.DeviceName, this.Name)))
             {
                 var removed = Remove();
                 if (this.PassThru.IsPresent)

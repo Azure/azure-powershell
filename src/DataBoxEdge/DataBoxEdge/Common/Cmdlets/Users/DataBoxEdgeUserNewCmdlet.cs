@@ -12,19 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.EdgeGateway;
+using Microsoft.Azure.Management.EdgeGateway.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Utils;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
 using System.Security;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.EdgeGateway;
-using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Utils;
-using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
-using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Common;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.User;
-using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Users
 {
@@ -32,12 +31,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Users
          SupportsShouldProcess = true
      ),
      OutputType(typeof(PSDataBoxEdgeDevice))]
-    public class DataBoxEdgeUserNewCmdletBase : AzureDataBoxEdgeCmdletBase
+    public class DataBoxEdgeUserNewCmdlet : AzureDataBoxEdgeCmdletBase
     {
         private const string NewParameterSet = "NewParameterSet";
 
         [Parameter(Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
+            ValueFromPipelineByPropertyName = true,
             Position = 0)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
@@ -45,6 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Users
 
         [Parameter(Mandatory = true,
             HelpMessage = Constants.DeviceNameHelpMessage,
+            ValueFromPipelineByPropertyName = true,
             Position = 1)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.DataBoxEdge/dataBoxEdgeDevices", nameof(ResourceGroupName))]
@@ -72,16 +73,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Users
             return this.EncryptionKey.ConvertToString();
         }
 
-        private ResourceModel GetResourceModel()
+        private User GetResource()
         {
-            return UsersOperationsExtensions.Get(
-                this.DataBoxEdgeManagementClient.Users,
+            return this.DataBoxEdgeManagementClient.Users.Get(
                 this.DeviceName,
                 this.Name,
                 this.ResourceGroupName);
         }
 
-        private string GetResourceNotFoundMessage()
+        private string GetResourceAlreadyExistMessage()
         {
             return string.Format("'{0}'{1}{2}'.",
                 HelpMessageUsers.ObjectName, Constants.ResourceAlreadyExists, this.Name);
@@ -91,9 +91,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Users
         {
             try
             {
-                var resource = GetResourceModel();
+                var resource = GetResource();
                 if (resource == null) return false;
-                var msg = GetResourceNotFoundMessage();
+                var msg = GetResourceAlreadyExistMessage();
                 throw new Exception(msg);
             }
             catch (CloudException e)
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Users
             }
         }
 
-        private PSResourceModel CreateResourceModel()
+        private PSDataBoxEdgeUser CreateResource()
         {
             var password = this.Password.ConvertToString();
             PasswordUtility.ValidateUserPasswordPattern(nameof(this.Password), password);
@@ -118,9 +118,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Users
                     password,
                     this.GetKeyForEncryption()
                 );
-            return new PSResourceModel(
-                UsersOperationsExtensions.CreateOrUpdate(
-                    this.DataBoxEdgeManagementClient.Users,
+            return new PSDataBoxEdgeUser(
+                this.DataBoxEdgeManagementClient.Users.CreateOrUpdate(
                     this.DeviceName,
                     this.Name,
                     this.ResourceGroupName,
@@ -136,9 +135,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Users
             {
                 DoesResourceExists();
 
-                var results = new List<PSResourceModel>()
+                var results = new List<PSDataBoxEdgeUser>()
                 {
-                    CreateResourceModel()
+                    CreateResource()
                 };
 
                 WriteObject(results, true);

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Azure.Management.EdgeGateway.Models;
+﻿using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
+using System;
+using System.Collections.Generic;
 using Alert = Microsoft.Azure.Management.EdgeGateway.Models.Alert;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models

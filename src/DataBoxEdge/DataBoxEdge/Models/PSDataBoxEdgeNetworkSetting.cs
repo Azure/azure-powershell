@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using Microsoft.Azure.Commands.DataBoxEdge.Common;
-using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
 using NetworkSettings = Microsoft.Azure.Management.EdgeGateway.Models.NetworkSettings;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models

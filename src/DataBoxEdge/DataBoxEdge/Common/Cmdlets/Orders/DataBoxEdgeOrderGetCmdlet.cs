@@ -14,19 +14,18 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.EdgeGateway;
+using Microsoft.Azure.Management.EdgeGateway.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Management.Automation;
-using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeOrder;
-using PSTopLevelResource = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.Order;
 
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
 {
     [Cmdlet(VerbsCommon.Get, Constants.Order, DefaultParameterSetName = GetByNameParameterSet
      ),
-     OutputType(typeof(PSResourceModel))
+     OutputType(typeof(PSDataBoxEdgeOrder))
     ]
     public class DataBoxEdgeOrderGetCmdlet : AzureDataBoxEdgeCmdletBase
     {
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
             ValueFromPipeline = true,
             HelpMessage = Constants.PsDeviceObjectHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public PSTopLevelResource DeviceObject { get; set; }
+        public PSDataBoxEdgeDevice DeviceObject { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetByResourceIdParameterSet,
@@ -69,20 +68,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Orders
         [ValidateNotNullOrEmpty]
         public string DeviceName { get; set; }
 
-        private ResourceModel GetResourceModel()
+        private Order GetResource()
         {
             return this.DataBoxEdgeManagementClient.Orders.Get(
                 this.DeviceName,
                 this.ResourceGroupName);
         }
 
-        private List<PSResourceModel> ListResourceByName()
+        private List<PSDataBoxEdgeOrder> ListResourceByName()
         {
-            var resourceModel = GetResourceModel();
-            return new List<PSResourceModel>() {new PSResourceModel(resourceModel)};
+            var order = GetResource();
+            return new List<PSDataBoxEdgeOrder>() {new PSDataBoxEdgeOrder(order)};
         }
 
-        private List<PSResourceModel> ListResource()
+        private List<PSDataBoxEdgeOrder> ListResource()
         {
             return ListResourceByName();
         }

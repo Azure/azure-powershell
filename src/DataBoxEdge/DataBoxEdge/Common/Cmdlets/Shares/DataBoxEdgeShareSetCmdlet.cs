@@ -12,23 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.EdgeGateway;
 using Microsoft.Azure.Management.EdgeGateway.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.Share;
-using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare;
+using System.Collections;
+using System.Collections.Generic;
+using System.Management.Automation;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Shares
 {
     [Cmdlet(VerbsCommon.Set, Constants.Share, DefaultParameterSetName = SmbParameterSet,
          SupportsShouldProcess = true),
-     OutputType(typeof(PSResourceModel))]
-    public class DataBoxEdgeShareSetCmdletBase : AzureDataBoxEdgeCmdletBase
+     OutputType(typeof(PSDataBoxEdgeShare))]
+    public class DataBoxEdgeShareSetCmdlet : AzureDataBoxEdgeCmdletBase
     {
         private const string SmbParameterSet = "SmbParameterSet";
         private const string NfsParameterSet = "NfsParameterSet";
@@ -65,15 +64,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
             HelpMessage = Constants.InputObjectHelpMessage
         )]
         [ValidateNotNull]
-        public PSResourceModel InputObject { get; set; }
+        public PSDataBoxEdgeShare InputObject { get; set; }
 
 
         [Parameter(Mandatory = true,
             ParameterSetName = NfsParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
             Position = 0)]
         [Parameter(Mandatory = true,
             ParameterSetName = SmbParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
             Position = 0)]
         [ValidateNotNullOrEmpty]
@@ -82,10 +83,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
 
         [Parameter(Mandatory = true,
             ParameterSetName = NfsParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.DeviceNameHelpMessage,
             Position = 1)]
         [Parameter(Mandatory = true,
             ParameterSetName = SmbParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.DeviceNameHelpMessage,
             Position = 1)]
         [ValidateNotNullOrEmpty]
@@ -94,10 +97,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
 
         [Parameter(Mandatory = true,
             ParameterSetName = NfsParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.NameHelpMessage,
             Position = 2)]
         [Parameter(Mandatory = true,
             ParameterSetName = SmbParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.NameHelpMessage,
             Position = 2)]
         [ValidateNotNullOrEmpty]
@@ -132,8 +137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
 
         private string GetUserId(string username)
         {
-            var user = UsersOperationsExtensions.Get(
-                this.DataBoxEdgeManagementClient.Users,
+            var user = this.DataBoxEdgeManagementClient.Users.Get(
                 this.DeviceName,
                 username,
                 this.ResourceGroupName
@@ -141,12 +145,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
             return user.Id;
         }
 
-        private ResourceModel GetResourceModel()
+        private Share GetResource()
         {
-            return SharesOperationsExtensions.Get(
-                this.DataBoxEdgeManagementClient.Shares,
+            return this.DataBoxEdgeManagementClient.Shares.Get(
                 this.DeviceName,
                 this.Name,
+                this.ResourceGroupName);
+        }
+
+        private Share UpdateShare(Share share)
+        {
+            return this.DataBoxEdgeManagementClient.Shares.CreateOrUpdate(
+                this.DeviceName,
+                this.Name,
+                share,
                 this.ResourceGroupName);
         }
 
@@ -167,7 +179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
                 this.Name = resource.Name;
             }
 
-            var share = this.GetResourceModel();
+            var share = this.GetResource();
 
             if (this.IsParameterBound(c => c.ClientAccessRight))
             {
@@ -203,15 +215,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
                 string.Format("Updating '{0}' in device '{1}' with name '{2}'.",
                     HelpMessageShare.ObjectName, this.DeviceName, this.Name)))
             {
-                share = SharesOperationsExtensions.CreateOrUpdate(
-                    DataBoxEdgeManagementClient.Shares,
-                    this.DeviceName,
-                    this.Name,
-                    share,
-                    this.ResourceGroupName);
-                var results = new List<PSResourceModel>()
+                share = UpdateShare(share);
+                var results = new List<PSDataBoxEdgeShare>()
                 {
-                    new PSResourceModel(share)
+                    new PSDataBoxEdgeShare(share)
                 };
                 WriteObject(results, true);
             }

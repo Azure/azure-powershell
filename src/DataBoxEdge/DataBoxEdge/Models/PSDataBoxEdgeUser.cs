@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Azure.Management.EdgeGateway.Models;
+﻿using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using Microsoft.Azure.Commands.DataBoxEdge.Common;
-using System.Text;
-using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
+using System;
 using User = Microsoft.Azure.Management.EdgeGateway.Models.User;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models

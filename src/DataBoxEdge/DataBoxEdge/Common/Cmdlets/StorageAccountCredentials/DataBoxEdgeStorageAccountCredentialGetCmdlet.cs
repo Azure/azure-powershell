@@ -23,11 +23,12 @@ using System.Linq;
 using System.Management.Automation;
 
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.StorageAccountCredentials
 {
-    [Cmdlet(VerbsCommon.Get, Constants.Trigger, DefaultParameterSetName = ListParameterSet),
-     OutputType(typeof(PSDataBoxEdgeTrigger))]
-    public class DataBoxEdgeTriggerGetCmdlet : AzureDataBoxEdgeCmdletBase
+    [Cmdlet(VerbsCommon.Get, Constants.Sac, DefaultParameterSetName = ListParameterSet
+     ),
+     OutputType(typeof(PSDataBoxEdgeStorageAccountCredential))]
+    public class DataBoxEdgeStorageAccountCredentialGetCmdlet : AzureDataBoxEdgeCmdletBase
     {
         private const string ListParameterSet = "ListParameterSet";
         private const string GetByNameParameterSet = "GetByNameParameterSet";
@@ -72,12 +73,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
         [Parameter(Mandatory = true,
             ParameterSetName = GetByNameParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = Constants.NameHelpMessage,
+            HelpMessage = HelpMessageStorageAccountCredential.StorageAccountNameHelpMessage,
             Position = 2)]
         [Parameter(Mandatory = false,
             ParameterSetName = GetByParentObjectParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessageTrigger.NameHelpMessage
+            HelpMessage = HelpMessageStorageAccountCredential.StorageAccountNameHelpMessage
         )]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -88,46 +89,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Triggers
         [ValidateNotNull]
         public PSDataBoxEdgeDevice DeviceObject;
 
-        private Trigger GetResource()
+        private StorageAccountCredential GetResource()
         {
-            return this.DataBoxEdgeManagementClient.Triggers.Get(this.DeviceName, this.Name, this.ResourceGroupName);
+            return this.DataBoxEdgeManagementClient.StorageAccountCredentials.Get(
+                this.DeviceName,
+                this.Name,
+                this.ResourceGroupName);
         }
 
-        private List<PSDataBoxEdgeTrigger> ListResourceByName()
+        private List<PSDataBoxEdgeStorageAccountCredential> GetResourceByName()
         {
-            return new List<PSDataBoxEdgeTrigger>() {PSDataBoxEdgeTrigger.PSDataBoxEdgeTriggerObject(GetResource()) };
+            return new List<PSDataBoxEdgeStorageAccountCredential>() {new PSDataBoxEdgeStorageAccountCredential(GetResource()) };
         }
 
-        private IPage<Trigger> ListResource()
+        private IPage<StorageAccountCredential> ListResource()
         {
-            return this.DataBoxEdgeManagementClient.Triggers.ListByDataBoxEdgeDevice(
+            return this.DataBoxEdgeManagementClient.StorageAccountCredentials.ListByDataBoxEdgeDevice(
                 this.DeviceName,
                 this.ResourceGroupName);
         }
 
-        private IPage<Trigger> ListResource(string nextPageLink)
+        private IPage<StorageAccountCredential> ListResource(string nextPageLink)
         {
-            return this.DataBoxEdgeManagementClient.Triggers.ListByDataBoxEdgeDeviceNext(
+            return this.DataBoxEdgeManagementClient.StorageAccountCredentials.ListByDataBoxEdgeDeviceNext(
                 nextPageLink
             );
         }
 
-        private List<PSDataBoxEdgeTrigger> ListPSResource()
+        private List<PSDataBoxEdgeStorageAccountCredential> ListPSResource()
         {
             if (!string.IsNullOrEmpty(this.Name))
             {
-                return ListResourceByName();
+                return GetResourceByName();
             }
 
             var listResource = ListResource();
-            var paginatedResult = new List<Trigger>(listResource);
+            var paginatedResult = new List<StorageAccountCredential>(listResource);
             while (!string.IsNullOrEmpty(listResource.NextPageLink))
             {
                 listResource = ListResource(listResource.NextPageLink);
                 paginatedResult.AddRange(listResource);
             }
 
-            return paginatedResult.Select(PSDataBoxEdgeTrigger.PSDataBoxEdgeTriggerObject).ToList();
+            return paginatedResult.Select(t => new PSDataBoxEdgeStorageAccountCredential(t)).ToList();
         }
 
         public override void ExecuteCmdlet()

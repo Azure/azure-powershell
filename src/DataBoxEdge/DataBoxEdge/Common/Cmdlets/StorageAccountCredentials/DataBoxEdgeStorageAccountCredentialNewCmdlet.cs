@@ -12,30 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.EdgeGateway;
+using Microsoft.Azure.Management.EdgeGateway.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
 using System.Security;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.EdgeGateway;
-using Microsoft.Azure.Management.EdgeGateway.Models;
-using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Common;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.StorageAccountCredential;
-using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.StorageAccountCredential
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.StorageAccountCredentials
 {
     [Cmdlet(VerbsCommon.New, Constants.Sac, DefaultParameterSetName = NewParameterSet,
          SupportsShouldProcess = true
      ),
-     OutputType(typeof(PSResourceModel))]
-    public class DataBoxEdgeStorageAccountCredentialNewCmdletBase : AzureDataBoxEdgeCmdletBase
+     OutputType(typeof(PSDataBoxEdgeStorageAccountCredential))]
+    public class DataBoxEdgeStorageAccountCredentialNewCmdlet : AzureDataBoxEdgeCmdletBase
     {
         private const string NewParameterSet = "NewParameterSet";
 
         [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
             Position = 0)]
         [ValidateNotNullOrEmpty]
@@ -43,6 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.StorageA
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.DeviceNameHelpMessage,
             Position = 1)]
         [ValidateNotNullOrEmpty]
@@ -80,16 +81,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.StorageA
             return encryptionKey;
         }
 
-        private ResourceModel GetResourceModel()
+        private StorageAccountCredential GetResource()
         {
-            return StorageAccountCredentialsOperationsExtensions.Get(
-                this.DataBoxEdgeManagementClient.StorageAccountCredentials,
+            return this.DataBoxEdgeManagementClient.StorageAccountCredentials.Get(
                 this.DeviceName,
                 this.Name,
                 this.ResourceGroupName);
         }
 
-        private string GetResourceNotFoundMessage()
+        private string GetResourceAlreadyExistMessage()
         {
             return string.Format("'{0}'{1}{2}'.",
                 HelpMessageStorageAccountCredential.ObjectName, Constants.ResourceAlreadyExists, this.Name);
@@ -99,9 +99,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.StorageA
         {
             try
             {
-                var resource = GetResourceModel();
+                var resource = GetResource();
                 if (resource == null) return false;
-                var msg = GetResourceNotFoundMessage();
+                var msg = GetResourceAlreadyExistMessage();
                 throw new Exception(msg);
             }
             catch (CloudException e)
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.StorageA
             }
         }
 
-        private PSResourceModel CreateResourceModel()
+        private PSDataBoxEdgeStorageAccountCredential CreateResource()
         {
             var encryptedSecret =
                 DataBoxEdgeManagementClient.Devices.GetAsymmetricEncryptedSecret(
@@ -125,9 +125,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.StorageA
                     GetKeyForEncryption()
                 );
 
-            return new PSResourceModel(
-                StorageAccountCredentialsOperationsExtensions.CreateOrUpdate(
-                    this.DataBoxEdgeManagementClient.StorageAccountCredentials,
+            return new PSDataBoxEdgeStorageAccountCredential(
+                this.DataBoxEdgeManagementClient.StorageAccountCredentials.CreateOrUpdate(
                     this.DeviceName,
                     this.Name,
                     InitStorageAccountCredentialObject(
@@ -141,14 +140,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.StorageA
                 ));
         }
 
-        private static ResourceModel InitStorageAccountCredentialObject(
+        private static StorageAccountCredential InitStorageAccountCredentialObject(
             string name,
             string storageAccountName,
             string accountType,
             string sslStatus,
             AsymmetricEncryptedSecret secret)
         {
-            var storageAccountCredential = new ResourceModel(
+            var storageAccountCredential = new StorageAccountCredential(
                 name,
                 sslStatus,
                 accountType,
@@ -164,9 +163,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.StorageA
                     HelpMessageStorageAccountCredential.ObjectName, this.DeviceName, this.Name)))
             {
                 DoesResourceExists();
-                var results = new List<PSResourceModel>()
+                var results = new List<PSDataBoxEdgeStorageAccountCredential>()
                 {
-                    CreateResourceModel()
+                    CreateResource()
                 };
 
                 WriteObject(results, true);

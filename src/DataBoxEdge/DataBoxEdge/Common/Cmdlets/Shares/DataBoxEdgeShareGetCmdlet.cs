@@ -12,23 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.EdgeGateway;
+using Microsoft.Azure.Management.EdgeGateway.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.EdgeGateway;
-using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.Share;
-using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare;
-using PSTopLevelResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice;
 
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Shares
 {
     [Cmdlet(VerbsCommon.Get, Constants.Share, DefaultParameterSetName = ListParameterSet),
-     OutputType(typeof(PSResourceModel))]
-    public class DataBoxEdgeShareGetCmdletBase : AzureDataBoxEdgeCmdletBase
+     OutputType(typeof(PSDataBoxEdgeShare))]
+    public class DataBoxEdgeShareGetCmdlet : AzureDataBoxEdgeCmdletBase
     {
         private const string ListParameterSet = "ListParameterSet";
         private const string GetByNameParameterSet = "GetByNameParameterSet";
@@ -37,16 +36,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetByResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = ListParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
             Position = 0)]
         [Parameter(Mandatory = true,
             ParameterSetName = GetByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
             Position = 0)]
         [ValidateNotNullOrEmpty]
@@ -55,10 +57,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
 
         [Parameter(Mandatory = true,
             ParameterSetName = ListParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.DeviceNameHelpMessage,
             Position = 1)]
         [Parameter(Mandatory = true,
             ParameterSetName = GetByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.DeviceNameHelpMessage,
             Position = 1)]
         [ValidateNotNullOrEmpty]
@@ -67,68 +71,68 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.NameHelpMessage,
             Position = 2)]
         [Parameter(Mandatory = false,
             ParameterSetName = GetByParentObjectParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessageShare.NameHelpMessage
         )]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true,
+        [Parameter(Mandatory = true, 
+            ValueFromPipeline = true,
             ParameterSetName = GetByParentObjectParameterSet,
             HelpMessage = Constants.PsDeviceObjectHelpMessage)]
         [ValidateNotNull]
-        public PSTopLevelResourceModel DeviceObject;
+        public PSDataBoxEdgeDevice DeviceObject;
 
-        private ResourceModel GetResourceModel()
+        private Share GetResource()
         {
-            return SharesOperationsExtensions.Get(
-                this.DataBoxEdgeManagementClient.Shares,
+            return this.DataBoxEdgeManagementClient.Shares.Get(
                 this.DeviceName,
                 this.Name,
                 this.ResourceGroupName);
         }
 
-        private List<PSResourceModel> GetByResourceName()
+        private List<PSDataBoxEdgeShare> GetResourceByName()
         {
-            var resourceModel = GetResourceModel();
-            return new List<PSResourceModel>() {new PSResourceModel(resourceModel)};
+            var resource = GetResource();
+            return new List<PSDataBoxEdgeShare>() {new PSDataBoxEdgeShare(resource)};
         }
 
-        private IPage<ResourceModel> ListResourceModel()
+        private IPage<Share> ListResource()
         {
-            return SharesOperationsExtensions.ListByDataBoxEdgeDevice(
-                this.DataBoxEdgeManagementClient.Shares,
+            return this.DataBoxEdgeManagementClient.Shares.ListByDataBoxEdgeDevice(
                 this.DeviceName,
                 this.ResourceGroupName);
         }
 
-        private IPage<ResourceModel> ListResourceModel(string nextPageLink)
+        private IPage<Share> ListResource(string nextPageLink)
         {
-            return SharesOperationsExtensions.ListByDataBoxEdgeDeviceNext(
-                this.DataBoxEdgeManagementClient.Shares,
+            return this.DataBoxEdgeManagementClient.Shares.ListByDataBoxEdgeDeviceNext(
                 nextPageLink
             );
         }
 
-        private List<PSResourceModel> ListPSResourceModels()
+        private List<PSDataBoxEdgeShare> ListPSResource()
         {
             if (!string.IsNullOrEmpty(this.Name))
             {
-                return GetByResourceName();
+                return GetResourceByName();
             }
 
-            var resourceModel = ListResourceModel();
-            var paginatedResult = new List<ResourceModel>(resourceModel);
-            while (!string.IsNullOrEmpty(resourceModel.NextPageLink))
+            var listResource = ListResource();
+            var paginatedResult = new List<Share>(listResource);
+            while (!string.IsNullOrEmpty(listResource.NextPageLink))
             {
-                resourceModel = ListResourceModel(resourceModel.NextPageLink);
-                paginatedResult.AddRange(resourceModel);
+                listResource = ListResource(listResource.NextPageLink);
+                paginatedResult.AddRange(listResource);
             }
 
-            return paginatedResult.Select(t => new PSResourceModel(t)).ToList();
+            return paginatedResult.Select(t => new PSDataBoxEdgeShare(t)).ToList();
         }
 
         public override void ExecuteCmdlet()
@@ -147,7 +151,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
                 this.Name = resourceIdentifier.ResourceName;
             }
 
-            var results = ListPSResourceModels();
+            var results = ListPSResource();
             WriteObject(results, true);
         }
     }

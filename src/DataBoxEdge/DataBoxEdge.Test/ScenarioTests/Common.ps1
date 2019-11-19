@@ -48,7 +48,8 @@ Returns standard EncryptionKey
 #>
 function Get-EncryptionKey
 {
-	$encryptionKey = ConvertTo-SecureString -String ""
+	$val = Get-AzKeyVaultSecret -VaultName azpsdbe -Name "EncryptionKey"
+	$encryptionKey = $val.SecretValueText
 	return $encryptionKey 
 }
 

@@ -12,134 +12,129 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.EdgeGateway;
+using Microsoft.Azure.Management.EdgeGateway.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.EdgeGateway;
-using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.StorageAccountCredential;
-using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential;
-using PSTopLevelResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice;
 
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.StorageAccountCredential
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Bandwidths
 {
-    [Cmdlet(VerbsCommon.Get, Constants.Sac, DefaultParameterSetName = ListParameterSet
+    [Cmdlet(VerbsCommon.Get, Constants.BandwidthSchedule, DefaultParameterSetName = ListParameterSet
      ),
-     OutputType(typeof(PSResourceModel))]
-    public class DataBoxEdgeStorageAccountCredentialGetCmdletBase : AzureDataBoxEdgeCmdletBase
+     OutputType(typeof(PSDataBoxEdgeBandWidthSchedule))]
+    public class DataBoxEdgeBandwidthScheduleGetCmdlet : AzureDataBoxEdgeCmdletBase
     {
         private const string ListParameterSet = "ListParameterSet";
         private const string GetByNameParameterSet = "GetByNameParameterSet";
         private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
         private const string GetByParentObjectParameterSet = "GetByParentObjectParameterSet";
 
-        [Parameter(Mandatory = true,
-            ParameterSetName = GetByResourceIdParameterSet,
+        [Parameter(Mandatory = true, ParameterSetName = GetByResourceIdParameterSet,
             HelpMessage = Constants.ResourceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = ListParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
             Position = 0)]
         [Parameter(Mandatory = true,
             ParameterSetName = GetByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelpMessage,
             Position = 0)]
-        [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = ListParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.DeviceNameHelpMessage,
             Position = 1)]
         [Parameter(Mandatory = true,
             ParameterSetName = GetByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.DeviceNameHelpMessage,
             Position = 1)]
-        [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.DataBoxEdge/dataBoxEdgeDevices", nameof(ResourceGroupName))]
+        [ValidateNotNullOrEmpty]
         public string DeviceName { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = GetByNameParameterSet,
-            HelpMessage = HelpMessageStorageAccountCredential.StorageAccountNameHelpMessage,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.NameHelpMessage,
             Position = 2)]
         [Parameter(Mandatory = false,
             ParameterSetName = GetByParentObjectParameterSet,
-            HelpMessage = HelpMessageStorageAccountCredential.StorageAccountNameHelpMessage
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.NameHelpMessage
         )]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true,
+        [Parameter(Mandatory = true,
+            ValueFromPipeline = true,
             ParameterSetName = GetByParentObjectParameterSet,
             HelpMessage = Constants.PsDeviceObjectHelpMessage)]
         [ValidateNotNull]
-        public PSTopLevelResourceModel DeviceObject;
+        public PSDataBoxEdgeDevice DeviceObject;
 
-        private ResourceModel GetResourceModel()
+        private BandwidthSchedule GetResource()
         {
-            return StorageAccountCredentialsOperationsExtensions.Get(
-                this.DataBoxEdgeManagementClient.StorageAccountCredentials,
+            return this.DataBoxEdgeManagementClient.BandwidthSchedules.Get(
                 this.DeviceName,
                 this.Name,
                 this.ResourceGroupName);
         }
 
-        private List<PSResourceModel> GetByResourceName()
+        private List<PSDataBoxEdgeBandWidthSchedule> GetResourceByName()
         {
-            var resourceModel = GetResourceModel();
-            return new List<PSResourceModel>() {new PSResourceModel(resourceModel)};
+            return new List<PSDataBoxEdgeBandWidthSchedule>() {new PSDataBoxEdgeBandWidthSchedule(GetResource())};
         }
 
-        private IPage<ResourceModel> ListResourceModel()
+        private IPage<BandwidthSchedule> ListResource()
         {
-            return StorageAccountCredentialsOperationsExtensions.ListByDataBoxEdgeDevice(
-                this.DataBoxEdgeManagementClient.StorageAccountCredentials,
+            return this.DataBoxEdgeManagementClient.BandwidthSchedules.ListByDataBoxEdgeDevice(
                 this.DeviceName,
                 this.ResourceGroupName);
         }
 
-        private IPage<ResourceModel> ListResourceModel(string nextPageLink)
+        private IPage<BandwidthSchedule> ListResource(string nextPageLink)
         {
-            return StorageAccountCredentialsOperationsExtensions.ListByDataBoxEdgeDeviceNext(
-                this.DataBoxEdgeManagementClient.StorageAccountCredentials,
+            return this.DataBoxEdgeManagementClient.BandwidthSchedules.ListByDataBoxEdgeDeviceNext(
                 nextPageLink
             );
         }
 
-        private List<PSResourceModel> ListPSResourceModels()
+        private List<PSDataBoxEdgeBandWidthSchedule> ListPSResource()
         {
             if (!string.IsNullOrEmpty(this.Name))
             {
-                return GetByResourceName();
+                return GetResourceByName();
             }
 
-            var resourceModel = ListResourceModel();
-            var paginatedResult = new List<ResourceModel>(resourceModel);
-            while (!string.IsNullOrEmpty(resourceModel.NextPageLink))
+            var listResource = ListResource();
+            var paginatedResult = new List<BandwidthSchedule>(listResource);
+            while (!string.IsNullOrEmpty(listResource.NextPageLink))
             {
-                resourceModel = ListResourceModel(resourceModel.NextPageLink);
-                paginatedResult.AddRange(resourceModel);
+                listResource = ListResource(listResource.NextPageLink);
+                paginatedResult.AddRange(listResource);
             }
 
-            return paginatedResult.Select(t => new PSResourceModel(t)).ToList();
+            return paginatedResult.Select(t => new PSDataBoxEdgeBandWidthSchedule(t)).ToList();
         }
 
         public override void ExecuteCmdlet()
         {
-            if (this.IsParameterBound(c => this.DeviceObject))
-            {
-                this.ResourceGroupName = this.DeviceObject.ResourceGroupName;
-                this.DeviceName = this.DeviceObject.Name;
-            }
-
             if (this.IsParameterBound(c => c.ResourceId))
             {
                 var resourceIdentifier = new DataBoxEdgeResourceIdentifier(this.ResourceId);
@@ -148,7 +143,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.StorageA
                 this.Name = resourceIdentifier.ResourceName;
             }
 
-            var results = ListPSResourceModels();
+            if (this.IsParameterBound(c => this.DeviceObject))
+            {
+                this.ResourceGroupName = this.DeviceObject.ResourceGroupName;
+                this.DeviceName = this.DeviceObject.Name;
+            }
+
+            var results = ListPSResource();
             WriteObject(results, true);
         }
     }

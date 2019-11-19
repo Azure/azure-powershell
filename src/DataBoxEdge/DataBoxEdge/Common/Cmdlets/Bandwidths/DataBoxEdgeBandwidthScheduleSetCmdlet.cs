@@ -12,23 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Management.EdgeGateway;
+using Microsoft.Azure.Management.EdgeGateway.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Management.EdgeGateway;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.BandwidthSchedule;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Bandwidth
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Bandwidths
 {
-    using PSResourceModel = PSDataBoxEdgeBandWidthSchedule;
-
     [Cmdlet(VerbsCommon.Set, Constants.BandwidthSchedule, DefaultParameterSetName = UpdateByNameParameterSet,
          SupportsShouldProcess = true
      ),
-     OutputType(typeof(PSResourceModel))]
-    public class DataBoxEdgeBandwidthSetCmdletBase : AzureDataBoxEdgeCmdletBase
+     OutputType(typeof(PSDataBoxEdgeBandWidthSchedule))]
+    public class DataBoxEdgeBandwidthScheduleSetCmdlet: AzureDataBoxEdgeCmdletBase
     {
         private const string UpdateByResourceIdParameterSet = "UpdateByResourceIdParameterSet";
 
@@ -51,47 +49,48 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Bandwidt
 
 
         [Parameter(Mandatory = true, ParameterSetName = UpdateByResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceIdHelpMessage)]
         [Parameter(Mandatory = true, ParameterSetName = UpdateByResourceIdParameterUnlimitedBandwidthSet,
-            HelpMessage = Constants.ResourceIdHelpMessage)]
+            ValueFromPipelineByPropertyName = true, HelpMessage = Constants.ResourceIdHelpMessage)]
         [Parameter(Mandatory = true, ParameterSetName = UpdateByResourceIdParameterBandwidthSet,
-            HelpMessage = Constants.ResourceIdHelpMessage)]
+            ValueFromPipelineByPropertyName = true, HelpMessage = Constants.ResourceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = UpdateByInputObjectParameterSet,
-            HelpMessage = Constants.ResourceIdHelpMessage)]
+            ValueFromPipeline = true, HelpMessage = Constants.ResourceIdHelpMessage)]
         [Parameter(Mandatory = true, ParameterSetName = UpdateByInputObjectParameterUnlimitedBandwidthSet,
-            HelpMessage = Constants.ResourceIdHelpMessage)]
+            ValueFromPipeline = true, HelpMessage = Constants.ResourceIdHelpMessage)]
         [Parameter(Mandatory = true, ParameterSetName = UpdateByInputObjectParameterBandwidthSet,
-            HelpMessage = Constants.ResourceIdHelpMessage)]
+            ValueFromPipeline = true, HelpMessage = Constants.ResourceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public PSResourceModel InputObject { get; set; }
+        public PSDataBoxEdgeBandWidthSchedule InputObject { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet,
-            HelpMessage = Constants.ResourceGroupNameHelpMessage, Position = 0)]
+            ValueFromPipelineByPropertyName = true, HelpMessage = Constants.ResourceGroupNameHelpMessage, Position = 0)]
         [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterUnlimitedBandwidthSet,
-            HelpMessage = Constants.ResourceGroupNameHelpMessage, Position = 0)]
+            ValueFromPipelineByPropertyName = true, HelpMessage = Constants.ResourceGroupNameHelpMessage, Position = 0)]
         [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterBandwidthSet,
-            HelpMessage = Constants.ResourceGroupNameHelpMessage, Position = 0)]
+            ValueFromPipelineByPropertyName = true, HelpMessage = Constants.ResourceGroupNameHelpMessage, Position = 0)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet,
-            HelpMessage = Constants.DeviceNameHelpMessage, Position = 1)]
+            ValueFromPipelineByPropertyName = true, HelpMessage = Constants.DeviceNameHelpMessage, Position = 1)]
         [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterUnlimitedBandwidthSet,
-            HelpMessage = Constants.DeviceNameHelpMessage, Position = 1)]
+            ValueFromPipelineByPropertyName = true, HelpMessage = Constants.DeviceNameHelpMessage, Position = 1)]
         [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterBandwidthSet,
-            HelpMessage = Constants.DeviceNameHelpMessage, Position = 1)]
+            ValueFromPipelineByPropertyName = true, HelpMessage = Constants.DeviceNameHelpMessage, Position = 1)]
         [ValidateNotNullOrEmpty]
         public string DeviceName { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet,
-            HelpMessage = Constants.NameHelpMessage, Position = 2)]
+            ValueFromPipelineByPropertyName = true, HelpMessage = Constants.NameHelpMessage, Position = 2)]
         [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterUnlimitedBandwidthSet,
-            HelpMessage = Constants.NameHelpMessage, Position = 2)]
+            ValueFromPipelineByPropertyName = true, HelpMessage = Constants.NameHelpMessage, Position = 2)]
         [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterBandwidthSet,
-            HelpMessage = Constants.NameHelpMessage, Position = 2)]
+            ValueFromPipelineByPropertyName = true, HelpMessage = Constants.NameHelpMessage, Position = 2)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -130,52 +129,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Bandwidt
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
-        private ResourceModel GetResourceModel()
+        private BandwidthSchedule GetResource()
         {
-            return BandwidthSchedulesOperationsExtensions.Get(
-                this.DataBoxEdgeManagementClient.BandwidthSchedules,
+            return this.DataBoxEdgeManagementClient.BandwidthSchedules.Get(
                 this.DeviceName,
                 this.Name,
                 this.ResourceGroupName);
         }
 
-        private PSResourceModel UpdateResourceModel()
+        private PSDataBoxEdgeBandWidthSchedule UpdateResource()
         {
-            var resourceModel = GetResourceModel();
+            var resource = GetResource();
 
             if (this.DaysOfWeek != null && this.DaysOfWeek.Length != 0)
             {
                 var days = new List<string>(this.DaysOfWeek);
-                resourceModel.Days = days;
+                resource.Days = days;
             }
 
             if (this.Bandwidth > 0)
             {
-                resourceModel.RateInMbps = Bandwidth;
+                resource.RateInMbps = Bandwidth;
             }
 
             if (UnlimitedBandwidth)
             {
-                resourceModel.RateInMbps = 0;
+                resource.RateInMbps = 0;
             }
 
 
             if (!string.IsNullOrEmpty(this.StartTime))
             {
-                resourceModel.Start = this.StartTime;
+                resource.Start = this.StartTime;
             }
 
             if (!string.IsNullOrEmpty(this.StartTime))
             {
-                resourceModel.Stop = this.StopTime;
+                resource.Stop = this.StopTime;
             }
 
-            return new PSResourceModel(
-                BandwidthSchedulesOperationsExtensions.CreateOrUpdate(
-                    this.DataBoxEdgeManagementClient.BandwidthSchedules,
+            return new PSDataBoxEdgeBandWidthSchedule(
+                this.DataBoxEdgeManagementClient.BandwidthSchedules.CreateOrUpdate(
                     this.DeviceName,
                     this.Name,
-                    resourceModel,
+                    resource,
                     this.ResourceGroupName));
         }
 
@@ -200,7 +197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Bandwidt
                 string.Format("Updating '{0}' in device '{1}' with name '{2}'.",
                     HelpMessageBandwidthSchedule.ObjectName, this.DeviceName, this.Name)))
             {
-                var result = UpdateResourceModel();
+                var result = UpdateResource();
                 WriteObject(result);
             }
         }

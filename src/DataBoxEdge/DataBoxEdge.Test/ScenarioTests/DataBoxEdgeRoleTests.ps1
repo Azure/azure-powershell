@@ -48,9 +48,8 @@ function Test-CreateRole
 	$iotDeviceConnectionString = Get-IotDeviceConnectionString
 	$iotDeviceConnSec = ConvertTo-SecureString $iotDeviceConnectionString -AsPlainText -Force
 
-	$encryptionKeyString = Get-EncryptionKey 
-	$encryptionKey = ConvertTo-SecureString $encryptionKeyString -AsPlainText -Force
-
+	$encryptionKey = Get-EncryptionKey 
+	
 	$enabled = "Enabled"
 	$platform = "Windows"
 	# Test
@@ -82,9 +81,8 @@ function Test-RemoveRole
 	$iotDeviceConnectionString = Get-IotDeviceConnectionString
 	$iotDeviceConnSec = ConvertTo-SecureString $iotDeviceConnectionString -AsPlainText -Force
 
-	$encryptionKeyString = Get-EncryptionKey 
-	$encryptionKey = ConvertTo-SecureString $encryptionKeyString -AsPlainText -Force
-
+	$encryptionKey = Get-EncryptionKey 
+	
 	$enabled = "Enabled"
 	$platform = "Windows"
 	# Test

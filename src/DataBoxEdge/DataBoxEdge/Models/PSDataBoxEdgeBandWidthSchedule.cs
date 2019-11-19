@@ -1,6 +1,6 @@
-﻿using System;
-using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
+﻿using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using System;
 using BandwidthSchedule = Microsoft.Azure.Management.EdgeGateway.Models.BandwidthSchedule;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
