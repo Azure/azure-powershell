@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the Enable-AzCustomDomainHttps cmdlet.
     /// </summary>
-    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorCustomDomainHttps", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet),  OutputType(typeof(PSFrontendEndpoint))]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorCustomDomainHttps", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSFrontendEndpoint))]
     public class EnableAzureRmFrontDoorCustomDomainHttps : AzureFrontDoorCmdletBase
     {
         /// <summary>
@@ -97,9 +97,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public string SecretVersion { get; set; }
 
         /// <summary>
-        /// Minimum TLS version to support
+        /// The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Minimum TLS version to support")]
+        [Parameter(Mandatory = false, HelpMessage = "The minimum TLS version required from the clients to establish an SSL handshake with Front Door.")]
         [PSArgumentCompleter("1.0", "1.2")]
         public string MinimumTlsVersion { get; set; }
 
@@ -126,10 +126,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                     FrontDoorName = ResourceIdentifierExtensions.GetFrontDoorName(identifier);
                 }
 
-                var customHttpsConfiguration = new Management.FrontDoor.Models.CustomHttpsConfiguration()
-                {
-                    MinimumTlsVersion = !this.IsParameterBound(c => c.MinimumTlsVersion) ? "1.0" : MinimumTlsVersion
-                };
+                var customHttpsConfiguration = new Management.FrontDoor.Models.CustomHttpsConfiguration();
 
                 if (ParameterSetName == FieldsParameterSet || ParameterSetName == ResourceIdParameterSet || ParameterSetName == ObjectParameterSet)
                 {
@@ -144,12 +141,21 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                     customHttpsConfiguration.SecretVersion = SecretVersion;
                 }
 
+                if (this.IsParameterBound(c => c.MinimumTlsVersion))
+                {
+                    customHttpsConfiguration.MinimumTlsVersion = MinimumTlsVersion;
+                }
+                else
+                {
+                    customHttpsConfiguration.MinimumTlsVersion = "1.2";
+                }
+
                 if (ShouldProcess(Resources.FrontDoorTarget, string.Format(Resources.EnableCustomDomainHttpsWarning, FrontendEndpointName)))
                 {
                     FrontDoorManagementClient.FrontendEndpoints.BeginEnableHttps(ResourceGroupName, FrontDoorName, FrontendEndpointName, customHttpsConfiguration);
 
                     var frontDoorEndPoint = FrontDoorManagementClient.FrontendEndpoints.Get(ResourceGroupName, FrontDoorName, FrontendEndpointName);
-                    WriteObject(frontDoorEndPoint.ToPSFrontendEndpoints());   
+                    WriteObject(frontDoorEndPoint.ToPSFrontendEndpoints());
                 }
             }
             catch (Microsoft.Azure.Management.FrontDoor.Models.ErrorResponseException e)

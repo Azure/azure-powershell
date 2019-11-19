@@ -60,7 +60,7 @@ The **Enable-AzFrontDoorCustomDomainHttps** enables HTTPS for a custom domain.
 
 ### Example 1: Enable HTTPS for a custom domain with FrontDoorName and ResourceGroupName using Front Door managed certificate.
 ```powershell
-PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz"
+PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -MinimumTlsVersion "1.2"
 
 
 HostName                         : frontendpointname1.custom.xyz
@@ -72,6 +72,7 @@ CustomHttpsProvisioningState     : Enabling
 CustomHttpsProvisioningSubstate  : SubmittingDomainControlValidationRequest
 CertificateSource                : FrontDoor
 ProtocolType                     : ServerNameIndication
+MinimumTlsVersion                : 1.2
 Vault                            :
 SecretName                       :
 SecretVersion                    :
@@ -88,7 +89,7 @@ Enable HTTPS for a custom domain "frontendpointname1-custom-xyz" that is part of
 ### Example 2: Enable HTTPS for a custom domain with FrontDoorName and ResourceGroupName using own certificate in Key Vault.
 ```powershell
 PS C:\> $vaultId = (Get-AzKeyVault -VaultName $vaultName).ResourceId
-PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -Vault $vaultId -secretName $secretName -SecretVersion $secretVersion
+PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -Vault $vaultId -secretName $secretName -SecretVersion $secretVersion -MinimumTlsVersion "1.0"
 
 
 HostName                         : frontendpointname1.custom.xyz
@@ -100,6 +101,7 @@ CustomHttpsProvisioningState     : Enabling
 CustomHttpsProvisioningSubstate  : SubmittingDomainControlValidationRequest
 CertificateSource                : AzureKeyVault
 ProtocolType                     : ServerNameIndication
+MinimumTlsVersion                : 1.0
 Vault                            :
 SecretName                       :
 SecretVersion                    :
@@ -127,6 +129,7 @@ CustomHttpsProvisioningState     : Enabling
 CustomHttpsProvisioningSubstate  : SubmittingDomainControlValidationRequest
 CertificateSource                : FrontDoor
 ProtocolType                     : ServerNameIndication
+MinimumTlsVersion                : 1.2
 Vault                            :
 SecretName                       :
 SecretVersion                    :
@@ -154,6 +157,7 @@ CustomHttpsProvisioningState     : Enabling
 CustomHttpsProvisioningSubstate  : SubmittingDomainControlValidationRequest
 CertificateSource                : FrontDoor
 ProtocolType                     : ServerNameIndication
+MinimumTlsVersion                : 1.2
 Vault                            :
 SecretName                       :
 SecretVersion                    :
@@ -230,7 +234,7 @@ Accept wildcard characters: False
 ```
 
 ### -MinimumTlsVersion
-Minimum TLS version to support
+The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
 
 ```yaml
 Type: System.String
@@ -355,11 +359,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint
-
 ## NOTES
 
 ## RELATED LINKS

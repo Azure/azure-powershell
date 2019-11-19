@@ -17,19 +17,11 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Models
-{    
-    public class PSHealthProbeSetting: PSResource
+{
+    public class PSBackendPoolsSetting : PSResource
     {
-        public string Path { get; set; }
+        public PSEnabledState? EnforceCertificateNameCheck { get; set; }
 
-        public PSProtocol? Protocol { get; set; }
-
-        public int? IntervalInSeconds { get; set; }
-
-        public string ResourceState { get; set; }
-
-        public string HealthProbeMethod { get; set; }
-
-        public PSEnabledState? EnabledState { get; set; }
+        public int? SendRecvTimeoutInSeconds { get; set; }
     }
 }
