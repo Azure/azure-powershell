@@ -20,6 +20,8 @@
 
 
 ## Upcoming Release
+
+## Version 0.1.2
 * Added cmdlet `Get-AzDataBoxEdgeOrder`
  - Get the Order
 * Added cmdlet `New-AzDataBoxEdgeOrder`

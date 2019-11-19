@@ -1,3 +1,59 @@
+## 3.1.0 - November 2019
+#### Az.Compute
+* VM Reapply feature
+    - Add Reapply parameter to Set-AzVM cmdlet
+* VM Scale Set AutomaticRepairs feature:
+    - Add EnableAutomaticRepair, AutomaticRepairGracePeriod, and AutomaticRepairMaxInstanceRepairsPercent parameters to the following cmdlets:
+        New-AzVmssConfig
+        Update-AzVmss
+* Cross tenant gallery image support for New-AzVM
+* Add 'Spot' to the argument completer of Priority parameter in New-AzVM, New-AzVMConfig and New-AzVmss cmdlets
+* Add DiskIOPSReadWrite and DiskMBpsReadWrite parameters to Add-AzVmssDataDisk cmdlet
+* Change SourceImageId parameter of New-AzGalleryImageVersion cmdlet to optional
+* Add OSDiskImage and DataDiskImage parameters to New-AzGalleryImageVersion cmdlet
+* Add HyperVGeneration parameter to New-AzGalleryImageDefinition cmdlet
+
+#### Az.DataFactory
+* Update ADF .Net SDK version to 4.4.0
+* Add parameter 'ExpressCustomSetup' for 'Set-AzureRmDataFactoryV2IntegrationRuntime' cmd to enable setup configurations and 3rd party components without custom setup script.
+
+#### Az.DataLakeStore
+* Update documentation of Get-AzDataLakeStoreDeletedItem and Restore-AzDataLakeStoreDeletedItem
+
+#### Az.EventHub
+* Fix for issue 10301 : Fix the SAS Token date format
+
+#### Az.FrontDoor
+* Add MinimumTlsVersion parameter to Enable-AzFrontDoorCustomDomainHttps and New-AzFrontDoorFrontendEndpointObject
+* Add HealthProbeMethod and EnabledState parameters to New-AzFrontDoorHealthProbeSettingObject
+* Add new cmdlet to create BackendPoolsSettings objec to pass into creation/update of Front Door
+    - New-AzFrontDoorBackendPoolsSettingObject
+
+#### Az.Network
+* Change 'Start-AzVirtualNetworkGatewayConnectionPacketCapture.md' and 'Start-AzVirtualnetworkGatewayPacketCapture.md' FilterData option examples.
+
+#### Az.PrivateDns
+* Updated PrivateDns .net sdk to version 1.0.0
+
+#### Az.RecoveryServices
+* Azure Site Recovery support to select disk type at enabling protection.
+* Azure Site Recovery bug fix for recovery plan action edit.
+* Azure Backup SQL Restore support to accept filestream DBs.
+
+#### Az.RedisCache
+* Added 'MinimumTlsVersion' parameter in 'New-AzRedisCache' and 'Set-AzRedisCache' cmdlets. Also, added 'MinimumTlsVersion' in the output of 'Get-AzRedisCache' cmdlet.
+* Added validation on '-Size' parameter for 'Set-AzRedisCache' and 'New-AzRedisCache' cmdlets
+
+#### Az.Resources
+- Updated policy cmdlets to use new api version 2019-06-01 that has new EnforcementMode property in policy assignment.
+- Updated create policy definition help example
+* Fix bug Remove-AZADServicePrincipal -ServicePrincipalName, throw null reference when service principal name not found.
+* Fix bug New-AZADServicePrincipal，throw null reference when tenant doesn't have any subscription.
+
+#### Az.Sql
+* Added support for database ReadReplicaCount.
+* Fixed Set-AzSqlDatabase when zone redundancy not set
+
 ## 3.0.0 - November 2019
 ### General
 * Az.PrivateDns 1.0.0 released
