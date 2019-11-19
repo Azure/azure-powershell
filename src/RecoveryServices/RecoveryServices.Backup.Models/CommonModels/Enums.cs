@@ -238,6 +238,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         ProtectionStopped
     }
 
+    /// <summary>
+    /// SoftDeleteFeature state of a Recovery Services Vault
+    /// </summary>
+    public enum VaultSoftDeleteFeatureState
+    {
+        /// <summary>
+        /// Enable soft-delete for the vault
+        /// </summary>
+        Enable = 1,
+
+        /// <summary>
+        /// Disable soft-delete for the vault
+        /// </summary>
+        Disable
+    }
 
     #region policy
     public enum WeekOfMonth

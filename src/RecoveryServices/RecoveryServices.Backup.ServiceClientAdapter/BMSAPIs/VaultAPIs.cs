@@ -26,5 +26,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 cancellationToken: RSAdapter.CmdletCancellationToken).Result;
             return response.Body.Select(vault => vault.Id).ToList();
         }
+        public BackupResourceVaultConfigResource SetVaultProperty(string vaultName, string resourceGroupName,
+            BackupResourceVaultConfigResource param)
+        {
+            return BmsAdapter.Client.BackupResourceVaultConfigs.UpdateWithHttpMessagesAsync(
+                vaultName, resourceGroupName, param).Result.Body;
+        }
+
+        public BackupResourceVaultConfigResource GetVaultProperty(string vaultName, string resourceGroupName)
+        {
+            return BmsAdapter.Client.BackupResourceVaultConfigs.GetWithHttpMessagesAsync(
+                vaultName, resourceGroupName).Result.Body;
+        }
     }
 }

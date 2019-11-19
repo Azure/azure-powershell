@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: C2A7F37B-5713-4430-B83F-C6745692396D
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesvaultproperties
+online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesvaultproperty
 schema: 2.0.0
 ---
 
@@ -14,19 +14,19 @@ Returns the properties of a Recovery Services Vault.
 ## SYNTAX
 
 ```
-Get-AzRecoveryServicesVaultProperties [-VaultId <String>]
+Get-AzRecoveryServicesVaultProperty [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzRecoveryServicesVaultProperties** cmdlet returns the properties of a Recovery services vault.
+The **Get-AzRecoveryServicesVaultProperty** cmdlet returns the properties of a Recovery services vault.
 
 ## EXAMPLES
 
-### Example 1: Update SoftDeleteFeatureState of a vault
+### Example 1: Get Properties of a vault
 ```
 PS C:\> $vault = Get-AzRecoveryServicesVault -Name "MyVaultName"
-PS C:\> $props = Get-AzRecoveryServicesVaultProperties -VaultId $vault.Id
+PS C:\> $props = Get-AzRecoveryServicesVaultProperty -VaultId $vault.Id
 ```
 
 The first command gets a Vault object and then stores it in the $vault variable.
@@ -81,6 +81,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzRecoveryServicesVault](./Get-AzRecoveryServicesVault.md)
 
-[Set-AzRecoveryServicesVaultProperties](./Set-AzRecoveryServicesVaultProperties.md)
+[Set-AzRecoveryServicesVaultProperty](./Set-AzRecoveryServicesVaultProperty.md)
 
 

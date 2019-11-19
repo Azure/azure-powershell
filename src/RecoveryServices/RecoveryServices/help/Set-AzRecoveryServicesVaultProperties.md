@@ -2,11 +2,11 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: C2A7F37B-5713-4430-B83F-C6745692396D
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperties
+online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty
 schema: 2.0.0
 ---
 
-# Set-AzRecoveryServicesVaultProperties
+# Set-AzRecoveryServicesVaultProperty
 
 ## SYNOPSIS
 Updates properties of a Vault.
@@ -14,13 +14,13 @@ Updates properties of a Vault.
 ## SYNTAX
 
 ```
-Set-AzRecoveryServicesVaultProperties [-VaultId <String>] [-SoftDeleteFeatureState <VaultSoftDeleteFeatureState>] 
+Set-AzRecoveryServicesVaultProperty [-VaultId <String>] [-SoftDeleteFeatureState <VaultSoftDeleteFeatureState>] 
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzRecoveryServicesVaultProperties** cmdlet updates properties of a Recovery services vault.
-You can use **Set-AzRecoveryServicesVaultProperties** cmdlet to get the current properties of a vault.
+The **Set-AzRecoveryServicesVaultProperty** cmdlet updates properties of a Recovery services vault.
+You can use **Set-AzRecoveryServicesVaultProperty** cmdlet to get the current properties of a vault.
 Using this cmdlet **SoftDeleteFeatureState** property of a vault can be enabled at any point of time.
 **SoftDeleteFeatureState** property of a vault can be disabled only if there are no registered containers in the vault.
 Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
@@ -30,7 +30,7 @@ Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet bef
 ### Example 1: Update SoftDeleteFeatureState of a vault
 ```
 PS C:\> $vault = Get-AzRecoveryServicesVault -Name "MyVaultName"
-PS C:\> $props = Set-AzRecoveryServicesVaultProperties -VaultId $vault.Id -SoftDeleteFeatureState Enabled
+PS C:\> $props = Set-AzRecoveryServicesVaultProperty -VaultId $vault.Id -SoftDeleteFeatureState Enable
 ```
 
 The first command gets a Vault object and then stores it in the $vault variable.
@@ -102,6 +102,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzRecoveryServicesVault](./Get-AzRecoveryServicesVault.md)
 
-[Get-AzRecoveryServicesVaultProperties](./Get-AzRecoveryServicesVaultProperties.md)
+[Get-AzRecoveryServicesVaultProperty](./Get-AzRecoveryServicesVaultProperty.md)
 
 
