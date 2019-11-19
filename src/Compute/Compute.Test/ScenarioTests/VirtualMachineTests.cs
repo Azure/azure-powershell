@@ -202,6 +202,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineReapply()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineReapply");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineGetStatus()
         {
             TestRunner.RunTestScript("Test-VirtualMachineGetStatus");
