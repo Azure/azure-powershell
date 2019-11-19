@@ -66,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-{{ Fill Force Description }}
+Force remove without confirmation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+Returns the status of the Remove operation. By default, this cmdlet does not generate any output.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
