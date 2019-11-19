@@ -201,7 +201,7 @@ Accept wildcard characters: False
 
 ### -Term
 "P1Y"  1 year
-"P3y"  3 years
+"P3Y"  3 years
 3 years will get more discount 
 
 
