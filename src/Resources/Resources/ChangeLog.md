@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.8.0
 - Updated policy cmdlets to use new api version 2019-06-01 that has new EnforcementMode property in policy assignment.
 - Updated create policy definition help example
 * Fix bug Remove-AZADServicePrincipal -ServicePrincipalName, throw null reference when service principal name not found.
