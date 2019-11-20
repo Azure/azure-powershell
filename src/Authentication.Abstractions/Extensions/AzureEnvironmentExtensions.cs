@@ -151,6 +151,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     case AzureEnvironment.Endpoint.BatchEndpointResourceId:
                         propertyValue = environment.BatchEndpointResourceId;
                         break;
+                    case AzureEnvironment.Endpoint.AzureAttestationDnsSuffix:
+                        propertyValue = environment.AzureAttestationDnsSuffix;
+                        break;
+                    case AzureEnvironment.Endpoint.AzureAttestationServiceEndpointResourceId:
+                        propertyValue = environment.AzureAttestationServiceEndpointResourceId;
+                        break;
                     default:
                         // get property from the extended properties of the environment
                         propertyValue = environment.GetProperty(endpointName);
@@ -277,6 +283,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     case AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId:
                         environment.SetProperty(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId, propertyValue);
                         break;
+                    case AzureEnvironment.Endpoint.AzureAttestationDnsSuffix:
+                        environment.AzureAttestationDnsSuffix = propertyValue;
+                        break;
+                    case AzureEnvironment.Endpoint.AzureAttestationServiceEndpointResourceId:
+                        environment.AzureAttestationServiceEndpointResourceId = propertyValue;
+                        break;
                 }
             }
         }
@@ -311,6 +323,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 case AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix:
                 case AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId:
                     resource = AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId;
+                    break;
+                case AzureEnvironment.Endpoint.AzureAttestationDnsSuffix:
+                case AzureEnvironment.Endpoint.AzureAttestationServiceEndpointResourceId:
+                    resource = AzureEnvironment.Endpoint.AzureAttestationServiceEndpointResourceId;
                     break;
                 default:
                     resource = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId;
@@ -494,6 +510,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 {
                     environment.BatchEndpointResourceId = other.BatchEndpointResourceId;
                 }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.AzureAttestationDnsSuffix))
+                {
+                    environment.AzureAttestationDnsSuffix = other.AzureAttestationDnsSuffix;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.AzureAttestationServiceEndpointResourceId))
+                {
+                    environment.AzureAttestationServiceEndpointResourceId =
+                        other.AzureAttestationServiceEndpointResourceId;
+                }
 
                 environment.VersionProfiles.Clear();
                 foreach (var profile in other.VersionProfiles)
@@ -584,6 +609,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 if (other.IsEndpointSet(AzureEnvironment.Endpoint.DataLakeEndpointResourceId))
                 {
                     environment.DataLakeEndpointResourceId = other.DataLakeEndpointResourceId;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.AzureAttestationDnsSuffix))
+                {
+                    environment.AzureAttestationDnsSuffix = other.AzureAttestationDnsSuffix;
+                }
+                if (other.IsEndpointSet(AzureEnvironment.Endpoint.AzureAttestationServiceEndpointResourceId))
+                {
+                    environment.AzureAttestationServiceEndpointResourceId =
+                        other.AzureAttestationServiceEndpointResourceId;
                 }
 
                 foreach (var profile in other.VersionProfiles)
