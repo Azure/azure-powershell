@@ -1,0 +1,36 @@
+{
+  "Get-AzBlockchainSku+[NoContext]+List+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.Blockchain/skus?api-version=2018-06-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.Blockchain/skus?api-version=2018-06-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "73" ],
+        "User-Agent": [ "PSVersion/v6.2.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11926" ],
+        "x-ms-request-id": [ "b2108cd1-dd6e-4034-90fd-e4dc1c8a2310" ],
+        "x-ms-correlation-request-id": [ "b2108cd1-dd6e-4034-90fd-e4dc1c8a2310" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T032231Z:b2108cd1-dd6e-4034-90fd-e4dc1c8a2310" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 19 Nov 2019 03:22:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "12" ]
+      },
+      "Content": "{\"value\":[]}"
+    }
+  }
+}

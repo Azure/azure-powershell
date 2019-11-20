@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Blockchain
-Module Guid: 4764b8dc-2c3c-4162-b5de-b8d6fc16800e
+Module Guid: 807473b6-22c7-4e49-80d1-05b11be37c71
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.blockchain
 Help Version: 1.0.0.0
 Locale: en-US

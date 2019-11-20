@@ -1,0 +1,37 @@
+{
+  "Get-AzBlockchainMemberConsortiumMember+[NoContext]+List+$GET+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchaing4amcj/consortiumMembers?api-version=2018-06-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/testgroupg4amcj/providers/Microsoft.Blockchain/blockchainMembers/myblockchaing4amcj/consortiumMembers?api-version=2018-06-01-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "72" ],
+        "User-Agent": [ "PSVersion/v6.2.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11927" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "3d4a05c5-27d4-49a0-8276-f53e63ba0163" ],
+        "x-ms-correlation-request-id": [ "3d4a05c5-27d4-49a0-8276-f53e63ba0163" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T032230Z:3d4a05c5-27d4-49a0-8276-f53e63ba0163" ],
+        "Date": [ "Tue, 19 Nov 2019 03:22:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "243" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"name\":\"myblockchaing4amcj\",\"displayName\":\"myblockchaing4amcj\",\"subscriptionId\":\"c9cbd920-c00c-427c-852b-8aaf38badaeb\",\"role\":\"ADMIN\",\"status\":\"Ready\",\"joinDate\":\"2019-11-19T02:54:09.0090892Z\",\"dateModified\":\"2019-11-19T03:04:52\"}]}"
+    }
+  }
+}

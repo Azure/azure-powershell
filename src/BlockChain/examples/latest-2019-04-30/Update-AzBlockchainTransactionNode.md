@@ -1,18 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a transcation node
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $passwd2 = 'strongMemberAccountPassword@2' | ConvertTo-SecureString -AsPlainText -Force
+PS C:\> Update-AzBlockchainTransactionNode -BlockchainMemberName dolauli002 -Name transacnode002 -ResourceGroupName testgroup -Password $passwd2
 
-{{ Add output here }}
+Name           Type                                                    Location
+----           ----                                                    --------
+transacnode002 Microsoft.Blockchain/blockchainMembers/transactionNodes eastus
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command updates a transaction node.
 

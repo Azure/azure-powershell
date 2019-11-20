@@ -12,16 +12,9 @@ To check whether a resource name is available.
 
 ## SYNTAX
 
-### CheckExpanded (Default)
 ```
 Test-AzBlockchainLocationNameAvailability -LocationName <String> [-SubscriptionId <String>] [-Name <String>]
  [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CheckViaIdentityExpanded
-```
-Test-AzBlockchainLocationNameAvailability -InputObject <IBlockchainIdentity> [-Name <String>] [-Type <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,23 +22,16 @@ To check whether a resource name is available.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Check whether a resource name is available
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Test-AzBlockchainLocationNameAvailability -LocationName eastus -Name erw123 -type Microsoft.Blockchain/blockchainMembers
 
-{{ Add output here }}
+Message NameAvailable Reason
+------- ------------- ------
+        True          NotSpecified
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+The command checks whether a resource name is available.
 
 ## PARAMETERS
 
@@ -65,29 +51,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity
-Parameter Sets: CheckViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -LocationName
 Location Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -120,7 +89,7 @@ The subscription ID is part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -185,8 +154,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.IBlockchainIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Models.Api20180601Preview.INameAvailability
@@ -194,18 +161,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ## NOTES
-
-### COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-#### INPUTOBJECT <IBlockchainIdentity>: Identity Parameter
-  - `[BlockchainMemberName <String>]`: Blockchain member name.
-  - `[Id <String>]`: Resource identity path
-  - `[LocationName <String>]`: Location Name.
-  - `[OperationId <String>]`: Operation Id.
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  - `[SubscriptionId <String>]`: Gets the subscription Id which uniquely identifies the Microsoft Azure subscription. The subscription ID is part of the URI for every service call.
-  - `[TransactionNodeName <String>]`: Transaction node name.
 
 ## RELATED LINKS
 

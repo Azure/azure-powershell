@@ -23,23 +23,17 @@ Create or update the transaction node.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a blockchain transaction node
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $passwd = 'strongMemberAccountPassword@1' | ConvertTo-SecureString -AsPlainText -Force
+PS C:\> New-AzBlockchainTransactionNode -BlockchainMemberName dolauli001 -Name tranctionnode001 -ResourceGroupName testgroup -Location eastus -Password $passwd
 
-{{ Add output here }}
+Name             Type                                                    Location
+----             ----                                                    --------
+tranctionnode001 Microsoft.Blockchain/blockchainMembers/transactionNodes eastus
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command creates a blockchain transaction node.
 
 ## PARAMETERS
 

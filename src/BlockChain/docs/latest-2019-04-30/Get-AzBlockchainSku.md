@@ -21,23 +21,13 @@ Lists the Skus of the resource type.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List SKU for a subscription
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzBlockchainSku -SubscriptionId c9cbd920-c00c-427c-852b-8aaf38badaeb
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command lists SKU for a subscription.
 
 ## PARAMETERS
 

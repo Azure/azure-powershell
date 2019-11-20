@@ -1,18 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a transaction node
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzBlockchainTransactionNode -Name transacnode002 -BlockchainMemberName dolauli002 -ResourceGroupName testgroup
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command removes a transaction node.
 

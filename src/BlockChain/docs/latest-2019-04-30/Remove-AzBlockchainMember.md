@@ -29,23 +29,13 @@ Delete a blockchain member.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a blockchain member
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzBlockchainMember -Name dolauli001 -ResourceGroupName testgroup
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command removes a blockchain member.
 
 ## PARAMETERS
 

@@ -15,14 +15,14 @@ Update the transaction node.
 ### UpdateExpanded (Default)
 ```
 Update-AzBlockchainTransactionNode -BlockchainMemberName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-FirewallRule <IFirewallRule[]>] [-Password <String>]
+ [-SubscriptionId <String>] [-FirewallRule <IFirewallRule[]>] [-Password <SecureString>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzBlockchainTransactionNode -InputObject <IBlockchainIdentity> [-FirewallRule <IFirewallRule[]>]
- [-Password <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Password <SecureString>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,23 +30,17 @@ Update the transaction node.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a transcation node
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $passwd2 = 'strongMemberAccountPassword@2' | ConvertTo-SecureString -AsPlainText -Force
+PS C:\> Update-AzBlockchainTransactionNode -BlockchainMemberName dolauli002 -Name transacnode002 -ResourceGroupName testgroup -Password $passwd2
 
-{{ Add output here }}
+Name           Type                                                    Location
+----           ----                                                    --------
+transacnode002 Microsoft.Blockchain/blockchainMembers/transactionNodes eastus
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command updates a transaction node.
 
 ## PARAMETERS
 
@@ -136,7 +130,7 @@ Dynamic: False
 Sets the transaction node dns endpoint basic auth password.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 

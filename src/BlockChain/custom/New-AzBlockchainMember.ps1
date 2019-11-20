@@ -54,6 +54,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Category('Body')]
     [System.Security.SecureString]
+    [ValidateNotNullOrEmpty()]
     # Sets the managed consortium management account password.
     ${ConsortiumManagementAccountPassword},
 
@@ -85,6 +86,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Category('Body')]
     [System.Security.SecureString]
+    [ValidateNotNullOrEmpty()]
     # Sets the basic auth password of the blockchain member.
     ${Password},
 

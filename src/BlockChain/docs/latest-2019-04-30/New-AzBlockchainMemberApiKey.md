@@ -30,23 +30,15 @@ Regenerate the API keys for a blockchain member.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Regenerate Api keys for a blockchain member
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> KeyName Value
+------- -----
+key1    D7wyajHMZcBw4MndMgytqanz
+key2    eu9kx94TKH506R0i4JhYBmsx
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command regenerates Api keys for a blockchain member.
 
 ## PARAMETERS
 

@@ -15,15 +15,17 @@ Update a blockchain member.
 ### UpdateExpanded (Default)
 ```
 Update-AzBlockchainMember -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ConsortiumManagementAccountPassword <String>] [-FirewallRule <IFirewallRule[]>] [-Password <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ConsortiumManagementAccountPassword <SecureString>] [-FirewallRule <IFirewallRule[]>]
+ [-Password <SecureString>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzBlockchainMember -InputObject <IBlockchainIdentity> [-ConsortiumManagementAccountPassword <String>]
- [-FirewallRule <IFirewallRule[]>] [-Password <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzBlockchainMember -InputObject <IBlockchainIdentity>
+ [-ConsortiumManagementAccountPassword <SecureString>] [-FirewallRule <IFirewallRule[]>]
+ [-Password <SecureString>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,23 +33,16 @@ Update a blockchain member.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a blockchain member
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzBlockchainMember -Name dolauli002 -ResourceGroupName testgroup -Password $passwd2
 
-{{ Add output here }}
+Location Name       Type
+-------- ----       ----
+eastus   dolauli002 Microsoft.Blockchain/blockchainMembers
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command updates a blockchain member.
 
 ## PARAMETERS
 
@@ -55,7 +50,7 @@ PS C:\> {{ Add code here }}
 Sets the managed consortium management account password.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -137,7 +132,7 @@ Dynamic: False
 Sets the transaction node dns endpoint basic auth password.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 

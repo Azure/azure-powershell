@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a blockchain member
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzBlockchainMember -Name dolauli002 -ResourceGroupName testgroup -Password $passwd2
 
-{{ Add output here }}
+Location Name       Type
+-------- ----       ----
+eastus   dolauli002 Microsoft.Blockchain/blockchainMembers
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command updates a blockchain member.
 

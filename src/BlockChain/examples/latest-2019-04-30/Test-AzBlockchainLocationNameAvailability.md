@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Check whether a resource name is available
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Test-AzBlockchainLocationNameAvailability -LocationName eastus -Name erw123 -type Microsoft.Blockchain/blockchainMembers
 
-{{ Add output here }}
+Message NameAvailable Reason
+------- ------------- ------
+        True          NotSpecified
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+The command checks whether a resource name is available.
 

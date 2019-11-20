@@ -22,23 +22,13 @@ Lists the available consortiums for a subscription.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get Blockchain consortiums.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzBlockchainConsortium -Location eastus
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command lists the consortiums under a subscription for a specific location.
 
 ## PARAMETERS
 

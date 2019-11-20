@@ -67,6 +67,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Blockchain.Category('Body')]
     [System.Security.SecureString]
+    [ValidateNotNullOrEmpty()]
     # Sets the transaction node dns endpoint basic auth password.
     ${Password},
 

@@ -1,18 +1,23 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a blockchain member
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzBlockchainMember -Name dolauli001 -ResourceGroupName testgroup
 
-{{ Add output here }}
+Location Name       Type
+-------- ----       ----
+eastus   dolauli001 Microsoft.Blockchain/blockchainMembers
 ```
 
-{{ Add description here }}
+This command gets a blockchain member for a resource group.
 
-### Example 2: {{ Add title here }}
+### Example 2: List blockchain members
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzBlockchainMember -ResourceGroupName testgroup
 
-{{ Add output here }}
+Location Name       Type
+-------- ----       ----
+eastus   dolauli001 Microsoft.Blockchain/blockchainMembers
+eastus   dolauli002 Microsoft.Blockchain/blockchainMembers
 ```
 
-{{ Add description here }}
+This command lists blockchain members for a resource group.
 

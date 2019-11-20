@@ -1,0 +1,39 @@
+{
+  "Test-AzBlockchainLocationNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.Blockchain/locations/eastus/checkNameAvailability?api-version=2018-06-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.Blockchain/locations/eastus/checkNameAvailability?api-version=2018-06-01-preview",
+      "Content": "{\r\n  \"name\": \"123\",\r\n  \"type\": \"Microsoft.Blockchain/blockchainMembers\"\r\n}",
+      "Headers": {
+        "x-ms-unique-id": [ "188" ],
+        "User-Agent": [ "PSVersion/v6.2.2" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "74" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "dd554ff7-f8e4-49cf-8682-3b3f13b7a320" ],
+        "x-ms-correlation-request-id": [ "dd554ff7-f8e4-49cf-8682-3b3f13b7a320" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20191119T040728Z:dd554ff7-f8e4-49cf-8682-3b3f13b7a320" ],
+        "Date": [ "Tue, 19 Nov 2019 04:07:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "234" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":false,\"message\":\"The blockchain member name is invalid. It can contain only lowercase letters and numbers. The first character must be a letter. The value must be between 2 and 20 characters long.\",\"reason\":\"Invalid\"}"
+    }
+  }
+}

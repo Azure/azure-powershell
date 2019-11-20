@@ -126,15 +126,15 @@ directive:
     remove: true
   - where:
       verb: Test
-      variant: ^Check$|^CheckViaIdentity$
+      variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
     remove: true
   # Hide these two cmdlets, because we need to customize a version with password secured.
   - where:
-      verb: New
+      verb: New|Update
       subject: BlockchainMember
     hide: true
   - where:
-      verb: New
+      verb: New|Update
       subject: TransactionNode
     hide: true
   - where:
@@ -142,7 +142,6 @@ directive:
     set:
       default:
         script: '(Get-AzContext).Subscription.Id'
-
 ```
 
 ``` yaml

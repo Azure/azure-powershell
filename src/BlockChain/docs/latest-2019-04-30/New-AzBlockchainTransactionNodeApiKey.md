@@ -30,23 +30,17 @@ Regenerate the API keys for the blockchain member.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Regenerate Api keys for a transaction node
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzBlockchainTransactionNodeApiKey -BlockchainMemberName dolauli001 -ResourceGroupName testgroup -TransactionNodeName tranctionnode001 -KeyName key1 -Value H4_GPhxbqYENxwas4Vc4l5U9
 
-{{ Add output here }}
+KeyName Value
+------- -----
+key1    0-UCaNSNfS0lwRKRyv09sgb-
+key2    0Prk4Dl3lsOKdhyPEFQ-AnQb
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command generates Api keys for a transaction node.
 
 ## PARAMETERS
 

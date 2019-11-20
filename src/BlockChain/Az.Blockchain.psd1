@@ -1,5 +1,5 @@
 @{
-  GUID = '4764b8dc-2c3c-4162-b5de-b8d6fc16800e'
+  GUID = '807473b6-22c7-4e49-80d1-05b11be37c71'
   RootModule = './Az.Blockchain.psm1'
   ModuleVersion = '0.0.1'
   CompatiblePSEditions = 'Core', 'Desktop'

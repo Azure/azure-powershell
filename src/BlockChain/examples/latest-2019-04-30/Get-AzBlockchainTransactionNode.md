@@ -1,18 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: List transaction nodes for a blockchain member
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzBlockchainTransactionNode -BlockchainMemberName dolauli001 -ResourceGroupName testgroup
 
-{{ Add output here }}
+Name             Type                                                    Location
+----             ----                                                    --------
+tranctionnode001 Microsoft.Blockchain/blockchainMembers/transactionNodes eastus
 ```
 
-{{ Add description here }}
+This command lists transaction nodes for a blockchain member.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a transaction node
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzBlockchainTransactionNode -BlockchainMemberName dolauli001 -ResourceGroupName testgroup -Name tranctionnode001
 
-{{ Add output here }}
+Name             Type                                                    Location
+----             ----                                                    --------
+tranctionnode001 Microsoft.Blockchain/blockchainMembers/transactionNodes eastus
 ```
 
-{{ Add description here }}
+This command gets a transaction node.
 
