@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update documentation of Get-AzDataLakeStoreDeletedItem and Restore-AzDataLakeStoreDeletedItem
+
+## Version 1.2.4
+* Update ADLS SDK version (https://github.com/Azure/azure-data-lake-store-net/blob/preview-alpha/CHANGELOG.md#version-123-alpha), brings following fixes
+* Avoid throwing exception while unable to deserialize the creationtime of the trash or directory entry.
+* Expose setting per request timeout in adlsclient
+* Fix passing the original syncflag for badoffset recovery
+* Fix EnumerateDirectory to retrieve continuation token once response is checked
+* Fix Concat Bug
+
+## Version 1.2.3
+* Fix account validation so that accounts with "-" can be passed without domain
 
 ## Version 1.2.2
 * Fix hanging of Get-DataLakeStoreDeletedItem for any errors or remote exceptions.

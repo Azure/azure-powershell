@@ -20,6 +20,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Added new category "Operational Excellence" to Get-AzAdvisorRecommendation cmdlet.
+
 ## Version 1.0.1
 * Fixed miscellaneous typos across module
 

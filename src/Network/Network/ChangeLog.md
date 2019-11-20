@@ -19,9 +19,113 @@
 --->
 
 ## Upcoming Release
+* Change `Start-AzVirtualNetworkGatewayConnectionPacketCapture.md` and `Start-AzVirtualnetworkGatewayPacketCapture.md` FilterData option examples.
+
+## Version 2.0.0
+* Change all cmdlets for PrivateEndpointConnection to support generic service provider.
+    - Updated cmdlet:
+        - Approve-AzPrivateEndpointConnection
+        - Deny-AzPrivateEndpointConnection
+        - Get-AzPrivateEndpointConnection
+        - Remove-AzPrivateEndpointConnection
+        - Set-AzPrivateEndpointConnection
+* Add new cmdlet for PrivateLinkResource and it also support generic service provider.
+    - New cmdlet:
+        - Get-AzPrivateLinkResource
+* Add new fields and parameter for the feature Proxy Protocol V2.
+    - Add property EnableProxyProtocol in PrivateLinkService
+    - Add property LinkIdentifier in PrivateEndpointConnection
+    - Updated New-AzPrivateLinkService to add a new optional parameter EnableProxyProtocol.
+* Fix incorrect parameter description in `New-AzApplicationGatewaySku` reference documentation
+* New cmdlets to support the azure firewall policy
+* Add support for ThreatIntelWhitelist property for AzFirewall
+    - New cmdlet added:
+        - New-AzFirewallThreatIntelWhitelist
+    - Cmdlets updated with optional parameters:
+        - New-AzFirewall : added parameter ThreatIntelWhitelist
+* Add support for child resource RouteTables of VirtualHub
+    - New cmdlets added:
+        - Add-AzVirtualHubRoute
+        - Add-AzVirtualHubRouteTable
+        - Get-AzVirtualHubRouteTable
+        - Remove-AzVirtualHubRouteTable
+        - Set-AzVirtualHub
+* Add support for new properties Sku of VirtualHub and VirtualWANType of VirtualWan
+    - Cmdlets updated with optional parameters:
+        - New-AzVirtualHub : added parameter Sku
+        - Update-AzVirtualHub : added parameter Sku
+        - New-AzVirtualWan : added parameter VirtualWANType
+        - Update-AzVirtualWan : added parameter VirtualWANType
+* Add support for EnableInternetSecurity property for HubVnetConnection, VpnConnection and ExpressRouteConnection
+    - New cmdlets added:
+        - Update-AzureRmVirtualHubVnetConnection
+    - Cmdlets updated with optional parameters:
+        - New-AzureRmVirtualHubVnetConnection : added parameter EnableInternetSecurity
+        - New-AzureRmVpnConnection : added parameter EnableInternetSecurity
+        - Update-AzureRmVpnConnection : added parameter EnableInternetSecurity
+        - New-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
+        - Set-AzureRmExpressRouteConnection : added parameter EnableInternetSecurity
+* Add support for Configuring TopLevel WebApplicationFirewall Policy
+    - New cmdlets added:
+        - New-AzApplicationGatewayFirewallPolicySetting
+        - New-AzApplicationGatewayFirewallPolicyExclusion
+        - New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride
+        - New-AzApplicationGatewayFirewallPolicyManagedRuleOverride
+        - New-AzApplicationGatewayFirewallPolicyManagedRule
+        - New-AzApplicationGatewayFirewallPolicyManagedRuleSet
+    - Cmdlets updated with optional parameters:
+        - New-AzApplicationGatewayFirewallPolicy : added parameter PolicySetting, ManagedRule
+* Added support for Geo-Match operator on CustomRule
+    - Added GeoMatch to the operator on the FirewallCondition
+* Added support for perListener and perSite Firewall policy
+    - Cmdlets updated with optional parameters:
+        - New-AzApplicationGatewayHttpListener : added parameter FirewallPolicy, FirewallPolicyId
+        - New-AzApplicationGatewayPathRuleConfig : added parameter FirewallPolicy, FirewallPolicyId
+* Fix required subnet with name AzureBastionSubnet in `PSBastion` can be case insensitive
+* Support for Destination FQDNs in Network Rules and Translated FQDN in NAT Rules for Azure Firewall
+* Add support for top level resource RouteTables of IpGroup
+    - New cmdlets added:
+        - New-AzIpGroup
+        - Remove-AzIpGroup
+        - Get-AzIpGroup
+        - Set-AzIpGroup
+* Virtual Wan Point to site feature release.
+  - Introduce new command lets for managing point to site VpnServerConfiguraiton resource
+    - Get-AzVpnServerConfiguration
+    - New-AzVpnServerConfiguration
+    - Remove-AzVpnServerConfiguration
+    - Update-AzVpnServerConfiguration
+  - Introduce new command lets for managing P2SVpnGateway resource that will be used for Point to site connectivity from Virtual wan perspective
+    - Get-AzP2sVpnGateway
+    - Get-AzP2sVpnGatewayConnectionHealth
+    - Get-AzP2sVpnGatewayDetailedConnectionHealth
+    - New-AzP2sVpnGateway
+    - Remove-AzP2sVpnGateway
+    - Update-AzP2sVpnGateway
+  - Introduce new command lets for VirtualWan resource to get all associated VpnServerConfigurations and download Wan level Point to site client profile.
+    - Get-AzVirtualWanVpnServerConfiguration
+    - Get-AzVirtualWanVpnServerConfigurationVpnProfile
+
+## Version 1.15.0
+* Add new cmdlet Get-AzAvailableServiceAlias which can be called to get the aliases that can be used for Service Endpoint Policies.
+* Added support for the adding traffic selectors to Virtual Network Gateway Connections
+    - New cmdlets added:
+        - New-AzureRmTrafficSelectorPolicy
+    - Cmdlets updated with optional parameter -TrafficSelectorPolicies
+        -New-AzureRmVirtualNetworkGatewayConnection
+        -Set-AzureRmVirtualNetworkGatewayConnection
+* Add support for ESP and AH protocols in network security rule configurations
+    - Updated cmdlets:
+        - Add-AzNetworkSecurityRuleConfig
+        - New-AzNetworkSecurityRuleConfig
+        - Set-AzNetworkSecurityRuleConfig
+* Improve handling of exceptions in Cortex cmdlets
+* New Generations and SKUs for VirtualNetworkGateways
+  - Introduce new Generations for VirtualNetworkGateways.
+  - Introduce new high throughput SKUs for VirtualNetworkGateways.
 
 ## Version 1.14.0
-* Fix incorrect example in `New-AzApplicationGateway` reference documentation 
+* Fix incorrect example in `New-AzApplicationGateway` reference documentation
 * Add note in `Get-AzNetworkWatcherPacketCapture` reference documentation about retrieving all properties for a packet capture
 * Fixed example in `Test-AzNetworkWatcherIPFlow` reference documentation to correctly enumerate NICs
 * Improved cloud exception parsing to display additional details if they are present
@@ -94,11 +198,11 @@
     - New cmdlets
         - Get-AzVirtualNetworkGatewayVpnClientConnectionHealth
 * Add AvailablePrivateEndpointType
-    - New cmdlets 
+    - New cmdlets
         - Get-AzAvailablePrivateEndpointType
 * Add PrivatePrivateLinkService
-    - New cmdlets 
-        - Get-AzPrivateLinkService 
+    - New cmdlets
+        - Get-AzPrivateLinkService
         - New-AzPrivateLinkService
         - Remove-AzPrivateLinkService
         - New-AzPrivateLinkServiceIpConfig
@@ -127,8 +231,8 @@
         - Added parameter -PublicIpAddress which accepts one or more Public IP Address objects
         - Added parameter -VirtualNetwork which accepts a Virtual Network object
         - Added methods AddPublicIpAddress and RemovePublicIpAddress on firewall object - these accept a Public IP Address object as input
-        - Deprecated parameters -PublicIpName and -VirtualNetworkName 
-* Updated below commands for feature: Set VpnClient AAD authentication options to Virtual network gateway resource. 
+        - Deprecated parameters -PublicIpName and -VirtualNetworkName
+* Updated below commands for feature: Set VpnClient AAD authentication options to Virtual network gateway resource.
     - Updated New-AzVirtualNetworkGateway: Added optional parameters AadTenantUri,AadAudienceId,AadIssuerUri to set VpnClient AAD authentication options on Gateway.
     - Updated Set-AzVirtualNetworkGateway: Added optional parameter AadTenantUri,AadAudienceId,AadIssuerUri to set VpnClient AAD authentication options on Gateway.
     - Updated Set-AzVirtualNetworkGateway: Added optional switch parameter RemoveAadAuthentication to remove VpnClient AAD authentication options from Gateway.
@@ -170,7 +274,7 @@
         - New-AzApplicationGatewayRewriteRuleCondition
     - Cmdlets updated with optional parameter - RuleSequence and Condition
         - New-AzApplicationGatewayRewriteRule
-        
+
 ## Version 1.5.0
 * Add Threat Intelligence support for Azure Firewall
 * Add Application Gateway Firewall Policy top level resource and Custom Rules
@@ -229,3 +333,4 @@
         - Set-AzApplicationGatewaySslCertificate
     - New-AzApplicationGateway cmdlet updated with optional parameter -UserAssignedIdentityId, -UserAssignedIdentity
 * Add MaxCapacity property in ApplicationGatewayAutoscaleConfiguration
+

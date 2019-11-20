@@ -117,6 +117,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                 resourceGroupName: vaultResourceGroupName);
         }
 
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
+        {
+            throw new Exception(Resources.SoftdeleteNotImplementedException);
+        }
+
         public List<ContainerBase> ListProtectionContainers()
         {
             CmdletModel.BackupManagementType? backupManagementTypeNullable =
@@ -494,7 +499,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 // Container is not discovered. Throw exception
                 string errorMessage = string.Format(
-                    Resources.DiscoveryFailure,
+                    Resources.AFSDiscoveryFailure,
                     azureFileShareName,
                     vaultResourceGroupName);
                 Logger.Instance.WriteDebug(errorMessage);

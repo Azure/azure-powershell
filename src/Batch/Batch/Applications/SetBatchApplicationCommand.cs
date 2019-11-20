@@ -33,9 +33,10 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the id of the application.")]
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the application.")]
         [ValidateNotNullOrEmpty]
-        public string ApplicationId { get; set; }
+        [Alias("ApplicationId")]
+        public string ApplicationName { get; set; }
 
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -49,10 +50,10 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public bool? AllowUpdates { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ExecuteCmdletImpl()
         {
             WriteVerboseWithTimestamp(Resources.BeginMAMLCall, mamlCall);
-            BatchClient.UpdateApplication(this.ResourceGroupName, this.AccountName, this.ApplicationId, this.AllowUpdates, this.DefaultVersion, this.DisplayName);
+            BatchClient.UpdateApplication(this.ResourceGroupName, this.AccountName, this.ApplicationName, this.AllowUpdates, this.DefaultVersion, this.DisplayName);
             WriteVerboseWithTimestamp(Resources.EndMAMLCall, mamlCall);
         }
     }

@@ -33,7 +33,8 @@ function Verify-GalleryImageDefinition
         [string] $publisherName, [string] $offerName, [string] $skuName,
         [int] $minVCPU, [int] $maxVCPU, [int] $minMemory, [int] $maxMemory, 
         [string] $disallowedDiskType,
-        [string] $purchasePlanName, [string] $purchasePlanPublisher, [string] $purchasePlanProduct)
+        [string] $purchasePlanName, [string] $purchasePlanPublisher, [string] $purchasePlanProduct,
+        [string] $hyperVGeneration)
 
         Assert-AreEqual $rgname $imageDefinition.ResourceGroupName;
         Assert-AreEqual $imageDefinitionName $imageDefinition.Name;
@@ -62,12 +63,18 @@ function Verify-GalleryImageDefinition
         Assert-AreEqual $purchasePlanName $imageDefinition.PurchasePlan.Name;
         Assert-AreEqual $purchasePlanPublisher $imageDefinition.PurchasePlan.Publisher;
         Assert-AreEqual $purchasePlanProduct $imageDefinition.PurchasePlan.Product;
+
+        if (-not [string]::IsNullOrEmpty($hyperVGeneration))
+        {
+            Assert-AreEqual $hyperVGeneration $imageDefinition.HyperVGeneration;
+        }
 }
 
 function Verify-GalleryImageVersion
 {
     param($imageVersion, [string] $rgname, [string] $imageVersionName, [string] $loc,
-        [string] $sourceImageId, [int] $replicaCount, $endOfLifeDate, $targetRegions)
+        [string] $sourceImageId, [int] $replicaCount, $endOfLifeDate, $targetRegions,
+        $osDiskImage, $dataDiskImages)
 
         Assert-AreEqual $rgname $imageVersion.ResourceGroupName;
         Assert-AreEqual $imageVersionName $imageVersion.Name;
@@ -75,8 +82,11 @@ function Verify-GalleryImageVersion
         Assert-AreEqual "Microsoft.Compute/galleries/images/versions" $imageVersion.Type;
         Assert-NotNull $imageVersion.Id;
 
-        Assert-AreEqual $sourceImageId $imageVersion.PublishingProfile.Source.ManagedImage.Id;
-        Assert-AreEqual $sourceImageId $imageVersion.StorageProfile.Source.Id;
+        if (-not [string]::IsNullOrEmpty($sourceImageId))
+        {
+            Assert-AreEqual $sourceImageId $imageVersion.StorageProfile.Source.Id;
+        }
+
         Assert-AreEqual $replicaCount $imageVersion.PublishingProfile.ReplicaCount;
         Assert-False { $imageVersion.PublishingProfile.ExcludeFromLatest };
 
@@ -95,6 +105,17 @@ function Verify-GalleryImageVersion
             {
                 Assert-AreEqual $targetRegions[$i].ReplicaCount $imageVersion.PublishingProfile.TargetRegions[$i].RegionalReplicaCount;
             }
+        }
+
+        if ($osDiskImage -ne $null)
+        {
+            Assert-AreEqual $osDiskImage.Source.Id $imageVersion.StorageProfile.OSDiskImage.Source.Id;
+        }
+
+        for ($i = 0; $i -lt $dataDiskImages.Count; ++$i)
+        {
+            Assert-AreEqual $dataDiskImages[$i].Source.Id $imageVersion.StorageProfile.DataDiskImages[$i].Source.Id;
+            Assert-AreEqual $dataDiskImages[$i].Lun $imageVersion.StorageProfile.DataDiskImages[$i].Lun;
         }
 }
 
@@ -568,6 +589,118 @@ function Test-GalleryImageVersion
         $definition | Remove-AzGalleryImageDefinition -Force;
         Wait-Seconds 300;
         $gallery | Remove-AzGallery -Force;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Testing gallery image version with disk image parameters
+#>
+function Test-GalleryImageVersionDiskImage
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $galleryName = 'gallery' + $rgname;
+    $galleryImageName = 'galleryimage' + $rgname;
+    $galleryImageVersionName = 'imageversion' + $rgname;
+
+    try
+    {
+        # Common
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $description1 = "Original Description";
+
+        # Gallery
+        New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Description $description1 -Location $loc;
+
+        $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
+        Verify-Gallery $gallery $rgname $galleryName $loc $description1;
+        $output = $gallery | Out-String;
+
+        # Gallery Image Definition
+        $publisherName = "galleryPublisher20180927";
+        $offerName = "galleryOffer20180927";
+        $skuName = "gallerySku20180927";
+        $eula = "eula";
+        $privacyStatementUri = "https://www.microsoft.com";
+        $releaseNoteUri = "https://www.microsoft.com";
+        $disallowedDiskTypes = "Premium_LRS";
+        $endOfLifeDate = [DateTime]::ParseExact('12 07 2025 18 02', 'HH mm yyyy dd MM', $null);
+        $minMemory = 1;
+        $maxMemory = 100;
+        $minVCPU = 2;
+        $maxVCPU = 32;
+        $purchasePlanName = "purchasePlanName";
+        $purchasePlanProduct = "purchasePlanProduct";
+        $purchasePlanPublisher = "";
+        $osState = "Generalized";
+        $osType = "Windows";
+
+        New-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $galleryImageName `
+                                          -Location $loc -Publisher $publisherName -Offer $offerName -Sku $skuName `
+                                          -OsState $osState -OsType $osType `
+                                          -Description $description1 -Eula $eula `
+                                          -PrivacyStatementUri $privacyStatementUri -ReleaseNoteUri $releaseNoteUri `
+                                          -DisallowedDiskType $disallowedDiskTypes -EndOfLifeDate $endOfLifeDate `
+                                          -MinimumMemory $minMemory -MaximumMemory $maxMemory `
+                                          -MinimumVCPU $minVCPU -MaximumVCPU $maxVCPU `
+                                          -PurchasePlanName $purchasePlanName `
+                                          -PurchasePlanProduct $purchasePlanProduct `
+                                          -PurchasePlanPublisher $purchasePlanPublisher `
+                                          -HyperVGeneration 'V1';
+
+        $definition = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $galleryImageName;
+        $output = $definition | Out-String;
+        Verify-GalleryImageDefinition $definition $rgname $galleryImageName $loc $description1 `
+                                      $eula $privacyStatementUri $releaseNoteUri `
+                                      $osType $osState $endOfLifeDate `
+                                      $publisherName $offerName $skuName `
+                                      $minVCPU $maxVCPU $minMemory $maxMemory `
+                                      $disallowedDiskTypes `
+                                      $purchasePlanName $purchasePlanPublisher $purchasePlanProduct 'V1';
+
+        # Gallery Image Version
+        $galleryImageVersionName = "1.0.0";
+
+        $snapshotname1 = 'ossnapshot' + $rgname;
+        $snapshotconfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -HyperVGeneration "V1";
+        $snapshot1 = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname1 -Snapshot $snapshotconfig
+
+        $snapshotname2 = 'data1snapshot' + $rgname;
+        $snapshotconfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -HyperVGeneration "V1";
+        $snapshot2 = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname2 -Snapshot $snapshotconfig
+
+        $snapshotname3 = 'data2snapshot' + $rgname;
+        $snapshotconfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -HyperVGeneration "V1";
+        $snapshot3 = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname3 -Snapshot $snapshotconfig
+
+
+        $targetRegions = @(@{Name='South Central US';ReplicaCount=1;StorageAccountType='Standard_LRS'},@{Name='East US';ReplicaCount=2},@{Name='Central US'});        
+        $tag = @{test1 = "testval1"; test2 = "testval2" };
+
+        $osDiskImage = @{Source = @{Id="$($snapshot1.Id)"}}
+        $dataDiskImage1 = @{Source = @{Id="$($snapshot2.Id)"};Lun=1}
+        $dataDiskImage2 = @{Source = @{Id="$($snapshot3.Id)"};Lun=2}
+
+        New-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+                                       -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName `
+                                       -Location $loc -ReplicaCount 1 `
+                                       -PublishingProfileEndOfLifeDate $endOfLifeDate `
+                                       -StorageAccountType Standard_LRS `
+                                       -TargetRegion $targetRegions `
+                                       -OSDiskImage $osDiskImage -DataDiskImage $dataDiskImage1,$dataDiskImage2;
+
+        $version = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName;
+
+        Verify-GalleryImageVersion $version $rgname $galleryImageVersionName $loc `
+                                   $null 1 $endOfLifeDate $targetRegions $osDiskImage @($dataDiskImage1, $dataDiskImage2)
     }
     finally
     {

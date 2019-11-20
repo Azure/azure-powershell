@@ -73,6 +73,12 @@ namespace Microsoft.Azure.Commands.Network
         public PSSubnet[] Subnet { get; set; }
 
         [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The BGP Community advertised over ExpressRoute.")]
+        public string BgpCommunity { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
@@ -137,8 +143,13 @@ namespace Microsoft.Azure.Commands.Network
                 vnet.DdosProtectionPlan = new PSResourceId {Id = DdosProtectionPlanId};
             }
 
+            if (!string.IsNullOrWhiteSpace(BgpCommunity))
+            {
+                vnet.BgpCommunities = new PSVirtualNetworkBgpCommunities {VirtualNetworkCommunity = this.BgpCommunity};
+            }
+
             // Map to the sdk object
-            var vnetModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetwork>(vnet);
+                var vnetModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetwork>(vnet);
             vnetModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

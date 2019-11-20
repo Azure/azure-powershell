@@ -60,9 +60,9 @@ namespace Microsoft.Azure.Commands.Network
                     : this.AzureFirewallClient.List(this.ResourceGroupName);
 
                 // Get all resources by polling on next page link
-                var azureFirewallResponseLIst = ListNextLink<AzureFirewall>.GetAllResourcesByPollingNextLink(azureFirewallPage, this.AzureFirewallClient.ListNext);
+                var azureFirewallResponseList = ListNextLink<AzureFirewall>.GetAllResourcesByPollingNextLink(azureFirewallPage, this.AzureFirewallClient.ListNext);
 
-                var psAzureFirewalls = azureFirewallResponseLIst.Select(firewall =>
+                var psAzureFirewalls = azureFirewallResponseList.Select(firewall =>
                 {
                     var psAzureFirewall = this.ToPsAzureFirewall(firewall);
                     psAzureFirewall.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(firewall.Id);
