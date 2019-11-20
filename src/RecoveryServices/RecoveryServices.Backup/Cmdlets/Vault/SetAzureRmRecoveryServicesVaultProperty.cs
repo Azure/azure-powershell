@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     {
         [Parameter(Mandatory = true, ValueFromPipeline = false)]
         [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Enable", "Disable")]
         public VaultSoftDeleteFeatureState SoftDeleteFeatureState { get; set; }
 
         public override void ExecuteCmdlet()
