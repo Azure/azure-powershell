@@ -21,9 +21,9 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
     /// <summary>
     /// Returns the advanced threat protection settings of a specific server.
     /// </summary>
-    [GenericBreakingChange("Get-AzSqlServerThreatDetectionPolicy alias will be removed in an upcoming breaking change release", "2.0.0")]
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAdvancedThreatProtectionSettings", SupportsShouldProcess = true), OutputType(typeof(ServerThreatDetectionPolicyModel))]
-    [Alias("Get-AzSqlServerThreatDetectionPolicy")]
+    [GenericBreakingChange("Get-AzSqlServerAdvancedThreatProtectionSettings alias will be removed in an upcoming breaking change release", "3.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAdvancedThreatProtectionSetting", SupportsShouldProcess = true), OutputType(typeof(ServerThreatDetectionPolicyModel))]
+    [Alias("Get-AzSqlServerAdvancedThreatProtectionSettings")]
     public class AzureRmSqlServerThreatDetectionPolicy : SqlServerThreatDetectionCmdletBase
     {
         /// <summary>
