@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryse
 schema: 2.0.0
 ---
 
-# Get-AzRecoveryServicesVaultProperties
+# Get-AzRecoveryServicesVaultProperty
 
 ## SYNOPSIS
 Returns the properties of a Recovery Services Vault.
