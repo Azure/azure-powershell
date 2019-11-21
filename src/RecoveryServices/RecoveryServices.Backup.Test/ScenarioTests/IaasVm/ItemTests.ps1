@@ -496,3 +496,25 @@ function Test-AzureVMSoftDelete
 		#write cleanup for softdeleted state
 	}
 }
+
+function Test-AzureVMSetVaultProperty
+{
+	$location = "southeastasia"
+	$resourceGroupName = Create-ResourceGroup $location
+	try
+	{
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		$VaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+
+		Assert-True { $VaultProperty.SoftDeleteFeatureState -eq "Enabled" }
+
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
+		$VaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+		Assert-True { $VaultProperty.SoftDeleteFeatureState -eq "Disabled" }
+	}
+	finally
+	{
+		# Cleanup
+		Cleanup-ResourceGroup $resourceGroupName
+	}
+}
