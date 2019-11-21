@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
             PurchaseRequest.ReservedResourceProperties = resourceProperties;
             PurchaseRequest.ReservedResourceType = ReservedResourceType;
 
-            var response = new PSCalculatePriceResponse(AzureReservationAPIClient.ReservationOrder.Calculate(PurchaseRequest));
+            var response = AzureReservationAPIClient.ReservationOrder.Calculate(PurchaseRequest);
             WriteObject(response);
         }
     }
