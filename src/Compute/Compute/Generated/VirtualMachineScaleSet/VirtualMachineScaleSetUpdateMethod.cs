@@ -257,6 +257,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false)]
+        public bool SkipExtensionsOnOverprovisionedVMs { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
         public int SkuCapacity { get; set; }
 
         [Parameter(
@@ -917,6 +921,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.SinglePlacementGroup = this.SinglePlacementGroup;
             }
 
+            if (this.IsParameterBound(c => c.SkipExtensionsOnOverprovisionedVMs))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                this.VirtualMachineScaleSetUpdate.DoNotRunExtensionsOnOverprovisionedVMs = this.SkipExtensionsOnOverprovisionedVMs;
+            }
+
             if (this.IsParameterBound(c => c.SkuCapacity))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
@@ -1553,6 +1566,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (this.IsParameterBound(c => c.SinglePlacementGroup))
             {
                 this.VirtualMachineScaleSet.SinglePlacementGroup = this.SinglePlacementGroup;
+            }
+
+            if (this.IsParameterBound(c => c.SkipExtensionsOnOverprovisionedVMs))
+            {
+                this.VirtualMachineScaleSet.DoNotRunExtensionsOnOverprovisionedVMs = this.SkipExtensionsOnOverprovisionedVMs;
             }
 
             if (this.IsParameterBound(c => c.SkuCapacity))
