@@ -13,10 +13,10 @@ Calculate price for reservation order
 ## SYNTAX
 
 ```
-Request-AzReservationQuote -ReservedResourceType <String> -Sku <String> -Location <String>
+Request-AzReservationQuote -ReservedResourceType <String> -Sku <String> [-Location <String>]
  -BillingScopeId <String> -Term <String> [-BillingPlan <String>] -Quantity <Int32> -DisplayName <String>
- -AppliedScopeType <String> [-AppliedScope <System.Collections.Generic.IList`1[System.String]>]
- [-Renew <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -AppliedScopeType <String> [-AppliedScope <String>] [-Renew <Boolean>] [-InstanceFlexibility <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +38,7 @@ After get catalog, customer can get the differe product based on location. By us
 Subscription that the benefit will be applied. Required if --applied-scope-type is Single. Do not specify if --applied-scope-type is Shared.
 
 ```yaml
-Type: System.Collections.Generic.IList`1[System.String]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -124,6 +124,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InstanceFlexibility
+Type of the Instance Flexibility to update the reservation with.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Pick a location
 
@@ -155,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -Renew
-Set autoRenewal on/off
+Set this to true will automatically purchase a new reservation on the expiration date time.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -209,36 +224,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

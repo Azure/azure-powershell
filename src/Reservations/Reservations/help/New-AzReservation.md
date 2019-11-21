@@ -13,10 +13,11 @@ Purcahse a reservation
 ## SYNTAX
 
 ```
-New-AzReservation -ReservationOrderId <String> -ReservedResourceType <String> -Sku <String> -Location <String>
- -BillingScopeId <String> -Term <String> [-BillingPlan <String>] -Quantity <Int32> [-DisplayName <String>]
- -AppliedScopeType <String> [-AppliedScope <System.Collections.Generic.IList`1[System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzReservation -ReservationOrderId <String> -ReservedResourceType <String> -Sku <String>
+ [-Location <String>] -BillingScopeId <String> -Term <String> [-BillingPlan <String>] -Quantity <Int32>
+ -DisplayName <String> -AppliedScopeType <String> [-AppliedScope <String>] [-Renew <Boolean>]
+ [-InstanceFlexibility <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +39,7 @@ After calculate price, customer could purcahse that RI provide by calculatePrice
 Subscription that the benefit will be applied. Required if --applied-scope-type is Single. Do not specify if --applied-scope-type is Shared.
 
 ```yaml
-Type: System.Collections.Generic.IList`1[System.String]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -124,6 +125,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InstanceFlexibility
+{{ Fill InstanceFlexibility Description }}
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Pick a location
 
@@ -148,6 +164,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Renew
+Set this to true will automatically purchase a new reservation on the expiration date time.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
