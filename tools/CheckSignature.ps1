@@ -71,21 +71,15 @@ function Check-All {
 
     # -------------------------------------
 
-    $thirdParty = Get-ChildItem $path\* -Include *.dll -Recurse | Where-Object {
-        ($_.Name -ilike "*Newtonsoft.Json*") -or `
-        ($_.Name -ilike "*AutoMapper*") -or `
-        ($_.Name -ilike "*YamlDotNet*")
-    }
-    $exts = "*.ps1", "*.psm1", "*.ps1xml"
-    if ($Env:CheckPsd1 -ieq "True") {
-        $exts += "*.psd1"
-    }
-    $files += $thirdParty + (Get-ChildItem $path\* -Include $exts -Recurse)
-    $files = $files | Where-Object { ($_.FullName -notlike "*Security.Cryptography*") -and `
+    $files = Get-ChildItem $path\* -Include *.dll, *.ps1, *.psm1 -Recurse | Where-Object { $_.FullName -like "*Azure*" }
+    $files = $files | Where-Object { ($_.FullName -notlike "*Newtonsoft.Json*") -and `
+                                     ($_.FullName -notlike "*AutoMapper*") -and `
+                                     ($_.FullName -notlike "*Security.Cryptography*") -and `
                                      ($_.FullName -notlike "*NLog*") -and `
+                                     ($_.FullName -notlike "*YamlDotNet*") -and `
                                      ($_.FullName -notlike "*BouncyCastle.Crypto*") -and `
                                      ($_.FullName -notlike "*System.Management.Automation*")}
-    Write-Host "Checking the authenticode signature of $($files.Count) files (*.dll, $($exts -Join ', '))" -ForegroundColor Yellow
+    Write-Host "Checking the authenticode signature of $($files.Count) files (.dll, .ps1, .psm1)" -ForegroundColor Yellow
 
     $invalidAuthenticodeList = @()
 
@@ -100,7 +94,7 @@ function Check-All {
         Write-Host "Found $($invalidAuthenticodeList.Count) files with an invalid authenticode signature." -ForegroundColor Red
     }
     else {
-        Write-Host "All files (*.dll, $($exts -Join ', ')) have a valid authenticode signature." -ForegroundColor Green
+        Write-Host "All files (.dll, .ps1, .psd1) have a valid authenticode signature." -ForegroundColor Green
     }
 
     if ($invalidList.Length -gt 0) {
