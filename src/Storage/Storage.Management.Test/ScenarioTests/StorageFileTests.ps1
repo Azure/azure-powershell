@@ -28,7 +28,7 @@ function Test-StorageFileShare
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = Get-ProviderLocation ResourceManagement;
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
         $kind = 'StorageV2'
 		$shareName = "share"+ $rgname
 
@@ -68,13 +68,25 @@ function Test-StorageFileShare
         $quotaGiB = 300
 		$metadata = @{tag0="value0";tag1="value1";tag2="value2";tag3="value3"}
 		$shareName2 = "share2"+ $rgname		
-		$stos | New-AzRmStorageShare -Name $shareName2 -QuotaGiB $quotaGiB -Metadata $metadata
+		$stos | New-AzRmStorageShare -Name $shareName2 -QuotaGiB $quotaGiB -Metadata $metadata -EnabledProtocol NFS -RootSquash RootSquash 
 		$share = $stos | Get-AzRmStorageShare -Name $shareName2
 		Assert-AreEqual $rgname $share.ResourceGroupName
 		Assert-AreEqual $stoname $share.StorageAccountName
 		Assert-AreEqual $shareName2 $share.Name
 		Assert-AreEqual $quotaGiB $share.QuotaGiB
 		Assert-AreEqual $metadata.Count $share.Metadata.Count
+		#Assert-AreEqual "NFS" $share.EnabledProtocols
+		#Assert-AreEqual "RootSquash" $share.RootSquash
+		
+		Update-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName2 -RootSquash NoRootSquash 	
+		$share = $stos | Get-AzRmStorageShare -Name $shareName2
+		Assert-AreEqual $rgname $share.ResourceGroupName
+		Assert-AreEqual $stoname $share.StorageAccountName
+		Assert-AreEqual $shareName2 $share.Name
+		Assert-AreEqual $quotaGiB $share.QuotaGiB
+		Assert-AreEqual $metadata.Count $share.Metadata.Count
+		#Assert-AreEqual "NFS" $share.EnabledProtocols
+		#Assert-AreEqual "NoRootSquash" $share.RootSquash
 
 		$shares = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname
 		Assert-AreEqual 2 $shares.Count

@@ -117,7 +117,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [AllowEmptyCollection]
         [ValidateNotNull]
         public Hashtable Metadata { get; set; }
-        
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Sets reduction of the access rights for the remote superuser. Possible values include: 'NoRootSquash', 'RootSquash', 'AllSquash'")]
+        [ValidateSet(RootSquashType.NoRootSquash,
+            RootSquashType.RootSquash,
+            RootSquashType.AllSquash,
+            IgnoreCase = true)]
+        public string RootSquash { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -153,7 +161,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                     this.Name,
                                     new FileShare(
                                         metadata: MetadataDictionary,
-                                        shareQuota: shareQuota));
+                                        shareQuota: shareQuota,
+                                        rootSquash: this.RootSquash));
 
                 WriteObject(new PSShare(Share));
             }

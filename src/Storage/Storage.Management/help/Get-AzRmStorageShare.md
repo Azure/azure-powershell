@@ -52,8 +52,8 @@ PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccount
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
-----     -------- --------------- ---------- ------- ------- ---------------
+Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
+----     -------- ---------------- ---------- ------- ------- ---------------
 myshare  5120
 ```
 
@@ -65,8 +65,8 @@ PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccount
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name     QuotaGiB EnabledProtocol AccessTier           Deleted Version ShareUsageBytes
-----     -------- --------------- ----------           ------- ------- ---------------
+Name     QuotaGiB EnabledProtocols AccessTier           Deleted Version ShareUsageBytes
+----     -------- ---------------- ----------           ------- ------- ---------------
 share1   5120                     TransactionOptimized
 share2   5120                     TransactionOptimized
 ```
@@ -79,8 +79,8 @@ Get-AzStorageAccount -ResourceGroupName "myresourcegroup" -StorageAccountName "m
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
-----     -------- --------------- ---------- ------- ------- ---------------
+Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
+----     -------- ---------------- ---------- ------- ------- ---------------
 myshare  5120
 ```
 
@@ -92,8 +92,8 @@ PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccount
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name     QuotaGiB EnabledProtocol AccessTier           Deleted Version          ShareUsageBytes
-----     -------- --------------- ----------           ------- -------          ---------------
+Name     QuotaGiB EnabledProtocols AccessTier           Deleted Version          ShareUsageBytes
+----     -------- ---------------- ----------           ------- -------          ---------------
 test     100                      TransactionOptimized                                         
 share1   100                      TransactionOptimized True    01D61FD1FC5498B6
 ```
