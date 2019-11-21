@@ -71,8 +71,9 @@
 #### Az.Resources
 - Updated policy cmdlets to use new api version 2019-06-01 that has new EnforcementMode property in policy assignment.
 - Updated create policy definition help example
-* Fix bug Remove-AZADServicePrincipal -ServicePrincipalName, throw null reference when service principal name not found.
-* Fix bug New-AZADServicePrincipal，throw null reference when tenant doesn't have any subscription.
+- Fix bug Remove-AZADServicePrincipal -ServicePrincipalName, throw null reference when service principal name not found.
+- Fix bug New-AZADServicePrincipal, throw null reference when tenant doesn't have any subscription.
+- Change New-AzAdServicePrincipal to add credentials only to associated application.
 
 #### Az.Sql
 * Added support for database ReadReplicaCount.
