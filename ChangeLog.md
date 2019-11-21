@@ -16,6 +16,7 @@
 * Change SourceImageId parameter of New-AzGalleryImageVersion cmdlet to optional
 * Add OSDiskImage and DataDiskImage parameters to New-AzGalleryImageVersion cmdlet
 * Add HyperVGeneration parameter to New-AzGalleryImageDefinition cmdlet
+* Add SkipExtensionsOnOverprovisionedVMs parameters to New-AzVmss, New-AzVmssConfig and Update-AzVmss cmdlets
 
 #### Az.DataBoxEdge
 * Added cmdlet `Get-AzDataBoxEdgeOrder`
