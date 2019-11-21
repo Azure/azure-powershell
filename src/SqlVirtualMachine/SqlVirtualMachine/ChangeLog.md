@@ -19,5 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* Added to the Az roll-up module
+
 ## Version 0.1.0
 * General availability of Az.SqlVirtualMachine module
