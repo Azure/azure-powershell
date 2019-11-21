@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         [ValidateNotNullOrEmpty]
         public string Sku { get; set; }
 
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = false)]
         [LocationCompleter("Microsoft.Capacity/catalogs")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
