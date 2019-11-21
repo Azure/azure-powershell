@@ -56,7 +56,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 }
                 else
                 {
-                    this.GetVaultsUnderResourceGroup(this.ResourceGroupName);
+                    if(string.IsNullOrEmpty(this.Name))
+                    {
+                        this.GetVaultsUnderResourceGroup(this.ResourceGroupName);
+                    }
+                    else
+                    {
+                        Vault vault = RecoveryServicesClient.GetVault(this.ResourceGroupName, this.Name);
+                        this.WriteObject(new ARSVault(vault));
+                    }
                 }
             }
             catch (Exception exception)
