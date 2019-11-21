@@ -87,7 +87,8 @@ directive:
       verb: Get
       subject: Offer
     set:
-      subject: ManagedOffer
+      subject: AdminManagedOffer
+      alias: ManagedOffer
   - where:
       verb: Get
       subject: Quota
@@ -97,6 +98,24 @@ directive:
       subject: Subscription
     set:
       subject: UserSubscription
+  - where:
+      verb: Invoke
+      subject: LinkOffer
+    set:
+      verb: Add
+      subject: PlanToOffer
+  - where:
+      verb: Invoke
+      subject: UnlinkOffer
+    set:
+      verb: Remove
+      subject: PlanToOffer
+  - where:
+      verb: Test
+      subject: SubscriptionIdentityHealth
+    set:
+      verb: Get
+      subject: IdentityHealthReport
   - where:
       verb: Test
       subject: SubscriptionMoveSubscription
@@ -115,6 +134,18 @@ directive:
   - where:
       verb: New
       subject: Location
+    remove: True
+  - where:
+      verb: Restore
+      subject: SubscriptionData
+    remove: True
+  - where:
+      verb: Set
+      subject: Location
+    remove: True
+  - where:
+      verb: Update
+      subject: SubscriptionEncryption
     remove: True
 ## rename parameters
   - where:
@@ -202,4 +233,9 @@ directive:
       parameter-name: Subscription
     set:
       parameter-name: UserSubscriptionId
+## variant removal (parameter InputObject) from all New cmdlets -- parameter sets CreateViaIdentity and CreateViaIdentityExpanded
+  - where:
+      verb: New
+      variant: ^CreateViaIdentity(.*)
+    remove: true
 ```
