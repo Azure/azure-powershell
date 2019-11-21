@@ -50,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -AppliedScopeType
-Type of the Applied Scope to update the reservation with
+Type of the Applied Scope to update the reservation with "Single" or "Shared"
 
 ```yaml
 Type: System.String
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -BillingPlan
-The billing plan options available for this SKU.
+The billing plan options available for this SKU. "Monthly" or "Upfront"
 
 ```yaml
 Type: System.String
@@ -132,7 +132,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -200,9 +200,7 @@ Accept wildcard characters: False
 ```
 
 ### -Term
-"P1Y"  1 year
-"P3Y"  3 years
-3 years will get more discount 
+Available reservation terms for this resource.
 
 
 ```yaml
