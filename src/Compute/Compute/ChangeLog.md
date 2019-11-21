@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.1.0
 * VM Reapply feature
     - Add Reapply parameter to Set-AzVM cmdlet
 * VM Scale Set AutomaticRepairs feature:
