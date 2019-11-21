@@ -50,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -AppliedScopeType
-"Single" "Shared"
+Type of the Applied Scope to update the reservation with "Single" or "Shared"
 
 ```yaml
 Type: System.String
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -BillingPlan
-"Mothly" "Upfront"
+The billing plan options available for this SKU. "Monthly" or "Upfront"
 
 ```yaml
 Type: System.String
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -BillingScopeId
-The subscription who will be charged for the RI purchase
+Subscription that will be charged for purchasing Reservation.
 
 ```yaml
 Type: System.String
@@ -110,14 +110,14 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-Custom name
+Friendly name for user to easily identified the reservation.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -132,7 +132,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### -Quantity
-Quantity of RIs
+Quantity of product for calculating price or purchasing.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReservationOrderId
-The ReservationOrderId which get from calculatePrice
+Id of reservation order to purchase, generate by az reservations reservation-order calculate.
 
 ```yaml
 Type: System.String
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReservedResourceType
-Reservation Instance type, ex: VirtualMachines, Sql, CosmosDB .etc
+Type of the resource for which the skus should be provided.
 
 ```yaml
 Type: System.String
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-Pick specific product under the resourceType
+Sku name
 
 ```yaml
 Type: System.String
@@ -200,8 +200,7 @@ Accept wildcard characters: False
 ```
 
 ### -Term
-"P1Y"  1 year
-"P3Y"  3 years
+Available reservation terms for this resource.
 
 
 ```yaml
