@@ -20,7 +20,7 @@ Request-AzReservationQuote -ReservedResourceType <String> -Sku <String> -Locatio
 ```
 
 ## DESCRIPTION
-Calculate the price of a reservationOrder with specific sku, region, quantuty and location
+Calculate price for placing a reservation order.
 
 ## EXAMPLES
 
