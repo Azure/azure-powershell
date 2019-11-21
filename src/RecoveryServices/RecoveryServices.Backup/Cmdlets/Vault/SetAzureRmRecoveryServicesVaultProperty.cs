@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     {
         [Parameter(Mandatory = true, ValueFromPipeline = false)]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Enable", "Disable")]
-        public VaultSoftDeleteFeatureState SoftDeleteFeatureState { get; set; }
+        [ValidateSet("Enable", "Disable")]
+        public string SoftDeleteFeatureState { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     BackupResourceVaultConfigResource param = new BackupResourceVaultConfigResource();
                     param.Properties = new BackupResourceVaultConfig();
-                    param.Properties.SoftDeleteFeatureState = SoftDeleteFeatureState.ToString() + "d";
+                    param.Properties.SoftDeleteFeatureState = SoftDeleteFeatureState + "d";
                     param.Properties.EnhancedSecurityState = currentConfig.Properties.EnhancedSecurityState;
                     BackupResourceVaultConfigResource result = ServiceClientAdapter.SetVaultProperty(vaultName, resourceGroupName, param);
                     WriteObject(result.Properties);
