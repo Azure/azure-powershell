@@ -94,7 +94,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         RetentionPolicy,
         ProtectionPolicy,
         ResourceGroupName,
-        ResourceName
+        ResourceName,
+        MakePolicyConsistent
     }
 
     public enum ItemParams

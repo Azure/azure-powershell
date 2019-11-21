@@ -459,6 +459,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ProviderData.ContainsKey(PolicyParams.ProtectionPolicy) ?
                 (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy] :
                 null;
+            bool makePolicyConsistent = (bool)ProviderData[PolicyParams.MakePolicyConsistent];
             ProtectionPolicyResource serviceClientRequest = new ProtectionPolicyResource();
 
             if (policy != null)
@@ -507,6 +508,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 azureVmWorkloadProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
                 azureVmWorkloadProtectionPolicy.SubProtectionPolicy = new List<SubProtectionPolicy>();
                 azureVmWorkloadProtectionPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy((AzureVmWorkloadPolicy)policy);
+                azureVmWorkloadProtectionPolicy.MakePolicyConsistent = makePolicyConsistent;
                 serviceClientRequest.Properties = azureVmWorkloadProtectionPolicy;
             }
             else

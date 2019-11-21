@@ -54,6 +54,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public SchedulePolicyBase SchedulePolicy { get; set; }
 
+        /// <summary>
+        /// Make policy consistent
+        /// </summary>
+        [Parameter(Position = 4, Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter MakePolicyConsistent { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -93,6 +100,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         { PolicyParams.ProtectionPolicy, Policy },
                         { PolicyParams.RetentionPolicy, RetentionPolicy },
                         { PolicyParams.SchedulePolicy, SchedulePolicy },
+                        { PolicyParams.MakePolicyConsistent, MakePolicyConsistent.IsPresent }
                     }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
