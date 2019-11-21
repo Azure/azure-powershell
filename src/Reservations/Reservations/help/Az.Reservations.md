@@ -29,6 +29,12 @@ Get list of applicable `ReservationOrder` Ids.
 ### [Merge-AzReservation](Merge-AzReservation.md)
 Merges two `Reservation`s.
 
+### [New-AzReservation](New-AzReservation.md)
+Purcahse a reservation
+
+### [Request-AzReservationQuote](Request-AzReservationQuote.md)
+Calculate price for reservation order
+
 ### [Split-AzReservation](Split-AzReservation.md)
 Split a `Reservation`.
 
