@@ -14,9 +14,9 @@ Calculate price for reservation order
 
 ```
 Request-AzReservationQuote -ReservedResourceType <String> -Sku <String> -Location <String>
- -BillingScopeId <String> -Term <String> [-BillingPlan <String>] -Quantity <Int32> [-DisplayName <String>]
+ -BillingScopeId <String> -Term <String> [-BillingPlan <String>] -Quantity <Int32> -DisplayName <String>
  -AppliedScopeType <String> [-AppliedScope <System.Collections.Generic.IList`1[System.String]>]
- [-Renew <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Renew <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +35,7 @@ After get catalog, customer can get the differe product based on location. By us
 ## PARAMETERS
 
 ### -AppliedScope
-If AppliedScopeType is "Shared", it will be all subscriptions under the CAID/EA. If "Single" it will only give benefit to that specific subscription
+Subscription that the benefit will be applied. Required if --applied-scope-type is Single. Do not specify if --applied-scope-type is Shared.
 
 ```yaml
 Type: System.Collections.Generic.IList`1[System.String]
@@ -50,10 +50,10 @@ Accept wildcard characters: False
 ```
 
 ### -AppliedScopeType
-"Single" "Shared"
+Type of the Applied Scope to update the reservation with
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -65,10 +65,10 @@ Accept wildcard characters: False
 ```
 
 ### -BillingPlan
-"Mothly" "Upfront"
+The billing plan options available for this SKU.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -80,10 +80,10 @@ Accept wildcard characters: False
 ```
 
 ### -BillingScopeId
-The subscription who will be charge for the RI
+Subscription that will be charged for purchasing Reservation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -110,14 +110,14 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-Custom name
+Friendly name for user to easily identified the reservation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 Pick a location
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -140,10 +140,10 @@ Accept wildcard characters: False
 ```
 
 ### -Quantity
-Quantity of RIs
+Quantity of product for calculating price or purchasing.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -158,7 +158,7 @@ Accept wildcard characters: False
 Set autoRenewal on/off
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -170,10 +170,10 @@ Accept wildcard characters: False
 ```
 
 ### -ReservedResourceType
-Reservation Instance type, ex: VirtualMachines, Sql, CosmosDB .etc
+Type of the resource for which the skus should be provided.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -185,10 +185,10 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-Pick specific product under the resourceType
+Sku name, get the sku list by using command az reservations catalog show
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -206,11 +206,41 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

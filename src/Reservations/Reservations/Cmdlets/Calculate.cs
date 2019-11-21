@@ -60,6 +60,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         [Parameter(Mandatory = false)]
         public bool? Renew { get; set; }
 
+        [Parameter(Mandatory = false)]
         public string InstanceFlexibility { get; set; }
 
         public override void ExecuteCmdlet()
