@@ -58,7 +58,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string priority,
             string evictionPolicy,
             double? maxPrice,
-            string[] scaleInPolicy)
+            string[] scaleInPolicy,
+            bool doNotRunExtensionsOnOverprovisionedVMs)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -128,7 +129,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     ScaleInPolicy = (scaleInPolicy == null) ? null : new ScaleInPolicy
                     {
                         Rules = scaleInPolicy
-                    }
+                    },
+                    DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null
                 });
     }
 }
