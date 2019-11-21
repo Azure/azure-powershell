@@ -1,12 +1,9 @@
-﻿using System;
-using Microsoft.Azure.Commands.Reservations.Common;
+﻿using Microsoft.Azure.Commands.Reservations.Common;
 using System.Management.Automation;
 using Microsoft.Azure.Management.Reservations;
-using Microsoft.Azure.Commands.Reservations.Models;
 using Microsoft.Azure.Management.Reservations.Models;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Reservations.Custom;
 
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
