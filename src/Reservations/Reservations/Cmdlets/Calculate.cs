@@ -7,7 +7,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
-    [Cmdlet("Request", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ReservationQuote", SupportsShouldProcess = true), OutputType(typeof(CalculatePriceResponse))]
+    [Cmdlet("Request", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ReservationQuote", SupportsShouldProcess = false), OutputType(typeof(CalculatePriceResponse))]
     public class Calculate : AzureReservationsCmdletBase
     {
         [Parameter(Mandatory = true)]
