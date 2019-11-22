@@ -85,8 +85,7 @@ function Test-CalculatePrice
 
     $calculateP = Request-AzReservationQuote -ReservedResourceType $reservedResourceType -Location $location -BillingScopeId $subscriptionId -Term $term -Quantity $quantity -BillingPlan $billingPlan  -AppliedScopeType $applyScopeType -Sku $sku -DisplayName $disPlayName
     Assert-NotNull $calculateP
-    Assert-NotNull $calculateP.Properties
-    Assert-NotNull $calculateP.Properties.ReservationOrderId
+    Assert-NotNull $calculateP.ReservationOrderId
 }
 
 <#
