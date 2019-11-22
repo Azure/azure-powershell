@@ -4,10 +4,11 @@ using Microsoft.Azure.Management.Reservations;
 using Microsoft.Azure.Management.Reservations.Models;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Reservations.Custom;
 
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
-    [Cmdlet("Request", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ReservationQuote", SupportsShouldProcess = false), OutputType(typeof(CalculatePriceResponse))]
+    [Cmdlet("Request", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ReservationQuote", SupportsShouldProcess = true), OutputType(typeof(CalculatePriceResponse))]
     public class Calculate : AzureReservationsCmdletBase
     {
         [Parameter(Mandatory = true)]
@@ -85,7 +86,8 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
             PurchaseRequest.ReservedResourceType = ReservedResourceType;
 
             var response = AzureReservationAPIClient.ReservationOrder.Calculate(PurchaseRequest);
-            WriteObject(response);
+            var prop = new PSCalculatePriceResponseProperties(response.Properties);
+            WriteObject(prop);
         }
     }
 }
