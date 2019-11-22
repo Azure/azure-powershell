@@ -1,22 +1,22 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Reservations.dll-Help.xml
 Module Name: Az.Reservations
-online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/request-azreservationquote
+online version: https://docs.microsoft.com/en-us/powershell/module/az.reservations/get-azreservationquote
 schema: 2.0.0
 ---
 
-# Request-AzReservationQuote
+# Get-AzReservationQuote
 
 ## SYNOPSIS
-Calculate price for reservation order
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```
-Request-AzReservationQuote -ReservedResourceType <String> -Sku <String> [-Location <String>]
+Get-AzReservationQuote -ReservedResourceType <String> -Sku <String> [-Location <String>]
  -BillingScopeId <String> -Term <String> [-BillingPlan <String>] -Quantity <Int32> -DisplayName <String>
  -AppliedScopeType <String> [-AppliedScope <String>] [-Renew <Boolean>] [-InstanceFlexibility <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,7 @@ Calculate price for placing a reservation order.
 
 ### Example 1
 ```powershell
-PS C:\> Request-AzReservationQuote -ReservedResourceType "VirtualMachines" [-Sku "standard b1"] -Location "centralus"
+PS C:\> Get-AzReservationQuote -ReservedResourceType "VirtualMachines" [-Sku "standard b1"] -Location "centralus"
 -BillingScopeId "/subscriptions/79c182d9-9af7-4fd5-b136-b71f0a69a1d0" -Term "P1Y" [-BillingPlan "Monthly"] -Quantity 2 [-DisplayName "demo"] -AppliedScopeType "Shared" [-AppliedScopes ""]
 ```
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Pick a location
+Location that the SKU is available.
 
 ```yaml
 Type: System.String
@@ -217,43 +217,12 @@ Accept wildcard characters: False
 ### -Term
 Available reservation terms for this resource.
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
