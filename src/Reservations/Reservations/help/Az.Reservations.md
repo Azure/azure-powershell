@@ -26,13 +26,16 @@ Get `ReservationOrder`
 ### [Get-AzReservationOrderId](Get-AzReservationOrderId.md)
 Get list of applicable `ReservationOrder` Ids.
 
+### [Get-AzReservationQuote](Get-AzReservationQuote.md)
+{{ Fill in the Synopsis }}
+
 ### [Merge-AzReservation](Merge-AzReservation.md)
 Merges two `Reservation`s.
 
 ### [New-AzReservation](New-AzReservation.md)
 Purcahse a reservation
 
-### [Request-AzReservationQuote](Request-AzReservationQuote.md)
+### [Get-AzReservationQuote](Get-AzReservationQuote.md)
 Calculate price for reservation order
 
 ### [Split-AzReservation](Split-AzReservation.md)

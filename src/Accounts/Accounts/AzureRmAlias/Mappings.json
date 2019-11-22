@@ -1912,7 +1912,7 @@
     "Split-AzReservation": "Split-AzureRmReservation",
     "Get-AzReservationOrderId": "Get-AzureRmReservationOrderId",
     "Get-AzReservationCatalog": "Get-AzureRmReservationCatalog",
-    "Request-AzReservationQuote": "Request-AzureRmReservationQuote",
+    "Get-AzReservationQuote": "Get-AzureRmReservationQuote",
     "New-AzReservation": "New-AzureRmReservation"
   },
   "Az.ResourceGraph": {

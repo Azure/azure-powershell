@@ -141,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Pick a location
+Location that the SKU is available.
 
 ```yaml
 Type: System.String
