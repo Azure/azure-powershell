@@ -79,7 +79,7 @@ Accept wildcard characters: False
 
 ### -MatchVariable
 Match Variable.
-Possible values include: 'RemoteAddr', 'RequestMethod', 'QueryString', 'PostArgs','RequestUri', 'RequestHeader', 'RequestBody'
+Possible values include: 'RemoteAddr', 'RequestMethod', 'QueryString', 'PostArgs','RequestUri', 'RequestHeader', 'RequestBody', 'SocketAddr'
 
 ```yaml
 Type: System.String
