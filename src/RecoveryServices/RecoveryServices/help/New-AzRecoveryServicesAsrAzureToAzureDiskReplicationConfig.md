@@ -23,8 +23,9 @@ New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -VhdUri <String> -Log
 ```
 New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig [-ManagedDisk] -LogStorageAccountId <String>
  -DiskId <String> -RecoveryResourceGroupId <String> -RecoveryReplicaDiskAccountType <String>
- -RecoveryTargetDiskAccountType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -RecoveryTargetDiskAccountType <String> [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>]
+ [-KeyEncryptionKeyUrl <String>] [-KeyEncryptionVaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,6 +65,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DiskEncryptionSecretUrl
+Specifies the disk encryption secret url.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DiskEncryptionVaultId
+Specifies the disk encryption key vault ARM Id.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DiskId
 Specifies the disk id of managed disk.
 
@@ -73,6 +104,36 @@ Parameter Sets: AzureToAzureManagedDisk
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyEncryptionKeyUrl
+Specifies the key encryption Url.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyEncryptionVaultId
+Specifies the key encryption key vault ARM Id.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -218,7 +279,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
