@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
 ## Version 0.7.2
 * Remove subdomain check for create new IotCentral application, it will be handled by resource provider for idempotent
 
