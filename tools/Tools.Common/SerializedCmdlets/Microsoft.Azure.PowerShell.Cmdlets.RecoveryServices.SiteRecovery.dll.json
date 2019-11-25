@@ -28446,6 +28446,24 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "DiskType",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
           "Name": "DefaultProfile",
           "AliasList": [
             "AzContext",
@@ -28480,6 +28498,599 @@
         }
       ],
       "ParameterSets": [
+        {
+          "Name": "VMwareToAzureWithDiskType",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "VMwareToAzure",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProtectableItem",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectableItem",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectableItem, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "FabricSpecificVMDetails": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabricSpecificVMDetails",
+                    "ProtectionReadinessErrors": "System.Collections.Generic.IList`1[System.String]",
+                    "SupportedReplicationProviders": "System.Collections.Generic.IList`1[System.String]",
+                    "Disks": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.AsrVirtualHardDisk]",
+                    "FabricObjectId": "System.String",
+                    "FriendlyName": "System.String",
+                    "ID": "System.String",
+                    "Name": "System.String",
+                    "OS": "System.String",
+                    "OSDiskId": "System.String",
+                    "OSDiskName": "System.String",
+                    "ProtectionContainerId": "System.String",
+                    "ProtectionStatus": "System.String",
+                    "ReplicationProtectedItemId": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "pi",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "RecoveryVmName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Account",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRunAsAccount",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRunAsAccount, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "AccountId": "System.String",
+                    "AccountName": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "runAsAccountDetails",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "LogStorageAccountId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProcessServer",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProcessServer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProcessServer, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Updates": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRMobilityServiceUpdate]",
+                    "LastHeartbeat": "System.Nullable`1[System.DateTime]",
+                    "AvailableMemoryInBytes": "System.Nullable`1[System.Int64]",
+                    "AvailableSpaceInBytes": "System.Nullable`1[System.Int64]",
+                    "TotalSpaceInBytes": "System.Nullable`1[System.Int64]",
+                    "TotalMemoryInBytes": "System.Nullable`1[System.Int64]",
+                    "AgentVersion": "System.String",
+                    "SystemLoadStatus": "System.String",
+                    "SystemLoad": "System.String",
+                    "SpaceUsageStatus": "System.String",
+                    "ServerCount": "System.String",
+                    "ReplicationPairCount": "System.String",
+                    "MemoryUsageStatus": "System.String",
+                    "OsType": "System.String",
+                    "IpAddress": "System.String",
+                    "Id": "System.String",
+                    "HostId": "System.String",
+                    "FriendlyName": "System.String",
+                    "CpuLoadStatus": "System.String",
+                    "CpuLoad": "System.String",
+                    "PsServiceStatus": "System.String",
+                    "VersionStatus": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "processServer",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "RecoveryAzureNetworkId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "RecoveryAzureSubnetName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "RecoveryResourceGroupId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ReplicationGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DiskType",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProtectionContainerMapping",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+                  "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainerMapping",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainerMapping, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "ProviderSpecificDetails": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainerMappingProviderSpecificDetails",
+                    "HealthErrorDetails": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRHealthError]",
+                    "Name": "System.String",
+                    "ID": "System.String",
+                    "Health": "System.String",
+                    "PolicyFriendlyName": "System.String",
+                    "PolicyId": "System.String",
+                    "SourceFabricFriendlyName": "System.String",
+                    "SourceProtectionContainerFriendlyName": "System.String",
+                    "State": "System.String",
+                    "TargetFabricFriendlyName": "System.String",
+                    "TargetProtectionContainerFriendlyName": "System.String",
+                    "TargetProtectionContainerId": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "pcm",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "WaitForCompletion",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
         {
           "Name": "VMwareToAzure",
           "Parameters": [
@@ -48161,7 +48772,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
               "Name": "System.String",
@@ -48268,7 +48879,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
                   "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
                     "Name": "System.String",
@@ -53283,7 +53894,7 @@
     "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
       "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ProvisioningState": "System.String"
       },
