@@ -720,6 +720,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
         {
             throw new NotImplementedException();
         }
+        
+        public UserDelegationKey GetUserDelegationKey(DateTimeOffset? keyStart, DateTimeOffset? keyEnd, AccessCondition accessCondition = null, BlobRequestOptions options = null, OperationContext operationContext = null)
+        {
+            throw new NotImplementedException();
+        }
 
         public Task<string> StartCopyAsync(CloudBlob blob, Uri source, StandardBlobTier? standardBlobTier, RehydratePriority? rehydratePriority, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
         {

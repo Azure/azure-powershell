@@ -872,5 +872,47 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         {
             return this.BlobClient.GetAccountPropertiesAsync().Result;
         }
+
+        /// <summary>
+        /// Get UserDelegationKey, this key will be used to get  UserDelegation SAS token
+        /// </summary>
+        /// <param name="keyStart">The key valid start time</param>
+        /// <param name="keyEnd">The key valid end time</param>
+        /// <param name="accessCondition">Access condition</param>
+        /// <param name="options">Blob request option</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <returns>The UserDelegationKey</returns>
+        public UserDelegationKey GetUserDelegationKey(DateTimeOffset? keyStart, DateTimeOffset? keyEnd, AccessCondition accessCondition = null, BlobRequestOptions options = null, XSCL.OperationContext operationContext = null)
+        {
+            try
+            {
+                DateTimeOffset userDelegationKeyStartTime = keyStart == null ? DateTime.Now : keyStart.Value;
+                DateTimeOffset userDelegationKeyEndTime = keyEnd == null ? userDelegationKeyStartTime.AddHours(1) : keyEnd.Value;
+
+                //Check the Expire Time and Start Time, should remove this if server can rerturn clear error message
+                const double MAX_LIFE_TIME_DAYS = 7;
+                TimeSpan maxLifeTime = TimeSpan.FromDays(MAX_LIFE_TIME_DAYS);
+                if (userDelegationKeyEndTime <= DateTimeOffset.UtcNow)
+                {
+                    throw new ArgumentException(string.Format("Expiry time {0} is earlier than now.", userDelegationKeyEndTime.ToString()));
+                }
+                else if (userDelegationKeyStartTime >= userDelegationKeyEndTime)
+                {
+                    throw new ArgumentException(string.Format("Start time {0} is later than expiry time {1}.", userDelegationKeyStartTime.ToString(), userDelegationKeyEndTime.ToString()));
+                }
+                else if (userDelegationKeyEndTime - DateTimeOffset.UtcNow > maxLifeTime)
+                {
+                    throw new ArgumentException(string.Format("Generate User Delegation SAS with OAuth bases Storage context. User Delegate Key expiry time {0} must be in {1} days from now.",
+                        userDelegationKeyEndTime.ToString(),
+                        MAX_LIFE_TIME_DAYS));
+                }
+
+                return this.BlobClient.GetUserDelegationKey(userDelegationKeyStartTime, userDelegationKeyEndTime, accessCondition, options, operationContext);
+            }
+            catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
+            {
+                throw e.InnerException;
+            }
+        }
     }
 }
