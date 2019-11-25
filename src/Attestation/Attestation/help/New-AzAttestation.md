@@ -14,7 +14,8 @@ Creates an attestation
 
 ```
 New-AzAttestation -Name <String> -ResourceGroupName <String> [-AttestationPolicy <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PolicySigningCertificateFile <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +35,7 @@ ResoureGroupName    : rg1
 SubscriptionId      : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
 ```
 
-Create a new Attestation "example" in current Subscription, Resource Group "rg1"
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -80,6 +81,21 @@ Parameter Sets: (All)
 Aliases: InstanceName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PolicySigningCertificateFile
+Specifies the configuration signing keys passed in which to create the attestation.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
