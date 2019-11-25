@@ -444,4 +444,7 @@
   <data name="UserWithUPNDoesntExist" xml:space="preserve">
     <value>User with UPN '{0}' does not exist.</value>
   </data>
+  <data name="ServicePrincipalCreatedWithCredentials" xml:space="preserve">
+    <value>No new secret was created. This ServicePrincipal will use the password associated with application '{0}'.</value>
+  </data>
 </root>
