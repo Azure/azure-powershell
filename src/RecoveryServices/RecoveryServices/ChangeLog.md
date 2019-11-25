@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 2.1.0
+
 * Azure Site Recovery support to select disk type at enabling protection.
 * Azure Site Recovery bug fix for recovery plan action edit.
 * Azure Backup SQL Restore support to accept filestream DBs.

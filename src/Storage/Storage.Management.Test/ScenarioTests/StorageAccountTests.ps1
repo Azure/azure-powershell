@@ -509,6 +509,41 @@ function Test-SetAzureRmCurrentStorageAccount
 
 <#
 .SYNOPSIS
+Test Revoke-AzStorageAccountUserDelegationKeys
+.DESCRIPTION
+SmokeTest
+#>
+function Test-RevokeAzStorageAccountUserDelegationKeys
+{
+ # Setup
+    $rgname = Get-StorageManagementTestResourceName
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname
+        $stotype = 'Standard_LRS'
+        $loc = Get-ProviderLocation ResourceManagement
+
+        New-AzResourceGroup -Name $rgname -Location $loc
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype
+		
+		# revoke with storage account name and resoruce group name
+		Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName $rgname  -Name $stoname
+
+		# revoke with pipeline
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname }
+        $global:sto | Revoke-AzStorageAccountUserDelegationKeys
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test NetworkRule
 #>
 function Test-NetworkRule

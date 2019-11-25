@@ -155,6 +155,7 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Get-AzStorageBlobServiceProperty', 
                'Enable-AzStorageBlobDeleteRetentionPolicy', 
                'Disable-AzStorageBlobDeleteRetentionPolicy', 
+               'Revoke-AzStorageAccountUserDelegationKeys',
                'Get-AzStorageFileHandle', 'Close-AzStorageFileHandle', 
                'New-AzRmStorageShare', 'Remove-AzRmStorageShare', 
                'Get-AzRmStorageShare', 'Update-AzRmStorageShare'
@@ -194,12 +195,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Support enable Large File share when create or update Storage account
-    -  New-AzStorageAccount
-    -  Set-AzStorageAccount
-* When close/get File handle, skip check the input path is File directory or File, to avoid failure with object in DeletePending status
-    -  Get-AzStorageFileHandle
-    -  Close-AzStorageFileHandle'
+        ReleaseNotes = '* Support generate Blob/Constainer Idenity based SAS token with Storage Context based on Oauth authentication
+    - New-AzStorageContainerSASToken
+    - New-AzStorageBlobSASToken
+* Support revoke Storage Account User Delegation Keys, so all Idenity SAS tokens are revoked
+    - Revoke-AzStorageAccountUserDelegationKeys'
 
         # Prerelease string of this module
         # Prerelease = ''
