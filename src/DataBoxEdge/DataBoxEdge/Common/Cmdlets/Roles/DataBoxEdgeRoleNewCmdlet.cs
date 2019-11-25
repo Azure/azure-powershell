@@ -246,6 +246,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
 
         private PSDataBoxEdgeRole CreateResource()
         {
+            var encryptionKey = this.EncryptionKey.ConvertToString();
+            WriteVerbose(encryptionKey);
             var iotDeviceSecret = DataBoxEdgeManagementClient.Devices.GetAsymmetricEncryptedSecret(
                 this.DeviceName,
                 this.ResourceGroupName,

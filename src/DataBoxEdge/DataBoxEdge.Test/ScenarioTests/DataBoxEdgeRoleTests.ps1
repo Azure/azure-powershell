@@ -41,13 +41,8 @@ function Test-CreateRole
 	$rgname = Get-DeviceResourceGroupName
 	$dfname = Get-DeviceName
 	$name = Get-RoleName
-
-	$deviceConnectionString = Get-DeviceConnectionString
-	$deviceConnSec = ConvertTo-SecureString $deviceConnectionString -AsPlainText -Force
-
-	$iotDeviceConnectionString = Get-IotDeviceConnectionString
-	$iotDeviceConnSec = ConvertTo-SecureString $iotDeviceConnectionString -AsPlainText -Force
-
+	$deviceConnSec = Get-DeviceConnectionString
+	$iotDeviceConnSec = Get-IotDeviceConnectionString
 	$encryptionKey = Get-EncryptionKey 
 	
 	$enabled = "Enabled"
@@ -73,14 +68,8 @@ function Test-RemoveRole
 	$rgname = Get-DeviceResourceGroupName
 	$dfname = Get-DeviceName
 	$name = Get-RoleName
-
-	
-	$deviceConnectionString = Get-DeviceConnectionString
-	$deviceConnSec = ConvertTo-SecureString $deviceConnectionString -AsPlainText -Force
-
-	$iotDeviceConnectionString = Get-IotDeviceConnectionString
-	$iotDeviceConnSec = ConvertTo-SecureString $iotDeviceConnectionString -AsPlainText -Force
-
+	$deviceConnSec = Get-DeviceConnectionString
+	$iotDeviceConnSec = Get-IotDeviceConnectionString
 	$encryptionKey = Get-EncryptionKey 
 	
 	$enabled = "Enabled"

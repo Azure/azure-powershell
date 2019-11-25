@@ -18,6 +18,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
 using Microsoft.Azure.Management.EdgeGateway;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -46,18 +47,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
         public static DataBoxEdgeScenarioTestBase NewInstance => new DataBoxEdgeScenarioTestBase();
 
 
-        protected void SetupManagementClients(MockContext context)
-        {
-            var dataBoxEdgeManagementClient = GetDataBoxEdgeManagementClient(context);
-            var resourceManagementClient = GetResourceManagementClient(context);
-            var storageManagementClient = GetStorageManagementClient(context);
-
-            _helper.SetupManagementClients(
-                dataBoxEdgeManagementClient,
-                resourceManagementClient,
-                storageManagementClient);
-        }
-
+        
         /// <summary>
         /// Methods for invoking PowerShell scripts
         /// </summary>
@@ -104,17 +94,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
             {
                 SetupManagementClients(context);
 
-                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                var azDBPath = _helper.GetRMModulePath("Az.DataBoxEdge.psd1");
+//                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
+
                 var callingClassName =
                     callingClassType.Split(new[] {"."}, StringSplitOptions.RemoveEmptyEntries).Last();
+                
+                var azDBPath = _helper.GetRMModulePath("Az.DataBoxEdge.psd1");
                 _helper.SetupModules(AzureModule.AzureResourceManager,
-                    "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
                     azDBPath,
-                    "AzureRM.Resources.ps1",
-                    "AzureRM.Storage.ps1");
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    "AzureRM.Storage.ps1",
+                    "AzureRM.Resources.ps1");
+
                 try
                 {
                     var psScripts = scriptBuilder?.Invoke();
@@ -129,6 +122,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
                 }
             }
         }
+
+
+        protected void SetupManagementClients(MockContext context)
+        {
+            var dataBoxEdgeManagementClient = GetDataBoxEdgeManagementClient(context);
+            var resourceManagementClient = GetResourceManagementClient(context);
+            var storageManagementClient = GetStorageManagementClient(context);
+
+            _helper.SetupManagementClients(
+                dataBoxEdgeManagementClient,
+                resourceManagementClient,
+                storageManagementClient);
+        }
+
 
         protected DataBoxEdgeManagementClient GetDataBoxEdgeManagementClient(MockContext context)
         {

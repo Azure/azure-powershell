@@ -29,9 +29,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
 
         public string Id;
         public string Name;
-
-        public List<Dictionary<string, string>> UserAccessRights;
-        public List<Dictionary<string, string>> ClientAccessRights;
+        public List<Dictionary<string, string>> UserAccessRight;
+        public List<Dictionary<string, string>> ClientAccessRight;
 
         public PSDataBoxEdgeShare()
         {
@@ -69,7 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
             if (share.AccessProtocol.Equals("SMB") && share.UserAccessRights != null &&
                 share.UserAccessRights.Count > 0)
             {
-                UserAccessRights = new List<Dictionary<string, string>>();
+                UserAccessRight = new List<Dictionary<string, string>>();
                 foreach (var userAccessRight in share.UserAccessRights)
                 {
                     var userIdentifier = new DataBoxEdgeResourceIdentifier(userAccessRight.UserId);
@@ -79,12 +78,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
                         {"Username", username},
                         {"AccessRight", userAccessRight.AccessType}
                     };
-                    UserAccessRights.Add(accessRight);
+                    UserAccessRight.Add(accessRight);
                 }
             }
             else if (share.ClientAccessRights != null && share.ClientAccessRights.Count > 0)
             {
-                ClientAccessRights = new List<Dictionary<string, string>>();
+                ClientAccessRight = new List<Dictionary<string, string>>();
                 foreach (var shareClientAccessRight in share.ClientAccessRights)
                 {
                     var accessRight = new Dictionary<string, string>()
@@ -92,7 +91,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
                         {"ClientId", shareClientAccessRight.Client},
                         {"AccessRight", shareClientAccessRight.AccessPermission}
                     };
-                    ClientAccessRights.Add(accessRight);
+                    ClientAccessRight.Add(accessRight);
                 }
             }
         }
