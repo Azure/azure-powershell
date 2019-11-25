@@ -13,17 +13,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Net;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Network
 {
     public abstract class AzureFirewallBaseCmdlet : NetworkBaseCmdlet
     {
+        protected static Regex validateIpGroupsRegex = new Regex("^/subscriptions/([^/]+)/resourceGroups/([^/]+)/providers/Microsoft.Network/IpGroups/([^/]+)", RegexOptions.IgnoreCase);
+
         public IAzureFirewallsOperations AzureFirewallClient
         {
             get
@@ -61,6 +65,14 @@ namespace Microsoft.Azure.Commands.Network
             get
             {
                 return NetworkClient.NetworkManagementClient.PublicIPAddresses;
+            }
+        }
+
+        protected void ValidateIsIpGroup(string resourceId){
+            Match match = validateIpGroupsRegex.Match(resourceId);
+            if (!match.Success)
+            {
+                throw new ArgumentException($"Invalid value {resourceId}.");
             }
         }
 

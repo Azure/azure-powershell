@@ -23,7 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallNetworkRule", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallNetworkRule))]
-    public class NewAzureFirewallNetworkRuleCommand : NetworkBaseCmdlet
+    public class NewAzureFirewallNetworkRuleCommand : AzureFirewallBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -38,16 +38,28 @@ namespace Microsoft.Azure.Commands.Network
         public string Description { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The source addresses of the rule")]
         [ValidateNotNullOrEmpty]
         public string[] SourceAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
+        HelpMessage = "The source ipgroup of the rule")]
+        [ValidateNotNullOrEmpty]
+        public string[] SourceIpGroup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The destination addresses of the rule")]
         [ValidateNotNullOrEmpty]
         public string[] DestinationAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+        HelpMessage = "The destination ipgroup of the rule")]
+        [ValidateNotNullOrEmpty]
+        public string[] DestinationIpGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -96,13 +108,18 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Either DestinationAddress or DestinationFqdns is required");
             }
 
+            Array.ForEach(this.SourceIpGroup,r => ValidateIsIpGroup(r));
+            Array.ForEach(this.DestinationIpGroup,r => ValidateIsIpGroup(r));
+
             var networkRule = new PSAzureFirewallNetworkRule
             {
                 Name = this.Name,
                 Description = this.Description,
                 Protocols = this.Protocol?.ToList(),
                 SourceAddresses = this.SourceAddress?.ToList(),
+                SourceIpGroups = this.SourceIpGroup?.ToList(),
                 DestinationAddresses = this.DestinationAddress?.ToList(),
+                DestinationIpGroups = this.DestinationIpGroup?.ToList(),
                 DestinationFqdns = this.DestinationFqdn?.ToList(),
                 DestinationPorts = this.DestinationPort?.ToList()
             };

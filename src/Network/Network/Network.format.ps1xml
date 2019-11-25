@@ -3405,6 +3405,10 @@
                 <PropertyName>SourceAddressesText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>SourceIpGroups</Label>
+                <PropertyName>SourceIpGroupsText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>TargetFqdns</Label>
                 <PropertyName>TargetFqdnsText</PropertyName>
               </ListItem>
@@ -3475,6 +3479,10 @@
               <ListItem>
                 <Label>SourceAddresses</Label>
                 <PropertyName>SourceAddressesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>SourceIpGroups</Label>
+                <PropertyName>SourceIpGroupsText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>DestinationAddresses</Label>
@@ -3549,8 +3557,16 @@
                 <PropertyName>SourceAddressesText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>SourceIpGroups</Label>
+                <PropertyName>SourceIpGroupsText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>DestinationAddresses</Label>
                 <PropertyName>DestinationAddressesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DestinationIpGroups</Label>
+                <PropertyName>DestinationIpGroupsText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>DestinationPorts</Label>

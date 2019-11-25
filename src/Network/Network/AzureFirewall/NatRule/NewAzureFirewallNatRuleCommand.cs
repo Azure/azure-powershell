@@ -23,7 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallNatRule", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallNatRule))]
-    public class NewAzureFirewallNatRuleCommand : NetworkBaseCmdlet
+    public class NewAzureFirewallNatRuleCommand : AzureFirewallBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -38,10 +38,16 @@ namespace Microsoft.Azure.Commands.Network
         public string Description { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The source addresses of the rule")]
         [ValidateNotNullOrEmpty]
         public string[] SourceAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The source ipgroup of the rule")]
+        [ValidateNotNullOrEmpty]
+        public string[] SourceIpGroup { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -124,21 +130,24 @@ namespace Microsoft.Azure.Commands.Network
 
                 ValidateIsSinglePortNotRange(DestinationPort.Single());
                 ValidateIsSinglePortNotRange(TranslatedPort);
+
+                Array.ForEach(this.SourceIpGroup,r => ValidateIsIpGroup(r));
             }
 
-            var networkRule = new PSAzureFirewallNatRule
+            var natRule = new PSAzureFirewallNatRule
             {
                 Name = this.Name,
                 Description = this.Description,
                 Protocols = this.Protocol?.ToList(),
                 SourceAddresses = this.SourceAddress?.ToList(),
+                SourceIpGroups = this.SourceIpGroup?.ToList(),
                 DestinationAddresses = this.DestinationAddress?.ToList(),
                 DestinationPorts = this.DestinationPort?.ToList(),
                 TranslatedAddress = this.TranslatedAddress,
                 TranslatedFqdn = this.TranslatedFqdn,
                 TranslatedPort = this.TranslatedPort
             };
-            WriteObject(networkRule);
+            WriteObject(natRule);
         }
 
         private void ValidateIsSingleIpNotRange(string ipStr)
