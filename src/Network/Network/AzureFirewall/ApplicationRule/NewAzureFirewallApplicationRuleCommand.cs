@@ -20,16 +20,12 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallApplicationRule", SupportsShouldProcess = true, DefaultParameterSetName = AzureFirewallApplicationRuleParameterSets.TargetFqdn), OutputType(typeof(PSAzureFirewallApplicationRule))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallApplicationRule", SupportsShouldProcess = true, DefaultParameterSetName = AzureFirewallApplicationRuleParameterSets.Default), OutputType(typeof(PSAzureFirewallApplicationRule))]
     public class NewAzureFirewallApplicationRuleCommand : AzureFirewallBaseCmdlet
     {
+
         [Parameter(
             Mandatory = true,
-            ParameterSetName = AzureFirewallApplicationRuleParameterSets.TargetFqdn,
-            HelpMessage = "The name of the Application Rule")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = AzureFirewallApplicationRuleParameterSets.FqdnTag,
             HelpMessage = "The name of the Application Rule")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
@@ -43,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ParameterSetName = AzureFirewallApplicationRuleParameterSets.Default,
-           HelpMessage = "The source ipgroup of the rule")]
+           HelpMessage = "The source addresses of the rule")]
         [Parameter(
             Mandatory = false,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.TargetFqdn,
@@ -68,6 +64,14 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The source ipgroup of the rule")]
         public string[] SourceIpGroup { get; set; }
 
+        [Parameter
+            (Mandatory = false,
+             ParameterSetName = AzureFirewallApplicationRuleParameterSets.Default,
+             HelpMessage = "The source addresses of the rule")]
+        [Parameter
+            (Mandatory = false,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.BySourceIpGroup,
+            HelpMessage = "The source ipgroup of the rule")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.TargetFqdn,
@@ -75,8 +79,16 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string[] TargetFqdn { get; set; }
 
+        [Parameter
+           (Mandatory = false,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.Default,
+            HelpMessage = "The source addresses of the rule")]
+        [Parameter
+           (Mandatory = false,
+           ParameterSetName = AzureFirewallApplicationRuleParameterSets.BySourceIpGroup,
+           HelpMessage = "The source ipgroup of the rule")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.FqdnTag,
             HelpMessage = "The FQDN Tags of the rule")]
         [ValidateNotNullOrEmpty]
@@ -99,6 +111,7 @@ namespace Microsoft.Azure.Commands.Network
                 FqdnTag = AzureFirewallFqdnTagHelper.MapUserInputToAllowedFqdnTags(FqdnTag, this.AzureFirewallFqdnTagClient).ToArray();
             }
 
+
             var protocolsAsWeExpectThem = MapUserProtocolsToFirewallProtocols(Protocol?.ToList());
 
             var applicationRule = new PSAzureFirewallApplicationRule
@@ -106,6 +119,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name,
                 Description = this.Description,
                 SourceAddresses = this.SourceAddress?.ToList(),
+                SourceIpGroups = this.SourceIpGroup?.ToList(),
                 Protocols = protocolsAsWeExpectThem,
                 TargetFqdns = this.TargetFqdn?.ToList(),
                 FqdnTags = this.FqdnTag?.ToList()

@@ -30,14 +30,15 @@ New-AzFirewallApplicationRule -Name <String> [-Description <String>]
 ### TargetFqdn
 ```
 New-AzFirewallApplicationRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
- -TargetFqdn <String[]> -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SourceIpGroup <String[]>] -TargetFqdn <String[]> -Protocol <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FqdnTag
 ```
 New-AzFirewallApplicationRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
- -FqdnTag <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SourceIpGroup <String[]>] [-FqdnTag <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +63,7 @@ This example creates a rule which will allow traffic for Windows Updates for 10.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -90,16 +91,15 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
 ### -FqdnTag
 Specifies a list of FQDN Tags for this rule. The available tags can be retrieved using [Get-AzFirewallFqdnTag](./Get-AzFirewallFqdnTag.md) cmdlet.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: FqdnTag
+Parameter Sets: Default, SourceIpGroup, FqdnTag
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -130,6 +130,7 @@ Protocol is mandatory when TargetFqdn is used, but it cannot be used with FqdnTa
 Type: System.String[]
 Parameter Sets: TargetFqdn
 Aliases:
+Accepted values: Any, TCP, UDP, ICMP
 
 Required: True
 Position: Named
@@ -139,11 +140,23 @@ Accept wildcard characters: False
 ```
 
 ### -SourceAddress
-The source addresses of the rule
+The source ipgroup of the rule
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Default
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String[]
+Parameter Sets: SourceIpGroup, TargetFqdn, FqdnTag
 Aliases:
 
 Required: False
@@ -153,13 +166,53 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetFqdn
-Specifies a list of domain names filtered by this rule.
-The asterisk character, '*', is accepted only as the first character of an FQDN in the list. When used, the asterisk matches any number of characters. (e.g. '*msn.com' will match msn.com and all its subdomains)
+### -SourceIpGroup
+The source IpGroups of the rule
 
 ```yaml
 Type: System.String[]
-Parameter Sets: TargetFqdn
+Parameter Sets: Default, TargetFqdn, FqdnTag
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String[]
+Parameter Sets: SourceIpGroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetFqdn
+Specifies a list of domain names filtered by this rule. 
+The asterisk character, '*', is accepted only as the first character of an FQDN in the list. 
+When used, the asterisk matches any number of characters. (e.g. '*msn.com' will match msn.com and all its ubdomains)
+
+```yaml
+Type: System.String[]
+Parameter Sets: Default, SourceIpGroup
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -179,7 +232,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -195,7 +248,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
