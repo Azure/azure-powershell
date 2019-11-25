@@ -140,6 +140,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         public override void ExecuteCmdlet()
         {
+            IDictionary<string, string> tagPairs = null;
+
+            if (Tag != null)
+            {
+                tagPairs = new Dictionary<string, string>();
+
+                foreach (string key in Tag.Keys)
+                {
+                    tagPairs.Add(key, Tag[key].ToString());
+                }
+            }
+
             if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = PoolObject.ResourceGroupName;
@@ -158,7 +170,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 Location = Location,
                 ExportPolicy = (ExportPolicy != null) ? ModelExtensions.ConvertExportPolicyFromPs(ExportPolicy) : null,
                 ProtocolTypes = ProtocolType,
-                Tags = Tag
+                Tags = tagPairs
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
