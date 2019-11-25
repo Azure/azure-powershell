@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Add MinimumTlsVersion parameter to Enable-AzFrontDoorCustomDomainHttps and New-AzFrontDoorFrontendEndpointObject
+* Add HealthProbeMethod and EnabledState parameters to New-AzFrontDoorHealthProbeSettingObject
+* Add new cmdlet to create BackendPoolsSettings objec to pass into creation/update of Front Door
+    - New-AzFrontDoorBackendPoolsSettingObject
+
 ## Version 1.1.2
 * Fixed miscellaneous typos across module
 * Added EnabledState parameter to New-AzFrontDoorWafCustomRuleObject

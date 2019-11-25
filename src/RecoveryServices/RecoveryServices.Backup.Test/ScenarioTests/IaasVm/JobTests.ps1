@@ -14,7 +14,7 @@
 
 function Test-AzureVMGetJobs
 {
-	$location = Get-ResourceGroupLocation
+	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup $location
 	
 	try
@@ -87,7 +87,7 @@ function Test-AzureVMGetJobs
 
 function Test-AzureVMGetJobsTimeFilter
 {
-	$location = Get-ResourceGroupLocation
+	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup -Location $location
 	
 	try
@@ -164,7 +164,7 @@ function Test-AzureVMGetJobsTimeFilter
 
 function Test-AzureVMWaitJob
 {
-	$location = Get-ResourceGroupLocation
+	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup -Location $location
 
 	try
@@ -191,7 +191,7 @@ function Test-AzureVMWaitJob
 
 function Test-AzureVMCancelJob
 {
-	$location = Get-ResourceGroupLocation
+	$location = "southeastasia"
 	$resourceGroupName = Create-ResourceGroup -Location $location
 
 	try

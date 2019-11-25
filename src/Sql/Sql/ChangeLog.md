@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.0
 * Added support for database ReadReplicaCount.
 * Fixed Set-AzSqlDatabase when zone redundancy not set
 
