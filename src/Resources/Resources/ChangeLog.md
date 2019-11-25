@@ -18,10 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.8.0
 - Updated policy cmdlets to use new api version 2019-06-01 that has new EnforcementMode property in policy assignment.
 - Updated create policy definition help example
-* Fix bug Remove-AZADServicePrincipal -ServicePrincipalName, throw null reference when service principal name not found.
-* Fix bug New-AZADServicePrincipal，throw null reference when tenant doesn't have any subscription.
+- Fix bug Remove-AZADServicePrincipal -ServicePrincipalName, throw null reference when service principal name not found.
+- Fix bug New-AZADServicePrincipal, throw null reference when tenant doesn't have any subscription.
+- Change New-AzAdServicePrincipal to add credentials only to associated application.
 
 ## Version 1.7.1
 * Update dependency assembly Microsoft.Extensions.Caching.Memory from 1.1.1 to 2.2
