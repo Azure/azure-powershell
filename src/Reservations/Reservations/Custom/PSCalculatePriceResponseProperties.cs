@@ -85,10 +85,11 @@ namespace Microsoft.Azure.Commands.Reservations.Custom
         private string PrintPrice(Price price)
         {
             string builder = "";
+            string currencyTotalSpace = "                      ";
             if (price != null)
             {
                 builder += "CurrencyCode: " + price.CurrencyCode;
-                builder += "\n" + "Amount: " + price.Amount;
+                builder += "\n" + currencyTotalSpace + "Amount: " + price.Amount;
             }
             return builder;
         }
