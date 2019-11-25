@@ -84,8 +84,6 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
         {
             if (ShouldProcess(Name, ResourceProperties.Resources.NewIotCentralApp))
             {
-                this.EnsureNameAvailabilityOrThrow();
-
                 var iotCentralApp = new App()
                 {
                     DisplayName = this.GetDisplayName(),
@@ -101,13 +99,6 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
                 this.WriteObject(IotCentralUtils.ToPSIotCentralApp(createdIotCentralApp), false);
             }
 
-        }
-
-        private void EnsureNameAvailabilityOrThrow()
-        {
-            var checkNameInputs = new OperationInputs(this.Name, resourceType);
-            var nameAvailabilityInfo = this.IotCentralClient.Apps.CheckNameAvailability(checkNameInputs);
-            IotCentralUtils.EnsureAvailabilityOrThrow(nameAvailabilityInfo);
         }
 
         private IDictionary<string, string> GetTags()
