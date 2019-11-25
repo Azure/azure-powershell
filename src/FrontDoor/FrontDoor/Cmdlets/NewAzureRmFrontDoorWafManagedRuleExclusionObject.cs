@@ -34,7 +34,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public string Variable { get; set; }
 
         /// <summary>
-        /// Exclusion operator
+        /// Exclusion operator, performed on the selector
+        /// In the case of EqualsAny, the selector cannot be specified (it will exclude all match variables of the specified type)
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Operator")]
         [PSArgumentCompleter("Equals", "Contains", "StartsWith", "EndsWith", "EqualsAny")]
@@ -63,11 +64,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         {
             if (Operator == PSExclusionOperatorProperty.EqualsAny.ToString() && Selector != null)
             {
+                // Selector is required if the operator is not "EqualsAny".
                 throw new PSArgumentException(nameof(Selector));
             }
 
-            if (Operator != PSExclusionOperatorProperty.EqualsAny.ToString() && (Selector == null || Selector.Length == 0))
+            if (Operator != PSExclusionOperatorProperty.EqualsAny.ToString() && string.IsNullOrEmpty(Selector))
             {
+                // Selector cannot be specified if the operator is "EqualsAny".
                 throw new PSArgumentNullException(nameof(Selector));
             }
         }
