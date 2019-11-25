@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 && updatedSoftDeleteSwitch.Value)
                 properties.EnableSoftDelete = updatedSoftDeleteSwitch;
 
-            if (!(properties.EnablePurgeProtection.HasValue && properties.EnableSoftDelete.Value)
+            if (!(properties.EnablePurgeProtection.HasValue && properties.EnablePurgeProtection.Value)
                 && updatedPurgeProtectionSwitch.HasValue 
                 && updatedPurgeProtectionSwitch.Value)
                 properties.EnablePurgeProtection = updatedPurgeProtectionSwitch;

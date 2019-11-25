@@ -15,39 +15,42 @@ Enable HTTPS for a custom domain using Front Door managed certificate or using o
 ### ByFieldsParameterSet (Default)
 ```
 Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName <String> -FrontDoorName <String>
- -FrontendEndpointName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -FrontendEndpointName <String> [-MinimumTlsVersion <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByFieldsWithVaultParameterSet
 ```
 Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName <String> -FrontDoorName <String>
  -FrontendEndpointName <String> -VaultId <String> -SecretName <String> -SecretVersion <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MinimumTlsVersion <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Enable-AzFrontDoorCustomDomainHttps -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Enable-AzFrontDoorCustomDomainHttps -ResourceId <String> [-MinimumTlsVersion <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdWithVaultParameterSet
 ```
 Enable-AzFrontDoorCustomDomainHttps -ResourceId <String> -VaultId <String> -SecretName <String>
- -SecretVersion <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SecretVersion <String> [-MinimumTlsVersion <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Enable-AzFrontDoorCustomDomainHttps -InputObject <PSFrontendEndpoint>
+Enable-AzFrontDoorCustomDomainHttps -InputObject <PSFrontendEndpoint> [-MinimumTlsVersion <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectWithVaultParameterSet
 ```
 Enable-AzFrontDoorCustomDomainHttps -InputObject <PSFrontendEndpoint> -VaultId <String> -SecretName <String>
- -SecretVersion <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SecretVersion <String> [-MinimumTlsVersion <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +60,7 @@ The **Enable-AzFrontDoorCustomDomainHttps** enables HTTPS for a custom domain.
 
 ### Example 1: Enable HTTPS for a custom domain with FrontDoorName and ResourceGroupName using Front Door managed certificate.
 ```powershell
-PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz"
+PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -MinimumTlsVersion "1.2"
 
 
 HostName                         : frontendpointname1.custom.xyz
@@ -69,6 +72,7 @@ CustomHttpsProvisioningState     : Enabling
 CustomHttpsProvisioningSubstate  : SubmittingDomainControlValidationRequest
 CertificateSource                : FrontDoor
 ProtocolType                     : ServerNameIndication
+MinimumTlsVersion                : 1.2
 Vault                            :
 SecretName                       :
 SecretVersion                    :
@@ -85,7 +89,7 @@ Enable HTTPS for a custom domain "frontendpointname1-custom-xyz" that is part of
 ### Example 2: Enable HTTPS for a custom domain with FrontDoorName and ResourceGroupName using own certificate in Key Vault.
 ```powershell
 PS C:\> $vaultId = (Get-AzKeyVault -VaultName $vaultName).ResourceId
-PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -Vault $vaultId -secretName $secretName -SecretVersion $secretVersion
+PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -Vault $vaultId -secretName $secretName -SecretVersion $secretVersion -MinimumTlsVersion "1.0"
 
 
 HostName                         : frontendpointname1.custom.xyz
@@ -97,6 +101,7 @@ CustomHttpsProvisioningState     : Enabling
 CustomHttpsProvisioningSubstate  : SubmittingDomainControlValidationRequest
 CertificateSource                : AzureKeyVault
 ProtocolType                     : ServerNameIndication
+MinimumTlsVersion                : 1.0
 Vault                            :
 SecretName                       :
 SecretVersion                    :
@@ -124,6 +129,7 @@ CustomHttpsProvisioningState     : Enabling
 CustomHttpsProvisioningSubstate  : SubmittingDomainControlValidationRequest
 CertificateSource                : FrontDoor
 ProtocolType                     : ServerNameIndication
+MinimumTlsVersion                : 1.2
 Vault                            :
 SecretName                       :
 SecretVersion                    :
@@ -151,6 +157,7 @@ CustomHttpsProvisioningState     : Enabling
 CustomHttpsProvisioningSubstate  : SubmittingDomainControlValidationRequest
 CertificateSource                : FrontDoor
 ProtocolType                     : ServerNameIndication
+MinimumTlsVersion                : 1.2
 Vault                            :
 SecretName                       :
 SecretVersion                    :
@@ -223,6 +230,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MinimumTlsVersion
+The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -337,11 +359,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint
-
 ## NOTES
 
 ## RELATED LINKS
