@@ -34,15 +34,6 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         public AttestationManagementClient()
         {
         }
-
-        public Uri ResourceProviderHost
-        {
-            get
-            {
-                return attestationClient.BaseUri;
-            }
-            set { attestationClient.BaseUri = value; }
-        }
         public PSAttestation CreateNewAttestation(AttestationCreationParameters parameters)
         {
             if (parameters == null)
