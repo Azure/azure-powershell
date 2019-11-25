@@ -13,14 +13,38 @@ Creates a Firewall Network Rule.
 
 ## SYNTAX
 
+### Default (Default)
 ```
 New-AzFirewallNetworkRule -Name <String> [-Description <String>] -SourceAddress <String[]>
- -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]>
+ [-DestinationAddress <String[]>] [-DestinationIpGroup <String[]>]
+ [-DestinationFqdn <String[]>] -DestinationPort <String[]> -Protocol <String[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-## DESCRIPTION
-The **New-AzFirewallNetworkRule** cmdlet creates an network rule for Azure Firewall.
+### SourceIpGroup
+```
+New-AzFirewallNetworkRule -Name <String> [-Description <String>]
+ -SourceIpGroup <String[]> [-DestinationAddress <String[]>] [-DestinationIpGroup <String[]>]
+ [-DestinationFqdn <String[]>] -DestinationPort <String[]> -Protocol <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+
+### DestinationAddress
+```
+New-AzFirewallNetworkRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
+ [-SourceIpGroup <String[]>] -DestinationAddress <String[]> 
+ [-DestinationFqdn <String[]>] -DestinationPort <String[]> -Protocol <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DestinationIpGroup
+```
+New-AzFirewallNetworkRule -Name <String> [-Description <String>] [-SourceIpGroup <String[]>]
+ -DestinationIpGroup <String[]> [-DestinationFqdn <String[]>]
+ -DestinationPort <String[]> -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
 
 ## EXAMPLES
 
@@ -47,8 +71,9 @@ This example creates a rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040. 
 
 ## PARAMETERS
 
+
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -63,7 +88,7 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-Specifies an optional description of this rule.
+The description of the rule
 
 ```yaml
 Type: System.String
@@ -82,7 +107,61 @@ The destination addresses of the rule
 
 ```yaml
 Type: System.String[]
+Parameter Sets: Default, SourceIpGroup, DestinationIpGroup
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String[]
+Parameter Sets: DestinationAddress
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationFqdn
+The destination FQDN of the rule
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationIpGroup
+The destination ipgroup of the rule
+
+```yaml
+Type: System.String[]
+Parameter Sets: Default, SourceIpGroup, DestinationAddress
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String[]
+Parameter Sets: DestinationIpGroup
 Aliases:
 
 Required: True
@@ -108,7 +187,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of this network rule. The name must be unique inside a rule collection.
+The name of the Network Rule
 
 ```yaml
 Type: System.String
@@ -123,7 +202,7 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-Specifies the type of traffic to be filtered by this rule. Possible values are TCP, UDP, ICMP and Any.
+The protocols of the rule
 
 ```yaml
 Type: System.String[]
@@ -143,10 +222,64 @@ The source addresses of the rule
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Default
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String[]
+Parameter Sets: SourceIpGroup, DestinationAddress
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceIpGroup
+The source ipgroup of the rule
+
+```yaml
+Type: System.String[]
+Parameter Sets: Default, DestinationAddress, DestinationIpGroup
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String[]
+Parameter Sets: SourceIpGroup
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceIpGroup
+The source ipgroup of the rule
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -163,7 +296,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -179,10 +312,11 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).

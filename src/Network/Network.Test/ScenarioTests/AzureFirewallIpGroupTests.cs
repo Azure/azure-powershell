@@ -12,20 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+using Xunit.Abstractions;
+
+namespace Commands.Network.Test.ScenarioTests
 {
-    public static class AzureFirewallApplicationRuleParameterSets
+    public class AzureFirewallIpGroupTests : NetworkTestRunner
     {
-        public const string Default = @"Default";
-        public const string TargetFqdn = @"TargetFqdn";
+        public AzureFirewallIpGroupTests(ITestOutputHelper output)
+            : base(output)
+        {
+        }
 
-        public const string FqdnTag = @"FqdnTag";
-
-        public const string BySourceAddress = @"SourceAddress";
-        public const string BySourceIpGroup = @"SourceIpGroup";
-
-        public const string ByDestinationAddress = @"DestinationAddress";
-        public const string ByDestinationIpGroup = @"DestinationIpGroup";
-
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallIpGroup()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallIpGroup");
+        }
     }
 }

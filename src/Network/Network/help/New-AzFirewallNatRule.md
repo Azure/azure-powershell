@@ -13,11 +13,23 @@ Creates a Firewall NAT Rule.
 
 ## SYNTAX
 
+
+### Default (Default)
 ```
 New-AzFirewallNatRule -Name <String> [-Description <String>] -SourceAddress <String[]>
- -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]> -TranslatedAddress <String>
- -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]>
+ [-TranslatedAddress <String>] [-TranslatedFqdn <String>] -TranslatedPort <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
+
+### SourceIpGroup
+```
+New-AzFirewallNatRule -Name <String> [-Description <String>]
+ -SourceIpGroup <String[]> -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]>
+ [-TranslatedAddress <String>] [-TranslatedFqdn <String>] -TranslatedPort <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 
 ## DESCRIPTION
 The **New-AzFirewallNatRule** cmdlet creates a NAT rule for Azure Firewall.
@@ -131,7 +143,46 @@ The source addresses of the rule
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Default
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String[]
+Parameter Sets: SourceIpGroup
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceIpGroup
+The source ipgroup of the rule
+
+```yaml
+Type: System.String[]
+Parameter Sets: Default
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String[]
+Parameter Sets: SourceIpGroup
 Aliases:
 
 Required: True
@@ -149,7 +200,22 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TranslatedFqdn
+The translated FQDN for this NAT rule
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -181,7 +247,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -197,7 +263,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
