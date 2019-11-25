@@ -49,7 +49,7 @@ Accept wildcard characters: False
 ```
 
 ### -Operator
-Operator
+Operator to use when matching the selector, EqualsAny means no selector (all match variables of the specified type)
 
 ```yaml
 Type: String
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -Selector
-Selector
+Selector pattern to match using the operator (if the operator is not EqualsAny)
 
 ```yaml
 Type: String
@@ -79,7 +79,8 @@ Accept wildcard characters: False
 ```
 
 ### -Variable
-Match variable
+Match variable. Possible values are RequestHeaderNames, RequestCookieNames, QueryStringArgNames, RequestBodyPostArgNames.
+For example, QueryStringArgNames is an exclusion of GET parameters matching the selector with the given operator.
 
 ```yaml
 Type: String
