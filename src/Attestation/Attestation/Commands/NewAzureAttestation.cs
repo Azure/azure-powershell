@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Attestation
 
                 if (this.PolicySigningCertificateFile != null)
                 {
-                    FileInfo certFile = new FileInfo(ResolveUserPath(this.PolicySigningCertificateFile));
+                    FileInfo certFile = new FileInfo(SessionState.Path.GetUnresolvedProviderPathFromPSPath(PolicySigningCertificateFile));
 
                     if (!certFile.Exists)
                     {
