@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix an issue where template deployment fails to read a template parameter if its name conflicts with some built-in parameter name.
 
 ## Version 1.8.0
 - Updated policy cmdlets to use new api version 2019-06-01 that has new EnforcementMode property in policy assignment.
