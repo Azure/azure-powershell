@@ -23,6 +23,7 @@
     - New-AzStorageBlobSASToken
 * Support revoke Storage Account User Delegation Keys, so all Idenity SAS tokens are revoked
     - Revoke-AzStorageAccountUserDelegationKeys
+* Upgrade to Microsoft.Azure.Management.Storage 14.1.0, to support new API version 2019-06-01.
 
 ## Version 1.9.0
 * Support enable Large File share when create or update Storage account
