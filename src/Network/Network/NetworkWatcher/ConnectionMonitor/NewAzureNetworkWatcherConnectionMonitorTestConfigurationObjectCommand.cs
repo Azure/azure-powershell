@@ -26,10 +26,9 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorEndPointTestConfigurationObject", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"), OutputType(typeof(PSConnectionMonitorResult))]
-    public class NetworkWatcherConnectionMonitorEndPointTestConfigurationObjectCommand : ConnectionMonitorBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorTestConfigurationObject", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"), OutputType(typeof(PSConnectionMonitorResult))]
+    public class NetworkWatcherConnectionMonitorTestConfigurationObjectCommand : ConnectionMonitorBaseCmdlet
     {
-        [Alias("TestConfigurationtName")]
         [Parameter(
             Mandatory = true,
             HelpMessage = "The test configuration name.")]
@@ -39,9 +38,22 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("TestFrequency")]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The test frequency is seconds.")]
+            HelpMessage = "The test frequency in seconds.")]
         [ValidateNotNullOrEmpty]
         public Int32 TestFrequencySec { get; set; }
+
+        [Alias("ProtocolName")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The protocol.")]
+        [ValidateNotNullOrEmpty]
+        public string Protocol { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The protocol configuration.")]
+        [ValidateNotNullOrEmpty]
+        public PSConnectionMonitorProtocolConfiguration ProtocolConfiguration { get; set; }
 
         [Alias("FailedCheckPercentage")]
         [Parameter(
@@ -55,7 +67,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The round trip time in millisecond.")]
         [ValidateNotNullOrEmpty]
-        public Double RoundTripTimeMs { get; set; }
+        public Int32 RoundTripTimeMs { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -63,19 +75,64 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string PreferredIPVersion { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
-        public SwitchParameter Force { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
-
         public override void Execute()
         {
             base.Execute();
 
-            // WriteObject(endPoint);
+            Validate();
+
+            PSConnectionMonitorTestConfiguration testConfiguration = new PSConnectionMonitorTestConfiguration()
+            {
+                Name = this.Name,
+                TestFrequencySec = this.TestFrequencySec,
+                Protocol = this.Protocol,
+                PreferredIPVersion = this.PreferredIPVersion,
+                SuccessThreshold = new PSConnectionMonitorSuccessThreshold()
+                {
+                    ChecksFailedPercent = this.ChecksFailedPercent
+                }
+            };
+
+            if (string.Compare(this.Protocol, MNM.Protocol.Tcp, true) == 0)
+            {
+                testConfiguration.TcpConfiguration = (PSConnectionMonitorTcpConfiguration)this.ProtocolConfiguration;
+            }
+            else if (string.Compare(this.Protocol, MNM.Protocol.Http, true) == 0)
+            {
+                testConfiguration.HttpConfiguration = (PSConnectionMonitorHttpConfiguration)this.ProtocolConfiguration;
+            }
+            else
+            {
+                testConfiguration.IcmpConfiguration = (PSConnectionMonitorIcmpConfiguration)this.ProtocolConfiguration;
+            }
+
+            WriteObject(testConfiguration);
+   }
+
+    public bool Validate()
+        {
+            if (String.Compare(this.Protocol, MNM.Protocol.Tcp, true) == 0 && this.ProtocolConfiguration.GetType() != typeof(PSConnectionMonitorTcpConfiguration))
+            {
+                throw new ArgumentException("Protocol configuration is not the same type as Protocol .");
+            }
+
+            if (String.Compare(this.Protocol, MNM.Protocol.Http, true) == 0 && this.ProtocolConfiguration.GetType() != typeof(PSConnectionMonitorHttpConfiguration))
+            {
+                throw new ArgumentException("Protocol configuration is not the same type as Protocol .");
+            }
+
+            if (String.Compare(this.Protocol, MNM.Protocol.Icmp, true) == 0 && this.ProtocolConfiguration.GetType() != typeof(PSConnectionMonitorIcmpConfiguration))
+            {
+                throw new ArgumentException("Protocol configuration is not the same type as Protocol .");
+            }
+
+            if (String.Compare(this.PreferredIPVersion, NetworkBaseCmdlet.IPv4, true) != 0 &&
+                String.Compare(this.PreferredIPVersion, NetworkBaseCmdlet.IPv6, true) != 0)
+            {
+                throw new ArgumentException("IP version is undefined.");
+            }
+
+            return true;
         }
     }
 }

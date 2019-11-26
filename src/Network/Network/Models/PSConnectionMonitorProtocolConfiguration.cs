@@ -4,9 +4,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSHTTPHeader
+    public class PSConnectionMonitorProtocolConfiguration
     {
-        public string Name { get; set; }
-        public string Value { get; set; }
     }
 }

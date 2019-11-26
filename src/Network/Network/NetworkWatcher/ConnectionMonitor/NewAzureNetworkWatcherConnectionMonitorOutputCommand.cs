@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The tyope of output.")]
         [ValidateNotNullOrEmpty]
-        public string OutputType { get; set; }
+        public string Output { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -42,19 +42,27 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string ResourcWorkspaceResourceId { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
-        public SwitchParameter Force { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
-
         public override void Execute()
         {
             base.Execute();
 
-            // WriteObject(endPoint);
+            Validate();
+
+             PSConnectionMonitorOutput endPoint = new PSConnectionMonitorOutput()
+            {
+                 Type = this.Output,
+                 WorkspaceSettings = new PSConnectionMonitorWorkspaceSettings()
+                 {
+                     WorkspaceResourceId = ResourcWorkspaceResourceId
+                 }
+             };
+
+            WriteObject(endPoint);
+        }
+
+        public bool Validate()
+        {
+            return true;
         }
     }
 }

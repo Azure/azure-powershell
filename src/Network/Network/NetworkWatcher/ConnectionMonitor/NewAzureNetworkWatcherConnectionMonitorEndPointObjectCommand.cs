@@ -27,10 +27,9 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorEndPointObject", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"), OutputType(typeof(PSConnectionMonitorResult))]
-    public class NewAzureNetworkWatcherConnectionMonitorEndPointObjectCommand : ConnectionMonitorBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorEndpointObject", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"), OutputType(typeof(PSConnectionMonitorResult))]
+    public class NewAzureNetworkWatcherConnectionMonitorEndpointObjectCommand : ConnectionMonitorBaseCmdlet
     {
-        [Alias("EndPointName")]
         [Parameter(
             Mandatory = true,
             HelpMessage = "The endpoint name.")]
@@ -65,6 +64,21 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
+            Validate();
+
+            PSConnectionMonitorEndpoint endPoint = new PSConnectionMonitorEndpoint()
+            {
+                Name = this.Name,
+                ResourceId = this.ResourceId,
+                Address = this.Address,
+                Filter = this.Filter
+            };
+
+            WriteObject(endPoint);
+        }
+
+        public bool Validate()
+        {
             if (this.FilterType != null && String.Compare(FilterType, "Include", true) != 0)
             {
                 throw new ArgumentException("Only FilterType Include is supported");
@@ -88,16 +102,7 @@ namespace Microsoft.Azure.Commands.Network
                     }
                 }
             }
-
-            PSConnectionMonitorEndpoint endPoint = new PSConnectionMonitorEndpoint()
-            {
-                Name = this.Name,
-                ResourceId = this.ResourceId,
-                Address = this.Address,
-                Filter = this.Filter
-            };
-
-            WriteObject(endPoint);
+            return true;
         }
     }
 }

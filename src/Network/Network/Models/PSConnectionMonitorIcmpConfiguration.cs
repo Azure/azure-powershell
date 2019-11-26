@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    class PSConnectionMonitorIcmpConfiguration
+    public class PSConnectionMonitorIcmpConfiguration : PSConnectionMonitorProtocolConfiguration
     {
         public bool? DisableTraceRoute { get; set; }
     }

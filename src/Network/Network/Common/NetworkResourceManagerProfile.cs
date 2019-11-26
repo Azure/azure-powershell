@@ -582,6 +582,8 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSConnectionMonitorHttpConfiguration, MNM.ConnectionMonitorHttpConfiguration>();
                 cfg.CreateMap<CNM.PSConnectionMonitorSuccessThreshold, MNM.ConnectionMonitorSuccessThreshold>();
                 cfg.CreateMap<CNM.PSHTTPHeader, MNM.HTTPHeader>();
+                cfg.CreateMap<CNM.PSConnectionMonitorTestGroup, MNM.ConnectionMonitorTestGroup>();
+                cfg.CreateMap<CNM.PSConnectionMonitorOutput, MNM.ConnectionMonitorOutput>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.ConnectionMonitor, CNM.PSConnectionMonitor>();
@@ -599,7 +601,9 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ConnectionMonitorIcmpConfiguration, CNM.PSConnectionMonitorIcmpConfiguration>();
                 cfg.CreateMap<MNM.ConnectionMonitorHttpConfiguration, CNM.PSConnectionMonitorHttpConfiguration>();
                 cfg.CreateMap<MNM.ConnectionMonitorSuccessThreshold, CNM.PSConnectionMonitorSuccessThreshold>();
-                cfg.CreateMap<MNM.HTTPHeader, MNM.HTTPHeader>();
+                cfg.CreateMap<MNM.HTTPHeader, CNM.PSHTTPHeader>();
+                cfg.CreateMap<MNM.ConnectionMonitorTestGroup, CNM.PSConnectionMonitorTestGroup>();
+                cfg.CreateMap<MNM.ConnectionMonitorOutput, CNM.PSConnectionMonitorOutput>();
 
                 // NetworkConfigurationDiagnostic
                 // CNM to MNM
