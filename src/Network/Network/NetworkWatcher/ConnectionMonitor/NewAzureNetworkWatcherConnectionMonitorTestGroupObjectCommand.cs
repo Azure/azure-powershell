@@ -78,8 +78,7 @@ namespace Microsoft.Azure.Commands.Network
         }
 
         public bool Validate()
-        {
-            
+        {            
             if (!this.TestConfiguration.Any())
             {
                 throw new ArgumentException("Test configuration is undefined.");

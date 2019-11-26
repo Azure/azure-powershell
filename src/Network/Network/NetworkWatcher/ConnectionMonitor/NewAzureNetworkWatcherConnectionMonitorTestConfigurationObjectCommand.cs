@@ -16,8 +16,6 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -89,7 +87,9 @@ namespace Microsoft.Azure.Commands.Network
                 PreferredIPVersion = this.PreferredIPVersion,
                 SuccessThreshold = new PSConnectionMonitorSuccessThreshold()
                 {
-                    ChecksFailedPercent = this.ChecksFailedPercent
+                    ChecksFailedPercent = this.ChecksFailedPercent,
+                    RoundTripTimeMs = this.RoundTripTimeMs
+
                 }
             };
 

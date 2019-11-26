@@ -25,15 +25,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string Location { get; set; }
 
-        public PSConnectionMonitorSource Source { get; set; }
-
-        public PSConnectionMonitorDestination Destination { get; set; }
-
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? AutoStart { get; set; }
 
-        [Ps1Xml(Target = ViewControl.Table)]
-        public int? MonitoringIntervalInSeconds { get; set; }
+        public PSConnectionMonitorTestGroup[] TestGroup { get; set; }
+
+        public PSConnectionMonitorOutput Output { get; set; }
 
         public Hashtable Tag { get; set; }
 
@@ -43,15 +40,15 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
-        public string SourceText
+        public string TestGroupText
         {
-            get { return JsonConvert.SerializeObject(this.Source, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(this.TestGroup, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
-        public string DestinationText
+        public string OuputText
         {
-            get { return JsonConvert.SerializeObject(this.Destination, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(this.Output, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
