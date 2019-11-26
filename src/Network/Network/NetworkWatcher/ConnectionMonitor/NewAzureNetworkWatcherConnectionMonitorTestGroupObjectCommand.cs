@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -29,7 +30,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorTestGroupObject", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"), OutputType(typeof(PSConnectionMonitorResult))]
     public class NetworkWatcherConnectionMonitorTestGroupObjectCommand : ConnectionMonitorBaseCmdlet
     {
-        [Alias("TestGroupName")]
         [Parameter(
             Mandatory = true,
             HelpMessage = "The test group name.")]
@@ -38,35 +38,64 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The source IP address.")]
+            HelpMessage = "The list of test configuration.")]
         [ValidateNotNullOrEmpty]
-        public string Source { get; set; }
+        public PSConnectionMonitorTestConfiguration[] TestConfiguration { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The destination IP address.")]
+            HelpMessage = "The list of source endpoints.")]
         [ValidateNotNullOrEmpty]
-        public string Destination { get; set; }
+        public PSConnectionMonitorEndpoint[] Source { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The list of destination endpoints.")]
+        [ValidateNotNullOrEmpty]
+        public PSConnectionMonitorEndpoint[] Destination { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The disable flag.")]
-        [ValidateNotNullOrEmpty]
-        public bool Disable { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
-        public SwitchParameter Force { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
+        public SwitchParameter Disable { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            // WriteObject(endPoint);
+            Validate();
+
+            PSConnectionMonitorTestGroup testGroup = new PSConnectionMonitorTestGroup()
+            {
+                Name = this.Name,
+                Disable = this.Disable? true:false,
+                TestConfigurations = this.TestConfiguration,
+                Sources = this.Source,
+                Destinations = this.Destination              
+            };
+
+            WriteObject(testGroup);
+        }
+
+        public bool Validate()
+        {
+            
+            if (!this.TestConfiguration.Any())
+            {
+                throw new ArgumentException("Test configuration is undefined.");
+            }
+
+            if (!this.Source.Any())
+            {
+                throw new ArgumentException("Source endpoint is undefined.");
+            }
+
+            if (!this.Destination.Any())
+            {
+                throw new ArgumentException("Destination endpoint is undefined.");
+            }
+
+            return true;
         }
     }
 }

@@ -4,13 +4,23 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    class PSConnectionMonitorHttpConfiguration
+    using Newtonsoft.Json;
+    using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
+
+    public class PSConnectionMonitorHttpConfiguration : PSConnectionMonitorProtocolConfiguration
     {
         public int? Port { get; set; }
         public string Method { get; set; }
         public string Path { get; set; }
-        public IList<PSHTTPHeader> RequestHeaders { get; set; }
-        public IList<string> ValidStatusCodeRanges { get; set; }
+        public PSHTTPHeader[] RequestHeaders { get; set; }
+        public string[] ValidStatusCodeRanges { get; set; }
         public bool? PreferHTTPS { get; set; }
+
+        [JsonIgnore]
+        public string RequestHeadersText
+        {
+            get { return JsonConvert.SerializeObject(this.RequestHeaders, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }

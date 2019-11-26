@@ -12,19 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-
-using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Commands.Network.Models
 {
+    using Microsoft.WindowsAzure.Commands.Common.Attributes;
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Generic;
+
     public class PSConnectionMonitorFilter
     {
         public string Type { get; set; }
 
         [Ps1Xml(Target = ViewControl.List)]
         public List<PSConnectionMonitorEndpointItem> Items { get; set; }
+
+        [JsonIgnore]
+        public string ItemsText
+        {
+            get { return JsonConvert.SerializeObject(this.Items, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }

@@ -20,6 +20,10 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
+    using Newtonsoft.Json;
+    using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
+
     public class PSConnectionMonitorEndpoint
     {
         public string Name { get; set; }
@@ -29,5 +33,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Address { get; set; }
 
         public PSConnectionMonitorFilter Filter { get; set; }
+
+        [JsonIgnore]
+        public string FilterText
+        {
+            get { return JsonConvert.SerializeObject(this.Filter, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }
