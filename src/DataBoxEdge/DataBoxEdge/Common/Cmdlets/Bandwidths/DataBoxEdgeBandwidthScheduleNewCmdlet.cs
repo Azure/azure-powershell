@@ -50,7 +50,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Bandwidt
             Position = 1)]
         [ResourceNameCompleter("Microsoft.DataBoxEdge/dataBoxEdgeDevices", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
-
         public string DeviceName { get; set; }
 
         [Parameter(Mandatory = true,

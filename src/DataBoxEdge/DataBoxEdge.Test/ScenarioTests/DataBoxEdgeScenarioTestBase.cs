@@ -18,7 +18,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
 using Microsoft.Azure.Management.EdgeGateway;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -94,15 +93,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
             {
                 SetupManagementClients(context);
 
-//                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
-
                 var callingClassName =
                     callingClassType.Split(new[] {"."}, StringSplitOptions.RemoveEmptyEntries).Last();
                 
-                var azDBPath = _helper.GetRMModulePath("Az.DataBoxEdge.psd1");
+                var azDBEPath = _helper.GetRMModulePath("Az.DataBoxEdge.psd1");
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
-                    azDBPath,
+                    azDBEPath,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Storage.ps1",
