@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added WAF managed rules exclusion support
+* Add SocketAddr to auto-complete
 
 ## Version 1.2.0
 * Add MinimumTlsVersion parameter to Enable-AzFrontDoorCustomDomainHttps and New-AzFrontDoorFrontendEndpointObject
