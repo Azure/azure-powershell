@@ -89,16 +89,11 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                if (String.Compare(FilterType, "Include", true) != 0)
-                {
-                    throw new ArgumentException("Only FilterType Include is supported");
-                }
-
                 foreach (PSConnectionMonitorEndpointItem cmEndpointItem in this.Filter.Items)
                 {
                     if (String.Compare(cmEndpointItem.Type, "AgentAddress", true) != 0)
                     {
-                        throw new ArgumentException("Only Type of AgentAddress is supported");
+                        throw new ArgumentException("Only AgentAddress is supported");
                     }
                 }
             }

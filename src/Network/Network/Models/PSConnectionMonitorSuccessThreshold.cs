@@ -7,6 +7,6 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSConnectionMonitorSuccessThreshold
     {
         public int? ChecksFailedPercent { get; set; }
-        public bool? DisableTraceRoute { get; set; }
+        public int? RoundTripTimeMs { get; set; }
     }
 }
