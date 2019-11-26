@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Management.Attestation.Models;
+using AttestationProperties = Microsoft.Azure.Commands.Attestation.Properties;
 
 namespace Microsoft.Azure.Commands.Attestation
 {
@@ -81,7 +82,7 @@ namespace Microsoft.Azure.Commands.Attestation
 
                     if (!certFile.Exists)
                     {
-                        throw new FileNotFoundException(string.Format("Policy Signing Certificate File Not Found", this.PolicySigningCertificateFile));
+                        throw new FileNotFoundException(string.Format(AttestationProperties.Resources.CertificateFileNotFound, this.PolicySigningCertificateFile));
                     }
 
                     var pem = System.IO.File.ReadAllText(certFile.FullName);
