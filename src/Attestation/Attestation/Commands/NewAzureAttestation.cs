@@ -59,7 +59,6 @@ namespace Microsoft.Azure.Commands.Attestation
             HelpMessage =
                 "Specifies the attestation policy passed in which to create the attestation."
         )]
-        [ValidateNotNullOrEmpty]
         public string AttestationPolicy { get; set; }
 
         [Parameter(Mandatory = false,
@@ -67,7 +66,6 @@ namespace Microsoft.Azure.Commands.Attestation
             HelpMessage =
                 "Specifies the configuration signing keys passed in which to create the attestation."
         )]
-        [ValidateNotNullOrEmpty]
         public string PolicySigningCertificateFile { get; set; }
         #endregion
 

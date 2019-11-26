@@ -21,9 +21,6 @@
 
 ## Upcoming Release
 
-## Version 0.1.3
-* Update .Net SDK with newer version
-
 ## Version 0.1.2
 * Fixed miscellaneous typos across module
 

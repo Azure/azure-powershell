@@ -40,11 +40,11 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             {
                 throw new ArgumentNullException("parameters");
             }
-            if (string.IsNullOrWhiteSpace(parameters.ProviderName))
+            if (string.IsNullOrEmpty(parameters.ProviderName))
             {
                 throw new ArgumentNullException("parameters.ProviderName");
             }
-            if (string.IsNullOrWhiteSpace(parameters.ResourceGroupName))
+            if (string.IsNullOrEmpty(parameters.ResourceGroupName))
             {
                 throw new ArgumentNullException("parameters.ResourceGroupName");
             }
@@ -68,11 +68,11 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
         public PSAttestation GetAttestation(string attestationName, string resourceGroupName)
         {
-            if (string.IsNullOrWhiteSpace(attestationName))
+            if (string.IsNullOrEmpty(attestationName))
             {
                 throw new ArgumentNullException("attestationName");
             }
-            if (string.IsNullOrWhiteSpace(resourceGroupName))
+            if (string.IsNullOrEmpty(resourceGroupName))
             {
                 throw new ArgumentNullException("resourceGroupName");
             }
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             var footer = String.Format("-----END {0}-----", section);
 
             var start = 0;
-            var end = 0;
+            var lengthOfSection = 0;
             while (true)
             {
                 start = pemString.IndexOf(header, StringComparison.Ordinal);
@@ -108,13 +108,13 @@ namespace Microsoft.Azure.Commands.Attestation.Models
                 if (start < 0)
                     break;
                 start += header.Length;
-                end = pemString.IndexOf(footer, start, StringComparison.Ordinal) - start;
-                if (end < 0)
+                lengthOfSection = pemString.IndexOf(footer, start, StringComparison.Ordinal) - start;
+                if (lengthOfSection < 0)
                     break;
-                byte [] certBuffer = Convert.FromBase64String(pemString.Substring(start, end));
+                byte [] certBuffer = Convert.FromBase64String(pemString.Substring(start, lengthOfSection));
                 X509Certificate2 certs = new X509Certificate2(certBuffer);
                 certificateCollection.Add(certs);
-                pemString = pemString.Substring(start + end);
+                pemString = pemString.Substring(start + lengthOfSection);
             }
             return certificateCollection;
         }
