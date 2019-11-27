@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Includes some additional volume properties associated with upcoming replication operations
+
 ## Version 0.1.3
 
 * Volume creation --protocol-types accepts now "NFSv4.1" not "NFSv4"
