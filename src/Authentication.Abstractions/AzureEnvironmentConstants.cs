@@ -171,5 +171,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public const string ChinaAnalysisServicesEndpointResourceId = "https://region.asazure.chinacloudapi.cn";
         public const string USGovernmentAnalysisServicesEndpointResourceId = "https://region.asazure.usgovcloudapi.net";
         public const string GermanAnalysisServicesEndpointResourceId = "https://region.asazure.cloudapi.de";
+
+        /// <summary>
+        /// The domain name suffix for azure attestation tennats
+        /// </summary>
+        public const string AzureAttestationDnsSuffix = "attest.azure.net ";
+
+        /// <summary>
+        /// The token audience for authorizing Attestation requests
+        /// </summary>
+        public const string AzureAttestationServiceEndpointResourceId = "https://attest.azure.net";
     }
 }

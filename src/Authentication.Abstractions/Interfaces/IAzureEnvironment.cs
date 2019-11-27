@@ -131,5 +131,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// The set of version profile s(service capabilities) supported
         /// </summary>
         IList<string> VersionProfiles { get; }
+
+        /// <summary>
+        /// The domain name suffix for Azure Attestation tenants
+        /// </summary>
+        string AzureAttestationDnsSuffix { get; set; }
+
+        /// <summary>
+        /// The token audience required for authenticating with Azure Attestation tenants
+        /// </summary>
+        string AzureAttestationServiceEndpointResourceId { get; set; }
     }
 }
