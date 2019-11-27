@@ -21,7 +21,7 @@ New-AzKeyVaultCertificatePolicy [-IssuerName] <String> [-SubjectName] <String>
  [-KeyUsage <System.Collections.Generic.List`1[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags]>]
  [-Ekus <System.Collections.Generic.List`1[System.String]>] [-ValidityInMonths <Int32>]
  [-CertificateType <String>] [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>]
- [-KeySize <Int32>] [-KeyType <String>] [-Curve <String>] [-KeyNotExportable] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-KeySize <Int32>] [-KeyType <String>] [-KeyNotExportable] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ New-AzKeyVaultCertificatePolicy [-IssuerName] <String> [[-SubjectName] <String>]
  [-KeyUsage <System.Collections.Generic.List`1[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags]>]
  [-Ekus <System.Collections.Generic.List`1[System.String]>] [-ValidityInMonths <Int32>]
  [-CertificateType <String>] [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>]
- [-KeySize <Int32>] [-KeyType <String>] [-Curve <String>] [-KeyNotExportable] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-KeySize <Int32>] [-KeyType <String>] [-KeyNotExportable] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -49,7 +49,6 @@ PS C:\> New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12
 SecretContentType               : application/x-pkcs12
 Kty                             :
 KeySize                         : 2048
-Curve                           :
 Exportable                      :
 ReuseKeyOnRenewal               : True
 SubjectName                     : CN=contoso.com
@@ -214,15 +213,12 @@ The acceptable values for this parameter are:
 - 2048
 - 3072
 - 4096
-- 256
-- 384
-- 521
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
-Accepted values: 2048, 3072, 4096, 256, 384, 521
+Accepted values: 2048, 3072, 4096
 
 Required: False
 Position: Named
@@ -236,36 +232,12 @@ Specifies the key type of the key that backs the certificate.
 The acceptable values for this parameter are:
 - RSA
 - RSA-HSM
-- EC
-- EC-HSM
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: RSA, RSA-HSM, EC, EC-HSM
-
-Required: False
-Position: Named
-Default value: RSA
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Curve
-Specifies the elliptic curve name of the key of the certificate.
-The acceptable values for this parameter are:
-- P-256
-- P-384
-- P-521
-- P-256K
-- SECP256K1
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: P-256, P-384, P-521, P-256K, SECP256K1
+Accepted values: RSA, RSA-HSM
 
 Required: False
 Position: Named

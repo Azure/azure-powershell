@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.KeyVault.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
@@ -168,69 +167,123 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false, 
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the key type of the key backing the certificate. Default is RSA.")]
-        [ValidateSet(Constants.RSA, Constants.RSAHSM, Constants.EC, Constants.ECHSM)]
+                   HelpMessage = "Specifies the key type of the key backing the certificate.")]
+        [ValidateSet(Constants.RSA, Constants.RSAHSM)]
         public string KeyType { get; set; }
 
-        /// <summary>
-        /// Key size
-        /// </summary>
-        [Parameter(Mandatory = false,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the key size of the certificate. Default is 2048.")]
-        [ValidateSet("2048", "3072", "4096", "256", "384", "521")]
-        public int KeySize { get; set; }
+      /// <summary>
+      /// Key size
+      /// </summary>
+      [Parameter(Mandatory = false,
+                 ValueFromPipelineByPropertyName = true,
+                 HelpMessage = "Specifies the key size of the certificate.")]
+      [ValidateSet("2048", "3072", "4096")]
+      public int KeySize { get; set; } = 2048;
 
         /// <summary>
         /// KeyNotExportable
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = false, 
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies whether the key is not exportable.")]
         public SwitchParameter KeyNotExportable { get; set; }
 
-
-        [Parameter(Mandatory = false, 
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Indicates whether certificate transparency is enabled for this certificate/issuer; if not specified, the default is 'true'")]
-        public bool? CertificateTransparency { get; set; }
-
-        /// <summary>
-        /// Elliptic Curve Name of the key
-        /// </summary>
-        [Parameter(Mandatory = false,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the elliptic curve name of the key of the ECC certificate.")]
-        [ValidateSet(Constants.P256, Constants.P384, Constants.P521, Constants.P256K, Constants.SECP256K1)]
-        public string Curve { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(string.Empty, Properties.Resources.CreateCertificatePolicy))
             {
-                var policy = new PSKeyVaultCertificatePolicy(
-                    DnsName,
-                    (KeyUsage == null || !KeyUsage.Any()) ? null : KeyUsage.Select(keyUsage => keyUsage.ToString()).ToList<string>(),
-                    Ekus,
-                    !Disabled.IsPresent,
-                    IssuerName,
-                    CertificateType,
-                    RenewAtNumberOfDaysBeforeExpiry,
-                    RenewAtPercentageLifetime,
-                    EmailAtNumberOfDaysBeforeExpiry,
-                    EmailAtPercentageLifetime,
-                    ReuseKeyOnRenewal.IsPresent,
-                    SecretContentType,
-                    SubjectName,
-                    ValidityInMonths,
-                    KeyType,
-                    KeySize,
-                    Curve,
-                    KeyNotExportable.IsPresent ? !KeyNotExportable.IsPresent : (bool?)null,
-                    CertificateTransparency ?? (bool?)null);
+                // Validate input parameters
+                ValidateSubjectName();
+                ValidateDnsNames();
+                ValidateEkus();
+                ValidateBothPercentageAndNumberOfDaysAreNotPresent();
+
+                List<String> convertedKeyUsage = null;
+                if (KeyUsage != null)
+                {
+                    convertedKeyUsage = new List<string>();
+                    foreach (var key in KeyUsage)
+                    {
+                        convertedKeyUsage.Add(key.ToString());
+                    }
+                }
+
+                var policy = new PSKeyVaultCertificatePolicy
+                {
+                  DnsNames = DnsName,
+                  KeyUsage = convertedKeyUsage,
+                  Ekus = Ekus,
+                  Enabled = !Disabled.IsPresent,
+                  IssuerName = IssuerName,
+                  CertificateType = CertificateType,
+                  RenewAtNumberOfDaysBeforeExpiry = RenewAtNumberOfDaysBeforeExpiry,
+                  RenewAtPercentageLifetime = RenewAtPercentageLifetime,
+                  EmailAtNumberOfDaysBeforeExpiry = EmailAtNumberOfDaysBeforeExpiry,
+                  EmailAtPercentageLifetime = EmailAtPercentageLifetime,
+                  ReuseKeyOnRenewal = ReuseKeyOnRenewal.IsPresent,
+                  SecretContentType = SecretContentType,
+                  SubjectName = SubjectName,
+                  ValidityInMonths = ValidityInMonths,
+                  Kty = KeyType,
+                  KeySize = KeySize,
+                  Exportable = KeyNotExportable.IsPresent ? !KeyNotExportable.IsPresent : (bool?)null
+                };
 
                 this.WriteObject(policy);
+            }
+        }
+
+        private void ValidateBothPercentageAndNumberOfDaysAreNotPresent()
+        {
+            if (MyInvocation.BoundParameters.ContainsKey("RenewAtNumberOfDaysBeforeExpiry") &&
+                MyInvocation.BoundParameters.ContainsKey("RenewAtPercentageLifetime"))
+            {
+                throw new ArgumentException("Both RenewAtNumberOfDaysBeforeExpiry and RenewAtPercentageLifetime cannot be specified.");
+            }
+        }
+
+        private void ValidateEkus()
+        {
+            if (Ekus != null)
+            {
+                foreach (var eku in Ekus)
+                {
+                    if (string.IsNullOrWhiteSpace(eku))
+                    {
+                        throw new ArgumentException("One of the EKUs provided is empty.");
+                    }
+                }
+            }
+        }
+
+        private void ValidateDnsNames()
+        {
+            if (DnsName != null)
+            {
+                foreach (var dnsName in DnsName)
+                {
+                    if (string.IsNullOrWhiteSpace(dnsName))
+                    {
+                        throw new ArgumentException("One of the DNS names provided is empty.");
+                    }
+                }
+            }
+        }
+
+        private void ValidateSubjectName()
+        {
+            if (SubjectName != null)
+            {
+                try
+                {
+                    new X500DistinguishedName(SubjectName);
+                }
+                catch (CryptographicException e)
+                {
+                    throw new ArgumentException("The subject name provided is not a valid X500 name.", e);
+                }
             }
         }
     }
