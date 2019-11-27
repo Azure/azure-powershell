@@ -18,6 +18,10 @@
     <Reference Include="Microsoft.Azure.Management.Attestation">
     </Reference>
   </ItemGroup>
+   
+  <ItemGroup>
+    <None Update="PemFiles\*.*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 
 </Project>
 
