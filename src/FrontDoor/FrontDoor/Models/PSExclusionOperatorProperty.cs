@@ -12,16 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Commands.FrontDoor.Models
 {
-    public class PSAzureRuleGroupOverride
+    public enum PSExclusionOperatorProperty
     {
-        public string RuleGroupName { get; set; }
-
-        public List<PSAzureManagedRuleOverride> ManagedRuleOverrides { get; set; }
-
-        public List<PSManagedRuleExclusion> Exclusions { get; set; }
+        Equals,
+        Contains,
+        StartsWith,
+        EndsWith,
+        EqualsAny
     }
 }
