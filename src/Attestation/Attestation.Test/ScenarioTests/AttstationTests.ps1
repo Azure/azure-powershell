@@ -51,7 +51,9 @@ function Test-CreateAttestationWithPolicySigningCertificate
 {
 	$unknownRGName = getAssetName
 	$attestationName = getAssetName
-    $file= ".\PemFiles\policySigningCerts.pem"
+	$TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
+	$PemDir = Join-Path $TestOutputRoot "PemFiles"
+        $file= Join-Path $PemDir "policySigningCerts.pem"
 
 	try
 	{
