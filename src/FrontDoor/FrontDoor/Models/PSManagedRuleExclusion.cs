@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,12 +16,12 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Models
 {
-    public class PSAzureRuleGroupOverride
+    public class PSManagedRuleExclusion
     {
-        public string RuleGroupName { get; set; }
+        public string MatchVariable { get; set; }
 
-        public List<PSAzureManagedRuleOverride> ManagedRuleOverrides { get; set; }
+        public string SelectorMatchOperator { get; set; }
 
-        public List<PSManagedRuleExclusion> Exclusions { get; set; }
+        public string Selector { get; set; }
     }
 }
