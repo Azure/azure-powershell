@@ -21,5 +21,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
         public string RuleGroupName { get; set; }
 
         public List<PSAzureManagedRuleOverride> ManagedRuleOverrides { get; set; }
+
+        public List<PSManagedRuleExclusion> Exclusions { get; set; }
     }
 }

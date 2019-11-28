@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 {
@@ -118,6 +119,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 
         public override void ExecuteCmdlet()
         {
+            IDictionary<string, string> tagPairs = null;
+
+            if (Tag != null)
+            {
+                tagPairs = new Dictionary<string, string>();
+
+                foreach (string key in Tag.Keys)
+                {
+                    tagPairs.Add(key, Tag[key].ToString());
+                }
+            }
+
             if (ParameterSetName == ResourceIdParameterSet)
             {
                 var resourceIdentifier = new ResourceIdentifier(ResourceId);
@@ -146,7 +159,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 ServiceLevel = ServiceLevel,
                 Size = PoolSize,
                 Location = Location,
-                Tags = Tag
+                Tags = tagPairs
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))

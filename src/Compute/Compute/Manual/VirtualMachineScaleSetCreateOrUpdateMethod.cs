@@ -162,6 +162,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("Default", "OldestVM", "NewestVM")]
         public string[] ScaleInPolicy { get; set; }
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
+            HelpMessage = "When Overprovision is enabled, extensions are launched only on the requested number of VMs which are finally kept. "
+                        + "This property will hence ensure that the extensions do not run on the extra overprovisioned VMs.")]
+        public SwitchParameter SkipExtensionsOnOverprovisionedVMs { get; set; }
+
         const int FirstPortRangeStart = 50000;
 
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
@@ -299,7 +304,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     priority: _cmdlet.Priority,
                     evictionPolicy: _cmdlet.EvictionPolicy,
                     maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                    scaleInPolicy: _cmdlet.ScaleInPolicy
+                    scaleInPolicy: _cmdlet.ScaleInPolicy,
+                    doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent
                     );
             }
         }

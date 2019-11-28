@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
+using sdkAzManagedRuleExclusion = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleExclusion;
 using sdkAzManagedRuleGroupOverride = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleGroupOverride;
 using sdkAzManagedRuleOverride = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleOverride;
 using SdkBackend = Microsoft.Azure.Management.FrontDoor.Models.Backend;
@@ -383,12 +384,23 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                     {
                         Action = ruleOverride.Action,
                         EnabledState = ruleOverride.EnabledState == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), ruleOverride.EnabledState),
-                        RuleId = ruleOverride.RuleId
+                        RuleId = ruleOverride.RuleId,
+                        Exclusions = ruleOverride.Exclusions?.Select(exclusion => exclusion.ToPSAzManagedRuleExclusion()).ToList()
                     };
-                }).ToList()
+                }).ToList(),
+                Exclusions = sdkAzOverride.Exclusions?.Select(exclusion => exclusion.ToPSAzManagedRuleExclusion()).ToList()
             };
         }
 
+        public static PSManagedRuleExclusion ToPSAzManagedRuleExclusion(this sdkAzManagedRuleExclusion sdkAzExclusion)
+        {
+            return new PSManagedRuleExclusion()
+            {
+                MatchVariable = sdkAzExclusion.MatchVariable,
+                Selector = sdkAzExclusion.Selector,
+                SelectorMatchOperator = sdkAzExclusion.SelectorMatchOperator
+            };
+        }
 
         public static PSManagedRule ToPSManagedRule(this SdkManagedRule sdkRule)
         {
@@ -396,7 +408,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
             {
                 RuleSetType = sdkRule.RuleSetType,
                 RuleSetVersion = sdkRule.RuleSetVersion,
-                RuleGroupOverrides = sdkRule.RuleGroupOverrides?.Select(ruleGroupOverride => ruleGroupOverride.ToPSAzRuleGroupOverride()).ToList()
+                RuleGroupOverrides = sdkRule.RuleGroupOverrides?.Select(ruleGroupOverride => ruleGroupOverride.ToPSAzRuleGroupOverride()).ToList(),
+                Exclusions = sdkRule.Exclusions?.Select(exclusion => exclusion.ToPSAzManagedRuleExclusion()).ToList()
             };
         }
 
@@ -442,9 +455,21 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                     {
                         Action = ruleOverride.Action,
                         EnabledState = ruleOverride.EnabledState.HasValue ? ruleOverride.EnabledState.Value.ToString() : null,
-                        RuleId = ruleOverride.RuleId
+                        RuleId = ruleOverride.RuleId,
+                        Exclusions = ruleOverride.Exclusions?.Select(x => x.ToSdkAzManagedRuleExclusion()).ToList()
                     };
-                }).ToList()
+                }).ToList(),
+                Exclusions = psAzOverride.Exclusions?.Select(x => x.ToSdkAzManagedRuleExclusion()).ToList()
+            };
+        }
+
+        public static sdkAzManagedRuleExclusion ToSdkAzManagedRuleExclusion(this PSManagedRuleExclusion psAzManagedRuleExclusion)
+        {
+            return new sdkAzManagedRuleExclusion()
+            {
+                MatchVariable = psAzManagedRuleExclusion.MatchVariable,
+                Selector = psAzManagedRuleExclusion.Selector,
+                SelectorMatchOperator = psAzManagedRuleExclusion.SelectorMatchOperator
             };
         }
 
@@ -455,7 +480,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
             {
                 RuleSetType = psAzRule.RuleSetType,
                 RuleSetVersion = psAzRule.RuleSetVersion,
-                RuleGroupOverrides = psAzRule.RuleGroupOverrides?.Select(x => x.ToSdkAzRuleGroupOverride()).ToList()
+                RuleGroupOverrides = psAzRule.RuleGroupOverrides?.Select(x => x.ToSdkAzRuleGroupOverride()).ToList(),
+                Exclusions = psAzRule.Exclusions?.Select(x => x.ToSdkAzManagedRuleExclusion()).ToList()
             };
         }
 

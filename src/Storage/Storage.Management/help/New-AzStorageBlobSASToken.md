@@ -18,21 +18,23 @@ Generates a SAS token for an Azure storage blob.
 New-AzStorageBlobSASToken [-Container] <String> [-Blob] <String> [-Permission <String>]
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
  [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobPipelineWithPolicy
 ```
 New-AzStorageBlobSASToken -CloudBlob <CloudBlob> -Policy <String> [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### BlobPipelineWithPermission
 ```
 New-AzStorageBlobSASToken -CloudBlob <CloudBlob> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### BlobNameWithPolicy
@@ -40,7 +42,7 @@ New-AzStorageBlobSASToken -CloudBlob <CloudBlob> [-Permission <String>] [-Protoc
 New-AzStorageBlobSASToken [-Container] <String> [-Blob] <String> -Policy <String>
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
  [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,6 +65,16 @@ PS C:\> New-AzStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -P
 ```
 
 This example generates a blob SAS token with life time.
+
+### Example 3: Generate a User Identity SAS token with storage context based on OAuth authentication
+```
+PS C:\> $ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
+PS C:\> $StartTime = Get-Date
+PS C:\> $EndTime = $startTime.AddDays(6)
+PS C:\> New-AzStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -context $ctx
+```
+
+This example generates a User Identity blob SAS token with storage context based on OAuth authentication
 
 ## PARAMETERS
 
@@ -114,6 +126,7 @@ Accept wildcard characters: False
 
 ### -Context
 Specifies the storage context.
+When the storage context is based on OAuth authentication, will generates a User Identity blob SAS token.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -144,6 +157,7 @@ Accept wildcard characters: False
 
 ### -ExpiryTime
 Specifies when the shared access signature expires.
+When the storage context is based on OAuth authentication, the expire time must be in 7 days from current time, and must not be earlier than current time.
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
@@ -246,6 +260,36 @@ Specifies the time at which the shared access signature becomes valid.
 Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
