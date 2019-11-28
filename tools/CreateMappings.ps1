@@ -24,10 +24,10 @@ $cmdlets | ForEach-Object {
     $cmdlet = $_.BaseName;
 
     # First, match to module path.
-    $matchedRule = @($rules | Where-Object { $cmdletPath -cmatch ".*$($_.Regex).*" })[0];
+    $matchedRule = @($rules | Where-Object { $cmdletPath -cmatch ".*$($_.Regex).*" }) | Sort-Object {$_.Regex.Length} | Select-Object -Last 1;
 
     # Try to match this cmdlet with at least one rule.
-    $possibleBetterMatch = @($rules | Where-Object { $cmdlet -cmatch ".*$($_.Regex).*" })[0];
+    $possibleBetterMatch = @($rules | Where-Object { $cmdlet -cmatch ".*$($_.Regex).*" })| Sort-Object {$_.Regex.Length} | Select-Object -Last 1;
 
     # Look for the best match.
     if(
