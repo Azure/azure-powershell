@@ -105,6 +105,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public VirtualMachineScaleSetExtension[] Extension { get; set; }
 
         [Parameter(
+            Mandatory = false)]
+        public SwitchParameter SkipExtensionsOnOverprovisionedVMs { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public bool? SinglePlacementGroup { get; set; }
@@ -616,6 +620,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {
                 Overprovision = this.IsParameterBound(c => c.Overprovision) ? this.Overprovision : (bool?)null,
+                DoNotRunExtensionsOnOverprovisionedVMs = this.SkipExtensionsOnOverprovisionedVMs.IsPresent ? true : (bool?)null,
                 SinglePlacementGroup = this.IsParameterBound(c => c.SinglePlacementGroup) ? this.SinglePlacementGroup : (bool?)null,
                 ZoneBalance = this.ZoneBalance.IsPresent ? true : (bool?)null,
                 PlatformFaultDomainCount = this.IsParameterBound(c => c.PlatformFaultDomainCount) ? this.PlatformFaultDomainCount : (int?)null,

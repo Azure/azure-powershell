@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support generate Blob/Constainer Idenity based SAS token with Storage Context based on Oauth authentication
+    - New-AzStorageContainerSASToken
+    - New-AzStorageBlobSASToken
+* Support revoke Storage Account User Delegation Keys, so all Idenity SAS tokens are revoked
+    - Revoke-AzStorageAccountUserDelegationKeys
 
 ## Version 1.9.0
 * Support enable Large File share when create or update Storage account
