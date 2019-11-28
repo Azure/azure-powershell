@@ -20,6 +20,14 @@
 ## Upcoming Release
 * Update references in .psd1 to use relative path
 
+* Includes some additional volume properties associated with upcoming replication operations
+
+## Version 0.1.3
+
+* Volume creation --protocol-types accepts now "NFSv4.1" not "NFSv4"
+* Volume export policy property now named 'nfsv41' not 'nfsv4'
+* Snapshot creation date now named just 'created'
+
 ## Version 0.1.2
 
 * Addition of ProtocolTypes and MountTargets to volume properties

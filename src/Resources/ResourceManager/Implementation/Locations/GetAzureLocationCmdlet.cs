@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties;
 
     /// <summary>
     /// Get all locations with the supported providers.
@@ -34,6 +35,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            if(DefaultContext.Subscription == null)
+            {
+                throw new PSInvalidOperationException(Resources.NoSubscriptionsUnderCurrentDirectory);
+            }
             var allLocations = this.SubscriptionSdkClient.ListLocations(DefaultContext.Subscription.Id.ToString());
             var providers = this.ResourceManagerSdkClient.ListResourceProviders(providerName: null, listAvailable: true);
             var providerLocations = ConstructResourceProviderLocations(allLocations, providers);

@@ -20,8 +20,8 @@ using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
-using System.Collections.Generic;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Account
 {
@@ -87,6 +87,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
 
         public override void ExecuteCmdlet()
         {
+            IDictionary<string, string> tagPairs = null;
+
+            if (Tag != null)
+            {
+                tagPairs = new Dictionary<string, string>();
+
+                foreach (string key in Tag.Keys)
+                {
+                    tagPairs.Add(key, Tag[key].ToString());
+                }
+            }
+
             if (ParameterSetName == ResourceIdParameterSet)
             {
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
@@ -103,7 +115,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             {
                 Location = Location,
                 ActiveDirectories = (ActiveDirectory != null) ? ModelExtensions.ConvertActiveDirectoriesFromPs(ActiveDirectory) : null,
-                Tags = Tag,
+                Tags =tagPairs,
                                                     
             };
 

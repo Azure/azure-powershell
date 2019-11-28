@@ -21,7 +21,8 @@ Approve-AzPrivateEndpointConnection -ResourceId <String> [-Description <String>]
 ### ByResource
 ```
 Approve-AzPrivateEndpointConnection -Name <String> -ServiceName <String> -ResourceGroupName <String>
- [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PrivateLinkResourceType <string>][-Description <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,6 +84,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PrivateLinkResourceType
+The private link resource type.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResource
+Aliases:
+
+Required: False
+Position: Named
+Default value: 'Microsoft.Network/privateLinkServices'
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
@@ -128,6 +144,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -143,8 +160,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzPrivateEndpointConnection](./Get-AzPrivateEndpointConnection.md)
-
 [Deny-AzPrivateEndpointConnection](./Deny-AzPrivateEndpointConnection.md)
 
+[Get-AzPrivateEndpointConnection](./Get-AzPrivateEndpointConnection.md)
+
 [Remove-AzPrivateEndpointConnection](./Remove-AzPrivateEndpointConnection.md)
+
+[Set-AzPrivateEndpointConnection](./Set-AzPrivateEndpointConnection.md)

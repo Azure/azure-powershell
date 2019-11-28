@@ -1,8 +1,8 @@
 variables:
   WindowsName: windows
   WindowsImage: VS2017-Win2016
-  TestFramework: net472
-  TestTarget: TestNet472
+  TestFramework: netcoreapp2.2
+  TestTarget: Test
   Configuration: Debug
 
 jobs:
@@ -13,6 +13,9 @@ jobs:
     vmImage: ${{ variables.WindowsImage }}
 
   steps:
+  - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
+    displayName: 'Component Detection'
+    continueOnError: true
   - template: util/build-steps.yml
     parameters:
       osName: ${{ variables.WindowsName }}

@@ -1,10 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Repo.props" />
   <Import Project="$(RepoTools)Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <AssemblyName>BatchModelGenerator</AssemblyName>
     <RootNamespace>BatchModelGenerator</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -14,6 +14,9 @@
     <WarningsAsErrors />
     <IsPackable>false</IsPackable>
     <DelaySign>false</DelaySign>
+    <ApplicationIcon />
+    <OutputType>Exe</OutputType>
+    <StartupObject />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

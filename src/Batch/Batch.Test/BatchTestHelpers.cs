@@ -48,8 +48,14 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds an AccountResource object using the specified parameters
         /// </summary>
-        public static BatchAccount CreateAccountResource(string accountName, string resourceGroupName, string location = "location", 
-            Hashtable tags = null, string storageId = null)
+        public static BatchAccount CreateAccountResource(
+            string accountName,
+            string resourceGroupName,
+            string location = "location",
+            Hashtable tags = null,
+            string storageId = null,
+            bool dedicatedCoreQuotaPerVMFamilyEnforced = false,
+            IList<VirtualMachineFamilyCoreQuota> machineFamilyQuotas = null)
         {
             string tenantUrlEnding = "batch-test.windows-int.net";
             string endpoint = string.Format("{0}.{1}", accountName, tenantUrlEnding);
@@ -58,8 +64,11 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             string id = string.Format("id/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Batch/batchAccounts/abc", subscription, resourceGroup);
 
+            machineFamilyQuotas = machineFamilyQuotas ?? new List<VirtualMachineFamilyCoreQuota> { new VirtualMachineFamilyCoreQuota("foo", 55 ) };
+
             BatchAccount resource = new BatchAccount(
-                coreQuota: DefaultQuotaCount,
+                dedicatedCoreQuota: DefaultQuotaCount,
+                lowPriorityCoreQuota: DefaultQuotaCount,
                 poolQuota: DefaultQuotaCount,
                 activeJobAndJobScheduleQuota: DefaultQuotaCount,
                 accountEndpoint: endpoint,
@@ -68,7 +77,9 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 location: location,
                 provisioningState: ProvisioningState.Succeeded,
                 autoStorage: new AutoStorageProperties() { StorageAccountId = storageId },
-                tags: tags == null ? null : TagsConversionHelper.CreateTagDictionary(tags, true));
+                tags: tags == null ? null : TagsConversionHelper.CreateTagDictionary(tags, true),
+                dedicatedCoreQuotaPerVMFamilyEnforced: dedicatedCoreQuotaPerVMFamilyEnforced,
+                dedicatedCoreQuotaPerVMFamily: machineFamilyQuotas);
 
             return resource;
         }
@@ -795,15 +806,15 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds a NodeAgentSKUResponse object
         /// </summary>
-        public static AzureOperationResponse<IPage<ProxyModels.NodeAgentSku>, ProxyModels.AccountListNodeAgentSkusHeaders> CreateNodeAgentSkuResponse(IEnumerable<string> skuIds)
+        public static AzureOperationResponse<IPage<ProxyModels.ImageInformation>, ProxyModels.AccountListSupportedImagesHeaders> CreateSupportedImagesResponse(IEnumerable<string> skuIds)
         {
-            IEnumerable<ProxyModels.NodeAgentSku> nodeAgents =
-                skuIds.Select(id => new ProxyModels.NodeAgentSku() { Id = id });
+            IEnumerable<ProxyModels.ImageInformation> imageInfo =
+                skuIds.Select(id => new ProxyModels.ImageInformation() { NodeAgentSKUId = id });
 
-            var response = new AzureOperationResponse<IPage<ProxyModels.NodeAgentSku>, ProxyModels.AccountListNodeAgentSkusHeaders>()
+            var response = new AzureOperationResponse<IPage<ProxyModels.ImageInformation>, ProxyModels.AccountListSupportedImagesHeaders>()
             {
                 Response = new HttpResponseMessage(HttpStatusCode.OK),
-                Body = new MockPagedEnumerable<ProxyModels.NodeAgentSku>(nodeAgents)
+                Body = new MockPagedEnumerable<ProxyModels.ImageInformation>(imageInfo)
             };
 
             return response;

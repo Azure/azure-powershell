@@ -20,6 +20,9 @@
 ## Upcoming Release
 * Update references in .psd1 to use relative path
 
+## Version 2.0.0
+* Remove Add-AzServiceFabricApplicationCertificate cmdlet as this scenario is covered by Add-AzVmssSecret.
+
 ## Version 1.2.0
 * Fixed typo in example for `Update-AzServiceFabricReliability` reference documentation
 * Adding new cmdlets to manage appliaction and services:

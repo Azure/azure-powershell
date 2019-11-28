@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
@@ -44,6 +43,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         private string _defaultStorageAccountName;
         private string _defaultStorageAccountKey;
         private string _defaultStorageContainer;
+        private OSType? _osType;
         #endregion
 
         #region Input Parameter Definitions
@@ -281,11 +281,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "Gets or sets the version for a service in the cluster.")]
-        public Dictionary<string, string> ComponentVersion
-        {
-            get { return parameters.ComponentVersion; }
-            set { parameters.ComponentVersion = value; }
-        }
+        public Dictionary<string, string> ComponentVersion { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the virtual network guid for this HDInsight cluster.")]
         public string VirtualNetworkId
@@ -304,8 +300,8 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets the type of operating system installed on cluster nodes.")]
         public OSType OSType
         {
-            get { return parameters.OSType; }
-            set { parameters.OSType = value; }
+            get { return _osType ?? OSType.Linux; }
+            set { _osType = value; }
         }
 
         [Parameter(HelpMessage = "Gets or sets the cluster tier for this HDInsight cluster.")]
@@ -380,7 +376,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 parameters.RdpPassword = RdpCredential.Password.ConvertToString();
             }
 
-            if (OSType == OSType.Linux && SshCredential != null)
+            if (SshCredential != null)
             {
                 parameters.SshUserName = SshCredential.UserName;
                 if (!string.IsNullOrEmpty(SshCredential.Password.ConvertToString()))
@@ -468,20 +464,20 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             if (DisksPerWorkerNode > 0)
             {
-                parameters.WorkerNodeDataDisksGroups = new List<DataDisksGroupProperties>()
+                parameters.WorkerNodeDataDisksGroups = new List<DataDisksGroups>()
                 {
-                    new DataDisksGroupProperties()
+                    new DataDisksGroups()
                     {
                         DisksPerNode = DisksPerWorkerNode
                     }
                 };
             }
 
-            var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, parameters);
+            var cluster = HDInsightManagementClient.CreateNewCluster(ResourceGroupName, ClusterName, OSType, parameters);
 
             if (cluster != null)
             {
-                WriteObject(new AzureHDInsightCluster(cluster.Cluster));
+                WriteObject(new AzureHDInsightCluster(cluster));
             }
         }
 

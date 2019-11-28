@@ -538,24 +538,29 @@ function Test-VirtualNetworkGatewayBgpRouteApi
 		$job = Get-AzVirtualNetworkGatewayBGPPeerStatus -ResourceGroupName $rgname -VirtualNetworkGatewayName $gwname -AsJob
 		$job | Wait-Job
 		$bgpPeerStatus = $job | Receive-Job
+
 		$job = Get-AzVirtualNetworkGatewayLearnedRoute -ResourceGroupName $rgname -VirtualNetworkGatewayName $gwname -AsJob
 		$job | Wait-Job
 		$bgpLearnedRoutes = $job | Receive-Job
-		$job = Get-AzVirtualNetworkGatewayAdvertisedRoute -ResourceGroupName $rgname -VirtualNetworkGatewayName $gwname -Peer $bgpPeerStatus[0].Neighbor -AsJob
-		$job | Wait-Job
-		$bgpAdvertisedRoutes = $job | Receive-Job
 
-		Assert-AreEqual True ($vnet.AddressSpace.AddressPrefixes -contains $bgpAdvertisedRoutes[0].Network)
+        if($bgpLearnedRoutes -and $bgpLearnedRoutes.Length -gt 0)
+        {
+            forEach($route in $bgpLearnedRoutes)
+            {
+                if($route.Origin -eq "EBgp")
+                {
+                    Assert-True { $vnet1.AddressSpace.AddressPrefixes -contains $route.Network }
+                }
+            }
+        }
 
-		$routeLearned = $false
-		ForEach ($route in $bgpLearnedRoutes) {
-			If ($route.Origin -eq "EBgp") {
-				$routeLearned = $true
-				Assert-AreEqual True ($vnet1.AddressSpace.AddressPrefixes -contains $route.Network)
-			}
-		}
-
-		Assert-AreEqual True $routeLearned
+        if($bgpPeerStatus -and $bgpPeerStatus.Length -gt 0)
+        {
+            $job = Get-AzVirtualNetworkGatewayAdvertisedRoute -ResourceGroupName $rgname -VirtualNetworkGatewayName $gwname -Peer $bgpPeerStatus[0].Neighbor -AsJob
+            $job | Wait-Job
+            $bgpAdvertisedRoutes = $job | Receive-Job
+            Assert-True { $vnet.AddressSpace.AddressPrefixes -contains $bgpAdvertisedRoutes[0].Network }
+        }
 	}
 	finally 
 	{
