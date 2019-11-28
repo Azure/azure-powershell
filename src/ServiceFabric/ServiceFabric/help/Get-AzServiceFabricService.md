@@ -53,7 +53,7 @@ PS C:\> $appName = "testApp"
 PS C:\> Get-AzServiceFabricApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName
 ```
 
-This example gets a list of the services under the aplication "testApp".
+This example gets a list of the services under the application "testApp".
 
 ## PARAMETERS
 

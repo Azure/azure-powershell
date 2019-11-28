@@ -24,9 +24,13 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSResourceId VpnGateway { get; set; }
 
+        public PSResourceId P2SVpnGateway { get; set; }
+
         public PSResourceId ExpressRouteGateway { get; set; }
 
         public List<PSHubVirtualNetworkConnection> VirtualNetworkConnections { get; set; }
+
+        public List<PSVirtualHubRouteTable> RouteTables { get; set; }
 
         public PSVirtualHubRouteTable RouteTable { get; set; }
 
@@ -35,5 +39,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+        
+        [Ps1Xml(Label = "Sku", Target = ViewControl.Table)]
+        public string Sku { get; set; }
     }
 }

@@ -14,15 +14,17 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Newtonsoft.Json.Linq;
-    using Policy;
+    using System;
     using System.Collections;
     using System.Management.Automation;
+
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Newtonsoft.Json.Linq;
+    using Policy;      
 
     /// <summary>
     /// Sets the policy assignment.
@@ -115,6 +117,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Location { get; set; }
 
         /// <summary>
+        /// Gets or sets the policy assignment enforcement mode.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentEnforcementModeHelp)]
+        [ValidateNotNullOrEmpty]
+        public PolicyAssignmentEnforcementMode? EnforcementMode { get; set; }
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -154,6 +163,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             var metaDataJson = string.IsNullOrEmpty(this.Metadata) ? resource.Properties["metadata"]?.ToString() : GetObjectFromParameter(this.Metadata).ToString();
 
+            PolicyAssignmentEnforcementMode? existingMode = null;
+            if (Enum.TryParse(resource.Properties["enforcementMode"]?.ToString(), true, out PolicyAssignmentEnforcementMode tempMode))
+            {
+                existingMode = tempMode;
+            }
+
             var policyAssignmentObject = new PolicyAssignment
             {
                 Name = this.Name ?? resource.Name,
@@ -167,6 +182,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     NotScopes = this.NotScope ?? resource.Properties["NotScopes"]?.ToString().Split(','),
                     PolicyDefinitionId = resource.Properties["policyDefinitionId"].ToString(),
                     Metadata = string.IsNullOrEmpty(this.Metadata) ? null : JObject.Parse(metaDataJson),
+                    EnforcementMode = this.EnforcementMode ?? existingMode,
                     Parameters = this.GetParameters(this.PolicyParameter, this.PolicyParameterObject) ?? (JObject)resource.Properties["parameters"]
                 }
             };

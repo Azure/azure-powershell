@@ -14,7 +14,7 @@
 
 using System.Collections;
 using Microsoft.Azure.Commands.HDInsight.Models;
-using Microsoft.Azure.Management.HDInsight;
+using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;

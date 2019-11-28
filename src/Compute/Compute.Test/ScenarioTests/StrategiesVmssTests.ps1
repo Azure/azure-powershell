@@ -435,3 +435,67 @@ function Test-SimpleNewVmssBilling
         Clean-ResourceGroup $vmssname
     }
 }
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vmss with ScaleInPolicy.
+#>
+function Test-SimpleNewVmssScaleInPolicy
+{
+    # Setup
+    $vmssname = Get-ResourceName
+
+    try
+    {
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "$vmssname$vmssname".tolower();
+
+        # Common
+        New-AzVmss -Name $vmssname -Location "westus2" -Credential $cred -DomainNameLabel $domainNameLabel `
+                   -ScaleInPolicy 'Default';
+        $vm = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
+        Assert-AreEqual "Default" $vm.ScaleInPolicy.Rules;
+    }
+    catch
+    {
+        Assert-True { $Error[0].ToString().Contains("OS provisioning failure"); }
+        $vm = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
+        Assert-AreEqual "Default" $vm.ScaleInPolicy.Rules;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmssname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vmss with SkipExtensionsOnOverprovisionedVMs.
+#>
+function Test-SimpleNewVmssSkipExtOverprovision
+{
+    # Setup
+    $vmssname = Get-ResourceName
+
+    try
+    {
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "$vmssname$vmssname".tolower();
+
+        # Common
+        New-AzVmss -Name $vmssname -Location "westus2" -Credential $cred -DomainNameLabel $domainNameLabel `
+                   -SkipExtensionsOnOverprovisionedVMs;
+        $vmss = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
+        Assert-True { $vmss.DoNotRunExtensionsOnOverprovisionedVMs };
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmssname
+    }
+}

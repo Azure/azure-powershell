@@ -119,7 +119,7 @@ function Test-AzureRmIotHubLifecycle
 	Assert-True { $validSkus.Count -gt 1 }
 
 	# Get EventHub Consumer group for events
-	$eventubConsumerGroup = Get-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName events
+	$eventubConsumerGroup = Get-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName
 	Assert-True { $eventubConsumerGroup.Count -eq 1 }
 
 	# Get Keys
@@ -139,17 +139,17 @@ function Test-AzureRmIotHubLifecycle
 	Assert-True { $key.KeyName -eq "iothubowner" }
 
 	# Add consumer group
-	Add-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName events -EventHubConsumerGroupName cg1
+	Add-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubConsumerGroupName cg1
 
 	# Get consumer group
-	$eventubConsumerGroup = Get-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName events
+	$eventubConsumerGroup = Get-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName 
 	Assert-True { $eventubConsumerGroup.Count -eq 2 }
 
 	# Delete consumer group
-	Remove-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName events -EventHubConsumerGroupName cg1
+	Remove-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubConsumerGroupName cg1
 
 	# Get consumer group
-	$eventubConsumerGroup = Get-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName -EventHubEndpointName events
+	$eventubConsumerGroup = Get-AzIotHubEventHubConsumerGroup -ResourceGroupName $ResourceGroupName -Name $IotHubName
 	Assert-True { $eventubConsumerGroup.Count -eq 1 }
 
 	# Add Key

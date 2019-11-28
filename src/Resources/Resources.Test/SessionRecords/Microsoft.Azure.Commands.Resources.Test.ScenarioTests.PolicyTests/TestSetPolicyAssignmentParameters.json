@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTc4OTYxYmEtMzZmZS00NzM5LTkyMTItZTMwMzFiNGM4ZGI3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/subscriptions/0b40be06-04e8-4f70-abde-a502b2646fe8/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGI0MGJlMDYtMDRlOC00ZjcwLWFiZGUtYTUwMmIyNjQ2ZmU4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -25,16 +25,2090 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:79c9dd3e-9da9-4302-b43a-b32e5cd1ce6c"
+          "westus:617caaf9-252c-4186-aedc-046f06d45021"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "408e5589-613b-437c-89e4-170e1ae216e2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011237Z:408e5589-613b-437c-89e4-170e1ae216e2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:36 GMT"
+        ],
+        "Content-Length": [
+          "104"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PolicyAssignmentNotFound\",\r\n    \"message\": \"The policy assignment 'someName' is not found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "ca95e82d-136d-4791-a602-6b6cca65865b"
+        ],
+        "x-ms-correlation-request-id": [
+          "ca95e82d-136d-4791-a602-6b6cca65865b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011237Z:ca95e82d-136d-4791-a602-6b6cca65865b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:36 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "804f1d6b-a4ce-4d7c-a3cc-1cf60afb68a8"
+        ],
+        "x-ms-correlation-request-id": [
+          "804f1d6b-a4ce-4d7c-a3cc-1cf60afb68a8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011237Z:804f1d6b-a4ce-4d7c-a3cc-1cf60afb68a8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:36 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "ea545884-5495-45a3-84d5-ad4fb175c33a"
+        ],
+        "x-ms-correlation-request-id": [
+          "ea545884-5495-45a3-84d5-ad4fb175c33a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011237Z:ea545884-5495-45a3-84d5-ad4fb175c33a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:37 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "63c5b08e-51f6-406b-8ba4-33588ec7ecd5"
+        ],
+        "x-ms-correlation-request-id": [
+          "63c5b08e-51f6-406b-8ba4-33588ec7ecd5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011238Z:63c5b08e-51f6-406b-8ba4-33588ec7ecd5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:37 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "PolicyParameterNameObjectParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "e644dd51-8261-4fee-9234-4d824aa394d9"
+        ],
+        "x-ms-correlation-request-id": [
+          "e644dd51-8261-4fee-9234-4d824aa394d9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011238Z:e644dd51-8261-4fee-9234-4d824aa394d9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:37 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "PolicyParameterNameStringParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "9fdc8357-5775-4982-8138-27aa9a7ea88a"
+        ],
+        "x-ms-correlation-request-id": [
+          "9fdc8357-5775-4982-8138-27aa9a7ea88a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011238Z:9fdc8357-5775-4982-8138-27aa9a7ea88a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:37 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "f71511de-20f1-4ba6-a9b5-d7fd10d4217b"
+        ],
+        "x-ms-correlation-request-id": [
+          "f71511de-20f1-4ba6-a9b5-d7fd10d4217b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011238Z:f71511de-20f1-4ba6-a9b5-d7fd10d4217b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:38 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "c109581b-86a1-4a34-b38f-8a181f97b29b"
+        ],
+        "x-ms-correlation-request-id": [
+          "c109581b-86a1-4a34-b38f-8a181f97b29b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011238Z:c109581b-86a1-4a34-b38f-8a181f97b29b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:38 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "36f7efee-157d-49e8-b579-ece6e3ec46f0"
+        ],
+        "x-ms-correlation-request-id": [
+          "36f7efee-157d-49e8-b579-ece6e3ec46f0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011238Z:36f7efee-157d-49e8-b579-ece6e3ec46f0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:37 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "0f157b5c-0239-4c4e-aa12-435798d281e5"
+        ],
+        "x-ms-correlation-request-id": [
+          "0f157b5c-0239-4c4e-aa12-435798d281e5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011238Z:0f157b5c-0239-4c4e-aa12-435798d281e5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:38 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "ef4a7e47-eadb-4e43-ae25-d62d1c21ccec"
+        ],
+        "x-ms-correlation-request-id": [
+          "ef4a7e47-eadb-4e43-ae25-d62d1c21ccec"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011238Z:ef4a7e47-eadb-4e43-ae25-d62d1c21ccec"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:38 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "PolicyParameterNameObjectParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "8a491154-fe02-4854-8ad7-4fea3da50450"
+        ],
+        "x-ms-correlation-request-id": [
+          "8a491154-fe02-4854-8ad7-4fea3da50450"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011239Z:8a491154-fe02-4854-8ad7-4fea3da50450"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:38 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "PolicyParameterNameStringParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "0b415d94-ffcc-43b0-a605-677693c8697f"
+        ],
+        "x-ms-correlation-request-id": [
+          "0b415d94-ffcc-43b0-a605-677693c8697f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011239Z:0b415d94-ffcc-43b0-a605-677693c8697f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:38 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "3e7e2dfb-5d2e-4a35-a18a-b835b7820ae4"
+        ],
+        "x-ms-correlation-request-id": [
+          "3e7e2dfb-5d2e-4a35-a18a-b835b7820ae4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011239Z:3e7e2dfb-5d2e-4a35-a18a-b835b7820ae4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:39 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "d55c5a30-1a4d-4a95-842f-4ff5497fbfc4"
+        ],
+        "x-ms-correlation-request-id": [
+          "d55c5a30-1a4d-4a95-842f-4ff5497fbfc4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011239Z:d55c5a30-1a4d-4a95-842f-4ff5497fbfc4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:38 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "04ce338a-9c89-4256-a604-089caf5dd7f6"
+        ],
+        "x-ms-correlation-request-id": [
+          "04ce338a-9c89-4256-a604-089caf5dd7f6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011239Z:04ce338a-9c89-4256-a604-089caf5dd7f6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:38 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "69ec7775-2fb5-4bfc-9822-886ada2f3dbf"
+        ],
+        "x-ms-correlation-request-id": [
+          "69ec7775-2fb5-4bfc-9822-886ada2f3dbf"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011239Z:69ec7775-2fb5-4bfc-9822-886ada2f3dbf"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:39 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "PolicyParameterNameObjectParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "6b7f4b29-7fb1-411a-b2dc-9592093fcfe4"
+        ],
+        "x-ms-correlation-request-id": [
+          "6b7f4b29-7fb1-411a-b2dc-9592093fcfe4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011239Z:6b7f4b29-7fb1-411a-b2dc-9592093fcfe4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:39 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "PolicyParameterNameStringParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "2d1113e4-852b-4c55-9c59-32a9db820211"
+        ],
+        "x-ms-correlation-request-id": [
+          "2d1113e4-852b-4c55-9c59-32a9db820211"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011240Z:2d1113e4-852b-4c55-9c59-32a9db820211"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:39 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "d4b2d57b-69a9-4be0-9fda-389747b74f59"
+        ],
+        "x-ms-correlation-request-id": [
+          "d4b2d57b-69a9-4be0-9fda-389747b74f59"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011240Z:d4b2d57b-69a9-4be0-9fda-389747b74f59"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:40 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "2ac110df-7796-44de-ba73-4594195ae1c8"
+        ],
+        "x-ms-correlation-request-id": [
+          "2ac110df-7796-44de-ba73-4594195ae1c8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011240Z:2ac110df-7796-44de-ba73-4594195ae1c8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:39 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "ad044c38-0c1f-49d2-a628-37502fa02162"
+        ],
+        "x-ms-correlation-request-id": [
+          "ad044c38-0c1f-49d2-a628-37502fa02162"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011240Z:ad044c38-0c1f-49d2-a628-37502fa02162"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:39 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "PolicyParameterNameObjectParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "648cca63-0b74-4b15-9817-1fa5ea140e21"
+        ],
+        "x-ms-correlation-request-id": [
+          "648cca63-0b74-4b15-9817-1fa5ea140e21"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011240Z:648cca63-0b74-4b15-9817-1fa5ea140e21"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:40 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "PolicyParameterNameStringParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "b47bb9f8-511e-4f46-9a32-ddd30db9fad8"
+        ],
+        "x-ms-correlation-request-id": [
+          "b47bb9f8-511e-4f46-9a32-ddd30db9fad8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011240Z:b47bb9f8-511e-4f46-9a32-ddd30db9fad8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:40 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "e76f966b-edc5-45c7-b440-157484ee95e9"
+        ],
+        "x-ms-correlation-request-id": [
+          "e76f966b-edc5-45c7-b440-157484ee95e9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011241Z:e76f966b-edc5-45c7-b440-157484ee95e9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:40 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "25ccc424-fc06-48b5-848a-64db4a3a73d7"
+        ],
+        "x-ms-correlation-request-id": [
+          "25ccc424-fc06-48b5-848a-64db4a3a73d7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011241Z:25ccc424-fc06-48b5-848a-64db4a3a73d7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:40 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "PolicyParameterNameObjectParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "1bf693b7-bd32-4c70-9bda-200feabace0b"
+        ],
+        "x-ms-correlation-request-id": [
+          "1bf693b7-bd32-4c70-9bda-200feabace0b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011241Z:1bf693b7-bd32-4c70-9bda-200feabace0b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:40 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "PolicyParameterNameStringParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "ccd9b66f-8c2d-4c58-9b97-e6f6668d7968"
+        ],
+        "x-ms-correlation-request-id": [
+          "ccd9b66f-8c2d-4c58-9b97-e6f6668d7968"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011241Z:ccd9b66f-8c2d-4c58-9b97-e6f6668d7968"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:40 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "fec81e1c-c433-4e39-bd5b-39487acd0a8a"
+        ],
+        "x-ms-correlation-request-id": [
+          "fec81e1c-c433-4e39-bd5b-39487acd0a8a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011241Z:fec81e1c-c433-4e39-bd5b-39487acd0a8a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:40 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "NameParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "cd01cf36-faa2-451a-aa1a-e74368379dbf"
+        ],
+        "x-ms-correlation-request-id": [
+          "cd01cf36-faa2-451a-aa1a-e74368379dbf"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011241Z:cd01cf36-faa2-451a-aa1a-e74368379dbf"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:40 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "PolicyParameterNameObjectParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "551e90fb-08cd-46c7-aad2-a68148390eaa"
+        ],
+        "x-ms-correlation-request-id": [
+          "551e90fb-08cd-46c7-aad2-a68148390eaa"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011241Z:551e90fb-08cd-46c7-aad2-a68148390eaa"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:40 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "PolicyParameterNameObjectParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "2bbba991-c201-4652-b322-3203a4cb964b"
+        ],
+        "x-ms-correlation-request-id": [
+          "2bbba991-c201-4652-b322-3203a4cb964b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011241Z:2bbba991-c201-4652-b322-3203a4cb964b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:41 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "PolicyParameterNameObjectParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "dba6aaae-feee-4708-a785-3f006dd10292"
+        ],
+        "x-ms-correlation-request-id": [
+          "dba6aaae-feee-4708-a785-3f006dd10292"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20191031T011242Z:dba6aaae-feee-4708-a785-3f006dd10292"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 31 Oct 2019 01:12:41 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/0b40be06-04e8-4f70-abde-a502b2646fe8/providers/Microsoft.Authorization/policyAssignments/someName?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGI0MGJlMDYtMDRlOC00ZjcwLWFiZGUtYTUwMmIyNjQ2ZmU4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lBc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.0.0",
+          "PSVersion/v6.1.0"
+        ],
+        "ParameterSetName": [
+          "IdParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzPolicyAssignment"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus:8b14f022-671b-4915-874a-0028461c1a59"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11995"
         ],
         "x-ms-correlation-request-id": [
-          "19b6a341-c60d-4f7c-8bbe-591a1231022c"
+          "33bd5f7a-56d9-431f-8561-7039f2e3490f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205733Z:19b6a341-c60d-4f7c-8bbe-591a1231022c"
+          "WESTUS:20191031T011242Z:33bd5f7a-56d9-431f-8561-7039f2e3490f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,7 +2117,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:33 GMT"
+          "Thu, 31 Oct 2019 01:12:41 GMT"
         ],
         "Content-Length": [
           "104"
@@ -62,2082 +2136,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "13e4381e-314b-46cd-9416-b8102acb2470"
-        ],
-        "x-ms-correlation-request-id": [
-          "13e4381e-314b-46cd-9416-b8102acb2470"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205733Z:13e4381e-314b-46cd-9416-b8102acb2470"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:33 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "2570c963-6c98-4030-ad01-29e27ef4b587"
-        ],
-        "x-ms-correlation-request-id": [
-          "2570c963-6c98-4030-ad01-29e27ef4b587"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205733Z:2570c963-6c98-4030-ad01-29e27ef4b587"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:32 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "369218d9-0821-4e49-a3e4-b0db2717e7b2"
-        ],
-        "x-ms-correlation-request-id": [
-          "369218d9-0821-4e49-a3e4-b0db2717e7b2"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205733Z:369218d9-0821-4e49-a3e4-b0db2717e7b2"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:33 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "5a7ba92e-4b4c-43de-942b-fc3e8181f6c8"
-        ],
-        "x-ms-correlation-request-id": [
-          "5a7ba92e-4b4c-43de-942b-fc3e8181f6c8"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205734Z:5a7ba92e-4b4c-43de-942b-fc3e8181f6c8"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:33 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "PolicyParameterNameObjectParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "057280ff-de31-43b3-87d9-8e88fee708f7"
-        ],
-        "x-ms-correlation-request-id": [
-          "057280ff-de31-43b3-87d9-8e88fee708f7"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205734Z:057280ff-de31-43b3-87d9-8e88fee708f7"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:34 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "PolicyParameterNameStringParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "f8a1aa7a-69b0-4211-a101-dd073fceefe1"
-        ],
-        "x-ms-correlation-request-id": [
-          "f8a1aa7a-69b0-4211-a101-dd073fceefe1"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205734Z:f8a1aa7a-69b0-4211-a101-dd073fceefe1"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:33 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "8d88a610-cbd3-4e21-bfe5-0008dd84fabc"
-        ],
-        "x-ms-correlation-request-id": [
-          "8d88a610-cbd3-4e21-bfe5-0008dd84fabc"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205734Z:8d88a610-cbd3-4e21-bfe5-0008dd84fabc"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:33 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "4ab3e722-e455-46f3-b743-00c150aaaee8"
-        ],
-        "x-ms-correlation-request-id": [
-          "4ab3e722-e455-46f3-b743-00c150aaaee8"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205734Z:4ab3e722-e455-46f3-b743-00c150aaaee8"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:33 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "661797b9-07cf-4116-a2f0-e3520a0bc227"
-        ],
-        "x-ms-correlation-request-id": [
-          "661797b9-07cf-4116-a2f0-e3520a0bc227"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205734Z:661797b9-07cf-4116-a2f0-e3520a0bc227"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:33 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "8a19de9f-75f6-404f-a3a7-01948dd87e93"
-        ],
-        "x-ms-correlation-request-id": [
-          "8a19de9f-75f6-404f-a3a7-01948dd87e93"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205734Z:8a19de9f-75f6-404f-a3a7-01948dd87e93"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:34 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "be708426-43da-42ad-ba31-107924526413"
-        ],
-        "x-ms-correlation-request-id": [
-          "be708426-43da-42ad-ba31-107924526413"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205734Z:be708426-43da-42ad-ba31-107924526413"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:34 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "PolicyParameterNameObjectParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "68db4248-bf3a-424c-a2a1-1ae6b54906b0"
-        ],
-        "x-ms-correlation-request-id": [
-          "68db4248-bf3a-424c-a2a1-1ae6b54906b0"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205735Z:68db4248-bf3a-424c-a2a1-1ae6b54906b0"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:34 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "PolicyParameterNameStringParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "8cbd66ee-ab21-4103-9c72-fe37cdc69e8e"
-        ],
-        "x-ms-correlation-request-id": [
-          "8cbd66ee-ab21-4103-9c72-fe37cdc69e8e"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205735Z:8cbd66ee-ab21-4103-9c72-fe37cdc69e8e"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:34 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "ec6bd7c3-6a05-4091-97c3-51442112b5b5"
-        ],
-        "x-ms-correlation-request-id": [
-          "ec6bd7c3-6a05-4091-97c3-51442112b5b5"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205735Z:ec6bd7c3-6a05-4091-97c3-51442112b5b5"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:34 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "ea7817ca-efd7-4960-9127-acdde353edb1"
-        ],
-        "x-ms-correlation-request-id": [
-          "ea7817ca-efd7-4960-9127-acdde353edb1"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205735Z:ea7817ca-efd7-4960-9127-acdde353edb1"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:34 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "93bbb404-65b2-4783-b7c4-86e74c895d3f"
-        ],
-        "x-ms-correlation-request-id": [
-          "93bbb404-65b2-4783-b7c4-86e74c895d3f"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205735Z:93bbb404-65b2-4783-b7c4-86e74c895d3f"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:34 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "ca59f842-44b1-4050-8938-05a4e4e7f659"
-        ],
-        "x-ms-correlation-request-id": [
-          "ca59f842-44b1-4050-8938-05a4e4e7f659"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205735Z:ca59f842-44b1-4050-8938-05a4e4e7f659"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:35 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "PolicyParameterNameObjectParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "7c33e8cb-221c-4a5a-84a4-814c94fd30a2"
-        ],
-        "x-ms-correlation-request-id": [
-          "7c33e8cb-221c-4a5a-84a4-814c94fd30a2"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205735Z:7c33e8cb-221c-4a5a-84a4-814c94fd30a2"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:35 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "PolicyParameterNameStringParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "5ac41716-d1de-400d-9f7a-5e44bedba07c"
-        ],
-        "x-ms-correlation-request-id": [
-          "5ac41716-d1de-400d-9f7a-5e44bedba07c"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205736Z:5ac41716-d1de-400d-9f7a-5e44bedba07c"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:35 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "b54d6b42-bc7b-4faf-8146-43945c07fff6"
-        ],
-        "x-ms-correlation-request-id": [
-          "b54d6b42-bc7b-4faf-8146-43945c07fff6"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205736Z:b54d6b42-bc7b-4faf-8146-43945c07fff6"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:35 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "7f579005-e494-4301-abfb-99f9236bb0a2"
-        ],
-        "x-ms-correlation-request-id": [
-          "7f579005-e494-4301-abfb-99f9236bb0a2"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205736Z:7f579005-e494-4301-abfb-99f9236bb0a2"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:35 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "5a309b27-edab-41ab-8c92-04372c348fe0"
-        ],
-        "x-ms-correlation-request-id": [
-          "5a309b27-edab-41ab-8c92-04372c348fe0"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205736Z:5a309b27-edab-41ab-8c92-04372c348fe0"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:36 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "PolicyParameterNameObjectParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "acf9c640-d28f-4bcd-9d56-6e4e52f4669c"
-        ],
-        "x-ms-correlation-request-id": [
-          "acf9c640-d28f-4bcd-9d56-6e4e52f4669c"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205736Z:acf9c640-d28f-4bcd-9d56-6e4e52f4669c"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:36 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "PolicyParameterNameStringParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "340570f7-53cc-415d-bc0b-aeadf7d46c02"
-        ],
-        "x-ms-correlation-request-id": [
-          "340570f7-53cc-415d-bc0b-aeadf7d46c02"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205736Z:340570f7-53cc-415d-bc0b-aeadf7d46c02"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:36 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "dd41793c-bfd8-45ad-b16b-d2c72bbf072d"
-        ],
-        "x-ms-correlation-request-id": [
-          "dd41793c-bfd8-45ad-b16b-d2c72bbf072d"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205736Z:dd41793c-bfd8-45ad-b16b-d2c72bbf072d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:36 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "44cef572-7eba-437b-828f-f249c513bc1d"
-        ],
-        "x-ms-correlation-request-id": [
-          "44cef572-7eba-437b-828f-f249c513bc1d"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205737Z:44cef572-7eba-437b-828f-f249c513bc1d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:36 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "PolicyParameterNameObjectParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "f414f336-f9bd-4ada-810d-15ebf1d25f2f"
-        ],
-        "x-ms-correlation-request-id": [
-          "f414f336-f9bd-4ada-810d-15ebf1d25f2f"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205737Z:f414f336-f9bd-4ada-810d-15ebf1d25f2f"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:37 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "PolicyParameterNameStringParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "abc5962e-1be0-42ff-a9ef-fce607cef417"
-        ],
-        "x-ms-correlation-request-id": [
-          "abc5962e-1be0-42ff-a9ef-fce607cef417"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205737Z:abc5962e-1be0-42ff-a9ef-fce607cef417"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:37 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "788adea7-9a84-4091-b3a7-12b087ea5c49"
-        ],
-        "x-ms-correlation-request-id": [
-          "788adea7-9a84-4091-b3a7-12b087ea5c49"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205737Z:788adea7-9a84-4091-b3a7-12b087ea5c49"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:36 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "f2375a48-d9d1-4985-9ace-8c910c58bac8"
-        ],
-        "x-ms-correlation-request-id": [
-          "f2375a48-d9d1-4985-9ace-8c910c58bac8"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205737Z:f2375a48-d9d1-4985-9ace-8c910c58bac8"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:37 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "PolicyParameterNameObjectParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "195d0362-e82b-4998-b259-aba04dd3054b"
-        ],
-        "x-ms-correlation-request-id": [
-          "195d0362-e82b-4998-b259-aba04dd3054b"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205737Z:195d0362-e82b-4998-b259-aba04dd3054b"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:37 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "PolicyParameterNameObjectParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "70bfa754-2424-493f-bdc6-1a960596c5f8"
-        ],
-        "x-ms-correlation-request-id": [
-          "70bfa754-2424-493f-bdc6-1a960596c5f8"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205738Z:70bfa754-2424-493f-bdc6-1a960596c5f8"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:37 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "PolicyParameterNameObjectParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "b5cfd1ee-e638-44a0-a4aa-cbcc09d6c8af"
-        ],
-        "x-ms-correlation-request-id": [
-          "b5cfd1ee-e638-44a0-a4aa-cbcc09d6c8af"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205738Z:b5cfd1ee-e638-44a0-a4aa-cbcc09d6c8af"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:37 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "135"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a subscription or a valid tenant level resource provider.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/providers/Microsoft.Authorization/policyAssignments/someName?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTc4OTYxYmEtMzZmZS00NzM5LTkyMTItZTMwMzFiNGM4ZGI3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lBc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.1.0"
-        ],
-        "ParameterSetName": [
-          "IdParameterSet"
-        ],
-        "CommandName": [
-          "Set-AzPolicyAssignment"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "westus:fe252626-d589-46f0-af0f-d260a5dc5882"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
-        ],
-        "x-ms-correlation-request-id": [
-          "130d86fe-e168-46d5-8d75-6187dcc4caeb"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190715T205738Z:130d86fe-e168-46d5-8d75-6187dcc4caeb"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 15 Jul 2019 20:57:37 GMT"
-        ],
-        "Content-Length": [
-          "104"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PolicyAssignmentNotFound\",\r\n    \"message\": \"The policy assignment 'someName' is not found.\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2163,13 +2163,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "0230a93a-9ee9-4b9c-9f60-eece350b07a6"
+          "c4428bea-f6a0-465d-8a3e-44ff5c9564cb"
         ],
         "x-ms-correlation-request-id": [
-          "0230a93a-9ee9-4b9c-9f60-eece350b07a6"
+          "c4428bea-f6a0-465d-8a3e-44ff5c9564cb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205738Z:0230a93a-9ee9-4b9c-9f60-eece350b07a6"
+          "WESTUS:20191031T011242Z:c4428bea-f6a0-465d-8a3e-44ff5c9564cb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2178,7 +2178,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:38 GMT"
+          "Thu, 31 Oct 2019 01:12:42 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2197,8 +2197,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2224,13 +2224,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "27486a90-33cb-4069-8af0-389e930a6cf3"
+          "958d6e95-51e0-444f-8929-5c8fc39e2b28"
         ],
         "x-ms-correlation-request-id": [
-          "27486a90-33cb-4069-8af0-389e930a6cf3"
+          "958d6e95-51e0-444f-8929-5c8fc39e2b28"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205738Z:27486a90-33cb-4069-8af0-389e930a6cf3"
+          "WESTUS:20191031T011242Z:958d6e95-51e0-444f-8929-5c8fc39e2b28"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2239,7 +2239,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:38 GMT"
+          "Thu, 31 Oct 2019 01:12:42 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2258,8 +2258,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2285,13 +2285,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "3e90db51-1136-4fdc-9a66-05f5f74d066e"
+          "b170cf33-f676-4a46-9bc9-7c493b0309c8"
         ],
         "x-ms-correlation-request-id": [
-          "3e90db51-1136-4fdc-9a66-05f5f74d066e"
+          "b170cf33-f676-4a46-9bc9-7c493b0309c8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205738Z:3e90db51-1136-4fdc-9a66-05f5f74d066e"
+          "WESTUS:20191031T011242Z:b170cf33-f676-4a46-9bc9-7c493b0309c8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2300,7 +2300,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:38 GMT"
+          "Thu, 31 Oct 2019 01:12:42 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2319,8 +2319,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2346,13 +2346,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "2c556ecb-2a81-49ff-86b6-fcf2a9f5f37a"
+          "9a796ece-aa15-47b6-9b27-73826dacfa84"
         ],
         "x-ms-correlation-request-id": [
-          "2c556ecb-2a81-49ff-86b6-fcf2a9f5f37a"
+          "9a796ece-aa15-47b6-9b27-73826dacfa84"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205738Z:2c556ecb-2a81-49ff-86b6-fcf2a9f5f37a"
+          "WESTUS:20191031T011242Z:9a796ece-aa15-47b6-9b27-73826dacfa84"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2361,7 +2361,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:38 GMT"
+          "Thu, 31 Oct 2019 01:12:42 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2380,8 +2380,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2407,13 +2407,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "76645b73-47e2-47f0-8d71-e633f62906f9"
+          "a0e94a63-9dc0-4507-8948-3af0c0dffdde"
         ],
         "x-ms-correlation-request-id": [
-          "76645b73-47e2-47f0-8d71-e633f62906f9"
+          "a0e94a63-9dc0-4507-8948-3af0c0dffdde"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205739Z:76645b73-47e2-47f0-8d71-e633f62906f9"
+          "WESTUS:20191031T011242Z:a0e94a63-9dc0-4507-8948-3af0c0dffdde"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2422,7 +2422,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:38 GMT"
+          "Thu, 31 Oct 2019 01:12:42 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2441,8 +2441,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2468,13 +2468,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "225ea4e3-fea5-4cc8-924b-8a9bc745f949"
+          "32136e02-46b1-4ba7-8dcf-5cad38451182"
         ],
         "x-ms-correlation-request-id": [
-          "225ea4e3-fea5-4cc8-924b-8a9bc745f949"
+          "32136e02-46b1-4ba7-8dcf-5cad38451182"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205739Z:225ea4e3-fea5-4cc8-924b-8a9bc745f949"
+          "WESTUS:20191031T011243Z:32136e02-46b1-4ba7-8dcf-5cad38451182"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2483,7 +2483,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:38 GMT"
+          "Thu, 31 Oct 2019 01:12:42 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2502,8 +2502,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2529,13 +2529,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "0d8478d5-da6f-4e90-a250-f628cd00dd3f"
+          "57bcee10-b01f-4ca8-90b3-f6f66ac7811c"
         ],
         "x-ms-correlation-request-id": [
-          "0d8478d5-da6f-4e90-a250-f628cd00dd3f"
+          "57bcee10-b01f-4ca8-90b3-f6f66ac7811c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205739Z:0d8478d5-da6f-4e90-a250-f628cd00dd3f"
+          "WESTUS:20191031T011243Z:57bcee10-b01f-4ca8-90b3-f6f66ac7811c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2544,7 +2544,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:39 GMT"
+          "Thu, 31 Oct 2019 01:12:42 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2563,8 +2563,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2590,13 +2590,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "e5674465-21b0-4c85-a403-cac521300baa"
+          "ac903949-5726-46d5-9eb5-8a7dfdf62a0b"
         ],
         "x-ms-correlation-request-id": [
-          "e5674465-21b0-4c85-a403-cac521300baa"
+          "ac903949-5726-46d5-9eb5-8a7dfdf62a0b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205739Z:e5674465-21b0-4c85-a403-cac521300baa"
+          "WESTUS:20191031T011243Z:ac903949-5726-46d5-9eb5-8a7dfdf62a0b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2605,7 +2605,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:38 GMT"
+          "Thu, 31 Oct 2019 01:12:42 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2624,8 +2624,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2651,13 +2651,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "a3a8a4f9-f173-4e93-a63e-fac7cdaca729"
+          "974f7c94-bc88-4963-accf-3cfba7aa5243"
         ],
         "x-ms-correlation-request-id": [
-          "a3a8a4f9-f173-4e93-a63e-fac7cdaca729"
+          "974f7c94-bc88-4963-accf-3cfba7aa5243"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205739Z:a3a8a4f9-f173-4e93-a63e-fac7cdaca729"
+          "WESTUS:20191031T011243Z:974f7c94-bc88-4963-accf-3cfba7aa5243"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2666,7 +2666,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:39 GMT"
+          "Thu, 31 Oct 2019 01:12:43 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2685,8 +2685,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2712,13 +2712,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "181ac1f3-7840-4e66-8bbf-864955d6ca73"
+          "f7335437-d3b8-4592-98cb-edb927555ff3"
         ],
         "x-ms-correlation-request-id": [
-          "181ac1f3-7840-4e66-8bbf-864955d6ca73"
+          "f7335437-d3b8-4592-98cb-edb927555ff3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205739Z:181ac1f3-7840-4e66-8bbf-864955d6ca73"
+          "WESTUS:20191031T011243Z:f7335437-d3b8-4592-98cb-edb927555ff3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2727,7 +2727,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:39 GMT"
+          "Thu, 31 Oct 2019 01:12:43 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2746,8 +2746,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2773,13 +2773,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "678d8f4f-c0a7-4c17-bba4-a004ceb60c6a"
+          "50af81c5-a945-4fe2-9537-f1ec0cd4f6a1"
         ],
         "x-ms-correlation-request-id": [
-          "678d8f4f-c0a7-4c17-bba4-a004ceb60c6a"
+          "50af81c5-a945-4fe2-9537-f1ec0cd4f6a1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205739Z:678d8f4f-c0a7-4c17-bba4-a004ceb60c6a"
+          "WESTUS:20191031T011243Z:50af81c5-a945-4fe2-9537-f1ec0cd4f6a1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2788,7 +2788,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:39 GMT"
+          "Thu, 31 Oct 2019 01:12:42 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2807,8 +2807,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2834,13 +2834,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "e1b41382-b021-4050-a17a-119f2e133946"
+          "474e07e6-d7f7-4760-9ed5-82eecd848a18"
         ],
         "x-ms-correlation-request-id": [
-          "e1b41382-b021-4050-a17a-119f2e133946"
+          "474e07e6-d7f7-4760-9ed5-82eecd848a18"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205739Z:e1b41382-b021-4050-a17a-119f2e133946"
+          "WESTUS:20191031T011243Z:474e07e6-d7f7-4760-9ed5-82eecd848a18"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2849,7 +2849,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:39 GMT"
+          "Thu, 31 Oct 2019 01:12:43 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2868,8 +2868,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2895,13 +2895,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "e1452d55-0867-4c2a-a7ab-88d722fdb05b"
+          "f503af89-c8a8-4573-9c00-36007303687e"
         ],
         "x-ms-correlation-request-id": [
-          "e1452d55-0867-4c2a-a7ab-88d722fdb05b"
+          "f503af89-c8a8-4573-9c00-36007303687e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205740Z:e1452d55-0867-4c2a-a7ab-88d722fdb05b"
+          "WESTUS:20191031T011244Z:f503af89-c8a8-4573-9c00-36007303687e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2910,7 +2910,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:39 GMT"
+          "Thu, 31 Oct 2019 01:12:43 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2929,8 +2929,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2956,13 +2956,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "1f7adbb9-9a05-4282-a235-675b0bbbd0fa"
+          "a0690860-23cd-4451-a377-7816e0735f6f"
         ],
         "x-ms-correlation-request-id": [
-          "1f7adbb9-9a05-4282-a235-675b0bbbd0fa"
+          "a0690860-23cd-4451-a377-7816e0735f6f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205740Z:1f7adbb9-9a05-4282-a235-675b0bbbd0fa"
+          "WESTUS:20191031T011244Z:a0690860-23cd-4451-a377-7816e0735f6f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2971,7 +2971,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:39 GMT"
+          "Thu, 31 Oct 2019 01:12:43 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2990,8 +2990,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3017,13 +3017,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "00a16225-2a9a-42d6-b823-ec6f9777cc69"
+          "f387f2c5-76b0-4614-99d6-d05b3993df58"
         ],
         "x-ms-correlation-request-id": [
-          "00a16225-2a9a-42d6-b823-ec6f9777cc69"
+          "f387f2c5-76b0-4614-99d6-d05b3993df58"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205740Z:00a16225-2a9a-42d6-b823-ec6f9777cc69"
+          "WESTUS:20191031T011244Z:f387f2c5-76b0-4614-99d6-d05b3993df58"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3032,7 +3032,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:40 GMT"
+          "Thu, 31 Oct 2019 01:12:43 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3051,8 +3051,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3078,13 +3078,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "22207994-fd3a-495b-8285-4a0e1a468f2d"
+          "1a3fdbc0-fbd8-4afc-98ad-a5f67cd9e6d8"
         ],
         "x-ms-correlation-request-id": [
-          "22207994-fd3a-495b-8285-4a0e1a468f2d"
+          "1a3fdbc0-fbd8-4afc-98ad-a5f67cd9e6d8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205740Z:22207994-fd3a-495b-8285-4a0e1a468f2d"
+          "WESTUS:20191031T011244Z:1a3fdbc0-fbd8-4afc-98ad-a5f67cd9e6d8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3093,7 +3093,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:39 GMT"
+          "Thu, 31 Oct 2019 01:12:44 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3112,8 +3112,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3139,13 +3139,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "02ecf6ac-8e74-4b91-a5a0-328a846eede8"
+          "215388f0-250e-437c-a355-3a5dcd8d9722"
         ],
         "x-ms-correlation-request-id": [
-          "02ecf6ac-8e74-4b91-a5a0-328a846eede8"
+          "215388f0-250e-437c-a355-3a5dcd8d9722"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205740Z:02ecf6ac-8e74-4b91-a5a0-328a846eede8"
+          "WESTUS:20191031T011244Z:215388f0-250e-437c-a355-3a5dcd8d9722"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3154,7 +3154,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:40 GMT"
+          "Thu, 31 Oct 2019 01:12:43 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3173,8 +3173,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3200,13 +3200,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "efa8416b-bf65-495e-8216-7318e197a0ae"
+          "bea08f2d-4ae6-4f60-8c7b-bd67a2d2ddd2"
         ],
         "x-ms-correlation-request-id": [
-          "efa8416b-bf65-495e-8216-7318e197a0ae"
+          "bea08f2d-4ae6-4f60-8c7b-bd67a2d2ddd2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205740Z:efa8416b-bf65-495e-8216-7318e197a0ae"
+          "WESTUS:20191031T011244Z:bea08f2d-4ae6-4f60-8c7b-bd67a2d2ddd2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3215,7 +3215,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:39 GMT"
+          "Thu, 31 Oct 2019 01:12:44 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3234,8 +3234,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3261,13 +3261,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "40ebfd2f-f88d-4cda-8bbc-94003227cb77"
+          "1ddc604c-3463-44ea-a736-085285eba573"
         ],
         "x-ms-correlation-request-id": [
-          "40ebfd2f-f88d-4cda-8bbc-94003227cb77"
+          "1ddc604c-3463-44ea-a736-085285eba573"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205740Z:40ebfd2f-f88d-4cda-8bbc-94003227cb77"
+          "WESTUS:20191031T011244Z:1ddc604c-3463-44ea-a736-085285eba573"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3276,7 +3276,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:40 GMT"
+          "Thu, 31 Oct 2019 01:12:44 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3295,8 +3295,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3322,13 +3322,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "fde73fdd-3697-4545-a031-e9e280713787"
+          "cc1689e6-0a96-4532-8afa-f3ae8f2df465"
         ],
         "x-ms-correlation-request-id": [
-          "fde73fdd-3697-4545-a031-e9e280713787"
+          "cc1689e6-0a96-4532-8afa-f3ae8f2df465"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205741Z:fde73fdd-3697-4545-a031-e9e280713787"
+          "WESTUS:20191031T011245Z:cc1689e6-0a96-4532-8afa-f3ae8f2df465"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3337,7 +3337,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:41 GMT"
+          "Thu, 31 Oct 2019 01:12:45 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3356,8 +3356,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3383,13 +3383,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "db081c3f-4cb7-44ce-9cfe-e44196cc6a06"
+          "11a310fe-ba22-495d-920b-0254c88e7bb3"
         ],
         "x-ms-correlation-request-id": [
-          "db081c3f-4cb7-44ce-9cfe-e44196cc6a06"
+          "11a310fe-ba22-495d-920b-0254c88e7bb3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205741Z:db081c3f-4cb7-44ce-9cfe-e44196cc6a06"
+          "WESTUS:20191031T011245Z:11a310fe-ba22-495d-920b-0254c88e7bb3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3398,7 +3398,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:40 GMT"
+          "Thu, 31 Oct 2019 01:12:45 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3417,8 +3417,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3444,13 +3444,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "ef2abf51-c1ab-4d10-917e-0f1c9a29838e"
+          "b056bdba-b5d8-47b3-9831-2b300c6b73a1"
         ],
         "x-ms-correlation-request-id": [
-          "ef2abf51-c1ab-4d10-917e-0f1c9a29838e"
+          "b056bdba-b5d8-47b3-9831-2b300c6b73a1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205741Z:ef2abf51-c1ab-4d10-917e-0f1c9a29838e"
+          "WESTUS:20191031T011245Z:b056bdba-b5d8-47b3-9831-2b300c6b73a1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3459,7 +3459,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:41 GMT"
+          "Thu, 31 Oct 2019 01:12:44 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3478,8 +3478,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3505,13 +3505,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "5df8e4b9-5e43-4c80-947d-ec6e539e934a"
+          "e2bb2ef6-e5bf-48fc-81b4-3778f02736d5"
         ],
         "x-ms-correlation-request-id": [
-          "5df8e4b9-5e43-4c80-947d-ec6e539e934a"
+          "e2bb2ef6-e5bf-48fc-81b4-3778f02736d5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205741Z:5df8e4b9-5e43-4c80-947d-ec6e539e934a"
+          "WESTUS:20191031T011245Z:e2bb2ef6-e5bf-48fc-81b4-3778f02736d5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3520,7 +3520,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:41 GMT"
+          "Thu, 31 Oct 2019 01:12:44 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3539,8 +3539,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3566,13 +3566,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "733ec221-1603-4b6b-b4b9-610e63f8b351"
+          "67b6abb6-f717-4806-9205-928678fcdcab"
         ],
         "x-ms-correlation-request-id": [
-          "733ec221-1603-4b6b-b4b9-610e63f8b351"
+          "67b6abb6-f717-4806-9205-928678fcdcab"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205741Z:733ec221-1603-4b6b-b4b9-610e63f8b351"
+          "WESTUS:20191031T011245Z:67b6abb6-f717-4806-9205-928678fcdcab"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3581,7 +3581,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:40 GMT"
+          "Thu, 31 Oct 2019 01:12:45 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3600,8 +3600,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3627,13 +3627,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "be47478f-d6fb-43ee-bd39-23d765573603"
+          "619dd1f1-7e2f-4ded-b4d4-1e21cc8e095c"
         ],
         "x-ms-correlation-request-id": [
-          "be47478f-d6fb-43ee-bd39-23d765573603"
+          "619dd1f1-7e2f-4ded-b4d4-1e21cc8e095c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205741Z:be47478f-d6fb-43ee-bd39-23d765573603"
+          "WESTUS:20191031T011245Z:619dd1f1-7e2f-4ded-b4d4-1e21cc8e095c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3642,7 +3642,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:41 GMT"
+          "Thu, 31 Oct 2019 01:12:45 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3661,8 +3661,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3688,13 +3688,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "d0d9cef1-9c34-408b-9d87-01223699e54b"
+          "be156802-0bdb-426e-aa38-515887219bc9"
         ],
         "x-ms-correlation-request-id": [
-          "d0d9cef1-9c34-408b-9d87-01223699e54b"
+          "be156802-0bdb-426e-aa38-515887219bc9"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205741Z:d0d9cef1-9c34-408b-9d87-01223699e54b"
+          "WESTUS:20191031T011246Z:be156802-0bdb-426e-aa38-515887219bc9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3703,7 +3703,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:41 GMT"
+          "Thu, 31 Oct 2019 01:12:45 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3722,8 +3722,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3749,13 +3749,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "c56011cb-5f46-412a-854f-cd1ed3540059"
+          "7e68cca2-3986-4f2c-b1b9-a8ddf6506c49"
         ],
         "x-ms-correlation-request-id": [
-          "c56011cb-5f46-412a-854f-cd1ed3540059"
+          "7e68cca2-3986-4f2c-b1b9-a8ddf6506c49"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205742Z:c56011cb-5f46-412a-854f-cd1ed3540059"
+          "WESTUS:20191031T011246Z:7e68cca2-3986-4f2c-b1b9-a8ddf6506c49"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3764,7 +3764,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:41 GMT"
+          "Thu, 31 Oct 2019 01:12:45 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3783,8 +3783,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3810,13 +3810,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "eec1d797-b851-4741-bf2d-0ad33e74a8db"
+          "a225c4d2-b192-4922-b34d-d84734547932"
         ],
         "x-ms-correlation-request-id": [
-          "eec1d797-b851-4741-bf2d-0ad33e74a8db"
+          "a225c4d2-b192-4922-b34d-d84734547932"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205742Z:eec1d797-b851-4741-bf2d-0ad33e74a8db"
+          "WESTUS:20191031T011246Z:a225c4d2-b192-4922-b34d-d84734547932"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3825,7 +3825,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:41 GMT"
+          "Thu, 31 Oct 2019 01:12:45 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3844,8 +3844,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3871,13 +3871,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "144cfd41-bc32-49fd-bcee-6cde50511c00"
+          "5a1be657-fbeb-40d6-bd48-733d5d26df6f"
         ],
         "x-ms-correlation-request-id": [
-          "144cfd41-bc32-49fd-bcee-6cde50511c00"
+          "5a1be657-fbeb-40d6-bd48-733d5d26df6f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205742Z:144cfd41-bc32-49fd-bcee-6cde50511c00"
+          "WESTUS:20191031T011246Z:5a1be657-fbeb-40d6-bd48-733d5d26df6f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3886,7 +3886,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:41 GMT"
+          "Thu, 31 Oct 2019 01:12:45 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3905,8 +3905,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3932,13 +3932,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "2a5ab229-103d-4db9-b25d-700e3d94e6c9"
+          "b7ee25aa-edaa-47b3-a349-1834cac4d0a6"
         ],
         "x-ms-correlation-request-id": [
-          "2a5ab229-103d-4db9-b25d-700e3d94e6c9"
+          "b7ee25aa-edaa-47b3-a349-1834cac4d0a6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205742Z:2a5ab229-103d-4db9-b25d-700e3d94e6c9"
+          "WESTUS:20191031T011246Z:b7ee25aa-edaa-47b3-a349-1834cac4d0a6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -3947,7 +3947,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:41 GMT"
+          "Thu, 31 Oct 2019 01:12:46 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3966,8 +3966,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3993,13 +3993,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "95252dbc-ac70-40e1-953a-7ca3f84ef4d0"
+          "89967086-cd31-44c2-8085-c6c272b846a7"
         ],
         "x-ms-correlation-request-id": [
-          "95252dbc-ac70-40e1-953a-7ca3f84ef4d0"
+          "89967086-cd31-44c2-8085-c6c272b846a7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205742Z:95252dbc-ac70-40e1-953a-7ca3f84ef4d0"
+          "WESTUS:20191031T011246Z:89967086-cd31-44c2-8085-c6c272b846a7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -4008,7 +4008,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:41 GMT"
+          "Thu, 31 Oct 2019 01:12:45 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -4027,8 +4027,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -4054,13 +4054,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "e317d0aa-4eee-457d-b6ec-8dbbe659e555"
+          "20b65210-74b4-4b69-ba85-26c8ba0b2de3"
         ],
         "x-ms-correlation-request-id": [
-          "e317d0aa-4eee-457d-b6ec-8dbbe659e555"
+          "20b65210-74b4-4b69-ba85-26c8ba0b2de3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205742Z:e317d0aa-4eee-457d-b6ec-8dbbe659e555"
+          "WESTUS:20191031T011246Z:20b65210-74b4-4b69-ba85-26c8ba0b2de3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -4069,7 +4069,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:42 GMT"
+          "Thu, 31 Oct 2019 01:12:46 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -4088,8 +4088,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/someId?api-version=2019-01-01",
-      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
+      "RequestUri": "/someId?api-version=2019-06-01",
+      "EncodedRequestUri": "L3NvbWVJZD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -4115,13 +4115,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "8d6db1e4-9e6f-4339-b8c1-0a5b7b64d976"
+          "64a9980d-7d58-4de9-bc8f-58055efd2e38"
         ],
         "x-ms-correlation-request-id": [
-          "8d6db1e4-9e6f-4339-b8c1-0a5b7b64d976"
+          "64a9980d-7d58-4de9-bc8f-58055efd2e38"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190715T205742Z:8d6db1e4-9e6f-4339-b8c1-0a5b7b64d976"
+          "WESTUS:20191031T011247Z:64a9980d-7d58-4de9-bc8f-58055efd2e38"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -4130,7 +4130,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 15 Jul 2019 20:57:42 GMT"
+          "Thu, 31 Oct 2019 01:12:46 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -4151,6 +4151,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "e78961ba-36fe-4739-9212-e3031b4c8db7"
+    "SubscriptionId": "0b40be06-04e8-4f70-abde-a502b2646fe8"
   }
 }

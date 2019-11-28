@@ -55,5 +55,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-BasicDataClassificationOnSqlManagedDatabase");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableDisableRecommendationsOnSqlDatabase()
+        {
+            RunPowerShellTest("Test-EnableDisableRecommendationsOnSqlDatabase");
+        }
     }
 }

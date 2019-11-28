@@ -73,8 +73,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// Gets or sets the Direct Peering Type
         /// </summary>
         [Parameter(
-            Mandatory = true,
-            Position = 1,
+            Mandatory = false,
             ParameterSetName = Constants.ParameterSetNameLocationByDirectType,
             HelpMessage = Constants.DirectPeeringTypeHelp)]
         [PSArgumentCompleter(Constants.Edge, Constants.Transit, Constants.CDN)]

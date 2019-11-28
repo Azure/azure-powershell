@@ -1,5 +1,8 @@
 # To version all modules in Az (standard release), run the following command: .\RunVersionController.ps1 -Release "December 2017"
 # To version a single module (one-off release), run the following command: .\RunVersionController.ps1 -ModuleName "Az.Compute"
+
+#Requires -Modules @{ModuleName="PowerShellGet"; ModuleVersion="2.2.1"}
+
 [CmdletBinding(DefaultParameterSetName="ReleaseAz")]
 Param(
     [Parameter(ParameterSetName='ReleaseAz', Mandatory = $true)]
@@ -151,16 +154,9 @@ function Update-ChangeLog
     ($Content + $ChangeLogContent) | Set-Content -Path $ChangeLogFile.FullName -Encoding UTF8
 }
 
-if (!(Test-Path "C:/Program Files/PowerShell/Modules/PowerShellGet"))
+function Get-ExistSerializedCmdletJsonFile
 {
-    try
-    {
-        Save-Module -Name PowerShellGet -Repository $GalleryName -Path "C:/Program Files/PowerShell/Modules" -ErrorAction Stop
-    }
-    catch
-    {
-        throw "Please rerun in Administrator mode."
-    }
+    return $(ls "$PSScriptRoot\Tools.Common\SerializedCmdlets").Name
 }
 
 switch ($PSCmdlet.ParameterSetName)
@@ -172,6 +168,38 @@ switch ($PSCmdlet.ParameterSetName)
 
     "ReleaseAz"
     {
+
+        # clean the unnecessary SerializedCmdlets json file
+        $ExistSerializedCmdletJsonFile = Get-ExistSerializedCmdletJsonFile
+        $ExpectJsonHashSet = @{}
+        $SrcPath = "..\src"
+        foreach ($ModuleName in $(Get-ChildItem $SrcPath -Directory).Name)
+        {
+            $ModulePath = $(Join-Path -Path $SrcPath -ChildPath $ModuleName)
+            $Psd1FileName = "Az.{0}.psd1" -f $ModuleName
+            $Psd1FilePath = $(Get-ChildItem $ModulePath -Depth 2 -Recurse -Filter $Psd1FileName)
+            if ($null -ne $Psd1FilePath)
+            {
+                $Psd1Object = Import-PowerShellDataFile $Psd1FilePath
+                if ($Psd1Object.ModuleVersion -ge "1.0.0")
+                {
+                    foreach ($NestedModule in $Psd1Object.NestedModules)
+                    {
+                        $JsonFile = $NestedModule.Replace(".\", "") + ".json"
+                        $ExpectJsonHashSet.Add($JsonFile, $true)
+                    }
+                }
+            }
+        }
+        foreach ($JsonFile in $ExistSerializedCmdletJsonFile)
+        {
+            $ModuleName = $JsonFile.Replace('Microsoft.Azure.PowerShell.Cmdlets.', '').Replace('.dll.json', '')
+            if (!$ExpectJsonHashSet.Contains($JsonFile))
+            {
+                Write-Host "Module ${ModuleName} is not GA yet. Remove the json file: ${JsonFile}." -ForegroundColor Red
+                rm $(Join-Path -Path "$PSScriptRoot\Tools.Common\SerializedCmdlets" -ChildPath $JsonFile)
+            }
+        }
         try
         {
             Install-Module Az -Repository $GalleryName -Force -AllowClobber

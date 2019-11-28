@@ -71,8 +71,8 @@ ResourceState                :
 Id                           :
 Name                         : {routingRuleName}
 Type                         :
-
 ```
+
 Create a PSRoutingRuleObject for Front Door creation
 
 ## PARAMETERS

@@ -19,9 +19,19 @@
 -->
 ## Upcoming Release
 * Update references in .psd1 to use relative path
+* Support generate Blob/Constainer Idenity based SAS token with Storage Context based on Oauth authentication
+    - New-AzStorageContainerSASToken
+    - New-AzStorageBlobSASToken
+* Support revoke Storage Account User Delegation Keys, so all Idenity SAS tokens are revoked
+    - Revoke-AzStorageAccountUserDelegationKeys
+
+## Version 1.9.0
 * Support enable Large File share when create or update Storage account
     -  New-AzStorageAccount
     -  Set-AzStorageAccount
+* When close/get File handle, skip check the input path is File directory or File, to avoid failure with object in DeletePending status
+    -  Get-AzStorageFileHandle
+    -  Close-AzStorageFileHandle
 
 ## Version 1.8.0
 * Upgrade Storage Client Library to 11.1.0
