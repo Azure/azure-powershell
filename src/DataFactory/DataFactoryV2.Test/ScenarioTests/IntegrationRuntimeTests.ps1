@@ -143,6 +143,33 @@ function Test-SsisAzure-IntegrationRuntime
         $secpasswd = ConvertTo-SecureString $catalogAdminPassword -AsPlainText -Force
         $mycreds = New-Object System.Management.Automation.PSCredential($catalogAdminUsername, $secpasswd)
 
+		# Prepare express custom setup
+		# Create setup for cmdkey
+		$targetName = 'fakeserver'
+		$userName = 'fakeuser'
+		$password = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString('fakepassword')
+		$setup1 = New-Object Microsoft.Azure.Management.DataFactory.Models.CmdkeySetup($targetName, $userName, $password)
+
+		# Create setup for environment variable
+		$variableName = 'name'
+		$variableValue = 'value'
+		$setup2 = New-Object Microsoft.Azure.Management.DataFactory.Models.EnvironmentVariableSetup($variableName, $variableValue)
+
+		# Create setup for 3rd party component without license Key
+		$componentName1 = 'componentName1'
+		$setup3 = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($componentName1)
+
+		# Create setup for 3rd party component with license Key
+		$componentName2 = 'componentName2'
+		$licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString('fakelicensekey')
+		$setup4 = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($componentName2, $licenseKey)
+
+		$setups = New-Object System.Collections.ArrayList
+		$setups.Add($setup1)
+		$setups.Add($setup2)
+		$setups.Add($setup3)
+		$setups.Add($setup4)
+
         $actual = Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $irname `
@@ -159,6 +186,7 @@ function Test-SsisAzure-IntegrationRuntime
             -Edition Enterprise `
             -DataProxyIntegrationRuntimeName $proxyIrName `
             -DataProxyStagingLinkedServiceName $lsname `
+            -ExpressCustomSetup $setups `
             -Force
 
         $expected = Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `

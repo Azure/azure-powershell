@@ -52,8 +52,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
         {
             this.Share = share ?? throw new ArgumentNullException("share");
             this.Id = share.Id;
-            this.StorageAccountName = GetStorageAccountCredentialAccountName(share.AzureContainerInfo
-                .StorageAccountCredentialId);
+            if (share.AzureContainerInfo != null)
+            {
+                this.StorageAccountName = GetStorageAccountCredentialAccountName(share.AzureContainerInfo
+                    .StorageAccountCredentialId);
+            }
+
             var resourceIdentifier = new DataBoxEdgeResourceIdentifier(share.Id);
             this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
             this.DeviceName = resourceIdentifier.DeviceName;

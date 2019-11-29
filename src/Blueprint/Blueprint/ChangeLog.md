@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Bug Fix: File/folder names should be platform agnostic for Export/Import cmdlets
 
 ## Version 0.2.7
 * Bug Fix: Use user assigned identity defined in the assignment file instead of cmdlet parameter during blueprint assignment (Set- cmdlet).

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Remove subdomain and resource name checks for create new IotCentral application, it will be handled by resource provider for idempotent
 
 ## Version 0.7.1
 * Added subdomain parameter to Set-AzureRmIoTCentralApp for updating subdomain

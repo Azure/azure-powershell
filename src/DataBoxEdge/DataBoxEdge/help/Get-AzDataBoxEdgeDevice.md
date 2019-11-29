@@ -25,17 +25,26 @@ Get-AzDataBoxEdgeDevice -ResourceId <String> [-DefaultProfile <IAzureContextCont
 
 ### GetExtendedInfoByResourceIdParameterSet
 ```
-Get-AzDataBoxEdgeDevice -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataBoxEdgeDevice -ResourceId <String> [-ExtendedInfo] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetNetworkSettingByResourceIdParameterSet
 ```
-Get-AzDataBoxEdgeDevice -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataBoxEdgeDevice -ResourceId <String> [-NetworkSetting] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetSummaryUpdateByResourceIdParameterSet
 ```
-Get-AzDataBoxEdgeDevice -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataBoxEdgeDevice -ResourceId <String> [-UpdateSummary] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### GetAlertByResourceIdParameterSet
+```
+Get-AzDataBoxEdgeDevice -ResourceId <String> [-Alert] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByNameParameterSet
@@ -62,6 +71,12 @@ Get-AzDataBoxEdgeDevice [-ResourceGroupName] <String> [-Name] <String> [-Extende
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### GetAlertParameterSet
+```
+Get-AzDataBoxEdgeDevice [-ResourceGroupName] <String> [-Name] <String> [-Alert]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzDataBoxEdgeDevice** cmdlet gets information about Devices.
 If you specify the Name of the Device along with the resource group name, this cmdlet gets information about that specific Device
@@ -79,6 +94,21 @@ device-name-3      DataBoxEdgeDevice resource-grp-3    eastus
 ```
 
 ## PARAMETERS
+
+### -Alert
+Fetch the alerts for the data box edge/gateway device
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: GetAlertByResourceIdParameterSet, GetAlertParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -100,7 +130,7 @@ Resource Group Name
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: GetExtendedInfoParameterSet
+Parameter Sets: GetExtendedInfoByResourceIdParameterSet, GetExtendedInfoParameterSet
 Aliases:
 
 Required: True
@@ -116,7 +146,7 @@ Device Name
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet, GetSummaryUpdateParameterSet, GetNetworkSettingParameterSet, GetExtendedInfoParameterSet
+Parameter Sets: GetByNameParameterSet, GetSummaryUpdateParameterSet, GetNetworkSettingParameterSet, GetExtendedInfoParameterSet, GetAlertParameterSet
 Aliases:
 
 Required: True
@@ -131,7 +161,7 @@ Resource Group Name
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: GetNetworkSettingParameterSet
+Parameter Sets: GetNetworkSettingByResourceIdParameterSet, GetNetworkSettingParameterSet
 Aliases:
 
 Required: True
@@ -159,7 +189,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet, GetSummaryUpdateParameterSet, GetNetworkSettingParameterSet, GetExtendedInfoParameterSet
+Parameter Sets: GetByNameParameterSet, GetSummaryUpdateParameterSet, GetNetworkSettingParameterSet, GetExtendedInfoParameterSet, GetAlertParameterSet
 Aliases:
 
 Required: True
@@ -174,7 +204,7 @@ Azure Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByResourceIdParameterSet, GetExtendedInfoByResourceIdParameterSet, GetNetworkSettingByResourceIdParameterSet, GetSummaryUpdateByResourceIdParameterSet
+Parameter Sets: GetByResourceIdParameterSet, GetExtendedInfoByResourceIdParameterSet, GetNetworkSettingByResourceIdParameterSet, GetSummaryUpdateByResourceIdParameterSet, GetAlertByResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -189,7 +219,7 @@ Resource Group Name
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: GetSummaryUpdateParameterSet
+Parameter Sets: GetSummaryUpdateByResourceIdParameterSet, GetSummaryUpdateParameterSet
 Aliases:
 
 Required: True
