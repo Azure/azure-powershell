@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.8.0
 * Add billing plan details in getCatalog
 	- new object in the response of get-Catalog
 * Add new Api CalculatePrice
