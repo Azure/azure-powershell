@@ -263,9 +263,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Update references in .psd1 to use relative path
-* Added SoftDelete feature for VM and added tests for softdelete
-* Azure Site Recovery support for Azure Disk Encryption One Pass for Azure to Azure.'
+        ReleaseNotes = '* Azure Backup added support for enabling and disabling soft delete feature for Recovery Services Vault.'
 
         # Prerelease string of this module
         # Prerelease = ''

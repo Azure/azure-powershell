@@ -22,6 +22,8 @@
 ## Version 2.2.0
 * Update references in .psd1 to use relative path
 * Azure Site Recovery support for Azure Disk Encryption One Pass for Azure to Azure.
+
+## Version 2.2.0
 * Azure Backup added support for enabling and disabling soft delete feature for Recovery Services Vault.
 
 ## Version 2.1.0
