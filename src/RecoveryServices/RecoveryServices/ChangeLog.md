@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.0
 * Azure Backup added support for enabling and disabling soft delete feature for Recovery Services Vault.
 
 ## Version 2.1.0
