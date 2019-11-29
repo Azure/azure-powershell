@@ -204,15 +204,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Support DataLake Gen2 
-    -  New-AzDataLakeGen2Item
-    -  Get-AzDataLakeGen2Item
-    -  Get-AzDataLakeGen2ChildItem
-    -  Move-AzDataLakeGen2Item
-    -  New-AzDataLakeGen2ItemAclObject
-    -  Update-AzDataLakeGen2Item
-    -  Get-AzDataLakeGen2ItemContent
-    -  Remove-AzDataLakeGen2Item'
+        ReleaseNotes = '* Support generate Blob/Constainer Idenity based SAS token with Storage Context based on Oauth authentication
+    - New-AzStorageContainerSASToken
+    - New-AzStorageBlobSASToken
+* Support revoke Storage Account User Delegation Keys, so all Idenity SAS tokens are revoked
+    - Revoke-AzStorageAccountUserDelegationKeys'
 
         # Prerelease string of this module
         Prerelease = 'preview'

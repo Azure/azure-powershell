@@ -12,25 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Helpers;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.Azure.Commands.FrontDoor.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.FrontDoor;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Collections;
 using System.Linq;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
     /// Defines the New-AzFrontDoor cmdlet.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor", SupportsShouldProcess = true), OutputType(typeof(PSFrontDoor))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor", DefaultParameterSetName = FieldsWithBackendPoolsSettingParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFrontDoor))]
     public class NewAzureRmFrontDoor : AzureFrontDoorCmdletBase
     {
         /// <summary>
@@ -92,8 +89,16 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
+        [Parameter(ParameterSetName = FieldsWithCertificateNameCheckParameterSet,
+            Mandatory = false, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
         public SwitchParameter DisableCertificateNameCheck { get; set; }
+
+        /// <summary>
+        /// Settings for all backendPools
+        /// </summary>
+        [Parameter(ParameterSetName = FieldsWithBackendPoolsSettingParameterSet,
+            Mandatory = false, HelpMessage = "Settings for all backendPools")]
+        public PSBackendPoolsSetting BackendPoolsSetting { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -106,6 +111,23 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                                 Name,
                                 ResourceGroupName));
             }
+
+            Management.FrontDoor.Models.BackendPoolsSettings backendPoolsSettings;
+            switch (ParameterSetName)
+            {
+                case FieldsWithCertificateNameCheckParameterSet:
+                {
+                    backendPoolsSettings = new Management.FrontDoor.Models.BackendPoolsSettings(
+                            DisableCertificateNameCheck ? PSEnforceCertificateNameCheck.Disabled.ToString() : PSEnforceCertificateNameCheck.Enabled.ToString());
+                    break;
+                }
+                default:
+                {
+                    backendPoolsSettings = BackendPoolsSetting?.ToSdkBackendPoolsSettings();
+                    break;
+                }
+            }
+
             var updateParameters = new Management.FrontDoor.Models.FrontDoorModel(
                     id: null,
                     name: Name,
@@ -118,11 +140,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                     healthProbeSettings: HealthProbeSetting?.Select(x => x.ToSdkHealthProbeSetting()).ToList(),
                     backendPools: BackendPool?.Select(x => x.ToSdkBackendPool()).ToList(),
                     frontendEndpoints: FrontendEndpoint?.Select(x => x.ToSdkFrontendEndpoints()).ToList(),
-                    enabledState: !this.IsParameterBound(c => c.EnabledState)? "Enabled" : EnabledState.ToString(),
-                    backendPoolsSettings : new Management.FrontDoor.Models.BackendPoolsSettings(
-                        DisableCertificateNameCheck ? PSEnforceCertificateNameCheck.Disabled.ToString() : PSEnforceCertificateNameCheck.Enabled.ToString())
+                    enabledState: !this.IsParameterBound(c => c.EnabledState) ? "Enabled" : EnabledState.ToString(),
+                    backendPoolsSettings: backendPoolsSettings
                     );
+
             updateParameters.ToPSFrontDoor().ValidateFrontDoor(ResourceGroupName, this.DefaultContext.Subscription.Id);
+
             if (ShouldProcess(Resources.FrontDoorTarget, string.Format(Resources.CreateFrontDoor, Name)))
             {
                 try

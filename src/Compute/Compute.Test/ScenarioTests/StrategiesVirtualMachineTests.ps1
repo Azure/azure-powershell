@@ -600,3 +600,39 @@ function Test-SimpleNewVmBilling
         Clean-ResourceGroup $vmname
     }
 }
+
+<#
+.SYNOPSIS
+Testing creating VM with a shared gallery image from a different subscription.
+#>
+function Test-SimpleGalleryCrossTenant
+{
+    # Setup
+    # In order to record this test, please use another subscription to create a gallery image and share the image to the test subscription.  And then set the gallery image id here.
+    $imageId = "/subscriptions/97f78232-382b-46a7-8a72-964d692c4f3f/resourceGroups/xwRg/providers/Microsoft.Compute/galleries/galleryForCirrus/images/xwGalleryImageForCirrusWindows/versions/1.0.0";
+
+    $vmname = Get-ComputeTestResourceName;
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+
+        # OS & Image
+        $user = "Foo12";
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $password);
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+
+        # Virtual Machine
+        New-AzVM -Name $vmname -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -ImageName $imageId
+
+        $vm = Get-AzVM -ResourceGroupName $vmname -Name $vmname;
+        Assert-AreEqual $imageId $vm.StorageProfile.ImageReference.Id;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}

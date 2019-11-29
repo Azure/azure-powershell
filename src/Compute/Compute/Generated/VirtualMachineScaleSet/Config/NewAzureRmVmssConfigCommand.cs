@@ -105,6 +105,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public VirtualMachineScaleSetExtension[] Extension { get; set; }
 
         [Parameter(
+            Mandatory = false)]
+        public SwitchParameter SkipExtensionsOnOverprovisionedVMs { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public bool? SinglePlacementGroup { get; set; }
@@ -149,6 +153,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public RollingUpgradePolicy RollingUpgradePolicy { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter EnableAutomaticRepair { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string AutomaticRepairGracePeriod { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public int AutomaticRepairMaxInstanceRepairsPercent { get; set; }
+
+        [Parameter(
             Mandatory = false)]
         public SwitchParameter AutoOSUpgrade { get; set; }
 
@@ -179,6 +198,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("Regular", "Low", "Spot")]
         public string Priority { get; set; }
 
         [Parameter(
@@ -352,6 +372,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vUpgradePolicy.AutomaticOSUpgradePolicy = new AutomaticOSUpgradePolicy();
             }
             vUpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = this.AutoOSUpgrade.IsPresent;
+
+            if (vAutomaticRepairsPolicy == null)
+            {
+                vAutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+            }
+            vAutomaticRepairsPolicy.Enabled = this.EnableAutomaticRepair.IsPresent;
+
+            if (this.IsParameterBound(c => c.AutomaticRepairGracePeriod))
+            {
+                if (vAutomaticRepairsPolicy == null)
+                {
+                    vAutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                }
+                vAutomaticRepairsPolicy.GracePeriod = this.AutomaticRepairGracePeriod;
+            }
+
+            if (this.IsParameterBound(c => c.AutomaticRepairMaxInstanceRepairsPercent))
+            {
+                if (vAutomaticRepairsPolicy == null)
+                {
+                    vAutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                }
+                vAutomaticRepairsPolicy.MaxInstanceRepairsPercent = this.AutomaticRepairMaxInstanceRepairsPercent;
+            }
 
             if (this.IsParameterBound(c => c.DisableAutoRollback))
             {
@@ -576,6 +620,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {
                 Overprovision = this.IsParameterBound(c => c.Overprovision) ? this.Overprovision : (bool?)null,
+                DoNotRunExtensionsOnOverprovisionedVMs = this.SkipExtensionsOnOverprovisionedVMs.IsPresent ? true : (bool?)null,
                 SinglePlacementGroup = this.IsParameterBound(c => c.SinglePlacementGroup) ? this.SinglePlacementGroup : (bool?)null,
                 ZoneBalance = this.ZoneBalance.IsPresent ? true : (bool?)null,
                 PlatformFaultDomainCount = this.IsParameterBound(c => c.PlatformFaultDomainCount) ? this.PlatformFaultDomainCount : (int?)null,
