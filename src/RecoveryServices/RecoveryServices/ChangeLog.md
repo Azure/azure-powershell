@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Azure Backup added support for enabling and disabling soft delete feature for Recovery Services Vault.
 
 ## Version 2.1.0
 
@@ -25,7 +26,7 @@
 * Azure Site Recovery bug fix for recovery plan action edit.
 * Azure Backup SQL Restore support to accept filestream DBs.
 * Azure Backup updated SDK version.
-* Azure Backup added support for enabling and disabling soft delete feature for Recovery Services Vault.
+
 
 ## Version 2.0.1
 
