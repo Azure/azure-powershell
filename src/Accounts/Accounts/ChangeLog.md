@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Set correct UserAgent for client-side telemetry for Az 4.0 preview
 
 ## Version 1.6.4
 * Add a deprecation message for `Resolve-Error` alias.
