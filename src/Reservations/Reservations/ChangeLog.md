@@ -25,3 +25,5 @@
 	- new Api for calculate ReservationOrder price
 * Add new Api Purchase
 	- new Api for Purchase ReservationOrder in powershell
+
+## Version 0.7.1
