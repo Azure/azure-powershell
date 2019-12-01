@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Add support for assigning management IP configuration to Azure Firewall - a dedicated subnet and Public IP that the firewall will use for its management traffic
+    - Updated New-AzFirewall cmdlet:
+        - Added parameter -ManagementPublicIpAddress (not mandatory) which accepts a Public IP Address object
+        - Added method SetManagementIpConfiguration on firewall object - requires a subnet and a Public IP address as input - subnet name must be "AzureFirewallManagementSubnet"
 
 ## Version 2.1.0
 * Change `Start-AzVirtualNetworkGatewayConnectionPacketCapture.md` and `Start-AzVirtualnetworkGatewayPacketCapture.md` FilterData option examples.
