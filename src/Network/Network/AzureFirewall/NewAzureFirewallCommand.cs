@@ -109,6 +109,14 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "IpConfigurationParameterValues",
+            HelpMessage = "One or more Public IP Addresses to use for management traffic. The Public IP addresses must use Standard SKU and must belong to the same resource group as the Firewall.")]
+        [ValidateNotNullOrEmpty]
+        public PSPublicIpAddress ManagementPublicIpAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of AzureFirewallApplicationRuleCollections")]
         public PSAzureFirewallApplicationRuleCollection[] ApplicationRuleCollection { get; set; }
 
@@ -279,7 +287,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (this.virtualNetwork != null)
                 {
-                    firewall.Allocate(this.virtualNetwork, this.publicIpAddresses);
+                    firewall.Allocate(this.virtualNetwork, this.publicIpAddresses, this.ManagementPublicIpAddress);
                 }
             }
 

@@ -26,12 +26,16 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSAzureFirewall : PSTopLevelResource
     {
         private const string AzureFirewallSubnetName = "AzureFirewallSubnet";
+        private const string AzureFirewallMgmtSubnetName = "AzureFirewallManagementSubnet";
+        private const string AzureFirewallMgmtIpConfigurationName = "AzureFirewallIpConfiguration";
         private const string AzureFirewallIpConfigurationName = "AzureFirewallIpConfiguration";
         private const string IANAPrivateRanges = "IANAPrivateRanges";
 
         private string[] privateRange;
 
         public List<PSAzureFirewallIpConfiguration> IpConfigurations { get; set; }
+
+        public PSAzureFirewallIpConfiguration ManagementIpConfiguration { get; set; }
 
         public List<PSAzureFirewallApplicationRuleCollection> ApplicationRuleCollections { get; set; }
 
@@ -73,6 +77,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+        public string ManagementIpConfigurationText
+        {
+            get { return JsonConvert.SerializeObject(ManagementIpConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
         public string ApplicationRuleCollectionsText
         {
             get { return JsonConvert.SerializeObject(ApplicationRuleCollections, Formatting.Indented); }
@@ -104,7 +114,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         #region Ip Configuration Operations
 
-        public void Allocate(PSVirtualNetwork virtualNetwork, PSPublicIpAddress[] publicIpAddresses)
+        public void Allocate(PSVirtualNetwork virtualNetwork, PSPublicIpAddress[] publicIpAddresses, PSPublicIpAddress ManagementPublicIpAddress)
         {
             if (virtualNetwork == null)
             {
@@ -126,6 +136,26 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentException($"Virtual Network {virtualNetwork.Name} should contain a Subnet named {AzureFirewallSubnetName}");
             }
 
+            PSSubnet firewallMgmtSubnet = null;
+            if (ManagementPublicIpAddress != null)
+            {
+                try
+                {
+                    firewallMgmtSubnet = virtualNetwork.Subnets.Single(subnet => AzureFirewallMgmtSubnetName.Equals(subnet.Name));
+                }
+                catch (InvalidOperationException)
+                {
+                    throw new ArgumentException($"Virtual Network {virtualNetwork.Name} should contain a Subnet named {AzureFirewallMgmtSubnetName}");
+                }
+
+                this.ManagementIpConfiguration = new PSAzureFirewallIpConfiguration
+                    {
+                        Name = AzureFirewallMgmtIpConfigurationName,
+                        PublicIpAddress = new PSResourceId { Id = ManagementPublicIpAddress.Id },
+                        Subnet = new PSResourceId { Id = firewallMgmtSubnet.Id }
+                    };
+            }
+
             this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
 
             for (var i = 0; i < publicIpAddresses.Count(); i++)
@@ -144,6 +174,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public void Deallocate()
         {
             this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
+            this.ManagementIpConfiguration = new PSAzureFirewallIpConfiguration();
         }
 
         public void AddPublicIpAddress(PSPublicIpAddress publicIpAddress)
@@ -176,6 +207,36 @@ namespace Microsoft.Azure.Commands.Network.Models
                 });
         }
 
+        public void SetManagementIpConfiguration(PSVirtualNetwork virtualNetwork, PSPublicIpAddress publicIpAddress)
+        {
+            if (publicIpAddress == null)
+            {
+                throw new ArgumentNullException(nameof(publicIpAddress), "Public IP Address cannot be null!");
+            }
+
+            if (virtualNetwork == null)
+            {
+                throw new ArgumentNullException(nameof(virtualNetwork), "Virtual Network cannot be null!");
+            }
+
+            PSSubnet subnet = null;
+            try
+            {
+                subnet = virtualNetwork.Subnets.Single(mgmtSubnet => AzureFirewallMgmtSubnetName.Equals(subnet.Name));
+            }
+            catch (InvalidOperationException)
+            {
+                throw new ArgumentException($"Virtual Network {virtualNetwork.Name} should contain a Subnet named {AzureFirewallMgmtSubnetName}");
+            }
+            
+            this.ManagementIpConfiguration = new PSAzureFirewallIpConfiguration
+            {
+                Name = AzureFirewallMgmtIpConfigurationName,
+                PublicIpAddress = new PSResourceId { Id = publicIpAddress.Id },
+                Subnet = new PSResourceId { Id = subnet.Id }
+            };
+        }
+
         public void RemovePublicIpAddress(PSPublicIpAddress publicIpAddress)
         {
             if (publicIpAddress == null)
@@ -196,6 +257,8 @@ namespace Microsoft.Azure.Commands.Network.Models
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"WARNING: Removing the last Public IP Address, this will deallocate the firewall. You will have to invoke {nameof(Allocate)} to reallocate it.");
                 Console.ResetColor();
+
+                this.ManagementIpConfiguration = new PSAzureFirewallIpConfiguration();
             }
 
             this.IpConfigurations.Remove(ipConfigToRemove);
