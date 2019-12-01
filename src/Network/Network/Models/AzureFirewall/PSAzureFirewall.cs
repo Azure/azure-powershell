@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         #region Ip Configuration Operations
 
-        public void Allocate(PSVirtualNetwork virtualNetwork, PSPublicIpAddress[] publicIpAddresses, PSPublicIpAddress ManagementPublicIpAddress)
+        public void Allocate(PSVirtualNetwork virtualNetwork, PSPublicIpAddress[] publicIpAddresses, PSPublicIpAddress ManagementPublicIpAddress = null)
         {
             if (virtualNetwork == null)
             {
