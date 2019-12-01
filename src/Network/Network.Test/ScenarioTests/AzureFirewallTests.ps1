@@ -993,6 +993,123 @@ function Test-AzureFirewallPIPAndVNETObjectTypeParams {
     }
 }
 
+function Test-AzureFirewallCRUDwithManagementIpConfig {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+	$mgmtSubnetName = "AzureFirewallManagementSubnet"
+    $publicIp1Name = Get-ResourceName
+    $mgmtPublicIpName = Get-ResourceName
+	$mgmtPublicIp2Name = Get-ResourceName
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+		$mgmtSubnet = New-AzVirtualNetworkSubnetConfig -Name $mgmtSubnetName AddressPrefix 10.0.100.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet,$mgmtSubnet
+        
+		# Get full subnet details
+        $subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $subnetName
+		$mgmtSubnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $mgmtSubnetName
+
+        # Create public ips
+        $publicip1 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIp1Name -location $location -AllocationMethod Static -Sku Standard
+        $mgmtPublicIp = New-AzPublicIpAddress -ResourceGroupName $rgname -name $mgmtPublicIpName -location $location -AllocationMethod Static -Sku Standard
+		$mgmtPublicIp2 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $mgmtPublicIp2Name -location $location -AllocationMethod Static -Sku Standard
+
+        # Create AzureFirewall with a management IP
+        $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip1 -ManagementPublicIpAddress $mgmtPublicIp
+
+        # Get AzureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+
+        #verification
+        Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
+        Assert-AreEqual $azureFirewallName $getAzureFirewall.Name
+        Assert-NotNull $getAzureFirewall.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewall.Location
+        Assert-NotNull $getAzureFirewall.Etag
+        Assert-AreEqual 1 @($getAzureFirewall.IpConfigurations).Count
+        Assert-NotNull $getAzureFirewall.IpConfigurations[0].Subnet.Id
+        Assert-NotNull $getAzureFirewall.IpConfigurations[0].PublicIpAddress.Id
+        Assert-NotNull $getAzureFirewall.IpConfigurations[0].PrivateIpAddress
+        Assert-AreEqual $subnet.Id $getAzureFirewall.IpConfigurations[0].Subnet.Id
+        Assert-AreEqual $publicip1.Id $getAzureFirewall.IpConfigurations[0].PublicIpAddress.Id
+		Assert-NotNull $getAzureFirewall.ManagementIpConfiguration
+		Assert-NotNull $getAzureFirewall.ManagementIpConfiguration.Subnet.Id
+        Assert-NotNull $getAzureFirewall.ManagementIpConfiguration.PublicIpAddress.Id
+        Assert-NotNull $getAzureFirewall.ManagementIpConfiguration.PrivateIpAddress
+        Assert-AreEqual $mgmtSubnet.Id $getAzureFirewall.ManagementIpConfiguration.Subnet.Id
+        Assert-AreEqual $mgmtPublicIp.Id $getAzureFirewall.ManagementIpConfiguration.PublicIpAddress.Id
+
+
+        # Test handling of incorrect values when adding public IP address
+        Assert-ThrowsContains { $getAzureFirewall.AddPublicIpAddress() } "Cannot find an overload"
+        Assert-ThrowsContains { $getAzureFirewall.AddPublicIpAddress($null) } "Public IP Address cannot be null"
+        Assert-ThrowsContains { $getAzureFirewall.AddPublicIpAddress("ABCD") } "Cannot convert argument"
+        Assert-ThrowsContains { $getAzureFirewall.AddPublicIpAddress($publicip1) } "already attached to firewall"
+
+		# Test handling of incorrect values when setting management IP configuration
+		Assert-ThrowsContains { $getAzureFirewall.SetManagementIpConfiguration() } "Cannot find an overload"
+		Assert-ThrowsContains { $getAzureFirewall.SetManagementIpConfiguration($null) } "Cannot find an overload"
+		Assert-ThrowsContains { $getAzureFirewall.SetManagementIpConfiguration($null, $mgmtPublicIp) } "Virtual Network cannot be null"
+		Assert-ThrowsContains { $getAzureFirewall.SetManagementIpConfiguration("ABCD", "ABCDE" } "Cannot convert argument"
+
+
+        # Test handling of incorrect values when removing public IP Address
+        Assert-ThrowsContains { $getAzureFirewall.RemovePublicIpAddress() } "Cannot find an overload"
+        Assert-ThrowsContains { $getAzureFirewall.RemovePublicIpAddress($null) } "Public IP Address cannot be null"
+        Assert-ThrowsContains { $getAzureFirewall.RemovePublicIpAddress("ABCD") } "Cannot convert argument"
+        Assert-ThrowsContains { $getAzureFirewall.RemovePublicIpAddress($publicip2) } "not attached to firewall"
+
+        # Change management public IP address
+        $getAzureFirewall.SetManagementIpConfiguration($vnet, $mgmtPublicIp2)
+
+        # Set AzureFirewall
+        Set-AzFirewall -AzureFirewall $getAzureFirewall
+
+        # Get AzureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgName
+
+        #verification
+        Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
+        Assert-AreEqual $azureFirewallName $getAzureFirewall.Name
+        Assert-NotNull $getAzureFirewall.Location
+        Assert-AreEqual $location $getAzureFirewall.Location
+        Assert-NotNull $getAzureFirewall.Etag
+
+        Assert-NotNull $getAzureFirewall.ManagementIpConfiguration
+        Assert-NotNull $getAzureFirewall.ManagementIpConfiguration.Subnet.Id
+        Assert-NotNull $getAzureFirewall.ManagementIpConfiguration.PublicIpAddress.Id
+        Assert-NotNull $getAzureFirewall.ManagementIpConfiguration.PrivateIpAddress
+        Assert-AreEqual $mgmtSubnet.Id $getAzureFirewall.ManagementIpConfiguration.Subnet.Id
+        Assert-AreEqual $mgmtPublicIp2.Id $getAzureFirewall.ManagementIpConfiguration.PublicIpAddress.Id
+
+        # Delete AzureFirewall
+        $delete = Remove-AzFirewall -ResourceGroupName $rgname -name $azureFirewallName -PassThru -Force
+        Assert-AreEqual true $delete
+
+        # Delete VirtualNetwork 
+        $delete = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
+        Assert-AreEqual true $delete
+
+        $list = Get-AzFirewall -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 <#
 .SYNOPSIS
 Tests AzureFirewall Set and Remove IpConfiguration
