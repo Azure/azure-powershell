@@ -102,6 +102,19 @@ $azFw | Set-AzFirewall
 
 In this example, the Public IP Address "azFwPublicIp1" as detached from the Firewall.
 
+### 7:	Set management subnet and public IP address on an Azure Firewall
+```
+$mgmtPip = Get-AzPublicIpAddress -Name "managementPublicIp1" -ResourceGroupName "rg"
+$vnet = Get-AzVirtualNetwork -ResourceGroupName "rg" -Name anotherVNetName
+$azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
+
+$azFw | Set-AzFirewall
+```
+
+In this example, the subnet "AzureFirewallManagementSubnet" and the Public IP address ""managementPublicIp1" will be attached to the firewall.
+For forced tunneling scenarios, this subnet and IP address will be used by the firewall for management traffic.
+
+
 ## PARAMETERS
 
 ### -AsJob
@@ -180,7 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
