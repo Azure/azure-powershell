@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         private const string AzureFirewallSubnetName = "AzureFirewallSubnet";
         private const string AzureFirewallMgmtSubnetName = "AzureFirewallManagementSubnet";
-        private const string AzureFirewallMgmtIpConfigurationName = "AzureFirewallIpConfiguration";
+        private const string AzureFirewallMgmtIpConfigurationName = "AzureFirewallMgmtIpConfiguration";
         private const string AzureFirewallIpConfigurationName = "AzureFirewallIpConfiguration";
         private const string IANAPrivateRanges = "IANAPrivateRanges";
 
