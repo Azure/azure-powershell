@@ -423,4 +423,7 @@
   <data name="InvalidFilePath" xml:space="preserve">
     <value>The provided file {0} doesn't exist</value>
   </data>
+  <data name="NoSubscriptionsUnderCurrentDirectory" xml:space="preserve">
+    <value>No subscriptions can be found under current directory. Please login again using Connect-AzAccount.</value>
+  </data>
 </root>

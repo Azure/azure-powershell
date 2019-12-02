@@ -18,8 +18,20 @@
         - Additional information about change #1
 -->
 
+
 ## Upcoming Release
 
+## Version 1.0.0
+* Added cmdlet `Get-AzDataBoxEdgeOrder`
+ - Get the Order
+* Added cmdlet `New-AzDataBoxEdgeOrder`
+ - Create new Order
+* Added cmdlet `Remove-AzDataBoxEdgeOrder`
+ - Remove the Order
+* Change in cmdlet `New-AzDataBoxEdgeShare`
+ - Now creates Local Share
+* Added cmdlet `Set-AzDataBoxEdgeRole`
+ - Now IotRole can be mapped to Share
 * Added cmdlet `Invoke-AzDataBoxEdgeDevice`
  - Invoke scan update, download update, install updates on the device
 * Added cmdlet `Get-AzDataBoxEdgeTrigger`
@@ -28,6 +40,7 @@
  - Create new Triggers
 * Added cmdlet `Remove-AzDataBoxEdgeTrigger`
  - Remove the Triggers
+
 
 ## Version 0.1.1
 

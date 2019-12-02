@@ -31,13 +31,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
             ")";
 
         internal const string SetClientAccessRightsHelpMessage = @"Read/Write Access for clientIds, For ex:" +
-            "@(" +
-            "@{\"ClientId\"=\"192.168.10.10\";\"AccessRight\"=\"NoAccess\"}, " +
-            "@{\"ClientId\"=\"192.168.10.11\";\"AccessRight\"=\"ReadOnly\"}" +
-            ")";
+                                                                 "@(" +
+                                                                 "@{\"ClientId\"=\"192.168.10.10\";\"AccessRight\"=\"NoAccess\"}, " +
+                                                                 "@{\"ClientId\"=\"192.168.10.11\";\"AccessRight\"=\"ReadOnly\"}" +
+                                                                 ")";
 
         internal const string NameHelpMessage = "Name of the Share";
         internal const string DataFormatHelpMessage = "Set Data Format ex: PageBlob, BlobBlob";
         internal const string ObjectName = "Share";
+
+        internal const string LocalShareException =
+            "StorageAccountCredential cannot be empty while creating Cloud Share. " +
+            "\nIf you are trying to create local share please use switch parameter -";
+
+        internal const string BothUseException =
+            "StorageAccountCredential cannot be empty while creating Cloud Share. " +
+            "\nIf you are trying to create local share please use switch parameter -";
+
+        internal const string ContainerName =
+            "If provided, will use the same container name in the storage account, " +
+            "if container is not present it will create a new one";
+
+
     }
 }

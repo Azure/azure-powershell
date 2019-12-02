@@ -12,10 +12,11 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$containerName = "pstestwlvm1bca8"
+$containerName = "psbvtsqlvm"
 $resourceGroupName = "pstestwlRG1bca8"
 $vaultName = "pstestwlRSV1bca8"
-$resourceId = "/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/pstestwlRG1bca8/providers/Microsoft.Compute/virtualMachines/pstestwlvm1bca8"
+$resourceId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pscloudtestrg/providers/Microsoft.Compute/virtualMachines/psbvtsqlvm"
+$resourceIdForFileDB = "/subscriptions/f879818f-5b29-4a43-8961-34169783144f/resourceGroups/psbvtrg/providers/Microsoft.Compute/virtualMachines/psbvtsqlvm"
 $policyName = "HourlyLogBackup"
 $instanceName = "sqlinstance;mssqlserver"
 
@@ -229,7 +230,7 @@ function Test-AzureVmWorkloadEnableAutoProtectableItem
 			-Container $container `
 			-WorkloadType MSSQL;
 		
-		Assert-True { $items.Count -eq 4 }
+		Assert-True { $items.Count -eq 1 }
 
 		foreach($protectedItem in $items)
 		{
@@ -530,5 +531,75 @@ function Test-AzureVmWorkloadFullRestore
 	finally
 	{
 		Cleanup-Vault $vault $item $container
+	}
+}
+
+function Test-AzureVmWorkloadFullRestoreWithFiles
+{
+	try
+	{
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName "psbvtrg" -Name "pssqlbvtvault"
+		$container = Register-AzRecoveryServicesBackupContainer `
+			-ResourceId $resourceIdForFileDB `
+			-BackupManagementType AzureWorkload `
+			-WorkloadType MSSQL `
+			-VaultId $vault.ID `
+			-Force
+
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $policyName
+
+		$protectableItems = Get-AzRecoveryServicesBackupProtectableItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType "MSSQL" `
+			-ItemType "SQLDataBase";
+
+		$protectableInstances = Get-AzRecoveryServicesBackupProtectableItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType "MSSQL" `
+			-ItemType "SQLInstance";
+
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-ProtectableItem $protectableItems[4];
+
+		$item = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType MSSQL;
+
+		$backupJob = Backup-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Item $item[0] `
+			-BackupType "Full" | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
+		$backupEndTime = $backupJob.EndTime.AddMinutes(1);
+
+		$recoveryPoint = Get-AzRecoveryServicesBackupRecoveryPoint `
+			-VaultId $vault.ID `
+			-StartDate $backupStartTime `
+			-EndDate $backupEndTime `
+			-Item $item;
+
+		$restoreJob1 = Get-AzRecoveryServicesBackupRecoveryPoint `
+			-VaultId $vault.ID `
+			-StartDate $backupStartTime `
+			-EndDate $backupEndTime `
+			-Item $item | Get-AzRecoveryServicesBackupWorkloadRecoveryConfig `
+				-VaultId $vault.ID `
+				-TargetItem $protectableInstances[0] `
+				–AlternateWorkloadRestore | Restore-AzRecoveryServicesBackupItem `
+					-VaultId $vault.ID | Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		Assert-True { $restoreJob1.Status -eq "Completed" }
+	}
+	finally
+	{
+			Cleanup-Vault $vault $item $container
 	}
 }

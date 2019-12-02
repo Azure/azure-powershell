@@ -18,7 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+Update ADF .Net SDK version to 4.5.0
+
+## Version 1.5.0
 * Update ADF .Net SDK version to 4.4.0
+* Add parameter "ExpressCustomSetup" for "Set-AzureRmDataFactoryV2IntegrationRuntime" cmd to enable setup configurations and 3rd party components without custom setup script.
 
 ## Version 1.4.1
 * Update ADF .Net SDK version to 4.3.0

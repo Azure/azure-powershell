@@ -169,14 +169,14 @@ function Test-GetAzureStorageAccount
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind;
-        Assert-AreEqual $false $sto.EnableHttpsTrafficOnly;
+        Assert-AreEqual $true $sto.EnableHttpsTrafficOnly;
 
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
         Assert-AreEqual $stoname $stos[0].StorageAccountName;
         Assert-AreEqual $stotype $stos[0].Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $stos[0].Location;
         Assert-AreEqual $kind $sto.Kind;
-        Assert-AreEqual $false $sto.EnableHttpsTrafficOnly;
+        Assert-AreEqual $true $sto.EnableHttpsTrafficOnly;
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
@@ -204,7 +204,7 @@ function Test-SetAzureStorageAccount
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
         $loc = Get-ProviderLocation ResourceManagement;
-        $kind = 'Storage'
+        $kind = 'StorageV2'
 
         New-AzResourceGroup -Name $rgname -Location $loc;
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableHttpsTrafficOnly $true -EnableHierarchicalNamespace $true;
@@ -499,6 +499,41 @@ function Test-SetAzureRmCurrentStorageAccount
         $context = Get-AzContext
         Assert-AreEqual $stoname $context.Subscription.CurrentStorageAccountName
         $global:sto | Remove-AzStorageAccount -Force
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Revoke-AzStorageAccountUserDelegationKeys
+.DESCRIPTION
+SmokeTest
+#>
+function Test-RevokeAzStorageAccountUserDelegationKeys
+{
+ # Setup
+    $rgname = Get-StorageManagementTestResourceName
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname
+        $stotype = 'Standard_LRS'
+        $loc = Get-ProviderLocation ResourceManagement
+
+        New-AzResourceGroup -Name $rgname -Location $loc
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype
+		
+		# revoke with storage account name and resoruce group name
+		Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName $rgname  -Name $stoname
+
+		# revoke with pipeline
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname }
+        $global:sto | Revoke-AzStorageAccountUserDelegationKeys
     }
     finally
     {
@@ -865,7 +900,6 @@ function Test-StorageAccountManagementPolicy
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
-        $loc = Get-ProviderLocation_Stage;
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
 
         Retry-IfException { $global:sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
