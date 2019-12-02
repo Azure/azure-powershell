@@ -19,9 +19,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.8.0
 * Add billing plan details in getCatalog
 	- new object in the response of get-Catalog
 * Add new Api CalculatePrice
 	- new Api for calculate ReservationOrder price
 * Add new Api Purchase
 	- new Api for Purchase ReservationOrder in powershell
+
+## Version 0.7.1
