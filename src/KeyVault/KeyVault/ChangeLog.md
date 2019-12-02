@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed error accessing value that is potentially not set
+* Elliptic Curve Cryptography Certificate Managment
+    - Added support to specify the Curve for Certificate Policies
 
 ## Version 1.3.1
 * Fixed miscellaneous typos across module

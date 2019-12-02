@@ -110,8 +110,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The priority for the virtual machine.  Only supported values are 'Regular' and 'Low'.")]
-        [PSArgumentCompleter("Regular", "Low")]
+            HelpMessage = "The priority for the virtual machine.  Only supported values are 'Regular', 'Low' and 'Spot'.")]
+        [PSArgumentCompleter("Regular", "Low", "Spot")]
         public string Priority { get; set; }
 
         [Parameter(
