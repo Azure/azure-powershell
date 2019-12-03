@@ -14,8 +14,9 @@ Creates a Firewall Network Rule.
 ## SYNTAX
 
 ```
-New-AzFirewallNetworkRule -Name <String> [-Description <String>] -SourceAddress <String[]>
- -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]>
+New-AzFirewallNetworkRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
+ [-SourceIpGroup <String[]>] [-DestinationAddress <String[]>] [-DestinationIpGroup <String[]>]
+ [-DestinationFqdn <String[]>] -DestinationPort <String[]> -Protocol <String[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -48,7 +49,7 @@ This example creates a rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040. 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -63,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-Specifies an optional description of this rule.
+The description of the rule
 
 ```yaml
 Type: System.String
@@ -85,7 +86,37 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationFqdn
+The destination FQDN of the rule
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationIpGroup
+The destination ipgroup of the rule
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -108,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of this network rule. The name must be unique inside a rule collection.
+The name of the Network Rule
 
 ```yaml
 Type: System.String
@@ -123,7 +154,7 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-Specifies the type of traffic to be filtered by this rule. Possible values are TCP, UDP, ICMP and Any.
+The protocols of the rule
 
 ```yaml
 Type: System.String[]
@@ -146,7 +177,22 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceIpGroup
+The source ipgroup of the rule
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -163,7 +209,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -179,7 +225,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
