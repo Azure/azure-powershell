@@ -18,11 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 2.2.0
-
-* Azure Site Recovery support for Azure Disk Encryption one pass for Azure to Azure..
-
+* Azure Site Recovery support for Azure Disk Encryption One Pass for Azure to Azure.
 
 ## Version 2.1.0
 
