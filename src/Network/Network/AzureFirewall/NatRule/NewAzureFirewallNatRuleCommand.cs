@@ -40,13 +40,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The source addresses of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] SourceAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The source ipgroup of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] SourceIpGroup { get; set; }
 
         [Parameter(
@@ -131,7 +129,6 @@ namespace Microsoft.Azure.Commands.Network
                 ValidateIsSinglePortNotRange(DestinationPort.Single());
                 ValidateIsSinglePortNotRange(TranslatedPort);
 
-                Array.ForEach(this.SourceIpGroup,r => ValidateIsIpGroup(r));
             }
 
             var natRule = new PSAzureFirewallNatRule

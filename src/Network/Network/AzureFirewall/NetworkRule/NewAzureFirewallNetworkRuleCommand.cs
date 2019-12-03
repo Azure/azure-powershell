@@ -40,25 +40,21 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The source addresses of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] SourceAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
         HelpMessage = "The source ipgroup of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] SourceIpGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The destination addresses of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] DestinationAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
         HelpMessage = "The destination ipgroup of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] DestinationIpGroup { get; set; }
 
         [Parameter(
@@ -103,13 +99,10 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // One of DestinationAddress or DestinationFqdns must be present
-            if ((DestinationAddress == null) && (DestinationFqdn == null))
+            if ((DestinationAddress == null) && (DestinationFqdn == null) && (DestinationIpGroup == null))
             {
-                throw new ArgumentException("Either DestinationAddress or DestinationFqdns is required");
+                throw new ArgumentException("Either of DestinationAddress or DestinationIpGroup or DestinationFqdns is required");
             }
-
-            Array.ForEach(this.SourceIpGroup,r => ValidateIsIpGroup(r));
-            Array.ForEach(this.DestinationIpGroup,r => ValidateIsIpGroup(r));
 
             var networkRule = new PSAzureFirewallNetworkRule
             {

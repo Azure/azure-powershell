@@ -32,11 +32,13 @@ Test creating new IpGroups
 #>
 function Test-AzureFirewallIpGroup
 {
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $rglocation = Get-ProviderLocation ResourceManagement "southcentralus"
-    $location = Get-ProviderLocation ResourceManagement "southcentralus"
-    $IpGroupsName = Get-ResourceName
+      # Setup
+      $rgname = Get-ResourceGroupName
+      $rglocation = Get-ProviderLocation ResourceManagement "southcentralus"
+      $location = Get-ProviderLocation ResourceManagement "southcentralus"
+      $ipGroupLocation = Get-ProviderLocation ResourceManagement "southcentralus"
+      $ipGroupName1 = Get-ResourceName
+      $ipGroupName2 = Get-ResourceName
     
       $azureFirewallName = Get-ResourceName 
       #$resourceTypeParent = "Microsoft.Network/AzureFirewalls"
@@ -47,80 +49,55 @@ function Test-AzureFirewallIpGroup
       $publicIpName = Get-ResourceName
   
       # AzureFirewallApplicationRuleCollection
-      $appRcName = "appRc"
-      $appRcPriority = 100
-      $appRcActionType = "Allow"
-  
+      $someAppRuleCollectionName = "someAppRuleCollection"
+      $someAppRuleCollectionPriority = 100
+      $someAppRuleCollectionActionType = "Allow"
   
       # AzureFirewallApplicationRule 1
-      $appRule1Name = "appRule"
-      $appRule1Desc = "desc1"
-      $appRule1Fqdn1 = "*google.com"
-      $appRule1Fqdn2 = "*microsoft.com"
-      $appRule1Protocol1 = "http:80"
-      $appRule1Port1 = 80
-      $appRule1ProtocolType1 = "http"
-      $appRule1Protocol2 = "https:443"
-      $appRule1Port2 = 443
-      $appRule1ProtocolType2 = "https"
-      $appRule1SourceAddress1 = "10.0.0.0"
+      $someAppRuleName = "someAppRule"
+      $someAppRuleFqdn1 = "*bing.com"
+      $someAppRuleProtocol1 = "http:8080"
+      $someAppRulePort1 = 8080
+      $someAppRuleProtocolType1 = "http"
   
       # AzureFirewallApplicationRule 2
-      $appRule2Name = "appRule2"
-      $appRule2Fqdn1 = "*bing.com"
-      $appRule2Protocol1 = "http:8080"
-      $appRule2Port1 = 8080
-      $appRule2ProtocolType1 = "http"
-  
-      # AzureFirewallApplicationRule 3
-      $appRule3Name = "appRule3"
-      $appRule3Fqdn1 = "sql1.database.windows.net"
-      $appRule3Protocol1 = "mssql:1433"
-      $appRule3Port1 = 1433
-      $appRule3ProtocolType1 = "mssql"
+      $someOtherAppRuleName = "someOtherAppRule"
+      $someOtherAppRuleFqdn1 = "sql1.database.windows.net"
+      $someOtherAppRuleProtocol1 = "mssql:1433"
+      $someOtherAppRulePort1 = 1433
+      $someOtherAppRuleProtocolType1 = "mssql"
   
       # AzureFirewallNetworkRuleCollection
       $networkRcName = "networkRc"
       $networkRcPriority = 200
       $networkRcActionType = "Deny"
   
+
       # AzureFirewallNetworkRule 1
-      $networkRule1Name = "networkRule"
-      $networkRule1Desc = "desc1"
-      $networkRule1SourceAddress1 = "10.0.0.0"
-      $networkRule1SourceAddress2 = "111.1.0.0/24"
-      $networkRule1DestinationAddress1 = "*"
-      $networkRule1Protocol1 = "UDP"
-      $networkRule1Protocol2 = "TCP"
-      $networkRule1Protocol3 = "ICMP"
-      $networkRule1DestinationPort1 = "90"
-  
-      # AzureFirewallNetworkRule 2
-      $networkRule2Name = "networkRule2"
-      $networkRule2Desc = "desc2"
-      $networkRule2SourceAddress1 = "10.0.0.0"
-      $networkRule2SourceAddress2 = "111.1.0.0/24"
-      $networkRule2DestinationFqdn1 = "www.bing.com"
-      $networkRule2Protocol1 = "UDP"
-      $networkRule2Protocol2 = "TCP"
-      $networkRule2Protocol3 = "ICMP"
-      $networkRule2DestinationPort1 = "80"
+      $someNetworkRuleName = "networkRule"
+      $someNetworkRuleDesc = "desc1"
+      $someNetworkRuleSourceAddress1 = "10.0.0.0"
+      $someNetworkRuleSourceAddress2 = "111.1.0.0/24"
+      $someNetworkRuleDestinationAddress1 = "*"
+      $someNetworkRuleProtocol1 = "UDP"
+      $someNetworkRuleProtocol2 = "TCP"
+      $someNetworkRuleProtocol3 = "ICMP"
+      $someNetworkRuleDestinationPort1 = "90"
   
       # AzureFirewallNatRuleCollection
-      $natRcName = "natRc"
-      $natRcPriority = 200
-  
+      $someNatRuleCollectionName = "natRc"
+      $someNatRuleCollectionPriority = 200
   
       # AzureFirewallNatRule 2
-      $natRule2Name = "natRule2"
-      $natRule2Desc = "desc2"
-      $natRule2SourceAddress1 = "10.0.0.0"
-      $natRule2SourceAddress2 = "111.1.0.0/24"
-      $natRule2Protocol1 = "UDP"
-      $natRule2Protocol2 = "TCP"
-      $natRule2DestinationPort1 = "95"
-      $natRule2TranslatedFqdn = "server1.internal.com"
-      $natRule2TranslatedPort = "96"
+      $someNatRuleName = "natRule2"
+      $someNatRuleDesc = "desc2"
+      $someNatRuleSourceAddress1 = "10.0.0.0"
+      $someNatRuleSourceAddress2 = "111.1.0.0/24"
+      $someNatRuleProtocol1 = "UDP"
+      $someNatRuleProtocol2 = "TCP"
+      $someNatRuleDestinationPort1 = "95"
+      $someNatRuleTranslatedFqdn = "server1.internal.com"
+      $someNatRuleTranslatedPort = "96"
 
     try
     {
@@ -128,11 +105,16 @@ function Test-AzureFirewallIpGroup
       New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
 
       # Create IpGroup
-	   $actualIpGroup = New-AzIpGroup -ResourceGroupName $rgname -location $location -Name $IpGroupsName -IpAddress 10.0.0.0/24,11.9.0.0/24
-      $expectedIpGroup = Get-AzIpGroup -ResourceGroupName $rgname -Name $IpGroupsName
-	   Assert-AreEqual $expectedIpGroup.ResourceGroupName $actualIpGroup.ResourceGroupName	
-      Assert-AreEqual $expectedIpGroup.Name $actualIpGroup.Name
+      $ipGroup1 = New-AzIpGroup -ResourceGroupName $rgname -location $ipgroupLocation -Name $ipGroupName1 -IpAddress 10.0.0.0/24,11.9.0.0/24
+      $returnedIpGroup1 = Get-AzIpGroup -ResourceGroupName $rgname -Name $ipGroupName1
+      Assert-AreEqual $returnedIpGroup1.ResourceGroupName $ipGroup1.ResourceGroupName	
+      Assert-AreEqual $returnedIpGroup1.Name $ipGroup1.Name
 
+      $ipGroup2 = New-AzIpGroup -ResourceGroupName $rgname -location $ipgroupLocation -Name $ipGroupName2 -IpAddress 12.0.0.0/24,13.9.0.0/24
+      $returnedIpGroup2 = Get-AzIpGroup -ResourceGroupName $rgname -Name $ipGroupName2
+      Assert-AreEqual $returnedIpGroup2.ResourceGroupName $ipGroup2.ResourceGroupName	
+      Assert-AreEqual $returnedIpGroup2.Name $ipGroup2.Name
+      
       # Create the Virtual Network
       $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
       $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
@@ -144,77 +126,107 @@ function Test-AzureFirewallIpGroup
 
       # Create AzureFirewall (with no rules, ThreatIntel is in Alert mode by default)
       $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName
-
+   
+      #
+      #  Application Rule Section
+      #
+      
       # Create Application Rules
-      $appRule = New-AzFirewallApplicationRule -Name $appRule1Name -Description $appRule1Desc -Protocol $appRule1Protocol1, $appRule1Protocol2 -TargetFqdn $appRule1Fqdn1, $appRule1Fqdn2 -SourceAddress $appRule1SourceAddress1
+      $someAppRule = New-AzFirewallApplicationRule -Name $someAppRuleName -SourceIpGroup $ipGroup1.Id -Protocol $someAppRuleProtocol1 -TargetFqdn $someAppRuleFqdn1
 
-      $appRule2 = New-AzFirewallApplicationRule -Name $appRule2Name -SourceIpGroup $actualIpGroup -Protocol $appRule2Protocol1 -TargetFqdn $appRule2Fqdn1
-
-      $appRule3 = New-AzFirewallApplicationRule -Name $appRule3Name -Protocol $appRule3Protocol1 -TargetFqdn $appRule3Fqdn1
+      $someOtherAppRule = New-AzFirewallApplicationRule -Name $someOtherAppRuleName -SourceIpGroup $ipGroup1.Id,$ipGroup2.Id -Protocol $someOtherAppRuleProtocol1 -TargetFqdn $someOtherAppRuleFqdn1
 
       # Create Application Rule Collection with 1 rule
-      $appRc = New-AzFirewallApplicationRuleCollection -Name $appRcName -Priority $appRcPriority -Rule $appRule -ActionType $appRcActionType
-
+      $someAppRuleCollection = New-AzFirewallApplicationRuleCollection -Name $someAppRuleCollectionName -Priority $someAppRuleCollectionPriority -Rule $someAppRule -ActionType $someAppRuleCollectionActionType
+           
       # Add a rule to the rule collection using AddRule method
-      $appRc.AddRule($appRule2)
-      $appRc.AddRule($appRule3)
-
-      # Create Network Rule
-      $networkRule = New-AzFirewallNetworkRule -Name $networkRule1Name -Description $networkRule1Desc -Protocol $networkRule1Protocol1, $networkRule1Protocol2 -SourceAddress $networkRule1SourceAddress1, $networkRule1SourceAddress2 -DestinationAddress $networkRule1DestinationAddress1 -DestinationPort $networkRule1DestinationPort1
-      $networkRule.AddProtocol($networkRule1Protocol3)
-
-      # Create Second Network Rule
-      $networkRule2 = New-AzFirewallNetworkRule -Name $networkRule2Name -Description $networkRule2Desc -Protocol $networkRule2Protocol1, $networkRule2Protocol2 -SourceAddress $networkRule2SourceAddress1, $networkRule2SourceAddress2 -DestinationFqdn $networkRule2DestinationFqdn1 -DestinationPort $networkRule2DestinationPort1
-      $networkRule2.AddProtocol($networkRule2Protocol3)
-
-      # Create Network Rule Collection
-      $netRc = New-AzFirewallNetworkRuleCollection -Name $networkRcName -Priority $networkRcPriority -Rule $networkRule -ActionType $networkRcActionType
-
-      # Add this second Network Rule to the rule collection
-      $netRc.AddRule($networkRule2)
-
-      # Create second NAT rule
-      $natRule2 = New-AzFirewallNatRule -Name $natRule2Name -Description $natRule2Desc -Protocol $natRule2Protocol1 -SourceAddress $natRule2SourceAddress1, $natRule2SourceAddress2 -DestinationAddress $publicip.IpAddress -DestinationPort $natRule2DestinationPort1 -TranslatedFqdn $natRule2TranslatedFqdn -TranslatedPort $natRule2TranslatedPort
-      $natRule2.AddProtocol($natRule2Protocol2)
-      
-      # Create a NAT Rule Collection
-      $natRc = New-AzFirewallNatRuleCollection -Name $natRcName -Priority $natRcPriority -Rule $natRule
-      
-      # Add second NAT Rule to rule Collection
-      $natRc.AddRule($natRule2)
+      $someAppRuleCollection.AddRule($someOtherAppRule)
 
       # Add ApplicationRuleCollections to the Firewall using method AddApplicationRuleCollection
-      azureFirewall.AddApplicationRuleCollection($appRc)
+      $azureFirewall.AddApplicationRuleCollection($someAppRuleCollection)
 
-      # Add NatRuleCollections to the Firewall using method AddNatRuleCollection
-      $azureFirewall.AddNatRuleCollection($natRc)
+         
+      #
+      #  Network Rule Section
+      #
+
+      # Create Network Rule
+      
+      $someNetworkRule = New-AzFirewallNetworkRule -Name $someNetworkRuleName -Description $someNetworkRuleDesc -Protocol $someNetworkRuleProtocol1, $someNetworkRuleProtocol2 -SourceAddress $someNetworkRuleSourceAddress1, $someNetworkRuleSourceAddress2 -SourceIpGroup $ipGroup1.Id -DestinationIpGroup $ipGroup2.Id -DestinationPort $someNetworkRuleDestinationPort1
+      $someNetworkRule.AddProtocol($someNetworkRuleProtocol3)
+
+      # Create Network Rule Collection
+      $someNetworkRuleCollection = New-AzFirewallNetworkRuleCollection -Name $networkRcName -Priority $networkRcPriority -Rule $someNetworkRule -ActionType $networkRcActionType
+
+      # Add this Network Rule to the rule collection
+      #$someNetworkRuleCollection.AddRule($someNetworkRule)
 
       # Add NetworkRuleCollections to the Firewall using method AddNetworkRuleCollection
-      $azureFirewall.AddNetworkRuleCollection($netRc)
+      $azureFirewall.AddNetworkRuleCollection($someNetworkRuleCollection)
 
+      #
+      #  NAT Rule Section
+      #
+
+      # Create  NAT rule
+      $someNatRule = New-AzFirewallNatRule -Name $someNatRuleName -Description $someNatRuleDesc -Protocol $someNatRuleProtocol1 -SourceIpGroup $ipGroup1.Id, $ipGroup2.Id -DestinationAddress $publicip.IpAddress -DestinationPort $someNatRuleDestinationPort1 -TranslatedFqdn $someNatRuleTranslatedFqdn -TranslatedPort $someNatRuleTranslatedPort
+      $someNatRule.AddProtocol($someNatRuleProtocol2)
+      
+      # Create a NAT Rule Collection
+      $someNatRuleCollection = New-AzFirewallNatRuleCollection -Name $someNatRuleCollectionName -Priority $someNatRuleCollectionPriority -Rule $someNatRule
+      
+      # Add  NAT Rule to rule Collection
+      #$someNatRuleCollection.AddRule($someNatRule)
+
+      # Add NatRuleCollections to the Firewall using method AddNatRuleCollection
+      $azureFirewall.AddNatRuleCollection($someNatRuleCollection)
+ 
       # Set AzureFirewall
-      Set-AzFirewall -AzureFirewall $azureFirewall
-
+      #Set-AzFirewall -AzureFirewall $azureFirewall
 
       # Get AzureFirewall
-      $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgName
+      #$getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgName
 
-      # Check rule collections
-      Assert-AreEqual 1 @($getAzureFirewall.ApplicationRuleCollections).Count
-      Assert-AreEqual 3 @($getAzureFirewall.ApplicationRuleCollections[0].Rules).Count
+      $getAzureFirewall = $azureFirewall
 
-      Assert-AreEqual 1 @($getAzureFirewall.NatRuleCollections).Count
-      Assert-AreEqual 2 @($getAzureFirewall.NatRuleCollections[0].Rules).Count
+      #
+      # Verification - Application Rule 
+      #
 
-      Assert-AreEqual 1 @($getAzureFirewall.NetworkRuleCollections).Count
-      Assert-AreEqual 2 @($getAzureFirewall.NetworkRuleCollections[0].Rules).Count     
+      # Verify application rule collection 2
+      $someAppRuleCollection2 = $getAzureFirewall.GetApplicationRuleCollectionByName($someAppRuleCollectionName)
 
-      $list = Get-AzFirewall -ResourceGroupName $rgname
-      Assert-AreEqual 0 @($list).Count
+      # Verify application rule
+      $getSomeAppRule = $someAppRuleCollection2.GetRuleByName($someAppRule.Name)
+      Assert-AreEqual 1 $getSomeAppRule.SourceIpGroups.Count
 
-      <#
-	   # Delete IpGroup
-	   $deleteIpGroup = Remove-AzIpGroup -ResourceGroupName $rgname -Name $IpGroupsName -PassThru -Force
+      $getSomeOtherAppRule = $someAppRuleCollection2.GetRuleByName($someOtherAppRule.Name)
+      Assert-AreEqual 2 $getSomeOtherAppRule.SourceIpGroups.Count
+            
+      #
+      # Verification - Network Rule 
+      #
+
+       # Verify Network rule collection 2
+      $someNetworkRuleCollection2 = $getAzureFirewall.GetNetworkRuleCollectionByName($someNetworkRuleCollection.Name)
+
+      # Verify Network rule
+      $getSomeNetworkRule = $someNetworkRuleCollection2.GetRuleByName($someNetworkRule.Name)
+      Assert-AreEqual 1 $getSomeNetworkRule.SourceIpGroups.Count
+      Assert-AreEqual 1 $getSomeNetworkRule.DestinationIpGroups.Count
+
+      #
+      # Verification - NAT Rule 
+      #
+      $someNatRuleCollection2 = $getAzureFirewall.GetNatRuleCollectionByName($someNatRuleCollection.Name)
+      $getSomeNatRule = $someNatRuleCollection2.GetRuleByName($someNatRule.Name)
+      Assert-AreEqual 2 $getSomeNatRule.SourceIpGroups.Count  
+
+	  # Delete IpGroup
+	  $deleteIpGroup = Remove-AzIpGroup -ResourceGroupName $rgname -Name $ipGroupName1 -PassThru -Force
+      Assert-AreEqual true $deleteIpGroup
+
+      $deleteIpGroup = Remove-AzIpGroup -ResourceGroupName $rgname -Name $ipGroupName2 -PassThru -Force
       Assert-AreEqual true $deleteIpGroup
 
       # Delete AzureFirewall
@@ -224,13 +236,11 @@ function Test-AzureFirewallIpGroup
       # Delete VirtualNetwork 
       $delete = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
       Assert-AreEqual true $delete
-#>
-
 
     }
     finally
     {
-        # Cleanup
-        #Clean-ResourceGroup $rgname
+      # Cleanup
+      Clean-ResourceGroup $rgname
     }
 }
