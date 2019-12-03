@@ -18,6 +18,7 @@
         - Additional information about change #1
         
 ## Upcoming Release
+* Adding optional argument to the Add Diagnostic Settings command. A switch argument that if present indicates that the export to Log Analytics must be to a fixed schema (a.k.a. dedicated, data type)
 
 ## Version 1.4.0
 * New action group receivers added for action group
