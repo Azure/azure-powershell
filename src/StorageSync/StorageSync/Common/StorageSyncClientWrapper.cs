@@ -20,6 +20,7 @@ using Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6_20190326.Models;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Rest.Azure.OData;
@@ -29,6 +30,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common
 {
@@ -64,6 +66,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         public const string BuiltInRoleDefinitionId = "c12c1c16-33a1-487b-954d-41c89c60f349";
 
         /// <summary>
+        /// Default Azure Context
+        /// </summary>
+        public IAzureContext AzureContext { get; set; }
+
+        /// <summary>
         /// Gets or sets the storage sync management client.
         /// </summary>
         /// <value>The storage sync management client.</value>
@@ -80,6 +87,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         /// <value>The authorization management client.</value>
         public IAuthorizationManagementClient AuthorizationManagementClient { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource management client.
+        /// </summary>
+        /// <value>The resource management client.</value>
+        public IResourceManagementClient ResourceManagementClient { get; set; }
 
         /// <summary>
         /// Gets or sets the active directory client.
@@ -105,9 +118,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <param name="context">The context.</param>
         /// <param name="activeDirectoryClient">The active directory client.</param>
         public StorageSyncClientWrapper(IAzureContext context, ActiveDirectoryClient activeDirectoryClient)
-                : this(
+                : this(context,
                       AzureSession.Instance.ClientFactory.CreateArmClient<StorageSyncManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
-                      AzureSession.Instance.ClientFactory.CreateArmClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+                      AzureSession.Instance.ClientFactory.CreateArmClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
+                      AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
             ActiveDirectoryClient = activeDirectoryClient;
 
@@ -126,10 +140,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         /// <param name="storageSyncManagementClient">The storage sync management client.</param>
         /// <param name="authorizationManagementClient">The authorization management client.</param>
-        public StorageSyncClientWrapper(IStorageSyncManagementClient storageSyncManagementClient, AuthorizationManagementClient authorizationManagementClient)
+        public StorageSyncClientWrapper(IAzureContext azureContext,
+            IStorageSyncManagementClient storageSyncManagementClient,
+            AuthorizationManagementClient authorizationManagementClient,
+            ResourceManagementClient resourceManagementClient)
         {
+            AzureContext = azureContext;
             StorageSyncManagementClient = storageSyncManagementClient;
             AuthorizationManagementClient = authorizationManagementClient;
+            ResourceManagementClient = resourceManagementClient;
         }
 
         /// <summary>
@@ -297,6 +316,30 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             }
 
             return roleAssignment;
+        }
+
+        /// <summary>
+        /// This function will invoke the registration and continue operation with a success function call.
+        /// </summary>
+        /// <param name="resourceProviderNamespace">Resource provider name</param>
+        /// <param name="subscription">subscription</param>
+        /// <returns>true if request was successfully made. else false</returns>
+        public bool TryRegisterProvider(string resourceProviderNamespace, string subscription)
+        {
+            try
+            {
+                this.ResourceManagementClient.SubscriptionId = subscription;
+                this.ResourceManagementClient.Providers.RegisterAsync(resourceProviderNamespace);
+                return true;
+            }
+            catch (HttpRequestException)
+            {
+                return false;
+            }
+            finally
+            {
+                this.ResourceManagementClient.SubscriptionId = AzureContext.Subscription.Id;
+            }
         }
     }
 }

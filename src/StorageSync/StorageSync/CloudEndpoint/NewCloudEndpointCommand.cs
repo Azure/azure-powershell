@@ -24,6 +24,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 using System.Management.Automation;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
@@ -192,6 +193,24 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                     throw new PSArgumentException(nameof(StorageAccountResourceId));
                 }
 
+                if(this.IsParameterBound(c=>c.StorageAccountTenantId))
+                {
+                    if(StorageAccountTenantId != DefaultContext.Tenant.Id)
+                    {
+                        throw new PSArgumentException(string.Format(StorageSyncResources.NewCloudEndpointCrossTenantErrorFormat, StorageAccountTenantId, DefaultContext.Tenant.Id));
+                    }
+                }
+
+                if(storageAccountResourceIdentifier.Subscription != DefaultContext.Subscription.Id)
+                {
+                    WriteWarning(string.Format(StorageSyncResources.NewCloudEndpointCrossSubscriptionWarningFormat, storageAccountResourceIdentifier.Subscription , DefaultContext.Subscription.Id));
+
+                    if(!StorageSyncClientWrapper.TryRegisterProvider(StorageSyncConstants.ResourceProvider, storageAccountResourceIdentifier.Subscription))
+                    {
+                        WriteWarning(string.Format(StorageSyncResources.NewCloudEndpointUnableToRegisterErrorFormat, storageAccountResourceIdentifier.Subscription));
+                    }
+                }
+
                 PSADServicePrincipal servicePrincipal = StorageSyncClientWrapper.EnsureServicePrincipal();
                 RoleAssignment roleAssignment = StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, StorageAccountResourceId);
 
@@ -211,7 +230,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 {
                     StorageAccountResourceId = StorageAccountResourceId,
                     AzureFileShareName = AzureFileShareName,
-                    StorageAccountTenantId = (StorageAccountTenantId ?? DefaultContext.Tenant?.Id)
+                    StorageAccountTenantId = (StorageAccountTenantId ?? DefaultContext.Tenant.Id)
                 };
 
                 string resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName;
@@ -233,5 +252,6 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 }
             });
         }
+
     }
 }
