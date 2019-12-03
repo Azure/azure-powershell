@@ -1,0 +1,202 @@
+{
+    "Entries": [
+        {
+            "RequestUri": "//subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/system-sas-test/providers/Microsoft.KeyVault/vaults/myCanaryKeyVaultCUSEAUP/providers/microsoft.insights/diagnosticSettings?api-version=2017-05-01-preview",
+            "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzljZjdjYzBhLTBiYTEtNDYyNC1iYzgyLTk3ZTFlZTI1ZGM0NS9yZXNvdXJjZUdyb3Vwcy9zeXN0ZW0tc2FzLXRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvbXlDYW5hcnlLZXlWYXVsdENVU0VBVVAvcHJvdmlkZXJzL21pY3Jvc29mdC5pbnNpZ2h0cy9kaWFnbm9zdGljU2V0dGluZ3M/YXBpLXZlcnNpb249MjAxNy0wNS0wMS1wcmV2aWV3",
+            "RequestMethod": "GET",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [ "User-Agent: Microsoft.Azure.Management.Monitor.Management.InsightsManagementClient/0.14.0.0 AzurePowershell/v0.14.0.0" ],
+                "Connection": [ "Keep-Alive" ]
+            },
+            "ResponseBody": "{\"value\":[{\"id\":\"/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourcegroups/system-sas-test/providers/microsoft.keyvault/vaults/mycanarykeyvaultcuseaup/diagnosticSettings/service\",\"name\":\"service\",\"location\":\"\",\"tags\":null,\"properties\":{\"workspaceId\":\"\",\"storageAccountId\":\"\",\"eventHubName\":\"\",\"metrics\":[{\"timeGrain\":\"PT1M\",\"enabled\":false,\"retentionPolicy\":{\"days\":0}}],\"logs\":[{\"category\":\"TestLog1\",\"enabled\":false,\"retentionPolicy\":{\"days\":0}},{\"category\":\"TestLog2\",\"enabled\":false,\"retentionPolicy\":{\"days\":0}}]}}]}",
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Mon, 03 Mar 2015 00:07:07 GMT"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Content-Length": [
+                    "441"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "x-ms-ratelimit-remaining-subscription-writes": [
+                    "1199"
+                ],
+                "x-ms-request-id": [
+                    "47af504c-88a1-49c5-9766-e397d54e490b"
+                ],
+                "x-ms-correlation-request-id": [
+                    "e223e5fa-7d3c-4d2c-a2e9-aed3011aefb7"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150303T190828Z:e223e5fa-7d3c-4d2c-a2e9-aed3011aefb7"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ]
+            },
+            "StatusCode": "200"
+        },
+        {
+            "RequestUri": "//subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/system-sas-test/providers/Microsoft.KeyVault/vaults/myCanaryKeyVaultCUSEAUP/providers/microsoft.insights/diagnosticSettings/service?api-version=2017-05-01-preview",
+            "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzljZjdjYzBhLTBiYTEtNDYyNC1iYzgyLTk3ZTFlZTI1ZGM0NS9yZXNvdXJjZUdyb3Vwcy9zeXN0ZW0tc2FzLXRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvbXlDYW5hcnlLZXlWYXVsdENVU0VBVVAvcHJvdmlkZXJzL21pY3Jvc29mdC5pbnNpZ2h0cy9kaWFnbm9zdGljU2V0dGluZ3Mvc2VydmljZT9hcGktdmVyc2lvbj0yMDE3LTA1LTAxLXByZXZpZXc=",
+            "RequestMethod": "PUT",
+            "RequestBody": "{\"location\":\"\",\"properties\": {\"workspaceId\":\"d5611423-0793-4e95-b6ad-75b0ed4a806f\",\"logAnalyticsDestinationType\":null,\"metrics\": [{\"timeGrain\": \"PT1M\",\"enabled\": false,\"retentionPolicy\": {\"enabled\": false,\"days\": 0}}],\"logs\": [{\"category\": \"TestLog1\",\"enabled\": false,\"retentionPolicy\": {\"enabled\": false,\"days\": 0}},{\"category\": \"TestLog2\",\"enabled\": true,\"retentionPolicy\": {\"enabled\": false,\"days\": 0}}]}}",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [ "User-Agent: Microsoft.Azure.Management.Monitor.Management.InsightsManagementClient/0.9.0.0 AzurePowershell/v0.9.9.0" ],
+                "Connection": [ "Keep-Alive" ]
+            },
+            "ResponseBody": "{\"id\":\"/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourcegroups/system-sas-test/providers/microsoft.keyvault/vaults/mycanarykeyvaultcuseaup/diagnosticSettings/service\",\"name\":\"service\",\"location\":\"\",\"tags\":null,\"properties\":{\"workspaceId\": \"/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourcegroups/appendblobtest/providers/microsoft.operationalinsights/workspaces/appendblob\",\"logAnalyticsDestinationType\":null,\"storageAccountId\":null,\"eventHubName\":null,\"metrics\":[{\"timeGrain\":\"PT1M\",\"enabled\":false,\"retentionPolicy\":{\"days\":0}}],\"logs\":[{\"category\":\"TestLog1\",\"enabled\":false,\"retentionPolicy\":{\"days\":0}},{\"category\":\"TestLog2\",\"enabled\":true,\"retentionPolicy\":{\"days\":0}}]}}",
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Mon, 03 Mar 2015 00:07:07 GMT"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Content-Length": [
+                    "614"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "x-ms-ratelimit-remaining-subscription-writes": [
+                    "1199"
+                ],
+                "x-ms-request-id": [
+                    "47af504c-88a1-49c5-9766-e397d54e490b"
+                ],
+                "x-ms-correlation-request-id": [
+                    "e223e5fa-7d3c-4d2c-a2e9-aed3011aefb7"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150303T190828Z:e223e5fa-7d3c-4d2c-a2e9-aed3011aefb7"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ]
+            },
+            "StatusCode": "200"
+        },
+        {
+            "RequestUri": "//subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/system-sas-test/providers/Microsoft.KeyVault/vaults/myCanaryKeyVaultCUSEAUP/providers/microsoft.insights/diagnosticSettings?api-version=2017-05-01-preview",
+            "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzljZjdjYzBhLTBiYTEtNDYyNC1iYzgyLTk3ZTFlZTI1ZGM0NS9yZXNvdXJjZUdyb3Vwcy9zeXN0ZW0tc2FzLXRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvbXlDYW5hcnlLZXlWYXVsdENVU0VBVVAvcHJvdmlkZXJzL21pY3Jvc29mdC5pbnNpZ2h0cy9kaWFnbm9zdGljU2V0dGluZ3M/YXBpLXZlcnNpb249MjAxNy0wNS0wMS1wcmV2aWV3",
+            "RequestMethod": "GET",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [ "User-Agent: Microsoft.Azure.Management.Monitor.Management.InsightsManagementClient/0.14.0.0 AzurePowershell/v0.14.0.0" ],
+                "Connection": [ "Keep-Alive" ]
+            },
+            "ResponseBody": "{\"value\":[{\"id\":\"/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourcegroups/system-sas-test/providers/microsoft.keyvault/vaults/mycanarykeyvaultcuseaup/diagnosticSettings/service\",\"name\":\"service\",\"location\":\"\",\"tags\":null,\"properties\":{\"workspaceId\":\"/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourcegroups/appendblobtest/providers/microsoft.operationalinsights/workspaces/appendblob\",\"storageAccountId\":null,\"eventHubName\":null,\"metrics\":[{\"timeGrain\":\"PT1M\",\"enabled\":false,\"retentionPolicy\":{\"days\":0}}],\"logs\":[{\"category\":\"TestLog1\",\"enabled\":false,\"retentionPolicy\":{\"days\":0}},{\"category\":\"TestLog2\",\"enabled\":false,\"retentionPolicy\":{\"days\":0}}]}}]}",
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Mon, 03 Mar 2015 00:07:07 GMT"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Content-Length": [
+                    "441"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "x-ms-ratelimit-remaining-subscription-writes": [
+                    "1199"
+                ],
+                "x-ms-request-id": [
+                    "47af504c-88a1-49c5-9766-e397d54e490b"
+                ],
+                "x-ms-correlation-request-id": [
+                    "e223e5fa-7d3c-4d2c-a2e9-aed3011aefb7"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150303T190828Z:e223e5fa-7d3c-4d2c-a2e9-aed3011aefb7"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ]
+            },
+            "StatusCode": "200"
+        },
+        {
+            "RequestUri": "//subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourceGroups/system-sas-test/providers/Microsoft.KeyVault/vaults/myCanaryKeyVaultCUSEAUP/providers/microsoft.insights/diagnosticSettings/service?api-version=2017-05-01-preview",
+            "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzljZjdjYzBhLTBiYTEtNDYyNC1iYzgyLTk3ZTFlZTI1ZGM0NS9yZXNvdXJjZUdyb3Vwcy9zeXN0ZW0tc2FzLXRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvbXlDYW5hcnlLZXlWYXVsdENVU0VBVVAvcHJvdmlkZXJzL21pY3Jvc29mdC5pbnNpZ2h0cy9kaWFnbm9zdGljU2V0dGluZ3Mvc2VydmljZT9hcGktdmVyc2lvbj0yMDE3LTA1LTAxLXByZXZpZXc=",
+            "RequestMethod": "PUT",
+            "RequestBody": "{\"location\":\"\",\"properties\": {\"workspaceId\":\"d5611423-0793-4e95-b6ad-75b0ed4a806f\",\"logAnalyticsDestinationType\":\"Dedicated\",\"metrics\": [{\"timeGrain\": \"PT1M\",\"enabled\": false,\"retentionPolicy\": {\"enabled\": false,\"days\": 0}}],\"logs\": [{\"category\": \"TestLog1\",\"enabled\": false,\"retentionPolicy\": {\"enabled\": false,\"days\": 0}},{\"category\": \"TestLog2\",\"enabled\": true,\"retentionPolicy\": {\"enabled\": false,\"days\": 0}}]}}",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [ "User-Agent: Microsoft.Azure.Management.Monitor.Management.InsightsManagementClient/0.9.0.0 AzurePowershell/v0.9.9.0" ],
+                "Connection": [ "Keep-Alive" ]
+            },
+            "ResponseBody": "{\"id\":\"/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourcegroups/system-sas-test/providers/microsoft.keyvault/vaults/mycanarykeyvaultcuseaup/diagnosticSettings/service\",\"name\":\"service\",\"location\":\"\",\"tags\":null,\"properties\":{\"workspaceId\": \"/subscriptions/9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45/resourcegroups/appendblobtest/providers/microsoft.operationalinsights/workspaces/appendblob\",\"logAnalyticsDestinationType\":\"Dedicated\",\"storageAccountId\":null,\"eventHubName\":null,\"metrics\":[{\"timeGrain\":\"PT1M\",\"enabled\":false,\"retentionPolicy\":{\"days\":0}}],\"logs\":[{\"category\":\"TestLog1\",\"enabled\":false,\"retentionPolicy\":{\"days\":0}},{\"category\":\"TestLog2\",\"enabled\":true,\"retentionPolicy\":{\"days\":0}}]}}",
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Mon, 03 Mar 2015 00:07:07 GMT"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Content-Length": [
+                    "614"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "x-ms-ratelimit-remaining-subscription-writes": [
+                    "1199"
+                ],
+                "x-ms-request-id": [
+                    "47af504c-88a1-49c5-9766-e397d54e490b"
+                ],
+                "x-ms-correlation-request-id": [
+                    "e223e5fa-7d3c-4d2c-a2e9-aed3011aefb7"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150303T190828Z:e223e5fa-7d3c-4d2c-a2e9-aed3011aefb7"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ]
+            },
+            "StatusCode": "200"
+        }
+    ],
+  "Names": {
+    "Test-SetAzureRmDiagnosticSetting-LogAnalytics": [ "" ]
+  },
+    "Variables": {
+        "SubscriptionId": "9cf7cc0a-0ba1-4624-bc82-97e1ee25dc45"
+    }
+}
