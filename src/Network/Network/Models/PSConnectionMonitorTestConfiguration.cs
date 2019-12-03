@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     using System.Collections.Generic;
     using WindowsAzure.Commands.Common.Attributes;
 
-    public class PSConnectionMonitorTestConfiguration
+    public class PSNetworkWatcherConnectionMonitorTestConfigurationObject
     { 
         public string Name { get; set; }
         public int? TestFrequencySec { get; set; }

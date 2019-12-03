@@ -95,6 +95,44 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+        HelpMessage = "The ID of the connection monitor source.")]
+        [ValidateNotNullOrEmpty]
+        public string SourceResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Monitoring interval in seconds. Default value is 60 seconds.")]
+        [ValidateNotNullOrEmpty]
+        public int? MonitoringIntervalInSeconds { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Source port.")]
+        [ValidateNotNull]
+        [ValidateRange(1, int.MaxValue)]
+        public int SourcePort { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             HelpMessage = "The ID of the connection monitor destination.")]
+        [ValidateNotNullOrEmpty]
+        public string DestinationResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The Ip address of the connection monitor destination.")]
+        [ValidateNotNullOrEmpty]
+        public string DestinationAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Destination port.")]
+        [ValidateNotNull]
+        [ValidateRange(1, int.MaxValue)]
+        public int DestinationPort { get; set; }
+
+        [Parameter(
+            Mandatory = true,
             HelpMessage = "The list of test group.")]
         [ValidateNotNullOrEmpty]
         public PSConnectionMonitorTestGroup[] TestGroup { get; set; }
@@ -180,6 +218,17 @@ namespace Microsoft.Azure.Commands.Network
         {
             MNM.ConnectionMonitor parameters = new MNM.ConnectionMonitor
             {
+                Source = new MNM.ConnectionMonitorSource
+                {
+                    ResourceId = this.SourceResourceId,
+                    Port = this.SourcePort
+                },
+                Destination = new MNM.ConnectionMonitorDestination
+                {
+                    ResourceId = this.DestinationResourceId,
+                    Address = this.DestinationAddress,
+                    Port = this.DestinationPort
+                },
                 // TestGroup = this.TestGroup,
                 // Output = this.Output,
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
@@ -188,6 +237,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.ConfigureOnly)
             {
                 parameters.AutoStart = false;
+            }
+
+            if (this.MonitoringIntervalInSeconds != null)
+            {
+                parameters.MonitoringIntervalInSeconds = this.MonitoringIntervalInSeconds;
             }
 
             PSConnectionMonitorResult getConnectionMonitor = new PSConnectionMonitorResult();

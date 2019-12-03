@@ -1084,7 +1084,7 @@ function Test-NetworkConfigurationDiagnostic
 	$checksFailedPercent= 10
 	$roundTripTimeMs= 100
 	$cmFilterItemType = "AgentAddress"
-    $cmFilterItemIPAddress = "10.1.1.1"
+    $cmFilterItemIPAddress = "10.127.1.1"
 	$resourcWorkspaceResourceId = "WSResourceId"
     
     try 
@@ -1092,35 +1092,25 @@ function Test-NetworkConfigurationDiagnostic
         . ".\AzureRM.Resources.ps1"
 		
 		#create src and dest endpoint
-		$cmEndpointItemObj = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorEndpointItem
-
-		$cmEndpointItemObj.Type = $cmFilterItemType
-		$cmEndpointItemObj.Address = $cmFilterItemIPAddress
-
-		$cmFilter = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorFilter
-
-		$cmFilter.Type = "TestType"
-		$cmFilter.Items += $cmEndpointItemObj
-
 		$cmTcpConfig = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorTcpConfiguration
 
 		$cmTcpConfig.Port = $port
 		$cmTcpConfig.DisableTraceRoute = $true
 
         #invoke connection monitors
-		$SourceEndpointObject = New-AzNetworkWatcherConnectionMonitorEndPointObject -Name SrcTest -ResourceId SrcResourceId\23423 -Address  $srcIPAddress -FilterType Include -Filter $cmFilter
+		$SourceEndpointObject = New-AzNetworkWatcherConnectionMonitorEndPointObject -Name SrcTest -ResourceId SrcResourceId\23423 -Address  $srcIPAddress -FilterType Include -FilterAddress $cmFilterItemIPAddress
 		Assert-NotNull $SourceEndpointObject
 		Assert-AreEqual $SourceEndpointObject.Address  $srcIPAddress
 		Assert-AreEqual $SourceEndpointObject.Filter.Items[0].Type $cmFilterItemType
-		Assert-AreEqual $SourceEndpointObject.Filter.Items[0].Address $cmFilterItemIPAddress
+		Assert-AreEqual $SourceEndpointObject.Filter.Items[0].Address $cmFilterItemIPAddress 
 		
-		$DestinationEndpointObject = New-AzNetworkWatcherConnectionMonitorEndPointObject -Name DstTest -ResourceId DestResourceId\23424 -Address $destIPAddress -FilterType Include -Filter $cmFilter
+		$DestinationEndpointObject = New-AzNetworkWatcherConnectionMonitorEndPointObject -Name DstTest -ResourceId DestResourceId\2342 -Address $destIPAddress -FilterType Include -Filter $cmFilterItemIPAddress
 		Assert-NotNull $DestinationEndpointObject
 		Assert-AreEqual $DestinationEndpointObject.Address $destIPAddress
-		Assert-AreEqual $DestinationEndpointObject.Filter.Items[0].Type AgentAddress
+		Assert-AreEqual $DestinationEndpointObject.Filter.Items[0].Type $cmFilterItemType
 		Assert-AreEqual $DestinationEndpointObject.Filter.Items[0].Address $cmFilterItemIPAddress
 
-		$testConfig = New-AzNetworkWatcherConnectionMonitorTestConfigurationObject -Name TestConfig -TestFrequencySec 120 -Protocol Tcp -ProtocolConfiguration $cmTcpConfig -ChecksFailedPercent 10 -RoundTripTimeMs 100 -PreferredIPVersion IPv4
+		$testConfig = New-AzNetworkWatcherConnectionMonitorTestConfigurationObject -Name TestConfig -TestFrequencySec 120 -Protocol Tcp -ProtocolConfiguration $cmTcpConfig -SuccessThresholdChecksFailedPercent $checksFailedPercent -SuccessThresholdRoundTripTimeMs $roundTripTimeMs -PreferredIPVersion IPv4
 		Assert-NotNull $testConfig
 		Assert-AreEqual $testConfig.TestFrequencySec $destIPAddress
 		Assert-AreEqual $testConfig.Protocol $protocol

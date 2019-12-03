@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     using System.Collections.Generic;
     using WindowsAzure.Commands.Common.Attributes;
 
-    public class PSConnectionMonitorEndpoint
+    public class PSNetworkWatcherConnectionMonitorEndpointObject
     {
         public string Name { get; set; }
 
