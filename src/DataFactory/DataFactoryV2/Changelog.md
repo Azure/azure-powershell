@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 Update ADF .Net SDK version to 4.5.0
+* Update references in .psd1 to use relative path
 
 ## Version 1.5.0
 * Update ADF .Net SDK version to 4.4.0
