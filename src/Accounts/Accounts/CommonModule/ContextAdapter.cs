@@ -170,6 +170,11 @@ namespace Microsoft.Azure.Commands.Common
         /// <returns></returns>
         internal async Task AuthorizeRequest(IAzureContext context, string resourceId, HttpRequestMessage request, CancellationToken outerToken)
         {
+            if (context == null || context.Account == null || context.Environment == null)
+            {
+                throw new InvalidOperationException(Resources.InvalidAzureContext);
+            }
+
             await Task.Run(() =>
             {
                 resourceId = context?.Environment?.GetAudienceFromRequestUri(request.RequestUri) ?? resourceId;

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Display user friendly error message when context is null in Az 4.0
 
 ## Version 1.6.4
 * Add a deprecation message for `Resolve-Error` alias.
