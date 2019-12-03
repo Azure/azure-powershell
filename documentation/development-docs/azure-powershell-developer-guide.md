@@ -271,6 +271,14 @@ Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-
     - Use `Assert-Match s1 s2` to verify that the string `s2` matches the regular expression `s1`
     - Use `Assert-NotMatch s1 s2` to verify that the string `s2` does not match the regular expression `s1`
 
+#### Use local files in test
+CI in DevOps will happens under `Debug` folder. So you need to make sure that these files will be copied to that folder during the CI runs. One way to do this is config the `Module.Test.csproj`. There is a example:
+```xml
+  <ItemGroup>
+    <None Update="PemFiles\*.*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+```
+
 ### Using Active Directory
 
 - Use the `Set-TestEnvironment` cmdlet from `Repo-Tasks.psd1` to setup your connection string
