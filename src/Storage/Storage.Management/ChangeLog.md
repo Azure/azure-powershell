@@ -24,6 +24,9 @@
 * Support revoke Storage Account User Delegation Keys, so all Idenity SAS tokens are revoked
     - Revoke-AzStorageAccountUserDelegationKeys
 * Upgrade to Microsoft.Azure.Management.Storage 14.1.0, to support new API version 2019-06-01.
+* Support Share QuotaGiB more than 5120, in Management plane File Share cmdlets
+	- New-AzRmStorageShare
+	- Update-AzRmStorageShare
 * Fix the issue that Set-AzStorageContainerAcl can clean up the stored Access Policy
 	- Set-AzStorageContainerAcl
 
