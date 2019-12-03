@@ -49,9 +49,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 GraphEndpointResourceId = AzureEnvironmentConstants.AzureGraphEndpoint,
                 DataLakeEndpointResourceId = AzureEnvironmentConstants.AzureDataLakeServiceEndpointResourceId,
                 BatchEndpointResourceId = AzureEnvironmentConstants.BatchEndpointResourceId,
-                AdTenant = "Common",
-                AzureAttestationDnsSuffix = AzureEnvironmentConstants.AzureAttestationDnsSuffix,
-                AzureAttestationServiceEndpointResourceId = AzureEnvironmentConstants.AzureAttestationServiceEndpointResourceId
+                AdTenant = "Common"
             };
             azureCloud.SetProperty(ExtendedEndpoint.OperationalInsightsEndpoint, AzureEnvironmentConstants.AzureOperationalInsightsEndpoint);
             azureCloud.SetProperty(ExtendedEndpoint.OperationalInsightsEndpointResourceId, AzureEnvironmentConstants.AzureOperationalInsightsEndpointResourceId);
@@ -279,16 +277,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
-        /// The domain name suffix for Azure Attestation tensnts created in this environment
-        /// </summary>
-        public string AzureAttestationDnsSuffix { get; set; }
-
-        /// <summary>
-        /// The token audience required for communicating with the Azure Attestation service in this environment
-        /// </summary>
-        public string AzureAttestationServiceEndpointResourceId { get; set; }
-
-        /// <summary>
         /// A set of string constants for each of the known environment values - allows users to specify a particular kind of endpoint by name
         /// </summary>
         public static class Endpoint
@@ -311,9 +299,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix",
                 AzureDataLakeStoreFileSystemEndpointSuffix = "AzureDataLakeStoreFileSystemEndpointSuffix",
                 DataLakeEndpointResourceId = "DataLakeEndpointResourceId",
-                BatchEndpointResourceId = "BatchEndpointResourceId",
-                AzureAttestationServiceEndpointResourceId = "AzureAttestationServiceEndpointResourceId",
-                AzureAttestationDnsSuffix = "AzureAttestationDnsSuffix";
+                BatchEndpointResourceId = "BatchEndpointResourceId";
         }
 
         public static class ExtendedEndpoint
