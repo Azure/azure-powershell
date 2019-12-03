@@ -19,7 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 2.1.0
+
+* Azure Site Recovery support to select disk type at enabling protection.
+* Azure Site Recovery bug fix for recovery plan action edit.
+* Azure Backup SQL Restore support to accept filestream DBs.
+* Azure Backup updated SDK version.
+* Azure Backup added support for enabling and disabling soft delete feature for Recovery Services Vault.
+
 ## Version 2.0.1
+
 * Azure Site Recovery support to configure networking resources like NSG, public IP and internal load balancers for Azure to Azure.
 * Azure Site Recovery Support to write to managed disk for vMWare to Azure.
 * Azure Site Recovery Support to NIC reduction for vMWare to Azure.
@@ -28,7 +37,7 @@
 * Azure Site Recovery Support to Standard SSD for Azure to Azure.
 * Azure Site Recovery Support to Azure Disk Encryption two pass for Azure to Azure.
 * Azure Site Recovery Support to protect newly added disk for Azure to Azure.
-* Added SoftDelete feature for VM and added tests for softdelete
+* Added SoftDelete feature for VM and added tests for soft delete.
 
 ## Version 1.4.5
 * Update AzureVMpolicy Object with ProtectedItemsCount Attribute
