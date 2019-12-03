@@ -3299,6 +3299,10 @@
                 <PropertyName>ThreatIntelWhitelistText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>PrivateRange</Label>
+                <PropertyName>PrivateRangeText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Sku</Label>
                 <PropertyName>Sku</PropertyName>
               </ListItem>
