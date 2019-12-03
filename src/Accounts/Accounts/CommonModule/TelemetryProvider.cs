@@ -143,6 +143,7 @@ namespace Microsoft.Azure.Commands.Common
             };
 
             data.CustomProperties.Add("PSPreviewVersion", "4.0.0");
+            data.CustomProperties.Add("UserAgent", "AzurePowershell/Az4.0.0-preview");
 
             if (invocationInfo != null)
             {
