@@ -24,7 +24,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorTestConfigurationObject", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"), OutputType(typeof(PSConnectionMonitorResult))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorTestConfigurationObject", SupportsShouldProcess = true), OutputType(typeof(PSNetworkWatcherConnectionMonitorTestConfigurationObject))]
     public class NetworkWatcherConnectionMonitorTestConfigurationObjectCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
@@ -58,14 +58,14 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The percentage of failed check.")]
         [ValidateNotNullOrEmpty]
-        public Int32 ChecksFailedPercent { get; set; }
+        public Int32 SuccessThresholdChecksFailedPercent { get; set; }
 
         [Alias("RoundTripTime")]
         [Parameter(
             Mandatory = true,
             HelpMessage = "The round trip time in millisecond.")]
         [ValidateNotNullOrEmpty]
-        public Int32 RoundTripTimeMs { get; set; }
+        public Int32 SuccessThresholdRoundTripTimeMs { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network
 
             Validate();
 
-            PSConnectionMonitorTestConfiguration testConfiguration = new PSConnectionMonitorTestConfiguration()
+            PSNetworkWatcherConnectionMonitorTestConfigurationObject testConfiguration = new PSNetworkWatcherConnectionMonitorTestConfigurationObject()
             {
                 Name = this.Name,
                 TestFrequencySec = this.TestFrequencySec,
@@ -87,8 +87,8 @@ namespace Microsoft.Azure.Commands.Network
                 PreferredIPVersion = this.PreferredIPVersion,
                 SuccessThreshold = new PSConnectionMonitorSuccessThreshold()
                 {
-                    ChecksFailedPercent = this.ChecksFailedPercent,
-                    RoundTripTimeMs = this.RoundTripTimeMs
+                    ChecksFailedPercent = this.SuccessThresholdChecksFailedPercent,
+                    RoundTripTimeMs = this.SuccessThresholdRoundTripTimeMs
 
                 }
             };

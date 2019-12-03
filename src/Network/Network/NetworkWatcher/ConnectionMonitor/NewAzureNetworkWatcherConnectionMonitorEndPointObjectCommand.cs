@@ -27,7 +27,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorEndpointObject", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"), OutputType(typeof(PSConnectionMonitorResult))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorEndpointObject", SupportsShouldProcess = true), OutputType(typeof(PSNetworkWatcherConnectionMonitorEndpointObject))]
     public class NewAzureNetworkWatcherConnectionMonitorEndpointObjectCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
@@ -56,9 +56,9 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The list of connection monitor filters.")]
+            HelpMessage = "The connection monitor filter addresses.")]
         [ValidateNotNullOrEmpty]
-        public PSConnectionMonitorFilter Filter { get; set; }
+        public List<string> FilterAddress { get; set; }
 
         public override void Execute()
         {
@@ -66,36 +66,42 @@ namespace Microsoft.Azure.Commands.Network
 
             Validate();
 
-            PSConnectionMonitorEndpoint endPoint = new PSConnectionMonitorEndpoint()
+            PSNetworkWatcherConnectionMonitorEndpointObject endPoint = new PSNetworkWatcherConnectionMonitorEndpointObject()
             {
                 Name = this.Name,
                 ResourceId = this.ResourceId,
                 Address = this.Address,
-                Filter = this.Filter
+                Filter = new PSConnectionMonitorFilter()
+                {
+                    Type = this.FilterType
+                },
             };
+
+            if (this.FilterAddress != null)
+            {
+                endPoint.Filter.Items = new List<PSConnectionMonitorEndpointItem>();
+                foreach (string Address in FilterAddress)
+                {
+                    endPoint.Filter.Items.Add(new PSConnectionMonitorEndpointItem()
+                    {
+                        Type = "AgentAddress",
+                        Address = Address
+                    });
+                };
+            }
 
             WriteObject(endPoint);
         }
 
         public bool Validate()
         {
-            if (this.FilterType != null && String.Compare(FilterType, "Include", true) != 0)
+            if (this.FilterType != null && String.Compare(this.FilterType, "Include", true) != 0)
             {
                 throw new ArgumentException("Only FilterType Include is supported");
             }
-            else if (FilterType != null && this.Filter == null)
+            else if (this.FilterType != null && this.FilterAddress == null)
             {
-                throw new ArgumentException("FilterType defined without Filter");
-            }
-            else
-            {
-                foreach (PSConnectionMonitorEndpointItem cmEndpointItem in this.Filter.Items)
-                {
-                    if (String.Compare(cmEndpointItem.Type, "AgentAddress", true) != 0)
-                    {
-                        throw new ArgumentException("Only AgentAddress is supported");
-                    }
-                }
+                throw new ArgumentException("FilterType defined without FilterAddress");
             }
             return true;
         }

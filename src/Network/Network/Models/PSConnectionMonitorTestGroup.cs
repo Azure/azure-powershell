@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string Name { get; set; }
         public bool? Disable { get; set; }
-        public PSConnectionMonitorTestConfiguration[] TestConfigurations { get; set; }
-        public PSConnectionMonitorEndpoint[] Sources { get; set; }
-        public PSConnectionMonitorEndpoint[] Destinations { get; set; }
+        public PSNetworkWatcherConnectionMonitorTestConfigurationObject[] TestConfigurations { get; set; }
+        public PSNetworkWatcherConnectionMonitorEndpointObject[] Sources { get; set; }
+        public PSNetworkWatcherConnectionMonitorEndpointObject[] Destinations { get; set; }
 
         [JsonIgnore]
         public string TestConfigurationsText

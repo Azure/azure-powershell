@@ -27,7 +27,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorTestGroupObject", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"), OutputType(typeof(PSConnectionMonitorResult))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorTestGroupObject", SupportsShouldProcess = true), OutputType(typeof(PSConnectionMonitorTestGroup))]
     public class NetworkWatcherConnectionMonitorTestGroupObjectCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
@@ -40,19 +40,19 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The list of test configuration.")]
         [ValidateNotNullOrEmpty]
-        public PSConnectionMonitorTestConfiguration[] TestConfiguration { get; set; }
+        public PSNetworkWatcherConnectionMonitorTestConfigurationObject[] TestConfiguration { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The list of source endpoints.")]
         [ValidateNotNullOrEmpty]
-        public PSConnectionMonitorEndpoint[] Source { get; set; }
+        public PSNetworkWatcherConnectionMonitorEndpointObject[] Source { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The list of destination endpoints.")]
         [ValidateNotNullOrEmpty]
-        public PSConnectionMonitorEndpoint[] Destination { get; set; }
+        public PSNetworkWatcherConnectionMonitorEndpointObject[] Destination { get; set; }
 
         [Parameter(
             Mandatory = false,
