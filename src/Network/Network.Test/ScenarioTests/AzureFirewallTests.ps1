@@ -1056,11 +1056,18 @@ function Test-AzureFirewallCRUDwithManagementIpConfig {
         Assert-ThrowsContains { $getAzureFirewall.AddPublicIpAddress("ABCD") } "Cannot convert argument"
         Assert-ThrowsContains { $getAzureFirewall.AddPublicIpAddress($publicip1) } "already attached to firewall"
 
-        # Test handling of incorrect values when setting management IP configuration
-        Assert-ThrowsContains { $getAzureFirewall.SetManagementIpConfiguration() } "Cannot find an overload"
-        Assert-ThrowsContains { $getAzureFirewall.SetManagementIpConfiguration($null) } "Cannot find an overload"
-        Assert-ThrowsContains { $getAzureFirewall.SetManagementIpConfiguration($null, $mgmtPublicIp) } "Virtual Network cannot be null"
-        Assert-ThrowsContains { $getAzureFirewall.SetManagementIpConfiguration("ABCD", "ABCDE") } "Cannot convert argument"
+		# Test handling of incorrect values when setting management IP configuration
+		Assert-ThrowsContains { $getAzureFirewall.SetManagementIpConfiguration() } "Cannot find an overload"
+		Assert-ThrowsContains { $getAzureFirewall.SetManagementIpConfiguration($null) } "Cannot find an overload"
+		Assert-ThrowsContains { $getAzureFirewall.SetManagementIpConfiguration($null, $mgmtPublicIp) } "Virtual Network cannot be null"
+		Assert-ThrowsContains { $getAzureFirewall.SetManagementIpConfiguration("ABCD", "ABCDE") } "Cannot convert argument"
+
+
+        # Test handling of incorrect values when removing public IP Address
+        Assert-ThrowsContains { $getAzureFirewall.RemovePublicIpAddress() } "Cannot find an overload"
+        Assert-ThrowsContains { $getAzureFirewall.RemovePublicIpAddress($null) } "Public IP Address cannot be null"
+        Assert-ThrowsContains { $getAzureFirewall.RemovePublicIpAddress("ABCD") } "Cannot convert argument"
+        Assert-ThrowsContains { $getAzureFirewall.RemovePublicIpAddress($publicip2) } "not attached to firewall"
 
         # Change management public IP address
         $getAzureFirewall.SetManagementIpConfiguration($vnet, $mgmtPublicIp2)
