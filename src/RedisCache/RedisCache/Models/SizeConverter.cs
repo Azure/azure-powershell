@@ -14,6 +14,8 @@
 
 namespace Microsoft.Azure.Commands.RedisCache.Models
 {
+    using Microsoft.Azure.Commands.RedisCache.Properties;
+    using System;
     using System.Collections.Generic;
 
     internal static class SizeConverter
@@ -40,6 +42,26 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public const string P3String = "P3";
         public const string P4String = "P4";
         public const string P5String = "P5";
+
+        private static IList<string> CList = new List<string>()
+        {
+            C0String,
+            C1String,
+            C2String,
+            C3String,
+            C4String,
+            C5String,
+            C6String
+        };
+
+        private static IList<string> PList = new List<string>()
+        {            
+            P1String,
+            P2String,
+            P3String,
+            P4String,
+            P5String         
+        };
 
         private static Dictionary<string, string> skuStringToActualSize = new Dictionary<string, string>{
             { C0String, MB250 },
@@ -119,6 +141,13 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                 return skuStringToActualSize[sizeConstant];
             }
             return null;
+        }
+
+        public static void ValidateSize(string size, bool isPremiumCache)
+        {            
+            if((isPremiumCache && !PList.Contains(size)) || (!isPremiumCache && !CList.Contains(size))) {
+                throw new ArgumentException(Resources.InvalidSize);
+            }
         }
     }
 }

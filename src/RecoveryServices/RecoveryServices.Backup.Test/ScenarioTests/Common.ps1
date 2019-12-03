@@ -148,7 +148,13 @@
 	else
 	{
 		$queryDateString = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Variables[$variableName]
- 		$queryDate = Get-Date $queryDateString
+ 		$month = $queryDateString.Substring(0, 2)
+		$day = $queryDateString.Substring(3, 2)
+		$year = $queryDateString.Substring(6, 4)
+		$hour = $queryDateString.Substring(11, 2)
+		$minute = $queryDateString.Substring(14, 2)
+		$second = $queryDateString.Substring(17, 2)
+		$queryDate = Get-Date -Day $day -Month $month -Year $year -Hour $hour -Minute $minute -Second $second
 	}
  	return $queryDate
 }
