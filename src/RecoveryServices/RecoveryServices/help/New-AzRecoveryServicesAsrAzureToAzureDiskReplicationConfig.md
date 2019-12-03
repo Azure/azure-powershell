@@ -43,10 +43,19 @@ Create a disk mapping object for Azure virtual machine disks to be replicated.Us
 ### Example 2
 ```
 PS C:\> New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStorageAccountId -DiskId $diskId -RecoveryResourceGroupId $RecoveryResourceGroupId `
--RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType  -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+-RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
 ```
 
 Create a managed disk mapping object for Azure virtual machine disks to be replicated.Used during Azure to Azure EnableDr and re-protect operation.
+
+### Example 2
+```
+PS C:\> New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStorageAccountId -DiskId $diskId -RecoveryResourceGroupId $RecoveryResourceGroupId `
+-RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType -DiskEncryptionVaultId $keyVaultId -DiskEncryptionSecretUrl $secret `
+-KeyEncryptionKeyUrl $keyUrl -KeyEncryptionVaultId $keyVaultId
+```
+
+Create a managed disk mapping object with one pass encryption settings for Azure virtual machine disks to be replicated.Used during Azure to Azure EnableDr and re-protect operation.
 
 ## PARAMETERS
 
