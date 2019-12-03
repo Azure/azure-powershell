@@ -50,15 +50,14 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSAzureFirewallThreatIntelWhitelist ThreatIntelWhitelist { get; set; }
 
         public string[] PrivateRange {
-            get 
+            get
             {
-                if (privateRange == null || privateRange.Length == 0)
-                    privateRange = new string[] { IANAPrivateRanges };
                 return this.privateRange; 
             }
             set
             {
-                ValidatePrivateRange(value);
+                if (value != null)
+                    ValidatePrivateRange(value);
                 privateRange = value;
             }
         }
