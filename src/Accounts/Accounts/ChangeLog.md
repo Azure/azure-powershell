@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Set correct UserAgent for client-side telemetry for Az 4.0 preview
 * Display user friendly error message when context is null in Az 4.0
 
 ## Version 1.6.4
