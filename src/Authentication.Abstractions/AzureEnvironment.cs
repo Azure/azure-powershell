@@ -55,6 +55,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             azureCloud.SetProperty(ExtendedEndpoint.OperationalInsightsEndpointResourceId, AzureEnvironmentConstants.AzureOperationalInsightsEndpointResourceId);
             azureCloud.SetProperty(ExtendedEndpoint.AnalysisServicesEndpointSuffix, AzureEnvironmentConstants.AzureAnalysisServicesEndpointSuffix);
             azureCloud.SetProperty(ExtendedEndpoint.AnalysisServicesEndpointResourceId, AzureEnvironmentConstants.AzureAnalysisServicesEndpointResourceId);
+            azureCloud.SetProperty(ExtendedEndpoint.AzureAttestationServiceEndpointSuffix, AzureEnvironmentConstants.AzureAttestationServiceEndpointSuffix);
+            azureCloud.SetProperty(ExtendedEndpoint.AzureAttestationServiceEndpointResourceId, AzureEnvironmentConstants.AzureAttestationServiceEndpointResourceId);
             var azureChina = new AzureEnvironment
             {
                 Name = EnvironmentName.AzureChinaCloud,
@@ -307,7 +309,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             public const string OperationalInsightsEndpointResourceId = "OperationalInsightsEndpointResourceId",
                 OperationalInsightsEndpoint = "OperationalInsightsEndpoint",
                 AnalysisServicesEndpointSuffix = "AzureAnalysisServicesEndpointSuffix",
-                AnalysisServicesEndpointResourceId = "AnalysisServicesEndpointResourceId";
+                AnalysisServicesEndpointResourceId = "AnalysisServicesEndpointResourceId",
+                AzureAttestationServiceEndpointSuffix = "AzureAttestationServiceEndpointSuffix",
+                AzureAttestationServiceEndpointResourceId = "AzureAttestationServiceEndpointResourceId";
         }
     }
 }
