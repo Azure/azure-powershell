@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
         public const string Access_Anomaly = "Access_Anomaly";
         public const string Data_Exfiltration = "Data_Exfiltration";
         public const string Unsafe_Action = "Unsafe_Action";
+        public const string Brute_Force = "Brute_Force";
         public const string None = "None";
     }
 }
