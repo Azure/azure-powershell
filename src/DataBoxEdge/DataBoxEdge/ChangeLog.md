@@ -20,6 +20,7 @@
 
 
 ## Upcoming Release
+* Update references in .psd1 to use relative path
 
 ## Version 1.0.0
 * Added cmdlet `Get-AzDataBoxEdgeOrder`

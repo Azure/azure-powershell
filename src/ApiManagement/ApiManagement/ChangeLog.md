@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update references in .psd1 to use relative path
 
 ## Version 1.3.2
 * **Set-AzApiManagementApi** - Added support for Updating Api into ApiVersionSet
