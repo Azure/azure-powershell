@@ -80,7 +80,7 @@ function Test-AzureFirewallCRUD {
     $networkRule1Protocol3 = "ICMP"
     $networkRule1DestinationPort1 = "90"
 
-	# AzureFirewallNetworkRule 2
+    # AzureFirewallNetworkRule 2
     $networkRule2Name = "networkRule2"
     $networkRule2Desc = "desc2"
     $networkRule2SourceAddress1 = "10.0.0.0"
@@ -107,7 +107,7 @@ function Test-AzureFirewallCRUD {
     $natRule1TranslatedAddress = "10.1.2.3"
     $natRule1TranslatedPort = "91"
 
-	# AzureFirewallNatRule 2
+    # AzureFirewallNatRule 2
     $natRule2Name = "natRule2"
     $natRule2Desc = "desc2"
     $natRule2SourceAddress1 = "10.0.0.0"
@@ -1172,7 +1172,7 @@ function Test-AzureFirewallThreatIntelWhitelistCRUD {
     $publicIpName = Get-ResourceName
 
     $threatIntelWhitelist1 = New-AzFirewallThreatIntelWhitelist -FQDN @("*.microsoft.com", "microsoft.com") -IpAddress @("8.8.8.8", "1.1.1.1")
-    $threatIntelWhitelist2 = New-AzFirewallThreatIntelWhitelist -IpAddress @("  2.2.2.2  ","  3.3.3.3  ") -FQDN @("  bing.com  ",  "yammer.com  ")
+    $threatIntelWhitelist2 = New-AzFirewallThreatIntelWhitelist -IpAddress @("  2.2.2.2  ", "  3.3.3.3  ") -FQDN @("  bing.com  ", "yammer.com  ")
 
     try {
         # Create the resource group
@@ -1204,8 +1204,9 @@ function Test-AzureFirewallThreatIntelWhitelistCRUD {
         # Cleanup
         Clean-ResourceGroup $rgname
     }
+}
 
-	<#
+<#
 .SYNOPSIS
 Tests AzureFirewall PrivateRange
 #>
@@ -1220,7 +1221,7 @@ function Test-AzureFirewallPrivateRangeCRUD {
     $publicIpName = Get-ResourceName
 
     $privateRange1 = @("IANAPrivateRanges", "0.0.0.0/0", "66.92.0.0/16")
-	$privateRange2 = @("3.3.0.0/24", "98.0.0.0/8")
+    $privateRange2 = @("3.3.0.0/24", "98.0.0.0/8")
     
     try {
         # Create the resource group
