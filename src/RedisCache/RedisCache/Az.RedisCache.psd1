@@ -122,7 +122,7 @@ PrivateData = @{
 * Added validation on ''-Size'' parameter for ''Set-AzRedisCache'' and ''New-AzRedisCache'' cmdlets'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
