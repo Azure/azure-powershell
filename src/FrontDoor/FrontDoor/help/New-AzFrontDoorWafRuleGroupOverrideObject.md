@@ -14,8 +14,8 @@ Create RuleGroupOverride Object for WAF policy creation
 
 ```
 New-AzFrontDoorWafRuleGroupOverrideObject -RuleGroupName <String>
- [-ManagedRuleOverride <PSAzureManagedRuleOverride[]>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ManagedRuleOverride <PSAzureManagedRuleOverride[]>] [-Exclusion <PSManagedRuleExclusion[]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +46,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Exclusion
+Exclusion
+
+```yaml
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRuleExclusion[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

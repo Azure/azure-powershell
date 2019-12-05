@@ -1,0 +1,13 @@
+{
+  "if": {
+    "field": "Microsoft.DataCatalog.Data/catalog/entity/type",
+    "equals": "foo"
+  },
+  "then": {
+    "effect": "ModifyClassifications",
+    "details": {
+      "classificationsToAdd": [ "invalid" ],
+      "classificationsToRemove": [ "valid" ]
+    }
+  }
+}

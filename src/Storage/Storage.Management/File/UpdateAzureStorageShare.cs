@@ -97,6 +97,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public PSShare InputObject { get; set; }
 
+        [Alias("Quota")]
         [Parameter(Mandatory = false,
             HelpMessage = "Share Quota in Gibibyte.")]
         public int QuotaGiB
