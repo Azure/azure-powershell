@@ -22,11 +22,9 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallNatRule", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(PSAzureFirewallNatRule))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallNatRule", SupportsShouldProcess = true, DefaultParameterSetName = AzureFirewallApplicationRuleParameterSets.Default), OutputType(typeof(PSAzureFirewallNatRule))]
     public class NewAzureFirewallNatRuleCommand : AzureFirewallBaseCmdlet
     {
-        private const string DefaultParameterSet = "Default";
-
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the NAT Rule")]
@@ -41,14 +39,16 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = AzureFirewallApplicationRuleParameterSets.BySourceAddress,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.Default,
             HelpMessage = "The source addresses of the rule")]
+        [Parameter(Mandatory = false, ParameterSetName = AzureFirewallApplicationRuleParameterSets.BySourceIpGroup)]
         public string[] SourceAddress { get; set; }
 
         [Parameter(
             Mandatory = true,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.BySourceIpGroup,
             HelpMessage = "The source ipgroup of the rule")]
+        [Parameter(Mandatory = false, ParameterSetName = AzureFirewallApplicationRuleParameterSets.Default)]
         public string[] SourceIpGroup { get; set; }
 
         [Parameter(

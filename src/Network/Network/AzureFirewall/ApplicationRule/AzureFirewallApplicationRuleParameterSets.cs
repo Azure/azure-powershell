@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     public static class AzureFirewallApplicationRuleParameterSets
     {
+        public const string Default = @"Default";
         public const string TargetFqdn = @"TargetFqdn";
 
         public const string FqdnTag = @"FqdnTag";
