@@ -15,12 +15,35 @@ Creates a Firewall Network Rule.
 
 ```
 New-AzFirewallNetworkRule -Name <String> [-Description <String>] -SourceAddress <String[]>
- -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]>
+ [-DestinationAddress <String[]>] [-DestinationIpGroup <String[]>]
+ [-DestinationFqdn <String[]>] -DestinationPort <String[]> -Protocol <String[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-## DESCRIPTION
-The **New-AzFirewallNetworkRule** cmdlet creates an network rule for Azure Firewall.
+### SourceIpGroup
+```
+New-AzFirewallNetworkRule -Name <String> [-Description <String>]
+ -SourceIpGroup <String[]> [-DestinationAddress <String[]>] [-DestinationIpGroup <String[]>]
+ [-DestinationFqdn <String[]>] -DestinationPort <String[]> -Protocol <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+
+### DestinationAddress
+```
+New-AzFirewallNetworkRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
+ [-SourceIpGroup <String[]>] -DestinationAddress <String[]> 
+ [-DestinationFqdn <String[]>] -DestinationPort <String[]> -Protocol <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DestinationIpGroup
+```
+New-AzFirewallNetworkRule -Name <String> [-Description <String>] [-SourceIpGroup <String[]>]
+ -DestinationIpGroup <String[]> [-DestinationFqdn <String[]>]
+ -DestinationPort <String[]> -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
 
 ## EXAMPLES
 

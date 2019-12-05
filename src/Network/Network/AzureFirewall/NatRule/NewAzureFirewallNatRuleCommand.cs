@@ -40,8 +40,13 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "The source addresses of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] SourceAddress { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.BySourceIpGroup,
+            HelpMessage = "The source ipgroup of the rule")]
+        public string[] SourceIpGroup { get; set; }
 
         [Parameter(
             Mandatory = true,

@@ -15,8 +15,17 @@ Creates a Firewall NAT Rule.
 
 ```
 New-AzFirewallNatRule -Name <String> [-Description <String>] -SourceAddress <String[]>
- -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]> -TranslatedAddress <String>
- -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]>
+ [-TranslatedAddress <String>] [-TranslatedFqdn <String>] -TranslatedPort <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SourceIpGroup
+```
+New-AzFirewallNatRule -Name <String> [-Description <String>]
+ -SourceIpGroup <String[]> -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]>
+ [-TranslatedAddress <String>] [-TranslatedFqdn <String>] -TranslatedPort <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

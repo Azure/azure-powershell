@@ -13,7 +13,21 @@ Creates a Firewall Application Rule.
 
 ## SYNTAX
 
-### TargetFqdn (Default)
+### Default (Default)
+```
+New-AzFirewallApplicationRule -Name <String> [-Description <String>] -SourceAddress <String[]>
+[-TargetFqdn <String[]>] [-FqdnTag <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SourceIpGroup
+```
+New-AzFirewallApplicationRule -Name <String> [-Description <String>] 
+ -SourceIpGroup <String[]> [-TargetFqdn <String[]>] [-FqdnTag <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### TargetFqdn
 ```
 New-AzFirewallApplicationRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
  -TargetFqdn <String[]> -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
