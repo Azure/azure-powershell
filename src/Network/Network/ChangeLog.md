@@ -21,6 +21,9 @@
 ## Upcoming Release
 * Change `Start-AzVirtualNetworkGatewayConnectionPacketCapture.md` and `Start-AzVirtualnetworkGatewayPacketCapture.md` FilterData option examples.
 * Support for IpGroups in AzureFirewall Application,Nat & Network Rules.
+* Add `PrivateRange` parameter to `AzureFirewall`
+	- Updated cmdlet:
+		- New-AzFirewall
 
 ## Version 2.0.0
 * Change all cmdlets for PrivateEndpointConnection to support generic service provider.
