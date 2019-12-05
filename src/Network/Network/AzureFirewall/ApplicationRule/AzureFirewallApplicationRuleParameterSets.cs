@@ -19,5 +19,12 @@ namespace Microsoft.Azure.Commands.Network
         public const string TargetFqdn = @"TargetFqdn";
 
         public const string FqdnTag = @"FqdnTag";
+
+        public const string BySourceAddress = @"SourceAddress";
+        public const string BySourceIpGroup = @"SourceIpGroup";
+
+        public const string ByDestinationAddress = @"DestinationAddress";
+        public const string ByDestinationIpGroup = @"DestinationIpGroup";
+
     }
 }

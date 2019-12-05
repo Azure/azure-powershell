@@ -22,9 +22,11 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallNetworkRule", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallNetworkRule))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallNetworkRule", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(PSAzureFirewallNetworkRule))]
     public class NewAzureFirewallNetworkRuleCommand : AzureFirewallBaseCmdlet
     {
+        private const string DefaultParameterSet = "Default";
+
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the Network Rule")]
@@ -38,27 +40,27 @@ namespace Microsoft.Azure.Commands.Network
         public string Description { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.BySourceAddress,
             HelpMessage = "The source addresses of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] SourceAddress { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.BySourceIpGroup,
         HelpMessage = "The source ipgroup of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] SourceIpGroup { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.ByDestinationAddress,
             HelpMessage = "The destination addresses of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] DestinationAddress { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.ByDestinationIpGroup,
         HelpMessage = "The destination ipgroup of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] DestinationIpGroup { get; set; }
 
         [Parameter(
@@ -103,13 +105,10 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // One of DestinationAddress or DestinationFqdns must be present
-            if ((DestinationAddress == null) && (DestinationFqdn == null))
+            if ((DestinationAddress == null) && (DestinationFqdn == null) && (DestinationIpGroup == null))
             {
-                throw new ArgumentException("Either DestinationAddress or DestinationFqdns is required");
+                throw new ArgumentException("Either of DestinationAddress or DestinationIpGroup or DestinationFqdns is required");
             }
-
-            Array.ForEach(this.SourceIpGroup,r => ValidateIsIpGroup(r));
-            Array.ForEach(this.DestinationIpGroup,r => ValidateIsIpGroup(r));
 
             var networkRule = new PSAzureFirewallNetworkRule
             {

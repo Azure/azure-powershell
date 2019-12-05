@@ -22,9 +22,11 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallNatRule", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallNatRule))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallNatRule", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(PSAzureFirewallNatRule))]
     public class NewAzureFirewallNatRuleCommand : AzureFirewallBaseCmdlet
     {
+        private const string DefaultParameterSet = "Default";
+
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the NAT Rule")]
@@ -38,15 +40,15 @@ namespace Microsoft.Azure.Commands.Network
         public string Description { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.BySourceAddress,
             HelpMessage = "The source addresses of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] SourceAddress { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.BySourceIpGroup,
             HelpMessage = "The source ipgroup of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] SourceIpGroup { get; set; }
 
         [Parameter(
@@ -131,7 +133,6 @@ namespace Microsoft.Azure.Commands.Network
                 ValidateIsSinglePortNotRange(DestinationPort.Single());
                 ValidateIsSinglePortNotRange(TranslatedPort);
 
-                Array.ForEach(this.SourceIpGroup,r => ValidateIsIpGroup(r));
             }
 
             var natRule = new PSAzureFirewallNatRule
