@@ -57,7 +57,11 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingAccounts
 
                 if (ParameterSetName.Equals(Constants.ParameterSetNames.ListParameterSet))
                 {
-                    WriteObject(BillingManagementClient.BillingAccounts.List(expand).Value.Select(x => new PSBillingAccount(x)), true);
+                    WriteObject(
+                        string.IsNullOrWhiteSpace(expand)
+                            ? BillingManagementClient.BillingAccounts.List().Value.Select(x => new PSBillingAccount(x))
+                            : BillingManagementClient.BillingAccounts.List(expand).Value
+                                .Select(x => new PSBillingAccount(x)), true);
                     return;
                 }
 
@@ -67,7 +71,9 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingAccounts
                     {
                         try
                         {
-                            var billingAccount = new PSBillingAccount(BillingManagementClient.BillingAccounts.Get(billingAccountName, expand));
+                            var billingAccount = new PSBillingAccount(string.IsNullOrWhiteSpace(expand)
+                                ? BillingManagementClient.BillingAccounts.Get(billingAccountName)
+                                : BillingManagementClient.BillingAccounts.Get(billingAccountName, expand));
                             WriteObject(billingAccount);
                         }
                         catch (ErrorResponseException error)

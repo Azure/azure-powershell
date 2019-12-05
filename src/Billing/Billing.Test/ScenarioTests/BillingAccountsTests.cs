@@ -46,6 +46,20 @@ namespace Microsoft.Azure.Commands.Billing.Test.ScenarioTests
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListBillingAccountsWithBillingProfiles()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListBillingAccountsWithBillingProfiles");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListBillingAccountsWithInvoiceSections()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListBillingAccountsWithInvoiceSections");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetBillingAccountWithName()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetBillingAccountWithName");

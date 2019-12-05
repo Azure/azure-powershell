@@ -51,6 +51,47 @@ function Test-ListBillingAccountsWithAddress
 
 <#
 .SYNOPSIS
+List billing accounts with billing profiles
+#>
+function Test-ListBillingAccountsWithBillingProfiles
+{
+    $billingAccounts = Get-AzBillingAccount -ExpandBillingProfiles
+
+    Assert-True {$billingAccounts.Count -ge 1}
+	Assert-NotNull $billingAccounts[0].Name
+	Assert-NotNull $billingAccounts[0].Id
+	Assert-NotNull $billingAccounts[0].Type
+	Assert-NotNull $billingAccounts[0].DisplayName
+	Assert-NotNull $billingAccounts[0].AgreementType
+	Assert-NotNull $billingAccounts[0].BillingProfiles
+	Assert-True {$billingAccounts[0].BillingProfiles.Count -ge 1}
+	Assert-NotNull $billingAccounts[0].BillingProfiles[0].Address
+	Assert-Null $billingAccounts[0].Address
+}
+
+<#
+.SYNOPSIS
+List billing accounts with invoice sections
+#>
+function Test-ListBillingAccountsWithInvoiceSections
+{
+    $billingAccounts = Get-AzBillingAccount -ExpandInvoiceSections
+
+    Assert-True {$billingAccounts.Count -ge 1}
+	Assert-NotNull $billingAccounts[0].Name
+	Assert-NotNull $billingAccounts[0].Id
+	Assert-NotNull $billingAccounts[0].Type
+	Assert-NotNull $billingAccounts[0].DisplayName
+	Assert-NotNull $billingAccounts[0].AgreementType	
+	Assert-NotNull $billingAccounts[0].BillingProfiles
+	Assert-True {$billingAccounts[0].BillingProfiles.Count -ge 1}
+	Assert-NotNull $billingAccounts[0].BillingProfiles[0].InvoiceSections
+	Assert-True {$billingAccounts[0].BillingProfiles[0].InvoiceSections.Count -ge 1}
+	Assert-Null $billingAccounts[0].Address
+}
+
+<#
+.SYNOPSIS
 Get billing account with specified name
 #>
 function Test-GetBillingAccountWithName
