@@ -41,10 +41,6 @@ namespace Microsoft.Azure.Commands.Network
            ParameterSetName = AzureFirewallApplicationRuleParameterSets.Default,
            HelpMessage = "The source ipgroup of the rule")]
         [Parameter(
-           Mandatory = false,
-           ParameterSetName = AzureFirewallApplicationRuleParameterSets.BySourceIpGroup,
-           HelpMessage = "The source ipgroup of the rule")]
-        [Parameter(
             Mandatory = false,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.TargetFqdn,
             HelpMessage = "The target FQDNs of the rule")]
@@ -54,10 +50,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The FQDN Tags of the rule")]
         public string[] SourceAddress { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = AzureFirewallApplicationRuleParameterSets.Default,
-            HelpMessage = "The source addresses of the rule")]
         [Parameter(
             Mandatory = false,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.TargetFqdn,

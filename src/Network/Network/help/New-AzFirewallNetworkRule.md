@@ -16,14 +16,14 @@ Creates a Firewall Network Rule.
 ### Default (Default)
 ```
 New-AzFirewallNetworkRule -Name <String> [-Description <String>] -SourceAddress <String[]>
- [-SourceIpGroup <String[]>] [-DestinationAddress <String[]>] [-DestinationIpGroup <String[]>]
+ [-DestinationAddress <String[]>] [-DestinationIpGroup <String[]>]
  [-DestinationFqdn <String[]>] -DestinationPort <String[]> -Protocol <String[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SourceIpGroup
 ```
-New-AzFirewallNetworkRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
+New-AzFirewallNetworkRule -Name <String> [-Description <String>]
  -SourceIpGroup <String[]> [-DestinationAddress <String[]>] [-DestinationIpGroup <String[]>]
  [-DestinationFqdn <String[]>] -DestinationPort <String[]> -Protocol <String[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -33,7 +33,7 @@ New-AzFirewallNetworkRule -Name <String> [-Description <String>] [-SourceAddress
 ### DestinationAddress
 ```
 New-AzFirewallNetworkRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
- [-SourceIpGroup <String[]>] -DestinationAddress <String[]> [-DestinationIpGroup <String[]>]
+ [-SourceIpGroup <String[]>] -DestinationAddress <String[]> 
  [-DestinationFqdn <String[]>] -DestinationPort <String[]> -Protocol <String[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -41,7 +41,7 @@ New-AzFirewallNetworkRule -Name <String> [-Description <String>] [-SourceAddress
 ### DestinationIpGroup
 ```
 New-AzFirewallNetworkRule -Name <String> [-Description <String>] [-SourceIpGroup <String[]>]
- [-DestinationAddress <String[]>] -DestinationIpGroup <String[]> [-DestinationFqdn <String[]>]
+ -DestinationIpGroup <String[]> [-DestinationFqdn <String[]>]
  -DestinationPort <String[]> -Protocol <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```

@@ -17,14 +17,14 @@ Creates a Firewall NAT Rule.
 ### Default (Default)
 ```
 New-AzFirewallNatRule -Name <String> [-Description <String>] -SourceAddress <String[]>
- [-SourceIpGroup <String[]>] -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]>
+ -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]>
  [-TranslatedAddress <String>] [-TranslatedFqdn <String>] -TranslatedPort <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SourceIpGroup
 ```
-New-AzFirewallNatRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
+New-AzFirewallNatRule -Name <String> [-Description <String>]
  -SourceIpGroup <String[]> -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]>
  [-TranslatedAddress <String>] [-TranslatedFqdn <String>] -TranslatedPort <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]

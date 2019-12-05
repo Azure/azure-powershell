@@ -16,13 +16,13 @@ Creates a Firewall Application Rule.
 ### Default (Default)
 ```
 New-AzFirewallApplicationRule -Name <String> [-Description <String>] -SourceAddress <String[]>
- [-SourceIpGroup <String[]>] [-TargetFqdn <String[]>] [-FqdnTag <String[]>]
+[-TargetFqdn <String[]>] [-FqdnTag <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SourceIpGroup
 ```
-New-AzFirewallApplicationRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
+New-AzFirewallApplicationRule -Name <String> [-Description <String>] 
  -SourceIpGroup <String[]> [-TargetFqdn <String[]>] [-FqdnTag <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```

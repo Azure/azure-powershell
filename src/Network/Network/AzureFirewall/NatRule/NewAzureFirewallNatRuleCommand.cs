@@ -41,14 +41,12 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.Default,
             HelpMessage = "The source addresses of the rule")]
-        [Parameter(Mandatory = false, ParameterSetName = AzureFirewallApplicationRuleParameterSets.BySourceIpGroup)]
         public string[] SourceAddress { get; set; }
 
         [Parameter(
             Mandatory = true,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.BySourceIpGroup,
             HelpMessage = "The source ipgroup of the rule")]
-        [Parameter(Mandatory = false, ParameterSetName = AzureFirewallApplicationRuleParameterSets.Default)]
         public string[] SourceIpGroup { get; set; }
 
         [Parameter(
