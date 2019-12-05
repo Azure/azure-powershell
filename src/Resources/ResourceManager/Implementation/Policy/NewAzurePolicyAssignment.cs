@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     Description = this.Description ?? null,
                     Scope = this.Scope,
                     NotScopes = this.NotScope ?? null,
-                    Metadata = this.Metadata == null ? null : JObject.Parse(this.GetObjectFromParameter(this.Metadata).ToString()),
+                    Metadata = this.Metadata == null ? null : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata)),
                     EnforcementMode = EnforcementMode ?? PolicyAssignmentEnforcementMode.Default,
                     Parameters = this.GetParameters(this.PolicyParameter, this.PolicyParameterObject)
                 }
