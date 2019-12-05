@@ -126,8 +126,9 @@ The protocols of the rule
 
 ```yaml
 Type: System.String[]
-Parameter Sets: TargetFqdn
+Parameter Sets: (All)
 Aliases:
+Accepted values: Any, TCP, UDP, ICMP
 
 Required: True
 Position: Named
@@ -178,7 +179,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-```yaml
 Type: System.String[]
 Parameter Sets: SourceIpGroup
 Aliases:
@@ -205,12 +205,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-```yaml
-Type: System.String[]
-Parameter Sets: TargetFqdn
-Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
