@@ -12,15 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Billing.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using ApiInvoice = Microsoft.Azure.Management.Billing.Models.Invoice;
+using ApiInvoiceSection = Microsoft.Azure.Management.Billing.Models.InvoiceSection;
 
 namespace Microsoft.Azure.Commands.Billing.Models
 {
-    public class PSInvoice
+    public class PSInvoiceSection
     {
         public string Id { get; private set; }
 
@@ -28,18 +24,21 @@ namespace Microsoft.Azure.Commands.Billing.Models
 
         public string Type { get; private set; }
 
-        public DateTime? InvoicePeriodStartDate { get; private set; }
-
-        public DateTime? InvoicePeriodEndDate { get; private set; }
-
-        public string DownloadUrl { get; set; }
-
-        public DateTime? DownloadUrlExpiry { get; set; }
-
-        public List<string> BillingPeriodNames { get; set; }
-
-        public PSInvoice()
+        public string DisplayName { get; private set; }
+        
+        public PSInvoiceSection()
         {
+        }
+
+        public PSInvoiceSection(ApiInvoiceSection invoiceSection)
+        {
+            if (invoiceSection != null)
+            {
+                this.Id = invoiceSection.Id;
+                this.Type = invoiceSection.Type;
+                this.Name = invoiceSection.Name;
+                this.DisplayName = invoiceSection.DisplayName;
+            }
         }
     }
 }

@@ -19,9 +19,11 @@ using Microsoft.Azure.Management.Billing.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Billing.Cmdlets.Invoices
 {
+    [CmdletDeprecation("2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BillingInvoice", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet), OutputType(typeof(PSInvoice))]
     public class GetAzureRmBillingInvoice : AzureBillingCmdletBase
     {
@@ -50,14 +52,13 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.Invoices
                 {
                     string expand = this.GenerateDownloadUrl.IsPresent ? DownloadUrlExpand : null;
 
-                    WriteObject(BillingManagementClient.Invoices.List(expand, null, null, MaxCount).Select(x => new PSInvoice(x)), true);
+                    WriteObject(new List<PSInvoice>());
                     return;
                 }
 
                 if (ParameterSetName.Equals(Constants.ParameterSetNames.LatestItemParameterSet))
                 {
-                    Invoice invoice = BillingManagementClient.Invoices.GetLatest();
-                    WriteObject(new PSInvoice(invoice));
+                    WriteObject(new PSInvoice());
                 }
                 else if (ParameterSetName.Equals(Constants.ParameterSetNames.SingleItemParameterSet))
                 {
@@ -65,7 +66,7 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.Invoices
                     {
                         try
                         {
-                            var invoice = new PSInvoice(BillingManagementClient.Invoices.Get(invoiceName));
+                            var invoice = new PSInvoice();
                             WriteObject(invoice);
                         }
                         catch (ErrorResponseException error)

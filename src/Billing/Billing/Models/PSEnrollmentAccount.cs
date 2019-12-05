@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using ApiEnrollmentAccount = Microsoft.Azure.Management.Billing.Models.EnrollmentAccount;
-
 namespace Microsoft.Azure.Commands.Billing.Models
 {
     public class PSEnrollmentAccount
@@ -24,15 +22,6 @@ namespace Microsoft.Azure.Commands.Billing.Models
         
         public PSEnrollmentAccount()
         {
-        }
-
-        public PSEnrollmentAccount(ApiEnrollmentAccount enrollmentAccount)
-        {
-            if (enrollmentAccount != null)
-            {
-                this.ObjectId = enrollmentAccount.Name;
-                this.PrincipalName = enrollmentAccount.PrincipalName;
-            }
         }
     }
 }
