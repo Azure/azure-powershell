@@ -36,7 +36,7 @@ List billing accounts with Address
 #>
 function Test-ListBillingAccountsWithAddress
 {
-    $billingAccounts = Get-AzBillingAccount -PopulateAddress
+    $billingAccounts = Get-AzBillingAccount -IncludeAddress
 
     Assert-True {$billingAccounts.Count -ge 1}
 	Assert-NotNull $billingAccounts[0].Name

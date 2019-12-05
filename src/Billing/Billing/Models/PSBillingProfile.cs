@@ -59,8 +59,17 @@ namespace Microsoft.Azure.Commands.Billing.Models
                 this.InvoiceEmailOptIn = billingProfile.InvoiceEmailOptIn;
                 this.InvoiceDay = billingProfile.InvoiceDay;
                 this.Currency = billingProfile.Currency;
-                this.EnabledAzurePlans = billingProfile.EnabledAzurePlans.Select(azurePlan => new PSAzurePlan(azurePlan));
-                this.InvoiceSections = billingProfile.InvoiceSections.Select(invoiceSection => new PSInvoiceSection(invoiceSection));
+                if (billingProfile.EnabledAzurePlans != null)
+                {
+                    this.EnabledAzurePlans =
+                        billingProfile.EnabledAzurePlans.Select(azurePlan => new PSAzurePlan(azurePlan));
+                }
+
+                if (billingProfile.InvoiceSections != null)
+                {
+                    this.InvoiceSections =
+                        billingProfile.InvoiceSections.Select(invoiceSection => new PSInvoiceSection(invoiceSection));
+                }
             }
         }
     }

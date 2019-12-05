@@ -36,25 +36,24 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingAccounts
         [ValidateNotNullOrEmpty]
         public List<string> Name { get; set; }
         
-        [Parameter(Mandatory = false, HelpMessage = "Populate the address for this billing accounts.", ParameterSetName = Constants.ParameterSetNames.ListParameterSet)]
-        public SwitchParameter PopulateAddress { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Populate the address for this billing accounts.")]
+        public SwitchParameter IncludeAddress { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Expand the billing profiles under the billing accounts.", ParameterSetName = Constants.ParameterSetNames.ListParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Expand the billing profiles under the billing accounts.")]
         public SwitchParameter ExpandBillingProfiles { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Expand the billing profiles and invoice sections under the billing profiles.", ParameterSetName = Constants.ParameterSetNames.ListParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Expand the billing profiles and invoice sections under the billing profiles.")]
         public SwitchParameter ExpandInvoiceSections { get; set; }
 
         public override void ExecuteCmdlet()
         {
             try
             {
-
                 var expand = this.ExpandBillingProfiles.IsPresent ? BillingProfilesExpand : null;
 
                 expand += this.ExpandInvoiceSections.IsPresent ? string.IsNullOrWhiteSpace(expand) ? InvoiceSectionsExpand : "," + InvoiceSectionsExpand : null;
 
-                expand += this.PopulateAddress.IsPresent ? string.IsNullOrWhiteSpace(expand) ? AddressExpand : "," + AddressExpand : null;
+                expand += this.IncludeAddress.IsPresent ? string.IsNullOrWhiteSpace(expand) ? AddressExpand : "," + AddressExpand : null;
 
                 if (ParameterSetName.Equals(Constants.ParameterSetNames.ListParameterSet))
                 {
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingAccounts
                     {
                         try
                         {
-                            var billingAccount = new PSBillingAccount(BillingManagementClient.BillingAccounts.Get(billingAccountName));
+                            var billingAccount = new PSBillingAccount(BillingManagementClient.BillingAccounts.Get(billingAccountName, expand));
                             WriteObject(billingAccount);
                         }
                         catch (ErrorResponseException error)

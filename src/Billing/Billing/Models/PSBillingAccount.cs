@@ -45,10 +45,18 @@ namespace Microsoft.Azure.Commands.Billing.Models
                 this.Id = billingAccount.Id;
                 this.Type = billingAccount.Type;
                 this.Name = billingAccount.Name;
-                this.DisplayName = billingAccount.DisplayName;
-                this.Address = new PSAddressDetails(billingAccount.Address);
                 this.AgreementType = billingAccount.AgreementType;
-                this.BillingProfiles = billingAccount.BillingProfiles.Select(billingProfile => new PSBillingProfile(billingProfile));
+                this.DisplayName = billingAccount.DisplayName;
+                if (billingAccount.Address != null)
+                {
+                    this.Address = new PSAddressDetails(billingAccount.Address);
+                }
+
+                if (billingAccount.BillingProfiles != null)
+                {
+                    this.BillingProfiles =
+                        billingAccount.BillingProfiles.Select(billingProfile => new PSBillingProfile(billingProfile));
+                }
             }
         }
     }

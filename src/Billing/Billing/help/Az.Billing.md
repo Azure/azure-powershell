@@ -50,3 +50,6 @@ Remove a budget in either a subscription or a resource group.
 ### [Set-AzConsumptionBudget](Set-AzConsumptionBudget.md)
 Update a budget in either a subscription or a resource group.
 
+### [Get-AzBillingAccount](Get-AzBillingAccount.md)
+Get billing accounts.
+

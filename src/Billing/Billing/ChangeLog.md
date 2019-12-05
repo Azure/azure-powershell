@@ -20,6 +20,11 @@
 ## Upcoming Release
 
 ## Version 1.0.1
+* Add Get-AzBillingAccount cmdlet
+* Breaking changes
+    - Get-AzBillingPeriod, Get-AzEnrollmentAccount cmdlets are deprecated.
+
+## Version 1.0.1
 * Fixed miscellaneous typos across module
 
 ## Version 1.0.0
