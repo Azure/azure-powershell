@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Update references in .psd1 to use relative path
 
 ## Version 1.4.0
 * Introduced UrlRewriteAction and CacheKeyQueryStringAction to RulesEngine.

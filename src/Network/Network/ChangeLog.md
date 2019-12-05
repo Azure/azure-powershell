@@ -19,9 +19,13 @@
 --->
 
 ## Upcoming Release
+* Update references in .psd1 to use relative path
 
 ## Version 2.1.0
 * Change `Start-AzVirtualNetworkGatewayConnectionPacketCapture.md` and `Start-AzVirtualnetworkGatewayPacketCapture.md` FilterData option examples.
+* Add `PrivateRange` parameter to `AzureFirewall`
+	- Updated cmdlet:
+		- New-AzFirewall
 
 ## Version 2.0.0
 * Change all cmdlets for PrivateEndpointConnection to support generic service provider.

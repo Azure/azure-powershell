@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var listFilter = this.GetListFilter(this.Builtin, this.Custom);
             PaginatedResponseHelper.ForEach(
-                getFirstPage: () => this.GetResources(),
+                getFirstPage: () => this.GetResources(listFilter),
                 getNextPage: nextLink => this.GetNextLink<JObject>(nextLink),
                 cancellationToken: this.CancellationToken,
                 action: resources => this.WriteObject(sendToPipeline: this.GetFilteredOutputObjects("PolicyDefinitionId", listFilter, resources), enumerateCollection: true));
@@ -103,9 +103,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Queries the ARM cache and returns the cached resource that match the query specified.
         /// </summary>
-        private async Task<ResponseWithContinuation<JObject[]>> GetResources()
+        /// <param name="policyTypeFilter">The policy type filter.</param>
+        private async Task<ResponseWithContinuation<JObject[]>> GetResources(ListFilter policyTypeFilter)
         {
             string resourceId = this.GetResourceId();
+            var odataFilter = policyTypeFilter != ListFilter.None ? string.Format(PolicyCmdletBase.PolicyTypeFilterFormat, policyTypeFilter.ToString()) : null;
 
             var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyDefinitionApiVersion : this.ApiVersion;
 
@@ -150,7 +152,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .ListObjectColleciton<JObject>(
                     resourceCollectionId: resourceId,
                     apiVersion: apiVersion,
-                    cancellationToken: this.CancellationToken.Value)
+                    cancellationToken: this.CancellationToken.Value,
+                    odataQuery: odataFilter)
                 .ConfigureAwait(continueOnCapturedContext: false);
             }
         }
