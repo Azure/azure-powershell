@@ -50,6 +50,20 @@ PS C:\> Get-AzBillingAccount -IncludeAddress
 
 Get all billing accounts user has access to, and include the address in the result.
 
+### Example 4
+```
+PS C:\> Get-AzBillingAccount -ExpandBillingProfiles
+```
+
+Get all billing accounts user has access to, and include the billing profiles in the result.
+
+### Example 5
+```
+PS C:\> Get-AzBillingAccount -ExpandInvoiceSections
+```
+
+Get all billing accounts user has access to, and include the billing profiles and invoice sections under them in the result.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -72,7 +86,37 @@ Include the address of the billing account.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpandBillingProfiles
+Include the billing profiles under the billing account.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpandInvoiceSections
+Include the billing profiles under billing account and invoices sections under them.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
