@@ -14,10 +14,8 @@ Creates a collection of Firewall NAT rules.
 ## SYNTAX
 
 ```
-New-AzFirewallNatRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
- [-SourceIpGroup <String[]>] -DestinationAddress <String[]> -DestinationPort <String[]> -Protocol <String[]>
- [-TranslatedAddress <String>] [-TranslatedFqdn <String>] -TranslatedPort <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters
+New-AzFirewallNatRuleCollection -Name <String> -Priority <UInt32> -Rule <PSAzureFirewallNatRule[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,7 +68,7 @@ RemoveRuleByName on the rule collection object. The rule name for method RemoveR
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -84,53 +82,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-The description of the rule
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DestinationAddress
-The destination addresses of the rule
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DestinationPort
-The destination ports of the rule
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-The name of the NAT Rule
+Specifies the name of this NAT rule. The name must be unique inside a rule collection.
 
 ```yaml
 Type: System.String
@@ -144,14 +97,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Protocol
-The protocols of the rule
+### -Priority
+Specifies the priority of this rule. Priority is a number between 100 and 65000. The smaller the number, the bigger the priority.
 
 ```yaml
-Type: System.String[]
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
-Accepted values: Any, TCP, UDP
 
 Required: True
 Position: Named
@@ -160,71 +112,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceAddress
-The source addresses of the rule
+### -Rule
+Specifies the list of rules to be grouped under this collection.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceIpGroup
-The source ipgroup of the rule
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TranslatedAddress
-The translated address for this NAT rule
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TranslatedFqdn
-The translated FQDN for this NAT rule
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TranslatedPort
-The translated port for this NAT rule
-
-```yaml
-Type: System.String
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNatRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -245,7 +137,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -261,11 +153,10 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).

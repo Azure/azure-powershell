@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-The description of the rule
+Specifies an optional description of this rule.
 
 ```yaml
 Type: System.String
@@ -92,7 +92,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 ### -FqdnTag
-Fqdn Tags
+Specifies a list of FQDN Tags for this rule. The available tags can be retrieved using [Get-AzFirewallFqdnTag](./Get-AzFirewallFqdnTag.md) cmdlet.
 
 ```yaml
 Type: System.String[]
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Application Rule
+Specifies the name of this application rule. The name must be unique inside a rule collection.
 
 ```yaml
 Type: System.String
@@ -122,11 +122,13 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-The protocols of the rule
+Specifies the type of traffic to be filtered by this rule. The format is <protocol type>:<port>. 
+For example, "http:80" or "https:443".
+Protocol is mandatory when TargetFqdn is used, but it cannot be used with FqdnTag. The supported protocols are HTTP and HTTPS.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: TargetFqdn
 Aliases:
 Accepted values: Any, TCP, UDP, ICMP
 
@@ -165,7 +167,7 @@ Accept wildcard characters: False
 ```
 
 ### -SourceIpGroup
-The source addresses of the rule
+The source IpGroups of the rule
 
 ```yaml
 Type: System.String[]
@@ -179,6 +181,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+```yaml
 Type: System.String[]
 Parameter Sets: SourceIpGroup
 Aliases:
@@ -191,7 +194,9 @@ Accept wildcard characters: False
 ```
 
 ### -TargetFqdn
-The source addresses of the rule
+Specifies a list of domain names filtered by this rule. 
+The asterisk character, '*', is accepted only as the first character of an FQDN in the list. 
+When used, the asterisk matches any number of characters. (e.g. '*msn.com' will match msn.com and all its ubdomains)
 
 ```yaml
 Type: System.String[]
@@ -205,8 +210,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+```yaml
+Type: System.String[]
+Parameter Sets: TargetFqdn
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
