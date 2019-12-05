@@ -195,17 +195,17 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
 
                 if(this.IsParameterBound(c=>c.StorageAccountTenantId))
                 {
-                    if(StorageAccountTenantId != DefaultContext.Tenant.Id)
+                    if(StorageAccountTenantId != AzureContext.Tenant.Id)
                     {
-                        throw new PSArgumentException(string.Format(StorageSyncResources.NewCloudEndpointCrossTenantErrorFormat, StorageAccountTenantId, DefaultContext.Tenant.Id));
+                        throw new PSArgumentException(string.Format(StorageSyncResources.NewCloudEndpointCrossTenantErrorFormat, StorageAccountTenantId, AzureContext.Tenant.Id));
                     }
                 }
 
-                if(storageAccountResourceIdentifier.Subscription != DefaultContext.Subscription.Id)
+                if(storageAccountResourceIdentifier.Subscription != AzureContext.Subscription.Id)
                 {
-                    WriteWarning(string.Format(StorageSyncResources.NewCloudEndpointCrossSubscriptionWarningFormat, storageAccountResourceIdentifier.Subscription , DefaultContext.Subscription.Id));
+                    WriteWarning(string.Format(StorageSyncResources.NewCloudEndpointCrossSubscriptionWarningFormat, storageAccountResourceIdentifier.Subscription , AzureContext.Subscription.Id));
 
-                    if(!StorageSyncClientWrapper.TryRegisterProvider(StorageSyncConstants.ResourceProvider, storageAccountResourceIdentifier.Subscription))
+                    if(!StorageSyncClientWrapper.TryRegisterProvider(AzureContext.Subscription.Id,StorageSyncConstants.ResourceProvider, storageAccountResourceIdentifier.Subscription))
                     {
                         WriteWarning(string.Format(StorageSyncResources.NewCloudEndpointUnableToRegisterErrorFormat, storageAccountResourceIdentifier.Subscription));
                     }
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 {
                     StorageAccountResourceId = StorageAccountResourceId,
                     AzureFileShareName = AzureFileShareName,
-                    StorageAccountTenantId = (StorageAccountTenantId ?? DefaultContext.Tenant.Id)
+                    StorageAccountTenantId = (StorageAccountTenantId ?? AzureContext.Tenant.Id)
                 };
 
                 string resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName;
