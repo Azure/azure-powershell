@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Commands.StorageSync.Common.Converters;
 using Microsoft.Azure.Commands.StorageSync.Common.Exceptions;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
@@ -20,6 +21,7 @@ using Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common
@@ -75,6 +77,22 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         protected virtual void InitializeComponent()
         {
             DefaultProfile.DefaultContext.Tenant.Id = StorageSyncClientWrapper.StorageSyncResourceManager.GetTenantId() ?? DefaultProfile.DefaultContext.Tenant.Id;
+        }
+
+        /// <summary>
+        /// Gets the current default context.
+        /// </summary>
+        protected virtual IAzureContext AzureContext
+        {
+            get
+            {
+                if (DefaultProfile.DefaultContext.Subscription == null)
+                {
+                    throw new PSInvalidOperationException(string.Format(Resources.NoSubscriptionFound, DefaultProfile.DefaultContext.Tenant.Id));
+                }
+
+                return DefaultProfile.DefaultContext;
+            }
         }
 
         /// <summary>

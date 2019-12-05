@@ -30,11 +30,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
     {
 
         /// <summary>
-        /// Default Azure Context
-        /// </summary>
-        IAzureContext AzureContext { get; set;}
-
-        /// <summary>
         /// Gets or sets the active directory client.
         /// </summary>
         /// <value>The active directory client.</value>
@@ -93,10 +88,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         /// <summary>
         /// This function will invoke the registration and continue operation with a success function call.
         /// </summary>
+        /// <param name="currentSubscriptionId">Current SubscriptionId in Azure Context</param>
         /// <param name="resourceProviderNamespace">Resource provider name</param>
         /// <param name="subscription">subscription</param>
         /// <returns>true if request was successfully made. else false</returns>
-        bool TryRegisterProvider(string resourceProviderNamespace, string subscription);
+        bool TryRegisterProvider(string currentSubscriptionId, string resourceProviderNamespace, string subscription);
 
         /// <summary>
         /// Gets the afs agent installer path.

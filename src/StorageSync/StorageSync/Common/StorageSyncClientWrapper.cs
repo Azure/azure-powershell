@@ -66,11 +66,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         public const string BuiltInRoleDefinitionId = "c12c1c16-33a1-487b-954d-41c89c60f349";
 
         /// <summary>
-        /// Default Azure Context
-        /// </summary>
-        public IAzureContext AzureContext { get; set; }
-
-        /// <summary>
         /// Gets or sets the storage sync management client.
         /// </summary>
         /// <value>The storage sync management client.</value>
@@ -118,8 +113,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <param name="context">The context.</param>
         /// <param name="activeDirectoryClient">The active directory client.</param>
         public StorageSyncClientWrapper(IAzureContext context, ActiveDirectoryClient activeDirectoryClient)
-                : this(context,
-                      AzureSession.Instance.ClientFactory.CreateArmClient<StorageSyncManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
+                : this(AzureSession.Instance.ClientFactory.CreateArmClient<StorageSyncManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
                       AzureSession.Instance.ClientFactory.CreateArmClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
                       AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
@@ -140,12 +134,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         /// <param name="storageSyncManagementClient">The storage sync management client.</param>
         /// <param name="authorizationManagementClient">The authorization management client.</param>
-        public StorageSyncClientWrapper(IAzureContext azureContext,
+        /// <param name="resourceManagementClient">The resource management client.</param>
+        public StorageSyncClientWrapper(
             IStorageSyncManagementClient storageSyncManagementClient,
             AuthorizationManagementClient authorizationManagementClient,
             ResourceManagementClient resourceManagementClient)
         {
-            AzureContext = azureContext;
             StorageSyncManagementClient = storageSyncManagementClient;
             AuthorizationManagementClient = authorizationManagementClient;
             ResourceManagementClient = resourceManagementClient;
@@ -321,15 +315,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// This function will invoke the registration and continue operation with a success function call.
         /// </summary>
+        /// <param name="currentSubscriptionId">Current SubscriptionId in Azure Context</param>
         /// <param name="resourceProviderNamespace">Resource provider name</param>
         /// <param name="subscription">subscription</param>
         /// <returns>true if request was successfully made. else false</returns>
-        public bool TryRegisterProvider(string resourceProviderNamespace, string subscription)
+        public bool TryRegisterProvider(string currentSubscriptionId, string resourceProviderNamespace, string subscription)
         {
             try
             {
-                this.ResourceManagementClient.SubscriptionId = subscription;
-                this.ResourceManagementClient.Providers.RegisterAsync(resourceProviderNamespace);
+                ResourceManagementClient.SubscriptionId = subscription;
+                ResourceManagementClient.Providers.RegisterAsync(resourceProviderNamespace);
                 return true;
             }
             catch (HttpRequestException)
@@ -338,7 +333,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             }
             finally
             {
-                this.ResourceManagementClient.SubscriptionId = AzureContext.Subscription.Id;
+                ResourceManagementClient.SubscriptionId = currentSubscriptionId;
             }
         }
     }
