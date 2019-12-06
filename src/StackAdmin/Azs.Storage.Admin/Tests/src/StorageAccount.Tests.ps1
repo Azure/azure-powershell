@@ -77,6 +77,8 @@ InModuleScope Azs.Storage.Admin {
                 $storageAccount.TenantSubscriptionId		| Should Not Be $null
                 $storageAccount.TenantViewId				| Should Not Be $null
                 $storageAccount.Type						| Should Not Be $null
+                $storageAccount.Kind						| Should Not Be $null
+                $storageAccount.HealthState					| Should Not Be $null
             }
 
             function AssertAreEqual {
