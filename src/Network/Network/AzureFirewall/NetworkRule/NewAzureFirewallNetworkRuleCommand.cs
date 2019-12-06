@@ -25,8 +25,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallNetworkRule", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(PSAzureFirewallNetworkRule))]
     public class NewAzureFirewallNetworkRuleCommand : AzureFirewallBaseCmdlet
     {
-        private const string DefaultParameterSet = "Default";
-
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the Network Rule")]
@@ -40,10 +38,6 @@ namespace Microsoft.Azure.Commands.Network
         public string Description { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = AzureFirewallApplicationRuleParameterSets.Default,
-            HelpMessage = "The source addresses of the rule")]
-        [Parameter(
             Mandatory = false,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.ByDestinationAddress,
             HelpMessage = "The destination addresses of the rule")]
@@ -51,13 +45,13 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.ByDestinationIpGroup,
             HelpMessage = "The destination ipgroup of the rule")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.Default,
+            HelpMessage = "The source addresses of the rule")]
         public string[] SourceAddress { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = AzureFirewallApplicationRuleParameterSets.BySourceIpGroup,
-            HelpMessage = "The source ipgroup of the rule")]
-        [Parameter(
             Mandatory = false,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.ByDestinationAddress,
             HelpMessage = "The destination addresses of the rule")]
@@ -65,12 +59,12 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.ByDestinationIpGroup,
             HelpMessage = "The destination ipgroup of the rule")]
-        public string[] SourceIpGroup { get; set; }
-
         [Parameter(
             Mandatory = true,
-            ParameterSetName = AzureFirewallApplicationRuleParameterSets.ByDestinationAddress,
-            HelpMessage = "The destination addresses of the rule")]
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.BySourceIpGroup,
+            HelpMessage = "The source ipgroup of the rule")]
+        public string[] SourceIpGroup { get; set; }
+
         [Parameter(
             Mandatory = false,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.Default,
@@ -79,12 +73,13 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.BySourceIpGroup,
             HelpMessage = "The source ipgroup of the rule")]
-        public string[] DestinationAddress { get; set; }
-
         [Parameter(
             Mandatory = true,
-            ParameterSetName = AzureFirewallApplicationRuleParameterSets.ByDestinationIpGroup,
-        HelpMessage = "The destination ipgroup of the rule")]
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.ByDestinationAddress,
+            HelpMessage = "The destination addresses of the rule")]
+        public string[] DestinationAddress { get; set; }
+
+
         [Parameter(
             Mandatory = false,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.Default,
@@ -93,6 +88,10 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.BySourceIpGroup,
         HelpMessage = "The source ipgroup of the rule")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.ByDestinationIpGroup,
+            HelpMessage = "The destination ipgroup of the rule")]
         public string[] DestinationIpGroup { get; set; }
 
         [Parameter(

@@ -68,14 +68,6 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
-        protected void ValidateIsIpGroup(string resourceId){
-            Match match = validateIpGroupsRegex.Match(resourceId);
-            if (!match.Success)
-            {
-                throw new ArgumentException($"Invalid value {resourceId}.");
-            }
-        }
-
         public bool IsAzureFirewallPresent(string resourceGroupName, string name)
         {
             try
