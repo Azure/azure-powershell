@@ -22,7 +22,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallNetworkRule", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(PSAzureFirewallNetworkRule))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallNetworkRule", SupportsShouldProcess = true, DefaultParameterSetName = AzureFirewallApplicationRuleParameterSets.Default), OutputType(typeof(PSAzureFirewallNetworkRule))]
     public class NewAzureFirewallNetworkRuleCommand : AzureFirewallBaseCmdlet
     {
         [Parameter(
