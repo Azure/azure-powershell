@@ -70,7 +70,7 @@ Get policy events at policy set definition scope
 function Get-AzureRmPolicyEvent-PolicySetDefinitionScope
 {
 	$policySetDefinitionName = Get-TestPolicySetDefinitionName
-	$from = Get-TestQueryIntervalStart
+	$from = Get-TestQueryIntervalStart	
 
     $policyEvents = Get-AzPolicyEvent -PolicySetDefinitionName $policySetDefinitionName -Top 10 -From $from
 	Validate-PolicyEvents $policyEvents 10
@@ -82,7 +82,7 @@ Get policy events at policy definition scope
 #>
 function Get-AzureRmPolicyEvent-PolicyDefinitionScope
 {
-	$policyDefinitionName = Get-TestPolicyDefinitionName
+	$policyDefinitionName = Get-TestPolicyDefinitionNameForEvents
 
     $policyEvents = Get-AzPolicyEvent -PolicyDefinitionName $policyDefinitionName -Top 10
 	Validate-PolicyEvents $policyEvents 10
