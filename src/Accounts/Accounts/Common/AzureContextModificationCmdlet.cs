@@ -23,6 +23,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using AzureRMCmdlet = Microsoft.Azure.Commands.ResourceManager.Common.Version2018_06_01.AzureRMCmdlet;
 
 namespace Microsoft.Azure.Commands.Profile.Common
 {

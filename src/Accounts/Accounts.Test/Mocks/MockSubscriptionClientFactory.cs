@@ -12,17 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Internal.Subscriptions;
-using Microsoft.Azure.Internal.Subscriptions.Models;
+using Microsoft.Azure.Internal.Subscriptions.Version2018_06_01;
+using Microsoft.Azure.Internal.Subscriptions.Version2018_06_01.Models;
 using Microsoft.Rest.Azure;
 using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Collections;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 {

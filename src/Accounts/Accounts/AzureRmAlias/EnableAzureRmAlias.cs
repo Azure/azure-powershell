@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.Version2018_06_01;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Linq;
-using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
 {

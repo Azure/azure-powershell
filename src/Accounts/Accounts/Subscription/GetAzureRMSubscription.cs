@@ -18,10 +18,9 @@ using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
-using System.Reflection;
+using AzureRmLongRunningCmdlet = Microsoft.Azure.Commands.ResourceManager.Common.Version2018_06_01.AzureRMCmdlet;
 
 namespace Microsoft.Azure.Commands.Profile
 {

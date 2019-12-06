@@ -13,10 +13,8 @@
 
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.Version2018_06_01;
 using System;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile

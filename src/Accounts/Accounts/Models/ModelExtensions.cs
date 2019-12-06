@@ -14,9 +14,9 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
+using Microsoft.Azure.Internal.Subscriptions.Version2018_06_01.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             subscription.Name = other.DisplayName;
             subscription.State = other.State.ToString();
             subscription.SetProperty(AzureSubscription.Property.Tenants,
-                context.Tenant.Id.ToString());
+                other.TenantId ?? context.Tenant.Id.ToString());
             return subscription;
         }
 

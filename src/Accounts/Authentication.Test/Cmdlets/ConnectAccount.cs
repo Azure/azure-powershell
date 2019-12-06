@@ -19,8 +19,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Internal.Subscriptions;
-using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -29,6 +27,11 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+using AzureRMCmdlet = Microsoft.Azure.Commands.ResourceManager.Common.Version2018_06_01.AzureRMCmdlet;
+using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
+using Microsoft.Azure.Internal.Subscriptions.Version2018_06_01;
+using Microsoft.Azure.Internal.Subscriptions.Version2018_06_01.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Utilities.Version2018_06_01;
 
 namespace Common.Authentication.Test.Cmdlets
 {
@@ -420,8 +423,7 @@ namespace Common.Authentication.Test.Cmdlets
                 try
                 {
                     subscriptions.AddRange(
-                        ListAllSubscriptionsForTenant(
-                            (tenant.GetId() == Guid.Empty) ? tenant.Directory : tenant.Id.ToString()));
+                        ListAllSubscriptionsForTenant((tenant.GetId() == Guid.Empty) ? tenant.Directory : tenant.Id.ToString()));
                 }
                 catch (AadAuthenticationException)
                 {
@@ -460,7 +462,7 @@ namespace Common.Authentication.Test.Cmdlets
             AzureContext context = new AzureContext(_profile.DefaultContext.Subscription, account, environment,
                                         CreateTenantFromString(tenantId, accessToken.TenantId));
 
-            return subscriptionClient.ListAllSubscriptions().Select(s => ToAzureSubscription(s, context));
+            return SubscriptionAndTenantHelper.ListAllSubscriptions(subscriptionClient, _profile.DefaultContext);
         }
 
         private static AzureTenant CreateTenantFromString(string tenantOrDomain, string accessTokenTenantId)
@@ -538,29 +540,26 @@ namespace Common.Authentication.Test.Cmdlets
                         new TokenCredentials(accessToken.AccessToken) as ServiceClientCredentials,
                         AzureSession.Instance.ClientFactory.GetCustomHandlers()))
             {
-                Subscription subscriptionFromServer = null;
+                AzureSubscription subscriptionFromServer = null;
 
                 try
                 {
                     if (subscriptionId != null)
                     {
-                        subscriptionFromServer = subscriptionClient.Subscriptions.Get(subscriptionId);
+                        subscriptionFromServer = ToAzureSubscription(subscriptionClient.Subscriptions.Get(subscriptionId), _profile.DefaultContext);
                     }
                     else
                     {
-                        var subscriptions = (subscriptionClient.ListAllSubscriptions().ToList() ??
-                                                new List<Subscription>())
+                        var subscriptions = (SubscriptionAndTenantHelper.ListAllSubscriptions(subscriptionClient, _profile.DefaultContext)?.ToList() ??
+                                                new List<AzureSubscription>())
                                             .Where(s => "enabled".Equals(s.State.ToString(), StringComparison.OrdinalIgnoreCase) ||
                                                         "warned".Equals(s.State.ToString(), StringComparison.OrdinalIgnoreCase));
-
-                        account.SetProperty(AzureAccount.Property.Subscriptions, subscriptions.Select(i => i.SubscriptionId).ToArray());
-
                         if (subscriptions.Any())
                         {
                             if (subscriptionName != null)
                             {
                                 subscriptionFromServer = subscriptions.FirstOrDefault(
-                                    s => s.DisplayName.Equals(subscriptionName, StringComparison.OrdinalIgnoreCase));
+                                    s => s.Name.Equals(subscriptionName, StringComparison.OrdinalIgnoreCase));
                             }
                             else
                             {
@@ -581,12 +580,7 @@ namespace Common.Authentication.Test.Cmdlets
 
                 if (subscriptionFromServer != null)
                 {
-                    subscription = new AzureSubscription
-                    {
-                        Id = subscriptionFromServer.SubscriptionId,
-                        Name = subscriptionFromServer.DisplayName,
-                        State = subscriptionFromServer.State.ToString()
-                    };
+                    subscription = subscriptionFromServer;
 
                     subscription.SetAccount(accessToken.UserId);
                     subscription.SetEnvironment(environment.Name);

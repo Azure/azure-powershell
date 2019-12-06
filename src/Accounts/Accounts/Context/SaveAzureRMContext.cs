@@ -13,14 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Version2018_06_01;
 // TODO: Remove IfDef
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Profile.Models.Core;
 #endif
 using Microsoft.Azure.Commands.Profile.Properties;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;

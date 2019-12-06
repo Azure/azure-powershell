@@ -24,7 +24,6 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.Linq;
-using Microsoft.Azure.Management.Internal.Resources;
 using System.Threading;
 using System.Threading.Tasks;
 #if NETSTANDARD

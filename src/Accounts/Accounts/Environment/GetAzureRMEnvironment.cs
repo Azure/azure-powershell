@@ -16,9 +16,9 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 using System.Linq;
 using System.Management.Automation;
+using AzureRMCmdlet = Microsoft.Azure.Commands.ResourceManager.Common.Version2018_06_01.AzureRMCmdlet;
 
 namespace Microsoft.Azure.Commands.Profile
 {

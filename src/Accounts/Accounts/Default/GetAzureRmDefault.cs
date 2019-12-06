@@ -16,9 +16,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Management.Internal.Resources;
-using System;
+using Microsoft.Azure.Commands.ResourceManager.Common.Version2018_06_01;
+using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Default

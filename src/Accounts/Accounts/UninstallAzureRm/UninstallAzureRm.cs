@@ -12,7 +12,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.Version2018_06_01;
 using System;
 using System.Collections;
 using System.Collections.Generic;
