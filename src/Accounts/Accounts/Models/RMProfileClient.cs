@@ -19,8 +19,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
-using Microsoft.Azure.Internal.Subscriptions;
-using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -29,6 +27,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+using Microsoft.Azure.Commands.ResourceManager.Common.Utilities;
+using Microsoft.Azure.Internal.Subscriptions.Version2018_06_01;
 using AuthenticationMessages = Microsoft.Azure.Commands.Common.Authentication.Properties.Resources;
 using ProfileMessages = Microsoft.Azure.Commands.Profile.Properties.Resources;
 using ResourceMessages = Microsoft.Azure.Commands.ResourceManager.Common.Properties.Resources;
@@ -545,29 +545,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         new TokenCredentials(accessToken.AccessToken) as ServiceClientCredentials,
                         AzureSession.Instance.ClientFactory.GetCustomHandlers()))
             {
-                Subscription subscriptionFromServer = null;
+                AzureSubscription subscriptionFromServer = null;
 
                 try
                 {
                     if (subscriptionId != null)
                     {
-                        subscriptionFromServer = subscriptionClient.Subscriptions.Get(subscriptionId);
+                        subscriptionFromServer = subscriptionClient.Subscriptions.Get(subscriptionId)?.ToAzureSubscription(_profile.DefaultContext);
                     }
                     else
                     {
-                        var subscriptions = (subscriptionClient.ListAllSubscriptions().ToList() ??
-                                                new List<Subscription>())
+                        var subscriptions = (SubscriptionAndTenantHelper.ListAllSubscriptions<SubscriptionClient>(subscriptionClient, _profile.DefaultContext)?.ToList() ??
+                                                new List<AzureSubscription>())
                                             .Where(s => "enabled".Equals(s.State.ToString(), StringComparison.OrdinalIgnoreCase) ||
                                                         "warned".Equals(s.State.ToString(), StringComparison.OrdinalIgnoreCase));
 
-                        account.SetProperty(AzureAccount.Property.Subscriptions, subscriptions.Select(i => i.SubscriptionId).ToArray());
+                        account.SetProperty(AzureAccount.Property.Subscriptions, subscriptions.Select(i => i.Id).ToArray());
 
                         if (subscriptions.Any())
                         {
                             if (subscriptionName != null)
                             {
                                 subscriptionFromServer = subscriptions.FirstOrDefault(
-                                    s => s.DisplayName.Equals(subscriptionName, StringComparison.OrdinalIgnoreCase));
+                                    s => s.Name.Equals(subscriptionName, StringComparison.OrdinalIgnoreCase));
                             }
                             else
                             {
@@ -590,12 +590,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
                 if (subscriptionFromServer != null)
                 {
-                    subscription = new AzureSubscription
-                    {
-                        Id = subscriptionFromServer.SubscriptionId,
-                        Name = subscriptionFromServer.DisplayName,
-                        State = subscriptionFromServer.State.ToString()
-                    };
+                    subscription = subscriptionFromServer;
 
                     subscription.SetAccount(accessToken.UserId);
                     subscription.SetEnvironment(environment.Name);
@@ -726,7 +721,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 return new List<AzureSubscription>();
             }
 
-            SubscriptionClient subscriptionClient = null;
+            return SubscriptionAndTenantHelper.ListAllSubscriptionsForTenant<SubscriptionClient>(_profile.DefaultContext, tenantId);
+
+/*              SubscriptionClient subscriptionClient = null;
             subscriptionClient = AzureSession.Instance.ClientFactory.CreateCustomArmClient<SubscriptionClient>(
                     environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
                     new TokenCredentials(accessToken.AccessToken) as ServiceClientCredentials,
@@ -735,7 +732,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             AzureContext context = new AzureContext(_profile.DefaultContext.Subscription, account, environment,
                                         CreateTenantFromString(tenantId, accessToken.TenantId));
 
-            return subscriptionClient.ListAllSubscriptions().Select(s => s.ToAzureSubscription(context));
+            return subscriptionClient.ListAllSubscriptions().Select(s => s.ToAzureSubscription(context));*/
         }
 
         private void WriteWarningMessage(string message)

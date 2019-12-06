@@ -14,17 +14,15 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Version2018_05_01;
 // TODO: Remove IfDef
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Profile.Models.Core;
 #endif
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using System.Management.Automation;
 using System;
 using System.Linq;
 using System.Collections.ObjectModel;
-using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile
 {
