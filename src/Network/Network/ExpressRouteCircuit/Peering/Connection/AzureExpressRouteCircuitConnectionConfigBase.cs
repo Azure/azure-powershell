@@ -49,12 +49,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "PeerAddressType")]
+            HelpMessage = "AddressPrefixType")]
         [ValidateSet(
            IPv4,
            IPv6,
            IgnoreCase = true)]
-        public string PeerAddressType { get; set; }
+        public string AddressPrefixType { get; set; }
 
         [Parameter(
             Mandatory = false,

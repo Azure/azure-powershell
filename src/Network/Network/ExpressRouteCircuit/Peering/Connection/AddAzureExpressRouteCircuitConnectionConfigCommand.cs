@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Network
                 circuitconnection.AuthorizationKey = this.AuthorizationKey;
             }
 
-            if (this.PeerAddressType == IPv6)
+            if (this.AddressPrefixType == IPv6)
             {
                 // Create new PSExpressRouteIPv6AddressPrefix()
                 var expressRouteIPv6AddressPrefix = new PSExpressRouteCircuitConnectionIPv6ConnectionConfig();

@@ -76,18 +76,18 @@ namespace Microsoft.Azure.Commands.Network {
                 circuitconnection.AuthorizationKey = this.AuthorizationKey;
             }
 
-            if (AddressPrefix != null)
+            if (this.AddressPrefix != null)
             {
-                if (this.PeerAddressType == IPv6)
+                if (this.AddressPrefixType == IPv6)
                 {
                     if (circuitconnection.IPv6CircuitConnectionConfig != null)
                     {
-                        circuitconnection.IPv6CircuitConnectionConfig.AddressPrefix = AddressPrefix;
+                        circuitconnection.IPv6CircuitConnectionConfig.AddressPrefix = this.AddressPrefix;
                     }
                     else
                     {
                         var ipv6AddressPrefix = new PSExpressRouteCircuitConnectionIPv6ConnectionConfig();
-                        ipv6AddressPrefix.AddressPrefix = AddressPrefix;
+                        ipv6AddressPrefix.AddressPrefix = this.AddressPrefix;
                         circuitconnection.IPv6CircuitConnectionConfig = ipv6AddressPrefix;
                     }
                 }
