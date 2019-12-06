@@ -140,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### -SourceAddress
-The source ipgroup of the rule
+The source addresses of the rule
 
 ```yaml
 Type: System.String[]
