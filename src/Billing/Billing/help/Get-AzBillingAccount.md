@@ -38,7 +38,7 @@ Get all billing accounts user has access to.
 
 ### Example 2
 ```
-PS C:\> Get-AzBillingAccount -Name 7cff50a2-724a-4357-ab56-b44fc3770f2b_cbcb8ff5-aff4-4b8e-b8aa-ef2d947f6680
+PS C:\> Get-AzBillingAccount -Name 00000000-0000-0000-0000-000000000000
 ```
 
 Get the billing account with the specified name.
@@ -63,6 +63,13 @@ PS C:\> Get-AzBillingAccount -ExpandInvoiceSections
 ```
 
 Get all billing accounts user has access to, and include the billing profiles and invoice sections under them in the result.
+
+### Example 6
+```
+PS C:\> Get-AzBillingAccount -ExpandInvoiceSections -ExpandAddress -Name 00000000-0000-0000-0000-000000000000
+```
+
+Get the billing account with the specified name, and include the address, billing profiles and invoice sections under them in the result.
 
 ## PARAMETERS
 
@@ -150,7 +157,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Billing.Models.PSInvoice
+### Microsoft.Azure.Commands.Billing.Models.PSBillingAccount
 
 ## NOTES
 

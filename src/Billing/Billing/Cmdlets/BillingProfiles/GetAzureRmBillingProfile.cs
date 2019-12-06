@@ -20,64 +20,61 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingAccounts
+namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingProfiles
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BillingAccount", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet), OutputType(typeof(PSBillingAccount))]
-    public class GetAzureRmBillingAccount : AzureBillingCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BillingProfile", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet), OutputType(typeof(PSBillingProfile))]
+    public class GetAzureRmBillingProfile : AzureBillingCmdletBase
     {
-        private const string AddressExpand = "address";
+        const string EnabledAzurePlansExpand = "enabledAzurePlans";
 
-        const string BillingProfilesExpand = "billingProfiles";
-
-        const string InvoiceSectionsExpand = "billingProfiles/invoiceSections";
+        const string InvoiceSectionsExpand = "invoiceSections";
         
         [Parameter(Mandatory = true, HelpMessage = "Name of a specific billing account to get.", ParameterSetName = Constants.ParameterSetNames.SingleItemParameterSet)]
         [ValidateNotNullOrEmpty]
         public List<string> Name { get; set; }
-        
-        [Parameter(Mandatory = false, HelpMessage = "Populate the address for this billing accounts.")]
-        public SwitchParameter IncludeAddress { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Expand the billing profiles under the billing accounts.")]
-        public SwitchParameter ExpandBillingProfiles { get; set; }
+        [Parameter(Mandatory = true, Position = 0, HelpMessage = "Name of the billing account to get billing profiles under it.")]
+        [ValidateNotNullOrEmpty]
+        public string BillingAccountName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Expand the billing profiles and invoice sections under the billing profiles.")]
+        [Parameter(Mandatory = false, HelpMessage = "Expand the enabled azure plans under the billing profiles.")]
+        public SwitchParameter ExpandEnabledAzurePlans { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Expand the invoice sections under the billing profiles.")]
         public SwitchParameter ExpandInvoiceSections { get; set; }
 
         public override void ExecuteCmdlet()
         {
             try
             {
-                var expand = this.ExpandBillingProfiles.IsPresent ? BillingProfilesExpand : null;
+                var expand = this.ExpandEnabledAzurePlans.IsPresent ? EnabledAzurePlansExpand : null;
 
                 expand += this.ExpandInvoiceSections.IsPresent ? string.IsNullOrWhiteSpace(expand) ? InvoiceSectionsExpand : "," + InvoiceSectionsExpand : null;
-
-                expand += this.IncludeAddress.IsPresent ? string.IsNullOrWhiteSpace(expand) ? AddressExpand : "," + AddressExpand : null;
-
+                
                 if (ParameterSetName.Equals(Constants.ParameterSetNames.ListParameterSet))
                 {
                     WriteObject(
                         string.IsNullOrWhiteSpace(expand)
-                            ? BillingManagementClient.BillingAccounts.List().Value.Select(x => new PSBillingAccount(x))
-                            : BillingManagementClient.BillingAccounts.List(expand).Value
-                                .Select(x => new PSBillingAccount(x)), true);
+                            ? BillingManagementClient.BillingProfiles.ListByBillingAccount(BillingAccountName).Value.Select(x => new PSBillingProfile(x))
+                            : BillingManagementClient.BillingProfiles.ListByBillingAccount(BillingAccountName, expand).Value
+                                .Select(x => new PSBillingProfile(x)), true);
                     return;
                 }
 
                 if (ParameterSetName.Equals(Constants.ParameterSetNames.SingleItemParameterSet))
                 {
-                    foreach (var billingAccountName in Name)
+                    foreach (var billingProfileName in Name)
                     {
                         try
                         {
-                            var billingAccount = new PSBillingAccount(string.IsNullOrWhiteSpace(expand)
-                                ? BillingManagementClient.BillingAccounts.Get(billingAccountName)
-                                : BillingManagementClient.BillingAccounts.Get(billingAccountName, expand));
-                            WriteObject(billingAccount);
+                            var billingProfile = new PSBillingProfile(string.IsNullOrWhiteSpace(expand)
+                                ? BillingManagementClient.BillingProfiles.Get(BillingAccountName, billingProfileName)
+                                : BillingManagementClient.BillingProfiles.Get(BillingAccountName, billingProfileName, expand));
+                            WriteObject(billingProfile);
                         }
                         catch (ErrorResponseException error)
                         {
-                            WriteWarning(billingAccountName + ": " + error.Body.Error.Message);
+                            WriteWarning(billingProfileName + ": " + error.Body.Error.Message);
                             // continue with the next
                         }
                     }

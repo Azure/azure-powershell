@@ -21,8 +21,11 @@
 
 ## Version 1.0.1
 * Add Get-AzBillingAccount cmdlet
+* Add Get-AzBillingProfile cmdlet
+* Add Get-AzInvoiceSection cmdlet
 * Breaking changes
     - Get-AzBillingPeriod, Get-AzEnrollmentAccount cmdlets are deprecated.
+	- Get-AzBillingInvoice cmdlet has breaking change, the response object is change.
 
 ## Version 1.0.1
 * Fixed miscellaneous typos across module

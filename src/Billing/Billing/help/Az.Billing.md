@@ -53,3 +53,9 @@ Update a budget in either a subscription or a resource group.
 ### [Get-AzBillingAccount](Get-AzBillingAccount.md)
 Get billing accounts.
 
+### [Get-AzBillingProfile](Get-AzBillingProfile.md)
+Get billing profiles.
+
+### [Get-AzInvoiceSection](Get-AzInvoiceSection.md)
+Get invoice sections.
+
