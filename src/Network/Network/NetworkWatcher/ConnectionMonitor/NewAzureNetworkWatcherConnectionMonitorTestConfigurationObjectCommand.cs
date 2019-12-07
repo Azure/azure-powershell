@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network
     public class NetworkWatcherConnectionMonitorTestConfigurationObjectCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The test configuration name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -40,35 +40,26 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public Int32 TestFrequencySec { get; set; }
 
-        [Alias("ProtocolName")]
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The protocol.")]
-        [ValidateNotNullOrEmpty]
-        public string Protocol { get; set; }
-
         [Parameter(
             Mandatory = true,
             HelpMessage = "The protocol configuration.")]
         [ValidateNotNullOrEmpty]
-        public PSConnectionMonitorProtocolConfiguration ProtocolConfiguration { get; set; }
+        public PSNetworkWatcherConnectionMonitorProtocolConfiguration ProtocolConfiguration { get; set; }
 
-        [Alias("FailedCheckPercentage")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The percentage of failed check.")]
         [ValidateNotNullOrEmpty]
         public Int32 SuccessThresholdChecksFailedPercent { get; set; }
 
-        [Alias("RoundTripTime")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The round trip time in millisecond.")]
         [ValidateNotNullOrEmpty]
         public Int32 SuccessThresholdRoundTripTimeMs { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The preferred IP version.")]
         [ValidateNotNullOrEmpty]
         public string PreferredIPVersion { get; set; }
@@ -81,9 +72,8 @@ namespace Microsoft.Azure.Commands.Network
 
             PSNetworkWatcherConnectionMonitorTestConfigurationObject testConfiguration = new PSNetworkWatcherConnectionMonitorTestConfigurationObject()
             {
-                Name = this.Name,
+                Name = this.Name != null ? this.Name : "TestConfig" + Guid.NewGuid(),
                 TestFrequencySec = this.TestFrequencySec,
-                Protocol = this.Protocol,
                 PreferredIPVersion = this.PreferredIPVersion,
                 SuccessThreshold = new PSConnectionMonitorSuccessThreshold()
                 {
@@ -93,11 +83,11 @@ namespace Microsoft.Azure.Commands.Network
                 }
             };
 
-            if (string.Compare(this.Protocol, MNM.Protocol.Tcp, true) == 0)
+           if (this.ProtocolConfiguration.GetType() == typeof(PSConnectionMonitorTcpConfiguration))
             {
                 testConfiguration.TcpConfiguration = (PSConnectionMonitorTcpConfiguration)this.ProtocolConfiguration;
             }
-            else if (string.Compare(this.Protocol, MNM.Protocol.Http, true) == 0)
+            else if (this.ProtocolConfiguration.GetType() == typeof(PSConnectionMonitorHttpConfiguration))
             {
                 testConfiguration.HttpConfiguration = (PSConnectionMonitorHttpConfiguration)this.ProtocolConfiguration;
             }
@@ -111,22 +101,14 @@ namespace Microsoft.Azure.Commands.Network
 
     public bool Validate()
         {
-            if (String.Compare(this.Protocol, MNM.Protocol.Tcp, true) == 0 && this.ProtocolConfiguration.GetType() != typeof(PSConnectionMonitorTcpConfiguration))
+            if (this.ProtocolConfiguration.GetType() != typeof(PSConnectionMonitorTcpConfiguration) &&
+                this.ProtocolConfiguration.GetType() != typeof(PSConnectionMonitorHttpConfiguration) &&
+                this.ProtocolConfiguration.GetType() != typeof(PSConnectionMonitorIcmpConfiguration))
             {
-                throw new ArgumentException("Protocol configuration is not the same type as Protocol .");
+                throw new ArgumentException("Protocol configuration is not supported.");
             }
 
-            if (String.Compare(this.Protocol, MNM.Protocol.Http, true) == 0 && this.ProtocolConfiguration.GetType() != typeof(PSConnectionMonitorHttpConfiguration))
-            {
-                throw new ArgumentException("Protocol configuration is not the same type as Protocol .");
-            }
-
-            if (String.Compare(this.Protocol, MNM.Protocol.Icmp, true) == 0 && this.ProtocolConfiguration.GetType() != typeof(PSConnectionMonitorIcmpConfiguration))
-            {
-                throw new ArgumentException("Protocol configuration is not the same type as Protocol .");
-            }
-
-            if (String.Compare(this.PreferredIPVersion, NetworkBaseCmdlet.IPv4, true) != 0 &&
+            if (this.PreferredIPVersion != null & String.Compare(this.PreferredIPVersion, NetworkBaseCmdlet.IPv4, true) != 0 &&
                 String.Compare(this.PreferredIPVersion, NetworkBaseCmdlet.IPv6, true) != 0)
             {
                 throw new ArgumentException("IP version is undefined.");

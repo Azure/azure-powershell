@@ -8,13 +8,13 @@ namespace Microsoft.Azure.Commands.Network.Models
     using System.Collections.Generic;
     using WindowsAzure.Commands.Common.Attributes;
 
-    public class PSConnectionMonitorTestGroup
+    public class PSNetworkWatcherConnectionMonitorTestGroupObject
     {
         public string Name { get; set; }
         public bool? Disable { get; set; }
-        public PSNetworkWatcherConnectionMonitorTestConfigurationObject[] TestConfigurations { get; set; }
-        public PSNetworkWatcherConnectionMonitorEndpointObject[] Sources { get; set; }
-        public PSNetworkWatcherConnectionMonitorEndpointObject[] Destinations { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorTestConfigurationObject> TestConfigurations { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorEndpointObject> Sources { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorEndpointObject> Destinations { get; set; }
 
         [JsonIgnore]
         public string TestConfigurationsText

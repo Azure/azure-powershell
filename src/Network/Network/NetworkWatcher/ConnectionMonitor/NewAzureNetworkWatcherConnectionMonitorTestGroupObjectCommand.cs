@@ -27,7 +27,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorTestGroupObject", SupportsShouldProcess = true), OutputType(typeof(PSConnectionMonitorTestGroup))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorTestGroupObject", SupportsShouldProcess = true), OutputType(typeof(PSNetworkWatcherConnectionMonitorTestGroupObject))]
     public class NetworkWatcherConnectionMonitorTestGroupObjectCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
@@ -40,19 +40,19 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The list of test configuration.")]
         [ValidateNotNullOrEmpty]
-        public PSNetworkWatcherConnectionMonitorTestConfigurationObject[] TestConfiguration { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorTestConfigurationObject> TestConfiguration { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The list of source endpoints.")]
         [ValidateNotNullOrEmpty]
-        public PSNetworkWatcherConnectionMonitorEndpointObject[] Source { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorEndpointObject> Source { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The list of destination endpoints.")]
         [ValidateNotNullOrEmpty]
-        public PSNetworkWatcherConnectionMonitorEndpointObject[] Destination { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorEndpointObject> Destination { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -65,13 +65,13 @@ namespace Microsoft.Azure.Commands.Network
 
             Validate();
 
-            PSConnectionMonitorTestGroup testGroup = new PSConnectionMonitorTestGroup()
+            PSNetworkWatcherConnectionMonitorTestGroupObject testGroup = new PSNetworkWatcherConnectionMonitorTestGroupObject()
             {
                 Name = this.Name,
                 Disable = this.Disable? true:false,
                 TestConfigurations = this.TestConfiguration,
                 Sources = this.Source,
-                Destinations = this.Destination              
+                Destinations = this.Destination
             };
 
             WriteObject(testGroup);
@@ -92,6 +92,11 @@ namespace Microsoft.Azure.Commands.Network
             if (!this.Destination.Any())
             {
                 throw new ArgumentException("Destination endpoint is undefined.");
+            }
+
+            if (this.Source.Count() != this.Destination.Count())
+            {
+                throw new ArgumentException("Source endpoints are not the same number as destination endpoints.");
             }
 
             return true;

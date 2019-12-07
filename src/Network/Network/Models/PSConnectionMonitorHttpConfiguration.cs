@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     using System.Collections.Generic;
     using WindowsAzure.Commands.Common.Attributes;
 
-    public class PSConnectionMonitorHttpConfiguration : PSConnectionMonitorProtocolConfiguration
+    public class PSConnectionMonitorHttpConfiguration : PSNetworkWatcherConnectionMonitorProtocolConfiguration
     {
         public int? Port { get; set; }
         public string Method { get; set; }

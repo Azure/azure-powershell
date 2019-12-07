@@ -31,19 +31,19 @@ namespace Microsoft.Azure.Commands.Network
     public class NewAzureNetworkWatcherConnectionMonitorEndpointObjectCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The endpoint name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The ID of the endpoint.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The Ip address of the endpoint.")]
         [ValidateNotNullOrEmpty]
         public string Address { get; set; }
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Network
 
             PSNetworkWatcherConnectionMonitorEndpointObject endPoint = new PSNetworkWatcherConnectionMonitorEndpointObject()
             {
-                Name = this.Name,
+                Name = this.Name != null? this.Name : "Endpoint"+Guid.NewGuid(),
                 ResourceId = this.ResourceId,
                 Address = this.Address,
                 Filter = new PSConnectionMonitorFilter()
@@ -95,6 +95,16 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool Validate()
         {
+            if (this.Name == null && this.ResourceId == null &&  this.Address == null && this.FilterType == null && this.FilterAddress == null)
+            {
+                throw new ArgumentException("No Parameter is provided");
+            }
+
+            if (this.ResourceId == null && this.Address == null)
+            {
+                throw new ArgumentException("ResourceId and Address can not be both empty");
+            }
+
             if (this.FilterType != null && String.Compare(this.FilterType, "Include", true) != 0)
             {
                 throw new ArgumentException("Only FilterType Include is supported");
