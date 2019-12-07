@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.TargetFqdn,
             HelpMessage = "The name of the Application Rule")]
-        [Parameter(
+         [Parameter(
             Mandatory = true,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.FqdnTag,
             HelpMessage = "The name of the Application Rule")]
@@ -41,10 +41,14 @@ namespace Microsoft.Azure.Commands.Network
         public string Description { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The source addresses of the rule")]
-        [ValidateNotNullOrEmpty]
+           Mandatory = false,
+           HelpMessage = "The source addresses of the rule")]
         public string[] SourceAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The source ipgroup of the rule")]
+        public string[] SourceIpGroup { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -84,6 +88,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name,
                 Description = this.Description,
                 SourceAddresses = this.SourceAddress?.ToList(),
+                SourceIpGroups = this.SourceIpGroup?.ToList(),
                 Protocols = protocolsAsWeExpectThem,
                 TargetFqdns = this.TargetFqdn?.ToList(),
                 FqdnTags = this.FqdnTag?.ToList()
