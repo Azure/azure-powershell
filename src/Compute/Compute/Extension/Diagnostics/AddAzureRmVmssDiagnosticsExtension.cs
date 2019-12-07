@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
 
                     newDiagnosticsExtension.Name = this.Name;
                     newDiagnosticsExtension.Publisher = DiagnosticsExtensionConstants.ExtensionPublisher;
-                    newDiagnosticsExtension.Type = DiagnosticsExtensionConstants.ExtensionType;
+                    newDiagnosticsExtension.Type1 = DiagnosticsExtensionConstants.ExtensionType;
                     newDiagnosticsExtension.TypeHandlerVersion = this.TypeHandlerVersion;
                     newDiagnosticsExtension.AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion;
                     newDiagnosticsExtension.Settings = settings.Item1;

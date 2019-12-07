@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             vExtensions.Name = this.IsParameterBound(c => c.Name) ? this.Name : null;
             vExtensions.ForceUpdateTag = this.IsParameterBound(c => c.ForceUpdateTag) ? this.ForceUpdateTag : null;
             vExtensions.Publisher = this.IsParameterBound(c => c.Publisher) ? this.Publisher : null;
-            vExtensions.Type = this.IsParameterBound(c => c.Type) ? this.Type : null;
+            vExtensions.Type1 = this.IsParameterBound(c => c.Type) ? this.Type : null;
             vExtensions.TypeHandlerVersion = this.IsParameterBound(c => c.TypeHandlerVersion) ? this.TypeHandlerVersion : null;
             vExtensions.AutoUpgradeMinorVersion = this.IsParameterBound(c => c.AutoUpgradeMinorVersion) ? this.AutoUpgradeMinorVersion : (bool?)null;
             vExtensions.Settings = this.IsParameterBound(c => c.Setting) ? this.Setting : null;

@@ -742,7 +742,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public static bool IsDiagnosticsExtension(VirtualMachineScaleSetExtension extension)
         {
             return extension.Publisher.Equals(DiagnosticsExtensionConstants.ExtensionPublisher, StringComparison.InvariantCultureIgnoreCase) &&
-                extension.Type.Equals(DiagnosticsExtensionConstants.ExtensionType, StringComparison.InvariantCultureIgnoreCase);
+                extension.Type1.Equals(DiagnosticsExtensionConstants.ExtensionType, StringComparison.InvariantCultureIgnoreCase);
         }
     }
 }

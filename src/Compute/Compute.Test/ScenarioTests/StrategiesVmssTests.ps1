@@ -394,7 +394,7 @@ function Test-SimpleNewVmssPpg
             -ResourceGroupName $rgname `
             -Name $ppgname `
             -Location "eastus"
-        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -DomainNameLabel $domainNameLabel -LoadBalancerName $lbName -ProximityPlacementGroup $ppgname
+        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -DomainNameLabel $domainNameLabel -LoadBalancerName $lbName -ProximityPlacementGroupId $ppgname
 
         Assert-AreEqual $vmss.ProximityPlacementGroup.Id $ppg.Id
     }

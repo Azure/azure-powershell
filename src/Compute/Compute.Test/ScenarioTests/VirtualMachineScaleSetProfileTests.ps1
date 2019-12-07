@@ -115,7 +115,7 @@ function Test-VirtualMachineScaleSetProfile
     # Extension profile
     Assert-AreEqual $extname $vmss.VirtualMachineProfile.ExtensionProfile.Extensions[0].Name;
     Assert-AreEqual $publisher $vmss.VirtualMachineProfile.ExtensionProfile.Extensions[0].Publisher;
-    Assert-AreEqual $exttype $vmss.VirtualMachineProfile.ExtensionProfile.Extensions[0].Type;
+    Assert-AreEqual $exttype $vmss.VirtualMachineProfile.ExtensionProfile.Extensions[0].Type1;
     Assert-AreEqual $extver $vmss.VirtualMachineProfile.ExtensionProfile.Extensions[0].TypeHandlerVersion;
     Assert-True { $vmss.VirtualMachineProfile.ExtensionProfile.Extensions[0].AutoUpgradeMinorVersion };
     Assert-Null $vmss.VirtualMachineProfile.ExtensionProfile.Extensions[0].ProvisionAfterExtensions;
