@@ -26,18 +26,18 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorOutputObject", SupportsShouldProcess = true), OutputType(typeof(PSConnectionMonitorOutput))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorOutputObject", SupportsShouldProcess = true), OutputType(typeof(PSNetworkWatcherConnectionMonitorOutputObject))]
     public class NetworkWatcherConnectionMonitorOutputObjectCommand : ConnectionMonitorBaseCmdlet
     {
-        [Alias("OutputType")]
+        [Alias("Output")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The tyope of output.")]
         [ValidateNotNullOrEmpty]
-        public string Output { get; set; }
+        public string OutputType { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The resource ID of workspace.")]
         [ValidateNotNullOrEmpty]
         public string ResourcWorkspaceResourceId { get; set; }
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.Network
 
             Validate();
 
-             PSConnectionMonitorOutput endPoint = new PSConnectionMonitorOutput()
+            PSNetworkWatcherConnectionMonitorOutputObject endPoint = new PSNetworkWatcherConnectionMonitorOutputObject()
             {
-                 Type = this.Output,
+                 Type = this.OutputType,
                  WorkspaceSettings = new PSConnectionMonitorWorkspaceSettings()
                  {
                      WorkspaceResourceId = ResourcWorkspaceResourceId
@@ -62,6 +62,11 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool Validate()
         {
+            if (this.OutputType == null && this.ResourcWorkspaceResourceId == null)
+            {
+                throw new ArgumentException("No Parameter is provided");
+            }
+
             return true;
         }
     }

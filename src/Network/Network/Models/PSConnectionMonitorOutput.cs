@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     using Newtonsoft.Json;
     using System.Collections.Generic;
     using WindowsAzure.Commands.Common.Attributes;
-    public class PSConnectionMonitorOutput
+    public class PSNetworkWatcherConnectionMonitorOutputObject
     {
         public string Type { get; set; }
         public PSConnectionMonitorWorkspaceSettings WorkspaceSettings { get; set; }

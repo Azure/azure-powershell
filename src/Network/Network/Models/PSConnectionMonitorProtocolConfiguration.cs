@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSConnectionMonitorProtocolConfiguration
+    public class PSNetworkWatcherConnectionMonitorProtocolConfiguration
     {
     }
 }

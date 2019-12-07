@@ -408,23 +408,23 @@
               <ListItem>
                 <Label>PreferredIPVersion</Label>
                 <PropertyName>PreferredIPVersion</PropertyName>
+              </ListItem>              
+              <ListItem>
+                <Label>HttpConfiguration</Label>
+                <PropertyName>HttpConfiguration</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>ProtocolConfiguration</Label>
-                <PropertyName>ProtocolConfiguration</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>SuccessThresholdChecksFailedPercent</Label>
-                <PropertyName>SuccessThresholdChecksFailedPercent</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>SuccessThresholdRoundTripTimeMs</Label>
-                <PropertyName>SuccessThresholdRoundTripTimeMs</PropertyName>
+                <Label>TcpConfiguration</Label>
+                <PropertyName>TcpConfiguration</PropertyName>
               </ListItem>    
               <ListItem>
-                <Label>PreferredIPVersion</Label>
-                <PropertyName>PreferredIPVersion</PropertyName>
-              </ListItem>               
+                <Label>IcmpConfiguration</Label>
+                <PropertyName>IcmpConfiguration</PropertyName>
+              </ListItem>                                       
+              <ListItem>
+                <Label>SuccessThreshold</Label>
+                <PropertyName>SuccessThreshold</PropertyName>
+              </ListItem>              
             </ListItems>
           </ListEntry>
         </ListEntries>

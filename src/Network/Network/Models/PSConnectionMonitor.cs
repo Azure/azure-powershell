@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? AutoStart { get; set; }
 
-        public PSConnectionMonitorTestGroup[] TestGroup { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroup { get; set; }
 
-        public PSConnectionMonitorOutput Output { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorOutputObject> Output { get; set; }
 
         public Hashtable Tag { get; set; }
 

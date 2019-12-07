@@ -36,19 +36,19 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
     public class NewNetworkWatcherConnectionMonitorProtocolConfigurationObject : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The protocol.",
             ParameterSetName = "TCP")]
         public SwitchParameter TcpProtocol { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The protocol.",
             ParameterSetName = "HTTP")]
         public SwitchParameter HttpProtocol { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The protocol.",
             ParameterSetName = "ICMP")]
         public SwitchParameter IcmpProtocol { get; set; }
@@ -67,12 +67,12 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
         public short? Port { get; set; }
 
         [Parameter(
-             Mandatory = true,
+             Mandatory = false,
              ValueFromPipeline = true,
              HelpMessage = "Disable traceRoute.",
              ParameterSetName = "TCP")]
         [Parameter(
-             Mandatory = true,
+             Mandatory = false,
              ValueFromPipeline = true,
              HelpMessage = "Disable traceRoute.",
              ParameterSetName = "ICMP")]
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
         public bool DisableTraceRoute { get; set; }
 
         [Parameter(
-             Mandatory = true,
+             Mandatory = false,
              ValueFromPipeline = true,
              HelpMessage = "The method.",
              ParameterSetName = "HTTP")]
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
         public string Method { get; set; }
 
         [Parameter(
-             Mandatory = true,
+             Mandatory = false,
              ValueFromPipeline = true,
              HelpMessage = "The path.",
              ParameterSetName = "HTTP")]
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
         public string Path { get; set; }
 
         [Parameter(
-             Mandatory = true,
+             Mandatory = false,
              ValueFromPipeline = true,
              HelpMessage = "The request header.",
              ParameterSetName = "HTTP")]
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
         public Dictionary<string, string> RequestHeader { get; set; }
 
         [Parameter(
-             Mandatory = true,
+             Mandatory = false,
              ValueFromPipeline = true,
              HelpMessage = "The list of valid status code range.",
              ParameterSetName = "HTTP")]
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
         public List<String> ValidStatusCodeRange { get; set; }
 
         [Parameter(
-             Mandatory = true,
+             Mandatory = false,
              ValueFromPipeline = true,
              HelpMessage = "Whether to prefer HTTPS or not.",
              ParameterSetName = "HTTP")]
@@ -171,11 +171,9 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
             }
             else if (HttpProtocol.IsPresent)
             {
-
             }
             else if (IcmpProtocol.IsPresent)
             {
-
             }
             else
             {
