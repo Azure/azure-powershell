@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.TargetFqdn,
             HelpMessage = "The name of the Application Rule")]
-         [Parameter(
+        [Parameter(
             Mandatory = true,
             ParameterSetName = AzureFirewallApplicationRuleParameterSets.FqdnTag,
             HelpMessage = "The name of the Application Rule")]

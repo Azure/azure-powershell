@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network
         public string Description { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The source addresses of the rule")]
         public string[] SourceAddress { get; set; }
 
