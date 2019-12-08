@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         public RedisCacheClient() { }
 
         public RedisResource CreateCache(string resourceGroupName, string cacheName, string location, string skuFamily, int skuCapacity, string skuName,
-                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string minimumTlsVersion, string subnetId, string staticIP, Hashtable tags, IList<string> zones)
+                Hashtable redisConfiguration, bool? enableNonSslPort, int? replicasPerMaster, Hashtable tenantSettings, int? shardCount, string minimumTlsVersion, string subnetId, string staticIP, Hashtable tags, IList<string> zones)
         {
             _resourceManagementClient.Providers.Register("Microsoft.Cache");
             var parameters = new RedisCreateParameters
@@ -86,6 +86,11 @@ namespace Microsoft.Azure.Commands.RedisCache
             if (enableNonSslPort.HasValue)
             {
                 parameters.EnableNonSslPort = enableNonSslPort.Value;
+            }
+
+            if(replicasPerMaster.HasValue)
+            {
+                parameters.ReplicasPerMaster = replicasPerMaster.Value;
             }
 
             if (tenantSettings != null)
