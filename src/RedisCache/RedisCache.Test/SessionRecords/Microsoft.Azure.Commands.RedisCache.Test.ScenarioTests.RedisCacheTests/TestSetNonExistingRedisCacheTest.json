@@ -7,13 +7,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f699f6de-68a7-4ed8-958d-1f976d4e550f"
+          "7721f3f4-803c-40a9-9291-b265f672aeec"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28008.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
           "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.2"
@@ -30,13 +30,13 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "56a00f2e-7e71-48f5-93bf-e3e1d5de556d"
+          "7b788dc0-6dd2-458e-b3ba-684d65c7a3f4"
         ],
         "x-ms-correlation-request-id": [
-          "56a00f2e-7e71-48f5-93bf-e3e1d5de556d"
+          "7b788dc0-6dd2-458e-b3ba-684d65c7a3f4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191108T222114Z:56a00f2e-7e71-48f5-93bf-e3e1d5de556d"
+          "WESTUS:20191204T003135Z:7b788dc0-6dd2-458e-b3ba-684d65c7a3f4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Nov 2019 22:21:14 GMT"
+          "Wed, 04 Dec 2019 00:31:34 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -61,22 +61,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/bc130894-c5b3-4adc-a077-0b51f3714abe/resourceGroups/PowerShellTestNonExisting/providers/Microsoft.Cache/Redis/nonexistingrediscache?api-version=2018-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmMxMzA4OTQtYzViMy00YWRjLWEwNzctMGI1MWYzNzE0YWJlL3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0Tm9uRXhpc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9ub25leGlzdGluZ3JlZGlzY2FjaGU/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/bc130894-c5b3-4adc-a077-0b51f3714abe/resourceGroups/PowerShellTestNonExisting/providers/Microsoft.Cache/Redis/nonexistingrediscache?api-version=2019-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYmMxMzA4OTQtYzViMy00YWRjLWEwNzctMGI1MWYzNzE0YWJlL3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0Tm9uRXhpc3RpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9ub25leGlzdGluZ3JlZGlzY2FjaGU/YXBpLXZlcnNpb249MjAxOS0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bb10f1cc-d2bf-4e2d-8da2-bb72affa4fdf"
+          "f270ceef-9823-43c8-b231-af64b65d8ec9"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28008.01",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/5.0.0.0"
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/6.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -90,13 +90,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "ff82758f-8b81-48ae-93bc-bb1cd5c03835"
+          "85452080-57d9-4c59-90df-83529e1761e4"
         ],
         "x-ms-correlation-request-id": [
-          "ff82758f-8b81-48ae-93bc-bb1cd5c03835"
+          "85452080-57d9-4c59-90df-83529e1761e4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20191108T222114Z:ff82758f-8b81-48ae-93bc-bb1cd5c03835"
+          "WESTUS:20191204T003135Z:85452080-57d9-4c59-90df-83529e1761e4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -105,7 +105,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Nov 2019 22:21:14 GMT"
+          "Wed, 04 Dec 2019 00:31:34 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
