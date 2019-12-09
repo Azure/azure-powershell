@@ -1,0 +1,271 @@
+{
+  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine by name+$DELETE+https://management.azure.com/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/hybridrptest/providers/Microsoft.HybridCompute/machines/0.1.1907.16005?api-version=2019-08-02-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/hybridrptest/providers/Microsoft.HybridCompute/machines/0.1.1907.16005?api-version=2019-08-02-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "0e190052-b8f3-48a4-9c67-089fa463b00f" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "00c89e6a-4f11-4d86-90df-1ed211d94263" ],
+        "x-ms-routing-request-id": [ "WESTUS:20191014T203615Z:00c89e6a-4f11-4d86-90df-1ed211d94263" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 14 Oct 2019 20:36:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine by name+$GET+https://management.azure.com/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/hybridrptest/providers/Microsoft.HybridCompute/machines/0.1.1907.16005?api-version=2019-08-02-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/hybridrptest/providers/Microsoft.HybridCompute/machines/0.1.1907.16005?api-version=2019-08-02-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "18" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "021d0eb9-aeef-4453-8eb1-3e4875bbe28b" ],
+        "x-ms-correlation-request-id": [ "021d0eb9-aeef-4453-8eb1-3e4875bbe28b" ],
+        "x-ms-routing-request-id": [ "WESTUS:20191014T203615Z:021d0eb9-aeef-4453-8eb1-3e4875bbe28b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 14 Oct 2019 20:36:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "163" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.HybridCompute/machines/0.1.1907.16005\u0027 under resource group \u0027hybridrptest\u0027 was not found.\"}}"
+    }
+  },
+  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine by Input Object+$GET+https://management.azure.com/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/hybridrptest/providers/Microsoft.HybridCompute/machines/0.1.1907.16006?api-version=2019-08-02-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/hybridrptest/providers/Microsoft.HybridCompute/machines/0.1.1907.16006?api-version=2019-08-02-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "19" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "deb75561-c4b2-4d75-8aa4-88741bf87847" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "24ce5d81-7e03-408d-9a37-de852ce026df" ],
+        "x-ms-routing-request-id": [ "WESTUS:20191014T203616Z:24ce5d81-7e03-408d-9a37-de852ce026df" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 14 Oct 2019 20:36:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1144" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/hybridrptest/providers/Microsoft.HybridCompute/machines/0.1.1907.16006\",\"name\":\"0.1.1907.16006\",\"location\":\"eastus2euap\",\"tags\":{},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"21b6ea06-4ec4-4be5-a3bb-48a71f96693e\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"type\":\"Microsoft.HybridCompute/machines\",\"properties\":{\"provisioningState\":\"Succeeded\",\"agentVersion\":\"0.1.1907.16006\",\"status\":\"Disconnected\",\"lastStatusChange\":\"2019-07-17T00:18:18.832858\",\"errorDetails\":[],\"displayName\":\"fv-az456\",\"machineFqdn\":\"fv-az456\",\"osName\":\"linux\",\"osVersion\":\"4.15.0-1047-azure\",\"osProfile\":{\"computerName\":\"fv-az456\"},\"vmId\":\"c5652876-b0a9-4918-9bf5-ba0d8ae00b3b\",\"physicalLocation\":\"\",\"clientPublicKey\":\"MIIBCgKCAQEAwfey5bpVMlBdxUQiZ+xLoC7zYkjGml0XsH8bYavRK0vQA54e9MtiNOMT2e6rztOw8iM1ZH6knL7oZwdp23fJRQg6ByIHBjA0PhJBjVnjPPmbSXI4I8ujie1qXQPzzYKC5KarjeEKQ5IRFWzPh4C9MLCecb3w4peienMozveqrnFuVbcO6bJTUY/2k4JWz8k1F7dZs/SD1hH4xvRCHPN+OQ1bJhS2s2DcUT51Xz0X3QJg5Tkc24zcsO32cTTa3m/x/51MajCdb9s8xtCg7lNvL85xppaQGT82XIgrioc5p/43W5lhfraJIRolKc9C1OfnU76C4CfXQBVfufVnxndzAQIDAQAB\"}}"
+    }
+  },
+  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine by Input Object+$DELETE+https://management.azure.com/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/hybridrptest/providers/Microsoft.HybridCompute/machines/0.1.1907.16006?api-version=2019-08-02-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/hybridrptest/providers/Microsoft.HybridCompute/machines/0.1.1907.16006?api-version=2019-08-02-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "0c7456fb-cb2a-4dc2-891e-da457366357c" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-correlation-request-id": [ "3498b314-9fc4-4621-9d15-ff5844201f76" ],
+        "x-ms-routing-request-id": [ "WESTUS:20191014T203617Z:3498b314-9fc4-4621-9d15-ff5844201f76" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 14 Oct 2019 20:36:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine by Input Object+$GET+https://management.azure.com/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/hybridrptest/providers/Microsoft.HybridCompute/machines/0.1.1907.16006?api-version=2019-08-02-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/hybridrptest/providers/Microsoft.HybridCompute/machines/0.1.1907.16006?api-version=2019-08-02-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "21" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "907fc17b-56d5-472a-b5f8-c0be650f5e81" ],
+        "x-ms-correlation-request-id": [ "907fc17b-56d5-472a-b5f8-c0be650f5e81" ],
+        "x-ms-routing-request-id": [ "WESTUS:20191014T203617Z:907fc17b-56d5-472a-b5f8-c0be650f5e81" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 14 Oct 2019 20:36:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "163" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.HybridCompute/machines/0.1.1907.16006\u0027 under resource group \u0027hybridrptest\u0027 was not found.\"}}"
+    }
+  },
+  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine using pipelines +$GET+https://management.azure.com/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/hybridrptest/providers/Microsoft.HybridCompute/machines/0.1.1907.17001?api-version=2019-08-02-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/hybridrptest/providers/Microsoft.HybridCompute/machines/0.1.1907.17001?api-version=2019-08-02-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "22" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "30f9edd2-b01c-4015-8ac1-9ecb89590fac" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "6c9cf751-946e-4d09-8bdd-8a307e97760f" ],
+        "x-ms-routing-request-id": [ "WESTUS:20191014T203617Z:6c9cf751-946e-4d09-8bdd-8a307e97760f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 14 Oct 2019 20:36:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1145" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/hybridrptest/providers/Microsoft.HybridCompute/machines/0.1.1907.17001\",\"name\":\"0.1.1907.17001\",\"location\":\"eastus2euap\",\"tags\":{},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"a45933d9-5bcd-4116-9621-1c8fa26cc0d7\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"type\":\"Microsoft.HybridCompute/machines\",\"properties\":{\"provisioningState\":\"Succeeded\",\"agentVersion\":\"0.1.1907.17001\",\"status\":\"Disconnected\",\"lastStatusChange\":\"2019-07-17T17:18:23.7628643\",\"errorDetails\":[],\"displayName\":\"fv-az456\",\"machineFqdn\":\"fv-az456\",\"osName\":\"linux\",\"osVersion\":\"4.15.0-1047-azure\",\"osProfile\":{\"computerName\":\"fv-az456\"},\"vmId\":\"d1ef66e7-e9cf-40be-a813-7124f6283f47\",\"physicalLocation\":\"\",\"clientPublicKey\":\"MIIBCgKCAQEA42mKqa32JpnJLwsHZOSrU+XM02nCwhZw/tXVi71uL6Wudal1hR7aaYXbPoEU/J8NXg9i4FETgzwfMQZhEWOyIDzLbMixllgaaiyXR+5l2VOZrwcKAA9+TWmBUn16fC4OUW2qQVMgdpsNK8WoO8Ly+7xD79io3w7kv2o8FXWZgmSr8HSv2LGxr4O+QtXSxe/RBwRv4CHkW2mV2ByInvhfhdd86qqaju13i7fuLD2Kh3qzlHJq2+l9bdzomtdPqGfk3mMMnfrbH/uJzJPU9Qf8UTT4bgjMApRokJgUF+dJznXuVKs/dvwOEb1fXOwLoqGb6KhpGCDUI4CsOEtjMXS9cwIDAQAB\"}}"
+    }
+  },
+  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine using pipelines +$DELETE+https://management.azure.com/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/hybridrptest/providers/Microsoft.HybridCompute/machines/0.1.1907.17001?api-version=2019-08-02-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/hybridrptest/providers/Microsoft.HybridCompute/machines/0.1.1907.17001?api-version=2019-08-02-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "e19e16af-c49e-42da-bab4-a9fb135f562a" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-correlation-request-id": [ "b47d8ed8-034a-4bca-9993-e9b63be8ffa3" ],
+        "x-ms-routing-request-id": [ "WESTUS:20191014T203618Z:b47d8ed8-034a-4bca-9993-e9b63be8ffa3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 14 Oct 2019 20:36:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Remove-AzConnectedMachine+[NoContext]+Remove a connected machine using pipelines +$GET+https://management.azure.com/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/hybridrptest/providers/Microsoft.HybridCompute/machines/0.1.1907.17001?api-version=2019-08-02-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/hybridrptest/providers/Microsoft.HybridCompute/machines/0.1.1907.17001?api-version=2019-08-02-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "24" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "de3249a9-e0b8-4918-af98-ad3593b31e4d" ],
+        "x-ms-correlation-request-id": [ "de3249a9-e0b8-4918-af98-ad3593b31e4d" ],
+        "x-ms-routing-request-id": [ "WESTUS:20191014T203618Z:de3249a9-e0b8-4918-af98-ad3593b31e4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 14 Oct 2019 20:36:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "163" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.HybridCompute/machines/0.1.1907.17001\u0027 under resource group \u0027hybridrptest\u0027 was not found.\"}}"
+    }
+  }
+}
