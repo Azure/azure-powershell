@@ -5312,7 +5312,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/ps5176/providers/Microsoft.Sql/managedInstances/ps1421/databases/ps2251?api-version=2017-03-01-preview",
+      "RequestUri": "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/ps5176/providers/Microsoft.Sql/managedInstances/ps1421/databases/ps2251?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWU1ZWE4OTktMDc5MS00MThmLTkyNzAtNzdjZDgyNzM3OTRiL3Jlc291cmNlR3JvdXBzL3BzNTE3Ni9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3BzMTQyMS9kYXRhYmFzZXMvcHMyMjUxP2FwaS12ZXJzaW9uPTIwMTctMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -5372,7 +5372,7 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/ps5176/providers/Microsoft.Sql/managedInstances/ps1421/databases/ps2251?api-version=2017-03-01-preview",
+      "RequestUri": "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/ps5176/providers/Microsoft.Sql/managedInstances/ps1421/databases/ps2251?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWU1ZWE4OTktMDc5MS00MThmLTkyNzAtNzdjZDgyNzM3OTRiL3Jlc291cmNlR3JvdXBzL3BzNTE3Ni9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3BzMTQyMS9kYXRhYmFzZXMvcHMyMjUxP2FwaS12ZXJzaW9uPTIwMTctMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -5429,7 +5429,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/ps5176/providers/Microsoft.Sql/managedInstances/ps1421/databases/ps2251?api-version=2017-03-01-preview",
+      "RequestUri": "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/ps5176/providers/Microsoft.Sql/managedInstances/ps1421/databases/ps2251?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWU1ZWE4OTktMDc5MS00MThmLTkyNzAtNzdjZDgyNzM3OTRiL3Jlc291cmNlR3JvdXBzL3BzNTE3Ni9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3BzMTQyMS9kYXRhYmFzZXMvcHMyMjUxP2FwaS12ZXJzaW9uPTIwMTctMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -5492,7 +5492,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/ps5176/providers/Microsoft.Sql/managedInstances/ps1421/databases/ps2251?api-version=2017-03-01-preview",
+      "RequestUri": "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/ps5176/providers/Microsoft.Sql/managedInstances/ps1421/databases/ps2251?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWU1ZWE4OTktMDc5MS00MThmLTkyNzAtNzdjZDgyNzM3OTRiL3Jlc291cmNlR3JvdXBzL3BzNTE3Ni9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3BzMTQyMS9kYXRhYmFzZXMvcHMyMjUxP2FwaS12ZXJzaW9uPTIwMTctMDMtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n  },\r\n  \"location\": \"westcentralus\"\r\n}",
@@ -5524,13 +5524,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/providers/Microsoft.Sql/locations/westcentralus/managedDatabaseOperationResults/1200bce5-e7e8-42fd-b98f-50cf4ea6d0ab?api-version=2017-03-01-preview"
+          "https://management.azure.com/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/providers/Microsoft.Sql/locations/westcentralus/managedDatabaseOperationResults/1200bce5-e7e8-42fd-b98f-50cf4ea6d0ab?api-version=2018-06-01-preview"
         ],
         "Retry-After": [
           "15"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/providers/Microsoft.Sql/locations/westcentralus/managedDatabaseAzureAsyncOperation/1200bce5-e7e8-42fd-b98f-50cf4ea6d0ab?api-version=2017-03-01-preview"
+          "https://management.azure.com/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/providers/Microsoft.Sql/locations/westcentralus/managedDatabaseAzureAsyncOperation/1200bce5-e7e8-42fd-b98f-50cf4ea6d0ab?api-version=2018-06-01-preview"
         ],
         "x-ms-request-id": [
           "1200bce5-e7e8-42fd-b98f-50cf4ea6d0ab"
@@ -5570,7 +5570,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/providers/Microsoft.Sql/locations/westcentralus/managedDatabaseAzureAsyncOperation/1200bce5-e7e8-42fd-b98f-50cf4ea6d0ab?api-version=2017-03-01-preview",
+      "RequestUri": "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/providers/Microsoft.Sql/locations/westcentralus/managedDatabaseAzureAsyncOperation/1200bce5-e7e8-42fd-b98f-50cf4ea6d0ab?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWU1ZWE4OTktMDc5MS00MThmLTkyNzAtNzdjZDgyNzM3OTRiL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL21hbmFnZWREYXRhYmFzZUF6dXJlQXN5bmNPcGVyYXRpb24vMTIwMGJjZTUtZTdlOC00MmZkLWI5OGYtNTBjZjRlYTZkMGFiP2FwaS12ZXJzaW9uPTIwMTctMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -5630,7 +5630,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/providers/Microsoft.Sql/locations/westcentralus/managedDatabaseAzureAsyncOperation/1200bce5-e7e8-42fd-b98f-50cf4ea6d0ab?api-version=2017-03-01-preview",
+      "RequestUri": "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/providers/Microsoft.Sql/locations/westcentralus/managedDatabaseAzureAsyncOperation/1200bce5-e7e8-42fd-b98f-50cf4ea6d0ab?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWU1ZWE4OTktMDc5MS00MThmLTkyNzAtNzdjZDgyNzM3OTRiL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL21hbmFnZWREYXRhYmFzZUF6dXJlQXN5bmNPcGVyYXRpb24vMTIwMGJjZTUtZTdlOC00MmZkLWI5OGYtNTBjZjRlYTZkMGFiP2FwaS12ZXJzaW9uPTIwMTctMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -6011,7 +6011,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/ps5176/providers/Microsoft.Sql/managedInstances/ps1421/databases/ps2251?api-version=2017-03-01-preview",
+      "RequestUri": "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/ps5176/providers/Microsoft.Sql/managedInstances/ps1421/databases/ps2251?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWU1ZWE4OTktMDc5MS00MThmLTkyNzAtNzdjZDgyNzM3OTRiL3Jlc291cmNlR3JvdXBzL3BzNTE3Ni9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3BzMTQyMS9kYXRhYmFzZXMvcHMyMjUxP2FwaS12ZXJzaW9uPTIwMTctMDMtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -6037,13 +6037,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/providers/Microsoft.Sql/locations/westcentralus/managedDatabaseOperationResults/6247f899-7fbb-4455-b55d-30d42b90d137?api-version=2017-03-01-preview"
+          "https://management.azure.com/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/providers/Microsoft.Sql/locations/westcentralus/managedDatabaseOperationResults/6247f899-7fbb-4455-b55d-30d42b90d137?api-version=2018-06-01-preview"
         ],
         "Retry-After": [
           "15"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/providers/Microsoft.Sql/locations/westcentralus/managedDatabaseAzureAsyncOperation/6247f899-7fbb-4455-b55d-30d42b90d137?api-version=2017-03-01-preview"
+          "https://management.azure.com/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/providers/Microsoft.Sql/locations/westcentralus/managedDatabaseAzureAsyncOperation/6247f899-7fbb-4455-b55d-30d42b90d137?api-version=2018-06-01-preview"
         ],
         "x-ms-request-id": [
           "6247f899-7fbb-4455-b55d-30d42b90d137"
@@ -6083,7 +6083,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/providers/Microsoft.Sql/locations/westcentralus/managedDatabaseAzureAsyncOperation/6247f899-7fbb-4455-b55d-30d42b90d137?api-version=2017-03-01-preview",
+      "RequestUri": "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/providers/Microsoft.Sql/locations/westcentralus/managedDatabaseAzureAsyncOperation/6247f899-7fbb-4455-b55d-30d42b90d137?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWU1ZWE4OTktMDc5MS00MThmLTkyNzAtNzdjZDgyNzM3OTRiL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL21hbmFnZWREYXRhYmFzZUF6dXJlQXN5bmNPcGVyYXRpb24vNjI0N2Y4OTktN2ZiYi00NDU1LWI1NWQtMzBkNDJiOTBkMTM3P2FwaS12ZXJzaW9uPTIwMTctMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -6143,7 +6143,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/providers/Microsoft.Sql/locations/westcentralus/managedDatabaseOperationResults/6247f899-7fbb-4455-b55d-30d42b90d137?api-version=2017-03-01-preview",
+      "RequestUri": "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/providers/Microsoft.Sql/locations/westcentralus/managedDatabaseOperationResults/6247f899-7fbb-4455-b55d-30d42b90d137?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWU1ZWE4OTktMDc5MS00MThmLTkyNzAtNzdjZDgyNzM3OTRiL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL21hbmFnZWREYXRhYmFzZU9wZXJhdGlvblJlc3VsdHMvNjI0N2Y4OTktN2ZiYi00NDU1LWI1NWQtMzBkNDJiOTBkMTM3P2FwaS12ZXJzaW9uPTIwMTctMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",

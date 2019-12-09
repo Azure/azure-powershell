@@ -14030,7 +14030,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2017-03-01-preview",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -14090,7 +14090,7 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2017-03-01-preview",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -14147,7 +14147,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2017-03-01-preview",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -14210,7 +14210,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2017-03-01-preview",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -14273,7 +14273,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2017-03-01-preview",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -14336,7 +14336,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2017-03-01-preview",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -14399,7 +14399,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2017-03-01-preview",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n  },\r\n  \"location\": \"northeurope\"\r\n}",
@@ -14431,13 +14431,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/northeurope/managedDatabaseOperationResults/c3cf97a8-8267-4e0e-b9b8-28813cb0fa40?api-version=2017-03-01-preview"
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/northeurope/managedDatabaseOperationResults/c3cf97a8-8267-4e0e-b9b8-28813cb0fa40?api-version=2018-06-01-preview"
         ],
         "Retry-After": [
           "15"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/northeurope/managedDatabaseAzureAsyncOperation/c3cf97a8-8267-4e0e-b9b8-28813cb0fa40?api-version=2017-03-01-preview"
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/northeurope/managedDatabaseAzureAsyncOperation/c3cf97a8-8267-4e0e-b9b8-28813cb0fa40?api-version=2018-06-01-preview"
         ],
         "x-ms-request-id": [
           "c3cf97a8-8267-4e0e-b9b8-28813cb0fa40"
@@ -14477,7 +14477,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/northeurope/managedDatabaseAzureAsyncOperation/c3cf97a8-8267-4e0e-b9b8-28813cb0fa40?api-version=2017-03-01-preview",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/northeurope/managedDatabaseAzureAsyncOperation/c3cf97a8-8267-4e0e-b9b8-28813cb0fa40?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9ub3J0aGV1cm9wZS9tYW5hZ2VkRGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uL2MzY2Y5N2E4LTgyNjctNGUwZS1iOWI4LTI4ODEzY2IwZmE0MD9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -14537,7 +14537,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/northeurope/managedDatabaseAzureAsyncOperation/c3cf97a8-8267-4e0e-b9b8-28813cb0fa40?api-version=2017-03-01-preview",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/northeurope/managedDatabaseAzureAsyncOperation/c3cf97a8-8267-4e0e-b9b8-28813cb0fa40?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9ub3J0aGV1cm9wZS9tYW5hZ2VkRGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uL2MzY2Y5N2E4LTgyNjctNGUwZS1iOWI4LTI4ODEzY2IwZmE0MD9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -14597,7 +14597,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/northeurope/managedDatabaseAzureAsyncOperation/c3cf97a8-8267-4e0e-b9b8-28813cb0fa40?api-version=2017-03-01-preview",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/northeurope/managedDatabaseAzureAsyncOperation/c3cf97a8-8267-4e0e-b9b8-28813cb0fa40?api-version=2018-06-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9ub3J0aGV1cm9wZS9tYW5hZ2VkRGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uL2MzY2Y5N2E4LTgyNjctNGUwZS1iOWI4LTI4ODEzY2IwZmE0MD9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
