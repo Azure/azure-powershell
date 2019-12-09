@@ -30,6 +30,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<string> DestinationAddresses { get; set; }
 
+        public List<string> SourceIpGroups { get; set; }
+
+        public List<string> DestinationIpGroups { get; set; }
+
         public List<string> DestinationFqdns { get; set; }
 
         public List<string> DestinationPorts { get; set; }
@@ -47,9 +51,21 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+        public string SourceIpGroupsText
+        {
+            get { return JsonConvert.SerializeObject(SourceIpGroups, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
         public string DestinationAddressesText
         {
             get { return JsonConvert.SerializeObject(DestinationAddresses, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string DestinationIpGroupsText
+        {
+            get { return JsonConvert.SerializeObject(DestinationIpGroups, Formatting.Indented); }
         }
 
         [JsonIgnore]
