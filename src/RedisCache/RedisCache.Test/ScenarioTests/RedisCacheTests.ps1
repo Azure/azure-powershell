@@ -28,15 +28,6 @@ function Test-RedisCache
 
     Assert-NotNull $cacheCreated.PrimaryKey "PrimaryKey do not exists"
     Assert-NotNull $cacheCreated.SecondaryKey "SecondaryKey do not exists"
-		
-	Assert-AreEqual 2 $cacheCreated.Instances.Count
-	for($i = 0; $i -lt $cacheCreated.Instances.Count; $i++)
-	{
-		Assert-AreEqual (15000+$i) $cacheCreated.Instances[$i].SslPort
-		Assert-Null $cacheCreated.Instances[$i].NonSslPort
-		Assert-Null $cacheCreated.Instances[$i].ShardId
-		Assert-Null $cacheCreated.Instances[$i].Zone
-	}
 
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
@@ -65,15 +56,6 @@ function Test-RedisCache
 
     Assert-NotNull $cacheUpdated.PrimaryKey "PrimaryKey do not exists"
     Assert-NotNull $cacheUpdated.SecondaryKey "SecondaryKey do not exists"
-
-	Assert-AreEqual 2 $cacheUpdated.Instances.Count
-	for($i = 0; $i -lt $cacheUpdated.Instances.Count; $i++)
-	{
-		Assert-AreEqual (15000+$i) $cacheUpdated.Instances[$i].SslPort
-		Assert-AreEqual (13000+$i) $cacheUpdated.Instances[$i].NonSslPort
-		Assert-Null $cacheUpdated.Instances[$i].ShardId
-		Assert-Null $cacheUpdated.Instances[$i].Zone
-	}
 
     # List all cache in resource group
     $cachesInResourceGroup = Get-AzRedisCache -ResourceGroupName $resourceGroupName
@@ -105,14 +87,6 @@ function Test-RedisCache
             $found = 1
             Assert-AreEqual $location $cachesInSubscription[$i].Location
             Assert-AreEqual $resourceGroupName $cachesInSubscription[$i].ResourceGroupName
-			Assert-AreEqual 2 $cachesInSubscription[$i].Instances.Count
-			for($j = 0; $j -lt $cachesInSubscription[$i].Instances.Count; $j++)
-			{
-				Assert-AreEqual (15000+$j) $cachesInSubscription[$i].Instances[$j].SslPort
-				Assert-AreEqual (13000+$j) $cachesInSubscription[$i].Instances[$j].NonSslPort
-				Assert-Null $cachesInSubscription[$i].Instances[$j].ShardId
-				Assert-Null $cachesInSubscription[$i].Instances[$j].Zone
-			}
             break
         }
     }
@@ -257,16 +231,6 @@ function Test-RedisCacheClustering
 
     Assert-NotNull $cacheCreated.PrimaryKey "PrimaryKey do not exists"
     Assert-NotNull $cacheCreated.SecondaryKey "SecondaryKey do not exists"
-		
-	Assert-AreEqual ($cacheCreated.ShardCount*2) $cacheCreated.Instances.Count
-
-	for($i = 0; $i -lt $cacheCreated.Instances.Count; $i++)
-	{
-		Assert-AreEqual (15000+$i) $cacheCreated.Instances[$i].SslPort
-		Assert-Null $cacheCreated.Instances[$i].NonSslPort
-		# ShardId check should be added here in future
-		Assert-Null $cacheCreated.Instances[$i].Zone
-	}
 
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
@@ -892,124 +856,6 @@ function Test-Zones
         Assert-False {$i -eq 60} "Cache is not in succeeded state even after 30 min."
     }
 
-    # Delete cache
-    Assert-True {Remove-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
-
-    # Delete resource group
-    Remove-AzResourceGroup -Name $resourceGroupName -Force
-}
-
-function Test-ZoneRedundancy
-{
-    # Setup
-    $resourceGroupName = "PowerShellTest-10"
-    $cacheName = "redisteam010"
-    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "Central US"
-	$zones = @("1","2")
-	$replicasPerMaster = 2
-
-    # Create resource group
-    New-AzResourceGroup -Name $resourceGroupName -Location $location
-
-    # Creating Cache
-    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size P1 -Sku Premium -ReplicasPerMaster $replicasPerMaster -Zone $zones
-
-    Assert-AreEqual $cacheName $cacheCreated.Name
-    Assert-AreEqual $location $cacheCreated.Location
-    Assert-AreEqual "Microsoft.Cache/Redis" $cacheCreated.Type
-    Assert-AreEqual $resourceGroupName $cacheCreated.ResourceGroupName
-	Assert-AreEqual 6379 $cacheCreated.Port	    
-    Assert-AreEqual 6380 $cacheCreated.SslPort
-    Assert-AreEqual "creating" $cacheCreated.ProvisioningState
-    Assert-AreEqual "6GB" $cacheCreated.Size
-    Assert-AreEqual "Premium" $cacheCreated.Sku
-
-	Assert-NotNull $cacheCreated.PrimaryKey "PrimaryKey do not exists"
-    Assert-NotNull $cacheCreated.SecondaryKey "SecondaryKey do not exists"
-
-	Assert-AreEqual $replicasPerMaster $cacheCreated.ReplicasPerMaster
-	Assert-AreEqual $zones[0] $cacheCreated.Zone[0]
-	Assert-AreEqual $zones[1] $cacheCreated.Zone[1]
-	Assert-AreEqual ($replicasPerMaster+1) $cacheCreated.Instances.Count
-
-	for($i = 0; $i -lt $cacheCreated.Instances.Count; $i++)
-	{
-		Assert-AreEqual (15000+$i) $cacheCreated.Instances[$i].SslPort
-		Assert-Null $cacheCreated.Instances[$i].NonSslPort
-		Assert-Null $cacheCreated.Instances[$i].ShardId
-		#Zone will be NULL initially and should be available post cache provisioing succeeds
-		Assert-Null $cacheCreated.Instances[$i].Zone
-	}
-	
-    # In loop to check if cache exists
-    for ($i = 0; $i -le 60; $i++)
-    {
-        Start-TestSleep 30000
-        $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
-        if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
-        {
-            Assert-AreEqual $cacheName $cacheGet[0].Name
-            Assert-AreEqual "succeeded" $cacheGet[0].ProvisioningState
-            break
-        }
-        Assert-False {$i -eq 60} "Cache is not in succeeded state even after 30 min."
-    }
-
-    # Updating Cache
-    $cacheUpdated = Set-AzRedisCache -Name $cacheName -EnableNonSslPort $true -MinimumTlsVersion 1.2
-
-	$replicasPerMaster = 2
-    Assert-AreEqual $cacheName $cacheUpdated.Name
-    Assert-AreEqual 6379 $cacheUpdated.Port
-    Assert-AreEqual 6380 $cacheUpdated.SslPort
-    Assert-AreEqual "succeeded" $cacheUpdated.ProvisioningState    
-    Assert-True  { $cacheUpdated.EnableNonSslPort }	
-
-    Assert-NotNull $cacheUpdated.PrimaryKey "PrimaryKey do not exists"
-    Assert-NotNull $cacheUpdated.SecondaryKey "SecondaryKey do not exists"
-
-	Assert-AreEqual $replicasPerMaster $cacheUpdated.ReplicasPerMaster
-	Assert-AreEqual $zones[0] $cacheUpdated.Zone[0]
-	Assert-AreEqual $zones[1] $cacheUpdated.Zone[1]
-	Assert-AreEqual ($replicasPerMaster+1) $cacheUpdated.Instances.Count
-
-	for($i = 0; $i -lt $cacheUpdated.Instances.Count; $i++)
-	{
-		Assert-AreEqual (15000+$i) $cacheUpdated.Instances[$i].SslPort
-		Assert-AreEqual (13000+$i) $cacheUpdated.Instances[$i].NonSslPort
-		Assert-Null $cacheUpdated.Instances[$i].ShardId
-		Assert-NotNull $cacheUpdated.Instances[$i].Zone
-	}
-
-    # List all cache in resource group
-    $cachesInResourceGroup = Get-AzRedisCache -ResourceGroupName $resourceGroupName
-    Assert-True {$cachesInResourceGroup.Count -ge 1}
-
-    $found = 0
-    for ($i = 0; $i -lt $cachesInResourceGroup.Count; $i++)
-    {
-        if ($cachesInResourceGroup[$i].Name -eq $cacheName)
-        {
-            $found = 1
-            Assert-AreEqual $location $cachesInResourceGroup[$i].Location
-            Assert-AreEqual $resourceGroupName $cachesInResourceGroup[$i].ResourceGroupName
-			Assert-AreEqual $replicasPerMaster $cachesInResourceGroup[$i].ReplicasPerMaster
-			Assert-AreEqual $zones[0] $cachesInResourceGroup[$i].Zone[0]
-			Assert-AreEqual $zones[1] $cachesInResourceGroup[$i].Zone[1]
-			Assert-AreEqual ($replicasPerMaster+1) $cachesInResourceGroup[$i].Instances.Count
-
-			for($j = 0; $j -lt $cachesInResourceGroup[$j].Instances.Count; $j++)
-			{
-				Assert-AreEqual (15000+$j) $cachesInResourceGroup[$i].Instances[$j].SslPort
-				Assert-AreEqual (13000+$j) $cachesInResourceGroup[$i].Instances[$j].NonSslPort
-				Assert-Null $cachesInResourceGroup[$i].Instances[$j].ShardId
-				Assert-NotNull $cachesInResourceGroup[$i].Instances[$j].Zone
-			}
-            break
-        }
-    }
-    Assert-True {$found -eq 1} "Cache created earlier is not found."
-	
     # Delete cache
     Assert-True {Remove-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
 

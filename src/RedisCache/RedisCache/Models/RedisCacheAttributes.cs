@@ -31,8 +31,6 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             SslPort = cache.SslPort.HasValue ? cache.SslPort.Value : 0;
             RedisConfiguration = cache.RedisConfiguration;
             EnableNonSslPort = cache.EnableNonSslPort.Value;
-            ReplicasPerMaster = cache.ReplicasPerMaster;
-            Instances = cache.Instances;
             RedisVersion = cache.RedisVersion;
             Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Sku.Family, cache.Sku.Capacity);
             Sku = cache.Sku.Name;
@@ -89,10 +87,6 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public IDictionary<string, string> RedisConfiguration { get; protected set; }
 
         public bool EnableNonSslPort { get; protected set; }
-
-        public int? ReplicasPerMaster { get; protected set; }
-
-        public IList<RedisInstanceDetails> Instances { get; protected set; }
 
         public string RedisVersion { get; protected set; }
 

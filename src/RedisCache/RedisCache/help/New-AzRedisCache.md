@@ -15,10 +15,10 @@ Creates a Redis Cache.
 
 ```
 New-AzRedisCache -ResourceGroupName <String> -Name <String> -Location <String> [-Size <String>] [-Sku <String>]
- [-RedisConfiguration <Hashtable>] [-EnableNonSslPort <Boolean>] [-ReplicasPerMaster <Int32>]
- [-TenantSettings <Hashtable>] [-ShardCount <Int32>] [-MinimumTlsVersion <String>] [-SubnetId <String>]
- [-StaticIP <String>] [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RedisConfiguration <Hashtable>] [-EnableNonSslPort <Boolean>] [-TenantSettings <Hashtable>]
+ [-ShardCount <Int32>] [-MinimumTlsVersion <String>] [-SubnetId <String>] [-StaticIP <String>]
+ [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -216,21 +216,6 @@ For more information, see Manage Azure Redis Cache with Azure PowerShellhttp://g
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ReplicasPerMaster
-[Preview] The number of replicas to be created per master.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
