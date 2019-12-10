@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     [Serializable]
     public class AzureEnvironment : IAzureEnvironment
     {        
-        private const int GetArmMetadataRetryCount = 3;
         private const string ArmMetadataEnvVariable = "ARM_CLOUD_METADATA_URL";
         private static readonly HttpClient Client = new HttpClient();        
 
@@ -154,11 +153,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 AdTenant = "Common"
             };
 
-            var result = new ConcurrentDictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
-            result[EnvironmentName.AzureCloud] = azureCloud;
-            result[EnvironmentName.AzureChinaCloud] = azureChina;
-            result[EnvironmentName.AzureUSGovernment] = azureUSGovernment;
-            result[EnvironmentName.AzureGermanCloud] = azureGermany;
+            var result = new ConcurrentDictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase)
+            {
+                [EnvironmentName.AzureCloud] = azureCloud,
+                [EnvironmentName.AzureChinaCloud] = azureChina,
+                [EnvironmentName.AzureUSGovernment] = azureUSGovernment,
+                [EnvironmentName.AzureGermanCloud] = azureGermany
+            };
             SetExtendedProperties(result);
             return result;
         }
@@ -168,29 +169,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// </summary>
         private static async Task<IDictionary<string, AzureEnvironment>> InitializeEnvironmentsFromArm(string armMetadataRequestUri)
         {
-            HttpResponseMessage armResponseMessage = null;
-            await Policy
-                .Handle<HttpRequestException>()
-                .WaitAndRetryAsync(
-                    GetArmMetadataRetryCount,
-                    r => TimeSpan.FromSeconds(2 * r),
-                    (ex, ts, r) =>
-                        Debug.WriteLine(
-                            $"Could not retrieve ARM metadata. Attempt #{r}/{GetArmMetadataRetryCount}. Will try again in {ts.TotalSeconds} seconds. Exception={ex}"))
-                .ExecuteAsync(async () =>
-                {
-                    armResponseMessage = await Client.GetAsync(armMetadataRequestUri);
-                });
-
-            if (armResponseMessage == null || armResponseMessage?.StatusCode != HttpStatusCode.OK)
+            var armResponseMessage = await Client.GetAsync(armMetadataRequestUri);
+            if (armResponseMessage?.StatusCode != HttpStatusCode.OK)
             {
-                throw new Exception("Could not retrieve ARM metadata, compute management client cannot be initialized.");
+                throw new Exception("Failed to load cloud metadata from the url specified by ARM_CLOUD_METADATA_URL.");
             }
 
             var armMetadataContent = await armResponseMessage.Content?.ReadAsStringAsync();
             if (string.IsNullOrEmpty(armMetadataContent))
             {
-                throw new Exception("Could not read ARM metadata, compute management client cannot be initialized.");
+                throw new Exception("Failed to load cloud metadata from the url specified by ARM_CLOUD_METADATA_URL.");
             }
 
             var armMetadataList = JsonConvert.DeserializeObject<List<ArmMetadata>>(armMetadataContent);
@@ -285,7 +273,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             }
         }
 
-        // TODO: 
         /// <summary>
         /// Gets the key vault service endpoint resource id for a cloud.
         /// Note: Remove once the ARM metadata endpoint exposes KeyVaultServiceEndpointResourceId.

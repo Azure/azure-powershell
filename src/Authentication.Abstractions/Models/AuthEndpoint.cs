@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models
     /// <summary>
     /// ARM authentication schema.
     /// </summary>
-    public class AuthEndpoint
+    internal class AuthEndpoint
     {
         /// <summary>
         /// Gets or sets the authentication endpoint.

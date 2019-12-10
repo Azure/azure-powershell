@@ -56,8 +56,4 @@
     <Folder Include="Models\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Polly" Version="7.1.1" />
-  </ItemGroup>
-
 </Project>

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models
     /// <summary>
     /// ARM metadata schema.
     /// </summary>
-    public class ArmMetadata
+    internal class ArmMetadata
     {
         /// <summary>
         /// Gets or sets the Portal endpoint.

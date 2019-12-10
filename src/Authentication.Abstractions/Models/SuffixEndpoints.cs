@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models
     /// <summary>
     /// ARM suffix endpoints schema.
     /// </summary>
-    public class SuffixEndpoints
+    internal class SuffixEndpoints
     {
         /// <summary>
         /// Gets or sets the AzureDataLakeStoreFileSystem endpoint.
