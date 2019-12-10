@@ -14,7 +14,7 @@ The Azure PowerShell Developer Guide was created to help with the development an
 - [Before Adding a New Project](#before-adding-a-new-project)
     - [.NET SDK](#net-sdk)
     - [Design Review](#design-review)
-    - [Contact](#contact)
+    - [Contact](#point-of-contact)
 - [Setting Up a New Project](#setting-up-a-new-project)
     - [Getting Started](#getting-started)
         - [Creating the Project](#creating-the-project)
