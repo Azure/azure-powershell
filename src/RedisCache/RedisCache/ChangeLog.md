@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.1
+
 * Added `ReplicasPerMaster` parameter in `New-AzRedisCache` cmdlet. 
 * Added `ReplicasPerMaster` and `Instances` in the output of `Get-AzRedisCache` cmdlet.
 * Update references in .psd1 to use relative path
