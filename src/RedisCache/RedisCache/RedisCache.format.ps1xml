@@ -50,14 +50,6 @@
                 <Label>EnableNonSslPort</Label>
                 <PropertyName>EnableNonSslPort</PropertyName>
               </ListItem>
-			  <ListItem>
-                <Label>ReplicasPerMaster</Label>
-                <PropertyName>ReplicasPerMaster</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Instances</Label>                
-                <ScriptBlock>$_.Instances | ConvertTo-Json</ScriptBlock>
-              </ListItem>
               <ListItem>
                 <Label>RedisVersion</Label>
                 <PropertyName>RedisVersion</PropertyName>
@@ -156,14 +148,6 @@
                 <Label>EnableNonSslPort</Label>
                 <PropertyName>EnableNonSslPort</PropertyName>
               </ListItem>
-			  <ListItem>
-                <Label>ReplicasPerMaster</Label>
-                <PropertyName>ReplicasPerMaster</PropertyName>
-              </ListItem>
-			  <ListItem>
-                <Label>Instances</Label>
-                <ScriptBlock>$_.Instances | ConvertTo-Json</ScriptBlock>
-              </ListItem>
               <ListItem>
                 <Label>RedisVersion</Label>
                 <PropertyName>RedisVersion</PropertyName>
@@ -203,10 +187,6 @@
               <ListItem>
                 <Label>ShardCount</Label>
                 <PropertyName>ShardCount</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>MinimumTlsVersion</Label>
-                <PropertyName>MinimumTlsVersion</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Tag</Label>

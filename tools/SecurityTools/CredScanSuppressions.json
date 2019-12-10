@@ -126,10 +126,6 @@
       "_justification": "Legitimate test session record, keys are deleted"
     },
     {
-      "file": "src\\RedisCache\\RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestZoneRedundancy.json",
-      "_justification": "Legitimate test session record, keys are deleted"
-    },
-    {
       "file": "src\\Storage\\Storage.Management.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestPipingSetStorageAccount.json",
       "_justification": "Legitimate test session record, keys are deleted"
     },
