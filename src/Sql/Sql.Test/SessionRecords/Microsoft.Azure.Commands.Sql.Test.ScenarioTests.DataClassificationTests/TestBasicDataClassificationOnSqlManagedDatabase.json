@@ -1907,7 +1907,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1961,7 +1961,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2024,7 +2024,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2087,7 +2087,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2159,7 +2159,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2219,7 +2219,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2279,7 +2279,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2339,7 +2339,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2399,7 +2399,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2459,7 +2459,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2519,7 +2519,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2579,7 +2579,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2639,7 +2639,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2699,7 +2699,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2759,7 +2759,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2819,7 +2819,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2879,7 +2879,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2939,7 +2939,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2999,7 +2999,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -3059,7 +3059,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -3119,7 +3119,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -3179,7 +3179,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -3239,7 +3239,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -3299,7 +3299,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -3359,7 +3359,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -3419,7 +3419,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -3479,7 +3479,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -3539,7 +3539,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -3599,7 +3599,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -3659,7 +3659,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -3719,7 +3719,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -3779,7 +3779,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -3839,7 +3839,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -3899,7 +3899,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -3959,7 +3959,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -4019,7 +4019,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -4079,7 +4079,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -4139,7 +4139,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -4199,7 +4199,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -4259,7 +4259,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -4319,7 +4319,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -4379,7 +4379,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -4439,7 +4439,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -4499,7 +4499,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -4559,7 +4559,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -4619,7 +4619,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -4679,7 +4679,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -4739,7 +4739,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -4799,7 +4799,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -4859,7 +4859,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -4919,7 +4919,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -4979,7 +4979,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -5039,7 +5039,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -5099,7 +5099,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -5159,7 +5159,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -5219,7 +5219,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -5279,7 +5279,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -5339,7 +5339,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -5399,7 +5399,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -5459,7 +5459,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -5519,7 +5519,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -5579,7 +5579,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -5639,7 +5639,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -5699,7 +5699,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -5759,7 +5759,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -5819,7 +5819,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -5879,7 +5879,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -5939,7 +5939,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -5999,7 +5999,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -6059,7 +6059,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -6119,7 +6119,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -6179,7 +6179,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -6239,7 +6239,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -6299,7 +6299,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -6359,7 +6359,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -6419,7 +6419,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -6479,7 +6479,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -6539,7 +6539,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -6599,7 +6599,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -6659,7 +6659,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -6719,7 +6719,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -6779,7 +6779,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -6839,7 +6839,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -6899,7 +6899,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -6959,7 +6959,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -7019,7 +7019,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -7079,7 +7079,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -7139,7 +7139,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -7199,7 +7199,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -7259,7 +7259,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -7319,7 +7319,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -7379,7 +7379,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -7439,7 +7439,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -7499,7 +7499,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -7559,7 +7559,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -7619,7 +7619,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -7679,7 +7679,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -7739,7 +7739,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -7799,7 +7799,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -7859,7 +7859,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -7919,7 +7919,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -7979,7 +7979,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -8039,7 +8039,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -8099,7 +8099,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -8159,7 +8159,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -8219,7 +8219,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -8279,7 +8279,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -8339,7 +8339,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -8399,7 +8399,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -8459,7 +8459,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -8519,7 +8519,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -8579,7 +8579,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -8639,7 +8639,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -8699,7 +8699,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -8759,7 +8759,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -8819,7 +8819,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -8879,7 +8879,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -8939,7 +8939,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -8999,7 +8999,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -9059,7 +9059,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -9119,7 +9119,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -9179,7 +9179,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -9239,7 +9239,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -9299,7 +9299,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -9359,7 +9359,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -9419,7 +9419,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -9479,7 +9479,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -9539,7 +9539,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -9599,7 +9599,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -9659,7 +9659,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -9719,7 +9719,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -9779,7 +9779,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -9839,7 +9839,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -9899,7 +9899,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -9959,7 +9959,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -10019,7 +10019,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -10079,7 +10079,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -10139,7 +10139,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -10199,7 +10199,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -10259,7 +10259,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -10319,7 +10319,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -10379,7 +10379,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -10439,7 +10439,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -10499,7 +10499,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -10559,7 +10559,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -10619,7 +10619,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -10679,7 +10679,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -10739,7 +10739,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -10799,7 +10799,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -10859,7 +10859,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -10919,7 +10919,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -10979,7 +10979,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -11039,7 +11039,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -11099,7 +11099,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -11159,7 +11159,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -11219,7 +11219,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -11279,7 +11279,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -11339,7 +11339,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -11399,7 +11399,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -11459,7 +11459,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -11519,7 +11519,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -11579,7 +11579,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -11639,7 +11639,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -11699,7 +11699,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -11759,7 +11759,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -11819,7 +11819,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -11879,7 +11879,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -11939,7 +11939,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -11999,7 +11999,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -12059,7 +12059,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -12119,7 +12119,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -12179,7 +12179,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -12239,7 +12239,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -12299,7 +12299,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -12359,7 +12359,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -12419,7 +12419,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -12479,7 +12479,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -12539,7 +12539,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -12599,7 +12599,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -12659,7 +12659,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -12719,7 +12719,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -12779,7 +12779,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -12839,7 +12839,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -12899,7 +12899,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -12959,7 +12959,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -13019,7 +13019,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -13079,7 +13079,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -13139,7 +13139,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -13199,7 +13199,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -13259,7 +13259,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -13319,7 +13319,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -13379,7 +13379,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -13439,7 +13439,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -13499,7 +13499,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -13559,7 +13559,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -13619,7 +13619,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -13679,7 +13679,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -13739,7 +13739,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -13799,7 +13799,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -13859,7 +13859,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -13919,7 +13919,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -13979,7 +13979,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -14031,7 +14031,7 @@
     },
     {
       "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2018-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE4LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -14045,7 +14045,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -14091,7 +14091,7 @@
     },
     {
       "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2018-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE4LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -14099,7 +14099,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -14148,7 +14148,7 @@
     },
     {
       "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2018-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE4LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -14162,7 +14162,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -14211,7 +14211,7 @@
     },
     {
       "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2018-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE4LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -14225,7 +14225,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -14274,7 +14274,7 @@
     },
     {
       "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2018-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE4LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -14288,7 +14288,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -14337,7 +14337,7 @@
     },
     {
       "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2018-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE4LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -14351,7 +14351,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -14400,7 +14400,7 @@
     },
     {
       "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052/databases/dc-cmdlet-dbps8052?api-version=2018-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL2NsX29uZS9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL2RjLWNtZGxldC1zZXJ2ZXJwczgwNTIvZGF0YWJhc2VzL2RjLWNtZGxldC1kYnBzODA1Mj9hcGktdmVyc2lvbj0yMDE4LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\"\r\n  },\r\n  \"location\": \"northeurope\"\r\n}",
       "RequestHeaders": {
@@ -14414,7 +14414,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -14478,7 +14478,7 @@
     },
     {
       "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/northeurope/managedDatabaseAzureAsyncOperation/c3cf97a8-8267-4e0e-b9b8-28813cb0fa40?api-version=2018-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9ub3J0aGV1cm9wZS9tYW5hZ2VkRGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uL2MzY2Y5N2E4LTgyNjctNGUwZS1iOWI4LTI4ODEzY2IwZmE0MD9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9ub3J0aGV1cm9wZS9tYW5hZ2VkRGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uL2MzY2Y5N2E4LTgyNjctNGUwZS1iOWI4LTI4ODEzY2IwZmE0MD9hcGktdmVyc2lvbj0yMDE4LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -14486,7 +14486,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -14538,7 +14538,7 @@
     },
     {
       "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/northeurope/managedDatabaseAzureAsyncOperation/c3cf97a8-8267-4e0e-b9b8-28813cb0fa40?api-version=2018-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9ub3J0aGV1cm9wZS9tYW5hZ2VkRGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uL2MzY2Y5N2E4LTgyNjctNGUwZS1iOWI4LTI4ODEzY2IwZmE0MD9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9ub3J0aGV1cm9wZS9tYW5hZ2VkRGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uL2MzY2Y5N2E4LTgyNjctNGUwZS1iOWI4LTI4ODEzY2IwZmE0MD9hcGktdmVyc2lvbj0yMDE4LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -14546,7 +14546,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -14598,7 +14598,7 @@
     },
     {
       "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/northeurope/managedDatabaseAzureAsyncOperation/c3cf97a8-8267-4e0e-b9b8-28813cb0fa40?api-version=2018-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9ub3J0aGV1cm9wZS9tYW5hZ2VkRGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uL2MzY2Y5N2E4LTgyNjctNGUwZS1iOWI4LTI4ODEzY2IwZmE0MD9hcGktdmVyc2lvbj0yMDE3LTAzLTAxLXByZXZpZXc=",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy9ub3J0aGV1cm9wZS9tYW5hZ2VkRGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uL2MzY2Y5N2E4LTgyNjctNGUwZS1iOWI4LTI4ODEzY2IwZmE0MD9hcGktdmVyc2lvbj0yMDE4LTA2LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -14606,7 +14606,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -14672,7 +14672,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -14735,7 +14735,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -14798,7 +14798,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -14861,7 +14861,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -14924,7 +14924,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -14987,7 +14987,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -15050,7 +15050,7 @@
           "FxVersion/4.6.27129.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.28.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.37.0.0"
         ]
       },
       "ResponseHeaders": {
