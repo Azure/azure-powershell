@@ -116,7 +116,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* SDK for AzureStack SRP in 2019-08-08-preview. The new version removes the following commands: Get-AzsBlob*, Get-AzsQueue*, Get-AzsTable*, Get-AzsStorageShare* and *StorageContainerMigration. Meanwhile, it adds new commands like *AzsStorageSettings to do operation on settings, e.g. retention days. In the new version, the *FARM* concept is removed. The usage of powershell commands are almost the same except you do not need to specify *FARM*. For example, you need to call *Get-AzsStorageAccount -FarmName XXXXXX* in the previous versions and just *Get-AzsStorageAccount* in current version.'
+        ReleaseNotes = '* SDK for AzureStack SRP in 2019-08-08-preview. The new version removes the following commands: Get-AzsBlob*, Get-AzsQueue*, Get-AzsTable*, Get-AzsStorageShare* and *StorageContainerMigration. Meanwhile, it adds new commands like *AzsStorageSettings to do operation on storage settings, e.g. retention days. In the new version, the *FARM* concept is removed. The usage of powershell commands are almost the same except you do not need to specify *FarmName*. For detailed description for the breaking changes, please refer to https://aka.ms/azs.storage.admin.0.3.0.'
 
     } # End of PSData hashtable
 
