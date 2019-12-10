@@ -22,6 +22,7 @@
 * Fixed error accessing value that is potentially not set
 * Elliptic Curve Cryptography Certificate Managment
     - Added support to specify the Curve for Certificate Policies
+* Reorganised Name/VaultName attribute to make Remove-AzureKeyVault consistent with New-AzureKeyVault.
 
 ## Version 1.3.1
 * Fixed miscellaneous typos across module
