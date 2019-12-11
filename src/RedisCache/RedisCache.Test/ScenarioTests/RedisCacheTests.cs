@@ -103,5 +103,12 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         {
             RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-Zones");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestZoneRedundancy()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest(_logger, "Test-ZoneRedundancy");
+        }
     }
 }
