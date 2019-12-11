@@ -88,6 +88,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzDtlAllowedVMSizesPolicy](./Set-AzDtlAllowedVMSizesPolicy.md)
 
-[Azure Development Test Lab Cmdlets](./Az.DevTestLabs.md)
+[Azure Development Test Lab Cmdlets](./)
 
 
