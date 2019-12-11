@@ -20,4 +20,4 @@
 ## Upcoming Release
 
 ## Version 0.7.1
-* Update references in .psd1 to use relative path
+* This is the first preview release for "Az.Subscription"
