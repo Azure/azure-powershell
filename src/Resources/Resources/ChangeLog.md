@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.9.0
 * Update references in .psd1 to use relative path
 * Fix an issue where template deployment fails to read a template parameter if its name conflicts with some built-in parameter name.
 * Updated policy cmdlets to use new api version 2019-09-01 that introduces grouping support within policy set definitions.
