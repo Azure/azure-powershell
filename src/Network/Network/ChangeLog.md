@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 2.2.0
 * Update references in .psd1 to use relative path
 * Support for IpGroups in AzureFirewall Application,Nat & Network Rules.
 
