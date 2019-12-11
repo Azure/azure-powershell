@@ -1,170 +1,48 @@
 ## 3.2.0 - December 2019
+
+### General
+* Update references in .psd1 to use relative path for all modules
+
 #### Az.Accounts
-* Update references in .psd1 to use relative path
 * Set correct UserAgent for client-side telemetry for Az 4.0 preview
-* Display user friendly error message when context is null in Az 4.0
-
-#### Az.Advisor
-* Update references in .psd1 to use relative path
-
-#### Az.Aks
-* Update references in .psd1 to use relative path
-
-#### Az.AnalysisServices
-* Update references in .psd1 to use relative path
-
-#### Az.ApiManagement
-* Update references in .psd1 to use relative path
-
-#### Az.ApplicationInsights
-* Update references in .psd1 to use relative path
-
-#### Az.Automation
-* Update references in .psd1 to use relative path
+* Display user friendly error message when context is null in Az 4.0 preview
 
 #### Az.Batch
-* Update references in .psd1 to use relative path
 * Fix issue #10602, where **New-AzBatchPool** did not properly send 'VirtualMachineConfiguration.ContainerConfiguration' or 'VirtualMachineConfiguration.DataDisks' to the server.
-
-#### Az.Billing
-* Update references in .psd1 to use relative path
-
-#### Az.Cdn
-* Update references in .psd1 to use relative path
-
-#### Az.CognitiveServices
-* Update references in .psd1 to use relative path
-
-#### Az.Compute
-* Update references in .psd1 to use relative path
-
-#### Az.ContainerInstance
-* Update references in .psd1 to use relative path
-
-#### Az.ContainerRegistry
-* Update references in .psd1 to use relative path
-
-#### Az.DataBoxEdge
-* Update references in .psd1 to use relative path
 
 #### Az.DataFactory
 * Update ADF .Net SDK version to 4.5.0
-* Update references in .psd1 to use relative path
-
-#### Az.DataLakeAnalytics
-* Update references in .psd1 to use relative path
-
-#### Az.DataLakeStore
-* Update references in .psd1 to use relative path
-
-#### Az.DeploymentManager
-* Update references in .psd1 to use relative path
-
-#### Az.DevTestLabs
-* Update references in .psd1 to use relative path
-
-#### Az.Dns
-* Update references in .psd1 to use relative path
-
-#### Az.EventGrid
-* Update references in .psd1 to use relative path
-
-#### Az.EventHub
-* Update references in .psd1 to use relative path
 
 #### Az.FrontDoor
-* Update references in .psd1 to use relative path
 * Added WAF managed rules exclusion support
 * Add SocketAddr to auto-complete
 
-#### Az.HDInsight
-* Update references in .psd1 to use relative path
-
 #### Az.HealthcareApis
-* Update references in .psd1 to use relative path
 * Exception Handling
 
-#### Az.IotHub
-* Update references in .psd1 to use relative path
-
 #### Az.KeyVault
-* Update references in .psd1 to use relative path
 * Fixed error accessing value that is potentially not set
 * Elliptic Curve Cryptography Certificate Managment
     - Added support to specify the Curve for Certificate Policies
 
-#### Az.LogicApp
-* Update references in .psd1 to use relative path
-
-#### Az.MachineLearning
-* Update references in .psd1 to use relative path
-
-#### Az.ManagedServices
-* Update references in .psd1 to use relative path
-
-#### Az.MarketplaceOrdering
-* Update references in .psd1 to use relative path
-
-#### Az.Media
-* Update references in .psd1 to use relative path
-
 #### Az.Monitor
-* Update references in .psd1 to use relative path
 * Adding optional argument to the Add Diagnostic Settings command. A switch argument that if present indicates that the export to Log Analytics must be to a fixed schema (a.k.a. dedicated, data type)
 
 #### Az.Network
-* Update references in .psd1 to use relative path
 * Support for IpGroups in AzureFirewall Application,Nat & Network Rules.
 
-#### Az.NotificationHubs
-* Update references in .psd1 to use relative path
-
-#### Az.OperationalInsights
-* Update references in .psd1 to use relative path
-
-#### Az.PolicyInsights
-* Update references in .psd1 to use relative path
-
-#### Az.PowerBIEmbedded
-* Update references in .psd1 to use relative path
-
-#### Az.PrivateDns
-* Update references in .psd1 to use relative path
-
 #### Az.RecoveryServices
-* Update references in .psd1 to use relative path
 * Added SoftDelete feature for VM and added tests for softdelete
 * Azure Site Recovery support for Azure Disk Encryption One Pass for Azure to Azure.
 
-#### Az.RedisCache
-* Update references in .psd1 to use relative path
-
-#### Az.Relay
-* Update references in .psd1 to use relative path
-
 #### Az.Resources
-* Update references in .psd1 to use relative path
 * Fix an issue where template deployment fails to read a template parameter if its name conflicts with some built-in parameter name.
 * Updated policy cmdlets to use new api version 2019-09-01 that introduces grouping support within policy set definitions.
 
-#### Az.ServiceBus
-* Update references in .psd1 to use relative path
-
-#### Az.ServiceFabric
-* Update references in .psd1 to use relative path
-
-#### Az.SignalR
-* Update references in .psd1 to use relative path
-
 #### Az.Sql
-* Update references in .psd1 to use relative path
 * Upgraded storage creation in Vulnerability Assessment auto enablement to StorageV2
 
-#### Az.SqlVirtualMachine
-* Update references in .psd1 to use relative path
-
 #### Az.Storage
-* Update references in .psd1 to use relative path
 * Support generate Blob/Constainer Idenity based SAS token with Storage Context based on Oauth authentication
     - New-AzStorageContainerSASToken
     - New-AzStorageBlobSASToken
@@ -172,24 +50,12 @@
     - Revoke-AzStorageAccountUserDelegationKeys
 * Upgrade to Microsoft.Azure.Management.Storage 14.2.0, to support new API version 2019-06-01.
 * Support Share QuotaGiB more than 5120 in Management plane File Share cmdlets, and add parameter alias 'Quota' to parameter 'QuotaGiB' 
-	- New-AzRmStorageShare
-	- Update-AzRmStorageShare
+    - New-AzRmStorageShare
+    - Update-AzRmStorageShare
 * Add parameter alias 'QuotaGiB' to parameter 'Quota'
-	- Set-AzStorageShareQuota
+    - Set-AzStorageShareQuota
 * Fix the issue that Set-AzStorageContainerAcl can clean up the stored Access Policy
-	- Set-AzStorageContainerAcl
-
-#### Az.StorageSync
-* Update references in .psd1 to use relative path
-
-#### Az.StreamAnalytics
-* Update references in .psd1 to use relative path
-
-#### Az.TrafficManager
-* Update references in .psd1 to use relative path
-
-#### Az.Websites
-* Update references in .psd1 to use relative path
+    - Set-AzStorageContainerAcl
 
 ## 3.1.0 - November 2019
 ### Highlights since the last major release
@@ -540,13 +406,13 @@
 
 #### Az.Monitor
 * New action group receivers added for action group
-	-ItsmReceiver
-	-VoiceReceiver
-	-ArmRoleReceiver
-	-AzureFunctionReceiver
-	-LogicAppReceiver
-	-AutomationRunbookReceiver
-	-AzureAppPushReceiver
+    -ItsmReceiver
+    -VoiceReceiver
+    -ArmRoleReceiver
+    -AzureFunctionReceiver
+    -LogicAppReceiver
+    -AutomationRunbookReceiver
+    -AzureAppPushReceiver
 * Use common alert schema enabled for the receivers. This is not applicable for SMS, Azure App push , ITSM and Voice recievers
 * Webhooks now supports Azure active directory authentication .
 
@@ -618,10 +484,10 @@
 #### Az.IotHub
 * Add support to invoke failover for an IotHub to the geo-paired disaster recovery region.
 * Add support to manage message enrichment for an IotHub. New cmdlets are:
-	- Add-AzIotHubMessageEnrichment
-	- Get-AzIotHubMessageEnrichment
-	- Remove-AzIotHubMessageEnrichment
-	- Set-AzIotHubMessageEnrichment
+    - Add-AzIotHubMessageEnrichment
+    - Get-AzIotHubMessageEnrichment
+    - Remove-AzIotHubMessageEnrichment
+    - Set-AzIotHubMessageEnrichment
 
 #### Az.Monitor
 * Pointing to the most recent Monitor SDK, i.e. 0.24.1-preview
@@ -631,8 +497,8 @@
    - The order of the arguments for the constructor of the class **Source** (related to the **ScheduledQueryRuleSource** class) changed from the previous SDK. This change required two unit tests to the be fixed: they compiled, but failed to pass the tests.
    - The order of the arguments for the constructor of the class **AlertingAction** (related to the **ScheduledQueryRuleSource** class) changed from the previous SDK. This change required two unit tests to the be fixed: they compiled, but failed to pass the tests.
 * Support Dynamic Threshold criteria for metric alert V2
-	- New-AzMetricAlertRuleV2Criteria: now creats dynamic threshold criteria also
-	- Add-AzMetricAlertRuleV2: now accept dynamic threshold criteria also
+    - New-AzMetricAlertRuleV2Criteria: now creats dynamic threshold criteria also
+    - Add-AzMetricAlertRuleV2: now accept dynamic threshold criteria also
 * Improvements in Scheduled Query Rule cmdlets (SQR)
  - Cmdlets will accept 'Location' paramater in both formats, either the location (e.g. eastus) or the location display name (e.g. East US)
  - Illustrated 'Enabled' parameter in help files properly
@@ -857,7 +723,7 @@
 
 #### Az.LogicApp
 * Fix for Get-AzIntegrationAccountMap to list all map types
-	- Added new MapType parameter for filtering
+    - Added new MapType parameter for filtering
 
 #### Az.ManagedServices
 * Added support for api version 2019-06-01 (GA)
@@ -1333,13 +1199,13 @@
 #### Az.Compute
 * Proximity placement group feature.
     - The following new cmdlets are added:
-	    New-AzProximityPlacementGroup
-		Get-AzProximityPlacementGroup
-		Remove-AzProximityPlacementGroup
-	- The new parameter, ProximityPlacementGroupId, is added to the following cmdlets:
-	    New-AzAvailabilitySet
-		New-AzVMConfig
-		New-AzVmssConfig
+        New-AzProximityPlacementGroup
+        Get-AzProximityPlacementGroup
+        Remove-AzProximityPlacementGroup
+    - The new parameter, ProximityPlacementGroupId, is added to the following cmdlets:
+        New-AzAvailabilitySet
+        New-AzVMConfig
+        New-AzVmssConfig
 * StorageAccountType parameter is added to New-AzGalleryImageVersion.
 * TargetRegion of New-AzGalleryImageVersion can contain StorageAccountType.
 * SkipShutdown switch parameter is added to Stop-AzVM and Stop-AzVmss
@@ -1374,23 +1240,23 @@
 * Added a new cmdlet Set-AzHDInsightGatewayCredential to replace Grant-AzHDInsightHttpServicesAccess
 * Update cmdlet Get-AzHDInsightJobOutput to distinguish reader role and hdinsight operator role:
     - Users with reader role need to specify 'DefaultStorageAccountKey' parameter explicitly, otherwise error occurs.
-	- Users with hdinsight operator role will not be affected.
+    - Users with hdinsight operator role will not be affected.
 
 #### Az.Monitor
 * New cmdlets for SQR API (Scheduled Query Rule)
     - New-AzScheduledQueryRuleAlertingAction
-	- New-AzScheduledQueryRuleAznsActionGroup
-	- New-AzScheduledQueryRuleLogMetricTrigger
-	- New-AzScheduledQueryRuleSchedule
-	- New-AzScheduledQueryRuleSource
-	- New-AzScheduledQueryRuleTriggerCondition
-	- New-AzScheduledQueryRule
-	- Get-AzScheduledQueryRule
-	- Set-AzScheduledQueryRule
-	- Update-AzScheduledQueryRule
-	- Remove-AzScheduledQueryRule
-	- [More](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules) information about SQR API
-	- Updated Az.Monitor.md to include cmdlets for GenV2(non classic) metric-based alert rule
+    - New-AzScheduledQueryRuleAznsActionGroup
+    - New-AzScheduledQueryRuleLogMetricTrigger
+    - New-AzScheduledQueryRuleSchedule
+    - New-AzScheduledQueryRuleSource
+    - New-AzScheduledQueryRuleTriggerCondition
+    - New-AzScheduledQueryRule
+    - Get-AzScheduledQueryRule
+    - Set-AzScheduledQueryRule
+    - Update-AzScheduledQueryRule
+    - Remove-AzScheduledQueryRule
+    - [More](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules) information about SQR API
+    - Updated Az.Monitor.md to include cmdlets for GenV2(non classic) metric-based alert rule
 
 #### Az.Network
 * Add support for Nat Gateway Resource
@@ -1750,15 +1616,15 @@
 * Add in Basic sku for Integration Accounts
 * Add in XSLT 2.0, XSLT 3.0 and Liquid Map Types
 * New cmdlets for Integration Account Assemblies
-	- Get-AzIntegrationAccountAssembly
-	- New-AzIntegrationAccountAssembly
-	- Remove-AzIntegrationAccountAssembly
-	- Set-AzIntegrationAccountAssembly
+    - Get-AzIntegrationAccountAssembly
+    - New-AzIntegrationAccountAssembly
+    - Remove-AzIntegrationAccountAssembly
+    - Set-AzIntegrationAccountAssembly
 * New cmdlets for Integration Account Batch Configuration
-	- Get-AzIntegrationAccountBatchConfiguration
-	- New-AzIntegrationAccountBatchConfiguration
-	- Remove-AzIntegrationAccountBatchConfiguration
-	- Set-AzIntegrationAccountBatchConfiguration
+    - Get-AzIntegrationAccountBatchConfiguration
+    - New-AzIntegrationAccountBatchConfiguration
+    - Remove-AzIntegrationAccountBatchConfiguration
+    - Set-AzIntegrationAccountBatchConfiguration
 * Update Logic App SDK to version 4.1.0
 
 #### Az.Monitor
