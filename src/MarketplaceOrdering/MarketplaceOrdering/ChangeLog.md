@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update references in .psd1 to use relative path
 
 ## Version 1.0.1
 * Fixed documentation typo where "Azure" was all lowercase letters

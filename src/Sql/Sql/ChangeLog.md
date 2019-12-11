@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Fix vulnerability assessment set baseline cmdlets functionality to work on master db for azure database and limit it on managed instance system databases. 
+* Update references in .psd1 to use relative path
+* Upgraded storage creation in Vulnerability Assessment auto enablement to StorageV2
 
 ## Version 2.1.0
 * Added support for database ReadReplicaCount.
