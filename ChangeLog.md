@@ -50,12 +50,12 @@
     - Revoke-AzStorageAccountUserDelegationKeys
 * Upgrade to Microsoft.Azure.Management.Storage 14.2.0, to support new API version 2019-06-01.
 * Support Share QuotaGiB more than 5120 in Management plane File Share cmdlets, and add parameter alias 'Quota' to parameter 'QuotaGiB' 
-    - New-AzRmStorageShare
-    - Update-AzRmStorageShare
+	- New-AzRmStorageShare
+	- Update-AzRmStorageShare
 * Add parameter alias 'QuotaGiB' to parameter 'Quota'
-    - Set-AzStorageShareQuota
+	- Set-AzStorageShareQuota
 * Fix the issue that Set-AzStorageContainerAcl can clean up the stored Access Policy
-    - Set-AzStorageContainerAcl
+	- Set-AzStorageContainerAcl
 
 ## 3.1.0 - November 2019
 ### Highlights since the last major release
@@ -406,13 +406,13 @@
 
 #### Az.Monitor
 * New action group receivers added for action group
-    -ItsmReceiver
-    -VoiceReceiver
-    -ArmRoleReceiver
-    -AzureFunctionReceiver
-    -LogicAppReceiver
-    -AutomationRunbookReceiver
-    -AzureAppPushReceiver
+	-ItsmReceiver
+	-VoiceReceiver
+	-ArmRoleReceiver
+	-AzureFunctionReceiver
+	-LogicAppReceiver
+	-AutomationRunbookReceiver
+	-AzureAppPushReceiver
 * Use common alert schema enabled for the receivers. This is not applicable for SMS, Azure App push , ITSM and Voice recievers
 * Webhooks now supports Azure active directory authentication .
 
@@ -484,10 +484,10 @@
 #### Az.IotHub
 * Add support to invoke failover for an IotHub to the geo-paired disaster recovery region.
 * Add support to manage message enrichment for an IotHub. New cmdlets are:
-    - Add-AzIotHubMessageEnrichment
-    - Get-AzIotHubMessageEnrichment
-    - Remove-AzIotHubMessageEnrichment
-    - Set-AzIotHubMessageEnrichment
+	- Add-AzIotHubMessageEnrichment
+	- Get-AzIotHubMessageEnrichment
+	- Remove-AzIotHubMessageEnrichment
+	- Set-AzIotHubMessageEnrichment
 
 #### Az.Monitor
 * Pointing to the most recent Monitor SDK, i.e. 0.24.1-preview
@@ -497,8 +497,8 @@
    - The order of the arguments for the constructor of the class **Source** (related to the **ScheduledQueryRuleSource** class) changed from the previous SDK. This change required two unit tests to the be fixed: they compiled, but failed to pass the tests.
    - The order of the arguments for the constructor of the class **AlertingAction** (related to the **ScheduledQueryRuleSource** class) changed from the previous SDK. This change required two unit tests to the be fixed: they compiled, but failed to pass the tests.
 * Support Dynamic Threshold criteria for metric alert V2
-    - New-AzMetricAlertRuleV2Criteria: now creats dynamic threshold criteria also
-    - Add-AzMetricAlertRuleV2: now accept dynamic threshold criteria also
+	- New-AzMetricAlertRuleV2Criteria: now creats dynamic threshold criteria also
+	- Add-AzMetricAlertRuleV2: now accept dynamic threshold criteria also
 * Improvements in Scheduled Query Rule cmdlets (SQR)
  - Cmdlets will accept 'Location' paramater in both formats, either the location (e.g. eastus) or the location display name (e.g. East US)
  - Illustrated 'Enabled' parameter in help files properly
@@ -723,7 +723,7 @@
 
 #### Az.LogicApp
 * Fix for Get-AzIntegrationAccountMap to list all map types
-    - Added new MapType parameter for filtering
+	- Added new MapType parameter for filtering
 
 #### Az.ManagedServices
 * Added support for api version 2019-06-01 (GA)
@@ -1199,13 +1199,13 @@
 #### Az.Compute
 * Proximity placement group feature.
     - The following new cmdlets are added:
-        New-AzProximityPlacementGroup
-        Get-AzProximityPlacementGroup
-        Remove-AzProximityPlacementGroup
-    - The new parameter, ProximityPlacementGroupId, is added to the following cmdlets:
-        New-AzAvailabilitySet
-        New-AzVMConfig
-        New-AzVmssConfig
+	    New-AzProximityPlacementGroup
+		Get-AzProximityPlacementGroup
+		Remove-AzProximityPlacementGroup
+	- The new parameter, ProximityPlacementGroupId, is added to the following cmdlets:
+	    New-AzAvailabilitySet
+		New-AzVMConfig
+		New-AzVmssConfig
 * StorageAccountType parameter is added to New-AzGalleryImageVersion.
 * TargetRegion of New-AzGalleryImageVersion can contain StorageAccountType.
 * SkipShutdown switch parameter is added to Stop-AzVM and Stop-AzVmss
@@ -1240,23 +1240,23 @@
 * Added a new cmdlet Set-AzHDInsightGatewayCredential to replace Grant-AzHDInsightHttpServicesAccess
 * Update cmdlet Get-AzHDInsightJobOutput to distinguish reader role and hdinsight operator role:
     - Users with reader role need to specify 'DefaultStorageAccountKey' parameter explicitly, otherwise error occurs.
-    - Users with hdinsight operator role will not be affected.
+	- Users with hdinsight operator role will not be affected.
 
 #### Az.Monitor
 * New cmdlets for SQR API (Scheduled Query Rule)
     - New-AzScheduledQueryRuleAlertingAction
-    - New-AzScheduledQueryRuleAznsActionGroup
-    - New-AzScheduledQueryRuleLogMetricTrigger
-    - New-AzScheduledQueryRuleSchedule
-    - New-AzScheduledQueryRuleSource
-    - New-AzScheduledQueryRuleTriggerCondition
-    - New-AzScheduledQueryRule
-    - Get-AzScheduledQueryRule
-    - Set-AzScheduledQueryRule
-    - Update-AzScheduledQueryRule
-    - Remove-AzScheduledQueryRule
-    - [More](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules) information about SQR API
-    - Updated Az.Monitor.md to include cmdlets for GenV2(non classic) metric-based alert rule
+	- New-AzScheduledQueryRuleAznsActionGroup
+	- New-AzScheduledQueryRuleLogMetricTrigger
+	- New-AzScheduledQueryRuleSchedule
+	- New-AzScheduledQueryRuleSource
+	- New-AzScheduledQueryRuleTriggerCondition
+	- New-AzScheduledQueryRule
+	- Get-AzScheduledQueryRule
+	- Set-AzScheduledQueryRule
+	- Update-AzScheduledQueryRule
+	- Remove-AzScheduledQueryRule
+	- [More](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules) information about SQR API
+	- Updated Az.Monitor.md to include cmdlets for GenV2(non classic) metric-based alert rule
 
 #### Az.Network
 * Add support for Nat Gateway Resource
@@ -1616,15 +1616,15 @@
 * Add in Basic sku for Integration Accounts
 * Add in XSLT 2.0, XSLT 3.0 and Liquid Map Types
 * New cmdlets for Integration Account Assemblies
-    - Get-AzIntegrationAccountAssembly
-    - New-AzIntegrationAccountAssembly
-    - Remove-AzIntegrationAccountAssembly
-    - Set-AzIntegrationAccountAssembly
+	- Get-AzIntegrationAccountAssembly
+	- New-AzIntegrationAccountAssembly
+	- Remove-AzIntegrationAccountAssembly
+	- Set-AzIntegrationAccountAssembly
 * New cmdlets for Integration Account Batch Configuration
-    - Get-AzIntegrationAccountBatchConfiguration
-    - New-AzIntegrationAccountBatchConfiguration
-    - Remove-AzIntegrationAccountBatchConfiguration
-    - Set-AzIntegrationAccountBatchConfiguration
+	- Get-AzIntegrationAccountBatchConfiguration
+	- New-AzIntegrationAccountBatchConfiguration
+	- Remove-AzIntegrationAccountBatchConfiguration
+	- Set-AzIntegrationAccountBatchConfiguration
 * Update Logic App SDK to version 4.1.0
 
 #### Az.Monitor
