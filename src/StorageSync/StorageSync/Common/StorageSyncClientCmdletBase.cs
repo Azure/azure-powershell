@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         protected virtual void InitializeComponent()
         {
-            DefaultProfile.DefaultContext.Tenant.Id = StorageSyncClientWrapper.StorageSyncResourceManager.GetTenantId() ?? DefaultProfile.DefaultContext.Tenant.Id;
+            AzureContext.Tenant.Id = StorageSyncClientWrapper.StorageSyncResourceManager.GetTenantId() ?? AzureContext.Tenant.Id;
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// Gets the subscription identifier.
         /// </summary>
         /// <value>The subscription identifier.</value>
-        public Guid SubscriptionId => DefaultProfile.DefaultContext.Subscription.GetId();
+        public Guid SubscriptionId => AzureContext.Subscription.GetId();
 
         /// <summary>
         /// Gets or sets the storage sync client wrapper.
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             {
                 if (storageSyncClientWrapper == null)
                 {
-                    storageSyncClientWrapper = new StorageSyncClientWrapper(DefaultProfile.DefaultContext, ActiveDirectoryClient);
+                    storageSyncClientWrapper = new StorageSyncClientWrapper(AzureContext, ActiveDirectoryClient);
                 }
 
                 storageSyncClientWrapper.VerboseLogger = WriteVerboseWithTimestamp;
