@@ -56,8 +56,8 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.4'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.PowerBIEmbedded.dll', 
-               '.\Microsoft.Azure.Management.PowerBIDedicated.dll'
+RequiredAssemblies = 'Microsoft.Azure.Management.PowerBIEmbedded.dll', 
+               'Microsoft.Azure.Management.PowerBIDedicated.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -69,8 +69,8 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.PowerBIEmbedded.dll',
 # FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded.dll', 
-               '.\Microsoft.Azure.PowerShell.Cmdlets.PowerBI.dll')
+NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded.dll', 
+               'Microsoft.Azure.PowerShell.Cmdlets.PowerBI.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()

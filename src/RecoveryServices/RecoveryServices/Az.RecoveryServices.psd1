@@ -57,17 +57,17 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.4'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\AutoMapper.dll', 
-               '.\Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Models.dll', 
-               '.\Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Helpers.dll', 
-               '.\Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Logger.dll', 
-               '.\Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Providers.dll', 
-               '.\Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.ServiceClientAdapter.dll', 
-               '.\Microsoft.Azure.Management.RecoveryServices.Backup.dll', 
-               '.\Microsoft.Azure.Management.RecoveryServices.dll', 
-               '.\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll', 
-               '.\System.Configuration.ConfigurationManager.dll', 
-               '.\TimeZoneConverter.dll'
+RequiredAssemblies = 'AutoMapper.dll', 
+               'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Models.dll', 
+               'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Helpers.dll', 
+               'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Logger.dll', 
+               'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Providers.dll', 
+               'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.ServiceClientAdapter.dll', 
+               'Microsoft.Azure.Management.RecoveryServices.Backup.dll', 
+               'Microsoft.Azure.Management.RecoveryServices.dll', 
+               'Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll', 
+               'System.Configuration.ConfigurationManager.dll', 
+               'TimeZoneConverter.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -76,12 +76,12 @@ RequiredAssemblies = '.\AutoMapper.dll',
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\RecoveryServices.Backup.format.ps1xml'
+FormatsToProcess = 'RecoveryServices.Backup.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll', 
-               '.\Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll', 
-               '.\Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll')
+NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll', 
+               'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll', 
+               'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()

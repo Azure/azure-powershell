@@ -12,10 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.IO;
 using Microsoft.Azure.Commands.Attestation.Models;
 using Microsoft.Azure.Commands.Attestation.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
+using System.Security.Cryptography.X509Certificates;
+using Microsoft.Azure.Management.Attestation.Models;
+using AttestationProperties = Microsoft.Azure.Commands.Attestation.Properties;
 
 namespace Microsoft.Azure.Commands.Attestation
 {
@@ -55,20 +60,46 @@ namespace Microsoft.Azure.Commands.Attestation
             HelpMessage =
                 "Specifies the attestation policy passed in which to create the attestation."
         )]
-        [ValidateNotNullOrEmpty]
         public string AttestationPolicy { get; set; }
 
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage =
+                "Specifies the configuration signing keys passed in which to create the attestation."
+        )]
+        public string PolicySigningCertificateFile { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, Resources.CreateAttestation)) 
+            if (ShouldProcess(Name, Resources.CreateAttestation))
             {
+                JSONWebKeySet jsonWebKeySet = null;
+
+                if (this.PolicySigningCertificateFile != null)
+                {
+                    FileInfo certFile = new FileInfo(ResolveUserPath(this.PolicySigningCertificateFile));
+
+                    if (!certFile.Exists)
+                    {
+                        throw new FileNotFoundException(string.Format(AttestationProperties.Resources.CertificateFileNotFound, this.PolicySigningCertificateFile));
+                    }
+
+                    var pem = System.IO.File.ReadAllText(certFile.FullName);
+
+                    X509Certificate2Collection certificateCollection = AttestationClient.GetX509CertificateFromPEM(pem, "CERTIFICATE");
+
+                    if (certificateCollection.Count != 0)
+                    {
+                        jsonWebKeySet = AttestationClient.GetJSONWebKeySet(certificateCollection);
+                    }                    
+                }
                 var newAttestation = AttestationClient.CreateNewAttestation(new AttestationCreationParameters()
                 {
                     ProviderName = this.Name,
                     ResourceGroupName = this.ResourceGroupName,
-                    AttestationPolicy = this.AttestationPolicy
+                    AttestationPolicy = this.AttestationPolicy,
+                    PolicySigningCertificates = jsonWebKeySet
                 });
                 this.WriteObject(newAttestation);
             } 

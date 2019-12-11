@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update references in .psd1 to use relative path
 
 ## Version 0.7.1
 * Update incorrect online help URLs

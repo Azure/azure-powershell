@@ -423,6 +423,12 @@
   <data name="InvalidFilePath" xml:space="preserve">
     <value>The provided file {0} doesn't exist</value>
   </data>
+  <data name="JsonObjectExpected" xml:space="preserve">
+    <value>The provided value for parameter '{0}' is not a valid JSON object</value>
+  </data>
+  <data name="JsonArrayExpected" xml:space="preserve">
+    <value>The provided value for parameter '{0}' is not a valid JSON array</value>
+  </data>
   <data name="NoSubscriptionsUnderCurrentDirectory" xml:space="preserve">
     <value>No subscriptions can be found under current directory. Please login again using Connect-AzAccount.</value>
   </data>
