@@ -86,6 +86,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         {
             get
             {
+                if (DefaultProfile == null || DefaultProfile.DefaultContext == null || DefaultProfile.DefaultContext.Account == null)
+                {
+                    throw new PSInvalidOperationException(Resources.RunConnectAccount);
+                }
                 if (DefaultProfile.DefaultContext.Subscription == null)
                 {
                     throw new PSInvalidOperationException(string.Format(Resources.NoSubscriptionFound, DefaultProfile.DefaultContext.Tenant.Id));
