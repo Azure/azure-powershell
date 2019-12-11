@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.0
 * Update references in .psd1 to use relative path
 * Added WAF managed rules exclusion support
 * Add SocketAddr to auto-complete
