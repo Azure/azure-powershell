@@ -20,7 +20,7 @@
 -->
 ## Upcoming Release
 
-## Version 0.7.1
+## Version 0.8.0
 * Update references in .psd1 to use relative path
 * Add billing plan details in getCatalog
 	- new object in the response of get-Catalog
