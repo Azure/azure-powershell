@@ -20,6 +20,8 @@
 
 
 ## Upcoming Release
+
+## Version 1.0.1
 * Update references in .psd1 to use relative path
 
 ## Version 1.0.0
