@@ -19,13 +19,21 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Compute.Models;
+
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSVirtualMachineScaleSet
+    public class PSVirtualMachineScaleSetVMProfile
     {
-        // Gets or sets the FQDN.
-        public string FullyQualifiedDomainName { get; set; }
-
-        public PSVirtualMachineScaleSetVMProfile VirtualMachineProfile { get; set; } // To hide a breaking change
+        public VirtualMachineScaleSetOSProfile OsProfile { get; set; }
+        public VirtualMachineScaleSetStorageProfile StorageProfile { get; set; }
+        public VirtualMachineScaleSetNetworkProfile NetworkProfile { get; set; }
+        public DiagnosticsProfile DiagnosticsProfile { get; set; }
+        public PSVirtualMachineScaleSetExtensionProfile ExtensionProfile { get; set; } // To hide a breaking change
+        public string LicenseType { get; set; }
+        public string Priority { get; set; }
+        public string EvictionPolicy { get; set; }
+        public BillingProfile BillingProfile { get; set; }
+        public ScheduledEventsProfile ScheduledEventsProfile { get; set; }
     }
 }
