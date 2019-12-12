@@ -19,13 +19,22 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSVirtualMachineScaleSet
+    public class PSVirtualMachineScaleSetExtension
     {
-        // Gets or sets the FQDN.
-        public string FullyQualifiedDomainName { get; set; }
-
-        public PSVirtualMachineScaleSetVMProfile VirtualMachineProfile { get; set; } // To hide a breaking change
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string ForceUpdateTag { get; set; }
+        public string Publisher { get; set; }
+        public string Type { get; set; } // This is Type1 in SDK, but mapped to Type to hide a breaking change.  
+        public string TypeHandlerVersion { get; set; }
+        public bool? AutoUpgradeMinorVersion { get; set; }
+        public object Settings { get; set; }
+        public object ProtectedSettings { get; set; }
+        public string ProvisioningState { get; set; }
+        public IList<string> ProvisionAfterExtensions { get; set; }
     }
 }

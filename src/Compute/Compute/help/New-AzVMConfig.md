@@ -214,7 +214,10 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-The priority for the virtual machine.  Only supported values are 'Regular' and 'Low'.
+The priority for the virtual machine.  Only supported values are 'Regular', 'Spot' and 'Low'.
+'Regular' is for regular virtual machine.
+'Spot' is for spot virtual machine.
+'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.
 
 ```yaml
 Type: System.String
@@ -229,7 +232,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProximityPlacementGroupId
-The Id of ProximityPlacementGroup
+The resource id of the Proximity Placement Group to use with this virtual machine.
 
 ```yaml
 Type: System.String
