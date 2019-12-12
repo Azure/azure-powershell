@@ -178,6 +178,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>();
                 cfg.CreateMap<TO.PSVirtualMachineSize, FROM.VirtualMachineSize>();
 
+                cfg.CreateMap<FROM.VirtualMachineScaleSetVMProfile, TO.PSVirtualMachineScaleSetVMProfile>();
+                cfg.CreateMap<TO.PSVirtualMachineScaleSetVMProfile, FROM.VirtualMachineScaleSetVMProfile>();
+                cfg.CreateMap<FROM.VirtualMachineScaleSetExtensionProfile, TO.PSVirtualMachineScaleSetExtensionProfile>();
+                cfg.CreateMap<TO.PSVirtualMachineScaleSetExtensionProfile, FROM.VirtualMachineScaleSetExtensionProfile>();
+                cfg.CreateMap<FROM.VirtualMachineScaleSetExtension, TO.PSVirtualMachineScaleSetExtension>()
+                    .ForMember(c => c.Type, o => o.MapFrom(r => r.Type1));
+                cfg.CreateMap<TO.PSVirtualMachineScaleSetExtension, FROM.VirtualMachineScaleSetExtension>()
+                    .ForMember(c => c.Type1, o => o.MapFrom(r => r.Type));
+
             });
             _mapper = config.CreateMapper();
         }
