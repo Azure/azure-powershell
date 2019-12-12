@@ -120,19 +120,19 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
 
                 // ExtensionProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile = new VirtualMachineScaleSetExtensionProfile();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile = new PSVirtualMachineScaleSetExtensionProfile();
                 }
 
                 // Extensions
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = new List<VirtualMachineScaleSetExtension>();
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = new List<PSVirtualMachineScaleSetExtension>();
                 }
 
                 bool shouldContinue = true;
@@ -162,11 +162,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
                     // Parse configs, and auto fill incomplete parts
                     Tuple<Hashtable, Hashtable> settings = DiagnosticsHelper.GetConfigurationsFromFiles(this.SettingFilePath, this.ProtectedSettingFilePath, this.VirtualMachineScaleSet.Id, this, storageClient);
 
-                    var newDiagnosticsExtension = new VirtualMachineScaleSetExtension();
+                    var newDiagnosticsExtension = new PSVirtualMachineScaleSetExtension();
 
                     newDiagnosticsExtension.Name = this.Name;
                     newDiagnosticsExtension.Publisher = DiagnosticsExtensionConstants.ExtensionPublisher;
-                    newDiagnosticsExtension.Type1 = DiagnosticsExtensionConstants.ExtensionType;
+                    newDiagnosticsExtension.Type = DiagnosticsExtensionConstants.ExtensionType;
                     newDiagnosticsExtension.TypeHandlerVersion = this.TypeHandlerVersion;
                     newDiagnosticsExtension.AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion;
                     newDiagnosticsExtension.Settings = settings.Item1;

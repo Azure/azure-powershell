@@ -273,7 +273,7 @@ function Test-VmssDiagnosticsExtension
         $vmss = Add-AzVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss -Name $extname -SettingFilePath $publicSettingFilePath `
             -ProtectedSettingFilePath $privateSettingFilePath -TypeHandlerVersion $version -AutoUpgradeMinorVersion $false -Force;
 
-        [array] $vmssDiagExtensions = $vmss.VirtualMachineProfile.ExtensionProfile.Extensions | Where-Object {$_.Publisher -eq $diagExtPublisher -and $_.Type1 -eq $diagExtType};
+        $vmssDiagExtensions = $vmss.VirtualMachineProfile.ExtensionProfile.Extensions | Where-Object {$_.Publisher -eq $diagExtPublisher -and $_.Type -eq $diagExtType};
         Assert-AreEqual 1 $vmssDiagExtensions.Count;
         $vmssDiagExtension = $vmssDiagExtensions | Select-Object -first 1;
 
@@ -288,7 +288,7 @@ function Test-VmssDiagnosticsExtension
 
         # Remove without specifying extension name, diagnostic extension is expected to be removed.
         $vmss = Remove-AzVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss;
-        $vmssDiagExtensions = $vmss.VirtualMachineProfile.ExtensionProfile.Extensions | Where-Object {$_.Publisher -eq $diagExtPublisher -and $_.Type1 -eq $diagExtType};
+        $vmssDiagExtensions = $vmss.VirtualMachineProfile.ExtensionProfile.Extensions | Where-Object {$_.Publisher -eq $diagExtPublisher -and $_.Type -eq $diagExtType};
 
         Assert-Null $vmssDiagExtensions;
 
@@ -297,7 +297,7 @@ function Test-VmssDiagnosticsExtension
 
         $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 
-        $vmssDiagExtensions = $vmss.VirtualMachineProfile.ExtensionProfile.Extensions | Where-Object {$_.Publisher -eq $diagExtPublisher -and $_.Type1 -eq $diagExtType};
+        $vmssDiagExtensions = $vmss.VirtualMachineProfile.ExtensionProfile.Extensions | Where-Object {$_.Publisher -eq $diagExtPublisher -and $_.Type -eq $diagExtType};
         Assert-AreEqual 1 $vmssDiagExtensions.Count;
 
         $vmssDiagExtension = $vmssDiagExtensions | Select-Object -first 1;
@@ -307,13 +307,13 @@ function Test-VmssDiagnosticsExtension
         Assert-AreEqual $storagename $settings.storageAccount.Value;
 
         $vmss = Remove-AzVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss -Name $extname;
-        $vmssDiagExtensions = $vmss.VirtualMachineProfile.ExtensionProfile.Extensions | Where-Object {$_.Publisher -eq $diagExtPublisher -and $_.Type1 -eq $diagExtType};
+        $vmssDiagExtensions = $vmss.VirtualMachineProfile.ExtensionProfile.Extensions | Where-Object {$_.Publisher -eq $diagExtPublisher -and $_.Type -eq $diagExtType};
         Assert-Null $vmssDiagExtensions;
 
         Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
 
         $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-        $vmssDiagExtensions = $vmss.VirtualMachineProfile.ExtensionProfile.Extensions | Where-Object {$_.Publisher -eq $diagExtPublisher -and $_.Type1 -eq $diagExtType};
+        $vmssDiagExtensions = $vmss.VirtualMachineProfile.ExtensionProfile.Extensions | Where-Object {$_.Publisher -eq $diagExtPublisher -and $_.Type -eq $diagExtType};
 
         Assert-Null $vmssDiagExtensions;
     }
