@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public void Deallocate()
         {
             this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
-            this.ManagementIpConfiguration = new PSAzureFirewallIpConfiguration();
+            this.ManagementIpConfiguration = null;
         }
 
         public void AddPublicIpAddress(PSPublicIpAddress publicIpAddress)
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             PSSubnet subnet = null;
             try
             {
-                subnet = virtualNetwork.Subnets.Single(mgmtSubnet => AzureFirewallMgmtSubnetName.Equals(subnet.Name));
+                subnet = virtualNetwork.Subnets.Single(mgmtSubnet => AzureFirewallMgmtSubnetName.Equals(mgmtSubnet.Name));
             }
             catch (InvalidOperationException)
             {
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Commands.Network.Models
                 Console.WriteLine($"WARNING: Removing the last Public IP Address, this will deallocate the firewall. You will have to invoke {nameof(Allocate)} to reallocate it.");
                 Console.ResetColor();
 
-                this.ManagementIpConfiguration = new PSAzureFirewallIpConfiguration();
+                this.ManagementIpConfiguration = null;
             }
 
             this.IpConfigurations.Remove(ipConfigToRemove);
