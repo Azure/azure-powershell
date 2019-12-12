@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update references in .psd1 to use relative path
+* Fix for issue 10634 : Fix the null Object reference for remove eventhubnamespace
+
+## Version 1.4.1
+* Fix for issue 10301 : Fix the SAS Token date format
 
 ## Version 1.4.0
 * Fixed miscellaneous typos across module
