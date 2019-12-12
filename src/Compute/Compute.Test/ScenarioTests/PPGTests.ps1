@@ -80,31 +80,45 @@ function Test-ProximityPlacementGroupAvSet
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # Create a VM first
-        $ppgname = $rgname + 'ppg'
-        New-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -Location $loc -ProximityPlacementGroupType "Standard" -Tag @{key1 = "val1"};
+        $ppgname1 = $rgname + 'ppg'
+        New-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname1 -Location $loc -ProximityPlacementGroupType "Standard" -Tag @{key1 = "val1"};
         
-        $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname;
+        $ppg1 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname1;
 
-        Assert-AreEqual $rgname $ppg.ResourceGroupName;
-        Assert-AreEqual $ppgname $ppg.Name;
-        Assert-AreEqual $loc $ppg.Location;
-        Assert-AreEqual "Standard" $ppg.ProximityPlacementGroupType;
-        Assert-True { $ppg.Tags.Keys.Contains("key1") };
-        Assert-AreEqual "val1" $ppg.Tags["key1"];
+        Assert-AreEqual $rgname $ppg1.ResourceGroupName;
+        Assert-AreEqual $ppgname1 $ppg1.Name;
+        Assert-AreEqual $loc $ppg1.Location;
+        Assert-AreEqual "Standard" $ppg1.ProximityPlacementGroupType;
+        Assert-True { $ppg1.Tags.Keys.Contains("key1") };
+        Assert-AreEqual "val1" $ppg1.Tags["key1"];
 
         $asetName = $rgname + 'as';
         New-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Location $loc -ProximityPlacementGroupId $ppg.Id -Sku 'Classic';
         $av = Get-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
-        Assert-AreEqual $ppg.Id $av.ProximityPlacementGroup.Id;
+        Assert-AreEqual $ppg1.Id $av.ProximityPlacementGroup.Id;
 
-        $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname;
+        $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname1;
         Assert-AreEqual $av.Id $ppg.AvailabilitySets[0].Id;
 
-        Remove-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Force;
-        $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname;
-        Assert-Null $ppg.AvailabilitySets;
+        # Create another PPG
+        $ppgname2 = $rgname + 'ppg2'
+        New-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2 -Location $loc -ProximityPlacementGroupType "Standard" -Tag @{key2 = "val2"};        
+        $ppg2 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2;
 
-        Remove-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -Force;
+        # Update AvSet to another PPG
+        Update-AzAvailabilitySet -AvailabilitySet $av -ProximityPlacementGroupId $ppg2.Id;
+
+        $av = Get-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
+        Assert-AreEqual $ppg2.Id $av.ProximityPlacementGroup.Id;
+
+        Remove-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Force;
+        $ppg1 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname1;
+        Assert-Null $ppg1.AvailabilitySets;
+        $ppg2 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2;
+        Assert-Null $ppg2.AvailabilitySets;
+
+        Remove-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname1 -Force;
+        Remove-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2 -Force;
     }
     finally
     {
@@ -182,11 +196,28 @@ function Test-ProximityPlacementGroupVM
         $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname;
         Assert-AreEqual $vm.Id $ppg.VirtualMachines[0].Id;
 
+        Stop-AzVM -ResourceGroupName $rgname -Name $vmName -Force;
+
+        $ppgname2 = $rgname + 'ppg2'
+        New-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2 -Location $loc -ProximityPlacementGroupType "Standard" -Tag @{key2 = "val2"};        
+        $ppg2 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2;
+
+        Update-AzVM -ResourceGroupName $rgname -VM $vm -ProximityPlacementGroupId $ppg2.Id;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
+        Assert-AreEqual $ppg2.Id $vm.ProximityPlacementGroup.Id;
+
+        $ppg2 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2;
+        Assert-AreEqual $vm.Id $ppg2.VirtualMachines[0].Id;
+
         Remove-AzVM -ResourceGroupName $rgname -Name $vmName -Force;
         $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname;
         Assert-Null $ppg.VirtualMachines;
 
+        $ppg2 = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2;
+        Assert-Null $ppg2.VirtualMachines;
+
         Remove-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -Force;
+        Remove-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname2 -Force;
     }
     finally
     {
