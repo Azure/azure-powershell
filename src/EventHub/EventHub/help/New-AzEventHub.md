@@ -45,7 +45,7 @@ PS C:\> New-AzEventHub -ResourceGroupName MyResourceGroupName -NamespaceName MyN
 
 PS C:\> $CreatedEventHub = Get-AzEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName
 
-PS C:\> $createdEventHub.CaptureDescription = New-Object -TypeName Microsoft.Azure.Commands.EventHub.Models.CaptureDescriptionAttributes
+PS C:\> $createdEventHub.CaptureDescription = New-Object -TypeName Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes
 
 PS C:\> $createdEventHub.CaptureDescription.Enabled = $true
 PS C:\> $createdEventHub.CaptureDescription.IntervalInSeconds  = 120
