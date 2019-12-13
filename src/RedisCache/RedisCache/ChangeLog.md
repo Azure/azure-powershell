@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.0
 * Added `ReplicasPerMaster` parameter in `New-AzRedisCache` cmdlet. 
 * Added `ReplicasPerMaster` and `Instances` in the output of `Get-AzRedisCache` cmdlet.
 
