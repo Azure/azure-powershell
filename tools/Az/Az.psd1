@@ -162,7 +162,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '3.2.0 - December 2019
+        ReleaseNotes = '3.2.1 - December 2019
 Az.Accounts
 * Update references in .psd1 to use relative path
 * Set correct UserAgent for client-side telemetry for Az 4.0 preview
