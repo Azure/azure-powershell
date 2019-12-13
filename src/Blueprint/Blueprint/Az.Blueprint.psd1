@@ -115,7 +115,6 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '* Update references in .psd1 to use relative path
-* Bug Fix: File/folder names should be platform agnostic for Export/Import cmdlets'
 
         # Prerelease string of this module
         # Prerelease = ''
