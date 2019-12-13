@@ -120,9 +120,7 @@
 * Updated PrivateDns .net sdk to version 1.0.0
 
 #### Az.RecoveryServices
-* Azure Site Recovery support to select disk type at enabling protection.
-* Azure Site Recovery bug fix for recovery plan action edit.
-* Azure Backup SQL Restore support to accept filestream DBs.
+* Azure Site Recovery support for Azure Disk Encryption One Pass for Azure to Azure.
 
 #### Az.RedisCache
 * Added 'MinimumTlsVersion' parameter in 'New-AzRedisCache' and 'Set-AzRedisCache' cmdlets. Also, added 'MinimumTlsVersion' in the output of 'Get-AzRedisCache' cmdlet.
