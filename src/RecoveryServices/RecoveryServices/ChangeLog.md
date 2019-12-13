@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 
-## Version 2.2.0
+## Version 2.3.0
 * Update references in .psd1 to use relative path
 * Azure Site Recovery support for Azure Disk Encryption One Pass for Azure to Azure.
 
