@@ -19,5 +19,5 @@
 -->
 ## Upcoming Release
 
-## Version 0.7.1
-* This is the first preview release for "Az.Subscription"
+## Version 0.7.2
+* Update references in .psd1 to use relative path
