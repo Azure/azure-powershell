@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 provider: "proximityPlacementGroups",
                 getOperations: client => client.ProximityPlacementGroups,
                 getAsync: (o, p) => o.GetAsync(
-                    p.ResourceGroupName, p.Name, p.CancellationToken),
+                    p.ResourceGroupName, p.Name, null, p.CancellationToken),
                 createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
                 createTime: _ => 1);

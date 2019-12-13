@@ -56,17 +56,17 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.4'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.Storage.dll', 
-               '.\Microsoft.Azure.Storage.Common.dll', 
-               '.\Microsoft.Azure.Storage.Blob.dll', 
-               '.\Microsoft.Azure.Storage.File.dll', 
-               '.\Microsoft.Azure.Storage.Queue.dll', 
-               '.\Microsoft.Azure.Cosmos.Table.dll', 
-               '.\Microsoft.Azure.DocumentDB.Core.dll', 
-               '.\Microsoft.Azure.Storage.DataMovement.dll', 
-               '.\Microsoft.Azure.DocumentDB.Core.dll', 
-               '.\Microsoft.OData.Core.dll', '.\Microsoft.OData.Edm.dll', 
-               '.\Microsoft.Spatial.dll', '.\Microsoft.Azure.KeyVault.Core.dll'
+RequiredAssemblies = 'Microsoft.Azure.Management.Storage.dll', 
+               'Microsoft.Azure.Storage.Common.dll', 
+               'Microsoft.Azure.Storage.Blob.dll', 
+               'Microsoft.Azure.Storage.File.dll', 
+               'Microsoft.Azure.Storage.Queue.dll', 
+               'Microsoft.Azure.Cosmos.Table.dll', 
+               'Microsoft.Azure.DocumentDB.Core.dll', 
+               'Microsoft.Azure.Storage.DataMovement.dll', 
+               'Microsoft.Azure.DocumentDB.Core.dll', 
+               'Microsoft.OData.Core.dll', 'Microsoft.OData.Edm.dll', 
+               'Microsoft.Spatial.dll', 'Microsoft.Azure.KeyVault.Core.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -75,12 +75,12 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.Storage.dll',
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Storage.Management.format.ps1xml', '.\Storage.format.ps1xml', 
-               '.\Storage.generated.format.ps1xml'
+FormatsToProcess = 'Storage.Management.format.ps1xml', 'Storage.format.ps1xml', 
+               'Storage.generated.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll', 
-               '.\Microsoft.Azure.PowerShell.Cmdlets.Storage.dll')
+NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll', 
+               'Microsoft.Azure.PowerShell.Cmdlets.Storage.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
@@ -155,6 +155,7 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Get-AzStorageBlobServiceProperty', 
                'Enable-AzStorageBlobDeleteRetentionPolicy', 
                'Disable-AzStorageBlobDeleteRetentionPolicy', 
+               'Revoke-AzStorageAccountUserDelegationKeys',
                'Get-AzStorageFileHandle', 'Close-AzStorageFileHandle', 
                'New-AzRmStorageShare', 'Remove-AzRmStorageShare', 
                'Get-AzRmStorageShare', 'Update-AzRmStorageShare'
@@ -194,12 +195,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Support enable Large File share when create or update Storage account
-    -  New-AzStorageAccount
-    -  Set-AzStorageAccount
-* When close/get File handle, skip check the input path is File directory or File, to avoid failure with object in DeletePending status
-    -  Get-AzStorageFileHandle
-    -  Close-AzStorageFileHandle'
+        ReleaseNotes = '* Support generate Blob/Constainer Idenity based SAS token with Storage Context based on Oauth authentication
+    - New-AzStorageContainerSASToken
+    - New-AzStorageBlobSASToken
+* Support revoke Storage Account User Delegation Keys, so all Idenity SAS tokens are revoked
+    - Revoke-AzStorageAccountUserDelegationKeys'
 
         # Prerelease string of this module
         # Prerelease = ''

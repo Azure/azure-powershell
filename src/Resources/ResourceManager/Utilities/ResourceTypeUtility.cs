@@ -14,14 +14,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             }
             string[] resourceTypeFieldList = resourceType.Split('/');
             string topLevelResourceType;
-            if (resourceTypeFieldList.Length == 1)
+            // resourceType is like {topLevelResource}/[{subLevelResource}]
+            topLevelResourceType = resourceTypeFieldList[0];
+
+            return topLevelResourceType;
+        }
+
+        public static string GetTopLevelResourceTypeWithProvider(string resourceType)
+        {
+            if (resourceType == null)
             {
-                topLevelResourceType = resourceTypeFieldList[0];
+                return null;
             }
-            else // resourceType is like {providerNameSpace}/{topLevelResource}/[{subLevelResource}] at least two fields
-            {
-                topLevelResourceType = string.Format("{0}/{1}", resourceTypeFieldList[0], resourceTypeFieldList[1]);
-            }
+            string[] resourceTypeFieldList = resourceType.Split('/');
+            string topLevelResourceType;
+            // resourceType is like {provider}/{topLevelResource}/[{subLevelResource}]
+            topLevelResourceType = resourceTypeFieldList[1];
 
             return topLevelResourceType;
         }

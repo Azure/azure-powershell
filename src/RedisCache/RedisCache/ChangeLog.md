@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update references in .psd1 to use relative path
+
+## Version 1.2.0
+* Added `MinimumTlsVersion` parameter in `New-AzRedisCache` and `Set-AzRedisCache` cmdlets. Also, added `MinimumTlsVersion` in the output of `Get-AzRedisCache` cmdlet.
+* Added validation on `-Size` parameter for `Set-AzRedisCache` and `New-AzRedisCache` cmdlets
 
 ## Version 1.1.1
 * Updated `Set-AzRedisCache` reference documentation to include missing values for `-Size` parameter

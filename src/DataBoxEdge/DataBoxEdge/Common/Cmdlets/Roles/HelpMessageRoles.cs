@@ -31,6 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
         internal const string IotDeviceIdHelpMessage = "Device Id of the Iot Device";
         internal const string IotEdgeDeviceAccessKeyHelpMessage = "Access key of the Iot Edge device";
         internal const string ShouldBeFromSameHostHub = "Connection strings must come from same Iot Hosthub";
+        internal const string InvalidRoleType = "Connection strings must come from same Iot Hosthub";
+        internal const string ShareName = "Mount points of local share in role(s)";
 
 
     }

@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update references in .psd1 to use relative path
+
+## Version 1.4.1
 * Fix for issue 10301 : Fix the SAS Token date format
 
 ## Version 1.4.0

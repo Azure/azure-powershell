@@ -128,14 +128,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                     cancellationToken: cancellationToken),
                 cancellationToken: cancellationToken);
 
-            string topLevelResourceType = ResourceTypeUtility.GetTopLevelResourceType(resourceType);
-            return providers
+            string[] apiVersions = providers
                 .CoalesceEnumerable()
                 .Where(provider => providerNamespace.EqualsInsensitively(provider.Namespace))
                 .SelectMany(provider => provider.ResourceTypes)
-                .Where(type => topLevelResourceType.EqualsInsensitively(type.ResourceType))
+                .Where(type => resourceType.EqualsInsensitively(type.ResourceType))
                 .Select(type => type.ApiVersions)
                 .FirstOrDefault();
+            if (apiVersions == null)
+            {
+                string topLevelResourceType = ResourceTypeUtility.GetTopLevelResourceType(resourceType);
+                return providers
+                    .CoalesceEnumerable()
+                    .Where(provider => providerNamespace.EqualsInsensitively(provider.Namespace))
+                    .SelectMany(provider => provider.ResourceTypes)
+                    .Where(type => topLevelResourceType.EqualsInsensitively(type.ResourceType))
+                    .Select(type => type.ApiVersions)
+                    .FirstOrDefault();
+            }
+            else
+            {
+                return apiVersions;
+            }
         }
 
         /// <summary>

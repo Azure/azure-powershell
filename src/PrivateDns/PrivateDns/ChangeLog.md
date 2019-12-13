@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update references in .psd1 to use relative path
+
+## Version 1.0.1
 * Updated PrivateDns .net sdk to version 1.0.0
 
 ## Version 1.0.0

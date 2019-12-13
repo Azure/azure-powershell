@@ -1166,10 +1166,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             foreach (var provider in providers)
             {
-                string topLevelResourceType = ResourceTypeUtility.GetTopLevelResourceType(resourceIdentifier.ResourceType);
                 var resourceType = provider.ResourceTypes
-                                           .Where(t => string.Equals(string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType), topLevelResourceType, StringComparison.OrdinalIgnoreCase))
+                                           .Where(t => string.Equals(string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType), resourceIdentifier.ResourceType, StringComparison.OrdinalIgnoreCase))
                                            .FirstOrDefault();
+                if (resourceType == null)
+                {
+                    string topLevelResourceType = ResourceTypeUtility.GetTopLevelResourceTypeWithProvider(resourceIdentifier.ResourceType);
+                    resourceType = provider.ResourceTypes
+                                               .Where(t => string.Equals(t.ResourceType, topLevelResourceType, StringComparison.OrdinalIgnoreCase))
+                                               .FirstOrDefault();
+                }
                 if (resourceType != null)
                 {
                     apiVersion = resourceType.ApiVersions.Contains(apiVersion) ? apiVersion : resourceType.ApiVersions.FirstOrDefault();

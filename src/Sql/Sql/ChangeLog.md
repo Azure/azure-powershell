@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update references in .psd1 to use relative path
+* Upgraded storage creation in Vulnerability Assessment auto enablement to StorageV2
+
+## Version 2.1.0
 * Added support for database ReadReplicaCount.
 * Fixed Set-AzSqlDatabase when zone redundancy not set
 

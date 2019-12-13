@@ -19,10 +19,13 @@
 -->
 
 ## Upcoming Release
+* Update references in .psd1 to use relative path
 
 ## Version 1.4.0
 * Introduced UrlRewriteAction and CacheKeyQueryStringAction to RulesEngine.
 * Fixed several bugs like missing "Selector" Input in New-AzDeliveryRuleCondition cmdlet.
+
+Fixed enabling CDN custom domain HTTPS for Microsoft and Akamai SKU's
 
 ## Version 1.3.1
 * Fixed miscellaneous typos across module
