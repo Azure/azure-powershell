@@ -40,6 +40,7 @@ using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Proper
 using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using System.Management.Automation;
 using Microsoft.Rest;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
@@ -1168,6 +1169,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 var resourceType = provider.ResourceTypes
                                            .Where(t => string.Equals(string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType), resourceIdentifier.ResourceType, StringComparison.OrdinalIgnoreCase))
                                            .FirstOrDefault();
+                if (resourceType == null)
+                {
+                    string topLevelResourceType = ResourceTypeUtility.GetTopLevelResourceTypeWithProvider(resourceIdentifier.ResourceType);
+                    resourceType = provider.ResourceTypes
+                                               .Where(t => string.Equals(t.ResourceType, topLevelResourceType, StringComparison.OrdinalIgnoreCase))
+                                               .FirstOrDefault();
+                }
                 if (resourceType != null)
                 {
                     apiVersion = resourceType.ApiVersions.Contains(apiVersion) ? apiVersion : resourceType.ApiVersions.FirstOrDefault();
