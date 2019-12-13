@@ -1,8 +1,0 @@
-﻿{
-  "Location": "West US",
-  "Name": "EventHub11",
-  "MessageRetentionInDays": 5,
-  "PartitionCount": 3,
-  "PartitionIds": [ 12, 13, 14 ],
-  "Status": "Active"
-}
