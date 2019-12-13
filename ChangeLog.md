@@ -1,4 +1,4 @@
-## 3.2.0 - December 2019
+## 3.2.1 - December 2019
 
 ### General
 * Update references in .psd1 to use relative path for all modules
