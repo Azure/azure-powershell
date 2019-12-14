@@ -18,4 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Update references in .psd1 to use relative path
+
+## Version 0.7.1
+* This is the first preview release for "Az.DeviceProvisioningServices"
