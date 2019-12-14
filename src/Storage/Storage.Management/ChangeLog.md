@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.10.0
 * Update references in .psd1 to use relative path
 * Support generate Blob/Constainer Idenity based SAS token with Storage Context based on Oauth authentication
     - New-AzStorageContainerSASToken

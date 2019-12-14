@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.2.0
 * Add ProximityPlacementGroupId parameter to the following cmdlets:
     - Update-AzAvailabilitySet, Update-AzVM, Update-AzVmss
 * Change ProximityPlacementGroup parameter to ProximityPlacementGroupId parameter in New-AzVM and New-AzVmss.
