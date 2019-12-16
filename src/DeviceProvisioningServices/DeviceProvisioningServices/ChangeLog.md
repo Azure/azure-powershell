@@ -20,4 +20,4 @@
 ## Upcoming Release
 
 ## Version 0.7.2
-* Update references in .psd1 to use relative path for all modules
+* Update references in .psd1 to use relative path
