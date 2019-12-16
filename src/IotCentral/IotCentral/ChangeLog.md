@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.2
 * Update references in .psd1 to use relative path
 * Remove subdomain and resource name checks for create new IotCentral application, it will be handled by resource provider for idempotent
 
