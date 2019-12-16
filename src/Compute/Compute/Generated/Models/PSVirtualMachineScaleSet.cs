@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public Sku Sku { get; set; }
         public Plan Plan { get; set; }
         public UpgradePolicy UpgradePolicy { get; set; }
-        public VirtualMachineScaleSetVMProfile VirtualMachineProfile { get; set; }
+        public AutomaticRepairsPolicy AutomaticRepairsPolicy { get; set; }
         public string ProvisioningState { get; set; }
         public bool? Overprovision { get; set; }
         public bool? DoNotRunExtensionsOnOverprovisionedVMs { get; set; }
@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public int? PlatformFaultDomainCount { get; set; }
         public SubResource ProximityPlacementGroup { get; set; }
         public AdditionalCapabilities AdditionalCapabilities { get; set; }
+        public ScaleInPolicy ScaleInPolicy { get; set; }
         public VirtualMachineScaleSetIdentity Identity { get; set; }
         public System.Collections.Generic.IList<string> Zones { get; set; }
         public string Id { get; set; }

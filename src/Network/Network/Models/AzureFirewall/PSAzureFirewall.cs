@@ -16,6 +16,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
+using System.Net;
+using Microsoft.Rest;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
@@ -24,7 +27,10 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         private const string AzureFirewallSubnetName = "AzureFirewallSubnet";
         private const string AzureFirewallIpConfigurationName = "AzureFirewallIpConfiguration";
-        
+        private const string IANAPrivateRanges = "IANAPrivateRanges";
+
+        private string[] privateRange;
+
         public List<PSAzureFirewallIpConfiguration> IpConfigurations { get; set; }
 
         public List<PSAzureFirewallApplicationRuleCollection> ApplicationRuleCollections { get; set; }
@@ -33,7 +39,28 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSAzureFirewallNetworkRuleCollection> NetworkRuleCollections { get; set; }
 
+        public PSAzureFirewallSku Sku { get; set; }
+
+        public Microsoft.Azure.Management.Network.Models.SubResource VirtualHub { get; set; }
+
+        public Microsoft.Azure.Management.Network.Models.SubResource FirewallPolicy { get; set; }
+
         public string ThreatIntelMode { get; set; }
+
+        public PSAzureFirewallThreatIntelWhitelist ThreatIntelWhitelist { get; set; }
+
+        public string[] PrivateRange {
+            get
+            {
+                return this.privateRange; 
+            }
+            set
+            {
+                if (value != null)
+                    ValidatePrivateRange(value);
+                privateRange = value;
+            }
+        }
 
         public string ProvisioningState { get; set; }
 
@@ -63,6 +90,18 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(NetworkRuleCollections, Formatting.Indented); }
         }
 
+        [JsonIgnore]
+        public string ThreatIntelWhitelistText
+        {
+            get { return JsonConvert.SerializeObject(ThreatIntelWhitelist, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string PrivateRangeText
+        {
+            get { return JsonConvert.SerializeObject(PrivateRange, Formatting.Indented); }
+        }
+
         #region Ip Configuration Operations
 
         public void Allocate(PSVirtualNetwork virtualNetwork, PSPublicIpAddress[] publicIpAddresses)
@@ -72,7 +111,6 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentNullException(nameof(virtualNetwork), "Virtual Network cannot be null!");
             }
 
-            
             if (publicIpAddresses == null || publicIpAddresses.Count() == 0)
             {
                 throw new ArgumentNullException(nameof(publicIpAddresses), "Public IP Addresses cannot be null or empty!");
@@ -90,7 +128,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
             this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
 
-            for(var i = 0; i < publicIpAddresses.Count(); i++)
+            for (var i = 0; i < publicIpAddresses.Count(); i++)
             {
                 this.IpConfigurations.Add(
                     new PSAzureFirewallIpConfiguration
@@ -105,7 +143,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public void Deallocate()
         {
-            this.IpConfigurations = new List<PSAzureFirewallIpConfiguration> ();
+            this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
         }
 
         public void AddPublicIpAddress(PSPublicIpAddress publicIpAddress)
@@ -258,6 +296,54 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         #endregion // Application Rule Collections Operations
 
+        #region Private Range Validation
+        private void ValidatePrivateRange(string[] privateRange)
+        {
+            foreach (var ip in privateRange)
+            {
+                if (ip.Equals(IANAPrivateRanges, StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                if (ip.Contains("/"))
+                    ValidateMaskedIpAddress(ip);
+                else
+                    ValidateSingleIpAddress(ip);
+            }
+        }
+
+        private void ValidateSingleIpAddress(string ipAddress)
+        {
+            IPAddress ipVal;
+            if (!IPAddress.TryParse(ipAddress, out ipVal) || ipVal.AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork)
+            {
+                throw new PSArgumentException(String.Format("\'{0}\' is not a valid private range ip address", ipAddress));
+            }
+        }
+
+        private void ValidateMaskedIpAddress(string ipAddress)
+        {
+            var split = ipAddress.Split('/');
+            if (split.Length != 2)
+                throw new PSArgumentException(String.Format("\'{0}\' is not a valid private range ip address", ipAddress));
+
+            // validate the ip
+            ValidateSingleIpAddress(split[0]);
+
+            // validate mask
+            var bit = 0;
+            if (!Int32.TryParse(split[1], out bit) || bit < 0 || bit > 32)
+                throw new PSArgumentException(String.Format("\'{0}\' is not a valid private range ip address, subnet mask should between 0 and 32", ipAddress));
+
+            // validated that unmasked bits are 0
+            var splittedIp = split[0].Split('.');
+            var ip = Int32.Parse(splittedIp[0]) << 24;
+            ip = ip + Int32.Parse(splittedIp[1]) << 16 + Int32.Parse(splittedIp[2]) << 8 + Int32.Parse(splittedIp[3]);
+            if (ip << bit != 0)
+                throw new PSArgumentException(String.Format("\'{0}\' is not a valid private range ip address, bits not covered by subnet mask should be all 0", ipAddress));
+        }
+
+        #endregion
+
         #region Private Methods
 
         private List<BaseRuleCollection> AddRuleCollection<BaseRuleCollection>(BaseRuleCollection ruleCollection, List<BaseRuleCollection> existingRuleCollections) where BaseRuleCollection : PSAzureFirewallBaseRuleCollection
@@ -271,7 +357,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             return existingRuleCollections;
         }
 
-        private BaseRuleCollection GetRuleCollectionByName<BaseRuleCollection> (string ruleCollectionName, List<BaseRuleCollection> ruleCollections) where BaseRuleCollection : PSAzureFirewallBaseRuleCollection
+        private BaseRuleCollection GetRuleCollectionByName<BaseRuleCollection>(string ruleCollectionName, List<BaseRuleCollection> ruleCollections) where BaseRuleCollection : PSAzureFirewallBaseRuleCollection
         {
             if (string.IsNullOrEmpty(ruleCollectionName))
             {
@@ -287,7 +373,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
             return ruleCollection;
         }
-
         #endregion // Private Methods
     }
 }

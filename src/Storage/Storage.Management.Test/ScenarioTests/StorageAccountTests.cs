@@ -95,6 +95,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRevokeAzStorageAccountUserDelegationKeys()
+        {
+            TestRunner.RunTestScript("Test-RevokeAzStorageAccountUserDelegationKeys");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmStorageAccountKeySource()
         {
             TestRunner.RunTestScript("Test-SetAzureRmStorageAccountKeySource");
@@ -154,6 +161,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         public void TestStorageAccountManagementPolicy()
         {
             TestRunner.RunTestScript("Test-StorageAccountManagementPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAzureStorageAccount_LargeFileShare()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_LargeFileShare");
         }
     }
 }

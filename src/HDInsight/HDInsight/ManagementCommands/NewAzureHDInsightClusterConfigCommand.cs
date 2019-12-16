@@ -113,6 +113,13 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _config.ObjectId = value; }
         }
 
+        [Parameter(HelpMessage = "Gets or sets the Service Principal Application Id for accessing Azure Data Lake.")]
+        public Guid ApplicationId
+        {
+            get { return _config.ApplicationId; }
+            set { _config.ApplicationId = value; }
+        }
+
         [Parameter(HelpMessage = "Gets or sets the Service Principal Certificate file contents for accessing Azure Data Lake.")]
         public byte[] CertificateFileContents
         {

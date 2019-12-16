@@ -30,51 +30,52 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateEndpointConnection", DefaultParameterSetName = "ByResourceId"), OutputType(typeof(PSPrivateEndpointConnection))]
     public class GetAzurePrivateEndpointConnection : PrivateEndpointConnectionBaseCmdlet
     {
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = "ByPrivateLinkResourceId",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string PrivateLinkResourceId { get; set; }
+
+        [CmdletParameterBreakingChange("Description", ChangeDescription = "Parameter is being deprecated without being replaced")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The reason of action.")]
+        public string Description { get; set; }
+
         public override void Execute()
         {
             base.Execute();
-
-            string resourceType = string.Empty;
-            string parentResource = string.Empty;
 
             if (this.IsParameterBound(c => c.ResourceId))
             {
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                if (this.ResourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Contains("privateEndpointConnections"))
-                {
-                    this.Name = resourceIdentifier.ResourceName;
-                    resourceType = resourceIdentifier.ResourceType;
-                    parentResource = resourceIdentifier.ParentResource;
-                    this.ServiceName = parentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
-                }
-                else
-                {
-                    this.ServiceName = resourceIdentifier.ResourceName;
-                }
+                this.Name = resourceIdentifier.ResourceName;
+                this.PrivateLinkResourceType = resourceIdentifier.ResourceType.Substring(0, resourceIdentifier.ResourceType.LastIndexOf('/'));
+                this.ServiceName = resourceIdentifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+            }
+            else if (this.IsParameterBound(c => c.PrivateLinkResourceId))
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.PrivateLinkResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.PrivateLinkResourceType = resourceIdentifier.ResourceType;
+                this.ServiceName = resourceIdentifier.ResourceName;
             }
 
-            var psPrivateLinkService = this.GetPrivateLinkService(ResourceGroupName, ServiceName);
+            IPrivateLinkProvider provider = BuildProvider(this.PrivateLinkResourceType);
 
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(this.ResourceGroupName, this.Name))
             {
-                var peConnection = psPrivateLinkService.PrivateEndpointConnections.FirstOrDefault(
-                        resource =>
-                            string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
-
-                if (peConnection == null)
-                {
-                    throw new ArgumentException(string.Format(Properties.Resources.ResourceNotFound, this.Name));
-                }
-
-                WriteObject(peConnection);
+                var pec = provider.GetPrivateEndpointConnection(this.ResourceGroupName, this.ServiceName, this.Name);
+                WriteObject(pec);
             }
             else
             {
-                var peConnections = psPrivateLinkService.PrivateEndpointConnections;
-                WriteObject(peConnections, true);
+                var pecs = provider.ListPrivateEndpointConnections(this.ResourceGroupName, this.ServiceName);
+                WriteObject(SubResourceWildcardFilter(Name, pecs), true);
             }
-
         }
     }
 }

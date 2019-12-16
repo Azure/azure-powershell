@@ -17,12 +17,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+using System.Text.RegularExpressions;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallNetworkRule", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallNetworkRule))]
-    public class NewAzureFirewallNetworkRuleCommand : NetworkBaseCmdlet
+    public class NewAzureFirewallNetworkRuleCommand : AzureFirewallBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -37,16 +38,31 @@ namespace Microsoft.Azure.Commands.Network
         public string Description { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The source addresses of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] SourceAddress { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
+            HelpMessage = "The source ipgroup of the rule")]
+        public string[] SourceIpGroup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The destination addresses of the rule")]
-        [ValidateNotNullOrEmpty]
         public string[] DestinationAddress { get; set; }
+
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The destination ipgroup of the rule")]
+        public string[] DestinationIpGroup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The destination FQDN of the rule")]
+        [ValidateNotNullOrEmpty]
+        public string[] DestinationFqdn { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -68,17 +84,56 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            
+
+            // One of SourceAddress or SourceIpGroup must be present
+            if ((SourceAddress == null) && (SourceIpGroup == null))
+            {
+                throw new ArgumentException("Either SourceAddress or SourceIpGroup is required.");
+            }
+
+            if (DestinationFqdn != null)
+            {
+                foreach (string fqdn in DestinationFqdn)
+                {
+                    ValidateIsFqdn(fqdn);
+                }
+            }
+
+            // Only one of DestinationAddress or DestinationFqdns is allowed
+            if ((DestinationAddress != null) && (DestinationFqdn != null))
+            {
+                throw new ArgumentException("Both DestinationAddress and DestinationFqdns not allowed.");
+            }
+
+            // One of DestinationAddress or DestinationFqdns must be present
+            if ((DestinationAddress == null) && (DestinationFqdn == null) && (DestinationIpGroup == null))
+            {
+                throw new ArgumentException("DestinationAddress,DestinationIpGroup or DestinationFqdns is required.");
+            }
+
             var networkRule = new PSAzureFirewallNetworkRule
             {
                 Name = this.Name,
                 Description = this.Description,
                 Protocols = this.Protocol?.ToList(),
                 SourceAddresses = this.SourceAddress?.ToList(),
+                SourceIpGroups = this.SourceIpGroup?.ToList(),
                 DestinationAddresses = this.DestinationAddress?.ToList(),
+                DestinationIpGroups = this.DestinationIpGroup?.ToList(),
+                DestinationFqdns = this.DestinationFqdn?.ToList(),
                 DestinationPorts = this.DestinationPort?.ToList()
             };
             WriteObject(networkRule);
+        }
+
+        private void ValidateIsFqdn(string fqdn)
+        {
+            var fqdnRegEx = new Regex("^\\*$|^[a-zA-Z0-9]+(([a-zA-Z0-9_\\-]*[a-zA-Z0-9]+)*\\.)*(?:[a-zA-Z0-9]{2,})$");
+
+            if (!fqdnRegEx.IsMatch(fqdn))
+            {
+                throw new ArgumentException($"Invalid value {fqdn}.");
+            }
         }
     }
 }

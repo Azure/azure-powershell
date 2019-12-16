@@ -169,14 +169,14 @@ function Test-GetAzureStorageAccount
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind;
-        Assert-AreEqual $false $sto.EnableHttpsTrafficOnly;
+        Assert-AreEqual $true $sto.EnableHttpsTrafficOnly;
 
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
         Assert-AreEqual $stoname $stos[0].StorageAccountName;
         Assert-AreEqual $stotype $stos[0].Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $stos[0].Location;
         Assert-AreEqual $kind $sto.Kind;
-        Assert-AreEqual $false $sto.EnableHttpsTrafficOnly;
+        Assert-AreEqual $true $sto.EnableHttpsTrafficOnly;
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
@@ -204,7 +204,7 @@ function Test-SetAzureStorageAccount
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
         $loc = Get-ProviderLocation ResourceManagement;
-        $kind = 'Storage'
+        $kind = 'StorageV2'
 
         New-AzResourceGroup -Name $rgname -Location $loc;
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableHttpsTrafficOnly $true -EnableHierarchicalNamespace $true;
@@ -499,6 +499,41 @@ function Test-SetAzureRmCurrentStorageAccount
         $context = Get-AzContext
         Assert-AreEqual $stoname $context.Subscription.CurrentStorageAccountName
         $global:sto | Remove-AzStorageAccount -Force
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Revoke-AzStorageAccountUserDelegationKeys
+.DESCRIPTION
+SmokeTest
+#>
+function Test-RevokeAzStorageAccountUserDelegationKeys
+{
+ # Setup
+    $rgname = Get-StorageManagementTestResourceName
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname
+        $stotype = 'Standard_LRS'
+        $loc = Get-ProviderLocation ResourceManagement
+
+        New-AzResourceGroup -Name $rgname -Location $loc
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype
+		
+		# revoke with storage account name and resoruce group name
+		Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName $rgname  -Name $stoname
+
+		# revoke with pipeline
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname }
+        $global:sto | Revoke-AzStorageAccountUserDelegationKeys
     }
     finally
     {
@@ -865,7 +900,6 @@ function Test-StorageAccountManagementPolicy
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
-        $loc = Get-ProviderLocation_Stage;
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
 
         Retry-IfException { $global:sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
@@ -956,6 +990,57 @@ function Test-StorageAccountManagementPolicy
 		Assert-AreEqual $rule2.Definition.Filters.PrefixMatch $policy.Rules[1].Definition.Filters.PrefixMatch
 
 		$policy| Remove-AzStorageAccountManagementPolicy
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Test-NewSetAzureStorageAccount_LargeFileShare
+.DESCRIPTION
+SmokeTest
+#>
+function Test-NewSetAzureStorageAccount_LargeFileShare
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        $kind = 'StorageV2'
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        Write-Output ("Resource Group created")
+		
+		# new account
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -EnableLargeFileShare;
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual "Enabled" $sto.LargeFileSharesState;
+		
+		#update Account
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableLargeFileShare -SkuName $stotype -UpgradeToStorageV2;
+		
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual "Enabled" $sto.LargeFileSharesState;
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }

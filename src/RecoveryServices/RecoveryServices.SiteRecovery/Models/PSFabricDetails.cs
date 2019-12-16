@@ -931,7 +931,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         public string VHDName { get; set; }
 
-
         //
         // Summary:
         //     Gets or sets agent expiry date.
@@ -1162,6 +1161,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     VHD Name.
         /// </summary>
         public string VHDName { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the virtual machine Id.
+        public string VmId { get; set; }
     }
 
     /// <summary>
@@ -1191,6 +1195,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.LastRpoCalculatedTime = details.LastRpoCalculatedTime;
             this.RpoInSeconds = details.RpoInSeconds;
             this.IsReplicationAgentUpdateRequired = details.IsReplicationAgentUpdateRequired;
+            this.VmEncryptionType = details.VmEncryptionType;
+            this.InitialPrimaryFabricLocation = details.InitialPrimaryFabricLocation;
+            this.InitialRecoveryFabricLocation = details.InitialRecoveryFabricLocation;
+            this.LifecycleId = details.LifecycleId;
 
             if (details.LastHeartbeat != null)
             {
@@ -1213,11 +1221,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.A2ADiskDetails.AddRange(details.ProtectedManagedDisks.ToList().ConvertAll(disk => new ASRAzureToAzureProtectedDiskDetails(disk)));
             }
 
-            if (details.ProtectedManagedDisks != null)
+            if (details.UnprotectedDisks != null && details.UnprotectedDisks.Count > 0)
             {
-                this.A2ADiskDetails =
-                    details.ProtectedManagedDisks.ToList()
-                    .ConvertAll(disk => new ASRAzureToAzureProtectedDiskDetails(disk));
+                this.A2AUnprotectedDiskDetails = new List<AsrA2AUnprotectedDiskDetails>();
+                foreach (var unprotectedDisk in details.UnprotectedDisks)
+                {
+                    this.A2AUnprotectedDiskDetails.Add(
+                        new AsrA2AUnprotectedDiskDetails
+                        {
+                            DiskLunId = unprotectedDisk.DiskLunId ?? -1
+                        });
+                }
             }
 
             if (details.VmSyncedConfigDetails != null)
@@ -1227,6 +1241,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
 
         }
+
+        /// <summary>
+        /// Gets or sets A2A unprotected disk details.
+        /// </summary>
+        public List<AsrA2AUnprotectedDiskDetails> A2AUnprotectedDiskDetails { get; set; }
 
         /// <summary>
         /// Fabric object ARM Id.
@@ -1331,10 +1350,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         public bool? IsReplicationAgentUpdateRequired;
 
+        /// <summary>
+        /// Gets or sets the VM encryption type.
+        /// </summary>
+        public string VmEncryptionType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial primary fabric location.
+        /// </summary>
+        public string InitialPrimaryFabricLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial recovery fabric location.
+        /// </summary>
+        public string InitialRecoveryFabricLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the only constant ID throught out the enable disable cycle.
+        /// (with multiple switch protections in the middle) - Recovery Plans refer this ID.
+        /// </summary>
+        public string LifecycleId { get; set; }
+
         // check do we need to expoxed these 2 (TODO)
         // public string RecoveryFabricObjectId;  //how it is different from parent RecoveryFabricId
-        // public string LifecycleId;
         // public string managementId;
+    }
+
+    //
+    // Summary:
+    //     A2A unprotected disk details.
+    public class AsrA2AUnprotectedDiskDetails
+    {
+        //
+        // Summary:
+        //     Gets or sets the source lun Id for the data disk.
+        public int? DiskLunId { get; set; }
     }
 
     /// <summary>

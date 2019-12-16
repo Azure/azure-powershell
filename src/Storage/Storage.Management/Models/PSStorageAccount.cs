@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.StorageAccountName = storageAccount.Name;
             this.Id = storageAccount.Id;
             this.Location = storageAccount.Location;
-            this.Sku = storageAccount.Sku;
+            this.Sku = new PSSku(storageAccount.Sku);
             this.Encryption = storageAccount.Encryption;
             this.Kind = storageAccount.Kind;
             this.AccessTier = storageAccount.AccessTier;
@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.EnableHttpsTrafficOnly = storageAccount.EnableHttpsTrafficOnly;
             this.NetworkRuleSet = PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet);
             this.EnableHierarchicalNamespace = storageAccount.IsHnsEnabled;
+            this.LargeFileSharesState = storageAccount.LargeFileSharesState;
             this.AzureFilesIdentityBasedAuth = storageAccount.AzureFilesIdentityBasedAuthentication is null ? null : new PSAzureFilesIdentityBasedAuthentication(storageAccount.AzureFilesIdentityBasedAuthentication);
         }
 
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string Location { get; set; }
 
         [Ps1Xml(Label = "SkuName", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name", Position = 3)]
-        public Sku Sku { get; set; }
+        public PSSku Sku { get; set; }
 
         [Ps1Xml(Label = "Kind", Target = ViewControl.Table, Position = 4)]
         public string Kind { get; set; }
@@ -108,6 +109,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSAzureFilesIdentityBasedAuthentication AzureFilesIdentityBasedAuth { get; set; }
 
         public bool? EnableHierarchicalNamespace { get; set; }
+
+        public string LargeFileSharesState { get; set; }
 
         public PSNetworkRuleSet NetworkRuleSet { get; set; }
 
@@ -151,6 +154,31 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public CustomDomain ParseCustomDomain()
         {
             return new CustomDomain(this.Name, this.UseSubDomain);
+        }
+    }
+
+    public class PSSku
+    {
+        public string Name { get; set; }
+        public SkuTier? Tier { get; set; }
+        public string ResourceType { get; set; }
+        public string Kind { get; set; }
+        public IList<string> Locations { get; set; }
+        public IList<SKUCapability> Capabilities { get; set; }
+        public IList<Restriction> Restrictions { get; set; }
+
+        public PSSku(Sku sku)
+        {
+            if (sku != null)
+            {
+                this.Name = sku.Name;
+                this.Tier = sku.Tier;
+            }
+        }
+
+        public Sku ParseSku()
+        {
+            return new Sku(Name, Tier);
         }
     }
 }

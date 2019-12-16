@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.3
+* Update references in .psd1 to use relative path
+
 ## Version 1.3.2
 * **Set-AzApiManagementApi** - Added support for Updating Api into ApiVersionSet
     - Fix for issue https://github.com/Azure/azure-powershell/issues/10068

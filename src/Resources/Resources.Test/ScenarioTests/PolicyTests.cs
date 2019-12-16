@@ -68,6 +68,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPolicyAssignmentEnforcementMode()
+        {
+            TestRunner.RunTestScript("Test-PolicyAssignmentEnforcementMode");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicyDefinitionWithParameters()
         {
             TestRunner.RunTestScript("Test-PolicyDefinitionWithParameters");
@@ -92,6 +99,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TestPolicySetDefinitionCRUD()
         {
             TestRunner.RunTestScript("Test-PolicySetDefinitionCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPolicySetDefinitionCRUDWithGroups()
+        {
+            TestRunner.RunTestScript("Test-PolicySetDefinitionCRUDWithGroups");
         }
 
         [Fact]

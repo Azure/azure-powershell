@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         public RedisCacheClient() { }
 
         public RedisResource CreateCache(string resourceGroupName, string cacheName, string location, string skuFamily, int skuCapacity, string skuName,
-                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string subnetId, string staticIP, Hashtable tags, IList<string> zones)
+                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string minimumTlsVersion, string subnetId, string staticIP, Hashtable tags, IList<string> zones)
         {
             _resourceManagementClient.Providers.Register("Microsoft.Cache");
             var parameters = new RedisCreateParameters
@@ -102,6 +102,11 @@ namespace Microsoft.Azure.Commands.RedisCache
                 parameters.ShardCount = shardCount.Value;
             }
 
+            if(!string.IsNullOrEmpty(minimumTlsVersion))
+            {
+                parameters.MinimumTlsVersion = minimumTlsVersion;
+            }
+
             if (!string.IsNullOrWhiteSpace(subnetId))
             {
                 parameters.SubnetId = subnetId;
@@ -117,7 +122,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
 
         public RedisResource UpdateCache(string resourceGroupName, string cacheName, string skuFamily, int skuCapacity, string skuName,
-                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, Hashtable tags)
+                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string MinimumTlsVersion, Hashtable tags)
         {
             _resourceManagementClient.Providers.Register("Microsoft.Cache");
             var parameters = new RedisUpdateParameters
@@ -166,6 +171,11 @@ namespace Microsoft.Azure.Commands.RedisCache
             }
             
             parameters.ShardCount = shardCount;
+
+            if(!string.IsNullOrEmpty(MinimumTlsVersion))
+            {
+                parameters.MinimumTlsVersion = MinimumTlsVersion;
+            }
             
             RedisResource response = _client.Redis.Update(resourceGroupName: resourceGroupName, name: cacheName, parameters: parameters);
             return response;
