@@ -93,7 +93,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.5'; },
                @{ModuleName = 'Az.PolicyInsights'; RequiredVersion = '1.1.4'; }, 
                @{ModuleName = 'Az.PowerBIEmbedded'; RequiredVersion = '1.1.1'; }, 
                @{ModuleName = 'Az.PrivateDns'; RequiredVersion = '1.0.2'; }, 
-               @{ModuleName = 'Az.RecoveryServices'; RequiredVersion = '2.2.0'; }, 
+               @{ModuleName = 'Az.RecoveryServices'; RequiredVersion = '2.3.0'; }, 
                @{ModuleName = 'Az.RedisCache'; RequiredVersion = '1.2.1'; }, 
                @{ModuleName = 'Az.Relay'; RequiredVersion = '1.0.3'; }, 
                @{ModuleName = 'Az.Resources'; RequiredVersion = '1.9.0'; }, 
@@ -296,7 +296,8 @@ Az.PrivateDns
 * Update references in .psd1 to use relative path
 
 Az.RecoveryServices
-* Azure Backup added support for enabling and disabling soft delete feature for Recovery Services Vault.
+* Update references in .psd1 to use relative path
+* Azure Site Recovery support for Azure Disk Encryption One Pass for Azure to Azure.
 
 Az.RedisCache
 * Update references in .psd1 to use relative path
