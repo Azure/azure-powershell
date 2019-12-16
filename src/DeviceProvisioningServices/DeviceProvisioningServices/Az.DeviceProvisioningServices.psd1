@@ -131,7 +131,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Update references in .psd1 to use relative path for all modules'
+        ReleaseNotes = '* Update references in .psd1 to use relative path'
 
         # Prerelease string of this module
         # Prerelease = ''
