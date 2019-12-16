@@ -296,9 +296,7 @@ Az.PrivateDns
 * Update references in .psd1 to use relative path
 
 Az.RecoveryServices
-* Update references in .psd1 to use relative path
-* Added SoftDelete feature for VM and added tests for softdelete
-* Azure Site Recovery support for Azure Disk Encryption One Pass for Azure to Azure.
+* Azure Backup added support for enabling and disabling soft delete feature for Recovery Services Vault.
 
 Az.RedisCache
 * Update references in .psd1 to use relative path
