@@ -18,11 +18,11 @@ Get policy events at management group scope
 #>
 function Get-AzureRmPolicyEvent-ManagementGroupScope
 {
-	$managementGroupName = Get-TestManagementGroupName
-	$from = Get-TestQueryIntervalStart
+   $managementGroupName = Get-TestManagementGroupName
+   $from = Get-TestQueryIntervalStart
 
-    $policyEvents = Get-AzPolicyEvent -ManagementGroupName $managementGroupName -Top 10 -From $from
-	Validate-PolicyEvents $policyEvents 10
+   $policyEvents = Get-AzPolicyEvent -ManagementGroupName $managementGroupName -Top 10 -From $from
+   Validate-PolicyEvents $policyEvents 10
 }
 
 <#
@@ -31,10 +31,10 @@ Get policy events at subscription scope
 #>
 function Get-AzureRmPolicyEvent-SubscriptionScope
 {
-	$from = Get-TestQueryIntervalStart
+   $from = Get-TestQueryIntervalStart
 
-    $policyEvents = Get-AzPolicyEvent -Top 10 -From $from
-	Validate-PolicyEvents $policyEvents 10
+   $policyEvents = Get-AzPolicyEvent -Top 10 -From $from
+   Validate-PolicyEvents $policyEvents 10
 }
 
 <#
@@ -43,11 +43,11 @@ Get policy events at resource group scope
 #>
 function Get-AzureRmPolicyEvent-ResourceGroupScope
 {
-	$resourceGroupName = Get-TestResourceGroupName
-	$from = Get-TestQueryIntervalStart
+   $resourceGroupName = Get-TestResourceGroupName
+   $from = Get-TestQueryIntervalStart
 
-    $policyEvents = Get-AzPolicyEvent -ResourceGroupName $resourceGroupName -Top 10 -From $from
-	Validate-PolicyEvents $policyEvents 10
+   $policyEvents = Get-AzPolicyEvent -ResourceGroupName $resourceGroupName -Top 10 -From $from
+   Validate-PolicyEvents $policyEvents 10
 }
 
 <#
@@ -56,11 +56,11 @@ Get policy events at resource scope
 #>
 function Get-AzureRmPolicyEvent-ResourceScope
 {
-	$resourceId = Get-TestResourceId
-	$from = Get-TestQueryIntervalStart
+   $resourceId = Get-TestResourceId
+   $from = Get-TestQueryIntervalStart
 
-    $policyEvents = Get-AzPolicyEvent -ResourceId $resourceId -Top 10 -From $from
-	Validate-PolicyEvents $policyEvents 10
+   $policyEvents = Get-AzPolicyEvent -ResourceId $resourceId -Top 10 -From $from
+   Validate-PolicyEvents $policyEvents 10
 }
 
 <#
@@ -69,11 +69,11 @@ Get policy events at policy set definition scope
 #>
 function Get-AzureRmPolicyEvent-PolicySetDefinitionScope
 {
-	$policySetDefinitionName = Get-TestPolicySetDefinitionName
-	$from = Get-TestQueryIntervalStart	
+   $policySetDefinitionName = Get-TestPolicySetDefinitionName
+   $from = Get-TestQueryIntervalStart
 
-    $policyEvents = Get-AzPolicyEvent -PolicySetDefinitionName $policySetDefinitionName -Top 10 -From $from
-	Validate-PolicyEvents $policyEvents 10
+   $policyEvents = Get-AzPolicyEvent -PolicySetDefinitionName $policySetDefinitionName -Top 10 -From $from
+   Validate-PolicyEvents $policyEvents 10
 }
 
 <#
@@ -82,10 +82,10 @@ Get policy events at policy definition scope
 #>
 function Get-AzureRmPolicyEvent-PolicyDefinitionScope
 {
-	$policyDefinitionName = Get-TestPolicyDefinitionNameForEvents
+   $policyDefinitionName = Get-TestPolicyDefinitionNameForEvents
 
-    $policyEvents = Get-AzPolicyEvent -PolicyDefinitionName $policyDefinitionName -Top 10
-	Validate-PolicyEvents $policyEvents 10
+   $policyEvents = Get-AzPolicyEvent -PolicyDefinitionName $policyDefinitionName -Top 10
+   Validate-PolicyEvents $policyEvents 10
 }
 
 <#
@@ -94,11 +94,11 @@ Get policy events at subscription level policy assignment scope
 #>
 function Get-AzureRmPolicyEvent-SubscriptionLevelPolicyAssignmentScope
 {
-	$policyAssignmentName = Get-TestPolicyAssignmentName
-	$from = Get-TestQueryIntervalStart
+   $policyAssignmentName = Get-TestPolicyAssignmentName
+   $from = Get-TestQueryIntervalStart
 
-    $policyEvents = Get-AzPolicyEvent -PolicyAssignmentName $policyAssignmentName -Top 10 -From $from
-	Validate-PolicyEvents $policyEvents 10
+   $policyEvents = Get-AzPolicyEvent -PolicyAssignmentName $policyAssignmentName -Top 10 -From $from
+   Validate-PolicyEvents $policyEvents 10
 }
 
 <#
@@ -107,9 +107,9 @@ Get policy events at resource group level policy assignment scope
 #>
 function Get-AzureRmPolicyEvent-ResourceGroupLevelPolicyAssignmentScope
 {
-	$resourceGroupName = Get-TestResourceGroupNameForPolicyAssignmentEvents
-	$policyAssignmentName = Get-TestPolicyAssignmentNameResourceGroupLevelEvents
+   $resourceGroupName = Get-TestResourceGroupNameForPolicyAssignmentEvents
+   $policyAssignmentName = Get-TestPolicyAssignmentNameResourceGroupLevelEvents
 
-    $policyEvents = Get-AzPolicyEvent -ResourceGroupName $resourceGroupName -PolicyAssignmentName $policyAssignmentName -Top 10
-	Validate-PolicyEvents $policyEvents 10
+   $policyEvents = Get-AzPolicyEvent -ResourceGroupName $resourceGroupName -PolicyAssignmentName $policyAssignmentName -Top 10
+   Validate-PolicyEvents $policyEvents 10
 }
