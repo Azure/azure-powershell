@@ -46,4 +46,3 @@
 * Added new boolean property SkipEmptyArchives to Skip Empty Archives in CaptureDescription class of Eventhub 
 
 ## Version 1.0.0
-* General availability of `Az.EventHub` module
