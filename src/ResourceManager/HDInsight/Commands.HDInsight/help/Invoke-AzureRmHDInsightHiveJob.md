@@ -50,7 +50,7 @@ PS C:\> Use-AzureRmHDInsightCluster `
 
 PS C:\> Invoke-AzureRmHDInsightHiveJob -StatusFolder $statusFolder `
             -Query $query `
-            -DefaultContainer $storageAccountContainer `
+            -DefaultContainer $storageContainer `
             -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" `
             -DefaultStorageAccountKey $storageAccountKey
 ```
