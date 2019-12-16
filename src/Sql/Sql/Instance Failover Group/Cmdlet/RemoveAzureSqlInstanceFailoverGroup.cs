@@ -111,7 +111,9 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// <summary>
         /// Defines whether it is ok to pass through cmdlet output
         /// </summary>
-        [Parameter(Mandatory = false)]
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies whether to pass through cmdlet execution output.")]
         public SwitchParameter PassThru { get; set; }
 
         /// <summary>

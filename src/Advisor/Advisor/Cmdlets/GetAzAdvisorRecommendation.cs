@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
         /// </summary>
         [Parameter(ParameterSetName = "IdParameterSet", Mandatory = false, HelpMessage = "Category of the recommendation")]
         [Parameter(ParameterSetName = "NameParameterSet", Mandatory = false, HelpMessage = "Category of the recommendation")]
-        [ValidateSet("Cost", "HighAvailability", "Performance", "Security")]
+        [ValidateSet("Cost", "HighAvailability", "OperationalExcellence", "Performance", "Security")]
         public string Category { get; set; }
 
         /// <summary>

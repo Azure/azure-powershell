@@ -57,7 +57,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             Func<IEngine, SubResource> proximityPlacementGroup,
             string priority,
             string evictionPolicy,
-            double? maxPrice)
+            double? maxPrice,
+            string[] scaleInPolicy,
+            bool doNotRunExtensionsOnOverprovisionedVMs)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -124,6 +126,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice)
                     },
                     ProximityPlacementGroup = proximityPlacementGroup(engine),
+                    ScaleInPolicy = (scaleInPolicy == null) ? null : new ScaleInPolicy
+                    {
+                        Rules = scaleInPolicy
+                    },
+                    DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null
                 });
     }
 }

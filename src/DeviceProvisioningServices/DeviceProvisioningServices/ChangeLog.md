@@ -18,3 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.1
+* This is the first preview release for "Az.DeviceProvisioningServices"

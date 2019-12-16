@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         protected const string StorageAccountNameAlias = "StorageAccountName";
         protected const string AccountNameAlias = "AccountName";
+        protected const string NameAlias = "Name";
 
         protected const string StorageAccountTypeAlias = "StorageAccountType";
         protected const string AccountTypeAlias = "AccountType";

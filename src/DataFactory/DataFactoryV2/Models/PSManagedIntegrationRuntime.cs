@@ -75,5 +75,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
         public string DataProxyStagingPath => ManagedIntegrationRuntime.SsisProperties?.DataProxyProperties?.Path;
 
         public string Edition => ManagedIntegrationRuntime.SsisProperties?.Edition;
+
+        public System.Collections.Generic.IList<CustomSetupBase> ExpressCustomSetup => ManagedIntegrationRuntime.SsisProperties?.ExpressCustomSetupProperties;
     }
 }

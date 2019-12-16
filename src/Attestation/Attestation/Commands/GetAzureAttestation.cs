@@ -77,16 +77,6 @@ namespace Microsoft.Azure.Commands.Attestation
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
             }
 
-            if (string.IsNullOrEmpty(Name))
-            {
-                throw new CloudException(string.Format("ResourceNotSpecified", Name));
-            }
-
-            if (string.IsNullOrEmpty(ResourceGroupName))
-            {
-                throw new CloudException(string.Format("ResourceGroupNotSpecified", ResourceGroupName));
-            }
-
             PSAttestation attestation = AttestationClient.GetAttestation(Name, ResourceGroupName);
             this.WriteObject(attestation);
         }

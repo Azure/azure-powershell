@@ -12,12 +12,14 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$managementGroup = 'AzGovTest7'
+$managementGroup = 'AzGovPerfTest'
 $description = 'Unit test junk: sorry for littering. Please delete me!'
 $updatedDescription = "Updated $description"
 $metadataName = 'testName'
 $metadataValue = 'testValue'
 $metadata = "{'$metadataName':'$metadataValue'}"
+$enforcementModeDefault = 'Default'
+$enforcementModeDoNotEnforce = 'DoNotEnforce'
 
 $updatedMetadataName = 'newTestName'
 $updatedMetadataValue = 'newTestValue'
@@ -220,34 +222,34 @@ function Test-PolicyDefinitionMode
 
     # test policy with data plane mode
     # make a policy definition with data plane mode, get it back and validate
-    $expected = New-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -Policy "$TestOutputRoot\SampleKeyVaultDataPolicyDefinition.json" -Mode 'Microsoft.KeyVault.Data' -Description $description
+    $expected = New-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -Policy "$TestOutputRoot\SampleDataCatalogDataPolicyDefinition.json" -Mode 'Microsoft.DataCatalog.Data' -Description $description
     $actual = Get-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName
     Assert-NotNull $actual
     Assert-AreEqual $expected.Name $actual.Name
     Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
     Assert-NotNull($actual.Properties.PolicyRule)
-    Assert-AreEqual 'Microsoft.KeyVault.Data' $actual.Properties.Mode
-    Assert-AreEqual 'Microsoft.KeyVault.Data' $expected.Properties.Mode
+    Assert-AreEqual 'Microsoft.DataCatalog.Data' $actual.Properties.Mode
+    Assert-AreEqual 'Microsoft.DataCatalog.Data' $expected.Properties.Mode
 
     # update the same policy definition without touching mode, get it back and validate
-    $actual = Set-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -DisplayName testDisplay -Description $updatedDescription -Policy "$TestOutputRoot\SampleKeyVaultDataPolicyDefinition.json" -Metadata $metadata
+    $actual = Set-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -DisplayName testDisplay -Description $updatedDescription -Policy "$TestOutputRoot\SampleDataCatalogDataPolicyDefinition.json" -Metadata $metadata
     $expected = Get-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName
     Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
     Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
     Assert-NotNull($actual.Properties.Metadata)
     Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
-    Assert-AreEqual 'Microsoft.KeyVault.Data' $actual.Properties.Mode
-    Assert-AreEqual 'Microsoft.KeyVault.Data' $expected.Properties.Mode
+    Assert-AreEqual 'Microsoft.DataCatalog.Data' $actual.Properties.Mode
+    Assert-AreEqual 'Microsoft.DataCatalog.Data' $expected.Properties.Mode
 
     # update the same policy definition explicitly providing the same mode, get it back and validate
-    $actual = Set-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -DisplayName testDisplay -Mode 'Microsoft.KeyVault.Data' -Description $updatedDescription -Policy "$TestOutputRoot\SampleKeyVaultDataPolicyDefinition.json" -Metadata $metadata
+    $actual = Set-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -DisplayName testDisplay -Mode 'Microsoft.DataCatalog.Data' -Description $updatedDescription -Policy "$TestOutputRoot\SampleDataCatalogDataPolicyDefinition.json" -Metadata $metadata
     $expected = Get-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName
     Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
     Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
     Assert-NotNull($actual.Properties.Metadata)
     Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
-    Assert-AreEqual 'Microsoft.KeyVault.Data' $actual.Properties.Mode
-    Assert-AreEqual 'Microsoft.KeyVault.Data' $expected.Properties.Mode 
+    Assert-AreEqual 'Microsoft.DataCatalog.Data' $actual.Properties.Mode
+    Assert-AreEqual 'Microsoft.DataCatalog.Data' $expected.Properties.Mode 
 
     # clean up
     $remove = Remove-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -Force
@@ -416,6 +418,78 @@ function Test-PolicyAssignmentIdentity
 
 <#
 .SYNOPSIS
+Tests Policy assignment CRUD operations with an enforcement mode property
+#>
+function Test-PolicyAssignmentEnforcementMode
+{
+    # setup
+    $rgname = Get-ResourceGroupName
+    $policyName = Get-ResourceName
+    $location = "westus"
+
+    # make a new resource group and policy definition
+    $rg = New-AzResourceGroup -Name $rgname -Location $location
+    $policy = New-AzPolicyDefinition -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Description $description
+
+    # assign the policy definition to the resource group, get the assignment back and validate
+    $actual = New-AzPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $rg.ResourceId -Description $description -Location $location -EnforcementMode DoNotEnforce
+    $expected = Get-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId
+    Assert-AreEqual $expected.Name $actual.Name
+    Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
+    Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
+    Assert-AreEqual $expected.Properties.PolicyDefinitionId $policy.PolicyDefinitionId
+    Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
+    Assert-AreEqual $expected.Properties.EnforcementMode $actual.Properties.EnforcementMode
+	Assert-AreEqual $expected.Properties.EnforcementMode $enforcementModeDoNotEnforce
+    Assert-AreEqual $location $actual.Location
+    Assert-AreEqual $expected.Location $actual.Location
+
+    # get it back by id and validate
+    $actualById = Get-AzPolicyAssignment -Id $actual.ResourceId    
+    Assert-AreEqual $actual.Properties.EnforcementMode $actualById.Properties.EnforcementMode    
+
+	# update the policy assignment, validate enforcement mode is updated correctly with Default enum value.
+    $setResult = Set-AzPolicyAssignment -Id $actualById.ResourceId -DisplayName "testDisplay" -EnforcementMode Default
+    Assert-AreEqual "testDisplay" $setResult.Properties.DisplayName
+    Assert-AreEqual $enforcementModeDefault $setResult.Properties.EnforcementMode
+
+    # update the policy assignment, validate enforcement mode is updated correctly with 'Default' enum as string value.
+    $setResult = Set-AzPolicyAssignment -Id $actualById.ResourceId -DisplayName "testDisplay" -EnforcementMode $enforcementModeDefault
+    Assert-AreEqual "testDisplay" $setResult.Properties.DisplayName
+    Assert-AreEqual $enforcementModeDefault $setResult.Properties.EnforcementMode	
+
+    # make another policy assignment without an enforcementMode, validate default mode is set
+    $withoutEnforcementMode = New-AzPolicyAssignment -Name test2 -Scope $rg.ResourceId -PolicyDefinition $policy -Description $description
+    Assert-AreEqual $enforcementModeDefault $withoutEnforcementMode.Properties.EnforcementMode
+
+    # set an enforcement mode to the new assignment using the SET cmdlet
+    $setResult = Set-AzPolicyAssignment -Id $withoutEnforcementMode.ResourceId -Location $location -EnforcementMode $enforcementModeDoNotEnforce
+    Assert-AreEqual $enforcementModeDoNotEnforce $setResult.Properties.EnforcementMode
+
+	# set an enforcement mode to the new assignment using the SET cmdlet enum value and validate
+    $setResult = Set-AzPolicyAssignment -Id $withoutEnforcementMode.ResourceId -Location $location -EnforcementMode DoNotEnforce
+    Assert-AreEqual $enforcementModeDoNotEnforce $setResult.Properties.EnforcementMode
+
+    # verify enforcement mode is returned in collection GET
+    $list = Get-AzPolicyAssignment -Scope $rg.ResourceId | ?{ $_.Name -in @('testPA', 'test2') }
+    Assert-AreEqual 2 @($list.Properties.EnforcementMode | Select -Unique).Count    
+
+    # clean up
+    $remove = Remove-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzPolicyAssignment -Name test2 -Scope $rg.ResourceId
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzPolicyDefinition -Name $policyName -Force
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzResourceGroup -Name $rgname -Force
+    Assert-AreEqual True $remove
+}
+
+<#
+.SYNOPSIS
 Tests Policy set definition CRUD operations
 #>
 function Test-PolicySetDefinitionCRUD
@@ -433,6 +507,7 @@ function Test-PolicySetDefinitionCRUD
     Assert-AreEqual $expected.PolicySetDefinitionId $actual.PolicySetDefinitionId
     Assert-NotNull($actual.Properties.PolicyDefinitions)
     Assert-NotNull($actual.Properties.Metadata)
+	Assert-Null($actual.Properties.PolicyDefinitionGroups)
     Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
 
     # update the policy set definition, get it back and validate
@@ -441,6 +516,7 @@ function Test-PolicySetDefinitionCRUD
     Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
     Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
     Assert-NotNull($actual.Properties.Metadata)
+	Assert-Null($actual.Properties.PolicyDefinitionGroups)
     Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
 
     # get it from full listing and validate
@@ -451,6 +527,7 @@ function Test-PolicySetDefinitionCRUD
     Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
     Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
     Assert-NotNull($actual.Properties.Metadata)
+	Assert-Null($actual.Properties.PolicyDefinitionGroups)
     Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
 
     # ensure that only custom set definitions are returned using the custom flag
@@ -458,6 +535,61 @@ function Test-PolicySetDefinitionCRUD
     Assert-True { $list.Count -gt 0 }
     $builtIns = $list | Where-Object { $_.Properties.policyType -ieq 'BuiltIn' }
     Assert-True { $builtIns.Count -eq 0 }
+
+    # clean up
+    $remove = Remove-AzPolicySetDefinition -Name $policySetDefName -Force
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzPolicyDefinition -Name $policyDefName -Force
+    Assert-AreEqual True $remove
+}
+
+<#
+.SYNOPSIS
+Tests Policy set definition CRUD operations on a policy set containing groups
+#>
+function Test-PolicySetDefinitionCRUDWithGroups
+{
+    # setup
+    $policySetDefName = Get-ResourceName
+    $policyDefName = Get-ResourceName
+
+    # make a policy definition and policy set definition that references it, get the policy set definition back and validate
+    $policyDefinition = New-AzPolicyDefinition -Name $policyDefName -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Description $description
+    $policySet = "[{""policyDefinitionId"":""" + $policyDefinition.PolicyDefinitionId + """, 'groupNames': [ 'group2' ] }]"
+    $expected = New-AzPolicySetDefinition -Name $policySetDefName -PolicyDefinition $policySet -Description $description -Metadata $metadata -GroupDefinition "[{ 'name': 'group1' }, { 'name': 'group2' }]"
+    $actual = Get-AzPolicySetDefinition -Name $policySetDefName
+    Assert-AreEqual $expected.Name $actual.Name
+    Assert-AreEqual $expected.PolicySetDefinitionId $actual.PolicySetDefinitionId
+    Assert-NotNull($actual.Properties.PolicyDefinitions)
+	Assert-AreEqual "group2" $actual.Properties.PolicyDefinitions.GroupNames
+    Assert-NotNull($actual.Properties.Metadata)
+	Assert-AreEqual 2 @($expected.Properties.PolicyDefinitionGroups).Count
+	Assert-AreEqual 2 @($actual.Properties.PolicyDefinitionGroups).Count
+    Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
+
+    # update the policy set definition, get it back and validate
+    $expected = Set-AzPolicySetDefinition -Name $policySetDefName -DisplayName testDisplay -Description $updatedDescription -GroupDefinition "[{ 'name': 'group2' }]"
+    $actual = Get-AzPolicySetDefinition -Name $policySetDefName
+    Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
+    Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
+    Assert-NotNull($actual.Properties.Metadata)
+	Assert-AreEqual "group2" $actual.Properties.PolicyDefinitions.GroupNames
+	Assert-AreEqual 1 @($expected.Properties.PolicyDefinitionGroups).Count
+	Assert-AreEqual 1 @($actual.Properties.PolicyDefinitionGroups).Count
+    Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
+
+    # get it from full listing and validate
+    $actual = Get-AzPolicySetDefinition | ?{ $_.Name -eq $policySetDefName }
+    Assert-AreEqual $expected.Name $actual.Name
+    Assert-AreEqual $expected.PolicySetDefinitionId $actual.PolicySetDefinitionId
+    Assert-NotNull($actual.Properties.PolicyDefinitions)
+    Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
+    Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
+    Assert-NotNull($actual.Properties.Metadata)
+	Assert-AreEqual "group2" $actual.Properties.PolicyDefinitions.GroupNames
+	Assert-AreEqual 1 @($actual.Properties.PolicyDefinitionGroups).Count
+    Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
 
     # clean up
     $remove = Remove-AzPolicySetDefinition -Name $policySetDefName -Force
@@ -872,24 +1004,18 @@ function Test-GetCmdletFilterParameter
     $custom = Get-AzureRmPolicyDefinition -Custom
     $custom | %{ Assert-AreEqual $_.Properties.PolicyType "Custom" }
 
-    $all = Get-AzureRmPolicyDefinition
-    Assert-AreEqual ($builtins.Count + $custom.Count) $all.Count
-
     # policy set definitions
     $builtins = Get-AzureRmPolicySetDefinition -Builtin
     $builtins | %{ Assert-AreEqual $_.Properties.PolicyType "Builtin" }
 
     $custom = Get-AzureRmPolicySetDefinition -Custom
     $custom | %{ Assert-AreEqual $_.Properties.PolicyType "Custom" }
-
-    $all = Get-AzureRmPolicySetDefinition
-    Assert-AreEqual ($builtins.Count + $custom.Count) $all.Count
 }
 
 function Test-GetBuiltinsByName
 {
     # policy definitions
-    $builtins = Get-AzureRmPolicyDefinition -Builtin
+    $builtins = Get-AzureRmPolicyDefinition -Builtin | Select-Object -First 50
     foreach ($builtin in $builtins)
     {
         $definition = Get-AzureRmPolicyDefinition -Name $builtin.Name
@@ -897,7 +1023,7 @@ function Test-GetBuiltinsByName
     }
 
     # policy set definitions
-    $builtins = Get-AzureRmPolicySetDefinition -Builtin
+    $builtins = Get-AzureRmPolicySetDefinition -Builtin | Select-Object -First 50
     foreach ($builtin in $builtins)
     {
         $setDefinition = Get-AzureRmPolicySetDefinition -Name $builtin.Name

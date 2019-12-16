@@ -54,7 +54,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        [CmdletParameterBreakingChange(nameof(DiskSizeGB), ChangeDescription = "'DiskSizeInBytes' instead of 'DiskSizeGB' is going to be used when CreateOption is 'Upload'.")]
         public int DiskSizeGB { get; set; }
 
         [Parameter(
@@ -135,6 +134,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public KeyVaultAndKeyReference KeyEncryptionKey { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string DiskEncryptionSetId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("EncryptionAtRestWithPlatformKey", "EncryptionAtRestWithCustomerKey")]
+        public string EncryptionType { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("Disk", "New"))
@@ -153,6 +163,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // EncryptionSettingsCollection
             EncryptionSettingsCollection vEncryptionSettingsCollection = null;
+
+            // Encryption
+            Encryption vEncryption = null;
 
             if (this.IsParameterBound(c => c.SkuName))
             {
@@ -266,6 +279,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vEncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey = this.KeyEncryptionKey;
             }
 
+            if (this.IsParameterBound(c => c.DiskEncryptionSetId))
+            {
+                if (vEncryption == null)
+                {
+                    vEncryption = new Encryption();
+                }
+                vEncryption.DiskEncryptionSetId = this.DiskEncryptionSetId;
+            }
+
+            if (this.IsParameterBound(c => c.EncryptionType))
+            {
+                if (vEncryption == null)
+                {
+                    vEncryption = new Encryption();
+                }
+                vEncryption.Type = this.EncryptionType;
+            }
+
             var vDisk = new PSDisk
             {
                 Zones = this.IsParameterBound(c => c.Zone) ? this.Zone : null,
@@ -279,17 +310,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Sku = vSku,
                 CreationData = vCreationData,
                 EncryptionSettingsCollection = vEncryptionSettingsCollection,
+                Encryption = vEncryption,
             };
-
-            // this is to hide the breaking change for upload
-            if ("upload".Equals(vDisk.CreationData?.CreateOption?.ToLowerInvariant()) && vDisk.CreationData?.UploadSizeBytes == null)
-            {
-                if (vDisk.DiskSizeGB != null)
-                {
-                    vDisk.CreationData.UploadSizeBytes = (long) vDisk.DiskSizeGB * 1073741824 + 512; // multiplying 1GB and then add the size of footer (512 bytes)
-                    vDisk.DiskSizeGB = null;
-                }
-            }
 
             WriteObject(vDisk);
         }

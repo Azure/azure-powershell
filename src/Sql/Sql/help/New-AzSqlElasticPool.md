@@ -80,9 +80,8 @@ DatabaseCapacityMax : 2
 Family              : Gen5
 MaxSizeBytes        : 34359738368
 StorageMB           : 32768
-Tags                : 
+Tags                :
 ```
-
 
 This command creates an elastic pool in the GengeralPurpose service tier named ElasticPool01. The server
 named server01, assigned to an Azure resource group named ResourceGroup01, hosts the elastic pool

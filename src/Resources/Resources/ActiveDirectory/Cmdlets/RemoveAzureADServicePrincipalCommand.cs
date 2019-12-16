@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         result = ActiveDirectoryClient.FilterServicePrincipals(options);
                     }
 
-                    if (result == null)
+                    if (result == null || !result.Any())
                     {
                         throw new ArgumentException(string.Format("Could not find a service principal with the name {0}.", ServicePrincipalName));
                     }
