@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         [Parameter(
             Position = 1,
-            Mandatory = true, 
+            Mandatory = false, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             HelpMessage = "The name of the rollout.")]
         [ValidateNotNullOrEmpty]
@@ -85,10 +85,18 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 this.Name = parsedResourceId.ResourceName;
             }
 
-            var rollout = this.DeploymentManagerClient.GetRollout(this.ResourceGroupName, this.Name, this.RetryAttempt);
+            if (!string.IsNullOrWhiteSpace(this.Name))
+            {
+                var rollout = this.DeploymentManagerClient.GetRollout(this.ResourceGroupName, this.Name, this.RetryAttempt);
 
-            this.PrintRollout(rollout);
-            this.WriteObject(rollout);
+                this.PrintRollout(rollout);
+                this.WriteObject(rollout);
+            }
+            else
+            {
+                var rollouts = this.DeploymentManagerClient.ListRollouts(this.ResourceGroupName);
+                this.WriteObject(rollouts, enumerateCollection: true);
+            }
         }
     }
 }

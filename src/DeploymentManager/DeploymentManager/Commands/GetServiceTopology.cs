@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         [Parameter(
             Position = 1,
-            Mandatory = true, 
+            Mandatory = false, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             HelpMessage = "The name of the service topology.")]
         [ValidateNotNullOrEmpty]
@@ -77,14 +77,22 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 this.Name = parsedResourceId.ResourceName;
             }
 
-            var psServiceTopologyResource = new PSServiceTopologyResource()
+            if (!string.IsNullOrWhiteSpace(this.Name))
             {
-                ResourceGroupName = this.ResourceGroupName,
-                Name = this.Name
-            };
+                var psServiceTopologyResource = new PSServiceTopologyResource()
+                {
+                    ResourceGroupName = this.ResourceGroupName,
+                    Name = this.Name
+                };
 
-            psServiceTopologyResource = this.DeploymentManagerClient.GetServiceTopology(psServiceTopologyResource);
-            this.WriteObject(psServiceTopologyResource);
+                psServiceTopologyResource = this.DeploymentManagerClient.GetServiceTopology(psServiceTopologyResource);
+                this.WriteObject(psServiceTopologyResource);
+            }
+            else
+            {
+                var psServiceTopologyResources = this.DeploymentManagerClient.ListServiceTopologies(this.ResourceGroupName);
+                this.WriteObject(psServiceTopologyResources, enumerateCollection: true);
+            }
         }
     }
 }
