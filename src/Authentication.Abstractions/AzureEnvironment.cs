@@ -20,6 +20,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models;
 using Newtonsoft.Json;
 
@@ -33,7 +34,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     public class AzureEnvironment : IAzureEnvironment
     {
         private const string ArmMetadataEnvVariable = "ARM_CLOUD_METADATA_URL";
-        private static readonly HttpClient Client = new HttpClient();
 
         static IDictionary<string, AzureEnvironment> InitializeBuiltInEnvironments()
         {
@@ -169,7 +169,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// </summary>
         private static async Task<IDictionary<string, AzureEnvironment>> InitializeEnvironmentsFromArm(string armMetadataRequestUri)
         {
-            var armResponseMessage = await Client.GetAsync(armMetadataRequestUri);
+            AzureSessionInitializer.InitializeAzureSession();
+            if (!AzureSession.Instance.TryGetComponent(HttpClientOperationsFactory.Name, out IHttpOperationsFactory factory))
+            {
+                factory = HttpClientOperationsFactory.Create();
+            }
+
+            var armResponseMessage = await factory.GetHttpOperations().GetAsync(armMetadataRequestUri);
             if (armResponseMessage?.StatusCode != HttpStatusCode.OK)
             {
                 throw new Exception("Failed to load cloud metadata from the url specified by ARM_CLOUD_METADATA_URL.");
