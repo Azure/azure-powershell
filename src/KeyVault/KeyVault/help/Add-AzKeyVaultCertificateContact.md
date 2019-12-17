@@ -1,7 +1,6 @@
 ﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
+external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-ms.assetid: 2D3021B3-12C5-4797-8BF2-800E3CEAC56C
 online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/add-azkeyvaultcertificatecontact
 schema: 2.0.0
 ---
@@ -13,21 +12,8 @@ Adds a contact for certificate notifications.
 
 ## SYNTAX
 
-### Interactive (Default)
 ```
-Add-AzKeyVaultCertificateContact [-VaultName] <String> [-EmailAddress] <String[]> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByObject
-```
-Add-AzKeyVaultCertificateContact [-InputObject] <PSKeyVault> [-EmailAddress] <String[]> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByResourceId
-```
-Add-AzKeyVaultCertificateContact [-ResourceId] <String> [-EmailAddress] <String[]> [-PassThru]
+Add-AzKeyVaultCertificateContact [-VaultName] <String> [-EmailAddress] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -39,15 +25,11 @@ These events are determined by the certificate policy.
 ## EXAMPLES
 
 ### Example 1: Add a key vault certificate contact
-```powershell
-PS C:\> Add-AzKeyVaultCertificateContact -VaultName "ContosoKV01" -EmailAddress "patti.fuller@contoso.com" -PassThru
-
-Email                    VaultName
------                    ---------
-patti.fuller@contoso.com ContosoKV01
+```
+PS C:\>Add-AzKeyVaultCertificateContact -VaultName "ContosoKV01" -EmailAddress "patti.fuller@contoso.com" -PassThru
 ```
 
-This command adds Patti Fuller as a certificate contact for the ContosoKV01 key vault and returns the list of contacts for the "ContosoKV01" vault.
+This command adds Patti Fuller as a certificate contact for the ContosoKV01 key vault and returns the **KeyVaultCertificateContact** object.
 
 ## PARAMETERS
 
@@ -55,9 +37,9 @@ This command adds Patti Fuller as a certificate contact for the ContosoKV01 key 
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -70,29 +52,14 @@ Accept wildcard characters: False
 Specifies the email address of the contact.
 
 ```yaml
-Type: System.String[]
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-KeyVault object.
-
-```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
-Parameter Sets: ByObject
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -101,9 +68,9 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -112,13 +79,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-KeyVault Resource Id.
+### -VaultName
+Specifies the name of the key vault.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
+Type: String
+Parameter Sets: (All)
+Aliases: 
 
 Required: True
 Position: 0
@@ -127,26 +94,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VaultName
-Specifies the name of the key vault.
-
-```yaml
-Type: System.String
-Parameter Sets: Interactive
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -162,7 +114,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -178,13 +130,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
-
-### System.String
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact
+### List<Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact>
 
 ## NOTES
 

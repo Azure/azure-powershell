@@ -15,22 +15,17 @@
 using Microsoft.Azure.Commands.KeyVault.Models;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey",SupportsShouldProcess = true,DefaultParameterSetName = ByVaultNameParameterSet)]
-    [OutputType(typeof(PSDeletedKeyVaultKey))]
+    [Cmdlet(VerbsCommon.Remove, "AzureKeyVaultKey",
+        SupportsShouldProcess = true,
+         ConfirmImpact = ConfirmImpact.High,
+        HelpUri = Constants.KeyVaultHelpUri)]
+    [OutputType(typeof(DeletedKeyBundle))]
     public class RemoveAzureKeyVaultKey : KeyVaultCmdletBase
     {
-        #region Parameter Set Names
-
-        private const string ByVaultNameParameterSet = "ByVaultName";
-        private const string ByInputObjectParameterSet = "ByInputObject";
-
-        #endregion
-
         #region Input Parameter Definitions
 
         /// <summary>
@@ -38,9 +33,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
-            ParameterSetName = ByVaultNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
-        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
@@ -49,22 +43,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 1,
-            ParameterSetName = ByVaultNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.KeyName)]
         public string Name { get; set; }
-
-        /// <summary>
-        /// KeyBundle object
-        /// </summary>
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ValueFromPipeline = true,
-            ParameterSetName = ByInputObjectParameterSet,
-            HelpMessage = "Key Object")]
-        [ValidateNotNullOrEmpty]
-        public PSKeyVaultKeyIdentityItem InputObject { get; set; }
 
         /// <summary>
         /// If present, do not ask for confirmation
@@ -87,39 +70,33 @@ namespace Microsoft.Azure.Commands.KeyVault
         #endregion
         public override void ExecuteCmdlet()
         {
-            if (InputObject != null)
-            {
-                VaultName = InputObject.VaultName.ToString();
-                Name = InputObject.Name.ToString();
-            }
-
-            if (InRemovedState.IsPresent)
+            if(InRemovedState.IsPresent)
             {
                 ConfirmAction(
                     Force.IsPresent,
                     string.Format(
                         CultureInfo.InvariantCulture,
-                        Resources.RemoveDeletedKeyWarning,
+                        KeyVaultProperties.Resources.RemoveDeletedKeyWarning,
                         Name),
                     string.Format(
                         CultureInfo.InvariantCulture,
-                        Resources.RemoveDeletedKeyWhatIfMessage,
+                        KeyVaultProperties.Resources.RemoveDeletedKeyWhatIfMessage,
                         Name),
                     Name,
                     () => { DataServiceClient.PurgeKey(VaultName, Name); });
                 return;
             }
 
-            PSDeletedKeyVaultKey deletedKeyBundle = null;
+            DeletedKeyBundle deletedKeyBundle = null;
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(
                     CultureInfo.InvariantCulture,
-                    Resources.RemoveKeyWarning,
+                    KeyVaultProperties.Resources.RemoveKeyWarning,
                     Name),
                 string.Format(
                     CultureInfo.InvariantCulture,
-                    Resources.RemoveKeyWhatIfMessage,
+                    KeyVaultProperties.Resources.RemoveKeyWhatIfMessage,
                     Name),
                 Name,
                 () => { deletedKeyBundle = DataServiceClient.DeleteKey(VaultName, Name); });

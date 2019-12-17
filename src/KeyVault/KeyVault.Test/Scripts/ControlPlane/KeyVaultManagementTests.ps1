@@ -89,66 +89,135 @@ Tests creating a new vault.
 #>
 function Test-CreateNewVault
 {
-	$rgName = getAssetName
-	$unknownRGName = getAssetName
-	$vault1Name = getAssetName
-	$vault2Name = getAssetName
-	$vault3Name = getAssetName
-	$vault4Name = getAssetName
-	$vault5Name = getAssetName
-	$rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-	$vaultLocation = Get-Location "Microsoft.KeyVault" "vault" "West US"
-	$tagKey = "asdf"
-	$tagValue = "qwerty"
-	New-AzResourceGroup -Name $rgName -Location $rgLocation
+Param($rgName, $location, $tagName, $tagValue)
 
-	try
-	{
-		$actual = New-AzKeyVault -VaultName $vault1Name -ResourceGroupName $rgName -Location $vaultLocation -Tag @{$tagKey = $tagValue}
-		Assert-AreEqual $vault1Name $actual.VaultName
-		Assert-AreEqual $rgName $actual.ResourceGroupName
-		Assert-AreEqual $vaultLocation $actual.Location
-		Assert-AreEqual $actual.Tags.Count 1
-		Assert-AreEqual $actual.Tags.ContainsKey($tagKey) $true
-		Assert-AreEqual $actual.Tags.ContainsValue($tagValue) $true
-		Assert-AreEqual "Standard" $actual.Sku
-		Assert-AreEqual $false $actual.EnabledForDeployment
-		# Default Access Policy is not set by Service Principal
-		Assert-AreEqual 0 @($actual.AccessPolicies).Count
+    # Setup
+    $vaultname = Get-VaultName
 
-		# Test premium vault
-		$actual = New-AzKeyVault -VaultName $vault2Name -ResourceGroupName $rgName -Location $vaultLocation -Sku premium -EnabledForDeployment
-		Assert-AreEqual $vault2Name $actual.VaultName
-		Assert-AreEqual $rgName $actual.ResourceGroupName
-		Assert-AreEqual $vaultLocation $actual.Location
-		Assert-AreEqual "Premium" $actual.Sku
-		Assert-AreEqual $true $actual.EnabledForDeployment
-		Assert-AreEqual 0 @($actual.AccessPolicies).Count
+    # Test
+    $actual = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Tag @{$tagName = $tagValue}
 
-		# Test soft delete
-		$actual = New-AzKeyVault -VaultName $vault3Name -ResourceGroupName $rgName -Location $vaultLocation -Sku standard -EnableSoftDelete
-		Assert-AreEqual $vault3Name $actual.VaultName
-		Assert-AreEqual $rgName $actual.ResourceGroupName
-		Assert-AreEqual $vaultLocation $actual.Location
-		Assert-AreEqual "Standard" $actual.Sku
-		Assert-AreEqual $true $actual.EnableSoftDelete
-		Assert-AreEqual 0 @($actual.AccessPolicies).Count
+    # Assert
+    Assert-AreEqual $vaultName $actual.VaultName
+    Assert-AreEqual $rgname $actual.ResourceGroupName
+    Assert-AreEqual $location $actual.Location
+    Assert-AreEqual $actual.Tags.Count 1
+    Assert-AreEqual $actual.Tags.ContainsKey($tagName) $true
+    Assert-AreEqual $actual.Tags.ContainsValue($tagValue) $true
+    Assert-AreEqual "Standard" $actual.Sku
+    Assert-AreEqual $false $actual.EnabledForDeployment
 
-		# Test positional parameters
-		$actual = New-AzKeyVault $vault4Name $rgName $vaultLocation
-		Assert-NotNull $actual
+    # Default Access Policy
+    $objectId = $global:objectId
+    $expectedPermsToKeys = @("get",
+            "create",
+            "delete",
+            "list",
+            "update",
+            "import",
+            "backup",
+            "restore",
+            "recover")
+    $expectedPermsToSecrets = Get-AllSecretPermissions
+    $expectedPermsToCertificates = Get-AllCertPermissions
+    $expectedPermsToStorage = Get-AllStoragePermissions
 
-		# Test throws for existing vault
-		Assert-Throws { New-AzKeyVault -VaultName $vault1Name -ResourceGroupName $rgname -Location $vaultLocation }
+    Assert-AreEqual 1 @($actual.AccessPolicies).Count
+    Assert-AreEqual $objectId $actual.AccessPolicies[0].ObjectId
+    $result = Compare-Object $expectedPermsToKeys $actual.AccessPolicies[0].PermissionsToKeys
+    Assert-Null $result
+    $result = Compare-Object $expectedPermsToSecrets $actual.AccessPolicies[0].PermissionsToSecrets
+    Assert-Null $result
+    $result = Compare-Object $expectedPermsToCertificates $actual.AccessPolicies[0].PermissionsToCertificates
+    Assert-Null $result
+    $result = Compare-Object $expectedPermsToStorage $actual.AccessPolicies[0].PermissionsToStorage
+    Assert-Null $result
+}
 
-		# Test throws for resourcegroup nonexistent
-		Assert-Throws { New-AzKeyVault -VaultName $vault5Name -ResourceGroupName $unknownRGName -Location $vaultLocation }
-	}
+<#
+.SYNOPSIS
+Tests creating a new premium vault with enabledForDeployment set to true.
+#>
+function Test-CreateNewPremiumVaultEnabledForDeployment
+{
+    Param($rgName, $location)
 
-	finally
-	{
-		Remove-AzResourceGroup -Name $rgName -Force
-	}
+    # Setup
+    $vaultname = Get-VaultName
+
+    # Test
+    $actual = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Sku premium -EnabledForDeployment
+
+    # Assert
+    Assert-AreEqual $vaultName $actual.VaultName
+    Assert-AreEqual $rgname $actual.ResourceGroupName
+    Assert-AreEqual $location $actual.Location
+    Assert-AreEqual "Premium" $actual.Sku
+    Assert-AreEqual $true $actual.EnabledForDeployment
+
+    if ($global:noADCmdLetMode) {return;}
+
+    Assert-AreEqual 1 @($actual.AccessPolicies).Count
+}
+
+<#
+.SYNOPSIS
+Tests creating a new premium vault with enableSoftDelete set to true.
+#>
+function Test-CreateNewStandardVaultEnableSoftDelete
+{
+    Param($rgName, $location)
+
+    # Setup
+    $vaultname = Get-VaultName
+
+    # Test
+    $actual = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Sku standard -EnableSoftDelete
+
+    # Assert
+    Assert-AreEqual $vaultName $actual.VaultName
+    Assert-AreEqual $rgname $actual.ResourceGroupName
+    Assert-AreEqual $location $actual.Location
+    Assert-AreEqual "Standard" $actual.Sku
+    Assert-AreEqual $true $actual.EnableSoftDelete
+
+    if ($global:noADCmdLetMode) {return;}
+
+    Assert-AreEqual 1 @($actual.AccessPolicies).Count
+}
+
+<#
+.SYNOPSIS
+Recreate vault fails
+#>
+function Test-RecreateVaultFails
+{
+    Param($existingVaultName, $rgName, $location)
+
+     Assert-Throws { New-AzKeyVault -VaultName $existingVaultName -ResourceGroupName $rgname -Location $location }
+}
+
+function Test-CreateVaultInUnknownResGrpFails
+{
+    Param($location)
+
+    $vaultname = Get-VaultName
+    $rgName = Get-ResourceGroupName
+
+    Assert-Throws { New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $location }
+}
+
+function Test-CreateVaultPositionalParams
+{
+    Param($rgName, $location)
+
+    # Setup
+    $vaultname = Get-VaultName
+
+    # Test
+    $actual = New-AzKeyVault $vaultName $rgname $location
+
+    Assert-NotNull $actual
 }
 
 #-------------------------------------------------------------------------------------
@@ -239,141 +308,91 @@ function Test-PurgeDeletedVault
 
 #------------------------------Get-AzKeyVault--------------------------------------
 
-function Test-GetVault
+function Test-GetVaultByNameAndResourceGroup
 {
-	$rgName = getAssetName
-	$vaultName = getAssetName
-	$rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-	$vaultLocation = Get-Location "Microsoft.KeyVault" "vault" "West US"
-	New-AzResourceGroup -Name $rgName -Location $rgLocation
+    Param($existingVaultName, $rgName)
 
-	try
-	{
-		New-AzKeyVault -Name $vaultName -ResourceGroupName $rgName -Location $vaultLocation
-		$got = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName
+    $got = Get-AzKeyVault -VaultName $existingVaultName -ResourceGroupName $rgName
 
-		Assert-NotNull $got
-		Assert-AreEqual $got.Location $vaultLocation
-		Assert-AreEqual $got.ResourceGroupName $rgName
-		Assert-AreEqual $got.VaultName $vaultName
-
-		$got = Get-AzKeyVault -VaultName $vaultName
-
-		Assert-NotNull $got
-		Assert-AreEqual $got.Location $vaultLocation
-		Assert-AreEqual $got.ResourceGroupName $rgName
-		Assert-AreEqual $got.VaultName $vaultName
-
-		$got = Get-AzKeyVault -VaultName $vaultName.toUpper()
-
-		Assert-NotNull $got
-		Assert-AreEqual $got.Location $vaultLocation
-		Assert-AreEqual $got.ResourceGroupName $rgName
-		Assert-AreEqual $got.VaultName $vaultName
-
-		$unknownVault = getAssetName
-		$unknownRG = getAssetName
-
-		$unknown = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $unknownRG
-		Assert-Null $unknown
-
-		$unknown = Get-AzKeyVault -VaultName $unknownVault -ResourceGroupName $rgName
-		Assert-Null $unknown
-	}
-
-	finally
-	{
-		Remove-AzResourceGroup -Name $rgName -Force
-	}
+    Assert-NotNull $got
 }
 
-function Test-ListVaults
+function Test-GetVaultByNameAndResourceGroupPositionalParams
 {
-	$rgName = getAssetName
-	$vault1Name = getAssetName
-	$vault2Name = getAssetName
-	$rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-	$vaultLocation = Get-Location "Microsoft.KeyVault" "vault" "West US"
-	$tag = @{"abcdefg"="bcdefgh"}
+    Param($existingVaultName, $rgName)
 
-	New-AzResourceGroup -Name $rgName -Location $rgLocation
-	
-	try
-	{
-		New-AzKeyVault -Name $vault1Name -ResourceGroupName $rgName -Location $vaultLocation
-		New-AzKeyVault -Name $vault2Name -ResourceGroupName $rgName -Location $vaultLocation -Tag $tag
+    $got = Get-AzKeyVault $existingVaultName $rgName
 
-		$list = Get-AzKeyVault
-		Assert-NotNull $list
-		Assert-True { $list.Count -gt 1 }
-		foreach($v in $list)
-		{
-			Assert-NotNull $v.VaultName
-			Assert-NotNull $v.ResourceGroupName
-		}
+    Assert-NotNull $got
+}
 
-		$list = Get-AzKeyVault -ResourceGroupName $rgName
-		Assert-NotNull $list
-		Assert-True { $list.Count -eq 2 }
-		foreach($v in $list)
-		{
-			Assert-NotNull $v.VaultName
-			Assert-AreEqual $rgName $v.ResourceGroupName
-			Assert-AreEqual (Normalize-Location $vaultLocation) (Normalize-Location $v.Location)
-		}
+function Test-GetVaultByName
+{
+    Param($existingVaultName)
 
-		$list = Get-AzKeyVault -ResourceGroupName $rgName -VaultName *
-		Assert-NotNull $list
-		Assert-True { $list.Count -eq 2 }
-		foreach($v in $list)
-		{
-			Assert-NotNull $v.VaultName
-			Assert-AreEqual $rgName $v.ResourceGroupName
-			Assert-AreEqual (Normalize-Location $vaultLocation) (Normalize-Location $v.Location)
-		}
+    $got = Get-AzKeyVault -VaultName $existingVaultName
 
-		$list = Get-AzKeyVault -ResourceGroupName * -VaultName *
-		Assert-NotNull $list
-		Assert-True { $list.Count -gt 1 }
-		foreach($v in $list)
-		{
-			Assert-NotNull $v.VaultName
-			Assert-NotNull $v.ResourceGroupName
-		}
+    Assert-NotNull $got
+}
 
-		$list = Get-AzKeyVault -ResourceGroupName * -VaultName $vault1Name
-		Assert-NotNull $list
-		Assert-True { $list.Count -eq 1 }
-		foreach($v in $list)
-		{
-			Assert-NotNull $v.VaultName
-			Assert-AreEqual $rgName $v.ResourceGroupName
-			Assert-AreEqual (Normalize-Location $vaultLocation) (Normalize-Location $v.Location)
-		}
+function Test-GetUnknownVaultFails
+{
+    Param($rgName)
+    $vaultname = Get-VaultName
 
-		$list = Get-AzKeyVault -VaultName *
-		Assert-NotNull $list
-		Assert-True { $list.Count -gt 1 }
-		foreach($v in $list)
-		{
-			Assert-NotNull $v.VaultName
-			Assert-NotNull $v.ResourceGroupName
-		}
+    $unknown = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName
+    Assert-Null $unknown
+}
 
-		$list = Get-AzKeyVault -Tag $tag
-		Assert-NotNull $list
-		Assert-True { $list.Count -eq 1 }
-		Assert-AreEqual $list[0].Tags.Keys[0] $tag.Keys[0]
-		Assert-AreEqual $list.Tags[$list[0].Tags.Keys[0]] $tag[$tag.Keys[0]]
+function Test-GetVaultFromUnknownResourceGroupFails
+{
+    Param($existingVaultName)
+    $rgName = Get-ResourceGroupName
 
-		$unknownRg = getAssetName
-		Assert-Throws { Get-AzKeyVault -ResourceGroupName $unknownRg }
-	}
-    
-	finally
-	{
-		Remove-AzResourceGroup -Name $rgName -Force
-	}
+    $unknown = Get-AzKeyVault -VaultName $existingVaultName -ResourceGroupName $rgName
+    Assert-Null $unknown
+}
+
+function Test-ListVaultsByResourceGroup
+{
+    Param($rgName)
+    $list = Get-AzKeyVault -ResourceGroupName $rgName
+
+    Assert-NotNull $list
+    Assert-True { $list.Count -gt 0 }
+    foreach($v in $list) {
+        Assert-NotNull($v.VaultName)
+        Assert-NotNull($v.ResourceGroupName)
+        Assert-AreEqual $rgName $v.ResourceGroupName
+    }
+}
+
+function Test-ListAllVaultsInSubscription
+{
+    $list = Get-AzKeyVault
+
+    Assert-NotNull $list
+    Assert-True { $list.Count -gt 0 }
+    foreach($v in $list) {
+        Assert-NotNull $v.VaultName
+        Assert-NotNull $v.ResourceGroupName
+    }
+}
+
+function Test-ListVaultsByTag
+{
+    Param($tagName, $tagValue)
+    $list = Get-AzKeyVault -Tag  @{ $tagName = $tagValue }
+
+    Assert-NotNull $list
+    Assert-True { $list.Count -gt 0 }
+}
+
+function Test-ListVaultsByUnknownResourceGroupFails
+{
+    $rgName = Get-ResourceGroupName
+
+    Assert-Throws { Get-AzKeyVault -ResourceGroupName $rgName }
 }
 
 #-------------------------------------------------------------------------------------
@@ -381,42 +400,24 @@ function Test-ListVaults
 #------------------------------Remove-AzKeyVault-----------------------------------
 function Test-DeleteVaultByName
 {
-	$rgName = getAssetName
-	$vaultName = getAssetName
-	$rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
-	$vaultLocation = Get-Location "Microsoft.KeyVault" "vault" "West US"
-	$tag = @{"abcdefg"="bcdefgh"}
+    Param($rgName, $location)
+    $vaultName = Get-VaultName
 
-	New-AzResourceGroup -Name $rgName -Location $rgLocation
+    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location
 
-	try
-	{
-		New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $vaultLocation
+    Remove-AzKeyVault -VaultName $vaultName -Force -Confirm:$false
 
-		Remove-AzKeyVault -VaultName $vaultName -Force
+    $deletedVault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName
+    Assert-Null $deletedVault
+}
 
-		$deletedVault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName
-		Assert-Null $deletedVault
+function Test-DeleteUnknownVaultFails
+{
+    $vaultName = Get-VaultName
+	$job = Remove-AzKeyVault -VaultName $vaultName -AsJob
+	$job | Wait-Job
 
-		# Test piping
-		New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $vaultLocation
-		
-		Get-AzKeyVault -VaultName $vaultName | Remove-AzKeyVault -Force
-
-		$deletedVault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName
-		Assert-Null $deletedVault
-
-		# Test negative case
-		$job = Remove-AzKeyVault -VaultName $vaultName -AsJob
-		$job | Wait-Job
-
-		Assert-Throws { $job | Receive-Job }
-	}
-	
-	finally
-	{
-		Remove-AzResourceGroup -Name $rgName -Force
-	}
+    Assert-Throws { $job | Receive-Job }
 }
 
 #-------------------------------------------------------------------------------------
@@ -747,6 +748,22 @@ function Test-RemoveNonExistentAccessPolicyDoesNotThrow
 
 #-------------------------------------------------------------------------------------
 
+
+#------------------------------Piping--------------------------
+
+function Test-CreateDeleteVaultWithPiping
+{
+    Param($rgName, $location)
+    $vaultName = Get-VaultName
+
+    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location | Get-AzKeyVault | Remove-AzKeyVault -Force -Confirm:$false
+
+    $deletedVault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName
+    Assert-Null $deletedVault
+}
+
+#-------------------------------------------------------------------------------------
+
 function Test-AllPermissionExpansion
 {
     Param($existingVaultName, $rgName, $upn)
@@ -791,49 +808,4 @@ function Compare-Vaults
         CheckVaultAccessPolicy $vault1 $vault2.AccessPolicies[0].PermissionsToKeys $vault2.AccessPolicies[0].PermissionsToSecrets $vault2.AccessPolicies[0].PermissionsToCertificates $vault2.AccessPolicies[0].PermissionsToStorage
         Assert-AreEqual $vault1.AccessPolicies[0].ObjectId $vault2.AccessPolicies[0].ObjectId
     }
-}
-
-function Test-NetworkRuleSet
-{
-	$resourceGroupName = getAssetName
-	$resourceGroupLocation = Get-Location "Microsoft.Resources" "resourceGroups" "westus"
-	$vaultName = getAssetName
-	$vaultLocation = Get-Location "Microsoft.KeyVault" "vaults" "westus"
-	$virtualNetworkName = getAssetName
-	$virtualNetworkLocation = Get-Location "Microsoft.Network" "virtualNetworks" "westus"
-
-	try
-	{
-		$rg = New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation
-		$vault = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $vaultLocation
-
-		$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" -ServiceEndpoint Microsoft.KeyVault 
-		$virtualNetwork = New-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName -Location $virtualNetworkLocation -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
-
-		$myNetworkResId = (Get-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName).Subnets[0].Id
-		Add-AzKeyVaultNetworkRule -VaultName $vaultName -IpAddressRange "10.0.1.0/24" -VirtualNetworkResourceId $myNetworkResId
-		$vault = Get-AzKeyVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		Assert-AreEqual $vault.NetworkAcls.IpAddressRanges.Count 1
-		Assert-AreEqual $vault.NetworkAcls.IpAddressRanges[0] "10.0.1.0/24"
-		Assert-AreEqual $vault.NetworkAcls.VirtualNetworkResourceIds.Count 1
-		Assert-AreEqual $vault.NetworkAcls.VirtualNetworkResourceIds[0] $myNetworkResId
-		Assert-AreEqual $vault.NetworkAcls.Bypass.toString() "AzureServices"
-		Assert-AreEqual $vault.NetworkAcls.DefaultAction.toString() "Allow"
-
-		$networkRule = Update-AzKeyVaultNetworkRuleSet -VaultName $vaultName -ResourceGroupName $resourceGroupName -Bypass None -DefaultAction Deny -PassThru
-		Assert-AreEqual $networkRule.NetworkAcls.Bypass.toString() "None"
-		Assert-AreEqual $networkRule.NetworkAcls.DefaultAction.toString() "Deny"
-		$vault = Get-AzKeyVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		Assert-AreEqual $vault.NetworkAcls.Bypass.toString() "None"
-		Assert-AreEqual $vault.NetworkAcls.DefaultAction.toString() "Deny"
-
-		Remove-AzKeyVaultNetworkRule -VaultName $vaultName -ResourceGroupName $resourceGroupName -IpAddressRange "10.0.1.0/24" -VirtualNetworkResourceId $myNetworkResId
-		$vault = Get-AzKeyVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		Assert-AreEqual $vault.NetworkAcls.IpAddressRanges.Count 0
-		Assert-AreEqual $vault.NetworkAcls.VirtualNetworkResourceIds.Count 0
-	}
-	finally
-	{
-		Remove-AzResourceGroup -Name $resourceGroupName -Force
-	}
 }

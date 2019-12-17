@@ -7,7 +7,7 @@ function Get-CertificateSubjectName([string]$certificateName)
 
 function Get-X509FromSecretBySubjectDistinguishedName([string]$keyVault, [string]$secretName, [string]$subjectDistinguishedName)
 {
-    $secret = Get-AzKeyVaultSecret $keyVault $secretName
+    $secret = Get-AzureKeyVaultSecret $keyVault $secretName
     $secretValueBytes = [System.Convert]::FromBase64String($secret.SecretValueText)
     $x509FromSecretCollection = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2Collection
     $x509FromSecretCollection.Import($secretValueBytes)
@@ -29,7 +29,7 @@ function CreateAKVCertificate(
 {
     $pfxPath = Get-FilePathFromCommonData 'importpfx01.pfx'
     $securePfxPassword = ConvertTo-SecureString $pfxPassword -AsPlainText -Force
-    $createdCert = Import-AzKeyVaultCertificate $keyVault $certificateName -FilePath $pfxPath -Password $securePfxPassword
+    $createdCert = Import-AzureKeyVaultCertificate $keyVault $certificateName -FilePath $pfxPath -Password $securePfxPassword
     $global:createdCertificates += $certificateName
 
     return $createdCert
@@ -55,7 +55,7 @@ function Test_ImportPfxAsCertificate
     Assert-True { $x509FromSecret.HasPrivateKey }
 
     # Verify the key
-    $key = Get-AzKeyVaultKey $keyVault $cert.Name
+    $key = Get-AzureKeyVaultKey $keyVault $cert.Name
     Assert-NotNull $key
 }
 
@@ -70,7 +70,7 @@ function Test_ImportPfxAsCertificateNonSecurePassword
     $certificateName = Get-CertificateName 'importpfxascertificatenonsecurepassword'
     $pfxPath = Get-FilePathFromCommonData 'importpfx01.pfx'
 
-    Assert-Throws { $cert = Import-AzKeyVaultCertificate $keyVault $certificateName -FilePath $pfxPath -Password $pfxPassword }
+    Assert-Throws { $cert = Import-AzureKeyVaultCertificate $keyVault $certificateName -FilePath $pfxPath -Password $pfxPassword }
 }
 
 <#
@@ -84,7 +84,7 @@ function Test_ImportPfxAsCertificateWithoutPassword
     $certificateName = Get-CertificateName 'importpfxascertificatewithoutpassword'
     $pfxPath = Get-FilePathFromCommonData 'importpfx01.pfx'
 
-    Assert-Throws { $cert = Import-AzKeyVaultCertificate $keyVault $certificateName -FilePath $pfxPath }
+    Assert-Throws { $cert = Import-AzureKeyVaultCertificate $keyVault $certificateName -FilePath $pfxPath }
 }
 
 <#
@@ -104,7 +104,7 @@ function Test_ImportX509Certificate2CollectionAsCertificate
     $certCollection = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2Collection
     $certCollection.Import($pfxBytes, "1234", [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
 
-    $cert = Import-AzKeyVaultCertificate $keyVault $certificateName -CertificateCollection $certCollection
+    $cert = Import-AzureKeyVaultCertificate $keyVault $certificateName -CertificateCollection $certCollection
     Assert-NotNull $cert
 
     # Verify the secret
@@ -114,7 +114,7 @@ function Test_ImportX509Certificate2CollectionAsCertificate
     Assert-True { $x509FromSecret.HasPrivateKey }
 
     # Verify the key
-    $key = Get-AzKeyVaultKey $keyVault $cert.Name
+    $key = Get-AzureKeyVaultKey $keyVault $cert.Name
     Assert-NotNull $key
 }
 
@@ -135,7 +135,7 @@ function Test_ImportX509Certificate2CollectionNotExportableAsCertificate
     $certCollection = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2Collection
     $certCollection.Import($pfxBytes, "1234", [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::DefaultKeySet)
 
-    Assert-Throws { $cert = Import-AzKeyVaultCertificate $keyVault $certificateName -CertificateCollection $certCollection }
+    Assert-Throws { $cert = Import-AzureKeyVaultCertificate $keyVault $certificateName -CertificateCollection $certCollection }
 }
 
 <#
@@ -152,7 +152,7 @@ function Test_ImportBase64EncodedStringAsCertificate
 
     $pfxPassword = "1234"
     $securePfxPassword = ConvertTo-SecureString $pfxPassword -AsPlainText -Force
-    $cert = Import-AzKeyVaultCertificate $keyVault $certificateName -CertificateString $pfxBase64 -Password $securePfxPassword
+    $cert = Import-AzureKeyVaultCertificate $keyVault $certificateName -CertificateString $pfxBase64 -Password $securePfxPassword
     Assert-NotNull $cert
 
     # Verify the secret
@@ -162,7 +162,7 @@ function Test_ImportBase64EncodedStringAsCertificate
     Assert-True { $x509FromSecret.HasPrivateKey }
 
     # Verify the key
-    $key = Get-AzKeyVaultKey $keyVault $cert.Name
+    $key = Get-AzureKeyVaultKey $keyVault $cert.Name
     Assert-NotNull $key
 }
 
@@ -176,10 +176,9 @@ function Test_ImportBase64EncodedStringWithoutPasswordAsCertificate
     $keyVault = Get-KeyVault
     $certificateName = Get-CertificateName 'importbase64encodedstringwithoutpasswordascertificate'
 
-    <#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Generating certificate for testing purpose")]#>
     $pfxBase64 = "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"
 
-    $cert = Import-AzKeyVaultCertificate $keyVault $certificateName -CertificateString $pfxBase64
+    $cert = Import-AzureKeyVaultCertificate $keyVault $certificateName -CertificateString $pfxBase64
     Assert-NotNull $cert
 
     # Verify the secret
@@ -189,7 +188,7 @@ function Test_ImportBase64EncodedStringWithoutPasswordAsCertificate
     Assert-True { $x509FromSecret.HasPrivateKey }
 
     # Verify the key
-    $key = Get-AzKeyVaultKey $keyVault $cert.Name
+    $key = Get-AzureKeyVaultKey $keyVault $cert.Name
     Assert-NotNull $key
 }
 
@@ -206,7 +205,7 @@ function Test_MergeCerWithNonExistantKeyPair
     $cert = CreateAKVCertificate $keyVault $certificateName
 
     $cerPath = Get-FilePathFromCommonData 'mergecer01.cer'
-    Assert-Throws { $cert = Import-AzKeyVaultCertificate $keyVault $certificateName -FilePath $cerPath }
+    Assert-Throws { $cert = Import-AzureKeyVaultCertificate $keyVault $certificateName -FilePath $cerPath }
 }
 
 <#
@@ -218,15 +217,15 @@ function Test_MergeCerWithMismatchKeyPair
 {
     $keyVault = Get-KeyVault
     $certificateName = Get-CertificateName 'mergecerwithmismatchkeypair'
-    $policy = New-AzKeyVaultCertificatePolicy -DnsNames "test1.keyvault.com", "test2.keyvault.com" -IssuerName "Unknown"
+    $policy = New-AzureKeyVaultCertificatePolicy -DnsNames "test1.keyvault.com", "test2.keyvault.com" -IssuerName "Unknown"
 
-    $certRequest = Add-AzKeyVaultCertificate $keyVault $certificateName $policy
+    $certRequest = Add-AzureKeyVaultCertificate $keyVault $certificateName $policy
     Assert-NotNull $certRequest
     Assert-NotNull $certRequest.CertificateSigningRequest
     $global:createdCertificates += $certificateName
 
     $cerPath = Get-FilePathFromCommonData 'mergecer01.cer'
-    Assert-Throws { $cert = Import-AzKeyVaultCertificate $keyVault $certificateName -FilePath $cerPath }
+    Assert-Throws { $cert = Import-AzureKeyVaultCertificate $keyVault $certificateName -FilePath $cerPath }
 }
 
 
@@ -242,7 +241,7 @@ function Test_GetCertificate
 
     $createdCert = CreateAKVCertificate $keyVault $certificateName
 
-    $retrievedCert = Get-AzKeyVaultCertificate $keyVault $certificateName
+    $retrievedCert = Get-AzureKeyVaultCertificate $keyVault $certificateName
     Assert-NotNull $retrievedCert
     Assert-True { Equal-String $createdCert.Name  $retrievedCert.Name }
 }
@@ -256,7 +255,7 @@ function Test_GetCertificateNonExistant
 {
     $keyVault = Get-KeyVault
     $certificateName = Get-CertificateName 'getcertificatenonexistant'
-    $cert = Get-AzKeyVaultCertificate $keyVault $certificateName
+    $cert = Get-AzureKeyVaultCertificate $keyVault $certificateName
     Assert-Null $cert
 }
 
@@ -269,7 +268,7 @@ Get a certificate in a syntactically bad vault name
 function Test_GetCertificateInABadVault
 {
     $certificateName = Get-CertificateName 'getcertificatenonexistant'
-    Assert-Throws { Get-AzKeyVaultCertificate '$vaultName' $certificateName }
+    Assert-Throws { Get-AzureKeyVaultCertificate '$vaultName' $certificateName }
 }
 
 <#
@@ -289,7 +288,7 @@ function Test_ListCertificates
     $createdCert02 = CreateAKVCertificate $keyVault $certificateName02
     Assert-NotNull $createdCert02
 
-    $certificates = Get-AzKeyVaultCertificate $keyVault
+    $certificates = Get-AzureKeyVaultCertificate $keyVault
     Assert-NotNull $certificates
 
     Assert-True { $certificates.Count -ge 2 }
@@ -312,23 +311,23 @@ function Test_AddAndGetCertificateContacts
     $keyVault = Get-KeyVault
     $originalContacts = @('admin1@contoso.com', 'admin2@contoso.com' )
 
-    $retrievedContacts = Get-AzKeyVaultCertificateContact $keyVault
+    $retrievedContacts = Get-AzureKeyVaultCertificateContact $keyVault
     Assert-True { $retrievedContacts.Count -eq 0 }
 
-    $setContacts = Add-AzKeyVaultCertificateContact $keyVault $originalContacts[0] -PassThru
+    $setContacts = Add-AzureKeyVaultCertificateContact $keyVault $originalContacts[0] -PassThru
     Assert-True { $setContacts.Count -eq 1 }
 
-    $setContacts =  Add-AzKeyVaultCertificateContact $keyVault $originalContacts[1] -PassThru
+    $setContacts =  Add-AzureKeyVaultCertificateContact $keyVault $originalContacts[1] -PassThru
     Assert-True { Equal-OperationList $originalContacts $setContacts.Email }
 
-    $retrievedContacts =  Get-AzKeyVaultCertificateContact $keyVault
+    $retrievedContacts =  Get-AzureKeyVaultCertificateContact $keyVault
     Assert-True { Equal-OperationList $originalContacts $retrievedContacts.Email }
 
-    Remove-AzKeyVaultCertificateContact $keyVault $originalContacts[1]
-    $remainingContacts = Remove-AzKeyVaultCertificateContact $keyVault $originalContacts[0] -PassThru
+    Remove-AzureKeyVaultCertificateContact $keyVault $originalContacts[1]
+    $remainingContacts = Remove-AzureKeyVaultCertificateContact $keyVault $originalContacts[0] -PassThru
     Assert-True { $remainingContacts.Count -eq 0 }
 
-    Assert-Throws { Remove-AzKeyVaultCertificateContact $keyVault $originalContacts[0] }
+    Assert-Throws { Remove-AzureKeyVaultCertificateContact $keyVault $originalContacts[0] }
 }
 
 <#
@@ -341,7 +340,7 @@ function Test_GetNonExistingCertificatePolicy
     $keyVault = Get-KeyVault
     $certificateName = Get-CertificateName 'getcertificatenonexistant'
 
-    $policy = Get-AzKeyVaultCertificatePolicy $keyVault $certificateName
+    $policy = Get-AzureKeyVaultCertificatePolicy $keyVault $certificateName
 
     Assert-Null $policy
 }
@@ -353,21 +352,21 @@ Create an in-memory certificate policy
 
 function Test_NewCertificatePolicy
 {
-    $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -IssuerName Self
+    $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -IssuerName Self
     Assert-NotNull $policy
-    $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -DnsNames "testCertificate.com","testCertificate2.com" -IssuerName Self
+    $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -DnsNames "testCertificate.com","testCertificate2.com" -IssuerName Self
     Assert-NotNull $policy
-    $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -IssuerName Self
+    $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -IssuerName Self
     Assert-NotNull $policy
-    Assert-Throws { $policy = New-AzKeyVaultCertificatePolicy -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self }
-    $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self
+    Assert-Throws { $policy = New-AzureKeyVaultCertificatePolicy -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self }
+    $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self
     Assert-NotNull $policy
-    $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self -EmailAtNumberOfDaysBeforeExpiry 15
+    $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self -EmailAtNumberOfDaysBeforeExpiry 15
     Assert-NotNull $policy
 
     $customEkus = @("1.0", "2.0")
     $customKeyUsage = @("DecipherOnly", "KeyCertSign")
-    $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus $customEkus -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self -KeyUsage $customKeyUsage
+    $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus $customEkus -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self -KeyUsage $customKeyUsage
     Assert-NotNull $policy
     Assert-NotNull $policy.KeyUsage
     Assert-True { Equal-OperationList $policy.KeyUsage $customKeyUsage }
@@ -387,8 +386,8 @@ function Test_SetCertificatePolicy
 
     $createdCert = CreateAKVCertificate $keyVault $certificateName
 
-    $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self
-    $policySet = Set-AzKeyVaultCertificatePolicy $keyVault $certificateName $policy -PassThru
+    $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self
+    $policySet = Set-AzureKeyVaultCertificatePolicy $keyVault $certificateName $policy -PassThru
     Assert-NotNull $policySet
 }
 
@@ -399,13 +398,13 @@ Various organization details/admin details settings
 
 function Test_NewOrganizationDetails
 {
-    $admin1Details = New-AzKeyVaultCertificateAdministratorDetails -EmailAddress "admin1@contoso.com"
+    $admin1Details = New-AzureKeyVaultCertificateAdministratorDetails -EmailAddress "admin1@contoso.com"
     Assert-NotNull $admin1Details
 
-    $admin2Details = New-AzKeyVaultCertificateAdministratorDetails -EmailAddress "admin2@contoso.com" -FirstName "admin" -LastName "2"
+    $admin2Details = New-AzureKeyVaultCertificateAdministratorDetails -EmailAddress "admin2@contoso.com" -FirstName "admin" -LastName "2"
     Assert-NotNull $admin2Details
 
-    $orgDetails = New-AzKeyVaultCertificateOrganizationDetails -Id "MSFT" -AdministratorDetails $admin1Details, $admin2Details
+    $orgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Id "MSFT" -AdministratorDetails $admin1Details, $admin2Details
     Assert-NotNull $orgDetails
 }
 
@@ -420,12 +419,12 @@ function Test_CreateSSLAdminIssuer
     $issuerName = "SSLAdminIssuer"
     $issuerProvider = "SSLAdmin"
 
-    $admin1Details = New-AzKeyVaultCertificateAdministratorDetails -EmailAddress "admin1@contoso.com"
-    $admin2Details = New-AzKeyVaultCertificateAdministratorDetails -EmailAddress "admin2@contoso.com" -FirstName "admin" -LastName "2"
-    $admin3Details = New-AzKeyVaultCertificateAdministratorDetails -EmailAddress "admin3@contoso.com" -FirstName "admin" -LastName "3" -PhoneNumber "425-555-5555"
-    $orgDetails = New-AzKeyVaultCertificateOrganizationDetails -AdministratorDetails $admin1Details, $admin2Details, $admin3Details
+    $admin1Details = New-AzureKeyVaultCertificateAdministratorDetails -EmailAddress "admin1@contoso.com"
+    $admin2Details = New-AzureKeyVaultCertificateAdministratorDetails -EmailAddress "admin2@contoso.com" -FirstName "admin" -LastName "2"
+    $admin3Details = New-AzureKeyVaultCertificateAdministratorDetails -EmailAddress "admin3@contoso.com" -FirstName "admin" -LastName "3" -PhoneNumber "425-555-5555"
+    $orgDetails = New-AzureKeyVaultCertificateOrganizationDetails -AdministratorDetails $admin1Details, $admin2Details, $admin3Details
 
-    $issuer1 = Set-AzKeyVaultCertificateIssuer $keyVault $issuerName -IssuerProvider $issuerProvider -OrganizationDetails $orgDetails -PassThru
+    $issuer1 = Set-AzureKeyVaultCertificateIssuer $keyVault $issuerName -IssuerProvider $issuerProvider -OrganizationDetails $orgDetails -PassThru
     Assert-NotNull $issuer1
     Assert-AreEqual $issuer1.Name $issuerName
     Assert-AreEqual $issuer1.IssuerProvider $issuerProvider
@@ -434,7 +433,7 @@ function Test_CreateSSLAdminIssuer
     Assert-Null $issuer1.AccountName
 
     # cleanup
-    Remove-AzKeyVaultCertificateIssuer $keyVault $issuerName
+    Remove-AzureKeyVaultCertificateIssuer $keyVault $issuerName
 }
 
 <#
@@ -448,31 +447,31 @@ function Test_CreateAndGetTestIssuer
     $issuer01Name = "getissuer01"
     $nonExistingIssuerName = "non-existingissuer"
 
-    $adminDetails = New-AzKeyVaultCertificateAdministratorDetails -EmailAddress "admin@contoso.com" -FirstName "admin" -LastName "admin" -PhoneNumber "425-555-5555"
-    $orgDetails = New-AzKeyVaultCertificateOrganizationDetails -Id "MSFT" -AdministratorDetails $adminDetails
+    $adminDetails = New-AzureKeyVaultCertificateAdministratorDetails -EmailAddress "admin@contoso.com" -FirstName "admin" -LastName "admin" -PhoneNumber "425-555-5555"
+    $orgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Id "MSFT" -AdministratorDetails $adminDetails
 
-    $issuerAdded = Set-AzKeyVaultCertificateIssuer $keyVault $issuer01Name -IssuerProvider "Test" -OrganizationDetails $orgDetails -PassThru
-    $issuerGotten = Get-AzKeyVaultCertificateIssuer $keyVault $issuer01Name
+    $issuerAdded = Set-AzureKeyVaultCertificateIssuer $keyVault $issuer01Name -IssuerProvider "Test" -OrganizationDetails $orgDetails -PassThru
+    $issuerGotten = Get-AzureKeyVaultCertificateIssuer $keyVault $issuer01Name
     Assert-AreEqual $issuerAdded.Name $issuerGotten.Name
 
-    $noneexisting = Get-AzKeyVaultCertificateIssuer $keyVault $nonExistingIssuerName
+    $noneexisting = Get-AzureKeyVaultCertificateIssuer $keyVault $nonExistingIssuerName
 	Assert-Null $noneexisting
 
-    $issuers = Get-AzKeyVaultCertificateIssuer $keyVault
+    $issuers = Get-AzureKeyVaultCertificateIssuer $keyVault
     Assert-True { $issuers.Count -ge 1 }
 
     $issuer01 = $issuers | where { Equal-String $_.Name $issuer01Name } | Select -First 1
     Assert-NotNull $issuer01
 
-    $issuerGotten = Remove-AzKeyVaultCertificateIssuer $keyVault $issuer01Name -Force -PassThru
+    $issuerGotten = Remove-AzureKeyVaultCertificateIssuer $keyVault $issuer01Name -Force -PassThru
     Assert-NotNull $issuerGotten
 
-    Assert-Throws { Remove-AzKeyVaultCertificateIssuer $keyVault $issuer01Name -Force }
+    Assert-Throws { Remove-AzureKeyVaultCertificateIssuer $keyVault $issuer01Name -Force }
 }
 
 <#
 .SYNOPSIS
-Tests Add-AzKeyVaultCertificate and AzureKeyVaultCertificateOperation cmdlets
+Tests Add-AzureKeyVaultCertificate and AzureKeyVaultCertificateOperation cmdlets
 #>
 
 function Test_Add_AzureKeyVaultCertificate
@@ -480,10 +479,10 @@ function Test_Add_AzureKeyVaultCertificate
     $keyVault = Get-KeyVault
     $certificateName = Get-CertificateName 'certWithEnrollment'
 
-    $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -IssuerName Self
+    $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -IssuerName Self
 
     # returns is in progress during initial enrollment
-    $certificateOperation = Add-AzKeyVaultCertificate $keyVault $certificateName $policy
+    $certificateOperation = Add-AzureKeyVaultCertificate $keyVault $certificateName $policy
     $global:createdCertificates += $certificateName
     Assert-NotNull $certificateOperation
 
@@ -496,7 +495,7 @@ function Test_Add_AzureKeyVaultCertificate
         Assert-Null $certificateOperation.ErrorCode
         Assert-Null $certificateOperation.ErrorMessage
         Start-Sleep -s 10
-        $certificateOperation = Get-AzKeyVaultCertificateOperation $keyVault $certificateName
+        $certificateOperation = Get-AzureKeyVaultCertificateOperation $keyVault $certificateName
         $pollCount++
     }
 
@@ -509,18 +508,18 @@ function Test_Add_AzureKeyVaultCertificate
     Assert-Null $certificateOperation.ErrorMessage
 
     # check the certificate itself
-    $certificate = Get-AzKeyVaultCertificate $keyVault $certificateName
+    $certificate = Get-AzureKeyVaultCertificate $keyVault $certificateName
     Assert-NotNull $certificate
     Assert-NotNull $certificate.Certificate
 
     # remove the operation now
-    $certificateOperation = Remove-AzKeyVaultCertificateOperation $keyVault $certificateName -Force -PassThru
+    $certificateOperation = Remove-AzureKeyVaultCertificateOperation $keyVault $certificateName -Force -PassThru
     Assert-NotNull $certificateOperation
 
     # it does not exist anymore
-    $certop = Get-AzKeyVaultCertificateOperation $keyVault $certificateName
+    $certop = Get-AzureKeyVaultCertificateOperation $keyVault $certificateName
     Assert-Null $certop
-    Assert-Throws { Remove-AzKeyVaultCertificateOperation $keyVault $certificateName -Force }
+    Assert-Throws { Remove-AzureKeyVaultCertificateOperation $keyVault $certificateName -Force }
 }
 
 <#
@@ -539,10 +538,10 @@ function Test_CertificateTags
 
     $pfxPath = Get-FilePathFromCommonData 'importpfx01.pfx'
     $securePfxPassword = ConvertTo-SecureString $pfxPassword -AsPlainText -Force
-    $createdCert = Import-AzKeyVaultCertificate $keyVault $certificateName -FilePath $pfxPath -Password $securePfxPassword -Tag $tags
+    $createdCert = Import-AzureKeyVaultCertificate $keyVault $certificateName -FilePath $pfxPath -Password $securePfxPassword -Tag $tags
     $global:createdCertificates += $certificateName
 
-    $retrievedCertificate = Get-AzKeyVaultCertificate $keyVault $certificateName
+    $retrievedCertificate = Get-AzureKeyVaultCertificate $keyVault $certificateName
     Assert-NotNull $retrievedCertificate
     Assert-NotNull $retrievedCertificate.Tags
     Assert-AreEqual $retrievedCertificate.Tags.Count 2
@@ -568,10 +567,10 @@ function Test_UpdateCertificateTags
 
     $pfxPath = Get-FilePathFromCommonData 'importpfx01.pfx'
     $securePfxPassword = ConvertTo-SecureString $pfxPassword -AsPlainText -Force
-    $createdCert = Import-AzKeyVaultCertificate $keyVault $certificateName -FilePath $pfxPath -Password $securePfxPassword -Tag $tags
+    $createdCert = Import-AzureKeyVaultCertificate $keyVault $certificateName -FilePath $pfxPath -Password $securePfxPassword -Tag $tags
     $global:createdCertificates += $certificateName
 
-    $retrievedCertificate = Get-AzKeyVaultCertificate $keyVault $certificateName
+    $retrievedCertificate = Get-AzureKeyVaultCertificate $keyVault $certificateName
     Assert-NotNull $retrievedCertificate
     Assert-NotNull $retrievedCertificate.Tags
     Assert-AreEqual $retrievedCertificate.Tags.Count 2
@@ -582,8 +581,8 @@ function Test_UpdateCertificateTags
 
     # Remove tags
     $tags = @{}
-    Set-AzKeyVaultCertificateAttribute $keyVault $certificateName -Tag $tags
-    $retrievedCertificate = Get-AzKeyVaultCertificate $keyVault $certificateName
+    Set-AzureKeyVaultCertificateAttribute $keyVault $certificateName -Tag $tags
+    $retrievedCertificate = Get-AzureKeyVaultCertificate $keyVault $certificateName
     Assert-NotNull $retrievedCertificate
     Assert-NotNull $retrievedCertificate.Tags
     Assert-AreEqual $retrievedCertificate.Tags.Count 0
@@ -592,8 +591,8 @@ function Test_UpdateCertificateTags
     $tags = @{}
     $tags.Add("Org", "Azure")
     $tags.Add("Team", "KeyVault")
-    Set-AzKeyVaultCertificateAttribute $keyVault $certificateName -Tag $tags
-    $retrievedCertificate = Get-AzKeyVaultCertificate $keyVault $certificateName
+    Set-AzureKeyVaultCertificateAttribute $keyVault $certificateName -Tag $tags
+    $retrievedCertificate = Get-AzureKeyVaultCertificate $keyVault $certificateName
     Assert-NotNull $retrievedCertificate
     Assert-NotNull $retrievedCertificate.Tags
     Assert-AreEqual $retrievedCertificate.Tags.Count 2
@@ -606,8 +605,8 @@ function Test_UpdateCertificateTags
     $tags = @{}
     $tags.Add("State", "Washington")
     $tags.Add("City", "Redmond")
-    Set-AzKeyVaultCertificateAttribute $keyVault $certificateName -Tag $tags
-    $retrievedCertificate = Get-AzKeyVaultCertificate $keyVault $certificateName
+    Set-AzureKeyVaultCertificateAttribute $keyVault $certificateName -Tag $tags
+    $retrievedCertificate = Get-AzureKeyVaultCertificate $keyVault $certificateName
     Assert-NotNull $retrievedCertificate
     Assert-NotNull $retrievedCertificate.Tags
     Assert-AreEqual $retrievedCertificate.Tags.Count 2
@@ -633,11 +632,11 @@ function Test_GetDeletedCertificate
 
     $global:createdCertificates += $certificateName
 
-    $createdCertificate | Remove-AzKeyVaultCertificate -Force -Confirm:$false
+    $createdCertificate | Remove-AzureKeyVaultCertificate -Force -Confirm:$false
 
     Wait-ForDeletedCertificate $keyVault $certificateName
 
-    $deletedCertificate = Get-AzKeyVaultCertificate -VaultName $keyVault.VaultName -Name $certificateName -InRemovedState
+    $deletedCertificate = Get-AzureKeyVaultCertificate -VaultName $keyVault.VaultName -Name $certificateName -InRemovedState
     Assert-NotNull $deletedCertificate
     Assert-NotNull $deletedCertificate.DeletedDate
     Assert-NotNull $deletedCertificate.ScheduledPurgeDate
@@ -657,11 +656,11 @@ function Test_GetDeletedCertificates
 
     $global:createdCertificates += $certificateName
 
-    $createdCertificate | Remove-AzKeyVaultCertificate -Force -Confirm:$false
+    $createdCertificate | Remove-AzureKeyVaultCertificate -Force -Confirm:$false
 
     Wait-ForDeletedCertificate $keyVault $certificateName
 
-    $deletedCerts = Get-AzKeyVaultCertificate -VaultName $keyVault.VaultName -InRemovedState
+    $deletedCerts = Get-AzureKeyVaultCertificate -VaultName $keyVault.VaultName -InRemovedState
     Assert-True {$deletedCerts.Count -ge 1}
     Assert-True {$deletedCerts.Name -contains $key.Name}
 }
@@ -680,11 +679,11 @@ function Test_UndoRemoveCertificate
 
     $global:createdCertificates += $certificateName
 
-    $createdCertificate | Remove-AzKeyVaultCertificate -Force -Confirm:$false
+    $createdCertificate | Remove-AzureKeyVaultCertificate -Force -Confirm:$false
 
     Wait-ForDeletedCertificate $keyVault $certificateName
 
-    $recoveredCert = Undo-AzKeyVaultCertificateRemoval -VaultName $keyVault.VaultName -Name $certificateName
+    $recoveredCert = Undo-AzureKeyVaultCertificateRemoval -VaultName $keyVault.VaultName -Name $certificateName
 
     Assert-NotNull $recoveredCert
     Assert-AreEqual $recoveredCert.Name $createdCert.Name
@@ -706,11 +705,11 @@ function Test_RemoveDeletedCertificate
 
     $global:createdCertificates += $certificateName
 
-    $createdCertificate | Remove-AzKeyVaultCertificate -Force -Confirm:$false
+    $createdCertificate | Remove-AzureKeyVaultCertificate -Force -Confirm:$false
 
     Wait-ForDeletedCertificate $keyVault $certificateName
 
-    Remove-AzKeyVaultCertificate -VaultName $keyVault.VaultName -Name $certificateName -InRemovedState -Force -Confirm:$false
+    Remove-AzureKeyVaultCertificate -VaultName $keyVault.VaultName -Name $certificateName -InRemovedState -Force -Confirm:$false
 }
 
 <#
@@ -727,7 +726,7 @@ function Test_RemoveNonExistDeletedCertificate
 
     $global:createdCertificates += $certName
 
-    Assert-Throws {Remove-AzKeyVaultCertificate -VaultName $keyVault.VaultName -Name $certName -InRemovedState -Force -Confirm:$false}
+    Assert-Throws {Remove-AzureKeyVaultCertificate -VaultName $keyVault.VaultName -Name $certName -InRemovedState -Force -Confirm:$false}
 }
 
 <#
@@ -747,10 +746,10 @@ function Test_PipelineRemoveDeletedCertificates
     $createdCert2 = CreateAKVCertificate $keyVault $certName
     Assert-NotNull $createdCert2
 
-    Get-AzKeyVaultCertificate $keyVault |  Where-Object {$_.CertificateName -like $rootCertName + '*'}  | Remove-AzKeyVaultCertificate -Force -Confirm:$false
+    Get-AzureKeyVaultCertificate $keyVault |  Where-Object {$_.CertificateName -like $rootCertName + '*'}  | Remove-AzureKeyVaultCertificate -Force -Confirm:$false
     Wait-Seconds 30
-    Get-AzKeyVaultCertificate $keyVault -InRemovedState |  Where-Object {$_.CertificateName -like $rootCertName + '*'}  | Remove-AzKeyVaultCertificate -Force -Confirm:$false -InRemovedState
+    Get-AzureKeyVaultCertificate $keyVault -InRemovedState |  Where-Object {$_.CertificateName -like $rootCertName + '*'}  | Remove-AzureKeyVaultCertificate -Force -Confirm:$false -InRemovedState
 
-    $certs = Get-AzKeyVaultCertificate $keyVault -InRemovedState |  Where-Object {$_.CertificateName -like $rootCertName + '*'} 
+    $certs = Get-AzureKeyVaultCertificate $keyVault -InRemovedState |  Where-Object {$_.CertificateName -like $rootCertName + '*'} 
     Assert-AreEqual $keys.Count 0
 }

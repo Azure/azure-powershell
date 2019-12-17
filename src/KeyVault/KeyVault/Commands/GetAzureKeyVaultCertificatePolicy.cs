@@ -13,23 +13,23 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.KeyVault.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {
     /// <summary>
-    /// Get-AzKeyVaultCertificatePolicy gets the policy for a certificate object in key vault.
+    /// Get-AzureKeyVaultCertificatePolicy gets the policy for a certificate object in key vault.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificatePolicy",        DefaultParameterSetName = ByVaultAndCertNameParameterSet)]
-    [OutputType(typeof(PSKeyVaultCertificatePolicy))]
+    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificatePolicy,        
+        DefaultParameterSetName = ByVaultAndCertNameParameterSet,
+        HelpUri = Constants.KeyVaultHelpUri)]
+    [OutputType(typeof(KeyVaultCertificatePolicy))]
     public class GetAzureKeyVaultCertificatePolicy : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
         private const string ByVaultAndCertNameParameterSet = "VaultAndCertName";
-        private const string ByInputObjectParameterSet = "InputObject";
 
         #endregion
 
@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         [Parameter(Mandatory = true,
                    ParameterSetName = ByVaultAndCertNameParameterSet,
                    Position = 0,
+                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
-        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
@@ -52,33 +52,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         [Parameter(Mandatory = true,
                    ParameterSetName = ByVaultAndCertNameParameterSet,
                    Position = 1,
+                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate policy from vault name, currently selected environment and certificate name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.CertificateName)]
         public string Name { get; set; }
-
-
-        /// <summary>
-        /// Certificate Object
-        /// </summary>
-        [Parameter(Mandatory = true,
-                   ParameterSetName = ByInputObjectParameterSet,
-                   Position = 0,
-                   ValueFromPipeline = true,
-                   HelpMessage = "Certificate Object.")]
-        [ValidateNotNullOrEmpty]
-        public PSKeyVaultCertificateIdentityItem InputObject { get; set; }
         #endregion
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            PSKeyVaultCertificatePolicy certificatePolicy;
-
-            if (InputObject != null)
-            {
-                VaultName = InputObject.VaultName.ToString();
-                Name = InputObject.Name.ToString();
-            }
+            CertificatePolicy certificatePolicy;
 
             try
             {
@@ -96,7 +79,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
 
             if (certificatePolicy != null)
             {
-                this.WriteObject(certificatePolicy);
+                this.WriteObject(KeyVaultCertificatePolicy.FromCertificatePolicy(certificatePolicy));
             }
         }
     }

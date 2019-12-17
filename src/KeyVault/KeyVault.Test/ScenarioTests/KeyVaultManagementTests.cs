@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             }
         }
 
-        #region New-AzureRmKeyVault        
+        #region New-AzKeyVault        
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #endregion
 
-        #region Get-AzureRmKeyVault
+        #region Get-AzKeyVault
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #endregion
 
-        #region Get-AzureRmKeyVault (list)
+        #region Get-AzKeyVault (list)
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #endregion
 
-        #region Remove-AzureRmKeyVault 
+        #region Remove-AzKeyVault 
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #endregion
 
-        #region Set-AzureRmKeyVaultAccessPolicy & Remove-AzureRmKeyVaultAccessPolicy
+        #region Set-AzKeyVaultAccessPolicy & Remove-AzKeyVaultAccessPolicy
 
         [Fact(Skip = "Graph authentication blocks test passes")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

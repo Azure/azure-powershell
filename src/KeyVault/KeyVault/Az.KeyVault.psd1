@@ -76,28 +76,34 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Add-AzKeyVaultCertificate', 'Update-AzKeyVaultCertificate', 
+CmdletsToExport = 'Add-AzKeyVaultCertificate', 
+               'Set-AzKeyVaultCertificateAttribute', 
                'Stop-AzKeyVaultCertificateOperation', 
                'Get-AzKeyVaultCertificateOperation', 
-               'Import-AzKeyVaultCertificate', 'Add-AzKeyVaultCertificateContact', 
-               'Get-AzKeyVaultCertificate', 'Get-AzKeyVaultCertificateContact', 
+               'Import-AzKeyVaultCertificate', 
+               'Add-AzKeyVaultCertificateContact', 
+               'Get-AzKeyVaultCertificate', 
+               'Get-AzKeyVaultCertificateContact', 
                'Get-AzKeyVaultCertificateIssuer', 
-               'New-AzKeyVaultCertificatePolicy', 'Remove-AzKeyVaultCertificate', 
+               'New-AzKeyVaultCertificatePolicy', 
+               'Remove-AzKeyVaultCertificate', 
                'Remove-AzKeyVaultCertificateContact', 
                'Remove-AzKeyVaultCertificateIssuer', 
                'Remove-AzKeyVaultCertificateOperation', 
                'Set-AzKeyVaultCertificateIssuer', 
-               'Set-AzKeyVaultCertificatePolicy', 'Get-AzKeyVault', 'New-AzKeyVault', 
-               'Remove-AzKeyVault', 'Undo-AzKeyVaultRemoval', 
-               'Remove-AzKeyVaultAccessPolicy', 'Set-AzKeyVaultAccessPolicy', 
-               'Backup-AzKeyVaultKey', 'Get-AzKeyVaultKey', 'Get-AzKeyVaultSecret', 
+               'Set-AzKeyVaultCertificatePolicy', 'Get-AzKeyVault', 
+               'New-AzKeyVault', 'Remove-AzKeyVault', 
+               'Undo-AzKeyVaultRemoval', 'Remove-AzKeyVaultAccessPolicy', 
+               'Set-AzKeyVaultAccessPolicy', 'Backup-AzKeyVaultKey', 
+               'Get-AzKeyVaultKey', 'Get-AzKeyVaultSecret', 
                'Undo-AzKeyVaultKeyRemoval', 'Undo-AzKeyVaultSecretRemoval', 
                'Add-AzKeyVaultKey', 'Remove-AzKeyVaultKey', 
                'Remove-AzKeyVaultSecret', 'Restore-AzKeyVaultKey', 
-               'Update-AzKeyVaultKey', 'Set-AzKeyVaultSecret', 
-               'Update-AzKeyVaultSecret', 'Get-AzKeyVaultCertificatePolicy', 
-               'New-AzKeyVaultCertificateAdministratorDetail', 
-               'New-AzKeyVaultCertificateOrganizationDetail', 
+               'Set-AzKeyVaultKeyAttribute', 'Set-AzKeyVaultSecret', 
+               'Set-AzKeyVaultSecretAttribute', 
+               'Get-AzKeyVaultCertificatePolicy', 
+               'New-AzKeyVaultCertificateAdministratorDetails', 
+               'New-AzKeyVaultCertificateOrganizationDetails', 
                'Backup-AzKeyVaultSecret', 'Restore-AzKeyVaultSecret', 
                'Get-AzKeyVaultManagedStorageAccount', 
                'Add-AzKeyVaultManagedStorageAccount', 
@@ -107,23 +113,13 @@ CmdletsToExport = 'Add-AzKeyVaultCertificate', 'Update-AzKeyVaultCertificate',
                'Get-AzKeyVaultManagedStorageSasDefinition', 
                'Set-AzKeyVaultManagedStorageSasDefinition', 
                'Remove-AzKeyVaultManagedStorageSasDefinition', 
-               'Undo-AzKeyVaultCertificateRemoval', 'Backup-AzKeyVaultCertificate', 
-               'Restore-AzKeyVaultCertificate', 
-               'Backup-AzKeyVaultManagedStorageAccount', 
-               'Restore-AzKeyVaultManagedStorageAccount', 
-               'Undo-AzKeyVaultManagedStorageSasDefinitionRemoval', 
-               'Undo-AzKeyVaultManagedStorageAccountRemoval', 
-               'Add-AzKeyVaultNetworkRule', 'Update-AzKeyVaultNetworkRuleSet', 
-               'Remove-AzKeyVaultNetworkRule'
+               'Undo-AzKeyVaultCertificateRemoval'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Set-AzKeyVaultKey', 'Set-AzKeyVaultSecretAttribute', 
-               'New-AzKeyVaultCertificateAdministratorDetails', 
-               'Set-AzKeyVaultKeyAttribute', 'Set-AzKeyVaultCertificateAttribute', 
-               'New-AzKeyVaultCertificateOrganizationDetails'
+AliasesToExport = 'Set-AzKeyVaultKey'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

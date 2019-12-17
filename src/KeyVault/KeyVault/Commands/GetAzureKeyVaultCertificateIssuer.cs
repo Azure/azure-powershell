@@ -12,26 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using System.Collections.Generic;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
-    /// The Get-AzKeyVaultCertificate cmdlet gets the certificates in an Azure Key Vault or the current version of the certificate.
+    /// The Get-AzureKeyVaultCertificate cmdlet gets the certificates in an Azure Key Vault or the current version of the certificate.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateIssuer",        DefaultParameterSetName = ByNameParameterSet)]
-    [OutputType(typeof(PSKeyVaultCertificateIssuerIdentityItem), typeof(PSKeyVaultCertificateIssuer))]
+    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificateIssuer,        
+        DefaultParameterSetName = ByVaultNameParameterSet,
+        HelpUri = Constants.KeyVaultHelpUri)]
+    [OutputType(typeof(List<CertificateIssuerIdentityItem>), typeof(KeyVaultCertificateIssuer))]
     public class GetAzureKeyVaultCertificateIssuer : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
         private const string ByNameParameterSet = "ByName";
-        private const string ByInputObjectParameterSet = "ByInputObject";
-        private const string ByResourceIdParameterSet = "ByResourceId";
+        private const string ByVaultNameParameterSet = "ByVaultName";
 
         #endregion
 
@@ -41,76 +42,46 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Vault name
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = ByNameParameterSet,
             Position = 0,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
-        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
         /// <summary>
-        /// Vault object
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ParameterSetName = ByInputObjectParameterSet,
-            Position = 0,
-            ValueFromPipeline = true,
-            HelpMessage = "KeyVault object.")]
-        [ValidateNotNullOrEmpty]
-        public PSKeyVault InputObject { get; set; }
-
-        /// <summary>
-        /// Vault resource id
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ParameterSetName = ByResourceIdParameterSet,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "KeyVault Resource Id.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
-
-        /// <summary>
         /// Name.
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = true,
+            ParameterSetName = ByNameParameterSet,
             Position = 1,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Issuer name. Cmdlet constructs the FQDN of a certificate issuer from vault name, currently selected environment and issuer name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.IssuerName)]
-        [SupportsWildcards]
         public string Name { get; set; }
 
         #endregion
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            if (InputObject != null)
-            {
-                VaultName = InputObject.VaultName.ToString();
-            }
-            else if (!string.IsNullOrEmpty(ResourceId))
-            {
-                var parsedResourceId = new ResourceIdentifier(ResourceId);
-                VaultName = parsedResourceId.ResourceName;
-            }
 
-            if (string.IsNullOrEmpty(Name) || WildcardPattern.ContainsWildcardCharacters(Name))
+            switch (ParameterSetName)
             {
-                GetAndWriteCertificateIssuers(VaultName, Name);
-            }
-            else
-            {
-                var issuer = this.DataServiceClient.GetCertificateIssuer(VaultName, Name);
-                if (issuer != null)
-                {
-                    issuer.VaultName = VaultName;
-                }
-                this.WriteObject(issuer);
+                case ByNameParameterSet:
+                    var issuer = this.DataServiceClient.GetCertificateIssuer(VaultName, Name);
+                    this.WriteObject(KeyVaultCertificateIssuer.FromIssuer(issuer));
+                    break;
+
+                case ByVaultNameParameterSet:
+                    GetAndWriteCertificateIssuers(VaultName);
+                    break;
+
+                default:
+                    throw new ArgumentException(KeyVaultProperties.Resources.BadParameterSetName);
             }
         }
 
-        private void GetAndWriteCertificateIssuers(string vaultName, string name)
+        private void GetAndWriteCertificateIssuers(string vaultName)
         {
             KeyVaultObjectFilterOptions options = new KeyVaultObjectFilterOptions
             {
@@ -121,13 +92,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             do
             {
                 var pageResults = this.DataServiceClient.GetCertificateIssuers(options);
-                var psPageResults = new List<PSKeyVaultCertificateIssuerIdentityItem>();
-                foreach (var page in pageResults)
-                {
-                    page.VaultName = VaultName;
-                    psPageResults.Add(page);
-                }
-                WriteObject(KVSubResourceWildcardFilter(name, psPageResults), true);
+                WriteObject(pageResults, true);
             } while (!string.IsNullOrEmpty(options.NextLink));
         }
     }

@@ -1,7 +1,7 @@
 ﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
+external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/update-azkeyvaultmanagedstorageaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.keyvault/update-AzKeyvaultmanagedstorageaccount
 schema: 2.0.0
 ---
 
@@ -12,16 +12,8 @@ Update editable attributes of a Key Vault managed Azure Storage Account.
 
 ## SYNTAX
 
-### ByDefinitionName (Default)
 ```
-Update-AzKeyVaultManagedStorageAccount [-VaultName] <String> [-AccountName] <String> [-ActiveKeyName <String>]
- [-AutoRegenerateKey <Boolean>] [-RegenerationPeriod <TimeSpan>] [-Enable <Boolean>] [-Tag <Hashtable>]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByInputObject
-```
-Update-AzKeyVaultManagedStorageAccount [-InputObject] <PSKeyVaultManagedStorageAccountIdentityItem>
+Update-AzKeyVaultManagedStorageAccount [-VaultName] <String> [-AccountName] <String>
  [-ActiveKeyName <String>] [-AutoRegenerateKey <Boolean>] [-RegenerationPeriod <TimeSpan>] [-Enable <Boolean>]
  [-Tag <Hashtable>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -32,22 +24,9 @@ Update the editable attributes of a Key Vault managed Azure Storage Account.
 
 ## EXAMPLES
 
-### Example 1: Update the active key to 'key2' on a Key Vault managed Azure Storage Account.
-```powershell
+### Example 1:Update the active key to 'key2' on a Key Vault managed Azure Storage Account.
+```
 PS C:\> Update-AzKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -ActiveKeyName 'key2'
-
-Id                  : https://myvault.vault.azure.net:443/storage/mystorageaccount
-Vault Name          : myvault
-AccountName         : mystorageaccount
-Account Resource Id : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.St
-                      orage/storageAccounts/mystorageaccount
-Active Key Name     : key2
-Auto Regenerate Key : True
-Regeneration Period : 90.00:00:00
-Enabled             : True
-Created             : 5/21/2018 11:55:58 PM
-Updated             : 5/21/2018 11:55:58 PM
-Tags                :
 ```
 
 Updates the Key Vault managed Azure Storage Account active key to 'key2'. 'key2' will be used to
@@ -60,14 +39,14 @@ Key Vault managed storage account name. Cmdlet constructs the FQDN of a managed 
 name from vault name, currently selected environment and manged storage account name.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByDefinitionName
+Type: String
+Parameter Sets: (All)
 Aliases: StorageAccountName, Name
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -76,14 +55,14 @@ Active key name.
 If not specified, the existing value of managed storage account's active key name remains unchanged
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -92,14 +71,14 @@ Auto regenerate key.
 If not specified, the existing value of auto regenerate key of managed storage account remains unchanged
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -107,9 +86,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -125,9 +104,9 @@ not specified, the existing value of the storage account's enabled/disabled stat
 unchanged.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -136,29 +115,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-ManagedStorageAccount object.
-
-```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccountIdentityItem
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PassThru
 Cmdlet does not return object by default. If this switch is specified, return managed storage
 account object.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -174,30 +138,31 @@ not specified, the existing value of regeneration period of keys of managed stor
 unchanged
 
 ```yaml
-Type: System.Nullable`1[System.TimeSpan]
+Type: TimeSpan
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
+
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -206,14 +171,14 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByDefinitionName
-Aliases:
+Type: String
+Parameter Sets: (All)
+Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -221,7 +186,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -237,7 +202,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -253,14 +218,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccountIdentityItem
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccount
+### Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccount
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Az.KeyVault](/powershell/module/az.keyvault)
+[Az.KeyVault](/powershell/module/Az.keyvault)

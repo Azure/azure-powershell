@@ -17,20 +17,19 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultManagedStorageAccount", DefaultParameterSetName = ByAccountNameParameterSet)]
-    [OutputType( typeof(PSKeyVaultManagedStorageAccountIdentityItem), typeof(PSKeyVaultManagedStorageAccount), typeof(PSDeletedKeyVaultManagedStorageAccountIdentityItem), typeof(PSDeletedKeyVaultManagedStorageAccount) )]
+    [Cmdlet( VerbsCommon.Get, CmdletNoun.AzureKeyVaultManagedStorageAccount,
+        DefaultParameterSetName = ByVaultNameParameterSet,
+        HelpUri = Constants.KeyVaultHelpUri )]
+    [OutputType( typeof( List<ManagedStorageAccount> ), typeof( ManagedStorageAccount ) )]
     public class GetAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
+        private const string ByVaultNameParameterSet = "ByVaultName";
         private const string ByAccountNameParameterSet = "ByAccountName";
-        private const string ByInputObjectParameterSet = "ByInputObject";
-        private const string ByResourceIdParameterSet = "ByResourceId";
 
         #endregion
 
@@ -41,88 +40,47 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter( Mandatory = true,
             Position = 0,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ByAccountNameParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
-        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
+        [Parameter( Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ByVaultNameParameterSet,
+            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
-        /// <summary>
-        /// Vault object
-        /// </summary>
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ParameterSetName = ByInputObjectParameterSet,
-            ValueFromPipeline = true,
-            HelpMessage = "Vault object.")]
-        [ValidateNotNullOrEmpty]
-        public PSKeyVault InputObject { get; set; }
-
-        /// <summary>
-        /// Vault ResourceId
-        /// </summary>
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ParameterSetName = ByResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Vault resource id.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
-
-        [Parameter( Mandatory = false,
+        [Parameter( Mandatory = true,
             Position = 1,
             ParameterSetName = ByAccountNameParameterSet,
-            HelpMessage = "Key Vault managed storage account name. Cmdlet constructs the FQDN of a managed storage account name from vault name, currently " +
-                "selected environment and manged storage account name." )]
+            ValueFromPipelineByPropertyName = true,
+                        HelpMessage = "Key Vault managed storage account name. Cmdlet constructs the FQDN of a managed storage account name from vault name, currently " +
+                          "selected environment and manged storage account name." )]
         [ValidateNotNullOrEmpty]
         [Alias( Constants.StorageAccountName, Constants.Name )]
-        [SupportsWildcards]
         public string AccountName { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = "Specifies whether to show the previously deleted storage accounts in the output.")]
-        public SwitchParameter InRemovedState { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            if (InputObject != null)
+            switch( ParameterSetName )
             {
-                VaultName = InputObject.VaultName;
-            }
-            else if (ResourceId != null)
-            {
-                var resourceIdentifier = new ResourceIdentifier(ResourceId);
-                VaultName = resourceIdentifier.ResourceName;
-            }
+                case ByAccountNameParameterSet:
+                    var storageAccount = DataServiceClient.GetManagedStorageAccount( VaultName, AccountName );
+                    WriteObject( storageAccount );
+                    break;
+                case ByVaultNameParameterSet:
+                    GetAndWriteManagedStorageAccount( VaultName );
+                    break;
 
-            if (InRemovedState)
-            {
-                if (String.IsNullOrWhiteSpace(AccountName) || WildcardPattern.ContainsWildcardCharacters(AccountName))
-                {
-                    GetAndWriteDeletedManagedStorageAccounts(VaultName, AccountName);
-                }
-                else
-                {
-                    var storageAccount = DataServiceClient.GetDeletedManagedStorageAccount(VaultName, AccountName);
-                    WriteObject(storageAccount);
-                }
-            }
-            else
-            {
-                if (String.IsNullOrWhiteSpace(AccountName) || WildcardPattern.ContainsWildcardCharacters(AccountName))
-                {
-                    GetAndWriteManagedStorageAccounts(VaultName, AccountName);
-                }
-                else
-                {
-                    var storageAccount = DataServiceClient.GetManagedStorageAccount(VaultName, AccountName);
-                    WriteObject(storageAccount);
-                }
+                default:
+                    throw new ArgumentException( KeyVaultProperties.Resources.BadParameterSetName );
             }
         }
 
-        private void GetAndWriteManagedStorageAccounts( string vaultName, string name )
+        private void GetAndWriteManagedStorageAccount( string vaultName )
         {
             var options = new KeyVaultObjectFilterOptions
             {
@@ -131,21 +89,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             };
             do
             {
-                WriteObject(KVSubResourceWildcardFilter(name, DataServiceClient.GetManagedStorageAccounts( options )), true );
+                WriteObject( DataServiceClient.GetManagedStorageAccounts( options ), true );
             } while( !string.IsNullOrEmpty( options.NextLink ) );
-        }
-
-        private void GetAndWriteDeletedManagedStorageAccounts(string vaultName, string name)
-        {
-            var options = new KeyVaultObjectFilterOptions
-            {
-                VaultName = vaultName,
-                NextLink = null
-            };
-            do
-            {
-                WriteObject(KVSubResourceWildcardFilter(name, DataServiceClient.GetDeletedManagedStorageAccounts(options)), true);
-            } while (!string.IsNullOrEmpty(options.NextLink));
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
+external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/remove-azkeyvaultsecret
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.keyvault/remove-AzKeyvaultsecret
 schema: 2.0.0
 ---
 
@@ -12,15 +12,8 @@ Deletes a secret in a key vault.
 
 ## SYNTAX
 
-### ByVaultName (Default)
 ```
 Remove-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [-Force] [-PassThru] [-InRemovedState]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByInputObject
-```
-Remove-AzKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [-Force] [-PassThru] [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,51 +25,23 @@ This cmdlet has a value of high for the **ConfirmImpact** property.
 ## EXAMPLES
 
 ### Example 1: Remove a secret from a key vault
-```powershell
-PS C:\> Remove-AzKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -PassThru
-
-Vault Name           : Contoso
-Name                 : FinanceSecret
-Version              : f622abc7b1394092812f1eb0f85dc91c
-Id                   : https://contoso.vault.azure.net:443/secrets/financesecret/f622abc7b1394092812f1eb0f85dc91c
-Deleted Date         : 5/25/2018 4:45:34 PM
-Scheduled Purge Date : 8/23/2018 4:45:34 PM
-Enabled              : True
-Expires              :
-Not Before           :
-Created              : 4/19/2018 5:56:02 PM
-Updated              : 4/26/2018 7:48:40 PM
-Content Type         :
-Tags                 :
+```
+PS C:\>Remove-AzKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret'
 ```
 
 This command removes the secret named FinanceSecret from the key vault named Contoso.'
 
 ### Example 2: Remove a secret from a key vault without user confirmation
-```powershell
-PS C:\> Remove-AzKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -PassThru -Force
-
-Vault Name           : Contoso
-Name                 : FinanceSecret
-Version              : f622abc7b1394092812f1eb0f85dc91c
-Id                   : https://contoso.vault.azure.net:443/secrets/financesecret/f622abc7b1394092812f1eb0f85dc91c
-Deleted Date         : 5/25/2018 4:45:34 PM
-Scheduled Purge Date : 8/23/2018 4:45:34 PM
-Enabled              : True
-Expires              :
-Not Before           :
-Created              : 4/19/2018 5:56:02 PM
-Updated              : 4/26/2018 7:48:40 PM
-Content Type         :
-Tags                 :
+```
+PS C:\>Remove-AzKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -Force -Confirm:$False
 ```
 
 This command removes the secret named FinanceSecret from the key vault named Contoso.
 The command specifies the *Force* and *Confirm* parameters, and, therefore, the cmdlet does not prompt you for confirmation.
 
 ### Example 3: Purge deleted secret from the key vault permanently
-```powershell
-PS C:\> Remove-AzKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -InRemovedState
+```
+PS C:\>Remove-AzKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -InRemovedState
 ```
 
 This command premoves the secret named FinanceSecret from the key vault named Contoso permanently.
@@ -88,9 +53,9 @@ Executing this cmdlet requires the 'purge' permission, which must have been prev
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -103,9 +68,9 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -114,28 +79,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Key Vault Secret Object
-
-```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InRemovedState
 If present, removes the previously deleted secret permanently.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -149,14 +99,14 @@ Specifies the name of a secret.
 This cmdlet constructs the fully qualified domain name (FQDN) of a secret based on the name that this parameter specifies, the name of the key vault, and your current environment.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByVaultName
+Type: String
+Parameter Sets: (All)
 Aliases: SecretName
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -165,9 +115,9 @@ Indicates that this cmdlet returns a **Microsoft.Azure.Commands.KeyVault.Models.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -181,14 +131,14 @@ Specifies the name of the key vault to which the secret belongs.
 This cmdlet constructs the FQDN of a key vault based on the name that this parameter specifies and your current environment.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByVaultName
-Aliases:
+Type: String
+Parameter Sets: (All)
+Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -196,7 +146,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -213,7 +163,7 @@ The cmdlet is not run.Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -229,11 +179,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
+### String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultSecret
+### Microsoft.Azure.Commands.KeyVault.Models.DeletedSecret
+This cmdlet returns a value only if you specify the *PassThru* parameter.
 
 ## NOTES
 
