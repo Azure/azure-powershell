@@ -99,6 +99,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryTargetDiskAccountType { get; set; }
 
         /// <summary>
+        /// Gets or sets RecoveryDiskEncryptionSetId.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryDiskEncryptionSetId { get; set; }
+
+        /// <summary>
         /// Gets or sets DiskEncryptionVaultId.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = false)]
