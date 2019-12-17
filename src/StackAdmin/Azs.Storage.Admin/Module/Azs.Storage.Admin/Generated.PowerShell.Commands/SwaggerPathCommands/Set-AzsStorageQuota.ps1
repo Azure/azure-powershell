@@ -109,7 +109,7 @@ function Set-AzsStorageQuota {
         $StorageAdminClient = New-ServiceClient @NewServiceClient_params
 
         $QuotaName = $Name
- 
+        $quotaSet = $false
         if ('InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/providers/Microsoft.Storage.Admin/locations/{location}/quotas/{quotaName}'
@@ -121,6 +121,7 @@ function Set-AzsStorageQuota {
             else {
                 $GetArmResourceIdParameterValue_params['Id'] = $InputObject.Id
                 $Quota = $InputObject
+                $quotaSet = $true
             }
             $ArmResourceIdParameterValues = Get-ArmResourceIdParameterValue @GetArmResourceIdParameterValue_params
             $Location = $ArmResourceIdParameterValues['location']
@@ -134,7 +135,7 @@ function Set-AzsStorageQuota {
 
         if ('Update' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             # Get quota if not set
-            if ($null -eq $Quota) {
+            if ($quotaSet -eq $false) {
                 $Quota = Get-AzsStorageQuota -Location $Location -Name $QuotaName
             }
 
