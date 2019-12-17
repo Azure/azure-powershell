@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 CurrentOperation = "Getting all subscription resource groups ..."
             };
 
-            WriteProgress(progressRecord);
+            WriteProgress(progressRecord); 
 
             var resourceGroups = ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions
             {
