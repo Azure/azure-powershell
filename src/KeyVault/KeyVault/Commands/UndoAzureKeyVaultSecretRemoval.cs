@@ -13,22 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Undo", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultSecretRemoval",SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
-    [OutputType(typeof(PSKeyVaultSecret))]
+    [Cmdlet(VerbsCommon.Undo, "AzureKeyVaultSecretRemoval",
+    SupportsShouldProcess = true,
+    HelpUri = Constants.KeyVaultHelpUri)]
+    [OutputType(typeof(Secret))]
     public class UndoAzureKeyVaultSecretRemoval : KeyVaultCmdletBase
     {
-        #region Parameter Set Names
-
-        private const string DefaultParameterSet = "Default";
-        private const string InputObjectParameterSet = "InputObject";
-
-        #endregion
-
         #region Input Parameter Definitions
 
         /// <summary>
@@ -36,9 +30,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
-            ParameterSetName = DefaultParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
-        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
@@ -47,36 +40,19 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 1,
-            ParameterSetName = DefaultParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.SecretName)]
         public string Name { get; set; }
 
-        /// <summary>
-        /// Deleted secret object
-        /// </summary>
-        [Parameter(Mandatory = true,
-                   Position = 0,
-                   ParameterSetName = InputObjectParameterSet,
-                   ValueFromPipeline = true,
-                   HelpMessage = "Deleted secret object")]
-        [ValidateNotNullOrEmpty]
-        public PSDeletedKeyVaultSecretIdentityItem InputObject { get; set; }
-
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            if (InputObject != null)
-            {
-                VaultName = InputObject.VaultName;
-                Name = InputObject.Name;
-            }
-
             if (ShouldProcess(Name, Properties.Resources.RecoverSecret))
             {
-                PSKeyVaultSecret secret = DataServiceClient.RecoverSecret(VaultName, Name);
+                Secret secret = DataServiceClient.RecoverSecret(VaultName, Name);
 
                 WriteObject(secret);
             }

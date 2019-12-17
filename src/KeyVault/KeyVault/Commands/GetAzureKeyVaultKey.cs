@@ -13,32 +13,27 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey",        DefaultParameterSetName = ByVaultNameParameterSet)]
-    [OutputType(typeof(PSKeyVaultKeyIdentityItem), typeof(PSKeyVaultKey), typeof(PSDeletedKeyVaultKeyIdentityItem), typeof(PSDeletedKeyVaultKey))]
+    [Cmdlet(VerbsCommon.Get, "AzureKeyVaultKey",        
+        DefaultParameterSetName = ByVaultNameParameterSet,
+        HelpUri = Constants.KeyVaultHelpUri)]
+    [OutputType(typeof(List<KeyIdentityItem>), typeof(KeyBundle), typeof(List<DeletedKeyIdentityItem>), typeof(DeletedKeyBundle))]
     public class GetAzureKeyVaultKey : KeyVaultCmdletBase
     {
 
         #region Parameter Set Names
 
-        private const string ByVaultNameParameterSet = "ByVaultName";
         private const string ByKeyNameParameterSet = "ByKeyName";
+        private const string ByVaultNameParameterSet = "ByVaultName";
         private const string ByKeyVersionsParameterSet = "ByKeyVersions";
-
-        private const string InputObjectByVaultNameParameterSet = "ByInputObjectVaultName";
-        private const string InputObjectByKeyNameParameterSet = "ByInputObjectKeyName";
-        private const string InputObjectByKeyVersionsParameterSet = "ByInputObjectKeyVersions";
-
-        private const string ResourceIdByVaultNameParameterSet = "ByResourceIdVaultName";
-        private const string ResourceIdByKeyNameParameterSet = "ByResourceIdKeyName";
-        private const string ResourceIdByKeyVersionsParameterSet = "ByResourceIdKeyVersions";
+        private const string ByDeletedKeyParameterSet = "ByDeletedKey";
 
         #endregion
 
@@ -49,120 +44,57 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ByKeyNameParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [Parameter(Mandatory = true,
             Position = 0,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ByVaultNameParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [Parameter(Mandatory = true,
             Position = 0,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ByKeyVersionsParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
-        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ByDeletedKeyParameterSet,
+            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
         /// <summary>
-        /// KeyVault object
-        /// </summary>
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ValueFromPipeline = true,
-            ParameterSetName = InputObjectByVaultNameParameterSet,
-            HelpMessage = "KeyVault object.")]
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ValueFromPipeline = true,
-            ParameterSetName = InputObjectByKeyNameParameterSet,
-            HelpMessage = "KeyVault object.")]
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ValueFromPipeline = true,
-            ParameterSetName = InputObjectByKeyVersionsParameterSet,
-            HelpMessage = "KeyVault object.")]
-        [ValidateNotNullOrEmpty]
-        public PSKeyVault InputObject { get; set; }
-
-        /// <summary>
-        /// KeyVault resource id
-        /// </summary>
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ResourceIdByVaultNameParameterSet,
-            HelpMessage = "KeyVault Resource Id.")]
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ResourceIdByKeyNameParameterSet,
-            HelpMessage = "KeyVault Resource Id.")]
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ResourceIdByKeyVersionsParameterSet,
-            HelpMessage = "KeyVault ResourceId.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
-
-        /// <summary>
         /// Key name.
         /// </summary>
-        [Parameter(Mandatory = false,
-            ParameterSetName = ByVaultNameParameterSet,
-            Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = InputObjectByVaultNameParameterSet,
-            Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = ResourceIdByVaultNameParameterSet,
-            Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
             ParameterSetName = ByKeyNameParameterSet,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = InputObjectByKeyNameParameterSet,
-            Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = ResourceIdByKeyNameParameterSet,
-            Position = 1,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [Parameter(Mandatory = true,
             ParameterSetName = ByKeyVersionsParameterSet,
             Position = 1,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = InputObjectByKeyVersionsParameterSet,
+        [Parameter(Mandatory = false,
+            ParameterSetName = ByDeletedKeyParameterSet,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = ResourceIdByKeyVersionsParameterSet,
-            Position = 1,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.KeyName)]
-        [SupportsWildcards]
         public string Name { get; set; }
 
         /// <summary>
         /// Key version.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ByKeyNameParameterSet,
             Position = 2,
-            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = InputObjectByKeyNameParameterSet,
-            Position = 2,
-            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = ResourceIdByKeyNameParameterSet,
-            Position = 2,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.")]
         [Alias("KeyVersion")]
         public string Version { get; set; }
@@ -170,22 +102,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = ByKeyVersionsParameterSet,
             HelpMessage = "Specifies whether to include the versions of the key in the output.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = InputObjectByKeyVersionsParameterSet,
-            HelpMessage = "Specifies whether to include the versions of the key in the output.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = ResourceIdByKeyVersionsParameterSet,
-            HelpMessage = "Specifies whether to include the versions of the key in the output.")]
         public SwitchParameter IncludeVersions { get; set; }
 
-        [Parameter(Mandatory = false,
-            ParameterSetName = ByVaultNameParameterSet,
-            HelpMessage = "Specifies whether to show the previously deleted keys in the output.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = InputObjectByVaultNameParameterSet,
-            HelpMessage = "Specifies whether to show the previously deleted keys in the output.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = ResourceIdByVaultNameParameterSet,
+        [Parameter(Mandatory = true,
+            ParameterSetName = ByDeletedKeyParameterSet,
             HelpMessage = "Specifies whether to show the previously deleted keys in the output.")]
         public SwitchParameter InRemovedState { get; set; }
 
@@ -193,73 +113,54 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            PSKeyVaultKey keyBundle;
-
-            if (InputObject != null)
+            KeyBundle keyBundle;
+            switch (ParameterSetName)
             {
-                VaultName = InputObject.VaultName.ToString();
-            }
-            else if (!string.IsNullOrEmpty(ResourceId))
-            {
-                var parsedResourceId = new ResourceIdentifier(ResourceId);
-                VaultName = parsedResourceId.ResourceName;
-            }
-
-            if (!string.IsNullOrEmpty(Version))
-            {
-                keyBundle = DataServiceClient.GetKey(VaultName, Name, Version);
-                WriteObject(keyBundle);
-            }
-            else if (IncludeVersions)
-            {
-                keyBundle = DataServiceClient.GetKey(VaultName, Name, string.Empty);
-                if (keyBundle != null)
-                {
-                    WriteObject(new PSKeyVaultKeyIdentityItem(keyBundle));
-                    GetAndWriteKeyVersions(VaultName, Name, keyBundle.Version);
-                }
-            }
-            else if (InRemovedState)
-            {
-                if (string.IsNullOrEmpty(Name) || WildcardPattern.ContainsWildcardCharacters(Name))
-                {
-                    GetAndWriteDeletedKeys(VaultName, Name);
-                }
-                else
-                {
-                    PSDeletedKeyVaultKey deletedKeyBundle = DataServiceClient.GetDeletedKey(VaultName, Name);
-                    WriteObject(deletedKeyBundle);
-                }
-            }
-            else
-            {
-                if (string.IsNullOrEmpty(Name) || WildcardPattern.ContainsWildcardCharacters(Name))
-                {
-                    GetAndWriteKeys(VaultName, Name);
-                }
-                else
-                {
-                    keyBundle = DataServiceClient.GetKey(VaultName, Name, string.Empty);
+                case ByKeyNameParameterSet:                    
+                    keyBundle = DataServiceClient.GetKey(VaultName, Name, Version ?? string.Empty);
                     WriteObject(keyBundle);
-                }
+                    break;
+                case ByKeyVersionsParameterSet:
+                    keyBundle = DataServiceClient.GetKey(VaultName, Name, string.Empty);
+                    if (keyBundle != null)
+                    {
+                        WriteObject(new KeyIdentityItem(keyBundle));
+                        GetAndWriteKeyVersions(VaultName, Name, keyBundle.Version);
+                    }
+                    break;
+                case ByVaultNameParameterSet:
+                    GetAndWriteKeys(VaultName);
+                    break;
+                case ByDeletedKeyParameterSet:
+                    if(Name == null)
+                    {
+                        GetAndWriteDeletedKeys(VaultName);
+                        break;
+                    }
+                    DeletedKeyBundle deletedKeyBundle = DataServiceClient.GetDeletedKey(VaultName, Name);
+                    WriteObject(deletedKeyBundle);
+                    break;
+
+                default:
+                    throw new ArgumentException(KeyVaultProperties.Resources.BadParameterSetName);
             }
         }
 
-        private void GetAndWriteKeys(string vaultName, string name) =>
+        private void GetAndWriteKeys(string vaultName) =>
             GetAndWriteObjects(new KeyVaultObjectFilterOptions
                 {
                     VaultName = vaultName,
                     NextLink = null
                 },
-                (options) => KVSubResourceWildcardFilter(name, DataServiceClient.GetKeys(options)));
+                (options) => DataServiceClient.GetKeys(options));
 
-        private void GetAndWriteDeletedKeys(string vaultName, string name) =>
+        private void GetAndWriteDeletedKeys(string vaultName) =>
             GetAndWriteObjects(new KeyVaultObjectFilterOptions
                 {
                     VaultName = vaultName,
                     NextLink = null
                 },
-                (options) => KVSubResourceWildcardFilter(name, DataServiceClient.GetDeletedKeys(options)));
+                (options) => DataServiceClient.GetDeletedKeys(options));
 
         private void GetAndWriteKeyVersions(string vaultName, string name, string currentKeyVersion) =>
             GetAndWriteObjects(new KeyVaultObjectFilterOptions

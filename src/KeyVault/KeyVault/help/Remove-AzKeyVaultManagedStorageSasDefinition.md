@@ -1,7 +1,7 @@
 ﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
+external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/remove-azkeyvaultmanagedstoragesasdefinition
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.keyvault/remove-AzKeyvaultmanagedstoragesasdefinition
 schema: 2.0.0
 ---
 
@@ -12,15 +12,8 @@ Removes a Key Vault managed Azure Storage SAS definitions.
 
 ## SYNTAX
 
-### ByDefinitionName (Default)
 ```
 Remove-AzKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String> [-Name] <String>
- [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByInputObject
-```
-Remove-AzKeyVaultManagedStorageSasDefinition [-InputObject] <PSKeyVaultManagedStorageSasDefinitionIdentityItem>
  [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -30,33 +23,15 @@ Removes a Key Vault managed Azure Storage SAS definitions. This also removes the
 ## EXAMPLES
 
 ### Example 1: Remove a Key Vault managed Azure Storage SAS definition.
-```powershell
-PS C:\> Remove-AzKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -Name 'mysasdef' -PassThru
-
-Id          : https://myvault.vault.azure.net:443/storage/mystorageaccount/sas/mysasdef
-Vault Name  : myvault
-AccountName : mystorageaccount
-Name        : mysasdef
-Enabled     : True
-Created     : 5/24/2018 9:11:08 PM
-Updated     : 5/24/2018 9:11:08 PM
-Tags        :
+```
+PS C:\> Remove-AzKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -Name 'mysasdef'
 ```
 
 Removes a Key Vault managed Storage SAS definition 'mysasdef' associated with the account 'mystorageaccount' in vault 'myvault'.
 
 ### Example 2: Remove a Key Vault managed Azure Storage SAS definition without user confirmation.
-```powershell
-PS C:\> Remove-AzKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -Name 'mysasdef' -PassThru -Force
-
-Id          : https://myvault.vault.azure.net:443/storage/mystorageaccount/sas/mysasdef
-Vault Name  : myvault
-AccountName : mystorageaccount
-Name        : mysasdef
-Enabled     : True
-Created     : 5/24/2018 9:11:08 PM
-Updated     : 5/24/2018 9:11:08 PM
-Tags        :
+```
+PS C:\> Remove-AzKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -Name 'mysasdef' -Force -Confirm:$False
 ```
 
 Removes a Key Vault managed Storage SAS definition 'mysasdef' associated with the account 'mystorageaccount' in vault 'myvault'.
@@ -68,14 +43,14 @@ Storage account name.
 Cmdlet constructs the FQDN of a managed storage account name from vault name, currently selected environment and storage account name.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByDefinitionName
+Type: String
+Parameter Sets: (All)
 Aliases: StorageAccountName
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -83,9 +58,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -98,9 +73,9 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -109,34 +84,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-ManagedStorageSasDefinition object.
-
-```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageSasDefinitionIdentityItem
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 Storage sas definition name.
 Cmdlet constructs the FQDN of a storage sas definition from vault name, currently selected environment, storage account name and sas definition name.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByDefinitionName
+Type: String
+Parameter Sets: (All)
 Aliases: SasDefinitionName
 
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -145,9 +105,9 @@ Cmdlet does not return an object by default.
 If this switch is specified, cmdlet returns the managed storage account that was deleted.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -161,14 +121,14 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByDefinitionName
-Aliases:
+Type: String
+Parameter Sets: (All)
+Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -176,7 +136,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -192,7 +152,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -208,11 +168,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageSasDefinitionIdentityItem
+### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultManagedStorageSasDefinition
+### Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageSasDefinition
 
 ## NOTES
 

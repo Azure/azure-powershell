@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                     "ScenarioTests\\Common.ps1",
                     "Scripts\\ControlPlane\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
-                    _helper.GetRMModulePath("AzureRM.KeyVault.psd1"),
+                    _helper.GetRMModulePath("Az.KeyVault.psd1"),
                     "AzureRM.Resources.ps1");
 
                 try
