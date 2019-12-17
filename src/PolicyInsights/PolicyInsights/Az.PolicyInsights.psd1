@@ -76,7 +76,8 @@ FunctionsToExport = @()
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzPolicyEvent', 'Get-AzPolicyState', 'Get-AzPolicyStateSummary', 
                'Get-AzPolicyRemediation', 'Remove-AzPolicyRemediation', 
-               'Start-AzPolicyRemediation', 'Stop-AzPolicyRemediation'
+               'Start-AzPolicyRemediation', 'Stop-AzPolicyRemediation',
+               'Get-AzPolicyMetadata'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -99,7 +100,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','Provider','Policy','PolicyInsights','PolicyEvent','PolicyState','Remediation'
+        Tags = 'Azure','ResourceManager','ARM','Provider','Policy','PolicyInsights','PolicyEvent','PolicyState','Remediation', 'PolicyMetadata'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
