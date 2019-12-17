@@ -27,7 +27,15 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
         public PSStepResource(string resourceGroupName, StepResource stepResource) : base(stepResource)
         {
             this.ResourceGroupName = resourceGroupName;
-            this.StepProperties = new PSWaitStepProperties((WaitStepProperties)stepResource.Properties);
+
+            if (stepResource.Properties is WaitStepProperties)
+            {
+                this.StepProperties = new PSWaitStepProperties((WaitStepProperties)stepResource.Properties);
+            }
+            else if (stepResource.Properties is HealthCheckStepProperties)
+            {
+                this.StepProperties = new PSHealthCheckStepProperties((HealthCheckStepProperties)stepResource.Properties);
+            }
         }
 
         /// <summary>
