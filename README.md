@@ -6,7 +6,7 @@ This repository contains PowerShell cmdlets for developers and administrators to
 
 Try it out in Azure Cloud Shell!
 
-[![Build Status](https://dev.azure.com/manasans16/Class/_apis/build/status/GITHUB?branchName=master)](https://dev.azure.com/manasans16/Class/_build/latest?definitionId=4&branchName=master)
+[![Build Status](https://dev.azure.com/manasans16/Class/_apis/build/status/GITHUB?branchName=master)](https://dev.azure.com/manasans16/Class/_build/latest?definitionId=4&branchName=master) 
 
 [![CloudShellIcon]][CloudShell]
 
