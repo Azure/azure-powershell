@@ -40,22 +40,22 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             HelpMessage = "The resource group.")]
         [Parameter(
             Position = 0,
-            Mandatory = true, 
+            Mandatory = false, 
             ParameterSetName = GetServiceUnit.ByServiceObjectParameterSet,
             HelpMessage = "The resource group.")]
         [Parameter(
             Position = 0,
-            Mandatory = true, 
+            Mandatory = false, 
             ParameterSetName = GetServiceUnit.ByServiceResourceIdParamSet,
             HelpMessage = "The resource group.")]
         [Parameter(
             Position = 0,
-            Mandatory = true, 
+            Mandatory = false, 
             ParameterSetName = GetServiceUnit.ByTopologyObjectAndServiceNameParameterSet,
             HelpMessage = "The resource group.")]
         [Parameter(
             Position = 0,
-            Mandatory = true, 
+            Mandatory = false, 
             ParameterSetName = GetServiceUnit.ByTopologyResourceIdAndServiceNameParameterSet,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
@@ -92,27 +92,27 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         [Parameter(
             Position = 3,
-            Mandatory = true, 
+            Mandatory = false, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             HelpMessage = "The name of the service unit.")]
         [Parameter(
             Position = 2,
-            Mandatory = true, 
+            Mandatory = false, 
             ParameterSetName = GetServiceUnit.ByServiceObjectParameterSet,
             HelpMessage = "The name of the service unit.")]
         [Parameter(
             Position = 2,
-            Mandatory = true, 
+            Mandatory = false, 
             ParameterSetName = GetServiceUnit.ByServiceResourceIdParamSet,
             HelpMessage = "The name of the service unit.")]
         [Parameter(
             Position = 3,
-            Mandatory = true, 
+            Mandatory = false, 
             ParameterSetName = GetServiceUnit.ByTopologyObjectAndServiceNameParameterSet,
             HelpMessage = "The name of the service unit.")]
         [Parameter(
             Position = 3,
-            Mandatory = true, 
+            Mandatory = false, 
             ParameterSetName = GetServiceUnit.ByTopologyResourceIdAndServiceNameParameterSet,
             HelpMessage = "The name of the service unit.")]
         [ValidateNotNullOrEmpty]
@@ -180,8 +180,19 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 Name = this.Name
             };
 
-            var serviceUnitResource = this.DeploymentManagerClient.GetServiceUnit(psServiceUnitResource);
-            this.WriteObject(serviceUnitResource);
+            if (!string.IsNullOrWhiteSpace(this.Name))
+            {
+                var serviceUnitResource = this.DeploymentManagerClient.GetServiceUnit(psServiceUnitResource);
+                this.WriteObject(serviceUnitResource);
+            }
+            else
+            {
+                var serviceUnitResources = this.DeploymentManagerClient.ListServiceUnits(
+                    resourceGroupName: this.ResourceGroupName,
+                    serviceTopologyName: this.ServiceTopologyName,
+                    serviceName: this.ServiceName);
+                this.WriteObject(serviceUnitResources, enumerateCollection: true);
+            }
         }
 
         private void ResolveParameters()
@@ -210,12 +221,14 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             }
             else if (this.ServiceObject != null)
             {
+                this.ResourceGroupName = this.ServiceObject.ResourceGroupName;
                 this.ServiceTopologyName = this.ServiceObject.ServiceTopologyName;
                 this.ServiceName = this.ServiceObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ServiceResourceId))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ServiceResourceId);
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
                 this.ServiceName = parsedResourceId.ResourceName;
                 string[] tokens = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
                 if (tokens.Length < 2)
@@ -227,11 +240,13 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             }
             else if (this.ServiceTopologyObject != null)
             {
+                this.ResourceGroupName = this.ServiceTopologyObject.ResourceGroupName;
                 this.ServiceTopologyName = this.ServiceTopologyObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ServiceTopologyResourceId))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ServiceTopologyResourceId);
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
                 this.ServiceTopologyName = parsedResourceId.ResourceName;
             }
         }

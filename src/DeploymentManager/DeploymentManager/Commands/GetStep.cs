@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         [Parameter(
             Position = 1,
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             HelpMessage = "The name of the step.")]
         [ValidateNotNullOrEmpty]
@@ -83,8 +83,16 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 Name = this.Name,
             };
 
-            psStepResource = this.DeploymentManagerClient.GetStep(psStepResource);
-            this.WriteObject(psStepResource);
+            if (!string.IsNullOrWhiteSpace(this.Name))
+            {
+                psStepResource = this.DeploymentManagerClient.GetStep(psStepResource);
+                this.WriteObject(psStepResource);
+            }
+            else
+            {
+                var psStepResources = this.DeploymentManagerClient.ListSteps(this.ResourceGroupName);
+                this.WriteObject(psStepResources, enumerateCollection: true);
+            }
         }
     }
 }
