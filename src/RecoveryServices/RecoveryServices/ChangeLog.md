@@ -18,9 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.3.0
 * Update references in .psd1 to use relative path
-* Added SoftDelete feature for VM and added tests for softdelete
 * Azure Site Recovery support for Azure Disk Encryption One Pass for Azure to Azure.
+
+## Version 2.2.0
+* Azure Backup added support for enabling and disabling soft delete feature for Recovery Services Vault.
 
 ## Version 2.1.0
 
@@ -28,7 +32,7 @@
 * Azure Site Recovery bug fix for recovery plan action edit.
 * Azure Backup SQL Restore support to accept filestream DBs.
 * Azure Backup updated SDK version.
-* Azure Backup added support for enabling and disabling soft delete feature for Recovery Services Vault.
+
 
 ## Version 2.0.1
 
