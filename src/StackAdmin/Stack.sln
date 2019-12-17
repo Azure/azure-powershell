@@ -99,6 +99,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Storage", "Storage
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Compute", "Compute\Commands.Compute\Commands.Compute.csproj", "{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azs.Deployment.Admin", "Azs.Deployment.Admin\Module\Azs.Deployment.Admin.csproj", "{BAE36445-E012-4919-B91C-671BC05198F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -589,6 +591,18 @@ Global
 		{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}.Release|x64.Build.0 = Release|Any CPU
 		{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}.Release|x86.ActiveCfg = Release|Any CPU
 		{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}.Release|x86.Build.0 = Release|Any CPU
+		{BAE36445-E012-4919-B91C-671BC05198F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAE36445-E012-4919-B91C-671BC05198F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAE36445-E012-4919-B91C-671BC05198F1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BAE36445-E012-4919-B91C-671BC05198F1}.Debug|x64.Build.0 = Debug|Any CPU
+		{BAE36445-E012-4919-B91C-671BC05198F1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BAE36445-E012-4919-B91C-671BC05198F1}.Debug|x86.Build.0 = Debug|Any CPU
+		{BAE36445-E012-4919-B91C-671BC05198F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAE36445-E012-4919-B91C-671BC05198F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAE36445-E012-4919-B91C-671BC05198F1}.Release|x64.ActiveCfg = Release|Any CPU
+		{BAE36445-E012-4919-B91C-671BC05198F1}.Release|x64.Build.0 = Release|Any CPU
+		{BAE36445-E012-4919-B91C-671BC05198F1}.Release|x86.ActiveCfg = Release|Any CPU
+		{BAE36445-E012-4919-B91C-671BC05198F1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
