@@ -2,6 +2,8 @@
 
 # ![AzureIcon] ![PowershellIcon] Microsoft Azure PowerShell
 
+https://dev.azure.com/manasans16/Class/_apis/build/status/GITHUB?branchName=master
+
 This repository contains PowerShell cmdlets for developers and administrators to develop, deploy, and manage Microsoft Azure applications.
 
 Try it out in Azure Cloud Shell!
