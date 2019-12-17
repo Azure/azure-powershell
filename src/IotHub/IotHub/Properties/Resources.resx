@@ -126,6 +126,15 @@
   <data name="AddIotHubCertificate" xml:space="preserve">
     <value>Add or Update an Iot Hub Certificate</value>
   </data>
+  <data name="AddIotHubDevice" xml:space="preserve">
+    <value>Add Device</value>
+  </data>
+  <data name="RemoveIotHubDevice" xml:space="preserve">
+    <value>Remove Device</value>
+  </data>
+  <data name="SetIotHubDevice" xml:space="preserve">
+    <value>Set Device</value>
+  </data>
   <data name="AddIotHubKey" xml:space="preserve">
     <value>Add an IoT Hub Key</value>
   </data>
