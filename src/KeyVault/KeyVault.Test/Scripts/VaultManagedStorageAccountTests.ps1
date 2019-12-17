@@ -71,10 +71,10 @@ function Test_SetAzureKeyVaultManagedStorageAccountAndSasDefinition
     $storageAccountResourceId = Get-KeyVaultManagedStorageResourceId
 
     # set key vault managed storage account
-    $managedStorageAccount = Add-AzKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName -AccountResourceId $storageAccountResourceId -ActiveKeyName 'key1' -DisableAutoRegenerateKey
+    $managedStorageAccount = Add-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName -AccountResourceId $storageAccountResourceId -ActiveKeyName 'key1' -DisableAutoRegenerateKey
     Assert-NotNull $managedStorageAccount
     
-    $command = "Set-AzKeyVaultManagedStorageSasDefinition -VaultName $($keyVault) -AccountName $($managedStorageAccountName) $($paramatersSubCommand)"  
+    $command = "Set-AzureKeyVaultManagedStorageSasDefinition -VaultName $($keyVault) -AccountName $($managedStorageAccountName) $($paramatersSubCommand)"  
     
     Write-Host $command
     
@@ -85,7 +85,7 @@ function Test_SetAzureKeyVaultManagedStorageAccountAndSasDefinition
     Assert-NotNull $managedStorageAccount.AccountName
     Assert-NotNull $createdManagedStorageSasDefinition.Name
     $secretName = "$($managedStorageAccount.AccountName)-$($createdManagedStorageSasDefinition.Name)"
-    $secret = Get-AzKeyVaultSecret $keyVault $secretName
+    $secret = Get-AzureKeyVaultSecret $keyVault $secretName
     Assert-NotNull $secret
     Assert-NotNull $secret.SecretValueText
 }
@@ -100,21 +100,21 @@ function Test_SetAzureKeyVaultManagedStorageAccountAndSasDefinitionPipeTest
     $storageAccountResourceId = Get-KeyVaultManagedStorageResourceId
 
     # set key vault managed storage account
-    $managedStorageAccount1 = Add-AzKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName1 -AccountResourceId $storageAccountResourceId -ActiveKeyName 'key1' -DisableAutoRegenerateKey
+    $managedStorageAccount1 = Add-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName1 -AccountResourceId $storageAccountResourceId -ActiveKeyName 'key1' -DisableAutoRegenerateKey
     Assert-NotNull $managedStorageAccount1
 
-    $managedStorageAccount2 = Get-AzKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName1 | Add-AzKeyVaultManagedStorageAccount -AccountName $managedStorageAccountName2
+    $managedStorageAccount2 = Get-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName1 | Add-AzureKeyVaultManagedStorageAccount -AccountName $managedStorageAccountName2
     Assert-NotNull $managedStorageAccount2
 
     $managedStorageSasDefinitionName1 = Get-ManagedStorageSasDefinitionName 'mngsas8'
     $managedStorageSasDefinitionName2 = Get-ManagedStorageSasDefinitionName 'mngsas9'
     $paramatersSubCommand = "-Name $($managedStorageSasDefinitionName1) -Service Queue,Blob -ResourceType Container,Object -Protocol HttpsOnly -IPAddressOrRange '168.1.5.60-168.1.5.70' -ValidityPeriod ([System.Timespan]::FromDays(30)) -Permission Add,Create"
-    $command = "Set-AzKeyVaultManagedStorageSasDefinition -VaultName $($keyVault) -AccountName $($managedStorageAccountName1) $($paramatersSubCommand)"
+    $command = "Set-AzureKeyVaultManagedStorageSasDefinition -VaultName $($keyVault) -AccountName $($managedStorageAccountName1) $($paramatersSubCommand)"
     Write-Host $command
     $createdManagedStorageSasDefinition1 = Invoke-Expression $command
     Assert-NotNull $createdManagedStorageSasDefinition1
 
-    $createdManagedStorageSasDefinition2 = Get-AzKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName1 -Name $managedStorageSasDefinitionName1 | Set-AzKeyVaultManagedStorageSasDefinition -Name $managedStorageSasDefinitionName2
+    $createdManagedStorageSasDefinition2 = Get-AzureKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName1 -Name $managedStorageSasDefinitionName1 | Set-AzureKeyVaultManagedStorageSasDefinition -Name $managedStorageSasDefinitionName2
     Assert-NotNull $createdManagedStorageSasDefinition2
 
     # Verify the secret
@@ -124,8 +124,8 @@ function Test_SetAzureKeyVaultManagedStorageAccountAndSasDefinitionPipeTest
     Assert-NotNull $createdManagedStorageSasDefinition2.Name
     $secretName1 = "$($managedStorageAccount1.AccountName)-$($createdManagedStorageSasDefinition1.Name)"
     $secretName2 = "$($managedStorageAccount1.AccountName)-$($createdManagedStorageSasDefinition2.Name)"
-    $secret1 = Get-AzKeyVaultSecret $keyVault $secretName1
-    $secret2 = Get-AzKeyVaultSecret $keyVault $secretName2
+    $secret1 = Get-AzureKeyVaultSecret $keyVault $secretName1
+    $secret2 = Get-AzureKeyVaultSecret $keyVault $secretName2
     Assert-NotNull $secret1
     Assert-NotNull $secret2
     Assert-NotNull $secret1.SecretValueText
@@ -142,9 +142,9 @@ function Test_SetAzureKeyVaultManagedStorageAccountAndSasDefinitionAttribute
     $storageAccountResourceId = Get-KeyVaultManagedStorageResourceId
     
     # set key vault managed storage account
-    $managedStorageAccount1 = Add-AzKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName1 -AccountResourceId $storageAccountResourceId -ActiveKeyName 'key1' -DisableAutoRegenerateKey
+    $managedStorageAccount1 = Add-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName1 -AccountResourceId $storageAccountResourceId -ActiveKeyName 'key1' -DisableAutoRegenerateKey
     Assert-NotNull $managedStorageAccount1
-    $managedStorageAccount2 = Get-AzKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName1 | Add-AzKeyVaultManagedStorageAccount -AccountName $managedStorageAccountName2 -Tag @{"tag1"="value1";"tag2"="value2"} -Disable
+    $managedStorageAccount2 = Get-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName1 | Add-AzureKeyVaultManagedStorageAccount -AccountName $managedStorageAccountName2 -Tag @{"tag1"="value1";"tag2"="value2"} -Disable
     Assert-NotNull $managedStorageAccount2
 
     Assert-True { $managedStorageAccount1.Attributes.Enabled }
@@ -154,7 +154,7 @@ function Test_SetAzureKeyVaultManagedStorageAccountAndSasDefinitionAttribute
     $managedStorageSasDefinitionName1 = Get-ManagedStorageSasDefinitionName 'mngsas8'
 
     $paramatersSubCommand = "-Name $($managedStorageSasDefinitionName1) -Service Queue,Blob -ResourceType Container,Object -Protocol HttpsOnly -IPAddressOrRange '168.1.5.60-168.1.5.70' -ValidityPeriod ([System.Timespan]::FromDays(30)) -Permission Add,Create"
-    $command = "Set-AzKeyVaultManagedStorageSasDefinition -VaultName $($keyVault) -AccountName $($managedStorageAccountName1) $($paramatersSubCommand) -Tag @{'tag3'='value3';'tag4'='value4'}"
+    $command = "Set-AzureKeyVaultManagedStorageSasDefinition -VaultName $($keyVault) -AccountName $($managedStorageAccountName1) $($paramatersSubCommand) -Tag @{'tag3'='value3';'tag4'='value4'}"
     Write-Host $command
     $createdManagedStorageSasDefinition1 = Invoke-Expression $command
     Assert-NotNull $createdManagedStorageSasDefinition1
@@ -169,10 +169,10 @@ function Test_UpdateAzureKeyVaultManagedStorageAccount
     $storageAccountResourceId = Get-KeyVaultManagedStorageResourceId
     
     # set key vault managed storage account
-    $managedStorageAccount = Add-AzKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName -AccountResourceId $storageAccountResourceId -ActiveKeyName 'key1' -RegenerationPeriod ([System.Timespan]::FromDays(30))
+    $managedStorageAccount = Add-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName -AccountResourceId $storageAccountResourceId -ActiveKeyName 'key1' -RegenerationPeriod ([System.Timespan]::FromDays(30))
     Assert-NotNull $managedStorageAccount
 
-    $managedStorageAccountUpdate = Update-AzKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName -ActiveKeyName 'key2' -Tag @{"tag3"="value3"} -PassThru
+    $managedStorageAccountUpdate = Update-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName -ActiveKeyName 'key2' -Tag @{"tag3"="value3"} -PassThru
     Assert-NotNull $managedStorageAccountUpdate
 
     Assert-True { $managedStorageAccountUpdate.ActiveKeyName.Equals("key2") }
@@ -187,10 +187,10 @@ function Test_RegenerateAzureKeyVaultManagedStorageAccountAndSasDefinition
     $storageAccountResourceId = Get-KeyVaultManagedStorageResourceId
     
     # set key vault managed storage account
-    $managedStorageAccount = Add-AzKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName -AccountResourceId $storageAccountResourceId -ActiveKeyName 'key1' -RegenerationPeriod ([System.Timespan]::FromDays(30))
+    $managedStorageAccount = Add-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName -AccountResourceId $storageAccountResourceId -ActiveKeyName 'key1' -RegenerationPeriod ([System.Timespan]::FromDays(30))
     Assert-NotNull $managedStorageAccount
 
-    $managedStorageAccountUpdate = Update-AzKeyVaultManagedStorageAccountKey -VaultName $keyVault -AccountName $managedStorageAccountName -KeyName 'key2' -Force -Confirm:$false -PassThru
+    $managedStorageAccountUpdate = Update-AzureKeyVaultManagedStorageAccountKey -VaultName $keyVault -AccountName $managedStorageAccountName -KeyName 'key2' -Force -Confirm:$false -PassThru
     Assert-NotNull $managedStorageAccountUpdate
 
     Assert-True { $managedStorageAccountUpdate.ActiveKeyName.Equals("key2") }
@@ -202,14 +202,14 @@ function Test_ListKeyVaultAzureKeyVaultManagedStorageAccounts
     $managedStorageAccountName01 = Get-ManagedStorageAccountName 'listmngSt1'
     $storageAccountResourceId = Get-KeyVaultManagedStorageResourceId
     
-    $createdmanagedStorageAccountName01 = Add-AzKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName01 -AccountResourceId $storageAccountResourceId -ActiveKeyName 'key1' -RegenerationPeriod ([System.Timespan]::FromDays(30))
+    $createdmanagedStorageAccountName01 = Add-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName01 -AccountResourceId $storageAccountResourceId -ActiveKeyName 'key1' -RegenerationPeriod ([System.Timespan]::FromDays(30))
     Assert-NotNull $createdmanagedStorageAccountName01
 
     $managedStorageAccountName02 = Get-ManagedStorageAccountName 'listmngSt2'
-    $createdmanagedStorageAccountName02 = Add-AzKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName02 -AccountResourceId $storageAccountResourceId -ActiveKeyName 'key1' -RegenerationPeriod ([System.Timespan]::FromDays(30))
+    $createdmanagedStorageAccountName02 = Add-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName02 -AccountResourceId $storageAccountResourceId -ActiveKeyName 'key1' -RegenerationPeriod ([System.Timespan]::FromDays(30))
     Assert-NotNull $createdmanagedStorageAccountName02
 
-    $managedStorageAccounts = Get-AzKeyVaultManagedStorageAccount $keyVault
+    $managedStorageAccounts = Get-AzureKeyVaultManagedStorageAccount $keyVault
     Assert-NotNull $managedStorageAccounts
 
     Assert-True { $managedStorageAccounts.Count -ge 2 }

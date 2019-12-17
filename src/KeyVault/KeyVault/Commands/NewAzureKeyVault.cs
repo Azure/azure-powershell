@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,21 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.KeyVault.Models;
 using System;
 using System.Collections;
 using System.Management.Automation;
+using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
+using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
     /// Create a new key vault.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVault",SupportsShouldProcess = true)]
-    [OutputType(typeof(PSKeyVault))]
+    [Cmdlet(VerbsCommon.New, "AzKeyVault",
+        SupportsShouldProcess = true,
+        HelpUri = Constants.KeyVaultHelpUri)]
+    [OutputType(typeof(PSKeyVaultModels.PSVault))]
     public class NewAzureKeyVault : KeyVaultManagementCmdletBase
     {
         #region Input Parameter Definitions
@@ -41,8 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 "Specifies a name of the key vault to create. The name can be any combination of letters, digits, or hyphens. The name must start and end with a letter or digit. The name must be universally unique."
             )]
         [ValidateNotNullOrEmpty]
-        [Alias("VaultName")]
-        public string Name { get; set; }
+        public string VaultName { get; set; }
 
         /// <summary>
         /// Resource group name
@@ -82,14 +83,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         public SwitchParameter EnabledForDiskEncryption { get; set; }
 
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "If specified, 'soft delete' functionality is enabled for this key vault.")]
         public SwitchParameter EnableSoftDelete { get; set; }
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = false,
-            HelpMessage = "If specified, protection against immediate deletion is enabled for this vault; requires soft delete to be enabled as well.")]
-        public SwitchParameter EnablePurgeProtection { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -106,11 +102,11 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, Properties.Resources.CreateKeyVault))
+            if (ShouldProcess(VaultName, Properties.Resources.CreateKeyVault))
             {
-                if (VaultExistsInCurrentSubscription(Name))
+                if (VaultExistsInCurrentSubscription(this.VaultName))
                 {
-                    throw new ArgumentException(Resources.VaultAlreadyExists);
+                    throw new ArgumentException(PSKeyVaultProperties.Resources.VaultAlreadyExists);
                 }
 
                 var userObjectId = string.Empty;
@@ -126,7 +122,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                     // This is to unblock Key Vault in Fairfax as Graph has issues in this environment.
                     WriteWarning(ex.Message);
                 }
-
                 if (!string.IsNullOrWhiteSpace(userObjectId))
                 {
                     accessPolicy = new AccessPolicyEntry()
@@ -143,30 +138,29 @@ namespace Microsoft.Azure.Commands.KeyVault
                     };
                 }
 
-                var newVault = KeyVaultManagementClient.CreateNewVault(new VaultCreationParameters()
-                    {
-                        VaultName = this.Name,
-                        ResourceGroupName = this.ResourceGroupName,
-                        Location = this.Location,
-                        EnabledForDeployment = this.EnabledForDeployment.IsPresent,
-                        EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent,
-                        EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent,
-                        EnableSoftDelete = EnableSoftDelete.IsPresent,
-                        EnablePurgeProtection = EnablePurgeProtection.IsPresent,
-                        SkuFamilyName = DefaultSkuFamily,
-                        SkuName = this.Sku,
-                        TenantId = GetTenantId(),
-                        AccessPolicy = accessPolicy,
-                        NetworkAcls = new NetworkRuleSet(),     // New key-vault takes in default network rule set
-                        Tags = this.Tag
-                    },
-                    ActiveDirectoryClient);
+                var newVault = KeyVaultManagementClient.CreateNewVault(new PSKeyVaultModels.VaultCreationParameters()
+                {
+                    VaultName = this.VaultName,
+                    ResourceGroupName = this.ResourceGroupName,
+                    Location = this.Location,
+                    EnabledForDeployment = this.EnabledForDeployment.IsPresent,
+                    EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent,
+                    EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent,
+                    EnableSoftDelete = EnableSoftDelete.IsPresent,
+                    SkuFamilyName = DefaultSkuFamily,
+                    SkuName = this.Sku,
+                    TenantId = GetTenantId(),
+                    AccessPolicy = accessPolicy,
+                    Tags = this.Tag
+                },
+                ActiveDirectoryClient
+                );
 
                 this.WriteObject(newVault);
 
                 if (accessPolicy == null)
                 {
-                    WriteWarning(Resources.VaultNoAccessPolicyWarning);
+                    WriteWarning(PSKeyVaultProperties.Resources.VaultNoAccessPolicyWarning);
                 }
             }
         }

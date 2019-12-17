@@ -65,6 +65,7 @@ if ($ValidateMarkdownHelp)
     Add-Content "$NewExceptionsPath\ValidateHelpIssues.csv" "Target,Description"
     $FilteredHelpFolders | foreach { Test-AzMarkdownHelp $_.FullName $SuppressedExceptionsPath $NewExceptionsPath }
     $Exceptions = Import-Csv "$NewExceptionsPath\ValidateHelpIssues.csv"
+    Write-Host '==========================================' -ForegroundColor Green
     if (($Exceptions | Measure-Object).Count -gt 0)
     {
         $Exceptions | ft

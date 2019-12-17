@@ -13,49 +13,35 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Globalization;
 using System.Management.Automation;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultManagedStorageAccountKey",DefaultParameterSetName = ByDefinitionNameParameterSet, SupportsShouldProcess = true)]
-    [OutputType( typeof( PSKeyVaultManagedStorageAccount ) )]
+    [Cmdlet( VerbsData.Update, CmdletNoun.AzureKeyVaultManagedStorageAccountKey,
+        SupportsShouldProcess = true,
+        ConfirmImpact = ConfirmImpact.Medium,
+        HelpUri = Constants.KeyVaultHelpUri )]
+    [OutputType( typeof( ManagedStorageAccount ) )]
     public class UpdateAzureKeyVaultManagedStorageAccountKey : KeyVaultCmdletBase
     {
-        #region Parameter Set Names
-
-        private const string ByDefinitionNameParameterSet = "ByDefinitionName";
-        private const string ByInputObjectParameterSet = "ByInputObject";
-
-        #endregion
-
         #region Input Parameter Definitions
         [Parameter( Mandatory = true,
             Position = 0,
-            ParameterSetName = ByDefinitionNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
-        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
         [Parameter( Mandatory = true,
             Position = 1,
-            ParameterSetName = ByDefinitionNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key Vault managed storage account name. Cmdlet constructs the FQDN of a managed storage account name from vault name, currently " +
                           "selected environment and manged storage account name." )]
         [ValidateNotNullOrEmpty]
         [Alias( Constants.StorageAccountName, Constants.Name )]
         public string AccountName { get; set; }
-
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ParameterSetName = ByInputObjectParameterSet,
-            ValueFromPipeline = true,
-            HelpMessage = "ManagedStorageAccount object.")]
-        [ValidateNotNullOrEmpty]
-        public PSKeyVaultManagedStorageAccountIdentityItem InputObject { get; set; }
 
         [Parameter( Mandatory = true,
             Position = 2,
@@ -77,13 +63,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            if (InputObject != null)
-            {
-                VaultName = InputObject.VaultName;
-                AccountName = InputObject.AccountName;
-            }
-
-            PSKeyVaultManagedStorageAccount managedManagedStorageAccount = null;
+            ManagedStorageAccount managedManagedStorageAccount = null;
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(

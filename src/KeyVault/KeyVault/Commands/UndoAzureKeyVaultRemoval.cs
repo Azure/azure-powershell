@@ -12,26 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.KeyVault.Models;
 using System.Collections;
 using System.Management.Automation;
+using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Undo", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultRemoval",SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
-    [OutputType(typeof(PSKeyVault))]
+    [Cmdlet(VerbsCommon.Undo, "AzKeyVaultRemoval",
+        SupportsShouldProcess = true,
+        HelpUri = Constants.KeyVaultHelpUri)]
+    [OutputType(typeof(PSKeyVaultModels.PSVault))]
     public class UndoAzureKeyVaultRemoval : KeyVaultManagementCmdletBase
     {
-        #region Parameter Set Names
-
-        private const string DefaultParameterSet = "Default";
-        private const string InputObjectParameterSet = "InputObject";
-
-        #endregion
-
         #region Input Parameter Definitions
 
         /// <summary>
@@ -39,29 +33,17 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
-            ParameterSetName = DefaultParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
-        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
-
-        /// <summary>
-        /// Vault object
-        /// </summary>
-        [Parameter(Mandatory = true,
-                   Position = 0,
-                   ParameterSetName = InputObjectParameterSet,
-                   ValueFromPipeline = true,
-                   HelpMessage = "Deleted vault object")]
-        [ValidateNotNullOrEmpty]
-        public PSDeletedKeyVault InputObject { get; set; }
 
         /// <summary>
         /// Resource group name
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 1,
-            ParameterSetName = DefaultParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the deleted vault resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
@@ -72,30 +54,23 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 2,
-            ParameterSetName = DefaultParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the deleted vault original Azure region.")]
         [LocationCompleter("Microsoft.KeyVault/vaults")]
         [ValidateNotNullOrEmpty()]
         public string Location { get; set; }
 
         [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Tag { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            if (InputObject != null)
-            {
-                VaultName = InputObject.VaultName;
-                Location = InputObject.Location;
-                var resourceIdentifier = new ResourceIdentifier(InputObject.ResourceId);
-                ResourceGroupName = resourceIdentifier.ResourceGroupName;
-            }
-
             if (ShouldProcess(VaultName, Properties.Resources.RecoverVault))
             {
-                var newVault = KeyVaultManagementClient.CreateNewVault(new VaultCreationParameters()
+                var newVault = KeyVaultManagementClient.CreateNewVault(new PSKeyVaultModels.VaultCreationParameters()
                 {
                     VaultName = this.VaultName,
                     ResourceGroupName = this.ResourceGroupName,

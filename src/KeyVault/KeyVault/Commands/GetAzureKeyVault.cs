@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,24 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
+using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVault",DefaultParameterSetName = GetVaultParameterSet)]
-    [OutputType(typeof(PSKeyVault), typeof(PSKeyVaultIdentityItem), typeof(PSDeletedKeyVault))]
+    [Cmdlet(VerbsCommon.Get, "AzKeyVault",        
+        HelpUri = Constants.KeyVaultHelpUri)]
+    [OutputType(typeof(PSKeyVaultModels.PSVault), typeof(List<PSKeyVaultModels.PSVaultIdentityItem>),
+        typeof(PSKeyVaultModels.PSDeletedVault), typeof(List<PSKeyVaultModels.PSDeletedVault>))]
     public class GetAzureKeyVault : KeyVaultManagementCmdletBase
     {
         #region Parameter Set Names
 
         private const string GetVaultParameterSet = "GetVaultByName";
         private const string GetDeletedVaultParameterSet = "ByDeletedVault";
+        private const string ListVaultsByRGParameterSet = "ListVaultsByResourceGroup";
+        private const string ListVaultsBySubParameterSet = "ListAllVaultsInSubscription";
         private const string ListDeletedVaultsParameterSet = "ListAllDeletedVaultsInSubscription";
 
         #endregion
@@ -39,7 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// Vault name
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = true,
             ParameterSetName = GetVaultParameterSet,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
@@ -49,10 +53,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
-        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "ResourceGroupName")]
         [Alias(Constants.Name)]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public string VaultName { get; set; }
 
         /// <summary>
@@ -63,13 +65,17 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = GetVaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the resource group associated with the key vault being queried.")]
+        [Parameter(Mandatory = true,
+            Position = 1,
+            ParameterSetName = ListVaultsByRGParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the name of a resource group. This cmdlet gets key vault instances in the resource group that this parameter specifies.")]
         [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
+        [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 1,
+            Position = 2,
             ParameterSetName = GetDeletedVaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location of the deleted vault.")]
@@ -90,7 +96,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(
             Mandatory = false,
-            ParameterSetName = GetVaultParameterSet,
+            ParameterSetName = ListVaultsBySubParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the key and optional value of the specified tag to filter the list of key vaults by.")]        
         public Hashtable Tag { get; set; }
@@ -102,21 +108,19 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 case GetVaultParameterSet:
                     ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
-                    PSKeyVault vault = null;
+                    PSKeyVaultModels.PSVault vault = null;
 
-                    if (ShouldGetByName(ResourceGroupName, VaultName))
-                    {
+                    if (!string.IsNullOrWhiteSpace(ResourceGroupName))
                         vault = KeyVaultManagementClient.GetVault(
                                                     VaultName,
                                                     ResourceGroupName,
                                                     ActiveDirectoryClient);
-                        WriteObject(FilterByTag(vault, Tag));
-                    }
-                    else
-                    {
-                        WriteObject(TopLevelWildcardFilter(ResourceGroupName, VaultName, ListVaults(ResourceGroupName, Tag)), true);
-                    }
-                    
+                    WriteObject(vault);
+                    break;
+
+                case ListVaultsByRGParameterSet:
+                case ListVaultsBySubParameterSet:
+                    WriteObject(ListVaults(ResourceGroupName, Tag), true);
                     break;
 
                 case GetDeletedVaultParameterSet:
@@ -128,7 +132,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     break;
 
                 default:
-                    throw new ArgumentException(Resources.BadParameterSetName);
+                    throw new ArgumentException(PSKeyVaultProperties.Resources.BadParameterSetName);
             }
         }
     }

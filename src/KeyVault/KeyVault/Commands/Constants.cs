@@ -4,6 +4,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     public static class Constants
     {
         public const string AccountName = "AccountName";
+        public const string KeyVaultHelpUri = "https://msdn.microsoft.com/en-us/library/dn868052.aspx";
         public const string Name = "Name";
         public const string KeyName = "KeyName";
         public const string SecretName = "SecretName";
@@ -17,13 +18,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         public const string StorageAccountName = "StorageAccountName";
         public const string StorageAccountResourceId = "StorageAccountResourceId";
         public const string TagsAlias = "Tags";
-        public const string EC = "EC";
-        public const string ECHSM = "EC-HSM";
-        public const string P256 = "P-256";
-        public const string P384 = "P-384";
-        public const string P521 = "P-521";
-        public const string P256K = "P-256K";
-        public const string SECP256K1 = "SECP256K1";
     }
 
     public static class CmdletNoun

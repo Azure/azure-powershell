@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,27 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultSecret",SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
-    [OutputType(typeof(PSKeyVaultSecret))]
+    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecret",
+        SupportsShouldProcess = true,
+        HelpUri = Constants.KeyVaultHelpUri)]
+    [OutputType(typeof(Secret))]
     public class SetAzureKeyVaultSecret : KeyVaultCmdletBase
     {
-        #region Parameter Set Names
-
-        private const string DefaultParameterSet = "Default";
-        private const string InputObjectParameterSet = "InputObject";
-
-        #endregion
-
         #region Input Parameter Definitions
 
         /// <summary>
@@ -41,9 +33,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
-            ParameterSetName = DefaultParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
-        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
@@ -52,22 +43,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 1,
-            ParameterSetName = DefaultParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.SecretName)]
         public string Name { get; set; }
-
-        /// <summary>
-        /// Secret object
-        /// </summary>
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ParameterSetName = InputObjectParameterSet,
-            ValueFromPipeline = true,
-            HelpMessage = "Secret object")]
-        [ValidateNotNullOrEmpty]
-        public PSKeyVaultSecretIdentityItem InputObject { get; set; }
 
         /// <summary>
         /// Secret value
@@ -88,6 +68,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Secret expires time in UTC time
         /// </summary>
         [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The expiration time of a secret in UTC time. If not specified, the secret will not expire.")]
         public DateTime? Expires { get; set; }
 
@@ -95,6 +76,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// The UTC time before which secret can't be used 
         /// </summary>
         [Parameter(Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
             HelpMessage = "The UTC time before which secret can't be used. If not specified, there is no limitation.")]
         public DateTime? NotBefore { get; set; }
 
@@ -102,6 +84,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Content type
         /// </summary>
         [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Secret's content type.")]
         public string ContentType { get; set; }
 
@@ -109,6 +92,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Secret tags
         /// </summary>
         [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable representing secret tags.")]
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }
@@ -117,20 +101,13 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            if (InputObject != null)
-            {
-                VaultName = InputObject.VaultName;
-                Name = InputObject.Name;
-            }
-
             if (ShouldProcess(Name, Properties.Resources.SetSecret))
             {
                 var secret = DataServiceClient.SetSecret(
                 VaultName,
                 Name,
                 SecretValue,
-                new PSKeyVaultSecretAttributes(!Disable.IsPresent, Expires, NotBefore, ContentType, 
-                    TagsConversionHelper.CreateTagHashtable(TagsConversionHelper.CreateTagDictionary(this.Tag, true))));
+                new SecretAttributes(!Disable.IsPresent, Expires, NotBefore, ContentType, Tag));
                 WriteObject(secret);
             }
         }

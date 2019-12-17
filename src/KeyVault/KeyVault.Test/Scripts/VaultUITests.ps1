@@ -10,7 +10,7 @@ function CreateAKVCertificate(
 {
     $pfxPath = Get-FilePathFromCommonData 'importpfx01.pfx'
     $securePfxPassword = ConvertTo-SecureString $pfxPassword -AsPlainText -Force
-    $createdCert = Import-AzKeyVaultCertificate $keyVault $certificateName -FilePath $pfxPath -Password $securePfxPassword
+    $createdCert = Import-AzureKeyVaultCertificate $keyVault $certificateName -FilePath $pfxPath -Password $securePfxPassword
     $global:createdCertificates += $certificateName
 
     return $createdCert
@@ -21,7 +21,7 @@ function CreateAKVManagedStorageAccount(
     [string] $managedStorageAccountName)
 {
     $storageAccountResourceId = Get-KeyVaultManagedStorageResourceId
-    $createdManagedStorageAccount = Add-AzKeyVaultManagedStorageAccount $keyVault $managedStorageAccountName $storageAccountResourceId 'key1' -DisableAutoRegenerateKey
+    $createdManagedStorageAccount = Add-AzureKeyVaultManagedStorageAccount $keyVault $managedStorageAccountName $storageAccountResourceId 'key1' -DisableAutoRegenerateKey
     return $createdManagedStorageAccount
 }
 
@@ -31,8 +31,8 @@ function CreateAKVManagedStorageSasDefinition(
     [string] $managedStorageSasDefinitionName)
 {
     $storageAccountResourceId = Get-KeyVaultManagedStorageResourceId
-    Add-AzKeyVaultManagedStorageAccount $keyVault $managedStorageAccountName $storageAccountResourceId 'key1' -DisableAutoRegenerateKey
-    $createdManagedStorageSasDefinition = Set-AzKeyVaultManagedStorageSasDefinition $keyVault $managedStorageAccountName $managedStorageSasDefinitionName -Parameter @{"sasType"="service";"serviceSasType"="blob";"signedResourceTypes"="b";"signedVersion"="2016-05-31";"signedProtocols"="https";"signedIp"="168.1.5.60-168.1.5.70";"validityPeriod"="P30D";"signedPermissions"="ra";"blobName"="blob1";"containerName"="container1";"rscd"="";"rscc"=""}
+    Add-AzureKeyVaultManagedStorageAccount $keyVault $managedStorageAccountName $storageAccountResourceId 'key1' -DisableAutoRegenerateKey
+    $createdManagedStorageSasDefinition = Set-AzureKeyVaultManagedStorageSasDefinition $keyVault $managedStorageAccountName $managedStorageSasDefinitionName -Parameter @{"sasType"="service";"serviceSasType"="blob";"signedResourceTypes"="b";"signedVersion"="2016-05-31";"signedProtocols"="https";"signedIp"="168.1.5.60-168.1.5.70";"validityPeriod"="P30D";"signedPermissions"="ra";"blobName"="blob1";"containerName"="container1";"rscd"="";"rscc"=""}
     return $createdManagedStorageSasDefinition
 }
 
@@ -45,16 +45,16 @@ function Test_RemoveKeyWithTwoConfirmations
     Write-Host -ForegroundColor Yellow "Type 'Yes' twice"
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'remove'
-    $key=Add-AzKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key
     $global:createdKeys += $keyname
     
     $cr=$global:ConfirmPreference
     $global:ConfirmPreference="High"    
-    Remove-AzKeyVaultKey -VaultName $keyVault -Name $keyname
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname
     $global:ConfirmPreference=$cr
     
-    $key = Get-AzKeyVaultKey  -VaultName $keyVault -Name $keyname
+    $key = Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname
     Assert-Null $key
 }
 
@@ -67,16 +67,16 @@ function Test_RemoveKeyWithOneConfirmations
     Write-Host -ForegroundColor Yellow "Type 'Yes' once"
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'remove'
-    $key=Add-AzKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key
     $global:createdKeys += $keyname
     
     $cr=$global:ConfirmPreference   
     $global:ConfirmPreference="High"     
-    Remove-AzKeyVaultKey -VaultName $keyVault -Name $keyname -Force
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Force
     $global:ConfirmPreference=$cr
 
-    $key = Get-AzKeyVaultKey  -VaultName $keyVault -Name $keyname
+    $key = Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname
     Assert-Null $key
 }
 
@@ -89,16 +89,16 @@ function Test_CancelKeyRemovalOnce
     Write-Host -ForegroundColor Yellow "Type 'No' once"
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'remove'
-    $key=Add-AzKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key
     $global:createdKeys += $keyname
     
     $cr=$global:ConfirmPreference    
     $global:ConfirmPreference="High"    
-    Remove-AzKeyVaultKey -VaultName $keyVault -Name $keyname       
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname       
     $global:ConfirmPreference=$cr
 
-    $key=Get-AzKeyVaultKey  -VaultName $keyVault -Name $keyname
+    $key=Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname
     Assert-NotNull $key
 }
 
@@ -111,16 +111,16 @@ function Test_ConfirmThenCancelKeyRemoval
     Write-Host -ForegroundColor Yellow "Type 'Yes' first. Then type 'No'"
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'remove'
-    $key=Add-AzKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key
     $global:createdKeys += $keyname
     
     $cr=$global:ConfirmPreference   
     $global:ConfirmPreference="High"     
-    Remove-AzKeyVaultKey -VaultName $keyVault -Name $keyname
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname
     $global:ConfirmPreference=$cr
 
-    $key=Get-AzKeyVaultKey  -VaultName $keyVault -Name $keyname
+    $key=Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname
     Assert-NotNull $key
 }
 
@@ -135,16 +135,16 @@ function Test_RemoveSecretWithTwoConfirmations
     Write-Host -ForegroundColor Yellow "Type 'Yes' twice"
     $keyVault = Get-KeyVault
     $secretname= Get-SecretName 'remove'  
-    $sec=Set-AzKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
+    $sec=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
     Assert-NotNull $sec
     $global:createdSecrets += $secretname   
        
     $cr=$global:ConfirmPreference    
     $global:ConfirmPreference="High"    
-    Remove-AzKeyVaultSecret -VaultName $keyVault -Name $secretname 
+    Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname 
     $global:ConfirmPreference=$cr
 	
-    $secret = Get-AzKeyVaultSecret -VaultName $keyVault -Name $secretname
+    $secret = Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname
     Assert-Null $secret
 }
 
@@ -157,16 +157,16 @@ function Test_RemoveSecretWithOneConfirmations
     Write-Host -ForegroundColor Yellow "Type 'Yes' once"
     $keyVault = Get-KeyVault
     $secretname= Get-SecretName 'remove'  
-    $sec=Set-AzKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
+    $sec=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
     Assert-NotNull $sec
     $global:createdSecrets += $secretname   
        
     $cr=$global:ConfirmPreference   
     $global:ConfirmPreference="High"    
-    Remove-AzKeyVaultSecret -VaultName $keyVault -Name $secretname  -Force
+    Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -Force
     $global:ConfirmPreference=$cr
 
-    $secret = Get-AzKeyVaultSecret -VaultName $keyVault -Name $secretname
+    $secret = Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname
     Assert-Null $secret
 }
 
@@ -179,16 +179,16 @@ function Test_CancelSecretRemovalOnce
     Write-Host -ForegroundColor Yellow "Type 'No' once"
     $keyVault = Get-KeyVault
     $secretname= Get-SecretName 'remove'  
-    $sec=Set-AzKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
+    $sec=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
     Assert-NotNull $sec
     $global:createdSecrets += $secretname   
        
     $cr=$global:ConfirmPreference    
     $global:ConfirmPreference="High"    
-    Remove-AzKeyVaultSecret -VaultName $keyVault -Name $secretname
+    Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname
     $global:ConfirmPreference=$cr
 
-    $sec=Get-AzKeyVaultSecret -VaultName $keyVault -Name $secretname 
+    $sec=Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname 
     Assert-NotNull $sec
 }
 
@@ -201,16 +201,16 @@ function Test_ConfirmThenCancelSecretRemoval
     Write-Host -ForegroundColor Yellow "Type 'Yes' first. Then type 'No'"
     $keyVault = Get-KeyVault
     $secretname= Get-SecretName 'remove'  
-    $sec=Set-AzKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
+    $sec=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
     Assert-NotNull $sec
     $global:createdSecrets += $secretname   
        
     $cr=$global:ConfirmPreference    
     $global:ConfirmPreference="High"
-    Remove-AzKeyVaultSecret -VaultName $keyVault -Name $secretname  
+    Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  
     $global:ConfirmPreference=$cr
 
-    $sec=Get-AzKeyVaultSecret -VaultName $keyVault -Name $secretname 
+    $sec=Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname 
     Assert-NotNull $sec
 }
 
@@ -229,10 +229,10 @@ function Test_RemoveCertificateWithTwoConfirmations
 
     $cr=$global:ConfirmPreference
     $global:ConfirmPreference="High"
-    Remove-AzKeyVaultCertificate -VaultName $keyVault -Name $certificateName
+    Remove-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName
     $global:ConfirmPreference=$cr
 	
-    $cert = Get-AzKeyVaultCertificate -VaultName $keyVault -Name $certificateName
+    $cert = Get-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName
     Assert-Null $cert
 }
 
@@ -251,10 +251,10 @@ function Test_RemoveCertificateWithOneConfirmations
 
     $cr=$global:ConfirmPreference
     $global:ConfirmPreference="High"
-    Remove-AzKeyVaultCertificate -VaultName $keyVault -Name $certificateName -Force
+    Remove-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName -Force
     $global:ConfirmPreference=$cr
 
-    $cert = Get-AzKeyVaultCertificate -VaultName $keyVault -Name $certificateName
+    $cert = Get-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName
     Assert-Null $cert
 }
 
@@ -273,10 +273,10 @@ function Test_CancelCertificateRemovalOnce
 
     $cr=$global:ConfirmPreference
     $global:ConfirmPreference="High"
-    Remove-AzKeyVaultCertificate -VaultName $keyVault -Name $certificateName
+    Remove-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName
     $global:ConfirmPreference=$cr
 
-    $sec=Get-AzKeyVaultCertificate -VaultName $keyVault -Name $certificateName
+    $sec=Get-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName
     Assert-NotNull $sec
 }
 
@@ -295,10 +295,10 @@ function Test_ConfirmThenCancelCertificateRemoval
 
     $cr=$global:ConfirmPreference
     $global:ConfirmPreference="High"
-    Remove-AzKeyVaultCertificate -VaultName $keyVault -Name $certificateName
+    Remove-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName
     $global:ConfirmPreference=$cr
 
-    $sec=Get-AzKeyVaultCertificate -VaultName $keyVault -Name $certificateName
+    $sec=Get-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName
     Assert-NotNull $sec
 }
 
@@ -317,10 +317,10 @@ function Test_RemoveManagedStorageAccountWithTwoConfirmations
 
     $cr=$global:ConfirmPreference
     $global:ConfirmPreference="High"
-    Remove-AzKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName
+    Remove-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName
     $global:ConfirmPreference=$cr
 
-    Assert-Throws { Get-AzKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName }
+    Assert-Throws { Get-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName }
 }
 
 <#
@@ -338,10 +338,10 @@ function Test_RemoveManagedStorageAccountWithOneConfirmations
 
     $cr=$global:ConfirmPreference
     $global:ConfirmPreference="High"
-    Remove-AzKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName -Force
+    Remove-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName -Force
     $global:ConfirmPreference=$cr
 
-    Assert-Throws { Get-AzKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName }
+    Assert-Throws { Get-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName }
 }
 
 <#
@@ -359,10 +359,10 @@ function Test_CancelManagedStorageAccountRemovalOnce
 
     $cr=$global:ConfirmPreference
     $global:ConfirmPreference="High"
-    Remove-AzKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName
+    Remove-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName
     $global:ConfirmPreference=$cr
 
-    $sec=Get-AzKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName
+    $sec=Get-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName
     Assert-NotNull $sec
 }
 
@@ -381,10 +381,10 @@ function Test_ConfirmThenCancelManagedStorageAccountRemoval
 
     $cr=$global:ConfirmPreference
     $global:ConfirmPreference="High"
-    Remove-AzKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName
+    Remove-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName
     $global:ConfirmPreference=$cr
 
-    $sec=Get-AzKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName
+    $sec=Get-AzureKeyVaultManagedStorageAccount -VaultName $keyVault -AccountName $managedStorageAccountName
     Assert-NotNull $sec
 }
 
@@ -404,10 +404,10 @@ function Test_RemoveManagedStorageSasDefinitionWithTwoConfirmations
 
     $cr=$global:ConfirmPreference
     $global:ConfirmPreference="High"
-    Remove-AzKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName
+    Remove-AzureKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName
     $global:ConfirmPreference=$cr
 
-    Assert-Throws { Get-AzKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName }
+    Assert-Throws { Get-AzureKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName }
 }
 
 <#
@@ -426,10 +426,10 @@ function Test_RemoveManagedStorageSasDefinitionWithOneConfirmations
 
     $cr=$global:ConfirmPreference
     $global:ConfirmPreference="High"
-    Remove-AzKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName -Force
+    Remove-AzureKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName -Force
     $global:ConfirmPreference=$cr
 
-    Assert-Throws { Get-AzKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName }
+    Assert-Throws { Get-AzureKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName }
 }
 
 <#
@@ -448,10 +448,10 @@ function Test_CancelManagedStorageSasDefinitionRemovalOnce
 
     $cr=$global:ConfirmPreference
     $global:ConfirmPreference="High"
-    Remove-AzKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName
+    Remove-AzureKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName
     $global:ConfirmPreference=$cr
 
-    $sec=Get-AzKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName
+    $sec=Get-AzureKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName
     Assert-NotNull $sec
 }
 
@@ -471,9 +471,9 @@ function Test_ConfirmThenCancelManagedStorageSasDefinitionRemoval
 
     $cr=$global:ConfirmPreference
     $global:ConfirmPreference="High"
-    Remove-AzKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName
+    Remove-AzureKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName
     $global:ConfirmPreference=$cr
 
-    $sec=Get-AzKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName
+    $sec=Get-AzureKeyVaultManagedStorageSasDefinition -VaultName $keyVault -AccountName $managedStorageAccountName -Name $managedStorageSasDefinitionName
     Assert-NotNull $sec
 }

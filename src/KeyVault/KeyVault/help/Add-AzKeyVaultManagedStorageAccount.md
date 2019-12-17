@@ -1,5 +1,5 @@
 ﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
+external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
 schema: 2.0.0
@@ -13,40 +13,23 @@ Adds an existing Azure Storage Account to the specified key vault for its keys t
 ## SYNTAX
 
 ```
-Add-AzKeyVaultManagedStorageAccount [-VaultName] <String> [-AccountName] <String> [-AccountResourceId] <String>
- [-ActiveKeyName] <String> [-DisableAutoRegenerateKey] [-RegenerationPeriod <TimeSpan>] [-Disable]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzKeyVaultManagedStorageAccount [-VaultName] <String> [-AccountName] <String>
+ [-AccountResourceId] <String> [-ActiveKeyName] <String> [-DisableAutoRegenerateKey]
+ [-RegenerationPeriod <TimeSpan>] [-Disable] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Sets up an existing Azure Storage Account with Key Vault for Storage Account keys to be managed by
 Key Vault. The Storage Account must already exist. The Storage Keys are never exposed to caller.
-Key Vault auto regenerates and switches the active key based on the regeneration period. See [Azure Key Vault managed storage account - PowerShell](https://docs.microsoft.com/azure/key-vault/key-vault-overview-storage-keys-powershell) for an overview of this feature.
+Key Vault auto regenerates and switches the active key based on the regeneration period.
 
 ## EXAMPLES
 
 ### Example 1: Set an Azure Storage Account with Key Vault to manage its keys
-```powershell
-PS C:\> $storage = Get-AzStorageAccount -ResourceGroupName "mystorageResourceGroup" -StorageAccountName "mystorage"
-PS C:\> $servicePrincipal = Get-AzADServicePrincipal -ServicePrincipalName cfa8b339-82a2-471a-a3c9-0fc0be7a4093
-PS C:\> New-AzRoleAssignment -ObjectId $servicePrincipal.Id -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storage.Id
-PS C:\> $userPrincipalId = $(Get-AzADUser -SearchString "developer@contoso.com").Id
-PS C:\> Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $userPrincipalId -PermissionsToStorage get, set
+```
 PS C:\> $regenerationPeriod = [System.Timespan]::FromDays(90)
-PS C:\> Add-AzKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -AccountResourceId '/subscriptions/<subscription id>/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount' -ActiveKeyName 'key1' -RegenerationPeriod $regenerationPeriod
-
-Id                  : https://myvault.vault.azure.net:443/storage/mystorageaccount
-Vault Name          : myvault
-AccountName         : mystorageaccount
-Account Resource Id : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.St
-                      orage/storageAccounts/mystorageaccount
-Active Key Name     : key1
-Auto Regenerate Key : True
-Regeneration Period : 90.00:00:00
-Enabled             : True
-Created             : 5/21/2018 11:55:58 PM
-Updated             : 5/21/2018 11:55:58 PM
-Tags                :
+PS C:\> Add-AzKeyVaultManagedStorageAccount -VaultName 'myvault' -ResourceId '/subscriptions/<subscription id>/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount' -ActiveKeyName 'key1' -RegenerationPeriod $regenerationPeriod
 ```
 
 Sets a Storage Account with Key Vault for its keys to be managed by Key Vault. The active key set
@@ -55,22 +38,9 @@ the regeneration period from the time of this command and set it as the active k
 regeneration process will continue between 'key1' and 'key2' with a gap of 90 days.
 
 ### Example 2: Set a Classic Azure Storage Account with Key Vault to manage its keys
-```powershell
+```
 PS C:\> $regenerationPeriod = [System.Timespan]::FromDays(90)
-PS C:\> Add-AzKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -AccountResourceId '/subscriptions/<subscription id>/resourceGroups/myresourcegroup/providers/Microsoft.ClassicStorage/storageAccounts/mystorageaccount' -ActiveKeyName 'Primary' -RegenerationPeriod $regenerationPeriod
-
-Id                  : https://myvault.vault.azure.net:443/storage/mystorageaccount
-Vault Name          : myvault
-AccountName         : mystorageaccount
-Account Resource Id : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myvault/providers/Microsoft.Cl
-                      assicStorage/storageAccounts/mystorageaccount
-Active Key Name     : Primary
-Auto Regenerate Key : True
-Regeneration Period : 90.00:00:00
-Enabled             : True
-Created             : 5/21/2018 11:55:58 PM
-Updated             : 5/21/2018 11:55:58 PM
-Tags                :
+PS C:\> Add-AzKeyVaultManagedStorageAccount -VaultName 'myvault' -ResourceId '/subscriptions/<subscription id>/resourceGroups/myresourcegroup/providers/Microsoft.ClassicStorage/storageAccounts/mystorageaccount' -ActiveKeyName 'Primary' -RegenerationPeriod $regenerationPeriod
 ```
 
 Sets a Classic Storage Account with Key Vault for its keys to be managed by Key Vault. The active
@@ -86,7 +56,7 @@ Key Vault managed storage account name. Cmdlet constructs the FQDN of a managed 
 name from vault name, currently selected environment and manged storage account name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: StorageAccountName, Name
 
@@ -101,7 +71,7 @@ Accept wildcard characters: False
 Azure resource id of the storage account.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: StorageAccountResourceId
 
@@ -116,9 +86,9 @@ Accept wildcard characters: False
 Name of the storage account key that must be used for generating sas tokens.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 3
@@ -131,9 +101,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -146,9 +116,9 @@ Accept wildcard characters: False
 Disables the use of managed storage account's key for generation of sas tokens.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -163,9 +133,9 @@ and becomes the new active key after the regeneration period. If false, then the
 storage account are not auto regenerated.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -179,9 +149,9 @@ Regeneration period. If auto regenerate key is enabled, this value specifies the
 which managed storage account's inactive keygets auto regenerated and becomes the new active key.
 
 ```yaml
-Type: System.Nullable`1[System.TimeSpan]
+Type: TimeSpan
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -192,10 +162,11 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
+
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -211,9 +182,9 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -226,7 +197,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -242,7 +213,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -258,18 +229,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Nullable`1[[System.TimeSpan, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-
-### System.Collections.Hashtable
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccount
+### Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccount
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Az.KeyVault](/powershell/module/az.keyvault)
+[Az.KeyVault](/powershell/module/Az.keyvault)

@@ -1,8 +1,8 @@
 ﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
+external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 28BC1B99-946C-4A8D-9581-4D5CC0BCEF8B
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.keyvault/set-AzKeyvaultcertificatepolicy
 schema: 2.0.0
 ---
 
@@ -13,36 +13,25 @@ Creates or updates the policy for a certificate in a key vault.
 
 ## SYNTAX
 
-### ExpandedRenewPercentage (Default)
+### Expanded (Default)
 ```
-Set-AzKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String> [-RenewAtPercentageLifetime <Int32>]
- [-SecretContentType <String>] [-ReuseKeyOnRenewal <Boolean>] [-Disabled] [-SubjectName <String>]
- [-DnsName <System.Collections.Generic.List`1[System.String]>]
- [-KeyUsage <System.Collections.Generic.List`1[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags]>]
+Set-AzKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String> [-SecretContentType <String>]
+ [-ReuseKeyOnRenewal <Boolean>] [-Disabled] [-SubjectName <String>]
+ [-DnsNames <System.Collections.Generic.List`1[System.String]>]
+ [-KeyUsage <System.Collections.Generic.List`1[System.String]>]
  [-Ekus <System.Collections.Generic.List`1[System.String]>] [-ValidityInMonths <Int32>] [-IssuerName <String>]
- [-CertificateType <String>] [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>]
- [-KeySize <Int32>] [-KeyType <String>] [-Curve <String>] [-KeyNotExportable] [-CertificateTransparency <Boolean>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CertificateType <String>] [-RenewAtNumberOfDaysBeforeExpiry <Int32>] [-RenewAtPercentageLifetime <Int32>]
+ [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>] [-KeyType <String>]
+ [-KeyNotExportable] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByValue
 ```
 Set-AzKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String>
- [-InputObject] <PSKeyVaultCertificatePolicy> [-EmailAtNumberOfDaysBeforeExpiry <Int32>]
- [-EmailAtPercentageLifetime <Int32>] [-KeySize <Int32>] [-KeyType <String>] [-Curve <String>] [-CertificateTransparency <Boolean>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ExpandedRenewNumber
-```
-Set-AzKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String> -RenewAtNumberOfDaysBeforeExpiry <Int32>
- [-SecretContentType <String>] [-ReuseKeyOnRenewal <Boolean>] [-Disabled] [-SubjectName <String>]
- [-DnsName <System.Collections.Generic.List`1[System.String]>]
- [-KeyUsage <System.Collections.Generic.List`1[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags]>]
- [-Ekus <System.Collections.Generic.List`1[System.String]>] [-ValidityInMonths <Int32>] [-IssuerName <String>]
- [-CertificateType <String>] [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>]
- [-KeySize <Int32>] [-KeyType <String>] [-Curve <String>] [-KeyNotExportable] [-CertificateTransparency <Boolean>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>] [-KeyType <String>]
+ [[-CertificatePolicy] <KeyVaultCertificatePolicy>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,48 +40,26 @@ The **Set-AzKeyVaultCertificatePolicy** cmdlet creates or updates the policy for
 ## EXAMPLES
 
 ### Example 1: Set a certificate policy
-```powershell
-PS C:\> Set-AzKeyVaultCertificatePolicy -VaultName "ContosoKV01" -Name "TestCert01" -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal $True -PassThru
-
-SecretContentType               : application/x-pkcs12
-Kty                             :
-KeySize                         : 2048
-Curve                           :
-Exportable                      :
-ReuseKeyOnRenewal               : True
-SubjectName                     : CN=contoso.com
-DnsNames                        :
-KeyUsage                        :
-Ekus                            :
-ValidityInMonths                : 6
-IssuerName                      : Self
-CertificateType                 :
-RenewAtNumberOfDaysBeforeExpiry :
-RenewAtPercentageLifetime       :
-EmailAtNumberOfDaysBeforeExpiry :
-EmailAtPercentageLifetime       :
-CertificateTransparency         :
-Enabled                         : True
-Created                         :
-Updated                         :
+```
+PS C:\>Set-AzKeyVaultCertificatePolicy -VaultName "ContosoKV01" -Name "TestCert01" -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal $True
 ```
 
 This command sets the policy for the TestCert01 certificate in the ContosoKV01 key vault.
 
 ## PARAMETERS
 
-### -CertificateTransparency
-Indicates whether certificate transparency is enabled for this certificate/issuer; if not specified, the default is 'true'
+### -CertificatePolicy
+Specifies the certificate policy.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
-Aliases:
+Type: KeyVaultCertificatePolicy
+Parameter Sets: ByValue
+Aliases: 
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -100,14 +67,14 @@ Accept wildcard characters: False
 Specifies the type of certificate to the issuer.
 
 ```yaml
-Type: System.String
-Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
+Type: String
+Parameter Sets: Expanded
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -115,9 +82,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -130,29 +97,29 @@ Accept wildcard characters: False
 Indicates that the certificate policy is disabled.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
+Type: SwitchParameter
+Parameter Sets: Expanded
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DnsName
-Specifies the subject name of the certificate.
+### -DnsNames
+Specifies the DNS names in the certificate.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases: DnsNames
+Parameter Sets: Expanded
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -161,28 +128,28 @@ Specifies the enhanced key usages (EKUs) in the certificate.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
+Parameter Sets: Expanded
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -EmailAtNumberOfDaysBeforeExpiry
-Specifies the number of days before expiration when automatic renewal should start.
+Specifies how many days before expiry the automatic notification process begins.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -190,29 +157,14 @@ Accept wildcard characters: False
 Specifies the percentage of the lifetime after which the automatic process for the notification begins.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Specifies the certificate policy.
-
-```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificatePolicy
-Parameter Sets: ByValue
-Aliases: CertificatePolicy
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -220,14 +172,14 @@ Accept wildcard characters: False
 Specifies the name of the issuer for this certificate.
 
 ```yaml
-Type: System.String
-Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
+Type: String
+Parameter Sets: Expanded
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -235,36 +187,13 @@ Accept wildcard characters: False
 Indicates that the key is not exportable.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
+Type: SwitchParameter
+Parameter Sets: Expanded
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KeySize
-Specifies the key size of the certificate.
-The acceptable values for this parameter are:
-- 2048
-- 3072
-- 4096
-- 256
-- 384
-- 521
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-Accepted values: 2048, 3072, 4096, 256, 384, 521
-
-Required: False
-Position: Named
-Default value: 2048
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -272,38 +201,15 @@ Accept wildcard characters: False
 ### -KeyType
 Specifies the key type of the key that backs the certificate.
 The acceptable values for this parameter are:
+
 - RSA
 - RSA-HSM
-- EC
-- EC-HSM
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
-Accepted values: RSA, RSA-HSM, EC, EC-HSM
-
-Required: False
-Position: Named
-Default value: RSA
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Curve
-Specifies the elliptic curve name of the key of the certificate.
-The acceptable values for this parameter are:
-- P-256
-- P-384
-- P-521
-- P-256K
-- SECP256K1
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: P-256, P-384, P-521, P-256K, SECP256K1
+Aliases: 
+Accepted values: RSA, RSA-HSM
 
 Required: False
 Position: Named
@@ -316,15 +222,14 @@ Accept wildcard characters: False
 Specifies the key usages in the certificate.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags]
-Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
-Accepted values: None, EncipherOnly, CrlSign, KeyCertSign, KeyAgreement, DataEncipherment, KeyEncipherment, NonRepudiation, DigitalSignature, DecipherOnly
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: Expanded
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -332,14 +237,14 @@ Accept wildcard characters: False
 Specifies the name of the certificate.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: CertificateName
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -348,9 +253,9 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -363,14 +268,14 @@ Accept wildcard characters: False
 Specifies the number of days before expiry after which the automatic process for certificate renewal begins.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: ExpandedRenewNumber
-Aliases:
+Type: Int32
+Parameter Sets: Expanded
+Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -378,14 +283,14 @@ Accept wildcard characters: False
 Specifies the percentage of the lifetime after which the automatic process for certificate renewal begins.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: ExpandedRenewPercentage
-Aliases:
+Type: Int32
+Parameter Sets: Expanded
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -393,33 +298,34 @@ Accept wildcard characters: False
 Indicates that the certificate reuse the key during renewal.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
-Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
+Type: Boolean
+Parameter Sets: Expanded
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -SecretContentType
 Specifies the content type of the new key vault secret.
 The acceptable values for this parameter are:
+
 - application/x-pkcs12
 - application/x-pem-file
 
 ```yaml
-Type: System.String
-Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
+Type: String
+Parameter Sets: Expanded
+Aliases: 
 Accepted values: application/x-pkcs12, application/x-pem-file
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -427,14 +333,14 @@ Accept wildcard characters: False
 Specifies the subject name of the certificate.
 
 ```yaml
-Type: System.String
-Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
+Type: String
+Parameter Sets: Expanded
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -442,14 +348,14 @@ Accept wildcard characters: False
 Specifies the number of months the certificate is valid.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
+Type: Int32
+Parameter Sets: Expanded
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -457,14 +363,14 @@ Accept wildcard characters: False
 Specifies the name of a key vault.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -472,7 +378,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -488,7 +394,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -504,11 +410,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificatePolicy
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificatePolicy
+### Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy
 
 ## NOTES
 

@@ -1,8 +1,8 @@
 ﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
+external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 9FC72DE9-46BB-4CB5-9880-F53756DBE012
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/set-azkeyvaultsecret
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.keyvault/set-AzKeyvaultsecret
 schema: 2.0.0
 ---
 
@@ -13,16 +13,8 @@ Creates or updates a secret in a key vault.
 
 ## SYNTAX
 
-### Default (Default)
 ```
 Set-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [-SecretValue] <SecureString> [-Disable]
- [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### InputObject
-```
-Set-AzKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [-SecretValue] <SecureString> [-Disable]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -35,58 +27,35 @@ cmdlet creates a new version of that secret.
 ## EXAMPLES
 
 ### Example 1: Modify the value of a secret using default attributes
-```powershell
+```
 PS C:\> $Secret = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
 PS C:\> Set-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret
-
-Vault Name   : Contoso
-Name         : ITSecret
-Version      : 8b5c0cb0326e4350bd78200fac932b51
-Id           : https://contoso.vault.azure.net:443/secrets/ITSecret/8b5c0cb0326e4350bd78200fac932b51
-Enabled      : True
-Expires      :
-Not Before   :
-Created      : 5/25/2018 6:39:30 PM
-Updated      : 5/25/2018 6:39:30 PM
-Content Type :
-Tags         :
 ```
 
 The first command converts a string into a secure string by using the **ConvertTo-SecureString**
 cmdlet, and then stores that string in the $Secret variable. For more information, type `Get-Help
 ConvertTo-SecureString`.
+
 The second command modifies value of the secret named ITSecret in the key vault named Contoso. The
 secret value becomes the value stored in $Secret.
 
 ### Example 2: Modify the value of a secret using custom attributes
-```powershell
+```
 PS C:\> $Secret = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
 PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
 PS C:\> $NBF =(Get-Date).ToUniversalTime()
-PS C:\> $Tags = @{ 'Severity' = 'medium'; 'IT' = 'true'}
+PS C:\> $Tags = @{ 'Severity' = 'medium'; 'IT' = null }
 PS C:\> $ContentType = 'txt'
-PS C:\> Set-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret -Expires $Expires -NotBefore $NBF -ContentType $ContentType -Disable -Tags $Tags
-
-Vault Name   : Contoso
-Name         : ITSecret
-Version      : a2c150be3ea24dd6b8286986e6364851
-Id           : https://contoso.vault.azure.net:443/secrets/ITSecret/a2c150be3ea24dd6b8286986e6364851
-Enabled      : False
-Expires      : 5/25/2020 6:40:00 PM
-Not Before   : 5/25/2018 6:40:05 PM
-Created      : 5/25/2018 6:41:22 PM
-Updated      : 5/25/2018 6:41:22 PM
-Content Type : txt
-Tags         : Name      Value
-               Severity  medium
-               IT        true
+PS C:\> Set-AzKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret -Expires $Expires -NotBefore $NBF -ContentType $ContentType -Disable $False -Tags $Tags
 ```
 
 The first command converts a string into a secure string by using the **ConvertTo-SecureString**
 cmdlet, and then stores that string in the $Secret variable. For more information, type `Get-Help
 ConvertTo-SecureString`.
+
 The next commands define custom attributes for the expiry date, tags, and context type, and store
 the attributes in variables.
+
 The final command modifies values of the secret named ITSecret in the key vault named Contoso, by
 using the values specified previously as variables.
 
@@ -97,14 +66,14 @@ Specifies the content type of a secret.
 To delete the existing content type, specify an empty string.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -112,9 +81,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -127,9 +96,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet disables a secret.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -144,29 +113,14 @@ This parameter uses Coordinated Universal Time (UTC). To obtain a **DateTime** o
 **Get-Date** cmdlet. For more information, type `Get-Help Get-Date`.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: DateTime
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Secret object
-
-```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
-Parameter Sets: InputObject
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -176,14 +130,14 @@ Specifies the name of a secret to modify. This cmdlet constructs the fully quali
 your current environment.
 
 ```yaml
-Type: System.String
-Parameter Sets: Default
+Type: String
+Parameter Sets: (All)
 Aliases: SecretName
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -192,14 +146,14 @@ Specifies the time, as a **DateTime** object, before which the secret cannot be 
 parameter uses UTC. To obtain a **DateTime** object, use the **Get-Date** cmdlet.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: DateTime
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -209,9 +163,9 @@ object, use the **ConvertTo-SecureString** cmdlet. For more information, type `G
 ConvertTo-SecureString`.
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 2
@@ -222,17 +176,18 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
+
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -241,14 +196,14 @@ Specifies the name of the key vault to which this secret belongs. This cmdlet co
 of a key vault based on the name that this parameter specifies and your current environment.
 
 ```yaml
-Type: System.String
-Parameter Sets: Default
-Aliases:
+Type: String
+Parameter Sets: (All)
+Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -256,7 +211,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -272,7 +227,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -288,11 +243,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecret
+### Microsoft.Azure.Commands.KeyVault.Models.Secret
 
 ## NOTES
 

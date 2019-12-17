@@ -273,7 +273,7 @@ function Run-AllDataPlaneTests
         Run-TestProtected { Run-KeyTest {Test_PipelineRemoveDeletedCertificates} "Test_PipelineRemoveDeletedCertificate" } "Test_PipelineRemoveDeletedCertificates"
     }
 
-    # Add-AzKeyVaultKey tests.
+    # Add-AzureKeyVaultKey tests.
     Run-TestProtected { Run-KeyTest {Test_CreateSoftwareKeyWithDefaultAttributes} "Test_CreateSoftwareKeyWithDefaultAttributes" } "Test_CreateSoftwareKeyWithDefaultAttributes"
     Run-TestProtected { Run-KeyTest {Test_CreateSoftwareKeyWithCustomAttributes} "Test_CreateSoftwareKeyWithCustomAttributes" } "Test_CreateSoftwareKeyWithCustomAttributes"
 
@@ -311,7 +311,7 @@ function Run-AllDataPlaneTests
     Run-TestProtected { Run-KeyTest {Test_ImportByokAsSoftwareKey} "Test_ImportByokAsSoftwareKey" } "Test_ImportByokAsSoftwareKey"
     Run-TestProtected { Run-KeyTest {Test_CreateKeyInNoPermissionVault} "Test_CreateKeyInNoPermissionVault" } "Test_CreateKeyInNoPermissionVault"
 
-    # Set-AzKeyVaultKeyAttribute tests.
+    # Set-AzureKeyVaultKeyAttribute tests.
     Run-TestProtected { Run-KeyTest {Test_UpdateIndividualKeyAttributes} "Test_UpdateIndividualKeyAttributes" } "Test_UpdateIndividualKeyAttributes"
     Run-TestProtected { Run-KeyTest {Test_UpdateAllEditableKeyAttributes} "Test_UpdateAllEditableKeyAttributes" } "Test_UpdateAllEditableKeyAttributes"
     Run-TestProtected { Run-KeyTest {Test_UpdateKeyWithNoChange} "Test_UpdateKeyWithNoChange" } "Test_UpdateKeyWithNoChange"
@@ -323,7 +323,7 @@ function Run-AllDataPlaneTests
     Run-TestProtected { Run-KeyTest {Test_SetInvalidKeyAttributes} "Test_SetInvalidKeyAttributes" } "Test_SetInvalidKeyAttributes"
     Run-TestProtected { Run-KeyTest {Test_SetKeyInNoPermissionVault} "Test_SetKeyInNoPermissionVault" } "Test_SetKeyInNoPermissionVault"
 
-    # Get-AzKeyVaultKey tests.
+    # Get-AzureKeyVaultKey tests.
     Run-TestProtected { Run-KeyTest {Test_GetOneKey} "Test_GetOneKey" } "Test_GetOneKey"
     Run-TestProtected { Run-KeyTest {Test_GetPreviousVersionOfKey} "Test_GetPreviousVersionOfKey" } "Test_GetPreviousVersionOfKey"
     Run-TestProtected { Run-KeyTest {Test_GetKeyPositionalParameter} "Test_GetKeyPositionalParameter" } "Test_GetKeyPositionalParameter"
@@ -334,7 +334,7 @@ function Run-AllDataPlaneTests
     Run-TestProtected { Run-KeyTest {Test_GetAllKeys} "Test_GetAllKeys" } "Test_GetAllKeys"
     Run-TestProtected { Run-KeyTest {Test_GetKeyVersions} "Test_GetKeyVersions" } "Test_GetKeyVersions"
 
-    # Remove-AzKeyVaultKey tests.
+    # Remove-AzureKeyVaultKey tests.
     Run-TestProtected { Run-KeyTest {Test_RemoveKeyWithoutPrompt} "Test_RemoveKeyWithoutPrompt" } "Test_RemoveKeyWithoutPrompt"
     Run-TestProtected { Run-KeyTest {Test_RemoveKeyWhatIf} "Test_RemoveKeyWhatIf" } "Test_RemoveKeyWhatIf"
     Run-TestProtected { Run-KeyTest {Test_RemoveKeyPositionalParameter} "Test_RemoveKeyPositionalParameter" } "Test_RemoveKeyPositionalParameter"
@@ -343,7 +343,7 @@ function Run-AllDataPlaneTests
     Run-TestProtected { Run-KeyTest {Test_RemoveNonExistKey} "Test_RemoveNonExistKey" } "Test_RemoveNonExistKey"
     Run-TestProtected { Run-KeyTest {Test_RemoveKeyInNoPermissionVault} "Test_RemoveKeyInNoPermissionVault" } "Test_RemoveKeyInNoPermissionVault"
 
-    # Backup-AzKeyVaultKey and Restore-AzKeyVaultKey tests.
+    # Backup-AzureKeyVaultKey and Restore-AzureKeyVaultKey tests.
     Run-TestProtected { Run-KeyTest {Test_BackupRestoreKeyByName} "Test_BackupRestoreKeyByName" } "Test_BackupRestoreKeyByName"
     Run-TestProtected { Run-KeyTest {Test_BackupRestoreKeyByRef} "Test_BackupRestoreKeyByRef" } "Test_BackupRestoreKeyByRef"
     Run-TestProtected { Run-KeyTest {Test_BackupNonExistingKey} "Test_BackupNonExistingKey" } "Test_BackupNonExistingKey"
@@ -356,7 +356,7 @@ function Run-AllDataPlaneTests
     Run-TestProtected { Run-KeyTest {Test_PipelineRemoveKeys} "Test_PipelineRemoveKeys" } "Test_PipelineRemoveKeys"
     Run-TestProtected { Run-KeyTest {Test_PipelineUpdateKeyVersions} "Test_PipelineUpdateKeyVersions" } "Test_PipelineUpdateKeyVersions"
 
-    # Set-AzKeyVaultSecret tests.
+    # Set-AzureKeyVaultSecret tests.
     Run-TestProtected { Run-SecretTest {Test_CreateSecret} "Test_CreateSecret" } "Test_CreateSecret"
     Run-TestProtected { Run-SecretTest {Test_CreateSecretWithCustomAttributes} "Test_CreateSecretWithCustomAttributes" } "Test_CreateSecretWithCustomAttributes"
     Run-TestProtected { Run-SecretTest {Test_UpdateSecret} "Test_UpdateSecret" } "Test_UpdateSecret"
@@ -366,7 +366,7 @@ function Run-AllDataPlaneTests
     Run-TestProtected { Run-SecretTest {Test_SetSecretInNonExistVault} "Test_SetSecretInNonExistVault" } "Test_SetSecretInNonExistVault"
     Run-TestProtected { Run-SecretTest {Test_SetSecretInNoPermissionVault} "Test_SetSecretInNoPermissionVault" } "Test_SetSecretInNoPermissionVault"
 
-    # Set-AzKeyVaultSecretAttribute tests.
+    # Set-AzureKeyVaultSecretAttribute tests.
     Run-TestProtected { Run-SecretTest {Test_UpdateIndividualSecretAttributes} "Test_UpdateIndividualSecretAttributes" } "Test_UpdateIndividualSecretAttributes"
     Run-TestProtected { Run-SecretTest {Test_UpdateSecretWithNoChange} "Test_UpdateSecretWithNoChange" } "Test_UpdateSecretWithNoChange"
     Run-TestProtected { Run-SecretTest {Test_UpdateAllEditableSecretAttributes} "Test_UpdateAllEditableSecretAttributes" } "Test_UpdateAllEditableSecretAttributes"
@@ -378,7 +378,7 @@ function Run-AllDataPlaneTests
     Run-TestProtected { Run-SecretTest {Test_SetInvalidSecretAttributes} "Test_SetInvalidSecretAttributes" } "Test_SetInvalidSecretAttributes"
     Run-TestProtected { Run-SecretTest {Test_SetSecretAttrInNoPermissionVault} "Test_SetSecretAttrInNoPermissionVault" } "Test_SetSecretAttrInNoPermissionVault"
 
-    # Get-AzKeyVaultSecret tests.
+    # Get-AzureKeyVaultSecret tests.
     Run-TestProtected { Run-SecretTest {Test_GetOneSecret} "Test_GetOneSecret" } "Test_GetOneSecret"
     Run-TestProtected { Run-SecretTest {Test_GetAllSecrets} "Test_GetAllSecrets" } "Test_GetAllSecrets"
     Run-TestProtected { Run-SecretTest {Test_GetPreviousVersionOfSecret} "Test_GetPreviousVersionOfSecret" } "Test_GetPreviousVersionOfSecret"
@@ -389,7 +389,7 @@ function Run-AllDataPlaneTests
     Run-TestProtected { Run-SecretTest {Test_GetNonExistSecret} "Test_GetNonExistSecret" } "Test_GetNonExistSecret"
     Run-TestProtected { Run-SecretTest {Test_GetSecretInNoPermissionVault} "Test_GetSecretInNoPermissionVault" } "Test_GetSecretInNoPermissionVault"
 
-    # Remove-AzKeyVaultSecret tests.
+    # Remove-AzureKeyVaultSecret tests.
     Run-TestProtected { Run-SecretTest {Test_RemoveSecretWithoutPrompt} "Test_RemoveSecretWithoutPrompt" } "Test_RemoveSecretWithoutPrompt"
     Run-TestProtected { Run-SecretTest {Test_RemoveSecretWhatIf} "Test_RemoveSecretWhatIf" } "Test_RemoveSecretWhatIf"
     Run-TestProtected { Run-SecretTest {Test_RemoveSecretPositionalParameter} "Test_RemoveSecretPositionalParameter" } "Test_RemoveSecretPositionalParameter"
@@ -398,7 +398,7 @@ function Run-AllDataPlaneTests
     Run-TestProtected { Run-SecretTest {Test_RemoveNonExistSecret} "Test_RemoveNonExistSecret" } "Test_RemoveNonExistSecret"
     Run-TestProtected { Run-SecretTest {Test_RemoveSecretInNoPermissionVault} "Test_RemoveSecretInNoPermissionVault" } "Test_RemoveSecretInNoPermissionVault"
 
-    # Backup-AzKeyVaultSecret and Restore-AzKeyVaultSecret tests.
+    # Backup-AzureKeyVaultSecret and Restore-AzureKeyVaultSecret tests.
     Run-TestProtected { Run-SecretTest {Test_BackupRestoreSecretByName} "Test_BackupRestoreSecretByName" } "Test_BackupRestoreSecretByName"
     Run-TestProtected { Run-SecretTest {Test_BackupRestoreSecretByRef} "Test_BackupRestoreSecretByRef" } "Test_BackupRestoreSecretByRef"
     Run-TestProtected { Run-SecretTest {Test_BackupNonExistingSecret} "Test_BackupNonExistingSecret" } "Test_BackupNonExistingSecret"
@@ -412,7 +412,7 @@ function Run-AllDataPlaneTests
     Run-TestProtected { Run-SecretTest {Test_PipelineUpdateSecretVersions} "Test_PipelineUpdateSecretVersions" } "Test_PipelineUpdateSecretVersions"
     Run-TestProtected { Run-SecretTest {Test_PipelineRemoveSecrets} "Test_PipelineRemoveSecrets" } "Test_PipelineRemoveSecrets"
 
-    # Import scenario : Add-AzKeyVaultCertificate tests
+    # Import scenario : Add-AzureKeyVaultCertificate tests
     Run-TestProtected { Run-CertificateTest {Test_ImportPfxAsCertificate} "Test_ImportPfxAsCertificate" } "Test_ImportPfxAsCertificate"
     Run-TestProtected { Run-CertificateTest {Test_ImportPfxAsCertificateNonSecurePassword} "Test_ImportPfxAsCertificateNonSecurePassword" } "Test_ImportPfxAsCertificateNonSecurePassword"
     Run-TestProtected { Run-CertificateTest {Test_ImportPfxAsCertificateWithoutPassword} "Test_ImportPfxAsCertificateWithoutPassword" } "Test_ImportPfxAsCertificateWithoutPassword"
@@ -421,16 +421,16 @@ function Run-AllDataPlaneTests
     Run-TestProtected { Run-CertificateTest {Test_ImportBase64EncodedStringAsCertificate} "Test_ImportBase64EncodedStringAsCertificate" } "Test_ImportBase64EncodedStringAsCertificate"
     Run-TestProtected { Run-CertificateTest {Test_ImportBase64EncodedStringWithoutPasswordAsCertificate} "Test_ImportBase64EncodedStringWithoutPasswordAsCertificate" } "Test_ImportBase64EncodedStringWithoutPasswordAsCertificate"
 
-    # Merge scenario : Add-AzKeyVaultCertificate tests
+    # Merge scenario : Add-AzureKeyVaultCertificate tests
     Run-TestProtected { Run-CertificateTest {Test_MergeCerWithNonExistantKeyPair} "Test_MergeCerWithNonExistantKeyPair" } "Test_MergeCerWithNonExistantKeyPair"
     Run-TestProtected { Run-CertificateTest {Test_MergeCerWithMismatchKeyPair} "Test_MergeCerWithMismatchKeyPair" } "Test_MergeCerWithMismatchKeyPair"
 
-    # Get-AzKeyVaultCertificate tests
+    # Get-AzureKeyVaultCertificate tests
     Run-TestProtected { Run-CertificateTest {Test_GetCertificate} "Test_GetCertificate" } "Test_GetCertificate"
     Run-TestProtected { Run-CertificateTest {Test_GetCertificateNonExistant} "Test_GetCertificateNonExistant" } "Test_GetCertificateNonExistant"
     Run-TestProtected { Run-CertificateTest {Test_ListCertificates} "Test_ListCertificates" } "Test_ListCertificates"
 
-    # Add-AzKeyVaultCertificateContact, Get-AzKeyVaultCertificateContact and Remove-AzKeyVaultCertificateContact tests
+    # Add-AzureKeyVaultCertificateContact, Get-AzureKeyVaultCertificateContact and Remove-AzureKeyVaultCertificateContact tests
     Run-TestProtected { Run-CertificateTest {Test_AddAndGetCertificateContacts} "Test_AddAndGetCertificateContacts" } "Test_AddAndGetCertificateContacts"
 
     # Certificate Policy tests
@@ -444,7 +444,7 @@ function Run-AllDataPlaneTests
     # Certificate Issuer tests
     Run-TestProtected { Run-CertificateTest {Test_CreateAndGetTestIssuer} "Test_CreateAndGetTestIssuer" } "Test_CreateAndGetTestIssuer"
 
-    # Add-AzKeyVaultCertificate, Get-AzKeyVaultCertificateOperation, Remove-AzKeyVaultCertificateOperation tests
+    # Add-AzureKeyVaultCertificate, Get-AzureKeyVaultCertificateOperation, Remove-AzureKeyVaultCertificateOperation tests
     Run-TestProtected { Run-CertificateTest {Test_Add_AzureKeyVaultCertificate} "Test_Add_AzureKeyVaultCertificate" } "Test_Add_AzureKeyVaultCertificate"
     Run-TestProtected { Run-CertificateTest {Test_CertificateTags} "Test_CertificateTags" } "Test_CertificateTags"
     Run-TestProtected { Run-CertificateTest {Test_UpdateCertificateTags} "Test_UpdateCertificateTags" } "Test_UpdateCertificateTags"

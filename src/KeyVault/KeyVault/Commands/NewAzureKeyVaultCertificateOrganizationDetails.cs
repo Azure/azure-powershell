@@ -13,19 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
 {
     /// <summary>
-    /// New-AzKeyVaultOrganizationDetails creates an in-memory organization details object
+    /// New-AzureKeyVaultOrganizationDetails creates an in-memory organization details object
     /// </summary>
-    [GenericBreakingChange("New-AzKeyVaultCertificateOrganizationDetails alias will be removed in an upcoming breaking change release", "2.0.0")]
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateOrganizationDetail",SupportsShouldProcess = true)]
-    [OutputType(typeof(PSKeyVaultCertificateOrganizationDetails))]
-    [Alias("New-AzKeyVaultCertificateOrganizationDetails")]
+    [Cmdlet(VerbsCommon.New, CmdletNoun.AzureKeyVaultCertificateOrganizationDetails,
+        SupportsShouldProcess = true,
+        HelpUri = Constants.KeyVaultHelpUri)]
+    [OutputType(typeof(KeyVaultCertificateOrganizationDetails))]
     public class NewAzureKeyVaultCertificateOrganizationDetails : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -40,19 +39,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         /// <summary>
         /// AdministratorDetails
         /// </summary>
-        [Parameter(Mandatory = false, 
-                   ValueFromPipeline = true,
-                   ValueFromPipelineByPropertyName = true,
+        [Parameter(ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the details of the administrators for the organization.")]
-        public List<PSKeyVaultCertificateAdministratorDetails> AdministratorDetails { get; set; }
+        public List<KeyVaultCertificateAdministratorDetails> AdministratorDetails { get; set; }
 
         #endregion
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (ShouldProcess(string.Empty, Properties.Resources.CreateCertificateAdministrator))
             {
-                var organizationDetails = new PSKeyVaultCertificateOrganizationDetails
+                var organizationDetails = new KeyVaultCertificateOrganizationDetails
                 {
                     Id = Id,
                     AdministratorDetails = AdministratorDetails,

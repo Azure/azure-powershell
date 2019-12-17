@@ -60,10 +60,10 @@ The following cmdlets were affected this release:
 **Undo-AzureKeyVaultCertificateRemoval**
 - The output of this cmdlet has changed from CertificateBundle to PSKeyVaultCertificate.
 
-**Undo-AzureRmKeyVaultRemoval**
+**Undo-AzKeyVaultRemoval**
 - ResourceGroupName has been removed from the InputObject parameter set, and is instead obtained from the InputObject parameter's ResourceId property.
 
-**Set-AzureRmKeyVaultAccessPolicy**
+**Set-AzKeyVaultAccessPolicy**
 - The "all" permission was removed from "PermissionsToKeys", "PermissionsToSecrets", and "PermissionsToCertificates".
 
 **General**
@@ -82,8 +82,8 @@ The following cmdlets were affected this release:
     - Get-AzureKeyVaultManagedStorageAccount
     - Get-AzureKeyVaultManagedStorageSasDefinition
     - Get-AzureKeyVaultSecret
-    - Remove-AzureRmKeyVault
-    - Remove-AzureRmKeyVaultAccessPolicy
+    - Remove-AzKeyVault
+    - Remove-AzKeyVaultAccessPolicy
     - Remove-AzureKeyVaultCertificate
     - Remove-AzureKeyVaultCertificateContact
     - Remove-AzureKeyVaultCertificateIssuer
@@ -94,7 +94,7 @@ The following cmdlets were affected this release:
     - Remove-AzureKeyVaultSecret
     - Restore-AzureKeyVaultKey
     - Restore-AzureKeyVaultSecret
-    - Set-AzureRmKeyVaultAccessPolicy
+    - Set-AzKeyVaultAccessPolicy
     - Set-AzureKeyVaultCertificateAttribute
     - Set-AzureKeyVaultCertificateIssuer
     - Set-AzureKeyVaultCertificatePolicy
@@ -105,12 +105,12 @@ The following cmdlets were affected this release:
     - Stop-AzureKeyVaultCertificateOperation
     - Undo-AzureKeyVaultCertificateRemoval
     - Undo-AzureKeyVaultKeyRemoval
-    - Undo-AzureRmKeyVaultRemoval
+    - Undo-AzKeyVaultRemoval
     - Undo-AzureKeyVaultSecretRemoval
     - Update-AzureKeyVaultManagedStorageAccount
     - Update-AzureKeyVaultManagedStorageAccountKey
 - ConfirmImpact levels were removed from all cmdlets.  Those affected are:
-    - Remove-AzureRmKeyVault
+    - Remove-AzKeyVault
     - Remove-AzureKeyVaultCertificate
     - Remove-AzureKeyVaultCertificateIssuer
     - Remove-AzureKeyVaultCertificateOperation

@@ -13,13 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.KeyVault.Models;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Management.Automation;
 
 
@@ -28,15 +25,16 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Adds a given certificate contact to Key Vault for certificate management
     /// </summary>
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateContact",SupportsShouldProcess = true,DefaultParameterSetName = InteractiveParameterSet)]
-    [OutputType(typeof(PSKeyVaultCertificateContact))]
+    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureKeyVaultCertificateContact,
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = AddParameterSet,
+        HelpUri = Constants.KeyVaultHelpUri)]
+    [OutputType(typeof(List<KeyVaultCertificateContact>))]
     public class AddAzureKeyVaultCertificateContact : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
-        private const string InteractiveParameterSet = "Interactive";
-        private const string InputObjectParameterSet = "ByObject";
-        private const string ResourceIdParameterSet = "ByResourceId";
+        private const string AddParameterSet = "Add";
 
         #endregion
 
@@ -44,69 +42,39 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// VaultName
         /// </summary>
         [Parameter(Mandatory = true,
-                   ParameterSetName = InteractiveParameterSet,
-                   Position = 0,
-                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
-        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
-        [ValidateNotNullOrEmpty]
-        public string VaultName { get; set; }
-
-        /// <summary>
-        /// VaultObject
-        /// </summary>
-        [Parameter(Mandatory = true,
-                   ParameterSetName = InputObjectParameterSet,
-                   Position = 0,
-                   ValueFromPipeline = true,
-                   HelpMessage = "KeyVault object.")]
-        [ValidateNotNullOrEmpty]
-        public PSKeyVault InputObject { get; set; }
-
-        /// <summary>
-        /// VaultResourceId
-        /// </summary>
-        [Parameter(Mandatory = true,
-                   ParameterSetName = ResourceIdParameterSet,
+                   ParameterSetName = AddParameterSet,
                    Position = 0,
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "KeyVault Resource Id.")]
+                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+        public string VaultName { get; set; }
 
         /// <summary>
         /// EmailAddress
         /// </summary>
         [Parameter(Mandatory = true,
+                   ParameterSetName = AddParameterSet,
                    Position = 1,
+                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the email address of the contact.")]
         [ValidateNotNullOrEmpty]
-        public string[] EmailAddress { get; set; }
+        public string EmailAddress { get; set; }
 
         /// <summary>
         /// PassThru parameter
         /// </summary>
-        [Parameter(HelpMessage = "If this parameter is specified, all contacts for this KeyVault are returned")]
+        [Parameter(HelpMessage = "This cmdlet does not return an object by default. If this switch is specified, it returns the contact object.")]
         public SwitchParameter PassThru { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            if (ParameterSetName.Equals(InputObjectParameterSet))
+            if (ShouldProcess(EmailAddress, Properties.Resources.AddCertificateContact))
             {
-                VaultName = InputObject.VaultName.ToString();
-            }
-            else if (ParameterSetName.Equals(ResourceIdParameterSet))
-            {
-                var resourceIdentifier = new ResourceIdentifier(ResourceId);
-                VaultName = resourceIdentifier.ResourceName;
-            }
-
-            if (ShouldProcess(VaultName, Properties.Resources.AddCertificateContact))
-            {
-                List<PSKeyVaultCertificateContact> existingContacts;
+                Contacts existingContacts;
 
                 try
                 {
-                    existingContacts = this.DataServiceClient.GetCertificateContacts(VaultName)?.ToList();
+                    existingContacts = this.DataServiceClient.GetCertificateContacts(VaultName);
                 }
                 catch (KeyVaultErrorException exception)
                 {
@@ -118,31 +86,31 @@ namespace Microsoft.Azure.Commands.KeyVault
                     existingContacts = null;
                 }
 
-                List<PSKeyVaultCertificateContact> newContactList;
+                List<Contact> newContactList;
 
-                if (existingContacts == null)
+                if (existingContacts == null ||
+                    existingContacts.ContactList == null)
                 {
-                    newContactList = new List<PSKeyVaultCertificateContact>();
+                    newContactList = new List<Contact>();
                 }
                 else
                 {
-                    newContactList = new List<PSKeyVaultCertificateContact>(existingContacts);
-                }
-                
-                foreach (var email in EmailAddress)
-                {
-                    if (newContactList.FindIndex(
-                        contact => (string.Compare(contact.Email, email, StringComparison.OrdinalIgnoreCase) == 0)) == -1)
-                    {
-                        newContactList.Add(new PSKeyVaultCertificateContact { Email = email });
-                    }
+                    newContactList = new List<Contact>(existingContacts.ContactList);
                 }
 
-                var resultantContacts = this.DataServiceClient.SetCertificateContacts(VaultName, newContactList);
+                if (newContactList.FindIndex(
+                    contact => (string.Compare(contact.EmailAddress, EmailAddress, StringComparison.OrdinalIgnoreCase) == 0)) != -1)
+                {
+                    throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Provided email address '{0}' already exists.", EmailAddress));
+                }
+
+                newContactList.Add(new Contact { EmailAddress = EmailAddress });
+
+                var resultantContacts = this.DataServiceClient.SetCertificateContacts(VaultName, new Contacts { ContactList = newContactList });
 
                 if (PassThru.IsPresent)
                 {
-                    this.WriteObject(resultantContacts, true);
+                    this.WriteObject(KeyVaultCertificateContact.FromKVCertificateContacts(resultantContacts));
                 }
             }
         }

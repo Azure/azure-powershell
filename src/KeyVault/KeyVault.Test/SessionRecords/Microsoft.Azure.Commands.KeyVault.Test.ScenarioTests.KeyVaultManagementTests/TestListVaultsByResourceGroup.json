@@ -1,0 +1,62 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/4fbe2810-8ec4-4443-88f4-1d0a6a212d02/resourceGroups/pshtestrg4931/resources?$filter=resourceType%20eq%20'Microsoft.KeyVault%2Fvaults'&api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGZiZTI4MTAtOGVjNC00NDQzLTg4ZjQtMWQwYTZhMjEyZDAyL3Jlc291cmNlR3JvdXBzL3BzaHRlc3RyZzQ5MzEvcmVzb3VyY2VzPyRmaWx0ZXI9cmVzb3VyY2VUeXBlJTIwZXElMjAnTWljcm9zb2Z0LktleVZhdWx0JTJGdmF1bHRzJyZhcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/4fbe2810-8ec4-4443-88f4-1d0a6a212d02/resourceGroups/pshtestrg4931/providers/Microsoft.KeyVault/vaults/pshtestvault7685\",\r\n      \"name\": \"pshtestvault7685\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"northcentralus\",\r\n      \"tags\": {\r\n        \"testtag\": \"testvalue\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "274"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-request-id": [
+          "cbb8f0d1-e068-4ccc-9c06-a4bf495fec15"
+        ],
+        "x-ms-correlation-request-id": [
+          "cbb8f0d1-e068-4ccc-9c06-a4bf495fec15"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160714T204522Z:cbb8f0d1-e068-4ccc-9c06-a4bf495fec15"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 14 Jul 2016 20:45:21 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "ResourceGroupName": "pshtestrg4931",
+    "Location": "northcentralus",
+    "PreCreatedVault": "pshtestvault7685",
+    "SubscriptionId": "4fbe2810-8ec4-4443-88f4-1d0a6a212d02",
+    "TenantId": "dab60df3-eb31-470e-9aa7-0bb580c2624c",
+    "Domain": "mstestkeyvaultoutlook.onmicrosoft.com",
+    "User": "testuser@mstestkeyvaultoutlook.onmicrosoft.com"
+  }
+}

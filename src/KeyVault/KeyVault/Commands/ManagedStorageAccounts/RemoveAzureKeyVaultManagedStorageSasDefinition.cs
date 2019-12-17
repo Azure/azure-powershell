@@ -13,36 +13,31 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Globalization;
 using System.Management.Automation;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultManagedStorageSasDefinition",DefaultParameterSetName = ByDefinitionNameParameterSet, SupportsShouldProcess = true)]
-    [OutputType( typeof( PSDeletedKeyVaultManagedStorageSasDefinition ) )]
+    [Cmdlet( VerbsCommon.Remove, CmdletNoun.AzureKeyVaultManagedStorageSasDefinition,
+        SupportsShouldProcess = true,
+         ConfirmImpact = ConfirmImpact.Medium,
+        HelpUri = Constants.KeyVaultHelpUri )]
+    [OutputType( typeof( ManagedStorageSasDefinition ) )]
     public class RemoveAzureKeyVaultSasDefinition : KeyVaultCmdletBase
     {
-        #region Parameter Set Names
-
-        private const string ByDefinitionNameParameterSet = "ByDefinitionName";
-        private const string ByInputObjectParameterSet = "ByInputObject";
-
-        #endregion
-
         #region Input Parameter Definitions
         [Parameter( Mandatory = true,
             Position = 0,
-            ParameterSetName = ByDefinitionNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
-        [ResourceNameCompleter("Microsoft.KeyVault/vaults", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
+
         [Parameter( Mandatory = true,
             Position = 1,
-            ParameterSetName = ByDefinitionNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key Vault managed storage account name. Cmdlet constructs the FQDN of a managed storage account name from vault name, currently " +
                           "selected environment and manged storage account name." )]
         [ValidateNotNullOrEmpty]
@@ -51,23 +46,12 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         [Parameter( Mandatory = true,
             Position = 2,
-            ParameterSetName = ByDefinitionNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage sas definition name. Cmdlet constructs the FQDN of a storage sas definition from vault name, currently " +
                           "selected environment, storage account name and sas definition name." )]
         [ValidateNotNullOrEmpty]
         [Alias( Constants.SasDefinitionName )]
         public string Name { get; set; }
-
-        /// <summary>
-        /// PSKeyVaultManagedStorageSasDefinitionIdentityItem object
-        /// </summary>
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ParameterSetName = ByInputObjectParameterSet,
-            ValueFromPipeline = true,
-            HelpMessage = "ManagedStorageSasDefinition object.")]
-        [ValidateNotNullOrEmpty]
-        public PSKeyVaultManagedStorageSasDefinitionIdentityItem InputObject { get; set; }
 
         /// <summary>
         /// If present, do not ask for confirmation
@@ -84,14 +68,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            if (InputObject != null)
-            {
-                VaultName = InputObject.VaultName;
-                AccountName = InputObject.AccountName;
-                Name = InputObject.Name;
-            }
-
-            PSDeletedKeyVaultManagedStorageSasDefinition managedStorageSasDefinition = null;
+            ManagedStorageSasDefinition managedStorageSasDefinition = null;
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(
