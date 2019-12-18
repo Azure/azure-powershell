@@ -34,6 +34,14 @@ namespace Microsoft.Azure.Commands.DataMigration.Models
         ValidateMongoDbMigration,
         ConnectToTargetSqlDbMiSync,
         ValidateSqlServerSqlDbMiSync,
-        MigrateSqlServerSqlDbMiSync
+        MigrateSqlServerSqlDbMiSync,
+        ConnectToSourceOracleSync,
+        ConnectToTargetAzureDbPostgreSqlSync,
+        MigrateOracleAzureDbPostgreSqlSync,
+        GetUserTablesAzureDbPostgreSql,
+        GetUserTablesOracle,
+        CheckOciDriver,
+        UploadOciDriver,
+        InstallOciDriver
     }
 }

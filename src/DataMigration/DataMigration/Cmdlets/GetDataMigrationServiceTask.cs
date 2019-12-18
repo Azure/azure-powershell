@@ -21,77 +21,65 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    /// <summary>
-    /// Class for the cmdlet to get project task details.
-    /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationTask", DefaultParameterSetName = ListByComponent), OutputType(typeof(PSProjectTask))]
-    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsTask")]
-    public class GetDataMigrationTask : GetTaskBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationServiceTask", DefaultParameterSetName = ListByComponent), OutputType(typeof(PSProjectTask))]
+    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsServiceTask")]
+    public class GetDataMigrationServiceTask : GetTaskBase
     {
         [Parameter(
           Position = 0,
           Mandatory = true,
           ParameterSetName = ListByInputObject,
           ValueFromPipeline = true,
-          HelpMessage = "PSProject Object.")]
+          HelpMessage = "PSDataMigrationService Object.")]
         [Parameter(ParameterSetName = GetByInputObject, Mandatory = true)]
         [Parameter(ParameterSetName = GetByInputObjectResultType, Mandatory = true)]
         [ValidateNotNull]
-        [Alias("Project")]
-        public PSProject InputObject { get; set; }
+        [Alias("Service")]
+        public PSDataMigrationService InputObject { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ParameterSetName = ListByResourceId,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Project Resource Id.")]
+            HelpMessage = "Service Resource Id.")]
         [ValidateNotNullOrEmpty]
         [Parameter(ParameterSetName = GetByResourceId, Mandatory = true)]
         [Parameter(ParameterSetName = GetByResourceIdResultType, Mandatory = true)]
         public string ResourceId { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ListByComponent,
-            HelpMessage = "The name of the project.")]
-        [Parameter(ParameterSetName = GetByComponent, Mandatory = true)]
-        [Parameter(ParameterSetName = GetByComponentResultType, Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        public string ProjectName { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            if (this.ParameterSetName.Equals(GetByInputObject))
+            if (this.ParameterSetName.Equals(GetByInputObject) ||
+                this.ParameterSetName.Equals(ListByInputObject) ||
+                this.ParameterSetName.Equals(GetByInputObjectResultType))
             {
                 this.ResourceGroupName = InputObject.ResourceGroupName;
-                this.ServiceName = InputObject.ServiceName;
-                this.ProjectName = InputObject.Name;
+                this.ServiceName = InputObject.Name;
             }
 
-            if (this.ParameterSetName.Equals(GetByResourceId))
+            if (this.ParameterSetName.Equals(GetByResourceId) ||
+                this.ParameterSetName.Equals(ListByResourceId) ||
+                this.ParameterSetName.Equals(GetByResourceIdResultType))
             {
                 DmsResourceIdentifier ids = new DmsResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = ids.ResourceGroupName;
                 this.ServiceName = ids.ServiceName;
-                this.ProjectName = ids.ProjectName;
             }
 
             IList<PSProjectTask> results = new List<PSProjectTask>();
 
             if ((MyInvocation.BoundParameters.ContainsKey("ServiceName") || !string.IsNullOrEmpty(this.ServiceName))
                 && (MyInvocation.BoundParameters.ContainsKey("ResourceGroupName") || !string.IsNullOrEmpty(this.ResourceGroupName))
-                && (MyInvocation.BoundParameters.ContainsKey("ProjectName") || !string.IsNullOrEmpty(this.ProjectName))
                 && (MyInvocation.BoundParameters.ContainsKey("Name") || !string.IsNullOrEmpty(this.Name)))
             {
-                results.Add(new PSProjectTask(DataMigrationClient.Tasks.Get(this.ResourceGroupName, this.ServiceName, this.ProjectName, this.Name, this.ExpandFilter())));
+                results.Add(new PSProjectTask(DataMigrationClient.ServiceTasks.Get(this.ResourceGroupName, this.ServiceName, this.Name, this.ExpandFilter())));
             }
             else if ((MyInvocation.BoundParameters.ContainsKey("ServiceName") || !string.IsNullOrEmpty(this.ServiceName))
-                && (MyInvocation.BoundParameters.ContainsKey("ResourceGroupName") || !string.IsNullOrEmpty(this.ResourceGroupName))
-                && (MyInvocation.BoundParameters.ContainsKey("ProjectName") || !string.IsNullOrEmpty(this.ProjectName)))
+                && (MyInvocation.BoundParameters.ContainsKey("ResourceGroupName") || !string.IsNullOrEmpty(this.ResourceGroupName)))
             {
                 string taskType = TaskType?.ToString();
-                DataMigrationClient.Tasks.EnumerateTaskByProjects(ResourceGroupName, ServiceName, ProjectName, taskType)
+                DataMigrationClient.ServiceTasks.EnumerateServiceTaskByService(ResourceGroupName, ServiceName, taskType)
                     .ForEach(item =>
                     {
                         results.Add(new PSProjectTask(item));

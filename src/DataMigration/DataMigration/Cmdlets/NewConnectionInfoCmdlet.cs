@@ -80,6 +80,12 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                     case ServerTypeEnum.SQLMI:
                         this.connCmdlet = new MiSqlConnectionInfoCmdlet(this.MyInvocation);
                         break;
+                    case ServerTypeEnum.Oracle:
+                        this.connCmdlet = new OracleConnectionInfoCmdlet(this.MyInvocation);
+                        break;
+                    case ServerTypeEnum.AzureDbPostgreSql:
+                        this.connCmdlet = new AzureDbPostgreSqlConnectionInfoCmdlet(this.MyInvocation);
+                        break;
                     default:
                         throw new PSArgumentException();
                 }

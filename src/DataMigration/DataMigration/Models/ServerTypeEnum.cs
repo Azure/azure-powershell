@@ -18,7 +18,9 @@ namespace Microsoft.Azure.Commands.DataMigration.Models
     {
         SQL,
         MongoDb,
-        SQLMI
+        SQLMI,
+        Oracle,
+        AzureDbPostgreSql
     }
 }
 

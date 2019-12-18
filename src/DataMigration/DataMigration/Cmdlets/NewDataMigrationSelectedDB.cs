@@ -24,30 +24,31 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     {
         private const string SqlServerSqlDbParameterSet = "MigrateSqlServerSqlDb";
         private const string SqlServerSqlDbMiParameterSet = "MigrateSqlServerSqlDbMi";
+        private const string SourceDatabaseNameHelpMessage = "The name of the source database.";
+        private const string TargetDatabaseNameHelpMessage = "The name of the target database.";
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the source database.",
+            HelpMessage = SourceDatabaseNameHelpMessage,
             ParameterSetName = SqlServerSqlDbMiParameterSet
         )]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the source database.",
+            HelpMessage = SourceDatabaseNameHelpMessage,
             ParameterSetName = SqlServerSqlDbParameterSet
         )]
-
         [ValidateNotNullOrEmpty]
         [Alias("Name")]
         public string SourceDatabaseName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the target database.",
+            HelpMessage = TargetDatabaseNameHelpMessage,
             ParameterSetName = SqlServerSqlDbMiParameterSet
         )]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the target database.",
+            HelpMessage = TargetDatabaseNameHelpMessage,
             ParameterSetName = SqlServerSqlDbParameterSet
         )]
         [ValidateNotNullOrEmpty]
@@ -79,14 +80,14 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Set Database to readonly before migration",
+            HelpMessage = "Set Database to readonly before migration.",
             ParameterSetName = SqlServerSqlDbParameterSet
         )]
         public SwitchParameter MakeSourceDbReadOnly { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "mapping of source to target tables",
+            HelpMessage = "Mapping of source to target tables.",
             ParameterSetName = SqlServerSqlDbParameterSet
         )]
         [ValidateNotNullOrEmpty]

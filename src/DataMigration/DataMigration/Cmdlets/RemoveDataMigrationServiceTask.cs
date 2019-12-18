@@ -19,26 +19,19 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationTask", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationServiceTask", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    [Alias("Remove-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsTask")]
-    public class RemoveDataMigrationTask : RemoveTaskBase
+    [Alias("Remove-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsServiceTask")]
+    public class RemoveDataMigrationServiceTask : RemoveTaskBase
     {
         [Parameter(
             Position = 0,
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Project Resource Id.")]
+            HelpMessage = "Service Resource Id.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ComponentNameParameterSet,
-            HelpMessage = "The name of the project.")]
-        [ValidateNotNullOrEmpty]
-        public string ProjectName { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -52,7 +45,6 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                     {
                         this.ResourceGroupName = InputObject.ResourceGroupName;
                         this.ServiceName = InputObject.ServiceName;
-                        this.ProjectName = InputObject.ProjectName;
                         this.Name = InputObject.Name;
                     }
 
@@ -61,14 +53,13 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                         DmsResourceIdentifier ids = new DmsResourceIdentifier(this.ResourceId);
                         this.ResourceGroupName = ids.ResourceGroupName;
                         this.ServiceName = ids.ServiceName;
-                        this.ProjectName = ids.ProjectName;
                         this.Name = ids.TaskName;
                     }
 
                     bool result = false;
                     try
                     {
-                        DataMigrationClient.Tasks.DeleteWithHttpMessagesAsync(ResourceGroupName, ServiceName, ProjectName, Name).GetAwaiter().GetResult();
+                        DataMigrationClient.ServiceTasks.DeleteWithHttpMessagesAsync(ResourceGroupName, ServiceName, Name).GetAwaiter().GetResult();
                         result = true;
                     }
                     catch (ApiErrorException ex)

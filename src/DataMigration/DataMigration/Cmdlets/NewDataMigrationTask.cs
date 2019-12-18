@@ -196,7 +196,27 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                         break;
                     case TaskTypeEnum.MigrateSqlServerSqlDbMiSync:
                         taskCmdlet = new MigrateSqlServerSqlDbMiSyncTaskCmdlet(this.MyInvocation);
-                        expandParameterOfTask = "";
+                        expandParameterOfTask = ""; // default not to get output upon wait.
+                        break;
+                    case TaskTypeEnum.ConnectToSourceOracleSync:
+                        taskCmdlet = new ConnectToSourceOracleSyncTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output";
+                        break;
+                    case TaskTypeEnum.ConnectToTargetAzureDbPostgreSqlSync:
+                        taskCmdlet = new ConnectToTargetAzureDbPostgreSqlSyncTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output";
+                        break;
+                    case TaskTypeEnum.MigrateOracleAzureDbPostgreSqlSync:
+                        taskCmdlet = new MigrateOracleAzureDbPostgreSqlSyncTaskCmdlet(this.MyInvocation);
+                        expandParameterOfTask = ""; // default not to get output upon wait.
+                        break;
+                    case TaskTypeEnum.GetUserTablesAzureDbPostgreSql:
+                        taskCmdlet = new GetUserTablesAzureDbPostgreSqlCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output";
+                        break;
+                    case TaskTypeEnum.GetUserTablesOracle:
+                        taskCmdlet = new GetUserTablesOracleCmdlet(this.MyInvocation);
+                        expandParameterOfTask = "output";
                         break;
                     default:
                         throw new PSArgumentException();

@@ -17,11 +17,17 @@ Retrieves the properties of an Azure Database Migration project.
 ### [Get-AzDataMigrationService](Get-AzDataMigrationService.md)
 Retrieves the properties associated with an instance of the Azure Database Migration Service. 
 
+### [Get-AzDataMigrationServiceTask](Get-AzDataMigrationServiceTask.md)
+Retrieves the PSProjectTask object associated with an Azure Database Migration Service service-level task.
+
 ### [Get-AzDataMigrationTask](Get-AzDataMigrationTask.md)
 Retrieves the PSProjectTask object associated with an Azure Database Migration Service migration task.
 
 ### [Invoke-AzDataMigrationCommand](Invoke-AzDataMigrationCommand.md)
 Creates a new command to be executed on an existing DMS task.
+
+### [New-AzDataMigrationAzureActiveDirectoryApp](New-AzDataMigrationAzureActiveDirectoryApp.md)
+Create a new instance DataMigration Azure ActiveDirectory Application details.
 
 ### [New-AzDataMigrationConnectionInfo](New-AzDataMigrationConnectionInfo.md)
 Creates a new Connection Info object specifying the server type and name for connection.
@@ -32,6 +38,12 @@ Creates the DatabaseInfo object for the Azure Database Migration Service, which 
 ### [New-AzDataMigrationFileShare](New-AzDataMigrationFileShare.md)
 Creates the FileShare object for the Azure Database Migration Service, which specifies the local network share to take the source database backups to.
 
+### [New-AzDataMigrationMongoDbCollectionSetting](New-AzDataMigrationMongoDbCollectionSetting.md)
+Creates collection setting for migration according for the mongoDb migration
+
+### [New-AzDataMigrationMongoDbDatabaseSetting](New-AzDataMigrationMongoDbDatabaseSetting.md)
+Creates database setting for migration for the mongoDb migration
+
 ### [New-AzDataMigrationProject](New-AzDataMigrationProject.md)
 Creates a new Azure Database Migration Service project.
 
@@ -40,6 +52,9 @@ Creates a database input object that contains information about source and targe
 
 ### [New-AzDataMigrationService](New-AzDataMigrationService.md)
 Creates a new instance of the Azure Database Migration Service.
+
+### [New-AzDataMigrationServiceTask](New-AzDataMigrationServiceTask.md)
+Creates and starts a service-level task in the Azure Database Migration Service.
 
 ### [New-AzDataMigrationSyncSelectedDBObject](New-AzDataMigrationSyncSelectedDBObject.md)
 Creates a database info object specific to the sync scenario to be used for a migration task.
@@ -52,6 +67,9 @@ Removes an Azure Database Migration Service project from Azure.
 
 ### [Remove-AzDataMigrationService](Remove-AzDataMigrationService.md)
 Removes an instance of the Azure Database Migration Service from Azure.
+
+### [Remove-AzDataMigrationServiceTask](Remove-AzDataMigrationServiceTask.md)
+Removes an Azure Database Migration Service service-level task from Azure.
 
 ### [Remove-AzDataMigrationTask](Remove-AzDataMigrationTask.md)
 Removes an Azure Database Migration Service task from Azure.

@@ -39,6 +39,14 @@ namespace Microsoft.Azure.Commands.DataMigration.Common
                 link => ops.ListNext(link));
         }
 
+        public static IEnumerable<ProjectTask> EnumerateServiceTaskByService(
+            this IServiceTasksOperations ops, string resourceGroupName, string serviceName, string taskType = null)
+        {
+            return new PagedEnumerable<ProjectTask>(
+                () => ops.List(resourceGroupName, serviceName, taskType),
+                link => ops.ListNext(link));
+        }
+
         public static IEnumerable<DataMigrationService> EnumerateServicesBySubcription(
             this IServicesOperations ops)
         {

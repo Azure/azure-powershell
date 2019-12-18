@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     {
         protected DmsClient _dmsClient;
 
+        // New and Remove parameter sets
         protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
         protected const string ComponentNameParameterSet = "ComponentNameParameterSet";
         protected const string ComponentObjectParameterSet = "ComponentObjectParameterSet";
@@ -61,6 +62,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                 return DmsClient.DataMigrationServiceClient;
             }
         }
+
         /// <summary>
         /// Helper method to return the error message of an ApiErrorException
         /// </summary>
