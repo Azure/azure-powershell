@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update ADF .Net SDK version to 4.6.0
+* Add parameter "PublicIPs" for "Set-AzureRmDataFactoryV2IntegrationRuntime" cmd 
+to enable create Azure-SSIS IR with static public IP addresses.
 
 ## Version 1.5.1
 * Update ADF .Net SDK version to 4.5.0
