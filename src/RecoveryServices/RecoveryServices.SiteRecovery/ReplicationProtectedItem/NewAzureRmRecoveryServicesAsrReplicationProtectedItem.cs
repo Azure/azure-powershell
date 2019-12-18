@@ -782,7 +782,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             RecoveryResourceGroupId = disk.RecoveryResourceGroupId,
                             PrimaryStagingAzureStorageAccountId = disk.LogStorageAccountId,
                             RecoveryReplicaDiskAccountType = disk.RecoveryReplicaDiskAccountType,
-                            RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType
+                            RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType,
+                            DiskEncryptionInfo =
+                                Utilities.A2AEncryptionDetails(
+                                    disk.DiskEncryptionSecretUrl,
+                                    disk.DiskEncryptionVaultId,
+                                    disk.KeyEncryptionKeyUrl,
+                                    disk.KeyEncryptionVaultId)
                         });
 
                     }
@@ -800,7 +806,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
             }
 
-            providerSettings.DiskEncryptionInfo = this.A2AEncryptionDetails();
+            providerSettings.DiskEncryptionInfo =
+               Utilities.A2AEncryptionDetails(
+                   this.DiskEncryptionSecretUrl,
+                   this.DiskEncryptionVaultId,
+                   this.KeyEncryptionKeyUrl,
+                   this.KeyEncryptionVaultId);
 
             input.Properties.ProviderSpecificDetails = providerSettings;
         }

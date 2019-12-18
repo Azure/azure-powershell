@@ -30,7 +30,7 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-SubnetAddressPrefix <String>] [-FrontendPoolName <String>] [-BackendPoolName <String>]
  [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-EnableUltraSSD]
  [-Zone <System.Collections.Generic.List`1[System.String]>] [-NatBackendPort <Int32[]>]
- [-DataDiskSizeInGb <Int32[]>] [-ProximityPlacementGroup <String>] [-Priority <String>]
+ [-DataDiskSizeInGb <Int32[]>] [-ProximityPlacementGroupId <String>] [-Priority <String>]
  [-EvictionPolicy <String>] [-MaxPrice <Double>] [-ScaleInPolicy <String[]>]
  [-SkipExtensionsOnOverprovisionedVMs] [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -425,7 +425,10 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-The priority for the virtual machine scale set.  Only supported values are 'Regular' and 'Low'.
+The priority for the virtual machine in the scale set.  Only supported values are 'Regular', 'Spot' and 'Low'.
+'Regular' is for regular virtual machine.
+'Spot' is for spot virtual machine.
+'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.
 
 ```yaml
 Type: System.String
@@ -439,13 +442,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProximityPlacementGroup
-The name or resource id of the Proximity Placement Group to use with this Scale Set.
+### -ProximityPlacementGroupId
+The resource id of the Proximity Placement Group to use with this scale set.
 
 ```yaml
 Type: System.String
 Parameter Sets: SimpleParameterSet
-Aliases:
+Aliases: ProximityPlacementGroup
 
 Required: False
 Position: Named
