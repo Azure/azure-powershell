@@ -5,45 +5,28 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-    Returns the status of a container migration job.
+    
 
 .DESCRIPTION
-    Returns the status of a container migration job.
+    Returns the storage resource provider settings.
 
-.PARAMETER JobId
-    Operation Id.
-
-.PARAMETER ResourceGroupName
-    Resource group name.
-
-.PARAMETER FarmName
-    Farm Id.
+.PARAMETER Location
+    Resource location.
 
 .EXAMPLE
 
-    PS C:\> Get-AzsStorageContainerMigrationStatus -FarmName "6ed442a3-ec47-4145-b2f0-9b90377b01d0" -JobId "6478ef3b-b7d5-4827-8d47-551c6afb9dd4"
+	PS C:\>  Get-AzsStorageSettings
 
-    Get the status of a container migration job.
+    Get the storage settings.
 
 #>
-function Get-AzsStorageContainerMigrationStatus {
-    [OutputType([Microsoft.AzureStack.Management.Storage.Admin.Models.MigrationResult])]
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory = $true)]
-        [ValidateNotNullOrEmpty()]
+function Get-AzsStorageSettings {
+    [OutputType([Microsoft.AzureStack.Management.Storage.Admin.Models.Settings])]
+    [CmdletBinding(DefaultParameterSetName = 'Get')]
+    param(    
+        [Parameter(Mandatory = $false, ParameterSetName = 'Get')]
         [System.String]
-        $FarmName,
-
-        [Parameter(Mandatory = $true)]
-        [ValidateNotNullOrEmpty()]
-        [System.String]
-        $JobId,
-
-        [Parameter(Mandatory = $false)]
-        [ValidateLength(1, 90)]
-        [System.String]
-        $ResourceGroupName
+        $Location
     )
 
     Begin {
@@ -58,16 +41,16 @@ function Get-AzsStorageContainerMigrationStatus {
     }
 
     Process {
-
-
+    
+        $ErrorActionPreference = 'Stop'
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient'
         }
 
-        $GlobalParameterHashtable = @{}
+        $GlobalParameterHashtable = @{ }
         $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-
+     
         $GlobalParameterHashtable['SubscriptionId'] = $null
         if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
             $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
@@ -75,20 +58,26 @@ function Get-AzsStorageContainerMigrationStatus {
 
         $StorageAdminClient = New-ServiceClient @NewServiceClient_params
 
-        if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
-            $ResourceGroupName = "System.$((Get-AzureRmLocation).Location)"
+        if ([System.String]::IsNullOrEmpty($Location)) {
+            $Location = (Get-AzureRmLocation).Location
         }
 
-        Write-Verbose -Message 'Performing operation MigrationStatusWithHttpMessagesAsync on $StorageAdminClient.'
-        $TaskResult = $StorageAdminClient.Containers.MigrationStatusWithHttpMessagesAsync($ResourceGroupName, $FarmName, $JobId)
+        if ('Get' -eq $PsCmdlet.ParameterSetName) {
+            Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $StorageAdminClient.'
+            $TaskResult = $StorageAdminClient.StorageSettings.GetWithHttpMessagesAsync($Location)
+        }
+        else {
+            Write-Verbose -Message 'Failed to map parameter set to operation method.'
+            throw 'Module failed to find operation to execute.'
+        }
 
         if ($TaskResult) {
             $GetTaskResult_params = @{
                 TaskResult = $TaskResult
             }
-
+            
             Get-TaskResult @GetTaskResult_params
-
+        
         }
     }
 

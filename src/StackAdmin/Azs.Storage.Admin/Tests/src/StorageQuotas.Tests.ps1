@@ -26,17 +26,17 @@
 .EXAMPLE
     PS C:\> .\src\StorageQuota.Tests.ps1
     Describing StorageQuotas
-	  [+] TestListAllStorageQuotas 771ms
-	  [+] TestGetStorageQuota 1.24s
-	  [+] TestGetAllStorageQuotas 2.21s
-	  [+] TestCreateStorageQuota 3.06s
-	  [+] TestUpdateStorageQuota 2.66s
-	  [+] TestDeleteStorageQuota 1.53s
+ 	  [+] TestListAllStorageQuotas 447ms
+ 	  [+] TestGetStorageQuota 366ms
+ 	  [+] TestGetAllStorageQuotas 1.51s
+ 	  [+] TestCreateStorageQuota 456ms
+ 	  [+] TestUpdateStorageQuota 818ms
+	  [+] TestDeleteStorageQuota 653ms
 
 .NOTES
-    Author: Deepa Thomas
+    Author: Wenjia Lu
 	Copyright: Microsoft
-    Date:   February 28, 2018
+    Date:   August 14, 2019
 #>
 param(
     [bool]$RunRaw = $false,
@@ -82,7 +82,7 @@ InModuleScope Azs.Storage.Admin {
                     $found
                 )
                 # Resource
-                if ($expected -eq $null) {
+                if ($null -eq $expected) {
                     $found												    | Should Be $null
                 }
                 else {
@@ -102,7 +102,7 @@ InModuleScope Azs.Storage.Admin {
             $global:TestName = 'TestListAllStorageQuotas'
 
             $quotas = Get-AzsStorageQuota -Location $global:Location
-            foreach ($quota in $quotas) {
+            foreach ($quota in $quotas.Value) {
                 ValidateStorageQuota -storageQuota $quota
             }
         }
@@ -111,7 +111,9 @@ InModuleScope Azs.Storage.Admin {
             $global:TestName = 'TestGetStorageQuota'
 
             $quotas = Get-AzsStorageQuota -Location $global:Location
-            $quota = Get-AzsStorageQuota -Location $global:Location -Name $quotas[0].Name
+            $quotas = $quotas.Value
+            $quotaName = $quotas[0].Name.Substring($quotas[0].Name.IndexOf("/") + 1)
+            $quota = Get-AzsStorageQuota -Location $global:Location -Name $quotaName
             ValidateStorageQuota -storageQuota $quota
             AssertAreEqual -expected $quotas[0] -found $quota
         }
@@ -120,8 +122,10 @@ InModuleScope Azs.Storage.Admin {
             $global:TestName = 'TestGetAllStorageQuotas'
 
             $quotas = Get-AzsStorageQuota -Location $global:Location
+            $quotas = $quotas.Value
             foreach ($quota in $quotas) {
-                $result = Get-AzsStorageQuota -Location $global:Location -Name $quota.Name
+                $quotaName = $quota.Name.Substring($quotas[0].Name.IndexOf("/") + 1)
+                $result = Get-AzsStorageQuota -Location $global:Location -Name $quotaName
                 ValidateStorageQuota -storageQuota $quota
                 AssertAreEqual -expected $quota -found $result
             }
@@ -131,10 +135,10 @@ InModuleScope Azs.Storage.Admin {
             $global:TestName = 'TestCreateStorageQuota'
 
             $name = "TestCreateQuota"
-            $quota = New-AzsStorageQuota -CapacityInGb 1000 -NumberOfStorageAccounts 100 -Location $global:Location -Name $name
+            $quota = New-AzsStorageQuota -CapacityInGb 100000000 -NumberOfStorageAccounts 1000000000 -Location $global:Location -Name $name
             $quota                          | Should Not Be $null
-            $quota.CapacityInGb             | Should Be 1000
-            $quota.NumberOfStorageAccounts  | Should Be 100
+            $quota.CapacityInGb             | Should Be 100000000
+            $quota.NumberOfStorageAccounts  | Should Be 1000000000
             Remove-AzsStorageQuota -Location $global:Location -Name $name -Force
         }
 
@@ -144,15 +148,12 @@ InModuleScope Azs.Storage.Admin {
 
             $name = "TestUpdateQuota"
 
-            $quota = Get-AzsStorageQuota -Name $name -Location $global:Location
-            if ($quota -eq $null) {
-                $quota = New-AzsStorageQuota -CapacityInGb 10 -NumberOfStorageAccounts 123 -Location $global:Location -Name $name
-            }
+            $quota = New-AzsStorageQuota -CapacityInGb 50 -NumberOfStorageAccounts 100 -Location $global:Location -Name $name
 
             $quota | Should Not Be $null
 
-            $CapInGB = $quota.CapacityInGb + 1
-            $NumStorageAccounts = $quota.NumberOfStorageAccounts + 1
+            $CapInGB = 123
+            $NumStorageAccounts = 10
 
             $updated = Set-AzsStorageQuota `
                 -CapacityInGb $CapInGB `
@@ -172,10 +173,10 @@ InModuleScope Azs.Storage.Admin {
 
             $name = "TestDeleteQuota"
             Remove-AzsStorageQuota -Location $global:Location -Name $name -Force
-            $quota = New-AzsStorageQuota -CapacityInGb 1000 -NumberOfStorageAccounts 50 -Location $global:Location -Name $name
+            $quota = New-AzsStorageQuota -CapacityInGb 50 -NumberOfStorageAccounts 100 -Location $global:Location -Name $name
             $quota      |    Should Not Be $null
-            $quota.CapacityInGb | Should Be 1000
-            $quota.NumberOfStorageAccounts | Should Be 50
+            $quota.CapacityInGb | Should Be 50
+            $quota.NumberOfStorageAccounts | Should Be 100
             Remove-AzsStorageQuota -Location $global:Location -Name $name -Force
         }
     }

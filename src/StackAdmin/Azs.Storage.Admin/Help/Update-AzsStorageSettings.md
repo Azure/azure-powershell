@@ -5,27 +5,28 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzsStorageAcquisition
+# Update-AzsStorageSettings
 
 ## SYNOPSIS
 
 ## SYNTAX
 
 ```
-Get-AzsStorageAcquisition [-Location <String>] [<CommonParameters>]
+Update-AzsStorageSettings [-Location <String>] -RetentionPeriodForDeletedStorageAccountsInDays <Int32>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns a list of blob acquistions.
+Update storge resource provider settings.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-AzsStorageAcquisition
+Update-AzsStorageSetting -RetentionPeriodForDeletedStorageAccountsInDays 2
 ```
 
-Get the list of blob acquistions.
+Update the storage settings
 
 ## PARAMETERS
 
@@ -44,6 +45,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RetentionPeriodForDeletedStorageAccountsInDays
+Set the retention days for deleted storage accounts.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -51,7 +67,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.AzureStack.Management.Storage.Admin.Models.Acquisition
+### Microsoft.AzureStack.Management.Storage.Admin.Models.Settings
 ## NOTES
 
 ## RELATED LINKS

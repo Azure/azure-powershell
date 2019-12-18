@@ -1,28 +1,40 @@
 ---
 external help file: Azs.Storage.Admin-help.xml
 Module Name: Azs.Storage.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
 # New-AzsStorageQuota
 
 ## SYNOPSIS
-Create a new storage quota.
 
 ## SYNTAX
 
+### Create (Default)
 ```
-New-AzsStorageQuota [-Name] <String> [[-CapacityInGb] <Int32>] [[-NumberOfStorageAccounts] <Int32>]
- [[-Location] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzsStorageQuota [-CapacityInGb <Int32>] [-NumberOfStorageAccounts <Int32>] [-Location <String>]
+ -Name <String> [<CommonParameters>]
+```
+
+### InputObject
+```
+New-AzsStorageQuota [-CapacityInGb <Int32>] [-NumberOfStorageAccounts <Int32>] -InputObject <StorageQuota>
+ [<CommonParameters>]
+```
+
+### ResourceId
+```
+New-AzsStorageQuota [-CapacityInGb <Int32>] -ResourceId <String> [-NumberOfStorageAccounts <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new storage quota.
+Create or update an existing storage quota.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 New-AzsStorageQuota -CapacityInGb 1000 -NumberOfStorageAccounts 100 -Name 'TestCreateStorageQuota'
 ```
@@ -37,42 +49,27 @@ Maxium capacity (GB).
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: 500
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Resource location.
+### -ResourceId
+The resource id.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the storage quota.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: ResourceId
+Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -82,22 +79,22 @@ Total number of storage accounts.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: 20
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -Location
+Resource location.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
+Type: String
+Parameter Sets: Create
+Aliases:
 
 Required: False
 Position: Named
@@ -106,16 +103,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -InputObject
+The input object of type Microsoft.AzureStack.Management.Storage.Admin.Models.StorageQuota.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
+Type: StorageQuota
+Parameter Sets: InputObject
+Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the storage quota.
+
+```yaml
+Type: String
+Parameter Sets: Create
+Aliases: QuotaName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -123,15 +134,13 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
 
 ### Microsoft.AzureStack.Management.Storage.Admin.Models.StorageQuota
-
 ## NOTES
 
 ## RELATED LINKS
-

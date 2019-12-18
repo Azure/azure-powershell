@@ -25,13 +25,13 @@
 
 .EXAMPLE
     PS C:\> .\src\Acquisitions.Tests.ps1
-    Describing Acquisitions
-	 [+] TestListAcquisition 1.81s
+    Describing Acquisition
+ 	 [+] TestListAllAcquisitions 3.04s
 
 .NOTES
-    Author: Deepa Thomas
+    Author: Wenjia Lu
 	Copyright: Microsoft
-    Date:   February 24, 2018
+    Date:   August 14, 2019
 #>
 param(
     [bool]$RunRaw = $false,
@@ -61,15 +61,13 @@ InModuleScope Azs.Storage.Admin {
                 $Acquisition             | Should Not Be $null
 
                 # Validate acquisition properties
-                $Acquisition.Id					| Should Not Be $null
-                $Acquisition.Name				| Should Not Be $null
-                $Acquisition.Type				| Should Not Be $null
+                $Acquisition.Acquisitionid		| Should Not Be $null
+                $Acquisition.Blob				| Should Not Be $null
+                $Acquisition.Container			| Should Not Be $null
                 $Acquisition.FilePath			| Should Not Be $null
                 $Acquisition.Maximumblobsize    | Should Not Be $null
-                $Acquisition.Status				| Should Not Be $null
                 $Acquisition.Storageaccount     | Should Not Be $null
-                $Acquisition.Container			| Should Not Be $null
-                $Acquisition.Blob				| Should Not Be $null
+                $Acquisition.Susbcriptionid		| Should Not Be $null
             }
         }
 
@@ -80,13 +78,10 @@ InModuleScope Azs.Storage.Admin {
         it "TestListAllAcquisitions" -Skip:$('TestListAllAcquisitions' -in $global:SkippedTests) {
             $global:TestName = 'TestListAllAcquisitions'
 
-            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
-            foreach ($farm in $farms) {
-                $acquisitions = Get-AzsStorageAcquisition -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name
-                foreach ($acquisition in $acquisitions) {
+                $acquisitions = Get-AzsStorageAcquisition -Location $global:Location
+                foreach ($acquisition in $acquisitions.Value) {
                     ValidateAcquisition -Acquisition $acquisition
                 }
-            }
         }
     }
 }

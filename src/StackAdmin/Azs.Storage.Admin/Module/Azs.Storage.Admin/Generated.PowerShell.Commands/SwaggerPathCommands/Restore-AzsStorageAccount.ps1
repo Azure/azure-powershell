@@ -5,56 +5,56 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-    Undelete a deleted storage account.
+    
 
 .DESCRIPTION
     Undelete a deleted storage account.
 
-.PARAMETER ResourceGroupName
-    Resource group name.
+.PARAMETER Name
+    Internal storage account ID, which is not visible to tenant.
+
+.PARAMETER Location
+    Resource location.
 
 .PARAMETER ResourceId
     The resource id.
 
-.PARAMETER FarmName
-    Farm Id.
-
-.PARAMETER Name
-    Internal storage account ID, which is not visible to tenant.
+.PARAMETER AsJob
+    Run asynchronous as a job and return the job object.
 
 .PARAMETER Force
     Do not ask for confirmation.
 
 .EXAMPLE
 
-    PS C:\> Restore-AzsStorageAccount -FarmName "90987d65-eb60-42ae-b735-18bcd7ff69da" -Name "83fe9ac0-f1e7-433e-b04c-c61ae0712093"
+    PS C:\> Restore-AzsStorageAccount -Name "83fe9ac0-f1e7-433e-b04c-c61ae0712093"
 
     Undelete a deleted storage account.
-
 #>
 function Restore-AzsStorageAccount {
+    [OutputType([Microsoft.AzureStack.Management.Storage.Admin.Models.StorageAccount])]
     [CmdletBinding(DefaultParameterSetName = 'Undelete', SupportsShouldProcess = $true)]
-    param(
+    param(    
         [Parameter(Mandatory = $true, ParameterSetName = 'Undelete')]
-        [ValidateNotNullOrEmpty()]
-        [System.String]
-        $FarmName,
-
-        [Parameter(Mandatory = $true, ParameterSetName = 'Undelete')]
+        [Alias('accountid')]
         [ValidateNotNullOrEmpty()]
         [System.String]
         $Name,
-
+    
         [Parameter(Mandatory = $false, ParameterSetName = 'Undelete')]
-        [ValidateLength(1, 90)]
+        [ValidateNotNullOrEmpty()]
         [System.String]
-        $ResourceGroupName,
+        $Location,
 
         [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true, ParameterSetName = 'ResourceId')]
         [Alias('id')]
         [ValidateNotNullOrEmpty()]
         [System.String]
         $ResourceId,
+
+        [Parameter(Mandatory = $false)]
+        [switch]
+        $AsJob,
 
         [Parameter(Mandatory = $false)]
         [switch]
@@ -73,59 +73,96 @@ function Restore-AzsStorageAccount {
     }
 
     Process {
+    
+        $ErrorActionPreference = 'Stop'
 
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
-                IdTemplate = '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Storage.Admin/farms/{FarmName}/storageaccounts/{accountId}'
+                IdTemplate = '/subscriptions/{subscriptionId}/providers/Microsoft.Storage.Admin/locations/{location}/storageaccounts/{accountId}'
             }
 
             $GetArmResourceIdParameterValue_params['Id'] = $ResourceId
             $ArmResourceIdParameterValues = Get-ArmResourceIdParameterValue @GetArmResourceIdParameterValue_params
-            $ResourceGroupName = $ArmResourceIdParameterValues['resourceGroup']
+            $Location = $ArmResourceIdParameterValues['location']
 
-            $FarmName = $ArmResourceIdParameterValues['FarmName']
-            $Name = $ArmResourceIdParameterValues['accountId']
-        } else {
-            $Name = Get-ResourceNameSuffix -ResourceName $Name
+            $accountId = $ArmResourceIdParameterValues['accountId']
+        }
+        else {
+            $accountId = $Name
+            if ([System.String]::IsNullOrEmpty($Location)) {
+                $Location = (Get-AzureRmLocation).Location
+            }
         }
 
-        # Should process
-        if ($PSCmdlet.ShouldProcess("$Name" , "Restore the storage account")) {
-            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Restore the storage account?", "Performing operation restore storage account with name $Name.")) {
+        if ($PSCmdlet.ShouldProcess("$accountId" , "Restore the storage account")) {
+            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Restore the storage account?", "Performing operation restore storage account with name $accountId.")) {
 
                 $NewServiceClient_params = @{
                     FullClientTypeName = 'Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient'
                 }
-
-                $GlobalParameterHashtable = @{}
+        
+                $GlobalParameterHashtable = @{ }
                 $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-
+             
                 $GlobalParameterHashtable['SubscriptionId'] = $null
                 if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
                     $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
                 }
-
+        
                 $StorageAdminClient = New-ServiceClient @NewServiceClient_params
-
-                if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
-                    $ResourceGroupName = "System.$((Get-AzureRmLocation).Location)"
-                }
-
+        
+        
                 if ('Undelete' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
                     Write-Verbose -Message 'Performing operation UndeleteWithHttpMessagesAsync on $StorageAdminClient.'
-                    $TaskResult = $StorageAdminClient.StorageAccounts.UndeleteWithHttpMessagesAsync($ResourceGroupName, $FarmName, $Name)
-                } else {
+                    $TaskResult = $StorageAdminClient.StorageAccounts.UndeleteWithHttpMessagesAsync($Location, $accountId)
+                }
+                else {
                     Write-Verbose -Message 'Failed to map parameter set to operation method.'
                     throw 'Module failed to find operation to execute.'
                 }
-
-                if ($TaskResult) {
-                    $GetTaskResult_params = @{
-                        TaskResult = $TaskResult
+        
+                Write-Verbose -Message "Waiting for the operation to complete."
+        
+                $PSSwaggerJobScriptBlock = {
+                    [CmdletBinding()]
+                    param(    
+                        [Parameter(Mandatory = $true)]
+                        [System.Threading.Tasks.Task]
+                        $TaskResult,
+        
+                        [Parameter(Mandatory = $true)]
+                        [string]
+                        $TaskHelperFilePath
+                    )
+                    if ($TaskResult) {
+                        . $TaskHelperFilePath
+                        $GetTaskResult_params = @{
+                            TaskResult = $TaskResult
+                        }
+                    
+                        Get-TaskResult @GetTaskResult_params
+                    
                     }
-
-                    Get-TaskResult @GetTaskResult_params
-
+                }
+        
+                $PSCommonParameters = Get-PSCommonParameter -CallerPSBoundParameters $PSBoundParameters
+                $TaskHelperFilePath = Join-Path -Path $ExecutionContext.SessionState.Module.ModuleBase -ChildPath 'Get-TaskResult.ps1'
+                if ($AsJob) {
+                    $ScriptBlockParameters = New-Object -TypeName 'System.Collections.Generic.Dictionary[string,object]'
+                    $ScriptBlockParameters['TaskResult'] = $TaskResult
+                    $ScriptBlockParameters['AsJob'] = $AsJob
+                    $ScriptBlockParameters['TaskHelperFilePath'] = $TaskHelperFilePath
+                    $PSCommonParameters.GetEnumerator() | ForEach-Object { $ScriptBlockParameters[$_.Name] = $_.Value }
+        
+                    Start-PSSwaggerJobHelper -ScriptBlock $PSSwaggerJobScriptBlock `
+                        -CallerPSBoundParameters $ScriptBlockParameters `
+                        -CallerPSCmdlet $PSCmdlet `
+                        @PSCommonParameters
+                }
+                else {
+                    Invoke-Command -ScriptBlock $PSSwaggerJobScriptBlock `
+                        -ArgumentList $TaskResult, $TaskHelperFilePath `
+                        @PSCommonParameters
                 }
             }
         }

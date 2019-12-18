@@ -12,7 +12,7 @@
     # RootModule = ''
 
     # Version number of this module.
-    ModuleVersion          = '1.8.0'
+    ModuleVersion          = '1.8.1'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -63,7 +63,7 @@
         @{ModuleName = 'Azs.InfrastructureInsights.Admin'; RequiredVersion = '0.3.2'; },
         @{ModuleName = 'Azs.KeyVault.Admin'; RequiredVersion = '0.2.2'; },
         @{ModuleName = 'Azs.Network.Admin'; RequiredVersion = '0.2.2'; },
-        @{ModuleName = 'Azs.Storage.Admin'; RequiredVersion = '0.2.3'; },
+        @{ModuleName = 'Azs.Storage.Admin'; RequiredVersion = '0.3.0'; },
         @{ModuleName = 'Azs.Subscriptions'; RequiredVersion = '0.2.2'; },
         @{ModuleName = 'Azs.Subscriptions.Admin'; RequiredVersion = '0.3.3'; },
         @{ModuleName = 'Azs.Update.Admin'; RequiredVersion = '0.2.3'; })
@@ -122,16 +122,12 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = ' - Version 1.8.0
-            * New DRP Admin module - The Deployment Resource Provider (DRP) enables orchestrated deployments of Resource Providers to Azure Stack. These commands interact with the Azure Resource Manager layer to interact with DRP.
-            * BRP
-                 - Support single role restore for Azures stack infrastructure backup
-                 - Add parameter `RoleName` to cmdlet `Restore-AzsBackup`
-            * FRP
-                 - Breaking changes for Drive and Volume resources with API version 2019-05-01: (The features are supported by Azure Stack 1910+)
-                    * The value of Id, Name, HealthStatus and OperationalStatus have been changed.
-                    * We have supported new properties FirmwareVersion, IsIndicationEnabled, Manufacturer and StoragePool for Drive resources.
-                    * The properties CanPool and CannotPoolReason of Drive resources have been deprecated, please use OperationalStatus instead.
+            ReleaseNotes = ' - Version 1.8.1
+            * Only Azs.Storage.Admin is updated in this version to support admin api-version 2019-08-08-preview. 
+                 - Removes the following commands: Get-AzsBlob*, Get-AzsQueue*, Get-AzsTable*, Get-AzsStorageShare* and *StorageContainerMigration. 
+                 - Adds new commands like *AzsStorageSettings to do operation on storage settings, e.g. retention days. 
+                 - *FARM* concept is removed. The usage of powershell commands are almost the same except you do not need to specify *FarmName*. 
+                 - For detailed description for the breaking changes, please refer to https://aka.ms/azs.storage.admin.0.3.0.
             '
 
             # External dependent modules of this module

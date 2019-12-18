@@ -14,12 +14,11 @@
 
 
 $global:SkippedTests = @(
-    'TestForAllFarmsStartGarbageCollection'
+    'TestStartGarbageCollection'
 )
 
 $global:Location = "local"
 $global:Provider = "Microsoft.Storage.Admin"
-$global:ResourceGroupName = "System.local"
 
 $global:Client = $null
 

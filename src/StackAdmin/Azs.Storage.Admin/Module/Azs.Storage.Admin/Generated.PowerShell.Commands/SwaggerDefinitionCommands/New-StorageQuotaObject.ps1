@@ -5,10 +5,10 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-    Properties of the storage quota being created or updated.
+    Storage quota properties.
 
 .DESCRIPTION
-    Properties of the storage quota being created or updated.
+    Storage quota properties.
 
 .PARAMETER NumberOfStorageAccounts
     Total number of storage accounts.
@@ -19,19 +19,19 @@ Licensed under the MIT License. See License.txt in the project root for license 
 #>
 function New-StorageQuotaObject
 {
-    param(
+    param(    
         [Parameter(Mandatory = $false)]
         [int32]
         $NumberOfStorageAccounts,
-
+    
         [Parameter(Mandatory = $false)]
         [int32]
         $CapacityInGb
     )
+    
+    $Object = New-Object -TypeName Microsoft.AzureStack.Management.Storage.Admin.Models.StorageQuota -ArgumentList @()
 
-    $Object = New-Object -TypeName Microsoft.AzureStack.Management.Storage.Admin.Models.StorageQuota
-
-    $PSBoundParameters.GetEnumerator() | ForEach-Object {
+    $PSBoundParameters.GetEnumerator() | ForEach-Object { 
         if(Get-Member -InputObject $Object -Name $_.Key -MemberType Property)
         {
             $Object.$($_.Key) = $_.Value

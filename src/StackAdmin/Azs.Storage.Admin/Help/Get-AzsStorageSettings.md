@@ -5,27 +5,27 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzsStorageAcquisition
+# Get-AzsStorageSettings
 
 ## SYNOPSIS
 
 ## SYNTAX
 
 ```
-Get-AzsStorageAcquisition [-Location <String>] [<CommonParameters>]
+Get-AzsStorageSettings [-Location <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns a list of blob acquistions.
+Returns the storage resource provider settings.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-AzsStorageAcquisition
+Get-AzsStorageSettings
 ```
 
-Get the list of blob acquistions.
+Get the storage settings.
 
 ## PARAMETERS
 
@@ -51,7 +51,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.AzureStack.Management.Storage.Admin.Models.Acquisition
+### Microsoft.AzureStack.Management.Storage.Admin.Models.Settings
 ## NOTES
 
 ## RELATED LINKS
