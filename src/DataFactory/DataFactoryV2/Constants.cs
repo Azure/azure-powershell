@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpIntegrationRuntimeSubnet = "The name of the subnet in the VNet.";
 
-        public const string HelpIntegrationRuntimePublicIP = "The public IP addresses which the integration runtime will use.";
+        public const string HelpIntegrationRuntimePublicIP = "The static public IP addresses which the integration runtime will use.";
 
         public const string HelpIntegrationRuntimeSetupScriptContainerSasUri = "The SAS URI of the Azure blob container that contains the custom setup script.";
 

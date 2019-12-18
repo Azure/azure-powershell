@@ -430,7 +430,7 @@ Accept wildcard characters: False
 ```
 
 ### -PublicIPs
-The public IP addresses which the integration runtime will use.
+The static public IP addresses which the integration runtime will use.
 
 ```yaml
 Type: System.String[]
