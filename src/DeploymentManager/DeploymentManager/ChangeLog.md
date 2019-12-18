@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Adds LIST operations for resources
+* Adds capability for performing operations on Health Check steps
 
 ## Version 1.0.2
 * Update references in .psd1 to use relative path
