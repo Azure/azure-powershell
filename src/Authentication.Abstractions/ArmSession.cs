@@ -16,6 +16,9 @@ using System.Diagnostics;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
+    /// <summary>
+    /// Represents the current Azure session.
+    /// </summary>
     public class ArmSession : AzureSession
     {
         public override TraceLevel AuthenticationLegacyTraceLevel { get; set; }

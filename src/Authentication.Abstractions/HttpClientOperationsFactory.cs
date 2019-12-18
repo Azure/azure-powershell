@@ -18,6 +18,9 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
+    /// <summary>
+    /// Implementation for a class to acquire HTTP operations.
+    /// </summary>
     public class HttpClientOperationsFactory : IHttpOperationsFactory
     {
         public const string Name = "HttpClientOperations";

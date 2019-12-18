@@ -31,11 +31,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     /// location fo service-specific endpoints, and information for bootstrapping authentication
     /// </summary>
     [Serializable]
-    public class AzureEnvironment : IAzureEnvironment
+    public class AzureEnvironment : IAzureEnvironment, IEquatable<AzureEnvironment>
     {
         private const string ArmMetadataEnvVariable = "ARM_CLOUD_METADATA_URL";
 
-        static IDictionary<string, AzureEnvironment> InitializeBuiltInEnvironments()
+        public static IDictionary<string, AzureEnvironment> InitializeBuiltInEnvironments()
         {
             IDictionary<string, AzureEnvironment> armAzureEnvironments = null;
             try
@@ -459,6 +459,54 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// Additional environment-specific metadata
         /// </summary>
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+        public bool Equals(AzureEnvironment other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            var unequalItemsDict = other.ExtendedProperties.Where(keyValuePair =>
+                    !ExtendedProperties[keyValuePair.Key]
+                        .Equals(keyValuePair.Value, StringComparison.OrdinalIgnoreCase))
+                .ToDictionary(entry => entry.Key, entry => entry.Value);
+            if (unequalItemsDict.Any())
+            {
+                return false;
+            }
+
+            var thisNotOther = VersionProfiles.Except(other.VersionProfiles, StringComparer.OrdinalIgnoreCase).ToList();
+            var otherNotThis = other.VersionProfiles.Except(VersionProfiles, StringComparer.OrdinalIgnoreCase).ToList();
+
+            if (thisNotOther.Any() || otherNotThis.Any())
+            {
+                return false;
+            }
+
+            return string.Equals(this.Name, other.Name, StringComparison.OrdinalIgnoreCase)
+                   && this.OnPremise == other.OnPremise
+                   && string.Equals(this.ServiceManagementUrl?.TrimEnd('/'), other.ServiceManagementUrl?.TrimEnd('/'), StringComparison.OrdinalIgnoreCase)
+                   && string.Equals(this.ResourceManagerUrl?.TrimEnd('/'), other.ResourceManagerUrl?.TrimEnd('/'), StringComparison.OrdinalIgnoreCase)
+                   && string.Equals(this.ManagementPortalUrl?.TrimEnd('/'), other.ManagementPortalUrl?.TrimEnd('/'), StringComparison.OrdinalIgnoreCase)
+                   && string.Equals(this.PublishSettingsFileUrl?.TrimEnd('/'), other.PublishSettingsFileUrl?.TrimEnd('/'), StringComparison.OrdinalIgnoreCase)
+                   && string.Equals(this.ActiveDirectoryAuthority?.TrimEnd('/'), other.ActiveDirectoryAuthority?.TrimEnd('/'), StringComparison.OrdinalIgnoreCase)
+                   && string.Equals(this.GalleryUrl?.TrimEnd('/'), other.GalleryUrl?.TrimEnd('/'), StringComparison.OrdinalIgnoreCase)
+                   && string.Equals(this.GraphUrl?.TrimEnd('/'), other.GraphUrl?.TrimEnd('/')?.TrimEnd('/'), StringComparison.OrdinalIgnoreCase)
+                   && string.Equals(this.ActiveDirectoryServiceEndpointResourceId?.TrimEnd('/'), other.ActiveDirectoryServiceEndpointResourceId?.TrimEnd('/'), StringComparison.OrdinalIgnoreCase)
+                   && string.Equals(this.StorageEndpointSuffix, other.StorageEndpointSuffix, StringComparison.OrdinalIgnoreCase)
+                   && string.Equals(this.SqlDatabaseDnsSuffix, other.SqlDatabaseDnsSuffix, StringComparison.OrdinalIgnoreCase)
+                   && string.Equals(this.TrafficManagerDnsSuffix, other.TrafficManagerDnsSuffix, StringComparison.OrdinalIgnoreCase)
+                   && string.Equals(this.AzureKeyVaultDnsSuffix, other.AzureKeyVaultDnsSuffix, StringComparison.OrdinalIgnoreCase)
+                   && string.Equals(this.AzureKeyVaultServiceEndpointResourceId?.TrimEnd('/'), other.AzureKeyVaultServiceEndpointResourceId?.TrimEnd('/'), StringComparison.OrdinalIgnoreCase)
+                   && string.Equals(this.GraphEndpointResourceId?.TrimEnd('/'), other.GraphEndpointResourceId?.TrimEnd('/'), StringComparison.OrdinalIgnoreCase)
+                   && string.Equals(this.DataLakeEndpointResourceId?.TrimEnd('/'), other.DataLakeEndpointResourceId?.TrimEnd('/'), StringComparison.OrdinalIgnoreCase)
+                   && string.Equals(this.BatchEndpointResourceId?.TrimEnd('/'), other.BatchEndpointResourceId?.TrimEnd('/'), StringComparison.OrdinalIgnoreCase)
+                   && string.Equals(this.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix, other.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix, StringComparison.OrdinalIgnoreCase)
+                   && string.Equals(this.AzureDataLakeStoreFileSystemEndpointSuffix, other.AzureDataLakeStoreFileSystemEndpointSuffix, StringComparison.OrdinalIgnoreCase)
+                   && string.Equals(this.AdTenant?.TrimEnd('/'), other.AdTenant?.TrimEnd('/'), StringComparison.OrdinalIgnoreCase);
+        }
+
 
         /// <summary>
         /// A set of string constants for each of the known environment values - allows users to specify a particular kind of endpoint by name

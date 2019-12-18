@@ -17,6 +17,9 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces
 {
+    /// <summary>
+    /// HTTP operations, more REST methods can be added as needed.
+    /// </summary>
     public interface IHttpOperations
     {
         Task<HttpResponseMessage> GetAsync(string requestUri);
