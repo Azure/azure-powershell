@@ -51,7 +51,7 @@ Get-AzDeploymentManagerServiceUnit [-ResourceId] <String> [-DefaultProfile <IAzu
 
 ### InputObject
 ```
-Get-AzDeploymentManagerServiceUnit [-ServiceUnitObject] <PSServiceUnitResource>
+Get-AzDeploymentManagerServiceUnit -InputObject <PSServiceUnitResource>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -99,6 +99,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Service unit resource object.
+
+```yaml
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -234,21 +249,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServiceUnitObject
-Service unit resource object.
-
-```yaml
-Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource
-Parameter Sets: InputObject
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

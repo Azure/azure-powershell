@@ -75,11 +75,13 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         [Parameter(
             Mandatory = true,
             HelpMessage = "The path to the file where health check properties are defined.", ParameterSetName = NewStep.HealthCheckFileParamSet)]
+        [ValidateNotNullOrEmpty]
         public string HealthCheckPropertiesFile { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The health check properties.", ParameterSetName = NewStep.HealthCheckObjectParamSet)]
+        [ValidateNotNullOrEmpty]
         public PSHealthCheckStepProperties HealthCheckProperties { get; set; }
 
         [Parameter(
