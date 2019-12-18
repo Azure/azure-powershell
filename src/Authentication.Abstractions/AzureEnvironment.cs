@@ -12,30 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Threading;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models;
-using Newtonsoft.Json;
 
+[assembly: InternalsVisibleTo("Authentication.Abstractions.Test")]
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     /// <summary>
     /// A record of metadata necessary to manage assets in a specific azure cloud, including necessary endpoints,
     /// location fo service-specific endpoints, and information for bootstrapping authentication
     /// </summary>
-    [Serializable]
+    [Serializable]    
     public class AzureEnvironment : IAzureEnvironment, IEquatable<AzureEnvironment>
     {
         private const string ArmMetadataEnvVariable = "ARM_CLOUD_METADATA_URL";
 
-        public static IDictionary<string, AzureEnvironment> InitializeBuiltInEnvironments()
+        internal static IDictionary<string, AzureEnvironment> InitializeBuiltInEnvironments()
         {
             IDictionary<string, AzureEnvironment> armAzureEnvironments = null;
             try
