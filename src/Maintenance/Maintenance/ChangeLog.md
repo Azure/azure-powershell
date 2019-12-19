@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.1.1
 * Preview release of `Az.Maintenance` module
 
 ## Version 0.1.0
