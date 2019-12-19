@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add client-side telemetry info for Az 4.0 preview
 
 ## Version 1.6.5
 * Update references in .psd1 to use relative path
