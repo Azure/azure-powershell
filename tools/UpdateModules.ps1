@@ -85,7 +85,7 @@ function New-ModulePsm1 {
         # Create imports for nested modules.
         if ($ModuleMetadata.NestedModules -ne $null) {
             foreach ($dll in $ModuleMetadata.NestedModules) {
-                $importedModules += "Import-Module (Join-Path -Path `$PSScriptRoot -ChildPath " + $dll.Substring(2) + ")`r`n"
+                $importedModules += "Import-Module (Join-Path -Path `$PSScriptRoot -ChildPath " + $dll + ")`r`n"
             }
         }
 

@@ -19,6 +19,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix Set-AzVMCustomScriptExtension cmdlet for a VM with managed OD disk which does not have OS profile.
+
+## Version 3.2.0
+* Add ProximityPlacementGroupId parameter to the following cmdlets:
+    - Update-AzAvailabilitySet, Update-AzVM, Update-AzVmss
+* Change ProximityPlacementGroup parameter to ProximityPlacementGroupId parameter in New-AzVM and New-AzVmss.
+  (ProximityPlacementGroup parameter is still supported as an alias)
+* Update help message for VM and VMSS priority.
+* Update references in .psd1 to use relative path
 
 ## Version 3.1.0
 * VM Reapply feature

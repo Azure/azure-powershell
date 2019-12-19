@@ -14,7 +14,7 @@ The Azure PowerShell Developer Guide was created to help with the development an
 - [Before Adding a New Project](#before-adding-a-new-project)
     - [.NET SDK](#net-sdk)
     - [Design Review](#design-review)
-    - [Contact](#contact)
+    - [Contact](#point-of-contact)
 - [Setting Up a New Project](#setting-up-a-new-project)
     - [Getting Started](#getting-started)
         - [Creating the Project](#creating-the-project)
@@ -270,6 +270,14 @@ Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-
     - Use `Assert-StartsWith s1 s2` to verify that the string `s2` starts with the string `s1`
     - Use `Assert-Match s1 s2` to verify that the string `s2` matches the regular expression `s1`
     - Use `Assert-NotMatch s1 s2` to verify that the string `s2` does not match the regular expression `s1`
+
+#### Use local files in test
+CI in DevOps will happens under `Debug` folder. So you need to make sure that these files will be copied to that folder during the CI runs. One way to do this is config the `Module.Test.csproj`. There is a example:
+```xml
+  <ItemGroup>
+    <None Update="PemFiles\*.*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+```
 
 ### Using Active Directory
 

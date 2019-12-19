@@ -41,6 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNull]
         public CloudFileShare Share { get; set; }
 
+        [Alias("QuotaGiB")]
         [Parameter(Position = 1, Mandatory = true,
             HelpMessage = "Share Quota")]
         public int Quota { get; set; }
