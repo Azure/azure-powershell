@@ -14,21 +14,20 @@ Gets the service.
 
 ### Interactive (Default)
 ```
-Get-AzDeploymentManagerService [-ResourceGroupName] <String> [-ServiceTopologyName] <String> [-Name] <String>
+Get-AzDeploymentManagerService [-ResourceGroupName] <String> [-ServiceTopologyName] <String> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByServiceTopologyObject
 ```
-Get-AzDeploymentManagerService [-ResourceGroupName] <String> [-Name] <String>
- [-ServiceTopologyObject] <PSServiceTopologyResource> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzDeploymentManagerService [[-Name] <String>] [-ServiceTopologyObject] <PSServiceTopologyResource>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByServiceTopologyResourceId
 ```
-Get-AzDeploymentManagerService [-ResourceGroupName] <String> [-Name] <String>
- [-ServiceTopologyResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDeploymentManagerService [[-Name] <String>] [-ServiceTopologyResourceId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -113,7 +112,7 @@ Type: System.String
 Parameter Sets: Interactive, ByServiceTopologyObject, ByServiceTopologyResourceId
 Aliases:
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False
@@ -125,7 +124,7 @@ The resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Interactive, ByServiceTopologyObject, ByServiceTopologyResourceId
+Parameter Sets: Interactive
 Aliases:
 
 Required: True
@@ -174,7 +173,7 @@ Parameter Sets: ByServiceTopologyObject
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -189,14 +188,14 @@ Parameter Sets: ByServiceTopologyResourceId
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

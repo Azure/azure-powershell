@@ -24,27 +24,26 @@ New-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceTopolo
 
 ### ByTopologyObjectAndServiceName
 ```
-New-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
- -Location <String> -TargetResourceGroup <String> -DeploymentMode <String> [-ParametersUri <String>]
- [-TemplateUri <String>] [-TemplateArtifactSourceRelativePath <String>]
- [-ParametersArtifactSourceRelativePath <String>] [-Tag <Hashtable>]
- [-ServiceTopologyObject] <PSServiceTopologyResource> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzDeploymentManagerServiceUnit [-ServiceName] <String> [-Name] <String> -Location <String>
+ -TargetResourceGroup <String> -DeploymentMode <String> [-ParametersUri <String>] [-TemplateUri <String>]
+ [-TemplateArtifactSourceRelativePath <String>] [-ParametersArtifactSourceRelativePath <String>]
+ [-Tag <Hashtable>] [-ServiceTopologyObject] <PSServiceTopologyResource> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTopologyResourceAndServiceName
 ```
-New-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
- -Location <String> -TargetResourceGroup <String> -DeploymentMode <String> [-ParametersUri <String>]
- [-TemplateUri <String>] [-TemplateArtifactSourceRelativePath <String>]
- [-ParametersArtifactSourceRelativePath <String>] [-Tag <Hashtable>] [-ServiceTopologyResourceId] <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzDeploymentManagerServiceUnit [-ServiceName] <String> [-Name] <String> -Location <String>
+ -TargetResourceGroup <String> -DeploymentMode <String> [-ParametersUri <String>] [-TemplateUri <String>]
+ [-TemplateArtifactSourceRelativePath <String>] [-ParametersArtifactSourceRelativePath <String>]
+ [-Tag <Hashtable>] [-ServiceTopologyResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByServiceObject
 ```
-New-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-Name] <String> -Location <String>
- -TargetResourceGroup <String> -DeploymentMode <String> [-ParametersUri <String>] [-TemplateUri <String>]
+New-AzDeploymentManagerServiceUnit [-Name] <String> -Location <String> -TargetResourceGroup <String>
+ -DeploymentMode <String> [-ParametersUri <String>] [-TemplateUri <String>]
  [-TemplateArtifactSourceRelativePath <String>] [-ParametersArtifactSourceRelativePath <String>]
  [-Tag <Hashtable>] [-ServiceObject] <PSServiceResource> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -52,8 +51,8 @@ New-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-Name] <String
 
 ### ByServiceResourceId
 ```
-New-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-Name] <String> -Location <String>
- -TargetResourceGroup <String> -DeploymentMode <String> [-ParametersUri <String>] [-TemplateUri <String>]
+New-AzDeploymentManagerServiceUnit [-Name] <String> -Location <String> -TargetResourceGroup <String>
+ -DeploymentMode <String> [-ParametersUri <String>] [-TemplateUri <String>]
  [-TemplateArtifactSourceRelativePath <String>] [-ParametersArtifactSourceRelativePath <String>]
  [-Tag <Hashtable>] [-ServiceResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -196,7 +195,7 @@ The resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByTopologyAndServiceNames
 Aliases:
 
 Required: True
@@ -230,7 +229,7 @@ Parameter Sets: ByServiceObject
 Aliases:
 
 Required: True
-Position: 2
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -245,7 +244,7 @@ Parameter Sets: ByServiceResourceId
 Aliases:
 
 Required: True
-Position: 2
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -275,7 +274,7 @@ Parameter Sets: ByTopologyObjectAndServiceName
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -290,7 +289,7 @@ Parameter Sets: ByTopologyResourceAndServiceName
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -390,7 +389,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

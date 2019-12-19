@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Mandatory = false,
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             HelpMessage = "The name of the step.")]
-        [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.DeploymentManager/steps", nameof(ResourceGroupName))]
         public string Name { get; set; }
 

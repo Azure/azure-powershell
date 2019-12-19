@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Mandatory = false, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             HelpMessage = "The name of the service topology.")]
-        [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.DeploymentManager/serviceTopologies", nameof(ResourceGroupName))]
         public string Name { get; set; }
 

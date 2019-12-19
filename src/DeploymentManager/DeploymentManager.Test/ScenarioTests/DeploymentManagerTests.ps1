@@ -154,7 +154,7 @@ function Test-Service
 	$serviceName = $resourceGroupName + "Service"
 	$targetLocation = $location
 
-	$service = New-AzDeploymentManagerService -ResourceGroupName $resourceGroupName -Location $location -Name $serviceName -ServiceTopologyObject $serviceTopology -TargetLocation $targetLocation -TargetSubscriptionId $subscriptionId
+	$service = New-AzDeploymentManagerService -Location $location -Name $serviceName -ServiceTopologyObject $serviceTopology -TargetLocation $targetLocation -TargetSubscriptionId $subscriptionId
 
 	Validate-Service $service $resourceGroupName $location $serviceTopology.Name $serviceName $targetLocation $subscriptionId
 
@@ -173,7 +173,7 @@ function Test-Service
 
 	# Test List Services
 	$service2Name = $resourceGroupName + "Service2"
-	$service2 = New-AzDeploymentManagerService -ResourceGroupName $resourceGroupName -Location $location -Name $service2Name -ServiceTopologyObject $serviceTopology -TargetLocation $targetLocation -TargetSubscriptionId $subscriptionId
+	$service2 = New-AzDeploymentManagerService -Location $location -Name $service2Name -ServiceTopologyObject $serviceTopology -TargetLocation $targetLocation -TargetSubscriptionId $subscriptionId
 
 	$services = Get-AzDeploymentManagerService -ResourceGroupName $resourceGroupName -ServiceTopologyName $serviceTopology.Name
 	Assert-True { $services.Count -ge 2 }
@@ -233,7 +233,6 @@ function Test-ServiceUnit
 	$deploymentMode = "Incremental"
 
 	$serviceUnit = New-AzDeploymentManagerServiceUnit `
-		-ResourceGroupName $resourceGroupName `
 		-Location $location `
 		-ServiceTopologyObject $serviceTopology `
 		-ServiceName $service.Name `
@@ -258,7 +257,6 @@ function Test-ServiceUnit
 		$invalidServiceUnitName = $resourceGroupName + "InvalidServiceUnit"
 
 		$invalidServiceUnit = New-AzDeploymentManagerServiceUnit   `
-			-ResourceGroupName $resourceGroupName  `
 			-Location $location  `
 			-ServiceTopologyObject $serviceTopology  `
 			-ServiceName $service.Name  `
