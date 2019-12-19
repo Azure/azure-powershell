@@ -177,6 +177,7 @@ function NamespaceAuthTests
     
     Write-Debug " Delete namespaces"
     Remove-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
+	Remove-AzEventHubNamespace -ResourceId $resultkafka.Id
 
 	Write-Debug " Delete resourcegroup"
 	Remove-AzResourceGroup -Name $resourceGroupName -Force
