@@ -488,7 +488,10 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-Specifies the priority for the virtual machines in the scale set.
+The priority for the virtual machien in the scale set.  Only supported values are 'Regular', 'Spot' and 'Low'.
+'Regular' is for regular virtual machine.
+'Spot' is for spot virtual machine.
+'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.
 
 ```yaml
 Type: System.String
@@ -503,7 +506,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProximityPlacementGroupId
-The Id of ProximityPlacementGroup
+The resource id of the Proximity Placement Group to use with this scale set.
 
 ```yaml
 Type: System.String

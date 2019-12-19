@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add client-side telemetry info for Az 4.0 preview
+
+## Version 1.6.5
+* Update references in .psd1 to use relative path
+* Set correct UserAgent for client-side telemetry for Az 4.0 preview
+* Display user friendly error message when context is null in Az 4.0
+* Add endpoints for attestation service
 
 ## Version 1.6.4
 * Add a deprecation message for `Resolve-Error` alias.
