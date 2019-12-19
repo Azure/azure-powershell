@@ -431,9 +431,9 @@
       </ListControl>
     </View>    
       <View>
-      <Name>Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorEndpointItem</Name>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorEndpointFilterItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorEndpointItem</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorEndpointFilterItem</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -453,9 +453,9 @@
       </ListControl>
     </View>    
     <View>
-      <Name>Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorFilter</Name>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorEndpointFilter</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorFilter</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorEndpointFilter</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>

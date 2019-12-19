@@ -51,6 +51,16 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public Dictionary<string, string> Tags { get; set; }
 
+        public List<PSNetworkWatcherConnectionMonitorEndpointObject> Endpoints { get; set; }
+
+        public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroup { get; set; }
+
+        public List<PSNetworkWatcherConnectionMonitorTestConfigurationObject> TestConfiguration { get; set; }
+
+        public List<PSNetworkWatcherConnectionMonitorOutputObject> Output { get; set; }
+
+        public string ConnectionMonitorType { get; set; }
+
         [JsonIgnore]
         public string SourceText
         {

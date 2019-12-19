@@ -1104,13 +1104,13 @@ function Test-NetworkConfigurationDiagnostic
     Assert-AreEqual $SourceEndpointObject.Filter.Items[0].Type $cmFilterItemType
     Assert-AreEqual $SourceEndpointObject.Filter.Items[0].Address $cmFilterItemIPAddress 
 
-    $DestinationEndpointObject = New-AzNetworkWatcherConnectionMonitorEndPointObject -Name DstTest -ResourceId DestResourceId\2342 -Address $destIPAddress -FilterType Include -Filter $cmFilterItemIPAddress
+    $DestinationEndpointObject = New-AzNetworkWatcherConnectionMonitorEndPointObject -Name DstTest -ResourceId DestResourceId\2342 -Address $destIPAddress -FilterType Include -FilterAddress $cmFilterItemIPAddress
     Assert-NotNull $DestinationEndpointObject
     Assert-AreEqual $DestinationEndpointObject.Address $destIPAddress
     Assert-AreEqual $DestinationEndpointObject.Filter.Items[0].Type $cmFilterItemType
     Assert-AreEqual $DestinationEndpointObject.Filter.Items[0].Address $cmFilterItemIPAddress
 
-    $testConfig = New-AzNetworkWatcherConnectionMonitorTestConfigurationObject -Name TestConfig -TestFrequencySec 120 -Protocol Tcp -ProtocolConfiguration $cmTcpConfig -SuccessThresholdChecksFailedPercent $checksFailedPercent -SuccessThresholdRoundTripTimeMs $roundTripTimeMs -PreferredIPVersion IPv4
+    $testConfig = New-AzNetworkWatcherConnectionMonitorTestConfigurationObject -Name TestConfig -TestFrequencySec 120 -ProtocolConfiguration $cmTcpConfig -SuccessThresholdChecksFailedPercent $checksFailedPercent -SuccessThresholdRoundTripTimeMs $roundTripTimeMs -PreferredIPVersion IPv4
     Assert-NotNull $testConfig
     Assert-AreEqual $testConfig.TestFrequencySec $destIPAddress
     Assert-AreEqual $testConfig.Protocol $protocol

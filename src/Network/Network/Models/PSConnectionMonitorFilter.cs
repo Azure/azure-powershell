@@ -19,12 +19,12 @@ namespace Microsoft.Azure.Commands.Network.Models
     using System;
     using System.Collections.Generic;
 
-    public class PSConnectionMonitorFilter
+    public class PSConnectionMonitorEndpointFilter
     {
         public string Type { get; set; }
 
         [Ps1Xml(Target = ViewControl.List)]
-        public List<PSConnectionMonitorEndpointItem> Items { get; set; }
+        public List<PSConnectionMonitorEndpointFilterItem> Items { get; set; }
 
         [JsonIgnore]
         public string ItemsText
