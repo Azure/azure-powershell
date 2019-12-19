@@ -59,6 +59,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 
         public string Subnet => ManagedIntegrationRuntime.ComputeProperties?.VNetProperties?.Subnet;
 
+        public int? DataFlowRuntimeCoreCount => ManagedIntegrationRuntime.ComputeProperties?.DataFlowProperties?.CoreCount;
+
+        public string DataFlowRuntimeComputeType => ManagedIntegrationRuntime.ComputeProperties?.DataFlowProperties?.ComputeType;
+
+        public int? DataFlowRuntimeTimeToLive => ManagedIntegrationRuntime.ComputeProperties?.DataFlowProperties?.TimeToLive;
+
         public string State => ManagedIntegrationRuntime.State;
 
         public string LicenseType => ManagedIntegrationRuntime.SsisProperties?.LicenseType;

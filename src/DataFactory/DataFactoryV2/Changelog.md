@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Show data flow runtime properties of IR.
 
 ## Version 1.5.1
 * Update ADF .Net SDK version to 4.5.0
