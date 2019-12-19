@@ -99,8 +99,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string NewPolicySetDefinitionDisplayNameHelp = "The display name for the new policy set definition.";
         public const string NewPolicySetDefinitionDescriptionHelp = "The description for the new policy set definition.";
         public const string NewPolicySetDefinitionMetadataHelp = "The metadata for the new policy set definition. This can either be a path to a file name containing the metadata, or the metadata as a string.";
-        public const string NewPolicySetDefinitionPolicyDefinitionHelp = "The policy definition for the new policy set definition. This can either be a path to a file name containing the policy definitions, or the policy set definition as a string.";
-        public const string NewPolicySetDefinitionParametersHelp = "The parameters declaration for the new policy set definition. This can either be a path to a file name or uri containing the parameters declaration, or the parameters declaration as a string.";
+        public const string NewPolicySetDefinitionPolicyDefinitionHelp = "The policy definitions for the new policy set definition. This can either be a path to a file containing the policy definitions, or the policy set definition as a JSON string.";
+        public const string NewPolicySetDefinitionGroupDefinitionHelp = "The policy definition groups for the new policy set definition. This can either be a path to a file containing the groups, or the groups as a JSON string.";
+        public const string NewPolicySetDefinitionParametersHelp = "The parameters declaration for the new policy set definition. This can either be a path to a file or uri containing the parameters declaration, or the parameters declaration as a JSON string.";
         public const string NewPolicySetDefinitionManagementGroupHelp = "The name of the management group of the new policy set definition.";
         public const string NewPolicySetDefinitionSubscriptionIdHelp = "The subscription ID of the new policy set definition.";
         public const string RemovePolicySetDefinitionNameHelp = "The policy set definition name to delete.";
@@ -111,9 +112,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string SetPolicySetDefinitionIdHelp = "The fully qualified policy set definition ID to get, including the subscription or management group. e.g. /providers/Microsoft.Management/managementGroups/{managementGroup}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}.";
         public const string SetPolicySetDefinitionDisplayNameHelp = "The display name of the updated policy set definition.";
         public const string SetPolicySetDefinitionDescriptionHelp = "The description of the updated policy set definition.";
-        public const string SetPolicySetDefinitionPolicyDefinitionHelp = "The policy definitions of the updated policy set definition. This can either be a path to a file name containing the policy definitions, or the policy definitions as a string.";
-        public const string SetPolicySetDefinitionMetadataHelp = "The metadata of the updated policy set definition. This can either be a path to a file name containing the metadata, or the metadata as a string.";
-        public const string SetPolicySetDefinitionParameterHelp = "The parameters declaration of the updated policy set definition. This can either be a path to a file name or uri containing the parameters declaration, or the parameters declaration as a string.";
+        public const string SetPolicySetDefinitionPolicyDefinitionHelp = "The policy definitions of the updated policy set definition. This can either be a path to a file containing the policy definitions, or the policy definitions as a JSON string.";
+        public const string SetPolicySetDefinitionGroupDefinitionHelp = "The policy definition groups of the updated policy set definition. This can either be a path to a file containing the groups, or the groups as a JSON string.";
+        public const string SetPolicySetDefinitionMetadataHelp = "The metadata of the updated policy set definition. This can either be a path to a file containing the metadata, or the metadata as a JSON string.";
+        public const string SetPolicySetDefinitionParameterHelp = "The parameters declaration of the updated policy set definition. This can either be a path to a file or uri containing the parameters declaration, or the parameters declaration as a JSON string.";
         public const string SetPolicySetDefinitionManagementGroupHelp = "The name of the management group of the policy set definition to update.";
         public const string SetPolicySetDefinitionSubscriptionIdHelp = "The subscription ID of the policy set definition to update.";
     }

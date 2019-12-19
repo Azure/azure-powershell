@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.Common
     /// </summary>
     public class TelemetryProvider : IDictionary<string, AzurePSQoSEvent>, IDisposable
     {
+        const string SubscriptionIdString = "SubscriptionId";
+
         AzurePSDataCollectionProfile _dataCollectionProfile;
         MetricHelper _helper;
         Action<string> _warningLogger, _debugLogger;
@@ -143,6 +145,28 @@ namespace Microsoft.Azure.Commands.Common
             };
 
             data.CustomProperties.Add("PSPreviewVersion", "4.0.0");
+            data.CustomProperties.Add("UserAgent", "AzurePowershell/Az4.0.0-preview");
+            if(invocationInfo?.BoundParameters?.ContainsKey(SubscriptionIdString) == true)
+            {
+                object rawValue = invocationInfo.BoundParameters[SubscriptionIdString];
+                string subscriptionId = null;
+                if(rawValue is string)
+                {
+                    subscriptionId = rawValue as string;
+                }
+                else if(rawValue is string[])
+                {
+                    string[] rawValueArray = rawValue as string[] ;
+                    if (rawValueArray.Length > 0)
+                    {
+                        subscriptionId = string.Join(";", rawValueArray);
+                    }
+                }
+                if(!string.IsNullOrEmpty(subscriptionId))
+                {
+                    data.CustomProperties.Add(SubscriptionIdString, subscriptionId);
+                }
+            }
 
             if (invocationInfo != null)
             {

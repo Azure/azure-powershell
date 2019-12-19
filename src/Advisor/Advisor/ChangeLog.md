@@ -20,6 +20,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.1
+* Update references in .psd1 to use relative path
+
 ## Version 1.1.0
 * Added new category "Operational Excellence" to Get-AzAdvisorRecommendation cmdlet.
 

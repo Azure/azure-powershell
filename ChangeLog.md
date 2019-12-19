@@ -1,3 +1,62 @@
+## 3.2.0 - December 2019
+
+### General
+* Update references in .psd1 to use relative path for all modules
+
+#### Az.Accounts
+* Set correct UserAgent for client-side telemetry for Az 4.0 preview
+* Display user friendly error message when context is null in Az 4.0 preview
+
+#### Az.Batch
+* Fix issue #10602, where **New-AzBatchPool** did not properly send 'VirtualMachineConfiguration.ContainerConfiguration' or 'VirtualMachineConfiguration.DataDisks' to the server.
+
+#### Az.DataFactory
+* Update ADF .Net SDK version to 4.5.0
+
+#### Az.FrontDoor
+* Added WAF managed rules exclusion support
+* Add SocketAddr to auto-complete
+
+#### Az.HealthcareApis
+* Exception Handling
+
+#### Az.KeyVault
+* Fixed error accessing value that is potentially not set
+* Elliptic Curve Cryptography Certificate Managment
+    - Added support to specify the Curve for Certificate Policies
+
+#### Az.Monitor
+* Adding optional argument to the Add Diagnostic Settings command. A switch argument that if present indicates that the export to Log Analytics must be to a fixed schema (a.k.a. dedicated, data type)
+
+#### Az.Network
+* Support for IpGroups in AzureFirewall Application,Nat & Network Rules.
+
+#### Az.RecoveryServices
+* Added SoftDelete feature for VM and added tests for softdelete
+* Azure Site Recovery support for Azure Disk Encryption One Pass for Azure to Azure.
+
+#### Az.Resources
+* Fix an issue where template deployment fails to read a template parameter if its name conflicts with some built-in parameter name.
+* Updated policy cmdlets to use new api version 2019-09-01 that introduces grouping support within policy set definitions.
+
+#### Az.Sql
+* Upgraded storage creation in Vulnerability Assessment auto enablement to StorageV2
+
+#### Az.Storage
+* Support generate Blob/Constainer Idenity based SAS token with Storage Context based on Oauth authentication
+    - New-AzStorageContainerSASToken
+    - New-AzStorageBlobSASToken
+* Support revoke Storage Account User Delegation Keys, so all Idenity SAS tokens are revoked
+    - Revoke-AzStorageAccountUserDelegationKeys
+* Upgrade to Microsoft.Azure.Management.Storage 14.2.0, to support new API version 2019-06-01.
+* Support Share QuotaGiB more than 5120 in Management plane File Share cmdlets, and add parameter alias 'Quota' to parameter 'QuotaGiB' 
+	- New-AzRmStorageShare
+	- Update-AzRmStorageShare
+* Add parameter alias 'QuotaGiB' to parameter 'Quota'
+	- Set-AzStorageShareQuota
+* Fix the issue that Set-AzStorageContainerAcl can clean up the stored Access Policy
+	- Set-AzStorageContainerAcl
+
 ## 3.1.0 - November 2019
 ### Highlights since the last major release
 * Az.DataBoxEdge 1.0.0 released

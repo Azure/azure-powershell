@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Commands.StorageSync.Common.Converters;
 using Microsoft.Azure.Commands.StorageSync.Common.Exceptions;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
@@ -20,6 +21,7 @@ using Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common
@@ -74,7 +76,27 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         protected virtual void InitializeComponent()
         {
-            DefaultProfile.DefaultContext.Tenant.Id = StorageSyncClientWrapper.StorageSyncResourceManager.GetTenantId() ?? DefaultProfile.DefaultContext.Tenant.Id;
+            AzureContext.Tenant.Id = StorageSyncClientWrapper.StorageSyncResourceManager.GetTenantId() ?? AzureContext.Tenant.Id;
+        }
+
+        /// <summary>
+        /// Gets the current default context.
+        /// </summary>
+        protected virtual IAzureContext AzureContext
+        {
+            get
+            {
+                if (DefaultProfile == null || DefaultProfile.DefaultContext == null || DefaultProfile.DefaultContext.Account == null)
+                {
+                    throw new PSInvalidOperationException(Resources.RunConnectAccount);
+                }
+                if (DefaultProfile.DefaultContext.Subscription == null)
+                {
+                    throw new PSInvalidOperationException(string.Format(Resources.NoSubscriptionFound, DefaultProfile.DefaultContext.Tenant.Id));
+                }
+
+                return DefaultProfile.DefaultContext;
+            }
         }
 
         /// <summary>
@@ -93,7 +115,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// Gets the subscription identifier.
         /// </summary>
         /// <value>The subscription identifier.</value>
-        public Guid SubscriptionId => DefaultProfile.DefaultContext.Subscription.GetId();
+        public Guid SubscriptionId => AzureContext.Subscription.GetId();
 
         /// <summary>
         /// Gets or sets the storage sync client wrapper.
@@ -105,7 +127,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             {
                 if (storageSyncClientWrapper == null)
                 {
-                    storageSyncClientWrapper = new StorageSyncClientWrapper(DefaultProfile.DefaultContext, ActiveDirectoryClient);
+                    storageSyncClientWrapper = new StorageSyncClientWrapper(AzureContext, ActiveDirectoryClient);
                 }
 
                 storageSyncClientWrapper.VerboseLogger = WriteVerboseWithTimestamp;
