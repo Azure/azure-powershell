@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -107,16 +108,22 @@ namespace Microsoft.Azure.Commands.Network
         public string DestinationAddress { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The list of test group.")]
         [ValidateNotNullOrEmpty]
-        public PSNetworkWatcherConnectionMonitorTestGroupObject[] TestGroup { get; set; }
+        public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroup { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The connection monitor output.")]
         [ValidateNotNullOrEmpty]
         public List<PSNetworkWatcherConnectionMonitorOutputObject> Output { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Notes associated with connection monitor.")]
+        [ValidateNotNullOrEmpty]
+        public string Notes { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -141,8 +148,11 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
+            Validate();
+
             string resourceGroupName = this.ResourceGroupName;
             string networkWatcherName = this.NetworkWatcherName;
+            bool connectionMonitorV2 = false;
 
             if (ParameterSetName.Contains("SetByResource"))
             {
@@ -161,6 +171,10 @@ namespace Microsoft.Azure.Commands.Network
                 resourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
                 networkWatcherName = networkWatcher.Name;
             }
+            else if (TestGroup.Any() && Output.Any())
+            {
+                connectionMonitorV2 = true;
+            }
 
             var present = this.IsConnectionMonitorPresent(resourceGroupName, networkWatcherName, this.Name);
 
@@ -171,13 +185,13 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name,
                 () =>
                 {
-                    var connectionMonitor = CreateConnectionMonitor(resourceGroupName, networkWatcherName);
+                    var connectionMonitor = CreateConnectionMonitor(resourceGroupName, networkWatcherName, connectionMonitorV2);
                     WriteObject(connectionMonitor);
                 },
                 () => present);
         }
 
-        private PSConnectionMonitorResult CreateConnectionMonitor(string resourceGroupName, string networkWatcherName)
+        private PSConnectionMonitorResult CreateConnectionMonitor(string resourceGroupName, string networkWatcherName, bool connectionMonitorV2 = false)
         {
             MNM.ConnectionMonitor parameters = new MNM.ConnectionMonitor
             {
@@ -192,10 +206,172 @@ namespace Microsoft.Azure.Commands.Network
                     Address = this.DestinationAddress,
                     Port = this.DestinationPort
                 },
-                // TestGroup = this.TestGroup,
-                // Output = this.Output,
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
             };
+
+            if (!string.IsNullOrEmpty(Notes))
+            {
+                parameters.Notes = this.Notes;
+            }
+
+            // Parse the TestGroup to parameters
+            foreach (PSNetworkWatcherConnectionMonitorTestGroupObject TestGroup in this.TestGroup)
+            {
+                // Add source Endpoint
+                foreach (PSNetworkWatcherConnectionMonitorEndpointObject SrcEndpoint in TestGroup.Destinations)
+                {
+                    ConnectionMonitorEndpoint SourceEndpoint = new ConnectionMonitorEndpoint()
+                    {
+                        Name = SrcEndpoint.Name,
+                        ResourceId = SrcEndpoint.ResourceId,
+                        Address = SrcEndpoint.Address,
+                        Filter = new ConnectionMonitorEndpointFilter()
+                        {
+                            Type = SrcEndpoint.Filter.Type
+                        }
+                    };
+
+                    // Add ConnectionMonitorEndpointFilterItem
+                    foreach (PSConnectionMonitorEndpointFilterItem Items in SrcEndpoint.Filter.Items)
+                    {
+                        SourceEndpoint.Filter.Items.Add(new ConnectionMonitorEndpointFilterItem()
+                        {
+                            Type = Items.Type,
+                            Address = Items.Address
+                        });
+                    }
+
+                    parameters.Endpoints.Add(SourceEndpoint);
+                }
+
+                // Add destination Endpoint
+                foreach (PSNetworkWatcherConnectionMonitorEndpointObject DstEndpoint in TestGroup.Destinations)
+                {
+                    ConnectionMonitorEndpoint DestinationEndpoint = new ConnectionMonitorEndpoint()
+                    {
+                        Name = DstEndpoint.Name,
+                        ResourceId = DstEndpoint.ResourceId,
+                        Address = DstEndpoint.Address,
+                        Filter = new ConnectionMonitorEndpointFilter()
+                        {
+                            Type = DstEndpoint.Filter.Type
+                        }
+                    };
+
+                    // Add ConnectionMonitorEndpointFilterItem
+                    foreach (PSConnectionMonitorEndpointFilterItem Items in DstEndpoint.Filter.Items)
+                    {
+                        DestinationEndpoint.Filter.Items.Add(new ConnectionMonitorEndpointFilterItem()
+                        {
+                            Type = Items.Type,
+                            Address = Items.Address
+                        });
+                    }
+
+                    parameters.Endpoints.Add(DestinationEndpoint);
+                }
+
+                // Add test configuration
+                foreach (PSNetworkWatcherConnectionMonitorTestConfigurationObject TestConfig in TestGroup.TestConfigurations)
+                {
+                    ConnectionMonitorTestConfiguration TestConfiguration = new ConnectionMonitorTestConfiguration()
+                    {
+                        Name = TestConfig.Name,
+                        Protocol = TestConfig.Protocol,
+                        PreferredIPVersion = TestConfig.PreferredIPVersion,
+                        TestFrequencySec = TestConfig.TestFrequencySec,
+                        SuccessThreshold = new ConnectionMonitorSuccessThreshold()
+                        {
+                            ChecksFailedPercent = TestConfig.SuccessThreshold.ChecksFailedPercent,
+                            RoundTripTimeMs = TestConfig.SuccessThreshold.RoundTripTimeMs
+                        }
+                    };
+
+                    if (string.Compare(TestConfiguration.Protocol, "TCP", true) == 0)
+                    {
+                        ConnectionMonitorTcpConfiguration TcpConfiguration = new ConnectionMonitorTcpConfiguration()
+                        {
+                            Port = TestConfig.TcpConfiguration?.Port,
+                            DisableTraceRoute = TestConfig.TcpConfiguration?.DisableTraceRoute
+                        };
+
+                        TestConfiguration.TcpConfiguration = TcpConfiguration;
+                    }
+                    else if (string.Compare(TestConfiguration.Protocol, "HTTP", true) == 0)
+                    {
+                        ConnectionMonitorHttpConfiguration HttpConfiguration = new ConnectionMonitorHttpConfiguration()
+                        {
+                            Port = TestConfig.HttpConfiguration?.Port,
+                            Method = TestConfig.HttpConfiguration?.Method,
+                            Path = TestConfig.HttpConfiguration?.Path,
+                            PreferHTTPS = TestConfig.HttpConfiguration?.PreferHTTPS,
+                            ValidStatusCodeRanges = TestConfig.HttpConfiguration?.ValidStatusCodeRanges
+                        };
+
+                        foreach (KeyValuePair<string, string> RequestHeadersEntry in TestConfig.HttpConfiguration?.RequestHeaders)
+                        {
+                            HTTPHeader RequestHeaders = new HTTPHeader()
+                            {
+                                Name = RequestHeadersEntry.Key,
+                                Value = RequestHeadersEntry.Value
+                            };
+
+                            HttpConfiguration.RequestHeaders.Add(RequestHeaders);
+                        }
+
+                        TestConfiguration.HttpConfiguration = HttpConfiguration;
+                    }
+                    else if (string.Compare(TestConfiguration.Protocol, "ICMP", true) == 0)
+                    {
+                        ConnectionMonitorIcmpConfiguration IcmpConfiguration = new ConnectionMonitorIcmpConfiguration()
+                        {
+                            DisableTraceRoute = TestConfig.IcmpConfiguration?.DisableTraceRoute
+                        };
+
+                        TestConfiguration.IcmpConfiguration = IcmpConfiguration;
+                    }
+
+                    // Add to parameters
+                    parameters.TestConfigurations.Add(TestConfiguration);
+                }
+
+                // Add Test Group
+                ConnectionMonitorTestGroup SdkTestGroup = new ConnectionMonitorTestGroup()
+                {
+                    Name = TestGroup.Name,
+                    Disable = TestGroup.Disable
+                };
+
+                foreach (PSNetworkWatcherConnectionMonitorTestConfigurationObject TestConfiguration in TestGroup.TestConfigurations)
+                {
+                    SdkTestGroup.TestConfigurations.Add(TestConfiguration.Name);
+                };
+
+                foreach (PSNetworkWatcherConnectionMonitorEndpointObject Source in TestGroup.Sources)
+                {
+                    SdkTestGroup.Sources.Add(Source.Name);
+                };
+
+                foreach (PSNetworkWatcherConnectionMonitorEndpointObject Destination in TestGroup.Destinations)
+                {
+                    SdkTestGroup.Destinations.Add(Destination.Name);
+                };
+
+                parameters.TestGroups.Add(SdkTestGroup);
+            }
+
+            // Add this.Output to parameters
+            foreach (PSNetworkWatcherConnectionMonitorOutputObject CMOutput in this.Output)
+            {
+                parameters.Outputs.Add(new ConnectionMonitorOutput()
+                {
+                    Type = CMOutput.Type,
+                    WorkspaceSettings = new ConnectionMonitorWorkspaceSettings()
+                    {
+                       WorkspaceResourceId = CMOutput.WorkspaceSettings.WorkspaceResourceId
+                    },
+                });
+            }
 
             if (this.ConfigureOnly)
             {
@@ -205,6 +381,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.MonitoringIntervalInSeconds != null)
             {
                 parameters.MonitoringIntervalInSeconds = this.MonitoringIntervalInSeconds;
+            }
+
+            if (!string.IsNullOrEmpty(Notes))
+            {
+                parameters.Notes = this.Notes;
             }
 
             PSConnectionMonitorResult getConnectionMonitor = new PSConnectionMonitorResult();
@@ -224,10 +405,50 @@ namespace Microsoft.Azure.Commands.Network
                 parameters.Location = this.Location;
             }
 
-            this.ConnectionMonitors.CreateOrUpdate(resourceGroupName, networkWatcherName, this.Name, parameters);
+            if (connectionMonitorV2)
+            {
+                this.ConnectionMonitors.CreateOrUpdateV1(resourceGroupName, networkWatcherName, this.Name, parameters);
+            }
+            else
+            {
+                this.ConnectionMonitors.CreateOrUpdate(resourceGroupName, networkWatcherName, this.Name, parameters);
+            }
+
             getConnectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, this.Name);
 
+            if (String.Compare(getConnectionMonitor.ConnectionMonitorType, "SingleSourceDestination", true) == 0)
+            {
+                //convert V2 to V1
+                getConnectionMonitor.Source.ResourceId = getConnectionMonitor.TestGroup[0]?.Sources[0]?.ResourceId;
+                // getConnectionMonitor.Source.Port
+
+                getConnectionMonitor.Destination.ResourceId = getConnectionMonitor.TestGroup[0]?.Destinations[0]?.ResourceId;
+                getConnectionMonitor.Destination.Address = getConnectionMonitor.TestGroup[0]?.Destinations[0]?.Address;
+                getConnectionMonitor.Destination.Port = getConnectionMonitor.TestConfiguration[0]?.TcpConfiguration?.Port?? default(int);
+                getConnectionMonitor.MonitoringIntervalInSeconds = getConnectionMonitor.TestConfiguration[0]?.TestFrequencySec;
+
+                if (this.ConfigureOnly)
+                {
+                    getConnectionMonitor.AutoStart = false;
+                }
+
+                // These parameters do not need mapping 
+                // getConnectionMonitor.StartTime
+                // getConnectionMonitor.MonitoringStatus
+            }
+
             return getConnectionMonitor;
+        }
+
+
+        public bool Validate()
+        {
+            if (ParameterSetName.Contains("SetByResource") || ParameterSetName.Contains("SetByLocation") && (TestGroup.Any() || Output.Any()))
+            {
+                throw new ArgumentException("Either connection monitor V1 or V2 can be specified");
+            }
+
+            return true;
         }
     }
 }

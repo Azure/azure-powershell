@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name != null? this.Name : "Endpoint"+Guid.NewGuid(),
                 ResourceId = this.ResourceId,
                 Address = this.Address,
-                Filter = new PSConnectionMonitorFilter()
+                Filter = new PSConnectionMonitorEndpointFilter()
                 {
                     Type = this.FilterType
                 },
@@ -79,10 +79,10 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.FilterAddress != null)
             {
-                endPoint.Filter.Items = new List<PSConnectionMonitorEndpointItem>();
+                endPoint.Filter.Items = new List<PSConnectionMonitorEndpointFilterItem>();
                 foreach (string Address in FilterAddress)
                 {
-                    endPoint.Filter.Items.Add(new PSConnectionMonitorEndpointItem()
+                    endPoint.Filter.Items.Add(new PSConnectionMonitorEndpointFilterItem()
                     {
                         Type = "AgentAddress",
                         Address = Address

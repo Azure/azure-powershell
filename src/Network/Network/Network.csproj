@@ -8,6 +8,7 @@
 
   <PropertyGroup>
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>

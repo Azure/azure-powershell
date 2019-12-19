@@ -574,8 +574,8 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSConnectionMonitorQueryResult, MNM.ConnectionMonitorQueryResult>();
                 cfg.CreateMap<CNM.PSConnectionStateSnapshot, MNM.ConnectionStateSnapshot>();
                 cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorEndpointObject, MNM.ConnectionMonitorEndpoint>();
-                cfg.CreateMap<CNM.PSConnectionMonitorFilter, MNM.ConnectionMonitorFilter>();
-                cfg.CreateMap<CNM.PSConnectionMonitorEndpointItem, MNM.ConnectionMonitorEndpointItem>();
+                cfg.CreateMap<CNM.PSConnectionMonitorEndpointFilter, MNM.ConnectionMonitorEndpointFilter>();
+                cfg.CreateMap<CNM.PSConnectionMonitorEndpointFilterItem, MNM.ConnectionMonitorEndpointFilterItem>();
                 cfg.CreateMap<CNM.PSNetworkWatcherConnectionMonitorTestConfigurationObject, MNM.ConnectionMonitorTestConfiguration>();
                 cfg.CreateMap<CNM.PSConnectionMonitorTcpConfiguration, MNM.ConnectionMonitorTcpConfiguration>();
                 cfg.CreateMap<CNM.PSConnectionMonitorIcmpConfiguration, MNM.ConnectionMonitorIcmpConfiguration>();
@@ -594,8 +594,8 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ConnectionMonitorQueryResult, CNM.PSConnectionMonitorQueryResult>();
                 cfg.CreateMap<MNM.ConnectionStateSnapshot, CNM.PSConnectionStateSnapshot>();
                 cfg.CreateMap<MNM.ConnectionMonitorEndpoint, CNM.PSNetworkWatcherConnectionMonitorEndpointObject>();
-                cfg.CreateMap<MNM.ConnectionMonitorFilter, CNM.PSConnectionMonitorFilter>();
-                cfg.CreateMap<MNM.ConnectionMonitorEndpointItem, CNM.PSConnectionMonitorEndpointItem>();
+                cfg.CreateMap<MNM.ConnectionMonitorEndpointFilter, CNM.PSConnectionMonitorEndpointFilter>();
+                cfg.CreateMap<MNM.ConnectionMonitorEndpointFilterItem, CNM.PSConnectionMonitorEndpointFilterItem>();
                 cfg.CreateMap<MNM.ConnectionMonitorTestConfiguration, CNM.PSNetworkWatcherConnectionMonitorTestConfigurationObject>();
                 cfg.CreateMap<MNM.ConnectionMonitorTcpConfiguration, CNM.PSConnectionMonitorTcpConfiguration>();
                 cfg.CreateMap<MNM.ConnectionMonitorIcmpConfiguration, CNM.PSConnectionMonitorIcmpConfiguration>();

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string Address { get; set; }
 
-        public PSConnectionMonitorFilter Filter { get; set; }
+        public PSConnectionMonitorEndpointFilter Filter { get; set; }
 
         [JsonIgnore]
         public string FilterText
