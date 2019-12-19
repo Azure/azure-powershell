@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.IotCentral.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using ResourceProperties = Microsoft.Azure.Commands.Management.IotCentral.Properties;
 
@@ -112,7 +113,22 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
 
         private string GetAppSkuName()
         {
-            return this.Sku ?? PSIotCentralAppSku.S1.ToString();
+            if (string.IsNullOrEmpty(this.Sku))
+            {
+                return PSIotCentralAppSku.S1.ToString();
+            }
+            else
+            {
+                string[] skus = { "S1", "ST1", "ST2" };
+                if (skus.Any(this.Sku.ToUpper().Contains))
+                {
+                    return this.Sku;
+                }
+                else
+                {
+                    throw new PSArgumentException("BadParameterSetName");
+                }
+            }
         }
 
         private string GetDisplayName()
