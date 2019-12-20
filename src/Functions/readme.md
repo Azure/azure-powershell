@@ -50,7 +50,7 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.md
   - $(repo)/specification/web/resource-manager/readme.md
-module-version: 0.0.1
+module-version: 0.0.2
 title: Functions
 subject-prefix: ''
 
