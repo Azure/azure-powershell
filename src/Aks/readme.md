@@ -74,7 +74,7 @@ aks: $(repo)/specification/containerservice/resource-manager/Microsoft.Container
 input-file:
 - $(aks)/stable/2019-10-01/managedClusters.json
 
-module-version: 4.0.0
+module-version: 4.0.1
 title: AksClient
 ```
 
