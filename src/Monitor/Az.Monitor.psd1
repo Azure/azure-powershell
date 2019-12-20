@@ -1,7 +1,7 @@
 @{
   GUID = '364b2dcf-3b5b-4752-b9e9-a267e94981d7'
   RootModule = './Az.Monitor.psm1'
-  ModuleVersion = '4.0.0'
+  ModuleVersion = '4.0.2'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
