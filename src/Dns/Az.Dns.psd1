@@ -1,7 +1,7 @@
 @{
   GUID = '7417c0b6-55f6-4ee9-a3de-831752536106'
   RootModule = './Az.Dns.psm1'
-  ModuleVersion = '0.0.1'
+  ModuleVersion = '4.0.2'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
