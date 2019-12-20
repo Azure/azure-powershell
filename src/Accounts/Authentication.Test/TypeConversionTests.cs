@@ -64,6 +64,8 @@ namespace Common.Authentication.Test
             Assert.Null(environment.AzureOperationalInsightsEndpointResourceId);
             Assert.Null(environment.AzureOperationalInsightsEndpoint);
             Assert.Null(environment.AzureAnalysisServicesEndpointSuffix);
+            Assert.Null(environment.AzureAttestationServiceEndpointResourceId);
+            Assert.Null(environment.AzureAttestationServiceEndpointSuffix);
 
         }
 
@@ -136,6 +138,10 @@ namespace Common.Authentication.Test
                 environment.AzureOperationalInsightsEndpoint);
             CheckEndpoint(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix, azEnvironment,
                 environment.AzureAnalysisServicesEndpointSuffix);
+            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId, azEnvironment,
+                environment.AzureAttestationServiceEndpointResourceId);
+            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointSuffix, azEnvironment,
+                environment.AzureAttestationServiceEndpointSuffix);
             Assert.Equal(azEnvironment.Name, environment.Name);
             Assert.Equal(azEnvironment.OnPremise, environment.EnableAdfsAuthentication);
         }
@@ -182,14 +188,16 @@ namespace Common.Authentication.Test
             "https://manage.windowsazure.com/publishsettings", "https://management.azure.com",
             "https://management.core.windows.net", ".sql.azure.com", ".core.windows.net",
             ".trafficmanager.windows.net", "https://batch.core.windows.net", "https://datalake.azure.net",
-            "https://api.loganalytics.io", "https://api.loganalytics.io/v1", "analysisservices.azure.net")]
+            "https://api.loganalytics.io", "https://api.loganalytics.io/v1", "analysisservices.azure.net",
+            "https://attest.azure.net", "attest.azure.net")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertValidPSEnvironments(string name, bool onPremise, string activeDirectory, string serviceResource,
             string adTenant, string dataLakeJobs, string dataLakeFiles, string kvDnsSuffix,
             string kvResource, string gallery, string graph, string graphResource, string portal,
             string publishSettings, string resourceManager, string serviceManagement,
             string sqlSuffix, string storageSuffix, string trafficManagerSuffix, string batchResource, string dataLakeResource,
-            string azureOperationalInsightsEndpointResourceId, string azureOperationalInsightsEndpoint, string analysisServicesSuffix)
+            string azureOperationalInsightsEndpointResourceId, string azureOperationalInsightsEndpoint, string analysisServicesSuffix,
+            string azureAttestationServiceEndpointResourceId, string azureAttestationServiceEndpointSuffix)
         {
             PSAzureEnvironment environment = new PSAzureEnvironment
             {
@@ -216,7 +224,9 @@ namespace Common.Authentication.Test
                 BatchEndpointResourceId = batchResource,
                 AzureOperationalInsightsEndpointResourceId = azureOperationalInsightsEndpointResourceId,
                 AzureOperationalInsightsEndpoint = azureOperationalInsightsEndpoint,
-                AzureAnalysisServicesEndpointSuffix = analysisServicesSuffix
+                AzureAnalysisServicesEndpointSuffix = analysisServicesSuffix,
+                AzureAttestationServiceEndpointResourceId = azureAttestationServiceEndpointResourceId,
+                AzureAttestationServiceEndpointSuffix = azureAttestationServiceEndpointSuffix,
             };
             var azEnvironment = (AzureEnvironment)environment;
             Assert.NotNull(environment);
@@ -264,6 +274,10 @@ namespace Common.Authentication.Test
                 environment.AzureOperationalInsightsEndpoint);
             CheckEndpoint(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix, azEnvironment,
                 environment.AzureAnalysisServicesEndpointSuffix);
+            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId, azEnvironment,
+                environment.AzureAttestationServiceEndpointResourceId);
+            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointSuffix, azEnvironment,
+                environment.AzureAttestationServiceEndpointSuffix);
             Assert.Equal(azEnvironment.Name, environment.Name);
             Assert.Equal(azEnvironment.OnPremise, environment.EnableAdfsAuthentication);
         }
