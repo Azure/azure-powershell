@@ -53,7 +53,7 @@ require:
   - $(repo)/specification/keyvault/data-plane/readme.md
 
 title: KeyVault
-module-version: 4.0.1
+module-version: 4.0.2
 
 ```
 
