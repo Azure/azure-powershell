@@ -55,7 +55,7 @@ require:
 #  - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2017-07-01/containerService.json
 
 subject-prefix: ''
-module-version: 4.0.1
+module-version: 4.0.2
 
 directive:
 # subject renames for VM and Vmss
