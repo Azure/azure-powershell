@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Commands.Network
             foreach (PSNetworkWatcherConnectionMonitorTestGroupObject TestGroup in this.TestGroup)
             {
                 // Add source Endpoint
-                foreach (PSNetworkWatcherConnectionMonitorEndpointObject SrcEndpoint in TestGroup.Destinations)
+                foreach (PSNetworkWatcherConnectionMonitorEndpointObject SrcEndpoint in TestGroup.Sources)
                 {
                     ConnectionMonitorEndpoint SourceEndpoint = new ConnectionMonitorEndpoint()
                     {
@@ -274,9 +274,10 @@ namespace Microsoft.Azure.Commands.Network
                 // Add test configuration
                 foreach (PSNetworkWatcherConnectionMonitorTestConfigurationObject TestConfig in TestGroup.TestConfigurations)
                 {
+                    uint TestConfigCounter = 1;
                     ConnectionMonitorTestConfiguration TestConfiguration = new ConnectionMonitorTestConfiguration()
                     {
-                        Name = TestConfig.Name,
+                        Name = string.IsNullOrEmpty(TestConfig.Name) ? "TestConfig"+TestConfigCounter.ToString() : TestConfig.Name,
                         Protocol = TestConfig.Protocol,
                         PreferredIPVersion = TestConfig.PreferredIPVersion,
                         TestFrequencySec = TestConfig.TestFrequencySec,
@@ -286,6 +287,8 @@ namespace Microsoft.Azure.Commands.Network
                             RoundTripTimeMs = TestConfig.SuccessThreshold.RoundTripTimeMs
                         }
                     };
+
+                    TestConfigCounter++;
 
                     if (string.Compare(TestConfiguration.Protocol, "TCP", true) == 0)
                     {
@@ -407,39 +410,17 @@ namespace Microsoft.Azure.Commands.Network
 
             if (connectionMonitorV2)
             {
-                this.ConnectionMonitors.CreateOrUpdateV1(resourceGroupName, networkWatcherName, this.Name, parameters);
+                this.ConnectionMonitors.CreateOrUpdate(resourceGroupName, networkWatcherName, this.Name, parameters);
             }
             else
             {
-                this.ConnectionMonitors.CreateOrUpdate(resourceGroupName, networkWatcherName, this.Name, parameters);
+                this.ConnectionMonitors.CreateOrUpdateV1(resourceGroupName, networkWatcherName, this.Name, parameters);
             }
 
-            getConnectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, this.Name);
-
-            if (String.Compare(getConnectionMonitor.ConnectionMonitorType, "SingleSourceDestination", true) == 0)
-            {
-                //convert V2 to V1
-                getConnectionMonitor.Source.ResourceId = getConnectionMonitor.TestGroup[0]?.Sources[0]?.ResourceId;
-                // getConnectionMonitor.Source.Port
-
-                getConnectionMonitor.Destination.ResourceId = getConnectionMonitor.TestGroup[0]?.Destinations[0]?.ResourceId;
-                getConnectionMonitor.Destination.Address = getConnectionMonitor.TestGroup[0]?.Destinations[0]?.Address;
-                getConnectionMonitor.Destination.Port = getConnectionMonitor.TestConfiguration[0]?.TcpConfiguration?.Port?? default(int);
-                getConnectionMonitor.MonitoringIntervalInSeconds = getConnectionMonitor.TestConfiguration[0]?.TestFrequencySec;
-
-                if (this.ConfigureOnly)
-                {
-                    getConnectionMonitor.AutoStart = false;
-                }
-
-                // These parameters do not need mapping 
-                // getConnectionMonitor.StartTime
-                // getConnectionMonitor.MonitoringStatus
-            }
+            getConnectionMonitor = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, this.Name, connectionMonitorV2);
 
             return getConnectionMonitor;
         }
-
 
         public bool Validate()
         {
@@ -448,6 +429,17 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Either connection monitor V1 or V2 can be specified");
             }
 
+            foreach (PSNetworkWatcherConnectionMonitorTestGroupObject TestGroup in this.TestGroup)
+            {
+                foreach (PSNetworkWatcherConnectionMonitorTestConfigurationObject TestConfiguration in TestGroup.TestConfigurations)
+                {
+                    if (TestGroup.TestConfigurations.Any(x => x.Name == TestConfiguration.Name))
+                    {
+                        throw new ArgumentException("Test configuration name is not unique");
+                    }
+                }
+            }
+            
             return true;
         }
     }

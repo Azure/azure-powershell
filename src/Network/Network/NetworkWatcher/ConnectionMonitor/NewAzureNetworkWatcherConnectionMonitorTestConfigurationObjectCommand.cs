@@ -72,7 +72,9 @@ namespace Microsoft.Azure.Commands.Network
 
             PSNetworkWatcherConnectionMonitorTestConfigurationObject testConfiguration = new PSNetworkWatcherConnectionMonitorTestConfigurationObject()
             {
-                Name = this.Name != null ? this.Name : "TestConfig" + Guid.NewGuid(),
+                //can be empty
+                // if empty, will be set in New/Set-ConnectionMonitorCommand
+                // Name 
                 TestFrequencySec = this.TestFrequencySec,
                 PreferredIPVersion = this.PreferredIPVersion,
                 SuccessThreshold = new PSConnectionMonitorSuccessThreshold()
