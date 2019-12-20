@@ -56,6 +56,20 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFailoverDatabaseReadableSecondary()
+        {
+            RunPowerShellTest("Test-FailoverDatabaseReadableSecondary");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFailoverStandardDatabaseReadableSecondary()
+        {
+            RunPowerShellTest("Test-FailoverStandardDatabaseReadableSecondary");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFailoverElasticPool()
         {
             RunPowerShellTest("Test-FailoverElasticPool");

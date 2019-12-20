@@ -131,9 +131,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Failovers a database
         /// </summary>
-        public void Failover(string resourceGroupName, string serverName, string databaseName)
+        public void Failover(string resourceGroupName, string serverName, string databaseName, string replicaType)
         {
-            GetCurrentSqlClient().Databases.Failover(resourceGroupName, serverName, databaseName);
+            GetCurrentSqlClient().Databases.Failover(resourceGroupName, serverName, databaseName, replicaType);
         }
 
         /// <summary>

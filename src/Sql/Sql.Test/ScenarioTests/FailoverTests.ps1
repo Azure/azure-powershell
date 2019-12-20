@@ -132,6 +132,76 @@ function Test-FailoverDatabaseWithServerPiping
 
 <#
 	.SYNOPSIS
+	Tests failover readable secondary replica of database.  Issues command with both -AsJob and without extra parameters
+	
+	Also tests failing over twice to verify first failover went through which causes second failover to hit a recent failover
+	exception (aka too many failovers in the given period of time).
+#>
+function Test-FailoverDatabaseReadableSecondary
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	try
+	{
+		# Create database
+		$databaseName = Get-DatabaseName
+		New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition "BusinessCritical" -Vcore 4 -ComputeGeneration "Gen5"
+
+		# Failover readable secondary replica of database with -AsJob
+		$job = Invoke-AzSqlDatabaseFailover -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -ReadableSecondary -AsJob
+		$job | Wait-Job
+		
+		# Failover database with no extra switch parameters.  Tests for exception to verify the first failover went through correctly as this second
+		# failover will cause a recent failover exception
+		try {
+			Invoke-AzSqlDatabaseFailover -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -ReadableSecondary 
+		} catch {
+			$ErrorMessage = $_.Exception.Message
+			Assert-AreEqual True $ErrorMessage.Contains("There was a recent failover on the database or pool")
+		}
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests failover readable secondary replica of standard database throws errors.
+#>
+function Test-FailoverStandardDatabaseReadableSecondary
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	try
+	{
+		# Create database
+		$databaseName = Get-DatabaseName
+		New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition "GeneralPurpose" -Vcore 4 -ComputeGeneration "Gen5"
+
+		# Failover readable secondary replica of standard database.  Tests that expected not supported on given SKU message it thrown
+		try {
+			Invoke-AzSqlDatabaseFailover -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -ReadableSecondary 
+		} catch {
+			$ErrorMessage = $_.Exception.Message
+			Assert-AreEqual True $ErrorMessage.Contains("This type of customer initiated failover is not supported on the given SKU")
+		}
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
 	Tests elastic pool failover.  Issues command with both -AsJob and without extra parameters
 	
 	Also tests failing over twice to verify first failover went through which causes second failover to hit a recent failover
