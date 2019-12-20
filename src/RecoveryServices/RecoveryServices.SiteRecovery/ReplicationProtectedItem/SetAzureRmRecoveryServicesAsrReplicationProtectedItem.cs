@@ -190,6 +190,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string UseManagedDisk { get; set; }
 
         /// <summary>
+        /// Gets or sets the disk Id to disk encryption set map.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public IDictionary<string, string> DiskIdToDiskEncryptionSetMap { get; set; }
+
+        /// <summary>
         ///     Gets or sets the id of the public IP address resource associated with the NIC.
         /// </summary>
         [Parameter]
@@ -288,6 +295,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 var useManagedDisk = this.UseManagedDisk;
                 var availabilitySetId = this.RecoveryAvailabilitySet;
                 var primaryNic = this.PrimaryNic;
+                var diskIdToDiskEncryptionMap = this.DiskIdToDiskEncryptionSetMap;
                 var vMNicInputDetailsList = new List<VMNicInputDetails>();
                 var providerSpecificInput = new UpdateReplicationProtectedItemProviderInput();
 
@@ -339,6 +347,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         primaryNic = providerSpecificDetails.SelectedSourceNicId;
                     }
 
+                    if (this.DiskIdToDiskEncryptionSetMap == null ||
+                        this.DiskIdToDiskEncryptionSetMap.Count == 0)
+                    {
+                        diskIdToDiskEncryptionMap = providerSpecificDetails.AzureVmDiskDetails.
+                            ToDictionary(x => x.DiskId, x => x.DiskEncryptionSetId);
+                    }
+
                     var deploymentType = Utilities.GetValueFromArmId(
                         providerSpecificDetails.RecoveryAzureStorageAccount,
                         ARMResourceTypeConstants.Providers);
@@ -359,7 +374,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             {
                                 RecoveryAzureV1ResourceGroupId = null,
                                 RecoveryAzureV2ResourceGroupId = recoveryResourceGroupId,
-                                UseManagedDisks = useManagedDisk
+                                UseManagedDisks = useManagedDisk,
+                                DiskIdToDiskEncryptionMap = this.DiskIdToDiskEncryptionSetMap
                             };
                     }
 
