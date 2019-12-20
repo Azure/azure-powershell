@@ -55,7 +55,7 @@ require:
 
 title: Network
 subject-prefix: ''
-module-version: 4.0.1
+module-version: 4.0.2
 make-sub-resources-byreference: true
 
 directive:
