@@ -1,7 +1,7 @@
 @{
 # region definition 
   RootModule = './Az.AppConfiguration.psm1'
-  ModuleVersion = '0.1.3'
+  ModuleVersion = '0.1.4'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
