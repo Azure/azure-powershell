@@ -301,11 +301,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         {
             get
             {
-                return this.GetEndpointSuffix(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix);
+                return this.GetEndpointSuffix(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointSuffix);
             }
             set
             {
-                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix, value);
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointSuffix, value);
             }
         }
 
@@ -316,11 +316,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         {
             get
             {
-                return this.GetEndpointSuffix(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId);
+                return this.GetEndpointSuffix(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId);
             }
             set
             {
-                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId, value);
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId, value);
             }
         }
 
