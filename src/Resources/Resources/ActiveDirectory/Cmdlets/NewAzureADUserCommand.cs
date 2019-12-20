@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Graph.RBAC.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [ValidateNotNullOrEmpty]
         public string ImmutableId { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The mail alias for the user.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The mail alias for the user.")]
         public string MailNickname { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "It must be specified if the user should change the password on the next successful login. Default behavior is to not change the password on the next successful login.")]
@@ -56,7 +57,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 AccountEnabled = true,
                 DisplayName = DisplayName,
-                MailNickname = MailNickname,
                 PasswordProfile = new PasswordProfile
                 {
                     Password = decodedPassword,
@@ -64,6 +64,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 },
                 UserPrincipalName = UserPrincipalName
             };
+
+            if (this.IsParameterBound(c => c.MailNickname))
+            {
+                userCreateparameters.MailNickname = MailNickname;
+            }
 
             if (this.IsParameterBound(c => c.ImmutableId))
             {

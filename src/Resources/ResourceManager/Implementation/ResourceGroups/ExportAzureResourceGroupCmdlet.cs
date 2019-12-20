@@ -19,14 +19,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ResourceGroups;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ResourceIds;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Management.Automation;
 
     /// <summary>
@@ -64,24 +60,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public SwitchParameter IncludeComments { get; set; }
 
         /// <summary>
-        /// Export template without resource name parameterization.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Skip resource name parameterization.")]
-        public SwitchParameter SkipResourceNameParameterization { get; set; }
-
-        /// <summary>
-        /// Export template without any parameterization.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Skip all parameterization.")]
-        public SwitchParameter SkipAllParameterization { get; set; }
-
-        /// <summary>
-        /// List of resourceIds to filter the results by.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "A list of resourceIds to filter the results by.")]
-        public string[] Resource { get; set; }
-
-        /// <summary>
         /// Gets or sets the force parameter.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
@@ -96,19 +74,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             if (ShouldProcess(ResourceGroupName, VerbsData.Export))
             {
 
-                var resourceGroupId = this.GetResourceGroupId();
+                var resourceId = this.GetResourceId();
 
-                var apiVersion = this.DetermineApiVersion(resourceId: resourceGroupId).Result;
+                var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
 
                 var parameters = new ExportTemplateParameters
                 {
-                    Resources = this.GetResourcesFilter(resourceGroupId: resourceGroupId),
-                    Options = this.GetExportOptions(),
+                    Resources = new string[] {"*"},
+                    Options = this.GetExportOptions() ?? null
                 };
 
                 var operationResult = this.GetResourcesClient()
                     .InvokeActionOnResource<JObject>(
-                        resourceId: resourceGroupId,
+                        resourceId: resourceId,
                         action: Constants.ExportTemplate,
                         parameters: parameters.ToJToken(),
                         apiVersion: apiVersion,
@@ -117,7 +95,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                 var managementUri = this.GetResourcesClient()
                     .GetResourceManagementRequestUri(
-                        resourceId: resourceGroupId,
+                        resourceId: resourceId,
                         apiVersion: apiVersion,
                         action: Constants.ExportTemplate);
 
@@ -160,66 +138,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private string GetExportOptions()
         {
-            var options = new List<string>();
+            string options = string.Empty;
             if (this.IncludeComments.IsPresent)
             {
-                options.Add("IncludeComments");
+                options += "IncludeComments";
             }
-
             if (this.IncludeParameterDefaultValue.IsPresent)
             {
-                options.Add("IncludeParameterDefaultValue");
+                options = string.IsNullOrEmpty(options) ? "IncludeParameterDefaultValue" : options + ",IncludeParameterDefaultValue";
             }
-
-            if (this.SkipResourceNameParameterization.IsPresent)
-            {
-                options.Add("SkipResourceNameParameterization");
-            }
-
-            if (this.SkipAllParameterization.IsPresent)
-            {
-                options.Add("SkipAllParameterization");
-            }
-
-            return options.Any() ? string.Join(",", options) : null;
+            return string.IsNullOrEmpty(options) ? null : options;
         }
 
         /// <summary>
-        /// Gets the resources filter
+        /// Gets the resource Id from the supplied PowerShell parameters.
         /// </summary>
-        /// <param name="resourceGroupId"></param>
-        private string[] GetResourcesFilter(string resourceGroupId)
-        {
-            if (this.Resource?.Any() != true)
-            {
-                return new[] { "*" };
-            }
-
-            var resourceIds = new List<ResourceGroupLevelResourceId>();
-            var subscriptionId = DefaultContext.Subscription.GetId().ToString();
-            foreach (var filteredResourceId in this.Resource)
-            {
-                if (!ResourceGroupLevelResourceId.TryParse(filteredResourceId, out var resourceId))
-                {
-                    throw new ArgumentException($"Unable to parse resourceId '{filteredResourceId}'");
-                }
-
-                if (!resourceId.SubscriptionId.EqualsInsensitively(subscriptionId) ||
-                    !resourceId.ResourceGroup.EqualsInsensitively(this.ResourceGroupName))
-                {
-                    throw new ArgumentException($"ResourceId '{filteredResourceId}' does not belong to scope '{resourceGroupId}'");
-                }
-
-                resourceIds.Add(resourceId);
-            }
-
-            return resourceIds.Select(x => x.FullyQualifiedId).ToArray();
-        }
-
-        /// <summary>
-        /// Gets the resource group Id from the supplied PowerShell parameters.
-        /// </summary>
-        protected string GetResourceGroupId()
+        protected string GetResourceId()
         {
             return ResourceIdUtility.GetResourceId(
                 subscriptionId: DefaultContext.Subscription.GetId(),

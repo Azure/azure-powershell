@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 6AC9DA05-756D-4D59-BD97-DBAAFBB3C7AC
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadappcredential
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-Azadappcredential
 schema: 2.0.0
 ---
 
@@ -15,17 +15,19 @@ Retrieves a list of credentials associated with an application.
 
 ### ApplicationObjectIdParameterSet (Default)
 ```
-Get-AzADAppCredential -ObjectId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzADAppCredential -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ApplicationIdParameterSet
 ```
-Get-AzADAppCredential -ApplicationId <Guid> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzADAppCredential -ApplicationId <Guid> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Get-AzADAppCredential -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzADAppCredential -DisplayName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ApplicationObjectParameterSet
@@ -77,7 +79,7 @@ Accept wildcard characters: False
 The application object to retrieve credentials from.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
 Parameter Sets: ApplicationObjectParameterSet
 Aliases:
 
@@ -92,9 +94,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -122,7 +124,7 @@ Accept wildcard characters: False
 The object id of the application to retrieve credentials from.
 
 ```yaml
-Type: System.String
+Type: System.Guid
 Parameter Sets: ApplicationObjectIdParameterSet
 Aliases:
 
@@ -138,15 +140,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### System.Guid
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
+### System.String
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+Parameters: ApplicationObject (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADCredential
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADCredential
 
 ## NOTES
 

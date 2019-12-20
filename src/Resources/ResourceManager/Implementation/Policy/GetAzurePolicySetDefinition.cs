@@ -15,11 +15,9 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Newtonsoft.Json.Linq;
-    using Policy;
     using System;
     using System.Management.Automation;
     using System.Threading.Tasks;
@@ -27,15 +25,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Gets the policy set definition.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicySetDefinition", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicySetDefinition", DefaultParameterSetName = GetAzurePolicySetDefinitionCmdlet.ParameterlessSet), OutputType(typeof(PSObject))]
     public class GetAzurePolicySetDefinitionCmdlet : PolicyCmdletBase
     {
         /// <summary>
+        /// The policy Id parameter set.
+        /// </summary>
+        internal const string PolicySetDefinitionIdParameterSet = "GetById";
+
+        /// <summary>
+        /// The policy name parameter set.
+        /// </summary>
+        internal const string PolicySetDefinitionNameParameterSet = "GetByNameAndResourceGroup";
+
+        /// <summary>
+        /// The list all policy parameter set.
+        /// </summary>
+        internal const string ParameterlessSet = "GetBySubscription";
+
+        /// <summary>
         /// Gets or sets the policy set definition name parameter.
         /// </summary>
-        [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicySetDefinitionNameHelp)]
-        [Parameter(ParameterSetName = PolicyCmdletBase.ManagementGroupNameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicySetDefinitionNameHelp)]
-        [Parameter(ParameterSetName = PolicyCmdletBase.SubscriptionIdParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicySetDefinitionNameHelp)]
+        [Parameter(ParameterSetName = GetAzurePolicySetDefinitionCmdlet.PolicySetDefinitionNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy set definition name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -43,39 +54,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the policy set definition id parameter
         /// </summary>
         [Alias("ResourceId")]
-        [Parameter(ParameterSetName = PolicyCmdletBase.IdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicySetDefinitionIdHelp)]
+        [Parameter(ParameterSetName = GetAzurePolicySetDefinitionCmdlet.PolicySetDefinitionIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The fully qualified policy set definition Id, including the subscription. e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the policy set definition management group name parameter.
-        /// </summary>
-        [Parameter(ParameterSetName = PolicyCmdletBase.ManagementGroupNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicySetDefinitionManagementGroupHelp)]
-        [Parameter(ParameterSetName = PolicyCmdletBase.BuiltinFilterParameterSet, Mandatory = false, HelpMessage = PolicyHelpStrings.GetPolicySetDefinitionManagementGroupHelp)]
-        [Parameter(ParameterSetName = PolicyCmdletBase.CustomFilterParameterSet, Mandatory = false, HelpMessage = PolicyHelpStrings.GetPolicySetDefinitionManagementGroupHelp)]
-        [ValidateNotNullOrEmpty]
-        public string ManagementGroupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the policy set definition subscription is parameter.
-        /// </summary>
-        [Parameter(ParameterSetName = PolicyCmdletBase.SubscriptionIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicySetDefinitionSubscriptionIdHelp)]
-        [Parameter(ParameterSetName = PolicyCmdletBase.BuiltinFilterParameterSet, Mandatory = false, HelpMessage = PolicyHelpStrings.GetPolicySetDefinitionSubscriptionIdHelp)]
-        [Parameter(ParameterSetName = PolicyCmdletBase.CustomFilterParameterSet, Mandatory = false, HelpMessage = PolicyHelpStrings.GetPolicySetDefinitionSubscriptionIdHelp)]
-        [ValidateNotNullOrEmpty]
-        public Guid? SubscriptionId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the builtin switch.
-        /// </summary>
-        [Parameter(ParameterSetName = PolicyCmdletBase.BuiltinFilterParameterSet, Mandatory = true, HelpMessage = PolicyHelpStrings.GetPolicySetDefinitionBuiltInFilterHelp)]
-        public SwitchParameter Builtin { get; set; }
-
-        /// <summary>
-        /// Gets or sets the custom switch.
-        /// </summary>
-        [Parameter(ParameterSetName = PolicyCmdletBase.CustomFilterParameterSet, Mandatory = true, HelpMessage = PolicyHelpStrings.GetPolicySetDefinitionCustomFilterHelp)]
-        public SwitchParameter Custom { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -92,69 +73,45 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private void RunCmdlet()
         {
-            var listFilter = this.GetListFilter(this.Builtin, this.Custom);
             PaginatedResponseHelper.ForEach(
-                getFirstPage: () => this.GetResources(listFilter),
+                getFirstPage: () => this.GetResources(),
                 getNextPage: nextLink => this.GetNextLink<JObject>(nextLink),
                 cancellationToken: this.CancellationToken,
-                action: resources => this.WriteObject(sendToPipeline: this.GetFilteredOutputObjects("PolicySetDefinitionId", listFilter, resources), enumerateCollection: true));
+                action: resources => this.WriteObject(sendToPipeline: this.GetOutputObjects("PolicySetDefinitionId", resources), enumerateCollection: true));
         }
 
         /// <summary>
         /// Queries the ARM cache and returns the cached resource that match the query specified.
         /// </summary>
-        /// <param name="policyTypeFilter">The policy type filter.</param>
-        private async Task<ResponseWithContinuation<JObject[]>> GetResources(ListFilter policyTypeFilter)
+        private async Task<ResponseWithContinuation<JObject[]>> GetResources()
         {
-            string resourceId = this.GetResourceId();
-            var odataFilter = policyTypeFilter != ListFilter.None ? string.Format(PolicyCmdletBase.PolicyTypeFilterFormat, policyTypeFilter.ToString()) : null;
+            string resourceId = this.Id ?? this.GetResourceId();
 
             var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicySetDefintionApiVersion : this.ApiVersion;
 
             if (!string.IsNullOrEmpty(ResourceIdUtility.GetResourceName(resourceId)))
             {
-                JObject resource;
-                try
-                {
-                    resource = await this
-                        .GetResourcesClient()
-                        .GetResource<JObject>(
-                            resourceId: resourceId,
-                            apiVersion: apiVersion,
-                            cancellationToken: this.CancellationToken.Value)
-                        .ConfigureAwait(continueOnCapturedContext: false);
-                }
-                catch (ErrorResponseMessageException ex)
-                {
-                    if (!ex.Message.StartsWith("PolicySetDefinitionNotFound", StringComparison.OrdinalIgnoreCase))
-                    {
-                        throw;
-                    }
-
-                    resourceId = this.GetBuiltinResourceId();
-                    resource = await this
-                        .GetResourcesClient()
-                        .GetResource<JObject>(
-                            resourceId: resourceId,
-                            apiVersion: apiVersion,
-                            cancellationToken: this.CancellationToken.Value)
-                        .ConfigureAwait(continueOnCapturedContext: false);
-                }
-
-                return resource.TryConvertTo(out ResponseWithContinuation<JObject[]> retVal) && retVal.Value != null
+                var resource = await this
+                    .GetResourcesClient()
+                    .GetResource<JObject>(
+                        resourceId: resourceId,
+                        apiVersion: apiVersion,
+                        cancellationToken: this.CancellationToken.Value)
+                    .ConfigureAwait(continueOnCapturedContext: false);
+                ResponseWithContinuation<JObject[]> retVal;
+                return resource.TryConvertTo(out retVal) && retVal.Value != null
                     ? retVal
                     : new ResponseWithContinuation<JObject[]> { Value = resource.AsArray() };
             }
             else
             {
                 return await this
-                    .GetResourcesClient()
-                    .ListObjectColleciton<JObject>(
-                        resourceCollectionId: resourceId,
-                        apiVersion: apiVersion,
-                        cancellationToken: this.CancellationToken.Value,
-                        odataQuery: odataFilter)
-                    .ConfigureAwait(continueOnCapturedContext: false);
+                .GetResourcesClient()
+                .ListObjectColleciton<JObject>(
+                    resourceCollectionId: resourceId,
+                    apiVersion: apiVersion,
+                    cancellationToken: this.CancellationToken.Value)
+                .ConfigureAwait(continueOnCapturedContext: false);
             }
         }
 
@@ -163,15 +120,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private string GetResourceId()
         {
-            return this.Id ?? this.MakePolicySetDefinitionId(this.ManagementGroupName, this.SubscriptionId, this.Name);
-        }
-
-        /// <summary>
-        /// Gets the resource Id assuming the name is for a builtin
-        /// </summary>
-        private string GetBuiltinResourceId()
-        {
-            return $"/{Constants.Providers}/{Constants.MicrosoftAuthorizationPolicySetDefinitionType}/{this.Name}";
+            var subscriptionId = DefaultContext.Subscription.Id;
+            if (string.IsNullOrEmpty(this.Name))
+            {
+                return string.Format("/subscriptions/{0}/providers/{1}",
+                    subscriptionId.ToString(),
+                    Constants.MicrosoftAuthorizationPolicySetDefinitionType);
+            }
+            else
+            {
+                return string.Format("/subscriptions/{0}/providers/{1}/{2}",
+                    subscriptionId.ToString(),
+                    Constants.MicrosoftAuthorizationPolicySetDefinitionType,
+                    this.Name);
+            }
         }
     }
 }

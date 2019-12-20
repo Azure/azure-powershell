@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: C61FA834-BEBE-4DBF-888F-C6CB8CC95390
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azadappcredential
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-Azadappcredential
 schema: 2.0.0
 ---
 
@@ -15,7 +15,7 @@ Removes a credential from an application.
 
 ### ApplicationObjectIdWithKeyIdParameterSet (Default)
 ```
-Remove-AzADAppCredential -ObjectId <String> [-KeyId <Guid>] [-PassThru] [-Force]
+Remove-AzADAppCredential -ObjectId <Guid> [-KeyId <Guid>] [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,8 +27,8 @@ Remove-AzADAppCredential -ApplicationId <Guid> [-KeyId <Guid>] [-PassThru] [-For
 
 ### ApplicationDisplayNameParameterSet
 ```
-Remove-AzADAppCredential -DisplayName <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzADAppCredential -DisplayName <String> [-PassThru] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectWithKeyIdParameterSet
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 The application object to remove the credentials from.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
 Parameter Sets: ApplicationObjectWithKeyIdParameterSet
 Aliases:
 
@@ -104,9 +104,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 The object id of the application to remove the credentials from.
 
 ```yaml
-Type: System.String
+Type: System.Guid
 Parameter Sets: ApplicationObjectIdWithKeyIdParameterSet
 Aliases:
 
@@ -239,11 +239,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### System.Guid
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
+### System.String
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+Parameters: ApplicationObject (ByValue)
 
 ## OUTPUTS
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: D6FF6BDD-4515-438D-B39D-C0BFC3342F4E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azresource
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-Azresource
 schema: 2.0.0
 ---
 
@@ -103,9 +103,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -197,7 +197,7 @@ Specifies the location of the resource.
 Specify data center location, such as Central US or Southeast Asia.
 You can place a resource in any location that supports resources of that type. Resource groups can
 contain resources from different locations. To determine which locations support each resource
-type, use the Get-AzLocation cmdlet.
+type, use the Get-AzureLocation cmdlet.
 
 ```yaml
 Type: System.String
@@ -419,13 +419,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Collections.Hashtable
-
-### System.String
+### None
 
 ## OUTPUTS
 
-### System.Management.Automation.PSObject
+### Microsoft.Azure.Commands.ResourceManagement.Models.PSResource
 
 ## NOTES
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 880D321E-30F2-4CAE-B14A-5F6DD8E1DB99
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azresourcegroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-Azresourcegroup
 schema: 2.0.0
 ---
 
@@ -21,7 +21,7 @@ Remove-AzResourceGroup [-Name] <String> [-Force] [-AsJob] [-ApiVersion <String>]
 
 ### RemoveByResourceGroupId
 ```
-Remove-AzResourceGroup -Id <String> [-Force] [-AsJob] [-ApiVersion <String>] [-Pre]
+Remove-AzResourceGroup [-Id] <String> [-Force] [-AsJob] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -91,9 +91,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -127,7 +127,7 @@ Parameter Sets: RemoveByResourceGroupId
 Aliases: ResourceGroupId, ResourceId
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -200,11 +200,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
-
-### System.Boolean
 
 ## NOTES
 

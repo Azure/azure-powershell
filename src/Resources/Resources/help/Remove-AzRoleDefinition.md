@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 2D882B33-2B62-4785-AF8F-5F4644E9504D
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azroledefinition
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-Azroledefinition
 schema: 2.0.0
 ---
 
@@ -58,9 +58,9 @@ Remove-AzRoleDefinition -Id "52a6cc13-ff92-47a8-a39b-2a8205c3087e"
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -195,13 +195,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
 ### System.Boolean
 
 ## NOTES
-Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
+Keywords: azure, Az, arm, resource, management, manager, resource, group, template, deployment
 
 ## RELATED LINKS
 

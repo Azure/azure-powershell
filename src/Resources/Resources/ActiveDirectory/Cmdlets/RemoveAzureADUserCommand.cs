@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
@@ -36,7 +37,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "The object Id of the user to be deleted.")]
         [ValidateNotNullOrEmpty]
-        public string ObjectId { get; set; }
+        public Guid ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayName, HelpMessage = "The display name of the user to be deleted.")]
         [ValidateNotNullOrEmpty]
@@ -68,7 +69,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 }
                 else if (this.IsParameterBound(c => c.ObjectId))
                 {
-                    UPNOrObjectId = ObjectId;
+                    UPNOrObjectId = ObjectId.ToString();
                 }
                 else if (this.IsParameterBound(c => c.DisplayName))
                 {

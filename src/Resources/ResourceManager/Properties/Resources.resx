@@ -355,7 +355,7 @@
     <value>Unregistering provider ...</value>
   </data>
   <data name="WarnOnDeploymentDebugSetting" xml:space="preserve">
-    <value>The DeploymentDebug setting has been enabled. This can potentially log secrets like passwords used in resource property or listKeys operations when you retrieve the deployment operations through Get-AzResourceGroupDeploymentOperation</value>
+    <value>The DeploymentDebug setting has been enabled. This can potentially log secrets like passwords used in resource property or listKeys operations when you retrieve the deployment operations through Get-AzureRmResourceGroupDeploymentOperation</value>
   </data>
   <data name="InvalidRollbackParameters" xml:space="preserve">
     <value>The paramater -RollbackToLastDeployment and -RollBackDeploymentName can't be defined at the same time.</value>
@@ -422,14 +422,5 @@
   </data>
   <data name="InvalidFilePath" xml:space="preserve">
     <value>The provided file {0} doesn't exist</value>
-  </data>
-  <data name="JsonObjectExpected" xml:space="preserve">
-    <value>The provided value for parameter '{0}' is not a valid JSON object</value>
-  </data>
-  <data name="JsonArrayExpected" xml:space="preserve">
-    <value>The provided value for parameter '{0}' is not a valid JSON array</value>
-  </data>
-  <data name="NoSubscriptionsUnderCurrentDirectory" xml:space="preserve">
-    <value>No subscriptions can be found under current directory. Please login again using Connect-AzAccount.</value>
   </data>
 </root>

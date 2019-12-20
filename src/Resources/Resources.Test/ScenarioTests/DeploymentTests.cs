@@ -32,37 +32,25 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ValidateDeployment");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestNewDeploymentFromTemplateFile()
         {
             TestRunner.RunTestScript("Test-NewDeploymentFromTemplateFile");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.RunType, Category.CoreOnly)]
-        public void TestNewDeploymentFromTemplateObject()
-        {
-            TestRunner.RunTestScript("Test-NewDeploymentFromTemplateObject");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestTestResourceGroupDeploymentErrors()
-        {
-            TestRunner.RunTestScript("Test-TestResourceGroupDeploymentErrors");
-        }
-
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Trait("Re-record", "ClientRuntime changes")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNestedDeploymentFromTemplateFile()
         {
             TestRunner.RunTestScript("Test-NestedDeploymentFromTemplateFile");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestCrossResourceGroupDeploymentFromTemplateFile()
         {
             TestRunner.RunTestScript("Test-CrossResourceGroupDeploymentFromTemplateFile");
@@ -106,8 +94,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewDeploymentWithParameterObject");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestNewDeploymentWithDynamicParameters()
         {
             TestRunner.RunTestScript("Test-NewDeploymentWithDynamicParameters");
@@ -125,20 +114,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TestNewDeploymentWithKeyVaultReferenceInParameterObject()
         {
             TestRunner.RunTestScript("Test-NewDeploymentWithKeyVaultReferenceInParameterObject");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewDeploymentFromNonexistentTemplateFile()
-        {
-            TestRunner.RunTestScript("Test-NewDeploymentFromNonexistentTemplateFile");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewDeploymentFromNonexistentTemplateParameterFile()
-        {
-            TestRunner.RunTestScript("Test-NewDeploymentFromNonexistentTemplateParameterFile");
         }
     }
 }

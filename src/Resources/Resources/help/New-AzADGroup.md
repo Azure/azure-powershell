@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azadgroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-Azadgroup
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Creates a new active directory group.
 ## SYNTAX
 
 ```
-New-AzADGroup -DisplayName <String> -MailNickname <String> [-Description <string>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzADGroup -DisplayName <String> -MailNickname <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,10 +25,10 @@ Creates a new active directory group.
 ### Example 1 - Create a new AD group
 
 ```
-PS C:\> New-AzADGroup -DisplayName "MyGroupDisplayName" -MailNickname "MyGroupNick"
+PS C:\> New-AzADGroup -DisplayName "MyGroupDisplayName" -MailNickname "myemail@domain.com"
 ```
 
-Creates a new AD group with the name "MyGroupDisplayName" and the mail nickname "MyGroupNick".
+Creates a new AD group with the name "MyGroupDisplayName" and the mail nickname "myemail@domain.com".
 
 ## PARAMETERS
 
@@ -36,29 +36,14 @@ Creates a new AD group with the name "MyGroupDisplayName" and the mail nickname 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Description
-The description for the group.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -78,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -MailNickname
-The mail nickname for the group. Cannot contain the @ sign.
+The mail nickname for the group.
 
 ```yaml
 Type: System.String
@@ -132,7 +117,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
 
 ## NOTES
 

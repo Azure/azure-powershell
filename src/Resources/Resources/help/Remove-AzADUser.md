@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 9F9B2691-BB3F-4644-BD95-6D74777D1E99
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azaduser
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-Azaduser
 schema: 2.0.0
 ---
 
@@ -21,20 +21,20 @@ Remove-AzADUser -UPNOrObjectId <String> [-PassThru] [-Force] [-DefaultProfile <I
 
 ### UPNParameterSet
 ```
-Remove-AzADUser -UserPrincipalName <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzADUser -UserPrincipalName <String> [-PassThru] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
 ```
-Remove-AzADUser -ObjectId <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Remove-AzADUser -ObjectId <Guid> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Remove-AzADUser -DisplayName <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzADUser -DisplayName <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
@@ -78,9 +78,9 @@ Gets the user with object id '7a9582cf-88c4-4319-842b-7a5d60967a69' and pipes th
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 The user object to be deleted.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADUser
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 The object id of the user to be deleted.
 
 ```yaml
-Type: System.String
+Type: System.Guid
 Parameter Sets: ObjectIdParameterSet
 Aliases:
 
@@ -232,7 +232,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADUser
+### System.Guid
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

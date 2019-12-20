@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: C2C608E5-3351-4D01-8533-9668B2E9F1D1
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azresource
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-Azresource
 schema: 2.0.0
 ---
 
@@ -16,22 +16,22 @@ Gets resources.
 
 ### ByTagNameValueParameterSet (Default)
 ```
-Get-AzResource [-Name <String>] [-ResourceType <String>] [-ODataQuery <String>] [-ResourceGroupName <String>]
- [-TagName <String>] [-TagValue <String>] [-ExpandProperties] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzResource [[-Name] <String>] [-ResourceType <String>] [-ODataQuery <String>]
+ [-ResourceGroupName <String>] [-TagName <String>] [-TagValue <String>] [-ExpandProperties]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzResource -ResourceId <String> [-ODataQuery <String>] [-ExpandProperties] [-ApiVersion <String>] [-Pre]
+Get-AzResource -ResourceId <String> [-ExpandProperties] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTagObjectParameterSet
 ```
-Get-AzResource [-Name <String>] [-ResourceType <String>] [-ODataQuery <String>] [-ResourceGroupName <String>]
- -Tag <Hashtable> [-ExpandProperties] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzResource [[-Name] <String>] [-ResourceType <String>] [-ODataQuery <String>]
+ [-ResourceGroupName <String>] -Tag <Hashtable> [-ExpandProperties] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -166,9 +166,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -201,17 +201,17 @@ Parameter Sets: ByTagNameValueParameterSet, ByTagObjectParameterSet
 Aliases: ResourceName
 
 Required: False
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ODataQuery
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByTagNameValueParameterSet, ByTagObjectParameterSet
 Aliases:
 
 Required: False
@@ -236,7 +236,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group the resource(s) that is retrieved belongs in. This parameter supports wildcards at the beginning and/or end of the string.
+The resource group the resource(s) that is retireved belongs in. This parameter supports wildcards at the beginning and/or end of the string.
 
 ```yaml
 Type: System.String
@@ -247,7 +247,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ResourceId
@@ -328,15 +328,15 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource
+### Microsoft.Azure.Commands.ResourceManagement.Models.PSResource
 
 ## NOTES
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 66AC5120-80B1-46F2-AA51-132BF361602E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadapplication
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-Azadapplication
 schema: 2.0.0
 ---
 
@@ -21,7 +21,7 @@ Get-AzADApplication [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCou
 
 ### ApplicationObjectIdParameterSet
 ```
-Get-AzADApplication -ObjectId <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+Get-AzADApplication -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
  [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
@@ -45,8 +45,8 @@ Get-AzADApplication -DisplayName <String> [-DefaultProfile <IAzureContextContain
 
 ### ApplicationIdentifierUriParameterSet
 ```
-Get-AzADApplication -IdentifierUri <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADApplication -IdentifierUri <String> [-DefaultProfile <IAzureContextContainer>]
+ [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,9 +109,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -150,27 +150,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -First
+The maximum number of objects to return.
+
+```yaml
+Type: System.UInt64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentifierUri
 Unique identifier Uri of the application to fetch.
 
 ```yaml
 Type: System.String
 Parameter Sets: ApplicationIdentifierUriParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ObjectId
-The object id of the application to fetch.
-
-```yaml
-Type: System.String
-Parameter Sets: ApplicationObjectIdParameterSet
 Aliases:
 
 Required: True
@@ -195,23 +195,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Skip
-Ignores the first N objects and then gets the remaining objects.
+### -ObjectId
+The object id of the application to fetch.
 
 ```yaml
-Type: System.UInt64
-Parameter Sets: (All)
+Type: System.Guid
+Parameter Sets: ApplicationObjectIdParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -First
-The maximum number of objects to return.
+### -Skip
+Ignores the first N objects and then gets the remaining objects.
 
 ```yaml
 Type: System.UInt64
@@ -230,13 +230,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### System.Guid
+
+### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
 
 ## NOTES
 

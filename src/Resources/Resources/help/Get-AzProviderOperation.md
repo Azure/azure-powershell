@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 6424B740-DBFB-490C-AEAA-EDD60952B435
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azprovideroperation
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-Azprovideroperation
 schema: 2.0.0
 ---
 
@@ -48,9 +48,9 @@ PS C:\> Get-AzProviderOperation */virtualMachines/*
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -80,12 +80,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: OperationSearchString (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation
 
 ## NOTES
-Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
+Keywords: azure, Az, arm, resource, management, manager, resource, group, template, deployment
 
 ## RELATED LINKS

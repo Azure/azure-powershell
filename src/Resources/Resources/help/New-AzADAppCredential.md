@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 98836BC0-AB4F-4F24-88BE-E7DD350B71E8
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azadappcredential
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-Azadappcredential
 schema: 2.0.0
 ---
 
@@ -15,20 +15,20 @@ Adds a credential to an existing application.
 
 ### ApplicationObjectIdWithPasswordParameterSet (Default)
 ```
-New-AzADAppCredential -ObjectId <String> -Password <SecureString> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADAppCredential -ObjectId <Guid> -Password <SecureString> [-StartDate <DateTime>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectIdWithCertValueParameterSet
 ```
-New-AzADAppCredential -ObjectId <String> -CertValue <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
+New-AzADAppCredential -ObjectId <Guid> -CertValue <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdWithCertValueParameterSet
 ```
-New-AzADAppCredential -ApplicationId <Guid> -CertValue <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADAppCredential -ApplicationId <Guid> -CertValue <String> [-StartDate <DateTime>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdWithPasswordParameterSet
@@ -45,8 +45,8 @@ New-AzADAppCredential -DisplayName <String> -Password <SecureString> [-StartDate
 
 ### DisplayNameWithCertValueParameterSet
 ```
-New-AzADAppCredential -DisplayName <String> -CertValue <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADAppCredential -DisplayName <String> -CertValue <String> [-StartDate <DateTime>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationObjectWithCertValueParameterSet
@@ -57,8 +57,9 @@ New-AzADAppCredential -ApplicationObject <PSADApplication> -CertValue <String> [
 
 ### ApplicationObjectWithPasswordParameterSet
 ```
-New-AzADAppCredential -ApplicationObject <PSADApplication> -Password <SecureString> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADAppCredential -ApplicationObject <PSADApplication> -Password <SecureString>
+ [-StartDate <DateTime>] [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,16 +75,16 @@ PS C:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPla
 PS C:\> New-AzADAppCredential -ObjectId 1f89cf81-0146-4f4e-beae-2007d0668416 -Password $SecureStringPassword
 ```
 
-A new password credential is added to the existing application with object id '1f89cf81-0146-4f4e-beae-2007d0668416'.
+A new password credential is added to the existing appplication with object id '1f89cf81-0146-4f4e-beae-2007d0668416'.
 
 ### Example 2 - Create a new application credential using a certificate
 
 ```
-PS C:\> $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
-PS C:\> $cer.Import("C:\myapp.cer")
-PS C:\> $binCert = $cer.GetRawCertData()
+PS C:\> $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate 
+PS C:\> $cer.Import("C:\myapp.cer") 
+PS C:\> $binCert = $cer.GetRawCertData() 
 PS C:\> $credValue = [System.Convert]::ToBase64String($binCert)
-PS C:\> New-AzADAppCredential -ApplicationId 4589cd6b-3d79-4bb4-93b8-a0b99f3bfc58 -CertValue $credValue -StartDate $cer.NotBefore -EndDate $cer.NotAfter
+PS C:\> New-AzADAppCredential -ApplicationId 4589cd6b-3d79-4bb4-93b8-a0b99f3bfc58 -CertValue $credValue -StartDate $cer.GetEffectiveDateString() -EndDate $cer.GetExpirationDateString()
 ```
 
 The supplied base64 encoded public X509 certificate ("myapp.cer") is added to the existing application with application id '4589cd6b-3d79-4bb4-93b8-a0b99f3bfc58'.
@@ -118,7 +119,7 @@ Accept wildcard characters: False
 The application object to add the credentials to.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
 Parameter Sets: ApplicationObjectWithCertValueParameterSet, ApplicationObjectWithPasswordParameterSet
 Aliases:
 
@@ -160,9 +161,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -205,7 +206,7 @@ Accept wildcard characters: False
 The object id of the application to add the credentials to.
 
 ```yaml
-Type: System.String
+Type: System.Guid
 Parameter Sets: ApplicationObjectIdWithPasswordParameterSet, ApplicationObjectIdWithCertValueParameterSet
 Aliases:
 
@@ -294,11 +295,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### System.Guid
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADApplication
+### System.String
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+Parameters: ApplicationObject (ByValue)
 
 ### System.Security.SecureString
 
@@ -306,7 +308,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADCredential
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADCredential
 
 ## NOTES
 

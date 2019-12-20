@@ -13,11 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System.Reflection;
-using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Graph.RBAC.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -581,7 +582,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewADApplication");
         }
 
-        [Fact(Skip = "Currently not working.")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewADServicePrincipalWithoutApp()
         {
             TestRunner.RunTestScript("Test-NewADServicePrincipalWithoutApp");
@@ -594,43 +596,25 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewADServicePrincipalWithReaderRole");
         }
 
-        [Fact(Skip = "Currently not working.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewADServicePrincipalWithCustomScope()
         {
             TestRunner.RunTestScript("Test-NewADServicePrincipalWithCustomScope");
         }
-        
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateDeleteAppCredentials()
-        {
-            TestRunner.RunTestScript("Test-CreateDeleteAppCredentials");
-        }
-        
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateDeleteSpCredentials()
-        {
-            const string scriptMethod = "Test-CreateDeleteSpCredentials '{0}'";
-            Application application = null;
-            var controllerAdmin = ResourcesController.NewInstance;
 
-            controllerAdmin.RunPsTestWorkflow(
-                interceptor,
-                // scriptBuilder
-                () =>
-                {
-                    application = CreateNewAdApp(controllerAdmin);
-                    return new[] { string.Format(scriptMethod, application.AppId) };
-                },
-                // cleanup
-                () =>
-                {
-                    DeleteAdApp(controllerAdmin, application);
-                },
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name);
+        [Fact(Skip = "Not working in playback.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateDeleteAppPasswordCredentials()
+        {
+            TestRunner.RunTestScript("Test-CreateDeleteAppPasswordCredentials");
+        }
+
+        [Fact(Skip = "Not working in playback.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateDeleteSpPasswordCredentials()
+        {
+            TestRunner.RunTestScript("Test-CreateDeleteSpPasswordCredentials");
         }
 
         [Fact]
@@ -656,13 +640,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 },
                 MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
                 MethodBase.GetCurrentMethod().Name);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveServicePrincipalWithNameNotFound()
-        {
-            TestRunner.RunTestScript("Test-RemoveServicePrincipalWithNameNotFound");
         }
 
         private User CreateNewAdUser(ResourcesController controllerAdmin)

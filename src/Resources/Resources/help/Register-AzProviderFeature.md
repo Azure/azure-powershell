@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 83EE33E5-18EF-4A7A-AEF2-E93D7A3CA541
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/register-azproviderfeature
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/register-Azproviderfeature
 schema: 2.0.0
 ---
 
@@ -36,9 +36,9 @@ This adds the AllowApplicationSecurityGroups feature for Microsoft.Network to yo
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -113,11 +113,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
-
-### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature
 
 ## NOTES
 

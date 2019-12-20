@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Graph.RBAC.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithCertValue, HelpMessage = "The application object id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithPassword, HelpMessage = "The application object id.")]
         [ValidateNotNullOrEmpty]
-        public string ObjectId { get; set; }
+        public Guid ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithCertValue, HelpMessage = "The application id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithPassword, HelpMessage = "The application id.")]
@@ -74,8 +75,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The end date till which password or key is valid. Default value is one year after the start date.")]
         public DateTime EndDate { get; set; }
 
-        public Guid KeyId { get; set; } = default(Guid);
-
         public NewAzureADAppCredentialCommand()
         {
             DateTime currentTime = DateTime.UtcNow;
@@ -86,7 +85,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
-                if (this.EndDate == null)
+                if (!this.IsParameterBound(c => c.EndDate))
                 {
                     WriteVerbose(Resources.Properties.Resources.DefaultEndDateUsed);
                     EndDate = StartDate.AddYears(1);
@@ -113,34 +112,34 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     {
                         EndDate = EndDate,
                         StartDate = StartDate,
-                        KeyId = KeyId == default(Guid) ? Guid.NewGuid().ToString() : KeyId.ToString(),
+                        KeyId = Guid.NewGuid().ToString(),
                         Value = decodedPassword
                     };
-                    if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new password to application with objectId {0}", ObjectId)))
+                    if (ShouldProcess(target: ObjectId.ToString(), action: string.Format("Adding a new password to application with objectId {0}", ObjectId)))
                     {
                         WriteObject(ActiveDirectoryClient.CreateAppPasswordCredential(ObjectId, passwordCredential));
                     }
                 }
-                else if (CertValue != null)
+                else if (this.IsParameterBound(c => c.CertValue))
                 {
                     // Create object for key credential
                     var keyCredential = new KeyCredential()
                     {
                         EndDate = EndDate,
                         StartDate = StartDate,
-                        KeyId = KeyId == default(Guid) ? Guid.NewGuid().ToString() : KeyId.ToString(),
+                        KeyId = Guid.NewGuid().ToString(),
                         Value = CertValue,
                         Type = "AsymmetricX509Cert",
                         Usage = "Verify"
                     };
-                    if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new certificate to application with objectId {0}", ObjectId)))
+                    if (ShouldProcess(target: ObjectId.ToString(), action: string.Format("Adding a new certificate to application with objectId {0}", ObjectId)))
                     {
                         WriteObject(ActiveDirectoryClient.CreateAppKeyCredential(ObjectId, keyCredential));
                     }
                 }
                 else
                 {
-                    throw new InvalidOperationException("No valid keyCredential or passwordCredential to update!!");
+                    throw new InvalidOperationException("No valid keyCredential or passowrdCredential to update!!");
                 }
             });
         }

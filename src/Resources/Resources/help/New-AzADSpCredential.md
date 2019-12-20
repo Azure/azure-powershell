@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 063BAA79-484D-48CF-9170-3808813752BD
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azadspcredential
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-Azadspcredential
 schema: 2.0.0
 ---
 
@@ -15,13 +15,13 @@ Adds a credential to an existing service principal.
 
 ### SpObjectIdWithPasswordParameterSet (Default)
 ```
-New-AzADSpCredential -ObjectId <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADSpCredential -ObjectId <Guid> [-Password <SecureString>] [-StartDate <DateTime>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SpObjectIdWithCertValueParameterSet
 ```
-New-AzADSpCredential -ObjectId <String> -CertValue <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
+New-AzADSpCredential -ObjectId <Guid> -CertValue <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,20 +33,22 @@ New-AzADSpCredential -ServicePrincipalName <String> -CertValue <String> [-StartD
 
 ### SPNWithPasswordParameterSet
 ```
-New-AzADSpCredential -ServicePrincipalName <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADSpCredential -ServicePrincipalName <String> [-Password <SecureString>] [-StartDate <DateTime>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalObjectWithCertValueParameterSet
 ```
-New-AzADSpCredential -ServicePrincipalObject <PSADServicePrincipal> -CertValue <String> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADSpCredential -ServicePrincipalObject <PSADServicePrincipal> -CertValue <String>
+ [-StartDate <DateTime>] [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ServicePrincipalObjectWithPasswordParameterSet
 ```
-New-AzADSpCredential -ServicePrincipalObject <PSADServicePrincipal> [-StartDate <DateTime>]
- [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADSpCredential -ServicePrincipalObject <PSADServicePrincipal> [-Password <SecureString>]
+ [-StartDate <DateTime>] [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,11 +74,11 @@ A new password credential is added to the existing service principal with object
 ### Example 2 - Create a new service principal credential using a certificate
 
 ```
-PS C:\> $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
-PS C:\> $cer.Import("C:\myapp.cer")
-PS C:\> $binCert = $cer.GetRawCertData()
+PS C:\> $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate 
+PS C:\> $cer.Import("C:\myapp.cer") 
+PS C:\> $binCert = $cer.GetRawCertData() 
 PS C:\> $credValue = [System.Convert]::ToBase64String($binCert)
-PS C:\> New-AzADSpCredential -ServicePrincipalName "http://test123" -CertValue $credValue -StartDate $cer.NotBefore -EndDate $cer.NotAfter
+PS C:\> New-AzADSpCredential -ServicePrincipalName "http://test123" -CertValue $credValue -StartDate $cer.GetEffectiveDateString() -EndDate $cer.GetExpirationDateString()
 ```
 
 The supplied base64 encoded public X509 certificate ("myapp.cer") is added to the existing service principal using its SPN.
@@ -129,9 +131,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -142,7 +144,7 @@ Accept wildcard characters: False
 
 ### -EndDate
 The effective end date of the credential usage.
-The default end date value is one year from today.
+The default end date value is one year from today. 
 For an "asymmetric" type credential, this must be set to on or before the date that the X509 certificate is valid.
 
 ```yaml
@@ -161,11 +163,38 @@ Accept wildcard characters: False
 The object id of the service principal to add the credentials to.
 
 ```yaml
-Type: System.String
+Type: System.Guid
 Parameter Sets: SpObjectIdWithPasswordParameterSet, SpObjectIdWithCertValueParameterSet
 Aliases: ServicePrincipalObjectId
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Password
+The password to be associated with the application.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: SpObjectIdWithPasswordParameterSet, SPNWithPasswordParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: ServicePrincipalObjectWithPasswordParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -191,7 +220,7 @@ Accept wildcard characters: False
 The service principal object to add the credentials to.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
 Parameter Sets: ServicePrincipalObjectWithCertValueParameterSet, ServicePrincipalObjectWithPasswordParameterSet
 Aliases:
 
@@ -204,7 +233,7 @@ Accept wildcard characters: False
 
 ### -StartDate
 The effective start date of the credential usage.
-The default start date value is today.
+The default start date value is today. 
 For an "asymmetric" type credential, this must be set to on or after the date that the X509 certificate is valid from.
 
 ```yaml
@@ -255,15 +284,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.Guid
+
 ### System.String
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+Parameters: ServicePrincipalObject (ByValue)
+
+### System.Security.SecureString
 
 ### System.DateTime
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADCredential
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADCredential
 
 ### Microsoft.Azure.Commands.Resources.Models.Authorization.PSADCredentialWrapper
 

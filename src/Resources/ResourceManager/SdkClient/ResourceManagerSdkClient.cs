@@ -38,8 +38,6 @@ using Newtonsoft.Json.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
-using System.Management.Automation;
-using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
@@ -435,14 +433,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
             else
             {
-                if (!string.IsNullOrEmpty(parameters.TemplateFile))
-                {
-                    deployment.Properties.Template = JObject.Parse(FileUtilities.DataStore.ReadFileAsText(parameters.TemplateFile));
-                }
-                else
-                {
-                    deployment.Properties.Template = JObject.Parse(JsonConvert.SerializeObject(parameters.TemplateObject));
-                }
+                deployment.Properties.Template = JObject.Parse(FileUtilities.DataStore.ReadFileAsText(parameters.TemplateFile));
             }
 
             if (Uri.IsWellFormedUriString(parameters.ParameterUri, UriKind.Absolute))
@@ -466,42 +457,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         private TemplateValidationInfo CheckBasicDeploymentErrors(string resourceGroup, string deploymentName, Deployment deployment)
         {
-            try
-            {
-                DeploymentValidateResult validationResult = resourceGroup != null
-                    ? ResourceManagementClient.Deployments.Validate(resourceGroup, deploymentName, deployment)
-                    : ResourceManagementClient.Deployments.ValidateAtSubscriptionScope(deploymentName, deployment);
+            DeploymentValidateResult validationResult = resourceGroup != null
+                ? ResourceManagementClient.Deployments.Validate(resourceGroup, deploymentName, deployment)
+                : ResourceManagementClient.Deployments.ValidateAtSubscriptionScope(deploymentName, deployment);
 
-                return new TemplateValidationInfo(validationResult);
-            }
-            catch (Exception ex)
-            {
-                var error = HandleError(ex).FirstOrDefault();
-                return new TemplateValidationInfo(new DeploymentValidateResult(error));
-            }
-        }
-
-        private List<ResourceManagementErrorWithDetails> HandleError(Exception ex)
-        {
-            if (ex == null)
-            {
-                return null;
-            }
-
-            ResourceManagementErrorWithDetails error = null;
-            var innerException = HandleError(ex.InnerException);
-            if (ex is CloudException)
-            {
-                var cloudEx = ex as CloudException;
-                error = new ResourceManagementErrorWithDetails(cloudEx.Body?.Code, cloudEx.Body?.Message, cloudEx.Body?.Target, innerException);
-            }
-            else
-            {
-                error = new ResourceManagementErrorWithDetails(null, ex.Message, null, innerException);
-            }
-
-            return new List<ResourceManagementErrorWithDetails> { error };
-
+            return new TemplateValidationInfo(validationResult);
         }
 
         private IPage<DeploymentOperation> ListDeploymentOperations(string resourceGroupName, string deploymentName)
@@ -661,17 +621,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
 
             ResourceGroup resourceGroup = ResourceManagementClient.ResourceGroups.Get(parameters.ResourceGroupName);
-            Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(parameters.Tag, validate: true);
 
-            resourceGroup = ResourceManagementClient.ResourceGroups.Update(resourceGroup.Name,
-                new ResourceGroupPatchable
-                {
-                    Name = resourceGroup.Name,
-                    Properties = resourceGroup.Properties,
-                    ManagedBy = resourceGroup.ManagedBy,
-                    Tags = tagDictionary
-                });
-
+            resourceGroup = CreateOrUpdateResourceGroup(parameters.ResourceGroupName, resourceGroup.Location, parameters.Tag);
             WriteVerbose(string.Format(ProjectResources.UpdatedResourceGroup, resourceGroup.Name, resourceGroup.Location));
 
             return resourceGroup.ToPSResourceGroup();
@@ -689,7 +640,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
 
-            if (string.IsNullOrEmpty(name) || WildcardPattern.ContainsWildcardCharacters(name))
+            if (string.IsNullOrEmpty(name) || name.Contains("*"))
             {
                 List<ResourceGroup> resourceGroups = new List<ResourceGroup>();
 
@@ -704,8 +655,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
                 if (!string.IsNullOrEmpty(name))
                 {
-                    WildcardPattern pattern = new WildcardPattern(name, WildcardOptions.IgnoreCase);
-                    resourceGroups = resourceGroups.Where(t => pattern.IsMatch(t.Name)).ToList();
+                    if (name.StartsWith("*"))
+                    {
+                        name = name.TrimStart('*');
+                        if (name.EndsWith("*"))
+                        {
+                            name = name.TrimEnd('*');
+                            resourceGroups = resourceGroups.Where(g => g.Name.Contains(name)).ToList();
+                        }
+                        else
+                        {
+                            resourceGroups = resourceGroups.Where(g => g.Name.EndsWith(name)).ToList();
+                        }
+                    }
+                    else if (name.EndsWith("*"))
+                    {
+                        name = name.TrimEnd('*');
+                        resourceGroups = resourceGroups.Where(g => g.Name.StartsWith(name)).ToList();
+                    }
                 }
 
                 resourceGroups = !string.IsNullOrEmpty(location)
@@ -1103,8 +1070,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         public virtual List<PSResourceManagerError> ValidateDeployment(PSDeploymentCmdletParameters parameters, DeploymentMode deploymentMode)
         {
             Deployment deployment = CreateBasicDeployment(parameters, deploymentMode, null);
-            var deploymentName = GenerateDeploymentName(parameters);
-            TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, deploymentName, deployment);
+            TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, Guid.NewGuid().ToString(), deployment);
 
             if (validationInfo.Errors.Count == 0)
             {
@@ -1116,7 +1082,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         public virtual IEnumerable<PSResource> ListResources(Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter = null, ulong first = ulong.MaxValue, ulong skip = ulong.MinValue)
         {
             return new GenericPageEnumerable<GenericResource>(
-                delegate()
+                delegate ()
                 {
                     return ResourceManagementClient.Resources.List(filter);
                 }, ResourceManagementClient.Resources.ListNext, first, skip).Select(r => new PSResource(r));
@@ -1137,37 +1103,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         public virtual PSResource GetById(string resourceId, string apiVersion)
         {
-            var providers = new List<Provider>();
+            PSResource result = null;
             var resourceIdentifier = new ResourceIdentifier(resourceId);
-            var providerNamespace = ResourceIdentifier.GetProviderFromResourceType(resourceIdentifier.ResourceType);
-            if (!string.IsNullOrEmpty(providerNamespace))
-            {
-                var result = ResourceManagementClient.Providers.Get(providerNamespace);
-                if (result != null)
-                {
-                    providers.Add(result);
-                }
-            }
-
-            if (!providers.Any())
-            {
-                var result = ResourceManagementClient.Providers.List();
-                if (result != null)
-                {
-                    result.ForEach(p => providers.Add(p));
-                    while (!string.IsNullOrEmpty(result.NextPageLink))
-                    {
-                        result = ResourceManagementClient.Providers.ListNext(result.NextPageLink);
-                        result.ForEach(p => providers.Add(p));
-                    }
-                }
-            }
-
+            var providers = ResourceManagementClient.Providers.List();
             foreach (var provider in providers)
             {
                 var resourceType = provider.ResourceTypes
-                                           .Where(t => string.Equals(string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType), resourceIdentifier.ResourceType, StringComparison.OrdinalIgnoreCase))
-                                           .FirstOrDefault();
+                                            .Where(t => string.Equals(string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType), resourceIdentifier.ResourceType, StringComparison.OrdinalIgnoreCase))
+                                            .FirstOrDefault();
                 if (resourceType != null)
                 {
                     apiVersion = resourceType.ApiVersions.Contains(apiVersion) ? apiVersion : resourceType.ApiVersions.FirstOrDefault();
@@ -1178,7 +1121,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
             }
 
-            return null;
+            return result;
         }
     }
 }

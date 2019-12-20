@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: C3B2C33F-8BD4-4E31-9450-EF6A3A6A5325
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/set-azpolicyassignment
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/set-Azpolicyassignment
 schema: 2.0.0
 ---
 
@@ -16,49 +16,17 @@ Modifies a policy assignment.
 ### NameParameterSet (Default)
 ```
 Set-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] [-AssignIdentity] [-Location <String>]
- [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### PolicyParameterNameObjectParameterSet
-```
-Set-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] -PolicyParameterObject <Hashtable> [-AssignIdentity]
- [-Location <String>] [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### PolicyParameterNameStringParameterSet
-```
-Set-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] -PolicyParameter <String> [-AssignIdentity] [-Location <String>]
- [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Description <String>] [-Metadata <String>] [-Sku <Hashtable>] [-AssignIdentity] [-Location <String>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
 Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String>] [-Description <String>]
- [-Metadata <String>] [-AssignIdentity] [-Location <String>]
- [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### PolicyParameterIdObjectParameterSet
-```
-Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String>] [-Description <String>]
- [-Metadata <String>] -PolicyParameterObject <Hashtable> [-AssignIdentity] [-Location <String>]
- [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### PolicyParameterIdStringParameterSet
-```
-Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String>] [-Description <String>]
- [-Metadata <String>] -PolicyParameter <String> [-AssignIdentity] [-Location <String>]
- [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Metadata <String>] [-Sku <Hashtable>] [-AssignIdentity] [-Location <String>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,55 +57,6 @@ PS C:\> Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -AssignIdentity 
 The first command gets the policy assignment named PolicyAssignment from the current subscription by using the Get-AzPolicyAssignment cmdlet.
 The command stores that object in the $PolicyAssignment variable.
 The final command assigns a managed identity to the policy assignment.
-
-### Example 3: Update policy assignment parameters with new policy parameter object
-```
-PS C:\> $Locations = Get-AzLocation | where {($_.displayname -like 'france*') -or ($_.displayname -like 'uk*')}
-PS C:\> $AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
-PS C:\> $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment'
-PS C:\> Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -PolicyParameterObject $AllowedLocations
-```
-
-The first and second commands create an object containing all Azure regions whose names start with "france" or "uk".
-The second command stores that object in the $AllowedLocations variable.
-The third command gets the policy assignment named 'PolicyAssignment'
-The command stores that object in the $PolicyAssignment variable.
-The final command updates the parameter values on the policy assignment named PolicyAssignment.
-
-### Example 4: Update policy assignment parameters with policy parameter file
-Create a file called _AllowedLocations.json_ in the local working directory with the following content.
-
-```
-{
-    "listOfAllowedLocations":  {
-      "value": [
-        "uksouth",
-        "ukwest",
-        "francecentral",
-        "francesouth"
-      ]
-    }
-}
-```
-
-```
-PS C:\> Set-AzPolicyAssignment -Name 'PolicyAssignment' -PolicyParameter .\AllowedLocations.json
-```
-
-The command updates the policy assignment named 'PolicyAssignment' using the policy parameter file AllowedLocations.json from the local working directory.
-
-### Example 5: Update an enforcementMode
-```
-PS C:\> $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-PS C:\> $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
-PS C:\> Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Default
-```
-
-The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet.
-The command stores that object in the $ResourceGroup variable.
-The second command gets the policy assignment named PolicyAssignment by using the Get-AzPolicyAssignment cmdlet.
-The command stores that object in the $PolicyAssignment variable.
-The final command updates the enforcementMode property on the policy assignment on the resource group identified by the **ResourceId** property of $ResourceGroup.
 
 ## PARAMETERS
 
@@ -176,9 +95,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -217,34 +136,55 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -EnforcementMode
-The enforcement mode for policy assignment. Currently, valid values are Default, DoNotEnforce.
-
-```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyAssignmentEnforcementMode]
-Parameter Sets: (All)
-Aliases:
-Accepted values: Default, DoNotEnforce
-
-Required: False
-Position: Named
-Default value: Default
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Id
 Specifies the fully qualified resource ID for the policy assignment that this cmdlet modifies.
 
 ```yaml
 Type: System.String
-Parameter Sets: IdParameterSet, PolicyParameterIdObjectParameterSet, PolicyParameterIdStringParameterSet
+Parameter Sets: IdParameterSet
 Aliases: ResourceId
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InformationAction
+Specifies how this cmdlet responds to an information event.
+The acceptable values for this parameter are:
+- Continue
+- Ignore
+- Inquire
+- SilentlyContinue
+- Stop
+- Suspend
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: infa
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InformationVariable
+Specifies an information variable.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: iv
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -283,7 +223,7 @@ Specifies the name of the policy assignment that this cmdlet modifies.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet, PolicyParameterNameObjectParameterSet, PolicyParameterNameStringParameterSet
+Parameter Sets: NameParameterSet
 Aliases:
 
 Required: True
@@ -308,36 +248,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PolicyParameter
-The new policy parameters file path or string for the policy assignment.
-
-```yaml
-Type: System.String
-Parameter Sets: PolicyParameterNameStringParameterSet, PolicyParameterIdStringParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PolicyParameterObject
-The new policy parameters object for the policy assignment.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: PolicyParameterNameObjectParameterSet, PolicyParameterIdObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Pre
 Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
@@ -358,7 +268,7 @@ Specifies the scope at which the policy is applied.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet, PolicyParameterNameObjectParameterSet, PolicyParameterNameStringParameterSet
+Parameter Sets: NameParameterSet
 Aliases:
 
 Required: True
@@ -368,18 +278,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Sku
+A hash table which represents sku properties.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases: SkuObject
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
-### System.String[]
-
 ## OUTPUTS
-
-### System.Management.Automation.PSObject
 
 ## NOTES
 

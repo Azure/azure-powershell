@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azmanagementgroup/
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/update-Azmanagementgroup/
 schema: 2.0.0
 ---
 
@@ -33,8 +33,9 @@ Update-AzManagementGroup -InputObject <PSManagementGroup> [-DisplayName <String>
 
 ### ParentGroupObject
 ```
-Update-AzManagementGroup -GroupName <String> [-DisplayName <String>] [-DefaultProfile <IAzureContextContainer>]
- -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzManagementGroup -GroupName <String> [-DisplayName <String>]
+ [-DefaultProfile <IAzureContextContainer>] -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -113,9 +114,9 @@ ParentDisplayName : TestGroupParent
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -236,6 +237,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

@@ -6,14 +6,5 @@
       "strongType": "location",
       "displayName": "List of locations"
     }
-  },
-  "effectParam": {
-    "type": "string",
-    "defaultValue": "Deny",
-    "allowedValues": [ "Deny", "Disabled" ], 
-    "metadata": {
-      "description": "The effect of the policy",
-      "displayName": "Policy Effect"
-    } 
-  } 
+  }
 }

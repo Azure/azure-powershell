@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -250,15 +250,6 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Group with display name &apos;{0}&apos; does not exist..
-        /// </summary>
-        internal static string GroupWithDisplayNameDoesntExist {
-            get {
-                return ResourceManager.GetString("GroupWithDisplayNameDoesntExist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to IncludeClassicAdministrators is only supported for a User principal.
         /// </summary>
         internal static string IncludeClassicAdminsNotSupported {
@@ -421,47 +412,11 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More than one application found with display name &apos;{0}&apos;. Please use the Get-AzADApplication cmdlet to get the object id of the desired application..
-        /// </summary>
-        internal static string MultipleApplicationsWithDisplayNameFound {
-            get {
-                return ResourceManager.GetString("MultipleApplicationsWithDisplayNameFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to More than one group found with the display name &apos;{0}&apos;. Please use the Get-AzADGroup cmdlet to get the object id of the desired group..
-        /// </summary>
-        internal static string MultipleGroupsWithDisplayNameFound {
-            get {
-                return ResourceManager.GetString("MultipleGroupsWithDisplayNameFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Multiple role definitions found with name &apos;{0}&apos;. Specify role definition using it&apos;s Id instead..
         /// </summary>
         internal static string MultipleRoleDefinitionsFoundWithSameName {
             get {
                 return ResourceManager.GetString("MultipleRoleDefinitionsFoundWithSameName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to More than one service principal found with display name &apos;{0}&apos;. Please use the Get-AzADServicePrincipal cmdlet to get the object id of the desired service principal..
-        /// </summary>
-        internal static string MultipleServicePrincipalsWithDisplayNameFound {
-            get {
-                return ResourceManager.GetString("MultipleServicePrincipalsWithDisplayNameFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to More than one user found with display name &apos;{0}&apos;. Please use the Get-AzADUser cmdlet to get the object id of the desired user..
-        /// </summary>
-        internal static string MultipleUsersWithDisplayNameFound {
-            get {
-                return ResourceManager.GetString("MultipleUsersWithDisplayNameFound", resourceCulture);
             }
         }
         
@@ -932,15 +887,6 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
                 return ResourceManager.GetString("ScopeShouldHaveNoEmptyPart", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to No new secret was created. This ServicePrincipal will use the password associated with application &apos;{0}&apos;..
-        /// </summary>
-        internal static string ServicePrincipalCreatedWithCredentials {
-            get {
-                return ResourceManager.GetString("ServicePrincipalCreatedWithCredentials", resourceCulture);
-            }
-        }
         
         /// <summary>
         ///   Looks up a localized string similar to Service principal with object id &apos;{0}&apos; does not exist..
@@ -948,15 +894,6 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string ServicePrincipalDoesntExist {
             get {
                 return ResourceManager.GetString("ServicePrincipalDoesntExist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Service principal with display name &apos;{0}&apos; does not exist..
-        /// </summary>
-        internal static string ServicePrincipalWithDisplayNameDoesntExist {
-            get {
-                return ResourceManager.GetString("ServicePrincipalWithDisplayNameDoesntExist", resourceCulture);
             }
         }
         
@@ -1029,24 +966,6 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string UnregisterProviderMessage {
             get {
                 return ResourceManager.GetString("UnregisterProviderMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to User with display name &apos;{0}&apos; does not exist..
-        /// </summary>
-        internal static string UserWithDisplayNameDoesntExist {
-            get {
-                return ResourceManager.GetString("UserWithDisplayNameDoesntExist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to User with UPN &apos;{0}&apos; does not exist..
-        /// </summary>
-        internal static string UserWithUPNDoesntExist {
-            get {
-                return ResourceManager.GetString("UserWithUPNDoesntExist", resourceCulture);
             }
         }
     }

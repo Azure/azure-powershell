@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
@@ -36,8 +36,6 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ParameterSet.RoleDefinition, HelpMessage = "Role definition.")]
         public PSRoleDefinition Role { get; set; }
-
-        public Guid RoleDefinitionId { get; set; } = default(Guid);
 
         public override void ExecuteCmdlet()
         {
@@ -69,7 +67,7 @@ namespace Microsoft.Azure.Commands.Resources
                 AuthorizationClient.ValidateScope(scope, false);
             }
 
-            WriteObject(PoliciesClient.CreateRoleDefinition(role, RoleDefinitionId));
+            WriteObject(PoliciesClient.CreateRoleDefinition(role));
         }
     }
 }

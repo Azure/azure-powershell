@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: E460D108-2BF9-4F57-AF3D-13868DC73EA0
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azroleassignment
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-Azroleassignment
 schema: 2.0.0
 ---
 
@@ -15,26 +15,32 @@ Assigns the specified RBAC role to the specified principal, at the specified sco
 
 ### EmptyParameterSet (Default)
 ```
-New-AzRoleAssignment -ObjectId <String> [-Scope <String>] -RoleDefinitionName <String> [-AllowDelegation]
+New-AzRoleAssignment -ObjectId <Guid> -Scope <String> -RoleDefinitionName <String> [-AllowDelegation]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupWithObjectIdParameterSet
 ```
-New-AzRoleAssignment -ObjectId <String> -ResourceGroupName <String> -RoleDefinitionName <String>
+New-AzRoleAssignment -ObjectId <Guid> -ResourceGroupName <String> -RoleDefinitionName <String>
  [-AllowDelegation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceWithObjectIdParameterSet
 ```
-New-AzRoleAssignment -ObjectId <String> -ResourceGroupName <String> -ResourceName <String>
+New-AzRoleAssignment -ObjectId <Guid> -ResourceGroupName <String> -ResourceName <String>
  -ResourceType <String> [-ParentResource <String>] -RoleDefinitionName <String> [-AllowDelegation]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ScopeWithObjectIdParameterSet
+```
+New-AzRoleAssignment -ObjectId <Guid> [-Scope <String>] -RoleDefinitionName <String> [-AllowDelegation]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RoleIdWithScopeAndObjectIdParameterSet
 ```
-New-AzRoleAssignment -ObjectId <String> -Scope <String> -RoleDefinitionId <Guid> [-AllowDelegation]
+New-AzRoleAssignment -ObjectId <Guid> -Scope <String> -RoleDefinitionId <Guid> [-AllowDelegation]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -53,8 +59,8 @@ New-AzRoleAssignment -SignInName <String> -ResourceGroupName <String> -ResourceN
 
 ### ScopeWithSignInNameParameterSet
 ```
-New-AzRoleAssignment -SignInName <String> [-Scope <String>] -RoleDefinitionName <String> [-AllowDelegation]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzRoleAssignment -SignInName <String> [-Scope <String>] -RoleDefinitionName <String>
+ [-AllowDelegation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupWithSPNParameterSet
@@ -72,8 +78,8 @@ New-AzRoleAssignment -ApplicationId <String> -ResourceGroupName <String> -Resour
 
 ### ScopeWithSPNParameterSet
 ```
-New-AzRoleAssignment -ApplicationId <String> [-Scope <String>] -RoleDefinitionName <String> [-AllowDelegation]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzRoleAssignment -ApplicationId <String> [-Scope <String>] -RoleDefinitionName <String>
+ [-AllowDelegation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -176,9 +182,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -191,8 +197,8 @@ Accept wildcard characters: False
 Azure AD Objectid of the user, group or service principal.
 
 ```yaml
-Type: System.String
-Parameter Sets: EmptyParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, RoleIdWithScopeAndObjectIdParameterSet
+Type: System.Guid
+Parameter Sets: EmptyParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ScopeWithObjectIdParameterSet, RoleIdWithScopeAndObjectIdParameterSet
 Aliases: Id, PrincipalId
 
 Required: True
@@ -292,7 +298,7 @@ Reader, Contributor, Virtual Network Administrator, etc.
 
 ```yaml
 Type: System.String
-Parameter Sets: EmptyParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet
+Parameter Sets: EmptyParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ScopeWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet
 Aliases:
 
 Required: True
@@ -312,10 +318,10 @@ If specified, it should start with "/subscriptions/{id}".
 
 ```yaml
 Type: System.String
-Parameter Sets: EmptyParameterSet, ScopeWithSignInNameParameterSet, ScopeWithSPNParameterSet
+Parameter Sets: EmptyParameterSet, RoleIdWithScopeAndObjectIdParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -324,10 +330,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: RoleIdWithScopeAndObjectIdParameterSet
+Parameter Sets: ScopeWithObjectIdParameterSet, ScopeWithSignInNameParameterSet, ScopeWithSPNParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -350,20 +356,20 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
 ### System.Guid
+
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment
 
 ## NOTES
-Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
+Keywords: azure, Az, arm, resource, management, manager, resource, group, template, deployment
 
 ## RELATED LINKS
 

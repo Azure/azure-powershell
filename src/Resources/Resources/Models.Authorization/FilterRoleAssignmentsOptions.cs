@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
@@ -60,7 +60,5 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public bool IncludeClassicAdministrators { get; set; }
 
         public bool ExcludeAssignmentsForDeletedPrincipals { get; set; }
-
-        public bool CanDelegate { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 7690143F-5F09-4739-9F66-B2ACDF8305F4
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadspcredential
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-Azadspcredential
 schema: 2.0.0
 ---
 
@@ -15,7 +15,7 @@ Retrieves a list of credentials associated with a service principal.
 
 ### ObjectIdParameterSet (Default)
 ```
-Get-AzADSpCredential -ObjectId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzADSpCredential -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SPNParameterSet
@@ -31,8 +31,8 @@ Get-AzADSpCredential -DisplayName <String> [-DefaultProfile <IAzureContextContai
 
 ### SPNObjectParameterSet
 ```
-Get-AzADSpCredential -ServicePrincipalObject <PSADServicePrincipal> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzADSpCredential -ServicePrincipalObject <PSADServicePrincipal>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,9 +71,9 @@ Gets the service principal with object id "58e28616-99cc-4da4-b705-7672130e1047"
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 The object id of the service principal to retrieve credentials from.
 
 ```yaml
-Type: System.String
+Type: System.Guid
 Parameter Sets: ObjectIdParameterSet
 Aliases: Id
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 The service principal object to retrieve the credentials from.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
 Parameter Sets: SPNObjectParameterSet
 Aliases:
 
@@ -147,13 +147,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.Guid
+
 ### System.String
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+Parameters: ServicePrincipalObject (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADCredential
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADCredential
 
 ## NOTES
 

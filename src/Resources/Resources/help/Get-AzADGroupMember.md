@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 52C5CD8B-2489-4FE6-9F33-B3350531CD8E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadgroupmember
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-Azadgroupmember
 schema: 2.0.0
 ---
 
@@ -15,20 +15,20 @@ Lists members of an AD group in the current tenant.
 
 ### ObjectIdParameterSet (Default)
 ```
-Get-AzADGroupMember [-GroupObjectId <String>] [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADGroupMember [-GroupObjectId <Guid>] [-DefaultProfile <IAzureContextContainer>]
+ [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
-Get-AzADGroupMember -GroupDisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADGroupMember -GroupDisplayName <String> [-DefaultProfile <IAzureContextContainer>]
+ [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### GroupObjectParameterSet
 ```
-Get-AzADGroupMember -GroupObject <PSADGroup> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzADGroupMember -GroupObject <PSADGroup> [-DefaultProfile <IAzureContextContainer>]
+ [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,9 +66,24 @@ Gets the AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE' and pipe
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -First
+The maximum number of objects to return.
+
+```yaml
+Type: System.UInt64
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -96,7 +111,7 @@ Accept wildcard characters: False
 The group object that you are listing members from.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
 Parameter Sets: GroupObjectParameterSet
 Aliases:
 
@@ -111,7 +126,7 @@ Accept wildcard characters: False
 Object Id of the group.
 
 ```yaml
-Type: System.String
+Type: System.Guid
 Parameter Sets: ObjectIdParameterSet
 Aliases: Id, ObjectId
 
@@ -152,33 +167,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -First
-The maximum number of objects to return.
-
-```yaml
-Type: System.UInt64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### System.Guid
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADGroup
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
+Parameters: GroupObject (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ActiveDirectory.PSADObject
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADObject
 
 ## NOTES
 

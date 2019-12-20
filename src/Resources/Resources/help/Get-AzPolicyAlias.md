@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azpolicyalias
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-Azpolicyalias
 schema: 2.0.0
 ---
 
@@ -227,10 +227,8 @@ Lists all provider resource types with alpha api version or containing an alias 
 
 ### -AliasMatch
 Includes in the output items with aliases whose name matches this value.
-
-
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: Alias
 
@@ -243,10 +241,8 @@ Accept wildcard characters: False
 
 ### -ApiVersion
 When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.
-
-
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -259,10 +255,8 @@ Accept wildcard characters: False
 
 ### -ApiVersionMatch
 Includes in the output items whose resource types or aliases have a matching api version.
-
-
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -275,12 +269,10 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
-
-
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -291,10 +283,8 @@ Accept wildcard characters: False
 
 ### -ListAvailable
 Includes in the output matching items with and without aliases.
-
-
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: ShowAll
 
@@ -307,10 +297,8 @@ Accept wildcard characters: False
 
 ### -LocationMatch
 Includes in the output items whose resource types have a matching location.
-
-
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: Location
 
@@ -323,10 +311,8 @@ Accept wildcard characters: False
 
 ### -NamespaceMatch
 Limits the output to items whose namespace matches this value.
-
-
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: Name, Namespace
 
@@ -339,10 +325,8 @@ Accept wildcard characters: False
 
 ### -PathMatch
 Includes in the output items with aliases containing a path that matches this value.
-
-
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: Path
 
@@ -355,10 +339,8 @@ Accept wildcard characters: False
 
 ### -Pre
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
-
-
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -371,10 +353,8 @@ Accept wildcard characters: False
 
 ### -ResourceTypeMatch
 Limits the output to items whose resource type matches this value.
-
-
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceType, Resource
 
@@ -386,11 +366,9 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### None
 
 ## OUTPUTS
 

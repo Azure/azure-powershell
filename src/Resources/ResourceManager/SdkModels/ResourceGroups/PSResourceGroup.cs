@@ -34,7 +34,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         }
 
         public string ResourceId { get; set; }
-
-        public string ManagedBy { get; set; }
     }
 }
