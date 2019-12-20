@@ -51,7 +51,7 @@ require:
   - $(this-folder)/../readme.azure.md
   - $(repo)/specification/appconfiguration/resource-manager/readme.md
 
-module-version: 0.1.3
+module-version: 0.1.4
 
 directive:
   - where:
