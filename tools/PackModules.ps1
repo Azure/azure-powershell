@@ -100,12 +100,12 @@ function Update-NugetPackage {
 
 if ([string]::IsNullOrEmpty($Artifacts)) {
     Write-Verbose "Artifacts was not provided, use default $PSScriptRoot\..\artifacts"
-    $Artifacts = "$PSScriptRoot\..\artifacts"
+    $Artifacts = Join-Path $PSScriptRoot -ChildPath ".." | Join-Path -ChildPath "artifacts"
 }
 
 if ([string]::IsNullOrEmpty($NugetExe)) {
     Write-Verbose "NugetExe was not provided, use default $PSScriptRoot\NuGet.exe"
-    $NugetExe = "$PSScriptRoot\NuGet.exe"
+    $NugetExe = Join-Path $PSScriptRoot -ChildPath "NuGet.exe"
 }
 
 $tmp = Join-Path -Path $Artifacts -ChildPath "tmp"

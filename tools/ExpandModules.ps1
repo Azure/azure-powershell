@@ -25,7 +25,7 @@ param(
 
 if ([string]::IsNullOrEmpty($Artifacts)) {
     Write-Verbose "Artifacts was not provided, use default $PSScriptRoot\..\artifacts"
-    $Artifacts = "$PSScriptRoot\..\artifacts"
+    $Artifacts = Join-Path $PSScriptRoot -ChildPath ".." | Join-Path -ChildPath "artifacts"
 }
 
 New-Item -Path $Artifacts -Name "tmp" -ItemType "directory"
