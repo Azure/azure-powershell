@@ -1,7 +1,7 @@
 @{
   GUID = '4ff17caf-76fc-409a-2e23-b96989751cb1'
   RootModule = './Az.Network.psm1'
-  ModuleVersion = '0.0.1'
+  ModuleVersion = '4.0.2'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
