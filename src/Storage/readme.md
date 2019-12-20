@@ -53,7 +53,7 @@ require:
 
 subject-prefix: ''
 title: Storage
-module-version: 4.0.1
+module-version: 4.0.2
 skip-model-cmdlets: true
 
 directive:
