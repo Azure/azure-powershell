@@ -111,6 +111,9 @@ namespace Microsoft.Azure.Commands.Profile.Models
             AzureOperationalInsightsEndpointResourceId =
                 other.GetProperty<string>(nameof(AzureOperationalInsightsEndpointResourceId));
             AzureOperationalInsightsEndpoint = other.GetProperty<string>(nameof(AzureOperationalInsightsEndpoint));
+            AzureAttestationServiceEndpointResourceId =
+                other.GetProperty<string>(nameof(AzureAttestationServiceEndpointResourceId));
+            AzureAttestationServiceEndpointSuffix = other.GetProperty<string>(nameof(AzureAttestationServiceEndpointSuffix));
             VersionProfiles.Populate(nameof(VersionProfiles), other);
             this.PopulateExtensions(other);
         }
@@ -291,6 +294,36 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
         }
 
+        /// <summary>
+        /// The domain name suffix for Azure Attestation Services
+        /// </summary>
+        public string AzureAttestationServiceEndpointSuffix
+        {
+            get
+            {
+                return this.GetEndpointSuffix(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix);
+            }
+            set
+            {
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix, value);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the resource Id to use for contacting the attestation services endpoint
+        /// </summary>
+        public string AzureAttestationServiceEndpointResourceId
+        {
+            get
+            {
+                return this.GetEndpointSuffix(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId);
+            }
+            set
+            {
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId, value);
+            }
+        }
+
         public IList<string> VersionProfiles { get; } = new List<string>();
 
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -330,7 +363,9 @@ namespace Microsoft.Azure.Commands.Profile.Models
                        && TrafficManagerDnsSuffix == other.TrafficManagerDnsSuffix
                        && BatchEndpointResourceId == other.BatchEndpointResourceId
                        && AzureOperationalInsightsEndpointResourceId == other.AzureOperationalInsightsEndpointResourceId
-                       && AzureOperationalInsightsEndpoint == other.AzureOperationalInsightsEndpoint;
+                       && AzureOperationalInsightsEndpoint == other.AzureOperationalInsightsEndpoint
+                       && AzureAttestationServiceEndpointResourceId == other.AzureAttestationServiceEndpointResourceId
+                       && AzureAttestationServiceEndpointSuffix == other.AzureAttestationServiceEndpointSuffix;
             }
 
             return false;
