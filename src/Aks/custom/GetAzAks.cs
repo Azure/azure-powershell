@@ -410,7 +410,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
                     return;
                 }
 
-                Pipeline = Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId);
+                Pipeline = Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((CommandRuntime as IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ??
