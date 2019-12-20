@@ -576,6 +576,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.TargetDiskLocation = hyperVReplicaAzureVmDiskDetails.TargetDiskLocation;
             this.TargetDiskName = hyperVReplicaAzureVmDiskDetails.TargetDiskName;
             this.LunId = hyperVReplicaAzureVmDiskDetails.LunId;
+            this.DiskId = hyperVReplicaAzureVmDiskDetails.DiskId;
+            this.DiskEncryptionSetId = hyperVReplicaAzureVmDiskDetails.DiskEncryptionSetId;
         }
 
         /// <summary>
@@ -587,6 +589,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///    Gets or sets the VHD id.
         /// </summary>
         public string VhdId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the disk id.
+        /// </summary>
+        public string DiskId { get; set; }
 
         /// <summary>
         ///    Gets or sets VHD name.
@@ -612,6 +619,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets ordinal\LunId of the disk for the Azure VM.
         /// </summary>
         public string LunId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the DiskEncryptionSet ARM ID.
+        /// </summary>
+        public string DiskEncryptionSetId { get; set; }
+
+
+
     }
 
     /// <summary>
