@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.Network
                 connectionMonitorName,
                 () =>
                 {
-                    this.ConnectionMonitors.Stop(resourceGroupName, networkWatcherName, connectionMonitorName);
+                    this.ConnectionMonitors.StopV1(resourceGroupName, networkWatcherName, connectionMonitorName);
 
                     if (PassThru)
                     {

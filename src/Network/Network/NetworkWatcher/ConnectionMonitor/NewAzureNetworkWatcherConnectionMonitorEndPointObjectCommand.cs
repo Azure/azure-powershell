@@ -65,10 +65,22 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
 
             Validate();
+            string EndpointName = null;
+
+            if (!string.IsNullOrEmpty(this.ResourceId))
+            {
+                string[] SplittedName = ResourceId.Split('/');
+                // Name is in the form resourceName(ResourceGroupName)
+                EndpointName = SplittedName[9] + "(" + SplittedName[5]+ ")";
+            }
+            else if (!string.IsNullOrEmpty(this.Address))
+            {
+                EndpointName = this.Address;
+            }
 
             PSNetworkWatcherConnectionMonitorEndpointObject endPoint = new PSNetworkWatcherConnectionMonitorEndpointObject()
             {
-                Name = this.Name != null? this.Name : "Endpoint"+Guid.NewGuid(),
+                Name = EndpointName,
                 ResourceId = this.ResourceId,
                 Address = this.Address,
                 Filter = new PSConnectionMonitorEndpointFilter()
@@ -95,14 +107,26 @@ namespace Microsoft.Azure.Commands.Network
 
         public bool Validate()
         {
-            if (this.Name == null && this.ResourceId == null &&  this.Address == null && this.FilterType == null && this.FilterAddress == null)
+            if (string.IsNullOrEmpty(this.ResourceId) && string.IsNullOrEmpty(this.Address) && string.IsNullOrEmpty(this.FilterType) && (!this.FilterAddress.Any()))
             {
                 throw new ArgumentException("No Parameter is provided");
             }
 
-            if (this.ResourceId == null && this.Address == null)
+            if (string.IsNullOrEmpty(this.ResourceId) && string.IsNullOrEmpty(this.Address))
             {
                 throw new ArgumentException("ResourceId and Address can not be both empty");
+            }
+        
+            if (!string.IsNullOrEmpty(ResourceId))
+            {
+                string[] SplittedName = ResourceId.Split('/');
+
+                // Resource ID must be in this format
+                // "resourceId": "/subscriptions/96e68903-0a56-4819-9987-8d08ad6a1f99/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/iraVmTest2"
+                if (SplittedName.Count() < 9)
+                {
+                    throw new ArgumentException("ResourceId not in the correct format");
+                }
             }
 
             if (this.FilterType != null && String.Compare(this.FilterType, "Include", true) != 0)

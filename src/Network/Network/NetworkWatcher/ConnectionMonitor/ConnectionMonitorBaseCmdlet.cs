@@ -50,9 +50,18 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public PSConnectionMonitorResult GetConnectionMonitor(string resourceGroupName, string name, string connectionMonitorName)
+        public PSConnectionMonitorResult GetConnectionMonitor(string resourceGroupName, string name, string connectionMonitorName, bool connectionMonitorV2 = false)
         {
-            ConnectionMonitorResult connectionMonitor = this.ConnectionMonitors.Get(resourceGroupName, name, connectionMonitorName);
+            ConnectionMonitorResult connectionMonitor = null;
+            if (connectionMonitorV2)
+            {
+                connectionMonitor = this.ConnectionMonitors.Get(resourceGroupName, name, connectionMonitorName);
+            }
+            else
+            {
+                connectionMonitor = this.ConnectionMonitors.GetV1(resourceGroupName, name, connectionMonitorName);
+            }
+
             PSConnectionMonitorResult psConnectionMonitor = NetworkResourceManagerProfile.Mapper.Map<PSConnectionMonitorResult>(connectionMonitor);
 
             return psConnectionMonitor;

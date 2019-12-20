@@ -138,6 +138,28 @@ namespace Microsoft.Azure.Commands.Network
                     PSConnectionMonitorResult psConnectionMonitor = NetworkResourceManagerProfile.Mapper.Map<PSConnectionMonitorResult>(cm);
                     psConnectionMonitorList.Add(psConnectionMonitor);
                 }
+
+                // This is manual conversion from V2 to V1
+                foreach (PSConnectionMonitorResult ConnectionMonitorResult in psConnectionMonitorList)
+                {
+                    if (String.Compare(ConnectionMonitorResult.ConnectionMonitorType, "SingleSourceDestination", true) == 0)
+                    {
+                        //convert V2 to V1
+                        ConnectionMonitorResult.Source.ResourceId = ConnectionMonitorResult.TestGroup[0]?.Sources[0]?.ResourceId;
+                        // getConnectionMonitor.Source.Port
+
+                        ConnectionMonitorResult.Destination.ResourceId = ConnectionMonitorResult.TestGroup[0]?.Destinations[0]?.ResourceId;
+                        ConnectionMonitorResult.Destination.Address = ConnectionMonitorResult.TestGroup[0]?.Destinations[0]?.Address;
+                        ConnectionMonitorResult.Destination.Port = ConnectionMonitorResult.TestConfiguration[0]?.TcpConfiguration?.Port ?? default(int);
+                        ConnectionMonitorResult.MonitoringIntervalInSeconds = ConnectionMonitorResult.TestConfiguration[0]?.TestFrequencySec;
+                        
+                        // These parameters do not need mapping 
+                        // ConnectionMonitorResult.AutoStart = false;
+                        // getConnectionMonitor.StartTime
+                        // getConnectionMonitor.MonitoringStatus
+                    }
+                }
+
                 WriteObject(SubResourceWildcardFilter(Name, psConnectionMonitorList), true);
             }
         }
