@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         {
             get
             {
-                return this.GetEndpointSuffix(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointSuffix);
+                return this.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointSuffix);
             }
             set
             {
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         {
             get
             {
-                return this.GetEndpointSuffix(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId);
+                return this.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId);
             }
             set
             {
