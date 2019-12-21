@@ -77,21 +77,24 @@ namespace Common.Authentication.Test
             "https://manage.windowsazure.com/publishsettings", "https://management.azure.com",
             "https://management.core.windows.net", ".sql.azure.com", ".core.windows.net",
             ".trafficmanager.windows.net", "https://batch.core.windows.net", "https://datalake.azure.net",
-            "https://api.loganalytics.io", "https://api.loganalytics.io/v1", "analysisservices.azure.net")]
+            "https://api.loganalytics.io", "https://api.loganalytics.io/v1", "analysisservices.azure.net",
+            "https://attest.azure.net", "attest.azure.net")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertValidEnvironments(string name, bool onPremise, string activeDirectory, string serviceResource,
             string adTenant, string dataLakeJobs, string dataLakeFiles, string kvDnsSuffix,
             string kvResource, string gallery, string graph, string graphResource, string portal,
             string publishSettings, string resourceManager, string serviceManagement,
             string sqlSuffix, string storageSuffix, string trafficManagerSuffix, string batchResource, string dataLakeResource,
-            string azureOperationalInsightsEndpointResourceId, string azureOperationalInsightsEndpoint, string analysisServicesSuffix)
+            string azureOperationalInsightsEndpointResourceId, string azureOperationalInsightsEndpoint, string analysisServicesSuffix,
+            string azureAttestationServiceEndpointResourceId, string azureAttestationServiceEndpointSuffix)
         {
             AzureEnvironment azEnvironment = CreateEnvironment(name, onPremise, activeDirectory,
                 serviceResource, adTenant, dataLakeJobs, dataLakeFiles, kvDnsSuffix,
                 kvResource, gallery, graph, graphResource, portal, publishSettings,
                 resourceManager, serviceManagement, sqlSuffix, storageSuffix,
                 trafficManagerSuffix, batchResource, dataLakeResource,
-                azureOperationalInsightsEndpointResourceId, azureOperationalInsightsEndpoint, analysisServicesSuffix);
+                azureOperationalInsightsEndpointResourceId, azureOperationalInsightsEndpoint, analysisServicesSuffix,
+                azureAttestationServiceEndpointResourceId, azureAttestationServiceEndpointSuffix);
             var environment = (PSAzureEnvironment)azEnvironment;
             Assert.NotNull(environment);
             CheckEndpoint(AzureEnvironment.Endpoint.ActiveDirectory, azEnvironment,
@@ -178,6 +181,8 @@ namespace Common.Authentication.Test
             Assert.False(environment.IsEndpointSet(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId));
             Assert.False(environment.IsEndpointSet(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint));
             Assert.False(environment.IsEndpointSet(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointSuffix));
         }
 
         [Theory]
@@ -288,7 +293,8 @@ namespace Common.Authentication.Test
             string kvResource, string gallery, string graph, string graphResource, string portal,
             string publishSettings, string resourceManager, string serviceManagement,
             string sqlSuffix, string storageSuffix, string trafficManagerSuffix, string batchResource, string dataLakeResource,
-            string azureOperationalInsightsEndpointResourceId, string azureOperationalInsightsEndpoint, string analysisServicesSuffix)
+            string azureOperationalInsightsEndpointResourceId, string azureOperationalInsightsEndpoint, string analysisServicesSuffix,
+            string azureAttestationServiceEndpointResourceId, string azureAttestationServiceEndpointSuffix)
         {
             var environment = new AzureEnvironment() { Name = name, OnPremise = onPremise };
             SetEndpoint(AzureEnvironment.Endpoint.ActiveDirectory, environment, activeDirectory);
@@ -335,6 +341,10 @@ namespace Common.Authentication.Test
                 azureOperationalInsightsEndpoint);
             CheckEndpoint(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix, environment,
                 analysisServicesSuffix);
+            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId, environment,
+                azureAttestationServiceEndpointResourceId);
+            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointSuffix, environment,
+                azureAttestationServiceEndpointSuffix);
             return environment;
 
         }
