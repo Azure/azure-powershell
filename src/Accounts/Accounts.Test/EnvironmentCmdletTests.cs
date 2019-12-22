@@ -434,6 +434,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal(cmdlet.DataLakeAudience, actual.DataLakeEndpointResourceId);
             Assert.Equal(cmdlet.AzureOperationalInsightsEndpointResourceId, actual.AzureOperationalInsightsEndpointResourceId);
             Assert.Equal(cmdlet.AzureOperationalInsightsEndpoint, actual.AzureOperationalInsightsEndpoint);
+            Assert.Equal(cmdlet.AzureAttestationServiceEndpointResourceId, actual.AzureAttestationServiceEndpointResourceId);
+            Assert.Equal(cmdlet.AzureAttestationServiceEndpointSuffix, actual.AzureAttestationServiceEndpointSuffix);
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
             IAzureEnvironment env = AzureRmProfileProvider.Instance.Profile.GetEnvironment("KaTaL");
             Assert.Equal(env.Name, cmdlet.Name);
