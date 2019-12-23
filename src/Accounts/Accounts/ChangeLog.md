@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.6.6
 * Add client-side telemetry info for Az 4.0 preview
 
 ## Version 1.6.5
