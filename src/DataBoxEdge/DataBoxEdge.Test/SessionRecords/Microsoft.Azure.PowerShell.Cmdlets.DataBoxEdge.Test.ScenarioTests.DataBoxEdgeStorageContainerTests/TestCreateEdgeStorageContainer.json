@@ -192,7 +192,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"fPC+JITfuyQNprDGZJYKu4fyfuiZlNM+weDt9panBJsWyYvulehXOZKSGUrEl+TlVfH33M0hmTCn9ZEyIM/qdA==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"+k7DQRXw6CUQKIPKTjkAtVcnVJvQ6Tee13wtN0kWgWo35A448nxZwhaxLcuxXq/oGVCVSON2uY7/QHgbH2hLgw==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"Faked\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"Faked\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
