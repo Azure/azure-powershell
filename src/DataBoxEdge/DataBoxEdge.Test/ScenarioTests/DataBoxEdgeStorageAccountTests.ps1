@@ -102,7 +102,7 @@ function Test-RemoveEdgeStorageAccount
 	{
 		New-AzDataBoxEdgeStorageAccount $rgname $dfname $edgeStorageAccountName -StorageAccountCredentialName $storageAccountCredential.Name
 		Remove-AzDataBoxEdgeStorageAccount $rgname $dfname $edgeStorageAccountName
-		Assert-ThrowsContains { Get-AzDataBoxEdgeShare $rgname $dfname $edgeStorageAccountName  } "not find"	
+		Assert-ThrowsContains { Get-AzDataBoxEdgeStorageAccount $rgname $dfname $edgeStorageAccountName  } "not find"	
 	
 	}
 	finally
