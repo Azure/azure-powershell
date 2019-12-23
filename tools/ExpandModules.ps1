@@ -32,7 +32,7 @@ New-Item -Path $Artifacts -Name "tmp" -ItemType "directory"
 $tmp = Join-Path -Path $Artifacts -ChildPath "tmp"
 
 try {
-    foreach ($artifact in Get-ChildItem -Path $Artifacts -Filter "*.nupkg") {
+    foreach ($artifact in (Get-ChildItem -Path $Artifacts -Filter "*.nupkg").FullName) {
         Write-Output "##############################################$artifact#############################################"
         $module_name = (((Get-Item -Path $artifact).Name) -split("\.([0-9])+"))[0]
         Write-Output "Expanding $artifact to $tmp\$module_name"
