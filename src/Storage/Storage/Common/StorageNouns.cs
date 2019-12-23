@@ -22,27 +22,27 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Blob cmdlet name
         /// </summary>
-        public const string Blob = "AzureStorageBlob";
+        public const string Blob = "AzStorageBlob";
 
         /// <summary>
         /// Blobcontent cmdlet name
         /// </summary>
-        public const string BlobContent = "AzureStorageBlobContent";
+        public const string BlobContent = "AzStorageBlobContent";
 
         /// <summary>
         /// blob snapshot cmdlet name
         /// </summary>
-        public const string BlobSnapshot = "AzureStorageBlobSnapshot";
+        public const string BlobSnapshot = "AzStorageBlobSnapshot";
 
         /// <summary>
         /// Container cmdlet name
         /// </summary>
-        public const string Container = "AzureStorageContainer";
+        public const string Container = "AzStorageContainer";
 
         /// <summary>
         /// Container acl cmdlet name
         /// </summary>
-        public const string ContainerAcl = "AzureStorageContainerAcl";
+        public const string ContainerAcl = "AzStorageContainerAcl";
 
         /// <summary>
         /// Http protocol
@@ -57,12 +57,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Queue cmdlet name
         /// </summary>
-        public const string Queue = "AzureStorageQueue";
+        public const string Queue = "AzStorageQueue";
 
         /// <summary>
         /// Storage context cmdlet name
         /// </summary>
-        public const string StorageContext = "AzureStorageContext";
+        public const string StorageContext = "AzStorageContext";
 
         /// <summary>
         /// Storage account name
@@ -72,17 +72,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Table cmdlet name
         /// </summary>
-        public const string Table = "AzureStorageTable";
+        public const string Table = "AzStorageTable";
 
         /// <summary>
         /// Copy azure storage blob
         /// </summary>
-        public const string CopyBlob = "AzureStorageBlobCopy";
+        public const string CopyBlob = "AzStorageBlobCopy";
 
         /// <summary>
         /// IncrementalCopy azure storage blob
         /// </summary>
-        public const string IncrementalCopyBlob = "AzureStorageBlobIncrementalCopy";        
+        public const string IncrementalCopyBlob = "AzStorageBlobIncrementalCopy";        
 
         /// <summary>
         /// Copy azure storage blob deprecated name
@@ -92,92 +92,92 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Copy status for azure storage blob
         /// </summary>
-        public const string CopyBlobStatus = "AzureStorageBlobCopyState";
+        public const string CopyBlobStatus = "AzStorageBlobCopyState";
 
         /// <summary>
         /// Azure storage service hour metrics
         /// </summary>
-        public const string StorageServiceMetrics = "AzureStorageServiceMetricsProperty";
+        public const string StorageServiceMetrics = "AzStorageServiceMetricsProperty";
 
         /// <summary>
         /// Azure storage service logging
         /// </summary>
-        public const string StorageServiceLogging = "AzureStorageServiceLoggingProperty";
+        public const string StorageServiceLogging = "AzStorageServiceLoggingProperty";
 
         /// <summary>
         /// Azure storage service Property
         /// </summary>
-        public const string StorageServiceProperty = "AzureStorageServiceProperty";
+        public const string StorageServiceProperty = "AzStorageServiceProperty";
 
-        /// <summary>
         /// Azure storage Service Delete Retention Policy
         /// </summary>
-        public const string ServiceDeleteRetentionPolicy = "AzureStorageDeleteRetentionPolicy";
+        public const string ServiceDeleteRetentionPolicy = "AzStorageDeleteRetentionPolicy";
 
         /// <summary>
         /// Azure storage CORS rule
         /// </summary>
-        public const string StorageCORSRule = "AzureStorageCORSRule";
+        public const string StorageCORSRule = "AzStorageCORSRule";
 
         /// <summary>
         /// Azure storage account sas
         /// </summary>
-        public const string AccountSas = "AzureStorageAccountSASToken";
+        public const string AccountSas = "AzStorageAccountSASToken";
 
         /// <summary>
         /// Azure storage container sas
         /// </summary>
-        public const string ContainerSas = "AzureStorageContainerSASToken";
+        public const string ContainerSas = "AzStorageContainerSASToken";
 
         /// <summary>
         /// Azure storage blob sas
         /// </summary>
-        public const string BlobSas = "AzureStorageBlobSASToken";
+        public const string BlobSas = "AzStorageBlobSASToken";
 
         /// <summary>
         /// Azure storage file share sas
         /// </summary>
-        public const string ShareSas = "AzureStorageShareSASToken";
+        public const string ShareSas = "AzStorageShareSASToken";
 
         /// <summary>
         /// Azure storage file sas
         /// </summary>
-        public const string FileSas = "AzureStorageFileSASToken";
+        public const string FileSas = "AzStorageFileSASToken";
 
         /// <summary>
         /// Azure storage table sas
         /// </summary>
-        public const string TableSas = "AzureStorageTableSASToken";
+        public const string TableSas = "AzStorageTableSASToken";
 
         /// <summary>
         /// Azure storage queue sas
         /// </summary>
-        public const string QueueSas = "AzureStorageQueueSASToken";
+        public const string QueueSas = "AzStorageQueueSASToken";
 
         /// <summary>
         /// Azure storage table stored access policy
         /// </summary>
-        public const string TableStoredAccessPolicy = "AzureStorageTableStoredAccessPolicy";
+        public const string TableStoredAccessPolicy = "AzStorageTableStoredAccessPolicy";
 
         /// <summary>
         /// Azure storage share stored access policy
         /// </summary>
-        public const string ShareStoredAccessPolicy = "AzureStorageShareStoredAccessPolicy";
+        public const string ShareStoredAccessPolicy = "AzStorageShareStoredAccessPolicy";
 
         /// <summary>
         /// Azure storage container stored access policy
         /// </summary>
-        public const string ContainerStoredAccessPolicy = "AzureStorageContainerStoredAccessPolicy";
+        public const string ContainerStoredAccessPolicy = "AzStorageContainerStoredAccessPolicy";
+
 
         /// <summary>
         /// Azure storage container stored access policy
         /// </summary>
-        public const string QueueStoredAccessPolicy = "AzureStorageQueueStoredAccessPolicy";
+        public const string QueueStoredAccessPolicy = "AzStorageQueueStoredAccessPolicy";
 
         /// <summary>
         /// Azure storage share quota
         /// </summary>
-        public const string ShareQuota = "AzureStorageShareQuota";
+        public const string ShareQuota = "AzStorageShareQuota";
 
         /// <summary>
         /// Default service metrics version
@@ -190,7 +190,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         public const string DefaultLoggingVersion = "1.0";
 
         /// <summary>
-        /// Permission const for New-AzStorage(Blob/Container/Table/Queue)SasToken
+        /// Permission const for New-AzureStorage(Blob/Container/Table/Queue)SasToken
         /// </summary>
         public static class Permission
         {

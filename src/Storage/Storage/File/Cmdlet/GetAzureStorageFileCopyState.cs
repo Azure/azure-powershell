@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Storage;
-using Microsoft.Azure.Storage.Blob;
-using XFile = Microsoft.Azure.Storage.File;
-using Microsoft.Azure.Storage.File;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage.File;
 using System;
 using System.Collections.Concurrent;
 using System.Management.Automation;
@@ -25,7 +24,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileCopyState")]
+    [Cmdlet(VerbsCommon.Get, Constants.FileCopyCmdletStateName)]
     [OutputType(typeof(CloudFile))]
     public class GetAzureStorageFileCopyStateCommand : AzureStorageFileCmdletBase
     {
@@ -123,18 +122,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         /// Update failed/finished task count
         /// </summary>
         /// <param name="status">Copy status</param>
-        private void UpdateTaskCount(XFile.CopyStatus status)
+        private void UpdateTaskCount(CopyStatus status)
         {
             switch (status)
             {
-                case XFile.CopyStatus.Invalid:
-                case XFile.CopyStatus.Failed:
-                case XFile.CopyStatus.Aborted:
+                case CopyStatus.Invalid:
+                case CopyStatus.Failed:
+                case CopyStatus.Aborted:
                     Interlocked.Increment(ref InternalFailedCount);
                     break;
-                case XFile.CopyStatus.Pending:
+                case CopyStatus.Pending:
                     break;
-                case XFile.CopyStatus.Success:
+                case CopyStatus.Success:
                 default:
                     Interlocked.Increment(ref InternalFinishedCount);
                     break;
@@ -216,7 +215,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         WriteCopyProgress(file, records);
                         UpdateTaskCount(file.CopyState.Status);
 
-                        if (file.CopyState.Status == XFile.CopyStatus.Pending && this.WaitForComplete)
+                        if (file.CopyState.Status == CopyStatus.Pending && this.WaitForComplete)
                         {
                             jobList.Enqueue(monitorRequest);
                         }

@@ -13,14 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.Azure.Storage.File;
+using Microsoft.WindowsAzure.Storage.File;
 using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShareQuota"), OutputType(typeof(FileShareProperties))]
+    [Cmdlet(VerbsCommon.Set, StorageNouns.ShareQuota), OutputType(typeof(FileShareProperties))]
     public class SetAzureStorageShareQuota : AzureStorageFileCmdletBase
     {
         [Alias("N", "Name")]
@@ -41,7 +41,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNull]
         public CloudFileShare Share { get; set; }
 
-        [Alias("QuotaGiB")]
         [Parameter(Position = 1, Mandatory = true,
             HelpMessage = "Share Quota")]
         public int Quota { get; set; }
@@ -80,3 +79,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
     }
 }
+

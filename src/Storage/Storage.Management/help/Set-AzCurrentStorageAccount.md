@@ -1,15 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: 15973FE8-16C1-4B71-A3A8-6D6F67A96FDF
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azcurrentstorageaccount
+online version:
 schema: 2.0.0
 ---
 
 # Set-AzCurrentStorageAccount
 
 ## SYNOPSIS
-Modifies the current Storage account of the specified subscription.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -26,23 +25,21 @@ Set-AzCurrentStorageAccount -Context <IStorageContext> [-DefaultProfile <IAzureC
 ```
 
 ## DESCRIPTION
-The **Set-AzCurrentStorageAccount** cmdlet modifies the current Azure Storage account of the specified Azure subscription in Azure PowerShell.
-The current Storage account is used as the default when you access Storage without specifying a Storage account name.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Set the current Storage account
-```
-PS C:\>Set-AzCurrentStorageAccount -ResourceGroupName "RG01" -AccountName "mystorageaccount"
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command sets the default Storage account for the specified subscription.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Context
-Specifies an **AzureStorageContext** object for the current Storage account.
-To obtain a storage context object, use the New-AzStorageContext cmdlet.
+{{ Fill Context Description }}
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -72,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Storage account that this cmdlet modifies.
+{{ Fill Name Description }}
 
 ```yaml
 Type: System.String
@@ -87,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the resource group that contains the Storage account to modify.
+{{ Fill ResourceGroupName Description }}
 
 ```yaml
 Type: System.String
@@ -102,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -117,7 +114,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Set-AzStorageAccount](./Set-AzStorageAccount.md)
-
-

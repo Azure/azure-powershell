@@ -14,9 +14,8 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 {
-    using Microsoft.Azure.Storage;
-    using Microsoft.Azure.Cosmos.Table;
-    using XTable = Microsoft.Azure.Cosmos.Table;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Table;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -32,7 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="requestOptions">Table request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>An enumerable collection of tables that begin with the specified prefix</returns>
-        IEnumerable<CloudTable> ListTables(string prefix, TableRequestOptions requestOptions = null, XTable.OperationContext operationContext = null);
+        IEnumerable<CloudTable> ListTables(string prefix, TableRequestOptions requestOptions = null, OperationContext operationContext = null);
 
         /// <summary>
         /// Get a table reference
@@ -48,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="requestOptions">Table request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>True if table exists; otherwise, false.</returns>
-        bool DoesTableExist(CloudTable table, TableRequestOptions requestOptions = null, XTable.OperationContext operationContext = null);
+        bool DoesTableExist(CloudTable table, TableRequestOptions requestOptions = null, OperationContext operationContext = null);
 
         /// <summary>
         /// Cloud a azure storage table if not exists.
@@ -57,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="requestOptions">Table request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>True if table was created; otherwise, false.</returns>
-        bool CreateTableIfNotExists(CloudTable table, TableRequestOptions requestOptions = null, XTable.OperationContext operationContext = null);
+        bool CreateTableIfNotExists(CloudTable table, TableRequestOptions requestOptions = null, OperationContext operationContext = null);
 
         /// <summary>
         /// Delete the specified azure storage table
@@ -65,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="table">Cloud table object</param>
         /// <param name="requestOptions">Table request options</param>
         /// <param name="operationContext">Operation context</param>
-        void Delete(CloudTable table, TableRequestOptions requestOptions = null, XTable.OperationContext operationContext = null);
+        void Delete(CloudTable table, TableRequestOptions requestOptions = null, OperationContext operationContext = null);
 
         /// <summary>
         /// Get table permission
@@ -73,7 +72,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="table">Cloud table object</param>
         /// <param name="requestOptions">Table request options</param>
         /// <param name="operationContext">Operation context</param>
-        TablePermissions GetTablePermissions(CloudTable table, TableRequestOptions requestOptions = null, XTable.OperationContext operationContext = null);
+        TablePermissions GetTablePermissions(CloudTable table, TableRequestOptions requestOptions = null, OperationContext operationContext = null);
 
         /// <summary>
         /// Return a task that asynchronously fetch table permissions
@@ -82,7 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="requestOptions">request options</param>
         /// <param name="operationContext">context</param>
         /// <returns></returns>
-        Task<TablePermissions> GetTablePermissionsAsync(CloudTable table, TableRequestOptions requestOptions = null, XTable.OperationContext operationContext = null);
+        Task<TablePermissions> GetTablePermissionsAsync(CloudTable table, TableRequestOptions requestOptions = null, OperationContext operationContext = null);
 
         /// <summary>
         /// Set table permission
@@ -92,7 +91,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="requestOptions">Table request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns></returns>
-        void SetTablePermissions(CloudTable table, TablePermissions tablePermissions, TableRequestOptions requestOptions = null, XTable.OperationContext operationContext = null);
+        void SetTablePermissions(CloudTable table, TablePermissions tablePermissions, TableRequestOptions requestOptions = null, OperationContext operationContext = null);
 
         /// <summary>
         /// Return a task that asynchronously set table permissions
@@ -102,24 +101,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="requestOptions">request options</param>
         /// <param name="operationContext">context</param>
         /// <returns></returns>
-        Task SetTablePermissionsAsync(CloudTable table, TablePermissions tablePermissions, TableRequestOptions requestOptions = null, XTable.OperationContext operationContext = null);
-
-        /// <summary>
-        /// Get the Table service properties
-        /// </summary>
-        /// <param name="account">Cloud storage account</param>
-        /// <param name="options">Request options</param>
-        /// <param name="operationContext">Operation context</param>
-        /// <returns>The service properties of the specified service type</returns>
-        XTable.ServiceProperties GetStorageTableServiceProperties(XTable.TableRequestOptions options, XTable.OperationContext operationContext);
-
-        /// <summary>
-        /// Set Table service properties
-        /// </summary>
-        /// <param name="account">Cloud storage account</param>
-        /// <param name="properties">Service properties</param>
-        /// <param name="options">Request options</param>
-        /// <param name="operationContext">Operation context</param>
-        void SetStorageTableServiceProperties(XTable.ServiceProperties properties, XTable.TableRequestOptions options, XTable.OperationContext operationContext);
+        Task SetTablePermissionsAsync(CloudTable table, TablePermissions tablePermissions, TableRequestOptions requestOptions = null, OperationContext operationContext = null);
     }
 }

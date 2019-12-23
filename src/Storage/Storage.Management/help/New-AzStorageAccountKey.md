@@ -1,15 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: FDD2CE98-6C7E-4B95-BA5B-B03B6AC6EAEF
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstorageaccountkey
+online version:
 schema: 2.0.0
 ---
 
 # New-AzStorageAccountKey
 
 ## SYNOPSIS
-Regenerates a storage key for an Azure Storage account.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -19,16 +18,16 @@ New-AzStorageAccountKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName
 ```
 
 ## DESCRIPTION
-The **New-AzStorageAccountKey** cmdlet regenerates a storage key for an Azure Storage account.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Regenerate a storage key
-```
-PS C:\>New-AzStorageAccountKey -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyName "key1"
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command regenerates a storage key for the specified Storage account.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -48,10 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyName
-Specifies which key to regenerate.
-The acceptable values for this parameter are:
-- key1
-- key2
+Storage Account Key.
 
 ```yaml
 Type: System.String
@@ -67,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Storage account for which to regenerate a storage key.
+Storage Account Name.
 
 ```yaml
 Type: System.String
@@ -82,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group that contains the Storage account.
+Resource Group Name.
 
 ```yaml
 Type: System.String
@@ -97,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -105,10 +101,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Storage.Models.StorageAccountListKeysResult
+### Microsoft.Azure.Management.Storage.Models.StorageAccountKey
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzStorageAccountKey](./Get-AzStorageAccountKey.md)

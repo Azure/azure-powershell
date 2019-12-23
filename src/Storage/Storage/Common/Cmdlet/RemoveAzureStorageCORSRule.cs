@@ -12,18 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Storage.Shared.Protocol;
-using XTable = Microsoft.Azure.Cosmos.Table;
+using Microsoft.WindowsAzure.Storage.Shared.Protocol;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
     /// <summary>
     /// Remove all azure storage CORS rules
     /// </summary>
-    [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageCORSRule"), OutputType(typeof(void))]
+    [Cmdlet(VerbsCommon.Remove, StorageNouns.StorageCORSRule), OutputType(typeof(void))]
     public class RemoveAzureStorageCORSRuleCommand : StorageCloudBlobCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = GetAzureStorageServiceLoggingCommand.ServiceTypeHelpMessage)]
@@ -40,29 +38,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            if (ServiceType != StorageServiceType.Table)
-            {
-                ServiceProperties currentServiceProperties = Channel.GetStorageServiceProperties(ServiceType, GetRequestOptions(ServiceType), OperationContext);
-                ServiceProperties serviceProperties = new ServiceProperties();
-                serviceProperties.Clean();
-                serviceProperties.Cors = currentServiceProperties.Cors;
-                serviceProperties.Cors.CorsRules.Clear();
+            ServiceProperties currentServiceProperties = Channel.GetStorageServiceProperties(ServiceType, GetRequestOptions(ServiceType), OperationContext);
+            ServiceProperties serviceProperties = new ServiceProperties();
+            serviceProperties.Clean();
+            serviceProperties.Cors = currentServiceProperties.Cors;
+            serviceProperties.Cors.CorsRules.Clear();
 
-                Channel.SetStorageServiceProperties(ServiceType, serviceProperties,
-                    GetRequestOptions(ServiceType), OperationContext);
-            }
-            else //Table use old XSCL
-            {
-                StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
-                XTable.ServiceProperties currentServiceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
-                XTable.ServiceProperties serviceProperties = new XTable.ServiceProperties();
-                serviceProperties.Clean();
-                serviceProperties.Cors = currentServiceProperties.Cors;
-                serviceProperties.Cors.CorsRules.Clear();
-
-                tableChannel.SetStorageTableServiceProperties(serviceProperties,
-                    GetTableRequestOptions(), TableOperationContext);
-            }
+            Channel.SetStorageServiceProperties(ServiceType, serviceProperties,
+                GetRequestOptions(ServiceType), OperationContext);
         }
     }
 }

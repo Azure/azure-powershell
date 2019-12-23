@@ -14,15 +14,14 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
-    using Microsoft.Azure.Storage;
+    using Microsoft.WindowsAzure.Storage;
     using System;
     using System.Threading;
-    using XTable = Microsoft.Azure.Cosmos.Table;
 
     internal class CmdletOperationContext
     {
-        private static volatile bool _inited;
-        private static readonly object SyncRoot = new Object();
+        private static volatile bool inited;
+        private static object syncRoot = new Object();
 
         public static DateTime StartTime
         {
@@ -39,26 +38,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// started remote call counter
         /// </summary>
-        private static int _startedRemoteCallCounter;
+        private static int startedRemoteCallCounter = 0;
 
         public static int StartedRemoteCallCounter
         {
             get
             {
-                return _startedRemoteCallCounter;
+                return startedRemoteCallCounter;
             }
         }
 
         /// <summary>
         /// finished remote call counter
         /// </summary>
-        private static int _finishedRemoteCallCounter;
+        private static int finishedRemoteCallCounter = 0;
 
         public static int FinishedRemoteCallCounter
         {
             get
             {
-                return _finishedRemoteCallCounter;
+                return finishedRemoteCallCounter;
             }
         }
 
@@ -69,15 +68,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// </summary>
         public static void Init()
         {
-            if (!_inited)
+            if (!inited)
             {
-                lock (SyncRoot)
+                lock (syncRoot)
                 {
-                    if (!_inited)
+                    if (!inited)
                     {
                         StartTime = DateTime.Now;
                         ClientRequestId = GenClientRequestID();
-                        _inited = true;
+                        inited = true;
                     }
                 }
             }
@@ -89,37 +88,45 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <returns>A unique request id</returns>
         internal static string GenClientRequestID()
         {
-            var uniqueId = System.Guid.NewGuid().ToString();
+            string uniqueId = System.Guid.NewGuid().ToString();
             return string.Format(Resources.ClientRequestIdFormat, uniqueId);
         }
 
         /// <summary>
         /// Get Storage Operation Context for rest calls
         /// </summary>
-        /// <param name="outputWriter">Output writer for writing logs for each rest call</param>
+        /// <param name="outputWriter">Ouput writer for writing logs for each rest call</param>
         /// <returns>Storage operation context</returns>
         public static OperationContext GetStorageOperationContext(Action<string> outputWriter)
         {
-            if (!_inited)
+            if (!inited)
             {
-                Init();
+                CmdletOperationContext.Init();
             }
 
-            var context = new OperationContext {ClientRequestID = ClientRequestId};
+            OperationContext context = new OperationContext();
+            context.ClientRequestID = ClientRequestId;
 
             context.SendingRequest += (s, e) =>
             {
                 context.StartTime = DateTime.Now;
 
-                Interlocked.Increment(ref _startedRemoteCallCounter);
-
+                Interlocked.Increment(ref startedRemoteCallCounter);
+#if NETSTANDARD
                 //https://github.com/Azure/azure-storage-net/issues/658
-                var message = String.Format(Resources.StartRemoteCall,
-                    _startedRemoteCallCounter, String.Empty, e.Request.RequestUri.ToString());
+                string message = String.Format(Resources.StartRemoteCall,
+                    startedRemoteCallCounter, String.Empty, e.RequestUri.ToString());
+#else
+                string message = String.Format(Resources.StartRemoteCall,
+                    startedRemoteCallCounter, e.Request.Method, e.Request.RequestUri.ToString());
+#endif
 
                 try
                 {
-                    outputWriter?.Invoke(message);
+                    if (outputWriter != null)
+                    {
+                        outputWriter(message);
+                    }
                 }
                 catch
                 {
@@ -130,17 +137,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             context.ResponseReceived += (s, e) =>
             {
                 context.EndTime = DateTime.Now;
-                Interlocked.Increment(ref _finishedRemoteCallCounter);
+                Interlocked.Increment(ref finishedRemoteCallCounter);
 
-                var elapsedTime = (context.EndTime - context.StartTime).TotalMilliseconds;
-
+                double elapsedTime = (context.EndTime - context.StartTime).TotalMilliseconds;
+#if NETSTANDARD
                 //https://github.com/Azure/azure-storage-net/issues/658
-                var message = String.Format(Resources.FinishRemoteCall,
-                    e.Request.RequestUri.ToString(), String.Empty, String.Empty, e.RequestInformation.ServiceRequestID, elapsedTime);
+                string message = String.Format(Resources.FinishRemoteCall,
+                    e.RequestUri.ToString(), String.Empty, String.Empty, e.RequestInformation.ServiceRequestID, elapsedTime);
+#else
+                string message = String.Format(Resources.FinishRemoteCall,
+                    e.Request.RequestUri.ToString(), (int)e.Response.StatusCode, e.Response.StatusCode, e.RequestInformation.ServiceRequestID, elapsedTime);
+#endif
 
                 try
                 {
-                    outputWriter?.Invoke(message);
+                    if (outputWriter != null)
+                    {
+                        outputWriter(message);
+                    }
                 }
                 catch
                 {
@@ -152,77 +166,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
-        /// Get Storage Table Operation Context for rest calls
-        /// </summary>
-        /// <param name="outputWriter">Output writer for writing logs for each rest call</param>
-        /// <returns>Storage Table operation context</returns>
-        public static XTable.OperationContext GetStorageTableOperationContext(Action<string> outputWriter)
-        {
-            if (!_inited)
-            {
-                Init();
-            }
-
-            var context = new XTable.OperationContext { ClientRequestID = ClientRequestId };
-
-            context.SendingRequest += (s, e) =>
-            {
-                context.StartTime = DateTime.Now;
-
-                Interlocked.Increment(ref _startedRemoteCallCounter);
-                // TODO: Remove IfDef
-
-                //https://github.com/Azure/azure-storage-net/issues/658
-                var message = String.Format(Resources.StartRemoteCall,
-                    _startedRemoteCallCounter, String.Empty, e.Request.RequestUri.ToString());
-
-                try
-                {
-                    outputWriter?.Invoke(message);
-                }
-                catch
-                {
-                    //catch the exception. If so, the storage client won't sleep and retry
-                }
-            };
-
-            context.ResponseReceived += (s, e) =>
-            {
-                context.EndTime = DateTime.Now;
-                Interlocked.Increment(ref _finishedRemoteCallCounter);
-
-                var elapsedTime = (context.EndTime - context.StartTime).TotalMilliseconds;
-                // TODO: Remove IfDef
-                //https://github.com/Azure/azure-storage-net/issues/658
-                var message = String.Format(Resources.FinishRemoteCall,
-                    e.Request.RequestUri.ToString(), String.Empty, String.Empty, e.RequestInformation.ServiceRequestID, elapsedTime);
-
-                try
-                {
-                    outputWriter?.Invoke(message);
-                }
-                catch
-                {
-                    //catch the exception. If so, the storage client won't sleep and retry
-                }
-            };
-
-            return context;
-        }
-
-        /// <summary>
-        /// Get the running ms from when operation context started
+        /// Get the running ms from when operationcontext started
         /// </summary>
         /// <returns>A time string in ms</returns>
         public static double GetRunningMilliseconds()
         {
-            if (!_inited)
+            if (!inited)
             {
                 return 0;
             }
-
-            var span = DateTime.Now - StartTime;
-            return span.TotalMilliseconds;
+            else
+            {
+                TimeSpan span = DateTime.Now - StartTime;
+                return span.TotalMilliseconds;
+            }
         }
     }
 }

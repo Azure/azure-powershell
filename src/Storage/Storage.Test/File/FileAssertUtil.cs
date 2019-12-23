@@ -19,7 +19,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Management.Storage.Test.Common;
-using Microsoft.Azure.Storage.File;
+using Microsoft.WindowsAzure.Storage.File;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.File
 {

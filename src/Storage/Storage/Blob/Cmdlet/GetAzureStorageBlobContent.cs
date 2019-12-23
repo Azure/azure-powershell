@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Storage;
-using Microsoft.Azure.Storage.Blob;
-using Microsoft.Azure.Storage.DataMovement;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage.DataMovement;
 using System;
 using System.IO;
 using System.Management.Automation;
@@ -28,7 +26,8 @@ using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
-    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobContent", SupportsShouldProcess = true, DefaultParameterSetName = ManualParameterSet),OutputType(typeof(AzureStorageBlob))]
+    [Cmdlet(VerbsCommon.Get, StorageNouns.BlobContent, SupportsShouldProcess = true, DefaultParameterSetName = ManualParameterSet),
+        OutputType(typeof(AzureStorageBlob))]
     public class GetAzureStorageBlobContentCommand : StorageDataMovementCmdletBase
     {
         /// <summary>
@@ -78,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private string ContainerName = String.Empty;
 
         [Alias("Path")]
-        [Parameter(HelpMessage = "File Path.")]
+        [Parameter(HelpMessage = "File Path")]
         public string Destination
         {
             get { return FileName; }
@@ -255,7 +254,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <returns>full file path if file path is valid, otherwise throw an exception</returns>
         internal string GetFullReceiveFilePath(string fileName, string blobName, DateTimeOffset? snapshotTime)
         {
-            String filePath = fileName;
+            String filePath = Path.Combine(CurrentPath(), fileName);
             fileName = Path.GetFileName(filePath);
             String dirPath = Path.GetDirectoryName(filePath);
 
@@ -282,33 +281,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             return filePath;
         }
 
-        protected override void ProcessRecord()
-        {
-            try
-            {
-                FileName = GetUnresolvedProviderPathFromPSPath(FileName);
-                Validate.ValidateInternetConnection();
-                InitChannelCurrentSubscription();
-                this.ExecuteSynchronouslyOrAsJob();
-            }
-            catch (Exception ex) when (!IsTerminatingError(ex))
-            {
-                WriteExceptionError(ex);
-            }
-        }
-
-
         /// <summary>
         /// execute command
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            if (AsJob.IsPresent)
-            {
-                DoBeginProcessing();
-            }
-
             switch (ParameterSetName)
             {
                 case BlobParameterSet:
@@ -331,11 +309,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         GetBlobContent(ContainerName, BlobName, FileName);
                     }
                     break;
-            }
-
-            if (AsJob.IsPresent)
-            {
-                DoEndProcessing();
             }
         }
     }

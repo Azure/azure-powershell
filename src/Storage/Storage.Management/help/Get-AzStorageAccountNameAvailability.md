@@ -1,15 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: F6EA099A-D588-49AE-9D2C-865BC32685BA
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageaccountnameavailability
+online version:
 schema: 2.0.0
 ---
 
 # Get-AzStorageAccountNameAvailability
 
 ## SYNOPSIS
-Checks the availability of a Storage account name.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -19,16 +18,16 @@ Get-AzStorageAccountNameAvailability [-Name] <String> [-DefaultProfile <IAzureCo
 ```
 
 ## DESCRIPTION
-The **Get-AzStorageAccountNameAvailability** cmdlet checks whether the name of an Azure Storage account is valid and available to use.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Check availability of a Storage account name
-```
-PS C:\>Get-AzStorageAccountNameAvailability -Name 'contosostorage03'
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command checks the availability of the name ContosoStorage03.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -48,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Storage account that this cmdlet checks.
+Storage Account Name.
 
 ```yaml
 Type: System.String
@@ -63,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -76,7 +75,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Azure Storage Manager Cmdlets](./Az.Storage.md)
-
-

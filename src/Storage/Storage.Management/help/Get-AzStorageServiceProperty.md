@@ -1,14 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageserviceproperty
+online version:
 schema: 2.0.0
 ---
 
 # Get-AzStorageServiceProperty
 
 ## SYNOPSIS
-Gets properties for Azure Storage services.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -18,36 +18,21 @@ Get-AzStorageServiceProperty [-ServiceType] <StorageServiceType> [-Context <ISto
 ```
 
 ## DESCRIPTION
-The **Get-AzStorageServiceProperty** cmdlet gets the properties for Azure Storage services.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Get  Azure Storage services property of the Blob service
-```
-C:\PS>Get-AzStorageServiceProperty -ServiceType Blob
-
-Logging.Version                     : 1.0
-Logging.LoggingOperations           : None
-Logging.RetentionDays               : 
-HourMetrics.Version                 : 1.0
-HourMetrics.MetricsLevel            : ServiceAndApi
-HourMetrics.RetentionDays           : 7
-MinuteMetrics.Version               : 1.0
-MinuteMetrics.MetricsLevel          : None
-MinuteMetrics.RetentionDays         : 
-DeleteRetentionPolicy.Enabled       : True
-DeleteRetentionPolicy.RetentionDays : 70
-Cors                                : 
-DefaultServiceVersion               : 2017-07-29
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command gets DefaultServiceVersion property of the Blob service.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Context
-Specifies an Azure storage context.
-To obtain a storage context, use the New-AzStorageContext cmdlet.
+Azure Storage Context Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -77,13 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceType
-Specifies the storage service type.
-This cmdlet gets the logging properties for the service type that this parameter specifies.
-The acceptable values for this parameter are:
-- Blob 
-- Table
-- Queue
-- File
+Azure storage service type(Blob, Table, Queue).
 
 ```yaml
 Type: Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType
@@ -99,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,13 +17,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Commands.Storage.Table;
-    using Microsoft.Azure.Cosmos.Table;
+    using Microsoft.WindowsAzure.Storage.Table;
     using System;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTableStoredAccessPolicy", SupportsShouldProcess = true), OutputType(typeof(Boolean))]
+    [Cmdlet(VerbsCommon.Remove, StorageNouns.TableStoredAccessPolicy, SupportsShouldProcess = true), OutputType(typeof(Boolean))]
     public class RemoveAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
     {
         [Alias("N", "Name")]
@@ -113,3 +113,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         }
     }
 }
+

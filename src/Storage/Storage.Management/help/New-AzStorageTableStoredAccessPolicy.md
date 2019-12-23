@@ -1,15 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: CF3B6E3B-3FC1-4871-AFE0-366B17A9E4F8
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstoragetablestoredaccesspolicy
+online version:
 schema: 2.0.0
 ---
 
 # New-AzStorageTableStoredAccessPolicy
 
 ## SYNOPSIS
-Creates a stored access policy for an Azure storage table.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -20,22 +19,21 @@ New-AzStorageTableStoredAccessPolicy [-Table] <String> [-Policy] <String> [-Perm
 ```
 
 ## DESCRIPTION
-The **New-AzStorageTableStoredAccessPolicy** cmdlet creates a stored access policy for an Azure storage table.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Create a stored access policy in a table
-```
-PS C:\>New-AzStorageTableStoredAccessPolicy -Table "MyTable" -Policy "Policy02"
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command creates an access policy named Policy02 in the storage table named MyTable.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Context
-Specifies an Azure storage context.
-To obtain a storage context, use the New-AzStorageContext cmdlet.
+Azure Storage Context Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -65,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpiryTime
-Specifies the time at which the stored access policy becomes invalid.
+Expiry Time
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
@@ -80,8 +78,8 @@ Accept wildcard characters: False
 ```
 
 ### -Permission
-Specifies permissions in the stored access policy to access the storage table.
-It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
+Permissions for a table.
+Permissions can be any not-empty subset of "audqr".
 
 ```yaml
 Type: System.String
@@ -96,7 +94,8 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Specifies a name for the stored access policy.
+Policy Identifier.
+Need to be unique in the Table
 
 ```yaml
 Type: System.String
@@ -111,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -StartTime
-Specifies the time at which the stored access policy becomes valid.
+Start Time
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
@@ -126,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -Table
-Specifies the Azure storage table name.
+Table Name
 
 ```yaml
 Type: System.String
@@ -141,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -156,13 +155,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzStorageTableStoredAccessPolicy](./Get-AzStorageTableStoredAccessPolicy.md)
-
-[New-AzStorageContext](./New-AzStorageContext.md)
-
-[Remove-AzStorageTableStoredAccessPolicy](./Remove-AzStorageTableStoredAccessPolicy.md)
-
-[Set-AzStorageTableStoredAccessPolicy](./Set-AzStorageTableStoredAccessPolicy.md)
-
-

@@ -1,15 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: 80DE5D60-93F8-4509-AA9C-F54E4AB70013
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/remove-azstoragequeuestoredaccesspolicy
+online version:
 schema: 2.0.0
 ---
 
 # Remove-AzStorageQueueStoredAccessPolicy
 
 ## SYNOPSIS
-Removes a stored access policy from an Azure storage queue.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -20,22 +19,21 @@ Remove-AzStorageQueueStoredAccessPolicy [-Queue] <String> [-Policy] <String> [-P
 ```
 
 ## DESCRIPTION
-The **Remove-AzStorageQueueStoredAccessPolicy** cmdlet removes a stored access policy from an Azure storage queue.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Remove a stored access policy from a storage queue
-```
-PS C:\>Remove-AzStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy04"
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command removes an access policy named Policy04 from the storage queue named MyQueue.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Context
-Specifies an Azure storage context.
-To obtain a storage context, use the New-AzStorageContext cmdlet.
+Azure Storage Context Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -65,8 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Indicates that this cmdlet returns a **Boolean** that reflects the success of the operation.
-By default, this cmdlet does not return a value.
+Return whether the specified policy is successfully removed
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -81,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Specifies the name of the stored access policy that this cmdlet removes.
+Policy Identifier
 
 ```yaml
 Type: System.String
@@ -96,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -Queue
-Specifies the Azure storage queue name.
+Queue Name
 
 ```yaml
 Type: System.String
@@ -120,7 +117,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -136,13 +133,13 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -157,11 +154,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzStorageQueueStoredAccessPolicy](./Get-AzStorageQueueStoredAccessPolicy.md)
-
-[New-AzStorageContext](./New-AzStorageContext.md)
-
-[New-AzStorageQueueStoredAccessPolicy](./New-AzStorageQueueStoredAccessPolicy.md)
-
-[Set-AzStorageQueueStoredAccessPolicy](./Set-AzStorageQueueStoredAccessPolicy.md)

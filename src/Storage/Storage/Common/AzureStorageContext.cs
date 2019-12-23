@@ -16,8 +16,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
 {
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.WindowsAzure.Commands.Common.Storage.Properties;
-    using Microsoft.Azure.Storage;
-    using XTable = Microsoft.Azure.Cosmos.Table;
+    using Microsoft.WindowsAzure.Storage;
     using System;
     using System.Collections.Generic;
 
@@ -54,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         public virtual string FileEndPoint { get; protected set; }
 
         /// <summary>
-        /// Self reference, it could enable New-AzStorageContext can be used in pipeline 
+        /// Self reference, it could enable New-AzureStorageContext can be used in pipeline 
         /// </summary>
         public IStorageContext Context { get; protected set; }
 
@@ -67,11 +66,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// Storage account in context
         /// </summary>
         public virtual CloudStorageAccount StorageAccount { get; protected set; }
-
-        /// <summary>
-        /// Storage account in context
-        /// </summary>
-        public virtual XTable.CloudStorageAccount TableStorageAccount { get; protected set; }
 
         /// <summary>
         /// Endpoint suffix (everything after "table.", "blob." or "queue.")
@@ -136,10 +130,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// Create a storage context usign cloud storage account
         /// </summary>
         /// <param name="account">cloud storage account</param>
-        public AzureStorageContext(CloudStorageAccount account, string accountName = null)
+        public AzureStorageContext(CloudStorageAccount account)
         {
             StorageAccount = account;
-            TableStorageAccount = XTable.CloudStorageAccount.Parse(StorageAccount.ToString(true));
 
             if (account.BlobEndpoint != null)
             {
@@ -161,7 +154,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 FileEndPoint = account.FileEndpoint.ToString();
             }
 
-            StorageAccountName = string.IsNullOrEmpty(accountName) ? account.Credentials.AccountName : accountName;
+            StorageAccountName = account.Credentials.AccountName;
             Context = this;
             Name = String.Empty;
 
@@ -170,10 +163,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                 if (account.Credentials.IsSAS)
                 {
                     StorageAccountName = "[SasToken]";
-                }
-                else if (account.Credentials.IsToken)
-                {
-                    StorageAccountName = "[AccessToken]";
                 }
                 else
                 {

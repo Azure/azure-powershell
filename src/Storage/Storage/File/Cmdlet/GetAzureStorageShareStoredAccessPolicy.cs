@@ -15,7 +15,7 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using Common;
-    using Microsoft.Azure.Storage.File;
+    using Microsoft.WindowsAzure.Storage.File;
     using Model.Contract;
     using System;
     using System.Globalization;
@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     /// <summary>
     /// create a new azure container
     /// </summary>
-    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShareStoredAccessPolicy"), OutputType(typeof(SharedAccessFilePolicy))]
+    [Cmdlet(VerbsCommon.Get, StorageNouns.ShareStoredAccessPolicy), OutputType(typeof(SharedAccessFilePolicy))]
     public class GetAzureStorageShareStoredAccessPolicy : AzureStorageFileCmdletBase
     {
         [Alias("N", "Name")]
@@ -86,3 +86,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
     }
 }
+
+

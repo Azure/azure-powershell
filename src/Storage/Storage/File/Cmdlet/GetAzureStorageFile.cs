@@ -14,13 +14,13 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    using Microsoft.Azure.Storage;
-    using Microsoft.Azure.Storage.File;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.File;
     using System.Globalization;
     using System.Management.Automation;
     using System.Net;
 
-    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFile", DefaultParameterSetName = Constants.ShareNameParameterSetName)]
+    [Cmdlet(VerbsCommon.Get, Constants.FileCmdletName, DefaultParameterSetName = Constants.ShareNameParameterSetName)]
     [OutputType(typeof(CloudFile))]
     public class GetAzureStorageFile : AzureStorageFileCmdletBase
     {

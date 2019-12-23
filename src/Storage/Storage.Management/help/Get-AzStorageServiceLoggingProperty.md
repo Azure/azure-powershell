@@ -1,15 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: 494291A1-D854-4E97-B5EE-27BB5653D97C
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageserviceloggingproperty
+online version:
 schema: 2.0.0
 ---
 
 # Get-AzStorageServiceLoggingProperty
 
 ## SYNOPSIS
-Gets logging properties for Azure Storage services.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -19,22 +18,21 @@ Get-AzStorageServiceLoggingProperty [-ServiceType] <StorageServiceType> [-Contex
 ```
 
 ## DESCRIPTION
-The **Get-AzStorageServiceLoggingProperty** cmdlet gets logging properties for Azure Storage services.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Get logging properties for the Blob service
-```
-C:\PS>Get-AzStorageServiceLoggingProperty -ServiceType Blob
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command gets logging properties for blob storage.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Context
-Specifies an Azure storage context.
-To obtain a storage context, use the New-AzStorageContext cmdlet.
+Azure Storage Context Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -64,14 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceType
-Specifies the storage service type.
-This cmdlet gets the logging properties for the service type that this parameter specifies.
-The acceptable values for this parameter are:
-- Blob 
-- Table
-- Queue
-- File
-The value of File is not currently supported.
+Azure storage service type(Blob, Table, Queue).
 
 ```yaml
 Type: Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType
@@ -87,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -95,14 +86,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Storage.Shared.Protocol.LoggingProperties
+### Microsoft.WindowsAzure.Storage.Shared.Protocol.LoggingProperties
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzStorageContext](./New-AzStorageContext.md)
-
-[Set-AzStorageServiceLoggingProperty](./Set-AzStorageServiceLoggingProperty.md)
-
-

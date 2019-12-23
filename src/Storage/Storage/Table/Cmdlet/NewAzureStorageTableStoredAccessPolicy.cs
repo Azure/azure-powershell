@@ -17,13 +17,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Commands.Storage.Table;
-    using Microsoft.Azure.Cosmos.Table;
+    using Microsoft.WindowsAzure.Storage.Table;
     using System;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTableStoredAccessPolicy"), OutputType(typeof(String))]
+    [Cmdlet(VerbsCommon.New, StorageNouns.TableStoredAccessPolicy), OutputType(typeof(String))]
     public class NewAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
     {
         [Alias("N", "Name")]

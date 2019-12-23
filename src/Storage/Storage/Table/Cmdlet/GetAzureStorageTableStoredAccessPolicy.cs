@@ -17,14 +17,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Commands.Storage.Table;
-    using Microsoft.Azure.Cosmos.Table;
+    using Microsoft.WindowsAzure.Storage.Table;
     using System;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
     using System.Threading.Tasks;
 
-    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTableStoredAccessPolicy"), OutputType(typeof(SharedAccessTablePolicy))]
+    [Cmdlet(VerbsCommon.Get, StorageNouns.TableStoredAccessPolicy), OutputType(typeof(SharedAccessTablePolicy))]
     public class GetAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
     {
         [Alias("N", "Name")]

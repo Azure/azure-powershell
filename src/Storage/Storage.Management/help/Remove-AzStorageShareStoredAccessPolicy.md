@@ -1,15 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: E2CCDA8F-2D45-4F25-B297-337B7AB021E0
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/remove-azstoragesharestoredaccesspolicy
+online version:
 schema: 2.0.0
 ---
 
 # Remove-AzStorageShareStoredAccessPolicy
 
 ## SYNOPSIS
-Removes a stored access policy from a Storage share.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -21,28 +20,26 @@ Remove-AzStorageShareStoredAccessPolicy [-ShareName] <String> [-Policy] <String>
 ```
 
 ## DESCRIPTION
-The **Remove-AzStorageShareStoredAccessPolicy** cmdlet removes a stored access policy from an Azure Storage share.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Remove a stored access policy from an Azure Storage share
-```
-PS C:\>Remove-AzStorageShareStoredAccessPolicy -ShareName "ContosoShare" -Policy "GeneralPolicy"
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command removes a stored access policy named GeneralPolicy from ContosoShare.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -ClientTimeoutPerRequest
-Specifies the client-side time-out interval, in seconds, for one service request.
-If the previous call fails in the specified interval, this cmdlet retries the request.
-If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
+The client side maximum execution time for each request in seconds.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: ClientTimeoutPerRequestInSeconds
+Aliases:
 
 Required: False
 Position: Named
@@ -52,10 +49,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConcurrentTaskCount
-Specifies the maximum concurrent network calls.
-You can use this parameter to limit the concurrency to throttle local CPU and bandwidth usage by specifying the maximum number of concurrent network calls.
-The specified value is an absolute count and is not multiplied by the core count.
-This parameter can help reduce network connection problems in low bandwidth environments, such as 100 kilobits per second.
+The total amount of concurrent async tasks.
 The default value is 10.
 
 ```yaml
@@ -71,8 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -Context
-Specifies an Azure storage context.
-To obtain a storage context, use the [New-AzStorageContext](./New-AzStorageContext.md) cmdlet.
+Azure Storage Context Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -102,8 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Indicates that this cmdlet returns a **Boolean** that reflects the success of the operation.
-By default, this cmdlet does not return a value.
+Return whether the specified policy is successfully removed
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -118,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Specifies the name of the stored access policy that this cmdlet removes.
+Policy Identifier
 
 ```yaml
 Type: System.String
@@ -133,12 +125,12 @@ Accept wildcard characters: False
 ```
 
 ### -ServerTimeoutPerRequest
-Specifies the length of the time-out period for the server part of a request.
+The server time out for each request in seconds.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: ServerTimeoutPerRequestInSeconds
+Aliases:
 
 Required: False
 Position: Named
@@ -148,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### -ShareName
-Specifies the Storage share name for which this cmdlet removes a policy.
+Share name
 
 ```yaml
 Type: System.String
@@ -172,7 +164,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -188,13 +180,13 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -209,11 +201,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzStorageShareStoredAccessPolicy](./Get-AzStorageShareStoredAccessPolicy.md)
-
-[New-AzStorageShareStoredAccessPolicy](./New-AzStorageShareStoredAccessPolicy.md)
-
-[New-AzStorageContext](./New-AzStorageContext.md)
-
-[Set-AzStorageShareStoredAccessPolicy](./Set-AzStorageShareStoredAccessPolicy.md)

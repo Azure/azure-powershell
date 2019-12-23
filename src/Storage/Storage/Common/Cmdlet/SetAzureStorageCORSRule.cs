@@ -13,23 +13,22 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-using Microsoft.Azure.Storage;
-using Microsoft.Azure.Storage.Shared.Protocol;
-using XTable = Microsoft.Azure.Cosmos.Table;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Shared.Protocol;
 using System;
 using System.Globalization;
 using System.Management.Automation;
 using System.Net;
 using System.Security.Permissions;
-using SharedProtocol = Microsoft.Azure.Storage.Shared.Protocol;
-using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+using SharedProtocol = Microsoft.WindowsAzure.Storage.Shared.Protocol;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
     /// <summary>
     /// Define cmdlet to set azure storage CORS rules to service, it will overwrite all of the CORS rules in the service.
     /// </summary>
-    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageCORSRule"),OutputType(typeof(PSCorsRule))]
+    [Cmdlet(VerbsCommon.Set, StorageNouns.StorageCORSRule),
+        OutputType(typeof(PSCorsRule))]
     public class SetAzureStorageCORSRuleCommand : StorageCloudBlobCmdletBase
     {
         private const string InvalidXMLNodeValueError = "InvalidXmlNodeValue";
@@ -57,81 +56,39 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            if (ServiceType != StorageServiceType.Table)
+            ServiceProperties serviceProperties = new ServiceProperties();
+            serviceProperties.Clean();
+            serviceProperties.Cors = new CorsProperties();
+
+            foreach (var corsRuleObject in this.CorsRules)
             {
-                ServiceProperties serviceProperties = new ServiceProperties();
-                serviceProperties.Clean();
-                serviceProperties.Cors = new CorsProperties();
-
-                foreach (var corsRuleObject in this.CorsRules)
-                {
-                    CorsRule corsRule = new CorsRule();
-                    corsRule.AllowedHeaders = corsRuleObject.AllowedHeaders;
-                    corsRule.AllowedOrigins = corsRuleObject.AllowedOrigins;
-                    corsRule.ExposedHeaders = corsRuleObject.ExposedHeaders;
-                    corsRule.MaxAgeInSeconds = corsRuleObject.MaxAgeInSeconds;
-                    this.SetAllowedMethods(corsRule, corsRuleObject.AllowedMethods);
-                    serviceProperties.Cors.CorsRules.Add(corsRule);
-                }
-
-                try
-                {
-                    Channel.SetStorageServiceProperties(ServiceType, serviceProperties,
-                        GetRequestOptions(ServiceType), OperationContext);
-                }
-                catch (StorageException se)
-                {
-                    if ((null != se.RequestInformation) &&
-                        ((int)HttpStatusCode.BadRequest == se.RequestInformation.HttpStatusCode) &&
-                        (null != se.RequestInformation.ExtendedErrorInformation) &&
-                        (string.Equals(InvalidXMLNodeValueError, se.RequestInformation.ErrorCode, StringComparison.OrdinalIgnoreCase) ||
-                        string.Equals(InvalidXMLDocError, se.RequestInformation.ErrorCode, StringComparison.OrdinalIgnoreCase)))
-                    {
-                        throw new InvalidOperationException(Resources.CORSRuleError);
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                CorsRule corsRule = new CorsRule();
+                corsRule.AllowedHeaders = corsRuleObject.AllowedHeaders;
+                corsRule.AllowedOrigins = corsRuleObject.AllowedOrigins;
+                corsRule.ExposedHeaders = corsRuleObject.ExposedHeaders;
+                corsRule.MaxAgeInSeconds = corsRuleObject.MaxAgeInSeconds;
+                this.SetAllowedMethods(corsRule, corsRuleObject.AllowedMethods);
+                serviceProperties.Cors.CorsRules.Add(corsRule);
             }
-            else //Table use old XSCL
+
+            try
             {
-                XTable.ServiceProperties serviceProperties = new XTable.ServiceProperties();
-                serviceProperties.Clean();
-                serviceProperties.Cors = new XTable.CorsProperties();
-
-                foreach (var corsRuleObject in this.CorsRules)
+                Channel.SetStorageServiceProperties(ServiceType, serviceProperties,
+                    GetRequestOptions(ServiceType), OperationContext);
+            }
+            catch (StorageException se)
+            {
+                if ((null != se.RequestInformation) &&
+                    ((int)HttpStatusCode.BadRequest == se.RequestInformation.HttpStatusCode) &&
+                    (null != se.RequestInformation.ExtendedErrorInformation) &&
+                    (string.Equals(InvalidXMLNodeValueError, se.RequestInformation.ErrorCode, StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(InvalidXMLDocError, se.RequestInformation.ErrorCode, StringComparison.OrdinalIgnoreCase)))
                 {
-                    XTable.CorsRule corsRule = new XTable.CorsRule();
-                    corsRule.AllowedHeaders = corsRuleObject.AllowedHeaders;
-                    corsRule.AllowedOrigins = corsRuleObject.AllowedOrigins;
-                    corsRule.ExposedHeaders = corsRuleObject.ExposedHeaders;
-                    corsRule.MaxAgeInSeconds = corsRuleObject.MaxAgeInSeconds;
-                    this.SetAllowedMethods(corsRule, corsRuleObject.AllowedMethods);
-                    serviceProperties.Cors.CorsRules.Add(corsRule);
+                    throw new InvalidOperationException(Resources.CORSRuleError);
                 }
-
-                try
+                else
                 {
-                    StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
-                    tableChannel.SetStorageTableServiceProperties(serviceProperties,
-                        GetTableRequestOptions(), TableOperationContext);
-                }
-                catch (XTable.StorageException se)
-                {
-                    if ((null != se.RequestInformation) &&
-                        ((int)HttpStatusCode.BadRequest == se.RequestInformation.HttpStatusCode) &&
-                        (null != se.RequestInformation.ExtendedErrorInformation) &&
-                        (string.Equals(InvalidXMLNodeValueError, se.RequestInformation.ErrorCode, StringComparison.OrdinalIgnoreCase) ||
-                        string.Equals(InvalidXMLDocError, se.RequestInformation.ErrorCode, StringComparison.OrdinalIgnoreCase)))
-                    {
-                        throw new InvalidOperationException(Resources.CORSRuleError);
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    throw;
                 }
             }
 
@@ -151,27 +108,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 {
                     SharedProtocol.CorsHttpMethods allowedCorsMethod = SharedProtocol.CorsHttpMethods.None;
                     if (Enum.TryParse<SharedProtocol.CorsHttpMethods>(method, true, out allowedCorsMethod))
-                    {
-                        corsRule.AllowedMethods |= allowedCorsMethod;
-                    }
-                    else
-                    {
-                        throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidHTTPMethod, method));
-                    }
-                }
-            }
-        }
-
-        private void SetAllowedMethods(XTable.CorsRule corsRule, string[] allowedMethods)
-        {
-            corsRule.AllowedMethods = XTable.CorsHttpMethods.None;
-
-            if (null != allowedMethods)
-            {
-                foreach (var method in allowedMethods)
-                {
-                    XTable.CorsHttpMethods allowedCorsMethod = XTable.CorsHttpMethods.None;
-                    if (Enum.TryParse<XTable.CorsHttpMethods>(method, true, out allowedCorsMethod))
                     {
                         corsRule.AllowedMethods |= allowedCorsMethod;
                     }

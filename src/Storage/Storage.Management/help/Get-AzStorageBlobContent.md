@@ -1,29 +1,28 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: C091D654-E113-4AE0-A6C8-24630D1294A4
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageblobcontent
+online version:
 schema: 2.0.0
 ---
 
 # Get-AzStorageBlobContent
 
 ## SYNOPSIS
-Downloads a storage blob.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### ReceiveManual (Default)
 ```
 Get-AzStorageBlobContent [-Blob] <String> [-Container] <String> [-Destination <String>] [-CheckMd5] [-Force]
- [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### BlobPipeline
 ```
-Get-AzStorageBlobContent -CloudBlob <CloudBlob> [-Destination <String>] [-CheckMd5] [-Force] [-AsJob]
+Get-AzStorageBlobContent -CloudBlob <CloudBlob> [-Destination <String>] [-CheckMd5] [-Force]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -32,65 +31,27 @@ Get-AzStorageBlobContent -CloudBlob <CloudBlob> [-Destination <String>] [-CheckM
 ### ContainerPipeline
 ```
 Get-AzStorageBlobContent -CloudBlobContainer <CloudBlobContainer> [-Blob] <String> [-Destination <String>]
- [-CheckMd5] [-Force] [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-CheckMd5] [-Force] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzStorageBlobContent** cmdlet downloads the specified storage blob.
-If the blob name is not valid for the local computer, this cmdlet automatically resolves it if it is possible.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Download blob content by name
-```
-PS C:\>Get-AzStorageBlobContent -Container "ContainerName" -Blob "Blob" -Destination "C:\test\"
-```
-
-This command downloads a blob by name.
-
-### Example 2: Download blob content using the pipeline
-```
-PS C:\>Get-AzStorageBlob -Container containername -Blob blobname | Get-AzStorageBlobContent
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command uses the pipeline to find and download blob content.
-
-### Example 3: Download blob content using the pipeline and a wildcard character
-```
-PS C:\>Get-AzStorageContainer container* | Get-AzStorageBlobContent -Blob "cbox.exe" -Destination "C:\test"
-```
-
-This example uses the asterisk wildcard character and the pipeline to find and download blob content.
-
-### Example 4: Get a blob object and save it in a variable, then download blob content with the blob object
-```
-PS C:\>$blob = Get-AzStorageBlob -Container containername -Blob blobname 
-PS C:\>Get-AzStorageBlobContent -CloudBlob $blob.ICloudBlob -Destination "C:\test"
-```
-
-This example first get a blob object and save it in a variable, then download blob content with the blob object. 
+{{ Add example description here }}
 
 ## PARAMETERS
 
-### -AsJob
-Run cmdlet in the background.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Blob
-Specifies the name of the blob to be downloaded.
+Blob name
 
 ```yaml
 Type: System.String
@@ -105,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -CheckMd5
-Specifies whether to check the Md5 sum for the downloaded file.
+check the md5sum
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -120,14 +81,12 @@ Accept wildcard characters: False
 ```
 
 ### -ClientTimeoutPerRequest
-Specifies the client-side time-out interval, in seconds, for one service request.
-If the previous call fails in the specified interval, this cmdlet retries the request.
-If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
+The client side maximum execution time for each request in seconds.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: ClientTimeoutPerRequestInSeconds
+Aliases:
 
 Required: False
 Position: Named
@@ -137,11 +96,10 @@ Accept wildcard characters: False
 ```
 
 ### -CloudBlob
-Specifies a cloud blob.
-To obtain a **CloudBlob** object, use the Get-AzStorageBlob cmdlet.
+Azure Blob Object
 
 ```yaml
-Type: Microsoft.Azure.Storage.Blob.CloudBlob
+Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlob
 Parameter Sets: BlobPipeline
 Aliases: ICloudBlob
 
@@ -153,11 +111,10 @@ Accept wildcard characters: False
 ```
 
 ### -CloudBlobContainer
-Specifies a **CloudBlobContainer** object from the Azure storage client library.
-You can create it or use the Get-AzStorageContainer cmdlet.
+Azure Container Object
 
 ```yaml
-Type: Microsoft.Azure.Storage.Blob.CloudBlobContainer
+Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
 Parameter Sets: ContainerPipeline
 Aliases:
 
@@ -169,10 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConcurrentTaskCount
-Specifies the maximum concurrent network calls.
-You can use this parameter to limit the concurrency to throttle local CPU and bandwidth usage by specifying the maximum number of concurrent network calls.
-The specified value is an absolute count and is not multiplied by the core count.
-This parameter can help reduce network connection problems in low bandwidth environments, such as 100 kilobits per second.
+The total amount of concurrent async tasks.
 The default value is 10.
 
 ```yaml
@@ -188,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -Container
-Specifies the name of container that has the blob you want to download.
+Container name
 
 ```yaml
 Type: System.String
@@ -203,8 +157,7 @@ Accept wildcard characters: False
 ```
 
 ### -Context
-Specifies the Azure storage account from which you want to download blob content.
-You can use the New-AzStorageContext cmdlet to create a storage context.
+Azure Storage Context Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -234,7 +187,7 @@ Accept wildcard characters: False
 ```
 
 ### -Destination
-Specifies the location to store the downloaded file.
+File Path
 
 ```yaml
 Type: System.String
@@ -249,7 +202,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Overwrites an existing file without confirmation.
+Force to overwrite the existing blob or file
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -264,13 +217,12 @@ Accept wildcard characters: False
 ```
 
 ### -ServerTimeoutPerRequest
-Specifies the service side time-out interval, in seconds, for a request.
-If the specified interval elapses before the service processes the request, the storage service returns an error.
+The server time out for each request in seconds.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: ServerTimeoutPerRequestInSeconds
+Aliases:
 
 Required: False
 Position: Named
@@ -289,7 +241,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -305,19 +257,19 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Storage.Blob.CloudBlob
+### Microsoft.WindowsAzure.Storage.Blob.CloudBlob
 
-### Microsoft.Azure.Storage.Blob.CloudBlobContainer
+### Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
@@ -326,12 +278,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob
 
 ## NOTES
-* If the blob name is invalid for local computer, this cmdlet autoresolves it, if it is possible.
 
 ## RELATED LINKS
-
-[Set-AzStorageBlobContent](./Set-AzStorageBlobContent.md)
-
-[Get-AzStorageBlob](./Get-AzStorageBlob.md)
-
-[Remove-AzStorageBlob](./Remove-AzStorageBlob.md)

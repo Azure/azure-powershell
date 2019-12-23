@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using Common;
-    using Microsoft.Azure.Storage.File;
+    using Microsoft.WindowsAzure.Storage.File;
     using Model.Contract;
     using System;
     using System.Globalization;
@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     /// <summary>
     /// create a new azure container
     /// </summary>
-    [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShareStoredAccessPolicy", SupportsShouldProcess = true), OutputType(typeof(Boolean))]
+    [Cmdlet(VerbsCommon.Remove, StorageNouns.ShareStoredAccessPolicy, SupportsShouldProcess = true), OutputType(typeof(Boolean))]
     public class RemoveAzureStorageShareStoredAccessPolicy : AzureStorageFileCmdletBase
     {
         [Alias("N", "Name")]
@@ -97,3 +97,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
     }
 }
+

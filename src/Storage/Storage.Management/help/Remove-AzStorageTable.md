@@ -1,15 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: 1B29AB8C-95DD-4C4F-86E2-2F81E8020CEA
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/remove-azstoragetable
+online version:
 schema: 2.0.0
 ---
 
 # Remove-AzStorageTable
 
 ## SYNOPSIS
-Removes a storage table.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -19,29 +18,21 @@ Remove-AzStorageTable [-Name] <String> [-Force] [-PassThru] [-Context <IStorageC
 ```
 
 ## DESCRIPTION
-The **Remove-AzStorageTable** cmdlet removes one or more storage tables from a storage account in Azure.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Remove a table
-```
-PS C:\>Remove-AzStorageTable -Name "TableABC"
-```
-
-This command removes a table.
-
-### Example 2: Remove several tables
-```
-PS C:\>Get-AzStorageTable table* | Remove-AzStorageTable
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This example uses a wildcard character with the *Name* parameter to get all tables that match the pattern table and then passes the result on the pipeline to remove the tables.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Context
-Specifies the Azure storage context.
-You can create it by using the New-AzStorageContext cmdlet.
+Azure Storage Context Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -71,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Forces the command to run without asking for user confirmation.
+Force to remove the table and all content in it
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -86,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the table to remove.
+Table name
 
 ```yaml
 Type: System.String
@@ -101,8 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Indicates that this cmdlet returns a **Boolean** that reflects the success of the operation.
-By default, this cmdlet does not return a value.
+Return whether the specified table is successfully removed
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -126,7 +116,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -142,13 +132,13 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -163,5 +153,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzStorageTable](./Get-AzStorageTable.md)

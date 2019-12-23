@@ -17,8 +17,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Cmdlet
     using Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage;
-    using Microsoft.Azure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Blob;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
@@ -27,7 +27,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Cmdlet
     /// <summary>
     /// set access level for specified container
     /// </summary>
-    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainerAcl"),OutputType(typeof(AzureStorageContainer))]
+    [Cmdlet(VerbsCommon.Set, StorageNouns.ContainerAcl),
+        OutputType(typeof(AzureStorageContainer))]
     public class SetAzureStorageContainerAclCommand : StorageCloudBlobCmdletBase
     {
         [Alias("N", "Container")]
@@ -78,22 +79,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Cmdlet
                 throw new ArgumentException(String.Format(Resources.InvalidContainerName, name));
             }
 
+            BlobContainerPermissions permissions = new BlobContainerPermissions();
+            permissions.PublicAccess = accessLevel;
+
             BlobRequestOptions requestOptions = RequestOptions;
             AccessCondition accessCondition = null;
 
             CloudBlobContainer container = localChannel.GetContainerReference(name);
 
-            // Get container permission and set the public access as input
-            BlobContainerPermissions permissions;
-            try
-            {
-                permissions = localChannel.GetContainerPermissions(container);
-            }
-            catch (StorageException e) when (e.IsNotFoundException())
+            if (!await localChannel.DoesContainerExistAsync(container, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false))
             {
                 throw new ResourceNotFoundException(String.Format(Resources.ContainerNotFound, name));
             }
-            permissions.PublicAccess = accessLevel;
 
             await localChannel.SetContainerPermissionsAsync(container, permissions, accessCondition, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
 

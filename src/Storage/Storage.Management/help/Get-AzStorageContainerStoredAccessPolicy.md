@@ -1,15 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: 10D5B7E0-242B-4DC0-A527-8F6388E72E0A
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstoragecontainerstoredaccesspolicy
+online version:
 schema: 2.0.0
 ---
 
 # Get-AzStorageContainerStoredAccessPolicy
 
 ## SYNOPSIS
-Gets the stored access policy or policies for an Azure storage container.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -20,35 +19,26 @@ Get-AzStorageContainerStoredAccessPolicy [-Container] <String> [[-Policy] <Strin
 ```
 
 ## DESCRIPTION
-The **Get-AzStorageContainerStoredAccessPolicy** cmdlet lists the stored access policy or policies for an Azure storage container.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Get a stored access policy in a storage container
-```
-PS C:\>Get-AzStorageContainerStoredAccessPolicy -Container "Container07" -Policy "Policy22"
-```
-
-This command gets the access policy named Policy22 in the storage container named Container07.
-
-### Example 2: Get all the stored access policies in a storage container
-```
-PS C:\>Get-AzStorageContainerStoredAccessPolicy -Container "Container07"
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command gets all access policies in the storage container named Container07.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -ClientTimeoutPerRequest
-Specifies the client-side time-out interval, in seconds, for one service request.
-If the previous call fails in the specified interval, this cmdlet retries the request.
-If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
+The client side maximum execution time for each request in seconds.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: ClientTimeoutPerRequestInSeconds
+Aliases:
 
 Required: False
 Position: Named
@@ -58,10 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConcurrentTaskCount
-Specifies the maximum concurrent network calls.
-You can use this parameter to limit the concurrency to throttle local CPU and bandwidth usage by specifying the maximum number of concurrent network calls.
-The specified value is an absolute count and is not multiplied by the core count.
-This parameter can help reduce network connection problems in low bandwidth environments, such as 100 kilobits per second.
+The total amount of concurrent async tasks.
 The default value is 10.
 
 ```yaml
@@ -77,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -Container
-Specifies the name of your Azure storage container.
+Container name
 
 ```yaml
 Type: System.String
@@ -92,7 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### -Context
-Specifies the Azure storage context.
+Azure Storage Context Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -122,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Specifies the Azure stored access policy.
+Policy Identifier
 
 ```yaml
 Type: System.String
@@ -137,13 +124,12 @@ Accept wildcard characters: False
 ```
 
 ### -ServerTimeoutPerRequest
-Specifies the service side time-out interval, in seconds, for a request.
-If the specified interval elapses before the service processes the request, the storage service returns an error.
+The server time out for each request in seconds.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: ServerTimeoutPerRequestInSeconds
+Aliases:
 
 Required: False
 Position: Named
@@ -153,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -163,16 +149,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Storage.Blob.SharedAccessBlobPolicy
+### Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPolicy
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzStorageContainerStoredAccessPolicy](./New-AzStorageContainerStoredAccessPolicy.md)
-
-[Remove-AzStorageContainerStoredAccessPolicy](./Remove-AzStorageContainerStoredAccessPolicy.md)
-
-[Set-AzStorageContainerStoredAccessPolicy](./Set-AzStorageContainerStoredAccessPolicy.md)
-
-

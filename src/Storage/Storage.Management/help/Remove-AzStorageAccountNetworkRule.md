@@ -1,14 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/remove-azstorageaccountnetworkrule
+online version:
 schema: 2.0.0
 ---
 
 # Remove-AzStorageAccountNetworkRule
 
 ## SYNOPSIS
-Remove IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage account
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -39,37 +39,16 @@ Remove-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String
 ```
 
 ## DESCRIPTION
-The **Remove-AzStorageAccountNetworkRule** cmdlet removes IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage account
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Remove several IpRules with IPAddressOrRange
-```
-PS C:\>Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -IPAddressOrRange "10.0.0.0/24,28.1.0.0/16"
-```
-
-This command remove several IpRules with IPAddressOrRange.
-
-### Example 2: Remove a VirtualNetworkRule with VirtualNetworkRule Object input with JSON
-```
-PS C:\>Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -VirtualNetworkRules (@{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1";Action="allow"})
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command remove a VirtualNetworkRule with VirtualNetworkRule Object input with JSON.
-
-### Example 3: Remove first IpRule with pipeline
-```
-PS C:\>(Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount").IpRules[0] | Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
-```
-
-This command remove first IpRule with pipeline.
-
-### Example 4: Remove several VirtualNetworkRules with VirtualNetworkResourceID
-```
-PS C:\>Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -VirtualNetworkResourceId "/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1","/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/subnet2"
-```
-
-This command remove several VirtualNetworkRules with VirtualNetworkResourceID.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -104,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -IPAddressOrRange
-The Array of IpAddressOrRange, will remove IpRule with same IpAddressOrRange from the NetWorkRule Property.
+Storage Account NetworkRule IPRules IPAddressOrRange in string.
 
 ```yaml
 Type: System.String[]
@@ -119,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -IPRule
-The Array of IpRule objects to remove from the NetWorkRule Property.
+Storage Account NetworkRule IPRules.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]
@@ -134,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Storage account.
+Storage Account Name.
 
 ```yaml
 Type: System.String
@@ -149,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group contains the Storage account.
+Resource Group Name.
 
 ```yaml
 Type: System.String
@@ -164,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkResourceId
-The Array of VirtualNetworkResourceId, will remove VirtualNetworkRule with same VirtualNetworkResourceId from the NetWorkRule Property.
+Storage Account NetworkRule VirtualNetworkRules VirtualNetworkResourceId in string.
 
 ```yaml
 Type: System.String[]
@@ -179,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkRule
-The Array of VirtualNetworkRule objects to remove from the NetWorkRule Property.
+Storage Account NetworkRule VirtualNetworkRules.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]
@@ -225,7 +204,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -1,15 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: 176294FA-BB08-4A63-AD45-1E6C6D67A5D8
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azstoragesharequota
+online version:
 schema: 2.0.0
 ---
 
 # Set-AzStorageShareQuota
 
 ## SYNOPSIS
-Sets the storage capacity for a share.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -28,28 +27,26 @@ Set-AzStorageShareQuota [-Share] <CloudFileShare> [-Quota] <Int32> [-ServerTimeo
 ```
 
 ## DESCRIPTION
-The **Set-AzStorageShareQuota** cmdlet sets the storage capacity for a specified share.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Set the storage capacity of a share
-```
-PS C:\>Set-AzStorageShareQuota -ShareName "ContosoShare01" -Quota 1024
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command sets the storage capacity for a share named ContosoShare01 to 1024 GB.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -ClientTimeoutPerRequest
-Specifies the client-side time-out interval, in seconds, for one service request.
-If the previous call fails in the specified interval, this cmdlet retries the request.
-If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
+The client side maximum execution time for each request in seconds.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: ClientTimeoutPerRequestInSeconds
+Aliases:
 
 Required: False
 Position: Named
@@ -59,10 +56,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConcurrentTaskCount
-Specifies the maximum concurrent network calls.
-You can use this parameter to limit the concurrency to throttle local CPU and bandwidth usage by specifying the maximum number of concurrent network calls.
-The specified value is an absolute count and is not multiplied by the core count.
-This parameter can help reduce network connection problems in low bandwidth environments, such as 100 kilobits per second.
+The total amount of concurrent async tasks.
 The default value is 10.
 
 ```yaml
@@ -78,8 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -Context
-Specifies an Azure storage context.
-To obtain a storage context, use the [New-AzStorageContext](./New-AzStorageContext.md) cmdlet.
+Azure Storage Context Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -109,13 +102,12 @@ Accept wildcard characters: False
 ```
 
 ### -Quota
-Specifies the quota value in gigabytes (GB).
-See the quota limitation in https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#azure-files-limits. 
+Share Quota
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
-Aliases: QuotaGiB
+Aliases:
 
 Required: True
 Position: 1
@@ -125,12 +117,12 @@ Accept wildcard characters: False
 ```
 
 ### -ServerTimeoutPerRequest
-Specifies the length of the time-out period for the server part of a request.
+The server time out for each request in seconds.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: ServerTimeoutPerRequestInSeconds
+Aliases:
 
 Required: False
 Position: Named
@@ -140,11 +132,10 @@ Accept wildcard characters: False
 ```
 
 ### -Share
-Specifies a **CloudFileShare** object to represent the share for which this cmdlets sets a quota.
-To obtain a **CloudFileShare** object, use the Get-AzStorageShare cmdlet.
+CloudFileShare object indicated the share whose quota to set.
 
 ```yaml
-Type: Microsoft.Azure.Storage.File.CloudFileShare
+Type: Microsoft.WindowsAzure.Storage.File.CloudFileShare
 Parameter Sets: Share
 Aliases:
 
@@ -156,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -ShareName
-Specifies the name of the file share for which to set a quota.
+Share name
 
 ```yaml
 Type: System.String
@@ -171,26 +162,20 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
-### Microsoft.Azure.Storage.File.CloudFileShare
+### Microsoft.WindowsAzure.Storage.File.CloudFileShare
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
 ## OUTPUTS
 
-### Microsoft.Azure.Storage.File.FileShareProperties
+### Microsoft.WindowsAzure.Storage.File.FileShareProperties
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzStorageFileContent](./Get-AzStorageFileContent.md)
-
-[Get-AzStorageShare](./Get-AzStorageShare.md)
-
-[New-AzStorageContext](./New-AzStorageContext.md)

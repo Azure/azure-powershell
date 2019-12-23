@@ -16,14 +16,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 {
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage;
-    using Microsoft.Azure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Blob;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
     using System.Threading.Tasks;
 
-    [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlob", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true),OutputType(typeof(Boolean))]
+    [Cmdlet(VerbsCommon.Remove, StorageNouns.Blob, DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true),
+        OutputType(typeof(Boolean))]
     public class RemoveStorageAzureBlobCommand : StorageCloudBlobCmdletBase
     {
         /// <summary>

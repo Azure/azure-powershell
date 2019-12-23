@@ -15,9 +15,8 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 {
     using Microsoft.WindowsAzure.Commands.Common.Storage;
-    using Microsoft.Azure.Storage;
-    using Microsoft.Azure.Cosmos.Table;
-    using XTable = Microsoft.Azure.Cosmos.Table;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Table;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -55,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         public StorageTableManagement(AzureStorageContext context)
         {
             internalStorageContext = context;
-            tableClient = internalStorageContext.TableStorageAccount.CreateCloudTableClient();
+            tableClient = internalStorageContext.StorageAccount.CreateCloudTableClient();
         }
 
         /// <summary>
@@ -65,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="requestOptions">Table request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>An enumerable collection of tables that begin with the specified prefix</returns>
-        public IEnumerable<CloudTable> ListTables(string prefix, TableRequestOptions requestOptions, XTable.OperationContext operationContext)
+        public IEnumerable<CloudTable> ListTables(string prefix, TableRequestOptions requestOptions, OperationContext operationContext)
         {
             //https://ahmet.im/blog/azure-listblobssegmentedasync-listcontainerssegmentedasync-how-to/
             TableContinuationToken continuationToken = null;
@@ -78,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                     continuationToken = response.ContinuationToken;
                     results.AddRange(response.Results);
                 }
-                catch (AggregateException e) when (e.InnerException is XTable.StorageException)
+                catch (AggregateException e) when (e.InnerException is StorageException)
                 {
                     throw e.InnerException;
                 }
@@ -103,13 +102,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="requestOptions">Table request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>True if table was created; otherwise, false.</returns>
-        public bool CreateTableIfNotExists(CloudTable table, TableRequestOptions requestOptions, XTable.OperationContext operationContext)
+        public bool CreateTableIfNotExists(CloudTable table, TableRequestOptions requestOptions, OperationContext operationContext)
         {
             try
             {
                 return table.CreateIfNotExistsAsync(requestOptions, operationContext).Result;
             }
-            catch (AggregateException e) when (e.InnerException is XTable.StorageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
                 throw e.InnerException;
             }
@@ -121,13 +120,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="table">Cloud table object</param>
         /// <param name="requestOptions">Table request options</param>
         /// <param name="operationContext">Operation context</param>
-        public void Delete(CloudTable table, TableRequestOptions requestOptions, XTable.OperationContext operationContext)
+        public void Delete(CloudTable table, TableRequestOptions requestOptions, OperationContext operationContext)
         {
             try
             {
                 Task.Run(() => table.DeleteAsync(requestOptions, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is XTable.StorageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
                 throw e.InnerException;
             }
@@ -140,13 +139,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="requestOptions">Table request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>True if table exists; otherwise, false.</returns>
-        public bool DoesTableExist(CloudTable table, TableRequestOptions requestOptions, XTable.OperationContext operationContext)
+        public bool DoesTableExist(CloudTable table, TableRequestOptions requestOptions, OperationContext operationContext)
         {
             try
             {
                 return table.ExistsAsync(requestOptions, operationContext).Result;
             }
-            catch (AggregateException e) when (e.InnerException is XTable.StorageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
                 throw e.InnerException;
             }
@@ -158,13 +157,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="table">Cloud table object</param>
         /// <param name="requestOptions">Table request options</param>
         /// <param name="operationContext">Operation context</param>
-        public TablePermissions GetTablePermissions(CloudTable table, TableRequestOptions requestOptions, XTable.OperationContext operationContext)
+        public TablePermissions GetTablePermissions(CloudTable table, TableRequestOptions requestOptions, OperationContext operationContext)
         {
             try
             {
                 return table.GetPermissionsAsync(requestOptions, operationContext).Result;
             }
-            catch (AggregateException e) when (e.InnerException is XTable.StorageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
                 throw e.InnerException;
             }
@@ -177,7 +176,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="requestOptions">request options</param>
         /// <param name="operationContext">context</param>
         /// <returns></returns>
-        public Task<TablePermissions> GetTablePermissionsAsync(CloudTable table, TableRequestOptions requestOptions, XTable.OperationContext operationContext)
+        public Task<TablePermissions> GetTablePermissionsAsync(CloudTable table, TableRequestOptions requestOptions, OperationContext operationContext)
         {
             return table.GetPermissionsAsync(requestOptions, operationContext);
         }
@@ -190,13 +189,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="requestOptions">Table request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns></returns>
-        public void SetTablePermissions(CloudTable table, TablePermissions tablePermissions, TableRequestOptions requestOptions, XTable.OperationContext operationContext)
+        public void SetTablePermissions(CloudTable table, TablePermissions tablePermissions, TableRequestOptions requestOptions, OperationContext operationContext)
         {
             try
             {
                 Task.Run(() => table.SetPermissionsAsync(tablePermissions, requestOptions, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is XTable.StorageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
                 throw e.InnerException;
             }
@@ -211,49 +210,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="requestOptions">request options</param>
         /// <param name="operationContext">context</param>
         /// <returns></returns>
-        public Task SetTablePermissionsAsync(CloudTable table, TablePermissions tablePermissions, TableRequestOptions requestOptions, XTable.OperationContext operationContext)
+        public Task SetTablePermissionsAsync(CloudTable table, TablePermissions tablePermissions, TableRequestOptions requestOptions, OperationContext operationContext)
         {
             return table.SetPermissionsAsync(tablePermissions, requestOptions, operationContext);
-        }
-
-        /// <summary>
-        /// Get the Table service properties
-        /// </summary>
-        /// <param name="account">Cloud storage account</param>
-        /// <param name="options">Request options</param>
-        /// <param name="operationContext">Operation context</param>
-        /// <returns>The service properties of the specified service type</returns>
-        public XTable.ServiceProperties GetStorageTableServiceProperties(XTable.TableRequestOptions options, XTable.OperationContext operationContext)
-        {
-            XTable.CloudStorageAccount account = StorageContext.TableStorageAccount;
-            try
-            {
-                return account.CreateCloudTableClient().GetServicePropertiesAsync(options, operationContext).Result;
-            }
-            catch (AggregateException e) when (e.InnerException is XTable.StorageException)
-            {
-                throw e.InnerException;
-            }
-        }
-
-        /// <summary>
-        /// Set Table service properties
-        /// </summary>
-        /// <param name="account">Cloud storage account</param>
-        /// <param name="properties">Service properties</param>
-        /// <param name="options">Request options</param>
-        /// <param name="operationContext">Operation context</param>
-        public void SetStorageTableServiceProperties(XTable.ServiceProperties properties, XTable.TableRequestOptions options, XTable.OperationContext operationContext)
-        {
-            XTable.CloudStorageAccount account = StorageContext.TableStorageAccount;
-            try
-            {
-                Task.Run(() => account.CreateCloudTableClient().SetServicePropertiesAsync(properties, options, operationContext)).Wait();
-            }
-            catch (AggregateException e) when (e.InnerException is XTable.StorageException)
-            {
-                throw e.InnerException;
-            }
         }
     }
 }

@@ -1,15 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: 6FF04E82-4921-4F7B-83D0-6997316BC5FD
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstoragecontainersastoken
+online version:
 schema: 2.0.0
 ---
 
 # New-AzStorageContainerSASToken
 
 ## SYNOPSIS
-Generates an SAS token for an Azure storage container.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -17,60 +16,32 @@ Generates an SAS token for an Azure storage container.
 ```
 New-AzStorageContainerSASToken [-Name] <String> -Policy <String> [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SasPermission
 ```
 New-AzStorageContainerSASToken [-Name] <String> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzStorageContainerSASToken** cmdlet generates a Shared Access Signature (SAS) token for an Azure storage container.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Generate a container SAS token with full container permission
-```
-PS C:\>New-AzStorageContainerSASToken -Name "Test" -Permission rwdl
-```
-
-This example generates a container SAS token with full container permission.
-
-### Example 2: Generate multiple container SAS token by pipeline
-```
-PS C:\>Get-AzStorageContainer -Container test* | New-AzStorageContainerSASToken -Permission rwdl
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This example generates multiple container SAS tokens by using the pipeline.
-
-### Example 3: Generate container SAS token with shared access policy
-```
-PS C:\>New-AzStorageContainerSASToken -Name "Test" -Policy "PolicyName"
-```
-
-This example generates a container SAS token with shared access policy.
-
-### Example 3: Generate a User Identity container SAS token with storage context based on OAuth authentication
-```
-PS C:\> $ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
-PS C:\> $StartTime = Get-Date
-PS C:\> $EndTime = $startTime.AddDays(6)
-PS C:\> New-AzStorageContainerSASToken -Name "ContainerName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -context $ctx
-```
-
-This example generates a User Identity container SAS token with storage context based on OAuth authentication
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Context
-Specifies an Azure storage context.
-You can create it by using the New-AzStorageContext cmdlet.
-When the storage context is based on OAuth authentication, will generates a User Identity container SAS token.
+Azure Storage Context Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -100,10 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpiryTime
-Specifies the time at which the shared access signature becomes invalid.
-If the user sets the start time but not the expiry time, the expiry time is set to the start time plus one hour.
-If neither the start time nor the expiry time is specified, the expiry time is set to the current time plus one hour.
-When the storage context is based on OAuth authentication, the expire time must be in 7 days from current time, and must not be earlier than current time.
+Expiry Time
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
@@ -118,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -FullUri
-Indicates that this cmdlet return the full blob URI and the shared access signature token.
+Display full uri with sas token
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -133,8 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -IPAddressOrRange
-Specifies the IP address or range of IP addresses from which to accept requests, such as 168.1.5.65 or 168.1.5.60-168.1.5.70.
-The range is inclusive.
+IP, or IP range ACL (access control list) that the request would be accepted by Azure Storage.
 
 ```yaml
 Type: System.String
@@ -149,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies an Azure storage container name.
+Container Name
 
 ```yaml
 Type: System.String
@@ -164,8 +131,8 @@ Accept wildcard characters: False
 ```
 
 ### -Permission
-Specifies permissions for a storage container.
-It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
+Permissions for a container.
+Permissions can be any not-empty subset of "rwdl".
 
 ```yaml
 Type: System.String
@@ -180,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Specifies an Azure Stored Access Policy.
+Policy Identifier
 
 ```yaml
 Type: System.String
@@ -195,14 +162,10 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-Specifies the protocol permitted for a request.
-The acceptable values for this parameter are:
-* HttpsOnly
-* HttpsOrHttp
-The default value is HttpsOrHttp.
+Protocol can be used in the request with this SAS token.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Storage.SharedAccessProtocol]
+Type: System.Nullable`1[Microsoft.WindowsAzure.Storage.SharedAccessProtocol]
 Parameter Sets: (All)
 Aliases:
 Accepted values: HttpsOnly, HttpsOrHttp
@@ -215,7 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -StartTime
-Specifies the time at which the shared access signature becomes valid.
+Start Time
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
@@ -229,38 +192,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -275,5 +208,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzStorageBlobSASToken](./New-AzStorageBlobSASToken.md)

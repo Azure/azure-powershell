@@ -14,11 +14,15 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    using Microsoft.Azure.Storage.File;
+    using Microsoft.WindowsAzure.Storage.File;
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFile",SupportsShouldProcess = true,DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(CloudFile))]
+    [Cmdlet(
+        VerbsCommon.Remove,
+        Constants.FileCmdletName,
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(CloudFile))]
     public class RemoveAzureStorageFile : AzureStorageFileCmdletBase
     {
         [Parameter(

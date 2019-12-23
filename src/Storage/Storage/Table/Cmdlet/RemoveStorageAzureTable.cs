@@ -16,7 +16,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 {
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Cosmos.Table;
+    using Microsoft.WindowsAzure.Storage.Table;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
@@ -24,7 +24,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     /// <summary>
     /// remove an azure table
     /// </summary>
-    [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTable", SupportsShouldProcess = true),OutputType(typeof(Boolean))]
+    [Cmdlet(VerbsCommon.Remove, StorageNouns.Table, SupportsShouldProcess = true),
+        OutputType(typeof(Boolean))]
     public class RemoveAzureStorageTableCommand : StorageCloudTableCmdletBase
     {
         [Alias("N", "Table")]
@@ -90,14 +91,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             TableRequestOptions requestOptions = RequestOptions;
             CloudTable table = Channel.GetTableReference(name);
 
-            if (!Channel.DoesTableExist(table, requestOptions, TableOperationContext))
+            if (!Channel.DoesTableExist(table, requestOptions, OperationContext))
             {
                 throw new ResourceNotFoundException(String.Format(Resources.TableNotFound, name));
             }
 
             if (force || TableIsEmpty(table) || ShouldContinue(string.Format("Remove table and all content in it: {0}", name), ""))
             {
-                Channel.Delete(table, requestOptions, TableOperationContext);
+                Channel.Delete(table, requestOptions, OperationContext);
                 return true;
             }
             else
