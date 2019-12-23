@@ -32,10 +32,11 @@ New-Item -Path $Artifacts -Name "tmp" -ItemType "directory"
 $tmp = Join-Path -Path $Artifacts -ChildPath "tmp"
 
 try {
-    foreach ($artifact in Get-ChildItem -File -Path $Artifacts -Filter "*.nupkg") {
+    foreach ($artifact in Get-ChildItem -Path $Artifacts -Filter "*.nupkg") {
+        Write-Output "##############################################$artifact#############################################"
         $module_name = (((Get-Item -Path $artifact).Name) -split("\.([0-9])+"))[0]
-        Write-Output "Expanding $artifact to $tmp"/"$module_name"
-        Expand-Archive $artifact -DestinationPath $tmp"/"$module_name 
+        Write-Output "Expanding $artifact to $tmp\$module_name"
+        Expand-Archive $artifact -DestinationPath $tmp"\"$module_name 
         Remove-Item -Recurse $artifact -Force -ErrorAction Stop
     }
 } catch {
