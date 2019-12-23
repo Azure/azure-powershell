@@ -33,11 +33,15 @@ $tmp = Join-Path -Path $Artifacts -ChildPath "tmp"
 
 try {
     foreach ($artifact in (Get-ChildItem -Path $Artifacts -Filter "*.nupkg").FullName) {
-        Write-Output "##############################################$artifact#############################################"
         $module_name = (((Get-Item -Path $artifact).Name) -split("\.([0-9])+"))[0]
-        Write-Output "Expanding $artifact to $tmp\$module_name"
-        Expand-Archive $artifact -DestinationPath $tmp"\"$module_name 
-        Remove-Item -Recurse $artifact -Force -ErrorAction Stop
+        $zip_artifact = Join-Path -Path $Artifacts -ChildPath $module_name".zip"
+
+        Write-Output "Renaming package $artifact to zip archive $zip_artifact"
+        Rename-Item $artifact $zip_artifact
+
+        Write-Output "Expanding $zip_artifact to $tmp\$module_name"
+        Expand-Archive $zip_artifact -DestinationPath $tmp"\"$module_name 
+        Remove-Item -Recurse $zip_artifact -Force -ErrorAction Stop
     }
 } catch {
     $Errors = $_
