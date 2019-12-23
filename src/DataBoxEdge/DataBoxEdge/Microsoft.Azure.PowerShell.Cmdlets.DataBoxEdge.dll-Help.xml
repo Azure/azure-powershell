@@ -18,7 +18,7 @@
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>BandwidthSchedule ResourceGroupName</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -30,7 +30,7 @@
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>DeviceName</maml:name>
           <maml:Description>
-            <maml:para>The name of the device</maml:para>
+            <maml:para>Device Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -57,7 +57,7 @@
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>BandwidthSchedule ResourceGroupName</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -69,7 +69,7 @@
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>DeviceName</maml:name>
           <maml:Description>
-            <maml:para>The name of the device</maml:para>
+            <maml:para>Device Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -81,7 +81,7 @@
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>BandwidthSchedule Name</maml:para>
+            <maml:para>Resource Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -108,7 +108,7 @@
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>BandwidthSchedule Name</maml:para>
+            <maml:para>Resource Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -159,7 +159,7 @@
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ResourceId</maml:name>
           <maml:Description>
-            <maml:para>ResourceId of the Azure Resource</maml:para>
+            <maml:para>Azure ResourceId</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -186,7 +186,7 @@
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>DeviceName</maml:name>
         <maml:Description>
-          <maml:para>The name of the device</maml:para>
+          <maml:para>Device Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -210,7 +210,7 @@
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
         <maml:name>Name</maml:name>
         <maml:Description>
-          <maml:para>BandwidthSchedule Name</maml:para>
+          <maml:para>Resource Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -222,7 +222,7 @@
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>ResourceGroupName</maml:name>
         <maml:Description>
-          <maml:para>BandwidthSchedule ResourceGroupName</maml:para>
+          <maml:para>Resource Group Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -234,7 +234,7 @@
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>ResourceId</maml:name>
         <maml:Description>
-          <maml:para>ResourceId of the Azure Resource</maml:para>
+          <maml:para>Azure ResourceId</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -247,7 +247,7 @@
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name>None</maml:name>
+          <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -320,7 +320,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Alert</maml:name>
           <maml:Description>
-            <maml:para>Fetch the alerts for the data box edge/gateway device</maml:para>
+            <maml:para>Fetch the alerts on the data box edge/gateway device</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>System.Management.Automation.SwitchParameter</maml:name>
@@ -343,7 +343,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ResourceId</maml:name>
           <maml:Description>
-            <maml:para>Azure Resource Id</maml:para>
+            <maml:para>Azure ResourceId</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -358,7 +358,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>Device Resource Group Name</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -370,7 +370,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Device Name</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -382,7 +382,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Alert</maml:name>
           <maml:Description>
-            <maml:para>Fetch the alerts for the data box edge/gateway device</maml:para>
+            <maml:para>Fetch the alerts on the data box edge/gateway device</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>System.Management.Automation.SwitchParameter</maml:name>
@@ -420,7 +420,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ExtendedInfo</maml:name>
           <maml:Description>
-            <maml:para>Resource Group Name</maml:para>
+            <maml:para>Gets additional information for the specified Data Box Edge/Data Box Gateway device</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>System.Management.Automation.SwitchParameter</maml:name>
@@ -431,7 +431,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ResourceId</maml:name>
           <maml:Description>
-            <maml:para>Azure Resource Id</maml:para>
+            <maml:para>Azure ResourceId</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -446,7 +446,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>Device Resource Group Name</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -458,7 +458,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Device Name</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -482,7 +482,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ExtendedInfo</maml:name>
           <maml:Description>
-            <maml:para>Resource Group Name</maml:para>
+            <maml:para>Gets additional information for the specified Data Box Edge/Data Box Gateway device</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>System.Management.Automation.SwitchParameter</maml:name>
@@ -496,7 +496,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>Device Resource Group Name</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -508,7 +508,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Device Name</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -535,7 +535,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>Device Resource Group Name</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -547,7 +547,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Device Name</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -571,7 +571,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>UpdateSummary</maml:name>
           <maml:Description>
-            <maml:para>Resource Group Name</maml:para>
+            <maml:para>Gets information about the availability of updates based on the last scan of the device. It also gets information about any ongoing download or install jobs on the device.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>System.Management.Automation.SwitchParameter</maml:name>
@@ -585,7 +585,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>Device Resource Group Name</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -597,7 +597,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Device Name</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -621,7 +621,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>NetworkSetting</maml:name>
           <maml:Description>
-            <maml:para>Resource Group Name</maml:para>
+            <maml:para>Gets the network settings of the specified Data Box Edge/Data Box Gateway device</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>System.Management.Automation.SwitchParameter</maml:name>
@@ -647,7 +647,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>NetworkSetting</maml:name>
           <maml:Description>
-            <maml:para>Resource Group Name</maml:para>
+            <maml:para>Gets the network settings of the specified Data Box Edge/Data Box Gateway device</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>System.Management.Automation.SwitchParameter</maml:name>
@@ -658,7 +658,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ResourceId</maml:name>
           <maml:Description>
-            <maml:para>Azure Resource Id</maml:para>
+            <maml:para>Azure ResourceId</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -673,7 +673,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>Device Resource Group Name</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -712,7 +712,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ResourceId</maml:name>
           <maml:Description>
-            <maml:para>Azure Resource Id</maml:para>
+            <maml:para>Azure ResourceId</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -739,7 +739,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ResourceId</maml:name>
           <maml:Description>
-            <maml:para>Azure Resource Id</maml:para>
+            <maml:para>Azure ResourceId</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -751,7 +751,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>UpdateSummary</maml:name>
           <maml:Description>
-            <maml:para>Resource Group Name</maml:para>
+            <maml:para>Gets information about the availability of updates based on the last scan of the device. It also gets information about any ongoing download or install jobs on the device.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>System.Management.Automation.SwitchParameter</maml:name>
@@ -765,7 +765,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Alert</maml:name>
         <maml:Description>
-          <maml:para>Fetch the alerts for the data box edge/gateway device</maml:para>
+          <maml:para>Fetch the alerts on the data box edge/gateway device</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.Management.Automation.SwitchParameter</command:parameterValue>
         <dev:type>
@@ -789,7 +789,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>ExtendedInfo</maml:name>
         <maml:Description>
-          <maml:para>Resource Group Name</maml:para>
+          <maml:para>Gets additional information for the specified Data Box Edge/Data Box Gateway device</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.Management.Automation.SwitchParameter</command:parameterValue>
         <dev:type>
@@ -801,7 +801,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>Name</maml:name>
         <maml:Description>
-          <maml:para>Device Name</maml:para>
+          <maml:para>Resource Group Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -813,7 +813,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>NetworkSetting</maml:name>
         <maml:Description>
-          <maml:para>Resource Group Name</maml:para>
+          <maml:para>Gets the network settings of the specified Data Box Edge/Data Box Gateway device</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.Management.Automation.SwitchParameter</command:parameterValue>
         <dev:type>
@@ -825,7 +825,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>ResourceGroupName</maml:name>
         <maml:Description>
-          <maml:para>Device Resource Group Name</maml:para>
+          <maml:para>Resource Group Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -837,7 +837,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>ResourceId</maml:name>
         <maml:Description>
-          <maml:para>Azure Resource Id</maml:para>
+          <maml:para>Azure ResourceId</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -849,7 +849,7 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>UpdateSummary</maml:name>
         <maml:Description>
-          <maml:para>Resource Group Name</maml:para>
+          <maml:para>Gets information about the availability of updates based on the last scan of the device. It also gets information about any ongoing download or install jobs on the device.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.Management.Automation.SwitchParameter</command:parameterValue>
         <dev:type>
@@ -873,6 +873,38 @@ Schedule-1        Sunday,Saturday unlimited  13:00:00  14:00:00</dev:code>
       <command:returnValue>
         <dev:type>
           <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeNetworkAdapter</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDeviceExtendedInfo</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUpdateSummary</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeAlert</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -943,7 +975,7 @@ deviceName      resourceGroupName    Edge    eastus</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>Resource Group Name of the Job</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -967,7 +999,7 @@ deviceName      resourceGroupName    Edge    eastus</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Name of the job</maml:para>
+            <maml:para>Name of the Job, Generally a GUID</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -994,7 +1026,7 @@ deviceName      resourceGroupName    Edge    eastus</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Name of the job</maml:para>
+            <maml:para>Name of the Job, Generally a GUID</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -1096,7 +1128,7 @@ deviceName      resourceGroupName    Edge    eastus</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
         <maml:name>Name</maml:name>
         <maml:Description>
-          <maml:para>Name of the job</maml:para>
+          <maml:para>Name of the Job, Generally a GUID</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -1108,7 +1140,7 @@ deviceName      resourceGroupName    Edge    eastus</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>ResourceGroupName</maml:name>
         <maml:Description>
-          <maml:para>Resource Group Name of the Job</maml:para>
+          <maml:para>Resource Group Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -1133,7 +1165,7 @@ deviceName      resourceGroupName    Edge    eastus</dev:code>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name>None</maml:name>
+          <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -1425,7 +1457,7 @@ deviceName  resourceGroupName Untracked 01-Jan-01 12:00:00 AM</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>DeviceName</maml:name>
           <maml:Description>
-            <maml:para>Name of the device</maml:para>
+            <maml:para>Device Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -1464,7 +1496,7 @@ deviceName  resourceGroupName Untracked 01-Jan-01 12:00:00 AM</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>DeviceName</maml:name>
           <maml:Description>
-            <maml:para>Name of the device</maml:para>
+            <maml:para>Device Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -1476,7 +1508,7 @@ deviceName  resourceGroupName Untracked 01-Jan-01 12:00:00 AM</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Name of the Role</maml:para>
+            <maml:para>Resource Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -1503,7 +1535,7 @@ deviceName  resourceGroupName Untracked 01-Jan-01 12:00:00 AM</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Name of the Role</maml:para>
+            <maml:para>Resource Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -1581,7 +1613,7 @@ deviceName  resourceGroupName Untracked 01-Jan-01 12:00:00 AM</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>DeviceName</maml:name>
         <maml:Description>
-          <maml:para>Name of the device</maml:para>
+          <maml:para>Device Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -1605,7 +1637,7 @@ deviceName  resourceGroupName Untracked 01-Jan-01 12:00:00 AM</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
         <maml:name>Name</maml:name>
         <maml:Description>
-          <maml:para>Name of the Role</maml:para>
+          <maml:para>Resource Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -1642,7 +1674,7 @@ deviceName  resourceGroupName Untracked 01-Jan-01 12:00:00 AM</dev:code>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name>None</maml:name>
+          <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -1652,7 +1684,7 @@ deviceName  resourceGroupName Untracked 01-Jan-01 12:00:00 AM</dev:code>
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSStorageAccountCredential</maml:name>
+          <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -1702,7 +1734,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>Resource group name</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -1741,7 +1773,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>Resource group name</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -1765,7 +1797,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Name of the share</maml:para>
+            <maml:para>Resource Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -1792,7 +1824,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    r
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Name of the share</maml:para>
+            <maml:para>Resource Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -1843,7 +1875,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ResourceId</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill ResourceId Description }}</maml:para>
+            <maml:para>Azure ResourceId</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -1894,7 +1926,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    r
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
         <maml:name>Name</maml:name>
         <maml:Description>
-          <maml:para>Name of the share</maml:para>
+          <maml:para>Resource Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -1906,7 +1938,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    r
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>ResourceGroupName</maml:name>
         <maml:Description>
-          <maml:para>Resource group name</maml:para>
+          <maml:para>Resource Group Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -1918,7 +1950,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    r
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>ResourceId</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill ResourceId Description }}</maml:para>
+          <maml:para>Azure ResourceId</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -1931,7 +1963,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    r
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name>None</maml:name>
+          <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -1941,7 +1973,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    r
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeUser</maml:name>
+          <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -2326,7 +2358,7 @@ edgestoragegacount2 0              OK     https://edgestoragegacount2.blob.db-ed
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>Resource group name</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -2338,7 +2370,7 @@ edgestoragegacount2 0              OK     https://edgestoragegacount2.blob.db-ed
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>DeviceName</maml:name>
           <maml:Description>
-            <maml:para>Name of the device</maml:para>
+            <maml:para>Device Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -2365,7 +2397,7 @@ edgestoragegacount2 0              OK     https://edgestoragegacount2.blob.db-ed
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>Resource group name</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -2377,7 +2409,7 @@ edgestoragegacount2 0              OK     https://edgestoragegacount2.blob.db-ed
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>DeviceName</maml:name>
           <maml:Description>
-            <maml:para>Name of the device</maml:para>
+            <maml:para>Device Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -2389,7 +2421,7 @@ edgestoragegacount2 0              OK     https://edgestoragegacount2.blob.db-ed
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Name of the storage account credential</maml:para>
+            <maml:para>Name of the storage account to be used</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -2416,7 +2448,7 @@ edgestoragegacount2 0              OK     https://edgestoragegacount2.blob.db-ed
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Name of the storage account credential</maml:para>
+            <maml:para>Name of the storage account to be used</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -2494,7 +2526,7 @@ edgestoragegacount2 0              OK     https://edgestoragegacount2.blob.db-ed
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>DeviceName</maml:name>
         <maml:Description>
-          <maml:para>Name of the device</maml:para>
+          <maml:para>Device Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -2518,7 +2550,7 @@ edgestoragegacount2 0              OK     https://edgestoragegacount2.blob.db-ed
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
         <maml:name>Name</maml:name>
         <maml:Description>
-          <maml:para>Name of the storage account credential</maml:para>
+          <maml:para>Name of the storage account to be used</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -2530,7 +2562,7 @@ edgestoragegacount2 0              OK     https://edgestoragegacount2.blob.db-ed
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>ResourceGroupName</maml:name>
         <maml:Description>
-          <maml:para>Resource group name</maml:para>
+          <maml:para>Resource Group Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -2555,7 +2587,7 @@ edgestoragegacount2 0              OK     https://edgestoragegacount2.blob.db-ed
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name>None</maml:name>
+          <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -2565,7 +2597,7 @@ edgestoragegacount2 0              OK     https://edgestoragegacount2.blob.db-ed
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSStorageAccountCredential</maml:name>
+          <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -2638,7 +2670,7 @@ storageAccountCredentialName  StorageAccountName     Enabled    resourceGroupNam
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
           <maml:name>EdgeStorageAccountName</maml:name>
           <maml:Description>
-            <maml:para>Provide existing EdgeStorageAccountName's Resource Name</maml:para>
+            <maml:para>Provide existing EdgeStorageAccount's Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -2689,7 +2721,7 @@ storageAccountCredentialName  StorageAccountName     Enabled    resourceGroupNam
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
           <maml:name>EdgeStorageAccountName</maml:name>
           <maml:Description>
-            <maml:para>Provide existing EdgeStorageAccountName's Resource Name</maml:para>
+            <maml:para>Provide existing EdgeStorageAccount's Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -2818,7 +2850,7 @@ storageAccountCredentialName  StorageAccountName     Enabled    resourceGroupNam
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
         <maml:name>EdgeStorageAccountName</maml:name>
         <maml:Description>
-          <maml:para>Provide existing EdgeStorageAccountName's Resource Name</maml:para>
+          <maml:para>Provide existing EdgeStorageAccount's Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -3270,7 +3302,7 @@ triggerName          PeriodicTimerEvent</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>DeviceName</maml:name>
           <maml:Description>
-            <maml:para>Name of the Device</maml:para>
+            <maml:para>Device Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -3309,7 +3341,7 @@ triggerName          PeriodicTimerEvent</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>DeviceName</maml:name>
           <maml:Description>
-            <maml:para>Name of the Device</maml:para>
+            <maml:para>Device Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -3321,7 +3353,7 @@ triggerName          PeriodicTimerEvent</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Name of the user or Username</maml:para>
+            <maml:para>Username</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -3348,7 +3380,7 @@ triggerName          PeriodicTimerEvent</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Name of the user or Username</maml:para>
+            <maml:para>Username</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -3426,7 +3458,7 @@ triggerName          PeriodicTimerEvent</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>DeviceName</maml:name>
         <maml:Description>
-          <maml:para>Name of the Device</maml:para>
+          <maml:para>Device Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -3450,7 +3482,7 @@ triggerName          PeriodicTimerEvent</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
         <maml:name>Name</maml:name>
         <maml:Description>
-          <maml:para>Name of the user or Username</maml:para>
+          <maml:para>Username</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -3487,7 +3519,7 @@ triggerName          PeriodicTimerEvent</dev:code>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name>None</maml:name>
+          <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -4605,7 +4637,7 @@ deviceName Share resourceGroupName deviceName</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>RefreshData</maml:name>
           <maml:Description>
-            <maml:para>Input Object</maml:para>
+            <maml:para>Refresh Share Metadata with the data from the cloud</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>System.Management.Automation.SwitchParameter</maml:name>
@@ -4687,7 +4719,7 @@ deviceName Share resourceGroupName deviceName</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>RefreshData</maml:name>
           <maml:Description>
-            <maml:para>Input Object</maml:para>
+            <maml:para>Refresh Share Metadata with the data from the cloud</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>System.Management.Automation.SwitchParameter</maml:name>
@@ -4757,7 +4789,7 @@ deviceName Share resourceGroupName deviceName</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>RefreshData</maml:name>
           <maml:Description>
-            <maml:para>Input Object</maml:para>
+            <maml:para>Refresh Share Metadata with the data from the cloud</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>System.Management.Automation.SwitchParameter</maml:name>
@@ -4877,7 +4909,7 @@ deviceName Share resourceGroupName deviceName</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>RefreshData</maml:name>
         <maml:Description>
-          <maml:para>Input Object</maml:para>
+          <maml:para>Refresh Share Metadata with the data from the cloud</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.Management.Automation.SwitchParameter</command:parameterValue>
         <dev:type>
@@ -5509,7 +5541,7 @@ PS C:\&gt; true</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>Name of the resource group name</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -5521,7 +5553,7 @@ PS C:\&gt; true</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>DeviceName</maml:name>
           <maml:Description>
-            <maml:para>Valid name of the device</maml:para>
+            <maml:para>Device Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -5533,7 +5565,7 @@ PS C:\&gt; true</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Name of the Bandwidth schedule</maml:para>
+            <maml:para>Resource Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -5592,7 +5624,7 @@ PS C:\&gt; true</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>StartTime</maml:name>
           <maml:Description>
-            <maml:para>Start time of the bandwidth schedule</maml:para>
+            <maml:para>Schedule Start Time</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -5604,7 +5636,7 @@ PS C:\&gt; true</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>StopTime</maml:name>
           <maml:Description>
-            <maml:para>Stop time of the bandwidth schedule</maml:para>
+            <maml:para>Schedule Stop Time</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -5641,7 +5673,7 @@ PS C:\&gt; true</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>Name of the resource group name</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -5653,7 +5685,7 @@ PS C:\&gt; true</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>DeviceName</maml:name>
           <maml:Description>
-            <maml:para>Valid name of the device</maml:para>
+            <maml:para>Device Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -5665,7 +5697,7 @@ PS C:\&gt; true</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Name of the Bandwidth schedule</maml:para>
+            <maml:para>Resource Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -5712,7 +5744,7 @@ PS C:\&gt; true</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>StartTime</maml:name>
           <maml:Description>
-            <maml:para>Start time of the bandwidth schedule</maml:para>
+            <maml:para>Schedule Start Time</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -5724,7 +5756,7 @@ PS C:\&gt; true</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>StopTime</maml:name>
           <maml:Description>
-            <maml:para>Stop time of the bandwidth schedule</maml:para>
+            <maml:para>Schedule Stop Time</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -5736,7 +5768,7 @@ PS C:\&gt; true</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>UnlimitedBandwidth</maml:name>
           <maml:Description>
-            <maml:para>Set Unlimited Bandwidth. If set to false will set default value as 20 Mbps</maml:para>
+            <maml:para>Will Set Unlimited Bandwidth, if set to false will set default value as 20 Mbps</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.Boolean</command:parameterValue>
           <dev:type>
@@ -5821,7 +5853,7 @@ PS C:\&gt; true</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>DeviceName</maml:name>
         <maml:Description>
-          <maml:para>Valid name of the device</maml:para>
+          <maml:para>Device Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -5833,7 +5865,7 @@ PS C:\&gt; true</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
         <maml:name>Name</maml:name>
         <maml:Description>
-          <maml:para>Name of the Bandwidth schedule</maml:para>
+          <maml:para>Resource Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -5845,7 +5877,7 @@ PS C:\&gt; true</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>ResourceGroupName</maml:name>
         <maml:Description>
-          <maml:para>Name of the resource group name</maml:para>
+          <maml:para>Resource Group Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -5857,7 +5889,7 @@ PS C:\&gt; true</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>StartTime</maml:name>
         <maml:Description>
-          <maml:para>Start time of the bandwidth schedule</maml:para>
+          <maml:para>Schedule Start Time</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -5869,7 +5901,7 @@ PS C:\&gt; true</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>StopTime</maml:name>
         <maml:Description>
-          <maml:para>Stop time of the bandwidth schedule</maml:para>
+          <maml:para>Schedule Stop Time</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -5881,7 +5913,7 @@ PS C:\&gt; true</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>UnlimitedBandwidth</maml:name>
         <maml:Description>
-          <maml:para>Set Unlimited Bandwidth. If set to false will set default value as 20 Mbps</maml:para>
+          <maml:para>Will Set Unlimited Bandwidth, if set to false will set default value as 20 Mbps</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.Boolean</command:parameterValue>
         <dev:type>
@@ -6046,7 +6078,7 @@ bandwidthScheduleUnlimited  Sunday,Tuesday,Saturday     unlimited	11:00:00     1
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Sku</maml:name>
           <maml:Description>
-            <maml:para>Sku of the device</maml:para>
+            <maml:para>Available Skus are Edge, Gateway</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -6143,7 +6175,7 @@ bandwidthScheduleUnlimited  Sunday,Tuesday,Saturday     unlimited	11:00:00     1
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Sku</maml:name>
         <maml:Description>
-          <maml:para>Sku of the device</maml:para>
+          <maml:para>Available Skus are Edge, Gateway</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -6370,7 +6402,7 @@ deviceName      resourceGroupName    Edge    eastus</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Email</maml:name>
           <maml:Description>
-            <maml:para>List of Emails to receive updates</maml:para>
+            <maml:para>List of Emails to receive updates, Accepts max of 10 emails</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String[]</command:parameterValue>
           <dev:type>
@@ -6563,7 +6595,7 @@ deviceName      resourceGroupName    Edge    eastus</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Email</maml:name>
         <maml:Description>
-          <maml:para>List of Emails to receive updates</maml:para>
+          <maml:para>List of Emails to receive updates, Accepts max of 10 emails</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String[]</command:parameterValue>
         <dev:type>
@@ -6813,7 +6845,7 @@ deviceName  resourceGroupName Untracked 01-Jan-01 12:00:00 AM</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Platform</maml:name>
           <maml:Description>
-            <maml:para>Provide the Platform, for ex: windows</maml:para>
+            <maml:para>Provide the Platform, for ex: Linux</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -7004,7 +7036,7 @@ deviceName  resourceGroupName Untracked 01-Jan-01 12:00:00 AM</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Platform</maml:name>
           <maml:Description>
-            <maml:para>Provide the Platform, for ex: windows</maml:para>
+            <maml:para>Provide the Platform, for ex: Linux</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -7221,7 +7253,7 @@ deviceName  resourceGroupName Untracked 01-Jan-01 12:00:00 AM</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Platform</maml:name>
         <maml:Description>
-          <maml:para>Provide the Platform, for ex: windows</maml:para>
+          <maml:para>Provide the Platform, for ex: Linux</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -7292,7 +7324,7 @@ deviceName  resourceGroupName Untracked 01-Jan-01 12:00:00 AM</dev:code>
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential</maml:name>
+          <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -7344,7 +7376,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceId   iotDeviceId  r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>Share will be created under this ResourceGroupName</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -7356,7 +7388,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceId   iotDeviceId  r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
           <maml:name>DeviceName</maml:name>
           <maml:Description>
-            <maml:para>Name of the device</maml:para>
+            <maml:para>Device Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -7368,7 +7400,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceId   iotDeviceId  r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Creates a share with Name with Share Access protocol as NFS and</maml:para>
+            <maml:para>Resource Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -7426,7 +7458,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceId   iotDeviceId  r
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ContainerName</maml:name>
           <maml:Description>
-            <maml:para>If provided, will use the same container name in the storage account, if container is not present it will create a new one</maml:para>
+            <maml:para>Container name (Based on the data format specified, this represents the name of Azure Files/Pageblob/Block blob)</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -7498,7 +7530,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceId   iotDeviceId  r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>Share will be created under this ResourceGroupName</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -7510,7 +7542,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceId   iotDeviceId  r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
           <maml:name>DeviceName</maml:name>
           <maml:Description>
-            <maml:para>Name of the device</maml:para>
+            <maml:para>Device Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -7522,7 +7554,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceId   iotDeviceId  r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Creates a share with Name with Share Access protocol as NFS and</maml:para>
+            <maml:para>Resource Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -7605,7 +7637,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceId   iotDeviceId  r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>Share will be created under this ResourceGroupName</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -7617,7 +7649,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceId   iotDeviceId  r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
           <maml:name>DeviceName</maml:name>
           <maml:Description>
-            <maml:para>Name of the device</maml:para>
+            <maml:para>Device Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -7629,7 +7661,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceId   iotDeviceId  r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Creates a share with Name with Share Access protocol as NFS and</maml:para>
+            <maml:para>Resource Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -7675,7 +7707,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceId   iotDeviceId  r
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ContainerName</maml:name>
           <maml:Description>
-            <maml:para>If provided, will use the same container name in the storage account, if container is not present it will create a new one</maml:para>
+            <maml:para>Container name (Based on the data format specified, this represents the name of Azure Files/Pageblob/Block blob)</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -7759,7 +7791,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceId   iotDeviceId  r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>Share will be created under this ResourceGroupName</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -7771,7 +7803,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceId   iotDeviceId  r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
           <maml:name>DeviceName</maml:name>
           <maml:Description>
-            <maml:para>Name of the device</maml:para>
+            <maml:para>Device Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -7783,7 +7815,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceId   iotDeviceId  r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Creates a share with Name with Share Access protocol as NFS and</maml:para>
+            <maml:para>Resource Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -7902,7 +7934,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceId   iotDeviceId  r
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>ContainerName</maml:name>
         <maml:Description>
-          <maml:para>If provided, will use the same container name in the storage account, if container is not present it will create a new one</maml:para>
+          <maml:para>Container name (Based on the data format specified, this represents the name of Azure Files/Pageblob/Block blob)</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -7938,7 +7970,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceId   iotDeviceId  r
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none">
         <maml:name>DeviceName</maml:name>
         <maml:Description>
-          <maml:para>Name of the device</maml:para>
+          <maml:para>Device Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -7950,7 +7982,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceId   iotDeviceId  r
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
         <maml:name>Name</maml:name>
         <maml:Description>
-          <maml:para>Creates a share with Name with Share Access protocol as NFS and</maml:para>
+          <maml:para>Resource Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -7974,7 +8006,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceId   iotDeviceId  r
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
         <maml:name>ResourceGroupName</maml:name>
         <maml:Description>
-          <maml:para>Share will be created under this ResourceGroupName</maml:para>
+          <maml:para>Resource Group Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -8047,7 +8079,7 @@ iotrole ehub.azure-devices.net Linux    Enabled iotEdgeDeviceId   iotDeviceId  r
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name>None</maml:name>
+          <maml:name>System.String</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -8379,7 +8411,7 @@ edgestoragegacount2 0              OK     https://edgestoragegacount2.blob.dbEdg
     <command:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://docs.microsoft.com/en-us/powershell/module/az.databoxedge/get-azdataboxedgestorageaccount</maml:uri>
+        <maml:uri>https://docs.microsoft.com/en-us/powershell/module/az.databoxedge/new-azdataboxedgestorageaccount</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -8725,7 +8757,7 @@ storageAccountCredentalName storageAccountName     Enabled    resourceGroupName<
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
           <maml:name>EdgeStorageAccountName</maml:name>
           <maml:Description>
-            <maml:para>Provide existing EdgeStorageAccountName's Resource Name</maml:para>
+            <maml:para>Provide existing EdgeStorageAccount's Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -8857,7 +8889,7 @@ storageAccountCredentalName storageAccountName     Enabled    resourceGroupName<
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
         <maml:name>EdgeStorageAccountName</maml:name>
         <maml:Description>
-          <maml:para>Provide existing EdgeStorageAccountName's Resource Name</maml:para>
+          <maml:para>Provide existing EdgeStorageAccount's Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -9178,7 +9210,7 @@ container1 BlockBlob  edgestorageaccount1    db-edge    resourceGroupName</dev:c
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Schedule</maml:name>
           <maml:Description>
-            <maml:para>Periodic frequency at which timer event needs to be raised. Supports daily, hourly, minutes, and seconds</maml:para>
+            <maml:para>Periodic frequency at which timer event needs to be raised. Specify a schedule in either days (between 1 and 365) , hours (between 1 and 23), or minutes (between 1 and 59).</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -9344,7 +9376,7 @@ container1 BlockBlob  edgestorageaccount1    db-edge    resourceGroupName</dev:c
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Schedule</maml:name>
           <maml:Description>
-            <maml:para>Periodic frequency at which timer event needs to be raised. Supports daily, hourly, minutes, and seconds</maml:para>
+            <maml:para>Periodic frequency at which timer event needs to be raised. Specify a schedule in either days (between 1 and 365) , hours (between 1 and 23), or minutes (between 1 and 59).</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -9501,7 +9533,7 @@ container1 BlockBlob  edgestorageaccount1    db-edge    resourceGroupName</dev:c
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Schedule</maml:name>
         <maml:Description>
-          <maml:para>Periodic frequency at which timer event needs to be raised. Supports daily, hourly, minutes, and seconds</maml:para>
+          <maml:para>Periodic frequency at which timer event needs to be raised. Specify a schedule in either days (between 1 and 365) , hours (between 1 and 23), or minutes (between 1 and 59).</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -9645,7 +9677,7 @@ periodic-trigger      PeriodicTimerEvent</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>Name of the resource group</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -9657,7 +9689,7 @@ periodic-trigger      PeriodicTimerEvent</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>DeviceName</maml:name>
           <maml:Description>
-            <maml:para>name of the device</maml:para>
+            <maml:para>Device Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -9670,6 +9702,18 @@ periodic-trigger      PeriodicTimerEvent</dev:code>
           <maml:name>Name</maml:name>
           <maml:Description>
             <maml:para>Username</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
+          <dev:type>
+            <maml:name>System.String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+          <maml:name>Type</maml:name>
+          <maml:Description>
+            <maml:para>Select UserType</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -9716,23 +9760,11 @@ periodic-trigger      PeriodicTimerEvent</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Password</maml:name>
           <maml:Description>
-            <maml:para>Password in secure string</maml:para>
+            <maml:para>Password, provide as a secure string</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.Security.SecureString</command:parameterValue>
           <dev:type>
             <maml:name>System.Security.SecureString</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>Type</maml:name>
-          <maml:Description>
-            <maml:para>Select UserType</maml:para>
-          </maml:Description>
-          <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
-          <dev:type>
-            <maml:name>System.String</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -9789,7 +9821,7 @@ periodic-trigger      PeriodicTimerEvent</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>DeviceName</maml:name>
         <maml:Description>
-          <maml:para>name of the device</maml:para>
+          <maml:para>Device Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -9825,7 +9857,7 @@ periodic-trigger      PeriodicTimerEvent</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Password</maml:name>
         <maml:Description>
-          <maml:para>Password in secure string</maml:para>
+          <maml:para>Password, provide as a secure string</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.Security.SecureString</command:parameterValue>
         <dev:type>
@@ -9837,7 +9869,7 @@ periodic-trigger      PeriodicTimerEvent</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>ResourceGroupName</maml:name>
         <maml:Description>
-          <maml:para>Name of the resource group</maml:para>
+          <maml:para>Resource Group Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -9846,7 +9878,7 @@ periodic-trigger      PeriodicTimerEvent</dev:code>
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
         <maml:name>Type</maml:name>
         <maml:Description>
           <maml:para>Select UserType</maml:para>
@@ -12461,7 +12493,7 @@ username    Share resourceGroupName deviceName</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Resource Name</maml:para>
+            <maml:para>Name of the storage account to be used</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -12722,7 +12754,7 @@ username    Share resourceGroupName deviceName</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
         <maml:name>Name</maml:name>
         <maml:Description>
-          <maml:para>Resource Name</maml:para>
+          <maml:para>Name of the storage account to be used</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -12813,7 +12845,7 @@ username    Share resourceGroupName deviceName</dev:code>
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeStorageAccountCredential</maml:name>
+          <maml:name>System.Boolean</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -12883,7 +12915,7 @@ username    Share resourceGroupName deviceName</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
           <maml:name>EdgeStorageAccountName</maml:name>
           <maml:Description>
-            <maml:para>Provide existing EdgeStorageAccountName's Resource Name</maml:para>
+            <maml:para>Provide existing EdgeStorageAccount's Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -13144,7 +13176,7 @@ username    Share resourceGroupName deviceName</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none">
         <maml:name>EdgeStorageAccountName</maml:name>
         <maml:Description>
-          <maml:para>Provide existing EdgeStorageAccountName's Resource Name</maml:para>
+          <maml:para>Provide existing EdgeStorageAccount's Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -13280,7 +13312,12 @@ username    Share resourceGroupName deviceName</dev:code>
         </dev:remarks>
       </command:example>
     </command:examples>
-    <command:relatedLinks />
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://docs.microsoft.com/en-us/powershell/module/az.databoxedge/remove-azdataboxedgestorageaccountcontainer</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -14707,7 +14744,7 @@ username    Share resourceGroupName deviceName</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>UnlimitedBandwidth</maml:name>
           <maml:Description>
-            <maml:para>Set Unlimited Bandwidth</maml:para>
+            <maml:para>Will Set Unlimited Bandwidth</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.Boolean</command:parameterValue>
           <dev:type>
@@ -14911,7 +14948,7 @@ username    Share resourceGroupName deviceName</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>UnlimitedBandwidth</maml:name>
           <maml:Description>
-            <maml:para>Set Unlimited Bandwidth</maml:para>
+            <maml:para>Will Set Unlimited Bandwidth</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.Boolean</command:parameterValue>
           <dev:type>
@@ -15115,7 +15152,7 @@ username    Share resourceGroupName deviceName</dev:code>
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>UnlimitedBandwidth</maml:name>
           <maml:Description>
-            <maml:para>Set Unlimited Bandwidth</maml:para>
+            <maml:para>Will Set Unlimited Bandwidth</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.Boolean</command:parameterValue>
           <dev:type>
@@ -15284,7 +15321,7 @@ username    Share resourceGroupName deviceName</dev:code>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>UnlimitedBandwidth</maml:name>
         <maml:Description>
-          <maml:para>Set Unlimited Bandwidth</maml:para>
+          <maml:para>Will Set Unlimited Bandwidth</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.Boolean</command:parameterValue>
         <dev:type>
@@ -15438,7 +15475,7 @@ bandwidthSchedule  Sunday, Tuesday, Saturday      Unlimited  11:00:00  21:00:00<
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ShareName</maml:name>
           <maml:Description>
-            <maml:para>Mount points of local share in role(s)</maml:para>
+            <maml:para>Share(s) in a role</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String[]</command:parameterValue>
           <dev:type>
@@ -15499,7 +15536,7 @@ bandwidthSchedule  Sunday, Tuesday, Saturday      Unlimited  11:00:00  21:00:00<
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ShareName</maml:name>
           <maml:Description>
-            <maml:para>Mount points of local share in role(s)</maml:para>
+            <maml:para>Share(s) in a role</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String[]</command:parameterValue>
           <dev:type>
@@ -15560,7 +15597,7 @@ bandwidthSchedule  Sunday, Tuesday, Saturday      Unlimited  11:00:00  21:00:00<
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ShareName</maml:name>
           <maml:Description>
-            <maml:para>Mount points of local share in role(s)</maml:para>
+            <maml:para>Share(s) in a role</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String[]</command:parameterValue>
           <dev:type>
@@ -15669,7 +15706,7 @@ bandwidthSchedule  Sunday, Tuesday, Saturday      Unlimited  11:00:00  21:00:00<
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>ShareName</maml:name>
         <maml:Description>
-          <maml:para>Mount points of local share in role(s)</maml:para>
+          <maml:para>Share(s) in a role</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String[]</command:parameterValue>
         <dev:type>
@@ -15929,7 +15966,7 @@ roleiot ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>Share will be created under this ResourceGroupName</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -15941,7 +15978,7 @@ roleiot ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>DeviceName</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill DeviceName Description }}</maml:para>
+            <maml:para>Device Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -15953,7 +15990,7 @@ roleiot ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Get Share with Resource name as Name</maml:para>
+            <maml:para>Resource Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -16025,7 +16062,7 @@ roleiot ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:Description>
-            <maml:para>Share will be created under this ResourceGroupName</maml:para>
+            <maml:para>Resource Group Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -16037,7 +16074,7 @@ roleiot ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>DeviceName</maml:name>
           <maml:Description>
-            <maml:para>{{ Fill DeviceName Description }}</maml:para>
+            <maml:para>Device Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -16049,7 +16086,7 @@ roleiot ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    r
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
           <maml:name>Name</maml:name>
           <maml:Description>
-            <maml:para>Get Share with Resource name as Name</maml:para>
+            <maml:para>Resource Name</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
           <dev:type>
@@ -16301,7 +16338,7 @@ roleiot ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    r
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>DeviceName</maml:name>
         <maml:Description>
-          <maml:para>{{ Fill DeviceName Description }}</maml:para>
+          <maml:para>Device Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -16325,7 +16362,7 @@ roleiot ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    r
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
         <maml:name>Name</maml:name>
         <maml:Description>
-          <maml:para>Get Share with Resource name as Name</maml:para>
+          <maml:para>Resource Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -16337,7 +16374,7 @@ roleiot ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    r
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
         <maml:name>ResourceGroupName</maml:name>
         <maml:Description>
-          <maml:para>Share will be created under this ResourceGroupName</maml:para>
+          <maml:para>Resource Group Name</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">System.String</command:parameterValue>
         <dev:type>
@@ -16398,7 +16435,15 @@ roleiot ehub.azure-devices.net Linux    Enabled iotEdgeDeviceUd   iotDevice    r
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name>None</maml:name>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+      <command:inputType>
+        <dev:type>
+          <maml:name>Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeShare</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
