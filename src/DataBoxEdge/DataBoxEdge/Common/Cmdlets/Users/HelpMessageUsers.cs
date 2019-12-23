@@ -20,6 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Users
         internal const string NameHelpMessage = "Username";
         internal const string ObjectName = "User";
         internal const string PasswordHelpMessage = "Password, provide as a secure string";
-        
+        internal const string UserTypeHelpMessage = "Select UserType";
+        internal const string InvalidUserType = "Please provide a valid user type";
     }
 }
