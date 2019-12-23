@@ -12,26 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Storage.File;
+using Microsoft.WindowsAzure.Storage.File;
 using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Microsoft.Azure.Storage.DataMovement;
-    using System;
+    using Microsoft.WindowsAzure.Storage.DataMovement;
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
     using LocalDirectory = System.IO.Directory;
     using LocalPath = System.IO.Path;
-    using System.Runtime.InteropServices;
 
-    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
+    [Cmdlet(VerbsCommon.Get, LocalConstants.FileContentCmdletName, SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
     [OutputType(typeof(CloudFile))]
-    public class GetAzureStorageFileContent : StorageFileDataManagementCmdletBase, IDynamicParameters
+    public class GetAzureStorageFileContent : StorageFileDataManagementCmdletBase
     {
         [Parameter(
            Position = 0,
@@ -115,29 +111,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Returns an object representing the downloaded cloud file. By default, this cmdlet does not generate any output.")]
         public SwitchParameter PassThru { get; set; }
 
-        protected override void ProcessRecord()
-        {
-            try
-            {
-                Destination = this.GetUnresolvedProviderPathFromPSPath(
-                    string.IsNullOrWhiteSpace(Destination) ? "." : Destination);
-                Validate.ValidateInternetConnection();
-                InitChannelCurrentSubscription();
-                this.ExecuteSynchronouslyOrAsJob();
-            }
-            catch (Exception ex) when (!IsTerminatingError(ex))
-            {
-                WriteExceptionError(ex);
-            }
-        }
-
         public override void ExecuteCmdlet()
         {
-            if (AsJob.IsPresent)
-            {
-                DoBeginProcessing();
-            }
-
             CloudFile fileToBeDownloaded;
             string[] path = NamingUtil.ValidatePath(this.Path, true);
             switch (this.ParameterSetName)
@@ -163,7 +138,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid parameter set name: {0}", this.ParameterSetName));
             }
 
-            string resolvedDestination = this.Destination;
+            string resolvedDestination = this.GetUnresolvedProviderPathFromPSPath(
+                string.IsNullOrWhiteSpace(this.Destination) ? "." : this.Destination);
+
             FileMode mode = this.Force ? FileMode.Create : FileMode.CreateNew;
             string targetFile;
             if (LocalDirectory.Exists(resolvedDestination))
@@ -202,8 +179,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             targetFile,
                             new DownloadOptions
                             {
-                                DisableContentMD5Validation = !this.CheckMd5,
-                                PreserveSMBAttributes = context is null ? false : context.PreserveSMBAttribute.IsPresent
+                                DisableContentMD5Validation = !this.CheckMd5
                             },
                             this.GetTransferContext(progressRecord, fileToBeDownloaded.Properties.Length),
                             CmdletCancellationToken);
@@ -217,21 +193,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     }
                 });
             }
-
-            if (AsJob.IsPresent)
-            {
-                DoEndProcessing();
-            }
         }
-        public object GetDynamicParameters()
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                context = new WindowsOnlyParameters();
-                return context;
-            }
-            else return null;
-        }
-        private WindowsOnlyParameters context;
     }
 }

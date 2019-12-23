@@ -1,15 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: 288B7B56-B934-45AF-BF56-4EB0DD827522
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azstoragecorsrule
+online version:
 schema: 2.0.0
 ---
 
 # Set-AzStorageCORSRule
 
 ## SYNOPSIS
-Sets the CORS rules for a type of Storage service.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -20,58 +19,26 @@ Set-AzStorageCORSRule [-ServiceType] <StorageServiceType> -CorsRules <PSCorsRule
 ```
 
 ## DESCRIPTION
-The **Set-AzStorageCORSRule** cmdlet sets the Cross-Origin Resource Sharing (CORS) rules for a type of Azure Storage service.
-The types of storage services for this cmdlet are Blob, Table, Queue, and File.
-This cmdlet overwrites the existing rules.
-To see the current rules, use the Get-AzStorageCORSRule cmdlet.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Assign CORS rules to the blob service
-```
-PS C:\>$CorsRules = (@{
-    AllowedHeaders=@("x-ms-blob-content-type","x-ms-blob-content-disposition");
-    AllowedOrigins=@("*");
-    MaxAgeInSeconds=30;
-    AllowedMethods=@("Get","Connect")},
-    @{
-    AllowedOrigins=@("http://www.fabrikam.com","http://www.contoso.com"); 
-    ExposedHeaders=@("x-ms-meta-data*","x-ms-meta-customheader"); 
-    AllowedHeaders=@("x-ms-meta-target*","x-ms-meta-customheader");
-    MaxAgeInSeconds=30;
-    AllowedMethods=@("Put")})
-PS C:\> Set-AzStorageCORSRule -ServiceType Blob -CorsRules $CorsRules
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-The first command assigns an array of rules to the $CorsRules variable.
-This command uses standard extends over several lines in this code block.
-The second command assigns the rules in $CorsRules to the Blob service type.
-
-### Example 2: Change properties of a CORS rule for blob service
-```
-PS C:\>$CorsRules = Get-AzStorageCORSRule -ServiceType Blob
-PS C:\> $CorsRules[0].AllowedHeaders = @("x-ms-blob-content-type", "x-ms-blob-content-disposition")
-PS C:\> $CorsRules[0].AllowedMethods = @("Get", "Connect", "Merge")
-PS C:\> Set-AzStorageCORSRule -ServiceType Blob -CorsRules $CorsRules
-```
-
-The first command gets the current CORS rules for the Blob type by using the **Get-AzStorageCORSRule** cmdlet.
-The command stores the rules in the $CorsRules array variable.
-The second and third commands modify the first rule in $CorsRules.
-The final command assigns the rules in $CorsRules to the Blob service type.
-The revised rules overwrite the current CORS rules.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -ClientTimeoutPerRequest
-Specifies the client-side time-out interval, in seconds, for one service request.
-If the previous call fails in the specified interval, this cmdlet retries the request.
-If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
+The client side maximum execution time for each request in seconds.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: ClientTimeoutPerRequestInSeconds
+Aliases:
 
 Required: False
 Position: Named
@@ -81,10 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConcurrentTaskCount
-Specifies the maximum concurrent network calls.
-You can use this parameter to limit the concurrency to throttle local CPU and bandwidth usage by specifying the maximum number of concurrent network calls.
-The specified value is an absolute count and is not multiplied by the core count.
-This parameter can help reduce network connection problems in low bandwidth environments, such as 100 kilobits per second.
+The total amount of concurrent async tasks.
 The default value is 10.
 
 ```yaml
@@ -100,8 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -Context
-Specifies an Azure Storage context.
-To obtain a context, use the New-AzStorageContext cmdlet.
+Azure Storage Context Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -116,8 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### -CorsRules
-Specifies an array of CORS rules.
-You can retrieve the existing rules using the Get-AzStorageCORSRule cmdlet.
+CorsRule instances to represent rules to be set.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSCorsRule[]
@@ -147,8 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Indicates that this cmdlet returns a Boolean that reflects the success of the operation.
-By default, this cmdlet does not return a value.
+Display ServiceProperties
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -163,12 +124,12 @@ Accept wildcard characters: False
 ```
 
 ### -ServerTimeoutPerRequest
-Specifies the length of the time-out period for the server part of a request.
+The server time out for each request in seconds.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: ServerTimeoutPerRequestInSeconds
+Aliases:
 
 Required: False
 Position: Named
@@ -178,12 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceType
-Specifies the Azure Storage service type for which this cmdlet assigns rules.
-The acceptable values for this parameter are:
-- Blob 
-- Table 
-- Queue 
-- File
+Azure storage service type(Blob, Table, Queue).
 
 ```yaml
 Type: Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType
@@ -199,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -212,11 +168,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzStorageCORSRule](./Get-AzStorageCORSRule.md)
-
-[New-AzStorageContext](./New-AzStorageContext.md)
-
-[Remove-AzStorageCORSRule](./Remove-AzStorageCORSRule.md)
-
-

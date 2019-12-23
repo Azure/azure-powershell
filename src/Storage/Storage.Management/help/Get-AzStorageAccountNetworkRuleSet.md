@@ -1,14 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageaccountnetworkruleset
+online version:
 schema: 2.0.0
 ---
 
 # Get-AzStorageAccountNetworkRuleSet
 
 ## SYNOPSIS
-Get the NetWorkRule property of a Storage account
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ Get-AzStorageAccountNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String
 ```
 
 ## DESCRIPTION
-The **Get-AzStorageAccountNetworkRuleSet** cmdlet gets the NetworkRule property of a Storage account
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Get NetworkRule property of a specified Storage account
-```
-PS C:\> Get-AzStorageAccountNetworkRuleSet  -ResourceGroupName "rg1" -AccountName "mystorageaccount"
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command gets NetworkRule property of a specified Storage account
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Storage account.
+Storage Account Name.
 
 ```yaml
 Type: System.String
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group contains the Storage account.
+Resource Group Name.
 
 ```yaml
 Type: System.String
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

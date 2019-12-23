@@ -17,8 +17,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage;
-    using Microsoft.Azure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Blob;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
@@ -27,7 +27,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// <summary>
     /// list azure blobs in specified azure container
     /// </summary>
-    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlob", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageBlob))]
+    [Cmdlet(VerbsCommon.Get, StorageNouns.Blob, DefaultParameterSetName = NameParameterSet),
+        OutputType(typeof(AzureStorageBlob))]
     public class GetAzureStorageBlobCommand : StorageCloudBlobCmdletBase
     {
         /// <summary>

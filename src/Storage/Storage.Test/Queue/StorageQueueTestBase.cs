@@ -15,7 +15,7 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Storage.Test.Service;
-using Microsoft.Azure.Storage.Queue;
+using Microsoft.WindowsAzure.Storage.Queue;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
 {

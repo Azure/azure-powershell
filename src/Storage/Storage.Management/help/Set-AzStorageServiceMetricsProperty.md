@@ -1,15 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: 5878FAD4-A4BB-4DBF-A1F2-221FD34F0308
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azstorageservicemetricsproperty
+online version:
 schema: 2.0.0
 ---
 
 # Set-AzStorageServiceMetricsProperty
 
 ## SYNOPSIS
-Modifies metrics properties for the Azure Storage service.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -20,24 +19,21 @@ Set-AzStorageServiceMetricsProperty [-ServiceType] <StorageServiceType> [-Metric
 ```
 
 ## DESCRIPTION
-The **Set-AzStorageServiceMetricsProperty** cmdlet modifies metrics properties for the Azure Storage service.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Modify metrics properties for the Blob service
-```
-C:\PS>Set-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Hour -MetricsLevel Service -PassThru -RetentionDays 10 -Version 1.0
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command modifies version 1.0 metrics for blob storage to a level of Service.
-Azure Storage service metrics retains entries for 10 days.
-Because this command specifies the *PassThru* parameter, the command displays the modified metrics properties.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Context
-Specifies an Azure storage context.
-To obtain a storage context, use the New-AzStorageContext cmdlet.
+Azure Storage Context Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -67,14 +63,10 @@ Accept wildcard characters: False
 ```
 
 ### -MetricsLevel
-Specifies the metrics level that Azure Storage uses for the service.
-The acceptable values for this parameter are:
-- None
-- Service
-- ServiceAndApi
+Metrics level.(None/Service/ServiceAndApi)
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Storage.Shared.Protocol.MetricsLevel]
+Type: System.Nullable`1[Microsoft.WindowsAzure.Storage.Shared.Protocol.MetricsLevel]
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, Service, ServiceAndApi
@@ -87,9 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### -MetricsType
-Specifies a metrics type.
-This cmdlet sets the Azure Storage service metrics type to the value that this parameter specifies.
-The acceptable values for this parameter are: Hour and Minute.
+Azure storage service metrics type(Hour, Minute).
 
 ```yaml
 Type: Microsoft.WindowsAzure.Commands.Storage.Common.ServiceMetricsType
@@ -105,8 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Indicates that this cmdlets returns the updated metrics properties.
-If you do not specify this parameter, this cmdlet does not return a value.
+Display ServiceProperties
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -121,7 +110,8 @@ Accept wildcard characters: False
 ```
 
 ### -RetentionDays
-Specifies the number of days that the Azure Storage service retains metrics information.
+Metrics retention days.
+-1 means disable Metrics retention policy, otherwise enable.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -136,14 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceType
-Specifies the storage service type.
-This cmdlet modifies the metrics properties for the service type that this parameter specifies.
-The acceptable values for this parameter are:
-- Blob 
-- Table
-- Queue
-- File
-The value of File is not currently supported.
+Azure storage service type(Blob, Table, Queue).
 
 ```yaml
 Type: Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType
@@ -159,8 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-Specifies the version of the Azure Storage metrics.
-The default value is 1.0.
+Metrics version
 
 ```yaml
 Type: System.Nullable`1[System.Double]
@@ -175,7 +157,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -183,14 +165,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Storage.Shared.Protocol.MetricsProperties
+### Microsoft.WindowsAzure.Storage.Shared.Protocol.MetricsProperties
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzStorageServiceMetricsProperty](./Get-AzStorageServiceMetricsProperty.md)
-
-[New-AzStorageContext](./New-AzStorageContext.md)
-
-

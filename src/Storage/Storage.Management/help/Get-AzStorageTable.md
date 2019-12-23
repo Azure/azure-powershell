@@ -1,15 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: 4631D36F-926A-4279-AA4D-5F694C18081E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstoragetable
+online version:
 schema: 2.0.0
 ---
 
 # Get-AzStorageTable
 
 ## SYNOPSIS
-Lists the storage tables.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -26,36 +25,21 @@ Get-AzStorageTable -Prefix <String> [-Context <IStorageContext>] [-DefaultProfil
 ```
 
 ## DESCRIPTION
-The **Get-AzStorageTable** cmdlet lists the storage tables associated with the storage account in Azure.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: List all Azure Storage tables
-```
-PS C:\>Get-AzStorageTable
-```
-
-This command gets all storage tables for a Storage account.
-
-### Example 2: List Azure Storage tables using a wildcard character
-```
-PS C:\>Get-AzStorageTable -Name table*
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command uses a wildcard character to get storage tables whose name starts with table.
-
-### Example 3: List Azure Storage tables using table name prefix
-```
-PS C:\>Get-AzStorageTable -Prefix "table"
-```
-
-This command uses the *Prefix* parameter to get storage tables whose name starts with table.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Context
-Specifies the storage context.
-To create it, you can use the New-AzStorageContext cmdlet.
+Azure Storage Context Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -85,9 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the table name.
-If the table name is empty, the cmdlet lists all the tables.
-Otherwise, it lists all tables that match the specified name or the regular name pattern.
+Table name
 
 ```yaml
 Type: System.String
@@ -102,8 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -Prefix
-Specifies a prefix used in the name of the table or tables you want to get.
-You can use this to find all tables that start with the same string, such as table.
+Table Prefix
 
 ```yaml
 Type: System.String
@@ -118,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -133,9 +114,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzStorageTable](./New-AzStorageTable.md)
-
-[Remove-AzStorageTable](./Remove-AzStorageTable.md)
-
-

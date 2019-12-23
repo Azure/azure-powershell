@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
     using Common;
-    using Microsoft.Azure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage.Blob;
     using Model.Contract;
     using System;
     using System.Globalization;
@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// <summary>
     /// create a new azure container
     /// </summary>
-    [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainerStoredAccessPolicy", SupportsShouldProcess = true), OutputType(typeof(Boolean))]
+    [Cmdlet(VerbsCommon.Remove, StorageNouns.ContainerStoredAccessPolicy, SupportsShouldProcess = true), OutputType(typeof(Boolean))]
     public class RemoveAzureStorageContainerStoredAccessPolicyCommand : StorageCloudBlobCmdletBase
     {
         [Alias("N", "Name")]
@@ -115,3 +115,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
     }
 }
+

@@ -1,14 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/add-azstorageaccountnetworkrule
+online version:
 schema: 2.0.0
 ---
 
 # Add-AzStorageAccountNetworkRule
 
 ## SYNOPSIS
- Add IpRules or VirtualNetworkRules to the NetworkRule property of a Storage account
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -39,39 +39,16 @@ Add-AzStorageAccountNetworkRule [-ResourceGroupName] <String> [-Name] <String> -
 ```
 
 ## DESCRIPTION
-The **Add-AzStorageAccountNetworkRule** cmdlet adds IpRules or VirtualNetworkRules to the NetworkRule property of a Storage account
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Add several IpRules with IPAddressOrRange
-```
-PS C:\>Add-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -IPAddressOrRange "10.0.0.0/24","28.2.0.0/16"
-```
-
-This command add several IpRules with IPAddressOrRange.
-
-### Example 2: Add a VirtualNetworkRule with VirtualNetworkResourceID
-```
-PS C:\>$subnet = Get-AzVirtualNetwork -ResourceGroupName "myResourceGroup" -Name "myvirtualnetwork" | Get-AzVirtualNetworkSubnetConfig
-PS C:\>Add-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet[0].Id
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command add a VirtualNetworkRule with VirtualNetworkResourceID.
-
-### Example 3: Add VirtualNetworkRules with VirtualNetworkRule Objects from another account
-```
-PS C:\> $networkrule = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -Name "mystorageaccount1"
-PS C:\> Add-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "mystorageaccount2" -VirtualNetworkRule $networkrule.VirtualNetworkRules
-```
-
-This command add VirtualNetworkRules with VirtualNetworkRule Objects from another account.
-
-### Example 4: Add several IpRule with IpRule objects, input with JSON
-```
-PS C:\>Add-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -IPRule (@{IPAddressOrRange="10.0.0.0/24";Action="allow"},@{IPAddressOrRange="28.2.0.0/16";Action="allow"})
-```
-
-This command add several IpRule with IpRule objects, input with JSON.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -106,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -IPAddressOrRange
-The Array of IpAddressOrRange, add IpRules with the input IpAddressOrRange and default Action Allow to NetworkRule Property.
+Storage Account NetworkRule IPRules IPAddressOrRange in string.
 
 ```yaml
 Type: System.String[]
@@ -121,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -IPRule
-The Array of IpRule objects to add to the NetworkRule Property.
+Storage Account NetworkRule IPRules.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]
@@ -136,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Storage account.
+Storage Account Name.
 
 ```yaml
 Type: System.String
@@ -151,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group contains the Storage account.
+Resource Group Name.
 
 ```yaml
 Type: System.String
@@ -166,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkResourceId
-The Array of VirtualNetworkResourceId, will add VirtualNetworkRule with input VirtualNetworkResourceId and default Action Allow to NetworkRule Property.
+Storage Account NetworkRule VirtualNetworkRules VirtualNetworkResourceId in string.
 
 ```yaml
 Type: System.String[]
@@ -181,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkRule
-The Array of VirtualNetworkRule objects to add to the NetworkRule Property.
+Storage Account NetworkRule VirtualNetworkRules.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]
@@ -227,7 +204,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

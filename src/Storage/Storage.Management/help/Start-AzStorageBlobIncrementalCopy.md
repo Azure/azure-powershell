@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/start-azstorageblobincrementalcopy
+online version:
 schema: 2.0.0
 ---
 
 # Start-AzStorageBlobIncrementalCopy
 
 ## SYNOPSIS
-Start an Incremental copy operation from a Page blob snapshot to the specified destination Page blob.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -55,44 +55,21 @@ Start-AzStorageBlobIncrementalCopy -AbsoluteUri <String> -DestContainer <String>
 ```
 
 ## DESCRIPTION
-Start an Incremental copy operation from a Page blob snapshot to the specified destination Page blob.
-See more details of the feature in https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/incremental-copy-blob.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Start Incremental Copy Operation by blob name and snapshot time
-```
-PS C:\>Start-AzStorageBlobIncrementalCopy -SrcContainer container1 -SrcBlob blob1 -SrcBlobSnapshotTime "04/07/2017 09:55:36.1190229 AM +00:00" -DestContainer container2 -DestBlob blob2
-```
-
-This command start Incremental Copy Operation by blob name and snapshot time
-
-### Example 2: Start Incremental copy operation using source uri
-```
-PS C:\>Start-AzStorageBlobIncrementalCopy -AbsoluteUri "http://www.somesite.com/somefile?snapshot=2017-04-07T10:05:40.2126635Z" -DestContainer container -DestBlob blob -DestContext $context
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command start Incremental Copy Operation using source uri
-
-### Example 3:  Start Incremental copy operation using container pipeline from GetAzureStorageContainer
-```
-PS C:\>Get-AzStorageContainer -Container container1 | Start-AzStorageBlobIncrementalCopy -SrcBlob blob  -SrcBlobSnapshotTime "04/07/2017 09:55:36.1190229 AM +00:00" -DestContainer container2
-```
-
-This command start Incremental Copy Operation using container pipeline from GetAzureStorageContainer
-
-### Example 4:  start Incremental copy operation from CloudPageBlob object to destination blob with blob name
-```
-PS C:\>$srcBlobSnapshot = Get-AzStorageBlob -Container container1 -prefix blob1| ?{$_.ICloudBlob.IsSnapshot})[0]
-PS C:\>Start-AzStorageBlobIncrementalCopy -CloudBlob $srcBlobSnapshot.ICloudBlob -DestContainer container2 -DestBlob blob2
-```
-
-This command start Incremental Copy Operation from CloudPageBlob object to destination blob with blob name
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -AbsoluteUri
-Absolute Uri to the source. Be noted that the credential should be provided in the Uri, if the source requires any.
+Source blob uri
 
 ```yaml
 Type: System.String
@@ -112,7 +89,7 @@ The client side maximum execution time for each request in seconds.
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: ClientTimeoutPerRequestInSeconds
+Aliases:
 
 Required: False
 Position: Named
@@ -122,10 +99,10 @@ Accept wildcard characters: False
 ```
 
 ### -CloudBlob
-CloudBlob object from Azure Storage Client library. You can create it or use Get-AzStorageBlob cmdlet.
+CloudBlob Object
 
 ```yaml
-Type: Microsoft.Azure.Storage.Blob.CloudPageBlob
+Type: Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob
 Parameter Sets: BlobInstance, BlobInstanceToBlobInstance
 Aliases: SrcICloudBlob, SrcCloudBlob, ICloudBlob, SourceICloudBlob, SourceCloudBlob
 
@@ -137,10 +114,10 @@ Accept wildcard characters: False
 ```
 
 ### -CloudBlobContainer
-CloudBlobContainer object from Azure Storage Client library. You can create it or use Get-AzStorageContainer cmdlet.
+CloudBlobContainer Object
 
 ```yaml
-Type: Microsoft.Azure.Storage.Blob.CloudBlobContainer
+Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
 Parameter Sets: ContainerInstance
 Aliases: SourceCloudBlobContainer
 
@@ -168,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -Context
-Source Azure Storage Context. You can create it by New-AzStorageContext cmdlet.
+Source Azure Storage Context Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -240,7 +217,7 @@ Accept wildcard characters: False
 Destination CloudBlob object
 
 ```yaml
-Type: Microsoft.Azure.Storage.Blob.CloudPageBlob
+Type: Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob
 Parameter Sets: BlobInstanceToBlobInstance
 Aliases: DestICloudBlob, DestinationCloudBlob, DestinationICloudBlob
 
@@ -267,7 +244,7 @@ Accept wildcard characters: False
 ```
 
 ### -DestContext
-Destination Azure Storage Context. You can create it by New-AzStorageContext cmdlet.
+Destination Storage context object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -287,7 +264,7 @@ The server time out for each request in seconds.
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: ServerTimeoutPerRequestInSeconds
+Aliases:
 
 Required: False
 Position: Named
@@ -297,7 +274,7 @@ Accept wildcard characters: False
 ```
 
 ### -SrcBlob
-Source page blob name.
+Blob name
 
 ```yaml
 Type: System.String
@@ -312,7 +289,7 @@ Accept wildcard characters: False
 ```
 
 ### -SrcBlobSnapshotTime
-Source page blob snapshot time.
+Source Blob Snapshot Time
 
 ```yaml
 Type: System.Nullable`1[System.DateTimeOffset]
@@ -373,13 +350,13 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Storage.Blob.CloudPageBlob
+### Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob
 
-### Microsoft.Azure.Storage.Blob.CloudBlobContainer
+### Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
 
 ### System.String
 

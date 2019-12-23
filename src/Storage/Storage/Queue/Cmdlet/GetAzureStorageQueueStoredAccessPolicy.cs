@@ -16,15 +16,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 {
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage.Queue;
-    using Microsoft.Azure.Storage.Queue.Protocol;
+    using Microsoft.WindowsAzure.Storage.Queue;
+    using Microsoft.WindowsAzure.Storage.Queue.Protocol;
     using System;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
     using System.Threading.Tasks;
 
-    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageQueueStoredAccessPolicy"), OutputType(typeof(SharedAccessQueuePolicy))]
+    [Cmdlet(VerbsCommon.Get, StorageNouns.QueueStoredAccessPolicy), OutputType(typeof(SharedAccessQueuePolicy))]
     public class GetAzureStorageQueueStoredAccessPolicyCommand : StorageQueueBaseCmdlet
     {
         [Alias("N", "Name")]

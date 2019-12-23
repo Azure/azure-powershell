@@ -1,14 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/disable-azstoragedeleteretentionpolicy
+online version:
 schema: 2.0.0
 ---
 
 # Disable-AzStorageDeleteRetentionPolicy
 
 ## SYNOPSIS
-Disable delete retention policy  for the Azure Storage Blob service.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ Disable-AzStorageDeleteRetentionPolicy [-PassThru] [-Context <IStorageContext>]
 ```
 
 ## DESCRIPTION
-The **Disable-AzStorageDeleteRetentionPolicy** cmdlet disables delete retention policy for the Azure Storage Blob service.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Disable delete retention policy for the Blob service
-```
-C:\PS>Disable-AzStorageDeleteRetentionPolicy
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command disables delete retention policy for the Blob service.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

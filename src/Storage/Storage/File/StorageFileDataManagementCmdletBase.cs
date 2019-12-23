@@ -16,14 +16,10 @@ using System.Reflection;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File
 {
-    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Microsoft.Azure.Storage.DataMovement;
-    using System;
+    using Microsoft.WindowsAzure.Storage.DataMovement;
     using System.Globalization;
     using System.Management.Automation;
-    using System.Threading.Tasks;
 
     public abstract class StorageFileDataManagementCmdletBase : AzureStorageFileCmdletBase
     {
@@ -41,7 +37,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             private set;
         }
 
-
         /// <summary>
         /// Gets or sets whether to force overwrite the existing file.
         /// </summary>
@@ -52,9 +47,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             set;
         }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public virtual SwitchParameter AsJob { get; set; }
-        
         /// <summary>
         /// Confirm the overwrite operation
         /// </summary>
@@ -66,26 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             return this.Force || this.OutputStream.ConfirmAsync(string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, Util.ConvertToString(destination))).Result;
         }
 
-        /// <summary>
-        /// Confirm the overwrite operation
-        /// </summary>
-        /// <param name="source">Indicating the source.</param>
-        /// <param name="destination">Indicating the destination.</param>
-        /// <returns>Returns a value indicating whether to overwrite.</returns>
-        protected async Task<bool> ConfirmOverwriteAsync(object source, object destination)
-        {
-            return this.Force || await this.OutputStream.ConfirmAsync(string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, Util.ConvertToString(destination)));
-        }
-
         protected override void BeginProcessing()
-        {
-            if (!AsJob.IsPresent)
-            {
-                DoBeginProcessing();
-            }
-        }
-
-        protected void DoBeginProcessing()
         {
             base.BeginProcessing();
 
@@ -94,14 +67,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         }
 
         protected override void EndProcessing()
-        {
-            if (!AsJob.IsPresent)
-            {
-                DoEndProcessing();
-            }
-        }
-
-        protected  void DoEndProcessing()
         {
             try
             {
@@ -120,11 +85,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             transferContext.ClientRequestId = CmdletOperationContext.ClientRequestId;
             if (this.Force)
             {
-                transferContext.ShouldOverwriteCallbackAsync = TransferContext.ForceOverwrite;
+                transferContext.ShouldOverwriteCallback = TransferContext.ForceOverwrite;
             }
             else
             {
-                transferContext.ShouldOverwriteCallbackAsync = ConfirmOverwriteAsync;
+                transferContext.ShouldOverwriteCallback = ConfirmOverwrite;
             }
 
             transferContext.ProgressHandler = new TransferProgressHandler((transferProgress) =>
@@ -139,13 +104,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             });
 
             return transferContext;
-        }
-
-        // Dynamic Parameters which are only available on Windows.
-        public class WindowsOnlyParameters
-        {
-            [Parameter(HelpMessage = "Keep the source File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in destination File. This parameter is only available on Windows.")]
-            public SwitchParameter PreserveSMBAttribute { get; set; }
         }
     }
 }

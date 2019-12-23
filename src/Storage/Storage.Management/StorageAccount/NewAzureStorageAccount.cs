@@ -51,12 +51,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Sku Name.")]
         [Alias(StorageAccountTypeAlias, AccountTypeAlias, Account_TypeAlias)]
-        [ValidateSet(StorageModels.SkuName.StandardLRS,
-            StorageModels.SkuName.StandardZRS,
-            StorageModels.SkuName.StandardGRS,
-            StorageModels.SkuName.StandardRAGRS,
-            StorageModels.SkuName.PremiumLRS,
-            StorageModels.SkuName.PremiumZRS,
+        [ValidateSet(AccountTypeString.StandardLRS,
+            AccountTypeString.StandardZRS,
+            AccountTypeString.StandardGRS,
+            AccountTypeString.StandardRAGRS,
+            AccountTypeString.PremiumLRS,
             IgnoreCase = true)]
         public string SkuName { get; set; }
 
@@ -72,24 +71,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Mandatory = false,
             HelpMessage = "Storage Account Kind.")]
-        [ValidateSet(StorageModels.Kind.Storage,
-            StorageModels.Kind.StorageV2,
-            StorageModels.Kind.BlobStorage,
-            StorageModels.Kind.BlockBlobStorage,
-            StorageModels.Kind.FileStorage,
+        [ValidateSet(AccountKind.Storage,
+            AccountKind.StorageV2,
+            AccountKind.BlobStorage,
             IgnoreCase = true)]
-        public string Kind
-        {
-            get
-            {
-                return kind;
-            }
-            set
-            {
-                kind = value;
-            }
-        }
-        private string kind = StorageModels.Kind.StorageV2;
+        public string Kind { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -120,12 +106,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account EnableHttpsTrafficOnly.")]
         public bool EnableHttpsTrafficOnly
         {
             get
             {
-                return enableHttpsTrafficOnly != null ? enableHttpsTrafficOnly.Value : false;
+                return enableHttpsTrafficOnly.Value;
             }
             set
             {
@@ -147,43 +134,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             get; set;
         }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Enable HierarchicalNamespace for the Storage account.")]
-        [ValidateNotNullOrEmpty]
-        public bool EnableHierarchicalNamespace
-        {
-            get
-            {
-                return enableHierarchicalNamespace != null ? enableHierarchicalNamespace.Value : false;
-            }
-            set
-            {
-                enableHierarchicalNamespace = value;
-            }
-        }
-        private bool? enableHierarchicalNamespace = null;
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.")]
-        [ValidateNotNullOrEmpty]
-        public bool EnableAzureActiveDirectoryDomainServicesForFile
-        {
-            get
-            {
-                return enableAzureActiveDirectoryDomainServicesForFile.Value;
-            }
-            set
-            {
-                enableAzureActiveDirectoryDomainServicesForFile = value;
-            }
-        }
-        private bool? enableAzureActiveDirectoryDomainServicesForFile = null;
-
-        [Parameter(Mandatory = false, HelpMessage = "Indicates whether or not the storage account can support large file shares with more than 5 TiB capacity. Once the account is enabled, the feature cannot be disabled. Currently only supported for LRS and ZRS replication types, hence account conversions to geo-redundant accounts would not be possible. Learn more in https://go.microsoft.com/fwlink/?linkid=2086047")]
-        public SwitchParameter EnableLargeFileShare { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -200,7 +150,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             StorageAccountCreateParameters createParameters = new StorageAccountCreateParameters()
             {
                 Location = this.Location,
-                Sku = new Sku(this.SkuName),
+                Sku = new Sku(ParseSkuName(this.SkuName)),
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
             };
 
@@ -209,7 +159,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 createParameters.CustomDomain = new CustomDomain()
                 {
                     Name = CustomDomainName,
-                    UseSubDomainName = UseSubDomain
+                    UseSubDomain = UseSubDomain
                 };
             }
             else if (UseSubDomain != null)
@@ -217,9 +167,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 throw new System.ArgumentException(string.Format("UseSubDomain must be set together with CustomDomainName."));
             }
 
-            if (kind != null)
+            if (Kind != null)
             {
-                createParameters.Kind = kind;
+                createParameters.Kind = ParseAccountKind(Kind);
             }
 
             if (this.AccessTier != null)
@@ -238,26 +188,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (NetworkRuleSet != null)
             {
                 createParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
-            }
-            if (enableHierarchicalNamespace != null)
-            {
-                createParameters.IsHnsEnabled = enableHierarchicalNamespace;
-            }
-            if (enableAzureActiveDirectoryDomainServicesForFile !=null)
-            {
-                createParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
-                if (enableAzureActiveDirectoryDomainServicesForFile.Value)
-                {
-                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.AADDS;
-                }
-                else
-                {
-                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
-                }
-            }
-            if(this.EnableLargeFileShare.IsPresent)
-            {
-                createParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

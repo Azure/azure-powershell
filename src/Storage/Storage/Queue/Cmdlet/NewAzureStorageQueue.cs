@@ -17,12 +17,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
     using Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage.Queue;
+    using Microsoft.WindowsAzure.Storage.Queue;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageQueue"),OutputType(typeof(AzureStorageQueue))]
+    [Cmdlet(VerbsCommon.New, "AzureStorageQueue"),
+        OutputType(typeof(AzureStorageQueue))]
     public class NewAzureStorageQueueCommand : StorageQueueBaseCmdlet
     {
         [Alias("N", "Queue")]

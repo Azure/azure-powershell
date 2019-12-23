@@ -169,7 +169,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not get storage account  from subscription. Please check the subscription settings using &quot;Get-AzSubscription&quot;..
+        ///   Looks up a localized string similar to Can not get storage account  from subscription. Please check the subscription settings using &quot;Get-AzureSubscription&quot;..
         /// </summary>
         internal static string CannotGetSotrageAccountFromSubscription {
             get {
@@ -187,7 +187,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not upload the directory &apos;{0}&apos; to azure. If you want to upload directory, please use &quot;ls -File -Recurse | Set-AzStorageBlobContent -Container containerName&quot;..
+        ///   Looks up a localized string similar to Can not upload the directory &apos;{0}&apos; to azure. If you want to upload directory, please use &quot;ls -File -Recurse | Set-AzureStorageBlobContent -Container containerName&quot;..
         /// </summary>
         internal static string CannotSendDirectory {
             get {
@@ -284,7 +284,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
                 return ResourceManager.GetString("ContainerAlreadyExists", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Can not find the container &apos;{0}&apos;..
         /// </summary>
@@ -293,16 +293,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
                 return ResourceManager.GetString("ContainerNotFound", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Context cannot be null.  Please log in using Connect-AzAccount.
-        /// </summary>
-        internal static string ContextCannotBeNull {
-            get {
-                return ResourceManager.GetString("ContextCannotBeNull", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Copy Blob..
         /// </summary>
@@ -430,7 +421,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Current Storage Account not found in subscription &apos;{0}&apos;. Please set it use &quot;Set-AzSubscription&quot;..
+        ///   Looks up a localized string similar to Current Storage Account not found in subscription &apos;{0}&apos;. Please set it use &quot;Set-AzureSubscription&quot;..
         /// </summary>
         internal static string CurrentStorageAccountNameNotFound {
             get {
@@ -457,7 +448,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not find your azure storage credential. Please set current storage account using &quot;Set-AzSubscription&quot; or set the &quot;AZURE_STORAGE_CONNECTION_STRING&quot; environment variable..
+        ///   Looks up a localized string similar to Can not find your azure storage credential. Please set current storage account using &quot;Set-AzureSubscription&quot; or set the &quot;AZURE_STORAGE_CONNECTION_STRING&quot; environment variable..
         /// </summary>
         internal static string DefaultStorageCredentialsNotFound {
             get {
@@ -655,7 +646,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Get-AzStorageContainerAcl.
+        ///   Looks up a localized string similar to Get-AzureStorageContainerAcl.
         /// </summary>
         internal static string GetAzureStorageContainerAclCmdletName {
             get {
@@ -664,7 +655,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Get-AzStorageContainer.
+        ///   Looks up a localized string similar to Get-AzureStorageContainer.
         /// </summary>
         internal static string GetAzureStorageContainerCmdletName {
             get {
@@ -995,7 +986,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
                 return ResourceManager.GetString("InvalidPageBlobSize", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Queue name &apos;{0}&apos; is invalid. Valid names start and end with a lower case letter or a number and has in between a lower case letter, number or dash with no consecutive dashes and is 3 through 63 characters long..
         /// </summary>

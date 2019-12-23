@@ -18,8 +18,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Storage.Blob;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Test.Service;
-using Microsoft.Azure.Storage;
-using Microsoft.Azure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
 {

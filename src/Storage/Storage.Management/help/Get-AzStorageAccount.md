@@ -1,15 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: E53D5040-C1E8-4DC1-8371-F41C00B666E3
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageaccount
+online version:
 schema: 2.0.0
 ---
 
 # Get-AzStorageAccount
 
 ## SYNOPSIS
-Gets a Storage account.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -26,30 +25,16 @@ Get-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-DefaultPro
 ```
 
 ## DESCRIPTION
-The **Get-AzStorageAccount** cmdlet gets a specified Storage account or all of the Storage accounts in a resource group or the subscription.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Get a specified Storage account
-```
-PS C:\>Get-AzStorageAccount -ResourceGroupName "RG01" -Name "mystorageaccount"
-```
-
-This command gets the specified Storage account.
-
-### Example 2: Get all Storage accounts in a resource group
-```
-PS C:\>Get-AzStorageAccount -ResourceGroupName "RG01"
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command gets all of the Storage accounts in a resource group.
-
-### Example 3:  Get all Storage accounts in the subscription
-```
-PS C:\>Get-AzStorageAccount
-```
-
-This command gets all of the Storage accounts in the subscription.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -69,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Storage account to get.
+Storage Account Name.
 
 ```yaml
 Type: System.String
@@ -84,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group that contains the Storage account to get.
+Resource Group Name.
 
 ```yaml
 Type: System.String
@@ -111,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -124,11 +109,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzStorageAccount](./New-AzStorageAccount.md)
-
-[Remove-AzStorageAccount](./Remove-AzStorageAccount.md)
-
-[Set-AzStorageAccount](./Set-AzStorageAccount.md)
-
-

@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/update-azstorageaccountnetworkruleset
+online version:
 schema: 2.0.0
 ---
 
 # Update-AzStorageAccountNetworkRuleSet
 
 ## SYNOPSIS
-Update the NetworkRule property of a Storage account
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -20,32 +20,16 @@ Update-AzStorageAccountNetworkRuleSet [-ResourceGroupName] <String> [-Name] <Str
 ```
 
 ## DESCRIPTION
-The **Update-AzStorageAccountNetworkRuleSet** cmdlet updates the NetworkRule property of a Storage account
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Update all properties of NetworkRule, input Rules with JSON
-```
-PS C:\> Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -Bypass Logging,Metrics -DefaultAction Allow -IpRule (@{IPAddressOrRange="10.0.0.0/24";Action="allow"},@{IPAddressOrRange="28.2.0.0/16";Action="allow"})
-    -VirtualNetworkRule (@{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1";Action="allow"},@{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualN
-    etworks/vnet2/subnets/subnet2";Action="allow"})
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command update all properties of NetworkRule, input Rules with JSON.
-
-### Example 2: Update Bypass property of NetworkRule
-```
-PS C:\> Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -Bypass AzureServices,Metrics
-```
-
-This command update Bypass property of NetworkRule (other properties won't change).
-
-### Example 3: Clean up rules of NetworkRule of a Storage account
-```
-PS C:\> Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -IpRule @() -VirtualNetworkRule @()
-```
-
-This command clean up rules of NetworkRule of a Storage account (other properties not change).
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -65,11 +49,7 @@ Accept wildcard characters: False
 ```
 
 ### -Bypass
-The Bypass value to update to the NetworkRule property of a Storage account.
-The allowed value are none or any combination of:
-• Logging
-• Metrics
-• Azureservices
+Storage Account NetworkRule Bypass.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleBypassEnum
@@ -85,10 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultAction
-The DefaultAction value to update to the NetworkRule property of a Storage account.
-The allowed Options:
-• Allow
-• Deny
+Storage Account NetworkRule DefaultAction.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum
@@ -119,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -IPRule
-The Array of IpRule objects to update to the NetworkRule Property of a Storage account.
+Storage Account NetworkRule IPRules.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]
@@ -134,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Storage account.
+Storage Account Name.
 
 ```yaml
 Type: System.String
@@ -149,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group contains the Storage account.
+Resource Group Name.
 
 ```yaml
 Type: System.String
@@ -164,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkRule
-The Array of VirtualNetworkRule objects to update to the NetworkRule Property of a Storage account.
+Storage Account NetworkRule VirtualNetworkRules.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]
@@ -210,7 +187,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

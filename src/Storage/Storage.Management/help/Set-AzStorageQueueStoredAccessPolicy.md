@@ -1,15 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: 4FB7E017-7D37-4EDB-BEC1-36629058B87C
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azstoragequeuestoredaccesspolicy
+online version:
 schema: 2.0.0
 ---
 
 # Set-AzStorageQueueStoredAccessPolicy
 
 ## SYNOPSIS
-Sets a stored access policy for an Azure storage queue.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -20,22 +19,21 @@ Set-AzStorageQueueStoredAccessPolicy [-Queue] <String> [-Policy] <String> [-Perm
 ```
 
 ## DESCRIPTION
-The **Set-AzStorageQueueStoredAccessPolicy** cmdlet sets a stored access policy for an Azure storage queue.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Set a stored access policy in the queue with full permission
-```
-PS C:\> Set-AzStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy07" -Permission arup
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command sets an access policy named Policy07 for storage queue named MyQueue.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Context
-Specifies an Azure storage context.
-To obtain a storage context, use the New-AzStorageContext cmdlet.
+Azure Storage Context Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -65,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpiryTime
-Specifies the time at which the stored access policy becomes invalid.
+Expiry Time
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
@@ -80,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoExpiryTime
-Indicates that the access policy has no expiration date.
+Set ExpiryTime as null for the policy
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -95,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoStartTime
-Indicates that this cmdlet sets the start time to be $Null.
+Set StartTime as null for the policy
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -110,8 +108,8 @@ Accept wildcard characters: False
 ```
 
 ### -Permission
-Specifies permissions in the stored access policy to access the storage queue.
-It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
+Permissions for a queue.
+Permissions can be any not-empty subset of "arup".
 
 ```yaml
 Type: System.String
@@ -126,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Specifies the name for the stored access policy.
+Policy Identifier
 
 ```yaml
 Type: System.String
@@ -141,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -Queue
-Specifies the Azure storage queue name.
+Queue Name
 
 ```yaml
 Type: System.String
@@ -156,7 +154,7 @@ Accept wildcard characters: False
 ```
 
 ### -StartTime
-Specifies the time at which the stored access policy becomes valid.
+Start Time
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
@@ -186,7 +184,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -201,7 +200,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -216,9 +215,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzStorageQueueStoredAccessPolicy](./Get-AzStorageQueueStoredAccessPolicy.md)
-
-[New-AzStorageQueueStoredAccessPolicy](./New-AzStorageQueueStoredAccessPolicy.md)
-
-[Remove-AzStorageQueueStoredAccessPolicy](./Remove-AzStorageQueueStoredAccessPolicy.md)

@@ -1,15 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: 006B4341-274C-4929-86EE-2E107BA9E485
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/remove-azstorageaccount
+online version:
 schema: 2.0.0
 ---
 
 # Remove-AzStorageAccount
 
 ## SYNOPSIS
-Removes a Storage account from Azure.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -19,16 +18,16 @@ Remove-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] 
 ```
 
 ## DESCRIPTION
-The **Remove-AzStorageAccount** cmdlet removes a Storage account from Azure.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Remove a Storage account
-```
-PS C:\>Remove-AzStorageAccount -ResourceGroupName "RG01" -AccountName "mystorageaccount"
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command removes the specified Storage account.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -63,6 +62,8 @@ Accept wildcard characters: False
 ```
 
 ### -Force
+Force to Delete the Storage Account
+
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
@@ -76,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Storage account to remove.
+Storage Account Name.
 
 ```yaml
 Type: System.String
@@ -91,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group that contains the Storage account to remove.
+Resource Group Name.
 
 ```yaml
 Type: System.String
@@ -115,7 +116,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -131,13 +132,13 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -150,11 +151,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzStorageAccount](./Get-AzStorageAccount.md)
-
-[New-AzStorageAccount](./New-AzStorageAccount.md)
-
-[Set-AzStorageAccount](./Set-AzStorageAccount.md)
-
-

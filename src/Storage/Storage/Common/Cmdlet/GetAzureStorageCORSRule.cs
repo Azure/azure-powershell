@@ -13,21 +13,20 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-using Microsoft.Azure.Storage.Shared.Protocol;
-using XTable = Microsoft.Azure.Cosmos.Table;
+using Microsoft.WindowsAzure.Storage.Shared.Protocol;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
     /// <summary>
     /// Show azure storage CORS rule properties
     /// </summary>
-    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageCORSRule"),OutputType(typeof(PSCorsRule))]
+    [Cmdlet(VerbsCommon.Get, StorageNouns.StorageCORSRule),
+        OutputType(typeof(PSCorsRule))]
     public class GetAzureStorageCORSRuleCommand : StorageCloudBlobCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = GetAzureStorageServiceLoggingCommand.ServiceTypeHelpMessage)]
@@ -44,17 +43,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            if (ServiceType != StorageServiceType.Table)
-            {
-                ServiceProperties currentServiceProperties = Channel.GetStorageServiceProperties(ServiceType, GetRequestOptions(ServiceType), OperationContext);
-                WriteObject(PSCorsRule.ParseCorsRules(currentServiceProperties.Cors));
-            }
-            else //Table use old XSCL
-            {
-                StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
-                XTable.ServiceProperties currentServiceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
-                WriteObject(PSCorsRule.ParseCorsRules(currentServiceProperties.Cors));
-            }
+            ServiceProperties currentServiceProperties = Channel.GetStorageServiceProperties(ServiceType, GetRequestOptions(ServiceType), OperationContext);
+            
+            WriteObject(PSCorsRule.ParseCorsRules(currentServiceProperties.Cors));
         }
     }
 }

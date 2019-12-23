@@ -1,15 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: 03EC0D20-C737-4B2B-B8D9-71D06A938FAD
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/remove-azstorageblob
+online version:
 schema: 2.0.0
 ---
 
 # Remove-AzStorageBlob
 
 ## SYNOPSIS
-Removes the specified storage blob.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -38,35 +37,21 @@ Remove-AzStorageBlob -CloudBlobContainer <CloudBlobContainer> [-Blob] <String> [
 ```
 
 ## DESCRIPTION
-The **Remove-AzStorageBlob** cmdlet removes the specified blob from a storage account in Azure.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Remove a storage blob by name
-```
-PS C:\>Remove-AzStorageBlob -Container "ContainerName" -Blob "BlobName"
-```
-
-This command removes a blob identified by its name.
-
-### Example 2: Remove a storage blob using the pipeline
-```
-PS C:\>Get-AzStorageBlob -Container "ContainerName" -Blob "BlobName" | Remove-AzStorageBlob
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command uses the pipeline.
-
-### Example 3: Remove storage blobs using the pipeline
-```
-PS C:\>Get-AzStorageContainer -Container container* | Remove-AzStorageBlob -Blob "BlobName"
-```
-
-This command uses the asterisk (*) wildcard character and the pipeline to retrieve the blob or blobs and then removes them.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Blob
-Specifies the name of the blob you want to remove.
+Blob name
 
 ```yaml
 Type: System.String
@@ -81,14 +66,12 @@ Accept wildcard characters: False
 ```
 
 ### -ClientTimeoutPerRequest
-Specifies the client-side time-out interval, in seconds, for one service request.
-If the previous call fails in the specified interval, this cmdlet retries the request.
-If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
+The client side maximum execution time for each request in seconds.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: ClientTimeoutPerRequestInSeconds
+Aliases:
 
 Required: False
 Position: Named
@@ -98,11 +81,10 @@ Accept wildcard characters: False
 ```
 
 ### -CloudBlob
-Specifies a cloud blob.
-To obtain a **CloudBlob** object, use the Get-AzStorageBlob cmdlet.
+CloudBlob Object
 
 ```yaml
-Type: Microsoft.Azure.Storage.Blob.CloudBlob
+Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlob
 Parameter Sets: BlobPipeline
 Aliases: ICloudBlob
 
@@ -114,11 +96,10 @@ Accept wildcard characters: False
 ```
 
 ### -CloudBlobContainer
-Specifies a **CloudBlobContainer** object from the Azure Storage Client library.
-You can use the Get-AzStorageContainer cmdlet to get it.
+CloudBlobContainer Object
 
 ```yaml
-Type: Microsoft.Azure.Storage.Blob.CloudBlobContainer
+Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
 Parameter Sets: ContainerPipeline
 Aliases:
 
@@ -130,10 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConcurrentTaskCount
-Specifies the maximum concurrent network calls.
-You can use this parameter to limit the concurrency to throttle local CPU and bandwidth usage by specifying the maximum number of concurrent network calls.
-The specified value is an absolute count and is not multiplied by the core count.
-This parameter can help reduce network connection problems in low bandwidth environments, such as 100 kilobits per second.
+The total amount of concurrent async tasks.
 The default value is 10.
 
 ```yaml
@@ -149,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -Container
-Specifies the name of the container.
+Container name
 
 ```yaml
 Type: System.String
@@ -164,8 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -Context
-Specifies the Azure storage context.
-You can use the New-AzStorageContext cmdlet to create it.
+Azure Storage Context Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -195,9 +172,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeleteSnapshot
-Specifies that all snapshots be deleted, but not the base blob.
-If this parameter is not specified, the base blob and its snapshots are deleted together.
-The user is prompted to confirm the delete operation.
+Only delete blob snapshots
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -212,7 +187,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Indicates that this cmdlet removes the blob and its snapshot without confirmation.
+Force to remove the blob and its snapshot
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -227,8 +202,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Indicates that this cmdlet returns a **Boolean** that reflects the success of the operation.
-By default, this cmdlet does not return a value.
+Return whether the specified blob is successfully removed
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -243,13 +217,12 @@ Accept wildcard characters: False
 ```
 
 ### -ServerTimeoutPerRequest
-Specifies the Azure profile for the cmdlet to read.
-If not specified, the cmdlet reads from the default profile.
+The server time out for each request in seconds.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: ServerTimeoutPerRequestInSeconds
+Aliases:
 
 Required: False
 Position: Named
@@ -268,7 +241,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -284,19 +257,19 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Storage.Blob.CloudBlob
+### Microsoft.WindowsAzure.Storage.Blob.CloudBlob
 
-### Microsoft.Azure.Storage.Blob.CloudBlobContainer
+### Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
@@ -307,9 +280,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzStorageBlob](./Get-AzStorageBlob.md)
-
-[Get-AzStorageBlobContent](./Get-AzStorageBlobContent.md)
-
-[Set-AzStorageBlobContent](./Set-AzStorageBlobContent.md)

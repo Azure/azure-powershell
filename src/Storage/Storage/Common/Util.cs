@@ -14,11 +14,10 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
-    using Microsoft.Azure.Storage;
-    using Microsoft.Azure.Storage.Auth;
-    using Microsoft.Azure.Storage.Blob;
-    using Microsoft.Azure.Storage.File;
-    using XTable = Microsoft.Azure.Cosmos.Table;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Auth;
+    using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage.File;
     using System;
     using System.Globalization;
     using System.Net;
@@ -198,22 +197,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             else
             {
                 return new IPAddressOrRange(inputIPACL.Substring(0, separator), inputIPACL.Substring(separator + 1));
-            }
-        }
-
-        public static XTable.IPAddressOrRange SetupTableIPAddressOrRangeForSAS(string inputIPACL)
-        {
-            if (string.IsNullOrEmpty(inputIPACL)) return null;
-
-            int separator = inputIPACL.IndexOf('-');
-
-            if (-1 == separator)
-            {
-                return new XTable.IPAddressOrRange(inputIPACL);
-            }
-            else
-            {
-                return new XTable.IPAddressOrRange(inputIPACL.Substring(0, separator), inputIPACL.Substring(separator + 1));
             }
         }
 

@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Security.Cryptography;
+
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 {
     using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.Azure.Storage.DataMovement;
+    using Microsoft.WindowsAzure.Storage.DataMovement;
     using System;
     using System.Globalization;
     using System.Management.Automation;
-    using System.Threading.Tasks;
-    using OpContext = Microsoft.Azure.Storage.OperationContext;
 
     public class StorageDataMovementCmdletBase : StorageCloudBlobCmdletBase, IDisposable
     {
@@ -42,11 +42,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         protected bool overwrite;
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public virtual SwitchParameter AsJob { get; set; }
-
-        public string ResolvedFileName { get; set; }
-
         /// <summary>
         /// Confirm the overwrite operation
         /// </summary>
@@ -56,17 +51,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         {
             string overwriteMessage = string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, Util.ConvertToString(destination));
             return overwrite || OutputStream.ConfirmAsync(overwriteMessage).Result;
-        }
-
-        /// <summary>
-        /// Confirm the overwrite operation
-        /// </summary>
-        /// <param name="msg">Confirmation message</param>
-        /// <returns>True if the opeation is confirmed, otherwise return false</returns>
-        protected async Task<bool> ConfirmOverwriteAsync(object source, object destination)
-        {
-            string overwriteMessage = string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, Util.ConvertToString(destination));
-            return overwrite || await OutputStream.ConfirmAsync(overwriteMessage);
         }
 
         /// <summary>
@@ -82,42 +66,23 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         protected override void BeginProcessing()
         {
-            DoBeginProcessing();
-        }
-
-        protected virtual void DoBeginProcessing()
-        {
-            CmdletOperationContext.Init();
-            CmdletCancellationToken = _cancellationTokenSource.Token;
-            WriteDebugLog(String.Format(Resources.InitOperationContextLog, GetType().Name, CmdletOperationContext.ClientRequestId));
-
-            if (_enableMultiThread)
-            {
-                SetUpMultiThreadEnvironment();
-            }
-
-            OpContext.GlobalSendingRequest +=
-                (sender, args) =>
-                {
-                    //https://github.com/Azure/azure-storage-net/issues/658
-                };
-
+            base.BeginProcessing();
             OutputStream.ConfirmWriter = (s1, s2, s3) => ShouldContinue(s2, s3);
 
             this.TransferManager = TransferManagerFactory.CreateTransferManager(this.GetCmdletConcurrency());
         }
-        
+
         protected SingleTransferContext GetTransferContext(DataMovementUserData userData)
         {
             SingleTransferContext transferContext = new SingleTransferContext();
             transferContext.ClientRequestId = CmdletOperationContext.ClientRequestId;
             if (overwrite)
             {
-                transferContext.ShouldOverwriteCallbackAsync = TransferContext.ForceOverwrite;
+                transferContext.ShouldOverwriteCallback = TransferContext.ForceOverwrite;
             }
             else
             {
-                transferContext.ShouldOverwriteCallbackAsync = ConfirmOverwriteAsync;
+                transferContext.ShouldOverwriteCallback = ConfirmOverwrite;
             }
 
             transferContext.ProgressHandler = new TransferProgressHandler((transferProgress) =>
@@ -135,14 +100,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         }
 
         protected override void EndProcessing()
-        {
-            if (!AsJob.IsPresent)
-            {
-                DoEndProcessing();
-            }
-        }
-
-        protected virtual void DoEndProcessing()
         {
             try
             {

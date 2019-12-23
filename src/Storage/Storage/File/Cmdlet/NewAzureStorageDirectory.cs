@@ -14,11 +14,11 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    using Microsoft.Azure.Storage.File;
+    using Microsoft.WindowsAzure.Storage.File;
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageDirectory", DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(CloudFileDirectory))]
+    [Cmdlet(VerbsCommon.New, Constants.FileDirectoryCmdletName, DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(CloudFileDirectory))]
     public class NewAzureStorageDirectory : AzureStorageFileCmdletBase
     {
         [Parameter(

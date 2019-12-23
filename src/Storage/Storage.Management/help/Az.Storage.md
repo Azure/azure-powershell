@@ -1,337 +1,250 @@
 ---
 Module Name: Az.Storage
-Module Guid: da67eaa7-4cb1-4bfa-a194-8bf3faae8ac5
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.storage
-Help Version: 4.2.3.0
+Module Guid: dfa9e4ea-1407-446d-9111-79122977ab20
+Download Help Link: {{ Update Download Link }}
+Help Version: {{ Please enter version of help manually (X.X.X.X) format }}
 Locale: en-US
 ---
 
 # Az.Storage Module
 ## Description
-This topic displays help topics for the Azure Storage Management Cmdlets.
+{{ Fill in the Description }}
 
 ## Az.Storage Cmdlets
-### [Add-AzRmStorageContainerLegalHold](Add-AzRmStorageContainerLegalHold.md)
-Adds legal hold tags to a Storage blob container
-
-### [Add-AzStorageAccountManagementPolicyAction](Add-AzStorageAccountManagementPolicyAction.md)
-Adds an action to the input ManagementPolicy Action Group object, or creates a ManagementPolicy Action Group object with the action. The object can be used in New-AzStorageAccountManagementPolicyRule.
-
 ### [Add-AzStorageAccountNetworkRule](Add-AzStorageAccountNetworkRule.md)
- Add IpRules or VirtualNetworkRules to the NetworkRule property of a Storage account
-
-### [Close-AzStorageFileHandle](Close-AzStorageFileHandle.md)
-Closes file handles of a file share, a file directory or a file.
-
-### [Disable-AzStorageBlobDeleteRetentionPolicy](Disable-AzStorageBlobDeleteRetentionPolicy.md)
-Disable delete retention policy for the Azure Storage Blob service.
+{{ Fill in the Description }}
 
 ### [Disable-AzStorageDeleteRetentionPolicy](Disable-AzStorageDeleteRetentionPolicy.md)
-Disable delete retention policy  for the Azure Storage Blob service.
-
-### [Disable-AzStorageStaticWebsite](Disable-AzStorageStaticWebsite.md)
-Disable static website for the Azure Storage account.
-
-### [Enable-AzStorageBlobDeleteRetentionPolicy](Enable-AzStorageBlobDeleteRetentionPolicy.md)
-Enable delete retention policy for the Azure Storage Blob service.
+{{ Fill in the Description }}
 
 ### [Enable-AzStorageDeleteRetentionPolicy](Enable-AzStorageDeleteRetentionPolicy.md)
-Enable delete retention policy  for the Azure Storage Blob service.
-
-### [Enable-AzStorageStaticWebsite](Enable-AzStorageStaticWebsite.md)
-Enable static website for the Azure Storage account.
-
-### [Get-AzRmStorageContainer](Get-AzRmStorageContainer.md)
-Gets or lists Storage blob containers
-
-### [Get-AzRmStorageContainerImmutabilityPolicy](Get-AzRmStorageContainerImmutabilityPolicy.md)
-Gets ImmutabilityPolicy of a Storage blob containers
-
-### [Get-AzRmStorageShare](Get-AzRmStorageShare.md)
-Gets or lists Storage file shares.
+{{ Fill in the Description }}
 
 ### [Get-AzStorageAccount](Get-AzStorageAccount.md)
-Gets a Storage account.
+{{ Fill in the Description }}
 
 ### [Get-AzStorageAccountKey](Get-AzStorageAccountKey.md)
-Gets the access keys for an Azure Storage account.
-
-### [Get-AzStorageAccountManagementPolicy](Get-AzStorageAccountManagementPolicy.md)
-Gets the management policy of an Azure Storage account.
+{{ Fill in the Description }}
 
 ### [Get-AzStorageAccountNameAvailability](Get-AzStorageAccountNameAvailability.md)
-Checks the availability of a Storage account name.
+{{ Fill in the Description }}
 
 ### [Get-AzStorageAccountNetworkRuleSet](Get-AzStorageAccountNetworkRuleSet.md)
-Get the NetWorkRule property of a Storage account
+{{ Fill in the Description }}
 
 ### [Get-AzStorageBlob](Get-AzStorageBlob.md)
-Lists blobs in a container.
+{{ Fill in the Description }}
 
 ### [Get-AzStorageBlobContent](Get-AzStorageBlobContent.md)
-Downloads a storage blob.
+{{ Fill in the Description }}
 
 ### [Get-AzStorageBlobCopyState](Get-AzStorageBlobCopyState.md)
-Gets the copy status of an Azure Storage blob.
-
-### [Get-AzStorageBlobServiceProperty](Get-AzStorageBlobServiceProperty.md)
-Gets service properties for Azure Storage Blob services.
+{{ Fill in the Description }}
 
 ### [Get-AzStorageContainer](Get-AzStorageContainer.md)
-Lists the storage containers.
+{{ Fill in the Description }}
 
 ### [Get-AzStorageContainerStoredAccessPolicy](Get-AzStorageContainerStoredAccessPolicy.md)
-Gets the stored access policy or policies for an Azure storage container.
+{{ Fill in the Description }}
 
 ### [Get-AzStorageCORSRule](Get-AzStorageCORSRule.md)
-Gets CORS rules for a Storage service type.
-
-### [Get-AzStorageFile](Get-AzStorageFile.md)
-Lists directories and files for a path.
-
-### [Get-AzStorageFileContent](Get-AzStorageFileContent.md)
-Downloads the contents of a file.
-
-### [Get-AzStorageFileCopyState](Get-AzStorageFileCopyState.md)
-Gets the state of a copy operation.
-
-### [Get-AzStorageFileHandle](Get-AzStorageFileHandle.md)
-Lists file handles of a file share, a file directory or a file.
+{{ Fill in the Description }}
 
 ### [Get-AzStorageQueue](Get-AzStorageQueue.md)
-Lists storage queues.
+{{ Fill in the Description }}
 
 ### [Get-AzStorageQueueStoredAccessPolicy](Get-AzStorageQueueStoredAccessPolicy.md)
-Gets the stored access policy or policies for an Azure storage queue.
+{{ Fill in the Description }}
 
 ### [Get-AzStorageServiceLoggingProperty](Get-AzStorageServiceLoggingProperty.md)
-Gets logging properties for Azure Storage services.
+{{ Fill in the Description }}
 
 ### [Get-AzStorageServiceMetricsProperty](Get-AzStorageServiceMetricsProperty.md)
-Gets metrics properties for the Azure Storage service.
+{{ Fill in the Description }}
 
 ### [Get-AzStorageServiceProperty](Get-AzStorageServiceProperty.md)
-Gets properties for Azure Storage services.
-
-### [Get-AzStorageShare](Get-AzStorageShare.md)
-Gets a list of file shares.
+{{ Fill in the Description }}
 
 ### [Get-AzStorageShareStoredAccessPolicy](Get-AzStorageShareStoredAccessPolicy.md)
-Gets stored access policies for a Storage share.
+{{ Fill in the Description }}
 
 ### [Get-AzStorageTable](Get-AzStorageTable.md)
-Lists the storage tables.
+{{ Fill in the Description }}
 
 ### [Get-AzStorageTableStoredAccessPolicy](Get-AzStorageTableStoredAccessPolicy.md)
-Gets the stored access policy or policies for an Azure storage table.
+{{ Fill in the Description }}
 
 ### [Get-AzStorageUsage](Get-AzStorageUsage.md)
-Gets the Storage resource usage of the current subscription.
+{{ Fill in the Description }}
 
-### [Lock-AzRmStorageContainerImmutabilityPolicy](Lock-AzRmStorageContainerImmutabilityPolicy.md)
-Locks ImmutabilityPolicy of a Storage blob containers
+### [Get-AzureStorageFile](Get-AzureStorageFile.md)
+{{ Fill in the Description }}
 
-### [New-AzRmStorageContainer](New-AzRmStorageContainer.md)
-Creates a Storage blob container
+### [Get-AzureStorageFileContent](Get-AzureStorageFileContent.md)
+{{ Fill in the Description }}
 
-### [New-AzRmStorageShare](New-AzRmStorageShare.md)
-Creates a Storage file share.
+### [Get-AzureStorageFileCopyState](Get-AzureStorageFileCopyState.md)
+{{ Fill in the Description }}
+
+### [Get-AzureStorageShare](Get-AzureStorageShare.md)
+{{ Fill in the Description }}
 
 ### [New-AzStorageAccount](New-AzStorageAccount.md)
-Creates a Storage account.
+{{ Fill in the Description }}
 
 ### [New-AzStorageAccountKey](New-AzStorageAccountKey.md)
-Regenerates a storage key for an Azure Storage account.
-
-### [New-AzStorageAccountManagementPolicyFilter](New-AzStorageAccountManagementPolicyFilter.md)
-Creates a ManagementPolicy rule filter object, which can be used in New-AzStorageAccountManagementPolicyRule.
-
-### [New-AzStorageAccountManagementPolicyRule](New-AzStorageAccountManagementPolicyRule.md)
-Creates a ManagementPolicy rule object, which can be used in Set-AzStorageAccountManagementPolicy.
+{{ Fill in the Description }}
 
 ### [New-AzStorageAccountSASToken](New-AzStorageAccountSASToken.md)
-Creates an account-level SAS token.
+{{ Fill in the Description }}
 
 ### [New-AzStorageBlobSASToken](New-AzStorageBlobSASToken.md)
-Generates a SAS token for an Azure storage blob.
+{{ Fill in the Description }}
 
 ### [New-AzStorageContainer](New-AzStorageContainer.md)
-Creates an Azure storage container.
+{{ Fill in the Description }}
 
 ### [New-AzStorageContainerSASToken](New-AzStorageContainerSASToken.md)
-Generates an SAS token for an Azure storage container.
+{{ Fill in the Description }}
 
 ### [New-AzStorageContainerStoredAccessPolicy](New-AzStorageContainerStoredAccessPolicy.md)
-Creates a stored access policy for an Azure storage container.
+{{ Fill in the Description }}
 
 ### [New-AzStorageContext](New-AzStorageContext.md)
-Creates an Azure Storage context.
-
-### [New-AzStorageDirectory](New-AzStorageDirectory.md)
-Creates a directory.
+{{ Fill in the Description }}
 
 ### [New-AzStorageFileSASToken](New-AzStorageFileSASToken.md)
-Generates a shared access signature token for a Storage file.
-
-### [New-AzStorageQueue](New-AzStorageQueue.md)
-Creates a storage queue.
+{{ Fill in the Description }}
 
 ### [New-AzStorageQueueSASToken](New-AzStorageQueueSASToken.md)
-Generates a shared access signature token for an Azure storage queue.
+{{ Fill in the Description }}
 
 ### [New-AzStorageQueueStoredAccessPolicy](New-AzStorageQueueStoredAccessPolicy.md)
-Creates a stored access policy for an Azure storage queue.
-
-### [New-AzStorageShare](New-AzStorageShare.md)
-Creates a file share.
+{{ Fill in the Description }}
 
 ### [New-AzStorageShareSASToken](New-AzStorageShareSASToken.md)
-Generate Shared Access Signature token for Azure Storage share.
+{{ Fill in the Description }}
 
 ### [New-AzStorageShareStoredAccessPolicy](New-AzStorageShareStoredAccessPolicy.md)
-Creates a stored access policy on a Storage share.
+{{ Fill in the Description }}
 
 ### [New-AzStorageTable](New-AzStorageTable.md)
-Creates a storage table.
+{{ Fill in the Description }}
 
 ### [New-AzStorageTableSASToken](New-AzStorageTableSASToken.md)
-Generates an SAS token for an Azure Storage table.
+{{ Fill in the Description }}
 
 ### [New-AzStorageTableStoredAccessPolicy](New-AzStorageTableStoredAccessPolicy.md)
-Creates a stored access policy for an Azure storage table.
+{{ Fill in the Description }}
 
-### [Remove-AzRmStorageContainer](Remove-AzRmStorageContainer.md)
-Removes a Storage blob container
+### [New-AzureStorageDirectory](New-AzureStorageDirectory.md)
+{{ Fill in the Description }}
 
-### [Remove-AzRmStorageContainerImmutabilityPolicy](Remove-AzRmStorageContainerImmutabilityPolicy.md)
-Removes ImmutabilityPolicy of a Storage blob container with an unlocked policy
+### [New-AzureStorageQueue](New-AzureStorageQueue.md)
+{{ Fill in the Description }}
 
-### [Remove-AzRmStorageContainerLegalHold](Remove-AzRmStorageContainerLegalHold.md)
-Removes legal hold tags from a Storage blob container
-
-### [Remove-AzRmStorageShare](Remove-AzRmStorageShare.md)
-Removes a Storage file share.
+### [New-AzureStorageShare](New-AzureStorageShare.md)
+{{ Fill in the Description }}
 
 ### [Remove-AzStorageAccount](Remove-AzStorageAccount.md)
-Removes a Storage account from Azure.
-
-### [Remove-AzStorageAccountManagementPolicy](Remove-AzStorageAccountManagementPolicy.md)
-Removes the management policy of an Azure Storage account.
+{{ Fill in the Description }}
 
 ### [Remove-AzStorageAccountNetworkRule](Remove-AzStorageAccountNetworkRule.md)
-Remove IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage account
+{{ Fill in the Description }}
 
 ### [Remove-AzStorageBlob](Remove-AzStorageBlob.md)
-Removes the specified storage blob.
+{{ Fill in the Description }}
 
 ### [Remove-AzStorageContainer](Remove-AzStorageContainer.md)
-Removes the specified storage container.
+{{ Fill in the Description }}
 
 ### [Remove-AzStorageContainerStoredAccessPolicy](Remove-AzStorageContainerStoredAccessPolicy.md)
-Removes a stored access policy from an Azure storage container.
+{{ Fill in the Description }}
 
 ### [Remove-AzStorageCORSRule](Remove-AzStorageCORSRule.md)
-Removes CORS for a Storage service.
-
-### [Remove-AzStorageDirectory](Remove-AzStorageDirectory.md)
-Deletes a directory.
-
-### [Remove-AzStorageFile](Remove-AzStorageFile.md)
-Deletes a file.
-
-### [Remove-AzStorageQueue](Remove-AzStorageQueue.md)
-Removes a storage queue.
+{{ Fill in the Description }}
 
 ### [Remove-AzStorageQueueStoredAccessPolicy](Remove-AzStorageQueueStoredAccessPolicy.md)
-Removes a stored access policy from an Azure storage queue.
-
-### [Remove-AzStorageShare](Remove-AzStorageShare.md)
-Deletes a file share.
+{{ Fill in the Description }}
 
 ### [Remove-AzStorageShareStoredAccessPolicy](Remove-AzStorageShareStoredAccessPolicy.md)
-Removes a stored access policy from a Storage share.
+{{ Fill in the Description }}
 
 ### [Remove-AzStorageTable](Remove-AzStorageTable.md)
-Removes a storage table.
+{{ Fill in the Description }}
 
 ### [Remove-AzStorageTableStoredAccessPolicy](Remove-AzStorageTableStoredAccessPolicy.md)
-Removes a stored access policy from an Azure storage table.
+{{ Fill in the Description }}
 
-### [Revoke-AzStorageAccountUserDelegationKeys](Revoke-AzStorageAccountUserDelegationKeys.md)
-Revoke all User Delegation keys of a Storage account.
+### [Remove-AzureStorageDirectory](Remove-AzureStorageDirectory.md)
+{{ Fill in the Description }}
+
+### [Remove-AzureStorageFile](Remove-AzureStorageFile.md)
+{{ Fill in the Description }}
+
+### [Remove-AzureStorageQueue](Remove-AzureStorageQueue.md)
+{{ Fill in the Description }}
+
+### [Remove-AzureStorageShare](Remove-AzureStorageShare.md)
+{{ Fill in the Description }}
 
 ### [Set-AzCurrentStorageAccount](Set-AzCurrentStorageAccount.md)
-Modifies the current Storage account of the specified subscription.
-
-### [Set-AzRmStorageContainerImmutabilityPolicy](Set-AzRmStorageContainerImmutabilityPolicy.md)
-Creates or updates ImmutabilityPolicy of a Storage blob containers
+{{ Fill in the Description }}
 
 ### [Set-AzStorageAccount](Set-AzStorageAccount.md)
-Modifies a Storage account.
-
-### [Set-AzStorageAccountManagementPolicy](Set-AzStorageAccountManagementPolicy.md)
-Creates or modifies the management policy of an Azure Storage account.
+{{ Fill in the Description }}
 
 ### [Set-AzStorageBlobContent](Set-AzStorageBlobContent.md)
-Uploads a local file to an Azure Storage blob.
+{{ Fill in the Description }}
 
 ### [Set-AzStorageContainerAcl](Set-AzStorageContainerAcl.md)
-Sets the public access permission to a storage container.
+{{ Fill in the Description }}
 
 ### [Set-AzStorageContainerStoredAccessPolicy](Set-AzStorageContainerStoredAccessPolicy.md)
-Sets a stored access policy for an Azure storage container.
+{{ Fill in the Description }}
 
 ### [Set-AzStorageCORSRule](Set-AzStorageCORSRule.md)
-Sets the CORS rules for a type of Storage service.
-
-### [Set-AzStorageFileContent](Set-AzStorageFileContent.md)
-Uploads the contents of a file.
+{{ Fill in the Description }}
 
 ### [Set-AzStorageQueueStoredAccessPolicy](Set-AzStorageQueueStoredAccessPolicy.md)
-Sets a stored access policy for an Azure storage queue.
+{{ Fill in the Description }}
 
 ### [Set-AzStorageServiceLoggingProperty](Set-AzStorageServiceLoggingProperty.md)
-Modifies logging for Azure Storage services.
+{{ Fill in the Description }}
 
 ### [Set-AzStorageServiceMetricsProperty](Set-AzStorageServiceMetricsProperty.md)
-Modifies metrics properties for the Azure Storage service.
+{{ Fill in the Description }}
 
 ### [Set-AzStorageShareQuota](Set-AzStorageShareQuota.md)
-Sets the storage capacity for a share.
+{{ Fill in the Description }}
 
 ### [Set-AzStorageShareStoredAccessPolicy](Set-AzStorageShareStoredAccessPolicy.md)
-Updates a stored access policy on a Storage share.
+{{ Fill in the Description }}
 
 ### [Set-AzStorageTableStoredAccessPolicy](Set-AzStorageTableStoredAccessPolicy.md)
-Sets the stored access policy for an Azure storage table.
+{{ Fill in the Description }}
+
+### [Set-AzureStorageFileContent](Set-AzureStorageFileContent.md)
+{{ Fill in the Description }}
 
 ### [Start-AzStorageBlobCopy](Start-AzStorageBlobCopy.md)
-Starts to copy a blob.
+{{ Fill in the Description }}
 
 ### [Start-AzStorageBlobIncrementalCopy](Start-AzStorageBlobIncrementalCopy.md)
-Start an Incremental copy operation from a Page blob snapshot to the specified destination Page blob.
+{{ Fill in the Description }}
 
-### [Start-AzStorageFileCopy](Start-AzStorageFileCopy.md)
-Starts to copy a source file.
+### [Start-AzureStorageFileCopy](Start-AzureStorageFileCopy.md)
+{{ Fill in the Description }}
 
 ### [Stop-AzStorageBlobCopy](Stop-AzStorageBlobCopy.md)
-Stops a copy operation.
+{{ Fill in the Description }}
 
-### [Stop-AzStorageFileCopy](Stop-AzStorageFileCopy.md)
-Stops a copy operation to the specified destination file.
-
-### [Update-AzRmStorageContainer](Update-AzRmStorageContainer.md)
-Modifies a Storage blob container
-
-### [Update-AzRmStorageShare](Update-AzRmStorageShare.md)
-Modifies a Storage file share.
+### [Stop-AzureStorageFileCopy](Stop-AzureStorageFileCopy.md)
+{{ Fill in the Description }}
 
 ### [Update-AzStorageAccountNetworkRuleSet](Update-AzStorageAccountNetworkRuleSet.md)
-Update the NetworkRule property of a Storage account
-
-### [Update-AzStorageBlobServiceProperty](Update-AzStorageBlobServiceProperty.md)
-Modifies the service properties for the Azure Storage Blob service.
+{{ Fill in the Description }}
 
 ### [Update-AzStorageServiceProperty](Update-AzStorageServiceProperty.md)
-Modifies the properties for the Azure Storage service.
+{{ Fill in the Description }}
 

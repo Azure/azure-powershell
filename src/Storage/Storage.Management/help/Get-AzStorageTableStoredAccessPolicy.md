@@ -1,15 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: BF5526C1-11B9-47A8-A5A6-CB275B470A9E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstoragetablestoredaccesspolicy
+online version:
 schema: 2.0.0
 ---
 
 # Get-AzStorageTableStoredAccessPolicy
 
 ## SYNOPSIS
-Gets the stored access policy or policies for an Azure storage table.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -19,29 +18,21 @@ Get-AzStorageTableStoredAccessPolicy [-Table] <String> [[-Policy] <String>] [-Co
 ```
 
 ## DESCRIPTION
-The **Get-AzStorageTableStoredAccessPolicy** cmdlet lists the stored access policy or policies for an Azure storage table.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Get a stored access policy in a storage table
-```
-PS C:\>Get-AzStorageTableStoredAccessPolicy -Table "Table02" -Policy "Policy50"
-```
-
-This command gets the access policy named Policy50 in the storage table named Table02.
-
-### Example 2: Get all stored access policies in a storage table
-```
-PS C:\>Get-AzStorageTableStoredAccessPolicy -Table "Table02"
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command gets all access policies in the table named Table02.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Context
-Specifies the Azure storage context.
-To obtain a storage context, use the New-AzStorageContext cmdlet.
+Azure Storage Context Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -71,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Specifies a stored access policy, which includes the permissions for this Shared Access Signature (SAS) token.
+Policy Identifier
 
 ```yaml
 Type: System.String
@@ -86,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -Table
-Specifies the Azure storage table name.
+Table Name
 
 ```yaml
 Type: System.String
@@ -101,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -116,13 +107,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzStorageTableStoredAccessPolicy](./New-AzStorageTableStoredAccessPolicy.md)
-
-[Remove-AzStorageTableStoredAccessPolicy](./Remove-AzStorageTableStoredAccessPolicy.md)
-
-[Set-AzStorageTableStoredAccessPolicy](./Set-AzStorageTableStoredAccessPolicy.md)
-
-[New-AzStorageContext](./New-AzStorageContext.md)
-
-

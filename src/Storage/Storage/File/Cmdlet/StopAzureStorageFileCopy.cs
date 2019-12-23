@@ -1,6 +1,6 @@
 ﻿using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.Azure.Storage.File;
-using Microsoft.Azure.Storage.RetryPolicies;
+using Microsoft.WindowsAzure.Storage.File;
+using Microsoft.WindowsAzure.Storage.RetryPolicies;
 using System;
 using System.Management.Automation;
 using System.Security.Permissions;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    [Cmdlet("Stop", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileCopy", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet(VerbsLifecycle.Stop, Constants.FileCopyCmdletName, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class StopAzureStorageFileCopyCommand : AzureStorageFileCmdletBase
     {
         [Parameter(

@@ -19,15 +19,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage;
-    using Microsoft.Azure.Storage.Blob;
-    using Microsoft.Azure.Storage.RetryPolicies;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage.RetryPolicies;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
     using System.Threading.Tasks;
 
-    [Cmdlet("Stop", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobCopy", SupportsShouldProcess = true, DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageBlob))]
+    [Cmdlet(VerbsLifecycle.Stop, StorageNouns.CopyBlob, SupportsShouldProcess = true, DefaultParameterSetName = NameParameterSet),
+       OutputType(typeof(AzureStorageBlob))]
     [Alias("Stop-CopyAzureStorageBlob")]
     public class StopAzureStorageBlobCopy : StorageCloudBlobCmdletBase
     {

@@ -1,9 +1,9 @@
 <!--
     Please leave this section at the top of the change log.
 
-    Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
+    Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
 
-    ## Upcoming Release
+    ## Current Release
     * Overview of change #1
         - Additional information about change #1
     * Overview of change #2
@@ -18,130 +18,113 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Update references in .psd1 to use relative path
-* Support generate Blob/Constainer Idenity based SAS token with Storage Context based on Oauth authentication
-    - New-AzStorageContainerSASToken
-    - New-AzStorageBlobSASToken
-* Support revoke Storage Account User Delegation Keys, so all Idenity SAS tokens are revoked
-    - Revoke-AzStorageAccountUserDelegationKeys
-* Upgrade to Microsoft.Azure.Management.Storage 14.2.0, to support new API version 2019-06-01.
-* Support Share QuotaGiB more than 5120 in Management plane File Share cmdlets, and add parameter alias "Quota" to parameter "QuotaGiB" 
-	- New-AzRmStorageShare
-	- Update-AzRmStorageShare
-* Add parameter alias "QuotaGiB" to parameter "Quota"
-	- Set-AzStorageShareQuota
-* Fix the issue that Set-AzStorageContainerAcl can clean up the stored Access Policy
-	- Set-AzStorageContainerAcl
 
-## Version 1.9.0
-* Support enable Large File share when create or update Storage account
-    -  New-AzStorageAccount
-    -  Set-AzStorageAccount
-* When close/get File handle, skip check the input path is File directory or File, to avoid failure with object in DeletePending status
-    -  Get-AzStorageFileHandle
-    -  Close-AzStorageFileHandle
+## Version 0.8.1
 
-## Version 1.8.0
-* Upgrade Storage Client Library to 11.1.0
-* List containers with Management plane API, will list with NextPageLink
-    -  Get-AzRmStorageContainer
-* List Storage accounts from subscription, will list with NextPageLink
-    -  Get-AzStorageAccount
+* TZL release for profile hybrid-2019-03-01
 
-## Version 1.7.0
-* Updated example in reference documentation for `Get-AzStorageAccountKey`
-* In upload/Downalod Azure File,support perserve the source File SMB properties (File Attributtes, File Creation Time, File Last Write Time) in the destination file
-    -  Set-AzStorageFileContent
-    -  Get-AzStorageFileContent
-* Fix Upload block blob with properties/metadate fail on container enabled ImmutabilityPolicy.
-    -  Set-AzStorageBlobContent
-* Support manage Azure File shares with Management plane API
-    -  New-AzRmStorageShare
-    -  Get-AzRmStorageShare
-    -  Update-AzRmStorageShare
-    -  Remove-AzRmStorageShare
+## Version 5.0.4
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
 
-## Version 1.6.0
-* Fixed miscellaneous typos across module
-* Update help for Get/Close-AzStorageFileHandle, by add more scenarios to cmdlet examples and update parameter descriptions
-* Support StandardBlobTier in upload blob and copy blob
-    -  Set-AzStorageBlobContent
-    -  Start-AzStorageBlobCopy
-* Support Rehydrate Priority in copy blob
-    -  Start-AzStorageBlobCopy
+## Version 5.0.3
+* Fixed issue with default resource groups not being set.
 
-## Version 1.5.1
-* Update example in reference documentation for `Get-AzStorageAccount` to use correct parameter name
+## Version 5.0.2
+* Updated to the latest version of the Azure ClientRuntime.
 
-## Version 1.5.0
-* Change 2 parameters "-IndexDocument" and "-ErrorDocument404Path" from required to optional  in cmdlet:
-    -  Enable-AzStorageStaticWebsite
-* Update help of Get-AzStorageBlobContent by add an example
-* Show more error information when cmdlet failed with StorageException 
-* Support create or update Storage account with Azure Files AAD DS Authentication
-    -  New-AzStorageAccount
-    -  Set-AzStorageAccount
-* Support list or close file handles of a file share, file directory or a file
-    - Get-AzStorageFileHandle
-    - Close-AzStorageFileHandle
+## Version 5.0.1
+* Updated all help files to include full parameter types and correct input/output types.
+* Add Ps1XmlAttribute to cmdlets output types properties
+* Show StorageAccount cmdlet output in table view
+    - Get-AzureRmStorageAccount
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
 
-## Version 1.4.0
-* Support Kind FileStorage and SkuName Premium_ZRS when create Storage account
-    - New-AzStorageAccount
-* Clarified description of blob immutability cmdlet
-    -  Remove-AzRmStorageContainerImmutabilityPolicy
+## Version 5.0.0
+* Set minimum dependency of module to PowerShell 5.0
+* Introduced multiple breaking changes
+    - Please refer to the migration guide for more information
 
-## Version 1.3.0
-* Upgrade to Storage Client Library 10.0.1 (the namespace of all objects from this SDK change from "Microsoft.WindowsAzure.Storage.*" to "Microsoft.Azure.Storage.*")
-* Upgrade to Microsoft.Azure.Management.Storage 11.0.0, to support new API version 2019-04-01.
-* The default Storage account Kind in Create Storage account change from 'Storage' to 'StorageV2'
-    - New-AzStorageAccount
-* Change the Storage account cmdlet output Sku.Name to be aligned with input SkuName by add '-', like "StandardLRS" change to "Standard_LRS"
-    - New-AzStorageAccount
-    - Get-AzStorageAccount
-    - Set-AzStorageAccount
+## Version 4.2.3
+* Updated to the latest version of the Azure ClientRuntime
 
-## Version 1.2.0
-* Report detail error when create Storage context with parameter -UseConnectedAccount, but without login Azure account
-    - New-AzStorageContext
-* Support Manage Blob Service Properties of a specified Storage account with Management plane API
-    - Update-AzStorageBlobServiceProperty
-    - Get-AzStorageBlobServiceProperty
-    - Enable-AzStorageBlobDeleteRetentionPolicy
-    - Disable-AzStorageBlobDeleteRetentionPolicy
-* -AsJob support for Blob and file upload and download cmdlets
-    - Get-AzStorageBlobContent
-    - Set-AzStorageBlobContent
-    - Get-AzStorageFileContent
-    - Set-AzStorageFileContent
+## Version 4.2.2
+* Fix examples to reflect required lowercase syntax in StorageAccountName
+* Fix issue with Default Resource Group in CloudShell
 
-## Version 1.1.0
-* Support Get/Set/Remove Management Policy on a Storage account
-    - Set-AzStorageAccountManagementPolicy
-    - Get-AzStorageAccountManagementPolicy
-    - Remove-AzStorageAccountManagementPolicy
-    - Add-AzStorageAccountManagementPolicyAction
-    - New-AzStorageAccountManagementPolicyFilter
-    - New-AzStorageAccountManagementPolicyRule
+## Version 4.2.1
+* Obsolete following parameters in new and set Storage Account cmdlets: EnableEncryptionService and DisableEncryptionService, since Encryption at Rest is enabled by default and can't be disabled.
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
 
-## Version 1.0.4
-* Upgrade to Storage Client Library 9.4.2 and Microsoft.Azure.Cosmos.Table 0.10.1-preview
+## Version 4.2.0
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Fix a null reference issue of run cmdlet New-AzureRMStorageAccount with parameter -EnableEncryptionService None
+* Added -AsJob support for long-running Storage cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
+    - Affected cmdlets are New-, Remove-, Add-, and Update- for Storage Account and Storage Account Network Rule.
 
-## Version 1.0.3
-* Support Kind BlockBlobStorage when create Storage account
-       - New-AzStorageAccount
+## Version 4.1.0
+* Upgrade SRP SDK to 7.1.0
+* Add StorageV2 account kind to resource mode storage account cmdlets
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
 
-## Version 1.0.2
-* Update incorrect online help URLs
-* Give detail error message when get/set classic Logging/Metric on Premium Storage Account, since Premium Storage Account not supoort classic Logging/Metric.
-    - Get/Set-AzStorageServiceLoggingProperty
-    - Get/Set-AzStorageServiceMetricsProperty
+## Version 4.0.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing
 
-## Version 1.0.1
-* Set the StorageAccountName of Storage context as the real Storage Account Name, when it's created with Sas Token, OAuth or Anonymous
-    - New-AzStorageContext
-* Create Sas Token of Blob Snapshot Object with '-FullUri' parameter, fix the returned Uri to be the sanpshot Uri
-    - New-AzStorageBlobSASToken
+## Version 4.0.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
 
-## Version 1.0.0
-* General availability of `Az.Storage` module
+## Version 3.4.1
+
+## Version 3.4.0
+
+## Version 3.3.1
+
+## Version 3.3.0
+* Add NeworkRule support to resource mode storage account cmdlets
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+    - Get-AzureRmStorageAccountNetworkRuleSet
+    - Update-AzureRmStorageAccountNetworkRuleSet
+    - Add-AzureRmStorageAccountNetworkRule
+    - Remove-AzureRmStorageAccountNetworkRule
+
+## Version 3.2.1
+
+## Version 3.2.0
+
+## Version 3.1.0
+* Add AssignIdentity setting support to resource mode storage account cmdlets
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+* Add Customer Key Support to resource mode storage account cmdlets
+    - Set-AzureRmStorageAccount
+    - New-AzureRmStorageAccountEncryptionKeySource
+
+## Version 3.0.2
+
+## Version 3.0.0
+* Upgrade SRP SDK to 6.3.0
+* New/Set-AzureRmStorageAccount:Add a new parameter to support EnableHttpsTrafficOnly
+* New/Set/Get-AzureRmStorageAccount: Returned Storage Account contains a new attribute EnableHttpsTrafficOnly
+
+## Version 2.8.0
+
+## Version 2.7.0
+
+## Version 2.6.0
+* Upgrade Microsoft.Azure.Management.Storage to version 6.1.0-preview
+* Add File Encryption features support to resource mode storage account cmdlets
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+
+
+## Version 2.5.0
+
+## Version 2.4.0
+
+## Version 2.3.0

@@ -1,15 +1,14 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-ms.assetid: 30CC0D80-505A-4988-B4EC-3B7BC5B76F5D
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/remove-azstoragetablestoredaccesspolicy
+online version:
 schema: 2.0.0
 ---
 
 # Remove-AzStorageTableStoredAccessPolicy
 
 ## SYNOPSIS
-Removes a stored access policy from an Azure storage table.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -20,22 +19,21 @@ Remove-AzStorageTableStoredAccessPolicy [-Table] <String> [-Policy] <String> [-P
 ```
 
 ## DESCRIPTION
-The **Remove-AzStorageTableStoredAccessPolicy** cmdlet removes a stored access policy from an Azure storage table.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Remove a stored access policy from a storage table
-```
-PS C:\>Remove-AzStorageTableStoredAccessPolicy -Table "MyTable" -Policy "Policy05"
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command removes policy named Policy05 from storage table named MyTable.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Context
-Specifies an Azure storage context.
-To obtain a storage context, use the New-AzStorageContext cmdlet.
+Azure Storage Context Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -50,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-communication with Azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -65,8 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Indicates that this cmdlet returns a **Boolean** that reflects the success of the operation.
-By default, this cmdlet does not return a value.
+Return whether the specified policy is successfully removed
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -81,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Specifies the name of the stored access policy that this cmdlet removes.
+Policy Identifier
 
 ```yaml
 Type: System.String
@@ -96,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -Table
-Specifies the Azure table name.
+Table Name
 
 ```yaml
 Type: System.String
@@ -120,7 +117,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -136,13 +133,13 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -157,11 +154,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzStorageTableStoredAccessPolicy](./Get-AzStorageTableStoredAccessPolicy.md)
-
-[New-AzStorageContext](./New-AzStorageContext.md)
-
-[New-AzStorageTableStoredAccessPolicy](./New-AzStorageTableStoredAccessPolicy.md)
-
-[Set-AzStorageTableStoredAccessPolicy](./Set-AzStorageTableStoredAccessPolicy.md)
