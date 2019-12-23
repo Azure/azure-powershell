@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzDataBoxEdgeTrigger
 
 ## SYNOPSIS
-Removes the trigger
+Removes an existing trigger on the device.
 
 ## SYNTAX
 
@@ -31,13 +31,13 @@ Remove-AzDataBoxEdgeTrigger [-InputObject] <PSDataBoxEdgeTrigger> [-AsJob]
 ```
 
 ## DESCRIPTION
-This **Remove-AzDataBoxEdgeTrigger** will remove the Trigger for the device.
+The **Remove-AzDataBoxEdgeTrigger** cmdlet removes an existing trigger on the Data Box Edge device.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDataBoxEdgeTrigger ResourceGroupName resource-group-name -DeviceName device-name -Name trigger-name
+PS C:\> Remove-AzDataBoxEdgeTrigger -ResourceGroupName resourceGroupName -DeviceName deviceName -Name triggerName
 ```
 
 ## PARAMETERS
@@ -178,8 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
