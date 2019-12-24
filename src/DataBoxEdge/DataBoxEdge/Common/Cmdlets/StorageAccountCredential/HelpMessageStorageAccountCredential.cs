@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.StorageA
     {
         internal const string StorageAccountNameHelpMessage = "Name of the storage account to be used";
         internal const string ObjectName = "StorageAccountCredential";
-        internal const string StorageAccountTypeHelpMessage = "Possible Storage Access type";
+        internal const string StorageAccountTypeHelpMessage = "Possible Storage Access type are GeneralPurposeStorage, BlockStorage";
 
         internal const string StorageAccountAccessKeyHelpMessage = "provide storage account access key";
 
