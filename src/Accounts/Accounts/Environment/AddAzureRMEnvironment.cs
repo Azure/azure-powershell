@@ -326,9 +326,9 @@ namespace Microsoft.Azure.Commands.Profile
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId,
                                    nameof(AzureAnalysisServicesEndpointResourceId));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointSuffix,
-                                    nameof(AzureAnalysisServicesEndpointSuffix));
+                                    nameof(AzureAttestationServiceEndpointSuffix));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId,
-                                    nameof(AzureAnalysisServicesEndpointResourceId));
+                                    nameof(AzureAttestationServiceEndpointResourceId));
                                 WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                             }
                         });
