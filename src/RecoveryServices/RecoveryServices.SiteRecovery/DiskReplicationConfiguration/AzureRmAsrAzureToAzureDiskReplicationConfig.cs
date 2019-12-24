@@ -171,7 +171,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             DiskEncryptionSecretUrl = this.DiskEncryptionSecretUrl,
                             DiskEncryptionVaultId = this.DiskEncryptionVaultId,
                             KeyEncryptionKeyUrl = this.KeyEncryptionKeyUrl,
-                            KeyEncryptionVaultId = this.KeyEncryptionVaultId
+                            KeyEncryptionVaultId = this.KeyEncryptionVaultId,
+                            RecoveryDiskEncryptionSetId = this.RecoveryDiskEncryptionSetId
                         };
                         break;
                 }

@@ -2417,6 +2417,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryTargetDiskAccountType;
 
         /// <summary>
+        /// Gets or sets RecoveryDiskEncryptionSetId. 
+        /// </summary>
+        public string RecoveryDiskEncryptionSetId;
+
+        /// <summary>
         /// Gets or sets DiskEncryptionVaultId.
         /// </summary>
         public string DiskEncryptionVaultId { get; set; }
@@ -2506,7 +2511,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.IsDiskKeyEncrypted = disk.IsDiskKeyEncrypted;
             this.KekKeyVaultArmId = disk.KekKeyVaultArmId;
             this.KeyIdentifier = disk.KeyIdentifier;
-            this.RecoveryDiskEncryptionSetId = disk.KeyIdentifier;
+            this.RecoveryDiskEncryptionSetId = disk.RecoveryDiskEncryptionSetId;
         }
 
         /// <summary>
