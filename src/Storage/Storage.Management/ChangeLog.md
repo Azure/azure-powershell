@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add breaking change warning message for DefaultAction Value change in a future release
+    - Update-AzStorageAccountNetworkRuleSet
 
 ## Version 1.10.0
 * Update references in .psd1 to use relative path
