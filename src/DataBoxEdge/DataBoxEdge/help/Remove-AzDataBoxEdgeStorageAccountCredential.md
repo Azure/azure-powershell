@@ -32,7 +32,7 @@ Remove-AzDataBoxEdgeStorageAccountCredential [-InputObject] <PSDataBoxEdgeStorag
 ```
 
 ## DESCRIPTION
-The **Remove-AzDataBoxEdgeBandwidthStorageAccountCredential** cmdlet removes the storage account credential for a Data Box Edge device.
+The **Remove-AzDataBoxEdgeStorageAccountCredential** cmdlet removes the storage account credential for a Data Box Edge device.
 
 ## EXAMPLES
 

@@ -139,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountType
-Possible Storage Access type
+Possible Storage Access type GeneralPurposeStorage, BlockStorage
 
 ```yaml
 Type: System.String
