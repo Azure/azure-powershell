@@ -108,7 +108,7 @@ if ([string]::IsNullOrEmpty($NugetExe)) {
     $NugetExe = Join-Path $PSScriptRoot -ChildPath "NuGet.exe"
 }
 
-$tmp = Join-Path -Path $Artifacts -ChildPath "tmp"
+$tmp = Join-Path -Path (Get-Item $Artifacts).FullName -ChildPath "tmp"
 
 # Validate tmp folder
 if (!(Test-Path -Path $tmp)) {
@@ -119,7 +119,7 @@ try {
     foreach ($artifact in Get-ChildItem $tmp -Directory) {
         $module_name = ($artifact).Name
         Write-Output "Repackaging $module_name"
-        Update-NugetPackage -TempRepoPath $Artifacts -ModuleName $module_name -DirPath $artifact -NugetExe $NugetExe
+        Update-NugetPackage -TempRepoPath (Get-Item $Artifacts).FullName -ModuleName $module_name -DirPath $tmp"\"$module_name -NugetExe $NugetExe
         Write-Output "Removing temporary folder $artifact"
         Remove-Item -Recurse $artifact -Force -ErrorAction Stop  
     } 
