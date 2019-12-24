@@ -59,56 +59,6 @@ function Test-CreateNewAppServicePlan
 
 <#
 .SYNOPSIS
-Tests creating a new Web Hosting Plan with HyperV container.
-#>
-function Test-CreateNewAppServicePlanHyperV
-{
-	# Setup
-	$rgname = Get-ResourceGroupName
-	$whpName = Get-WebHostPlanName
-	$location = Get-Location
-    $capacity = 1
-	$skuName = "PC2"
-    $tier = "PremiumContainer"
-
-	try
-	{
-		#Setup
-		New-AzResourceGroup -Name $rgname -Location $location
-
-		# Test
-		$job = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Small -HyperV  -AsJob
-		$job | Wait-Job
-		$createResult = $job | Receive-Job
-
-		# Assert
-		Assert-AreEqual $whpName $createResult.Name
-		Assert-AreEqual $tier $createResult.Sku.Tier
-		Assert-AreEqual $skuName $createResult.Sku.Name
-		Assert-AreEqual $capacity $createResult.Sku.Capacity
-
-		# Assert
-
-		$getResult = Get-AzAppServicePlan -ResourceGroupName $rgname -Name $whpName
-		Assert-AreEqual $whpName $getResult.Name
-		Assert-AreEqual PremiumContainer $getResult.Sku.Tier
-		Assert-AreEqual $skuName $getResult.Sku.Name
-		Assert-AreEqual $capacity $getResult.Sku.Capacity
-        Assert-AreEqual $true $getResult.IsXenon
-        Assert-AreEqual "windows" $getResult.Kind
-
-	}
-	finally
-	{
-		# Cleanup
-		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
-		Remove-AzResourceGroup -Name $rgname -Force
-	}
-}
-
-
-<#
-.SYNOPSIS
 Tests creating a new Web Hosting Plan.
 #>
 function Test-SetAppServicePlan
@@ -316,6 +266,59 @@ function Test-RemoveAppServicePlan
 	{
 		# Cleanup
 		Remove-AzResourceGroup -Name $rgname -Force
+	}
+}
+
+<#
+.SYNOPSIS
+Tests retrieving app service plan metrics
+#>
+function Test-GetAppServicePlanMetrics
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$location = Get-Location
+	$appServicePlanName = Get-WebHostPlanName
+	$tier = "Standard"
+	$apiversion = "2015-08-01"
+	$resourceType = "Microsoft.Web/sites"
+
+	try
+	{
+		#Setup
+		New-AzureRmResourceGroup -Name $rgname -Location $location
+		$serverFarm = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $appServicePlanName -Location  $location -Tier $tier
+		
+		$endTime = Get-Date
+		$startTime = $endTime.AddHours(-3)
+
+		$metricnames = @('CPU', 'Requests')
+
+		# Get app service plan metrics
+		$metrics = Get-AzureRmAppServicePlanMetrics -ResourceGroupName $rgname -Name $appServicePlanName -Metrics $metricnames -StartTime $startTime -EndTime $endTime -Granularity PT1M
+
+		$actualMetricNames = $metrics | Select -Expand Name | Select -Expand Value 
+
+		foreach ($i in $metricsnames)
+		{
+			Assert-True { $actualMetricsNames -contains $i}
+		}
+
+		# Get app service plan metrics via pipeline obj
+		$metrics = $serverFarm | Get-AzureRmAppServicePlanMetrics -Metrics $metricnames -StartTime $startTime -EndTime $endTime -Granularity PT1M
+
+		$actualMetricNames = $metrics | Select -Expand Name | Select -Expand Value 
+
+		foreach ($i in $metricsnames)
+		{
+			Assert-True { $actualMetricsNames -contains $i}
+		}
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $appServicePlanName -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Force
 	}
 }
 

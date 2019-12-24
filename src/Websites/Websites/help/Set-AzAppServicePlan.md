@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 ms.assetid: 32D45795-FBCD-4157-BF45-41BD1F61782E
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/set-azappserviceplan
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.websites/set-Azappserviceplan
 schema: 2.0.0
 ---
 
@@ -16,13 +16,14 @@ Sets an Azure App Service plan.
 ### S1
 ```
 Set-AzAppServicePlan [[-AdminSiteName] <String>] [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
- [[-WorkerSize] <String>] [-PerSiteScaling <Boolean>] [-AsJob] [-ResourceGroupName] <String> [-Name] <String>
+ [[-WorkerSize] <String>] [-PerSiteScaling <Boolean>] [-ResourceGroupName] <String> [-Name] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### S2
 ```
-Set-AzAppServicePlan [-AsJob] [-AppServicePlan] <PSAppServicePlan> [-DefaultProfile <IAzureContextContainer>]
+Set-AzAppServicePlan [-AppServicePlan] <AppServicePlan> [-AsJob]
+[-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -45,9 +46,9 @@ This command sets the PerSiteScaling option to true on the App Service plan name
 Admin Site Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: False
 Position: 2
@@ -60,9 +61,9 @@ Accept wildcard characters: False
 App Service Plan Object
 
 ```yaml
-Type: Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan
+Type: AppServicePlan
 Parameter Sets: S2
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -71,28 +72,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -105,9 +91,9 @@ Accept wildcard characters: False
 App Service Plan Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -120,9 +106,9 @@ Accept wildcard characters: False
 Number Of Workers
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: False
 Position: 4
@@ -135,9 +121,9 @@ Accept wildcard characters: False
 Per Site Scaling Boolean
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -150,9 +136,9 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -165,9 +151,10 @@ Accept wildcard characters: False
 Tier
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
+Accepted values: Free, Shared, Basic, Standard, Premium, PremiumV2
 
 Required: False
 Position: 3
@@ -180,12 +167,27 @@ Accept wildcard characters: False
 Worker Size
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
+Accepted values: Small, Medium, Large, ExtraLarge
 
 Required: False
 Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -196,11 +198,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan
+### ServerFarmWithRichSku
+Parameter 'AppServicePlan' accepts value of type 'ServerFarmWithRichSku' from the pipeline
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan
+### Microsoft.Azure.Management.WebSites.Models.ServerFarmWithRichSku
 
 ## NOTES
 

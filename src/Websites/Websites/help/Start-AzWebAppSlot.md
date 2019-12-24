@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 ms.assetid: 0FDDDEE1-CEAD-46DA-A7EB-EE477ED59749
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/start-azwebappslot
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.websites/start-Azwebappslot
 schema: 2.0.0
 ---
 
@@ -21,7 +21,7 @@ Start-AzWebAppSlot [-ResourceGroupName] <String> [-Name] <String> [-Slot] <Strin
 
 ### S2
 ```
-Start-AzWebAppSlot [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Start-AzWebAppSlot [-WebApp] <Site> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,9 +42,9 @@ This command starts the Slot named Slot001 pertaining to the Web App named Conto
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -57,9 +57,9 @@ Accept wildcard characters: False
 WebApp Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -72,9 +72,9 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -87,9 +87,9 @@ Accept wildcard characters: False
 WebApp Slot Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: True
 Position: 2
@@ -102,9 +102,9 @@ Accept wildcard characters: False
 WebApp Object
 
 ```yaml
-Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
+Type: Site
 Parameter Sets: S2
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -118,13 +118,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.WebApps.Models.PSSite
+### Site
+Parameter 'WebApp' accepts value of type 'Site' from the pipeline
 
 ## OUTPUTS
-
-### Microsoft.Azure.Commands.WebApps.Models.PSSite
 
 ## NOTES
 

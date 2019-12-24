@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 ms.assetid: D3FE0440-C663-4379-8F5F-2E66EF024E5D
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/new-azwebappbackup
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.websites/new-Azwebappbackup
 schema: 2.0.0
 ---
 
@@ -14,14 +14,14 @@ schema: 2.0.0
 
 ### FromResourceName
 ```
-New-AzWebAppBackup [[-BackupName] <String>] [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>]
- [-DefaultProfile <IAzureContextContainer>] [-StorageAccountUrl] <String>
+New-AzWebAppBackup [[-BackupName] <String>] [-ResourceGroupName] <String> [-Name] <String>
+ [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>] [-StorageAccountUrl] <String>
  [-Databases <DatabaseBackupSetting[]>] [<CommonParameters>]
 ```
 
 ### FromWebApp
 ```
-New-AzWebAppBackup [[-BackupName] <String>] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
+New-AzWebAppBackup [[-BackupName] <String>] [-WebApp] <Site> [-DefaultProfile <IAzureContextContainer>]
  [-StorageAccountUrl] <String> [-Databases <DatabaseBackupSetting[]>] [<CommonParameters>]
 ```
 
@@ -43,9 +43,9 @@ Creates a backup of the specified app ContosoWebApp that is within resource grou
 Backup Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 4
@@ -58,9 +58,9 @@ Accept wildcard characters: False
 Databases of type DatabaseBackupSetting[]
 
 ```yaml
-Type: Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]
+Type: DatabaseBackupSetting[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -73,9 +73,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -88,9 +88,9 @@ Accept wildcard characters: False
 WebApp Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: FromResourceName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -103,9 +103,9 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: FromResourceName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -118,9 +118,9 @@ Accept wildcard characters: False
 WebApp Slot Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: FromResourceName
-Aliases:
+Aliases: 
 
 Required: False
 Position: 2
@@ -133,9 +133,9 @@ Accept wildcard characters: False
 Storage Account Url
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 3
@@ -148,9 +148,9 @@ Accept wildcard characters: False
 WebApp Object
 
 ```yaml
-Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
+Type: Site
 Parameter Sets: FromWebApp
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -164,11 +164,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.WebApps.Models.PSSite
-
-### Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]
+### Site
+Parameter 'WebApp' accepts value of type 'Site' from the pipeline
 
 ## OUTPUTS
 
@@ -177,3 +174,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

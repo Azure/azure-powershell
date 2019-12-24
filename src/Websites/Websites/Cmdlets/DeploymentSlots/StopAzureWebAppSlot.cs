@@ -22,14 +22,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// <summary>
     /// this commandlet will let you stop an Azure Web app slot
     /// </summary>
-    [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSlot"), OutputType(typeof(PSSite))]
+    [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSlot")]
     public class StopAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             WebsitesClient.StopWebApp(ResourceGroupName, Name, Slot);
-            WriteObject(new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot)));
+            WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
         }
     }
 }

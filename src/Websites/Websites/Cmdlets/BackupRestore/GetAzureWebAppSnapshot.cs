@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            var list = WebsitesClient.GetSiteSnapshots(ResourceGroupName, Name, Slot, UseDisasterRecovery.IsPresent).Select(s => {
+            var list = WebsitesClient.GetSiteSnapshots(ResourceGroupName, Name, Slot).Select(s => {
                 return new AzureWebAppSnapshot()
                 {
                     ResourceGroupName = this.ResourceGroupName,

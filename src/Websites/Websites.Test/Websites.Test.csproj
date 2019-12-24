@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Websites</PsModuleName>
@@ -11,20 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Websites" Version="2.2.0" />
+    <Compile Remove="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AccessRestrictionTests\**" />
+    <EmbeddedResource Remove="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AccessRestrictionTests\**" />
+    <None Remove="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AccessRestrictionTests\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="ScenarioTests\Resources\HelloJava.war">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="ScenarioTests\Resources\nodejs-sample.zip">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AccessRestrictionTests\" />
+    <PackageReference Include="Microsoft.Azure.Management.Websites" Version="1.7.1-preview" />
   </ItemGroup>
 
 </Project>

@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         public string BlobName;
 
         [Parameter(Mandatory = false, HelpMessage = "The name of the App Service Plan for the restored app. If left empty, the app's current App Service Plan is used.", ValueFromPipelineByPropertyName = true)]
-        [ResourceNameCompleter("Microsoft.Web/serverfarms", "DoNotFilter")]
         public string AppServicePlan { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The databases to restore. Must match the list of databases in the backup.", ValueFromPipelineByPropertyName = true)]
@@ -53,7 +52,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
             base.ExecuteCmdlet();
             if (string.IsNullOrEmpty(AppServicePlan))
             {
-                var app = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
+                Site app = WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot);
                 this.AppServicePlan = app.ServerFarmId.Split('/').Last();
             }
             RestoreRequest request = new RestoreRequest()

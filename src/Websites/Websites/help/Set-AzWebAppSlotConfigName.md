@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 ms.assetid: 7DBF937E-2D01-4356-9A5F-C5A4CB6D1A10
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/set-azwebappslotconfigname
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.websites/set-Azwebappslotconfigname
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ Set-AzWebAppSlotConfigName [[-AppSettingNames] <String[]>] [[-ConnectionStringNa
 ### S2
 ```
 Set-AzWebAppSlotConfigName [[-AppSettingNames] <String[]>] [[-ConnectionStringNames] <String[]>]
- [-RemoveAllAppSettingNames] [-RemoveAllConnectionStringNames] [-WebApp] <PSSite>
+ [-RemoveAllAppSettingNames] [-RemoveAllConnectionStringNames] [-WebApp] <Site>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -34,7 +34,7 @@ The **Set-AzWebAppSlotConfigName** cmdlet marks App Settings and Connection Stri
 
 ### 1:
 ```
-PS C:\> Set-AzWebAppSlotConfigName -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -RemoveAllAppSettingNames -RemoveAllConnectionStringNames
+PS C:\> Set-AzWebAppSlotConfigName -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Slot "Slot001" -RemoveAllAppSettingNames -RemoveAllConnectionStringNames
 ```
 
 This command removes all app settings and connection strings for Web App ContosoWebApp associated with the resource group Default-Web-WestUS
@@ -45,9 +45,9 @@ This command removes all app settings and connection strings for Web App Contoso
 App Settings Names String Array
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 2
@@ -60,9 +60,9 @@ Accept wildcard characters: False
 Connection String Names String Array
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 3
@@ -75,9 +75,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -90,9 +90,9 @@ Accept wildcard characters: False
 WebApp Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -105,9 +105,9 @@ Accept wildcard characters: False
 Remove All App Setting Names Option
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 4
@@ -120,9 +120,9 @@ Accept wildcard characters: False
 Remove All Connection String Names Option
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 5
@@ -135,9 +135,9 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -150,9 +150,9 @@ Accept wildcard characters: False
 WebApp Object
 
 ```yaml
-Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
+Type: Site
 Parameter Sets: S2
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -166,16 +166,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String[]
-
-### System.String
-
-### Microsoft.Azure.Commands.WebApps.Models.PSSite
+### Site
+Parameter 'WebApp' accepts value of type 'Site' from the pipeline
 
 ## OUTPUTS
-
-### Microsoft.Azure.Management.WebSites.Models.SlotConfigNamesResource
 
 ## NOTES
 
 ## RELATED LINKS
+

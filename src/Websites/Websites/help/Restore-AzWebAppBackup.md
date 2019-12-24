@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 ms.assetid: DC400E32-CAB9-4354-99B2-ABA4AA776030
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/restore-azwebappbackup
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.websites/restore-Azwebappbackup
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ Restore-AzWebAppBackup [-AppServicePlan <String>] [-Databases <DatabaseBackupSet
 ### FromWebApp
 ```
 Restore-AzWebAppBackup [-AppServicePlan <String>] [-Databases <DatabaseBackupSetting[]>]
- [-IgnoreConflictingHostNames] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
+ [-IgnoreConflictingHostNames] [-WebApp] <Site> [-DefaultProfile <IAzureContextContainer>]
  [-StorageAccountUrl] <String> [-BlobName] <String> [-Overwrite] [<CommonParameters>]
 ```
 
@@ -43,11 +43,10 @@ Restores a backup of the specified app ContosoWebApp that is within resource gro
 
 ### -AppServicePlan
 The name of the App Service Plan for the restored app. If left empty, the app's current App Service Plan is used.
-
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -60,9 +59,9 @@ Accept wildcard characters: False
 Blob Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 4
@@ -75,9 +74,9 @@ Accept wildcard characters: False
 Databases of type DatabaseBackupSetting[]
 
 ```yaml
-Type: Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]
+Type: DatabaseBackupSetting[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -90,9 +89,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -105,9 +104,9 @@ Accept wildcard characters: False
 Ignore Conflicting HostNames Option
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -120,9 +119,9 @@ Accept wildcard characters: False
 WebApp Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: FromResourceName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -135,9 +134,9 @@ Accept wildcard characters: False
 Overwrite Option
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -150,9 +149,9 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: FromResourceName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -165,9 +164,9 @@ Accept wildcard characters: False
 WebApp Slot Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: FromResourceName
-Aliases:
+Aliases: 
 
 Required: False
 Position: 2
@@ -180,9 +179,9 @@ Accept wildcard characters: False
 Storage Account Url
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 3
@@ -195,9 +194,9 @@ Accept wildcard characters: False
 WebApp Object
 
 ```yaml
-Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
+Type: Site
 Parameter Sets: FromWebApp
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -211,18 +210,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]
-
-### System.Management.Automation.SwitchParameter
-
-### Microsoft.Azure.Commands.WebApps.Models.PSSite
+### Site
+Parameter 'WebApp' accepts value of type 'Site' from the pipeline
 
 ## OUTPUTS
-
-### System.Void
 
 ## NOTES
 
 ## RELATED LINKS
+

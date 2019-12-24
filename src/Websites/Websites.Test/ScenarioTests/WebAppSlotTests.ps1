@@ -26,6 +26,7 @@ function Test-GetWebAppSlot
 	$location = Get-Location
 	$planName = Get-WebHostPlanName
 	$tier = "Standard"
+	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 
 	try
@@ -90,7 +91,82 @@ function Test-GetWebAppSlot
 		Remove-AzResourceGroup -Name $rgname -Force
 	}
 }
+<#
+.SYNOPSIS
+Tests retrieving website metrics
+#>
+function Test-GetWebAppSlotMetrics
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$appname = Get-WebsiteName
+	$slotname = "staging"
+	$location = Get-Location
+	$planName = Get-WebHostPlanName
+	$tier = "Standard"
+	$apiversion = "2015-08-01"
+	$resourceType = "Microsoft.Web/sites"
 
+	try
+	{
+		#Setup
+		New-AzResourceGroup -Name $rgname -Location $location
+		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $planName -Location  $location -Tier $tier
+		
+		# Create new web app
+		$webapp = New-AzWebApp -ResourceGroupName $rgname -Name $appname -Location $location -AppServicePlan $planName 
+		
+		# Assert
+		Assert-AreEqual $appname $webapp.Name
+		Assert-AreEqual $serverFarm.Id $webapp.ServerFarmId
+		
+		# Create new deployment slot
+		$slot = New-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName 
+		$appWithSlotName = "$appname/$slotname"
+
+		# Assert
+		Assert-AreEqual $appWithSlotName $slot.Name
+		Assert-AreEqual $serverFarm.Id $slot.ServerFarmId
+
+		for($i = 0; $i -lt 10; $i++)
+		{
+			PingWebApp $slot
+		}
+
+		$endTime = Get-Date
+		$startTime = $endTime.AddHours(-3)
+
+		$metricnames = @('CPU', 'Requests')
+		
+		# Get web app metrics
+		$metrics = Get-AzWebAppSlotMetrics -ResourceGroupName $rgname -Name $appname -Slot $slotname -Metrics $metricnames -StartTime $startTime -EndTime $endTime -Granularity PT1M
+
+		$actualMetricNames = $metrics | Select -Expand Name | Select -Expand Value 
+
+		foreach ($i in $metricnames)
+		{
+			Assert-True { $actualMetricNames -contains $i}
+		}
+
+		# Get web app metrics via pipeline obj
+		$metrics = $slot | Get-AzWebAppSlotMetrics -Metrics $metricnames -StartTime $startTime -EndTime $endTime -Granularity PT1M
+
+		$actualMetricNames = $metrics | Select -Expand Name | Select -Expand Value 
+
+		foreach ($i in $metricnames)
+		{
+			Assert-True { $actualMetricNames -contains $i}
+		}
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -Force
+		Remove-AzWebApp -ResourceGroupName $rgname -Name $appname -Force
+		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
+		Remove-AzResourceGroup -Name $rgname -Force
+	}
+}
 <#
 .SYNOPSIS
 Start stop restart web app
@@ -104,6 +180,7 @@ function Test-StartStopRestartWebAppSlot
 	$location = Get-Location
 	$planName = Get-WebHostPlanName
 	$tier = "Standard"
+	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 
 	try
@@ -180,6 +257,7 @@ function Test-CloneWebAppToSlot
 	$location = Get-Location
 	$planName = Get-WebHostPlanName
 	$tier = "Premium"
+	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 
 	try
@@ -231,6 +309,7 @@ function Test-CloneWebAppSlot
 	$planName = Get-WebHostPlanName
 	$slotname = "staging"
 	$tier = "Premium"
+	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 
 	# Destination setup
@@ -296,6 +375,7 @@ function Test-CreateNewWebAppSlot
 	$slotname = "staging"
 	$planName = Get-WebHostPlanName
 	$tier = "Standard"
+	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 	try
 	{
@@ -318,7 +398,7 @@ function Test-CreateNewWebAppSlot
 		Assert-AreEqual $serverFarm.Id $result.ServerFarmId
 
 		# Create deployment slot
-		$job = New-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AsJob
+		$job = New-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName -AsJob
 		$job | Wait-Job
 		$slot1 = $job | Receive-Job
 
@@ -448,6 +528,7 @@ function Test-SetWebAppSlot
 		Assert-AreEqual $appWithSlotName $slot.Name
 		Assert-AreEqual $serverFarm2.Id $slot.ServerFarmId
         Assert-AreEqual $true $slot.HttpsOnly
+		Assert-NotNull  $slot.Identity
 
 		# Set config properties
 		$slot.SiteConfig.HttpLoggingEnabled = $true
@@ -465,16 +546,11 @@ function Test-SetWebAppSlot
 		$appSettings = @{ "setting1" = "valueA"; "setting2" = "valueB"}
 		$connectionStrings = @{ connstring1 = @{ Type="MySql"; Value="string value 1"}; connstring2 = @{ Type = "SQLAzure"; Value="string value 2"}}
 
-		$slot = Set-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppSettings $appSettings -AssignIdentity $true
-
-        # Assert
-        Assert-NotNull  $slot.Identity
-        Assert-AreEqual ($appSettings.Keys.Count) $slot.SiteConfig.AppSettings.Count
-
-        $slot = Set-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppSettings $appSettings -ConnectionStrings $connectionStrings -numberofworkers $numberOfWorkers
+		$slot = Set-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppSettings $appSettings -ConnectionStrings $connectionStrings -numberofworkers $numberOfWorkers
 
 		# Assert
 		Assert-AreEqual $appWithSlotName $slot.Name
+		Assert-AreEqual $appSettings.Keys.Count $slot.SiteConfig.AppSettings.Count
 		foreach($nvp in $slot.SiteConfig.AppSettings)
 		{
 			Assert-True { $appSettings.Keys -contains $nvp.Name }
@@ -823,152 +899,6 @@ function Test-SlotSwapWithPreview($swapWithPreviewAction)
 		Remove-AzResourceGroup -Name $rgname -Force
 	}
 
-}
-
-<#
-.SYNOPSIS
-Tests setting and Azure Storage Account in a new Windows container app. Currently the API fails when adding Azure Storage Accounts for slots. Will enable this test when the API is fixed.
-.DESCRIPTION
-SmokeTest
-#>
-function Test-SetAzureStorageWebAppHyperVSlot
-{
-	# Setup
-	$rgname = Get-ResourceGroupName
-	$wname = Get-WebsiteName
-	$slotname = "staging"
-	$location = Get-WebLocation
-	$whpName = Get-WebHostPlanName
-	$tier = "PremiumContainer"
-	$apiversion = "2015-08-01"
-	$resourceType = "Microsoft.Web/sites"
-	$containerImageName = "pstestacr.azurecr.io/tests/iis:latest"
-    $containerRegistryUrl = "https://pstestacr.azurecr.io"
-    $containerRegistryUser = "pstestacr"
-    $pass = "cYK4qnENExflnnOkBN7P+gkmBG0sqgIv"
-    $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
-    $dockerPrefix = "DOCKER|" 
-	$azureStorageAccountCustomId1 = "mystorageaccount"
-	$azureStorageAccountType1 = "AzureFiles"
-	$azureStorageAccountName1 = "myaccountname.file.core.windows.net"
-	$azureStorageAccountShareName1 = "myremoteshare"
-	$azureStorageAccountAccessKey1 = "AnAccessKey"
-	$azureStorageAccountMountPath1 = "C:\mymountpath"
-	$azureStorageAccountCustomId2 = "mystorageaccount2"
-	$azureStorageAccountType2 = "AzureFiles"
-	$azureStorageAccountName2 = "myaccountname2.file.core.windows.net"
-	$azureStorageAccountShareName2 = "myremoteshare2"
-	$azureStorageAccountAccessKey2 = "AnAccessKey2"
-	$azureStorageAccountMountPath2 = "C:\mymountpath2"
-
-	try
-	{
-		###
-		# Currently the API fails when adding Azure Storage Accounts for slots. Will enable this test when the API is fixed.
-		###
-
-		#Setup
-		New-AzResourceGroup -Name $rgname -Location $location
-		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Small -HyperV
-		
-		# Create new web app
-		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $containerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
-		$job | Wait-Job
-		$actual = $job | Receive-Job
-		
-		# Assert
-		Assert-AreEqual $wname $actual.Name
-		Assert-AreEqual $serverFarm.Id $actual.ServerFarmId
-
-		# Get new web app
-		$result = Get-AzWebApp -ResourceGroupName $rgname -Name $wname
-		
-		Write-Debug "Created the web app"
-
-		# Assert
-		Assert-AreEqual $wname $result.Name
-		Assert-AreEqual $serverFarm.Id $result.ServerFarmId
-        Assert-AreEqual $true $result.IsXenon
-        Assert-AreEqual ($dockerPrefix + $containerImageName)  $result.SiteConfig.WindowsFxVersion
-
-		# Create deployment slot
-		$job = New-AzWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotname -AsJob
-		$job | Wait-Job
-		$slot1 = $job | Receive-Job
-
-		Write-Debug "Created the slot"
-
-		$appWithSlotName = "$wname/$slotname"
-
-		Write-Debug $appWithSlotName
-
-		# Assert
-		Assert-AreEqual $appWithSlotName $slot1.Name
-		Assert-AreEqual $serverFarm.Id $slot1.ServerFarmId
-
-		$testStorageAccount1 = New-AzWebAppAzureStoragePath -Name $azureStorageAccountCustomId1 -Type $azureStorageAccountType1 -AccountName $azureStorageAccountName1 -ShareName $azureStorageAccountShareName1 -AccessKey $azureStorageAccountAccessKey1 -MountPath $azureStorageAccountMountPath1
-		$testStorageAccount2 = New-AzWebAppAzureStoragePath -Name $azureStorageAccountCustomId2 -Type $azureStorageAccountType2 -AccountName $azureStorageAccountName2 -ShareName $azureStorageAccountShareName2 -AccessKey $azureStorageAccountAccessKey2 -MountPath $azureStorageAccountMountPath2
-
-		Write-Debug "Created the new storage account paths"
-
-		Write-Debug $testStorageAccount1.Name
-		Write-Debug $testStorageAccount2.Name
-
-
-		# set Azure Storage accounts
-        $webApp = Set-AzWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotname -AzureStoragePath $testStorageAccount1, $testStorageAccount2
-
-		Write-Debug "Set the new storage account paths"
-
-
-		# get the web app
-		$result = Get-AzWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotname
-		$azureStorageAccounts = $result.AzureStoragePath
-
-		# Assert
-		Write-Debug $azureStorageAccounts[0].Name
-		Assert-AreEqual $azureStorageAccounts[0].Name $azureStorageAccountCustomId1
-
-		Write-Debug $azureStorageAccounts[0].Type
-		Assert-AreEqual $azureStorageAccounts[0].Type $azureStorageAccountType1
-		
-		Write-Debug $azureStorageAccounts[0].AccountName
-		Assert-AreEqual $azureStorageAccounts[0].AccountName $azureStorageAccountName1
-		
-		Write-Debug $azureStorageAccounts[0].ShareName
-		Assert-AreEqual $azureStorageAccounts[0].ShareName $azureStorageAccountShareName1
-		
-		Write-Debug $azureStorageAccounts[0].AccessKey 
-		Assert-AreEqual $azureStorageAccounts[0].AccessKey $azureStorageAccountAccessKey1
-		
-		Write-Debug $azureStorageAccounts[0].MountPath
-		Assert-AreEqual $azureStorageAccounts[0].MountPath $azureStorageAccountMountPath1
-
-		Write-Debug $azureStorageAccounts[1].Name
-		Assert-AreEqual $azureStorageAccounts[1].Name $azureStorageAccountCustomId2
-
-		Write-Debug $azureStorageAccounts[1].Type
-		Assert-AreEqual $azureStorageAccounts[1].Type $azureStorageAccountType2
-
-		Write-Debug $azureStorageAccounts[1].AccountName
-		Assert-AreEqual $azureStorageAccounts[1].AccountName $azureStorageAccountName2
-
-		Write-Debug $azureStorageAccounts[1].ShareName
-		Assert-AreEqual $azureStorageAccounts[1].ShareName $azureStorageAccountShareName2
-
-		Write-Debug $azureStorageAccounts[1].AccessKey
-		Assert-AreEqual $azureStorageAccounts[1].AccessKey $azureStorageAccountAccessKey2
-
-		Write-Debug $azureStorageAccounts[1].MountPath
-		Assert-AreEqual $azureStorageAccounts[1].MountPath $azureStorageAccountMountPath2
-	}
-	finally
-	{
-		# Cleanup
-		Remove-AzWebApp -ResourceGroupName $rgname -Name $wname -Force
-		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
-		Remove-AzResourceGroup -Name $rgname -Force
-	}
 }
 
 <#

@@ -22,14 +22,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you restart an Azure Web app
     /// </summary>
-    [Cmdlet("Restart", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp"), OutputType(typeof(PSSite))]
+    [Cmdlet("Restart", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp")]
     public class RestartAzureWebAppCmdlet : WebAppBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             WebsitesClient.RestartWebApp(ResourceGroupName, Name, null);
-            WriteObject(new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null)));
+            WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
         }
     }
 }

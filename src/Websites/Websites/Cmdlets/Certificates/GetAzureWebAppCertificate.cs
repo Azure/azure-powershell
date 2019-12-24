@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// this commandlet will let you get existing web app certificates using ARM APIs
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppCertificate")]
-    [OutputType(typeof(PSCertificate))]
     public class GetAzureWebAppCertificate : WebAppBaseClientCmdLet
     {
         [Parameter(Position = 0, Mandatory = false, HelpMessage = "The name of the resource group.")]
@@ -34,13 +33,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         protected override void ProcessRecord()
         {
-           var certificates = CmdletHelpers.GetCertificates(this.ResourcesClient, this.WebsitesClient, ResourceGroupName, Thumbprint);
-            var output = new List<PSCertificate>();
-            foreach (var certificate in certificates)
-            {
-               output.Add(new PSCertificate(certificate));
-            }
-            WriteObject(certificates);
+            WriteObject(CmdletHelpers.GetCertificates(this.ResourcesClient, this.WebsitesClient, ResourceGroupName, Thumbprint));
         }
     }
 }

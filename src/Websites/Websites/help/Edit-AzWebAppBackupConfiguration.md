@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 ms.assetid: BFC38930-DBB4-4EBB-8E29-73B901FAF486
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/edit-azwebappbackupconfiguration
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.websites/edit-Azwebappbackupconfiguration
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ Edit-AzWebAppBackupConfiguration [-FrequencyInterval] <Int32> [-FrequencyUnit] <
 ### FromWebApp
 ```
 Edit-AzWebAppBackupConfiguration [-FrequencyInterval] <Int32> [-FrequencyUnit] <String>
- [-RetentionPeriodInDays] <Int32> [[-StartTime] <DateTime>] [-KeepAtLeastOneBackup] [-WebApp] <PSSite>
+ [-RetentionPeriodInDays] <Int32> [[-StartTime] <DateTime>] [-KeepAtLeastOneBackup] [-WebApp] <Site>
  [-DefaultProfile <IAzureContextContainer>] [-StorageAccountUrl] <String>
  [[-Databases] <DatabaseBackupSetting[]>] [<CommonParameters>]
 ```
@@ -39,9 +39,9 @@ The **Edit-AzWebAppBackupConfiguration** cmdlet edits the current configuration 
 Databases of type DatabaseBackupSetting[]
 
 ```yaml
-Type: Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]
+Type: DatabaseBackupSetting[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 8
@@ -54,9 +54,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -69,9 +69,9 @@ Accept wildcard characters: False
 Frequency Interval
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 4
@@ -84,9 +84,9 @@ Accept wildcard characters: False
 Frequency Unit
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 5
@@ -99,9 +99,9 @@ Accept wildcard characters: False
 Keep At Least One Backup Option
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 9
@@ -114,9 +114,9 @@ Accept wildcard characters: False
 WebApp Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: FromResourceName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -129,9 +129,9 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: FromResourceName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -144,9 +144,9 @@ Accept wildcard characters: False
 Retention Period In Days
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 6
@@ -159,9 +159,9 @@ Accept wildcard characters: False
 WebApp Slot Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: FromResourceName
-Aliases:
+Aliases: 
 
 Required: False
 Position: 2
@@ -174,9 +174,9 @@ Accept wildcard characters: False
 StartTime in UTC
 
 ```yaml
-Type: System.DateTime
+Type: DateTime
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 7
@@ -189,9 +189,9 @@ Accept wildcard characters: False
 Storage Account Url
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 3
@@ -204,9 +204,9 @@ Accept wildcard characters: False
 WebApp Object
 
 ```yaml
-Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
+Type: Site
 Parameter Sets: FromWebApp
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -220,17 +220,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Int32
-
-### System.String
-
-### System.DateTime
-
-### System.Management.Automation.SwitchParameter
-
-### Microsoft.Azure.Commands.WebApps.Models.PSSite
-
-### Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]
+### Site
+Parameter 'WebApp' accepts value of type 'Site' from the pipeline
 
 ## OUTPUTS
 

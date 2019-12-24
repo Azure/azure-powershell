@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 ms.assetid: 258A4EA9-B82C-4664-8DCE-30D47A623868
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/switch-azwebappslot
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.websites/switch-Azwebappslot
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ Switch-AzWebAppSlot [-SourceSlotName] <String> [[-DestinationSlotName] <String>]
 ### S2
 ```
 Switch-AzWebAppSlot [-SourceSlotName] <String> [[-DestinationSlotName] <String>]
- [[-SwapWithPreviewAction] <SwapWithPreviewAction>] [[-PreserveVnet] <Boolean>] [-WebApp] <PSSite>
+ [[-SwapWithPreviewAction] <SwapWithPreviewAction>] [[-PreserveVnet] <Boolean>] [-WebApp] <Site>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ The **Switch-AzWebAppSlot** switches two slots associated with an Azure Web App.
 PS C:\> Switch-AzWebAppSlot -SourceSlotName "sourceslot" -DestinationSlotName "destinationslot" -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp"
 ```
 
-This command will switch slot "sourceslot" slot with "destinationslot" the Web App ContosoWebApp associated with the resource group Default-Web-WestUS
+This command will switch slot "sourceslot" slot with "destinationslot" for for Web App ContosoWebApp associated with the resource group Default-Web-WestUS
 
 ## PARAMETERS
 
@@ -45,9 +45,9 @@ This command will switch slot "sourceslot" slot with "destinationslot" the Web A
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -60,9 +60,9 @@ Accept wildcard characters: False
 Destination Slot Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 1
@@ -75,9 +75,9 @@ Accept wildcard characters: False
 WebApp Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -90,9 +90,9 @@ Accept wildcard characters: False
 Preserve Vnet Boolean
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 3
@@ -105,9 +105,9 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -120,9 +120,9 @@ Accept wildcard characters: False
 Source Slot Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -135,9 +135,9 @@ Accept wildcard characters: False
 Swap With Preview Action
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction]
+Type: SwapWithPreviewAction
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: ApplySlotConfig, CompleteSlotSwap, ResetSlotSwap
 
 Required: False
@@ -151,9 +151,9 @@ Accept wildcard characters: False
 WebApp Object
 
 ```yaml
-Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
+Type: Site
 Parameter Sets: S2
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -182,7 +182,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -198,14 +198,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.WebApps.Models.PSSite
+### Site
+Parameter 'WebApp' accepts value of type 'Site' from the pipeline
 
 ## OUTPUTS
-
-### System.Void
 
 ## NOTES
 
 ## RELATED LINKS
+

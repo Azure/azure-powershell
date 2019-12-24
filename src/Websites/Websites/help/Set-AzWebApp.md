@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: 4166119F-D26A-45A1-B040-D7B2459833D6
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/set-azwebapp
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.websites/set-Azwebapp
 schema: 2.0.0
 ---
 
@@ -15,22 +15,22 @@ Modifies an Azure Web App.
 
 ### S1
 ```
-Set-AzWebApp [[-AppServicePlan] <String>] [[-DefaultDocuments] <String[]>] [[-NetFrameworkVersion] <String>]
- [[-PhpVersion] <String>] [[-RequestTracingEnabled] <Boolean>] [[-HttpLoggingEnabled] <Boolean>]
- [[-DetailedErrorLoggingEnabled] <Boolean>] [[-AppSettings] <Hashtable>] [[-ConnectionStrings] <Hashtable>]
+Set-AzWebApp [[-AppServicePlan] <String>] [[-DefaultDocuments] <String[]>]
+ [[-NetFrameworkVersion] <String>] [[-PhpVersion] <String>] [[-RequestTracingEnabled] <Boolean>]
+ [[-HttpLoggingEnabled] <Boolean>] [[-DetailedErrorLoggingEnabled] <Boolean>] [[-AppSettings] <Hashtable>]
+ [[-ConnectionStrings] <Hashtable>]
  [[-HandlerMappings] <System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.HandlerMapping]>]
  [[-ManagedPipelineMode] <String>] [[-WebSocketsEnabled] <Boolean>] [[-Use32BitWorkerProcess] <Boolean>]
- [[-AutoSwapSlotName] <String>] [-ContainerImageName <String>] [-ContainerRegistryUrl <String>]
- [-ContainerRegistryUser <String>] [-ContainerRegistryPassword <SecureString>]
- [-EnableContainerContinuousDeployment <Boolean>] [-HostNames <String[]>] [-NumberOfWorkers <Int32>] [-AsJob]
- [-AssignIdentity <Boolean>] [-HttpsOnly <Boolean>] [-AzureStoragePath <WebAppAzureStoragePath[]>]
- [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-AutoSwapSlotName] <String>] [-HostNames <String[]>] [-NumberOfWorkers <Int32>] [-AsJob] [[-AssignIdentity] <Boolean>]
+ [[-HttpsOnly] <Boolean>] [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### S2
 ```
-Set-AzWebApp [[-Use32BitWorkerProcess] <Boolean>] [[-AutoSwapSlotName] <String>] [-NumberOfWorkers <Int32>]
- [-AsJob] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzWebApp [[-Use32BitWorkerProcess] <Boolean>] [[-AutoSwapSlotName] <String>]
+ [-NumberOfWorkers <Int32>] [-AsJob] [-WebApp] <Site> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,14 +39,6 @@ The **Set-AzWebApp** cmdlet sets an Azure Web App.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Set-AzWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -AppServicePlan "ContosoPlan"
-```
-
-This command changes the appservice plan associated with the Web App ContosoWebApp associated with the resource group Default-Web-WestUS. Use the link to learn more about changing the appservice plan and constraints associated with it.
-https://docs.microsoft.com/en-us/azure/app-service/app-service-plan-manage#move-an-app-to-another-app-service-plan
-
-### Example 2
 ```
 PS C:\> Set-AzWebApp -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -HttpLoggingEnabled $true
 ```
@@ -59,9 +51,9 @@ This command sets HttpLoggingEnabled to true for Web App ContosoWebApp associate
 App Service Plan Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: False
 Position: 2
@@ -71,12 +63,12 @@ Accept wildcard characters: False
 ```
 
 ### -AppSettings
-App Settings HashTable. Existing App Settings will be replaced, removing any settings that are not provided.
+App Settings HashTable
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: False
 Position: 9
@@ -89,9 +81,9 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -101,12 +93,12 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Enable/disable MSI on an existing azure webapp or functionapp
+Enable/disable MSI on an existing azure webapp or functionapp [PREVIEW]
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -119,27 +111,12 @@ Accept wildcard characters: False
 Destination slot name for auto swap
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 15
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AzureStoragePath
-Azure Storage to mount inside a Web App for Container. Use New-AzureRmWebAppAzureStoragePath to create it
-
-```yaml
-Type: Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]
-Parameter Sets: S1
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -149,72 +126,12 @@ Accept wildcard characters: False
 Connection Strings HashTable
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: False
 Position: 10
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ContainerImageName
-Container Image Name
-
-```yaml
-Type: System.String
-Parameter Sets: S1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ContainerRegistryPassword
-Private Container Registry Password
-
-```yaml
-Type: System.Security.SecureString
-Parameter Sets: S1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ContainerRegistryUrl
-Private Container Registry Server Url
-
-```yaml
-Type: System.String
-Parameter Sets: S1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ContainerRegistryUser
-Private Container Registry Username
-
-```yaml
-Type: System.String
-Parameter Sets: S1
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -224,9 +141,9 @@ Accept wildcard characters: False
 Default Documents String Array
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: False
 Position: 3
@@ -239,9 +156,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -254,27 +171,12 @@ Accept wildcard characters: False
 Detailed Error Logging Enabled Boolean
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: False
 Position: 8
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableContainerContinuousDeployment
-Enables/Disables container continuous deployment webhook
-
-```yaml
-Type: System.Boolean
-Parameter Sets: S1
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -286,7 +188,7 @@ Handler Mappings IList
 ```yaml
 Type: System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.HandlerMapping]
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: False
 Position: 11
@@ -299,9 +201,9 @@ Accept wildcard characters: False
 WebApp HostNames String Array
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -314,9 +216,9 @@ Accept wildcard characters: False
 HttpLoggingEnabled Boolean
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: False
 Position: 7
@@ -329,9 +231,9 @@ Accept wildcard characters: False
 Enable/disable redirecting all traffic to HTTPS on an existing azure webapp or functionapp
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -344,9 +246,9 @@ Accept wildcard characters: False
 Managed Pipeline Mode Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 Accepted values: Classic, Integrated
 
 Required: False
@@ -360,9 +262,9 @@ Accept wildcard characters: False
 WebApp Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -375,9 +277,9 @@ Accept wildcard characters: False
 Net Framework Version
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: False
 Position: 4
@@ -390,9 +292,9 @@ Accept wildcard characters: False
 The number of workers to be allocated
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -405,9 +307,9 @@ Accept wildcard characters: False
 Php Version
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: False
 Position: 5
@@ -420,9 +322,9 @@ Accept wildcard characters: False
 Request Tracing Enabled
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: False
 Position: 6
@@ -435,9 +337,9 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -450,9 +352,9 @@ Accept wildcard characters: False
 Use 32-bit Worker Process Boolean
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 14
@@ -465,9 +367,9 @@ Accept wildcard characters: False
 WebApp Object
 
 ```yaml
-Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
+Type: Site
 Parameter Sets: S2
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -480,9 +382,9 @@ Accept wildcard characters: False
 WebSocketsEnabled Boolean
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: S1
-Aliases:
+Aliases: 
 
 Required: False
 Position: 13
@@ -496,15 +398,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Int32
+### Int32
+Parameter 'NumberOfWorkers' accepts value of type 'Int32' from the pipeline
 
-### System.String
-
-### Microsoft.Azure.Commands.WebApps.Models.PSSite
+### Site
+Parameter 'WebApp' accepts value of type 'Site' from the pipeline
 
 ## OUTPUTS
-
-### Microsoft.Azure.Commands.WebApps.Models.PSSite
 
 ## NOTES
 

@@ -27,7 +27,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     [GenericBreakingChange("Get-AzWebAppSlotMetrics alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSlotMetric")]
     [Alias("Get-AzWebAppSlotMetrics")]
-    [OutputType(typeof(ResourceMetric))]
     public class GetAzureWebAppSlotMetricsCmdlet : WebAppSlotBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "Names of web app metrics")]

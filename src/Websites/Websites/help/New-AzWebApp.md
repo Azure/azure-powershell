@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 ms.assetid: D6D4E733-31AE-4ABE-8C78-583EC48C56B8
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/new-azwebapp
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.websites/new-Azwebapp
 schema: 2.0.0
 ---
 
@@ -16,24 +16,15 @@ Creates an Azure Web App.
 ### SimpleParameterSet (Default)
 ```
 New-AzWebApp [[-ResourceGroupName] <String>] [-Name] <String> [[-Location] <String>]
- [[-AppServicePlan] <String>] [-ContainerImageName <String>] [-EnableContainerContinuousDeployment] [-AsJob]
- [-GitRepositoryPath <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### PrivateRegistry
-```
-New-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [[-Location] <String>] [[-AppServicePlan] <String>]
- -ContainerImageName <String> -ContainerRegistryUrl <String> -ContainerRegistryUser <String>
- -ContainerRegistryPassword <SecureString> [-EnableContainerContinuousDeployment] [-AsJob]
+ [[-AppServicePlan] <String>] [-AsJob] [-GitRepositoryPath <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### WebAppParameterSet
 ```
-New-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [[-AppServicePlan] <String>]
- [[-SourceWebApp] <PSSite>] [[-TrafficManagerProfile] <String>] [-EnableContainerContinuousDeployment]
- [-IgnoreSourceControl] [-IgnoreCustomHostNames] [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>]
+New-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+ [[-AppServicePlan] <String>] [-SourceWebApp] <Site> [[-TrafficManagerProfile] <String>] [-IgnoreSourceControl]
+ [-IgnoreCustomHostNames] [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>]
  [[-AseResourceGroupName] <String>] [-IncludeSourceWebAppSlots] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -54,16 +45,12 @@ The command uses an existing App Service plan named ContosoServicePlan.
 ## PARAMETERS
 
 ### -AppServicePlan
-App Service Plan Name or App Service Plan Id. If a WebApp and App Service Plan are in different Resource Groups, use the ID instead of the name. 
-The App Service Plan Id can be retrieved using:
-$asp = Get-AzAppServicePlan -ResourceGroup  myRG -Name MyWebapp
-$asp.id returns the App Service Plan Id.
-
+App Service Plan Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 3
@@ -76,9 +63,9 @@ Accept wildcard characters: False
 App Settings Overrides HashTable
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: WebAppParameterSet
-Aliases:
+Aliases: 
 
 Required: False
 Position: 6
@@ -91,9 +78,9 @@ Accept wildcard characters: False
 App Service Environment Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: WebAppParameterSet
-Aliases:
+Aliases: 
 
 Required: False
 Position: 7
@@ -106,9 +93,9 @@ Accept wildcard characters: False
 App Service Environment Resource Group Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: WebAppParameterSet
-Aliases:
+Aliases: 
 
 Required: False
 Position: 8
@@ -121,83 +108,11 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ContainerImageName
-Container Image Name and optional tag, for example (image:tag)
-
-```yaml
-Type: System.String
-Parameter Sets: SimpleParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: PrivateRegistry
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ContainerRegistryPassword
-Private Container Registry Password
-
-```yaml
-Type: System.Security.SecureString
-Parameter Sets: PrivateRegistry
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ContainerRegistryUrl
-Private Container Registry Server Url
-
-```yaml
-Type: System.String
-Parameter Sets: PrivateRegistry
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ContainerRegistryUser
-Private Container Registry Username
-
-```yaml
-Type: System.String
-Parameter Sets: PrivateRegistry
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -208,24 +123,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableContainerContinuousDeployment
-Enables/Disables container continuous deployment webhook
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -235,12 +135,12 @@ Accept wildcard characters: False
 ```
 
 ### -GitRepositoryPath
-Path to the GitHub repository containing the web application to deploy.
+Path to the GitHub repository containign the web application to deploy.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SimpleParameterSet
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -253,9 +153,9 @@ Accept wildcard characters: False
 Ignore Custom Host Names Option
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: WebAppParameterSet
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -268,9 +168,9 @@ Accept wildcard characters: False
 Ignore Source Control Option
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: WebAppParameterSet
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -283,9 +183,9 @@ Accept wildcard characters: False
 Include Source WebApp Slots Option
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: WebAppParameterSet
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -298,24 +198,24 @@ Accept wildcard characters: False
 Location
 
 ```yaml
-Type: System.String
-Parameter Sets: SimpleParameterSet, PrivateRegistry
-Aliases:
+Type: String
+Parameter Sets: SimpleParameterSet
+Aliases: 
 
 Required: False
-Position: 0
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: WebAppParameterSet
-Aliases:
+Aliases: 
 
 Required: True
-Position: 0
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -325,7 +225,7 @@ Accept wildcard characters: False
 WebApp Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: WebAppName
 
@@ -340,9 +240,9 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SimpleParameterSet
-Aliases:
+Aliases: 
 
 Required: False
 Position: 0
@@ -352,9 +252,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.String
-Parameter Sets: PrivateRegistry, WebAppParameterSet
-Aliases:
+Type: String
+Parameter Sets: WebAppParameterSet
+Aliases: 
 
 Required: True
 Position: 0
@@ -367,11 +267,11 @@ Accept wildcard characters: False
 Source WebApp Object
 
 ```yaml
-Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
+Type: Site
 Parameter Sets: WebAppParameterSet
-Aliases:
+Aliases: 
 
-Required: False
+Required: True
 Position: 4
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -382,7 +282,7 @@ Accept wildcard characters: False
 Resource Id of existing traffic manager profile
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: WebAppParameterSet
 Aliases: TrafficManagerProfileName, TrafficManagerProfileId
 
@@ -397,7 +297,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -412,7 +312,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -428,11 +328,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.WebApps.Models.PSSite
+### Site
+Parameter 'SourceWebApp' accepts value of type 'Site' from the pipeline
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.WebApps.Models.PSSite
+### Microsoft.Azure.Management.WebSites.Models.Site
 
 ## NOTES
 

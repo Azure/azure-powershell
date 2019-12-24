@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.Websites
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/restore-azwebappsnapshot
+Module Name: Az.WebSites
+online version: https://docs.microsoft.com/en-us/powershell/module/Az.websites/restore-Azwebappsnapshot
 schema: 2.0.0
 ---
 
@@ -14,14 +14,14 @@ Restores a web app snapshot.
 
 ### FromResourceName
 ```
-Restore-AzWebAppSnapshot [-RecoverConfiguration] [-UseDisasterRecovery] [-Force] [-AsJob]
- [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>]
+Restore-AzWebAppSnapshot [-RecoverConfiguration] [-Force] [-AsJob] [-ResourceGroupName] <String>
+ [-Name] <String> [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>]
  [-InputObject] <AzureWebAppSnapshot> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromWebApp
 ```
-Restore-AzWebAppSnapshot [-RecoverConfiguration] [-UseDisasterRecovery] [-Force] [-AsJob] [-WebApp] <PSSite>
+Restore-AzWebAppSnapshot [-RecoverConfiguration] [-Force] [-AsJob] [-WebApp] <Site>
  [-DefaultProfile <IAzureContextContainer>] [-InputObject] <AzureWebAppSnapshot> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -45,9 +45,9 @@ Gets the latest snapshot of a web app named "ContosoApp" with a slot named "Stag
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -60,9 +60,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzContext, AzureCredential
 
 Required: False
 Position: Named
@@ -75,9 +75,9 @@ Accept wildcard characters: False
 Allows the original web app to be overwritten without displaying a warning.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -88,11 +88,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 The Azure Web App snapshot.
-
 ```yaml
-Type: Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot
+Type: AzureWebAppSnapshot
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 3
@@ -103,11 +102,10 @@ Accept wildcard characters: False
 
 ### -Name
 The name of the web app.
-
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: FromResourceName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -120,9 +118,9 @@ Accept wildcard characters: False
 Recover the web app's configuration in addition to files.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -133,11 +131,10 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
-
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: FromResourceName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -148,11 +145,10 @@ Accept wildcard characters: False
 
 ### -Slot
 The name of the web app slot.
-
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: FromResourceName
-Aliases:
+Aliases: 
 
 Required: False
 Position: 2
@@ -161,28 +157,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -UseDisasterRecovery
-Use to recover a snapshot from a scale unit that is offline.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WebApp
 The web app object
-
 ```yaml
-Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
+Type: Site
 Parameter Sets: FromWebApp
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -195,7 +175,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -211,7 +191,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -228,17 +208,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Management.Automation.SwitchParameter
-
-### System.String
-
-### Microsoft.Azure.Commands.WebApps.Models.PSSite
-
-### Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot
+Microsoft.Azure.Management.WebSites.Models.Site
+System.String
+Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot
+System.DateTime
 
 ## OUTPUTS
 
-### System.Void
+### System.Object
 
 ## NOTES
 
 ## RELATED LINKS
+

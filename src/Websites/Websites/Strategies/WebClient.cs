@@ -20,15 +20,12 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
 {
     public class WebClient : IClient
     {
-        public string SubscriptionId => Context.Subscription.Id;
-
         public WebClient(IAzureContext context)
         {
             Context = context;
         }
 
-        public IAzureContext Context { get; }
-
+        public IAzureContext Context { get; private set; }
         public T GetClient<T>() where T : ServiceClient<T>
         {
             return AzureSession.Instance.ClientFactory.CreateArmClient<T>(Context, AzureEnvironment.Endpoint.ResourceManager);

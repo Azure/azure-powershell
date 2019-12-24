@@ -1,7 +1,6 @@
 ﻿using Microsoft.Azure.Management.WebSites.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -27,7 +26,6 @@ namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
         public string Type { get; set; }
 
         public string AllowedValues { get; set; }
-        public string DefaultValue { get; set; }
     }
 
     internal class WebAppResource
@@ -58,16 +56,9 @@ namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
     {
         public string ServerFarmId { get; set; }
 
-        public object CloningInfo { get; set; }
+        public CloningInfo CloningInfo { get; set; }
 
         public HostingEnvironmentProfile HostingEnvironmentProfile { get; set; }
-    }
-
-    internal class WebAppCloningInfo
-    {
-        public string SourceWebAppId { get; set; }
-
-        public string CorrelationId { get; set; }
     }
 
 
@@ -93,21 +84,12 @@ namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
             return textWriter.ToString();
         }
 
-        internal static object CreateSlotCloneDeploymentTemplate(string location, string serverFarmId, string destinationWebAppName, string sourceWebAppId, string[] slotNames, HostingEnvironmentProfile hostingProfile, string apiVersion)
+        internal static string CreateSlotCloneDeploymentTemplate(string location, string serverFarmId, string destinationWebAppName, string sourceWebAppId, string[] slotNames, HostingEnvironmentProfile hostingProfile, string apiVersion)
         {
             var template = new DeploymentTemplate
             {
                 ContentVersion = ContentVersion,
                 Schema = "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                Parameters = new Dictionary<string, ParameterType>
-                {
-                    { "time", new ParameterType
-                        {
-                            Type = "string",
-                            DefaultValue = "[utcNow()]"
-                        }
-                    }
-                },
                 Variables = new Dictionary<string, object>
                 {
                     { "slotNames", slotNames },
@@ -124,10 +106,9 @@ namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
                        Name = WebAppSlotName,
                        Properties = new WebAppProperties
                        {
-                           CloningInfo = new WebAppCloningInfo
+                           CloningInfo = new CloningInfo
                            {
-                               SourceWebAppId = SourceWebAppSlotId,
-                               CorrelationId = "[guid(variables('slotNames')[copyIndex()], parameters('time'))]"
+                               SourceWebAppId = SourceWebAppSlotId
                            },
                            ServerFarmId = serverFarmId,
                            HostingEnvironmentProfile = hostingProfile
@@ -141,7 +122,7 @@ namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
                 }
             };
 
-            return template;
+            return template.ToJsonString();
         }
     }
 }

@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 Name,
                 () =>
                 {
-                    var webapp = new PSSite(WebsitesClient.GetWebApp(resourceGroupName, webAppName, slot));
+                    var webapp = WebsitesClient.GetWebApp(resourceGroupName, webAppName, slot);
                     var hostNameSslStates = CmdletHelpers.GetHostNameSslStatesFromSiteResponse(webapp, Name).ToList();
                     if (hostNameSslStates.Count > 0)
                     {
