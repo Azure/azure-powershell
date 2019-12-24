@@ -126,6 +126,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             base.ExecuteCmdlet();
 
+            WriteWarning("The DefaultAction value will change in a future release from: Allow = 1, Deny = 0, to: Allow = 0, Deny = 1.");
+
             if (ShouldProcess(this.Name, "Update Storage Account NetworkRule"))
             {
                 if (IPRule == null && VirtualNetworkRule == null && bypass == null && defaultAction == null)
