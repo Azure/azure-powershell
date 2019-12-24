@@ -12,6 +12,8 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+#This script will expand Az.*.nupkg under "artifacts" to a temporary folder "artifacts/tmp"
+
 param(
     [Parameter(Mandatory = $false, Position = 1)]
     [string]$Artifacts

@@ -12,6 +12,8 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+#This script will pack build artifacts under temporary folder "artifacts/tmp" and output Az.*.nupkg to "artifacts"
+
 param(
     [Parameter(Mandatory = $false, Position = 1)]
     [string]$Artifacts,
@@ -28,13 +30,10 @@ param(
 
 <#
 .SYNOPSIS Write out to a file using UTF-8 without BOM.
-
 .PARAMETER File
 The file to write the contents too.
-
 .PARAMETER Text
 The new file contents.
-
 #>
 function Out-FileNoBom {
     param(
@@ -47,16 +46,12 @@ function Out-FileNoBom {
 
 <#
 .SYNOPSIS Update license acceptance to be required.
-
 .PARAMETER TempRepoPath
 Path to the local temporary repository.
-
 .PARAMETER ModuleName
 Name of the module to update.
-
 .PARAMETER DirPath
 Path to the directory holding the modules to update.
-
 .PARAMETER NugetExe
 Path to the Nuget executable.
 #>
