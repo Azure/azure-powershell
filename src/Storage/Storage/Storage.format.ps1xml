@@ -610,7 +610,7 @@
                 <ScriptBlock>$_.Group.ToSymbolicString()</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$_.Group.ToSymbolicString()</ScriptBlock>
+                <ScriptBlock>$_.Other.ToSymbolicString()</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>StickyBit</PropertyName>

@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix DataLake Gen2 Output AzureDataLakeGen2Item.Permissions display format
+    -  Get-AzDataLakeGen2Item
+    -  Get-AzDataLakeGen2ChildItem
+
+## Version 1.10.0
 * Support generate Blob/Constainer Idenity based SAS token with Storage Context based on Oauth authentication
     - New-AzStorageContainerSASToken
     - New-AzStorageBlobSASToken
