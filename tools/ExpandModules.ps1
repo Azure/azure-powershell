@@ -28,13 +28,13 @@ if ([string]::IsNullOrEmpty($Artifacts)) {
     $Artifacts = Join-Path $PSScriptRoot -ChildPath ".." | Join-Path -ChildPath "artifacts"
 }
 
-New-Item -Path $Artifacts -Name "tmp" -ItemType "directory"
-$tmp = Join-Path -Path $Artifacts -ChildPath "tmp"
+New-Item -Path (Get-Item $Artifacts).FullName -Name "tmp" -ItemType "directory"
+$tmp = Join-Path -Path (Get-Item $Artifacts).FullName -ChildPath "tmp"
 
 try {
     foreach ($artifact in (Get-ChildItem -Path $Artifacts -Filter "*.nupkg").FullName) {
         $module_name = (((Get-Item -Path $artifact).Name) -split("\.([0-9])+"))[0]
-        $zip_artifact = Join-Path -Path $Artifacts -ChildPath $module_name".zip"
+        $zip_artifact = Join-Path -Path (Get-Item $Artifacts).FullName -ChildPath $module_name".zip"
 
         Write-Output "Renaming package $artifact to zip archive $zip_artifact"
         Rename-Item $artifact $zip_artifact
