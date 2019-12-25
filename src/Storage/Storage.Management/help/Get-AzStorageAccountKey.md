@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: A57A9EFA-47AC-44D8-BFA7-CDE0E2A612B3
@@ -14,7 +14,7 @@ Gets the access keys for an Azure Storage account.
 ## SYNTAX
 
 ```
-Get-AzStorageAccountKey [-ResourceGroupName] <String> [-Name] <String>
+Get-AzStorageAccountKey [-ResourceGroupName] <String> [-Name] <String> [-ListKerbKey]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -39,6 +39,13 @@ This command gets a specific key for a Storage account. This command works for A
 PS C:\>(Get-AzStorageAccountKey -ResourceGroupName "RG01" -AccountName "mystorageaccount").Key1
 ```
 
+### Example 3: Lists the access keys for a Storage account, include the Kerberos keys (if active directory enabled)
+```
+PS C:\>Get-AzStorageAccountKey -ResourceGroupName "RG01" -AccountName "mystorageaccount" -ListKerbKey
+```
+
+This command gets the keys for the specified Azure Storage account.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -48,6 +55,24 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ListKerbKey
+Lists the Kerberos keys (if active directory enabled) for the specified storage account.
+Kerberos key is generated per storage account for Azure Files identity based authentication either with Azure Active Directory Domain Service (Azure AD DS) or Active Directory Domain Service (AD DS). 
+It is used as the password of the identity registered in the domain service that represents the storage account. 
+Kerberos key does not provide access permission to perform any control or data plane read or write operations against the storage account.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
