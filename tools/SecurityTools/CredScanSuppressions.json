@@ -928,6 +928,10 @@
     {
       "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VulnerabilityAssessmentMiTests\\VulnerabilityAssessmentManagedDatabaseScanRecordGetListTest.json",
       "_justification": "Legitimate test session record, keys are deleted"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VulnerabilityAssessmentMiTests\\VulnerabilityAssessmentManagedDatabaseScanConvertTest.json",
+      "_justification": "Legitimate test session record, keys are deleted"
     }
   ]
 }
