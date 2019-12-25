@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support set Table/Queue Encyrption Keytype in Create Storage Account
+	- New-AzRmStorageAccount
 
 ## Version 1.10.0
 * Update references in .psd1 to use relative path
