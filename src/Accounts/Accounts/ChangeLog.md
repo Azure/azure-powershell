@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* allow conditionally preload storage assemblies for Azure Stack
+
 ## Version 1.6.6
 * Add client-side telemetry info for Az 4.0 preview
 
