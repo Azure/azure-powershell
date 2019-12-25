@@ -54,58 +54,17 @@ DotNetFrameworkVersion = '4.7.2'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.4'; }, 
-               @{ModuleName = 'Az.Advisor'; RequiredVersion = '1.1.0'; }, 
-               @{ModuleName = 'Az.Aks'; RequiredVersion = '1.0.2'; }, 
-               @{ModuleName = 'Az.AnalysisServices'; RequiredVersion = '1.1.1'; }, 
-               @{ModuleName = 'Az.ApiManagement'; RequiredVersion = '1.3.2'; }, 
-               @{ModuleName = 'Az.ApplicationInsights'; RequiredVersion = '1.0.2'; }, 
-               @{ModuleName = 'Az.Automation'; RequiredVersion = '1.3.4'; }, 
-               @{ModuleName = 'Az.Batch'; RequiredVersion = '2.0.1'; }, 
                @{ModuleName = 'Az.Billing'; RequiredVersion = '1.0.1'; }, 
-               @{ModuleName = 'Az.Cdn'; RequiredVersion = '1.4.0'; }, 
-               @{ModuleName = 'Az.CognitiveServices'; RequiredVersion = '1.2.1'; }, 
                @{ModuleName = 'Az.Compute'; RequiredVersion = '3.1.0'; }, 
-               @{ModuleName = 'Az.ContainerInstance'; RequiredVersion = '1.0.1'; }, 
-               @{ModuleName = 'Az.ContainerRegistry'; RequiredVersion = '1.1.0'; }, 
                @{ModuleName = 'Az.DataBoxEdge'; RequiredVersion = '1.0.0'; }, 
-               @{ModuleName = 'Az.DataFactory'; RequiredVersion = '1.5.0'; }, 
-               @{ModuleName = 'Az.DataLakeAnalytics'; RequiredVersion = '1.0.1'; }, 
-               @{ModuleName = 'Az.DataLakeStore'; RequiredVersion = '1.2.5'; }, 
-               @{ModuleName = 'Az.DeploymentManager'; RequiredVersion = '1.0.1'; }, 
-               @{ModuleName = 'Az.DevTestLabs'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.Dns'; RequiredVersion = '1.1.1'; }, 
-               @{ModuleName = 'Az.EventGrid'; RequiredVersion = '1.2.2'; }, 
                @{ModuleName = 'Az.EventHub'; RequiredVersion = '1.4.1'; }, 
-               @{ModuleName = 'Az.FrontDoor'; RequiredVersion = '1.2.0'; }, 
-               @{ModuleName = 'Az.HDInsight'; RequiredVersion = '3.0.0'; }, 
-               @{ModuleName = 'Az.HealthcareApis'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.IotHub'; RequiredVersion = '2.0.0'; }, 
                @{ModuleName = 'Az.KeyVault'; RequiredVersion = '1.3.1'; }, 
-               @{ModuleName = 'Az.LogicApp'; RequiredVersion = '1.3.1'; }, 
-               @{ModuleName = 'Az.MachineLearning'; RequiredVersion = '1.1.1'; }, 
-               @{ModuleName = 'Az.ManagedServices'; RequiredVersion = '1.0.1'; }, 
-               @{ModuleName = 'Az.MarketplaceOrdering'; RequiredVersion = '1.0.1'; }, 
-               @{ModuleName = 'Az.Media'; RequiredVersion = '1.1.0'; }, 
                @{ModuleName = 'Az.Monitor'; RequiredVersion = '1.4.0'; }, 
                @{ModuleName = 'Az.Network'; RequiredVersion = '2.1.0'; }, 
-               @{ModuleName = 'Az.NotificationHubs'; RequiredVersion = '1.1.0'; }, 
-               @{ModuleName = 'Az.OperationalInsights'; RequiredVersion = '1.3.3'; }, 
-               @{ModuleName = 'Az.PolicyInsights'; RequiredVersion = '1.1.3'; }, 
-               @{ModuleName = 'Az.PowerBIEmbedded'; RequiredVersion = '1.1.0'; }, 
-               @{ModuleName = 'Az.PrivateDns'; RequiredVersion = '1.0.1'; }, 
-               @{ModuleName = 'Az.RecoveryServices'; RequiredVersion = '2.1.0'; }, 
-               @{ModuleName = 'Az.RedisCache'; RequiredVersion = '1.2.0'; }, 
-               @{ModuleName = 'Az.Relay'; RequiredVersion = '1.0.2'; }, 
                @{ModuleName = 'Az.Resources'; RequiredVersion = '1.8.0'; }, 
-               @{ModuleName = 'Az.ServiceBus'; RequiredVersion = '1.4.0'; }, 
-               @{ModuleName = 'Az.ServiceFabric'; RequiredVersion = '2.0.0'; }, 
-               @{ModuleName = 'Az.SignalR'; RequiredVersion = '1.1.0'; }, 
-               @{ModuleName = 'Az.Sql'; RequiredVersion = '2.1.0'; }, 
-               @{ModuleName = 'Az.SqlVirtualMachine'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.Storage'; RequiredVersion = '1.9.0'; }, 
-               @{ModuleName = 'Az.StorageSync'; RequiredVersion = '1.2.1'; }, 
-               @{ModuleName = 'Az.StreamAnalytics'; RequiredVersion = '1.0.0'; }, 
-               @{ModuleName = 'Az.TrafficManager'; RequiredVersion = '1.0.2'; }, 
                @{ModuleName = 'Az.Websites'; RequiredVersion = '1.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
@@ -198,36 +157,11 @@ Az.DataBoxEdge
 * Added cmdlet `Remove-AzDataBoxEdgeTrigger`
     - Remove the Triggers
 
-Az.DataFactory
-* Update ADF .Net SDK version to 4.4.0
-* Add parameter ''ExpressCustomSetup'' for ''Set-AzureRmDataFactoryV2IntegrationRuntime'' cmd to enable setup configurations and 3rd party components without custom setup script.
-
-Az.DataLakeStore
-* Update documentation of Get-AzDataLakeStoreDeletedItem and Restore-AzDataLakeStoreDeletedItem
-
 Az.EventHub
 * Fix for issue 10301 : Fix the SAS Token date format
 
-Az.FrontDoor
-* Add MinimumTlsVersion parameter to Enable-AzFrontDoorCustomDomainHttps and New-AzFrontDoorFrontendEndpointObject
-* Add HealthProbeMethod and EnabledState parameters to New-AzFrontDoorHealthProbeSettingObject
-* Add new cmdlet to create BackendPoolsSettings objec to pass into creation/update of Front Door
-    - New-AzFrontDoorBackendPoolsSettingObject
-
 Az.Network
 * Change ''Start-AzVirtualNetworkGatewayConnectionPacketCapture.md'' and ''Start-AzVirtualnetworkGatewayPacketCapture.md'' FilterData option examples.
-
-Az.PrivateDns
-* Updated PrivateDns .net sdk to version 1.0.0
-
-Az.RecoveryServices
-* Azure Site Recovery support to select disk type at enabling protection.
-* Azure Site Recovery bug fix for recovery plan action edit.
-* Azure Backup SQL Restore support to accept filestream DBs.
-
-Az.RedisCache
-* Added ''MinimumTlsVersion'' parameter in ''New-AzRedisCache'' and ''Set-AzRedisCache'' cmdlets. Also, added ''MinimumTlsVersion'' in the output of ''Get-AzRedisCache'' cmdlet.
-* Added validation on ''-Size'' parameter for ''Set-AzRedisCache'' and ''New-AzRedisCache'' cmdlets
 
 Az.Resources
 - Updated policy cmdlets to use new api version 2019-06-01 that has new EnforcementMode property in policy assignment.
@@ -235,13 +169,6 @@ Az.Resources
 - Fix bug Remove-AZADServicePrincipal -ServicePrincipalName, throw null reference when service principal name not found.
 - Fix bug New-AZADServicePrincipal, throw null reference when tenant doesn''t have any subscription.
 - Change New-AzAdServicePrincipal to add credentials only to associated application.
-
-Az.Sql
-* Added support for database ReadReplicaCount.
-* Fixed Set-AzSqlDatabase when zone redundancy not set
-
-Az.SqlVirtualMachine
-* Added to the Az roll-up module
 '
 
         # Prerelease string of this module
