@@ -115,7 +115,7 @@ try {
         $module_name = ($artifact).Name
         Write-Output "Repackaging $module_name"
         Update-NugetPackage -TempRepoPath (Get-Item $Artifacts).FullName -ModuleName $module_name -DirPath $tmp"\"$module_name -NugetExe $NugetExe
-        Write-Output "Removing temporary folder $artifact"
+        Write-Output "Removing $tmp\$module_name"
         Remove-Item -Recurse $tmp"\"$module_name -Force -ErrorAction Stop  
     } 
 } catch {
