@@ -924,6 +924,10 @@
     {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestAzureDiskEncryptionLnxManagedDisk.json",
       "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VulnerabilityAssessmentMiTests\\VulnerabilityAssessmentManagedDatabaseScanRecordGetListTest.json",
+      "_justification": "Legitimate test session record, keys are deleted"
     }
   ]
 }
