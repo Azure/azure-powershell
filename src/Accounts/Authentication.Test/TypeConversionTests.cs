@@ -232,6 +232,8 @@ namespace Common.Authentication.Test
                 AzureAnalysisServicesEndpointSuffix = analysisServicesSuffix,
                 AzureAttestationServiceEndpointResourceId = azureAttestationServiceEndpointResourceId,
                 AzureAttestationServiceEndpointSuffix = azureAttestationServiceEndpointSuffix,
+                AzureOperationalInsightsEndpoint = azureOperationalInsightsEndpoint,              
+                AzureAnalysisServicesEndpointSuffix = analysisServicesSuffix
             };
             var azEnvironment = (AzureEnvironment)environment;
             Assert.NotNull(environment);

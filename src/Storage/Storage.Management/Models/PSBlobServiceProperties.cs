@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string Type { get; set; }
         [Ps1Xml(Label = "DefaultServiceVersion", Target = ViewControl.Table, Position = 2)]
         public string DefaultServiceVersion { get; set; }
+        public PSChangeFeed ChangeFeed { get; set; }
         [Ps1Xml(Label = "DeleteRetentionPolicy.Enabled", Target = ViewControl.Table, ScriptBlock = "$_.DeleteRetentionPolicy.Enabled", Position = 3)]
         [Ps1Xml(Label = "DeleteRetentionPolicy.Days", Target = ViewControl.Table, ScriptBlock = "$_.DeleteRetentionPolicy.Days", Position = 4)]
         public PSDeleteRetentionPolicy DeleteRetentionPolicy { get; set; }
@@ -52,6 +53,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Cors = policy.Cors is null ? null : new PSCorsRules(policy.Cors);
             this.DefaultServiceVersion = policy.DefaultServiceVersion;
             this.DeleteRetentionPolicy = policy.DeleteRetentionPolicy is null ? null : new PSDeleteRetentionPolicy(policy.DeleteRetentionPolicy);
+            this.ChangeFeed = policy.ChangeFeed is null ? null : new PSChangeFeed(policy.ChangeFeed);
         }
         public BlobServiceProperties ParseBlobServiceProperties()
         {
@@ -59,7 +61,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             {
                 Cors = this.Cors is null ? null : this.Cors.ParseCorsRules(),
                 DefaultServiceVersion = this.DefaultServiceVersion,
-                DeleteRetentionPolicy = this.DeleteRetentionPolicy is null ? null : this.DeleteRetentionPolicy.ParseDeleteRetentionPolicy()
+                DeleteRetentionPolicy = this.DeleteRetentionPolicy is null ? null : this.DeleteRetentionPolicy.ParseDeleteRetentionPolicy(),
+                ChangeFeed = this.ChangeFeed is null ? null : this.ChangeFeed.ParseChangeFeed()
             };
         }
 
@@ -86,6 +89,31 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 var parentResource = resource.ParentResource.Split(new[] { '/' });
                 return parentResource[1];
             }
+        }
+    }
+
+    /// <summary>
+    /// Wrapper of SDK type ChangeFeed
+    /// </summary>
+    public class PSChangeFeed
+    {
+        public bool? Enabled { get; set; }
+
+        public PSChangeFeed()
+        {
+        }
+
+        public PSChangeFeed(ChangeFeed changeFeed)
+        {
+            this.Enabled = changeFeed.Enabled;
+        }
+
+        public ChangeFeed ParseChangeFeed()
+        {
+            return new ChangeFeed
+            {
+                Enabled = this.Enabled
+            };
         }
     }
 

@@ -54,6 +54,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS")]
         public string DiskType { get; set; }
 
+        /// <summary>
+        /// Gets or sets the DiskEncryptionSet ARM ID.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzure)]
+        public string DiskEncryptionSetId { get; set; }
+
+
         #endregion Parameters
 
         /// <summary>
@@ -72,7 +79,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 {
                     DiskId = this.DiskId,
                     DiskType = this.DiskType,
-                    LogStorageAccountId = this.LogStorageAccountId
+                    LogStorageAccountId = this.LogStorageAccountId,
+                    DiskEncryptionSetId = this.DiskEncryptionSetId
                 };
             }
             this.WriteObject(diskRelicationConfig);
