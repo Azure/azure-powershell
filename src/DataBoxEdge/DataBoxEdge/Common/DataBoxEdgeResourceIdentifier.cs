@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common
         public bool IsSubResource { get; }
         public string DeviceName { get; }
         public string Name { get; }
-        
+
         public DataBoxEdgeResourceIdentifier(string resourceId) : base(resourceId)
         {
             if (!this.ResourceType.StartsWithInsensitively(Constants.DataBoxEdgeDeviceProvider))
@@ -45,7 +45,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common
 
             this.Name = this.ResourceName;
         }
-
-
     }
 }
