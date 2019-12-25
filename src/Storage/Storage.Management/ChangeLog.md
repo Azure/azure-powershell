@@ -18,9 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support set Table/Queue Encyrption Keytype in Create Storage Account
+    - New-AzRmStorageAccount
 * Fix DataLake Gen2 Output AzureDataLakeGen2Item.Permissions display format
-    -  Get-AzDataLakeGen2Item
-    -  Get-AzDataLakeGen2ChildItem
+    - Get-AzDataLakeGen2Item
+    - Get-AzDataLakeGen2ChildItem
 * Show RequestId when StorageException don't have ExtendedErrorInformation
 * Fix the Example 6 of cmdlet Start-AzStorageBlobCopy
 

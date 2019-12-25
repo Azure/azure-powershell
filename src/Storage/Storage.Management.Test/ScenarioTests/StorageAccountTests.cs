@@ -197,5 +197,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_LargeFileShare");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzureStorageAccountQueueTableEncrytionKeyType()
+        {
+            TestRunner.RunTestScript("Test-NewAzureStorageAccountQueueTableEncrytionKeyType");
+        }
     }
 }

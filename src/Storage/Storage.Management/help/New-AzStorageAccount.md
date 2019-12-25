@@ -19,7 +19,8 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
  [-EnableHierarchicalNamespace <Boolean>] [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>]
- [-EnableLargeFileShare] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EnableLargeFileShare] [-AsJob] [-EncryptionKeyTypeForTable <String>] [-EncryptionKeyTypeForQueue <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -99,6 +100,27 @@ PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "m
 ```
 
 This command creates a Storage account withenable Files Active Directory Domain Service Authentication.
+
+### Example 8: Create a Storage account with Queue and Table Service use account-scoped encryption key.
+```
+PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EncryptionKeyTypeForTable Account -EncryptionKeyTypeForQueue Account
+
+PS C:\>$account = get-AzStorageAccount -ResourceGroupName $rgname -StorageAccountName $accountName
+
+PS C:\>$account.Encryption.Services.Queue
+
+Enabled LastEnabledTime     KeyType
+------- ---------------     -------
+   True 1/9/2020 6:09:11 AM Account
+
+PS C:\>$account.Encryption.Services.Table
+
+Enabled LastEnabledTime     KeyType
+------- ---------------     -------
+   True 1/9/2020 6:09:11 AM Account
+```
+
+This command creates a Storage account with Queue and Table Service use account-scoped encryption key, so Queue and Table will use same encryption key with Blob and File service. Then get the Storage account properties, and view the encryption keytype of Queue and Table Service.
 
 ## PARAMETERS
 
@@ -343,6 +365,42 @@ Learn more in https://go.microsoft.com/fwlink/?linkid=2086047
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionKeyTypeForQueue
+Set the Encryption KeyType for Queue. The default value is Service.
+-Account: Queue will be encrypted with account-scoped encryption key. 
+-Service: Queue will always be encrypted with Service-Managed keys. 
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Service, Account
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionKeyTypeForTable
+Set the Encryption KeyType for Table. The default value is Service.
+- Account: Table will be encrypted with account-scoped encryption key. 
+- Service: Table will always be encrypted with Service-Managed keys. 
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Service, Account
 
 Required: False
 Position: Named
