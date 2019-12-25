@@ -57,30 +57,3 @@ jobs:
     parameters:
       osName: $(OSName)
       configuration: ${{ variables.Configuration }}
-
-- job: Test
-  displayName: Test
-  dependsOn: Build
-  condition: succeeded()
-  timeoutInMinutes: 120
-  strategy:
-    matrix:
-      windows:
-        OSName: ${{ variables.WindowsName }}
-        ImageName: ${{ variables.WindowsImage }}
-      linux:
-        OSName: ${{ variables.LinuxName }}
-        ImageName: ${{ variables.LinuxImage }}
-      macOS:
-        OSName: ${{ variables.MacOSName }}
-        ImageName: ${{ variables.MacOSImage }}
-  pool:
-    vmImage: $(ImageName)
-
-  steps:
-  - template: util/test-steps.yml
-    parameters:
-      osName: $(OSName)
-      testFramework: ${{ variables.TestFramework }}
-      testTarget: ${{ variables.TestTarget }}
-      configuration: ${{ variables.Configuration }}
