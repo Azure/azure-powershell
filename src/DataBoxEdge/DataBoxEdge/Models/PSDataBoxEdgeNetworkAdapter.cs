@@ -6,7 +6,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
 {
     public class PSDataBoxEdgeNetworkAdapter
     {
-        
         [Ps1Xml(Label = "IPv4", Target = ViewControl.Table,
             ScriptBlock = "$_.networkAdapter.Ipv4Configuration.IpAddress", Position = 2)]
         [Ps1Xml(Label = "IPv6", Target = ViewControl.Table,
@@ -27,9 +26,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
 
         [Ps1Xml(Label = "DeviceName", Target = ViewControl.Table, Position = 0)]
         public string DeviceName;
-
-        
-
 
         public PSDataBoxEdgeNetworkAdapter()
         {

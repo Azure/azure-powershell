@@ -243,7 +243,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
             this.iotDeviceAccessKey = deviceProperties.GetOrNull(SharedAccessKey);
             this.iotDeviceHostHub = deviceProperties.GetOrNull(HostName);
         }
-            
+
         private void ParseEdgeDeviceConnectionString()
         {
             var deviceProperties = GetIotDeviceProperties(this.IotEdgeDeviceConnectionString.ConvertToString());
@@ -257,14 +257,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
             var iotDeviceSecret = DataBoxEdgeManagementClient.Devices.GetAsymmetricEncryptedSecret(
                 this.DeviceName,
                 this.ResourceGroupName,
-                GetConnectionString(this.IotHostHub, this.IotDeviceId,this.iotDeviceAccessKey),
+                GetConnectionString(this.IotHostHub, this.IotDeviceId, this.iotDeviceAccessKey),
                 this.EncryptionKey.ConvertToString()
             );
 
             var iotEdgeDeviceSecret = DataBoxEdgeManagementClient.Devices.GetAsymmetricEncryptedSecret(
                 this.DeviceName,
                 this.ResourceGroupName,
-                GetConnectionString(this.IotHostHub,this.IotEdgeDeviceId,this.iotEdgeDeviceAccessKey),
+                GetConnectionString(this.IotHostHub, this.IotEdgeDeviceId, this.iotEdgeDeviceAccessKey),
                 this.EncryptionKey.ConvertToString()
             );
 
