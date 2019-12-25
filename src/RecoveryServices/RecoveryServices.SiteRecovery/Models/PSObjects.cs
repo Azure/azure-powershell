@@ -1202,6 +1202,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 var hd = new AsrVirtualHardDisk();
                 hd.Id = disk.DiskId;
                 hd.Name = disk.DiskName;
+                hd.Capacity = Convert.ToInt64(disk.DiskSizeInMB);
 
                 // Update all the Volumes in this Disk.
                 hd.Volumes = new List<AsrVolume>();
@@ -2252,6 +2253,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [DataMember]
         public List<AsrVolume> Volumes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the Capacity.
+        /// </summary>
+        [DataMember]
+        public long Capacity { get; set; }
     }
 
     /// <summary>
@@ -2357,6 +2364,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         //     Gets or sets the DiskType. Possible values include: 'Standard_LRS', 'Premium_LRS',
         //     'StandardSSD_LRS'
         public string DiskType { get; set; }
+        // Summary:
+        //     Gets or sets the DiskEncryptionSet ARM ID.
+        public string DiskEncryptionSetId { get; set; }
     }
 
     /// <summary>

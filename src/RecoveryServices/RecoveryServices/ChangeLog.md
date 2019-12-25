@@ -20,6 +20,10 @@
 ## Upcoming Release
 * Azure Site Recovery change support for managed disk vms encrypted at rest with customer managed leys for Azure to Azure provider.
 
+* Azure Site Recovery support to input disk encryption Set Id as optional input at enabling protection for Vmware to Azure.
+* Azure Site Recovery support to input disk encryption Set Id as optional input at disk level to enable protection for Vmware to Azure.
+* Azure Site Recovery support to update replication protected item with disk encryption set Map for HyperV to Azure.
+
 ## Version 2.3.0
 * Update references in .psd1 to use relative path
 * Azure Site Recovery support for Azure Disk Encryption One Pass for Azure to Azure.
