@@ -215,7 +215,7 @@ namespace Common.Authentication.Test
                 TrafficManagerDnsSuffix = trafficManagerSuffix,
                 BatchEndpointResourceId = batchResource,
                 AzureOperationalInsightsEndpointResourceId = azureOperationalInsightsEndpointResourceId,
-                AzureOperationalInsightsEndpoint = azureOperationalInsightsEndpoint,
+                AzureOperationalInsightsEndpoint = azureOperationalInsightsEndpoint,              
                 AzureAnalysisServicesEndpointSuffix = analysisServicesSuffix
             };
             var azEnvironment = (AzureEnvironment)environment;
