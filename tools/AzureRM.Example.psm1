@@ -78,7 +78,7 @@ if($PSEdition -eq 'Core' -and (Test-Path $netCorePath -ErrorAction Ignore))
     }
     catch {}
 }
-
+%CONDITIONAL-PRELOAD-ASSEMBLY%
 
 %IMPORTED-DEPENDENCIES%
 

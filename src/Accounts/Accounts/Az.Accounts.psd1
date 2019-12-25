@@ -74,8 +74,6 @@ RequiredAssemblies = 'Microsoft.Azure.PowerShell.Authentication.Abstractions.dll
                'Hyak.Common.dll', 'Microsoft.ApplicationInsights.dll', 
                'Microsoft.Azure.Common.dll', 'Microsoft.Rest.ClientRuntime.dll', 
                'Microsoft.Rest.ClientRuntime.Azure.dll', 
-               'Microsoft.WindowsAzure.Storage.dll', 
-               'Microsoft.WindowsAzure.Storage.DataMovement.dll', 
                'Microsoft.Azure.PowerShell.Clients.Aks.dll', 
                'Microsoft.Azure.PowerShell.Strategies.dll'
 

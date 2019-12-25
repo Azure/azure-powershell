@@ -89,10 +89,59 @@ function New-ModulePsm1 {
             }
         }
 
+        # Conditionally preload storage assemblies
+        [string]$condtionalPreloadAssemblies = [System.String]::Empty
+        if($manifestDir.Name -eq 'Az.Accounts'){
+            $condtionalPreloadAssemblies += @'
+
+filter Convert-VersionToComparableText { '{0:00000}{1:00000}{2:00000}' -f $$_.Major, $$_.Minor, $$_.Build }
+
+function Test-AzureStack{
+    try{
+        $scriptName = [System.IO.Path]::GetFileName($PSCommandPath)
+        if($scriptName -ieq 'Az.Accounts.psm1'){
+            $latestStorageVersion = Get-Module 'Az.Storage' -ListAvailable | ForEach-Object { $$_.Version | Convert-VersionToComparableText } | Sort-Object | Select-Object -Last 1
+            $minStackVersion = [System.Version]'0.8.0' | Convert-VersionToComparableText
+            $maxStackVersion = [System.Version]'1.0.0' | Convert-VersionToComparableText
+            return $latestStorageVersion -ge $minStackVersion -and $latestStorageVersion -lt $maxStackVersion
+        }
+    }
+    catch{
+    }
+    $false
+}
+
+function Preload-Assemblies{
+    param(
+    [string]
+    [Parameter(Mandatory= $true, Position=0)]
+    $SubFolder)
+    $preloadPath = (Join-Path $PSScriptRoot -ChildPath $SubFolder)
+    if((Test-Path $preloadPath -ErrorAction Ignore)){
+        Get-ChildItem -ErrorAction Stop -Path $preloadPath -Filter "*.dll" | ForEach-Object {
+            try{
+                Add-Type -Path $$_.FullName -ErrorAction Ignore | Out-Null
+            }
+            catch{
+            }
+        }
+    }
+}
+
+if(Test-AzureStack){
+    Preload-Assemblies -SubFolder "PreloadAssemblies4Stack"
+} else {
+    Preload-Assemblies -SubFolder "PreloadAssemblies4NonStack"
+}
+
+'@
+        }
+
         # Grab the template and replace with information.
         $template = Get-Content -Path $TemplatePath
         $template = $template -replace "%MODULE-NAME%", $file.BaseName
         $template = $template -replace "%DATE%", [string](Get-Date)
+        $template = $template -replace "%CONDITIONAL-PRELOAD-ASSEMBLY%", $condtionalPreloadAssemblies
         $template = $template -replace "%IMPORTED-DEPENDENCIES%", $importedModules
 
         # Replace Az or AzureRM with correct information
