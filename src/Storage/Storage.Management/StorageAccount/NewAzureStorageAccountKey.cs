@@ -26,6 +26,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         private const string Key2 = "key2";
 
+        private const string Kerb1 = "kerb1";
+
+        private const string Kerb2 = "kerb2";
+
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -49,7 +53,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Key.")]
-        [ValidateSet(Key1, Key2, IgnoreCase = false)]
+        [ValidateSet(Key1, Key2, Kerb1, Kerb2, IgnoreCase = false)]
         public string KeyName { get; set; }
 
         public override void ExecuteCmdlet()

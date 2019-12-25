@@ -99,6 +99,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryTargetDiskAccountType { get; set; }
 
         /// <summary>
+        /// Gets or sets RecoveryDiskEncryptionSetId.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryDiskEncryptionSetId { get; set; }
+
+        /// <summary>
         /// Gets or sets DiskEncryptionVaultId.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = false)]
@@ -164,7 +171,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             DiskEncryptionSecretUrl = this.DiskEncryptionSecretUrl,
                             DiskEncryptionVaultId = this.DiskEncryptionVaultId,
                             KeyEncryptionKeyUrl = this.KeyEncryptionKeyUrl,
-                            KeyEncryptionVaultId = this.KeyEncryptionVaultId
+                            KeyEncryptionVaultId = this.KeyEncryptionVaultId,
+                            RecoveryDiskEncryptionSetId = this.RecoveryDiskEncryptionSetId
                         };
                         break;
                 }
