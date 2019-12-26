@@ -932,6 +932,18 @@
     {
       "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VulnerabilityAssessmentMiTests\\VulnerabilityAssessmentManagedDatabaseScanConvertTest.json",
       "_justification": "Legitimate test session record, keys are deleted"
+    },
+    {
+      "file": "src\\CosmosDB\\CosmosDB.Test\\SessionRecords\\Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest.AccountTests\\TestAccountRelatedCmdlets.json",
+      "_justification": "Keys do not persist after test as resources got deleted"
+    },
+    {
+      "file": "src\\CosmosDB\\CosmosDB.Test\\SessionRecords\\Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest.AccountTests\\TestAccountRelatedCmdletsUsingObject.json",
+      "_justification": "Keys do not persist after test as resources got deleted"
+    },
+    {
+      "file": "src\\CosmosDB\\CosmosDB.Test\\SessionRecords\\Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest.AccountTests\\TestAccountRelatedCmdletsUsingRid.json",
+      "_justification": "Keys do not persist after test as resources got deleted"
     }
   ]
 }
