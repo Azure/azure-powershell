@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataBoxEdgeBandwidthSchedule
 
 ## SYNOPSIS
-Create a new Bandwidth schedule
+Creates a new Bandwidth schedule
 
 ## SYNTAX
 
@@ -27,24 +27,24 @@ New-AzDataBoxEdgeBandwidthSchedule [-ResourceGroupName] <String> [-DeviceName] <
 ```
 
 ## DESCRIPTION
-The **New-AzDataBoxEdgeDevice** cmdlet will create configurations that will help in managing the Bandwidth usage by the device.
+The **New-AzDataBoxEdgeBandwidthSchedule** cmdlet creates a new Bandwidth Schedule for a Data Box Edge device to help manage the Bandwidth usage.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDataBoxEdgeBandwidthSchedule  -Days Sunday, Tuesday, Saturday -ResourceGroupName resource-group-name -DeviceName device-name -Name bandwidth-schedule -StartTime 11:00 -StopTime 12:00 -Bandwidth 30
-Name                DaysOfWeek                    RateInMbps StartTime StopTime
-----                ----------                    ---------- --------- --------
-bandwidth-schedule  Sunday, Tuesday, Saturday     30         11:00:00  12:00:00
+PS C:\> New-AzDataBoxEdgeBandwidthSchedule  -Days Sunday,Tuesday,Saturday -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthSchedule -StartTime 11:00 -StopTime 12:00 -Bandwidth 30
+Name                DaysOfWeek                  RateInMbps StartTime StopTime
+----                ----------                  ---------- --------- --------
+bandwidthSchedule  Sunday, Tuesday, Saturday    30         11:00:00  12:00:00
 ```
 
 ### Example 2
 ```powershell
-PS C:\> New-AzDataBoxEdgeBandwidthSchedule  -Days Sunday, Tuesday, Saturday -ResourceGroupName resource-group-name -DeviceName device-name -Name bandwidth-schedule-unlimited -StartTime 11:00 -StopTime 12:00 -UnlimitedBandwidth
+PS C:\> New-AzDataBoxEdgeBandwidthSchedule  -Days Sunday,Tuesday,Saturday -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthScheduleUnlimited -StartTime 11:00 -StopTime 12:00 -UnlimitedBandwidth
 Name                          DaysOfWeek                RateInMbps  StartTime    StopTime
-----------------              ----------------------    ----------- -----------  --------------------------
-bandwidth-schedule-unlimited  Sunday, Tuesday, Saturday 0	        11:00:00     12:00:00
+----------------              ----------------------    ----------- -----------  ---------
+bandwidthScheduleUnlimited  Sunday,Tuesday,Saturday     unlimited	11:00:00     12:00:00
 ```
 
 ## PARAMETERS
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeviceName
-Valid name of the device
+Device Name
 
 ```yaml
 Type: System.String
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Bandwidth schedule
+Resource Name
 
 ```yaml
 Type: System.String
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group name
+Resource Group Name
 
 ```yaml
 Type: System.String
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -StartTime
-Start time of the bandwidth schedule
+Schedule Start Time
 
 ```yaml
 Type: System.String
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -StopTime
-Stop time of the bandwidth schedule
+Schedule Stop Time
 
 ```yaml
 Type: System.String
@@ -185,8 +185,7 @@ Accept wildcard characters: False
 ```
 
 ### -UnlimitedBandwidth
-Set Unlimited Bandwidth.
-If set to false will set default value as 20 Mbps
+Will Set Unlimited Bandwidth, if set to false will set default value as 20 Mbps
 
 ```yaml
 Type: System.Boolean
