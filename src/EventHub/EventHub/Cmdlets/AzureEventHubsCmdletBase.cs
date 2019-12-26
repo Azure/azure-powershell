@@ -215,6 +215,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                         ParentResource1 = tokens[3];
                         ParentResource2 = tokens[5];
                         break;
+                    default:
+                        throw new Exception("Invalid length of tokens");
                 }
             }
         }
