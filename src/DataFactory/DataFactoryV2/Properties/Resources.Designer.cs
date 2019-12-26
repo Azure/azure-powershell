@@ -581,6 +581,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VNetId and Subnet should be provided when creating new integration runtime with public IP addresses..
+        /// </summary>
+        internal static string IntegrationRuntimeVNetNotProvided {
+            get {
+                return ResourceManager.GetString("IntegrationRuntimeVNetNotProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The value for pramater &apos;Type&apos; is different with existing integration runtime with name {0}..
         /// </summary>
         internal static string IntegrationRuntimeWrongType {
@@ -631,6 +640,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         internal static string InvalidLinkedDataFactoryName {
             get {
                 return ResourceManager.GetString("InvalidLinkedDataFactoryName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid number of public IP addresses are provided: &apos;{0}&apos;. Please provide 2 public IP addresses for your SSIS Integration Runtime..
+        /// </summary>
+        internal static string InvalidPublicIPCount {
+            get {
+                return ResourceManager.GetString("InvalidPublicIPCount", resourceCulture);
             }
         }
         
