@@ -278,7 +278,7 @@
               <ListItem>
                 <Label>Value</Label>
                 <PropertyName>Value</PropertyName>
-              </ListItem>
+              </ListItem>        
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -296,11 +296,11 @@
               <ListItem>
                 <Label>ChecksFailedPercent</Label>
                 <PropertyName>ChecksFailedPercent</PropertyName>
-              </ListItem>
+              </ListItem>                      
               <ListItem>
                 <Label>RoundTripTimeMs</Label>
                 <PropertyName>RoundTripTimeMs</PropertyName>
-              </ListItem>
+              </ListItem>        
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -318,7 +318,7 @@
               <ListItem>
                 <Label>DisableTraceRoute</Label>
                 <PropertyName>DisableTraceRoute</PropertyName>
-              </ListItem>
+              </ListItem>        
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -340,7 +340,7 @@
               <ListItem>
                 <Label>DisableTraceRoute</Label>
                 <PropertyName>DisableTraceRoute</PropertyName>
-              </ListItem>
+              </ListItem>        
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -378,7 +378,7 @@
               <ListItem>
                 <Label>PreferHTTPS</Label>
                 <PropertyName>PreferHTTPS</PropertyName>
-              </ListItem>
+              </ListItem>          
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -408,7 +408,7 @@
               <ListItem>
                 <Label>PreferredIPVersion</Label>
                 <PropertyName>PreferredIPVersion</PropertyName>
-              </ListItem>
+              </ListItem>              
               <ListItem>
                 <Label>HttpConfiguration</Label>
                 <PropertyName>HttpConfiguration</PropertyName>
@@ -420,11 +420,11 @@
               <ListItem>
                 <Label>IcmpConfiguration</Label>
                 <PropertyName>IcmpConfiguration</PropertyName>
-              </ListItem>
+              </ListItem>                                       
               <ListItem>
                 <Label>SuccessThreshold</Label>
                 <PropertyName>SuccessThreshold</PropertyName>
-              </ListItem>
+              </ListItem>              
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -446,7 +446,7 @@
               <ListItem>
                 <Label>Address</Label>
                 <PropertyName>Address</PropertyName>
-              </ListItem>
+              </ListItem>            
             </ListItems>
           </ListEntry>
         </ListEntries>
