@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipeline = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
         [ResourceNameCompleter("Microsoft.Network/networkWatchers", "ResourceGroupName")]
@@ -48,6 +49,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipeline = true,
             HelpMessage = "The name of the network watcher resource group.",
             ParameterSetName = "SetByName")]
         [ResourceGroupCompleter]
@@ -65,6 +67,7 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ConnectionMonitorName")]
         [Parameter(
             Mandatory = true,
+            ValueFromPipeline = true,
             HelpMessage = "The connection monitor name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -109,12 +112,14 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipeline = true,
             HelpMessage = "The list of test group.")]
         [ValidateNotNullOrEmpty]
         public List<PSNetworkWatcherConnectionMonitorTestGroupObject> TestGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipeline = true,
             HelpMessage = "The connection monitor output.")]
         [ValidateNotNullOrEmpty]
         public List<PSNetworkWatcherConnectionMonitorOutputObject> Output { get; set; }
@@ -143,7 +148,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
         public override void Execute()
         {
             base.Execute();

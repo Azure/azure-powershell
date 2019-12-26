@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
-                string[] SplittedName = ResourceId.Split('/');
+                string[] SplittedName = this.ResourceId.Split('/');
                 // Name is in the form resourceName(ResourceGroupName)
                 EndpointName = SplittedName[9] + "(" + SplittedName[5]+ ")";
             }
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Network
 
             PSNetworkWatcherConnectionMonitorEndpointObject endPoint = new PSNetworkWatcherConnectionMonitorEndpointObject()
             {
-                Name = EndpointName,
+                Name = string.IsNullOrEmpty(this.Name) ? EndpointName : this.Name,
                 ResourceId = this.ResourceId,
                 Address = this.Address,
                 Filter = new PSConnectionMonitorEndpointFilter()
