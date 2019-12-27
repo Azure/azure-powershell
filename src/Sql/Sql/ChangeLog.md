@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Upgraded storage creation in Vulnerability Assessment auto enablement to StorageV2
+* Adding support for changing existing managed instance hardware generation
 
 ## Version 2.1.0
 * Added support for database ReadReplicaCount.
