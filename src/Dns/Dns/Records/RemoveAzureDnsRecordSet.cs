@@ -57,6 +57,10 @@ namespace Microsoft.Azure.Commands.Dns
         [Parameter(Mandatory = false, HelpMessage = "Do not use the ETag field of the RecordSet parameter for optimistic concurrency checks.", ParameterSetName = "Object")]
         public SwitchParameter Overwrite { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        [Obsolete("This parameter is obsolete; use Confirm instead")]
+        public SwitchParameter Force { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -126,7 +130,7 @@ namespace Microsoft.Azure.Commands.Dns
                     if (deleted)
                     {
                         WriteVerbose(ProjectResources.Success);
-                        WriteVerbose(string.Format(ProjectResources.Success_RemoveRecordSet, this.Name, this.ZoneName));
+                        WriteVerbose(ProjectResources.Success_RemoveRecordSet);
                     }
 
                     if (this.PassThru)

@@ -25,55 +25,32 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Creates a new record set.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DnsRecordSet", DefaultParameterSetName = "Fields", SupportsShouldProcess = true),OutputType(typeof(DnsRecordSet))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DnsRecordSet", SupportsShouldProcess = true),OutputType(typeof(DnsRecordSet))]
     public class NewAzureDnsRecordSet : DnsBaseCmdlet
     {
-        private uint? ttl_value;
-
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the records inthis record set (relative to the name of the zone and without a terminating dot).")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The zone in which to create the record set (without a terminating dot).", ParameterSetName = "Fields")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The zone in which to create the record set (without a terminating dot).", ParameterSetName = "AliasFields")]
         [ValidateNotNullOrEmpty]
         public string ZoneName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group to which the zone belongs.", ParameterSetName = "Fields")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group to which the zone belongs.", ParameterSetName = "AliasFields")]
-        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The DnsZone object representing the zone in which to create the record set.", ParameterSetName = "Object")]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The DnsZone object representing the zone in which to create the record set.", ParameterSetName = "AliasObject")]
         [ValidateNotNullOrEmpty]
         public DnsZone Zone { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "Fields")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "Object")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "AliasObject")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "AliasFields")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.")]
         [ValidateNotNullOrEmpty]
-        public uint Ttl
-        {
-            get
-            {
-                return this.ttl_value.HasValue ? this.ttl_value.Value : 0; ;
-            }
-            set
-            {
-                this.ttl_value = value;
-            }
-        }
+        public uint Ttl { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of DNS records in this record set.")]
         [ValidateNotNullOrEmpty]
         public RecordType RecordType { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = "Alias Target Resource Id.", ParameterSetName = "AliasFields")]
-        [Parameter(Mandatory = true, HelpMessage = "Alias Target Resource Id.", ParameterSetName = "AliasObject")]
-        public string TargetResourceId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Metadata { get; set; }
@@ -84,6 +61,10 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = false, HelpMessage = "Do not fail if the record set already exists.")]
         public SwitchParameter Overwrite { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        [Obsolete("This parameter is obsolete; use Confirm instead")]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -96,17 +77,17 @@ namespace Microsoft.Azure.Commands.Dns
                 throw new System.ArgumentException(ProjectResources.Error_AddRecordSOA);
             }
 
-            if (ParameterSetName == "Fields" || ParameterSetName == "AliasFields")
+            if (ParameterSetName == "Fields")
             {
                 zoneName = this.ZoneName;
                 resourceGroupname = this.ResourceGroupName;
             }
-            else if (ParameterSetName == "Object" || ParameterSetName == "AliasObject")
+            else if (ParameterSetName == "Object")
             {
                 zoneName = this.Zone.Name;
                 resourceGroupname = this.Zone.ResourceGroupName;
             }
-            if(this.Name.EndsWith(zoneName.ToString()))
+            if (this.Name.EndsWith(zoneName.ToString()))
             {
                 this.WriteWarning(string.Format(ProjectResources.Error_RecordSetNameEndsWithZoneName, this.Name, zoneName.ToString()));
             }
@@ -117,7 +98,7 @@ namespace Microsoft.Azure.Commands.Dns
                 this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", zoneName));
             }
 
-            if (this.DnsRecords == null && string.IsNullOrEmpty(this.TargetResourceId))
+            if (this.DnsRecords == null)
             {
                 this.WriteWarning(ProjectResources.Warning_DnsRecordsParamNeedsToBeSpecified);
             }
@@ -127,29 +108,12 @@ namespace Microsoft.Azure.Commands.Dns
                 this.Name,
                 () =>
                 {
-                    result = this.DnsClient.CreateDnsRecordSet(
-                        zoneName,
-                        resourceGroupname,
-                        this.Name, 
-                        this.ttl_value,
-                        this.RecordType,
-                        this.Metadata,
-                        this.Overwrite,
-                        this.DnsRecords,
-                        this.TargetResourceId);
+                    result = this.DnsClient.CreateDnsRecordSet(zoneName, resourceGroupname, this.Name, this.Ttl, this.RecordType, this.Metadata, this.Overwrite, this.DnsRecords);
 
                     if (result != null)
                     {
                         WriteVerbose(ProjectResources.Success);
-                        if (DnsRecords != null && DnsRecords.Length != 0)
-                        {
-                            WriteVerbose(string.Format(ProjectResources.Success_NewRecordSetHasRecords, this.Name, zoneName, this.RecordType));
-                        }
-                        else
-                        {
-                            WriteVerbose(string.Format(ProjectResources.Success_NewRecordSet, this.Name, zoneName, this.RecordType));
-                        }
-
+                        WriteVerbose(string.Format(ProjectResources.Success_NewRecordSet, this.Name, zoneName, this.RecordType));
                         WriteVerbose(string.Format(ProjectResources.Success_RecordSetFqdn, this.Name, zoneName, this.RecordType));
                     }
 

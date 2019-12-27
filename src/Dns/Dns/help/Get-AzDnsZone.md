@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Dns.dll-Help.xml
 Module Name: Az.Dns
 ms.assetid: B831ABE6-348C-4DD6-9295-18D23A1FDF63
@@ -15,13 +15,12 @@ Gets a DNS zone.
 
 ### Default (Default)
 ```
-Get-AzDnsZone [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDnsZone [<CommonParameters>]
 ```
 
 ### ResourceGroup
 ```
-Get-AzDnsZone [-Name <String>] -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzDnsZone [-Name <String>] -ResourceGroupName <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,30 +54,16 @@ This example gets all of the DNS zones in the current Azure subscription, and th
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Specifies the name of the DNS zone to get.
+
 If you do not specify a value for the *Name* parameter, this cmdlet gets all DNS zones in the specified resource group.
 If you also omit the *ResourceGroupName* parameter, this cmdlet gets all DNS zones in the current Azure subscription.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceGroup
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -89,13 +74,14 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 Specifies the name of the resource group that contains the DNS zone to get.
+
 If you do not specify the *ResourceGroupName*, then you must also omit the *Name* parameter.
 In this case, this cmdlet gets all DNS zones in the current Azure subscription.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceGroup
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -109,11 +95,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### None
+This cmdlet does not allow you to pipe input.
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Dns.DnsZone
+This cmdlet returns an object that represents the DNS zone.
+If the zone name is not specified, an array of zone objects is returned.
 
 ## NOTES
 

@@ -87,51 +87,6 @@ function Test-RecordSetCrud
 
 <#
 .SYNOPSIS
-Test Alias Record Set
-#>
-function Test-AliasRecordSet
-{
-	$zoneName = Get-RandomZoneName
-	$recordName = getAssetname
-	$subscription = getSubscription
-	$resourceGroup = TestSetup-CreateResourceGroup
-	$recordType = "A"
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
-
-	# non alias record
-	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType $recordType -DnsRecords @()
-	$record = $record | Add-AzDnsRecordConfig -Ipv4Address 1.1.1.1
-	$record = $record | Set-AzDnsRecordSet
-	
-	# alias record pointing to non-alias record
-	$aliasRecordName = "alias" + $(getAssetname)
-	$createdRecord = New-AzDnsRecordSet -Name $aliasRecordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType -TargetResourceId $record.Id
-
-	Assert-NotNull $createdRecord
-	Assert-AreEqual $zoneName $createdRecord.ZoneName 
-	Assert-AreEqual $aliasRecordName $createdRecord.Name 
-	Assert-AreEqual $resourceGroup.ResourceGroupName $createdRecord.ResourceGroupName
-
-	$aliasRecord = $zone | Get-AzDnsRecordSet -Name $aliasRecordName -RecordType $recordType
-	$nonaliasRecord = $zone | Get-AzDnsRecordSet -Name $recordName -RecordType $recordType
-	Assert-AreEqual $record.Id $aliasRecord.TargetResourceId
-
-	$nonaliasRecord | Remove-AzDnsRecordSet
-
-	Assert-ThrowsLike { Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType } "*does not exist*"
-
-	$aliasRecord = $zone | Get-AzDnsRecordSet -Name $aliasRecordName -RecordType $recordType
-	Assert-Null $nonaliasRecord.TargetResourceId
-	$aliasRecord | Remove-AzDnsRecordSet
-
-	Assert-ThrowsLike { Get-AzDnsRecordSet -Name $aliasRecordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType } "*does not exist*"
-
-	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
-	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
-}
-
-<#
-.SYNOPSIS
 Full Record Set CRUD cycle trims terminating dot from zone name
 #>
 function Test-RecordSetCrudTrimsDotFromZoneName
@@ -269,6 +224,9 @@ Full Record Set CRUD cycle
 function Test-RecordSetA
 {
 	$zoneName = Get-RandomZoneName
+	Write-Debug "******************************"
+	Write-Debug $zoneName
+	Write-Debug "******************************"
 	$recordName = getAssetname
     $resourceGroup = TestSetup-CreateResourceGroup 
 	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
@@ -907,82 +865,6 @@ function Test-RecordSetSOA
 	Assert-AreEqual 110901 $listResult[0].Ttl
 
 	Assert-Throws { $listResult[0] | Remove-AzDnsRecordSet -Confirm:$false -PassThru } "RecordSets of type 'SOA' with name '@' cannot be deleted."
-
-	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
-	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
-}
-
-function Validate-CAARecord(
- $record,
- [int] $flags,
- $tag,
- $value)
-{
-	Assert-AreEqual $flags $record.Flags
-	Assert-AreEqual $tag $record.Tag
-	Assert-AreEqual $value $record.Value
-}
-
-<#
-.SYNOPSIS
-Full Record Set CRUD cycle for CAA record
-#>
-function Test-RecordSetCAA
-{
-	$zoneName = Get-RandomZoneName
-	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
-
-	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType CAA
-
-	# add two records, remove one, remove another no-op
-	$record = $record | Add-AzDnsRecordConfig -CaaFlags 0 -CaaTag issue -CaaValue "contoso.org"
-	#$record = $record | Add-AzDnsRecordConfig -CaaFlags 1 -CaaTag issuewild -CaaValue "contoso.org"
-	#$record = $record | Remove-AzDnsRecordConfig -CaaFlags 1 -CaaTag issuewild -CaaValue "contoso.org"
-	#$record = $record | Remove-AzDnsRecordConfig -CaaFlags 1 -CaaTag issuewild -CaaValue "contoso.org"
-
-	$record | Set-AzDnsRecordSet
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType CAA
-	
-	Assert-AreEqual 1 $getResult.Records.Count
-	Validate-CAARecord $getResult.Records[0] 0 "issue" "contoso.org"
-
-	$listResult = Get-AzDnsRecordSet -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType CAA
-
-	Assert-AreEqual 1 $listResult[0].Records.Count
-	Validate-CAARecord $listResult.Records[0] 0 "issue" "contoso.org"
-
-	$removed = $listResult[0] | Remove-AzDnsRecordSet -Confirm:$false -PassThru
-
-	Assert-True { $removed }
-
-	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
-	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
-}
-
-function Test-RecordSetCAANonEmpty
-{
-	$zoneName = Get-RandomZoneName
-	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
-
-    $records = @()
-	$records += New-AzDnsRecordConfig  -CaaFlags 1 -CaaTag issuewild -CaaValue "contoso.org"
-	$records += New-AzDnsRecordConfig  -CaaFlags 0 -CaaTag issue -CaaValue "fabrikam.com"
-	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType CAA -DnsRecords $records
-
-	$record | Set-AzDnsRecordSet
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType CAA
-	
-	Assert-AreEqual 2 $getResult.Records.Count
-	Validate-CAARecord $getResult.Records[0] 1 "issuewild" "contoso.org"
-	Validate-CAARecord $getResult.Records[1] 0 "issue" "fabrikam.com"
-
-	$removed = $getResult[0] | Remove-AzDnsRecordSet -Confirm:$false -PassThru
-
-	Assert-True { $removed }
 
 	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
 	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force

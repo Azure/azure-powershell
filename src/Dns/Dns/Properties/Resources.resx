@@ -168,38 +168,20 @@
   <data name="Success" xml:space="preserve">
     <value>Success!</value>
   </data>
-  <data name="Success_NewPrivateZone" xml:space="preserve">
-    <value>Zone '{0}' was created in resource group '{1}'. The SOA record for this zone has been created automatically. Use Get-AzDnsRecordSet to retrieve it.</value>
-  </data>
   <data name="Success_NewRecordSet" xml:space="preserve">
-    <value>Record set '{0}' was created in zone '{1}'.The record set is empty. Use Add-AzDnsRecordConfig to add {2} records to it and Set-AzDnsRecordSet to save your changes.</value>
-  </data>
-  <data name="Success_NewRecordSetHasRecords" xml:space="preserve">
-    <value>Record set '{0}' was created in zone '{1}'. Use Add-AzDnsRecordConfig to add more {2} records to it and Set-AzDnsRecordSet to save your changes.</value>
+    <value>Record set '{0}' was created in zone '{1}'.The record set is empty. Use Add-AzureRmDnsRecordConfig to add {2} records to it and Set-AzureRmDnsRecordSet to save your changes.</value>
   </data>
   <data name="Success_NewZone" xml:space="preserve">
-    <value>Zone '{0}' was created in resource group '{1}'. The SOA and authoritative NS records for this zone have been created automatically. Use Get-AzDnsRecordSet to retrieve them</value>
-  </data>
-  <data name="Success_NSDelegation" xml:space="preserve">
-    <value>Delegation for '{0}' was created in parent '{1}'. The NS records for this zone have been added automatically in the parent. Use Get-AzDnsRecordSet to retrieve them</value>
-  </data>
-  <data name="Error_NSDelegation" xml:space="preserve">
-    <value>Delegation for '{0}' could not be created in the parent.</value>
-  </data>
-  <data name="Error_NSDelegationSubscriptionMisMatch" xml:space="preserve">
-    <value>Delegation addition in a parent zone '{1}' residing in different subscription than child '{0}' is not supported.</value>
-  </data>
-  <data name="Error_ResourceIdIncorrectFormat" xml:space="preserve">
-    <value>The resourceId '{0}' is not in the expected format.</value>
+    <value>Zone '{0}' was created in resource group '{1}'. The SOA and authoritative NS records for this zone have been created automatically. Use Get-AzureRmDnsRecordSet to retrieve them</value>
   </data>
   <data name="Success_NonExistentZone" xml:space="preserve">
     <value>The Zone '{0}' was not present in the resource group '{1}'. Hence, was not deleted</value>
   </data>
   <data name="Success_RecordAdded" xml:space="preserve">
-    <value>Record added. Use Set-AzDnsRecordSet to save your change to this record set.</value>
+    <value>Record added. Use Set-AzureRmDnsRecordSet to save your change to this record set.</value>
   </data>
   <data name="Success_RecordRemoved" xml:space="preserve">
-    <value>Record removed. Use Set-AzDnsRecordSet to save your change to this record set.</value>
+    <value>Record removed. Use Set-AzureRmDnsRecordSet to save your change to this record set.</value>
   </data>
   <data name="Success_RecordSetFqdn" xml:space="preserve">
     <value>After you create {2} records in this record set you will be able to query them in DNS using the FQDN '{0}.{1}.'</value>

@@ -32,15 +32,6 @@ function Get-ResourceName
 
 <#
 .SYNOPSIS
-Gets valid virtual network name
-#>
-function Get-VirtualNetworkName
-{
-    return getAssetName
-}
-
-<#
-.SYNOPSIS
 Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
@@ -78,18 +69,6 @@ function TestSetup-CreateResourceGroup
 	$rglocation = Get-ProviderLocation "microsoft.compute"
     $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $rglocation
 	return $resourceGroup
-}
-
-<#
-.SYNOPSIS
-Creates a virtual network to use in tests
-#>
-function TestSetup-CreateVirtualNetwork($resourceGroup)
-{
-    $virtualNetworkName = Get-VirtualNetworkName
-	$location = Get-ProviderLocation "microsoft.network/virtualNetworks"
-    $virtualNetwork = New-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $location -AddressPrefix "10.0.0.0/8"
-	return $virtualNetwork
 }
 
 function Get-RandomZoneName

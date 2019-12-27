@@ -214,16 +214,7 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zone &apos;{0}&apos; was created in resource group &apos;{1}&apos;. The SOA record for this zone has been created automatically. Use Get-AzDnsRecordSet to retrieve it..
-        /// </summary>
-        internal static string Success_NewPrivateZone {
-            get {
-                return ResourceManager.GetString("Success_NewPrivateZone", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Record set &apos;{0}&apos; was created in zone &apos;{1}&apos;.The record set is empty. Use Add-AzDnsRecordConfig to add {2} records to it and Set-AzDnsRecordSet to save your changes..
+        ///   Looks up a localized string similar to Record set &apos;{0}&apos; was created in zone &apos;{1}&apos;.The record set is empty. Use Add-AzureRmDnsRecordConfig to add {2} records to it and Set-AzureRmDnsRecordSet to save your changes..
         /// </summary>
         internal static string Success_NewRecordSet {
             get {
@@ -232,61 +223,14 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Record set &apos;{0}&apos; was created in zone &apos;{1}&apos;. Use Add-AzDnsRecordConfig to add more {2} records to it and Set-AzDnsRecordSet to save your changes..
-        /// </summary>
-        internal static string Success_NewRecordSetHasRecords {
-            get {
-                return ResourceManager.GetString("Success_NewRecordSetHasRecords", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Zone &apos;{0}&apos; was created in resource group &apos;{1}&apos;. The SOA and authoritative NS records for this zone have been created automatically. Use Get-AzDnsRecordSet to retrieve them.
+        ///   Looks up a localized string similar to Zone &apos;{0}&apos; was created in resource group &apos;{1}&apos;. The SOA and authoritative NS records for this zone have been created automatically. Use Get-AzureRmDnsRecordSet to retrieve them.
         /// </summary>
         internal static string Success_NewZone {
             get {
                 return ResourceManager.GetString("Success_NewZone", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Zone Delegation for &apos;{0}&apos; was created in parent &apos;{1}&apos;. The NS records for this zone have been added automatically in the parent. Use Get-AzDnsRecordSet to retrieve them.
-        /// </summary>
-        internal static string Success_NSDelegation {
-            get {
-                return ResourceManager.GetString("Success_NSDelegation", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Zone Delegation 
-        /// </summary>
-        internal static string Error_NSDelegationSubscriptionMisMatch {
-            get {
-                return ResourceManager.GetString("Error_NSDelegationSubscriptionMisMatch", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Zone Delegation 
-        /// </summary>
-        internal static string Error_NSDelegation {
-            get {
-                return ResourceManager.GetString("Error_NSDelegation", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Zone Delegation 
-        /// </summary>
-        internal static string Error_ResourceIdIncorrectFormat
-        {
-            get
-            {
-                return ResourceManager.GetString("Error_ResourceIdIncorrectFormat", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to The Zone &apos;{0}&apos; was not present in the resource group &apos;{1}&apos;. Hence, was not deleted.
         /// </summary>
@@ -297,7 +241,7 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Record added. Use Set-AzDnsRecordSet to save your change to this record set..
+        ///   Looks up a localized string similar to Record added. Use Set-AzureRmDnsRecordSet to save your change to this record set..
         /// </summary>
         internal static string Success_RecordAdded {
             get {
@@ -306,7 +250,7 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Record removed. Use Set-AzDnsRecordSet to save your change to this record set..
+        ///   Looks up a localized string similar to Record removed. Use Set-AzureRmDnsRecordSet to save your change to this record set..
         /// </summary>
         internal static string Success_RecordRemoved {
             get {
