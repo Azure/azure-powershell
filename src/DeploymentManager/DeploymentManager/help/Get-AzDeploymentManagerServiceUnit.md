@@ -15,32 +15,32 @@ Gets the service unit.
 ### Interactive (Default)
 ```
 Get-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceTopologyName] <String>
- [-ServiceName] <String> [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ServiceName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByServiceObject
+```
+Get-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-Name] <String>
+ [-ServiceObject] <PSServiceResource> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByServiceResourceId
+```
+Get-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-Name] <String> [-ServiceResourceId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTopologyObjectAndServiceName
 ```
-Get-AzDeploymentManagerServiceUnit [-ServiceName] <String> [[-Name] <String>]
+Get-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
  [-ServiceTopologyObject] <PSServiceTopologyResource> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByTopologyResourceAndServiceName
 ```
-Get-AzDeploymentManagerServiceUnit [-ServiceName] <String> [[-Name] <String>]
+Get-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
  [-ServiceTopologyResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByServiceObject
-```
-Get-AzDeploymentManagerServiceUnit [[-Name] <String>] [-ServiceObject] <PSServiceResource>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByServiceResourceId
-```
-Get-AzDeploymentManagerServiceUnit [[-Name] <String>] [-ServiceResourceId] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -51,7 +51,7 @@ Get-AzDeploymentManagerServiceUnit [-ResourceId] <String> [-DefaultProfile <IAzu
 
 ### InputObject
 ```
-Get-AzDeploymentManagerServiceUnit [-InputObject] <PSServiceUnitResource>
+Get-AzDeploymentManagerServiceUnit -InputObject <PSServiceUnitResource>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -111,7 +111,7 @@ Parameter Sets: InputObject
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -122,10 +122,10 @@ The name of the service unit.
 
 ```yaml
 Type: System.String
-Parameter Sets: Interactive, ByTopologyObjectAndServiceName, ByTopologyResourceAndServiceName, ByServiceObject, ByServiceResourceId
+Parameter Sets: Interactive, ByServiceObject, ByServiceResourceId, ByTopologyObjectAndServiceName, ByTopologyResourceAndServiceName
 Aliases:
 
-Required: False
+Required: True
 Position: 3
 Default value: None
 Accept pipeline input: False
@@ -137,7 +137,7 @@ The resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Interactive
+Parameter Sets: Interactive, ByServiceObject, ByServiceResourceId, ByTopologyObjectAndServiceName, ByTopologyResourceAndServiceName
 Aliases:
 
 Required: True
@@ -231,7 +231,7 @@ Parameter Sets: ByTopologyObjectAndServiceName
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -246,14 +246,14 @@ Parameter Sets: ByTopologyResourceAndServiceName
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

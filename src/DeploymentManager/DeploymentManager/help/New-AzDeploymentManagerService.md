@@ -21,15 +21,15 @@ New-AzDeploymentManagerService [-ResourceGroupName] <String> [-ServiceTopologyNa
 
 ### ByServiceTopologyObject
 ```
-New-AzDeploymentManagerService -Name <String> -Location <String> -TargetLocation <String>
- -TargetSubscriptionId <String> [-ServiceTopologyObject] <PSServiceTopologyResource> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzDeploymentManagerService [-ResourceGroupName] <String> -Name <String> -Location <String>
+ -TargetLocation <String> -TargetSubscriptionId <String> [-ServiceTopologyObject] <PSServiceTopologyResource>
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByServiceTopologyResourceId
 ```
-New-AzDeploymentManagerService -Name <String> -Location <String> -TargetLocation <String>
- -TargetSubscriptionId <String> [-ServiceTopologyId] <String> [-Tag <Hashtable>]
+New-AzDeploymentManagerService [-ResourceGroupName] <String> -Name <String> -Location <String>
+ -TargetLocation <String> -TargetSubscriptionId <String> [-ServiceTopologyId] <String> [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -100,7 +100,7 @@ The resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Interactive
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -119,7 +119,7 @@ Parameter Sets: ByServiceTopologyResourceId
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -149,7 +149,7 @@ Parameter Sets: ByServiceTopologyObject
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -232,7 +232,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

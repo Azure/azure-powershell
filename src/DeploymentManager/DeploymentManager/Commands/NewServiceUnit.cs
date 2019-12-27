@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         [Parameter(
             Position = 0,
             Mandatory = true, 
-            ParameterSetName = NewServiceUnit.ByTopologyAndServiceNamesParameterSet,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
@@ -63,12 +62,12 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ParameterSetName = NewServiceUnit.ByTopologyAndServiceNamesParameterSet,
             HelpMessage = "The name of the service this service unit is a part of.")]
         [Parameter(
-            Position = 1,
+            Position = 2,
             Mandatory = true, 
             ParameterSetName = NewServiceUnit.ByTopologyObjectAndServiceNameParameterSet,
             HelpMessage = "The name of the service this service unit is a part of.")]
         [Parameter(
-            Position = 1,
+            Position = 2,
             Mandatory = true, 
             ParameterSetName = NewServiceUnit.ByTopologyResourceIdAndServiceNameParameterSet,
             HelpMessage = "The name of the service this service unit is a part of.")]
@@ -79,27 +78,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         [Parameter(
             Position = 3,
             Mandatory = true, 
-            ParameterSetName = NewServiceUnit.ByTopologyAndServiceNamesParameterSet,
-            HelpMessage = "The name of the service unit.")]
-        [Parameter(
-            Position = 2,
-            Mandatory = true, 
-            ParameterSetName = NewServiceUnit.ByTopologyObjectAndServiceNameParameterSet,
-            HelpMessage = "The name of the service unit.")]
-        [Parameter(
-            Position = 2,
-            Mandatory = true, 
-            ParameterSetName = NewServiceUnit.ByTopologyResourceIdAndServiceNameParameterSet,
-            HelpMessage = "The name of the service unit.")]
-        [Parameter(
-            Position = 1,
-            Mandatory = true, 
-            ParameterSetName = NewServiceUnit.ByServiceObjectParameterSet,
-            HelpMessage = "The name of the service unit.")]
-        [Parameter(
-            Position = 1,
-            Mandatory = true, 
-            ParameterSetName = NewServiceUnit.ByServiceResourceIdParamSet,
             HelpMessage = "The name of the service unit.")]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.DeploymentManager/serviceTopologies/services/serviceUnits", nameof(ResourceGroupName), nameof(ServiceTopologyName), nameof(ServiceName))]
@@ -152,7 +130,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         public Hashtable Tag { get; set; }
 
         [Parameter(
-            Position = 0,
+            Position = 1,
             Mandatory = true, 
             ParameterSetName = NewServiceUnit.ByTopologyObjectAndServiceNameParameterSet,
             HelpMessage = "The service topology object in which the service unit should be created.")]
@@ -160,7 +138,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         public PSServiceTopologyResource ServiceTopologyObject { get; set; }
 
         [Parameter(
-            Position = 0,
+            Position = 1,
             Mandatory = true, 
             ParameterSetName = NewServiceUnit.ByTopologyResourceIdAndServiceNameParameterSet,
             HelpMessage = "The service topology resource identifier in which the service unit should be created.")]
@@ -168,7 +146,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         public string ServiceTopologyResourceId { get; set; }
 
         [Parameter(
-            Position = 0,
+            Position = 2,
             Mandatory = true, 
             ParameterSetName = NewServiceUnit.ByServiceObjectParameterSet,
             HelpMessage = "The service object in which the service unit should be created.")]
@@ -176,7 +154,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         public PSServiceResource ServiceObject { get; set; }
 
         [Parameter(
-            Position = 0,
+            Position = 2,
             Mandatory = true, 
             ParameterSetName = NewServiceUnit.ByServiceResourceIdParamSet,
             HelpMessage = "The service resource identifier in which the service unit should be created.")]
@@ -223,14 +201,12 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         {
             if (this.ServiceObject != null)
             {
-                this.ResourceGroupName = this.ServiceObject.ResourceGroupName;
                 this.ServiceTopologyName = this.ServiceObject.ServiceTopologyName;
                 this.ServiceName = this.ServiceObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ServiceResourceId))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ServiceResourceId);
-                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
                 this.ServiceName = parsedResourceId.ResourceName;
                 string[] tokens = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
                 if (tokens.Length < 2)
@@ -242,13 +218,11 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             }
             else if (this.ServiceTopologyObject != null)
             {
-                this.ResourceGroupName = this.ServiceTopologyObject.ResourceGroupName;
                 this.ServiceTopologyName = this.ServiceTopologyObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ServiceTopologyResourceId))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ServiceTopologyResourceId);
-                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
                 this.ServiceTopologyName = parsedResourceId.ResourceName;
             }
         }

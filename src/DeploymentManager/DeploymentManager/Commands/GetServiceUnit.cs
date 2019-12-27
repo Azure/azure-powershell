@@ -38,6 +38,26 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             HelpMessage = "The resource group.")]
+        [Parameter(
+            Position = 0,
+            Mandatory = false, 
+            ParameterSetName = GetServiceUnit.ByServiceObjectParameterSet,
+            HelpMessage = "The resource group.")]
+        [Parameter(
+            Position = 0,
+            Mandatory = false, 
+            ParameterSetName = GetServiceUnit.ByServiceResourceIdParamSet,
+            HelpMessage = "The resource group.")]
+        [Parameter(
+            Position = 0,
+            Mandatory = false, 
+            ParameterSetName = GetServiceUnit.ByTopologyObjectAndServiceNameParameterSet,
+            HelpMessage = "The resource group.")]
+        [Parameter(
+            Position = 0,
+            Mandatory = false, 
+            ParameterSetName = GetServiceUnit.ByTopologyResourceIdAndServiceNameParameterSet,
+            HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
@@ -57,12 +77,12 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             HelpMessage = "The name of the service the service unit is part of.")]
         [Parameter(
-            Position = 1,
+            Position = 2,
             Mandatory = true, 
             ParameterSetName = GetServiceUnit.ByTopologyObjectAndServiceNameParameterSet,
             HelpMessage = "The name of the service the service unit is part of.")]
         [Parameter(
-            Position = 1,
+            Position = 2,
             Mandatory = true, 
             ParameterSetName = GetServiceUnit.ByTopologyResourceIdAndServiceNameParameterSet,
             HelpMessage = "The name of the service the service unit is part of.")]
@@ -76,25 +96,26 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             HelpMessage = "The name of the service unit.")]
         [Parameter(
-            Position = 1,
+            Position = 2,
             Mandatory = false, 
             ParameterSetName = GetServiceUnit.ByServiceObjectParameterSet,
             HelpMessage = "The name of the service unit.")]
         [Parameter(
-            Position = 1,
+            Position = 2,
             Mandatory = false, 
             ParameterSetName = GetServiceUnit.ByServiceResourceIdParamSet,
             HelpMessage = "The name of the service unit.")]
         [Parameter(
-            Position = 2,
+            Position = 3,
             Mandatory = false, 
             ParameterSetName = GetServiceUnit.ByTopologyObjectAndServiceNameParameterSet,
             HelpMessage = "The name of the service unit.")]
         [Parameter(
-            Position = 2,
+            Position = 3,
             Mandatory = false, 
             ParameterSetName = GetServiceUnit.ByTopologyResourceIdAndServiceNameParameterSet,
             HelpMessage = "The name of the service unit.")]
+        [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.DeploymentManager/serviceTopologies/services/serviceUnits", nameof(ResourceGroupName), nameof(ServiceTopologyName), nameof(ServiceName))]
         public string Name { get; set; }
 
@@ -117,7 +138,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         public PSServiceUnitResource InputObject { get; set; }
 
         [Parameter(
-            Position = 0,
+            Position = 1,
             Mandatory = true, 
             ParameterSetName = GetServiceUnit.ByTopologyObjectAndServiceNameParameterSet,
             HelpMessage = "The service topology object in which the service unit should be created.")]
@@ -125,7 +146,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         public PSServiceTopologyResource ServiceTopologyObject { get; set; }
 
         [Parameter(
-            Position = 0,
+            Position = 1,
             Mandatory = true, 
             ParameterSetName = GetServiceUnit.ByTopologyResourceIdAndServiceNameParameterSet,
             HelpMessage = "The service topology resource identifier in which the service unit should be created.")]
