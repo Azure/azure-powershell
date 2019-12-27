@@ -1,40 +1,71 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
-Module Name: Az.Storage
-online version:
+Module Name:Az.Storage
+ms.assetid: A3DA1205-B8FB-4B4C-9C40-AD303D038EDF
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstorageaccount
 schema: 2.0.0
 ---
 
-# New-AzStorageAccount
+# New-AzureRmStorageAccount
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a Storage account.
 
 ## SYNTAX
 
 ```
-New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String> [-Location] <String>
- [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
- [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String>
+ [-Location] <String> [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>]
+ [-UseSubDomain <Boolean>] [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzureRmStorageAccount** cmdlet creates an Azure Storage account.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Create a Storage account
+```
+PS C:\>New-AzureRmStorageAccount -ResourceGroupName MyResourceGroup -AccountName mystorageaccount -Location westus -SkuName Standard_GRS
 ```
 
-{{ Add example description here }}
+This command creates a Storage account for the resource group name MyResourceGroup.
+
+### Example 2: Create a Blob Storage account with BlobStorage Kind and hot AccessTier
+```
+PS C:\>New-AzureRmStorageAccount -ResourceGroupName MyResourceGroup -AccountName mystorageaccount -Location westus -SkuName Standard_GRS -Kind BlobStorage -AccessTier Hot
+```
+
+This command creates a Blob Storage account that with BlobStorage Kind and hot AccessTier
+
+### Example 3: Create a Storage account with Kind StorageV2, and Generate and Assign an Identity for Azure KeyVault.
+```
+PS C:\>New-AzureRmStorageAccount -ResourceGroupName MyResourceGroup -AccountName mystorageaccount -Location westus -SkuName Standard_GRS -Kind StorageV2 -AssignIdentity
+```
+
+This command creates a Storage account with Kind StorageV2.  It also generates and assigns an identity that can be used to manage account keys through Azure KeyVault.
+
+### Example 4: Create a Storage account with NetworkRuleSet from JSON
+```
+PS C:\>New-AzureRmStorageAccount -ResourceGroupName MyResourceGroup -AccountName mystorageaccount -Location westus -Type Standard_LRS -NetworkRuleSet (@{bypass="Logging,Metrics";
+    ipRules=(@{IPAddressOrRange="20.11.0.0/16";Action="allow"},
+            @{IPAddressOrRange="10.0.0.0/7";Action="allow"});
+    virtualNetworkRules=(@{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1";Action="allow"},
+                        @{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/subnet2";Action="allow"});
+    defaultAction="Deny"})
+```
+
+This command creates a Storage account that has NetworkRuleSet property from JSON
 
 ## PARAMETERS
 
 ### -AccessTier
-Storage Account Access Tier.
+Specifies the access tier of the Storage account that this cmdlet creates.
+The acceptable values for this parameter are: Hot and Cool.
+If you specify a value of BlobStorage for the *Kind* parameter, you must specify a value for the
+*AccessTier* parameter. If you specify a value of Storage for this *Kind* parameter, do not specify
+the *AccessTier* parameter.
 
 ```yaml
 Type: System.String
@@ -65,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault.
+Generate and assign a new Storage account Identity for this Storage account for use with key management services like Azure KeyVault.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -80,7 +111,8 @@ Accept wildcard characters: False
 ```
 
 ### -CustomDomainName
-Storage Account Custom Domain.
+Specifies the name of the custom domain of the Storage account.
+The default value is Storage.
 
 ```yaml
 Type: System.String
@@ -98,9 +130,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -110,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableHttpsTrafficOnly
-Storage Account EnableHttpsTrafficOnly.
+Indicates whether or not the Storage account only enables HTTPS traffic.
 
 ```yaml
 Type: System.Boolean
@@ -125,7 +157,12 @@ Accept wildcard characters: False
 ```
 
 ### -Kind
-Storage Account Kind.
+Specifies the kind of Storage account that this cmdlet creates.
+The acceptable values for this parameter are:
+- Storage. General purpose Storage account that supports storage of Blobs, Tables, Queues, Files and Disks.
+- StorageV2. General Purpose Version 2 (GPv2) Storage account that supports Blobs, Tables, Queues, Files, and Disks, with advanced features like data tiering.
+- BlobStorage. Blob Storage account which supports storage of Blobs only.
+The default value is Storage.
 
 ```yaml
 Type: System.String
@@ -141,7 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Storage Account Location.
+Specifies the location of the Storage account to create.
 
 ```yaml
 Type: System.String
@@ -156,7 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Storage Account Name.
+Specifies the name of the Storage account to create.
 
 ```yaml
 Type: System.String
@@ -171,7 +208,7 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkRuleSet
-Storage Account NetworkRule
+NetworkRuleSet is used to define a set of configuration rules for firewalls and virtual networks, as well as to set values for network properties such as services allowed to bypass the rules and how to handle requests that don't match any of the defined rules.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet
@@ -186,7 +223,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Specifies the name of the resource group in which to add the Storage account.
 
 ```yaml
 Type: System.String
@@ -201,7 +238,13 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-Storage Account Sku Name.
+Specifies the SKU name of the Storage account that this cmdlet creates.
+The acceptable values for this parameter are:
+- Standard_LRS. Locally-redundant storage.
+- Standard_ZRS. Zone-redundant storage.
+- Standard_GRS. Geo-redundant storage.
+- Standard_RAGRS. Read access geo-redundant storage.
+- Premium_LRS. Premium locally-redundant storage.
 
 ```yaml
 Type: System.String
@@ -217,7 +260,8 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Storage Account Tags.
+Key-value pairs in the form of a hash table set as tags on the server. For example:
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -232,7 +276,7 @@ Accept wildcard characters: False
 ```
 
 ### -UseSubDomain
-To Use Sub Domain.
+Indicates whether to enable indirect CName validation.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -247,7 +291,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -262,3 +306,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureRmStorageAccount](./Get-AzureRmStorageAccount.md)
+
+[Remove-AzureRmStorageAccount](./Remove-AzureRmStorageAccount.md)
+
+[Set-AzureRmStorageAccount](./Set-AzureRmStorageAccount.md)

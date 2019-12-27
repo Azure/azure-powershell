@@ -1,40 +1,55 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
-Module Name: Az.Storage
-online version:
+Module Name:Az.Storage
+ms.assetid: E53D5040-C1E8-4DC1-8371-F41C00B666E3
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageaccount
 schema: 2.0.0
 ---
 
-# Get-AzStorageAccount
+# Get-AzureRmStorageAccount
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a Storage account.
 
 ## SYNTAX
 
 ### ResourceGroupParameterSet
 ```
-Get-AzStorageAccount [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmStorageAccount [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### AccountNameParameterSet
 ```
-Get-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzureRmStorageAccount** cmdlet gets a specified Storage account or all of the Storage accounts in a resource group or the subscription.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Get a specified Storage account
+```
+PS C:\>Get-AzureRmStorageAccount -ResourceGroupName "RG01" -AccountName "mystorageaccount"
 ```
 
-{{ Add example description here }}
+This command gets the specified Storage account.
+
+### Example 2: Get all Storage accounts in a resource group
+```
+PS C:\>Get-AzureRmStorageAccount -ResourceGroupName "RG01"
+```
+
+This command gets all of the Storage accounts in a resource group.
+
+### Example 3:  Get all Storage accounts in the subscription
+```
+PS C:\>Get-AzureRmStorageAccount
+```
+
+This command gets all of the Storage accounts in the subscription.
 
 ## PARAMETERS
 
@@ -42,9 +57,9 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -54,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Storage Account Name.
+Specifies the name of the Storage account to get.
 
 ```yaml
 Type: System.String
@@ -69,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Specifies the name of the resource group that contains the Storage account to get.
 
 ```yaml
 Type: System.String
@@ -96,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -109,3 +124,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzureRmStorageAccount](./New-AzureRmStorageAccount.md)
+
+[Remove-AzureRmStorageAccount](./Remove-AzureRmStorageAccount.md)
+
+[Set-AzureRmStorageAccount](./Set-AzureRmStorageAccount.md)
+
+

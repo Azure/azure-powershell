@@ -1,14 +1,15 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version:
+ms.assetid: 22975A89-CAFF-4F18-8DCE-B695413FBAC7
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/remove-azstoragequeue
 schema: 2.0.0
 ---
 
 # Remove-AzureStorageQueue
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a storage queue.
 
 ## SYNTAX
 
@@ -18,21 +19,29 @@ Remove-AzureStorageQueue [-Name] <String> [-Force] [-PassThru] [-Context <IStora
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzureStorageQueue** cmdlet removes a storage queue.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Remove a storage queue by name
+```
+PS C:\>Remove-AzureStorageQueue "ContosoQueue01"
 ```
 
-{{ Add example description here }}
+This command removes a queue named ContosoQueue01.
+
+### Example 2: Remove multiple storage queues
+```
+PS C:\>Get-AzureStorageQueue "Contoso*" | Remove-AzureStorageQueue
+```
+
+This command removes all queues with names that start with Contoso.
 
 ## PARAMETERS
 
 ### -Context
-Azure Storage Context Object
+Specifies the Azure storage context.
+To obtain the storage context, the New-AzureStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -62,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Force to remove the queue and all content in it
+Forces the command to run without asking for user confirmation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -77,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Queue name
+Specifies the name of the queue to remove.
 
 ```yaml
 Type: System.String
@@ -92,7 +101,8 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Return whether the specified queue is successfully removed
+Indicates that this cmdlet returns a **Boolean** that reflects the success of the operation.
+By default, this cmdlet does not return a value.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -116,7 +126,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -132,7 +142,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -153,3 +163,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureStorageQueue](./Get-AzureStorageQueue.md)
+
+[New-AzureStorageQueue](./New-AzureStorageQueue.md)

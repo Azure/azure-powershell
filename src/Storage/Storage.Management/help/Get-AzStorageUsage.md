@@ -1,32 +1,33 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
-Module Name: Az.Storage
-online version:
+Module Name:Az.Storage
+ms.assetid: 11AAA319-DDBB-4156-9BE7-4DE8B80A904C
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageusage
 schema: 2.0.0
 ---
 
-# Get-AzStorageUsage
+# Get-AzureRmStorageUsage
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the Storage resource usage of the current subscription.
 
 ## SYNTAX
 
 ```
-Get-AzStorageUsage [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmStorageUsage [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzureRmStorageUsage** cmdlet gets the resource usage for Azure Storage for the current subscription.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Get the storage resources usage
+```
+PS C:\>Get-AzureRmStorageUsage
 ```
 
-{{ Add example description here }}
+This command gets the Storage resources usage of the current subscription.
 
 ## PARAMETERS
 
@@ -34,9 +35,9 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -46,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -59,3 +60,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Azure Storage Manager Cmdlets](./AzureRM.Storage.md)
+
+

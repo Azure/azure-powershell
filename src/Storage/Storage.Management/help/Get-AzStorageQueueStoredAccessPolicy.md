@@ -1,38 +1,47 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version:
+ms.assetid: F1EC601C-3ADD-402A-A5F7-84A95D312187
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstoragequeuestoredaccesspolicy
 schema: 2.0.0
 ---
 
-# Get-AzStorageQueueStoredAccessPolicy
+# Get-AzureStorageQueueStoredAccessPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the stored access policy or policies for an Azure storage queue.
 
 ## SYNTAX
 
 ```
-Get-AzStorageQueueStoredAccessPolicy [-Queue] <String> [[-Policy] <String>] [-Context <IStorageContext>]
+Get-AzureStorageQueueStoredAccessPolicy [-Queue] <String> [[-Policy] <String>] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzureStorageQueueStoredAccessPolicy** cmdlet lists the stored access policy or policies for an Azure storage queue.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Get a stored access policy in the queue
+```
+PS C:\>Get-AzureStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy12"
 ```
 
-{{ Add example description here }}
+This command gets the access policy named Policy12 in the storage queue named MyQueue.
+
+### Example 2: Get all stored access policies in the queue
+```
+PS C:\>Get-AzureStorageQueueStoredAccessPolicy -Queue "MyQueue"
+```
+
+This command gets all stored access policies in the queue named MyQueue.
 
 ## PARAMETERS
 
 ### -Context
-Azure Storage Context Object
+Specifies the Azure storage context.
+To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -50,7 +59,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -62,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Policy Identifier
+Specifies a stored access policy, which includes the permissions for this Shared Access Signature (SAS) token.
 
 ```yaml
 Type: System.String
@@ -77,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -Queue
-Queue Name
+Specifies the Azure storage queue name.
 
 ```yaml
 Type: System.String
@@ -92,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -102,8 +111,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Storage.Queue.SharedAccessQueuePolicy
+### Microsoft.WindowsAz.Storage.Queue.SharedAccessQueuePolicy
 
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzureStorageQueueStoredAccessPolicy](./New-AzureStorageQueueStoredAccessPolicy.md)
+
+[Remove-AzureStorageQueueStoredAccessPolicy](./Remove-AzureStorageQueueStoredAccessPolicy.md)
+
+[Set-AzureStorageQueueStoredAccessPolicy](./Set-AzureStorageQueueStoredAccessPolicy.md)
+
+[New-AzureStorageContext](./New-AzureStorageContext.md)
+
+

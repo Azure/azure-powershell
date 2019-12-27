@@ -1,39 +1,43 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version:
+ms.assetid: 5422429E-C609-4C1F-A021-E2A085B5F74E
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azstorageserviceloggingproperty
 schema: 2.0.0
 ---
 
-# Set-AzStorageServiceLoggingProperty
+# Set-AzureStorageServiceLoggingProperty
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Modifies logging for Azure Storage services.
 
 ## SYNTAX
 
 ```
-Set-AzStorageServiceLoggingProperty [-ServiceType] <StorageServiceType> [-Version <Double>]
+Set-AzureStorageServiceLoggingProperty [-ServiceType] <StorageServiceType> [-Version <Double>]
  [-RetentionDays <Int32>] [-LoggingOperations <LoggingOperations[]>] [-PassThru] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzureStorageServiceLoggingProperty** cmdlet modifies logging for Azure Storage services.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Modify logging properties for the Blob service
+```
+C:\PS>Set-AzureStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write -PassThru -RetentionDays 10 -Version 1.0
 ```
 
-{{ Add example description here }}
+This command modifies version 1.0 logging for blob storage to include read and write operations.
+Azure Storage service logging retains entries for 10 days.
+Because this command specifies the *PassThru* parameter, the command displays the modified logging properties.
 
 ## PARAMETERS
 
 ### -Context
-Azure Storage Context Object
+Specifies an Azure storage context.
+To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -51,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,11 +67,17 @@ Accept wildcard characters: False
 ```
 
 ### -LoggingOperations
-Logging operations.
-(All, None, combinations of Read, Write, Delete that are seperated by semicolon.)
+Specifies an array of Azure Storage service operations.
+Azure Storage services logs the operations that this parameter specifies.
+The acceptable values for this parameter are:
+- None
+- Read
+- Write
+- Delete
+- All
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Shared.Protocol.LoggingOperations[]
+Type: Microsoft.WindowsAz.Storage.Shared.Protocol.LoggingOperations[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, Read, Write, Delete, All
@@ -80,7 +90,8 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Display ServiceProperties
+Indicates that this cmdlet returns the updated logging properties.
+If you do not specify this parameter, this cmdlet does not return a value.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -95,8 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -RetentionDays
-Logging retention days.
--1 means disable Logging retention policy, otherwise enable.
+Specifies the number of days that the Azure Storage service retains logged information.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -111,7 +121,14 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceType
-Azure storage service type(Blob, Table, Queue).
+Specifies the storage service type.
+This cmdlet modifies the logging properties for the service type that this parameter specifies.
+The acceptable values for this parameter are:
+- Blob 
+- Table
+- Queue
+- File
+The value of File is not currently supported.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType
@@ -127,7 +144,8 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-Logging version
+Specifies the version of the Azure Storage service logging.
+The default value is 1.0.
 
 ```yaml
 Type: System.Nullable`1[System.Double]
@@ -142,7 +160,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -150,8 +168,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Storage.Shared.Protocol.LoggingProperties
+### Microsoft.WindowsAz.Storage.Shared.Protocol.LoggingProperties
 
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureStorageServiceLoggingProperty](./Get-AzureStorageServiceLoggingProperty.md)
+
+[New-AzureStorageContext](./New-AzureStorageContext.md)
+
+

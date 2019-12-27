@@ -1,14 +1,15 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version:
+ms.assetid: E9500392-6BE1-46EC-9AF5-9234281025E6
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstoragequeue
 schema: 2.0.0
 ---
 
 # New-AzureStorageQueue
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a storage queue.
 
 ## SYNTAX
 
@@ -18,21 +19,30 @@ New-AzureStorageQueue [-Name] <String> [-Context <IStorageContext>] [-DefaultPro
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzureStorageQueue** cmdlet creates a storage queue in Azure.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Create an Azure storage queue
+```
+PS C:\>New-AzureStorageQueue -Name "queueabc"
 ```
 
-{{ Add example description here }}
+This example creates a storage queue named queueabc.
+
+### Example 2: Create multiple azure storage queues
+```
+PS C:\>"queue1 queue2 queue3".split() | New-AzureStorageQueue
+```
+
+This example creates multiple storage queues.
+It uses the Split method of the .NET String class and then passes the names on the pipeline.
 
 ## PARAMETERS
 
 ### -Context
-Azure Storage Context Object
+Specifies the Azure storage context.
+You can create it by using the New-AzureStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -62,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Queue name
+Specifies a name for the queue.
 
 ```yaml
 Type: System.String
@@ -92,3 +102,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureStorageQueue](./Get-AzureStorageQueue.md)
+
+[Remove-AzureStorageQueue](./Remove-AzureStorageQueue.md)
+
+

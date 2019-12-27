@@ -1,39 +1,41 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version:
+ms.assetid: 4FB7E017-7D37-4EDB-BEC1-36629058B87C
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azstoragequeuestoredaccesspolicy
 schema: 2.0.0
 ---
 
-# Set-AzStorageQueueStoredAccessPolicy
+# Set-AzureStorageQueueStoredAccessPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Sets a stored access policy for an Azure storage queue.
 
 ## SYNTAX
 
 ```
-Set-AzStorageQueueStoredAccessPolicy [-Queue] <String> [-Policy] <String> [-Permission <String>]
+Set-AzureStorageQueueStoredAccessPolicy [-Queue] <String> [-Policy] <String> [-Permission <String>]
  [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-NoStartTime] [-NoExpiryTime] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzureStorageQueueStoredAccessPolicy** cmdlet sets a stored access policy for an Azure storage queue.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Set a stored access policy in the queue with full permission
+```
+PS C:\> Set-AzureStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy07" -Permission arup
 ```
 
-{{ Add example description here }}
+This command sets an access policy named Policy07 for storage queue named MyQueue.
 
 ## PARAMETERS
 
 ### -Context
-Azure Storage Context Object
+Specifies an Azure storage context.
+To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -51,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpiryTime
-Expiry Time
+Specifies the time at which the stored access policy becomes invalid.
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
@@ -78,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoExpiryTime
-Set ExpiryTime as null for the policy
+Indicates that the access policy has no expiration date.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -93,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoStartTime
-Set StartTime as null for the policy
+Indicates that this cmdlet sets the start time to be $Null.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -108,8 +110,8 @@ Accept wildcard characters: False
 ```
 
 ### -Permission
-Permissions for a queue.
-Permissions can be any not-empty subset of "arup".
+Specifies permissions in the stored access policy to access the storage queue.
+It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
 
 ```yaml
 Type: System.String
@@ -124,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Policy Identifier
+Specifies the name for the stored access policy.
 
 ```yaml
 Type: System.String
@@ -139,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -Queue
-Queue Name
+Specifies the Azure storage queue name.
 
 ```yaml
 Type: System.String
@@ -154,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -StartTime
-Start Time
+Specifies the time at which the stored access policy becomes valid.
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
@@ -184,8 +186,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -200,7 +201,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -215,3 +216,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureStorageQueueStoredAccessPolicy](./Get-AzureStorageQueueStoredAccessPolicy.md)
+
+[New-AzureStorageQueueStoredAccessPolicy](./New-AzureStorageQueueStoredAccessPolicy.md)
+
+[Remove-AzureStorageQueueStoredAccessPolicy](./Remove-AzureStorageQueueStoredAccessPolicy.md)
