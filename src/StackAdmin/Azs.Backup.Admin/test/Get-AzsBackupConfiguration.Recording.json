@@ -1,0 +1,202 @@
+{
+  "Get-AzsBackupConfiguration+[NoContext]+TestListBackupLocation+$GET+https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations?api-version=2018-09-01\u0026$top=10+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations?api-version=2018-09-01\u0026$top=10",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "121" ],
+        "x-ms-client-request-id": [ "d2b33a3d-cdcc-4ab9-922c-7b159d29fb76" ],
+        "CommandName": [ "Get-AzsBackupConfiguration" ],
+        "FullCommandName": [ "Get-AzsBackupConfiguration_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "323dce86-8aa0-4511-8dfb-0e5aa7f1631a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14934" ],
+        "x-ms-request-id": [ "323dce86-8aa0-4511-8dfb-0e5aa7f1631a" ],
+        "x-ms-routing-request-id": [ "REDMOND:20191223T080948Z:323dce86-8aa0-4511-8dfb-0e5aa7f1631a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 23 Dec 2019 08:09:48 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvrkzPuhKXYgaoSMAWsIdAu7NnLB/Lb/tT/N5T4SUMPRU7C7z5FttVmrb9VtVCypVD5/pbYgOD3sfCZYURUa+VL4VWgIT6TSMO6EOhSJGYbY5aaOcyyy+8KlyNoYN6wkLrLNLpYiUqRHvt01JbnOjh" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "734" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond\",\"name\":\"redmond\",\"type\":\"Microsoft.Backup.Admin/backupLocations\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"externalStoreDefault\":{\"path\":\"\\\\\\\\su1fileserver\\\\SU1_Infrastructure_1\\\\BackupStore\",\"userName\":\"azurestackadmin\",\"password\":null,\"encryptionCertBase64\":null,\"encryptionCertThumbprint\":\"126B334D833C9E3AA9C1429B9B2A3C7CF3215FB0\",\"backupFrequencyInHours\":12,\"availableCapacity\":\"970 GB\",\"isBackupSchedulerEnabled\":false,\"nextBackupTime\":\"2019-12-23T09:02:03.0899739Z\",\"lastBackupTime\":\"2019-12-19T10:23:58.8247346Z\",\"backupRetentionPeriodInDays\":7}}}],\"nextLink\":null}"
+    }
+  },
+  "Get-AzsBackupConfiguration+[NoContext]+TestGetBackupLocation+$GET+https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations?api-version=2018-09-01\u0026$top=10+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations?api-version=2018-09-01\u0026$top=10",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "123" ],
+        "x-ms-client-request-id": [ "c4991b15-6bbf-4811-9b48-c21558f0441e" ],
+        "CommandName": [ "Get-AzsBackupConfiguration" ],
+        "FullCommandName": [ "Get-AzsBackupConfiguration_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "8c07f524-0459-424f-a272-65f50946dbdb" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14932" ],
+        "x-ms-request-id": [ "8c07f524-0459-424f-a272-65f50946dbdb" ],
+        "x-ms-routing-request-id": [ "REDMOND:20191223T080949Z:8c07f524-0459-424f-a272-65f50946dbdb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 23 Dec 2019 08:09:48 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv2MU8XUYFwGxUqf4vkSXxBFOSJEyDs6BBY3TX17AhN5zpseixyybrp15J+aS9YaPB7r7/NPDO4HHjAiYFwYOZyAxZTeIjUDmP+n5epmOxKxGJ7kzsyEhaiMTlRnt8USIJvxp9MBnvorHDg69Gmw/s" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "734" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond\",\"name\":\"redmond\",\"type\":\"Microsoft.Backup.Admin/backupLocations\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"externalStoreDefault\":{\"path\":\"\\\\\\\\su1fileserver\\\\SU1_Infrastructure_1\\\\BackupStore\",\"userName\":\"azurestackadmin\",\"password\":null,\"encryptionCertBase64\":null,\"encryptionCertThumbprint\":\"126B334D833C9E3AA9C1429B9B2A3C7CF3215FB0\",\"backupFrequencyInHours\":12,\"availableCapacity\":\"970 GB\",\"isBackupSchedulerEnabled\":false,\"nextBackupTime\":\"2019-12-23T09:02:03.0899739Z\",\"lastBackupTime\":\"2019-12-19T10:23:58.8247346Z\",\"backupRetentionPeriodInDays\":7}}}],\"nextLink\":null}"
+    }
+  },
+  "Get-AzsBackupConfiguration+[NoContext]+TestGetBackupLocation+$GET+https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond?api-version=2018-09-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond?api-version=2018-09-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "125" ],
+        "x-ms-client-request-id": [ "933ba627-018f-4c62-9f11-f8bfc5b69d0c" ],
+        "CommandName": [ "Get-AzsBackupConfiguration" ],
+        "FullCommandName": [ "Get-AzsBackupConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "880f351b-2d0e-4bfa-b469-10946779007a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14930" ],
+        "x-ms-request-id": [ "880f351b-2d0e-4bfa-b469-10946779007a" ],
+        "x-ms-routing-request-id": [ "REDMOND:20191223T080949Z:880f351b-2d0e-4bfa-b469-10946779007a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 23 Dec 2019 08:09:49 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvWk47kQfoEs1EezNLCCrr86pogDDyU05yVvsN2Yfq7EHk3sflHZIHblgUBxsJvAEZE3BYQwBE/lvXcf9uvA2BfHhv2TNql+QiO8loLWVwJcI8O353wK8eNMsxu41j3NDnCAgGvcDtmrhsI3CIXoiT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "706" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond\",\"name\":\"redmond\",\"type\":\"Microsoft.Backup.Admin/backupLocations\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"externalStoreDefault\":{\"path\":\"\\\\\\\\su1fileserver\\\\SU1_Infrastructure_1\\\\BackupStore\",\"userName\":\"azurestackadmin\",\"password\":null,\"encryptionCertBase64\":null,\"encryptionCertThumbprint\":\"126B334D833C9E3AA9C1429B9B2A3C7CF3215FB0\",\"backupFrequencyInHours\":12,\"availableCapacity\":\"970 GB\",\"isBackupSchedulerEnabled\":false,\"nextBackupTime\":\"2019-12-23T09:02:03.0899739Z\",\"lastBackupTime\":\"2019-12-19T10:23:58.8247346Z\",\"backupRetentionPeriodInDays\":7}}}"
+    }
+  },
+  "Get-AzsBackupConfiguration+[NoContext]+TestGetBackupLocationViaIdentity+$GET+https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations?api-version=2018-09-01\u0026$top=10+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations?api-version=2018-09-01\u0026$top=10",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "127" ],
+        "x-ms-client-request-id": [ "b623cd0c-55da-4eec-a4b7-9eebf206e821" ],
+        "CommandName": [ "Get-AzsBackupConfiguration" ],
+        "FullCommandName": [ "Get-AzsBackupConfiguration_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "139f122a-11b4-4ece-8701-5d09fa8d2dc9" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14928" ],
+        "x-ms-request-id": [ "139f122a-11b4-4ece-8701-5d09fa8d2dc9" ],
+        "x-ms-routing-request-id": [ "REDMOND:20191223T080950Z:139f122a-11b4-4ece-8701-5d09fa8d2dc9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 23 Dec 2019 08:09:49 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvsrq1GCKh47SqH8MTD0xau9JQcYHP18CBgrJiCu3JMAbufDj5kuURph9uWVOozjnHHuRzqqsyyXiMTrPazMEH1UZMtICmolrVit00DsxwzZhXq1m08qc+RSlTqSXsEo4AfWcPYcq17+xcZylI8CmK" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "734" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond\",\"name\":\"redmond\",\"type\":\"Microsoft.Backup.Admin/backupLocations\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"externalStoreDefault\":{\"path\":\"\\\\\\\\su1fileserver\\\\SU1_Infrastructure_1\\\\BackupStore\",\"userName\":\"azurestackadmin\",\"password\":null,\"encryptionCertBase64\":null,\"encryptionCertThumbprint\":\"126B334D833C9E3AA9C1429B9B2A3C7CF3215FB0\",\"backupFrequencyInHours\":12,\"availableCapacity\":\"970 GB\",\"isBackupSchedulerEnabled\":false,\"nextBackupTime\":\"2019-12-23T09:02:03.0899739Z\",\"lastBackupTime\":\"2019-12-19T10:23:58.8247346Z\",\"backupRetentionPeriodInDays\":7}}}],\"nextLink\":null}"
+    }
+  },
+  "Get-AzsBackupConfiguration+[NoContext]+TestGetBackupLocationViaIdentity+$GET+https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond?api-version=2018-09-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://adminmanagement.redmond.ext-v.masd.stbtest.microsoft.com/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond?api-version=2018-09-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "128" ],
+        "x-ms-client-request-id": [ "6d86c2fb-a188-4f95-9379-cc9cab5094f3" ],
+        "CommandName": [ "Get-AzsBackupConfiguration" ],
+        "FullCommandName": [ "Get-AzsBackupConfiguration_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowerShell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "af8450a1-2c22-4acb-9430-3fc950e5a770" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "14927" ],
+        "x-ms-request-id": [ "af8450a1-2c22-4acb-9430-3fc950e5a770" ],
+        "x-ms-routing-request-id": [ "REDMOND:20191223T080951Z:af8450a1-2c22-4acb-9430-3fc950e5a770" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Cache-Control": [ "no-cache" ],
+        "Date": [ "Mon, 23 Dec 2019 08:09:51 GMT" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "WWW-Authenticate": [ "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRveZk7C3r+Fyj5kcG13V3zEKxUnWR2yPAyElAyYCO9ZwHfGzVdsbHoZHpFaTuwO6TdAEKEviR/ciVJEOcsrsGcHyo1AYxsdWDGxerLQ3NNnkNSGRep7CAwv2Bm1DTTeNlhtaEpjWqL+cvbfHx3keUw" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "706" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9aa74e2c-e815-4494-96e4-e8ba2db83c3c/resourceGroups/system.redmond/providers/Microsoft.Backup.Admin/backupLocations/redmond\",\"name\":\"redmond\",\"type\":\"Microsoft.Backup.Admin/backupLocations\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"externalStoreDefault\":{\"path\":\"\\\\\\\\su1fileserver\\\\SU1_Infrastructure_1\\\\BackupStore\",\"userName\":\"azurestackadmin\",\"password\":null,\"encryptionCertBase64\":null,\"encryptionCertThumbprint\":\"126B334D833C9E3AA9C1429B9B2A3C7CF3215FB0\",\"backupFrequencyInHours\":12,\"availableCapacity\":\"970 GB\",\"isBackupSchedulerEnabled\":false,\"nextBackupTime\":\"2019-12-23T09:02:03.0899739Z\",\"lastBackupTime\":\"2019-12-19T10:23:58.8247346Z\",\"backupRetentionPeriodInDays\":7}}}"
+    }
+  }
+}
