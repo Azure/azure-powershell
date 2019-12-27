@@ -64,6 +64,12 @@ function Test-SelfHosted-IntegrationRuntime
             -Force
         Assert-AreEqual $result.Description $description
 
+        $status = Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
+            -DataFactoryName $dfname `
+            -Name $irname `
+            -Status
+        Assert-NotNull $status.LatestVersion
+
         Remove-AzDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Force
     }
     finally
