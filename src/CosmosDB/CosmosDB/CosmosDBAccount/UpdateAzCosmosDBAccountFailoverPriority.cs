@@ -46,9 +46,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.PassThruHelpMessage)]
-        public SwitchParameter PassThru { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (!ParameterSetName.Equals(NameParameterSet, StringComparison.Ordinal))
@@ -74,15 +71,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 failoverPolicies.Add(failoverPolicy);
             }
                      
-            try
+            CosmosDBManagementClient.DatabaseAccounts.FailoverPriorityChangeAsync(ResourceGroupName, Name, new FailoverPolicies(failoverPolicies)).GetAwaiter().GetResult();
+
+            if (ShouldProcess(Name, "Updating Database Account Failover Priority"))
             {
-                CosmosDBManagementClient.DatabaseAccounts.FailoverPriorityChangeAsync(ResourceGroupName, Name, new FailoverPolicies(failoverPolicies)).GetAwaiter().GetResult();
-                if (PassThru)
-                    WriteObject(bool.TrueString);
-            }
-            catch(Exception)
-            {
-                WriteObject("Exception caught while updating FailoverPolicy.");
+                DatabaseAccountGetResults databaseAccount = CosmosDBManagementClient.DatabaseAccounts.GetWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
+                WriteObject(new PSDatabaseAccount(databaseAccount));
             }
         }
     }

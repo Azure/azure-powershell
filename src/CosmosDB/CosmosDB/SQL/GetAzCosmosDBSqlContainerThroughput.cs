@@ -22,7 +22,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlContainerThroughput", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSThroughputSettingsGetResults))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlContainerThroughput", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSThroughputSettingsGetResults))]
     public class GetAzCosmosDBSqlContainerThroughput : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             ThroughputSettingsGetResults throughputSettingsGetResults = CosmosDBManagementClient.SqlResources.GetSqlContainerThroughputWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name).GetAwaiter().GetResult().Body;
-            WriteObject(throughputSettingsGetResults);
+            WriteObject(new PSThroughputSettingsGetResults(throughputSettingsGetResults));
                 
             return;
         }

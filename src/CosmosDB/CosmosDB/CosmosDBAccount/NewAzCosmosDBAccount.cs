@@ -20,6 +20,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Management.CosmosDB;
 using Microsoft.Azure.Management.CosmosDB.Models;
 
@@ -111,7 +112,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 if (!ApiKind.Equals("GlobalDocumentDB", StringComparison.OrdinalIgnoreCase) && !ApiKind.Equals("MongoDB", StringComparison.OrdinalIgnoreCase))
                 {
-                    WriteObject("Cannot create Gremlin, Cassandra, Table accounts from Powershell");
+                    WriteError(new ErrorRecord( new PSArgumentException("Gremlin, Cassandra and Table account creation not supported" +
+                        "in Azure Powershell"), string.Empty, ErrorCategory.CloseError, null));
                     return;
                 }
             }
@@ -180,8 +182,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountCreateUpdateParameters.EnableAutomaticFailover = EnableAutomaticFailover;
             databaseAccountCreateUpdateParameters.VirtualNetworkRules = virtualNetworkRule;
 
-            DatabaseAccountGetResults cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, Name, databaseAccountCreateUpdateParameters).GetAwaiter().GetResult().Body;
-            WriteObject(new PSDatabaseAccount(cosmosDBAccount));
+            if (ShouldProcess(Name, "Creating Database Account"))
+            {
+                DatabaseAccountGetResults cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, Name, databaseAccountCreateUpdateParameters).GetAwaiter().GetResult().Body;
+                WriteObject(new PSDatabaseAccount(cosmosDBAccount));
+            }
+                
         }
     }
 }

@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccountKey", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccountKey", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(void), typeof(bool))]
     public class NewAzCosmosDBAccountKey : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
@@ -65,20 +65,23 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 Name = resourceIdentifier.ResourceName;
             }
-
-            try
+            if (ShouldProcess(KeyKind, string.Format("Regenerating key for Database Account:", Name)))
             {
-                CosmosDBManagementClient.DatabaseAccounts.RegenerateKeyWithHttpMessagesAsync(ResourceGroupName, Name, new DatabaseAccountRegenerateKeyParameters{ KeyKind = KeyKind }).GetAwaiter().GetResult();
-                if(PassThru)
+                try
                 {
-                    WriteObject(bool.TrueString);
+                    CosmosDBManagementClient.DatabaseAccounts.RegenerateKeyWithHttpMessagesAsync(ResourceGroupName, Name, new DatabaseAccountRegenerateKeyParameters{ KeyKind = KeyKind }).GetAwaiter().GetResult();
+                    if(PassThru)
+                    {
+                        WriteObject(true);
+                    }
                 }
-            }
-            catch
-            {
-                if (PassThru)
+                catch (Exception exception)
                 {
-                    WriteObject("Exception caught while Regenerating Key");
+                    if (PassThru)
+                    {
+                        // Write exception out to error channel.
+                        WriteError(new ErrorRecord(exception, string.Empty, ErrorCategory.CloseError, null));
+                    }
                 }
             }
         }

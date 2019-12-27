@@ -46,9 +46,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
         public PSDatabaseAccount InputObject { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
-        public SwitchParameter AsJob { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if(ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
@@ -74,8 +71,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Options = options
             };
 
-            SqlDatabaseGetResults sqlDatabaseGetResults = CosmosDBManagementClient.SqlResources.CreateUpdateSqlDatabaseWithHttpMessagesAsync(ResourceGroupName, AccountName, Name, sqlDatabaseCreateUpdateParameters).GetAwaiter().GetResult().Body;
-            WriteObject(new PSSqlDatabaseGetResults(sqlDatabaseGetResults));
+            if (ShouldProcess(Name, "Creating or Updating CosmosDB Sql Database"))
+            {
+                SqlDatabaseGetResults sqlDatabaseGetResults = CosmosDBManagementClient.SqlResources.CreateUpdateSqlDatabaseWithHttpMessagesAsync(ResourceGroupName, AccountName, Name, sqlDatabaseCreateUpdateParameters).GetAwaiter().GetResult().Body;
+                WriteObject(new PSSqlDatabaseGetResults(sqlDatabaseGetResults));
+            }
 
             return;
         }

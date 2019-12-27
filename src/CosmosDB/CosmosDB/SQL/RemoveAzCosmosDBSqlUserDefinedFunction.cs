@@ -34,9 +34,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.SqlUserDefinedFunctionObjectHelpMessage)]
         public PSSqlUserDefinedFunctionGetResults InputObject { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
-        public SwitchParameter AsJob { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = Constants.PassThruHelpMessage)]
         public SwitchParameter PassThru { get; set; }
 
@@ -52,17 +49,23 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 ContainerName = ResourceIdentifierExtensions.GetSqlContainerName(resourceIdentifier);
             }
 
-            try
+            if (ShouldProcess(Name, "Deleting CosmosDB Sql User Defined Function"))
             {
-                CosmosDBManagementClient.SqlResources.DeleteSqlUserDefinedFunctionWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, ContainerName, Name).GetAwaiter().GetResult();
-                
-                if (PassThru)
-                    WriteObject(bool.TrueString);
-            }
-            catch
-            {
-                if(PassThru)
-                    WriteObject(bool.FalseString);
+                try
+                {
+                    CosmosDBManagementClient.SqlResources.DeleteSqlUserDefinedFunctionWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, ContainerName, Name).GetAwaiter().GetResult();
+
+                    if (PassThru)
+                        WriteObject(true);
+                }
+                catch (Exception exception)
+                {
+                    if (PassThru)
+                    {
+                        // Write exception out to error channel.
+                        WriteError(new ErrorRecord(exception, string.Empty, ErrorCategory.CloseError, null));
+                    }
+                }
             }
 
             return;
