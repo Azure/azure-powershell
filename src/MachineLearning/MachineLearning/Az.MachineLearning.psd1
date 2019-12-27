@@ -83,11 +83,7 @@ CmdletsToExport = 'Move-AzMlCommitmentAssociation', 'Get-AzMlCommitmentAssociati
                'Update-AzMlWebService', 'Export-AzMlWebService', 
                'Get-AzMlWebServiceKey', 'Import-AzMlWebService', 
                'New-AzMlCommitmentPlan', 'New-AzMlWebService', 
-               'Add-AzMlWebServiceRegionalProperty', 'Get-AzMlOpCluster', 
-               'Get-AzMlOpClusterKey', 
-               'Test-AzMlOpClusterSystemServicesUpdateAvailability', 
-               'Update-AzMlOpClusterSystemService', 'New-AzMlOpCluster', 
-               'Remove-AzMlOpCluster', 'Set-AzMlOpCluster'
+               'Add-AzMlWebServiceRegionalProperty'
 
 # Variables to export from this module
 # VariablesToExport = @()
