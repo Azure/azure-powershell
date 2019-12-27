@@ -130,12 +130,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage ="Use this to create the Scale set in a single placement group, default is multiple groups")]
         public SwitchParameter SinglePlacementGroup;
 
+        [Alias("ProximityPlacementGroup")]
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string ProximityPlacementGroup { get; set; }
+        public string ProximityPlacementGroupId { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
-            HelpMessage = "The priority for the virtual machine scale set.  Only supported values are 'Regular', 'Low' and 'Spot'.")]
-        [PSArgumentCompleter("Regular", "Low", "Spot")]
+            HelpMessage = "The priority for the virtual machine in the scale set. Only supported values are 'Regular', 'Spot' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
+        [PSArgumentCompleter("Regular", "Spot")]
         public string Priority { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
@@ -279,7 +280,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         _cmdlet.VMScaleSetName,
                         _cmdlet.NatBackendPort.Concat(_cmdlet.BackendPort).ToList());
 
-                var proximityPlacementGroup = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroup);
+                var proximityPlacementGroup = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroupId);
 
                 return resourceGroup.CreateVirtualMachineScaleSetConfig(
                     name: _cmdlet.VMScaleSetName,

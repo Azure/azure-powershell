@@ -15,6 +15,7 @@
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Resource = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Resources.Resource;
 using System;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common
 {
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common
 
         public DataBoxEdgeResourceIdentifier(string resourceId) : base(resourceId)
         {
-            if (!this.ResourceType.StartsWith(Constants.DataBoxEdgeDeviceProvider))
+            if (!this.ResourceType.StartsWithInsensitively(Constants.DataBoxEdgeDeviceProvider))
             {
                 throw new Exception(Resource.InvalidResourceId);
             }
@@ -44,7 +45,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common
 
             this.Name = this.ResourceName;
         }
-
-
     }
 }

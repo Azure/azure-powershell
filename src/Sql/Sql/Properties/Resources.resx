@@ -435,8 +435,8 @@
   <data name="RetrievingStorageAccountKeysFailed" xml:space="preserve">
     <value>Failed retrieving keys of storage '{0}'.</value>
   </data>
-  <data name="VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase" xml:space="preserve">
-    <value>Vulnerability Assessment operation is not available on master database. Skipping...</value>
+  <data name="VulnerabilityAssessmentOperationIsNotAvailableOnManagedInstanceSystemDatabase" xml:space="preserve">
+    <value>Vulnerability Assessment operation is not available on managed instance system database. Skipping...</value>
   </data>
   <data name="KeyIdNotFoundForAzureKeyVaultEncryptionProtectorError" xml:space="preserve">
     <value>KeyId parameter is required for encryption protector type AzureKeyVault</value>
@@ -600,5 +600,7 @@
   </data>
   <data name="InvalidManagedInstanceSkuName" xml:space="preserve">
     <value>Provided SkuName '{0}' is invalid '{1}'. Please enter a valid SkuName value and execute command again.</value>
+  <data name="VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase" xml:space="preserve">
+    <value>Vulnerability Assessment operation is not available on master database. Skipping...</value>
   </data>
 </root>

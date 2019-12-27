@@ -448,6 +448,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The provided value for parameter &apos;{0}&apos; is not a valid JSON array.
+        /// </summary>
+        internal static string JsonArrayExpected {
+            get {
+                return ResourceManager.GetString("JsonArrayExpected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided value for parameter &apos;{0}&apos; is not a valid JSON object.
+        /// </summary>
+        internal static string JsonObjectExpected {
+            get {
+                return ResourceManager.GetString("JsonObjectExpected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Moving resource(s) ....
         /// </summary>
         internal static string MoveResourcesMessage {
@@ -574,7 +592,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to cannot find any subscriptions under the current directory.
+        ///   Looks up a localized string similar to No subscriptions can be found under current directory. Please login again using Connect-AzAccount..
         /// </summary>
         internal static string NoSubscriptionsUnderCurrentDirectory {
             get {

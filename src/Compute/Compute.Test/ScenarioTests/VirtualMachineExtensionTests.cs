@@ -82,6 +82,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineCustomScriptExtensionManagedDisk()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineCustomScriptExtensionManagedDisk");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineAccessExtension()
         {
             TestRunner.RunTestScript("Test-VirtualMachineAccessExtension");

@@ -1,11 +1,10 @@
-﻿using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
+﻿using Microsoft.Azure.Management.DataBoxEdge.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Management.EdgeGateway.Models;
-using Microsoft.CSharp.RuntimeBinder;
-using DataBoxEdgeOrder = Microsoft.Azure.Management.EdgeGateway.Models.Order;
+using DataBoxEdgeOrder = Microsoft.Azure.Management.DataBoxEdge.Models.Order;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models
 {
