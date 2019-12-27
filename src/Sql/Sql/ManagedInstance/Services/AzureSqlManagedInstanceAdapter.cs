@@ -205,6 +205,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             Management.Internal.Resources.Models.Sku sku = new Management.Internal.Resources.Models.Sku();
             sku.Name = resp.Sku.Name;
             sku.Tier = resp.Sku.Tier;
+            sku.Family = resp.Sku.Family;
 
             managedInstance.Sku = sku;
 
