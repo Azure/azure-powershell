@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         [Parameter(
             Position = 0,
             Mandatory = true, 
-            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
@@ -76,7 +75,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         public string TargetSubscriptionId { get; set; }
 
         [Parameter(
-            Position = 0,
+            Position = 1,
             Mandatory = true, 
             ParameterSetName = NewService.ByServiceTopologyObjectParameterSet,
             HelpMessage = "The service topology object in which the service should be created.")]
@@ -84,7 +83,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         public PSServiceTopologyResource ServiceTopologyObject { get; set; }
 
         [Parameter(
-            Position = 0,
+            Position = 1,
             Mandatory = true, 
             ParameterSetName = NewService.ByServiceTopologyResourceIdParamSet,
             HelpMessage = "The service topology resource identifier in which the service should be created.")]
@@ -102,13 +101,11 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             {
                 if (this.ServiceTopologyObject != null)
                 {
-                    this.ResourceGroupName = this.ServiceTopologyObject.ResourceGroupName;
                     this.ServiceTopologyName = this.ServiceTopologyObject.Name;
                 }
                 else if (!string.IsNullOrWhiteSpace(this.ServiceTopologyId))
                 {
                     var parsedResource = new ResourceIdentifier(this.ServiceTopologyId);
-                    this.ResourceGroupName = parsedResource.ResourceGroupName;
                     this.ServiceTopologyName = parsedResource.ResourceName;
                 }
 

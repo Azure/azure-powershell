@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Mandatory = false, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             HelpMessage = "The name of the rollout.")]
+        [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.DeploymentManager/rollouts", nameof(ResourceGroupName))]
         public string Name { get; set; }
 

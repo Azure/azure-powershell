@@ -12,24 +12,9 @@ Creates a step.
 
 ## SYNTAX
 
-### Wait (Default)
 ```
 New-AzDeploymentManagerStep -ResourceGroupName <String> -Name <String> -Location <String> -Duration <String>
  [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### HealthCheckFile
-```
-New-AzDeploymentManagerStep -ResourceGroupName <String> -Name <String> -Location <String>
- -HealthCheckPropertiesFile <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### HealthCheckObject
-```
-New-AzDeploymentManagerStep -ResourceGroupName <String> -Name <String> -Location <String>
- -HealthCheckProperties <PSHealthCheckStepProperties> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,20 +31,6 @@ PS C:\> New-AzDeploymentManagerStep -ResourceGroupName ContosoResourceGroup -Nam
 ```
 
 Creates a step in the ContosoResourceGroup with the name ContosoService1WaitStep with Central US as the location of the resource. The Duration property provides the duration the rollout will wait before running the next step.
-
-### Example 2
-```powershell
-PS C:\> New-AzDeploymentManagerStep -ResourceGroupName ContosoResourceGroup -Name ContosoServiceHealthCheck -Location "Central US" -HealthCheckPropertiesFile ".\steps\RestHealthCheckProperties.json"
-```
-
-Creates a step in the ContosoResourceGroup with the name ContosoServiceHealthCheck with Central US as the location of the resource. The HealthCheckPropertiesFile property is the path to the JSON file with the properties for the health check step.
-
-### Example 3
-```powershell
-PS C:\> New-AzDeploymentManagerStep -ResourceGroupName ContosoResourceGroup -Name ContosoServiceHealthCheck -Location "Central US" -HealthCheckProperties $healthCheckProperties
-```
-
-Creates a step in the ContosoResourceGroup with the name ContosoServiceHealthCheck with Central US as the location of the resource. The $healthCheckProperties object has the properties for the health check step. 
 
 ## PARAMETERS
 
@@ -84,37 +55,7 @@ E.g.: PT30M, PT1H
 
 ```yaml
 Type: System.String
-Parameter Sets: Wait
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HealthCheckProperties
-The health check properties.
-
-```yaml
-Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSHealthCheckStepProperties
-Parameter Sets: HealthCheckObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HealthCheckPropertiesFile
-The path to the file where health check properties are defined.
-
-```yaml
-Type: System.String
-Parameter Sets: HealthCheckFile
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -216,7 +157,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
