@@ -40,22 +40,22 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             HelpMessage = "The resource group.")]
         [Parameter(
             Position = 0,
-            Mandatory = false, 
+            Mandatory = true, 
             ParameterSetName = GetServiceUnit.ByServiceObjectParameterSet,
             HelpMessage = "The resource group.")]
         [Parameter(
             Position = 0,
-            Mandatory = false, 
+            Mandatory = true, 
             ParameterSetName = GetServiceUnit.ByServiceResourceIdParamSet,
             HelpMessage = "The resource group.")]
         [Parameter(
             Position = 0,
-            Mandatory = false, 
+            Mandatory = true, 
             ParameterSetName = GetServiceUnit.ByTopologyObjectAndServiceNameParameterSet,
             HelpMessage = "The resource group.")]
         [Parameter(
             Position = 0,
-            Mandatory = false, 
+            Mandatory = true, 
             ParameterSetName = GetServiceUnit.ByTopologyResourceIdAndServiceNameParameterSet,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
@@ -221,14 +221,12 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             }
             else if (this.ServiceObject != null)
             {
-                this.ResourceGroupName = this.ServiceObject.ResourceGroupName;
                 this.ServiceTopologyName = this.ServiceObject.ServiceTopologyName;
                 this.ServiceName = this.ServiceObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ServiceResourceId))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ServiceResourceId);
-                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
                 this.ServiceName = parsedResourceId.ResourceName;
                 string[] tokens = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
                 if (tokens.Length < 2)
@@ -240,13 +238,11 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             }
             else if (this.ServiceTopologyObject != null)
             {
-                this.ResourceGroupName = this.ServiceTopologyObject.ResourceGroupName;
                 this.ServiceTopologyName = this.ServiceTopologyObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ServiceTopologyResourceId))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ServiceTopologyResourceId);
-                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
                 this.ServiceTopologyName = parsedResourceId.ResourceName;
             }
         }

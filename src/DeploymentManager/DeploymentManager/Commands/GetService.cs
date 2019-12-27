@@ -38,12 +38,12 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             HelpMessage = "The resource group.")]
         [Parameter(
             Position = 0,
-            Mandatory = false, 
+            Mandatory = true, 
             ParameterSetName = GetService.ByServiceTopologyObjectParameterSet,
             HelpMessage = "The resource group.")]
         [Parameter(
             Position = 0,
-            Mandatory = false, 
+            Mandatory = true, 
             ParameterSetName = GetService.ByServiceTopologyResourceIdParamSet,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
@@ -159,13 +159,11 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             }
             else if (this.ServiceTopologyObject != null)
             {
-                this.ResourceGroupName = this.ServiceTopologyObject.ResourceGroupName;
                 this.ServiceTopologyName = this.ServiceTopologyObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ServiceTopologyResourceId))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ServiceTopologyResourceId);
-                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
                 this.ServiceTopologyName = parsedResourceId.ResourceName;
             }
         }
