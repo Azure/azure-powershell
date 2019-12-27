@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add DR as a new valid License type
 
 ## Version 1.0.1
 * Update references in .psd1 to use relative path
