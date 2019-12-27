@@ -21,7 +21,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccount", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccount", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(void), typeof(bool))]
     public class RemoveAzCosmosDBAccount : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
@@ -61,16 +61,22 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Name = resourceIdentifier.ResourceName;
             }
 
-            try
+            if (ShouldProcess(Name, "Removing Database Account"))
             {
-                CosmosDBManagementClient.DatabaseAccounts.DeleteWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult();
-                if (PassThru)
-                    WriteObject(bool.TrueString);
-            }
-            catch(Exception)
-            {
-                if(PassThru)
-                    WriteObject("Operation failed: Error in Removing the CosmosDBAccount");
+                try
+                {
+                    CosmosDBManagementClient.DatabaseAccounts.DeleteWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult();
+                    if (PassThru)
+                        WriteObject(true);
+                }
+                catch (Exception exception)
+                {
+                    if (PassThru)
+                    {
+                        // Write exception out to error channel.
+                        WriteError(new ErrorRecord(exception, string.Empty, ErrorCategory.CloseError, null));
+                    }
+                }
             }
 
             return;

@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlDatabase", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSSqlDatabaseGetResults), typeof(PSThroughputSettingsGetResults))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSqlDatabase", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSSqlContainerGetResults), typeof(PSThroughputSettingsGetResults))]
     public class GetAzCosmosDBSqlDatabase : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]

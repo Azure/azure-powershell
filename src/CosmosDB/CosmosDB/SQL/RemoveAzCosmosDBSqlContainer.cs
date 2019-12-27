@@ -31,9 +31,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.SqlContainerObjectHelpMessage)]
         public PSSqlContainerGetResults InputObject { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
-        public SwitchParameter AsJob { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = Constants.PassThruHelpMessage)]
         public SwitchParameter PassThru { get; set; }
 
@@ -48,17 +45,23 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
             }
 
-            try
+            if (ShouldProcess(Name, "Deleting CosmosDB Sql Container"))
             {
-                CosmosDBManagementClient.SqlResources.DeleteSqlContainerWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name).GetAwaiter().GetResult();
-                
-                if (PassThru)
-                    WriteObject(bool.TrueString);
-            }
-            catch
-            {
-                if(PassThru)
-                    WriteObject(bool.FalseString);
+                try
+                {
+                    CosmosDBManagementClient.SqlResources.DeleteSqlContainerWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name).GetAwaiter().GetResult();
+
+                    if (PassThru)
+                        WriteObject(true);
+                }
+                catch (Exception exception)
+                {
+                    if (PassThru)
+                    {
+                        // Write exception out to error channel.
+                        WriteError(new ErrorRecord(exception, string.Empty, ErrorCategory.CloseError, null));
+                    }
+                }
             }
 
             return;

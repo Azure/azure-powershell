@@ -46,9 +46,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.PassThruHelpMessage)]
-        public SwitchParameter PassThru { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (!ParameterSetName.Equals(NameParameterSet, StringComparison.Ordinal))
@@ -75,24 +72,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             DatabaseAccountUpdateParameters createUpdateParameters = new DatabaseAccountUpdateParameters(locations:locations);
-            try
+            
+            CosmosDBManagementClient.DatabaseAccounts.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, createUpdateParameters).GetAwaiter().GetResult();
+            
+            if (ShouldProcess(Name, "Updating Database Account Region"))
             {
-                CosmosDBManagementClient.DatabaseAccounts.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, createUpdateParameters).GetAwaiter().GetResult();
-                if (PassThru)
-                {
-                    WriteObject(bool.TrueString);
-                }
+                DatabaseAccountGetResults databaseAccount = CosmosDBManagementClient.DatabaseAccounts.GetWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
+                WriteObject(new PSDatabaseAccount(databaseAccount));
             }
-            catch(Exception)
-            {
-                if(PassThru)
-                {
-                    WriteObject("Exception caught while updating Region");
-                }
-            }
-
-            DatabaseAccountGetResults databaseAccount = CosmosDBManagementClient.DatabaseAccounts.GetWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
-            WriteObject(new PSDatabaseAccount(databaseAccount));
         }
     }
 }

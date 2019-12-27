@@ -13,13 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
-using System.Text;
-using System.Linq;
 using Microsoft.Azure.Commands.CosmosDB.Models;
-using System.Reflection;
-using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -45,9 +40,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.PassThruHelpMessage)]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
-        public SwitchParameter AsJob { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ObjectParameterSet, StringComparison.Ordinal))
@@ -58,17 +50,23 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 AccountName = ResourceIdentifierExtensions.GetDatabaseAccountName(resourceIdentifier);
             }
 
-            try
+            if (ShouldProcess(Name, "Deleting CosmosDB Sql Database"))
             {
-                CosmosDBManagementClient.SqlResources.DeleteSqlDatabaseWithHttpMessagesAsync(ResourceGroupName, AccountName, Name).GetAwaiter().GetResult();
+                try
+                {
+                    CosmosDBManagementClient.SqlResources.DeleteSqlDatabaseWithHttpMessagesAsync(ResourceGroupName, AccountName, Name).GetAwaiter().GetResult();
 
-                if (PassThru)
-                    WriteObject(bool.TrueString);
-            }
-            catch
-            {
-                if (PassThru)
-                    WriteObject(bool.FalseString);
+                    if (PassThru)
+                        WriteObject(bool.TrueString);
+                }
+                catch (Exception exception)
+                {
+                    if (PassThru)
+                    {
+                        // Write exception out to error channel.
+                        WriteError(new ErrorRecord(exception, string.Empty, ErrorCategory.CloseError, null));
+                    }
+                }
             }
 
             return;

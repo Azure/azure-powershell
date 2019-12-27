@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         {
             var parentResource = resourceId.ParentResource.Split(new[] { '/' });
 
-            for (int idx = 0; idx < parentResource.Length; idx++)
+            for (int idx = 0; idx < parentResource.Length - 1; idx++)
             {
                 if (parentResource[idx].Equals(resourceType, StringComparison.OrdinalIgnoreCase))
                 {

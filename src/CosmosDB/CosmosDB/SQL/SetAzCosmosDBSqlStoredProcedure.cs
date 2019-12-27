@@ -47,9 +47,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlContainerObjectHelpMessage)]
         public PSSqlContainerGetResults InputObject { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
-        public SwitchParameter AsJob { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ParentObjectParameterSet))
@@ -71,8 +68,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Options = new Dictionary<string, string>() { }
             };
 
-            SqlStoredProcedureGetResults sqlStoredProcedureGetResults = CosmosDBManagementClient.SqlResources.CreateUpdateSqlStoredProcedureWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, ContainerName, Name, sqlStoredProcedureCreateUpdateParameters).GetAwaiter().GetResult().Body;
-            WriteObject(new PSSqlStoredProcedureGetResults(sqlStoredProcedureGetResults));
+            if (ShouldProcess(Name, "Creating or Updating CosmosDB Sql Stored Procedure"))
+            {
+                SqlStoredProcedureGetResults sqlStoredProcedureGetResults = CosmosDBManagementClient.SqlResources.CreateUpdateSqlStoredProcedureWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, ContainerName, Name, sqlStoredProcedureCreateUpdateParameters).GetAwaiter().GetResult().Body;
+                WriteObject(new PSSqlStoredProcedureGetResults(sqlStoredProcedureGetResults));
+            }
 
             return;
         }

@@ -171,8 +171,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 databaseAccountUpdateParameters.IpRangeFilter = IpRangeFilterAsString;
             }
 
-            DatabaseAccountGetResults cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, databaseAccountUpdateParameters).GetAwaiter().GetResult().Body;
-            WriteObject(cosmosDBAccount);
+            if (ShouldProcess(Name, "Updating Database Account"))
+            {
+            
+                DatabaseAccountGetResults cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, databaseAccountUpdateParameters).GetAwaiter().GetResult().Body;
+                WriteObject(cosmosDBAccount);
+            }
 
             return;
         }

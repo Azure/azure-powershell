@@ -71,9 +71,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage)]
         public PSSqlDatabaseGetResults InputObject { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
-        public SwitchParameter AsJob { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if(ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
@@ -165,8 +162,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Options = new Dictionary<string, string>() { }
             };
 
-            SqlContainerGetResults sqlContainerGetResults = CosmosDBManagementClient.SqlResources.CreateUpdateSqlContainerWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name, sqlContainerCreateUpdateParameters).GetAwaiter().GetResult().Body;
-            WriteObject(new PSSqlContainerGetResults(sqlContainerGetResults));
+            if (ShouldProcess(Name, "Creating or Updating CosmosDB Sql Container"))
+            {
+                SqlContainerGetResults sqlContainerGetResults = CosmosDBManagementClient.SqlResources.CreateUpdateSqlContainerWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name, sqlContainerCreateUpdateParameters).GetAwaiter().GetResult().Body;
+                WriteObject(new PSSqlContainerGetResults(sqlContainerGetResults));
+            }
 
             return;
         }
