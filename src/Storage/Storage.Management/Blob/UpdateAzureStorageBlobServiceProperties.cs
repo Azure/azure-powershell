@@ -83,23 +83,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNull]
         public string DefaultServiceVersion { get; set; }
 
-        [Parameter(
-        Mandatory = false,
-        HelpMessage = "Enable Change Feed logging for the storage account by set to $true, disable Change Feed logging by set to $false.")]
-        [ValidateNotNullOrEmpty]
-        public bool EnableChangeFeed
-        {
-            get
-            {
-                return enableChangeFeed is null? false : enableChangeFeed.Value;
-            }
-            set
-            {
-                enableChangeFeed = value;
-            }
-        }
-        private bool? enableChangeFeed = null;
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -127,11 +110,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 if (DefaultServiceVersion != null)
                 {
                     serviceProperties.DefaultServiceVersion = this.DefaultServiceVersion;
-                }
-                if (enableChangeFeed != null)
-                {
-                    serviceProperties.ChangeFeed = new ChangeFeed();
-                    serviceProperties.ChangeFeed.Enabled = enableChangeFeed;
                 }
 
                 serviceProperties = this.StorageClient.BlobServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, serviceProperties);
