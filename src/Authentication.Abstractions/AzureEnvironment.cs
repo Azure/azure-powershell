@@ -23,7 +23,9 @@ using System.Net;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
+#if !SIGN
 [assembly: InternalsVisibleTo("Authentication.Abstractions.Test")]
+#endif
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     /// <summary>
@@ -35,7 +37,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     {
         private const string ArmMetadataEnvVariable = "ARM_CLOUD_METADATA_URL";
 
-        internal static IDictionary<string, AzureEnvironment> InitializeBuiltInEnvironments()
+        internal static IDictionary<string, AzureEnvironment> InitializeBuiltInEnvironments(IHttpOperations httpOperations)
         {
             IDictionary<string, AzureEnvironment> armAzureEnvironments = null;
             try
@@ -43,7 +45,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 var armMetadataRequestUri = Environment.GetEnvironmentVariable(ArmMetadataEnvVariable);
                 if (!string.IsNullOrEmpty(armMetadataRequestUri))
                 {
-                    armAzureEnvironments = InitializeEnvironmentsFromArm(armMetadataRequestUri).Result;
+                    armAzureEnvironments = InitializeEnvironmentsFromArm(httpOperations, armMetadataRequestUri).Result;
                 }
             }
             catch (Exception)
@@ -167,15 +169,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// Initializes cloud metadata dynamically from ARM.
         /// </summary>
-        private static async Task<IDictionary<string, AzureEnvironment>> InitializeEnvironmentsFromArm(string armMetadataRequestUri)
+        private static async Task<IDictionary<string, AzureEnvironment>> InitializeEnvironmentsFromArm(
+            IHttpOperations httpOperations, 
+            string armMetadataRequestUri)
         {
-            AzureSessionInitializer.InitializeAzureSession();
-            if (!AzureSession.Instance.TryGetComponent(HttpClientOperationsFactory.Name, out IHttpOperationsFactory factory))
-            {
-                factory = HttpClientOperationsFactory.Create();
-            }
-
-            var armResponseMessage = await factory.GetHttpOperations().GetAsync(armMetadataRequestUri);
+            var armResponseMessage = await httpOperations.GetAsync(armMetadataRequestUri);
             if (armResponseMessage?.StatusCode != HttpStatusCode.OK)
             {
                 throw new Exception("Failed to load cloud metadata from the url specified by ARM_CLOUD_METADATA_URL.");
@@ -330,7 +328,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// Predefined Microsoft Azure environments
         /// </summary>
-        public static IDictionary<string, AzureEnvironment> PublicEnvironments { get; } = InitializeBuiltInEnvironments();
+        public static IDictionary<string, AzureEnvironment> PublicEnvironments { get; } =
+            InitializeBuiltInEnvironments(HttpClientOperationsFactory.Create().GetHttpOperations());
 
         public AzureEnvironment()
         {

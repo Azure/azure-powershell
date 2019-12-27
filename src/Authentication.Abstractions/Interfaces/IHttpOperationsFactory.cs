@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces
     /// <summary>
     /// Abstract interface for acquiring Http Operations
     /// </summary>
-    public interface IHttpOperationsFactory
+    internal interface IHttpOperationsFactory
     {
         IHttpOperations GetHttpOperations();
     }

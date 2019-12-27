@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     /// <summary>
     /// Implementation for a class to acquire HTTP operations.
     /// </summary>
-    public class HttpClientOperationsFactory : IHttpOperationsFactory
+    internal class HttpClientOperationsFactory : IHttpOperationsFactory
     {
         public const string Name = "HttpClientOperations";
         private static readonly HttpClient Client = new HttpClient();

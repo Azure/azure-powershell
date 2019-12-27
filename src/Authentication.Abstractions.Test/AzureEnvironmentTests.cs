@@ -30,9 +30,7 @@ namespace Authentication.Abstractions.Test
         public void TestArmAndNonArmBasedCloudMetadataInit()
         {
             Environment.SetEnvironmentVariable(ArmMetadataEnvVariable, @"TestData\GoodArmResponse.json");
-            AzureSessionInitializer.InitializeAzureSession();
-            AzureSession.Instance.RegisterComponent(HttpClientOperationsFactory.Name, () => TestOperationsFactory.Create(), true);
-            var armEnvironments = AzureEnvironment.InitializeBuiltInEnvironments();
+            var armEnvironments = AzureEnvironment.InitializeBuiltInEnvironments(TestOperationsFactory.Create().GetHttpOperations());
 
             var unequalItemsDict = armEnvironments
                 .Where(keyValuePair => !hardCodedEnvironments[keyValuePair.Key].Equals(keyValuePair.Value))
@@ -48,9 +46,7 @@ namespace Authentication.Abstractions.Test
         public void TestFallbackWhenArmCloudMetadataInitFails()
         {
             Environment.SetEnvironmentVariable(ArmMetadataEnvVariable, @"TestData\BadArmResponse.json");
-            AzureSessionInitializer.InitializeAzureSession();
-            AzureSession.Instance.RegisterComponent(HttpClientOperationsFactory.Name, () => TestOperationsFactory.Create(), true);
-            var armEnvironments = AzureEnvironment.InitializeBuiltInEnvironments();
+            var armEnvironments = AzureEnvironment.InitializeBuiltInEnvironments(TestOperationsFactory.Create().GetHttpOperations());
 
             var unequalItemsDict = armEnvironments
                 .Where(keyValuePair => !hardCodedEnvironments[keyValuePair.Key].Equals(keyValuePair.Value))

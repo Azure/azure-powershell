@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Interfaces;
 
 namespace Authentication.Abstractions.Test
 {
-    public class TestOperationsFactory : IHttpOperationsFactory
+    internal class TestOperationsFactory : IHttpOperationsFactory
     {
         public const string Name = "HttpClientOperations";
         private static readonly HttpClient Client = new HttpClient();
