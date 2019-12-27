@@ -1,39 +1,41 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version:
+ms.assetid: 351145AC-7C1E-4EB7-A17D-B8B7D8ED8DAB
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstoragequeuestoredaccesspolicy
 schema: 2.0.0
 ---
 
-# New-AzStorageQueueStoredAccessPolicy
+# New-AzureStorageQueueStoredAccessPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a stored access policy for an Azure storage queue.
 
 ## SYNTAX
 
 ```
-New-AzStorageQueueStoredAccessPolicy [-Queue] <String> [-Policy] <String> [-Permission <String>]
+New-AzureStorageQueueStoredAccessPolicy [-Queue] <String> [-Policy] <String> [-Permission <String>]
  [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzureStorageQueueStoredAccessPolicy** cmdlet creates a stored access policy for an Azure storage queue.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Create a stored access policy in a storage queue
+```
+PS C:\>New-AzureStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy01"
 ```
 
-{{ Add example description here }}
+This command creates an access policy named Policy01 in the storage queue named MyQueue.
 
 ## PARAMETERS
 
 ### -Context
-Azure Storage Context Object
+Specifies an Azure storage context.
+To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -51,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpiryTime
-Expiry Time
+Specifies the time at which the stored access policy becomes invalid.
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
@@ -78,8 +80,8 @@ Accept wildcard characters: False
 ```
 
 ### -Permission
-Permissions for a queue.
-Permissions can be any not-empty subset of "arup".
+Specifies permissions in the stored access policy to access the storage queue.
+It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
 
 ```yaml
 Type: System.String
@@ -94,8 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Policy Identifier.
-Need to be unique in the Queue
+Specifies a name for the stored access policy.
 
 ```yaml
 Type: System.String
@@ -110,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -Queue
-Queue Name
+Specifies the Azure storage queue name.
 
 ```yaml
 Type: System.String
@@ -125,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -StartTime
-Start Time
+Specifies the time at which the stored access policy becomes valid.
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
@@ -140,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -155,3 +156,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureStorageQueueStoredAccessPolicy](./Get-AzureStorageQueueStoredAccessPolicy.md)
+
+[New-AzureStorageContext](./New-AzureStorageContext.md)
+
+[Remove-AzureStorageQueueStoredAccessPolicy](./Remove-AzureStorageQueueStoredAccessPolicy.md)
+
+[Set-AzureStorageQueueStoredAccessPolicy](./Set-AzureStorageQueueStoredAccessPolicy.md)
+
+

@@ -1,47 +1,42 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version:
+ms.assetid: FCDCEF0B-6E2C-480E-9841-EF4E64D61D54
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstorageshare
 schema: 2.0.0
 ---
 
-# Get-AzureStorageShare
+# New-AzureStorageShare
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a file share.
 
 ## SYNTAX
 
-### MatchingPrefix (Default)
 ```
-Get-AzureStorageShare [[-Prefix] <String>] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+New-AzureStorageShare [-Name] <String> [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
-### Specific
-```
-Get-AzureStorageShare [-Name] <String> [[-SnapshotTime] <DateTimeOffset>] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzureStorageShare** cmdlet creates a file share.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Create a file share
+```
+PS C:\>New-AzureStorageShare -Name "ContosoShare06"
 ```
 
-{{ Add example description here }}
+This command creates a file share named ContosoShare06.
 
 ## PARAMETERS
 
 ### -ClientTimeoutPerRequest
-The client side maximum execution time for each request in seconds.
+Specifies the client-side time-out interval, in seconds, for one service request.
+If the previous call fails in the specified interval, this cmdlet retries the request.
+If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -56,7 +51,10 @@ Accept wildcard characters: False
 ```
 
 ### -ConcurrentTaskCount
-The total amount of concurrent async tasks.
+Specifies the maximum concurrent network calls.
+You can use this parameter to limit the concurrency to throttle local CPU and bandwidth usage by specifying the maximum number of concurrent network calls.
+The specified value is an absolute count and is not multiplied by the core count.
+This parameter can help reduce network connection problems in low bandwidth environments, such as 100 kilobits per second.
 The default value is 10.
 
 ```yaml
@@ -72,7 +70,8 @@ Accept wildcard characters: False
 ```
 
 ### -Context
-Azure Storage Context Object
+Specifies an Azure storage context.
+To obtain a storage context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -102,37 +101,23 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the file share to be received.
+Specifies the name of a file share.
+This cmdlet creates a file share that has the name that this parameter specifies.
 
 ```yaml
 Type: System.String
-Parameter Sets: Specific
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Prefix
-A prefix of the file shares to be listed.
-
-```yaml
-Type: System.String
-Parameter Sets: MatchingPrefix
-Aliases:
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
 ### -ServerTimeoutPerRequest
-The server time out for each request in seconds.
+Specifies the length of the time-out period for the server part of a request.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -146,32 +131,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SnapshotTime
-SnapshotTime of the file share snapshot to be received.
-
-```yaml
-Type: System.Nullable`1[System.DateTimeOffset]
-Parameter Sets: Specific
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
+### System.String
+
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Storage.File.CloudFileShare
+### Microsoft.WindowsAz.Storage.File.CloudFileShare
 
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureStorageShare](./Get-AzureStorageShare.md)
+
+[New-AzureStorageContext](./New-AzureStorageContext.md)
+
+[Remove-AzureStorageShare](./Remove-AzureStorageShare.md)

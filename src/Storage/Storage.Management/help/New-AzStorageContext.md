@@ -1,79 +1,150 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version:
+ms.assetid: 383402B2-6B7C-41AB-AFF9-36C86156B0A9
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstoragecontext
 schema: 2.0.0
 ---
 
-# New-AzStorageContext
+# New-AzureStorageContext
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates an Azure Storage context.
 
 ## SYNTAX
 
 ### AccountNameAndKey (Default)
 ```
-New-AzStorageContext [-StorageAccountName] <String> [-StorageAccountKey] <String> [-Protocol <String>]
+New-AzureStorageContext [-StorageAccountName] <String> [-StorageAccountKey] <String> [-Protocol <String>]
  [-Endpoint <String>] [<CommonParameters>]
 ```
 
 ### AccountNameAndKeyEnvironment
 ```
-New-AzStorageContext [-StorageAccountName] <String> [-StorageAccountKey] <String> [-Protocol <String>]
+New-AzureStorageContext [-StorageAccountName] <String> [-StorageAccountKey] <String> [-Protocol <String>]
  -Environment <String> [<CommonParameters>]
 ```
 
 ### AnonymousAccount
 ```
-New-AzStorageContext [-StorageAccountName] <String> [-Anonymous] [-Protocol <String>] [-Endpoint <String>]
+New-AzureStorageContext [-StorageAccountName] <String> [-Anonymous] [-Protocol <String>] [-Endpoint <String>]
  [<CommonParameters>]
 ```
 
 ### AnonymousAccountEnvironment
 ```
-New-AzStorageContext [-StorageAccountName] <String> [-Anonymous] [-Protocol <String>] -Environment <String>
+New-AzureStorageContext [-StorageAccountName] <String> [-Anonymous] [-Protocol <String>] -Environment <String>
  [<CommonParameters>]
 ```
 
 ### SasToken
 ```
-New-AzStorageContext [-StorageAccountName] <String> -SasToken <String> [-Protocol <String>]
+New-AzureStorageContext [-StorageAccountName] <String> -SasToken <String> [-Protocol <String>]
  [-Endpoint <String>] [<CommonParameters>]
 ```
 
 ### SasTokenWithAzureEnvironment
 ```
-New-AzStorageContext [-StorageAccountName] <String> -SasToken <String> -Environment <String>
+New-AzureStorageContext [-StorageAccountName] <String> -SasToken <String> -Environment <String>
  [<CommonParameters>]
 ```
 
 ### ConnectionString
 ```
-New-AzStorageContext -ConnectionString <String> [<CommonParameters>]
+New-AzureStorageContext -ConnectionString <String> [<CommonParameters>]
 ```
 
 ### LocalDevelopment
 ```
-New-AzStorageContext [-Local] [<CommonParameters>]
+New-AzureStorageContext [-Local] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzureStorageContext** cmdlet creates an Azure Storage context.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Create a context by specifying a storage account name and key
+```
+C:\PS>New-AzureStorageContext -StorageAccountName "ContosoGeneral" -StorageAccountKey "< Storage Key for ContosoGeneral ends with == >"
 ```
 
-{{ Add example description here }}
+This command creates a context for the account named ContosoGeneral that uses the specified key.
+
+### Example 2: Create a context by specifying a connection string
+```
+C:\PS>New-AzureStorageContext -ConnectionString "DefaultEndpointsProtocol=https;AccountName=ContosoGeneral;AccountKey=< Storage Key for ContosoGeneral ends with == >;"
+```
+
+This command creates a context based on the specified connection string for the account ContosoGeneral.
+
+### Example 3: Create a context for an anonymous storage account
+```
+C:\PS>New-AzureStorageContext -StorageAccountName "ContosoGeneral" -Anonymous -Protocol "http"
+```
+
+This command creates a context for anonymous use for the account named ContosoGeneral.
+The command specifies HTTP as a connection protocol.
+
+### Example 4: Create a context by using the local development storage account
+```
+C:\PS>New-AzureStorageContext -Local
+```
+
+This command creates a context by using the local development storage account.
+The command specifies the *Local* parameter.
+
+### Example 5: Get the container for the local developer storage account
+```
+C:\PS>New-AzureStorageContext -Local | Get-AzureStorageContainer
+```
+
+This command creates a context by using the local development storage account, and then passes the new context to the **Get-AzureStorageContainer** cmdlet by using the pipeline operator.
+The command gets the Azure Storage container for the local developer storage account.
+
+### Example 6: Get multiple containers
+```
+C:\PS>$Context01 = New-AzureStorageContext -Local 
+PS C:\> $Context02 = New-AzureStorageContext -StorageAccountName "ContosoGeneral" -StorageAccountKey "< Storage Key for ContosoGeneral ends with == >"
+PS C:\> ($Context01, $Context02) | Get-AzureStorageContainer
+```
+
+The first command creates a context by using the local development storage account, and then stores that context in the $Context01 variable.
+The second command creates a context for the account named ContosoGeneral that uses the specified key, and then stores that context in the $Context02 variable.
+The final command gets the containers for the contexts stored in $Context01 and $Context02 by using **Get-AzureStorageContainer**.
+
+### Example 7: Create a context with an endpoint
+```
+C:\PS>New-AzureStorageContext -StorageAccountName "ContosoGeneral" -StorageAccountKey "< Storage Key for ContosoGeneral ends with == >" -Endpoint "contosoaccount.core.windows.net"
+```
+
+This command creates an Azure Storage context that has the specified storage endpoint.
+The command creates the context for the account named ContosoGeneral that uses the specified key.
+
+### Example 8: Create a context with a specified environment
+```
+C:\PS>New-AzureStorageContext -StorageAccountName "ContosoGeneral" -StorageAccountKey "< Storage Key for ContosoGeneral ends with == >" -Environment "AzureChinaCloud"
+```
+
+This command creates an Azure storage context that has the specified Azure environment.
+The command creates the context for the account named ContosoGeneral that uses the specified key.
+
+### Example 9: Create a context by using an SAS token
+```
+C:\PS>$SasToken = New-AzureStorageContainerSASToken -Name "ContosoMain" -Permission "rad"
+PS C:\> $Context = New-AzureStorageContext -StorageAccountName "ContosoGeneral" -SasToken $SasToken
+PS C:\> $Context | Get-AzureStorageBlob -Container "ContosoMain"
+```
+
+The first command generates an SAS token by using the **New-AzureStorageContainerSASToken** cmdlet for the container named ContosoMain, and then stores that token in the $SasToken variable.
+That token is for read, add, update, and delete permissions.
+The second command creates a context for the account named ContosoGeneral that uses the SAS token stored in $SasToken, and then stores that context in the $Context variable.
+The final command lists all the blobs associated with the container named ContosoMain by using the context stored in $Context.
 
 ## PARAMETERS
 
 ### -Anonymous
-Use anonymous storage account
+Indicates that this cmdlet creates an Azure Storage context for anonymous logon.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -88,7 +159,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectionString
-Azure Storage Connection String
+Specifies a connection string for the Azure Storage context.
 
 ```yaml
 Type: System.String
@@ -103,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### -Endpoint
-Azure storage endpoint
+Specifies the endpoint for the Azure Storage context.
 
 ```yaml
 Type: System.String
@@ -118,7 +189,9 @@ Accept wildcard characters: False
 ```
 
 ### -Environment
-Azure environment name
+Specifies the Azure environment.
+The acceptable values for this parameter are: AzureCloud and AzureChinaCloud.
+For more information, type `Get-Help Get-AzureEnvironment`.
 
 ```yaml
 Type: System.String
@@ -145,7 +218,7 @@ Accept wildcard characters: False
 ```
 
 ### -Local
-Use local development storage account
+Indicates that this cmdlet creates a context by using the local development storage account.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -160,7 +233,7 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-Protocol specification (HTTP or HTTPS), default is HTTPS
+Transfer Protocol (https/http).
 
 ```yaml
 Type: System.String
@@ -176,7 +249,7 @@ Accept wildcard characters: False
 ```
 
 ### -SasToken
-Azure Storage SAS Token
+Specifies a Shared Access Signature (SAS) token for the context.
 
 ```yaml
 Type: System.String
@@ -191,7 +264,8 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountKey
-Azure Storage Account Key
+Specifies an Azure Storage account key.
+This cmdlet creates a context for the key that this parameter specifies.
 
 ```yaml
 Type: System.String
@@ -206,7 +280,8 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountName
-Azure Storage Account Name
+Specifies an Azure Storage account name.
+This cmdlet creates a context for the account that this parameter specifies.
 
 ```yaml
 Type: System.String
@@ -221,7 +296,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -234,3 +309,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureStorageBlob](./Get-AzureStorageBlob.md)
+
+[New-AzureStorageContainerSASToken](./New-AzureStorageContainerSASToken.md)
+
+

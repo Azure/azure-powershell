@@ -1,20 +1,21 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version:
+ms.assetid: 3CFA6E31-E243-4B22-AE8F-1942DD324639
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstoragetablesastoken
 schema: 2.0.0
 ---
 
-# New-AzStorageTableSASToken
+# New-AzureStorageTableSASToken
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Generates an SAS token for an Azure Storage table.
 
 ## SYNTAX
 
 ### SasPolicy
 ```
-New-AzStorageTableSASToken [-Name] <String> -Policy <String> [-Protocol <SharedAccessProtocol>]
+New-AzureStorageTableSASToken [-Name] <String> -Policy <String> [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
  [-StartPartitionKey <String>] [-StartRowKey <String>] [-EndPartitionKey <String>] [-EndRowKey <String>]
  [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -22,28 +23,46 @@ New-AzStorageTableSASToken [-Name] <String> -Policy <String> [-Protocol <SharedA
 
 ### SasPermission
 ```
-New-AzStorageTableSASToken [-Name] <String> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
+New-AzureStorageTableSASToken [-Name] <String> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
  [-StartPartitionKey <String>] [-StartRowKey <String>] [-EndPartitionKey <String>] [-EndRowKey <String>]
  [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzureStorageTableSASToken** cmdlet generates a Shared Access Signature (SAS) token for an Azure Storage table.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Generate an SAS token that has full permissions for a table
+```
+C:\PS>New-AzureStorageTableSASToken -Name "ContosoResources" -Permission "raud"
 ```
 
-{{ Add example description here }}
+This command generates an SAS token with full permissions for the table named ContosoResources.
+That token is for read, add, update, and delete permissions.
+
+### Example 2: Generate an SAS token for a range of partitions
+```
+C:\PS>New-AzureStorageTableSASToken -Name "ContosoResources" -Permission "raud" -StartPartitionKey "a" -EndPartitionKey "b"
+```
+
+This command generates and SAS token with full permissions for the table named ContosoResources.
+The command limits the token to the range that the *StartPartitionKey* and *EndPartitionKey* parameters specify.
+
+### Example 3: Generate an SAS token that has a stored access policy for a table
+```
+C:\PS>New-AzureStorageTableSASToken -Name "ContosoResources" -Policy "ClientPolicy01"
+```
+
+This command generates an SAS token for the table named ContosoResources.
+The command specifies the stored access policy named ClientPolicy01.
 
 ## PARAMETERS
 
 ### -Context
-Azure Storage Context Object
+Specifies an Azure storage context.
+To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -61,7 +80,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -73,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -EndPartitionKey
-End Partition Key
+Specifies the partition key of the end of the range for the token that this cmdlet creates.
 
 ```yaml
 Type: System.String
@@ -88,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -EndRowKey
-End Row Key
+Specifies the row key for the end of the range for the token that this cmdlet creates.
 
 ```yaml
 Type: System.String
@@ -103,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpiryTime
-Expiry Time
+Specifies when the SAS token expires.
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
@@ -118,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -FullUri
-Display full uri with sas token
+Indicates that this cmdlet returns the full queue URI with the SAS token.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -133,7 +152,8 @@ Accept wildcard characters: False
 ```
 
 ### -IPAddressOrRange
-IP, or IP range ACL (access control list) that the request would be accepted by Azure Storage.
+Specifies the IP address or range of IP addresses from which to accept requests, such as 168.1.5.65 or 168.1.5.60-168.1.5.70.
+The range is inclusive.
 
 ```yaml
 Type: System.String
@@ -148,7 +168,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Table Name
+Specifies the name of an Azure Storage table.
+This cmdlet creates an SAS token for the table that this parameter specifies.
 
 ```yaml
 Type: System.String
@@ -163,8 +184,8 @@ Accept wildcard characters: False
 ```
 
 ### -Permission
-Permissions for a container.
-Permissions can be any not-empty subset of "audq".
+Specifies permissions for an Azure Storage table.
+It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
 
 ```yaml
 Type: System.String
@@ -179,7 +200,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Policy Identifier
+Specifies a stored access policy, which includes the permissions for this SAS token.
 
 ```yaml
 Type: System.String
@@ -194,10 +215,14 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-Protocol can be used in the request with this SAS token.
+Specifies the protocol permitted for a request.
+The acceptable values for this parameter are:
+* HttpsOnly
+* HttpsOrHttp
+The default value is HttpsOrHttp.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.WindowsAzure.Storage.SharedAccessProtocol]
+Type: System.Nullable`1[Microsoft.WindowsAz.Storage.SharedAccessProtocol]
 Parameter Sets: (All)
 Aliases:
 Accepted values: HttpsOnly, HttpsOrHttp
@@ -210,7 +235,7 @@ Accept wildcard characters: False
 ```
 
 ### -StartPartitionKey
-Start Partition Key
+Specifies the partition key of the start of the range for the token that this cmdlet creates.
 
 ```yaml
 Type: System.String
@@ -225,7 +250,7 @@ Accept wildcard characters: False
 ```
 
 ### -StartRowKey
-Start Row Key
+Specifies the row key for the start of the range for the token that this cmdlet creates.
 
 ```yaml
 Type: System.String
@@ -240,7 +265,7 @@ Accept wildcard characters: False
 ```
 
 ### -StartTime
-Start Time
+Specifies when the SAS token becomes valid.
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
@@ -255,7 +280,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -270,3 +295,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzureStorageContext](./New-AzureStorageContext.md)

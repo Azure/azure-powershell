@@ -1,33 +1,43 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
-Module Name: Az.Storage
-online version:
+Module Name:Az.Storage
+ms.assetid: A57A9EFA-47AC-44D8-BFA7-CDE0E2A612B3
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageaccountkey
 schema: 2.0.0
 ---
 
-# Get-AzStorageAccountKey
+# Get-AzureRmStorageAccountKey
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the access keys for an Azure Storage account.
 
 ## SYNTAX
 
 ```
-Get-AzStorageAccountKey [-ResourceGroupName] <String> [-Name] <String>
+Get-AzureRmStorageAccountKey [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzureRmStorageAccountKey** cmdlet gets the access keys for an Azure Storage account.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Get the access keys for a Storage account
+```
+PS C:\>Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" -AccountName "mystorageaccount"
 ```
 
-{{ Add example description here }}
+This command gets the keys for the specified Azure Storage account.
+
+### Example 2: Get a specific access key for a Storage account
+```
+This command gets a specific key for a Storage account. This command works for Azure PowerShell version 1.4, and later versions.
+PS C:\>(Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" -AccountName "mystorageaccount").Value[0]
+
+This command gets a specific key for a Storage account. This command works for Azure PowerShell version 1.3.2, and previous versions.
+PS C:\>(Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" -AccountName "mystorageaccount").Key1
+```
 
 ## PARAMETERS
 
@@ -35,9 +45,9 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -47,7 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Storage Account Name.
+Specifies the name of the Storage account for which this cmdlet gets keys.
 
 ```yaml
 Type: System.String
@@ -62,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+Specifies the name of the resource group that contains the Storage account.
 
 ```yaml
 Type: System.String
@@ -77,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -90,3 +100,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzureRmStorageAccountKey](./New-AzureRmStorageAccountKey.md)
+
+

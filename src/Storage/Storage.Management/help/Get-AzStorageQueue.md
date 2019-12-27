@@ -1,45 +1,61 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version:
+ms.assetid: C2EBCCF0-56CE-4D49-A138-74E52FC3A9AC
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstoragequeue
 schema: 2.0.0
 ---
 
-# Get-AzStorageQueue
+# Get-AzureStorageQueue
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Lists storage queues.
 
 ## SYNTAX
 
 ### QueueName (Default)
 ```
-Get-AzStorageQueue [[-Name] <String>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureStorageQueue [[-Name] <String>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### QueuePrefix
 ```
-Get-AzStorageQueue -Prefix <String> [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzureStorageQueue -Prefix <String> [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzureStorageQueue** cmdlet lists storage queues associated with an Azure Storage account.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: List all Azure Storage queues
+```
+PS C:\>Get-AzureStorageQueue
 ```
 
-{{ Add example description here }}
+This command gets a list of all storage queues for the current Storage account.
+
+### Example 2: List Azure Storage queues using a wildcard character
+```
+PS C:\>Get-AzureStorageQueue -Name queue*
+```
+
+This command uses a wildcard character to get a list of storage queues whose name starts with queue.
+
+### Example 3: List Azure Storage queues using queue name prefix
+```
+PS C:\>Get-AzureStorageQueue -Prefix "queue"
+```
+
+This example uses the *Prefix* parameter to get a list of storage queues whose name starts with queue.
 
 ## PARAMETERS
 
 ### -Context
-Azure Storage Context Object
+Specifies the Azure storage context.
+You can create it by using the **New-AzureStorageContext** cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -57,7 +73,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -69,7 +85,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Queue name
+Specifies a name.
+If no name is specified, the cmdlet gets a list of all the queues.
+If a full or partial name is specified, the cmdlet gets all queues that match the name pattern.
 
 ```yaml
 Type: System.String
@@ -84,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -Prefix
-Queue Prefix
+Specifies a prefix used in the name of the queues you want to get.
 
 ```yaml
 Type: System.String
@@ -99,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -114,3 +132,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzureStorageQueue](./New-AzureStorageQueue.md)
+
+[Remove-AzureStorageQueue](./Remove-AzureStorageQueue.md)
+
+

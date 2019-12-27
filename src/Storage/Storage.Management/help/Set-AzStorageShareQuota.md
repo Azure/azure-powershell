@@ -1,47 +1,50 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version:
+ms.assetid: 176294FA-BB08-4A63-AD45-1E6C6D67A5D8
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azstoragesharequota
 schema: 2.0.0
 ---
 
-# Set-AzStorageShareQuota
+# Set-AzureStorageShareQuota
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Sets the storage capacity for a share.
 
 ## SYNTAX
 
 ### ShareName
 ```
-Set-AzStorageShareQuota [-ShareName] <String> [-Quota] <Int32> [-Context <IStorageContext>]
+Set-AzureStorageShareQuota [-ShareName] <String> [-Quota] <Int32> [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ### Share
 ```
-Set-AzStorageShareQuota [-Share] <CloudFileShare> [-Quota] <Int32> [-ServerTimeoutPerRequest <Int32>]
+Set-AzureStorageShareQuota [-Share] <CloudFileShare> [-Quota] <Int32> [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzureStorageShareQuota** cmdlet sets the storage capacity for a specified share.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Set the storage capacity of a share
+```
+PS C:\>Set-AzureStorageShareQuota -ShareName "ContosoShare01" -Quota 1024
 ```
 
-{{ Add example description here }}
+This command sets the storage capacity for a share named ContosoShare01 to 1024 GB.
 
 ## PARAMETERS
 
 ### -ClientTimeoutPerRequest
-The client side maximum execution time for each request in seconds.
+Specifies the client-side time-out interval, in seconds, for one service request.
+If the previous call fails in the specified interval, this cmdlet retries the request.
+If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -56,7 +59,10 @@ Accept wildcard characters: False
 ```
 
 ### -ConcurrentTaskCount
-The total amount of concurrent async tasks.
+Specifies the maximum concurrent network calls.
+You can use this parameter to limit the concurrency to throttle local CPU and bandwidth usage by specifying the maximum number of concurrent network calls.
+The specified value is an absolute count and is not multiplied by the core count.
+This parameter can help reduce network connection problems in low bandwidth environments, such as 100 kilobits per second.
 The default value is 10.
 
 ```yaml
@@ -72,7 +78,8 @@ Accept wildcard characters: False
 ```
 
 ### -Context
-Azure Storage Context Object
+Specifies an Azure storage context.
+To obtain a storage context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -90,7 +97,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -102,7 +109,8 @@ Accept wildcard characters: False
 ```
 
 ### -Quota
-Share Quota
+Specifies the quota value in gigabytes (GB).
+See the quota limitation in https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#azure-files-limits. 
 
 ```yaml
 Type: System.Int32
@@ -117,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerTimeoutPerRequest
-The server time out for each request in seconds.
+Specifies the length of the time-out period for the server part of a request.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -132,10 +140,11 @@ Accept wildcard characters: False
 ```
 
 ### -Share
-CloudFileShare object indicated the share whose quota to set.
+Specifies a **CloudFileShare** object to represent the share for which this cmdlets sets a quota.
+To obtain a **CloudFileShare** object, use the Get-AzureStorageShare cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFileShare
+Type: Microsoft.WindowsAz.Storage.File.CloudFileShare
 Parameter Sets: Share
 Aliases:
 
@@ -147,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -ShareName
-Share name
+Specifies the name of the file share for which to set a quota.
 
 ```yaml
 Type: System.String
@@ -162,20 +171,27 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
-### Microsoft.WindowsAzure.Storage.File.CloudFileShare
+### Microsoft.WindowsAz.Storage.File.CloudFileShare
+Parameters: Share (ByValue)
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Storage.File.FileShareProperties
+### Microsoft.WindowsAz.Storage.File.FileShareProperties
 
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureStorageFileContent](./Get-AzureStorageFileContent.md)
+
+[Get-AzureStorageShare](./Get-AzureStorageShare.md)
+
+[New-AzureStorageContext](./New-AzureStorageContext.md)

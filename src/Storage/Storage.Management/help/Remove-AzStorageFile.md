@@ -1,80 +1,75 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version:
+ms.assetid: 811671E9-592E-4E58-8174-34D665206A65
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/remove-azstoragefile
 schema: 2.0.0
 ---
 
-# Get-AzureStorageFileContent
+# Remove-AzureStorageFile
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Deletes a file.
 
 ## SYNTAX
 
 ### ShareName (Default)
 ```
-Get-AzureStorageFileContent [-ShareName] <String> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
- [-PassThru] [-Force] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureStorageFile [-ShareName] <String> [-Path] <String> [-PassThru] [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Share
 ```
-Get-AzureStorageFileContent [-Share] <CloudFileShare> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
- [-PassThru] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+Remove-AzureStorageFile [-Share] <CloudFileShare> [-Path] <String> [-PassThru]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### Directory
 ```
-Get-AzureStorageFileContent [-Directory] <CloudFileDirectory> [-Path] <String> [[-Destination] <String>]
- [-CheckMd5] [-PassThru] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+Remove-AzureStorageFile [-Directory] <CloudFileDirectory> [-Path] <String> [-PassThru]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### File
 ```
-Get-AzureStorageFileContent [-File] <CloudFile> [[-Destination] <String>] [-CheckMd5] [-PassThru] [-Force]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureStorageFile [-File] <CloudFile> [-PassThru] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzureStorageFile** cmdlet deletes a file.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Delete a file from a file share
+```
+PS C:\>Remove-AzureStorageFile -ShareName "ContosoShare06" -Path "ContosoFile22"
 ```
 
-{{ Add example description here }}
+This command deletes the file that is named ContosoFile22 from the file share named ContosoShare06.
+
+### Example 2: Get a file from a file share by using a file share object
+```
+PS C:\>Get-AzureStorageShare -Name "ContosoShare06" | Remove-AzureStorageFile -Path "ContosoFile22"
+```
+
+This command uses the **Get-AzureStorageShare** cmdlet to get the file share named ContosoShare06, and then passes that object to the current cmdlet by using the pipeline operator.
+The current command deletes the file that is named ContosoFile22 from ContosoShare06.
 
 ## PARAMETERS
 
-### -CheckMd5
-check the md5sum
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ClientTimeoutPerRequest
-The client side maximum execution time for each request in seconds.
+Specifies the client-side time-out interval, in seconds, for one service request.
+If the previous call fails in the specified interval, this cmdlet retries the request.
+If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -89,7 +84,10 @@ Accept wildcard characters: False
 ```
 
 ### -ConcurrentTaskCount
-The total amount of concurrent async tasks.
+Specifies the maximum concurrent network calls.
+You can use this parameter to limit the concurrency to throttle local CPU and bandwidth usage by specifying the maximum number of concurrent network calls.
+The specified value is an absolute count and is not multiplied by the core count.
+This parameter can help reduce network connection problems in low bandwidth environments, such as 100 kilobits per second.
 The default value is 10.
 
 ```yaml
@@ -105,7 +103,8 @@ Accept wildcard characters: False
 ```
 
 ### -Context
-Azure Storage Context Object
+Specifies an Azure storage context.
+To obtain a storage context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -134,23 +133,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Destination
-Path to the local file or directory when the downloaded file would be put.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Directory
-CloudFileDirectory object indicated the cloud directory where the file would be downloaded.
+Specifies a folder as a **CloudFileDirectory** object.
+This cmdlet removes a file in the folder that this parameter specifies.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
@@ -165,7 +150,9 @@ Accept wildcard characters: False
 ```
 
 ### -File
-CloudFile object indicated the cloud file to be downloaded.
+Specifies a file as a **CloudFile** object.
+This cmdlet removes the file that this parameter specifies.
+To obtain a **CloudFile** object, use the Get-AzureStorageFile cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Storage.File.CloudFile
@@ -179,24 +166,9 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Force
-Force to overwrite the existing file.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PassThru
-Returns an object representing the downloaded cloud file.
-By default, this cmdlet does not generate any output.
+Indicates that this cmdlet returns a **Boolean** that reflects the success of the operation.
+By default, this cmdlet does not return a value.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -211,7 +183,8 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-Path to the cloud file to be downloaded.
+Specifies the path of a file.
+This cmdlet deletes the file that this parameter specifies.
 
 ```yaml
 Type: System.String
@@ -226,7 +199,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerTimeoutPerRequest
-The server time out for each request in seconds.
+Specifies the length of the time-out period for the server part of a request.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -241,7 +214,11 @@ Accept wildcard characters: False
 ```
 
 ### -Share
-CloudFileShare object indicated the share where the file would be downloaded.
+Specifies a **CloudFileShare** object.
+This cmdlet removes the file in the share this parameter specifies.
+To obtain a **CloudFileShare** object, use the Get-AzureStorageShare cmdlet.
+This object contains the storage context.
+If you specify this parameter, do not specify the *Context* parameter.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Storage.File.CloudFileShare
@@ -256,7 +233,8 @@ Accept wildcard characters: False
 ```
 
 ### -ShareName
-Name of the file share where the file would be downloaded.
+Specifies the name of the file share.
+This cmdlet removes the file in the share this parameter specifies.
 
 ```yaml
 Type: System.String
@@ -280,7 +258,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -296,7 +274,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -306,18 +284,27 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.WindowsAzure.Storage.File.CloudFileShare
+### Microsoft.WindowsAz.Storage.File.CloudFileShare
+Parameters: Share (ByValue)
 
-### Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
+### Microsoft.WindowsAz.Storage.File.CloudFileDirectory
+Parameters: Directory (ByValue)
 
-### Microsoft.WindowsAzure.Storage.File.CloudFile
+### Microsoft.WindowsAz.Storage.File.CloudFile
+Parameters: File (ByValue)
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Storage.File.CloudFile
+### Microsoft.WindowsAz.Storage.File.CloudFile
 
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureStorageFile](./Get-AzureStorageFile.md)
+
+[Get-AzureStorageShare](./Get-AzureStorageShare.md)
+
+[New-AzureStorageContext](./New-AzureStorageContext.md)

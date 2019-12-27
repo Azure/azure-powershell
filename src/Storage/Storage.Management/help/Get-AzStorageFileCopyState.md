@@ -1,14 +1,15 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version:
+ms.assetid: C1648DC3-8CFD-4487-A080-D9BE25DAD258
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstoragefilecopystate
 schema: 2.0.0
 ---
 
 # Get-AzureStorageFileCopyState
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the state of a copy operation.
 
 ## SYNTAX
 
@@ -27,21 +28,23 @@ Get-AzureStorageFileCopyState [-File] <CloudFile> [-WaitForComplete] [-ServerTim
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzureStorageFileCopyState** cmdlet gets the state of an Azure Storage file copy operation.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Get the copy state by file name
+```
+PS C:\>Get-AzureStorageFileCopyState -ShareName "ContosoShare" -FilePath "ContosoFile"
 ```
 
-{{ Add example description here }}
+This command gets the state of the copy operation for a file that has the specified name.
 
 ## PARAMETERS
 
 ### -ClientTimeoutPerRequest
-The client side maximum execution time for each request in seconds.
+Specifies the client-side time-out interval, in seconds, for one service request.
+If the previous call fails in the specified interval, this cmdlet retries the request.
+If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -56,7 +59,10 @@ Accept wildcard characters: False
 ```
 
 ### -ConcurrentTaskCount
-The total amount of concurrent async tasks.
+Specifies the maximum concurrent network calls.
+You can use this parameter to limit the concurrency to throttle local CPU and bandwidth usage by specifying the maximum number of concurrent network calls.
+The specified value is an absolute count and is not multiplied by the core count.
+This parameter can help reduce network connection problems in low bandwidth environments, such as 100 kilobits per second.
 The default value is 10.
 
 ```yaml
@@ -72,7 +78,8 @@ Accept wildcard characters: False
 ```
 
 ### -Context
-Azure Storage Context Object
+Specifies an Azure Storage context.
+To obtain a context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -102,7 +109,8 @@ Accept wildcard characters: False
 ```
 
 ### -File
-Target file instance
+Specifies a **CloudFile** object.
+You can create a cloud file or obtain one by using the Get-AzureStorageFile cmdlet.
 
 ```yaml
 Type: Microsoft.WindowsAzure.Storage.File.CloudFile
@@ -117,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -FilePath
-Target file path
+Specifies the path of the file relative to an Azure Storage share.
 
 ```yaml
 Type: System.String
@@ -132,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerTimeoutPerRequest
-The server time out for each request in seconds.
+Specifies the length of the time-out period for the server part of a request.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -147,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -ShareName
-Target share name
+Specifies the name of a share.
 
 ```yaml
 Type: System.String
@@ -162,7 +170,8 @@ Accept wildcard characters: False
 ```
 
 ### -WaitForComplete
-Indicates whether or not to wait util the copying finished.
+Indicates that this cmdlet waits for the copy to finish.
+If you do not specify this parameter, this cmdlet returns a result immediately.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -181,14 +190,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.WindowsAzure.Storage.File.CloudFile
+### Microsoft.WindowsAz.Storage.File.CloudFile
+Parameters: File (ByValue)
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Storage.File.CloudFile
+### Microsoft.WindowsAz.Storage.File.CloudFile
 
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureStorageFile](./Get-AzureStorageFile.md)
+
+[New-AzureStorageContext](./New-AzureStorageContext.md)
+
+[Start-AzureStorageFileCopy](./Start-AzureStorageFileCopy.md)
+
+[Stop-AzureStorageFileCopy](./Stop-AzureStorageFileCopy.md)

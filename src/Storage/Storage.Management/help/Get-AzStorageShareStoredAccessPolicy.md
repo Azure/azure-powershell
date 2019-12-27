@@ -1,39 +1,50 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version:
+ms.assetid: 73BB521B-20F2-4F2B-AA88-2B128F36A9EF
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstoragesharestoredaccesspolicy
 schema: 2.0.0
 ---
 
-# Get-AzStorageShareStoredAccessPolicy
+# Get-AzureStorageShareStoredAccessPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets stored access policies for a Storage share.
 
 ## SYNTAX
 
 ```
-Get-AzStorageShareStoredAccessPolicy [-ShareName] <String> [[-Policy] <String>] [-Context <IStorageContext>]
+Get-AzureStorageShareStoredAccessPolicy [-ShareName] <String> [[-Policy] <String>] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzureStorageShareStoredAccessPolicy** cmdlet gets stored access policies for an Azure Storage share.
+To get a particular policy, specify it by name.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Get a stored access policy in a share
+```
+PS C:\>Get-AzureStorageShareStoredAccessPolicy -ShareName "ContosoShare" -Policy "GeneralPolicy"
 ```
 
-{{ Add example description here }}
+This command gets a stored access policy named GeneralPolicy in ContosoShare.
+
+### Example 2: Get all the stored access policies in share
+```
+PS C:\>Get-AzureStorageShareStoredAccessPolicy -ShareName "ContosoShare"
+```
+
+This command gets all stored access policies in ContosoShare.
 
 ## PARAMETERS
 
 ### -ClientTimeoutPerRequest
-The client side maximum execution time for each request in seconds.
+Specifies the client-side time-out interval, in seconds, for one service request.
+If the previous call fails in the specified interval, this cmdlet retries the request.
+If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -48,7 +59,10 @@ Accept wildcard characters: False
 ```
 
 ### -ConcurrentTaskCount
-The total amount of concurrent async tasks.
+Specifies the maximum concurrent network calls.
+You can use this parameter to limit the concurrency to throttle local CPU and bandwidth usage by specifying the maximum number of concurrent network calls.
+The specified value is an absolute count and is not multiplied by the core count.
+This parameter can help reduce network connection problems in low bandwidth environments, such as 100 kilobits per second.
 The default value is 10.
 
 ```yaml
@@ -64,7 +78,8 @@ Accept wildcard characters: False
 ```
 
 ### -Context
-Azure Storage Context Object
+Specifies an Azure Storage context.
+To obtain a context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -82,7 +97,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -94,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Policy Identifier
+Specifies the name of the stored access policy that this cmdlet gets.
 
 ```yaml
 Type: System.String
@@ -109,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerTimeoutPerRequest
-The server time out for each request in seconds.
+Specifies the length of the time-out period for the server part of a request.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -124,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -ShareName
-Share name
+Specifies the Storage share name for which this cmdlet gets policies.
 
 ```yaml
 Type: System.String
@@ -139,7 +154,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -149,8 +164,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Storage.File.SharedAccessFilePolicy
+### Microsoft.WindowsAz.Storage.File.SharedAccessFilePolicy
 
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzureStorageContext](./New-AzureStorageContext.md)
+
+[New-AzureStorageShareStoredAccessPolicy](./New-AzureStorageShareStoredAccessPolicy.md)
+
+[Remove-AzureStorageShareStoredAccessPolicy](./Remove-AzureStorageShareStoredAccessPolicy.md)
+
+[Set-AzureStorageShareStoredAccessPolicy](./Set-AzureStorageShareStoredAccessPolicy.md)

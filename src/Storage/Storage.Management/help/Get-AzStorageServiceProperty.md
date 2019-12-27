@@ -1,38 +1,53 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/get-azstorageserviceproperty
 schema: 2.0.0
 ---
 
-# Get-AzStorageServiceProperty
+# Get-AzureStorageServiceProperty
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets properties for Azure Storage services.
 
 ## SYNTAX
 
 ```
-Get-AzStorageServiceProperty [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
+Get-AzureStorageServiceProperty [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzureStorageServiceProperty** cmdlet gets the properties for Azure Storage services.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Get  Azure Storage services property of the Blob service
+```
+C:\PS>Get-AzureStorageServiceProperty -ServiceType Blob
+
+Logging.Version                     : 1.0
+Logging.LoggingOperations           : None
+Logging.RetentionDays               : 
+HourMetrics.Version                 : 1.0
+HourMetrics.MetricsLevel            : ServiceAndApi
+HourMetrics.RetentionDays           : 7
+MinuteMetrics.Version               : 1.0
+MinuteMetrics.MetricsLevel          : None
+MinuteMetrics.RetentionDays         : 
+DeleteRetentionPolicy.Enabled       : True
+DeleteRetentionPolicy.RetentionDays : 70
+Cors                                : 
+DefaultServiceVersion               : 2017-07-29
 ```
 
-{{ Add example description here }}
+This command gets DefaultServiceVersion property of the Blob service.
 
 ## PARAMETERS
 
 ### -Context
-Azure Storage Context Object
+Specifies an Azure storage context.
+To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -50,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -62,7 +77,13 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceType
-Azure storage service type(Blob, Table, Queue).
+Specifies the storage service type.
+This cmdlet gets the logging properties for the service type that this parameter specifies.
+The acceptable values for this parameter are:
+- Blob 
+- Table
+- Queue
+- File
 
 ```yaml
 Type: Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType
@@ -78,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
