@@ -37,17 +37,6 @@
 * Fix the issue that Set-AzStorageContainerAcl can clean up the stored Access Policy
 	- Set-AzStorageContainerAcl
 
-## Version 1.9.1
-* Support DataLake Gen2 
-    -  New-AzDataLakeGen2Item
-    -  Get-AzDataLakeGen2Item
-    -  Get-AzDataLakeGen2ChildItem
-    -  Move-AzDataLakeGen2Item
-    -  New-AzDataLakeGen2ItemAclObject
-    -  Update-AzDataLakeGen2Item
-    -  Get-AzDataLakeGen2ItemContent
-    -  Remove-AzDataLakeGen2Item
-
 ## Version 1.9.0
 * Support enable Large File share when create or update Storage account
     -  New-AzStorageAccount
