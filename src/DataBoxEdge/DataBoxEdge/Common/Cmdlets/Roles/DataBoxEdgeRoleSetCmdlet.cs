@@ -16,12 +16,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.EdgeGateway;
-using Microsoft.Azure.Management.EdgeGateway.Models;
+using Microsoft.Azure.Management.DataBoxEdge;
+using Microsoft.Azure.Management.DataBoxEdge.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using ResourceModel = Microsoft.Azure.Management.EdgeGateway.Models.Role;
+using ResourceModel = Microsoft.Azure.Management.DataBoxEdge.Models.Role;
 using PSResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeRole;
-using PSTopLevelResourceModel = Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Models.PSDataBoxEdgeDevice;
 
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
@@ -35,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
     {
         private const string SetByNameParameterSet = "SetByNameParameterSet";
         private const string SetByResourceIdParameterSet = "SetByResourceIdParameterSet";
-        private const string SetByParentObjectParameterSet = "SetByParentObjectParameterSet";
+        private const string SetByInputObjectParameterSet = "SetByInputObjectParameterSet";
 
         [Parameter(Mandatory = true,
             ParameterSetName = SetByResourceIdParameterSet,
@@ -63,7 +62,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
         public string DeviceName { get; set; }
 
         [Parameter(Mandatory = true,
-            HelpMessage = HelpMessageRoles.Name
+            ParameterSetName = SetByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessageRoles.Name,
+            Position = 2
         )]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -71,15 +73,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
         [Parameter(Mandatory = true,
             HelpMessage = HelpMessageRoles.ShareName
         )]
-        [ValidateNotNullOrEmpty]
+        [AllowEmptyCollection]
+        [ValidateNotNull]
         public string[] ShareName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipeline = true,
-            ParameterSetName = SetByParentObjectParameterSet,
+            ParameterSetName = SetByInputObjectParameterSet,
             HelpMessage = Constants.PsDeviceObjectHelpMessage)]
         [ValidateNotNull]
-        public PSTopLevelResourceModel DeviceObject;
+        [Alias("Role")]
+        public PSResourceModel InputObject;
 
         private ResourceModel GetResourceModel()
         {
@@ -89,34 +93,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
                 this.ResourceGroupName);
         }
 
-        private List<string> ListShareIdFromShareName()
+        private string GetShareIdFromShareName(string shareName)
         {
-            return ShareName.Select(shareName => this.DataBoxEdgeManagementClient.Shares.Get(this.DeviceName,
+            return this.DataBoxEdgeManagementClient.Shares.Get(this.DeviceName,
                 shareName,
-                this.ResourceGroupName)
-            ).Select(share => share.Id).ToList();
+                this.ResourceGroupName).Id;
         }
 
-        private ResourceModel SetShares(ResourceModel resourceModel)
+        private ResourceModel SetShareMountPoint(ResourceModel resourceModel)
         {
             if (resourceModel is IoTRole iotRole)
             {
-                foreach (var shareId in ListShareIdFromShareName())
+                iotRole.ShareMappings = new List<MountPointMap>();
+                foreach (var shareName in ShareName)
                 {
+                    var shareId = GetShareIdFromShareName(shareName);
                     iotRole.ShareMappings.Add(new MountPointMap(shareId));
                 }
-            }
-            else
-            {
-                throw new PSArgumentException(HelpMessageRoles.InvalidRoleType);
+
+                return resourceModel;
             }
 
-            return resourceModel;
+            throw new PSArgumentException(HelpMessageRoles.InvalidRoleType);
         }
 
-        private ResourceModel SetShareMappings(ResourceModel resourceModel)
+        private ResourceModel UpdateResourceModel(ResourceModel resourceModel)
         {
-            resourceModel = SetShares(resourceModel);
             return this.DataBoxEdgeManagementClient.Roles.CreateOrUpdate(DeviceName,
                 Name,
                 resourceModel,
@@ -125,10 +127,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
 
         public override void ExecuteCmdlet()
         {
-            if (this.IsParameterBound(c => this.DeviceObject))
+            if (this.IsParameterBound(c => this.InputObject))
             {
-                this.ResourceGroupName = this.DeviceObject.ResourceGroupName;
-                this.DeviceName = this.DeviceObject.Name;
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.DeviceName = this.InputObject.DeviceName;
+                this.Name = this.InputObject.Name;
             }
 
             if (this.IsParameterBound(c => c.ResourceId))
@@ -143,8 +146,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
 
             if (this.IsParameterBound(c => c.ShareName))
             {
-                resourceModel = SetShareMappings(resourceModel);
+                resourceModel = SetShareMountPoint(resourceModel);
             }
+
+            resourceModel = UpdateResourceModel(resourceModel);
 
             WriteObject(new PSResourceModel(resourceModel), true);
         }

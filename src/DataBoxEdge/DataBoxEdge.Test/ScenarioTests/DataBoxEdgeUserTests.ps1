@@ -44,10 +44,8 @@ function Test-CreateNewUser
 	
 	$passwordString = Get-Userpassword
 	$password = ConvertTo-SecureString $passwordString -AsPlainText -Force
-	$encryptionKeyString = Get-EncryptionKey 
-	$encryptionKey = ConvertTo-SecureString $encryptionKeyString -AsPlainText -Force
-
-	
+	$encryptionKey = Get-EncryptionKey 
+		
 	# Test
 	try
 	{
@@ -71,10 +69,8 @@ function Test-RemoveUser
 	$dfname = Get-DeviceName
 	$name = Get-User
 
-	$passwordString = Get-Userpassword
-	$password = ConvertTo-SecureString $passwordString -AsPlainText -Force
-	$encryptionKeyString = Get-EncryptionKey 
-	$encryptionKey = ConvertTo-SecureString $encryptionKeyString -AsPlainText -Force
+	$password = Get-Userpassword
+	$encryptionKey = Get-EncryptionKey
 
 	# Test
 	try

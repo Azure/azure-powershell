@@ -1202,6 +1202,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 var hd = new AsrVirtualHardDisk();
                 hd.Id = disk.DiskId;
                 hd.Name = disk.DiskName;
+                hd.Capacity = Convert.ToInt64(disk.DiskSizeInMB);
 
                 // Update all the Volumes in this Disk.
                 hd.Volumes = new List<AsrVolume>();
@@ -2252,6 +2253,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [DataMember]
         public List<AsrVolume> Volumes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the Capacity.
+        /// </summary>
+        [DataMember]
+        public long Capacity { get; set; }
     }
 
     /// <summary>
@@ -2357,6 +2364,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         //     Gets or sets the DiskType. Possible values include: 'Standard_LRS', 'Premium_LRS',
         //     'StandardSSD_LRS'
         public string DiskType { get; set; }
+        // Summary:
+        //     Gets or sets the DiskEncryptionSet ARM ID.
+        public string DiskEncryptionSetId { get; set; }
     }
 
     /// <summary>
@@ -2415,6 +2425,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets RecoveryTargetDiskAccountType. 
         /// </summary>
         public string RecoveryTargetDiskAccountType;
+
+        /// <summary>
+        /// Gets or sets RecoveryDiskEncryptionSetId. 
+        /// </summary>
+        public string RecoveryDiskEncryptionSetId;
 
         /// <summary>
         /// Gets or sets DiskEncryptionVaultId.
@@ -2506,6 +2521,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.IsDiskKeyEncrypted = disk.IsDiskKeyEncrypted;
             this.KekKeyVaultArmId = disk.KekKeyVaultArmId;
             this.KeyIdentifier = disk.KeyIdentifier;
+            this.RecoveryDiskEncryptionSetId = disk.RecoveryDiskEncryptionSetId;
         }
 
         /// <summary>
@@ -2568,6 +2584,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets the recovery target disk Id.
         /// </summary>
         public string RecoveryTargetDiskId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery disk encryption set Id.
+        /// </summary>
+        public string RecoveryDiskEncryptionSetId { get; set; }
 
         /// <summary>
         /// Gets or sets the disk uri.

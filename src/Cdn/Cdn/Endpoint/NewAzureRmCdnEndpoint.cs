@@ -129,31 +129,39 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
         private void NewEndpoint()
         {
-            var endpoint = CdnManagementClient.Endpoints.Create(
-                ResourceGroupName,
-                ProfileName,
-                EndpointName, new Management.Cdn.Models.Endpoint
+            try
             {
-                ContentTypesToCompress = ContentTypesToCompress,
-                IsCompressionEnabled = IsCompressionEnabled,
-                IsHttpAllowed = IsHttpAllowed,
-                IsHttpsAllowed = IsHttpsAllowed,
-                Location = Location,
-                OriginHostHeader = OriginHostHeader,
-                OriginPath = OriginPath,
-                Origins = new List<DeepCreatedOrigin> { new DeepCreatedOrigin(OriginName, OriginHostName, HttpPort, HttpsPort) },
-                QueryStringCachingBehavior = QueryStringCachingBehavior != null ?
-                            QueryStringCachingBehavior.Value.CastEnum<PSQueryStringCachingBehavior, QueryStringCachingBehavior>() :
-                            (QueryStringCachingBehavior?)null,
-                OptimizationType = OptimizationType,
-                ProbePath = ProbePath,
-                GeoFilters = GeoFilters?.Select(g => g.ToSdkGeoFilter()).ToList(),
-                DeliveryPolicy = DeliveryPolicy?.ToSdkDeliveryPolicy(),
-                Tags = Tag.ToDictionaryTags()
-            });
+                var endpoint = CdnManagementClient.Endpoints.Create(
+                    ResourceGroupName,
+                    ProfileName,
+                    EndpointName, new Management.Cdn.Models.Endpoint
+                {
+                    ContentTypesToCompress = ContentTypesToCompress,
+                    IsCompressionEnabled = IsCompressionEnabled,
+                    IsHttpAllowed = IsHttpAllowed,
+                    IsHttpsAllowed = IsHttpsAllowed,
+                    Location = Location,
+                    OriginHostHeader = OriginHostHeader,
+                    OriginPath = OriginPath,
+                    Origins = new List<DeepCreatedOrigin> { new DeepCreatedOrigin(OriginName, OriginHostName, HttpPort, HttpsPort) },
+                    QueryStringCachingBehavior = QueryStringCachingBehavior != null ?
+                                QueryStringCachingBehavior.Value.CastEnum<PSQueryStringCachingBehavior, QueryStringCachingBehavior>() :
+                                (QueryStringCachingBehavior?)null,
+                    OptimizationType = OptimizationType,
+                    ProbePath = ProbePath,
+                    GeoFilters = GeoFilters?.Select(g => g.ToSdkGeoFilter()).ToList(),
+                    DeliveryPolicy = DeliveryPolicy?.ToSdkDeliveryPolicy(),
+                    Tags = Tag.ToDictionaryTags()
+                });
 
-            WriteVerbose(Resources.Success);
-            WriteObject(endpoint.ToPsEndpoint());
+                WriteVerbose(Resources.Success);
+                WriteObject(endpoint.ToPsEndpoint());
+            }
+            catch (Microsoft.Azure.Management.Cdn.Models.ErrorResponseException e)
+            {
+                throw new PSArgumentException(string.Format("Error response received.Error Message: '{0}'",
+                                     e.Response.Content));
+            }
         }
     }
 }

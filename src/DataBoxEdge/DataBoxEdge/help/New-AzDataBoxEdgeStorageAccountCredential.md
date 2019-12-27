@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataBoxEdgeStorageAccountCredential
 
 ## SYNOPSIS
-Create new storage account credential object
+Creates new credentials for an edge storage account on the device.
 
 ## SYNTAX
 
@@ -19,18 +19,16 @@ New-AzDataBoxEdgeStorageAccountCredential [-ResourceGroupName] <String> [-Device
 ```
 
 ## DESCRIPTION
-The **New-AzDataBoxEdgeStorageAccountCredential** is used to create a new Storage Account Credential object
+The **New-AzDataBoxEdgeStorageAccountCredential** cmdlet creates a new edge storage account credential for a Data Box Edge device.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDataBoxEdgeStorageAccountCredential -ResourceGroupName resource-group-name -DeviceName device-name -Name storage-acount-credential-name
- -StorageAccountName storage-account-name -StorageAccountType BlobStorage -StorageAccountSslStatus Enabled
- -StorageAccountAccessKey access-key -EncryptionKey encryption-key
-Name                             StorageAccount          SslStatus  ResourceGroupName
--------------------------------- ---------------------- ---------- ---------------------
-storage-account-credential-name  storage-account-name    Enabled    resource-group-name
+PS C:\> New-AzDataBoxEdgeStorageAccountCredential -ResourceGroupName resourceGroupName -DeviceName device-name -Name storage-acount-credential-name -StorageAccountName storageAccountName -StorageAccountType BlobStorage -StorageAccountAccessKey @SecureString -EncryptionKey @SecureString
+Name                             StorageAccount    SslStatus  ResourceGroupName
+--------------------------- ---------------------- ---------- ---------------------
+storageAccountCredentalName storageAccountName     Enabled    resourceGroupName
 ```
 
 ## PARAMETERS
@@ -141,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountType
-Possible Storage Access type
+Possible Storage Access type GeneralPurposeStorage, BlockStorage
 
 ```yaml
 Type: System.String
