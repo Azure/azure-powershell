@@ -23,9 +23,6 @@ using System.Net;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
-#if !SIGN
-[assembly: InternalsVisibleTo("Authentication.Abstractions.Test")]
-#endif
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
     /// <summary>
