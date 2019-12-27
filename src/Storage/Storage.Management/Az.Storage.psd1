@@ -167,11 +167,7 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzStorageContainerAcl', 'Start-CopyAzureStorageBlob', 
                'Stop-CopyAzureStorageBlob', 'Enable-AzStorageSoftDelete', 
-               'Disable-AzStorageSoftDelete','Enable-AzureStorageStaticWebsite',
-			   'Disable-AzureStorageStaticWebsite','Invoke-AzureRmStorageAccountFailover',
-			   'Get-AzureRmStorageAccountManagementPolicy','Set-AzureRmStorageAccountManagementPolicy',
-               'Remove-AzureRmStorageAccountManagementPolicy'
-               'Remove-AzDatalakeGen2FileSystem', 'Get-AzDatalakeGen2FileSystem'
+               'Disable-AzStorageSoftDelete'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -216,7 +212,7 @@ PrivateData = @{
 	- Set-AzStorageContainerAcl'
 
         # Prerelease string of this module
-        Prerelease = 'preview'
+        Prerelease = ''
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
