@@ -268,6 +268,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You cannot change hardware family..
+        /// </summary>
+        internal static string CannotChangeHardwareFamily {
+            get {
+                return ResourceManager.GetString("CannotChangeHardwareFamily", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For this update operation provided compute generation parameter is Gen5. Once the hardware generation is upgraded, it is not possible to switch back to Gen4 compute generation as this hardware is being deprecated..
+        /// </summary>
+        internal static string ChangingHardwareFamilyIsIrreversable {
+            get {
+                return ResourceManager.GetString("ChangingHardwareFamilyIsIrreversable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Database with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string DatabaseNameExists {
@@ -318,6 +336,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string DeprecatedCmdletUsageWarning {
             get {
                 return ResourceManager.GetString("DeprecatedCmdletUsageWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to proceed?.
+        /// </summary>
+        internal static string DoYouWantToProceed {
+            get {
+                return ResourceManager.GetString("DoYouWantToProceed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provided edition parameter &apos;{0}&apos; has different value than provided SkuName &apos;{1}&apos;. Please align these parameters or use one of them and execute command again..
+        /// </summary>
+        internal static string EditionDifferentInSkuAndEdition {
+            get {
+                return ResourceManager.GetString("EditionDifferentInSkuAndEdition", resourceCulture);
             }
         }
         
@@ -457,6 +493,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Provided ComputeGeneration parameter &apos;{0}&apos; has different value than provided SkuName &apos;{1}&apos;. Please align these parameters or use one of them and execute command again..
+        /// </summary>
+        internal static string HardwareFamilyDifferentInSkuAndComputeGeneration {
+            get {
+                return ResourceManager.GetString("HardwareFamilyDifferentInSkuAndComputeGeneration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instance &apos;{0}&apos; is placed inside the instance pool &apos;{1}&apos;, therefore it inherits Edition, ComputeGeneration and SKU from it. Please remove these parameters and execute command again..
+        /// </summary>
+        internal static string InstancePoolInstanceCannotChangeHardwareFamily {
+            get {
+                return ResourceManager.GetString("InstancePoolInstanceCannotChangeHardwareFamily", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Active Directory Group &apos;{0}&apos; is not security enabled. Only Azure Active Directory Security Enabled Groups are supported..
         /// </summary>
         internal static string InvalidADGroupNotSecurity {
@@ -525,6 +579,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string InvalidKeyId {
             get {
                 return ResourceManager.GetString("InvalidKeyId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provided SkuName &apos;{0}&apos; is invalid &apos;{1}&apos;. Please enter a valid SkuName value and execute command again..
+        /// </summary>
+        internal static string InvalidManagedInstanceSkuName {
+            get {
+                return ResourceManager.GetString("InvalidManagedInstanceSkuName", resourceCulture);
             }
         }
         
@@ -606,6 +669,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string NoStorageAccountWhenConfiguringThreatDetectionPolicy {
             get {
                 return ResourceManager.GetString("NoStorageAccountWhenConfiguringThreatDetectionPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It is not possible to switch back to Gen4 compute generation as this hardware is being deprecated..
+        /// </summary>
+        internal static string NotPossibleToSwitchBackToGen4 {
+            get {
+                return ResourceManager.GetString("NotPossibleToSwitchBackToGen4", resourceCulture);
             }
         }
         
@@ -1015,7 +1087,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlInstanceVulnerabilityAssessmentSetting first..
+        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzSqlInstanceVulnerabilityAssessmentSettings first..
         /// </summary>
         internal static string RunSetManagedDatabaseVulnerabilityAssemenSettings {
             get {
