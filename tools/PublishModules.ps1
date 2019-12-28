@@ -479,12 +479,18 @@ function Save-PackageLocally {
 
     $ModuleName = $module['ModuleName']
     $RequiredVersion = $module['RequiredVersion']
+    if ($RequiredVersion -eq $null)
+    {
+        $RequiredVersion = $module['ModuleVersion']
+    }
 
     # Only check for the modules that specifies = required exact dependency version
     if ($RequiredVersion -ne $null) {
         Write-Output "Checking for required module $ModuleName, $RequiredVersion"
         if (Find-Module -Name $ModuleName -RequiredVersion $RequiredVersion -Repository $TempRepo -ErrorAction SilentlyContinue) {
             Write-Output "Required dependency $ModuleName, $RequiredVersion found in the repo $TempRepo"
+        } elseif ((Get-Module -ListAvailable -Name $ModuleName | Where-Object {$_.Version -eq $RequiredVersion}) -ne $null) {
+            Write-Output "Required dependency $ModuleName, $RequiredVersion found in build modules"
         } else {
             Write-Warning "Required dependency $ModuleName, $RequiredVersion not found in the repo $TempRepo"
             Write-Output "Downloading the package from PsGallery to the path $TempRepoPath"
@@ -550,6 +556,7 @@ function Save-PackagesFromPsGallery {
         }
     }
 }
+
 
 <#
 .SYNOPSIS Add all modules to local repo.
@@ -682,7 +689,17 @@ function Add-Module {
         }
 
         Write-Output "Publishing the module $moduleName"
-        Publish-Module -Path $Path -Repository $TempRepo -Force | Out-Null
+        try
+        {
+            Publish-Module -Path $Path -Repository $TempRepo -Force | Out-Null
+        }
+        catch
+        {
+            $nugetPackageName = $moduleName + "." + $ModuleMetadata.ModuleVersion.toString() + ".nupkg"
+            Remove-Item $TempRepoPath/$nugetPackageName -Force
+            Publish-Module -Path $Path -Repository $TempRepo -Force | Out-Null
+        }
+        
         Write-Output "$moduleName published"
 
         # Create a psm1 and alter psd1 dependencies to allow fine-grained

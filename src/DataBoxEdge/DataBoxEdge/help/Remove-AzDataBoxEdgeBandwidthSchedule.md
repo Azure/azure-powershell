@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzDataBoxEdgeBandwidthSchedule
 
 ## SYNOPSIS
-Removes a Bandwidth Schedule
+Removes a Bandwidth Schedule.
 
 ## SYNTAX
 
@@ -31,13 +31,13 @@ Remove-AzDataBoxEdgeBandwidthSchedule -InputObject <PSDataBoxEdgeBandWidthSchedu
 ```
 
 ## DESCRIPTION
-This **Remove-AzDataBoxEdgeBandwidthSchedule** will remove the Bandwidth schedule for the device.
+The **Remove-AzDataBoxEdgeBandwidthSchedule** cmdlet removes the Bandwidth schedule for a Data Box Edge device. 
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDataBoxEdgeBandwidthSchedule -ResourceGroupName resource-group-name -DeviceName device-name -Name bandwidth-schedule
+PS C:\> Remove-AzDataBoxEdgeBandwidthSchedule -ResourceGroupName resourceGroupName -DeviceName deviceName -Name bandwidthSchedule
 ```
 
 ## PARAMETERS
@@ -178,8 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
