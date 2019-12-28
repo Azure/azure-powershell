@@ -39,18 +39,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Resource Group name.
         /// </summary>
-        [Parameter(ParameterSetName = ByTagNameValueParameterSet, Mandatory = false)]
-        [Parameter(ParameterSetName = ByNameVaultResourceGroupParameterSet, Mandatory = false)]
-        [Parameter(ParameterSetName = ByTagObjectParameterSet, Mandatory = false)]
+        [Parameter(Position = 1)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets Resource Name.
         /// </summary>
-        [Parameter(ParameterSetName = ByTagNameValueParameterSet, Mandatory = false)]
-        [Parameter(ParameterSetName = ByNameVaultResourceGroupParameterSet, Mandatory = false)]
-        [Parameter(ParameterSetName = ByTagObjectParameterSet, Mandatory = false)]
+        [Parameter(Position = 2)]
         public string Name { get; set; }
 
         /// <summary>
@@ -70,7 +66,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// TagValue Filter for a Recovery Services Vault.
         /// </summary>
-        [Parameter(ParameterSetName = ByTagObjectParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = ByTagObjectParameterSet, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
@@ -143,6 +139,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="vaults">List of Vaults</param>
         private void WriteVaults(IList<Vault> vaults)
         {
+            IList<Vault> filteredVaults = new List<Vault>();
             // Do a tag filter here
             for(int i = 0; i < vaults.Count; i++)
             {
@@ -150,21 +147,44 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 if(this.ParameterSetName == ByTagNameValueParameterSet)
                 {
                     bool tagNameFilter = TagName == null || vault.Tags.ContainsKey(TagName);
-                    bool tagValueFilter = TagValue == null || vault.Tags.ContainsKey(TagValue);
+                    bool tagValueFilter = TagValue == null || vault.Tags.Values.Contains(TagValue);
 
-                    if(!(tagNameFilter && tagValueFilter))
+                    if((tagNameFilter && tagValueFilter))
                     {
-                        vaults.RemoveAt(i);
+                        filteredVaults.Add(vault);
+                    }
+                }
+                if(this.ParameterSetName == ByTagObjectParameterSet)
+                {
+                    if (Tag != null)
+                    {
+                        //bool hasTags = false;
+                        foreach (string key in Tag.Keys)
+                        {
+                            if (vault.Tags.ContainsKey(key) && vault.Tags[key] == (string)Tag[key])
+                            {
+                                this.WriteObject("vault " + vault.Name + " contains tag " + key);
+                                //hasTags = true;
+                                filteredVaults.Add(vault);
+                                continue;
+                            }
+                        }
+                        /*
+                        if (!hasTags)
+                        {
+                            vaults.RemoveAt(i);
+                        }
+                        */
                     }
                 }
             }
             if (string.IsNullOrEmpty(this.Name))
             {
-                this.WriteObject(vaults.Select(v => new ARSVault(v)), true);
+                this.WriteObject(filteredVaults.Select(v => new ARSVault(v)), true);
             }
             else
             {
-                foreach (Vault vault in vaults)
+                foreach (Vault vault in filteredVaults)
                 {
                     if (0 == string.Compare(this.Name, vault.Name, true))
                     {
